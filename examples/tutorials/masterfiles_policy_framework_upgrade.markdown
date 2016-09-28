@@ -326,7 +326,7 @@ DONE: Configuration done. Run "make install" to install CFEngine Masterfiles.
 Then we move the installed masterfiles into our integration directory.
 
 ```console
-[root@hub masterfiles]# mv /tmp/masterfiles-3.7.4 /masterfiles/* ../MPF_upgrade
+[root@hub masterfiles]# mv /tmp/masterfiles-3.7.4/masterfiles/* ../MPF_upgrade
 [root@hub masterfiles]# cd ../MPF_upgrade/
 ```
 
