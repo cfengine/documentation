@@ -356,6 +356,20 @@ Manage packages using `nimclient` on AIX.
 Manage packages using
 FreeBSD [pkg](https://www.freebsd.org/doc/handbook/pkgng-intro.html).
 
+**Example:**
+
+```cf3
+  packages:
+    freebsd::
+      "emacs-nox11"
+        policy => "present",
+        package_module => pkg;
+
+      "emacs"
+        policy => "absent",
+        package_module => pkg;
+```
+
 **History:**
 
 * Added in CFEngine 3.9.0
