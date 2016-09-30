@@ -21,7 +21,7 @@ This example shows a way to determine if IPV4 forwarding is enabled or not.
 
 [%CFEngine_include_snippet(regline.cf, #\+begin_src cfengine3, .*end_src)%]
 
-[%CFEngine_include_snippet(regline.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+[%CFEngine_include_snippet(regline.cf, #\+begin_src\s+random_example_output\s*, .*end_src)%]
 
 For `edit_line` applications it may be useful to set a class for detecting the
 presence of a string that does not exactly match one being inserted. For
