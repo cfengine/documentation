@@ -265,9 +265,9 @@ Example showing repository based package source.
   packages:
       "apache2"
         policy => "present",
-        package_module => apt_get,
+        package_module => yum,
         version => "2.2.22",
-        options => { "-o", "APT::Install-Recommends=0" };
+        options => { "--disableplugin=fs-snapshot,allowdowngrade", "--skip-broken" };
 ```
 
 **Notes:**
