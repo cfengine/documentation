@@ -320,8 +320,8 @@ Example:
 
 ```
 $ ./package-module repo-install <<EOF
-Option=-o
-Option=APT::Install-Recommends=0
+option=-o
+option=APT::Install-Recommends=0
 Name=zip
 Name=libc6
 Version=2.15
@@ -382,7 +382,7 @@ Name=zip
 Name=libc6
 Version=2.15
 Architecture=amd64
-Option=--noplugins
+option=--noplugins
 Name=libc6
 Version=2.15
 Architecture=i386
