@@ -246,7 +246,7 @@ other conditions.
 ## Package modules out-of-the-box
 ### yum
 
-Manage packages using the ```yum```.
+Manage packages using ```yum```.
 
 **Example:**
 
@@ -263,11 +263,10 @@ Example showing repository based package source.
 
 ```cf3
   packages:
-      "apache2"
+      "httpd"
         policy => "present",
-        package_module => apt_get,
-        version => "2.2.22",
-        options => { "-o", "APT::Install-Recommends=0" };
+        package_module => yum,
+        version => "2.2.22";
 ```
 
 **Notes:**
