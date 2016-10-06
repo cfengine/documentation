@@ -23,10 +23,13 @@ with one tag in each call and use the `intersection` function on the return valu
 
 Variable tags are set using the [`meta`][Promise Types and Attributes#meta] attribute.
 
+This function behaves exactly like `variablesmatching_as_data()` but returns
+just the list of all the variables. If you want their contents as well, see that
+function.
+
 [%CFEngine_function_attributes(regex, tag1, tag2, ...)%]
 
 **Example:**
-
 
 [%CFEngine_include_snippet(variablesmatching.cf, #\+begin_src cfengine3, .*end_src)%]
 
@@ -34,6 +37,6 @@ Output:
 
 [%CFEngine_include_snippet(variablesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [classesmatching()][classesmatching], [bundlesmatching()][bundlesmatching]
+**See also:** [classesmatching()][classesmatching], [bundlesmatching()][bundlesmatching], [variablesmatching_as_data()][variablesmatching_as_data]
 
 **History:** Introduced in CFEngine 3.6
