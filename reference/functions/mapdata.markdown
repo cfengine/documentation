@@ -16,6 +16,8 @@ invoked as a program, when `interpretation` is `json_pipe`.
 
 [This function can accept many types of data parameters.][Functions#collecting functions]
 
+[This function can delay the evaluation of its second parameter, which can therefore be a function call.][Functions#delayed evaluation functions]
+
 The `$(this.k)` and `$(this.v)` variables expand to the key and value
 of the current element, similar to the way `this` is available for
 `maplist`.
@@ -59,6 +61,6 @@ Output:
 [%CFEngine_include_snippet(mapdata_jsonpipe.cf, #\+begin_src\s+output\s*, .*end_src)%]
 
 
-**History:** Was introduced in 3.7.0. `canonify` mode was introduced in 3.9.0. The [collecting function][Functions#collecting functions] behavior was added in 3.9. The `json_pipe` mode was added in 3.9.
+**History:** Was introduced in 3.7.0. `canonify` mode was introduced in 3.9.0. The [collecting function][Functions#collecting functions] behavior was added in 3.9. The `json_pipe` mode was added in 3.9. The delayed evaluation behavior was introduced in 3.10.
 
 **See also:** `maplist()`, `maparray()`, `canonify()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

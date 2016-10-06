@@ -12,6 +12,8 @@ modified by a `pattern`.
 
 [This function can accept many types of data parameters.][Functions#collecting functions]
 
+[This function can delay the evaluation of its first parameter, which can therefore be a function call.][Functions#delayed evaluation functions]
+
 The `$(this.k)` and `$(this.v)` variables expand to the key and value
 of the current element, similar to the way `this` is available for
 `maplist`.
@@ -36,6 +38,6 @@ Output:
 
 [%CFEngine_include_snippet(maparray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+**History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9. The delayed evaluation behavior was introduced in 3.10.
 
 **See also:** `maplist()`, `mapdata()`, [about collecting functions][Functions#collecting functions], and `data` documentation.
