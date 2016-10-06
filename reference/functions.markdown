@@ -123,6 +123,20 @@ will wrap the `thing` in a JSON array; then the contents of
 `otherthing[123]` will be wrapped in a JSON map which will also go in
 the array.
 
+### Delayed Evaluation Functions
+
+Since CFEngine 3.10, some functions are marked as *delayed evaluation* which
+means they can evaluate a function call across every element of a collection.
+This makes intuitive sense for the collection traversing functions `maparray()`,
+`maplist()`, and `mapdata()`.
+
+The practical use is for instance `maplist(format("%03d", $(this)), mylist)`
+which will evaluate that `format()` call once for every element of `mylist`.
+
+Before 3.10, the same call would have resulted in running the `format()`
+function **before** the list is traversed, which is almost never what the user
+wants.
+
 ## List of all functions
 
 There are a large number of functions built into CFEngine. The following
