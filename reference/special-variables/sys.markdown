@@ -1277,6 +1277,24 @@ online.  (Not implemented on the Windows platform.)
 
 **History:** Introduced in CFEngine 3.6
 
+### sys.user_data
+
+A data container with the user information of the user that started the agent.
+
+```cf3
+    # user_data = {
+        "description": "root",
+        "gid": 0,
+        "home_dir": "/root",
+        "shell": "/bin/bash",
+        "uid": 0,
+        "username": "root"
+      }
+
+```
+
+**History:** Introduced in CFEngine 3.10
+
 ### sys.uqhost
 
 The unqualified name of the current host.
