@@ -151,25 +151,26 @@ standard library.
 * When `service_type` is `windows` allowed values are limited to `start`,
   `stop`, `enable`, or `disable`.
 
-** **start|enable** :: Will start the service if it is not running. ```Startup
+   * **start|enable** :: Will start the service if it is not running. ```Startup
      Type``` will be set to ```Manual``` if it is not ```Automatic``` or
      ```Automatic (Delayed Start)```. For a service to be configured to start
      automatically on boot a `service_method` must be declared and
      `service_autostart_policy` must be set to ```boot_time```.
 
-** **stop** :: Will stop the service if it is running. ```Startup Type``` will
+   * **stop** :: Will stop the service if it is running. ```Startup Type``` will
      not be modified unless a `service_method` is declared and
      `service_autostart_policy` is set.
 
-** **disable** :: Will stop the service if it is running, and ```Startup Type```
+   * **disable** :: Will stop the service if it is running, and ```Startup Type```
      will be set to ```Disabled```.
 
 
 * When `service_type` is ```generic``` any string is allowed and
   `service_bundle` is responsible for interpreting and implementing the desired
-  state based on the `service_policy` value. Historically `service_type`
-  ```generic``` has supported ```start```, ```stop```, ```enable```,
-  ```disable```, ```restart``` and ```reload```.
+  state based on the `service_policy` value.
+
+  Historically `service_type` ```generic``` has supported ```start```,
+  ```stop```, ```enable```, ```disable```, ```restart``` and ```reload```.
 
 
 **Example:**
