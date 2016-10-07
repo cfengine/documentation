@@ -5,6 +5,17 @@ published: true
 tags: [reference, bundle agent, services, processes, services promises, promise types]
 ---
 
+`services` type promises in their simplest *generic* form are an abstraction on
+**bundles**. `services` type promises are implemented by mapping a bundle to
+`service_bundle` in a `service_method` body. Reference the [services bodies and
+bundles in the standard library][Services Bodies and Bundles].
+
+Most commonly services type promises are use to manage standard operating system
+services using the platforms standard service management tools via the
+`standard_services` bundle in the standard library. However, services type
+promises can be leveraged to build standard abstractions around custom services
+as well.
+
 Services are registered in the operating system in some way, and get a unique name.
 Service promises abstracts the mechanism for interacting with services
 on the given operating system, making it as uniform and easy as possible
@@ -122,38 +133,81 @@ for services promises.
 
 ### service_policy
 
-**Description:** Policy for CFEngine service status.
+**Description:** Policy for service status.
 
-If set to `start`, CFEngine will keep the service in a running state,
-while `stop` means that the service is kept in a stopped state. Use
-`enable` to enable the service permanently, for instance in systemd
-environments.
+The `service_policy` is expected to be passed to the service bundle in order to
+manage it's state. It is up to the mapped `service_bundle` to determine which
+promises should be actuated in order to converge to the specified
+`service_policy`.
 
-`disable` implies `stop`, and ensures that the service can not be started
-directly, but needs to be enabled somehow first (e.g. by changing file
-permissions).
+Reference the policy for detailed information about the semantics of a given
+`service_method` or `service_bundle`, for example
+the [`standard_services`][Service Bundles and Bodies#standard_services] in the
+standard library.
 
-**Type:** (menu option)
+**Type:** `string`
 
-**Allowed input range:**
-
-```
-    start
-    stop
-    enable
-    disable
-    restart
-    reload
-```
+**Allowed input range:** (arbitrary string)
 
 **Example:**
 
 ```cf3
-services:
+bundle agent example
+{
+  services:
 
-  "Telnet"
-     service_policy => "disable";
+    redhat|centos::
+
+      # Manage a service using the standard_services implementation from the
+      # standard library.
+
+      "httpd"
+        service_policy => "disable";
+
+    any::
+
+      # Manage a custom service using custom service_method
+
+      "myservice"
+        service_policy => "my_custom_state",
+        service_method => "my_custom_service_method";
+}
+
+body service_method my_custom_service_method
+{
+
+  windows::
+    service_bundle => my_custom_service_method_windows( $(this.promiser), $(this.service_policy) );
+
+  redhat|centos::
+    service_bundle => my_custom_service_method_EL( $(this.promiser), $(this.service_policy) );
+
+  debian|ubuntu::
+    service_bundle => my_custom_service_method_DEB( $(this.promiser), $(this.service_policy) );
+}
+
+bundle agent my_custom_service_method_windows( service_identifier, desired_service_state )
+{
+  # Specific windows implementation
+}
+
+bundle agent my_custom_service_method_EL( service_identifier, desired_service_state )
+{
+  # Specific Redhat|Centos implementation
+}
+
+bundle agent my_custom_service_method_DEB( service_identifier, desired_service_state )
+{
+  # Specific Debian|Ubuntu implementation
+}
 ```
+
+**History:**
+
+* Type changed from `menu_option` to `string` and allowed input range changed to
+  arbitrary string from start|stop|enable|disable|restart|reload in CFEngine
+  3.10. Previously enable was mapped to start, disable was mapped to stop and
+  reload was mapped to restart.
 
 ### service_dependencies
 
@@ -190,6 +244,10 @@ services:
 **Type:** `body service_method`
 
 [%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
+`service_method` bodies have access to `$(this.promiser)` (the promised service)
+and `$(this.service_policy)` (the policy state the service should have).
+
 
 #### service_args
 
