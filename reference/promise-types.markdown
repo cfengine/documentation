@@ -1035,7 +1035,7 @@ limited duration as a rare event then an absolute time limit is useful.
 **Description:** Describes the real intention of the promise.
 
 Comments written in code follow the program, they are not merely discarded;
-they appear in reports and error messages.
+they appear in verbose logs and error messages.
 
 **Type:** `string`
 
