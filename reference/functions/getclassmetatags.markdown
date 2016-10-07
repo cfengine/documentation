@@ -27,3 +27,5 @@ Output:
 **Notes:**
 
 **See also:** `getvariablemetatags()`
+
+**History:** Function added in 3.6.0. `optional_tag` added in 3.10.0
