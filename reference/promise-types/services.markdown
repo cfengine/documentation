@@ -147,7 +147,29 @@ standard library.
 
 **Type:** `string`
 
-**Allowed input range:** (arbitrary string)
+**Allowed input range:** (arbitrary string)|(menu_option) depending on `service_type`
+
+* When `service_type` is `windows` allowed values are limited to `start`,
+  `stop`, `enable`, or `disable`.
+
+** **start|enable** :: Will start the service if it is not running. ```Startup
+     Type``` will be set to ```Manual``` if it is not ```Automatic``` or
+     ```Automatic (Delayed Start)```. For a service to be configured to start
+     automatically on boot a `service_method` must be declared and
+     `service_autostart_policy` must be set to ```boot_time```.
+
+** **stop** :: Will stop the service if it is running. ```Startup Type``` will
+     not be modified unless a `service_method` is declared and
+     `service_autostart_policy` is set.
+
+** **disable** :: Will stop the service if it is running, and ```Startup Type```
+     will be set to ```Disabled```.
+
+
+* When `service_type` is `geneirc` any string is allowed and `service_bundle` is
+  responsible for interpreting and implementing the desired state based on the
+  `service_policy` value.
+
 
 **Example:**
 
@@ -171,6 +193,39 @@ bundle agent example
       "myservice"
         service_policy => "my_custom_state",
         service_method => "my_custom_service_method";
+
+
+    windows::
+
+        "AdobeARMservice"
+          service_policy => "stop",
+          comment => "Ensure the Adobe Acrobat Update Service is not running. It
+                      may or may not be automatically started on the next boot
+                      depending on the configuration.";
+
+        "CfengineNovaExec"
+          service_policy => "enable",
+          service_method => bootstart, # Ref stdlib
+          comment => "Ensure cf-execd is running and configured to start on
+                      boot.";
+
+        "VBoxService"
+          service_policy => "start",
+          service_method => bootstart, # Ref stdlib
+          comment => "Ensure VirtualBox Guest Additions Service is running and
+                      configured to start on boot.";
+
+        "Spooler"
+          service_policy => "disable",
+          comment => "Ensure the Print Spooler is not running and will not start
+                      automatically on boot. We do not want to kill any trees.";
+
+        "tzautoupdate"
+          service_policy => "start",
+          comment => "Ensure that the Auto Time Zone Updated is running, and set
+                      Startup Type to Manual.";
+
+
 }
 
 body service_method my_custom_service_method
@@ -201,6 +256,8 @@ bundle agent my_custom_service_method_DEB( service_identifier, desired_service_s
   # Specific Debian|Ubuntu implementation
 }
 ```
+
+**See Also:** [generic standard_services][Services Bodies and Bundles#standard_services]
 
 **History:**
 
@@ -248,6 +305,7 @@ services:
 `service_method` bodies have access to `$(this.promiser)` (the promised service)
 and `$(this.service_policy)` (the policy state the service should have).
 
+**Notes:** `service_bundle` is not used when `service_type` is ```windows```.
 
 #### service_args
 
@@ -378,7 +436,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
      }
 ```
 
-**Notes:**
-On Windows this defaults to, and must be `windows`. Unix systems can
-however have multiple means of registering services, but the choice must
-be available on the given system.
+**Notes:** On Windows this defaults to, and must be `windows`. Unix systems can
+however have multiple means of registering services, but the choice must be
+available on the given system. `service_bundle` is not used when `service_type`
+is ```windows```.
