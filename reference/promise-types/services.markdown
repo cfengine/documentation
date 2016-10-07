@@ -141,8 +141,7 @@ promises should be actuated in order to converge to the specified
 `service_policy`.
 
 Reference the policy for detailed information about the semantics of a given
-`service_method` or `service_bundle`, for example
-the [standard_services][Service Bundles and Bodies#standard_services] in the
+`service_method` or `service_bundle`, for example the `standard_services` in the
 standard library.
 
 **Type:** `string`
