@@ -165,9 +165,11 @@ standard library.
      will be set to ```Disabled```.
 
 
-* When `service_type` is `geneirc` any string is allowed and `service_bundle` is
-  responsible for interpreting and implementing the desired state based on the
-  `service_policy` value.
+* When `service_type` is ```generic``` any string is allowed and
+  `service_bundle` is responsible for interpreting and implementing the desired
+  state based on the `service_policy` value. Historically `service_type`
+  ```generic``` has supported ```start```, ```stop```, ```enable```,
+  ```disable```, ```restart``` and ```reload```.
 
 
 **Example:**
