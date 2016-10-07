@@ -5,14 +5,19 @@ published: true
 tags: [reference, data functions, functions, getvariablemetatags, meta, tags]
 ---
 
-[%CFEngine_function_prototype(varname)%]
+[%CFEngine_function_prototype(varname, optional_tag)%]
 
 **Description:** Returns the list of [`meta`][Promise Types and Attributes#meta] tags for variable `varname`.
 
 Make sure you specify the correct scope when supplying the name of the
 variable.
 
-[%CFEngine_function_attributes(varname)%]
+[%CFEngine_function_attributes(varname, optional_tag)%]
+
+The `optional_tag` can be used to look up a specific tag's value. If you format
+your tags like `meta => { "mykey=myvalue1", "mykey=myvalue2"}` then the
+`optional_tag` of `mykey` will fetch you a list with two entries, `{ "myvalue1",
+"myvalue2" }`.
 
 **Example:**
 
