@@ -22,17 +22,14 @@ On platforms that don't support these POSIX functions, the function simply fails
 
 **Example:**
 
-```cf3
-    vars:
-      # note the results here will vary depending on your platform
-      "me" data => getuserinfo(); # the current user's info
-      "root" data => getuserinfo("root"); # the "root" user's info (usually UID 0)
-      "uid0" data => getuserinfo(0); # lookup user info for UID 0 (usually "root")
-```
+[%CFEngine_include_snippet(getuserinfo.cf, #\+begin_src cfengine3, .*end_src)%]
 
 **Typical Results:**
 
 ```
+R: I am 'Mr. Current User', root shell is '/bin/bash', and the agent was started by {"description":"Mr. Current User","gid":1000,"home_dir":"/home/theuser","shell":"/bin/sh","uid":1000,"username":"theuser"}
+
+And variable contents:
   "me": {
     "description": "Mr. Current User",
     "gid": 1000,
