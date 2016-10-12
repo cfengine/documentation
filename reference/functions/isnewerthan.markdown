@@ -28,3 +28,5 @@ Run:
 Output:
 
 [%CFEngine_include_snippet(isnewerthan.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+**See Also:** `accessedbefore()`, `changedbefore()`

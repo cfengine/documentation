@@ -38,3 +38,5 @@ Comparisons like this are normally used for updating files (like the
           "The derived file needs updating";
     }
 ```
+
+**See Also:** `accessedbefore()`, `isnewerthan()`
