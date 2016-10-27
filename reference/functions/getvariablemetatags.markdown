@@ -31,7 +31,4 @@ Output:
 
 **See also:** `getclassmetatags()`
 
-**History:**
-
-* Added in 3.6.0
-* `optional_tag` added in 3.10
+**History:** Function in 3.6.0. `optional_tag` added in 3.10.0
