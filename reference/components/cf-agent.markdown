@@ -360,48 +360,9 @@ will force a revalidation of the input.
 **Deprecated:** This menu option policy is deprecated, does
 nothing and is kept for backward compatibility.
 
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example:**
-
-```cf3
-    body agent control
-    {
-    auditing  => "true";
-    }
-```
-
-
 ### binarypaddingchar
 
-**Description:** The `binarypaddingchar` contains the character used to
-pad unequal replacements in binary editing.
-
-When editing binary files, it can be dangerous to replace a text
-string with one that is longer or shorter as byte references and
-jumps would be destroyed. CFEngine will therefore not allow
-replacements that are larger in size than the original, but shorter
-strings can be padded out to the same length.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
-
-**Default value:** space (ASC=32)
-
-**Example:**
-
-```cf3
-    body agent control
-    {
-    binarypaddingchar => "#";
-    }
-```
-
-**Default value:** empty (i.e., no padding)
-
+**Deprecated: This attribute was deprecated in 3.6.0.**
 
 ### bindtointerface
 
