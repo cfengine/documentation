@@ -2,7 +2,7 @@
 layout: default
 title: inventory/macos.cf
 published: true
-sorting: 70
+sorting: 120
 tags: [reference, controls, MPF]
 ---
 

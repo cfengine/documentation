@@ -1,6 +1,6 @@
 ---
 layout: default
-title: services/
+title: services/main.cf
 published: true
 sorting: 130 
 tags: [reference, controls, MPF]
