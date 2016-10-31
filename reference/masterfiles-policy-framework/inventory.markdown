@@ -1,6 +1,6 @@
 ---
 layout: default
-title: inventory/any.cf
+title: inventory/
 published: true
 sorting: 50
 tags: [reference, controls, MPF]

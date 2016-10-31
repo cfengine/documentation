@@ -1,6 +1,6 @@
 ---
 layout: default
-title: controls
+title: controls/
 published: true
 sorting: 30
 tags: [reference, controls, MPF]
