@@ -2,7 +2,7 @@
 layout: default
 title: inventory/redhat.cf
 published: true
-sorting: 60
+sorting: 70
 tags: [reference, controls, MPF]
 ---
 

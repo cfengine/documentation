@@ -2,7 +2,7 @@
 layout: default
 title: inventory/generic.cf
 published: true
-sorting: 60
+sorting: 70
 tags: [reference, controls, MPF]
 ---
 

@@ -2,7 +2,7 @@
 layout: default
 title: services/
 published: true
-sorting: 70
+sorting: 80
 tags: [reference, controls, MPF]
 ---
 

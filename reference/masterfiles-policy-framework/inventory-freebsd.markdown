@@ -2,7 +2,7 @@
 layout: default
 title: inventory/freebsd.cf
 published: true
-sorting: 20
+sorting: 70
 tags: [reference, controls, MPF]
 ---
 
