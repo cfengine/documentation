@@ -2,7 +2,7 @@
 layout: default
 title: inventory/windows.cf
 published: true
-sorting: 20
+sorting: 60
 tags: [reference, controls, MPF]
 ---
 

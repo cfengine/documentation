@@ -2,7 +2,7 @@
 layout: default
 title: controls/update_def_inputs.cf
 published: true
-sorting: 20
+sorting: 40
 tags: [reference, controls, MPF]
 ---
 
