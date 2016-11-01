@@ -17,12 +17,73 @@ execution.
 
 Classes are either `set` or `not set`, depending on context. Classes fall into
 **hard** classes that are discovered by CFEngine, and **soft** classes that are
-user-defined. Refer to [Hard and Soft Classes][Hard and Soft Classes] in the **Reference**
-section for more information.
+user-defined.
 
-In [CFEngine Enterprise][], the list of set classes is
-reported to the CFEngine Database Server and can be used there for reporting,
-grouping of hosts and inventory management.
+In [CFEngine Enterprise][], classes that are defined can be reported to the
+CFEngine Database Server and can be used there for reporting, grouping of hosts
+and inventory management. For more information about how this is configured please read the documentation on [Enterprise Reporting][].
+
+## Listing Classes
+
+To see `hard classes` and `soft classes` defined in common bundles on a
+particular host, run `cf-promises --show-classes` as a privileged user.
+
+Example:
+
+```console
+[root@hub masterfiles]# cf-promises --show-classes
+Class name                                                   Meta tags
+10_0_2_15                                                    inventory,attribute_name=none,source=agent,hardclass
+127_0_0_1                                                    inventory,attribute_name=none,source=agent,hardclass
+192_168_33_2                                                 inventory,attribute_name=none,source=agent,hardclass
+1_cpu                                                        source=agent,derived-from=sys.cpus,hardclass
+64_bit                                                       source=agent,hardclass
+Afternoon                                                    time_based,source=agent,hardclass
+Day22                                                        time_based,source=agent,hardclass
+...
+```
+
+Note that some of the classes are set only if a trusted link can be established
+with [`cf-monitord`][cf-monitord], i.e. if both are running with privilege, and
+the `/var/cfengine/state/env_data` file is secure.
+
+You can also use the built-in `classesmatching()` function to get a
+list of all the defined classes in a list, inside CFEngine policy
+itself.  `classesmatching()` is especially useful because it also lets
+you specify tag regular expressions.
+
+**See also**: The `--show-vars` option.
+
+## Tags
+
+Classes and variables have tags that describe their provenance (who
+created them) and purpose (why were they created).
+
+While you can provide your own tags for soft classes in policy with
+the [`meta`][Promise Types and Attributes#meta] attribute, there are some tags applied to hard classes and
+other special cases.  This list may change in future versions of
+CFEngine.
+
+* `source=agent`: this hard class or variable was created by the agent in the C code.  This tag is useful when you need to find classes or variables that don't match the other sources below.  e.g. `linux`.
+* `source=environment`: this hard class or variable was created by the agent in the C code.  It reflects something about the environment like a command-line option, e.g. `-d` sets `debug_mode`, `-v` sets `verbose_mode`, and `-I` sets `inform_mode`.  Another useful option, `-n`, sets `opt_dry_run`.
+* `source=bootstrap`: this hard class or variable was created by the agent in the C code based on bootstrap parameters.  e.g. `policy_server` is set based on the IP address or host name you provided when you ran `cf-agent -B host-or-ip`.
+* `source=module`: this class or variable was created through the module protocol.
+* `source=persistent`: this persistent class was loaded from storage.
+* `source=body`: this variable was created by a body with side effects.
+* `source=function`: this class or variable was created by a function as a side effect, e.g. see the classes that `selectservers()` sets or the variables that `regextract()` sets.  These classes or variables will also have a `function=FUNCTIONNAME` tag.
+* `source=promise`: this soft class was created from policy.
+* `inventory`: related to the system inventory, e.g. the network interfaces
+  * `attribute_name=none`: has no visual attribute name (ignored by Mission Portal)
+  * `attribute_name=X`: has visual attribute name `X` (used by Mission Portal)
+* `monitoring`: related to the monitoring (`cf-monitord` usually).
+* `time_based`: based on the system date, e.g. `Afternoon`
+* `derived-from=varname`: for a class, this tells you it was derived from a variable name, e.g. if the special variable `sys.fqhost` is `xyz`, the resulting class `xyz` will have the tag `derived-from=sys.fqhost`.
+* `cfe_internal`: internal utility classes and variables
+
+Enterprise only:
+
+* `source=ldap`: this soft class or variable was created from an LDAP lookup.
+* `source=observation`: this class or variable came from a `measurements` system observation and will also have the `monitoring` tag.
 
 ## Hard Classes
 
@@ -31,41 +92,157 @@ and reads properties of the environment or context in which it runs.It turns
 these properties of the environment into classes. This information is
 effectively cached and may be used to make decisions about configuration.
 
-You can see all of the classes defined on a particular host by running the following command as a privileged user.
+You can see all of the hard classes defined on a particular host by running the
+following command as a privileged user.
 
+```console
     $ cf-promises --show-classes|grep hardclass
+```
 
 These are classes that describe your operating system, the time of
 day, the week of the year, etc. Time-varying classes (tagged with
 `time_based`) will change if you do this a few times over the course
 of a week.
 
+* CFEngine-specific classes
+    * `any`: this class is always set
+    * `am_policy_hub`, `policy_server`: set when the file
+      `$(workdir)/state/am_policy_hub` exists. When a host is [bootstrapped][cf-agent], if
+      the agent detects that it is bootstrapping to itself the file is created.
+    * `bootstrap_mode`: set when bootstrapping a host
+    * `inform_mode`, `verbose_mode`, `debug_mode`: log verbosity levels in order of noisiness
+    * `opt_dry_run`: set when the `--dry-run` option is given
+    * `failsafe_fallback`: set when the base policy is invalid and the built-in `failsafe.cf` (see `bootstrap.c`) is invoked
+    * (`community`, `community_edition`) and (`enterprise`, `enterprise_edition`): the two different CFEngine products, Community and Enterprise, can be distinguished by these mutually exclusive sets of hard classes
+    * `agent` *cf-agent*, `server` *cf-serverd*, `monitor` *cf-monitord*, `executor` *cf-execd*, `runagent` *cf-runagent*, `keygenerator` *cf-keygen*, `hub` *cf-hub*, `common` *cf-promises* and others: classes that identify the current component.  `cf-promises` is a special case because it's not an agent in the CFEngine sense, so note that using `cf-promises --show-classes` will not show these classes because it can't.
+* Operating System Classes (note that the presence of these classes doesn't imply platform support)
+    * Operating System Architecture -  `arista`, `big_ip`, `debian`, `eos`, `fedora`, `Mandrake`, `Mandriva`, `oracle`, `redhat`, `slackware`, `smartmachine`, `smartos`, `solarisx86`, `sun4`, `SuSE`, `ubuntu`, `ultrix`, the always-favorite `unknown_ostype`, etc.
+    * VM or hypervisor specific: `VMware`, `virt_guest_vz`, `virt_host_vz`, `virt_host_vz_vzps`, `xen`, `xen_dom0`, `xen_domu_hv`, `xen_domu_pv`, `oraclevmserver`, etc.
+    * On Solaris-10 systems, the zone name (in the form `zone_global, zone_foo, zone_baz`).
+    * Windows-specific: `DomainController`, `Win2000`, `WinServer`, `WinServer2003`, `WinServer2008`, `WinVista`, `WinWorkstation`, `WinXP`
+    * `have_aptitude`, `powershell`, `systemd`: based on the detected capabilities of the platform or the compiled-in options
+    * **See also:** `sys.arch`, `sys.class`, `sys.flavor`, `sys.os`, `sys.ostype`.
+* Network Classes
+    * Unqualified Name of Host. CFEngine truncates it at the first dot.
+      Note: `www.sales.company.com` and `www.research.company.com` have the
+      same unqualified name – `www`
+    * The IP address octets of any active interface (in the form
+    `ipv4_192_0_0_1`, `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`)
+    * User-defined Group of Hosts
+    * `mac_unknown`: set when the MAC address can't be found
+    * **See also:** `sys.domain`, `sys.hardware_addresses`, `sys.sys.host`, `sys.interface`, `sys.interfaces`, `sys.interface_flags`, `sys.ipv4`, `sys.ip_addresses`, `sys.fqhost`, `sys.uqhost`.
+* Time Classes
+    * note ALL of these have a local and a GMT version.  The GMT classes are consistent the world over, in case you need global change coordination.
+    * Day of the Week - `Monday, Tuesday, Wednesday,...GMT_Monday, GMT_Tuesday, GMT_Wednesday,...`
+    * Hour of the Day in Current Time Zone - `Hr00, Hr01,... Hr23` and `Hr0, Hr1,... Hr23`
+    * Hour of the Day in GMT - `GMT_Hr00, GMT_Hr01, ...GMT_Hr23` and `GMT_Hr0, GMT_Hr1, ...GMT_Hr23`.
+    * Minutes of the Hour - `Min00, Min17,... Min45,...` and `GMT_Min00, GMT_Min17,... GMT_Min45,...`
+    * Five Minute Interval of the Hour - `Min00_05, Min05_10,... Min55_00` and `GMT_Min00_05, GMT_Min05_10,... GMT_Min55_00`.  Note the second number indicates *up to* what minute the interval extends and does not include that minute.
+    * Quarter of the Hour - `Q1, Q2, Q3, Q4` and `GMT_Q1, GMT_Q2, GMT_Q3, GMT_Q4`
+    * An expression of the current quarter hour - `Hr12_Q3` and `GMT_Hr12_Q3`
+    * Day of the Month - `Day1, Day2,... Day31` and `GMT_Day1, GMT_Day2,... GMT_Day31`
+    * Month - `January, February,... December` and `GMT_January, GMT_February,... GMT_December`
+    * Year - `Yr1997, Yr2004` and `GMT_Yr1997, GMT_Yr2004`
+    * Period of the Day - `Night, Morning, Afternoon, Evening` and `GMT_Night, GMT_Morning, GMT_Afternoon, GMT_Evening` (six hour blocks starting at 00:00 hours).
+    * Lifecycle Index - `Lcycle_0, Lcycle_1, Lcycle_2` and `GMT_Lcycle_0, GMT_Lcycle_1, GMT_Lcycle_2` (the year number modulo 3, used in long term resource memory).
+    * **See also:** `sys.cdate`, `sys.date`.
+
+-   The unqualified name of a particular host (e.g., `www`). If
+    your system returns a fully qualified domain name for your host
+    (e.g., `www.iu.hio.no`), CFEngine will also define a hard class for
+    the fully qualified name, as well as the partially-qualified
+    component names `iu.hio.no`, `hio.no`, and `no`.
+    * **See also:** `sys.fqhost`, `sys.uqhost`.
+-   An arbitrary user-defined string (as specified in the `-D`
+    command line option, or defined in a [`classes` promise][classes] promise or
+    [`classes` body][Promise Types and Attributes#classes],
+    `restart_class` in a `processes` promise, etc).
+-   The IP address octets of any active interface (in the form
+    `ipv4_192_0_0_1<!-- /@w -->`, `ipv4_192_0_0<!-- /@w -->`,
+    `ipv4_192_0<!-- /@w -->`, `ipv4_192<!-- /@w -->`), provided they
+    are not excluded by a regular expression in the file
+    `WORKDIR/inputs/ignore_interfaces.rx`.
+-   The names of the active interfaces (in the form
+    `net_iface_xl0`, `net_iface_vr0`).
+-   System status and entropy information reported by
+    `cf-monitord`.
+
 ## Soft Classes
 
 Soft classes are user-defined classes which you can use to implement your own
-classifications. These classes are defined in bundles and are evaluated when
-the bundle is evaluated. They can be based on test functions or on other
-classes.
+classifications. These classes are defined in bundles and are evaluated when the
+bundle is evaluated. They can be based on functions or on other classes.
 
-```cf3
-    bundle agent myclasses
-    {
-    classes:
-      "always";
-      "always2" expression => "any";
-      "solinux" expression => "linux||solaris";
-      "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
-      "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
+Soft classes can be set by using the `-D` or `--define` options wihtout having
+to edit the policy. Multiple classes can be defined by separating them with
+commas (no spaces).
 
-    reports:
-      alt_class::
-        # This will only report "Boo!" on linux, solaris, or any system
-        # on which the file /etc/fstab exists
-        "Boo!";
-    }
+```console
+$ cf-agent -Dclass
 ```
 
+or
+
+```console
+$ cf-agent --define class1,class2,class3
+```
+
+This can be especially useful when requesting a remote host to run its policy
+by using `cf-runagent` to activate policy that is normally dormant.
+
+```console
+$ cf-runagent -Demergency_evacuation -H remoteclient
+```
+
+If you're using dynamic inputs this can be useful in combination with
+`cf-promises` to ensure that various input combinations syntax is validated
+correctly. Many people will have this run by pre-commit hooks or as part of a
+continuous build system like [Jenkins](http://jenkins-ci.org/) or
+[Bamboo](https://www.atlassian.com/software/bamboo).
+
+```console
+$ cf-promises -f ./promises.cf -D prod
+$ cf-promises -f ./promises.cf -D dev
+./promises.cf:10:12: error: syntax error
+   "global1" expression => "any";
+           ^
+./promises.cf:10:12: error: Check previous line, Expected ';', got '"global1"'
+   "global1" expression => "any";
+           ^
+./promises.cf:10:23: error: Expected promiser string, got 'expression'
+   "global1" expression => "any";
+                      ^
+./promises.cf:10:26: error: Expected ';', got '=>'
+   "global1" expression => "any";
+                         ^
+2014-05-22T13:46:05+0000    error: There are syntax errors in policy files
+```
+
+*Note*: Classes, once defined, will stay defined either for as long as the
+bundle is evaluated (for classes with a `bundle` scope) or until the agent
+exits (for classes with a `namespace` scope). See `cancel_kept`,
+`cancel_repaired`, and `cancel_notkept` in classes body.
+
+
 This example defines a few soft classes local to the `myclasses` bundle.
+
+```cf3
+bundle agent myclasses
+{
+classes:
+  "always";
+  "always2" expression => "any";
+  "solinux" expression => "linux||solaris";
+  "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
+  "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
+
+reports:
+  alt_class::
+    # This will only report "Boo!" on linux, solaris, or any system
+    # on which the file /etc/fstab exists
+    "Boo!";
+}
+```
 
 * The `always` and `always2` soft classes are always defined.
 

@@ -191,7 +191,7 @@ This is not recommended as it both removes a safety mechanism that checks for
 policy to be valid before allowing clients to download updates, and the
 increased load on the hub will affect scalability.
 
-Consider using [time_based][Hard and Soft Classes], `select_class` or `dist` based
+Consider using [time_based][Classes and Decisions#Hard Classes], `select_class` or `dist` based
 classes instead of any to retain some of the benefits.
 
 ##### enable_cfengine_enterprise_hub_ha (class)

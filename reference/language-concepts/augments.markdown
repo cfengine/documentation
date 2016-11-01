@@ -67,8 +67,8 @@ default:def.phone                        22-333-4444                            
 
   results in `my_always` being always defined. `my_other_apache` will be defined
   if the classes `server3` or `server4` are defined, or if any class starting
-  with `debian` is defined. You can use any **hard** classes listed in
-  [Hard and Soft Classes][Hard and Soft Classes#Hard Classes] with the exception
+  with `debian` is defined. You can use
+  any [**hard** classes][Classes and Decisions#Hard Classes] with the exception
   of `am_policy_hub` and `policy_server`.
 
   You can see the list of classes thus defined through `def.json` in the output
