@@ -556,6 +556,17 @@ them local to the bundle.
 
 Finally, `restart_class` classes in `processes` are global.
 
+## Persistence
+
+By default classes are re-computed on each agent execution. Once a class has
+been defined, it persists until the end of that agent execution. Classes can
+persist for a period of time. This can be useful to avoid the expense of
+re-evaluation, communicate states across multiple agent runs on the same host.
+
+The standard library in the Masterfiles Policy Framework contains
+the [`feature`][lib/feature.cf] bundle which implements a useful model for
+defining classes for a period of time as well as canceling them on demand.
+
 ## Canceling classes
 
 You can cancel a class with a [`classes`][Promise Types and Attributes#classes] body.
