@@ -12,5 +12,5 @@ maintained by the CFEngine community. They codify many common and useful
 patterns.
 
 This directories contents are expected to be found in the following locations:
-- [`$(sys.libdir)`][Special Variables#sys-libdir]
-- [`$(sys.local_libdir)`][Special Variables#sys-local_libdir) (relative to the root of your policy inputs)
+- [`$(sys.libdir)`][sys#sys.libdir]
+- [`$(sys.local_libdir)`][sys#sys.local_libdir) (relative to the root of your policy inputs)
