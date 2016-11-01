@@ -6,3 +6,4 @@ sorting: 160
 tags: [reference, controls, MPF]
 ---
 
+[%CFEngine_library_include(lib/stdlib)%]
