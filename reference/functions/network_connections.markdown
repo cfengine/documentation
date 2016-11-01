@@ -22,7 +22,7 @@ The returned data container has four keys:
 
 Under each key, there's an array of connection objects that all look like this:
 
-```json
+```
       {
         "local": {
           "address": "...source address...",
@@ -65,7 +65,7 @@ Output:
 
 The SSH daemon:
 
-```json
+```
    {
      "tcp": [
       {
@@ -85,7 +85,7 @@ The SSH daemon:
 
 The printer daemon listening only to local IPv6 connections on port `631`:
 
-```json
+```
     "tcp6": [
       {
         "local": {
@@ -103,7 +103,7 @@ The printer daemon listening only to local IPv6 connections on port `631`:
 
 An established connection on port 2200:
 
-```json
+```
      "tcp": [
       {
         "local": {
