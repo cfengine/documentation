@@ -27,3 +27,7 @@ This will stop the AGENT from starting automatically.
 component.
 
 `DAEMON` can be one of `cf_execd`, `cf_monitord` or `cf_serverd`.
+
+stdlib
+
+[%CFEngine_include_markdown(../../masterfiles/README.md)%]
