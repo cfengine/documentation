@@ -18,7 +18,7 @@ on top of the new masterfiles.
 {{site.cfengine.branch}} introduces some minor re-orginization of policy, and some new
 features aimed at making policy framework upgrades easier.
 
-Please consult [The Policy Framework] for a map to the policy framework.
+Please consult [Masterfiles Policy Framework] for a map to the policy framework.
 
 ## What is new in the {{site.cfengine.branch}} masterfiles policy framework ##
 

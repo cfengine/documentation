@@ -9,7 +9,7 @@ tags: [cfengine enterprise, hub administration, scheduling, cf-execd, cf-agent, 
 
 By default `cf-execd` is configured to run `cf-agent` every 5 minutes. This can
 be adjusted by tuning the [schedule][cf-execd#schedule] in `body executor
-control`. In the [Masterfiles Policy Framework][The Policy Framework] body
+control`. In the [Masterfiles Policy Framework][Masterfiles Policy Framework] body
 executor control can be found in `controls/cf_execd.cf`
 
 ## Set cf-hub hub_schedule
@@ -18,7 +18,7 @@ executor control can be found in `controls/cf_execd.cf`
 [hub_schedule][cf-hub#hub_schedule] defined in `body hub control` which also
 defaults to a 5 minute schedule. It can be adjusted to control how frequently
 hosts should be collected from. In the
-[Masterfiles Policy Framework][The Policy Framework] `body hub control` can be
+[Masterfiles Policy Framework][Masterfiles Policy Framework] `body hub control` can be
 found in `controls/cf_hub.cf`
 
 **Note:** Mission Portal has an "Unreachable host threshold" that defaults to 15

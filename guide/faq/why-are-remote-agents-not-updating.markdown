@@ -6,7 +6,7 @@ sorting: 90
 tags: [getting started, installation, faq, cf_promises_validated ]
 ---
 
-The [masterfiles policy framework][The Policy Framework] defaults to using
+The [masterfiles policy framework][Masterfiles Policy Framework] defaults to using
 `cf_promises_validated` as a simple gating mechanism for policy updates. This
 gating mechanism helps in avoiding the distribution of broken policy to clients
 as well as reducing the burden on the policy server during times policy is not

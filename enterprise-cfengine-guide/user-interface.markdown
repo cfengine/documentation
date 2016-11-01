@@ -66,7 +66,7 @@ Add and remove columns from the results table in real time, and once you're happ
 
 Find out more: [Reporting][Reporting UI]
 
-Find out more about writing your own inventory modules: [Inventory modules][The Policy Framework#CFEngine 3 inventory modules]
+Find out more about writing your own inventory modules: [Inventory modules][inventory/#your-very-own-inventory-module]
 
 ## Monitoring ##
 
@@ -85,4 +85,3 @@ Find out more: [Design Center][]
 A variety of CFEngine and system properties can be changed in the Settings view.
 
 Find out more: [Settings][]
-

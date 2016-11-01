@@ -9,7 +9,7 @@ tags: [Examples, Tutorials, Inventory, Enterprise]
 This tutorial will show you how to add custom inventory attributes that can be
 leveraged in policy and reported on in the CFEngine Enterprise Mission Portal.
 For a more detailed overview on how the inventory system works please reference
-[CFEngine 3 inventory modules][The Policy Framework#CFEngine 3 Inventory Modules].
+[CFEngine 3 inventory modules][inventory/].
 
 ## Overview ##
 

@@ -48,22 +48,22 @@ Run the bootstrap command, **first** on the policy server:
 
 1. Find the IP address of your Policy Server:
 
-		
+
 	    $ ifconfig
-		
+
 
 2. Run the bootstrap command:
 
-		
+
         $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
-		
+
 
 The bootstrap command must then be run on any client attaching itself to this server, using the ip address of the policy server (i.e. exactly the same as the command run on the policy server itself).
 
 ## Post-Installation Configuration ##
 
 CFEngine itself is configured through policy as well (see [Components and Common Control][] and
-[The Policy Framework][] for details). The following basic changes to the default policy will configure
+[Masterfiles Policy Framework][] for details). The following basic changes to the default policy will configure
 `cf-serverd` and `cf-execd` for your environment.
 
 
@@ -139,4 +139,3 @@ Although most install procedures follow the same general workflow, there are sev
 ## Next Steps ##
 
 * Learn about [Writing and Serving Policy][Writing and Serving Policy]
-

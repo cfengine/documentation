@@ -10,7 +10,7 @@ reviewed-by: nickanderson, enrico
 This example shows a simple ssh key distribution implementation.
 
 The policy was designed to work with the `services_autorun` feature in
-the [Masterfiles Policy Framework][The Policy Framework]. The
+the [Masterfiles Policy Framework][Masterfiles Policy Framework]. The
 `services_autorun` feature can be enabled from the augments_file. If
 you do not have a `def.json` in the root of your masterfiles directory
 simply create it with the following content.

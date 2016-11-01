@@ -6,7 +6,7 @@ tags: [reference, variables, def, augments]
 ---
 
 The context `def` is populated by the
-[Masterfiles Policy Framework][The Policy Framework] and can also be populated
+[Masterfiles Policy Framework][Masterfiles Policy Framework] and can also be populated
 by the [augments file][Augments].
 
 **Note:** Variables defined from policy in a bundle named `def` **will

@@ -7,7 +7,7 @@ sorting: 10
 
 * [Installation][Install and Get Started#Installation]
 * [Post-Install Configuration][Install and Get Started#Post-Install Configuration]
-	
+
 ## Installation ##
 
 The [General Installation][General Installation] instructions provide the detailed steps for installing CFEngine, which are generally the same steps to follow for CFEngine Enterprise, with the exception of license keys (if applicable), and also some aspects of post-installation and configuration.
@@ -38,4 +38,5 @@ very, very depressing.
 
 ### Review settings
 
-See [The Policy Framework][The Policy Framework] for a full list of all the settings you can configure.
+See the [Masterfiles Policy Framework][Masterfiles Policy Framework] for a full
+list of all the settings you can configure.
