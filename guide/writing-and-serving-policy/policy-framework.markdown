@@ -1,10 +1,13 @@
 ---
 layout: default
 title: The Policy Framework
-published: true
+published: false
 sorting: 50
 tags: [manuals, writing policy, policy framework, masterfiles, def.cf, update.cf]
 ---
+
+This documentation is deprecated in favor of reference/masterfiles-policy-framework*
+
 
 The CFEngine policy framework is called the **Masterfiles Policy Framework**,
 **MPF**, or simply **masterfiles** because the files live in
