@@ -13,4 +13,4 @@ considered for update in the default
 ([`sys.update_policy_path`][sys#sys.update_policy_path]).
 
 Verify the files you expect match
-[`update_def.input_name_patterns`][Masterfiles Policy Framework#files-considered-for-copy-during-policy-updates].
+[`update_def.input_name_patterns`][Masterfiles Policy Framework].
