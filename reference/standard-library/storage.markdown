@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Storage Bundles and Bodies
-published: true
+published: false
 sorting: 95
 tags: [reference, standard library]
 ---

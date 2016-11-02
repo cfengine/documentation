@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Common Bodies and Bundles
-published: true
+published: false
 sorting: 10
 tags: [reference, standard library]
 ---
@@ -45,4 +45,3 @@ body file control
 
 
 [%CFEngine_library_include(lib/bundles)%]
-

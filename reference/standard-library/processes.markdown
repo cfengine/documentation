@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Processes Bundles and Bodies
-published: true
+published: false
 sorting: 80
 tags: [reference, standard library]
 ---
@@ -21,4 +21,3 @@ body file control
 
 
 [%CFEngine_library_include(lib/processes)%]
-

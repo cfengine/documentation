@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Commands Bundles and Bodies
-published: true
+published: false
 sorting: 20
 tags: [reference, standard library]
 ---
@@ -20,4 +20,3 @@ body file control
 
 
 [%CFEngine_library_include(lib/commands)%]
-

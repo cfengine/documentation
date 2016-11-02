@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Databases Bundles and Bodies
-published: true
+published: false
 sorting: 30
 tags: [reference, standard library]
 ---
@@ -21,4 +21,3 @@ body file control
 
 
 [%CFEngine_library_include(lib/databases)%]
-

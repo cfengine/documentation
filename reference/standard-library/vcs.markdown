@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Version Control Bodies and Bundles
-published: true
+published: false
 sorting: 100
 tags: [reference, standard library]
 ---

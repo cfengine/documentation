@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Packages Bundles and Bodies
-published: true
+published: false
 sorting: 70
 tags: [reference, standard library]
 ---
@@ -22,4 +22,3 @@ body file control
 
 
 [%CFEngine_library_include(lib/packages)%]
-
