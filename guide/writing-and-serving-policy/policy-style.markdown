@@ -374,7 +374,7 @@ bundle agent main
 Here is a slightly improved version that shows using classes to describe the
 current state, or what happened as the result of the promise. Note how it's
 easier to determine **why** the ssh service should be restarted. Using
-the [`results`][Common Bodies and Bundles#results], `scoped_classes_generic`, or
+the [`results`][lib/common.cf#results], `scoped_classes_generic`, or
 `classes_generic` classes bodies can help improve class name consistency and are
 highly recommended.
 

@@ -18,7 +18,7 @@ correct return codes for status checks.
 **See Also:**
 
 * [Services promise type reference][services]
-* [Services bundles and bodies in the standard library][Services Bundles and Bodies]
+* [Services bundles and bodies in the standard library][lib/services.cf]
 
 ## Example usage on systemd
 

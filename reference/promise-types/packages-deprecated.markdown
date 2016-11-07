@@ -1109,8 +1109,8 @@ Update the package if an update is available (manager dependent).
 Equivalent to add if the package is not installed, and update if it is
 installed. Note: This attribute requires the specification of `package_version`
 and `package_select` in order to select the proper version to update to if
-available. *See Also* [package_latest][Packages Bundles and Bodies#package_latest]
-[package_specific_latest][Packages Bundles and Bodies#package_specific_latest] in the
+available. *See Also* [package_latest][lib/packages.cf#package_latest]
+[package_specific_latest][lib/packages.cf#package_specific_latest] in the
 standard library.
 
 * `patch`
