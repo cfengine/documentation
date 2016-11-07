@@ -8,7 +8,7 @@ tags: [reference, bundle agent, services, processes, services promises, promise 
 `services` type promises in their simplest *generic* form are an abstraction on
 **bundles**. `services` type promises are implemented by mapping a bundle to
 `service_bundle` in a `service_method` body. Reference the
-[services bodies and bundles in the standard library][Services Bundles and Bodies].
+[services bodies and bundles in the standard library][lib/services.cf].
 
 Most commonly services type promises are use to manage standard operating system
 services using the platforms standard service management tools via the
