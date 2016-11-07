@@ -2,7 +2,7 @@
 <footer>
     <div class="wrapper">
         <div class="download_info">
-            <a href="cfengine-documentation-master.tar.gz"><i class="fa fa-arrow-circle-o-down"></i>Download all CFEngine documentation</a> for offline reading.
+            <a href="cfengine-documentation-{{site.cfengine.branch}}.tar.gz"><i class="fa fa-arrow-circle-o-down"></i>Download all CFEngine documentation</a> for offline reading.
         </div>
         <div class="group">
             <div class="license_info">
@@ -10,7 +10,7 @@
                <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
 
                <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
-               
+
                <p>Updated: {{site.time | date_to_long_string}}
                {% if site.git-repository != nil %}
                 from [<a target="_blank" href="http://{{site.git-repository}}{% if site.git-branch != nil %}/blob/{{site.git-branch}}{% endif %}">markdown source</a>]
