@@ -15,6 +15,41 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
+### Can't insert_lines if referencing a variable that contains an empty string
+
+You can follow the progress of this issue
+in [CFE-2466](https://tracker.mender.io/browse/).
+
+### "systemctl stop cfengine" doesn't stop all services immediately
+
+Dependent services will stop, but after several minutes. Please be aware of this
+difference in behavior, especially if you have any scripts relying on all
+cfengine services to be stopped immediately after execution.
+
+### Can not log into Mission Portal after upgrading from 3.7.x to 3.10.0b1
+
+This is related to failed database migration. It will be resolved in the final
+version.
+
+### Non systemd hosts are trying to use systemctl
+
+This has
+been [fixed upstream](https://github.com/cfengine/masterfiles/pull/826/files),
+but in the beta package non systemd hosts will try to issue systemctl.
+
+### Default ACLs do not work when bootstrapping to a hostname
+
+In relation to the experimental ability to bootstrap to a name and custom port
+```cf-serverd``` ACLs should work with hostname or hostname/xx entries. You can
+track the progress of this issue
+in [CFE-2495](https://tracker.mender.io/browse/CFE-2495)
+
+### AIX BETA package has incorrect version
+
+AIX does not support alphabetic versions, so 3.10.0 Enterprise beta has version
+“3.10.99X” (where X is beta build number) on AIX. Final AIX release will have
+version “3.10.0” like all other platforms.
+
 ### HP-UX specific
 
 * [Package promises][packages] do not have out-of-the-box support for the HP-UX
@@ -58,8 +93,8 @@ $config['appemail'] = 'admin@organisation.com';
 ### Enterprise monitoring graphs
 
 Monitoring graphs are disabled by default in CFEngine Enterprise 3.6 and later
-versions.  To enable them, change monitoring_include in
-masterfiles/controls/VERSION/reports.cf to e.g. ".*".  Note that this has a
+versions. To enable them, change monitoring_include in
+```masterfiles/controls/reports.cf``` to e.g. ".*". Note that this can have
 significant impact on the resource consumption of your hub.
 
 Monitoring graphs are not supported on all platforms, currently AIX, HP-UX and
@@ -113,49 +148,3 @@ Q: "...hp/bin/php /var":  in Unknown on line 0
 This warning can be resolved by removing
 `/var/cfengine/httpd/php/lib/apc.ini` and
 `/var/cfengine/httpd/php/lib/php/extensions/no-debug-non-zts-20131226/apc.so`
-
-### Dynamic bundle actuation results in error about `cf_null`
-
-[Jira #CFE-2426](https://tracker.mender.io/browse/CFE-2426)
-```
-   error: A method attempted to use a bundle 'cf_null' that was apparently not defined
-```
-
-This is a benign error. `cf_null` is an internal implementation detail that is
-used to handle empty lists.
-
-**Workarounds:**
-
-* Explicitly guard against iterating methods on an empty list.
-
-This snippet shows one way to define a class if a list is **not** empty.
-
-```cf3
-  classes:
-    "have_some_zero_dynamic_role_bundles"
-      expression => some( ".*", "roles_dynamic.bundles" );
-```
-
-* Ignore missing bundles in body common control
-
-```cf3
-body common control
-{
-#...
-
-  ignore_missing_bundles => "true";
-
-#...
-}
-```
-
-* Add an empty =cf_null= bundle
-
-```cf3
-bundle common cf_null
-{
-  reports:
-    !any::
-      "This works around an issue iterating over an list of bundles.";
-}
-```
