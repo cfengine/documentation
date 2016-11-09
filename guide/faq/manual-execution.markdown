@@ -64,4 +64,4 @@ Sometimes it's convenient to run `cf-execd` with `--once`. It will execute
 [defaults](https://github.com/cfengine/masterfiles/blob/{{site.cfengine.branch}}/controls/cf_execd.cf)
 to update policy ( `update.cf` ) followed by the default policy ( `promises.cf`
 ). Output from cf-execd executions is logged to
-[$(sys.workdir)/outputs][sys#sys.workdir].
+```$(sys.workdir)/outputs```.
