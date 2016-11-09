@@ -227,13 +227,23 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ## Install the new MPF
 
-The new MPF can be obtained from any community package, enterprise hub
-package, the separate tarball, or directly from github.
+The MPF can be obtained from
+any [community package](https://cfengine.com/product/community/) (in
+```$(sys.workdir)/share/CoreBase/```),
+[enterprise hub package](https://cfengine.com/product/free-download/) (in
+```$(sys.workdir)/share/NovaBase/```),
+[masterfiles source tarball](https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.tar.gz) (requires
+```./configure``` and ```make install```
+),
+[installed masterfiles tarball](https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.pkg.tar.gz) (ready
+for extraction),
+or
+[directly from github][https://github.com/cfengine/masterfiles/tree/{{site.cfengine.masterfiles_branch}}].
 
 We will install the MPF from source obtained
 directly from github.
 
-**Note:** You will need =automake= to install from source.
+**Note:** You will need ```automake``` to install from source.
 
 First clone the masterfiles repository for the version you are installing. And
 verify you have the correct tag checked out.
