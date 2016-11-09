@@ -74,9 +74,9 @@ everything about its behavior is a matter of policy and can be changed.
 
 In order to keep operations as simple as possible, CFEngine maintains a private
 working directory on each machine, referred to in documentation as `WORKDIR` and
-in policy by the variable [`sys.workdir`][sys#sys.workdir] By default, this
-is located at `/var/cfengine` or `C:\var\CFEngine`. It contains everything
-CFEngine needs to run.
+in policy by the variable ```sys.workdir``` By default, this is located at
+`/var/cfengine` or `C:\var\CFEngine`. It contains everything CFEngine needs to
+run.
 
 The figure below shows how decisions flow through the parts of a system.
 
@@ -90,9 +90,9 @@ The figure below shows how decisions flow through the parts of a system.
 * Decisions are made by editing CFEngine's policy file `promises.cf` (or one
   of its included sub-files). This process is carried out off-line.
 
-* Once decisions have been formalized and coded, this new policy is copied
-  to a decision distribution point, [`sys.masterdir`][sys#sys.masterdir] which
-  defaults to `/var/cfengine/masterfiles` on all policy distribution servers.
+* Once decisions have been formalized and coded, this new policy is copied to a
+  decision distribution point, ```sys.masterdir``` which defaults to
+  `/var/cfengine/masterfiles` on all policy distribution servers.
 
 * Every client machine contacts the policy server and downloads these updates.
   The policy server can be replicated if the number of clients is very large,
