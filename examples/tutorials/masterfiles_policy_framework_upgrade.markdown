@@ -238,7 +238,7 @@ any [community package](https://cfengine.com/product/community/) (in
 [installed masterfiles tarball](https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.pkg.tar.gz) (ready
 for extraction),
 or
-[directly from github][https://github.com/cfengine/masterfiles/tree/{{site.cfengine.masterfiles_branch}}].
+[directly from github](https://github.com/cfengine/masterfiles/tree/{{site.cfengine.masterfiles_branch}}).
 
 We will install the MPF from source obtained
 directly from github.
