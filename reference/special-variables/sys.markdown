@@ -279,10 +279,10 @@ The `stats` key contains all the TCP and IP counters provided by the system in `
 ```
 
     % cat /proc/net/route
-Iface	Destination	Gateway 	Flags	RefCnt	Use	Metric	Mask		MTU	Window	IRTT                                                       
-enp4s0	00000000	0102A8C0	0003	0	0	100	00000000	0	0	0                                                                           
-enp4s0	0000FEA9	00000000	0001	0	0	1000	0000FFFF	0	0	0                                                                          
-enp4s0	0002A8C0	00000000	0001	0	0	100	00FFFFFF	0	0	0                                                                           
+Iface	Destination	Gateway 	Flags	RefCnt	Use	Metric	Mask		MTU	Window	IRTT
+enp4s0	00000000	0102A8C0	0003	0	0	100	00000000	0	0	0
+enp4s0	0000FEA9	00000000	0001	0	0	1000	0000FFFF	0	0	0
+enp4s0	0002A8C0	00000000	0001	0	0	100	00FFFFFF	0	0	0
 
     % cat /proc/net/netstat
 TcpExt: SyncookiesSent SyncookiesRecv SyncookiesFailed EmbryonicRsts PruneCalled RcvPruned OfoPruned OutOfWindowIcmps LockDroppedIcmps ArpFilter TW TWRecycled TWKilled PAWSPassive PAWSActive PAWSEstab DelayedACKs DelayedACKLocked DelayedACKLost ListenOverflows ListenDrops TCPPrequeued TCPDirectCopyFromBacklog TCPDirectCopyFromPrequeue TCPPrequeueDropped TCPHPHits TCPHPHitsToUser TCPPureAcks TCPHPAcks TCPRenoRecovery TCPSackRecovery TCPSACKReneging TCPFACKReorder TCPSACKReorder TCPRenoReorder TCPTSReorder TCPFullUndo TCPPartialUndo TCPDSACKUndo TCPLossUndo TCPLostRetransmit TCPRenoFailures TCPSackFailures TCPLossFailures TCPFastRetrans TCPForwardRetrans TCPSlowStartRetrans TCPTimeouts TCPLossProbes TCPLossProbeRecovery TCPRenoRecoveryFail TCPSackRecoveryFail TCPSchedulerFailed TCPRcvCollapsed TCPDSACKOldSent TCPDSACKOfoSent TCPDSACKRecv TCPDSACKOfoRecv TCPAbortOnData TCPAbortOnClose TCPAbortOnMemory TCPAbortOnTimeout TCPAbortOnLinger TCPAbortFailed TCPMemoryPressures TCPSACKDiscard TCPDSACKIgnoredOld TCPDSACKIgnoredNoUndo TCPSpuriousRTOs TCPMD5NotFound TCPMD5Unexpected TCPSackShifted TCPSackMerged TCPSackShiftFallback TCPBacklogDrop TCPMinTTLDrop TCPDeferAcceptDrop IPReversePathFilter TCPTimeWaitOverflow TCPReqQFullDoCookies TCPReqQFullDrop TCPRetransFail TCPRcvCoalesce TCPOFOQueue TCPOFODrop TCPOFOMerge TCPChallengeACK TCPSYNChallenge TCPFastOpenActive TCPFastOpenActiveFail TCPFastOpenPassive TCPFastOpenPassiveFail TCPFastOpenListenOverflow TCPFastOpenCookieReqd TCPSpuriousRtxHostQueues BusyPollRxPackets TCPAutoCorking TCPFromZeroWindowAdv TCPToZeroWindowAdv TCPWantZeroWindowAdv TCPSynRetrans TCPOrigDataSent TCPHystartTrainDetect TCPHystartTrainCwnd TCPHystartDelayDetect TCPHystartDelayCwnd TCPACKSkippedSynRecv TCPACKSkippedPAWS TCPACKSkippedSeq TCPACKSkippedFinWait2 TCPACKSkippedTimeWait TCPACKSkippedChallenge TCPWinProbe TCPKeepAlive
@@ -1184,9 +1184,10 @@ The name of the directory where CFEngine saves the daemon pid files.
 
 ### sys.policy_hub
 
-Hostname of the machine acting as the policy server. This value is set
-during bootstrap. In case bootstrap was not performed, it is set to
-undefined.
+Hostname or IP of the machine acting as the policy server. This value is set
+during bootstrap and is stored in ```$(sys.workdir)/policy_server.dat```. If
+```$(sys.workdir)/policy_server.dat``` does not exist or is empty, then the
+variable is undefined.
 
 ```cf3
     reports:
@@ -1196,6 +1197,15 @@ undefined.
 
 **History:** Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010).
 Available in Community since 3.2.0
+
+### sys.policy_hub_port
+
+The default port which ```cf-agent``` will use by default when making outbound
+connections to ```cf-serverd```. This defaults to ```5308``` but can be
+overridden based on the data in ```$(sys.workdir)/policy_server.dat``` which is
+created during bootstrap.
+
+**History:** Introduced in version 3.10.0 (2016).
 
 ### sys.release
 
