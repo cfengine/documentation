@@ -21,6 +21,7 @@ cfengine:
   branch: master
   latest_patch_release: NA
   latest_package_build: NA
+  masterfiles_branch: "master"
 
 vagrant:
   version: "1.7.4"
