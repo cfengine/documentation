@@ -29,12 +29,14 @@ available memory in order to run the CFEngine agent software.
 So that the agent is not affected by full disks it is recommended that
 `/var/cfengine` be on its own partition.
 
-On Unix-like systems, under normal operation CFEngine can consume
-100 MB of the partition mounted where CFEngine is installed (usually
-`/var/cfengine`).  On Windows systems, CFEngine can consume up to 1GB
-(usually `C:\Program Files\Cfengine`).  The higher disk usage on
-Windows is due to lack of support for sparse files on this platform,
-which is utilized by a dependency of CFEngine (lmdb) when available.
+On Unix-like systems, a 500 MB partition for `/var/cfengine` should give you
+some breathing room, typical user reported sizes are in the 100-250 MB range. On
+Windows systems, CFEngine consumes more space because Windows lacks support for
+sparse files (which are used opportunistically by lmdb). 5 G of space should
+provide some breathing room, typical user reported sizes for `C:\Program
+Files\Cfengine` are around 1 GB. As always things vary in different environments
+it's a good idea to measure consumption in your infrastructure and customize
+accordingly.
 
 The agent builds local differential reports for promise outcomes. The
 longer the period between collections from the enterprise hub the more
