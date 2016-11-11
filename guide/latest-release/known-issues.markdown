@@ -92,12 +92,14 @@ Upgrade from 3.6.0 / 3.6.1 to 3.6.5 can be done by upgrading first to 3.6.2 / 3.
 
 ### Enterprise emails sent for alert noticies come from 'admin@orginization.com'.
 There is currently no setting in Mission Portal to configure the sender email
-address. This issue is on the [backlog](https://dev.cfengine.com/issues/6726)
+address. This issue is tracked in [ENT-695](https://tracker.mender.io/browse/ENT-695)
 and will be addressed in a future release.
 
 To change the setting you must edit the from email address in
-`/var/cfengine/httpd/htdocs/application/config/appsettings.php`
-
+`/var/cfengine/share/GUI/application/config/appsettings.php`. Policy in the
+Masterfiles Policy Framework will take care of updating the running config
+during the next policy run.
+ 
 ```
 // Default FROM email address
 $config['appemail'] = 'admin@organisation.com';
