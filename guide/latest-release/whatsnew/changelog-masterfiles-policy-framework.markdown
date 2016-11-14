@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Masterfiles Policy Framework ChangeLog
+title: Masterfiles ChangeLog
 published: true
-sorting: 10
+sorting: 20
 tags: [what's new, MPF, masterfiles]
 ---
 

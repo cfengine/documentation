@@ -10,4 +10,4 @@ See what's new in this release.
 
 * [Core Changelog][Changelog]
 * [Enterprise Changelog][Enterprise Changelog]
-* [Masterfiles Policy Framework Changelog][Masterfiles Policy Framework Changelog]
+* [Masterfiles Changelog][Masterfiles Changelog]
