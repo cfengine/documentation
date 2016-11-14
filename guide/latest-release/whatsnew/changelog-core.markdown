@@ -3,13 +3,10 @@ layout: default
 title: ChangeLog
 published: true
 sorting: 10
-tags: [latest release, "3.9", what's new]
+tags: [what's new]
 ---
 
-For a history of changes in the CFEngine version you have installed, see the `ChangeLog` and
-`ChangeLog.Enterprise` files in `/var/cfengine/share/doc`. The running change log
-for the core repository is also available
-[online](https://github.com/cfengine/core/blob/master/ChangeLog).
+**See Also:** [Enterprise Changelog][Enterprise Changelog], [Masterfiles Policy Framework Changelog][Masterfiles Policy Framework Changelog]
 
 <pre>
 [%CFEngine_include_markdown(core/ChangeLog)%]
