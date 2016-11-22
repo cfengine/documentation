@@ -248,7 +248,7 @@ This contains the MAC address of the named interface. For example:
 
 ```cf3
     reports:
-        "Tell me $(hardware_mac[eth0])";
+        "Tell me $(sys.hardware_mac[eth0])";
 ```
 
 **History:** Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
