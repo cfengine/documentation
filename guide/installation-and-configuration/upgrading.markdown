@@ -6,8 +6,9 @@ sorting: 30
 ---
 
 This guide documents our recommendation on how to upgrade an existing
-installation of CFEngine Community 3.7 and 3.8 and CFEngine Enterprise 3.7 and 3.8 to
-CFEngine {{site.cfengine.branch}}.
+installation of CFEngine Enterprise 3.7.x to {{site.cfengine.branch}}. Community
+users can use these instructions as a guide skipping the parts that are not
+relavent.
 
 We recommend upgrading the Masterfiles Policy Framework first so that you can
 verify that the new policy will work with your old clients across the
@@ -19,9 +20,6 @@ complicated as some functionality introduced in {{site.cfengine.branch}}
 is not compatible with versions 3.6 and earlier.
 
 ## Upgrade the Masterfiles Policy Framework
-
-We would however still recommend to perform a masterfiles upgrade (ideally in a
-test environment first) to get all the enhancements and fixes.
 
 The Masterfiles Policy Framework is available in the hub package, separately on
 the [download page](http://cfengine.com/community/download/), or directly from
@@ -39,6 +37,7 @@ the binaries on the Policy Server.
 
 ## Upgrade Policy Server (3.7 to {{site.cfengine.branch}}.X)
 
+
 1. Make a backup of the Policy Server, a full backup of `/var/cfengine` (or
    your `WORKDIR` equivalent) is recommended.
    * Stop the CFEngine services.
@@ -49,7 +48,10 @@ the binaries on the Policy Server.
 2. Save the list of hosts currently connecting to the Policy Server.
    * `cf-key -s > /root/3.7/hosts`
 
-3. Install the new CFEngine Policy Server package (you may need to adjust the
+3. Start the CFEngine services
+   * `service cfengine3 start`
+
+4. Install the new CFEngine Policy Server package (you may need to adjust the
    package name based on CFEngine edition, version and distribution).
    * `rpm -U cfengine-nova-hub-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.x86_64.rpm` # Red Hat based distribution
    * `dpkg --install cfengine-nova-hub_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64.deb` # Debian based distribution
@@ -90,20 +92,20 @@ the binaries on the Policy Server.
      fi
      ```
 
-4. Bootstrap the Policy Server to itself.
+5. Re-bootstrap the Policy Server to itself.
 
     ```
     /var/cfengine/bin/cf-agent -B <POLICY-SERVER-IP>
     ```
 
-    Any  error messages regarding processes can be corrected by running
+6. Regenerate self-signed certificate
+   * `cf-agent -b cfe_enterprise_selfsigned_cert`
 
-    ```
-    cf-agent -f update.cf -IK
-    ```
+7. Run the policy on the hub several times to converge the system
+   * `for i in 1 2 3; do /var/cfengine/bin/cf-agent -KIf update.cf; /var/cfengine/bin/cf-agent -KI; done`
 
-5. Start CFEngine services.
-   * Verify with `cf-key -s` that connections from all clients have been
+8. Verify client connectivity.
+   * Use `cf-key -s` to verify that connections from all clients have been
      established within 5-10 minutes.
 
 If everything looks good, you are ready to upgrade the clients, please skip to
@@ -115,11 +117,13 @@ versions) below.
 1. Make client packages available on the Policy Server in
    `/var/cfengine/master_software_updates`, under the appropriate directories
    for the OS distributions you use.
+
 2. Turn on the auto-upgrade policy by setting the `trigger_upgrade` class. Set
-   `masterfiles/controls/CLIENT_VER/update_def.cf` (where CLIENT_VER is the minor version your clients are on, e.g. 3.7)
-   or the `augments_file` (also known as `def.json`) for a small set of clients. For example in the appropriate
-   `update_def.cf` file(s) change `!any`  to an appropriate class like an IP
-   network `ipv4_10_10_1|ipv4_10_10_2` or in `def.json`
+   `masterfiles/controls/CLIENT_VER/update_def.cf` (where CLIENT_VER is the
+   minor version your clients are on, e.g. 3.7) or the `augments_file` (also
+   known as `def.json`) for a small set of clients. For example in the
+   appropriate `update_def.cf` file(s) change `!any` to an appropriate class
+   like an IP network `ipv4_10_10_1|ipv4_10_10_2` or in `def.json`
 
    ```json
    {
@@ -131,13 +135,22 @@ versions) below.
 
 3. Verify that the selected hosts are upgrading successfully.
 
-    As an Enterprise user, confirm that the hosts start appearing in Mission Portal after 5-10 minutes. The easiest way to do this is to use an Inventory Report and add the "CFEngine Version" column. Otherwise, log manually into a set of hosts to confirm the successful upgrade.
+    As an Enterprise user, confirm that the hosts start appearing in Mission
+    Portal after 5-10 minutes. The easiest way to do this is to use an Inventory
+    Report and add the "CFEngine Version" column. Otherwise, log manually into a
+    set of hosts to confirm the successful upgrade.
 
 ## Complete Client upgrade (all versions) ##
 
+Please note, the policy to use this method is designed for Enterprise packages.
+Community users can adjust the policy as necessary in order to work with
+community packages.
+
 1. Widen the group of hosts on which the `trigger_upgrade` class is set.
-2. Continue to verify from `cf-key -s` or in the Enterprise Mission Portal that hosts are upgraded correctly and start reporting in.
-3. Verify that the list of hosts you captured before the upgrade, e.g. in `/root/3.7/hosts` correspond to what you see is now reporting in.
+2. Continue to verify from `cf-key -s` or in the Enterprise Mission Portal that
+   hosts are upgraded correctly and start reporting in.
+3. Verify that the list of hosts you captured before the upgrade, e.g. in
+   `/root/3.7/hosts` correspond to what you see is now reporting in.
 
 
 ## Optional steps
