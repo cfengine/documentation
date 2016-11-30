@@ -369,7 +369,16 @@ inetd or xinetd on Unix.
 
 #### service_bundle
 
+**Description:** The agent bundle to use when managing the service.
+
+**Default:** The canonified promiser string prefixed with ```service_```. Note,
+the ```service_bundle``` **must** be in the same namespace.
+
 **Type:** `bundle agent`
+
+**Example:**
+
+[%CFEngine_include_example(services_default_service_bundle.cf)%]
 
 #### service_dependence_chain
 
