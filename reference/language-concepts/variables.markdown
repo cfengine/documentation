@@ -71,6 +71,15 @@ of the bundle in which it is defined:
 
     $(bundle_name.qualified)
 
+### Quoting
+
+When quoting strings cfengine allows the use of `'`, `"`, and or `` ` ``. This
+allows flexibilty when defining strings that contain quotes. Single or double
+quotes can be escaped with `\` however, please note that backticks (`` ` ``) can **not**
+be escaped.
+
+[%CFEngine_include_example(quoting.cf)%]
+
 ### Scalar Size Limitations
 
 At the moment, up to 4095 bytes can fit into a scalar variable.  This
