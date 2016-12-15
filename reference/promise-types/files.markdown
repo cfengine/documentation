@@ -1998,7 +1998,14 @@ Then this template
 
 {% raw %}
 ```
-{{#classes.holderclass}}The holderclass is defined{{/classes.holderclass}}
+{{#classes.holderclass}}
+    {{#classes.debian}}
+The holderclass is defined on debian
+    {{/classes.debian}}
+    {{#classes.centos}}
+The holderclass is defined on centos
+    {{/classes.centos}}
+{{/classes.holderclass}}
 {{^classes.holderclass}}The holderclass is not defined{{/classes.holderclass}}
 
 {{#vars.holder.list}}element = {{.}}, {{/vars.holder.list}}
