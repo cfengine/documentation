@@ -11,7 +11,7 @@ tags: [ FAQ, Enterprise, reporting, health  ]
 `cf-hub` makes connections from the hub to remote agents
 on [`body hub control port`][body hub control port] (5308 by default). The hub
 tries to collect from all collection candidates based on `hub_schedule` as
-defined in [`body hub control`][cf-hub#control-promises].
+defined in [`body hub control`](cf-hub#control-promises).
 
 # How are agents not running determined?
 Hosts who's last agent execution status is "FAIL" will show up under "Agents not
