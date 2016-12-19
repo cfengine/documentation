@@ -5,8 +5,7 @@ published: true
 tags: [reference, bundle common, defaults, promises]
 ---
 
-Defaults promises are related to
-[variables][variables]. If a variable or
+Defaults promises are related to [variables][variables]. If a variable or
 parameter in a promise bundle is undefined, or its value is defined to be
 invalid, a default value can be promised instead.
 
@@ -93,8 +92,8 @@ reports:
 
 ### if_match_regex
 
-**Description:** If this regular expression matches the current value of
-the variable, replace it with default
+**Description:** If this [anchored][anchored] regular expression matches the
+current value of the variable, replace it with default.
 
 If a parameter or variable is already defined in the current context, and the
 value matches this regular expression, it will be deemed invalid and replaced
@@ -106,12 +105,5 @@ with the default value.
 
 **Example:**
 
-```cf3
-    bundle agent mymethod(a,b)
-    {
-    defaults:
+[%CFEngine_include_example(defaults.cf)%]
 
-      "a" string => "AAAAAAAAA",   if_match_regex => "";
-      "b" string => "BBBBBBBBB",   if_match_regex => "";
-    }
-```
