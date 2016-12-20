@@ -120,6 +120,16 @@ $ curl -s -u admin:admin http://hub/api/settings/ | jq ".data[0].blueHostHorizon
 
 Yes, `cf-consumer` will spawn 25 threads for report collection processing.
 
+## Which hosts are pending trust revocation?
+
+When a host is removed using the delete API its key is placed in a queue for
+trust revocation. To see which hosts are pending key removal use the following
+query against the ```cfsettings``` database.
+
+```sql
+SELECT HostKey FROM KeysPendingForDeletion;
+```
+
 ## How to troubleshoot report collection?
 
 The following steps can be used to help diagnose and potentially restore
