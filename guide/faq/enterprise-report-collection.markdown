@@ -8,10 +8,19 @@ tags: [ FAQ, Enterprise, reporting, health  ]
 
 # How does CFEngine Enterprise collect reports?
 
-`cf-hub` makes connections from the hub to remote agents
+`cf-hub` makes connections from the hub to remote agents currently registered in
+the lastseen database (viewable with ```cf-key -s```)
 on [`body hub control port`][body hub control port] (5308 by default). The hub
-tries to collect from all collection candidates based on `hub_schedule` as
-defined in [`body hub control`](cf-hub#control-promises).
+tries to collect from up to the licensed number of hosts for each collection
+round as identified by `hub_schedule` as defined
+in [`body hub control`](cf-hub#control-promises).
+
+* **Note:** No ordering is specified, so if the number of entries in the
+  lastseen database is greater than the number of licensed hosts it is not
+  possible to determine which hosts will be collected from and which hosts will
+  be skipped.
+
+* **See Also:** `hostsseen()`, `hostswithclass()`
 
 # How are agents not running determined?
 Hosts who's last agent execution status is "FAIL" will show up under "Agents not
