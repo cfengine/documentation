@@ -15,41 +15,6 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
-### Can't insert_lines if referencing a variable that contains an empty string
-
-You can follow the progress of this issue
-in [CFE-2466](https://tracker.mender.io/browse/).
-
-### "systemctl stop cfengine" doesn't stop all services immediately
-
-Dependent services will stop, but after several minutes. Please be aware of this
-difference in behavior, especially if you have any scripts relying on all
-cfengine services to be stopped immediately after execution.
-
-### Can not log into Mission Portal after upgrading from 3.7.x to 3.10.0b1
-
-This is related to failed database migration. It will be resolved in the final
-version.
-
-### Non systemd hosts are trying to use systemctl
-
-This has
-been [fixed upstream](https://github.com/cfengine/masterfiles/pull/826/files),
-but in the beta package non systemd hosts will try to issue systemctl.
-
-### Default ACLs do not work when bootstrapping to a hostname
-
-In relation to the experimental ability to bootstrap to a name and custom port
-```cf-serverd``` ACLs should work with hostname or hostname/xx entries. You can
-track the progress of this issue
-in [CFE-2495](https://tracker.mender.io/browse/CFE-2495)
-
-### AIX BETA package has incorrect version
-
-AIX does not support alphabetic versions, so 3.10.0 Enterprise beta has version
-“3.10.99X” (where X is beta build number) on AIX. Final AIX release will have
-version “3.10.0” like all other platforms.
-
 ### HP-UX specific
 
 * [Package promises][packages] do not have out-of-the-box support for the HP-UX
@@ -133,20 +98,3 @@ please contact support for a custom policy.
 
 Mission Portal does not allow users from a directory to be edited if they have
 dots in their username.
-
-### Enterprise Hub - PHP warnings after upgrading from `3.6.x`
-
-After upgrading from `3.6.x` PHP warns it is unable to
-initialize the apc module.
-
-```
-  notice: Q: "...hp/bin/php /var": PHP Warning:  PHP Startup: apc: Unable to initialize module
-Q: "...hp/bin/php /var": Module compiled with module API=20100525
-Q: "...hp/bin/php /var": PHP    compiled with module API=20131226
-Q: "...hp/bin/php /var": These options need to match
-Q: "...hp/bin/php /var":  in Unknown on line 0
-```
-
-This warning can be resolved by removing
-`/var/cfengine/httpd/php/lib/apc.ini` and
-`/var/cfengine/httpd/php/lib/php/extensions/no-debug-non-zts-20131226/apc.so`
