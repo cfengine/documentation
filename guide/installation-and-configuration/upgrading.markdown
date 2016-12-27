@@ -119,8 +119,7 @@ versions) below.
    for the OS distributions you use.
 
 2. Turn on the auto-upgrade policy by setting the `trigger_upgrade` class. Set
-   `masterfiles/controls/CLIENT_VER/update_def.cf` (where CLIENT_VER is the
-   minor version your clients are on, e.g. 3.7) or the `augments_file` (also
+   `masterfiles/controls/update_def.cf` or the `augments_file` (also
    known as `def.json`) for a small set of clients. For example in the
    appropriate `update_def.cf` file(s) change `!any` to an appropriate class
    like an IP network `ipv4_10_10_1|ipv4_10_10_2` or in `def.json`
