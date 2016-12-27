@@ -15,6 +15,12 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
+### getvalues() crashes on double indexed classic arrays
+
+`getvalues()` crashes when used with classic arrays that include multiple
+indexes. This issue is tracked in
+(CFE-2536)[https://tracker.mender.io/browse/CFE-2536].
+
 ### HP-UX specific
 
 * [Package promises][packages] do not have out-of-the-box support for the HP-UX
@@ -60,8 +66,8 @@ $config['appemail'] = 'admin@organisation.com';
 ### Enterprise monitoring graphs
 
 Monitoring graphs are disabled by default in CFEngine Enterprise 3.6 and later
-versions.  To enable them, change monitoring_include in
-masterfiles/controls/VERSION/reports.cf to e.g. ".*".  Note that this has a
+versions. To enable them, change monitoring_include in
+```masterfiles/controls/reports.cf``` to e.g. ".*". Note that this can have
 significant impact on the resource consumption of your hub.
 
 Monitoring graphs are not supported on all platforms, currently AIX, HP-UX and
@@ -99,19 +105,3 @@ please contact support for a custom policy.
 Mission Portal does not allow users from a directory to be edited if they have
 dots in their username.
 
-### Enterprise Hub - PHP warnings after upgrading from `3.6.x`
-
-After upgrading from `3.6.x` PHP warns it is unable to
-initialize the apc module.
-
-```
-  notice: Q: "...hp/bin/php /var": PHP Warning:  PHP Startup: apc: Unable to initialize module
-Q: "...hp/bin/php /var": Module compiled with module API=20100525
-Q: "...hp/bin/php /var": PHP    compiled with module API=20131226
-Q: "...hp/bin/php /var": These options need to match
-Q: "...hp/bin/php /var":  in Unknown on line 0
-```
-
-This warning can be resolved by removing
-`/var/cfengine/httpd/php/lib/apc.ini` and
-`/var/cfengine/httpd/php/lib/php/extensions/no-debug-non-zts-20131226/apc.so`
