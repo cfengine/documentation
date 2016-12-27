@@ -15,6 +15,12 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
+### getvalues() crashes on double indexed classic arrays
+
+`getvalues()` crashes when used with classic arrays that include multiple
+indexes. This issue is tracked in
+(CFE-2536)[https://tracker.mender.io/browse/CFE-2536].
+
 ### HP-UX specific
 
 * [Package promises][packages] do not have out-of-the-box support for the HP-UX
