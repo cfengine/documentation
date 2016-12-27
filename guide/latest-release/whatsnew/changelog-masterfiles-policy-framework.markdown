@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Masterfiles Policy Framework ChangeLog
+title: Masterfiles ChangeLog
 published: true
-sorting: 10
-tags: [latest release, "{{site.cfengine.branch}}", what's new]
+sorting: 20
+tags: [what's new, MPF, masterfiles]
 ---
 
-Changes in the Masterfiles Policy Framework.
+**See Also:** [Core Changelog][Changelog], [Enterprise Changelog][Enterprise Changelog] 
 
 <pre>
 [%CFEngine_include_markdown(masterfiles/CHANGELOG.md)%]

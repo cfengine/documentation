@@ -27,7 +27,7 @@ available memory in order to run the CFEngine agent software.
 **Host disk**
 
 So that the agent is not affected by full disks it is recommended that
-`/var/cfengine` be on it's own partition.
+`/var/cfengine` be on its own partition.
 
 On Unix-like systems, a 500 MB partition for `/var/cfengine` should give you
 some breathing room, typical user reported sizes are in the 100-250 MB range. On
