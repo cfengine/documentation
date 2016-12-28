@@ -26,7 +26,7 @@ Any supported host can be a policy server in Community installations of CFEngine
 | :-----:     | :----------:               | :-----------: |
 | AIX         | 5.3*, 6, 7                 | PowerPC       |
 | CentOS/RHEL | 4, 5, 6, 7                 | x86-64, x86   |
-| Debian      | 6, 7, 8                    | x86-64, x86   |
+| Debian      | 4, 5, 6, 7, 8              | x86-64, x86   |
 | HP-UX       | 11.23+                     | Itanium       |
 | SLES        | 10, 11                     | x86-64, x86   |
 | Solaris     | 9, 10, 11                  | UltraSparc    |
