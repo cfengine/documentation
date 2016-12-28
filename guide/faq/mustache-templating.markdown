@@ -26,9 +26,11 @@ This template should not be passed a data container; it uses the `datastate()`
 of the CFEngine system. That's where `classes.enterprise` and
 `vars.sys.cf_version` came from.
 
+{% raw %}
 ```
 Version: CFEngine {{#classes.enterprise}}Enterprise{{/classes.enterprise}} {{vars.sys.cf_version}}
 ```
+{% endraw %}
 
 # How do I iterate over a list?
 
@@ -42,3 +44,27 @@ of the CFEngine system. That's where `vars.mon.listening_tcp4_ports` came from.
 {{/vars.mon.listening_tcp4_ports}}
 ```
 {% endraw %}
+
+# Can you use nested classes?
+
+You can. This is handy when options slightly differ for different operating systems.
+In this example for ssh daemon the authorized key configuration will only be added if
+class `SSH_LDAP_PUBKEY_BUNDLE` is true and for the class debian/centos diffenrent
+keywords are added.
+
+{% raw %}
+```
+{{#classes.SSH_LDAP_PUBKEY_BUNDLE}}
+    {{#classes.debian}}
+AuthorizedKeysCommand {{vars.sara_data.ssh.authorized_keys_command}}
+AuthorizedKeysCommandUser {{vars.sara_data.ssh.authorized_keys_commanduser}}
+    {{/classes.debian}}
+    {{#classes.centos}}
+AuthorizedKeysCommand {{vars.sara_data.ssh.authorized_keys_command}}
+AuthorizedKeysCommandRunAs {{vars.sara_data.ssh.authorized_keys_commanduser}}
+    {{/classes.centos}}
+{{/classes.SSH_LDAP_PUBKEY_BUNDLE}}
+```
+{% raw %}
+
+
