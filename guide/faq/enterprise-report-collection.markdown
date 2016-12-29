@@ -6,40 +6,49 @@ sorting: 90
 tags: [ FAQ, Enterprise, reporting, health, cf-hub, cf-consumer, redis-server  ]
 ---
 
-# What are reports?
+## What are reports?
 
 Reports are the records that the components ( `cf-agent`, `cf-monitord`,
 `cf-serverd` ... ) record about their knowledge of the system state. Each
 component may log to various data sources withing `$(sys.statedir)`.
 
-# How does CFEngine Enterprise collect reports?
+## How does CFEngine Enterprise collect reports?
 
 `cf-hub` makes connections from the hub to remote agents currently registered in
 the lastseen database (viewable with ```cf-key -s```)
 on [`body hub control port`][body hub control port] (5308 by default). The hub
-tries to collect from up to the licensed number of hosts for each collection
+tries to collect from up to the LICENSED number of hosts for each collection
 round as identified by `hub_schedule` as defined
 in [`body hub control`](cf-hub#control-promises).
 
-* **Note:** No ordering is specified, so if the number of entries in the
-  lastseen database is greater than the number of licensed hosts it is not
-  possible to determine which hosts will be collected from and which hosts will
-  be skipped.
-
 * **See Also:** `hostsseen()`, `hostswithclass()`
 
-# How does cf-hub choose which hosts to collect from?
+## Which hosts are being report-collected?
 
-There is a general expectation that each hub will have no more than the licensed
-number of hosts bootstrapped to it. When a hub has more than LICENSED number of
-hosts bootstrapped to it no guarantee about which hosts are collect from is
-made.
+`cf-hub` gets a list of hosts to collect from `lastseen` database
+(viewable with `cf-key -s`).
 
-`cf-hub` collects from up to LICENSED number of hosts of those listed in the
-lastseen database. The lastseen database (
-```$(sys.statedir)/cf_lastseen.lmdb``` ) is commonly accessed using `cf-key -s`.
+**NOTE:** this database is periodically cleaned from entries older
+than one week old.
 
-# How are agents not running determined?
+This cleanup is tweakable using `lastseenexpireafter` setting.
+However we don't recommend tweaking this setting, as older hosts are
+practically dead, and may affect report collection performance (via
+timeouts) and license-counting.
+
+## How does the license count affect report collection?
+
+In each collection round, `cf-hub` will collect reports from up to
+LICENSED number of hosts. It is unspecified which hosts are the ones
+skipped, in case the total number of hosts listed in `lastseen` database
+are over the LICENSED number.
+
+## When is a hub behaving as **over-licensed** ?
+
+When the number of hosts in the `lastseen` database (viewable with
+`cf-key -s`) is greater than the number of LICENSED hosts for this hub.
+
+## How are agents not running determined?
 Hosts who's last agent execution status is "FAIL" will show up under "Agents not
 running". A hosts last agent execution status is set to "FAIL" when the hub
 notices that there are no promise results within 3x of the expected agent run
@@ -90,7 +99,7 @@ $ curl -s -u admin:admin http://hub/api/query -X POST -d @agent_execution_time_i
 
 **See Also**: `Enterprise API Reference`, `Enterprise API Examples`
 
-# How are hosts not reporting determined?
+## How are hosts not reporting determined?
 
 Hosts that have not been collected from within `blueHostHorizon` seconds will
 show up under "Hosts not reporting".
@@ -107,16 +116,16 @@ $ curl -s -u admin:admin http://hub/api/settings/ | jq ".data[0].blueHostHorizon
 
 **See Also**: `Enterprise API Reference`, `Enterprise API Examples`, [Enterprise Settings][Settings#preferences]
 
-# Are there supposed to be so many cf-consumer processes?
+## Are there supposed to be so many cf-consumer processes?
 
 Yes, `cf-consumer` will spawn 25 threads for report collection processing.
 
-# Troubleshooting report collection
+## How to troubleshoot report collection?
 
 The following steps can be used to help diagnose and potentially restore
 reporting for hosts experiencing issues.
 
-## Perform manual delta collection for a single host
+### Perform manual delta collection for a single host
 
 Performing back to back delta collections and comparing the data received can
 help to expose so called *patching* issues. If the same amount of data is
@@ -152,7 +161,7 @@ collected twice a **rebase** may resolve it.
  verbose: Connection to 192.168.33.2 is closed
 ```
 
-## Perform manual rebase collection for a single host
+### Perform manual rebase collection for a single host
 
 A `rebase` causes the hub to throw away all reports since the last collection
 and collect only the output from the most recent run.
@@ -196,7 +205,7 @@ hours.
 If a manual rebase collection does not restore reporting functionality for a
 host continue on to restarting the report collection components.
 
-## Restart report collection components
+### Restart report collection components
 
 Sometimes it is necessary to restart the report collection subsystem in order to
 re-synchronize the caching layer with the database. To restart the report
