@@ -17,27 +17,36 @@ component may log to various data sources withing `$(sys.statedir)`.
 `cf-hub` makes connections from the hub to remote agents currently registered in
 the lastseen database (viewable with ```cf-key -s```)
 on [`body hub control port`][body hub control port] (5308 by default). The hub
-tries to collect from up to the licensed number of hosts for each collection
+tries to collect from up to the LICENSED number of hosts for each collection
 round as identified by `hub_schedule` as defined
 in [`body hub control`](cf-hub#control-promises).
 
-* **Note:** No ordering is specified, so if the number of entries in the
-  lastseen database is greater than the number of licensed hosts it is not
-  possible to determine which hosts will be collected from and which hosts will
-  be skipped.
-
 * **See Also:** `hostsseen()`, `hostswithclass()`
 
-## How does cf-hub choose which hosts to collect from?
+## Which hosts are being report-collected?
 
-There is a general expectation that each hub will have no more than the licensed
-number of hosts bootstrapped to it. When a hub has more than LICENSED number of
-hosts bootstrapped to it no guarantee about which hosts are collect from is
-made.
+`cf-hub` gets a list of hosts to collect from `lastseen` database
+(viewable with `cf-key -s`).
 
-`cf-hub` collects from up to LICENSED number of hosts of those listed in the
-lastseen database. The lastseen database (
-```$(sys.statedir)/cf_lastseen.lmdb``` ) is commonly accessed using `cf-key -s`.
+**NOTE:** this database is periodically cleaned from entries older
+than one week old.
+
+This cleanup is tweakable using `lastseenexpireafter` setting.
+However we don't recommend tweaking this setting, as older hosts are
+practically dead, and may affect report collection performance (via
+timeouts) and license-counting.
+
+## How does the license count affect report collection?
+
+In each collection round, `cf-hub` will collect reports from up to
+LICENSED number of hosts. It is unspecified which hosts are the ones
+skipped, in case the total number of hosts listed in `lastseen` database
+are over the LICENSED number.
+
+## When is a hub behaving as **over-licensed** ?
+
+When the number of hosts in the `lastseen` database (viewable with
+`cf-key -s`) is greater than the number of LICENSED hosts for this hub.
 
 ## How are agents not running determined?
 Hosts who's last agent execution status is "FAIL" will show up under "Agents not
