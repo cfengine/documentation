@@ -6,13 +6,13 @@ sorting: 90
 tags: [ FAQ, Enterprise, reporting, health, cf-hub, cf-consumer, redis-server  ]
 ---
 
-# What are reports?
+## What are reports?
 
 Reports are the records that the components ( `cf-agent`, `cf-monitord`,
 `cf-serverd` ... ) record about their knowledge of the system state. Each
 component may log to various data sources withing `$(sys.statedir)`.
 
-# How does CFEngine Enterprise collect reports?
+## How does CFEngine Enterprise collect reports?
 
 `cf-hub` makes connections from the hub to remote agents currently registered in
 the lastseen database (viewable with ```cf-key -s```)
@@ -28,7 +28,7 @@ in [`body hub control`](cf-hub#control-promises).
 
 * **See Also:** `hostsseen()`, `hostswithclass()`
 
-# How does cf-hub choose which hosts to collect from?
+## How does cf-hub choose which hosts to collect from?
 
 There is a general expectation that each hub will have no more than the licensed
 number of hosts bootstrapped to it. When a hub has more than LICENSED number of
@@ -39,7 +39,7 @@ made.
 lastseen database. The lastseen database (
 ```$(sys.statedir)/cf_lastseen.lmdb``` ) is commonly accessed using `cf-key -s`.
 
-# How are agents not running determined?
+## How are agents not running determined?
 Hosts who's last agent execution status is "FAIL" will show up under "Agents not
 running". A hosts last agent execution status is set to "FAIL" when the hub
 notices that there are no promise results within 3x of the expected agent run
@@ -90,7 +90,7 @@ $ curl -s -u admin:admin http://hub/api/query -X POST -d @agent_execution_time_i
 
 **See Also**: `Enterprise API Reference`, `Enterprise API Examples`
 
-# How are hosts not reporting determined?
+## How are hosts not reporting determined?
 
 Hosts that have not been collected from within `blueHostHorizon` seconds will
 show up under "Hosts not reporting".
@@ -107,16 +107,16 @@ $ curl -s -u admin:admin http://hub/api/settings/ | jq ".data[0].blueHostHorizon
 
 **See Also**: `Enterprise API Reference`, `Enterprise API Examples`, [Enterprise Settings][Settings#preferences]
 
-# Are there supposed to be so many cf-consumer processes?
+## Are there supposed to be so many cf-consumer processes?
 
 Yes, `cf-consumer` will spawn 25 threads for report collection processing.
 
-# Troubleshooting report collection
+## How to troubleshoot report collection?
 
 The following steps can be used to help diagnose and potentially restore
 reporting for hosts experiencing issues.
 
-## Perform manual delta collection for a single host
+### Perform manual delta collection for a single host
 
 Performing back to back delta collections and comparing the data received can
 help to expose so called *patching* issues. If the same amount of data is
@@ -152,7 +152,7 @@ collected twice a **rebase** may resolve it.
  verbose: Connection to 192.168.33.2 is closed
 ```
 
-## Perform manual rebase collection for a single host
+### Perform manual rebase collection for a single host
 
 A `rebase` causes the hub to throw away all reports since the last collection
 and collect only the output from the most recent run.
@@ -196,7 +196,7 @@ hours.
 If a manual rebase collection does not restore reporting functionality for a
 host continue on to restarting the report collection components.
 
-## Restart report collection components
+### Restart report collection components
 
 Sometimes it is necessary to restart the report collection subsystem in order to
 re-synchronize the caching layer with the database. To restart the report
