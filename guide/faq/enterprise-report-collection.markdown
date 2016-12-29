@@ -3,7 +3,7 @@ layout: default
 title: Enterprise report collection
 published: true
 sorting: 90
-tags: [ FAQ, Enterprise, reporting, health  ]
+tags: [ FAQ, Enterprise, reporting, health, cf-hub, cf-consumer, redis-server  ]
 ---
 
 # How does CFEngine Enterprise collect reports?
@@ -21,6 +21,17 @@ in [`body hub control`](cf-hub#control-promises).
   be skipped.
 
 * **See Also:** `hostsseen()`, `hostswithclass()`
+
+# How does cf-hub choose which hosts to collect from?
+
+There is a general expectation that each hub will have no more than the licensed
+number of hosts bootstrapped to it. When a hub has more than LICENSED number of
+hosts bootstrapped to it no guarantee about which hosts are collect from is
+made.
+
+`cf-hub` collects from up to LICENSED number of hosts of those listed in the
+lastseen database. The lastseen database (
+```$(sys.statedir)/cf_lastseen.lmdb``` ) is commonly accessed using `cf-key -s`.
 
 # How are agents not running determined?
 Hosts who's last agent execution status is "FAIL" will show up under "Agents not
@@ -89,6 +100,10 @@ $ curl -s -u admin:admin http://hub/api/settings/ | jq ".data[0].blueHostHorizon
 ```
 
 **See Also**: `Enterprise API Reference`, `Enterprise API Examples`, [Enterprise Settings][Settings#preferences]
+
+# Are there supposed to be so many cf-consumer processes?
+
+Yes, `cf-consumer` will spawn 25 threads for report collection processing.
 
 # Troubleshooting report collection
 
