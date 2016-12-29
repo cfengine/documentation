@@ -6,6 +6,12 @@ sorting: 90
 tags: [ FAQ, Enterprise, reporting, health, cf-hub, cf-consumer, redis-server  ]
 ---
 
+# What are reports?
+
+Reports are the records that the components ( `cf-agent`, `cf-monitord`,
+`cf-serverd` ... ) record about their knowledge of the system state. Each
+component may log to various data sources withing `$(sys.statedir)`.
+
 # How does CFEngine Enterprise collect reports?
 
 `cf-hub` makes connections from the hub to remote agents currently registered in
