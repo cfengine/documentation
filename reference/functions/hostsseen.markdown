@@ -7,7 +7,8 @@ tags: [reference, communication functions, functions, hostsseen]
 
 [%CFEngine_function_prototype(horizon, seen, field)%]
 
-**Description:** Returns a list with the information `field` of hosts that were seen or not seen within the last `horizon` hours.
+**Description:** Returns a list with the information `field` of hosts that were
+seen or not seen within the last `horizon` hours up to `lastseenexpireafter`.
 
 Finds a list of hosts seen by a CFEngine remote connection on the current host
 within the number of hours specified in `horizon`. The argument `seen` may be
