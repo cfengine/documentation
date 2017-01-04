@@ -7,7 +7,8 @@ tags: [reference, data functions, functions, json, merge, mergedata, container, 
 
 [%CFEngine_function_prototype(one, two, etc)%]
 
-**Description:** Returns the merger of any named data containers or lists.  Can also wrap and unwrap data containers.
+**Description:** Returns the merger of any named data containers or lists. Can
+also wrap and unwrap data containers.
 
 The returned data container will have the keys from each of the named
 data containers, arrays, or lists.
@@ -23,6 +24,8 @@ treated as JSON objects (for arrays, the key is the element's offset).
 `mergedata()` is thus a convenient way, together with `getindices()` and
 `getvalues()`, to bridge the gap between data container and the
 traditional list and array data types in CFEngine.
+
+**Note:** It is only possible to wrap data containers in the current namespace.
 
 [%CFEngine_function_attributes()%]
 
