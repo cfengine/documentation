@@ -155,20 +155,37 @@ For serving policy and collecting reports for up to 5000 bootstrapped
 agents, plan for at least 30 MB/s (240 MBit) speed on the interface
 that connects the Policy Server with the agents.
 
+### cf-serverd maxconnections
+
+The maximum number of connections is the maximum number of sessions that
+`cf-serverd` will support. The general rule of thumb is that it should be set to
+**two times the number of clients** bootstrapped to the hub. So if you have 100
+remote agents bootstrapped to your policy server, 200 would be a good value body
+server control maxconnections.
+
+
 ### Open file descriptors
 
-The policy server should ideally be able to accept connections from
-all clients; i.e. to allow at least as many incoming connections as
-there are clients.  The system limit for this is controlled by `ulimit
--n`; so the parent process from which you bootstrap should, for a
-server with 5000 hosts, run `ulimit -n 5000` first.  You should also
-add such a `ulimit -n` command to the script that implements `service
-cfengine3 start` (and `restart`) and to any policy that starts
-`cf-serverd` or `cf-hub`.  For very large numbers of clients, it may
-be advantageous to build a custom kernel to allow setting `ulimit -n`
-high enough.  You should also amend the value of `maxconnections` set
-in `cf_serverd.cf` under `$(sys.workdir)/masterfiles/controls/` to the
-number of clients, likewise.
+Open file descriptors should be set at least **two times body server control
+maxconnections**. Adjust `soft` and `hard` `nofile` in `/etc/limits.conf` or
+appropriate file in `/etc/limits.d/` accordingly for your platform.
+
+For example, if you have 1000 remote agents, body server control maxconnections
+should be set to 2000, and open file descriptors should be set to at least 4000.
+
+`/etc/limits.d/90-nproc.conf`
+
+```
+soft nofile 4000
+hard nofile 4000
+```
+
+Not sure what your open file limits for `cf-serverd` are? Inspect the current
+limits with this command:
+
+```
+cat /proc/$(pgrep cf-serverd)/limits
+```
 
 ## Download Packages
 
