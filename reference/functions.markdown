@@ -66,15 +66,24 @@ Some _system_ functions are particularly expensive:
 * `readtcp()` for TCP interactions
 * `hubknowledge()`, `selectservers()`, `remoteclassesmatching()`, and `remotescalar()` for hub queries
 
-As of 3.6.0, the new `cache_system_functions` body common argument is
-set to `true` by default and CFEngine's evaluator will use it.
-Although you can override it to `false`, in practice you should almost
-never need to do so.  The effect of having it `true` (the default) is
-that the expensive _system_ functions will be run just once and then
-their result will be cached.
+When
+enabled
+[cached functions](https://docs.cfengine.com/docs/{{site.cfengine.branch}}/search.html?q=The+return+value+is+cached) are
+**not executed on every pass of convergence**. Instead, the function will only
+be executed once during
+the [agent evaluation step][Normal Ordering#Agent evaluation step] and its
+result will be cached until the end of that agent execution.
 
-Note that caching is per-process so results will not be cached between
-runs of e.g. `cf-agent` and `cf-promises`.
+**Note:** Function caching is *per-process*, so results will not be cached between
+separate components e.g. `cf-agent`, `cf-serverd` and `cf-promises`.
+Additionally functions are cached by hashing the function arguments. If you have
+the exact same function call in two different promises (it does not matter if
+they are in the same bundle or not) only the first executed function will be
+cached. That cached result will be re-used for other identical function
+occurrences.
+
+Function caching can be disabled by setting `cache_system_functions` in body
+common control to `false`.
 
 ## Function Skipping
 
