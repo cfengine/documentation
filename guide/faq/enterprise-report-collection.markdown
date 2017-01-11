@@ -114,6 +114,10 @@ $ curl -s -u admin:admin http://hub/api/settings/ | jq ".data[0].blueHostHorizon
 900
 ```
 
+Note: It's called "blueHostHorizon" because older versions of Mission Portal
+would turn these hosts to a blue color as an indication of "hypoxia" (lack
+of oxygen, where oxygen is access to latest policy) to indicate a health issue.
+
 **See Also**: `Enterprise API Reference`, `Enterprise API Examples`, [Enterprise Settings][Settings#preferences]
 
 ## Are there supposed to be so many cf-consumer processes?
