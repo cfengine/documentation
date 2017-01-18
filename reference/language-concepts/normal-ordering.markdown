@@ -83,11 +83,10 @@ The following steps are executed per-bundle for each file parsed, in this order:
 3. evaluate **vars** promises
 (for details see `PolicyResolve()` in the C code)
 
-This is done because both variables and classes placed in common bundles
+This is done because classes placed in common bundles
 are global whereas classes placed in agent bundles are local (by default) to
-bundles where those are defined. This means that during agent bundle
-pre-evaluation dependencies between variables and classes will not be
-resolved.
+the bundle where those are defined. This means that common bundles
+classes need these extra steps in order to be resolved for the next steps.
 
 After all policy files are parsed and pre-evaluated, the above pre-evaluation
 sequence runs once again in
