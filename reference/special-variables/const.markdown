@@ -21,6 +21,17 @@ or values with special meanings in strings.
        "But the value of $(dollar) is $(dollar)";
 ```
 
+### const.dirsep
+
+
+```cf3
+    reports:
+
+       # On Unix hosts this will report: The value of $(const.dirsep) is /
+       # On Windows hosts this will report: The value of $(const.dirsep) is \\
+       "The value of $(const.dollar)(const.dirsep) is $(const.dirsep)";
+```
+
 ### const.endl
 
 ```cf3
