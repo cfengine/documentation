@@ -1064,20 +1064,22 @@ Timestamp when last policy change was seen by host
 The name of the directory where CFEngine looks for its libraries.
 
 ```cf3
-    # libdir = /var/cfengine/inputs/lib/3.6
+    # libdir = /var/cfengine/inputs/lib
 ```
 
-**History:** Introduced in CFEngine 3.6
+**History:** Introduced in CFEngine 3.6, version based sub directory removed in
+CFEngine 3.8.
 
 ### sys.local_libdir
 
 The name of the directory where CFEngine looks for its libraries, without any prefixes.
 
 ```cf3
-    # local_libdir = lib/3.6
+    # local_libdir = lib
 ```
 
-**History:** Introduced in CFEngine 3.6
+**History:** Introduced in CFEngine 3.6, version based sub directory removed in
+CFEngine 3.8.
 
 ### sys.logdir
 
