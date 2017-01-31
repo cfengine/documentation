@@ -1,0 +1,195 @@
+
+body association influences(x)
+{
+forward_relationship => "influences";
+backward_relationship => "is influenced by";
+associates => { "$(x)" };
+}
+
+body association might_influence(x)
+{
+forward_relationship => "might influence";
+backward_relationship => "might be influenced by";
+associates => { "$(x)" };
+}
+
+body association determines(x)
+{
+forward_relationship => "determines";
+backward_relationship => "is determined by";
+associates => { "$(x)" };
+}
+
+body association can_determine(x)
+{
+forward_relationship => "can determine";
+backward_relationship => "can be determined by";
+associates => { "$(x)" };
+}
+
+body association uses(x)
+{
+forward_relationship => "uses";
+backward_relationship => "is used by";
+associates => { "$(x)" };
+}
+
+body association can_use(x)
+{
+forward_relationship => "can use";
+backward_relationship => "can be used by";
+associates => { "$(x)" };
+}
+
+body association provides(x)
+{
+forward_relationship => "provides";
+backward_relationship => "is provided by";
+associates => { "$(x)" };
+}
+
+body association might_provide(x)
+{
+forward_relationship => "might provide";
+backward_relationship => "might be provided by";
+associates => { "$(x)" };
+}
+
+body association has_part(x)
+{
+forward_relationship => "has part";
+backward_relationship => "is a part of";
+associates => { "$(x)" };
+}
+
+body association might_have_part(x)
+{
+forward_relationship => "might have part";
+backward_relationship => "might be part of";
+associates => { "$(x)" };
+}
+
+body knowledge inferences
+{
+inferences:
+
+ "influences"
+           comment => "Influence rule, weaker than determinism",
+         precedent => { "determines" };
+
+ "influences"
+           comment => "Influence rule, weaker than determinism",
+         precedent => { "determines", "influences" },
+         qualifier => { "influences" };
+
+ "might influence"
+           comment => "Influence rule, weaker than determinism",
+         precedent => { "might determine" };
+
+ "determines"
+           comment => "Determinism rule",
+         precedent => { "determines", "provides", "has part" },
+         qualifier => { "determines" };
+
+ "might determine"
+           comment => "Possible determinism rule",
+         precedent => { "might determine", "might provide", "might have part" },
+         qualifier => { "determines", "might determine" };
+
+  "might influence"
+           comment => "Partial possible determinism",
+         precedent => { "is provided by", "is a part of", "might be a part of", "might have part" },
+         qualifier => { "determines", "might determine" };
+
+  "provides"
+           comment => "Partial possible determinism",
+         precedent => { "provides"  },
+         qualifier => { "provides" };
+
+  "is provided by"
+           comment => "Partial possible determinism",
+         precedent => { "is provided by"  },
+         qualifier => { "is provided by" };
+
+
+influences^influences^influences
+influences^provides^influences
+influences^requires^requires
+influences^has part^influences
+influences^is a part of^influences
+influences^has instance^influences
+influences^has subclass^influences
+
+influences^might influence^might influence
+influences^might provide^might influence
+influences^might require^might require
+influences^might have part^might influence
+influences^might be a part of^might influence
+influences^might have instance^might influence
+influences^might have subclass^might influence
+
+might influence^influences^might influence
+might influence^provides^might influence
+might influence^requires^might require
+might influence^has part^might influence
+might influence^is a part of^might influence
+might influence^has instance^might influence
+might influence^has subclass^might influence
+
+might influence^might influence^might influence
+might influence^might provide^might influence
+might influence^might require^might require
+might influence^might have part^might influence
+might influence^might be a part of^might influence
+might influence^might have instance^might influence
+might influence^might have subclass^might influence
+
+provides^provides^provides
+provides^has part^provides
+provides^is a part of^influences 
+provides^is required by^might influence
+
+provides^might have part^might provide
+provides^might be a part of^might influence 
+provides^might be required by^might influence
+
+might provide^might provide^might provide
+
+might provide^has part^might provide
+might provide^is a part of^might influence 
+might provide^is required by^might influence
+
+requires^requires^requires
+requires^has part^requires
+
+might require^requires^might require
+might require^has part^might require
+
+might require^might require^might require
+might require^might have part^might require
+
+# part relationships 
+has part^requires^requires
+has part^provides^provides
+has part^determines^determines
+has part^influences^influences
+
+has part^might require^might require
+has part^might provide^might provide
+has part^might determine^might influence
+has part^might influence^might influence
+
+might have part^might have part^might have part
+
+might have part^requires^might require
+might have part^provides^might provide
+might have part^determines^might determine
+might have part^influences^might influence
+
+might have part^might require^might require
+might have part^might provide^might provide
+might have part^might determine^might determine
+might have part^might influence^might influence
+}
+
+http://www.cs.tufts.edu/~couch/topics

@@ -1,0 +1,1387 @@
+bundle knowledge examples
+{
+occurrences:
+   File_Access_Control_Lists::
+ "/showexample/example/unit_acl.html" represents => { "example" };
+occurrences:
+   measurements::
+ "/showexample/example/unit_measurements.html" represents => { "example" };
+occurrences:
+   measurements::
+ "/showexample/example/unit_measurements.html" represents => { "example" };
+occurrences:
+   cfengine_nova::
+ "/showexample/example/unit_measurements.html" represents => { "monitoring example" };
+occurrences:
+   schedule::
+ "/showexample/example/win_schedule.html" represents => { "example" };
+occurrences:
+   Scheduling::
+ "/showexample/example/win_schedule.html" represents => { "example" };
+occurrences:
+   scheduling::
+ "/showexample/example/win_schedule.html" represents => { "example" };
+occurrences:
+   Job_scheduling_and_periodic_maintenance::
+ "/showexample/example/win_schedule.html" represents => { "example" };
+occurrences:
+   set_up_a_web_server::
+ "/showexample/example/unit_webserver.html" represents => { "example" };
+occurrences:
+   editing_files::
+ "/showexample/example/unit_webserver.html" represents => { "example" };
+occurrences:
+   List_variable_substitution_and_expansion::
+ "/showexample/example/unit_global_list_expansion_2.html" represents => { "global" };
+occurrences:
+   Variable_expansion_in_cfengine_3::
+ "/showexample/example/unit_global_list_expansion_2.html" represents => { "example" };
+occurrences:
+   stime_range::
+ "/showexample/example/unit_process_matching3.html" represents => { "example" };
+occurrences:
+   out_of_range_define::
+ "/showexample/example/unit_process_matching3.html" represents => { "example" };
+occurrences:
+   process_count::
+ "/showexample/example/unit_process_matching3.html" represents => { "example" };
+occurrences:
+   process_select::
+ "/showexample/example/unit_process_matching3.html" represents => { "example" };
+occurrences:
+   out_of_range_define::
+ "/showexample/example/unit_process_matching3.html" represents => { "example" };
+occurrences:
+   out_of_range_define::
+ "/showexample/example/unit_process_matching3.html" represents => { "example" };
+occurrences:
+   showstate::
+ "/showexample/example/unit_report_state.html" represents => { "example" };
+occurrences:
+   printfile::
+ "/showexample/example/unit_report_state.html" represents => { "example" };
+occurrences:
+   regline::
+ "/showexample/example/unit_regline.html" represents => { "example" };
+occurrences:
+   Function_regline::
+ "/showexample/example/unit_regline.html" represents => { "example" };
+occurrences:
+   aces::
+ "/showexample/example/unit_acl_secret.html" represents => { "example" };
+occurrences:
+   acl_method::
+ "/showexample/example/unit_acl_secret.html" represents => { "example" };
+occurrences:
+   windows_acl::
+ "/showexample/example/unit_acl_secret.html" represents => { "example" };
+occurrences:
+   storage::
+ "/showexample/example/unit_storage.html" represents => { "example" };
+occurrences:
+   freespace::
+ "/showexample/example/unit_storage.html" represents => { "example" };
+occurrences:
+   Function_hostsseen::
+ "/showexample/example/unit_hostsseen.html" represents => { "example" };
+occurrences:
+   Function_hostsseen::
+ "/showexample/example/unit_hostsseen.html" represents => { "example" };
+occurrences:
+   pathtype::
+ "/showexample/example/unit_pathtype.html" represents => { "example" };
+occurrences:
+   AppendIfNoSuchLine::
+ "/showexample/example/unit_pattern_and_edit.html" represents => { "in cf3" };
+occurrences:
+   back_references::
+ "/showexample/example/unit_pattern_and_edit.html" represents => { "example" };
+occurrences:
+   editing_files::
+ "/showexample/example/unit_pattern_and_edit.html" represents => { "example" };
+occurrences:
+   selectservers::
+ "/showexample/example/unit_selectservers.html" represents => { "example" };
+occurrences:
+   Function_selectservers::
+ "/showexample/example/unit_selectservers.html" represents => { "example" };
+occurrences:
+   replace_patterns::
+ "/showexample/example/unit_edit_replace_string.html" represents => { "example" };
+occurrences:
+   execresult::
+ "/showexample/example/unit_execresult.html" represents => { "example" };
+occurrences:
+   file_select::
+ "/showexample/example/unit_select_mode.html" represents => { "example" };
+occurrences:
+   transformer::
+ "/showexample/example/unit_select_mode.html" represents => { "example" };
+occurrences:
+   classes::
+ "/showexample/example/unit_classes_global.html" represents => { "example" };
+occurrences:
+   iprange::
+ "/showexample/example/unit_classes_global.html" represents => { "example" };
+occurrences:
+   cfengine_nova::
+ "/showexample/example/unit_ldap.html" represents => { "ldap functions" };
+occurrences:
+   LDAP::
+ "/showexample/example/unit_ldap.html" represents => { "cfengine support" };
+occurrences:
+   ldapvalue::
+ "/showexample/example/unit_ldap.html" represents => { "example" };
+occurrences:
+   ldaplist::
+ "/showexample/example/unit_ldap.html" represents => { "example" };
+occurrences:
+   ldaparray::
+ "/showexample/example/unit_ldap.html" represents => { "example" };
+occurrences:
+   regldap::
+ "/showexample/example/unit_ldap.html" represents => { "example" };
+occurrences:
+   Function_ldapvalue::
+ "/showexample/example/unit_ldap.html" represents => { "example" };
+occurrences:
+   Function_ldaplist::
+ "/showexample/example/unit_ldap.html" represents => { "example" };
+occurrences:
+   Function_ldaparray::
+ "/showexample/example/unit_ldap.html" represents => { "example" };
+occurrences:
+   Function_regldap::
+ "/showexample/example/unit_ldap.html" represents => { "example" };
+occurrences:
+   Emergency_Change::
+ "/showexample/example/win_emergency.html" represents => { "example" };
+occurrences:
+   readtcp::
+ "/showexample/example/unit_readtcp.html" represents => { "example" };
+occurrences:
+   Function_readtcp::
+ "/showexample/example/unit_readtcp.html" represents => { "example" };
+occurrences:
+   regular_expressions_in_paths::
+ "/showexample/example/unit_regex_win.html" represents => { "example" };
+occurrences:
+   regcmp::
+ "/showexample/example/unit_method_validate.html" represents => { "example" };
+occurrences:
+   Function_regcmp::
+ "/showexample/example/unit_method_validate.html" represents => { "example" };
+occurrences:
+   abortbundleclasses::
+ "/showexample/example/unit_method_validate.html" represents => { "example" };
+occurrences:
+   methods::
+ "/showexample/example/unit_method_validate.html" represents => { "validation" };
+occurrences:
+   application_management::
+ "/showexample/example/unit_package_apt.html" represents => { "example" };
+occurrences:
+   patch_management::
+ "/showexample/example/unit_package_apt.html" represents => { "example" };
+occurrences:
+   windows::
+ "/showexample/example/unit_package_apt.html" represents => { "example" };
+occurrences:
+   software::
+ "/showexample/example/unit_package_apt.html" represents => { "installing" };
+occurrences:
+   apt_get::
+ "/showexample/example/unit_package_apt.html" represents => { "example" };
+occurrences:
+   canonify::
+ "/showexample/example/unit_expand.html" represents => { "example" };
+occurrences:
+   Function_canonify::
+ "/showexample/example/unit_expand.html" represents => { "example" };
+occurrences:
+   ifvarclass::
+ "/showexample/example/unit_expand.html" represents => { "example" };
+occurrences:
+   restart_class::
+ "/showexample/example/unit_expand.html" represents => { "example" };
+occurrences:
+   variable_sys_interface::
+ "/showexample/example/unit_varnet.html" represents => { "example" };
+occurrences:
+   accessedbefore::
+ "/showexample/example/unit_accessed_before.html" represents => { "example" };
+occurrences:
+   file_comparisons::
+ "/showexample/example/unit_accessed_before.html" represents => { "access time" };
+occurrences:
+   getuid::
+ "/showexample/example/unit_getuid.html" represents => { "example" };
+occurrences:
+   Function_getuid::
+ "/showexample/example/unit_getuid.html" represents => { "example" };
+occurrences:
+   variables::
+ "/showexample/example/unit_varexpansion.html" represents => { "example" };
+occurrences:
+   cfengine_3::
+ "/showexample/example/unit_null_config.html" represents => { "example" };
+occurrences:
+   identity_management::
+ "/showexample/example/unit_user_edit.html" represents => { "example" };
+occurrences:
+   User_passwords::
+ "/showexample/example/unit_user_edit.html" represents => { "example" };
+occurrences:
+   changing_passwords::
+ "/showexample/example/unit_user_edit.html" represents => { "example" };
+occurrences:
+   vars::
+ "/showexample/example/unit_multipassvars.html" represents => { "example" };
+occurrences:
+   execresult::
+ "/showexample/example/unit_multipassvars.html" represents => { "example" };
+occurrences:
+   Function_execresult::
+ "/showexample/example/unit_multipassvars.html" represents => { "example" };
+occurrences:
+   vars::
+ "/showexample/example/unit_setvar.html" represents => { "example" };
+occurrences:
+   vars::
+ "/showexample/example/unit_setvar.html" represents => { "example" };
+occurrences:
+   isplain::
+ "/showexample/example/unit_isplain.html" represents => { "example" };
+occurrences:
+   Function_isplain::
+ "/showexample/example/unit_isplain.html" represents => { "example" };
+occurrences:
+   environments::
+ "/showexample/example/unit_test_environment.html" represents => { "example" };
+occurrences:
+   distribute_root_passwords::
+ "/showexample/example/unit_root_passwd.html" represents => { "example" };
+occurrences:
+   identity_management::
+ "/showexample/example/unit_root_passwd.html" represents => { "example" };
+occurrences:
+   freebsd_packages::
+ "/showexample/example/unit_package_freebsd.html" represents => { "example" };
+occurrences:
+   freebsd_packages::
+ "/showexample/example/unit_package_freebsd.html" represents => { "example" };
+occurrences:
+   service_policy::
+ "/showexample/example/unit_service_start.html" represents => { "example" };
+occurrences:
+   service_dependencies::
+ "/showexample/example/unit_service_start.html" represents => { "example" };
+occurrences:
+   service_method::
+ "/showexample/example/unit_service_start.html" represents => { "example" };
+occurrences:
+   service_type::
+ "/showexample/example/unit_service_start.html" represents => { "example" };
+occurrences:
+   service_args::
+ "/showexample/example/unit_service_start.html" represents => { "example" };
+occurrences:
+   service_autostart_policy::
+ "/showexample/example/unit_service_start.html" represents => { "example" };
+occurrences:
+   service_dependence_chain::
+ "/showexample/example/unit_service_start.html" represents => { "example" };
+occurrences:
+   windows_services::
+ "/showexample/example/unit_service_start.html" represents => { "example" };
+occurrences:
+   windows_services::
+ "/showexample/example/unit_service_start.html" represents => { "example" };
+occurrences:
+   registryvalue::
+ "/showexample/example/win_registry.html" represents => { "example" };
+occurrences:
+   MS_Registry_functions::
+ "/showexample/example/win_registry.html" represents => { "example" };
+occurrences:
+   Application_Management::
+ "/showexample/example/win_registry.html" represents => { "example" };
+occurrences:
+   Application_Management::
+ "/showexample/example/win_registry.html" represents => { "example" };
+occurrences:
+   ylink_patterns________________copy_all_links_::
+ "/showexample/example/unit_copylinks.html" represents => { "example" };
+occurrences:
+   y_backup_____timestamp___::
+ "/showexample/example/unit_copylinks.html" represents => { "example" };
+occurrences:
+   CopyLinks::
+ "/showexample/example/unit_copylinks.html" represents => { "example" };
+occurrences:
+   delete_lines::
+ "/showexample/example/unit_edit_deletenotmatch.html" represents => { "example" };
+occurrences:
+   DeleteLinesMatching_DeleteLinesNotMatching::
+ "/showexample/example/unit_edit_deletenotmatch.html" represents => { "in cf3" };
+occurrences:
+   log_level::
+ "/showexample/example/unit_syslog.html" represents => { "example" };
+occurrences:
+   syslog::
+ "/showexample/example/unit_syslog.html" represents => { "example" };
+occurrences:
+   collapse_destination_dir::
+ "/showexample/example/unit_server_flatcopy_localhost.html" represents => { "example" };
+occurrences:
+   copy_from::
+ "/showexample/example/unit_server_flatcopy_localhost.html" represents => { "example" };
+occurrences:
+   copy_from::
+ "/showexample/example/unit_server_flatcopy_localhost.html" represents => { "example" };
+occurrences:
+   cf_execd::
+ "/showexample/example/unit_execd.html" represents => { "control" };
+occurrences:
+   databases::
+ "/showexample/example/unit_sql.html" represents => { "example" };
+occurrences:
+   database_columns::
+ "/showexample/example/unit_sql.html" represents => { "example" };
+occurrences:
+   database_server::
+ "/showexample/example/unit_sql.html" represents => { "example" };
+occurrences:
+   edit_line::
+ "/showexample/example/unit_resolveconf.html" represents => { "example" };
+occurrences:
+   _etc_resolv_conf::
+ "/showexample/example/unit_resolveconf.html" represents => { "example" };
+occurrences:
+   Function_hubknowledge::
+ "/showexample/example/unit_hub.html" represents => { "example" };
+occurrences:
+   resource_type::
+ "/showexample/example/unit_hub.html" represents => { "example" };
+occurrences:
+   resource_type::
+ "/showexample/example/unit_hub.html" represents => { "example" };
+occurrences:
+   isvariable::
+ "/showexample/example/unit_isvariable.html" represents => { "example" };
+occurrences:
+   Function_isvariable::
+ "/showexample/example/unit_isvariable.html" represents => { "example" };
+occurrences:
+   replace_patterns::
+ "/showexample/example/unit_edit_comment_lines.html" represents => { "example" };
+occurrences:
+   back_references::
+ "/showexample/example/unit_edit_comment_lines.html" represents => { "example" };
+occurrences:
+   hash::
+ "/showexample/example/unit_hash.html" represents => { "example" };
+occurrences:
+   Function_hash::
+ "/showexample/example/unit_hash.html" represents => { "example" };
+occurrences:
+   packages::
+ "/showexample/example/unit_package_rpm.html" represents => { "example" };
+occurrences:
+   yum::
+ "/showexample/example/unit_package_rpm.html" represents => { "example" };
+occurrences:
+   measurements::
+ "/showexample/example/unit_measure_log.html" represents => { "example" };
+occurrences:
+   measurements::
+ "/showexample/example/unit_measure_log.html" represents => { "example" };
+occurrences:
+   cf_know::
+ "/showexample/example/unit_knowledge_driver.html" represents => { "control config" };
+occurrences:
+   cf_know::
+ "/showexample/example/unit_knowledge_driver.html" represents => { "control config" };
+occurrences:
+   usemodule::
+ "/showexample/example/unit_module_exec.html" represents => { "example" };
+occurrences:
+   Function_usemodule::
+ "/showexample/example/unit_module_exec.html" represents => { "example" };
+occurrences:
+   hello_world::
+ "/showexample/example/unit_helloworld.html" represents => { "example" };
+occurrences:
+   cfengine_3::
+ "/showexample/example/unit_helloworld.html" represents => { "example script" };
+occurrences:
+   isdir::
+ "/showexample/example/unit_isdir.html" represents => { "example" };
+occurrences:
+   Function_isdir::
+ "/showexample/example/unit_isdir.html" represents => { "example" };
+occurrences:
+   append_users_starting::
+ "/showexample/example/unit_edit_passwd_file.html" represents => { "example" };
+occurrences:
+   bundle_edit_line_append_users_starting::
+ "/showexample/example/unit_edit_passwd_file.html" represents => { "example" };
+occurrences:
+   bundle_edit_line_append_users_starting::
+ "/showexample/example/unit_edit_passwd_file.html" represents => { "example" };
+occurrences:
+   delete_lines::
+ "/showexample/example/unit_deletelines.html" represents => { "example" };
+occurrences:
+   insert_lines::
+ "/showexample/example/unit_deletelines.html" represents => { "example" };
+occurrences:
+   resolve_conf::
+ "/showexample/example/unit_deletelines.html" represents => { "editing" };
+occurrences:
+   hostrange::
+ "/showexample/example/unit_hostrange.html" represents => { "example" };
+occurrences:
+   Function_hostrange::
+ "/showexample/example/unit_hostrange.html" represents => { "example" };
+occurrences:
+   remotescalar::
+ "/showexample/example/unit_literal_server.html" represents => { "example" };
+occurrences:
+   Function_remotescalar::
+ "/showexample/example/unit_literal_server.html" represents => { "example" };
+occurrences:
+   cfengine_nova::
+ "/showexample/example/unit_literal_server.html" represents => { "server functions" };
+occurrences:
+   zenoss::
+ "/showexample/example/unit_zenoss.html" represents => { "example" };
+occurrences:
+   export_zenoss::
+ "/showexample/example/unit_zenoss.html" represents => { "example" };
+occurrences:
+   Integration_of_monitoring_with_knowledge_base::
+ "/showexample/example/unit_zenoss.html" represents => { "example" };
+occurrences:
+   Integration_of_monitoring_with_knowledge_base::
+ "/showexample/example/unit_zenoss.html" represents => { "example" };
+occurrences:
+   iteration::
+ "/showexample/example/unit_customize_by_named_list.html" represents => { "replication" };
+occurrences:
+   replication::
+ "/showexample/example/unit_customize_by_named_list.html" represents => { "example" };
+occurrences:
+   countlinesmatching::
+ "/showexample/example/unit_countlinesmatching.html" represents => { "function" };
+occurrences:
+   countlinesmatching::
+ "/showexample/example/unit_countlinesmatching.html" represents => { "example" };
+occurrences:
+   application_management::
+ "/showexample/example/unit_package_yum.html" represents => { "example" };
+occurrences:
+   patch_management::
+ "/showexample/example/unit_package_yum.html" represents => { "example" };
+occurrences:
+   windows::
+ "/showexample/example/unit_package_yum.html" represents => { "example" };
+occurrences:
+   software::
+ "/showexample/example/unit_package_yum.html" represents => { "installing" };
+occurrences:
+   packages::
+ "/showexample/example/unit_package_yum.html" represents => { "example" };
+occurrences:
+   yum::
+ "/showexample/example/unit_package_yum.html" represents => { "example" };
+occurrences:
+   purge::
+ "/showexample/example/unit_server_copy_purge.html" represents => { "example" };
+occurrences:
+   synchronizing_files::
+ "/showexample/example/unit_server_copy_purge.html" represents => { "example" };
+occurrences:
+   synchronizing_files::
+ "/showexample/example/unit_server_copy_purge.html" represents => { "copy_from" };
+occurrences:
+   countclassesmatching::
+ "/showexample/example/unit_countclassesmatching.html" represents => { "example" };
+occurrences:
+   accumulated::
+ "/showexample/example/unit_accumulated_time.html" represents => { "example" };
+occurrences:
+   irange::
+ "/showexample/example/unit_accumulated_time.html" represents => { "example" };
+occurrences:
+   selecting_processes::
+ "/showexample/example/unit_accumulated_time.html" represents => { "example" };
+occurrences:
+   arrays::
+ "/showexample/example/unit_getindices.html" represents => { "example" };
+occurrences:
+   getindices::
+ "/showexample/example/unit_getindices.html" represents => { "example" };
+occurrences:
+   Function_getindices::
+ "/showexample/example/unit_getindices.html" represents => { "example" };
+occurrences:
+   logging::
+ "/showexample/example/unit_log_private.html" represents => { "custom" };
+occurrences:
+   log_kept::
+ "/showexample/example/unit_log_private.html" represents => { "example" };
+occurrences:
+   log_failed::
+ "/showexample/example/unit_log_private.html" represents => { "example" };
+occurrences:
+   log_repaired::
+ "/showexample/example/unit_log_private.html" represents => { "example" };
+occurrences:
+   log_string::
+ "/showexample/example/unit_log_private.html" represents => { "example" };
+occurrences:
+   cancel_repaired::
+ "/showexample/example/unit_switchcase.html" represents => { "example" };
+occurrences:
+   cancel_kept::
+ "/showexample/example/unit_switchcase.html" represents => { "example" };
+occurrences:
+   cancel_notkept::
+ "/showexample/example/unit_switchcase.html" represents => { "example" };
+occurrences:
+   cancel_notkept::
+ "/showexample/example/unit_switchcase.html" represents => { "example" };
+occurrences:
+   strcmp::
+ "/showexample/example/unit_strcmp.html" represents => { "example" };
+occurrences:
+   Function_strcmp::
+ "/showexample/example/unit_strcmp.html" represents => { "example" };
+occurrences:
+   methods::
+ "/showexample/example/unit_method.html" represents => { "example" };
+occurrences:
+   iteration::
+ "/showexample/example/unit_method.html" represents => { "method example" };
+occurrences:
+   lastnode::
+ "/showexample/example/unit_lastnode.html" represents => { "example" };
+occurrences:
+   Function_lastnode::
+ "/showexample/example/unit_lastnode.html" represents => { "example" };
+occurrences:
+   contain::
+ "/showexample/example/unit_chdir.html" represents => { "example" };
+occurrences:
+   chdir::
+ "/showexample/example/unit_chdir.html" represents => { "example" };
+occurrences:
+   log_level::
+ "/showexample/example/unit_syslog2.html" represents => { "example" };
+occurrences:
+   syslog::
+ "/showexample/example/unit_syslog2.html" represents => { "example" };
+occurrences:
+   syslog_host::
+ "/showexample/example/unit_syslog2.html" represents => { "example" };
+occurrences:
+   udp_syslog::
+ "/showexample/example/unit_syslog2.html" represents => { "example" };
+occurrences:
+   environments::
+ "/showexample/example/unit_environment_simple.html" represents => { "example" };
+occurrences:
+   ldaparray::
+ "/showexample/example/unit_activedirectory_showuser.html" represents => { "example" };
+occurrences:
+   filesexist::
+ "/showexample/example/unit_filesexist2.html" represents => { "example" };
+occurrences:
+   Function_filesexist::
+ "/showexample/example/unit_filesexist2.html" represents => { "example" };
+occurrences:
+   methods::
+ "/showexample/example/unit_filesexist2.html" represents => { "example" };
+occurrences:
+   Windows_service_management::
+ "/showexample/example/win_services.html" represents => { "example" };
+occurrences:
+   service_autostart_policy::
+ "/showexample/example/win_services.html" represents => { "example" };
+occurrences:
+   application_services::
+ "/showexample/example/win_services.html" represents => { "example" };
+occurrences:
+   application_services::
+ "/showexample/example/win_services.html" represents => { "example" };
+occurrences:
+   link_from::
+ "/showexample/example/unit_linking.html" represents => { "example" };
+occurrences:
+   windows_registry::
+ "/showexample/example/unit_registry.html" represents => { "cfengine example" };
+occurrences:
+   databases::
+ "/showexample/example/unit_registry.html" represents => { "example" };
+occurrences:
+   MS_Registry_functions::
+ "/showexample/example/unit_registry.html" represents => { "example" };
+occurrences:
+   abortbundleclasses::
+ "/showexample/example/unit_abort.html" represents => { "example" };
+occurrences:
+   splitstring::
+ "/showexample/example/unit_splitstring.html" represents => { "example" };
+occurrences:
+   Function_splitstring::
+ "/showexample/example/unit_splitstring.html" represents => { "example" };
+occurrences:
+   reports::
+ "/showexample/example/unit_report_custom.html" represents => { "example" };
+occurrences:
+   report_to_file::
+ "/showexample/example/unit_report_custom.html" represents => { "example" };
+occurrences:
+   report_to_file::
+ "/showexample/example/unit_report_custom.html" represents => { "example" };
+occurrences:
+   identity_management::
+ "/showexample/example/unit_insert_users.html" represents => { "example" };
+occurrences:
+   insert_lines::
+ "/showexample/example/unit_insert_users.html" represents => { "example" };
+occurrences:
+   delete_lines::
+ "/showexample/example/unit_insert_users.html" represents => { "example" };
+occurrences:
+   insert_select::
+ "/showexample/example/unit_insert_users.html" represents => { "example" };
+occurrences:
+   module::
+ "/showexample/example/unit_module_exec_2.html" represents => { "example" };
+occurrences:
+   modules::
+ "/showexample/example/unit_module_exec_2.html" represents => { "example" };
+occurrences:
+   commands::
+ "/showexample/example/unit_module_exec_2.html" represents => { "modules" };
+occurrences:
+   classes::
+ "/showexample/example/unit_edit_triggerclass.html" represents => { "example" };
+occurrences:
+   changedbefore::
+ "/showexample/example/unit_changedbefore.html" represents => { "example" };
+occurrences:
+   registryvalue::
+ "/showexample/example/unit_getregistry.html" represents => { "example" };
+occurrences:
+   Function_registryvalue::
+ "/showexample/example/unit_getregistry.html" represents => { "example" };
+occurrences:
+   msi::
+ "/showexample/example/unit_software_dist.html" represents => { "example" };
+occurrences:
+   software_distribution::
+ "/showexample/example/unit_software_dist.html" represents => { "example" };
+occurrences:
+   Software_Management::
+ "/showexample/example/unit_software_dist.html" represents => { "example" };
+occurrences:
+   Add_software_packages_to_the_system::
+ "/showexample/example/unit_software_dist.html" represents => { "example" };
+occurrences:
+   software::
+ "/showexample/example/unit_software_dist.html" represents => { "example installation" };
+occurrences:
+   Function_diskfree::
+ "/showexample/example/unit_diskfree.html" represents => { "example" };
+occurrences:
+   Function_diskfree::
+ "/showexample/example/unit_diskfree.html" represents => { "example" };
+occurrences:
+   Ordering_promises::
+ "/showexample/example/unit_ordering.html" represents => { "example" };
+occurrences:
+   classes::
+ "/showexample/example/unit_ordering.html" represents => { "outcomes" };
+occurrences:
+   Function_getfields::
+ "/showexample/example/unit_getfields.html" represents => { "example" };
+occurrences:
+   Function_getfields::
+ "/showexample/example/unit_getfields.html" represents => { "example" };
+occurrences:
+   occurrences::
+ "/showexample/example/unit_occurrences.html" represents => { "example" };
+occurrences:
+   back_references::
+ "/showexample/example/unit_occurrences.html" represents => { "example" };
+occurrences:
+   representation::
+ "/showexample/example/unit_occurrences.html" represents => { "example" };
+occurrences:
+   diff::
+ "/showexample/example/unit_report_diffs.html" represents => { "example" };
+occurrences:
+   diff::
+ "/showexample/example/unit_report_diffs.html" represents => { "nova" };
+occurrences:
+   file_change_report::
+ "/showexample/example/unit_report_diffs.html" represents => { "files" };
+occurrences:
+   file_change_report::
+ "/showexample/example/unit_report_diffs.html" represents => { "change management" };
+occurrences:
+   regextract::
+ "/showexample/example/unit_reg_multiline.html" represents => { "example" };
+occurrences:
+   reglist::
+ "/showexample/example/unit_reglist.html" represents => { "example" };
+occurrences:
+   Function_reglist::
+ "/showexample/example/unit_reglist.html" represents => { "example" };
+occurrences:
+   regular_expressions::
+ "/showexample/example/unit_reglist.html" represents => { "example" };
+occurrences:
+   packages::
+ "/showexample/example/unit_package_msi_version.html" represents => { "MSI example" };
+occurrences:
+   isgreaterthan::
+ "/showexample/example/unit_compare.html" represents => { "example" };
+occurrences:
+   file_comparisons::
+ "/showexample/example/unit_compare.html" represents => { "example" };
+occurrences:
+   expand_template::
+ "/showexample/example/unit_template2.html" represents => { "example" };
+occurrences:
+   ifvarclass::
+ "/showexample/example/unit_varclass.html" represents => { "example" };
+occurrences:
+   insert_lines::
+ "/showexample/example/unit_edit_insert_lines.html" represents => { "example" };
+occurrences:
+   Upgrading_from_cfengine_2::
+ "/showexample/example/unit_cf2_integration.html" represents => { "example" };
+occurrences:
+   edit_line::
+ "/showexample/example/unit_edit_setvar.html" represents => { "example" };
+occurrences:
+   set_values::
+ "/showexample/example/unit_edit_setvar.html" represents => { "example" };
+occurrences:
+   bundlesequence::
+ "/showexample/example/unit_control_expand.html" represents => { "example" };
+occurrences:
+   service_policy::
+ "/showexample/example/unit_service_disable.html" represents => { "example" };
+occurrences:
+   disabling_services::
+ "/showexample/example/unit_service_disable.html" represents => { "example" };
+occurrences:
+   windows_services::
+ "/showexample/example/unit_service_disable.html" represents => { "example" };
+occurrences:
+   HashCommentLinesMatching::
+ "/showexample/example/unit_hashcomment.html" represents => { "in cf3" };
+occurrences:
+   back_references::
+ "/showexample/example/unit_hashcomment.html" represents => { "commenting" };
+occurrences:
+   bundle_edit_line_comment_lines_matching::
+ "/showexample/example/unit_hashcomment.html" represents => { "comment),stdlib" };
+occurrences:
+   classes::
+ "/showexample/example/unit_copy_classes.html" represents => { "example" };
+occurrences:
+   promise_kept::
+ "/showexample/example/unit_copy_classes.html" represents => { "example" };
+occurrences:
+   promise_repaired::
+ "/showexample/example/unit_copy_classes.html" represents => { "example" };
+occurrences:
+   repair_failed::
+ "/showexample/example/unit_copy_classes.html" represents => { "example" };
+occurrences:
+   repair_denied::
+ "/showexample/example/unit_copy_classes.html" represents => { "example" };
+occurrences:
+   repair_timeout::
+ "/showexample/example/unit_copy_classes.html" represents => { "example" };
+occurrences:
+   repair_timeout::
+ "/showexample/example/unit_copy_classes.html" represents => { "example" };
+occurrences:
+   report_to_file::
+ "/showexample/example/unit_reporttofile.html" represents => { "example" };
+occurrences:
+   processes::
+ "/showexample/example/unit_process_matching2.html" represents => { "example" };
+occurrences:
+   processes::
+ "/showexample/example/unit_process_matching2.html" represents => { "example" };
+occurrences:
+   insert_lines::
+ "/showexample/example/unit_edit_insert_fuzzylines.html" represents => { "whitespace example" };
+occurrences:
+   iprange::
+ "/showexample/example/unit_iprange.html" represents => { "example" };
+occurrences:
+   Function_iprange::
+ "/showexample/example/unit_iprange.html" represents => { "example" };
+occurrences:
+   arrays::
+ "/showexample/example/unit_arrays.html" represents => { "example" };
+occurrences:
+   ldaplist::
+ "/showexample/example/unit_activedirectory_listusers.html" represents => { "example" };
+occurrences:
+   Variable_expansion_in_cfengine_3::
+ "/showexample/example/unit_global_list_expansion.html" represents => { "example" };
+occurrences:
+   Variable_const_dollar::
+ "/showexample/example/unit_dollar.html" represents => { "example" };
+occurrences:
+   getusers::
+ "/showexample/example/unit_getusers.html" represents => { "example" };
+occurrences:
+   returnszero::
+ "/showexample/example/unit_returnszero.html" represents => { "example" };
+occurrences:
+   Function_returnszero::
+ "/showexample/example/unit_returnszero.html" represents => { "example" };
+occurrences:
+   classes::
+ "/showexample/example/unit_definitions.html" represents => { "example" };
+occurrences:
+   variables::
+ "/showexample/example/unit_definitions.html" represents => { "example" };
+occurrences:
+   data_type::
+ "/showexample/example/unit_definitions.html" represents => { "example" };
+occurrences:
+   customizing_inputs::
+ "/showexample/example/unit_controlclasses.html" represents => { "example" };
+occurrences:
+   bundlesequence::
+ "/showexample/example/unit_controlclasses.html" represents => { "example" };
+occurrences:
+   inputs::
+ "/showexample/example/unit_controlclasses.html" represents => { "example" };
+occurrences:
+   Function_getenv::
+ "/showexample/example/unit_getenv.html" represents => { "example" };
+occurrences:
+   Function_getenv::
+ "/showexample/example/unit_getenv.html" represents => { "example" };
+occurrences:
+   slist::
+ "/showexample/example/unit_iteration.html" represents => { "example" };
+occurrences:
+   iteration::
+ "/showexample/example/unit_iteration.html" represents => { "example" };
+occurrences:
+   loops::
+ "/showexample/example/unit_iteration.html" represents => { "example" };
+occurrences:
+   loops::
+ "/showexample/example/unit_iteration.html" represents => { "example" };
+occurrences:
+   peers::
+ "/showexample/example/unit_peers.html" represents => { "example" };
+occurrences:
+   peerleaders::
+ "/showexample/example/unit_peers.html" represents => { "example" };
+occurrences:
+   peerleader::
+ "/showexample/example/unit_peers.html" represents => { "example" };
+occurrences:
+   set_up_a_neighbourhood_watch::
+ "/showexample/example/unit_peers.html" represents => { "example" };
+occurrences:
+   bsdflags::
+ "/showexample/example/unit_bsdflags.html" represents => { " example" };
+occurrences:
+   bsdflags::
+ "/showexample/example/unit_bsdflags.html" represents => { " example" };
+occurrences:
+   groupexists::
+ "/showexample/example/unit_groupexists.html" represents => { "example" };
+occurrences:
+   Function_groupexists::
+ "/showexample/example/unit_groupexists.html" represents => { "example" };
+occurrences:
+   edit_line::
+ "/showexample/example/unit_edit_insert_lines_silly.html" represents => { "example" };
+occurrences:
+   insert_lines::
+ "/showexample/example/unit_edit_insert_lines_silly.html" represents => { "example" };
+occurrences:
+   insert_lines::
+ "/showexample/example/unit_edit_insert_lines_silly.html" represents => { "example" };
+occurrences:
+   disable::
+ "/showexample/example/unit_disable_and_rotate_files.html" represents => { "example" };
+occurrences:
+   rotate::
+ "/showexample/example/unit_disable_and_rotate_files.html" represents => { "example" };
+occurrences:
+   log_rotation::
+ "/showexample/example/unit_disable_and_rotate_files.html" represents => { "example" };
+occurrences:
+   File_Access_Control_Lists::
+ "/showexample/example/unit_acl_generic.html" represents => { "example" };
+occurrences:
+   create::
+ "/showexample/example/unit_create_filedir.html" represents => { "example" };
+occurrences:
+   creating_files::
+ "/showexample/example/unit_create_filedir.html" represents => { "example" };
+occurrences:
+   files::
+ "/showexample/example/unit_create_filedir.html" represents => { "creating" };
+occurrences:
+   directories::
+ "/showexample/example/unit_create_filedir.html" represents => { "creating" };
+occurrences:
+   monitor_control_promises::
+ "/showexample/example/unit_monitord.html" represents => { "example" };
+occurrences:
+   WarnIfLineMatching::
+ "/showexample/example/unit_warnifline.html" represents => { "in cf3" };
+occurrences:
+   Warnings::
+ "/showexample/example/unit_warnifline.html" represents => { "example" };
+occurrences:
+   environments::
+ "/showexample/example/unit_environment.html" represents => { "example" };
+occurrences:
+   background::
+ "/showexample/example/unit_file_change_detection.html" represents => { "example" };
+occurrences:
+   changes::
+ "/showexample/example/unit_file_change_detection.html" represents => { "example" };
+occurrences:
+   List_variable_substitution_and_expansion::
+ "/showexample/example/unit_file_owner_list_template.html" represents => { "example" };
+occurrences:
+   rename::
+ "/showexample/example/unit_rename.html" represents => { "example" };
+occurrences:
+   background::
+ "/showexample/example/unit_parallel_exec.html" represents => { "example" };
+occurrences:
+   parallelizing_promises::
+ "/showexample/example/unit_parallel_exec.html" represents => { "example" };
+occurrences:
+   back_references::
+ "/showexample/example/unit_edit_sectioned_file.html" represents => { "example" };
+occurrences:
+   select_start::
+ "/showexample/example/unit_edit_sectioned_file.html" represents => { "example" };
+occurrences:
+   select_end::
+ "/showexample/example/unit_edit_sectioned_file.html" represents => { "example" };
+occurrences:
+   classmatch::
+ "/showexample/example/unit_classmatch.html" represents => { "example" };
+occurrences:
+   classes::
+ "/showexample/example/unit_classmatch.html" represents => { "example" };
+occurrences:
+   application_management::
+ "/showexample/example/unit_package_zypper.html" represents => { "example" };
+occurrences:
+   patch_management::
+ "/showexample/example/unit_package_zypper.html" represents => { "example" };
+occurrences:
+   windows::
+ "/showexample/example/unit_package_zypper.html" represents => { "example" };
+occurrences:
+   software::
+ "/showexample/example/unit_package_zypper.html" represents => { "installing" };
+occurrences:
+   packages::
+ "/showexample/example/unit_package_zypper.html" represents => { "example" };
+occurrences:
+   zypper::
+ "/showexample/example/unit_package_zypper.html" represents => { "example" };
+occurrences:
+   processes::
+ "/showexample/example/unit_process_signalling.html" represents => { "example" };
+occurrences:
+   restart_a_server::
+ "/showexample/example/unit_process_signalling.html" represents => { "example" };
+occurrences:
+   environment::
+ "/showexample/example/unit_env.html" represents => { "example" };
+occurrences:
+   userexists::
+ "/showexample/example/unit_userexists.html" represents => { "example" };
+occurrences:
+   Function_userexists::
+ "/showexample/example/unit_userexists.html" represents => { "example" };
+occurrences:
+   change_detection_scans::
+ "/showexample/example/unit_neighbourhood_watch.html" represents => { "example" };
+occurrences:
+   change_management::
+ "/showexample/example/unit_neighbourhood_watch.html" represents => { "example" };
+occurrences:
+   delete::
+ "/showexample/example/unit_tidy_all_files.html" represents => { "example" };
+occurrences:
+   solaris::
+ "/showexample/example/unit_package_solaris.html" represents => { "package driver" };
+occurrences:
+   solaris::
+ "/showexample/example/unit_package_solaris.html" represents => { "package driver" };
+occurrences:
+   getgid::
+ "/showexample/example/unit_getgid.html" represents => { "example" };
+occurrences:
+   Function_getgid::
+ "/showexample/example/unit_getgid.html" represents => { "example" };
+occurrences:
+   fileexists::
+ "/showexample/example/unit_fileexists.html" represents => { "example" };
+occurrences:
+   Function_fileexists::
+ "/showexample/example/unit_fileexists.html" represents => { "example" };
+occurrences:
+   perms::
+ "/showexample/example/unit_fileperms.html" represents => { "example" };
+occurrences:
+   copy_from::
+ "/showexample/example/unit_server_copy_remote.html" represents => { "example" };
+occurrences:
+   allowconnects::
+ "/showexample/example/unit_server_copy_remote.html" represents => { "example" };
+occurrences:
+   allowallconnects::
+ "/showexample/example/unit_server_copy_remote.html" represents => { "example" };
+occurrences:
+   trustkeysfrom::
+ "/showexample/example/unit_server_copy_remote.html" represents => { "example" };
+occurrences:
+   product::
+ "/showexample/example/unit_product.html" represents => { "example" };
+occurrences:
+   convergence::
+ "/showexample/example/unit_epimenides.html" represents => { "epimenides" };
+occurrences:
+   readintarray::
+ "/showexample/example/unit_intarray.html" represents => { "example" };
+occurrences:
+   Function_readintarray::
+ "/showexample/example/unit_intarray.html" represents => { "example" };
+occurrences:
+   delta::
+ "/showexample/example/unit_menu.html" represents => { "example" };
+occurrences:
+   full::
+ "/showexample/example/unit_menu.html" represents => { "example" };
+occurrences:
+   resource_type::
+ "/showexample/example/unit_menu.html" represents => { "example" };
+occurrences:
+   resource_type::
+ "/showexample/example/unit_menu.html" represents => { "example" };
+occurrences:
+   selecting_processes::
+ "/showexample/example/unit_ago.html" represents => { "example" };
+occurrences:
+   ago::
+ "/showexample/example/unit_ago.html" represents => { "example" };
+occurrences:
+   irange::
+ "/showexample/example/unit_ago.html" represents => { "example" };
+occurrences:
+   search_size::
+ "/showexample/example/unit_select_size.html" represents => { "example" };
+occurrences:
+   transformer::
+ "/showexample/example/unit_select_size.html" represents => { "example" };
+occurrences:
+   transformer::
+ "/showexample/example/unit_select_size.html" represents => { "example" };
+occurrences:
+   copy_then_edit::
+ "/showexample/example/unit_copy_edit.html" represents => { "example" };
+occurrences:
+   readintlist::
+ "/showexample/example/unit_readlist.html" represents => { "example" };
+occurrences:
+   processes::
+ "/showexample/example/unit_process_matching.html" represents => { "example" };
+occurrences:
+   process_select::
+ "/showexample/example/unit_process_matching.html" represents => { "example" };
+occurrences:
+   process_count::
+ "/showexample/example/unit_process_matching.html" represents => { "example" };
+occurrences:
+   match_range::
+ "/showexample/example/unit_process_matching.html" represents => { "example" };
+occurrences:
+   out_of_range_define::
+ "/showexample/example/unit_process_matching.html" represents => { "example" };
+occurrences:
+   expand_scalars::
+ "/showexample/example/unit_template.html" represents => { "example" };
+occurrences:
+   expand_template::
+ "/showexample/example/unit_template.html" represents => { "similar example" };
+occurrences:
+   expand_template::
+ "/showexample/example/unit_template.html" represents => { "similar example" };
+occurrences:
+   windows::
+ "/showexample/example/unit_filenames.html" represents => { "filenames" };
+occurrences:
+   y_Function_escape::
+ "/showexample/example/unit_escape.html" represents => { "example" };
+occurrences:
+   args::
+ "/showexample/example/unit_exec_args.html" represents => { "example" };
+occurrences:
+   select_region::
+ "/showexample/example/unit_select_region.html" represents => { "example" };
+occurrences:
+   HashCommentLinesMatching::
+ "/showexample/example/unit_select_region.html" represents => { "in cf3" };
+occurrences:
+   Commenting_lines::
+ "/showexample/example/unit_select_region.html" represents => { "example" };
+occurrences:
+   promise_types::
+ "/showexample/example/unit_badtype.html" represents => { "bad type error" };
+occurrences:
+   regular_expressions::
+ "/showexample/example/unit_backreferences_files.html" represents => { "back references" };
+occurrences:
+   back_references::
+ "/showexample/example/unit_backreferences_files.html" represents => { "example" };
+occurrences:
+   edit_line::
+ "/showexample/example/unit_backreferences_files.html" represents => { "commenting" };
+occurrences:
+   host2ip::
+ "/showexample/example/unit_host2ip.html" represents => { "example" };
+occurrences:
+   identity_management::
+ "/showexample/example/unit_user_edit_method.html" represents => { "example" };
+occurrences:
+   methods::
+ "/showexample/example/unit_user_edit_method.html" represents => { "example" };
+occurrences:
+   Setting_up_users::
+ "/showexample/example/unit_user_edit_method.html" represents => { "example" };
+occurrences:
+   adding_users::
+ "/showexample/example/unit_user_edit_method.html" represents => { "example" };
+occurrences:
+   removing_users::
+ "/showexample/example/unit_user_edit_method.html" represents => { "example" };
+occurrences:
+   regarray::
+ "/showexample/example/unit_regarray.html" represents => { "example" };
+occurrences:
+   Function_regarray::
+ "/showexample/example/unit_regarray.html" represents => { "example" };
+occurrences:
+   file_copying::
+ "/showexample/example/unit_copy.html" represents => { "example" };
+occurrences:
+   islink::
+ "/showexample/example/unit_islink.html" represents => { "example" };
+occurrences:
+   Function_islink::
+ "/showexample/example/unit_islink.html" represents => { "example" };
+occurrences:
+   iteration::
+ "/showexample/example/unit_loops.html" represents => { "example" };
+occurrences:
+   arrays::
+ "/showexample/example/unit_loops.html" represents => { "example" };
+occurrences:
+   translatepath::
+ "/showexample/example/unit_translatepath.html" represents => { "example" };
+occurrences:
+   compressing_files::
+ "/showexample/example/unit_locate_files_and_compress.html" represents => { "example" };
+occurrences:
+   transformer::
+ "/showexample/example/unit_locate_files_and_compress.html" represents => { "example" };
+occurrences:
+   packages::
+ "/showexample/example/unit_package_msi_file.html" represents => { " MSI example" };
+occurrences:
+   remove_dead_links::
+ "/showexample/example/unit_remove_deadlinks.html" represents => { "example" };
+occurrences:
+   rmdeadlinks::
+ "/showexample/example/unit_remove_deadlinks.html" represents => { "example" };
+occurrences:
+   reporting::
+ "/showexample/example/unit_reporting.html" represents => { " example" };
+occurrences:
+   reporter_control_promises::
+ "/showexample/example/unit_reporting.html" represents => { "example" };
+occurrences:
+   registryvalue::
+ "/showexample/example/app_baseline.html" represents => { "example" };
+occurrences:
+   MS_Registry_functions::
+ "/showexample/example/app_baseline.html" represents => { "example" };
+occurrences:
+   Application_Management::
+ "/showexample/example/app_baseline.html" represents => { "example" };
+occurrences:
+   handle::
+ "/showexample/example/unit_id.html" represents => { "example" };
+occurrences:
+   windows_registry::
+ "/showexample/example/unit_registry_cache.html" represents => { "example" };
+occurrences:
+   windows_repair::
+ "/showexample/example/unit_registry_cache.html" represents => { "example" };
+occurrences:
+   join::
+ "/showexample/example/unit_join.html" represents => { "example" };
+occurrences:
+   Function_join::
+ "/showexample/example/unit_join.html" represents => { "example" };
+occurrences:
+   lists::
+ "/showexample/example/unit_join.html" represents => { "example" };
+occurrences:
+   lists::
+ "/showexample/example/unit_join.html" represents => { "example" };
+occurrences:
+   HashUnCommentLinesMatching::
+ "/showexample/example/unit_hashuncomment.html" represents => { "in cf3" };
+occurrences:
+   back_references::
+ "/showexample/example/unit_hashuncomment.html" represents => { "commenting" };
+occurrences:
+   bundle_edit_line_comment_lines_matching::
+ "/showexample/example/unit_hashuncomment.html" represents => { "comment),stdlib" };
+occurrences:
+   bundle_edit_line_comment_lines_matching::
+ "/showexample/example/unit_hashuncomment.html" represents => { "comment),stdlib" };
+occurrences:
+   Function_regextract::
+ "/showexample/example/unit_regextract.html" represents => { "example" };
+occurrences:
+   update::
+ "/showexample/example/unit_update.html" represents => { "example" };
+occurrences:
+   What_should_a_failsafe_and_update_file_contain_::
+ "/showexample/example/unit_update.html" represents => { "example" };
+occurrences:
+   update::
+ "/showexample/example/unit_update.html" represents => { "example" };
+occurrences:
+   What_should_a_failsafe_and_update_file_contain_::
+ "/showexample/example/unit_update.html" represents => { "example" };
+occurrences:
+   contain::
+ "/showexample/example/unit_exec_in_sequence.html" represents => { "example" };
+occurrences:
+   readstringarray::
+ "/showexample/example/unit_stringarray.html" represents => { "example" };
+occurrences:
+   Function_readstringarray::
+ "/showexample/example/unit_stringarray.html" represents => { "example" };
+occurrences:
+   filesexist::
+ "/showexample/example/unit_filesexist.html" represents => { "example" };
+occurrences:
+   Function_filesexist::
+ "/showexample/example/unit_filesexist.html" represents => { "example" };
+occurrences:
+   directory_services::
+ "/showexample/example/active_directory.html" represents => { "example" };
+occurrences:
+   windows::
+ "/showexample/example/active_directory.html" represents => { "active directory example" };
+occurrences:
+   hashmatch::
+ "/showexample/example/unit_hashmatch.html" represents => { "example" };
+occurrences:
+   Function_hashmatch::
+ "/showexample/example/unit_hashmatch.html" represents => { "example" };
+occurrences:
+   copy_from::
+ "/showexample/example/unit_server_copy_localhost.html" represents => { "example" };
+occurrences:
+   allowconnects::
+ "/showexample/example/unit_server_copy_localhost.html" represents => { "example" };
+occurrences:
+   allowallconnects::
+ "/showexample/example/unit_server_copy_localhost.html" represents => { "example" };
+occurrences:
+   trustkeysfrom::
+ "/showexample/example/unit_server_copy_localhost.html" represents => { "example" };
+occurrences:
+   editing_tabular_files::
+ "/showexample/example/unit_edit_column_files.html" represents => { "example" };
+occurrences:
+   column_editing::
+ "/showexample/example/unit_edit_column_files.html" represents => { "example" };
+occurrences:
+   signals::
+ "/showexample/example/unit_process_kill.html" represents => { "example" };
+occurrences:
+   killing_processes::
+ "/showexample/example/unit_process_kill.html" represents => { "example" };
+occurrences:
+   processes::
+ "/showexample/example/unit_process_kill.html" represents => { "example" };
+occurrences:
+   mount::
+ "/showexample/example/unit_mount_fs.html" represents => { "example" };
+occurrences:
+   NFS::
+ "/showexample/example/unit_mount_fs.html" represents => { "mounting" };
+occurrences:
+   change_management::
+ "/showexample/example/unit_change_detect.html" represents => { "example" };
+occurrences:
+   Change_detection::
+ "/showexample/example/unit_change_detect.html" represents => { "example" };
+occurrences:
+   Function_grep::
+ "/showexample/example/unit_grep.html" represents => { "example" };
+occurrences:
+   Function_grep::
+ "/showexample/example/unit_grep.html" represents => { "example" };
+occurrences:
+   isnewerthan::
+ "/showexample/example/unit_isnewerthan.html" represents => { "example" };
+occurrences:
+   Function_isnewerthan::
+ "/showexample/example/unit_isnewerthan.html" represents => { "example" };
+occurrences:
+   remoteclassesmatching::
+ "/showexample/example/unit_remoteclasses.html" represents => { "example" };
+occurrences:
+   Function_remoteclassesmatching::
+ "/showexample/example/unit_remoteclasses.html" represents => { "example" };
+occurrences:
+   scheduling::
+ "/showexample/example/unit_remoteclasses.html" represents => { "example" };
+occurrences:
+   distributed_scheduling::
+ "/showexample/example/unit_remoteclasses.html" represents => { "example" };
+occurrences:
+   cfengine_nova::
+ "/showexample/example/unit_remoteclasses.html" represents => { "server functions" };
+occurrences:
+   cfengine_nova::
+ "/showexample/example/unit_remoteclasses.html" represents => { "server functions" };
+
+}

@@ -1,0 +1,79 @@
+
+bundle knowledge NovaEvaluationGuide
+
+{
+topics:
+
+"NovaEvaluationGuide";
+Special_Topics_Guide::
+    "CFEngine 3 Nova Evaluation Guide"  association => a("discusses","CFEngine 3 Nova Evaluation Guide","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/NovaEvaluationGuide.html"
+  represents => { "Official CFEngine document"},  about_topics => { "cfengine 3 nova evaluation guide" };
+ "/knowledge/docs/NovaEvaluationGuide.html"
+  represents => { "Special Topics Guide"},  about_topics => { "cfengine 3 nova evaluation guide" };
+ "/knowledge/docs/NovaEvaluationGuide.html#Top"
+  represents => { "Text section" }, about_topics => { "cfengine 3 nova evaluation guide" };
+ "/knowledge/docs/NovaEvaluationGuide.html#Introduction"
+  represents => { "manual chapter" }, about_topics => { "introduction"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Get-started"
+  represents => { "manual chapter" }, about_topics => { "get started"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Accessing-CFEngine-3-Nova"
+  represents => { "manual section" }, about_topics => { "accessing cfengine 3 nova"};
+ "/knowledge/docs/NovaEvaluationGuide.html#CFEngine-terms-used-in-this-document"
+  represents => { "manual section" }, about_topics => { "cfengine terms used in this document"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Status-room"
+  represents => { "manual section" }, about_topics => { "status room"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Business-Value-and-Host-Status"
+  represents => { "manual subsection" }, about_topics => { "business value and host status"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Compliance-Summary"
+  represents => { "manual subsection" }, about_topics => { "compliance summary"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Services_002fGoals"
+  represents => { "manual subsection" }, about_topics => { "services/goals"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Engineering-room"
+  represents => { "manual section" }, about_topics => { "engineering room"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Host-Status-_0028last-hour_0029"
+  represents => { "manual subsection" }, about_topics => { "host status"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Promise-compliance-summary-for-reachable-hosts"
+  represents => { "manual subsection" }, about_topics => { "promise compliance summary for reachable hosts"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Finders"
+  represents => { "manual subsection" }, about_topics => { "finders"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Planning-room"
+  represents => { "manual section" }, about_topics => { "planning room"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Library-room"
+  represents => { "manual section" }, about_topics => { "library room"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Shell-access-_0028evaluation-feature-only_0029"
+  represents => { "manual section" }, about_topics => { "shell access"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Standard-reports-in-CFEngine-3-Nova"
+  represents => { "manual chapter" }, about_topics => { "standard reports in cfengine 3 nova"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Reports-finder"
+  represents => { "manual section" }, about_topics => { "reports finder"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Example-_002d-Software-report"
+  represents => { "manual section" }, about_topics => { "example - software report"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Content-Driven-Policy-_0028CDP_0029-reports"
+  represents => { "manual chapter" }, about_topics => { "content driven policy"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Example-_002d-ACLs-_0028file-access-controls_0029"
+  represents => { "manual section" }, about_topics => { "example - acls"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Introduction-to-CFEngine-policies"
+  represents => { "manual chapter" }, about_topics => { "introduction to cfengine policies"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Content-Driven-Policy"
+  represents => { "manual section" }, about_topics => { "content driven policy"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Standard-CFEngine-policy"
+  represents => { "manual section" }, about_topics => { "standard cfengine policy"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Example-_002d-Install-packages-from-remote-repository"
+  represents => { "manual section" }, about_topics => { "example - install packages from remote repository"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Example-_002d-Install-packages-from-local-repository"
+  represents => { "manual section" }, about_topics => { "example - install packages from local repository"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Next-steps"
+  represents => { "manual chapter" }, about_topics => { "next steps"};
+ "/knowledge/docs/NovaEvaluationGuide.html#The-Policy-Editor-_0028beta_0029"
+  represents => { "manual section" }, about_topics => { "the policy editor"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Example-_002d-Edit-a-CDP-input-file"
+  represents => { "manual section" }, about_topics => { "example - edit a cdp input file"};
+ "/knowledge/docs/NovaEvaluationGuide.html#Example-_002d-Create-a-standard-policy"
+  represents => { "manual section" }, about_topics => { "example - create a standard policy"};
+}
+

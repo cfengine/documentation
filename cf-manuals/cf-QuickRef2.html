@@ -1,0 +1,568 @@
+<html lang="en">
+<head>
+<title>Quick References Guide</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Quick References Guide">
+<meta name="generator" content="makeinfo 4.12">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; }
+  span.sansserif { font-family:sans-serif; font-weight:normal; }
+h1, h2, a, table.list th
+{
+    color: #1f6e6b;
+}
+
+.node
+{
+background: #ddd url(Logo2-small.png) right no-repeat;
+}
+
+.menu
+{
+background: #eef url(menu.png) right no-repeat;
+}
+
+.contents
+{
+background-color: #e9f4e9;
+}
+
+.index-cp
+{
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+  border-color: #4e8b8c;
+  border-style: solid;
+  border-width: 1px;
+}
+
+BODY {
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-style: normal;
+     font-size: 11pt;
+     background: #FFFFFF;
+     color: #000000;
+     }
+
+P {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  }
+
+FONT.liten {font-size: 70%; }
+
+H1, H2, H3 {
+        font-weight: normal;
+        color: #2c2e70;
+        margin-bottom: 0em;
+        }
+
+TABLE { vertical-align: top; }
+
+H1 { font-size: 140% }
+H2 { font-size: 120% }
+H3 { font-size: 110% }
+H4 { font-style: italic; }
+
+TD, TH, UL {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-style: normal;
+        }
+
+TH { background: #9999FF;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     color: blue;
+  font-size: 10pt;
+   }
+
+TD { color: #000000;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-size: 10pt;
+   }
+
+PRE { font-family: "Lucida Typewriter", "Courier", monotype;
+      font-style: normal;
+     font-size: 11pt;
+background-color: #eee;
+    }
+
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Quick References Guide</h1>
+<div class="node">
+<p><hr>
+<a name="Top"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine-Reference</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+
+   <p><h2>Summary of contents</h2>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<ul class="menu">
+<li><a accesskey="1" href="#Command-reference">Command reference</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Command-reference"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Command reference</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Cfagent-command-options">Cfagent command options</a>
+<li><a accesskey="2" href="#Cfservd-command-options">Cfservd command options</a>
+<li><a accesskey="3" href="#Cfexecd-command-options">Cfexecd command options</a>
+<li><a accesskey="4" href="#Cfenvd-command-options">Cfenvd command options</a>
+<li><a accesskey="5" href="#Cfrun-command-options">Cfrun command options</a>
+<li><a accesskey="6" href="#cfenvgraph">cfenvgraph</a>
+<li><a accesskey="7" href="#cfshow">cfshow</a>
+<li><a accesskey="8" href="#cfkey">cfkey</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Cfagent-command-options"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Cfservd-command-options">Cfservd command options</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Command-reference">Command reference</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.1 cfagent command options</h3>
+
+<p class="noindent">Note that GNU long options are available with the syntax
+<code>--longoption</code>.  The long names are given in brackets.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-a</span></samp>&rsquo;<dd>(<code>--sysadm</code>) Print only the name of the system administrator then quit.
+
+     <br><dt>&lsquo;<samp><span class="samp">-A</span></samp>&rsquo;<dd>(<code>--auto</code>) Can be used to signify an automatic run of cfengine, as opposed
+to a manual run. The distinction is not predetermined. Use of this option
+currently causes cfengine to ignore locks. This option is reserved for future
+development.
+
+     <br><dt>&lsquo;<samp><span class="samp">-b</span></samp>&rsquo;<dd>(<code>--force-net-copy</code>) Normally cfengine detects attempts to copy
+from a server via the network that will loop back to the localhost.
+It then avoids using the network to make the copy. This option forces
+cfengine to copy using the network. <em>Yes, someone thinks this is useful!</em>
+
+     <br><dt>&lsquo;<samp><span class="samp">-c</span></samp>&rsquo;<dd>(<code>--no-check-files</code>) Do not check file systems for ownership / permissions etc.
+
+     <br><dt>&lsquo;<samp><span class="samp">-C</span></samp>&rsquo;<dd>(<code>--no-check-mounts</code>) Check mount points for consistency.  If this
+option is specified then directories which lie in the &ldquo;mount point&rdquo;
+area are checked to see whether there is anything mounted on them.
+Normally this is <em>off</em> since not all machines use mounted file
+systems in the same way.  e.g.  HPUX does not generally operate with
+partitions, but nevertheless one might wish to mimick a partition-like
+environment there, but it would be irritating to be informed that
+nothing was mounted on the mount point.
+
+     <br><dt>&lsquo;<samp><span class="samp">-d</span></samp>&rsquo;<dd>(<code>--debug</code>) Enable debugging output.  Normally you will want to
+send this to a file using the shell script command or a pipe.
+ -d1 shows only parsing output.  -d2 shows only
+runtime action output.  -d0 shows both levels. Debugging ouput is
+intended mainly for the author's convenience and is not a supported
+feature. The details of this output may change at any time.
+
+     <br><dt>&lsquo;<samp><span class="samp">-D</span></samp>&rsquo;<dd>(<code>--define</code>) Define a compound class symbol of the form
+<em>alpha.beta.gamma</em>.
+
+     <br><dt>&lsquo;<samp><span class="samp">-e</span></samp>&rsquo;<dd>(<code>--no-edits</code>) Suppress file editing.
+
+     <br><dt>&lsquo;<samp><span class="samp">-E</span></samp>&rsquo;<dd>(<code>--enforce-links</code>) Globally force links to be created where plain
+files or links already exist. Since this option
+is a big hammer, you have to use it in interactive mode and
+answer a yes/no query before cfengine will run like this.
+
+     <br><dt>&lsquo;<samp><span class="samp">-f</span></samp>&rsquo;<dd>(<code>--file</code>) Parse filename after this switch.  By default cfengine
+looks for a file called <em>cfengine.conf</em> in the current directory.
+
+     <br><dt>&lsquo;<samp><span class="samp">-g</span></samp>&rsquo;<dd>(<code>--check-contradictions</code>) Never implemented.
+
+     <br><dt>&lsquo;<samp><span class="samp">-h</span></samp>&rsquo;<dd>(<code>--help</code>) Help information.  Display version banner and options
+summary.
+
+     <br><dt>&lsquo;<samp><span class="samp">-H</span></samp>&rsquo;<dd>(<code>--no-hard-classes</code>). Prevents cfengine from generating any built-in
+class name information. Can be used for emulation purposes.
+<a name="index-Internal-classes_002c-switching-off-1"></a><a name="index-Switching-off-built_002din-classes-2"></a>
+<br><dt>&lsquo;<samp><span class="samp">-i</span></samp>&rsquo;<dd>(<code>--no-ifconfig</code>) Do not attempt to configure the local area
+network interface.
+
+     <br><dt>&lsquo;<samp><span class="samp">-I</span></samp>&rsquo;<dd>(<code>--inform</code>) Switches on the inform output level, whereby cfengine
+reports everything it changes..
+
+     <br><dt>&lsquo;<samp><span class="samp">-j</span></samp>&rsquo;<dd>(<code>--just</code>) Executed only named action types.
+     <pre class="smallexample">          $ cfagent --avoid resolve,copy
+          $ cfagent --just tidy --just shellcommands
+</pre>
+     <br><dt>&lsquo;<samp><span class="samp">-k</span></samp>&rsquo;<dd>(<code>--no-copy</code>) Do not copy/image any files.
+
+     <br><dt>&lsquo;<samp><span class="samp">-K</span></samp>&rsquo;<dd>(<code>--no-lock</code>) Ignore locks when running.
+
+     <br><dt>&lsquo;<samp><span class="samp">-l</span></samp>&rsquo;<dd>(<code>--traverse-links</code>) Normally cfengine does not follow symbolic
+links when recursively parsing directories.  This option will force it
+to do so.
+
+     <br><dt>&lsquo;<samp><span class="samp">-L</span></samp>&rsquo;<dd>(<code>--delete-stale-links</code>) Delete links which do not point to
+existing files (except in user home directories, which are not touched).
+
+     <br><dt>&lsquo;<samp><span class="samp">-m</span></samp>&rsquo;<dd>(<code>--no-mount</code>) Do not attempt to mount file systems or edit the
+filesystem table.
+
+     <br><dt>&lsquo;<samp><span class="samp">-M</span></samp>&rsquo;<dd>(<code>--no-modules</code>)
+Ignore modules in actionsequence.
+
+     <br><dt>&lsquo;<samp><span class="samp">-n</span></samp>&rsquo;<dd>(<code>--recon</code>,<code>--dry-run</code>,<code>--just-print</code>) No action.  Only
+print what has to be done without actually doing it.
+
+     <br><dt>&lsquo;<samp><span class="samp">-N</span></samp>&rsquo;<dd>(<code>--negate</code>,<code>--undefine</code>) Cancel a set of classes,
+or undefine (set value to <em>false</em>) a compound class of the form
+<em>alpha.beta.gamma</em>.
+
+     <br><dt>&lsquo;<samp><span class="samp">-o</span></samp>&rsquo;<dd>(<code>--avoid</code>) Do not execute named action types.
+     <pre class="smallexample">          $ cfagent --avoid resolve,copy
+          $ cfagent --just tidy --just shellcommands
+</pre>
+     <br><dt>&lsquo;<samp><span class="samp">-p</span></samp>&rsquo;<dd>(<code>--parse-only</code>) Parse file and then stop.  Used for checking the
+syntax of a program.  You do not have to be superuser to use this
+option.
+
+     <br><dt>&lsquo;<samp><span class="samp">-P</span></samp>&rsquo;<dd>(<code>--no-processes</code>) Do not execute the processes action.
+
+     <br><dt>&lsquo;<samp><span class="samp">-q</span></samp>&rsquo;<dd>(<code>--no-splay</code>) Switch off host splaying (sleeping).
+
+     <br><dt>&lsquo;<samp><span class="samp">-Q</span></samp>&rsquo;<dd>(<code>--query</code>) Query the values of the comma separated list of variable names.
+
+     <br><dt>&lsquo;<samp><span class="samp">-s</span></samp>&rsquo;<dd>(<code>--no-commands</code>) Do not execute scripts or shell commands.
+
+     <br><dt>&lsquo;<samp><span class="samp">-S</span></samp>&rsquo;<dd>(<code>--silent</code>) Silence run time warnings.
+
+     <br><dt>&lsquo;<samp><span class="samp">-t</span></samp>&rsquo;<dd>(<code>--no-tidy</code>) Do not tidy file systems.
+
+     <br><dt>&lsquo;<samp><span class="samp">-u</span></samp>&rsquo;<dd>(<code>--use-env</code>) Causes cfengine to generate an environment variable
+&lsquo;<samp><span class="samp">CFALLCLASSES</span></samp>&rsquo; which can be read by child processes (scripts). This
+variable contains a summary of all the currently defined classes at any
+given time. This option causes some System V systems to generate a Bus
+Error or segmentation fault. The same information is available from the
+cfengine built-in variable <code>$(allclasses)</code> and can be passed as a
+parameter to scripts.
+
+     <p>When this variable grows too large for embedding one can also access a complete
+list of current classes in <samp><span class="file">/var/cfengine/state/allclasses</span></samp>.
+
+     <br><dt>&lsquo;<samp><span class="samp">-U</span></samp>&rsquo;<dd>(<code>--underscore-classes</code>). When this option is set, cfengine adds
+an underscore to the beginning of the hard system classes (like <code>_sun4</code>, <code>_linux</code>
+etc. The longer compound classes are not underscored, since these are already
+complex and would unlikely result in collisions.) This can be used to avoid naming conflicts if you are so
+unjudicious as to name a host by the name of a hard class. Other classes
+are not affected.
+
+     <br><dt>&lsquo;<samp><span class="samp">-v</span></samp>&rsquo;<dd>(<code>--verbose</code>) Verbose mode.  Prints detailed information about
+actions and state.
+
+     <br><dt>&lsquo;<samp><span class="samp">-V</span></samp>&rsquo;<dd>(<code>--version</code>) Print only the version string and then quit.
+
+     <br><dt>&lsquo;<samp><span class="samp">-w</span></samp>&rsquo;<dd>(<code>--no-warn,--quiet</code>,<code>--quiet</code>) Do not print warning messages.
+
+     <br><dt>&lsquo;<samp><span class="samp">-W</span></samp>&rsquo;<dd>(<code>--csdb</code>) Print the name of the current checksum database.
+
+     <br><dt>&lsquo;<samp><span class="samp">-x</span></samp>&rsquo;<dd>(<code>--no-preconf</code>) Do not execute the <samp><span class="file">cf.preconf</span></samp> net
+configuration file.
+
+     <br><dt>&lsquo;<samp><span class="samp">-X</span></samp>&rsquo;<dd>(<code>--no-links</code>) Do not execute the <code>links</code> section of a
+program.
+
+     <br><dt>&lsquo;<samp><span class="samp">-z</span></samp>&rsquo;<dd>(<code>--zone-info</code>) Print variable data
+
+     <br><dt>&lsquo;<samp><span class="samp">-Z</span></samp>&rsquo;<dd>(<code>--method</code>) Execute a method as a sub-process.
+</dl>
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<p><hr>
+<a name="Cfservd-command-options"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Cfexecd-command-options">Cfexecd command options</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Cfagent-command-options">Cfagent command options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.2 cfservd command options</h3>
+
+<p class="noindent">Note that GNU long options are available with the syntax
+<code>--longoption</code>.  The long names are given in brackets.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-d</span></samp>&rsquo;<dd>(<code>debug</code>) Set debugging ouput. e.g. -d2
+<br><dt>&lsquo;<samp><span class="samp">-f</span></samp>&rsquo;<dd>(<code>file</code>) Set name of input file instead to default <samp><span class="file">cfservd.conf</span></samp>.
+<br><dt>&lsquo;<samp><span class="samp">-F</span></samp>&rsquo;<dd>(<code>no-fork</code>) Do not run in background (daemon mode).
+<br><dt>&lsquo;<samp><span class="samp">-h</span></samp>&rsquo;<dd>(<code>help</code>) Print help info.
+<br><dt>&lsquo;<samp><span class="samp">-L</span></samp>&rsquo;<dd>(<code>ld-library-path</code>) Set the internal <code>LD_LIBRARY_PATH</code> variable.
+<br><dt>&lsquo;<samp><span class="samp">-p</span></samp>&rsquo;<dd>(<code>parse-only</code>) Only parse configuration, do not run.
+<br><dt>&lsquo;<samp><span class="samp">-v</span></samp>&rsquo;<dd>(<code>verbose</code>) Run in verbose mode. Should be combined with &lsquo;<samp><span class="samp">-F</span></samp>&rsquo; for debugging.
+</dl>
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<p><hr>
+<a name="Cfexecd-command-options"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Cfenvd-command-options">Cfenvd command options</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Cfservd-command-options">Cfservd command options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.3 cfexecd command options</h3>
+
+<p class="noindent">Note that GNU long options are available with the syntax
+<code>--longoption</code>.  The long names are given in brackets.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-1</span></samp>&rsquo;<dd>(<code>once</code>) Run once only, now. Do not run in background (daemon mode).
+<br><dt>&lsquo;<samp><span class="samp">-d</span></samp>&rsquo;<dd>(<code>debug</code>) Set debugging ouput. e.g. -d2
+<br><dt>&lsquo;<samp><span class="samp">-f</span></samp>&rsquo;<dd>(<code>file</code>) Set name of input file instead to default <samp><span class="file">cfservd.conf</span></samp>.
+<br><dt>&lsquo;<samp><span class="samp">-F</span></samp>&rsquo;<dd>(<code>no-fork</code>) Do not run in background (daemon mode).
+<br><dt>&lsquo;<samp><span class="samp">-g</span></samp>&rsquo;<dd>(<code>foreground</code>) Do not run in background (daemon mode).
+<br><dt>&lsquo;<samp><span class="samp">-h</span></samp>&rsquo;<dd>(<code>help</code>) Print help info.
+<br><dt>&lsquo;<samp><span class="samp">-L</span></samp>&rsquo;<dd>(<code>ld-library-path</code>) Set the internal <code>LD_LIBRARY_PATH</code> variable.
+<br><dt>&lsquo;<samp><span class="samp">-p</span></samp>&rsquo;<dd>(<code>parse-only</code>) Only parse configuration, do not run.
+<br><dt>&lsquo;<samp><span class="samp">-v</span></samp>&rsquo;<dd>(<code>verbose</code>) Run in verbose mode. Should be combined with &lsquo;<samp><span class="samp">-F</span></samp>&rsquo; for debugging.
+</dl>
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<p><hr>
+<a name="Cfenvd-command-options"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Cfrun-command-options">Cfrun command options</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Cfexecd-command-options">Cfexecd command options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.4 cfenvd command options</h3>
+
+<p class="noindent">Note that GNU long options are available with the syntax
+<code>--longoption</code>.  The long names are given in brackets.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-d</span></samp>&rsquo;<dd>(<code>debug</code>) Set debugging ouput. e.g. -d2
+<br><dt>&lsquo;<samp><span class="samp">-F</span></samp>&rsquo;<dd>(<code>no-fork</code>) Do not run in background (daemon mode).
+<br><dt>&lsquo;<samp><span class="samp">-h</span></samp>&rsquo;<dd>(<code>help</code>) Print help info.
+<br><dt>&lsquo;<samp><span class="samp">-H</span></samp>&rsquo;<dd>(<code>help</code>) Keep histogram data.
+
+     <br><dt>&lsquo;<samp><span class="samp">-T</span></samp>&rsquo;<dd>(<code>help</code>) Interface with <code>tcpdump</code> if present on the system.
+
+     <br><dt>&lsquo;<samp><span class="samp">-v</span></samp>&rsquo;<dd>(<code>verbose</code>) Run in verbose mode. Should be combined with &lsquo;<samp><span class="samp">-F</span></samp>&rsquo; for debugging.
+</dl>
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<p><hr>
+<a name="Cfrun-command-options"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#cfenvgraph">cfenvgraph</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Cfenvd-command-options">Cfenvd command options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.5 cfrun command options</h3>
+
+<p class="noindent">Note that GNU long options are available with the syntax
+<code>--longoption</code>.  The long names are given in brackets.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-d</span></samp>&rsquo;<dd>Set debugging ouput. e.g. -d2
+<br><dt>&lsquo;<samp><span class="samp">-h</span></samp>&rsquo;<dd>Print help info.
+<br><dt>&lsquo;<samp><span class="samp">-S</span></samp>&rsquo;<dd>Run silently.
+<br><dt>&lsquo;<samp><span class="samp">-T</span></samp>&rsquo;<dd>Trust all keys offered by remote servers automatically, i.e. suppress manual prompting.
+<br><dt>&lsquo;<samp><span class="samp">-v</span></samp>&rsquo;<dd>Run in verbose mode.
+<br><dt>&lsquo;<samp><span class="samp">--</span></samp>&rsquo;<dd>Separator for forwarding remaining options to remote systems. After the first
+&lsquo;<samp><span class="samp">--</span></samp>&rsquo; come options to send to cfagent on the remote system; after the
+second &lsquo;<samp><span class="samp">--</span></samp>&rsquo; you may list classes that you want to be defined on the remote system
+in order to activate parts of the configuration in the manner of role-based access
+control.
+     <pre class="smallexample">          e.g.  cfrun -- -- linux          Run on all linux machines
+                cfrun -- -p                Ping and parse on all hosts
+                cfrun host1 host2 -- -p    Ping and parse on named hosts
+                cfrun -v -- -p             Ping all, local verbose
+                cfrun -v -- -k -- solaris  Local verbose, all solaris, but no copy
+</pre>
+     </dl>
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<p><hr>
+<a name="cfenvgraph"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#cfshow">cfshow</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Cfrun-command-options">Cfrun command options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.6 cfenvgraph</h3>
+
+<p>Cfenvgraph is the tool that converts data stored by <code>cfenvd</code> into
+text files that can be used to produce graphs. Use another tool like
+<code>gnuplot</code> or <code>xmgrace</code> to generate scientific graphs. Use
+<code>cfbrain</code> to perform monitoring based on <code>cfenvd</code> data.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-e</span></samp>&rsquo;<dd>(<code>--no-error-bars</code>) Plot X,Y only, do not add error bars
+<br><dt>&lsquo;<samp><span class="samp">-E</span></samp>&rsquo;<dd>(<code>--erasehistory</code>) A comma separated list of metrics to be erased. The past week's data is not erased.
+<br><dt>&lsquo;<samp><span class="samp">-h</span></samp>&rsquo;<dd>(<code>--help</code>) Print help message.
+<br><dt>&lsquo;<samp><span class="samp">-f</span></samp>&rsquo;<dd>(<code>--file</code>) Specify a database other than the default.
+<br><dt>&lsquo;<samp><span class="samp">-n</span></samp>&rsquo;<dd>(<code>--no-scaling</code>) Do not perform automatic scaling of graphs.
+<br><dt>&lsquo;<samp><span class="samp">-N</span></samp>&rsquo;<dd>(<code>--now</code>) Plot an expanded view of the past four hours, not a weekly view.
+<br><dt>&lsquo;<samp><span class="samp">-o</span></samp>&rsquo;<dd>(<code>--outputdir</code>) Set the output directory name.
+<br><dt>&lsquo;<samp><span class="samp">-r</span></samp>&rsquo;<dd>(<code>--resolution</code>) Plot the data with maximum 5-minute resolution.
+<br><dt>&lsquo;<samp><span class="samp">-s</span></samp>&rsquo;<dd>(<code>--separate</code>) Plot one graph per metric, instead of all graphs on one trace.
+<br><dt>&lsquo;<samp><span class="samp">-t</span></samp>&rsquo;<dd>(<code>--titles</code>) Add title data to graph files.
+<br><dt>&lsquo;<samp><span class="samp">-T</span></samp>&rsquo;<dd>(<code>--timestamps</code>) Add a timestamp to the output directory name in order to keep a history.
+<br><dt>&lsquo;<samp><span class="samp">-v</span></samp>&rsquo;<dd>(<code>--verbose</code>) Verbose output.
+</dl>
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<p><hr>
+<a name="cfshow"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#cfkey">cfkey</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#cfenvgraph">cfenvgraph</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.7 cfshow</h3>
+
+<p>Cfshow is the tool that shows data recorded in cfengine's private
+workspace.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-a</span></samp>&rsquo;<dd>(<code>--active</code>) Display any action locks that are currently active.
+<br><dt>&lsquo;<samp><span class="samp">-A</span></samp>&rsquo;<dd>(<code>--audit</code>) Dump the system auditing history.
+<br><dt>&lsquo;<samp><span class="samp">-c</span></samp>&rsquo;<dd>(<code>--checksum</code>) Dump the database of cryptographic checksums.
+<br><dt>&lsquo;<samp><span class="samp">-C</span></samp>&rsquo;<dd>(<code>--classes</code>) Dump the class history of this host.
+<br><dt>&lsquo;<samp><span class="samp">-d</span></samp>&rsquo;<dd>(<code>--debug</code>) Show debugging output.
+<br><dt>&lsquo;<samp><span class="samp">-f</span></samp>&rsquo;<dd>(<code>--filename</code>) Change the default database names.
+<br><dt>&lsquo;<samp><span class="samp">-h</span></samp>&rsquo;<dd>(<code>--help</code>) Show help message.
+<br><dt>&lsquo;<samp><span class="samp">-H</span></samp>&rsquo;<dd>(<code>--html</code>) Generate output in html.
+<br><dt>&lsquo;<samp><span class="samp">-l</span></samp>&rsquo;<dd>(<code>--locks</code>) Show the historical database of all action locks.
+<br><dt>&lsquo;<samp><span class="samp">-p</span></samp>&rsquo;<dd>(<code>--performance</code>) Show data about performance of instrumented actions.
+<br><dt>&lsquo;<samp><span class="samp">-r</span></samp>&rsquo;<dd>(<code>--regex</code>) Show configuration rules in classes that match the regular expression argument.
+<br><dt>&lsquo;<samp><span class="samp">-s</span></samp>&rsquo;<dd>(<code>--last-seen</code>) Show the last-seen times of all observed peers.
+<br><dt>&lsquo;<samp><span class="samp">-X</span></samp>&rsquo;<dd>(<code>--xml</code>) Generate output in XML.
+<br><dt>&lsquo;<samp><span class="samp">-P</span></samp>&rsquo;<dd>(<code>--purge</code>) Purge data older than one week.
+<br><dt>&lsquo;<samp><span class="samp">-V</span></samp>&rsquo;<dd>(<code>--version</code>) Output version string.
+<br><dt>&lsquo;<samp><span class="samp">-v</span></samp>&rsquo;<dd>(<code>--verbose</code>) Verbose output.
+</dl>
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<p><hr>
+<a name="cfkey"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#cfshow">cfshow</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.8 cfkey</h3>
+
+<p>Has no options.
+
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+   <p><a name="Contents">
+
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine-Reference</a>
+<li><a name="toc_Command-reference" href="#Command-reference">1 Command reference</a>
+<ul>
+<li><a href="#Cfagent-command-options">1.1 cfagent command options</a>
+<li><a href="#Cfservd-command-options">1.2 cfservd command options</a>
+<li><a href="#Cfexecd-command-options">1.3 cfexecd command options</a>
+<li><a href="#Cfenvd-command-options">1.4 cfenvd command options</a>
+<li><a href="#Cfrun-command-options">1.5 cfrun command options</a>
+<li><a href="#cfenvgraph">1.6 cfenvgraph</a>
+<li><a href="#cfshow">1.7 cfshow</a>
+<li><a href="#cfkey">1.8 cfkey</a>
+</li></ul>
+</li></ul>
+</div>
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

@@ -1,0 +1,84 @@
+
+bundle knowledge st_devops
+
+{
+topics:
+
+"st-devops";
+Cfengine_for_Devops::
+    "Cloud computing is a rehearsal" ;
+Cfengine_for_Devops::
+    "Using CFEngine to integrate software components" ;
+Cfengine_for_Devops::
+    "Expressing subroutines in CFEngine" ;
+Cfengine_for_Devops::
+    "Expressing loops in CFEngine" ;
+Cfengine_for_Devops::
+    "Expressing conditionals in CFEngine" ;
+Cfengine_for_Devops::
+    "Expressing actions or tasks in CFEngine" ;
+Cfengine_for_Devops::
+    "Getting used to declarative expression" ;
+Cfengine_for_Devops::
+    "What role does CFEngine play in DevOps?" ;
+Cfengine_for_Devops::
+    "How do we make controlled change faster?" ;
+Cfengine_for_Devops::
+    "Should Web and IT management be closely related?" ;
+Cfengine_for_Devops::
+    "Why is DevOps happening now?" ;
+Cfengine_for_Devops::
+    "What is DevOps?" ;
+Special_Topics_Guide::
+    "Cfengine for Devops"  association => a("discussed in","Cfengine for Devops","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-devops.html"
+  represents => { "CFEngine for `DevOps'" };
+Cfengine_for_Devops::
+ "/docs/st-devops.html#Top"
+  represents => { "Text section" };
+What_is_DevOps_::
+ "/docs/st-devops.html#What-is-DevOps_003f"
+  represents => { "Text section" };
+Why_is_DevOps_happening_now_::
+ "/docs/st-devops.html#Why-is-DevOps-happening-now_003f"
+  represents => { "Text section" };
+Should_Web_and_IT_management_be_closely_related_::
+ "/docs/st-devops.html#Should-Web-and-IT-management-be-closely-related_003f"
+  represents => { "Text section" };
+How_do_we_make_controlled_change_faster_::
+ "/docs/st-devops.html#How-do-we-make-controlled-change-faster_003f"
+  represents => { "Text section" };
+What_role_does_CFEngine_play_in_DevOps_::
+ "/docs/st-devops.html#What-role-does-CFEngine-play-in-DevOps_003f"
+  represents => { "Text section" };
+Getting_used_to_declarative_expression::
+ "/docs/st-devops.html#Getting-used-to-declarative-expression"
+  represents => { "Text section" };
+Expressing_actions_or_tasks_in_CFEngine::
+ "/docs/st-devops.html#Expressing-actions-or-tasks-in-CFEngine"
+  represents => { "Text section" };
+Expressing_conditionals_in_CFEngine::
+ "/docs/st-devops.html#Expressing-conditionals-in-CFEngine"
+  represents => { "Text section" };
+Expressing_loops_in_CFEngine::
+ "/docs/st-devops.html#Expressing-loops-in-CFEngine"
+  represents => { "Text section" };
+Expressing_loops_in_CFEngine::
+ "/docs/st-devops.html#Expressing-loops-in-CFEngine"
+  represents => { "code example" };
+Expressing_subroutines_in_CFEngine::
+ "/docs/st-devops.html#Expressing-subroutines-in-CFEngine"
+  represents => { "Text section" };
+Using_CFEngine_to_integrate_software_components::
+ "/docs/st-devops.html#Using-CFEngine-to-integrate-software-components"
+  represents => { "Text section" };
+Cloud_computing_is_a_rehearsal::
+ "/docs/st-devops.html#Cloud-computing-is-a-rehearsal"
+  represents => { "Text section" };
+}
+

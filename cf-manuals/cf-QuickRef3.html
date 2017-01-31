@@ -1,0 +1,624 @@
+<html lang="en">
+<head>
+<title>Quick Reference Guide for cfengine 3</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Quick Reference Guide for cfengine 3">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; }
+  span.sansserif { font-family:sans-serif; font-weight:normal; }
+body {
+	font-family: Verdana, DejaVu, Vera, Geneva, sans-serif;
+	padding: 10px;
+}
+.node
+{
+	text-align: right;
+	padding: 2px;
+	font-size: smaller;
+}
+.node hr {
+	border: 0;
+	width: 100%;
+	color: #CCC;
+	background-color: #CCC;
+	height: 5px;
+}
+.section {
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+h1 {
+	font-weight: bold;
+	color: #666;
+}
+h2 {
+	font-weight: bold;
+	color: #666;
+}
+h3 {
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+}
+
+.menu
+{
+}
+
+.contents
+{
+	background-color: #CCC;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+}
+
+.index-cp
+{
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 70%; }
+
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+.verbatim {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+
+.example {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.smallexample {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.cartouche {
+	background-color: #CCC;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding: 5px;
+	font-style: italic;
+        width: 100%;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }--></style>
+</head>
+<body>
+<h1 class="settitle">Quick Reference Guide for cfengine 3</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Command-reference">Command reference</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine-Reference</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+
+   <p><h2>Summary of contents</h2>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<ul class="menu">
+<li><a accesskey="1" href="#Command-reference">Command reference</a>
+</ul>
+
+<div class="node">
+<a name="Command-reference"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Command reference</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#cf_002dpromises-_002d-cfengine_0027s-promise-analyzer">cf-promises - cfengine's promise analyzer</a>
+<li><a accesskey="2" href="#cf_002dagent-_002d-cfengine_0027s-change-agent">cf-agent - cfengine's change agent</a>
+<li><a accesskey="3" href="#cf_002dserverd-_002d-cfengine_0027s-server-agent">cf-serverd - cfengine's server agent</a>
+<li><a accesskey="4" href="#cf_002dexecd-_002d-cfengine_0027s-execution-agent">cf-execd - cfengine's execution agent</a>
+<li><a accesskey="5" href="#cf_002dmonitord-_002d-cfengine_0027s-monitoring-agent">cf-monitord - cfengine's monitoring agent</a>
+<li><a accesskey="6" href="#cf_002drunagent-_002d-Run-agent">cf-runagent - Run agent</a>
+<li><a accesskey="7" href="#cf_002dreport-_002d-cfengine_0027s-reporting-agent">cf-report - cfengine's reporting agent</a>
+<li><a accesskey="8" href="#cf_002dknow-_002d-cfengine_0027s-knowledge-agent">cf-know - cfengine's knowledge agent</a>
+<li><a accesskey="9" href="#cfkey">cfkey</a>
+</ul>
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="cf-promises---cfengine's-promise-analyzer"></a>
+<a name="cf_002dpromises-_002d-cfengine_0027s-promise-analyzer"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#cf_002dagent-_002d-cfengine_0027s-change-agent">cf-agent - cfengine's change agent</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Command-reference">Command reference</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.1 cf-promises - cfengine's promise analyzer</h3>
+
+<p>The promise agent is a validator and analysis tool for
+confguration files belonging to any of the components
+of cfengine. Configurations that make changes must be
+approved by this validator before being executed.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">--help</span></samp>&rsquo;<dd>(-h)       - Print the help message
+<br><dt>&lsquo;<samp><span class="samp">--debug</span></samp>&rsquo;<dd>(-d <var>value</var>) - Set debugging level 0,1,2,3
+<br><dt>&lsquo;<samp><span class="samp">--verbose</span></samp>&rsquo;<dd>(-v)       - Output verbose information about the behaviour of the agent
+<br><dt>&lsquo;<samp><span class="samp">--dry-run</span></samp>&rsquo;<dd>(-n)       - All talk and no action mode - make no changes, only inform of promises not kept
+<br><dt>&lsquo;<samp><span class="samp">--version</span></samp>&rsquo;<dd>(-V)       - Output the version of the software
+<br><dt>&lsquo;<samp><span class="samp">--file</span></samp>&rsquo;<dd>(-f <var>value</var>) - Specify an alternative input file than the default
+<br><dt>&lsquo;<samp><span class="samp">--define</span></samp>&rsquo;<dd>(-D) <var>value</var> - Define a list of comma separated classes to be defined at the start of execution
+<br><dt>&lsquo;<samp><span class="samp">--negate</span></samp>&rsquo;<dd>(-N) <var>value</var> - Define a list of comma separated classes to be undefined at the start of execution
+<br><dt>&lsquo;<samp><span class="samp">--inform</span></samp>&rsquo;<dd>(-I)       - Print basic information about changes made to the system, i.e. promises repaired
+<br><dt>&lsquo;<samp><span class="samp">--diagnostic</span></samp>&rsquo;<dd>(-x)       - Activate internal diagnostics (developers only)
+<br><dt>&lsquo;<samp><span class="samp">--analysis</span></samp>&rsquo;<dd>(-a)       - Perform additional analysis of configuration
+<br><dt>&lsquo;<samp><span class="samp">--reports</span></samp>&rsquo;<dd>(-r)       - Generate reports about configuration
+
+   </dl>
+
+   <p>Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="cf-agent---cfengine's-change-agent"></a>
+<a name="cf_002dagent-_002d-cfengine_0027s-change-agent"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#cf_002dserverd-_002d-cfengine_0027s-server-agent">cf-serverd - cfengine's server agent</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#cf_002dpromises-_002d-cfengine_0027s-promise-analyzer">cf-promises - cfengine's promise analyzer</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.2 cf-agent - cfengine's change agent</h3>
+
+<p>The main cfengine agent is the instigator of change
+in the system. In that sense it is the most important
+part of the cfengine suite.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">--bootstrap</span></samp>&rsquo;<dd>(-B)       - Bootstrap/repair a cfengine configuration from failsafe file in the current directory
+
+     <br><dt>&lsquo;<samp><span class="samp">--bundlsequence</span></samp>&rsquo;<dd>(-b)       - Set or override bundlesequence from command line
+
+     <br><dt>&lsquo;<samp><span class="samp">--debug</span></samp>&rsquo;<dd>(-d <var>value</var>) - Set debugging level 0,1,2,3
+
+     <br><dt>&lsquo;<samp><span class="samp">--define</span></samp>&rsquo;<dd>(-D <var>value</var>) - Define a list of comma separated classes to be defined at the start of execution
+
+     <br><dt>&lsquo;<samp><span class="samp">--diagnostic</span></samp>&rsquo;<dd>(-x)       - Activate internal diagnostics (developers only)
+
+     <br><dt>&lsquo;<samp><span class="samp">--dry-run</span></samp>&rsquo;<dd>(-n)       - All talk and no action mode - make no changes, only inform of promises not kept
+
+     <br><dt>&lsquo;<samp><span class="samp">--file</span></samp>&rsquo;<dd>(-f <var>value</var>) - Specify an alternative input file than the default
+
+     <br><dt>&lsquo;<samp><span class="samp">--help</span></samp>&rsquo;<dd>(-h)       - Print the help message
+
+     <br><dt>&lsquo;<samp><span class="samp">--inform</span></samp>&rsquo;<dd>(-I)       - Print basic information about changes made to the system, i.e. promises repaired
+
+     <br><dt>&lsquo;<samp><span class="samp">--negate</span></samp>&rsquo;<dd>(-N <var>value</var>) - Define a list of comma separated classes to be undefined at the start of execution
+
+     <br><dt>&lsquo;<samp><span class="samp">--no-lock</span></samp>&rsquo;<dd>(-K)       - Ignore locking constraints during execution (ifelapsed/expireafter) if "too soon" to run
+
+     <br><dt>&lsquo;<samp><span class="samp">--policy-server</span></samp>&rsquo;<dd>(-B)       - Define the server name or IP address of the a policy server (for use with bootstrap). Works in Enterprise versions only.
+
+     <br><dt>&lsquo;<samp><span class="samp">--verbose</span></samp>&rsquo;<dd>(-v)       - Output verbose information about the behaviour of the agent
+
+     <br><dt>&lsquo;<samp><span class="samp">--version</span></samp>&rsquo;<dd>(-V)       - Output the version of the software
+
+   </dl>
+
+   <p>Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="cf-serverd---cfengine's-server-agent"></a>
+<a name="cf_002dserverd-_002d-cfengine_0027s-server-agent"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#cf_002dexecd-_002d-cfengine_0027s-execution-agent">cf-execd - cfengine's execution agent</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#cf_002dagent-_002d-cfengine_0027s-change-agent">cf-agent - cfengine's change agent</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.3 cf-serverd - cfengine's server agent</h3>
+
+<p>The server daemon provides two services: it acts as a
+file server for remote file copying and it allows an
+authorized cf-runagent to start start a cf-agent process
+and set certain additional classes with role-based access
+control.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">--help</span></samp>&rsquo;<dd>(-h)       - Print the help message
+<br><dt>&lsquo;<samp><span class="samp">--debug</span></samp>&rsquo;<dd>(-d <var>value</var>) - Set debugging level 0,1,2,3
+<br><dt>&lsquo;<samp><span class="samp">--verbose</span></samp>&rsquo;<dd>(-v)       - Output verbose information about the behaviour of the agent
+<br><dt>&lsquo;<samp><span class="samp">--dry-run</span></samp>&rsquo;<dd>(-n)       - All talk and no action mode - make no changes, only inform of promises not kept
+<br><dt>&lsquo;<samp><span class="samp">--version</span></samp>&rsquo;<dd>(-V)       - Output the version of the software
+<br><dt>&lsquo;<samp><span class="samp">--file</span></samp>&rsquo;<dd>(-f <var>value</var>) - Specify an alternative input file than the default
+<br><dt>&lsquo;<samp><span class="samp">--define</span></samp>&rsquo;<dd>(-D <var>value</var>) - Define a list of comma separated classes to be defined at the start of execution
+<br><dt>&lsquo;<samp><span class="samp">--negate</span></samp>&rsquo;<dd>(-N <var>value</var>) - Define a list of comma separated classes to be undefined at the start of execution
+<br><dt>&lsquo;<samp><span class="samp">--no-lock</span></samp>&rsquo;<dd>(-K)       - Ignore locking constraints during execution (ifelapsed/expireafter) if "too soon" to run
+<br><dt>&lsquo;<samp><span class="samp">--inform</span></samp>&rsquo;<dd>(-I)       - Print basic information about changes made to the system, i.e. promises repaired
+<br><dt>&lsquo;<samp><span class="samp">--diagnostic</span></samp>&rsquo;<dd>(-x)       - Activate internal diagnostics (developers only)
+<br><dt>&lsquo;<samp><span class="samp">--no-fork</span></samp>&rsquo;<dd>(-F)       - Run as a foreground processes (do not fork)
+<br><dt>&lsquo;<samp><span class="samp">--ld-library-path</span></samp>&rsquo;<dd>(-L <var>value</var>) - Set the internal value of LD_LIBRARY_PATH for child processes
+</dl>
+
+   <p>Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="cf-execd---cfengine's-execution-agent"></a>
+<a name="cf_002dexecd-_002d-cfengine_0027s-execution-agent"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#cf_002dmonitord-_002d-cfengine_0027s-monitoring-agent">cf-monitord - cfengine's monitoring agent</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#cf_002dserverd-_002d-cfengine_0027s-server-agent">cf-serverd - cfengine's server agent</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.4 cf-execd - cfengine's execution agent</h3>
+
+<p>The executor daemon is a scheduler and wrapper for
+execution of cf-agent. It collects the output of the
+agent and can email it to a specified address. It can
+splay the start time of executions across the network
+and work as a class-based clock for scheduling.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">--help</span></samp>&rsquo;<dd>(-h)       - Print the help message
+<br><dt>&lsquo;<samp><span class="samp">--debug</span></samp>&rsquo;<dd>(-d <var>value</var>) - Set debugging level 0,1,2,3
+<br><dt>&lsquo;<samp><span class="samp">--verbose</span></samp>&rsquo;<dd>(-v)       - Output verbose information about the behaviour of the agent
+<br><dt>&lsquo;<samp><span class="samp">--dry-run</span></samp>&rsquo;<dd>(-n)       - All talk and no action mode - make no changes, only inform of promises not kept
+<br><dt>&lsquo;<samp><span class="samp">--version</span></samp>&rsquo;<dd>(-V)       - Output the version of the software
+<br><dt>&lsquo;<samp><span class="samp">--file</span></samp>&rsquo;<dd>(-f <var>value</var>) - Specify an alternative input file than the default
+<br><dt>&lsquo;<samp><span class="samp">--define</span></samp>&rsquo;<dd>(-D <var>value</var>) - Define a list of comma separated classes to be defined at the start of execution
+<br><dt>&lsquo;<samp><span class="samp">--negate</span></samp>&rsquo;<dd>(-N <var>value</var>) - Define a list of comma separated classes to be undefined at the start of execution
+<br><dt>&lsquo;<samp><span class="samp">--no-lock</span></samp>&rsquo;<dd>(-K)       - Ignore locking constraints during execution (ifelapsed/expireafter) if "too soon" to run
+<br><dt>&lsquo;<samp><span class="samp">--inform</span></samp>&rsquo;<dd>(-I)       - Print basic information about changes made to the system, i.e. promises repaired
+<br><dt>&lsquo;<samp><span class="samp">--diagnostic</span></samp>&rsquo;<dd>(-x)       - Activate internal diagnostics (developers only)
+<br><dt>&lsquo;<samp><span class="samp">--no-fork</span></samp>&rsquo;<dd>(-F)       - Run as a foreground processes (do not fork)
+
+     <br><dt>&lsquo;<samp><span class="samp">--no-winsrv</span></samp>&rsquo;<dd>(-W)       - Do not run as a service on windows - use this when running from a command shell (commercial editions only)
+
+     <br><dt>&lsquo;<samp><span class="samp">--ld-library-path</span></samp>&rsquo;<dd>(-L <var>value</var>) - Set the internal value of LD_LIBRARY_PATH for child processes
+
+   </dl>
+   Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="cf-monitord---cfengine's-monitoring-agent"></a>
+<a name="cf_002dmonitord-_002d-cfengine_0027s-monitoring-agent"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#cf_002drunagent-_002d-Run-agent">cf-runagent - Run agent</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#cf_002dexecd-_002d-cfengine_0027s-execution-agent">cf-execd - cfengine's execution agent</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.5 cf-monitord - cfengine's monitoring agent</h3>
+
+<p>The monitoring agent is a machine-learning, sampling
+daemon which learns the normal state of the current
+host and classifies new observations in terms of the
+patterns formed by previous ones. The data are made
+available to and read by cf-agent for classification
+of responses to anomalous states.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">--help</span></samp>&rsquo;<dd>(-h)       - Print the help message
+<br><dt>&lsquo;<samp><span class="samp">--debug</span></samp>&rsquo;<dd>(-d <var>value</var>) - Set debugging level 0,1,2,3
+<br><dt>&lsquo;<samp><span class="samp">--verbose</span></samp>&rsquo;<dd>(-v)       - Output verbose information about the behaviour of the agent
+<br><dt>&lsquo;<samp><span class="samp">--dry-run</span></samp>&rsquo;<dd>(-n)       - All talk and no action mode - make no changes, only inform of promises not kept
+<br><dt>&lsquo;<samp><span class="samp">--version</span></samp>&rsquo;<dd>(-V)       - Output the version of the software
+<br><dt>&lsquo;<samp><span class="samp">--no-lock</span></samp>&rsquo;<dd>(-K)       - Ignore system lock
+<br><dt>&lsquo;<samp><span class="samp">--file</span></samp>&rsquo;<dd>(-f <var>value</var>) - Specify an alternative input file than the default
+<br><dt>&lsquo;<samp><span class="samp">--inform</span></samp>&rsquo;<dd>(-I)       - Print basic information about changes made to the system, i.e. promises repaired
+<br><dt>&lsquo;<samp><span class="samp">--diagnostic</span></samp>&rsquo;<dd>(-x)       - Activate internal diagnostics (developers only)
+<br><dt>&lsquo;<samp><span class="samp">--no-fork</span></samp>&rsquo;<dd>(-F)       - Run process in foreground, not as a daemon
+<br><dt>&lsquo;<samp><span class="samp">--histograms</span></samp>&rsquo;<dd>(-H)       - Store informatino about histograms / distributions
+<br><dt>&lsquo;<samp><span class="samp">--tcpdump</span></samp>&rsquo;<dd>(-T)       - Interface with tcpdump if available to collect data about network
+
+   </dl>
+
+   <p>Debug levels: 1=parsing, 2=running, 3=summary,
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="cf-runagent---Run-agent"></a>
+<a name="cf_002drunagent-_002d-Run-agent"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#cf_002dreport-_002d-cfengine_0027s-reporting-agent">cf-report - cfengine's reporting agent</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#cf_002dmonitord-_002d-cfengine_0027s-monitoring-agent">cf-monitord - cfengine's monitoring agent</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.6 cf-runagent - Run agent</h3>
+
+<p>The run agent connects to a list of running instances of
+the cf-serverd service. The agent allows a user to
+forego the usual scheduling interval for the agent and
+activate cf-agent on a remote host. Additionally, a user
+can send additional classes to be defined on the remote
+host. Two kinds of classes may be sent: classes to decide
+on which hosts the agent will be started, and classes that
+the user requests the agent should define on execution.
+The latter type is regulated by cfserverd's role based
+access control.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">--help</span></samp>&rsquo;<dd>(-h)       - Print the help message
+<br><dt>&lsquo;<samp><span class="samp">--background</span></samp>&rsquo;<dd>(-b <var>value</var>) - Parallelize connections (50 by default)
+<br><dt>&lsquo;<samp><span class="samp">--debug</span></samp>&rsquo;<dd>(-d <var>value</var>) - Set debugging level 0,1,2,3
+<br><dt>&lsquo;<samp><span class="samp">--verbose</span></samp>&rsquo;<dd>(-v)       - Output verbose information about the behaviour of the agent
+<br><dt>&lsquo;<samp><span class="samp">--dry-run</span></samp>&rsquo;<dd>(-n)       - All talk and no action mode - make no changes, only inform of promises not kept
+<br><dt>&lsquo;<samp><span class="samp">--version</span></samp>&rsquo;<dd>(-V)       - Output the version of the software
+<br><dt>&lsquo;<samp><span class="samp">--file</span></samp>&rsquo;<dd>(-f <var>value</var>) - Specify an alternative input file than the default
+<br><dt>&lsquo;<samp><span class="samp">--define-class</span></samp>&rsquo;<dd>(-D <var>value</var>) - Define a list of comma separated classes to be sent to a remote agent
+<br><dt>&lsquo;<samp><span class="samp">--select-class</span></samp>&rsquo;<dd>(-s <var>value</var>) - Define a list of comma separated classes to be used to select remote agents by constraint
+<br><dt>&lsquo;<samp><span class="samp">--inform</span></samp>&rsquo;<dd>(-I)       - Print basic information about changes made to the system, i.e. promises repaired
+<br><dt>&lsquo;<samp><span class="samp">--remote-options</span></samp>&rsquo;<dd>(-o <var>value</var>) - Pass options to a remote server process
+<br><dt>&lsquo;<samp><span class="samp">--diagnostic</span></samp>&rsquo;<dd>(-x)       - Activate internal diagnostics (developers only)
+
+     <br><dt>&lsquo;<samp><span class="samp">--hail</span></samp>&rsquo;<dd>-H value - Hail the following comma-separated lists of hosts, overriding default list
+<br><dt>&lsquo;<samp><span class="samp">--interactive</span></samp>&rsquo;<dd>(-i)       - Enable interactive mode for key trust
+<br><dt>&lsquo;<samp><span class="samp">--query</span></samp>&rsquo;<dd>(-q <var>value</var>) - Query a server for a knowledge menu (commercial editions only)
+<br><dt>&lsquo;<samp><span class="samp">--timeout</span></samp>&rsquo;<dd>(-t <var>value</var>) - Connection timeout, seconds
+
+   </dl>
+
+   <p>Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="cf-report---cfengine's-reporting-agent"></a>
+<a name="cf_002dreport-_002d-cfengine_0027s-reporting-agent"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#cf_002dknow-_002d-cfengine_0027s-knowledge-agent">cf-know - cfengine's knowledge agent</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#cf_002drunagent-_002d-Run-agent">cf-runagent - Run agent</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.7 cf-report - cfengine's reporting agent</h3>
+
+<p>The reporting agent is a merger between the older
+cfengine programs cfshow and cfenvgraph. It outputs
+data stored in cfengine's embedded databases in human
+readable form.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">--help</span></samp>&rsquo;<dd>(-h)       - Print the help message
+<br><dt>&lsquo;<samp><span class="samp">--debug</span></samp>&rsquo;<dd>(-d <var>value</var>) - Set debugging level 0,1,2,3
+<br><dt>&lsquo;<samp><span class="samp">--verbose</span></samp>&rsquo;<dd>(-v)       - Output verbose information about the behaviour of the agent
+<br><dt>&lsquo;<samp><span class="samp">--version</span></samp>&rsquo;<dd>(-V)       - Output the version of the software
+<br><dt>&lsquo;<samp><span class="samp">--file</span></samp>&rsquo;<dd>(-f <var>value</var>) - Specify an alternative input file than the default
+<br><dt>&lsquo;<samp><span class="samp">--html</span></samp>&rsquo;<dd>(-H)       - Print output in HTML
+<br><dt>&lsquo;<samp><span class="samp">--xml</span></samp>&rsquo;<dd>(-X)       - Print output in XML
+<br><dt>&lsquo;<samp><span class="samp">--version</span></samp>&rsquo;<dd>(-V)       - Print version string for software
+<br><dt>&lsquo;<samp><span class="samp">--purge</span></samp>&rsquo;<dd>(-P)       - Purge data about peers not seen beyond the threshold horizon for assumed-dead
+<br><dt>&lsquo;<samp><span class="samp">--erasehistory</span></samp>&rsquo;<dd>(-E <var>value</var>) - Erase historical data from the cf-monitord monitoring database
+<br><dt>&lsquo;<samp><span class="samp">--outputdir</span></samp>&rsquo;<dd>(-o <var>value</var>) - Set output directory for printing graph data
+<br><dt>&lsquo;<samp><span class="samp">--titles</span></samp>&rsquo;<dd>(-t)       - Add title data to generated graph files
+<br><dt>&lsquo;<samp><span class="samp">--timestamps</span></samp>&rsquo;<dd>(-T)       - Add a time stamp to directory name for graph file data
+<br><dt>&lsquo;<samp><span class="samp">--resolution</span></samp>&rsquo;<dd>(-R)       - Print graph data in high resolution
+<br><dt>&lsquo;<samp><span class="samp">--no-error-bars</span></samp>&rsquo;<dd>(-e)       - Do not add error bars to the printed graphs
+<br><dt>&lsquo;<samp><span class="samp">--no-scaling</span></samp>&rsquo;<dd>(-n)       - Do not automatically scale the axes
+<br><dt>&lsquo;<samp><span class="samp">--verbose</span></samp>&rsquo;<dd>(-v)       - Generate verbose output
+<br><dt>&lsquo;<samp><span class="samp">--remove-hosts,</span></samp>&rsquo;<dd>(-r <var>value</var>) - Remove comma separated list of IP address entries from the hosts-seen database
+</dl>
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="cf-know---cfengine's-knowledge-agent"></a>
+<a name="cf_002dknow-_002d-cfengine_0027s-knowledge-agent"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#cfkey">cfkey</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#cf_002dreport-_002d-cfengine_0027s-reporting-agent">cf-report - cfengine's reporting agent</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.8 cf-know - cfengine's knowledge agent</h3>
+
+<p>The knowledge management agent is capable of building
+an analysing a semantic knowledge network. It can
+configure a relational database to contain an ISO
+standard topic map and permit regular-expression based
+searching of the map. Analysis of the semantic network
+can be performed providing graphical output of the data,
+and cfknow can assemble and converge the reference manual
+for the current version of the cfengine software.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">--help</span></samp>&rsquo;<dd>(-h)       - Print the help message
+<br><dt>&lsquo;<samp><span class="samp">--debug</span></samp>&rsquo;<dd>(-d <var>value</var>) - Set debugging level 0,1,2,3
+<br><dt>&lsquo;<samp><span class="samp">--verbose</span></samp>&rsquo;<dd>(-v)       - Output verbose information about the behaviour of the agent
+<br><dt>&lsquo;<samp><span class="samp">--dry-run</span></samp>&rsquo;<dd>(-n)       - All talk and no action mode - make no changes, only inform of promises not kept
+<br><dt>&lsquo;<samp><span class="samp">--version</span></samp>&rsquo;<dd>(-V)       - Output the version of the software
+<br><dt>&lsquo;<samp><span class="samp">--file</span></samp>&rsquo;<dd>(-f <var>value</var>) - Specify an alternative input file than the default
+<br><dt>&lsquo;<samp><span class="samp">--graphs</span></samp>&rsquo;<dd>(-g)       - Generate graphs from topic map data
+<br><dt>&lsquo;<samp><span class="samp">--html</span></samp>&rsquo;<dd>(-H)       - Output queries in HTML
+<br><dt>&lsquo;<samp><span class="samp">--manual</span></samp>&rsquo;<dd>(-m)       - Generate reference manual from internal data
+<br><dt>&lsquo;<samp><span class="samp">--regex</span></samp>&rsquo;<dd>(-r <var>value</var>) - Specify a regular expression for searching the topic map
+<br><dt>&lsquo;<samp><span class="samp">--sql</span></samp>&rsquo;<dd>(-s)       - Store topic map in defined SQL database
+<br><dt>&lsquo;<samp><span class="samp">--topic</span></samp>&rsquo;<dd>(-t <var>value</var>) - Specify a literal string topic to look up in the topic map
+
+   </dl>
+   Debug levels: 1=parsing, 2=running, 3=summary, 4
+
+<!-- ********************************************************************** -->
+<!-- SECTION -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="cfkey"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#cf_002dknow-_002d-cfengine_0027s-knowledge-agent">cf-know - cfengine's knowledge agent</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Command-reference">Command reference</a>
+
+</div>
+
+<h3 class="section">1.9 cfkey</h3>
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">--help</span></samp>&rsquo;<dd>(-h)       - Print the help message
+<br><dt>&lsquo;<samp><span class="samp">--debug</span></samp>&rsquo;<br><dt>&lsquo;<samp><span class="samp">--output-file</span></samp>&rsquo;<dd>(-f <var>value</var>) - Specify an alternative output file than the default (localhost.*)
+
+     <p>(-d <var>value</var>) - Set debugging level 0,1,2,3
+<br><dt>&lsquo;<samp><span class="samp">--verbose</span></samp>&rsquo;<dd>(-v)       - Output verbose information about the behaviour of the agent
+<br><dt>&lsquo;<samp><span class="samp">--version</span></samp>&rsquo;<dd>(-V)       - Output the version of the software
+
+</dl>
+
+<!-- ========================================================================= -->
+<!-- @node Index, CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+   <p><a name="Contents">
+
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine-Reference</a>
+<li><a name="toc_Command-reference" href="#Command-reference">1 Command reference</a>
+<ul>
+<li><a href="#cf_002dpromises-_002d-cfengine_0027s-promise-analyzer">1.1 cf-promises - cfengine's promise analyzer</a>
+<li><a href="#cf_002dagent-_002d-cfengine_0027s-change-agent">1.2 cf-agent - cfengine's change agent</a>
+<li><a href="#cf_002dserverd-_002d-cfengine_0027s-server-agent">1.3 cf-serverd - cfengine's server agent</a>
+<li><a href="#cf_002dexecd-_002d-cfengine_0027s-execution-agent">1.4 cf-execd - cfengine's execution agent</a>
+<li><a href="#cf_002dmonitord-_002d-cfengine_0027s-monitoring-agent">1.5 cf-monitord - cfengine's monitoring agent</a>
+<li><a href="#cf_002drunagent-_002d-Run-agent">1.6 cf-runagent - Run agent</a>
+<li><a href="#cf_002dreport-_002d-cfengine_0027s-reporting-agent">1.7 cf-report - cfengine's reporting agent</a>
+<li><a href="#cf_002dknow-_002d-cfengine_0027s-knowledge-agent">1.8 cf-know - cfengine's knowledge agent</a>
+<li><a href="#cfkey">1.9 cfkey</a>
+</li></ul>
+</li></ul>
+</div>
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

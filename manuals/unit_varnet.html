@@ -1,0 +1,21 @@
+ <div id="wholebody"><div id="pagebody"><div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div><div id="content">
+<pre>
+<h1>Cfengine 3 example unit_varnet.html</h1>
+
+body common control
+{
+bundlesequence => { "test" };
+}
+
+
+
+bundle agent test
+{
+classes:
+  "all" expression => "any";
+
+reports:
+  all::
+    "My default interface and ip4 address is $(sys.interface) and $(sys.ipv4)";
+	"Can also extract $(sys.ipv4[Local_Area_Connection_3]), $(sys.ipv4_2[Wireless_Network_Connection])";
+}</div><div class="rbottom"><div class="r4"></div><div class="r3"></div><div class="r2"></div><div class="r1"></div></div></div></div></div>

@@ -1,0 +1,49 @@
+
+bundle knowledge SpecialTopic_BDMA
+
+{
+topics:
+
+"SpecialTopic_BDMA";
+Special_Topics_Guide::
+    "Summary BDMA workflow"  association => a("discusses","BDMA","is discussed in");
+Special_Topics_Guide::
+    "Recommendations for Audit"  association => a("discusses","BDMA","is discussed in");
+Special_Topics_Guide::
+    "Recommendations for Manage"  association => a("discusses","BDMA","is discussed in");
+Special_Topics_Guide::
+    "Recommendations for Deploy"  association => a("discusses","BDMA","is discussed in");
+Special_Topics_Guide::
+    "Recommendations for Build"  association => a("discusses","BDMA","is discussed in");
+Special_Topics_Guide::
+    "Stem cell hosts"  association => a("discusses","BDMA","is discussed in");
+Special_Topics_Guide::
+    "What is BDMA?"  association => a("discusses","BDMA","is discussed in");
+Special_Topics_Guide::
+    "BDMA"  association => a("discusses","BDMA","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_BDMA.html"
+  represents => { "Official CFEngine document"},  about_topics => { "bdma" };
+ "/knowledge/docs/SpecialTopic_BDMA.html"
+  represents => { "Special Topics Guide"},  about_topics => { "bdma" };
+ "/knowledge/docs/SpecialTopic_BDMA.html#Top"
+  represents => { "Text section" }, about_topics => { "bdma" };
+ "/knowledge/docs/SpecialTopic_BDMA.html#What-is-BDMA_003f"
+  represents => { "Text section" }, about_topics => { "what is bdma?" };
+ "/knowledge/docs/SpecialTopic_BDMA.html#Stem-cell-hosts"
+  represents => { "Text section" }, about_topics => { "stem cell hosts" };
+ "/knowledge/docs/SpecialTopic_BDMA.html#Recommendations-for-Build"
+  represents => { "Text section" }, about_topics => { "recommendations for build" };
+ "/knowledge/docs/SpecialTopic_BDMA.html#Recommendations-for-Deploy"
+  represents => { "Text section" }, about_topics => { "recommendations for deploy" };
+ "/knowledge/docs/SpecialTopic_BDMA.html#Recommendations-for-Manage"
+  represents => { "Text section" }, about_topics => { "recommendations for manage" };
+ "/knowledge/docs/SpecialTopic_BDMA.html#Recommendations-for-Audit"
+  represents => { "Text section" }, about_topics => { "recommendations for audit" };
+ "/knowledge/docs/SpecialTopic_BDMA.html#Summary-BDMA-workflow"
+  represents => { "Text section" }, about_topics => { "summary bdma workflow" };
+}
+

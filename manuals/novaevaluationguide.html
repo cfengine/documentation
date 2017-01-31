@@ -1,0 +1,1442 @@
+<html lang="en">
+<head>
+<title>CFEngine 3 Nova Evaluation Guide</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CFEngine 3 Nova Evaluation Guide">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">CFEngine 3 Nova Evaluation Guide</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine 3 Nova Evaluation Guide</h2>
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine 3 Nova Evaluation Guide</a>
+<li><a name="toc_Introduction" href="#Introduction">1 Introduction</a>
+<li><a name="toc_Get-started" href="#Get-started">2 Get started</a>
+<ul>
+<li><a href="#Accessing-CFEngine-3-Nova">2.1 Accessing CFEngine 3 Nova</a>
+<li><a href="#CFEngine-terms-used-in-this-document">2.2 CFEngine terms used in this document</a>
+<li><a href="#Status-room">2.3 Status room</a>
+<ul>
+<li><a href="#Business-Value-and-Host-Status">2.3.1 Business Value and Host Status</a>
+<li><a href="#Compliance-Summary">2.3.2 Compliance Summary</a>
+<li><a href="#Services_002fGoals">2.3.3 Services/Goals</a>
+</li></ul>
+<li><a href="#Engineering-room">2.4 Engineering room</a>
+<ul>
+<li><a href="#Host-Status-_0028last-hour_0029">2.4.1 Host Status (last hour)</a>
+<li><a href="#Promise-compliance-summary-for-reachable-hosts">2.4.2 Promise compliance summary for reachable hosts</a>
+<li><a href="#Finders">2.4.3 Finders</a>
+</li></ul>
+<li><a href="#Planning-room">2.5 Planning room</a>
+<li><a href="#Library-room">2.6 Library room</a>
+<li><a href="#Shell-access-_0028evaluation-feature-only_0029">2.7 Shell access (evaluation feature only)</a>
+</li></ul>
+<li><a name="toc_Standard-reports-in-CFEngine-3-Nova" href="#Standard-reports-in-CFEngine-3-Nova">3 Standard reports in CFEngine 3 Nova</a>
+<ul>
+<li><a href="#Reports-finder">3.1 Reports finder</a>
+<li><a href="#Example-_002d-Software-report">3.2 Example - Software report</a>
+</li></ul>
+<li><a name="toc_Content-Driven-Policy-_0028CDP_0029-reports" href="#Content-Driven-Policy-_0028CDP_0029-reports">4 Content Driven Policy (CDP) reports</a>
+<ul>
+<li><a href="#Example-_002d-ACLs-_0028file-access-controls_0029">4.1 Example - ACLs (file access controls)</a>
+</li></ul>
+<li><a name="toc_Introduction-to-CFEngine-policies" href="#Introduction-to-CFEngine-policies">5 Introduction to CFEngine policies</a>
+<ul>
+<li><a href="#Content-Driven-Policy">5.1 Content Driven Policy</a>
+<li><a href="#CFEngine-syntax">5.2 CFEngine syntax</a>
+</li></ul>
+<li><a name="toc_Next-steps" href="#Next-steps">6 Next steps</a>
+<li><a name="toc_Policy-editing" href="#Policy-editing">Appendix A Policy editing</a>
+<ul>
+<li><a href="#The-Policy-Editor-_0028beta_0029">A.1 The Policy Editor (beta)</a>
+<li><a href="#Edit-a-CDP-input-file">A.2 Edit a CDP input file</a>
+<li><a href="#Create-a-standard-policy">A.3 Create a standard policy</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+<ul class="menu">
+<li><a accesskey="1" href="#Introduction">Introduction</a>
+<li><a accesskey="2" href="#Get-started">Get started</a>
+<li><a accesskey="3" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+<li><a accesskey="4" href="#Content-Driven-Policy-_0028CDP_0029-reports">Content Driven Policy (CDP) reports</a>
+<li><a accesskey="5" href="#Introduction-to-CFEngine-policies">Introduction to CFEngine policies</a>
+<li><a accesskey="6" href="#Next-steps">Next steps</a>
+<li><a accesskey="7" href="#Policy-editing">Policy editing</a>
+<li><a accesskey="8" href="#Shell-access-_0028evaluation-feature-only_0029">Shell access (evaluation feature only)</a>
+</ul>
+
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Introduction"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Get-started">Get started</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Introduction</h2>
+
+<p>CFEngine comes in two software editions: CFEngine Community and CFEngine 3 Nova. CFEngine 3 Nova is a commercial subscription offering, with simple productivity enhancements and reporting extensions. Features include compliance management, reporting and business integration, and tools for handling necessary complexity. CFEngine 3 Nova has features to support Cloud Computing for public and private clouds, as well as greater integration facilities with database resources.
+
+   <p>The evaluation program aims to familiarize the user with CFEngine 3 Nova through examples and practical use of the Nova Mission Portal, a web based graphical user interface. You do not need experience with CFEngine 3, the current document provides a step-by-step guide to help you find and use the product's major features.  Of course, the deeper knowledge of system administration and CFEngine 3 language that you possess, the more you will get out of this evaluation.
+
+   <p>The Mission Portal is the centerpiece of user interaction with CFEngine 3 Nova, designed to suit the needs of the next generation of system administrators and IT managers alike. The evaluation program will allow the user to quickly:
+
+<!-- @itemize - -->
+<!-- @item View standard reports -->
+<!-- @item Create (query) reports -->
+<!-- @item Modify a Content Dependent Policy (CDP) data list, and verify the result -->
+<!-- @item Edit a generic policy and verify the result -->
+<!-- @item Create a generic policy and verify the result -->
+<!-- @end itemize -->
+     <ul>
+<li>View the status of all servers (e.g. availability, compliance, performance)
+<li>Consult out-of-the-box reports, such as:
+          <ul>
+<li>Software installed (by machine)
+<li>Compliance
+<li>File diffs
+<li>Promises not kept
+</ul>
+     <li>Understand a simple CFEngine Policy file
+<!-- @item Experiment with CFEngine Policy files -->
+<!-- @item Drill-down and configure individual servers, files, services, etc. -->
+</ul>
+
+   <p>For the purpose of this evaluation program, CFEngine 3 Nova has been set up in a network comprising several nodes. One node serves as a central hub to distribute CFEngine configuration policies and collect reports from the other nodes (clients). They run on different operating systems, comprising several linux flavors and windows servers.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<i>If you have not already done so, you may request access to the CFEngine Nova Evaluation Program by entering your information at</i> <a href="http://cfengine.com/evaluation">http://cfengine.com/evaluation</a>. 
+</td></tr></table>
+
+<!--  -->
+<!-- @node -->
+<!-- @section CFEngine 3 Nova -->
+<!-- CFEngine software automates large-scale IT computing infrastructure, ensuring the availability, security and compliance of mission-critical applications and services. Our software is built upon well-established theory and high-quality engineering practices, as a result CFEngine has enjoyed an outstanding security record over its 18-year history. -->
+<!--  -->
+<!-- @node -->
+<!-- @section Pilot scope -->
+<!-- To CFEngine, IT operations is @i{The Mission}. The Nova Mission Portal was designed to give users an understanding of the current and past state of their system and act as a control and collaboration center. We will look at these concepts in the following sections and allow the user to quickly: -->
+<!-- To CFEngine, IT operations is @i{The Mission}. The Nova Mission Portal was designed to give users an understanding of the current and past state of their system, act as a control and collaboration center, and serve as a knowledge base. We will look at these concepts in the following sections and allow the user to quickly: -->
+<!-- @enumerate -->
+<!-- @item View standard reports -->
+<!-- @item Create (query) reports -->
+<!-- @item Modify a Content Dependent Policy (CDP) data list, and verify the result -->
+<!-- @item Edit a generic policy and verify the result -->
+<!-- @item Create a generic policy and verify the result -->
+<!-- @end enumerate -->
+<!-- For the purpose of this pilot program, CFEngine 3 Nova has been set up in a network comprising several nodes. One node serves as a central hub to distribute CFEngine configuration policies and collect reports from the other nodes (clients). They run on different operating systems, comprising several linux flavors and windows servers. -->
+<!-- In the following we will demonstrate the capabilities of standard reports and query these reports to customize the output to your need. We will look at how to create and modify a policy. Through the use of best practices the user will learn how to document policies and the intent behind these. -->
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Get-started"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Get started</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Accessing-CFEngine-3-Nova">Accessing CFEngine 3 Nova</a>
+<li><a accesskey="2" href="#CFEngine-terms-used-in-this-document">CFEngine terms used in this document</a>
+<li><a accesskey="3" href="#Status-room">Status room</a>
+<li><a accesskey="4" href="#Engineering-room">Engineering room</a>
+<li><a accesskey="5" href="#Planning-room">Planning room</a>
+<li><a accesskey="6" href="#Library-room">Library room</a>
+<li><a accesskey="7" href="#Shell-access-_0028evaluation-feature-only_0029">Shell access (evaluation feature only)</a>
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="Accessing-CFEngine-3-Nova"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CFEngine-terms-used-in-this-document">CFEngine terms used in this document</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Get-started">Get started</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Get-started">Get started</a>
+
+</div>
+
+<h3 class="section">2.1 Accessing CFEngine 3 Nova</h3>
+
+<p>You should have received an email with account information after making an evaluation agreement with CFEngine. In it, you will find information on how to access your dedicated CFEngine 3 Nova instance, the CFEngine support ticketing system, and other online resources. Go to the url indicated in this email to access the Nova Mission Portal, use your credentials to log in.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-login.png" alt="Nova Mission Portal login screen"></div>
+<div align="center">Figure: Nova Mission Portal login screen</div>
+
+   <p>The normal Nova Mission Portal is divided into four main sections called <i>rooms</i>. Here we have added a fifth room which is specific to the evaluation environment (i.e. is not shipped with the actual product): shell access to machines. Each <i>room</i> offers insight into different aspects of operations and is a beginning from which you can refine your overview and search through information.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-pilotmissionportal.png" alt="Nova Mission Portal"></div>
+<div align="center">Figure: Nova Mission Portal</div>
+
+     <ul>
+<li>Status: a top level overview of compliance status and business value
+<li>Engineering: a place to see the current state of system repair
+<li>Planning: a place to plan and make policy changes
+<li>Library: a knowledge and document bank that connects information together
+<li>Shell: web based ssh access to the machines in the network (only available in evaluation environment). 
+</ul>
+
+<!-- The rooms contain various information presented in text format and performance graphs. They also contain finders, represented by square icons, that allow the user to explore the environment further. We will mostly look into the Engineering and Planning rooms in this pilot setting, but we encourage exploration of both the Status and Library room as well. Refer to the CFEngine 3 Nova Owner's Manual for more information. -->
+<!-- @noindent We will now go through the points listed in the scope of this pilot, beginning with standard reports. -->
+   <p>You can always use the breadcrumb in the top left corner to navigate and see where you are in the Mission Portal.
+
+<!--  -->
+<div class="node">
+<a name="CFEngine-terms-used-in-this-document"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Status-room">Status room</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Accessing-CFEngine-3-Nova">Accessing CFEngine 3 Nova</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Get-started">Get started</a>
+
+</div>
+
+<h3 class="section">2.2 CFEngine terms used in this document</h3>
+
+<p>CFEngine uses a declarative language that describes the desired state of a system. Individual statements are called <i>promises</i>. Promises can be <i>kept</i> (CFEngine was able to keep the promise about the desired state), <i>not kept</i> (CFEngine was not able to keep the promise about the desired state) or <i>repaired</i> (promise was initially not kept, CFEngine fixed this). The desired state of your system is thus described in collections of promises, assembled in CFEngine policy files with the extension <samp><span class="file">.cf</span></samp>.
+
+<!--  -->
+<div class="node">
+<a name="Status-room"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Engineering-room">Engineering room</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-terms-used-in-this-document">CFEngine terms used in this document</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Get-started">Get started</a>
+
+</div>
+
+<h3 class="section">2.3 Status room</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Business-Value-and-Host-Status">Business Value and Host Status</a>
+<li><a accesskey="2" href="#Compliance-Summary">Compliance Summary</a>
+<li><a accesskey="3" href="#Services_002fGoals">Services/Goals</a>
+</ul>
+
+<!-- The @samp{Status} room provides a high level summary of how well the entire system is behaving in a manner that is understandable for non-technical people. -->
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Click the <b>Status</b> icon in the main page of the Mission Portal to enter the &lsquo;<samp><span class="samp">Status</span></samp>&rsquo; room.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-gotostatus.png" alt="Go to Status room"></div>
+<div align="center">Figure: Go to Status room</div>
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+The status room gives an overview of IT goals and how close you are to an ideal state. Each section in the room is described below.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-pilotstatus.png" alt="Status room"></div>
+<div align="center">Figure: Status room</div>
+
+<!--  -->
+<div class="node">
+<a name="Business-Value-and-Host-Status"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Compliance-Summary">Compliance Summary</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Status-room">Status room</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Status-room">Status room</a>
+
+</div>
+
+<h4 class="subsection">2.3.1 Business Value and Host Status</h4>
+
+<p>The two pie charts show the business value of the promises kept/not kept and well as host status, respectively. Business value is associated with the value of promises as defined in policy files. In the Host Status chart, each node in the network represents a slice of the pie and is classified into red, yellow, green and blue according to the level of their compliance:
+
+     <ul>
+<li>Red: more than 20% of the promises were not kept
+<li>Yellow: 20% or more of the promises were repaired and total compliance is above 80%
+<li>Green: more than 80% of the promises were kept
+<li>Blue: there is no contact between the hub and the client host (host unreachable)
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="Compliance-Summary"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Services_002fGoals">Services/Goals</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Business-Value-and-Host-Status">Business Value and Host Status</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Status-room">Status room</a>
+
+</div>
+
+<h4 class="subsection">2.3.2 Compliance Summary</h4>
+
+<p>The row of bar meters shows the compliance (average percentage of promises kept, repaired or not kept) of all registered hosts in blocks of 6 hours for the past week. It summarizes performance and anomalous behavior in a simple red (promises not kept), yellow (promises repaired) and green (promises kept) scale. Click on a bar to see which promises were kept/not kept.
+
+<!--  -->
+<div class="node">
+<a name="Services%2fGoals"></a>
+<a name="Services_002fGoals"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Compliance-Summary">Compliance Summary</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Status-room">Status room</a>
+
+</div>
+
+<h4 class="subsection">2.3.3 Services/Goals</h4>
+
+<p>A summary of Mission goals as defined in user policy files (these examples are from <samp><span class="file">company_knowledge.cf</span></samp>). You can look at editing policy files in <a href="#Policy-editing">Policy editing</a>. <!-- Edit the file in the policy editor (Planning room -> repository), or edit the file in your own text editor, to change these goals. -->
+
+<!-- We will now have a look in the @samp{Engineering} room: -->
+<!--  -->
+<div class="node">
+<a name="Engineering-room"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Planning-room">Planning room</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Status-room">Status room</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Get-started">Get started</a>
+
+</div>
+
+<h3 class="section">2.4 Engineering room</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Host-Status-_0028last-hour_0029">Host Status (last hour)</a>
+<li><a accesskey="2" href="#Promise-compliance-summary-for-reachable-hosts">Promise compliance summary for reachable hosts</a>
+<li><a accesskey="3" href="#Finders">Finders</a>
+</ul>
+
+<pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Click <b>NOVA MISSION PORTAL</b> on the top left (or <b>MISSION PORTAL</b> in the breadcrumb) to go back to the main Mission Portal page. Click the <b>Engineering</b> icon in the main page of the Mission Portal to enter the &lsquo;<samp><span class="samp">Engineering</span></samp>&rsquo; room.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-gotoengineering.png" alt="Go to Status room"></div>
+<div align="center">Figure: Go to Engineering room</div>
+   </td></tr></table>
+
+   <p>Mission engineering illustrates the state of the system in relation to the desired state at all scales. Zoom in to specific areas and examine the impact of promises, query data, and extract reports. Each section in the room is described below.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-pilotengineering.png" alt="Engineering room"></div>
+<div align="center">Figure: Engineering room</div>
+
+<!--  -->
+<div class="node">
+<a name="Host-Status-(last-hour)"></a>
+<a name="Host-Status-_0028last-hour_0029"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Promise-compliance-summary-for-reachable-hosts">Promise compliance summary for reachable hosts</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Engineering-room">Engineering room</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Engineering-room">Engineering room</a>
+
+</div>
+
+<h4 class="subsection">2.4.1 Host Status (last hour)</h4>
+
+     <ul>
+<li>The hosts are classified into red, yellow, green and blue according to the status of their compliance (as defined in <a href="#Business-Value-and-Host-Status">Business Value and Host Status</a>). Clicking a link produces a list of the hosts in that category. 
+<li>Hosts known: Shows the total number of hosts (red, green, yellow or blue) that are in the network
+<li>Worst available host rank: Display the hosts (that have been in contact with the hub) with the most promises not kept over the last hour. 
+<li>Hub replication status: Display status of redundant monitoring hubs (not activated in evaluation environment). 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="Promise-compliance-summary-for-reachable-hosts"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Finders">Finders</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Host-Status-_0028last-hour_0029">Host Status (last hour)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Engineering-room">Engineering room</a>
+
+</div>
+
+<h4 class="subsection">2.4.2 Promise compliance summary for reachable hosts</h4>
+
+<p>The row of bar meters shows the compliance (average percentage of promises kept, repaired or not kept) of registered hosts. It summarizes performance and anomalous behavior in a simple red (promises not kept), yellow (promises repaired), and green (promises kept) scale. The "Chng" bar relates to the amount of changes made to files monitored by a CFEngine policy in the last hour (change watch). It is green if no changes have been made. The level of yellow increases as changes occur (but it will never be red).  For the "Seen" bar, CFEngine monitors the average time between connections to the clients and reports deviations as green, yellow or red according to the size of the deviation. The "Anom" bar relates to anomalies and is generated from monitoring data (vital signs) for the last week. CFEngine uses the average value of each vital sign to report deviations as green, yellow or red according to the size of the deviation.
+
+<!--  -->
+<div class="node">
+<a name="Finders"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Promise-compliance-summary-for-reachable-hosts">Promise compliance summary for reachable hosts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Engineering-room">Engineering room</a>
+
+</div>
+
+<h4 class="subsection">2.4.3 Finders</h4>
+
+<p>The Mission &lsquo;<samp><span class="samp">Engineering</span></samp>&rsquo; room comes with finder functions (modules that make it simple and intuitive to browse and search for objects of a particular type): Host, Class, Promises, Reports, Summary reports, and CDP (Content Driven Policies) reports. We will take a closer look at Reports and CDP reports in this document, but feel free to explore the different finder functions on your own.
+
+<!--  -->
+<div class="node">
+<a name="Planning-room"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Library-room">Library room</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Engineering-room">Engineering room</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Get-started">Get started</a>
+
+</div>
+
+<h3 class="section">2.5 Planning room</h3>
+
+<pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Click <b>NOVA MISSION PORTAL</b> on the top left (or <b>MISSION PORTAL</b> in the breadcrumb) to go back to the main Mission Portal page. Click the <b>Planning</b> icon in the main page of the Mission Portal to enter the &lsquo;<samp><span class="samp">Planning</span></samp>&rsquo; room.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-gotoplanning.png" alt="Go to Planning room"></div>
+<div align="center">Figure: Go to Planning room</div>
+   </td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+The &lsquo;<samp><span class="samp">Planning</span></samp>&rsquo; room allows you to make changes to policies, goals and implement specific tactics to achieve the desired state. Interact with data, approve changes and anomalies. Get an overview of users logged on to the Mission Portal, as well as their current activity. Each section in the room is described below.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-pilotplanning.png" alt="Planning room"></div>
+<div align="center">Figure: Planning room</div>
+   <pre class="sp">
+
+</pre>
+
+<!-- @node -->
+<!-- @subsection Policy Goals -->
+<i>Policy Goals:</i>
+List of policy goals as defined in policy files; these examples are from <samp><span class="file">company_knowledge.cf</span></samp> (same as in the &lsquo;<samp><span class="samp">Status</span></samp>&rsquo; room).
+
+<!-- @node -->
+<!-- @subsection Action icons -->
+<p class="noindent"><i>Icons:</i>
+     <ul>
+<li>Edit policies: Edit policy files in the integrated policy editor
+<li>Track records: Overview of promises repaired or not kept
+<li>Approve policies: Add your approval to adopt a policy revision (attaches your comments to a revision number)
+<li>Service catalogue: See which bundles contribute to policy goals
+</ul>
+
+<!-- @node -->
+<!-- @subsection Logged on -->
+<p class="noindent"><i>Logged on:</i>
+Shows users currently logged on to the Mission Portal and their activity as stated in their activity log (see below).
+
+<!-- @node Activity log -->
+<!-- @subsection Activity log -->
+<p class="noindent"><i>Activity log:</i>
+Shows the latest activity entries. Type in a new activity to keep colleagues posted on current work.
+
+<!--  -->
+<div class="node">
+<a name="Library-room"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Shell-access-_0028evaluation-feature-only_0029">Shell access (evaluation feature only)</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Planning-room">Planning room</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Get-started">Get started</a>
+
+</div>
+
+<h3 class="section">2.6 Library room</h3>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Click <b>NOVA MISSION PORTAL</b> on the top left (or <b>MISSION PORTAL</b> in the breadcrumb) to go back to the main Mission Portal page. Click the <b>Library</b> icon in the main page of the Mission Portal to enter the &lsquo;<samp><span class="samp">Library</span></samp>&rsquo; room.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-gotolibrary.png" alt="Go to Library room"></div>
+<div align="center">Figure: Go to Library room</div>
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+
+The Library room contains finders for documents, topics, a notes archive, and a link to the CFEngine community web pages.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-pilotlibrary.png" alt="Library room"></div>
+<div align="center">Figure: Library room</div>
+
+     <ul>
+<li>Docs: Overview of documentation that was packaged with CFEngine 3 Nova. 
+<li>Find Topic: Opens a finder where you can search for topics either by scrolling through the alphabetical list or by typing in a search box (same as the search box on top right of page). 
+<li>Notes Archive: Get an overview of all notes made by Mission Portal users. 
+<li>Community: External link to the CFEngine community
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="Shell-access-(evaluation-feature-only)"></a>
+<a name="Shell-access-_0028evaluation-feature-only_0029"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Library-room">Library room</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Get-started">Get started</a>
+
+</div>
+
+<h3 class="section">2.7 Shell access (evaluation feature only)</h3>
+
+<p>Although the Mission Portal is the centerpiece of user interaction with CFEngine 3 Nova, system administrators often also wish to have shell access to their machines. We have therefore added a web based application specific to the Mission Portal in the evaluation environment (i.e. not found in the actual product) to provide a shell interface.  You may explore the environment and verify the behavior of the Mission Portal by using this application.
+
+<!-- @node -->
+<!-- @subsection Access the shell (command line interface) -->
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Click <b>NOVA MISSION PORTAL</b> on the top left (or <b>MISSION PORTAL</b> in the breadcrumb) to go back to the main Mission Portal page. Click the <b>Shell</b> icon to enter the web based shell application.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-gotoshell.png" alt="Go to shell application"></div>
+<div align="center">Figure: Go to shell application</div>
+   </td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+
+The following screen will appear once the application is loaded:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-pilotshell-menu.png" alt="Shell menu"></div>
+<div align="center">Figure: Shell menu</div>
+   <pre class="sp">
+
+</pre>
+
+The shell application has restricted access on the hub (policy host) for security reasons. Root access has been granted on the clients, so you should be able to perform most tasks from this interface (although some restrictions have been put in place to contain access to the evaluation environment only).
+
+   <pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Type the number of the node you wish to log on to and press <b>Enter</b>. 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+
+The following screen will appear after a successful login:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-pilotshell-login.png" alt="CFEngine Pilot Login Menu"></div>
+<div align="center">Figure: CFEngine Pilot Login Menu</div>
+   <pre class="sp">
+
+</pre>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Explore the environment through the command line interface. Type <b>exit</b> to finish the session on the current node. The following screenshot will appear:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-pilotshell-connect.png" alt="Shell logout/connect"></div>
+<div align="center">Figure: Shell logout/connect</div>
+
+<p class="noindent">Click <b>Connect</b> to access the &lsquo;<samp><span class="samp">CFEngine Pilot Login Menu</span></samp>&rsquo; again and choose another node to log on to. Alternatively you can navigate away from the shell access by clicking <b>NOVA MISSION PORTAL</b> on the top left (or <b>MISSION PORTAL</b> in the breadcrumb). 
+</td></tr></table>
+
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Standard-reports-in-CFEngine-3-Nova"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Content-Driven-Policy-_0028CDP_0029-reports">Content Driven Policy (CDP) reports</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Get-started">Get started</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 Standard reports in CFEngine 3 Nova</h2>
+
+<p>A significant capability of CFEngine 3 Nova is automated system reporting: it collects history, state and change data about computers and ties them together. A report is a tabular summary of CFEngine's internal information, tailored to a particular purpose, searchable, and describes attributes and qualities of managed hosts.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Reports-finder">Reports finder</a>
+<li><a accesskey="2" href="#Example-_002d-Software-report">Example - Software report</a>
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="Reports-finder"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Software-report">Example - Software report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">3.1 Reports finder</h3>
+
+<p class="noindent">Standard reports in CFEngine 3 Nova can be accessed through the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo;:
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Enter the &lsquo;<samp><span class="samp">Engineering</span></samp>&rsquo; room as shown in <a href="#Engineering-room">Engineering room</a>, locate and click the <b>Reports</b> icon to open the finder.
+
+   <pre class="sp">
+
+</pre>
+<!-- @image{img-breadcrumbengineering,4cm,,Nova Mission Portal} -->
+<div align="center"><img src="img-gotoreportsfinder.png" alt="Go to reports finder"></div>
+<div align="center">Figure: Click to open the Reports finder.</div>
+   </td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-reportsfinder.png" alt="Reports finder"></div>
+<!-- @center Figure: Reports finder -->
+<pre class="sp">
+
+</pre>
+
+<!-- The finder lists eighteen standard report categories and each category contains information about different aspects of the Mission. When you click one of them, the @samp{Report finder} will present a query form that is adapted to the chosen report category. @c CFEngine uses regular expressions in these queries, for maximum flexibility and to minimize system impact. An example of such a query and the content of the resulting report will be outlined below. -->
+
+<!-- To access standard reports, click the @b{Engineering} icon in the Mission Portal home page, then the @b{Reports} finder in the Engineering room: -->
+<!-- @sp 1 -->
+<!-- @center @image{img-gotoengineering,7cm,,Go to Engineering} -->
+<!-- @center Figure: Go to Engineering -->
+<!-- @sp 1 -->
+<!-- @center @image{img-reportsfinder,11cm,,Reports finder} -->
+<!-- @center Figure: Reports finder -->
+<!-- @sp 1 -->
+<!-- @noindent List of standard reports: -->
+<!-- @itemize - -->
+<!-- @item Bundle profile: Status of promise bundles and when they were last verified -->
+<!-- @item Business value report: Accumulated value of promises kept -->
+<!-- @item Class profile: User defined classes observed on the system -->
+<!-- @item Compliance by promise: Compliance of each promise individually -->
+<!-- @item Compliance summary: Total summary of host compliance -->
+<!-- @item File change log: Log of all detected changes to files from changes promises -->
+<!-- @item File change diffs: Delta/difference comparison showing file changes -->
+<!-- @item Last saw hosts: Log of when neighboring hosts were last observed online -->
+<!-- @item Patches available: A list of patches currently claimed to be available by the local package manager -->
+<!-- @item Patch status: A list of (un)applied patches according to the local package manager -->
+<!-- @item Performance: Execution time used to verify selected promises -->
+<!-- @item Promises repaired log: Log of actual repairs made to the system -->
+<!-- @item Promises repaired summary: Cumulative (histogram) summary of promises repaired -->
+<!-- @item Promises not kept log: Log of promises that could not or would not be kept -->
+<!-- @item Promises not kept summary: Cumulative (histogram) summary of promises not kept -->
+<!-- @item Setuid/gid root programs: Current list of observed setuid/setgid root programs -->
+<!-- @item Software installed: List of software packages claimed to be installed according to the local package manager -->
+<!-- @item Variables: Table of variable values last observed -->
+<!-- @end itemize -->
+<!--  -->
+<!-- @node -->
+<!-- @section Software installed report -->
+   <p>The finder lists all the standard report categories, each category contains information about different aspects of the Mission. When you click one of them, the &lsquo;<samp><span class="samp">Report finder</span></samp>&rsquo; will present a query form that is adapted to the chosen report category.
+
+<!--  -->
+<div class="node">
+<a name="Example---Software-report"></a>
+<a name="Example-_002d-Software-report"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Reports-finder">Reports finder</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">3.2 Example - Software report</h3>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Scroll down and click <b>Software installed</b> towards the bottom of the &lsquo;<samp><span class="samp">Report finder</span></samp>&rsquo; to open a query window. 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-softwareinstalledquery.png" alt="Software installed query"></div>
+<div align="center">Figure: Software installed query</div>
+   <pre class="sp">
+
+</pre>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Click <b>Generate report</b> in the query window without filling in any of the search fields. 
+</td></tr></table>
+   The above action will make a report listing all hosts and software packages claimed to be installed according to the local package manager. The results are presented in table form, with the columns &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Name</span></samp>&rsquo; (of software package), &lsquo;<samp><span class="samp">Version</span></samp>&rsquo; (of software package), and &lsquo;<samp><span class="samp">Architecture</span></samp>&rsquo; (of machine on which software runs). Sort the entries on the page by clicking the column headers.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-softwareinstalledreport.png" alt="Software installed report"></div>
+<div align="center">Figure: Software installed report</div>
+   <pre class="sp">
+
+</pre>
+
+There are two ways of narrowing down the listing in these reports: one is to enter filtering criteria directly in the report query window, the other is to click on &lsquo;<samp><span class="samp">New Search</span></samp>&rsquo; in the top right corner of the report itself and enter the filtering criteria there. We will do the latter:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Click <b>New Search</b> in the &lsquo;<samp><span class="samp">Software installed</span></samp>&rsquo; report and enter your search criteria as a regular expression (for instance, enter &lsquo;<samp><span class="samp">apache.*</span></samp>&rsquo; in the &lsquo;<samp><span class="samp">Name</span></samp>&rsquo; field to see what version of apache is running on the different hosts). Click <b>Generate report</b>. 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-newsearch.png" alt="New search"></div>
+<div align="center">Figure: Narrow the search by entering search criteria</div>
+
+   <p>Once you have clicked &lsquo;<samp><span class="samp">Generate report</span></samp>&rsquo;, CFEngine 3 Nova will list an overview of all machines running some version of apache.
+
+   <p>The combination of the extensive reports and detailed filtering is a flexible and powerful tool, made to give as general or granular an overview as the user needs it to be. A summary and explanation to all the standard reports can be found in the <a href="http://cfengine.com/manuals/novaevaluationguidesupplement.html">Nova Evaluation Guide Supplement</a>.
+
+<!-- Before moving on to Content Driven Policies (CDPs) and CDP reports, we would like to give you the opportunity to enjoy some hands-on experience with CFEngine. We will first have a look at how you can work with CFEngine policies in the policy editor, and the move on to edit polices relevant to the above examples. -->
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Content-Driven-Policy-(CDP)-reports"></a>
+<a name="Content-Driven-Policy-_0028CDP_0029-reports"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Introduction-to-CFEngine-policies">Introduction to CFEngine policies</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">4 Content Driven Policy (CDP) reports</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Example-_002d-ACLs-_0028file-access-controls_0029">Example - ACLs (file access controls)</a>
+</ul>
+
+<p>Content-Driven Policies (CDPs) were introduced to make policy management easier. In contrast to policies written in the CFEngine language, they are composed of semi-colon separated fields in a text file that the user fills with content, like a spreadsheet or tabular file. Each line in the file is parsed and translated to be part of a regular CFEngine policy. We will take a closer look at CDP input files in a later section.
+
+   <p>CDP reports are similar to standard reports, except that they reflect the effects of CDP input files instead of regular CFEngine policy files.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Enter the &lsquo;<samp><span class="samp">Engineering</span></samp>&rsquo; room as shown in <a href="#Engineering-room">Engineering room</a>, then click the <b>CDP reports</b> icon to access the &lsquo;<samp><span class="samp">CDP reports finder</span></samp>&rsquo;.
+
+<!-- @sp 1 -->
+<!-- @center @image{img-gotoengineering,7cm,,Go to Engineering} -->
+<!-- @center Figure: Go to Engineering -->
+   <pre class="sp">
+
+</pre>
+
+<div align="center"><img src="img-gotocdpreportsfinder.png" alt="Go to CDP reports finder"></div>
+<div align="center">Figure: Go to CDP reports finder</div>
+   </td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-cdpreportfinder.png" alt="Reports finder"></div>
+<div align="center">Figure: CDP reports finder</div>
+   <pre class="sp">
+
+</pre>
+
+<!-- @noindent CFEngine 3 Nova comes with six default CDPs: -->
+
+<!-- @itemize - -->
+<!-- @item ACLs: File access controls -->
+<!-- @item Commands: Scheduled commands to execute -->
+<!-- @item File changes: File changes observed on the system -->
+<!-- @item File diffs: Delta/difference comparison showing file changes -->
+<!-- @item Registry: Promised Windows registry setting status -->
+<!-- @item Services: System service status -->
+<!-- @end itemize -->
+<!-- We will go through each type of CDP report below to explain the contents and show how to edit the delimited input files. -->
+<!--  -->
+<div class="node">
+<a name="Example---ACLs-(file-access-controls)"></a>
+<a name="Example-_002d-ACLs-_0028file-access-controls_0029"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Content-Driven-Policy-_0028CDP_0029-reports">Content Driven Policy (CDP) reports</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Content-Driven-Policy-_0028CDP_0029-reports">Content Driven Policy (CDP) reports</a>
+
+</div>
+
+<h3 class="section">4.1 Example - ACLs (file access controls)</h3>
+
+<p>CFEngine 3 Nova comes with several default CDPs, we will use the &lsquo;<samp><span class="samp">ACLs report</span></samp>&rsquo; as an example. An access control list (ACL) is a list which specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects. Each entry in a typical ACL specifies a subject and an operation. For instance, if a file has an ACL that contains (Alice, delete), this would give Alice permission to delete the file.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Click on <b>ACLs</b> in the &lsquo;<samp><span class="samp">CDP Reports finder</span></samp>&rsquo; to access the ACLs report (there is no query window for CDP reports). 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-aclsreport.png" alt="ACLs report"></div>
+<div align="center">Figure: ACLs report</div>
+   <pre class="sp">
+
+</pre>
+
+The report lists an overview of host name (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), path of the affected object (&lsquo;<samp><span class="samp">Path</span></samp>&rsquo;), the permission setting (&lsquo;<samp><span class="samp">Permission (ACL)</span></samp>&rsquo;), owner of the affected object (&lsquo;<samp><span class="samp">Owner</span></samp>&rsquo;), action that CFEngine should execute on the object (&lsquo;<samp><span class="samp">Action</span></samp>&rsquo;), the context in which the promise was made (&lsquo;<samp><span class="samp">Class expression</span></samp>&rsquo;), state of compliance (&lsquo;<samp><span class="samp">State</span></samp>&rsquo;), and the time the promise was last checked (&lsquo;<samp><span class="samp">Last checked</span></samp>&rsquo;).
+
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Introduction-to-CFEngine-policies"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Next-steps">Next steps</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Content-Driven-Policy-_0028CDP_0029-reports">Content Driven Policy (CDP) reports</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">5 Introduction to CFEngine policies</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Content-Driven-Policy">Content Driven Policy</a>
+<li><a accesskey="2" href="#CFEngine-syntax">CFEngine syntax</a>
+</ul>
+
+<p>There are two types of CFEngine policies:
+     <ul>
+<li>Content Driven Policy (CDP): A text file containing semi-colon separated fields (<samp><span class="file">.txt</span></samp> file extension)
+<li>Standard CFEngine policy file: Uses CFEngine syntax (<samp><span class="file">.cf</span></samp> file extension)
+</ul>
+
+   <p>In the following, you will find a short introduction to both CDP and standard policies. See <a href="#The-Policy-Editor-_0028beta_0029">The Policy Editor (beta)</a> for how to access the Policy Editor and edit these files. <a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>
+
+<!-- You may choose to view and edit policy files in a beta version of the integrated Policy Editor or in an editor of your choice. The evaluation environment provides ssh access through a web interface so you may explore the environment or access policy files there @footnote{This feature is only available in the evaluation environment and does not ship with the actual product} (@url{https://cfengine.com/pilots/<YOUR INSTANCE ADDRESS>/shell}, see also @ref{Shell access}). In the following, we will see a short introduction to both CDP and standard policies. See @ref{The Policy Editor (beta)} for how to access the Policy Editor and edit these files. -->
+<!--  -->
+<div class="node">
+<a name="Content-Driven-Policy"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CFEngine-syntax">CFEngine syntax</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction-to-CFEngine-policies">Introduction to CFEngine policies</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-to-CFEngine-policies">Introduction to CFEngine policies</a>
+
+</div>
+
+<h3 class="section">5.1 Content Driven Policy</h3>
+
+<p>As explained previously, content driven policies consist of semi-colon separated fields in a text file. The files also contain a header that explains the format and meaning of the fields and typically looks like this (lines have been split and indented for presentability):
+
+<pre class="verbatim">
+<span class="comment">   #  ACLs On Files
+</span>
+<span class="comment">   #
+</span>
+<span class="comment">   #  FORMAT:   path;entity_type1:entity_name1:perms1,
+</span>
+<span class="red">         entity_type2:entity_name2:perms2,...;owner;action;class_expression
+</span><span class="comment">   #
+</span>
+<span class="comment">   #  EXAMPLE:  C:\tmp;user:Administrator:rwx,user:SYSTEM:r;
+</span>
+         Administrator;fix;windows
+<span class="comment">   #
+</span>
+
+<span class="comment">   # Windows 2003
+</span>
+<span class="red">   c:\WINDOWS\system32\drivers\etc\hosts;user:Administrator:rw,user:SYSTEM:rw,
+</span><span class="red">       user:Guest:r;SYSTEM;fix;Windows_Server_2003.!Hr09
+</span><span class="red">   c:\WINDOWS\system32\drivers\etc\hosts;user:Administrator:rw,user:SYSTEM:rw,
+</span><span class="red">       user:Guest:rw;SYSTEM;fix;Windows_Server_2003.Hr09
+</span><span class="comment">   # Windows 2008
+</span>
+<span class="red">   c:\Windows\System32\drivers\etc\hosts;user:Administrator:rw,user:SYSTEM:rw,
+</span><span class="red">       user:Guest:r;SYSTEM;fix;Windows_Server_2008_R2.!Hr11
+</span><span class="red">   c:\Windows\System32\drivers\etc\hosts;user:Administrator:rw,user:SYSTEM:rw,
+</span><span class="red">       user:Guest:rw;SYSTEM;fix;Windows_Server_2008_R2.Hr11
+</span>
+</pre>
+
+   <p>Anything with a &lsquo;<samp><span class="samp">;</span></samp>&rsquo; before or after it is a field entry. We need to look at the header of the file to understand the structure and meaning of the fields (under the <code>FORMAT</code> and <code>EXAMPLE</code> sections). In this case we have (line has been split and indented for presentability):
+
+<!-- As explained previously, content driven policies consist of semi-colon separated fields in a text file. The files also contain a header that explains the format and meaning of the fields. We will look at an Access Control List (ACL) input file as an example. The default CFEngine 3 Nova ACLs policies allow you to set permissions to directories and files using two different input files (@file{acl_directory_list.txt} and @file{acl_file_list.txt}, respectively). We will limit ourselves to look at one of these as they are conceptually identical. -->
+<!-- We saw earlier that the input consisted of lines containing semi colon separated fields, so anything with a @samp{;} before or after it is a field entry. We need to look at the header of the file to understand its structure, the input fields are explained in the @code{FORMAT} section. In this case we have (line has been split and indented for presentability): -->
+<pre class="verbatim">
+<span class="comment">  #  FORMAT:   path;entity_type1:entity_name1:perms1,
+</span>
+<span class="red">         entity_type2:entity_name2:perms2,...;owner;action;class_expression
+</span>
+</pre>
+
+<p class="noindent">Splitting this up into separate fields:
+     <dl>
+<dt><i>path</i><dd>Path of file to set permissions on.
+
+     <br><dt><i>entity_type1:entity_name1:perms1</i><dd>This field defines the permissions (&lsquo;<samp><span class="samp">perms1</span></samp>&rsquo;) that a user (&lsquo;<samp><span class="samp">entity_type1</span></samp>&rsquo;), and member of the group (&lsquo;<samp><span class="samp">entity_name1</span></samp>&rsquo;), has on the file defined in &lsquo;<samp><span class="samp">path</span></samp>&rsquo;.
+
+     <br><dt><i>entity_type2:entity_name2:perms2,...</i><dd>Same as entity_type1:entity_name1:perms1, but for different user, group, and permission settings.
+
+     <br><dt><i>owner</i><dd>Defines the owner of the file defined in &lsquo;<samp><span class="samp">path</span></samp>&rsquo;
+
+     <br><dt><i>action</i><dd>Tells CFEngine what to do if the file permissions differ from what was defined in the ACLs policy. Can take the values &lsquo;<samp><span class="samp">fix</span></samp>&rsquo; (set permissions as defined in ACLs policy), &lsquo;<samp><span class="samp">warn</span></samp>&rsquo; (log and display a warning that the file permissions differ from what was defined in ACLs policy), and &lsquo;<samp><span class="samp">nop</span></samp>&rsquo; (no operation; no log entry, but print a warning in command-line interface).
+
+     <br><dt><i>class_expression</i><dd>Context in which the permissions are set, i.e. a class expression (boolean) that needs to be fulfilled for the permissions to be set. 
+</dl>
+
+   <p>The advantage of CDPs is that it requires no knowledge of CFEngine syntax to quickly set up a basic policy. They function as an abstraction layer and allow system administrators to define specific functions with parameters that can be manipulated by others. The list format also allows for quick editing of multiple parameters, without having to go through tens or hundreds of lines of regular CFEngine code.
+
+<!-- We have now seen how easy it is to set access control with content driven policies in CFEngine and verify the result! -->
+<!--  -->
+<div class="node">
+<a name="CFEngine-syntax"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Content-Driven-Policy">Content Driven Policy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-to-CFEngine-policies">Introduction to CFEngine policies</a>
+
+</div>
+
+<h3 class="section">5.2 CFEngine syntax</h3>
+
+<p>Standard CFEngine policies consist of a declarative language that describes the desired state of a system. Individual statements are called <i>promises</i>, they can be grouped in bundles and have parametrized body templates (&lsquo;<samp><span class="samp">bundle</span></samp>&rsquo; and &lsquo;<samp><span class="samp">body</span></samp>&rsquo; are keywords in CFEngine that correspond to these). Below is an example of a simple CFEngine policy:
+
+<!-- Click @b{New} in the file menu in the right column, a tab (@samp{Untitled-1}) will appear in the policy editor. You can always hit @b{Ctrl + h} to see a list of keyboard shortcuts available in the policy editor. We summarize the main commands below: -->
+<!-- @sp 1 -->
+<!-- @center @image{img-newfile,15cm,,Create a new file} -->
+<!-- @center Figure: Create a new file -->
+<!-- @sp 1 -->
+<!-- We encourage you to try the keyboard shortcuts along the way. The Policy Editor detects syntax errors and highlights these in red so you are immediately aware of mistakes you may have made. In addition, it is possible to run syntax check by pressing the @b{Check syntax} button. @footnote{The file has to be saved and included in the inputs list of a particular policy file (promises.cf) in order for this to take effect.} -->
+<pre class="verbatim">
+<span class="red">body common control
+</span>{
+<span class="red">  bundlesequence </span>=> { "test" };
+}
+
+<span class="comment"># Comments are defined by the hash tag (#), they will not be parsed by CFEngine.
+</span>
+
+<span class="red">bundle agent</span> <span class="blue">test</span>
+{
+<span class="red">files:		     # This is the promise type, i.e. we make a promise about files
+</span>  "/tmp/testfile"	     # This is the promiser (i.e. the concerned object)
+<span class="red">    create </span>=><span class="green"> "true";  # This tells CFEngine to create the file</span>
+}
+
+</pre>
+
+<!-- The main menu on the left hand panel shows the main work flow items for policy editing. Clicking the arrow in the panel divider collapses the menu and gives full-screen editing. -->
+<!-- The right hand panel shows basic file and Subversion commands. The @code{Save} button will store a local/version of the opened files without committing to the repository. -->
+   <p>This policy will create the file <samp><span class="file">/tmp/testfile</span></samp>. It contains the bare minimum of a CFEngine policy, consisting of the compulsory &lsquo;<samp><span class="samp">body common control</span></samp>&rsquo;, containing (at least) a bundlesequence. Then follows a compulsory &lsquo;<samp><span class="samp">bundle</span></samp>&rsquo;, of type &lsquo;<samp><span class="samp">agent</span></samp>&rsquo; and with the arbitrary name &lsquo;<samp><span class="samp">test</span></samp>&rsquo; (the bundle type reflects the affected CFEngine component and can take several values, here we use &lsquo;<samp><span class="samp">agent</span></samp>&rsquo;). The bundle contains a promise type (here &lsquo;<samp><span class="samp">files</span></samp>&rsquo;), a promiser (i.e. the affected object, here &lsquo;<samp><span class="samp">/tmp/testfile</span></samp>&rsquo;) and a promise about desired state (here &lsquo;<samp><span class="samp">create =&gt; "true"</span></samp>&rsquo;).
+
+<!-- Then follows a compulsory @samp{bundle}and followed by bundle type (which reflects the affected CFEngine component, here @samp{agent}) and an arbitrary bundle name (here @samp{test}). -->
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Next-steps"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Policy-editing">Policy editing</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction-to-CFEngine-policies">Introduction to CFEngine policies</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">6 Next steps</h2>
+
+<p>We recommend that users familiarize themselves with the <a href="http://cfengine.com/tech">CFEngine 3 documentation</a> and continue to learn about the CFEngine language and CFEngine 3 Nova. Documents of interest include: <br>
+
+     <ul>
+<li><a href="http://cfengine.com/manuals/http://cfengine.com/manuals/novaevaluationguidesupplement.html">Nova Evaluation Guide Supplement</a><br>
+<li><a href="http://cfengine.com/manuals/NovaOwnersManual.html">CFEngine 3 Nova Owner's Manual</a><br>
+<li><a href="http://cfengine.com/manuals/cf3-conceptguide.html">CFEngine 3 Concept guide</a><br>
+<li><a href="http://cfengine.com/manuals/cf3-reference.html">CFEngine 3 Reference Manual</a><br>
+</ul>
+
+   <p>We also recommend that you attend a <a href="http://cfengine.com/training">CFEngine 3 Training Course</a> and/or employ <a href="http://cfengine.com/consultancy">CFEngine Consulting</a> to help them plan your Nova implementation.
+
+   <p>Use our <a href="http://info.cfengine.com/ContactUs.html">contact form</a>, or send an email to <a href="mailto:contact@cfengine.com">contact@cfengine.com</a>, to be contacted about purchasing CFEngine 3 Nova.
+
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Policy-editing"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Next-steps">Next steps</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="appendix">Appendix A Policy editing</h2>
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#The-Policy-Editor-_0028beta_0029">The Policy Editor (beta)</a>
+<li><a accesskey="2" href="#Edit-a-CDP-input-file">Edit a CDP input file</a>
+<li><a accesskey="3" href="#Create-a-standard-policy">Create a standard policy</a>
+</ul>
+
+<div class="node">
+<a name="The-Policy-Editor-(beta)"></a>
+<a name="The-Policy-Editor-_0028beta_0029"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Edit-a-CDP-input-file">Edit a CDP input file</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Policy-editing">Policy editing</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-editing">Policy editing</a>
+
+</div>
+
+<h3 class="section">A.1 The Policy Editor (beta)</h3>
+
+<p>CFEngine 3 Nova has a beta version of an integrated editor, made for working on CFEngine policies. It provides syntax high-lighting and look-up to make policy writing easier.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> To access the policy editor, enter the &lsquo;<samp><span class="samp">Planning</span></samp>&rsquo; room as described in <a href="#Planning-room">Planning room</a>, then click the <b>Edit policies</b> icon.
+
+<!-- @sp 1 -->
+<!-- @center @image{img-gotoplanning,11cm,,Go to Planning room} -->
+<!-- @center Figure: Go to Planning room -->
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-gotoeditpolicies.png" alt="Go to Edit policies"></div>
+<div align="center">Figure: Go to Edit policies</div>
+   </td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+The policy editor comes with a tie-in for Subversion version control repositories; the Nova Mission Portal will prompt you for the path and credentials to perform an SVN checkout.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Enter the path &lsquo;<samp><span class="samp">http://localhost/svn/CFEnginePilot</span></samp>&rsquo;, username &lsquo;<samp><span class="samp">pilot</span></samp>&rsquo;, and password &lsquo;<samp><span class="samp">pilot</span></samp>&rsquo;. Click <b>Add</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-pilotaddrepository.png" alt="Add SVN repository"></div>
+<div align="center">Figure: Add SVN repository</div>
+   </td></tr></table>
+
+<!-- @noindent The following screenshot will appear after the Subversion repository has been added. -->
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Click on <b>Checkout</b> to complete the checkout procedure.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-pilotsvncheckout.png" alt="SVN checkout"></div>
+<div align="center">Figure: SVN checkout</div>
+   </td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+The Policy Editor appears after a successful checkout. It consists of three main columns: on the left, a list of all the policies in the checked out repository (&lsquo;<samp><span class="samp">Nova Policies</span></samp>&rsquo;); in the center, the editor space (where policy files will appear as sheets/tabs); on the right, basic file and Subversion commands. We take a closer look at these functions in the following sections.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-pilotpolicyeditorblank.png" alt="Policy Editor"></div>
+<div align="center">Figure: The Policy Editor</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Edit-a-CDP-input-file"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Create-a-standard-policy">Create a standard policy</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-Policy-Editor-_0028beta_0029">The Policy Editor (beta)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-editing">Policy editing</a>
+
+</div>
+
+<h3 class="section">A.2 Edit a CDP input file</h3>
+
+<p>If you have not already opened the Policy Editor, follow the instruction in <a href="#The-Policy-Editor-_0028beta_0029">The Policy Editor (beta)</a> to do so. The file <samp><span class="file">acl_file_list.txt</span></samp> can be found under the <samp><span class="file">cdp_inputs</span></samp> catalog in the policy editor.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Click <b>cdp_inputs</b> in the file menu, then click <b>acl_file_list.txt</b> to open the file in the editor window. 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-openaclfilelistinput.png" alt="open ACLs input file"></div>
+<div align="center">Figure: Open the ACLs input file</div>
+   <pre class="sp">
+
+</pre>
+
+The content of the file looks like this:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-aclspolicy.png" alt="ACLs input file"></div>
+<div align="center">Figure: ACLs input file</div>
+   <pre class="sp">
+
+</pre>
+
+We will now modify a field in this policy and check the result in the Mission Portal. The first two lines below <code># Windows 2003</code> concern the file <samp><span class="file">c:\WINDOWS\system32\drivers\etc\hosts</span></samp>, lets change the action taken by CFEngine if the promise is not compliant.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Change the next to last field from &lsquo;<samp><span class="samp">fix</span></samp>&rsquo; to &lsquo;<samp><span class="samp">warn</span></samp>&rsquo;. Click the <b>Save</b> icon on the right, then <b>Commit</b> (add a comment in the pop up, for example 'Changed to warn'), click <b>Run now</b> and wait for the execution to have finished (can take up to a minute). To check the result, go back to the main page, enter the &lsquo;<samp><span class="samp">Engineering</span></samp>&rsquo; room (<a href="#Engineering-room">Engineering room</a>), click the <b>CDP reports</b> icon and finally click <b>ACLs File access controls</b> in the &lsquo;<samp><span class="samp">CDP reports</span></samp>&rsquo; finder. 
+</td></tr></table>
+
+   <p>The result should look like the following figure (note that the value in the &lsquo;<samp><span class="samp">Action</span></samp>&rsquo; column says &lsquo;<samp><span class="samp">warn</span></samp>&rsquo; instead of &lsquo;<samp><span class="samp">fix</span></samp>&rsquo;).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-aclsreportwarn.png" alt="ACLs report"></div>
+<div align="center">Figure: ACLs report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Create-a-standard-policy"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Edit-a-CDP-input-file">Edit a CDP input file</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-editing">Policy editing</a>
+
+</div>
+
+<h3 class="section">A.3 Create a standard policy</h3>
+
+<p>If you have not already opened the Policy Editor, follow the instruction in <a href="#The-Policy-Editor-_0028beta_0029">The Policy Editor (beta)</a> to do so. We will create a custom report as an example of writing a standard CFEngine policy. Custom reports are useful when your reporting needs differ from the CFEngine 3 Nova standard reports. Data processing and extraction from CFEngine's embedded databases must be scripted by the user if the procedure is not covered in any of the reports found in the Mission Portal. Output to files or logs may be customized on a per-promise basis and users can design their own log and report formats.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Click <b>New</b> in file menu in the right column of the policy editor, a tab (&lsquo;<samp><span class="samp">Untitled-1</span></samp>&rsquo;) will appear in the center, and enter the following in the text space (you can always hit <b>Ctrl + h</b> to see a list of available keyboard shortcuts). 
+</td></tr></table>
+
+<pre class="verbatim">
+<span class="red">bundle agent</span> <span class="blue">pilot_simple_custom_report_policy</span>
+
+<span class="comment">   # promise type: make a promise about variables, see details below
+</span>
+<span class="red">   vars:
+</span>      "file_to_check"<span class="red"> string </span>=><span class="green"> "/tmp/somefile.txt";</span>
+
+<span class="comment">   # promise type: promise about classes (context), see details below
+</span>
+<span class="red">   classes:
+</span>      "file_exists"<span class="red"> expression </span>=> fileexists("$(file_to_check)");		
+</pre>
+   <pre class="sp">
+
+</pre>
+(<i>The policy continues on the next page.</i>)
+
+<pre class="verbatim">   # promise type: make a promise about reports, see details below
+<span class="red">   reports:
+</span>      !file_exists::		# context in which the promise should be executed
+<span class="comment">				# in this case if the file does not exist 
+</span>
+<span class="red">         "WARNING: File $(file_to_check) does not exist on host $(sys.uqhost)"
+</span><span class="red">            handle  </span>=><span class="green"> "pilot_simple_report_policy",</span>
+<span class="red">            comment </span>=><span class="green"> "Simple reports policy to show up in Mission Portal";</span>
+}
+
+</pre>
+
+   <p>The astute reader will remark that there is no &lsquo;<samp><span class="samp">body common control</span></samp>&rsquo; statement in the above policy. The reason is that we will use this bundle in the global policy <samp><span class="file">promises.cf</span></samp>, which already contains the compulsory <code>body common control</code>. We can therefore omit that statement here. This policy consists of a bundle with three main parts:
+
+     <ol type=1 start=1>
+<li>Variable definition: Define a variable called <code>file_to_check</code>, of type <code>string</code>, containing a value that represents a file name (<samp><span class="file">/tmp/somefile.txt</span></samp>). 
+<li>Class definition: check whether the file exists through the CFEngine function <code>fileexists</code> and set a class (boolean) called <code>file_exists</code> based on the result. 
+<li>Report definition: Generate a report if the file does not exist (consists of a warning; it uses the <code>file_to_check</code> and <code>sys.uqhost</code> variables to display the appropriate file- and host names, respectively.
+        </ol>
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Save this file as <samp><span class="file">pilot_simple_custom_report_policy.cf</span></samp>: click <b>Save</b> in the right menu and enter the file name. 
+</td></tr></table>
+
+   <p>We now need to add the policy to <samp><span class="file">promises.cf</span></samp> to verify the results in the Mission Portal:
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b>
+     <ol type=1 start=1>
+<!-- @item Save the edited policy -->
+<li>Open <samp><span class="file">promises.cf</span></samp> by clicking it in the policy listing on the left
+<li>Uncomment the corresponding line by removing the hash tag (<code>#</code>) in front of it (only if you have created and saved the file as instructed above)
+<pre class="verbatim">         "bundlesequence" slist => {
+                        "pilot_simple_edit_policy"
+<span class="comment">     #                  "pilot_simple_custom_report_policy",    #Uncomment this line
+</span>
+                                   };
+         "inputs"<span class="red">         slist </span>=> {
+                        "pilot_simple_edit_policy.cf"
+<span class="comment">     #                  "pilot_simple_custom_report_policy.cf", #Uncomment this line
+</span>
+                                   };
+</pre>
+<li>Save <samp><span class="file">promises.cf</span></samp>
+<li>Run syntax check by clicking <b>Check syntax</b> on the right
+<li>If everything is fine, commit the changes by clicking <b>Commit</b> on the right (you will be prompted for a comment, enter for example 'Added custom report')
+        </ol>
+</td></tr></table>
+
+   <p>The policy will have been adopted and executed at the next CFEngine run (every five minutes by default). Again, you may execute the policy immediately by clicking the <b>Run now</b> button in the right column (this might take a while, please be patient and wait until the execution is finished before checking the reports for updates). You can check that the policy has been run by searching for its handle in a report.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Action item:</b> Open the &lsquo;<samp><span class="samp">Report finder</span></samp>&rsquo; as shown previously, scroll to and click <b>Compliance by promise</b>, enter the handle (&lsquo;<samp><span class="samp">pilot_simple_custom_report_policy</span></samp>&rsquo;) in the &lsquo;<samp><span class="samp">By handle</span></samp>&rsquo; query field and click <b>Generate</b>. 
+</td></tr></table>
+
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+<!-- The file is structured like a programming language. Each chapter -->
+<!-- starts with a chapter comment. -->
+<!-- Menus list the subsections so that an online info-reader can parse -->
+<!-- the file hierarchically. -->
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> In a standard CFEngine 3 Nova environment you would be able to choose between the integrated Policy Editor (beta) or an editor of your choice to view and edit policy files. The evaluation environment is limited to the Policy Editor (beta) for security reasons.</p>
+
+   <hr></div>
+
+</body></html>
+
+

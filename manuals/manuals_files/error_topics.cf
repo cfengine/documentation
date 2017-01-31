@@ -1,0 +1,558 @@
+
+#
+# The six basic questions about a system
+#
+
+bundle knowledge questions
+{
+things:
+
+ questions::
+
+  "what"         comment => "What promises are kept is determined by the CFEngine configuration policy",
+        is_determined_by => { "promiser", "promise type", "bundles" },
+               certainty => "possible";
+
+  "when"  comment => "When promises are kept is determined by the context classes and the executor schedule",
+        is_determined_by => { "classes", "contexts", "class contexts" },
+               certainty => "possible";
+
+  "where" comment => "Where promises are kept is determined by the context classes",
+        is_determined_by => { "classes", "contexts", "class contexts" },
+               certainty => "possible";
+
+  "how" comment => "How promises are kept is determined by the promise body, and its many attributes",
+        is_determined_by => { "body constraints", "body type" },
+               certainty => "possible";
+
+  "why" comment => "Why promises are made should be represented by the comment field of a promise",
+        is_determined_by => { "comments", "body_constraints::comment" },
+               certainty => "possible";
+
+  "who" comment => "Who made changes to policy is a question for your revision control system",
+        is_determined_by => { "promisee" },
+               certainty => "possible";
+
+
+security::
+
+  "tripwire"  comment => "A cryptographic hash used to detect the presence of intrusion or change",
+        is_determined_by => { "detect_all_changes", "body_constraints::changes" },
+               certainty => "possible";
+
+
+occurrences:
+
+     "/docs/SpecialTopic_MenuDrivenConfig.html#What-is-menu_002ddriven-configuration"
+         represents => { "special topics guide on menu driven configuration" },
+       about_topics => { "how" };
+
+     "/docs/SpecialTopic_Modules.html"
+         represents => { "special topics guide on orchestration" },
+       about_topics => { "how", "ordering operations in cfengine" };
+
+
+    "/docs/SpecialTopic_Knowledge.html#How-should-you-begin_003f"
+         represents => { "special topics guide on knowledge management" },
+       about_topics => { "why", "how" };
+
+    "/docs/SpecialTopic_Hierarchy.html"
+         represents => { "special topics guide on hierarchies" },
+       about_topics => { "when", "where" };
+
+
+    "/docs/cf3-Reference.html#When-and-where-are-promises-made_003f"
+         represents => { "reference - when and where are promises made?" },
+       about_topics => { "when", "where" };
+
+
+    "/docs/cf3-tutorial.html#The-policy-decision-flow"
+         represents => { "tutorial on policy decision flow" },
+       about_topics => { "how" };
+
+    "/docs/cf3-Reference.html#Decisions"
+         represents => { "reference manual on decision making" },
+       about_topics => { "when", "where" };
+
+    "/docs/SpecialTopic_MissionCritical.html#What-are-Mission-Critical-Operations_003f"
+         represents => { "special topics guide on mission critical operations" },
+       about_topics => { "what" };
+
+    "/docs/cf3-tutorial#What-services_003f"
+         represents => { "special topics guide on mission critical operations" },
+       about_topics => { "what" };
+
+
+     "/docs/SpecialTopic_Change.html#What-is-change-management_003f"
+         represents => { "special topics guide on change management" },
+       about_topics => { "what", "change management" };
+
+     "docs/SpecialTopic_Scan.html"
+         represents => { "special topics guide on security scanning" },
+       about_topics => { "what", "security", "tripwires" };
+
+
+}
+
+#
+# Help user with error messages
+#
+
+bundle knowledge error_messages
+{
+things:
+
+error_messages::
+
+"cannot mix cidr notation with xxx-yyy range notation"
+        is_caused_by => { "iprange", "promise_types::access" },
+           certainty => "possible";
+
+
+
+"not a valid address range - or not a fully qualified name"
+        is_caused_by => { "iprange", "promise_types::access" },
+           certainty => "possible";
+
+
+"cannot handle ipv6 masks which are not 8 bit multiples"
+        is_caused_by => { "iprange", "promise_types::access" },
+           certainty => "possible";
+
+
+"argument mismatch in body template"
+        is_caused_by => { "bodies", "body parts" },
+           certainty => "possible";
+
+"type mismatch between logical/formal parameters"
+        is_caused_by => {"bodies", "body parts" },
+           certainty => "possible";
+
+"x is x whereas y is y (in argument processing)"
+        is_caused_by => { "bodies", "body parts" },
+           certainty => "possible";
+
+"arguments to function do not tally",
+             comment => "There is a mismatch between the expected number of arguments and the number provided",
+        is_caused_by => { "functions", "special functions" },
+           certainty => "possible";
+
+"files promise makes no intention about system state"
+             comment => "A files promise does not promise to affect the file in any way, i.e. it is missing rename, delete, perms, link, edit_line, create, transformer, or acl_entries",
+        is_caused_by => { "promise_types::files" },
+           certainty => "possible";
+
+"promise constraint conflicts - %s cannot be created and linked at the same time"
+        is_caused_by => { "promise_types::files" },
+           certainty => "possible";
+
+"problem validating a mode string"
+        is_caused_by => { "promise_types::files", "perms" },
+           certainty => "possible";
+
+"problem validating a bsd flag string"
+        is_caused_by => { "promise_types::files", "search_bsdflags" },
+           certainty => "possible";
+
+"file_select body missing its file_result return value"
+        is_caused_by => { "promise_types::files", "file_select", "file_result" },
+           certainty => "possible";
+
+"fips mode is enabled, and md5 is not an approved algorithm"
+        is_caused_by => { "fips_mode", "changes", "body_attributes::changes" },
+           certainty => "possible";
+
+"process_select body missing its process_result return value"
+        is_caused_by => { "process_result", "process_select" },
+           certainty => "possible";
+
+"unsupported database type"
+        is_caused_by => { "database_type", "promise_types::databases" },
+           certainty => "possible";
+
+"unable to write policy server file!"
+             comment => "Probably caused by an attempt to bootstrap with insufficient (root/administrator) privilege",
+        is_caused_by => {  "bootstrap", "Getting started with the Community Edition" },
+           certainty => "possible";
+
+"unable to write failsafe file!"
+             comment => "Probably caused by an attempt to bootstrap with insufficient (root/administrator) privilege",
+        is_caused_by => {  "bootstrap", "Getting started with the Community Edition" },
+           certainty => "possible";
+
+"failed setting permissions on bootstrap policy (%s)"
+             comment => "Probably caused by an attempt to bootstrap with insufficient (root/administrator) privilege",
+        is_caused_by => { "bootstrap", "Getting started with the Community Edition" },
+           certainty => "possible";
+
+bootstrap:: "unable to write document root file! (%s)"
+             comment => "Probably caused by an attempt to bootstrap with insufficient (root/administrator) privilege",
+        is_caused_by => { "bootstrap", "Getting started with the Community Edition" },
+           certainty => "possible";
+
+agent:: "unexpected argument with no preceding option"
+             comment => "Often caused by forgetting -f in front of a file name on the command line",
+        is_caused_by => { "cf-agent - CFEngine's change agent", "cf-serverd - CFEngine's server agent",
+                          "cf-runagent - Run agent", "cf-execd - CFEngine's execution agent", "cf-know - CFEngine's knowledge agent", "cf-report - CFEngine's reporting agent" },
+           certainty => "possible";
+
+any::
+
+"silly value for max_children in agent control promise"
+        is_caused_by => { "max_children" },
+           certainty => "possible";
+
+policy:: "no bundlesequence in the common control body"
+             comment => "There is no file in inputs with a body common control containing a bundlesequence",
+        is_caused_by => { "bundlesequence", "bundlesequence in common", "inputs", "common control promises" },
+           certainty => "possible";
+
+any::
+
+"illegal item found in bundlesequence"
+        is_caused_by => { "bundlesequence", "bundlesequence in common", "common control promises" },
+           certainty => "possible";
+
+"bundle listed in the bundlesequence was not found"
+             comment => "A bundle was used but no definition was found in the inputs",
+        is_caused_by => { "bundlesequence", "bundlesequence in common", "common control promises", "inputs" },
+           certainty => "possible";
+
+"file is not owned by an authorized user (security exception)",
+             comment => "The file must not be writable by any user except a privileged user",
+        is_caused_by => { "inputs", "the work directory" },
+           certainty => "possible";
+
+"file is not owned by uid (security exception)"
+             comment => "The file must not be writable by any user except a privileged user",
+        is_caused_by => { "inputs", "the work directory" },
+           certainty => "possible";
+
+"unable to read the process table - cannot keep process promises"
+        is_caused_by => { "cf-agent - CFEngine's change agent" },
+           certainty => "possible";
+
+"bootstrapping failed, no policy server is specified"
+        is_caused_by => { "cf-agent - CFEngine's change agent" },
+           certainty => "possible";
+
+"bootstrapping failed, no input file at after bootstrap"
+             comment => "Perhaps no policy server has been created, or is reachable",
+        is_caused_by => { "bootstrap" },
+           certainty => "possible";
+
+"bootstrapping failed, cf-execd is not running"
+             comment => "Something seems to be wrong with the installation",
+        is_caused_by => { "missing software", "insufficient permission" },
+           certainty => "possible";
+
+"enterprise license is invalid."
+        is_caused_by => { "installation procedure" },
+           certainty => "possible";
+
+"severe lock error when mailing in exec"
+        is_caused_by => { "cf-execd" },
+           certainty => "possible";
+
+cf_key:: "unable to enumerate files in keys directory"
+        is_caused_by => { "cf-key", "insufficient permission" },
+           certainty => "possible";
+
+cf_key:: "unable to remove keys for the host"
+        is_caused_by => { "cf-key" },
+           certainty => "possible";
+
+cf_key:: "no keys for host were found",
+        is_caused_by => { "cf-key", "removing keys" },
+           certainty => "possible";
+
+cf_know:: "occurrence of text information does not promise any topics to represent",
+             comment => "An occurrences promise is missing an about_topics attribute",
+        is_caused_by => { "cf-know", "about_topics" },
+           certainty => "possible";
+
+cf_know:: "a topic must have at least one associate in association"
+             comment => "A topics promise with an association attribute body must have a non-empty list of topics",
+        is_caused_by => { "associations", "cf-know" },
+           certainty => "possible";
+
+cf_know:: "null forward association name"
+        is_caused_by => { "associates", "cf-know" },
+           certainty => "possible";
+
+"could not set the working directory to"
+             comment => "Probably caused by insufficient privilege which generating reports",
+        is_caused_by => { "cf-report", "insufficient permission" },
+           certainty => "possible";
+
+cf_runagent:: "you cannot specify background mode and interactive mode together"
+        is_caused_by => { "cf-runagent", "background_children", "background_children in runagent" },
+           certainty => "possible";
+
+cf_runagent||cf_serverd||cf_agent::  "transaction failed"
+        is_caused_by => { "Remote access troubleshooting", "server connection" },
+           certainty => "possible";
+
+cf_runagent:: "transmission rejected"
+        is_caused_by => {  "Remote access troubleshooting", "server connection" },
+           certainty => "possible";
+
+cf_serverd:: "not allowing connection from non-authorized ip"
+        is_caused_by => {  "Remote access troubleshooting", "server connection", "allowconnects", "allowallconnects" },
+           certainty => "possible";
+
+cf_serverd:: "denying connection from non-authorized ip"
+        is_caused_by => { "unknown", "denyconnects" },
+           certainty => "possible";
+
+cf_serverd:: "denying repeated connection from"
+        is_caused_by => { "allowallconnects" },
+           certainty => "possible";
+
+cf_serverd:: "dns/service lookup failure"
+             comment => "The server daemon did not find a DNS service to look up port/address information to bind the server socket",
+        is_caused_by => { "cf-serverd" },
+           certainty => "possible";
+
+cf_serverd:: "socket options were not accepted"
+             comment => "The server's listening socket could not be configuered for efficient operation",
+        is_caused_by => { "cf-serverd" },
+           certainty => "possible";
+
+cf_serverd:: "could not bind server address"
+             comment => "A server might already be running on the affected port",
+        is_caused_by => { "cf-serverd" },
+           certainty => "possible";
+
+cf_serverd:: "couldn't open bind an open socket"
+             comment => "A server might already be running on the affected port",
+        is_caused_by => { "cf-serverd" },
+           certainty => "possible";
+
+cf_serverd:: "couldn't set socket options"
+             comment => "The server's listening socket could not be configuered for efficient operation",
+        is_caused_by => { "cf-serverd" },
+           certainty => "possible";
+
+cf_serverd:: "server seems to be paralyzed. dos attack? committing apoptosis..."
+             comment => "Voluntary suicide of the server happens when its threads seem to be locked, perhaps due to too much incoming traffic",
+        is_caused_by => { "cf-serverd" },
+           certainty => "possible";
+
+cf_serverd:: "too many threads -- increase server maxconnections"
+        is_caused_by => { "cf-serverd" },
+           certainty => "possible";
+
+cf_serverd|cf_agent|cf_runagent:: "bad decrypt"
+             comment => "This message comes from libcrypto routines and usually signals data corruption or mismatched encryption settings. It can occur when mixing CFEngine community edition and enterprise editions",
+        is_caused_by => { "cf-agent", "cf-serverd", "cf-runagent", "license problems", "build issues" },
+           certainty => "possible";
+
+cf_serverd:: "couldn't get socket address"
+             comment => "The TCP socket seems to be an imposter, and contains no retrievable origin address",
+        is_caused_by => { "cf-serverd" },
+           certainty => "possible";
+
+cf_serverd:: "...requires encrypt connection...will not serve"
+        is_caused_by => { "ifencrypted", "cf-serverd" },
+           certainty => "possible";
+
+cf_serverd:: "private decrypt failed"
+             comment => "This message comes from libcrypto routines and usually signals data corruption or mismatched encryption settings. It can occur when mixing CFEngine community edition and enterprise editions.",
+        is_caused_by => { "cf-agent", "cf-serverd", "cf-runagent", "license problems", "build issues" },
+           certainty => "possible";
+
+cf_serverd:: "overflow in context grab"
+             comment => "An overflow occurred while retrieving remote classes",
+        is_caused_by => { "cf-serverd", "remoteclassesmatching" },
+           certainty => "possible";
+
+
+
+any::
+
+"id-authentication for failed"
+             comment => "Trouble connecting from cf-agent or cf-runagent to cf-serverd",
+        is_caused_by => { "copy_from", "cf-runagent", "remotescalar", "remoteclassesmatching" },
+           certainty => "possible";
+
+"authentication dialogue with %s failed\n"
+             comment => "Trouble connecting from cf-agent or cf-runagent to cf-serverd",
+        is_caused_by => { "copy_from", "cf-runagent", "remotescalar", "remoteclassesmatching" },
+           certainty => "possible";
+
+"local disk write failed copying"
+        is_caused_by => { "copy_from" },
+           certainty => "certain";
+
+"could not set socket to non-blocking mode"
+             comment => "Trouble connecting from cf-agent or cf-runagent to cf-serverd",
+        is_caused_by => { "copy_from", "cf-runagent", "remotescalar", "remoteclassesmatching" },
+           certainty => "certain";
+
+"type mismatch on rhs - expected type for boolean constraint"
+             comment => "A variable was assigned a value that was not true/false/yes/no",
+        is_caused_by => { "cf-promises" },
+    is_determined_by => { "values::boolean" },
+           certainty => "possible";
+
+"type mismatch on rhs - expected type for list constraint"
+             comment => "A variable was assigned a value that was not a list",
+        is_caused_by => { "cf-promises" },
+    is_determined_by => { "values::slist", "values::ilist", "values::rlist" },
+           certainty => "certain";
+
+
+"duplicate promise handle -- previously used in file"
+             comment => "Might be caused by inputting a file twice or pasting a promise twice",
+        is_caused_by => { "handle", "inputs" },
+           certainty => "possible";
+
+"un-commented promise found, but comments have been required by policy"
+        is_caused_by => { "require_comments", "require_comments in common" },
+           certainty => "possible";
+
+"you cannot cancel a reserved hard class in post-condition classes"
+             comment => "A hard class was used in a class negation promise",
+        is_caused_by => { "cancel_kept", "cancel_repaired", "cancel_notkept" },
+           certainty => "possible";
+
+
+"relative file name was marked for editing but has no invariant meaning"
+             comment => "You must use an absolute path in file promises",
+        is_caused_by => { "promise_types::files", "relative filenames" },
+           certainty => "certain";
+
+"can no longer access file which needed editing"
+        is_caused_by => { "promise_types::files" },
+           certainty => "certain";
+
+"no field_separator in promise to edit by column"
+        is_caused_by => { "edit_line", "field_edits" },
+           certainty => "certain";
+
+"the promised line insertion breaks its own promises"
+        is_caused_by => { "insert_lines" },
+           certainty => "certain";
+
+"because the regular expression still matches the replacement string"
+             comment => "You need to craft a more precise regular expression that will not match a substring",
+        is_caused_by => { "replace_patterns" },
+           certainty => "certain";
+
+"line split criterion matches a huge part of the line -- seems to be in error"
+        is_caused_by => { "field_edits", "edit_line" },
+           certainty => "possible";
+
+"line insertion should not use whitespace policy with preserve_block"
+        is_caused_by => { "preserve_block", "whitespace_policy", "edit_lines", "insert_lines" },
+           certainty => "possible";
+
+"recursive depth_searches are not compatible with general file editing"
+        is_caused_by => { "depth_search", "edit_lines" },
+           certainty => "certain";
+
+"promise constraint conflicts - cannot be deleted and exist at the same time"
+        is_caused_by => { "create", "delete", "promise_types::files" },
+           certainty => "certain";
+
+"auditing cannot be performed on backgrounded promises (this might change)"
+        is_caused_by => { "auditing", "auditing in agent", "body_constraints::background" },
+           certainty => "possible";
+
+"windows does not support killing link"
+        is_caused_by => { "link_from", "when_no_source" },
+           certainty => "possible";
+
+"darwin findertype does not match -- not fixing"
+        is_caused_by => { "promise_type::files", "MacOS" },
+           certainty => "certain";
+
+"transformer returned error"
+        is_caused_by => { "body_constraints::transformer", "promise_types::files" },
+           certainty => "certain";
+
+"new setuid root program"
+             comment => "While scanning a file system for another purpose, CFEngine found this setuid root file",
+        is_caused_by => { "depth_search" },
+           certainty => "possible";
+
+"new setgid root program"
+             comment => "While scanning a file system for another purpose, CFEngine found this setgid root file",
+        is_caused_by => { "depth_search" },
+           certainty => "possible";
+
+
+"variable and bundle parameter collide in scope"
+        is_caused_by => { "bodies and bundles", "promise_types::vars", "containers" },
+           certainty => "possible";
+
+"mixture of ipv6 and ipv4 addresses"
+             comment => "A malformed ip address was entered",
+        is_caused_by => { "iprange", "promise_types::access" },    
+           certainty => "possible";
+
+"access to literal server data requires you to define a promise handle for reference"
+        is_caused_by => { "remotescalar", "body_constraints::handle" },
+           certainty => "possible";
+
+"the promiser of a measurement was not an absolute path",
+             comment => "The stream to read from must be a filename or a binary executable",
+        is_caused_by => { "promise_types::measurements" },
+           certainty => "certain";
+
+"the promiser did not specify a data type"
+             comment => "To understand the semantics of the promise, CFEngine needs you to say what kind of data to expect",
+        is_caused_by => { "promise_types::measurements" },
+           certainty => "possible";
+
+"can't create a package manager envelope"
+             comment => "CFEngine can't find a package manager defintion to handle this",
+        is_caused_by => { "promise_type::packages" },
+           certainty => "certain";
+
+"could not get list of installed packages"
+        is_caused_by => { "promise_type::packages", "package_method", "package_list_command" },
+           certainty => "possible";
+
+"the proposed package command was not executable"
+        is_caused_by => { "promise_type::packages", "package_method", "package_list_command" },
+           certainty => "possible";
+
+"bulk package schedule execution failed somewhere - unknown outcome for"
+        is_caused_by => { "unknown" },
+           certainty => "possible";
+
+"cannot mark software cache as invalid"
+        is_caused_by => { "promise_type::packages" },
+           certainty => "possible";
+
+"printing of file was not possible"
+        is_caused_by => { "promise_type::reports", "body_constraints::printfile" },
+           certainty => "possible";
+
+
+occurrences:
+
+  "http://en.wikipedia.org/wiki/Federal_Information_Processing_Standard"
+     represents => { "Wikepedia entry for FIPS" },
+   about_topics => {"fips"};
+
+
+  "/docs/cf3-Reference.html#fips_005fmode-in-common"
+     represents => { "reference manual entry for fips_mode" },
+   about_topics => {"fips"};
+
+
+  "/docs/SpecialTopic_Security.html#Encyption-algorithms"
+     represents => { "special topics mode on security" },
+   about_topics => {"fips", "encryption"};
+
+
+
+  "/docs/cf3-Reference.html#ifencrypted-in-access"
+     represents => { "reference manual on ifencrypted" },
+   about_topics => {"ifencrypted", "encryption", "...requires encrypt connection...will not serve" };
+
+
+}

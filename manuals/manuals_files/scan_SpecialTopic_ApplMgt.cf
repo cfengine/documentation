@@ -1,0 +1,69 @@
+
+bundle knowledge SpecialTopic_ApplMgt
+
+{
+topics:
+
+"SpecialTopic_ApplMgt";
+Special_Topics_Guide::
+    "Auditing software applications"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "Starting and stopping software"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "Customizing applications"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "Notes on Windows systems"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "Adapting to Windows"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "Stopping and restarting an application for update"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "Distributing software packages to client hosts"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "Integrated software installation"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "Enterprise Software Reporting"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "Package management"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "How can CFEngine help?"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "What is Application Management?"  association => a("discusses","Application Management","is discussed in");
+Special_Topics_Guide::
+    "Application Management"  association => a("discusses","Application Management","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_ApplMgt.html"
+  represents => { "Official CFEngine document"},  about_topics => { "application management" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html"
+  represents => { "Special Topics Guide"},  about_topics => { "application management" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#Top"
+  represents => { "Text section" }, about_topics => { "application management" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#What-is-Application-Management_003f"
+  represents => { "Text section" }, about_topics => { "what is application management?" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#How-can-CFEngine-help_003f"
+  represents => { "Text section" }, about_topics => { "how can cfengine help?" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#Package-management"
+  represents => { "Text section" }, about_topics => { "package management" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#Enterprise-Software-Reporting"
+  represents => { "Text section" }, about_topics => { "enterprise software reporting" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#Integrated-software-installation"
+  represents => { "Text section" }, about_topics => { "integrated software installation" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#Distributing-software-packages-to-client-hosts"
+  represents => { "Text section" }, about_topics => { "distributing software packages to client hosts" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#Stopping-and-restarting-an-application-for-update"
+  represents => { "Text section" }, about_topics => { "stopping and restarting an application for update" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#Adapting-to-Windows"
+  represents => { "Text section" }, about_topics => { "adapting to windows" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#Notes-on-Windows-systems"
+  represents => { "Text section" }, about_topics => { "notes on windows systems" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#Customizing-applications"
+  represents => { "Text section" }, about_topics => { "customizing applications" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#Starting-and-stopping-software"
+  represents => { "Text section" }, about_topics => { "starting and stopping software" };
+ "/knowledge/docs/SpecialTopic_ApplMgt.html#Auditing-software-applications"
+  represents => { "Text section" }, about_topics => { "auditing software applications" };
+}
+

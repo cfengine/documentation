@@ -1,0 +1,41 @@
+
+bundle knowledge SpecialTopic_FIPS
+
+{
+topics:
+
+"SpecialTopic_FIPS";
+Special_Topics_Guide::
+    "References"  association => a("discusses","FIPS certification","is discussed in");
+Special_Topics_Guide::
+    "Future policy"  association => a("discusses","FIPS certification","is discussed in");
+Special_Topics_Guide::
+    "Algorithms"  association => a("discusses","FIPS certification","is discussed in");
+Special_Topics_Guide::
+    "Declaration from CFEngine"  association => a("discusses","FIPS certification","is discussed in");
+Special_Topics_Guide::
+    "What is the certificate number?"  association => a("discusses","FIPS certification","is discussed in");
+Special_Topics_Guide::
+    "What is FIPS 140-2?"  association => a("discusses","FIPS certification","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_FIPS.html"
+  represents => { "Official CFEngine document"},  about_topics => { "fips certification" };
+ "/knowledge/docs/SpecialTopic_FIPS.html"
+  represents => { "Special Topics Guide"},  about_topics => { "fips certification" };
+ "/knowledge/docs/SpecialTopic_FIPS.html#TOC0"
+  represents => { "Text section" }, about_topics => { "what is fips 140-2?" };
+ "/knowledge/docs/SpecialTopic_FIPS.html#TOC1"
+  represents => { "Text section" }, about_topics => { "what is the certificate number?" };
+ "/knowledge/docs/SpecialTopic_FIPS.html#TOC2"
+  represents => { "Text section" }, about_topics => { "declaration from cfengine" };
+ "/knowledge/docs/SpecialTopic_FIPS.html#TOC3"
+  represents => { "Text section" }, about_topics => { "algorithms" };
+ "/knowledge/docs/SpecialTopic_FIPS.html#TOC4"
+  represents => { "Text section" }, about_topics => { "future policy" };
+ "/knowledge/docs/SpecialTopic_FIPS.html#TOC5"
+  represents => { "Text section" }, about_topics => { "references" };
+}
+

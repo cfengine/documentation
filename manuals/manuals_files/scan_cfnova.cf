@@ -1,0 +1,736 @@
+
+bundle knowledge cfnova
+
+{
+topics:
+
+"cfnova";
+Windows_specific_features_in_Nova::
+    "Notes on windows policies" ;
+Windows_specific_features_in_Nova::
+    "Windows hard classes" ;
+Windows_specific_features_in_Nova::
+    "Windows special variables" ;
+Windows_specific_features_in_Nova::
+    "Windows event logging" ;
+Windows_specific_features_in_Nova::
+    "Windows service management" ;
+Windows_specific_features_in_Nova::
+    "Windows-specific features in Nova" ;
+Content_Driven_Policies::
+    "Getting started" ;
+Content_Driven_Policies::
+    "Benefits of Content-Driven Policies" ;
+Content_Driven_Policies::
+    "Content-Driven Policies" ;
+Virtualization::
+    "Example deployment" ;
+Virtualization::
+    "Distinct states" ;
+Virtualization::
+    "Virtualization types supported" ;
+Virtualization::
+    "Environments promises" ;
+Virtualization::
+    "What can CFEngine do with virtual machines?" ;
+Virtualization::
+    "Why build virtualization support into CFEngine?" ;
+Virtualization::
+    "What are virtualization and cloud computing?" ;
+Virtualization::
+    "Virtualization" ;
+Environments_and_workflows::
+    "Implementing workflows in Nova" ;
+Environments_and_workflows::
+    "Environments in Nova" ;
+Environments_and_workflows::
+    "Environments and workflows" ;
+Server_extensions::
+    "Example remote scalar lookup" ;
+Server_extensions::
+    "Function remotescalar" ;
+Server_extensions::
+    "Server access resource type" ;
+Server_extensions::
+    "Server extensions" ;
+NT_ACL_type::
+    "NT ACL examples" ;
+NT_ACL_type::
+    "NT-specific ACL syntax" ;
+File_Access_Control_Lists::
+    "NT ACL type" ;
+POSIX_ACL_type::
+    "POSIX ACL examples" ;
+POSIX_ACL_type::
+    "Generic syntax mapping" ;
+POSIX_ACL_type::
+    "POSIX-specific ACL syntax" ;
+File_Access_Control_Lists::
+    "POSIX ACL type" ;
+CFEngine_3_Generic_ACL_Syntax::
+    "Generic syntax examples" ;
+File_Access_Control_Lists::
+    "CFEngine 3 Generic ACL Syntax" ;
+File_ACL_example::
+    "Inheritance" ;
+File_ACL_example::
+    "Effective permissions" ;
+File_ACL_example::
+    "Changing permissions" ;
+File_ACL_example::
+    "Deny permissions" ;
+File_ACL_example::
+    "Permissions" ;
+File_ACL_example::
+    "Changing owner" ;
+File_ACL_example::
+    "Owners" ;
+File_ACL_example::
+    "Entity types" ;
+File_ACL_example::
+    "Concepts" ;
+File_Access_Control_Lists::
+    "File ACL example" ;
+File_Access_Control_Lists::
+    "Introduction" ;
+File_Access_Control_Lists::
+    "File Access Control Lists" ;
+LDAP_integration::
+    "Best practice for LDAP integration" ;
+LDAP_integration::
+    "LDAP function examples" ;
+LDAP_integration::
+    "Function regldap" ;
+LDAP_integration::
+    "Function ldaparray" ;
+LDAP_integration::
+    "Function ldaplist" ;
+LDAP_integration::
+    "Function ldapvalue" ;
+Database_Promises::
+    "LDAP integration" ;
+MS_Registry_functions::
+    "Scanning and restoring the registry" ;
+MS_Registry_functions::
+    "Deleting registry values" ;
+MS_Registry_functions::
+    "Deleting registry keys" ;
+MS_Registry_functions::
+    "Creating a value-data pair" ;
+MS_Registry_functions::
+    "Creating a registry key" ;
+Database_Promises::
+    "MS Registry functions" ;
+Database_Promises::
+    "Database table promises" ;
+Creating_SQL_databases::
+    "Creating a database directly" ;
+Creating_SQL_databases::
+    "Creating a database manually" ;
+Database_Promises::
+    "Creating SQL databases" ;
+Database_Promises::
+    "Creating a point of contact on a server" ;
+Database_Promises::
+    "Database access rights" ;
+Database_Promises::
+    "How to manage databases" ;
+Database_Promises::
+    "Database Promises" ;
+Monitoring_extensions::
+    "Uses for custom monitoring" ;
+Custom_promises_to_measure::
+    "Extraction to list variable" ;
+Custom_promises_to_measure::
+    "Extracting one-off numerical data" ;
+Custom_promises_to_measure::
+    "Extraction strings and logging" ;
+Monitoring_extensions::
+    "Custom promises to measure" ;
+Monitoring_extensions::
+    "Long term trends" ;
+Monitoring_extensions::
+    "Integration of monitoring with knowledge base" ;
+Monitoring_extensions::
+    "Monitoring extensions" ;
+Business_Integration::
+    "Simple insight into IT compliance" ;
+Business_Integration::
+    "Business value reports" ;
+Business_Integration::
+    "Business goals and the Service Catalogue" ;
+Business_Integration::
+    "Business Integration" ;
+cf_hub_and_data_collection::
+    "The reporting agent" ;
+cf_hub_and_data_collection::
+    "CMDB or SKMS" ;
+Mission_Portal::
+    "cf-hub and data collection" ;
+Using_the_knowledge_map::
+    "Why knowledge management?" ;
+Using_the_knowledge_map::
+    "A quick tour of the knowledge console" ;
+Using_the_knowledge_map::
+    "Understanding dependencies" ;
+Using_the_knowledge_map::
+    "Policy analysis" ;
+Mission_Portal::
+    "Using the knowledge map" ;
+Knowledge_Map::
+    "Other topics found under Category" ;
+Knowledge_Map::
+    "Topics that have Category::Topic as a subject-header" ;
+Knowledge_Map::
+    "Results for this topic" ;
+Knowledge_Map::
+    "The knowledge base maps" ;
+Knowledge_Map::
+    "The knowledge map pages" ;
+Mission_Portal::
+    "Knowledge Map" ;
+Standard_reports_in_CFEngine_Nova::
+    "Installed setuid program report" ;
+Standard_reports_in_CFEngine_Nova::
+    "A file content change report" ;
+Standard_reports_in_CFEngine_Nova::
+    "A promise compliance report" ;
+Standard_reports_in_CFEngine_Nova::
+    "Installed software packages" ;
+Standard_reports_in_CFEngine_Nova::
+    "Performance logs" ;
+Mission_Portal::
+    "Standard reports in CFEngine Nova" ;
+Mission_Portal::
+    "Reporting in CFEngine" ;
+Mission_Portal::
+    "Decentralized data collection in CFEngine" ;
+Mission_Portal::
+    "CMDB and CFEngine" ;
+Mission_Portal::
+    "What is a CMDB?" ;
+Mission_Portal::
+    "Should monitoring and configuration be separate?" ;
+Mission_Portal::
+    "Reports in the Mission Portal" ;
+Mission_Portal_Views::
+    "Integration with subversion" ;
+Mission_Portal_Views::
+    "The policy editor" ;
+Mission_Portal_Views::
+    "Detail views" ;
+Mission_Portal_Views::
+    "Pulse and vital signs" ;
+Mission_Portal_Views::
+    "Top 50 weakest hosts" ;
+Mission_Portal_Views::
+    "Status level meters" ;
+Mission_Portal_Views::
+    "Host view" ;
+Mission_Portal_Views::
+    "Mission status" ;
+Mission_Portal::
+    "Mission Portal Views" ;
+Mission_Portal::
+    "Mission Portal" ;
+Installing_CFEngine_Nova::
+    "What is the default configuration?" ;
+Upgrading_Nova::
+    "Troubleshooting upgrade" ;
+Installing_CFEngine_Nova::
+    "Upgrading Nova" ;
+Installing_CFEngine_Nova::
+    "Installing the software on a new host" ;
+Installing_CFEngine_Nova::
+    "Operating system support" ;
+Installing_CFEngine_Nova::
+    "Installing CFEngine Nova" ;
+Nova_Commercial_Enhancements::
+    "Knowledge Management in Nova" ;
+Nova_Commercial_Enhancements::
+    "Documentation enhancements" ;
+Nova_Commercial_Enhancements::
+    "Reporting enhancements" ;
+Nova_Commercial_Enhancements::
+    "Functional enhancements" ;
+Nova_Commercial_Enhancements::
+    "Productivity enhancements" ;
+Introduction_to_CFEngine_Nova::
+    "Nova Commercial Enhancements" ;
+About_the_CFEngine_architecture::
+    "Phases of the server life-cycle" ;
+About_the_CFEngine_architecture::
+    "Requirements and scalability of CFEngine Nova" ;
+About_the_CFEngine_architecture::
+    "Single point of coordination" ;
+About_the_CFEngine_architecture::
+    "CFEngine is agent based software" ;
+Introduction_to_CFEngine_Nova::
+    "About the CFEngine architecture" ;
+Introduction_to_CFEngine_Nova::
+    "Whats new in Nova 2.0?" ;
+Introduction_to_CFEngine_Nova::
+    "What are enterprise versions of CFEngine?" ;
+Introduction_to_CFEngine_Nova::
+    "Introduction to CFEngine Nova" ;
+Special_Topics_Guide::
+    "CFEngine-AutoReference"  association => a("discussed in","CFEngine-AutoReference","discusses");
+
+
+occurrences:
+
+manuals::
+ "/docs/cfnova.html"
+  represents => { "CFEngine Nova Technical Supplement" };
+CFEngine_AutoReference::
+ "/docs/cfnova.html#Top"
+  represents => { "Text section" };
+Introduction_to_CFEngine_Nova::
+ "/docs/cfnova.html#Introduction-to-CFEngine-Nova"
+  represents => { "manual chapter" };
+What_are_enterprise_versions_of_CFEngine_::
+ "/docs/cfnova.html#What-are-enterprise-versions_003f"
+  represents => { "manual section What are enterprise versions of CFEngine?" };
+Whats_new_in_Nova_2_0_::
+ "/docs/cfnova.html#What_0027s-new-in-Nova-2_002e0_003f"
+  represents => { "manual section Whats new in Nova 2.0?" };
+About_the_CFEngine_architecture::
+ "/docs/cfnova.html#About-the-CFEngine-architecture"
+  represents => { "manual section About the CFEngine architecture" };
+CFEngine_is_agent_based_software::
+ "/docs/cfnova.html#CFEngine-is-agent-based-software"
+  represents => { "manual subsection" };
+Single_point_of_coordination::
+ "/docs/cfnova.html#Single-point-of-coordination"
+  represents => { "manual subsection" };
+Requirements_and_scalability_of_CFEngine_Nova::
+ "/docs/cfnova.html#Requirements-and-scalability-of-CFEngine-Nova"
+  represents => { "manual subsection" };
+Phases_of_the_server_life_cycle::
+ "/docs/cfnova.html#Phases-of-the-server-life_002dcycle"
+  represents => { "manual subsection" };
+Nova_Commercial_Enhancements::
+ "/docs/cfnova.html#Nova-Commercial-Enhancements"
+  represents => { "manual section Nova Commercial Enhancements" };
+Productivity_enhancements::
+ "/docs/cfnova.html#Productivity-enhancements"
+  represents => { "manual subsection" };
+Functional_enhancements::
+ "/docs/cfnova.html#Functional-enhancements"
+  represents => { "manual subsection" };
+Reporting_enhancements::
+ "/docs/cfnova.html#Reporting-enhancements"
+  represents => { "manual subsection" };
+Documentation_enhancements::
+ "/docs/cfnova.html#Documentation-enhancements"
+  represents => { "manual subsection" };
+Documentation_enhancements::
+ "/docs/cfnova.html#Documentation-enhancements"
+  represents => { "code example" };
+Knowledge_Management_in_Nova::
+ "/docs/cfnova.html#Knowledge-Management-in-Nova"
+  represents => { "manual subsection" };
+Installing_CFEngine_Nova::
+ "/docs/cfnova.html#Installing-CFEngine-Nova"
+  represents => { "manual chapter" };
+Operating_system_support::
+ "/docs/cfnova.html#Operating-system-support"
+  represents => { "manual section Operating system support" };
+Installing_the_software_on_a_new_host::
+ "/docs/cfnova.html#Installing-the-software"
+  represents => { "manual section Installing the software on a new host" };
+Upgrading_Nova::
+ "/docs/cfnova.html#Upgrading-Nova"
+  represents => { "manual section Upgrading Nova" };
+Upgrading_Nova::
+ "/docs/cfnova.html#Upgrading-Nova"
+  represents => { "code example" };
+Troubleshooting_upgrade::
+ "/docs/cfnova.html#Troubleshooting-upgrade"
+  represents => { "manual subsection" };
+What_is_the_default_configuration_::
+ "/docs/cfnova.html#What-is-the-default-configuration-_002d-out-of-the-box"
+  represents => { "manual section What is the default configuration?" };
+What_is_the_default_configuration_::
+ "/docs/cfnova.html#What-is-the-default-configuration-_002d-out-of-the-box"
+  represents => { "code example" };
+Mission_Portal::
+ "/docs/cfnova.html#Mission-Portal"
+  represents => { "manual chapter" };
+Mission_Portal_Views::
+ "/docs/cfnova.html#Mission-Portal-Views"
+  represents => { "manual section Mission Portal Views" };
+Mission_status::
+ "/docs/cfnova.html#Mission-status"
+  represents => { "manual subsection" };
+Host_view::
+ "/docs/cfnova.html#Host-view"
+  represents => { "manual subsection" };
+Status_level_meters::
+ "/docs/cfnova.html#Status-level-meters"
+  represents => { "manual subsection" };
+Top_50_weakest_hosts::
+ "/docs/cfnova.html#Top-50-weakest-hosts"
+  represents => { "manual subsection" };
+Pulse_and_vital_signs::
+ "/docs/cfnova.html#Pulse-and-vital-signs"
+  represents => { "manual subsection" };
+Detail_views::
+ "/docs/cfnova.html#Detail-views"
+  represents => { "manual subsection" };
+The_policy_editor::
+ "/docs/cfnova.html#The-policy-editor"
+  represents => { "manual subsection" };
+Integration_with_subversion::
+ "/docs/cfnova.html#Integration-with-subversion"
+  represents => { "manual subsection" };
+Reports_in_the_Mission_Portal::
+ "/docs/cfnova.html#Report-extensions"
+  represents => { "manual section Reports in the Mission Portal" };
+Should_monitoring_and_configuration_be_separate_::
+ "/docs/cfnova.html#Should-monitoring-and-configuration-be-separate_003f"
+  represents => { "manual section Should monitoring and configuration be separate?" };
+What_is_a_CMDB_::
+ "/docs/cfnova.html#What-is-a-CMDB_003f"
+  represents => { "manual section What is a CMDB?" };
+CMDB_and_CFEngine::
+ "/docs/cfnova.html#CMDB-and-CFEngine"
+  represents => { "manual section CMDB and CFEngine" };
+Decentralized_data_collection_in_CFEngine::
+ "/docs/cfnova.html#Decentralized-data-collection-in-CFEngine"
+  represents => { "manual section Decentralized data collection in CFEngine" };
+Reporting_in_CFEngine::
+ "/docs/cfnova.html#Reporting-in-CFEngine"
+  represents => { "manual section Reporting in CFEngine" };
+Standard_reports_in_CFEngine_Nova::
+ "/docs/cfnova.html#Standard-reports-in-CFEngine-Nova"
+  represents => { "manual section Standard reports in CFEngine Nova" };
+Performance_logs::
+ "/docs/cfnova.html#Performance-logs"
+  represents => { "manual subsection" };
+Installed_software_packages::
+ "/docs/cfnova.html#Installed-software-packages"
+  represents => { "manual subsection" };
+A_promise_compliance_report::
+ "/docs/cfnova.html#A-promise-compliance-report"
+  represents => { "manual subsection" };
+A_file_content_change_report::
+ "/docs/cfnova.html#A-file-content-change-report"
+  represents => { "manual subsection" };
+Installed_setuid_program_report::
+ "/docs/cfnova.html#Installed-setuid-program-report"
+  represents => { "manual subsection" };
+Knowledge_Map::
+ "/docs/cfnova.html#Knowledge-Map"
+  represents => { "manual section Knowledge Map" };
+The_knowledge_map_pages::
+ "/docs/cfnova.html#The-knowledge-map-pages"
+  represents => { "manual subsection" };
+The_knowledge_base_maps::
+ "/docs/cfnova.html#The-knowledge-base-map_002dgraphs"
+  represents => { "manual subsection" };
+Results_for_this_topic::
+ "/docs/cfnova.html#Results-for-this-topic"
+  represents => { "manual subsection" };
+Topics_that_have_Category__Topic_as_a_subject_header::
+ "/docs/cfnova.html#Topics-that-have-Category_002dTopic-as-a-subject_002dheader"
+  represents => { "manual subsection" };
+Other_topics_found_under_Category::
+ "/docs/cfnova.html#Other-topics-found-under-Category"
+  represents => { "manual subsection" };
+Using_the_knowledge_map::
+ "/docs/cfnova.html#Using-the-knowledge-map"
+  represents => { "manual section Using the knowledge map" };
+Policy_analysis::
+ "/docs/cfnova.html#Policy-analysis"
+  represents => { "manual subsection" };
+Understanding_dependencies::
+ "/docs/cfnova.html#Understanding-dependencies"
+  represents => { "manual subsection" };
+A_quick_tour_of_the_knowledge_console::
+ "/docs/cfnova.html#A-quick-tour-of-the-knowledge-console"
+  represents => { "manual subsection" };
+Why_knowledge_management_::
+ "/docs/cfnova.html#Why-knowledge-management_003f"
+  represents => { "manual subsection" };
+cf_hub_and_data_collection::
+ "/docs/cfnova.html#cf_002dhub-and-data-collection"
+  represents => { "manual section cf-hub and data collection" };
+CMDB_or_SKMS::
+ "/docs/cfnova.html#CMDB-or-SKMS"
+  represents => { "manual subsection" };
+The_reporting_agent::
+ "/docs/cfnova.html#The-reporting-agent"
+  represents => { "manual subsection" };
+Business_Integration::
+ "/docs/cfnova.html#Business-Integration"
+  represents => { "manual chapter" };
+Business_goals_and_the_Service_Catalogue::
+ "/docs/cfnova.html#Nova-attends-to-business-goals"
+  represents => { "manual section Business goals and the Service Catalogue" };
+Business_value_reports::
+ "/docs/cfnova.html#Business-value-reports"
+  represents => { "manual section Business value reports" };
+Simple_insight_into_IT_compliance::
+ "/docs/cfnova.html#Simple-insight-into-IT-compliance"
+  represents => { "manual section Simple insight into IT compliance" };
+Monitoring_extensions::
+ "/docs/cfnova.html#Monitoring-extensions"
+  represents => { "manual chapter" };
+Integration_of_monitoring_with_knowledge_base::
+ "/docs/cfnova.html#Integration-of-monitoring-with-knowledge-base"
+  represents => { "manual section Integration of monitoring with knowledge base" };
+Long_term_trends::
+ "/docs/cfnova.html#Long-term-trends"
+  represents => { "manual section Long term trends" };
+Custom_promises_to_measure::
+ "/docs/cfnova.html#Custom-promises-to-measure"
+  represents => { "manual section Custom promises to measure" };
+Extraction_strings_and_logging::
+ "/docs/cfnova.html#Extraction-strings-and-logging"
+  represents => { "manual subsection" };
+Extracting_one_off_numerical_data::
+ "/docs/cfnova.html#Extracting-one_002doff-numerical-data"
+  represents => { "manual subsection" };
+Extraction_to_list_variable::
+ "/docs/cfnova.html#Extraction-to-list-variable"
+  represents => { "manual subsection" };
+Uses_for_custom_monitoring::
+ "/docs/cfnova.html#Uses-for-custom-monitoring"
+  represents => { "manual section Uses for custom monitoring" };
+Database_Promises::
+ "/docs/cfnova.html#Database-Promises"
+  represents => { "manual chapter" };
+How_to_manage_databases::
+ "/docs/cfnova.html#How-to-manage-databases"
+  represents => { "manual section How to manage databases" };
+Database_access_rights::
+ "/docs/cfnova.html#Database-access-rights"
+  represents => { "manual section Database access rights" };
+Creating_a_point_of_contact_on_a_server::
+ "/docs/cfnova.html#Creating-a-point-of-contact-on-a-server"
+  represents => { "manual section Creating a point of contact on a server" };
+Creating_SQL_databases::
+ "/docs/cfnova.html#Creating-SQL-databases"
+  represents => { "manual section Creating SQL databases" };
+Creating_a_database_manually::
+ "/docs/cfnova.html#Creating-a-database-manually"
+  represents => { "manual subsection" };
+Creating_a_database_directly::
+ "/docs/cfnova.html#Creating-a-database-directly"
+  represents => { "manual subsection" };
+Database_table_promises::
+ "/docs/cfnova.html#Database-promises"
+  represents => { "manual section Database table promises" };
+MS_Registry_functions::
+ "/docs/cfnova.html#MS-Registry-functions"
+  represents => { "manual section MS Registry functions" };
+Creating_a_registry_key::
+ "/docs/cfnova.html#Creating-a-registry-key"
+  represents => { "manual subsection" };
+Creating_a_value_data_pair::
+ "/docs/cfnova.html#Creating-a-value_002ddata-pair"
+  represents => { "manual subsection" };
+Deleting_registry_keys::
+ "/docs/cfnova.html#Deleting-registry-keys"
+  represents => { "manual subsection" };
+Deleting_registry_values::
+ "/docs/cfnova.html#Deleting-registry-values"
+  represents => { "manual subsection" };
+Scanning_and_restoring_the_registry::
+ "/docs/cfnova.html#Scanning-and-restoring-the-registry"
+  represents => { "manual subsection" };
+LDAP_integration::
+ "/docs/cfnova.html#LDAP-integration"
+  represents => { "manual section LDAP integration" };
+Function_ldapvalue::
+ "/docs/cfnova.html#Function-ldapvalue"
+  represents => { "manual subsection" };
+Function_ldapvalue::
+ "/docs/cfnova.html#Function-ldapvalue"
+  represents => { "code example" };
+Function_ldapvalue::
+ "/docs/cfnova.html#Function-ldapvalue"
+  represents => { "code example" };
+Function_ldaplist::
+ "/docs/cfnova.html#Function-ldaplist"
+  represents => { "manual subsection" };
+Function_ldaplist::
+ "/docs/cfnova.html#Function-ldaplist"
+  represents => { "code example" };
+Function_ldaplist::
+ "/docs/cfnova.html#Function-ldaplist"
+  represents => { "code example" };
+Function_ldaparray::
+ "/docs/cfnova.html#Function-ldaparray"
+  represents => { "manual subsection" };
+Function_ldaparray::
+ "/docs/cfnova.html#Function-ldaparray"
+  represents => { "code example" };
+Function_ldaparray::
+ "/docs/cfnova.html#Function-ldaparray"
+  represents => { "code example" };
+Function_regldap::
+ "/docs/cfnova.html#Function-regldap"
+  represents => { "manual subsection" };
+Function_regldap::
+ "/docs/cfnova.html#Function-regldap"
+  represents => { "code example" };
+Function_regldap::
+ "/docs/cfnova.html#Function-regldap"
+  represents => { "code example" };
+LDAP_function_examples::
+ "/docs/cfnova.html#LDAP-function-examples"
+  represents => { "manual subsection" };
+Best_practice_for_LDAP_integration::
+ "/docs/cfnova.html#Best-practice-for-LDAP-integration"
+  represents => { "manual subsection" };
+File_Access_Control_Lists::
+ "/docs/cfnova.html#File-Access-Control-Lists"
+  represents => { "manual chapter" };
+Introduction::
+ "/docs/cfnova.html#Introduction"
+  represents => { "manual section Introduction" };
+File_ACL_example::
+ "/docs/cfnova.html#File-ACL-example"
+  represents => { "manual section File ACL example" };
+Concepts::
+ "/docs/cfnova.html#Concepts"
+  represents => { "manual subsection" };
+Entity_types::
+ "/docs/cfnova.html#Entity-types"
+  represents => { "manual subsection" };
+Owners::
+ "/docs/cfnova.html#Owners"
+  represents => { "manual subsection" };
+Changing_owner::
+ "/docs/cfnova.html#Changing-owner"
+  represents => { "manual subsection" };
+Permissions::
+ "/docs/cfnova.html#Permissions"
+  represents => { "manual subsection" };
+Deny_permissions::
+ "/docs/cfnova.html#Deny-permissions"
+  represents => { "manual subsection" };
+Changing_permissions::
+ "/docs/cfnova.html#Changing-permissions"
+  represents => { "manual subsection" };
+Effective_permissions::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual subsection" };
+Inheritance::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual subsection" };
+CFEngine_3_Generic_ACL_Syntax::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual section CFEngine 3 Generic ACL Syntax" };
+CFEngine_3_Generic_ACL_Syntax::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "code example" };
+Generic_syntax_examples::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual subsection" };
+POSIX_ACL_type::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual section POSIX ACL type" };
+POSIX_specific_ACL_syntax::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual subsection" };
+Generic_syntax_mapping::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual subsection" };
+POSIX_ACL_examples::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual subsection" };
+NT_ACL_type::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual section NT ACL type" };
+NT_specific_ACL_syntax::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual subsection" };
+Generic_syntax_mapping::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual subsection" };
+NT_ACL_examples::
+ "/docs/cfnova.html#Effective-permissions"
+  represents => { "manual subsection" };
+Server_extensions::
+ "/docs/cfnova.html#Server-extensions"
+  represents => { "manual chapter" };
+Server_access_resource_type::
+ "/docs/cfnova.html#Server-access-resource-type"
+  represents => { "manual section Server access resource type" };
+Function_remotescalar::
+ "/docs/cfnova.html#Function-remotescalar"
+  represents => { "manual section Function remotescalar" };
+Function_remotescalar::
+ "/docs/cfnova.html#Function-remotescalar"
+  represents => { "code example" };
+Example_remote_scalar_lookup::
+ "/docs/cfnova.html#Example-remote-scalar-lookup"
+  represents => { "manual section Example remote scalar lookup" };
+Environments_and_workflows::
+ "/docs/cfnova.html#Environments-and-workflows"
+  represents => { "manual chapter" };
+Environments_in_Nova::
+ "/docs/cfnova.html#Environments-in-Nova"
+  represents => { "manual section Environments in Nova" };
+Implementing_workflows_in_Nova::
+ "/docs/cfnova.html#Implementing-workflows-in-Nova"
+  represents => { "manual section Implementing workflows in Nova" };
+Virtualization::
+ "/docs/cfnova.html#Virtualization"
+  represents => { "manual chapter" };
+What_are_virtualization_and_cloud_computing_::
+ "/docs/cfnova.html#What-are-virtualization-and-cloud-computing_003f"
+  represents => { "manual section What are virtualization and cloud computing?" };
+Why_build_virtualization_support_into_CFEngine_::
+ "/docs/cfnova.html#Why-build-virtualization-support-into-CFEngine_003f"
+  represents => { "manual section Why build virtualization support into CFEngine?" };
+What_can_CFEngine_do_with_virtual_machines_::
+ "/docs/cfnova.html#What-can-CFEngine-do-with-virtual-machines_003f"
+  represents => { "manual section What can CFEngine do with virtual machines?" };
+Environments_promises::
+ "/docs/cfnova.html#Environments-promises"
+  represents => { "manual section Environments promises" };
+Virtualization_types_supported::
+ "/docs/cfnova.html#Virtualization-types-supported"
+  represents => { "manual section Virtualization types supported" };
+Distinct_states::
+ "/docs/cfnova.html#Distinct-states"
+  represents => { "manual section Distinct states" };
+Example_deployment::
+ "/docs/cfnova.html#Example-deployment"
+  represents => { "manual section Example deployment" };
+Content_Driven_Policies::
+ "/docs/cfnova.html#Content_002dDriven-Policies"
+  represents => { "manual chapter" };
+Benefits_of_Content_Driven_Policies::
+ "/docs/cfnova.html#Content_002dDriven-Policies"
+  represents => { "manual section Benefits of Content-Driven Policies" };
+Benefits_of_Content_Driven_Policies::
+ "/docs/cfnova.html#Content_002dDriven-Policies"
+  represents => { "code example" };
+Getting_started::
+ "/docs/cfnova.html#Content_002dDriven-Policies"
+  represents => { "manual section Getting started" };
+Windows_specific_features_in_Nova::
+ "/docs/cfnova.html#Windows_002dspecific-features-in-Nova"
+  represents => { "manual chapter" };
+Windows_service_management::
+ "/docs/cfnova.html#Windows_002dspecific-features-in-Nova"
+  represents => { "manual section Windows service management" };
+Windows_event_logging::
+ "/docs/cfnova.html#Windows_002dspecific-features-in-Nova"
+  represents => { "manual section Windows event logging" };
+Windows_special_variables::
+ "/docs/cfnova.html#Windows_002dspecific-features-in-Nova"
+  represents => { "manual section Windows special variables" };
+Windows_hard_classes::
+ "/docs/cfnova.html#Windows_002dspecific-features-in-Nova"
+  represents => { "manual section Windows hard classes" };
+Notes_on_windows_policies::
+ "/docs/cfnova.html#Windows_002dspecific-features-in-Nova"
+  represents => { "manual section Notes on windows policies" };
+}
+

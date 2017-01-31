@@ -1,0 +1,20 @@
+
+#
+# Control parts, keep these separate for efficiency
+#
+
+
+body knowledge control
+
+{
+build_directory => "$(enterprise_start.doc_root)/docs";
+graph_directory => "$(enterprise_start.doc_root)/graphs";
+
+sql_database => "knowledge_bank";
+sql_owner => "root";
+sql_passwd => "";
+sql_type => "mysql";
+sql_connection_db => "mysql";
+query_engine => "/index.php";
+}
+

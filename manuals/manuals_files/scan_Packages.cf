@@ -1,0 +1,45 @@
+
+bundle knowledge cf2_Packages
+
+{
+topics:
+
+"cf2-Packages";
+Cfengines_package_interface::
+    "Package upgrade or install?" ;
+Cfengines_package_interface::
+    "Example of packages" ;
+Cfengines_package_interface::
+    "Syntax of packages" ;
+Cfengines_package_interface::
+    "Cfengines package interface" ;
+
+
+occurrences:
+
+Cfengines_package_interface::
+ "/inside/manuals/cf2-Packages#Cfengine_0027s-package-interface"
+  represents => { "chapter" };
+Syntax_of_packages::
+ "/inside/manuals/cf2-Packages#Syntax-of-packages"
+  represents => { "Syntax of packages" };
+Syntax_of_packages::
+ "/inside/manuals/cf2-Packages#Syntax-of-packages"
+  represents => { "example" };
+Example_of_packages::
+ "/inside/manuals/cf2-Packages#Example-of-packages"
+  represents => { "Example of packages" };
+Example_of_packages::
+ "/inside/manuals/cf2-Packages#Example-of-packages"
+  represents => { "example" };
+Package_upgrade_or_install_::
+ "/inside/manuals/cf2-Packages#Package-upgrade-or-install"
+  represents => { "Package upgrade or install?" };
+Package_upgrade_or_install_::
+ "/inside/manuals/cf2-Packages#Package-upgrade-or-install"
+  represents => { "example" };
+Package_upgrade_or_install_::
+ "/inside/manuals/cf2-Packages#Package-upgrade-or-install"
+  represents => { "example" };
+}
+

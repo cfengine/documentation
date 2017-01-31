@@ -1,0 +1,70 @@
+
+bundle knowledge SpecialTopic_Rollback
+
+{
+topics:
+
+"SpecialTopic_Rollback";
+Special_Topics_Guide::
+    "Appendix - Did you know?"  association => a("discusses","Rollout and Rollback","is discussed in");
+Special_Topics_Guide::
+    "Resetting  a case where rollback works?"  association => a("discusses","Rollout and Rollback","is discussed in");
+Special_Topics_Guide::
+    "How does CFEngine convergence help?"  association => a("discusses","Rollout and Rollback","is discussed in");
+Special_Topics_Guide::
+    "An alternative way to plan changes"  association => a("discusses","Rollout and Rollback","is discussed in");
+Special_Topics_Guide::
+    "Dont shoot the messenger"  association => a("discusses","Rollout and Rollback","is discussed in");
+Special_Topics_Guide::
+    "Why is relying on rollback not a good strategy?"  association => a("discusses","Rollout and Rollback","is discussed in");
+Special_Topics_Guide::
+    "ITIL release management"  association => a("discusses","Rollout and Rollback","is discussed in");
+Special_Topics_Guide::
+    "Limitations of rollback in system administration"  association => a("discusses","Rollout and Rollback","is discussed in");
+Special_Topics_Guide::
+    "Like revision control?"  association => a("discusses","Rollout and Rollback","is discussed in");
+Special_Topics_Guide::
+    "What is rollback?"  association => a("discusses","Rollout and Rollback","is discussed in");
+Special_Topics_Guide::
+    "Rollback"  association => a("discusses","Rollout and Rollback","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Rollback.html"
+  represents => { "Official CFEngine document"},  about_topics => { "rollout and rollback" };
+ "/knowledge/docs/SpecialTopic_Rollback.html"
+  represents => { "Special Topics Guide"},  about_topics => { "rollout and rollback" };
+ "/knowledge/docs/SpecialTopic_Rollback.html#Top"
+  represents => { "Text section" }, about_topics => { "rollback" };
+ "/knowledge/docs/SpecialTopic_Rollback.html#What-is-rollback_003f"
+  represents => { "Text section" }, about_topics => { "what is rollback?" };
+ "/knowledge/docs/SpecialTopic_Rollback.html#Like-revision-control_003f"
+  represents => { "Text section" }, about_topics => { "like revision control?" };
+examples:: "/knowledge/docs/SpecialTopic_Rollback.html#Like-revision-control_003f"
+ about_topics => { "Like revision control?" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Rollback.html#Like-revision-control_003f"
+ about_topics => { "Like revision control?" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Rollback.html#Like-revision-control_003f"
+ about_topics => { "Like revision control?" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Rollback.html#Limitations-of-rollback-in-system-administration"
+  represents => { "Text section" }, about_topics => { "limitations of rollback in system administration" };
+ "/knowledge/docs/SpecialTopic_Rollback.html#ITIL-release-management"
+  represents => { "Text section" }, about_topics => { "itil release management" };
+ "/knowledge/docs/SpecialTopic_Rollback.html#Why-is-relying-on-rollback-not-a-good-strategy_003f"
+  represents => { "Text section" }, about_topics => { "why is relying on rollback not a good strategy?" };
+ "/knowledge/docs/SpecialTopic_Rollback.html#Don_0027t-shoot-the-messenger"
+  represents => { "Text section" }, about_topics => { "dont shoot the messenger" };
+ "/knowledge/docs/SpecialTopic_Rollback.html#An-alternative-way-to-plan-changes"
+  represents => { "Text section" }, about_topics => { "an alternative way to plan changes" };
+ "/knowledge/docs/SpecialTopic_Rollback.html#How-does-CFEngine-convergence-help_003f"
+  represents => { "Text section" }, about_topics => { "how does cfengine convergence help?" };
+ "/knowledge/docs/SpecialTopic_Rollback.html#g_t_0060Resetting_0027-_002d_002d-a-case-where-rollback-works_003f"
+  represents => { "Text section" }, about_topics => { "resetting  a case where rollback works?" };
+ "/knowledge/docs/SpecialTopic_Rollback.html#Appendix-_002d-Did-you-know_003f"
+  represents => { "Text section" }, about_topics => { "appendix - did you know?" };
+}
+

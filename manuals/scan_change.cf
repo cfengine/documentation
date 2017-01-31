@@ -1,0 +1,86 @@
+
+bundle knowledge st_change
+
+{
+topics:
+
+"st-change";
+Change_Management::
+    "Deploying policy changes" ;
+Change_Management::
+    "The change decision process or release management" ;
+Change_Management::
+    "Change and convergence" ;
+Change_Management::
+    "Non-destructive change" ;
+Change_Management::
+    "Change management and knowledge management" ;
+Change_Management::
+    "Promises about change" ;
+Change_Management::
+    "Promises about change vs state" ;
+Change_Management::
+    "The decision point" ;
+Change_Management::
+    "Partially centralized change" ;
+Change_Management::
+    "How fast should changes be made?" ;
+Change_Management::
+    "Intended and unintended change" ;
+Change_Management::
+    "Regulation: authorized and unauthorized change" ;
+Change_Management::
+    "What is change management?" ;
+Special_Topics_Guide::
+    "Change Management"  association => a("discussed in","Change Management","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-change.html"
+  represents => { "Change Management and Incident Repair" };
+Change_Management::
+ "/docs/st-change.html#Top"
+  represents => { "Text section" };
+What_is_change_management_::
+ "/docs/st-change.html#What-is-change-management_003f"
+  represents => { "Text section" };
+Regulation__authorized_and_unauthorized_change::
+ "/docs/st-change.html#Regulation-_002d-authorized-and-unauthorized-change"
+  represents => { "Text section" };
+Intended_and_unintended_change::
+ "/docs/st-change.html#Intended-and-unintended-change"
+  represents => { "Text section" };
+How_fast_should_changes_be_made_::
+ "/docs/st-change.html#How-fast-should-changes-be-made_003f"
+  represents => { "Text section" };
+Partially_centralized_change::
+ "/docs/st-change.html#Partially-centralized-change"
+  represents => { "Text section" };
+The_decision_point::
+ "/docs/st-change.html#The-decision-point"
+  represents => { "Text section" };
+Promises_about_change_vs_state::
+ "/docs/st-change.html#Promises-about-change-vs-state"
+  represents => { "Text section" };
+Promises_about_change::
+ "/docs/st-change.html#Promises-about-change"
+  represents => { "Text section" };
+Change_management_and_knowledge_management::
+ "/docs/st-change.html#Change-management-and-knowledge-management"
+  represents => { "Text section" };
+Non_destructive_change::
+ "/docs/st-change.html#Non_002ddestructive-change"
+  represents => { "Text section" };
+Change_and_convergence::
+ "/docs/st-change.html#Change-and-convergence"
+  represents => { "Text section" };
+The_change_decision_process_or_release_management::
+ "/docs/st-change.html#The-change-decision-process-or-release-management"
+  represents => { "Text section" };
+Deploying_policy_changes::
+ "/docs/st-change.html#Deploying-policy-changes"
+  represents => { "Text section" };
+}
+

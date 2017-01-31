@@ -1,0 +1,233 @@
+#
+# if we make depth too big, takes too long to click forward
+# if we don't have categories, too many topics in each section
+# 
+
+bundle knowledge system
+
+{
+vars:
+
+  "pck[f]" string => "is package manager for";
+  "pck[b]" string => "has package manager";
+
+  "rhtypes"  slist => { "redhat", "suse" };
+  "debtypes" slist => { "debian", "ubuntu" };
+
+topics:
+
+ any::
+
+  "computing environment" comment => "Various ways of interacting with computer systems.";
+
+ files::
+
+  ".c files"   comment => "C compiler source files";
+  ".a files"   comment => "ld library static archive";   
+  ".l files"   comment => "Lex/Flex lexer input file";
+  ".y files"   comment => "Yacc/Bison input grammer file";
+  ".o files"   comment => "Compiled object code from any source";
+  ".so files"   comment => "ld shared object/library file";
+  "a.out"   comment => "Default name for a compiled and linked program";
+  "executable files"    comment => "Files representing executable programs";
+  "setuid files"    comment => "Files that grant temporary privilege as another user";
+  "setgid files"    comment => "Files that grant temporary group membership";
+  "/etc/passwd"    comment => "Unix system user database file";
+  "/etc/shadow"    comment => "Unix system password hash file", association => a("is related to","/etc/passwd","is related to");
+  "/etc/fstab"    comment => "Unix list of available file systems and devices";
+  "/etc/vfstab" comment => "Unix list of available file systems and devices", 
+                association => a("see also","/etc/fstab","on system V unix");
+
+  "/etc/filesystems" comment => "Unix list of available file systems and devices",  association => a("see also","/etc/fstab","on AIX");
+  "/etc/ldso.conf"    comment => "ld shared object loader configuration file";
+  "/etc/printers.conf"    comment => "Unix print spooler configuration file";
+  "/etc/hosts.allow"    comment => "A file granting access to TCP services if support is compiled in";
+  "/etc/hosts.deny" comment => "A file denying access to TCP services support is compiled in";
+  "/etc/ftpusers" comment => "A file denying ftp access to named users";
+
+
+  "/etc/resolv.conf"    comment => "The resolver/name service configuration";
+  "resolv.conf"  association => a("see also","/etc/resolv.conf","see also");
+
+  "ftpusers"  association => a("see also","/etc/ftpusers","see also");
+  "passwd"  association => a("see also","/etc/passwd","see also");
+  "shadow"  association => a("see also","shadow","see also");
+
+ computing_environment::
+
+  "shells";
+  "system processes";
+  "system packages";
+  "package managers"     association => a("install","system packages","are installed by");
+  "filesystem";
+  "virtualization";
+  "distributed system";
+  "environment variables";
+
+ networking::
+
+   "IP tables";
+   "IP chains" association => a("$(tm.same[f])","IP tables","$(tm.same[f])");
+
+   "default route";
+   "routing";
+   "dynamic addresses";
+   "IP address";
+
+ services::
+
+  "application services";
+  "network services";
+
+ network_services::
+
+   "NAT" comment => "Network Address Translation";
+
+   "LDAP" comment => "Lightweight Directory Access Protocol";
+   "DHCP" comment => "Dynamic Host Control Protocol";
+
+   "BIND" comment => "Berkeley Internet Name Domain (previously Berkeley Internet Name Daemon)",
+               association => a("$(tm.impl[f])","DNS","$(tm.impl[b])");
+   "DNS"     comment => "The Domain Name Service",
+          association => a("$(tm.impl[f])","Set up DNS server","$(tm.impl[b])");
+
+   "NFS"     comment => "Network File System",
+          association => a("$(tm.inst[f])","Filesystem","$(tm.inst[b])");
+
+ application_services::
+
+   "web services"   association => a("$(tm.impl[b])","webserver","$(tm.impl[f])");
+   "email";
+   "backup";
+   "storage" comment => "storage as a concept";
+   "webserver"       association => a("$(tm.impl[b])","set up a web server","$(tm.impl[f])");
+
+  commands_and_tools::
+
+  "cf-know"             association => a("computes","topic maps","is computed by");
+
+  "the omnigator"          association => a("verifies","topic maps","generic verification tool");
+
+  "cfengine"               comment => "cfengine - the configuration engine";
+  "yum"                   association => A("$(pck[f])","@(rhtypes)","$(pck[b])");
+  "yast"                  association => a("$(pck[f])","suse","$(pck[b])");
+  "zypper"                association => a("$(pck[f])","suse","$(pck[b])");
+  "rpm"                   association => A("$(pck[f])","@(rhtypes)","$(pck[b])");
+  "apt-get"               association => A("$(pck[f])","@(debtypes)","$(pck[b])");
+  "dpkg"                  association => A("$(pck[f])","@(debtypes)","$(pck[b])");
+  "portage"                association => a("$(pck[f])","gentoo","$(pck[b])");
+  "emerge"                association => a("$(pck[f])","gentoo","$(pck[b])");
+  "pkg_add"                association => a("$(pck[f])","FreeBSD","$(pck[b])");
+  "pkgadd"                association => a("$(pck[f])","Solaris","$(pck[b])");
+
+  "flex"                 association => a("turns .l into",".c files","are built from .l by");
+  "flex"                 association => a("takes as input",".l files","are processed by");
+  "lex"                  association => a("turns .l into",".c files","are built from .l by");
+  "lex"                  association => a("takes as input",".l files","are processed by");      
+  "bison"                association => a("turns .y into",".c files","are built from .y by");
+  "bison"                association => a("takes as input",".y files","are processed by");
+  "gcc"                  association => a("turns .c into",".o files","are built from .c by");
+  "gcc"                  association => a("takes as input",".c files","are processed by");
+  "ldd"                  association => a("turns .o into","Executable files","are built from .o by");
+  "ldd"                  association => a("takes as input",".o files","are processed by");
+  "ldd"                  association => a("takes as input",".a files","are processed by");
+  "ldd"                  association => a("takes as input",".so files","are processed by");
+
+ shells::
+
+  "tcsh" association => a("make use of","environment variables","are used by");
+  "bash" association => a("make use of","environment variables","are used by");
+  "csh" association => a("make use of","environment variables","are used by");
+  "ksh" association => a("make use of","environment variables","are used by");
+  "zsh" association => a("make use of","environment variables","are used by");
+
+
+
+
+###################################################################################
+# We add connectors manually here. Try to be systematic in going through the docs
+# If we add promises to the source files then others would be able to steal this 
+###################################################################################
+
+occurrences:
+
+
+   copernicus::
+       "Cfengine's topic map viewer places topics in the centre and show you the universe of concepts in orbit..."
+            represents => { "definitions" },
+            representation => "literal";
+
+  _c_files::
+
+     "A file containing source code in the C programming language."
+            represents => { "definitions" },
+            representation => "literal";
+
+  _o_files::
+
+     "A file containing object code which will later be linked into an executable program."
+            represents => { "definitions" },
+            representation => "literal";
+
+  _y_files::
+
+     "A file containing a description of language grammar, usually part of a C program."
+            represents => { "definitions" },
+            representation => "literal";
+
+
+  cfengine::
+     "A software system for automated system configuration, and the reference implementation of Promise Theory technology."
+            represents => { "definitions" },
+            representation => "literal";
+
+ # cf2-remotecomm.html
+
+}
+
+#######################################################################
+
+bundle knowledge system_relationships
+
+{
+things:
+
+  # anomalies are determined by the mon.variables
+
+ "system policy" comment => "A complete specification of all promises",
+    determines => { "desired state", "actual state" },
+     certainty => "possible";
+
+ "system policy"
+    affects =>  { "desired state", "actual state" };
+
+  "actual state" comment => "The observed state of the system in the real world, determined by measurement.";
+
+  "desired state" comment => "The promised state of the system in the world of the system model, determined by policy."; 
+
+  "anomalies" comment => "Behaviour that Cfengine deems to be out of the ordinary based on machine learning",
+              synonyms => { "anomaly" };
+
+  "meters" comment => "System indicators in the Cfengine Mission Portal",
+              uses => { "vital signs" };
+
+  "vital signs" comment => "Key system state indicators whose behaviour cf-monitord watches and learns",
+                synonyms => { "observables", "actual state" };
+
+#
+# Can we make a db search for www_high_anomaly as a clickable occurrence through a contoller?
+#
+
+
+actual_state::
+
+  "green state" comment => "Over 80% compliant and less than 20% repairs to the system.";
+
+  "amber state" comment => "Over 20% of promises had to be repaired to achieve compliance.";
+
+  "red state" comment => "Under 80% compliant with system policy";
+
+  "blue state" comment => "No information has been received from the system for 15 minutes",
+              synonyms => { "code blue" };
+
+}

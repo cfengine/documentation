@@ -1,0 +1,1597 @@
+\input texinfo-altfont
+\input texinfo-logo
+\input texinfo
+@selectaltfont{cmbright}
+@setlogo{CfengineLogo}
+
+@c *********************************************************************
+@c
+@c  This is a TEXINFO file. It generates both TEX documentation and
+@c  the "on line" documentation "info" files.
+@c
+@c ***********************************************************************
+
+@c %** start of header
+@setfilename CfengineStdLibrary.info
+@settitle Community Open Promise Body Library
+@setchapternewpage odd
+@c %** end of header
+
+@titlepage
+@title Community Open Promise Body Library
+@subtitle A Cfengine Standard
+@author Cfengine AS
+
+@c @smallbook
+
+@fonttextsize 10
+
+@page
+@vskip 0pt plus 1filll
+Copyright @copyright{} 2009 Cfengine AS
+@end titlepage
+@c *************************** File begins here ************************
+@ifinfo
+@dircategory Cfengine Training
+@direntry
+* cfengine Reference:
+                        Cfengine is a language based framework
+                        designed for configuring and maintaining
+                        Unix-like operating systems attached
+                        to a TCP/IP network.
+@end direntry
+@end ifinfo
+@ifnottex
+@node Top, The Purpose Of This Handbook, (dir), (dir)
+@top Cfengine-Open-Promise-Body-Library
+@end ifnottex
+@ifhtml
+@html
+<a href="#Contents">COMPLETE TABLE OF CONTENTS</a>
+<h2>Summary of contents</h2>
+@end html
+@end ifhtml
+@iftex
+@contents
+@end iftex
+@menu
+* The Purpose Of This Handbook::  
+@end menu
+
+@node The Purpose Of This Handbook,  , Top, Top
+@chapter The Purpose Of This Handbook
+
+@sp 1
+
+Cfengine is built on promises. Promises were chosen as the model for Cfengine's
+configuration language, because they represent an expression of intention.
+
+If you are using custom scripts to manage your systems, you are using
+@i{recipes}. Take a look at any cookbook and you will see that all
+recipes look the same: take flour, eggs, butter, sugar ... and you
+know nothing because you can make a hundred things from these steps.
+If you don't make clear your intention, it is very hard to know what
+the recipe is supposed to be: is it a cake, a waffle, a pastry?
+
+The same is true in system administration. Recipes are not merely
+scripts, they encapsulate knowledge and experience. Their value is
+in communicating @i{desired outcomes} or states.
+
+This library of standard components is like a cookbook that tells you
+only how to make basics well. It gives these basic skills names and
+therefore gives you a common vocabulary -- you will put together these
+basics in creative ways to build your systems.
+
+@sp 2
+
+@cartouche
+
+Please contribute to this guide by helping to develop a repertoire of
+basic skills and names. This collection should be comprehensive but
+parsimonious. Basics are only basics if they are few and carefully
+thought out. This is a work in progress and your experience is welcome.
+
+This library will be moderated by Cfengine, and contributions and discussions
+ca n be made to the help-cfengine@@cfengine.org mailing list.
+
+@end cartouche
+
+
+
+
+
+@menu
+* body action bg::              
+* body action if_elapsed::      
+* body action ifwin_bg::        
+* body action immediate::       
+* body action measure_performance::  
+* body action sample_rate::     
+* body action warn_only::       
+* body changes detect_all_change::  
+* body changes detect_content::  
+* body classes cf2_if_else::    
+* body classes if_else::        
+* body classes if_notkept::     
+* body classes if_ok::          
+* body classes if_repaired::    
+* body classes state_repaired::  
+* body contain in_dir::         
+* body contain in_shell::       
+* body contain jail::           
+* body contain setuid::         
+* body contain setuid_sh::      
+* body contain setuidgid_sh::   
+* body contain silent::         
+* body contain silent_in_dir::  
+* body copy_from local_cp::     
+* body copy_from no_backup_cp::  
+* body copy_from no_backup_rcp::  
+* body copy_from remote_cp::    
+* body copy_from secure_cp::    
+* body copy_from seed_cp::      
+* body copy_from sync_cp::      
+* body delete tidy::            
+* body depth_search recurse::   
+* body depth_search recurse_ignore::  
+* body edit_defaults empty::    
+* body edit_defaults std_defs::  
+* body edit_field col::         
+* body edit_field quoted_var::  
+* body file_select by_name::    
+* body file_select days_old::   
+* body file_select dirs::       
+* body file_select ex_list::    
+* body file_select exclude::    
+* body file_select name_age::   
+* body file_select plain::      
+* body file_select size_range::  
+* body link_from linkchildren::  
+* body link_from ln_s::         
+* body location start::         
+* body match_value scan_log::   
+* body mount nfs::              
+* body mount nfs_p::            
+* body mount unmount::          
+* body package_method apt::     
+* body package_method freebsd::  
+* body package_method solaris ::  
+* body package_method yum::     
+* body package_method zypper::  
+* body perms m::                
+* body perms mo::               
+* body perms mog::              
+* body perms og::               
+* body perms owner::            
+* body process_count check_range::  
+* body rename disable::         
+* body rename rotate::          
+* body rename to::              
+* body replace_with comment::   
+* body replace_with uncomment::  
+* body replace_with value::     
+* body select_process exclude_procs::  
+* body select_region INI_section::  
+* body volume min_free_space::  
+* bundle edit_line append_groups_starting::  
+* bundle edit_line append_if_no_line::  
+* bundle edit_line append_if_no_lines::  
+* bundle edit_line append_user_field::  
+* bundle edit_line append_users_starting::  
+* bundle edit_line comment_lines_containing::  
+* bundle edit_line comment_lines_matching::  
+* bundle edit_line delete_lines_matching::  
+* bundle edit_line expand_template::  
+* bundle edit_line resolvconf::  
+* bundle edit_line set_user_field::  
+* bundle edit_line set_variable_values::  
+* bundle edit_line uncomment_lines_containing::  
+* bundle edit_line uncomment_lines_matching::  
+* bundle edit_line warn_lines_matching::  
+@end menu
+
+@node body action bg, body action if_elapsed, The Purpose Of This Handbook, The Purpose Of This Handbook
+@section body action bg(elapsed,expire)
+
+@verbatim
+body action bg(elapsed,expire)
+{
+ifelapsed   => "$(elapsed)";    # run only every 8 hours
+expireafter => "$(expire)";
+background  => "true";
+}
+
+
+@end verbatim
+
+@node body action if_elapsed, body action ifwin_bg, body action bg, The Purpose Of This Handbook
+@section body action if_elapsed(x)
+
+@verbatim
+body action if_elapsed(x)
+{
+ifelapsed => "$(x)"; 
+expireafter => "$(x)";
+}
+
+
+@end verbatim
+
+@node body action ifwin_bg, body action immediate, body action if_elapsed, The Purpose Of This Handbook
+@section body action ifwin_bg
+
+@verbatim
+body action ifwin_bg
+{
+windows::
+background => "true";
+}
+
+
+
+@end verbatim
+
+@node body action immediate, body action measure_performance, body action ifwin_bg, The Purpose Of This Handbook
+@section body action immediate
+
+@verbatim
+body action immediate
+{
+ifelapsed => "0";
+}
+
+
+@end verbatim
+
+@node body action measure_performance, body action sample_rate, body action immediate, The Purpose Of This Handbook
+@section body action measure_performance(x)
+
+@verbatim
+body action measure_performance(x)
+{
+measurement_class => "Detect changes in $(this.promiser)";
+ifelapsed => "$(x)";
+expireafter => "$(x)";
+}
+
+
+@end verbatim
+
+@node body action sample_rate, body action warn_only, body action measure_performance, The Purpose Of This Handbook
+@section body action sample_rate(x)
+
+@verbatim
+body action sample_rate(x)
+{
+ifelapsed => "$(x)";
+expireafter => "10";
+}
+@end verbatim
+
+@node body action warn_only, body changes detect_all_change, body action sample_rate, The Purpose Of This Handbook
+@section body action warn_only
+
+@verbatim
+body action warn_only
+{
+action_policy => "warn";
+ifelapsed => "60";
+}
+
+
+@end verbatim
+
+@node body changes detect_all_change, body changes detect_content, body action warn_only, The Purpose Of This Handbook
+@section body changes detect_all_change
+
+@verbatim
+body changes detect_all_change
+
+# This is fierce, and will cost disk cycles
+
+{
+hash           => "best";
+report_changes => "all";
+update_hashes  => "yes";
+}
+
+
+@end verbatim
+
+@node body changes detect_content, body classes cf2_if_else, body changes detect_all_change, The Purpose Of This Handbook
+@section body changes detect_content
+
+@verbatim
+body changes detect_content
+
+# This is a cheaper alternative
+
+{
+hash           => "md5";
+report_changes => "content";
+update_hashes  => "yes";
+}
+
+
+@end verbatim
+
+@node body classes cf2_if_else, body classes if_else, body changes detect_content, The Purpose Of This Handbook
+@section body classes cf2_if_else(yes,no)
+
+@verbatim
+body classes cf2_if_else(yes,no)
+
+# meant to match cf2 semantics
+
+{
+promise_repaired => { "$(yes)" };
+repair_failed    => { "$(no)" };
+repair_denied    => { "$(no)" };
+repair_timeout   => { "$(no)" };
+}
+
+
+@end verbatim
+
+@node body classes if_else, body classes if_notkept, body classes cf2_if_else, The Purpose Of This Handbook
+@section body classes if_else(yes,no)
+
+@verbatim
+body classes if_else(yes,no)
+
+{
+promise_kept     => { "$(yes)" };
+promise_repaired => { "$(yes)" };
+repair_failed    => { "$(no)" };
+repair_denied    => { "$(no)" };
+repair_timeout   => { "$(no)" };
+}
+
+
+@end verbatim
+
+@node body classes if_notkept, body classes if_ok, body classes if_else, The Purpose Of This Handbook
+@section body classes if_notkept(x)
+
+@verbatim
+body classes if_notkept(x)
+{
+repair_failed   => { "$(x)" };
+repair_denied   => { "$(x)" };
+repair_timeout  => { "$(x)" };
+}
+
+
+@end verbatim
+
+@node body classes if_ok, body classes if_repaired, body classes if_notkept, The Purpose Of This Handbook
+@section body classes if_ok(x)
+
+@verbatim
+body classes if_ok(x)
+{
+promise_repaired => { "$(x)" };
+promise_kept => { "$(x)" };
+}
+
+
+@end verbatim
+
+@node body classes if_repaired, body classes state_repaired, body classes if_ok, The Purpose Of This Handbook
+@section body classes if_repaired(x)
+
+@verbatim
+body classes if_repaired(x)
+{
+promise_repaired => { "$(x)" };
+}
+
+
+@end verbatim
+
+@node body classes state_repaired, body contain in_dir, body classes if_repaired, The Purpose Of This Handbook
+@section body classes state_repaired(x)
+
+@verbatim
+body classes state_repaired(x)
+{
+promise_repaired => { "$(x)" };
+persist_time => "10";
+}
+
+# agent bundles
+
+
+
+
+@end verbatim
+
+@node body contain in_dir, body contain in_shell, body classes state_repaired, The Purpose Of This Handbook
+@section body contain in_dir(s)
+
+@verbatim
+body contain in_dir(s)
+{
+chdir => "$(s)";
+}
+
+
+@end verbatim
+
+@node body contain in_shell, body contain jail, body contain in_dir, The Purpose Of This Handbook
+@section body contain in_shell
+
+@verbatim
+body contain in_shell
+{
+useshell => "true";
+}
+
+
+@end verbatim
+
+@node body contain jail, body contain setuid, body contain in_shell, The Purpose Of This Handbook
+@section body contain jail(owner,root,dir)
+
+@verbatim
+body contain jail(owner,root,dir)
+{
+exec_owner => "$(owner)";
+useshell => "true";
+chdir => "$(dir)";
+chroot => "$(root)";
+}
+
+
+
+
+@end verbatim
+
+@node body contain setuid, body contain setuid_sh, body contain jail, The Purpose Of This Handbook
+@section body contain setuid(x)
+
+@verbatim
+body contain setuid(x)
+{
+exec_owner => "$(x)";
+useshell => "false";
+}
+
+
+@end verbatim
+
+@node body contain setuid_sh, body contain setuidgid_sh, body contain setuid, The Purpose Of This Handbook
+@section body contain setuid_sh(x)
+
+@verbatim
+body contain setuid_sh(x)
+{
+exec_owner => "$(x)";
+useshell => "true";
+}
+
+
+@end verbatim
+
+@node body contain setuidgid_sh, body contain silent, body contain setuid_sh, The Purpose Of This Handbook
+@section body contain setuidgid_sh(owner,group)
+
+@verbatim
+body contain setuidgid_sh(owner,group)
+{
+exec_owner => "$(owner)";
+exec_group => "$(group)";
+useshell => "true";
+}
+
+
+@end verbatim
+
+@node body contain silent, body contain silent_in_dir, body contain setuidgid_sh, The Purpose Of This Handbook
+@section body contain silent
+
+@verbatim
+body contain silent
+{
+no_output => "true";
+}
+
+
+@end verbatim
+
+@node body contain silent_in_dir, body copy_from local_cp, body contain silent, The Purpose Of This Handbook
+@section body contain silent_in_dir(s)
+
+@verbatim
+body contain silent_in_dir(s)
+{
+chdir => "$(s)";
+no_output => "true";
+}
+
+
+@end verbatim
+
+@node body copy_from local_cp, body copy_from no_backup_cp, body contain silent_in_dir, The Purpose Of This Handbook
+@section body copy_from local_cp(from)
+
+@verbatim
+body copy_from local_cp(from)
+{
+source      => "$(from)";
+}
+
+
+# Copy only if the file does not already exist, i.e. seed the placement
+
+@end verbatim
+
+@node body copy_from no_backup_cp, body copy_from no_backup_rcp, body copy_from local_cp, The Purpose Of This Handbook
+@section body copy_from no_backup_cp(from)
+
+@verbatim
+body copy_from no_backup_cp(from)
+{
+source      => "$(from)";
+copy_backup => "false";
+}
+
+
+@end verbatim
+
+@node body copy_from no_backup_rcp, body copy_from remote_cp, body copy_from no_backup_cp, The Purpose Of This Handbook
+@section body copy_from no_backup_rcp(from,server)
+
+@verbatim
+body copy_from no_backup_rcp(from,server)
+{
+servers     => { "$(server)" };
+source      => "$(from)";
+compare     => "mtime";
+copy_backup => "false";
+}
+
+
+@end verbatim
+
+@node body copy_from remote_cp, body copy_from secure_cp, body copy_from no_backup_rcp, The Purpose Of This Handbook
+@section body copy_from remote_cp(from,server)
+
+@verbatim
+body copy_from remote_cp(from,server)
+{
+servers     => { "$(server)" };
+source      => "$(from)";
+compare     => "mtime";
+}
+
+
+@end verbatim
+
+@node body copy_from secure_cp, body copy_from seed_cp, body copy_from remote_cp, The Purpose Of This Handbook
+@section body copy_from secure_cp(from,server)
+
+@verbatim
+body copy_from secure_cp(from,server)
+{
+source      => "$(from)";
+servers     => { "$(server)" };
+compare     => "digest";
+encrypt     => "true";
+verify      => "true";
+}
+
+
+@end verbatim
+
+@node body copy_from seed_cp, body copy_from sync_cp, body copy_from secure_cp, The Purpose Of This Handbook
+@section body copy_from seed_cp(from)
+
+@verbatim
+body copy_from seed_cp(from)
+{
+source      => "$(from)";
+compare     => "exists";
+}
+
+
+@end verbatim
+
+@node body copy_from sync_cp, body delete tidy, body copy_from seed_cp, The Purpose Of This Handbook
+@section body copy_from sync_cp(from,server)
+
+@verbatim
+body copy_from sync_cp(from,server)
+{
+servers     => { "$(server)" };
+source      => "$(from)";
+purge       => "true";
+preserve    => "true";
+}
+
+
+@end verbatim
+
+@node body delete tidy, body depth_search recurse, body copy_from sync_cp, The Purpose Of This Handbook
+@section body delete tidy
+
+@verbatim
+body delete tidy
+
+{
+dirlinks => "delete";
+rmdirs   => "true";
+}
+
+
+@end verbatim
+
+@node body depth_search recurse, body depth_search recurse_ignore, body delete tidy, The Purpose Of This Handbook
+@section body depth_search recurse(d)
+
+@verbatim
+body depth_search recurse(d)
+
+{
+depth => "$(d)";
+xdev  => "true";
+
+exclude_dirs => { "\.X11", ".*kde.*", "\.svn" };
+}
+
+
+@end verbatim
+
+@node body depth_search recurse_ignore, body edit_defaults empty, body depth_search recurse, The Purpose Of This Handbook
+@section body depth_search recurse_ignore(d,list)
+
+@verbatim
+body depth_search recurse_ignore(d,list)
+{
+depth => "$(d)";
+exclude_dirs => { @(list) };
+}
+
+
+@end verbatim
+
+@node body edit_defaults empty, body edit_defaults std_defs, body depth_search recurse_ignore, The Purpose Of This Handbook
+@section body edit_defaults empty
+
+@verbatim
+body edit_defaults empty
+{
+empty_file_before_editing => "true";
+edit_backup => "false";
+max_file_size => "300000";
+}
+
+
+@end verbatim
+
+@node body edit_defaults std_defs, body edit_field col, body edit_defaults empty, The Purpose Of This Handbook
+@section body edit_defaults std_defs
+
+@verbatim
+body edit_defaults std_defs
+{
+empty_file_before_editing => "false";
+edit_backup => "false";
+max_file_size => "300000";
+}
+
+
+@end verbatim
+
+@node body edit_field col, body edit_field quoted_var, body edit_defaults std_defs, The Purpose Of This Handbook
+@section body edit_field col(split,col,newval,method)
+
+@verbatim
+body edit_field col(split,col,newval,method)
+{
+field_separator    => "$(split)";
+select_field       => "$(col)";
+value_separator    => ",";
+field_value        => "$(newval)";
+field_operation    => "$(method)";
+extend_fields      => "true";
+allow_blank_fields => "true";
+}
+
+
+
+@end verbatim
+
+@node body edit_field quoted_var, body file_select by_name, body edit_field col, The Purpose Of This Handbook
+@section body edit_field quoted_var(newval,method)
+
+@verbatim
+body edit_field quoted_var(newval,method)
+{
+field_separator => "\"";
+select_field    => "2";
+value_separator  => " ";
+field_value     => "$(newval)";
+field_operation => "$(method)";
+extend_fields => "false";
+allow_blank_fields => "true";
+}
+
+
+@end verbatim
+
+@node body file_select by_name, body file_select days_old, body edit_field quoted_var, The Purpose Of This Handbook
+@section body file_select by_name(names)
+
+@verbatim
+body file_select by_name(names)
+{
+leaf_name  => { @(names)};
+file_result => "leaf_name";
+}
+
+
+@end verbatim
+
+@node body file_select days_old, body file_select dirs, body file_select by_name, The Purpose Of This Handbook
+@section body file_select days_old(days)
+
+@verbatim
+body file_select days_old(days)
+{
+mtime       => irange(ago(1,0,0,0,0,0),ago(0,0,$(days),0,0,0));  
+file_result => "mtime"; 
+}
+
+
+@end verbatim
+
+@node body file_select dirs, body file_select ex_list, body file_select days_old, The Purpose Of This Handbook
+@section body file_select dirs
+
+@verbatim
+body file_select dirs
+{
+file_types  => { "dir" };
+file_result => "file_types";
+}
+
+
+@end verbatim
+
+@node body file_select ex_list, body file_select exclude, body file_select dirs, The Purpose Of This Handbook
+@section body file_select ex_list(names)
+
+@verbatim
+body file_select ex_list(names)
+{
+leaf_name  => { @(names)};
+file_result => "!leaf_name";
+}
+
+
+@end verbatim
+
+@node body file_select exclude, body file_select name_age, body file_select ex_list, The Purpose Of This Handbook
+@section body file_select exclude(name)
+
+@verbatim
+body file_select exclude(name)
+{
+leaf_name  => { "$(name)"};
+file_result => "!leaf_name";
+}
+
+
+@end verbatim
+
+@node body file_select name_age, body file_select plain, body file_select exclude, The Purpose Of This Handbook
+@section body file_select name_age(name,days)
+
+@verbatim
+body file_select name_age(name,days)
+{
+leaf_name   => { "$(name)" };
+mtime       => irange(0,ago(0,0,$(days),0,0,0));  
+file_result => "mtime.leaf_name"; 
+}
+
+
+@end verbatim
+
+@node body file_select plain, body file_select size_range, body file_select name_age, The Purpose Of This Handbook
+@section body file_select plain
+
+@verbatim
+body file_select plain
+{
+file_types  => { "plain" };
+file_result => "file_types";
+}
+
+@end verbatim
+
+@node body file_select size_range, body link_from linkchildren, body file_select plain, The Purpose Of This Handbook
+@section body file_select size_range(from,to)
+
+@verbatim
+body file_select size_range(from,to)
+{
+search_size => irange("$(from)","$(to)");  
+file_result => "size"; 
+}
+
+
+@end verbatim
+
+@node body link_from linkchildren, body link_from ln_s, body file_select size_range, The Purpose Of This Handbook
+@section body link_from linkchildren(tofile)
+
+@verbatim
+body link_from linkchildren(tofile)
+{
+source        => "$(tofile)";
+link_type     => "symlink";
+when_no_source  => "force";
+link_children => "true";
+when_linking_children => "if_no_such_file"; # "override_file";
+}
+
+
+@end verbatim
+
+@node body link_from ln_s, body location start, body link_from linkchildren, The Purpose Of This Handbook
+@section body link_from ln_s(x)
+
+@verbatim
+body link_from ln_s(x)
+{
+link_type => "symlink";
+source => "$(x)";
+when_no_source => "force";
+}
+
+
+@end verbatim
+
+@node body location start, body match_value scan_log, body link_from ln_s, The Purpose Of This Handbook
+@section body location start
+
+@verbatim
+body location start
+{
+before_after => "before";
+}
+
+
+
+@end verbatim
+
+@node body match_value scan_log, body mount nfs, body location start, The Purpose Of This Handbook
+@section body match_value scan_log(line)
+
+@verbatim
+body match_value scan_log(line)
+{
+select_line_matching => "$(line)";
+track_growing_file => "true";
+}
+
+
+@end verbatim
+
+@node body mount nfs, body mount nfs_p, body match_value scan_log, The Purpose Of This Handbook
+@section body mount nfs(server,source)
+
+@verbatim
+body mount nfs(server,source)
+{
+mount_type => "nfs";
+mount_source => "$(source)";
+mount_server => "$(server)";
+edit_fstab => "true";
+}
+
+
+
+@end verbatim
+
+@node body mount nfs_p, body mount unmount, body mount nfs, The Purpose Of This Handbook
+@section body mount nfs_p(server,source,perm)
+
+@verbatim
+body mount nfs_p(server,source,perm)
+{
+mount_type => "nfs";
+mount_source => "$(source)";
+mount_server => "$(server)";
+mount_options => {"$(perm)"};
+edit_fstab => "true";
+}
+
+
+@end verbatim
+
+@node body mount unmount, body package_method apt, body mount nfs_p, The Purpose Of This Handbook
+@section body mount unmount
+
+@verbatim
+body mount unmount
+{
+mount_type => "nfs";
+edit_fstab => "true";
+unmount => "true";
+}
+
+
+@end verbatim
+
+@node body package_method apt, body package_method freebsd, body mount unmount, The Purpose Of This Handbook
+@section body package_method apt
+
+@verbatim
+body package_method apt
+{
+package_changes => "bulk";
+package_list_command => "/usr/bin/dpkg -l";
+package_list_name_regex    => "ii\s+([^\s]+).*";
+package_list_version_regex => "ii\s+[^\s]+\s+([^\s]+).*";
+package_installed_regex => ".*"; # all reported are installed
+package_name_convention => "$(name)";
+
+have_aptitude::
+   package_add_command => "/usr/bin/aptitude --assume-yes install";
+   package_delete_command => "/usr/bin/aptitude --assume-yes remove";
+   package_update_command =>  "/usr/bin/aptitude --assume-yes install";
+
+!have_aptitude::
+   package_add_command => "/usr/bin/apt-get --yes install";
+   package_delete_command => "/usr/bin/apt-get --yes remove";
+   package_update_command =>  "/usr/bin/apt-get --yes install";
+}
+
+
+@end verbatim
+
+@node body package_method freebsd, body package_method solaris , body package_method apt, The Purpose Of This Handbook
+@section body package_method freebsd
+
+@verbatim
+body package_method freebsd
+{
+any::
+
+ package_changes => "individual";
+
+ # Could use rpm for this
+ package_list_command => "/usr/sbin/pkg_info";
+
+ # Remember to escape special characters like |
+
+ package_list_name_regex    => "([^-]+).*";
+ package_list_version_regex => "[^-]+-([^\s]+).*";
+
+ package_name_regex    => "([^-]+).*";
+ package_version_regex => "[^-]+-([^\s]+).*";
+
+ package_installed_regex => ".*";
+
+ package_name_convention => "$(name)-$(version)";
+
+
+package_add_command => "/usr/sbin/pkg_add -r";
+package_delete_command => "/usr/sbin/pkg_delete";
+}
+
+
+
+@end verbatim
+
+@node body package_method solaris , body package_method yum, body package_method freebsd, The Purpose Of This Handbook
+@section body package_method solaris (pkgname, spoolfile, adminfile)
+
+@verbatim
+body package_method solaris (pkgname, spoolfile, adminfile)
+{
+package_changes => "individual";
+package_list_command => "/usr/bin/pkginfo -l";
+package_multiline_start    =>  "\s*PKGINST:\s+[^\s]+";
+package_list_name_regex    => "\s*PKGINST:\s+([^\s]+)";
+package_list_version_regex => "\s*VERSION:\s+([^\s]+)";
+package_list_arch_regex    => "\s*ARCH:\s+([^\s]+)";
+package_installed_regex => "\s*STATUS:\s*(completely|partially)\s+installed.*";
+package_name_convention => "$(name)";
+package_add_command => "/usr/sbin/pkgadd -n -a /tmp/$(adminfile) -d /tmp/$(spoolfile)";
+package_delete_command => "/usr/sbin/pkgrm -n -a /tmp/$(adminfile)";
+}
+
+
+
+@end verbatim
+
+
+
+
+
+
+
+
+
+
+@node body package_method yum, body package_method zypper, body package_method solaris , The Purpose Of This Handbook
+@section body package_method yum
+
+@verbatim
+body package_method yum
+{
+package_changes => "bulk";
+package_list_command => "/usr/bin/yum list installed";
+
+# Remember to escape special characters like |
+
+package_list_name_regex    => "([^.]+).*";
+package_list_version_regex => "[^\s]\s+([^\s]+).*";
+package_list_arch_regex    => "[^.]+\.([^\s]+).*";
+
+package_installed_regex => ".*installed.*";
+package_name_convention => "$(name).$(arch)";
+
+package_add_command => "/usr/bin/yum -y install";
+package_delete_command => "/bin/rpm -e";
+package_verify_command => "/bin/rpm -V";
+}
+
+
+# The solaris package system is poorly designed, with too many different
+# names to track. See the example in tests/units/unit_package_solaris.cf
+# to see how to use this
+
+@end verbatim
+
+@node body package_method zypper, body perms m, body package_method yum, The Purpose Of This Handbook
+@section body package_method zypper
+
+@verbatim
+body package_method zypper
+
+{
+package_changes => "bulk";
+
+package_list_command => "/usr/bin/zypper packages";
+package_patch_list_command => "/usr/bin/zypper patches";
+package_installed_regex => "i.*";
+package_list_name_regex    => "[^|]+\|[^|]+\|\s+([^\s]+).*";
+package_list_version_regex => "[^|]+\|[^|]+\|[^|]+\|\s+([^\s]+).*";
+package_list_arch_regex    => "[^|]+\|[^|]+\|[^|]+\|[^|]+\|\s+([^\s]+).*";
+
+package_patch_installed_regex => ".*Installed.*|.*Not Applicable.*";
+package_patch_name_regex    => "[^|]+\|\s+([^\s]+).*";
+package_patch_version_regex => "[^|]+\|[^|]+\|\s+([^\s]+).*";
+
+package_name_convention => "$(name)";
+package_add_command => "/usr/bin/zypper -non-interactive install";
+package_delete_command => "/usr/bin/zypper -non-interactive remove --force-resolution";
+package_update_command => "/usr/bin/zypper -non-interactive update";
+
+package_patch_command => "/usr/bin/zypper -non-interactive patch$"; # $ means no args
+package_verify_command => "/usr/bin/zypper -non-interactive verify$";
+}
+
+
+@end verbatim
+
+@node body perms m, body perms mo, body package_method zypper, The Purpose Of This Handbook
+@section body perms m(mode)
+
+@verbatim
+body perms m(mode)
+{
+mode   => "$(mode)";
+}
+
+
+@end verbatim
+
+@node body perms mo, body perms mog, body perms m, The Purpose Of This Handbook
+@section body perms mo(mode,user)
+
+@verbatim
+body perms mo(mode,user)
+{
+owners => { "$(user)" };
+mode   => "$(mode)";
+}
+
+
+@end verbatim
+
+@node body perms mog, body perms og, body perms mo, The Purpose Of This Handbook
+@section body perms mog(mode,user,group)
+
+@verbatim
+body perms mog(mode,user,group)
+{
+owners => { "$(user)" };
+groups => { "$(group)" };
+mode   => "$(mode)";
+}
+
+
+@end verbatim
+
+@node body perms og, body perms owner, body perms mog, The Purpose Of This Handbook
+@section body perms og(u,g) 
+
+@verbatim
+body perms og(u,g) 
+{
+owners => { "${u}" };
+groups => { "${g}" };
+}
+
+
+@end verbatim
+
+@node body perms owner, body process_count check_range, body perms og, The Purpose Of This Handbook
+@section body perms owner(user)
+
+@verbatim
+body perms owner(user)
+{
+owners => { "$(user)" };
+}
+
+
+@end verbatim
+
+@node body process_count check_range, body rename disable, body perms owner, The Purpose Of This Handbook
+@section body process_count check_range(name,lower,upper)
+
+@verbatim
+body process_count check_range(name,lower,upper)
+{
+match_range => irange("$(lower)","$(upper)");
+out_of_range_define => { "$(name)_out_of_range" };
+}
+
+
+
+@end verbatim
+
+@node body rename disable, body rename rotate, body process_count check_range, The Purpose Of This Handbook
+@section body rename disable
+
+@verbatim
+body rename disable
+{
+disable => "true";
+}
+
+
+@end verbatim
+
+@node body rename rotate, body rename to, body rename disable, The Purpose Of This Handbook
+@section body rename rotate(level)
+
+@verbatim
+body rename rotate(level)
+{
+rotate => "$(level)";
+}
+
+
+@end verbatim
+
+@node body rename to, body replace_with comment, body rename rotate, The Purpose Of This Handbook
+@section body rename to(file)
+
+@verbatim
+body rename to(file)
+{
+newname => "$(file)";
+}
+
+
+@end verbatim
+
+@node body replace_with comment, body replace_with uncomment, body rename to, The Purpose Of This Handbook
+@section body replace_with comment(c)
+
+@verbatim
+body replace_with comment(c)
+{
+replace_value => "$(c) $(match.1)";
+occurrences => "all";
+}
+
+
+@end verbatim
+
+@node body replace_with uncomment, body replace_with value, body replace_with comment, The Purpose Of This Handbook
+@section body replace_with uncomment
+
+@verbatim
+body replace_with uncomment
+{
+replace_value => "$(match.1)";
+occurrences => "all";
+}
+
+
+
+@end verbatim
+
+@node body replace_with value, body select_process exclude_procs, body replace_with uncomment, The Purpose Of This Handbook
+@section body replace_with value(x)
+
+@verbatim
+body replace_with value(x)
+{
+replace_value => "$(x)";
+occurrences => "all";
+}
+
+
+@end verbatim
+
+@node body select_process exclude_procs, body select_region INI_section, body replace_with value, The Purpose Of This Handbook
+@section body select_process exclude_procs(x)
+
+@verbatim
+body select_process exclude_procs(x)
+{
+command => "$(x)";
+process_result => "!command";
+}
+
+
+@end verbatim
+
+@node body select_region INI_section, body volume min_free_space, body select_process exclude_procs, The Purpose Of This Handbook
+@section body select_region INI_section(x)
+
+@verbatim
+body select_region INI_section(x)
+{
+select_start => "\[$(x)\]\s*";
+select_end => "\[.*\]\s*";
+}
+
+
+@end verbatim
+
+@node body volume min_free_space, bundle edit_line append_groups_starting, body select_region INI_section, The Purpose Of This Handbook
+@section body volume min_free_space(free)
+
+@verbatim
+body volume min_free_space(free)
+{
+check_foreign  => "false";
+freespace      => "$(free)";
+sensible_size  => "10000";
+sensible_count => "2";
+}
+
+
+@end verbatim
+
+@node bundle edit_line append_groups_starting, bundle edit_line append_if_no_line, body volume min_free_space, The Purpose Of This Handbook
+@section bundle edit_line append_groups_starting(v)
+
+@verbatim
+bundle edit_line append_groups_starting(v)
+
+ # For adding groups to /etc/group, needs
+ # an array v[groupname] string => "line..."
+
+{
+vars:
+
+  "index"        slist => getindices("$(v)");
+
+classes:
+
+  "add_$(index)" not => groupexists("$(index)");
+
+insert_lines:
+
+  "$($(v)[$(index)])",
+
+      ifvarclass => "add_$(index)";
+
+}
+
+
+@end verbatim
+
+@node bundle edit_line append_if_no_line, bundle edit_line append_if_no_lines, bundle edit_line append_groups_starting, The Purpose Of This Handbook
+@section bundle edit_line append_if_no_line(str)
+
+@verbatim
+bundle edit_line append_if_no_line(str)
+{
+insert_lines:
+
+ "$(str)";
+}
+
+
+@end verbatim
+
+@node bundle edit_line append_if_no_lines, bundle edit_line append_user_field, bundle edit_line append_if_no_line, The Purpose Of This Handbook
+@section bundle edit_line append_if_no_lines(list)
+
+@verbatim
+bundle edit_line append_if_no_lines(list)
+{
+insert_lines:
+
+ "$(list)";
+}
+
+
+@end verbatim
+
+@node bundle edit_line append_user_field, bundle edit_line append_users_starting, bundle edit_line append_if_no_lines, The Purpose Of This Handbook
+@section bundle edit_line append_user_field(group,field,allusers)
+
+@verbatim
+bundle edit_line append_user_field(group,field,allusers)
+
+ # For adding users to to a file like /etc/group
+ # at field position "field", comma separated subfields
+
+{
+vars:
+
+  "val" slist => { @(allusers) };
+
+field_edits:
+
+ "$(group).*"
+
+    edit_field => col(":","$(field)","$(val)","alphanum");
+}
+
+
+@end verbatim
+
+@node bundle edit_line append_users_starting, bundle edit_line comment_lines_containing, bundle edit_line append_user_field, The Purpose Of This Handbook
+@section bundle edit_line append_users_starting(v)
+
+@verbatim
+bundle edit_line append_users_starting(v)
+
+ # For adding to /etc/passwd or etc/shadow, needs
+ # an array v[username] string => "line..."
+
+{
+vars:
+
+  "index"        slist => getindices("$(v)");
+
+classes:
+
+  "add_$(index)" not => userexists("$(index)");
+
+insert_lines:
+
+  "$($(v)[$(index)])",
+
+      ifvarclass => "add_$(index)";
+}
+
+
+@end verbatim
+
+@node bundle edit_line comment_lines_containing, bundle edit_line comment_lines_matching, bundle edit_line append_users_starting, The Purpose Of This Handbook
+@section bundle edit_line comment_lines_containing(regex,comment)
+
+@verbatim
+bundle edit_line comment_lines_containing(regex,comment)
+
+ # Comment lines of a file containing a regex
+
+{
+replace_patterns:
+ 
+ "^(.*$(regex).*)$" replace_with => comment("$(comment)");
+}
+	 
+	 
+@end verbatim
+
+@node bundle edit_line comment_lines_matching, bundle edit_line delete_lines_matching, bundle edit_line comment_lines_containing, The Purpose Of This Handbook
+@section bundle edit_line comment_lines_matching(regex,comment)
+
+@verbatim
+@end verbatim
+
+@node bundle edit_line delete_lines_matching, bundle edit_line expand_template, bundle edit_line comment_lines_matching, The Purpose Of This Handbook
+@section bundle edit_line delete_lines_matching(regex)
+
+@verbatim
+bundle edit_line delete_lines_matching(regex)
+{
+delete_lines:
+
+  "$(regex)";
+}
+
+
+@end verbatim
+
+@node bundle edit_line expand_template, bundle edit_line resolvconf, bundle edit_line delete_lines_matching, The Purpose Of This Handbook
+@section bundle edit_line expand_template(templatefile)
+
+@verbatim
+bundle edit_line expand_template(templatefile)
+
+ # Read in the named text file and expand $(var)
+ # inside the file
+
+{
+insert_lines:
+
+   "$(templatefile)"
+
+          insert_type => "file",
+       expand_scalars => "true";
+}
+
+
+@end verbatim
+
+@node bundle edit_line resolvconf, bundle edit_line set_user_field, bundle edit_line expand_template, The Purpose Of This Handbook
+@section bundle edit_line resolvconf(search,list)
+
+@verbatim
+bundle edit_line resolvconf(search,list)
+
+ # search is the search domains with space
+ # list is an slist of nameserver addresses
+
+{
+delete_lines:
+
+  "search.*";
+
+insert_lines:
+
+  "search $(search)";
+  "nameserver $(list)";
+}
+
+
+@end verbatim
+
+@node bundle edit_line set_user_field, bundle edit_line set_variable_values, bundle edit_line resolvconf, The Purpose Of This Handbook
+@section bundle edit_line set_user_field(user,field,val)
+
+@verbatim
+bundle edit_line set_user_field(user,field,val)
+
+ # Set the value of field number "field" in
+ # a :-field formatted file like /etc/passwd
+
+{
+field_edits:
+
+ "$(user).*"
+
+     edit_field => col(":","$(field)","$(val)","set");
+}
+
+
+@end verbatim
+
+@node bundle edit_line set_variable_values, bundle edit_line uncomment_lines_containing, bundle edit_line set_user_field, The Purpose Of This Handbook
+@section bundle edit_line set_variable_values(v)
+
+@verbatim
+bundle edit_line set_variable_values(v)
+
+ # Sets the RHS of variables in the file of the form
+ #   LHS = RHS
+ # Adds a new line if no LHS exists, repairs RHS values if one does exist
+ #
+ # To use:
+ #   1) Define an array, where the keys are the LHS and the values are the RHS
+ #        "stuff[lhs-1]" string => "rhs1";
+ #        "stuff[lhs-2]" string => "rhs2";
+ #   2) The parameter passed to the edit_line promise is the fully qualified
+ #      name of the array (i.e., "bundlename.stuff") WITHOUT any "$" or "@"
+
+{
+vars:
+
+  "index" slist => getindices("$(v)");
+
+  # Be careful if the index string contains funny chars
+
+  "cindex[$(index)]" string => canonify("$(index)");
+
+field_edits:
+
+  # match a line starting like the key = something
+
+  "\s*$(index)\s*=.*"
+
+     edit_field => col("=","2","$($(v)[$(index)])","set"),
+        classes => if_ok("$(cindex[$(index)])_in_file");
+
+insert_lines:
+
+  "$(index)=$($(v)[$(index)])",
+
+      ifvarclass => "!$(cindex[$(index)])_in_file";
+}
+
+
+@end verbatim
+
+@node bundle edit_line uncomment_lines_containing, bundle edit_line uncomment_lines_matching, bundle edit_line set_variable_values, The Purpose Of This Handbook
+@section bundle edit_line uncomment_lines_containing(regex,comment)
+
+@verbatim
+bundle edit_line uncomment_lines_containing(regex,comment)
+	 
+ # Uncomment lines of a file where the regex matches
+ # the text after the comment string
+	 
+{
+replace_patterns:
+ 
+ "^$(comment)\s?(.*$(regex).*)$" replace_with => uncomment;
+}
+
+
+@end verbatim
+
+@node bundle edit_line uncomment_lines_matching, bundle edit_line warn_lines_matching, bundle edit_line uncomment_lines_containing, The Purpose Of This Handbook
+@section bundle edit_line uncomment_lines_matching(regex,comment)
+
+@verbatim
+bundle edit_line uncomment_lines_matching(regex,comment)
+	 
+ # Uncomment lines of a file where the regex matches
+ # the text after the comment string
+	 
+{
+replace_patterns:
+ 
+ "^$(comment)\s?($(regex))$" replace_with => uncomment;
+}
+	 
+
+@end verbatim
+
+@node bundle edit_line warn_lines_matching,  , bundle edit_line uncomment_lines_matching, The Purpose Of This Handbook
+@section bundle edit_line warn_lines_matching(regex)
+
+@verbatim
+bundle edit_line warn_lines_matching(regex)
+{
+delete_lines:
+
+  "$(regex)"  action => warn_only;
+}
+
+
+@end verbatim
+
+
+
+@ifhtml
+@html
+<a name="Contents">
+@end html
+@end ifhtml
+
+@ifhtml
+@contents
+@end ifhtml
+
+
+@bye
+

@@ -1,0 +1,482 @@
+<html lang="en">
+<head>
+<title>An Introduction to CFEngine 3 Nova for IT Managers</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="An Introduction to CFEngine 3 Nova for IT Managers">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background: none !important;
+    border: none !important;
+    padding: 5px; 
+
+/*    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;*/
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">An Introduction to CFEngine 3 Nova for IT Managers</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Executive-Summary">Executive Summary</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Nova for IT Mangagers</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Executive-Summary">Executive Summary</a>
+<li><a accesskey="2" href="#Handle-complexity">Handle complexity</a>
+<li><a accesskey="3" href="#Desired_002dstate-through-policy">Desired-state through policy</a>
+<li><a accesskey="4" href="#Reduce-costs">Reduce costs</a>
+<li><a accesskey="5" href="#Model_002dbased-knowledge-brings-transparency">Model-based knowledge brings transparency</a>
+<li><a accesskey="6" href="#CFEngine-3-Nova-Highlights">CFEngine 3 Nova Highlights</a>
+<li><a accesskey="7" href="#About-CFEngine">About CFEngine</a>
+<li><a accesskey="8" href="#Learn-more_003f">Learn more? </a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="Executive-Summary"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Handle-complexity">Handle complexity</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Executive Summary</h3>
+
+<pre class="sp">
+
+</pre>
+
+   <p>CFEngine 3 Nova automates IT operations and connects the conceptual dots
+between IT and business with its knowledge-oriented approach. Nova
+improves overall business performance directly, by:
+
+   <pre class="sp">
+
+</pre>
+     <ul>
+<li>Making your IT operations <strong>Dependable &amp; Secure</strong>
+<li>Making your IT operations <strong>Transparent &amp; Compliant</strong>
+<li>Making your IT operations <strong>Agile</strong>
+</ul>
+
+   <pre class="sp">
+
+</pre>
+
+<div class="node">
+<a name="Handle-complexity"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Desired_002dstate-through-policy">Desired-state through policy</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Executive-Summary">Executive Summary</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Handle complexity</h3>
+
+<p>According to Gartner Group, unplanned downtime is rising for
+mission-critical applications. The number and complexity of these
+applications are rising steadily. In large organizations, the average
+unplanned downtime is almost 15 hours per month, mostly due to
+unauthorized manual changes to the system. CFEngine 3 Nova's self-repair
+functionality automatically restores misconfigurations, ensuring that desired end-state is always maintained
+without intrusive downtime, thereby reducing the likelihood of an IT service outage.
+
+<div class="node">
+<a name="Desired-state-through-policy"></a>
+<a name="Desired_002dstate-through-policy"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Reduce-costs">Reduce costs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Handle-complexity">Handle complexity</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Desired-state through policy</h3>
+
+<p>CFEngine 3 Nova provides a policy-<i>promise</i> language, which allows IT operators
+to express their desires and intentions more strategically,
+delivering predictable expectations about the system. A policy change can be
+implemented in thousands of servers with zero-touch, making it
+consistent and rapid. A request to roll out a new application or
+process can be achieved effectively and securely using CFEngine
+policies.
+
+   <p>Demonstrating control and ensuring effective and successful compliance
+audits is faster and easier with CFEngine &ndash; providing IT audits in hours instead of weeks. For organizations implementing regulations like SOX or IT best practices like ITIL, Cobit, or SAS70, our Web-based Nova 'Mission Portal' dashboard is an ideal way to define, maintain and demonstrate compliance.
+
+   <p>Nova's high-level policy language allows you to trace business goals
+down to technical requirements, bringing improved
+business-IT-alignment and transparency for all parties.
+
+<div class="node">
+<a name="Reduce-costs"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Model_002dbased-knowledge-brings-transparency">Model-based knowledge brings transparency</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Desired_002dstate-through-policy">Desired-state through policy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Reduce costs</h3>
+
+<p>Using CFEngine 3 Nova, one can expect direct costs savings related to
+reduced management time of up to $3,000 per server per year. 
+The number of incidents due to mis-configurations and unauthorized
+changes will be reduced typically from 70%-90%. Continuous
+service availability is an added extra, saving you indirect costs
+related to outages or non-compliant behavior.
+
+<div class="node">
+<a name="Model-based-knowledge-brings-transparency"></a>
+<a name="Model_002dbased-knowledge-brings-transparency"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CFEngine-3-Nova-Highlights">CFEngine 3 Nova Highlights</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Reduce-costs">Reduce costs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Model-based knowledge brings transparency</h3>
+
+<p>CFEngine's proven theory-based approach makes automation processes understandable and sharable. Using
+patterns, even the most granular of definitions can be managed across a large heterogeneous environment.
+
+<div class="node">
+<a name="CFEngine-3-Nova-Highlights"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#About-CFEngine">About CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Model_002dbased-knowledge-brings-transparency">Model-based knowledge brings transparency</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">CFEngine 3 Nova Highlights</h3>
+
+<p>CFEngine 3 is the most advanced open source configuration management platform available, able to precisely manage and automate all facets of large-scale IT infrastructure, including:
+
+   <pre class="sp">
+
+</pre>
+     <ul>
+<li>System Scalability &amp; Performance
+<li>Security
+<li>IT Compliance
+<li>Machine Building
+<li>CMDB
+<li>System Event Orchestration
+<li>Application Deployment
+<li>Desktop Management
+<li>Legacy Applications
+<li>Embedded Devices
+</ul>
+
+   <pre class="sp">
+
+</pre>
+
+The recent major update of CFEngine 3 Nova includes these new and enhanced features:
+   <pre class="sp">
+
+</pre>
+     <ul>
+<li><strong>The 'Nova Mission Portal' dashboard</strong> is a graphical user interface (GUI)
+for setting policies and monitoring system health. The Mission Portal can
+also produce policy reports on the state of any IT service or machine in the
+enterprise, allowing executives to develop and review custom IT metrics
+weighted specifically to the organization's business goals.
+
+     <li><strong>Native Support for Windows</strong> &ndash; CFEngine Nova users can employ finegrained
+management of Microsoft Windows servers and desktops, including
+native control of the Windows Registry, Windows Services and Windows
+Access Control Lists (ACLs). A new technical whitepaper on "Windows
+Management with CFEngine 3 Nova" is available at
+www.cfengine.com/windows.
+
+     <li><strong>Ensure Faster IT Compliance</strong> &ndash; CFEngine 3 Nova simplifies the
+implementation and compliance of commercial and government IT
+regulations, such as PCI-DSS, SOX 404, STIGs, and accepted industry best
+practices. Nova supports extensive and flexible customization of policies
+and reports, allowing organizations to complete IT audits in hours instead of
+weeks.
+
+     <li><strong>Improved Hypervisor Integration</strong> &ndash; enhanced support for creating and
+managing XEN/KVM virtual machines on the fly, using the industry
+standard libvirt API library.
+
+     <li><strong>Support for Mission-Critical High Availability</strong> through a fully redundant,
+lightweight architecture for system information updating. Users get reliable
+and predictable insight, with fault recovery times of only a few minutes in
+case of failure &ndash; something that cannot be easily matched by competing
+software. 
+</ul>
+
+   <pre class="sp">
+
+</pre>
+
+<div class="node">
+<a name="About-CFEngine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Learn-more_003f">Learn more?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-3-Nova-Highlights">CFEngine 3 Nova Highlights</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">About CFEngine</h3>
+
+<p>CFEngine software automates large-scale IT computing infrastructure: ensuring the availability, security and compliance of mission-critical applications and services. Based on a popular and flexible open source standard, CFEngine configuration management products are highly scalable through decentralized, autonomous agents that can continuously monitor, self-repair, and update a global multi-site enterprise every five minutes &ndash; with negligible impact on system resources or performance.
+
+   <p>CFEngine solutions are used by global organizations such as Facebook, AT&amp;T, Cisco, eBay, LinkedIn, AMD, the U.S. Navy, and five of the 10 largest banks on Wall Street to manage servers, desktops and other heterogeneous computing devices. Built upon well established theory and high-quality engineering practices, CFEngine enjoys an outstanding security record over its 18-year history.
+
+   <p>The privately held company serves its global financial, technology and government customers from international offices in Oslo, Norway and Palo Alto, California.
+
+<div class="node">
+<a name="Learn-more%3f"></a>
+<a name="Learn-more_003f"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#About-CFEngine">About CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Learn more?</h3>
+
+<p>Go to <a href="http://www.CFEngine.com/nova">http://www.CFEngine.com/nova</a>
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Nova for IT Mangagers</a>
+<ul>
+<li><a href="#Executive-Summary">Executive Summary</a>
+<li><a href="#Handle-complexity">Handle complexity</a>
+<li><a href="#Desired_002dstate-through-policy">Desired-state through policy</a>
+<li><a href="#Reduce-costs">Reduce costs</a>
+<li><a href="#Model_002dbased-knowledge-brings-transparency">Model-based knowledge brings transparency</a>
+<li><a href="#CFEngine-3-Nova-Highlights">CFEngine 3 Nova Highlights</a>
+<li><a href="#About-CFEngine">About CFEngine</a>
+<li><a href="#Learn-more_003f">Learn more?</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

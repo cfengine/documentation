@@ -1,0 +1,124 @@
+############################################################################
+#
+# Knowledge base / ontology
+#
+############################################################################
+
+body common control
+   {
+   bundlesequence  => { 
+                      "tm" , 
+                      "knowledge_models",
+                      "manual_entries", 
+#                      "cf_QuickRef3",
+                      "cf3_reference",
+                      "cf3_solutions",
+                      "cf3_tutorial",
+                      "cf3_upgrade",
+                      "cf3_glossary",
+                      "CfengineStdLibrary",
+                      "st_adopt",
+                      "st_bdma",
+                      "cf3_bestpractice",
+                      "cfnova",
+                      "cf_copernicus",
+                      "st_itil",
+                      "st_virt",
+                      "st_knowledge",
+                      "st_orchestrate",
+                      "st_reporting",
+                      "st_rollback",
+                      "st_appmgt",
+                      "st_hierarchy",
+                      "st_schedule",
+                      "st_distsched",
+                      "st_teams",
+                      "st_iterate",
+                      "CfengineEnterpriseFundamentals", # autogen by Nova
+                      "system",
+                      "cf_assoc",
+                      "examples"
+                      };
+
+  inputs          => {
+                     "knowledge_models.cf",
+                     "scan_tutorial3.cf",
+                     "scan_cf3ref.cf",
+                     "scan_appl.cf",
+                     "scan_virt.cf",
+                     "scan_hierarchy.cf",
+                     "scan_stdlib.cf", 
+                     "scan_solutions.cf", 
+                     "scan_adopt.cf",
+                     "scan_glossary.cf",
+                     "scan_cfnova.cf",
+                     "scan_orchestrate.cf",
+                     "scan_schedule.cf",   
+                     "scan_upgrade.cf",
+                     "scan_bdma.cf",
+                     "scan_copernicus.cf",  
+                     "scan_quickref3.cf",    
+                     "scan_bp3.cf",     
+                     "scan_itil.cf",
+                     "scan_distsched.cf",
+                     "scan_reporting.cf",
+                     "scan_teams.cf",
+                     "scan_knowledge.cf",
+                     "scan_rollback.cf",
+                     "scan_iterate.cf",
+                     "cf_associations.cf",
+                     "promise_knowledge.cf", # autogen by Nova
+                     "cf_system.cf",
+                     "examples.cf"
+                     };
+
+   version => "2.2";
+   }
+
+############################################################################
+
+body knowledge control
+
+{
+#graph_output => "true"; # override -g
+graph_directory => "/cfengine/cf001lin/cfsite/app/webroot/copernicus/graphs";
+#graph_directory => "/home/mark/tmp/TM-graphs";
+
+view_projections => "false";
+
+build_directory => ".";
+#id_prefix => "cfengine";
+
+sql_database => "cf_topic_map";
+
+sql_owner => "mark";
+sql_type => "mysql";
+
+sql_passwd => ""; # No passwd
+query_output => "html";
+query_engine => "/copernicus/";
+
+style_sheet => "/copernicus/css/copernicus.css";
+}
+
+###################################################
+# Bodies
+###################################################
+
+body association a(f,name,b)
+
+{
+forward_relationship => "$(f)";
+backward_relationship => "$(b)";
+associates => { $(name) };
+}
+
+###################################################
+
+body association A(f,name_list,b)
+
+{
+forward_relationship => "$(f)";
+backward_relationship => "$(b)";
+associates => { @(name_list) };
+}

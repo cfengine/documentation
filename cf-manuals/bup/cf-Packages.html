@@ -1,0 +1,390 @@
+<html lang="en">
+<head>
+<title>Package Management in CFEngine</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Package Management in CFEngine">
+<meta name="generator" content="makeinfo 4.12">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+h1, h2, a, table.list th
+{
+    color: #1f6e6b;
+}
+
+.node
+{ 
+background: #ddd url(Logo2-small.png) right no-repeat;
+}
+
+.menu
+{  
+background: #eef url(menu.png) right no-repeat;
+}
+
+.contents
+{
+background-color: #e9f4e9; 
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{ 
+  border-color: #4e8b8c;
+  border-style: solid;
+  border-width: 1px;
+}
+
+BODY {
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-style: normal;
+     font-size: 11pt;
+     background: #FFFFFF;
+     color: #000000;
+     }
+        
+P { 
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  }
+
+FONT.liten {font-size: 70%; }
+
+H1, H2, H3 {
+        font-weight: normal;
+        color: #2c2e70;
+        margin-bottom: 0em;
+        }
+
+TABLE { vertical-align: top; } 
+
+H1 { font-size: 140% }
+H2 { font-size: 120% }
+H3 { font-size: 110% }
+H4 { font-style: italic; }
+
+TD, TH, UL {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-style: normal;
+        }
+
+TH { background: #9999FF;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     color: blue;
+  font-size: 10pt;
+   }
+
+TD { color: #000000;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-size: 10pt;
+   }
+
+PRE { font-family: "Lucida Typewriter", "Courier", monotype;
+      font-style: normal;
+     font-size: 11pt;
+background-color: #eee;
+    }
+ 
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Package Management in CFEngine</h1>
+<div class="node">
+<p><hr>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Cfengine_0027s-package-interface">Cfengine's package interface</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine-Packages</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+
+   <p><h2>Summary of contents</h2>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+
+   <p>In this module you will learn about
+
+     <ul>
+<li>How to verify packages are installed
+<li>How to check package versions
+<li>How to install and remove new packages
+
+   </ul>
+   </td></tr></table>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Cfengine_0027s-package-interface">Cfengine's package interface</a>
+</ul>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Cfengine's-package-interface"></a>
+<a name="Cfengine_0027s-package-interface"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 CFEngine's package interface</h2>
+
+<p>In the last few versions, a new section packages has been added to the
+input language, which lets us interface to native package
+managers. The syntax is flexible enough that we can specify certain
+criteria about the package, and as you'd expect, we can also define
+some classes. Policies for these items are specified in the "package"
+stanza.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Syntax-of-packages">Syntax of packages</a>
+<li><a accesskey="2" href="#Example-of-packages">Example of packages</a>
+<li><a accesskey="3" href="#Package-upgrade-or-install">Package upgrade or install</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Syntax-of-packages"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-of-packages">Example of packages</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Cfengine_0027s-package-interface">Cfengine's package interface</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Cfengine_0027s-package-interface">Cfengine's package interface</a>
+
+</div>
+
+<h3 class="section">1.1 Syntax of packages</h3>
+
+<pre class="smallexample">     control:
+     
+        DefaultPkgMgr = ( <var>rpm|dpkg|sun|portage|freebsd</var> )
+     
+     	<var>RPM|DPKG|Sun|Portage|FreeBSD</var>InstallCommand = ( "$(OS_SCRIPTS)/install_pkg %s" )
+     	<var>RPM|DPKG|Sun|Portage|FreeBSD</var>RemoveCommand = ( "$(OS_SCRIPTS)/remove_pkg %s" )
+     
+     
+     packages:
+     
+             package_name version=<var>number</var> cmp=<var>gt|ge|lt|le|eq|ne</var> action=<var>install|remove</var>
+     
+</pre>
+   <p>The setting in the <code>control</code> section specifies the package
+management software that is in use, as well as the preferred command
+used to install a software package as this is not unique. These
+directives illustrate the use of operating system-based classes within
+policies for defining a different installation command for different
+Linux distributions. Here are some examples:
+
+<div class="node">
+<p><hr>
+<a name="Example-of-packages"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Package-upgrade-or-install">Package upgrade or install</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Syntax-of-packages">Syntax of packages</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Cfengine_0027s-package-interface">Cfengine's package interface</a>
+
+</div>
+
+<h3 class="section">1.2 Example of packages</h3>
+
+<pre class="smallexample">     
+     control:
+     	actionsequence = ( shellcommands packages )
+     
+     	redhat::
+     		DefaultPkgMgr = ( rpm )
+                     RPMInstallCommand = ( "/usr/bin/yum -y install %s" )
+                     RPMRemoveCommand = ( "/bin/rpm -e %s" )
+     
+       #   DefaultPkgMgr = ( rpm )
+       #   RPMInstallCommand = ( "/usr/bin/yum -d 0 -e 0 -y install %s" )
+       #   RPMRemoveCommand = ( "/usr/bin/yum -d 0 -e 0 -y remove %s" )
+     
+     	debian::
+     		DefaultPkgMgr = ( dpkg )
+     		DPKGInstallCommand = ( "/usr/bin/apt-get -y install %s" )
+     		DPKGRemoveCommand = ( "/usr/bin/dpkg -r %s" )
+     
+       # DPKGInstallCommand = ( "/usr/bin/aptitude -y -o quiet=1 -o APT::Get::AllowUnauthenticated=true -o aptitude::Cmdline::ignore-trust-violations=yes -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold install %s" )
+     
+     	suse::
+     		DefaultPkgMgr = ( rpm )
+                     RPMInstallCommand = ( "/usr/bin/yast2 -i %s" )
+                     RPMRemoveCommand = ( "/bin/rpm -e --nodeps %s" )
+     
+     	solaris::
+     		DefaultPkgMgr = ( sun )
+     	    SunInstallCommand = ( "/usr/sbin/pkgadd -n -d %s" )
+     	    SunRemoveCommand = ( "/usr/sbin/pkgrm -n %s" )
+     
+     	gentoo::
+     		DefaultPkgMgr = ( portage )
+     	    PortageInstallCommand = ( "/usr/bin/emerge %s" )
+     	    PortageRemoveCommand = ( "/usr/bin/emerge -C --nodeps %s" )
+     
+     	freebsd::
+     		DefaultPkgMgr = ( freebsd )
+     		FreeBSDInstallCommand = ( "/usr/sbin/pkg_add %s" )
+     		FreeBSDRemoveCommand = ( "/usr/sbin/pkg_delete %s" )
+     
+     shellcommands:
+     
+     	debian::
+     		"/usr/bin/apt-get update" ifelapsed=240
+     
+     packages:
+     
+     	redhat.centos.192_168_1_100::
+     		nagios2 version=2.4 cmp=ge
+     		sysklogd version=0:0.0 cmp=ge action=remove
+     
+     	redhat.fedora.192_168_1_200::
+     		apache2 version=0.0 cmp=ge action=install
+     
+     	debian.ubuntu::
+     		libdb-dev action=install
+     		libssl-dev action=install
+     		flex action=remove
+     		bison action=remove
+     
+</pre>
+   <p>	In the packages stanza from example 2, the first rule checks
+whether Nagios is installed. A warning will be generated if the
+package is not present or if the installed version is earlier than
+version 2.4. The second rule checks for the sysklogd package. If the
+package is installed, then removes it. The third, the forth and the
+fifth rules check for the <code>apache2</code>, <samp><span class="file">libdb-dev</span></samp> and
+<samp><span class="file">libssl-dev</span></samp> package and installs them if they are not present on
+the system. Similarly, the sixth and the seventh rules check for the
+flex and bison package and remove them if they are installed on the
+system.
+
+   <p>We should note that be aware and careful when using automated package
+management tools such as <code>yum</code>, <code>apt-get</code>, <code>yast2</code>, etc
+to remove package with non-interactive option which is necessary
+within cfengine to avoid interactive prompts, will also remove
+everything that depends on that package, which can come as quite a
+tragedy.
+
+   <p>Best practice is to alway test using non-interactive option before
+using as your RemoveCommand to see what you are getting into or
+another approach is to use another commands that let you explicit
+about removing dependent packages, for instace: &lsquo;<samp><span class="samp">rpm -e</span></samp>&rsquo; or
+&lsquo;<samp><span class="samp">dpkg -r"</span></samp>&rsquo;.
+
+<!-- ************************************************ -->
+<div class="node">
+<p><hr>
+<a name="Package-upgrade-or-install"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-of-packages">Example of packages</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Cfengine_0027s-package-interface">Cfengine's package interface</a>
+
+</div>
+
+<h3 class="section">1.3 Package upgrade or install?</h3>
+
+<p>Upgrade takes a match against what's <i>already</i> installed. 
+Basically, install will take any machine and `converge' it to having
+the newer version of the package, even if the package was not
+installed before.  Thus, think of install as `install or upgrade'. 
+(Very important: this is the way that <code>rpm</code>, <code>dpkg</code>, and
+<code>portage</code> support work. Install for <code>freebsd</code>/<code>sun</code> doesn't do
+upgrades too, just installs.)
+
+   <p>Upgrade, on the other hand, means `upgrade only if the package has
+been installed before'.  The version and comparison are used to
+specify version numbers you want upgraded.
+
+   <p>That leaves us with two options: e.g.
+
+<pre class="smallexample">     htop action=install version=0.7-1.el4.rf cmp=eq
+</pre>
+   <p>Any host that does not have htop 0.7 installed will install the
+most recent version of the repository.  This means if the version
+upstream is
+.8, it's going to keep reinstalling .8 every time because its not .7! 
+Use &lsquo;<samp><span class="samp">cmp=ge</span></samp>&rsquo; to prevent these re-installations.
+
+<pre class="smallexample">     htop action=install version=0.7-1.el4.rf cmp=lt
+</pre>
+   <p>Any host that is found with a version less-than 0.7 will have it
+upgraded to whatever version is available in the repository
+
+   <p>In summary: most of the time you want <code>install</code>.  Upgrading is
+usually for security fixes to dependencies that are only installed on
+some hosts.  For instance, if <code>libpng</code> has a security
+vulnerability and you don't want to do make class based on ORing any
+package that has <code>libpng</code> as a dependency, then just perform an
+&lsquo;<samp><span class="samp">upgrade</span></samp>&rsquo; to the <code>any</code> class and it will only be applied on hosts that
+already have <code>libpng</code> installed due to the semantics.
+
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+   <p><a name="Contents">
+
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine-Packages</a>
+<li><a name="toc_Cfengine_0027s-package-interface" href="#Cfengine_0027s-package-interface">1 CFEngine's package interface</a>
+<ul>
+<li><a href="#Syntax-of-packages">1.1 Syntax of packages</a>
+<li><a href="#Example-of-packages">1.2 Example of packages</a>
+<li><a href="#Package-upgrade-or-install">1.3 Package upgrade or install?</a>
+</li></ul>
+</li></ul>
+</div>
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

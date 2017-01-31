@@ -1,0 +1,1590 @@
+<html lang="en">
+<head>
+<title>Supplement to CFEngine 3 Nova Evaluation Guide</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Supplement to CFEngine 3 Nova Evaluation Guide">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background: none !important;
+    border: none !important;
+    padding: 5px; 
+
+/*    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;*/
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Supplement to CFEngine 3 Nova Evaluation Guide</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Supplement to CFEngine 3 Nova Evaluation Guide</h2>
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Supplement to CFEngine 3 Nova Evaluation Guide</a>
+<li><a name="toc_Standard-reports-in-CFEngine-3-Nova" href="#Standard-reports-in-CFEngine-3-Nova">1 Standard reports in CFEngine 3 Nova</a>
+<ul>
+<li><a href="#Bundle-profile-report">1.1 Bundle profile report</a>
+<li><a href="#Business-value-report">1.2 Business value report</a>
+<li><a href="#Class-profile-report">1.3 Class profile report</a>
+<li><a href="#Compliance-by-promise-report">1.4 Compliance by promise report</a>
+<li><a href="#Compliance-summary-report">1.5 Compliance summary report</a>
+<li><a href="#File-change-log-report">1.6 File change log report</a>
+<li><a href="#File-change-diffs-report">1.7 File change diffs report</a>
+<li><a href="#Last-saw-hosts-report">1.8 Last saw hosts report</a>
+<li><a href="#Patches-available-report">1.9 Patches available report</a>
+<li><a href="#Patch-status-report">1.10 Patch status report</a>
+<li><a href="#Performance-report">1.11 Performance report</a>
+<li><a href="#Promises-repaired-log-report">1.12 Promises repaired log report</a>
+<li><a href="#Promises-repaired-summary-report">1.13 Promises repaired summary report</a>
+<li><a href="#Promises-not-kept-log-report">1.14 Promises not kept log report</a>
+<li><a href="#Promises-not-kept-summary-report">1.15 Promises not kept summary report</a>
+<li><a href="#Setuid_002fgid-root-programs-report">1.16 Setuid/gid root programs report</a>
+<li><a href="#Software-installed-report">1.17 Software installed report</a>
+<li><a href="#Variables-report">1.18 Variables report</a>
+</li></ul>
+<li><a name="toc_CDP-reports" href="#CDP-reports">2 CDP reports</a>
+<ul>
+<li><a href="#ACLs-report-_002d-File-access-controls">2.1 ACLs report - File access controls</a>
+<li><a href="#Commands-report-_002d-Scheduled-commands-to-execute">2.2 Commands report - Scheduled commands to execute</a>
+<li><a href="#File-changes-report-_002d-File-changes-observed-on-the-system">2.3 File changes report - File changes observed on the system</a>
+<li><a href="#File-diffs-report-_002d-Delta_002fdifference-comparison-showing-file-changes">2.4 File diffs report - Delta/difference comparison showing file changes</a>
+<li><a href="#Registry-report-_002d-Promised-Windows-registry-setting-status">2.5 Registry report - Promised Windows registry setting status</a>
+<li><a href="#Services-report-_002d-System-service-status">2.6 Services report - System service status</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+<ul class="menu">
+<li><a accesskey="1" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+<li><a accesskey="2" href="#CDP-reports">CDP reports</a>
+</ul>
+
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<!-- @node -->
+<!-- @chapter Introduction -->
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Standard-reports-in-CFEngine-3-Nova"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CDP-reports">CDP reports</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Standard reports in CFEngine 3 Nova</h2>
+
+<p>Standard reports in CFEngine 3 Nova can be accessed through the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; in the &lsquo;<samp><span class="samp">Engineering</span></samp>&rsquo; room. The finder lists all standard report categories and each category contains information about different aspects of the Mission. When you click one of them, the &lsquo;<samp><span class="samp">Report finder</span></samp>&rsquo; will present a query form that is adapted to the chosen report category. CFEngine uses regular expressions in these queries, for maximum flexibility and to minimize system impact. The details of these queries and the content of the resulting reports are outlined in the following sections.
+
+<!-- A significant capability of CFEngine 3 Nova is automated system reporting: it collects history, state and change data about computers and ties them together. A report is a tabular summary of CFEngine’s internal information, tailored to a particular purpose, searchable, and describes attributes and qualities of managed hosts. The CFEngine strategy is to replace conventional CMDBs with a more scalable and flexible approach to information mining; we name it a CFDB. -->
+<!-- Standard reports in CFEngine 3 Nova can be accessed through the @samp{Reports finder} in the @samp{Engineering} room. The finder lists eighteen standard report categories and each category contains information about different aspects of the Mission; the Report finder therefore presents different queries according to what report category you wish to investigate. CFEngine uses regular expressions in these queries, for maximum flexibility and to minimize system impact. The details of these queries and the content of the resulting reports are outlined in the following sections. -->
+<!-- To access standard reports, click the @samp{Engineering} icon in the Mission Portal, then the @samp{Reports finder} in the Engineering room: -->
+<!-- @sp 1 -->
+<!-- @center @image{img-gotoengineering,7cm,,Go to Engineering} -->
+<!-- @center Figure: Go to Engineering -->
+<!-- @sp 1 -->
+<!-- @center @image{img-gotoreportsfinder,10cm,,Go to reports finder} -->
+<!-- @center Figure: Go to Reports finder -->
+<!-- @page -->
+<!-- @sp 1 -->
+<!-- @center @image{img-reportsfinder,11cm,,Reports finder} -->
+<!-- @center Figure: Reports finder -->
+<!-- @sp 1 -->
+<!-- @noindent List of standard reports: -->
+<!-- @itemize - -->
+<!-- @item Bundle profile: Status of promise bundles and when they were last verified -->
+<!-- @item Business value report: Accumulated value of promises kept -->
+<!-- @item Class profile: User defined classes observed on the system -->
+<!-- @item Compliance by promise: Compliance of each promise individually -->
+<!-- @item Compliance summary: Total summary of host compliance -->
+<!-- @item File change log: Log of all detected changes to files from changes promises -->
+<!-- @item File change diffs: Delta/difference comparison showing file changes -->
+<!-- @item Last saw hosts: Log of when neighboring hosts were last observed online -->
+<!-- @item Patches available: A list of patches currently claimed to be available by the local package manager -->
+<!-- @item Patch status: A list of (un)applied patches according to the local package manager -->
+<!-- @item Performance: Execution time used to verify selected promises -->
+<!-- @item Promises repaired log: Log of actual repairs made to the system -->
+<!-- @item Promises repaired summary: Cumulative (histogram) summary of promises repaired -->
+<!-- @item Promises not kept log: Log of promises that could not or would not be kept -->
+<!-- @item Promises not kept summary: Cumulative (histogram) summary of promises not kept -->
+<!-- @item Setuid/gid root programs: Current list of observed setuid/setgid root programs -->
+<!-- @item Software installed: List of software packages claimed to be installed according to the local package manager -->
+<!-- @item Variables: Table of variable values last observed -->
+<!-- @end itemize -->
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Bundle-profile-report">Bundle profile report</a>
+<li><a accesskey="2" href="#Business-value-report">Business value report</a>
+<li><a accesskey="3" href="#Class-profile-report">Class profile report</a>
+<li><a accesskey="4" href="#Compliance-by-promise-report">Compliance by promise report</a>
+<li><a accesskey="5" href="#Compliance-summary-report">Compliance summary report</a>
+<li><a accesskey="6" href="#File-change-log-report">File change log report</a>
+<li><a accesskey="7" href="#File-change-diffs-report">File change diffs report</a>
+<li><a accesskey="8" href="#Last-saw-hosts-report">Last saw hosts report</a>
+<li><a accesskey="9" href="#Patches-available-report">Patches available report</a>
+<li><a href="#Patch-status-report">Patch status report</a>
+<li><a href="#Performance-report">Performance report</a>
+<li><a href="#Promises-repaired-log-report">Promises repaired log report</a>
+<li><a href="#Promises-repaired-summary-report">Promises repaired summary report</a>
+<li><a href="#Promises-not-kept-log-report">Promises not kept log report</a>
+<li><a href="#Promises-not-kept-summary-report">Promises not kept summary report</a>
+<li><a href="#Setuid_002fgid-root-programs-report">Setuid/gid root programs report</a>
+<li><a href="#Software-installed-report">Software installed report</a>
+<li><a href="#Variables-report">Variables report</a>
+</ul>
+
+<div class="node">
+<a name="Bundle-profile-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Business-value-report">Business value report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.1 Bundle profile report</h3>
+
+<p>Promises are the fundamental statements in CFEngine, they make up the definition of the desired state of a system. A <i>bundle</i> is a collection of promises in a `sub-routine-like' container. The purpose of bundles is to allow greater flexibility to break down the contents of policies and give them names. Bundles also allow to re-use promise code by parameterizing it.
+
+   <p>The &lsquo;<samp><span class="samp">Bundle profile report</span></samp>&rsquo; is useful for checking when specific bundles were last verified and for seeing statistics about the frequency of verification. Click on <b>Bundle profile</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-gotobundleprofilequery.png" alt="Go to bundle profile query"></div>
+<div align="center">Figure: Go to Bundle profile query</div>
+   <pre class="sp">
+
+</pre>
+
+The Bundle profile query can filter by bundle pattern (pattern in bundle name) and host class (i.e. the class/context of a bundle). Leaving the fields blank will result in a report listing all bundles in your policies.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-bundleprofilequery.png" alt="Bundle profile query"></div>
+<div align="center">Figure: Bundle profile query</div>
+   <pre class="sp">
+
+</pre>
+
+Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of bundles that suit the query criteria entered above. It displays the host names on which these bundles can be found (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), the name of the bundles (&lsquo;<samp><span class="samp">Bundle</span></samp>&rsquo;), the time stamp at the moment of verification (&lsquo;<samp><span class="samp">Last verified</span></samp>&rsquo;), the time passed since last verification (&lsquo;<samp><span class="samp">Hours ago</span></samp>&rsquo;), the average time between each verification (&lsquo;<samp><span class="samp">Avg interval</span></samp>&rsquo;), and the uncertainty of that average (&lsquo;<samp><span class="samp">Uncertainty</span></samp>&rsquo;, measured in one standard deviation of &lsquo;<samp><span class="samp">Avg interval</span></samp>&rsquo;). You can add your personal note in the right column, documenting any thoughts or issues that you might have about the query result. The &lsquo;<samp><span class="samp">Last verified</span></samp>&rsquo; value is yellow if more than six hours have passed since last verification.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-bundleprofilereport.png" alt="Bundle profile report"></div>
+<div align="center">Figure: Bundle profile report</div>
+   <pre class="sp">
+
+</pre>
+
+<!-- Click a bundle name to access details of that specific bundle through the bundle viewer. -->
+<!-- @cartouche -->
+<!-- *** Explain further steps *** -->
+<!-- @end cartouche -->
+
+<!--  -->
+<div class="node">
+<a name="Business-value-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Class-profile-report">Class profile report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Bundle-profile-report">Bundle profile report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.2 Business value report</h3>
+
+<p>One of the capabilities of CFEngine 3 Nova is to add business or organizational value to the configuration
+model. The notion of business value is not necessarily a clear concept, but a simple approach is to attach a monetary value to the outcome of promises.
+
+   <p>CFEngine's default values for promises kept, promises repaired and promises not kept are 1, 0.5, and -1, respectively. The values are summed and recorded at a set time interval, and the results are summarized for every host and day.
+
+   <p>Click on <b>Business value</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-businessvaluequery.png" alt="Business value query"></div>
+<div align="center">Figure: Business value query</div>
+   <pre class="sp">
+
+</pre>
+
+The Business value query can filter by date and host class (i.e. the class/context of a host). Leaving the fields blank will result in a report listing the business value of all promises that have had value attached to them over all hosts and days.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of hosts that suit the query criteria entered above. The result presents each host name (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), date (&lsquo;<samp><span class="samp">Day</span></samp>&rsquo;), and the sum of the value of the promises kept (&lsquo;<samp><span class="samp">Kept</span></samp>&rsquo;), repaired (&lsquo;<samp><span class="samp">Repaired</span></samp>&rsquo;), and not kept (&lsquo;<samp><span class="samp">Not kept</span></samp>&rsquo;). You can add your personal note in the right column, documenting any thoughts or issues that you might have about the query result.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-businessvaluereport.png" alt="Business value report"></div>
+<div align="center">Figure: Business value report</div>
+   <pre class="sp">
+
+</pre>
+
+<!-- We will look at an example of how to attach business value of specific promises at a later stage, when it is time to edit a file in the integrated policy editor. -->
+
+<!--  -->
+<div class="node">
+<a name="Class-profile-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Compliance-by-promise-report">Compliance by promise report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Business-value-report">Business value report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.3 Class profile report</h3>
+
+<p>CFEngine classes are certain true/false (Boolean) propositions that determine in what context, or setting, a promise is made. Each time CFEngine runs (by default every five minutes), it discovers and classifies properties of the environment in which it runs. These discovered properties are called 'hard classes' and cannot be changed by users. CFEngine also operates with soft classes, i.e. user-defined types.
+
+<!-- CFEngine decisions are made by classes, certain true/false (Boolean) propositions that determine in what context a promise is made. There are no if-then-else statements in CFEngine; all decisions are made with classes. Each time CFEngine runs (by default every five minutes), the underlying agent discovers and classifies properties of the environment or context in which it runs. These discovered properties are called 'hard classes' and cannot be changed by users. CFEngine also operates with soft classes, i.e. user-defined types. -->
+   <p>The Class profile report is useful for looking at hosts in specific contexts, for instance to find out which machines run on windows. Click on <b>Class profile</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-classprofilequery.png" alt="Class profile query"></div>
+<div align="center">Figure: Class profile query</div>
+   <pre class="sp">
+
+</pre>
+
+The class profile query can filter by (pattern in) class name and host class (i.e. the context of a host). Leaving the fields blank will result in a report listing all hosts and classes.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of hosts that suit the query criteria entered above. The result presents the host names (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), &lsquo;<samp><span class="samp">Class context</span></samp>&rsquo;, probability of occurrence (&lsquo;<samp><span class="samp">Occurs with probability</span></samp>&rsquo;), &lsquo;<samp><span class="samp">Uncertainty</span></samp>&rsquo; (standard deviation of &lsquo;<samp><span class="samp">Occurs with probability</span></samp>&rsquo;), and the last time the class was observed (&lsquo;<samp><span class="samp">Last seen</span></samp>&rsquo;).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-classprofilereport.png" alt="Class profile report"></div>
+<div align="center">Figure: Class profile report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Compliance-by-promise-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Compliance-summary-report">Compliance summary report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Class-profile-report">Class profile report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.4 Compliance by promise report</h3>
+
+<p>Promises are the fundamental statements in CFEngine, the policy atoms. Promises can be made about all kinds of different subjects, from file attributes, to the execution of commands, access control decisions and knowledge relationships. If there is no promise, nothing happens. It is considered compliant if CFEngine is able to keep the promise, and conversely, not compliant, or not kept, in the opposite case.
+
+   <p>The &lsquo;<samp><span class="samp">Compliance by promise</span></samp>&rsquo; report is useful for checking the current status of your system in high detail. You can find out which parts of a bundle work and which do not. The report also predicts the probability of compliance based on the history of specific promises, allowing you to assess the degree to which the problem is of a more transient or permanent nature. Click on <b>Compliance by promise</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-compliancebypromisequery.png" alt="Compliance by promise query"></div>
+<div align="center">Figure: Compliance by promise query</div>
+   <pre class="sp">
+
+</pre>
+
+The compliance by promise query can filter by (patterns in) promise handle, any/compliant/repaired/non-compliant promises (drop-down menu), and host class (i.e. the context of a host). Leaving the fields blank will result in a report listing all hosts and and promises.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of hosts that suit the query criteria entered above. The result presents the host names (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), the promise identifier &lsquo;<samp><span class="samp">Promise handle</span></samp>&rsquo;, &lsquo;<samp><span class="samp">Last known state</span></samp>&rsquo; (compliant or not compliant), likelihood of a promise being compliant (&lsquo;<samp><span class="samp">Probability kept</span></samp>&rsquo;), uncertainty of the likelihood (&lsquo;<samp><span class="samp">Uncertainty</span></samp>&rsquo;, measured in one standard deviation of &lsquo;<samp><span class="samp">Probability kept</span></samp>&rsquo;), and the time stamp of the last time the promise was run.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-compliancebypromisereport.png" alt="Compliance by promise report"></div>
+<div align="center">Figure: Compliance by promise report</div>
+   <pre class="sp">
+
+</pre>
+
+<!-- Click a promise handle to access details of that specific promise through the promise viewer. -->
+<!-- @cartouche -->
+<!-- *** Explain further steps *** -->
+<!-- @end cartouche -->
+
+<!--  -->
+<div class="node">
+<a name="Compliance-summary-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#File-change-log-report">File change log report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Compliance-by-promise-report">Compliance by promise report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.5 Compliance summary report</h3>
+
+<p>CFEngine policies are collections of promises contained in a text file, they are the CFEngine scripts that define what state you want your system to be in. The compliance summary report gives an overview of policy status. It shows the current status of your system in a coarse manner, allowing you to quickly identify which areas need follow-up. Click on <b>Compliance summary</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-compliancesummaryquery.png" alt="Compliance summary query"></div>
+<div align="center">Figure: Compliance summary query</div>
+   <pre class="sp">
+
+</pre>
+
+The compliance summary query can filter by (pattern in) promise handle and host class (i.e. the context of a host). Leaving the fields blank will result in a report listing all hosts and and policies.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of hosts that suit the query criteria entered above. The result presents the host names (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), policy file name (&lsquo;<samp><span class="samp">Policy</span></samp>&rsquo;), percentage of promises kept within the listed policies (&lsquo;<samp><span class="samp">Kept</span></samp>&rsquo;), percentage of promises repaired within the listed policies (&lsquo;<samp><span class="samp">Repaired</span></samp>&rsquo;), percentage of promises not kept within the listed policies (&lsquo;<samp><span class="samp">Not kept</span></samp>&rsquo;), and the time stamp of the last status check (&lsquo;<samp><span class="samp">Last seen</span></samp>&rsquo;).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-compliancesummaryreport.png" alt="Compliance summary report"></div>
+<div align="center">Figure: Compliance summary report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="File-change-log-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#File-change-diffs-report">File change diffs report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Compliance-summary-report">Compliance summary report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.6 File change log report</h3>
+
+<p>File change monitoring is about detecting when file information on a computer system changes. Awareness of changes is often considered a major part of management, especially if they are unexpected or inadvertent (expected changes are usually not a problem). With CFEngine you can either set a general tripwire to detect all changes, or, in the case of the &lsquo;<samp><span class="samp">File change log</span></samp>&rsquo;, monitor specific files with changes promises. The report gives you relative detail of change as it presents the name of files that have been changed, when they were changed and on what host they were changed.
+
+   <p>The file change log query can filter by (patterns in) file name and host class (i.e. the class/context of a host). Leaving the fields blank will result in a report listing changes detected on all monitored hosts and and policies.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-filechangelogquery.png" alt="File change log query"></div>
+<div align="center">Figure: File change log query</div>
+   <pre class="sp">
+
+</pre>
+
+Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of hosts that suit the query criteria entered above. The result presents the host names (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), name of the file where a change was detected (&lsquo;<samp><span class="samp">File</span></samp>&rsquo;), and time stamp of change detection (&lsquo;<samp><span class="samp">Change detected at</span></samp>&rsquo;). You can add your personal note in the right column, documenting any thoughts or issues that you might have about the query result.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-filechangelogreport.png" alt="File change log report"></div>
+<div align="center">Figure: File change log report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="File-change-diffs-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Last-saw-hosts-report">Last saw hosts report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#File-change-log-report">File change log report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.7 File change diffs report</h3>
+
+<p>A diff is a file comparison utility that outputs the differences between two files. It is typically used to show the changes between one version of a file and a former version of the same file. Diff displays the changes made per line for text files. Once a file change has been identified, for instance as seen in the file change log, you can browse the details of that change in a file change diff report.
+
+   <p>The file change diff query can filter by (pattern in) file name, (pattern in) diff content, and host class (i.e. the class/context of a host). Leaving the fields blank will result in a report listing changes detected on all monitored hosts and and policies.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-filechangediffsquery.png" alt="File change diffs query"></div>
+<div align="center">Figure: File change diffs query</div>
+   <pre class="sp">
+
+</pre>
+
+Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of hosts that suit the query criteria entered above. The result presents the host names (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), name of the file where a change was detected (&lsquo;<samp><span class="samp">File</span></samp>&rsquo;), the time stamp of change detection (&lsquo;<samp><span class="samp">Change detected at</span></samp>&rsquo;), and the actual diff (whether a line was added or deleted, the line number, and the content of the change; &lsquo;<samp><span class="samp">Change added (+), deleted (-); Line no; Content </span></samp>&rsquo;).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-filechangediffsreport.png" alt="File change diffs report"></div>
+<div align="center">Figure: File change diffs report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Last-saw-hosts-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Patches-available-report">Patches available report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#File-change-diffs-report">File change diffs report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.8 Last saw hosts report</h3>
+
+<p>Sometimes it is not possible to connect to a machine under CFEngine's management, either due to network errors or temporary lack of network entirely (for instance on ships at sea or submarines). CFEngine 3 Nova's Mission Portal monitors all connections, incoming and outgoing, between all managed hosts, and creates a log of when neighboring hosts were last observed online. This information is used to set the host availability status and, through analysis of the connection history, give an idea of the regularity of connections between hosts.
+
+   <p>The Last saw hosts report is useful for checking the communication pattern between managed hosts and when they last were in touch with each other. Click on <b>Last saw hosts</b> in the Report finder to open a query window as described previously.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-lastsawhostsquery.png" alt="Last saw hosts query"></div>
+<div align="center">Figure: Last saw hosts query</div>
+   <pre class="sp">
+
+</pre>
+
+The Last saw hosts query can filter by (patterns in) remote host name, remote host IP address, remote host key, minimum hours ago (since the last connection was made), and host class (i.e. the class/context of a host). Leaving the fields blank will result in a report listing all connections made to and from the managed machines (including the hub).
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of all communication that suits the query criteria entered above. Every connection is logged on the concerned nodes as incoming (Initiated by them) or outgoing (Initiated by us), the same connection will therefore appear twice in the report (once for each node). The results are presented in the following column format: &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Initiated</span></samp>&rsquo; (identifies whether the connection is incoming (<code>by them (-)</code>) or outgoing (<code>by us (+)</code>), &lsquo;<samp><span class="samp">Remote host name</span></samp>&rsquo;, &lsquo;<samp><span class="samp">Remote host IP address</span></samp>&rsquo;, &lsquo;<samp><span class="samp">Last seen</span></samp>&rsquo; (time stamp of the connection), &lsquo;<samp><span class="samp">Hours ago</span></samp>&rsquo; (interval between current time and Last seen), &lsquo;<samp><span class="samp">Avg interval</span></samp>&rsquo; (average time between each connection), &lsquo;<samp><span class="samp">Uncertainty</span></samp>&rsquo; (standard deviation of Average interval), and &lsquo;<samp><span class="samp">Remote host key</span></samp>&rsquo; (identifying key of the remote host).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-lastsawhostsreport.png" alt="Last saw hosts report"></div>
+<div align="center">Figure: Last saw hosts report</div>
+   <pre class="sp">
+
+</pre>
+
+<!-- @cartouche -->
+<!-- *** Use case: check if anyone else except policy hub has tried to get in touch with a client. -->
+<!-- Filter on remote host name (DNS name, not class): @code{(?:(?!policyhub).)*} -->
+<!-- sort by host -->
+<!-- Use case: Which machines connect at regular intervals, which are "unstable". *** -->
+<!-- @end cartouche -->
+
+<!-- 7 machines, 26 entries in last seen because all incoming and outgoing requests are recorded: -->
+<!-- 2 the policy hub contacts itself and is contacted by itself -->
+<!-- 6 x 2: 6 hosts. For each hub-client contact, both the hub and the client report incoming and outgoing connection (2 connections) -->
+<!-- 6 x 2: 6 hosts. For each client-hub contact, both the client and the hub report incoming and outgoing connection (2 connections) -->
+<!--  -->
+<div class="node">
+<a name="Patches-available-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Patch-status-report">Patch status report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Last-saw-hosts-report">Last saw hosts report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.9 Patches available report</h3>
+
+<p>Software packaging is a core paradigm in operating system release management today, and CFEngine supports a generic approach to integration with native operating support for packaging. Package promises allow CFEngine to make promises the state of software packages conditionally, given the assumption that a native package manager will perform the actual manipulations. Since no agent can make unconditional promises about another, this is the best that can be achieved.
+
+   <p>Some package systems also support the idea of patches. These might be formally different objects to packages; a patch might contain material for several packages and be numbered differently. When you select patching-policy, the package name can be a regular expression that will match possible patch names, otherwise identifying specific patches can be cumbersome.
+
+   <p>The patches available report is useful to get an overview of patches claimed to be available by the local package manager. Click on <b>Patches available</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-patchesavailablequery.png" alt="Patches available query"></div>
+<div align="center">Figure: Patches available query</div>
+   <pre class="sp">
+
+</pre>
+
+The Patches available query can filter by (patterns in) package name, package version, package architecture, and host class. Leaving the fields blank will result in a report listing all patches that can be installed on the system.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of patches that suit the query criteria entered above. The report presents the following columns: &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Name</span></samp>&rsquo; (name of the package/patch), &lsquo;<samp><span class="samp">Version</span></samp>&rsquo; (patch version), and &lsquo;<samp><span class="samp">Architecture</span></samp>&rsquo;.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-patchesavailablereport.png" alt="Patches available report"></div>
+<div align="center">Figure: Patches available report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Patch-status-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Performance-report">Performance report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Patches-available-report">Patches available report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.10 Patch status report</h3>
+
+<p>Patch management can be a delicate business: sometimes a patch can cause new problems, or perhaps even more problems than it fixes. IT managers therefore often like to be in control of what patches are applied to a system. The Patch status report gives system administrators a complete overview of applied patches according to the local package manager, and, in conjunction with the patches available report, allows them to consciously decide which patches to apply or not.
+
+   <p>Click on <b>Patch status</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-patchstatusquery.png" alt="Patch status query"></div>
+<div align="center">Figure: Patch status query</div>
+   <pre class="sp">
+
+</pre>
+
+The Patch status query can filter by (patterns in) package name, package version, package architecture, and host class. Leaving the fields blank will result in a report listing all patches applied to the system.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of patches that suit the query criteria entered above. The report presents results in the same format as the Patches available report: &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Name</span></samp>&rsquo; (name of the package/patch), &lsquo;<samp><span class="samp">Version</span></samp>&rsquo; (patch version), and &lsquo;<samp><span class="samp">Architecture</span></samp>&rsquo;.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-patchstatusreport.png" alt="Patch status report"></div>
+<div align="center">Figure: Patch status report</div>
+   <pre class="sp">
+
+</pre>
+
+<!-- Patching is a subtle business with CFEngine, there is no simple way using the patch settings to install `all new system patches'. Here's why: -->
+
+<!-- If we specify the name of a patch, then CFEngine will try to see if it exists and/or is installed. If it exists in the pending list, it will be installed.  If it exists in the installed list it will not be installed. Now consider the pattern @samp{.*}. This will match any installed package, so CFEngine will assume the relevant patch has been installed already.  On the other hand, the pattern @samp{no match} will not match an installed patch, but it will not match a named patch either, so nothing is installed. -->
+<!-- Some systems provide a command to do this, which can be specified without specific patch arguments. If so, that command can be called periodically under @code{commands}. The main purposes of patching body items are: -->
+<!-- @itemize -->
+<!-- @item To install specific named patches in a controlled manner. -->
+<!-- @item To generate reports of available and installed patches during system reporting. -->
+<!-- @end itemize -->
+<!--  -->
+<div class="node">
+<a name="Performance-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Promises-repaired-log-report">Promises repaired log report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Patch-status-report">Patch status report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.11 Performance report</h3>
+
+<p>CFEngine 3 Nova uses several monitoring probes to reflect on general system performance<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>. One probe looks at the time it takes to execute selected promises; results are summarized in the &lsquo;<samp><span class="samp">Performance report</span></samp>&rsquo;. The user can thus evaluate which parts of a policy put charge on the system in terms of time spent completing a task. Longer tasks, such as command execution and file copying, are measured by default, but other tasks have to be measured explicitly by stating so in a policy. Note however that most promises made in CFEngine are executed so fast we are not able to measure the time it takes to complete them.
+
+   <p>Click on <b>Performance</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-performancequery.png" alt="Performance query"></div>
+<div align="center">Figure: Performance query</div>
+   <pre class="sp">
+
+</pre>
+
+The Performance query can filter by (patterns in) job name and host class. Leaving the fields blank will result in a report listing the performance of all monitored jobs. 
+<!-- @footnote{Job names are given in the definition of the promise, we will get back to this in the policy editing example.} -->
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of events that suit the query criteria entered above. &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Event</span></samp>&rsquo; (job name), &lsquo;<samp><span class="samp">Last time</span></samp>&rsquo; (most recent performance value, i.e. the time it took to complete the job), &lsquo;<samp><span class="samp">Avg time</span></samp>&rsquo; (average of all Last time), &lsquo;<samp><span class="samp">Uncertainty</span></samp>&rsquo; (expressed as one standard deviation of &lsquo;<samp><span class="samp">Avg time</span></samp>&rsquo;), and &lsquo;<samp><span class="samp">Last performed</span></samp>&rsquo; (time stamp of last execution). You can add your personal note in the right column, documenting any thoughts or issues that you might have about the query result.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-performancereport.png" alt="Performance report"></div>
+<div align="center">Figure: Performance report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Promises-repaired-log-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Promises-repaired-summary-report">Promises repaired summary report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Performance-report">Performance report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.12 Promises repaired log report</h3>
+
+<p>The Status room in the Nova Mission Portal gives an overview of the general status of your system, including six hour summaries of promises kept, repaired, and not kept from the last week. The Promises repaired log is useful to get a complete overview of the history of promises repaired, including execution order and events that are more than a week old. Click on <b>Promises repaired log</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promisesrepairedlogquery.png" alt="Promises repaired log query"></div>
+<div align="center">Figure:  Promises repaired log query</div>
+   <pre class="sp">
+
+</pre>
+
+The Promise repaired log query can filter by (patterns in) promise handles, host class (i.e. the class/context of a host), and a desired time interval. Leaving the fields blank will result in a report listing all promises that were repaired and the time of occurrence.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of promises that suit the query criteria entered above. The results are presented as &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Promise handle</span></samp>&rsquo; (identifier of the promise), &lsquo;<samp><span class="samp">Report</span></samp>&rsquo; (what was repaired), and &lsquo;<samp><span class="samp">Time</span></samp>&rsquo; (time stamp of the repair action). You can add your personal note in the right column, documenting any thoughts or issues that you might have about the query result.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promisesrepairedlogreport.png" alt="Promises repaired log report"></div>
+<div align="center">Figure: Promises repaired log report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Promises-repaired-summary-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Promises-not-kept-log-report">Promises not kept log report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Promises-repaired-log-report">Promises repaired log report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.13 Promises repaired summary report</h3>
+
+<p>If the Promises repaired log is too detailed for your needs, the Promises repaired summary report eliminates the time stamp of the promises repaired and presents a cumulative summary of promises repaired, i.e. the total number times a promise has been repaired. Click on <b>Promises repaired summary</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promisesrepairedsummaryquery.png" alt="Promises repaired summary query"></div>
+<div align="center">Figure:  Promises repaired summary query</div>
+   <pre class="sp">
+
+</pre>
+
+The Promise repaired summary query can filter by (patterns in) promise handles, host class (i.e. the class/context of a host), and a desired time interval. Leaving the fields blank will result in a report listing all promises that were repaired and their cumulative number of occurrences.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of promises that suit the query criteria entered above. The results are presented as &lsquo;<samp><span class="samp">Promise handle</span></samp>&rsquo; (identifier of the promise), &lsquo;<samp><span class="samp">Report</span></samp>&rsquo; (what was repaired), and &lsquo;<samp><span class="samp">Occurrences</span></samp>&rsquo; (number of occurrences of repair).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promisesrepairedsummaryreport.png" alt="Promises repaired summary report"></div>
+<div align="center">Figure: Promises repaired summary report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Promises-not-kept-log-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Promises-not-kept-summary-report">Promises not kept summary report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Promises-repaired-summary-report">Promises repaired summary report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.14 Promises not kept log report</h3>
+
+<p>The Status room in the Nova Mission Portal gives an overview of the general status of your system, including six hour summaries of promises kept, repaired, and not kept from the last week. The Promises not kept log is useful to get a complete overview of the history of promises not kept, including execution order and events that are more than a week old. Click on <b>Promises not kept log</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promisesnotkeptlogquery.png" alt="Promises not kept log query"></div>
+<div align="center">Figure:  Promises not kept log query</div>
+   <pre class="sp">
+
+</pre>
+
+The Promises not kept log query can filter by (patterns in) promise handles, host class (i.e. the class/context of a host), and a desired time interval. Leaving the fields blank will result in a report listing all promises that were not kept and the time of occurrence.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of promises that suit the query criteria entered above. The results are presented as &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Promise handle</span></samp>&rsquo; (identifier of the promise), &lsquo;<samp><span class="samp">Report</span></samp>&rsquo; (what was not kept), and &lsquo;<samp><span class="samp">Time</span></samp>&rsquo; (time stamp of the event). You can add your personal note in the right column, documenting any thoughts or issues that you might have about the query result.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promisesnotkeptlogreport.png" alt="Promises not kept log report"></div>
+<div align="center">Figure:  Promises not kept log report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Promises-not-kept-summary-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Setuid_002fgid-root-programs-report">Setuid/gid root programs report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Promises-not-kept-log-report">Promises not kept log report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.15 Promises not kept summary report</h3>
+
+<p>If the Promises not kept log is too detailed for your needs, the Promises not kept summary report eliminates the time stamp of the promises repaired and presents a cumulative summary of promises repaired, i.e. the total number times a promise was not kept. Click on <b>Promises not kept summary</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promisesnotkeptsummaryquery.png" alt="Promises not kept summary query"></div>
+<div align="center">Figure: Promises not kept summary query</div>
+   <pre class="sp">
+
+</pre>
+
+The Promise not kept summary query can filter by (patterns in) promise handles, host class (i.e. the class/context of a host), and a desired time interval. Leaving the fields blank will result in a report listing all promises that were not kept and their cumulative number of occurrences.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of promises that suit the query criteria entered above. The results are presented as &lsquo;<samp><span class="samp">Promise handle</span></samp>&rsquo;, &lsquo;<samp><span class="samp">Report</span></samp>&rsquo; (what was not kept), and &lsquo;<samp><span class="samp">Occurrences</span></samp>&rsquo; (the number of times the promise was not kept).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promisesnotkeptsummaryreport.png" alt="Promises not kept summary report"></div>
+<div align="center">Figure: Promises not kept summary report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Setuid%2fgid-root-programs-report"></a>
+<a name="Setuid_002fgid-root-programs-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Software-installed-report">Software installed report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Promises-not-kept-summary-report">Promises not kept summary report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.16 Setuid/gid root programs report</h3>
+
+<!-- from wikipedia -->
+<p><code>setuid</code> and <code>setgid</code> (short for "set user ID upon execution" and "set group ID upon execution", respectively) are Unix access right flags that allow users to run an executable with the permissions of the executable's owner or group. They are often used to allow users on a computer system to run programs with temporarily elevated privileges in order to perform a specific task. The &lsquo;<samp><span class="samp">Setuid/gid root programs report</span></samp>&rsquo; is useful to get an overview of what processes have been elevated to root privileges and potentially uncover security issues.
+
+<!-- setuid and setgid are needed for tasks that require higher privileges than those which common users have, such as changing their login password.[2] Some of the tasks that require elevated privileges may not immediately be obvious, though — such as the ping command, which must send and listen for control packets on a network interface. -->
+<!-- The setuid and setgid flags, when set on a directory, have an entirely different meaning. Setting the setgid permission on a directory (chmod g+s) causes new files and subdirectories created within it to inherit its group ID, rather than the primary group ID of the user who created the file (the owner ID is never affected, only the group ID). Newly created subdirectories inherit the setgid bit. Note that setting the setgid permission on a directory only affects the group ID of new files and subdirectories created after the setgid bit is set, and is not applied to existing entities. Setting the setgid bit on existing subdirectories must be done manually -->
+<!-- The setuid permission set on a directory is ignored on UNIX and Linux systems.[4] FreeBSD can be configured to interpret it analogously to setgid, namely, to force all files and sub-directories to be owned by the top directory owner.[5] -->
+<!-- In FreeBSD, directories behave as if their setgid bit was always set, regardless of its actual value. As is stated in open(2), "When a new file is created it is given the group of the directory which contains it." -->
+   <p>Click on <b>Setuid/gid root programs</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-setuidgidrootprogramsquery.png" alt="Setuid/gid root programs query"></div>
+<div align="center">Figure: Setuid/gid root programs query</div>
+   <pre class="sp">
+
+</pre>
+
+The Setuid/gid root programs query can filter by (patterns in) file name or host class. Leaving the fields blank will result in a report listing all hosts and files that have their permissions elevated to root.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-setuidgidrootprogramsreport.png" alt="Setuid/gid root programs report"></div>
+<div align="center">Figure: Setuid/gid root programs report</div>
+   <pre class="sp">
+
+</pre>
+
+Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of promises that suit the query criteria entered above. The results are presented as host name and files that have their permissions elevated to root.
+
+<!--  -->
+<div class="node">
+<a name="Software-installed-report"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Variables-report">Variables report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Setuid_002fgid-root-programs-report">Setuid/gid root programs report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.17 Software installed report</h3>
+
+<p>The &lsquo;<samp><span class="samp">Software installed report</span></samp>&rsquo; will list the software packages claimed to be installed according to the local package manager. Click on <b>Software installed</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-softwareinstalledquery.png" alt="Software installed query"></div>
+<div align="center">Figure: Software installed query</div>
+   <pre class="sp">
+
+</pre>
+
+The Software installed query can filter by (patterns in) software name, version, architecture, or host class. Leaving the fields blank will result in a report listing all hosts and software installed on the system.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview that suits the query criteria entered above. The results are presented as &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Name</span></samp>&rsquo; (of software package), &lsquo;<samp><span class="samp">Version</span></samp>&rsquo; (of software package), and &lsquo;<samp><span class="samp">Architecture</span></samp>&rsquo; (of machine on which software runs).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-softwareinstalledreport.png" alt="Software installed report"></div>
+<div align="center">Figure: Software installed report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Variables-report"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Software-installed-report">Software installed report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>
+
+</div>
+
+<h3 class="section">1.18 Variables report</h3>
+
+<!-- Scalar variables are written @samp{$(name)} in CFEngine, and they represent a single value at a time. When they are written without a context, e.g. @samp{$(myvar)}, they are local to the current bundle (i.e. their scope is the current bundle). They are globally available everywhere provided one uses the context to verify them; e.g. @samp{$(context.myvar)} may be used to access the variable `myvar' in bundle `context'. -->
+<p>The &lsquo;<samp><span class="samp">Variables report</span></samp>&rsquo; is useful for tracking your variables and checking their values, for instance to see if they behave in the expected manner. Click on <b>Variables</b> in the &lsquo;<samp><span class="samp">Reports finder</span></samp>&rsquo; to open a query window:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-variablesquery.png" alt="Variables query"></div>
+<div align="center">Figure: Variables query</div>
+   <pre class="sp">
+
+</pre>
+
+The Variables query can filter by (patterns in) scope (bundle where the variable is used), Lvalue (name of variable), Rvalue (content of variable), type, or host class. Leaving the fields blank will result in a report listing all variables that were last observed on the system.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Nova will list an overview of variables that suit the query criteria entered above. The results are presented in table form/blocks of scope (i.e. in which bundle the variables appear) with the following column format: &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (name of host where the variable is defined), &lsquo;<samp><span class="samp">Type</span></samp>&rsquo; (type of the variable, &lsquo;<samp><span class="samp">Name</span></samp>&rsquo;, and &lsquo;<samp><span class="samp">Value</span></samp>&rsquo;.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-variablesreport.png" alt="Variables report"></div>
+<div align="center">Figure: Variables report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<!-- @node -->
+<!-- @section Example: Performance report -->
+<!-- Example: how to explicitly monitor performance (execution time) of a promise. -->
+<!-- @verbatim -->
+<!-- body common control -->
+<!-- { -->
+<!-- bundlesequence => {  "test" }; -->
+<!-- } -->
+<!-- bundle agent test -->
+<!-- { -->
+<!-- command: -->
+<!-- "/bin/sleep 10" -->
+<!-- action  => background; -->
+<!-- action  => performance_measure; -->
+<!-- } -->
+<!-- body action performance_measure -->
+<!-- { -->
+<!-- measurement_class => "$(this.promiser) job scan of file sleep command"; -->
+<!-- } -->
+<!-- @end verbatim -->
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="CDP-reports"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Standard-reports-in-CFEngine-3-Nova">Standard reports in CFEngine 3 Nova</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 CDP reports</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#ACLs-report-_002d-File-access-controls">ACLs report - File access controls</a>
+<li><a accesskey="2" href="#Commands-report-_002d-Scheduled-commands-to-execute">Commands report - Scheduled commands to execute</a>
+<li><a accesskey="3" href="#File-changes-report-_002d-File-changes-observed-on-the-system">File changes report - File changes observed on the system </a>
+<li><a accesskey="4" href="#File-diffs-report-_002d-Delta_002fdifference-comparison-showing-file-changes">File diffs report - Delta/difference comparison showing file changes</a>
+<li><a accesskey="5" href="#Registry-report-_002d-Promised-Windows-registry-setting-status">Registry report - Promised Windows registry setting status</a>
+<li><a accesskey="6" href="#Services-report-_002d-System-service-status">Services report - System service status</a>
+</ul>
+
+<p>Content-Driven Policies (CDP) were introduced to make policy management easier. In contrast to policies written in the CFEngine language, they are composed of semi-colon separated fields in a text file that the user fills with content, like a spreadsheet or tabular file. Each line in the file is parsed and results in a specific type of promise being made. Reports based on data from CDP policies can be found in &lsquo;<samp><span class="samp">Engineering room</span></samp>&rsquo;: click the <b>Engineering</b> icon in the Mission Portal, then the <b>CDP reports</b> finder in the Engineering room:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-gotoengineering.png" alt="Go to Engineering"></div>
+<div align="center">Figure: Go to Engineering</div>
+   <pre class="sp">
+
+</pre>
+
+<div align="center"><img src="img-gotocdpreportsfinder.png" alt="Go to CDP reports finder"></div>
+<div align="center">Figure: Go to CDP reports finder</div>
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-cdpreportfinder.png" alt="Reports finder"></div>
+<div align="center">Figure: CDP reports finder</div>
+   <pre class="sp">
+
+</pre>
+
+We will now go through the different CDP reports and their corresponding input files. 
+<!-- @noindent CFEngine 3 Nova comes with six default CDPs: -->
+
+<!-- @itemize - -->
+<!-- @item ACLs: File access controls -->
+<!-- @item Commands: Scheduled commands to execute -->
+<!-- @item File changes: File changes observed on the system -->
+<!-- @item File diffs: Delta/difference comparison showing file changes -->
+<!-- @item Registry: Promised Windows registry setting status -->
+<!-- @item Services: System service status -->
+<!-- @end itemize -->
+<!-- We will go through each type of CDP report below to explain the contents. -->
+<!--  -->
+<div class="node">
+<a name="ACLs-report---File-access-controls"></a>
+<a name="ACLs-report-_002d-File-access-controls"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Commands-report-_002d-Scheduled-commands-to-execute">Commands report - Scheduled commands to execute</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CDP-reports">CDP reports</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CDP-reports">CDP reports</a>
+
+</div>
+
+<h3 class="section">2.1 ACLs report - File access controls</h3>
+
+<p>An access control list (ACL) is a list of permissions attached to an object. An ACL specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects. Each entry in a typical ACL specifies a subject and an operation. For instance, if a file has an ACL that contains (Alice, delete), this would give Alice permission to delete the file.
+
+   <p>Click on <b>ACLs</b> in the &lsquo;<samp><span class="samp">CDP Reports finder</span></samp>&rsquo; to access the ACLs CDP report:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-aclsreport.png" alt="ACLs report"></div>
+<div align="center">Figure: ACLs report</div>
+   <pre class="sp">
+
+</pre>
+
+The report lists an overview of host name (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), path of the affected object (&lsquo;<samp><span class="samp">Path</span></samp>&rsquo;), the permission setting (&lsquo;<samp><span class="samp">Permission (ACL)</span></samp>&rsquo;), owner of the affected object (&lsquo;<samp><span class="samp">Owner</span></samp>&rsquo;), action to execute on the object (&lsquo;<samp><span class="samp">Action</span></samp>&rsquo;), the context in which the promise was made (&lsquo;<samp><span class="samp">Class expression</span></samp>&rsquo;), state of compliance (&lsquo;<samp><span class="samp">State</span></samp>&rsquo;), and the time the promise was last checked (&lsquo;<samp><span class="samp">Last checked</span></samp>&rsquo;).
+
+   <p>The default CFEngine 3 Nova ACLs policies allow you to set permissions to directories and files using two different input files (<samp><span class="file">acl_directory_list.txt</span></samp> and <samp><span class="file">acl_file_list.txt</span></samp>, respectively). We will limit ourselves to look at one of these in the following example as they are conceptually identical.
+
+   <p>The file <samp><span class="file">acl_file_list.txt</span></samp> can be found under the <samp><span class="file">cdp_inputs</span></samp> catalog in the policy editor, click it to open:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-openaclfilelistinput.png" alt="open ACLs input file"></div>
+<div align="center">Figure: Open the ACLs input file</div>
+   <pre class="sp">
+
+</pre>
+
+<p class="noindent">The content of the file looks like this (lines have been split and indented for presentability):
+
+<pre class="verbatim">
+   #
+   #  ACLs On Files
+   #
+   #  FORMAT:   path;entity_type1:entity_name1:perms1,
+         entity_type2:entity_name2:perms2,...;owner;action;class_expression
+   #
+   #  EXAMPLE:  C:\tmp;user:Administrator:rwx,user:SYSTEM:r;
+         Administrator;fix;windows
+   #
+
+   # Windows 2003
+   c:\WINDOWS\system32\drivers\etc\hosts;user:Administrator:rw,user:SYSTEM:rw,
+       user:Guest:r;SYSTEM;fix;Windows_Server_2003.!Hr09
+   c:\WINDOWS\system32\drivers\etc\hosts;user:Administrator:rw,user:SYSTEM:rw,
+       user:Guest:rw;SYSTEM;fix;Windows_Server_2003.Hr09
+   # Windows 2008
+   c:\Windows\System32\drivers\etc\hosts;user:Administrator:rw,user:SYSTEM:rw,
+       user:Guest:r;SYSTEM;fix;Windows_Server_2008_R2.!Hr11
+   c:\Windows\System32\drivers\etc\hosts;user:Administrator:rw,user:SYSTEM:rw,
+       user:Guest:rw;SYSTEM;fix;Windows_Server_2008_R2.Hr11
+
+</pre>
+
+   <p>We need to look at the header of the file to understand its structure. We saw in the CDP reports introduction that the input consisted of lines containing semi colon separated fields, so anything with a &lsquo;<samp><span class="samp">;</span></samp>&rsquo; before or after it is a field entry. The structure of these fields are explained in the <code>FORMAT</code> section of the file header, here we have:
+
+<pre class="verbatim">
+  #  FORMAT:   path;entity_type1:entity_name1:perms1,
+         entity_type2:entity_name2:perms2,...;owner;action;class_expression
+
+</pre>
+
+<p class="noindent">Splitting this up into separate fields:
+     <dl>
+<dt><i>path</i><dd>Path of file to set permissions on.
+
+     <br><dt><i>entity_type1:entity_name1:perms1</i><dd>This field defines the permissions (&lsquo;<samp><span class="samp">perms1</span></samp>&rsquo;) that a user (&lsquo;<samp><span class="samp">entity_type1</span></samp>&rsquo;), and member of the group (&lsquo;<samp><span class="samp">entity_name1</span></samp>&rsquo;), has on the file defined in &lsquo;<samp><span class="samp">path</span></samp>&rsquo;.
+
+     <br><dt><i>entity_type2:entity_name2:perms2,...</i><dd>Same as entity_type1:entity_name1:perms1, but for different user, group, and permission settings.
+
+     <br><dt><i>owner</i><dd>Defines the owner of the file defined in &lsquo;<samp><span class="samp">path</span></samp>&rsquo;
+
+     <br><dt><i>action</i><dd>Tells CFEngine what to do if the file permissions differ from what was defined in the ACLs policy. Can take the values &lsquo;<samp><span class="samp">fix</span></samp>&rsquo; (set permissions as defined in ACLs policy), &lsquo;<samp><span class="samp">warn</span></samp>&rsquo; (log and display a warning that the file permissions differ from what was defined in ACLs policy), and &lsquo;<samp><span class="samp">nop</span></samp>&rsquo; (no operation; no log entry, but print a warning in command-line interface).
+
+     <br><dt><i>class_expression</i><dd>Context in which the permissions are set, i.e. a class expression (boolean) that needs to be fulfilled for the permissions to be set. 
+</dl>
+
+<!--  -->
+<div class="node">
+<a name="Commands-report---Scheduled-commands-to-execute"></a>
+<a name="Commands-report-_002d-Scheduled-commands-to-execute"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#File-changes-report-_002d-File-changes-observed-on-the-system">File changes report - File changes observed on the system</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#ACLs-report-_002d-File-access-controls">ACLs report - File access controls</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CDP-reports">CDP reports</a>
+
+</div>
+
+<h3 class="section">2.2 Commands report - Scheduled commands to execute</h3>
+
+<p>You may use the Commands CDP to schedule script execution on specific hosts. The Commands CDP uses a combination of class expressions to set the context (i.e. time and place) of execution.
+
+   <p>Click on <b>Commands</b> in the &lsquo;<samp><span class="samp">CDP Reports finder</span></samp>&rsquo; to access the Commands CDP report:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-commandsreport.png" alt="Commands report"></div>
+<div align="center">Figure: Commands report</div>
+   <pre class="sp">
+
+</pre>
+
+The report lists an overview of host name (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), the command to execute (&lsquo;<samp><span class="samp">Command</span></samp>&rsquo;), the class to define if execution fails (&lsquo;<samp><span class="samp">Failclass</span></samp>&rsquo;), action to execute if there is an error (&lsquo;<samp><span class="samp">Action</span></samp>&rsquo;; see explanation of the CDP input file below for possible values), the context in which the promise was made (&lsquo;<samp><span class="samp">Class expression</span></samp>&rsquo;), state of compliance (&lsquo;<samp><span class="samp">State</span></samp>&rsquo;), and the time the promise was last checked (&lsquo;<samp><span class="samp">Last checked</span></samp>&rsquo;).
+
+   <p>The Commands CDP input file, <samp><span class="file">command_list.txt</span></samp>, can be found in the left menu in the <samp><span class="file">cdp_inputs</span></samp> catalog. The content looks like this (lines have been split and indented for presentability):
+
+<pre class="verbatim">
+   #
+   #  Command Execution
+   #
+   #  FORMAT:   command_path;on_error_define_class;action;class_expression
+   #
+   #  EXAMPLE:  c:\windows\system32\cmd.exe /c "echo hello";hello_failed;fix;
+         DomainController
+   #
+   #  NOTE:     You may use this Content-Driven Policy to schedule script
+   #            execution on a class of hosts by using a combination of
+   #            host and time classes in class_expression, e.g. set
+   #            class_expression to "windows.Tuesday.Hr10.Min30_35".
+   #
+
+   c:\windows\system32\cmd.exe /c "eho hello";hello_failed;fix;windows.Hr11
+   c:\windows\system32\cmd.exe /c "echo hello";hello_failed;fix;windows.!Hr11
+   c:\windows\system32\cmd.exe /c "echo hello failed > c:\reportfile.txt";
+       report_failed;fix;hello_failed.windows
+   c:\windows\system32\cmd.exe /c "echo hello succeeded > c:\reportfile.txt";
+       report_failed;fix;!hello_failed.windows
+   /usr/bin/sleep 5;sleep_failed_solaris;fix;solaris
+   /bin/sleep 5;sleep_failed_solaris;fix;linux
+
+</pre>
+
+<p class="noindent">Again, we need to look at the header of the file to understand its structure:
+
+<pre class="verbatim">
+   #  FORMAT:   command_path;on_error_define_class;action;class_expression
+
+</pre>
+
+<p class="noindent">Separating the fields:
+     <dl>
+<dt><i>command_path</i><dd>Path of command to execute.
+
+     <br><dt><i>on_error_define_class</i><dd>Class to define if there is an error in command execution.
+
+     <br><dt><i>action</i><dd>Tells CFEngine what to do if there is an error in command execution. Can take the values &lsquo;<samp><span class="samp">fix</span></samp>&rsquo; (attempt to re-execute the command), &lsquo;<samp><span class="samp">warn</span></samp>&rsquo; (log and display a warning that the command could not be executed), and &lsquo;<samp><span class="samp">nop</span></samp>&rsquo; (no operation; no log entry, but print a warning in command-line interface).
+
+     <br><dt><i>class_expression</i><dd>Context in which the command is to be executed, i.e. a class expression (boolean) that needs to be fulfilled for the command to take place. In the above example (<code>windows.Tuesday.Hr10.Min30_35</code>) the command will only be executed on Windows machines on Tuesdays between 10.30am and 10.35am. 
+</dl>
+
+<!--  -->
+<div class="node">
+<a name="File-changes-report---File-changes-observed-on-the-system"></a>
+<a name="File-changes-report-_002d-File-changes-observed-on-the-system"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#File-diffs-report-_002d-Delta_002fdifference-comparison-showing-file-changes">File diffs report - Delta/difference comparison showing file changes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Commands-report-_002d-Scheduled-commands-to-execute">Commands report - Scheduled commands to execute</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CDP-reports">CDP reports</a>
+
+</div>
+
+<h3 class="section">2.3 File changes report - File changes observed on the system</h3>
+
+<p>We saw that awareness of changes often is considered a major part of infrastructure management in the walk-through of the CFEngine 3 Nova standard reports. The file changes CDP policy differs slightly from the Files changes log report in that it will restore the original file upon detecting a change and report whether the file remains compliant or not.
+
+   <p>Click on <b>File changes</b> in the &lsquo;<samp><span class="samp">CDP Reports finder</span></samp>&rsquo; to access the File changes CDP report:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-filechangesreport.png" alt="File changes report"></div>
+<div align="center">Figure: File changes report</div>
+   <pre class="sp">
+
+</pre>
+
+The report lists an overview of host name (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), the path of the concerned file (&lsquo;<samp><span class="samp">Path</span></samp>&rsquo;), the context in which the promise was made (&lsquo;<samp><span class="samp">Class expression</span></samp>&rsquo;), time stamp of when a change was detected (&lsquo;<samp><span class="samp">Last Change Detected</span></samp>&rsquo;), state of compliance (&lsquo;<samp><span class="samp">State</span></samp>&rsquo;), and the time the promise was last checked (&lsquo;<samp><span class="samp">Last checked</span></samp>&rsquo;).
+
+   <p>The File changes CDP input file, <samp><span class="file">file_change_list.txt</span></samp>, can be found in the left menu in the <samp><span class="file">cdp_inputs</span></samp> catalog. The content looks like this:
+
+<pre class="verbatim">
+   #
+   #  File Changes Detection and Revert
+   #
+   #  FORMAT:   file_path;class_expression
+   #
+   #  EXAMPLE:  C:\pwd.txt;windows
+   #
+   #  NOTE:     The file is always restored on change, and change
+   #            reports will be generated.
+   #            Use file_diff Content-Driven Policy to allow changes.
+   #
+
+   /etc/shadow;linux|solarisx86
+
+</pre>
+
+   <p>Looking at the header of the file:
+<pre class="verbatim">
+   #  FORMAT:   file_path;class_expression
+
+</pre>
+
+<p class="noindent">Separating the fields:
+     <dl>
+<dt><i>file_path</i><dd>Path of file to monitor and repair changes on.
+
+     <br><dt><i>class_expression</i><dd>Context in which the change detection/repair is to be executed, i.e. a class expression (boolean) that needs to be fulfilled for the event to take place. 
+</dl>
+
+<!--  -->
+<div class="node">
+<a name="File-diffs-report---Delta%2fdifference-comparison-showing-file-changes"></a>
+<a name="File-diffs-report-_002d-Delta_002fdifference-comparison-showing-file-changes"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Registry-report-_002d-Promised-Windows-registry-setting-status">Registry report - Promised Windows registry setting status</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#File-changes-report-_002d-File-changes-observed-on-the-system">File changes report - File changes observed on the system</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CDP-reports">CDP reports</a>
+
+</div>
+
+<h3 class="section">2.4 File diffs report - Delta/difference comparison showing file changes</h3>
+
+<p>The file diff CDP policy does the same as the File change CDP policy, except that it does not repair the file to original state if a change is detected. Click on <b>File diffs</b> in the &lsquo;<samp><span class="samp">CDP Reports finder</span></samp>&rsquo; to access the File diffs report:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-filediffsreport.png" alt="File diffs report"></div>
+<div align="center">Figure: File diffs report</div>
+   <pre class="sp">
+
+</pre>
+
+The report lists an overview of host name (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), the path of the concerned file (&lsquo;<samp><span class="samp">Path</span></samp>&rsquo;), the context in which the promise was made (&lsquo;<samp><span class="samp">Class expression</span></samp>&rsquo;), time stamp of when a change was detected (&lsquo;<samp><span class="samp">Last Change Detected</span></samp>&rsquo;), state of compliance (&lsquo;<samp><span class="samp">State</span></samp>&rsquo;), and the time the promise was last checked (&lsquo;<samp><span class="samp">Last checked</span></samp>&rsquo;).
+
+   <p>The File diff CDP input file, <samp><span class="file">file_diff_list.txt</span></samp>, can be found in the left menu in the <samp><span class="file">cdp_inputs</span></samp> catalog. The content looks like this:
+
+<pre class="verbatim">
+   #
+   #  File Difference Reporting
+   #
+   #  FORMAT:   file_path;class_expression
+   #
+   #  EXAMPLE:  C:\users.txt;windows
+   #
+   #  NOTE:     The file is always allowed to change. 
+   #            Use file_change Content-Driven Policies to revert a 
+   #	        changed file. Detailed change reports will 
+   #            be generated.
+   #
+
+   /etc/group;linux|solarisx86
+
+</pre>
+
+<p class="noindent">Looking at the header of the file:
+<pre class="verbatim">
+   #  FORMAT:   file_path;class_expression
+
+</pre>
+
+<p class="noindent">Separating the fields:
+     <dl>
+<dt><i>file_path</i><dd>Path of file to monitor and warn about changes on.
+
+     <br><dt><i>class_expression</i><dd>Context in which the change detection/warning is to be executed, i.e. a class expression (boolean) that needs to be fulfilled for the event to take place. 
+</dl>
+
+<!--  -->
+<div class="node">
+<a name="Registry-report---Promised-Windows-registry-setting-status"></a>
+<a name="Registry-report-_002d-Promised-Windows-registry-setting-status"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Services-report-_002d-System-service-status">Services report - System service status</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#File-diffs-report-_002d-Delta_002fdifference-comparison-showing-file-changes">File diffs report - Delta/difference comparison showing file changes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CDP-reports">CDP reports</a>
+
+</div>
+
+<h3 class="section">2.5 Registry report - Promised Windows registry setting status</h3>
+
+<p>The Windows Registry is a hierarchical database that stores configuration settings and options on Microsoft Windows operating systems. It contains settings for low-level operating system components as well as the applications running on the platform. Registry keys are similar to folders: in addition to values, each key can contain subkeys, which may contain further subkeys, and so on. Keys are referenced with a syntax similar to Windows' path names, using backslashes to indicate levels of hierarchy. Each subkey has a mandatory name, which is a non-empty string that cannot contain any backslash, and whose letter case is insignificant.
+
+   <p>Click on <b>Registry</b> in the &lsquo;<samp><span class="samp">CDP Reports finder</span></samp>&rsquo; to access the Registry report:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-registryreport.png" alt="Registry report"></div>
+<div align="center">Figure: Registry report</div>
+   <pre class="sp">
+
+</pre>
+
+The report lists an overview of host name (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), the key identifier (&lsquo;<samp><span class="samp">Key</span></samp>&rsquo;), the key value (&lsquo;<samp><span class="samp">Value</span></samp>&rsquo;), action to take if there is an error in the key (&lsquo;<samp><span class="samp">Action</span></samp>&rsquo;; see explanation of the CDP input file below for possible values), the context in which the promise was made (&lsquo;<samp><span class="samp">Class expression</span></samp>&rsquo;), the state of compliance (&lsquo;<samp><span class="samp">State</span></samp>&rsquo;), and the time the promise was last checked (&lsquo;<samp><span class="samp">Last checked</span></samp>&rsquo;).
+
+   <p>The Registry CDP input file, <samp><span class="file">registry_list.txt</span></samp>, can be found in the left menu in the <samp><span class="file">cdp_inputs</span></samp> catalog. The content looks like this (lines have been split and indented for presentability):
+
+<pre class="verbatim">
+   #
+   #  Windows Registry Management
+   #
+   #  FORMAT:   key;name,type,data;action;class_expression
+   #
+   #  EXAMPLE:  HKEY_CURRENT_USER\Control Panel\Desktop;ScreenSaverIsSecure,
+         REG_SZ,1;fix;windows
+   #
+   #  NOTE:     Currently, type must be REG_SZ (string).
+   #
+
+   HKEY_CURRENT_USER\Control Panel\Desktop;ScreenSaverIsSecure,REG_SZ,1;
+      fix;windows.!Hr11
+   HKEY_CURRENT_USER\Control Panel\Desktop;ScreenSaverIsSecure,REG_SZ,0;
+      fix;windows.Hr11
+   HKEY_CURRENT_USER\Control Panel\Desktop;ScreenSaveTimeOut,REG_SZ,600;
+      fix;windows.!Hr11
+   HKEY_CURRENT_USER\Control Panel\Desktop;ScreenSaveTimeOut,REG_SZ,1200;
+      fix;windows.Hr11
+
+</pre>
+
+   <p>Looking at the header of the file:
+<pre class="verbatim">
+   #  FORMAT:   key;name,type,data;action;class_expression
+
+</pre>
+
+<p class="noindent">Separating the fields:
+     <dl>
+<dt><i>key</i><dd>The path to the key in question.
+
+     <br><dt><i>name,type,data</i><dd>Name, type, and value of the key.
+
+     <br><dt><i>action</i><dd>Tells CFEngine what to do if there is a difference between the registry entry and the definition in the Registry CDP. Can take the values &lsquo;<samp><span class="samp">fix</span></samp>&rsquo; (set the registry entry as defined in the  Registry CDP), &lsquo;<samp><span class="samp">warn</span></samp>&rsquo; (log and display a warning that the there is a discrepancy between the registry entry and the Registry CDP), and &lsquo;<samp><span class="samp">nop</span></samp>&rsquo; (no operation; no log entry, but print a warning in command-line interface).
+
+     <br><dt><i>class_expression</i><dd>Context in which the promise is to be executed, i.e. a class expression (boolean) that needs to be fulfilled for the command to take place. 
+</dl>
+
+<!--  -->
+<div class="node">
+<a name="Services-report---System-service-status"></a>
+<a name="Services-report-_002d-System-service-status"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Registry-report-_002d-Promised-Windows-registry-setting-status">Registry report - Promised Windows registry setting status</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CDP-reports">CDP reports</a>
+
+</div>
+
+<h3 class="section">2.6 Services report - System service status</h3>
+
+<p>Services are programs that once started run continuously in the background. They perform specific functions which are designed not to require user intervention and are ready for input or monitor changes in your system and respond to them. For example, the Apache server has a daemon called httpd that listens on port 80 on your machine. When it receives a request for a page it sends the appropriate data back to the client machine.
+
+   <p>With the three lines of semicolon separated fields, we ensure the correct status of three services on all our Windows machines and are given specialized reports on the outcome. The Content-Driven Policy services report is shown below. 
+Click on <b>Services</b> in the &lsquo;<samp><span class="samp">CDP Reports finder</span></samp>&rsquo; to access the Services report:
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-servicesreport.png" alt="Services report"></div>
+<div align="center">Figure: Services report</div>
+   <pre class="sp">
+
+</pre>
+
+The report lists an overview of host name (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), &lsquo;<samp><span class="samp">Service Name</span></samp>&rsquo;, the runstatus of the service (&lsquo;<samp><span class="samp">Runstatus</span></samp>&rsquo;), action to take if there is a difference from policy (&lsquo;<samp><span class="samp">Action</span></samp>&rsquo;; see explanation of the CDP input file below for possible values), the context in which the promise was made (&lsquo;<samp><span class="samp">Class expression</span></samp>&rsquo;), the state of compliance (&lsquo;<samp><span class="samp">State</span></samp>&rsquo;), and the time the promise was last checked (&lsquo;<samp><span class="samp">Last checked</span></samp>&rsquo;).
+
+   <p>The Registry CDP input file, <samp><span class="file">service_list.txt</span></samp>, can be found in the left menu in the <samp><span class="file">cdp_inputs</span></samp> catalog. The content looks like this (lines have been split and indented for presentability):
+
+<pre class="verbatim">
+   #
+   #  Windows Service Management
+   #
+   #  FORMAT:   service_name;run_status;action;class_expression
+   #
+   #  EXAMPLE:  Dnscache;start;fix;windows
+   #
+   #  NOTE:     Service name is not the "Display name" 
+   #            -- see the properties of the service. 
+   #            run_status can be start/stop/disable. If start then 
+   #            the service is started, if disable then service is 
+   #            stopped and "Startup type" is set to disable,
+   #   	        if stop, then service is stopped "Startup type" is left 
+   #            unchanged.
+   #
+
+   Dnscache;stop;fix;windows.Hr10
+   wuauserv;stop;fix;windows.Hr10
+   Dnscache;start;fix;windows.!Hr10
+   wuauserv;start;fix;windows.!Hr10
+
+</pre>
+
+<p class="noindent">Looking at the header of the file:
+<pre class="verbatim">
+   #  FORMAT:   service_name;run_status;action;class_expression
+
+</pre>
+
+<p class="noindent">Separating the fields:
+     <dl>
+<dt><i>service_name</i><dd>Name of the service (not necessarily the same as the display name, see properties of the service).
+
+     <br><dt><i>run_status</i><dd>The run status of the service defines whether it should be running or not. Can take the values &lsquo;<samp><span class="samp">start</span></samp>&rsquo;, &lsquo;<samp><span class="samp">stop</span></samp>&rsquo;, or &lsquo;<samp><span class="samp">disable</span></samp>&rsquo; (will stop the service and change its startup mode to disable, i.e. will not be restarted upon reboot of the machine, for example).
+
+     <br><dt><i>action</i><dd>Tells CFEngine what to do if there is a difference between the run status what has been defined in the Services CDP. Can take the values &lsquo;<samp><span class="samp">fix</span></samp>&rsquo; (set the run status as defined in the Services CDP), &lsquo;<samp><span class="samp">warn</span></samp>&rsquo; (log and display a warning that the there is a discrepancy between the run status and the Services CDP), and &lsquo;<samp><span class="samp">nop</span></samp>&rsquo; (no operation; no log entry, but print a warning in command-line interface).
+
+     <br><dt><i>class_expression</i><dd>Context in which the promise is to be executed, i.e. a class expression (boolean) that needs to be fulfilled for the command to take place. 
+</dl>
+
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+<!-- The file is structured like a programming language. Each chapter -->
+<!-- starts with a chapter comment. -->
+<!-- Menus list the subsections so that an online info-reader can parse -->
+<!-- the file hierarchically. -->
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> See also section on Vital signs in the CFEngine 3 Nova Owner's Manual.</p>
+
+   <hr></div>
+
+</body></html>
+

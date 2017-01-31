@@ -1,0 +1,24 @@
+ <div id="wholebody"><div id="pagebody"><div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div><div id="content">
+<pre>
+<h1>Cfengine 3 example unit_activedirectory_listusers.html</h1>
+# List users from Active Directory through LDAP
+# Note: Anonymous LDAP binding must be allowed, and the Anonymous user
+# must have read access to CN=Users
+
+bundle agent ldap
+{
+vars:
+   "userlist" slist => ldaplist(
+                                    "ldap://cf-win2003",
+                                    "CN=Users,DC=domain,DC=cf-win2003",
+                                    "(objectClass=user)",
+                                    "sAMAccountName",
+                                    "subtree",
+                                    "none");
+reports:
+Yr2010::
+  "Username: \"$(userlist)\"";
+}
+
+
+</div><div class="rbottom"><div class="r4"></div><div class="r3"></div><div class="r2"></div><div class="r1"></div></div></div></div></div>

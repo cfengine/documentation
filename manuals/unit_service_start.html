@@ -1,0 +1,31 @@
+ <div id="wholebody"><div id="pagebody"><div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div><div id="content">
+<pre>
+<h1>Cfengine 3 example unit_service_start.html</h1>
+body common control
+{
+  bundlesequence => { "example" };
+}
+
+#############################################
+
+bundle agent example
+{
+services:
+
+  "Themes"
+    service_policy => "start",
+    service_dependencies => { "Alerter" },
+    service_method => exmethod;
+}
+
+#############################################
+
+body service_method exmethod
+{
+  service_type => "windows";
+  service_args => "-f \"the file with spaces.cf\" --some-args";
+  service_autostart_policy => "boot_time";
+  service_dependence_chain => "start_parent_services";
+}
+}
+</div><div class="rbottom"><div class="r4"></div><div class="r3"></div><div class="r2"></div><div class="r1"></div></div></div></div></div>

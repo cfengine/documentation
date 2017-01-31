@@ -1,0 +1,548 @@
+<html lang="en">
+<head>
+<title>BDMA</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="BDMA">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">BDMA</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-is-BDMA_003f">What is BDMA?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">BDMA</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-is-BDMA_003f">What is BDMA?</a>
+<li><a accesskey="2" href="#Stem-cell-hosts">Stem cell hosts</a>
+<li><a accesskey="3" href="#Recommendations-for-Build">Recommendations for Build</a>
+<li><a accesskey="4" href="#Recommendations-for-Deploy">Recommendations for Deploy</a>
+<li><a accesskey="5" href="#Recommendations-for-Manage">Recommendations for Manage</a>
+<li><a accesskey="6" href="#Recommendations-for-Audit">Recommendations for Audit</a>
+<li><a accesskey="7" href="#Summary-BDMA-workflow">Summary BDMA workflow</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-is-BDMA%3f"></a>
+<a name="What-is-BDMA_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Stem-cell-hosts">Stem cell hosts</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What is BDMA?</h3>
+
+<pre class="sp">
+
+</pre>
+
+The four mission phases are sometimes referred to as
+
+     <dl>
+<dt><em>Build</em><dd>A mission is based on decisions and resources that need to
+be put assembled or `built' before they can be applied. This is
+the planning phase.
+
+     <p>In CFEngine, what you build is a template of proposed promises for the
+machines in an organization such that, if the machines all make and
+keep these promises, the system will function seamlessly as
+planned. This is how it works in a human organization, and this is how
+is works for computers too.
+
+     <br><dt><em>Deploy</em><dd>Deploying really means launching the policy into production.  In
+CFEngine you simply publish your policy (in CFEngine parlance these
+are `promise proposals') and the machines see the new proposals and
+can adjust accordingly. Each machine runs an agent that is capable of
+keeping the system on course and maintaining it over time without
+further assistance.
+
+     <br><dt><em>Manage</em><dd>Once a decision is made, unplanned events will occur. Such incidents
+traditionally set off alarms and humans rush to make new transactions
+to repair them. Under CFEngine guidance, the autonomous agent manages
+the system, and humans only manage knowledge and have to deal with
+rare events that cannot be dealt with automatically.
+
+     <br><dt><em>Audit</em><dd>CFEngine performs continuous analysis and correction, and commercial
+editions generate explicit reports on mission status.  Users can sit
+back and examine these reports to check mission progress, or examine
+the current state in relation to the knowledge map for the mission.
+
+   </dl>
+
+   <div class="block-image"><img src="BDMA_model.png" alt="BDMA_model.png"></div>png
+
+<div class="node">
+<a name="Stem-cell-hosts"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Recommendations-for-Build">Recommendations for Build</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-is-BDMA_003f">What is BDMA?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Stem cell hosts</h3>
+
+<pre class="sp">
+
+</pre>
+At CFEngine we talk about stem cell hosts. A stem cell host is a generic
+foundation of software that is the <i>necessary and sufficient</i> basis for
+any future purpose. To make a finished system from this stem cell host,
+you only have to `differentiate' the system from this generic basis by running CFEngine.
+
+   <p>Differentiation of hosts involves adding or subtracting software packages,
+and/or configuring the basic system.  This strategy is cost effective,
+as you do not have to maintain more than one base-line `image' for
+each operating system; rather, you use CFEngine to implement and
+maintain the morphology of the differences. Stem cell hosts are
+normally built using PXE services by booting and installing automatically
+from the network.
+
+<div class="node">
+<a name="Recommendations-for-Build"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Recommendations-for-Deploy">Recommendations for Deploy</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Stem-cell-hosts">Stem cell hosts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Recommendations for Build</h3>
+
+<pre class="sp">
+
+</pre>
+There are many approaches to building complete systems. 
+When you use CFEngine, you should try to progress from
+thinking only about putting bytes on disks, to planning
+a long term set of promises to keep.
+
+     <ul>
+<li>What services do you want to support? 
+<li>What promises do you want to keep concerning these services? 
+<li>Are these promises sustainable and convergently implementable? 
+<li>Formulate proposed intentions in the form of CFEngine promises. 
+<li>Discuss the impact of these in your team of CFEngine Mission Specialists (more than one pair of eyes). 
+</ul>
+
+   <p>It is worth spending extra time in the build planning to simplify
+your system as much as possible. A clear formulation here will save
+time both in maintenance and training later, as employees come and go. 
+The better you understand your intentions, the simpler the system will be.
+
+   <p>We cannot emphasize enough the value of the promise discipline. If you can
+formulate your requirements as promises to be kept, you have identified not only
+what, where, when and how, but also who is responsible and affected by every promise.
+
+   <p>Building systems is resource intensive. CFEngine works well with <b>rPath</b>, allowing optimized
+build that can shave off many minutes from the build time for machines. CFEngine can then take over where
+rPath leaves off, performing surgically precise customization.
+
+<div class="node">
+<a name="Recommendations-for-Deploy"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Recommendations-for-Manage">Recommendations for Manage</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Recommendations-for-Build">Recommendations for Build</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Recommendations for Deploy</h3>
+
+<pre class="sp">
+
+</pre>
+
+Deploying a policy is a potentially dangerous operation, as it will
+lead to change, with associated risk. Side-effects are common, and
+often result from incomplete planning. (See the CFEngine Special
+Topics Guide on <i>Change Management</i>).
+
+   <p>The following sequence forms a checklist for deploying successful policy change:
+     <ol type=1 start=1>
+<li>Discuss the impact of changes in the team. 
+<li>Commit the changes to promises in version control, e.g. subversion. 
+<li>Make a change in the CFEngine input files. 
+<li>Run the configuration through &lsquo;<samp><span class="samp">cf-promises --inform</span></samp>&rsquo; to check for problems. 
+<li>Move the policy to a test system. 
+<li>Try running the configuration in dry-run model: &lsquo;<samp><span class="samp">cf-agent --dry-run</span></samp>&rsquo;
+<li>Try running the policy once on a single system, being observant of unexpected behaviour. 
+<li>Try running the policy on a small number of systems. 
+<li>Construct a test environment and examine the effect of these promises in practice. 
+<li>Move the policy to the production environment. 
+<li>If possible, test on one or a few machines before releasing for general use.
+        </ol>
+
+   <p>CFEngine recommends a process of many small incremental changes, rather than large
+high-risk deployments.
+
+   <p>CFEngine allows you to apply changes at a much finer level of granularity than
+any package based management system, thus it complements basic package management with
+its deployment and real time repair (see next section).
+
+<div class="node">
+<a name="Recommendations-for-Manage"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Recommendations-for-Audit">Recommendations for Audit</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Recommendations-for-Deploy">Recommendations for Deploy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Recommendations for Manage</h3>
+
+<pre class="sp">
+
+</pre>
+
+Managing systems is an almost trivial task with CFEngine. Once a model
+for desired state has been created, you just sit back and watch.  You
+should be ready for `hands free' operation. No one should make changes
+to the system by hand. All changes should follow the deployment
+strategy above.
+
+   <p>All that remains to do is wait for email alerts from CFEngine and to
+browse reports about the system state. In CFEngine Nova, these reports
+are generated automatically and integrated into the system knowledge
+base.
+
+   <p>Most email alerts from CFEngine are information only. It is possible
+(but not recommended) to make CFEngine very verbose about its
+operations. It is common to look for confirmation early in the phase
+of adopting CFEngine, as trust in the software is building. Eventually
+users turn off the verbosity and the default is for CFEngine to send
+as little email or output as possible.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Consider a single line E-mail, in confirmation of a change, arriving
+from 1000 computers in a single day. Learning to trust the software
+saves unnecessary communication and needless human involvement. 
+The Nova Mission Portal makes notification and alerting largely
+unnecessary. 
+</td></tr></table>
+
+<div class="node">
+<a name="Recommendations-for-Audit"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Summary-BDMA-workflow">Summary BDMA workflow</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Recommendations-for-Manage">Recommendations for Manage</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Recommendations for Audit</h3>
+
+<pre class="sp">
+
+</pre>
+
+Auditing systems is a continuous process when using CFEngine
+Nova. Report data are collected on a continuous and distributed
+basis. These data are then collected from each distributed location
+according to a schedule of your choosing to collate and integrate the
+reports from all systems.
+
+   <p>The reports CFEngine provides are meant to offer simple summaries of
+the kind of information administrators need about their environment,
+avoiding unnecessary detail<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>.
+
+     <dl>
+<dt><em>Available patches report</em><dd>Patches already installed on system if available. 
+<br><dt><em>Classes report</em><dd>User defined classes observed on the system &ndash; inventory data. 
+<br><dt><em>Compliance report</em><dd>Total summary of host compliance, all promises aggregated over time. 
+<br><dt><em>File_changes report</em><dd>Latest observed changes to system files with time discovered. 
+<br><dt><em>File_diffs report</em><dd>Latest observed differences to system files, in a simple diff format. 
+<br><dt><em>Hashes report</em><dd>File hash values measured (change detection). 
+<br><dt><em>Installed patches report</em><dd>Patches not yet installed, but published by vendor if available. 
+<br><dt><em>Installed software report</em><dd>Software already installed on system if available. 
+<br><dt><em>Lastseen report</em><dd>Time and frequency of communications with peers, host reliability. 
+<br><dt><em>Micro-audit report</em><dd>Generated by CFEngine self-auditing. This report is not aggregated. 
+<br><dt><em>Monitor summary report</em><dd>Pseudo-real-time measurement of time series data. 
+<br><dt><em>Performance report</em><dd>Time cost of verifying system promises. 
+<br><dt><em>Promise report</em><dd>Per-promise average compliance report over time. 
+<br><dt><em>Promises not kept report</em><dd>Promises that were recently un-kept. 
+<br><dt><em>Promises repaired report</em><dd>Promises that were recently kept by repairing system state. 
+<br><dt><em>Setuid report</em><dd>Known setuid programs found on system. 
+<br><dt><em>Variables report</em><dd>Current variable values expanded on different hosts. 
+</dl>
+
+<div class="node">
+<a name="Summary-BDMA-workflow"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Recommendations-for-Audit">Recommendations for Audit</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Summary BDMA workflow</h3>
+
+<pre class="sp">
+
+</pre>
+     <ol type=1 start=1>
+<li>Define a stem cell host template
+<li>Set up PXE network booting and kickstart / jumpstart OS tools with CFEngine integrated
+<li>Get CFEngine running and updating on all hosts, but making no system changes. 
+<li>Define a service catalogue. 
+<li>Discuss and formulate a policy increment, thinking convergence at all times
+<li>Publish (deploy) the policy. 
+<li>Follow emails and reports in the CFEngine Knowledge Map (Manage). 
+<li>Adjust policy if necessary, following procedures for change management (Manage)
+<li>View reports (or enjoy the silence) to audit system state.
+        </ol>
+
+   <p>CFEngine works well with package based management software. Users of
+rPath, for example, can achieve substantially improved efficiency in
+the build phase. CFEngine takes over where package based systems leave
+off, providing an unprecedented level of control `hands free'.
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">BDMA</a>
+<ul>
+<li><a href="#What-is-BDMA_003f">What is BDMA?</a>
+<li><a href="#Stem-cell-hosts">Stem cell hosts</a>
+<li><a href="#Recommendations-for-Build">Recommendations for Build</a>
+<li><a href="#Recommendations-for-Deploy">Recommendations for Deploy</a>
+<li><a href="#Recommendations-for-Manage">Recommendations for Manage</a>
+<li><a href="#Recommendations-for-Audit">Recommendations for Audit</a>
+<li><a href="#Summary-BDMA-workflow">Summary BDMA workflow</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Reporting intelligence is a major
+area of development in CFEngine, and the next commercial edition CFEngine Constellation
+will include a generic query-able semantic web of the integrated system, with
+correlation analyses and more. The capabilities for reporting grow exponentially
+as one progresses from Community Edition to Nova to Constellation.</p>
+
+   <hr></div>
+
+</body></html>
+

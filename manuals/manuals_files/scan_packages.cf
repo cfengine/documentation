@@ -1,0 +1,71 @@
+
+bundle knowledge st_packages
+
+{
+topics:
+
+"st-packages";
+Package_management::
+    "Package management next steps" ;
+Package_management::
+    "Uprading to a newer package version example" ;
+Package_management::
+    "Install specific package version example" ;
+Package_management::
+    "Install latest package version example" ;
+Package_management::
+    "Example package promises" ;
+Package_management::
+    "How CFEngine compares package versions" ;
+Package_management::
+    "Package promises" ;
+Package_management::
+    "What does CFEngine bring to package management?" ;
+Package_management::
+    "Strengths and weaknesses of package management" ;
+Package_management::
+    "What is package management?" ;
+Special_Topics_Guide::
+    "Package management"  association => a("discussed in","Package management","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-packages.html"
+  represents => { "Package Management" };
+Package_management::
+ "/docs/st-packages.html#Top"
+  represents => { "Text section" };
+What_is_package_management_::
+ "/docs/st-packages.html#What-is-package-management_003f"
+  represents => { "Text section" };
+Strengths_and_weaknesses_of_package_management::
+ "/docs/st-packages.html#Strengths-and-weaknesses-of-package-management"
+  represents => { "Text section" };
+What_does_CFEngine_bring_to_package_management_::
+ "/docs/st-packages.html#What-does-CFEngine-bring-to-package-management_003f"
+  represents => { "Text section" };
+Package_promises::
+ "/docs/st-packages.html#Package-promises"
+  represents => { "Text section" };
+How_CFEngine_compares_package_versions::
+ "/docs/st-packages.html#How-CFEngine-compares-package-versions"
+  represents => { "Text section" };
+Example_package_promises::
+ "/docs/st-packages.html#Example-package-promises"
+  represents => { "Text section" };
+Install_latest_package_version_example::
+ "/docs/st-packages.html#Install-latest-package-version-example"
+  represents => { "Text section" };
+Install_specific_package_version_example::
+ "/docs/st-packages.html#Install-specific-package-version-example"
+  represents => { "Text section" };
+Uprading_to_a_newer_package_version_example::
+ "/docs/st-packages.html#Uprading-to-a-newer-package-version-example"
+  represents => { "Text section" };
+Package_management_next_steps::
+ "/docs/st-packages.html#Package-management-next-steps"
+  represents => { "Text section" };
+}
+

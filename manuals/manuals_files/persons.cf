@@ -1,0 +1,50 @@
+
+
+bundle knowledge persons
+{
+vars:
+
+  "edited[f]" string => "edited";
+  "edited[b]" string => "was edited by";
+
+
+topics:
+
+ ########################################################################
+
+  Persons::
+
+    "Alva Couch"
+       association => a("is one of the contributors to","convergent operators","was developed by");
+
+    "Jan Bergstra"
+       association => a("is one of the contributors to","promise theory","was developed by");
+
+    "Mark Burgess"
+       association => a("designed","cfengine","was designed by");
+    "Mark Burgess"
+       association => a("originated the idea of","convergent operators","was originated by");
+    "Mark Burgess"
+       association => a("is one of the contributors to","promise theory","was developed by");
+
+    "Steve Pepper"
+       association => a("is one of the contributors to","topic maps","was developed by");
+
+
+ ########################################################################
+
+  Book::
+
+    "Principles of Network and System Administration"
+       association => a("$(wrote[b])","Mark Burgess","$(wrote[f])");
+
+    "Analytical Network and System Administration"
+       association => a("$(wrote[b])","Mark Burgess","$(wrote[f])");
+
+    "Handbook of Network and System Administration"
+       association => a("$(edited[b])","Mark Burgess","$(edited[f])");
+
+    "Handbook of Network and System Administration"
+       association => a("$(edited[b])","Jan Bergstra","$(edited[f])");
+
+}

@@ -1,0 +1,56 @@
+
+bundle knowledge st_bdma
+
+{
+topics:
+
+"st-bdma";
+BDMA::
+    "Summary BDMA workflow" ;
+BDMA::
+    "Recommendations for Audit" ;
+BDMA::
+    "Recommendations for Manage" ;
+BDMA::
+    "Recommendations for Deploy" ;
+BDMA::
+    "Recommendations for Build" ;
+BDMA::
+    "Stem cell hosts" ;
+BDMA::
+    "What is BDMA?" ;
+Special_Topics_Guide::
+    "BDMA"  association => a("discussed in","BDMA","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-bdma.html"
+  represents => { "BDMA" };
+BDMA::
+ "/docs/st-bdma.html#Top"
+  represents => { "Text section" };
+What_is_BDMA_::
+ "/docs/st-bdma.html#What-is-BDMA_003f"
+  represents => { "Text section" };
+Stem_cell_hosts::
+ "/docs/st-bdma.html#Stem-cell-hosts"
+  represents => { "Text section" };
+Recommendations_for_Build::
+ "/docs/st-bdma.html#Recommendations-for-Build"
+  represents => { "Text section" };
+Recommendations_for_Deploy::
+ "/docs/st-bdma.html#Recommendations-for-Deploy"
+  represents => { "Text section" };
+Recommendations_for_Manage::
+ "/docs/st-bdma.html#Recommendations-for-Manage"
+  represents => { "Text section" };
+Recommendations_for_Audit::
+ "/docs/st-bdma.html#Recommendations-for-Audit"
+  represents => { "Text section" };
+Summary_BDMA_workflow::
+ "/docs/st-bdma.html#Summary-BDMA-workflow"
+  represents => { "Text section" };
+}
+

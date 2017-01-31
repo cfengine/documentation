@@ -1,0 +1,269 @@
+
+bundle knowledge cf3_upgrade
+
+{
+topics:
+
+"cf3-upgrade";
+Translation_Codebook::
+    "upgrading from CFEngine 2 unmount" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 tidy" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 strategies" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 shellcommands" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 scli" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 resolve" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 required" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 rename" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 packages" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 processes" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 mountables" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 miscmounts" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 methods" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 mailserver" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 links" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 interfaces" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 import" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 ignore" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 homeservers" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 groups" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 filters" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 files" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 editfiles" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 disable" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 directories" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 disks" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 deny" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 defaultroute" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 copy" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 classes" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 control" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 broadcast" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 binservers" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 alerts" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 admit" ;
+Translation_Codebook::
+    "upgrading from CFEngine 2 acl" ;
+Translation_Codebook::
+    "Translation Codebook" ;
+Automated_translation_with_cfconvert::
+    "Optimizing the configuration" ;
+Automated_translation_with_cfconvert::
+    "Validating the conversion" ;
+Automated_translation_with_cfconvert::
+    "Assembling a compilable file set" ;
+Automated_translation_with_cfconvert::
+    "Converting by module" ;
+Automatic_Conversion_Strategy::
+    "One chunk at a time" ;
+Automatic_Conversion_Strategy::
+    "How long will it take to convert?" ;
+Automated_translation_with_cfconvert::
+    "Automatic Conversion Strategy" ;
+Automated_translation_with_cfconvert::
+    "Automated translation with cfconvert" ;
+General_remarks_and_expectations::
+    "Completely new features" ;
+General_remarks_and_expectations::
+    "On best practices" ;
+General_remarks_and_expectations::
+    "On the translation of policies" ;
+General_remarks_and_expectations::
+    "General remarks and expectations" ;
+Special_Topics_Guide::
+    "CFEngine-Best-Practices"  association => a("discussed in","CFEngine-Best-Practices","discusses");
+
+
+occurrences:
+
+manuals::
+ "/docs/cf3-upgrade.html"
+  represents => { "Upgrading from CFEngine 2 to 3" };
+CFEngine_Best_Practices::
+ "/docs/cf3-upgrade.html#Top"
+  represents => { "Text section" };
+General_remarks_and_expectations::
+ "/docs/cf3-upgrade.html#General-remarks-and-expectations"
+  represents => { "manual chapter" };
+On_the_translation_of_policies::
+ "/docs/cf3-upgrade.html#On-the-translation-of-policies"
+  represents => { "manual section On the translation of policies" };
+On_best_practices::
+ "/docs/cf3-upgrade.html#On-best-practices"
+  represents => { "manual section On best practices" };
+Completely_new_features::
+ "/docs/cf3-upgrade.html#Completely-new-features"
+  represents => { "manual section Completely new features" };
+Automated_translation_with_cfconvert::
+ "/docs/cf3-upgrade.html#Automated-translation-with-cfconvert"
+  represents => { "manual chapter" };
+Automatic_Conversion_Strategy::
+ "/docs/cf3-upgrade.html#Automatic-Conversion-Strategy"
+  represents => { "manual section Automatic Conversion Strategy" };
+How_long_will_it_take_to_convert_::
+ "/docs/cf3-upgrade.html#How-long-will-it-take-to-convert_003f"
+  represents => { "manual subsection" };
+One_chunk_at_a_time::
+ "/docs/cf3-upgrade.html#One-chunk-at-a-time"
+  represents => { "manual subsection" };
+One_chunk_at_a_time::
+ "/docs/cf3-upgrade.html#One-chunk-at-a-time"
+  represents => { "code example" };
+Converting_by_module::
+ "/docs/cf3-upgrade.html#Converting-by-module"
+  represents => { "manual section Converting by module" };
+Assembling_a_compilable_file_set::
+ "/docs/cf3-upgrade.html#Assembling-a-compilable-file-set"
+  represents => { "manual section Assembling a compilable file set" };
+Validating_the_conversion::
+ "/docs/cf3-upgrade.html#Validating-the-conversion"
+  represents => { "manual section Validating the conversion" };
+Optimizing_the_configuration::
+ "/docs/cf3-upgrade.html#Optimizing-the-configuration"
+  represents => { "manual section Optimizing the configuration" };
+Translation_Codebook::
+ "/docs/cf3-upgrade.html#Translation-Codebook"
+  represents => { "manual chapter" };
+upgrading_from_CFEngine_2_acl::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-acl"
+  represents => { "manual section upgrading from CFEngine 2 acl" };
+upgrading_from_CFEngine_2_admit::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-admit"
+  represents => { "manual section upgrading from CFEngine 2 admit" };
+upgrading_from_CFEngine_2_alerts::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-alerts"
+  represents => { "manual section upgrading from CFEngine 2 alerts" };
+upgrading_from_CFEngine_2_binservers::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-binservers"
+  represents => { "manual section upgrading from CFEngine 2 binservers" };
+upgrading_from_CFEngine_2_broadcast::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-broadcast"
+  represents => { "manual section upgrading from CFEngine 2 broadcast" };
+upgrading_from_CFEngine_2_control::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-control"
+  represents => { "manual section upgrading from CFEngine 2 control" };
+upgrading_from_CFEngine_2_classes::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-classes"
+  represents => { "manual section upgrading from CFEngine 2 classes" };
+upgrading_from_CFEngine_2_copy::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-copy"
+  represents => { "manual section upgrading from CFEngine 2 copy" };
+upgrading_from_CFEngine_2_defaultroute::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-defaultroute"
+  represents => { "manual section upgrading from CFEngine 2 defaultroute" };
+upgrading_from_CFEngine_2_deny::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-deny"
+  represents => { "manual section upgrading from CFEngine 2 deny" };
+upgrading_from_CFEngine_2_disks::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-disks"
+  represents => { "manual section upgrading from CFEngine 2 disks" };
+upgrading_from_CFEngine_2_directories::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-directories"
+  represents => { "manual section upgrading from CFEngine 2 directories" };
+upgrading_from_CFEngine_2_disable::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-disable"
+  represents => { "manual section upgrading from CFEngine 2 disable" };
+upgrading_from_CFEngine_2_editfiles::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-editfiles"
+  represents => { "manual section upgrading from CFEngine 2 editfiles" };
+upgrading_from_CFEngine_2_files::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-files"
+  represents => { "manual section upgrading from CFEngine 2 files" };
+upgrading_from_CFEngine_2_filters::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-filters"
+  represents => { "manual section upgrading from CFEngine 2 filters" };
+upgrading_from_CFEngine_2_groups::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-groups"
+  represents => { "manual section upgrading from CFEngine 2 groups" };
+upgrading_from_CFEngine_2_homeservers::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-homeservers"
+  represents => { "manual section upgrading from CFEngine 2 homeservers" };
+upgrading_from_CFEngine_2_ignore::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-ignore"
+  represents => { "manual section upgrading from CFEngine 2 ignore" };
+upgrading_from_CFEngine_2_import::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-import"
+  represents => { "manual section upgrading from CFEngine 2 import" };
+upgrading_from_CFEngine_2_interfaces::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-interfaces"
+  represents => { "manual section upgrading from CFEngine 2 interfaces" };
+upgrading_from_CFEngine_2_links::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-links"
+  represents => { "manual section upgrading from CFEngine 2 links" };
+upgrading_from_CFEngine_2_mailserver::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-mailserver"
+  represents => { "manual section upgrading from CFEngine 2 mailserver" };
+upgrading_from_CFEngine_2_methods::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-methods"
+  represents => { "manual section upgrading from CFEngine 2 methods" };
+upgrading_from_CFEngine_2_miscmounts::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-miscmounts"
+  represents => { "manual section upgrading from CFEngine 2 miscmounts" };
+upgrading_from_CFEngine_2_mountables::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-mountables"
+  represents => { "manual section upgrading from CFEngine 2 mountables" };
+upgrading_from_CFEngine_2_processes::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-processes"
+  represents => { "manual section upgrading from CFEngine 2 processes" };
+upgrading_from_CFEngine_2_packages::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-packages"
+  represents => { "manual section upgrading from CFEngine 2 packages" };
+upgrading_from_CFEngine_2_rename::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-rename"
+  represents => { "manual section upgrading from CFEngine 2 rename" };
+upgrading_from_CFEngine_2_required::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-required"
+  represents => { "manual section upgrading from CFEngine 2 required" };
+upgrading_from_CFEngine_2_resolve::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-resolve"
+  represents => { "manual section upgrading from CFEngine 2 resolve" };
+upgrading_from_CFEngine_2_scli::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-scli"
+  represents => { "manual section upgrading from CFEngine 2 scli" };
+upgrading_from_CFEngine_2_shellcommands::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-shellcommands"
+  represents => { "manual section upgrading from CFEngine 2 shellcommands" };
+upgrading_from_CFEngine_2_strategies::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-strategies"
+  represents => { "manual section upgrading from CFEngine 2 strategies" };
+upgrading_from_CFEngine_2_tidy::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-tidy"
+  represents => { "manual section upgrading from CFEngine 2 tidy" };
+upgrading_from_CFEngine_2_unmount::
+ "/docs/cf3-upgrade.html#upgrading-from-CFEngine-2-unmount"
+  represents => { "manual section upgrading from CFEngine 2 unmount" };
+}
+

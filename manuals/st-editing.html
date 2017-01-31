@@ -1,0 +1,1077 @@
+<html lang="en">
+<head>
+<title>Promising and Editing File Content</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Promising and Editing File Content">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Promising and Editing File Content</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-is-convergent-file-editing_003f">What is convergent file editing?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Editing</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-is-convergent-file-editing_003f">What is convergent file editing?</a>
+<li><a accesskey="2" href="#File-templates">File templates</a>
+<li><a accesskey="3" href="#Why-is-file-editing-difficult_003f">Why is file editing difficult?</a>
+<li><a accesskey="4" href="#What-does-file-editing-involve_003f">What does file editing involve?</a>
+<li><a accesskey="5" href="#Editing-bundles">Editing bundles</a>
+<li><a accesskey="6" href="#Standard-library-methods-for-editing">Standard library methods for editing</a>
+<li><a accesskey="7" href="#Choosing-an-approach-to-file-editing">Choosing an approach to file editing</a>
+<li><a accesskey="8" href="#Pitfalls-to-watch-out-for-in-file-editing">Pitfalls to watch out for in file editing</a>
+<li><a accesskey="9" href="#Examples-of-file-editing">Examples of file editing</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-is-convergent-file-editing%3f"></a>
+<a name="What-is-convergent-file-editing_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#File-templates">File templates</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What is convergent file editing?</h3>
+
+<pre class="sp">
+
+</pre>
+
+Covergent file editing is the ability to specify the final state of a
+configuration file or document and have that result maintained over
+time, independently of its initial state. It is about keeping certain
+promises about the file's content, not on the process by which
+edits are made.
+
+   <p>Cfengine allows you to model whole files or parts of files, in any
+format, and promise that these fragments will keep certain promises
+about their state.  This is potentially different from more common templating
+approaches to file management in which pre-adjusted copies of files
+are generated for all recipients at a single location and then
+distributed.
+
+<div class="node">
+<a name="File-templates"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Why-is-file-editing-difficult_003f">Why is file editing difficult?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-is-convergent-file-editing_003f">What is convergent file editing?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">File templates</h3>
+
+<pre class="sp">
+
+</pre>
+
+In many cases, users think about making templates for files and filling in the blanks using
+variables. This is a simple approach that works in quite a few cases, but not all.
+
+   <p>File templates can be achived simply through the standard library, and you can store the
+template within a CFEngine configuration, or as a separate file.  For example:
+
+<pre class="verbatim">#
+
+<span class="red">body common control 
+</span>{
+<span class="red">bundlesequence </span>=> { "main" };
+<span class="red">inputs </span>=> { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle common data
+</span>{
+<span class="red">vars:
+</span>
+  "person"<span class="red"> string </span>=><span class="green"> "Mary";</span>
+  "animal"<span class="red"> string </span>=><span class="green"> "a little lamb";</span>
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle agent</span> <span class="blue">main</span>
+{
+<span class="red">files:
+</span>
+   "/tmp/my_result"
+
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> expand_template("/tmp/my_template_source"),</span>
+<span class="red"> edit_defaults </span>=><span class="blue"> empty;</span>
+}
+
+</pre>
+Suppose the file <samp><span class="file">my_template_source</span></samp> contains the following
+text:
+
+<pre class="smallexample">        This is a file template containing variables to expand
+     
+        e.g $(data.person) had $(data.animal)
+</pre>
+   <p class="noindent">Then we would have the file content:
+<pre class="smallexample">     host$ more /tmp/my_result
+        This is a file template containing variables to expand
+     
+        e.g Mary had a little lamb
+</pre>
+   <p>A simple file like this could also be defined in-line, without a separate template file:
+<pre class="verbatim">#
+
+<span class="red">body common control 
+</span>{
+<span class="red">bundlesequence </span>=> { "main" };
+<span class="red">inputs </span>=> { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle common data
+</span>{
+<span class="red">vars:
+</span>
+  "person"<span class="red"> string </span>=><span class="green"> "Mary";</span>
+  "animal"<span class="red"> string </span>=><span class="green"> "a little lamb";</span>
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle agent</span> <span class="blue">main</span>
+{
+<span class="red">vars:
+</span>
+  "content"<span class="red"> string </span>=><span class="blue"> </span>
+
+    "This is a file template containing variables to expand
+e.g $(data.person) had $(data.animal)";
+
+<span class="red">files:
+</span>
+   "/tmp/my_result"
+
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=> append_if_no_line("$(content)"),
+<span class="red"> edit_defaults </span>=><span class="blue"> empty;</span>
+}
+
+</pre>
+
+   <p>Here is a more complicated example, that includes list expansion. List expansion (iteration)
+adds some trickiness because it is an ordered process, which needs to be anchored somehow.
+<pre class="verbatim">#
+
+<span class="red">body common control 
+</span>{
+<span class="red">bundlesequence </span>=> { "main" };
+<span class="red">inputs </span>=> { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle common data
+</span>{
+<span class="red">vars:
+</span>
+  "person"<span class="red"> string </span>=><span class="green"> "Mary";</span>
+  "animal"<span class="red"> string </span>=><span class="green"> "a little lamb";</span>
+
+  "mylist"<span class="red"> slist </span>=> { "one", "two", "three" };
+  "clocks"<span class="red"> slist </span>=> { "five", "six", "seven" };
+
+<span class="comment">  # or read the list from a file with readstringlist()
+</span>
+
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle agent</span> <span class="blue">main</span>
+{
+<span class="red">files:
+</span>
+
+   "/tmp/my_result"
+
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> my_expand_template,</span>
+<span class="red"> edit_defaults </span>=><span class="blue"> empty;</span>
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle edit_line</span> <span class="blue">my_expand_template</span>
+{
+<span class="red">vars:
+</span> 
+<span class="comment"> # import the lists, due to current limitation
+</span>
+
+ "mylist"<span class="red"> slist </span>=> { @(data.mylist) };
+ "clocks"<span class="red"> string </span>=> join(", ","data.clocks");
+ "other"<span class="red">  string </span>=><span class="green"> "eight";</span>
+
+<span class="red">insert_lines:
+</span>
+   "
+   This is a file template containing variables to expand
+
+   e.g $(data.person) had $(data.animal)
+
+<span class="red">   and it said: 
+</span>   ";
+
+   "
+   $(mylist) o'clock ";
+   "
+   ROCK!
+   $(clocks) o'clock, $(other) o'clock
+   ";
+
+   "   ROCK!
+   The end.
+   "
+
+<span class="red">   insert_type </span>=><span class="green"> "preserve_block"; # So we keep duplicate line</span>
+}
+
+</pre>
+This results in a file output containing:
+<pre class="smallexample">     host$ ~/LapTop/cfengine/core/src/cf-agent -f ./test.cf -K
+     host$ more /tmp/my_result
+     
+        This is a file template containing variables to expand
+     
+        e.g Mary had a little lamb
+     
+        and it said:
+     
+        one o'clock
+        two o'clock
+        three o'clock
+        ROCK!
+        five, six, seven o'clock, eight o'clock
+        ROCK!
+        The end.
+     
+</pre>
+   <p>Splitting this example into several promises seems unnecessary and inconvenient, so we could use a special
+function <code>join()</code> to make pre-expand the scalar list and insert it as a single object:
+
+<pre class="verbatim">#
+
+<span class="red">body common control 
+</span>{
+<span class="red">bundlesequence </span>=> { "main" };
+<span class="red">inputs </span>=> { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle common data
+</span>{
+<span class="red">vars:
+</span>
+  "person"<span class="red"> string </span>=><span class="green"> "Mary";</span>
+  "animal"<span class="red"> string </span>=><span class="green"> "a little lamb";</span>
+
+  "mylist"<span class="red"> slist </span>=> { "one", "two", "three", "" };
+  "clocks"<span class="red"> slist </span>=> { "five", "six", "seven" };
+
+<span class="comment">  # or read the list from a file with readstringlist()
+</span>
+
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle agent</span> <span class="blue">main</span>
+{
+<span class="red">files:
+</span>
+
+   "/tmp/my_result"
+
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> my_expand_template,</span>
+<span class="red"> edit_defaults </span>=><span class="blue"> empty;</span>
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle edit_line</span> <span class="blue">my_expand_template</span>
+{
+<span class="red">vars:
+</span> 
+<span class="comment"> # import the lists, due to current limitation
+</span>
+
+ "mylist"<span class="red"> string </span>=> join(" o'clock$(const.n)  ","data.mylist");
+ "clocks"<span class="red"> string </span>=> join(", ","data.clocks");
+ "other"<span class="red"> string </span>=><span class="green"> "eight";</span>
+
+<span class="red">insert_lines:
+</span>
+   "
+   This is a file template containing variables to expand
+
+   e.g $(data.person) had $(data.animal)
+
+<span class="red">   and it said: 
+</span>
+   $(mylist)
+   ROCK!
+   $(clocks) o'clock, $(other) o'clock
+   ROCK!
+   The end.
+   "
+
+<span class="red">   insert_type </span>=><span class="green"> "preserve_block"; # So we keep duplicate line</span>
+}
+
+</pre>
+Finally, since this is now entirely contained within a single set of quotes (i.e. there is a single
+promiser), we could replace the in-line template with one read from a file:
+<pre class="verbatim">#
+
+<span class="red">body common control 
+</span>{
+<span class="red">bundlesequence </span>=> { "main" };
+<span class="red">inputs </span>=> { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle common data
+</span>{
+<span class="red">vars:
+</span>
+  "person"<span class="red"> string </span>=><span class="green"> "Mary";</span>
+  "animal"<span class="red"> string </span>=><span class="green"> "a little lamb";</span>
+
+  "mylist"<span class="red"> slist </span>=> { "one", "two", "three", "" };
+  "clocks"<span class="red"> slist </span>=> { "five", "six", "seven" };
+
+<span class="comment">  # or read the list from a file with readstringlist()
+</span>
+
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle agent</span> <span class="blue">main</span>
+{
+<span class="red">files:
+</span>
+
+   "/tmp/my_result"
+
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> my_expand_template,</span>
+<span class="red"> edit_defaults </span>=><span class="blue"> empty;</span>
+}
+
+<span class="comment">#
+</span>
+
+<span class="red">bundle edit_line</span> <span class="blue">my_expand_template</span>
+{
+<span class="red">vars:
+</span> 
+<span class="comment"> # import the lists, due to current limitation
+</span>
+
+ "mylist"<span class="red"> string </span>=> join(" o'clock$(const.n)  ","data.mylist");
+ "clocks"<span class="red"> string </span>=> join(", ","data.clocks");
+ "other"<span class="red"> string </span>=><span class="green"> "eight";</span>
+
+<span class="red">insert_lines:
+</span>
+   "/tmp/my_template_source"
+<span class="red">     expand_scalars </span>=><span class="green"> "true",</span>
+<span class="red">     insert_type </span>=><span class="green"> "file"; </span>
+}
+
+</pre>
+<div class="node">
+<a name="Why-is-file-editing-difficult%3f"></a>
+<a name="Why-is-file-editing-difficult_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-does-file-editing-involve_003f">What does file editing involve?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#File-templates">File templates</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Why is file editing difficult?</h3>
+
+<pre class="sp">
+
+</pre>
+
+File content is not made up of simple data objects like permission flags or
+process tables: files contain compound, ordered structures (known as
+grammars) and they cannot always be determined from a single source of
+information. To determine the outcome of a file we have to adopt either
+a fully deterministic approach, or live with a partial approximation.
+
+   <p>Some approaches to file editing try to `know' the intended format of a
+file, by hardcoding it. If the file then fails to follow this format,
+the algorithms might break. CFEngine gives you generic tools to be
+able to handle files in any line-based format, without the need to
+hard-code specialist knowledge about file formats.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Remember that all changes are adapted to your local context and implemented at the final
+destination by <code>cf-agent</code>. 
+</td></tr></table>
+
+<div class="node">
+<a name="What-does-file-editing-involve%3f"></a>
+<a name="What-does-file-editing-involve_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Editing-bundles">Editing bundles</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Why-is-file-editing-difficult_003f">Why is file editing difficult?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What does file editing involve?</h3>
+
+<pre class="sp">
+
+</pre>
+
+There are several ways
+to approach desired state management of file contents:
+
+   <pre class="sp">
+
+</pre>
+     <ol type=1 start=1>
+<li>Copy a finished file template to the desired location, completely overwriting existing content. 
+<li>Copy and adapt an almost finished template, filling in variables or macros to yield a desired content. 
+<li>Make corrections to whatever the existing state of the file might be.
+        </ol>
+   <pre class="sp">
+
+</pre>
+There are advantages and disadvantages with each of these approaches and the best approach depends on
+the type of situation you need to describe.
+
+   <pre class="sp">
+
+</pre>
+   <p><table summary=""><tr align="left"><td valign="top" width="50%"><b>For the approach</b> </td><td valign="top" width="50%"><b>Against the approach</b>
+<br></td></tr><tr align="left"><td valign="top" width="50%">1. Deterministic. </td><td valign="top" width="50%">Hard to specialize the result and the source must still be maintained by hand. 
+<br></td></tr><tr align="left"><td valign="top" width="50%">2. Deterministic. </td><td valign="top" width="50%">Limited specialization and must come from a single source, again maintained by hand. 
+<br></td></tr><tr align="left"><td valign="top" width="50%">3. Non-deterministic/partial model. </td><td valign="top" width="50%">Full power to customize file even with multiple managers.
+   <br></td></tr></table>
+   <pre class="sp">
+
+</pre>
+
+   <p>Approaches 1 and 2 are best for situations where very few variations
+of a file are needed in different circumstances.  Approach 3 is best
+when you need to customize a file significantly, especially when you don't know the
+full details of the file you are starting from. Approach 3 is generally required
+when adapting configuration files provided by a third party, since the basic
+content is determined by them.
+
+<div class="node">
+<a name="Editing-bundles"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Standard-library-methods-for-editing">Standard library methods for editing</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-does-file-editing-involve_003f">What does file editing involve?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Editing bundles</h3>
+
+<p>Unlike other aspects of configuration, promising the content of a single
+file object involves possibly many promises about the atoms within the file. 
+Thus we need to be able to state bundles of promises for what happens inside
+a file and tie it (like a body-template) to the <code>files</code> promise. 
+This is done using an <code>edit_line =&gt;</code> or <code>edit_xml =&gt;</code> constraint<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>, for
+instance:
+
+<pre class="verbatim">files:
+
+  "/etc/passwd"
+
+<span class="red">     create </span>=><span class="green"> "true",</span>
+
+<span class="comment">     # other constraints on file container ...
+</span>
+
+<span class="red">     edit_line </span>=> mybundle("one","two","three");
+</pre>
+
+   <p>Editing bundles are defined like other bundles for the agent, except that they have a type
+given by the left hand side of the constraint (just like body templates):
+
+<pre class="verbatim">bundle edit_line mybundle(arg1,arg2,arg3)
+{
+<span class="red">insert_lines:
+</span>
+<span class="red">   "newuser:x:1111:110:A new user:/home/newuser:/bin/bash";
+</span><span class="red">   "$(arg1):x:$(arg2):110:$(arg3):/home/$(arg1):/bin/bash";
+</span>}
+</pre>
+
+<div class="node">
+<a name="Standard-library-methods-for-editing"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Choosing-an-approach-to-file-editing">Choosing an approach to file editing</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Editing-bundles">Editing bundles</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Standard library methods for editing</h3>
+
+<p>You may choose to write your own editing bundles for specific purposes; you can also use
+ready-made templates from the standard library for a lot of purposes. If you follow the
+guidelines for choosing an approach to editing below, you will be able to re-use standard
+methods in perhaps most cases. Using standard library code keeps your own intentions clear
+and easily communicable. 
+For example, to insert hello into a file at the end once only:
+<pre class="verbatim">files:
+
+  "/tmp/test_insert"
+
+<span class="red">       create </span>=><span class="green"> "true",</span>
+<span class="red">    edit_line </span>=><span class="blue"> append_if_no_line("hello"),</span>
+<span class="red">edit_defaults </span>=><span class="blue"> empty;</span>
+
+</pre>
+Or to set the shell for a user
+<pre class="verbatim">files:
+
+  "/etc/passwd"
+<span class="red">       create    </span>=><span class="green"> "true",</span>
+<span class="red">       edit_line </span>=><span class="blue"> set_user_field("mark","7","/my/favourite/shell");</span>
+
+</pre>
+
+   <p>Some other examples of the standard editing methods are:
+
+<pre class="verbatim"> append_groups_starting(v) 
+ append_if_no_line(str) 
+ append_if_no_lines(list) 
+ append_user_field(group,field,allusers) 
+ append_users_starting(v) 
+ comment_lines_containing(regex,comment) 
+ edit_line comment_lines_matching(regex,comment) 
+ delete_lines_matching(regex) 
+ expand_template(templatefile) 
+ insert_lines(lines) 
+ resolvconf(search,list) 
+ set_user_field(user,field,val) 
+ set_variable_values(v) 
+ set_variable_values2(v) 
+ uncomment_lines_containing(regex,comment) 
+ uncomment_lines_matching(regex,comment) 
+ warn_lines_matching(regex)
+</pre>
+
+   <p>You find these in the documentation for the COPBL.
+
+<div class="node">
+<a name="Choosing-an-approach-to-file-editing"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Pitfalls-to-watch-out-for-in-file-editing">Pitfalls to watch out for in file editing</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Standard-library-methods-for-editing">Standard library methods for editing</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Choosing an approach to file editing</h3>
+
+<p>There are two decisions to make when choosing how to manage file content:
+
+     <dl>
+<dt><i>How can the desired content be constructed from the necessary source(s)?</i><dd>Is there more than one source of infromation that needs to be merged?
+
+     <br><dt><i>Do the contents need to be adapted to the specific environment?</i><dd>Is there context-specific information in the file? 
+</dl>
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Use the simplest approach that requires the smallest number of promises to solve the
+problem. 
+</td></tr></table>
+
+<div class="node">
+<a name="Pitfalls-to-watch-out-for-in-file-editing"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Examples-of-file-editing">Examples of file editing</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Choosing-an-approach-to-file-editing">Choosing an approach to file editing</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Pitfalls to watch out for in file editing</h3>
+
+<p>File editing is different from most other kinds of configuration
+promise because it is fundamentally an order dependent configuration
+process. Files contain non-regular grammars. CFEngine attempts to simplify
+the problem by using models for the file structure, essentially factoring out
+as much of the context dependence as possible.
+
+   <p>Order dependence increases the fragility of maintainence, so you should do what you can to minimize it.
+
+     <ul>
+<li>Try to use substitution within a known template if order is important. 
+</ul>
+
+   <p>The simplest kinds of files for configuration are line-based, with no special order. For such
+cases, simple line insertions are usually enough to configure files.
+
+   <p>The increasing introduction of XML for configuration is a major headache for configuration
+management.
+
+<div class="node">
+<a name="Examples-of-file-editing"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Pitfalls-to-watch-out-for-in-file-editing">Pitfalls to watch out for in file editing</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Examples of file editing</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Copying-a-file-template-into-place">Copying a file template into place</a>
+<li><a accesskey="2" href="#Contextual-adaptation-of-a-file-template">Contextual adaptation of a file template</a>
+<li><a accesskey="3" href="#Modifying-the-current-state-of-a-file">Modifying the current state of a file</a>
+</ul>
+
+<div class="node">
+<a name="Copying-a-file-template-into-place"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Contextual-adaptation-of-a-file-template">Contextual adaptation of a file template</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Examples-of-file-editing">Examples of file editing</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Examples-of-file-editing">Examples of file editing</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Copying a file template into place</h4>
+
+<p>Use this approach if a simple substution of data will solve the problem in all contexts.
+
+     <ol type=1 start=1>
+<li>Maintain the content of the file in a version controlled repository. 
+<li>Check out the file into a staging area. 
+<li>Copy the file into place.
+        </ol>
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">bundle agent something
+{
+<span class="red">files:
+</span>
+  "/important/file"
+
+<span class="red">  copy_from </span>=><span class="blue"> secure_cp("/repository/important_file_template","svn-host");</span>
+}
+</pre>
+</td></tr></table>
+
+<div class="node">
+<a name="Contextual-adaptation-of-a-file-template"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Modifying-the-current-state-of-a-file">Modifying the current state of a file</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Copying-a-file-template-into-place">Copying a file template into place</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Examples-of-file-editing">Examples of file editing</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Contextual adaptation of a file template</h4>
+
+<p>There are two approaches here:
+     <ol type=1 start=1>
+<li>Copy a template then edit it. 
+<li>Copy a template with macro-substitution.
+        </ol>
+
+   <p>To expand a template file on a local disk:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">bundle agent templating
+{
+<span class="red">files:
+</span>
+  "/home/mark/tmp/file_based_on_template"
+
+<span class="red">       create </span>=><span class="green"> "true",</span>
+<span class="red">    edit_line </span>=><span class="blue"> expand_template("/tmp/source_template");</span>
+}
+</pre>
+</td></tr></table>
+   For example, the file might look like this:
+<pre class="example">     mail_relay = $(sys.fqhost)
+     important_user = $(mybundle.variable)
+     #...
+</pre>
+   <p class="noindent">These variables will be filled in by CFEngine assuming they are defined. 
+To convergently copy a file from a source and then edit it, use the following
+construction with a staging file. 
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">bundle agent master
+{
+<span class="red">files:
+</span>  "$(final_destination)"
+<span class="red">         create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> fix_file("$(staging_file)"),</span>
+<span class="red"> edit_defaults </span>=><span class="blue"> empty,</span>
+<span class="red">         perms </span>=><span class="blue"> mo("644","root"),</span>
+<span class="red">        action </span>=><span class="blue"> ifelapsed("60");</span>
+}
+
+<span class="red">bundle edit_line</span> <span class="blue">fix_file(f)</span>
+{
+<span class="red">insert_lines:
+</span>  "$(f)"
+<span class="red">     insert_type </span>=><span class="green"> "file";</span>
+<span class="comment">     # expand_scalars => "true" ;
+</span>
+
+<span class="red">replace_patterns:
+</span>    "searchstring"
+<span class="red">          replace_with </span>=><span class="blue"> With("replacestring");</span>
+}
+
+</pre>
+</td></tr></table>
+
+<div class="node">
+<a name="Modifying-the-current-state-of-a-file"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Contextual-adaptation-of-a-file-template">Contextual adaptation of a file template</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Examples-of-file-editing">Examples of file editing</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Modifying the current state of a file</h4>
+
+<p>Edit a file with multiple promises about its state, when you do not want
+to determine the entire content of the file, or if it is unsafe to
+make unilateral changes, e.g. because its contents are also
+being managed from another source like a software package manager.
+
+   <p>For modifying a file, you have access to the full power of text editing
+promises. This is a powerful framework.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim"># Resolve conf edit
+
+<span class="red">body common control
+</span>{
+<span class="red">bundlesequence </span>=> { "g", resolver(@(g.searchlist),@(g.nameservers)) };
+<span class="red">inputs </span>=> { "cfengine_stdlib.cf" }; 
+}
+
+<span class="red">bundle common g # global
+</span>{
+<span class="red">vars:
+</span> "searchlist"<span class="red">  slist </span>=> { "example.com", "cfengine.com" };
+ "nameservers"<span class="red"> slist </span>=> { "10.1.1.10", "10.3.2.16", "8.8.8.8" };
+
+<span class="red">classes:
+</span>  "am_name_server" 
+<span class="red">     expression </span>=> reglist("@(nameservers)","$(sys.ipv4[eth1])");
+}
+
+<span class="red">bundle agent</span> <span class="blue">resolver(s,n)</span>
+{
+<span class="red">files:
+</span>  "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
+<span class="red">      create        </span>=><span class="green"> "true",</span>
+<span class="red">      edit_line     </span>=><span class="blue"> doresolv("@(this.s)","@(this.n)"),</span>
+<span class="red">      edit_defaults </span>=><span class="blue"> empty;</span>
+}
+
+<span class="comment"># For your private library ......................
+</span>
+
+<span class="red">bundle edit_line</span> <span class="blue">doresolv(s,n)</span>
+{
+<span class="red">insert_lines:
+</span>  "search $(s)";
+  "nameserver $(n)";
+<span class="red">delete_lines:
+</span><span class="comment"> # To clean out junk
+</span>
+  "nameserver .*| search .*"<span class="red"> not_matching </span>=><span class="green"> "true";</span>
+}
+</pre>
+</td></tr></table>
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Editing</a>
+<ul>
+<li><a href="#What-is-convergent-file-editing_003f">What is convergent file editing?</a>
+<li><a href="#File-templates">File templates</a>
+<li><a href="#Why-is-file-editing-difficult_003f">Why is file editing difficult?</a>
+<li><a href="#What-does-file-editing-involve_003f">What does file editing involve?</a>
+<li><a href="#Editing-bundles">Editing bundles</a>
+<li><a href="#Standard-library-methods-for-editing">Standard library methods for editing</a>
+<li><a href="#Choosing-an-approach-to-file-editing">Choosing an approach to file editing</a>
+<li><a href="#Pitfalls-to-watch-out-for-in-file-editing">Pitfalls to watch out for in file editing</a>
+<li><a href="#Examples-of-file-editing">Examples of file editing</a>
+<ul>
+<li><a href="#Copying-a-file-template-into-place">Copying a file template into place</a>
+<li><a href="#Contextual-adaptation-of-a-file-template">Contextual adaptation of a file template</a>
+<li><a href="#Modifying-the-current-state-of-a-file">Modifying the current state of a file</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> At the time of writing
+only <code>edit_line</code> is implemented.</p>
+
+   <hr></div>
+
+</body></html>
+
+

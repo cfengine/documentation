@@ -1,0 +1,73 @@
+
+bundle knowledge NovaEvaluationGuideSupplement
+
+{
+topics:
+
+"NovaEvaluationGuideSupplement";
+Special_Topics_Guide::
+    "Supplement to CFEngine 3 Nova Evaluation Guide"  association => a("discusses","Supplement to CFEngine 3 Nova Evaluation Guide","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html"
+  represents => { "Official CFEngine document"},  about_topics => { "supplement to cfengine 3 nova evaluation guide" };
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html"
+  represents => { "Special Topics Guide"},  about_topics => { "supplement to cfengine 3 nova evaluation guide" };
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Top"
+  represents => { "Text section" }, about_topics => { "supplement to cfengine 3 nova evaluation guide" };
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Standard-reports-in-CFEngine-3-Nova"
+  represents => { "manual chapter" }, about_topics => { "standard reports in cfengine 3 nova"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Bundle-profile-report"
+  represents => { "manual section" }, about_topics => { "bundle profile report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Business-value-report"
+  represents => { "manual section" }, about_topics => { "business value report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Class-profile-report"
+  represents => { "manual section" }, about_topics => { "class profile report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Compliance-by-promise-report"
+  represents => { "manual section" }, about_topics => { "compliance by promise report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Compliance-summary-report"
+  represents => { "manual section" }, about_topics => { "compliance summary report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#File-change-log-report"
+  represents => { "manual section" }, about_topics => { "file change log report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#File-change-diffs-report"
+  represents => { "manual section" }, about_topics => { "file change diffs report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Last-saw-hosts-report"
+  represents => { "manual section" }, about_topics => { "last saw hosts report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Patches-available-report"
+  represents => { "manual section" }, about_topics => { "patches available report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Patch-status-report"
+  represents => { "manual section" }, about_topics => { "patch status report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Performance-report"
+  represents => { "manual section" }, about_topics => { "performance report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Promises-repaired-log-report"
+  represents => { "manual section" }, about_topics => { "promises repaired log report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Promises-repaired-summary-report"
+  represents => { "manual section" }, about_topics => { "promises repaired summary report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Promises-not-kept-log-report"
+  represents => { "manual section" }, about_topics => { "promises not kept log report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Promises-not-kept-summary-report"
+  represents => { "manual section" }, about_topics => { "promises not kept summary report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Setuid_002fgid-root-programs-report"
+  represents => { "manual section" }, about_topics => { "setuid/gid root programs report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Software-installed-report"
+  represents => { "manual section" }, about_topics => { "software installed report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Variables-report"
+  represents => { "manual section" }, about_topics => { "variables report"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#CDP-reports"
+  represents => { "manual chapter" }, about_topics => { "cdp reports"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#ACLs-report-_002d-File-access-controls"
+  represents => { "manual section" }, about_topics => { "acls report - file access controls"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Commands-report-_002d-Scheduled-commands-to-execute"
+  represents => { "manual section" }, about_topics => { "commands report - scheduled commands to execute"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#File-changes-report-_002d-File-changes-observed-on-the-system"
+  represents => { "manual section" }, about_topics => { "file changes report - file changes observed on the system"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#File-diffs-report-_002d-Delta_002fdifference-comparison-showing-file-changes"
+  represents => { "manual section" }, about_topics => { "file diffs report - delta/difference comparison showing file changes"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Registry-report-_002d-Promised-Windows-registry-setting-status"
+  represents => { "manual section" }, about_topics => { "registry report - promised windows registry setting status"};
+ "/knowledge/docs/NovaEvaluationGuideSupplement.html#Services-report-_002d-System-service-status"
+  represents => { "manual section" }, about_topics => { "services report - system service status"};
+}
+

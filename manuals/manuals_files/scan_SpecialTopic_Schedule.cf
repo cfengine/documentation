@@ -1,0 +1,75 @@
+
+bundle knowledge SpecialTopic_Schedule
+
+{
+topics:
+
+"SpecialTopic_Schedule";
+Special_Topics_Guide::
+    "Appendix - Did you know?"  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "Choosing a scheduling interval"  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "Splaying host times"  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "Commands promises"  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "Working with Unix cron."  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "Scheduling by Sensing Events and Patterns"  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "Logging execution"  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "Calendars"  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "Chaining jobs together"  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "Define jobs with basic profile information"  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "How can CFEngine help?"  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "What is scheduling?"  association => a("discusses","Scheduling and Event Management","is discussed in");
+Special_Topics_Guide::
+    "Scheduling"  association => a("discusses","Scheduling and Event Management","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Schedule.html"
+  represents => { "Official CFEngine document"},  about_topics => { "scheduling and event management" };
+ "/knowledge/docs/SpecialTopic_Schedule.html"
+  represents => { "Special Topics Guide"},  about_topics => { "scheduling and event management" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#Top"
+  represents => { "Text section" }, about_topics => { "scheduling" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#What-is-scheduling_003f"
+  represents => { "Text section" }, about_topics => { "what is scheduling?" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#How-can-CFEngine-help_003f"
+  represents => { "Text section" }, about_topics => { "how can cfengine help?" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#Define-jobs-with-basic-profile-information"
+  represents => { "Text section" }, about_topics => { "define jobs with basic profile information" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#Chaining-jobs-together"
+  represents => { "Text section" }, about_topics => { "chaining jobs together" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#Calendars"
+  represents => { "Text section" }, about_topics => { "calendars" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#Logging-execution"
+  represents => { "Text section" }, about_topics => { "logging execution" };
+examples:: "/knowledge/docs/SpecialTopic_Schedule.html#Logging-execution"
+ about_topics => { "Logging execution" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#Scheduling-by-Sensing-Events-and-Patterns"
+  represents => { "Text section" }, about_topics => { "scheduling by sensing events and patterns" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#Working-with-Unix-cron"
+  represents => { "Text section" }, about_topics => { "working with unix cron." };
+ "/knowledge/docs/SpecialTopic_Schedule.html#Commands-promises"
+  represents => { "Text section" }, about_topics => { "commands promises" };
+examples:: "/knowledge/docs/SpecialTopic_Schedule.html#Commands-promises"
+ about_topics => { "Commands promises" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#Splaying-host-times"
+  represents => { "Text section" }, about_topics => { "splaying host times" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#Choosing-a-scheduling-interval"
+  represents => { "Text section" }, about_topics => { "choosing a scheduling interval" };
+ "/knowledge/docs/SpecialTopic_Schedule.html#Appendix-_002d-Did-you-know_003f"
+  represents => { "Text section" }, about_topics => { "appendix - did you know?" };
+}
+

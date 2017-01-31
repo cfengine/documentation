@@ -1,0 +1,132 @@
+
+bundle knowledge st_monitoring
+
+{
+topics:
+
+"st-monitoring";
+    "Summary Monitoring" ;
+    "Threshold monitoring" ;
+    "Scanning syslog for breakin attempts" ;
+    "Scanning syslog for email milter failures" ;
+    "Scanning syslog for email statistics" ;
+    "Scanning DNS logs for query statistics" ;
+    "Scanning syslog for FTP statistics" ;
+    "Scanning log files for patterns" ;
+    "measurements promises" ;
+    "What are measurements?" ;
+Monitoring_customization::
+    "Monitoring customization" ;
+    "Persistent classes for alert conditions" ;
+    "Entropy" ;
+    "Variables" ;
+    "Estimate of the level of normality" ;
+    "Standard measured variables" ;
+    "Visualization of monitoring in CFEngine" ;
+    "Monitoring in CFEngine" ;
+    "What does monitoring software do?" ;
+    "What are the goals of monitoring?" ;
+    "What is monitoring?" ;
+Monitoring_introduction::
+    "Monitoring introduction" ;
+Special_Topics_Guide::
+    "Measurement and Monitoring"  association => a("discussed in","Measurement and Monitoring","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-monitoring.html"
+  represents => { "Reporting" };
+Measurement_and_Monitoring::
+ "/docs/st-monitoring.html#Top"
+  represents => { "Text section" };
+Monitoring_introduction::
+ "/docs/st-monitoring.html#Monitoring-introduction"
+  represents => { "manual chapter" };
+What_is_monitoring_::
+ "/docs/st-monitoring.html#What-is-monitoring_003f"
+  represents => { "Text section" };
+What_are_the_goals_of_monitoring_::
+ "/docs/st-monitoring.html#What-are-the-goals-of-monitoring_003f"
+  represents => { "Text section" };
+What_does_monitoring_software_do_::
+ "/docs/st-monitoring.html#What-does-monitoring-software-do_003f"
+  represents => { "Text section" };
+Monitoring_in_CFEngine::
+ "/docs/st-monitoring.html#Monitoring-in-CFEngine"
+  represents => { "Text section" };
+Visualization_of_monitoring_in_CFEngine::
+ "/docs/st-monitoring.html#Visualization-of-monitoring-in-CFEngine"
+  represents => { "Text section" };
+Standard_measured_variables::
+ "/docs/st-monitoring.html#Standard-measured-variables"
+  represents => { "Text section" };
+Estimate_of_the_level_of_normality::
+ "/docs/st-monitoring.html#Estimate-of-the-level-of-normality"
+  represents => { "Text section" };
+Estimate_of_the_level_of_normality::
+ "/docs/st-monitoring.html#index-normal-1"
+  represents => { "code example" };
+Estimate_of_the_level_of_normality::
+ "/docs/st-monitoring.html#index-Anomalies-6"
+  represents => { "code example" };
+Estimate_of_the_level_of_normality::
+ "/docs/st-monitoring.html#index-Anomalies-6"
+  represents => { "code example" };
+Variables::
+ "/docs/st-monitoring.html#Variables"
+  represents => { "Text section" };
+Variables::
+ "/docs/st-monitoring.html#Variables"
+  represents => { "code example" };
+Variables::
+ "/docs/st-monitoring.html#Variables"
+  represents => { "code example" };
+Entropy::
+ "/docs/st-monitoring.html#Entropy"
+  represents => { "Text section" };
+Entropy::
+ "/docs/st-monitoring.html#index-Entropy-7"
+  represents => { "code example" };
+Entropy::
+ "/docs/st-monitoring.html#index-Entropy-7"
+  represents => { "code example" };
+Persistent_classes_for_alert_conditions::
+ "/docs/st-monitoring.html#Persistent-classes-for-alert-conditions"
+  represents => { "Text section" };
+Monitoring_customization::
+ "/docs/st-monitoring.html#Monitoring-customization"
+  represents => { "manual chapter" };
+What_are_measurements_::
+ "/docs/st-monitoring.html#What-are-measurements_003f"
+  represents => { "Text section" };
+measurements_promises::
+ "/docs/st-monitoring.html#measurements-promises"
+  represents => { "Text section" };
+Scanning_log_files_for_patterns::
+ "/docs/st-monitoring.html#Scanning-log-files-for-patterns"
+  represents => { "Text section" };
+Scanning_syslog_for_FTP_statistics::
+ "/docs/st-monitoring.html#FTP"
+  represents => { "Text section" };
+Scanning_DNS_logs_for_query_statistics::
+ "/docs/st-monitoring.html#DNS"
+  represents => { "Text section" };
+Scanning_syslog_for_email_statistics::
+ "/docs/st-monitoring.html#Email"
+  represents => { "Text section" };
+Scanning_syslog_for_email_milter_failures::
+ "/docs/st-monitoring.html#Milter"
+  represents => { "Text section" };
+Scanning_syslog_for_breakin_attempts::
+ "/docs/st-monitoring.html#Breakin"
+  represents => { "Text section" };
+Threshold_monitoring::
+ "/docs/st-monitoring.html#Threshold-monitoring"
+  represents => { "Text section" };
+Summary_Monitoring::
+ "/docs/st-monitoring.html#Summary-Monitoring"
+  represents => { "Text section" };
+}
+

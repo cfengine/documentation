@@ -1,0 +1,72 @@
+
+bundle knowledge SpecialTopic_Scan
+
+{
+topics:
+
+"SpecialTopic_Scan";
+Special_Topics_Guide::
+    "Security scanning and tripwires with CFEngine"  association => a("discusses","Security Scanning and Tripwires with CFEngine","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Scan.html"
+  represents => { "Official CFEngine document"},  about_topics => { "security scanning and tripwires with cfengine" };
+ "/knowledge/docs/SpecialTopic_Scan.html"
+  represents => { "Special Topics Guide"},  about_topics => { "security scanning and tripwires with cfengine" };
+ "/knowledge/docs/SpecialTopic_Scan.html#Top"
+  represents => { "Text section" }, about_topics => { "security scanning and tripwires with cfengine" };
+ "/knowledge/docs/SpecialTopic_Scan.html#File-scanning"
+  represents => { "manual chapter" }, about_topics => { "file scanning"};
+ "/knowledge/docs/SpecialTopic_Scan.html#File-change-detection-and-tripwires"
+  represents => { "manual section" }, about_topics => { "file change detection: tripwires"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Example-change-management"
+  represents => { "manual section" }, about_topics => { "example change management"};
+examples:: "/knowledge/docs/SpecialTopic_Scan.html#Example-change-management"
+ about_topics => { "Example change management" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Scan.html#Example-change-management"
+ about_topics => { "Example change management" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Scan.html#Example-change-management"
+ about_topics => { "Example change management" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Scan.html#file_005fchange_002elog"
+  represents => { "manual section" }, about_topics => { "file_change.log"};
+ "/knowledge/docs/SpecialTopic_Scan.html#File-change-reports-in-Nova_002fEnterprise"
+  represents => { "manual section" }, about_topics => { "file change reports in nova/enterprise"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Tamperproof-data"
+  represents => { "manual section" }, about_topics => { "tamperproof data"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Change-detection-bundle-summary"
+  represents => { "manual section" }, about_topics => { "change detection bundle summary"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Reversion-of-file-changes-from-a-trusted-source"
+  represents => { "manual section" }, about_topics => { "reversion of file changes from a trusted source"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Process-and-network-scanning"
+  represents => { "manual chapter" }, about_topics => { "process and network scanning"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Watching-processes"
+  represents => { "manual section" }, about_topics => { "watching processes"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Watching-other-system-variables"
+  represents => { "manual section" }, about_topics => { "watching other system variables"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Threshold-monitoring"
+  represents => { "manual section" }, about_topics => { "threshold monitoring"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Port-monitoring"
+  represents => { "manual section" }, about_topics => { "port monitoring"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Log-scanning"
+  represents => { "manual chapter" }, about_topics => { "log scanning"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Scanning-log-files-for-patterns"
+  represents => { "manual section" }, about_topics => { "scanning log files for patterns"};
+ "/knowledge/docs/SpecialTopic_Scan.html#FTP"
+  represents => { "manual section" }, about_topics => { "scanning syslog for ftp statistics"};
+ "/knowledge/docs/SpecialTopic_Scan.html#DNS"
+  represents => { "manual section" }, about_topics => { "scanning dns logs for query statistics"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Email"
+  represents => { "manual section" }, about_topics => { "scanning syslog for email statistics"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Milter"
+  represents => { "manual section" }, about_topics => { "scanning syslog for email milter failures"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Breakin"
+  represents => { "manual section" }, about_topics => { "scanning syslog for breakin attempts"};
+ "/knowledge/docs/SpecialTopic_Scan.html#Intrusion-detection"
+  represents => { "manual chapter" }, about_topics => { "intrusion detection"};
+}
+

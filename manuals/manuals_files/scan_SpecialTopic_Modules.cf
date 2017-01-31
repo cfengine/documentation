@@ -1,0 +1,105 @@
+
+bundle knowledge SpecialTopic_Modules
+
+{
+topics:
+
+"SpecialTopic_Modules";
+Special_Topics_Guide::
+    "A Chinese Dragon star pattern"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "A Domino sequence"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "The self-healing chain - inverse Dominoes"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Run job or reboot only if n out m systems are running"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Basic communication methods for orchestration"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Distributed Orchestration between hosts with CFEngine Enterprise"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Overriding order"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Bundle ordering"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Ordering operations in CFEngine"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Bulk operations are handled by repeating patterns over lists"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Black, grey and white box encapsulation in CFEngine"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Hiding details"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "High level services in CFEngine"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Is CFEngine patch-oriented or package-oriented?"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Levels of policy abstraction"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "How does CFEngine deal with modularity and orchestration?"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "What is orchestration?"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "What is modularity?"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+Special_Topics_Guide::
+    "Orchestration"  association => a("discusses","Modularizing and Orchestrating System Policy","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Modules.html"
+  represents => { "Official CFEngine document"},  about_topics => { "modularizing and orchestrating system policy" };
+ "/knowledge/docs/SpecialTopic_Modules.html"
+  represents => { "Special Topics Guide"},  about_topics => { "modularizing and orchestrating system policy" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Top"
+  represents => { "Text section" }, about_topics => { "orchestration" };
+ "/knowledge/docs/SpecialTopic_Modules.html#What-is-modularity_003f"
+  represents => { "Text section" }, about_topics => { "what is modularity?" };
+ "/knowledge/docs/SpecialTopic_Modules.html#What-is-orchestration_003f"
+  represents => { "Text section" }, about_topics => { "what is orchestration?" };
+ "/knowledge/docs/SpecialTopic_Modules.html#How-does-CFEngine-deal-with-modularity-and-orchestration_003f"
+  represents => { "Text section" }, about_topics => { "how does cfengine deal with modularity and orchestration?" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Levels-of-policy-abstraction"
+  represents => { "Text section" }, about_topics => { "levels of policy abstraction" };
+examples:: "/knowledge/docs/SpecialTopic_Modules.html#Levels-of-policy-abstraction"
+ about_topics => { "Levels of policy abstraction" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Modules.html#Levels-of-policy-abstraction"
+ about_topics => { "Levels of policy abstraction" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Is-CFEngine-patch-or-package-oriented_003f"
+  represents => { "Text section" }, about_topics => { "is cfengine patch-oriented or package-oriented?" };
+ "/knowledge/docs/SpecialTopic_Modules.html#High-level-services-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "high level services in cfengine" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Hiding-details"
+  represents => { "Text section" }, about_topics => { "hiding details" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Black-grey-and-white-box-encapsulation-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "black, grey and white box encapsulation in cfengine" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Bulk-operations-are-handled-by-repeating-patterns-over-lists"
+  represents => { "Text section" }, about_topics => { "bulk operations are handled by repeating patterns over lists" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Ordering-operations-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "ordering operations in cfengine" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Bundle-ordering"
+  represents => { "Text section" }, about_topics => { "bundle ordering" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Overriding-order"
+  represents => { "Text section" }, about_topics => { "overriding order" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Distributed-Orchestration-between-hosts-with-CFEngine-Enterprise"
+  represents => { "Text section" }, about_topics => { "distributed orchestration between hosts with cfengine enterprise" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Basic-communication-methods-for-orchestration"
+  represents => { "Text section" }, about_topics => { "basic communication methods for orchestration" };
+examples:: "/knowledge/docs/SpecialTopic_Modules.html#Basic-communication-methods-for-orchestration"
+ about_topics => { "Basic communication methods for orchestration" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Modules.html#Basic-communication-methods-for-orchestration"
+ about_topics => { "Basic communication methods for orchestration" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Modules.html#Run-job-or-reboot-only-if-n-out-m-systems-are-running"
+  represents => { "Text section" }, about_topics => { "run job or reboot only if n out m systems are running" };
+ "/knowledge/docs/SpecialTopic_Modules.html#The-self_002dhealing-chain-_002d-inverse-Dominoes"
+  represents => { "Text section" }, about_topics => { "the self-healing chain - inverse dominoes" };
+ "/knowledge/docs/SpecialTopic_Modules.html#A-Domino-sequence"
+  represents => { "Text section" }, about_topics => { "a domino sequence" };
+ "/knowledge/docs/SpecialTopic_Modules.html#A-Chinese-Dragon"
+  represents => { "Text section" }, about_topics => { "a chinese dragon star pattern" };
+}
+

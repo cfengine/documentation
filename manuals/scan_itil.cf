@@ -1,0 +1,346 @@
+
+bundle knowledge st_itil
+
+{
+topics:
+
+"st-itil";
+ITIL::
+    "Warning" ;
+ITIL::
+    "Service Management" ;
+ITIL::
+    "Service Level Agreement" ;
+ITIL::
+    "Service desk" ;
+ITIL::
+    "Role" ;
+ITIL::
+    "Restoration" ;
+ITIL::
+    "Resilience" ;
+ITIL::
+    "Abandon Autonomy?" ;
+ITIL::
+    "Request for Change" ;
+ITIL::
+    "Release, Request for Change, Repair, Summary" ;
+ITIL::
+    "Repair" ;
+ITIL::
+    "Remediation" ;
+ITIL::
+    "Recovery" ;
+ITIL::
+    "Record" ;
+ITIL::
+    "Reactive Monitoring" ;
+ITIL::
+    "Promise, Reactive Monitoring, Problem, Summary" ;
+ITIL::
+    "Problem" ;
+ITIL::
+    "Proactive Monitoring, Problem, Policy, Summary" ;
+ITIL::
+    "Policy" ;
+ITIL::
+    "Passive Monitoring" ;
+ITIL::
+    "Monitoring" ;
+ITIL::
+    "Incident" ;
+ITIL::
+    "Failure" ;
+ITIL::
+    "Exception, Failure, Event, Summary" ;
+ITIL::
+    "Event" ;
+ITIL::
+    "Error" ;
+ITIL::
+    "Emergency Change" ;
+ITIL::
+    "Document" ;
+ITIL::
+    "Configuration Management Database" ;
+ITIL::
+    "Configuration Item" ;
+ITIL::
+    "Configuration" ;
+ITIL::
+    "Chronological Analysis" ;
+ITIL::
+    "Change record" ;
+ITIL::
+    "Capability" ;
+ITIL::
+    "Benchmark" ;
+ITIL::
+    "Baseline" ;
+ITIL::
+    "Audit" ;
+ITIL::
+    "Alert" ;
+ITIL::
+    "Availability" ;
+ITIL::
+    "Active Monitoring" ;
+ITIL::
+    "ITIL and CFEngine Summary" ;
+ITIL::
+    "What is maintenance?" ;
+ITIL::
+    "How can CFEngine or promises help an enterprise" ;
+ITIL::
+    "Using CFEngine to implement ITIL objectives" ;
+ITIL::
+    "Service Level Management" ;
+ITIL::
+    "Incident and problem management" ;
+ITIL::
+    "Release management" ;
+ITIL::
+    "Change management vs convergence" ;
+ITIL::
+    "Change management in the enterprise" ;
+ITIL::
+    "CMDB Asset Management" ;
+ITIL::
+    "ITIL Configuration Management" ;
+ITIL::
+    "Which ITIL processes apply to CFEngine?" ;
+ITIL::
+    "Tool Support" ;
+ITIL::
+    "Continual Service Improvement" ;
+ITIL::
+    "Service Operation" ;
+ITIL::
+    "Service Design" ;
+ITIL::
+    "Service Strategy" ;
+ITIL::
+    "ITIL processes" ;
+ITIL::
+    "CFEngine in ITIL clothes?" ;
+ITIL::
+    "Service orientation and ITIL" ;
+ITIL::
+    "Version 3" ;
+ITIL::
+    "Version 2" ;
+ITIL::
+    "Basics" ;
+ITIL::
+    "ITIL history and versions" ;
+ITIL::
+    "What it ITIL?" ;
+Special_Topics_Guide::
+    "ITIL"  association => a("discussed in","ITIL","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-itil.html"
+  represents => { "ITIL" };
+ITIL::
+ "/docs/st-itil.html#Top"
+  represents => { "Text section" };
+What_it_ITIL_::
+ "/docs/st-itil.html#What-it-ITIL_003f"
+  represents => { "Text section" };
+ITIL_history_and_versions::
+ "/docs/st-itil.html#ITIL-history-and-versions"
+  represents => { "Text section" };
+Basics::
+ "/docs/st-itil.html#Basics"
+  represents => { "Text section" };
+Version_2::
+ "/docs/st-itil.html#Version-2"
+  represents => { "Text section" };
+Version_3::
+ "/docs/st-itil.html#Version-3"
+  represents => { "Text section" };
+Service_orientation_and_ITIL::
+ "/docs/st-itil.html#Service-orientation-and-ITIL"
+  represents => { "Text section" };
+CFEngine_in_ITIL_clothes_::
+ "/docs/st-itil.html#CFEngine-in-ITIL-clothes_003f"
+  represents => { "Text section" };
+ITIL_processes::
+ "/docs/st-itil.html#ITIL-processes"
+  represents => { "Text section" };
+Service_Strategy::
+ "/docs/st-itil.html#Service-Strategy"
+  represents => { "Text section" };
+Service_Design::
+ "/docs/st-itil.html#Service-Design"
+  represents => { "Text section" };
+Service_Operation::
+ "/docs/st-itil.html#Service-Operation"
+  represents => { "Text section" };
+Continual_Service_Improvement::
+ "/docs/st-itil.html#Continual-Service-Improvement"
+  represents => { "Text section" };
+Tool_Support::
+ "/docs/st-itil.html#Continual-Service-Improvement"
+  represents => { "Text section" };
+Which_ITIL_processes_apply_to_CFEngine_::
+ "/docs/st-itil.html#Which-ITIL-processes-apply-to-CFEngine_003f"
+  represents => { "Text section" };
+ITIL_Configuration_Management::
+ "/docs/st-itil.html#ITIL-Configuration-Management-_0028CM_0029"
+  represents => { "Text section" };
+CMDB_Asset_Management::
+ "/docs/st-itil.html#CMDB-Asset-Management"
+  represents => { "Text section" };
+Change_management_in_the_enterprise::
+ "/docs/st-itil.html#Change-management-in-the-enterprise"
+  represents => { "Text section" };
+Change_management_vs_convergence::
+ "/docs/st-itil.html#Change-management-vs-convergence"
+  represents => { "Text section" };
+Release_management::
+ "/docs/st-itil.html#Release-management"
+  represents => { "Text section" };
+Incident_and_problem_management::
+ "/docs/st-itil.html#Incident-and-problem-management"
+  represents => { "Text section" };
+Service_Level_Management::
+ "/docs/st-itil.html#Service-Level-Management-_0028SLM_0029"
+  represents => { "Text section" };
+Using_CFEngine_to_implement_ITIL_objectives::
+ "/docs/st-itil.html#Using-CFEngine-to-implement-ITIL-objectives"
+  represents => { "Text section" };
+How_can_CFEngine_or_promises_help_an_enterprise::
+ "/docs/st-itil.html#How-can-CFEngine-or-promises-help-an-enterprise"
+  represents => { "Text section" };
+What_is_maintenance_::
+ "/docs/st-itil.html#What-is-maintenance_003f"
+  represents => { "Text section" };
+ITIL_and_CFEngine_Summary::
+ "/docs/st-itil.html#ITIL-and-CFEngine-Summary"
+  represents => { "Text section" };
+Active_Monitoring::
+ "/docs/st-itil.html#Active-Monitoring"
+  represents => { "Text section" };
+Availability::
+ "/docs/st-itil.html#Availability"
+  represents => { "Text section" };
+Alert::
+ "/docs/st-itil.html#Alert"
+  represents => { "Text section" };
+Audit::
+ "/docs/st-itil.html#Audit"
+  represents => { "Text section" };
+Baseline::
+ "/docs/st-itil.html#Baseline"
+  represents => { "Text section" };
+Benchmark::
+ "/docs/st-itil.html#Benchmark"
+  represents => { "Text section" };
+Capability::
+ "/docs/st-itil.html#Capability"
+  represents => { "Text section" };
+Change_record::
+ "/docs/st-itil.html#Change-record"
+  represents => { "Text section" };
+Chronological_Analysis::
+ "/docs/st-itil.html#Chronological-Analysis"
+  represents => { "Text section" };
+Configuration::
+ "/docs/st-itil.html#Configuration"
+  represents => { "Text section" };
+Configuration_Item::
+ "/docs/st-itil.html#Configuration-Item-_0028CI_0029"
+  represents => { "Text section" };
+Configuration_Management_Database::
+ "/docs/st-itil.html#Configuration-Management-Database-_0028CMDB_0029"
+  represents => { "Text section" };
+Document::
+ "/docs/st-itil.html#Document"
+  represents => { "Text section" };
+Emergency_Change::
+ "/docs/st-itil.html#Emergency-Change"
+  represents => { "Text section" };
+Error::
+ "/docs/st-itil.html#Error"
+  represents => { "Text section" };
+Event::
+ "/docs/st-itil.html#Event"
+  represents => { "Text section" };
+Exception__Failure__Event__Summary::
+ "/docs/st-itil.html#Exception"
+  represents => { "Text section" };
+Failure::
+ "/docs/st-itil.html#Failure"
+  represents => { "Text section" };
+Incident::
+ "/docs/st-itil.html#Incident"
+  represents => { "Text section" };
+Monitoring::
+ "/docs/st-itil.html#Monitoring"
+  represents => { "Text section" };
+Passive_Monitoring::
+ "/docs/st-itil.html#Passive-Monitoring"
+  represents => { "Text section" };
+Policy::
+ "/docs/st-itil.html#Policy"
+  represents => { "Text section" };
+Proactive_Monitoring__Problem__Policy__Summary::
+ "/docs/st-itil.html#Proactive-Monitoring"
+  represents => { "Text section" };
+Problem::
+ "/docs/st-itil.html#Problem"
+  represents => { "Text section" };
+Promise__Reactive_Monitoring__Problem__Summary::
+ "/docs/st-itil.html#Promise"
+  represents => { "Text section" };
+Reactive_Monitoring::
+ "/docs/st-itil.html#Reactive-Monitoring"
+  represents => { "Text section" };
+Record::
+ "/docs/st-itil.html#Record"
+  represents => { "Text section" };
+Recovery::
+ "/docs/st-itil.html#Recovery"
+  represents => { "Text section" };
+Remediation::
+ "/docs/st-itil.html#Remediation"
+  represents => { "Text section" };
+Repair::
+ "/docs/st-itil.html#Repair"
+  represents => { "Text section" };
+Release__Request_for_Change__Repair__Summary::
+ "/docs/st-itil.html#Release"
+  represents => { "Text section" };
+Request_for_Change::
+ "/docs/st-itil.html#Request-for-Change"
+  represents => { "Text section" };
+Abandon_Autonomy_::
+ "/docs/st-itil.html#Abandon-Autonomy_003f"
+  represents => { "Text section" };
+Resilience::
+ "/docs/st-itil.html#Resilience"
+  represents => { "Text section" };
+Restoration::
+ "/docs/st-itil.html#Restoration"
+  represents => { "Text section" };
+Role::
+ "/docs/st-itil.html#Role"
+  represents => { "Text section" };
+Service_desk::
+ "/docs/st-itil.html#Service-desk"
+  represents => { "Text section" };
+Service_Level_Agreement::
+ "/docs/st-itil.html#Service-Level-Agreement"
+  represents => { "Text section" };
+Service_Management::
+ "/docs/st-itil.html#Service-Management"
+  represents => { "Text section" };
+Warning::
+ "/docs/st-itil.html#Warning"
+  represents => { "Text section" };
+}
+

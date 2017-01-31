@@ -1,0 +1,99 @@
+
+bundle knowledge SpecialTopic_Scalability
+
+{
+topics:
+
+"SpecialTopic_Scalability";
+Special_Topics_Guide::
+    "Scalability"  association => a("discusses","Scale and Scalability","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Scalability.html"
+  represents => { "Official CFEngine document"},  about_topics => { "scale and scalability" };
+ "/knowledge/docs/SpecialTopic_Scalability.html"
+  represents => { "Special Topics Guide"},  about_topics => { "scale and scalability" };
+ "/knowledge/docs/SpecialTopic_Scalability.html#Top"
+  represents => { "Text section" }, about_topics => { "scalability" };
+ "/knowledge/docs/SpecialTopic_Scalability.html#Principles-of-scalability"
+  represents => { "manual chapter" }, about_topics => { "principles of scalability"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#What-is-scalability_003f"
+  represents => { "manual section" }, about_topics => { "what is scalability?"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#How-does-CFEngine-address-scale_003f"
+  represents => { "manual section" }, about_topics => { "how does cfengine address scale?"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#What-does-scalability-depend-on_003f"
+  represents => { "manual section" }, about_topics => { "what does scalability depend on?"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#A-product-strategy-for-scaling"
+  represents => { "manual section" }, about_topics => { "a product strategy for scaling"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#A-user-strategy-for-scaling"
+  represents => { "manual section" }, about_topics => { "a user strategy for scaling"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Scalable-CFEngine-architecture"
+  represents => { "manual subsection" }, about_topics => { "scalable cfengine architecture"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Layout-guidelines-for-scalability"
+  represents => { "manual subsection" }, about_topics => { "layout guidelines for scalability"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Unexpected-risks-of-scaling"
+  represents => { "manual section" }, about_topics => { "unexpected risks of scaling"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Scalable-policy-strategy"
+  represents => { "manual chapter" }, about_topics => { "scalable policy strategy"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Policy-guidelines-for-comprehension"
+  represents => { "manual section" }, about_topics => { "policy guidelines for comprehension"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Strategy-for-scaling-policy"
+  represents => { "manual subsection" }, about_topics => { "strategy for scaling policy"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Tactics-for-scaling-policy"
+  represents => { "manual subsection" }, about_topics => { "tactics for scaling policy"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Caching-classes-that-are-expensive-to-compute"
+  represents => { "manual subsection" }, about_topics => { "caching classes that are expensive to compute"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Performance-impact-of-promises"
+  represents => { "manual section" }, about_topics => { "performance impact of promises"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Avoiding-network-traffic"
+  represents => { "manual section" }, about_topics => { "avoiding network traffic"};
+examples:: "/knowledge/docs/SpecialTopic_Scalability.html#Avoiding-network-traffic"
+ about_topics => { "Avoiding network traffic" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Scalability.html#Defining-classes"
+  represents => { "manual section" }, about_topics => { "defining classes"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Copernicus-Knowledge-Map"
+  represents => { "manual section" }, about_topics => { "using the copernicus knowledge map"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#System-Tuning-and-Hub-Optimization"
+  represents => { "manual section" }, about_topics => { "system tuning and hub optimization"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Tuning-the-linux-kernel-for-thousands-of-hosts"
+  represents => { "manual subsection" }, about_topics => { "tuning the linux kernel for thousands of hosts"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Tuning-the-MongoDB-for-thousands-of-hosts"
+  represents => { "manual subsection" }, about_topics => { "tuning the mongodb for thousands of hosts"};
+examples:: "/knowledge/docs/SpecialTopic_Scalability.html#Tuning-the-MongoDB-for-thousands-of-hosts"
+ about_topics => { "Tuning the MongoDB for thousands of hosts" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Scalability.html#Internal-and-external-scalability-of-the-software"
+  represents => { "manual chapter" }, about_topics => { "internal and external scalability of the software"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Best-case-approach-to-external-scalability"
+  represents => { "manual section" }, about_topics => { "best case approach to external scalability"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Failover-and-redundancy"
+  represents => { "manual section" }, about_topics => { "failover and redundancy"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#A-simple-worst-case-approach-to-scalability-_002d-the-star-network"
+  represents => { "manual section" }, about_topics => { "a simple worst case approach to scalability: the star network"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Typical-CFEngine-scales"
+  represents => { "manual subsection" }, about_topics => { "typical cfengine scales"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Scaling-of-updates"
+  represents => { "manual subsection" }, about_topics => { "scaling of updates"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Limitations-on-the-CFDB-hub-database"
+  represents => { "manual subsection" }, about_topics => { "limitations on the cfdb hub database"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Update-storms"
+  represents => { "manual subsection" }, about_topics => { "update storms"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Optimizations-affecting-scalability"
+  represents => { "manual section" }, about_topics => { "optimizations affecting scalability"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#The-role-of-caching-and-indexing"
+  represents => { "manual subsection" }, about_topics => { "the role of caching and indexing"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Deterministic-queue"
+  represents => { "manual subsection" }, about_topics => { "deterministic queue"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Push-versus-pull"
+  represents => { "manual subsection" }, about_topics => { "push versus pull"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Redundancy-and-load-balancing-in-the-Nova-hub"
+  represents => { "manual section" }, about_topics => { "redundancy and load balancing in the nova hub"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Balancing-multiple-policy-servers"
+  represents => { "manual subsection" }, about_topics => { "balancing multiple policy servers"};
+ "/knowledge/docs/SpecialTopic_Scalability.html#Redundant-reporting-hubs-and-recovery"
+  represents => { "manual subsection" }, about_topics => { "redundant reporting hubs and recovery"};
+}
+

@@ -1,0 +1,1882 @@
+<html lang="en">
+<head>
+<title>CFEngine 3 Best Practices</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CFEngine 3 Best Practices">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">CFEngine 3 Best Practices</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Policy-Style-Guide">Policy Style Guide</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine-Best-Practices</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<ul class="menu">
+<li><a accesskey="1" href="#Policy-Style-Guide">Policy Style Guide</a>
+<li><a accesskey="2" href="#Policy-Dos-and-Don_0027ts">Policy Dos and Don'ts</a>
+<li><a accesskey="3" href="#Common-Workflows">Common Workflows </a>
+<li><a accesskey="4" href="#Quality-Assurance-around-CFEngine">Quality Assurance around CFEngine</a>
+</ul>
+
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="Policy-Style-Guide"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Policy-Dos-and-Don_0027ts">Policy Dos and Don'ts</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Policy Style Guide</h2>
+
+<!-- .................................... -->
+<ul class="menu">
+<li><a accesskey="1" href="#Arranging-files">Arranging files</a>
+<li><a accesskey="2" href="#Where-to-define-variables-and-classes">Where to define variables and classes</a>
+<li><a accesskey="3" href="#How-to-choose-and-name-bundles">How to choose and name bundles</a>
+<li><a accesskey="4" href="#How-to-decide-when-to-make-a-bundle">How to decide when to make a bundle</a>
+<li><a accesskey="5" href="#When-to-use-a-paramaterized-bundle-or-method">When to use a paramaterized bundle or method </a>
+<li><a accesskey="6" href="#When-should-classes-be-in-common-bundles">When should classes be in common bundles</a>
+<li><a accesskey="7" href="#When-should-variables-be-in-common-bundles">When should variables be in common bundles</a>
+<li><a accesskey="8" href="#When-should-variables-be-in-local-bundles">When should variables be in local bundles</a>
+</ul>
+
+<div class="node">
+<a name="Arranging-files"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Where-to-define-variables-and-classes">Where to define variables and classes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Policy-Style-Guide">Policy Style Guide</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Style-Guide">Policy Style Guide</a>
+
+</div>
+
+<h3 class="section">1.1 Arranging files</h3>
+
+<p>Base your files on high level services as you do with bundles,
+See <a href="#How-to-choose-and-name-bundles">How to choose and name bundles</a>.  The purpose of breaking up
+policy into files is to limit the scope of the policy to manageable
+amounts, making it easier to understand. It will only be easier to
+understand if the casual user can immediately locate promises from the
+name of the file.
+
+   <p>You can place related files in subdirectories of the inputs to localize them. 
+This also makes updating more efficient, as fewer objects need to be
+checked.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+The Nova/Constellation Knowledge base allows you to search for
+promises, but everything will make more sense if promises are found in
+an intuitive place. 
+</td></tr></table>
+
+<div class="node">
+<a name="Where-to-define-variables-and-classes"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#How-to-choose-and-name-bundles">How to choose and name bundles</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Arranging-files">Arranging files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Style-Guide">Policy Style Guide</a>
+
+</div>
+
+<h3 class="section">1.2 Where to define variables and classes</h3>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Note that all CFEngine variables are globally accessable, by using their
+fully qualified name :<code>$(bundle.variable)</code>, or <code>@(bundle.variable)</code>,
+so placing variables in one place or another does not affect their accessability. 
+</td></tr></table>
+
+   <p>Variables should be defined as close to the place where they are used as possible. 
+The user will expect to find variables defined:
+
+     <ul>
+<li>In the current bundle, first and foremost. 
+<li>In some common bundle for generic, global data. 
+</ul>
+
+<p class="noindent">Variables that define global aspects of configuration, e.g.
+
+     <ul>
+<li>Well known path names, e.g. document root. 
+<li>Site specific data, e.g. the email address of the support unit. 
+</ul>
+   can be defined in <code>common</code> bundles. This places them
+in a neutral context.
+
+   <p>The only reason to define a variable far from its place of use would
+be when writing generically re-usable methods and passing data as
+parameters, See <a href="#When-to-use-a-paramaterized-bundle-or-method">When to use a paramaterized bundle or method</a>. 
+However, re-usability can make rules harder to understand.
+
+<div class="node">
+<a name="How-to-choose-and-name-bundles"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#How-to-decide-when-to-make-a-bundle">How to decide when to make a bundle</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Where-to-define-variables-and-classes">Where to define variables and classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Style-Guide">Policy Style Guide</a>
+
+</div>
+
+<h3 class="section">1.3 How to choose and name bundles</h3>
+
+<p>Use the name of a bundle to represent a meaningful aspect of system adminstration,
+We recommend using a two or three-part name, that explains the context, general subject heading and
+special instance. Names should be service oriented and should guide non-experts to understand
+what they are about. 
+e.g.
+     <ul>
+<li>app_mail_postfix
+<li>app_mail_mailman
+<li>app_web_apache
+<li>app_web_squid
+<li>app_web_php
+<li>app_db_mysql
+<li>garbage_collection
+<li>security_check_files
+<li>security_check_processes
+<li>system_name_resolution
+<li>system_xinetd
+<li>system_root_password
+<li>system_processes
+<li>system_files
+<li>win_active_directory
+<li>win_registry
+<li>win_services
+</ul>
+
+<div class="node">
+<a name="How-to-decide-when-to-make-a-bundle"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#When-to-use-a-paramaterized-bundle-or-method">When to use a paramaterized bundle or method</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#How-to-choose-and-name-bundles">How to choose and name bundles</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Style-Guide">Policy Style Guide</a>
+
+</div>
+
+<h3 class="section">1.4 How to decide when to make a bundle</h3>
+
+<p>Put things into a single bundle if:
+     <ul>
+<li>They belong to the same conceptual aspect of system administration. 
+<li>They do not need to be switched on or off independently. 
+</ul>
+
+   <p>Put things into different bundles if:
+
+     <ul>
+<li>All of the promises in one bundle need to the checked
+before all of the promises in another bundle.
+
+     <li>You need to re-use the promises with different parameters. 
+</ul>
+
+   <p>In general, keep the number of bundles to a minimum. 
+This is a knowledge management issue. Clarity comes from differentiation,
+but only if the number of things is small.
+
+<div class="node">
+<a name="When-to-use-a-paramaterized-bundle-or-method"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#When-should-classes-be-in-common-bundles">When should classes be in common bundles</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#How-to-decide-when-to-make-a-bundle">How to decide when to make a bundle</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Style-Guide">Policy Style Guide</a>
+
+</div>
+
+<h3 class="section">1.5 When to use a paramaterized bundle or method</h3>
+
+<p>If you need to arrange for a <i>managed convergent collection</i> or
+<i>sequence</i> of promises that will occur for a list of (multiple) names or
+promisers, then use a bundle to simplify the code.
+
+   <p>Write the promises, which may or may not be ordered, using a parameter for the
+different names, then call the method passing the list of names as a parameter
+to reduce the amount of code.
+
+<pre class="smallexample">     
+     bundle agent testbundle
+     {
+     vars:
+     
+      "userlist" slist =&gt; { "mark", "jeang", "jonhenrik", "thomas", "eben" };
+     
+     methods:
+     
+      "any" <b>usebundle =&gt; subtest("$(userlist)")</b>;
+     
+     }
+     
+     ###########################################
+     
+     bundle agent subtest(<b>user</b>)
+     
+     {
+     commands:
+     
+      "/bin/echo Fix <b>$(user)</b>";
+     
+     files:
+     
+      "/home/<b>$(user)</b>/."
+     
+         create =&gt;  "true";
+     
+     reports:
+     
+      linux::
+     
+       "Finished doing stuff for <b>$(user)</b>";
+     }
+     
+</pre>
+   <div class="node">
+<a name="When-should-classes-be-in-common-bundles"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#When-should-variables-be-in-common-bundles">When should variables be in common bundles</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#When-to-use-a-paramaterized-bundle-or-method">When to use a paramaterized bundle or method</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Style-Guide">Policy Style Guide</a>
+
+</div>
+
+<h3 class="section">1.6 When should classes be in <code>common</code> bundles?</h3>
+
+     <ul>
+<li>When you need to use them in multiple bundles (because classes defined
+in <code>common</code> bundles have global scope). 
+</ul>
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+
+   <p>Note, if you are converting from CFEngine 2 you should know the following. 
+In CFEngine 2, all classes were global and it was common to define all classes
+in a big unmanageable list. That meant that there was a chance of
+class name collisions.  CFEngine 3 has both local and global classes, allowing you
+to limit the scope of classes and define them more in context.
+
+   </td></tr></table>
+
+<div class="node">
+<a name="When-should-variables-be-in-common-bundles"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#When-should-variables-be-in-local-bundles">When should variables be in local bundles</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#When-should-classes-be-in-common-bundles">When should classes be in common bundles</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Style-Guide">Policy Style Guide</a>
+
+</div>
+
+<h3 class="section">1.7 When should variables be in <code>common</code> bundles?</h3>
+
+     <ul>
+<li>For rationality, if the variable does not belong to any particular
+bundle, because it is used elsewhere. 
+(Qualified variable names e.g. <code>$(mybundle.myname)</code>are always
+globally accessible, so this is a cosmetic issue.) 
+</ul>
+
+<div class="node">
+<a name="When-should-variables-be-in-local-bundles"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#When-should-variables-be-in-common-bundles">When should variables be in common bundles</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Style-Guide">Policy Style Guide</a>
+
+</div>
+
+<h3 class="section">1.8 When should variables be in local bundles?</h3>
+
+     <ul>
+<li>If they are not needed outside the bundles. 
+<li>If they are used for iteration (without qualified scope). 
+<li>If they are tied to a specific aspect of system maintenance represented
+by the bundle, so that accessing <code>$(bundle.var)</code> adds clarity. 
+</ul>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="Policy-Dos-and-Don'ts"></a>
+<a name="Policy-Dos-and-Don_0027ts"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Common-Workflows">Common Workflows</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Policy-Style-Guide">Policy Style Guide</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Policy Dos and Don'ts</h2>
+
+<p>This chapter lists a number of recommended practices.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Never-do">Never do</a>
+<li><a accesskey="2" href="#Avoid">Avoid</a>
+<li><a accesskey="3" href="#Recommended">Recommended</a>
+<li><a accesskey="4" href="#Always-do">Always do</a>
+</ul>
+
+<div class="node">
+<a name="Never-do"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Avoid">Avoid</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Policy-Dos-and-Don_0027ts">Policy Dos and Don'ts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Dos-and-Don_0027ts">Policy Dos and Don'ts</a>
+
+</div>
+
+<h3 class="section">2.1 Never do</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Never-change-system-policy-when-humans-are-absent">Never change system policy when humans are absent</a>
+<li><a accesskey="2" href="#Never-embed-simple-shell-commands">Never embed simple shell commands</a>
+<li><a accesskey="3" href="#Never-manage-more-than-one-cron-job">Never manage more than one cron job</a>
+</ul>
+
+<div class="node">
+<a name="Never-change-system-policy-when-humans-are-absent"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Never-embed-simple-shell-commands">Never embed simple shell commands</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Never-do">Never do</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Never-do">Never do</a>
+
+</div>
+
+<h4 class="subsection">2.1.1 Never change system policy when humans are absent</h4>
+
+<p>Never make system changes when humans are unavailable, e.g. just before
+going offline for the weekend. No matter how careful you have been, mistakes
+can be made and you need to have at least 24 hours experience with a running
+policy to lend it your trust.
+
+<div class="node">
+<a name="Never-embed-simple-shell-commands"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Never-manage-more-than-one-cron-job">Never manage more than one cron job</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Never-change-system-policy-when-humans-are-absent">Never change system policy when humans are absent</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Never-do">Never do</a>
+
+</div>
+
+<h4 class="subsection">2.1.2 Never embed simple shell commands</h4>
+
+<p>Do not embed simple shell commands with CFEngine <code>commands</code> promises, like this:
+
+<pre class="smallexample">     
+     commands:
+     
+        # Don't do this!
+     
+        "/bin/rm -r /tmp/xyz*";
+        "/bin/mkdir /tmp/abcd";
+     
+</pre>
+   <p><b>WHY?</b> Embedded shell commands like this cannot be managed by CFEngine,
+so none of the protections that CFEngine offers can be applied to the process. 
+Moreover, this starts a new process, adding to the burden on the system.
+
+   <p>Most importantly, this approach works like a covert channel, making changes
+that are not directly visible to CFEngine.
+
+<div class="node">
+<a name="Never-manage-more-than-one-cron-job"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Never-embed-simple-shell-commands">Never embed simple shell commands</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Never-do">Never do</a>
+
+</div>
+
+<h4 class="subsection">2.1.3 Never manage more than one cron job</h4>
+
+<p>When you run CFEngine, there is no reason to maintain separate cron
+jobs.  Instead, use CFEngine's time classes to work like a user
+interface for cron.  This allows you to have a single, central
+CFEngine file which contains all the cron jobs on your system without
+losing any of the fine control which cron affords you. All of the
+usual advantages apply:
+     <ul>
+<li>It is easier to keep track of what cron jobs are running on the
+system when you have everything in one place.
+
+     <li>You can use all of your carefully crafted groups and user-defined
+classes to identify which host should run which programs. 
+</ul>
+
+   <p><b>WHY?</b> This gives you a single point of definition for batch jobs. 
+It encapsulates jobs under CFEngine's tutelage, for improved control
+and security. Finally, CFEngine can collate and summarize the outputs
+from multiple scripts in a rational monitoring process.
+
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="Avoid"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Recommended">Recommended</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Never-do">Never do</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Dos-and-Don_0027ts">Policy Dos and Don'ts</a>
+
+</div>
+
+<h3 class="section">2.2 Avoid</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Avoid-writing-custom-scripts">Avoid writing custom scripts</a>
+<li><a accesskey="2" href="#Avoid-running-CFEngine-without-lock-protection">Avoid running CFEngine without lock protection</a>
+</ul>
+
+<div class="node">
+<a name="Avoid-writing-custom-scripts"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Avoid-running-CFEngine-without-lock-protection">Avoid running CFEngine without lock protection</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Avoid">Avoid</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Avoid">Avoid</a>
+
+</div>
+
+<h4 class="subsection">2.2.1 Avoid writing custom scripts</h4>
+
+<p>Do not spend your time writing scripts to embed within CFEngine.  If
+you are doing this, you are not using the potential of CFEngine and
+you are not benefitting from the protections and efficiencies that
+CFEngine offers. Custom scripts should be for your specific business
+operations, not for system maintenance.
+
+   <p>If you are tempted to use scripts to achieve your needs, consider
+using <code>methods</code>, and if necessary consult with support personnel
+for advice.
+
+<div class="node">
+<a name="Avoid-running-CFEngine-without-lock-protection"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Avoid-writing-custom-scripts">Avoid writing custom scripts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Avoid">Avoid</a>
+
+</div>
+
+<h4 class="subsection">2.2.2 avoid running CFEngine without lock protection</h4>
+
+<p>CFEngine's adaptive locking is an important system protection.  You
+should not run CFEngine continuously without this protection, e.g.  by
+running with the &lsquo;<samp><span class="samp">-K</span></samp>&rsquo; flag set, of by setting <code>ifelapsed</code> to
+zero for a promise.
+
+   <p><b>WHY?</b> System inconsistencies can result and unnecessary resources
+will be consumed.
+
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="Recommended"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Always-do">Always do</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Avoid">Avoid</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Dos-and-Don_0027ts">Policy Dos and Don'ts</a>
+
+</div>
+
+<h3 class="section">2.3 Recommended (Try to)</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Try-to-combine-tests-and-operations-during-file-searches">Try to combine tests and operations during file searches</a>
+<li><a accesskey="2" href="#Try-to-make-many-small-changes">Try to make many small changes</a>
+</ul>
+
+<div class="node">
+<a name="Try-to-combine-tests-and-operations-during-file-searches"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Try-to-make-many-small-changes">Try to make many small changes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Recommended">Recommended</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Recommended">Recommended</a>
+
+</div>
+
+<h4 class="subsection">2.3.1 Try to combine tests and operations during file searches</h4>
+
+<p>Searching through files on a disk is one of the most time consuming
+operations for a computer. If you have to do it, make sure that
+you are getting the most for your CPU-cycles and combine operations
+in a single promise. This allows CFEngine to optimize the resource use
+of the system.
+
+<pre class="smallexample">     
+     files:
+     
+        "$(site)/app/webroot/img/inside/extmans"
+            comment =&gt; "Copy the images for the private html documents",
+     <b>     copy_from =&gt; cp("$(kbase)"),
+              perms =&gt; p("root","644"),
+        file_select =&gt; by_name(".*.png"),
+       depth_search =&gt; recurse("1"),</b>
+             action =&gt; ifelapsed("60");
+     
+</pre>
+   <div class="node">
+<a name="Try-to-make-many-small-changes"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Try-to-combine-tests-and-operations-during-file-searches">Try to combine tests and operations during file searches</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Recommended">Recommended</a>
+
+</div>
+
+<h4 class="subsection">2.3.2 Try to make many small changes</h4>
+
+<p>Changes to policy should always be part of a serious and considered
+plan. They should not be <em>ad hoc</em>. That said, consideration of
+changes should not be so time-consuming that it cripples human
+resources, or leads to change-avoidance because it seems daunting.
+
+   <p>It is better to make many small changes than few large changes.  Large
+changes involve many interdependencies, which make them fragile to
+unexpected contingencies. The risk of large changes is high. The risk
+of small changes is low.
+
+   <p>CFEngine makes it easy to make small changes frequently, without
+operational repercussions. As long as humans are on hand during the
+change to observe possible side-effects this.
+
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="Always-do"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Recommended">Recommended</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy-Dos-and-Don_0027ts">Policy Dos and Don'ts</a>
+
+</div>
+
+<h3 class="section">2.4 Always do</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Always-document-promises">Always document promises</a>
+<li><a accesskey="2" href="#Always-keep-coding-to-a-minimum">Always keep coding to a minimum</a>
+<li><a accesskey="3" href="#Always-use-lists-to-make-the-same-promise-about-multiple-objects">Always use lists to make the same promise about multiple objects</a>
+<li><a accesskey="4" href="#Always-use-existing-templates">Always use existing templates</a>
+<li><a accesskey="5" href="#Always-use-the-system-variables-for-system-resources">Always use the system variables for system resources</a>
+<li><a accesskey="6" href="#Always-use-variables-as-pointers-to-paths-and-servers">Always use variables as pointers to paths and servers</a>
+</ul>
+
+<div class="node">
+<a name="Always-document-promises"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Always-keep-coding-to-a-minimum">Always keep coding to a minimum</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Always-do">Always do</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Always-do">Always do</a>
+
+</div>
+
+<h4 class="subsection">2.4.1 Always document promises</h4>
+
+<p>Always add comment attributes to your promises to explain the intention.
+
+<pre class="smallexample">     
+     files:
+     
+      # This is a throw-away comment, below is a full-bodied promise
+     
+        "/tmp/testfile"                      # promiser
+     
+          <b>comment =&gt; "This is for keeps...", # Live comment</b>
+           create =&gt; "true",                 # Constraint 1
+            perms =&gt; p("612");               # Constraint 2
+     
+</pre>
+   <p>If a promise has a stakeholder that is worthy of special mention, then
+use the promisee fields to add the name of this person.
+
+<pre class="smallexample">     
+     files:
+     
+        "/tmp/testfile" -&gt; { "stakeholder@company.com" },
+     
+          <b>comment =&gt; "This is for keeps...", # Live comment</b>
+           create =&gt; "true",                 # Constraint 1
+            perms =&gt; p("612");               # Constraint 2
+     
+</pre>
+   <p>If a promise depends on another promise being run before it, use the
+<code>depends_on</code> fields to document the handle of the other prior promise. 
+This allows tracing of the impact chain.
+
+<pre class="smallexample">     
+     files:
+     
+      "/tmp"
+     
+           <b>handle =&gt; "make_temp",</b>
+          comment =&gt; "This is for keeps...", # Live comment
+           create =&gt; "true",                 # Constraint 1
+            perms =&gt; p("612");               # Constraint 2
+     
+     
+        "/tmp/testfile"
+     
+       <b>depends_on =&gt; { "make_temp" },</b>
+          comment =&gt; "This is for keeps...", # Live comment
+           create =&gt; "true",                 # Constraint 1
+            perms =&gt; p("612");               # Constraint 2
+     
+</pre>
+   <div class="node">
+<a name="Always-keep-coding-to-a-minimum"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Always-use-lists-to-make-the-same-promise-about-multiple-objects">Always use lists to make the same promise about multiple objects</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Always-document-promises">Always document promises</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Always-do">Always do</a>
+
+</div>
+
+<h4 class="subsection">2.4.2 Always keep coding to a minimum</h4>
+
+<p>If you are coming to CFEngine from another scripting langauge, you
+will probably be tempted to add a lot of `logic' to your CFEngine
+program, testing whether things are true and trying to control the
+order of things. This is not necessary. You should think of each
+promise as being a self-contained `nugget' that requires little
+additional coding. The more coding you add, the more fragile
+a configuration becomes.
+
+   <p>The hardest part of using CFEngine for programmers is letting go
+of the reins.
+
+<div class="node">
+<a name="Always-use-lists-to-make-the-same-promise-about-multiple-objects"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Always-use-existing-templates">Always use existing templates</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Always-keep-coding-to-a-minimum">Always keep coding to a minimum</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Always-do">Always do</a>
+
+</div>
+
+<h4 class="subsection">2.4.3 Always use lists to make the same promise about multiple objects</h4>
+
+<p>If you have a number of system resources that all make the same
+promise, then use lists to iterate over the resources in a single
+promise, rather than coding the same promise many times.
+
+<pre class="smallexample">     vars:
+     
+       "watch_files" slist =&gt;  {
+                               "/etc/passwd",
+                               "/etc/shadow",
+                               "/etc/group",
+                               "/etc/services"
+                               };
+     files:
+     
+        "$(watch_files)"
+     
+           comment      =&gt; "Change detection on the above",
+           changes      =&gt; change_management_trip_wire;
+     
+</pre>
+   <div class="node">
+<a name="Always-use-existing-templates"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Always-use-the-system-variables-for-system-resources">Always use the system variables for system resources</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Always-use-lists-to-make-the-same-promise-about-multiple-objects">Always use lists to make the same promise about multiple objects</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Always-do">Always do</a>
+
+</div>
+
+<h4 class="subsection">2.4.4 Always use existing templates</h4>
+
+<p>Familiarize yourself with the current <code>CFEngine_stdlib.cf</code> file in the
+software distribution. This contains many body templates, e.g.
+
+<pre class="smallexample">     local_cp() remote_cp() secure_cp() if_elapsed() recurse()
+</pre>
+   <p class="noindent">Use these pre-existing body templates whenever possible, rather
+than inventing new ones. For example:
+
+<pre class="smallexample">     
+     bundle agent update
+     {
+     files:
+     
+      "/path/to/copy"
+     
+         comment =&gt; "Update the policy files from the master",
+         perms =&gt; u_p("600"),
+         copy_from =&gt; <b>local_cp</b>("$(master_location)","localhost"),
+         depth_search =&gt; <b>recurse</b>("inf");
+     
+     }
+</pre>
+   <p><b>WHY?</b> The comprehensibility of your code to consultants and new
+employees is enhanced by standardization of practice. If the global
+CFEngine community uses the same set of idioms, then communicating
+policy will be simpler.
+
+<div class="node">
+<a name="Always-use-the-system-variables-for-system-resources"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Always-use-variables-as-pointers-to-paths-and-servers">Always use variables as pointers to paths and servers</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Always-use-existing-templates">Always use existing templates</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Always-do">Always do</a>
+
+</div>
+
+<h4 class="subsection">2.4.5 Always use the system variables for system resources</h4>
+
+<p>CFEngine provides indirection (pointers) to particular resources,
+through its &lsquo;<samp><span class="samp">sys</span></samp>&rsquo; variable context. These variables adapt
+to the operating system and user id under which CFEngine is run. 
+Your policy will be more readily portable and you will need to
+code fewer exceptions if you use CFEngine's automatically adapting
+primitives, e.g. instead of writing <samp><span class="file">/etc/resolv.conf</span></samp> for the
+name-service configuration file, use <code>$(sys.resolv)</code>.
+
+<pre class="smallexample">     
+     files:
+     
+       "<b>$(sys.resolv)</b>"
+     
+          comment       =&gt; "Add lines to the resolver configuration",
+          create        =&gt; "true",
+          edit_line     =&gt; resolver,
+          edit_defaults =&gt; std_edits;
+     
+</pre>
+   <div class="node">
+<a name="Always-use-variables-as-pointers-to-paths-and-servers"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Always-use-the-system-variables-for-system-resources">Always use the system variables for system resources</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Always-do">Always do</a>
+
+</div>
+
+<h4 class="subsection">2.4.6 Always use variables as pointers to paths and servers</h4>
+
+<p>You should avoid coding paths and names of resources directly in
+promises. Use instead a local or possible global variable to point to
+the resource instead. This brings consistency to the coding, often
+shortens the references, and provides a <i>single point of definition</i>
+for change.
+
+<pre class="smallexample">     
+     bundle agent update
+     {
+     vars:
+     
+      # A standard location for the source point (single point of definition)
+     
+      "master_location" string =&gt; "<b>$(sys.workdir)</b>/masterfiles";
+     
+     files:
+     
+      "$(sys.workdir)/inputs"
+     
+         comment =&gt; "Update the policy files from the master",
+         perms =&gt; u_p("600"),
+         copy_from =&gt; u_cp("<b>$(master_location)</b>","localhost"),
+         depth_search =&gt; recurse("inf");
+     
+     }
+     
+</pre>
+   <div class="node">
+<a name="Common-Workflows"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Quality-Assurance-around-CFEngine">Quality Assurance around CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Policy-Dos-and-Don_0027ts">Policy Dos and Don'ts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 Common Workflows</h2>
+
+<p>This chapter concerns `workflow processes' that should typically be
+dealt with on systems. A workflow process is represented by a
+<i>promise bundle</i> in CFEngine.  None of the proposals here should be
+considered mandatory in any sense, but they do represent the norm.
+
+   <p>We refer users to the CFEngine solutions guide for implementation details of
+specific solutions.
+
+<!-- ********************************************************************** -->
+<ul class="menu">
+<li><a accesskey="1" href="#Anomaly-Monitoring">Anomaly Monitoring</a>
+<li><a accesskey="2" href="#Batch-Jobs">Batch Jobs</a>
+<li><a accesskey="3" href="#Garbage-Collection">Garbage Collection</a>
+<li><a accesskey="4" href="#Knowledge-Updating">Knowledge Updating</a>
+<li><a accesskey="5" href="#Name-Service">Name Service</a>
+<li><a accesskey="6" href="#Policy-Distribution">Policy Distribution</a>
+<li><a accesskey="7" href="#Services">Services</a>
+<li><a accesskey="8" href="#Security">Security</a>
+<li><a accesskey="9" href="#Software-Management">Software Management</a>
+</ul>
+
+<div class="node">
+<a name="Anomaly-Monitoring"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Batch-Jobs">Batch Jobs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Common-Workflows">Common Workflows</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-Workflows">Common Workflows</a>
+
+</div>
+
+<h3 class="section">3.1 Anomaly Monitoring</h3>
+
+<p class="noindent"><b>Purpose:</b>
+
+   <p>The purpose of anomaly monitoring is to understand the stability
+of a system, both in terms of its run-time performance and its
+architectural structure. Sudden changes on a system can be separated
+from the normal slow variations.
+
+<p class="noindent"><b>Remarks:</b>
+
+   <p>Anomaly detection is enabled and performed by the <code>cf-monitord</code> daemon. 
+Reporting of anomalies is not automatic however. Alerts must be promised
+explicitly. This is normally handled by a <code>reports</code> promise.
+
+   <p>Change detection of the file system is handled by <code>files</code>
+promises in <code>cf-agent</code>.
+
+<p class="noindent"><b>Example:</b>
+
+<pre class="smallexample">     
+     bundle agent anomalies
+     {
+     vars:
+     
+       "sysdir" string =&gt; "/tmp";
+       "files" slist =&gt; { "passwd", "shadow" };
+     
+     classes:
+     
+       "no_$(files)" not =&gt; fileexists("$(sysdir)/$(files)");
+     
+     files:
+     
+       # backup
+     
+       "/var/cfengine/inputs/$(files)"
+     
+           copy_from =&gt; emergency_save("$(sysdir)/$(files)");
+     
+       # restore
+     
+       "/tmp/$(files)"
+     
+            copy_from =&gt; emergency_save("/var/cfengine/inputs/$(files)"),
+           ifvarclass =&gt; "no_$(files)";
+     
+     reports:
+     
+      rootprocs_high_dev2::
+     
+        "RootProc anomaly high 2 dev on $(mon.host) at $(mon.env_time)
+         measured value $(mon.value_rootprocs) av $(mon.average_rootprocs)
+         pm $(mon.stddev_rootprocs)"
+     
+           showstate =&gt; { "rootprocs" };
+     
+      entropy_www_in_high&amp;anomaly_hosts.www_in_high_anomaly::
+     
+        "HIGH ENTROPY Incoming www anomaly high anomaly dev!! on $(mon.host)
+         - measured value $(mon.value_www_in) av $(mon.average_www_in) pm
+          $(mon.stddev_www_in)"
+     
+           showstate =&gt; { "incoming.www" };
+     
+      entropy_www_in_low.anomaly_hosts.www_in_high_anomaly::
+     
+        "LOW ENTROPY Incoming www anomaly high anomaly dev!! on $(mon.host)
+           at $(mon.env_time)
+          - measured value $(svalue_www_in) av $(average_www_in) pm $(stddev_www_in)"
+     
+          showstate =&gt; { "incoming.www" };
+     
+      # etc.
+     
+     }
+     
+</pre>
+   <!-- ********************************************************************** -->
+<div class="node">
+<a name="Batch-Jobs"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Garbage-Collection">Garbage Collection</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Anomaly-Monitoring">Anomaly Monitoring</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-Workflows">Common Workflows</a>
+
+</div>
+
+<h3 class="section">3.2 Batch Jobs</h3>
+
+<p class="noindent"><b>Purpose:</b>
+
+   <p>Batch jobs are run on systems in order to perform basic house keeping functions such
+as updating databases or executing business related tasks.
+
+<p class="noindent"><b>Remarks:</b>
+
+   <p>Batch jobs should not be run every time CFEngine runs, so you need to limit the
+execution of each one carefully, using:
+
+     <ul>
+<li>Classes
+Classes for time and location. 
+<li>Locks
+The <code>ifelapsed</code> parameter determined how much time has to have elapsed
+before the job can be executed again. 
+</ul>
+
+<p class="noindent"><b>Example:</b>
+
+<pre class="smallexample">     
+     bundle agent example
+     {
+     commands:
+     
+        # Exec on the first quarter after noon on Mondays
+     
+         Hr12.Q1.Monday::
+     
+           "/path/myscript -arg1 -arg2";
+     
+        # Exec every second quarter past hour, every day
+     
+         Q2::
+     
+           "/path/otherscript";
+     
+     }
+     
+</pre>
+   <!-- ********************************************************************** -->
+<div class="node">
+<a name="Garbage-Collection"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Knowledge-Updating">Knowledge Updating</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Batch-Jobs">Batch Jobs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-Workflows">Common Workflows</a>
+
+</div>
+
+<h3 class="section">3.3 Garbage Collection</h3>
+
+<p class="noindent"><b>Purpose:</b>
+
+   <p>Garbage collection is required on systems to prevent temporary or
+antiquated files from consuming all available storage resources. It is
+impossible for a system to survive in the long term without throwing
+some data away.
+
+<p class="noindent"><b>Remarks:</b>
+
+   <p>Needless to say, care should be exercised when deleting anything from the system. 
+There are many strategies to select carefully what is to be deleted. 
+The <code>file_select</code> constraint is your friend.
+
+<p class="noindent"><b>Example:</b>
+
+<pre class="smallexample">     
+     
+     bundle agent garbage_collection
+     {
+     files:
+     
+       "$(sys.workdir)/outputs"
+     
+         comment =&gt; "Garbage collection of any output files",
+         delete =&gt; tidy,
+         <b>file_select =&gt; days_old("3")</b>,
+         depth_search =&gt; recurse("inf");
+     
+       "/tmp"
+     
+         comment =&gt; "Garbage collection of any temporary files",
+         delete =&gt; tidy,
+         <b>file_select =&gt; days_old("3")</b>,
+         depth_search =&gt; recurse("inf");
+     
+     }
+     
+</pre>
+   <!-- ********************************************************************** -->
+<div class="node">
+<a name="Knowledge-Updating"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Name-Service">Name Service</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Garbage-Collection">Garbage Collection</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-Workflows">Common Workflows</a>
+
+</div>
+
+<h3 class="section">3.4 Knowledge Updating</h3>
+
+<p class="noindent"><b>Purpose:</b>
+<b>Remarks:</b>
+<b>Example:</b>
+
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="Name-Service"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Policy-Distribution">Policy Distribution</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Knowledge-Updating">Knowledge Updating</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-Workflows">Common Workflows</a>
+
+</div>
+
+<h3 class="section">3.5 Name Service</h3>
+
+<p class="noindent"><b>Purpose:</b>
+Every computer needs to know how to perform name directory lookups in the Domain
+Name Service. On Unix systems this requires it to manage the <samp><span class="file">/etc/resolv.conf</span></samp>
+file.
+
+<p class="noindent"><b>Remarks:</b>
+
+   <p>Always use the <code>$(sys.resolv)</code> variable to refer to the file.
+
+<p class="noindent"><b>Example:</b>
+
+<pre class="smallexample">     bundle agent name_resolution
+     
+     {
+     files:
+     
+       "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
+     
+          comment       =&gt; "Add lines to the resolver configuration",
+          create        =&gt; "true",
+          edit_line     =&gt; resolver,
+          edit_defaults =&gt; std_edits;
+     
+     }
+     
+     bundle edit_line resolver
+     
+     {
+     delete_lines:
+     
+       "search.*";
+       "nameserver 80.65.58.31";
+     
+     insert_lines:
+     
+       "search CFEngine.com" location =&gt; start;
+       "nameserver 212.112.166.18";
+       "nameserver 212.112.166.22";
+     }
+     
+     
+</pre>
+   <!-- ********************************************************************** -->
+<div class="node">
+<a name="Policy-Distribution"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Services">Services</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Name-Service">Name Service</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-Workflows">Common Workflows</a>
+
+</div>
+
+<h3 class="section">3.6 Policy Distribution</h3>
+
+<p class="noindent"><b>Purpose:</b>
+
+   <p>In a centralized model of policy suggestion, policy updates are downloaded
+from a single point of definition, from one or more policy servers. 
+Maintaining this flow of communication from `central command' is what maintains
+that centralized command.
+
+<p class="noindent"><b>Remarks:</b>
+It is not mandatory to centralize management, but usually there needs to
+be some automated process.
+
+<p class="noindent"><b>Example:</b>
+
+<pre class="smallexample">     
+     vars:
+     
+      "master_location" string =&gt; "/var/cfengine/masterfiles";
+     
+      "policy_server"   slist =&gt; { "62.109.39.150" },
+                        comment =&gt; "IP address to locate your policy host.";
+     
+     files:
+     
+       "/var/cfengine/inputs"
+     
+         handle =&gt; "update_policy",
+         perms =&gt; system("600"),
+         copy_from =&gt; u_scp("$(master_location)",@(policy_server)),
+         depth_search =&gt; recurse("inf"),
+         file_select =&gt; input_files,
+         action =&gt; immediate;
+     
+</pre>
+   <!-- ********************************************************************** -->
+<div class="node">
+<a name="Services"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Security">Security</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Policy-Distribution">Policy Distribution</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-Workflows">Common Workflows</a>
+
+</div>
+
+<h3 class="section">3.7 Services</h3>
+
+<p class="noindent"><b>Purpose:</b>
+Keeping services up and running, or taking down services that should not be
+running is both a matter of productivity and security.
+
+<p class="noindent"><b>Remarks:</b>
+<b>Example:</b>
+
+<pre class="smallexample">     
+     bundle agent services
+     {
+     vars:
+      "serlist" slist =&gt; { "dhcp", "ntp", "sshd" };
+     
+       "sindex" int =&gt; readstringarray
+                         (
+                         "service",
+                         "$(g.workdir)/inputs/fixservices-array",
+                         "#[^\n]*",
+                         ":",
+                         "10",
+                         "4000"
+                         );
+     
+     methods:
+     
+              "any" usebundle =&gt; fixservice
+                  (
+                  "$(service[$(serlist)][0])",
+                  "$(service[$(serlist)][1])",
+                  "$(service[$(serlist)][2])",
+                  "$(service[$(serlist)][3])",
+                  "$(service[$(serlist)][4])"
+                  );
+     }
+     
+     bundle agent fixservice(service,tfiles,mfiles,procs,restart)
+     {
+     files:
+     
+      "$(tfiles)"
+           perms =&gt; system("0600","root","root"),
+       copy_from =&gt; mycopy("$(g.masterfiles)/config/$(mfiles)","$(g.phost)"),
+         classes =&gt; cdefine( "$(service)_restart", "failed");
+     
+     processes:
+     
+       "$(procs)"
+     
+           restart_class =&gt; canonify("$(service)_restart");
+     
+     commands:
+     
+       "$(restart)"
+     
+           ifvarclass =&gt;  canonify("$(service)_restart");
+     }
+     
+</pre>
+   <!-- ********************************************************************** -->
+<div class="node">
+<a name="Security"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Software-Management">Software Management</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Services">Services</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-Workflows">Common Workflows</a>
+
+</div>
+
+<h3 class="section">3.8 Security</h3>
+
+<p class="noindent"><b>Purpose:</b>
+Security is a vast topic. You need to start with a security policy
+and then translate this into promises about the system. For instance
+you might promise file permissions and access rules. You might promise
+change monitoring or anomaly detection.
+
+<p class="noindent"><b>Remarks:</b>
+This is an open ended topic. Security should be discussed as a
+human process, since most breaches come from within the system. 
+CFEngine can then be used to implement hardening measures, and
+monitoring of important assets.
+
+<p class="noindent"><b>Example:</b>
+
+<pre class="smallexample">     vars:
+     
+       "system_files" slist =&gt; {
+                               "/etc/passwd",
+                               "/etc/group",
+                               "/etc/services"
+                               };
+     
+       "secret_files" slist =&gt; {
+                               "/etc/shadow"
+                               };
+     
+     files:
+     
+     
+        "$(secret_files)"
+     
+           comment      =&gt; "Check permissions are secret on the above",
+           perms        =&gt; mo("o-rwx","root");
+     
+        "$(system_files)"
+     
+           comment      =&gt; "Check permissions are correct on the above",
+           perms        =&gt; mo("644","root");
+     
+     
+</pre>
+   <!-- ********************************************************************** -->
+<div class="node">
+<a name="Software-Management"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Security">Security</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-Workflows">Common Workflows</a>
+
+</div>
+
+<h3 class="section">3.9 Software Management</h3>
+
+<p class="noindent"><b>Purpose:</b>
+Installing software and updating
+
+   <p>These days most systems have some kind of package based management
+system.  These vary in their intelligence from self-updating robots to
+simple dumb file repositories. CFEngine can manage the installation
+and subsequent customization/configuration.
+
+<p class="noindent"><b>Remarks:</b>
+Installing software from some kind of source is only the first step. 
+Thereafter, special settings must be harmonized with security policies
+and operational requirements.
+
+<p class="noindent"><b>Example:</b>
+
+<pre class="smallexample">     
+     vars:
+     
+       "match_package" slist =&gt; {
+                                "apache2",
+                                "apache2-mod_php5",
+                                "apache2-prefork",
+                                "php5"
+                                };
+     
+     packages:
+     
+       "$(match_package)"
+     
+          package_policy =&gt; "add",
+          package_method =&gt; yum,
+          classes =&gt; ok("software_ok");
+     
+</pre>
+   <!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="Quality-Assurance-around-CFEngine"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Common-Workflows">Common Workflows</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">4 Quality Assurance around CFEngine</h2>
+
+<p>A powerful tool like CFEngine can do great good, or cause enormous
+damage if used carelessly.  It is essential to have a strict
+discipline when making changes. This is a human quality assurance
+process.
+
+   <p>Your general rule of thumb should be: make small changes, not big releases.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Policy-changes">Policy changes</a>
+<li><a accesskey="2" href="#The-policy-decision-flow">The policy decision flow</a>
+<li><a accesskey="3" href="#Configuration-version-control-and-rollback">Configuration version control and rollback</a>
+<li><a accesskey="4" href="#Delegating-responsibility">Delegating responsibility</a>
+</ul>
+
+<div class="node">
+<a name="Policy-changes"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-policy-decision-flow">The policy decision flow</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Quality-Assurance-around-CFEngine">Quality Assurance around CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Quality-Assurance-around-CFEngine">Quality Assurance around CFEngine</a>
+
+</div>
+
+<h3 class="section">4.1 Policy changes</h3>
+
+<p>Changes to policy should always be part of a serious and considered
+plan. They should not be <em>ad hoc</em>. That said, consideration of
+changes should not be so time-consuming that it cripples human
+resources, or leads to change-avoidance because it seems daunting.
+
+   <p>It is better to make many small changes than few large changes.  Large
+changes involve many interdependencies, which make them fragile to
+unexpected contingencies. The risk of large changes is high. The risk
+of small changes is low.
+
+   <p>CFEngine makes it easy to make small changes frequently, without
+operational repercussions. As long as humans are on hand during the
+change to observe possible side-effects this.
+
+   <p>Consider the following issues in quality assurance:
+     <ul>
+<li>Create a schedule and policy for major changes. 
+<li>Plan to acquire the complete set of components for release. 
+<li>Assign human roles as well as machine roles for changes. 
+<li>Label new policy release items uniquely for tracking. 
+<li>Always document the policy changes using the comment fields. 
+<li>Test prior to releasing into the production environment. 
+<li>Test in the production environment on a small number of machines whenever possible. 
+</ul>
+
+   <div class="block-image"><img src="cfengine-bdma.png" alt="The policy lifecycle"></div>
+
+   <p>There are four commonly cited phases in managing systems, summarized
+as follows (see figure):
+
+     <ul>
+<li>Build
+<li>Deploy
+<li>Manage
+<li>Audit
+</ul>
+
+   <p>These separate phases originate with a model of system management
+based on transactional changes.  CFEngine's conception of management
+is some different, as transaction processing is not a good model for
+system management, but we can use this template to see how
+CFEngine works differently.
+
+     <dl>
+<dt><em>Build</em><dd>A system is based on a number of decisions and resources that need to
+be `built' before they can be implemented. Building the trusted
+foundations of a system are the key to guiding its development.  You
+don't need to decide every detail, just enough to build trust and
+predictability into your system.
+
+     <p>In CFEngine, what you build is a template of proposed promises for the
+machines in an organization such that, if the machines all make and
+keep these promises, the system will function seamlessly as
+planned. This is how it works in a human organization, and this is how
+is works for computers too.
+
+     <br><dt><em>Deploy</em><dd>Deploying really means implementing the policy that was already
+decided.  In transaction systems, one tries to push out changes one by
+one, hence `deploying' the decision. In CFEngine you simply publish
+your policy (in CFEngine parlance these are `promise proposals') and
+the machines see the new proposals and can adjust accordingly. Each
+machine runs an agent that is capable of implementing policies and
+maintaining them over time without further assistance.
+
+     <br><dt><em>Manage</em><dd>Once a decision is made, unplanned events will occur. Such
+incidents usually set off alarms and humans rush to make new transactions
+to repair them. In CFEngine, the autonous agent manages the system,
+and you only have to deal with rare events that cannot be dealt with
+automatically.
+
+     <br><dt><em>Audit</em><dd>In traditional configuration systems, the outcome is far from clear
+after a one-shot transaction, so one audits the system
+to determine to discover what actually happened. In CFEngine, changes
+are not just initiated once, but locally audited and maintained. 
+Decision outcomes are assured by design in CFEngine and maintained
+automatically, so the main worry is managing conflicting
+intentions. Users can sit back and examine regular reports of
+compliance generated by the agents, without having to arrange
+for new `roll out' transactions.
+
+   </dl>
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<em>ROLL-OUT and ROLL-BACK?  You should not think of CFEngine with a
+roll-out system, i.e. one that attempts to force out absolute changes
+and perhaps reverse them in case of error. Roll-out and roll-back are
+theoretically flawed concepts that only sometimes work in practice. 
+With CFEngine, you publish a sequences of policy revisions, always
+moving forward (because like it or not, time only goes in one
+direction).  All of the desired-state changes are managed locally by
+each individual computer, and continuously repaired to ensure on-going
+compliance with policy. </em>
+</td></tr></table>
+
+<div class="node">
+<a name="The-policy-decision-flow"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Configuration-version-control-and-rollback">Configuration version control and rollback</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Policy-changes">Policy changes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Quality-Assurance-around-CFEngine">Quality Assurance around CFEngine</a>
+
+</div>
+
+<h3 class="section">4.2 The policy decision flow</h3>
+
+<p>CFEngine does not make many absolute choices. Almost everything about
+its behaviour is matter of policy and can be changed.  However, a
+structure for use, like the following, is recommended (see figure).
+
+   <p>In order to keep operations as simple as possible, CFEngine maintains
+a private working directory on each machine referred to in
+documentation as WORKDIR and in policy by the variable
+<code>$(sys.workdir)</code>. By default, this is located at
+<samp><span class="file">/var/cfengine</span></samp> or <samp><span class="file">C:\var\CFEngine</span></samp>. It contains everything
+CFEngine needs to run.
+
+   <p>The figure below shows how decisions flow through the parts of a system.
+
+   <div class="block-image"><img src="arch.png" alt="The CFEngine architecture"></div>
+
+     <ul>
+<li>It makes sense to have a single point of coordination.  Decisions are
+therefore usually made in a single location (the Policy Definition
+Point).  The history of decisions and changes can be tracked by a
+version control system of your choice (e.g. SubVersion).
+
+     <li>Decisions are made by editing CFEngine's policy file
+<samp><span class="file">promises.cf</span></samp> on one of its included children. This process is
+carried out off-line.
+
+     <li>Once decisions have been formalized and coded, this new policy is
+copied <em>manually</em> (a human decision) to a <em>decision
+distribution point</em>, which by default is located in the directory
+<samp><span class="file">/var/cfengine/masterfiles</span></samp> on all policy distribution servers.
+
+     <p>In this introduction, we shall assume that there is only one central
+policy distribution server, a specially-appointed server which is
+referred to simple as the <code>policy server</code>.
+
+     <li>Every client machine contacts the policy server and downloads these
+updates. The policy server can be replicated if the number of clients
+is very large, but we shall assume here that there is only one policy
+server. 
+</ul>
+
+   <p>Once a client machine has a copy of the policy, it extracts only those
+promise proposals that are relevant to it, and implements any changes
+without human assistance.  This is how CFEngine manages change.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+
+   <p><em>WHY DO THIS? CFEngine tries to minimize dependencies by decoupling
+processes. By following this pull-based architecture, CFEngine will
+tolerate network outages and will recover from deployment errors
+easily. By placing the burden of responsibility for decision at the
+top, and for implementation at the bottom, we avoid needless fragility
+and keep two independent quality assurance processes apart.</em>
+
+   </td></tr></table>
+
+<!-- *********************************************************** -->
+<div class="node">
+<a name="Configuration-version-control-and-rollback"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Delegating-responsibility">Delegating responsibility</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-policy-decision-flow">The policy decision flow</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Quality-Assurance-around-CFEngine">Quality Assurance around CFEngine</a>
+
+</div>
+
+<h3 class="section">4.3 Version control and rollback</h3>
+
+<p>CFEngine does not provide specific tools for versioning promise
+specifications. It is recommended to use a tool such as subversion for
+this.  CFEngine does allow you to track changes and keep versions of
+non-trivial changes, such as file content changes.
+
+   <p>Subversion maintains revision numbers on files. It is useful to be
+able to refer to version names or numbers also in CFEngine. A version
+string can be added to files as follows:
+<pre class="smallexample">     body common control
+     {
+     version =&gt; 1.2.3
+     }
+     
+</pre>
+   <p>This defines the version number of a set of configuration files
+which is referred to in reference messages from CFEngine.
+
+   <p>When CFEngine saves a current version of a file that it is modifying
+or replacing, by default such files are given a new extension and
+remain within the same directory which they were
+encountered. Alternatively, one can specify a repository directory to
+which such files can be moved instead. The repository location is
+specified in the <code>control</code> section:
+<pre class="smallexample">     
+     body agent control
+     {
+     default_respository =&gt; "/var/cfengine/repository";
+     }
+     
+</pre>
+   <p>Files moved to the repository are given names reflecting their full path, with slashes replaced
+by underscore characters. For some, this creates a clearer overview of the
+changes that have occurred.
+
+<!-- *********************************************************** -->
+<div class="node">
+<a name="Delegating-responsibility"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Configuration-version-control-and-rollback">Configuration version control and rollback</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Quality-Assurance-around-CFEngine">Quality Assurance around CFEngine</a>
+
+</div>
+
+<h3 class="section">4.4 Delegating responsibility</h3>
+
+<p>In a large organization, you delegate responsibility for different
+issues to different teams.  CFEngine has no meta-access control
+mechanism which can decide who may write policy rules on what
+issue. To create such a mechanism, there would have to be a monitor
+which could identify users, and an authority mechanism that would
+disallow certain users to write rules of certain types about certain
+objects on certain hosts. Although it is <em>possible</em> to create such
+a system, it would be both technically difficult, very cumbersome
+to use and would add a whole new level of complexity to policy and
+potential error to the configuration process.
+
+   <p>To keep matters as simple as possible, we avoid this and propose a
+different approach. Promise theory (CFEngine's basis) reveals a
+straightforward answer to model the security implications of this (see
+the figure of the bow-tie structure). A simple method of delegating is
+the following.
+
+     <ol type=1 start=1>
+<li>Delegate responsibility for different issues to admin teams 1,2,3, etc. 
+<li>Make each of these teams responsible for version control of their own
+configuration rules. 
+<li>Make an intermediate agent responsible for collating and vetting the rules, checking for
+irregularities and conflicts. This agent must promise to disallow rules by
+one team that are the responsibility of another team. The agent could be a
+layer of software, but a cheaper and more manageable solution is the make this
+another group of one or more humans.
+
+     <li>Make the resulting collated configuration version controlled. Publish
+approved promises for all hosts to download from a trusted source.
+
+        </ol>
+
+   <p>A review procedure for policy promises is a good
+solution if you want to delegate responsibility for different parts of
+a policy to different sources. Human judgement is irreplaceable, and tools
+can be added to make conflicts easier to detect.
+
+   <p>Promise theory underlines that, if a host of computing device accepts
+policy from any source, then it is alone and entirely responsible for
+this decision. The ultimate responsibility for the published version
+policy is the vetting agent. This creates a shallow hierarchy, but
+there is no reason why this formal body could not be comprised of
+representatives from the multiple teams.
+
+<div align="center"><img src="delegate.png" alt="Delegation of responsibility requires vetting access"></div>
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+
+   <p>Run several CFEngines? Another way to delegate CFEngine control for
+users that only require limited privileges would be to run several
+agents as non-root users. This only works however if the tasks
+delegated are very self-contained and require no special privilege.
+
+   </td></tr></table>
+
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine-Best-Practices</a>
+<li><a name="toc_Policy-Style-Guide" href="#Policy-Style-Guide">1 Policy Style Guide</a>
+<ul>
+<li><a href="#Arranging-files">1.1 Arranging files</a>
+<li><a href="#Where-to-define-variables-and-classes">1.2 Where to define variables and classes</a>
+<li><a href="#How-to-choose-and-name-bundles">1.3 How to choose and name bundles</a>
+<li><a href="#How-to-decide-when-to-make-a-bundle">1.4 How to decide when to make a bundle</a>
+<li><a href="#When-to-use-a-paramaterized-bundle-or-method">1.5 When to use a paramaterized bundle or method</a>
+<li><a href="#When-should-classes-be-in-common-bundles">1.6 When should classes be in <code>common</code> bundles?</a>
+<li><a href="#When-should-variables-be-in-common-bundles">1.7 When should variables be in <code>common</code> bundles?</a>
+<li><a href="#When-should-variables-be-in-local-bundles">1.8 When should variables be in local bundles?</a>
+</li></ul>
+<li><a name="toc_Policy-Dos-and-Don_0027ts" href="#Policy-Dos-and-Don_0027ts">2 Policy Dos and Don'ts</a>
+<ul>
+<li><a href="#Never-do">2.1 Never do</a>
+<ul>
+<li><a href="#Never-change-system-policy-when-humans-are-absent">2.1.1 Never change system policy when humans are absent</a>
+<li><a href="#Never-embed-simple-shell-commands">2.1.2 Never embed simple shell commands</a>
+<li><a href="#Never-manage-more-than-one-cron-job">2.1.3 Never manage more than one cron job</a>
+</li></ul>
+<li><a href="#Avoid">2.2 Avoid</a>
+<ul>
+<li><a href="#Avoid-writing-custom-scripts">2.2.1 Avoid writing custom scripts</a>
+<li><a href="#Avoid-running-CFEngine-without-lock-protection">2.2.2 avoid running CFEngine without lock protection</a>
+</li></ul>
+<li><a href="#Recommended">2.3 Recommended (Try to)</a>
+<ul>
+<li><a href="#Try-to-combine-tests-and-operations-during-file-searches">2.3.1 Try to combine tests and operations during file searches</a>
+<li><a href="#Try-to-make-many-small-changes">2.3.2 Try to make many small changes</a>
+</li></ul>
+<li><a href="#Always-do">2.4 Always do</a>
+<ul>
+<li><a href="#Always-document-promises">2.4.1 Always document promises</a>
+<li><a href="#Always-keep-coding-to-a-minimum">2.4.2 Always keep coding to a minimum</a>
+<li><a href="#Always-use-lists-to-make-the-same-promise-about-multiple-objects">2.4.3 Always use lists to make the same promise about multiple objects</a>
+<li><a href="#Always-use-existing-templates">2.4.4 Always use existing templates</a>
+<li><a href="#Always-use-the-system-variables-for-system-resources">2.4.5 Always use the system variables for system resources</a>
+<li><a href="#Always-use-variables-as-pointers-to-paths-and-servers">2.4.6 Always use variables as pointers to paths and servers</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Common-Workflows" href="#Common-Workflows">3 Common Workflows</a>
+<ul>
+<li><a href="#Anomaly-Monitoring">3.1 Anomaly Monitoring</a>
+<li><a href="#Batch-Jobs">3.2 Batch Jobs</a>
+<li><a href="#Garbage-Collection">3.3 Garbage Collection</a>
+<li><a href="#Knowledge-Updating">3.4 Knowledge Updating</a>
+<li><a href="#Name-Service">3.5 Name Service</a>
+<li><a href="#Policy-Distribution">3.6 Policy Distribution</a>
+<li><a href="#Services">3.7 Services</a>
+<li><a href="#Security">3.8 Security</a>
+<li><a href="#Software-Management">3.9 Software Management</a>
+</li></ul>
+<li><a name="toc_Quality-Assurance-around-CFEngine" href="#Quality-Assurance-around-CFEngine">4 Quality Assurance around CFEngine</a>
+<ul>
+<li><a href="#Policy-changes">4.1 Policy changes</a>
+<li><a href="#The-policy-decision-flow">4.2 The policy decision flow</a>
+<li><a href="#Configuration-version-control-and-rollback">4.3 Version control and rollback</a>
+<li><a href="#Delegating-responsibility">4.4 Delegating responsibility</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+
+

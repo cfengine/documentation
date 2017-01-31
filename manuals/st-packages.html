@@ -1,0 +1,818 @@
+<html lang="en">
+<head>
+<title>Package Management</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Package Management">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Package Management</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-is-package-management_003f">What is package management?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Package management</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-is-package-management_003f">What is package management?</a>
+<li><a accesskey="2" href="#Strengths-and-weaknesses-of-package-management">Strengths and weaknesses of package management</a>
+<li><a accesskey="3" href="#What-does-CFEngine-bring-to-package-management_003f">What does CFEngine bring to package management?</a>
+<li><a accesskey="4" href="#Package-promises">Package promises</a>
+<li><a accesskey="5" href="#How-CFEngine-compares-package-versions">How CFEngine compares package versions</a>
+<li><a accesskey="6" href="#Example-package-promises">Example package promises</a>
+<li><a accesskey="7" href="#Package-management-next-steps">Package management next steps</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-is-package-management%3f"></a>
+<a name="What-is-package-management_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Strengths-and-weaknesses-of-package-management">Strengths and weaknesses of package management</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What is package management?</h3>
+
+<pre class="sp">
+
+</pre>
+Package management is about managing software inventory. It includes
+ensuring that software is installed on computers, and in the correct
+versions. It includes patching and upgrading.  Each operating system generally
+has its own approved package manager and software source. Usually this
+is supplied by the operating system provider.
+
+   <p>Some package managers allow users to create their own software
+packages providing a uniform way of deploying software to systems. 
+Packaging software is common on GNU/Linux, where well-known package formats include RPM
+and deb.
+
+<div class="node">
+<a name="Strengths-and-weaknesses-of-package-management"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-does-CFEngine-bring-to-package-management_003f">What does CFEngine bring to package management?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-is-package-management_003f">What is package management?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Strengths and weaknesses of package management</h3>
+
+<pre class="sp">
+
+</pre>
+
+Packages were introduced to bring a rational approach to handling software dependencies. 
+By dividing up applications and libraries into packages, one can share code efficiently
+and assign the responsibility of updating and versioning to different maintainers.
+
+   <p>Package management is not a substitute for configuration
+management. It only delivers preconfigured files into a specific
+location. Packaged software cannot be customized to local needs
+without post-installation adaptation.
+
+<div class="node">
+<a name="What-does-CFEngine-bring-to-package-management%3f"></a>
+<a name="What-does-CFEngine-bring-to-package-management_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Package-promises">Package promises</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Strengths-and-weaknesses-of-package-management">Strengths and weaknesses of package management</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What does CFEngine bring to package management?</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine does not try to fight against package mangers, but rather
+work with them.  CFEngine integrates the idea of convergent
+maintenance with package installation, so that one can be certain
+of maintaining a desired state.
+
+   <p>Package managers do not usually have the
+intelligence to be able to verify the actual state of software
+configuration. Rather they assume that once a package is installed,
+it will remain in a good state until an update is required.
+
+   <p>If one reinstalls a package, changes get blown away in favour of the
+original matrix. Package installation is thus a `destructive'
+installation mechanism. It overwrites whatever currently exists with a
+prefabricated (and therefore approximate) version of what you
+need. For generic software this is exactly what is required.  However,
+for complex software such as web services, this is entirely
+insufficient to result in a working system.
+
+   <p>CFEngine brings convergent methods to package management, and allows surgically
+precise customizations to be applied and maintained even after multiple
+package upgrades.
+
+<div class="node">
+<a name="Package-promises"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#How-CFEngine-compares-package-versions">How CFEngine compares package versions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-does-CFEngine-bring-to-package-management_003f">What does CFEngine bring to package management?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Package promises</h3>
+
+<pre class="sp">
+
+</pre>
+
+To manage software, you write <code>packages</code> promises, analogous to any other kind of
+promise in CFEngine. It makes sense to use lists to install packages if you
+don't need to make complex specifications about versions. Keep it simple and
+package management will be a simple matter.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim"> vars:
+  "match_package"<span class="red"> slist </span>=> { 
+                           "apache2", 
+                           "apache2-mod_php5",
+                           "apache2-prefork",
+                           "php5" 
+                           };
+<span class="red"> packages:
+</span>
+    "$(match_package)"
+<span class="red">         package_policy </span>=><span class="green"> "add",</span>
+<span class="red">         package_method </span>=><span class="blue"> yum;</span>
+
+</pre>
+</td></tr></table>
+
+   <p>Many users elect to install a basic `stem cell' image for all machines
+in their environment, and then customize each machine to a specific
+purpose by adding or subtracting packages from this stem cell starting
+state. CFEngine can be used together with other tools like
+<code>Cobbler</code> or <code>rPath</code> to accomplish this in a comfortable way
+in your environment.  If you are working in the cloud, this is the
+default approach to management. You begin from a basic image and then
+customize it by either hardening or extending the software inventory.
+
+<div class="node">
+<a name="How-CFEngine-compares-package-versions"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-package-promises">Example package promises</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Package-promises">Package promises</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">How CFEngine compares package versions</h3>
+
+<pre class="sp">
+
+</pre>
+
+Cfengine uses a model for packages that is generic enough to support all the known
+package managers. It classifies packages into
+
+     <dl>
+<dt><i>Name</i><dd>The name of the packet is usually the name of the software itself, e.g. &lsquo;<samp><span class="samp">cfengine</span></samp>&rsquo;. 
+<br><dt><i>Version</i><dd>Versions of a particular piece of software are described in wildly
+different ways, causing a lot of confusion. For instance, a common
+model is to use major version number, minor version number and patch
+release number, e.g. 3.1.5. However, many maintainers slap on their
+own additions, such as 3.1.5-2 or 3.1.5-2.el5. Because these models
+are operating system, software and release specific, you have to know
+the versioning numbers used on your operating systems and refer to
+them properly. CFEngine cannot reliabily guess these things for you.
+
+     <br><dt><i>Architecture</i><dd>The architecture describes the hardware platform for execution, e.g. 
+&lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; or &lsquo;<samp><span class="samp">i586</span></samp>&rsquo;. This is important when package managers
+store multiple architectures in the same repository. 
+</dl>
+
+<div class="node">
+<a name="Example-package-promises"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Package-management-next-steps">Package management next steps</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#How-CFEngine-compares-package-versions">How CFEngine compares package versions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Example package promises</h3>
+
+<pre class="sp">
+
+</pre>
+
+Let's look at some example cases to explain the behaviour of the interaction between CFEngine and
+the package managers.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Install-latest-package-version-example">Install latest package version example</a>
+<li><a accesskey="2" href="#Install-specific-package-version-example">Install specific package version example</a>
+<li><a accesskey="3" href="#Uprading-to-a-newer-package-version-example">Uprading to a newer package version example</a>
+</ul>
+
+<div class="node">
+<a name="Install-latest-package-version-example"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Install-specific-package-version-example">Install specific package version example</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-package-promises">Example package promises</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Example-package-promises">Example package promises</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Install latest package version example</h4>
+
+<pre class="sp">
+
+</pre>
+
+   <p>Suppose there is a older version of <code>wget</code> installed on your machine. 
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">redhat$ rpm -q wget
+wget-1.10.2-7.el5 
+</pre>
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+Now suppose you'd like to upgrade the package to the latest version available in a repository by using <code>yum</code>. 
+We make a promise such the following;
+<pre class="verbatim">bundle agent test001
+{
+<span class="red"> packages:
+</span>  redhat::
+   "wget"
+<span class="red">             package_policy </span>=><span class="green"> "addupdate",</span>
+<span class="red">             package_method </span>=><span class="blue"> yum,</span>
+<span class="red">             package_select </span>=><span class="green"> ">=",</span>
+<span class="red">            package_version </span>=><span class="green"> "1.11.4-2.el5_4.1",</span>
+<span class="red">      package_architectures </span>=> { "x86_64" };
+
+}
+</pre>
+   <pre class="sp">
+
+</pre>
+Now run this bundle:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">redhat$ /var/cfengine/bin/cf-agent -f /tmp/test.cf -K
+
+redhat$ rpm -q wget
+wget-1.11.4-2.el5_4.1
+</pre>
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+If there is no <code>wget</code> installed, CFE will install the lastest one for you.
+<pre class="verbatim">redhat$ rpm -e wget
+redhat$ rpm -q wget
+package wget is not installed
+redhat$ /var/cfengine/bin/cf-agent -f /tmp/test.cf -K
+redhat$ rpm -q wget
+wget-1.11.4-2.el5_4.1
+</pre>
+
+<div class="node">
+<a name="Install-specific-package-version-example"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Uprading-to-a-newer-package-version-example">Uprading to a newer package version example</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Install-latest-package-version-example">Install latest package version example</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Example-package-promises">Example package promises</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Install specific package version example</h4>
+
+<pre class="sp">
+
+</pre>
+
+To install a specific version, we can just adapt the promise. 
+This example will use RPM as the YUM repository doesn't support multi-version packages.
+<pre class="verbatim">bundle agent test002
+{
+<span class="red"> packages:
+</span>  redhat::
+   "wget"
+<span class="red">             package_policy </span>=><span class="green"> "addupdate",</span>
+<span class="red">             package_method </span>=><span class="blue"> rpm("/root"),</span>
+<span class="red">             package_select </span>=><span class="green"> "==",</span>
+<span class="red">            package_version </span>=><span class="green"> "1.10.2-7.el5",</span>
+<span class="red">      package_architectures </span>=> { "x86_64" };
+
+}
+</pre>
+   <pre class="sp">
+
+</pre>
+Now see before and after:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">redhat$ ls -l /root
+-rw-r--r-- 1 root root 595422 Apr  4  2007 wget-1.10.2-7.el5.x86_64.rpm
+-rw-r--r-- 1 root root 596335 Nov  5  2009 wget-1.11.4-2.el5_4.1.x86_64.rpm
+
+redhat$ rpm -q wget
+package wget is not installed
+
+redhat$ /var/cfengine/bin/cf-agent -f /tmp/test.cf -K
+
+redhat$ rpm -q wget
+wget-1.10.2-7.el5
+</pre>
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+To upgrade the package to a newer version, just change &lsquo;<samp><span class="samp">package_version</span></samp>&rsquo; to a version you'd like;
+<pre class="verbatim">bundle agent test003
+{
+<span class="red"> packages:
+</span>  redhat::
+   "wget"
+<span class="red">             package_policy </span>=><span class="green"> "addupdate",</span>
+<span class="red">             package_method </span>=><span class="blue"> rpm("/root"),</span>
+<span class="red">             package_select </span>=><span class="green"> "==",</span>
+<span class="red">            package_version </span>=><span class="green"> "1.11.4-2.el5_4.1",</span>
+<span class="red">      package_architectures </span>=> { "x86_64" };
+
+}
+</pre>
+   <pre class="sp">
+
+</pre>
+Now see the result:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">redhat$ rpm -q wget
+wget-1.10.2-7.el5
+
+redhat$ /var/cfengine/bin/cf-agent -f /tmp/test.cf -K
+
+redhat$ rpm -q wget
+wget-1.11.4-2.el5_4.1
+</pre>
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+Here is an example for Ubuntu, which supports both the APT and DPKG interfaces.
+
+<pre class="verbatim">bundle agent test004
+{
+<span class="red"> packages:
+</span>  ubuntu::
+   "wget"
+<span class="red">             package_policy </span>=><span class="green"> "addupdate",</span>
+<span class="red">             package_method </span>=><span class="blue"> apt,</span>
+<span class="red">             package_select </span>=><span class="green"> ">=",</span>
+<span class="red">            package_version </span>=><span class="green"> "1.12-1.1ubuntu2.1",</span>
+<span class="red">      package_architectures </span>=> { "*" };
+}
+</pre>
+   <pre class="sp">
+
+</pre>
+Before and after:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">ubuntu$ dpkg -l | grep wget
+ii  wget  1.10.2-3ubuntu1.2 retrieves files from the web
+
+ubuntu$ /var/cfengine/bin/cf-agent -f /tmp/test.cf -K
+
+ubuntu$ dpkg -l | grep wget
+ii  wget  1.12-1.1ubuntu2.1 retrieves files from the web
+</pre>
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+Similarly, we can use the "dpkg" interface to install specific version of the software.
+
+<pre class="verbatim">bundle agent test005
+{
+<span class="red"> packages:
+</span>  ubuntu::
+   "wget"
+<span class="red">             package_policy </span>=><span class="green"> "addupdate",</span>
+<span class="red">             package_method </span>=><span class="blue"> dpkg("/root"),</span>
+<span class="red">             package_select </span>=><span class="green"> "==",</span>
+<span class="red">            package_version </span>=><span class="green"> "1.10.2-3ubuntu1.2",</span>
+<span class="red">      package_architectures </span>=> { "*" };
+}
+</pre>
+   <pre class="sp">
+
+</pre>
+Before and after:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">ubuntu$ dpkg -l | grep wget
+
+ubuntu$ /var/cfengine/bin/cf-agent -f /tmp/test.cf -K
+
+ubuntu$ dpkg -l | grep wget
+ii  wget                            1.10.2-3ubuntu1.2                 retrieves files from the web
+</pre>
+</td></tr></table>
+   <div class="node">
+<a name="Uprading-to-a-newer-package-version-example"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Install-specific-package-version-example">Install specific package version example</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Example-package-promises">Example package promises</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Uprading to a newer package version example</h4>
+
+<pre class="sp">
+
+</pre>
+
+   <p>To upgrade to a newer version of  apackage, we simply assign a newer version to package_version
+and change the policy to include updating.
+<pre class="verbatim">bundle agent test006
+{
+<span class="red"> packages:
+</span>  ubuntu::
+   "wget"
+<span class="red">             package_policy </span>=><span class="green"> "addupdate",</span>
+<span class="red">             package_method </span>=><span class="blue"> dpkg("/root"),</span>
+<span class="red">             package_select </span>=><span class="green"> "==",</span>
+<span class="red">            package_version </span>=><span class="green"> "1.12-1.1ubuntu2.1",</span>
+<span class="red">      package_architectures </span>=> { "*" };  
+}
+</pre>
+   <pre class="sp">
+
+</pre>
+Before and after the keeping of this promise:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">ubuntu$ dpkg -l | grep wget
+ii  wget                            1.10.2-3ubuntu1.2                 retrieves files from the web 
+ubuntu$ cf-agent -f /tmp/test.cf -K
+ubuntu$ dpkg -l | grep wget
+ii  wget                            1.12-1.1ubuntu2.1                 retrieves files from the web
+</pre>
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+Here is an example using the <code>zypper</code> package manager:
+<pre class="verbatim">bundle agent test007
+{
+<span class="red"> packages:
+</span>  SuSE::
+   "tcpdump"
+<span class="red">             package_policy </span>=><span class="green"> "addupdate",</span>
+<span class="red">             package_method </span>=><span class="blue"> zypper,</span>
+<span class="red">             package_select </span>=><span class="green"> ">=",</span>
+<span class="red">            package_version </span>=><span class="green"> "4.1.1-1.11",</span>
+<span class="red">      package_architectures </span>=> { "x86_64" };
+}
+</pre>
+   <pre class="sp">
+
+</pre>
+Before and after running the agent:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">suse$ rpm -q tcpdump
+tcpdump-4.0.0-2.1.x86_64
+
+suse$ /var/cfengine/bin/cf-agent -f /tmp/test.cf -K
+
+suse$ rpm -q tcpdump
+tcpdump-4.1.1-1.11.x86_64
+</pre>
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+Finally, since SuSE uses RPM as a native format so we can use &lsquo;<samp><span class="samp">package_method rpm()</span></samp>&rsquo; from above.
+<pre class="verbatim">bundle agent test008
+{
+<span class="red"> packages:
+</span>  SuSE::
+   "tcpdump"
+<span class="red">             package_policy </span>=><span class="green"> "addupdate",</span>
+<span class="red">             package_method </span>=><span class="blue"> rpm("/root"),</span>
+<span class="red">             package_select </span>=><span class="green"> "==",</span>
+<span class="red">            package_version </span>=><span class="green"> "4.0.0-2.1",</span>
+<span class="red">      package_architectures </span>=> { "x86_64" };
+}
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">suse$ ls -l /root
+<span class="red">-rw-r--r-- 1 root root 571158 2009-10-19 20:36 tcpdump-4.0.0-2.1.x86_64.rpm
+</span><span class="red">-rw-r--r-- 1 root root 318279 2010-07-05 23:37 tcpdump-4.1.1-1.11.x86_64.rpm
+</span>
+suse$ rpm -q tcpdump
+package tcpdump is not installed
+
+suse$ /var/cfengine/bin/cf-agent -f /tmp/test.cf -K
+
+suse$ rpm -q tcpdump
+tcpdump-4.0.0-2.1.x86_64
+</pre>
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+Changing to a new version:
+<pre class="verbatim">bundle agent test009
+{
+<span class="red"> packages:
+</span>  SuSE::
+   "tcpdump"
+<span class="red">             package_policy </span>=><span class="green"> "addupdate",</span>
+<span class="red">             package_method </span>=><span class="blue"> rpm("/root"),</span>
+<span class="red">             package_select </span>=><span class="green"> "==",</span>
+<span class="red">            package_version </span>=><span class="green"> "4.1.1-1.11",</span>
+<span class="red">      package_architectures </span>=> { "x86_64" };
+}
+</pre>
+   <pre class="sp">
+
+</pre>
+
+Before and after:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">suse$ rpm -q tcpdump
+tcpdump-4.0.0-2.1.x86_64
+
+suse$ /var/cfengine/bin/cf-agent -f /tmp/test.cf -K
+
+suse$ rpm -q tcpdump
+tcpdump-4.1.1-1.11.x86_64
+</pre>
+</td></tr></table>
+
+<div class="node">
+<a name="Package-management-next-steps"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-package-promises">Example package promises</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Package management next steps</h3>
+
+<p>The CFEngine standard library contains package manager methods for all
+major operating systems and managers. Check out the reference
+documentation too to learn about extended features of package
+integration. Visit also the community forum to hear about reach
+experiences.
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Package management</a>
+<ul>
+<li><a href="#What-is-package-management_003f">What is package management?</a>
+<li><a href="#Strengths-and-weaknesses-of-package-management">Strengths and weaknesses of package management</a>
+<li><a href="#What-does-CFEngine-bring-to-package-management_003f">What does CFEngine bring to package management?</a>
+<li><a href="#Package-promises">Package promises</a>
+<li><a href="#How-CFEngine-compares-package-versions">How CFEngine compares package versions</a>
+<li><a href="#Example-package-promises">Example package promises</a>
+<ul>
+<li><a href="#Install-latest-package-version-example">Install latest package version example</a>
+<li><a href="#Install-specific-package-version-example">Install specific package version example</a>
+<li><a href="#Uprading-to-a-newer-package-version-example">Uprading to a newer package version example</a>
+</li></ul>
+<li><a href="#Package-management-next-steps">Package management next steps</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+
+

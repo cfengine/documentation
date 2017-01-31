@@ -1,0 +1,463 @@
+
+bundle knowledge services
+
+{
+vars:
+
+  "mail_daemons" slist => { "sendmail", "postfix", "exim", "smtpd" };
+  "used_by_mail_daemons" slist => { "sendmail", "postfix", "exim", "saslauthd", "freshclam", "clamd", "clamav-milter", "spamd", "amavisd" };
+
+
+things:
+
+  "daemon"     comment => "Unix parlance for a running background process that handles an application service";
+
+  "service measurements" comment => "Vital sign measurements that relate to the service catalogue",
+                 generalizations => {"measurements"};
+
+ service_measurements::
+
+  "ssh_in"     measures => { "services::login services" },
+               measures => { "ssh" };
+
+  "users"      measures => { "services::login services", "services::user management" };
+
+  "rootprocs"  measures => { "services::provisioning" };
+  "otherprocs" measures => { "services::web services" };
+  "cpu"        measures => { "services::compute services" };
+  "cpu0"       measures => { "services::compute services" };
+  "cpu1"       measures => { "services::compute services" };
+  "cpu2"       measures => { "services::compute services" };
+  "cpu3"       measures => { "services::compute services" };
+
+  "loadavg"    measures => { "services::compute services", "services::web services" };
+
+  "nfsd_in"    measures => { "services::storage" };
+  "diskfree"   measures => { "services::storage" };
+
+  "netbiosssn_in" measures => { "services::name services" };
+
+  "imap_in"       measures => { "services::mail services" };
+  "imaps_in"      measures => { "services::mail services" };
+  "smtp_in"       measures => { "services::mail services" };
+
+  "cfengine_in"   measures => { "services::host configuration", "services::provisioning" };
+
+  "www_in"        measures => { "services::web services" };
+  "wwws_in"       measures => { "services::web services" };
+  "www_alt_in"    measures => { "services::web services" };
+
+  "ldap_in"       measures => { "services::directory services", "services::user management" };
+  "ldaps_in"      measures => { "services::directory services", "services::user management" };
+
+  "mongo_in"      measures => { "services::database" };
+  "mysql_in"      measures => { "services::database" };
+  "postgres_in"   measures => { "services::database" };
+
+
+  "icmp_in"       measures => { "services::network services" };
+  "udp_in"        measures => { "services::network services" };
+  "dns_in"        measures => { "services::name services" };
+  "tcpsyn_in"     measures => { "services::network services" };
+  "tcpack_in"     measures => { "services::network services" };
+  "tcpfin_in"     measures => { "services::network services" };
+  "tcpmisc_in"    measures => { "services::network services" };
+
+  "syslog"        measures => { "services::system logging" };
+
+  "microsoft_ds_in" measures => { "services::storage" };
+
+ ###############################
+
+ services::
+
+  "compute services"    comment => "CPU intensive cluster computation, usually batch driven and scheduled.";
+
+  "mail services"       comment => "Electronic mail service, as made famous by the Unix operating system.";
+  "host configuration"  comment => "CFEngine desired-state automation and self-repair service";
+  "web services"        comment => "The WWW service, also used as a general transport mechanim for many other specialized services, including internet commerce applications.";
+
+  "directory services"  comment => "Directory services are look-up services, typically with identity or host information.";
+
+  "name services" comment => "Name services are look-up services, typically with identity or host information.";
+
+  "storage"             comment => "Remotely accessible disk volumes";
+
+
+  "database"            comment => "Key-based data storage. Databases come in a variety of types and forms.";
+
+
+  "login services"      comment => "The ability to log onto systems with a username and password",
+                         involves => { "ssh", "rbac" };
+
+  "iaas"                comment => "Infrastructure as a service, also called cloud or utility computing)",
+                          involves => { "virtualization", "aws" };
+
+  "software updates"    comment => "Software patches and updates for operating platforms";
+  "user management"     comment => "Identity services for login and accessability";
+  "DevOps"              comment => "Continuous delivery of product releases in collaboration with IT operations";
+
+  "provisioning"        comment => "Installing computer hosts ready for use",
+                        involves => { "iaas", "boot services", "configuration management" },
+                       certainty => "possible";
+
+  "boot services"        comment => "Boot services are a way of booting a computer directly from the network",
+                        involves => { "technical_services::pxe", "technical_services::dhcp", 
+                                      "technical_services::bootp", "technical_services::grub" },
+                       certainty => "possible";
+
+  "security"             comment => "Security is a not a simple service. It is about how all the services in a system are configured and interaction.",
+                        involves => { "access control", "rbac", "authentication" },
+                       certainty => "possible";
+
+   "time service"      comment => "The synchronization of computer human-time clocks around the network";
+   "system logging"    comment => "System logger or event log service, reports notable events about hosts.",
+                        involves => { "logging::syslog", "logging::log rotation" };
+
+
+    "garbage collection" comment => "File system garbage collection is necessary to prevent temporary or authorized files from filling up storage. Process garbage collection cleans up processes that have run out of control, consuming resources.",
+                      involves => { "log rotation" },
+                       affects => { "promise_types::processes", "promise_types::files" };
+
+    "printing"         comment => "Company printer availability and configuration";
+
+ ################
+
+ technical_services::
+
+  "aws"              comment => "Amazon Web Services: a collection of utility computing resources (cloud)";
+  "rbac"             comment => "Role Based Access Control";
+
+
+  "pxe"   comment => "A composite network service based on the PXE protocol, allows systems to boot directly from the network.";
+  "bootp" comment => "A simple broadcast protocol for booting a system directly from the network, e.g. for installation purposes.";
+
+  "grub"     comment => "The Linux boot menu";
+  "dns"      comment => "Domain Name Service for translating Internet addresses into hostnames and vice versa.";
+  "ldap"     comment => "A well-known directory service. MS Active Directory purports to support this standard.";
+  "nis"      comment => "Sun's Network Information Service (previously called Yellow Pages).";
+  "dhcp"     comment => "An IP configuration service.";
+
+  "mongo"    comment => "The Mongo document oriented database",
+          implements => { "services::database" },
+     generalizations => { "database" };
+
+  "mysql"    comment => "Open source SQL database engine optimized for web",
+    is_determined_by => { "promise_types::databases" }, 
+          implements => { "services::database" },
+     generalizations => { "database" };
+
+  "postgres" comment => "Open source relational SQL database engine for transaction processing",
+    is_determined_by => { "promise_types::databases" }, 
+          implements => { "services::database" },
+     generalizations => { "database" };
+
+  "oracle"   comment => "Commercial relational SQL database",
+          implements => { "database" },
+     generalizations => { "database" };
+
+  "nfs"      comment => "Network File System (storage)",
+    is_determined_by => { "promise_types::storage" },
+          implements => { "services::storage" },
+           certainty => "possible";
+
+  "samba"    comment => "The Unix service for integrating with MS Windows",
+          implements => { "services::storage" };
+
+  "ssh"      comment => "The Secure Shell, for authenticated login on Unix-like systems",
+          implements => { "services::login services" };
+  "varnish" comment => "Web cache accelerator";
+  "squid" comment => "Web cache accelerator";
+  "nginx" comment => "Web reverse proxy";
+  "ntp"   comment => "Network time protocol for clock synchronization",
+          implements => { "services::time service" };
+
+
+ # This is example knowledge -- add your own
+
+ services::
+
+  "application services" comment => "Software running on servers";
+
+  "network services"     comment => "Network connectivity and availability";
+  "monitoring"           comment => "Pseudo-real-time status information about system components";
+  "scheduling"           comment => "Set the time and place for jobs to run";
+  "desktop"              comment => "Configure the desktop environment for workstations";
+  "access control"       comment => "Restricting user access to objects";
+  "compliance"           comment => "Collective issues to ensure policy decisions are implemented";
+  "authentication"       comment => "Confirming the identity of individuals and hosts";
+
+  "virtualization"       comment => "Virtual hosts running on a hypervisor";
+  "time services"        comment => "Clock synchronization and timezones";
+  "logging"              comment => "Archiving system messages and events";
+  "monitoring"           comment => "Data sampling and collection";
+  "help desk"            comment => "Customer help desk services";        
+
+ monitoring::
+
+  "SNMP"                 comment => "Simple Network Management Protocol.";
+  "cacti"                comment => "System monitoring and graphing tool";
+  "nagios"               comment => "System monitoring and graphing tool";
+  "interactive load monitor";
+  "processor snapshot";
+  "vital signs" comment => "A set of key performance measurements for a host. Use the host finder to pick a host and use the finder on the host page.";
+
+ logging::
+
+  "syslog"                comment => "Unix log aggregator";
+  "syslog-ng"             comment => "Unix log aggregator (improved version)";
+  "log rotation"          comment => "The act of periodically emptying and archiving system logs";
+
+ access_control::
+
+  "pam"; 
+  "passwords"; 
+  "shadow file";
+  "iptables"; 
+  "ssh key management";
+  "tcp wrappers";
+
+ virtualization::
+
+   "kdm"                 comment => "The Linux kernel virtualization scheme";
+   "vmware"              comment => "The commercial VM implementation derived from IBM's VM system.";
+   "xen"                 comment => "The paravirtualization project for Linux";
+   "hyper-V"             comment => "The Windows virtualization framework";
+
+ desktop::
+
+   "X Windows" comment => "The Unix Windowing system";
+   "GDM"       comment => "The login manager for X Windows";
+   "GNOME"     comment => "The GNOME window manager for Unix";
+   "KDE"       comment => "The Qt based KDE window manager for Unix";
+
+ scheduling::
+
+   "cron" comment => "The periodic time based scheduler (as in chronometer)";
+   "at"   comment => "The one-shot job scheduler";
+
+
+ daemon::
+
+   "httpd" comment => "The apache web daemon",
+           implements => { "services::web services"},
+              affects => { "promise_types::processes" },
+          provides => { "www_in", "www_alt_in", "wwws_in" },
+   generalizations => { "daemon" };
+
+  "saslauthd"     comment => "Authentication module for the mail delivery service",
+               implements => { "authentication" },
+          generalizations => { "daemon" };
+
+  "freshclam"     comment => "Gets updates for the clam virus scanner",
+          generalizations => { "daemon" };
+
+  "clamd"         comment => "A mail anti-virus content scanner",
+          generalizations => { "daemon" };
+
+  "clamav-milter" comment => "Mail virus scanner interface for clamd",
+          generalizations => { "daemon" };
+
+  "spamd"         comment => "A mail spam scanner, Spam Assassin service",
+          generalizations => { "daemon" };
+
+  "amavisd"       comment => "Yet another virus/spam scanner",
+          generalizations => { "daemon" };
+
+  "smtpd"         comment => "SMTP server used by postfix",
+               implements => { "services::mail services"},
+                 provides => { "smtp_in" },
+          generalizations => { "daemon" };
+
+
+  "nfsd"         comment => "NFS server for the Network File System",
+              implements => { "storage" },
+                provides => { "nfs_in" },
+         generalizations => { "daemon" };
+
+  "smbd"         comment => "The Samba server for the Microsoft/CIFS storage sharing",
+              implements => { "storage" },
+                provides => { "microsoft_ds_in","netbios_ssn_in" },
+         generalizations => { "daemon" };
+
+
+  "rpcbind"         comment => "RPC name service mapping portnumbers to RPC service names",
+                   synonyms => { "portmapper"},
+          generalizations => { "daemon" };
+
+  "portmapper "     comment => "RPC name service mapping portnumbers to RPC service names",
+                   synonyms => { "rpcbind"}, 
+          generalizations => { "daemon" };
+
+
+ "$(mail_daemons)" comment => "Email delivery software",      
+         implements => { "services::mail services" },
+            affects => { "promise_types::processes" },
+           provides => { "smtp_in" },
+         is_part_of => { "services::mail services" },
+          generalizations => { "daemon" };
+
+  "sshd"           comment => "The Secure Shell software",
+                implements => { "services::login services" },
+                  provides => { "ssh_in" },
+           generalizations => { "daemon" };
+
+  "ldapd"           comment => "The Lightweight Directory Access Protocol",
+                implements => { "services::directory services" },
+                  provides => { "ldap_in","ldaps_in" },
+           generalizations => { "daemon" };
+
+
+  "cf-serverd"     comment => "The CFEngine management service",
+                implements => { "services::host configuration" },
+                  provides => { "cfengine_in" },
+           generalizations => { "daemon" };
+
+
+ network_services::
+
+  "routing"      comment => "Router and switch configuration";
+  "connectivity" comment => "Cables and hardware";
+
+
+
+
+
+measurements::
+
+  "users"     comment => "User IDs with activity on the system, including system IDs",
+         is_part_of => { "login services" },
+            certainty => "possible";
+
+  "otherprocs" 
+         is_part_of => { "compute services" },
+            certainty => "possible";
+
+  "loadavg", 
+         is_part_of => { "compute services" },
+            certainty => "possible";
+
+  "cpu"
+         is_part_of => { "compute services" },
+            certainty => "possible";
+
+  "cfengine_in" comment => "CFEngine management service connections",
+         is_part_of => { "host configuration" },
+            certainty => "possible";
+
+  "nfsd_in"     comment => "Network File System server connections",
+         is_part_of => { "storage" },
+            certainty => "possible";
+
+  "smtp_in"     comment => "SMTP e-mail server connections",
+         is_part_of => { "mail services" };
+
+  "www_in"
+         is_part_of => { "web services" };
+
+  "ssh_in"
+         is_part_of => { "login services" },
+            certainty => "possible";
+  "webaccess", 
+         is_part_of => { "system logging" },
+            certainty => "possible";
+  "weberrors", 
+         is_part_of => { "system logging" },
+            certainty => "possible";
+
+  "syslog", 
+         is_part_of => { "system logging" },
+            certainty => "possible";
+  "messages"
+         is_part_of => { "system logging" },
+            certainty => "possible";
+
+
+}
+
+#######################################################################
+
+bundle knowledge compliance_models
+{
+topics:
+
+   "Total Desired State Model" comment => "This default compliance model refers to the total managed state in your CFEngine policy. This may or may not overlap with other specific compliance models.";
+
+   "PCI-DSS" comment => "Payment Card Industry Data Security Standards. ";
+
+   "STIGS" comment => "The Security Technical Implementation Guides (STIGs) and the NSA Guides are the configuration standards for DOD IA and IA-enabled devices/systems";
+
+
+   "HIPPA" comment => "Health Insurance Portability and Accountability Act compliance guidelines.";
+
+   "ITIL" comment => "Stands for Information Technology Infrastructure Library. ITIL is a set of self-proclaimed best-practices originally developed by the British government. It can be viewed as mainly common-sense rules. Cfengine can be used as a component in becoming ITIL-compliant. By translating many of your best practices into policy rules, you can have Cfengine ensure parts of ITIL-compliance.";
+
+
+   "ISO/IEC 20000"   comment => "A standards document based on a subset of ITIL",
+                     association => a("standardizes a part of","ITIL","expands on standard");
+
+   "eTOM"  comment => "The Extended Telecom Operations Map";
+
+   "SOX"      comment => "The Sarbanes-Oxley Act",
+              association => A("involves",@(sox),"is a principal component of");
+
+   "EUROSOX"  comment => "The 8th EU data directive",
+              association => A("involves",@(sox),"is a principal component of");
+
+   "SAS-70"  comment => "Stands for Statement of Auditing Standards no. 70. SAS-70 is an auditing standard. SAS 70 defines the professional standards used by a service auditor to assess the internal controls of a service organization and issue a service auditor's report. Cfengine can be used to ensure SAS-70 compliance in the same way you can achieve other standardization compliance.",
+
+      association => a("is a framework for implementing","SOX","falls within the bounds of");
+
+   "SOX"  
+
+      comment => "Stands for Sarbanes-Oxley Act is a United States federal law in response to a number of major corporate and accounting scandals including those affecting Enron, Tyco International, Adelphia, Peregrine Systems and WorldCom. The intention behind the law is to ensure financial reporting. This law calls for standardization of datacenters under this law and the need to show compliance. Cfengine can be used as a tool for ensuring specific parts of the compliance.",
+
+      association => a("corresponds to","EUROSOX","corresponds to");
+   
+
+}
+
+#######################################################################
+
+bundle knowledge mission_apps
+{
+things:
+
+  "mission portal appliccations" comment => "Specialized interfaces to CFEngine's knowledge center";
+
+ mission_portal_applications::
+
+  "goals"         comment => "Displays IT goals and the activities and resources that support them";
+  "services"      comment => "Displays IT services, active ports, and their actual and desired states";
+  "hosts"         comment => "Displays the hosts attached to hubs and all their vital statistics";
+  "topics"        comment => "Displays how arbitrary topics are interrelated and what is known about them",
+                 synonyms => { "knowledge" };
+  "promises"      comment => "Displays the intended state described by a promise",
+                 synonyms => { "policy" };
+  "notes"         comment => "Browses the hand written annotations about the system";
+  "people"        comment => "Browses the users who have accounts on the current portal";
+  "logs"          comment => "Displays and searches system logs collected by CFEngine";
+  "reports"       comment => "A tool for generating reports about hosts starting from the report types";
+  "documents"     comment => "A tool for browsing the documents and manuals about CFEngine and its usage";
+  "get started"   comment => "A checklist wizard/tool to assist users in performing basic tasks";
+  "compliance"    comment => "Displays compliance of the system with respect to different compliance models";
+  "cost-value"    comment => "Displays estimates of the cost of running IT services";
+  "locations"     comment => "Displays the locations of IT resources, according to different models";
+  "storage"       comment => "Displays the availability of storage around the system";
+  "consistency"   comment => "Displays the average consistency of hosts and data around the system";
+  "performance"   comment => "Displays performance and usage statistics for hosts and services";
+  "energy"        comment => "Displays estimated energy usage of hosts in different locations";
+  "correlations"  comment => "Search for correlated behaviours and changes around the system";
+  "risk analysis" comment => "A tool for estimating risks associated with system policy and state";
+  "jobs"          comment => "Displays the number of hosts running specially monitored jobs";
+
+  "syntax tree"   comment => "Displays the CFEngine syntax tree, linked to the knowledge map";
+  "examples"      comment => "A browser for the CFEngine code examples";
+  "news"    comment => "A quick overview of what is new in the current release";
+
+  "measures" synonyms => { "vital signs" },
+             comment => "Displays system vital signs, or actual measured state from cf-monitord"; 
+
+  "classes" comment => "Display classes on hosts that match a pattern";
+}
+

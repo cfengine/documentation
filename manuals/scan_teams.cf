@@ -1,0 +1,36 @@
+
+bundle knowledge st_teams
+
+{
+topics:
+
+"st-teams";
+Teams::
+    "Delegating roles in a collaboration" ;
+Teams::
+    "Creative roles" ;
+Teams::
+    "What is team-work?" ;
+Special_Topics_Guide::
+    "Teams"  association => a("discussed in","Teams","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-teams.html"
+  represents => { "Teamwork" };
+Teams::
+ "/docs/st-teams.html#Top"
+  represents => { "Text section" };
+What_is_team_work_::
+ "/docs/st-teams.html#What-is-team_002dwork_003f"
+  represents => { "Text section" };
+Creative_roles::
+ "/docs/st-teams.html#Creative-roles"
+  represents => { "Text section" };
+Delegating_roles_in_a_collaboration::
+ "/docs/st-teams.html#Delegating-roles-in-a-collaboration"
+  represents => { "Text section" };
+}
+

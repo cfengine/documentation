@@ -1,0 +1,98 @@
+
+bundle knowledge SpecialTopic_Editing
+
+{
+topics:
+
+"SpecialTopic_Editing";
+Special_Topics_Guide::
+    "Pitfalls to watch out for in file editing"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Choosing an approach to file editing"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Expressing expand_template as promises"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Standard library methods for simple editing"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Editing bundles"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Lists inline"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Adding a line here and there"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Constructing files from promises"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Making delta changes to someone elses file"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Combining copy with template expansion"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Example file template"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Contextual adaptation of a file template"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Copying a finished file template into place"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Three approaches to managing files"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "What does file editing involve?"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Why is file editing difficult?"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "From boiler-plates to convergent file editing"  association => a("discusses","Promising and Editing File Content","is discussed in");
+Special_Topics_Guide::
+    "Editing"  association => a("discusses","Promising and Editing File Content","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Editing.html"
+  represents => { "Official CFEngine document"},  about_topics => { "promising and editing file content" };
+ "/knowledge/docs/SpecialTopic_Editing.html"
+  represents => { "Special Topics Guide"},  about_topics => { "promising and editing file content" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Top"
+  represents => { "Text section" }, about_topics => { "editing" };
+ "/knowledge/docs/SpecialTopic_Editing.html#From-boiler_002dplates-to-convergent-file-editing"
+  represents => { "Text section" }, about_topics => { "from boiler-plates to convergent file editing" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Why-is-file-editing-difficult_003f"
+  represents => { "Text section" }, about_topics => { "why is file editing difficult?" };
+ "/knowledge/docs/SpecialTopic_Editing.html#What-does-file-editing-involve_003f"
+  represents => { "Text section" }, about_topics => { "what does file editing involve?" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Three-approaches-to-managing-files"
+  represents => { "Text section" }, about_topics => { "three approaches to managing files" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Copying-a-finished-file-template-into-place"
+  represents => { "Text section" }, about_topics => { "copying a finished file template into place" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Contextual-adaptation-of-a-file-template"
+  represents => { "Text section" }, about_topics => { "contextual adaptation of a file template" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Example-file-template"
+  represents => { "Text section" }, about_topics => { "example file template" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Combining-copy-with-template-expansion"
+  represents => { "Text section" }, about_topics => { "combining copy with template expansion" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Making-delta-changes-to-someone-else_0027s-file"
+  represents => { "Text section" }, about_topics => { "making delta changes to someone elses file" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Constructing-files-from-promises"
+  represents => { "Text section" }, about_topics => { "constructing files from promises" };
+examples:: "/knowledge/docs/SpecialTopic_Editing.html#Constructing-files-from-promises"
+ about_topics => { "Constructing files from promises" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Editing.html#Constructing-files-from-promises"
+ about_topics => { "Constructing files from promises" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Adding-a-line-here-and-there"
+  represents => { "Text section" }, about_topics => { "adding a line here and there" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Lists-inline"
+  represents => { "Text section" }, about_topics => { "lists inline" };
+examples:: "/knowledge/docs/SpecialTopic_Editing.html#Lists-inline"
+ about_topics => { "Lists inline" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Editing-bundles"
+  represents => { "Text section" }, about_topics => { "editing bundles" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Standard-library-methods-for-simple-editing"
+  represents => { "Text section" }, about_topics => { "standard library methods for simple editing" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Expressing-expand_005ftemplate-as-promises"
+  represents => { "Text section" }, about_topics => { "expressing expand_template as promises" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Choosing-an-approach-to-file-editing"
+  represents => { "Text section" }, about_topics => { "choosing an approach to file editing" };
+ "/knowledge/docs/SpecialTopic_Editing.html#Pitfalls-to-watch-out-for-in-file-editing"
+  represents => { "Text section" }, about_topics => { "pitfalls to watch out for in file editing" };
+}
+

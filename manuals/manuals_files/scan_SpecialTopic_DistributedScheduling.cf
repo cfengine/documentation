@@ -1,0 +1,69 @@
+
+bundle knowledge SpecialTopic_DistributedScheduling
+
+{
+topics:
+
+"SpecialTopic_DistributedScheduling";
+Special_Topics_Guide::
+    "Summary of Distributed Scheduling"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "Long workflow chains"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "Self-healing workflows"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "Triggering multiple follow-ups"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "Aggregation of multiple jobs"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "More links in the chain"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "Fancy distributed encapsulation"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "Regular workflows"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "One-off workflows"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "Job scheduling and periodic maintenance"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "Coordinating dispatch"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "What is distributed scheduling?"  association => a("discusses","Distributed Scheduling","is discussed in");
+Special_Topics_Guide::
+    "CFEngine-Tutorial"  association => a("discusses","Distributed Scheduling","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html"
+  represents => { "Official CFEngine document"},  about_topics => { "distributed scheduling" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html"
+  represents => { "Special Topics Guide"},  about_topics => { "distributed scheduling" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#Top"
+  represents => { "Text section" }, about_topics => { "cfengine-tutorial" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#What-is-distributed-scheduling_003f"
+  represents => { "Text section" }, about_topics => { "what is distributed scheduling?" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#Coordinating-dispatch"
+  represents => { "Text section" }, about_topics => { "coordinating dispatch" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#Job-scheduling-and-periodic-maintenance"
+  represents => { "Text section" }, about_topics => { "job scheduling and periodic maintenance" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#One_002doff-workflows"
+  represents => { "Text section" }, about_topics => { "one-off workflows" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#Regular-workflows"
+  represents => { "Text section" }, about_topics => { "regular workflows" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#Fancy-distributed-encapsulation"
+  represents => { "Text section" }, about_topics => { "fancy distributed encapsulation" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#More-links-in-the-chain"
+  represents => { "Text section" }, about_topics => { "more links in the chain" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#Aggregation-of-multiple-jobs"
+  represents => { "Text section" }, about_topics => { "aggregation of multiple jobs" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#Triggering-multiple-follow_002dups"
+  represents => { "Text section" }, about_topics => { "triggering multiple follow-ups" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#Self_002dhealing-workflows"
+  represents => { "Text section" }, about_topics => { "self-healing workflows" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#Long-workflow-chains"
+  represents => { "Text section" }, about_topics => { "long workflow chains" };
+ "/knowledge/docs/SpecialTopic_DistributedScheduling.html#Summary-of-Distributed-Scheduling"
+  represents => { "Text section" }, about_topics => { "summary of distributed scheduling" };
+}
+

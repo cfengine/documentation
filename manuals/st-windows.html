@@ -1,0 +1,775 @@
+<html lang="en">
+<head>
+<title>Windows Management with CFEngine Nova</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Windows Management with CFEngine Nova">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Windows Management with CFEngine Nova</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Windows Managment with CFEngine Nova</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#System-requirements">System requirements</a>
+<li><a accesskey="2" href="#Installation">Installation</a>
+<li><a accesskey="3" href="#Testing-policies-locally">Testing policies locally</a>
+<li><a accesskey="4" href="#Windows-registry-management">Windows registry management</a>
+<li><a accesskey="5" href="#Windows-service-management">Windows service management</a>
+<li><a accesskey="6" href="#File-and-folder-permissions">File and folder permissions</a>
+<li><a accesskey="7" href="#Windows_002daware-features-in-CFE-Nova">Windows-aware features in CFE Nova</a>
+<li><a accesskey="8" href="#Windows-special-variables">Windows special variables</a>
+<li><a accesskey="9" href="#Windows-hard-classes">Windows hard classes</a>
+<li><a href="#Notes-on-windows-policies">Notes on windows policies</a>
+</ul>
+
+<!-- @ifhtml -->
+<!-- @html -->
+<!-- <a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a> -->
+<!-- <h2>Summary of contents</h2> -->
+<!-- end html -->
+<!-- @end ifhtml -->
+<!-- acls -->
+<!-- registry -->
+<!-- Event log -->
+<!-- policy sharing with Unix - bundles at least. -->
+<div class="node">
+<a name="System-requirements"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Installation">Installation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">System requirements</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine Nova, being so lightweight, works equally well on Windows
+clients as on Windows servers. Both native 32-bit/x86 (package name
+<code>i686</code>) and 64-bit/x64 (package name <code>x86_64</code>) packages are
+available to customers. It is important that you select the
+<code>x86_64</code> package if you are running 64-bit Windows.
+
+   <p>Of Windows client operating systems, anything from Windows XP SP2 and
+newer is supported. On the server side, Windows Server 2003 and newer
+is supported.
+
+   <p>CFEngine Nova communicates bi-directionally on port <code>5308</code>, so
+make sure that this port is open for outgoing and incoming <code>TCP</code>
+connections.
+
+   <p>All software dependencies are bundled with the CFEngine Nova
+package. The total disk consumption is about 70 <code>MB</code>, and the
+memory usage is less than 30 <code>MB</code>.
+
+<div class="node">
+<a name="Installation"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Testing-policies-locally">Testing policies locally</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#System-requirements">System requirements</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Installation</h3>
+
+<pre class="sp">
+
+</pre>
+
+The installation and set-up procedure on Windows is not different than
+that for other operating systems Nova runs on, so the Nova getting
+started document available at <a href="http://software.cfengine.com">http://software.cfengine.com</a>
+applies to the Windows version as well.
+
+   <p>The Windows <code>msi</code>-packages will get silently installed (no
+prompts) to <code>Cfengine</code> under your program files directory
+(e.g. <code>C:\Program Files\Cfengine</code> on English Windows
+versions). It is important that the installer is run with
+Administrative priviliges. To ensure this, open a <code>Command
+Prompt</code> in Administrative mode and run &lsquo;<samp><span class="samp">msiexec -i
+cfengine-nova-VERSION-ARCH.msi</span></samp>&rsquo; (replace <code>VERSION</code> and
+<code>ARCH</code> appropriately).
+
+   <p>Note that you need a policy hub to bootstrap to in order for
+the license to get downloaded and verified. This is required even if
+you just want to run some tests on the local machine manually. The
+policy hub needs to run a flavour of Linux, as noted in the Nova
+getting started document. Find the hostname or IP address of the hub, here we assume the address is '123.456.789.123' (do not bootstrap with a localhost address):
+
+<pre class="verbatim">   C:\Program Files\Cfengine\bin\cf-agent.exe --bootstrap --policy-server 123.456.789.123
+</pre>
+
+<div class="node">
+<a name="Testing-policies-locally"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Windows-registry-management">Windows registry management</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Installation">Installation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Testing policies locally</h3>
+
+<p>After correctly bootstrapping, however, you can stop the CFEngine Nova
+service (the <code>cf-execd</code> process), and kill <code>cf-serverd</code> and
+<code>cf-monitord</code> to create an off-line test environment. You can
+also delete everything under <code>Cfengine\inputs</code> except
+<code>license.dat</code> and <code>cfengine_stdlib.cf</code> to test local
+policies manually.
+
+   <p>Create a new text file <code>Cfengine\inputs\promises.cf</code> and input
+the following text using your favourite text editor.
+
+<pre class="verbatim">body common control
+{
+<span class="red">bundlesequence </span>=> { "test" };
+<span class="red">inputs </span>=> { "cfengine_stdlib.cf" };
+<span class="red">host_licenses_paid </span>=><span class="green"> "1";</span>
+}
+
+<span class="red">bundle agent</span> <span class="blue">test</span>
+{
+<span class="red">reports:
+</span>windows::
+  "Hello, Windows!";
+}
+</pre>
+
+   <p>Now, go to your terminal (e.g. Command Prompt) and navigate to
+<code>Cfengine\bin</code> under program files. Run <code>cf-promises.exe</code>. It
+should generate no output, which indicates correct syntax and license.
+
+   <p>To execute the policy, run <code>cf-agent.exe -K</code>. You should see the
+following output.
+
+<div align="center"><img src="winhello.png" alt="Windows output"></div>
+
+   <p>We now have a basic skeleton policy that we can test our Windows
+promises with. These can later be integrated at the policy hub to
+ensure that they are run on all Windows systems. We will assume this
+general skeleton for the rest of this document, modifying the contents
+of the <code>test</code> bundle only.
+
+<div class="node">
+<a name="Windows-registry-management"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Windows-service-management">Windows service management</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Testing-policies-locally">Testing policies locally</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Windows registry management</h3>
+
+<p>CFEngine Nova supports fine-grained management of the Windows
+registry. These promises are encapsulated under the <code>databases:</code>
+promise type.
+
+<h4 class="unnumberedsubsec">Creating values</h4>
+
+<p>Let us modify our skeleton bundle to contain the following.
+
+<pre class="verbatim">...
+<span class="red">bundle agent</span> <span class="blue">test</span>
+{
+<span class="red">databases:
+</span>
+  "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Security"
+
+<span class="red">    database_operation </span>=><span class="green"> "create",</span>
+<span class="red">    database_rows </span>=> { "MaxSize,REG_DWORD,84017152", "Retention,REG_DWORD,0"},
+<span class="red">    database_type </span>=><span class="green"> "ms_registry",</span>
+<span class="red">    comment       </span>=><span class="green"> "Ensure eventlog size is in accordance with standards";</span>
+}
+</pre>
+
+   <p>Now, we again run <code>cf-promises.exe</code> to ensure the syntax is
+correct, followed by <code>cf-agent.exe -KI</code>. Note that we added the
+<code>-I</code> option which tells <code>cf-agent.exe</code> to notify us on the
+existing state of the system and any actions done to ensure the
+desired state. The output should look like the following.
+
+<div align="center"><img src="winreg-create.png" alt="Windows registry create output"></div>
+
+   <p>When we run <code>cf-agent.exe</code> twice, the second run will do nothing
+because the first run has already corrected the value. This is
+convergence &mdash; CFEngine is ensuring the desired state.
+
+<h4 class="unnumberedsubsec">Removing values</h4>
+
+<p>In order to remove values instead, we just need to adjust the policy
+slightly, resulting in the following bundle.
+
+<pre class="verbatim">...
+<span class="red">bundle agent</span> <span class="blue">test</span>
+{
+<span class="red">databases:
+</span>
+  "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Security"
+
+<span class="red">    database_operation </span>=><span class="green"> "delete",</span>
+<span class="red">    database_columns   </span>=> { "value1", "value2"},
+<span class="red">    database_type      </span>=><span class="green"> "ms_registry",</span>
+<span class="red">    comment            </span>=><span class="green"> "Remove stray values generated by an application";</span>
+}
+</pre>
+
+   <p>Now, if you create &lsquo;<samp><span class="samp">value1</span></samp>&rsquo; and &lsquo;<samp><span class="samp">value2</span></samp>&rsquo; in the key above,
+<code>cf-agent.exe</code> should show the following output.
+
+<div align="center"><img src="winreg-delete.png" alt="Windows registry delete output"></div>
+
+   <p>At the time of writing, Nova supports the <code>REG_DWORD</code> (double
+word), <code>REG_SZ</code> (string) and <code>REG_EXPAND_SZ</code> (expandable
+string) data types, as given in the middle field of the
+<code>database_rows</code> list elements. See the
+<a href="http://cfengine.com/manuals/cf3-reference.html#database_005frows-in-databases">CFEngine reference manual</a> for an updated list of supported data types.
+
+   <p>Also note the <code>registryvalue()</code> function which can be used to
+read out value data from the registry and act upon it. Examples of its
+use are also available in the
+<a href="http://cfengine.com/manuals/cf3-reference.html#Function-registryvalue">CFEngine reference manual</a>.
+
+<div class="node">
+<a name="Windows-service-management"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#File-and-folder-permissions">File and folder permissions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Windows-registry-management">Windows registry management</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Windows service management</h3>
+
+<p>CFEngine Nova can maintain complete control of the state of all
+Windows services. For example, services prone to security issues or
+errors can easily be given a disabled state.
+
+<div align="center"><img src="winservice-disabled_policy.png" alt="Disabled Windows service"></div>
+
+   <p>A service can also be given a running state, in which case CFEngine
+Nova ensures that it is running, and starts it if it is not, with
+parameters if desired. More advanced policy options are also
+available, including support for starting and stopping dependencies,
+and configuring when the services should be started (e.g. only when
+they are being used).
+
+   <p>Note that the name of a service in Windows may be different from its
+&ldquo;Display name&rdquo;. CFEngine Nova policies use the name, not the display
+name, due to the need of uniqueness.
+
+<div align="center"><img src="winservice-properties_name.png" alt="Windows service name and Display name"></div>
+
+   <p>A complete example of a service management bundle is show below.
+
+<pre class="verbatim">...
+<span class="red">bundle agent</span> <span class="blue">test</span>
+{
+<span class="red">services:
+</span>
+windows::
+ "W32Time"
+<span class="red">     service_policy </span>=><span class="green"> "start",</span>
+<span class="red">     service_method </span>=><span class="blue"> bootstart,</span>
+<span class="red">     comment </span>=><span class="green"> "Ensure important services are running and starting at boot";</span>
+
+Windows_Server_2008::
+  "RemoteRegistry"
+<span class="red">     service_policy </span>=><span class="green"> "disable",</span>
+<span class="red">     service_method </span>=><span class="blue"> force_deps,</span>
+<span class="red">     comment </span>=><span class="green"> "Disable services that create security issues";</span>
+
+}
+</pre>
+
+   <p>This example ensures that the Windows Time service is running on all
+Windows hosts, and that Remote registry is disabled on all Windows
+2008 servers.
+
+<div class="node">
+<a name="File-and-folder-permissions"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Windows_002daware-features-in-CFE-Nova">Windows-aware features in CFE Nova</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Windows-service-management">Windows service management</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">File and folder permissions</h3>
+
+<p>CFEngine Nova can ensure the permissions or Access Control Lists
+(<code>ACLs</code>) of your Windows systems are correctly set. Windows
+<code>ACLs</code> are a complex topic by itself, with support for more than
+ten different permission bits and inheritance. Nova supports all of
+this, but we will just cover the basics in this document.
+
+   <p>The following policy will ensure strict permissions on a directory
+&lsquo;<samp><span class="samp">C:\Secret</span></samp>&rsquo; and a file &lsquo;<samp><span class="samp">C:\Secret\file.txt</span></samp>&rsquo;.
+
+<pre class="verbatim">...
+
+<span class="red">bundle agent</span> <span class="blue">test</span>
+{
+<span class="red">vars:
+</span>  "acl_secret_dir"<span class="red"> slist </span>=> { "user:Administrator:rwx:allow", 
+<span class="red">                              "group:Administrators:rx:allow" };
+</span>  "acl_secret_file"<span class="red"> slist </span>=> { "user:Administrator:rw:allow" };
+
+<span class="red">files:
+</span>
+windows::
+<span class="red">  "C:\Secret",
+</span><span class="red">    acl </span>=><span class="blue"> ntfs( "@(acl_secret_dir)" ),</span>
+<span class="red">	depth_search </span>=><span class="blue"> include_base,</span>
+<span class="red">	perms </span>=><span class="blue"> owner( "Administrator" );</span>
+
+<span class="red">  "C:\Secret\file.txt",
+</span><span class="red">    acl </span>=><span class="blue"> ntfs( "@(acl_secret_file)" ),</span>
+<span class="red">	perms </span>=><span class="blue"> owner( "Administrator" );</span>
+}
+</pre>
+
+   <p>The <a href="http://cfengine.com/manuals/cf3-reference.html#acl-in-files">CFEngine reference manual</a> contains a description of all the available
+<code>ACL</code> options. Also refer to the the CFEngine Nova Owner's manual
+for a more in-depth discussion of the <code>ACL</code> options available.
+
+<div class="node">
+<a name="Windows-aware-features-in-CFE-Nova"></a>
+<a name="Windows_002daware-features-in-CFE-Nova"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Windows-special-variables">Windows special variables</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#File-and-folder-permissions">File and folder permissions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Windows-aware features in CFE Nova</h3>
+
+<p>CFEngine Nova integrates with the Windows operating system in multiple
+ways.
+
+   <p>The CFEngine scheduler in Nova (<code>cf-execd</code>) runs as a Windows
+service. This means it runs in the background and starts with Windows,
+before any user logs in. It can be configured, started and stopped
+from the &ldquo;Services&rdquo; listing in Windows, just like any other Windows
+service.
+
+   <p>Event logs are the Windows counterpart to syslog from Unix. The main
+difference is that event logs aim to group similar log messages,
+giving each group an event id. The following event ids are defined in
+CFEngine Nova, allowing categorisation of the log message based on its
+type. The Nova event logs can be found under the &ldquo;System&rdquo; logs.
+
+   <p><table summary=""><tr align="left"><th valign="top" width="40%">Description </th><th valign="top" width="20%">Event ID </th><th valign="top" width="20%">Type
+<br></th></tr><tr align="left"><td valign="top" width="40%">Promise kept </td><td valign="top" width="20%">100 </td><td valign="top" width="20%">Information
+<br></td></tr><tr align="left"><td valign="top" width="40%">Promise repaired </td><td valign="top" width="20%">101 </td><td valign="top" width="20%">Information
+<br></td></tr><tr align="left"><td valign="top" width="40%">Promise not repaired due warn only policy </td><td valign="top" width="20%">102 </td><td valign="top" width="20%">Error
+<br></td></tr><tr align="left"><td valign="top" width="40%">Promise not repaired due to error </td><td valign="top" width="20%">103 </td><td valign="top" width="20%">Error
+<br></td></tr><tr align="left"><td valign="top" width="40%">Report promise </td><td valign="top" width="20%">104 </td><td valign="top" width="20%">Information
+<br></td></tr><tr align="left"><td valign="top" width="40%">Generic information </td><td valign="top" width="20%">105 </td><td valign="top" width="20%">Information
+<br></td></tr><tr align="left"><td valign="top" width="40%">Generic verbose </td><td valign="top" width="20%">106 </td><td valign="top" width="20%">Information
+<br></td></tr><tr align="left"><td valign="top" width="40%">Generic warning </td><td valign="top" width="20%">107 </td><td valign="top" width="20%">Warning
+<br></td></tr><tr align="left"><td valign="top" width="40%">Generic error </td><td valign="top" width="20%">108 </td><td valign="top" width="20%">Error
+   <br></td></tr></table>
+
+<div align="center"><img src="winevent-notkept-storage.png" alt="Promise not kept in Event Viewer"></div>
+
+   <p>By default, only promise not repaired and generic error events are
+logged to avoid flooding the Event Log. You can turn on verbose
+logging to log all messages, like the following example.
+
+<pre class="verbatim">
+<span class="red">body common control
+</span>{
+<span class="red">inputs </span>=> { "cfengine_stdlib.cf" };
+<span class="red">bundlesequence  </span>=> { "main" };
+}
+
+<span class="red">bundle agent</span> <span class="blue">main</span>
+{
+<span class="red">files:
+</span><span class="red">"C:\test.txt"
+</span><span class="red">  create </span>=><span class="green"> "true",</span>
+<span class="red">  action </span>=><span class="blue"> log_verbose;</span>
+}
+
+</pre>
+
+<div class="node">
+<a name="Windows-special-variables"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Windows-hard-classes">Windows hard classes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Windows_002daware-features-in-CFE-Nova">Windows-aware features in CFE Nova</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Windows special variables</h3>
+
+<p>Three new special variables have been added to the Windows version of
+CFEngine Nova.
+
+     <ul>
+<li><code>sys.windir</code> contains the Windows directory,
+e.g. &ldquo;C:\WINDOWS&rdquo;.
+
+     <li><code>sys.winsysdir</code> contains the Windows system directory,
+e.g. &ldquo;C:\WINDOWS\system32&rdquo;.
+
+     <li><code>sys.winprogdir</code> contains the program files directory,
+e.g. &ldquo;C:\Program Files&rdquo;.
+
+   </ul>
+
+   <p>Note that these variables are not statically coded, but retrieved from
+the current system. For example, <code>sys.winprogdir</code> is often
+different on Windows versions in distinct languages.
+
+<div class="node">
+<a name="Windows-hard-classes"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Notes-on-windows-policies">Notes on windows policies</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Windows-special-variables">Windows special variables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Windows hard classes</h3>
+
+<p>The Windows version of CFEngine Nova defines hard classes to pinpoint
+the exact version of Windows that it is running on, the service pack
+version and if it's a server or workstation.
+
+   <p>First of all, the class <code>windows</code> is defined on all Windows
+platforms. For Windows workstations, such as Windows XP,
+<code>WinWorkstation</code> is defined. On Windows servers, such as Windows
+Server 2003, <code>WinServer</code> is defined. In addition, if the server
+is a domain controller, <code>DomainController</code> is defined. Note that
+if <code>DomainController</code> is defined, then <code>WinServer</code> is also
+defined, for natural reasons.
+
+   <p>The class <code>Service_Pack_X_Y</code> is defined according to the service
+pack version. For example, at the time of writing,
+<code>Service_Pack_3_0</code> is set on an updated Windows XP operating
+system.
+
+   <p>To allow taking specific actions on different Windows versions, one
+of the following hard classes is defined.
+
+     <ul>
+<li><code>Windows_7</code>
+<li><code>Windows_Server_2008_R2</code>
+<li><code>Windows_Server_2008</code>
+<li><code>Windows_Vista</code>
+<li><code>Windows_Server_2003_R2</code>
+<li><code>Windows_Home_Server</code>
+<li><code>Windows_Server_2003</code>
+<li><code>Windows_XP_Professional_x64_Edition</code>
+<li><code>Windows_XP</code>
+<li><code>Windows_2000</code>
+</ul>
+
+   <p>Note that all defined hard classes for a given system is shown by
+running <code>cf-promises -v</code>.
+
+<div class="node">
+<a name="Notes-on-windows-policies"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Windows-hard-classes">Windows hard classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Notes on windows policies</h3>
+
+<p>A potential problem source when writing policies for windows is that
+paths to executables often contain spaces. This makes it impossible
+for CFEngine to know where the executable ends and the parameters to
+it starts. To solve this, we place escaped quotes around the
+executable.
+
+   <p>Additionally, Windows does not support that processes start themselves
+in in the background (i.e. fork off a child process in the Unix
+world). The result is that CFEngine is always waiting for the commands
+to finish execution before checking the next promise. To avoid this,
+use the background attribute in the action body-part.
+
+   <p>Both these things are demonstrated in the following example.
+
+<pre class="verbatim">
+<span class="red">body common control
+</span>{
+<span class="red">inputs </span>=> { "cfengine_stdlib.cf" };
+<span class="red">bundlesequence  </span>=> { "main" };
+}
+
+<span class="red">bundle agent</span> <span class="blue">main</span>
+{
+<span class="red">commands:
+</span>
+<span class="red">"\"C:\Program Files\Some Dir\program name.bat\" --silent --batch"
+</span><span class="red">  action </span>=><span class="blue"> in_shell_bg;</span>
+}
+
+</pre>
+
+   <p>Finally, one should note that Windows lacks support for certain
+features that are utilised in Unix versions of CFEngine. These include
+symbolic links, file groups, user and group identifiers.
+
+   <p>Thus, the parts of promises containing these features will be
+ignored. For example, the <code>getgid()</code> function does not return
+anything on Windows. The
+<a href="http://cfengine.com/manuals/cf3-reference.html">CFEngine reference manual</a> documents exactly which promises are ignored and
+not.  Also, <code>cf-agent.exe</code> from CFEngine Nova prints warning messages
+on ignored attributes when run in verbose mode (<code>cf-agent.exe-Kv</code>).
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Windows Managment with CFEngine Nova</a>
+<ul>
+<li><a href="#System-requirements">System requirements</a>
+<li><a href="#Installation">Installation</a>
+<li><a href="#Testing-policies-locally">Testing policies locally</a>
+<li><a href="#Windows-registry-management">Windows registry management</a>
+<ul>
+<li><a href="#Windows-registry-management">Creating values</a>
+<li><a href="#Windows-registry-management">Removing values</a>
+</li></ul>
+<li><a href="#Windows-service-management">Windows service management</a>
+<li><a href="#File-and-folder-permissions">File and folder permissions</a>
+<li><a href="#Windows_002daware-features-in-CFE-Nova">Windows-aware features in CFE Nova</a>
+<li><a href="#Windows-special-variables">Windows special variables</a>
+<li><a href="#Windows-hard-classes">Windows hard classes</a>
+<li><a href="#Notes-on-windows-policies">Notes on windows policies</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+
+

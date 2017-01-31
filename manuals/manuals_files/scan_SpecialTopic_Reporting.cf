@@ -1,0 +1,85 @@
+
+bundle knowledge SpecialTopic_Reporting
+
+{
+topics:
+
+"SpecialTopic_Reporting";
+Special_Topics_Guide::
+    "Example command hub searches"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Command line access to the hub"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Mission Portal access to the hub"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Hub Reporting"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Commercial edition measurements promises"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Cheaper options - tripwires"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Change auditing - the all seeing eye"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Redirecting output to logs"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Creating custom logs"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Including data in reports"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Creating custom reports  all versions"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "CFEngine output levels"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Standard reports in CFEngine"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Reporting in CFEngine"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Should monitoring and configuration be separate?"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "What are monitoring and reporting?"  association => a("discusses","Reporting","is discussed in");
+Special_Topics_Guide::
+    "Reporting"  association => a("discusses","Reporting","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Reporting.html"
+  represents => { "Official CFEngine document"},  about_topics => { "reporting" };
+ "/knowledge/docs/SpecialTopic_Reporting.html"
+  represents => { "Special Topics Guide"},  about_topics => { "reporting" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Top"
+  represents => { "Text section" }, about_topics => { "reporting" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#What-are-monitoring-and-reporting_003f"
+  represents => { "Text section" }, about_topics => { "what are monitoring and reporting?" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Should-monitoring-and-configuration-be-separate_003f"
+  represents => { "Text section" }, about_topics => { "should monitoring and configuration be separate?" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Reporting-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "reporting in cfengine" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Standard-reports-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "standard reports in cfengine" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#CFEngine-output-levels"
+  represents => { "Text section" }, about_topics => { "cfengine output levels" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Creating-custom-reports-_002d_002d-all-versions"
+  represents => { "Text section" }, about_topics => { "creating custom reports  all versions" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Including-data-in-reports"
+  represents => { "Text section" }, about_topics => { "including data in reports" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Creating-custom-logs"
+  represents => { "Text section" }, about_topics => { "creating custom logs" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Redirecting-output-to-logs"
+  represents => { "Text section" }, about_topics => { "redirecting output to logs" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Change-auditing-_002d-the-all-seeing-eye"
+  represents => { "Text section" }, about_topics => { "change auditing - the all seeing eye" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Cheaper-options-_002d-tripwires"
+  represents => { "Text section" }, about_topics => { "cheaper options - tripwires" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Commerical-edition-measurements-promises"
+  represents => { "Text section" }, about_topics => { "commercial edition measurements promises" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Hub-reporting"
+  represents => { "Text section" }, about_topics => { "hub reporting" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Mission-Portal-access-to-the-hub"
+  represents => { "Text section" }, about_topics => { "mission portal access to the hub" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Command-line-access-to-the-hub"
+  represents => { "Text section" }, about_topics => { "command line access to the hub" };
+ "/knowledge/docs/SpecialTopic_Reporting.html#Example-command-hub-searches"
+  represents => { "Text section" }, about_topics => { "example command hub searches" };
+}
+

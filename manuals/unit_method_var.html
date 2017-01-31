@@ -1,0 +1,55 @@
+ <div id="wholebody"><div id="pagebody"><div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div><div id="content">
+<pre>
+<h1>Cfengine 3 example unit_method_var.html</h1>
+#
+# Demonstrates the use of variables to call bundles.
+# We can then filter variables on classes, for example.
+#
+
+body common control
+{
+bundlesequence => { "test" };
+}
+
+###########################################
+
+bundle agent test
+{
+vars:
+  "run_bundles" slist    => { "test_one", "test_two" };
+  "run_a_bundle"  string => "test_three";
+
+methods:
+  "any" usebundle        => "$(run_bundles)";
+  "any" usebundle        => "$(run_a_bundle)";
+}
+
+###########################################
+
+bundle agent test_one
+{
+reports:
+cfengine_3::
+  "in test_one";
+}
+
+###########################################
+
+bundle agent test_two
+{
+reports:
+cfengine_3::
+  "in test_two";
+}
+
+###########################################
+
+bundle agent test_three
+{
+reports:
+cfengine_3::
+  "in test_three";
+}
+
+
+</div><div class="rbottom"><div class="r4"></div><div class="r3"></div><div class="r2"></div><div class="r1"></div></div></div></div></div>

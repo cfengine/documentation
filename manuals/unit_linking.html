@@ -1,0 +1,91 @@
+ <div id="wholebody"><div id="pagebody"><div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div><div id="content">
+<pre>
+<h1>Cfengine 3 example unit_linking.html</h1>
+#  Copyright (C) Cfengine AS
+
+#  This file is part of Cfengine 3 - written and maintained by Cfengine AS.
+
+#  This program is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU General Public License as published by the
+#  Free Software Foundation; version 3.
+
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA
+
+# To the extent this program is licensed as part of the Enterprise
+# versions of Cfengine, the applicable Commerical Open Source License
+# (COSL) may apply to this file if you as a licensee so wish it. See
+# included file COSL.txt.
+
+######################################################################
+#
+# File editing
+#
+# Normal ordering:
+# - delete
+# - replace | colum_edit
+# - insert
+# 
+######################################################################
+
+
+body common control
+
+{
+version => "1.2.3";
+bundlesequence  => { "testbundle"  };
+}
+
+########################################################
+
+bundle agent testbundle
+
+{
+files:
+
+  # Make a copy of the password file
+
+  "/home/mark/tmp/passwd"
+
+       link_from     => linkdetails("/etc/passwd"),
+       move_obstructions => "true";
+
+
+  "/home/mark/tmp/linktest"
+
+       link_from     => linkchildren("/usr/local/sbin");
+
+
+#child links
+}
+
+#########################################################
+
+body link_from linkdetails(tofile)
+
+{
+source        => "$(tofile)";
+link_type     => "symlink";
+when_no_source  => "force";      # kill
+}
+
+#########################################################
+
+body link_from linkchildren(tofile)
+
+{
+source        => "$(tofile)";
+link_type     => "symlink";
+when_no_source  => "force";      # kill
+link_children => "true";
+when_linking_children => "if_no_such_file"; # "override_file";
+}
+
+
+</div><div class="rbottom"><div class="r4"></div><div class="r3"></div><div class="r2"></div><div class="r1"></div></div></div></div></div>

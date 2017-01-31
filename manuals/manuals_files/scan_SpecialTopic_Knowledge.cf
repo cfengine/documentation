@@ -1,0 +1,111 @@
+
+bundle knowledge SpecialTopic_Knowledge
+
+{
+topics:
+
+"SpecialTopic_Knowledge";
+Special_Topics_Guide::
+    "Knowledge Management Objectives"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "How does CFEngine Nova help?"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Knowledge transfer"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "What other special documents should an organization have?"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Example company_knowledge.cf"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Documenting locations"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Documenting goals"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Creating your own map"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Stories and narratives"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Types of information"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Knowledge map example 2"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Knowledge map example 1"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Using the Knowledge Map"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Pitfalls to avoid"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "The CFEngine Knowledge map"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "How should you begin?"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Risk and uncertainty"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "What is knowledge management?"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+Special_Topics_Guide::
+    "Knowledge"  association => a("discusses","Implementing Knowledge Management","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Knowledge.html"
+  represents => { "Official CFEngine document"},  about_topics => { "implementing knowledge management" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html"
+  represents => { "Special Topics Guide"},  about_topics => { "implementing knowledge management" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Top"
+  represents => { "Text section" }, about_topics => { "knowledge" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#What-is-knowledge-management_003f"
+  represents => { "Text section" }, about_topics => { "what is knowledge management?" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Risk-and-uncertainty"
+  represents => { "Text section" }, about_topics => { "risk and uncertainty" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#How-should-you-begin_003f"
+  represents => { "Text section" }, about_topics => { "how should you begin?" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#The-CFEngine-Knowledge-map"
+  represents => { "Text section" }, about_topics => { "the cfengine knowledge map" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Pitfalls-to-avoid"
+  represents => { "Text section" }, about_topics => { "pitfalls to avoid" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Using-the-Knowledge-Map"
+  represents => { "Text section" }, about_topics => { "using the knowledge map" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Knowledge-map-example-1"
+  represents => { "Text section" }, about_topics => { "knowledge map example 1" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Knowledge-map-example-2"
+  represents => { "Text section" }, about_topics => { "knowledge map example 2" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Types-of-information"
+  represents => { "Text section" }, about_topics => { "types of information" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Types-of-information"
+  represents => { "Text section" }, about_topics => { "stories and narratives" };
+examples:: "/knowledge/docs/SpecialTopic_Knowledge.html#Types-of-information"
+ about_topics => { "Stories and narratives" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Knowledge.html#Types-of-information"
+ about_topics => { "Stories and narratives" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Knowledge.html#Types-of-information"
+ about_topics => { "Stories and narratives" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Knowledge.html#Types-of-information"
+ about_topics => { "Stories and narratives" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Knowledge.html#Types-of-information"
+ about_topics => { "Stories and narratives" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Types-of-information"
+  represents => { "Text section" }, about_topics => { "creating your own map" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Types-of-information"
+  represents => { "Text section" }, about_topics => { "documenting goals" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Types-of-information"
+  represents => { "Text section" }, about_topics => { "documenting locations" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Example-company_005fknowledge_002ecf"
+  represents => { "Text section" }, about_topics => { "example company_knowledge.cf" };
+examples:: "/knowledge/docs/SpecialTopic_Knowledge.html#Example-company_005fknowledge_002ecf"
+ about_topics => { "Example company_knowledge.cf" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Example-company_005fknowledge_002ecf"
+  represents => { "Text section" }, about_topics => { "what other special documents should an organization have?" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Knowledge-transfer"
+  represents => { "Text section" }, about_topics => { "knowledge transfer" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#How-does-CFEngine-Nova-help_003f"
+  represents => { "Text section" }, about_topics => { "how does cfengine nova help?" };
+ "/knowledge/docs/SpecialTopic_Knowledge.html#Knowledge-Management-Objectives"
+  represents => { "Text section" }, about_topics => { "knowledge management objectives" };
+}
+

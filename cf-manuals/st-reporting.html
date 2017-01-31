@@ -1,0 +1,1054 @@
+<html lang="en">
+<head>
+<title>Reporting</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Reporting">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; }
+  span.sansserif { font-family:sans-serif; font-weight:normal; }
+body {
+	font-family: Verdana, DejaVu, Vera, Geneva, sans-serif;
+	padding: 10px;
+}
+.node
+{
+	text-align: right;
+	padding: 2px;
+	font-size: smaller;
+}
+.node hr {
+	border: 0;
+	width: 100%;
+	color: #CCC;
+	background-color: #CCC;
+	height: 5px;
+}
+.section {
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+h1 {
+	font-weight: bold;
+	color: #666;
+}
+h2 {
+	font-weight: bold;
+	color: #666;
+}
+h3 {
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+}
+
+.menu
+{
+}
+
+.contents
+{
+	background-color: #CCC;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+}
+
+.index-cp
+{
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 70%; }
+
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+.verbatim {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+
+.example {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.smallexample {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.cartouche {
+	background-color: #CCC;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding: 5px;
+	font-style: italic;
+        width: 100%;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }--></style>
+</head>
+<body>
+<h1 class="settitle">Reporting</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-are-monitoring-and-reporting_003f">What are monitoring and reporting?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Reporting</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-are-monitoring-and-reporting_003f">What are monitoring and reporting?</a>
+<li><a accesskey="2" href="#Should-monitoring-and-configuration-be-separate_003f">Should monitoring and configuration be separate?</a>
+<li><a accesskey="3" href="#What-is-a-CMDB_003f">What is a CMDB?</a>
+<li><a accesskey="4" href="#CMDB-and-Cfengine">CMDB and CFEngine</a>
+<li><a accesskey="5" href="#Decentralized-data-collection-in-Cfengine">Decentralized data collection in CFEngine</a>
+<li><a accesskey="6" href="#Reporting-in-Cfengine">Reporting in CFEngine</a>
+<li><a accesskey="7" href="#Standard-reports-in-CFEngine-Nova">Standard reports in CFEngine Nova</a>
+<li><a accesskey="8" href="#CFEngine-output-levels">CFEngine output levels</a>
+<li><a accesskey="9" href="#Creating-custom-reports-_002d_002d-all-versions">Creating custom reports -- all versions</a>
+<li><a href="#Including-data-in-reports">Including data in reports</a>
+<li><a href="#Creating-custom-logs">Creating custom logs</a>
+<li><a href="#Redirecting-output-to-logs">Redirecting output to logs</a>
+<li><a href="#Nova-measurements">Nova measurements</a>
+<li><a href="#Change-auditing-_002d-the-all-seeing-eye">Change auditing - the all seeing eye</a>
+<li><a href="#Cheaper-options-_002d-tripwires">Cheaper options - tripwires</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-are-monitoring-and-reporting%3f"></a>
+<a name="What-are-monitoring-and-reporting_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Should-monitoring-and-configuration-be-separate_003f">Should monitoring and configuration be separate?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What are monitoring and reporting?</h3>
+
+<pre class="sp">
+
+</pre>
+Monitoring is the sampling of system variables at regular intervals in
+order to present an overview of actual changes taking place over time.
+Monitoring data are often presented as extensive views of moving-line
+time series. Monitoring has the ability to detect anomalous behaviour
+by comparing past and present.
+
+   <p>The term <i>reporting</i> is usually taken to mean the creation of short
+summaries of specific system properties suitable for
+management. System reports describe both promises about the system,
+such as compliance, discovered changes and faults.
+
+   <p>The challenge of both these activities is to compare <i>intended</i> or
+<i>promised</i>, behaviour with the <i>actual</i> observed behaviour of the
+system.
+
+<div class="node">
+<a name="Should-monitoring-and-configuration-be-separate%3f"></a>
+<a name="Should-monitoring-and-configuration-be-separate_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-is-a-CMDB_003f">What is a CMDB?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-are-monitoring-and-reporting_003f">What are monitoring and reporting?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Should monitoring and configuration be separate?</h3>
+
+<pre class="sp">
+
+</pre>
+The traditional view of IT operations is that configuration,
+monitoring and reporting a three different things that should not be
+joined. Traditionally, all three have been independent centralized
+processes. This view has emerged historically, but it has a major
+problem.
+
+   <p>Monitoring as an independent activity is inherently non-scalable.
+When numbers of hosts grow beyond a few thousands, centralized
+monitoring schemes fail to manage the information. Tying configuration
+(and therefore repair) to monitoring at the host level is essential
+for the effective management of large and distributed data facilities.
+CFEngine foresaw this need in 1998, with its Computer Immunology
+initiative, and continues to develop this strategy.
+
+   <p>Cfengine's approach is to focus on scalability. The commercial editions
+of CFEngine provide what meaningful information they can in a manner that
+can be scaled to tens of thousands of machines.
+
+<div class="node">
+<a name="What-is-a-CMDB%3f"></a>
+<a name="What-is-a-CMDB_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CMDB-and-Cfengine">CMDB and CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Should-monitoring-and-configuration-be-separate_003f">Should monitoring and configuration be separate?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What is a CMDB?</h3>
+
+<pre class="sp">
+
+</pre>
+
+A Configuration Management Database (CMDB), sometimes called a Change
+and Configuration Management Database (CCMDB), is a repository of
+information about hardware and its expected state. CMDBs are basically
+an outgrowth of <i>inventory databases</i>. They were embraced by many IT
+companies as a plausible solution to configuration management, in the
+absence of an alternative.
+
+   <p>A CMDB records so-called <i>configuration items</i> (CI), which record
+technical, ownership and proposed state data. A CMDB does not
+generally record actual state &ndash; this is left for monitoring software.
+
+   <p>The term CMDB originates from the IT Infrastructure Library (ITIL)
+framework, where it is given a prominent role in system planning and
+verification. The CMDB is by definition a centralized repository.
+
+<div class="node">
+<a name="CMDB-and-Cfengine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Decentralized-data-collection-in-Cfengine">Decentralized data collection in CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-is-a-CMDB_003f">What is a CMDB?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">CMDB and CFEngine</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine deviates from the classical view of a CMDB to modernize the
+concept for modern scaling requirements.  Configuration management
+requires something more sophisticated than a database to describe
+system patterns. The CMDB applies a <i>brute force</i> approach to
+collection and searching of system data that does not scale well, and requires
+large and expensive resources to manage.
+
+   <p>CFEngine works with a highly compressed description of system
+properties that is based on category classification rather than an
+exhaustive inventory of computers. Being distributed in operation,
+CFEngine can also enforce policy on state, without brute force imaging.
+
+<div class="node">
+<a name="Decentralized-data-collection-in-Cfengine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Reporting-in-Cfengine">Reporting in CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CMDB-and-Cfengine">CMDB and CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Decentralized data collection in CFEngine</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine is designed to scale to vast numbers of machines.  It does so
+because it is fundamentally decentralized. Data about system state are
+recorded <i>in situ</i> and are not transmitted over the network
+directly. CFEngine summarizes and compresses system information before
+making it available for central aggregation and analysis. This means
+that high resolution data are available where they count, processing
+is decentralized, and inexpensive summaries may be compared and mined
+for correlations.
+
+   <p>Cfengine's distributed architecture means that no data are lost if the
+network fails temporarily. CFEngine uses the network <i>opportunistically</i>,
+but it is not reliant on it for real-time operations.
+
+<div class="node">
+<a name="Reporting-in-Cfengine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Standard-reports-in-CFEngine-Nova">Standard reports in CFEngine Nova</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Decentralized-data-collection-in-Cfengine">Decentralized data collection in CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Reporting in CFEngine</h3>
+
+<pre class="sp">
+
+</pre>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+If you have regular reporting needs, we recommend using our commercially supported
+version of CFEngine (CFEngine Nova or above), as you will save considerable time
+and resources in programming, and you will have access to the latest developments
+through the software subscription.
+</td></tr></table>
+
+   <p>No promises made in CFEngine imply automatic aggregation of data to a central
+location. In commercial cfengine versions, e.g. CFEngine Nova, an optimized
+aggregation of standardized reports is provided, but the ultimate decision to
+aggregate must be yours.
+
+   <p>Monitoring and reporting capabilities in CFEngine depend on the
+software version include:
+
+     <ul>
+<li><b>Community Edition:</b> Basic output to file or logs may be customized on a per-promise basis. Users can design their own log and report formats, but data processing and extraction from CFEngine's embedded databases must be scripted by the user.
+
+     <li><b>Nova:</b> In addition to community features, Nova provides automated extraction of
+data from CFEngine's self-learning agents, and the generation of a
+standard set of reports in text, HTML or XML formats. Nova summarizes
+distributed data and provides simple compression and aggregation of
+these summaries. Finally summaries are tied into a knowledge map or
+semantic index for browsing by IT operations. At this level CFEngine exceeds
+other industry CMDB solutions for configuration.
+
+     <li><b>Constellation:</b> In addition to Nova features, Constellation performs
+additional data extraction from the collected reports. It analyses correlations
+and provides reverse look up of system attributes based on searchable expressions.
+At this level, CFEngine exceeds other industry CMDB solutions in both reporting
+and configuration.
+
+     <li><b>Galaxy:</b> In addition to Constellation features, Galaxy adds a number
+of state of the art active probes that integrate network monitoring
+with system node monitoring, offering a total and integrated overview
+of networked system behaviour.
+
+   </ul>
+
+<div class="node">
+<a name="Standard-reports-in-CFEngine-Nova"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CFEngine-output-levels">CFEngine output levels</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Reporting-in-Cfengine">Reporting in CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Standard reports in CFEngine Nova</h3>
+
+     <dl>
+<dt><em>Available patches report</em><dd>Patches already installed on system if available.
+<br><dt><em>Classes report</em><dd>User defined classes observed on the system &ndash; inventory data.
+<br><dt><em>Compliance report</em><dd>Total summary of host compliance, all promises aggregated over time.
+<br><dt><em>File_changes report</em><dd>Latest observed changes to system files with time discovered.
+<br><dt><em>File_diffs report</em><dd>Latest observed differences to system files, in a simple diff format.
+<br><dt><em>Hashes report</em><dd>File hash values measured (change detection).
+<br><dt><em>Installed patches report</em><dd>Patches not yet installed, but published by vendor if available.
+<br><dt><em>Installed software report</em><dd>Software already installed on system if available.
+<br><dt><em>Lastseen report</em><dd>Time and frequency of communications with peers, host reliability.
+<br><dt><em>Micro-audit report</em><dd>Generated by cfengine self-auditing. This report is not aggregated.
+<br><dt><em>Monitor summary report</em><dd>Pseudo-real-time measurement of time series data.
+<br><dt><em>Performance report</em><dd>Time cost of verifying system promises.
+<br><dt><em>Promise report</em><dd>Per-promise average compliance report over time.
+<br><dt><em>Promises not kept report</em><dd>Promises that were recently un-kept.
+<br><dt><em>Promises repaired report</em><dd>Promises that were recently kept by repairing system state.
+<br><dt><em>Setuid report</em><dd>Known setuid programs found on system.
+<br><dt><em>Variables report</em><dd>Current variable values expanded on different hosts.
+</dl>
+
+<div class="node">
+<a name="CFEngine-output-levels"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Creating-custom-reports-_002d_002d-all-versions">Creating custom reports -- all versions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Standard-reports-in-CFEngine-Nova">Standard reports in CFEngine Nova</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">CFEngine output levels</h3>
+
+<pre class="sp">
+
+</pre>
+
+Cfengine's default behaviour is to report to the console (known as
+standard output). It's default behaviour is to report nothing except
+errors that are judged to be of a critical nature.
+
+   <p>By using cfengine with the inform flag:
+<pre class="verbatim"># cf-agent -I
+# cf-agent --inform
+</pre>
+you can alter the default to report on action items (actual changes)
+and warnings.
+
+   <p>By using cfengine with the verbose flag:
+<pre class="verbatim"># cf-agent -v
+# cf-agent --verbose
+</pre>
+you can alter the default to report all of its thought-processes.
+You should not interpret a message that only appears in cfengine's
+verbose mode as an actual error, only as information that might be relevant
+to decisions being made by the agent.
+
+<div class="node">
+<a name="Creating-custom-reports----all-versions"></a>
+<a name="Creating-custom-reports-_002d_002d-all-versions"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Including-data-in-reports">Including data in reports</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-output-levels">CFEngine output levels</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Creating custom reports &ndash; all versions</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine allows you to use <code>reports</code> promises to
+make reports of your own. A simple example of this is shown below.
+
+<pre class="verbatim">body common control
+{
+bundlesequence => { "test" };
+}
+
+#
+
+bundle agent test
+{
+reports:
+
+  cfengine_3::
+
+   "$(sys.date),This is a report"
+     report_to_file => "/tmp/test_log";
+}
+
+</pre>
+
+<p class="noindent">We can apply this idea to make more useful custom
+reports.  In this example, the agent tests for certain software
+package and creates a simple HTML file of existing software.
+
+<pre class="verbatim">body common control
+{
+bundlesequence => { "test" };
+}
+
+#
+
+bundle agent test
+{
+vars:
+
+ "software" slist => { "gpg", "zip", "rsync" };
+
+classes:
+
+ "no_report"        expression => fileexists("/tmp/report.html");
+ "have_$(software)" expression => fileexists("/usr/bin/$(software)");
+
+reports:
+
+  no_report::
+
+      "
+      &lt;html>
+      Name of this host is: $(sys.host)&lt;br>
+      Type of this host is: $(sys.os)&lt;br>
+      "
+
+         report_to_file => "/tmp/report.html";
+
+      #
+
+      "
+      Host has software $(software)&lt;br>
+      "
+
+        ifvarclass     => "have_$(software)",
+        report_to_file => "/tmp/report.html";
+
+      #
+
+      "
+      &lt;/html>
+      "
+         report_to_file => "/tmp/report.html";
+
+}
+</pre>
+
+<p class="noindent">The outcome of this promise is a file called <samp><span class="file">/tmp/report.html</span></samp>
+containing output like this:
+
+<pre class="verbatim">      &lt;html>
+      Name of this host is: atlas&lt;br>
+      Type of this host is: linux&lt;br>
+
+      Host has software gpg&lt;br>
+
+      Host has software zip&lt;br>
+
+      Host has software rsync&lt;br>
+
+      &lt;/html>
+</pre>
+
+   <p>The mechanism shown above, can clearly be used to create a wide
+variety of report formats, but it requires a lot of coding and
+maintenance by the user.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+CFEngine Nova simplifies this kind of report generation by enabling
+and updating many out-of-the-box reports directly from the
+<code>cf-report</code> agent.
+</td></tr></table>
+
+<div class="node">
+<a name="Including-data-in-reports"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Creating-custom-logs">Creating custom logs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Creating-custom-reports-_002d_002d-all-versions">Creating custom reports -- all versions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Including data in reports</h3>
+
+<p>CFEngine generates information internally that you might want to use
+in reports. For example, the agent <code>cf-agent</code>
+interfaces with the local light-weight monitoring
+agent <code>cf-monitord</code> so that system state can be reported simply:
+
+<pre class="verbatim">
+body common control
+
+{
+bundlesequence  => { "report" };
+}
+
+###########################################################
+
+bundle agent report
+
+{
+reports:
+
+  linux::
+
+   "/etc/passwd except $(const.n)"
+
+     showstate => { "otherprocs", "rootprocs" };
+
+}
+
+</pre>
+
+<p class="noindent">A corollary to this is that you can get cfengine to report
+system anomalies.
+
+<pre class="verbatim">reports:
+
+ rootprocs_high_dev2::
+
+   "RootProc anomaly high 2 dev on $(mon.host) at approx $(mon.env_time)
+    measured value $(mon.value_rootprocs)
+    average $(mon.average_rootprocs) pm $(mon.stddev_rootprocs)"
+
+      showstate => { "rootprocs" };
+
+ entropy_www_in_high&amp;anomaly_hosts.www_in_high_anomaly::
+
+   "High entropy incoming www anomaly on $(mon.host) at $(mon.env_time)
+    measured value $(mon.value_www_in)
+    average $(mon.average_www_in) pm $(mon.stddev_www_in)"
+
+      showstate => { "incoming.www" };
+
+</pre>
+
+<p class="noindent">This produces standard output of the form:
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">R: State of otherprocs peaked at Tue Dec  1 12:12:21 2009
+
+R: The peak measured state was q = 98:
+R: Frequency: [kjournald]      |**      (2/98)
+R: Frequency: [pdflush]        |**      (2/98)
+R: Frequency: /var/cfengine/bin/cf-execd|**     (2/98)
+R: Frequency: COMMAND          |*       (1/98)
+R: Frequency: init [5]         |*       (1/98)
+R: Frequency: [kthreadd]       |*       (1/98)
+R: Frequency: [migration/0]    |*       (1/98)
+R: Frequency: [ksoftirqd/0]    |*       (1/98)
+R: Frequency: [events/0]       |*       (1/98)
+R: Frequency: [khelper]        |*       (1/98)
+R: Frequency: [kintegrityd/0]  |*       (1/98)
+</pre>
+</td></tr></table>
+
+<p class="noindent">Finally, you can quote lines from files in your data
+for convenience.
+
+<pre class="verbatim">
+body common control
+
+{
+bundlesequence  => { "report" };
+}
+
+###########################################################
+
+bundle agent report
+
+{
+reports:
+
+  linux::
+
+   "/etc/passwd except $(const.n)"
+
+     printfile => pr("/etc/passwd","5");
+
+}
+
+######################################################################
+
+body printfile pr(file,lines)
+
+{
+file_to_print => "$(file)";
+number_of_lines => "$(lines)";
+}
+
+</pre>
+
+<p class="noindent">This produces output of the form
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">R: /etc/passwd except
+R: at:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
+R: avahi:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false
+R: beagleindex:x:104:106:User for Beagle indexing:/var/cache/beagle:/bin/bash
+R: bin:x:1:1:bin:/bin:/bin/bash
+R: daemon:x:2:2:Daemon:/sbin:/bin/bash
+</pre>
+</td></tr></table>
+
+<div class="node">
+<a name="Creating-custom-logs"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Redirecting-output-to-logs">Redirecting output to logs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Including-data-in-reports">Including data in reports</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Creating custom logs</h3>
+
+<pre class="sp">
+
+</pre>
+
+Logs can be attached to any promise. In this example, an executed shell command
+logs a message to the standard output. CFEngine recognizes the <code>stdout</code>
+filename for Standard Output, in the Unix/C standard manner.
+
+<pre class="verbatim">bundle agent test
+{
+commands:
+
+  "/tmp/myjob",
+
+     action => logme("executor");
+
+}
+
+############################################
+
+body action logme(x)
+{
+log_repaired => "stdout";
+logstring => " -> Started the $(x) (success)";
+}
+</pre>
+
+<p class="noindent">In this next example, a file creation promise
+logs different outcomes (success or failure) to different
+log files.
+
+<pre class="verbatim">body common control
+{
+bundlesequence => { "test" };
+}
+
+bundle agent test
+{
+vars:
+
+  "software" slist => { "/root/xyz", "/tmp/xyz" };
+
+files:
+
+  "$(software)"
+
+    create => "true",
+     action => logme("$(software)");
+
+}
+
+#
+
+body action logme(x)
+{
+log_kept => "/tmp/private_keptlog.log";
+log_failed => "/tmp/private_faillog.log";
+log_repaired => "/tmp/private_replog.log";
+log_string => "$(sys.date) $(x) promise status";
+}
+
+</pre>
+
+<p class="noindent">This generates three different logs with outputs in of the form:
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">atlas$ more /tmp/private_keptlog.log
+Sun Dec  6 11:58:16 2009 /tmp/xyz promise status
+Sun Dec  6 11:58:43 2009 /tmp/xyz promise status
+</pre>
+</td></tr></table>
+
+<div class="node">
+<a name="Redirecting-output-to-logs"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Nova-measurements">Nova measurements</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Creating-custom-logs">Creating custom logs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Redirecting output to logs</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine interfaces with the system logging tools in different ways.
+Syslog is the default log for Unix-like systems, while the event
+logger is the default on Windows. You may choose to copy a fixed
+level of cfengine's standard screen messaging to the system logger
+on a per-promise basis.
+
+<pre class="verbatim">body common control
+{
+bundlesequence => { "one" };
+}
+
+
+bundle agent one
+{
+files:
+
+  "/tmp/xyz"
+
+       create => "true",
+       action => log;
+}
+
+body action log
+{
+log_level => "inform";
+}
+</pre>
+
+<div class="node">
+<a name="Nova-measurements"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Change-auditing-_002d-the-all-seeing-eye">Change auditing - the all seeing eye</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Redirecting-output-to-logs">Redirecting output to logs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Nova measurements</h3>
+
+<pre class="sp">
+
+</pre>
+
+In commercial versions of cfengine, you can extract data from the
+system in more sophisticated ways from files or pipes, using Perl
+Compatible Regular Expressions to match text. The <code>cf-monitord</code>
+agent is responsible for processing measurement promises.
+
+   <p>In this example, we count lines matching a pattern in a file.
+You might want to scan a log for instances of a particular
+message and trace this number over time.
+
+<pre class="verbatim">bundle monitor watch
+{
+measurements:
+
+   "/tmp/file"
+
+         handle => "line_counter",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scanlines("MYLINE.*"),
+   history_type => "log";
+
+}
+
+#
+
+body match_value scanlines(x)
+{
+select_line_matching => "^$(x)$";
+}
+
+</pre>
+
+   <p>See the CFEngine Nova documentation for more possibilities of measurement
+promises.
+
+<div class="node">
+<a name="Change-auditing---the-all-seeing-eye"></a>
+<a name="Change-auditing-_002d-the-all-seeing-eye"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Cheaper-options-_002d-tripwires">Cheaper options - tripwires</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Nova-measurements">Nova measurements</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Change auditing - the all seeing eye</h3>
+
+<pre class="sp">
+
+</pre>
+
+Total auditing of a system is a surprisingly difficult thing to do,
+and it is extremely resource intensive. The followers of an audit
+trail are often paranoid by nature and are seldom satisfied with the
+level of detail they find. However, the times we really need an audit
+are rare, but the cost is ever present. The price of certainty is high.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Spend a moment considering this: if you want to describe every change
+of state that happens on a computer, then you need to remember old
+state and compare it to new state. Then you have to record the
+differences. So you need more than the entire size of your computer's
+normal resources to do this. Your storage efficiency will always be
+less than 50% and your processing efficiency will be less than 50% on
+every audited item. Is this worth the effort? Perhaps your resources
+would be better spent keeping targeted backups and simply rebuilding
+contaminated systems.
+</td></tr></table>
+
+   <p>Switch on auditing like this:
+
+<pre class="verbatim">body agent control
+{
+auditing  => "true";
+}
+
+</pre>
+
+   <p>If you decide to go for full auditing, CFEngine will not collect and
+centralize the reports as they will be too large for this to be a
+scalable operation. Still, you can view them in a web browser on the
+local host, or copy them manually to a suitable location.
+
+<div class="node">
+<a name="Cheaper-options---tripwires"></a>
+<a name="Cheaper-options-_002d-tripwires"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Change-auditing-_002d-the-all-seeing-eye">Change auditing - the all seeing eye</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Cheaper options - tripwires</h3>
+
+<p>Doing a change detection scan is a convergent process, but it can
+still detect changes and present the data in a compressed format
+that is often more convenient than auditing. The result is less precise,
+but there is a trade-off between precision and cost.
+
+   <p>To make a change tripwire, you use a <samp><span class="file">files</span></samp> promise, something like this:
+
+<pre class="verbatim">body common control
+{
+bundlesequence  => { "testbundle"  };
+}
+#
+
+bundle agent testbundle
+
+{
+files:
+
+  "/home/mark/tmp" -> "me"
+       changes      => scan_files,
+       depth_search => recurse("inf");
+}
+
+# library code ...
+
+body changes scan_files
+{
+report_changes => "all";
+update_hashes  => "true";
+}
+
+body depth_search recurse(d)
+{
+depth        => "$(d)";
+}
+</pre>
+
+   <p>In CFEngine Nova, reports of the following form are generated when these promises
+are kept by the agent:
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">Change detected 	 File change
+Sat Dec 5 18:27:44 2009  group for /tmp/testfile changed 100 -> 0
+Sat Dec 5 18:27:44 2009  /tmp/testfile
+Sat Dec 5 18:20:45 2009  /tmp/testfile
+</pre>
+</td></tr></table>
+
+<p class="noindent">These reports are generated automatically in CFEngine Nova,
+and are integrated into the web browsable knowledge map. Community
+edition users have to extract the data and create these themselves.
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Reporting</a>
+<ul>
+<li><a href="#What-are-monitoring-and-reporting_003f">What are monitoring and reporting?</a>
+<li><a href="#Should-monitoring-and-configuration-be-separate_003f">Should monitoring and configuration be separate?</a>
+<li><a href="#What-is-a-CMDB_003f">What is a CMDB?</a>
+<li><a href="#CMDB-and-Cfengine">CMDB and CFEngine</a>
+<li><a href="#Decentralized-data-collection-in-Cfengine">Decentralized data collection in CFEngine</a>
+<li><a href="#Reporting-in-Cfengine">Reporting in CFEngine</a>
+<li><a href="#Standard-reports-in-CFEngine-Nova">Standard reports in CFEngine Nova</a>
+<li><a href="#CFEngine-output-levels">CFEngine output levels</a>
+<li><a href="#Creating-custom-reports-_002d_002d-all-versions">Creating custom reports &ndash; all versions</a>
+<li><a href="#Including-data-in-reports">Including data in reports</a>
+<li><a href="#Creating-custom-logs">Creating custom logs</a>
+<li><a href="#Redirecting-output-to-logs">Redirecting output to logs</a>
+<li><a href="#Nova-measurements">Nova measurements</a>
+<li><a href="#Change-auditing-_002d-the-all-seeing-eye">Change auditing - the all seeing eye</a>
+<li><a href="#Cheaper-options-_002d-tripwires">Cheaper options - tripwires</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

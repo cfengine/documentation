@@ -1,0 +1,1527 @@
+<html lang="en">
+<head>
+<title>CFEngine Remote Communication</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CFEngine Remote Communication">
+<meta name="generator" content="makeinfo 4.12">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; }
+  span.sansserif { font-family:sans-serif; font-weight:normal; }
+h1, h2, a, table.list th
+{
+    color: #1f6e6b;
+}
+
+.node
+{
+background: #ddd url(Logo2-small.png) right no-repeat;
+}
+
+.menu
+{
+background: #eef url(menu.png) right no-repeat;
+}
+
+.contents
+{
+background-color: #e9f4e9;
+}
+
+.index-cp
+{
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+  border-color: #4e8b8c;
+  border-style: solid;
+  border-width: 1px;
+}
+
+BODY {
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-style: normal;
+     font-size: 11pt;
+     background: #FFFFFF;
+     color: #000000;
+     }
+
+P {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  }
+
+FONT.liten {font-size: 70%; }
+
+H1, H2, H3 {
+        font-weight: normal;
+        color: #2c2e70;
+        margin-bottom: 0em;
+        }
+
+TABLE { vertical-align: top; }
+
+H1 { font-size: 140% }
+H2 { font-size: 120% }
+H3 { font-size: 110% }
+H4 { font-style: italic; }
+
+TD, TH, UL {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-style: normal;
+        }
+
+TH { background: #9999FF;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     color: blue;
+  font-size: 10pt;
+   }
+
+TD { color: #000000;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-size: 10pt;
+   }
+
+PRE { font-family: "Lucida Typewriter", "Courier", monotype;
+      font-style: normal;
+     font-size: 11pt;
+background-color: #eee;
+    }
+
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+--></style>
+</head>
+<body>
+<h1 class="settitle">CFEngine Remote Communication</h1>
+<div class="node">
+<p><hr>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Communication-Overview">Communication Overview</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine Remote Communication</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+
+   <p><h2>Summary of contents</h2>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+
+   <p>In this module you will learn about
+
+     <ul>
+<li>Pull and Push
+<li>How to pull
+<li>How to simulate push in cfengine
+<li>Authentication
+<li>Encryption
+<li>Security Implications of using cfengine
+<li>Centralization and Decentralization
+<li> Change Management
+
+   </ul>
+   </td></tr></table>
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Communication-Overview">Communication Overview</a>
+<li><a accesskey="2" href="#Authentication">Authentication</a>
+<li><a accesskey="3" href="#Encryption">Encryption</a>
+<li><a accesskey="4" href="#Debugging-Tips">Debugging Tips</a>
+<li><a accesskey="5" href="#Starting-with-cfrun">Starting with cfrun</a>
+<li><a accesskey="6" href="#Security-Implications-of-using-cfengine">Security Implications of using cfengine</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Communication-Overview"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Authentication">Authentication</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Communication Overview</h2>
+
+<p>The idea of voluntary cooperation used by cfengine places restrictions
+on how files can be copied between hosts.  CFEngine allows only `pull'
+(download) but not `push' (upload). This means you cannot force a
+cfagent to perform an operation against local policy but only request
+resources. There is no loss of flexibility in this choice, but a big
+increase in security.
+
+   <p>CFEngine does not allow one to copy from one system to another system
+(push) since it amounts to forcing the system to perform an operation
+against it will. However, push is not totally eliminated from
+cfengine. CFEngine supports a kind of push which consistent with the
+idea of voluntary cooperation. If you want to copy from
+your local system to a remote machine you will need to place an order
+requesting the remote machine to copy the data for you. When the
+remote machine receives the order it will evaluate itself to see if it
+wants to handle the request. To allow remote copying between two systems each
+of the system must explicitly grant access before the operation can
+take place.
+
+   <p>The following example illustrates how this could be done. We will
+consider three scenarios namely client server communication, peer to
+peer copying and simulation of push.
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Scenario-1">Scenario 1</a>
+<li><a accesskey="2" href="#Scenario-2">Scenario 2</a>
+<li><a accesskey="3" href="#Scenario-3">Scenario 3</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Scenario-1"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Scenario-2">Scenario 2</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Communication-Overview">Communication Overview</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Communication-Overview">Communication Overview</a>
+
+</div>
+
+<h3 class="section">1.1 Scenario 1</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Communication-example-1">Communication example 1</a>
+<li><a accesskey="2" href="#Communication-example-2">Communication example 2</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Communication-example-1"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Communication-example-2">Communication example 2</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Scenario-1">Scenario 1</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scenario-1">Scenario 1</a>
+
+</div>
+
+<h4 class="subsection">1.1.1 Communication example 1</h4>
+
+<pre class="smallexample">
+     #client server copy
+     #server side cfservd.conf
+
+     control:
+
+      domain = ( mydomain.com )
+      clients = ( 192.10.10 )   #peer subnet
+      AllowConnectionsFrom = ( $(clients) ) #allow clients to pull data
+      AllowMultipleConnectionsFrom = ( $(clients) )
+      TrustKeysFrom = ( $(clients) )
+
+     admit:
+
+       /master/cfengine/inputs   $(clients)
+
+</pre>
+   <p>Example 1 set up the permission to allow a cfengine client to pull
+data from a cfengine server. The domain specifies the existing
+domain. The line 3 defines clients subnet. This means any client in
+this subnet will be allowed to pull data from the server.  The next
+step is to write the client policy files to copy data from the
+server.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Communication-example-2"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Communication-example-1">Communication example 1</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scenario-1">Scenario 1</a>
+
+</div>
+
+<h4 class="subsection">1.1.2 Communication example 2</h4>
+
+<p>Example 2 is the client policy file.
+
+<pre class="smallexample">     Example 2
+
+     #client side policy file, cfagent.conf
+     control:
+      domain = ( mydomain.com )
+      serverip = ( 192.10.10.1 )   #server ip address
+      master = (  /home/mark/inputs )
+     actionsequence = ( copy )
+     copy:
+        /master/cfengine/inputs server=$(serverip)
+               dest=(master)
+               recurse=inf
+               trustkey=on
+
+</pre>
+   <p>Example 2 allows the client to copy or pull from the
+/master/cfengine/inputs to /home/mark/inputs on the local
+machine. This will succeed because the client is part of the subnet
+allow to pull from the server. To test the setup we need to run
+cfservd on the server side and cfagent on the client side.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Scenario-2"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Scenario-3">Scenario 3</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Scenario-1">Scenario 1</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Communication-Overview">Communication Overview</a>
+
+</div>
+
+<h3 class="section">1.2 Scenario 2</h3>
+
+<p>We consider the second scenario. For the second scenario we want both
+machines to pull from each other. This means both machines should have
+cfservd.conf files and also a policy files that pull the data from
+each other. We will now label the systems peer1 and peer2. Suppose
+peer 1 has ip 192.10.10.1 and peer 2 has an ip 192.10.10.2, we can
+write the policy files as follows:
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Communication-example-3">Communication example 3</a>
+<li><a accesskey="2" href="#Communication-example-4">Communication example 4</a>
+<li><a accesskey="3" href="#Communication-example-5">Communication example 5</a>
+<li><a accesskey="4" href="#Communication-example-6">Communication example 6</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Communication-example-3"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Communication-example-4">Communication example 4</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Scenario-2">Scenario 2</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scenario-2">Scenario 2</a>
+
+</div>
+
+<h4 class="subsection">1.2.1 Communication example 3</h4>
+
+<pre class="smallexample">
+     #Peer 1
+     #server side cfservd.conf
+
+     control:
+
+      domain = ( mydomain.com )
+      clients = ( 192.10.10 )   #peer subnet
+
+     AllowConnectionsFrom = ( $(clients) ) #allow clients to pull data
+     AllowMultipleConnectionsFrom = ( $(clients) )
+     TrustKeysFrom = ( $(clients) )
+
+     admit:
+
+       #allow clients to pull data from only the inputs directory
+       /master/cfengine/inputs   $(clients)
+
+</pre>
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Communication-example-4"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Communication-example-5">Communication example 5</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Communication-example-3">Communication example 3</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scenario-2">Scenario 2</a>
+
+</div>
+
+<h4 class="subsection">1.2.2 Communication example 4</h4>
+
+<pre class="smallexample">
+     #client side policy file, cfagent.conf
+
+     control:
+
+      domain = ( mydomain.com )
+      serverip = ( 192.10.10.2 )   #server ip address
+      master = (  /home/eben/inputs )
+      actionsequence = ( copy )
+
+     copy:
+
+        /master/cfengine/inputs server=$(serverip)
+                   dest=(master)
+                   recurse=inf
+                   trustkey=on
+
+</pre>
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Communication-example-5"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Communication-example-6">Communication example 6</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Communication-example-4">Communication example 4</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scenario-2">Scenario 2</a>
+
+</div>
+
+<h4 class="subsection">1.2.3 Communication example 5</h4>
+
+<pre class="smallexample">     # Peer 2
+     #server side cfservd.conf
+     control:
+      domain = ( mydomain.com )
+
+      clients = ( 192.10.10 )   #peer subnet
+      AllowConnectionsFrom = ( $(clients) ) #allow clients to pull data
+      AllowMultipleConnectionsFrom = ( $(clients) )
+      TrustKeysFrom = ( $(clients) )
+
+     admit:
+
+       /master/cfengine/inputs   $(clients)
+
+</pre>
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Communication-example-6"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Communication-example-5">Communication example 5</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scenario-2">Scenario 2</a>
+
+</div>
+
+<h4 class="subsection">1.2.4 Communication example 6</h4>
+
+<pre class="smallexample">     #This file should be kept in /var/cfengine/inputs
+     #client side policy file, cfagent.conf
+
+     control:
+
+      domain = ( mydomain.com )
+      serverip = ( 192.10.10.1 )   #server ip address
+      master = (  /home/mark/inputs )
+      actionsequence = ( copy )
+
+     copy:
+
+        /master/cfengine/inputs server=$(serverip)
+                   dest=(master)
+                   recurse=inf
+                   trustkey=on
+
+</pre>
+<p class="noindent">The only changes made were to have the two policy files on both
+machines and interchanging the IPs of the client configuration files
+so that they can pull from appropriate the server.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Scenario-3"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Scenario-2">Scenario 2</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Communication-Overview">Communication Overview</a>
+
+</div>
+
+<h3 class="section">1.3 Scenario 3</h3>
+
+<p>We now consider the third scenario. The third scenario will allow us
+to simulate push by using cfrun without breaking the rules of
+voluntary cooperation.
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Communication-example-7">Communication example 7</a>
+<li><a accesskey="2" href="#Communication-example-8">Communication example 8</a>
+<li><a accesskey="3" href="#Communication-example-9">Communication example 9</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Communication-example-7"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Communication-example-8">Communication example 8</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Scenario-3">Scenario 3</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scenario-3">Scenario 3</a>
+
+</div>
+
+<h4 class="subsection">1.3.1 Communication example 7</h4>
+
+<p>We start by modifying the cfservd.conf file. We need to modify the
+cfservd.conf to include the cfrun command. The cfrunCommand specifies
+which cfengine agent should be run when cfrun request is received. The
+cfservd.conf is modified as follows:
+
+<pre class="smallexample">
+     #cfservd.conf for the puller
+
+     control:
+
+      domain = ( mydomain.com )
+      clients = ( 192.10.10 )   #peer subnet
+      cfrunCommand = ( /var/cfengine/bin/cfagent )
+      AllowConnectionsFrom = ( $(clients) ) #allow clients to pull data
+      AllowMultipleConnectionsFrom = ( $(clients) )
+      TrustKeysFrom = ( $(clients) )
+
+     classes:
+      hostlist = (  IPRange(192.10.10.0/24) )
+
+     admit:
+       /master/cfengine/inputs   $(clients)
+       /var/cfengine/bin/cfagent  hostlist
+
+</pre>
+   <p>We include
+
+<pre class="smallexample">     cfrunCommand = ( /var/cfengine/bin/cfagent )
+</pre>
+   <p>Here we specify that <code>cfagent</code> should be called when <code>cfrun</code> request is
+received.  On the same server machine we have to write the pull
+configuration file in the cfagent.conf since cfrunCommand reads
+cfagent.conf by default.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Communication-example-8"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Communication-example-9">Communication example 9</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Communication-example-7">Communication example 7</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scenario-3">Scenario 3</a>
+
+</div>
+
+<h4 class="subsection">1.3.2 Communication example 8</h4>
+
+<pre class="smallexample">     #cfagent.conf for puller
+
+     control:
+
+      domain = ( mydomain.com )
+      serverip = ( 192.10.10.2 )   #server ip address
+      master = (  /home/mark/inputs )
+      actionsequence = ( copy )
+
+     copy:
+
+        /master/cfengine/inputs server=$(serverip)
+                   dest=(master)
+                   recurse=inf
+                   trustkey=on
+
+</pre>
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Communication-example-9"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Communication-example-8">Communication example 8</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scenario-3">Scenario 3</a>
+
+</div>
+
+<h4 class="subsection">1.3.3 Communication example 9</h4>
+
+<pre class="smallexample">
+     #Pusher
+     #cfservd.conf for pusher
+
+     control:
+
+      domain = ( mydomain.com )
+      clients = ( 192.10.10 )   #peer subnet
+      AllowConnectionsFrom = ( $(clients) ) #allow clients to pull data
+      AllowMultipleConnectionsFrom = ( $(clients) )
+      TrustKeysFrom = ( $(clients) )
+
+     admit:
+
+       /master/cfengine/inputs   $(clients)
+
+</pre>
+   <p>The client will just run cfservd.conf which will grant access to
+remote machine to pull data. In addition the client needs cfrun.hosts
+file. The cfrun.hosts must contain the IP or the name of the machine
+we are requesting to pull our data. We can now run the cfrun command
+to parse the policy file on all the hosts listed in cfrun.hosts
+file. The cfrun.hosts file should be placed in <samp><span class="file">/var/cfengine/inputs</span></samp>
+and should contain <code>192.10.10.1</code>. We can also use the optional host
+list instead of cfrun.hosts files.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+     <ul>
+<li>From the mailing list: `We have a directory on some application servers that is full of log
+files.  For various reasons we cannot use syslog to log remotely to
+our syslog server.  I'm considering using the "copy" feature of
+cfengine to sync the log files across once per day.  Would you all
+have any suggestions or best practices on how to accomplish this?'
+
+     <li>`I want email sent when I use cfrun.
+My cfrun command is set to "cfagent"; will my problem be solved if I
+change it to "cfexecd"? Can I specify command line options in
+<code>cfrunCommand</code> or do I need to write a wrapper?'
+<li>I would also like to have <code>alerts</code> go to a separate e-mail address. In
+particular, I want them to be sent to RT so that we can track
+problems. Can this be done?
+
+     <li>We <code>import</code> several files and each of these files has, say, a <code>copy</code> action,
+will the order of the copies follow the order of the imports? For
+example, if I have:
+
+     <pre class="smallexample">          cfagent.conf:
+          import:
+               cf.A
+               cf.X
+          cf.A:
+
+          copy:
+               /path/to/a dest=/path/to/b
+          cf.X:
+          copy:
+               /path/to/x dest=/path/to/y
+
+</pre>
+     <p>Is <code>/path/to/a</code> guaranteed to be copied before <samp><span class="file">/path/to/x</span></samp>?
+</ul>
+   </td></tr></table>
+
+<!-- =========================================================================0 -->
+<div class="node">
+<p><hr>
+<a name="Authentication"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Encryption">Encryption</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Communication-Overview">Communication Overview</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Authentication</h2>
+
+<p>Authentication is about making sure you are who you say you
+are. Traditionally, there are two main approaches: a trusted third
+party (arbiter of the truth) approach and the challenge approach. The
+trust third party allows us to use a third party that the two
+individuals who want to authenticate each other trust to take the
+decision, as usually done in e-commerce site. The challenge approach
+allows the individuals to decide whether to trust each other rather
+than using a third party. CFEngine uses the challenge approach. Its
+model is based in the Secure Shell (OpenSSH). It allows two machines
+to authenticate each other by the machine deciding whether to accept
+the offered keys. For key exchange between client and server, the
+server has to decide if it will trust the client by using the
+TrustKeysFrom directive. The TrustKeysFrom directive allows the server
+to accept keys from one or more machines.
+
+   <p>On the client side the client has to also specify if it will trust key
+from the server by using the trustkey directive. The trustkey
+directive allows a client to decide whether to accept keys from a
+server. The cfengine authentication model is base on ssh scheme,
+however unlike ssh, cfengine authentication is not interactive and the
+keys are generated by <code>cfkey</code> program instead of ssh key-gen
+program. The ssh interaction is accomplished in cfengine using the
+trustkey directive. Once the keys have been exchange the trustkey=on
+is no longer effective. The cfkey when run generate the cfengine key
+and store it in <samp><span class="file">/var/cfengine/ppkeys</span></samp> subdirectory.
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Communication-example-10">Communication example 10</a>
+<li><a accesskey="2" href="#Communication-example-11">Communication example 11</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Communication-example-10"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Communication-example-11">Communication example 11</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Authentication">Authentication</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Authentication">Authentication</a>
+
+</div>
+
+<h3 class="section">2.1 Communication example 10</h3>
+
+<p>The server side configuration
+<pre class="smallexample">
+     control:
+
+      domain = ( mydomain.com )
+      clients = ( 192.10.10 )   #peer subnet
+      AllowConnectionsFrom = ( $(clients) ) #allow clients to pull data
+      AllowMultipleConnectionsFrom = ( $(clients) )
+      TrustKeysFrom = ( $(clients) )
+
+     admit:
+
+       /master/cfengine/inputs   $(clients)   #allow clients to pull data from only the inputs directory
+
+</pre>
+   <!--  -->
+<div class="node">
+<p><hr>
+<a name="Communication-example-11"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Communication-example-10">Communication example 10</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Authentication">Authentication</a>
+
+</div>
+
+<h3 class="section">2.2 Communication example 11</h3>
+
+<p>The client side configuration:
+
+<pre class="smallexample">
+     #client side policy file, cfagent.conf
+
+     control:
+
+      domain = ( mydomain.com )
+      serverip = ( 192.10.10.1 )   #server ip address
+      master = (  /home/mark/inputs )
+      actionsequence = ( copy )
+
+     copy:
+        /master/cfengine/inputs server=$(serverip)
+                  dest=(master)
+                  recurse=inf
+                  trustkey=on
+     #end
+
+</pre>
+   <div class="node">
+<p><hr>
+<a name="Encryption"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Debugging-Tips">Debugging Tips</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Authentication">Authentication</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 Encryption</h2>
+
+<p>CFEngine uses the public private key pairs generated by cfkey to
+encrypt data during file transfer. CFEngine uses RSA encryption
+algorithm to encrypt information.
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Communication-example-12">Communication example 12</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Communication-example-12"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Encryption">Encryption</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Encryption">Encryption</a>
+
+</div>
+
+<h3 class="section">3.1 Communication example 12</h3>
+
+<p>The <code>encrypt</code> directive is used to specify encryption in cfengine. To
+encrypt file transmission all you have to do is to include the
+<code>encrypt=on</code> or <code>encrypt=true</code> in the policy file.
+
+<pre class="smallexample">
+     #cfagent.conf
+
+     control:
+      domain = ( mydomain.com )
+      serverip = ( 192.10.10.2 )   #server ip address
+      master = (  /home/mark/inputs )
+      actionsequence = ( copy )
+
+     copy:
+
+        /master/cfengine/inputs server=$(serverip)
+              dest=(master)
+              recurse=inf
+              trustkey=on
+              encrypt=on
+
+</pre>
+   <div class="node">
+<p><hr>
+<a name="Debugging-Tips"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Starting-with-cfrun">Starting with cfrun</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Encryption">Encryption</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">4 Debugging tips</h2>
+
+<p>CFEngine has debugging tools that help to troubleshooting. You can run
+cfengine in debug mode by using the options dn where n range from
+nothing to 2. So we have <samp><span class="option">-d0</span></samp>,<samp><span class="option">-d1</span></samp>,<samp><span class="option">-d2</span></samp> and
+<samp><span class="option">-d3</span></samp>. These options will generate outputs which enable one to
+debug error in the policy file.  <samp><span class="option">-d1</span></samp> includes parsing
+information but <samp><span class="option">d2</span></samp> does not include passing
+information. <samp><span class="option">-d0</span></samp> means all debugging information and
+<samp><span class="option">-d3</span></samp> is for summary parsing information.
+
+   <p>Command example
+<pre class="smallexample">     cfagent -d2
+</pre>
+   <p>When setting up cfservd, you might see the error message
+<pre class="smallexample">     Apr 9 11:22:27 host.ex.org cfservd[613]: Host authentication failed or access denied
+</pre>
+   <p>This means that cfservd cannot or will not authenticate the connection
+from your client machine. The message is generic. It is deliberately
+non-specific so that anyone attempting to attack or exploit the
+service will not be given information which might be useful to
+them. There is a simple checklist for curing this problem:
+
+     <ul>
+<li>Make sure that the domain variable is set in both the cfagent.conf and cfservd.conf files.
+<li>Make sure that you have granted access to your client in the cfservd.conf file, e.g.
+
+     <pre class="smallexample">                TrustKeysFrom = ( )
+                AllowUsers = ( )
+                AllowMultipleConnections = ( )
+</pre>
+     <li>Make sure you have created valid keys for the hosts using cfkey.
+<li>If you are using secure copy, make sure that you have created a key file and that you have distributed and installed it to all participating hosts in your cluster.
+</ul>
+
+   <p>Remember that you can run both <code>cfagent</code> and <code>cfservd</code> in
+debugging mode to see how the authentication takes place:
+
+<pre class="smallexample">     cfagent -d2
+     cfservd -d2
+</pre>
+   <p>Cfagent reports "access denied" regardless of the nature of the error,
+to avoid giving away information which might be used by an
+attacker. To find out the real reason for a denial, use debugging mode
+<code>-d2</code>.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Starting-with-cfrun"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Security-Implications-of-using-cfengine">Security Implications of using cfengine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Debugging-Tips">Debugging Tips</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">5 Starting with cfrun</h2>
+
+<p>To use <code>cfrun</code>, you start by creating a configuration file called
+<samp><span class="file">cfrun.hosts</span></samp> in <samp><span class="file">/var/cfengine/inputs</span></samp>.  In its simplest
+form, it simply contains a list of host names (one per line) that are
+to be contacted.  If there are special options that you would like to
+set, globally or for a particular host, they can also be placed in the
+file. For example, the domain name is needed if you are going to use
+unqualified host names and your name resolution mechanism does not
+append a default domain.
+
+   <p>Here is an example file:
+<pre class="smallexample">     domain=cfengine.org
+     access=mark,aeleen
+     outputdir=/tmp/cfoutput
+     maxchild=20
+     hostnamekeys=true
+
+     gudinne
+     wallace:3333
+     ...
+     include=cfrun.external.hosts
+</pre>
+   <p>Here, we define a list of allowed users, a directory for placing the output of <code>cfrun</code> queries,
+a maximum number of children to spawn
+for parallel connections, and required that hosts use key-based authentication. We also list two hosts (one
+with an alternate communication port),
+as well as including an external file listing more.
+
+   <p>If the <code>outputdir</code> directive is in place, cfrun automatically uses a
+parallelized batch method of communication.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Using-the-cfrun-command">Using the cfrun command</a>
+<li><a accesskey="2" href="#DHCP-and-Dynamic-Addresses">DHCP and Dynamic Addresses</a>
+<li><a accesskey="3" href="#Public-Key-Exchange-Issues">Public Key Exchange Issues</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Using-the-cfrun-command"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#DHCP-and-Dynamic-Addresses">DHCP and Dynamic Addresses</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Starting-with-cfrun">Starting with cfrun</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Starting-with-cfrun">Starting with cfrun</a>
+
+</div>
+
+<h3 class="section">5.1 Using the cfrun command</h3>
+
+<p>The <code>cfrun</code> command itself has the following form:
+<pre class="smallexample">     cfrun - <var>local options</var> [<var>host list</var>] -- <var>remote options</var> -- <var>remote classes</var>
+</pre>
+   <p>If not host list is included, then all of the hosts in <samp><span class="file">cfrun.hosts</span></samp> are contacted.
+
+   <p>Since <code>cfrun</code> addresses remote hosts from a local host, there is
+an ambiguity in whether options are intended for the <code>cfrun</code>
+command itself, or whether they are meant to be passed on to the agent
+on the remote hosts.  To clarify this distinction, the arguments are
+organized as follows:
+
+     <ul>
+<li>Local options are processed by <code>cfrun</code> on the local host.
+<li>Remote options
+are passed on as options to the remote <code>cfagent</code> (actually to the
+command defined in <code>cfrunCommand</code>. Note, however, that it is not
+possible to send the <code>-f</code> option to the remote agent, to ask it
+to run a different policy file. This option is stripped by the server
+on receipt to prevent an unauthorized attempt to change policy.
+<li>Remote classes are processed by the remote <code>cfservd</code> service, and specify
+classes which must be satisfied by the remote host in order to invoke the
+remote command.
+</ul>
+
+   <p>Here are some examples, all of which use the host list in <samp><span class="file">cfrun.hosts</span></samp>:
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">cfrun -- -- linux</span></samp>&rsquo;<dd>Run on all machines, specifying class linux.
+
+     <br><dt>&lsquo;<samp><span class="samp">cfrun -- -p</span></samp>&rsquo;<dd>Just parse policy file on all hosts.
+
+     <br><dt>&lsquo;<samp><span class="samp">cfrun -v -- -v</span></samp>&rsquo;<dd>Verbose output on local system and remote hosts.
+
+     <br><dt>&lsquo;<samp><span class="samp">cfrun -v -- -k -- solaris</span></samp>&rsquo;<dd>Verbose local output; suppress copy/specify solaris on remote.
+</dl>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="DHCP-and-Dynamic-Addresses"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Public-Key-Exchange-Issues">Public Key Exchange Issues</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Using-the-cfrun-command">Using the cfrun command</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Starting-with-cfrun">Starting with cfrun</a>
+
+</div>
+
+<h3 class="section">5.2 DHCP and Dynamic Addresses</h3>
+
+<p>If you are using dynamic addressing for hosts, cfengine will struggle
+to justify its trust in the public keys it sees. To make sense of
+public keys one requires both a key and an independent identity to tie
+it to. Once a key has been trusted, the key alone is (in principle)
+sufficient identity (just as a fingerprint is good enough to represent
+you, once it has been registered).
+
+   <p>When IP addresses change, <code>cfservd</code> loses its coupling between address
+and key identity and so it has to start re-evaluating. There are two cases
+to consider, and the default behavior is like this:
+
+     <ul>
+<li>A host with a known IP address presents a new key to <code>cfservd</code>, because for instance
+the key was changed. In this case cfservd complains that the keys do not match
+and refuses to authenticate you.
+2item A host with an unknown IP address but a known key. In this case,
+cfengine will look for a key file bound to the new address and will
+not find one, so cfservd treats the key as unknown and normal trust
+rules for accepting a new key apply.
+</ul>
+
+   <p>This can cause a problem for hosts with IPV4 addresses given by DHCP,
+since the address-key binding is only temporary. <code>cfservd</code> works around this by allowing you do define
+a new access list called
+<pre class="smallexample">     DynamicAddresses = ( 192.240.1 )
+</pre>
+   <p>If a connecting address is unknown, but lies in this range, cfservd
+will look in a database to see if the key itself is known, bound to a
+different address. If the key is found, <code>cfservd</code> trusts the
+binding and re-binds the key to the new IP address. If the key is not
+known, then (again) normal trust rules apply for accepting a new key.
+
+   <p>Servers should always have fixed IP addresses in general, otherwise
+you have no idea to whom you are connecting.
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Public-Key-Exchange-Issues">Public Key Exchange Issues</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Public-Key-Exchange-Issues"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#DHCP-and-Dynamic-Addresses">DHCP and Dynamic Addresses</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Starting-with-cfrun">Starting with cfrun</a>
+
+</div>
+
+<h3 class="section">5.3 Public Key Exchange Issues</h3>
+
+<p>Public key exchange is a subtle idea. The issues are not difficult
+to understand, but they are seldom expressed very clearly.
+
+   <p>The principle of a public key system is to associate an identity with
+a key, which can be freely made public knowledge. The difficulty is
+not in distributing the key, but in being certain who is really
+the owner of a key that you have received.
+
+   <p>Imagine you wanted to know the identity of a stranger whom you have
+never seen before. What proof would you accept of his or her
+identity?  A name tag? A letter of reference? A DNA test? Of course,
+an evil identical twin would be able to pass all of these tests and
+still fool you.
+
+   <p>It is important to understand that trust in identity is something we always
+grant in an entirely personal way. There is always a chance of being
+wrong: cryptographic methods do not eliminate this doubt (although they
+sometimes are presented as doing so). Trust is risk, and you simply
+have to live with it.
+
+   <p>There are two common models of trust management:
+
+     <ul>
+<li>The trusted third party: This method is used by the Web.
+Here you outsource the trust decision to a third party who claims to
+know whether keys are genuine. This
+provides a centralized management of trust. Since cfengine is
+about decentralization, this method is not used by cfengine.
+
+     <li>The challenge: Individual decision making is the way to
+make trust decisions for autonomous agents. They want to rely only
+on their own judgment. The secure shell uses this approach. Instead
+of asking yout to trust an authority/third party, the software requires
+you to assume the risk and you must decide whether to accept offered keys.
+</ul>
+
+   <p>Key exchange in cfengine is very similar to that in the secure shell. However, cfengine uses separate keys
+from <code>ssh</code> that are generated using
+the <code>cfkey</code> program.
+
+   <p>Cfagent is not an interactive program, so when it
+first receives a key, the decision as to whether to accept it must be
+made non-interactively.
+The natural solution is to make this decision part of policy.
+There are two methods for accomplishing this:
+
+     <ul>
+<li>Client side: You can add <code>trustkey=on</code> to a remote copy
+command to accept the named remote-server's key.
+<li>Server side: The server can receive keys from many sources; the access
+control list for this is the <code>TrustKeysFrom</code> directive. If a server IP address is in
+this list, it will be accepted.
+</ul>
+
+   <p>Once a key has been accepted on
+trust, it is trusted for ever, or until you revoke the key by
+explicitly deleting the key from <samp><span class="file">/var/cfengine/ppkeys</span></samp>.
+So once the key has been exchanged, the <code>trustkey</code> option has no effect.
+Thus, on the client side it does not matter if you leave
+<code>trustkey</code> options in place. On the server side, however, remember
+that the trust rule applies to many hosts, some of which
+you might not have considered. Always take care with trust issues.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Security-Implications-of-using-cfengine"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Starting-with-cfrun">Starting with cfrun</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">6 Security Implications of using cfengine</h2>
+
+<p>Though the actual security implication of using cfengine is minimal we
+still need to be aware of possible risk and how we can protect
+ourselves. CFEngine uses autonomous agents which are complete on their
+own. Each agent manages it check sum database without the support of
+external server. This means if someone tampers with the database he
+could breach cfengine security.  One of the solutions to this is to
+keep cfengine database at a secure location on the system or take a
+backup of the database.
+
+   <p>We could also use neighborhood watch approach where databases of
+agents are distributed to the neighbors which can then be compared to
+the original agent’s database for consistency.
+
+   <p>CFEngine depends on the policy configuration file for its
+operations. If this file is changed by an attacker, cfengine will
+implement the policy of the attacker. It is therefore important to
+ensure that cfengine configuration file is secured.  CFEngine also
+runs with open port 5308 and therefore it is important to protect the
+port from external attack.  It may be advisable to block external
+access to the port.
+
+   <p>CFEngine authentication depends on public and private key pairs. The
+cfengine public keys transfer can be done implicitly or explicitly. It
+is important to ensure accountable key distribution.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Security-of-pulling-files">Security of pulling files</a>
+<li><a accesskey="2" href="#CFEngine-and-Firewalls">CFEngine and Firewalls</a>
+<li><a accesskey="3" href="#Centralization-and-Decentralization">Centralization and Decentralization</a>
+<li><a accesskey="4" href="#Tamperproof-data-and-distributed-monitoring">Tamperproof data and distributed monitoring</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Security-of-pulling-files"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CFEngine-and-Firewalls">CFEngine and Firewalls</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Security-Implications-of-using-cfengine">Security Implications of using cfengine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Security-Implications-of-using-cfengine">Security Implications of using cfengine</a>
+
+</div>
+
+<h3 class="section">6.1 Security of pulling files</h3>
+
+     <ul>
+<li><i> Doesn't opening a port on a machine on the inside of the firewall make
+it vulnerable to both Denial of Service and buffer overflow attacks?</i>
+
+     <p>Buffer overflow attacks are extremely unlikely in cfengine by
+design. The likelihood of a bug in cfengine should be compared to the
+likelihood of a bug existing in the firewall itself.
+
+     <p>Denial of service attacks can be mitigated by careful configuration
+(see separate FAQ item). <code>cfservd</code> reads a fixed number of bytes
+from the input stream before deciding whether to drop a connection
+from a remote host, so it is not possible to buffer overflow attack
+before rejection of an invalid host IP.
+
+     <p>Another possibility is to use a standard VPN to the inside of the
+firewall. That way one is concerned first and foremost with the
+vulnerabilities of the VPN software. Doesn't opening the firewall
+compromise the integrity of the policy information by allowing an
+attacker the chance to alter it? The cfengine security model, as well
+as the design of the server, disallows the uploading of
+information. No message sent over the cfengine channel can alter data
+on the server. (This assumes that buffer overflows are impossible.)
+
+     <li><i> Couldn't an IP spoofer manage to gain access to data from the policy
+server that it should not be able to access?</i>
+
+     <p>Assuming that buffer overflow attacks and DOS attacks are highly
+improbable, the main worry with opening a port is that intruders will
+be able to gain access to unauthorized data. If the firewall is
+configured to open only connections from the policy mirror, then an
+attacker must spoof the IP of the policy attacker. This requires
+access to another host in the DMZ and is non-trivial. However, suppose
+the attacker succeeds then the worst he/she can do is to download
+information that is available to the policy-mirror. But that
+information is already available in the DMZ since the data have been
+exported as part of the policy, thus there is no breach of
+security. (Security must be understood to be a breach of the terms of
+policy that has been decided.)
+
+     <li><i> What happens if the policy mirror is invaded by an attacker?</i>
+
+     <p>If an attacker gains root access to the mirror, he/she will be able to
+affect the policy distributed to any host in the DMZ. The
+policy-mirror has no access to alter any information on the policy
+source host. Note that this is consistent with the firewall security
+model of trusted/untrusted regions. The firewall does not mitigate the
+responsibility of security every host in a network regardless of which
+side of the firewall it is connected.
+</ul>
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#CFEngine-and-Firewalls">CFEngine and Firewalls</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="CFEngine-and-Firewalls"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Centralization-and-Decentralization">Centralization and Decentralization</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Security-of-pulling-files">Security of pulling files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Security-Implications-of-using-cfengine">Security Implications of using cfengine</a>
+
+</div>
+
+<h3 class="section">6.2 CFEngine and Firewalls</h3>
+
+<p>Some users want to use cfengine's remote copying mechanism through a
+firewall, in particular to update the cfengine policy on hosts inside
+a DMZ (so-called de-militarized zone). Firewalls are often shrouded in
+myth and mystery. It is important to see the firewall security model
+together with the cfengine security model. Amongst the difficulties
+one faces, the firewall administrator is not often the same as the
+cfengine administrator and does not trust anyone or anything. You
+might have to convince this person to make changes that help you out,
+so it is important to understand the consequences of your security
+strategy.
+
+   <p>Any piece of software that traverses a firewall can, in principle,
+weaken the security of the barrier. On the other hand, a strong piece
+or software might have better security than the firewall
+itself. Consider the example in the figure;
+
+   <div class="block-image"><img src="/img/outside/firewall.png" alt="A cfengine host outside a firewall"></div>
+
+   <p>We label the regions inside and outside of the firewall as the &ldquo;secure
+area" and &ldquo;Demilitarized Zone" for convenience. It should be
+understood that the areas inside a firewall is not necessarily secure
+in any sense of the word unless the firewall configuration is
+understood together with all other security measures.
+
+   <p>Our problem is to copy files from the &ldquo;secure&rdquo; source machine to hosts
+in the DMZ, in order to send them their configuration policy
+updates. There are two ways of getting files through the firewall:
+
+     <ul>
+<li>An automated cfengine solution, i.e., pull from outside to inside the secure area.
+<li>A manual push to the outside of the wall from the inside.
+</ul>
+
+   <p>One of the
+main aims of a firewall is to prevent hosts outside the secure area
+from opening connections to hosts in the secure area. If we want
+<code>cfagent</code> processes on the outside of the firewall to receive updated policies
+from the inside of the firewall, information has to traverse the
+firewall.
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#CFEngine-trust-model">CFEngine trust model</a>
+<li><a accesskey="2" href="#Policy-Mirror-in-the-DMZ">Policy Mirror in the DMZ</a>
+<li><a accesskey="3" href="#Pulling-through-a-wormhole">Pulling through a wormhole</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="CFEngine-trust-model"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Policy-Mirror-in-the-DMZ">Policy Mirror in the DMZ</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-and-Firewalls">CFEngine and Firewalls</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-and-Firewalls">CFEngine and Firewalls</a>
+
+</div>
+
+<h4 class="subsection">6.2.1 CFEngine trust model</h4>
+
+<p>Cfengine's trust model is fundamentally at odds with the external
+firewall concept. CFEngine says: &ldquo;I am my own boss. I don't trust
+anyone to push me data.&rdquo; The firewall says: &ldquo;I only trust things
+that are behind me.&rdquo;  The firewall thinks it is being secure if it
+pushes data from behind itself to the DMZ. CFEngine thinks it is being
+secure if it makes the decision to pull the data autonomously, without
+any orders from some potentially unknown machine. One of these
+mechanisms has to give if firewalls are to co-exist with cfengine.
+
+   <p>From the firewall's viewpoint, push and pull are different: a push
+requires only an outgoing connection from a trusted source to an
+untrusted destination; a pull necessarily requires an untrusted
+connection being opened to a trusted server within the secure area.
+For some firewall administrators, the latter is simply unacceptable
+(because they are conditioned to trust their firewall). But it is
+important to evaluate the actual risk. We have a few observations
+about the latter to offer at this point:
+
+     <ul>
+<li>It is not the aim of this note to advocate any one method of
+update. You must decide for yourself. The aim here is only to evaluate
+the security implications. Exporting data from the secure area to the
+DMZ automatically downgrades the privacy of the information.
+<li>The cfengine security model assumes that the security of every host
+will be taken seriously. A firewall should never be used as a
+substitute for host security.
+<li>Knowing about cfengine but not your firewall or your secure network, it is only possible
+to say here that it seems, to us, safe to open a hole in a firewall to
+download data from a host of our choice, but we would not accept data
+from just any host on your company network on trust. It would be
+ludicrous to suggest that an arbitrary employee's machine is more
+secure than an inaccessible host in the DMZ.
+</ul>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Policy-Mirror-in-the-DMZ"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Pulling-through-a-wormhole">Pulling through a wormhole</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-trust-model">CFEngine trust model</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-and-Firewalls">CFEngine and Firewalls</a>
+
+</div>
+
+<h4 class="subsection">6.2.2 Policy Mirror in the DMZ</h4>
+
+<p>You can compromise by creating a policy mirror in the DMZ. This is
+the recommended way to copy files, so that normal cfengine pull
+methods can then be used by all other hosts in the DMZ, using the
+mirror as their source. The policy mirror host should be as secure as
+possible, with preferably few or no other services running that might
+allow an attacker to compromise it. In this configuration, you are
+using the mirror host as an envoi of the secure region in the DMZ.
+
+   <p>Any method of pushing a new version of policy can be chosen in
+principle: CVS, FTP, RSYNC, SCP. The security disadvantage of the push
+method is that it opens a port on the policy-mirror, and therefore the
+same vulnerability is now present on the mirror, except that now you
+have to trust the security of another piece of software too. Since
+this is not a cfengine port, no guarantees can be made about what
+access attackers will get to the mirror host.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Pulling-through-a-wormhole"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Policy-Mirror-in-the-DMZ">Policy Mirror in the DMZ</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-and-Firewalls">CFEngine and Firewalls</a>
+
+</div>
+
+<h4 class="subsection">6.2.3 Pulling through a wormhole</h4>
+
+<p>Suppose you are allowed to open a hole in your firewall to a single
+policy host on the inside.  To distribute files to hosts that are
+outside the firewall it is only necessary to open a single tunnel
+through the firewall from the policy-mirror to the cfengine service
+port on the source machine. Connections from any other host will still
+be denied by the firewall. This minimizes the risk of any problems
+caused by attackers.
+
+   <p>To open a tunnel through the firewall, you need to alter
+the filter rules. A firewall blocks access at the network
+level. Configuring the opening of a single port is
+straightforward. We present some sample rules below, but make sure
+you seek the guidance of an expert if necessary.
+
+   <p>Cisco IOS rules look like this
+<pre class="smallexample">     ip access-group 100 in
+     access-list     100 permit tcp mirror host source eq 5308
+     access-list     100 deny   ip  any any
+</pre>
+   <p>Linux <code>iptables</code> rules might look something like this:
+<pre class="smallexample">     iptables -N newchain
+     iptables -A newchain -p tcp -s mirror-ip 5308 -j ACCEPT
+     iptables -A newchain -j DENY
+</pre>
+   <p>Once a new copy of the policy is downloaded by cfengine to the policy
+mirror, other clients in the DMZ can download that copy from the
+mirror. The security of other hosts in the DMZ is dependent on the
+security of the policy mirror.
+
+<div class="node">
+<p><hr>
+<a name="Centralization-and-Decentralization"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Tamperproof-data-and-distributed-monitoring">Tamperproof data and distributed monitoring</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-and-Firewalls">CFEngine and Firewalls</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Security-Implications-of-using-cfengine">Security Implications of using cfengine</a>
+
+</div>
+
+<h3 class="section">6.3 Neighbourhood watch</h3>
+
+<p>CFEngine can be centralized or decentralized depending on the
+requirement and the choice of the user. The centralized infrastructure
+consists of policy server which will store the policy configuration
+files for distribution; the rest of the hosts will pull their policy
+from this centralized server. The merit of centralized administration
+are that it aids consistency by providing single point of decision
+making, change of policy is easy since it is done at one place, backup
+and version control are also convenient.  However, centralized
+administration could hinder local customization; it is inappropriate
+for privacy and security if we have completely independent departments
+or services which needs to coexist and work together.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Tamperproof-data-and-distributed-monitoring">Tamperproof data and distributed monitoring</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Tamperproof-data-and-distributed-monitoring"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Centralization-and-Decentralization">Centralization and Decentralization</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Security-Implications-of-using-cfengine">Security Implications of using cfengine</a>
+
+</div>
+
+<h3 class="section">6.4 Tamperproof data and distributed monitoring</h3>
+
+<p>Message digests are supposed to be unbreakable, tamperproof
+technologies, but of course everything can be broken by a sufficiently
+determined attacker. Suppose someone wanted to edit a file and alter
+the cfengine checksum database to cover their tracks. If they had
+broken into your system, this is potentially easy to do. How can we
+detect whether this has happened or not?
+
+   <p>A simple solution to this problem is to use another checksum-based
+operation to copy the database to a completely different host. By using
+a copy operation based on a checksum value, we can also remotely detect
+a change in the checksum database itself.
+
+   <p>Consider the following code:
+
+<pre class="smallexample">     # Neighbourhood watch
+
+     control:
+
+       allpeers = (
+                  SelectPartitionNeighbours(/path/hostlist,#,random,4)
+                  )
+
+     copy:
+
+           /var/cfengine/checksum_digests.db
+
+                             dest=/safekeep/chkdb_$(this)
+                             type=checksum
+                             server=$(allpeers)
+                             inform=true          # warn of copy
+                             backup=timestamp
+                             define=tampering
+
+     alert:
+
+       tampering::
+
+            'Digest tampering detected on a peer'
+
+</pre>
+   <p>It works by building a list of neighbours for each host. The function SelectPartitionNeighbours
+
+   <p>can be used for this. Using a file which
+contains a list of all hosts running cfengine (e.g. the
+cfrun.hosts file),
+we create a list of hosts to copy databases . Each host in the
+network therefore takes on the responsibility to watch over its
+neighbours.
+
+   <p>The copy rule attempts to copy the database to some file in a
+safekeeping directory. We label the destination file with $(this)
+which becomes the name of the server from which the file was
+collected. Finally, we backup any successful copies using a timestamp
+to retain a complete record of all changes on the remote host. Each
+time a change is detected, a copy will be kept of the old. The rule
+contains triggers to issue alerts and warnings too just to make sure
+the message will be heard.
+
+   <p>In theory, all four neighbours should signal this change. If an
+attacker had detailed knowledge of the system, he or she might be able
+to subvert one or two of these before the change was detected, but it
+is unlikely that all four could be covered up. At any rate, this
+approach maximizes the chances of change detection.
+
+   <p>Finally, in order to make this copy, you must, of course, grant access
+to the database in cfservd.conf.
+
+<pre class="smallexample">
+     # cfservd.conf
+
+     admit:
+
+     any::
+
+        /var/cfengine/checksum_digests.db  mydomain.tld
+
+</pre>
+   <p>Let us now consider what happens if an attacker changes a file an
+edits the checksum database. Each of the four hosts that has been
+designated a neighbour will attempt to update their own copy of the
+database. If the database has been tampered with, they will detect a
+change in the md5 checksums of the remote copy versus the
+original. The file will therefore be copied.
+
+   <p>It is not a big problem that others have a copy of your checksum
+database.  They cannot see the contents of your files from this.  A
+possibly greater problem is that this configuration will unleash an
+avalanche of messages if a change is detected. This makes messages
+visible at least.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+     <ul>
+<li>Explain why cfengine is tamper proof?
+<li>What are the security implications of running cfengine?
+<li>Explain change management and how cfengine implements change management?
+</ul>
+   </td></tr></table>
+
+   <p><a name="Contents">
+
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine Remote Communication</a>
+<li><a name="toc_Communication-Overview" href="#Communication-Overview">1 Communication Overview</a>
+<ul>
+<li><a href="#Scenario-1">1.1 Scenario 1</a>
+<ul>
+<li><a href="#Communication-example-1">1.1.1 Communication example 1</a>
+<li><a href="#Communication-example-2">1.1.2 Communication example 2</a>
+</li></ul>
+<li><a href="#Scenario-2">1.2 Scenario 2</a>
+<ul>
+<li><a href="#Communication-example-3">1.2.1 Communication example 3</a>
+<li><a href="#Communication-example-4">1.2.2 Communication example 4</a>
+<li><a href="#Communication-example-5">1.2.3 Communication example 5</a>
+<li><a href="#Communication-example-6">1.2.4 Communication example 6</a>
+</li></ul>
+<li><a href="#Scenario-3">1.3 Scenario 3</a>
+<ul>
+<li><a href="#Communication-example-7">1.3.1 Communication example 7</a>
+<li><a href="#Communication-example-8">1.3.2 Communication example 8</a>
+<li><a href="#Communication-example-9">1.3.3 Communication example 9</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Authentication" href="#Authentication">2 Authentication</a>
+<ul>
+<li><a href="#Communication-example-10">2.1 Communication example 10</a>
+<li><a href="#Communication-example-11">2.2 Communication example 11</a>
+</li></ul>
+<li><a name="toc_Encryption" href="#Encryption">3 Encryption</a>
+<ul>
+<li><a href="#Communication-example-12">3.1 Communication example 12</a>
+</li></ul>
+<li><a name="toc_Debugging-Tips" href="#Debugging-Tips">4 Debugging tips</a>
+<li><a name="toc_Starting-with-cfrun" href="#Starting-with-cfrun">5 Starting with cfrun</a>
+<ul>
+<li><a href="#Using-the-cfrun-command">5.1 Using the cfrun command</a>
+<li><a href="#DHCP-and-Dynamic-Addresses">5.2 DHCP and Dynamic Addresses</a>
+<li><a href="#Public-Key-Exchange-Issues">5.3 Public Key Exchange Issues</a>
+</li></ul>
+<li><a name="toc_Security-Implications-of-using-cfengine" href="#Security-Implications-of-using-cfengine">6 Security Implications of using cfengine</a>
+<ul>
+<li><a href="#Security-of-pulling-files">6.1 Security of pulling files</a>
+<li><a href="#CFEngine-and-Firewalls">6.2 CFEngine and Firewalls</a>
+<ul>
+<li><a href="#CFEngine-trust-model">6.2.1 CFEngine trust model</a>
+<li><a href="#Policy-Mirror-in-the-DMZ">6.2.2 Policy Mirror in the DMZ</a>
+<li><a href="#Pulling-through-a-wormhole">6.2.3 Pulling through a wormhole</a>
+</li></ul>
+<li><a href="#Centralization-and-Decentralization">6.3 Neighbourhood watch</a>
+<li><a href="#Tamperproof-data-and-distributed-monitoring">6.4 Tamperproof data and distributed monitoring</a>
+</li></ul>
+</li></ul>
+</div>
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

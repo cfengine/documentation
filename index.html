@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)manuals/ -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:addthis="http://www.addthis.com/help/api-spec"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" async="" src="./Archive documentation - CFEngine - Distributed Configuration Management_files/munchkin.js"></script>
+    <base href=".">
+    <title>Archive documentation - CFEngine - Distributed Configuration Management</title>
+
+
+    <meta name="description" content="CFEngine documentation hub. This page will guide you through CFEngine&#39;s extensive document library including manuals, best practices, code examples and special topics guides.">
+
+
+
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<![endif]-->
+
+    <meta name="robots" content="index,follow">
+
+    <link rel="stylesheet" type="text/css" href="./Archive documentation - CFEngine - Distributed Configuration Management_files/styles_new.css" media="all">
+
+    <link rel="stylesheet" type="text/css" href="./Archive documentation - CFEngine - Distributed Configuration Management_files/navigations_new.css" media="all">
+
+
+<meta property="og:title" content="CFEngine - Archive documentation">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="manuals">
+
+
+<script type="text/javascript" async="" src="./Archive documentation - CFEngine - Distributed Configuration Management_files/cse.js"></script><script type="text/javascript" async="" src="./Archive documentation - CFEngine - Distributed Configuration Management_files/ga.js"></script><script type="text/javascript" src="./Archive documentation - CFEngine - Distributed Configuration Management_files/jquery.min.js"></script>
+
+
+
+
+
+ <!--[if IE 6]>
+   <script type="text/javascript" src="tl_files/cfengine/js/ie6.js"></script>
+<![endif]-->
+
+  <!--[if IE 7]>
+   <script type="text/javascript" src="tl_files/cfengine/js/ie7.js"></script>
+<![endif]-->
+
+
+
+
+
+<script type="text/javascript">
+    function redirect(url)
+    {
+        window.location.href=url;
+    }
+</script>
+
+
+
+ <!--[if lte ie 6]>
+    <link rel="stylesheet" type="text/css" href="tl_files/cfengine/css/ie6.css?v=150" media="all" />
+<![endif]-->
+  <!--[if ie 7]>
+    <link rel="stylesheet" type="text/css" href="tl_files/cfengine/css/ie7.css?v=150" media="all" />
+<![endif]-->
+<!--[if ie 8]>
+    <link rel="stylesheet" type="text/css" href="tl_files/cfengine/css/ie7.css?v=150" media="all" />
+<![endif]-->
+
+   
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2576171-2']);
+  _gaq.push(['_setDomainName', 'cfengine.com']);
+    _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<!--[if lte IE 8]>
+    <script type="text/javascript" src="tl_files/cfengine/js/modernizr_custom.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+  (function() {
+    var cx = '003210255674884169375:ht3l_cknqio';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<script src="./Archive documentation - CFEngine - Distributed Configuration Management_files/jsapi" type="text/javascript"></script><link type="text/css" href="./Archive documentation - CFEngine - Distributed Configuration Management_files/default+en.css" rel="stylesheet"><link type="text/css" href="./Archive documentation - CFEngine - Distributed Configuration Management_files/default.css" rel="stylesheet"><script type="text/javascript" src="./Archive documentation - CFEngine - Distributed Configuration Management_files/default+en.I.js"></script><style type="text/css">
+.gsc-control-cse {
+font-family: Arial, sans-serif;
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-control-cse .gsc-table-result {
+font-family: Arial, sans-serif;
+}
+input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
+border-color: #D9D9D9;
+}
+input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
+border-color: #2F5BB7;
+background-color: #357AE8;
+background-image: none;
+filter: none;
+}
+.gsc-tabHeader.gsc-tabhInactive {
+border-color: #CCCCCC;
+background-color: #FFFFFF;
+}
+.gsc-tabHeader.gsc-tabhActive {
+border-color: #CCCCCC;
+border-bottom-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-tabsArea {
+border-color: #CCCCCC;
+}
+.gsc-webResult.gsc-result,
+.gsc-results .gsc-imageResult {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result:hover,
+.gsc-imageResult:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gs-webResult.gs-result a.gs-title:link,
+.gs-webResult.gs-result a.gs-title:link b,
+.gs-imageResult a.gs-title:link,
+.gs-imageResult a.gs-title:link b {
+color: #F8851B;
+}
+.gs-webResult.gs-result a.gs-title:visited,
+.gs-webResult.gs-result a.gs-title:visited b,
+.gs-imageResult a.gs-title:visited,
+.gs-imageResult a.gs-title:visited b {
+color: #333333;
+}
+.gs-webResult.gs-result a.gs-title:hover,
+.gs-webResult.gs-result a.gs-title:hover b,
+.gs-imageResult a.gs-title:hover,
+.gs-imageResult a.gs-title:hover b {
+color: #4d466b;
+}
+.gs-webResult.gs-result a.gs-title:active,
+.gs-webResult.gs-result a.gs-title:active b,
+.gs-imageResult a.gs-title:active,
+.gs-imageResult a.gs-title:active b {
+color: #faac63;
+}
+.gsc-cursor-page {
+color: #F8851B;
+}
+a.gsc-trailing-more-results:link {
+color: #F8851B;
+}
+.gs-webResult .gs-snippet,
+.gs-imageResult .gs-snippet,
+.gs-fileFormatType {
+color: #333333;
+}
+.gs-webResult div.gs-visibleUrl,
+.gs-imageResult div.gs-visibleUrl {
+color: #009933;
+}
+.gs-webResult div.gs-visibleUrl-short {
+color: #009933;
+}
+.gs-webResult div.gs-visibleUrl-short {
+display: none;
+}
+.gs-webResult div.gs-visibleUrl-long {
+display: block;
+}
+.gs-promotion div.gs-visibleUrl-short {
+display: none;
+}
+.gs-promotion div.gs-visibleUrl-long {
+display: block;
+}
+.gsc-cursor-box {
+border-color: #FFFFFF;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+border-color: #CCCCCC;
+background-color: #FFFFFF;
+color: #F8851B;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+border-color: #CCCCCC;
+background-color: #FFFFFF;
+color: #333333;
+}
+.gsc-webResult.gsc-result.gsc-promotion {
+border-color: #F6F6F6;
+background-color: #F6F6F6;
+}
+.gsc-completion-title {
+color: #F8851B;
+}
+.gsc-completion-snippet {
+color: #333333;
+}
+.gs-promotion a.gs-title:link,
+.gs-promotion a.gs-title:link *,
+.gs-promotion .gs-snippet a:link {
+color: #1155CC;
+}
+.gs-promotion a.gs-title:visited,
+.gs-promotion a.gs-title:visited *,
+.gs-promotion .gs-snippet a:visited {
+color: #1155CC;
+}
+.gs-promotion a.gs-title:hover,
+.gs-promotion a.gs-title:hover *,
+.gs-promotion .gs-snippet a:hover {
+color: #1155CC;
+}
+.gs-promotion a.gs-title:active,
+.gs-promotion a.gs-title:active *,
+.gs-promotion .gs-snippet a:active {
+color: #1155CC;
+}
+.gs-promotion .gs-snippet,
+.gs-promotion .gs-title .gs-promotion-title-right,
+.gs-promotion .gs-title .gs-promotion-title-right * {
+color: #333333;
+}
+.gs-promotion .gs-visibleUrl,
+.gs-promotion .gs-visibleUrl-short {
+color: #009933;
+}</style></head>
+
+<body id="top" class=" unix chrome ch56">
+
+    <div id="topic">
+        <div class="wrapper">
+            <div id="topic_content">
+                <div class="mod_article block" id="topic-379">
+                    <div class="cfe_topic_el ce_CFEText_topics block">
+                        <div id="topic_text">
+                            <font color="black">
+                                <h1>Archived CFEngine Documentation</h1>
+                                <p>This is an old archive of previous versions of the CFEngine documentation up to version 3.0.</p>
+
+                                <p>Please find the current lst and latest documentation from here: <select onchange="this.options[this.selectedIndex].value &amp;&amp; (window.location = this.options[this.selectedIndex].value);" data-cip-id="cIPJQ342845639">
+                                    <option value="https://docs.cfengine.com/docs/lts/">lts</option>
+                                    <option value="https://docs.cfengine.com/docs/latest/">latest</option>
+                                    <option value="https://docs.cfengine.com/archive/3.0" selected>Version 3.0 (EOL)</option>
+                                </select></p>
+                            </font>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fclear"></div>
+            </div>
+            <div class="fclear"></div>
+            <div class="gray_dashed"></div>
+    </div>
+    <div class="fclear"></div>
+
+<div id="content">
+    <div class="wrapper">
+    <div id="maincontent" class="one_col">
+                      <!-- indexer::continue -->
+            <div class="mod_article block" id="manuals">
+
+
+<!-- indexer::stop -->
+<div class="mod_cataloglist block">
+
+
+
+    <a href="manuals/CfengineStdLibrary.html">Standard Library</a>
+    <a href="cfengine-whitepapers.html">Special Topics</a>
+    <a href="manuals/cf3-reference.html">Reference Manual</a>
+
+<div id="man_wrapper">
+    <div id="man_left_nav">
+<!-- indexer::stop -->
+<div class="mod_cataloglist block">
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  // left
+   $('#man_left_nav .sign, #man_left_nav span.section_title').click(function() {
+        $(this).parent().find('.s_level').toggle();
+        if ($(this).parent().find('.sign').hasClass('hitarea_active') != '')
+        {
+            $(this).parent().find('.sign').removeClass('hitarea_active').addClass('hitarea');
+        }
+        else
+        {
+            $(this).parent().find('.sign').toggleClass('hitarea_active');
+        }
+        return false;
+    });
+});
+</script>
+
+<ul class="f_level  darkpurple">
+    <li class="tree">
+        <div class="sign hitarea"></div>
+        <span class="section_title" href="">Get started with CFEngine</span>
+        <ul class="s_level" style="display:none">
+            <li><a href="manuals/cf3-quickstart.html">CFEngine Quick Start Guide</a></li>
+            <li><a href="manuals/cf3-conceptguide.html">CFEngine 3 Concept Guide</a></li>
+            <li><a href="manuals/cf3-glossary.html">CFEngine Glossary</a></li>
+            <li><a href="manuals/cf3-tutorial.html">CFEngine 3 Tutorial</a></li>
+            <li><a href="manuals/cf3-solutions.html">CFEngine Solutions</a></li>
+            <li><a href="https://github.com/cfengine/core/tree/master/examples">Examples of CFEngine Code</a></li>
+            <li><a href="manuals/Enterprise-3-0-OwnersManual.html">CFEngine Enterprise 3.0 Owner's Manual</a></li>
+            <li><a href="manuals/Enterprise-3-0-API.html">CFEngine Enterprise 3.0 API</a></li>
+            <li><a href="manuals/Enterprise-2-2-OwnersManual.html">CFEngine 3 Enterprise 2.2 Owner's Manual</a></li>
+            <li><a href="manuals/enterprise-2-2-getstarted.html">Get Started Guide for CFEngine 3 Enterprise 2.2</a></li>
+            <li><a href="manuals/enterprise-2-2-evaluationguide.html">CFEngine 3 Enterprise Evaluation Guide</a></li>
+            <li><a href="manuals/enterprise-2-2-evaluationguidesupplement.html">Supplement to CFEngine 3 Enterprise Evaluation Guide</a></li>
+            <li><a href="manuals/novagetstarted.html">Get Started Guide for CFEngine 3 Nova</a></li>
+            <li><a href="manuals/novaownersmanual.html">CFEngine 3 Nova Owner's Manual</a></li>
+            <li><a href="manuals/st-adopt.html">Adopting Cfengine in Your Organization</a></li>
+        </ul></li></ul>
+<ul class="f_level  darkyellow">
+    <li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">Upgrade CFEngine 2 to CFEngine&nbsp;3</span><ul class="s_level" style="display:none">
+        <li><a href="manuals/cf3-upgrade.html">Upgrading from CFEngine 2 to 3</a></li>
+    </ul>
+    </li></ul>
+<ul class="f_level  orange"><li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">Study the CFEngine language</span><ul class="s_level" style="display:none">
+    <li><a href="manuals/cf-QuickRef3.html">Quick Reference Guide for CFEngine 3</a></li>
+    <li><a href="manuals/cf3-bestpractice.html">CFEngine 3 Best Practices</a></li>
+    <li><a href="manuals/cf3-Reference.html">CFEngine reference manual</a></li>
+    <li><a href="manuals/cf3-tutorial.html">CFEngine 3 Tutorial</a></li>
+    <li><a href="manuals/CfengineStdLibrary.html">CFEngine Standard Library</a></li>
+    <li><a href="https://github.com/cfengine/core/tree/master/examples">Examples of CFEngine Code</a></li>
+    <li><a href="manuals/st-editing.html">Promising and Editing File Content</a></li>
+    <li><a href="manuals/st-iterate.html">Iteration in CFEngine</a></li>
+</ul></li></ul><ul class="f_level  lightgreen"><li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">CFEngine 3 Enterprise</span><ul class="s_level" style="display:none">
+    <li><a href="manuals/Enterprise-3-0-OwnersManual.html">CFEngine Enterprise 3.0 Owner's Manual</a></li>
+    <li><a href="manuals/Enterprise-3-0-API.html">CFEngine Enterprise 3.0 API</a></li>
+    <li><a href="manuals/Enterprise-2-2-OwnersManual.html">CFEngine 3 Enterprise 2.2 Owner's Manual</a></li>
+    <li><a href="manuals/enterprise-2-2-evaluationguide.html">CFEngine 3 Enterprise Evaluation Guide</a></li>
+    <li><a href="manuals/enterprise-2-2-evaluationguidesupplement.html">Supplement to CFEngine 3 Enterprise Evaluation Guide</a></li></ul></li></ul>
+    <ul class="f_level  pink"><li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">Plan a CFEngine architecture</span><ul class="s_level" style="display:none">
+        <li><a href="https://cfengine.com/manuals/cf3-tutorial.html#Network-services">Basics of network communication</a></li>
+        <li><a href="manuals/st-critical.html">CFEngine for Mission Critical Operations</a></li>
+        <li><a href="manuals/st-federation.html">Orchestration</a></li>
+        <li><a href="manuals/st-hierarchy.html">Hierarchies</a></li>
+        <li><a href="manuals/st-menus.html">Menu Driven Configuration</a></li>
+        <li><a href="manuals/st-orchestrate.html">Modularizing and Orchestrating System Policy</a></li>
+        <li><a href="manuals/st-scale.html">Scale and Scalability</a></li></ul></li></ul>
+    <ul class="f_level  darkblue"><li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">Create Service management</span><ul class="s_level" style="display:none">
+        <li><a href="manuals/st-cloud.html">Cloud</a></li>
+        <li><a href="manuals/st-devops.html">CFEngine for `DevOps'</a></li>
+        <li><a href="manuals/st-orchestrate.html">Modularizing and Orchestrating System Policy</a></li>
+        <li><a href="manuals/st-packages.html">Package Management</a></li>
+        <li><a href="manuals/st-schedule.html">Scheduling and Event Management</a></li>
+        <li><a href="manuals/st-teams.html">Teamwork</a></li></ul></li></ul>
+    <ul class="f_level  orangeyellow"><li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">Define and ensure compliance</span><ul class="s_level" style="display:none">
+        <li><a href="manuals/st-change.html">Change Management and Incident Repair</a></li>
+        <li><a href="manuals/st-itil.html">ITIL</a></li>
+        <li><a href="stig.html">STIGs compliance</a></li></ul></li></ul>
+    <ul class="f_level  lightblue"><li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">Orchestrate complex processes</span><ul class="s_level" style="display:none">
+        <li><a href="manuals/st-orchestrate.html">Modularizing and Orchestrating System Policy</a></li>
+        <li><a href="manuals/st-schedule.html">Scheduling and Event Management</a></li></ul></li></ul>
+    <ul class="f_level  green"><li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">Integrate with System Monitoring</span><ul class="s_level" style="display:none">
+        <li><a href="manuals/st-monitoring.html">Monitoring with CFEngine</a></li>
+        <li><a href="manuals/st-reporting.html">Reporting</a></li>
+        <li><a href="manuals/st-scan.html">Security Scanning and Tripwires with CFEngine</a></li></ul></li></ul>
+    <ul class="f_level  bluegreen"><li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">Ensure Speed, Scale and Agility</span><ul class="s_level" style="display:none">
+        <li><a href="manuals/st-agility.html">Agility in Infrastructure Engineering</a></li>
+        <li><a href="manuals/st-change.html">Change Management and Incident Repair</a></li>
+        <li><a href="manuals/st-scale.html">Scale and Scalability</a></li>
+        <li><a href="manuals/st-virt.html">Virtualization and Cloud Support in CFEngine</a></li></ul></li></ul>
+    <ul class="f_level  brown"><li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">Secure your Systems with CFEngine</span><ul class="s_level" style="display:none">
+        <li><a href="manuals/st-change.html">Change Management and Incident Repair</a></li>
+        <li><a href="manuals/st-rbac.html">Role Based Access Control and CFEngine</a></li>
+        <li><a href="manuals/st-scan.html">Security Scanning and Tripwires with CFEngine</a></li>
+        <li><a href="manuals/st-security.html">Architecture and Security</a></li>
+    <ul class="f_level  purple"><li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">Integrate CFEngine into an ecosystem</span><ul class="s_level" style="display:none">
+        <li><a href="manuals/st-opennebula.html">Using CFEngine with Open Nebula</a></li>
+        <li><a href="manuals/st-reporting.html">Reporting</a></li>
+        <li><a href="manuals/st-virt.html">Virtualization and Cloud Support in CFEngine</a></li></ul></li></ul>
+    <ul class="f_level  darkpurple"><li class="tree"><div class="sign hitarea"></div><span class="section_title" href="">Get Reports from CFEngine</span><ul class="s_level" style="display:none">
+        <li><a href="manuals/novaownersmanual.html">CFEngine 3 Nova Owner's Manual</a></li>
+        <li><a href="manuals/st-change.html">Change Management and Incident Repair</a></li>
+        <li><a href="manuals/st-knowledge.html">Implementing Knowledge Management</a></li>
+        <li><a href="manuals/st-reporting.html">Reporting</a></li></ul></li></ul>
+</div>
+<!-- indexer::continue -->
+
+    </div>
+<script type="text/javascript">
+$(document).ready(function(){
+        //blocks
+    $('.man_item').hover(function() {
+            $(this).find('.man_docs').stop(true, true).toggle(300);
+            $(this).find('span.hidden').stop(true, true).show();
+            $(this).find('span.see_more').stop(true, true).hide();
+            $(this).stop(true, true).toggleClass('man_hovered');
+
+            return false;
+        },function () {
+            $(this).find('span.hidden').stop(true, true).hide();
+            $(this).find('span.see_more').stop(true, true).show();
+            $('.man_item').stop(true, true).removeClass('man_hovered');
+            $('.man_docs').stop(true, true).hide();
+      }
+    );
+
+    // hide text
+    var tree_dot = '...';
+    var iLimit = 100;
+    $(".man_descr p").each(function() {
+       var sExcerpt = $(this).html().substr(0, iLimit);
+       var sHiddenText = $(this).html().substr(iLimit, $(this).text().length);
+       var see_more = '';
+        if ($(this).text().length > iLimit)
+           see_more = '<span class=\"see_more\">...<br /><em>See more &raquo;</em></span>';
+       else
+           see_more = '<span class=\"see_more\"><br /><em>See more &raquo;</em></span>';
+
+        // Set the new text with
+        $(this).html(sExcerpt + see_more +  "<span class=\"hidden\">" + sHiddenText + "</span>");
+        $(".hidden").hide();
+        $(".see_more").show();
+    });
+});
+</script>
+
+    <div id="man_container">
+        <div class="fclear"></div>
+                        <div class="man_item_parent">
+                     <div class="man_item darkpurple">
+                     <h2>Get started with CFEngine</h2>
+                     <div class="man_descr">
+                         <p>Set up agile, predictable configuration in a knowledge-oriented way<span class="see_more" style="display: inline;"><br><em>See more »</em></span><span class="hidden" style="display: none;"></span></p>
+
+                                                                           <ul class="man_docs" style="display: none;">
+                                                                                                <li>
+                                                                                        <a href="manuals/cf3-quickstart.html">CFEngine Quick Start Guide</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/cf3-conceptguide.html">CFEngine 3 Concept Guide</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/cf3-glossary.html">CFEngine Glossary</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/cf3-tutorial.html">CFEngine 3 Tutorial</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/cf3-solutions.html">CFEngine Solutions</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="https://github.com/cfengine/core/tree/master/examples">Examples of CFEngine Code</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/Enterprise-3-0-OwnersManual.html">CFEngine Enterprise 3.0 Owner's Manual</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/Enterprise-3-0-API.html">CFEngine Enterprise 3.0 API</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/Enterprise-2-2-OwnersManual.html">CFEngine 3 Enterprise 2.2 Owner's Manual</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/enterprise-2-2-getstarted.html">Get Started Guide for CFEngine 3 Enterprise 2.2</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/enterprise-2-2-evaluationguide.html">CFEngine 3 Enterprise Evaluation Guide</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/enterprise-2-2-evaluationguidesupplement.html">Supplement to CFEngine 3 Enterprise Evaluation Guide</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/novagetstarted.html">Get Started Guide for CFEngine 3 Nova</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/novaownersmanual.html">CFEngine 3 Nova Owner's Manual</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-adopt.html">Adopting Cfengine in Your Organization</a>
+                                                                              </li>
+                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item darkyellow">
+                     <h2>Upgrade CFEngine 2 to CFEngine&nbsp;3</h2>
+                     <div class="man_descr">
+                         <p>Advance from CFEngine 2 to the CFEngine 3 Family<span class="see_more"><br><em>See more »</em></span><span class="hidden" style="display: none;"></span></p>
+
+                                                                           <ul class="man_docs" style="display:none">
+                                                                                                <li>
+                                                                                        <a href="manuals/cf3-upgrade.html">Upgrading from CFEngine 2 to 3</a>
+                                                                              </li>
+                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item orange">
+                     <h2>Study the CFEngine language</h2>
+                     <div class="man_descr">
+                         <p>A full understanding of the language allows you to express complex requirements, maximizing the use <span class="see_more">...<br><em>See more »</em></span><span class="hidden" style="display: none;">of knowledge.</span></p>
+
+                                                                           <ul class="man_docs" style="display:none">
+                                                                                                <li>
+                                                                                        <a href="manuals/cf-QuickRef3.html">Quick Reference Guide for CFEngine 3</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/cf3-bestpractice.html">CFEngine 3 Best Practices</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/cf3-Reference.html">CFEngine reference manual</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/cf3-tutorial.html">CFEngine 3 Tutorial</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/CfengineStdLibrary.html">CFEngine Standard Library</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="https://github.com/cfengine/core/tree/master/examples">Examples of CFEngine Code</a>
+                                                                              </li>
+                                                                                        <a href="https://cfengine.com/policy_wizard/">Policy Wizard</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-editing.html">Promising and Editing File Content</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-iterate.html">Iteration in CFEngine</a>
+                                                                              </li>
+                                                                                                                                                                   </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item lightgreen">
+                     <h2>CFEngine 3 Enterprise</h2>
+                     <div class="man_descr">
+                         <p>Manuals for the latest CFEngine Enterprise release<span class="see_more" style="display: inline;"><br><em>See more »</em></span><span class="hidden" style="display: none;"></span></p>
+
+                                                                           <ul class="man_docs" style="display: none;">
+                                                                                                <li>
+                                                                                        <a href="manuals/Enterprise-3-0-OwnersManual.html">CFEngine Enterprise 3.0 Owner's Manual</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/Enterprise-3-0-API.html">CFEngine Enterprise 3.0 API</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/Enterprise-2-2-OwnersManual.html">CFEngine 3 Enterprise 2.2 Owner's Manual</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/enterprise-2-2-evaluationguide.html">CFEngine 3 Enterprise Evaluation Guide</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/enterprise-2-2-evaluationguidesupplement.html">Supplement to CFEngine 3 Enterprise Evaluation Guide</a>
+                                                                              </li>
+                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item pink">
+                     <h2>Plan a CFEngine architecture</h2>
+                     <div class="man_descr">
+                         <p>CFEngine can be used on or off-line, and is fault-tolerant to network outages. CFEngine has scalable<span class="see_more">...<br><em>See more »</em></span><span class="hidden" style="display: none;"> tools that go beyond one-size-fits-all industrial mass production, to solve highly customized, federated environmental requirements.</span></p>
+
+                                                                           <ul class="man_docs" style="display:none">
+                                                                                                <li>
+                                                                                        <a href="https://cfengine.com/manuals/cf3-tutorial.html#Network-services">Basics of network communication</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-critical.html">CFEngine for Mission Critical Operations</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-federation.html">Orchestration</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-hierarchy.html">Hierarchies</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-menus.html">Menu Driven Configuration</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-orchestrate.html">Modularizing and Orchestrating System Policy</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-scale.html">Scale and Scalability</a>
+                                                                              </li>
+                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item darkblue">
+                     <h2>Create Service management</h2>
+                     <div class="man_descr">
+                         <p>Adopt a simple service oriented packaging approach to system configuration.<span class="see_more"><br><em>See more »</em></span><span class="hidden" style="display: none;"></span></p>
+
+                                                                           <ul class="man_docs" style="display:none">
+                                                                                        <a href="https://cfengine.com/cloud">Orion Cloud Examples</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-cloud.html">Cloud</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-devops.html">CFEngine for `DevOps'</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-orchestrate.html">Modularizing and Orchestrating System Policy</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-packages.html">Package Management</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-schedule.html">Scheduling and Event Management</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-teams.html">Teamwork</a>
+                                                                              </li>
+                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item orangeyellow">
+                     <h2>Define and ensure compliance</h2>
+                     <div class="man_descr">
+                         <p>Auditors for PCI, SOX, HIPPA, STIGS etc. love CFEngine management as it brings reliable predictabili<span class="see_more" style="display: inline;">...<br><em>See more »</em></span><span class="hidden" style="display: none;">ty to systems</span></p>
+
+                                                                           <ul class="man_docs" style="display: none;">
+                                                                                                <li>
+                                                                                        <a href="manuals/st-change.html">Change Management and Incident Repair</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-itil.html">ITIL</a>
+                                                                              </li>
+                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item lightblue">
+                     <h2>Orchestrate complex processes</h2>
+                     <div class="man_descr">
+                         <p>CFEngine is a decentralized system, which you can orchestrate in a fault-tolerant manner without str<span class="see_more" style="display: inline;">...<br><em>See more »</em></span><span class="hidden" style="display: none;">ong reliance on networked communications.</span></p>
+
+                                                                           <ul class="man_docs" style="display: none;">
+                                                                                                <li>
+                                                                                        <a href="manuals/st-orchestrate.html">Modularizing and Orchestrating System Policy</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-schedule.html">Scheduling and Event Management</a>
+                                                                              </li>
+                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item green">
+                     <h2>Integrate with System Monitoring</h2>
+                     <div class="man_descr">
+                         <p>CFEngine's automated repair and self-healing means it has to know about your system state and can re<span class="see_more">...<br><em>See more »</em></span><span class="hidden" style="display: none;">port on this. CFEngine's approach to monitoring complements other tools like Nagios, Groundwork, etc. by putting scalability first, with smart trending and analysis.</span></p>
+
+                                                                           <ul class="man_docs" style="display:none">
+                                                                                                <li>
+                                                                                        <a href="manuals/st-monitoring.html">Monitoring with CFEngine</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-reporting.html">Reporting</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-scan.html">Security Scanning and Tripwires with CFEngine</a>
+                                                                              </li>
+                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item bluegreen man_hovered">
+                     <h2>Ensure Speed, Scale and Agility</h2>
+                     <div class="man_descr">
+                         <p>CFEngine's design is fast and lightweight, for maximum responsiveness. In today's environment, speed<span class="see_more" style="display: none;">...<br><em>See more »</em></span><span class="hidden" style="display: inline;"> itself is the product.</span></p>
+
+                                                                           <ul class="man_docs" style="display: block; overflow: hidden; height: 33.8717px; margin: 3.96044px 0px 0px; padding: 0px; width: 68.7236px; opacity: 0.396044;">
+                                                                                                <li>
+                                                                                        <a href="manuals/st-agility.html">Agility in Infrastructure Engineering</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-change.html">Change Management and Incident Repair</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-scale.html">Scale and Scalability</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-virt.html">Virtualization and Cloud Support in CFEngine</a>
+                                                                              </li>
+                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item brown">
+                     <h2>Secure your Systems with CFEngine</h2>
+                     <div class="man_descr">
+                         <p>CFEngine's is a natural tool for modelling, monitoring and ensuring system security.<span class="see_more" style="display: inline;"><br><em>See more »</em></span><span class="hidden" style="display: none;"></span></p>
+
+                                                                           <ul class="man_docs" style="display: none;">
+                                                                                                <li>
+                                                                                        <a href="manuals/st-change.html">Change Management and Incident Repair</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-rbac.html">Role Based Access Control and CFEngine</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-scan.html">Security Scanning and Tripwires with CFEngine</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-security.html">Architecture and Security</a>
+                                                                              </li>
+                                                                                                                                                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item purple">
+                     <h2>Integrate CFEngine into an ecosystem</h2>
+                     <div class="man_descr">
+                         <p>CFEngine's is the ultimate glue, offering unlimited customizability. Using a knowledge-oriented appr<span class="see_more">...<br><em>See more »</em></span><span class="hidden" style="display: none;">oach, you can cope with integration and put it in context.</span></p>
+
+                                                                           <ul class="man_docs" style="display:none">
+                                                                                                <li>
+                                                                                        <a href="manuals/st-opennebula.html">Using CFEngine with Open Nebula</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-reporting.html">Reporting</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-virt.html">Virtualization and Cloud Support in CFEngine</a>
+                                                                              </li>
+                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                        <div class="man_item_parent">
+                     <div class="man_item darkpurple">
+                     <h2>Get Reports from CFEngine</h2>
+                     <div class="man_descr">
+                         <p>Browse the knowledge and structures that CFEngine discovers and manages about your systems.<span class="see_more"><br><em>See more »</em></span><span class="hidden" style="display: none;"></span></p>
+
+                                                                           <ul class="man_docs" style="display:none">
+                                                                                                <li>
+                                                                                        <a href="manuals/novaownersmanual.html">CFEngine 3 Nova Owner's Manual</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-change.html">Change Management and Incident Repair</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-knowledge.html">Implementing Knowledge Management</a>
+                                                                              </li>
+                                                                                                                                <li>
+                                                                                        <a href="manuals/st-reporting.html">Reporting</a>
+                                                                              </li>
+                                                                                     </ul>
+                                              <div class="fclear"></div>
+                     </div>
+                </div>
+                </div>
+                <div class="fclear"></div>
+    </div>
+        <div class="fclear"></div>
+</div>
+<div class="fclear"></div>
+
+
+
+</div>
+<!-- indexer::continue -->
+
+
+</div>
+
+ 
+            <!-- indexer::stop -->
+                          <div class="fclear"></div>
+    </div>
+    <div class="fclear"></div>
+   </div>
+    <div class="fclear"></div>
+</div>
+<div class="fclear"></div>
+</body></html>

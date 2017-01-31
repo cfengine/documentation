@@ -1,0 +1,165 @@
+############################################################################
+#
+# Knowledge base / ontology
+#
+############################################################################
+
+body common control
+   
+{
+bundlesequence  => { 
+                   "CfengineEnterpriseFundamentals",
+                   "enterprise_start",
+                   "knowledge_models",
+                   "manual_entries",
+                 #  "system_relationships",
+                   "cf3_reference",
+                   "cf3_solutions",
+                   "cf3_tutorial",
+                   "cf3_upgrade",
+                   "cf3_glossary",
+                   "CfengineStdLibrary",
+                   "cf_QuickRef3",
+                   "st_adopt",
+                   "st_bdma",
+                   "cf3_bestpractice",
+                   "cfnova",
+                   "cf_copernicus",
+                   "st_itil",
+                   "st_virt",
+                   "st_cdp",
+                   "st_change",
+                   "st_scale",
+                   "st_security",
+                   "st_rbac",
+                   "st_federation",
+                   "st_monitoring",
+                   "st_editing",
+                   "st_packages",
+                   "st_menus",
+                   "st_knowledge",
+                   "st_orchestrate",
+                   "st_reporting",
+                   "st_rollback",
+                   "st_appmgt",
+                   "st_hierarchy",
+                   "st_schedule",
+                   "st_distsched",
+                   "st_teams",
+                   "st_iterate",
+                   "CfengineEnterpriseFundamentals", # autogen by Nova
+                   "system",
+                   "cf_assoc",
+                   "examples",
+
+                   "CfengineSiteConfiguration",
+                   "enterprise_knowledge",
+
+                   # Add your own knowledge here
+
+                   "company_knowledge"
+                   };
+
+
+inputs         => {
+                  "enterprise_control.cf",
+                  "enterprise_knowledge.cf",
+                  "knowledge_models.cf",
+                  "$(sys.workdir)/inputs/company_knowledge.cf",
+                  "scan_tutorial3.cf",
+                  "scan_cf3ref.cf",
+                     "scan_appl.cf",
+                     "scan_virt.cf",
+                     "scan_scale.cf",
+                     "scan_security.cf",
+                     "scan_menus.cf",
+                     "scan_monitoring.cf",
+                     "scan_editing.cf",
+                     "scan_packages.cf",
+                     "scan_rbac.cf",        
+                     "scan_federation.cf",
+                     "scan_change.cf",
+                     "scan_hierarchy.cf",
+                     "scan_stdlib.cf", 
+                     "scan_cdp.cf",
+                     "scan_solutions.cf", 
+                     "scan_adopt.cf",
+                     "scan_glossary.cf",
+                     "scan_cfnova.cf",
+                     "scan_orchestrate.cf",
+                     "scan_schedule.cf",   
+                     "scan_upgrade.cf",
+                     "scan_bdma.cf",
+                     "scan_copernicus.cf",  
+                     "scan_quickref3.cf",    
+                     "scan_bp3.cf",     
+                     "scan_itil.cf",
+                     "scan_distsched.cf",
+                     "scan_reporting.cf",
+                     "scan_teams.cf",
+                     "scan_knowledge.cf",
+                     "scan_rollback.cf",
+                     "scan_iterate.cf",
+                     "cf_associations.cf",
+                     "cf_system.cf",
+                     "examples.cf",
+                  "$(sys.workdir)/promise_knowledge.cf",
+
+                  };
+
+host_licenses_paid => "1";
+version => "1.0";
+}
+
+###################################################
+# Bodies
+###################################################
+
+body association a(f,name,b)
+
+{
+forward_relationship => "$(f)";
+backward_relationship => "$(b)";
+associates => { $(name) };
+}
+
+###################################################
+
+body association A(f,name_list,b)
+
+{
+forward_relationship => "$(f)";
+backward_relationship => "$(b)";
+associates => { @(name_list) };
+}
+
+##################################################################
+# Nova's standard influence strings - coordinate with knowledge.c
+##################################################################
+
+body association impacts(name)
+
+{
+forward_relationship => "has direct influence on";
+backward_relationship => "is directly influenced by";
+associates => { $(name) };
+}
+
+###################################################
+
+body association Impacts(name_list)
+
+{
+forward_relationship => "has direct influence on";
+backward_relationship => "is directly influenced by";
+associates => { @(name_list) };
+}
+
+###################################################
+
+body association see(name)
+{
+forward_relationship => "see also";
+backward_relationship => "see also";
+associates => { $(name) };
+}

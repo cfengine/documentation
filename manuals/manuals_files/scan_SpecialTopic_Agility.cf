@@ -1,0 +1,81 @@
+
+bundle knowledge SpecialTopic_Agility
+
+{
+topics:
+
+"SpecialTopic_Agility";
+Special_Topics_Guide::
+    "Agility"  association => a("discusses","Agility in Infrastructure Engineering","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Agility.html"
+  represents => { "Official CFEngine document"},  about_topics => { "agility in infrastructure engineering" };
+ "/knowledge/docs/SpecialTopic_Agility.html"
+  represents => { "Special Topics Guide"},  about_topics => { "agility in infrastructure engineering" };
+ "/knowledge/docs/SpecialTopic_Agility.html#Top"
+  represents => { "Text section" }, about_topics => { "agility" };
+ "/knowledge/docs/SpecialTopic_Agility.html#Understanding-Agility"
+  represents => { "manual chapter" }, about_topics => { "understanding agility"};
+ "/knowledge/docs/SpecialTopic_Agility.html#What-make-agility-possible_003f"
+  represents => { "manual section" }, about_topics => { "what make agility possible?"};
+ "/knowledge/docs/SpecialTopic_Agility.html#The-capacity-of-a-system"
+  represents => { "manual section" }, about_topics => { "the capacity of a system"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Speed"
+  represents => { "manual section" }, about_topics => { "speed"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Precision"
+  represents => { "manual section" }, about_topics => { "precision"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Comprehension"
+  represents => { "manual section" }, about_topics => { "comprehension"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Efficiency"
+  represents => { "manual section" }, about_topics => { "efficiency"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Aspects-of-CFEngine-that-bring-agility"
+  represents => { "manual chapter" }, about_topics => { "aspects of cfengine that bring agility"};
+ "/knowledge/docs/SpecialTopic_Agility.html#What-agility-means-in-different-environments"
+  represents => { "manual section" }, about_topics => { "what agility means in different environments"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Desktop-management"
+  represents => { "manual subsection" }, about_topics => { "desktop management"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Web-shops"
+  represents => { "manual subsection" }, about_topics => { "web shops"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Cloud-providers"
+  represents => { "manual subsection" }, about_topics => { "cloud providers"};
+ "/knowledge/docs/SpecialTopic_Agility.html#High-Performance-Computing"
+  represents => { "manual subsection" }, about_topics => { "high performance computing"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Government"
+  represents => { "manual subsection" }, about_topics => { "government"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Finance"
+  represents => { "manual subsection" }, about_topics => { "finance"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Manufacturing"
+  represents => { "manual subsection" }, about_topics => { "manufacturing"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Separating-What-from-How"
+  represents => { "manual section" }, about_topics => { "separating what from how"};
+examples:: "/knowledge/docs/SpecialTopic_Agility.html#Separating-What-from-How"
+ about_topics => { "Separating What from How" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Agility.html#Separating-What-from-How"
+ about_topics => { "Separating What from How" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Agility.html#Packaging-limits-agility"
+  represents => { "manual section" }, about_topics => { "packaging limits agility"};
+ "/knowledge/docs/SpecialTopic_Agility.html#How-abstraction-improves-agility"
+  represents => { "manual section" }, about_topics => { "how abstraction improves agility"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Increasing-system-capacity-_002d-by-scaling"
+  represents => { "manual section" }, about_topics => { "increasing system capacity"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Agility-in-your-work"
+  represents => { "manual chapter" }, about_topics => { "agility in your work"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Easy-versus-simple"
+  represents => { "manual section" }, about_topics => { "easy versus simple"};
+ "/knowledge/docs/SpecialTopic_Agility.html#How-does-complexity-affect-agility_003f"
+  represents => { "manual section" }, about_topics => { "how does complexity affect agility?"};
+ "/knowledge/docs/SpecialTopic_Agility.html#An-effective-understanding-helps-agility"
+  represents => { "manual section" }, about_topics => { "an effective understanding helps agility"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Maximizing-business-imperatives"
+  represents => { "manual section" }, about_topics => { "maximizing business imperatives"};
+ "/knowledge/docs/SpecialTopic_Agility.html#What-does-agility-cost_003f"
+  represents => { "manual section" }, about_topics => { "what does agility cost?"};
+ "/knowledge/docs/SpecialTopic_Agility.html#Who-is-responsible-for-agility_003f"
+  represents => { "manual section" }, about_topics => { "who is responsible for agility?"};
+}
+

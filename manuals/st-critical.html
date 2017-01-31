@@ -1,0 +1,1078 @@
+<html lang="en">
+<head>
+<title>CFEngine for Mission Critical Operations</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CFEngine for Mission Critical Operations">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('â˜º'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">CFEngine for Mission Critical Operations</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-are-Mission-Critical-Operations_003f">What are Mission Critical Operations?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine for Mission Critical Operations</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-are-Mission-Critical-Operations_003f">What are Mission Critical Operations?</a>
+<li><a accesskey="2" href="#Factors-affecting-Risk">Factors affecting Risk</a>
+<li><a accesskey="3" href="#Model_002dbased-planning-for-stability">Model-based planning for stability</a>
+<li><a accesskey="4" href="#Key-terminology-for-Mission-Critical-Systems">Key terminology for Mission Critical Systems</a>
+<li><a accesskey="5" href="#Strategy-for-Mission-Critical-Operations">Strategy for Mission Critical Operations</a>
+<li><a accesskey="6" href="#How-CFEngine-contributes-to-reducing-mission-risks">How CFEngine contributes to reducing mission risks</a>
+<li><a accesskey="7" href="#High-availability-access-to-the-Mission-Portal">High availability access to the Mission Portal</a>
+<li><a accesskey="8" href="#Redundant-hub-architecture">Redundant hub architecture</a>
+<li><a accesskey="9" href="#How-do-I-make-a-change-in-mission_002dcritical-infrastructure_003f">How do I make a change in mission-critical infrastructure?</a>
+<li><a href="#Separating-Policy-Changes-from-ad_002dhoc-Changes">Separating Policy Changes from ad-hoc Changes</a>
+<li><a href="#Appendix-1">Appendix 1</a>
+<li><a href="#Appendix-2">Appendix 2</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-are-Mission-Critical-Operations%3f"></a>
+<a name="What-are-Mission-Critical-Operations_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Factors-affecting-Risk">Factors affecting Risk</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What are Mission Critical Operations?</h3>
+
+<pre class="sp">
+
+</pre>
+
+Mission Critical operation refers to the use and management of systems
+where the availability and correctness of a system has to be ensured
+at all times. A mission is said to be critical when any noticable
+failure in the system would cause a signifiant loss to some
+stakeholder.
+
+   <p>Risk for mission critical systems deals with issues like monetary
+losses (e.g. in time critical trading applications) or, in the worst
+case, even the loss of human life (transport systems).
+
+   <p>What makes a system robust in a mission critical setting depends on a
+number of factors. This Special Topics Guide discusses the role of
+CFEngine in a mission critical environment.
+
+<div class="node">
+<a name="Factors-affecting-Risk"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Model_002dbased-planning-for-stability">Model-based planning for stability</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-are-Mission-Critical-Operations_003f">What are Mission Critical Operations?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Factors affecting Risk</h3>
+
+<pre class="sp">
+
+</pre>
+
+Risk is about predictability.  The ability to predict the behaviour of
+a system depends both on the complexity of the system itself and the
+environment around it, since interaction with the environment is what
+usually provokes failures (the environment is the most unpredictable
+element of any system, since it is the part over which we have little
+control).
+
+   <p>The cost of predicting and avoiding failures can be prohibitive in a
+purely manual regime but automated systems can do a lot to reduce
+costs. CFEngine can play a key role here in reducing the cost of
+maintaining system state, even in a rapidly changing environment.
+
+   <pre class="sp">
+
+</pre>
+     <ul>
+<li>Planning for eventualities. 
+<li>Verifying system correctness with sufficient frequency. 
+</ul>
+
+   <pre class="sp">
+
+</pre>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+The key observation for dealing with mission criticality is that
+systems are dynamical entities. Most software systems only manage
+the static setup of hosts. CFEngine manages both the static
+resources and the run-time state. 
+</td></tr></table>
+
+<div class="node">
+<a name="Model-based-planning-for-stability"></a>
+<a name="Model_002dbased-planning-for-stability"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Key-terminology-for-Mission-Critical-Systems">Key terminology for Mission Critical Systems</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Factors-affecting-Risk">Factors affecting Risk</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Model-based planning for stability</h3>
+
+<pre class="sp">
+
+</pre>
+
+The key to handling mission criticality is to build a model of your
+critical scenario that is based on a prediction of behaviour. In
+science and engineering, this is something one does all the time
+(e.g. wind-tunnel studies), but in Computer Engineering, the methods
+of modelling are still quite undeveloped. 
+In the nuclear power industry and space programmes, for instance,
+it is common to use formalized fault-analysis to avoid and secure
+against error.
+
+   <p>The purpose of a model is to describe expectations. If a model is
+sufficiently well conceived, it should be possible to identify key
+causal factors in the mission that bring about critical behaviour.
+
+   <pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+CFEngine's methodology is based on the idea of promises: a promise
+being something that aims to alter our expectations of outcome in a
+postive way. 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+
+In CFEngine, you make promises about the factors that underpin the
+stability of your system, and CFEngine's task is to work on your
+behalf to keep those promises. Promises cannot be guaranteed `kept' at
+all times, especially in time-critical situations (such a guarantee
+would require infinite resources to maintain), but a known schedule of
+verification and repair allows us to bring a level of predictability
+to a system, within certain tolerances. This is a best-effort engineering
+definition of predictability.
+
+   <p>Examples of promises that you might want to include in a
+foundation for a mission critical system are things that
+bring trusted stability, e.g.
+     <ul>
+<li>Check that key processes and applications are running. 
+<li>Automated garbage collection that prevents a system from
+choking on its own biproducts. 
+<li>Scan for rootkits (security breaches) every few hours. 
+</ul>
+
+   <p>The economic aspect of mission criticality is key: the
+loss of a key application or subsystem for even a minute could result
+in loss of significant revenues in an online company, or the loss
+of flight systems for a few seconds could result in a plane losing
+control and crashing.
+
+<div class="node">
+<a name="Key-terminology-for-Mission-Critical-Systems"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Strategy-for-Mission-Critical-Operations">Strategy for Mission Critical Operations</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Model_002dbased-planning-for-stability">Model-based planning for stability</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Key terminology for Mission Critical Systems</h3>
+
+<pre class="sp">
+
+</pre>
+
+     <dl>
+<dt><i>Mean Time Before Failure (MTBF)</i><dd>The average measured time between faults occurring on a system. 
+Although this is a well established measurement in the theory of
+faults and errors, estimating this quantity is not without its challenges.
+
+     <br><dt><i>Mean Time To Repair (MTTR)</i><dd>The average time it takes to repair a system after a failure has occurred. 
+The type or meaning of repairs is not specified.
+
+     <br><dt><i>Sampling frequency</i><dd>The rate at which we interact with the system in order to measure or
+repair it. According to Nyquist's theorem, we have to sample a system
+twice as fast as the rate at which we expect to detect an important change.
+
+     <br><dt><i>Single point of failure</i><dd>Any point in the design of a system that would lead to complete
+failure if destroyed.  There might be several `single points of failure'
+in a system. Single refers to the fact that it only takes the failure
+of one of these to cause the total breakdown of the system. 
+For example, the axel, or a tyre on a car would be examples of single points
+of failure for the `driving system'.
+
+   </dl>
+
+<div class="node">
+<a name="Strategy-for-Mission-Critical-Operations"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#How-CFEngine-contributes-to-reducing-mission-risks">How CFEngine contributes to reducing mission risks</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Key-terminology-for-Mission-Critical-Systems">Key terminology for Mission Critical Systems</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Strategy for Mission Critical Operations</h3>
+
+<pre class="sp">
+
+</pre>
+
+There are many aspects to thinking about complete reliability of systems.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+The main goal of any system is to seek predictability. Having clear
+and accurate expectations of a system helps to steer it in a low-risk direction. 
+</td></tr></table>
+
+<p class="noindent">Usually these fall into a mixture of two categories:
+
+     <dl>
+<dt><i>Redundancy</i><dd>Elimination of `single points of failure' when failure strikes. 
+<br><dt><i>Avoidance</i><dd>Proactive maintainence to keep the system in a zone of low risk. 
+<br><dt><i>Certainty of knowledge</i><dd>Knowing accurately what is going in a system can enable correct decisions
+to be made more quickly when something unexpected happens. 
+</dl>
+
+<p class="noindent">It is impossible to discuss a comprehensive list of points for ensuring
+reliability, but a few general principles come to mind:
+     <ul>
+<li>Maximize Mean Time Before Failure
+<li>Minimize Mean Time To Repair
+<li>Maximize the relevance of information from the system
+to mission goals. 
+<li>Separate procedures for handling change into those for intended change (planned changes to the mission) and unintended change (changes that should not happen in an ideal world), falling into two cases: expected (for which we have written policy to repair) and unexpected (incidents that are handled manually).
+
+     <li>Certainty about information returned by the system, with multiple confirmation.
+
+     <li>Graceful failure modes: failover servers, backups, automatic elasticity (e.g. cloud technology)
+
+     <li>Peak load handling. (Also called Long Tail events.)
+
+     <li>Design for self-correction (negative feedback controllers). 
+This includes, low-impact of management overhead on the mission system to avoid
+cascade failure.
+
+   </ul>
+
+<div class="node">
+<a name="How-CFEngine-contributes-to-reducing-mission-risks"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#High-availability-access-to-the-Mission-Portal">High availability access to the Mission Portal</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Strategy-for-Mission-Critical-Operations">Strategy for Mission Critical Operations</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">How CFEngine contributes to reducing mission risks</h3>
+
+<pre class="sp">
+
+</pre>
+     <ul>
+<li>Automated monitoring and repair according to a policy model.
+
+     <li>Providing up to date knowledge about the system
+
+     <li>Automatic restoration of compliance with policy, with MTTR 2.5 minutes by default.
+
+     <li>Accuracy of knowledge: all data include running estimates of the certainty
+of the data.
+
+     <li>Automatic updates of statistics about the system, with continuous updating
+for accurate and up to date information with context
+
+     <li>Independence of infrastructure dependencies (network/cmdb)
+CFengine will continue to work even if the network communications
+are impaired.
+
+   </ul>
+
+<div class="node">
+<a name="High-availability-access-to-the-Mission-Portal"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Redundant-hub-architecture">Redundant hub architecture</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#How-CFEngine-contributes-to-reducing-mission-risks">How CFEngine contributes to reducing mission risks</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">High availability access to the Mission Portal</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine is designed to be a system that is resilient to failure. 
+That, in fact, is the opposite of a high availability system,
+where failures are not supposed to occur at all.
+
+   <p>The Mission Portal has a role to play in Mission Criticality,
+as it is a single source of information, collected,
+categorized and calibrated for system engineers.  Being a single
+source website, it is can also be regarded as a single point of
+failure from the point of view of a mission critical application.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+The information in the mission portal is largely status information
+about systems. The content of the Mission Portal database is not in
+any way deterministic for the configured state of your IT system &ndash; it
+is only a report of actual state, not a template for intended state. If the Mission
+Portal is `down' or unavailable, it does not in any way imply that the
+actual distributed system is down or that there is any fault. 
+</td></tr></table>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Setting-up-redundant-monitoring-hubs">Setting up redundant monitoring hubs</a>
+</ul>
+
+<div class="node">
+<a name="Setting-up-redundant-monitoring-hubs"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#High-availability-access-to-the-Mission-Portal">High availability access to the Mission Portal</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#High-availability-access-to-the-Mission-Portal">High availability access to the Mission Portal</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Setting up redundant monitoring hubs</h4>
+
+<p>If information and insight into your IT system are indeed Mission
+Critical for you, it is possible to create a high availability access
+to the mission information in the portal. 
+In general, we recommend a small amount of professional services to
+help set up such a system, as there are several details that need to
+be taken into account.
+
+   <p>The CFEngine star-network `hub', used in CFE Nova and CFE
+Constellation is the report aggregator for the CFEngine software. 
+CFEngine commercial editions support multiple hubs for redundancy
+during reporting.  By making a cluster of three (or more) hubs, you
+can ensure that reports will always be available and up to date, at
+the time-resolution promised by CFEngine.
+
+   <p>To set up redundant hubs, you will need three physical computers, or
+at least three virtual machines on different physical computers. 
+The idea is to use the underlying technology of the MongoDB database
+to provide a replicated data store. If a single database server goes down
+a secondary replica can take over the role. The commercial editions
+of CFEngine interface with this database through <code>cf-hub</code>,
+and this process can be made aware of the underlying replica technology
+in the database. The architecture is intended to be as simple as possible
+for the CFEngine user to employ.
+
+   <pre class="sp">
+
+</pre>
+     <ul>
+<li>Install each of the three systems with the Nova/Constellation extension package for
+policy hubs.
+
+     <li>The MongoDB backend needs to be set up specially before standard bootstrapping
+of nodes in an high availability managed network. Alternatively, if you have already bootstrapped
+hosts, you can manually establish hub redundancy with a little database infrastructure work
+and some additional CFEngine configuration.
+
+     <p>To do this, configure the Mongo database to set up a minimal replica set. This underlying
+mechanism for automatic failover. For example, a configuration like the following should
+be typed into the mongo client on one of the hub machines. Text like the following
+example can be pasted directly into the mongo shell.
+
+     <pre class="verbatim">     host$ mongo
+     
+     db.runCommand({"replSetInitiate" : {
+     "_id" : "CFEngineNova",
+     "members" : [
+     {
+     "_id" : 1,
+     "host" : "10.10.10.1:27017"
+     },
+     {
+     "_id" : 2,
+     "host" : "10.10.10.2:27017"
+     },
+     {
+     "_id" : 3,
+     "host" : "10.10.10.3:27017"
+     }
+     ]}})
+     
+</pre>
+
+     <p>To bootstrap the Mongo DB replication you should follow the procedure
+from the <i>MongoDB Definitive Guide, O'Reilly</i>. An example is shown below,
+assuming the three IP addresses for the hubs have IP addresses
+10.10.10.1, 10.10.10.2, 10.10.10.2, we would arrange for the following
+CFEngine pseudo-code to be executed before bootstrapping any of the
+hubs:
+<pre class="verbatim">     
+     commands:
+     
+       10_10_10_1::
+     
+          /var/cfengine/bin/mongod --fork       \
+               --logpath /var/log/mongod.log    \
+               --dbpath $(sys.workdir)/state    \ 
+               --replSet CFEngineNova/10.10.10.2:27017
+     
+       10._10_10_2|10_10_10_3::
+     
+          /var/cfengine/bin/mongod --fork       \
+               --logpath /var/log/mongod.log    \
+               --dbpath $(sys.workdir)/state    \ 
+               --replSet CFEngineNova/10.10.10.1:27017
+     
+</pre>
+Although we write the above in CFEngine pseudo-code, these steps need to be
+carried out before boostrapping hosts, as the Mongo services need to
+be initialized before anything can be written to the database, and the
+bootstrapping of the license initialization writes information to be
+stored in Mongo. During a single hub installation, these steps
+can be automated, but bootstrapping the replication prevents
+a fully automated installation.
+
+     <li>Copy the public and private key from the licensed hub, along with the
+<samp><span class="file">license.dat</span></samp> file to the secondary hubs. 
+All hubs will share the same public-private key pair and license file.
+
+     <li>Start the <code>cf-hub</code> on each of the three machines.
+
+   </ul>
+
+   <pre class="sp">
+
+</pre>
+Next, we'll run through the operation and failure modes of the symmetric hubs. 
+The arrangement of the hubs is shown schematically in the figure below.
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="redundhubs.png" alt="redundhubs.png"></div>
+<pre class="sp">
+
+</pre>
+<div align="center">Fig 1. Only one master hub at a time collects data in a symmetric cluster.</div>
+<pre class="sp">
+
+</pre>
+
+<div class="node">
+<a name="Redundant-hub-architecture"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#How-do-I-make-a-change-in-mission_002dcritical-infrastructure_003f">How do I make a change in mission-critical infrastructure?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#High-availability-access-to-the-Mission-Portal">High availability access to the Mission Portal</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Redundant hub architecture</h3>
+
+<p>To set up redundancy, you create three hubs, each running a Mongo
+database server and a <code>cf-hub</code> process will play the role of a
+virtual cluster. All three hosts make promises to one another to
+coordinate their data. The Mongo replica sub-system promises its own
+coordination independently. We essentially make three completely
+symmetrical hub hosts, with different IP addresses.
+
+     <ol type=1 start=1>
+<li>Set up three completely symmetrical hosts, with identical public-private key pairs. 
+That is, generate a key pair only for one of the hubs and then copy those keys to
+<samp><span class="file">/var/cfengine/ppkeys/localhost.pub</span></samp> and <samp><span class="file">/var/cfengine/ppkeys/localhost.priv</span></samp>
+on the other two hosts. This must be done manually to bootstrap
+the hub redundancy.
+
+     <li>The underlying Mongo database infrastructure binds together these hosts into a small cluster called a replica set.
+
+     <p>A voting mechanism selects a `hub_master' from this set, which is going to be the active hub.
+
+     <li>Each host is configured to copy the public keys from all the
+others, so that they all converge on the same set of keys. The
+following snippet shows the main principles involved in a replica
+setup.
+
+     <pre class="verbatim">     vars:
+     
+       "hub_hosts" slist => { "hub1", "hub2", "hub3" };
+     
+     files:
+     
+      am_policy_hub::
+     
+        "$(sys.workdir)/ppkeys"
+            comment => "All hubs converge knowledge of client keys",
+          copy_from => secure_cp("$(sys.workdir)/ppkeys","$(hub_hosts)"),
+       depth_search => recurse("inf");
+     
+</pre>
+
+     <li>For optimization we set up a policy that rewrites the IP address in <samp><span class="file">policy_server.dat</span></samp>,
+to point existing clients away from a hub that is no longer responding, to the current master
+or primary. Clients will initially pick up these changes by failing over, as in the previous point.
+
+     <pre class="verbatim">     files:
+     
+      am_hub_master::
+     
+        "$(sys.workdir)/policy_server.dat"
+             comment => "Point clients to the current hub master",
+           edit_line => append_if_no_line("$(sys.hub_master)")
+       edit_defaults => empty;
+     
+</pre>
+
+     <li>To make the redundany hubs double as redundant policy servers, we make sure that
+the copying of policy in <samp><span class="file">update.cf</span></samp> uses the replicas as failover servers
+for policy updates. This means that changes to policy should always be copied to
+<samp><span class="file">/var/cfengine/masterfiles</span></samp> on all three hub hosts.
+
+     <pre class="verbatim">     body copy_from update_copy
+     {
+     ...
+     servers => { $(sys.policy_server), "hub3", "hub2", "hub1" };
+     ...
+     }
+</pre>
+The policy server variable will point to one of these hubs. If a hub
+host, doubling in its role as policy server, fails for some reason,
+the clients will all fail over to the next hub, and updates will
+continue. By the time this happens, we can expect the main policy will have been
+adjusted by the edit in the previous point, and clients will be pointed to a new
+primary.  It does not matter that hosts appear twice in the list; we
+could, for instance place <code>hub1</code> last in the list if we assume
+that hub1 is the initial primary, so as to minimize the wait due to a
+double-failover.
+
+        </ol>
+
+   <pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+With this configuration, all the hubs promise to synchronize their keys,
+and share `last seen' client host data with each other in order to symmetrize. 
+However, only one of the hubs actually collected reports from the clients. 
+This is the host that is elected by the MongoDB replica-set vote. 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+
+With the approach taken above we can be sure that data are being collected redundantly
+without duplication of network overhead.
+
+   <p>Note that the standard Nova configuration files contains example
+configurations for the replica set configuration. Integrating all the
+settings can require extensive modifications, as mentioned above.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Features-of-hub_002fpolicy-server-redundancy">Features of hub/policy server redundancy</a>
+<li><a accesskey="2" href="#Variables-and-classes-for-hubs">Variables and classes for hubs</a>
+</ul>
+
+<div class="node">
+<a name="Features-of-hub%2fpolicy-server-redundancy"></a>
+<a name="Features-of-hub_002fpolicy-server-redundancy"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Variables-and-classes-for-hubs">Variables and classes for hubs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Redundant-hub-architecture">Redundant hub architecture</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Redundant-hub-architecture">Redundant hub architecture</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Features of hub/policy server redundancy</h4>
+
+<p>The Nova starburst hub configuration supports the following properties:
+     <ul>
+<li>Redundant availability of policy changes, with automatic failover. 
+<li>Redundant responsibility for report collection from managed hosts, with automatic reassignment of hub master. 
+<li>Redundant availability for the Mission Portal console, with about 15 second changeover. 
+<li>Fault tolerance of all parts of CFEngine to complete network failure. 
+</ul>
+
+<div class="node">
+<a name="Variables-and-classes-for-hubs"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Features-of-hub_002fpolicy-server-redundancy">Features of hub/policy server redundancy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Redundant-hub-architecture">Redundant hub architecture</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Variables and classes for hubs</h4>
+
+<p>CFEngine Nova and Constellation support special classes to help write policy
+for managing the hub infrastructure.
+<pre class="verbatim">
+am_policy_hub
+am_hub_master
+
+</pre>
+
+   <p>The variable &lsquo;<samp><span class="samp">$(sys.hubmaster)</span></samp>&rsquo; is also available <i>on hosts that are
+hubs</i>, and points to that host currently voted into the role of hub master.
+
+   <pre class="sp">
+
+</pre>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Setting up redundant hubs might be best done with some professional
+service assistance. Although it is quite simple, it changes the
+bootstrapping procedure in the beginning of a Nova or Constellation
+deployment. 
+</td></tr></table>
+
+<div class="node">
+<a name="How-do-I-make-a-change-in-mission-critical-infrastructure%3f"></a>
+<a name="How-do-I-make-a-change-in-mission_002dcritical-infrastructure_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Separating-Policy-Changes-from-ad_002dhoc-Changes">Separating Policy Changes from ad-hoc Changes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Redundant-hub-architecture">Redundant hub architecture</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">How do I make a change in mission-critical infrastructure?</h3>
+
+<pre class="sp">
+
+</pre>
+
+To make changes in a mission critical environment, you publish a fully
+tested, risk-assessed policy to <samp><span class="file">/var/cfengine/masterfiles</span></samp> on
+all three of the hubs in the cluster. The policy on all hubs should be
+the synchronized. It might be worth setting up a promise to verify
+that the contents of these directories are the same between all hubs,
+since unsychronized policies could cause serious issues.
+
+<pre class="verbatim">vars:
+
+   "hubs" slist => { "hub1", "hub2", "hub3" };
+
+files:
+
+  "$(sys.workdir)/masterfiles"
+
+    copy_from => secure_cp("$(sys.workdir)/masterfiles","$(hubs)"),
+       action => warn;
+
+</pre>
+
+   <p>All changes to a mission critical system should be classified
+according to the level of risk to the mission. Changes fall into
+different categories.
+
+     <ul>
+<li>Regular routine maintenance to the system (preplanned). 
+<li>Course or goal corrections to policy (replanned). 
+<li>Unforeseen repairs (unplanned). 
+</ul>
+
+   <p>In each case, we recommend that changes be made using CFEngine's
+hands-free automation. Humans should never be the instruments of
+change. By using CFEngine, you can get a documented and predictable
+handle on change, using technology designed for stability with agility.
+
+   <p>CFEngine has the ability to change entire systems of thousands of
+hosts within a timeframe of 5 to 10 minutes.
+
+<div class="node">
+<a name="Separating-Policy-Changes-from-ad-hoc-Changes"></a>
+<a name="Separating-Policy-Changes-from-ad_002dhoc-Changes"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Appendix-1">Appendix 1</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#How-do-I-make-a-change-in-mission_002dcritical-infrastructure_003f">How do I make a change in mission-critical infrastructure?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Separating Policy Changes from <i>ad-hoc</i> Changes</h3>
+
+<pre class="sp">
+
+</pre>
+
+In mission critical environments, there are often struct processes for
+approving change. Unintelligently applied, such rules can do more harm
+than good &ndash; i.e. when the process for approving changes causes
+greater risk to the survival of the mission than not acting at all does. It
+is important to separate changes into categories that allow the
+minimization of risk. If we take the categories in the previous
+section:
+
+     <dl>
+<dt><i>Regular routine maintenance to the system (preplanned).</i><dd>Changes here have alredy gone through risk assessment, and root cause has been
+deemed understood or irrelevant. These changes should be automated and implemented
+in the minimum time. e.g. restarting a web server that crashed or was stopped accidentally.
+
+     <br><dt><i>Course or goal corrections to policy (replanned).</i><dd>This is a change in the mission plan and requires significant impact analysis
+for each change. Although many businesses are concerned about liabilities, the
+real aim of this analysis is to mitigate loss.
+
+     <br><dt><i>Unforeseen repairs (unplanned).</i><dd>These changes are usually discovered and repaired manually. Once some kind
+of root cause analysis is performed to the required level, there should be
+an analysis of how to automate the prevention of this kind of change in the
+future.
+
+   </dl>
+
+   <pre class="sp">
+
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+
+   <p>This is a partially finished Special Topics Guide, in which additional material
+can be expected at a later date. It is made available in its current
+form for your convenience.
+
+   </td></tr></table>
+
+<div class="node">
+<a name="Appendix-1"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Appendix-2">Appendix 2</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Separating-Policy-Changes-from-ad_002dhoc-Changes">Separating Policy Changes from ad-hoc Changes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Appendix MongoDB access from the command line.</h3>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<b>Using more than one hub at a time</b>:
+If you want to be able to perform queries on any one of the redundant
+hosts, not only the master, then it's necessary to set a flag on each
+of the running mongo servers (master and slave):
+<pre class="verbatim">host$ mongo
+
+rs.slaveOk();
+</pre>
+This ensures that updates are synchonrized for querying. 
+e.g. In this example we see the first query fail, and the second
+succeed after setting the flag:
+<pre class="verbatim">CFEngineNova:SECONDARY> use cfreport
+switched to db cfreport
+
+CFEngineNova:SECONDARY> db.notebook.find();
+error: { "$err" : "not master and slaveok=false", "code" : 13435 }
+
+CFEngineNova:SECONDARY> db.notebook.find();
+CFEngineNova:SECONDARY> rs.slaveOk();     
+not master and slaveok=false
+CFEngineNova:SECONDARY> db.notebook.find();
+{ "_id" : ObjectId("4e5cd788d5d6b92c00000000"), 
+"_kh" : "SHA=9e9ad21d192fa...1635", 
+"_rD" : "0 : 10.10.160.115", "_t" : 1, "n" : [
+    {
+        "u" : "admin",
+        "m" : "This machine is a web server",
+        "d" : 319944880
+    }
+] }
+
+</pre>
+</td></tr></table>
+
+<div class="node">
+<a name="Appendix-2"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Appendix-1">Appendix 1</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Appendix Shutting down Mongo with replication</h3>
+
+<p>Anytime you shutdown mongo, it will automatically failover. You can~t
+specifically tell which node to become primary, but you can use
+replFreeze and replSetStepDown to alter which is eligible to become
+primary (small difference).
+
+   <p>Basically we would freeze a node from becoming primary, then tell the
+primary to step down, which leaves only one node (see
+<a href="http://www.mongodb.org/display/DOCS/Forcing+a+Member+to+be+Primary">http://www.mongodb.org/display/DOCS/Forcing+a+Member+to+be+Primary</a> for
+a good explanation).
+
+   <p>However, failover is the easy part. The other half to the action is
+that all client will receive a new policy_server.dat based on the new
+primary. This will create quite a flux in the system for a bit as it
+reconfigure. This will take 10-20 minutes for everyone to stabilize. I
+would reserve a full failover for when the primary will be down for an
+extended period of time.
+
+   <p>Since the outages you have are fairly quick, I would just shutdown
+mongo/cfengine (or freeze) the secondaries to prevent a
+failover. Shutting them down would prevent all client from getting new
+files, but that shouldn~t be an issue.
+
+   <p>If you freeze the secondaries, and leave CFE runnning, the clients
+will update from the secondaries (they will get a license error).
+
+   <p>To freeze the secondaries:
+
+   <p>On any node:
+<pre class="verbatim"># mongo -host `IP OF THE SECONDARY' # or login to the node and run plain ´mongo¡.
+> rs.status()                       # this will show the status of the replicaSet
+> rs.freeze(seconds)                # how many seconds before the host can become primary.
+> exit
+</pre>
+
+   <p>Set the freeze for several hours (for four hours -
+&lsquo;<samp><span class="samp">rs.freeze(14400)</span></samp>&rsquo;). Then shutdown cfengine on the primary as normal
+(<code>/etc/init.d/cfengine3 stop</code>). When you are done with the change, bring
+up cfengine (<code>cf-agent -f failsafe.cf</code>), then set the freeze time for 0
+seconds to unfreeze it (&lsquo;<samp><span class="samp">rs.freeze(0)</span></samp>&rsquo;).
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine for Mission Critical Operations</a>
+<ul>
+<li><a href="#What-are-Mission-Critical-Operations_003f">What are Mission Critical Operations?</a>
+<li><a href="#Factors-affecting-Risk">Factors affecting Risk</a>
+<li><a href="#Model_002dbased-planning-for-stability">Model-based planning for stability</a>
+<li><a href="#Key-terminology-for-Mission-Critical-Systems">Key terminology for Mission Critical Systems</a>
+<li><a href="#Strategy-for-Mission-Critical-Operations">Strategy for Mission Critical Operations</a>
+<li><a href="#How-CFEngine-contributes-to-reducing-mission-risks">How CFEngine contributes to reducing mission risks</a>
+<li><a href="#High-availability-access-to-the-Mission-Portal">High availability access to the Mission Portal</a>
+<ul>
+<li><a href="#Setting-up-redundant-monitoring-hubs">Setting up redundant monitoring hubs</a>
+</li></ul>
+<li><a href="#Redundant-hub-architecture">Redundant hub architecture</a>
+<ul>
+<li><a href="#Features-of-hub_002fpolicy-server-redundancy">Features of hub/policy server redundancy</a>
+<li><a href="#Variables-and-classes-for-hubs">Variables and classes for hubs</a>
+</li></ul>
+<li><a href="#How-do-I-make-a-change-in-mission_002dcritical-infrastructure_003f">How do I make a change in mission-critical infrastructure?</a>
+<li><a href="#Separating-Policy-Changes-from-ad_002dhoc-Changes">Separating Policy Changes from <i>ad-hoc</i> Changes</a>
+<li><a href="#Appendix-1">Appendix MongoDB access from the command line.</a>
+<li><a href="#Appendix-2">Appendix Shutting down Mongo with replication</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

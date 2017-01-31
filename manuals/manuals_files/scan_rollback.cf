@@ -1,0 +1,80 @@
+
+bundle knowledge st_rollback
+
+{
+topics:
+
+"st-rollback";
+CFEngine_Tutorial::
+    "Appendix - Did you know?" ;
+CFEngine_Tutorial::
+    "Resetting  a case where rollback works?" ;
+CFEngine_Tutorial::
+    "How does CFEngine convergence help?" ;
+CFEngine_Tutorial::
+    "An alternative way to plan changes" ;
+CFEngine_Tutorial::
+    "Dont shoot the messenger" ;
+CFEngine_Tutorial::
+    "Why is relying on rollback not a good strategy?" ;
+CFEngine_Tutorial::
+    "ITIL release management" ;
+CFEngine_Tutorial::
+    "Limitations of rollback in system administration" ;
+CFEngine_Tutorial::
+    "Like revision control?" ;
+CFEngine_Tutorial::
+    "What is rollback?" ;
+Special_Topics_Guide::
+    "CFEngine-Tutorial"  association => a("discussed in","CFEngine-Tutorial","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-rollback.html"
+  represents => { "Rollout and Rollback" };
+CFEngine_Tutorial::
+ "/docs/st-rollback.html#Top"
+  represents => { "Text section" };
+What_is_rollback_::
+ "/docs/st-rollback.html#What-is-rollback_003f"
+  represents => { "Text section" };
+Like_revision_control_::
+ "/docs/st-rollback.html#Like-revision-control_003f"
+  represents => { "Text section" };
+Like_revision_control_::
+ "/docs/st-rollback.html#Like-revision-control_003f"
+  represents => { "code example" };
+Like_revision_control_::
+ "/docs/st-rollback.html#Like-revision-control_003f"
+  represents => { "code example" };
+Like_revision_control_::
+ "/docs/st-rollback.html#Like-revision-control_003f"
+  represents => { "code example" };
+Limitations_of_rollback_in_system_administration::
+ "/docs/st-rollback.html#Limitations-of-rollback-in-system-administration"
+  represents => { "Text section" };
+ITIL_release_management::
+ "/docs/st-rollback.html#ITIL-release-management"
+  represents => { "Text section" };
+Why_is_relying_on_rollback_not_a_good_strategy_::
+ "/docs/st-rollback.html#Why-is-relying-on-rollback-not-a-good-strategy_003f"
+  represents => { "Text section" };
+Dont_shoot_the_messenger::
+ "/docs/st-rollback.html#Don_0027t-shoot-the-messenger"
+  represents => { "Text section" };
+An_alternative_way_to_plan_changes::
+ "/docs/st-rollback.html#An-alternative-way-to-plan-changes"
+  represents => { "Text section" };
+How_does_CFEngine_convergence_help_::
+ "/docs/st-rollback.html#How-does-CFEngine-convergence-help_003f"
+  represents => { "Text section" };
+Resetting__a_case_where_rollback_works_::
+ "/docs/st-rollback.html#g_t_0060Resetting_0027-_002d_002d-a-case-where-rollback-works_003f"
+  represents => { "Text section" };
+Appendix___Did_you_know_::
+ "/docs/st-rollback.html#Appendix-_002d-Did-you-know_003f"
+  represents => { "Text section" };
+}
+

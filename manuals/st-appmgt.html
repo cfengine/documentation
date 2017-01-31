@@ -1,0 +1,781 @@
+<html lang="en">
+<head>
+<title>Application Management</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Application Management">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Application Management</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-is-Application-Management_003f">What is Application Management?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Application Management</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-is-Application-Management_003f">What is Application Management?</a>
+<li><a accesskey="2" href="#How-can-CFEngine-help_003f">How can CFEngine help?</a>
+<li><a accesskey="3" href="#Package-management">Package management</a>
+<li><a accesskey="4" href="#Enterprise-Software-Reporting">Enterprise Software Reporting</a>
+<li><a accesskey="5" href="#Integrated-software-installation">Integrated software installation</a>
+<li><a accesskey="6" href="#Customizing-applications">Customizing applications</a>
+<li><a accesskey="7" href="#Starting-and-stopping-software">Starting and stopping software</a>
+<li><a accesskey="8" href="#Auditing-software-applications">Auditing software applications</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-is-Application-Management%3f"></a>
+<a name="What-is-Application-Management_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#How-can-CFEngine-help_003f">How can CFEngine help?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What is Application Management?</h3>
+
+<pre class="sp">
+
+</pre>
+
+Application management concerns the deployment and updating of
+software, as well as customization of for actual use, in other words
+all the activities required to make an application ready for
+use. Initially, software installation packages must be deployed on
+host machines, however, we frequently encounter the need to update software due
+to security flaws, bugs or new features.
+
+   <p>It is generally unwise to let every application update itself
+automatically to the newest version from the internet; we want to
+decide which version gets installed and also make sure that the load
+on the network does not impair performance during mass-updates.  Equally
+important is making sure certain applications are not present,
+especially when they are known to have security issues.
+
+   <p>Using CFEngine, you can verify that the software is in a
+promised state and is properly customized for use.
+
+<div class="node">
+<a name="How-can-CFEngine-help%3f"></a>
+<a name="How-can-CFEngine-help_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Package-management">Package management</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-is-Application-Management_003f">What is Application Management?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">How can CFEngine help?</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine assists with application management in a number of ways. Following
+the BDMA lifecycle, we note:
+
+     <dl>
+<dt><i>Build</i><dd>CFEngine can be used to automate the build of packaged software releases
+using standardized or custom package formats. 
+<br><dt><i>Deploy</i><dd>CFEngine can distribute and install packaged software on any kind of platform. 
+<br><dt><i>Manage</i><dd>CFEngine can start, stop, restart, monitor, and upgrade, and customize software
+applications. 
+<br><dt><i>Audit</i><dd>CFEngine can monitor and report on packages and patches installed on systems and their
+versions and status. 
+</dl>
+
+<div class="node">
+<a name="Package-management"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Enterprise-Software-Reporting">Enterprise Software Reporting</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#How-can-CFEngine-help_003f">How can CFEngine help?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Package management</h3>
+
+<pre class="sp">
+
+</pre>
+
+Application management is simple today on most operating systems due to the
+introduction of <i>package systems</i>.
+
+   <p>All major operating systems now have some sort of package management
+system, e.g. RPM for Linux, and MSI for Windows. However, their
+capabilities and methods vary greatly. Moreover, the packages they need
+to install have to be made available to the hosts that need them and
+the package manager has to be executed at the right time and
+place. This is where CFEngine assists.
+
+   <p>Some package managers support online automatic access of online
+repositories and can download data from the network. Others have to
+have packages copied to local storage first.  CFEngine can work with
+both types of system to integrate software management.
+     <ul>
+<li>CFEngine communicates with the system using its own standards
+to utilize the approach suitable for that software system. 
+<li>Custom software repositories can be made, and CFEngine's
+agents can perform this distribution
+by collecting software packages to local storage and then
+installing from there. 
+</ul>
+
+   <p>When software packages are available on local storage, CFEngine
+can check whether they are already installed, and if so, which version
+and architecture are installed. This, in turn, can be verified against
+the policy for the software &mdash; should it indeed be installed, updated or
+removed?
+
+   <p>Using the CFEngine standard library, agents know how to talk to the
+native package manager to query information and get the system into
+the desired state.
+
+   <p>CFEngine can edit configuration files in real time to ensure that
+applications are customized to local needs at all times.
+
+<div class="node">
+<a name="Enterprise-Software-Reporting"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Integrated-software-installation">Integrated software installation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Package-management">Package management</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Enterprise Software Reporting</h3>
+
+<pre class="sp">
+
+</pre>
+
+In commercial releases of CFEngine, the state of software installation
+is reported centrally and is easily accessible through the Knowledge
+Map.
+
+   <p>Commercial editions of CFEngine also support querying Windows machines
+for installed MSI packages and thus allows for easy software
+deployment in heterogeneous Unix and Windows
+environments.
+
+<div class="node">
+<a name="Integrated-software-installation"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Customizing-applications">Customizing applications</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Enterprise-Software-Reporting">Enterprise Software Reporting</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Integrated software installation</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine gives complete freedom to users, so there are many
+ways to design a system that achieves a desired software end-state. Consider
+the following example setup which ensures that one particular
+application is up to date on all hosts. The procedure below is
+very similar to the way that commercial CFEngine editions update.
+
+   <p>Rather than using an OS-specific package repository, like yum, we
+create a universal approach using CFEngine's distribution and
+installation promises.
+
+   <p>We first look at the example on an RPM system, then we show the
+modifications required to handle Windows instead. The examples
+use body parts from the standard library.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="update.png" alt="Updating software."></div>
+<pre class="sp">
+
+</pre>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Distributing-software-packages-to-client-hosts">Distributing software packages to client hosts</a>
+<li><a accesskey="2" href="#Stopping-and-restarting-an-application-for-update">Stopping and restarting an application for update</a>
+<li><a accesskey="3" href="#Adapting-to-Windows">Adapting to Windows</a>
+<li><a accesskey="4" href="#Notes-on-Windows-systems">Notes on Windows systems</a>
+</ul>
+
+<div class="node">
+<a name="Distributing-software-packages-to-client-hosts"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Stopping-and-restarting-an-application-for-update">Stopping and restarting an application for update</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Integrated-software-installation">Integrated software installation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Integrated-software-installation">Integrated software installation</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Distributing software packages to client hosts</h4>
+
+<p>To begin with, we promise that the relevant software packages will be locally
+available to the agents from software servers, i.e. we promise that a
+local copy of all deployed software packages will exist in the
+directory <samp><span class="file">/software_repo</span></samp> on local storage. The copy will be collected
+and compared against a directory called <samp><span class="file">/master_software_repo</span></samp>
+on host <code>server.example.org</code> in this example.
+
+   <pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+We say that this approach is <samp><span class="file">data-driven</span></samp> because, by placing
+software package data in the central repository, client hosts update
+automatically, as they promise to subscribe to the data. 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+<pre class="verbatim">files:
+
+  "/software_repo"
+
+      comment => "Copy app1 updates from software server",
+     copy_from => remote_cp("/master_software_repo/app1/$(sys.flavour)",
+                             "server.example.org"),
+  depth_search => recurse("inf"),
+       classes => if_repaired("newpkg_app1");
+
+</pre>
+
+   <p>When the agent copies a relevant software package from the software
+server (<code>sys.flavour</code> is the local operating system), the class
+<code>newpkg_app1</code> will get defined. This class can act as a trigger
+to stop the application, update it, and start it again.
+
+<div class="node">
+<a name="Stopping-and-restarting-an-application-for-update"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Adapting-to-Windows">Adapting to Windows</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Distributing-software-packages-to-client-hosts">Distributing software packages to client hosts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Integrated-software-installation">Integrated software installation</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Stopping and restarting an application for update</h4>
+
+<p>On some operating systems, software cannot be updated while it is running. 
+CFEngine can promise to enure that a program is stopped before update:
+
+<pre class="verbatim">processes:
+
+ newpkg_app1::
+
+  "app1" signals => { "term", "kill" };
+
+</pre>
+
+   <p>CFEngine <i>normal ordering</i>, ensures that <code>processes</code>
+promises are always run prior to <code>packages</code> promises, so the
+application will be stopped before updated. Next we promise the
+version of the software we want to install. In this case, any
+version greater than 1.0.0.
+
+<pre class="verbatim">packages:
+
+ newpkg_app1::
+
+  "app1"
+
+    package_policy           => "update",
+    package_select           => ">=",
+    package_architectures    => { "i586" },
+    package_version          => "1.0.0",
+    package_method           => rpm_version("/software_repo"),
+    classes                  => if_else("app1_update", "app1_noupdate");
+</pre>
+
+   <p>By promising carefully what package and version you want, using
+<code>package_policy</code>, <code>package_select</code>, and
+<code>package_version</code>, CFEngine can keep this promise by updating to
+the latest version of the package available in the directory
+repository <samp><span class="file">/software_repo</span></samp>.  If the available versions are all
+`less than' than "1.0.0", an update will not take place. The
+<code>package_version</code> specification should match the versioning
+format of the software, whatever it is, e.g. you would write something
+like "1.00.00.0" if two digits were used in the two middle version
+number positions.
+
+   <pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+CFEngine automatically adapts its versioning
+to the conventions used by individual package schemas. 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+
+To summarize, in order for CFEngine to be able to match installed packages with the
+ones in the directory repository, the same naming convention must be
+applied. That is, the package name, version and architecture must have
+the same format in the list of installed packages as the file names of
+available packages.
+
+   <p>From the promise above, we see that CFEngine will interpret
+<code>app1</code> as the name, <code>1.0.0</code> as the version and <code>i586</code>
+as the architecture of the package. Using this while looking at the
+<code>package_name_convention</code> in the rpm package method, we see that
+CFEngine will look for packages named as <code>app1-X.Y.Z-i586.rpm</code>,
+with X, Y, Z producing the largest version available in the directory
+repository. If an available version is larger than the one installed,
+an update will take place &mdash; the update command is run.
+
+   <p>Finally, we set classes from the software update in case we want to
+act differently depending on the outcome.
+
+   <p>Replacing the policy &lsquo;<samp><span class="samp">update</span></samp>&rsquo; with &lsquo;<samp><span class="samp">add</span></samp>&rsquo; is all that is
+required to install the package (once) instead of updating. Using policy
+&lsquo;<samp><span class="samp">add</span></samp>&rsquo; will do nothing if the package is already installed, but
+installs the largest version available if it is not. Use
+<code>package_select =&gt; "=="</code> to install the exact version instead of
+the largest.
+
+<div class="node">
+<a name="Adapting-to-Windows"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Notes-on-Windows-systems">Notes on Windows systems</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Stopping-and-restarting-an-application-for-update">Stopping and restarting an application for update</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Integrated-software-installation">Integrated software installation</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Adapting to Windows</h4>
+
+<pre class="sp">
+
+</pre>
+
+To adapt our example to Windows, we change the path to the local
+software repository from <samp><span class="file">/software_repo</span></samp> to <samp><span class="file">c:\software_repo</span></samp>, to
+support the Windows path format. Other than that, all we have to
+change is the <code>package_method</code>, yielding the following.
+
+<pre class="verbatim">
+    package_method           => msi_version("c:\software_repo"),
+
+</pre>
+
+   <p>Refer to the <code>msi_version</code> body in the standard library.
+
+<div class="node">
+<a name="Notes-on-Windows-systems"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Adapting-to-Windows">Adapting to Windows</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Integrated-software-installation">Integrated software installation</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Notes on Windows systems</h4>
+
+<p>CFEngine implements Windows packaging using the MSI subsystem,
+internally querying the Windows Management Interface for information. However,
+not all Windows systems have the reqired information.
+
+   <p>CFEngine relies on the name (lower-cased with spaces replaced by
+hyphen) and version fields found inside the msi packages to look for
+upgrades in the package repository.
+
+   <p>Problems can arise when the format of these fields differ from their
+format in the file names. For example, a package file name may be
+<code>7zip-4.65-x86_64.msi</code>, while the product name in the msi is
+given as <code>7-Zip 4.65 (x64 edition)</code>, and the version is
+<code>4.65.00.0</code>.
+
+   <p>For the formats to match, we can change the product name to
+<code>7zip</code> and the version to <code>4.65</code> in the msi-package. Free
+tools such as <code>InstEd</code> can both view and change the product name
+and version (Tables-&gt;Property-&gt;ProductName and ProductVersion).
+
+<div class="node">
+<a name="Customizing-applications"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Starting-and-stopping-software">Starting and stopping software</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Integrated-software-installation">Integrated software installation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Customizing applications</h3>
+
+<pre class="sp">
+
+</pre>
+By definition, we cannot explain how to customize software for all
+cases. For Unix-like systems however, software customization is
+usually a matter of editing a configuration text file. CFEngine can
+edit files, for instance, to add a configuration line to a file, you
+might so something like this:
+
+<pre class="verbatim">bundle agent my_application_customize
+{
+files:
+
+  "$(prefix)/config.cf" 
+
+        comment => "Set the permissions and add a line...",
+      perms     => mo("0600","root"),
+      edit_line => append_if_no_line("My custom setting...");
+}
+
+</pre>
+To set a number of variables inside a file, you might do something like this:
+<pre class="verbatim">bundle agent my_application_customize
+{
+vars:
+
+  # want to set these values by the names of their array keys
+
+  "rhs[serverhost]" string => "123.456.789.123";
+  "rhs[portnumber]" string => "1234";
+  "rhs[admin]"      string => "admin@example.org";
+
+files:
+
+  "$(prefix)/config.cf"
+
+       comment => "Add new variables or set existing ones",
+     edit_line => set_variable_values("setvars.rhs");
+
+}
+
+</pre>
+You can also create file templates with customizable variables using
+the <code>expand_template</code> method from the standard library.
+
+<div class="node">
+<a name="Starting-and-stopping-software"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Auditing-software-applications">Auditing software applications</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Customizing-applications">Customizing applications</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Starting and stopping software</h3>
+
+<p>CFEngine is promise or compliance oriented. You promise whether software will be
+running or not running at different times and locations by making
+<code>processes</code> or <code>services</code> promises.
+
+   <p>To start a service, you might do something like this:
+
+<pre class="verbatim">processes:
+
+   "myprocess"  restart_class => "start_me";
+
+commands:
+
+  start_me::
+
+    "/path/to/software"
+
+         # ... many security options, etc
+
+</pre>
+or using services
+<pre class="verbatim">services:
+
+ windows::
+
+  "Dhcp"
+    service_policy => "start",
+    service_dependencies => { "Alerter", "W32Time" },
+    service_method => winmethod;
+
+</pre>
+To stop a service, you take one of these approaches:
+
+<pre class="verbatim">processes:
+
+   "badprocess"  
+      signals => { "term", "kill" };
+
+   "snmp" 
+      process_stop => "/etc/init.d/snmp stop";
+
+</pre>
+
+<div class="node">
+<a name="Auditing-software-applications"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Starting-and-stopping-software">Starting and stopping software</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Auditing software applications</h3>
+
+<pre class="sp">
+
+</pre>
+Commercial Editions of CFEngine generate reports about installed
+software, showing package names and versions that are installed. 
+There is a huge variety in the functionality offered by different
+package systems. The most sophisticated package managers are those
+provided by OpenSuSE Linux and RedHat. These know the difference
+between installation packages and software updates and can keep
+track of installed software transparently. Most package systems
+have fewer functions.
+
+   <p>CFEngine tries to make the best of each package system to collect
+information about the state of software. In commercial editions
+you have access to reports on the software installed on each system
+in the network, to the extent permitted by the software subsystems
+on those hosts.
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Application Management</a>
+<ul>
+<li><a href="#What-is-Application-Management_003f">What is Application Management?</a>
+<li><a href="#How-can-CFEngine-help_003f">How can CFEngine help?</a>
+<li><a href="#Package-management">Package management</a>
+<li><a href="#Enterprise-Software-Reporting">Enterprise Software Reporting</a>
+<li><a href="#Integrated-software-installation">Integrated software installation</a>
+<ul>
+<li><a href="#Distributing-software-packages-to-client-hosts">Distributing software packages to client hosts</a>
+<li><a href="#Stopping-and-restarting-an-application-for-update">Stopping and restarting an application for update</a>
+<li><a href="#Adapting-to-Windows">Adapting to Windows</a>
+<li><a href="#Notes-on-Windows-systems">Notes on Windows systems</a>
+</li></ul>
+<li><a href="#Customizing-applications">Customizing applications</a>
+<li><a href="#Starting-and-stopping-software">Starting and stopping software</a>
+<li><a href="#Auditing-software-applications">Auditing software applications</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

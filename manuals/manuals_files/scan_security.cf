@@ -1,0 +1,132 @@
+
+bundle knowledge st_security
+
+{
+topics:
+
+"st-security";
+Communication_Security::
+    "Tamperproof data and distributed monitoring" ;
+CFEngine_and_Firewalls::
+    "Pulling through a wormhole" ;
+CFEngine_and_Firewalls::
+    "Policy Mirror in the DMZ" ;
+CFEngine_and_Firewalls::
+    "CFEngine trust model" ;
+Communication_Security::
+    "CFEngine and Firewalls" ;
+Communication_Security::
+    "Security FAQ" ;
+Communication_Security::
+    "Authentication" ;
+Communication_Security::
+    "Remote communication" ;
+Communication_Security::
+    "Encryption algorithms" ;
+Communication_Security::
+    "The connection sequence" ;
+Communication_Security::
+    "TCP wrappers" ;
+Communication_Security::
+    "Communication Security" ;
+Security_Principles::
+    "Communications" ;
+Security_Principles::
+    "The principles of CFEngine security" ;
+Security_Principles::
+    "What is security?" ;
+Security_Principles::
+    "Security Principles" ;
+Architecture_Principles::
+    "Distributed execution and federation" ;
+Architecture_Principles::
+    "Robustness to failure" ;
+Architecture_Principles::
+    "Policy information flow" ;
+Architecture_Principles::
+    "Single point of coordination" ;
+Architecture_Principles::
+    "Architecture Principles" ;
+Special_Topics_Guide::
+    "Security"  association => a("discussed in","Security","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-security.html"
+  represents => { "Architecture and Security" };
+Security::
+ "/docs/st-security.html#Top"
+  represents => { "Text section" };
+Architecture_Principles::
+ "/docs/st-security.html#Architecture-Principles"
+  represents => { "manual chapter" };
+Single_point_of_coordination::
+ "/docs/st-security.html#Single-point-of-coordination"
+  represents => { "manual section Single point of coordination" };
+Policy_information_flow::
+ "/docs/st-security.html#Policy-information-flow"
+  represents => { "manual section Policy information flow" };
+Robustness_to_failure::
+ "/docs/st-security.html#Robustness-to-failure"
+  represents => { "manual section Robustness to failure" };
+Distributed_execution_and_federation::
+ "/docs/st-security.html#Distributed-execution-and-federation"
+  represents => { "manual section Distributed execution and federation" };
+Security_Principles::
+ "/docs/st-security.html#Security-Principles"
+  represents => { "manual chapter" };
+What_is_security_::
+ "/docs/st-security.html#What-is-security_003f"
+  represents => { "manual section What is security?" };
+The_principles_of_CFEngine_security::
+ "/docs/st-security.html#The-principles-of-CFEngine-security"
+  represents => { "manual section The principles of CFEngine security" };
+Communications::
+ "/docs/st-security.html#Communications"
+  represents => { "manual section Communications" };
+Communication_Security::
+ "/docs/st-security.html#Communication-Security"
+  represents => { "manual chapter" };
+TCP_wrappers::
+ "/docs/st-security.html#TCP-wrappers"
+  represents => { "manual section TCP wrappers" };
+The_connection_sequence::
+ "/docs/st-security.html#The-connection-sequence"
+  represents => { "manual section The connection sequence" };
+Encryption_algorithms::
+ "/docs/st-security.html#Encyption-algorithms"
+  represents => { "manual section Encryption algorithms" };
+Remote_communication::
+ "/docs/st-security.html#Remote-communication"
+  represents => { "manual section Remote communication" };
+Authentication::
+ "/docs/st-security.html#Authentication"
+  represents => { "manual section Authentication" };
+Security_FAQ::
+ "/docs/st-security.html#Security-FAQ"
+  represents => { "manual section Security FAQ" };
+CFEngine_and_Firewalls::
+ "/docs/st-security.html#CFEngine-and-Firewalls"
+  represents => { "manual section CFEngine and Firewalls" };
+CFEngine_trust_model::
+ "/docs/st-security.html#CFEngine-trust-model"
+  represents => { "manual subsection" };
+Policy_Mirror_in_the_DMZ::
+ "/docs/st-security.html#Policy-Mirror-in-the-DMZ"
+  represents => { "manual subsection" };
+Pulling_through_a_wormhole::
+ "/docs/st-security.html#Pulling-through-a-wormhole"
+  represents => { "manual subsection" };
+Pulling_through_a_wormhole::
+ "/docs/st-security.html#Pulling-through-a-wormhole"
+  represents => { "code example" };
+Pulling_through_a_wormhole::
+ "/docs/st-security.html#Pulling-through-a-wormhole"
+  represents => { "code example" };
+Tamperproof_data_and_distributed_monitoring::
+ "/docs/st-security.html#Tamperproof-data-and-distributed-monitoring"
+  represents => { "manual section Tamperproof data and distributed monitoring" };
+}
+

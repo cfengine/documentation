@@ -1,0 +1,72 @@
+
+bundle knowledge SpecialTopic_DevOps
+
+{
+topics:
+
+"SpecialTopic_DevOps";
+Special_Topics_Guide::
+    "Cloud computing is a rehearsal"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "Using CFEngine to integrate software components"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "Expressing subroutines in CFEngine"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "Expressing loops in CFEngine"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "Expressing conditionals in CFEngine"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "Expressing actions or tasks in CFEngine"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "Getting used to declarative expression"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "What role does CFEngine play in DevOps?"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "How do we make controlled change faster?"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "Should Web and IT management be closely related?"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "Why is DevOps happening now?"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "What is DevOps?"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+Special_Topics_Guide::
+    "Cfengine for Devops"  association => a("discusses","CFEngine for `DevOps'","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_DevOps.html"
+  represents => { "Official CFEngine document"},  about_topics => { "cfengine for `devops'" };
+ "/knowledge/docs/SpecialTopic_DevOps.html"
+  represents => { "Special Topics Guide"},  about_topics => { "cfengine for `devops'" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#Top"
+  represents => { "Text section" }, about_topics => { "cfengine for devops" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#What-is-DevOps_003f"
+  represents => { "Text section" }, about_topics => { "what is devops?" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#Why-is-DevOps-happening-now_003f"
+  represents => { "Text section" }, about_topics => { "why is devops happening now?" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#Should-Web-and-IT-management-be-closely-related_003f"
+  represents => { "Text section" }, about_topics => { "should web and it management be closely related?" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#How-do-we-make-controlled-change-faster_003f"
+  represents => { "Text section" }, about_topics => { "how do we make controlled change faster?" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#What-role-does-CFEngine-play-in-DevOps_003f"
+  represents => { "Text section" }, about_topics => { "what role does cfengine play in devops?" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#Getting-used-to-declarative-expression"
+  represents => { "Text section" }, about_topics => { "getting used to declarative expression" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#Expressing-actions-or-tasks-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "expressing actions or tasks in cfengine" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#Expressing-conditionals-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "expressing conditionals in cfengine" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#Expressing-loops-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "expressing loops in cfengine" };
+examples:: "/knowledge/docs/SpecialTopic_DevOps.html#Expressing-loops-in-CFEngine"
+ about_topics => { "Expressing loops in CFEngine" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#Expressing-subroutines-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "expressing subroutines in cfengine" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#Using-CFEngine-to-integrate-software-components"
+  represents => { "Text section" }, about_topics => { "using cfengine to integrate software components" };
+ "/knowledge/docs/SpecialTopic_DevOps.html#Cloud-computing-is-a-rehearsal"
+  represents => { "Text section" }, about_topics => { "cloud computing is a rehearsal" };
+}
+

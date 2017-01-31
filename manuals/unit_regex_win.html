@@ -1,0 +1,32 @@
+ <div id="wholebody"><div id="pagebody"><div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div><div id="content">
+<pre>
+<h1>Cfengine 3 example unit_regex_win.html</h1>
+######################################################################
+# Using path regular expressions on Windows (always forward slash)
+######################################################################
+
+body common control
+{
+bundlesequence => { "test" };
+}
+
+########################################################
+
+bundle agent test
+{
+files:
+  "c:/test/.*.xml"
+  edit_line => add_information();
+}
+
+########################################################
+
+bundle edit_line add_information()
+{
+insert_lines:
+  "a line",
+   comment => "adding line";
+}
+
+
+</div><div class="rbottom"><div class="r4"></div><div class="r3"></div><div class="r2"></div><div class="r1"></div></div></div></div></div>

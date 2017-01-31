@@ -1,0 +1,47 @@
+
+bundle knowledge st_cdp
+
+{
+topics:
+
+"st-cdp";
+Content_Driven_Policies::
+    "Can I make my own Content-Diven Policies?" ;
+Content_Driven_Policies::
+    "How do Content-Driven Policies work in detail?" ;
+Content_Driven_Policies::
+    "Why should I use Content-Driven Policies?" ;
+Content_Driven_Policies::
+    "What is a Content-Driven Policy?" ;
+Special_Topics_Guide::
+    "Content-Driven Policies"  association => a("discussed in","Content-Driven Policies","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-cdp.html"
+  represents => { "Content-Driven Policies" };
+Content_Driven_Policies::
+ "/docs/st-cdp.html#Top"
+  represents => { "Text section" };
+What_is_a_Content_Driven_Policy_::
+ "/docs/st-cdp.html#What-is-a-Content_002dDriven-Policy_003f"
+  represents => { "Text section" };
+What_is_a_Content_Driven_Policy_::
+ "/docs/st-cdp.html#What-is-a-Content_002dDriven-Policy_003f"
+  represents => { "code example" };
+Why_should_I_use_Content_Driven_Policies_::
+ "/docs/st-cdp.html#Why-should-I-use-Content_002dDriven-Policies_003f"
+  represents => { "Text section" };
+Why_should_I_use_Content_Driven_Policies_::
+ "/docs/st-cdp.html#Why-should-I-use-Content_002dDriven-Policies_003f"
+  represents => { "code example" };
+How_do_Content_Driven_Policies_work_in_detail_::
+ "/docs/st-cdp.html#How-do-Content_002dDriven-Policies-work-in-detail_003f"
+  represents => { "Text section" };
+Can_I_make_my_own_Content_Diven_Policies_::
+ "/docs/st-cdp.html#Can-I-make-my-own-Content_002dDiven-Policies_003f"
+  represents => { "Text section" };
+}
+

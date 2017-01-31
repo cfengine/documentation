@@ -1,0 +1,33 @@
+
+bundle knowledge SpecialTopic_Teamwork
+
+{
+topics:
+
+"SpecialTopic_Teamwork";
+Special_Topics_Guide::
+    "Delegating roles in a collaboration"  association => a("discusses","Teamwork","is discussed in");
+Special_Topics_Guide::
+    "Creative roles"  association => a("discusses","Teamwork","is discussed in");
+Special_Topics_Guide::
+    "What is team-work?"  association => a("discusses","Teamwork","is discussed in");
+Special_Topics_Guide::
+    "Teams"  association => a("discusses","Teamwork","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Teamwork.html"
+  represents => { "Official CFEngine document"},  about_topics => { "teamwork" };
+ "/knowledge/docs/SpecialTopic_Teamwork.html"
+  represents => { "Special Topics Guide"},  about_topics => { "teamwork" };
+ "/knowledge/docs/SpecialTopic_Teamwork.html#Top"
+  represents => { "Text section" }, about_topics => { "teams" };
+ "/knowledge/docs/SpecialTopic_Teamwork.html#What-is-team_002dwork_003f"
+  represents => { "Text section" }, about_topics => { "what is team-work?" };
+ "/knowledge/docs/SpecialTopic_Teamwork.html#Creative-roles"
+  represents => { "Text section" }, about_topics => { "creative roles" };
+ "/knowledge/docs/SpecialTopic_Teamwork.html#Delegating-roles-in-a-collaboration"
+  represents => { "Text section" }, about_topics => { "delegating roles in a collaboration" };
+}
+

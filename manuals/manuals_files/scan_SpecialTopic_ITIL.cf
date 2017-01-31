@@ -1,0 +1,281 @@
+
+bundle knowledge SpecialTopic_ITIL
+
+{
+topics:
+
+"SpecialTopic_ITIL";
+Special_Topics_Guide::
+    "Warning"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Service Management"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Service Level Agreement"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Service desk"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Role"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Restoration"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Resilience"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Abandon Autonomy?"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Request for Change"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Release, Request for Change, Repair, Summary"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Repair"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Remediation"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Recovery"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Record"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Reactive Monitoring"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Promise, Reactive Monitoring, Problem, Summary"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Problem"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Proactive Monitoring, Problem, Policy, Summary"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Policy"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Passive Monitoring"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Monitoring"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Incident"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Failure"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Exception, Failure, Event, Summary"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Event"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Error"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Emergency Change"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Document"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Configuration Management Database"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Configuration Item"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Configuration"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Chronological Analysis"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Change record"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Capability"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Benchmark"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Baseline"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Audit"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Alert"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Availability"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Active Monitoring"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "ITIL and CFEngine Summary"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "What is maintenance?"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "How can CFEngine or promises help an enterprise"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Using CFEngine to implement ITIL objectives"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Service Level Management"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Incident and problem management"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Release management"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Change management vs convergence"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Change management in the enterprise"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "CMDB Asset Management"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "ITIL Configuration Management"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Which ITIL processes apply to CFEngine?"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Tool Support"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Continual Service Improvement"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Service Operation"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Service Design"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Service Strategy"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "ITIL processes"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "CFEngine in ITIL clothes?"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Service orientation and ITIL"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Version 3"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Version 2"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "Basics"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "ITIL history and versions"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "What it ITIL?"  association => a("discusses","ITIL","is discussed in");
+Special_Topics_Guide::
+    "ITIL"  association => a("discusses","ITIL","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_ITIL.html"
+  represents => { "Official CFEngine document"},  about_topics => { "itil" };
+ "/knowledge/docs/SpecialTopic_ITIL.html"
+  represents => { "Special Topics Guide"},  about_topics => { "itil" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Top"
+  represents => { "Text section" }, about_topics => { "itil" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#What-it-ITIL_003f"
+  represents => { "Text section" }, about_topics => { "what it itil?" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#ITIL-history-and-versions"
+  represents => { "Text section" }, about_topics => { "itil history and versions" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Basics"
+  represents => { "Text section" }, about_topics => { "basics" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Version-2"
+  represents => { "Text section" }, about_topics => { "version 2" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Version-3"
+  represents => { "Text section" }, about_topics => { "version 3" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Service-orientation-and-ITIL"
+  represents => { "Text section" }, about_topics => { "service orientation and itil" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#CFEngine-in-ITIL-clothes_003f"
+  represents => { "Text section" }, about_topics => { "cfengine in itil clothes?" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#ITIL-processes"
+  represents => { "Text section" }, about_topics => { "itil processes" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Service-Strategy"
+  represents => { "Text section" }, about_topics => { "service strategy" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Service-Design"
+  represents => { "Text section" }, about_topics => { "service design" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Service-Operation"
+  represents => { "Text section" }, about_topics => { "service operation" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Continual-Service-Improvement"
+  represents => { "Text section" }, about_topics => { "continual service improvement" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Continual-Service-Improvement"
+  represents => { "Text section" }, about_topics => { "tool support" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Which-ITIL-processes-apply-to-CFEngine_003f"
+  represents => { "Text section" }, about_topics => { "which itil processes apply to cfengine?" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#ITIL-Configuration-Management-_0028CM_0029"
+  represents => { "Text section" }, about_topics => { "itil configuration management" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#CMDB-Asset-Management"
+  represents => { "Text section" }, about_topics => { "cmdb asset management" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Change-management-in-the-enterprise"
+  represents => { "Text section" }, about_topics => { "change management in the enterprise" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Change-management-vs-convergence"
+  represents => { "Text section" }, about_topics => { "change management vs convergence" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Release-management"
+  represents => { "Text section" }, about_topics => { "release management" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Incident-and-problem-management"
+  represents => { "Text section" }, about_topics => { "incident and problem management" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Service-Level-Management-_0028SLM_0029"
+  represents => { "Text section" }, about_topics => { "service level management" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Using-CFEngine-to-implement-ITIL-objectives"
+  represents => { "Text section" }, about_topics => { "using cfengine to implement itil objectives" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#How-can-CFEngine-or-promises-help-an-enterprise"
+  represents => { "Text section" }, about_topics => { "how can cfengine or promises help an enterprise" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#What-is-maintenance_003f"
+  represents => { "Text section" }, about_topics => { "what is maintenance?" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#ITIL-and-CFEngine-Summary"
+  represents => { "Text section" }, about_topics => { "itil and cfengine summary" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Active-Monitoring"
+  represents => { "Text section" }, about_topics => { "active monitoring" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Availability"
+  represents => { "Text section" }, about_topics => { "availability" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Alert"
+  represents => { "Text section" }, about_topics => { "alert" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Audit"
+  represents => { "Text section" }, about_topics => { "audit" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Baseline"
+  represents => { "Text section" }, about_topics => { "baseline" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Benchmark"
+  represents => { "Text section" }, about_topics => { "benchmark" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Capability"
+  represents => { "Text section" }, about_topics => { "capability" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Change-record"
+  represents => { "Text section" }, about_topics => { "change record" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Chronological-Analysis"
+  represents => { "Text section" }, about_topics => { "chronological analysis" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Configuration"
+  represents => { "Text section" }, about_topics => { "configuration" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Configuration-Item-_0028CI_0029"
+  represents => { "Text section" }, about_topics => { "configuration item" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Configuration-Management-Database-_0028CMDB_0029"
+  represents => { "Text section" }, about_topics => { "configuration management database" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Document"
+  represents => { "Text section" }, about_topics => { "document" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Emergency-Change"
+  represents => { "Text section" }, about_topics => { "emergency change" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Error"
+  represents => { "Text section" }, about_topics => { "error" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Event"
+  represents => { "Text section" }, about_topics => { "event" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Exception"
+  represents => { "Text section" }, about_topics => { "exception, failure, event, summary" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Failure"
+  represents => { "Text section" }, about_topics => { "failure" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Incident"
+  represents => { "Text section" }, about_topics => { "incident" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Monitoring"
+  represents => { "Text section" }, about_topics => { "monitoring" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Passive-Monitoring"
+  represents => { "Text section" }, about_topics => { "passive monitoring" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Policy"
+  represents => { "Text section" }, about_topics => { "policy" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Proactive-Monitoring"
+  represents => { "Text section" }, about_topics => { "proactive monitoring, problem, policy, summary" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Problem"
+  represents => { "Text section" }, about_topics => { "problem" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Promise"
+  represents => { "Text section" }, about_topics => { "promise, reactive monitoring, problem, summary" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Reactive-Monitoring"
+  represents => { "Text section" }, about_topics => { "reactive monitoring" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Record"
+  represents => { "Text section" }, about_topics => { "record" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Recovery"
+  represents => { "Text section" }, about_topics => { "recovery" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Remediation"
+  represents => { "Text section" }, about_topics => { "remediation" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Repair"
+  represents => { "Text section" }, about_topics => { "repair" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Release"
+  represents => { "Text section" }, about_topics => { "release, request for change, repair, summary" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Request-for-Change"
+  represents => { "Text section" }, about_topics => { "request for change" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Abandon-Autonomy_003f"
+  represents => { "Text section" }, about_topics => { "abandon autonomy?" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Resilience"
+  represents => { "Text section" }, about_topics => { "resilience" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Restoration"
+  represents => { "Text section" }, about_topics => { "restoration" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Role"
+  represents => { "Text section" }, about_topics => { "role" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Service-desk"
+  represents => { "Text section" }, about_topics => { "service desk" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Service-Level-Agreement"
+  represents => { "Text section" }, about_topics => { "service level agreement" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Service-Management"
+  represents => { "Text section" }, about_topics => { "service management" };
+ "/knowledge/docs/SpecialTopic_ITIL.html#Warning"
+  represents => { "Text section" }, about_topics => { "warning" };
+}
+

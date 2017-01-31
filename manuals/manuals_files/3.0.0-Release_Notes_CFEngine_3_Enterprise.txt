@@ -1,0 +1,170 @@
+CFENGINE 3 ENTERPRISE 3.0.0
+RELEASE DATE: December 2012 (this document was last amended on January 24th 2013 (add note on upgrade))
+SCOPE: Official release of CFEngine 3 Enterprise 3.0.0
+
+----------------------------------------------------------------------------
+ TABLE OF CONTENTS:
+ PLATFORMS SUPPORTED
+ COMPATIBILITY MATRIX
+ CHANGE LOG FROM 2.2.3
+ NEW DEFAULT POLICY SCHEMA
+ BUGFIXES SINCE 2.2.3
+ INSTALLATION AND UPGRADE (see separate files 3.0.0-INSTALLATION.TXT and 3.0.0-UPGRADE.TXT)
+ KNOWN ISSUES
+ IMPORTANT NOTICE FOR THIS RELEASE
+----------------------------------------------------------------------------
+
+PLATFORMS SUPPORTED:
+
+CFEngine 3 Enterprise 3.0.0 has been tested and initially released on the following platforms:
+
+Hub:
+NAME		VERSION					ARCHITECTURE		COMMENT
+CentOS		5, 6					x86-64			Use RHEL packages
+Debian 		6 					x86-64
+RHEL 		5, 6					x86-64
+SLES		11					x86-64
+Ubuntu 		10.04, 12.04 				x86-64
+
+Clients:
+NAME:		VERSION					ARCHITECTURE		COMMENT
+CentOS		5, 6 					i686,x86-64		Use RHEL packages
+Debian		6					i686,x86-64
+RHEL 		5, 6	 				i686,x86-64		
+SLES 		11 					i686,x86-64		
+Solaris 	10 					i86pc, sparc 		No libvirt.
+Ubuntu 		10.04, 12.04 				i686,x86-64
+Windows 	Server 2008 				x86,x64			No libvirt, OpenSSL is not FIPS-enabled
+
+The following platforms will be released within a few weeks of the initial wave listed above:
+Clients:
+NAME:		VERSION					ARCHITECTURE		COMMENT
+Debian		5					i686,x86-64		
+RHEL 		4	 				i686,x86-64		
+Solaris 	9 					i86pc, sparc 		No libvirt.
+
+For AIX, BSD, Mac OSX, older Windows, SLES/OpenSUSE, and Ubuntu contact your sales representative for more information. Please also get in touch if your platform is not listed in the above, to explore possibilities.
+
+CFEngine 3 Free Enterprise is only available for Linux Operating Systems (both hub and client).
+
+Community version base: 3.4.1
+
+----------------------------------------------------------------------------
+
+COMPATIBILITY MATRIX: 
+HUB	CLIENT		TESTED		SUPPORTED	COMMENT
+3.0.0	3.0.0		Yes		Yes
+3.0.0	2.2.x		Yes		Yes		
+3.0.0	2.1.x		Yes		Yes		
+3.0.0	2.0.x		No		Yes		Contact your sales representative 
+There have been major changes to default policy since 2.0.x and the upgrade path depends on how the user has modified policy. We recommend a manual upgrade to the newest version. Please inquire your sales representative about Professional Services if you need help with this.
+
+----------------------------------------------------------------------------
+
+CHANGE LOG FROM 2.2.3:
+* Redesign of Mission Portal
+   - New visual appearance
+   - New navigation concepts with shorter paths to different views
+   - Replacement of static room structure with a dynamic apps model. Administrators can configure the available functionality by turning apps on and off. The Knowledge and Policies Apps are disabled by default (changeable in the Mission Portal Settings)
+* New Functionality in Mission Portal
+   - New SQL Reporting App: Build customizable reports through SQL queries. Schedule reports to send by email (sends link to report).
+   - New Policies App (beta) to view current policy (disabled by default, see following item)
+   - Ability to select policy context for host compliance graphs and reports. View host/promise/bundle compliance for ALL, USER or SYSTEM (CFEngine specific) promises.
+   - New Event tracker to follow changes in your system live, for instance during a policy update.
+* New Enterprise API (REST v2). The old REST API can be used in parallel.
+* Support for collecting reports from hosts behind a NAT boundary/inside a DMZ ("call-collect")
+* Ability to delete multiple hosts at the same time.
+* Pagination of user list, search users.
+* Internal user database now stores passwords in salted MD5 (previously plain MD5; see IMPORTANT NOTICE below).
+* Set a system variable by which to identify hosts in the Mission Portal (previously only IP address could be used).
+* Deleting a host from the Mission Portal or with the Enterprise API now also removes the host's public key from the database.
+* System variables are collected by hub in every 5. minutes (previously every 6 hours)
+* Removed the policy editor from the Mission Portal. Use the Policy App instead to get an overview of the current policy.
+* License verification is made more robust by not relying on the last-seen database anymore. This means you do not need to bootstrap a client to verify the license. See the cf-key --install-license option.
+* Removed commercial_customer class, as it was unused in internal policies. Please use enterprise_edition instead if you used this in your policies.
+* Created a variable update_policy.mongodb_dir, for cases where MongoDB should not run out of /var/cfengine/state (could grow to tens of gigabytes).
+* New classes enterprise: enterprise_X, enterprise_X_Y, enterprise_X_Y_Z on CFEngine Enterprise, to reflect the version running. 
+* New variable sys.enterprise_version that holds the CFEngine Enterprise version. This complements the Nova classes and the sys.nova_version variable, which will eventually be deprecated.
+* Improvements to the hub maintenance process (less resource intensive and configurable).
+* New option (-m) added for cf-hub for manually triggered Enterprise database maintenance. Type "cf-hub --help" for more information.
+* cf-hub -m process is now launched every 6 hrs (by default) from policy, not hard coded (see /var/cfengine/CFE_hub_specific.cf)
+* 32-bit hub installations no longer supported
+* Separate hub and client packages: now use 2 hub specific packages and 1 client specific package for installation (previously only cfengine-nova-expansion-<version number> was hub specific). These are clearly separated in different download sub-directories.
+* Redesign of default policy schema, see separate section below.
+* Changed verbose output of the agent (prefixed with enterprise> instead of nova>, compliance output adapted to include USER and SYSTEM policy context). See IMPORTANT NOTICE FOR THIS RELEASE below.
+* promise_summary.log adapted to include USER and SYSTEM policy context.
+* Change in policy language behavior (see IMPORTANT NOTICE FOR THIS RELEASE below).
+
+In addition, we have added an analytics functionality for collecting clicks coordinates, visited pages and software details. This is disabled by default but is possible to activate from the Mission Portal Settings.
+
+----------------------------------------------------------------------------
+
+NEW DEFAULT POLICY SCHEMA:
+* promises.cf now only contains the body common control (with the bundle sequence and input file list) and an example agent bundle. All other parts of policy have moved into separate subdirectories (see below).
+* New directory structure (under /var/cfengine/masterfiles/ and /var/cfengine/inputs/):
+   - cfe_internal/: CFEngine specific policies that ensure system integrity
+   - failsafe/: Houses the main failsafe that will be run before each execution of promises.cf (to check for updates in policy and binaries).
+   - controls/: Contains the control bodies for all CFEngine agents
+   - services/: Example policy for file watch
+* failsafe.cf in /var/cfengine/inputs/: Represents a hard coded backup similar to /var/cfengine/inputs/failsafe/failsafe.cf. NEVER CHANGE THIS FILE, it is there to avoid that policy updates will not be fetched if the user breaks the /var/cfengine/inputs/failsafe/failsafe.cf policy.
+* CFEngine will not overwrite any existing policy in /var/cfengine/masterfiles/. You will have to migrate manually to the new schema if you already have a policy in place (or use the provided upgrade script, see 3.0.0-INSTALLATION.TXT).
+
+----------------------------------------------------------------------------
+
+BUGFIXES SINCE 2.2.3:
+* Fix local tcdb storage of variables that were truncated in reporting due to size (> 1024 bytes).
+* Fix incorrect structure of variable report causing apache problems when using REST API.
+* Fix listing of users from external authentication (mismatch in user attributes (empty field was populated with data from next user))
+* Fix/remove limit in number of entries listed in user list (previously 100 users by default).
+* Fix blank listing of externally authenticated users if the database contained more than 1000 entries.
+* Fix file change report containing warning message as filename for new/deleted files
+* Fix truncation of downloaded reports
+* Fix software installed and patches available reports for Ubuntu (now includes CFEngine packages)
+* Fix software reports showing "(never)" in the "Last seen" column
+* Fix "blue hosts" list being empty for clients that don't have class keys
+
+For fixes to CFEngine Community see separate change log (/var/cfengine/share/doc/ChangeLog).
+
+----------------------------------------------------------------------------
+
+INSTALLATION AND UPGRADE:
+See separate 3.0.0-INSTALLATION.TXT and 3.0.0-UPGRADE.TXT for instructions.
+
+----------------------------------------------------------------------------
+
+KNOWN ISSUES:
+* While using CFEngine's packages promises with package managers (such as: yum/apt etc.), please make sure that valid package names are supplied. Currently there is a problem with evaluating the return codes of the package managers when the package name doesn't exist in the repository. This will eventually result in cf-hub not collecting software reports even if some valid packages are installed/removed/modified.
+* Policy context selection will not work unless the policy is updated to the latest schema (using the "cfe_internal_" prefix for bundle names and promise handles).
+* If you change the hub maintenance process interval to higher than the default 6 hours, the time series graph in the Hosts app may have blanks or other display problems.
+* Reset of user password will not send new password if email configuration is wrong. Password will be reset, but user cannot access new password and hence will not be able to log in.
+* If a promiser is split across multiple lines, only the first line is recorded by the hub
+* On Solaris, XML editing is limited to files in ASCII and UTF8 encoding
+* RPM package post-install script does not re-start CFEngine agents after manual upgrade (not an issue with CFEngine's automatic upgrade)
+* Package management will not work on Windows if "WMI Installer Provider" is not installed
+* CFEngine auto-upgrade does not work out of the box on Windows clients (You need to modify both policy and package file name. Commercial customers can contact support for more information.
+* RedHat 6 Users: RedHat has split their repositories into several repositories. Some of our dependencies used to be in the main repository but have been moved to the Server Optional repository. Please make sure you have the necessary dependencies available in your repository of choice before installing CFEngine Enterprise 3.0.
+* License information displayed in the Mission Portal can be inaccurate for CFEngine Enterprise 25 Free (i.e. when no license file exists). License enforcement (maximum 25 managed nodes) still remains accurate.
+
+* Existing customers can contact CFEngine through the usual channels (support/sales contact). Help is also available on our Google Groups forums:
+ - Free 25: https://groups.google.com/forum/?hl=en&fromgroups#!forum/cfengine-enterprise-free-25
+ - help-cfengine: https://groups.google.com/forum/?hl=en&fromgroups#!forum/help-cfengine
+
+----------------------------------------------------------------------------
+
+IMPORTANT NOTICE FOR THIS RELEASE:
+* Users passwords in the internal database are now stored in salted MD5 (previously plain MD5). Existing users will be wiped out and replaced by the default admin user upon upgrade from Enterprise 2.2.x. If you were using LDAP/AD authentication you would have to re-enter the LDAP/AD configuration in the Mission Portal. See also separate 3.0.0-UPGRADE.TXT document.
+
+* CFEngine has activated the "depends_on" attribute in policy language. This was previously only used for documentation purposes, now constitutes a way to implicitly order a promise that depends on another. Please update with care if you have the depends_on attribute active in your policy! For more in formation, see http://cfengine.com/manuals/cf3-Reference#depends_005fon-in-_002a
+
+* CFEngine has changed the behavior of the command line interface verbose output from "nova> [MESSAGE]" to "enterprise> [MESSAGE]" in this release. In addition, the verbose output of promise compliance has changed format to accomodate the new policy context feature. 
+
+Old style verbose output:
+nova> Outcome of version Promises.cf 2.2.3 (agent-0): Promises observed to be kept 100%, Promises repaired 0%, Promises not repaired 0%
+
+New style verbose output:
+enterprise> Outcome of version Promises.cf 3.0.0 (agent-0): Promises observed - Total promise compliance: 100% kept, 0% repaired, 0% not kept (out of 6418 events). User promise compliance: 100% kept, 0% repaired, 0% not kept (out of 29 events). CFEngine system compliance: 100% kept, 0% repaired, 0% not kept (out of 6389 events).
+
+The promise_summary.log file has undergone similar format changes to include results for the different policy contexts.
+
+Please make necessary preparations for this as to not break functionality that depends on these messages/log (email filters, post-processing scripts, etc.).
+

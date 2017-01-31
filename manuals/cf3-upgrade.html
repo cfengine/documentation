@@ -1,0 +1,2757 @@
+<html lang="en">
+<head>
+<title>Upgrading from CFEngine 2 to 3</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Upgrading from CFEngine 2 to 3">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Upgrading from CFEngine 2 to 3</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#General-remarks-and-expectations">General remarks and expectations</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine-Best-Practices</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<ul class="menu">
+<li><a accesskey="1" href="#General-remarks-and-expectations">General remarks and expectations</a>
+<!-- * Automated translation with cfconvert:: -->
+<li><a accesskey="2" href="#Conversion-Strategy">Conversion Strategy</a>
+<li><a accesskey="3" href="#Translation-Codebook">Translation Codebook</a>
+</ul>
+
+<!-- @node General remarks and expectations, Automated translation with cfconvert, Top, Top -->
+<div class="node">
+<a name="General-remarks-and-expectations"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Conversion-Strategy">Conversion Strategy</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 General remarks and expectations</h2>
+
+<p>This document concerns the translation of system configuration
+policies from the legacy CFEngine 2 language to the new CFEngine 3
+promise language.  CFEngine 3 is a new language that was designed with
+careful research to satisfy the needs of system configuration in a
+<i>convergent</i> fashion.
+
+<ul class="menu">
+<li><a accesskey="1" href="#On-the-translation-of-policies">On the translation of policies</a>
+<li><a accesskey="2" href="#On-best-practices">On best practices</a>
+<li><a accesskey="3" href="#Completely-new-features">Completely new features</a>
+</ul>
+
+<div class="node">
+<a name="On-the-translation-of-policies"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#On-best-practices">On best practices</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#General-remarks-and-expectations">General remarks and expectations</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#General-remarks-and-expectations">General remarks and expectations</a>
+
+</div>
+
+<h3 class="section">1.1 On the translation of policies</h3>
+
+<p>Translating one language directly into another rarely makes sense. 
+Every language has its quirks and idioms that make some formulations
+more natural than others.
+
+   <p>In migrating from CFEngine 2 to CFEngine 3, you will see that the
+novelty is more of a dialect than an unrelated language. The
+underlying parameterization of the promises is the same, and you will
+recognize the main features, even if they are inflected with an
+`accent'.
+
+   <p>This suggests that translation might be easy.  However, we don't want
+you to trivialize this translation, as there are new mechanisms in
+CFEngine 3 that bring new benefits, and this means that simple and
+direct translation can be a poor choice that misses the opportunity
+for improvement.  In this guide the principles for translation are
+simply as follows:
+
+     <ul>
+<li>We make as direct a translation as possible,
+sometimes offering alternatives that better illustrate CFEngine 3 paradigms.
+
+     <li>We use standardized templates from the
+<i>CFEngine Community Open Promise-Body Library</i> to simplify
+the translation. However, readers should understand that
+in every `constraint' expression in CFEngine, of the form,
+<pre class="verbatim">     
+       LHS => RHS
+     
+</pre>
+     the left hand side is always a pre-defined CFEngine word,
+and the right hand side is always a user-defined term. In other words,
+if you don't like the choices we have made, you can make your own
+choices on the right hand side. 
+</ul>
+
+<div class="node">
+<a name="On-best-practices"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Completely-new-features">Completely new features</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#On-the-translation-of-policies">On the translation of policies</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#General-remarks-and-expectations">General remarks and expectations</a>
+
+</div>
+
+<h3 class="section">1.2 On `best practices'</h3>
+
+<p>There are new features in CFEngine 3 that we strongly recommend you
+use. Perhaps the most useful practice is to make use of the standard
+library of template parts for promise bodies and bundles, called te
+<i>CFEngine Community Open Promise-Body Library</i>. This is available
+from the CFEngine website. By standardizing simple template
+names, you will be able to communicate more effectively with others,
+and facilitate knowledge efficiency in your organization.
+
+   <p>Another feature is the ability to annotate or comment promises in a
+way that follows the promise through its lifecycle. This is part of
+the strategy of integrated knowledge management (see the Special
+Topics Guide on this subject).
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+files:
+
+  "/etc/passwd" -> "stakeholder"
+
+    comment => "Verify the integrity of the password file to change",
+    content => detect_all_changes;
+
+</pre>
+</td></tr></table>
+   When a promise has a comment, this comment will be used to mark logs
+entries and error messages, providing context to these events for
+effective knowledge management.
+
+   <p>You can give each promise a name, if you like, to make it easy to refer to
+or search for. We call this the promise `handle'.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+files:
+
+  "/etc/passwd" -> "stakeholder"
+
+    handle  => "passwd_change",
+    comment => "Verify the integrity of the password file to change",
+    content => detect_all_changes;
+
+</pre>
+</td></tr></table>
+   You can use this handle to document relationships between promises. 
+For example, consider this hypothetical promise:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+files:
+
+  "/etc/group" 
+
+    handle  => "group_change",
+    comment => "Add new users to the user groups",
+ depends_on => { "passwd_change", "other_promise" },
+  edit_line => fix_groups;
+
+</pre>
+</td></tr></table>
+   In CFEngine Nova and other commercial editions of the software,
+this documentation is automatically turned into browsable system
+documentation.
+
+<div class="node">
+<a name="Completely-new-features"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#On-best-practices">On best practices</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#General-remarks-and-expectations">General remarks and expectations</a>
+
+</div>
+
+<h3 class="section">1.3 Completely new features</h3>
+
+<p>The CFEngine 3 Community Edition has many new features over CFEngine
+2, and CFEngine Nova and the other commercial editions have many
+features over the Community Edition. You can write promises in the
+Community Edition for any of the commercial features without error &ndash;
+these will just not be functional in the Community Edition. This makes it
+easy to upgrade (or downgrade) freely.
+
+   <p>New features in CFEngine 3 Community Edition include:
+
+     <ul>
+<li>All the components of CFEngine are now configurable and they read
+the same configuration file or files. In other words, you no longer have to
+maintain a separate input file for the server and the agent &ndash; self-contained
+configurations can be made for all parts of the system in one.
+
+     <li>Promises now have containers called <i>promise bundles</i>. There is no analogue
+of promise bundles in CFEngine 2, so you will need to sort through your
+promises and divide them into suitable bundles yourself, making sure to
+give each a sensible name.
+
+     <li>Powerful pattern matching and expression features that simplify the promises
+by allowing a consistent promises to be made from a whole set of objects according to
+a programmed pattern.
+
+     <li>Consistent use of Perl Compatible Regular Expressions for text matching.
+
+     <li>Array and list handling functions allow powerful associative patterns.
+
+     <li>Basic tools for Knowledge Management integrated with the configuration
+technology.
+
+     <li>Generic package management.
+
+     <li>Role based access control for remote activation of special promises.
+
+   </ul>
+
+   <p>New features in CFEngine Nova include:
+
+     <ul>
+<li>Automated Knowledge Management and analysis
+
+     <li>Database management promises.
+
+     <li>LDAP integration.
+
+     <li>Extended and integrated lightweight monitoring capabilities.
+
+     <li>Service and virtualization abstractions.
+
+     <li>Full native Windows support and promise types.
+
+   </ul>
+
+<!-- ################################################################# -->
+<!-- @node Automated translation with cfconvert, Translation Codebook, General remarks and expectations, Top -->
+<!-- @chapter Automated translation with @code{cfconvert} -->
+<div class="node">
+<a name="Conversion-Strategy"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Translation-Codebook">Translation Codebook</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#General-remarks-and-expectations">General remarks and expectations</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Conversion Strategy</h2>
+
+<!-- CFEngine offers a commercial core transformation program, @code{cfconvert}, that performs a reasonable translation of CFEngine 2 code into CFEngine 3 code. The output of this program should work with either the Community Edition or Enterprise level editions of the software. -->
+<!-- The software may be obtained with a one-time closed-source license, that includes maintainence in case of problems. This can be combined with Professional Services from CFEngine if necessary to provide a `best effort' conversion. -->
+<!-- * Automatic Conversion Strategy:: -->
+<ul class="menu">
+<li><a accesskey="1" href="#Converting-by-module">Converting by module</a>
+<li><a accesskey="2" href="#Assembling-a-compilable-file-set">Assembling a compilable file set</a>
+<li><a accesskey="3" href="#Validating-the-conversion">Validating the conversion</a>
+<li><a accesskey="4" href="#Optimizing-the-configuration">Optimizing the configuration</a>
+</ul>
+
+<!-- @node Automatic Conversion Strategy, Converting by module, Automated translation with cfconvert, Automated translation with cfconvert -->
+<!-- @section Automatic Conversion Strategy -->
+<!-- No software can make a complete, `ready to go' translation of a configuration policy, as there are several decisions to be made when converting, as well as knowledge management features to be added. Below we offer recommendations for conversion using the @code{cfconvert} program. -->
+<!-- To begin conversion, we assume that you have a @file{cfagent.conf} master file that possibly includes a number of imported files, and that there are variables and classes defined throughout these. -->
+<!-- @menu -->
+<!-- * How long will it take to convert?:: -->
+<!-- * One chunk at a time:: -->
+<!-- @end menu -->
+<!-- @node How long will it take to convert?, One chunk at a time, Automatic Conversion Strategy, Automatic Conversion Strategy -->
+<!-- @subsection How long will it take to convert? -->
+<!-- If you are focused on the task, and you do not intend to re-organize the configuration dramatically, you can expect to be able to create a compilable version of a CFEngine configuration in the space of an hour. -->
+<!-- Filling in blanks, checking the correctness of the result and documenting it fully will take longer. It could take hours or days, depending on how many lines of code you have to convert. This is a tedious process, but one that will be a one-off burden and will bring great value to your operations. The conversion utility can shave off hundred of hours of manual labour from a hand-coded conversion. -->
+<!-- @node One chunk at a time,  , How long will it take to convert?, Automatic Conversion Strategy -->
+<!-- @subsection One chunk at a time -->
+<!-- You can convert as much or as little of a configuration as you like in one go. The simplest conversion approach is to feed the whole configuration to @code{cfconvert} in one bite. -->
+<!-- @sp 1 -->
+<!-- @verbatim -->
+<!-- host# export CFINPUTS=`pwd` -->
+<!-- host# cfconvert -->
+<!-- @end verbatim -->
+<!-- @sp 1 -->
+<!-- The converted output is written to a sub-directory @file{cf_conversion}. -->
+<!-- @smallexample -->
+<!-- CFEngine Conversion Utility (beta) -->
+<!-- > Matrix from /usr/local/sbin/cfconvert -->
+<!-- > INPUTS from . /CFEngineProjects/Test_Client/CFEngine_2_config/ -->
+<!-- > OUTPUTS at /tmp/cf_conversion_output -->
+<!-- > Commencing pre-scan for common environment -->
+<!-- > Pre-scan complete -->
+<!-- > Scanning for recognizable control settings -->
+<!-- > > convert control setting EmailMaxLines -->
+<!-- > > convert control setting cfinputs_version -->
+<!-- > > convert control setting smtpserver -->
+<!-- > > convert control setting Inform -->
+<!-- > > convert control setting AddInstallables -->
+<!-- > > convert control setting workdir -->
+<!-- > > convert control setting Syslog -->
+<!-- > > convert control setting moduledirectory -->
+<!-- > > convert control setting moduledirectory -->
+<!-- > Start main promise bundle -->
+<!-- > Import files detected -->
+<!-- > delta-Transformation of "cfagent.global.conf" -->
+<!-- > delta-Transformation of "cfagent.freebsd.conf" -->
+<!-- > delta-Transformation of "cfagent.ntp.conf" -->
+<!-- > delta-Transformation of "cfagent.named.conf" -->
+<!-- > delta-Transformation of "cfagent.perfsonarServers.conf" -->
+<!-- > delta-Transformation of "cfagent.perfsonar.conf" -->
+<!-- > delta-Transformation of "cfagent.owmesh.conf" -->
+<!-- > delta-Transformation of "cfagent.owamp.conf" -->
+<!-- > delta-Transformation of "cfagent.perfsonarBUOY.conf" -->
+<!-- > delta-Transformation of "cfagent.syslog.conf" -->
+<!-- > delta-Transformation of "cfagent.bwctl.conf" -->
+<!-- > delta-Transformation of "cfagent.perfsonarBUOY.conf" -->
+<!-- > delta-Transformation of "cfagent.syslog.conf" -->
+<!-- > delta-Transformation of "cfagent.pinger.conf" -->
+<!-- > delta-Transformation of "cfagent.perfsonarBUOY.conf" -->
+<!-- > delta-Transformation of "cfagent.owmesh.conf" -->
+<!-- > delta-Transformation of "cfagent.perfsonarBUOY.conf" -->
+<!-- > delta-Transformation of "cfagent.owmesh.conf" -->
+<!-- > delta-Transformation of "cfagent.LSRegistration.conf" -->
+<!-- > delta-Transformation of "cfagent.freebsd.i386.packages" -->
+<!-- > Converting cfservd.cf -->
+<!-- > Writing promises.cf -->
+<!-- > 11238 lines of core transformed -->
+<!-- @end smallexample -->
+<div class="node">
+<a name="Converting-by-module"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Assembling-a-compilable-file-set">Assembling a compilable file set</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Conversion-Strategy">Conversion Strategy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Conversion-Strategy">Conversion Strategy</a>
+
+</div>
+
+<h3 class="section">2.1 Converting by module</h3>
+
+<p>To optimize the translation, you should think about the modularity of
+your code.  First, look at how your CFEngine 2 configuration is
+modularized and consider how you want your final CFEngine 3
+configuration to be modularized.  CFEngine 3 has `promise bundles' as
+modular entities (like subroutines or methods in other languages). 
+The typical procedure is to take each file and convert it into
+a separate bundle. This makes each module into a separate entity
+in the integrated knowledge management.
+
+   <p>There are potentially many ways to cut the cake, however. You can organize your
+configuration, by operating system, by service, by geography,
+etc.  We recommend that you make separate bundles for each `issue',
+`service' or slice of the system that you are managing. Bundles should
+`bundle together' related promises.
+
+<div class="node">
+<a name="Assembling-a-compilable-file-set"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Validating-the-conversion">Validating the conversion</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Converting-by-module">Converting by module</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Conversion-Strategy">Conversion Strategy</a>
+
+</div>
+
+<h3 class="section">2.2 Assembling a compilable file set</h3>
+
+<p>The next step is to move as quickly as possible to a compilable
+CFEngine 3 configuration. You will be tweaking and perfecting this
+basic file set for ever more, but the sooner you have a syntactically
+valid file, the sooner you will benefit from the CFEngine tools.
+
+     <ol type=1 start=1>
+<li>Start by copying the Community Open Promise Body Library from the www.CFEngine.org
+website into the <samp><span class="file">CFEngine3</span></samp> directory. We will base the converted
+configuration on these industry standard templates.
+
+     <li>Now create the new master configuration file
+<samp><span class="file">CFEngine3/promises.cf</span></samp>. This will replace the
+<samp><span class="file">CFEngine2/cfagent.conf</span></samp> file.
+
+     <p>Suppose you start with a top level <code>cfagent.conf</code> that is organized
+as in the example below,
+
+     <pre class="sp">
+     
+     </pre>
+     
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">     
+     control:
+     
+       # ....
+     
+     import:
+     
+       any::
+     
+         cfagent.global.conf
+     
+       freebsd::
+     
+         cfagent.freebsd.conf
+     
+       123.456.789::
+     
+         cfagent.usa.conf
+     
+       MailServers::
+     
+          cfagent.email.conf
+     
+</pre>
+</td></tr></table>
+
+     <pre class="sp">
+     
+     </pre>
+     This file is typically converted to something of the following form.
+     <pre class="sp">
+     
+     </pre>
+
+     <pre class="verbatim">     
+     body agent control
+     {
+     # this is where control settings will go
+     }
+     
+     body executor control
+     {
+     # this is where control settings will go
+     }
+     
+     #####################################################
+     
+     body common control
+     {
+     # Keep the bundlesequence simple
+     
+     bundlesequence => { "g", "main" };
+     
+     # The equivalent of imports
+     
+     inputs => {
+               "cfagent.freebsd.cf",
+               "cfagent.usa.conf",
+               "cfagent.email.conf",
+               # ...
+               "cfengine_stdlib.cf"
+               };
+     }
+     
+     #####################################################
+     
+     bundle common g
+     {
+     vars:
+     
+       "localroot" string => "/a/b/c";
+       "cfsrvhost" string => "198.129.252.125";
+       "masterBuild" string => "/usr/local/CFEngine_export/RELEASE/build";
+     
+     classes:
+     
+      # ...
+     
+     }
+     
+     #####################################################
+     
+     bundle agent main
+     {
+     methods:
+     
+       any::
+        "any" usebundle => global_stuff;
+     
+       freebsd::
+        "any" usebundle => freebsd_stuff;
+     
+       MailServers::
+        "any" usebundle => mail_stuff;
+     
+     
+     }
+</pre>
+
+     <li>Compare these two control files above. 
+Notice that there is no <code>actionsequence</code> in the CFEngine 3
+configuration. CFEngine 3 can determine an order more automatically
+using a best-effort heuristic algorithm.<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a> All we need
+to do is include the different bundles in the basic order that we want
+and CFEngine will do the rest.
+
+        </ol>
+
+<div class="node">
+<a name="Validating-the-conversion"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Optimizing-the-configuration">Optimizing the configuration</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Assembling-a-compilable-file-set">Assembling a compilable file set</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Conversion-Strategy">Conversion Strategy</a>
+
+</div>
+
+<h3 class="section">2.3 Validating the conversion</h3>
+
+<p>Validating the conversion is potentially an arduous process and
+the work is not over yet. Because CFEngine 3 uses body templates to
+simplify the appearence of promises, and promote the reusability of
+code, the conversion requires us to create these. <!-- The @code{cfconvert} utility attempts to construct best-effort proposal for these. If it is possible to convert using standard body templates, nothing more is needed. However, some translations require custom templates; the conversion utility creates a proposal and leaves the custom body or bundle in-line (in comment form) to allow you to compare the CFEngine 2 and CFEngine 3 versions of the promises more easily. For example: -->
+
+<!-- @verbatim -->
+<!-- "/etc/somefile"            # -> { "optional_promisee_list" }, -->
+<!-- comment => "...", -->
+<!-- # handle => "...", -->
+<!-- # depends_on => { "..." ...}, -->
+<!-- perms => mog("0440","root","wheel"), -->
+<!-- copy_from => remote_cp("$(master)/etc/somefile","$(cfsrvhost)"), -->
+<!-- # More accurate translation requires custom coding.. -->
+<!-- # body copy_from custom_body -->
+<!-- # { -->
+<!-- # servers => { "$(master)/etc/somefile"}, -->
+<!-- # trustkey => "false"; -->
+<!-- # compare => "digest"; -->
+<!-- # } -->
+<!-- action => if_elapsed("60"); -->
+<!-- @end verbatim -->
+<!-- It is up to you to decide whether you want to use the commented proposal. In some cases there is no solution in terms of standard bodies, and you must use the commented proposal or some version of it. In that case, you should copy the commented text to a location outside the current promise bundle, e.g. by pasting it into a separate library file, and there uncomment it. Don't forget to ensure that the file is included in the @code{inputs} lists. -->
+<!-- Any items that the conversion program does not know how to convert will also be commented out for manual attention. -->
+   <p>To complete the conversion, you will need to:
+
+     <ol type=1 start=1>
+<li>Check that the intention of the converted promise matches the orginal. 
+<li>Check that variable references are ok - global ones can be referenced with def.varname (if they are defined in the bundle common def)
+<li>Insert comments
+<li>Simplifying repeated patterns using lists. 
+<li>Run through cf-promises
+        </ol>
+
+<div class="node">
+<a name="Optimizing-the-configuration"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Validating-the-conversion">Validating the conversion</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Conversion-Strategy">Conversion Strategy</a>
+
+</div>
+
+<h3 class="section">2.4 Optimizing the configuration</h3>
+
+<p>You could optimize by not importing files that you don't need on all systems. 
+This reduces memory and processing time. To do this, you can adapt the
+<samp><span class="file">inputs</span></samp> and <samp><span class="file">bundlesequence</span></samp> of the converted file appropriately.
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="Translation-Codebook"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Conversion-Strategy">Conversion Strategy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 Translation Codebook</h2>
+
+<!-- ................................................................. -->
+<ul class="menu">
+<li><a accesskey="1" href="#upgrading-from-CFEngine-2-acl">upgrading from CFEngine 2 acl</a>
+<li><a accesskey="2" href="#upgrading-from-CFEngine-2-admit">upgrading from CFEngine 2 admit</a>
+<li><a accesskey="3" href="#upgrading-from-CFEngine-2-alerts">upgrading from CFEngine 2 alerts</a>
+<li><a accesskey="4" href="#upgrading-from-CFEngine-2-binservers">upgrading from CFEngine 2 binservers</a>
+<li><a accesskey="5" href="#upgrading-from-CFEngine-2-broadcast">upgrading from CFEngine 2 broadcast</a>
+<li><a accesskey="6" href="#upgrading-from-CFEngine-2-control">upgrading from CFEngine 2 control</a>
+<li><a accesskey="7" href="#upgrading-from-CFEngine-2-classes">upgrading from CFEngine 2 classes</a>
+<li><a accesskey="8" href="#upgrading-from-CFEngine-2-copy">upgrading from CFEngine 2 copy</a>
+<li><a accesskey="9" href="#upgrading-from-CFEngine-2-defaultroute">upgrading from CFEngine 2 defaultroute</a>
+<li><a href="#upgrading-from-CFEngine-2-deny">upgrading from CFEngine 2 deny</a>
+<li><a href="#upgrading-from-CFEngine-2-disks">upgrading from CFEngine 2 disks</a>
+<li><a href="#upgrading-from-CFEngine-2-directories">upgrading from CFEngine 2 directories</a>
+<li><a href="#upgrading-from-CFEngine-2-disable">upgrading from CFEngine 2 disable</a>
+<li><a href="#upgrading-from-CFEngine-2-editfiles">upgrading from CFEngine 2 editfiles</a>
+<li><a href="#upgrading-from-CFEngine-2-files">upgrading from CFEngine 2 files</a>
+<li><a href="#upgrading-from-CFEngine-2-filters">upgrading from CFEngine 2 filters</a>
+<li><a href="#upgrading-from-CFEngine-2-groups">upgrading from CFEngine 2 groups</a>
+<li><a href="#upgrading-from-CFEngine-2-homeservers">upgrading from CFEngine 2 homeservers</a>
+<li><a href="#upgrading-from-CFEngine-2-ignore">upgrading from CFEngine 2 ignore</a>
+<li><a href="#upgrading-from-CFEngine-2-import">upgrading from CFEngine 2 import</a>
+<li><a href="#upgrading-from-CFEngine-2-interfaces">upgrading from CFEngine 2 interfaces</a>
+<li><a href="#upgrading-from-CFEngine-2-links">upgrading from CFEngine 2 links</a>
+<li><a href="#upgrading-from-CFEngine-2-mailserver">upgrading from CFEngine 2 mailserver</a>
+<li><a href="#upgrading-from-CFEngine-2-methods">upgrading from CFEngine 2 methods</a>
+<li><a href="#upgrading-from-CFEngine-2-miscmounts">upgrading from CFEngine 2 miscmounts</a>
+<li><a href="#upgrading-from-CFEngine-2-mountables">upgrading from CFEngine 2 mountables</a>
+<li><a href="#upgrading-from-CFEngine-2-processes">upgrading from CFEngine 2 processes</a>
+<li><a href="#upgrading-from-CFEngine-2-packages">upgrading from CFEngine 2 packages</a>
+<li><a href="#upgrading-from-CFEngine-2-rename">upgrading from CFEngine 2 rename</a>
+<li><a href="#upgrading-from-CFEngine-2-required">upgrading from CFEngine 2 required</a>
+<li><a href="#upgrading-from-CFEngine-2-resolve">upgrading from CFEngine 2 resolve</a>
+<li><a href="#upgrading-from-CFEngine-2-scli">upgrading from CFEngine 2 scli</a>
+<li><a href="#upgrading-from-CFEngine-2-shellcommands">upgrading from CFEngine 2 shellcommands</a>
+<li><a href="#upgrading-from-CFEngine-2-strategies">upgrading from CFEngine 2 strategies</a>
+<li><a href="#upgrading-from-CFEngine-2-tidy">upgrading from CFEngine 2 tidy</a>
+<li><a href="#upgrading-from-CFEngine-2-unmount">upgrading from CFEngine 2 unmount </a>
+</ul>
+
+<div class="node">
+<a name="upgrading-from-CFEngine-2-acl"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-admit">upgrading from CFEngine 2 admit</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Translation-Codebook">Translation Codebook</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.1 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">acl</span></samp>&rsquo;</h3>
+
+<p>File Access Control Lists have been completely re-implemented in
+CFEngine 3.  They are only available now in the commercial version of
+CFEngine, but with the benefit a unifying, platform-independent (least
+common denominator) model (in addition to system specific models) for
+Posix, Solaris, Linux, Windows and other ACL models.
+
+<pre class="verbatim">
+files:
+
+   /some/path    
+
+       acl=myacl    
+    action=fixall
+
+########################################
+
+acl:
+
+  { myacl
+
+  fstype:posix
+  method:overwrite
+  mask:*:rwx
+  user:*:rwx
+  group:*:r-x
+  other:*:r
+  user:www:=rwx
+  user:mark:=rwx 
+  default_mask:=rwx
+  default_user:=rwx
+  default_group:=r
+  default_other:=r
+  }
+
+</pre>
+
+   <p>In CFEngine Nova, this would become approximately:
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+bundle agent acls
+
+{
+files:
+
+  "/some/path"
+    
+      acl => myacl;
+}
+
+#########################################
+
+body acl myacl
+
+{
+acl_method => "overwrite";
+acl_type => "posix";
+acl_directory_inherit => "specify";
+
+aces => { 
+        "mask:rwx", 
+        "user:*:rwx", 
+        "group:*:r,-x", 
+        "all:r", 
+        "user:www:=rwx", 
+        "user:mark:=rwx" 
+        };
+
+specify_inherit_aces => 
+       { 
+       "mask:=rwx", 
+       "user:*:=rwx", 
+       "group:*:=r", 
+       "all:=r" 
+       };
+}
+
+</pre>
+</td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-admit"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-alerts">upgrading from CFEngine 2 alerts</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-acl">upgrading from CFEngine 2 acl</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.2 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">admit</span></samp>&rsquo;</h3>
+
+<p>The admit declarations belong to the server configuration.
+<pre class="verbatim">admit:   # or grant:
+
+   /export/nexus/local/gnu/bin/CFEngine *.example.com
+   /export/waldo/local/gnu/bin/CFEngine *.example.com
+
+   /export/nexus/local   *.example.com
+   /export/nexus/ud      dax.example.com
+   /export/nexus/u4      dax.example.com dump-truck.example.com
+   /etc                  *.example.com
+
+</pre>
+
+<p class="noindent">These are translated as <code>access</code> promises:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+bundle server rules
+{
+access:
+
+   "/export/nexus/local/gnu/bin/CFEngine" admit => { ".*.example.com" };
+   "/export/waldo/local/gnu/bin/CFEngine" admit => { ".*.example.com" }
+
+   "/export/nexus/local" admit => { ".*.example.com" };
+   "/export/nexus/ud"    admit => { "dax.example.com"};
+   "/export/nexus/u4"    admit => { "dax.example.com", "dump-truck.example.com" };
+   "/etc"                admit => { ".*.example.com" };
+}
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-alerts"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-binservers">upgrading from CFEngine 2 binservers</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-admit">upgrading from CFEngine 2 admit</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.3 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">alerts</span></samp>&rsquo;</h3>
+
+<p>In CFEngine 2, the term for reporting was `alert'. This seemed too reactionary.
+
+<pre class="verbatim">
+alerts:
+     
+   myclass::
+     
+       "Reminder: say hello every hour" 
+
+            ifelapsed=60
+     
+   nfsd_in_high_dev2::
+     
+       "High NFS server access rate 2dev at $(host)"
+       
+            ShowState(incoming.nfs)
+
+</pre>
+In CFEngine 3, you would write:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+reports:
+     
+   myclass::
+     
+     "Reminder: say hello every hour" 
+
+         action => ifelapsed("60");
+
+   nfsd_in_high_dev2::
+     
+     "High NFS server access rate 2dev at $(host)"
+
+         showstate => { "incoming.nfs" };
+
+</pre>
+</td></tr></table>
+   CFEngine 3 extends the possiblities for messaging considerably. 
+CFEngine Nova generates many standard reports automatically.
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-binservers"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-broadcast">upgrading from CFEngine 2 broadcast</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-alerts">upgrading from CFEngine 2 alerts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.4 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">binservers</span></samp>&rsquo;</h3>
+
+<p>The CFEngine Mount Model has been deprecated in version 3. The introduction of the
+automounter largely superceded the use of this model, and while it is still possible
+to use CFEngine as a static automounter, there is no longer any need for an explicit
+definition of its parts, as simple pattern matching combined with mount promises
+suffices to solve this problem, See <a href="#upgrading-from-CFEngine-2-miscmounts">upgrading from CFEngine 2 miscmounts</a>.
+
+<pre class="verbatim">control:
+
+ site = ( mysite )
+
+ MountPattern = ( /$(site)/$(host) )
+ HomePattern  = ( home? ) 
+
+      actionsequence = 
+         (
+         mountall
+         mountinfo
+         addmounts
+         mountall
+         )
+
+mountables:
+
+  any::
+
+    serv1:/mysite/serv1/home1
+    serv1:/mysite/serv1/home2
+    serv1:/mysite/serv1/local
+    serv3:/mysite/serv3/local1
+    serv3:/mysite/serv3/local2
+    serv4:/mysite/serv4/homeA
+    serv4:/mysite/serv4/homeB
+
+binservers:
+     
+    group1::   
+
+        serv1 serv2
+
+    group2::  
+
+        serv3
+
+</pre>
+In CFEngine 3, you might write this:
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+storage:
+
+ group1::
+
+   "/mysite/serv1/local" mount => nfs("serv1","/mysite/serv1/local");
+
+ group2::
+
+   "/mysite/serv3/local1" mount => nfs("serv3","/mysite/serv3/local1");
+   "/mysite/serv3/local2" mount => nfs("serv3","/mysite/serv3/local2");
+
+   # Or use lists to iterate this
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-broadcast"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-control">upgrading from CFEngine 2 control</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-binservers">upgrading from CFEngine 2 binservers</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.5 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">broadcast</span></samp>&rsquo;</h3>
+
+<p>This is deprecated in CFEngine 3.
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-control"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-classes">upgrading from CFEngine 2 classes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-broadcast">upgrading from CFEngine 2 broadcast</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.6 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">control</span></samp>&rsquo;</h3>
+
+<p>In CFEngine 2, the <code>control</code> part has two muddled functions:
+
+     <ul>
+<li>Setting parameters that control the internal behaviour of CFEngine.
+
+     <p>These are details that adjust the behaviour of promises that are hard-coded
+into CFEngine. Thus, they belong formally in <code>body</code> declarations according to
+the CFEngine 3 promise model.
+
+     <li>Defining user variables (macros).
+
+     <p>These are actual user-defined promises (the promise that a certain name
+will represent a certain value). They are thus represented as <code>vars</code>
+promises in CFEngine 3. 
+</ul>
+   Note that there is no <code>actionsequence</code> in CFEngine 3. It is no longer needed
+and can be ignored.
+
+   <p>The following CFEngine 2 code
+<pre class="verbatim">control: 
+
+   Access     = ( root )        # Only root should run this
+
+   site       = ( iu )
+   domain     = ( iu.hio.no )
+   sysadm     = ( CFEngine@example.com ) 
+   smtpserver = ( smtp@example.com )
+
+   # Welcome to Norway...!
+
+   timezone  = ( MET CET )
+
+   #
+   # Where backup files (for copy/tidy) are kept
+   #
+
+   Repository = ( /var/spool/CFEngine )
+
+   SplayTime = ( 4 )
+
+   OutputPrefix = ( "cf:$(host)" )
+
+   IfElapsed   = ( 15 )  
+   ExpireAfter = ( 240 ) 
+
+
+   SensibleSize  = ( 1000 )
+   SensibleCount = ( 2 )   
+   EditfileSize  = ( 40000 )
+
+   cfbin       = ( /var/cfengine/bin )
+   gnu         = ( "/local/gnu" )
+   ftp         = ( /local/iu/ftp )
+
+</pre>
+translates in CFEngine 3 into several pieces:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim"># Hard-coded promise parameters, common to all parts
+
+body common control
+{
+bundlesequence => { "global_promises" };
+}
+
+# Hard-coded promise parameters for cf-agent
+
+body agent control
+{
+default_repository => "/var/spool/CFEngine";
+ifelapsed => "15";  
+expireafter => "240"; 
+sensiblesize  => "1000"; 
+sensiblecount => "2"; 
+editfilesize  => "40000"; 
+}
+
+# Hard-coded promise parameters for cf-execd
+
+body executor control
+{
+splaytime => "4";
+mailto => "cfengine@example.com"; 
+smtpserver => "smtp.example.com";
+}
+
+# User defined promises common to all parts
+
+bundle common global_promises
+{
+vars:
+
+  "cfbin"       string => "/var/cfengine/bin";
+  "gnu"         string => "/local/gnu";
+  "ftp"         string => "/local/iu/ftp";
+
+} 
+
+</pre>
+</td></tr></table>
+   Note that <code>vars</code> promises that are declared &lsquo;<samp><span class="samp">common</span></samp>&rsquo; are
+seen by all bundles and all agents.  It is also possible to have
+variables in &lsquo;<samp><span class="samp">agent</span></samp>&rsquo; or &lsquo;<samp><span class="samp">server</span></samp>&rsquo; bundles that are seen only by
+those parts of CFEngine.
+
+   <p>Control information from the <samp><span class="file">cfservd.conf</span></samp> file goes naturally into
+a control body:
+
+<pre class="verbatim">control:
+
+  cfrunCommand  = ( "/var/cfengine/bin/cfagent" )
+  AllowConnectionsFrom = ( 127.0.0.1 ::1 )
+  AllowMultipleConnectionsFrom = ( 127.0.0.1 ::1 )
+  TrustKeysFrom  = ( 127.0.0.1 ::1 )
+  AllowUsers = ( root  mark )
+
+</pre>
+becomes:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+body server control
+
+{
+allowconnects         => { "127.0.0.1" , "::1" };
+allowallconnects      => { "127.0.0.1" , "::1" };
+trustkeysfrom         => { "127.0.0.1" , "::1" };
+cfruncommand          => 
+  "$(sys.workdir)/bin/cf-agent -f failsafe.cf &amp;&amp; $(sys.workdir)/bin/cf-agent";
+allowusers            => { "mark", "root" };
+}
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-classes"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-copy">upgrading from CFEngine 2 copy</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-control">upgrading from CFEngine 2 control</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.7 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">classes</span></samp>&rsquo;</h3>
+
+<pre class="verbatim">
+classes:  # same as groups
+
+  Setup_SSH_OK   = ( '/usr/bin/test -f /etc/ssh2/ssh2_config' )
+  science        = ( saga tor odin )
+  notthis        = ( !this )
+  ip_in_range_1  = ( IPRange(129.0.0.1-15) )
+  ip_in_range_2  = ( IPRange(129.0.0.1/24) )
+  compute_nodes  = ( HostRange(cpu-,1-32) )
+  science        = ( +science-allhosts )     
+  physics_theory = ( +@physics-theory-sun4 dirac feynman schwinger )
+  group1         = ( +mynetgroup -specialhost -otherhost )
+  group2         = ( +bignetgroup -smallnetgroup )
+  SpecialTimes   = ( Hr00 Monday Day1 )
+
+</pre>
+These promises translate into CFEngine 3 as:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+classes:
+
+  "Setup_SSH_OK"   expression => fileexists("/etc/ssh2/ssh2_config");
+  "science"                or => { "saga", "tor", "odin" };
+  "notthis"        expression => "!this";
+  "ip_in_range"    expression => iprange("129.0.0.1-15");
+  "ip_in_range"    expression => iprange("129.0.0.1/24");
+  "compute_nodes"  expression => hostrange("cpu-","1-32");
+  "science"        expression => hostinnetgroup("science-allhosts");
+     
+  "physics_theory"         or => { 
+                                 hostinnetgroup("physics-theory-sun4", 
+                                 "dirac", 
+                                 "feynman", 
+                                 "schwinger" 
+                                 };
+
+  "group1"                and => { 
+                                 hostinnetgroup("mynetgroup"), 
+                                 "!specialhost", 
+                                 "!otherhost 
+                                 };
+     
+  "helper"         expression => hostinnetgroup(smallnetgroup");
+  "group2"                and => { hostinnetgroup("bignetgroup"), "!helper" };
+  "SpecialTimes"           or => { "Hr00", "Monday", "Day1" };
+
+</pre>
+</pre>
+</td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-copy"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-defaultroute">upgrading from CFEngine 2 defaultroute</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-classes">upgrading from CFEngine 2 classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.8 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">copy</span></samp>&rsquo;</h3>
+
+<p>Copying of files from one location to another had the following form in CFEngine 2:
+<pre class="smallformat"><pre class="verbatim">
+copy:
+
+    /masterfiles/hosts.deny dest=/etc/hosts.deny mode=644 server=nexus
+
+   !(dax|cube|sigmund)::
+
+    /masterfiles/hosts.allow dest=/etc/hosts.allow mode=644 server=nexus
+
+  128_39_89.!securehosts::
+
+     /masterfiles/ssh_banner_message_89 dest=/etc/ssh2/ssh_banner_message
+                                        mode=644 owner=root group=root
+                                        encrypt=true
+
+</pre>
+</pre>
+   <p>In CFEngine 3, beware that the order of the source and destination have been reversed
+to follow the general principle in CFEngine 3 that the affected object (in this case the
+destination) is always the first object in the promise (the promiser).
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+files:
+
+  "/etc/hosts.deny"
+     copy_from => remote_cp("/masterfiles/hosts.deny","nexus"), 
+         perms => m("644");
+
+  #
+
+  !(dax|cube|sigmund)::
+
+  "/etc/hosts.allow"
+     copy_from => remote_cp("/masterfiles/hosts.allow","nexus"), 
+         perms => m("644");
+
+  #
+
+  128_39_89.!securehosts::
+
+   "/etc/ssh2/ssh_banner_message"
+     copy_from => secure_cp("/masterfiles/ssh_banner_message_89")
+         perms => mog("644","root","root");
+ 
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-defaultroute"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-deny">upgrading from CFEngine 2 deny</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-copy">upgrading from CFEngine 2 copy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.9 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">defaultroute</span></samp>&rsquo;</h3>
+
+<p>This function is deprecated in CFEngine 3. Today it can normally be implemented by editing
+a file.
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-deny"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-disks">upgrading from CFEngine 2 disks</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-defaultroute">upgrading from CFEngine 2 defaultroute</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.10 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">deny</span></samp>&rsquo;</h3>
+
+<pre class="verbatim">
+deny:
+     
+  $(public)/special *.moneyworld.com
+
+</pre>
+becomes:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">access:
+     
+  "$(public)/special" 
+ 
+      deny => { "*.moneyworld.com" };
+
+</pre>
+</td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-disks"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-directories">upgrading from CFEngine 2 directories</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-deny">upgrading from CFEngine 2 deny</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.11 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">disks</span></samp>&rsquo;</h3>
+
+<pre class="verbatim">
+disks:
+
+  /usr 
+
+      freespace=10%
+
+</pre>
+
+<p class="noindent">becomes
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+storage:
+
+  "/usr" 
+
+      volume => min_free_space("10%");
+
+</pre>
+</td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-directories"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-disable">upgrading from CFEngine 2 disable</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-disks">upgrading from CFEngine 2 disks</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.12 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">directories</span></samp>&rsquo;</h3>
+
+<pre class="verbatim">
+directories:
+     
+   /usr/local/bin  
+
+        mode=755 
+       owner=root 
+       group=wheel
+</pre>
+
+<p class="noindent">becomes
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+files:
+
+  "/usr/local/bin/."
+
+     create => "true",
+     perms => mog("755","root","wheel");
+
+</pre>
+</td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-disable"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-editfiles">upgrading from CFEngine 2 editfiles</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-directories">upgrading from CFEngine 2 directories</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.13 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">disable</span></samp>&rsquo;</h3>
+
+<p>Disabling files has many meanings in CFEngine 2. It covers log rotation as well as file disablement.
+<pre class="verbatim">
+disable:
+
+   /usr/bin/rsh
+   /var/log/xferlog rotate=3
+   /local/etc/fingerdir/userdata rotate=empty
+
+</pre>
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+files:
+
+   "/usr/bin/rsh" rename => disable;
+
+   "/var/log/xferlog"  
+        rename => rotate("3");
+
+   "/local/etc/fingerdir/userdata" 
+        rename => rotate("0");
+
+</pre>
+</td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-editfiles"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-files">upgrading from CFEngine 2 files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-disable">upgrading from CFEngine 2 disable</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.14 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">editfiles</span></samp>&rsquo;</h3>
+
+<p>File editing is a complex subject. A few examples are provided.
+<pre class="smallformat"><pre class="verbatim">
+editfiles:
+
+  !rom21X::
+
+     { /etc/ssh2/sshd2_config
+
+     ReplaceAll "PrintMotd.*yes" With "PrintMotd no"
+     ReplaceAll ".*Ssh1Compatibility.*yes.*" With "Ssh1Compatibility no"
+     AppendIfNoSuchLine "Ssh1Compatibility no"
+     HashCommentLinesMatching ".*Sshd1Path.*"
+     DeleteLinesMatching ".*PasswordAuthentication.*"
+     DeleteLinesMatching ".*PubkeyAuthentication.*"
+     DeleteLinesMatching ".*AllowCshrcSourcingWithSubsystems.*"
+     }
+
+
+</pre>
+</pre>
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+files:
+
+  !rom21X::
+
+   "/etc/ssh2/sshd2_config"
+
+      edit_line => ssh_config;
+
+
+# ..
+ 
+bundle edit_line ssh_config
+{
+replace_patterns:
+
+  "PrintMotd.*yes" 
+      replace_with => all("PrintMotd no");
+
+  ".*Ssh1Compatibility.*yes.*"
+      replace_with => value("Ssh1Compatibility no");
+
+  ".*Sshd1Path.*"
+      replace_with => comment("#");
+
+delete_lines:
+
+  ".*PasswordAuthentication.*";
+  ".*PubkeyAuthentication.*";
+  ".*AllowCshrcSourcingWithSubsystems.*";
+
+insert_lines:
+
+   "Ssh1Compatibility no";
+}
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<pre class="smallformat"><pre class="verbatim">
+editfiles:
+
+   { /etc/shells
+
+   AppendIfNoSuchLine "/bin/tcsh"
+   AppendIfNoSuchLine "/bin/bash"
+   AppendIfNoSuchLine "/local/gnu/bin/bash"
+   }
+
+
+</pre>
+</pre>
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+vars:
+
+  "lines" slist => { "/bin/tcsh", "/bin/bash", "/local/gnu/bin/bash" };
+
+files:
+
+   "/etc/shells"
+
+      edit_line => append_if_no_lines(@(lines));
+
+
+</pre>
+</pre>
+   </td></tr></table>
+
+   <p>or an alternative solution
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+files:
+
+   "/etc/shells"
+
+      edit_line => shells;
+
+# ..
+ 
+bundle edit_line shells
+{
+insert_lines:
+
+   "/bin/tcsh";
+   "/bin/bash";
+   "/local/gnu/bin/bash";
+}
+
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-files"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-filters">upgrading from CFEngine 2 filters</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-editfiles">upgrading from CFEngine 2 editfiles</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.15 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">files</span></samp>&rsquo;</h3>
+
+<p>The <code>files</code> action in CFEngine 2 was mostly about permissions. In CFEngine 3, all file
+related operations are collected under this banner.
+
+<pre class="smallformat"><pre class="verbatim">
+files:
+
+   PrimeServers::
+
+    /local/dns/pz		
+
+           owner=dns 
+           mode=644 
+           action=fixall 
+           recurse=1 
+           exclude=Fixserial
+
+    /local/dns/pz/Fixserial	
+           m=755 
+           action=fixplain
+
+   NameServers::
+
+    /local/logs/admin	
+
+           o=dns 
+           m=644 
+           act=fixplain
+
+    /local/logs/security	
+
+           o=dns 
+           m=644 
+           act=fixplain
+
+    /local/logs/updates	
+
+           o=dns 
+           m=644 
+           act=fixplain
+
+    /local/logs/xfer		o=dns m=644 act=fixplain
+
+      #
+      # Make sure anonymous ftp areas have the correct
+      # protection, or logins won't be able to read files
+      #
+
+    $(ftp)/pub    mode=644  o=root g=other act=fixall
+    $(ftp)/pub    mode=644 act=fixall  r=inf
+
+    $(ftp)/etc        mode=111 o=root g=other      act=fixdirs
+    $(ftp)/usr/bin/ls mode=111 o=root g=other      act=fixall
+    $(ftp)/dev        mode=555 o=root g=other      act=fixall
+    $(ftp)/usr        mode=555 o=root g=other      act=fixdirs
+
+
+</pre>
+</pre>
+   <p class="noindent">may be translated into:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+vars:
+
+  "ns_files" slist => {
+                      "/local/logs/admin",
+                      "/local/logs/security",
+                      "/local/logs/updates",
+                      "/local/logs/xfer"
+                      };
+files:
+
+   PrimeServers::
+
+    "/local/dns/pz"
+
+            perms => mo("644","dns")
+     depth_search => recurse("1"),
+      file_select => exclude("FixSerial");
+
+    "/local/dns/pz/FixSerial"
+
+            perms => m("755"),
+      file_select => plain;
+
+   NameServers::
+
+    "$(ns_files)"
+
+            perms => mo("644","dns"),
+      file_select => plain;
+
+    #
+    # Make sure anonymous ftp areas have the correct
+    # protection, or logins won't be able to read files
+    #
+
+    "$(ftp)/pub"      
+             perms => mog("644","root","other");
+
+    "$(ftp)/pub"      
+             perms => m("644"),
+      depth_search => recurse("inf");
+
+    "$(ftp)/etc"        perms => mog("111","root","other");
+    "$(ftp)/usr/bin/ls" perms => mog("111","root","other");
+    "$(ftp)/dev"        perms => mog("555","root","other");
+    "$(ftp)/usr"        perms => mog("555","root","other");
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-filters"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-groups">upgrading from CFEngine 2 groups</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-files">upgrading from CFEngine 2 files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.16 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">filters</span></samp>&rsquo;</h3>
+
+<p>Filters have been redefined as `select' body templates. Filters exist for processes
+and files in CFEngine 2. These translate into keywords <code>process_select</code>
+and <code>file_select</code>.
+
+<pre class="smallformat"><pre class="verbatim">
+filters:
+     
+   { testfilteralias
+     
+   Owner:     "mark"
+   Group:     "cfengine"
+   Type:      "dir|link"
+     
+   Result:    "Type|(Owner.Group)"  # Both owner AND group required correct
+   }
+
+</pre>
+</pre>
+   <p class="noindent">becomes
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+body file_select testfilteralias
+     
+{
+search_owners => { "mark" };
+search_groups => { "cfengine" };
+file_types    => { "dir","symlink" };
+
+file_result => "file_types|(owners.groups)";
+}
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-groups"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-homeservers">upgrading from CFEngine 2 homeservers</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-filters">upgrading from CFEngine 2 filters</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.17 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">groups</span></samp>&rsquo;</h3>
+
+<p>Groups are a synonym for classes,
+see See <a href="#upgrading-from-CFEngine-2-classes">upgrading from CFEngine 2 classes</a>.
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-homeservers"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-ignore">upgrading from CFEngine 2 ignore</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-groups">upgrading from CFEngine 2 groups</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.18 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">homeservers</span></samp>&rsquo;</h3>
+
+<p>The CFEngine Mount Model has been deprecated in version 3. The introduction of the
+automounter largely superceded the use of this model, and while it is still possible
+to use CFEngine as a static automounter, there is no longer any need for an explicit
+definition of its parts, as simple pattern matching combined with mount promises
+suffices to solve this problem, See <a href="#upgrading-from-CFEngine-2-miscmounts">upgrading from CFEngine 2 miscmounts</a>.
+
+<pre class="smallformat"><pre class="verbatim">control:
+
+ site = ( mysite )
+
+ MountPattern = ( /$(site)/$(host) )
+ HomePattern  = ( home? ) 
+
+      actionsequence = 
+         (
+         mountall
+         mountinfo
+         addmounts
+         mountall
+         )
+
+mountables:
+
+  any::
+
+    serv1:/mysite/serv1/home1
+    serv1:/mysite/serv1/home2
+    serv1:/mysite/serv1/local
+    serv3:/mysite/serv3/local1
+    serv3:/mysite/serv3/local2
+    serv4:/mysite/serv4/homeA
+    serv4:/mysite/serv4/homeB
+
+homeservers:
+     
+    group1::   
+
+        serv1 serv2
+
+    group2::  
+
+        serv4
+
+</pre>
+</pre>
+   <p>In CFEngine 3, you might write this:
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+storage:
+
+ group1::
+
+   "/mysite/serv1/home1" mount => nfs("serv1","/mysite/serv1/home1");
+   "/mysite/serv1/home2" mount => nfs("serv1","/mysite/serv1/home2");
+
+ group2::
+
+   "/mysite/serv4/homeA" mount => nfs("serv4","/mysite/serv3/homeA");
+   "/mysite/serv4/homeB" mount => nfs("serv4","/mysite/serv3/homeB");
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-ignore"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-import">upgrading from CFEngine 2 import</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-homeservers">upgrading from CFEngine 2 homeservers</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.19 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">ignore</span></samp>&rsquo;</h3>
+
+<p>Ignore is used in CFEngine 2 to skip directories or filenames during
+searches. CFEngine 3 does not have a global list for this, but uses
+local lists analogous to the &lsquo;<samp><span class="samp">ignore=</span></samp>&rsquo; attributes.
+
+   <p>To make a global list in CFEngine 3, you can simply define a list of names and attach it to any promise
+in the program. Instead of CFEngine 2:
+
+<pre class="smallformat"><pre class="verbatim">
+ignore:
+
+   one
+   two
+   three
+
+</pre>
+</pre>
+   <p class="noindent">we use:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+bundle common defs
+{
+vars:
+
+  "ignore_list" slist => {  "one", "two", "three" };
+}
+
+# ...
+
+bundle agent filestuff
+{
+files:
+
+   "/mypath"
+
+     depth_search => recurse_ignore("inf",@(defs.ignore_list));
+}
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-import"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-interfaces">upgrading from CFEngine 2 interfaces</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-ignore">upgrading from CFEngine 2 ignore</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.20 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">import</span></samp>&rsquo;</h3>
+
+<pre class="verbatim">import:
+
+      one.cf
+      two.cf
+      three.cf
+
+</pre>
+becomes
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">bundle common control
+{
+inputs => { "one.cf", "two.cf", "three.cf" };
+}
+</pre>
+</td></tr></table>
+
+   <p>In CFEngine 3, file imports are no longer order sensitive in the manner of CFEngine 2.
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-interfaces"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-links">upgrading from CFEngine 2 links</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-import">upgrading from CFEngine 2 import</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.21 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">interfaces</span></samp>&rsquo;</h3>
+
+<p>This promise type has been temporarily placed on hold, pending
+future developments. Interface management has become much
+simpler since the early days of CFEngine, but this will eventually
+include routing promises for network management.
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-links"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-mailserver">upgrading from CFEngine 2 mailserver</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-interfaces">upgrading from CFEngine 2 interfaces</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.22 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">links</span></samp>&rsquo;</h3>
+
+<p>Linking files in CFEngine 2:
+
+<pre class="verbatim">
+links:
+
+    nexus::
+
+      /etc/rsyncd.conf -> /local/etc/rsyncd.conf
+
+
+</pre>
+
+   <p>In CFEngine 3 this becomes
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+files:
+
+  nexus::
+
+    "/etc/rsyncd.conf"
+
+       link_from => ln_s("/local/etc/rsyncd.conf");
+
+</pre>
+</td></tr></table>
+   Linking directories of multiple children:
+<pre class="verbatim">
+links:
+
+   /usr/local/bin +>  /usr/local/lib/perl/bin
+   /opt           +>! /local
+
+
+</pre>
+
+   <p>In CFEngine 3 this becomes
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+files:
+
+   "/usr/local/lib/perl/bin" => linkchildren("/usr/local/bin");
+   "/local"                  => linkchildren("/opt");
+
+</pre>
+Or alternatively, use recursive copy with <code>linkcopy_patterns =&gt; { ".*" }</code>
+</td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-mailserver"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-methods">upgrading from CFEngine 2 methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-links">upgrading from CFEngine 2 links</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.23 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">mailserver</span></samp>&rsquo;</h3>
+
+<p>This section has been deprecated in CFEngine 3. It can be handled by <code>mount</code> promises.
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-methods"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-miscmounts">upgrading from CFEngine 2 miscmounts</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-mailserver">upgrading from CFEngine 2 mailserver</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.24 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">methods</span></samp>&rsquo;</h3>
+
+<p>In CFEngine 2, methods were experimental. Methods are ways of making
+subroutines of CFEngine code. They were executed as separate programs following a
+special protocol, and could be activated remotely.
+
+   <p>There is no direct mapping between methods in CFEngine 2 and CFEngine
+3. In CFEngine 3, methods are simply bundles of promises that are
+executed as a group. These bundles can be parameterized and re-used. 
+They are what methods should have been in CFEngine 2. Remote methods,
+are not implemented in CFEngine 3. Instead CFEngine Nova provides the
+means for agents to share data remotely by `voluntary cooperation'.
+
+<pre class="smallformat"><pre class="verbatim"># cfagent.conf
+ 
+control:
+ 
+actionsequence = ( methods )
+ 
+#################################################
+ 
+methods:
+ 
+   SimpleMethod(null)
+ 
+     action=cf.simple
+     returnvars=null
+     returnclasses=null
+     server=localhost
+
+</pre>
+</pre>
+   <p>and
+<pre class="smallformat"><pre class="verbatim"># cf.simple
+ 
+control:
+ 
+ MethodName   = ( SimpleMethod )
+ MethodParameters = ( null )
+ actionsequence   = ( timezone )
+  
+classes:
+ 
+  dummy = ( any )
+ 
+ ####################################################
+ 
+alerts:
+ 
+  dummy::
+ 
+   "This simple method does nothing"
+ 
+   ReturnVariables(void)
+   ReturnClasses(void)
+</pre>
+</pre>
+   <p>This can be achieved more simply in CFEngine 3 as:
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">bundle agent parent
+{
+methods:
+
+  "some_id" usebundle => SimpleMethod;
+
+#...
+}
+
+bundle agent SimpleMethod
+{
+classes:
+
+  "dummy" expression => "any";
+
+reports:
+
+  dummy::
+
+      "This simple method does nothing";
+}
+</pre>
+</td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-miscmounts"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-mountables">upgrading from CFEngine 2 mountables</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-methods">upgrading from CFEngine 2 methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.25 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">miscmounts</span></samp>&rsquo;</h3>
+
+<pre class="smallformat"><pre class="verbatim">
+miscmounts:
+
+ host:/foo /mnt/foo
+     
+ myserver:/$(site)/libraryserver/data1
+               /mnt/data1 ro
+     
+         # consistent syntax
+     
+ myserver:/$(site)/libraryserver/data2
+               /mnt/data2 mode=ro
+     
+
+</pre>
+</pre>
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+storage:
+
+ "/foot" mount => nfs("host","/foo");
+
+ "/$(site)/libraryserver/data1" 
+
+        mount => nfs_p("myserver","/$(site)/libraryserver/data1","ro");
+     
+ "/$(site)/libraryserver/data2"
+
+        mount => nfs_p("myserver","/$(site)/libraryserver/data2","ro");
+
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-mountables"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-processes">upgrading from CFEngine 2 processes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-miscmounts">upgrading from CFEngine 2 miscmounts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.26 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">mountables</span></samp>&rsquo;</h3>
+
+<p>This list has been deprecated in CFEngine 3, see See <a href="#upgrading-from-CFEngine-2-miscmounts">upgrading from CFEngine 2 miscmounts</a>.
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-processes"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-packages">upgrading from CFEngine 2 packages</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-mountables">upgrading from CFEngine 2 mountables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.27 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">processes</span></samp>&rsquo;</h3>
+
+<p>In CFEngine 2 process promises were muddled with commands that were used to restart
+processes that were not running. The led to inconsistency in the handling of commands. 
+CFEngine 3 separates commands to restart processes so that the full range of
+promise attributes can be applied during process start control.
+<pre class="verbatim">
+processes:
+
+      "inetd"                             
+
+         signal=hup
+
+      "bootp"                             
+
+          signal=kill 
+         exclude=rpc.bootparamd
+
+      "cfservd" 
+
+          restart "/usr/local/sbin/cfservd"
+          useshell=false
+
+          #  matches=>6   warn number of matches is greater than or equal to 6
+          #  matches=1    warn if not exactly 1 matching process
+          #  matches=&lt;2   warn if there are less than or equal to 2 matching processes
+
+</pre>
+Translates to:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+processes:
+
+   "inetd"
+             signals => { "hup" };
+
+   "bootp" 
+             signals => { "kill" },
+      process_select => exclude_procs(".*rpc.bootparamd.*");
+
+
+   "cf-serverd"
+            restart_class => "start_cfserverd";
+
+          #  process_count => check_range(cfserv,6,inf); warn number of matches is greater than or equal to 6
+          #  process_count => check_range(cfserv,1,1);   warn if not exactly 1 matching process
+          #  process_count => check_range(cfserv,0,2);   warn if there are less than or equal to 2 matching processes
+
+commands:
+
+   start_cfserverd::
+
+    "/usr/local/sbin/cf-serverd";
+
+reports:
+
+   cfserv_out_of_range::
+
+     "cf-serverd is out of control!!";
+
+</pre>
+</td></tr></table>
+   We can make use of lists to simplify the checking of multiple processes:
+<pre class="verbatim">
+processes:
+
+   Syslogdhup::
+
+      "Syslogd" signal=hup
+
+   any::
+
+      "snmp"                              signal=kill
+      "powerd"                            signal=kill
+      "mibiisa"                           signal=kill
+
+</pre>
+becomes:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+vars:
+
+   "kill_list" slist => { "snmp", "powerd", "mibiisa" };
+
+processes:
+
+   Syslogdhup::
+
+      "Syslogd" signals => { "hup" };
+
+   any::
+
+      "$(kill_list)" signals => { "kill" };
+
+</pre>
+</td></tr></table>
+   Lists can also be used to simplify process starting. The following script
+<pre class="smallformat"><pre class="verbatim">
+processes:
+
+  "named"   restart "/local/sbin/named -u dns" 
+            useshell=false 
+            inform=true
+
+  "cfservd"  restart "/var/cfengine/bin/cfservd" 
+  "cfenvd"   restart "/var/cfengine/bin/cfenvd" 
+  "cfexecd"  restart "/var/cfengine/bin/cfexecd" 
+
+</pre>
+</pre>
+   <p class="noindent">would translate more efficiently into:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">vars:
+
+   "daemons" slist => { "cf-monitord", "cf-serverd", "cf-execd" };
+
+processes:
+
+  "named"      restart_class => "restart_named";
+
+  "$(daemons)" restart_class => canonify("start_$(component)");
+
+commands:
+
+   "/bin/echo /var/cfengine/bin/$(component)"
+       ifvarclass => canonify("start_$(component)");
+
+  restart_named::
+
+    "/local/sbin/named -u dns"
+            action => inform;
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-packages"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-rename">upgrading from CFEngine 2 rename</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-processes">upgrading from CFEngine 2 processes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.28 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">packages</span></samp>&rsquo;</h3>
+
+<p>Package handling in CFEngine 3 is far superior and more flexible than in CFEngine 2. 
+There are many ways to code packages promises. Here is a simple way to code
+specific lists of versioned packages. In CFEngine 2 one might write:
+
+<pre class="smallformat"><pre class="verbatim">
+packages:
+
+  autoconf-2.13.000227_6  version=2.13.000227_6 cmp=ge  action=install
+  automake-1.9.6_3        version=1.9.6_3       cmp=ge  action=install
+  gmake-3.81_3            version=3.81_3        cmp=ge  action=install
+  help2man-1.36.4_2       version=1.36.4_2      cmp=ge  action=install
+  mysql-server-5.0.67     version=5.0.67        cmp=ge  elsedefine=InstallMySQL
+
+  # ...
+
+</pre>
+</pre>
+   <p class="noindent">This could be translated efficiently using an associative array:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">vars:
+
+  "v[autoconf-2.13.000227_6]" string => "2.13.000227_6"
+  "v[automake-1.9.6_3]"       string => "1.9.6_3"      
+  "v[gmake-3.81_3]"           string => "3.81_3"       
+  "v[help2man-1.36.4_2]"      string => "1.36.4_2"     
+
+  # ...
+
+  "packages" slist => getindices("v");
+
+packages:
+
+  "$(packages)"
+
+      package_policy => "add",
+          package_method => freebsd,
+          package_select => ">=",
+          package_version => "$(v[$(package)])";
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-rename"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-required">upgrading from CFEngine 2 required</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-packages">upgrading from CFEngine 2 packages</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.29 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">rename</span></samp>&rsquo;</h3>
+
+<p>This is an alias, see See <a href="#upgrading-from-CFEngine-2-disable">upgrading from CFEngine 2 disable</a>.
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-required"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-resolve">upgrading from CFEngine 2 resolve</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-rename">upgrading from CFEngine 2 rename</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.30 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">required</span></samp>&rsquo;</h3>
+
+<p>This is an alias, see See <a href="#upgrading-from-CFEngine-2-disks">upgrading from CFEngine 2 disks</a>.
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-resolve"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-scli">upgrading from CFEngine 2 scli</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-required">upgrading from CFEngine 2 required</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.31 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">resolve</span></samp>&rsquo;</h3>
+
+<p>The special resolver configuration in CFEngine 2 has been deprecated in favour of using
+straightforward editing commands to manage the resolver file. The special variable
+<code>$(sys.resolv)</code> points to the system's current resolver configuration file. 
+Thus the CFEngine 2 configuration:
+<pre class="smallformat"><pre class="verbatim">
+resolve:
+ 
+     "search iu.hio.no CFEngine.com"    
+     128.39.89.10
+     158.36.85.10
+     129.241.1.99     
+
+</pre>
+</pre>
+   <p class="noindent">may be translated as:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="smallformat"><pre class="verbatim">
+vars:
+
+   "r" slist => { "128.39.89.10", "158.36.85.10", "129.241.1.99" };
+
+files:
+
+   "$(sys.resolv)"
+
+         edit_line => resolvconf("iu.hio.no CFEngine.com",@(mybundle.r));
+    # edit_default => empty;
+
+</pre>
+</pre>
+   </td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-scli"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-shellcommands">upgrading from CFEngine 2 shellcommands</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-resolve">upgrading from CFEngine 2 resolve</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.32 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">scli</span></samp>&rsquo;</h3>
+
+<p>SCLI (SNMP Command Line Interface) promises are deprecated in CFEngine
+3. There are no plans to integrate CFEngine directly with SNMP.
+
+   <p>Users of CFEngine Nova can use the generic <code>measurement</code> promises
+to encapsulate SNMP monitoring into the CFEngine framework if
+necessary.
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-shellcommands"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-strategies">upgrading from CFEngine 2 strategies</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-scli">upgrading from CFEngine 2 scli</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.33 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">shellcommands</span></samp>&rsquo;</h3>
+
+<p>Shellcommands scheduled the execution of scripts and programs external
+to the CFEngine framework in CFEngine 2. The following examples
+
+<pre class="verbatim">shellcommands:
+
+ nexus::
+
+  "/usr/sbin/shareall"
+
+         ifelapsed=240
+
+ cube.nfs_update::
+
+  "/etc/init.d/nfs-server restart > /dev/null 2>&amp;1"
+
+</pre>
+may be translated as:
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">commands:
+
+ nexus::
+
+  "/usr/sbin/shareall"
+
+      action => ifelapsed("240");
+
+ cube.nfs_update::
+  "/etc/init.d/nfs-server restart > /dev/null 2>&amp;1"
+
+     contain => in_shell;
+
+</pre>
+</td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-strategies"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-tidy">upgrading from CFEngine 2 tidy</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-shellcommands">upgrading from CFEngine 2 shellcommands</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.34 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">strategies</span></samp>&rsquo;</h3>
+
+<p>Strategies in CFEngine 2 define probabilistic classes. 
+This has become part of a <code>classes</code> promise is CFEngine 3.
+
+<pre class="verbatim">strategies:
+
+  { spread_load
+
+  percent_10: "1"  
+  percent_30: "3"
+  precent_60: "6"
+  }
+
+</pre>
+translates as:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+classes:
+
+ "percent" dist => { "10", "30", "60" };
+
+</pre>
+</td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-tidy"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#upgrading-from-CFEngine-2-unmount">upgrading from CFEngine 2 unmount</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-strategies">upgrading from CFEngine 2 strategies</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.35 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">tidy</span></samp>&rsquo;</h3>
+
+<pre class="verbatim">
+tidy: 
+
+  /tmp/       pattern=*       recurse=inf   age=1
+  /var/tmp    pattern=*       recurse=inf   age=2
+  /           pattern=core    r=1           a=0
+  /etc        pattern=core    r=1           a=0
+
+</pre>
+This may be translated into the following:
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+files:
+
+  "/tmp"
+
+     depth_search => recurse("1"),
+      file_select => name_age(".*","1");
+
+  "/var/tmp"
+
+     depth_search => recurse("inf"),
+      file_select => name_age(".*","2");
+
+  "/"
+     depth_search => recurse("1"),
+      file_select => name_age("core","0");
+
+  "/etc"
+     depth_search => recurse("1"),
+      file_select => name_age("core","0");
+
+</pre>
+</td></tr></table>
+
+<!-- ................................................................. -->
+<div class="node">
+<a name="upgrading-from-CFEngine-2-unmount"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#upgrading-from-CFEngine-2-tidy">upgrading from CFEngine 2 tidy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Codebook">Translation Codebook</a>
+
+</div>
+
+<h3 class="section">3.36 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">unmount</span></samp>&rsquo;</h3>
+
+<pre class="verbatim">
+unmount:
+
+  /mnt
+</pre>
+
+<p class="noindent">Translates to:
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="verbatim">
+storage:
+
+ "/mnt" mount  => unmount;
+
+</pre>
+</td></tr></table>
+
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine-Best-Practices</a>
+<li><a name="toc_General-remarks-and-expectations" href="#General-remarks-and-expectations">1 General remarks and expectations</a>
+<ul>
+<li><a href="#On-the-translation-of-policies">1.1 On the translation of policies</a>
+<li><a href="#On-best-practices">1.2 On `best practices'</a>
+<li><a href="#Completely-new-features">1.3 Completely new features</a>
+</li></ul>
+<li><a name="toc_Conversion-Strategy" href="#Conversion-Strategy">2 Conversion Strategy</a>
+<ul>
+<li><a href="#Converting-by-module">2.1 Converting by module</a>
+<li><a href="#Assembling-a-compilable-file-set">2.2 Assembling a compilable file set</a>
+<li><a href="#Validating-the-conversion">2.3 Validating the conversion</a>
+<li><a href="#Optimizing-the-configuration">2.4 Optimizing the configuration</a>
+</li></ul>
+<li><a name="toc_Translation-Codebook" href="#Translation-Codebook">3 Translation Codebook</a>
+<ul>
+<li><a href="#upgrading-from-CFEngine-2-acl">3.1 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">acl</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-admit">3.2 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">admit</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-alerts">3.3 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">alerts</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-binservers">3.4 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">binservers</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-broadcast">3.5 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">broadcast</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-control">3.6 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">control</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-classes">3.7 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">classes</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-copy">3.8 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">copy</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-defaultroute">3.9 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">defaultroute</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-deny">3.10 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">deny</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-disks">3.11 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">disks</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-directories">3.12 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">directories</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-disable">3.13 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">disable</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-editfiles">3.14 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">editfiles</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-files">3.15 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">files</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-filters">3.16 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">filters</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-groups">3.17 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">groups</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-homeservers">3.18 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">homeservers</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-ignore">3.19 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">ignore</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-import">3.20 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">import</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-interfaces">3.21 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">interfaces</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-links">3.22 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">links</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-mailserver">3.23 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">mailserver</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-methods">3.24 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">methods</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-miscmounts">3.25 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">miscmounts</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-mountables">3.26 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">mountables</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-processes">3.27 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">processes</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-packages">3.28 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">packages</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-rename">3.29 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">rename</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-required">3.30 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">required</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-resolve">3.31 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">resolve</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-scli">3.32 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">scli</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-shellcommands">3.33 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">shellcommands</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-strategies">3.34 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">strategies</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-tidy">3.35 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">tidy</span></samp>&rsquo;</a>
+<li><a href="#upgrading-from-CFEngine-2-unmount">3.36 upgrading from CFEngine 2 &lsquo;<samp><span class="samp">unmount</span></samp>&rsquo;</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Some scheduling
+tools talk about `sorting of dependencies' to determine order, but
+this is not possible in a dynamic environment, since you don't know
+which dependencies will be in play until after the sort.</p>
+
+   <hr></div>
+
+</body></html>
+

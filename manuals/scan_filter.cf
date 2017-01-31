@@ -1,0 +1,246 @@
+
+bundle knowledge cf2_Filters
+
+{
+topics:
+
+"cf2-Filters";
+Iteration::
+    "Iteration over lists as a pattern" ;
+Iteration::
+    "Iteration" ;
+Troubleshooting_Filters::
+    "Troubleshooting Filters" ;
+Searching_for_processes::
+    "Text editing self-test questions" ;
+Searching_for_processes::
+    "Example process filter - started recently" ;
+Searching_for_processes::
+    "Example process filter by accumulated time" ;
+Searching_for_processes::
+    "Searching for processes" ;
+Searching_for_text_inside_files::
+    "Editing self-test questions" ;
+Replacing_Text_fragments::
+    "Replacing fields in tabular files" ;
+Replacing_Text_fragments::
+    "Examples of text matching in editfiles" ;
+Searching_for_text_inside_files::
+    "Replacing Text fragments" ;
+Searching_for_text_inside_files::
+    "Line based editing patterns" ;
+Searching_for_text_inside_files::
+    "Searching for text inside files" ;
+Searching_for_files::
+    "Patterns self-test questions" ;
+File_Filters::
+    "Example file filter - find files changed" ;
+File_Filters::
+    "Example file filter - compress files" ;
+File_Filters::
+    "Example file filter - tidy junk" ;
+File_Filters::
+    "Example file filter - custom scanner" ;
+File_Filters::
+    "Example file filter - setuid" ;
+File_Filters::
+    "Example file filter combined parameters" ;
+File_Filters::
+    "Example file filter by link destination" ;
+File_Filters::
+    "Example file filter - by magic number" ;
+File_Filters::
+    "File Filter Parameters" ;
+Searching_for_files::
+    "File Filters" ;
+Wildcards_and_Regular_expressions::
+    "Regular expressions" ;
+Searching_for_files::
+    "Wildcards and Regular expressions" ;
+Inclusion_and_Exclusion_Patterns::
+    "Global criteria (per promise rule)" ;
+Inclusion_and_Exclusion_Patterns::
+    "Local criteria (per promise rule)" ;
+Searching_for_files::
+    "Inclusion and Exclusion Patterns" ;
+Searching_for_files::
+    "Controlling Directory Tree Traversal" ;
+Searching_for_files::
+    "Searching for files" ;
+
+
+occurrences:
+
+Searching_for_files::
+ "/inside/manuals/cf2-Filters#Searching-for-files"
+  represents => { "chapter" };
+Controlling_Directory_Tree_Traversal::
+ "/inside/manuals/cf2-Filters#Controlling-Directory-Tree-Traversal"
+  represents => { "Controlling Directory Tree Traversal" };
+Controlling_Directory_Tree_Traversal::
+ "/inside/manuals/cf2-Filters#Controlling-Directory-Tree-Traversal"
+  represents => { "example" };
+Inclusion_and_Exclusion_Patterns::
+ "/inside/manuals/cf2-Filters#Inclusion-and-Exclusion-Patterns"
+  represents => { "Inclusion and Exclusion Patterns" };
+Local_criteria__per_promise_rule_::
+ "/inside/manuals/cf2-Filters#Local-criteria-_0028per-promise-rule_0029"
+  represents => { "subsection" };
+Global_criteria__per_promise_rule_::
+ "/inside/manuals/cf2-Filters#Global-criteria-_0028per-promise-rule_0029"
+  represents => { "subsection" };
+Global_criteria__per_promise_rule_::
+ "/inside/manuals/cf2-Filters#Global-criteria-_0028per-promise-rule_0029"
+  represents => { "example" };
+Wildcards_and_Regular_expressions::
+ "/inside/manuals/cf2-Filters#Wildcards-and-Regular-expressions"
+  represents => { "Wildcards and Regular expressions" };
+Regular_expressions::
+ "/inside/manuals/cf2-Filters#Regular-expressions"
+  represents => { "subsection" };
+Regular_expressions::
+ "/inside/manuals/cf2-Filters#index-g_t_0040code_007begrep_007d-command-4"
+  represents => { "example" };
+File_Filters::
+ "/inside/manuals/cf2-Filters#File-Filters"
+  represents => { "File Filters" };
+File_Filter_Parameters::
+ "/inside/manuals/cf2-Filters#File-Filters"
+  represents => { "subsection" };
+Example_file_filter___by_magic_number::
+ "/inside/manuals/cf2-Filters#Example-file-filter-by-magic-number"
+  represents => { "subsection" };
+Example_file_filter___by_magic_number::
+ "/inside/manuals/cf2-Filters#Example-file-filter-by-magic-number"
+  represents => { "example" };
+Example_file_filter_by_link_destination::
+ "/inside/manuals/cf2-Filters#Example-file-filter-by-link-dest"
+  represents => { "subsection" };
+Example_file_filter_by_link_destination::
+ "/inside/manuals/cf2-Filters#Example-file-filter-by-link-dest"
+  represents => { "example" };
+Example_file_filter_combined_parameters::
+ "/inside/manuals/cf2-Filters#Example-file-filter-combined"
+  represents => { "subsection" };
+Example_file_filter_combined_parameters::
+ "/inside/manuals/cf2-Filters#Example-file-filter-combined"
+  represents => { "example" };
+Example_file_filter___setuid::
+ "/inside/manuals/cf2-Filters#Example-file-filter-setuid"
+  represents => { "subsection" };
+Example_file_filter___setuid::
+ "/inside/manuals/cf2-Filters#Example-file-filter-setuid"
+  represents => { "example" };
+Example_file_filter___custom_scanner::
+ "/inside/manuals/cf2-Filters#Example-file-filter-custom-scan"
+  represents => { "subsection" };
+Example_file_filter___custom_scanner::
+ "/inside/manuals/cf2-Filters#Example-file-filter-custom-scan"
+  represents => { "example" };
+Example_file_filter___tidy_junk::
+ "/inside/manuals/cf2-Filters#Example-file-filter-tidy-junk"
+  represents => { "subsection" };
+Example_file_filter___tidy_junk::
+ "/inside/manuals/cf2-Filters#Example-file-filter-tidy-junk"
+  represents => { "example" };
+Example_file_filter___compress_files::
+ "/inside/manuals/cf2-Filters#Example-file-filter-compress"
+  represents => { "subsection" };
+Example_file_filter___compress_files::
+ "/inside/manuals/cf2-Filters#Example-file-filter-compress"
+  represents => { "example" };
+Example_file_filter___find_files_changed::
+ "/inside/manuals/cf2-Filters#Example-file-filter-find-changes"
+  represents => { "subsection" };
+Example_file_filter___find_files_changed::
+ "/inside/manuals/cf2-Filters#Example-file-filter-find-changes"
+  represents => { "example" };
+Patterns_self_test_questions::
+ "/inside/manuals/cf2-Filters#Patterns-self_002dtest-questions"
+  represents => { "Patterns self-test questions" };
+Searching_for_text_inside_files::
+ "/inside/manuals/cf2-Filters#Searching-for-text-inside-files"
+  represents => { "chapter" };
+Line_based_editing_patterns::
+ "/inside/manuals/cf2-Filters#Line-based-editing-patterns"
+  represents => { "Line based editing patterns" };
+Line_based_editing_patterns::
+ "/inside/manuals/cf2-Filters#Line-based-editing-patterns"
+  represents => { "example" };
+Line_based_editing_patterns::
+ "/inside/manuals/cf2-Filters#Line-based-editing-patterns"
+  represents => { "example" };
+Replacing_Text_fragments::
+ "/inside/manuals/cf2-Filters#Replacing-Text-fragments"
+  represents => { "Replacing Text fragments" };
+Replacing_Text_fragments::
+ "/inside/manuals/cf2-Filters#Replacing-Text-fragments"
+  represents => { "example" };
+Replacing_Text_fragments::
+ "/inside/manuals/cf2-Filters#Replacing-Text-fragments"
+  represents => { "example" };
+Examples_of_text_matching_in_editfiles::
+ "/inside/manuals/cf2-Filters#Examples-of-text-matching-in-editfiles"
+  represents => { "subsection" };
+Examples_of_text_matching_in_editfiles::
+ "/inside/manuals/cf2-Filters#Examples-of-text-matching-in-editfiles"
+  represents => { "example" };
+Replacing_fields_in_tabular_files::
+ "/inside/manuals/cf2-Filters#Replacing-fields-in-tabular-files"
+  represents => { "subsection" };
+Replacing_fields_in_tabular_files::
+ "/inside/manuals/cf2-Filters#Replacing-fields-in-tabular-files"
+  represents => { "example" };
+Editing_self_test_questions::
+ "/inside/manuals/cf2-Filters#Editing-self_002dtest-questions"
+  represents => { "Editing self-test questions" };
+Searching_for_processes::
+ "/inside/manuals/cf2-Filters#Searching-for-processes"
+  represents => { "chapter" };
+Example_process_filter_by_accumulated_time::
+ "/inside/manuals/cf2-Filters#Example-file-process-filter-by-accumulated-time"
+  represents => { "Example process filter by accumulated time" };
+Example_process_filter_by_accumulated_time::
+ "/inside/manuals/cf2-Filters#Example-file-process-filter-by-accumulated-time"
+  represents => { "example" };
+Example_process_filter___started_recently::
+ "/inside/manuals/cf2-Filters#Example-file-process-filter-started-recently"
+  represents => { "Example process filter - started recently" };
+Example_process_filter___started_recently::
+ "/inside/manuals/cf2-Filters#Example-file-process-filter-started-recently"
+  represents => { "example" };
+Text_editing_self_test_questions::
+ "/inside/manuals/cf2-Filters#Text-editing-self_002dtest-questions"
+  represents => { "Text editing self-test questions" };
+Troubleshooting_Filters::
+ "/inside/manuals/cf2-Filters#Troubleshooting-Filters"
+  represents => { "chapter" };
+Troubleshooting_Filters::
+ "/inside/manuals/cf2-Filters#Troubleshooting-Filters"
+  represents => { "example" };
+Iteration::
+ "/inside/manuals/cf2-Filters#Iteration"
+  represents => { "chapter" };
+Iteration_over_lists_as_a_pattern::
+ "/inside/manuals/cf2-Filters#Iteration-over-lists-as-a-pattern"
+  represents => { "Iteration over lists as a pattern" };
+Iteration_over_lists_as_a_pattern::
+ "/inside/manuals/cf2-Filters#Iteration-over-lists-as-a-pattern"
+  represents => { "example" };
+Iteration_over_lists_as_a_pattern::
+ "/inside/manuals/cf2-Filters#Iteration-over-lists-as-a-pattern"
+  represents => { "example" };
+Iteration_over_lists_as_a_pattern::
+ "/inside/manuals/cf2-Filters#Iteration-over-lists-as-a-pattern"
+  represents => { "example" };
+Iteration_over_lists_as_a_pattern::
+ "/inside/manuals/cf2-Filters#Iteration-over-lists-as-a-pattern"
+  represents => { "example" };
+Iteration_over_lists_as_a_pattern::
+ "/inside/manuals/cf2-Filters#Iteration-over-lists-as-a-pattern"
+  represents => { "example" };
+Iteration_over_lists_as_a_pattern::
+ "/inside/manuals/cf2-Filters#Iteration-over-lists-as-a-pattern"
+  represents => { "example" };
+}
+

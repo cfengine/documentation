@@ -1,0 +1,86 @@
+
+bundle knowledge st_knowledge
+
+{
+topics:
+
+"st-knowledge";
+Knowledge::
+    "How does CFEngine Nova help?" ;
+Knowledge::
+    "Knowledge transfer" ;
+Knowledge::
+    "What other special documents should an organization have?" ;
+Knowledge::
+    "Example company_knowledge.cf" ;
+Knowledge::
+    "Documenting locations" ;
+Knowledge::
+    "Documenting goals" ;
+Knowledge::
+    "Creating your own map" ;
+Knowledge::
+    "Types of information" ;
+Knowledge::
+    "Pitfalls to avoid" ;
+Knowledge::
+    "The Copernicus Knowledge Map in CFEngine" ;
+Knowledge::
+    "How should you begin?" ;
+Knowledge::
+    "Risk and uncertainty" ;
+Knowledge::
+    "What is knowledge management?" ;
+Special_Topics_Guide::
+    "Knowledge"  association => a("discussed in","Knowledge","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-knowledge.html"
+  represents => { "Implementing Knowledge Management" };
+Knowledge::
+ "/docs/st-knowledge.html#Top"
+  represents => { "Text section" };
+What_is_knowledge_management_::
+ "/docs/st-knowledge.html#What-is-knowledge-management_003f"
+  represents => { "Text section" };
+Risk_and_uncertainty::
+ "/docs/st-knowledge.html#Risk-and-uncertainty"
+  represents => { "Text section" };
+How_should_you_begin_::
+ "/docs/st-knowledge.html#How-should-you-begin_003f"
+  represents => { "Text section" };
+The_Copernicus_Knowledge_Map_in_CFEngine::
+ "/docs/st-knowledge.html#The-Copernicus-Knowledge-map"
+  represents => { "Text section" };
+Pitfalls_to_avoid::
+ "/docs/st-knowledge.html#Pitfalls-to-avoid"
+  represents => { "Text section" };
+Types_of_information::
+ "/docs/st-knowledge.html#Types-of-information"
+  represents => { "Text section" };
+Creating_your_own_map::
+ "/docs/st-knowledge.html#Types-of-information"
+  represents => { "Text section" };
+Documenting_goals::
+ "/docs/st-knowledge.html#Types-of-information"
+  represents => { "Text section" };
+Documenting_locations::
+ "/docs/st-knowledge.html#Types-of-information"
+  represents => { "Text section" };
+Example_company_knowledge_cf::
+ "/docs/st-knowledge.html#Example-company_005fknowledge_002ecf"
+  represents => { "Text section" };
+What_other_special_documents_should_an_organization_have_::
+ "/docs/st-knowledge.html#Example-company_005fknowledge_002ecf"
+  represents => { "Text section" };
+Knowledge_transfer::
+ "/docs/st-knowledge.html#Knowledge-transfer"
+  represents => { "Text section" };
+How_does_CFEngine_Nova_help_::
+ "/docs/st-knowledge.html#How-does-CFEngine-Nova-help_003f"
+  represents => { "Text section" };
+}
+

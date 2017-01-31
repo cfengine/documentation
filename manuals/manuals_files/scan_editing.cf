@@ -1,0 +1,76 @@
+
+bundle knowledge st_editing
+
+{
+topics:
+
+"st-editing";
+Editing::
+    "Modifying the current state of a file" ;
+Editing::
+    "Contextual adaptation of a file template" ;
+Editing::
+    "Copying a file template into place" ;
+Editing::
+    "Examples of file editing" ;
+Editing::
+    "Pitfalls to watch out for in file editing" ;
+Editing::
+    "Choosing an approach to file editing" ;
+Editing::
+    "Standard library methods for editing" ;
+Editing::
+    "Editing bundles" ;
+Editing::
+    "What does file editing involve?" ;
+Editing::
+    "Why is file editing difficult?" ;
+Editing::
+    "What is convergent file editing?" ;
+Special_Topics_Guide::
+    "Editing"  association => a("discussed in","Editing","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-editing.html"
+  represents => { "Promising and Editing File Content" };
+Editing::
+ "/docs/st-editing.html#Top"
+  represents => { "Text section" };
+What_is_convergent_file_editing_::
+ "/docs/st-editing.html#What-is-convergent-file-editing_003f"
+  represents => { "Text section" };
+Why_is_file_editing_difficult_::
+ "/docs/st-editing.html#Why-is-file-editing-difficult_003f"
+  represents => { "Text section" };
+What_does_file_editing_involve_::
+ "/docs/st-editing.html#What-does-file-editing-involve_003f"
+  represents => { "Text section" };
+Editing_bundles::
+ "/docs/st-editing.html#Editing-bundles"
+  represents => { "Text section" };
+Standard_library_methods_for_editing::
+ "/docs/st-editing.html#Standard-library-methods-for-editing"
+  represents => { "Text section" };
+Choosing_an_approach_to_file_editing::
+ "/docs/st-editing.html#Choosing-an-approach-to-file-editing"
+  represents => { "Text section" };
+Pitfalls_to_watch_out_for_in_file_editing::
+ "/docs/st-editing.html#Pitfalls-to-watch-out-for-in-file-editing"
+  represents => { "Text section" };
+Examples_of_file_editing::
+ "/docs/st-editing.html#Examples-of-file-editing"
+  represents => { "Text section" };
+Copying_a_file_template_into_place::
+ "/docs/st-editing.html#Copying-a-file-template-into-place"
+  represents => { "Text section" };
+Contextual_adaptation_of_a_file_template::
+ "/docs/st-editing.html#Contextual-adaptation-of-a-file-template"
+  represents => { "Text section" };
+Modifying_the_current_state_of_a_file::
+ "/docs/st-editing.html#Modifying-the-current-state-of-a-file"
+  represents => { "Text section" };
+}
+

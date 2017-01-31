@@ -1,0 +1,53 @@
+
+bundle knowledge SpecialTopic_Hierarchy
+
+{
+topics:
+
+"SpecialTopic_Hierarchy";
+Special_Topics_Guide::
+    "Applications of hierarchy"  association => a("discusses","Hierarchies","is discussed in");
+Special_Topics_Guide::
+    "How to organize your organization"  association => a("discusses","Hierarchies","is discussed in");
+Special_Topics_Guide::
+    "Expressing is a or has a"  association => a("discusses","Hierarchies","is discussed in");
+Special_Topics_Guide::
+    "Inheritance and its forms"  association => a("discusses","Hierarchies","is discussed in");
+Special_Topics_Guide::
+    "For and against hierarchies"  association => a("discusses","Hierarchies","is discussed in");
+Special_Topics_Guide::
+    "Classes are sets"  association => a("discusses","Hierarchies","is discussed in");
+Special_Topics_Guide::
+    "How hierarchy compares to sets"  association => a("discusses","Hierarchies","is discussed in");
+Special_Topics_Guide::
+    "What is a hierarchy?"  association => a("discusses","Hierarchies","is discussed in");
+Special_Topics_Guide::
+    "Hierarchies"  association => a("discusses","Hierarchies","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Hierarchy.html"
+  represents => { "Official CFEngine document"},  about_topics => { "hierarchies" };
+ "/knowledge/docs/SpecialTopic_Hierarchy.html"
+  represents => { "Special Topics Guide"},  about_topics => { "hierarchies" };
+ "/knowledge/docs/SpecialTopic_Hierarchy.html#Top"
+  represents => { "Text section" }, about_topics => { "hierarchies" };
+ "/knowledge/docs/SpecialTopic_Hierarchy.html#What-is-a-hierarchy_003f"
+  represents => { "Text section" }, about_topics => { "what is a hierarchy?" };
+ "/knowledge/docs/SpecialTopic_Hierarchy.html#How-hierarchy-compares-to-sets"
+  represents => { "Text section" }, about_topics => { "how hierarchy compares to sets" };
+ "/knowledge/docs/SpecialTopic_Hierarchy.html#Classes-are-sets"
+  represents => { "Text section" }, about_topics => { "classes are sets" };
+ "/knowledge/docs/SpecialTopic_Hierarchy.html#For-and-against-hierarchies"
+  represents => { "Text section" }, about_topics => { "for and against hierarchies" };
+ "/knowledge/docs/SpecialTopic_Hierarchy.html#Inheritance-and-its-forms"
+  represents => { "Text section" }, about_topics => { "inheritance and its forms" };
+ "/knowledge/docs/SpecialTopic_Hierarchy.html#Expressing-is_002da-or-has_002da"
+  represents => { "Text section" }, about_topics => { "expressing is a or has a" };
+ "/knowledge/docs/SpecialTopic_Hierarchy.html#How-to-organize-your-organization"
+  represents => { "Text section" }, about_topics => { "how to organize your organization" };
+ "/knowledge/docs/SpecialTopic_Hierarchy.html#Applications-of-hierarchy"
+  represents => { "Text section" }, about_topics => { "applications of hierarchy" };
+}
+

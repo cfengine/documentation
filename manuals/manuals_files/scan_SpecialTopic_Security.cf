@@ -1,0 +1,69 @@
+
+bundle knowledge SpecialTopic_Security
+
+{
+topics:
+
+"SpecialTopic_Security";
+Special_Topics_Guide::
+    "Security"  association => a("discusses","Architecture and Security","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Security.html"
+  represents => { "Official CFEngine document"},  about_topics => { "architecture and security" };
+ "/knowledge/docs/SpecialTopic_Security.html"
+  represents => { "Special Topics Guide"},  about_topics => { "architecture and security" };
+ "/knowledge/docs/SpecialTopic_Security.html#Top"
+  represents => { "Text section" }, about_topics => { "security" };
+ "/knowledge/docs/SpecialTopic_Security.html#Architecture-Principles"
+  represents => { "manual chapter" }, about_topics => { "architecture principles"};
+ "/knowledge/docs/SpecialTopic_Security.html#Single-point-of-coordination"
+  represents => { "manual section" }, about_topics => { "single point of coordination"};
+ "/knowledge/docs/SpecialTopic_Security.html#Policy-information-flow"
+  represents => { "manual section" }, about_topics => { "policy information flow"};
+ "/knowledge/docs/SpecialTopic_Security.html#Robustness-to-failure"
+  represents => { "manual section" }, about_topics => { "robustness to failure"};
+ "/knowledge/docs/SpecialTopic_Security.html#Distributed-execution-and-federation"
+  represents => { "manual section" }, about_topics => { "distributed execution and federation"};
+ "/knowledge/docs/SpecialTopic_Security.html#Security-Principles"
+  represents => { "manual chapter" }, about_topics => { "security principles"};
+ "/knowledge/docs/SpecialTopic_Security.html#What-is-security_003f"
+  represents => { "manual section" }, about_topics => { "what is security?"};
+ "/knowledge/docs/SpecialTopic_Security.html#The-principles-of-CFEngine-security"
+  represents => { "manual section" }, about_topics => { "the principles of cfengine security"};
+ "/knowledge/docs/SpecialTopic_Security.html#Communications"
+  represents => { "manual section" }, about_topics => { "communications"};
+ "/knowledge/docs/SpecialTopic_Security.html#Communication-Security"
+  represents => { "manual chapter" }, about_topics => { "communication security"};
+ "/knowledge/docs/SpecialTopic_Security.html#TCP-wrappers"
+  represents => { "manual section" }, about_topics => { "tcp wrappers"};
+ "/knowledge/docs/SpecialTopic_Security.html#The-connection-sequence"
+  represents => { "manual section" }, about_topics => { "the connection sequence"};
+ "/knowledge/docs/SpecialTopic_Security.html#Encyption-algorithms"
+  represents => { "manual section" }, about_topics => { "encryption algorithms"};
+ "/knowledge/docs/SpecialTopic_Security.html#Remote-communication"
+  represents => { "manual section" }, about_topics => { "remote communication"};
+ "/knowledge/docs/SpecialTopic_Security.html#Authentication"
+  represents => { "manual section" }, about_topics => { "authentication"};
+ "/knowledge/docs/SpecialTopic_Security.html#Security-FAQ"
+  represents => { "manual section" }, about_topics => { "security faq"};
+ "/knowledge/docs/SpecialTopic_Security.html#CFEngine-and-Firewalls"
+  represents => { "manual section" }, about_topics => { "cfengine and firewalls"};
+ "/knowledge/docs/SpecialTopic_Security.html#CFEngine-trust-model"
+  represents => { "manual subsection" }, about_topics => { "cfengine trust model"};
+ "/knowledge/docs/SpecialTopic_Security.html#Policy-Mirror-in-the-DMZ"
+  represents => { "manual subsection" }, about_topics => { "policy mirror in the dmz"};
+ "/knowledge/docs/SpecialTopic_Security.html#Pulling-through-a-wormhole"
+  represents => { "manual subsection" }, about_topics => { "pulling through a wormhole"};
+examples:: "/knowledge/docs/SpecialTopic_Security.html#Pulling-through-a-wormhole"
+ about_topics => { "Pulling through a wormhole" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Security.html#Pulling-through-a-wormhole"
+ about_topics => { "Pulling through a wormhole" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Security.html#Tamperproof-data-and-distributed-monitoring"
+  represents => { "manual section" }, about_topics => { "tamperproof data and distributed monitoring"};
+}
+
