@@ -18,7 +18,7 @@ if [  ! -d documentation-generator/_site ]; then
   exit 1
 fi
 
-rsync -zvr -e "ssh -p $PORT" documentation-generator/_site/ $SERVER/$VERSION 
+rsync -zvr -e "ssh -2 -p $PORT" documentation-generator/_site/ $SERVER/$VERSION 
 
 ARCHIVE_FILE=cfengine-documentation-$VERSION
 echo "Creating $ARCHIVE_FILE..."
