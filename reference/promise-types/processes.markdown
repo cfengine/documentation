@@ -282,12 +282,11 @@ regex is [anchored][anchored], meaning it must match the entire name.
 
 **Example:**
 
-```cf3
-     body process_select example
-     {
-     process_owner => { "wwwrun", "nobody" };
-     }
-```
+[%CFEngine_include_snippet(kill_processes_running_wrong_user.cf, #\+begin_src cfengine3, .*end_src)%]
+
+**Output**:
+
+[%CFEngine_include_snippet(kill_processes_running_wrong_user.cf, #\+begin_src\s+static_example_output\s*, .*end_src)%]
 
 #### process_result
 
