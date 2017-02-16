@@ -17,6 +17,8 @@ The following report topics are included:
 
 [Including data in reports][Command-Line Reports#Including data in reports]
 
+[Excluding data from reports][Command-Line Reports#Excluding data from reports]
+
 [Creating custom logs][Command-Line Reports#Creating custom logs]
 
 [Redirecting output to logs][Command-Line Reports#Redirecting output to logs]
@@ -259,6 +261,46 @@ R: avahi:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false
 R: beagleindex:x:104:106:User for Beagle indexing:/var/cache/beagle:/bin/bash
 R: bin:x:1:1:bin:/bin:/bin/bash
 R: daemon:x:2:2:Daemon:/sbin:/bin/bash
+```
+
+### Excluding data from reports
+
+CFEngine generates information internally that you might want exclude from
+reports. Any promise outcome can be excluded from report collection based on its
+handle. `vars` and `classes` type promises can be excluded using its handle
+**or** by meta tag.
+
+```cf3
+bundle agent main
+{
+  files:
+
+    linux::
+
+     "/var/log/noisy.log"
+       handle => "noreport_noisy_log_rotation",
+       rename => rotate(5);
+}
+
+body report_data_select default_data_select_policy_hub
+# @brief Data to collect from policy servers by default
+#
+# By convention variables and classes known to be internal, (having no
+# reporting value) should be prefixed with an underscore. By default the policy
+# framework explicitly excludes these variables and classes from collection.
+{
+ # Collect all classes or vars tagged with `inventory` or `report`
+      metatags_include => { "inventory", "report" };
+
+ # Exclude any classes or vars tagged with `noreport`
+      metatags_exclude => { "noreport" };
+
+ # Exclude any promise with handle matching `noreport_.*` from report collection.
+      promise_handle_exclude => { "noreport_.*" };
+
+ # Include all metrics from cf-monitord
+      monitoring_include => { ".*" };
+}
 ```
 
 ### Creating custom logs
