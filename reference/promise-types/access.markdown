@@ -459,13 +459,14 @@ Here are the built-in `report_data_select` bodies `default_data_select_host()` a
 
 #### metatags_exclude
 
-**Description:** List of [anchored][anchored] regular expressions matching metatags
-to exclude from reporting.
+**Description:** List of [anchored][anchored] regular expressions matching
+metatags of classes or vars to exclude from reporting.
 
-Classes and variables with metatags matching any entry of that list will not be reported
-to the CFEngine Enterprise server.
+Classes and variables with metatags matching any entry of that list will not be
+reported to the CFEngine Enterprise server.
 
-When combined with `metatags_include`, this list is applied to the selected subset.
+When combined with `metatags_include`, this list is applied to the selected
+subset.
 
 [%CFEngine_promise_attribute()%]
 
@@ -475,13 +476,14 @@ When combined with `metatags_include`, this list is applied to the selected subs
 
 #### metatags_include
 
-**Description:** List of [anchored][anchored] regular expressions matching metatags
-to include in reporting.
+**Description:** List of [anchored][anchored] regular expressions matching
+metatags of classes or vars to include in reporting.
 
-Classes and variables with metatags matching any entry of that list will be reported
-to the CFENgine Enterprise server.
+Classes and variables with metatags matching any entry of that list will be
+reported to the CFENgine Enterprise server.
 
-When combined with `metatags_exclude`, the exclude list is applied to the subset from this list.
+When combined with `metatags_exclude`, the exclude list is applied to the subset
+from this list.
 
 [%CFEngine_promise_attribute()%]
 
@@ -491,13 +493,14 @@ When combined with `metatags_exclude`, the exclude list is applied to the subset
 
 #### promise_handle_exclude
 
-**Description:** List of [anchored][anchored] regular expressions matching promise handles
-to exclude from reporting.
+**Description:** List of [anchored][anchored] regular expressions matching
+promise handles to exclude from reporting.
 
-Information about promises with handles that match any entry in that list will not be reported
-to the CFEngine Enterprise server.
+Information about promises with handles that match any entry in that list will
+not be reported to the CFEngine Enterprise server.
 
-When combined with `promise_handle_include`, this list is applied to the selected subset.
+When combined with `promise_handle_include`, this list is applied to the
+selected subset.
 
 [%CFEngine_promise_attribute()%]
 
@@ -507,13 +510,14 @@ When combined with `promise_handle_include`, this list is applied to the selecte
 
 #### promise_handle_include
 
-**Description:** List of [anchored][anchored] regular expressions matching promise handles
-to include in reporting.
+**Description:** List of [anchored][anchored] regular expressions matching
+promise handles to include in reporting.
 
-Information about promises with handles that match any entry in that list will be reported
-to the CFEngine Enterprise server.
+Information about promises with handles that match any entry in that list will
+be reported to the CFEngine Enterprise server.
 
-When combined with `promise_handle_exclude`, the exclude list is applied to the subset from this list.
+When combined with `promise_handle_exclude`, the exclude list is applied to the
+subset from this list.
 
 [%CFEngine_promise_attribute()%]
 
@@ -523,13 +527,14 @@ When combined with `promise_handle_exclude`, the exclude list is applied to the 
 
 #### monitoring_include
 
-**Description:** List of [anchored][anchored] regular expressions matching monitoring objects
-to include in reporting.
+**Description:** List of [anchored][anchored] regular expressions matching
+monitoring objects to include in reporting.
 
 Monitoring objects with names matching any entry in that list will be reported
 to the CFEngine Enterprise server.
 
-When combined with `monitoring_exclude`, the exclude list is applied to the subset from this list.
+When combined with `monitoring_exclude`, the exclude list is applied to the
+subset from this list.
 
 [%CFEngine_promise_attribute()%]
 
@@ -542,10 +547,11 @@ When combined with `monitoring_exclude`, the exclude list is applied to the subs
 **Description:** List of [anchored][anchored] regular expressions matching monitoring objects
 to exclude from reporting.
 
-Monitoring objects with names matching any entry in that list will not be reported
-to the CFEngine Enterprise server.
+Monitoring objects with names matching any entry in that list will not be
+reported to the CFEngine Enterprise server.
 
-When combined with `monitoring_include`, this list is applied to the selected subset.
+When combined with `monitoring_include`, this list is applied to the selected
+subset.
 
 [%CFEngine_promise_attribute()%]
 
