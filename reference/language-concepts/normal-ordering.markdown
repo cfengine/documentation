@@ -70,29 +70,28 @@ make sure all needed classes and variables are determined before they are
 needed in normal evaluation, pre-evaluation takes place immediately before
 policy evaluation.
 
-In pre-evaluation files are loaded based on ordering in body common control
+During pre-evaluation files are loaded based on ordering in body common control
 (first) and body file control (after body common control). This means that
 files included in body common control are loaded and parsed before files
 placed in body file control. This is important from a common bundles
 evaluation perspective as bundles placed in files included in body common
 control inputs will be evaluated before bundles from file control inputs.
 
-While pre-evaluating policy files common bundles are evaluated first (only
-classes and variables promises) and then agent bundles (variables only). This
-is caused by the fact that both variables and classes placed in common bundles
+The following steps are executed per-bundle for each file parsed, in this order:
+1. if it's a common bundle, evaluate **vars** promises
+2. if it's a common bundle, evaluate **classes** promises
+3. evaluate **vars** promises
+(for details see `PolicyResolve()` in the C code)
+
+This is done because classes placed in common bundles
 are global whereas classes placed in agent bundles are local (by default) to
-bundles where those are defined. This means that during agent bundle
-pre-evaluation dependencies between variables and classes will not be
-resolved.
+the bundle where those are defined. This means that common bundles
+classes need these extra steps in order to be resolved for the next steps.
 
-<!---What is more, promises in common bundles are pre-evaluated up to 3 times
-in order to resolve variables and classes dependencies.-->
-
-After all policy files are parsed one extra step of pre-evaluation is done in
-order to help resolve dependencies between classes and variables placed in
-different bundles. In this step first classes and variables from common
-bundles are resolved (in the same order that the policy was parsed) followed
-by variables in agent bundles.
+After all policy files are parsed and pre-evaluated, the above pre-evaluation
+sequence runs once again in
+order to help resolve dependencies between classes and vars placed in
+different files.
 
 #### Agent evaluation step
 
