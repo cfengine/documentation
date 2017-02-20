@@ -10,7 +10,7 @@ tags: [ FAQ, Enterprise, reporting, health, cf-hub, cf-consumer, redis-server  ]
 
 Reports are the records that the components ( `cf-agent`, `cf-monitord`,
 `cf-serverd` ... ) record about their knowledge of the system state. Each
-component may log to various data sources withing `$(sys.statedir)`.
+component may log to various data sources within `$(sys.statedir)`.
 
 ## How does CFEngine Enterprise collect reports?
 
@@ -113,6 +113,10 @@ current value of `blueHostHorizon` from Mission Portal or via the API:
 $ curl -s -u admin:admin http://hub/api/settings/ | jq ".data[0].blueHostHorizon"
 900
 ```
+
+Note: It's called "blueHostHorizon" because older versions of Mission Portal
+would turn these hosts to a blue color as an indication of "hypoxia" (lack
+of oxygen, where oxygen is access to latest policy) to indicate a health issue.
 
 **See Also**: `Enterprise API Reference`, `Enterprise API Examples`, [Enterprise Settings][Settings#preferences]
 
