@@ -111,6 +111,15 @@ See also the warning about regular expressions in
 **Description:** List of hosts from which the server accepts connections
 that are not using the latest protocol.
 
+To define subnets or address ranges, use CIDR notation:
+
+```cf3
+    allowlegacyconnects =>  { "192.168.1.0/24", "192.168.2.123" }
+```
+
+In CFEngine <= 3.8, absence of this attribute means that connections from all hosts are accepted,
+for compatibility with pre-3.6 CFEngine versions.
+
 Set this attribute to an empty list to not allow any incoming connections
 using legacy protocol versions:
 
@@ -118,14 +127,8 @@ using legacy protocol versions:
     allowlegacyconnects => { }
 ```
 
-To define subnets or address ranges, use CIDR notation:
-
-```cf3
-    allowlegacyconnects =>  { "192.168.1.0/24", "192.168.2.123" }
-```
-
-Absence of this attribute means that connections from all hosts are accepted,
-for compatibility with pre-3.6 CFEngine versions.
+In CFEngine >= 3.9, legacy protocol is disallowed by default, and you have to
+specify a list of hosts allowed to use the legacy protocol.
 
 [%CFEngine_promise_attribute()%]
 
