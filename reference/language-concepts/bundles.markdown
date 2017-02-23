@@ -12,6 +12,16 @@ the CFEngine promise language. A bundle that groups a number of promises
 related to configuring a web server or a file system would be named
 "webserver" or "filesystem," respectively.
 
+**NOTE**: Bundles **are not functions**. They maintain state across actuations
+within the same agent run.
+
+* Classic arrays are cleared at the beginning of a bundle actuation.
+* Lists, strings, ints, reals, and data-containers are preserved but can be
+  re-defined if not guarded with ```if => isvariable()```.
+* `bundle` scoped classes are cleared at the end of the bundles execution
+* `namespace` scoped classes are not cleared automatically, though they can be
+  explicitly undefined.
+
 Most promise types are specific to a particular kind of interpretation that
 requires a typed interpreter - the bundle *type*. Bundles belong to the agent
 that is used to keep the promises in the bundle. So `cf-agent` has bundles
