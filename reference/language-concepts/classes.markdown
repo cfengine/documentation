@@ -559,7 +559,8 @@ Finally, `restart_class` classes in `processes` are global.
 ## Persistence
 
 By default classes are re-computed on each agent execution. Once a class has
-been defined, it persists until the end of that agent execution. Classes can
+been defined, it persists until the end of that agent execution. Persistent classes
+are always global and can not be set to local by **scope** directive. Classes can
 persist for a period of time. This can be useful to avoid the expense of
 re-evaluation, communicate states across multiple agent runs on the same host.
 
