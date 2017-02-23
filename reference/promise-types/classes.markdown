@@ -244,6 +244,8 @@ This feature can be used to avoid recomputing expensive classes calculations
 on each invocation. This is useful if a class discovered is essentially
 constant or only slowly varying, such as a hostname or alias from a
 non-standard naming facility.
+Persistent classes are always global and can not be set to local
+by **scope** directive.
 
 For example, to create a conditional inclusion of costly class evaluations,
 put them into a separate bundle in a file `classes.cf.`
