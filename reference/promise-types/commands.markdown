@@ -322,6 +322,8 @@ case of failure.
      }
 ```
 
+**See Also:** [`body action expireafter`][Promise Types and Attributes#expireafter],  [`body agent control expireafter`][cf-agent#expireafter], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+
 #### chdir
 
 **Description:** Run the command with a working directory.
