@@ -191,9 +191,13 @@ using `ifelapsed` is another, which is not tied to a specific time.
 
 #### expireafter
 
-**Description:** The Number of minutes before a repair action is interrupted
-and retried is set with `expireafter`. This is the locking time after which
-CFEngine will attempt to kill and restart its attempt to keep a promise.
+**Description:** The Number of minutes a promise is allowed to run before the
+agent is terminated.
+
+**Note**: The original agent does **not** terminate the promise. When a
+subsequent agent notices that a promise actuation has persisted for longer than
+`expireafter` the subsequent agent will kill the agent that appears to be stuck
+on the long running promise.
 
 **Type:** `int`
 
