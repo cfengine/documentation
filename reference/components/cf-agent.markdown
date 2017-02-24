@@ -711,6 +711,8 @@ kill and restart its attempt to keep a promise.
     }
 ```
 
+**See Also:** [`body action expireafter`][Promise Types and Attributes#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+
 ### files_single_copy
 
 **Description:** The `files_single_copy` slist contains filenames to be
