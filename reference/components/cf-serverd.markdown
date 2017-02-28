@@ -32,25 +32,51 @@ files must be granted in addition.
 ```cf3
     body server control
     {
-        allowconnects         => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
-        allowallconnects      => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
+        allowconnects         => { "127.0.0.1" , "::1" };
+        allowallconnects      => { "127.0.0.1" , "::1" };
 
         # Uncomment me under controlled circumstances
-        #trustkeysfrom         => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
+        #trustkeysfrom         => { "127.0.0.1" , "::1" };
     }
+```
+
+
+### allowconnects
+
+**Description:** List of IP addresses that may connect to the
+server port. They are denoted in either IP or subnet form. For
+compatibility reasons, regular expressions are also accepted.
+
+This is the first line of defence; clients who are not
+in this list may not connect or send any data to the server.
+
+See also the warning about regular expressions in
+[`allowallconnects`][cf-serverd#allowallconnects].
+
+**Type:** `slist`
+
+**Allowed input range:** (arbitrary string)
+
+**Examples**:
+
+```cf3
+    allowconnects => {
+         "127.0.0.1",
+         "::1",
+         "200.1.10.0/24",
+         "200\.1\.10\..*",
+         };
 ```
 
 
 ### allowallconnects
 
 **Description:** List of IP addresses that may have more than one
-connection to the server port
+connection to the server port. They are denoted in either IP or subnet
+form. For compatibility reasons, regular expressions are also accepted.
 
-This list of regular expressions matches hosts that are allowed to
-connect an unlimited number of times up to the maximum connection
-limit. Without this, a host may only connect once (which is a very
-strong constraint, as the host must wait for the TCP `FIN_WAIT` to
-expire before reconnection can be attempted).
+The clients that are not listed here may have only one open connection
+at the time with the server.
 
 Note that `127.0.0.1` is a regular expression (i.e., "127 any
 character 0 any character 0 any character 1"), but this will only
@@ -70,38 +96,8 @@ will potentially match more than one hostname (e.g.,
     allowallconnects      => {
          "127.0.0.1",
          "::1",
+         "200.1.10.0/24",
          "200\.1\.10\..*",
-         "host\.domain\.tld",
-         "host[0-9]+\.domain\.com"
-         };
-```
-
-
-### allowconnects
-
-**Description:** List of IP addresses that may connect to the
-server port.
-
-If a client's identity matches an entry in this list it is granted
-to permission to send data to the server port. Clients who are not
-in this list may not connect or send data to the server.
-
-See also the warning about regular expressions in
-[`allowallconnects`][cf-serverd#allowallconnects].
-
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
-
-**Examples**:
-
-```cf3
-    allowconnects => {
-         "127.0.0.1",
-         "::1",
-         "200\.1\.10\..*",
-         "host\.domain\.tld",
-         "host[0-9]+\.domain\.com"
          };
 ```
 
@@ -347,9 +343,9 @@ The full configuration would look something like this
 
         body server control
         {
-        allowconnects         => { "10.10.10" , "::1" };
-        allowallconnects      => { "10.10.10" , "::1" };
-        trustkeysfrom         => { "10.10.10" , "::1" };
+        allowconnects         => { "10.10.10.0/24" , "::1" };
+        allowallconnects      => { "10.10.10.0/24" , "::1" };
+        trustkeysfrom         => { "10.10.10.0/24" , "::1" };
 
         call_collect_interval => "5";
         }
@@ -607,6 +603,7 @@ See syslog notes.
     }
 ```
 
+
 ### skipverify
 
 **Description:** This option is obsolete, does nothing and is retained
@@ -625,13 +622,24 @@ for backward compatibility.
     }
 ```
 
+
 ### trustkeysfrom
 
-**Description:** List of IPs from whom we accept public keys on trust
+**Description:** List of IPs from whom the server will accept and trust
+new (untrusted) public keys.  They are denoted in either IP or subnet
+form. For compatibility reasons, regular expressions are also
+accepted.
 
-If connecting hosts' public keys have not already been trusted, this allows us
-to accept the keys on trust. Normally this should be an empty list except in
-controlled circumstances.
+The new accepted public keys are written to the `ppkeys`
+directory, and a message is logged:
+
+```
+192.168.122.254> Trusting new key: MD5=0d5603d68dd62d35bab2150e35d055ae
+```
+
+**NOTE:** `trustkeysfrom` should normally be an empty list except in
+controlled circumstances, for example when the network is being set up
+and keys are to be exchanged for the first time.
 
 See also the warning about regular expressions in
 [`allowallconnects`][cf-serverd#allowallconnects].
@@ -645,9 +653,10 @@ See also the warning about regular expressions in
 ```cf3
     body server control
     {
-    trustkeysfrom => { "10\.0\.1\.1", "192\.168\..*"};
+    trustkeysfrom => { "10.0.1.1", "192.168.0.0/16"};
     }
 ```
+
 
 ### listen
 
