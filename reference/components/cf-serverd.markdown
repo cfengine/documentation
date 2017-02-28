@@ -41,6 +41,34 @@ files must be granted in addition.
 ```
 
 
+### allowconnects
+
+**Description:** List of IP addresses that may connect to the
+server port. They are denoted in either IP or subnet form. For
+compatibility reasons, regular expressions are also accepted.
+
+This is the first line of defence; clients who are not
+in this list may not connect or send any data to the server.
+
+See also the warning about regular expressions in
+[`allowallconnects`][cf-serverd#allowallconnects].
+
+**Type:** `slist`
+
+**Allowed input range:** (arbitrary string)
+
+**Examples**:
+
+```cf3
+    allowconnects => {
+         "127.0.0.1",
+         "::1",
+         "200.1.10.0/24",
+         "200\.1\.10\..*",
+         };
+```
+
+
 ### allowallconnects
 
 **Description:** List of IP addresses that may have more than one
@@ -66,34 +94,6 @@ will potentially match more than one hostname (e.g.,
 
 ```cf3
     allowallconnects      => {
-         "127.0.0.1",
-         "::1",
-         "200.1.10.0/24",
-         "200\.1\.10\..*",
-         };
-```
-
-
-### allowconnects
-
-**Description:** List of IP addresses that may connect to the
-server port. They are denoted in either IP or subnet form. For
-compatibility reasons, regular expressions are also accepted.
-
-This is the first line of defence; clients who are not
-in this list may not connect or send any data to the server.
-
-See also the warning about regular expressions in
-[`allowallconnects`][cf-serverd#allowallconnects].
-
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
-
-**Examples**:
-
-```cf3
-    allowconnects => {
          "127.0.0.1",
          "::1",
          "200.1.10.0/24",
