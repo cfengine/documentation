@@ -340,9 +340,9 @@ The full configuration would look something like this
 
         body server control
         {
-        allowconnects         => { "10.10.10" , "::1" };
-        allowallconnects      => { "10.10.10" , "::1" };
-        trustkeysfrom         => { "10.10.10" , "::1" };
+        allowconnects         => { "10.10.10.0/24" , "::1" };
+        allowallconnects      => { "10.10.10.0/24" , "::1" };
+        trustkeysfrom         => { "10.10.10.0/24" , "::1" };
 
         call_collect_interval => "5";
         }
@@ -650,7 +650,7 @@ See also the warning about regular expressions in
 ```cf3
     body server control
     {
-    trustkeysfrom => { "10\.0\.1\.1", "192\.168\..*"};
+    trustkeysfrom => { "10.0.1.1", "192.168.0.0/16"};
     }
 ```
 
