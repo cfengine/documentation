@@ -32,11 +32,11 @@ files must be granted in addition.
 ```cf3
     body server control
     {
-        allowconnects         => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
-        allowallconnects      => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
+        allowconnects         => { "127.0.0.1" , "::1" };
+        allowallconnects      => { "127.0.0.1" , "::1" };
 
         # Uncomment me under controlled circumstances
-        #trustkeysfrom         => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
+        #trustkeysfrom         => { "127.0.0.1" , "::1" };
     }
 ```
 
@@ -600,6 +600,7 @@ See syslog notes.
     }
 ```
 
+
 ### skipverify
 
 **Description:** This option is obsolete, does nothing and is retained
@@ -618,13 +619,24 @@ for backward compatibility.
     }
 ```
 
+
 ### trustkeysfrom
 
-**Description:** List of IPs from whom we accept public keys on trust
+**Description:** List of IPs from whom the server will accept and trust
+new (untrusted) public keys.  They are denoted in either IP or subnet
+form. For compatibility reasons, regular expressions are also
+accepted.
 
-If connecting hosts' public keys have not already been trusted, this allows us
-to accept the keys on trust. Normally this should be an empty list except in
-controlled circumstances.
+The new accepted public keys are written to the `ppkeys`
+directory, and a message is logged:
+
+```
+192.168.122.254> Trusting new key: MD5=0d5603d68dd62d35bab2150e35d055ae
+```
+
+**NOTE:** `trustkeysfrom` should normally be an empty list except in
+controlled circumstances, for example when the network is being set up
+and keys are to be exchanged for the first time.
 
 See also the warning about regular expressions in
 [`allowallconnects`][cf-serverd#allowallconnects].
@@ -641,6 +653,7 @@ See also the warning about regular expressions in
     trustkeysfrom => { "10\.0\.1\.1", "192\.168\..*"};
     }
 ```
+
 
 ### listen
 
