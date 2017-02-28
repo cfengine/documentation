@@ -46,9 +46,9 @@ In addition the server needs to grant access to the clients, this is done in the
 body server control
 
 {
-allowconnects         => { "127.0.0.1" , "10.20.30" };
-allowallconnects      => { "127.0.0.1" , "10.20.30" };
-trustkeysfrom         => { "127.0.0.1" , "10.20.30" };
+allowconnects         => { "127.0.0.1" , "10.20.30.0/24" };
+allowallconnects      => { "127.0.0.1" , "10.20.30.0/24" };
+trustkeysfrom         => { "127.0.0.1" , "10.20.30.0/24" };
 }
 ```
 
@@ -65,7 +65,7 @@ access:
 
   "/var/cfengine/masterfiles"
 
-    admit   => { "127.0.0.1", "10.20.30" };
+    admit   => { "127.0.0.1", "10.20.30.0/24" };
 }
 
 ```
