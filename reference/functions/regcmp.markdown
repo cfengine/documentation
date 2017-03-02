@@ -26,3 +26,5 @@ as a regular character (they only match end of string). You can do this
 using either standard regular expression syntax or using the additional
 features of PCRE (where `(?ms)` changes the way that ., `^` and `$` behave), e.g.
 
+
+**See Also:** `regline()`

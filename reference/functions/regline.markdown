@@ -59,3 +59,5 @@ bundle edit_line upgrade_cfexecd
      "Added a 5 minute schedule to crontabs";
 }
 ```
+
+**See Also:** `regcmp()`
