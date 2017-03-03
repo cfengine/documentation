@@ -42,7 +42,7 @@ in body common control.
 Note that if your `policy` attribute specifies "absent", then the promiser
 string needs to be a bare package name, you cannot use a file name for this.
 
-**Note able differences from `package_method` based implementation:**
+**Noteable differences from `package_method` based implementation:**
 
 * The promiser must be the fully qualified path to a file *or* a *package name*.
   `package_modules` do not have the concept of a
