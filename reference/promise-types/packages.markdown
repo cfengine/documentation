@@ -42,6 +42,54 @@ in body common control.
 Note that if your `policy` attribute specifies "absent", then the promiser
 string needs to be a bare package name, you cannot use a file name for this.
 
+**Note able differences from `package_method` based implementation:**
+
+* The promiser must be the fully qualified path to a file *or* a *package name*.
+  `package_modules` do not have the concept of a
+  flexible [naming convention][packages (deprecated)#package_name_convention].
+
+  For example, here are valid ways to specify a specific package version when
+  using the `package_module` based implementation.
+
+  ```cf3
+    packages:
+
+      debian::
+
+        "apache2"
+          policy => "present",
+          version => "2.2.22",
+          package_module => apt_get,
+          comment => "Install apache from repository";
+
+      redhat::
+
+        "/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm"
+          policy => "present",
+          package_module => yum,
+          comment => "Install apache from a specific RPM";
+  ```
+
+  The following usage is NOT valid.
+
+  ```cf3
+    packages:
+
+      debian::
+
+        "apache2-2.2.22"
+          policy => "present",
+          package_module => apt_get,
+          comment => "INVALID specification of package version";
+
+    redhat::
+        "/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm"
+          policy => "present",
+          package_module => yum,
+          version => "2.2.22",
+          comment => "INVALID specification of package version.";
+  ```
+
 ## Attributes ##
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
