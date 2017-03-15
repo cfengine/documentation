@@ -2,7 +2,7 @@
 layout: default
 title: returnszero
 published: true
-tags: [reference, utility functions, functions, returnszero]
+tags: [reference, utility functions, functions, returnszero, cached function]
 ---
 
 [%CFEngine_function_prototype(command, shell)%]
