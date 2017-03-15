@@ -60,11 +60,20 @@ functions multiple times, which can be a performance concern.
 
 Some _system_ functions are particularly expensive:
 
+{% comment %}
+
+It would be nice if we could get this list of cached functions automatically.
+This is how you can dive into the code to determine which functions are cached.
+
+git grep -B1 FNCALL_OPTION_CACHED | awk -F'"' '/FnCallTypeNew/ {print $2}'
+
+{% endcomment %}
+
 * `execresult()` and `returnszero()` for shell execution
-* `regldap()`, `ldapvalue()`, `ldaparray()`, and `ldaplist()` for LDAP queries
+* `regldap()`, `ldapvalue()`, and `ldaplist()` for LDAP queries
 * `host2ip()` and `ip2host()` for DNS queries
 * `readtcp()` for TCP interactions
-* `hubknowledge()`, `selectservers()`, `remoteclassesmatching()`, and `remotescalar()` for hub queries
+* `hubknowledge()`, and `remotescalar()` for hub queries
 
 When
 enabled
