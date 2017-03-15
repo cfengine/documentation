@@ -2,7 +2,7 @@
 layout: default
 title: remotescalar
 published: true
-tags: [reference, communication functions, functions, remotescalar]
+tags: [reference, communication functions, functions, remotescalar, cached function]
 ---
 
 **This function is only available in CFEngine Enterprise.**

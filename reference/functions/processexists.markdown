@@ -2,7 +2,7 @@
 layout: default
 title: processexists
 published: true
-tags: [reference, process functions, functions, processexists, process, processes, ps]
+tags: [reference, process functions, functions, processexists, process, processes, ps, cached function]
 ---
 
 [%CFEngine_function_prototype(regex)%]

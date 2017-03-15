@@ -2,7 +2,7 @@
 layout: default
 title: remoteclassesmatching
 published: true
-tags: [reference, communication functions, functions, remoteclassesmatching]
+tags: [reference, communication functions, functions, remoteclassesmatching, cached function]
 ---
 
 **This function is only available in CFEngine Enterprise.**
