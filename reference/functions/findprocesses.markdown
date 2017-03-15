@@ -2,7 +2,7 @@
 layout: default
 title: findprocesses
 published: true
-tags: [reference, process functions, functions, findprocesses, process, processes, ps]
+tags: [reference, process functions, functions, findprocesses, process, processes, ps, cached function]
 ---
 
 [%CFEngine_function_prototype(regex)%]

@@ -2,7 +2,7 @@
 layout: default
 title: hubknowledge
 published: true
-tags: [reference, communication functions, functions, hubknowledge]
+tags: [reference, communication functions, functions, hubknowledge, cached function]
 ---
 
 **This function is only available in CFEngine Enterprise.**
