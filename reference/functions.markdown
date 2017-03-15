@@ -74,7 +74,7 @@ git grep -B1 FNCALL_OPTION_CACHED | awk -F'"' '/FnCallTypeNew/ {print $2}'
 * `findprocesses()`, and `processexists()` for querying processes.
 * `host2ip()` and `ip2host()` for DNS queries
 * `readtcp()` for TCP interactions
-* `hubknowledge()`, `remoteclassesmatching()`, and `remotescalar()` for hub queries
+* `hubknowledge()`, and `remotescalar()` for hub queries
 
 When
 enabled
