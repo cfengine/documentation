@@ -2,7 +2,7 @@
 layout: default
 title: readtcp
 published: true
-tags: [reference, communication functions, functions, readtcp]
+tags: [reference, communication functions, functions, readtcp, cached function]
 ---
 
 [%CFEngine_function_prototype(hostnameip, port, sendstring, maxbytes)%]

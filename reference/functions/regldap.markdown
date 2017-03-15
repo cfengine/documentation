@@ -2,7 +2,7 @@
 layout: default
 title: regldap
 published: true
-tags: [reference, communication functions, functions, ldap]
+tags: [reference, communication functions, functions, ldap, cached function]
 ---
 
 **This function is only available in CFEngine Enterprise.**
