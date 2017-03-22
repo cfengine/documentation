@@ -32,10 +32,10 @@ API performance depend on the query result size, to achieve fastest results cons
     query. The Mission Portal uses this for pagination. Optional parameter.
 * **limit**  *(integer)*
     Limit the number of results in the query.
-* **hostContextInclude** *(string)*
-    Includes only results that concern hosts which have specified CFEngine context (class) set. Optional parameter.
-* **hostContextExclude** *(string)*
-    Excludes results that concern hosts which have specified CFEngine context (class) set. Optional parameter.
+* **hostContextInclude** *(array)*
+    Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
+* **hostContextExclude** *(array)*
+    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at lest one of the specified contexts set will be excluded from the results. Optional parameter.
 
 **Example Request Body:**
 
@@ -43,7 +43,7 @@ API performance depend on the query result size, to achieve fastest results cons
 {
   "query": "select hostname, ipaddress from hosts",
   "limit": 2,
-  "hostContextExclude": "policy_server"
+  "hostContextExclude": ["policy_server"]
 }
 ```
 
@@ -109,10 +109,10 @@ API returns entire query result. Make sure that result size is sensible.
     SQL query string.
 * **outputType** *(string)*
     Supported types: 'csv' (default). Optional parameter.
-* **hostContextInclude** *(string)*
-    Includes only results that concern hosts which have specified CFEngine context (class) set. Optional parameter.
-* **hostContextExclude** *(string)*
-    Excludes results that concern hosts which have specified CFEngine context (class) set. Optional parameter.
+* **hostContextInclude** *(array)*
+    Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
+* **hostContextExclude** *(array)*
+    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at lest one of the specified contexts set will be excluded from the results. Optional parameter.
 
 **Example Request Body:**
 
