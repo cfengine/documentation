@@ -13,6 +13,11 @@ In CFEngine Enterprise, custom defined monitoring targets also become
 variables in this context, named by the handle of the promise that defined
 them.
 
+### mon.listening_ports
+
+All of the TCP and UDP ports for both IPV4 and IPv6 that `cf-monitord` has
+observed listening.
+
 ### mon.listening_udp4_ports
 
 Port numbers that were observed to be set up to receive connections on the
