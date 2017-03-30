@@ -22,17 +22,18 @@ Any supported host can be a policy server in Community installations of CFEngine
 
 ## Hosts ##
 
-| Platform    | Versions                   | Architectures |
-| :-----:     | :----------:               | :-----------: |
-| AIX         | 5.3*, 6, 7                 | PowerPC       |
-| CentOS/RHEL | 4, 5, 6, 7                 | x86-64, x86   |
-| Debian      | 4, 5, 6, 7, 8              | x86-64, x86   |
-| HP-UX       | 11.23+                     | Itanium       |
-| SLES        | 10, 11                     | x86-64, x86   |
-| Solaris     | 9, 10, 11                  | UltraSparc    |
-| Ubuntu      | 10.04, 12.04, 14.04, 16.04 | x86-64, x86   |
-| Windows     | 2008                       | x86-64, x86   |
-| Windows     | 2008, 2012                 | x86-64        |
+| Platform    | Versions                   | Architectures   |
+| :-----:     | :----------:               | :-----------:   |
+| AIX         | 5.3*, 6, 7                 | PowerPC         |
+| CentOS/RHEL | 4, 5, 6, 7                 | x86-64, x86     |
+| Debian      | 4, 5, 6, 7, 8              | x86-64, x86     |
+| HP-UX       | 11.23+                     | Itanium         |
+| SLES        | 10, 11                     | x86-64, x86     |
+| Solaris     | 9, 11                      | UltraSparc, x86 |
+| Solaris     | 10                         | UltraSparc      |
+| Ubuntu      | 10.04, 12.04, 14.04, 16.04 | x86-64, x86     |
+| Windows     | 2008                       | x86-64, x86     |
+| Windows     | 2008, 2012                 | x86-64          |
 
 \* AIX 5.3 is required to have "5300-05-CSP" or later
 
