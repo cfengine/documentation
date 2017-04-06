@@ -9,7 +9,12 @@ tags: [reference, text functions, functions, text, string_tail, tail, substring]
 
 **Description:** Returns the last `max` bytes of `data`.
 
-[%CFEngine_function_attributes(data, max)%]
+If `max` is negative, then everything but the first `max` bytes is returned.
+
+**Arguments:**
+
+* `data`: `string`, in the range: `.*`
+* `max`: `int`, in the range: `-99999999999,99999999999`
 
 **Example:**
 
