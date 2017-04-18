@@ -108,6 +108,9 @@ Note that the child's parameters can be passed up to the parent.
     }
 ```
 
+**Note:** When a variable is re-defined the associated meta attributes are also
+re-defined.
+
 **History:** Was introduced in 3.7.0.
 
 ## Common Attributes
