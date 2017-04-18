@@ -41,7 +41,8 @@ very, very depressing.
 [Monitoring][Monitoring] allows you to sample a metric and assess its value
 across your hosts over time. Collection of monitoring information is disabled by
 default. Metrics must match `monitoring_include` in the appropriate
-`report_data_select` body. The [Masterfiles Policy Framework][MPF] uses `body
+`report_data_select` body.
+The [Masterfiles Policy Framework][Masterfiles Policy Framework] uses `body
 report_data_select default_data_select_policy_hub` to specify metrics that
 should be collected from policy hubs and `default_data_select_host` to specify
 metrics that should be collected from non hubs.
