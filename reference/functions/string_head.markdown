@@ -11,10 +11,7 @@ tags: [reference, text functions, functions, text, head, string_head, substring]
 
 If `max` is negative, then everything but the last `max` bytes is returned.
 
-**Arguments:**
-
-* `data`: `string`, in the range: `.*`
-* `max`: `int`, in the range: `-99999999999,99999999999`
+[%CFEngine_function_attributes(data, max)%]
 
 **Example:**
 
