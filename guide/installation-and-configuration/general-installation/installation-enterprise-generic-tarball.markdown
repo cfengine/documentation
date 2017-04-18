@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Installing from Binary tarball on CoreOS
+title: Installing from Binary tarball
 published: false
 sorting: 50
-tags: [getting started, installation, CoreOS]
+tags: [getting started, installation]
 ---
 
-CFEngine can be installed into a CoreOS host by means of a generic binary
-tarball.
+Not all systems come with a package manager. For these systems you can install
+CFEngine by means of a generic binary tarball.
 
-First download the binary onto the CoreOS host.
+First download the binary onto the host.
 
 Next unpack the archive:
 
