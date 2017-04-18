@@ -117,9 +117,14 @@ Host API allows to access host specific information.
 
 **Method:** DELETE
 
-Remove data about the host from reporting database and stop collecting reports from the host. API call schedules a job for purging authentication keys exchanged during bootstrap which prevents host from being collected in the future. Key purging usually take an effect within 5-10 minutes.
+Remove data about the host from reporting database and stop collecting reports
+from the host. API call schedules a job for purging authentication keys
+exchanged during bootstrap which prevents host from being collected in the
+future. Key purging usually take an effect within 5-10 minutes.
 
-Deleted host need to be re-bootstrapped if it was deleted by accident.
+[Depending on the configuration][Masterfiles Policy Framework#trustkeysfrom]
+of [`trustkeysfrom`][cf-serverd#trustkeysfrom] for the hub hosts may re-appear
+and resume being collected from after being deleted.
 
 ## List monitoring attributes for host
 
