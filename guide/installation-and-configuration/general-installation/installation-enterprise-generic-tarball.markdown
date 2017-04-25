@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Installing from Binary tarball
-published: false
+published: true
 sorting: 50
 tags: [getting started, installation]
 ---
