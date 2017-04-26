@@ -1294,3 +1294,33 @@ A specific example would be:
 ```
 
 **History:** Was introduced in 3.7.0.
+
+### with
+
+**Description:** Reusable promise attribute to avoid repetition.
+
+Very often, it's handy to refer to a single value in many places in a promise,
+especially in the promiser. Especially when iterating over a list, the `with`
+attribute can save you a lot of work and code.
+
+Another use of the `with` attribute is when in `reports` you want to use
+`format()` or other functions that produce lots of text, but don't want to
+create an intermediate variable.
+
+Another common use of `with` is to avoid canonifying a value. In that case,
+you'd use `with => canonify("the value")` so you don't have to create a
+"canonification" array.
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+[%CFEngine_include_snippet(with.cf, #\+begin_src cfengine3, .*end_src)%]
+
+Output:
+
+[%CFEngine_include_snippet(with.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+**History:** Was introduced in 3.11.0

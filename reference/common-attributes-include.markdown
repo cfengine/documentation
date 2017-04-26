@@ -18,4 +18,6 @@ the [Promise Types and Attributes] page. The common attributes are as follows:
 
 #### [meta][Promise Types and Attributes#meta]
 
+#### [with][Promise Types and Attributes#with]
+
 <hr>
