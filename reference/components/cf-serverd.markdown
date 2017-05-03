@@ -504,16 +504,15 @@ to syslog. These files are deemed to be particularly sensitive.
 
 ### maxconnections
 
-**Description:** Maximum number of connections that will be accepted
-
-Watch out for kernel limitations for maximum numbers of open file
-descriptors which can limit this.
+**Description:** Maximum number of concurrent connections the server
+  will accept. Recommended value for a hub is **two times the total
+  number of hosts bootstrapped to this hub**.
 
 **Type:** `int`
 
 **Allowed input range:** `0,99999999999`
 
-**Default value:** 30 remote queries
+**Default value:** 30
 
 **Example:**
 
