@@ -12,7 +12,7 @@ Storage promises refer to disks and filesystem properties.
 
          "/disk volume or mountpoint"
 
-           volume = volume_body,
+           volume => volume_body,
            ...;
 ```
 
