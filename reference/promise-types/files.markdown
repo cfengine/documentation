@@ -13,7 +13,7 @@ basically into three categories: create, delete and edit.
 
       "/path/file_object"
 
-          perms = perms_body,
+          perms => perms_body,
           ... ;
 ```
 

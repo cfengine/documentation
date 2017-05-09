@@ -17,7 +17,7 @@ regular expression is [anchored][anchored], meaning it must match the entire nam
 
     "regex"
 
-       authorize = { "usernames", ... };
+       authorize => { "usernames", ... };
 ```
 
 It is worth re-iterating here that it is not possible to send commands or modify promise definitions by remote access. At best users may try to
