@@ -14,9 +14,9 @@ allows for more careful conflict analysis to be carried out.
 
        "/path/to/command args"
 
-                  args = "more args",
-                  contain = contain_body,
-                  module = true/false;
+                  args => "more args",
+                  contain => contain_body,
+                  module => "true|false";
 ```
 
 Output from commands executed here is quoted inline, but prefixed with
