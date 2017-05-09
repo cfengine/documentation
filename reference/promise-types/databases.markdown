@@ -66,11 +66,11 @@ access on the server.
 
     body database_server name
     {
-      db_server_owner = "account name";
-      db_server_password = "password";
-      db_server_host = "hostname or omit for localhost";
-      db_server_type = "mysql/posgres";
-      db_server_connection_db = "database we can connect to";
+      db_server_owner => "account name";
+      db_server_password => "password";
+      db_server_host => "hostname or omit for localhost";
+      db_server_type => "mysql/posgres";
+      db_server_connection_db => "database we can connect to";
     }
 ```
 
