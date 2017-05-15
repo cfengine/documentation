@@ -21,7 +21,7 @@ You can get the fully qualified hostname on your hub by running the following
 commands.
 
 ```console
-[root@hub ~]# cf-promises --show-vars | grep "default:sys\.fqhost"
+[root@hub ~]# cf-promises --show-vars=default:sys\.fqhost
 default:sys.fqhost                       hub                                                          inventory,source=agent,attribute_name=Host name
 ```
 
