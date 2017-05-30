@@ -9,6 +9,10 @@ tags: [getting started, installation, faq]
 You can see a high level overview of the first order classes and variables using
 `cf-promises --show-classes` and `cf-promises --show-vars`.
 
+Both of those commands will take an optional regular expression you can use to
+filter the classes or variables. For example `cf-promises --show-classes=MT`
+will show all the classes that contain `MT` like `GMT_July`.
+
 # Show first order classes with cf-promises
 
 ```console

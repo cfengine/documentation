@@ -48,7 +48,7 @@ Currently the augments file can contain three keys:
   (assuming you placed the data in `$(sys.inputdir)/def.json`) result in
 
   ```
-cf-promises --show-vars
+cf-promises --show-vars=default:def
 ...
 default:def.myplatform                   linux                                                        source=augments_file
 default:def.phone                        22-333-4444                                                  source=augments_file
@@ -77,7 +77,7 @@ default:def.phone                        22-333-4444                            
   the above two classes result in:
 
   ```
-% cf-promises --show-classes
+% cf-promises --show-classes=my_
 ...
 my_always                                                    source=augments_file,hardclass
 my_other_apache                                              source=augments_file,hardclass
