@@ -26,7 +26,12 @@ and inventory management. For more information about how this is configured plea
 ## Listing Classes
 
 To see `hard classes` and `soft classes` defined in common bundles on a
-particular host, run `cf-promises --show-classes` as a privileged user.
+particular host, run `cf-promises --show-classes` as a privileged user to show
+namespace scoped classes that can be resolved during pre-evaluation.
+Alternatively run `cf-agent --show-evaluated-classes` to get the listing of
+classes at the end of the agent execution. This will show additional namespace
+scoped classes that were defined over the course of the agent execution. This
+output can be convenient for policy testing.
 
 Example:
 
@@ -52,7 +57,8 @@ list of all the defined classes in a list, inside CFEngine policy
 itself.  `classesmatching()` is especially useful because it also lets
 you specify tag regular expressions.
 
-**See also**: The `--show-vars` option.
+**See also**: The ```--show-vars``` option for `cf-promises` and the
+```--show-evaluated-vars``` option for `cf-agent`.
 
 ## Tags
 
