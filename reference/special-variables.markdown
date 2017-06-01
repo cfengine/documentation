@@ -9,11 +9,14 @@ tags: [reference, variables]
 Variables are promises that can be defined in any promise bundle. Users can create their
 own [variables][Variables].
 
-To see all of the variables defined on a particular host, run
+To see variables defined on a particular host during pre-evaluation run
+`cf-promises --show-vars` as a privileged user. To see all variables defined
+over the course of an agent execution run `cf-agent --show-evaluated-vars`. Note
+cf-promises shows variables resolved during pre-evaluation while cf-agent can
+show variables resolved during actual execution where the system may be
+modified.
 
-    $ cf-promises --show-vars
-
-as a privileged user.  See `Classes` for an explanation of the tags.
+See `Classes` for an explanation of the tags.
 
 CFEngine includes the following **special variables**:
 

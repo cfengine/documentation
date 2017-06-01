@@ -2,8 +2,12 @@
 layout: default
 title: guest_environments
 published: true
-tags: [reference, bundle agent, guest_environments, promises, promise types, virtual machines, agent, promises, libvirt, KVM, VMWare]
+tags: [reference, bundle agent, guest_environments, promises, promise types, virtual machines, agent, promises, libvirt, KVM, VMWare, deprecated]
 ---
+
+Due to lack of use this promise type has been **deprecated in 3.11.0**. We have
+seen that in most cases users want to interact with hypervisors as peripheral
+instead of managing the underlying guest virtual machines.
 
 Guest environment promises describe enclosed computing environments that
 can host physical and virtual machines, Solaris zones, grids, clouds or

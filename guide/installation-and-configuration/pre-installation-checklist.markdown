@@ -10,14 +10,12 @@ tags: [guide, installation]
 
 [Download CFEngine](http://cfengine.com/product/free-download)
 
-
 ## System requirements
 
 Please see [Installing Enterprise for Production][Installing Enterprise for Production] for hardware and configuration requirements, and
 for [Supported Platforms and Versions][Supported Platforms and Versions] operating system support.
 
-
-## Required Knowledge ##
+## Required knowledge
 
 * Linux
 * SSH

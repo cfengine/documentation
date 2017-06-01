@@ -13,6 +13,14 @@ Both of those commands will take an optional regular expression you can use to
 filter the classes or variables. For example `cf-promises --show-classes=MT`
 will show all the classes that contain `MT` like `GMT_July`.
 
+You can see the variables and namespace scoped classes defined at the end of an
+agent execution by using the ```--show-evaluated-vars``` or
+```--show-evaluated-classes``` options to `cf-agent`. In addition to the
+variables and classes shown by `cf-promsies --show-classes` or `cf-promises
+--show-vars` this will show variables and namespace scoped classes that get
+defined during a full agent run where the system may be modified and more policy
+is evaluated.
+
 # Show first order classes with cf-promises
 
 ```console
@@ -1267,3 +1275,4 @@ default:sys.workdir                      /var/cfengine                          
 default:url_ping.const#n                 <non-printable>                                              source=agent
 default:url_ping.const#r                 <non-printable>                                              source=agent
 ```
+
