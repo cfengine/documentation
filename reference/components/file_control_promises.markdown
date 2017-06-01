@@ -24,7 +24,7 @@ tags: [body, bodies, components, common, namespace, promises, bundlesequence]
 This directive can be given multiple times within any file,
 outside of body and bundle definitions.
 
-Only [soft classes][Classes and Decisions#soft-classes] from common bundles can
+Only [soft classes][Classes and Decisions] from common bundles can
 be used in class decisions inside `file control bodies`.
 
 ### inputs
