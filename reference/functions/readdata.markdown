@@ -2,7 +2,7 @@
 layout: default
 title: readdata
 published: true
-tags: [reference, io functions, functions, readcsv, readjson, readyaml, readdata, CSV, JSON, YAML, container]
+tags: [reference, io functions, functions, readcsv, readjson, readyaml, readdata, readenvfile, CSV, JSON, YAML, ENV, container]
 ---
 
 [%CFEngine_function_prototype(filename, filetype)%]
@@ -25,6 +25,10 @@ When `filetype` is `YAML`, this function behaves exactly like
 `readyaml()` and returns the same data structure, except there is no
 data size limit (`maxbytes` is `inf`).
 
+When `filetype` is `ENV`, this function behaves exactly like
+`readenvfile()` and returns the same data structure, except there is no
+data size limit (`maxbytes` is `inf`).
+
 [%CFEngine_function_attributes(filename, filetype)%]
 
 **Example:**
@@ -41,6 +45,6 @@ Output:
 
 [%CFEngine_include_snippet(readdata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** `readcsv()`, `readyaml()`, `readjson()`, and `data` documentation.
+**See also:** `readcsv()`, `readyaml()`, `readjson()`, `readenvfile()`, `data` documentation.
 
 **History:** Was introduced in 3.7.0.
