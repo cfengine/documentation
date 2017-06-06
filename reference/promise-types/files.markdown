@@ -3187,7 +3187,9 @@ implementation, but you can use `mustache` as well.
      template_method => "mustache";
 ```
 
-[%CFEngine_include_example(mustache_variable.cf)%]
+{%raw%}
+[%CFEngine_include_example(mustache_variables.cf)%]
+{%endraw%}
 
 **See also:** `edit_template`, `template_data`, `datastate()`
 
