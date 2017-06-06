@@ -23,6 +23,10 @@ cfengine:
   latest_package_build: NA
   masterfiles_branch: "master"
 
+Template:
+  parse:
+    line_numbers: true
+
 vagrant:
   version: "1.7.4"
 
