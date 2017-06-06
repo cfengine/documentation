@@ -2970,7 +2970,9 @@ A variable "miss" returns an empty string.
 Sections render blocks of text one or more times, depending on the value of the
 key in the current context.
 
-A section begins with a pound and ends with a slash. That is, {% raw %}```{{#person}}```{% endraw %} begins a "person" section while {% raw %}```{{/person}}```{% endraw %} ends it.
+A section begins with a pound and ends with a slash. That is, {% raw
+%}```{{#person}}```{% endraw %} begins a "person" section while {% raw
+%}```{{/person}}```{% endraw %} ends it.
 
 The behavior of the section is determined by the value of the key.
 
@@ -2994,7 +2996,9 @@ single rendering of the block.
 
 ##### template_method mustache Inverted Sections
 
-An inverted section begins with a caret (hat) and ends with a slash. That is {% raw %}```{{^person}}```{% endraw %} begins a "person" inverted section while {% raw %}```{{/person}}```{% endraw %} ends it.
+An inverted section begins with a caret (hat) and ends with a slash. That is {%
+raw %}```{{^person}}```{% endraw %} begins a "person" inverted section while {%
+raw %}```{{/person}}```{% endraw %} ends it.
 
 While sections can be used to render text one or more times based on the value
 of the key, inverted sections may render text once based on the inverse value of
