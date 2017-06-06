@@ -2961,7 +2961,9 @@ HTML, use the triple mustache or an ampersand.
 
 A variable "miss" returns an empty string.
 
-[%CFEngine_include_example(mustache_variables.cf)%]
+[%CFEngine_include_snippet(mustache_variables.cf, #\+begin_src cfengine3, .*end_src)%]
+
+[%CFEngine_include_snippet(mustache_variables.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 ##### template_method mustache Sections
 
@@ -2977,18 +2979,24 @@ The behavior of the section is determined by the value of the key.
 If the key exists and has a value of false or an empty list, the HTML between
 the pound and slash will not be displayed.
 
-[%CFEngine_include_example(mustache_sections_empty_list.cf)%]
+[%CFEngine_include_snippet(mustache_sections_empty_list.cf, #\+begin_src cfengine3, .*end_src)%]
+
+[%CFEngine_include_snippet(mustache_sections_empty_list.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **Non-Empty Lists:**
 
-[%CFEngine_include_example(mustache_sections_non_empty_list.cf)%]
+[%CFEngine_include_snippet(mustache_sections_non_empty_list.cf, #\+begin_src cfengine3, .*end_src)%]
+
+[%CFEngine_include_snippet(mustache_sections_non_empty_list.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **Non-False Values:**
 
 When the value is non-false but not a list, it will be used as the context for a
 single rendering of the block.
 
-[%CFEngine_include_example(mustache_sections_non_false_value.cf)%]
+[%CFEngine_include_snippet(mustache_sections_non_false_value.cf, #\+begin_src cfengine3, .*end_src)%]
+
+[%CFEngine_include_snippet(mustache_sections_non_false_value.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 ##### template_method mustache Inverted Sections
 
@@ -2999,20 +3007,27 @@ of the key, inverted sections may render text once based on the inverse value of
 the key. That is, they will be rendered if the key doesn't exist, is false, or
 is an empty list.
 
-[%CFEngine_include_example(mustache_sections_inverted.cf)%]
+[%CFEngine_include_snippet(mustache_sections_inverted.cf, #\+begin_src cfengine3, .*end_src)%]
+
+[%CFEngine_include_snippet(mustache_sections_inverted.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
 
 ##### template_method mustache Comments
 
 Comments begin with a bang and are ignored. Comments may contain newlines.
 
-[%CFEngine_include_example(mustache_comments.cf)%]
+[%CFEngine_include_snippet(mustache_comments.cf, #\+begin_src cfengine3, .*end_src)%]
+
+[%CFEngine_include_snippet(mustache_comments.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 ##### template_method mustache Set Delimiter
 
 Set Delimiter tags start with an equal sign and change the tag delimiters to
 custom strings.
 
-[%CFEngine_include_example(mustache_set_delimiters.cf)%]
+[%CFEngine_include_snippet(mustache_set_delimiters.cf, #\+begin_src cfengine3, .*end_src)%]
+
+[%CFEngine_include_snippet(mustache_set_delimiters.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 ##### template_method mustache extensions
 
@@ -3020,22 +3035,30 @@ custom strings.
 over the top level of a container and rendering json representation of data
 given with `$` and `%`.
 
-[%CFEngine_include_example(mustache_extension_top.cf)%]
+[%CFEngine_include_snippet(mustache_extension_top.cf, #\+begin_src cfengine3, .*end_src)%]
+
+[%CFEngine_include_snippet(mustache_extension_top.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 `%` variable prefix causing data to be rendered as multi-line json
 representation. Like output from `storejson()`.
 
-[%CFEngine_include_example(mustache_extension_multiline_json.cf)%]
+[%CFEngine_include_snippet(mustache_extension_multiline_json.cf, #\+begin_src cfengine3, .*end_src)%]
+
+[%CFEngine_include_snippet(mustache_extension_multiline_json.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 `$` variable prefix causing data to be rendered as compact json representation.
 Like output from `format()` with the ```%S``` format string.
 
-[%cfengine_include_example(mustache_extension_compact_json.cf)%]
+[%CFEngine_include_snippet(mustache_extension_compact_json.cf, #\+begin_src cfengine3, .*end_src)%]
+
+[%CFEngine_include_snippet(mustache_extension_compact_json.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 `@` expands the current key being iterated to complement the value as accessed
 with `.`.
 
-[%CFEngine_include_example(mustache_extension_expand_key.cf)%]
+[%CFEngine_include_snippet(mustache_extension_expand_key.cf, #\+begin_src cfengine3, .*end_src)%]
+
+[%CFEngine_include_snippet(mustache_extension_expand_key.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 ### touch
 
