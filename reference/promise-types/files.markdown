@@ -2957,8 +2957,8 @@ name key, the parent contexts will be checked recursively. If the top context is
 reached and the name key is still not found, nothing will be rendered.
 
 **All variables are HTML escaped by default**. If you want to return unescaped
-HTML, use the triple mustache: ```{{{name}}}``` or an ampersand (```{{&
-name}}```).
+HTML, use the triple mustache: {% raw %}```{{{name}}}```{% endraw %} or an
+ampersand ({% raw %}```{{& name}}```{% endraw %}).
 
 A variable "miss" returns an empty string.
 
@@ -2969,8 +2969,9 @@ A variable "miss" returns an empty string.
 Sections render blocks of text one or more times, depending on the value of the
 key in the current context.
 
-A section begins with a pound and ends with a slash. That is, ```{{#person}}```
-begins a "person" section while ```{{/person}}``` ends it.
+A section begins with a pound and ends with a slash. That is, {% raw
+%}```{{#person}}```{% endraw %} begins a "person" section while {% raw
+%}```{{/person}}```{% endraw %} ends it.
 
 The behavior of the section is determined by the value of the key.
 
@@ -2994,9 +2995,9 @@ single rendering of the block.
 
 ##### template_method mustache Inverted Sections
 
-An inverted section begins with a caret (hat) and ends with a slash. That is
-```{{^person}}``` begins a "person" inverted section while ```{{/person}}```
-ends it.
+An inverted section begins with a caret (hat) and ends with a slash. That is {%
+raw %}```{{^person}}```{% endraw %} begins a "person" inverted section while {%
+raw %}```{{/person}}```{% endraw %} ends it.
 
 While sections can be used to render text one or more times based on the value
 of the key, inverted sections may render text once based on the inverse value of
@@ -3014,15 +3015,16 @@ Comments begin with a bang and are ignored. Comments may contain newlines.
 ##### template_method mustache Set Delimiter
 
 Set Delimiter tags start with an equal sign and change the tag delimiters from
-```{{``` and ```}}``` to custom strings.
+{% raw %}```{{```{% endraw %} and {% raw %}```}}```{% endraw %} to custom
+strings.
 
 [%CFEngine_include_example(mustache_set_delimiters.cf)%]
 
 ##### template_method mustache extensions
 
 `-top-` special key representing the complete data given. Useful for iterating
-over the top level of a container `{{#-top-}} ... {{/-top-}}` and rendering json
-representation of data given with `$` and `%`.
+over the top level of a container {% raw %}`{{#-top-}} ... {{/-top-}}`{% endraw
+%} and rendering json representation of data given with `$` and `%`.
 
 [%CFEngine_include_example(mustache_extension_top.cf)%]
 
@@ -3034,7 +3036,7 @@ representation. Like output from `storejson()`.
 `$` variable prefix causing data to be rendered as compact json representation.
 Like output from `format()` with the ```%S``` format string.
 
-[%CFEngine_include_example(mustache_extension_compact_json.cf)%]
+[%cfengine_include_example(mustache_extension_compact_json.cf)%]
 
 `@` expands the current key being iterated to complement the value as accessed
 with `.`.
