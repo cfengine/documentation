@@ -3024,7 +3024,8 @@ strings.
 ##### template_method mustache extensions
 
 `-top-` special key representing the complete data given. Useful for iterating
-over the top level of a container {% raw %}`{{#-top-}} ... {{/-top-}}`{% endraw %} and rendering json representation of data given with `$` and `%`.
+over the top level of a container {% raw %}`{{#-top-}} ... {{/-top-}}`{% endraw
+%} and rendering json representation of data given with `$` and `%`.
 
 [%CFEngine_include_example(mustache_extension_top.cf)%]
 
