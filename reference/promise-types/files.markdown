@@ -3187,6 +3187,8 @@ implementation, but you can use `mustache` as well.
      template_method => "mustache";
 ```
 
+[%CFEngine_include_example(mustache_variables.cf)%]
+
 **See also:** `edit_template`, `template_data`, `datastate()`
 
 ### touch
