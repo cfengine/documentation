@@ -1766,8 +1766,32 @@ deleted (that is, it "falls off the end" of the rotation).
 
 ### edit_template
 
-**Description:** The path to a Mustache or native-CFEngine template file to
-expand.
+**Description:** The name of a Mustache or native-CFEngine template file to expand
+
+The default native-CFEngine template format (selected when
+`template_method` is `cfengine` or unspecified) uses inline tags to
+mark regions and classes. Each line represents an `insert_lines`
+promise, unless the promises are grouped into a block using:
+
+```cf3
+    [%CFEngine BEGIN %]
+    ...
+    [%CFEngine END %]
+```
+
+Variables, scalars and list variables are expanded within each promise
+based on the current scope of the calling promise.  If lines are
+grouped into a block, the whole block is repeated when lists are
+expanded (see the Special Topics Guide on editing).
+
+If a class-context modified is used:
+
+```cf3
+[%CFEngine class-expression:: %]
+```
+
+then the lines that follow are only inserted if the context matches the
+agent's current context. This allows conditional insertion.
 
 **Type:** `string`
 
@@ -1776,18 +1800,348 @@ expand.
 **Example:**
 
 ```cf3
-  files:
+    #This is a template file /templates/input.tmpl
 
-    "/etc/issue"
-      edit_template => "$(this.promise_dirname)/issue.mustache",
-      template_method => "mustache";
+    These lines apply to anyone
 
-    "/etc/motd"
-      edit_template => "$(this.promise_dirname)/motd.mustache";
+    [%CFEngine solaris.Monday:: %]
+    Everything after here applies only to solaris on Mondays
+    until overridden...
+
+    [%CFEngine linux:: %]
+    Everything after here now applies now to linux only.
+
+    [%CFEngine BEGIN %]
+    This is a block of text
+    That contains list variables: $(some.list)
+    With text before and after.
+    [%CFEngine END %]
+
+    nameserver $(some.list)
 ```
 
-**History:** Was introduced in 3.3.0, Nova 2.2.0 (2012). Mustache templates were
-introduced in 3.6.0.
+For example:
+
+```cf3
+    [%CFEngine any:: %]
+    VirtualHost $(sys.ipv4[eth0]):80>
+            ServerAdmin             $(stage_file.params[apache_mail_address][1])
+            DocumentRoot            /var/www/htdocs
+            ServerName              $(stage_file.params[apache_server_name][1])
+            AddHandler              cgi-script cgi
+            ErrorLog                /var/log/httpd/error.log
+            AddType                 application/x-x509-ca-cert .crt
+            AddType                 application/x-pkcs7-crl    .crl
+            SSLEngine               off
+            CustomLog               /var/log/httpd/access.log
+    /VirtualHost>
+
+    [%CFEngine webservers_prod:: %]
+    [%CFEngine BEGIN %]
+    VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>
+            ServerAdmin             $(stage_file.params[apache_mail_address][1])
+            DocumentRoot            /var/www/htdocs
+            ServerName              $(stage_file.params[apache_server_name][1])
+            AddHandler              cgi-script cgi
+            ErrorLog                /var/log/httpd/error.log
+            AddType                 application/x-x509-ca-cert .crt
+            AddType                 application/x-pkcs7-crl    .crl
+            SSLEngine               on
+            SSLCertificateFile      $(stage_file.params[apache_ssl_crt][1])
+            SSLCertificateKeyFile   $(stage_file.params[apache_ssl_key][1])
+            CustomLog               /var/log/httpd/access.log
+    /VirtualHost>
+    [%CFEngine END %]
+```
+
+The Mustache template format works differently.  When you specify
+`template_method` to be `mustache`, none of the variables or classes
+in the promise's context will come through.  Instead, you pass a
+`data` variable (a "data container") to the promise's `template_data`
+attribute. You can use `mergedata()`, the various `data_*` functions,
+`readyaml()`, `parseyaml()`, `readjson()`, and `parsejson()` to
+generate `data` variables.
+
+If you don't specify a `template_data` container with Mustache
+templates, the output of the function `datastate()` is used instead, so
+you can then use `classes.x` as a boolean trigger based on class `x`
+and `vars.bundlename.y` to get the value of variable `y` in bundle
+`bundlename`. The advantage of specifying `template_data` however, is
+that variable references become shorter, and that you can change the
+data source without changing the Mustache template.
+
+The full specification for Mustache templates is at http://mustache.github.io/
+
+**CFEngine-specific extensions:**
+
+Mustache templates in CFEngine can replace the `$variable` expression
+with the compact one-line JSON representation of that variable. For
+instance, if `myvar` contains the data `{"x": "y"}`, that's exactly
+what will show up in the output. This is the same as evaluating
+`format("%S", myvar)` into a string and using that string in the
+Mustache template, except there are no string size limitations and
+it's much more efficient.
+
+Furthermore, you can use `%variable` to obtain the full multi-line
+representation of a variable, just like calling `storejson(variable)`
+except there are no string size limitations and it's much more
+efficient.
+
+When iterating over an array, Mustache templates in CFEngine can replace the `@`
+variable with the current iteration's key.  The example below will show it.
+
+To iterate over the top-level container, Mustache templates in
+CFEngine can use {% raw %}`{{#-top-}}` ... `{{/-top-}}`{% endraw %}.
+
+These extensions are not in the Mustache standard.
+
+**Example:**
+
+Save this in `test_mustache.cf`, for example.
+
+```cf3
+body common control
+{
+    bundlesequence => { test_mustache };
+}
+
+bundle agent test_mustache
+{
+  files:
+      "/tmp/myfile.txt"
+      create => "true",
+      edit_template => "$(this.promise_filename).mustache",
+      template_method => "mustache",
+      template_data => parsejson('
+{
+ "x": 100,
+ "boolean": false,
+ "list":
+  [
+   { "k": 789, "v": 0 },
+   { "k": null, "v": true },
+   { "k": -1, "v": -2 }
+  ],
+ "map":
+  {
+   "789": 0,
+   "-1": -2,
+   "logdir": "/var/log"
+  }
+}');
+}
+```
+
+Simply, the data container's top-level keys will be used.  So this template
+(saved in `test_mustache.cf.mustache` if you follow the example):
+
+{% raw %}
+```
+x is {{x}}
+
+{{#boolean}}The boolean is true{{/boolean}}
+{{^boolean}}The boolean is false{{/boolean}}
+
+{{#list}}{{k}}={{v}}, {{/list}}
+{{#map}}{{@}}={{.}}, {{/map}}
+```
+{% endraw %}
+
+Will produce this text in `/tmp/myfile.txt` when you run `cf-agent -f
+./test_mustache.cf`:
+
+
+```
+x is 100
+
+
+The boolean is false
+
+789=0, =true, -1=-2,
+789=0, -1=-1, logdir=/var/log,
+```
+
+**Example:**
+
+This is an example using the `datastate()` capability mentioned earlier.
+Save this in `test_datastate_mustache.cf`, for example.
+
+```cf3
+body common control
+{
+      bundlesequence => { holder, test_datastate_mustache };
+}
+
+bundle common holder
+{
+  classes:
+      "holderclass" expression => "any"; # will be global
+
+  vars:
+      "s" string => "Hello!";
+      "d" data => parsejson('[4,5,6]');
+      "list" slist => { "element1", "element2" };
+}
+
+bundle agent test_datastate_mustache
+{
+  files:
+      "/tmp/myfile.txt"
+      create => "true",
+      edit_template => "$(this.promise_filename).mustache",
+      template_method => "mustache";
+}
+```
+
+Then this template
+(saved in `test_datastate_mustache.cf.mustache` if you follow the example):
+
+{% raw %}
+```
+{{#classes.holderclass}}
+    {{#classes.debian}}
+The holderclass is defined on debian
+    {{/classes.debian}}
+    {{#classes.centos}}
+The holderclass is defined on centos
+    {{/classes.centos}}
+{{/classes.holderclass}}
+{{^classes.holderclass}}The holderclass is not defined{{/classes.holderclass}}
+
+{{#vars.holder.list}}element = {{.}}, {{/vars.holder.list}}
+
+holder.s = {{vars.holder.s}}
+```
+{% endraw %}
+
+Will produce this text in `/tmp/myfile.txt` when you run `cf-agent -f
+./test_datastate_mustache.cf`:
+
+```
+The holderclass is defined
+
+
+element = element1, element = element2,
+
+holder.s = Hello!
+```
+
+**Example:**
+
+The policy
+
+```cf3
+body common control
+{
+   bundlesequence => { "main", };
+}
+
+bundle agent main
+{
+   vars:
+      solar_system::
+         "home_star" string => "sol";
+         "planets" slist => { "mercury", "venus", "earth" };
+         "a[moon]" string => "luna";
+
+      star::
+         "a[star]" slist => { "rigel", "vega", "polaris" };
+
+      earth::
+         "earth" data => parsejson('
+         [
+            {
+               "oceans" : [ "atlantic", "pacific", "indian", "arctic" ],
+               "seas" : [ "caribbean", "dead", "black", "coral" ],
+               "position" : "3",
+               "orbit" : "1au",
+            }
+         ]
+         ');
+
+   files:
+      "/tmp/mytemplate"
+         create          => 'true',
+         template_method => 'mustache',
+         edit_template   => '${sys.workdir}/inputs/mustache.tmp';
+}
+```
+
+The template:
+
+{% raw %}
+```
+This file is edited by CFEngine and is always in place.
+
+{{#classes.solar_system}}
+The star is {{vars.main.home_star}}.
+{{#vars.main.planets}}{{.}} is a planet.
+{{/vars.main.planets}}
+
+But {{vars.main.a[moon]}} is a moon.
+{{/classes.solar_system}}
+
+{{#classes.star}}
+Some stars are:
+{{#vars.main.a[star]}}{{.}}, {{/vars.main.a[star]}}.
+{{/classes.star}}
+
+{{#classes.earth}}
+{{#vars.main.earth}}
+Earth is planet number {{position}}, at an orbit of {{orbit}}.
+Oceans include {{#oceans}} {{.}},{{/oceans}}.
+Seas include {{#seas}} {{.}},{{/seas}}.
+{{/vars.main.earth}}
+{{/classes.earth}}
+```
+{% endraw %}
+
+* {% raw %}{{#classes.solar_system}}{% endraw %} starts the beginning of a class
+  block. Unlike CFEngine’s normal code this block must be ended with
+  {% raw %}{/classes.solar_system}}{% endraw %}.  Everything in-between is evaluated
+  when the class solar_system is true.
+
+* Strings take the form of {% raw %}{{vars.bundle.name}}{% endraw %} as seen in
+  {% raw %}{{vars.main.home_star}}{% endraw %} and {% raw %}{{vars.main.a[moon]}}{% endraw %}. It’s
+  best to avoid arrays and use JSON data containers instead.
+
+* {% raw %}{{#vars.main.planets}}{% endraw %} starts the iteration of the list
+  main.planets.  Everything between that and
+  {% raw %}{{/vars.main.planets}}{% endraw %} will be duplicated for each element in
+  the list. Each element will be printed where {% raw %}{{.}}{% endraw %} is found.
+
+* {% raw %}{{#vars.main.earth}}{% endraw %} tells the agent to begin iterating
+  through the JSON data container called earth. From there you can use
+  short forms of the JSON data like {% raw %}{{position}}{% endraw %} for the string
+  position and {% raw %}{{#oceans}} {{.}},{{/oceans}}{% endraw %} for the list oceans
+  and the element position.  Note that unlike classic CFEngine
+  templates, _mustache templates will print all duplicate lines_.
+
+The resulting file:
+
+{% raw %}
+```
+This file is edited by CFEngine and is always in place.
+
+The star is sol.
+mercury is a planet.
+venus is a planet.
+earth is a planet.
+
+But luna is a moon.
+
+Some stars are:
+rigel, vega, polaris, .
+
+Earth is planet number 3, at an orbit of 1au.
+Oceans include  atlantic, pacific, indian, arctic,.
+Seas include  caribbean, dead, black, coral,.
+
+```
+{% endraw %}
+
+
+**History:** Was introduced in 3.3.0, Nova 2.2.0 (2012).  Mustache templates were introduced in 3.6.0.
 
 **See also:** `template_method`, `template_data`, `readjson()`, `parsejson()`, `readyaml()`, `parseyaml()`, `mergedata()`, `data`
 
@@ -2822,7 +3176,6 @@ implementation, but you can use `mustache` as well.
 
 [%CFEngine_promise_attribute(cfengine)%]
 
-**Example:**
 
 ```cf3
     files:
@@ -2835,211 +3188,6 @@ implementation, but you can use `mustache` as well.
 ```
 
 **See also:** `edit_template`, `template_data`, `datastate()`
-
-#### template_method cfengine
-
-Supports expanding cfengine variables (strings and lists) and conditional
-rendering leveraging CFEngine class expressions.
-
-The default native-CFEngine template format (selected when `template_method` is
-`cfengine` or unspecified) uses inline tags to mark regions and classes. Each
-line represents an `insert_lines` promise, unless the promises are grouped into
-a block for example:
-
-```cf3
-    [%CFEngine BEGIN %]
-    ...
-    [%CFEngine END %]
-```
-
-Variables, scalars and list variables are expanded within each promise
-based on the current scope of the calling promise.  If lines are
-grouped into a block, the whole block is repeated when lists are
-expanded (see the Special Topics Guide on editing).
-
-If a class-context modified is used:
-
-```cf3
-[%CFEngine class-expression:: %]
-```
-
-then the lines that follow are only inserted if the context matches the
-agent's current context. This allows conditional insertion.
-
-**Note:** Identical lines will not be rendered more than once unless they are
-included within a block. This includes blank lines.
-
-Example contrived ```cfengine``` template:
-
-```cf3
-    #This is a template file /templates/input.tmpl
-
-    These lines apply to anyone
-
-    [%CFEngine solaris.Monday:: %]
-    Everything after here applies only to solaris on Mondays
-    until overridden...
-
-    [%CFEngine linux:: %]
-    Everything after here now applies now to linux only.
-
-    [%CFEngine BEGIN %]
-    This is a block of text
-    That contains list variables: $(some.list)
-    With text before and after.
-    [%CFEngine END %]
-
-    nameserver $(some.list)
-```
-
-Example ```cfengine``` template for apache vhost directives:
-
-```cf3
-    [%CFEngine any:: %]
-    VirtualHost $(sys.ipv4[eth0]):80>
-            ServerAdmin             $(stage_file.params[apache_mail_address][1])
-            DocumentRoot            /var/www/htdocs
-            ServerName              $(stage_file.params[apache_server_name][1])
-            AddHandler              cgi-script cgi
-            ErrorLog                /var/log/httpd/error.log
-            AddType                 application/x-x509-ca-cert .crt
-            AddType                 application/x-pkcs7-crl    .crl
-            SSLEngine               off
-            CustomLog               /var/log/httpd/access.log
-    /VirtualHost>
-
-    [%CFEngine webservers_prod:: %]
-    [%CFEngine BEGIN %]
-    VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>
-            ServerAdmin             $(stage_file.params[apache_mail_address][1])
-            DocumentRoot            /var/www/htdocs
-            ServerName              $(stage_file.params[apache_server_name][1])
-            AddHandler              cgi-script cgi
-            ErrorLog                /var/log/httpd/error.log
-            AddType                 application/x-x509-ca-cert .crt
-            AddType                 application/x-pkcs7-crl    .crl
-            SSLEngine               on
-            SSLCertificateFile      $(stage_file.params[apache_ssl_crt][1])
-            SSLCertificateKeyFile   $(stage_file.params[apache_ssl_key][1])
-            CustomLog               /var/log/httpd/access.log
-    /VirtualHost>
-    [%CFEngine END %]
-```
-
-#### template_method mustache
-
-When `template_method` is `mustache` data must be provided to render the
-template with. Data can be provided by functions that return data ( i.e.
-`mergedata()`, `mapdata()`, `readdata()`, `findprocesses()`, etc ...), lists or
-data variables by reference `@(data)`, or by specifying data as inline json
-(which can take advantage of data wrapping). For convenience if `template_data`
-is not specified the output of `datastate()` will be used. Thus the
-`datastate()` (all variables and classes defined) is the default.
-
-From
-[mustache](https://mustache.github.io/mustache.5.html) [Variables](https://mustache.github.io/mustache.5.html#Variables),
-[Sections](https://mustache.github.io/mustache.5.html#Sections),
-[Inverted Sections](https://mustache.github.io/mustache.5.html#Inverted-Sections),
-[Comments](https://mustache.github.io/mustache.5.html#Inverted-Sections), and
-the
-[Set Delimiter](https://mustache.github.io/mustache.5.html#Set-Delimiter) [TAG TYPES](https://mustache.github.io/mustache.5.html#TAG-TYPES) are
-implemented.
-
-**NOTE:** [Partials](https://mustache.github.io/mustache.5.html#Partials)
-and [Lambdas](https://mustache.github.io/mustache.5.html#Lambdas) are not
-currently supported.
-
-##### template_method mustache Variables
-
-The most basic tag type is the variable. A ```{{name}}``` tag in a basic
-template will try to find the name key in the current context. If there is no
-name key, the parent contexts will be checked recursively. If the top context is
-reached and the name key is still not found, nothing will be rendered.
-
-**All variables are HTML escaped by default**. If you want to return unescaped
-HTML, use the triple mustache: ```{{{name}}}``` or an ampersand (```{{&
-name}}```).
-
-A variable "miss" returns an empty string.
-
-[%CFEngine_include_example(mustache_variables.cf)%]
-
-##### template_method mustache Sections
-
-Sections render blocks of text one or more times, depending on the value of the
-key in the current context.
-
-A section begins with a pound and ends with a slash. That is, ```{{#person}}```
-begins a "person" section while ```{{/person}}``` ends it.
-
-The behavior of the section is determined by the value of the key.
-
-**Empty lists:**
-
-If the key exists and has a value of false or an empty list, the HTML between
-the pound and slash will not be displayed.
-
-[%CFEngine_include_example(mustache_sections_empty_list.cf)%]
-
-**Non-Empty Lists:**
-
-[%CFEngine_include_example(mustache_sections_non_empty_list.cf)%]
-
-**Non-False Values:**
-
-When the value is non-false but not a list, it will be used as the context for a
-single rendering of the block.
-
-[%CFEngine_include_example(mustache_sections_non_false_value.cf)%]
-
-##### template_method mustache Inverted Sections
-
-An inverted section begins with a caret (hat) and ends with a slash. That is
-```{{^person}}``` begins a "person" inverted section while ```{{/person}}```
-ends it.
-
-While sections can be used to render text one or more times based on the value
-of the key, inverted sections may render text once based on the inverse value of
-the key. That is, they will be rendered if the key doesn't exist, is false, or
-is an empty list.
-
-[%CFEngine_include_example(mustache_sections_inverted.cf)%]
-
-##### template_method mustache Comments
-
-Comments begin with a bang and are ignored. Comments may contain newlines.
-
-[%CFEngine_include_example(mustache_comments.cf)%]
-
-##### template_method mustache Set Delimiter
-
-Set Delimiter tags start with an equal sign and change the tag delimiters from
-```{{``` and ```}}``` to custom strings.
-
-[%CFEngine_include_example(mustache_set_delimiters.cf)%]
-
-##### template_method mustache extensions
-
-`-top-` special key representing the complete data given. Useful for iterating
-over the top level of a container `{{#-top-}} ... {{/-top-}}` and rendering json
-representation of data given with `$` and `%`.
-
-[%CFEngine_include_example(mustache_extension_top.cf)%]
-
-`%` variable prefix causing data to be rendered as multi-line json
-representation. Like output from `storejson()`.
-
-[%CFEngine_include_example(mustache_extension_multiline_json.cf)%]
-
-`$` variable prefix causing data to be rendered as compact json representation.
-Like output from `format()` with the ```%S``` format string.
-
-[%CFEngine_include_example(mustache_extension_compact_json.cf)%]
-
-`@` expands the current key being iterated to complement the value as accessed
-with `.`.
-
-[%CFEngine_include_example(mustache_extension_expand_key.cf)%]
 
 ### touch
 
