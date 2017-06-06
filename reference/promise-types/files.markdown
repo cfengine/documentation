@@ -2961,11 +2961,9 @@ HTML, use the triple mustache or an ampersand.
 
 A variable "miss" returns an empty string.
 
-{% comment %}
 [%CFEngine_include_snippet(mustache_variables.cf, #\+begin_src cfengine3, .*end_src)%]
 
 [%CFEngine_include_snippet(mustache_variables.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-{% endcomment %}
 
 ##### template_method mustache Sections
 
@@ -2981,30 +2979,24 @@ The behavior of the section is determined by the value of the key.
 If the key exists and has a value of false or an empty list, the HTML between
 the pound and slash will not be displayed.
 
-{% comment %}
 [%CFEngine_include_snippet(mustache_sections_empty_list.cf, #\+begin_src cfengine3, .*end_src)%]
 
 [%CFEngine_include_snippet(mustache_sections_empty_list.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-{% endcomment %}
 
 **Non-Empty Lists:**
 
-{% comment %}
 [%CFEngine_include_snippet(mustache_sections_non_empty_list.cf, #\+begin_src cfengine3, .*end_src)%]
 
 [%CFEngine_include_snippet(mustache_sections_non_empty_list.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-{% endcomment %}
 
 **Non-False Values:**
 
 When the value is non-false but not a list, it will be used as the context for a
 single rendering of the block.
 
-{% comment %}
 [%CFEngine_include_snippet(mustache_sections_non_false_value.cf, #\+begin_src cfengine3, .*end_src)%]
 
 [%CFEngine_include_snippet(mustache_sections_non_false_value.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-{% endcomment %}
 
 ##### template_method mustache Inverted Sections
 
@@ -3015,32 +3007,27 @@ of the key, inverted sections may render text once based on the inverse value of
 the key. That is, they will be rendered if the key doesn't exist, is false, or
 is an empty list.
 
-{% comment %}
 [%CFEngine_include_snippet(mustache_sections_inverted.cf, #\+begin_src cfengine3, .*end_src)%]
 
 [%CFEngine_include_snippet(mustache_sections_inverted.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-{% endcomment %}
+
 
 ##### template_method mustache Comments
 
 Comments begin with a bang and are ignored. Comments may contain newlines.
 
-{% comment %}
 [%CFEngine_include_snippet(mustache_comments.cf, #\+begin_src cfengine3, .*end_src)%]
 
 [%CFEngine_include_snippet(mustache_comments.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-{% endcomment %}
 
 ##### template_method mustache Set Delimiter
 
 Set Delimiter tags start with an equal sign and change the tag delimiters to
 custom strings.
 
-{% comment %}
 [%CFEngine_include_snippet(mustache_set_delimiters.cf, #\+begin_src cfengine3, .*end_src)%]
 
 [%CFEngine_include_snippet(mustache_set_delimiters.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-{% endcomment %}
 
 ##### template_method mustache extensions
 
@@ -3048,38 +3035,30 @@ custom strings.
 over the top level of a container and rendering json representation of data
 given with `$` and `%`.
 
-{% comment %}
 [%CFEngine_include_snippet(mustache_extension_top.cf, #\+begin_src cfengine3, .*end_src)%]
 
 [%CFEngine_include_snippet(mustache_extension_top.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-{% endcomment %}
 
 `%` variable prefix causing data to be rendered as multi-line json
 representation. Like output from `storejson()`.
 
-{% comment %}
 [%CFEngine_include_snippet(mustache_extension_multiline_json.cf, #\+begin_src cfengine3, .*end_src)%]
 
 [%CFEngine_include_snippet(mustache_extension_multiline_json.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-{% endcomment %}
 
 `$` variable prefix causing data to be rendered as compact json representation.
 Like output from `format()` with the ```%S``` format string.
 
-{% comment %}
 [%CFEngine_include_snippet(mustache_extension_compact_json.cf, #\+begin_src cfengine3, .*end_src)%]
 
 [%CFEngine_include_snippet(mustache_extension_compact_json.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-{% endcomment %}
 
 `@` expands the current key being iterated to complement the value as accessed
 with `.`.
 
-{% comment %}
 [%CFEngine_include_snippet(mustache_extension_expand_key.cf, #\+begin_src cfengine3, .*end_src)%]
 
 [%CFEngine_include_snippet(mustache_extension_expand_key.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-{% endcomment %}
 
 ### touch
 
