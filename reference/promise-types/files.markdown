@@ -3191,6 +3191,50 @@ implementation, but you can use `mustache` as well.
 [%CFEngine_include_example(mustache_variables.cf)%]
 {%endraw%}
 
+{%raw%}
+[%CFEngine_include_example(mustache_variables.cf)%]
+{%endraw%}
+
+{%raw%}
+[%CFEngine_include_example(mustache_comments.cf)%]
+{%endraw%}
+
+{%raw%}
+[%CFEngine_include_example(mustache_extension_compact_json.cf)%]
+{%endraw%}
+
+{%raw%}
+[%CFEngine_include_example(mustache_extension_expand_key.cf)%]
+{%endraw%}
+
+{%raw%}
+[%CFEngine_include_example(mustache_extension_multiline_json.cf)%]
+{%endraw%}
+
+{%raw%}
+[%CFEngine_include_example(mustache_extension_top.cf)%]
+{%endraw%}
+
+{%raw%}
+[%CFEngine_include_example(mustache_sections_empty_list.cf)%]
+{%endraw%}
+
+{%raw%}
+[%CFEngine_include_example(mustache_sections_inverted.cf)%]
+{%endraw%}
+
+{%raw%}
+[%CFEngine_include_example(mustache_sections_non_empty_list.cf)%]
+{%endraw%}
+
+{%raw%}
+[%CFEngine_include_example(mustache_sections_non_false_value.cf)%]
+{%endraw%}
+
+{%raw%}
+[%CFEngine_include_example(mustache_set_delimiters.cf)%]
+{%endraw%}
+
 **See also:** `edit_template`, `template_data`, `datastate()`
 
 ### touch
