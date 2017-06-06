@@ -2951,11 +2951,10 @@ currently supported.
 
 ##### template_method mustache Variables
 
-The most basic tag type is the variable. A {% raw %}```{{name}}```{% endraw %}
-tag in a basic template will try to find the name key in the current context. If
-there is no name key, the parent contexts will be checked recursively. If the
-top context is reached and the name key is still not found, nothing will be
-rendered.
+The most basic tag type is the variable. A ```{{name}}``` tag in a basic
+template will try to find the name key in the current context. If there is no
+name key, the parent contexts will be checked recursively. If the top context is
+reached and the name key is still not found, nothing will be rendered.
 
 **All variables are HTML escaped by default**. If you want to return unescaped
 HTML, use the triple mustache: {% raw %}```{{{name}}}```{% endraw %} or an
