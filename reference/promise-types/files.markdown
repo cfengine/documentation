@@ -3187,6 +3187,31 @@ implementation, but you can use `mustache` as well.
      template_method => "mustache";
 ```
 
+#### template_method mustache
+
+When `template_method` is `mustache` data must be provided to render the
+template with. Data can be provided by functions that return data ( i.e.
+`mergedata()`, `mapdata()`, `readdata()`, `findprocesses()`, etc ...), lists or
+data variables by reference `@(data)`, or by specifying data as inline json
+(which can take advantage of data wrapping). For convenience if `template_data`
+is not specified the output of `datastate()` will be used. Thus the
+`datastate()` (all variables and classes defined) is the default.
+
+From
+[mustache](https://mustache.github.io/mustache.5.html) [Variables](https://mustache.github.io/mustache.5.html#Variables),
+[Sections](https://mustache.github.io/mustache.5.html#Sections),
+[Inverted Sections](https://mustache.github.io/mustache.5.html#Inverted-Sections),
+[Comments](https://mustache.github.io/mustache.5.html#Inverted-Sections), and
+the
+[Set Delimiter](https://mustache.github.io/mustache.5.html#Set-Delimiter) [TAG TYPES](https://mustache.github.io/mustache.5.html#TAG-TYPES) are
+implemented.
+
+**NOTE:** [Partials](https://mustache.github.io/mustache.5.html#Partials)
+and [Lambdas](https://mustache.github.io/mustache.5.html#Lambdas) are not
+currently supported.
+
+##### template_method mustache Variables
+
 {%raw%}
 [%CFEngine_include_example(mustache_variables.cf)%]
 {%endraw%}
