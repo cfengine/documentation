@@ -3212,53 +3212,118 @@ currently supported.
 
 ##### template_method mustache Variables
 
-{%raw%}
-[%CFEngine_include_example(mustache_variables.cf)%]
-{%endraw%}
+The most basic tag type is the variable. A {%raw%}```{{name}}```{%endraw%} tag in a basic
+template will try to find the name key in the current context. If there is no
+name key, the parent contexts will be checked recursively. If the top context is
+reached and the name key is still not found, nothing will be rendered.
+
+**All variables are HTML escaped by default**. If you want to return unescaped
+HTML, use the triple mustache: {%raw%}```{{{name}}}```{%endraw%} or an ampersand
+({%raw%}```{{& name}}```{%endraw%}).
+
+A variable "miss" returns an empty string.
 
 {%raw%}
 [%CFEngine_include_example(mustache_variables.cf)%]
 {%endraw%}
 
-{%raw%}
-[%CFEngine_include_example(mustache_comments.cf)%]
-{%endraw%}
+##### template_method mustache Sections
 
-{%raw%}
-[%CFEngine_include_example(mustache_extension_compact_json.cf)%]
-{%endraw%}
+Sections render blocks of text one or more times, depending on the value of the
+key in the current context.
 
-{%raw%}
-[%CFEngine_include_example(mustache_extension_expand_key.cf)%]
-{%endraw%}
+A section begins with a pound and ends with a slash. That is, {%raw%}```{{#key}}```{%endraw%}
+begins a "person" section while {%raw%}```{{/key}}```{%endraw%} ends it.
 
-{%raw%}
-[%CFEngine_include_example(mustache_extension_multiline_json.cf)%]
-{%endraw%}
+The behavior of the section is determined by the value of the key.
 
-{%raw%}
-[%CFEngine_include_example(mustache_extension_top.cf)%]
-{%endraw%}
+**Empty lists:**
+
+If the key exists and has a value of false or an empty list, the HTML between
+the pound and slash will not be displayed.
 
 {%raw%}
 [%CFEngine_include_example(mustache_sections_empty_list.cf)%]
 {%endraw%}
 
-{%raw%}
-[%CFEngine_include_example(mustache_sections_inverted.cf)%]
-{%endraw%}
+**Non-Empty Lists:**
 
 {%raw%}
 [%CFEngine_include_example(mustache_sections_non_empty_list.cf)%]
 {%endraw%}
 
+**Non-False Values:**
+
+When the value is non-false but not a list, it will be used as the context for a
+single rendering of the block.
+
 {%raw%}
 [%CFEngine_include_example(mustache_sections_non_false_value.cf)%]
 {%endraw%}
 
+##### template_method mustache Inverted Sections
+
+An inverted section begins with a caret (hat) and ends with a slash. That is
+{%raw%}```{{^key}}```{%endraw%} begins a "key" inverted section while
+{%raw%}```{{/key}}```{%endraw%} ends it.
+
+While sections can be used to render text one or more times based on the value
+of the key, inverted sections may render text once based on the inverse value of
+the key. That is, they will be rendered if the key doesn't exist, is false, or
+is an empty list.
+
+{%raw%}
+[%CFEngine_include_example(mustache_sections_inverted.cf)%]
+{%endraw%}
+
+##### template_method mustache Comments
+
+Comments begin with a bang and are ignored. Comments may contain newlines.
+
+{%raw%}
+[%CFEngine_include_example(mustache_comments.cf)%]
+{%endraw%}
+
+##### template_method mustache Set Delimiter
+
+Set Delimiter tags start with an equal sign and change the tag delimiters from
+{%raw%}```{{```{%endraw%} and {%raw%}```}}```{%endraw%} to custom strings.
+
 {%raw%}
 [%CFEngine_include_example(mustache_set_delimiters.cf)%]
 {%endraw%}
+
+##### template_method mustache extensions
+
+`-top-` special key representing the complete data given. Useful for iterating
+over the top level of a container {%raw%}`{{#-top-}} ... {{/-top-}}`{%endraw%}
+and rendering json representation of data given with `$` and `%`.
+
+{%raw%}
+[%CFEngine_include_example(mustache_extension_top.cf)%]
+{%endraw%}
+
+`%` variable prefix causing data to be rendered as multi-line json
+representation. Like output from `storejson()`.
+
+{%raw%}
+[%CFEngine_include_example(mustache_extension_multiline_json.cf)%]
+{%endraw%}
+
+`$` variable prefix causing data to be rendered as compact json representation.
+Like output from `format()` with the ```%S``` format string.
+
+{%raw%}
+[%CFEngine_include_example(mustache_extension_compact_json.cf)%]
+{%endraw%}
+
+`@` expands the current key being iterated to complement the value as accessed
+with `.`.
+
+{%raw%}
+[%CFEngine_include_example(mustache_extension_expand_key.cf)%]
+{%endraw%}
+
 
 **See also:** `edit_template`, `template_data`, `datastate()`
 
