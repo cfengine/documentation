@@ -5,13 +5,14 @@ published: true
 tags: [reference, io functions, functions, readfile]
 ---
 
-[%CFEngine_function_prototype(filename, maxbytes)%]
+[%CFEngine_function_prototype(filename, optional_maxbytes)%]
 
-**Description:** Returns the first `maxbytes` bytes from file
-`filename`.  When `maxbytes` is 0, the maximum possible bytes will be
-read from the file (but see **Notes** below).
+**Description:**
+Returns the first `maxbytes` bytes from file `filename`.
+`maxbytes` is optional, if specified, only the first `maxbytes` bytes are read from `filename`.
+When `maxbytes` is `0` or not specified, the whole file will be read (but see **Notes** below).
 
-[%CFEngine_function_attributes(filename, maxbytes)%]
+[%CFEngine_function_attributes(filename, optional_maxbytes)%]
 
 **Example:**
 

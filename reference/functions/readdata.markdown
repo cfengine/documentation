@@ -2,7 +2,7 @@
 layout: default
 title: readdata
 published: true
-tags: [reference, io functions, functions, readcsv, readjson, readyaml, readdata, CSV, JSON, YAML, container]
+tags: [reference, io functions, functions, readcsv, readjson, readyaml, readdata, readenvfile, CSV, JSON, YAML, ENV, container]
 ---
 
 [%CFEngine_function_prototype(filename, filetype)%]
@@ -14,16 +14,10 @@ When `filetype` is `auto`, the file type is guessed from the extension
 (ignoring case): `.csv` means CSV; `.json` means JSON; `.yaml` means
 YAML. If the file doesn't match any of those names, JSON is used.
 
-When `filetype` is `CSV`, this function behaves exactly like
-`readcsv()` and returns the same data structure.
-
-When `filetype` is `JSON`, this function behaves exactly like
-`readjson()` and returns the same data structure, except there is no
-data size limit (`maxbytes` is `inf`).
-
-When `filetype` is `YAML`, this function behaves exactly like
-`readyaml()` and returns the same data structure, except there is no
-data size limit (`maxbytes` is `inf`).
+When `filetype` is `CSV`,`JSON`,`YAML` or `ENV`,
+this function behaves like `readcsv()`, `readjson()`, `readyaml()` or `readenvfile()` respectively.
+These functions have an optional parameter `maxbytes` (default: `inf`).
+`maxbytes` can not be set using `readdata()`, if needed use one of the mentioned functions instead.
 
 [%CFEngine_function_attributes(filename, filetype)%]
 
@@ -41,6 +35,6 @@ Output:
 
 [%CFEngine_include_snippet(readdata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** `readcsv()`, `readyaml()`, `readjson()`, and `data` documentation.
+**See also:** `readcsv()`, `readyaml()`, `readjson()`, `readenvfile()`, `data` documentation.
 
 **History:** Was introduced in 3.7.0.
