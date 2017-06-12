@@ -5,13 +5,13 @@ published: true
 tags: [reference, io functions, functions, readyaml, yaml, json, container]
 ---
 
-[%CFEngine_function_prototype(filename, maxbytes)%]
+[%CFEngine_function_prototype(filename, optional_maxbytes)%]
 
 **Description:** Parses YAML data from the file `filename` and returns the
 result as a `data` variable. `maxbytes` is optional, if specified, only the
 first `maxbytes` bytes are read from `filename`.
 
-[%CFEngine_function_attributes(filename, maxbytes)%]
+[%CFEngine_function_attributes(filename, optional_maxbytes)%]
 
 **Example:**
 
