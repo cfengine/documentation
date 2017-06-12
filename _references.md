@@ -20,8 +20,8 @@
 [enterprise software download page]: https://cfengine.com/product/free-download/ "Enterprise download page"
 [boolean]: guide-language-concepts-promises.html#promise-attributes
 [clist]: guide-language-concepts-promises.html#promise-attributes
-[anchored]: guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
-[unanchored]: guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
+[anchored]: reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
+[unanchored]: reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
 [datatypes]: guide-language-concepts-variables.html
 [parseintarray]: reference-functions-parseintrealstringarray.html
 [parserealarray]: reference-functions-parseintrealstringarray.html
