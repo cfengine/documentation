@@ -14,20 +14,10 @@ When `filetype` is `auto`, the file type is guessed from the extension
 (ignoring case): `.csv` means CSV; `.json` means JSON; `.yaml` means
 YAML. If the file doesn't match any of those names, JSON is used.
 
-When `filetype` is `CSV`, this function behaves exactly like
-`readcsv()` and returns the same data structure.
-
-When `filetype` is `JSON`, this function behaves exactly like
-`readjson()` and returns the same data structure, except there is no
-data size limit (`maxbytes` is `inf`).
-
-When `filetype` is `YAML`, this function behaves exactly like
-`readyaml()` and returns the same data structure, except there is no
-data size limit (`maxbytes` is `inf`).
-
-When `filetype` is `ENV`, this function behaves exactly like
-`readenvfile()` and returns the same data structure, except there is no
-data size limit (`maxbytes` is `inf`).
+When `filetype` is `CSV`,`JSON`,`YAML` or `ENV`,
+this function behaves like `readcsv()`, `readjson()`, `readyaml()` or `readenvfile()` respectively.
+These functions have an optional parameter `maxbytes` (default: `inf`).
+`maxbytes` can not be set using `readdata()`, if needed use one of the mentioned functions instead.
 
 [%CFEngine_function_attributes(filename, filetype)%]
 
