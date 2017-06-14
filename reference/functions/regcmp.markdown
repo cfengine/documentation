@@ -27,4 +27,4 @@ using either standard regular expression syntax or using the additional
 features of PCRE (where `(?ms)` changes the way that ., `^` and `$` behave), e.g.
 
 
-**See Also:** `regline()`
+**See Also:** `regline()`, `strcmp()`
