@@ -60,4 +60,4 @@ bundle edit_line upgrade_cfexecd
 }
 ```
 
-**See Also:** `regcmp()`
+**See Also:** `regcmp()`, `strcmp()`
