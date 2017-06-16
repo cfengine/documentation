@@ -17,7 +17,7 @@ Keys and values are interpreted as strings.
 [%CFEngine_function_attributes(filename, otpional_maxbytes)%]
 
 **Syntax example:**
-Short syntax example:
+
 ```cf3
     vars:
       "loadthis"
@@ -25,6 +25,7 @@ Short syntax example:
 ```
 
 **Complete example:**
+
 Prepare:
 
 [%CFEngine_include_snippet(readenvfile.cf, #\+begin_src prep, .*end_src)%] <!--**-->
