@@ -830,6 +830,8 @@ softwarearchitecture | default
 
 ### Table: SoftwareUpdatesLog
 
+**This table was deprecated in 3.7.0. It is no longer used.**
+
 Patches available for installed packages on the hosts (as reported by local package manager) over period of time.
 
 **Columns:**
@@ -902,6 +904,8 @@ patchreporttype   | AVAILABLE
 ```
 
 ### Table: PromiseExecutionsLog
+
+**This table was deprecated in 3.7.0. It is no longer used.**
 
 Promise status / outcome changes over period of time.
 
