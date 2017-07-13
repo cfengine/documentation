@@ -18,7 +18,10 @@ if [  ! -d documentation-generator/_site ]; then
   exit 1
 fi
 
-rsync -zvr -e "ssh -2 -p $PORT" documentation-generator/_site/ $SERVER/$VERSION 
+OUTPUT=$WRKDIR/output
+mkdir -p $OUTPUT
+
+cp -a documentation-generator/_site $OUTPUT
 
 ARCHIVE_FILE=cfengine-documentation-$VERSION
 echo "Creating $ARCHIVE_FILE..."
@@ -34,5 +37,4 @@ do
   sed -i "s/<\/form>/<\/form -->/" $source
 done
 cd ..
-tar -czf $ARCHIVE_FILE.tar.gz _site
-scp -P $PORT $ARCHIVE_FILE.tar.gz $SERVER/$VERSION 
+tar -czf $OUTPUT/$ARCHIVE_FILE.tar.gz _site
