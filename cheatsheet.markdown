@@ -9,6 +9,10 @@ alias: markdown-cheatsheet.html
 Markdown formatting is simple, and the CFEngine generator adds a few things
 to make it even simpler. Here's a list of the most commonly used formats.
 
+## Remember
+
+* "Always pull never push"
+
 ## Basic Formatting
 
 ```
@@ -485,3 +489,5 @@ show the actual variables will need to be inside of raw tags.
 {% raw %}
 site.CFE_manuals_version {{ site.CFE_manuals_version }}
 {% endraw %}
+
+
