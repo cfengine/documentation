@@ -38,3 +38,5 @@ do
 done
 cd ..
 tar -czf $OUTPUT/$ARCHIVE_FILE.tar.gz _site
+# Placing offline copy of docs into site directory
+mv $OUTPUT/$ARCHIVE_FILE.tar.gz _site/
