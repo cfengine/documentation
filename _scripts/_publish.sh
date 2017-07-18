@@ -40,6 +40,7 @@ cd ..
 tar -czf $OUTPUT/$ARCHIVE_FILE.tar.gz _site
 # Placing offline copy of docs into site directory
 mv $OUTPUT/$ARCHIVE_FILE.tar.gz _site/
+ls -al _site/$ARCHIVE_FILE.tar.gz
 # Pack the site for transfer (its faster to transfer one big file than thousands of small ones)
 # This archive is expected to be unpacked by the build system after the artifacts have been moved to their storage location
 # tar -czvf $OUTPUT/packed-for-shipping.tar.gz _site/ && rm -rf _site/
