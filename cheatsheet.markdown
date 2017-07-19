@@ -11,7 +11,7 @@ to make it even simpler. Here's a list of the most commonly used formats.
 
 ## Remember
 
-* "Always pull never push"
+* **"Always pull never push"**
 
 ## Basic Formatting
 
