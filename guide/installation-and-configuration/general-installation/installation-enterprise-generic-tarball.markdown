@@ -17,6 +17,13 @@ Next unpack the archive:
 tar --gunzip --extract --directory / --file ./cfengine-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.pkg.tar.gz
 ```
 
+Generate a keypair for the client:
+
+```sh
+/var/cfengine/bin/cf-key
+```
+
+
 Then install the systemd units:
 
 ```sh
