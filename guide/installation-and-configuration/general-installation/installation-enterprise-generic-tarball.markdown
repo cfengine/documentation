@@ -14,7 +14,7 @@ First download the binary onto the host.
 Next unpack the archive:
 
 ```sh
-tar --gunzip --extract --directory / --file ./cfengine-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.pkg.tar.gz
+tar --gunzip --extract --directory / --file ./cfengine-nova-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.pkg.tar.gz
 ```
 
 Generate a keypair for the client:
