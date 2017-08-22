@@ -75,7 +75,7 @@ The following functions can be used, with parentheses:
 - `abs`: absolute value
 - `step`: 0 if the argument is negative, 1 otherwise
 
-[%CFEngine_function_attributes(mode, options, expression)%]
+[%CFEngine_function_attributes(expression, mode, options)%]
 
 **Example:**
 
