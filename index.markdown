@@ -7,7 +7,7 @@ sorting: 1
 
 Welcome! This is the documentation for CFEngine {{site.cfengine.core_branch}}.
 
-Parts of the documentation:
+*Parts of the documentation:*
 
 ## [What's new in latest release?][Latest Release]
 includes what is new, supported platforms, how to upgrade
@@ -30,22 +30,22 @@ overview of all promises and attributes
 ## [FAQs][FAQ]
 frequently asked questions (and answers :)
 
-Shortcuts:
+*Shortcuts:*
 
-[Components][Components and Common Control]
+## [Components][Components and Common Control]
 Cf-agent, cf-serverd, cf-execd,  cf-promises, etc.
 
-[Language concepts][Language Concepts]
+## [Language concepts][Language Concepts]
 Bundles, Bodies, Promises, Classes and Decisions, Variables, etc.
 
-[Promise types (aka resources to be managed)][Promise Types and Attributes]
+## [Promise types (aka resources to be managed)][Promise Types and Attributes]
 processes, packages, users, files, storage, services, etc
 
-[Masterfiles framework][Masterfiles Policy Framework]
+## [Masterfiles framework][Masterfiles Policy Framework]
 how to manage and tweak CFEngine itself
 
-[Decision making in CFEngine][Classes and Decisions]
+## [Decision making in CFEngine][Classes and Decisions]
 hard classes, soft classes,
 
-[Functions][Functions]
+## [Functions][Functions]
 complete lists of all functions
