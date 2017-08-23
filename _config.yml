@@ -19,6 +19,7 @@ CFE_DIR: _site
 CFE_manuals_version: master
 cfengine:
   branch: master
+  core_branch: "master"
   latest_patch_release: NA
   latest_package_build: NA
   masterfiles_branch: "master"
