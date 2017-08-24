@@ -48,21 +48,6 @@ indexes. This issue is tracked in
   There is a [support article](https://cfengine.zendesk.com/hc/en-us/articles/205454908)
   with a workaround.
 
-### Enterprise emails sent for alert noticies come from 'admin@organization.com'.
-There is currently no setting in Mission Portal to configure the sender email
-address. This issue is tracked in [ENT-695](https://tracker.mender.io/browse/ENT-695)
-and will be addressed in a future release.
-
-To change the setting you must edit the from email address in
-`/var/cfengine/share/GUI/application/config/appsettings.php`. Policy in the
-Masterfiles Policy Framework will take care of updating the running config
-during the next policy run.
- 
-```
-// Default FROM email address
-$config['appemail'] = 'admin@organisation.com';
-```
-
 ### Enterprise monitoring graphs
 
 Monitoring graphs are disabled by default in CFEngine Enterprise 3.6 and later
