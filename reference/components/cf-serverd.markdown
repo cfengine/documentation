@@ -460,7 +460,11 @@ See also the warning about regular expressions in
 **Description:** true/false causes the server to log all new
 connections to syslog
 
-If set, the server will record connection attempts in syslog.
+Today this attribute does nothing and exists only for backwards
+compatibility.  cf-serverd will log connections at INFO level,
+regardless of this setting, as long as `-I` command line option is in
+use.
+
 
 **Type:** [`boolean`][boolean]
 
