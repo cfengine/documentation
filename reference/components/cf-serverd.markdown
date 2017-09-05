@@ -457,24 +457,7 @@ See also the warning about regular expressions in
 
 ### logallconnections
 
-**Description:** true/false causes the server to log all new
-connections to syslog
-
-If set, the server will record connection attempts in syslog.
-
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example:**
-
-```cf3
-    body server control
-    {
-    logallconnections => "true";
-    }
-```
-
+**Deprecated: This attribute was deprecated in 3.7.0.**
 
 ### logencryptedtransfers
 
