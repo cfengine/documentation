@@ -56,6 +56,10 @@ having no limit at all.
 
 * 'inf' = a constant representing an unlimited value.
 
+  ```inf``` is a special value that in the code corresponds to the magic number of ```999999999``` (nine nines). Thus any function that accepts a number, can accept inf without a problem. Keep in mind though that you can get a higher number if you set the upper limit manually, but that's almost never a problem.
+
+  For a few functions ```inf``` is being treated specially and truly means "there is no limit" instead of "nine nines limit". This is the case for the ```maxbytes``` parameter and applies to most read* functions.
+
 CFEngine typing is mostly dynamic, and CFEngine will try to coerce string
 values into int and real types, and if it cannot it will report an error.
 However, arguments to built-in [functions][Functions] check the
