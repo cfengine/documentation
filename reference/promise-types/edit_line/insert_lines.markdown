@@ -5,7 +5,7 @@ published: true
 tags: [reference, bundle agent, bundle edit_line, files promises, file editing, insert_lines]
 ---
 
-This promise is part of the line-editing model. It inserts lines into
+This promise type is part of the line-editing model. It inserts lines into
 the file at a specified location. The location is determined by
 body-attributes. The promise object referred to can be a literal line or
 a file-reference from which to read lines.
@@ -45,10 +45,10 @@ incorrect:
 
 This will reverse the order of the lines and will not converge, since
 the anchoring after the marker applies independently for each new line.
-This is not a bug, but an error of logic.
+This is not a bug in CFEngine, but an error of logic in the policy itself.
 
-What was probably intended was to add multiple ordered lines after the
-marker, which should be a single correlated promise.
+To add multiple ordered lines after the marker, a single correlated promise
+should be used:
 
 ```cf3
     bundle edit_line x
