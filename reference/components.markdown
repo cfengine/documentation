@@ -509,7 +509,7 @@ CFEngine's components may promise to send data.
 
 **Allowed input range:** `[a-zA-Z0-9_$(){}.:-]+`
 
-**Default value:** 514
+**Default value:** ```localhost```
 
 **Example:**
 
@@ -532,6 +532,8 @@ components may promise to send data.
 **Type:** `int`
 
 **Allowed input range:** `0,99999999999`
+
+**Default value:** ```514```
 
 **Example:**
 
