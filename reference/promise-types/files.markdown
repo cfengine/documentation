@@ -1144,8 +1144,9 @@ that any promiser (destination) file which is not matched by a source will be
 deleted. Since there is no source, this means the file will be irretrievable.
 Great care should be exercised when using this feature.
 
-Note that purging will also delete backup files generated during the file
-copying if `copy_backup` is set to true.
+Note this attribute only works when combined with `depth_search` and purging
+will also delete backup files generated during the file copying if `copy_backup`
+is set to true.
 
 **Type:** [`boolean`][boolean]
 
