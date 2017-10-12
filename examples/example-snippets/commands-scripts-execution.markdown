@@ -26,10 +26,7 @@ Execute a command, for instance to start a MySQL service. Note that simple shell
 
 [%CFEngine_include_snippet(change_directory_for_command.cf, .* )%]
 
-## Commands example ##
-
 ## Commands example
-
 
 [%CFEngine_include_snippet(commands_example.cf, .* )%]
 
