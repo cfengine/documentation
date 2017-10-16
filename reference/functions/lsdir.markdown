@@ -22,6 +22,11 @@ Output:
 
 [%CFEngine_include_snippet(lsdir.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
+**Tips:**
+
+* Filter out the current (```.```) and parent (```..```)directories with a
+  negative look ahead. ```lsdir( "/tmp", "^(?!(\.|\.\.)).*", false )```.
+
 **Notes:**
 
  **History:** Was introduced in 3.3.0, Nova 2.2.0 (2011)
