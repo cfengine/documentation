@@ -49,8 +49,8 @@ users, including their name, role, and password.
 
 ![Role Management](Settings-role.png)
 
-Roles are used to lmit access. Roles can limit access for reporting on
-hosts that have or do not have spcecific classes, and they can be used
+Roles are used to limit access. Roles can limit access for reporting on
+hosts that have or do not have specific classes, and they can be used
 to limit which sketches from Design Center a user is authorized to
 use.
 
@@ -66,12 +66,30 @@ will not see any hosts in Mission Portal.
 Users without a role will not be able to see any hosts in Mission
 Portal.
 
-**Default Roles:**
+**Predefined Roles:**
 
 * admin - The admin role can see everything and do anything.
 * cf_remoteagent - This role allows execution of cf-runagent. It can
   be used from within Design Center to troubleshoot hosts that have
   failed sketch activations.
+  
+**Default Role:**
+
+To set the default role, click Settings -> User management -> Roles. You can then select which role will be the default role for new users.
+
+![DefaultRoleSelecting](roles-list.png)
+
+**Behaviour of Default Role:**
+
+Any new users created in Mission Portal's local user database will have this new role assigned.
+
+Users authenticating through LDAP (if you have LDAP configured in Mission Portal) will get this new role applied the first time they log in.
+
+Note that the default role will not have any effect on users that already exist (in Mission Portal's local database) or have already logged in (when using LDAP).
+
+In effect this allows you to set the default permissions for new users (e.g. which hosts a user is allowed to see) by configuring the access for the default role.
+
+![AddNewUser](add-new-user.png)
 
 ## Manage Apps ##
 
