@@ -39,7 +39,7 @@ HTTP 200 Ok
 **Headers:**
 
 * **Authorization: api_token** *(string)*
-    Set token to access api
+    Set token to access api. To get the token please look at - ```/var/cfengine/httpd/htdocs/ldap/config/settings.php```
 
 **Example response:**
 
@@ -48,7 +48,7 @@ HTTP 200 Ok
 {
     "success": true,
     "data": {
-        "domain_controllers": "local.loc",
+        "domain_controller": "local.loc",
         "base_dn": "DC=local,DC=loc",
         "login_attribute": "cn",
         "port": 365,
@@ -63,7 +63,7 @@ HTTP 200 Ok
 
 **Output:**
 
-* **domain_controllers**
+* **domain_controller**
     The domain controllers option is   server name located on your network that serve Active Directory.
 * **base_dn**
     The base distinguished name is the base distinguished name you'd like to perform operations on. An example base DN would be DC=corp,DC=acme,DC=org.
@@ -72,13 +72,13 @@ HTTP 200 Ok
 * **port**
     The port option is used for authenticating and binding to your AD server. The default ports are already used for non SSL and SSL connections (389 and 636).
 * **use_ssl**
-    User ssl for connection
+    Use ssl for connection
 * **use_tls**
-    User tls for connection
+    Use tls for connection
 * **timeout**
     The timeout option allows you to configure the amount of seconds to wait until your application receives a response from your LDAP server.
 * **admin_username**
-    LDAP admin distinguished name
+    LDAP admin distinguished name. Emp.: cn=admin,dc=jumpcloud,dc=com
 * **admin_password**
     LDAP admin password.
 
@@ -91,11 +91,11 @@ HTTP 200 Ok
 **Headers:**
 
 * **Authorization: api_token** *(string)*
-    Set token to access api
+    Set token to access api. To get the token please look at - ```/var/cfengine/httpd/htdocs/ldap/config/settings.php```
 
 **Parameters:**
 
-* **domain_controllers** *(string)*
+* **domain_controller** *(string)*
     The domain controllers option is   server name located on your network that serve Active Directory.
 * **base_dn** *(string)*
     The base distinguished name is the base distinguished name you'd like to perform operations on. An example base DN would be DC=corp,DC=acme,DC=org.
@@ -104,13 +104,13 @@ HTTP 200 Ok
 * **port** *(integer)*
     The port option is used for authenticating and binding to your AD server. The default ports are already used for non SSL and SSL connections (389 and 636).  Optional parameter.
 * **use_ssl** *(boolean)*
-    User ssl for connection.  Optional parameter.
+    Use ssl for connection.  Optional parameter.
 * **use_tls** *(boolean)*
-    User tls for connection.  Optional parameter.
+    Use tls for connection.  Optional parameter.
 * **timeout** *(integer)*
     The timeout option allows you to configure the amount of seconds to wait until your application receives a response from your LDAP server.  Optional parameter.
 * **admin_username**
-        LDAP admin distinguish name
+        LDAP admin distinguished name. Emp.: cn=admin,dc=jumpcloud,dc=com
 * **admin_password**
         LDAP admin password.
 
