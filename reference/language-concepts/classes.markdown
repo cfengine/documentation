@@ -530,10 +530,11 @@ R: The class was NOT defined from 'false'
 
 ## Class scope
 
-Classes defined in bundles of type `common` are global in scope, whereas
-classes defined in all other bundle types are local. Classes are evaluated
-when the bundle is evaluated (and the bundles are evaluated in the order
-specified in the `bundlesequence`).
+Classes defined in bundles of type `common` are global aka `namespace` in scope
+(globally available, can be seen from any bundle), whereas classes defined in
+all other bundle types are local aka `bundle` scoped (they can not be seen from
+other bundles). Classes are evaluated when the bundle is evaluated (and the
+bundles are evaluated in the order specified in the `bundlesequence`).
 
 Note that any class promise must have one - and only one - value constraint.
 That is, you may not leave [`expression`][classes#expression] in the example
@@ -550,10 +551,13 @@ a promise is repaired, one might write:
         classes => if_repaired("signal_class");
 ```
 
-These classes are `namespace` scoped by default. The [`scope`][Promise Types and
-Attributes#scope] attribute can be used to make them local to the bundle.
+These classes are `namespace` scoped by default. The
+[`scope`][Promise Types and Attributes#scope] attribute can be used to make them
+local to the bundle.
 
-It is recommended to use bundle scoped classes whenever possible. This example will define ```signal_class``` prefixed classes with a suffix matching the promise outcome (```_kept```, ```_repaired```, ```_notkept```).
+It is recommended to use bundle scoped classes whenever possible. This example
+will define ```signal_class``` prefixed classes with a suffix matching the
+promise outcome (```_kept```, ```_repaired```, ```_notkept```).
 
 ```cf3
      "promiser..."
@@ -561,12 +565,17 @@ It is recommended to use bundle scoped classes whenever possible. This example w
         classes => results("bundle", "signal_class");
 
     reports:
+
       signal_class_repaired::
-        "Some aspect of the promise was repaired. The agent made a change to take us closer to the desired state";
+        "Some aspect of the promise was repaired.";
+        "The agent made a change to take us closer to the desired state";
+
       signal_class_kept::
         "Some aspect of the promise was kept";
+
       signal_class_notkept::
         "Some aspect of the promsie was unable to be repaired";
+
       signal_class_kept.signal_class_notkept::
         "All promise aspects were as desired";
 ```
