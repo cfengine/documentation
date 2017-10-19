@@ -156,9 +156,10 @@ bundle agent mybundle(x)
 
 and call `mybundle(1)` and `mybundle(2)`, the variable `y` could be `1` or `2`.
 
-[Classes][classes and decisions] defined inside `agent` bundles are not visible outside
-those bundles.  [Classes][classes and decisions] defined in `common` bundles
-have global scope, so they are visible everywhere.
+By default [classes][classes and decisions] defined by `classes` type promises
+inside `agent` bundles are not visible outside those bundles, they are `bundle`
+scoped. [Classes][classes and decisions] defined by `classes` type promises in
+`common` bundles have a `namespace` scope, so they are visible everywhere.
 
 Note that namespaced bundles work exactly the same way as
 non-namespaced bundles (which are actually in the `default`
