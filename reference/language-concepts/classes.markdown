@@ -528,7 +528,7 @@ R: The class was defined from 'true'
 R: The class was NOT defined from 'false'
 ```
 
-## Global and Local classes
+## Class scope
 
 Classes defined in bundles of type `common` are global in scope, whereas
 classes defined in all other bundle types are local. Classes are evaluated
@@ -536,13 +536,13 @@ when the bundle is evaluated (and the bundles are evaluated in the order
 specified in the `bundlesequence`).
 
 Note that any class promise must have one - and only one - value constraint.
-That is, you might not leave 'expression' in the example above or add both
-'and' and 'xor' constraints to the single promise.
+That is, you may not leave [`expression`][classes#expression] in the example
+above and add [`and`][classes#and] or [`xor`][classes#xor] constraints to the
+single promise.
 
-Another type of class definition uses the
-[`body classes`][Promise Types and Attributes#classes]. This allows setting of
-classes based on the outcome of a promise. To set a class if a promise is
-repaired, one might write:
+Additionally classes can be defined or undefined as the result of a promise by
+using a [classes body][Promise Types and Attributes#classes]. To set a class if
+a promise is repaired, one might write:
 
 ```cf3
      "promiser..."
@@ -550,28 +550,31 @@ repaired, one might write:
         classes => if_repaired("signal_class");
 ```
 
-These classes are global in scope, but the
-[`scope`][Promise Types and Attributes#scope] attribute can be used to make
-them local to the bundle.
+These classes are `namespace` scoped by default. The [`scope`][Promise Types and
+Attributes#scope] attribute can be used to make them local to the bundle.
+
+It is recommended to use bundle scoped classes whenever possible. This example will define ```signal_class``` prefixed classes with a suffix matching the promise outcome (```_kept```, ```_repaired```, ```_notkept```).
+
+```cf3
+     "promiser..."
+        ...
+        classes => results("bundle", "signal_class");
+
+    reports:
+      signal_class_repaired::
+        "Some aspect of the promise was repaired. The agent made a change to take us closer to the desired state";
+      signal_class_kept::
+        "Some aspect of the promise was kept";
+      signal_class_notkept::
+        "Some aspect of the promsie was unable to be repaired";
+      signal_class_kept.signal_class_notkept::
+        "All promise aspects were as desired";
+```
+
+Classes defined by the [module protocol][commands#module] are `namespace`
+scoped.
 
 Finally, `restart_class` classes in `processes` are global.
-
-## Persistence
-
-By default classes are re-computed on each agent execution. Once a class has
-been defined, it persists until the end of that agent execution. Persistent classes
-are always global and can not be set to local by **scope** directive. Classes can
-persist for a period of time. This can be useful to avoid the expense of
-re-evaluation, communicate states across multiple agent runs on the same host.
-
-The standard library in the Masterfiles Policy Framework contains
-the [`feature`][lib/feature.cf] bundle which implements a useful model for
-defining classes for a period of time as well as canceling them on demand.
-
-## Canceling classes
-
-You can cancel a class with a [`classes`][Promise Types and Attributes#classes] body.
-See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
 
 ### Class Scopes: A More Complex Example
 
@@ -624,3 +627,21 @@ are local to those bundles.
 The `local_two` bundle promises a report "Success" which applies only if
 `zero.!one.two` evaluates to true. Within the `local_two` scope this evaluates
 to `true` because the `one` class is not set.
+
+## Persistence
+
+By default classes are re-computed on each agent execution. Once a class has
+been defined, it persists until the end of that agent execution. Persistent classes
+are always global and can not be set to local by **scope** directive. Classes can
+persist for a period of time. This can be useful to avoid the expense of
+re-evaluation, communicate states across multiple agent runs on the same host.
+
+The standard library in the Masterfiles Policy Framework contains
+the [`feature`][lib/feature.cf] bundle which implements a useful model for
+defining classes for a period of time as well as canceling them on demand.
+
+## Canceling classes
+
+You can cancel a class with a [`classes`][Promise Types and Attributes#classes] body.
+See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
+
