@@ -429,7 +429,7 @@ This attribute determines whether or not to expect the CFEngine module protocol.
   * `^meta=a,b,c` sets the class and variable tags for any following definitions to `a`, `b`, and `c`
   * `^persistence=10` sets any following classes to persist for 10 minutes (use 0 to reset)
   * `^persistence=0` sets any following classes to have no persistence (this is the default)
-* lines which begin with a `+` are treated as classes to be defined (like -D). **NOTE:** classes are defined with the [`namespace` scope][Classes and Decisions#class-scope].
+* lines which begin with a `+` are treated as classes to be defined (like -D). **NOTE:** classes are defined with the [`namespace` scope][Classes and Decisions].
 * lines which begin with a `-` are treated as classes to be undefined (like -N)
 * lines which begin with `=` are scalar variables to be defined
 * lines which begin with `=` and include `[]` are array variables to be defined
