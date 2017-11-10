@@ -23,6 +23,14 @@ only support protocol version 1. Protocol version 2 the default in
 3.7. This can be configured with the allowlegacyconnects and protocol_version
 attributes.
 
+### `cf-agent -N` or `cf-agent --negate` is not working
+
+As reported in [CFE-1589](https://tracker.mender.io/browse/CFE-1589) the
+functionality of negating persistent classes on the command line, was
+removed sometime before 3.5, commit
+cf63db27945f0628caa5bf45338f7709d5d12b21. The ticket is open until the
+functionality is reinstated.
+
 ### HP-UX specific
 
 * [Package promises][packages] do not have out-of-the-box support for the HP-UX
