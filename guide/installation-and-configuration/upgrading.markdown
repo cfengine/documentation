@@ -5,15 +5,36 @@ published: true
 sorting: 30
 ---
 
+
+# Summary of the upgrade process
+
+In short, the steps are the following:
+
+1. Before upgrading any package, **upgrade your masterfiles** on the hub
+   (suggested download is the "Masterfiles ready-to-install tarball")
+   * Make sure you port whatever changes you had in the old
+     masterfiles, to the new masterfiles version
+   * Test that the new policy works properly before putting it in
+     `/var/cfengine/masterfiles` directory and deploying it
+2. Wait until the new masterfiles have propagated to all clients,
+   and ensure there are no errors
+3. Upgrade the CFEngine package on the hub with the new version
+4. Upgrade the CFEngine package on all clients
+
+**NOTE**: This is also the recommended way for upgrades between **minor
+releases** for example 3.10.0 to 3.10.2.
+
+**NOTE**: Upgrading between major LTS releases is safest to be done
+**step-by-step from one LTS version to the next**, for example from
+3.6.x to 3.7.x to 3.10.x. Try not to do multi-version upgrade at once.
+
+
+# Detailed upgrade process
+
 This guide documents our recommendation on how to upgrade an existing
 installation of CFEngine Enterprise 3.7.x to {{site.cfengine.branch}}. Community
 users can use these instructions as a guide skipping the parts that are not
 relavent.
-
-We recommend upgrading the Masterfiles Policy Framework first so that you can
-verify that the new policy will work with your old clients across the
-infrastructure. Once the latest policy has been deployed successfully we
-recommend upgrading the Policy Server and finally the remote agents.
 
 Upgrading to {{site.cfengine.branch}} from versions older than 3.7 is more
 complicated as some functionality introduced in {{site.cfengine.branch}}
