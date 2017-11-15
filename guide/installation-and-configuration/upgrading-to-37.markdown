@@ -9,9 +9,30 @@ This guide documents our recommendation on how to upgrade an existing
 installation of CFEngine Community 3.5/3.6 and CFEngine Enterprise 3.5/3.6 to
 CFEngine 3.7.x.
 
-Our recommendation is to upgrade the Policy Server first. The rationale is that
-it is normally a dedicated machine with no business-relevant duties, so the risk
-is lower.
+# Summary of the upgrade process
+
+In short, the steps are the following:
+
+1. Before upgrading any package, **upgrade your masterfiles** on the hub
+   (suggested download is the "Masterfiles ready-to-install tarball")
+   * Make sure you port whatever changes you had in the old
+     masterfiles, to the new masterfiles version
+   * Test that the new policy works properly before putting it in
+     `/var/cfengine/masterfiles` directory and deploying it
+2. Wait until the new masterfiles have propagated to all clients,
+   and ensure there are no errors
+3. Upgrade the CFEngine package on the hub with the new version
+4. Upgrade the CFEngine package on all clients
+
+**NOTE**: This is also the recommended way for upgrades between **minor
+releases** for example 3.10.0 to 3.10.2.
+
+**NOTE**: Upgrading between major LTS releases is safest to be done
+**step-by-step from one LTS version to the next**, for example from
+3.6.x to 3.7.x to 3.10.x. Try not to do multi-version upgrade at once.
+
+
+# Detailed upgrade process
 
 ## Upgrade masterfiles and Policy Server (3.7.X to 3.7.X+1)
 
