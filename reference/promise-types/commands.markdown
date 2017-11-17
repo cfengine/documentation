@@ -397,6 +397,10 @@ This attribute determines whether or not to expect the CFEngine module protocol.
 These variables end up in a context that has the same name as the
 module, unless the `^context` extension is used.
 
+**NOTE**: All variables and classes defined by the module protocol are defined
+in the ```default``` namespace. It is not possible to define variables and
+classes in any other namespace.
+
 All the variables and classes will have at least the tag
 `source=module` in addition to any tags you may set.
 
