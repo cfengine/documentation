@@ -18,7 +18,6 @@ page.
 * [Enterprise API Reference][Enterprise API Reference]
 * [Syntax, identifiers and names][Language Concepts#Syntax, identifiers and names]
 * [Masterfiles Policy Framework][Masterfiles Policy Framework]
-* [Design Center][Design Center]
 * [All Promise and Body Types][All Promise and Body Types]
 * [Macros][Macros]
 
