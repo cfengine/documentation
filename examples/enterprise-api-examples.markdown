@@ -13,6 +13,5 @@ tags: [examples, enterprise, REST, API, reporting]
 * [Issue flexible SQL queries][SQL Query Examples] against data collected from hosts by the CFEngine Server
 * [Schedule reports][SQL Query Examples#Subscribed Query Example: Creating A Subscribed Query] for email and later download
 * [Tracking changes performed by CFEngine][Tracking changes]
-* [Enterprise API interaction with Design Center][]
 
 **See Also**: [Enterprise API Reference][Enterprise API Reference]
