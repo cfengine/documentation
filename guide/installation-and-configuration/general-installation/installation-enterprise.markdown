@@ -264,14 +264,9 @@ When bootstrapping is complete, CFEngine is up and running on your system.
 The Mission Portal is immediately accessible. Connect to the Policy Server
 through your web browser at http://`<IP address of your Policy Server>`.
 
-To be able to use the Mission Portal's Design Center
-front-end, continue with [integrating Mission Portal with git] [Integrating Mission Portal with git].
-
 Learn more about CFEngine by using the following resources:
 
 * Tutorial: [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
-
-* Tutorial: [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches]
 
 * [CFEngine Guide][Guide]
 

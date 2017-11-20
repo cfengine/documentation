@@ -53,36 +53,37 @@ following 3 simple steps.
 
 1. Define Desired State
 
-As an end-user you can either use the CFEngine Design Center or CFEngine Domain
-Specific Language (DSL) to define desired states. CFEngine allows you to define
-a variety of states ranging from process management to software deployment and
-file integrity. You can check out CFEngine Promise Types to get an idea of the
-most common states you can define.
+As an end-user you can either use the CFEngine Domain Specific Language (DSL) to
+define desired states. CFEngine allows you to define a variety of states ranging
+from process management to software deployment and file integrity. You can check
+out CFEngine Promise Types to get an idea of the most common states you can
+define.
 
-Normally, all desired states are stored in .cf text-files in the
-/var/cfengine/masterfiles directory on one or more central distribution points,
-referred to as CFEngine Policy Hubs.
+Normally, all desired states are stored in ```.cf``` text-files in the
+```/var/cfengine/masterfiles``` directory on one or more central distribution
+points, referred to as CFEngine Policy Hubs.
 
 2. Ensure Actual State
 
 CFEngine typically runs locally on each managed resource. A resource can be
-anything from a server, network switch, raspberry pi, or any other
-computational device. CF-agent, the execution engine, is autonomous which means
-all the evaluations occur on the local node.
+anything from a server, network switch, raspberry pi, or any other computational
+device. `cf-agent`, the execution engine, is autonomous which means all the
+evaluations occur on the local node.
 
-Before each run, which by default is every 5 minutes, the agent tries to
-connect to one of the Policy Hubs to check if there has been any policy
-updates. Upon policy updates, cf-agent will download the latest policy to its
-own /var/cfengine/inputs directory, run a syntax check and upon success start
+Before each run, which by default is every 5 minutes, the agent tries to connect
+to one of the Policy Hubs to check if there has been any policy updates. Upon
+policy updates, `cf-agent` will download the latest policy to its own
+```/var/cfengine/inputs``` directory, run a syntax check and upon success start
 to execute.
 
 3. Verify Actual State
 
 Whenever the agent runs, it creates a log of local inventory, system states and
-execution results. The logs are stored in /var/cfengine/outputs. For enterprise
-customers, all data is also stored in a local database. CFEngine also stores a
-large number of asset information like software installed, CPU, memory, disk,
-network activity, etc. As for execution results, CFEngine can have 3 states:
+execution results. The logs are stored in ```/var/cfengine/outputs```. For
+enterprise customers, all data is also stored in a local database. CFEngine also
+stores a large number of asset information like software installed, CPU, memory,
+disk, network activity, etc. As for execution results, CFEngine can have 3
+states:
 
 | Promise Result/Outcome | Description                             |
 |------------------------|:----------------------------------------|

@@ -15,7 +15,6 @@ found in `/var/cfengine/share/doc/examples`.
 
 * [Enterprise API Examples][Enterprise API Examples]
 * [Tutorials][Tutorials]
-* Design Center examples in the CFEngine [GitHub repository](https://github.com/cfengine/design-center/tree/master/examples).
 
 See Also: 
 

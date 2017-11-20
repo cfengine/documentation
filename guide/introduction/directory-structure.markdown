@@ -90,8 +90,6 @@ Log data for incoming and outgoing connections.
 
 ### /var/cfengine/config ###
 
-### /var/cfengine/design-center ###
-
 ### /var/cfengine/httpd ###
 
 ### /var/cfengine/lib ###

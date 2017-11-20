@@ -38,7 +38,7 @@ A Configuration Management Database. A term coined as part of the IT Infrastruct
 #### Common Control ####
 #### Components ####
 
-Standalone applications include cf-agent, cf-promises, cf-runagent, cf-know, cf-report, cf-hub, cf-sketch
+Standalone applications include cf-agent, cf-promises, cf-runagent, cf-know, cf-report, cf-hub
 
 Daemons include cf-execd, cf-monitord, and cf-serverd
 
@@ -113,18 +113,6 @@ For historical reasons, certain computers are referred to as servers, especially
 In CFEngine, cf-serverd is a software component that serves files from one computer to another. All computers are recommended to run cf-serverd, making all computers CFEngine servers, whether they are laptops, phones or datacentre computers.
 
 The special server that others consult for the latest policies is called the Policy Server.
-
-#### Sketch Activation ####
-
-A sketch activation is the data that configures the sketch, plus the run environment (verbose and/or test mode), plus the target machines or classes.  Think of a sketch activations as slalom run instructions you would give to a skier: "go left," "go straight," "let it loose now for maximum speed."
-
-#### Sketches ####
-
-Sketches are data-driven policy templates, packaged in installable units.
-
-* data-driven: sketches are configured with pure data, not with CFEngine policy
-* policy templates: sketches are reusable policies you can configure with different parameters each time you use them
-* installable units: sketches define their "manifest" of files that need to be installed, dependencies on CFEngine version and other sketches, authors, license, API, and so on
 
 #### Special Variables ####
 #### Standard Library ####

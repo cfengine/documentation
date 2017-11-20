@@ -122,7 +122,6 @@ cfengine  test.cf  update.cf
 ```
 $ cf-net opendir masterfiles
 services
-sketches
 cf_promises_validated
 cfe_internal
 ..

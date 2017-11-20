@@ -120,7 +120,7 @@ We ready now ready to install the CFEngine software on both the server and clien
 
 * Install CFEngine Enterprise onto a Policy Server and onto Hosts. A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts. Hosts are clients that retrieve and execute promises.
 * Bootstrap the Policy Server to itself and then bootstrap each of the Hosts to the Policy Server. Bootstrapping establishes a trust relationship between the Policy Server and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company. Bootstrapping completes the installation process.
-* Log in to the Mission Portal. The Mission Portal is a graphical user interface that allows you to verify the actual state of all your Hosts, thus ensuring that your promises are being executed. By using the Design Center inside the Mission Portal, you can also define new desired states (business policies) for your infrastructure.
+* Log in to the Mission Portal. The Mission Portal is a graphical user interface that allows you to verify the actual state of all your Hosts, thus ensuring that your promises are being executed.
 * Try out the Tutorials. Links to three tutorials give you a head start on learning CFEngine.
 
 ### Step 1. Download and install Enterprise on a Policy Server ###
@@ -188,12 +188,6 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 ## What Next? ##
 
 ### Tutorials ###
-
-* [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches]
-
-  This tutorial
-  teaches you how to configure and deploy business policy by using the Design Center application in the Mission Portal. Next, it shows you how to verify
-  that your business policy is being activated by viewing the Reports in the Mission Portal.
 
 * [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
 

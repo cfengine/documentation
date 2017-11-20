@@ -31,8 +31,7 @@ Hosts are clients that retrieve and execute promises.
 and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company.
 Bootstrapping completes the installation process.
 * **Log in to the Mission Portal.** The Mission Portal is a graphical user interface that allows you to verify the
-the actual state of all your Hosts, thus ensuring that your promises are being executed. By using the **Design Center** inside the Mission Portal, you
-can also define new desired states (business policies) for your infrastructure.
+the actual state of all your Hosts, thus ensuring that your promises are being executed.
 * **Try out the Tutorials.** Links to three tutorials give you a head start on learning CFEngine.
 
 
@@ -116,12 +115,6 @@ number you use in your **Vagrantfile** (e.g. policyserver.vm.network "forwarded_
 <hr>
 
 ## Tutorials
-
-* [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches]
-
-  This tutorial
-  teaches you how to configure and deploy business policy by using the Design Center application in the Mission Portal. Next, it shows you how to verify
-  that your business policy is being activated by viewing the Reports in the Mission Portal.
 
 * [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
 

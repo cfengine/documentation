@@ -50,9 +50,7 @@ users, including their name, role, and password.
 ![Role Management](Settings-role.png)
 
 Roles are used to limit access. Roles can limit access for reporting on
-hosts that have or do not have specific classes, and they can be used
-to limit which sketches from Design Center a user is authorized to
-use.
+hosts that have or do not have specific classes.
 
 For example if you want to limit a users ability to report only on
 hosts in the "North American Data Center" you could setup a role that
@@ -68,10 +66,8 @@ Portal.
 
 **Predefined Roles:**
 
-* admin - The admin role can see everything and do anything.
-* cf_remoteagent - This role allows execution of cf-runagent. It can
-  be used from within Design Center to troubleshoot hosts that have
-  failed sketch activations.
+* ```admin``` - The admin role can see everything and do anything.
+* ```cf_remoteagent``` - This role allows execution of `cf-runagent`.
   
 **Default Role:**
 

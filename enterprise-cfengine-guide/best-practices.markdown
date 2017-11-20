@@ -150,17 +150,7 @@ directory is valid.  If it's not, an error will go in the log file and
 the script exits.
 
 **NOTE** this means that clients will **never** get invalid policies
-  according to the hub, although a 3.5 or older client could still
-  receive policies that are only valid in 3.6.  So make sure you test
-  with 3.5 or older if you anticipate that problem during migration,
-  but in a homogeneous client population this is a wonderful
-  guarantee.
-
-##### `pre-fetch.sh` and `post-update.sh` ###
-
-These scripts are run by the Mission Portal whenever the user
-configures sketches.  They enable the Mission Portal to check out the
-policies, make changes to them, and then commit and push them back.
+  according to the hub.
 
 ### Policy changes ###
 
@@ -173,11 +163,11 @@ infrastructure.
 ### Benefits ###
 
 To conclude, let's summmarize the benefits of versioning your
-masterfiles using the built-in facilities in CFEngine Enterprise 3.6
+masterfiles using the built-in facilities in CFEngine Enterprise.
 
 * easy to use compared to home-grown VCS integration
 * supports Git out of the box and, with some work, can support others
-  like Subversion
+  like Subversion, Mercurial, and CVS.
 * tested, reliable, and built-in
 * supports any repository and branch per hub
 * your policies are validated before deployment

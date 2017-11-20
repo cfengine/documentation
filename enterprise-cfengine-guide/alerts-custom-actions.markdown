@@ -36,7 +36,7 @@ These keys are present for all alert types.
 | ALERT_TOTAL_HOST            | Number of hosts defined for (number).                                                                  |
 | ALERT_CONDITION_NAME        | Condition name, as defined when creating the alert (string).                                             |
 | ALERT_CONDITION_DESCRIPTION | Condition description, as defined when creating the alert (string).                                      |
-| ALERT_CONDITION_TYPE        | Type, as selected when creating the alert. Can be 'policy', 'inventory', 'softwareupdate' or 'sketch'. |
+| ALERT_CONDITION_TYPE        | Type, as selected when creating the alert. Can be 'policy', 'inventory', or 'softwareupdate'. |
 
 
 
@@ -70,18 +70,6 @@ In addition to the common keys, the following keys are present when ALERT_CONDIT
 |---------------------------------------------------|---------------------------------------------------------------------------------------------|
 | ALERT_SOFTWARE_UPDATE_CONDITION_PATCHNAME         | The name of the package, as defined when creating the alert, or empty if undefined (string).         |
 | ALERT_SOFTWARE_UPDATE_CONDITION_PATCHARCHITECTURE | The architecture of the package, as defined when creating the alert, or empty if undefined (string). |
-
-
-### Sketch keys ###
-
-In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='sketch'.
-
-| Key                                    | Description                                                                            |
-|----------------------------------------|----------------------------------------------------------------------------------------|
-| ALERT_SKETCH_CONDITION_SKETCHNAME      | The name of the sketch, e.g. 'Security::file_integrity' (string).                       |
-| ALERT_SKETCH_CONDITION_ACTIVATIONNAME  | The name of the sketch activation, as typed by the user activating the sketch (string). |
-| ALERT_SKETCH_CONDITION_ACTIVATIONHASH  | A unique ID for this sketch activation (string).                                        |
-| ALERT_SKETCH_CONDITION_SKETCHCHECKTYPE | The type, or category, of the sketch, e.g. 'compliance' (string).                               |
 
 
 ## Example parameters: policy bundle alert not kept ##

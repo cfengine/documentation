@@ -247,9 +247,8 @@ this setting at all.
 
 **BEWARE THAT ONLY VALID (KNOWN) BUNDLES CAN BE ADDED.**
 
-By default, the inventory modules, then internal hub modules, then
-Design Center sketches, then the autorun services, and finally
-internal management bundles are in the `bundlesequence`.
+By default, the inventory modules, then internal hub modules, then the autorun
+services, and finally internal management bundles are in the `bundlesequence`.
 
 In a large configuration, you might want to have a different
 `bundlesequence` for different classes of host, so that you can build
@@ -530,10 +529,6 @@ This class enables policy that cleans up report diffs when they exceed
 
 Bundles related to classification for CFEngine Enterprise HA.
 
-#### cfsketch_run (bundle)
-
-This bundle activates sketches deployed by the Design Center tooling.
-
 #### services_autorun (bundle)
 
 This bundle loads policies found in `services/autorun` that are
@@ -644,9 +639,6 @@ download a working policy, once you fix it on the policy host).
 * `services`: your site's policies go here
 
 * `services_autorun`: see above
-
-* `sketches`: Design Center installations use this; do not touch or
-  you will get unexpected behavior
 
 * `update` and `update.cf`: functionality for updating inputs and
   CFEngine itself, see above.  You only modify files under `update` if

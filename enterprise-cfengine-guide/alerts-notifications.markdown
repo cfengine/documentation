@@ -49,8 +49,6 @@ tags: [cfengine enterprise, user interface, mission portal]
 
 	* **Inventory** conditions trigger alerts for inventory attributes. These attributes correspond to the ones found in inventory reports.
 
-	* **Sketch** conditions trigger alerts based on the compliance status of the part of CFEngine policy which has been added by a specific sketch during its activation.
-
 	* **Software Updates** conditions trigger alerts based on packages available for update in the repository. They can be set either for a specific version or trigger on the latest version available. If neither a package nor a version is specified, they will trigger alerts for any update.
 
 * It is possible to create alerts for all hosts, or a filtered set of hosts.
