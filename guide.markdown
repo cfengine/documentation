@@ -73,6 +73,5 @@ experts if you need more help. Contact us!
 	* [Promises Available in CFEngine][]
 	* [Authoring Policy Tools & Workflow][]
 * [Reports][]
-* [Design Center Overview][]
 * [FAQ][]
 * [Additional Resources][]
