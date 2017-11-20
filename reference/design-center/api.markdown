@@ -1,7 +1,7 @@
 ---
 layout: default
 title: The Design Center API
-published: true
+published: false
 tags: [reference, design center, sketch, cf-sketch, api]
 ---
 

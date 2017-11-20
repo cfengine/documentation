@@ -46,24 +46,6 @@ Daemons include cf-execd, cf-monitord, and cf-serverd
 
 CFEngine's data types describe what a variable can contain.  A variable can't be assigned a different type once it's been set.  The commonly used data types are `string`, `slist`, `int`, `real`, and `data`.
 
-#### Decisions ####
-
-#### Design Center ####
-
-The collection of sketches and the tools that allow you to manipulate and manage them.
-
-See Also: [Design Center in CFEngine Enterprise][Design Center UI]
-
-#### Design Center API ####
-
-Performs all operations related to sketches, parameter sets, environments, validations, and deployment.
-
-See also: [The Design Center API][The Design Center API]
-
-#### Design Center App ####
-
-The Design Center user interface app that is located on the Mission Portal console for CFEngine Enterprise users.
-
 #### Directories ####
 #### Distribution ####
 #### Enterprise API ####

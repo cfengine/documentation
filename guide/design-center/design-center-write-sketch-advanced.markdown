@@ -1,7 +1,7 @@
 ---
 layout: default
 title: sketchify - Write A New Sketch From An Existing Bundle
-published: true
+published: false
 sorting: 40
 tags: [design center, sketchify, sketch, bundle, write sketches]
 ---

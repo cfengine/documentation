@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Sketch Structure
-published: true
+published: false
 tags: [sketch, structure, reference, design center]
 ---
 

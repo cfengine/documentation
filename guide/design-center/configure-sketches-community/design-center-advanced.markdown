@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Advanced Walkthrough
-published: true
+published: false
 sorting: 10
 tags: [design center, walkthrough, cf-sketch, sketches]
 ---

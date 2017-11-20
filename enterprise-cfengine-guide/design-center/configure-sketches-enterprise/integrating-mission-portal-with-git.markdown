@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Integrating Mission Portal with git
-published: true
+published: false
 sorting: 10
 tags: [sketch, design center, git, mission portal, enterprise, masterfiles, version control, Mission Portal, ui]
 ---

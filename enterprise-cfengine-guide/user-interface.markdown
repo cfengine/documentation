@@ -25,7 +25,6 @@ statements passed to PostgreSQL.
 * [Reporting][User Interface#Reporting]
 * [Sharing][User Interface#Sharing]
 * [Monitoring][User Interface#Monitoring]
-* [Design Center UI][User Interface#Design Center UI]
 * [Settings][User Interface#Settings]
 
 ## Dashboard
@@ -118,13 +117,6 @@ case `admin` also has access to the custom dashboard.
 Monitoring allows you to get an overview of your hosts over time.
 
 Find out more: [Monitoring][]
-
-## Design Center UI
-
-The Design Center UI allows authorized infrastructure engineers to configure,
-deploy, and monitor data-driven policy templates known as sketches.
-
-Find out more: [Design Center][]
 
 ## Settings
 
