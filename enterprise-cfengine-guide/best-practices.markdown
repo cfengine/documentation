@@ -23,8 +23,7 @@ It turns out everyone likes convenience and writing the versioning
 machinery is hard.  So for CFEngine Enterprise 3.6 we set out to
 provide version control integration with Git out of the box, disabled
 by default.  This allows users to use branches for separate hubs
-(which enables a policy release pipeline) and enables Design Center
-integration.
+(which enables a policy release pipeline).
 
 ### Release pipeline ###
 
@@ -34,53 +33,15 @@ are the software.  Users have at least two stages, development and
 production, but typically the sequence has more stages including
 various forms of testing/QA and pre-production.
 
-## Design Center ##
-
-The CFEngine Design Center is a way to augment your policies (in a way
-that does not conflict or override your own policies) through a GUI,
-using modular testable policies called sketches.  It's like a Perl
-CPAN for CFEngine but with a GUI and awesome sauce mixed in.
-
 ### How to enable it ###
 
 To enable masterfiles versioning, you have to plan a little bit. These
 are the steps:
 
-#### Choose your repository ###
+#### Configure your repository ###
 
-You have two options: use the default local Git repository which comes
-with CFEngine Enterprise, or use a remote Git repository accessible
-via the `git` or `https` protocol.  The first option is good for
-getting started quickly, but we strongly recommend the second option:
-using a remote repository, populated with the contents of the `3.6.x`
-branch of our masterfiles repository at
-https://github.com/cfengine/masterfiles.
-
-##### Using the default local Git repository ####
-
-The default repository is a local directory on the hub and set up by
-the `cfengine-hub` package.  It's the default in the Mission Portal
-VCS integration panel and resides in `/opt/cfengine/masterfiles.git`.
-
-**PLEASE NOTE: you must use user "cfapache" to interact with this
-repository safely on the hub.**
-
-You do not have to do anything to set up this repository - it's
-already preconfigured and prepopulated out of the box. You just need
-to enable VCS deployments as described below.
-
-To check out this default repository, run the following commands on
-your hub (everything needs to be run as user `cfapache` for the
-permissions to be set correctly. The first two commands setup some
-basic information needed by git to manipulate the repository):
-
-    su - cfapache
-    git config --global user.email "your@email.address"
-    git config --global user.name "Your Name"
-    git clone /opt/cfengine/masterfiles.git
-
-And then make all the changes in the checked-out `masterfiles`
-repository.
+Use a remote Git repository accessible via the `git` or `https` protocol
+populated with the contents of masterfiles.
 
 ##### Using a remote repository ####
 
@@ -201,14 +162,7 @@ These scripts are run by the Mission Portal whenever the user
 configures sketches.  They enable the Mission Portal to check out the
 policies, make changes to them, and then commit and push them back.
 
-### Design Center integration ##
-
-The Design Center integration Just Works when you follow the procedure
-above to enable the VCS integration.  You can then go into the Mission
-Portal, configure any sketch, and voila, in minutes that sketch will
-be activated across your infrastructure.
-
-### Manual policy changes ###
+### Policy changes ###
 
 If you want to make manual changes to your policies, simply make those
 changes in a checkout of your masterfiles repository, commit and push
@@ -225,7 +179,6 @@ masterfiles using the built-in facilities in CFEngine Enterprise 3.6
 * supports Git out of the box and, with some work, can support others
   like Subversion
 * tested, reliable, and built-in
-* Design Center integration
 * supports any repository and branch per hub
 * your policies are validated before deployment
 * integration happens through shell scripts and `update.cf`, not C

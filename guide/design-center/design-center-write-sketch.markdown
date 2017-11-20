@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Write a new Sketch
-published: true
+published: false
 sorting: 40
 tags: [design center, write sketches]
 ---

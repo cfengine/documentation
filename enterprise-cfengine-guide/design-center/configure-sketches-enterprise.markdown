@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Enterprise Sketches
-published: true
+published: false
 sorting: 20
 tags: [sketch, design center]
 ---

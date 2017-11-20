@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Maintaining your own sketch repository
-published: true
+published: false
 tags: [sketch, repository, reference, design center]
 ---
 

@@ -108,8 +108,6 @@ organization, [contact us][contact us].
 
 * [Documentation](https://github.com/cfengine/documentation)
 
-* [Design Center](https://github.com/cfengine/design-center)
-
 **Public Bug Tracker**
 
 * Bugs and improvement suggestions can be registered with our development team

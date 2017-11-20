@@ -2,7 +2,7 @@
 layout: default
 title: Design Center UI
 sorting: 70
-published: true
+published: false
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 

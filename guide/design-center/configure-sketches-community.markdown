@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Command Line Sketches
-published: true
+published: false
 sorting: 30
 tags: [design center, cf-sketch, sketches]
 ---

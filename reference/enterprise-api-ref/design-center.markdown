@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  Design Center REST API
-published: true
+published: false
 tags: [reference, enterprise, REST, API, DC, sketch, URI, design center]
 ---
 

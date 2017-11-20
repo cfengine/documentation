@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Design Center Overview
-published: true
+published: false
 sorting: 70
 tags: [design center, cf-sketch, sketches, deploy policy]
 ---
