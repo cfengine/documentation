@@ -1603,8 +1603,6 @@ devices
 
 **Example:**
 
-**Example:**
-
 A value of `true` (the default behavior) will result in the agent retaining the
 previous version of the file suffixed with `.cf-before-edit`.
 
