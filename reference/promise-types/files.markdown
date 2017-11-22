@@ -846,12 +846,11 @@ defined repository affects the location at which the backup is stored.
 **Example:**
 
 ```cf3
-     body edit_defaults example
-     {
-     edit_backup => "timestamp";
-     }
+body copy_from example
+{
+  copy_backup => "timestamp";
+}
 ```
-
 
 **See also:** [`default_repository` in ```body agent control```][cf-agent#default_repository], [`edit_backup` in ```body edit_defaults```][files#edit_backup], [`rotate` in `body edit_defaults`][files#rotate]
 
