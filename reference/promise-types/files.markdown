@@ -845,120 +845,13 @@ defined repository affects the location at which the backup is stored.
 
 **Example:**
 
-A value of `true` (the default behavior) will result in the agent retaining the
-previous version of the file suffixed with `.cf-before-edit`.
-
 ```cf3
-body edit_defaults backup( edit_backup )
-{
-  edit_backup => "$(edit_backup)";
-}
-
-bundle agent main
-{
-  files:
-    "/tmp/example_edit_backup_true"
-      create => "true";
-
-    "/tmp/example_edit_backup_true"
-      edit_line => insert_lines("Hello World"),
-      edit_defaults => backup("true");
-
-  vars:
-    "example_files" slist => sort(lsdir( "/tmp/", "example_edit_backup_true.*", false), lex);
-
-  reports:
-    "$(example_files)";
-}
+     body edit_defaults example
+     {
+     edit_backup => "timestamp";
+     }
 ```
 
-Outputs:
-
-```
-R: example_edit_backup_true
-R: example_edit_backup_true.cf-before-edit
-```
-
-A value of `timestamp` will result in the original file be suffixed with the
-epoch and the canonified form of the date when the file was changed followed by
-`.cf-before-edit`. For example
-`_1511292441_Tue_Nov_21_13_27_22_2017.cf-before-edit`.
-
-```cf3
-body edit_defaults backup( edit_backup )
-{
-  edit_backup => "$(edit_backup)";
-}
-
-bundle agent main
-{
-  files:
-    "/tmp/example_edit_backup_timestamp"
-      create => "true";
-
-    "/tmp/example_edit_backup_timestamp"
-      edit_line => insert_lines("Hello World"),
-      edit_defaults => backup("timestamp");
-
-  vars:
-    "example_files" slist => lsdir( "/tmp/", "example_edit_backup_timestamp.*", false);
-
-  reports:
-    "$(example_files)";
-}
-```
-
-Outputs:
-
-```
-R: example_edit_backup_timestamp
-R: example_edit_backup_timestamp_1511300904_Tue_Nov_21_15_48_25_2017.cf-before-edit
-```
-
-A value of `false` will result in no retention of the original file.
-
-A value of `rotate` will result in the original file be suffixed with
-`.cf-before-edit` followed by an integer representing the nth previous version
-of the file. The number of rotations is managed by the `rotate` attribute in
-`edit_defaults`.
-
-```cf3
-body edit_defaults backup( edit_backup )
-{
-  edit_backup => "$(edit_backup)";
-  rotate => "2";
-}
-
-bundle agent main
-{
-  files:
-    "/tmp/example_edit_backup_rotate"
-      create => "true";
-
-    "/tmp/example_edit_backup_rotate"
-      edit_line => insert_lines("Hello World"),
-      edit_defaults => backup("rotate");
-
-    "/tmp/example_edit_backup_rotate"
-      handle => "edit_2",
-      edit_line => insert_lines("Goodbye"),
-      edit_defaults => backup("rotate");
-
-  vars:
-    "example_files" slist => lsdir( "/tmp/", "example_edit_backup_rotate.*", false);
-
-  reports:
-    "$(example_files)";
-}
-```
-
-Outputs:
-
-```
-R: example_edit_backup_rotate
-R: example_edit_backup_rotate.cf-before-edit.1
-R: example_edit_backup_rotate.cf-before-edit.2
-```
 
 **See also:** [`default_repository` in ```body agent control```][cf-agent#default_repository], [`edit_backup` in ```body edit_defaults```][files#edit_backup], [`rotate` in `body edit_defaults`][files#rotate]
 
@@ -1711,11 +1604,121 @@ devices
 
 **Example:**
 
+**Example:**
+
+A value of `true` (the default behavior) will result in the agent retaining the
+previous version of the file suffixed with `.cf-before-edit`.
+
 ```cf3
-     body edit_defaults example
-     {
-     edit_backup => "timestamp";
-     }
+body edit_defaults backup( edit_backup )
+{
+  edit_backup => "$(edit_backup)";
+}
+
+bundle agent main
+{
+  files:
+    "/tmp/example_edit_backup_true"
+      create => "true";
+
+    "/tmp/example_edit_backup_true"
+      edit_line => insert_lines("Hello World"),
+      edit_defaults => backup("true");
+
+  vars:
+    "example_files" slist => sort(lsdir( "/tmp/", "example_edit_backup_true.*", false), lex);
+
+  reports:
+    "$(example_files)";
+}
+```
+
+Outputs:
+
+```
+R: example_edit_backup_true
+R: example_edit_backup_true.cf-before-edit
+```
+
+A value of `timestamp` will result in the original file be suffixed with the
+epoch and the canonified form of the date when the file was changed followed by
+`.cf-before-edit`. For example
+`_1511292441_Tue_Nov_21_13_27_22_2017.cf-before-edit`.
+
+```cf3
+body edit_defaults backup( edit_backup )
+{
+  edit_backup => "$(edit_backup)";
+}
+
+bundle agent main
+{
+  files:
+    "/tmp/example_edit_backup_timestamp"
+      create => "true";
+
+    "/tmp/example_edit_backup_timestamp"
+      edit_line => insert_lines("Hello World"),
+      edit_defaults => backup("timestamp");
+
+  vars:
+    "example_files" slist => lsdir( "/tmp/", "example_edit_backup_timestamp.*", false);
+
+  reports:
+    "$(example_files)";
+}
+```
+
+Outputs:
+
+```
+R: example_edit_backup_timestamp
+R: example_edit_backup_timestamp_1511300904_Tue_Nov_21_15_48_25_2017.cf-before-edit
+```
+
+A value of `false` will result in no retention of the original file.
+
+A value of `rotate` will result in the original file be suffixed with
+`.cf-before-edit` followed by an integer representing the nth previous version
+of the file. The number of rotations is managed by the `rotate` attribute in
+`edit_defaults`.
+
+```cf3
+body edit_defaults backup( edit_backup )
+{
+  edit_backup => "$(edit_backup)";
+  rotate => "2";
+}
+
+bundle agent main
+{
+  files:
+    "/tmp/example_edit_backup_rotate"
+      create => "true";
+
+    "/tmp/example_edit_backup_rotate"
+      edit_line => insert_lines("Hello World"),
+      edit_defaults => backup("rotate");
+
+    "/tmp/example_edit_backup_rotate"
+      handle => "edit_2",
+      edit_line => insert_lines("Goodbye"),
+      edit_defaults => backup("rotate");
+
+  vars:
+    "example_files" slist => lsdir( "/tmp/", "example_edit_backup_rotate.*", false);
+
+  reports:
+    "$(example_files)";
+}
+```
+
+Outputs:
+
+```
+R: example_edit_backup_rotate
+R: example_edit_backup_rotate.cf-before-edit.1
+R: example_edit_backup_rotate.cf-before-edit.2
 ```
 
 **See also:** [`default_repository` in ```body agent control```][cf-agent#default_repository], [`copy_backup` in ```body copy_from```][files#copy_backup]
