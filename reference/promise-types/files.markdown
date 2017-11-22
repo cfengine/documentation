@@ -852,7 +852,7 @@ body copy_from example
 }
 ```
 
-**See also:** [`default_repository` in ```body agent control```][cf-agent#default_repository], [`edit_backup` in ```body edit_defaults```][files#edit_backup], [`rotate` in `body edit_defaults`][files#rotate]
+**See also:** [`default_repository` in ```body agent control```][cf-agent#default_repository], [`edit_backup` in ```body edit_defaults```][files#edit_backup]
 
 #### encrypt
 
@@ -1603,8 +1603,6 @@ devices
 
 **Example:**
 
-**Example:**
-
 A value of `true` (the default behavior) will result in the agent retaining the
 previous version of the file suffixed with `.cf-before-edit`.
 
@@ -1720,7 +1718,7 @@ R: example_edit_backup_rotate.cf-before-edit.1
 R: example_edit_backup_rotate.cf-before-edit.2
 ```
 
-**See also:** [`default_repository` in ```body agent control```][cf-agent#default_repository], [`copy_backup` in ```body copy_from```][files#copy_backup]
+**See also:** [`default_repository` in ```body agent control```][cf-agent#default_repository], [`copy_backup` in ```body copy_from```][files#copy_backup], [`rotate` in `body edit_defaults`][files#rotate]
 
 #### empty_file_before_editing
 
@@ -1874,6 +1872,8 @@ deleted (that is, it "falls off the end" of the rotation).
      rotate => "4";
      }
 ```
+
+**See also:** [`edit_backup` in ```body edit_defaults```][files#edit_backup]
 
 ### edit_line
 
