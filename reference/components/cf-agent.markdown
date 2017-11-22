@@ -532,7 +532,7 @@ repository.
 
 **Allowed input range:** `"?(/.*)`
 
-**Default value:** in situ
+**Default value:** unset
 
 **Example:**
 
@@ -543,11 +543,14 @@ repository.
     }
 ```
 
-**Notes:** When a repository is specified, the files are stored
-using the canonified directory name of the original file,
-concatenated with the name of the file. So, for example,
-`/usr/local/etc/postfix.conf` would ordinarily be stored in an
-alternative repository as `_usr_local_etc_postfix.conf.cfsaved`.
+**Notes:** When a repository is specified, the files are stored using the
+canonified directory name of the original file, concatenated with the name of
+the file. So, for example, `/usr/local/etc/postfix.conf` would ordinarily be
+stored in an alternative repository as `_usr_local_etc_postfix.conf.cfsaved`. If
+unset then backups are stored in the same directory as the original file with an
+identifying suffix.
+
+**See also:** [`edit_backup` in ```body edit_defaults```][files#edit_backup], [`copy_backup` in ```body copy_from```][files#copy_backup]
 
 ### default_timeout
 
