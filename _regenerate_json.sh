@@ -42,7 +42,8 @@ do
         mkdir -p $(dirname ${out})
     fi
 
-    ${WRKDIR}/core/cf-promises/cf-promises --eval-functions --policy-output-format=json ${policy} >  ${out}
+    # We strip error lines because of CFE-2370 and CFE-2696
+    ${WRKDIR}/core/cf-promises/cf-promises --eval-functions --policy-output-format=json ${policy} | sed '/   error\:.*/d' >  ${out}
     echo "Writing '${out}'"
 done
 (
