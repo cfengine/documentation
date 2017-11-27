@@ -391,6 +391,9 @@ Note that the `r` permission is not necessary to read an object's
 permissions and attributes in all file systems. For example, in POSIX,
 having `x` on its containing directory is sufficient.
 
+Note that capital `X` which is supported by the ```setfacl``` command is not
+supported by the acl library, and thus not supported by the acl body.
+
 **Example:**
 
 ```cf3
