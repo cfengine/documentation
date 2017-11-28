@@ -353,13 +353,21 @@ this refers to the file group).
 
 * `all`
 
-Indicates that the line applies to every user. `mode` is the permission mode
-string.
+Indicates that the line applies to every user.
+
+**Note:** This ACL is **required** when `acl_method` is set to `overwrite`.
+
+* `mask`
+
+A valid mask identifier (e.g. `mask:rwx` ). In essence the mask is an upper
+bound of the permissions that any entry in the group class will grant. When
+`acl_method` is `overwrite` if mask is not supplied, it will default to
+`mask:rwx`).
 
 * `mode`
 
 One or more strings `op`|`perms`|(`nperms`); a concatenation of `op`, `perms`
-and optionally (`nperms`) separated with commas (e.g. +rx,-w(s) ). `mode` is
+and optionally (`nperms`) separated with commas (e.g. `+rx,-w(s)` ). `mode` is
 parsed from left to right.
 
 * `op`
