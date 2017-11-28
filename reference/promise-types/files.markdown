@@ -325,11 +325,15 @@ A valid username identifier for the system and cannot be empty. However, `user`
 can be set to `*` as a synonym for the entity that owns the file system object
 (e.g. `user:*:r`).
 
+**Note:** The user id is not a valid alternative.
+
 * `group`
 
 +A valid group identifier for the system and cannot be empty. However, `group`
 +can be set to `*` as a synonym for the group that owns the POSIX file system
 +object (`group:*:rwx`).
+
+**Note:** The group id is not a valid alternative.
 
 * `all`
 
@@ -340,13 +344,17 @@ string.
 
 A valid user identifier for the system and cannot be empty. However, `uid` can
 be set to `*` as a synonym for the entity that owns the file system object
-(e.g. user:\*:r).
+(e.g. `user:*:r`).
+
+**Note:** The username is not a valid alternative.
 
 * `gid`
 
 A valid group identifier for the system and cannot be empty. However, in some
 ACL types, `gid` can be set to `*` to indicate a special group (e.g. in POSIX
 this refers to the file group).
+
+**Note:** The group name is not a valid alternative.
 
 * `mode`
 
