@@ -327,8 +327,8 @@ can be set to `*` as a synonym for the entity that owns the file system object
 
 **Notes:**
 
-** The users id is not a valid alternative.
-** This ACL is **required** when `acl_method` is set to `overwrite`
+  * The users id is not a valid alternative.
+  * This ACL is **required** when `acl_method` is set to `overwrite`
 
 * `uid`
 
@@ -346,8 +346,8 @@ object (```group:*:rwx```).
 
 **Notes:**
 
-** The groups id is not a valid alternative.
-** This ACL is **required** when `acl_method` is set to `overwrite`.
+  * The groups id is not a valid alternative.
+  * This ACL is **required** when `acl_method` is set to `overwrite`.
 
 * `gid`
 
