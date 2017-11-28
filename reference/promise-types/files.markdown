@@ -319,56 +319,33 @@ Form of the permissions is as follows:
                         };
 ```
 
-* `user`
+*   `user`
 
-A valid username identifier for the system and cannot be empty. However, `user`
-can be set to `*` as a synonym for the entity that owns the file system object
-(e.g. ```user:*:r```).
+indicates that the line applies to a user specified by the user identifier
+`uid`. `mode` is the permission mode string.
 
-**Notes:**
+*   `group`
 
-  * The users id is not a valid alternative.
-  * This ACL is **required** when `acl_method` is set to `overwrite`
+
+Indicates that the line applies to a group specified by the group identifier
+`gid`. `mode` The permission mode string.
+
+* `all`
+
+Indicates that the line applies to every user. `mode` is the permission mode
+string.
 
 * `uid`
 
 A valid user identifier for the system and cannot be empty. However, `uid` can
 be set to `*` as a synonym for the entity that owns the file system object
-(e.g. `uid:*:r`).
-
-**Note:** The username is not a valid alternative.
-
-* `group`
-
-A valid group identifier for the system and cannot be empty. However, `group`
-can be set to `*` as a synonym for the group that owns the POSIX file system
-object (```group:*:rwx```).
-
-**Notes:**
-
-  * The groups id is not a valid alternative.
-  * This ACL is **required** when `acl_method` is set to `overwrite`.
+(e.g. user:\*:r).
 
 * `gid`
 
 A valid group identifier for the system and cannot be empty. However, in some
 ACL types, `gid` can be set to `*` to indicate a special group (e.g. in POSIX
 this refers to the file group).
-
-**Note:** The group name is not a valid alternative.
-
-* `all`
-
-Indicates that the line applies to every user.
-
-**Note:** This ACL is **required** when `acl_method` is set to `overwrite`.
-
-* `mask`
-
-A valid mask identifier (e.g. `mask:rwx` ). In essence the mask is an upper
-bound of the permissions that any entry in the group class will grant. When
-`acl_method` is `overwrite` if mask is not supplied, it will default to
-`mask:rwx`).
 
 * `mode`
 
@@ -504,13 +481,8 @@ superuser has full access, the `method` constraint can be set to `append`,
 which is the default. This has the effect that all the existing ACL entries
 that are not mentioned will be left unchanged. On the other hand, if `method`
 is set to `overwrite`, the resulting ACL will only contain the mentioned
-entries.
-
-**Notes:**
-
-* When `acl_method` is set to ```overwrite``` the acl **must include**
-the system owner, group and all. For example ```user:*:rwx```, ```group:*:rx```, and
-```all:---```.
+entries. When doing this, it is important to check that all the required ACL
+entries are set. For example, owning user, group and all in POSIX ACLs.
 
 **Type:** (menu option)
 
@@ -535,8 +507,8 @@ the system owner, group and all. For example ```user:*:rwx```, ```group:*:rx```,
 
 #### acl_type
 
-**Description:** The `acl_type` menu option defines the access control list type
-for the affected file system.
+**Description:** The `acl_type` menu option defines the access control list
+type for the affected file system.
 
 ACLs are supported on multiple platforms, which may have different sets of
 available permission flags. By using the constraint `acl_type`, we
