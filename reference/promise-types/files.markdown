@@ -321,14 +321,15 @@ Form of the permissions is as follows:
 
 * `user`
 
-indicates that the line applies to a user specified by the user identifier
-`uid`. `mode` is the permission mode string.
+A valid username identifier for the system and cannot be empty. However, `user`
+can be set to `*` as a synonym for the entity that owns the file system object
+(e.g. `user:*:r`).
 
 * `group`
 
-
-Indicates that the line applies to a group specified by the group identifier
-`gid`. `mode` The permission mode string.
++A valid group identifier for the system and cannot be empty. However, `group`
++can be set to `*` as a synonym for the group that owns the POSIX file system
++object (`group:*:rwx`).
 
 * `all`
 
