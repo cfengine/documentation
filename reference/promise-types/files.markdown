@@ -319,12 +319,12 @@ Form of the permissions is as follows:
                         };
 ```
 
-*   `user`
+* `user`
 
 indicates that the line applies to a user specified by the user identifier
 `uid`. `mode` is the permission mode string.
 
-*   `group`
+* `group`
 
 
 Indicates that the line applies to a group specified by the group identifier
