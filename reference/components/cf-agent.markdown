@@ -517,7 +517,7 @@ identifying suffix.
 ### default_timeout
 
 **Description:** The value of `default_timeout` represents the maximum
-time a network connection should attempt to connect or read from server.
+time a network connection should attempt to connect.
 
 The time is in seconds. It is not a guaranteed number, since it
 depends on system behavior.
