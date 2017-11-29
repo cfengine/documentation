@@ -330,6 +330,7 @@ can be set to `*` as a synonym for the entity that owns the file system object
   * The user id is not a valid alternative.
   * This ACL is **required** when `acl_method` is set to `overwrite`.
 
+{% comment %} Fix indentation? {% endcomment %}
 * `uid`
 
 A valid user identifier for the system and cannot be empty. However, `uid` can
@@ -348,6 +349,7 @@ be set to `*` as a synonym for the entity that owns the file system object
 
   * The group id is not a valid alternative.
   * This ACL is **required** when `acl_method` is set to `overwrite`.
+
 
 * `gid`
 
