@@ -323,31 +323,33 @@ Form of the permissions is as follows:
 
 A valid username identifier for the system and cannot be empty. However, `user`
 can be set to `*` as a synonym for the entity that owns the file system object
-(e.g. ```user:*:r```).
+(e.g. `user:*:r`).
 
 **Notes:**
 
-** The users id is not a valid alternative.
-** This ACL is **required** when `acl_method` is set to `overwrite`
+  * The user id is not a valid alternative.
+  * This ACL is **required** when `acl_method` is set to `overwrite`.
 
+{% comment %} Fix indentation? {% endcomment %}
 * `uid`
 
 A valid user identifier for the system and cannot be empty. However, `uid` can
 be set to `*` as a synonym for the entity that owns the file system object
-(e.g. `uid:*:r`).
+(e.g. `user:*:r`).
 
 **Note:** The username is not a valid alternative.
 
 * `group`
 
-A valid group identifier for the system and cannot be empty. However, `group`
-can be set to `*` as a synonym for the group that owns the POSIX file system
-object (```group:*:rwx```).
++A valid group identifier for the system and cannot be empty. However, `group`
++can be set to `*` as a synonym for the group that owns the POSIX file system
++object (`group:*:rwx`).
 
 **Notes:**
 
-** The groups id is not a valid alternative.
-** This ACL is **required** when `acl_method` is set to `overwrite`.
+  * The group id is not a valid alternative.
+  * This ACL is **required** when `acl_method` is set to `overwrite`.
+
 
 * `gid`
 
@@ -373,7 +375,7 @@ bound of the permissions that any entry in the group class will grant. When
 * `mode`
 
 One or more strings `op`|`perms`|(`nperms`); a concatenation of `op`, `perms`
-and optionally (`nperms`) separated with commas (e.g. +rx,-w(s) ). `mode` is
+and optionally (`nperms`) separated with commas (e.g. `+rx,-w(s)` ). `mode` is
 parsed from left to right.
 
 * `op`
@@ -506,11 +508,8 @@ that are not mentioned will be left unchanged. On the other hand, if `method`
 is set to `overwrite`, the resulting ACL will only contain the mentioned
 entries.
 
-**Notes:**
-
-* When `acl_method` is set to ```overwrite``` the acl **must include**
-the system owner, group and all. For example ```user:*:rwx```, ```group:*:rx```, and
-```all:---```.
+**Note:** When `acl_method` is set to `overwrite` the acl **must include** the system
+owner, group and all. For example `user:*:rwx`, `group:*:rx`, and `all:---`.
 
 **Type:** (menu option)
 
@@ -535,8 +534,8 @@ the system owner, group and all. For example ```user:*:rwx```, ```group:*:rx```,
 
 #### acl_type
 
-**Description:** The `acl_type` menu option defines the access control list type
-for the affected file system.
+**Description:** The `acl_type` menu option defines the access control list
+type for the affected file system.
 
 ACLs are supported on multiple platforms, which may have different sets of
 available permission flags. By using the constraint `acl_type`, we
