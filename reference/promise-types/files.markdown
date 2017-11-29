@@ -321,122 +321,122 @@ Form of the permissions is as follows:
 
 * `user`
 
-A valid username identifier for the system and cannot be empty. However, `user`
-can be set to `*` as a synonym for the entity that owns the file system object
-(e.g. `user:*:r`).
+    A valid username identifier for the system and cannot be empty. However,
+    `user` can be set to `*` as a synonym for the entity that owns the file
+    system object (e.g. `user:*:r`).
 
-**Notes:**
+    **Notes:**
 
-  * The user id is not a valid alternative.
-  * This ACL is **required** when `acl_method` is set to `overwrite`.
+      * The user id is not a valid alternative.
+      * This ACL is **required** when `acl_method` is set to `overwrite`.
 
-{% comment %} Fix indentation? {% endcomment %}
 * `uid`
 
-A valid user identifier for the system and cannot be empty. However, `uid` can
-be set to `*` as a synonym for the entity that owns the file system object
-(e.g. `user:*:r`).
+    A valid user identifier for the system and cannot be empty. However, `uid`
+    can be set to `*` as a synonym for the entity that owns the file system
+    object (e.g. `user:*:r`).
 
-**Note:** The username is not a valid alternative.
+    **Note:** The username is not a valid alternative.
 
 * `group`
 
-+A valid group identifier for the system and cannot be empty. However, `group`
-+can be set to `*` as a synonym for the group that owns the POSIX file system
-+object (`group:*:rwx`).
+    A valid group identifier for the system and cannot be empty. However,
+    `group` can be set to `*` as a synonym for the group that owns the POSIX
+    file system object (`group:*:rwx`).
 
-**Notes:**
+    **Notes:**
 
-  * The group id is not a valid alternative.
-  * This ACL is **required** when `acl_method` is set to `overwrite`.
+      * The group id is not a valid alternative.
+      * This ACL is **required** when `acl_method` is set to `overwrite`.
 
 
 * `gid`
 
-A valid group identifier for the system and cannot be empty. However, in some
-ACL types, `gid` can be set to `*` to indicate a special group (e.g. in POSIX
-this refers to the file group).
+    A valid group identifier for the system and cannot be empty. However, in
+    some ACL types, `gid` can be set to `*` to indicate a special group (e.g. in
+    POSIX this refers to the file group).
 
-**Note:** The group name is not a valid alternative.
+    **Note:** The group name is not a valid alternative.
 
 * `all`
 
-Indicates that the line applies to every user.
+    Indicates that the line applies to every user.
 
-**Note:** This ACL is **required** when `acl_method` is set to `overwrite`.
+    **Note:** This ACL is **required** when `acl_method` is set to `overwrite`.
 
 * `mask`
 
-A valid mask identifier (e.g. `mask:rwx` ). In essence the mask is an upper
-bound of the permissions that any entry in the group class will grant. When
-`acl_method` is `overwrite` if mask is not supplied, it will default to
-`mask:rwx`).
+    A valid mask identifier (e.g. `mask:rwx` ). In essence the mask is an upper
+    bound of the permissions that any entry in the group class will grant. When
+    `acl_method` is `overwrite` if mask is not supplied, it will default to
+    `mask:rwx`).
 
 * `mode`
 
-One or more strings `op`|`perms`|(`nperms`); a concatenation of `op`, `perms`
-and optionally (`nperms`) separated with commas (e.g. `+rx,-w(s)` ). `mode` is
-parsed from left to right.
+    One or more strings `op`|`perms`|(`nperms`); a concatenation of `op`,
+    `perms` and optionally (`nperms`) separated with commas (e.g. `+rx,-w(s)` ).
+    `mode` is parsed from left to right.
 
 * `op`
 
-Specifies the operation on any existing permissions, if the defined ACE
-already exists. `op` can be =, empty, + or -. = or empty sets the permissions
-to the ACE as stated. + adds and - removes the permissions from any existing
-ACE.
+    Specifies the operation on any existing permissions, if the defined ACE
+    already exists. `op` can be =, empty, + or -. = or empty sets the
+    permissions to the ACE as stated. + adds and - removes the permissions from
+    any existing ACE.
 
 * `nperms` (optional)
 
-Specifies file system specific (native) permissions. Only valid if `acl_type`
-is defined. `nperms` will only be enforced if the file object is stored on a
-file system supporting the ACL type set in `acl_type`. For example, `nperms`
-will be ignored if `acl_type:``ntfs` and the object is stored on a file system
-not supporting NTFS ACLs. Valid values for `nperms` varies with different ACL
-types, and is defined in subsequent sections.
+    Specifies file system specific (native) permissions. Only valid if
+    `acl_type` is defined. `nperms` will only be enforced if the file object is
+    stored on a file system supporting the ACL type set in `acl_type`. For
+    example, `nperms` will be ignored if `acl_type:``ntfs` and the object is
+    stored on a file system not supporting NTFS ACLs. Valid values for `nperms`
+    varies with different ACL types, and is defined in subsequent sections.
 
 * `perm_type` (optional)
 
-Can be set to either `allow` or `deny`, and defaults to `allow`. `deny` is
-only valid if `acl_type` is set to an ACL type that support deny permissions.
-A `deny` ACE will only be enforced if the file object is stored on a file
-system supporting the acl type set in `acl_type`.
+    Can be set to either `allow` or `deny`, and defaults to `allow`. `deny` is
+    only valid if `acl_type` is set to an ACL type that support deny
+    permissions. A `deny` ACE will only be enforced if the file object is stored
+    on a file system supporting the acl type set in `acl_type`.
 
 * `gperms` (generic permissions)
 
-A concatenation of zero or more of the characters shown in the table below. If
-left empty, none of the permissions are set.
+    A concatenation of zero or more of the characters shown in the table below. If
+    left empty, none of the permissions are set.
 
-| Flag | Description | Semantics on file | Semantics on directory |
-|:----:|-------------|-------------------|------------------------|
-| r    | Read        | Read data, permissions, attributes | Read directory contents, permissions, attributes   |
-| w    | Write | Write data | Create, delete, rename subobjects |
-| x    | Execute | Execute file | Access subobjects |
+    | Flag | Description | Semantics on file | Semantics on directory |
+    |:----:|-------------|-------------------|------------------------|
+    | r    | Read        | Read data, permissions, attributes | Read directory contents, permissions, attributes   |
+    | w    | Write | Write data | Create, delete, rename subobjects |
+    | x    | Execute | Execute file | Access subobjects |
 
-Note that the `r` permission is not necessary to read an object's
-permissions and attributes in all file systems. For example, in POSIX,
-having `x` on its containing directory is sufficient.
+    **Notes**
 
-Note that capital `X` which is supported by the ```setfacl``` command is not
-supported by the acl library, and thus not supported by the acl body.
+    * The `r` permission is not necessary to read an object's permissions and
+      attributes in all file systems. For example, in POSIX, having `x` on its
+      containing directory is sufficient.
 
-**Example:**
+    * Capital `X` which is supported by the ```setfacl``` command is not
+      supported by the acl library, and thus not supported by the acl body.
 
-```cf3
-     body acl template
+    **Example:**
 
-     {
-     acl_method => "overwrite";
-     acl_type => "posix";
-     acl_default => "access";
+    ```cf3
+    body acl template
+    {
+    acl_method => "overwrite";
+    acl_type => "posix";
+    acl_default => "access";
 
-     aces => {
-             "user:*:r(wwx),-r:allow",
-             "group:*:+rw:allow",
-             "mask:x:allow",
-             "all:r"
-             };
-     }
-```
+    aces => {
+            "user:*:r(wwx),-r:allow",
+            "group:*:+rw:allow",
+            "mask:x:allow",
+            "all:r"
+            };
+    }
+    ```
 
 #### acl_default
 
