@@ -384,8 +384,35 @@ You can also use backticks (and get syntax highlighting) - just make sure the ba
 2. Second
 3. Third
 
-
 *****
+
+#### More Lists
+
+Make a list item by prefixing the line with `*` or `-`.
+
+- one
+- two 
+- three
+
+* red
+* green
+* blue
+
+Nest lists by intending them.
+
+* item 1
+  * sub 1
+  * sub 2
+* item 2
+  * sub 1
+  * sub 2
+
+- Item 1
+  - sub 1
+  - sub 2
+- Item 2
+  - sub 1
+  - sub 2
 
 ## Headers
 
