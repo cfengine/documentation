@@ -331,6 +331,7 @@ can be set to `*` as a synonym for the entity that owns the file system object
   * This ACL is **required** when `acl_method` is set to `overwrite`.
 
 {% comment %} Fix indentation? {% endcomment %}
+
 * `uid`
 
 A valid user identifier for the system and cannot be empty. However, `uid` can
@@ -341,9 +342,9 @@ be set to `*` as a synonym for the entity that owns the file system object
 
 * `group`
 
-+A valid group identifier for the system and cannot be empty. However, `group`
-+can be set to `*` as a synonym for the group that owns the POSIX file system
-+object (`group:*:rwx`).
+A valid group identifier for the system and cannot be empty. However, `group`
+can be set to `*` as a synonym for the group that owns the POSIX file system
+object (`group:*:rwx`).
 
 **Notes:**
 
@@ -3005,7 +3006,7 @@ then the lines that follow are only inserted if the context matches the
 agent's current context. This allows conditional insertion.
 
 **Note:** Because classic templates are built on top of `edit_line`, identical
-lines will not be rendered more than once unless they are +included within a
+lines will not be rendered more than once unless they are included within a
 block. This includes blank lines.
 
 Example contrived ```cfengine``` template:
