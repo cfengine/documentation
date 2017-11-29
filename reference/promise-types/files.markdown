@@ -420,23 +420,23 @@ Form of the permissions is as follows:
     * Capital `X` which is supported by the ```setfacl``` command is not
       supported by the acl library, and thus not supported by the acl body.
 
-    **Example:**
+**Example:**
 
-    ```cf3
-    body acl template
-    {
-    acl_method => "overwrite";
-    acl_type => "posix";
-    acl_default => "access";
+```cf3
+body acl template
+{
+acl_method => "overwrite";
+acl_type => "posix";
+acl_default => "access";
 
-    aces => {
-            "user:*:r(wwx),-r:allow",
-            "group:*:+rw:allow",
-            "mask:x:allow",
-            "all:r"
-            };
-    }
-    ```
+aces => {
+        "user:*:r(wwx),-r:allow",
+        "group:*:+rw:allow",
+        "mask:x:allow",
+        "all:r"
+        };
+}
+```
 
 #### acl_default
 
