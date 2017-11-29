@@ -341,9 +341,9 @@ be set to `*` as a synonym for the entity that owns the file system object
 
 * `group`
 
-+A valid group identifier for the system and cannot be empty. However, `group`
-+can be set to `*` as a synonym for the group that owns the POSIX file system
-+object (`group:*:rwx`).
+A valid group identifier for the system and cannot be empty. However, `group`
+can be set to `*` as a synonym for the group that owns the POSIX file system
+object (`group:*:rwx`).
 
 **Notes:**
 
