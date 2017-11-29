@@ -498,8 +498,10 @@ superuser has full access, the `method` constraint can be set to `append`,
 which is the default. This has the effect that all the existing ACL entries
 that are not mentioned will be left unchanged. On the other hand, if `method`
 is set to `overwrite`, the resulting ACL will only contain the mentioned
-entries. When doing this, it is important to check that all the required ACL
-entries are set. For example, owning user, group and all in POSIX ACLs.
+entries.
+
+**Note:** When `acl_method` is set to `overwrite` the acl **must include** the system
+owner, group and all. For example `user:*:rwx`, `group:*:rx`, and `all:---`.
 
 **Type:** (menu option)
 
