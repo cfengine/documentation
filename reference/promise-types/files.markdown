@@ -325,7 +325,10 @@ A valid username identifier for the system and cannot be empty. However, `user`
 can be set to `*` as a synonym for the entity that owns the file system object
 (e.g. `user:*:r`).
 
-**Note:** The user id is not a valid alternative.
+**Notes:**
+
+  * The user id is not a valid alternative.
+  * This ACL is **required** when `acl_method` is set to `overwrite`.
 
 * `uid`
 
@@ -341,7 +344,10 @@ be set to `*` as a synonym for the entity that owns the file system object
 +can be set to `*` as a synonym for the group that owns the POSIX file system
 +object (`group:*:rwx`).
 
-**Note:** The group id is not a valid alternative.
+**Notes:**
+
+  * The group id is not a valid alternative.
+  * This ACL is **required** when `acl_method` is set to `overwrite`.
 
 * `gid`
 
