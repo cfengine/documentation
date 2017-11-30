@@ -516,7 +516,7 @@ their last reported `cf-agent` execution.
     Time when the connection was established.
 
 * **LastSeenInterval** *(real)*
-    Average frequency in seconds between connections for the given `LastSeenDirection` with the host.
+    Average time period (seconds) between connections for the given `LastSeenDirection` with the host.
 
 **Example query:**
 
