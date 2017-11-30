@@ -18,7 +18,7 @@ Inventory API allows to access inventory reports and attributes dictionary.
 
 * **select** *(array)*
     Fields for selecting. Required parameter.
-    List of fields name you can obtain through [List of inventory traits][Inventory API#List of inventory traits] call described below.
+    List of fields name you can obtain through [List of inventory attributes][Inventory API#List of inventory attributes] call described below. Extra attributes are `hostkey` for selecting host key and `resultCount` for selecting rows count.
 * **filter** *(json object)*
     Filter data. Format is ```{
                                     "Attribute name":{  
@@ -161,13 +161,13 @@ curl -k --user admin:admin -X POST https://hub.cfengine.com/api/inventory  -H 'c
 }
 ```
 
-## List of inventory traits
+## List of inventory attributes
 
 **URI:** https://hub.cfengine.com/api/inventory/attributes-dictionary
 
 **Method:** GET
 
-Shows list of all inventory traits available in the system. 
+Shows list of all inventory attributes available in the system.
 
 See more details: 
 * [Custom Inventory][Custom Inventory]
@@ -203,13 +203,13 @@ curl -k --user admin:admin -X GET https://hub.cfengine.com/api/inventory/attribu
 ]
 ```
 
-## Edit inventory trait
+## Edit inventory attribute
 
 **URI:** https://hub.cfengine.com/api/inventory/attributes-dictionary/:id
 
 **Method:** PATCH
 
-Set inventory trait type (int/string..). This is needed for applying filtering in correct format.
+Set inventory attribute type (int/string..). This is needed for applying filtering in correct format.
 Only `readonly - 0` attribute can be edited
 
 **Parameters:**
