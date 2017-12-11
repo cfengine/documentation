@@ -1946,6 +1946,41 @@ bundle agent example
 `readyaml()`, `parseyaml()`, `mergedata()`,
 `data`, [Customize Message of the Day][Customize Message of the Day]
 
+### edit_template_string
+
+**Description:** Mustache string to expand
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+```cf3
+bundle agent example
+{
+   vars:
+     "mustache_string" string => "Welcome on host {{{host}}";
+     "d" data => parsejson('{ "host": "cfengine.com" }');
+
+   files:
+
+     any::
+
+       "/etc/motd"
+         create => "true",
+         edit_template_string => "$(mustache_string)",
+         template_data => "@(example.d)";
+         template_method => "inline_mustache";
+}
+```
+
+**History:** Was introduced in 3.12.0
+
+**See also:** `template_method`, `template_data`, `readjson()`, `parsejson()`,
+`readyaml()`, `parseyaml()`, `mergedata()`,
+`data`, [Customize Message of the Day][Customize Message of the Day]
+
 ### edit_xml
 
 **Type:** [`bundle edit_xml`][bundle edit_xml]
@@ -2931,7 +2966,7 @@ ordinarily be stored in an alternative repository as
 
 ### template_data
 
-**Description:** The data container to be passed to the template (Mustache only). It can come from a function call like `mergedata()` or from a data container reference like `@(mycontainer)`.
+**Description:** The data container to be passed to the template (Mustache or inline_mustache). It can come from a function call like `mergedata()` or from a data container reference like `@(mycontainer)`.
 
 [%CFEngine_promise_attribute()%]
 
@@ -2973,7 +3008,7 @@ state in Mustache.
 **Description:** The template type.
 
 By default `cfengine` requests the native CFEngine template
-implementation, but you can use `mustache` as well.
+implementation, but you can use `mustache` or `inline_mustache` as well.
 
 [%CFEngine_promise_attribute(cfengine)%]
 
@@ -3064,6 +3099,17 @@ Example ```cfengine``` template for apache vhost directives:
     /VirtualHost>
     [%CFEngine END %]
 ```
+
+#### template_method inline_mustache
+
+When `template_method` is `inline_mustache` the mustache input is not a file
+but a string and you must set `edit_template_string`.  The same rules apply
+for `inline_mustache` and `mustache`.  For mustache explanation see
+`template_method mustache`
+
+**History:** Was introduced in 3.12.0
+
+**See also:** `edit_template_string`, `template_data`, `datastate()`
 
 #### template_method mustache
 
