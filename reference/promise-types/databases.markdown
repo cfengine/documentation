@@ -2,6 +2,7 @@
 layout: default
 title: databases
 published: true
+sorting: 9999
 tags: [Reference, bundle agent, databases, promises, promise types]
 ---
 
@@ -26,18 +27,22 @@ There are three kinds of database supported by CFEngine:
 
 * *LDAP - The Lightweight Directory Access Protocol*
 
-A hierarchical network database primarily for reading simple schema
-(Only CFEngine Enterprise).
+    A hierarchical network database primarily for reading simple schema (Only
+    CFEngine Enterprise).
 
 * *SQL - Structured Query Language*
 
-A number of relational databases (currently supported: MySQL, Postgres)
-for reading and writing complex data.
+    A number of relational databases (currently supported: MySQL, Postgres for
+    reading and writing complex data.
+
+    **WARNING:** Neither MySQL/MariaDB or PostgreSQL support is built into the
+    default binaries. If you wish to use this functionality you must compile the
+    agent with support.
 
 * *Registry - Microsoft Registry*
 
-An embedded database for interfacing with system values in Microsoft
-Windows (Only CFEngine Enterprise)
+    An embedded database for interfacing with system values in Microsoft
+    Windows (Only CFEngine Enterprise)
 
 In addition, CFEngine uses a variety of embedded databases for its own
 internals.
