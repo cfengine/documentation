@@ -78,15 +78,11 @@ credentials.
 
 **Request**
 
-    curl --user admin:admin http://test.cfengine.com/api/user/calvin -X POST -d
-    {
-      "name": "Calvin",
-    }
+    curl --user admin:admin http://test.cfengine.com/api/user/calvin -X POST -d '{ "name": "Calvin" }'
 
 **Response**
 
     204 No Content
-    }
 
 ## Example: Retrieving a User
 
