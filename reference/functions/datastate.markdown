@@ -33,4 +33,4 @@ Output:
 
 [%CFEngine_include_snippet(datastate.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** `getindices()`, `classesmatching()`, `variablesmatching()`, `mergedata()`, `template_method`, `mustache`, `bundlestate()`
+**See also:** `getindices()`, `classesmatching()`, `variablesmatching()`, `mergedata()`, `template_method`, `mustache`, `inline_mustache`, `bundlestate()`
