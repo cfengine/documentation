@@ -16,6 +16,7 @@ Settings view.
 * [Manage Apps][Settings#Manage Apps]
 * [Version Control Repository][Settings#Version Control Repository]
 * [Host Identifier][Settings#Host Identifier]
+* [Authentication settings][Settings#Authentication settings]
 * [About CFEngine][Settings#About CFEngine]
 
 
@@ -109,6 +110,28 @@ on the Version Control Repository screen.
 Host identity for the server can be set within settings, and can be
 adjusted to refer to the FQDN, IP address, or an unqualified domain
 name.
+
+## Authentication settings ##
+
+![Authentication settings](Authentication-settings.png)
+
+Mission portal can authenticate against an external directory.
+
+**Special Notes:** 
+
+- LDAP API Url refers to the API cfengine uses internally for authentication.
+  Most likely you will not alter the default value.
+
+- LDAP filter must be supplied.
+
+- LDAP Host refers is the IP or Hostname of your LDAP server.
+
+- LDAP bind username should be the username used to bind and search the LDAP
+  directory. It must be provided in distinguished name format.
+
+- Default roles for users is configured under [Role Management][Settings#Role Management].
+
+**See Also:** [LDAP authentication REST API][LDAP authentication API]
 
 ## About CFEngine ##
 
