@@ -23,15 +23,6 @@
 [anchored]: reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
 [unanchored]: reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
 [datatypes]: guide-language-concepts-variables.html
-[parseintarray]: reference-functions-parseintrealstringarray.html
-[parserealarray]: reference-functions-parseintrealstringarray.html
-[parsestringarray]: reference-functions-parseintrealstringarray.html
-[readintarray]: reference-functions-readintrealstringarray.html
-[readrealarray]: reference-functions-readintrealstringarray.html
-[readstringarray]: reference-functions-readintrealstringarray.html
-[readintlist]: reference-functions-readintrealstringlist.html
-[readreallist]: reference-functions-readintrealstringlist.html
-[readstringlist]: reference-functions-readintrealstringlist.html
 [utility functions]: tags-utility-functions.html
 [data functions]: tags-data-functions.html
 [system functions]: tags-system-functions.html
