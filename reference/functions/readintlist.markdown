@@ -6,6 +6,7 @@ tags: [reference, io functions, functions, readintlist]
 ---
 
 **Prototype:** `readintlist(filename, comment, split, maxentries, maxbytes)`<br>
+
 **Return type:** `ilist`
 
 **Description:** Splits the file `filename` into separated
@@ -37,3 +38,6 @@ Run:
 Output:
 
 [%CFEngine_include_snippet(readintrealstringlist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+
+**See Also:** [`readstringlist()`][readstringlist], [`readreallist()`][readreallist]
