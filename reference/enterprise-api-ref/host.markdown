@@ -251,3 +251,51 @@ Note: Collecting monitoring data by default is disabled.
 
 **Example usage:** `Example: Retrieving Vital Sign Data`
 
+
+## Get count of bootstrapped hosts by date range
+
+**URI:** https://hub.cfengine.com/api/host-count
+
+**Method:** POST
+
+**Parameters:**
+
+* **from** *(string)*
+    Timestamp marking the start of the interval for which to fetch data. `Emp: 2017-11-28`
+* **to** *(string)*
+    End of data interval to be fetched. `Emp: 2017-12-28`
+* **period** *(string)*
+    Group data by period. Allowed values: `day, week, month, year`.
+
+**Example request (curl):**
+```
+curl -k --user admin:admin -X POST https://hub.cfengine.com/api/host-count  -H 'content-type: application/json'   -d '{"period": "month", "from": "2017-11-28", "to" : "2017-12-06"}'
+```
+**Example response:**
+
+```
+HTTP 200 Ok
+{
+    "period": "month",
+    "data": [
+        {
+            "date": "Nov 2017",
+            "count": 0
+        },
+        {
+            "date": "Dec 2017",
+            "count": 15
+        }
+    ]
+}
+```
+
+**Output**:
+
+*  **period**
+    Period of grouping the data. Allowed values: `day, week, month, year`.
+*   **date**
+    The date of statistic.
+*   **count**
+    The bootstrapped hosts to the hub count.
+
