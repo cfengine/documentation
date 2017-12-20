@@ -88,8 +88,8 @@ regularly.
 
 Find out more: [Reporting][Reporting UI]
 
-Find out more about writing your own inventory
-modules: [Inventory modules][inventory/#your-very-own-inventory-module]
+Follow along in the [custom inventory tutorial][Custom Inventory] or read the
+[MPF policy that provides inventory][inventory/].
 
 ## Sharing
 
