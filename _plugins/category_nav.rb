@@ -32,7 +32,10 @@ module Jekyll
       
       
       begin
-          return data.sort_by { |i, v| v['sorting'] }
+          # Sort by sorting and then alphabetically.
+          # https://stackoverflow.com/questions/4309723/ruby-sort-by-multiple-values
+          # https://www.ruby-forum.com/topic/162413#1097691
+          return data.sort_by { |i, v| [v.sorting, v.title]  }
           
           rescue
                   puts "-----------------------------------------------"
