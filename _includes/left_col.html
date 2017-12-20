@@ -1,10 +1,6 @@
 {% assign tmp = '' %}
 {% assign pageKey = '' %}
-{% comment % }
-Sort left hand nav first by explicit sorting index, then alphabetically.
-{% endcomment %}
-{% assign sorted_categories = page.categories | sort:"sorting" | sort:"title" %}
-{% for category in sorted_categories %}
+{% for category in page.categories %}
           {% if tmp == '' %}
           {% assign tmp = category %}
              {% else %}
