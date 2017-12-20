@@ -22,7 +22,7 @@ The file `def.json` is found like the policy file to be run:
 Values will be expanded, so you can use the variables from
 [Special Variables][].
 
-Currently the augments file can contain three keys:
+An augments file can contain four keys:
 
 * `inputs`: any filenames you put here will appear in the `def.augments_inputs`
   variable. The standard set of masterfiles refers to this variable and will
@@ -37,6 +37,7 @@ Currently the augments file can contain three keys:
   "myplatform": "$(sys.os)",
 }
   ```
+  
 
   results in the variable `def.phone` with value `22-333-4444` being defined,
   and `def.myplatform` with the value of your current OS. Again, note that this
@@ -83,12 +84,53 @@ my_always                                                    source=augments_fil
 my_other_apache                                              source=augments_file,hardclass
   ```
 
-**History:** Introduced into the Masterfiles Policy Framework with CFEngine
-3.7.0, the file `def.json` in the root of the policy directory was processed by
-policy. In CFEngine 3.8.1 `def.json` parsing was moved from a policy level
-feature into the core agent to address usability issues. It was also possible to
-use `inputs` to autoload inputs without referencing the `def.augments_inputs`
-variable. This would happen before all evaluation stages. However, this
-functionality turned out to be problematic and was removed in later versions.
-Pre-parsing of `def.cf` was introduced to the 3.7.x series in 3.7.3. In 3.7.3,
-3.8.2 and later `def.json` is looked for next to the policy entry file.
+* `augments` : a list of file names that should be merged using `mergedata()` semantic
+
+**Example:**
+
+Here we merge a platform specific augments on to the `def.json` loaded next to
+the policy entry and see what the resulting variable values will
+be.
+
+The `def.json` next to the policy entry:
+
+```json
+{
+  "vars":{
+    "my_var": "defined in def.json",
+    "my_other_var": "Defined ONLY in def.json"
+  },
+  "augments": [
+    "/var/cfengine/augments/$(sys.flavor).json"
+  ]
+}
+```
+
+The platform specific augments on a CentOS 6 host:
+
+`/var/cfengine/augments/centos_6.json`:
+
+```json
+{
+  "vars": {
+    "my_var": "Overridden in centos_6.json",
+    "centos_6_var": "Defined ONLY in centos_6.json"
+  }
+}
+```
+
+The expected values of the variables defined in the def bundle scope:
+
+```console
+R: def.my_var == Overridden in centos_6.json
+R: def.my_other_var == Defined ONLY in def.json
+R: def.centos_6_var == Defined ONLY in centos_6.json
+```
+
+**History:** 
+
+- 3.12.0 introduced the `augments` key
+- 3.7.3 back port `def.json` parsing in core agent and load `def.json` if present next to policy entry
+- 3.8.2 removed core support for `inputs` key, load `def.json` if present next to policy entry
+- 3.8.1 `def.json` parsing moved from policy to core agent for resolution of classes and variables to be able to affect control bodies
+- 3.7.0 introduced augments concept into the Masterfiles Policy Framework
