@@ -1,6 +1,7 @@
 {% assign tmp = '' %}
 {% assign pageKey = '' %}
-{% for category in page.categories %}
+{% assign sorted_categories = page.categories | sort:"sorting" | sort:"title" %}
+{% for category in sorted_categories %}
           {% if tmp == '' %}
           {% assign tmp = category %}
              {% else %}
