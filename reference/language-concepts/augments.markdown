@@ -86,46 +86,46 @@ my_other_apache                                              source=augments_fil
 
 * `augments` : a list of file names that should be merged using `mergedata()` semantic
 
-**Example:**
-
-Here we merge a platform specific augments on to the `def.json` loaded next to
-the policy entry and see what the resulting variable values will
-be.
-
-The `def.json` next to the policy entry:
-
-```json
-{
-  "vars":{
-    "my_var": "defined in def.json",
-    "my_other_var": "Defined ONLY in def.json"
-  },
-  "augments": [
-    "/var/cfengine/augments/$(sys.flavor).json"
-  ]
-}
-```
-
-The platform specific augments on a CentOS 6 host:
-
-`/var/cfengine/augments/centos_6.json`:
-
-```json
-{
-  "vars": {
-    "my_var": "Overridden in centos_6.json",
-    "centos_6_var": "Defined ONLY in centos_6.json"
+  **Example:**
+  
+  Here we merge a platform specific augments on to the `def.json` loaded next to
+  the policy entry and see what the resulting variable values will
+  be.
+  
+  The `def.json` next to the policy entry:
+  
+  ```json
+  {
+    "vars":{
+      "my_var": "defined in def.json",
+      "my_other_var": "Defined ONLY in def.json"
+    },
+    "augments": [
+      "/var/cfengine/augments/$(sys.flavor).json"
+    ]
   }
-}
-```
-
-The expected values of the variables defined in the def bundle scope:
-
-```console
-R: def.my_var == Overridden in centos_6.json
-R: def.my_other_var == Defined ONLY in def.json
-R: def.centos_6_var == Defined ONLY in centos_6.json
-```
+  ```
+  
+  The platform specific augments on a CentOS 6 host:
+  
+  `/var/cfengine/augments/centos_6.json`:
+  
+  ```json
+  {
+    "vars": {
+      "my_var": "Overridden in centos_6.json",
+      "centos_6_var": "Defined ONLY in centos_6.json"
+    }
+  }
+  ```
+  
+  The expected values of the variables defined in the def bundle scope:
+  
+  ```console
+  R: def.my_var == Overridden in centos_6.json
+  R: def.my_other_var == Defined ONLY in def.json
+  R: def.centos_6_var == Defined ONLY in centos_6.json
+  ```
 
 **History:** 
 
