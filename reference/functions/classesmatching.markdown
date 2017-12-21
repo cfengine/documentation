@@ -11,12 +11,12 @@ tags: [reference, utility functions, functions, classesmatching]
 given. Both `name` and tags are regular expressions. `name` is required, tags
 are optional.
 
-This function searches for the given [unanchored][unanchored] `name` and
+This function searches for the given [anchored][anchored] `name` and
 optionally `tag1`, `tag2`, ... regular expression in the list of currently set
 classes. The search order is hard, soft, then local to the current bundle.
 
 When any tags are given, only the classes with those tags matching the given
-[unanchored][unanchored] regular expressions are returned. Class tags are set
+[anchored][anchored] regular expressions are returned. Class tags are set
 using the [`meta`][Promise Types and Attributes#meta] attribute.
 
 [%CFEngine_function_attributes(name, tag1, tag2, ...)%]
