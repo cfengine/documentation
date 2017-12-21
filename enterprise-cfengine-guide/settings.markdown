@@ -16,6 +16,7 @@ Settings view.
 * [Manage Apps][Settings#Manage Apps]
 * [Version Control Repository][Settings#Version Control Repository]
 * [Host Identifier][Settings#Host Identifier]
+* [Mail Settings][Settings#Mail settings]
 * [Authentication settings][Settings#Authentication settings]
 * [About CFEngine][Settings#About CFEngine]
 
@@ -110,6 +111,21 @@ on the Version Control Repository screen.
 Host identity for the server can be set within settings, and can be
 adjusted to refer to the FQDN, IP address, or an unqualified domain
 name.
+
+## Mail settings ##
+
+![Mail settings](mail-settings.png)
+
+Configure outbound mail settings:
+
+- Default from email : Email address that Mission Portal will use by default
+  when sending emails.
+
+- Mail protocol : Use the system mailer (Sendmail) or use an SMTP server.
+
+- Max email attachment size (MB) : mails sent by Mission Portal with attachments
+  exceeding this will have the attachment replaced with links to download the
+  large files.
 
 ## Authentication settings ##
 
