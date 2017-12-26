@@ -224,26 +224,28 @@ using `ifelapsed` is another, which is not tied to a specific time.
 
 **Allowed input range:** `0,99999999999`
 
-**Default value:** [control body value][cf-agent#ifelapsed]
+**Default value:** [body agent control ifelapsed value][cf-agent#ifelapsed]
 
 **Example:**
 
 ```cf3
-     #local
+#local
 
-     body action example
-     {
-     ifelapsed   => "120";  # 2 hours
-     expireafter => "240";  # 4 hours
-     }
+body action example
+{
+  ifelapsed   => "120";  # 2 hours
+  expireafter => "240";  # 4 hours
+}
 
-     # global
+# global
 
-     body agent control
-     {
-     ifelapsed   => "180";  # 3 hours
-     }
+body agent control
+{
+  ifelapsed   => "180";  # 3 hours
+}
 ```
+
+**See Also:** [promise locking][Promises#Promise Locking], [ifelapsed in body agent control][cf-agent#ifelapsed]
 
 #### expireafter
 
