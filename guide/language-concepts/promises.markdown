@@ -88,6 +88,19 @@ CFEngine you can do this without having to execute the `touch`, `chmod`, and
 promise) that you want CFEngine to keep and you leave the details up to the
 tool.
 
+### Promise Locking
+
+When a promise is validated (has an outcome of kept or repaired) it is locked
+for [body agent control ifelapsed][cf-agent#ifelapsed] minutes (1 by default). Locks are based on a
+hash of the promise (promiser, associated attributes, and context).
+
+Promise locks can be useful for controlling frequency.
+
+`access`, `classes`, `defaults`, `meta`, `roles` and `vars` type promises do not
+participate in locking.
+
+**See Also:** [ifelapsed in body agent control][cf-agent#ifelapsed], [ifelapsed action body attribute][Promise Types and Attributes#ifelapsed]
+
 ### Promise Attributes
 
 Promise attributes have a type and a value. The type can be any of the

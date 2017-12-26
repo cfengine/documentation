@@ -792,6 +792,8 @@ another which is not tied to a specific time.
     }
 ```
 
+**See Also:** [Promise locking][Promises#Promise Locking], [ifelapsed action body attribute][Promise Types and Attributes#ifelapsed]
+
 ### inform
 
 **Description:** The `inform` menu option policy sets the default  output
