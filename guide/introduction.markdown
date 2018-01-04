@@ -119,13 +119,13 @@ manipulates system resources.
 does not and cannot grant any access to a system from the network. It is only
 able to request access to files from the server component.
 
-See also: `cf-agent` reference documentation.
+See also: [cf-agent][cf-agent] reference documentation.
 
 #### cf-key ####
 
 The CFEngine key generator makes key pairs for remote authentication.
 
-See also: `cf-key` reference documentation.
+See also: [cf-key][cf-key] reference documentation.
 
 #### cf-promises ####
 
@@ -136,7 +136,7 @@ policy code before `cf-agent` attempts to execute.
 
 In 3.6.0 and later, `cf-promises` will not evaluate function calls either. This may affect customers who use execresult for instance. Use the new --eval-functions yes command-line option (default is no) to retain the old behavior from 3.5.x and earlier.
 
-See also: `cf-promises` reference documentation.
+See also: [cf-promises][cf-promises] reference documentation.
 
 #### cf-runagent ####
 
@@ -151,4 +151,4 @@ Control (RBAC) to certain parts of the existing policy.
 
 `cf-runagent` connects to a list of running instances of `cf-serverd`. It allows foregoing the usual `cf-execd` schedule to activate `cf-agent`. Additionally, a user may send classes to be defined on the remote host. Two kinds of classes may be sent: classes to decide on which hosts `cf-agent` will be started, and classes that the user requests `cf-agent` should define on execution. The latter type is regulated by `cf-serverd`'s role based access control.
 
-See also: `cf-runagent` reference documentation.
+See also: [cf-runagent][cf-runagent] reference documentation.
