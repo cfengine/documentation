@@ -23,6 +23,12 @@ in [`body hub control`](cf-hub#control-promises).
 
 * **See Also:** `hostsseen()`, `hostswithclass()`
 
+## How often does cf-hub re-check the LICENSE
+
+{% comment %}cf-hub/license-checking.c:#define SECONDS_BETWEEN_CHECKS (5 * SECONDS_PER_MINUTE){% endcomment %}
+`cf-hub` re-checks the license when it is started and once every 5 minutes after
+that.
+
 ## Which hosts are being report-collected?
 
 `cf-hub` gets a list of hosts to collect from `lastseen` database
