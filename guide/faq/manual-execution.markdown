@@ -101,5 +101,5 @@ This command will run `cf-agent` with the additional class `patch_and_reboot` on
 classes it is using must be resolvable during pre-evaluation as the full
 evaluation is only allowed when the classes are found to be defined.
 
-**See Also:** [How is "recently seen" determined][Components and Common Control#lastseenexpireafter], [`cf-runagent`][cf-runagent], [pre-evaluation][Normal Ordering#agent pre evaluation step]
+**See Also:** [How is "recently seen" determined][Components and Common Control#lastseenexpireafter], [`cf-runagent`][cf-runagent], [pre-evaluation][Normal Ordering#agent pre-evaluation step]
 
