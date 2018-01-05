@@ -97,7 +97,7 @@ This command will run `cf-agent` with the additional class `patch_and_reboot` on
 # cf-runagent --hail "$(tr '\n' , < hostlist.txt )" -I --define patch_and_reboot --select-class under_maintanance
 ```
 
-**Note:** In order for the `--select-class** option to function as expected the
+**Note:** In order for the `--select-class`` option to function as expected the
 classes it is using must be resolvable during pre-evaluation as the full
 evaluation is only allowed when the classes are found to be defined.
 
