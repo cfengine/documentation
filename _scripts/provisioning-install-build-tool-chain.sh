@@ -10,7 +10,7 @@ usage()
 {
     echo "Usage: $0 [HOME]
 
-    HOME :: Directory where gems are installed exists
+    HOME :: Directory where gems are installed exists"
 
 }
 
@@ -62,8 +62,6 @@ sudo apt-get -qy install bison flex binutils build-essential fakeroot ntp dpkg-d
 
 ## Install RVM and Ruby
 ## RVM helps us manage the ruby dependencies and ruby versions in a contained way.
-
-# These things need to be done as the build user. (Jenkins|Vagrant)
 
 # Install mpapis public key (might need `gpg2` and or `sudo`)
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
@@ -130,6 +128,6 @@ cat > /tmp/jekyll-0.12.1-cfengine.patch <<EOF
          f.write(self.output)
 EOF
 
-cd /$HOME/.rvm/gems/ruby-1.9.3-p551/gems/jekyll-0.12.1/lib/jekyll/
+cd $HOME/.rvm/gems/ruby-1.9.3-p551/gems/jekyll-0.12.1/lib/jekyll/ 
 patch -b page.rb < /tmp/jekyll-0.12.1-cfengine.patch
 
