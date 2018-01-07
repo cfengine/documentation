@@ -6,16 +6,6 @@ sorting: 13
 tags: [Examples,System Administration,System Files]
 ---
 
-* [Editing password or group files][System File Examples#Editing password or group files]
-* [Editing password or group files custom][System File Examples#Editing password or group files custom]
-* [Log rotation][System File Examples#Log rotation]
-* [Garbage collection][System File Examples#Garbage collection]
-* [Manage a system file][System File Examples#Manage a system file]
-  * [Simple template][System File Examples#Simple template]
-  * [Simple versioned template][System File Examples#Simple versioned template]
-  * [Macro template][System File Examples#Macro template]
-  * [Custom editing][System File Examples#Custom editing]
-
 ## Editing password or group files ##
 
 To change the password of a system, we need to edit a file. A file is a complex object – once open there is a new world of possible promises to make about its contents. CFEngine has bundles of promises that are specially for editing.
