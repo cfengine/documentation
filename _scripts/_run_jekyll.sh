@@ -13,9 +13,6 @@ sed '/^\[.*\[.*\].*\]/d' $WRKDIR/documentation-generator/_references.md > $WRKDI
 mv $WRKDIR/documentation-generator/new_references.md $WRKDIR/documentation-generator/_references.md
 
 mkdir $WRKDIR/documentation-generator/pages
-rm -rf $WRKDIR/documentation-generator/.git
-rm -rf $WRKDIR/documentation/.git
-rm -rf $WRKDIR/core/.git
 cp -r $WRKDIR/documentation/* $WRKDIR/documentation-generator/pages
 cd $WRKDIR/documentation-generator
 source /home/jenkins/.rvm/scripts/rvm
