@@ -84,8 +84,6 @@ different categories: erroneous, fully compliant, and lacking data.
 
 Find out more: [Hosts and Health][]
 
-## Alerts and Notifications
-
 ## Reporting
 
 Inventory reports allow for quick reporting on out-of-the-box attributes. The
