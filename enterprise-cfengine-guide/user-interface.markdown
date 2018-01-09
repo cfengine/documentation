@@ -21,7 +21,6 @@ statements passed to PostgreSQL.
 
 * [Dashboard][User Interface#Dashboard]
 * [Hosts and Health][User Interface#Hosts and Health]
-* [Alerts and Notifications][User Interface#Alerts and Notifications]
 * [Reporting][User Interface#Reporting]
 * [Sharing][User Interface#Sharing]
 * [Monitoring][User Interface#Monitoring]
@@ -32,18 +31,11 @@ statements passed to PostgreSQL.
 The Mission Portal dashboard allows users to create customized summaries showing
 the current state of the infrastructure and its compliance with deployed policy.
 
-## Hosts and Health
-
-CFEngine collects data on promise compliance, and sorts hosts according to 3
-different categories: erroneous, fully compliant, and lacking data.
-
-Find out more: [Hosts and Health][]
-
-## Alerts and Notifications
-
 The dashboard contains informative widgets that you can customize to create
 alerts. All notifications of alert state changes, e.g. from OK to not-OK, are
 stored in an event log for later inspection and analysis.
+
+### Alert widgets
 
 ![Enterprise UI Alerts](welcome_2nd_screen.png)
 
@@ -63,6 +55,36 @@ Alerts can have three different states: OK, triggered, and paused. It is easy to
 filter by state on each widget's alert overview.
 
 Find out more: [Alerts and Notifications][]
+
+### Changes widget
+
+The changes widget helps to visualize the number of changes (promises repaired)
+made by `cf-agent`.
+
+![Dashboard Changes widget](dashboard-widget-changes.png)
+
+### Event log
+
+The event log on the dashboard is filtered to show only information relevant
+based on the widgets present. It shows when alerts are triggered and cleared and
+when hosts are bootstrapped or decommissioned.
+
+![Dashboard Event log](dashboard-event-log.png)
+
+### Hosts count widget
+
+The hosts count widget helps to visualize the number of hosts bootstrapped to cfengine over time.
+
+![Dashboard Hosts count](dashboard-widget-hosts-count.png)
+
+## Hosts and Health
+
+CFEngine collects data on promise compliance, and sorts hosts according to 3
+different categories: erroneous, fully compliant, and lacking data.
+
+Find out more: [Hosts and Health][]
+
+## Alerts and Notifications
 
 ## Reporting
 
