@@ -14,5 +14,3 @@ system.
 ```console
 [root@hub]:~# env LDAPTLS_CACERT=/tmp/MY-LDAP-CERT.cert.pem ldapsearch -xLLL -H ldaps://ldap.example.local:636 -b "ou=people,dc=example,dc=local"
 ```
-
-
