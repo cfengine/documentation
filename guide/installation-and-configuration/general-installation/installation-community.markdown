@@ -37,9 +37,6 @@ $ wget -O- http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-ins
 ```
 $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
-If you require more details on bootstrapping, review Step 3 below. Bootstrapping completes the installation.
-3. Go to the [Tutorials][Installing Community#Tutorials] section to learn how to use CFEngine.
-<hr>
 
 ## 1. Download Packages
 
