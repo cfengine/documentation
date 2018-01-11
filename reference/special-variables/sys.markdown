@@ -1134,7 +1134,7 @@ The name of the system email spool directory.
     # maildir = /var/spool/mail
 ```
 
-### sys.masterdir ###
+### sys.masterdir
 
 The name of the directory on the hub where CFEngine looks for inputs to be validated and copied into `sys.inputdir`.
 
