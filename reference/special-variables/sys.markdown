@@ -1144,7 +1144,6 @@ The name of the directory on the hub where CFEngine looks for inputs to be valid
 
 **History:** Introduced in CFEngine 3.6
 
-<!---
 ### sys.nova_version
 
 The variable gives the version of the running CFEngine Enterprise Edition.
@@ -1152,7 +1151,6 @@ The variable gives the version of the running CFEngine Enterprise Edition.
 ```cf3
 # nova_version = 1.1.3
 ```
--->
 
 ### sys.os
 
