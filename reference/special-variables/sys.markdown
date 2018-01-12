@@ -1134,7 +1134,7 @@ The name of the system email spool directory.
     # maildir = /var/spool/mail
 ```
 
-### sys.masterdir ###
+### sys.masterdir
 
 The name of the directory on the hub where CFEngine looks for inputs to be validated and copied into `sys.inputdir`.
 
@@ -1144,7 +1144,6 @@ The name of the directory on the hub where CFEngine looks for inputs to be valid
 
 **History:** Introduced in CFEngine 3.6
 
-<!---
 ### sys.nova_version
 
 The variable gives the version of the running CFEngine Enterprise Edition.
@@ -1152,7 +1151,6 @@ The variable gives the version of the running CFEngine Enterprise Edition.
 ```cf3
 # nova_version = 1.1.3
 ```
--->
 
 ### sys.os
 
@@ -1183,6 +1181,55 @@ The name of the directory where CFEngine saves the daemon pid files.
 ```
 
 **History:** Introduced in CFEngine 3.6
+
+### sys.policy_entry_basename
+
+The basename of the first policy file read by the agent. For example
+```promises.cf``` or ```update.cf```.
+
+**See Also:** [`sys.policy_entry_filename`][sys#sys.policy_entry_filename] [`sys.policy_entry_dirname`][sys#sys.policy_entry_dirname]
+
+**History:**
+
+- Introduced 3.12.0
+
+### sys.policy_hub
+
+Hostname or IP of the machine acting as the policy server. This value is set
+during bootstrap and is stored in ```$(sys.workdir)/policy_server.dat```. If
+```$(sys.workdir)/policy_server.dat``` does not exist or is empty, then the
+variable is undefined.
+
+```cf3
+    reports:
+
+     "Policy hub is $(sys.policy_hub)";
+```
+
+**History:** Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010).
+Available in Community since 3.2.0
+
+### sys.policy_entry_dirname
+
+The full path to the directory containing the first policy file read by the agent. For example
+```/var/cfengine/inputs``` or ```~/.cfagent/inputs```.
+
+**See Also:** [`sys.policy_entry_basename`][sys#sys.policy_entry_basename] [`sys.policy_entry_filename`][sys#sys.policy_entry_filename]
+
+**History:**
+
+- Introduced 3.12.0
+
+### sys.policy_entry_filename
+
+The full path to the first policy file read by the agent. For example
+```/var/cfengine/inputs/promises.cf``` or ```~/.cfagent/inputs/promises.cf```.
+
+**See Also:** [`sys.policy_entry_basename`][sys#sys.policy_entry_basename] [`sys.policy_entry_dirname`][sys#sys.policy_entry_dirname]
+
+**History:**
+
+- Introduced 3.12.0
 
 ### sys.policy_hub
 
