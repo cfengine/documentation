@@ -171,17 +171,14 @@ Edition.
     # enterprise_version = 3.0.0
 ```
 
-**History:** Was introduced in 3.5.0, Enterprise 3.0.0
+**History:** Was introduced in 3.5.0, Enterprise 3.0.0.
 
 ### sys.expires
 
-```cf3
-    reports:
+**History:**
 
-     enterprise::
-
-      "License expires $(sys.expires)";
-```
+- Removed 3.5.0
+- Introduced in version 3.1.4, Enterprise 2.0.2 (2011).
 
 ### sys.exports
 
@@ -1093,27 +1090,17 @@ The name of the directory where CFEngine log files are saved
 
 ### sys.license_owner
 
-```cf3
-    reports:
+**History:**
 
-     enterprise::
-
-      "This version of CFEngine is licensed to $(sys.license_owner)";
-```
-
-**History:** Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
+- Removed 3.5.0
+- Introduced in version 3.1.4, Enterprise 2.0.2 (2011).
 
 ### sys.licenses_granted
 
-```cf3
-    reports:
+**History:**
 
-     enterprise::
-
-      "There are $(sys.licenses_granted) licenses granted for use";
-```
-
-**History:** Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
+- Removed 3.5.0
+- Was introduced in version 3.1.4, Enterprise 2.0.2 (2011).
 
 ### sys.long_arch
 
@@ -1385,3 +1372,4 @@ files (the directory name may change with the language of Windows):
 ```cf3
     # workdir = C:\Program Files\CFEngine
 ```
+-
