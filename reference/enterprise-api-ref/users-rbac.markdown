@@ -39,7 +39,6 @@ API call allowed only for administrator.
       "email": "admin@organisation.com",
       "roles": [
         "admin",
-        "cf_vcs",
         "cf_remoteagent"
       ],
       "external": false
