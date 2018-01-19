@@ -35,18 +35,15 @@ Windows MSI by version:
 
 [%CFEngine_include_snippet(software_and_patch_installation_1.cf, .* )%]
 
-Examples for solaris are more complex:
+Examples for solaris:
 
-
-[%CFEngine_include_snippet(software_and_patch_installation_1_2.cf, .* )%]
+[%CFEngine_include_snippet(packages_examples_solaris.cf, .* )%]
 
 Examples for yum based systems:
-
 
 [%CFEngine_include_snippet(software_and_patch_installation_1_2.cf, .* )%]
 
 SuSE Linux's package manager zypper is the most powerful alternative:
-
 
 [%CFEngine_include_snippet(software_and_patch_installation_1_2_3.cf, .* )%]
 
