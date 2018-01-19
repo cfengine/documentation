@@ -1169,12 +1169,11 @@ The name of the directory where CFEngine saves the daemon pid files.
 
 **History:** Introduced in CFEngine 3.6
 
+
 ### sys.policy_entry_basename
 
 The basename of the first policy file read by the agent. For example
 ```promises.cf``` or ```update.cf```.
-
-**See Also:** [`sys.policy_entry_filename`][sys#sys.policy_entry_filename] [`sys.policy_entry_dirname`][sys#sys.policy_entry_dirname]
 
 **History:**
 
@@ -1213,6 +1212,7 @@ The full path to the first policy file read by the agent. For example
 ```/var/cfengine/inputs/promises.cf``` or ```~/.cfagent/inputs/promises.cf```.
 
 **See Also:** [`sys.policy_entry_basename`][sys#sys.policy_entry_basename] [`sys.policy_entry_dirname`][sys#sys.policy_entry_dirname]
+
 
 **History:**
 
