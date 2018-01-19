@@ -1,0 +1,55 @@
+bundle agent example_using_ips_package_method
+{
+
+  packages:
+
+    solaris::
+
+      "shell/zsh"
+        package_policy => "add",
+        package_method => ips;
+}
+
+bundle agent example_using_solaris_package_method
+{
+  files:
+
+    solaris::
+
+      "/tmp/$(admin_file)"
+        create => "true",
+        edit_defaults => empty_file, # defined in stdlib
+        edit_line => create_solaris_admin_file; # defined in stdlib
+
+  packages:
+
+    solaris::
+
+      "SMCzlib"
+        package_policy => "add",
+        package_method => solaris( "SMCzlib",
+                                   "zlib-1.2.3-sol10-sparc-local",
+                                   "$(admin_file)");
+}
+
+bundle agent example_using_solaris_install_package_method
+{
+  packages:
+
+    solaris::
+
+      "SMCzlib"
+        package_method => solaris_install("/tmp/SMCzlib.adminfile")
+}
+
+bundle agent example_using_pkgsrc_module
+{
+
+  packages:
+
+    solaris::
+
+      "vim"
+        policy => "present",
+        package_module => pkgsrc;
+}
