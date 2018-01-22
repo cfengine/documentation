@@ -11,7 +11,7 @@ tags: [reference, io functions, functions, readcsv, readjson, readyaml, readdata
 and returns the result as a `data` variable.
 
 When `filetype` is `auto`, the file type is guessed from the extension
-(ignoring case): `.csv` means CSV; `.json` means JSON; `.yaml` means
+(ignoring case): `.csv` means CSV; `.json` means JSON; `.yaml` or `.yml` means
 YAML. If the file doesn't match any of those names, JSON is used.
 
 When `filetype` is `CSV`,`JSON`,`YAML` or `ENV`,
