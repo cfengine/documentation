@@ -140,18 +140,28 @@ versions) below.
    for the OS distributions you use.
 
 2. Turn on the auto-upgrade policy by setting the `trigger_upgrade` class. Set
-   `masterfiles/controls/update_def.cf` or the `augments_file` (also
-   known as `def.json`) for a small set of clients. For example in the
-   appropriate `update_def.cf` file(s) change `!any` to an appropriate class
-   like an IP network `ipv4_10_10_1|ipv4_10_10_2` or in `def.json`
+   `masterfiles/controls/update_def.cf` or the `augments_file` (also known as
+   `def.json`) for a small set of clients. For example in the appropriate
+   `update_def.cf` file(s) change `!any` to an appropriate class like an IP
+   network `ipv4_192_0_2|ipv4_203_0_113` or in `def.json`. This example will
+   define `trigger_upgrade` on hosts with IPv4 addresses in 192.0.2.0/24 or
+   203.0.113.0/24 or hosts that have a cfengine 3.10 class not for cfengine
+   3.10.2.
 
    ```json
    {
       "classes": {
-       "trigger_upgrade": [ "ipv4_10_10_1", "ipv4_10_10_2" ]
+       "trigger_upgrade": [
+         "ipv4_10_10_1",
+         "ipv4_10_10_2",
+         "cfengine_3_10_(?!2$)\d+"
+       ]
       }
    }
    ```
+
+   **Note:** The negative look ahead regular expression is useful because it
+   automatically turns off on hosts after they reach the target version.
 
 3. Verify that the selected hosts are upgrading successfully.
 
@@ -171,6 +181,7 @@ community packages.
    hosts are upgraded correctly and start reporting in.
 3. Verify that the list of hosts you captured before the upgrade, e.g. in
    `/root/3.7/hosts` correspond to what you see is now reporting in.
+4. Undefine the trigger upgrade class so that agents stop trying to self upgrade.
 
 
 ## Optional steps
