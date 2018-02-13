@@ -35,9 +35,9 @@ you need order in the resulting output.
 
 [%CFEngine_include_snippet(mapdata.cf, #\+begin_src cfengine3, .*end_src)%]
 
-Output:
+Output: (when `show_example` is defined)
 
-[%CFEngine_include_snippet(mapdata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+[%CFEngine_include_snippet(mapdata.cf, #\+begin_src\s+show_example_example_output\s*, .*end_src)%]
 
 **json_pipe**
 
