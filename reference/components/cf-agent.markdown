@@ -1141,21 +1141,8 @@ it will skip them and output a warning message.
 
 ### syslog
 
-**Description:** The `syslog` menu option policy determines whether to
-switch on output to syslog at the inform level.
-
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example:**
-
-```cf3
-    body agent control
-    {
-    syslog => "true";
-    }
-```
+**Deprecated:** This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.
 
 ### track_value
 
