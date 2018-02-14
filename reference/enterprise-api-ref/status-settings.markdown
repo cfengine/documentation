@@ -89,19 +89,10 @@ API call allowed only for administrator.
   },
   "data": [
     {
-      "ldapPort": 389,
-      "ldapPortSSL": 636,
       "hostIdentifier": "default.sys.fqhost",
       "rbacEnabled": true,
       "logLevel": "error",
       "ldapEnabled": true,
-      "ldapUsername": "",
-      "ldapPassword": "",
-      "ldapEncryption": "ssl",
-      "ldapLoginAttribute": "uid",
-      "ldapHost": "ldap.example.com",
-      "ldapBaseDN": "ou=people,dc=example,dc=com",
-      "ldapFilter": "(objectClass=inetOrgPerson)",
       "blueHostHorizon": 900,
       "sketchActivationAlertTimeout": 60
     }
@@ -117,24 +108,6 @@ API call allowed only for administrator.
     The identfying string for hosts, such as name or IP.
 * **ldapEnabled** *(boolean)*
     Whether external authentication is activated.
-* **ldapBaseDN** *(string)*
-    LDAP BaseDN to use for external LDAP requests.
-* **ldapEncryption** *("plain", "ssl", "tls")*
-    Type of LDAP binding to establish to external LDAP server. (Default: "plain").
-* **ldapHost** *(string)*
-    Hostname of external LDAP server.
-* **ldapLoginAttribute** *(string)*
-    LDAP attribute to use for usernames. (default: "uid").
-* **ldapUsername** *(string)*
-    LDAP username.
-* **ldapPassword** *(string)*
-    LDAP password.
-* **ldapUsersDirectory** *(string)*
-    Attribute and value to qualify the directory in which to look up users, e.g. "ou=people".
-* **ldapPort** *(integer)*
-    Port for external LDAP connections not using SSL. (default 389).
-* **ldapPortSSL** *(integer)*
-    Port for external LDAP connections using SSL. (default 636).
 * **logLevel** *("emergency", "alert", "critical", "error", "warning", "notice", "info", "debug")*
     Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error).
 * **sketchActivationAlertTimeout** *(integer)*
@@ -159,24 +132,6 @@ administrator.
     The identfying string for hosts, such as name or IP.
 * **ldapEnabled** *(boolean)*
     Whether external authentication is activated.
-* **ldapBaseDN** *(string)*
-    LDAP BaseDN to use for external LDAP requests.
-* **ldapEncryption** *("plain", "ssl", "tls")*
-    Type of LDAP binding to establish to external LDAP server. (Default: "plain").
-* **ldapHost** *(string)*
-    Hostname of external LDAP server.
-* **ldapLoginAttribute** *(string)*
-    LDAP attribute to use for usernames. (default: "uid").
-* **ldapUsername** *(string)*
-    LDAP username.
-* **ldapPassword** *(string)*
-    LDAP password.
-* **ldapUsersDirectory** *(string)*
-    Attribute and value to qualify the directory in which to look up users, e.g. "ou=people".
-* **ldapPort** *(integer)*
-    Port for external LDAP connections not using SSL. (default 389).
-* **ldapPortSSL** *(integer)*
-    Port for external LDAP connections using SSL. (default 636).
 * **logLevel** *("emergency", "alert", "critical", "error", "warning", "notice", "info", "debug")*
     Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error).
 * **sketchActivationAlertTimeout** *(integer)*
@@ -189,19 +144,10 @@ administrator.
 
 ```
 {
-  "ldapPort": 389,
-  "ldapPortSSL": 636,
   "hostIdentifier": "default.sys.fqhost",
   "rbacEnabled": false,
   "logLevel": "error",
   "ldapEnabled": true,
-  "ldapUsername": "",
-  "ldapPassword": "",
-  "ldapEncryption": "ssl",
-  "ldapLoginAttribute": "uid",
-  "ldapHost": "ldap.example.com",
-  "ldapBaseDN": "ou=people,dc=example,dc=com",
-  "ldapFilter": "(objectClass=inetOrgPerson)",
   "blueHostHorizon": 900,
   "sketchActivationAlertTimeout": 60
 }

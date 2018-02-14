@@ -15,33 +15,36 @@ via the Status and Setting REST API.
 
 Status and Settings REST API
 This example shows using jq to preserve the existing settings and update the
-LDAP port to `3268` and the LDAP SSL port to `3269`.
+SSL LDAP port to `3269`.
 
 **Note:** The commands are run as root on the hub, and the hubs self signed
-certificate is used to connect to the API over https. Authentication is done via
-a `~/.netrc` file as indicated by the `--netrc` option.
+certificate is used to connect to the API over https. An accessToken must be
+retrieved from /var/cfengine/httpd/htdocs/ldap/config/settings.php.
 
 ```console
 [root@hub ~]# export CACERT="/var/cfengine/httpd/ssl/certs/hub.cert"
-[root@hub ~]# export API="https://hub/api/settings"
-[root@hub ~]# export CURL="curl --netrc --silent --cacert ${CACERT} ${API}" 
-[root@hub ~]# ${CURL} | jq '.data[0] + {"ldapPort": 3268, "ldapPortSSL": 3269}' | ${CURL} -X POST -d @-
-[root@hub ~]# $CURL | jq '.data[0]'
+[root@hub ~]# export API="https://hub/ldap/settings"
+[root@hub ~]# export AUTH_HEADER="Authorization:<accessToken from settings.php as mentioned above>"
+[root@hub ~]# export CURL="curl --silent --cacert ${CACERT} -H ${AUTH_HEADER} ${API}"
+[root@hub ~]# ${CURL} | jq '.data'
 {
-  "blueHostHorizon": 900,
-  "hostIdentifier": "default.sys.fqhost",
-  "ldapBaseDN": "dc=cfengine,dc=com",
-  "ldapEnabled": true,
-  "ldapEncryption": "ssl",
-  "ldapFilter": "(objectClass=inetOrgPerson)",
-  "ldapHost": "ldap.intra.cfengine.com",
-  "ldapLoginAttribute": "uid",
-  "ldapPassword": "",
-  "ldapPort": 3268,
-  "ldapPortSSL": 3269,
-  "ldapUsername": "",
-  "logLevel": "error",
-  "rbacEnabled": true,
-  "sketchActivationAlertTimeout": 60
+  "domain_controller": "ldap.jumpcloud.com",
+  "custom_options": {
+    "24582": 3
+  },
+  "version": 3,
+  "group_attribute": "",
+  "admin_password": "Password is set",
+  "base_dn": "ou=Users,o=5888df27d70bea3032f68a88,dc=jumpcloud,dc=com",
+  "login_attribute": "uid",
+  "port": 2,
+  "use_ssl": true,
+  "use_tls": false,
+  "timeout": 5,
+  "ldap_filter": "(objectClass=inetOrgPerson)",
+  "admin_username": "uid=missionportaltesting,ou=Users,o=5888df27d70bea3032f68a88,dc=jumpcloud,dc=com"
 }
+
+[root@hub ~]# ${CURL} -X PATCH -d '{"port":3269}'
+{"success":true,"data":"Settings successfully saved."}
 ```

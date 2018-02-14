@@ -46,12 +46,7 @@ existing setting when updating an individual key value.
 {
   "blueHostHorizon": 2222,
   "hostIdentifier": "default.sys.fqhost",
-  "ldapEnabled": false,
-  "ldapEncryption": "plain",
-  "ldapHost": "localhost",
-  "ldapLoginAttribute": "uid",
-  "ldapPort": 389,
-  "ldapPortSSL": 636,
+  "ldapEnabled": true,
   "logLevel": "warning",
   "rbacEnabled": true,
   "sketchActivationAlertTimeout": 60
