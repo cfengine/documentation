@@ -7,7 +7,7 @@ tags: [getting started, faq, logging, reporting ]
 
 # CFEngine Core/Community
 
-## The verbose agent log
+### The verbose agent log
 
 Running the agent in verbose mode ( `cf-agent --verbose` | `cf-agent -v` )
 provides all of the details about each promise and its result
@@ -130,7 +130,8 @@ verbose: No lock purging scheduled
 verbose: Outcome of version (not specified) (agent-0): Promises observed - Total promise compliance: 0% kept, 100% repaired, 0% not kept (out of 2 events). User promise compliance: 0% kept, 100% repaired, 0% not kept (out of 2 events). CFEngine system compliance: 0% kept, 0% repaired, 0% not kept (out of 0 events).
 ```
 
-## Promise logging
+
+### Promise logging
 
 Promises can be configured to [log their outcomes][Promise Types and Attributes#log_repaired]
 to a file with `log_kept`, `log_repaired`, and `log_failed` attributes in an action body.
@@ -167,18 +168,18 @@ R: /tmp/repaired.log
 R: Mon Dec  4 21:21:38 2017 REPAIRED /bin/true
 ```
 
-# CFEngine Enterprise
+## CFEngine Enterprise
 
 CFEngine enterprise provides details logging without special configuration.
 
-## Changes UI
+### Changes UI
 
 The changes reporting interface is the easiest way to what repairs the agent is
 making to your infrastructure.
 
 ![Enterprise Changes UI](enterprise-changes-ui.png)
 
-## Changes API
+### Changes API
 
 Changes can also be queried from the [changes rest api][Changes REST API]. Here
 we query for repairs made by `files` type promises.
@@ -235,7 +236,7 @@ Example response:
 
 See Also: [query rest api][Tracking changes]
 
-## Custom Reports and Query API
+### Custom Reports and Query API
 
 The custom reports interface and associated [query rest api][Query REST API] allow more flexible
 reports to be run.
@@ -260,7 +261,7 @@ ORDER BY count DESC
   
 Reference: [query api examples][SQL Query Examples]
 
-## /var/cfengine/state/promise_log/*.csv
+### /var/cfengine/state/promise_log/*.csv
 
 **NOTE:** These logs are purged upon collection by the hub.
 
@@ -286,7 +287,7 @@ tree), `promise handle`, `promisees`, `log messages`
   "[""Created directory '/var/cfengine/master_software_updates/windows_i686/.'""]"
 ```
 
-## promise_log.jsonl
+### promise_log.jsonl
 
 **NOTE:*** These logs are purged upon collection by the hub.
 
