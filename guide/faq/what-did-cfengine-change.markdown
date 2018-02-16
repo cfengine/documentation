@@ -5,7 +5,7 @@ published: true
 tags: [getting started, faq, logging, reporting ]
 ---
 
-# CFEngine Core/Community
+## CFEngine Core/Community
 
 ### The verbose agent log
 
