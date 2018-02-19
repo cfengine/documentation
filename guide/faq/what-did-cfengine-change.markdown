@@ -261,32 +261,6 @@ ORDER BY count DESC
   
 Reference: [query api examples][SQL Query Examples]
 
-### /var/cfengine/state/promise_log/*.csv
-
-**NOTE:** These logs are purged upon collection by the hub.
-
-In Enterprise 3.7 each agent run logs to a CSV file named for the time the agent
-started in `$(sys.workdir)/state/promise_log/`.
-
-The fields are `promise hash`, `policy file`, `release id`, unknown (waiting on
-developer feedback), `namespace`, `bundle`, `promise type`, `stack path` (call
-tree), `promise handle`, `promisees`, `log messages`
-
-/Line breaks added on commas for readability./
-
-```
-  719b756d3dc8fd7bdd20284c1fd894ae40bac55d8790855b074159db8fe187ae,
-  /var/cfengine/inputs/cfe_internal/enterprise/CFE_hub_specific.cf,
-  <unknown-release-id>,
-  114,default,
-  cfe_internal_update_folders,
-  files,
-  /var/cfengine/master_software_updates/windows_i686,/default/cfe_internal_management/methods/'CFEngine_Internals'/default/cfe_internal_enterprise_main/methods/'hub'/default/cfe_internal_update_folders/files/'/var/cfengine/master_software_updates/windows_i686'[40],
-  cfe_internal_update_folders_files_create_dirs,
-  "[""goal_updated""]",
-  "[""Created directory '/var/cfengine/master_software_updates/windows_i686/.'""]"
-```
-
 ### promise_log.jsonl
 
 **NOTE:*** These logs are purged upon collection by the hub.
