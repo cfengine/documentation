@@ -100,7 +100,7 @@ Enterprise only:
     * The IPv4 address octets of any active interface (in the form
     `ipv4_192_0_0_1`, `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`)
     * The IPv6 addresses of all active interfaces (with dots replaced by
-      underscores, e.g. `ipv6_fe80__a410_6072_21eb_d3fa`)
+      underscores, e.g. `ipv6_fe80__a410_6072_21eb_d3fa`) added in 3.7.8, 3.10.3, 3.12.0
     * User-defined Group of Hosts
     * `mac_unknown`: set when the MAC address can't be found
     * **See also:** `sys.domain`, `sys.hardware_addresses`, `sys.sys.host`, `sys.interface`, `sys.interfaces`, `sys.interface_flags`, `sys.ipv4`, `sys.ip_addresses`, `sys.fqhost`, `sys.uqhost`.
