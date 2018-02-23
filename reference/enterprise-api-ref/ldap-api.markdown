@@ -88,10 +88,15 @@ HTTP 200 Ok
 
 **Method:** PATCH
 
+Note that the PATCH HTTP method only requires partial JSON for an update. Such as {"port":3269} instead of the entire set of parameters.
+
 **Headers:**
 
 * **Authorization: api_token** *(string)*
     Set token to access api. To get the token please look at - ```/var/cfengine/httpd/htdocs/ldap/config/settings.php```
+
+* **Content-Type: application/json** *(string)*
+    Content-Type must be application/json for the API to parse JSON provided.
 
 **Parameters:**
 
