@@ -12,7 +12,12 @@ tags: [reference, files functions, functions, filesexist]
 All files must exist, and the user must have access permissions to them for
 this function to return true.
 
-[%CFEngine_function_attributes(list)%]
+[This function can accept many types of data parameters.][Functions#collecting functions]
+
+**Arguments:**
+
+* list : The name of the list variable or data container to check, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example:**
 
@@ -21,3 +26,7 @@ this function to return true.
 Output:
 
 [%CFEngine_include_snippet(filesexist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+**History:** The [collecting function][Functions#collecting functions] behavior was added in 3.12.
+
+**See also:** [About collecting functions][Functions#collecting functions], `grep()`, `every()`, `some()`, and `none()`.
