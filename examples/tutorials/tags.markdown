@@ -48,7 +48,7 @@ bundle agent cfe_autorun_inventory_listening_ports
 
 In the Enterprise Mission Portal, you can then make a report for
 "Ports listening" across all your machines. For more details, see
-https://cfengine.com/docs/master/guide-enterprise-cfengine-guide-mission-portal-reporting.html
+https://docs.cfengine.com/docs/3.10/enterprise-cfengine-guide-reporting.html
 
 Class tags work exactly the same way, you just apply them to a
 `classes` promise with the `meta` attribute.
@@ -120,7 +120,7 @@ In CFEngine Enterprise 3.6.0, you can build reports based on tagged variables
 and classes.
 
 Please see
-https://cfengine.com/docs/master/guide-enterprise-cfengine-guide-mission-portal-reporting.html
+https://docs.cfengine.com/docs/3.10/enterprise-cfengine-guide-reporting.html
 for a full tutorial, including troubleshooting possible errors. In
 short, this is extremely easy as long as you:
 
