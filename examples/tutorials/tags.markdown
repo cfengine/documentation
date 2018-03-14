@@ -48,7 +48,7 @@ bundle agent cfe_autorun_inventory_listening_ports
 
 In the Enterprise Mission Portal, you can then make a report for
 "Ports listening" across all your machines. For more details, see
-https://docs.cfengine.com/docs/3.10/enterprise-cfengine-guide-reporting.html
+[Enterprise Reporting](../../enterprise-cfengine-guide/reporting.markdown)
 
 Class tags work exactly the same way, you just apply them to a
 `classes` promise with the `meta` attribute.
@@ -76,21 +76,21 @@ tags, and to find classes and variables with tags.
 * `classesmatching`: this used to be somewhat available with the
 `allclasses.txt` file. You can now call a function to get all the
 defined classes, optionally filtering by name and tags. See
-https://cfengine.com/docs/master/reference-functions-classesmatching.html
+[classesmatching](../../reference/functions/classesmatching.markdown)
 
 * `getvariablemetatags`: get the tags of a variable as an slist. See
-https://cfengine.com/docs/master/reference-functions-getvariablemetatags.html
+[getvariablemetatags](../../reference/functions/getvariablemetatags.markdown)
 
 * `variablesmatching`: just like `classesmatching` but for variables.
-See https://cfengine.com/docs/master/reference-functions-variablesmatching.html
+See [variablesmatching](../../reference/functions/variablesmatching.markdown)
 
 * `getclassmetatags`: get the tags of a class as an slist. See
-https://cfengine.com/docs/master/reference-functions-getclassmetatags.html
+[getclassmetatags](../../reference/functions/getclassmetatags.markdown)
 
 There is also a new function to find bundles.
 
 * `bundlesmatching`: find the bundles matching some tags. See
-https://cfengine.com/docs/master/reference-functions-bundlesmatching.html
+[bundlesmatching](../../reference/functions/bundlesmatching.markdown)
 (the example shows how you'd find a `deprecated` bundle like
 `run_deprecated` earlier).
 
@@ -120,7 +120,7 @@ In CFEngine Enterprise 3.6.0, you can build reports based on tagged variables
 and classes.
 
 Please see
-https://docs.cfengine.com/docs/3.10/enterprise-cfengine-guide-reporting.html
+[Enterprise Reporting](../../enterprise-cfengine-guide/reporting.markdown)
 for a full tutorial, including troubleshooting possible errors. In
 short, this is extremely easy as long as you:
 
@@ -149,7 +149,7 @@ the tags will be found and run.
 Note that the discovered bundle names will have the namespace prefix,
 e.g. `default:mybundle`. The regular expression has to match that. So
 `mybundle` as the regular expression would not work. See
-https://cfengine.com/docs/master/reference-functions-bundlesmatching.html
+[bundlesmatching](../../reference/functions/bundlesmatching.markdown)
 for another detailed example.
 
 In fact we found this so useful we
