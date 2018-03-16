@@ -1149,6 +1149,42 @@ The name of the operating system according to the kernel.
 
 **See also:** [`sys.ostype`][sys#sys.ostype]
 
+### sys.os_release
+
+Information parsed from `/etc/os-release` if present.
+
+```cf3
+bundle agent main
+{
+    reports:
+       "$(with)"
+         with => string_mustache("{{%-top-}}", @(sys.os_release) );
+}
+```
+
+Policy Output:
+
+```
+R: {
+  "BUG_REPORT_URL": "https://bugs.launchpad.net/ubuntu/",
+  "HOME_URL": "https://www.ubuntu.com/",
+  "ID": "ubuntu",
+  "ID_LIKE": "debian",
+  "NAME": "Ubuntu",
+  "PRETTY_NAME": "Ubuntu 17.10",
+  "PRIVACY_POLICY_URL": "https://www.ubuntu.com/legal/terms-and-policies/privacy-policy",
+  "SUPPORT_URL": "https://help.ubuntu.com/",
+  "UBUNTU_CODENAME": "artful",
+  "VERSION": "17.10 (Artful Aardvark)",
+  "VERSION_CODENAME": "artful",
+  "VERSION_ID": "17.10"
+}
+```
+
+**History:**
+
+- Added in 3.11.0
+
 ### sys.ostype
 
 Another name for the operating system.
