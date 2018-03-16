@@ -429,6 +429,16 @@ Sometimes it's nice to include an external file
 [%CFEngine_include_markdown(masterfiles/CHANGELOG.md)%]
 </pre>
 
+### Including chunks of policy from the MPF
+
+Here I am including a bundle named `cfe_autorun_inventory_listening_ports`. It may be a common or an agent bundle (in case the bundle ever changes types).
+
+<pre>
+[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%] 
+</pre>
+
+[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%] 
+
 ## Comments inside documentation
 
 Sometimes it's nice to be able to put an internal comment into the
