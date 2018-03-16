@@ -8,8 +8,8 @@ tags: [tags, meta]
 
 ## Introduction
 
-/meta tags/ can be attached to any promise type using the `meta` attribute.
-These tags are useful for cross-referenceing related promises. `bundles`, `vars`
+*meta tags* can be attached to any promise type using the `meta` attribute.
+These tags are useful for cross-referencing related promises. `bundles`, `vars`
 and `classes` can be identified and leveraged in different ways within policy
 using these tags.
 
