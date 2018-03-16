@@ -24,25 +24,13 @@ then run all the discovered bundles if they are tagged appropriately.
 
 ## Syntax
 
-Tagging variables and classes is easy with the `meta` attribute.
-Here's an example that sets the `inventory` tag on a variable and
-names the attribute that it represents. This one is actually built
-into the standard 3.6.0 inventory policy under
-`masterfiles/inventory/any.cf`, so you have it available out
-of the box in either Community or Enterprise.
+Tagging variables and classes is easy with the `meta` attribute. Here's an
+example that sets the `inventory` tag on a variable and names the attribute that
+it represents. This one is actually built into the standard
+[MPF inventory policy][inventory/any.cf#cfe_autorun_inventory_listening_ports],
+so it's available out of the box in either Community or Enterprise.
 
-```cf3
-bundle agent cfe_autorun_inventory_listening_ports
-# @brief Inventory the listening ports
-#
-# This bundle uses `mon.listening_ports` and is always enabled by
-# default, as it runs instantly and has no side effects.
-{
-  vars:
-      "ports" slist => { @(mon.listening_ports) },
-      meta => { "inventory", "attribute_name=Ports listening" };
-}
-```
+[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%]
 
 In the Enterprise Mission Portal, you can then make a report for
 "Ports listening" across all your machines. For more details, see
