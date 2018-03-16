@@ -8,12 +8,10 @@ tags: [tags, meta]
 
 ## Introduction
 
-CFEngine 3.6.0 makes great use of the `meta` attribute to set tags
-on variables and classes. While that attribute was always in the
-language, only in 3.6.0 is it fully utilized
-
-Furthermore, bundles can now be tagged and found by tag, so you can
-construct a fully dynamic bundle sequence.
+/meta tags/ can be attached to any promise type using the `meta` attribute.
+These tags are useful for cross-referenceing related promises. `bundles`, `vars`
+and `classes` can be identified and leveraged in different ways within policy
+using these tags.
 
 ## Problem statement
 
@@ -48,7 +46,7 @@ bundle agent cfe_autorun_inventory_listening_ports
 
 In the Enterprise Mission Portal, you can then make a report for
 "Ports listening" across all your machines. For more details, see
-https://cfengine.com/docs/master/guide-enterprise-cfengine-guide-mission-portal-reporting.html
+[Enterprise Reporting][Enterprise Reporting]
 
 Class tags work exactly the same way, you just apply them to a
 `classes` promise with the `meta` attribute.
@@ -76,21 +74,23 @@ tags, and to find classes and variables with tags.
 * `classesmatching`: this used to be somewhat available with the
 `allclasses.txt` file. You can now call a function to get all the
 defined classes, optionally filtering by name and tags. See
-https://cfengine.com/docs/master/reference-functions-classesmatching.html
+[classesmatching][classesmatching]
 
 * `getvariablemetatags`: get the tags of a variable as an slist. See
-https://cfengine.com/docs/master/reference-functions-getvariablemetatags.html
+[getvariablemetatags][getvariablemetatags]
 
 * `variablesmatching`: just like `classesmatching` but for variables.
-See https://cfengine.com/docs/master/reference-functions-variablesmatching.html
+See [variablesmatching][variablesmatching]
+
+* `variablesmatching_as_data`: like `variablesmatching` but the matching
+variables and values are returned as a merged data container. See
+[variablesmatching_as_data][variablesmatching_as_data]
 
 * `getclassmetatags`: get the tags of a class as an slist. See
-https://cfengine.com/docs/master/reference-functions-getclassmetatags.html
-
-There is also a new function to find bundles.
+[getclassmetatags][getclassmetatags]
 
 * `bundlesmatching`: find the bundles matching some tags. See
-https://cfengine.com/docs/master/reference-functions-bundlesmatching.html
+[bundlesmatching][bundlesmatching]
 (the example shows how you'd find a `deprecated` bundle like
 `run_deprecated` earlier).
 
@@ -116,40 +116,35 @@ Then it will create class `y` and variable `b` with tags `report` and
 
 ## Enterprise Reporting with tags
 
-In CFEngine Enterprise 3.6.0, you can build reports based on tagged variables
-and classes.
+In CFEngine Enterprise, you can build reports based on tagged variables and
+classes.
 
-Please see
-https://cfengine.com/docs/master/guide-enterprise-cfengine-guide-mission-portal-reporting.html
-for a full tutorial, including troubleshooting possible errors. In
-short, this is extremely easy as long as you:
-
-* allow classes and variables with the `inventory` and `report` tags
-to be reported in `controls/cf_serverd.cf`. This is already the case
-if you install the stock CFEngine 3.6.0 packages.
-
-* ensure there are no report collection issues due to firewalls (TCP
-port 5308 must be open from the hub to the agents, for instance)
+Please see [Enterprise Reporting][Enterprise Reporting] for a full tutorial,
+including troubleshooting possible errors. In short, this is an extremely easy
+way to categorize various data accessible to the agent.
 
 ## Dynamic bundlesequence
 
-Dynamic bundlesequences are extremely easy.  You simply say
+Dynamic bundlesequences are extremely easy. First you find all the bundles whos
+name matches a regular expression and N tags.
 
 ```cf3
 vars:
   "bundles" slist => bundlesmatching("regex", "tag1", "tag2", ...);
-
-methods:
-  "run $(bundles)" usebundle => $(bundles);
 ```
 
 Then every bundle matching the regular expression `regex` and **all**
 the tags will be found and run.
 
+```cf3
+methods:
+  "run $(bundles)" usebundle => $(bundles);
+```
+
 Note that the discovered bundle names will have the namespace prefix,
 e.g. `default:mybundle`. The regular expression has to match that. So
 `mybundle` as the regular expression would not work. See
-https://cfengine.com/docs/master/reference-functions-bundlesmatching.html
+[bundlesmatching][bundlesmatching]
 for another detailed example.
 
 In fact we found this so useful we
@@ -163,7 +158,6 @@ a runtime error and CFEngine will abort. We recommend only using
 
 ## Summary
 
-Tagging variables and classes and bundles in CFEngine 3.6.0 is easy
-and allows more dynamic behavior than ever before. Try it out and see
-for yourself how it will change the way you use and think about
-system configuration policy and CFEngine.
+Tagging variables and classes and bundles in CFEngine is easy and allows more
+dynamic behavior than ever before. Try it out and see for yourself how it will
+change the way you use and think about system configuration policy and CFEngine.
