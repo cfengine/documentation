@@ -13,7 +13,7 @@ options by checking out the [custom reports section][Reporting UI#query builder]
 of the Enterprise Reporting module.
 
 Specifically which information allowed to be collected by the hub for reporting
-is configured by [`report_data_select` bodies][access#report_data_select-bodies].
+is configured by [`report_data_select` bodies][access#report_data_select].
 `default_data_select_host()` defines the data to be collected for a non policy hub
 and `default_data_select_policy_hub()` defines the data that should be collected
 for a policy hub.
