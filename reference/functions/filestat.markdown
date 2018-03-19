@@ -61,6 +61,9 @@ Output:
 
 The list of fields may be extended as needed by CFEngine.
 
-**History:** Was introduced in version 3.5.0,Enterprise 3.1 (2013).  `linktarget` and `linktarget_shallow` were added in version 3.6.
+**History:**
 
-**See also:** `lastnode()`, `dirname()`, `splitstring()`.
+- function introduced in version 3.5.0.
+- `linktarget` and `linktarget_shallow` field options added in 3.6.0.
+
+**See also:** `dirname()`, `fileexists()`, `isdir()`, `islink()`, `isplain()`, `lastnode()`, `returnszero()`, `splitstring()`.
