@@ -12,13 +12,11 @@ across your infrastructure), variables, classes, and measurements taken by
 options by checking out the [custom reports section][Reporting UI#query builder]
 of the Enterprise Reporting module.
 
-Specifically which information allowed to be collected by the hub for
-reporting is configured in [`report_data_select` bodies][controls/reports.cf#report_data_select bodies].
-[`default_data_select_host`][controls/reports.cf#default_data_select_host]
-defines the data to be collected for a non policy hub and
-[`default_data_select_policy_hub`][controls/reports.cf#default_data_select_policy_hub]
-defines the data that should be
-collected for a policy hub.
+Specifically which information allowed to be collected by the hub for reporting
+is configured by [`report_data_select` bodies][access#report_data_select-bodies].
+`default_data_select_host()` defines the data to be collected for a non policy hub
+and `default_data_select_policy_hub()` defines the data that should be collected
+for a policy hub.
 
 Specifying which variables and classes should be collected by an Enterprise Hub
 is done with a list of regular expressions matching promise meta tags for either
