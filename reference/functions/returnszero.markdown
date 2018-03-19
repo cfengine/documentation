@@ -35,4 +35,4 @@ highly undesirable if the command is expensive.  Consider using
 `commands` promises instead, which have locking and are not evaluated
 by `cf-promises`.
 
-**See also:** [`execresult()`][execresult].
+**See also:** `execresult()`.
