@@ -53,3 +53,5 @@ by the `splayclass` is a time when you have told CFEngine *not* to run).
         "Load balanced class activated";
     }
 ```
+
+**See Also:** `hash_to_int()`
