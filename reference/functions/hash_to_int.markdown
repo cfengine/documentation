@@ -5,7 +5,7 @@ published: true
 tags: [reference, functions, hash_to_int, function_returns_int]
 ---
 
-[%CFEngine_function_prototype( lower, upper, "string" )%]
+[%CFEngine_function_prototype( lower, upper, string )%]
 
 **Description:** Generates an integer between `lower` and `upper` range based on hash of `string`.
 
@@ -17,7 +17,7 @@ spreading out the scheduling, or even for static load balancing. The result
 would may be coupled with an `ifelse()` clause of some sort, or just used
 directly.
 
-[%CFEngine_function_attributes(hash_to_int)%]
+[%CFEngine_function_attributes(lower, upper, string)%]
 
 **Example:**
 
