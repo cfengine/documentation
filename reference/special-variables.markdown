@@ -17,6 +17,10 @@ as a privileged user.  See `Classes` for an explanation of the tags.
 
 CFEngine includes the following **special variables**:
 
+* [connection][connection]
+Variables defined for embedding unprintable values or values with special meanings
+in strings.
+
 * [const][const]
 Variables defined for embedding unprintable values or values with special meanings
 in strings.
