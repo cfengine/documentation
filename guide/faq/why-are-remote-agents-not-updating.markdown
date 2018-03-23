@@ -30,7 +30,7 @@ clients will see no need to scan for updates.
   `cf-promises`.
 * Check if `$(sys.inputdir)/cf_promsies_validated` differs from the
   `$(sys.masterdir)/cf_promises_validated` on the policy server.
-* Trigger a full policy scan with `cf-agent --no-locks --file update.cf --define
+* Trigger a full policy scan with `cf-agent --no-lock --file update.cf --define
   validated_updates_ready`
 
 **Note:** Dynamic inputs could mean different validation results on different
