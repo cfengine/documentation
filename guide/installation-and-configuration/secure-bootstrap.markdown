@@ -6,7 +6,6 @@ sorting: 20
 tags: [guide, installation, install, security]
 ---
 
-
 This guide presumes that you already have CFEngine properly installed
 and running on the policy hub, the machine that distributes the policy
 to all the clients. It also presumes that CFEngine is installed, but not
@@ -16,15 +15,14 @@ We present a step-by-step procedure to securely bootstrapping a
 number of servers (referred to as *clients*) to the policy hub, over a
 possibly unsafe network.
 
-
-## Introduction ##
+## Introduction
 
 CFEngine's trust model is based on the secure exchange of keys. This
 exchange of keys between *client* and *hub*, can either happen manually
 or automatically. Usually this step is automated as a dead-simple
 "bootstrap" procedure:
 
-```cf-agent --bootstrap $HUB_IP```
+`cf-agent --bootstrap $HUB_IP`
 
 It is presumed that during this first key exchange, *the network is
 trusted*, and no attacker will hijack the connection. After
@@ -37,125 +35,87 @@ already have a secure channel to the clients, usually ssh, and we use
 this channel to *manually establish trust* from the hub to the clients
 and vice-versa.
 
-## Manual Trust Establishment ##
-
-This procedure concerns CFEngine version 3.6 or earlier. While this
-fully manual procedure should always work, from version 3.7 onwards
-there is a simpler semi-automatic procedure for establishing trust.
-
-### On the policy hub ###
+## Locking down the policy server
 
 We must change the policy we're distributing to fully locked-down
 settings. So after we have set-up our hub (using the standard procedure
-of ```cf-agent --bootstrap $HUB_IP```) we take care of the following:
+of `cf-agent --bootstrap $HUB_IP`) we take care of the following:
 
-* Cf-serverd must never accept a connection from a client presenting an
-  untrusted key.  So in `body server control` we must empty the
-  `trustkeysfrom` attribute:
+* `cf-serverd` must never accept a connection from a client presenting an
+  untrusted key. [Disable automatic key trust][Masterfiles Policy
+  Framework#trustkeysfrom] by providing an empty list for `def.trustkeyfrom`.
 
-  ```trustkeysfrom => {};```
+## Bootstrap without automatically trusting
 
-* Since we will be manually bootstrapping the clients, we need to
-  distribute a proper `failsafe.cf` policy. (**NOTE:**
-  `failsafe.cf` is a file auto-generated in the ```inputs``` directory when
-  we run ```cf-agent --bootstrap```).
+In order to securely bootstrap a host you must have the public key of the host
+you wish to trust.
 
-  In order to do that, we copy hub's `failsafe.cf` to `masterfiles`
-  directory:
+Copy the hubs public key (`/var/cfengine/ppkeys/localhost.pub`) to the agent you
+wish to bootstrap. And install it using `cf-key`.
 
-  ```
-  cp /var/cfengine/inputs/failsafe.cf /var/cfengine/masterfiles/
-  ```
+```console
+[root@host001]# cf-key --trust-key /path/to/hubs/key.pub
+```
 
-  We'll edit that copy in `masterfiles` in the next step.
+**Note:** If you are using [protocol_version `1` or `classic`][Components and Common Control#protocol_version]
+you need to supply an IP address before the path to the key.
 
-* All `copy_from` files promises must never connect to an untrusted
-  server, which means that the following line should not be found
-  anywhere:
+For example:
 
-  ```trustkey => "true"```
+```
+  notice: Establishing trust might be incomplete. For completeness, use --trust-key IPADDR:filename
+```
 
-  All occurences of `trustkey` in `masterfiles` directory should be
-  changed to "false", or be removed (since it defaults to false
-  anyway). It is certain that `failsafe.cf` that we copied in
-  the previous step will contain such occurences that should be
-  changed. (Those occurences are the reason that automatic bootstrapping
-  requires a trusted network).
+Next copy the hosts public key (`/var/cfengine/ppkeys/localhost.pub`) to the hub
+and install it using `cf-key`.
 
-* The previous changes in `masterfiles` need to be properly propagated
-  to the ```inputs``` directory. The automated way to do that is to run the
-  update.cf policy:
+```console
+[root@hub]# cf-key --trust-key /path/to/host001/key.pub
+```
 
-  ```
-  cf-agent -f update.cf
-  ```
+Now that the hosts trust each other we can bootstrap the host to the hub.
 
-* Get the hub's key fingerprint, we'll need it later:
+```console
+[root@host001]# cf-agent --trust-server no --bootstrap $HUB 
+```
 
-  ```
-  HUB_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
-  ```
+## Manually establishing trust
 
-### On each client we deploy ###
+Get the hub's key and fingerprint, we'll them when configuring the host to trust
+the hub:
 
-We should **not** follow the automatic method, i.e. the
-```cf-agent --bootstrap``` command. We will perform a
-*manual bootstrap*.
+```console
+[root@hub]# HUB_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub
+```
 
-* Generate a private/public key pair by running `cf-key`.
+### On each client we deploy
 
-* Get the client's key fingerprint, we'll need it later:
+We will perform a *manual bootstrap*.
 
-  ```
-  CLIENT_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
+* Get the client's key and fingerprint, we'll need it later when establishing
+  trust on the hub:
+
+  ```console
+  [root@host001]# CLIENT_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
   ```
 
 * Write the policy hub's IP address to `policy_server.dat`:
 
-  ```
-  echo $HUB_IP > /var/cfengine/policy_server.dat
-  ```
-
-* Manually copy the modified `failsafe.cf` from hub's `masterfiles`
-  directory into client's `inputs` directory. You should do
-  it in a secure manner, for example using `scp` with properly trusted
-  fingerprint of the remote host.
-
-* **NOTE:** At this step, you can try running the failsafe policy. Because
-  trust between the two hosts has not been established, *you will get a
-  failure*, which is totally expected and means everything is correct
-  and secure:
-
-  ```
-  $# cf-agent -f failsafe.cf
-  error: TRUST FAILED, server presented untrusted key: MD5=cc27570b8b831192d9f20b54d07dd80b
-  error: No suitable server responded to hail
-  error: TRUST FAILED, server presented untrusted key: MD5=cc27570b8b831192d9f20b54d07dd80b
-  error: No suitable server responded to hail
-  [ ... ]
+  ```console
+  [root@host001]# echo $HUB_IP > /var/cfengine/policy_server.dat
   ```
 
 * Put the hub's key into the client's trusted keys:
 
-  ```
-  scp $HUB_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${HUB_KEY}.pub
+  ```console
+  [root@host001]# scp $HUB_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${HUB_KEY}.pub
   ```
 
-### Final steps ###
+### Install the clients public key on the hub
 
 * Put the client's key into the hub's trusted keys. So
   on the hub, run:
 
+  ```console
+  [root@hub]# scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub
   ```
-  scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub
-  ```
-
-* If you now run the failsafe policy on each and every client, it should
-  succeed:
-
-  ```
-  cf-agent -f failsafe.cf
-  ```
-
-Congratulations, you have performed a fully manual bootstrap procedure
-for your clients!
