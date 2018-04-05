@@ -506,10 +506,22 @@ background on Windows.
 **Example:**
 
 ```cf3
-     body action example
-     {
-     background => "true";
-     }
+bundle agent main
+{
+  commands:
+
+    "/bin/sleep 10"
+       action  => background;
+
+    "/bin/sleep"
+       args => "20",
+       action  => background;
+
+}
+body action background
+{
+   background => "true";
+}
 ```
 
 #### report_level
