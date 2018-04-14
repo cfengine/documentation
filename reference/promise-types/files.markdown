@@ -1062,6 +1062,35 @@ source, so relative and absolute links are mutually exclusive.
      }
 ```
 
+#### missing_ok
+
+**Description:** Treat a missing source file as a promise kept.
+
+This allows you to override the promise outcome when a source file is missing.
+When set to `true` if the promise is a remote copy and there is a failure to
+connect the promise will not be considered kept. If the agent is able to request
+the file and the file is missing the promise will be kept.
+
+[%CFEngine_promise_attribute(false)%]
+
+**Example:**
+
+[%CFEngine_include_example(missing_ok)%]
+
+**Notes:**
+
+This can be useful for opportunistically coping files that are not necessarily
+required or available at all times. For example if there is a host specific data
+that each host attempts to copy this will allow you to not have many promise
+failures when a host does not have any data prepared for it.
+
+**See also:** [`seed_cp`][lib/files.cf#seed_cp] in the MPF,
+[`compare`][files#compare] in body `copy_from`
+
+**History:**
+
+- Introduced in 3.12.0
+
 #### force_update
 
 **Description:** The `force_update` menu option policy instructs whether to
