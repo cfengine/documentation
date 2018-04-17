@@ -66,6 +66,10 @@ def processFile(markdown, config):
 			for header_depth in range(1,6):
 				header_marker = "#" * header_depth + " "
 				if markdown_line.find(header_marker) == 0:
+					if not "context_current_header" in config:
+						sys.stdout.write('ERROR: no "context_current_header" in config when reading line %d [%s] of file [%s], expect broken output'
+								% (markdown_line_number, markdown_line, markdown))
+						break
 					config["context_current_header"][header_depth] = markdown_line[header_depth + 1:].rstrip().rstrip("#").rstrip()
 					break
 			
@@ -134,6 +138,10 @@ def processFile(markdown, config):
 def promise_attribute(parameters, config):
 	lines = []
 
+	if not "context_current_header" in config:
+		sys.stdout.write('ERROR: no "context_current_header" in config when reading promise_attribute with %r parameters, expect broken output'
+				% (parameters))
+		return lines
 	header = config["context_current_header"]
 	promise_types = config["syntax_map"]["promiseTypes"]
 	body_types = config["syntax_map"]["bodyTypes"]
