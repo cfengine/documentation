@@ -1075,7 +1075,7 @@ the file and the file is missing the promise will be kept.
 
 **Example:**
 
-[%CFEngine_include_example(missing_ok)%]
+[%CFEngine_include_example(missing_ok.cf)%]
 
 **Notes:**
 
