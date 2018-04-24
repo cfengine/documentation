@@ -318,6 +318,19 @@ Example showing repository based package source.
         version => "2.2.22";
 ```
 
+Example showing how to enable a specific repository for a specific promise.
+
+```cf3
+bundle agent example
+{
+  packages:
+    "git"
+        policy => "present",
+        package_module => yum,
+        options => { "enablerepo=updates" };
+}
+```
+
 **Notes:**
 
 * Supports file path and repository sourced packages.
@@ -326,6 +339,7 @@ Example showing repository based package source.
 **History:**
 
 * Added in CFEngine 3.7.0
+* `enablerepo` and `disablerepo` option support added in 3.7.8, 3.10.4, 3.12.0
 
 ### apt_get
 
