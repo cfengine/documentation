@@ -253,3 +253,155 @@ expired or when the agent is run without locks.
 other conditions.
 
 **See Also:** `Package Modules`
+
+## Package modules out-of-the-box
+### yum
+
+Manage packages using ```yum```.
+
+**Example:**
+
+Example showing file based package source.
+
+```cf3
+  packages:
+      "/mnt/nfs/packages/httpd-2.2.22.x86_64.rpm"
+        policy => "present",
+        package_module => yum;
+```
+
+Example showing repository based package source.
+
+```cf3
+  packages:
+      "httpd"
+        policy => "present",
+        package_module => yum,
+        version => "2.2.22";
+```
+
+Example showing how to enable a specific repository for a specific promise.
+
+```cf3
+bundle agent example
+{
+  packages:
+    "git"
+        policy => "present",
+        package_module => yum,
+        options => { "enablerepo=updates" };
+}
+```
+
+**Notes:**
+
+* Supports file path and repository sourced packages.
+* Requires Python version 2 to be installed on the host.
+
+**History:**
+
+* Added in CFEngine 3.7.0
+* `enablerepo` and `disablerepo` option support added in 3.7.8, 3.10.4, 3.12.0
+
+### apt_get
+
+Manage packages using ```apt-get```.
+
+**Example:**
+
+Example showing file based package source.
+
+```cf3
+  packages:
+      "/mnt/nfs/packages/apache2-2.2.22.x86_64.deb"
+        policy => "present",
+        package_module => apt_get;
+```
+
+Example showing repository based package source.
+
+```cf3
+  packages:
+      "apache2"
+        policy => "present",
+        package_module => apt_get,
+        version => "2.2.22",
+        options => { "-o", "APT::Install-Recommends=0" };
+```
+
+**Notes:**
+
+* Requires Python version 2 to be installed on the host.
+* Supports [```options```][packages#options] attribute. Each space separate
+  option must be added as a separate list element. The options are passed
+  directly through to the package manager.
+
+**History:**
+
+* Added in CFEngine 3.7.0
+
+### freebsd_ports
+
+Manage packages using
+FreeBSD [Ports](https://www.freebsd.org/doc/handbook/ports-using.html).
+
+**History:**
+
+* Added in CFEngine 3.9.0
+
+### nimclient
+
+Manage packages using `nimclient` on AIX.
+
+**Example:**
+
+```cf3
+  packages:
+    aix::
+      "expect.base"
+        policy => "present",
+        package_module => nimclient,
+        options => { "lpp_source=lppaix710304" };
+```
+
+
+**Notes:**
+
+* [```options```][packages#options] attribute support to specify
+  ```lpp_source```. Please note it is **REQUIRED** to specify an
+  ```lpp_source``` when using this package module.
+
+**History:**
+
+* Added in CFEngine 3.9.0
+
+### pkg
+
+Manage packages using
+FreeBSD [pkg](https://www.freebsd.org/doc/handbook/pkgng-intro.html).
+
+**Example:**
+
+```cf3
+  packages:
+    freebsd::
+      "emacs-nox11"
+        policy => "present",
+        package_module => pkg;
+
+      "emacs"
+        policy => "absent",
+        package_module => pkg;
+```
+
+**History:**
+
+* Added in CFEngine 3.9.0
+
+### pkgsrc
+
+Manage packages using [pkgsrc](https://www.pkgsrc.org).
+
+**History:**
+
+* Added in CFEngine 3.9.0
