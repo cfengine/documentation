@@ -40,17 +40,9 @@ possible to use full class expressions in mustache templates. Instead, use class
 expressions inside cfengine policy to define a singular class which can be used
 to conditionally render a block.
 
-[%CFEngine_include_snippet(mustache_classes.cf, #\+begin_src policy_preface, .*end_src)%]
-
 {% raw %}
-[%CFEngine_include_snippet(mustache_classes.cf, #\+begin_src cfengine3, .*end_src)%]
+[%CFEngine_include_example(mustache_classes.cf)%]
 {% endraw %}
-
-[%CFEngine_include_snippet(mustache_classes.cf, #\+begin_src policy_description, .*end_src)%]
-
-[%CFEngine_include_snippet(mustache_classes.cf, #\+begin_src example_output, .*end_src)%]
-
-[%CFEngine_include_snippet(mustache_classes.cf, #\+begin_src output_description, .*end_src)%]
 
 # How do I iterate over a list?
 
