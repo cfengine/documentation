@@ -20,7 +20,7 @@ or `C:\Program Files\Cfengine` after uninstalling the package.
 You may want to wipe `$(sys.statedir)` and `$(sys.workdir)/outputs` for a fresh start to log data and history.
 
 You may want to revoke trust of other hosts by deleting
-`$(sys.workdir)/ppkeys/*.pub` (**excluding `localhost.pub`**).
+`$(sys.workdir)/ppkeys/*.pub` ( excluding `localhost.pub` ).
 
 Only delete the host identity if you want to generate a new key pair and
 establish a new identity for this host.

@@ -15,12 +15,6 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
-### getvalues() crashes on double indexed classic arrays
-
-`getvalues()` crashes when used with classic arrays that include multiple
-indexes. This issue is tracked in
-(CFE-2536)[https://tracker.mender.io/browse/CFE-2536].
-
 ### `cf-agent -N` or `cf-agent --negate` is not working
 
 As reported in [CFE-1589](https://tracker.mender.io/browse/CFE-1589) the
