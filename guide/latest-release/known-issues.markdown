@@ -83,21 +83,6 @@ significant impact on the resource consumption of your hub.
 Monitoring graphs are not supported on all platforms, currently Aix and Windows
 do not have this data.
 
-### Scheduled reports not written to expected location
-
-There is a known issue when generating scheduled reports for ONLY CSVs. The
-report gets written to `/var/cfengine/reports` instead of
-`/var/cfengine/httpd/htdocs/tmp` and it is **NOT** named for the report title,
-but
-instead named by internal identifiers (like
-admin-17_admin_1440692523-1441038374.csv).
-
-The workaround is to schedule BOTH CSV and PDF reports. When both CSV and PDF
-reports are scheduled the CSV report will be written to
-`/var/cfengine/httpd/htdocs/tmp` and named for the report title as expected.
-
-Fixed in CFEngine Enterprise 3.7.2
-
 ### Enterprise reports not collected from 3.5
 CFEngine Enterprise 3.6 has a new diff-based report collection mechanism,
 and so a 3.7 hub cannot collect reports from 3.5 or earlier agents.
@@ -131,11 +116,6 @@ platforms than Debian, Ubuntu and Red Hat/CentOS.
 
 In order to add software inventory for other platforms,
 please contact support for a custom policy.
-
-### Enterprise - Unable to edit directory based users with dots in username
-
-Mission Portal does not allow users from a directory to be edited if they have
-dots in their username.
 
 ### Enterprise Hub - PHP warnings after upgrading from `3.6.x`
 
@@ -189,7 +169,7 @@ body common control
 }
 ```
 
-* Add an empty =cf_null= bundle
+* Add an empty `cf_null` bundle
 
 ```cf3
 bundle common cf_null
