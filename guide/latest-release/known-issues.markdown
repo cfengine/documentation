@@ -169,7 +169,7 @@ body common control
 }
 ```
 
-* Add an empty =cf_null= bundle
+* Add an empty `cf_null` bundle
 
 ```cf3
 bundle common cf_null
