@@ -27,4 +27,6 @@ Output:
 
 [%CFEngine_include_snippet(ip2host.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
+**See Also:** [host2ip][host2ip()], [iprange][iprange()]
+
 **History:** Was introduced in version 3.1.3, Nova 2.0.2 (2010)

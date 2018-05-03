@@ -35,3 +35,6 @@ reports:
     "Lab 1 subnet";
 }
 ```
+
+**See Also:** [host2ip][host2ip()], [ip2host][ip2host()]
+
