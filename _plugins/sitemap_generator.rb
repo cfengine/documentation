@@ -89,11 +89,10 @@ module Jekyll
         location = "#{MY_URL}/#{CFENGINE_MANUALS_VERSION}#{pAlias}" #fix for CFEngine path
         location.gsub(/index.html$/, "")
       else
-        puts "--------------------------------------------------------"
-        puts "ERROR: ALIAS FOR THE PAGE: " +  page.name + " is not set"  
-        puts "       Potentially because the page is not published    "
-        puts "--------------------------------------------------------"
-      end    
+        puts "---------------------------------------------------------"
+        puts "NOTICE: ALIAS FOR THE PAGE: " +  page.name + " is not set"
+        puts "---------------------------------------------------------"
+      end
     end
 
     def location_on_server
