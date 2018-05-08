@@ -39,7 +39,7 @@ reports:
 }
 ```
 
-**See Also:** [isipinsubnet][isipinsubnet()], [host2ip][host2ip()], [ip2host][ip2host()]
+**See Also:** `isipinsubnet()`, `host2ip()`, `ip2host()`
 
 **History:** The optional `interface` parameter was introduced in CFEngine 3.9.
 
