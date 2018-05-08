@@ -36,5 +36,4 @@ reports:
 }
 ```
 
-**See Also:** [host2ip][host2ip()], [ip2host][ip2host()]
-
+**See Also:** `host2ip()`, `ip2host()`
