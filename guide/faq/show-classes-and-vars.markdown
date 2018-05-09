@@ -1183,7 +1183,6 @@ default:stdlib_common.input[common]      /var/cfengine/inputs/lib/3.7/common.cf 
 default:stdlib_common.input[databases]   /var/cfengine/inputs/lib/3.7/databases.cf                    source=promise
 default:stdlib_common.input[edit_xml]    /var/cfengine/inputs/lib/3.7/edit_xml.cf                     source=promise
 default:stdlib_common.input[files]       /var/cfengine/inputs/lib/3.7/files.cf                        source=promise
-default:stdlib_common.input[guest_environments] /var/cfengine/inputs/lib/3.7/guest_environments.cf           source=promise
 default:stdlib_common.input[monitor]     /var/cfengine/inputs/lib/3.7/monitor.cf                      source=promise
 default:stdlib_common.input[packages]    /var/cfengine/inputs/lib/3.7/packages.cf                     source=promise
 default:stdlib_common.input[paths]       /var/cfengine/inputs/lib/3.7/paths.cf                        source=promise
