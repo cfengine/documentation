@@ -60,14 +60,6 @@ CFEngine supports a generic approach to integration with native operating suppor
 
 See `packages`.
 
-### guest_environments ###
-
-Guest environment promises describe enclosed computing environments that can host physical and virtual machines, Solaris zones, grids, clouds or other enclosures, including embedded systems. CFEngine will support the convergent maintenance of such inner environments in a fixed location, with interfaces to an external environment.
-
-CFEngine currently seeks to add convergence properties to existing interfaces for automatic self-healing of guest environments. The current implementation integrates with libvirt, supporting host virtualization for Xen, KVM, VMWare, etc. Thus CFEngine, running on a virtual host, can maintain the state and deployment of virtual guest machines defined within the libvirt framework. Guest environment promises are not meant to manage what goes on within the virtual guests. For that purpose you should run CFEngine directly on the virtual machine, as if it were any other machine.
-
-See `guest_environments`.
-
 ### methods - take on a whole bundle of other promises ###
 
 Methods are compound promises that refer to whole bundles of promises. Methods may be parameterized. Methods promises are written in a form that is ready for future development. The promiser object is an abstract identifier that refers to a collection (or pattern) of lower level objects that are affected by the promise-bundle. Since the use of these identifiers is for the future, you can simply use any string here for the time being.
