@@ -701,6 +701,10 @@ access:
 }
 ```
 
+**History:**
+
+- ```bundle``` `resource_type` added in 3.9.0
+
 ### shortcut
 
 **Description:** For file promisers, the server will give access to the file under
