@@ -86,22 +86,31 @@ currently not supported.
 
 ### hub_schedule
 
-**Description:** The class schedule used by cf-hub for report
-collation
+**Description:** List of classes indicating when pull collection round should be initiated.
 
 **Type:** `slist`
 
 **Allowed input range:** (arbitrary string)
 
+**Default value:** `{ "Min00", "Min05", "Min10", "Min15", "Min20", "Min25", "Min30", "Min35", "Min40", "Min45", "Min50", "Min55" }`
+ 
 **Example:**
 
-    body hub control
-    {
-    hub_schedule => { "Min00", "Min30", "(Evening|Night).Min45_50" };
-    }
+```cf3
+body hub control
+{
 
-**History:** Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
+  # Collect reports every at the top and half of the hour. Additionally collect
+  # reports during the evening or night between Minute 45 and 50.
 
+  hub_schedule => { "Min00", "Min30", "(Evening|Night).Min45_50" };
+
+}
+```
+
+**History:**
+
+- Introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
 
 ### port
 
