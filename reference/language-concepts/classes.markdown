@@ -429,7 +429,7 @@ defined.
 are not automatically canonified when they are checked.
 
 {% raw %}
-[%CFEngine_include_example(class-automatic-canonification.cf)%]
+[%CFEngine_include_example(class-automatic-canonificiation.cf)%]
 {% endraw %}
 
 ## Operators and Precedence

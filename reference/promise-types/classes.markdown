@@ -26,7 +26,7 @@ scope.
 - The promiser is *automatically* canonified when classes are defined.
 
 {% raw %}
-[%CFEngine_include_example(class-automatic-canonification.cf)%]
+[%CFEngine_include_example(class-automatic-canonificiation.cf)%]
 {% endraw %}
 
 - The term ```class``` and ```context``` are sometimes used interchangeably.
