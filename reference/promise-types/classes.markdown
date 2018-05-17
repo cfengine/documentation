@@ -5,11 +5,9 @@ published: true
 tags: [bundle common, classes, promises]
 ---
 
-[Classes][classes] promises may be made in any
-bundle. Classes that are set in `common` bundles are global in scope,
-while classes in all other bundles are local.
-
-**Note:** The term class and context are sometimes used interchangeably.
+[Classes][classes] promises may be made in any bundle. Classes defined by
+classes type promises that are set in `common` bundles are by default global in
+scope.
 
 ```cf3
     bundle common g
@@ -23,16 +21,25 @@ while classes in all other bundles are local.
     }
 ```
 
-**Note:** You can use the following attributes to make a complete promise.
+**Notes:**
 
-* and
-* expression
-* dist
-* or
-* not
-* xor
+- The promiser is *automatically* canonified when classes are defined.
 
-If you omit any of them, the class is always defined (as if you said `expression
+{% raw %}
+[%CFEngine_include_example(class-automatic-canonification.cf)%]
+{% endraw %}
+
+- The term ```class``` and ```context``` are sometimes used interchangeably.
+- The following attributes to make a complete promise.
+
+  * and
+  * expression
+  * dist
+  * or
+  * not
+  * xor
+
+If you omit all of them, the class is always defined (as if you said `expression
 => "any"`).
 
 For example, the following promise defines the class `web` when a file exists:

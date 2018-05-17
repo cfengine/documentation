@@ -425,6 +425,13 @@ report "Good morning from Italy", this is further qualified by ensuring that
 the report is only generated if one of the known cities also has a class
 defined.
 
+**Note:** Classes are automatically canonified when they are defined. Classes
+are not automatically canonified when they are checked.
+
+{% raw %}
+[%CFEngine_include_example(class-automatic-canonification.cf)%]
+{% endraw %}
+
 ## Operators and Precedence
 
 Classes promises define new classes based on combinations of old ones. This is
