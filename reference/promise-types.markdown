@@ -1130,7 +1130,7 @@ rather than its content.
 
 ### ifvarclass
 
-**Description:** Describes extended classes ANDed with context.
+**Description:** Class expression to further restrict the promise context.
 
 This is an additional class expression that will be evaluated after the
 `class::` classes have selected promises. It is provided in order to enable a
@@ -1195,16 +1195,18 @@ and classes. For example:
            ifvarclass => canonify("start_$(component)");
 ```
 
-Notice that the function `canonify()` is provided to convert a general variable
-input into a string composed only of legal characters, using the same algorithm
-that CFEngine uses.
+**Notes:**
+
+While strings are automatically canonified during class definition, they are not
+automatically canonified when checking. You may need to use `canonify()` to
+convert strings containing invalid class characters into a valid class.
 
 **History:** Has the `if` alias (and `unless` opposite) since 3.7.0.
 
 ### if
 
-**Description:** Describes extended classes ANDed with context. This
-is an exact alias for `ifvarclass`; see its description for details.
+**Description:** Class expression to further restrict the promise context. This
+an exact alias for `ifvarclass`; see its description for details.
 
 **Type:** `string`
 
@@ -1236,6 +1238,12 @@ A specific example would be:
            if => "linux";
     }
 ```
+
+**Notes:**
+
+While strings are automatically canonified during class definition, they are not
+automatically canonified when checking. You may need to use `canonify()` to
+convert strings containing invalid class characters into a valid class.
 
 **History:** Was introduced in 3.7.0.
 
@@ -1271,9 +1279,9 @@ files:
 
 ### unless
 
-**Description:** Describes negated extended classes ANDed with
-context. This is exactly like `ifvarclass` but logically inverted; see
-its description for details.
+**Description:** Class expression to further restrict the promise context. This
+is exactly like `ifvarclass` but logically inverted; see its description for
+details.
 
 **Type:** `string`
 
@@ -1305,6 +1313,12 @@ A specific example would be:
            unless => "linux";
     }
 ```
+
+**Notes:**
+
+While strings are automatically canonified during class definition, they are not
+automatically canonified when checking. You may need to use `canonify()` to
+convert strings containing invalid class characters into a valid class.
 
 **History:** Was introduced in 3.7.0.
 

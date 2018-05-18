@@ -19,19 +19,23 @@ Classes are either `set` or `not set`, depending on context. Classes fall into
 **hard** classes that are discovered by CFEngine, and **soft** classes that are
 user-defined.
 
+Classes have either a `namespace` or `bundle` scoped. namespace scoped classes
+are visible from any bundle. `bundle` scoped classes can only be checked within
+that bundle or from a bundle called with inheritance. Hard classes always have a
+namespace scope.
+
 In [CFEngine Enterprise][], classes that are defined can be reported to the
 CFEngine Database Server and can be used there for reporting, grouping of hosts
 and inventory management. For more information about how this is configured please read the documentation on [Enterprise Reporting][].
 
 ## Listing Classes
 
-To see `hard classes` and `soft classes` defined in common bundles on a
-particular host, run `cf-promises --show-classes` as a privileged user to show
-namespace scoped classes that can be resolved during pre-evaluation.
-Alternatively run `cf-agent --show-evaluated-classes` to get the listing of
-classes at the end of the agent execution. This will show additional namespace
-scoped classes that were defined over the course of the agent execution. This
-output can be convenient for policy testing.
+To see the first order of `hard classes` and `soft classes` run `cf-promises
+--show-classes` as a privileged user. Alternatively run `cf-agent
+--show-evaluated-classes` to get the listing of classes at the end of the agent
+execution. This will show additional namespace scoped classes that were defined
+over the course of the agent execution. This output can be convenient for policy
+testing.
 
 Example:
 
@@ -52,10 +56,8 @@ Note that some of the classes are set only if a trusted link can be established
 with [`cf-monitord`][cf-monitord], i.e. if both are running with privilege, and
 the `/var/cfengine/state/env_data` file is secure.
 
-You can also use the built-in `classesmatching()` function to get a
-list of all the defined classes in a list, inside CFEngine policy
-itself.  `classesmatching()` is especially useful because it also lets
-you specify tag regular expressions.
+The `classesmatching()` function searches using a regular expression for classes
+matching a given name and or tag.
 
 **See also**: The ```--show-vars``` option for `cf-promises` and the
 ```--show-evaluated-vars``` option for `cf-agent`.
@@ -178,8 +180,7 @@ of a week.
 ## Soft Classes
 
 Soft classes are user-defined classes which you can use to implement your own
-classifications. These classes are defined in bundles and are evaluated when the
-bundle is evaluated. They can be based on functions or on other classes.
+classifications.
 
 Soft classes can be set by using the `-D` or `--define` options wihtout having
 to edit the policy. Multiple classes can be defined by separating them with
@@ -548,11 +549,12 @@ R: The class was NOT defined from 'false'
 
 ## Class scope
 
-Classes defined in bundles of type `common` are global aka `namespace` in scope
-(globally available, can be seen from any bundle), whereas classes defined in
-all other bundle types are local aka `bundle` scoped (they can not be seen from
-other bundles). Classes are evaluated when the bundle is evaluated (and the
-bundles are evaluated in the order specified in the `bundlesequence`).
+Classes defined by classes type promises in bundles of type `common` are
+`namespace` scoped by default (globally available, can be seen from any bundle),
+whereas classes defined in all other bundle types are local aka `bundle` scoped
+(they can not be seen from other bundles). Classes are evaluated when the bundle
+is evaluated (and the bundles are evaluated in the order specified in the
+`bundlesequence`).
 
 Note that any class promise must have one - and only one - value constraint.
 That is, you may not leave [`expression`][classes#expression] in the example
