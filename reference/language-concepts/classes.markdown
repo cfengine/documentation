@@ -428,9 +428,12 @@ defined.
 **Note:** Classes are automatically canonified when they are defined. Classes
 are not automatically canonified when they are checked.
 
-{% raw %}
+
+This example shows how classes are automatically canonified when they are
+defined and that you must explicitly canonify when verifying classes.
+
 [%CFEngine_include_example(class-automatic-canonificiation.cf)%]
-{% endraw %}
+
 
 ## Operators and Precedence
 
