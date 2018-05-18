@@ -165,3 +165,34 @@ Note that namespaced bundles work exactly the same way as
 non-namespaced bundles (which are actually in the `default`
 namespace).  You just say `namespace:bundle_name` instead of
 `bundle_name`.  See [Namespaces] for more details.
+
+### Main bundles and bundlesequence
+
+When running `cf-agent`, the order of bundles to evaluate is determined by the `bundlesequence`.
+The default `bundlesequence` contains `main` for convenience, so this example works:
+[%CFEngine_include_example(main.cf)%]
+
+#### Custom bundle sequences
+You can specify a custom `bundlesequence` from the command line using `--bundlesequence`, or in policy:
+[%CFEngine_include_example(bundlesequence.cf)%]
+
+In this example, cf-agent will not look for a `main` bundle, since it is not in the `bundlesequence`.
+
+#### Library main bundles
+
+Bundles must be unique within a namespace, so you cannot have `main` bundles in different files which include each other.
+Because of this, bundles which are called `__main__` have special behavior.
+If the entry point (the file specified at command line) has a `__main__` bundle, it will be the `main` bundle.
+`__main__` bundles from all other files will be ignored (removed before evaluation).
+
+This is especially useful when writing libraries.
+Each file can include its own testsuite or some default behavior in a `__main__` bundle.
+All parts of the library will then be runnable directly, but also easy to include from other policy:
+
+`main_library.cf`:
+[%CFEngine_include_example(main_library.cf)%]
+
+`main_entry_point.cf`:
+[%CFEngine_include_example(main_entry_point.cf)%]
+
+Both of these policy files can be run directly, the included library policy will not have a `main` bundle.
