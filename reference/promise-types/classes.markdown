@@ -6,8 +6,8 @@ tags: [bundle common, classes, promises]
 ---
 
 [Classes][classes] promises may be made in any bundle. Classes defined by
-classes type promises that are set in `common` bundles are by default global in
-scope.
+classes type promises in `common` bundles are `namespace` (aka global) scoped by
+default.
 
 ```cf3
     bundle common g
@@ -23,7 +23,8 @@ scope.
 
 **Notes:**
 
-- The promiser is *automatically* canonified when classes are defined.
+- The promiser is automatically canonified when classes are defined.
+- Classes are not automatically canonified when checked.
 
 {% raw %}
 [%CFEngine_include_example(class-automatic-canonificiation.cf)%]

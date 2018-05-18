@@ -9,6 +9,7 @@ alias: markdown-cheatsheet.html
 Markdown formatting is simple, and the CFEngine generator adds a few things
 to make it even simpler. Here's a list of the most commonly used formats.
 
+# Basic formatting
 ## Remember
 
 * **"Always pull never push"**
@@ -396,6 +397,23 @@ You can also use backticks (and get syntax highlighting) - just make sure the ba
 ***
 
 `# Level 1`
+
+# CFEngine Extensions
+## Example policy from core
+
+Examples from cfengine/core can be rendered using the `CFEngine_include_example` macro.
+
+- Lines inside `src` starting with `#@ ` are interpreted as markdown.
+
+- Wrap macro in `raw` and `endraw` tags if the file contains mustache. This allows it to be rendered correctly. 
+
+{% raw %}
+{% raw %}
+  {% raw %}
+  [%CFEngine_include_example(class-automatic-canonificiation.cf)%]
+  {% endraw %}
+{% endraw %}
+
 
 # Level 1
 
