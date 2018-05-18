@@ -407,12 +407,11 @@ Examples from cfengine/core can be rendered using the `CFEngine_include_example`
 
 - Wrap macro in `raw` and `endraw` tags if the file contains mustache. This allows it to be rendered correctly. 
 
-{% raw %}
-{% raw %}
+  `[\%CFEngine_include_example(class-automatic-canonificiation.cf)\%]`
+
   {% raw %}
   [%CFEngine_include_example(class-automatic-canonificiation.cf)%]
   {% endraw %}
-{% endraw %}
 
 
 # Level 1
