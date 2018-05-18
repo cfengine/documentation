@@ -116,6 +116,7 @@ following, converging towards a final state:
     users
     files
     packages
+    guest_environments
     methods
     processes
     services

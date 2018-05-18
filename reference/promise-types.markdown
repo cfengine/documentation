@@ -10,24 +10,25 @@ Within a bundle, the promise types are executed in a round-robin fashion in the
 following [normal ordering][Normal Ordering]. Which promise types are available
 depends on the [bundle][bundles] type:
 
-| Promise Type                                                          | common | agent | server | monitor |
-|-----------------------------------------------------------------------|--------|-------|--------|---------|
-| [defaults][defaults] - a default value for bundle parameters          | x      | x     | x      | x       |
-| [classes][classes] - a class, representing a state of the system      | x      | x     | x      | x       |
-| [meta][meta] - information about promise bundles                      | x      | x     | x      | x       |
-| [reports][reports] - report a message                                 | x      | x     | x      | x       |
-| [vars][vars] - a variable, representing a value                       | x      | x     | x      | x       |
-| [commands][commands] - execute a command                              |        | x     |        |         |
-| [databases][databases] - configure a database                         |        | x     |        |         |
-| [files][files] - configure a file                                     |        | x     |        |         |
-| [packages][packages] - install a package                              |        | x     |        |         |
-| [methods][methods] - take on a whole bundle of other promises         |        | x     |        |         |
-| [processes][processes] - start or terminate processes                 |        | x     |        |         |
-| [services][services] - manage services or define new abstractions     |        | x     |        |         |
-| [storage][storage] - verify attached storage                          |        | x     |        |         |
-| [users][users] - add or remove users                                  |        | x     |        |         |
-| [access][access] - grant or deny access to file objects               |        |       | x      |         |
-| [roles][roles] - allow certain users to activate certain classes      |        |       | x      |         |
+| Promise Type   | common | agent | server | monitor |
+|----------------|:------:|:-----:|:------:|:--------|
+| [defaults][defaults] - a default value for bundle parameters | x      | x     | x      | x       |
+| [classes][classes] - a class, representing a state of the system | x      | x     | x      | x       |
+| [meta][meta] - information about promise bundles | x      | x     | x      | x       |
+| [reports][reports] - report a message | x      | x     | x      | x       |
+| [vars][vars] - a variable, representing a value | x      | x     | x      | x       |
+| [commands][commands] - execute a command |        | x     |        |         |
+| [databases][databases] - configure a database |        | x     |        |         |
+| [files][files] - configure a file |        | x     |        |         |
+| [packages][packages] - install a package |        | x     |        |         |
+| [guest_environments][guest_environments] |        | x     |        |         |
+| [methods][methods] - take on a whole bundle of other promises |        | x     |        |         |
+| [processes][processes] - start or terminate processes |        | x     |        |         |
+| [services][services] - manage services or define new abstractions |        | x     |        |         |
+| [storage][storage] - verify attached storage |        | x     |        |         |
+| [users][users] - add or remove users |        | x     |        |         |
+| [access][access] - grant or deny access to file objects |        |       | x      |         |
+| [roles][roles] - allow certain users to activate certain classes |        |       | x      |         |
 | [measurements][measurements] - measure or sample data from the system |        |       |        | x       |
 
 See each promise type's reference documentation for detailed lists of available
