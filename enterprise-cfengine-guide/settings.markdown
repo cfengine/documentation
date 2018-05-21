@@ -49,7 +49,7 @@ users, including their name, role, and password.
 
 ![Role Management](Settings-role.png)
 
-Roles are used to lmit access. Roles can limit access for reporting on
+Roles are used to limit access. Roles can limit access for reporting on
 hosts that have or do not have spcecific classes, and they can be used
 to limit which sketches from Design Center a user is authorized to
 use.
