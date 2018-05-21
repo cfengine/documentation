@@ -15,7 +15,7 @@ re-provision a hub and for remote agents to retain trust the hubs key pair must
 be preserved and restored.
 
 Include `$(sys.workdir)/ppkeys/localhost.pub` and
-`$(sys.workdir)ppkeys/localhost.priv** in your backup and restore plan.
+`$(sys.workdir)ppkeys/localhost.priv` in your backup and restore plan.
 
 **Note:** This is the most important thing to backup.
 
