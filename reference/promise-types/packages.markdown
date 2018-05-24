@@ -443,3 +443,21 @@ Manage packages using [pkgsrc](https://www.pkgsrc.org).
 **History:**
 
 * Added in CFEngine 3.9.0
+
+### slackpkg
+
+Manage packages using Slackware's [slackpkg](https://slackpkg.org).
+
+**Example**
+
+```cf3
+  packages:
+    slackware::
+      "nmap"
+        policy => "absent",
+        package_module => slackpkg;
+```
+
+**History:**
+
+* Added in CFEngine 3.12.0
