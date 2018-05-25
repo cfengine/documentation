@@ -51,20 +51,66 @@ users, including their name, role, and password.
 
 ![Role Management](Settings-role.png)
 
-Roles are used to limit access. Roles can limit access for reporting on
-hosts that have or do not have specific classes.
+Roles limit access to host data and access to shared assets like saved reports
+and dashboards.
 
-For example if you want to limit a users ability to report only on
-hosts in the "North American Data Center" you could setup a role that
-includes only the `location_nadc` class.
+Roles limit access to which hosts can be seen based on the classes reported by
+the host. For example if you want to limit a users ability to report only on
+hosts in the "North American Data Center" you could setup a role that includes
+only the `location_nadc` class.
 
-If you have multiple roles assigned to a user, the user can access
-only hosts that match all of their role restrictions. For example, if
-you have the admin role and a role that matches zero hosts, the user
-will not see any hosts in Mission Portal.
+When multiple roles assigned to a user, the user can access only resources that
+match the most restrictive across all of their role restrictions. For example,
+if you have the admin role and a role that matches zero hosts, the user will not
+see any hosts in Mission Portal. A shared report will only be accessible to a
+user if the user has all roles that the report was restricted to.
+
+In order to access a shared reports or dashboard the use must have all roles
+that the report or dashboard was shared with.
+
+In order to see a host, none of the classes reported by the host can match the
+class exclusions from any role the user has.
 
 Users without a role will not be able to see any hosts in Mission
 Portal.
+
+Role **suse**:
+- Class include: `SUSE`
+- Class exclude: empty
+
+Role **cfengine_3**:
+- Class include: `cfengine_3`
+- Class exclude: empty
+
+Role `no_windows`
+- Class include: `cfengine_3`
+- Class exclude: windows
+
+Role **windows_ubuntu**
+- Class include: `windows`
+- Class include: `ubuntu`
+- Class exclude: empty
+
+User one has role `SUSE`.
+
+User two has roles `no_windows` and `cfengine_3`.
+
+User three has roles `windows_ubuntu` and `no_windows`.
+
+A report shared with `SUSE` and `no_windows` will not be seen by any of the
+listed users.
+
+A report shared with `no_windows` and `cfengine_3` will only be seen by user
+two.
+
+A report shared with `SUSE` will be seen by user one.
+
+User one will only be able to see hosts that report the `SUSE` class.
+
+User two will be able to see all hosts that have **not** reported the `windows`
+class.
+
+User three will only be able to see hosts that have reported the `ubuntu` class.
 
 **Predefined Roles:**
 
