@@ -59,11 +59,11 @@ the host. For example if you want to limit a users ability to report only on
 hosts in the "North American Data Center" you could setup a role that includes
 only the `location_nadc` class.
 
-When multiple roles assigned to a user, the user can access only resources that
-match the most restrictive across all of their role restrictions. For example,
-if you have the admin role and a role that matches zero hosts, the user will not
-see any hosts in Mission Portal. A shared report will only be accessible to a
-user if the user has all roles that the report was restricted to.
+When multiple roles are assigned to a user, the user can access only resources
+that match the most restrictive role across all of their roles. For example,
+if you have the admin role and a role that matches zero hosts, the user will
+not see any hosts in Mission Portal. A shared report will only be accessible
+to a user if the user has all roles that the report was restricted to.
 
 In order to access a shared reports or dashboard the use must have all roles
 that the report or dashboard was shared with.
@@ -82,9 +82,9 @@ Role **cfengine_3**:
 - Class include: `cfengine_3`
 - Class exclude: empty
 
-Role `no_windows`
+Role **no_windows**
 - Class include: `cfengine_3`
-- Class exclude: windows
+- Class exclude: `windows`
 
 Role **windows_ubuntu**
 - Class include: `windows`
