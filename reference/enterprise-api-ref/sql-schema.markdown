@@ -539,21 +539,21 @@ lastseendirection | OUTGOING
 remotehostkey     | SHA=2aab8...
 remotehostip      | 192.168.33.152
 lastseentimestamp | 2015-03-13 12:20:45+00
-lastseeninterval  | 0
+lastseeninterval  | 299
 -[ RECORD 2 ]-----|------------------------
 hostkey           | SHA=3b94d...
 lastseendirection | INCOMING
 remotehostkey     | SHA=a4dd5...
 remotehostip      | 192.168.33.151
 lastseentimestamp | 2015-03-13 12:22:06+00
-lastseeninterval  | 0
+lastseeninterval  | 298
 -[ RECORD 3 ]-----|------------------------
 hostkey           | SHA=2aab8...
 lastseendirection | INCOMING
 remotehostkey     | SHA=3b94d...
 remotehostip      | 192.168.33.65
 lastseentimestamp | 2015-03-13 12:20:45+00
-lastseeninterval  | 0
+lastseeninterval  | 299
 ```
 
 ### Table: FileChangesLog
