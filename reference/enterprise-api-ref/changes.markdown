@@ -21,8 +21,10 @@ Count changes performed by CFEngine to the infrastructure. Count can be narrowed
     Include changes performed within interval. Starting **from** unix timestamp. If not specified default value is last 24 hours.
 * **to** *(integer)*
     Include changes performed within interval. Ending at **to** unix timestamp. If not specified default value is NOW.
-* **nodegroup** *(string)*
+* **include** *(array)*
     Include only nodes that have set specified context (cfengine class). Defaults to include all nodes.
+* **exclude** *(array)*
+    Exclude only nodes that have set specified context (cfengine class). Defaults to exclude no nodes.
 * **hostkey** *(string)*
     Search results for nodes matching specified unique hostkey.
 * **stackpath** *(string)*
@@ -71,8 +73,10 @@ List changes performed by CFEngine to the infrastructure. List can be narrowed d
     Include changes performed within interval. Starting **from** unix timestamp. If not specified default value is last 24 hours.
 * **to** *(integer)*
     Include changes performed within interval. Ending at **to** unix timestamp. If not specified default value is NOW.
-* **nodegroup** *(string)*
+* **include** *(array)*
     Include only nodes that have set specified context (cfengine class). Defaults to include all nodes.
+* **exclude** *(array)*
+    Exclude only nodes that have set specified context (cfengine class). Defaults to exclude no nodes.
 * **hostkey** *(string)*
     Search results for nodes matching specified unique hostkey.
 * **stackpath** *(string)*
