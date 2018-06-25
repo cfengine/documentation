@@ -35,8 +35,9 @@ drop down in the top right hand corner.
 User settings and preferences allows the CFEngine Enterprise
 administrator to change various options, including:
 
-* User authentication
 * Turn on or off RBAC
+* Unreachable host threshold
+* Number of samples used to identify a duplicate identity
 * Log level
 * Customize the user experience with the organization logo
 
