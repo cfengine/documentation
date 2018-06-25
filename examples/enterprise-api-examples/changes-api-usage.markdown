@@ -17,7 +17,7 @@ Example is searching for changes that are performed by *linux* machines within *
 **Request**
 
 ```
-curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy/count?nodegroup=linux&bundlename=generate_repairs'
+curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy/count?include[]=linux&bundlename=generate_repairs'
 ```
 
 **Response**
@@ -37,7 +37,7 @@ Example is searching for changes that are performed by *policy_server* machines 
 **Request**
 
 ```
-curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy?nodegroup=policy_server&promisetype=commands&promiser=/var/cfengine/bin/vacuumdb%'
+curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy?include[]=policy_server&promisetype=commands&promiser=/var/cfengine/bin/vacuumdb%'
 ```
 
 **Response**
