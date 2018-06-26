@@ -6,7 +6,7 @@ sorting: 90
 tags: [getting started, installation, faq, Mission Portal]
 ---
 
-# Mismatched names in SSL certificate
+## Mismatched names in SSL certificate
 
 If your ssl certificate does not match the name used to access Mission Portal the api will not be able to authenticate and you will not be able to log in.
 
@@ -22,7 +22,7 @@ Verify the name used to access mission portal resolves correctly:
 * `hostname -f` returns the fqdn used to access Mission Portal.
 * `hostname -s` returns the short hostname
 
-# Mis-aligned oauth configuration
+## Mis-aligned oauth configuration
 
 The API uses oauth internally to authenticate. Verify that `client_secret` for
 `client_id` `MP` matches `$config['MP_CLIENT_SECRET']` in
@@ -56,8 +56,8 @@ Get `$config['encryption_key']` in
 $config['encryption_key'] = 'aUI2sAtrPpr1dmwZDCVuKONnMXHYHDLB';
 ```
 
-Correct any mis-matches run the policy to sync the application config and try to
-log into Mission Portal.
+Correct any mis-matches and run the policy to sync the application config and
+try to log into Mission Portal.
 
 ```console
 [root@hub ~]# cf-agent -Kf update.cf; cf-agent -KI
