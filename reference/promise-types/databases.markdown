@@ -367,6 +367,25 @@ data-value pairs. The currently supported types (the middle field) for the
 Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string)
 and `REG_DWORD` (double word).
 
+If a column value has a comma you can escape the comma with backslash ```\,```.
+
+```cf3
+bundle agent main
+# @brief Configure system variables for hosts that should not use a proxy
+{
+
+  databases:
+    windows::
+      "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment"
+        database_operation => "create",
+        database_rows =>
+        {
+          "NO_PROXY,REG_SZ,localhost\,127.0.0.1\,localaddress\,.localdomain\,169.254.169.254\,.cfengine.com"
+        },
+        database_type => "ms_registry";
+}
+```
+
 ### registry_exclude
 
 **Description:** An `registry_exclude` slist contains regular expressions
