@@ -372,6 +372,12 @@ data-value pairs. The currently supported types (the middle field) for the
 Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string)
 and `REG_DWORD` (double word).
 
+If a column value has a comma you can escape the comma with backslash ```\,```.
+
+```
+database_rows => { "value1,REG_SZ,value\,with\,commas", "value2,REG_SZ,another\,with\,commas" }
+```
+
 ### registry_exclude
 
 **Description:** An `registry_exclude` slist contains regular expressions
