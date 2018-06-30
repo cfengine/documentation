@@ -324,10 +324,24 @@ Example showing how to enable a specific repository for a specific promise.
 bundle agent example
 {
   packages:
+
+    # Enable the EPEL repo when making sure git is intalled
+    # and up to date.
+
     "git"
         policy => "present",
+        version => "latest",
         package_module => yum,
-        options => { "enablerepo=updates" };
+        options => { "enablerepo=EPEL" };
+
+    # Only consider updates from the main repositories for
+    # httpd and disable all other repositories
+
+     "httpd"
+        policy => "present",
+        version => "latest",
+        package_module => yum,
+        options => { "disablerepo=* enablerepo=UPDATES" };
 }
 ```
 
