@@ -5,16 +5,18 @@ published: true
 tags: [reference, bundle agent, cf-agent, users, promise types]
 ---
 
-User promises are promises made about local users on a host. They
+User promises are promises made about **local users** on a host. They
 express which users should be present on a system, and which
 attributes and group memberships the users should have.
 
 Every user promise has at least one attribute, [`policy`][users#policy], which
-describes whether or not the user should be present on the system.
-Other attributes are optional; they allow you to specify UID, home
-directory, login shell, group membership, description, and password. Platform
-native tools are used to create/modify/delete users (C api on Windows, and
-`useradd` `usermod` `userdel` on Unix, Linux and similar platforms).
+describes whether or not the user should be present on the system. Other
+attributes are optional; they allow you to specify UID, home directory, login
+shell, group membership, description, and password. Platform native tools are
+used to create/modify/delete users (C api on Windows, and `useradd` `usermod`
+`userdel` on Unix, Linux and similar platforms). User presence is determined by
+the `NetUserGetInfo` function on Windows and reading `/etc/passwd` on Unix,
+Linux and similar platforms nix External/non-local for example LDAP are ignored.
 
 A bundle can be associated with a user promise, such as when a user is created
 in order to do housekeeping tasks in his/her home directory, like putting
