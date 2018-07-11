@@ -410,10 +410,10 @@ include a message when the promise is kept or repaired in the event log.
 **Example:**
 
 ```cf3
-     body action example
-     {
-     log_level => "inform";
-     }
+body action example
+{
+  log_level => "inform";
+}
 ```
 
 #### log_priority
