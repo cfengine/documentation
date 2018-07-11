@@ -360,6 +360,10 @@ include a message when the promise is kept or repaired in the event log.
      }
 ```
 
+**Note**: This attribute can not make the logging for an individual promise less
+verbose than specified by an agent option ( ```-v```, ```--verbose```, ```-I```,
+```--inform```, ```-d```, ```--debug``` ).
+
 #### log_priority
 
 **Type:** (menu option)
