@@ -417,8 +417,8 @@ body action example
 ```
 
 **Note**: This attribute can not make the logging for an individual promise less
-verbose than specified by an agent option ( ```-v```, ```--verbose```, ```-I```,
-```--inform```, ```-d```, ```--debug``` ).
+verbose than specified by an agent option ( `-v`, `--verbose`, `-I`, `--inform`,
+`-d`, `--debug` ).
 
 #### log_priority
 
