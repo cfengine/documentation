@@ -35,3 +35,4 @@
 [body hub control port]: reference-components-cf-hub.html#port
 [sys.policy_entry_dirname]: reference-special-variables-sys.html#sys-policy_entry_dirname
 [sys.policy_entry_filename]: reference-special-variables-sys.html#sys-policy_entry_filename
+[supported versions]: https://cfengine.com/extended-support/
