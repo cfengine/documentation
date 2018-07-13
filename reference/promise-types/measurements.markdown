@@ -5,77 +5,83 @@ published: true
 tags: [reference, bundle monitor, measurements, monitoring, promise types]
 ---
 
-**This is an Enterprise-only feature.**
+By default, CFEngine's monitoring component `cf-monitord` records performance
+data about the system. These include process counts, service traffic, load
+average and CPU utilization and temperature when available. It also records a
+three year trend summary based any 'shift'-averages.
 
-By default,CFEngine's monitoring component `cf-monitord` records performance data about the system. These include process counts, service traffic, load average and CPU utilization and temperature when available.
-
-CFEngine Enterprise extends this in two ways. First it adds a three year trend
-summary based any 'shift'-averages. Second, it adds customizable
-`measurements` promises to  monitor or log very specific user data through a
-generic interface. The end-result is to either generate a periodic time
-series, like the above mentioned values, or to log the results to
+Custom `measurements` promises can monitor or log very specific user data
+through a generic interface. The end-result is to either generate a periodic
+time series, like the above mentioned values, or to log the results to
 custom-defined reports.
 
-Promises of type `measurement` are written just like all other promises within
-a bundle destined for the agent concerned, in this case `monitor`. However, it
-is not necessary to add them to the `bundlesequence`, because `cf-monitord`
+Promises of type `measurement` are written just like all other promises within a
+bundle destined for the agent concerned, in this case `monitor`. However, it is
+not necessary to add them to the `bundlesequence`, because `cf-monitord`
 executes all bundles of type `monitor`.
 
 ```cf3
-    bundle monitor self_watch
-    {
-    measurements:
-      # Follow a special process over time
-      # using CFEngine's process cache to avoid resampling
+bundle monitor self_watch
+{
+  measurements:
+    # Follow a special process over time
+    # using CFEngine's process cache to avoid resampling
+  
+     "/var/cfengine/state/cf_rootprocs"
+  
+        handle => "monitor_self_watch",
+        stream_type => "file",
+        data_type => "int",
+        history_type => "weekly",
+        units => "kB",
+        match_value => proc_value(".*cf-monitord.*",
+           "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
+}
 
-       "/var/cfengine/state/cf_rootprocs"
-
-          handle => "monitor_self_watch",
-          stream_type => "file",
-          data_type => "int",
-          history_type => "weekly",
-          units => "kB",
-          match_value => proc_value(".*cf-monitord.*",
-             "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
-    }
-
-    body match_value proc_value(x,y)
-    {
-      select_line_matching => "$(x)";
-      extraction_regex => "$(y)";
-    }
+body match_value proc_value(x,y)
+{
+  select_line_matching => "$(x)";
+  extraction_regex => "$(y)";
+}
 ```
 
-It is important to specify a promise `handle` for measurement promises, as the names defined in the handle are used to determine the name of the log file or variable to which data will be reported. Log files are created under `WORKDIR/state`. Data that have no history type are stored in a special variable context called `mon`, analogous to the system variables in sys. Thus the values may be used in other promises in the form `$(mon.handle)`.
+It is important to specify a promise `handle` for measurement promises, as the
+names defined in the handle are used to determine the name of the log file or
+variable to which data will be reported. Log files are created under
+`WORKDIR/state`. Data that have no history type are stored in a special variable
+context called `mon`, analogous to the system variables in sys. Thus the values
+may be used in other promises in the form `$(mon.handle)`.
 
 ```cf3
-    bundle monitor watch_diskspace
-    {
-     measurements:
-      # Discover disk device information
-      "/bin/df"
+bundle monitor watch_diskspace
+{
+  measurements:
+    # Discover disk device information
+    "/bin/df"
+      handle => "free_diskspace_watch",
+      stream_type => "pipe",
+      data_type => "slist",
+      history_type => "static",
+      units => "device",
+      match_value => file_systems;
 
-          handle => "free_diskspace_watch",
-          stream_type => "pipe",
-          data_type => "slist",
-          history_type => "static",
-          units => "device",
-          match_value => file_systems;
-          # Update this as often as possible
+}
 
-    }
-
-    body match_value file_systems
-    {
-      select_line_matching => "/.*";
-      extraction_regex => "(.*)";
-    }
+body match_value file_systems
+{
+  select_line_matching => "/.*";
+  extraction_regex => "(.*)";
+}
 ```
 
 The general pattern of these promises is to decide whether the source of the
 information is either a file or pipe, determine the data type (integer, string
-etc.), specify a pattern to match the result in the file stream and then
-specify what to do with the result afterwards.
+etc.), specify a pattern to match the result in the file stream and then specify
+what to do with the result afterwards.
+
+**History:**
+
+* Custom measurements open sourced in 3.12.0
 
 ***
 
