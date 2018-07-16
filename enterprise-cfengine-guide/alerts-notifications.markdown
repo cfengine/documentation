@@ -61,6 +61,6 @@ tags: [cfengine enterprise, user interface, mission portal]
 
 ![New Alerts Notifications](Alerts.bottom.notifications.png)
 
-* Check the **Set email notifications for this alert** box to activate the field for entering the email address to notify. At the present time only one email address can be entered into the field.
+* Check **Email notifications** box to activate the field for entering the email address to notify.
 
 * The **Remind me** dropdown box provides a selection of intervals to send reminder emails for triggered events.
