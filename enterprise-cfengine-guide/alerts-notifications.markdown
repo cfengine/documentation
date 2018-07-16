@@ -53,8 +53,7 @@ tags: [cfengine enterprise, user interface, mission portal]
 	
 	* **Custom SQL** conditions trigger alerts based on an SQL query. The SQL query must returns at least one column - `hostkey`.
 
-* It is possible to create alerts for all hosts, or a filtered set of hosts.
-	
+* Alert conditions can be limited to a subset of hosts.
 
 ![New Alerts Hosts](Alerts.bottom.hosts.png)
 
