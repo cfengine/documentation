@@ -58,8 +58,7 @@ tags: [cfengine enterprise, user interface, mission portal]
 
 ![New Alerts Hosts](Alerts.bottom.hosts.png)
 
-* Notification by email is also an option for a given alert.
-
+* Notifications of alerts may be sent by email or custom action scripts.
 
 ![New Alerts Notifications](Alerts.bottom.notifications.png)
 
