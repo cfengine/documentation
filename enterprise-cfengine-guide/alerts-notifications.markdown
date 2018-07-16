@@ -39,7 +39,7 @@ tags: [cfengine enterprise, user interface, mission portal]
 
 * When selecting an existing conditional rule, the name of the condition will automatically populate the mandatory condition **Name** field.
 
-* When creating a new condition the **Name**field must be filled in.
+* When creating a new condition the **Name** field must be filled in.
 
 
 ![New Alerts Condition Type](Alerts.bottom.condition.type.png)
