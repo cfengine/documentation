@@ -195,7 +195,7 @@ an arbitrary key. These keys are associated with values
 ```
 
 This example defines three values in an associative array under the keys
-`cf-monitord`, `cf-serverd`, and `cf-execd`. They and are sequently printed
+`cf-monitord`, `cf-serverd`, and `cf-execd`. They are sequentially printed
 with the echo command.
 
 Arrays are associative and may be of type scalar or list. Enumerated arrays
