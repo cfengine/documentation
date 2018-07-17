@@ -7,8 +7,9 @@ tags: [overviews, releases, latest release, platforms, versions, support]
 ---
 
 CFEngine works on a wide range of platforms, and the CFEngine team strives to
-provide support for the platforms most frequently used by our users.
-
+provide support for the platforms most frequently used by our users. CFEngine
+provides [binary packages of the Enterprise edition][enterprise software download page]
+for all supported platforms and [binary packages for popular Linux distributions for the Community edition][community download page].
 
 ## Enterprise Server ##
 
@@ -44,7 +45,7 @@ CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www
 This means that CFEngine Enterprise has been technically verified by IBM
 to be installed in and manage VIOS environments.
 
-## Future platform support ##
+## Future platform support
 
 The CFEngine team will continue to support future releases of popular Host
 platforms, including RHEL, Debian, Ubuntu, as well as maintaining support for
