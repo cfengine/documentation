@@ -515,6 +515,19 @@ show the actual variables will need to be inside of raw tags.
 
 {% raw %}
 site.CFE_manuals_version {{ site.CFE_manuals_version }}
-{% endraw %}
+{% endraw %**
+
+# Testing
+## Indention with included markdown
+
+1. Verify that the selected hosts are upgrading successfully.
+
+   **Check the [inventory in Mission Portal][Reporting UI#inventory-management]:**
+
+   **Check with curl against the [inventory API][Inventory API]:**
+
+   [%CFEngine_include_markdown(examples/example-snippets/inventory-api-curl.markdown)%]
+   
+2. Some other thing
 
 
