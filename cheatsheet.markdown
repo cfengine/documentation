@@ -522,12 +522,30 @@ site.CFE_manuals_version {{ site.CFE_manuals_version }}
 
 1. Verify that the selected hosts are upgrading successfully.
 
-   **Check the [inventory in Mission Portal][Reporting UI#inventory-management]:**
+   - Mission Portal [Inventory reporting interface][Reporting UI#inventory management]
 
-   **Check with curl against the [inventory API][Inventory API]:**
+   - [Inventory API][Inventory API]
 
-   [%CFEngine_include_markdown(examples/example-snippets/inventory-api-curl.markdown)%]
-   
+     ```console
+     root@hub:~# curl -k \
+     --user <admin>:<password> \
+     -X POST \
+     https://hub.localdomain/api/inventory  \
+     -H 'content-type: application/json' \
+     -d '{
+           "sort":"Host name",
+           "filter":{
+              "CFEngine version":{
+                 "not_match":"{{site.cfengine.branch}}.0"
+              }
+           },
+           "select":[
+              "Host name",
+              "CFEngine version"
+            ]
+         }'
+     ```
+  
 2. Some other thing
 
 
