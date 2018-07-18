@@ -21,7 +21,7 @@ inside the regular expression, e.g. `(?s)`.
 * `s`: dot matches newlines too (`PCRE_DOTALL`)
 * `x`: extended regular expressions (`PCRE_EXTENDED`, very nice for readability)
 * `U`: ungreedy (`PCRE_UNGREEDY`)
-* `T`: this is not a regular expression, just replace the exact string
+* `T`: disables special characters and backreferences in the replacement string
 
 In the replacement, `$1` and `\1` refer to the first capture group.
 `$2` and `\2` refer to the second, and so on, except there is no `\10`
