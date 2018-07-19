@@ -19,9 +19,9 @@ foreach item in list
 end
 ```
 
-In CFEngine, we do not write loops; rather, they are implicit. Suppose ‘@(list)’
-is a list variable (the ‘@’ means list). If we refer to this identifier using a
-scalar reference ‘$(list)’, then CFEngine understands this to mean, take each
+In CFEngine, we do not write loops; rather, they are implicit. Suppose `@(list)`
+is a list variable (the `@` means list). If we refer to this identifier using a
+scalar reference `$(list)`, then CFEngine understands this to mean, take each
 scalar item in the list and repeat the current promise, replacing the instance
 with elements of the list in turn.
 
@@ -58,7 +58,7 @@ bundle agent iteration1
 {
 vars:
     "monvars" slist => {
-		       "rootprocs",
+                       "rootprocs",
                        "otherprocs",
                        "diskfree",
                        "loadavg"
@@ -119,8 +119,8 @@ reports:
 
 Through the addition of a new list called stats, we can now iterate over both it
 and the monvars list in the same promise. The reports that we thus generate will
-report on value_rootprocs, av_rootprocs, and dev_rootprocs, followed next by
-value_otherprocs, av_otherprocs, etc, ending finally with dev_loadavg. The
+report on `value_rootprocs`, `av_rootprocs`, and `dev_rootprocs`, followed next by
+`value_otherprocs`, `av_otherprocs`, etc, ending finally with `dev_loadavg`. The
 leftward lists are iterated over completely before going to the next value in
 the rightward lists.
 
@@ -156,9 +156,9 @@ reports:
 }
 ```
 
-What this says is, for each value in ‘$(inout)’, define ‘monvars’ to be a
-variable. There are thus two attempts to defined the single name ‘monvars’ as a
-list with two different right-hand-sides (one for `in' and one for `out'). This
+What this says is, for each value in `$(inout)`, define `monvars` to be a
+variable. There are thus two attempts to defined the single name `monvars` as a
+list with two different right-hand-sides (one for `in` and one for `out`). This
 will result in the error:
 
 ```
@@ -230,14 +230,14 @@ reports:
 
 CFEngine does not allow an unlimited level of nesting, for reasons of efficiency
 and readability, and adding further levels of nesting will start to work against
-you. Note that we had to explicitly refer to the two variables that we
-created:$(monvars_in)and$(monvars_out), and specifying more will get very messy
+you. Note that we had to explicitly refer to the two variables that we created:
+`$(monvars_in)` and `$(monvars_out)`, and specifying more will get very messy
 very quickly. However, the next sections show an easier-to-read workaround.
 
 # Iterating across multiple lists, revisted
 
 When a list variable is referenced as a scalar variable (that is, when the list
-variable is referenced as $(list)) instead of as a list (using @(list)),
+variable is referenced as `$(list)`) instead of as a list (using `@(list)`),
 CFEngine assumes that it should substitute each scalar from the list in turn,
 and thus iterate over the list elements using a loop.
 
@@ -361,7 +361,7 @@ R: mon.av_smtp_out is $(mon.av_smtp_out)
 R: mon.dev_smtp_out is $(mon.dev_smtp_out)
 ```
 
-In this case, all we are doing is creating an array called io_vars. Note that
+In this case, all we are doing is creating an array called `io_vars`. Note that
 the indices of the elements of the array are iterated from two lists, so in this
 case we'll have 2*3 = 6 elements in the array, covering all the combinations of
 the two lists inout and inout-names.
@@ -369,7 +369,7 @@ the two lists inout and inout-names.
 The values of the array elements can be whatever we like. In this case, we're
 making all the values 0, because we don't care what the actual values are – we
 only care about the keys of the array. We add the list of the keys to the
-monvars list by using the return value from getindices("io_vars").
+monvars list by using the return value from `getindices("io_vars")`.
 
 Looking at the example above, you might just as easily be tempted to do the
 following:
@@ -412,7 +412,7 @@ vars:
 
     "inout" slist => {"in", "out"};
     "io_names" slist => {
-     		"netbiosns", "netbiosdgm", "netbiosssn",
+		"netbiosns", "netbiosdgm", "netbiosssn",
 		"irc",
 		"cfengine",
 		"nfsd",
