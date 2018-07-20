@@ -12,7 +12,7 @@ can use these instructions as a guide skipping the parts that are not relevant.
 In short, the steps are:
 
 1. [Backup][Upgrading#Backup]
-2. [Masterfiles Policy Framework upgrade][Upgrading#Masterfile Policy Framework upgrade]
+2. [Masterfiles Policy Framework upgrade][Upgrading#Masterfiles Policy Framework upgrade]
 3. [Enterprise Hub binary upgrade][Upgrading#Enterprise Hub binary upgrade]
 4. [Agent binary upgrade][Upgrading#Agent binary upgrade]
 
