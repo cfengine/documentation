@@ -17,7 +17,7 @@ The file `def.json` is found like the policy file to be run:
 * with no arguments, it's in `$(sys.inputdir)/def.json` because
   `$(sys.inputdir)/promises.cf` is used
 * with `-f /dirname/myfile.cf`, it's in `/dirname/def.json`
-* with `-f myfile.cf`, it's in `./def.json`
+* with `-f ./myfile.cf`, it's in `./def.json`
 
 Values will be expanded, so you can use the variables from
 [Special Variables][].
