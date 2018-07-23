@@ -18,15 +18,40 @@ Inventory API allows to access inventory reports and attributes dictionary.
 
 * **select** *(array)*
     Fields for selecting. Required parameter.
-    List of fields name you can obtain through [List of inventory attributes][Inventory API#List of inventory attributes] call described below. Extra attributes are `hostkey` for selecting host key and `resultCount` for selecting rows count.
-* **filter** *(json object)*
-    Filter data. Format is ```{
-                                    "Attribute name":{  
-                                       "operator":"value1",
-                                       "operator":"value2"
-                                       "operator":"value2"
-                                    }
-                                 }```. Optional parameter.
+
+    List of fields name you can obtain through [List of inventory attributes][Inventory API#List of inventory attributes]
+    call described below. Extra attributes are `hostkey` for selecting host key
+    and `resultCount` for selecting rows count.
+
+* **filter** *(json object)* Optionally filter data. Format is
+
+    ```
+    {
+      "Attribute name":{
+        "operator":"value1",
+        "operator":"value2",
+        "operator":"value2"
+      }
+    }
+    ```
+
+    **Operators:**
+
+    For filtering you can use operators bellow:
+
+    |Operator     |
+    |-------------|
+    | <           |
+    | >           |
+    | =           |
+    | !=          |
+    | <=          |
+    | >=          |
+    | matches     |
+    | not_match   |
+    | contains    |
+    | not_contain |
+
 * **sort** *(string)*
     Field name for sorting with "-" for DESC order. Optional parameter.
 * **start** *(integer)*
@@ -39,42 +64,30 @@ Inventory API allows to access inventory reports and attributes dictionary.
     Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one of the specified contexts set will be excluded from the results. Optional parameter.
 
 
-**Operators:**
-For filtering you can use operators bellow:
-
-|Operator     |
-|-------------|
-| <           |
-| >           |
-| =           |
-| !=          |
-| <=          |
-| >=          |
-| matches     |
-| not_match   |
-| contains    |
-| not_contain |
-
 ```
-curl -k --user admin:admin -X POST https://hub.cfengine.com/api/inventory  -H 'content-type: application/json'   -d '{  
-                                                                                                                                  "sort":"Host name",
-                                                                                                                                  "filter":{  
-                                                                                                                                     "Host name":{  
-                                                                                                                                        "matches":"value1",
-                                                                                                                                        "not_contain":"value2"
-                                                                                                                                     }
-                                                                                                                                  },
-                                                                                                                                  "select":[  
-                                                                                                                                     "Host name",
-                                                                                                                                     "OS type",
-                                                                                                                                     "IPv4 addresses",
-                                                                                                                                     "CFEngine version",
-                                                                                                                                     "Ports listening"
-                                                                                                                                  ],
-                                                                                                                                  "hostContextExclude":[  
-                                                                                                                                     "policy_server"
-                                                                                                                                  ]
-                                                                                                                               }
+curl -k --user <username>:<password> \
+  -X POST \
+  https://hub.cfengine.com/api/inventory \
+  -H 'content-type: application/json' \
+  -d '{
+        "sort":"Host name",
+        "filter":{
+           "Host name":{
+              "matches":"value1",
+              "not_contain":"value2"
+           }
+        },
+        "select":[
+           "Host name",
+           "OS type",
+           "IPv4 addresses",
+           "CFEngine version",
+           "Ports listening"
+        ],
+        "hostContextExclude":[
+           "policy_server"
+        ]
+      }
 '
 ```
 
