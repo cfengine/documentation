@@ -158,7 +158,7 @@ agents you are ready to begin binary upgrades.
 
 3. Verify that the selected hosts are upgrading successfully.
 
-    - Mission Portal [Inventory reporting interface][Reporting UI#inventory management]
+    - Mission Portal [Inventory reporting interface][Reporting UI#Inventory Management]
 
       ![Inventory Management](Reports-Inventory-1.png)
 
