@@ -17,7 +17,7 @@ The file `def.json` is found like the policy file to be run:
 * with no arguments, it's in `$(sys.inputdir)/def.json` because
   `$(sys.inputdir)/promises.cf` is used
 * with `-f /dirname/myfile.cf`, it's in `/dirname/def.json`
-* with `-f myfile.cf`, it's in `./def.json`
+* with `-f ./myfile.cf`, it's in `./def.json`
 
 Values will be expanded, so you can use the variables from
 [Special Variables][].
@@ -37,7 +37,7 @@ An augments file can contain four keys:
   "myplatform": "$(sys.os)",
 }
   ```
-  
+
 
   results in the variable `def.phone` with value `22-333-4444` being defined,
   and `def.myplatform` with the value of your current OS. Again, note that this
@@ -53,6 +53,21 @@ cf-promises --show-vars=default:def
 ...
 default:def.myplatform                   linux                                                        source=augments_file
 default:def.phone                        22-333-4444                                                  source=augments_file
+  ```
+
+  Variables of other types than string can be defined too, like in this example
+
+  ```
+"vars" : {
+    "str1" : "string 1",
+    "num1" : 5,
+    "num2" : 3.5
+    "slist1" : ["sliststr1", "sliststr2"]
+    "array1" : {
+        "idx1" : "val1",
+        "idx2" : "val2"
+    }
+}
   ```
 
 * `classes`: any class names you put here will be evaluated and installed as
