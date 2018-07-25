@@ -51,7 +51,7 @@ allowed).
 
 In some contexts, `%` can be used a special suffix to denote percentages.
 
-Lastly, there is a reserved value which can be used to specific a parameter as
+Lastly, there is a reserved value which can be used to specify a parameter as
 having no limit at all.
 
 * 'inf' = a constant representing an unlimited value.
