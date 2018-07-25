@@ -25,7 +25,7 @@ In short, the steps are:
 Take a full backup from your policy hub before making any changes so that you
 can recover if anything goes wrong.
 
-1. Stop the CFEengine services.
+1. Stop the CFEngine services.
 
    For systemd managed systems:
 
@@ -145,8 +145,8 @@ agents you are ready to begin binary upgrades.
    {
       "classes": {
        "trigger_upgrade": [
-         "ipv4_10_10_1",
-         "ipv4_10_10_2",
+         "ipv4_192_0_2",
+         "ipv4_203_0_13",
          "cfengine_3_10_(?!2$)\d+"
        ]
       }
