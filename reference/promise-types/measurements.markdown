@@ -161,7 +161,7 @@ A synonym for 'scalar'.
 * `log`
 
 The measured value is logged as an infinite time-series in
-```$(sys.workdir)/state```.
+`$(sys.workdir)/state`.
 
 * `weekly`
 
