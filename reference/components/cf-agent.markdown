@@ -852,6 +852,7 @@ diminishing returns.
     }
 ```
 
+**See Also**: [`background` in action bodies][Promise Types and Attributes#background]
 
 ### maxconnections
 

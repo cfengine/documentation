@@ -436,7 +436,7 @@ be recorded in the audit database.
 
 **Description:** A true/false switch for parallelizing the promise repair.
 
-If possible, perform the verification of the current promise in the background.
+If possible, perform the verification of the current promise in the background (up to [`max_children` in body agent control][cf-agent#max_children]).
 This is advantageous only if the verification might take a significant amount
 of time, e.g. in remote copying of filesystem/disk scans.
 
@@ -471,6 +471,8 @@ body action background
    background => "true";
 }
 ```
+
+**See Also**: [`max_children` in body agent control][cf-agent#max_children]
 
 #### report_level
 
