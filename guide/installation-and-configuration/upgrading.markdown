@@ -158,31 +158,31 @@ agents you are ready to begin binary upgrades.
 
 3. Verify that the selected hosts are upgrading successfully.
 
-   - Mission Portal [Inventory reporting interface][Reporting UI#Inventory Management]
+      - Mission Portal [Inventory reporting interface][Reporting UI#Inventory Management]
 
-     ![Inventory Management](Reports-Inventory-1.png)
+        ![Inventory Management](Reports-Inventory-1.png)
 
-   - [Inventory API][Inventory API]
+      - [Inventory API][Inventory API]
 
-      ```console
-      root@hub:~# curl -k \
-      --user <admin>:<password> \
-      -X POST \
-      https://hub.localdomain/api/inventory  \
-      -H 'content-type: application/json' \
-      -d '{
-            "sort":"Host name",
-            "filter":{
-               "CFEngine version":{
-                  "not_match":"{{site.cfengine.branch}}.0"
-               }
-            },
-            "select":[
-               "Host name",
-               "CFEngine version"
-             ]
-          }'
-      ```
+        ```console
+        root@hub:~# curl -k \
+        --user <admin>:<password> \
+        -X POST \
+        https://hub.localdomain/api/inventory  \
+        -H 'content-type: application/json' \
+        -d '{
+              "sort":"Host name",
+              "filter":{
+                 "CFEngine version":{
+                    "not_match":"{{site.cfengine.branch}}.0"
+                 }
+              },
+              "select":[
+                 "Host name",
+                 "CFEngine version"
+               ]
+            }'
+        ```
 
 4. Once all hosts have been upgraded ensure the `trigger_upgrade` class is no
    longer defined so that agents stop trying to self upgrade.
