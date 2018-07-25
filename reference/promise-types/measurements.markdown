@@ -167,7 +167,7 @@ A synonym for 'scalar'.
 * `log`
 
 The measured value is logged as an infinite time-series in
-\$(sys.workdir)/state.
+```$(sys.workdir)/state```.
 
 * `weekly`
 
@@ -268,9 +268,6 @@ This is mutually exclusive of [`select_line_matching`][measurements#select_line_
      select_line_number => "2";
      }
 ```
-
-**Notes:**
-
 
 #### extraction_regex
 
