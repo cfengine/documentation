@@ -279,10 +279,10 @@ alter such a socket. This is a known issue, documented in
 
 **Type:** `body acl`
 
-Please note that until https://dev.cfengine.com/issues/4862 is fixed
-(as of 3.6.0 it's not), you need to specify a `perms` body or only the
-base directory will be considered. As a workaround, use the following
-`perms` body if you are not specifying one already, as suggested in
+Please note that for CFEngine versions before 3.7.5 and 3.10.0 (see [this
+ticket](https://dev.cfengine.com/issues/4862)) you need to specify a `perms`
+body or only the base directory will be considered. As a workaround, use the
+following `perms` body if you are not specifying one already, as suggested in
 that ticket:
 
 ```cf3
