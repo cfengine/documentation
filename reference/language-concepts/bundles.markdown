@@ -64,11 +64,11 @@ definitions.
      {
      vars:
 
-       "global_var" string = "value";
+       "global_var" string => "value";
 
      classes:
 
-       "global_class" expression = "value";
+       "global_class" expression => "value";
      }
 ```
 
