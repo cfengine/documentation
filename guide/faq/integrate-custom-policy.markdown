@@ -18,12 +18,11 @@ Here we only describe ways to include and execute custom policies.
 
 ## Using autorun
 
-The [*autorun* feature in the MPF][Masterfiles Policy Framework#services_autorun]
-automatically adds policy files found in `services/autorun` to inputs and
-executes bundles tagged with *autorun* as methods type promises in lexical
-order.
+The *autorun* feature in the MPF automatically adds policy files found in
+`services/autorun` to inputs and executes bundles tagged with *autorun* as
+methods type promises in lexical order.
 
-**See Also:** [*services_autorun* in the Masterfiles Policy Framework][Masterfiles Policy Framework#services_autorun]
+**See Also:** [services_autorun* in the Masterfiles Policy Framework][Masterfiles Policy Framework#services_autorun]
 
 ## Using augments
 
