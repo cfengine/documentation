@@ -22,7 +22,7 @@ The *autorun* feature in the Masterfiles Policy Framework automatically adds
 policy files found in `services/autorun` to inputs and executes bundles tagged
 with *autorun* as methods type promises in lexical order.
 
-**See Also:** [autorun in the Masterfiles Policy Framework][Masterfiles Policy Framework#services_autorun]
+**See Also:** [autorun in the Masterfiles Policy Framework][Masterfiles Policy Framework]
 
 ## Using augments
 
