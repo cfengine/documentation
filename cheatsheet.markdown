@@ -52,6 +52,12 @@ For example I can link to [collecting functions][Functions#collecting functions]
 [_references.md](https://github.com/cfengine/documentation-generator/blob/master/_references.md)
 file.
 
+**NOTE:** Anchors with underscores are problematic!
+
+For example ```services_autorun``` in the MPF documentation the underscore needs to be escaped with a ```\```.
+
+**See Also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
+
 ### Link to CFEngine keyword
 
 The documentation pre-processor will create those automatically.
