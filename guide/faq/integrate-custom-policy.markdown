@@ -18,11 +18,11 @@ Here we only describe ways to include and execute custom policies.
 
 ## Using autorun
 
-The *autorun* feature in the MPF automatically adds policy files found in
-`services/autorun` to inputs and executes bundles tagged with *autorun* as
-methods type promises in lexical order.
+The *autorun* feature in the Masterfiles Policy Framework automatically adds
+policy files found in `services/autorun` to inputs and executes bundles tagged
+with *autorun* as methods type promises in lexical order.
 
-**See Also:** [services_autorun* in the Masterfiles Policy Framework][Masterfiles Policy Framework#services_autorun]
+**See Also:** [services_autorun in the Masterfiles Policy Framework][Masterfiles Policy Framework#services_autorun]
 
 ## Using augments
 
@@ -93,7 +93,7 @@ other.
    }
    ```
 
--   `sys.policy_*` variable **can** be used directly in `body file control`.
+-   `sys.policy_*` variables **can** be used directly in `body file control`.
     
    ```cf3
    body file control
@@ -107,8 +107,8 @@ other.
 ## Using body common control
 
 `body common control` is the classic way to define the list of policy files that
-make up the policy set (*inputs*), and the order of the bundles to be executed
-(*bundlesequence*).
+make up the policy set ( *inputs* ), and the order of the bundles to be executed
+( *bundlesequence* ).
 
 **See Also:** [`inputs` in `body common control`][Components and Common Control#inputs], [`bundlesequence` in `body common control`][Components and Common Control#bundlesequence]
 
