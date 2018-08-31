@@ -292,6 +292,57 @@ other conditions.
 
 **See Also:** `Package Modules`
 
+#### interpreter
+
+**Description:** Absolute path to the interpreter to run the package module (script) with.
+
+If the package module is implemented as a script, it has to be executed with
+some interpreter. Using a hashbang/shebang may not always be possible or easy
+(different versions/paths of python, etc.). This attribute tells CFEngine the
+path to the interpreter to use when running the package module.
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+```cf3
+body package_module apt_get
+{
+    # better use variable like $(def.python)
+    interpreter => "/usr/bin/python3.6";
+}
+```
+
+**See Also:** `Package Modules`
+
+#### module_path
+
+**Description:** Absolute path to the the package module.
+
+By default, the package module implementation has to be in a file with the same
+name as the package module itself, under the `$(sys.workdir)/modules/packages`
+directory. In some cases, it might be useful to use a different name or path or
+to have multiple package modules using the same implementation just with
+different attributes (e.g. `default_options`).
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+```cf3
+body package_module yum_all_repos
+{
+    module_path => $(sys.workdir)/modules/packages/yum;
+    default_options => { "--enablerepo=*" };
+}
+```
+
+**See Also:** `Package Modules`
+
 ## Package modules out-of-the-box
 ### yum
 
