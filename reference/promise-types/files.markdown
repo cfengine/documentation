@@ -387,11 +387,29 @@ Form of the permissions is as follows:
 * `nperms` (optional)
 
     Specifies file system specific (native) permissions. Only valid if
-    `acl_type` is defined. `nperms` will only be enforced if the file object is
-    stored on a file system supporting the ACL type set in `acl_type`. For
+    `acl_type` is defined and will only be enforced if the file object is
+    stored on a file system supporting this ACL type. For
     example, `nperms` will be ignored if `acl_type:``ntfs` and the object is
     stored on a file system not supporting NTFS ACLs. Valid values for `nperms`
-    varies with different ACL types, and is defined in subsequent sections.
+    varies with different ACL types. When `acl_type` is set to `ntfs`, the
+    valid flags and their mappings is as follows:
+
+    | CFEngine nperm flag | NTFS Special Permission |
+    |:----:|-------------|
+    | x | Execute File / Traverse Folder |
+    | r | Read Data / List Folder |
+    | t | Read Attributes  |
+    | T | Read Extended Attributes  |
+    | w | Write Data / Create Files  |
+    | a | Append Data / Create Folders |
+    | b | Write Attributes |
+    | B | Write Extended Attributes |
+    | D | Delete Sub-folders and Files |
+    | d | Delete |
+    | p | Read Permissions |
+    | c | Change Permissions |
+    | o | Take Ownership |
+
 
 * `perm_type` (optional)
 
