@@ -127,7 +127,7 @@ Promise attributes have a type and a value. The type can be any of the
 * [`bundle` *type*][bundles] - a separate bundle
   that is used as a sub-routine or a sub-set of promises
 
-*Note:* The language does not specifically disallow the use of the same
+**Note:** The language does not specifically disallow the use of the same
 attribute multiple times within a given promise. As a general rule the last
 definition wins but the behavior is not clearly defined and this should be
 avoided.
