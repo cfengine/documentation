@@ -127,6 +127,30 @@ Promise attributes have a type and a value. The type can be any of the
 * [`bundle` *type*][bundles] - a separate bundle
   that is used as a sub-routine or a sub-set of promises
 
+*Note:* The language does not specifically disallow the use of the same
+attribute multiple times within a given promise. As a general rule the last
+definition wins but the behavior is not clearly defined and this should be
+avoided.
+
+For example, the following promises use the same attribute multiple times.
+
+```cf3
+bundle agent bad_example
+{
+  classes:
+
+    "myclass"
+      expression => "cfengine",
+      expression => "my_other_class";
+
+  files:
+    "/tmp/example"
+      perms => m( 600 ),
+      perms => owner( "root" ),
+      perms => group( "root" );
+}
+```
+
 ### Implicit Promises
 
 Some promise types can have implicit behavior. For example, the following
