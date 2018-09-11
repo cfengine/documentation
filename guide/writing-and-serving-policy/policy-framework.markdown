@@ -480,14 +480,6 @@ you may get unexpected behavior.
 Duplicate of the one in `update.cf`. They should be set in unison or
 you may get unexpected behavior.
 
-##### cfengine_internal_sudoers_editing_enable (class)
-
-Off by default.  Only used on the CFEngine Enterprise hub.
-
-Turn this on (set to `any`) to allow the hub to edit sudoers in order
-for the Apache user to run passwordless sudo cf-runagent (part of
-Mission Portal troubleshooting).
-
 ##### postgresql_maintenance_supported (class)
 
 On by default only for CFEngine Enterprise Hubs.
