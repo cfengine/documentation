@@ -111,7 +111,7 @@ Output:
 ```
 
 **History:**
- - Function added in 3.6.0.
- - `mode` and `options` optional and default to `math` and `infix`, respectively
-    as of 3.9.0.
- - comparison `<`, `<=`, `>`, `>=` operators added in 3.10.0
+
+* Function added in 3.6.0.
+* `mode` and `options` optional and default to `math` and `infix`, respectively in 3.9.0.
+* comparison `<`, `<=`, `>`, `>=` operators added in 3.10.0
