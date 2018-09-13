@@ -87,7 +87,7 @@ This attribute is required.
 
 **Type:** `body environment_interface`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### env_addresses
 
@@ -175,7 +175,7 @@ identifier used as 'promiser' by the virtualization manager.
 
 **Type:** `body environment_resources`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### env_cpus
 
