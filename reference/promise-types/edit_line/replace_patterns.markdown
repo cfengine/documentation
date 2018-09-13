@@ -49,7 +49,7 @@ pattern will match.
 
 **Type:** `body replace_with`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### occurrences
 
