@@ -161,7 +161,7 @@ guarantee that process promises will work smoothly on that platform.
 
 **Type:** `body process_count`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### in_range_define
 
@@ -230,7 +230,7 @@ failure to be kept.
 
 **Type:** `body process_select`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### command
 

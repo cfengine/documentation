@@ -56,7 +56,7 @@ Storage promises refer to disks and filesystem properties.
 
 **Type:** `body mount`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### edit_fstab
 
@@ -183,7 +183,7 @@ options must be legal options for the system mount commands.
 
 **Type:** `body volume`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### check_foreign
 

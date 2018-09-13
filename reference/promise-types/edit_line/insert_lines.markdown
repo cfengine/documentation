@@ -204,7 +204,7 @@ file:
 
 **Type:** `body insert_select`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### insert_if_startwith_from_list
 
@@ -360,13 +360,7 @@ found in the secondary file, it is inserted into the file being edited.
 
 **Type:** `body location`
 
-**See Also:**
-[`location` bodies in the standard library](reference-standard-library-files.html#location-bodies)
-[`start` location body in the standard library](reference-standard-library-files.html#location-bodies)
-[`before(srt)` location body in the standard library](reference-standard-library-files.html#before)
-[`after(srt)` location body in the standard library](reference-standard-library-files.html#after)
-
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes], [`location` bodies in the standard library](reference-standard-library-files.html#location-bodies), [`start` location body in the standard library](reference-standard-library-files.html#location-bodies), [`before(srt)` location body in the standard library](reference-standard-library-files.html#before), [`after(srt)` location body in the standard library](reference-standard-library-files.html#after)
 
 #### before_after
 
