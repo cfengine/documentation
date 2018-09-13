@@ -265,7 +265,7 @@ packages:
 
 **Type:** `body package_method`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### package_add_command
 

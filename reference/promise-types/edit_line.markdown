@@ -272,7 +272,7 @@ and `select_end` regular expressions. If the beginning and ending regular
 expressions match more than one region only the first region will be
 selected for editing.
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### include_start_delimiter
 

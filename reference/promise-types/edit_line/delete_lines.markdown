@@ -44,7 +44,7 @@ promise.
 
 **Type:** `body delete_select`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### delete_if_startwith_from_list
 

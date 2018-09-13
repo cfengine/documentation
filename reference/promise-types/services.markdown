@@ -189,7 +189,12 @@ services:
 
 **Type:** `body service_method`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+`service_method` bodies have access to `$(this.promiser)` (the promised service)
+and `$(this.service_policy)` (the policy state the service should have).
+
+**Notes:** `service_bundle` is not used when `service_type` is ```windows```.
+
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### service_args
 

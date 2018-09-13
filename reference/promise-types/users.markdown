@@ -205,7 +205,7 @@ that contains information about a user's password.
     }
 ```
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### format
 
