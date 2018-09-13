@@ -295,7 +295,7 @@ body perms null_perms_body {
 }
 ```
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### aces
 
@@ -617,7 +617,7 @@ that do not have a clear inheritance policy.
 
 **Type:** `body changes`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### hash
 
@@ -739,7 +739,7 @@ The copy_from body specifies the details for making remote copies.
 are re-used. Currently connection caching is done per pass in each bundle
 activation.
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### source
 
@@ -900,7 +900,7 @@ body copy_from example
 }
 ```
 
-**See also:** [`default_repository` in ```body agent control```][cf-agent#default_repository], [`edit_backup` in ```body edit_defaults```][files#edit_backup]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes], [`default_repository` in ```body agent control```][cf-agent#default_repository], [`edit_backup` in ```body edit_defaults```][files#edit_backup]
 
 #### encrypt
 
@@ -1372,7 +1372,7 @@ comparison or linking operations).
 
 **Type:** `body delete`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### dirlinks
 
@@ -1477,7 +1477,7 @@ present. If there is no `delete` body then files (and directories) are
 
 **Type:** `body depth_search`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### depth
 
@@ -1630,7 +1630,7 @@ devices
 
 **Type:** `body edit_defaults`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### edit_backup
 
@@ -2316,7 +2316,7 @@ Seas include  caribbean, dead, black, coral,.
 
 **Type:** `body file_select`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### leaf_name
 
@@ -2732,7 +2732,7 @@ specifying `fifo` in `file_type`.
 
 **Type:** `body link_from`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### copy_patterns
 
@@ -3012,7 +3012,7 @@ separator.
 
 **Type:** `body perms`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### bsdflags
 
@@ -3146,7 +3146,7 @@ This is ignored on Windows, as the permission model uses ACLs.
 
 **Type:** `body rename`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### disable
 
