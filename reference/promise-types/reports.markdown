@@ -91,7 +91,7 @@ and has no effect. Deprecated in CFEngine 3.4.
 
 **Type:** `body printfile`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### file_to_print
 

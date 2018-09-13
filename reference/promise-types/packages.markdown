@@ -205,7 +205,7 @@ platform dependent, see
 and Common Control. The name of the body is expected to be the same as the name
 of the package module inside `/var/cfengine/modules/packages`.
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### default_options
 
