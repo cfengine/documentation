@@ -157,7 +157,7 @@ a hierarchy of depth 1.
 
 **Type:** `body database_server`
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### db_server_owner
 
