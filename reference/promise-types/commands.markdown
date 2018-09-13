@@ -181,7 +181,7 @@ as a non-privileged user inside an isolated directory tree.
     }
 ```
 
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
 #### useshell
 
