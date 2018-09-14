@@ -211,10 +211,7 @@ API call allowed only for administrator.
       "id": "linux_team",
       "description": "Linux team is responsible for all linux test servers.",
       "includeContext": "linux,test_env",
-      "excludeContext": "dev_env|production_env",
-      "sketches": [
-        "Packages::installed"
-      ]
+      "excludeContext": "dev_env|production_env"
     }
   ]
 }
@@ -230,8 +227,6 @@ API call allowed only for administrator.
     Permit access to hosts that have **class set**.
 * **excludeContext**
     Permit access to hosts that have **class not set**.
-* **sketches**
-    List of allowed sketches to use in MP.
 
 ## Get RBAC role
 
@@ -256,10 +251,7 @@ API call allowed only for administrator.
     {
       "id": "linux_team",
       "description": "Linux team is responsible for all linux servers.",
-      "includeContext": "linux",
-      "sketches": [
-        "Packages::installed"
-      ]
+      "includeContext": "linux"
     }
   ]
 }
@@ -275,8 +267,6 @@ API call allowed only for administrator.
     Permit access to hosts that have **class set**.
 * **excludeContext**
     Permit access to hosts that have **class not set**.
-* **sketches**
-    List of allowed sketches to use in MP.
 
 ## Create RBAC role
 
@@ -295,8 +285,6 @@ API call allowed only for administrator.
     Permit access to hosts that have **class set**.
 * **excludeContext**
     Permit access to hosts that have **class not set**.
-* **sketches**
-    List of allowed sketches to use in MP.
 
 **Example Request Body:**
 
@@ -305,9 +293,6 @@ API call allowed only for administrator.
   "description": "Linux team is responsible for all linux servers.",
   "includeContext": "linux",
   "excludeContext": "product_a"
-  "sketches": [
-    "Packages::installed"
-  ]
 }
 ```
 
@@ -327,9 +312,7 @@ API call allowed only for administrator.
 * **includeContext**
     Permit access to hosts that have **class set**.
 * **excludeContext**
-    Permit access to hosts that have **class not set**.
-* **sketches**
-    List of allowed sketches to use in MP.
+    Permit access to hosts that have **class not set**
 
 **Example Request Body:**
 
@@ -338,9 +321,6 @@ API call allowed only for administrator.
   "description": "Linux team is responsible for all linux servers.",
   "includeContext": "linux",
   "excludeContext": "product_a"
-  "sketches": [
-    "Packages::installed"
-  ]
 }
 ```
 

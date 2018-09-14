@@ -30,8 +30,7 @@ individually and as a whole. All or no settings will be updated for a request.
           "hostIdentifier": "default.sys.fqhost",
           "rbacEnabled": true,
           "ldapEnabled": true,
-          "blueHostHorizon": 900,
-          "sketchActivationAlertTimeout": 60
+          "blueHostHorizon": 900
         }
       ]
     }
