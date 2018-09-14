@@ -48,8 +48,7 @@ existing setting when updating an individual key value.
   "hostIdentifier": "default.sys.fqhost",
   "ldapEnabled": true,
   "logLevel": "warning",
-  "rbacEnabled": true,
-  "sketchActivationAlertTimeout": 60
+  "rbacEnabled": true
 }
 
 ```
