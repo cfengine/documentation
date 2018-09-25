@@ -223,6 +223,10 @@ access:
 
 [%CFEngine_promise_attribute()%]
 
+**Notes:** Failure to resolve a hostname or it's reverse results in a denial.
+Since this control is sensitive to temporary DNS failures, and cases where
+reverse DNS is not present it should be used with extreme scrutiny.
+
 **See also:** `admit_hostnames`, `deny_ips`, `deny_keys`
 
 **History:** Introduced in CFEngine 3.6.0
