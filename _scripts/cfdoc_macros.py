@@ -757,7 +757,7 @@ def library_include(parameters, config):
 					if in_code:
 						code_lines.append(line)
 						# super-naive parser...
-						if line.find("}") == 0:
+						if line.find("}\n") == 0:
 							break
 				code_lines.append("\n```\n")
 				
