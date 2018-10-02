@@ -464,7 +464,7 @@ Here I am including a bundle named `cfe_autorun_inventory_listening_ports`. It m
 
 #### body delete tidy from lib/files.cf in the MPF
 
-[%CFEngine_include_snippet(lib/files.cf, body\s+delete\s+tidy, \})%]
+[%CFEngine_include_MPF_snippet(lib/files.cf, body\s+delete\s+tidy, \})%]
 
 ## Comments inside documentation
 
