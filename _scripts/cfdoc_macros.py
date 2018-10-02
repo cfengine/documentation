@@ -619,6 +619,19 @@ def include_example(parameters, config):
 	
 	return markdown_lines
 
+def include_MPF_snippet(parameters, config):
+	parameters.append(".*") # first line starts
+
+	markdown_lines = include_snippet(parameters, config)
+	if not len(markdown_lines):
+		return markdown_lines
+
+	markdown_lines.append("\n")
+	markdown_lines.append("This policy exists in [`%s`][%s] from the standard library.\n" % parameters[0])
+	markdown_lines.append("\n")
+
+	return markdown_lines
+
 def include_snippet(parameters, config):
 	filename = find_include_file(parameters[0], config["include_directories"])
 	if filename == None:
