@@ -9,7 +9,7 @@ module Jekyll
 
     $CfeUtils = CFE::CfeUtils.new
 
-    CONST_MaxSubLevels = 7   # - maximul alloved sublevels in left navigation
+    CONST_MaxSubLevels = 5   # - maximul alloved sublevels in left navigation
 
     ## sort keys inside hash
     def sort_by_key(data, recursive=false, &block)
