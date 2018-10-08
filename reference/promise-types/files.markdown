@@ -1431,41 +1431,9 @@ recursive deletion
      }
 ```
 
-Note the parent directory of a search is not deleted in recursive
-deletions. You must code a separate promise to delete the single parent
-object.
-
-```cf3
-     bundle agent cleanup
-     {
-     files:
-
-       # This will not delete the parent
-
-       "/home/mark/tmp/testcopy"
-
-         delete => tidyfiles,
-         file_select => changed_within_1_year,
-         depth_search => recurse("inf");
-
-       # Now delete the parent.
-
-       "/home/mark/tmp/testcopy"
-         delete => tidyfiles;
-     }
-
-     body delete tidyfiles
-     {
-     dirlinks => "delete";
-     rmdirs   => "true";
-     }
-
-     body file_select changed_within_1_year
-     {
-     mtime     => irange(ago(1,0,0,0,0,0),now);
-     file_result => "mtime";
-     }
-```
+Note the parent directory of a search is not deleted in recursive deletions. You
+must code a separate promise to delete the single parent object. For an example
+see [`bundle agent rm_rf_depth` in the standard library][lib/bundles.cf#rm_rf_depth].
 
 **Default value** (only if body is present): `rmdirs = true`
 
