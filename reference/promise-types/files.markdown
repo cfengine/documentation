@@ -1444,17 +1444,17 @@ object.
 
        "/home/mark/tmp/testcopy"
 
-         delete => tidyfiles,
+         delete => tidy,
          file_select => changed_within_1_year,
          depth_search => recurse("inf");
 
        # Now delete the parent.
 
        "/home/mark/tmp/testcopy"
-         delete => tidyfiles;
+         delete => tidy;
      }
 
-     body delete tidyfiles
+     body delete tidy
      {
      dirlinks => "delete";
      rmdirs   => "true";
