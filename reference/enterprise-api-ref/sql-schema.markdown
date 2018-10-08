@@ -490,6 +490,103 @@ promisees       | {}
 changetimestamp | 2015-03-12 14:52:36+00
 ```
 
+### Table: PromiseLog
+
+History of promises executed on hosts.
+
+**Columns:**
+
+* **id** *(integer)*
+
+* **HostKey** *(text)*
+    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+
+* **ChangeTimeStamp** *(timestamp)*
+    Timestamp since when the promise is continuously executed by cf-agent in its current configuration and provides the same output.
+    **Note:** If any of the promise dynamic attributes change, like promise outcome, log messages or the new policy version will be rolled out. This timestamp will be changed.
+
+* **PolicyFile** *(text)*
+    Path to the file where the promise is located in.
+
+* **ReleaseId** *(text)*
+    Unique identifier of masterfiles version that is executed on the host.
+
+* **PromiseHash** *(text)*
+    Unique identifier of a promise. It is a hash of all promise attributes and their values.
+
+* **NameSpace** *(text)*
+    [Namespace][Namespaces] within which the promise is executed. If no namespace is set then it is set as: `default`.
+
+* **BundleName** *(text)*
+    [Bundle][Bundles] name where the promise is executed.
+
+* **PromiseType** *(text)*
+    [Type][Promise Types and Attributes] of the promise.
+
+* **Promiser** *(text)*
+    Object affected by a promise.
+
+* **StackPath** *(text)*
+    Call stack of the promise.
+
+* **PromiseHandle** *(text)*
+    A unique id-tag string for referring promise.
+
+* **PromiseOutcome** *(`KEPT`/`NOTKEPT`/`REPAIRED`)*
+    Promise execution result.
+    * `KEPT` - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.
+    * `REPAIRED` - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.
+    * `NOTKEPT` - CFEngine has failed to converge the system according to the promise specification.
+
+* **LogMessages** *(text[])*
+    List of 5 last messages generated during promise execution. If the promise is `KEPT` the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
+
+* **Promisees** *(text[])*
+    List of [promisees][Promises] defined for the promise.
+
+**Example query:**
+
+```sql
+SELECT hostkey,
+       policyfile,
+       releaseid,
+       promisehash,
+       namespace,
+       bundlename,
+       promisetype,
+       promiser,
+       stackpath,
+       promisehandle,
+       promiseoutcome,
+       logmessages,
+       promisees,
+       changetimestamp
+FROM   promiselog;
+```
+
+**Output:**
+
+```
+-[ RECORD 1 ]---+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+hostkey         | SHA=70138d580b9fd292ff856746df2fe7f9ded29db9ffca0c4d83acbbb97cde4d42
+policyfile      | /var/cfengine/inputs/lib/bundles.cf
+releaseid       | f90866033a826aa05cf10fdc8d34a532a9cd465b
+promisehash     | 04659a0501f471eb1794cead6cd7a3291b78dcb195063821a7dcb4dbe7f7f804
+namespace       | default
+bundlename      | prunedir
+promisetype     | files
+promiser        | /var/cfengine/outputs
+stackpath       | /default/cfe_internal_management/methods/'CFEngine_Internals'/default/cfe_internal_core_main/methods/'any'/default/cfe_internal_log_rotation/methods/'Prune old log files'/default/prunedir/files/'/var/cfengine/output
+s'[1]
+promisehandle   |
+promiseoutcome  | REPAIRED
+logmessages     | {"Deleted file '/var/cfengine/outputs/cf_demohub_a10042_cfengine_com__1535846669_Sun_Sep__2_00_04_29_2018_0x7f4da3549700'"}
+promisees       | {}
+changetimestamp | 2018-10-02 00:04:52+00
+```
+
 ### Table: LastSeenHosts
 
 Information about communication between CFEngine clients. Effectively a snapshot
