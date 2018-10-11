@@ -43,10 +43,7 @@ are managed by the LDAP API and not this Settings API.
 
 **Request**
 
-    curl --user admin:admin http://test.cfengine.com/api/settings -X POST -d
-    {
-      "ldapEnabled": true
-    }
+    curl --user admin:admin http://test.cfengine.com/api/settings -X PATCH -d '{ "ldapEnabled": true }'
 
 **Response**
 
@@ -58,15 +55,14 @@ are managed by the LDAP API and not this Settings API.
 The API uses standard Unix syslog to log a number of events. Additionally, log
 events are sent to `stderr`, which means they may also end up in your Apache
 log. Log events are filtered based on the log level in settings. Suppose you
-wanted to have greater visibility into the processing done at the backend. The
+wanted to have greater visibility into the processing done at the back-end. The
 standard log level is `error`. Changing it to `info` is done as follows.
+
+**NOTE:** Change to API log level will only take effect after Apache has re-started.
 
 **Request**
 
-    curl --user admin:admin http://test.cfengine.com/api/settings -X POST -d
-    {
-      "logLevel": "info"
-    }
+    curl --user admin:admin http://test.cfengine.com/api/settings -X PATCH -d '{ "logLevel": "info" }'
 
 **Response**
 
