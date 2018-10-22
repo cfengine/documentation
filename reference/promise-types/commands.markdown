@@ -425,7 +425,7 @@ promises. Such a module may be written in any language.
 This attribute determines whether or not to expect the CFEngine module protocol. If true, the module protocol is supported for this command:
 
 * lines which begin with a `^` are protocol extensions
-  * `^context=xyz` sets the module context to `xyz` instead of the default
+  * `^context=xyz` sets the module context to `xyz` instead of the default for any following definitions
   * `^meta=a,b,c` sets the class and variable tags for any following definitions to `a`, `b`, and `c`
   * `^persistence=10` sets any following classes to persist for 10 minutes (use 0 to reset)
   * `^persistence=0` sets any following classes to have no persistence (this is the default)
@@ -441,7 +441,9 @@ module, unless the `^context` extension is used.
 
 **NOTE**: All variables and classes defined by the module protocol are defined
 in the ```default``` namespace. It is not possible to define variables and
-classes in any other namespace.
+classes in any other namespace. Protocol extensions ( lines that start with `^`
+) apply until they are explicitly reset, or until the end of the modules
+execution.
 
 All the variables and classes will have at least the tag
 `source=module` in addition to any tags you may set.
