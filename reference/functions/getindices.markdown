@@ -15,15 +15,19 @@ the name of an array or container.
 Make sure you specify the correct scope when supplying the name of the
 variable.
 
-Note the list which getindices returns is not guaranteed to be in any
-specific order.
+**Note:**
 
-In the case of a doubly-indexed array (such as `parsestringarrayidx()` and
-friends produce), the primary keys are returned; i.e. if
-`varref[i][j]` exist for various `i`, `j` and you ask for the keys of
-`varref`, you get the `i` values.  For each such `i` you can then ask
-for `getindices("varref[i]")` to get a list of the `j` values (and so
-on, for higher levels of indexing).
+- The function **always** returns a list. If called on something that has no
+  index (for example, an undefined variable) an empty list is returned.
+
+- The list which getindices returns is not guaranteed to be in any specific
+  order.
+
+- In the case of a doubly-indexed array (such as `parsestringarrayidx()` and
+  friends produce), the primary keys are returned; i.e. if `varref[i][j]` exist
+  for various `i`, `j` and you ask for the keys of `varref`, you get the `i`
+  values. For each such `i` you can then ask for `getindices("varref[i]")` to
+  get a list of the `j` values (and so on, for higher levels of indexing).
 
 [%CFEngine_function_attributes(varref)%]
 
