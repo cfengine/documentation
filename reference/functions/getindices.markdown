@@ -39,6 +39,9 @@ Output:
 
 [%CFEngine_include_snippet(getindices.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+**History:**
+
+- [Collecting function][Functions#collecting functions] behavior as of 3.9.0
+- Always returns list as of 3.9.0
 
 **See also:** `getvalues()`, [about collecting functions][Functions#collecting functions], and `data` documentation.
