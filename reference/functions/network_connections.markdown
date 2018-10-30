@@ -5,11 +5,11 @@ published: true
 tags: [reference, network functions, functions, network_connections, network, connections, inet, inet6, tcp, tcp6, udp, udp6]
 ---
 
-[%CFEngine_function_prototype(regex)%]
+[%CFEngine_function_prototype()%]
 
 **Description:** Return the list of current network connections.
 
-[%CFEngine_function_attributes(regex)%]
+[%CFEngine_function_attributes()%]
 
 The returned data container has four keys:
 
