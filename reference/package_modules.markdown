@@ -70,7 +70,7 @@ with a simple text protocol that will be fed on the module's standard input, and
 replies are expected on its standard output.
 
 In the examples below we use simple "Here Documents" to show how standard input
-can be passed to a package module in order to produce the indented output or
+can be passed to a package module in order to produce the intented output or
 effect. If you don't know about Here Documents, the man page for bash is a good
 place to read about them. During actual execution, the input will come from
 CFEngine itself.
