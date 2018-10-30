@@ -25,6 +25,12 @@ external source and it can contain variable references.
 
 **Example:**
 
+Prepare to run the example policy:
+
+[%CFEngine_include_snippet(data_expand.cf, #\+begin_src prep, .*end_src)%]
+
+Policy:
+
 [%CFEngine_include_snippet(data_expand.cf, #\+begin_src cfengine3, .*end_src)%]
 
 Output:
