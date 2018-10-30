@@ -134,19 +134,13 @@ body agent control
 {
   abortclasses => { "danger.*", "should_not_continue" };
 }
-```
-
-**Note:** CFEngine class expressions are **not** supported. To handle class
-expressions, simply create an alias for the expression with a single name.
-
-For example:
-
-```cf3
-body agent control
+bundle agent main
 {
-  abortclasses => { "danger.*", "should_not_continue" };
+  methods:
+    "bundle_a";
+    "bundle_b";
+    "bundle_c";
 }
-
 bundle agent bundle_a
 {
   classes:
@@ -174,7 +168,14 @@ bundle agent bundle_c
 }
 ```
 
+**Output**:
 
+```
+error: Fatal CFEngine error: cf-agent aborted on defined class 'should_not_continue'
+```
+
+**Note:** CFEngine class expressions are **not** supported. To handle class
+expressions, simply create an alias for the expression with a single name.
 
 ### abortbundleclasses
 

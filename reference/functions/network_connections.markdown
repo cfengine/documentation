@@ -5,13 +5,11 @@ published: true
 tags: [reference, network functions, functions, network_connections, network, connections, inet, inet6, tcp, tcp6, udp, udp6]
 ---
 
-[%CFEngine_function_prototype(regex)%]
+[%CFEngine_function_prototype()%]
 
 **Description:** Return the list of current network connections.
 
-This function looks in `/proc/net` to find the current network connections.
-
-[%CFEngine_function_attributes(regex)%]
+[%CFEngine_function_attributes()%]
 
 The returned data container has four keys:
 
@@ -36,12 +34,11 @@ Under each key, there's an array of connection objects that all look like this:
       }
 ```
 
-All the data is collected from the files `/proc/net/tcp`,
-`/proc/net/tcp6`, `/proc/net/udp`, and `/proc/net/udp6`.
-
 The address will be either IPv4 or IPv6 as appropriate. The port will
 be an integer stored as a string. The state will be a string like
 `UNKNOWN`.
+
+**Note:** This function is supported on Linux.
 
 On Linux, usually a state of `UNKNOWN` and a remote address `0.0.0.0`
 or `0:0:0:0:0:0:0:0` with port `0` mean this is a listening IPv4 and
@@ -53,6 +50,9 @@ coming from the same machine.
 
 A state of `ESTABLISHED` usually means you're looking at a live
 connection.
+
+On Linux, all the data is collected from the files `/proc/net/tcp`,
+`/proc/net/tcp6`, `/proc/net/udp`, and `/proc/net/udp6`.
 
 **Example:**
 
