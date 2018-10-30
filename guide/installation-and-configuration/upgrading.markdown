@@ -47,6 +47,18 @@ can recover if anything goes wrong.
    root@hub:~# tar -czf /tmp/$(date +%Y-%m-%d)-cfengine-full-backup.tar.gz /var/cfengine /opt/cfengine
    ```
 
+   For systemd managed systems:
+
+   ```console
+   root@hub:~# find /usr/lib/systemd -name 'cf-*' -o -name 'cfengine*' | tar cfz /tmp/$(date +%Y-%m-%d)-cfengine-systemd-backup.tar.gz -T -
+   ```
+
+   For SysVinit:
+
+   ```console
+   root@hub:~# find /etc -name 'cfengine*' | tar cfz /tmp/$(date +%Y-%m-%d)-cfengine-init-backup.tar.gz -T -
+   ```
+
    **See Also:** [Hub administration backup and restore][Backup and Restore]
 
 3. Copy the archive to a safe location.
