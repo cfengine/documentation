@@ -26,4 +26,4 @@ Clicking on an individual graph allows to select different time spans for which 
 If you don't see any data, make sure that:
 
 * `cf-monitord` is running on your hosts. This is configurable through the lists `agents_to_be_enabled` and `agents_to_be_disabled` in `masterfiles/update/update_processes.cf`.
-* `cf-hub` has access to collecting the monitoring data from your hosts. This is configurable through the attributes in `report_data_select` in `masterfiles/controls/cf_serverd.cf`.
+* `cf-hub` has access to collecting the monitoring data from your hosts. This is configurable through the attributes in `report_data_select` in `masterfiles/controls/reports.cf`.
