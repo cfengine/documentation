@@ -30,3 +30,5 @@ reports:
   "Found client/peer: $(myhosts)";
 }
 ```
+
+**See Also:** [lastseenexpireafter in body common control][Components and Common Control#lastseenexpireafter]
