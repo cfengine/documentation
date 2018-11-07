@@ -345,7 +345,7 @@ after which last-seen entries are purged. It is an **enterprise-only** feature.
 
 **Default value:** One week
 
-**Note:** This value affects the `hostseen()` function and license counting by
+**Note:** This value affects the `hostsseen()` function and license counting by
 `cf-hub` in the Enterprise edition.
 
 **Example:**
@@ -357,7 +357,7 @@ after which last-seen entries are purged. It is an **enterprise-only** feature.
     }
 ```
 
-**See Also:** [hostseen()][hostseen], [cf-hub][cf-hub]
+**See Also:** [hostsseen()][hostsseen], [cf-hub][cf-hub]
 
 ### output_prefix
 
