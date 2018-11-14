@@ -502,8 +502,13 @@ History of promises executed on hosts.
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
 * **ChangeTimeStamp** *(timestamp)*
-    Timestamp since when the promise is continuously executed by cf-agent in its current configuration and provides the same output.
-    **Note:** If any of the promise dynamic attributes change, like promise outcome, log messages or the new policy version will be rolled out. This timestamp will be changed.
+    The GMT time on the host when this state was first perceived.
+
+    **Note causes of change:**
+    - A change in the promise signature/hash for example, altering the promise
+      handle, promisees, or moving the promise to a different bundle
+    - A change in the policy releaseId (cf_promises_release_id)
+    - A change in promise outcome
 
 * **PolicyFile** *(text)*
     Path to the file where the promise is located in.
