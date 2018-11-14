@@ -18,6 +18,12 @@ requests.
 `cf-serverd` keeps the promises made in `common` and `server` bundles, and is
 affected by `common` and `server` control bodies.
 
+**Note:** This daemon reloads it's config when the SIGHUP signal is received.
+
+**History:**
+
+- SIGHUP behavior added in 3.7.0
+
 ## Command reference ##
 
 [%CFEngine_include_snippet(cf-serverd.help, [\s]*--[a-z], ^$)%]
