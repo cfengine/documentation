@@ -29,10 +29,10 @@ Template:
     line_numbers: true
 
 vagrant:
-  version: "1.7.4"
+  version: "2.2.0"
 
 virtualbox:
-  version: "5.0.16"
+  version: "5.2.18"
 
 paginate: 500
 
