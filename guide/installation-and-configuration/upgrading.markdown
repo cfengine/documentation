@@ -30,13 +30,13 @@ can recover if anything goes wrong.
    For systemd managed systems:
 
    ```console
-   root@hub:~# systemctl cfengine3 stop
+   root@hub:~# systemctl stop cfengine3
    ```
 
    For SysVinit:
 
     ```console
-   root@hub:~# service stop cfengine3
+   root@hub:~# service cfengine3 stop
    ```
 
 2. Create an archive containing all cfengine information.
@@ -185,4 +185,3 @@ agents you are ready to begin binary upgrades.
 
    Once all hosts have been upgraded ensure the `trigger_upgrade` class is no
    longer defined so that agents stop trying to self upgrade.
-
