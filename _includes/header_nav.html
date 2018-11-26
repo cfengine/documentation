@@ -17,6 +17,32 @@
                         <option value="/docs/archive/">Version 3.0 (archive)</option>
                         <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
                    </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
                 </div>
                 <div class="top_search_form">
                    <form id="cse-search-box" action="search.html">
