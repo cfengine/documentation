@@ -214,7 +214,7 @@ section header. If however `include_start_delimiter` is false, the
 unaffected by any `delete_lines` promises. See the next section on
 `include_start_delimiter` for further details.
 
-**History:** 
+**History:**
 
 - Introduced in CFEngine version 3.0.5 (2010)
 
@@ -294,4 +294,3 @@ the file no matter what the value of `select_end_match_eof` is set to.
        select_end => "\[.*\]";
      }
 ```
-
