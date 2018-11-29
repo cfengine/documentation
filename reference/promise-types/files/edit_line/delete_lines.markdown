@@ -217,3 +217,6 @@ only negates the match of the initially promised lines.
 
       "(mark|root):.*" not_matching => "true";
 ```
+
+
+[%CFEngine_include_markdown(edit_line-select_region-include.markdown)%]

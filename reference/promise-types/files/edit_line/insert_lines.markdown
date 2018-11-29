@@ -449,6 +449,8 @@ This attribute is mutually exclusive of `select_line_number`.
      }
 ```
 
+
+[%CFEngine_include_markdown(edit_line-select_region-include.markdown)%]
 ### whitespace_policy
 
 **Description:** Criteria for matching and recognizing existing lines
