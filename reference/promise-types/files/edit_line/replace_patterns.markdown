@@ -99,3 +99,6 @@ Replace only the first occurrence. Note: this is non-convergent.
      replace_value => "$(s)";
      }
 ```
+
+
+[%CFEngine_include_markdown(edit_line-select_region-include.markdown)%]
