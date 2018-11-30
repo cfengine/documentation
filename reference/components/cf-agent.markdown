@@ -1060,7 +1060,7 @@ body agent control
 }
 ```
 
-**See Also:** [select_end_match_eof in delete_lines][delete_lines#select_end_match_eof], [select_end_match_eof in field_edits][field_edits#select_end_match_eof], [select_end_match_eof in insert_lines][insert_lines#select_end_match_eof], [select_end_match_eof in replace_patterns][replace_patterns#select_end_match_eof]
+**See Also:** [select_end_match_eof in delete_lines][delete_lines], [select_end_match_eof in field_edits][field_edits], [select_end_match_eof in insert_lines][insert_lines], [select_end_match_eof in replace_patterns][replace_patterns]
 
 ### sensiblecount
 
