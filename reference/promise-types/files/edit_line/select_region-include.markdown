@@ -1,10 +1,8 @@
 ### select_region
 
-[%CFEngine_promise_attribute()%]
+**Description:** Constrains `edit_line` operations to region identified by matching regular expressions.
 
 **Type:** `body select_region`
-
-**Description:** Constrains `edit_line` operations to region identified by matching regular expressions.
 
 Restrict edits to a specific region of a file based on ```select_start```
 and ```select_end``` regular expressions. If the beginning and ending regular
