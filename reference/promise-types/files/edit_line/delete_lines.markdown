@@ -218,5 +218,10 @@ only negates the match of the initially promised lines.
       "(mark|root):.*" not_matching => "true";
 ```
 
+### select_region
 
-[%CFEngine_include_markdown(select_region-include.markdown)%]
+**Description:** Constrains `edit_line` operations to region identified by matching regular expressions.
+
+This body applies to all promise types within `edit_line` bundles.
+
+**See Also:** [```select_region``` with `edit_line` operations][edit_region#select_region], [```select_region``` in `field_edits`][field_edits#select_region], [```select_region``` in `insert_lines`][field_edits#select_region], [```select_region``` in `replace_patterns`][replace_patterns#select_region]
