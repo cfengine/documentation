@@ -2,7 +2,7 @@
 layout: default
 title: insert_lines
 published: true
-tags: [reference, bundle agent, bundle edit_line, files promises, file editing, insert_lines]
+tags: [reference, bundle agent, edit_line, files promises, file editing, insert_lines]
 ---
 
 This promise type is part of the line-editing model. It inserts lines into

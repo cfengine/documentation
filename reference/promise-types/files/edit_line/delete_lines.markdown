@@ -2,7 +2,7 @@
 layout: default
 title: delete_lines
 published: true
-tags: [reference, bundle agent, bundle edit_line, files promises, file editing, delete_lines]
+tags: [reference, bundle agent, edit_line, files promises, file editing, delete_lines]
 ---
 
 This promise assures that certain lines exactly matching regular

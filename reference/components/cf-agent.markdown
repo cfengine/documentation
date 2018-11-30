@@ -1041,9 +1041,9 @@ owned by a privileged user.
 #### select_end_match_eof
 
 **Description:** When `select_end_match_eof` is set to true `select_end` will consider end of file as the end region if it is unable to match
-the end pattern. For more details see [`edit_line`][bundle edit_line] promise.
+the end pattern. For more details see [`edit_line`][edit_line] promise.
 
-**Note:** [bundle edit_line select_end_match_eof][bundle edit_line#select_end_match_eof] can override this setting at the individual promise level.
+**Note:** [edit_line select_end_match_eof][edit_line#select_end_match_eof] can override this setting at the individual promise level.
 
 **Type:** [`boolean`][boolean]
 

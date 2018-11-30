@@ -6,7 +6,7 @@ sorting: 160
 tags: [reference, standard library, files, MPF]
 ---
 
-See the [`files` promises][files] and [`edit_line` bundles][bundle edit_line]
+See the [`files` promises][files] and [`edit_line` bundles][edit_line]
 documentation for a comprehensive reference on
 the bundles, body types, and attributes used here.
 
