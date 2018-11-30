@@ -1,5 +1,7 @@
 ### select_region
 
+[%CFEngine_promise_attribute()%]
+
 **Type:** `body select_region`
 
 **Description:** Constrains `edit_line` operations to region identified by matching regular expressions.
