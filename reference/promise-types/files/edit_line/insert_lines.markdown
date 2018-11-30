@@ -449,8 +449,14 @@ This attribute is mutually exclusive of `select_line_number`.
      }
 ```
 
+### select_region
 
-[%CFEngine_include_markdown(select_region-include.markdown)%]
+**Description:** Constrains `edit_line` operations to region identified by matching regular expressions.
+
+This body applies to all promise types within `edit_line` bundles.
+
+**See Also:** [```select_region``` with `edit_line` operations][edit_region#select_region], [```select_region``` in `delete_lines`][delete_lines#select_region], [```select_region``` in `field_edits`][field_edits#select_region], [```select_region``` in `replace_patterns`][replace_patterns#select_region]
+
 ### whitespace_policy
 
 **Description:** Criteria for matching and recognizing existing lines
