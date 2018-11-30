@@ -1040,10 +1040,12 @@ owned by a privileged user.
 
 #### select_end_match_eof
 
-**Description:** When `select_end_match_eof` is set to true `select_end` will consider end of file as the end region if it is unable to match
-the end pattern. For more details see [`edit_line`][edit_line] promise.
+**Description:** When `true` this sets the default behavior for `edit_line`
+promises to allow the end of a file to mark the end of a region when ```select_end```
+is defined, but not found.
 
-**Note:** [edit_line select_end_match_eof][edit_line#select_end_match_eof] can override this setting at the individual promise level.
+It is useful for configuration files with sections that do not have end markers,
+so the end could be the start of another section, or the end of a file.
 
 **Type:** [`boolean`][boolean]
 
@@ -1052,11 +1054,13 @@ the end pattern. For more details see [`edit_line`][edit_line] promise.
 **Example:**
 
 ```cf3
-     body agent control
-     {
-     select_end_match_eof => "true";
-     }
+body agent control
+{
+  select_end_match_eof => "true";
+}
 ```
+
+**See Also:** [select_end_match_eof in delete_lines][delete_lines#select_end_match_eof], [select_end_match_eof in field_edits][field_edits#select_end_match_eof], [select_end_match_eof in insert_lines][insert_lines#select_end_match_eof], [select_end_match_eof in replace_patterns][replace_patterns#select_end_match_eof]
 
 ### sensiblecount
 
