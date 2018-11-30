@@ -11,7 +11,9 @@ selected for editing.
 
 **Example:**
 
+{%raw%}
 [%CFEngine_include_example(select_region.cf)%]
+{%endraw%}
 
 **See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
