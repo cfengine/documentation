@@ -1922,7 +1922,7 @@ deleted (that is, it "falls off the end" of the rotation).
 
 ### edit_line
 
-**Type:** [`bundle edit_line`][bundle edit_line]
+**Type:** [`edit_line`][edit_line]
 
 ### edit_template
 

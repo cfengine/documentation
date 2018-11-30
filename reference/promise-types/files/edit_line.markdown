@@ -1,8 +1,8 @@
 ---
 layout: default
-title: bundle edit_line
+title: edit_line
 published: true
-tags: [reference, bundle agent, bundle edit_line, files promises, file editing]
+tags: [reference, bundle agent, edit_line, files promises, file editing]
 ---
 
 Line based editing is a simple model for editing files. Before XML, and

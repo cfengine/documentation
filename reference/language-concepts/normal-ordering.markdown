@@ -125,7 +125,7 @@ following, converging towards a final state:
     databases
     reports
 
-Within [`edit_line` bundles in files promises][bundle edit_line],
+Within [`edit_line` bundles in files promises][edit_line],
 the normal ordering is:
 
     meta
