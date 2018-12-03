@@ -188,7 +188,7 @@ Output:
 
 **See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
-#### Scope and lifetime of the select_region
+#### Scope and lifetime
 
 The region selected with `select_region` exists during the lifetime of the promise.
 This means that once a promise has been started the selected region will be used regardless
