@@ -455,7 +455,7 @@ This attribute is mutually exclusive of `select_line_number`.
 
 This body applies to all promise types within `edit_line` bundles.
 
-**See Also:** [```select_region``` with `edit_line` operations][edit_region#select_region], [```select_region``` in `delete_lines`][delete_lines#select_region], [```select_region``` in `field_edits`][field_edits#select_region], [```select_region``` in `replace_patterns`][replace_patterns#select_region]
+**See Also:** [```select_region``` with `edit_line` operations][edit_line#select_region], [```select_region``` in `delete_lines`][delete_lines#select_region], [```select_region``` in `field_edits`][field_edits#select_region], [```select_region``` in `replace_patterns`][replace_patterns#select_region]
 
 ### whitespace_policy
 
