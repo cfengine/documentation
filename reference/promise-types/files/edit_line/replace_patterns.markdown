@@ -106,5 +106,5 @@ Replace only the first occurrence. Note: this is non-convergent.
 
 This body applies to all promise types within `edit_line` bundles.
 
-**See Also:** [```select_region``` with `edit_line` operations][edit_region#select_region], [```select_region``` in `delete_lines`][delete_lines#select_region], [```select_region``` in `field_edits`][field_edits#select_region], [```select_region``` in `insert_lines`][insert_lines#select_region]
+**See Also:** [```select_region``` with `edit_line` operations][edit_line#select_region], [```select_region``` in `delete_lines`][delete_lines#select_region], [```select_region``` in `field_edits`][field_edits#select_region], [```select_region``` in `insert_lines`][insert_lines#select_region]
 
