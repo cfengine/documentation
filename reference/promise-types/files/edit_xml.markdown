@@ -48,7 +48,7 @@ attribute is not used when inserting XML content into an empty file.
 [%CFEngine_promise_attribute()%]
 
 ## edit_xml promise types
-## build_xpath
+### build_xpath
 
 This promise type assures that a
 balanced XML tree, described by the given XPath, will be present within
@@ -81,7 +81,7 @@ The resulting document can then be further modified using `insert_tree`,
 attributes or text values directly via build_xpath can lead to non-convergent
 behavior, and is discouraged.
 
-## insert_tree
+### insert_tree
 
 This promise type assures that a
 balanced XML tree, containing the matching subtree, will be present in
@@ -104,7 +104,7 @@ Note that typically, only a single tree, within a single specified node,
 is inserted in each `insert_tree` promise. You may of course have
 multiple promises that each insert a tree.
 
-## delete_tree
+### delete_tree
 
 This promise type assures that a
 balanced XML tree, containing the matching subtree, will not be present
@@ -128,7 +128,7 @@ Note that typically, only a single tree, within a single specified node,
 is deleted in each `delete_tree` promise. You may of course have
 multiple promises that each delete a tree.
 
-## insert_text
+### insert_text
 
 This proimse type assures that a value
 string, containing the matching substring, will be present in the
@@ -152,7 +152,7 @@ Note that typically only a single value string, within a single
 specified node, is inserted in each `insert_text` promise. You may of
 course have multiple promises that each insert a value string.
 
-## set_text
+### set_text
 
 This promise type assures that a
 matching value string will be present in the specified node within the
@@ -176,7 +176,7 @@ node, is set in each `set_text` promise. You may of course have multiple
 promises that each set a value string.
 
 
-## delete_text
+### delete_text
 
 This promise type assures that a value
 string, containing the matching substring, will not be present in the
@@ -200,7 +200,7 @@ specified node, is deleted in each `delete_text` promise. You may of
 course have multiple promises that each delete a value string.
 
 
-## set_attribute
+### set_attribute
 
 This promise type assures that an
 attribute, with the given name and value, will be present in the
@@ -239,7 +239,7 @@ of the XML file
 **Allowed input range:** (arbitrary string)
 
 
-## delete_attribute
+### delete_attribute
 
 This promise type assures that an
 attribute, with the given name, will not be present in the specified
