@@ -1998,7 +1998,7 @@ bundle agent example
 
 ### edit_xml
 
-**Type:** [`bundle edit_xml`][bundle edit_xml]
+**Type:** [`edit_xml`][edit_xml]
 
 ### file_select
 
