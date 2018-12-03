@@ -29,6 +29,7 @@ import cfdoc_macros as macros
 import cfdoc_printsource as printsource
 import cfdoc_git as git
 import cfdoc_qa as qa
+import cfdoc_patch_header_nav as patch_header_nav
 import sys
 import os
 
@@ -75,6 +76,13 @@ try:
 	printsource.run(config)
 except:
 	print "cfdoc_printsource: Error generating print-pages"
+	sys.stdout.write("      Exception: ")
+	print sys.exc_info()
+
+try:
+	patch_header_nav.patch(sys.argv[1])
+except:
+	print "cfdoc_patch_header_nav: Error patching header navigation"
 	sys.stdout.write("      Exception: ")
 	print sys.exc_info()
 
