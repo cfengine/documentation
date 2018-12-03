@@ -3,7 +3,7 @@
         <div id="top_form" class="group">
             <div class="float-right">
                <div id="top_version_wrapper">
-                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
                         <option value="/docs/master/index.html" selected>master</option>
                         <option value="/docs/3.13/index.html">Version 3.13 (non-LTS)</option>
                         <option value="/docs/3.12/index.html">Version 3.12 (LTS)</option>
@@ -34,12 +34,20 @@
                                    if(location.pathname.indexOf(branch.Link)==0){
                                        // this is version that we're currently looking at
                                        selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
                                    }
                                    str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
                                }
                                document.querySelector('#top_version_wrapper select').innerHTML = str;
                            }
                            xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
                        };
                        document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
                    </script>
