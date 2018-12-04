@@ -23,6 +23,10 @@ new or manipulate existing XML documents.
 -->
 
 ## Common Attributes
+<!-- Don't change the name of this heading. It affects how the
+CFEngine_promise_attribute macro functions. If the name changes, then promise
+prototypes will not work. -->
+
 
 The following attributes are available in all `edit_xml` promise types.
 
