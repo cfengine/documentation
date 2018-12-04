@@ -22,7 +22,7 @@ new or manipulate existing XML documents.
 # build_xpath
 -->
 
-## Common edit_xml attributes
+## Common Attributes
 
 The following attributes are available in all `edit_xml` promise types.
 
