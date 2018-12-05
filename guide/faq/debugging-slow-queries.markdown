@@ -10,7 +10,7 @@ If Mission Portal seems to take too much time to generate pages or reports or if
 to be taking too long. You can enable logging and analyzing slow queries in postgresql with the
 following changes:
 
-1. Edit /var/cfengine/state/pg/data/postgresql.conf. Add the following lines at the end of the file
+1. Edit `/var/cfengine/state/pg/data/postgresql.conf`. Add the following lines at the end of the file
 
    ```sh
    session_preload_libraries = 'auto_explain'
