@@ -467,26 +467,8 @@ no action and is kept for backward compatibility.
 
 #### audit
 
-**Description:** A true/false switch for detailed audit records of a promise.
-
-If this is set, CFEngine will perform auditing on this specific promise. This
-means that all details surrounding the verification of the current promise will
-be recorded in the audit database.
-
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example:**
-
-```cf3
-     body action example
-     {
-     # ...
-
-     audit => "true";
-     }
-```
+**Deprecated:** This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.
 
 #### background
 
