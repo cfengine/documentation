@@ -24,3 +24,5 @@ You can optionally restrict the search by tags, which you can list after the reg
 Output:
 
 [%CFEngine_include_snippet(countclassesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+**See also:** [classes defined via augments][Augments#classes], [classmatch()][classmatch], [classesmatching()][classesmatching] 
