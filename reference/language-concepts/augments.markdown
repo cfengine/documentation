@@ -60,22 +60,26 @@ default:def.phone                        22-333-4444                            
 
 ## classes
 
-Any class names you put here will be evaluated and installed as
-**hard classes** if they match as a class name or a regular expression. Thus:
+Any class names you put here will be evaluated and installed as **hard classes**
+if they match the [anchored regular expression][anchored]. You can use any
+[**hard** classes][Classes and Decisions], persistent classes, or classes
+defined earlier in the augments list. Thus:
 
 ```
 "classes":
 {
-  "my_always": "any",
+  "my_always": [ "any" ],
   "my_other_apache": [ "server[34]", "debian.*" ],
+  "my_other_always": [ "my_always" ],
+  "when_MISSING_not_defined": [ "^(?!MISSING).*" ]
 }
 ```
 
 results in `my_always` being always defined. `my_other_apache` will be defined
-if the classes `server3` or `server4` are defined, or if any class starting
-with `debian` is defined. You can use
-any [**hard** classes][Classes and Decisions#Hard Classes] with the exception
-of `am_policy_hub` and `policy_server`.
+if the classes `server3` or `server4` are defined, or if any class starting with
+`debian` is defined. `my_other_always` will be defined because `my_always` is
+always defined, and listed first. `when_MISSING_not_defined` will be defined if
+the class `MISSING` is not defined.
 
 You can see the list of classes thus defined through `def.json` in the output
 of `cf-promises --show-classes` (see [Components and Common Control][]). They
@@ -86,8 +90,12 @@ the above two classes result in:
 % cf-promises --show-classes
 ...
 my_always                                                    source=augments_file,hardclass
+my_other_always                                              source=augments_file,hardclass
 my_other_apache                                              source=augments_file,hardclass
 ```
+**See also:**
+
+* Functions that use regular expressions with classes: `classesmatching()`, `classmatch()`, `countclassesmatching()`
 
 # History
 
