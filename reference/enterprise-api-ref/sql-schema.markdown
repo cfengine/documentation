@@ -12,7 +12,7 @@ Queries can be used with following database schema.
 curl -k --user admin:admin https://hub.cfengine.com/api/query -X POST -d "{ \"query\": \"SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts WHERE hostname = 'hub'\"}"
 ```
 
-### Table: Hosts
+## Table: Hosts
 
 Hosts table contains basic information about hosts managed by CFEngine.
 
@@ -73,7 +73,7 @@ lastreporttimestamp  | 2015-03-10 14:20:20+00
 firstreporttimestamp | 2015-03-10 13:40:20+00
 ```
 
-### Table: AgentStatus
+## Table: AgentStatus
 
 Agent status contains information about last cf-agent execution.
 
@@ -121,7 +121,7 @@ lastagentlocalexecutiontimestamp | 2015-03-11 12:36:51+00
 lastagentexecutionstatus         | OK
 ```
 
-### Table: Contexts
+## Table: Contexts
 
 CFEngine contexts present on hosts at their last reported cf-agent execution.
 
@@ -170,7 +170,7 @@ metatags        | {inventory,attribute_name=none,source=agent,hardclass}
 changetimestamp | 2015-03-11 09:50:11+00
 ```
 
-### Table: Variables
+## Table: Variables
 
 Variables and their values set on hosts at their last reported cf-agent execution.
 
@@ -249,7 +249,7 @@ metatags        | {source=promise,report}
 changetimestamp | 2015-03-11 14:27:12+00
 ```
 
-### Table: Software
+## Table: Software
 
 Software packages installed (according to local package manager) on the hosts.
 More information about CFEngine and package management can be found [here][packages].
@@ -305,7 +305,7 @@ softwarearchitecture | default
 changetimestamp      | 2015-03-12 10:20:18+00
 ```
 
-### Table: SoftwareUpdates
+## Table: SoftwareUpdates
 
 Patches available for installed packages on the hosts (as reported by local package manager).
 The most up to date patch will be listed.
@@ -368,7 +368,7 @@ patchreporttype   | AVAILABLE
 changetimestamp   | 2015-03-12 10:20:18+00
 ```
 
-### Table: PromiseExecutions
+## Table: PromiseExecutions
 
 Promises executed on hosts during their last reported cf-agent run.
 
@@ -490,7 +490,7 @@ promisees       | {}
 changetimestamp | 2015-03-12 14:52:36+00
 ```
 
-### Table: PromiseLog
+## Table: PromiseLog
 
 History of promises executed on hosts.
 
@@ -572,7 +572,7 @@ FROM   promiselog;
 **Output:**
 
 ```
--[ RECORD 1 ]---+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-[ RECORD 1 ]---|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
 hostkey         | SHA=70138d580b9fd292ff856746df2fe7f9ded29db9ffca0c4d83acbbb97cde4d42
@@ -592,7 +592,7 @@ promisees       | {}
 changetimestamp | 2018-10-02 00:04:52+00
 ```
 
-### Table: LastSeenHosts
+## Table: LastSeenHosts
 
 Information about communication between CFEngine clients. Effectively a snapshot
 of each hosts lastseen database (`cf_lastseen.lmdb`, `cf-key -s`) at the time of
@@ -658,7 +658,7 @@ lastseentimestamp | 2015-03-13 12:20:45+00
 lastseeninterval  | 299
 ```
 
-### Table: FileChangesLog
+## Table: FileChangesLog
 
 Log of changes detected to files that are set to be [monitored][files#changes] by cf-agent.
 
@@ -723,7 +723,7 @@ changetype      | S
 changedetails   | {"Modified time: Mon Mar 9 11:37:50 -> Mon Mar 9 11:42:27"}
 ```
 
-### Table: ContextsLog
+## Table: ContextsLog
 
 CFEngine contexts set on hosts by CFEngine over period of time.
 
@@ -784,7 +784,7 @@ contextname     | nova_3_6_5
 metatags        | {inventory,attribute_name=none,source=agent,hardclass}
 ```
 
-### Table: VariablesLog
+## Table: VariablesLog
 
 CFEngine variables set on hosts by CFEngine over period of time.
 
@@ -874,7 +874,7 @@ variabletype    | string
 metatags        | {monitoring,source=environment}
 ```
 
-### Table: SoftwareLog
+## Table: SoftwareLog
 Software packages installed / deleted over period of time.
 More information about CFEngine and package management can be found [here][packages].
 
@@ -939,7 +939,7 @@ softwareversion      | 1.9.3.484-2ubuntu1.2
 softwarearchitecture | default
 ```
 
-### Table: SoftwareUpdatesLog
+## Table: SoftwareUpdatesLog
 
 **This table was deprecated in 3.7.0. It is no longer used.**
 
@@ -1014,7 +1014,7 @@ patcharchitecture | default
 patchreporttype   | AVAILABLE
 ```
 
-### Table: PromiseExecutionsLog
+## Table: PromiseExecutionsLog
 
 **This table was deprecated in 3.7.0. It is no longer used.**
 
@@ -1149,7 +1149,7 @@ logmessages     | {}
 promisees       | {}
 ```
 
-### Table: BenchmarksLog
+## Table: BenchmarksLog
 
 Data from internal cf-agent monitoring as also [measurements promises][measurements].
 
@@ -1211,7 +1211,7 @@ lastvalue         | 1.002346
 checktimestamp    | 2015-03-10 14:05:20+00
 ```
 
-### Table: HubConnectionErrors
+## Table: HubConnectionErrors
 
 Networking errors encountered by cf-hub during its operation.
 
@@ -1259,7 +1259,7 @@ message        | ServerAuthenticationError
 querytype      | delta
 ```
 
-### Table: MonitoringHg
+## Table: MonitoringHg
 
 Stores 1 record for each observable per host.
 
@@ -1275,7 +1275,7 @@ Stores 1 record for each observable per host.
 * **ar1** *(real)*
     Average across 66 observations.
 
-### Table: MonitoringMgMeta
+## Table: MonitoringMgMeta
 
 Stores 1 record for each observable per host.
 
@@ -1310,3 +1310,4 @@ Stores 1 record for each observable per host.
 
 * **lastupdatedsample** *(integer)*
     Value of most recently collected measurement.
+    
