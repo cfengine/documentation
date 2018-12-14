@@ -1258,3 +1258,55 @@ checktimestamp | 2015-03-13 15:16:10+00
 message        | ServerAuthenticationError
 querytype      | delta
 ```
+
+### Table: MonitoringHg
+
+Stores 1 record for each observable per host.
+
+**Columns:**
+
+* **host** *(text)*
+    Unique host identifier. Referred to in other tables as `HostKey` to connect
+    data concerning same hosts.
+
+* **id** *(text)*
+    Name of monitored metric. The handle of the measurement promise.
+
+* **ar1** *(real)*
+    Average across 66 observations.
+
+### Table: MonitoringMgMeta
+
+Stores 1 record for each observable per host.
+
+**Columns:**
+
+* **id** *(integer)*
+    Unique identifier for host observable.
+
+* **hostkey** *(text)*
+    Unique host identifier. All tables can be joined by `HostKey` to connect
+    data concerning same hosts.
+
+* **observable** *(text)*
+    Name of monitored metric. The handle of the measurement promise.
+
+* **global** *(boolean)*
+
+* **expected_min** *(real)*
+    Minimum expected value.
+
+* **expected_max** *(real)*
+    Maximum expected value.
+
+* **unit** *(text)*
+    Unit of measurement.
+
+* **description** *(text)*
+    Description of unit of measurement.
+
+* **updatedtimestamp** *(timestamp with time zone)*
+    Time when measurement sampled.
+
+* **lastupdatedsample** *(integer)*
+    Value of most recently collected measurement.
