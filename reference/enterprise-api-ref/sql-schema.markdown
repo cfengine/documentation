@@ -1310,4 +1310,36 @@ Stores 1 record for each observable per host.
 
 * **lastupdatedsample** *(integer)*
     Value of most recently collected measurement.
-    
+
+## Table: MonitoringYrMeta
+
+Stores 1 record for each observable per host.
+
+**Columns:**
+
+* **id** *(integer)*
+    Unique identifier for host observable.
+
+* **hostkey** *(text)*
+    Unique host identifier. All tables can be joined by `HostKey` to connect
+    data concerning same hosts.
+
+* **observable** *(text)*
+    Name of monitored metric. The handle of the measurement promise.
+
+* **global** *(boolean)*
+
+* **expected_min** *(real)*
+    Minimum expected value.
+
+* **expected_max** *(real)*
+    Maximum expected value.
+
+* **unit** *(text)*
+    Unit of measurement.
+
+* **description** *(text)*
+    Description of unit of measurement.
+
+* **lastupdatedsample** *(integer)*
+    Value of most recently collected measurement.
