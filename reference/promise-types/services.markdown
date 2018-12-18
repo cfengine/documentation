@@ -56,8 +56,16 @@ passed to services that are started by CFEngine.
     }
 ```
 
-**Note:** Services promises for Windows are only available in CFEngine
-Enterprise. Windows Vista/Server 2008 and later introduced new complications
+**Notes:**
+
+Services promises for Windows are only available in CFEngine Enterprise. Note
+that the name of a service in Windows may be different from its ```Display
+name```. CFEngine Enterprise policies use the name, not the display name,
+due to the need for uniqueness.
+
+![WinService](promise-types-services-winservice-properties_name.png)
+
+Windows Vista/Server 2008 and later introduced new complications
 to the service security policy. Therefore, when testing `services`
 promises from the command line, CFEngine may not be given proper access
 rights, which gives errors like "Access is denied". However, when
