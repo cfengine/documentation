@@ -452,10 +452,8 @@ Any other lines of output are cited by `cf-agent` as being erroneous, so you
 should normally make your module completely silent.
 
 **WARNING:** Variables defined by the module protocol are currently limited to
-alphanumeric characters and ```_```, ```.```, ```-```, ```[```, and ```]```. Note that
-classic arrays defined within policy accept additional characters inside of the
-array index for example: ```"path[/etc/httpd.conf]"``` is allowed when defined
-directly in policy but will produce an error if defined via the module protocol. This limitation is tracked in [CFE-2478](https://tracker.mender.io/browse/CFE-2478).
+alphanumeric characters and ```_```, ```.```, ```-```, ```[```, ```]``` and
+```/```.
 
 **Type:** [`boolean`][boolean]
 
