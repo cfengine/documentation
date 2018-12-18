@@ -110,9 +110,9 @@ agents).
 
 ### Memory
 
-Minimum 2GB memory, but not lower than **8MB per bootstrapped
-agent**. This means that, for a server with 5000 hosts, you should
-have at least 40GB of memory.
+Minimum 3GB memory (can run with less for small testing/lab environments), but
+not lower than **8MB per bootstrapped agent**. This means that, for a server
+with 5000 hosts, you should have at least 40GB of memory.
 
 ### Disk sizing and partitioning
 
