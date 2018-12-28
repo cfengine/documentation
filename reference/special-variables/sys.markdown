@@ -222,7 +222,7 @@ properly, the domain name must be defined.
     # fqhost = host.example.org
 ```
 
-**See also:** [`sys.uqhost`][sys#sys.uqhost]
+**See also:** [`sys.uqhost`][sys.uqhost]
 
 ### sys.fstab
 
