@@ -37,3 +37,4 @@
 [sys.policy_entry_filename]: reference-special-variables-sys.html#sys-policy_entry_filename
 [supported versions]: https://cfengine.com/extended-support/
 [Inventory API]: reference-enterprise-api-ref-inventory.html
+[sys.uqhost]: reference-special-variables-sys.html#sys-uqhost
