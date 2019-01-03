@@ -113,12 +113,12 @@ class.
 
 User three will only be able to see hosts that have reported the `ubuntu` class.
 
-**Predefined Roles:**
+### Predefined Roles
 
 * ```admin``` - The admin role can see everything and do anything.
 * ```cf_remoteagent``` - This role allows execution of `cf-runagent`.
   
-**Default Role:**
+### Default Role
 
 To set the default role, click Settings -> User management -> Roles. You can then select which role will be the default role for new users.
 
