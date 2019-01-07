@@ -23,14 +23,14 @@ Inventory API allows to access inventory reports and attributes dictionary.
     call described below. Extra attributes are `hostkey` for selecting host key
     and `resultCount` for selecting rows count.
 
-* **filter** *(json object)* Optionally filter data. Format is
+* **filter** *(json object)* Optionally filter data. You can use array values for multiple filter, the logic will be AND.  Format is
 
     ```
     {
       "Attribute name":{
-        "operator":"value1",
-        "operator":"value2",
-        "operator":"value2"
+        "operator":["value","value1"],
+        "operator2":"value2",
+        "operator4":"value2"
       }
     }
     ```
@@ -73,7 +73,7 @@ curl -k --user <username>:<password> \
         "sort":"Host name",
         "filter":{
            "Host name":{
-              "matches":"value1",
+              "matches":["value1","value"],
               "not_contain":"value2"
            }
         },
