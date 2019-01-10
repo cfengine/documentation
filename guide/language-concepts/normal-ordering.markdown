@@ -140,7 +140,9 @@ the normal ordering is:
     reports
 
 The order of promises within one of the above types follows their top-down
-ordering within the bundle itself. The order may be overridden by making a
+ordering within the bundle itself. In vars this can be used to override the
+value of a variable, if you have two vars promises with the same name, the
+last one will override the first one. The order may be overridden by making a
 promise depend on a class that is set by another promise, or by using the
 `depends_on` attribute in the promise.
 
