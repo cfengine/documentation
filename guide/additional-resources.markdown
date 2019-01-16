@@ -18,7 +18,7 @@ Use the following links to learn more about CFEngine:
 
 Learn by reading information brought to you by CFEngine experts:
 
-* [Learning CFEngine 3](http://cf-learn.info/) by Diego Zamboni
+* [Learning CFEngine](http://cf-learn.info/) by Diego Zamboni
 
 * [CFEngine 3 Tutorial](http://watson-wilson.ca/2011/03/cfengine-3-tutorial.html) and
 [Cookbook](http://watson-wilson.ca/cfengine/cf-cookbook/) by Neil Watson, a Senior
@@ -32,15 +32,13 @@ configuration management best practices from the CFEngine team.
 
 ## Training ##
 
-* [Online Training](https://cfengine.com/inside/videos/) An introduction to CFEngine by our
-founder, Mark Burgess. These video recordings explain the basic principles and syntax of
-the CFEngine language and suggests some examples to try out.
+* [Online Training](https://www.youtube.com/playlist?list=PLh71Vl9YjMajsWxT8zQuRKEPwosG9HdzV) An introduction to CFEngine by our founder, Mark Burgess. These video recordings explain the basic principles and syntax of the CFEngine language and suggests some examples to try out.
 
-* [Demos](http://cfengine.com/demos) Videos, Webinars, and Keynotes which demonstrate the key
-capabilities of CFE Enterprise and Community editions.
+* [Beyond Automation](http://shop.oreilly.com/product/110000787.do) Learn how to go beyond classical automation with CFEngine 3, one of the most established configuration management systems available. In this video tutorial, host and CFEngine creator Mark Burgess takes you on a tour of discovery from basic automation concepts to more complex examples, such as implementing distributed orchestration.
 
-* CFEngine as a powerful security tool: Three [presentations](http://prezi.com/user/zzamboni/)
-by Diego Zamboni
+* [Learn](http://cfengine.com/learn) Videos which demonstrate the key capabilities of CFEngine Enterprise and Community editions.
+
+* CFEngine as a powerful security tool: Three [presentations](http://prezi.com/user/zzamboni/) by Diego Zamboni
 
 ## Tools ##
 
@@ -62,8 +60,7 @@ management in your organization.
 
 ### Support Desk
 
-* [CFEngine Enterprise Support Desk][support desk] Enterprise users have access to our
-support desk.
+* [CFEngine Enterprise Support Desk][support desk] Enterprise users have access to our support desk.
 
 ### Forums
 
@@ -107,8 +104,6 @@ organization, [contact us][contact us].
 * [Code](https://github.com/cfengine/core)
 
 * [Documentation](https://github.com/cfengine/documentation)
-
-* [Design Center](https://github.com/cfengine/design-center)
 
 **Public Bug Tracker**
 
