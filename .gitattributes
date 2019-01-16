@@ -2,6 +2,7 @@
 ## These files are binary and should be left untouched
 #
 
+*.markdown text
 # (binary is a macro for -text -diff)
 *.png binary
 *.jpg binary
