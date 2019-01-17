@@ -31,7 +31,7 @@ if [ "$?" -gt "0" ]; then
    exit 2;
 fi
 
-#$WRKDIR/documentation-generator/_scripts/_create_pdf.sh
+$WRKDIR/documentation-generator/_scripts/_create_pdf.sh
 if [ "$?" -gt "0" ]; then
    exit 3;
 fi
