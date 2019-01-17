@@ -8,6 +8,7 @@ tags: [reference, communication functions, functions, host2ip, cached function]
 [%CFEngine_function_prototype(hostname)%]
 
 **Description:** Returns the primary name-service IP address for the named host `hostname`.
+If resolution fails, the input `hostname` is returned (for compatibility reasons).
 
 Uses whatever configured name service is used by the resolver library to
 translate `hostname` into an IP address. It will return an IPv6 address
