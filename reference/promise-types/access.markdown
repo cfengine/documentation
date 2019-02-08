@@ -707,6 +707,8 @@ access:
 }
 ```
 
+**See also**: [--remote-bundles option for cf-runagent][cf-runagent], [cfruncommand in body server control][cf-serverd#cfruncommand]
+
 **History:**
 
 - ```bundle``` `resource_type` added in 3.9.0
