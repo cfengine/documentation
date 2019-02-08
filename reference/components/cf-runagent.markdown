@@ -19,6 +19,8 @@ which hosts `cf-agent` will be started, and classes that the user requests
 
 [%CFEngine_include_snippet(cf-runagent.help, [\s]*--[a-z], ^$)%]
 
+**See also**: [bundle resource_type in server access promises][access#resource_type], [cfruncommand in body server control][cf-serverd#cfruncommand]
+
 ## Control Promises
 
 Settings describing the details of the fixed behavioral promises made by
