@@ -117,10 +117,25 @@ Host API allows to access host specific information.
 
 **Method:** DELETE
 
-Remove data about the host from reporting database and stop collecting reports
-from the host. API call schedules a job for purging authentication keys
-exchanged during bootstrap which prevents host from being collected in the
-future. Key purging usually take an effect within 5-10 minutes.
+Remove data about the host from reporting database and stop collecting reports from the host.
+This should be done when the host is no longer active, activities such as a new bootstrap can cause the host to reappear.
+
+If host is found and scheduled for deletion, status code `202 ACCEPTED` is returned.
+If host is not found, status code `404 NOT FOUND` is returned.
+Other response codes are also possible (access denied, server error, etc.).
+Only users with the admin role are allowed to delete hosts.
+
+Reporting data associated with the host is immediately purged.
+This includes SQL tables like `agentstatus`,  `hosts`, `contexts`, `variables`, etc.
+In order to completely delete the host, a deletion job is scheduled by adding the host to the internal table `KeysPendingForDeletion`.
+To see what hosts are pending deletion, run the query `SELECT HostKey FROM KeysPendingForDeletion;`.
+
+After 5-10 minutes (one reporting iteration), the main thread of cf-hub will pick up the deletion job.
+The hostkey is then removed from:
+
+ * "Last seen" database, which contains network connection info (`/var/cfengine/state/cf_lastseen.lmdb`).
+ * Public key directory, containing cryptographic keys exchaned during bootstrap (`/var/cfengine/ppkeys`).
+ * The previously mentioned `KeysPendingForDeletion` table.
 
 [Depending on the configuration][Masterfiles Policy Framework#trustkeysfrom]
 of [`trustkeysfrom`][cf-serverd#trustkeysfrom] for the hub hosts may re-appear
