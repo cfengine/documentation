@@ -49,6 +49,14 @@ LICENSED number of hosts. It is unspecified which hosts are the ones
 skipped, in case the total number of hosts listed in `lastseen` database
 are over the LICENSED number.
 
+### Can cf-hub host count be different from Mission Portal ?
+
+Yes, it can be.
+Mission Portal only sees the hosts which `cf-hub` has put into the PostgreSQL database.
+`cf-hub` can skip hosts for a few reasons, for example if they are in [`exclude_hosts`](cf-hub#exclude_hosts), or if it has reached the license count.
+Thus, it is possible to appear to be within license count in Mission Portal, but cf-hub is detecting that you are over license.
+If you believe you should be within license count, the [Host DELETE API]([Host REST API#Remove host from the hub]) can be used to remove old / inactive hosts.
+
 ## When is a hub behaving as **over-licensed** ?
 
 When the number of hosts in the `lastseen` database (viewable with
