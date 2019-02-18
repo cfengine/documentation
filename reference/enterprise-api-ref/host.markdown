@@ -128,9 +128,9 @@ Only users with the admin role are allowed to delete hosts.
 Reporting data associated with the host is immediately purged.
 This includes SQL tables like `agentstatus`,  `hosts`, `contexts`, `variables`, etc.
 In order to completely delete the host, a deletion job is scheduled by adding the host to the internal table `KeysPendingForDeletion`.
-To see what hosts are pending deletion, run the query `SELECT HostKey FROM KeysPendingForDeletion;`.
+To see what hosts are pending deletion, run the query `SELECT HostKey FROM KeysPendingForDeletion;` against the `cfsettings` database.
 
-After 5-10 minutes (one reporting iteration), the main thread of cf-hub will pick up the deletion job.
+After 5-10 minutes (one reporting iteration based on the [hub schedule][cf-hub#hub_schedule]), the main thread of cf-hub will pick up the deletion job.
 The hostkey is then removed from:
 
  * "Last seen" database, which contains network connection info (`/var/cfengine/state/cf_lastseen.lmdb`).
