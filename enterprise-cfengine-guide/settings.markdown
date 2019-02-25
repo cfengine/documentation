@@ -196,6 +196,33 @@ Mission portal can authenticate against an external directory.
 
 **See Also:** [LDAP authentication REST API][LDAP authentication API]
 
+
+## Role based access control ##
+
+![Role based access control](role_based_access_control_settings.png)
+
+Roles in Mission portal can be restricted to perform only configured actions. 
+Configure role-based access controls from settings.
+
+**Special Notes:** 
+
+- Admin role has all permissions by default.
+
+- Cf_remoteagent role has all permissions related to API by default.
+
+- Permissions granted by roles are additive, users with multiple roles are permitted to perform actions granted by each role.
+
+**Restore admin role permissions:** 
+
+To restore the CFEngine admin role permissions run the following sql as root on your hub
+
+```console
+root@hub:~# /var/cfengine/bin/psql cfsettings -c "INSERT INTO rbac_role_permission (role_id, permission_alias) (SELECT 'admin'::text as role_id, alias as permission_alias FROM rbac_permissions) ON CONFLICT (role_id, permission_alias)  DO NOTHING;"
+```
+
+**See Also:** [Web RBAC API][Web RBAC API]
+
+
 ## About CFEngine ##
 
 ![About CFEngine](Settings-7.png)
