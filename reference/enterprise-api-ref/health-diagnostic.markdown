@@ -133,3 +133,150 @@ curl -k --user <username>:<password> -X POST \
     }
 }
 ```
+
+## List of health diagnostic dismissed hosts
+
+**URI:** https://hub.cfengine.com/api/health-diagnostic/dismiss/:report_id
+
+**Method:** GET
+
+**Parameters**
+
+* **report_id** *(string)*
+    Report id.
+    List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
+* **offset** *(integer)*
+    Number of results to skip for the processed query.
+* **limit**  *(integer)*
+    Limit the number of results in the query.
+
+
+**CURL Request Example:**
+```
+curl -k --user <username>:<password> -X GET \
+  https://hub.cfengine.com/api/health-diagnostic/dismiss/notRecentlyCollected?limit=3&offset=0 
+```
+
+**Example response:**
+
+```
+{
+    "data": [
+        {
+            "header": [
+                {
+                    "columnName": "hostkey",
+                    "columnType": "STRING"
+                },
+                {
+                    "columnName": "hostname",
+                    "columnType": "STRING"
+                },
+                {
+                    "columnName": "ipaddress",
+                    "columnType": "STRING"
+                },
+                {
+                    "columnName": "lastreporttimestamp",
+                    "columnType": "STRING"
+                },
+                {
+                    "columnName": "firstreporttimestamp",
+                    "columnType": "STRING"
+                }
+            ],
+            "query": "SELECT * FROM m_hosts WHERE hostkey IN (SELECT hostkey FROM health_diagnostics_dismissed WHERE report_type = 'notRecentlyCollected' AND username = 'admin')",
+            "queryTimeMs": 26,
+            "rowCount": 50,
+            "rows": [
+                [
+                    "SHA=aasdsfdgddswrdfgddfdfgdffb8922",
+                    "SHA=aasdsfdgddswrdfgddfdfgdffb8922",
+                    null,
+                    "2019-02-27 10:32:12.813777+00",
+                    "2019-02-27 10:32:12.813777+00"
+                ],
+                [
+                    "SHA=aasdsfdgddswrdfgddfdfgdffb8930",
+                    "SHA=aasdsfdgddswrdfgddfdfgdffb8930",
+                    null,
+                    "2019-02-27 10:32:12.813777+00",
+                    "2019-02-27 10:32:12.813777+00"
+                ],
+                [
+                    "SHA=aasdsfdgddswrdfgddfdfgdffb8925",
+                    "SHA=aasdsfdgddswrdfgddfdfgdffb8925",
+                    null,
+                    "2019-02-27 10:32:12.813777+00",
+                    "2019-02-27 10:32:12.813777+00"
+                ]
+            ]
+        }
+    ],
+    "meta": {
+        "count": 1,
+        "page": 1,
+        "timestamp": 1553087363,
+        "total": 1
+    }
+}
+```
+
+## Dismiss hosts from health diagnostic
+
+**URI:** https://hub.cfengine.com/api/health-diagnostic/dismiss/:report_id
+
+**Method:** POST
+
+**Parameters**
+
+* **report_id** *(string)*
+    Report id.
+    List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
+* **hosts** *(array)*
+    Array of host keys to dismiss
+
+
+**CURL Request Example:**
+```
+curl -k --user admin:admin -X POST \
+  https://hub.cfengine.com/api/health-diagnostic/dismiss/notRecentlyCollected \
+  -H 'Content-Type: application/json' \
+  -d '{"hosts": ["SHA=aasdsfdgddswrdfgddfdfgwerdffb86", "SHA=fe7f992547addc96fe167bacd6de37681c188709ce9f01fb995f03124ef2a934"]}'
+```
+
+**Example response:**
+
+```
+HTTP 201 CREATED
+```
+
+
+## Remove hosts from dismissed list
+
+**URI:** https://hub.cfengine.com/api/health-diagnostic/dismiss/:report_id
+
+**Method:** DELETE
+
+**Parameters**
+
+* **report_id** *(string)*
+    Report id.
+    List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
+* **hosts** *(array)*
+    Array of host keys to remove from dismissed list
+
+
+**CURL Request Example:**
+```
+curl -k --user admin:admin -X POST \
+  https://hub.cfengine.com/api/health-diagnostic/dismiss/notRecentlyCollected \
+  -H 'Content-Type: application/json' \
+  -d '{"hosts": ["SHA=aasdsfdgddswrdfgddfdfgwerdffb86", "SHA=fe7f992547addc96fe167bacd6de37681c188709ce9f01fb995f03124ef2a934"]}'
+```
+
+**Example response:**
+
+```
+HTTP 202 ACCEPTED
+```
