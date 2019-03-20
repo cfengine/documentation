@@ -526,3 +526,35 @@ Manage packages using Slackware's [slackpkg](https://slackpkg.org).
 **History:**
 
 * Added in CFEngine 3.12.0
+
+### msiexec
+
+Manage MSI packages using MSI installer on Windows.
+
+Due to lack of central software repository on supported versions of Windows,
+neither installation from repository nor checking for upgrades is supported.
+The full path to the MSI package file must be supplied in order to promise the
+package is installed. In order to promise a package is absent (not installed)
+the package name must be used.
+
+**Example**: install [Google Chrome][] but prevent it from self-upgrading
+(otherwise Google Chrome's self-upgrading will conflict with CFEngine ensuring
+that version from this particluar MSI is installed):
+
+[Google Chrome]: https://cloud.google.com/chrome-enterprise/browser/download/#chrome-browser-update
+
+```cf3
+  packages:
+    windows::
+      "C:\GoogleChromeStandaloneEnterprise.msi"
+        policy => "present",
+        package_module => msiexec;
+
+      "Google Update Helper"
+        policy => "absent",
+        package_module => msiexec;
+```
+
+**History:**
+
+* Added in CFEngine 3.12.2 and 3.14.0
