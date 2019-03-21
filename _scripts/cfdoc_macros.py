@@ -222,7 +222,7 @@ def dictToTable(dictionary):
 	while True:
 		columns = 0
 		line = "| "
-		for key in dictionary.keys():
+		for key in sorted(dictionary.keys()):
 			if row == 0:
 				line += "`" + key + "`"
 				columns =- 1
