@@ -28,7 +28,7 @@ true. If the function evaluates to false, then the class remains unchanged.
     {
     vars:
       "five" int => "5";
-      "seven" " int => "7";
+      "seven" int => "7";
     classes:
       "ok" expression => islessthan("$(five)","$(seven)");
 
