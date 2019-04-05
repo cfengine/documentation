@@ -25,7 +25,7 @@ Output:
 **Tips:**
 
 * Filter out the current (```.```) and parent (```..```)directories with a
-  negative look ahead. ```lsdir( "/tmp", "^(?!(\.|\.\.)).*", false )```.
+  negative look ahead. ```lsdir( "/tmp", "^(?!(\.$|\.\.$)).*", false )```.
 
 **Notes:**
 
