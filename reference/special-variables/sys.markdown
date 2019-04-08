@@ -1219,8 +1219,8 @@ The basename of the first policy file read by the agent. For example
 
 ### sys.policy_hub
 
-Hostname or IP of the machine acting as the policy server. This value is set
-during bootstrap and is stored in ```$(sys.workdir)/policy_server.dat```. If
+IP of the machine acting as the policy server. This value is set during
+bootstrap and is stored in ```$(sys.workdir)/policy_server.dat```. If
 ```$(sys.workdir)/policy_server.dat``` does not exist or is empty, then the
 variable is undefined.
 
