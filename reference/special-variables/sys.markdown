@@ -1217,22 +1217,6 @@ The basename of the first policy file read by the agent. For example
 
 - Introduced 3.12.0
 
-### sys.policy_hub
-
-Hostname or IP of the machine acting as the policy server. This value is set
-during bootstrap and is stored in ```$(sys.workdir)/policy_server.dat```. If
-```$(sys.workdir)/policy_server.dat``` does not exist or is empty, then the
-variable is undefined.
-
-```cf3
-    reports:
-
-     "Policy hub is $(sys.policy_hub)";
-```
-
-**History:** Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010).
-Available in Community since 3.2.0
-
 ### sys.policy_entry_dirname
 
 The full path to the directory containing the first policy file read by the agent. For example
@@ -1259,10 +1243,9 @@ The full path to the first policy file read by the agent. For example
 
 ### sys.policy_hub
 
-Hostname or IP of the machine acting as the policy server. This value is set
-during bootstrap and is stored in ```$(sys.workdir)/policy_server.dat```. If
-```$(sys.workdir)/policy_server.dat``` does not exist or is empty, then the
-variable is undefined.
+IP of the machine acting as the policy server.
+
+```$(sys.workdir)/policy_server.dat``` stores bootstrap information. If bootstrapped to a hostname, the value is the current IP the hostname resolves to. If bootstrapped to an IP, the value is the stored IP. The variable is undefined if ```$(sys.workdir)/policy_server.dat``` does not exist or is empty.
 
 ```cf3
     reports:
@@ -1270,17 +1253,21 @@ variable is undefined.
      "Policy hub is $(sys.policy_hub)";
 ```
 
-**History:** Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010).
-Available in Community since 3.2.0
+**History:**
+
+- Introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010).
+- Available in Community since 3.2.0
 
 ### sys.policy_hub_port
 
 The default port which ```cf-agent``` will use by default when making outbound
 connections to ```cf-serverd```. This defaults to ```5308``` but can be
-overridden based on the data in ```$(sys.workdir)/policy_server.dat``` which is
-created during bootstrap.
+overridden based on the data provided during bootstrap stored in
+```$(sys.workdir)/policy_server.dat```.
 
-**History:** Introduced in version 3.10.0 (2016).
+**History:**
+
+- Introduced in version 3.10.0 (2016).
 
 ### sys.release
 
