@@ -307,6 +307,6 @@ This file contains a list of currently discovered classes and variable
 values that characterize the anomaly alert environment. They are altered
 by the monitor daemon.
 
-* `/var/logs/CFEngineHub-Install.log`
+* `/var/logs/CFEngine-Install.log`
 
 This file contains logs related to the CFEngine package installation.
