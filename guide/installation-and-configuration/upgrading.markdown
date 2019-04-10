@@ -125,7 +125,7 @@ agents you are ready to begin binary upgrades.
 
    *Community does not have a hub specific package.*
 
-3. Check `/var/log/CFEngineHub-Install.log` for errors.
+3. Check `/var/log/CFEngine-Install.log` for errors.
 
 4. Run the policy on the hub several times or wait for the system to converge.
 
