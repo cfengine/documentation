@@ -22,13 +22,13 @@ minus `1`.
 
 **Example:**
 
+Prepare:
+
 [%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src prep, .*end_src)%]
 
-Run:
+Policy:
 
 [%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src cfengine3, .*end_src)%]
-
-Prepare:
 
 Output:
 
@@ -37,4 +37,6 @@ Output:
 
 **See also:** [readcsv()][readcsv], [classmatch()][classmatch]
 
-**History:** Introduced in CFEngine 3.14
+**History:**
+
+- Introduced in CFEngine 3.14
