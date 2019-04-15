@@ -22,9 +22,19 @@ minus `1`.
 
 **Example:**
 
+[%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src prep, .*end_src)%]
+
+Run:
+
 {%raw%}
-[%CFEngine_include_example(classfiltercsv.cf)%]
+[%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src cfengine3, .*end_src)%]
+Prepare:
 {%endraw%}
+
+Output:
+
+[%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
 
 **See also:** [readcsv()][readcsv], [classmatch()][classmatch]
 
