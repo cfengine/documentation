@@ -26,10 +26,9 @@ minus `1`.
 
 Run:
 
-{%raw%}
 [%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src cfengine3, .*end_src)%]
+
 Prepare:
-{%endraw%}
 
 Output:
 
