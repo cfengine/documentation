@@ -22,8 +22,9 @@ In short, the steps are:
 
 ## Backup
 
-Take a full backup from your policy hub before making any changes so that you
-can recover if anything goes wrong.
+Backups are made during the hub package upgrade, but it's prudent to take a full
+backup from your policy hub before making any changes so that you can recover if
+anything goes wrong.
 
 1. Stop the CFEngine services.
 
@@ -39,7 +40,7 @@ can recover if anything goes wrong.
    root@hub:~# service cfengine3 stop
    ```
 
-2. Create an archive containing all cfengine information.
+2. Create an archive containing **all** cfengine information.
 
    Ensure you have enough disk space where your backup archive will be created.
 
@@ -96,18 +97,22 @@ agents you are ready to begin binary upgrades.
    root@hub:~# service cfengine3 start
    ```
 
-2. Install the new Enterprise Hub package (you may need to adjust the
-   package name based on CFEngine edition, version and distribution).
+2. Install the new Enterprise Hub package (you may need to adjust the package
+   name based on CFEngine edition, version and distribution). By default,
+   backups made during upgrade are placed in `/var/cfengine/state/pg/backup`,
+   this can be overridden by **exporting** `BACKUP_DIR` before package upgrade.
 
    **Red Hat/CentOS:**
 
    ```console
+   root@hub:~# export BACKUP_DIR="/mnt/plenty-of-free-space"
    root@hub:~# rpm -U cfengine-nova-hub-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el6.x86_64.rpm
    ```
 
    **Debian/Ubuntu:**
 
    ```console
+   root@hub:~# export BACKUP_DIR="/mnt/plenty-of-free-space"
    root@hub:~# dpkg --install cfengine-nova-hub_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-deb7.deb
    ```
 
