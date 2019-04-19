@@ -25,7 +25,11 @@ treated as JSON objects (for arrays, the key is the element's offset).
 `getvalues()`, to bridge the gap between data container and the
 traditional list and array data types in CFEngine.
 
-**Note:** It is only possible to wrap data containers in the current namespace.
+**Notes:**
+
+- Bare values try to expand a named cfengine data container
+- It is only possible to wrap data containers in the current namespace.
+- true and false are reserved bare values
 
 [%CFEngine_function_attributes()%]
 
