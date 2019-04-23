@@ -33,7 +33,7 @@ bundle agent example
 {
   processes:
       "splunkd"
-        process_owner => { "root" },
+        process_select => by_owner( "root" ),
         handle => "example_splunk_stop_gracefully",
         process_stop => "/opt/splunkforwarder/bin/splunk stop",
         comment => "Find splunkd processes owned by root. Stop it gracefully
