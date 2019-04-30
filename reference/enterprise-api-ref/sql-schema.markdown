@@ -358,6 +358,56 @@ lastreporttimestamp  | 2015-03-10 14:20:20+00
 firstreporttimestamp | 2015-03-10 13:40:20+00
 ```
 
+## Table: Hosts_not_reported
+
+Hosts_not_reported table contains information about not reported hosts.
+
+**Columns:**
+
+* **HostKey** *(text)*
+    Unique host identifier. All tables can be joined by `HostKey` to connect
+    data concerning same hosts.
+
+* **iscallcollected** *(boolean)*
+    Is host call collected
+
+* **LastReportTimeStamp** *(timestamp)*
+    Timestamp of the most recent successful report collection.
+
+* **FirstReportTimeStamp** *(timestamp)*
+    Timestamp when the host reported to the hub for the first time, which
+    indicate when the host was bootstrapped to the hub.
+
+**Example query:**
+
+```sql
+SELECT hostkey,
+       iscallcollected,
+       lastreporttimestamp,
+       firstreporttimestamp
+FROM   hosts;
+```
+
+**Output:**
+
+```
+-[ RECORD 1 ]--------|-----------------------
+hostkey              | SHA=a4dd...
+iscallcollected      | t
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+-[ RECORD 2 ]--------|-----------------------
+hostkey              | SHA=3b94...
+iscallcollected      | f
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:34:20+00
+-[ RECORD 3 ]--------|-----------------------
+hostkey              | SHA=2aab...
+iscallcollected      | f
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+```
+
 ## Table: HubConnectionErrors
 
 Networking errors encountered by cf-hub during its operation.
@@ -406,6 +456,89 @@ message        | ServerAuthenticationError
 querytype      | delta
 ```
 
+## Table: Inventory
+
+Inventory data
+
+**Columns:**
+
+* **HostKey** *(text)*
+    Unique identifier of the host.
+
+* **keyname** *(text)*
+    Name of the key.
+    
+* **type** *(text)*
+    Type of the variable. [List][Variables] of supported variable types.
+
+* **metatags** *(text[])*
+    List of [meta tags][Tags for variables, classes, and bundles] set for the variable.
+
+* **value** *(text)*
+    Variable value serialized to string.
+        * List types such as: `slist`, `ilist`, `rlist` are serialized with CFEngine list format: {'value','value'}.
+        * `Data` type is serialized as JSON string.
+
+**Example query:**
+
+```sql
+SELECT hostkey,
+       keyname,
+       type,
+       metatags,
+       value
+FROM   Inventory;
+```
+
+**Output:**
+
+```
+-[ RECORD 1 ]--|--------------------------
+hostkey        | SHA=3b94d...
+keyname        | default.sys.fqhost
+type           | string
+metatags       | {inventory,source=agent,"attribute_name=Host name"}
+value          | host name
+-[ RECORD 2 ]--|--------------------------
+hostkey        | SHA=3b94d...
+keyname        | default.sys.uptime
+type           | int
+metatags       | {inventory,source=agent,"attribute_name=Uptime minutes"}
+value          | 4543
+```
+
+## Table: Inventory_new
+
+Inventory data grouped by host
+
+**Columns:**
+
+* **HostKey** *(text)*
+    Unique identifier of the host.
+
+* **values** *(jsonb)*
+    Inventory values presented in JSON format
+    
+
+**Example query:**
+
+```sql
+SELECT hostkey,
+       values
+FROM   Inventory_new;
+```
+
+**Output:**
+
+```
+-[ RECORD 1 ]--|--------------------------
+hostkey        | SHA=3b94d...
+values         | {"OS": "ubuntu", "OS type": "linux", "CPU model": "CPU model A10", "Host name": "SHA=aa11bb1", "OS kernel": "14.4.0-53-generic", "Interfaces": "pop, imap", "BIOS vendor": "BIOS vendor", "CFEngine ID": "SHA=aa11bb1", "CPU sockets": "229", "New OS type": "linux", "Architecture": "x86_64"}
+-[ RECORD 2 ]--|--------------------------
+hostkey        | SHA=5rt43...
+values         | {"OS": "ubuntu", "OS type": "linux", "CPU model": "CPU model A10", "Host name": "SHA=aa11bb1", "OS kernel": "14.4.0-53-generic", "Interfaces": "pop, imap", "BIOS vendor": "BIOS vendor", "CFEngine ID": "SHA=aa11bb1", "CPU sockets": "229", "New OS type": "linux", "Architecture": "x86_64"}
+```
+
 ## Table: LastSeenHosts
 
 Information about communication between CFEngine clients. Effectively a snapshot
@@ -444,6 +577,70 @@ SELECT hostkey,
        lastseentimestamp,
        lastseeninterval
 FROM   lastseenhosts;
+```
+
+**Output:**
+
+```
+-[ RECORD 1 ]-----|-----------------------
+hostkey           | SHA=3b94d...
+lastseendirection | OUTGOING
+remotehostkey     | SHA=2aab8...
+remotehostip      | 192.168.33.152
+lastseentimestamp | 2015-03-13 12:20:45+00
+lastseeninterval  | 299
+-[ RECORD 2 ]-----|------------------------
+hostkey           | SHA=3b94d...
+lastseendirection | INCOMING
+remotehostkey     | SHA=a4dd5...
+remotehostip      | 192.168.33.151
+lastseentimestamp | 2015-03-13 12:22:06+00
+lastseeninterval  | 298
+-[ RECORD 3 ]-----|------------------------
+hostkey           | SHA=2aab8...
+lastseendirection | INCOMING
+remotehostkey     | SHA=3b94d...
+remotehostip      | 192.168.33.65
+lastseentimestamp | 2015-03-13 12:20:45+00
+lastseeninterval  | 299
+```
+
+## Table: LastSeenHostsLogs
+
+History of LastSeenHosts table
+
+**Columns:**
+
+* **HostKey** *(text)*
+    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+
+* **LastSeenDirection** *(`INCOMING`/`OUTGOING`)*
+    Direction within which the connection was established.
+    * `INCOMING` - host received incoming connection.
+    * `OUTGOING` - host opened connection to remote host.
+
+* **RemoteHostKey** *(text)*
+    `HostKey` of the remote host.
+
+* **RemoteHostIP** *(text)*
+    IP address of the remote host.
+
+* **LastSeenTimeStamp** *(timestamp)*
+    Time when the connection was established.
+
+* **LastSeenInterval** *(real)*
+    Average time period (seconds) between connections for the given `LastSeenDirection` with the host.
+
+**Example query:**
+
+```sql
+SELECT hostkey,
+       lastseendirection,
+       remotehostkey,
+       remotehostip,
+       lastseentimestamp,
+       lastseeninterval
+FROM   LastSeenHostsLogs;
 ```
 
 **Output:**
@@ -813,6 +1010,8 @@ logmessages     | {}
 promisees       | {}
 ```
 
+
+
 ## Table: PromiseLog
 
 History of promises executed on hosts.
@@ -1174,6 +1373,79 @@ patcharchitecture | default
 patchreporttype   | AVAILABLE
 ```
 
+## Table: Status
+
+Statuses of report collection. cf-hub records all collection attempts and whether they are FAILEDC or CONSUMED. CONSUMED means next one will be delta. FAILEDC means next one will be REBASE.
+
+**Columns:**
+
+* **host** *(text)*
+    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+
+* **ts** *(timestamp)*
+    Timestamp of last data provided by client during report collection. This is used by delta queries to request a start time.
+
+* **status** *(`FAILEDC`,`CONSUMED`)*
+    CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
+    * `FAILEDC` - New patch have been detected. This is a common in case of release of new patch version or new package was installed that have an upgrate available.
+    * `CONSUMED` - Patch is not longer available. Patch may be replaced with newer version, or installed package have been upgrated.
+    **Note:** CFEngine reports only the most up to date version available.
+
+* **lstatus** *(text)*
+    Deprecated
+
+* **type** *(text)*
+    Deprecated
+
+* **who** *(integer)*
+    Deprecated
+
+* **whr** *integer*
+    Deprecated
+
+**Example query:**
+
+```sql
+SELECT hostkey,
+       changetimestamp,
+       changeoperation,
+       patchname,
+       patchversion,
+       patcharchitecture,
+       patchreporttype
+FROM   softwareupdateslog;
+```
+
+**Output:**
+
+```
+-[ RECORD 1 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libelf1
+patchversion      | 0.158-0ubuntu5.2
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+-[ RECORD 2 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libisccfg90
+patchversion      | 1:9.9.5.dfsg-3ubuntu0.2
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+-[ RECORD 3 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libc6-dev
+patchversion      | 2.19-0ubuntu6.6
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+```
+
+
 ## Table: Variables
 
 Variables and their values set on hosts at their last reported cf-agent execution.
@@ -1251,6 +1523,60 @@ variablevalue   | 69.66
 variabletype    | string
 metatags        | {source=promise,report}
 changetimestamp | 2015-03-11 14:27:12+00
+```
+
+## Table: Variables_dictionary
+
+Inventory attributes, these data are using in [List of inventory attributes API][Inventory API#List of inventory attributes]
+
+**Columns:**
+
+* **Id** *(integer)*	
+    Auto incremental ID	 
+* **Attribute_name** *(text)*
+    Attribute name
+* **Category** *(text)* *(`Hardware`,`Software`,`Network`, `Security`, `User defined`)*
+    Attribute category
+* **Readonly** *(integer)* *(`0`,`1`)*
+    Is attribute readonly
+* **Type** *(text)*
+    Type of the attribute. [List][Variables] of supported variable types.
+* **convert_function** *(text)*
+    Convert function. Emp.: `cf_clearSlist` - to transform string like `{"1", "2"}` to `1, 2`
+* **keyname** *(text)*
+    Key name
+* **Enabled** *(integer)* *(`0`,`1`)*
+    Is attribute enabled for the API   
+
+**Example query:**
+
+```sql
+SELECT attribute_name,
+       category,
+       readonly,
+       type,
+       convert_function,
+       enabled
+FROM   variables_dictionary;
+```
+
+**Output:**
+
+```
+-[ RECORD 1 ]---|-----------------------------------------------------
+attribute_name  | Architecture
+category        | Software
+readonly        | 1
+type            | string
+convert_function| 
+enabled         | 1
+-[ RECORD 2 ]---|-----------------------------------------------------
+attribute_name  | IPv4 addresses
+category        | Network
+readonly        | 1
+type            | slist
+convert_function| cf_clearSlist
+enabled         | 1
 ```
 
 ## Table: VariablesLog
@@ -1342,4 +1668,114 @@ variablevalue   | 67.01
 variabletype    | string
 metatags        | {monitoring,source=environment}
 ```
+## Table: v_hosts
 
+V_hosts table contains information about hosts.
+
+**Columns:**
+
+* **HostKey** *(text)*
+    Unique host identifier. All tables can be joined by `HostKey` to connect
+    data concerning same hosts.
+
+* **iscallcollected** *(boolean)*
+    Is host call collected
+
+* **LastReportTimeStamp** *(timestamp)*
+    Timestamp of the most recent successful report collection.
+
+* **FirstReportTimeStamp** *(timestamp)*
+    Timestamp when the host reported to the hub for the first time, which
+    indicate when the host was bootstrapped to the hub.
+
+**Example query:**
+
+```sql
+SELECT hostkey,
+       iscallcollected,
+       lastreporttimestamp,
+       firstreporttimestamp
+FROM   hosts;
+```
+
+**Output:**
+
+```
+-[ RECORD 1 ]--------|-----------------------
+hostkey              | SHA=a4dd...
+iscallcollected      | t
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+-[ RECORD 2 ]--------|-----------------------
+hostkey              | SHA=3b94...
+iscallcollected      | f
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:34:20+00
+-[ RECORD 3 ]--------|-----------------------
+hostkey              | SHA=2aab...
+iscallcollected      | f
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+```
+
+## Table: vm_hosts
+
+vm_hosts table contains basic information about hosts managed by CFEngine. 
+In this table data are cached what gives a better query performance
+
+**Columns:**
+
+* **HostKey** *(text)*
+    Unique host identifier. All tables can be joined by `HostKey` to connect
+    data concerning same hosts.
+
+* **HostName** *(text)*
+    Host name locally detected on the host, configurable as `hostIdentifier`
+    option in [Settings API][Status and Settings REST API#Get settings] and
+    Mission Portal settings UI.
+
+* **IPAddress** *(text)*
+    IP address of the host derived from the lastseen database (this is expected
+    to be the IP address from which connections come from, beware NAT will cause
+    multiple hosts to appear to have the same IP address).
+
+* **LastReportTimeStamp** *(timestamp)*
+    Timestamp of the most recent successful report collection.
+
+* **FirstReportTimeStamp** *(timestamp)*
+    Timestamp when the host reported to the hub for the first time, which
+    indicate when the host was bootstrapped to the hub.
+
+**Example query:**
+
+```sql
+SELECT hostkey,
+       hostname,
+       ipaddress,
+       lastreporttimestamp,
+       firstreporttimestamp
+FROM   hosts;
+```
+
+**Output:**
+
+```
+-[ RECORD 1 ]--------|-----------------------
+hostkey              | SHA=a4dd...
+hostname             | host001
+ipaddress            | 192.168.33.151
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+-[ RECORD 2 ]--------|-----------------------
+hostkey              | SHA=3b94...
+hostname             | hub
+ipaddress            | 192.168.33.65
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:34:20+00
+-[ RECORD 3 ]--------|-----------------------
+hostkey              | SHA=2aab...
+hostname             | host002
+ipaddress            | 192.168.33.152
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+```
