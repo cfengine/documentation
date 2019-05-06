@@ -90,15 +90,15 @@ like the following.
 # How do Content-Driven Policies work in detail?
 
 
-The text files inmasterfiles/cdp_inputs/(e.g. ‘registry_list.txt’) are parsed
-into CFEngine lists by correspondingcdp_*files inmasterfiles/(e.g.
+The text files in masterfiles/cdp_inputs/(e.g. ‘registry_list.txt’) are parsed
+into CFEngine lists by corresponding cdp_*files in masterfiles/(e.g.
 ‘cdp_registry.cf’). It is the latter set of files that actually implement the
 policies in the text files.
 
 The Knowledge Map contains reports specifically designed to match the
 Content-Driven Policies.
 
-# Can I make my own Content-Diven Policies?
+# Can I make my own Content-Driven Policies?
 
 
 It is possible to mimic the structure of the existing Content-Driven Policies to
