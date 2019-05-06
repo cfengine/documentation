@@ -31,7 +31,7 @@ reports on the outcome. The Content-Driven Policy services report is shown
 below.
 
 Note: Content-Driven Policy originally from the CFEngine Nova has not been part
-of masterfiles since 3.6.0. [`cdp_inputs` was removed](https://github.com/cfengine/masterfiles/commit/f3b877d98978be5684c5dad92ca87480a69b1b77) as part of moving to a
+of masterfiles since 3.6.0. [`cdp_inputs` was removed](https://github.com/cfengine/masterfiles/commit/4d05f6154098624bc042fe02ff7a9d25b7a16b44) as part of moving to a
 unified base for policy that works with both CFEngine Community and CFEngine
 Enterprise.
 
