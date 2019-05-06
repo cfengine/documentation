@@ -4,6 +4,7 @@ title: Content Driven Policy
 published: true
 sorting: 80
 tags: [overviews, special topics, guide]
+reviewed: 2019-05-06
 ---
 
 # What is a Content-Driven Policy?
@@ -28,6 +29,11 @@ explained in the file header. With these three lines, we ensure the correct
 status of three services on all our Windows machines and are given specialized
 reports on the outcome. The Content-Driven Policy services report is shown
 below.
+
+Note: Content-Driven Policy originally from the CFEngine Nova has not been part
+of masterfiles since 3.6.0. [`cdp_inputs` was removed](https://github.com/cfengine/masterfiles/commit/f3b877d98978be5684c5dad92ca87480a69b1b77) as part of moving to a
+unified base for policy that works with both CFEngine Community and CFEngine
+Enterprise.
 
 # Why should I use Content-Driven Policies?
 
@@ -98,8 +104,6 @@ Content-Driven Policies.
 It is possible to mimic the structure of the existing Content-Driven Policies to
 implement new ones, for new purposes.
 
-However, CFEngine AS will be creating more of these best-practice policies.
-Thus, making a feature request at CFEngine Support may result in your proposal
-being developed and supported by professionals at CFEngine AS. Furthermore,
-Knowledge Map reports currently need to be developed induvidually by CFEngine
-AS.
+[Professional services][professional services] can be engaged to assist you in
+development of the correct fit for your organization given your existing data
+sources and tooling available.
