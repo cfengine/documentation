@@ -36,6 +36,10 @@ User settings and preferences allows the CFEngine Enterprise
 administrator to change various options, including:
 
 * Turn on or off RBAC
+** When RBAC is disabled any user can see a host that has reported classes
+** Note, administrative functions like the ability to delete hosts are not
+   affected by this setting and hosts that have no reported classes are never
+   shown.
 * Unreachable host threshold
 * Number of samples used to identify a duplicate identity
 * Log level
