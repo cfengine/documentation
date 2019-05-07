@@ -35,6 +35,10 @@ administrator to change various options, including:
 
 * User authentication
 * Turn on or off RBAC
+  * When RBAC is disabled any user can see a host that has reported classes
+  * Note, administrative functions like the ability to delete hosts are not
+    affected by this setting and hosts that have no reported classes are never
+    shown.
 * Log level
 * Customize the user experience with the organization logo
 
