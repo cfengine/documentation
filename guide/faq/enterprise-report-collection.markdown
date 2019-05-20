@@ -134,10 +134,6 @@ of oxygen, where oxygen is access to latest policy) to indicate a health issue.
 
 **See Also**: `Enterprise API Reference`, `Enterprise API Examples`, [Enterprise Settings][Settings#preferences]
 
-## Are there supposed to be so many cf-consumer processes?
-
-Yes, `cf-consumer` will spawn 25 threads for report collection processing.
-
 ## Which hosts are pending trust revocation?
 
 When a host is removed using the delete API its key is placed in a queue for
