@@ -57,6 +57,14 @@ of the CFEngine system. That's where `vars.mon.listening_tcp4_ports` came from.
 ```
 {% endraw %}
 
+# How can I access keys when iterating over a dict?
+
+In CFEngine, the `@` symbol expands to the current key  when iterating over a dict.
+
+{% raw %}
+[%CFEngine_include_example(mustache_extension_expand_key.cf)%]
+{% endraw %}
+
 # Can you use nested classes?
 
 You can. This is handy when options slightly differ for different operating systems.
