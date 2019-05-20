@@ -3,7 +3,7 @@ layout: default
 title: Enterprise report collection
 published: true
 sorting: 90
-tags: [ FAQ, Enterprise, reporting, health, cf-hub, cf-consumer, redis-server  ]
+tags: [ FAQ, Enterprise, reporting, health, cf-hub ]
 ---
 
 ## What are reports?
@@ -229,40 +229,3 @@ and collect only the output from the most recent run.
 **Note:** The Enterprise hub automatically schedules rebase queries if it has
 been unable to collect from a given candidate for `client_history_timeout`
 hours.
-
-If a manual rebase collection does not restore reporting functionality for a
-host continue on to restarting the report collection components.
-
-### Restart report collection components
-
-Sometimes it is necessary to restart the report collection subsystem in order to
-re-synchronize the caching layer with the database. To restart the report
-collection subsystem simply kill `cf-hub`, `cf-consumer`, `redis-server`, and
-run the update policy.
-
-For systemd hosts this can be accomplished by simply restarting the `cf-hub`
-service. The related component restarts are automatically handled via the unit
-dependencies:
-
-```console
-[root@hub ~]# systemctl restart cf-hub
-```
-
-For non-systemd hosts:
-
-```console
-[root@hub ~]# pkill cf-consumer
-[root@hub ~]# pkill cf-hub
-[root@hub ~]# pkill redis-server
-[root@hub ~]# cf-agent -KIf update.cf
-    info: Executing 'no timeout' ... '/var/cfengine/bin/redis-server /var/cfengine/config/redis.conf'
-    info: Command related to promiser '/var/cfengine/bin/redis-server /var/cfengine/config/redis.conf' returned code defined as promise kept 0
-    info: Completed execution of '/var/cfengine/bin/redis-server /var/cfengine/config/redis.conf'
-    info: Executing 'no timeout' ... '/var/cfengine/bin/cf-consumer'
-    info: Command related to promiser '/var/cfengine/bin/cf-consumer' returned code defined as promise kept 0
-    info: Completed execution of '/var/cfengine/bin/cf-consumer'
-    info: Executing 'no timeout' ... '"/var/cfengine/bin/cf-hub"'
-    info: Command related to promiser '"/var/cfengine/bin/cf-hub"' returned code defined as promise kept 0
-    info: Completed execution of '"/var/cfengine/bin/cf-hub"'
-```
-
