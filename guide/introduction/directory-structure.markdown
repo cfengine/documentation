@@ -178,7 +178,6 @@ default. Other checks can be instrumented by setting a
 The CFEngine components keep their current process identifier number in
 `pid files' in the work directory.
 
-* `cf-consumer.pid`
 * `cf-execd.pid`
 * `cf-hub.pid`
 * `cf-monitord.pid`
