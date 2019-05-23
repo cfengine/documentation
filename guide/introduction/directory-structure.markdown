@@ -38,7 +38,6 @@ The CFEngine application is fully contained within the /var/cfengine directory t
 * `cf-monitord`: Collects system statistics
 * `cf-serverd`: Provides network services; used to distribute policy and data files
 * `runalerts.sh`: Updates Mission Portal status and activates alert actions (Enterprise only)
-* `cf-consumer`: Responsible for moving collected reports from the redis queue into the postgres database. (CFEngine Enterprise only)
 * `cf-hub`: Responsible for collecting reports from remote agents. (CFEngine Enterprise only)
 
 See Also: [CFEngine Component Applications and Daemons][Introduction and System Overview#CFEngine Component Applications and Daemons]
@@ -179,7 +178,6 @@ default. Other checks can be instrumented by setting a
 The CFEngine components keep their current process identifier number in
 `pid files' in the work directory.
 
-* `cf-consumer.pid`
 * `cf-execd.pid`
 * `cf-hub.pid`
 * `cf-monitord.pid`
@@ -243,14 +241,6 @@ IP address of the policy server
 * `bin/psql`
 * `bin/reindexdb`
 * `bin/vacuumdb`
-
-## Redis in /var/cfengine/bin ##
-
-* `bin/redis-benchmark`
-* `bin/redis-check-aof`
-* `bin/redis-check-dump`
-* `bin/redis-cli`
-* `bin/redis-server`
 
 
 ## Not Verified ##
