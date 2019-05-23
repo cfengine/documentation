@@ -20,7 +20,6 @@ The CFEngine application is fully contained within the /var/cfengine directory t
 * [git in /var/cfengine/bin][CFEngine Directory Structure#git in /var/cfengine/bin]
 * [Misc. in /var/cfengine/bin][CFEngine Directory Structure#Misc. in /var/cfengine/bin]
 * [Postgres in /var/cfengine/bin][CFEngine Directory Structure#Postgres in /var/cfengine/bin]
-* [Redis in /var/cfengine/bin][CFEngine Directory Structure#Redis in /var/cfengine/bin]
 
 ## /var/cfengine/bin ##
 
