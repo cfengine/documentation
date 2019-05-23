@@ -1014,6 +1014,78 @@ patcharchitecture | default
 patchreporttype   | AVAILABLE
 ```
 
+### Table: Status
+
+Statuses of report collection. cf-hub records all collection attempts and whether they are FAILEDC or CONSUMED. CONSUMED means next one will be delta. FAILEDC means next one will be REBASE.
+
+**Columns:**
+
+* **host** *(text)*
+    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+
+* **ts** *(timestamp)*
+    Timestamp of last data provided by client during report collection. This is used by delta queries to request a start time.
+
+* **status** *(`FAILEDC`,`CONSUMED`)*
+    CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
+    * `FAILEDC` - New patch have been detected. This is a common in case of release of new patch version or new package was installed that have an upgrate available.
+    * `CONSUMED` - Patch is not longer available. Patch may be replaced with newer version, or installed package have been upgrated.
+    **Note:** CFEngine reports only the most up to date version available.
+
+* **lstatus** *(text)*
+    Deprecated
+
+* **type** *(text)*
+    Deprecated
+
+* **who** *(integer)*
+    Deprecated
+
+* **whr** *integer*
+    Deprecated
+
+**Example query:**
+
+```sql
+SELECT hostkey,
+       changetimestamp,
+       changeoperation,
+       patchname,
+       patchversion,
+       patcharchitecture,
+       patchreporttype
+FROM   softwareupdateslog;
+```
+
+**Output:**
+
+```
+-[ RECORD 1 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libelf1
+patchversion      | 0.158-0ubuntu5.2
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+-[ RECORD 2 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libisccfg90
+patchversion      | 1:9.9.5.dfsg-3ubuntu0.2
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+-[ RECORD 3 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libc6-dev
+patchversion      | 2.19-0ubuntu6.6
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+```
+
 ### Table: PromiseExecutionsLog
 
 **This table was deprecated in 3.7.0. It is no longer used.**
