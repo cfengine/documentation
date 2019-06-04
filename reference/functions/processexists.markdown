@@ -7,7 +7,7 @@ tags: [reference, process functions, functions, processexists, process, processe
 
 [%CFEngine_function_prototype(regex)%]
 
-**Description:** Return whether a process matches the given regular expression
+**Description:** Return whether a process matches the given [anchored][anchored] regular expression
 `regex`.
 
 This function searches for the given regular expression in the process
