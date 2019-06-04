@@ -22,7 +22,7 @@ variable does not expand.
     * `uid` : owner ID
     * `ino` : inode number
     * `nlink` : number of *hard* links
-    * `ctime` : creation time in Unix epoch format
+    * `ctime` : time of last change in Unix epoch format
     * `atime` : last access time in Unix epoch format
     * `mtime` : last modification time in Unix epoch format
     * `mode` : file mode as a decimal number
