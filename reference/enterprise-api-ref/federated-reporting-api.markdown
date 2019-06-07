@@ -5,12 +5,13 @@ published: true
 tags: [reference, enterprise, API, reporting]
 ---
 
-Federated reporting API allows to configure federated reporting process.
+This API is used for configuring hubs so that a single hub can be used to report on any host connected to participating feeder hubs.
 
 # Remote hubs
 
-Before using remote hubs API, a hub should be enabled for federated reporting, please
-see `Enable hub for Federated Reporting` section below.
+Federated reporting must be enabled before it is possible to use the remote hubs API, please
+see the `Enable hub for Federated Reporting` section below.
+
 ## Remote hubs list
 
 **URI:** https://hub.cfengine.com/api/fr/remote-hub
@@ -203,10 +204,9 @@ HTTP 202 ACCEPTED
 
 # Federation config
 
-Before generating or removing federation config, a hub should be enabled for federated reporting, please
+Federated reporting must be enabled before generating or removing federation configuration, please
 see `Enable hub for Federated Reporting` section above. Otherwise an error will be thrown and 
 config file will not be created/deleted.
-
 
 ## Generate federation config
  
