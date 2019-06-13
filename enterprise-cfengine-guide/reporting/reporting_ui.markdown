@@ -21,7 +21,7 @@ See also:
 
 ## Query Builder ##
 
-Users not familiar with SQL syntax can easily create their own custom reports in this interface.
+Users not familiar with SQL syntax can easily create their own custom reports in this interface. Please note that query builder can be [extended with your custom data][Extending Query Builder in Mission portal#How to add new table to Query builder].
 
 * Tables - Select the data tables you want include in your report first.
 * Fields - Define your table columns based on your selection above.
