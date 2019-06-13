@@ -28,7 +28,7 @@ var DCA = {
       }
 ```
 
-Each element of this json object describes database table information. You need to add a new JSON element with 
+Each element of this JSON object describes database table information. You need to add a new JSON element with 
 your new table information.
 
 #### Structure of JSON element
@@ -89,22 +89,22 @@ Below you can see an example of hosts table representation as JSON element.
 
 **Structure:**
 
-Each element has a key and a value. When you  create your own JSON element please use a unique key. THe value is a
+Each element has a key and a value. When you  create your own JSON element please use a unique key. The value is a
 JSON object, please see explanations below.
 
 * **TableID** *(string)*
     Table id, can be the same as main element key, should be unique.
 * **Keys** *(json)*
     Table keys, describe there primary key, emp.: `{'primary_key': 'HostKey'}`
-* **label** *(string)*
+* **Label** *(string)*
     Label contains a table's name that will be shown on the UI. Not necessary to use a real table name,
     it can be an alias for better representation.
 * **Fields** *(json)*
-    Json object that contains table columns.
+    JSON object that contains table columns.
     
  **Fields structure:**
 
-Fields object is presented as JSON, where key is unique table's key and value is json representation of
+Fields object is presented as JSON, where key is unique table's key and value is JSON representation of
 table column properties:
 
 * **name** *(string)*
