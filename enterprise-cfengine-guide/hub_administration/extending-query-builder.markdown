@@ -20,7 +20,9 @@ To extend the query builder with your custom data you need to edit the javascrip
 `$(sys.workdir)/share/GUI/scripts/advancedreports/dca.js`. 
 
 There you will find the `DCA` variable that contains a JSON object:
-```var DCA = {
+
+```
+var DCA = {
       'Hosts':
       .........
       }
@@ -131,6 +133,7 @@ the next agent run.
 Let's see an example of Query builder extending with a new test table.
 
 1. Create a new table in the cfdb database
+
 ```
 CREATE TABLE IF NOT EXISTS "test" (
     "hostkey" text  PRIMARY KEY,
@@ -140,6 +143,7 @@ CREATE TABLE IF NOT EXISTS "test" (
 ```
 
 2. Fill the table with data from the hosts. 
+
 ```
 INSERT INTO "test" SELECT "hostkey", (random() * 100)::int as random_number  FROM "__hosts";
 ```
