@@ -9,7 +9,7 @@ tags: [faq, mission portal, hub administration, query builder]
 This instruction is created to explain how to extend the [Query Builder][Reporting UI#Query Builder] in the case where
 the enterprise hub database has new or custom tables that you want to use on the reporting page.
 
-The workflow in this guide is to edit a file that will be updated by CFEngien when you upgrade to a newer version of CFEngine. 
+The workflow in this guide is to edit a file that will be updated by CFEngine when you upgrade to a newer version of CFEngine. 
 Thus your changes are going to be deleted. Please make sure to either keep a copy of the edits you want to preserve, 
 or add a relative file path `scripts/advancedreports/dca.js` to `$(sys.workdir)/httpd/htdocs/preserve_during_upgrade.txt` 
 to preserve `dca.js` during the CFEngine upgrade process.  
