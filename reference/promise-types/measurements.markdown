@@ -91,6 +91,8 @@ what to do with the result afterwards.
 
 **Description:** The datatype being collected.
 
+**Default:**  ```pipe```
+
 CFEngine treats all input using a stream abstraction. The preferred interface
 is files, since they can be read without incurring the cost of a process.
 However pipes from executed commands may also be invoked.
