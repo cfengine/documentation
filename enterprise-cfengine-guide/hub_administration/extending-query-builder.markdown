@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Extending Query Builder in Mission portal
+title: Extending Query Builder in Mission Portal
 published: true
 sorting: 90
 tags: [faq, mission portal, hub administration, query builder]
@@ -187,7 +187,7 @@ INSERT INTO "test" SELECT "hostkey", (random() * 100)::int as random_number  FRO
 
 4. See the result in the Query Builder
 
-After the next cf-agent run file should be changed in the Mission portal and you will be able to see the new
+After the next cf-agent run file should be changed in the Mission Portal and you will be able to see the new
 table in the Query builder. You can use this table as predefined ones.
 
 ![Extended query builder](extended-query-builder.png)
