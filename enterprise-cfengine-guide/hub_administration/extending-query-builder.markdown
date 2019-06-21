@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Extending Query Builder in Mission portal
+title: Extending Query Builder in Mission Portal
 published: true
 sorting: 90
 tags: [faq, mission portal, hub administration, query builder]
@@ -9,7 +9,7 @@ tags: [faq, mission portal, hub administration, query builder]
 This instruction is created to explain how to extend the [Query Builder][Reporting UI#Query Builder] in the case where
 the enterprise hub database has new or custom tables that you want to use on the reporting page.
 
-The workflow in this guide is to edit a file that will be updated by CFEngien when you upgrade to a newer version of CFEngine. 
+The workflow in this guide is to edit a file that will be updated by CFEngine when you upgrade to a newer version of CFEngine. 
 Thus your changes are going to be deleted. Please make sure to either keep a copy of the edits you want to preserve, 
 or add a relative file path `scripts/advancedreports/dca.js` to `$(sys.workdir)/httpd/htdocs/preserve_during_upgrade.txt` 
 to preserve `dca.js` during the CFEngine upgrade process.  
@@ -28,7 +28,7 @@ var DCA = {
       }
 ```
 
-Each element of this json object describes database table information. You need to add a new JSON element with 
+Each element of this JSON object describes database table information. You need to add a new JSON element with 
 your new table information.
 
 #### Structure of JSON element
@@ -89,22 +89,22 @@ Below you can see an example of hosts table representation as JSON element.
 
 **Structure:**
 
-Each element has a key and a value. When you  create your own JSON element please use a unique key. THe value is a
+Each element has a key and a value. When you  create your own JSON element please use a unique key. The value is a
 JSON object, please see explanations below.
 
 * **TableID** *(string)*
     Table id, can be the same as main element key, should be unique.
 * **Keys** *(json)*
     Table keys, describe there primary key, emp.: `{'primary_key': 'HostKey'}`
-* **label** *(string)*
+* **Label** *(string)*
     Label contains a table's name that will be shown on the UI. Not necessary to use a real table name,
     it can be an alias for better representation.
 * **Fields** *(json)*
-    Json object that contains table columns.
+    JSON object that contains table columns.
     
  **Fields structure:**
 
-Fields object is presented as JSON, where key is unique table's key and value is json representation of
+Fields object is presented as JSON, where key is unique table's key and value is JSON representation of
 table column properties:
 
 * **name** *(string)*
@@ -187,7 +187,7 @@ INSERT INTO "test" SELECT "hostkey", (random() * 100)::int as random_number  FRO
 
 4. See the result in the Query Builder
 
-After the next cf-agent run file should be changed in the Mission portal and you will be able to see the new
+After the next cf-agent run file should be changed in the Mission Portal and you will be able to see the new
 table in the Query builder. You can use this table as predefined ones.
 
 ![Extended query builder](extended-query-builder.png)

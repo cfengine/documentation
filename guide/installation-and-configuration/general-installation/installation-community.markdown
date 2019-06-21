@@ -40,33 +40,7 @@ $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 
 ## 1. Download Packages
 
-Select the package to download that matches your operating system.
-This stores the cfengine-community_3.6.1-1_* file onto your machine.
-
-**Redhat/CentOS/SUSE 64-bit:**
-
-```
-$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community-3.6.1-1.x86_64.rpm
-```
-
-**Redhat/CentOS/SUSE 32-bit:**
-
-```
-$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community-3.6.1-1.i386.rpm
-```
-
-**Ubuntu/Debian 64-bit:**
-
-```
-$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community_3.6.1-1_amd64.deb
-```
-
-**Ubuntu/Debian 32-bit:**
-
-```
-$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community_3.6.1-1_i386.deb
-```
-
+Packages can be downloaded from the [community download page][community download page].
 
 ## 2. Install CFEngine on a Policy Server
 
@@ -75,28 +49,40 @@ that get deployed to Hosts. Hosts are instances (clients) that retrieve and exec
 
 Choose the right command for your operating system:
 
-**Redhat/CentOS/SUSE 64-bit:**
+**Newer 64-bit RPM based distributions: (Redhat/CentOS/SUSE)**
 
 ```
-$ sudo rpm -i cfengine-community-3.6.1-1.x86_64.rpm
+$ sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el6.x86_64.rpm
 ```
 
-**Redhat/CentOS/SUSE 32-bit:**
+**Older 64-bit RPM based distributions: (Redhat/CentOS/SUSE)** (not recommended for policy server)
 
 ```
-$ sudo rpm -i cfengine-community_3.6.1-1.i386.rpm
+$ sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el4.x86_64.rpm
 ```
 
-**Ubuntu/Debian 64-bit:**
+**32-bit RPM based distributions: (Redhat/CentOS/SUSE)** (not recommended for policy server)
 
 ```
-$ sudo dpkg -i cfengine-community_3.6.1-1_amd64.deb
+$ sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el4.i386.rpm
 ```
 
-**Ubuntu/Debian 32-bit:**
+**Newer 64-bit DEB based distributions: (Ubuntu/Debian)**
 
 ```
-$ sudo dpkg -i cfengine-community_3.6.1-1_i386.deb
+$ sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian7.deb`
+```
+
+**Older 64-bit DEB based distributions: (Ubuntu/Debian)** (not recommended for policy server)
+
+```
+$ sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian4.deb`
+```
+
+**32-bit DEB based distributions: (Ubuntu/Debian)** (not recommended for policy server)
+
+```
+$ sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_i386-debian4.deb`
 ```
 
 **Note:** You might get a message like this: "Policy is not found in /var/cfengine/inputs, not starting CFEngine." Do not worry;
@@ -105,7 +91,7 @@ this is taken care of during the bootstrapping process.
 
 ## 3. Bootstrap the Policy Server
 
-The Policy Server must be bootstrapped to itself. Find the IP address of your Policy Server (type $ ifconfig).
+The Policy Server must be bootstrapped to itself. Find the IP address of your Policy Server.
 
 Run the bootstrap command:
 
