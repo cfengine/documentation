@@ -43,12 +43,8 @@ def validate(branch):
 	if not os.path.exists(config["markdown_directory"]):
 		print "Directory 'documentation' not found in WORKDIR"
 
-	if (branch == "master"):
-		#all_versions = [ent for ent in os.listdir(config["WORKDIR"] + "/masterfiles/lib") if (re.match("^[0-9].*", ent))]
-		# version = sorted(all_versions)[-1]
-		version = "3.12"
-	else:
-		version = branch
+
+	version = branch
 
 	config["include_directories"] = []
 	config["include_directories"].append(config["WORKDIR"])
@@ -58,7 +54,6 @@ def validate(branch):
 	config["include_directories"].append(config["WORKDIR"] + "/masterfiles/_generated")
 	config["include_directories"].append(config["WORKDIR"] + "/masterfiles")
 	config["include_directories"].append(config["WORKDIR"] + "/masterfiles/lib/")
-	config["include_directories"].append(config["WORKDIR"] + "/masterfiles/lib/" + version)
 	config["include_directories"].append(config["WORKDIR"] + "/core/tests")
 
 	config["reference_path"] = config["project_directory"] + "/_references.md"
