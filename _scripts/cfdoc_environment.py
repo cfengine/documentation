@@ -44,7 +44,7 @@ def validate(branch):
 		print "Directory 'documentation' not found in WORKDIR"
 
 	if (branch == "master"):
-		all_versions = [ent for ent in os.listdir(config["WORKDIR"] + "/masterfiles/lib") if (re.match("^[0-9].*", ent))]
+		#all_versions = [ent for ent in os.listdir(config["WORKDIR"] + "/masterfiles/lib") if (re.match("^[0-9].*", ent))]
 		# version = sorted(all_versions)[-1]
 		version = "3.12"
 	else:
