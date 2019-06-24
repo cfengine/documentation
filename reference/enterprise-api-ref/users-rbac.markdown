@@ -130,6 +130,17 @@ API call allowed only for administrator.
 
 **Method:** PUT
 
+**Parameters:**
+
+* **username** *(string)*
+    User name
+* **password** *(string)*
+    User password
+* **email** *(string)*
+    User email
+* **roles** *(array)*
+    User roles, emp: `["admin", "test"]`
+
 Create a new user.
 API call allowed only for administrator.
 
@@ -154,6 +165,17 @@ API call allowed only for administrator.
 
 Update user information.
 API call allowed only for administrator.
+
+**Parameters:**
+
+* **username** *(string)*
+    User name
+* **password** *(string)*
+    User password
+* **email** *(string)*
+    User email
+* **roles** *(array)*
+    User roles, emp: `["admin", "test"]`
 
 **Example Request Body:**
 
