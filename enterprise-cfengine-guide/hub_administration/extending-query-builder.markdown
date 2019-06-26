@@ -90,7 +90,7 @@ Below you can see an example of hosts table representation as JSON element.
 **Structure:**
 
 Each element has a key and a value. When you create your own JSON element please use a unique key. The value is a
-JSON object, please see explanations below.
+JSON object, please see explanations below. The element's key should be equal to `TableID`.
 
 * **TableID** *(string)*
     Table id, can be the same as main element key, should be unique.
