@@ -89,13 +89,14 @@ Below you can see an example of hosts table representation as JSON element.
 
 **Structure:**
 
-Each element has a key and a value. When you  create your own JSON element please use a unique key. The value is a
+Each element has a key and a value. When you create your own JSON element please use a unique key. The value is a
 JSON object, please see explanations below.
 
 * **TableID** *(string)*
     Table id, can be the same as main element key, should be unique.
 * **Keys** *(json)*
-    Table keys, describe there primary key, emp.: `{'primary_key': 'HostKey'}`
+    Table keys, describe there primary key, emp.: `{'primary_key': 'HostKey'}`. 
+    Primary key is case-sensitive. `primary_key` is the only possible key in `Keys` structure.
 * **Label** *(string)*
     Label contains a table's name that will be shown on the UI. Not necessary to use a real table name,
     it can be an alias for better representation.
@@ -104,8 +105,8 @@ JSON object, please see explanations below.
     
  **Fields structure:**
 
-Fields object is presented as JSON, where key is unique table's key and value is JSON representation of
-table column properties:
+Fields object is presented as JSON, where key is unique table's key and value is JSON representation of table column properties. 
+The element's key should be equal to `sqlField`
 
 * **name** *(string)*
     Field's name 
