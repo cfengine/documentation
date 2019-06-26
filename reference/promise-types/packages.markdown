@@ -103,7 +103,7 @@ for this attribute, its usage depends on the package module in question.
 
 **Description:** Whether the package should be present or absent on the system.
 
-`policy` is the only mandatory package promise attribute.
+**Default value:** ```present```
 
 **Type:** `string`
 
