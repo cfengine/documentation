@@ -121,92 +121,34 @@ The following attributes are available to all promise types.
 
 **Type:** `body action`
 
-#### action_policy
-
-**Description:** Determines whether to repair or report about non-kept promises
-
 The `action` settings allow general transaction control to be implemented on
 promise verification. Action bodies place limits on how often to verify the
 promise and what classes to raise in the case that the promise can or cannot be
 kept.
 
+#### action_policy
+
+**Description:** Determines whether to repair or report about non-kept promises
+
 **Type:** (menu option)
 
 **Allowed input range:**
 
-```
-    fix
-    warn
-    nop
-```
+* ```fix``` makes changes to move toward the desired state
+* ```warn``` does not make changes, emits a warning level log message about non-compliance, raise repair_failed (not-kept)
+* ```nop``` alias for warn
+
+**Default value:** ```fix```
 
 **Example:**
 
-The following example shows a simple use of transaction control:
+Policy:
 
-```cf3
-     body action warn_only
-     {
-     action_policy => "warn";
-     ifelapsed => "60";
-     }
-```
+[%CFEngine_include_snippet(action_policy.cf, #\+begin_src\s+cfengine3, .*end_src)%]
 
-Note that actions can be added to sub-bundles like methods and editing bundles,
-and that promises within these do not inherit action settings at higher levels.
-Thus, in the following example there are two levels of action setting:
+Output:
 
-```cf3
-     body common control
-     {
-     bundlesequence  => { "testbundle" };
-     }
-
-     bundle agent testbundle
-     {
-     files:
-
-       "/var/cfengine/inputs/.*"
-
-            edit_line => DeleteLinesMatching(".*cfenvd.*"),
-            action => WarnOnly;
-     }
-
-     bundle edit_line DeleteLinesMatching(regex)
-     {
-       delete_lines:
-
-         "$(regex)" action => WarnOnly;
-
-     }
-
-     body action WarnOnly
-     {
-       action_policy => "warn";
-     }
-```
-
-**Notes:**
-The `action` setting for the `files` promise means that file edits will
-not be committed to disk, only warned about. This is a master-level
-promise that overrides anything that happens during the editing. The
-`action` setting in the `edit_line` bundle means that the internal memory
-modeling of the file will only warn about changes rather than
-committing them to the memory model. This makes little difference to the
-end result, but it means that CFEngine will report
-
-```cf3
-    Need to delete line - ... - but only a warning was promised
-```
-
-Instead of
-
-```cf3
-    Deleting the promised line ... Need to save file - but only a warning was promised
-```
-
-In either case, no changes will be made to the disk, but the messages given by
-`cf-agent` will differ.
+[%CFEngine_include_snippet(action_policy.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 #### ifelapsed
 
