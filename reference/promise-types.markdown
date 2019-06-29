@@ -144,7 +144,7 @@ kept.
 
 Policy:
 
-[%CFEngine_include_snippet(action_policy.cf, #\+begin_src\s+cfengine3, .*end_src)%]
+[%CFEngine_include_example(action_policy.cf, #\+begin_src\s+cfengine3, .*end_src)%]
 
 Output:
 
