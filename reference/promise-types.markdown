@@ -148,7 +148,7 @@ Policy:
 
 Output:
 
-[%CFEngine_include_snippet(action_policy.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+[%CFEngine_include_snippet(action_policy.cf, #\+begin_src\s+mock_example_output\s*, .*end_src)%]
 
 #### ifelapsed
 
