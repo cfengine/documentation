@@ -39,7 +39,7 @@ the way from a set of independent actors to a state of unified integration.
 Companies that merge or acquire other companies, as well as companies that
 reorganize to outsource tasks are natural candidates for federated management.
 
-Promise theory predicts that a federated organization is naturallyservice
+Promise theory predicts that a federated organization is naturally service
 oriented, with two main architectures:
 
 * The different parts of the collective bind together by promising each other
@@ -230,7 +230,7 @@ by an enterprise-wide global infrastructure service.
 
 The CFEngine code snippet above represents the CFEngine configuration for any of
 the hosts in one of the federated departments. The configuration is extremely
-simple. It begins by downloading thebaseline.cfconfiguration, provided by the
+simple. It begins by downloading the baseline.cf configuration, provided by the
 global infrastructure service, and then goes on to promise to use this as a
 `method'. Finally, the major part of the configuration is the set of special
 promises determined by the department itself. Federation is thus technically
