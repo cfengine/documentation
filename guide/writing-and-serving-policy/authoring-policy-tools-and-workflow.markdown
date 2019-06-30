@@ -23,7 +23,7 @@ There are several ways to approach authoring promises and ensuring they are copi
 5. The author will make their edits or additions in their local version of the `masterfiles` repository.
 6. After the author is done making their changes commit them using `git commit`.
 6. After the changes are committed they are then pushed back to the remote repository on GitHub.
-7. As described in step3, CFEngine will pull any new changes that were pushed to GitHub (sometime within a five minute time interval).
+7. As described in step 3, CFEngine will pull any new changes that were pushed to GitHub (sometime within a five minute time interval).
 8. Those changes will first exist in `masterfiles`, and then afterwards will be deployed to CFEngine hosts that are bootstrapped to the hub.
 
 #### Create a Repository on GitHub for Masterfiles ####
