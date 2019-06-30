@@ -48,7 +48,7 @@ The four mission phases are sometimes referred to as
 # Stem cell hosts
 
 At CFEngine we talk about stem cell hosts. A stem cell host is a generic
-foundation of software that is thenecessary and sufficientbasis for any future
+foundation of software that is the necessary and sufficient basis for any future
 purpose. To make a finished system from this stem cell host, you only have to
 `differentiate' the system from this generic basis by running CFEngine.
 
@@ -95,7 +95,7 @@ surgically precise customization.
 
 Deploying a policy is a potentially dangerous operation, as it will lead to
 change, with associated risk. Side-effects are common, and often result from
-incomplete planning. (See the CFEngine Special Topics Guide onChange
+incomplete planning. (See the CFEngine Special Topics Guide on Change
 Management).
 
 The following sequence forms a checklist for deploying successful policy change:
