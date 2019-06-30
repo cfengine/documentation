@@ -176,7 +176,7 @@ elapsed since the last time.
 So, to make a promise repeat, we simply have to be less specific about the time.
 Let us make the promise on Host1 apply every day between 16:00:00 (4 pm) and
 16:59:59, and add an ifelapsed lock saying that we do not want to consider
-rechecking more often tha once every 100 minutes (more than 1 hour). Now we have
+rechecking more often than once every 100 minutes (more than 1 hour). Now we have
 a workflow process that starts at 16:00 hours each day and runs only once each
 day.
 
