@@ -13,8 +13,8 @@ Scheduling refers to the execution of non-interactive processes or tasks
 computers (see the Special Topics Guide on Scheduling). Distributed Scheduling
 refers to the chaining of different jobs into a coordinated workflow that spans
 several computers. For example, you schedule a processing job
-onmachine1andmachine2, and when these are finished you need to schedule a job
-onmachine3. This is distributed scheduling.
+on machine1 and machine2, and when these are finished you need to schedule a job
+on machine3. This is distributed scheduling.
 
 # Coordinating dispatch
 
@@ -129,7 +129,7 @@ commands:
 
 In this example, the methods promise runs on Host2 and the commands promise runs
 one Host1 as before. Now, host 1 sets a signal class ‘did_my_job’ when it
-carries out the job, and Host2 collects it by contacting thecf-serverdon Host1.
+carries out the job, and Host2 collects it by contacting the cf-serverd on Host1.
 Assuming that Host1 has agreed to let Host2 know this information, by granting
 access to it, Host2 can inherit this class, with a prefix of its own choosing.
 Thus is transforms the class ‘did_my_job’ on Host1 into ‘hostX_did_my_job’ on
@@ -164,7 +164,7 @@ into a regular occurrence, repeating at some interval we have two options:
 * We don't care about the precise time, we only care about the interval between
   executions.
 
-The checking of promises in CFEngine is controlled byclassesand byifelapsed
+The checking of promises in CFEngine is controlled by classes and by ifelapsed
 locks, which may be used for these two cases respectively. If nothing else is
 specified, CFEngine runs every 5 minutes and reconsiders the state of all its
 active promises. To be specific about the time, we just alter which promises are
