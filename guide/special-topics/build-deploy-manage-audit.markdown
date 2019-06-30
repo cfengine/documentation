@@ -12,7 +12,7 @@ The four mission phases are sometimes referred to as
 
 * Build
 
-  A mission is based on decisions and resources that need to be put assembled or
+  A mission is based on decisions and resources that need to be assembled or
   `built' before they can be applied. This is the planning phase.
 
   In CFEngine, what you build is a template of proposed promises for the
@@ -239,7 +239,7 @@ detail.
 * Set up PXE network booting and kickstart / jumpstart OS tools with CFEngine
   integrated
 
-* Get CFEngine running and updating on all hosts, but making no system changes.
+* Get CFEngine running and updating on all hosts, but make no system changes.
 
 * Define a service catalogue.
 
