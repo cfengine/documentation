@@ -440,7 +440,7 @@ Footnotes
 
 [^1]: For example, suppose a process runs out of control and starts filling up
     logs with error messages – the disk might fill up and cause a much more
-    serious problem, such as a total system failure with crash, is this were
+    serious problem, such as a total system failure with crash, if this were
     left unattended.
 
 [^2]: Nyquist's theorem is the main reason why CD-players sample at 44kHz in
