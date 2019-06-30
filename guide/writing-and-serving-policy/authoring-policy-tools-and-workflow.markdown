@@ -108,7 +108,7 @@ body contain masterfiles_contain
 ```
 
 3. Save the file.
-4. Add bundle and file information to `/var/cfengine/masterfiles/promises.cf`. Example (where `...` represents existing text in the file, omitted for clarity:
+4. Add bundle and file information to `/var/cfengine/masterfiles/promises.cf`. Example (where `...` represents existing text in the file, omitted for clarity):
 
 ```cf3
 body common control
