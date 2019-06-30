@@ -10,7 +10,7 @@ tags: [overviews, special topics, guide]
 
 Modularity is the ability to separate concerns within a total process, and hide
 the details of the different concerns in different containers. In CFEngine, this
-is aservice oriented view, in which different aspects of a problem are separated
+is a service oriented view, in which different aspects of a problem are separated
 and turned into generic components that offer a service. We often talk about
 black boxes, grey boxes or white boxes depending on the extent to which the user
 of a service can see the details within the containers.
@@ -1190,7 +1190,7 @@ number_of_lines => "10";
 When executed, this produces output only on the final host in the chain, showing
 the correct ordering out operations. The sequence also passes a file from host
 to host as a coordination token, like a baton in a relay race, and each host
-signs this so that the final host has a log of eery host involved in the
+signs this so that the final host has a log of every host involved in the
 cascade.
 
 ```
