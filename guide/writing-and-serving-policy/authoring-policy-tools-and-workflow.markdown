@@ -89,7 +89,7 @@ B) Or, change the remote url to `https://GitUserName@password:github.com/GitUser
 
 #### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub ####
 
-1. Create a new file in `/var/cfengine/masterfiles with a unique filename` (e.g. `vcs_update.cf`)
+1. Create a new file in `/var/cfengine/masterfiles` with a unique filename (e.g. `vcs_update.cf`)
 2. Add the following text to the `vcs_update.cf` file:
 
 ```cf3
