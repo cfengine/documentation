@@ -234,23 +234,23 @@ detail.
 
 # Summary BDMA workflow
 
-* Define a stem cell host template
+* Define a stem cell host template.
 
 * Set up PXE network booting and kickstart / jumpstart OS tools with CFEngine
-  integrated
+  integrated.
 
 * Get CFEngine running and updating on all hosts, but make no system changes.
 
 * Define a service catalogue.
 
-* Discuss and formulate a policy increment, thinking convergence at all times
+* Discuss and formulate a policy increment, thinking convergence at all times.
 
 * Publish (deploy) the policy.
 
 * Follow emails and reports in the CFEngine Knowledge Map (Manage).
 
 * Adjust policy if necessary, following procedures for change management
-  (Manage)
+  (Manage).
 
 * View reports (or enjoy the silence) to audit system state.
 
