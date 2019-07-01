@@ -12,7 +12,7 @@ The four mission phases are sometimes referred to as
 
 * Build
 
-  A mission is based on decisions and resources that need to be put assembled or
+  A mission is based on decisions and resources that need to be assembled or
   `built' before they can be applied. This is the planning phase.
 
   In CFEngine, what you build is a template of proposed promises for the
@@ -48,7 +48,7 @@ The four mission phases are sometimes referred to as
 # Stem cell hosts
 
 At CFEngine we talk about stem cell hosts. A stem cell host is a generic
-foundation of software that is thenecessary and sufficientbasis for any future
+foundation of software that is the necessary and sufficient basis for any future
 purpose. To make a finished system from this stem cell host, you only have to
 `differentiate' the system from this generic basis by running CFEngine.
 
@@ -95,7 +95,7 @@ surgically precise customization.
 
 Deploying a policy is a potentially dangerous operation, as it will lead to
 change, with associated risk. Side-effects are common, and often result from
-incomplete planning. (See the CFEngine Special Topics Guide onChange
+incomplete planning. (See the CFEngine Special Topics Guide on Change
 Management).
 
 The following sequence forms a checklist for deploying successful policy change:
@@ -234,23 +234,23 @@ detail.
 
 # Summary BDMA workflow
 
-* Define a stem cell host template
+* Define a stem cell host template.
 
 * Set up PXE network booting and kickstart / jumpstart OS tools with CFEngine
-  integrated
+  integrated.
 
-* Get CFEngine running and updating on all hosts, but making no system changes.
+* Get CFEngine running and updating on all hosts, but make no system changes.
 
 * Define a service catalogue.
 
-* Discuss and formulate a policy increment, thinking convergence at all times
+* Discuss and formulate a policy increment, thinking convergence at all times.
 
 * Publish (deploy) the policy.
 
 * Follow emails and reports in the CFEngine Knowledge Map (Manage).
 
 * Adjust policy if necessary, following procedures for change management
-  (Manage)
+  (Manage).
 
 * View reports (or enjoy the silence) to audit system state.
 
