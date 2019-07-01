@@ -11,7 +11,7 @@ tags: [overviews, special topics, guide]
 We intuitively recognize agility as the capability to respond rapidly enough and
 flexibly enough to a difficult challenge. If we imagine an animal surviving in
 the wild, a climber on a rock-face or a wrestler engaged in combat, we identify
-the skills ofanticipation,speedof response and the ability toadaptor bend
+the skills of anticipation, speed of response and the ability to adapt or bend
 without breaking to meet the challenges.
 
 * Anticipate.
@@ -38,7 +38,7 @@ associated with a lack of agility: a blow, a fall or a loss.
 ## What make agility possible?
 
 
-To understand agility, we have to understand time and thecapacityfor change.
+To understand agility, we have to understand time and the capacity for change.
 Agility is a relative concept: it's about adapting quickly enough, in the right
 context, with the right measure and in the right way. Below, we'll try to gain
 an engineering perspective on agility to see what enables it and what throttles
