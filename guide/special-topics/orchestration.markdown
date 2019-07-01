@@ -9,7 +9,7 @@ tags: [overviews, special topics, guide]
 # What is organizational complexity?
 
 Complexity is a measure of the amount of information needed to explain
-something. It implies a `mental cost' (and therefore a time and monetary cost)
+something. It implies a "mental cost" (and therefore a time and monetary cost)
 to comprehend a pattern of structure and behaviour.
 
 The term organization has two distinct meanings in English: it can be intended
@@ -79,7 +79,7 @@ expectation also grows unless strict principles are adhered to.
 
 Promise Theory tells us that such conflicts can only be resolved by a party
 receiving information, not by the parties sending it. This leads to the model
-known as `voluntary cooperation' used by CFEngine, which implies that each
+known as "voluntary cooperation" used by CFEngine, which implies that each
 federated part must effectively choose which inputs it is willing to use from
 external parties.
 
@@ -95,7 +95,7 @@ resolves this confusion by building a model based directly on the agents that
 can effect change.
 
 Authority is about who, in an enterprise, may decide what is intended. Most
-people perceive authority through hierarchies or `chains of command' in which
+people perceive authority through hierarchies or "chains of command" in which
 the top of the hierarchical pyramid is the master, and the layers below must
 follow: those at the top are more powerful than those on the bottom. This is a
 cultural prejudice. However this perception is, at best misleading, and in fact
@@ -114,9 +114,9 @@ contents, everywhere we look we see hierarchical structures.
 
 Today, education and peaceful society turns the reality of the power hierarchy
 upside down: the true specialists are at the bottom of the hierarchy, closer to
-the levers and the expertise to effect change. Today `low level' means more
+the levers and the expertise to effect change. Today "low level" means more
 specialised, not less educated. Low level experts are held together by
-relatively unspecialised `managers' who serve mainly as coordinators and
+relatively unspecialised "managers" who serve mainly as coordinators and
 communications links. However, the culture and perception of authority from the
 top remains today.
 
@@ -139,7 +139,7 @@ perception of authority is thus only a fiction1.
 # The social contract
 
 Social contracts lie at the heart of all human and computer organizations. For
-computers these contracts may be as simple as `access control settings',
+computers these contracts may be as simple as "access control settings",
 nonetheless there are human politics behind them. Most enterprises struggle more
 with their internal sociology (or politics) than with their technological
 solutions.
@@ -182,7 +182,7 @@ any given one.
 
 A more common model for federation is to have a baseline constitution for all
 the parts of the enterprise defined by an umbrella organization. We can refer to
-this as a `global infrastructure' service.
+this as a "global infrastructure" service.
 
 Traditionally (i.e. hierarchically) one would think of this global entity as
 being superior to the other entities, i.e. making them subordinate, but this is
@@ -232,7 +232,7 @@ The CFEngine code snippet above represents the CFEngine configuration for any of
 the hosts in one of the federated departments. The configuration is extremely
 simple. It begins by downloading the baseline.cf configuration, provided by the
 global infrastructure service, and then goes on to promise to use this as a
-`method'. Finally, the major part of the configuration is the set of special
+"method". Finally, the major part of the configuration is the set of special
 promises determined by the department itself. Federation is thus technically
 trivial. The difficulties are rather conceptual and sociological.
 
@@ -253,7 +253,7 @@ Consider briefly the case in which there is more than one entity offering
 promise proposals. If a part of the federation serves two masters (see
 department 3 in the figure below), i.e. it promises to implement the wishes of
 two external sources, then those sources must either agree one hundred percent
-in their proposals, or they must not overlap at all. Since these `masters' may
+in their proposals, or they must not overlap at all. Since these "masters" may
 or may not be coordinated, it is up to the federated entity (department 3) to
 make the decision about which of the sources to obey.
 
@@ -336,7 +336,7 @@ Rules of thumb for scalable management:
 # The benefits of federated management
 
 Hierarchy is familiar, but not essential. A hierarchy is only a so-called
-`spanning tree' for a more general network of relationships. It may be thought
+"spanning tree" for a more general network of relationships. It may be thought
 of as one possible point of view, amongst many – one way of traversing a network
 of relationships.
 
@@ -357,7 +357,7 @@ certainty of outcome.
 
 Promise Theory tells us that organization by autonomy automatically indentifies
 the parts of a system that can operate independently – i.e., the essential
-`atoms' of the system. Thus, it is a method for identifying the raw material
+"atoms" of the system. Thus, it is a method for identifying the raw material
 building blocks from which everything else can be built. Starting with these
 available raw materials, it encourages a rational approach to design of systems
 that are efficient and service oriented.
