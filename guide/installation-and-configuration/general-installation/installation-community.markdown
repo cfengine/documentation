@@ -19,8 +19,6 @@ Bootstrapping establishes a trust relationship between the Policy Server
 and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company.
 Bootstrapping completes the installation process.
 
-_Tutorials, recommended reading. and production environment recommendations appear at the end of this page._
-
 <hr>
 ## Quick Setup Installation Script
 
