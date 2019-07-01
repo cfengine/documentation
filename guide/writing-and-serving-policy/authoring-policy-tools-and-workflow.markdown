@@ -23,7 +23,7 @@ There are several ways to approach authoring promises and ensuring they are copi
 5. The author will make their edits or additions in their local version of the `masterfiles` repository.
 6. After the author is done making their changes commit them using `git commit`.
 6. After the changes are committed they are then pushed back to the remote repository on GitHub.
-7. As described in step3, CFEngine will pull any new changes that were pushed to GitHub (sometime within a five minute time interval).
+7. As described in step 3, CFEngine will pull any new changes that were pushed to GitHub (sometime within a five minute time interval).
 8. Those changes will first exist in `masterfiles`, and then afterwards will be deployed to CFEngine hosts that are bootstrapped to the hub.
 
 #### Create a Repository on GitHub for Masterfiles ####
@@ -89,7 +89,7 @@ B) Or, change the remote url to `https://GitUserName@password:github.com/GitUser
 
 #### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub ####
 
-1. Create a new file in `/var/cfengine/masterfiles with a unique filename` (e.g. `vcs_update.cf`)
+1. Create a new file in `/var/cfengine/masterfiles` with a unique filename (e.g. `vcs_update.cf`)
 2. Add the following text to the `vcs_update.cf` file:
 
 ```cf3
@@ -108,7 +108,7 @@ body contain masterfiles_contain
 ```
 
 3. Save the file.
-4. Add bundle and file information to `/var/cfengine/masterfiles/promises.cf`. Example (where `...` represents existing text in the file, omitted for clarity:
+4. Add bundle and file information to `/var/cfengine/masterfiles/promises.cf`. Example (where `...` represents existing text in the file, omitted for clarity):
 
 ```cf3
 body common control
