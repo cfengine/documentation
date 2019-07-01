@@ -10,7 +10,7 @@ tags: [overviews, special topics, guide]
 
 CFEngine is a framework and a methodology with far reaching implications for the
 way you do IT management. The CFEngine approach asks you to think in terms
-ofpromisesandcooperationbetween parts; it automates repair and maintenance
+of promises and cooperation between parts; it automates repair and maintenance
 processes and provides simple integrated Knowledge Management.
 
 To use CFEngine effectively, you should spend a little time learning about the
