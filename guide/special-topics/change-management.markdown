@@ -22,7 +22,7 @@ automation.
 
 # Regulation: authorized and unauthorized change
 
-It is common to speak ofauthorizedandunauthorizedchange in the IT industry. Many
+It is common to speak of authorized and unauthorized change in the IT industry. Many
 organizations think in these authoritarian terms and use management techniques
 designed for a slower-moving world. Today's e-commerce companies usually have
 much more agile and dynamical processes for change.
@@ -193,7 +193,7 @@ current state, e.g. turn left, turn right, alter heading by 10 degrees to
 starboard, etc. However, you are now vulnerable to things you don't know about.
 Winds and currents blow you off course and can lead to unintended changes that
 invalidate these course corrections, if you have not promised to monitor and
-avoid them. That is why modern navigators usebeacons.
+avoid them. That is why modern navigators use beacons.
 
 In CFEngine, a beacon is a promise of desired end-state (the end of your
 journey). It's the place you want to be – and the journey doesn't interest you.
@@ -339,7 +339,7 @@ ensure desired state, independently of where you start from. In this way of
 thinking, the configuration details might be changing in a quite unpredictable
 way, and it is our job to continuously monitor and repair this general
 dilapidation. Rather than assuming a constant state in between changes, CFEngine
-assumes a constant “ideal state” orgoalto be achieved at all times.
+assumes a constant “ideal state” or goal to be achieved at all times.
 
 # Change and convergence
 
@@ -364,7 +364,7 @@ from.
 
 # The change decision process or release management
 
-The process of managing intended changes is often calledrelease management. A
+The process of managing intended changes is often called release management. A
 release is a collection of authorized changes to the promises of desired state
 for a system.
 
@@ -440,7 +440,7 @@ Footnotes
 
 [^1]: For example, suppose a process runs out of control and starts filling up
     logs with error messages – the disk might fill up and cause a much more
-    serious problem, such as a total system failure with crash, is this were
+    serious problem, such as a total system failure with crash, if this were
     left unattended.
 
 [^2]: Nyquist's theorem is the main reason why CD-players sample at 44kHz in
