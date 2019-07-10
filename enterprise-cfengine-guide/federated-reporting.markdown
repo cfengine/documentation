@@ -19,6 +19,7 @@ If all hubs are version 3.14.0 or higher then Mission Portal can be used to conf
 * [Setup][Federated Reporting#Setup]
 * [Operation][Federated Reporting#Operation]
 * [API Setup][Federated Reporting#API Setup]
+* [Disable Feeder][Federated Reporting#Disable Feeder]
 * [Uninstall][Federated Reporting#Uninstall]
 
 ## Installation ##
@@ -78,6 +79,8 @@ the superhub.
 Please refer to `/var/cfengine/output`, `/var/log/postgresql.log` and  `/opt/cfengine/federation/superhub/import/*.log.gz`
 when problems occur. Sending these logs to us in bug reports will help significantly as we fine tune the Federated
 Reporting feature.
+
+Also see [Disable Feeder] for information about how to temporarily disable a feeder's participation in Federated Reporting in case that is causing an issue for the Feeder Hub.
 
 ## API Setup ##
 
@@ -356,6 +359,20 @@ On systems running systemd, we need to rename the binary back and start it manua
 $ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "mv /var/cfengine/bin/cf-execd.disabled /var/cfengine/bin/cf-execd"
 $ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "/var/cfengine/bin/cf-execd"
 ```
+
+## Disable Feeder
+
+![Edit Hub Disable](fr-edit-hub-disable.png)
+
+A Feeder Hub may be disabled from the Hub Management app so that it will no longer
+participate in Federated Reporting. No further attempts to pull data from that feeder
+will occur until it is enabled again.
+
+Click the edit button for the feeder, enter URL and credentials information as needed, uncheck the "Enable reporting to superhub" and click the "Update connected hub" button.
+
+The list of connected hubs should now reflect the disabled state.
+
+![Disabled Feeder](fr-disabled-feeder.png)
 
 ## Uninstall
 
