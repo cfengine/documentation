@@ -7,13 +7,21 @@ sorting: 55
 
 ## Overview ##
 
-Federated Reporting enables the collection of data from multiple Hubs to provide a view in Mission Portal which can scale up beyond the capabilities of a Hub which manages hosts. CFEngine supports a large number of hosts per hub, around 5,000 hosts per hub depending on many factors. With Federated Reporting it is possible to scale up to 100,000 hosts or more for the purposes of analysis and reporting.
+Federated Reporting enables the collection of data from multiple Hubs to provide
+a view in Mission Portal which can scale up beyond the capabilities of a Hub
+which manages hosts. CFEngine supports a large number of hosts per hub, around
+5,000 hosts per hub depending on many factors. With Federated Reporting it is
+possible to scale up to 100,000 hosts or more for the purposes of analysis and
+reporting.
 
 Hubs which hosts report to are called Feeder Hubs.
 
 The hub which collects information from Feeder Hubs is called the Superhub.
 
-If all hubs are version 3.14.0 or higher then Mission Portal can be used to configure and connect the Superhub and Feeder hubs. For Feeder hubs with an earlier version than 3.14.0 an API and manual steps must be followed. This documentation will be provided soon.
+If all hubs are version 3.14.0 or higher then Mission Portal can be used to
+configure and connect the Superhub and Feeder hubs. For Feeder hubs with an
+earlier version than 3.14.0 an API and manual steps must be followed. This
+documentation will be provided soon.
 
 * [Installation][Federated Reporting#Installation]
 * [Setup][Federated Reporting#Setup]
@@ -24,7 +32,8 @@ If all hubs are version 3.14.0 or higher then Mission Portal can be used to conf
 
 ## Installation ##
 
-The [General Installation][General Installation] instructions should be used to install CFEngine Hub on a Superhub as well as Feeder hubs.
+The [General Installation][General Installation] instructions should be used to
+install CFEngine Hub on a Superhub as well as Feeder hubs.
 
 ## Setup ##
 
@@ -33,35 +42,42 @@ The [General Installation][General Installation] instructions should be used to 
 ![Enable Hub Management](fr-hub-management-enabled.png)
 
 On the Superhub and all Feeder enable the Hub management
-app by [Opening Settings] then selecting [Manage Apps] and finally
-by clicking the `On` radio button for Hub management in the Status column (fr-hub-management-enabled.png)
+app by [Opening Settings][Settings#open settings] then 
+selecting [Manage Apps][Settings#manage apps] and finally
+by clicking the `On` radio button for Hub management in the Status column.
 
 ### Enable Federated Reporting ###
 
 ![Enable Federated Reporting](fr-hub-management-default.png)
 
-The Hub management app should now appear in the bottom left corner of mission portal.
+The Hub management app should now appear in the bottom left corner of mission
+portal.
 
-Click on the Enable Superhub or Enable Feeder button as appropriate.
-This will cause some configuration to be written in the filesystem and on next agent run policy will make the needed changes. You can speed up this process by running the agent manually.
+Click on the Enable Superhub or Enable Feeder button as appropriate. This will
+cause some configuration to be written in the filesystem and on next agent run
+policy will make the needed changes. You can speed up this process by running
+the agent manually.
 
 ### Connect Feeder Hubs ###
 
 ![Connect Feeder Hubs](fr-superhub-enabled-no-feeders.png)
 
-Refresh the Hub management on each hub to see that Federated Reporting is enabled.
+Refresh the Hub management on each hub to see that Federated Reporting is
+enabled.
 
-After all hubs have Federated Reporting enabled visit Hub management on the Superhub
-to connect the Feeder hubs.
+After all hubs have Federated Reporting enabled visit Hub management on the
+Superhub to connect the Feeder hubs.
 
 Click on the Connect hub button to show the Connect a hub dialog.
 
 ![Connect a hub](fr-connect-a-hub.png)
 
-Fill out the form with the base URL of your feeder hub Mission Portal and enter credentials for a user with administrative credentials.
-These credentials will only be used to authenticate to the feeder hub and will not be saved otherwise.
+Fill out the form with the base URL of your feeder hub Mission Portal and enter
+credentials for a user with administrative credentials. These credentials will
+only be used to authenticate to the feeder hub and will not be saved otherwise.
 
-The Hub management view will show all connected hubs, the number of bootstrapped hosts and allow you to edit the settings.
+The Hub management view will show all connected hubs, the number of bootstrapped
+hosts and allow you to edit the settings.
 
 ![Feeders connected](fr-feeder-added.png)
 
@@ -76,18 +92,22 @@ the superhub.
 
 ## Troubleshooting ##
 
-Please refer to `/var/cfengine/output`, `/var/log/postgresql.log` and  `/opt/cfengine/federation/superhub/import/*.log.gz`
-when problems occur. Sending these logs to us in bug reports will help significantly as we fine tune the Federated
-Reporting feature.
+Please refer to `/var/cfengine/output`, `/var/log/postgresql.log` and
+`/opt/cfengine/federation/superhub/import/*.log.gz` when problems occur. Sending
+these logs to us in bug reports will help significantly as we fine tune the
+Federated Reporting feature.
 
-Also see [Disable Feeder] for information about how to temporarily disable a feeder's participation in Federated Reporting in case that is causing an issue for the Feeder Hub.
+Also see [Disable Feeder][Federated Reporting#Disable Feeder] for information
+about how to temporarily disable a feeder's participation in Federated Reporting
+in case that is causing an issue for the Feeder Hub.
 
 ## API Setup ##
 
 An API may be used instead of the UI. This could be used to automate the setup
 of infrastructure related to Federated Reporting and Feeder hubs.
 
-Command line examples follow using [curl](https://curl.haxx.se/) and [cf-remote](https://github.com/cfengine/core/tree/master/contrib/cf-remote).
+Command line examples follow using [curl](https://curl.haxx.se/) and
+[cf-remote](https://github.com/cfengine/core/tree/master/contrib/cf-remote).
 
 Some environment variables should be set according to your environment so that you
 can simply copy/paste steps as you go.
@@ -102,15 +122,16 @@ $ export FEEDER_BS=172.31.43.102   # _BS is bootstrap IP
 
 ### Stop cf-execd on the superhub and feeder
 
-We don't want periodic agent runs to get in our ways so let's disable *cf-execd*.
+We don't want periodic agent runs to get in our ways so let's disable
+*cf-execd*.
 
 ```console
 $ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "systemctl stop cf-execd"
 ```
 
-On systems not using systemd, cf-execd needs to be stopped in a different
-way. Also without systemd, any agent run restarts cf-execd so let's move it out
-of our ways.
+On systems not using systemd, cf-execd needs to be stopped in a different way.
+Also without systemd, any agent run restarts cf-execd so let's move it out of
+our ways.
 
 ```console
 $ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "pkill cf-execd"
@@ -125,10 +146,11 @@ Follow instructions at [Masterfiles Policy Framework upgrade].
 
 ### Passwords
 
-Export the password for the user with administrative rights that will make the API requests.
-In these examples the `admin` user is used. Any user with administrative rights can make these
-requests. It is also possible to customize the RBAC settings to make a user who only has
-rights to the needed `api/fr` APIs.
+Export the password for the user with administrative rights that will make the
+API requests. In these examples the `admin` user is used. Any user with
+administrative rights can make these requests. It is also possible to customize
+the RBAC settings to make a user who only has rights to the needed `api/fr`
+APIs.
 
 ```console
 $ export PASSWORD="testingFR"
@@ -236,7 +258,8 @@ $ cat superhub.json
 }
 ```
 
-Look at the cat output, ensure `ssh_host`, `ssh_pubkey`, and `ssh_fingerprint` are correct.
+Look at the cat output, ensure `ssh_host`, `ssh_pubkey`, and `ssh_fingerprint`
+are correct.
 
 #### Use POST API to add superhub to feeder
 
@@ -245,12 +268,14 @@ $ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/remote-hub -d 
 $ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/federation-config
 ```
 
-(The second API call is needed to save the updated config to file, `federation-config.json`).
+(The second API call is needed to save the updated config to file,
+`federation-config.json`).
 
 #### Adding superhub to feeder without API
 
-To configure things manually, just modify the `/opt/cfengine/federation/cfapache/federation-config.json` file
-on the **feeder** and add the **superhub** as a remote hub by adding this section:
+To configure things manually, just modify the
+`/opt/cfengine/federation/cfapache/federation-config.json` file on the
+**feeder** and add the **superhub** as a remote hub by adding this section:
 
 ```console
 $ printf '
@@ -314,7 +339,8 @@ $ cat feeder.json
 }
 ```
 
-Look at the cat output, ensure `ssh_host`, `ssh_pubkey`, and `ssh_fingerprint` are correct.
+Look at the cat output, ensure `ssh_host`, `ssh_pubkey`, and `ssh_fingerprint`
+are correct.
 
 #### Use POST API to add feeder to superhub
 
@@ -323,7 +349,8 @@ $ curl -k -i -s -X POST -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub -
 $ curl -k -i -s -X POST -u admin:$PASSWORD https://$SUPERHUB/api/fr/federation-config
 ```
 
-(The second API call is needed to save the updated config to file, `federation-config.json`).
+(The second API call is needed to save the updated config to file,
+`federation-config.json`).
 
 ### Trigger agent runs
 
@@ -364,11 +391,13 @@ $ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "/var/cfengine/bin/c
 
 ![Edit Hub Disable](fr-edit-hub-disable.png)
 
-A Feeder Hub may be disabled from the Hub Management app so that it will no longer
-participate in Federated Reporting. No further attempts to pull data from that feeder
-will occur until it is enabled again.
+A Feeder Hub may be disabled from the Hub Management app so that it will no
+longer participate in Federated Reporting. No further attempts to pull data from
+that feeder will occur until it is enabled again.
 
-Click the edit button for the feeder, enter URL and credentials information as needed, uncheck the "Enable reporting to superhub" and click the "Update connected hub" button.
+Click the edit button for the feeder, enter URL and credentials information as
+needed, uncheck the "Enable reporting to superhub" and click the "Update
+connected hub" button.
 
 The list of connected hubs should now reflect the disabled state.
 
