@@ -157,7 +157,7 @@ Data containers are obtained from functions that return `data` types,
 such as `readjson()` or `parsejson()`, `readyaml()` or `parseyaml()`,
 or from merging existing containers.
 
-They can *NOT* be modified, once created.
+They can **NOT** be *modified*, once created, but they can be re-defined.
 
 Data containers do not have the size limitations of regular scalar
 variables.
