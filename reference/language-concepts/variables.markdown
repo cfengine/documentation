@@ -162,7 +162,7 @@ They can *NOT* be modified, once created.
 Data containers do not have the size limitations of regular scalar
 variables.
 
-**TODO:** More, and examples
+[%CFEngine_include_example(reference_values_inside_data.cf)%]
 
 ## Associative Arrays
 
