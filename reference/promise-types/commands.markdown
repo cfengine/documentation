@@ -452,7 +452,7 @@ Any other lines of output are cited by `cf-agent` as being erroneous, so you
 should normally make your module completely silent.
 
 **WARNING:** Variables defined by the module protocol are currently limited to
-alphanumeric characters and ```_```, ```.```, ```-```, ```[```, ```]``` and
+alphanumeric characters and ```_```, ```.```, ```-```, ```[```, ```]```, ```@``` and
 ```/```.
 
 **Type:** [`boolean`][boolean]
@@ -569,3 +569,9 @@ Modules inherit the environment variables from `cf-agent` and accept
 arguments, just as a regular command does.
 
 **See Also:** [usemodule()][usemodule]
+
+**History:**
+
+- ```@``` allowed in variables (intended for keys in classic array) 3.15.0 (2019)
+- ```/``` allowed in variables (intended for keys in classic array) 3.14.0, 3.12.2, 3.10.6 (2019)
+
