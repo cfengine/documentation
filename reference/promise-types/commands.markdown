@@ -572,6 +572,6 @@ arguments, just as a regular command does.
 
 **History:**
 
-- ```@``` allowed in variables (intended for keys in classic array) 3.15.0 (2019)
+- ```@``` allowed in variables (intended for keys in classic array) 3.15.0, 3.12.3, 3.10.7 (2019)
 - ```/``` allowed in variables (intended for keys in classic array) 3.14.0, 3.12.2, 3.10.6 (2019)
 
