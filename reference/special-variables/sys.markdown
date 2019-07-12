@@ -808,26 +808,14 @@ Displays a system list of configured interfaces currently active in use
 by the system. This list is detected at runtime and it passed in the
 variables report to the CFEngine Enterprise Database.
 
-To use this list in a policy, you will need a local copy since only
-local variables can be iterated.
+**Example:**
 
-```cf3
-    bundle agent test
-    {
-    vars:
+[%CFEngine_include_snippet(sys_interfaces_ip_addresses_ipv4.cf, #\+begin_src\s+cfengine3\s*, .*end_src)%]
 
-     # To iterate, we need a local copy
+**Example Output:**
 
-     "i1" slist => { @(sys.ip_addresses)} ;
-     "i2" slist => { @(sys.interfaces)} ;
+[%CFEngine_include_snippet(sys_interfaces_ip_addresses_ipv4.cf, #\+begin_src\s+static_example_output\s*, .*end_src)%]
 
-    reports:
-
-        "Addresses: $(i1)";
-        "Interfaces: $(i2)";
-        "Addresses of the interfaces: $(sys.ipv4[$(i2)])";
-    }
-```
 
 **History:** Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
