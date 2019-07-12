@@ -22,7 +22,7 @@ respectively.
 ```
   vars:
     # returns 20.000000
-    "result" expression => eval("200/10", "math", "infix");
+    "result" string => eval("200/10", "math", "infix");
 ```
 
 When the `mode` is `class`, the returned string is either false for 0 (`!any`) or true for anything else (`any`) so it can be used in a class expression under `classes`.  The `==` operator (see below) is very convenient for this purpose.  The actual accepted values for false allow a tiny margin around 0, just like `==`.
@@ -79,36 +79,7 @@ The following functions can be used, with parentheses:
 
 **Example:**
 
-[%CFEngine_include_snippet(eval.cf, #\+begin_src cfengine3, .*end_src)%]
-
-Output:
-
-```
-2013-09-14T08:34:16-0400     info: eval error: expression could not be parsed (input 'x')
-2013-09-14T08:34:16-0400     info: eval error: expression could not be parsed (input '+ 200')
-2013-09-14T08:34:16-0400     info: eval error: expression could not be parsed (input '- - -')
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('x') = ''
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('+ 200') = ''
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('floor(3.4)') = '3.000000'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('sqrt(0.2)') = '0.447214'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('2 + 3 - 1') = '4.000000'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('sin(20)') = '0.912945'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('200 - 100') = '100.000000'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('20 % 3') = '2.000000'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('ceil(3.5)') = '4.000000'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('200 + 100') = '300.000000'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('pi') = '3.141593'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('- - -') = ''
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('-3.400000 == -3.400001') = '0.000000'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('3 / 0') = 'inf'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('e') = '2.718282'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('cos(20)') = '0.408082'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('') = '0.000000'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('-1^2.1') = '-nan'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('abs(-3.4)') = '3.400000'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('-3.4 == -3.4') = '1.000000'
-2013-09-14T08:34:16-0400   notice: R: math/prefix eval('3^3') = '27.000000'
-```
+[%CFEngine_include_example(eval.cf)%]
 
 **History:**
 
