@@ -24,19 +24,9 @@ part.
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-classes:
+[%CFEngine_include_example(hostrange.cf, #\+begin_src\s+cfengine3\s*, .*end_src)%]
 
-  "compute_nodes" expression => hostrange("cpu-","01-32");
+**Example Output:**
 
-reports:
-
-  compute_nodes::
-
-    "No computer is a cluster";
-
-}
-```
+[%CFEngine_include_example(hostrange.cf, #\+begin_src\s+static_example_output\s*, .*end_src)%]
 
