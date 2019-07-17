@@ -76,15 +76,15 @@ Variables of other types than string can be defined too, like in this example
 ## classes
 
 Any class defined via augments will be evaluated and installed as
-[**hard** classes][Classes and Decisions#hard classes]. Each element
+[**hard** classes][Classes and Decisions]. Each element
 of the array is tested against currently defined classes
 as an [anchored regular expression][anchored] unless the string ends with ```::```
 indicating it should be interpreted as a
-[*class expression*][Classes and Decisions#operators and precedence].
+[*class expression*][Classes and Decisions].
 
 Note that augments is processed at the very beginning of agent evaluation. You
-can use any **hard** classes, [**persistent** classes][Classes and Decisions#persistence]
-, or classes defined earlier in the augments list. Test carefully, custom [**soft** classes][Classes and Decisions#soft classes]
+can use any **hard** classes, [**persistent** classes][Classes and Decisions]
+, or classes defined earlier in the augments list. Test carefully, custom [**soft** classes][Classes and Decisions]
 may not be defined early enough for use. Thus:
 
 ```
