@@ -75,43 +75,87 @@ Variables of other types than string can be defined too, like in this example
 
 ## classes
 
-Any class names you put here will be evaluated and installed as **hard classes**
-if they match the [anchored regular expression][anchored]. You can use any
-[**hard** classes][Classes and Decisions], persistent classes, or classes
-defined earlier in the augments list. Thus:
+Any class defined via augments will be evaluated and installed as
+[**hard** classes][Classes and Decisions#hard classes]. Each element
+of the array is tested against currently defined classes
+as an [anchored regular expression][anchored] unless the string ends with ```::```
+indicating it should be interpreted as a
+[*class expression*][Classes and Decisions#operators and precedence].
+
+Note that augments is processed at the very beginning of agent evaluation. You
+can use any **hard** classes, [**persistent** classes][Classes and Decisions#persistence]
+, or classes defined earlier in the augments list. Test carefully, custom [**soft** classes][Classes and Decisions#soft classes]
+may not be defined early enough for use. Thus:
 
 ```
 "classes":
 {
-  "my_always": [ "any" ],
-  "my_other_apache": [ "server[34]", "debian.*" ],
-  "my_other_always": [ "my_always" ],
-  "when_MISSING_not_defined": [ "^(?!MISSING).*" ]
+  "augments_class_from_regex_my_always": [ "any" ],
+  "augments_class_from_regex_my_other_apache": [ "server[34]", "debian.*" ],
+  "augments_class_from_regex_my_other_always": [ "augments_class_from_regex_my_always" ],
+  "augments_class_from_regex_when_MISSING_not_defined": [ "^(?!MISSING).*" ]
+  "augments_class_from_regex": [ "cfengine_\\d+" ],
+  "augments_class_from_single_class_as_regex": [ "cfengine" ],
+  "augments_class_from_single_class_as_expression": [ "cfengine::" ],
+  "augments_class_from_classexpression_and": [ "cfengine.cfengine_3::" ],
+  "augments_class_from_classexpression_not": [ "!MISSING::" ],
+  "augments_class_from_classexpression_or": [ "cfengine|cfengine_3::" ],
+  "augments_class_from_classexpression_complex": [ "(cfengine|cfengine_3).!MISSING::" ]
 }
 ```
 
-results in `my_always` being always defined. `my_other_apache` will be defined
-if the classes `server3` or `server4` are defined, or if any class starting with
-`debian` is defined. `my_other_always` will be defined because `my_always` is
-always defined, and listed first. `when_MISSING_not_defined` will be defined if
-the class `MISSING` is not defined.
+results in
+* `augments_class_from_rgex_my_always` being always defined.
+
+* `augments_class_from_regex_my_other_apache` will be defined if the classes
+  `server3` or `server4` are defined, or if any class starting with `debian` is
+  defined.
+
+* `augments_class_from_regex_my_other_always` will be defined because
+  `augments_class_from_regex_my_always` is listed first and always defined.
+
+* `augments_class_from_regex_when_MISSING_not_defined` will be defined if the
+  class `MISSING` is not defined.
+
+* `augments_class_from_single_class_as_regex` will be defined because the class
+  `cfengine` is always defined.
+
+* `augments_class_from_single_class_as_expression` will be defined because
+  `cfengine` is defined when interpreted as a class expression.
+
+* `augments_class_from_classexpression_and` will be defined because the class
+  `cfengine` and the class `cfengine_3` are defined and the class expression
+  `cfengine.cfengine_3::` evaluates to true.
+
+* `augments_class_from_classexpression_not` will be defined because the class
+  expression `!MISSING::` evaluates to false since the class `MISSING` is not
+  defined.
+
+* `augments_class_from_classexpression_or` will be defined because the class
+  expression `cfengine|cfengine_3::` evaluates to true since at least one of
+  `cfengine` or `cfengine_3` will always be defined by cfengine 3 agents.
+
+* `augments_class_from_classexpression_complex` will be defined because the
+  class expression `(cfengine|cfengine_3).!MISSING::` evaluates to true since at
+  least one of `cfengine` or `cfengine_3` will always be defined by cfengine 3
+  agents and `MISSING` is not defined.
 
 You can see the list of classes thus defined through `def.json` in the output
 of `cf-promises --show-classes` (see [Components and Common Control][]). They
-will be tagged with the tags `source=augments_file,hardclass`. For instance,
-the above two classes result in:
+will be tagged with the tags `source=augments_file,hardclass`. For instance:
 
-```
+```console
 % cf-promises --show-classes=my_
 ...
-my_always                                                    source=augments_file,hardclass
-my_other_always                                              source=augments_file,hardclass
-my_other_apache                                              source=augments_file,hardclass
+augments_class_from_regex_my_always                                                    source=augments_file,hardclass
+augments_class_from_regex_my_other_always                                              source=augments_file,hardclass
+augments_class_from_regex_my_other_apache                                              source=augments_file,hardclass
 ```
 
 **See also:**
 
-* Functions that use regular expressions with classes: `classesmatching()`, `classmatch()`, `countclassesmatching()`
+* Functions that use regular expressions with classes: `classesmatching()`,
+  `classmatch()`, `countclassesmatching()`
 
 ## augments
 
@@ -160,6 +204,7 @@ R: def.centos_6_var == Defined ONLY in centos_6.json
 
 # History
 
+- 3.12.2, 3.14.0 introduced class expression interpretation (`::` suffix) to classes key
 - 3.12.0 introduced the `augments` key
 - 3.7.3 back port `def.json` parsing in core agent and load `def.json` if present next to policy entry
 - 3.8.2 removed core support for `inputs` key, load `def.json` if present next to policy entry
