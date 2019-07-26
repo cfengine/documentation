@@ -7,7 +7,7 @@ tags: [reference, utility functions, functions, execresult, cached function]
 
 [%CFEngine_function_prototype(command, shell)%]
 
-**Description:** Execute `command` and return output as `string`.
+**Description:** Execute `command` and return output (both `stdout` and `stderr`) as `string`.
 
 If the command is not found, the result will be the empty string.
 
@@ -43,7 +43,8 @@ only.  Effectively calls to this function will be also repeatedly
 executed by `cf-promises` when it does syntax checking, which is
 highly undesirable if the command is expensive.  Consider using
 `commands` promises instead, which have locking and are not evaluated
-by `cf-promises`.
+by `cf-promises`. If capturing stderr is undesirable, consider **useshell** and
+redirecting it to `/dev/null`.
 
 **See also:** [`returnszero()`][returnszero].
 
