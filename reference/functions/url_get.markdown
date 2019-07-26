@@ -31,13 +31,13 @@ always provided.
 
 The available options currently are:
 
-* `url.max_content`: if present, specifies the maximum number of content bytes to retrieve (**default 4096**).
-* `url.max_headers`: if present, specifies the maximum number of response headers to retrieve (**default 4096**).
-* `url.verbose`: if 1, `libcurl` will be more verbose while retrieving the content (**default 0**).
-* `url.timeout`: if present, `libcurl` will time out the request after that many seconds (**default 3**).
-* `url.referer`: if present, `libcurl` will set the Referer to this (**default unset**).
-* `url.user-agent`: if present, `libcurl` will set the User-Agent to this (**default unset**).
-* `url.headers`: an array of strings in the format `Foo: bar` specifying headers for the request (**default `[Host: host , Accept: \*/\*]`**).
+* `url.max_content`: if present, specifies the maximum number of content bytes to retrieve ( **default 4096** ).
+* `url.max_headers`: if present, specifies the maximum number of response headers to retrieve ( **default 4096** ).
+* `url.verbose`: if 1, `libcurl` will be more verbose while retrieving the content ( **default 0** ).
+* `url.timeout`: if present, `libcurl` will time out the request after that many seconds ( **default 3** ).
+* `url.referer`: if present, `libcurl` will set the Referer to this ( **default unset** ).
+* `url.user-agent`: if present, `libcurl` will set the User-Agent to this ( **default unset** ).
+* `url.headers`: an array of strings in the format `Foo: bar` specifying headers for the request ( **default `[Host: host , Accept: \*/\*]`** ).
 
 The returned data container will have the following keys:
 
