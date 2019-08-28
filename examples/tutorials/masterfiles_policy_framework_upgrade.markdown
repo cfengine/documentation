@@ -259,6 +259,12 @@ supported in git versions 1.7.9.5 and newer.
 3.7.4
 ```
 
+**Note:** For systems without python 3 easily available (such as centos 6) you can use the following to get around problems in autogen with 3rdparty/core/determine-version.py, which requires python3.
+
+```
+export EXPLICIT_VERSION=$(git describe)
+```
+
 Now we will install the masterfiles from upstream into the directory where we
 are doing the integration.
 
