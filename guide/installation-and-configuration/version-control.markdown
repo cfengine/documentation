@@ -6,7 +6,7 @@ sorting: 60
 tags: [manuals, writing policy, version control, git, subversion]
 ---
 
-CFEngine is policy is stored in `/var/cfengine/masterfiles` on the policy
+CFEngine policy is stored in `/var/cfengine/masterfiles` on the policy
 server. It is common that this directory is backed by a version control system
 (VCS), such as git or subversion. In this document we will focus on git, but
 CFEngine is VCS agnostic.
