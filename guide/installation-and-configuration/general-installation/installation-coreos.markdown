@@ -19,13 +19,13 @@ Download the file-system image package for CoreOS from the [Enterprise Downloads
 1. On the CoreOS Host, extract the `fs-img-pkg.tar.gz` archive:
 
     ```console
-    core@coreos ~ $ tar xvf cfengine-nova-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.x86_64.fs-img.pkg.tar.gz
+    core@coreos ~ $ tar xvf cfengine-nova-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.x86_64.fs-img.pkg.tar.gz
     ```
 
 2. On the CoreOS Host, run the install script:
 
     ```console
-    core@coreos ~ $ sudo ./cfengine-nova-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.x86_64.fs-img.pkg/install.sh
+    core@coreos ~ $ sudo ./cfengine-nova-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.x86_64.fs-img.pkg/install.sh
     ```
 
 Note: Install actions logged to `/var/log/CFEngine-Install.log`.
