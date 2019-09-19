@@ -1,7 +1,6 @@
 //google search
 (function() {
-    
-    var cx = '012826289311752768906:ofqwltf6-kg';
+    var cx = '012826289311752768906:zdz4ud6t2xf';
     var gcse = document.createElement('script');
     gcse.type = 'text/javascript';
     gcse.async = true;
