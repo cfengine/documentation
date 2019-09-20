@@ -55,6 +55,7 @@ done
     echo cf-key
     echo cf-monitord
     echo cf-net
+    echo cf-check
 ) | while read agent
 do
     ${WRKDIR}/core/${agent}/${agent} --help > ${OUTDIR}/${agent}.help
