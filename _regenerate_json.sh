@@ -46,6 +46,8 @@ do
     ${WRKDIR}/core/cf-promises/cf-promises --eval-functions --policy-output-format=json ${policy} | sed '/   error\:.*/d' >  ${out}
     echo "Writing '${out}'"
 done
+
+# We extract the --help output from each component for inclusion in the component specific documentation page under reference/components/
 (
     echo cf-agent
     echo cf-promises
@@ -56,7 +58,12 @@ done
     echo cf-monitord
     echo cf-net
     echo cf-check
+    echo cf-hub
 ) | while read agent
 do
-    ${WRKDIR}/core/${agent}/${agent} --help > ${OUTDIR}/${agent}.help
+    if [ -x "${WRKDIR}/core/${agent}/${agent}" ]; then
+        ${WRKDIR}/core/${agent}/${agent} --help > ${OUTDIR}/${agent}.help
+    else
+        echo "WARNING: No executable agent found at ${WRKDIR}/core/${agent}/${agent}"
+    fi
 done
