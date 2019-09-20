@@ -9,5 +9,5 @@ keywords: [cf-hub]
 
 ## Command reference ##
 
-[%CFEngine_include_snippet(cf-check.help)%]
+[%CFEngine_include_snippet(cf-check.help, ".")%]
 
