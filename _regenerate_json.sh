@@ -64,7 +64,7 @@ do
     if [ -x "${WRKDIR}/core/${agent}/${agent}" ]; then
         ${WRKDIR}/core/${agent}/${agent} --help > ${OUTDIR}/${agent}.help && echo "Extracted --help output from ${agent}"
     elif [ -x "${WRKDIR}/nova/${agent}/${agent}" ]; then
-         ${WRKDIR}/core/${agent}/${agent} --help > ${OUTDIR}/${agent}.help && echo "Extracted --help output from ${agent}"
+         ${WRKDIR}/nova/${agent}/${agent} --help > ${OUTDIR}/${agent}.help && echo "Extracted --help output from ${agent}"
     else
         echo "WARNING: No executable agent found at ${WRKDIR}/core/${agent}/${agent}"
         echo "WARNING: No executable agent found at ${WRKDIR}/nova/${agent}/${agent}"
