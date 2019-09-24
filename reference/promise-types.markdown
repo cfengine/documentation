@@ -1059,9 +1059,11 @@ access:
 fails to expand, the handle will be based on the name of the variable
 rather than its content.
 
-### ifvarclass
+### if
 
 **Description:** Class expression to further restrict the promise context.
+Previously called `ifvarclass`, and for backward compatibility, both names
+work.
 
 This is an additional class expression that will be evaluated after the
 `class::` classes have selected promises. It is provided in order to enable a
@@ -1083,26 +1085,24 @@ The generic example has the form:
 
        "promiser"
 
-         ifvarclass = "$(program)_running|($(program)_notfoundHr12)";
+         if => "$(program)_running|($(program)_notfoundHr12)";
 ```
 
 A specific example would be:
 
 ```cf3
-    bundle agent example
-    {
-    commands:
+bundle agent example
+{
+  commands:
 
-     any::
+    any::
 
-        "/bin/echo This is linux"
+      "/bin/echo This is linux"
+        if => "linux";
 
-           ifvarclass => "linux";
-
-        "/bin/echo This is solaris"
-
-           ifvarclass => "solaris";
-    }
+      "/bin/echo This is solaris"
+        if => "solaris";
+}
 ```
 
 This function is provided so that one can form expressions that link variables
@@ -1123,7 +1123,7 @@ and classes. For example:
 
        "/var/cfengine/bin/$(component)"
 
-           ifvarclass => canonify("start_$(component)");
+           if => canonify("start_$(component)");
 ```
 
 **Notes:**
@@ -1132,51 +1132,30 @@ While strings are automatically canonified during class definition, they are not
 automatically canonified when checking. You may need to use `canonify()` to
 convert strings containing invalid class characters into a valid class.
 
-**History:** Has the `if` alias (and `unless` opposite) since 3.7.0.
+In most cases, `if => something` and `if => not(something)` are opposite,
+but because of [function skipping](Funcions#Function_Skipping), both of these
+will be skipped if `something` is never resolved:
 
-### if
+```
+bundle agent main
+{
+  classes:
+      "a" if => "$(no_such_var)";      # Will be skipped
+      "b" if => not("$(no_such_var)"); # Will be skipped
+}
+```
+
+**History:** In 3.7.0 `if` was introduced as a shorthand for `ifvarclass` (and
+`unless` as an opposite).
+
+### ifvarclass
 
 **Description:** Class expression to further restrict the promise context. This
-an exact alias for `ifvarclass`; see its description for details.
+an exact alias for `if`; see its description for details.
 
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
-
-**Example:**
-
-The generic example has the form:
-
-```cf3
-     promise-type:
-
-       "promiser"
-
-         if = "$(program)_running|($(program)_notfoundHr12)";
-```
-
-A specific example would be:
-
-```cf3
-    bundle agent example
-    {
-    commands:
-
-     any::
-
-        "/bin/echo This is linux"
-
-           if => "linux";
-    }
-```
-
-**Notes:**
-
-While strings are automatically canonified during class definition, they are not
-automatically canonified when checking. You may need to use `canonify()` to
-convert strings containing invalid class characters into a valid class.
-
-**History:** Was introduced in 3.7.0.
 
 ### meta
 
@@ -1211,8 +1190,9 @@ files:
 ### unless
 
 **Description:** Class expression to further restrict the promise context. This
-is exactly like `ifvarclass` but logically inverted; see its description for
-details.
+is exactly like `if`(`ifvarclass`) but logically inverted; see its description
+for details. For any case where `if` would skip the promise, unless should
+evaluate the promise.
 
 **Type:** `string`
 
@@ -1223,26 +1203,21 @@ details.
 The generic example has the form:
 
 ```cf3
-     promise-type:
-
-       "promiser"
-
-         unless = "forbidden";
+  promise-type:
+      "promiser"
+        unless => "forbidden";
 ```
 
 A specific example would be:
 
 ```cf3
-    bundle agent example
-    {
-    commands:
-
-     any::
-
-        "/bin/echo This is NOT linux"
-
-           unless => "linux";
-    }
+bundle agent example
+{
+  commands:
+    any::
+      "/bin/echo This is NOT linux"
+        unless => "linux";
+}
 ```
 
 **Notes:**
@@ -1250,6 +1225,28 @@ A specific example would be:
 While strings are automatically canonified during class definition, they are not
 automatically canonified when checking. You may need to use `canonify()` to
 convert strings containing invalid class characters into a valid class.
+
+Using `unless` with a function call that never resolves, because of a variable
+that is never expanded causes a fatal error:
+
+```cf3
+bundle agent main
+{
+  classes:
+      "a" unless => "$(no_such_var)";             # Won't error
+      "b" unless => not(isdir("$(no_such_var)")); # Will error
+}
+```
+
+Output:
+
+```
+$ cf-agent -K test.cf
+   error: Fatal CFEngine error: Unresolved function call in classes promise 'b', the constraint 'unless => not(isdir("$(no_such_var)"))' might have unexpanded variables
+```
+
+[See this ticket](https://tracker.mender.io/browse/CFE-2689) for discussion
+around what should be the behavior, and possible changes to `if` and `unless`.
 
 **History:** Was introduced in 3.7.0.
 
