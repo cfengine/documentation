@@ -14,44 +14,84 @@ take an arbitrary amount of arguments.
 They can return scalar and list values:
 
 ```cf3
-    vars:
+bundle agent main
+{
+  vars:
       "random" int => randomint("0", "100");
+      "say" string => canonify("message,with:weird characters");
       "list" slist => readstringlist("/tmp/listofstring", "#.*", "\s", 10, 400);
+}
 ```
 
-In addition, functions with return type `boolean` evaluate to `true` or
-`false`. The class on the left-hand side is set if the function evaluates to
-true. If the function evaluates to false, then the class remains unchanged.
+### Boolean return type
+
+Functions which return `boolean`, technically return a string `any` or `!any`.
+This is for compatibility with other functions and promise attributes which
+expect class expressions.
+
+Normally, you don't need to worry about this, you use the function call to
+define classes, and use classes instead of boolean values:
 
 ```cf3
-    bundle agent test
-    {
-    vars:
+bundle agent main
+{
+  vars:
       "five" int => "5";
-      "seven" int => "7";
-    classes:
-      "ok" expression => islessthan("$(five)","$(seven)");
-
-    reports:
-
-      ok::
-        "$(five) is smaller than $(seven)";
-
-     !ok::
-        "$(seven) is smaller than $(five)";
-
-    }
+  classes:
+      "is_var" if => isvariable("five");
+  reports:
+    is_var::
+      "Success!";
+}
 ```
 
-Underneath, CFEngine functions that return `boolean` will actually
-return a context expression like `any` or `!any` which will then be
-deemed true or false by the CFEngine evaluator.  Note the truth of a
-context expression or the result of a function call may change during
-evaluation, but a class, once defined, will stay defined.
+There is no boolean data type for `vars` promises.
+If you want to store or print the class expression, you can use `concat()`:
 
-Functions that return a `boolean` can thus sometimes be used in places
-where a string is accepted as well, but this behavior is not clearly
-defined or supported.  Use at your own discretion.
+```cf3
+bundle agent main
+{
+  vars:
+      "five" int => "5";
+      "expression" string => concat(isvariable("five"));
+  classes:
+      "is_var" if => "$(expression)"; # Will be expanded and evaluated
+  reports:
+    is_var::
+      "Success: expression expanded to '$(expression)' and evaluated to true!";
+}
+```
+
+**Note:** the truth of a class expression or the result of a function call may
+change during evaluation, but a class, once defined, will stay defined.
+
+### Promise attributes and function calls
+
+Promise attributes which use a class expression (string) as input, like `if`
+and `unless`, can take a function call which returns string or boolean as well.
+
+* A boolean function will be resolved to `any`, which is always true, or `!any`
+  which is always false.
+* A string function will be resolved, and the returned string will be
+  evaluated as a class expression.
+
+```cf3
+bundle agent main
+{
+  vars:
+      "five" int => "5";
+      "is_var_class_expression" string => concat(isvariable("$(five)"));
+  classes:
+      "five_less_than_seven" expression => islessthan("$(five)", 7);
+      "five_is_variable" if => "$(is_var_class_expression)";
+  reports:
+    any::
+      "five: $(five)";
+      "is_var_class_expression: $(is_var_class_expression)";
+    five_less_than_seven::
+      "$(five) is smaller than 7";
+}
+```
 
 ### Function caching
 
@@ -76,13 +116,12 @@ git grep -B1 FNCALL_OPTION_CACHED | awk -F'"' '/FnCallTypeNew/ {print $2}'
 * `readtcp()` for TCP interactions
 * `hubknowledge()`, and `remotescalar()` for hub queries
 
-When
-enabled
-[cached functions](https://docs.cfengine.com/docs/{{site.cfengine.branch}}/search.html?q=The+return+value+is+cached) are
-**not executed on every pass of convergence**. Instead, the function will only
-be executed once during
-the [agent evaluation step][Normal Ordering#Agent evaluation step] and its
-result will be cached until the end of that agent execution.
+When enabled
+[cached functions](https://docs.cfengine.com/docs/{{site.cfengine.branch}}/search.html?q=The+return+value+is+cached)
+are **not executed on every pass of convergence**. Instead, the function will
+only be executed once during the
+[agent evaluation step][Normal Ordering#Agent evaluation step]
+and its result will be cached until the end of that agent execution.
 
 **Note:** Function caching is *per-process*, so results will not be cached between
 separate components e.g. `cf-agent`, `cf-serverd` and `cf-promises`.
@@ -101,6 +140,20 @@ If a variable passed to a function is unable to be resolved the function will
 be skipped. The function will be evaluated during a later pass when all
 variables passed as arguments are able to be resolved. The function will never
 be evaluated if any argument contains a variable that never resolves.
+
+**Note:** In some situations, a variable which never resolves cause errors,
+while in other cases it defaults to some behavior. For example:
+
+```cf3
+bundle agent main
+{
+  classes:
+      "a" unless => "$(no_such_var)";             # Won't error
+      "b" unless => isvariable("$(no_such_var)"); # Will error
+}
+```
+
+[The behavior in these edge cases is likely to change, so don't rely on it.](https://tracker.mender.io/browse/CFE-2689)
 
 ### Collecting Functions
 
