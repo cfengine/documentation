@@ -507,3 +507,48 @@ that version from this particluar MSI is installed):
 **History:**
 
 * Added in CFEngine 3.12.2 and 3.14.0
+
+### snap
+
+Manage packages using [snap](https://en.wikipedia.org/wiki/Snappy_(package_manager)).
+
+```cf3
+bundle agent main
+{
+  packages:
+    ubuntu::
+      "genpw"
+        policy => "present",
+        package_module => snap;
+
+      "genpw"
+        policy => "absent",
+        package_module => snap;
+
+       "genpw"
+         policy => "present",
+         package_module => snap,
+         version => "2.0.0";
+
+       "genpw"
+         policy => "absent",
+         package_module => snap,
+         version => "2.0.0";
+
+       "genpw"
+         policy => "present",
+         package_module => snap,
+         version => "latest";
+}
+```
+
+**History:**
+
+* Added in CFEngine 3.15.0, 3.12.3, 3.10.7
+
+**Notes:**
+
+- version `latest` is *not* supported when promising an absence
+- `list-updates` is *not* implemented, snaps are automatically updated by default
+
+
