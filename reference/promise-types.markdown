@@ -956,6 +956,8 @@ not running. When a persistent class is activated it gets `scope` namespace.
      }
 ```
 
+**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types and Attributes#persist_time]
+
 #### timer_policy
 
 **Description:** Determines whether a persistent class restarts its counter
