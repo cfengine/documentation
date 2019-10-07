@@ -63,7 +63,9 @@ bundle agent main
 ```
 
 **Note:** the truth of a class expression or the result of a function call may
-change during evaluation, but a class, once defined, will stay defined.
+change during evaluation, but typically, a class, once defined, will stay defined.
+
+**See also:** [persistence in classes and decisions][Classes and Decisions#persistence]
 
 ### Promise attributes and function calls
 
