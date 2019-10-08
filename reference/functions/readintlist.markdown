@@ -29,15 +29,15 @@ split into fields. Using the empty string (`""`) indicates no comments.
 
 Prepare:
 
-[%CFEngine_include_snippet(readintrealstringlist.cf, #\+begin_src prep, .*end_src)%]
+[%CFEngine_include_snippet(readintlist.cf, #\+begin_src prep, .*end_src)%]
 
 Run:
 
-[%CFEngine_include_snippet(readintrealstringlist.cf, #\+begin_src cfengine3, .*end_src)%]
+[%CFEngine_include_snippet(readintlist.cf, #\+begin_src cfengine3, .*end_src)%]
 
 Output:
 
-[%CFEngine_include_snippet(readintrealstringlist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+[%CFEngine_include_snippet(readintlist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 
 **See Also:** [`readstringlist()`][readstringlist], [`readreallist()`][readreallist]
