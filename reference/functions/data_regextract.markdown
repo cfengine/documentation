@@ -8,7 +8,7 @@ tags: [reference, data functions, functions, json, container, regextract, pcre]
 [%CFEngine_function_prototype(regex, string)%]
 
 **Description:** Returns a data container filled with backreferences
-and named captures if the [anchored][anchored] `regex` matches the
+and named captures if the *multiline* [anchored][anchored] `regex` matches the
 `string`.
 
 This function is significantly better than `regextract()` because it
@@ -36,6 +36,8 @@ PCRE named captures are described in http://pcre.org/pcre.txt and several syntax
          (?'name'...)    named capturing group (Perl)
          (?P<name>...)   named capturing group (Python)
 
+Since the regular expression is run with /dotall/ and /multiline/ modes, to match the end of a line, use ```[^\n]*``` instead of ```$```.
+
 [%CFEngine_function_attributes(regex, string)%]
 
 **Example:**
@@ -50,4 +52,4 @@ Output:
 
 **History:** Was introduced in version 3.7.0 (2015)
 
-**See also:** `regextract()` `regex_replace()`
+**See also:** `regextract()`, `regex_replace()`, [pcre2 regular expression syntax summary](http://www.pcre.org/current/doc/html/pcre2syntax.html#SEC10)
