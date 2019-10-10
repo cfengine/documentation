@@ -595,7 +595,7 @@ bundle agent main
 
 **History:**
 
-* Added in CFEngine 3.15.0
+* Added in CFEngine 3.15.0, 3.12.3, 3.10.7
 
 **Notes:**
 
