@@ -20,8 +20,8 @@ The hub which collects information from Feeder Hubs is called the Superhub.
 
 If all hubs are version 3.14.0 or higher then Mission Portal can be used to
 configure and connect the Superhub and Feeder hubs. For Feeder hubs with an
-earlier version than 3.14.0 an API and manual steps must be followed. This
-documentation will be provided soon.
+earlier version than 3.14.0 some manual steps must be taken. Links to these
+are provided at each stage of installation and setup that follows.
 
 * [Installation][Federated Reporting#Installation]
 * [Setup][Federated Reporting#Setup]
@@ -46,6 +46,8 @@ app by [Opening Settings][Settings#opening settings] then
 selecting [Manage Apps][Settings#manage apps] and finally
 by clicking the `On` radio button for Hub management in the Status column.
 
+Note: for pre 3.14 feeders this step is not performed.
+
 ### Enable Federated Reporting ###
 
 ![Enable Federated Reporting](fr-hub-management-default.png)
@@ -57,6 +59,8 @@ Click on the Enable Superhub or Enable Feeder button as appropriate. This will
 cause some configuration to be written in the filesystem and on next agent run
 policy will make the needed changes. You can speed up this process by running
 the agent manually.
+
+Note: for pre 3.14 feeders, you must [Enable feeder without API].
 
 ### Connect Feeder Hubs ###
 
@@ -168,7 +172,7 @@ $ curl -k -i -s -X POST -u admin:$PASSWORD https://$SUPERHUB/api/fr/setup-hub/su
 $ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/setup-hub/feeder
 ```
 
-### Enable feeder, without API
+### Enable feeder without API
 
 For older hubs:
 
@@ -176,6 +180,7 @@ For older hubs:
 $ ssh $CLOUDUSER$FEEDER
 $ sudo bash
 $ cd /opt/cfengine/federation/cfapache
+$ # press Ctrl-D to finish writing file
 $ cat > federation-config.json
 {
   "hostname": null,
@@ -271,9 +276,11 @@ $ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/federation-con
 (The second API call is needed to save the updated config to file,
 `federation-config.json`).
 
-#### Adding superhub to feeder without API
+Note: for pre 3.14 feeders, you must [Add superhub to feeder without API]
 
-To configure things manually, just modify the
+#### Add superhub to feeder without API
+
+To configure things without the API, just modify the
 `/opt/cfengine/federation/cfapache/federation-config.json` file on the
 **feeder** and add the **superhub** as a remote hub by adding this section:
 
