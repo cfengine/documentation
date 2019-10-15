@@ -317,6 +317,8 @@ body package_module apt_get
 
 **See Also:** `Package Modules`
 
+**History:** Introduced in 3.13.0, 3.12.2
+
 #### module_path
 
 **Description:** Absolute path to the the package module.
@@ -342,6 +344,8 @@ body package_module yum_all_repos
 ```
 
 **See Also:** `Package Modules`
+
+**History:** Introduced in 3.13.0, 3.12.2
 
 ## Package modules out-of-the-box
 ### yum
