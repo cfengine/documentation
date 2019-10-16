@@ -657,6 +657,8 @@ The standard library in the Masterfiles Policy Framework contains
 the [`feature`][lib/feature.cf] bundle which implements a useful model for
 defining classes for a period of time as well as canceling them on demand.
 
+**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types and Attributes#persist_time], [`lib/event.cf`][lib/event.cf] in the MPF, [`lib/feature.cf`][lib/feature.cf] in the MPF
+
 ## Canceling classes
 
 You can cancel a class with a [`classes`][Promise Types and Attributes#classes] body.

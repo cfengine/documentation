@@ -300,6 +300,8 @@ Then create `classes.cf`
 
 **History:** Was introduced in CFEngine 3.3.0
 
+**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types and Attributes#persist_time]
+
 ### not
 
 **Description:** Evaluate the negation of string expression in normal form
