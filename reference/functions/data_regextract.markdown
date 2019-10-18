@@ -52,4 +52,4 @@ Output:
 
 **History:** Was introduced in version 3.7.0 (2015)
 
-**See also:** `regextract()`, `regex_replace()`, [pcre2 regular expression syntax summary](http://www.pcre.org/current/doc/html/pcre2syntax.html#SEC10)
+**See also:** `regextract()`, `regex_replace()`, [pcre regular expression syntax summary](http://www.pcre.org/original/doc/html/pcresyntax.html#SEC10)
