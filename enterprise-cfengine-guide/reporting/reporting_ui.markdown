@@ -24,6 +24,11 @@ See also:
 Users not familiar with SQL syntax can easily create their own custom reports in this interface. Please note that query builder can be [extended with your custom data][Extending Query Builder in Mission portal#How to add new table to Query builder].
 
 * Tables - Select the data tables you want include in your report first.
+    * When more than one table is selected the Query builder opens modal window to select the ([join strategy  between tables](https://www.postgresql.org/docs/current/tutorial-join.html)):
+        * Main table - the main data source, other tables will be connected to it.
+        * Extend main table (left join) - returns all records from the main table, and the matched records from the joined table.
+        * Include only common rows (inner join) - returns records from the main table that intersect the joined table. 
+        Useful for filtering, in the case where you have custom views that have pre-filtered hosts. For example, web_servers - a custom view that contains hostkeys of hosts that are web servers.
 * Fields - Define your table columns based on your selection above.
 * Filters - Filter your results.  Remember that unless you filter, you may be querying large data sets, so think about what you absolutely need in your report.
 * Group - Group your results.  May be expensive with large data sets.
