@@ -60,7 +60,7 @@ cause some configuration to be written in the filesystem and on next agent run
 policy will make the needed changes. You can speed up this process by running
 the agent manually.
 
-Note: for pre 3.14 feeders, you must [Enable feeder without API].
+Note: for pre 3.14 feeders, you must [Enable feeder without API][Federated Reporting#Enable feeder without API].
 
 ### Connect Feeder Hubs ###
 
@@ -276,7 +276,7 @@ $ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/federation-con
 (The second API call is needed to save the updated config to file,
 `federation-config.json`).
 
-Note: for pre 3.14 feeders, you must [Add superhub to feeder without API]
+Note: for pre 3.14 feeders, you must [Add superhub to feeder without API][Federated Reporting#Add superhub to feeder without API]
 
 #### Add superhub to feeder without API
 
