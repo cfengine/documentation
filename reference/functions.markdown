@@ -135,20 +135,6 @@ be skipped. The function will be evaluated during a later pass when all
 variables passed as arguments are able to be resolved. The function will never
 be evaluated if any argument contains a variable that never resolves.
 
-**Note:** In some situations, a variable which never resolves cause errors,
-while in other cases it defaults to some behavior. For example:
-
-```cf3
-bundle agent main
-{
-  classes:
-      "a" unless => "$(no_such_var)";             # Won't error
-      "b" unless => isvariable("$(no_such_var)"); # Will error
-}
-```
-
-[The behavior in these edge cases is likely to change, so don't rely on it.](https://tracker.mender.io/browse/CFE-2689)
-
 ### Collecting Functions
 
 Some function arguments are marked as *collecting* which means they
