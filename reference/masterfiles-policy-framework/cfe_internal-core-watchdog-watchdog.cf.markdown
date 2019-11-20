@@ -6,4 +6,4 @@ sorting: 80
 tags: [reference, cfe_internal, watchdog, implementation, MPF]
 ---
 
-[%CFEngine_include_snippet(../../masterfiles/cfe_internal/core/watchdog.cf)%]
+[%CFEngine_library_include(cfe_internal/core/watchdog)%]
