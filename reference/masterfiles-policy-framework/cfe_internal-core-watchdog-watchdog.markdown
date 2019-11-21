@@ -2,7 +2,7 @@
 layout: default
 title: cfe_internal/core/watchdog/watchdog.cf
 published: true
-sorting: 160
+sorting: 80
 tags: [reference, MPF, cfe_internal, core, watchdog]
 ---
 
