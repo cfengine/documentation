@@ -11,17 +11,9 @@ Argument values need to be of the type and range as documented for each
 function. Some functions are documented with a `...`, in which case they
 take an arbitrary amount of arguments.
 
-They can return scalar and list values:
+They can return scalar (string|int|real|bool), list (slist, ilist, rlist) and data values:
 
-```cf3
-bundle agent main
-{
-  vars:
-      "random" int => randomint("0", "100");
-      "say" string => canonify("message,with:weird characters");
-      "list" slist => readstringlist("/tmp/listofstring", "#.*", "\s", 10, 400);
-}
-```
+[%CFEngine_include_example(function-return-types.cf)%]
 
 ### Boolean return type
 
