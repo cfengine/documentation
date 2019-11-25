@@ -414,17 +414,52 @@ The list of connected hubs should now reflect the disabled state.
 
 Uninstalling Federated Reporting from a superhub is not possible at this time.
 
-In order to remove Federated Reporting from a feeder remove the ```cftransport``` user
-and ```/opt/cfengine/federation``` directories. This will remove trust established
-with the superhub and will prevent superhub from performing any dump/import procedures.
+In order to remove Federated Reporting from a feeder you must set the `target_state`
+to `off`. On the next agent run the `cftransport` user will be removed, thus removing
+the trust established with the superhub and causing no further dump/import procedures
+to occur.
+
+There are two ways to change the `target_state` of a feeder.
+
+- Use the hub-state API (requires version 3.14.0 or greater on the feeder hub)
+- Edit federation-config.json (any version)
+
+### Uninstall with the API
 
 ```console
-# userdel -r cftransport
-# rm -rf /opt/cfengine/federation
+$ cat > target-state-off.json
+{
+  "target_state": "off"
+}
 ```
 
-On next agent run the /opt/cfengine/federation/cfapache path will be re-created but
-no further Federated Reporting actions will be taken.
+```console
+$ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
+```
+
+### Uninstall without API
+
+Edit ```/opt/cfengine/federation/cfapache/federation-config.json``` on the feeder
+you wish to disable and change the top-level `target_state` property value to `off`.
+
+```json
+{
+  "ui_name": "feeder1",
+  "role": "feeder",
+  "enabled": "true",
+  "target_state": "off",
+  "transport":
+  {
+    "mode": "pull_over_rsync",
+    "ssh_user": "cftransport",
+    "ssh_host": "<superhub-ip>",
+    "ssh_pubkey": "<public key>",
+    "ssh_fingerprint": "<ssh fingerprint>"
+  }
+}
+```
+
+### Remove Feeder from Mission Portal Hub Management
 
 At this time it is not possible to remove a connected hub in the Mission Portal Hub
 management app. The recommended way to remove a connected hub is with the API.
