@@ -19,7 +19,7 @@ Automate your infrastructure with self-service capabilities. CFEngine Enterprise
 
 ## Policy-Based Application Deployment ##
 
-Achieve repeatable, error-free and automated deployment of middleware and application components to datacenter or cloud-based infrastructure. Along with infrastructure, automated application deployment provides a standardized platform. 		
+Achieve repeatable, error-free and automated deployment of middleware and application components to a datacenter or cloud-based infrastructure. Along with infrastructure, automated application deployment provides a standardized platform. 		
 
 ## Self-Healing Continuous Operations ##
 
