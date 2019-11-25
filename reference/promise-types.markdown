@@ -1147,6 +1147,14 @@ bundle agent main
 }
 ```
 
+If you need a condition which defaults to _not skipping_ in the cases above,
+`unless` does this; for any expression where `if` will skip, `unless` will not
+skip.
+
+`if` and `unless` both make choices about whether to _skip_ a promise. Both
+`if` and `unless` can _force_ a promise to be skipped - if a promise has both
+`if` and `unless` constraints, _skipping_ takes precedence.
+
 **History:** In 3.7.0 `if` was introduced as a shorthand for `ifvarclass` (and
 `unless` as an opposite).
 
@@ -1228,27 +1236,27 @@ While strings are automatically canonified during class definition, they are not
 automatically canonified when checking. You may need to use `canonify()` to
 convert strings containing invalid class characters into a valid class.
 
-Using `unless` with a function call that never resolves, because of a variable
-that is never expanded causes a fatal error:
+`if` and `unless` both make choices about whether to _skip_ a promise. Both
+`if` and `unless` can _force_ a promise to be skipped - if a promise has both
+`if` and `unless` constraints, _skipping_ takes precedence.
+
+`unless` will skip a promise, only if the class expression is evaluated to
+false. If the class expression is true, or not evaluated (because of
+unexpanded variables, or unresolved function calls) it will not cause the
+promise to be skipped. Since `if` defaults to skipping in those cases,
+`unless` defaults to _not skipping_.
 
 ```cf3
 bundle agent main
 {
   classes:
-      "a" unless => "$(no_such_var)";             # Won't error
-      "b" unless => not(isdir("$(no_such_var)")); # Will error
+      "a"     if => "any";            # Will be evaluated
+      "b" unless => "any";            # Will be skipped
+
+      "c"     if => "$(no_such_var)"; # Will be skipped
+      "d" unless => "$(no_such_var)"; # Will be evaluated
 }
 ```
-
-Output:
-
-```
-$ cf-agent -K test.cf
-   error: Fatal CFEngine error: Unresolved function call in classes promise 'b', the constraint 'unless => not(isdir("$(no_such_var)"))' might have unexpanded variables
-```
-
-[See this ticket](https://tracker.mender.io/browse/CFE-2689) for discussion
-around what should be the behavior, and possible changes to `if` and `unless`.
 
 **History:** Was introduced in 3.7.0.
 

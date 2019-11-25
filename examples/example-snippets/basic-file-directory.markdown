@@ -18,6 +18,7 @@ tags: [Examples,Files,Directories]
 * [Copy then edit a file convergently][File and Directory Examples#Copy then edit a file convergently]
 * [Deleting lines from a file][File and Directory Examples#Deleting lines from a file]
 * [Deleting lines exception][File and Directory Examples#Deleting lines exception]
+* [Delete files recursively][File and Directory Examples#Delete files recursively]
 * [Editing files][File and Directory Examples#Editing files]
 * [Editing tabular files][File and Directory Examples#Editing tabular files]
 * [Inserting lines in a file][File and Directory Examples#Inserting lines in a file]
@@ -108,6 +109,10 @@ To convergently chain a copy followed by edit, you need a staging file. First yo
 
 
 [%CFEngine_include_snippet(deleting_lines_exception.cf, .* )%]
+
+## Delete files recursively
+
+The [rm_rf][lib/bundles.cf#rm_rf] and [rm_rf_depth][lib/bundles.cf#rm_rf_depth] bundles in the standard library make it easy to prune directory trees.
 
 ## Editing files
 

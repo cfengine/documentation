@@ -331,13 +331,13 @@ variables:
          "Good evening!";
 
        "any"::
-         "Good evening too!" ifvarclass => "$(myclassname)";
+         "Good evening too!" if => "$(myclassname)";
     }
 ```
 
 
 
-As you saw above, the class predicate `ifvarclass` (aliased to `if`;
+As you saw above, the class predicate `if` (alias of `ifvarclass`;
 `unless` is also available) can be used if variable class expressions
 are required. It is `AND`ed with the normal class expression, and is
 evaluated together with the promise. Both may contain variables as long
