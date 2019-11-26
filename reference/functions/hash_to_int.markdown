@@ -17,7 +17,7 @@ spreading out the scheduling, or even for static load balancing. The result
 would may be coupled with an `ifelse()` clause of some sort, or just used
 directly.
 
-[%CFEngine_function_attributes(lower, upper, string)%]
+[%CFEngine_function_attributes(lower (inclusive), upper (exclusive), string)%]
 
 **Example:**
 
