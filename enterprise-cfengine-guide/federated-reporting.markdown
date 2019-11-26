@@ -434,7 +434,7 @@ $ cat > target-state-off.json
 ```
 
 ```console
-$ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
+$ curl -k -i -s -X PUT -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
 ```
 
 ### Uninstall without API
