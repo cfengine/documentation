@@ -48,7 +48,7 @@ federation policy to ensure that `semanage` is installed.
 }
 ```
 
-See the [federation.cf semanage_installed](https://github.com/cfengine/masterfiles/blob/master/cfe_internal/enterprise/federation/federation.cf#L144) bundle for details on which packages are used for various distributions.
+See the [federation.cf semanage_installed](cfe_internal/enterprise/federation/federation.cf#semanage_installed) bundle for details on which packages are used for various distributions.
 
 ## Installation ##
 
