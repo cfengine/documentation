@@ -1461,7 +1461,7 @@ recursive deletion
 ```
 
 Note the parent directory of a search is not deleted in recursive deletions. You
-must code a separate promise to delete the single parent object. For an example
+must code a separate promise to delete the single parent object. This attribute does not respect `include_basedir` in `depth_search` bodies. For an example
 see [`bundle agent rm_rf_depth` in the standard library][lib/bundles.cf#rm_rf_depth].
 
 **Default value** (only if body is present): `rmdirs = true`
@@ -1472,6 +1472,12 @@ present. If there is no `delete` body then files (and directories) are
 
 ### depth_search
 
+**Description:** Apply a promise recursively
+
+When searching recursively from a directory, the promised directory itself is only the anchor point and is not part of the search by default. Set `include_basedir` to `true` to include the promised directory in the search.
+
+This should be used in combination with `file_select`.
+
 **Type:** `body depth_search`
 
 **See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
@@ -1479,10 +1485,6 @@ present. If there is no `delete` body then files (and directories) are
 #### depth
 
 **Description:** Maximum depth level for search
-
-When searching recursively from a directory, the parent directory is
-only the anchor point and is not part of the search. To alter the
-parent, a separate non-recursive promise should be made.
 
 **Type:** `int`
 
@@ -1530,19 +1532,16 @@ When checking files recursively (with `depth_search`) the promiser is a
 directory. This parameter determines whether that initial directory
 should be considered part of the promise or simply a boundary that marks
 the edge of the search. If true, the promiser directory will also
-promise the same attributes as the files inside it.
+promise the same attributes as the files inside it. `rmdirs` in `delete` bodies /ignore/ this attribute. A separate files promise must be made in order to delete the top level directory.
 
 
 **Type:** [`boolean`][boolean]
 
 **Example:**
 
-```cf3
-     body depth_search example
-     {
-     include_basedir => "true";
-     }
-```
+[%CFEngine_include_example(files_depth_search_include_basedir.cf)%]
+
+**See also:** `rm_rf`, `rm_rf_depth` from the standard library.
 
 #### include_dirs
 
