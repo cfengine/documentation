@@ -267,8 +267,8 @@ Depth search is not allowed with `edit_line` promises.
 Platforms that support named sockets (basically all Unix systems, but
 not Windows), may not work correctly when using a `files` promise to
 alter such a socket. This is a known issue, documented in
-[CFE-1782][https://tracker.mender.io/browse/CFE-1782], and
-[CFE-1830][https://tracker.mender.io/browse/CFE-1830].
+[CFE-1782](https://tracker.mender.io/browse/CFE-1782), and
+[CFE-1830](https://tracker.mender.io/browse/CFE-1830).
 
 ***
 
