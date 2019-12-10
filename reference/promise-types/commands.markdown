@@ -568,7 +568,7 @@ execution of a command):
 Modules inherit the environment variables from `cf-agent` and accept
 arguments, just as a regular command does.
 
-**See Also:** [usemodule()][usemodule]
+**See also:** [usemodule()][usemodule], [read_module_protocol()][read_module_protocol]
 
 **History:**
 
