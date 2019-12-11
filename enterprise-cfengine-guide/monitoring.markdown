@@ -1,12 +1,13 @@
 ---
 layout: default
-title: Monitoring
+title: Measurements app
+alias: Measurements
 sorting: 60
 published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
-Monitoring allows you to get an overview of your hosts over time.
+Measurements allows you to get an overview of specific metrics on your hosts over time.
 
 ![Monitoring](Mission-Portal-Monitoring-1.png)
 
