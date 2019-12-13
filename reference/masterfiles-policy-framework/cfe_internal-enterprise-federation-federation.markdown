@@ -5,7 +5,4 @@ published: true
 tags: [reference, MPF, cfe_internal, enterprise, federation]
 ---
 
-{% comment %}
-render the policy file  with the include macro here once fixed
-{% endcomment %}
-
+[%CFEngine_library_include(cfe_internal/enterprise/federation/federation)%]
