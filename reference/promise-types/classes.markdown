@@ -403,7 +403,7 @@ If a list is used as the input to select_class the promise will only actuate if
 the list is expandable. If the list has not yet been evaluated, the
 select_class will be skipped and wait for a subsequent evaluation pass.
 
-Given stable input, this functions output will not change between executions of the same version of CFEngine. It's output should not change between versions of CFEngine within the same minor release (3.12.0 -> 3.12.1). It's output may change between minor versions (3.12.0 -> 3.13.0).
+Given stable input, the output of this function will not change between executions of the same version of CFEngine. Its output should not change between versions of CFEngine within the same minor release (3.12.0 -> 3.12.1). Its output may change between minor versions (3.12.0 -> 3.13.0).
 
 ### xor
 
