@@ -363,9 +363,11 @@ on [Negative Knowledge][classes and decisions].
 host's fully qualified domain name, the primary IP address and the UID that
 cf-agent is running under.
 
-The class is chosen deterministically (not randomly) but it is not
-possible to say which host will end up in which class in advance. Only
-that hosts will always end up in the same class every time.
+This feature is useful for decentralized dynamic grouping. The class is chosen
+deterministically (not randomly) but it is not possible to say which host will
+end up in which class in advance. Only that given stable input a host will
+always end up in the same class every time while running a given version of
+CFEngine.
 
 **Type:** `clist`
 
