@@ -3,6 +3,7 @@ layout: default
 title: Federated Reporting
 published: true
 sorting: 55
+tags: [enterprise, guide, federated reporting]
 ---
 
 ## Overview ##
