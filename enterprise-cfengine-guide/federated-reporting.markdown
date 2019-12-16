@@ -44,7 +44,7 @@ federation policy to ensure that `semanage` is installed.
 ```json
 {
   "classes": {
-    "cfengine_mp_fr_dependencies_auto_install"
+    "cfengine_mp_fr_dependencies_auto_install" : ["any"]
   }
 }
 ```
