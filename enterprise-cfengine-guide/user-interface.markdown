@@ -23,7 +23,7 @@ statements passed to PostgreSQL.
 * [Hosts and Health][User Interface#Hosts and Health]
 * [Reporting][User Interface#Reporting]
 * [Sharing][User Interface#Sharing]
-* [Monitoring][User Interface#Monitoring]
+* [Measurements][User Interface#Measurements]
 * [Settings][User Interface#Settings]
 
 ## Dashboard
@@ -132,11 +132,11 @@ role, then any user (including `user1` ) having the `reporting` role will be
 able to subscribe to the new dashboard. Additionally the dashboard owner in this
 case `admin` also has access to the custom dashboard.
 
-## Monitoring
+## Measurements
 
 Monitoring allows you to get an overview of your hosts over time.
 
-Find out more: [Monitoring][]
+Find out more: [Measurements][Measurements app]
 
 ## Settings
 
