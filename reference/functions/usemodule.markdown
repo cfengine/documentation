@@ -31,4 +31,4 @@ bundle agent test
       "/bin/echo" args => "test $(user)";
 }
 ```
-**See Also:** [Module Protocol][commands#module]
+**See also:** [read_module_protocol()][read_module_protocol], [Module Protocol][commands#module]

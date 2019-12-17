@@ -38,7 +38,7 @@ very, very depressing.
 
 ### Configure collection for monitoring data
 
-[Monitoring][Monitoring] allows you to sample a metric and assess its value
+[Measurements][Measurements app] allows you to sample a metric and assess its value
 across your hosts over time. Collection of monitoring information is disabled by
 default. Metrics must match `monitoring_include` in the appropriate
 `report_data_select` body.

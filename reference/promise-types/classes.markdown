@@ -373,9 +373,11 @@ on [Negative Knowledge][classes and decisions].
 host's fully qualified domain name, the primary IP address and the UID that
 cf-agent is running under.
 
-The class is chosen deterministically (not randomly) but it is not
-possible to say which host will end up in which class in advance. Only
-that hosts will always end up in the same class every time.
+This feature is useful for decentralized dynamic grouping. The class is chosen
+deterministically (not randomly) but it is not possible to say which host will
+end up in which class in advance. Only that given stable input a host will
+always end up in the same class every time while running a given version of
+CFEngine.
 
 **Type:** `clist`
 
@@ -410,6 +412,8 @@ purposes).
 If a list is used as the input to select_class the promise will only actuate if
 the list is expandable. If the list has not yet been evaluated, the
 select_class will be skipped and wait for a subsequent evaluation pass.
+
+Given stable input, the output of this function will not change between executions of the same version of CFEngine. Its output should not change between versions of CFEngine within the same minor release (3.12.0 -> 3.12.1). Its output may change between minor versions (3.12.0 -> 3.13.0).
 
 ### xor
 

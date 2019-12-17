@@ -3,6 +3,7 @@ layout: default
 title: Federated Reporting
 published: true
 sorting: 55
+tags: [enterprise, guide, federated reporting]
 ---
 
 ## Overview ##
@@ -23,12 +24,32 @@ configure and connect the Superhub and Feeder hubs. For Feeder hubs with an
 earlier version than 3.14.0 some manual steps must be taken. Links to these
 are provided at each stage of installation and setup that follows.
 
+* [Requirements][Federated Reporting#Requirements]
 * [Installation][Federated Reporting#Installation]
 * [Setup][Federated Reporting#Setup]
 * [Operation][Federated Reporting#Operation]
 * [API Setup][Federated Reporting#API Setup]
 * [Disable Feeder][Federated Reporting#Disable Feeder]
 * [Uninstall][Federated Reporting#Uninstall]
+
+## Requirements ##
+
+If your hub will have SELinux enabled, the `semanage` command must be installed.
+This allows Federated Reporting policy to manage the trust between the superhub and
+feeder hubs.
+
+Add the `cfengine_mp_fr_dependencies_auto_install` to your augments file to allow
+federation policy to ensure that `semanage` is installed.
+
+```json
+{
+  "classes": {
+    "cfengine_mp_fr_dependencies_auto_install" : ["any"]
+  }
+}
+```
+
+See the [federation.cf semanage_installed](cfe_internal/enterprise/federation/federation.cf#semanage_installed) bundle for details on which packages are used for various distributions.
 
 ## Installation ##
 
@@ -434,7 +455,7 @@ $ cat > target-state-off.json
 ```
 
 ```console
-$ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
+$ curl -k -i -s -X PUT -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
 ```
 
 ### Uninstall without API
