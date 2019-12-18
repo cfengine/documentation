@@ -62,7 +62,7 @@ install CFEngine Hub on a Superhub as well as Feeder hubs.
 
 ![Enable Hub Management](fr-hub-management-enabled.png)
 
-On the Superhub and all Feeder enable the Hub management
+On the Superhub and all Feeders enable the Hub management
 app by [Opening Settings][Settings#opening settings] then 
 selecting [Manage Apps][Settings#manage apps] and finally
 by clicking the `On` radio button for Hub management in the Status column.
