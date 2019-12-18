@@ -93,7 +93,7 @@ enabled.
 After all hubs have Federated Reporting enabled visit Hub management on the
 Superhub to connect the Feeder hubs.
 
-Click on the Connect hub button to show the Connect a hub dialog.
+On the Superhub, click on the Connect hub button to show the Connect a hub dialog.
 
 ![Connect a hub](fr-connect-a-hub.png)
 
