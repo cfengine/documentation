@@ -62,7 +62,7 @@ install CFEngine Hub on a Superhub as well as Feeder hubs.
 
 ![Enable Hub Management](fr-hub-management-enabled.png)
 
-On the Superhub and all Feeder enable the Hub management
+On the Superhub and all Feeders enable the Hub management
 app by [Opening Settings][Settings#opening settings] then 
 selecting [Manage Apps][Settings#manage apps] and finally
 by clicking the `On` radio button for Hub management in the Status column.
@@ -93,7 +93,7 @@ enabled.
 After all hubs have Federated Reporting enabled visit Hub management on the
 Superhub to connect the Feeder hubs.
 
-Click on the Connect hub button to show the Connect a hub dialog.
+On the Superhub, click on the Connect hub button to show the Connect a hub dialog.
 
 ![Connect a hub](fr-connect-a-hub.png)
 
