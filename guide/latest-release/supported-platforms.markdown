@@ -16,8 +16,8 @@ for all supported platforms and [binary packages for popular Linux distributions
 | Platform         | Versions             | Architecture      |
 | :--------------: | :------------------: | :---------------: |
 | CentOS/RHEL      | 6, 7                 | x86-64            |
-| Debian           | 7, 8, 9              | x86-64            |
-| Ubuntu           | 14.04, 16.04, 18.04  | x86-64            |
+| Debian           | 8, 9                 | x86-64            |
+| Ubuntu           | 16.04, 18.04         | x86-64            |
 
 Any supported host can be a policy server in Community installations of CFEngine.
 
@@ -26,8 +26,8 @@ Any supported host can be a policy server in Community installations of CFEngine
 | Platform    | Versions            | Architectures   |
 | :---------: | :-----------------: | :-------------: |
 | AIX         | 7.1, 7.2            | PowerPC         |
-| CentOS/RHEL | 5, 6, 7             | x86-64, x86     |
-| Debian      | 7, 8, 9             | x86-64, x86     |
+| CentOS/RHEL | 6, 7, 8             | x86-64, x86     |
+| Debian      | 8, 9                | x86-64, x86     |
 | HP-UX       | 11.31+              | Itanium         |
 | SLES        | 11                  | x86-64, x86     |
 | Solaris     | 11                  | UltraSparc      |
