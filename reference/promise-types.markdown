@@ -113,7 +113,30 @@ A "meta" attribute can likewise be added into any body (of any type).
     }
 ```
 
-**Note:** When a variable is re-defined the associated meta attributes are also
+Another example:
+
+```cf3
+    some_promise_type:
+      any::
+        "my_promiser"
+          meta => { "Team Foo", "workaround", "non-critical" };
+```
+
+The meta tags may be referred to programmatically in various ways, or may be solely for
+human consumption.  Meta tags on vars promises and classes promises are
+particularly suited for programmatic interpretation; meta tags on other
+promise types (or in bodies) are more likely to be intended only for human consumption.
+
+Relevant CFEngine functions are: `classesmatching()`,
+`classmatch()`, `countclassesmatching()`, `getclassmetatags()`,
+`getvariablemetatags()`, `variablesmatching()`, `variablesmatching_as_data()`
+
+Also see "meta promises": there can be promises of type "meta", in addition
+to this attribute with the name "meta" which can be added to a promise of any type.
+If mention is made of "tags" on a *bundle*, what is actually meant is meta *promises*
+in that bundle.  (This is just a terminology point.)
+
+**Note:** When a variable is re-defined the associated meta tags are also
 re-defined.
 
 **History:** Was introduced in 3.7.0.
