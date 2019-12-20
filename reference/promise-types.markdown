@@ -93,7 +93,12 @@ Note that the child's parameters can be passed up to the parent.
 
 ### meta
 
-**Description:** A list of meta attributes.
+**Description:** A list of strings to be associated with the promise for knowledge management purposes.  The strings are usually called "meta tags" or simply "tags."
+
+Any promise (of any type) can be given a "meta" attribute.  Since the right hand side
+for this attribute is an slist, multiple strings (tags) can be associated with the same promise.
+
+A "meta" attribute can likewise be added into any body (of any type).
 
 **Type:** `slist`
 
