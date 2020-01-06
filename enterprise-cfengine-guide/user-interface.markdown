@@ -35,6 +35,13 @@ The dashboard contains informative widgets that you can customize to create
 alerts. All notifications of alert state changes, e.g. from OK to not-OK, are
 stored in an event log for later inspection and analysis.
 
+### Make changes to shared dashboard
+
+![Clone dashboard possibility](clone-dashboard.png)
+
+Create an editable copy by clicking a button that appears on hover over 
+the dashboard's row in case if you want to change shared dashboard.
+
 ### Alert widgets
 
 ![Enterprise UI Alerts](welcome_2nd_screen.png)
