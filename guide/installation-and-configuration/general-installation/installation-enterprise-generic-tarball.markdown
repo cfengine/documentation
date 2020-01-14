@@ -11,10 +11,16 @@ CFEngine by means of a generic binary tarball.
 
 First download the binary onto the host.
 
-Next unpack the archive:
+Next unpack the archive. For the 32 bit tarball use:
 
 ```sh
-tar --gunzip --extract --directory / --file ./cfengine-nova-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.pkg.tar.gz
+tar --gunzip --extract --directory / --file ./cfengine-nova-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.i386.pkg.tar.gz
+```
+
+Otherwise, for 64 bit tarball, use:
+
+```sh
+tar --gunzip --extract --directory / --file ./cfengine-nova-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.x86_64.pkg.tar.gz
 ```
 
 Generate a keypair for the client:
