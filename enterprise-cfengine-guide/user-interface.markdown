@@ -39,8 +39,8 @@ stored in an event log for later inspection and analysis.
 
 ![Clone dashboard possibility](clone-dashboard.png)
 
-Create an editable copy by clicking a button that appears on hover over 
-the dashboard's row in case if you want to change shared dashboard.
+Create an editable copy by clicking the button that appears when you hover over 
+the dashboard's row.
 
 ### Alert widgets
 
