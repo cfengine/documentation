@@ -131,8 +131,7 @@ Relevant CFEngine functions are: `classesmatching()`,
 `classmatch()`, `countclassesmatching()`, `getclassmetatags()`,
 `getvariablemetatags()`, `variablesmatching()`, `variablesmatching_as_data()`
 
-Also see "meta promises": there can be promises of type "meta", in addition
-to this attribute with the name "meta" which can be added to a promise of any type.
+Also see [meta promises][meta]: While "meta" attribute can be added to a promise of any type, there can also be promises of promise type "meta" added to any bundle.
 If mention is made of "tags" on a *bundle*, what is actually meant is meta *promises*
 in that bundle.  (This is just a terminology point.)
 
