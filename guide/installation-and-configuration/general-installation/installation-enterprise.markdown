@@ -73,7 +73,7 @@ Uncapped mode.
 ## Policy Server Requirements
 
 Please note that the resource requirements below are meant as minimum
-guidelines and have been obtained with syntethic testing, and it is
+guidelines and have been obtained with synthetic testing, and it is
 always better to leave some headroom if intermittent bottlenecks
 should occur.  The key drivers for the vertical scalability of the
 Policy Servers are 1) the number of agents bootstrapped and 2) the
