@@ -89,6 +89,45 @@ body hub control
 
 - Introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
 
+### query_timeout
+
+**Description:** Timeout (s) for connecting to host when querying.
+
+**Type:** `int`
+
+**Allowed input range:** (0,300)
+
+**Default value:** `30`
+
+**Example:**
+
+```cf3
+body hub control
+{
+  # Configure network connection timeout when connecting to hosts
+  # for querying reporting data.
+  query_timeout => "10";
+
+}
+```
+
+**Notes:**
+
+This timeout is for individual connection attempts.
+`cf-hub` will retry many times if it fails to connect.
+The total time it uses for one host before giving up can be up to 10 times the configured `query_timeout`.
+
+Also note that this value is passed to the underlying OS code (`select()`), there is no guarantee that it will wait for that long.
+
+This parameter can also be set using the command line option, `--query-timeout`.
+If specified in both policy and command line, the command line option takes precedence.
+If one of the options (command line or policy) specifies `0`, the other one is used.
+If both are not specified (or `0`), the default is used.
+
+**History:**
+
+- Introduced in version 3.15.0
+
 ### port
 
 **Description:** Default port for contacting hosts
