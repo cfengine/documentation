@@ -119,7 +119,7 @@ The total time it uses for one host before giving up can be up to 10 times the c
 
 Also note that this value is passed to the underlying OS code (`select()`), there is no guarantee that it will wait for that long.
 
-This parameter can also be set using the command line option, `--query-timeout`.
+This parameter can also be set using the command line option, ```--query-timeout```.
 If specified in both policy and command line, the command line option takes precedence.
 If one of the options (command line or policy) specifies `0`, the other one is used.
 If both are not specified (or `0`), the default is used.
