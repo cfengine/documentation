@@ -105,7 +105,8 @@ API call allowed only for administrator.
       "roles": [
         "linux_team"
       ],
-      "external": false
+      "external": false,
+      "time_zone": "Europe/Oslo"
     }
   ]
 }
@@ -121,6 +122,8 @@ API call allowed only for administrator.
     List of assigned RBAC roles.
 * **external**
     Is user from external source (LDAP/AD).
+* **time_zone**
+    Time zone
 
 **Example usage:** `Example: Retrieving a User`
 
@@ -140,6 +143,8 @@ API call allowed only for administrator.
     User email
 * **roles** *(array)*
     User roles, emp: `["admin", "test"]`
+* **time_zone** *(string)*
+    Time zone
 
 Create a new user.
 API call allowed only for administrator.
@@ -176,6 +181,8 @@ API call allowed only for administrator.
     User email
 * **roles** *(array)*
     User roles, emp: `["admin", "test"]`
+* **time_zone** *(string)*
+    Time zone
 
 **Example Request Body:**
 
