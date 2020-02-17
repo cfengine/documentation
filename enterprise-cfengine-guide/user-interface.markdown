@@ -147,18 +147,18 @@ Find out more: [Settings][]
 
 ## User profile
 
-Profile is accessible from any view of the mission portal, from the drop down in the top right hand corner.
+The user profile is accessible from any view of the mission portal, from the drop down in the top right hand corner.
 
 ![Opening Profile](Settings-1.png)
 
-User profile allows to change timezone options.
+From the profile, you can adjust timezone options.
 
 ![User Profile](User-profile.png)
 
 * Time zone
-  * You can select any time zone from searchable drop-down.
+  * You can select any time zone from the searchable drop-down.
 * Autodetect time zone change and ask for update
-  * If this option is selected Mission portal will ask you to update time zone in case of time zone change
+  * If this option is selected Mission portal will ask you to update time zone when a difference is detected from your browser.
   ![Time zone modal](Time-zone-modal.png)
 * Always use system/browser time
   * Mission portal will automatically change your profile timezone when a system/browser timezone is changed.
