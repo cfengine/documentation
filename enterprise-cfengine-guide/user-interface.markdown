@@ -25,6 +25,7 @@ statements passed to PostgreSQL.
 * [Sharing][User Interface#Sharing]
 * [Monitoring][User Interface#Monitoring]
 * [Settings][User Interface#Settings]
+* [User profile][User Interface#User profile]
 
 ## Dashboard
 
@@ -143,3 +144,22 @@ Find out more: [Monitoring][]
 A variety of CFEngine and system properties can be changed in the Settings view.
 
 Find out more: [Settings][]
+
+## User profile
+
+Profile is accessible from any view of the mission portal, from the drop down in the top right hand corner.
+
+![Opening Profile](Settings-1.png)
+
+User profile allows to change timezone options.
+
+![User Profile](User-profile.png)
+
+* Time zone
+  * You can select any time zone from searchable drop-down.
+* Autodetect time zone change and ask for update
+  * If this option is selected Mission portal will ask you to update time zone in case of time zone change
+  ![Time zone modal](Time-zone-modal.png)
+* Always use system/browser time
+  * Mission portal will automatically change your profile timezone when a system/browser timezone is changed.
+  
