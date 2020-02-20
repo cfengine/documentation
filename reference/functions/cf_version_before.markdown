@@ -22,4 +22,5 @@ Output:
 **See also:** `cf_version_maximum()`, `cf_version_minimum()`, `cf_version_after()`, `cf_version_at()`, `cf_version_between()`.
 
 **History:**
+
 * Introduced in 3.16.0
