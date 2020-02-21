@@ -34,6 +34,8 @@ are provided at each stage of installation and setup that follows.
 
 ## Requirements ##
 
+### Software Requirements ###
+
 If your hub will have SELinux enabled, the `semanage` command must be installed.
 This allows Federated Reporting policy to manage the trust between the superhub and
 feeder hubs.
@@ -50,6 +52,60 @@ federation policy to ensure that `semanage` is installed.
 ```
 
 See the [federation.cf semanage_installed](cfe_internal/enterprise/federation/federation.cf#semanage_installed) bundle for details on which packages are used for various distributions.
+
+### Hardware Requirements ###
+
+The Superhub aggregates all the data from all the Feeders connected to it which
+is a periodically running resource intensive task. The key factors contributing
+to HW requirements for the Superhub are:
+
+* The refresh interval at which data is pulled from the Feeders and imported on
+  the Superhub. The default is 20 minutes and it can be changed in the policy.
+
+* The amount of data gathered on the Feeders from the reports sent by the
+  hosts bootstrapped to them.
+
+The current implementation of Federated Reporting is not aggregating monitoring
+data on the Superhub which saves a lot of network traffic, processing power and
+disk space on the Superhub.
+
+In order to utilize modern configurations, the operations on the Superhub run
+multiple tasks in parallel, one task per connected Feeder, and so with the
+increasing number of connected Feeders the number of available logical CPUs and
+I/O speed play an important role. As with any other batch processing the general
+rule is that each batch should finish processing before processing of the next
+batch starts. With the default settings that means that one round of pulling
+data from the Feeders and importing them into the local database on the Superhub
+should take less than 20 minutes. The policy will prevent two or more of such
+rounds from overlapping if one round takes more than 20 minutes, but such setup
+would degrade the freshness of the data available on the Superhub.
+
+The recommended HW configuration for a Superhub with the default configuration
+and 5000 hosts per connected Feeder is:
+
+  * 16 GiB of RAM or more,
+
+  * 1 logical CPU per connected Feeder or more,
+
+  * 5 MiB of disk space per host or more,
+
+  * 1000 IOPS storage or faster,
+
+  * 100 Mib/s network bandwidth per connected Feeder,
+
+  * 135 KiB of network data transfer per host per one pull of the data from
+    Feeders.
+
+The Federated Reporting process is logging information to the system log and so
+timestamps from the log messages can be used to determine how long each round of
+the pull-import process has taken. If it close to the configured refresh
+interval, the interval needs to be made longer or the hardware configuration of
+the Superhub needs to be enhanced.
+
+The minimum HW requirements for the Superhub are very dependent on the two key
+factors mentioned above. It is thus highly recommended to connect the Feeders to
+the Superhub one or two at a time and check the intervals in the logs before
+connecting more Feeders.
 
 ## Installation ##
 
