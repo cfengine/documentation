@@ -12,9 +12,18 @@ If you are familiar with SQL syntax, you can input your query into the interface
 
 You can share the report with other users - either by using "Save" button, or by base64-encoding the report query into a URL. You can also provide an optional title by adding `title` parameter to the URL, like this:
 
-	```
-	https://hub/index.php/advancedreports/#/report/run?sql=U0VMRUNUIEhvc3RzLkhvc3RLZXkgQVMgIkhvc3Qga2V5IiwgSG9zdHMuSG9zdE5hbWUgQVMgIkhvc3QgbmFtZSIgRlJPTSBIb3N0cw==&title=Sample%20Report
-	```
+```console
+  HUB_URL="https://hub"
+  API="/index.php/advancedreports/#/report/run?sql="
+  SQL_QUERY="SELECT Hosts.HostName AS 'Host Name' FROM Hosts"
+  REPORT_TITLE="Example Report"
+  LINK="${HUB_URL}${API}$(echo ${SQL_QUERY} | base64)&title=$(/usr/bin/urlencode ${REPORT_TITLE})"
+  echo "${LINK}"
+```
+
+```
+https://hub/index.php/advancedreports/#/report/run?sql=U0VMRUNUIEhvc3RzLkhvc3ROYW1lIEFTICdIb3N0IE5hbWUnIEZST00gSG9zdHMK&title=Example%20Report
+```
 
 You can query fewer hosts with the help of filters above the displayed table. These filters are based on the same categorization you can find in the other apps.
 
