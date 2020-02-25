@@ -98,7 +98,7 @@ and 5000 hosts per connected Feeder is:
 
 The Federated Reporting process is logging information to the system log and so
 timestamps from the log messages can be used to determine how long each round of
-the pull-import process has taken. If it close to the configured refresh
+the pull-import process has taken. If it is close to the configured refresh
 interval, the interval needs to be made longer or the hardware configuration of
 the Superhub needs to be enhanced.
 
