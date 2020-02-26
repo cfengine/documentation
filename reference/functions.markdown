@@ -58,11 +58,9 @@ Some _system_ functions are particularly expensive:
 
 {% comment %}
 
-It would be nice if we could get this list of cached functions automatically.
-This is how you can dive into the code to determine which functions are cached.
+You can get this list automatically with cf-promises --syntax-description json and a little jq.
 
-git grep -B1 FNCALL_OPTION_CACHED | awk -F'"' '/FnCallTypeNew/ {print $2}'
-
+cf-promises --syntax-description json | jq '.functions | with_entries(select(.value.cached==true)) | keys[]'
 {% endcomment %}
 
 * `execresult()` and `returnszero()` for shell execution
@@ -80,7 +78,9 @@ be executed once during
 the [agent evaluation step][Normal Ordering#Agent evaluation step] and its
 result will be cached until the end of that agent execution.
 
-**Note:** Function caching is *per-process*, so results will not be cached between
+**Note:** Cached functions are executed multiple times during
+[policy validation and pre-evaluation][Normal Ordering#cf-promises policy validation step].
+Function caching is *per-process*, so results will not be cached between
 separate components e.g. `cf-agent`, `cf-serverd` and `cf-promises`.
 Additionally functions are cached by hashing the function arguments. If you have
 the exact same function call in two different promises (it does not matter if
