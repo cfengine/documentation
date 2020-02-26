@@ -96,11 +96,9 @@ Some _system_ functions are particularly expensive:
 
 {% comment %}
 
-It would be nice if we could get this list of cached functions automatically.
-This is how you can dive into the code to determine which functions are cached.
+You can get this list automatically with cf-promises --syntax-description json and a little jq.
 
-git grep -B1 FNCALL_OPTION_CACHED | awk -F'"' '/FnCallTypeNew/ {print $2}'
-
+cf-promises --syntax-description json | jq '.functions | with_entries(select(.value.cached==true)) | keys[]'
 {% endcomment %}
 
 * `execresult()` and `returnszero()` for shell execution
