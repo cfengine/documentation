@@ -78,7 +78,9 @@ be executed once during
 the [agent evaluation step][Normal Ordering#Agent evaluation step] and its
 result will be cached until the end of that agent execution.
 
-**Note:** Function caching is *per-process*, so results will not be cached between
+**Note:** Cached functions are executed multiple times during
+[policy validation and pre-evaluation][Normal Ordering#cf-promises policy validation step].
+Function caching is *per-process*, so results will not be cached between
 separate components e.g. `cf-agent`, `cf-serverd` and `cf-promises`.
 Additionally functions are cached by hashing the function arguments. If you have
 the exact same function call in two different promises (it does not matter if
