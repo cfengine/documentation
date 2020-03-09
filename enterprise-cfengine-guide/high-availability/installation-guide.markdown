@@ -244,16 +244,17 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
       pushd /tmp; su cfpostgres -c "/var/cfengine/bin/pg_basebackup -h 192.168.10.10 -U cfpostgres -D /var/cfengine/state/pg/data -X stream -P"; popd
       ```
 
-   3. **On node2**, create the *recovery.conf* file to configure PostgreSQL to run as a hot-standby replica:
+   3. **On node2**, create the *standby.conf* file and configure PostgreSQL to run as a hot-standby replica:
 
       ```
-      cat <<EOF > /var/cfengine/state/pg/data/recovery.conf
-      standby_mode = 'on'
+      cat <<EOF > /var/cfengine/state/pg/data/standby.conf
       #192.168.100.100 is the shared over cluster IP address of active/master cluster node
       primary_conninfo = 'host=192.168.100.100 port=5432 user=cfpostgres application_name=node2'
       restore_command = 'cp /var/cfengine/state/pg/pg_arch/%f %p'
       EOF
-      chown --reference /var/cfengine/state/pg/data/postgresql.conf /var/cfengine/state/pg/data/recovery.conf
+      chown --reference /var/cfengine/state/pg/data/postgresql.conf /var/cfengine/state/pg/data/standby.conf
+      echo "include 'standby.conf'" >> /var/cfengine/state/pg/data/postgresql.conf
+      touch /var/cfengine/state/pg/data/standby.signal
       ```
 
 5. Start PostgreSQL on the **node2** by running the following command:
@@ -311,6 +312,15 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
    ```
    pushd /tmp; su cfpostgres -c "/var/cfengine/bin/pg_ctl -D /var/cfengine/state/pg/data -l /var/log/postgresql.log stop"; popd
+   ```
+
+8. Remove the hot-standby configuration **on node2**. It will be handled by the cluster resource and
+   the resource agent.
+
+   ```
+   rm -f /var/cfengine/state/pg/data/standby.signal
+   rm -f /var/cfengine/state/pg/data/standby.conf
+   sed -i "/standby\.conf/d" /var/cfengine/state/pg/data/postgresql.conf
    ```
 
 ### Cluster resource configuration ###
@@ -444,17 +454,19 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 2. Bootstrap the nodes.
 
-   Bootstrap the **node1** to itself:
+   Bootstrap the **node1** to itself and make sure the initial policy (`promises.cf`) evaluation is
+   skipped:
 
    ```
-   cf-agent --bootstrap 192.168.100.10
+   cf-agent --bootstrap 192.168.100.10 --skip-bootstrap-policy-run
    ```
 
-   Bootstrap the **node2** to node1 (to establish trust) and then to itself:
+   Bootstrap the **node2** to node1 (to establish trust) and then to itself, again skipping the
+   initial policy evaluation:
 
    ```
-   cf-agent --bootstrap 192.168.100.10
-   cf-agent --bootstrap 192.168.100.11
+   cf-agent --bootstrap 192.168.100.10 --skip-bootstrap-policy-run
+   cf-agent --bootstrap 192.168.100.11 --skip-bootstrap-policy-run
    ```
 
 3. Stop CFEngine **on both nodes**.
