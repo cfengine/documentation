@@ -97,6 +97,16 @@ The variable gives the patch version of the running CFEngine Core.
 
 **History:** Was introduced in 3.5.1, Enterprise 3.5.1.
 
+### sys.cf_version_release
+
+The variable gives the release number of the running CFEngine Core.
+
+```cf3
+    # cf_version_release = 1
+```
+
+**History:** Was introduced in 3.16.0.
+
 ### sys.class
 
 This variable contains the name of the hard-class category for this host
