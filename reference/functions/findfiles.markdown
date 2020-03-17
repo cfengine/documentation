@@ -19,11 +19,13 @@ across directories.  `*/*.cf` on the other hand will look two levels
 deep.
 * `?` matches a single letter
 * `[a-z]` matches any letter from `a` to `z`
-* `{x,y,anything}` will match `x` or `y` or `anything`.
 
 This function, used together with the `bundlesmatching` function,
 allows you to do dynamic inputs and a dynamic bundle call chain.
 
+**Notes:**
+
+- Brace expansion is not currently supported, `{x,y,anything}` will not match `x` or `y` or `anything`.
 
 **Example:**
 
