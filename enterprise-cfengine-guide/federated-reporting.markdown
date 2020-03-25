@@ -126,7 +126,7 @@ We don't want periodic agent runs to get in our ways so let's disable
 *cf-execd*.
 
 ```console
-$ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "systemctl stop cf-execd"
+$ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "systemctl stop cf-execd"
 ```
 
 On systems not using systemd, cf-execd needs to be stopped in a different way.
@@ -134,8 +134,8 @@ Also without systemd, any agent run restarts cf-execd so let's move it out of
 our ways.
 
 ```console
-$ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "pkill cf-execd"
-$ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "mv /var/cfengine/bin/cf-execd /var/cfengine/bin/cf-execd.disabled"
+$ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "pkill cf-execd"
+$ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "mv /var/cfengine/bin/cf-execd /var/cfengine/bin/cf-execd.disabled"
 ```
 
 ### Update masterfiles (hubs older than 3.14.0)
@@ -173,7 +173,7 @@ $ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/setup-hub/feed
 For older hubs:
 
 ```console
-$ ssh $CLOUDUSER$FEEDER
+$ ssh $CLOUD_USER$FEEDER
 $ sudo bash
 $ cd /opt/cfengine/federation/cfapache
 $ cat > federation-config.json
@@ -188,7 +188,7 @@ $
 ### Trigger agent run
 
 ```console
-$ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "/var/cfengine/bin/cf-agent -KI"
+$ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "/var/cfengine/bin/cf-agent -KI"
 ```
 
 Ensure there are no errors in the agent run.
@@ -196,7 +196,7 @@ Ensure there are no errors in the agent run.
 ### Note down SSH and hostkey details
 
 ```console
-$ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "cat /opt/cfengine/federation/cfapache/setup-status.json"
+$ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "cat /opt/cfengine/federation/cfapache/setup-status.json"
 ubuntu@52.215.88.224: 'cat /opt/cfengine/federation/cfapache/setup-status.json' -> '{'
 ubuntu@52.215.88.224:                                                              '  "configured": true,'
 ubuntu@52.215.88.224:                                                              '  "role": "superhub",'
@@ -359,7 +359,7 @@ The agent run on the superhub will pull the data and import it.
 Check that each step works without errors:
 
 ```console
-$ cf-remote -H $CLOUD_USER$FEEDER,$CLOUD_USER$SUPERHUB sudo "/var/cfengine/bin/cf-agent -KI"
+$ cf-remote sudo -H $CLOUD_USER$FEEDER,$CLOUD_USER$SUPERHUB "/var/cfengine/bin/cf-agent -KI"
 ```
 
 ### Do a manual collection of superhub data
@@ -368,8 +368,8 @@ At this point, the superhubs data has been deleted (replaced by feeder data).
 We can get the superhub to appear in MP by triggering a manual collection:
 
 ```console
-$ cf-remote -H $SUPERHUB sudo "/var/cfengine/bin/cf-hub -I -H $SUPERHUB_BS --query rebase"
-$ cf-remote -H $SUPERHUB sudo "/var/cfengine/bin/cf-hub -I -H $SUPERHUB_BS --query delta"
+$ cf-remote sudo -H $SUPERHUB "/var/cfengine/bin/cf-hub -I -H $SUPERHUB_BS --query rebase"
+$ cf-remote sudo -H $SUPERHUB "/var/cfengine/bin/cf-hub -I -H $SUPERHUB_BS --query delta"
 ```
 
 ### Start cf-execd on the superhub and feeder
@@ -377,14 +377,14 @@ $ cf-remote -H $SUPERHUB sudo "/var/cfengine/bin/cf-hub -I -H $SUPERHUB_BS --que
 Let's switch back to ordinary mode of periodic agent runs.
 
 ```console
-$ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "systemctl start cf-execd"
+$ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "systemctl start cf-execd"
 ```
 
 On systems running systemd, we need to rename the binary back and start it manually.
 
 ```console
-$ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "mv /var/cfengine/bin/cf-execd.disabled /var/cfengine/bin/cf-execd"
-$ cf-remote -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER sudo "/var/cfengine/bin/cf-execd"
+$ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "mv /var/cfengine/bin/cf-execd.disabled /var/cfengine/bin/cf-execd"
+$ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "/var/cfengine/bin/cf-execd"
 ```
 
 ## Disable Feeder
