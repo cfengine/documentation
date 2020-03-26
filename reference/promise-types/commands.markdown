@@ -413,6 +413,26 @@ error to `/dev/null`.
      }
 ```
 
+### inform
+
+**Description:** Suppress inform output from commands
+
+By default, when running with inform level logging, commands that are executed
+produce output. This attribute can be used to suppress this output which may not
+be useful in all cases.
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** false
+
+**Example:**
+
+[%CFEngine_include_example(inform.cf)%]
+
+**History:**
+
+- Introduced in 3.15.0 (2019)
+
 ### module
 
 **Description:** Set variables and classes based on command output.
