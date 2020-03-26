@@ -20,6 +20,11 @@ In short, the steps are:
 
 - Upgrades are supported from any [currently supported version][supported versions].
 
+- Clients should not run *newer* versions of binaries than the hub. While it may
+  work in many cases, Enterprise reporting does not currently guarantee forward
+  compatibility. For example, a host running 3.15.0 will not be able to report
+  to a hub running 3.12.3.
+
 ## Backup
 
 Backups are made during the hub package upgrade, but it's prudent to take a full
