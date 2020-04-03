@@ -262,6 +262,7 @@ $ cat > federation-config.json
 {
   "hostname": null,
   "role": "feeder",
+  "target_state": "on",
   "remote_hubs": []
 }
 $
