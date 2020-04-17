@@ -6,87 +6,20 @@ sorting: 60
 tags: [manuals, writing policy, version control, git, subversion]
 ---
 
-CFEngine policy is stored in `/var/cfengine/masterfiles` on the policy
-server. It is common that this directory is backed by a version control system
-(VCS), such as git or subversion. In this document we will focus on git, but
-CFEngine is VCS agnostic.
-
-Please note that the following applies to CFEngine Community or
-Enterprise, but in Enterprise there are built-in facilities that can
-make the following unnecessary. Please see
-[Version Control and Configuration Policy][Best Practices#Version Control and Configuration Policy]
-for details.
+By default, CFEngine policy is published `/var/cfengine/masterfiles` on the policy
+server. It is recommended that this directory be backed by a version control system
+(VCS), such as git or subversion.
 
 ## Repository synchronization
 
-When `/var/cfengine/masterfiles` is backed by VCS, it may be useful to have an
-agent policy that periodically checks the VCS server for the latest version
-fetches any updates.  Again, note that CFEngine Enterprise has this built-in.
+CFEngine Enterprise ships with
+[masterfiles-stage](https://github.com/cfengine/core/tree/master/contrib/masterfiles-stage),
+tooling to assist with deploying policy from a version control system.
 
-After installing CFEngine on the policy server and before bootstrapping the agent
-to itself, we want to create a git repository out of our masterfiles.
-Assuming that we have a functioning git installation, and a previously configured
-github account:
-
-    $ cd /var/cfengine/masterfiles
-
-    $ git init
-
-    $ git remote add origin git@github.com:Username/cf-engine-repo.git
-
-    $ git add *
-
-    $ git commit -m "Initial post installation commit of masterfiles directory"
-
-Now we are good to go and push the content of our /masterfiles directory.
-We push it with the -ff option to overwrite any possible content of our (supposedly
-empty) github repository
-
-    $ git push -ff origin master
-
-The next step is to create a policy that will periodically update the content of
-our /masterfiles directory on the hub, pulling the changes we did on the git repo.
-
-The following policy uses `git pull` with the --ff-only flag to avoid
-potentially bad merges. This assumes that no development takes place in
-`/var/cfengine/masterfiles` itself.
-
-Note that we specify policy_server:: here, as we want only the hub to pull code
-from github, while nodes will be updated through CFEngine.
-
-
-```cf3
-    bundle agent vcs_update
-    {
-    commands:
-      policy_server::
-        "/usr/bin/git"
-          args => "pull --ff-only origin master",
-          contain => masterfiles_contain;
-    }
-
-    body contain masterfiles_contain
-    {
-      chdir => "/var/cfengine/masterfiles";
-    }
-```
-This policy will then regularly and periodically pulling the masterfiles
-(and therefore your new policies) from your git repo to the hub, so that your
-nodes will get configured accordingly. But, there is a catch: two files in the
-/masterfiles directory should be excluded. Those are the cf_promises_release_id,
-and the timestamp of the release (cf_promises_validated). So we add them to a
-.gitignore file and push it to the github repo.
-
-    $vim .gitignore
-
-    cf_promises_release_id
-    cf_promises_validated
-
-And then we push it upstream. We then add the vcs_update policy to promises.cf
-and we are done.
+Enterprise users can configure automatic publication of policy from [Mission Portal][Settings#version control repository] or by using the [VCS settings API][VCS settings API]. Community users can also install and use this tooling by following the
+[installation instructions](https://github.com/cfengine/core/tree/master/contrib/masterfiles-stage#installation).
 
 ## Commit hooks
-
 
 Commit hooks are scripts that are run when a repository is updated. We can use
 a hook to notify a policy developer if an update causes a syntax error. While
