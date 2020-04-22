@@ -1,10 +1,10 @@
 ---
 layout: default
-title: cf-agent
+title: cf-secret
 published: true
 sorting: 10
-tags: [Components, cf-agent]
-keywords: [agent]
+tags: [Components, cf-secret]
+keywords: [cf-secret]
 ---
 
 `cf-secret` encrypts and decrypts files using CFEngine keys.
