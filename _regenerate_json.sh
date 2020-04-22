@@ -65,6 +65,7 @@ done
     echo cf-net
     echo cf-check
     echo cf-hub
+    echo cf-secret
 ) | while read agent
 do
     if [ -x "${WRKDIR}/core/${agent}/${agent}" ]; then
