@@ -85,25 +85,22 @@ The default behavior is to not place edits in the file system table.
 **Type:** (menu option)
 
 **Allowed input range:**
+{% comment %}cf-promises --syntax-description=json | jq '.bodyTypes.mount.attributes.mount_type.range|split(",")'{% endcomment %}
 
-```
-    nfs
-    nfs2
-    nfs3
-    nfs4
-```
+* `nfs`
+* `nfs2`
+* `nfs3`
+* `nfs4`
+* `panfs`
+* `cifs`
 
 **Example:**
 
-```cf3
-     body mount example
-     {
-     mount_type => "nfs3";
-     }
-```
+[%CFEngine_include_example(storage-cifs.cf)%]
 
-**Notes:**
-This field is mainly for future extensions.
+**History:**
+
+* `cifs`, `panfs` added in 3.15.0
 
 #### mount_source
 
