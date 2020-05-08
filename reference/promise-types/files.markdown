@@ -1971,24 +1971,10 @@ bundle agent example
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-   vars:
-     "mustache_string" string => "Welcome on host {{{host}}";
-     "d" data => parsejson('{ "host": "cfengine.com" }');
-
-   files:
-
-     any::
-
-       "/etc/motd"
-         create => "true",
-         edit_template_string => "$(mustache_string)",
-         template_data => "@(example.d)";
-         template_method => "inline_mustache";
-}
-```
+{% comment %} This example contains mustache, so it needs to be wrapped in raw or else it won't render as desired.{% endcomment %}
+{% raw %}
+[%CFEngine_include_example(template_method-inline_mustache.cf)%]
+{% endraw %}
 
 **History:** Was introduced in 3.12.0
 
@@ -3121,6 +3107,13 @@ When `template_method` is `inline_mustache` the mustache input is not a file
 but a string and you must set `edit_template_string`.  The same rules apply
 for `inline_mustache` and `mustache`.  For mustache explanation see
 `template_method mustache`
+
+**Example:**
+
+{% comment %} This example contains mustache, so it needs to be wrapped in raw or else it won't render as desired.{% endcomment %}
+{% raw %}
+[%CFEngine_include_example(template_method-inline_mustache.cf)%]
+{% endraw %}
 
 **History:** Was introduced in 3.12.0
 
