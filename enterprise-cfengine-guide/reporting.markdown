@@ -18,19 +18,36 @@ is configured by [`report_data_select` bodies][access#report_data_select].
 and `default_data_select_policy_hub()` defines the data that should be collected
 for a policy hub.
 
-Specifying which variables and classes should be collected by an Enterprise Hub
-is done with a list of regular expressions matching promise meta tags for either
-[inclusion][access#metatags_include] or [exclusion][access#metatags_exclude]. By
-default we collect `variables` and `classes` that are tagged with either
-`report` or `inventory`. Instead of extending this list of tags we recommend
-that you tag variables and classes with `report`. If it's desirable to make
-available in specialized inventory reporting interface then you it should be
-tagged with `inventory` and given an additional `attribute_name=` tag as
-described in the [Custom Inventory Example][Custom Inventory]. By default
-CFEngine collects information for all promise outcomes. This can be further
-restricted by specifying [promise_handle_include][access#promise_handle_include]
-or [promise_handle_exclude][access#promise_handle_exclude]. Collection of
-measurements taken by `cf-monitord` are is controlled using the
+Controlling which variables and classes should be collected by an Enterprise Hub
+is done primarily with a list of regular expressions matching promise meta tags
+for either [inclusion][access#metatags_include] or
+[exclusion][access#metatags_exclude]. `cf-hub` collects `variables` that are not
+prefixed with an underscore (`_`) or have meta tags matching
+[`metatags_include`][access#metatags_include] and do not have any meta tags
+matching [`metatags_exclude`][access#metatags_exclude] and does not have a
+handle matching [`promise_handle_exclude`][access#promise_handle_exclude].
+`cf-hub` collects *namespace* scoped (global) `classes` having any meta tags
+matching [`metatags_include`][access#metatags_include] that do not have any meta
+tags matching [`metatags_exclude`][access#metatags_exclude].
+
+Instead of modifying the list of regular expressions to control collection, we
+recommend that you leverage the defaults provided by the MPF (Masterfiles Policy
+Framework). The MPF includes ```inventory``` and ```report``` in
+[`metatags_include`][access#metatags_include], ```noreport``` in
+[`metatags_exclude`][access#metatags_exclude] and ```noreport_.*``` in
+[`promise_handle_exclude`][access#promise_handle_exclude].
+
+If it's desirable for the classes and variables to be available in specialized
+inventory subsystem then it should be tagged with `inventory` and given an
+additional `attribute_name=` tag as described in the [custom inventory example][Custom Inventory].
+
+```cf-hub``` collects information resulting from all other promise types (except
+`reports`, and `defaults` which cf-hub does not collect for). This can be
+further restricted by specifying
+[promise_handle_include][access#promise_handle_include] or
+[promise_handle_exclude][access#promise_handle_exclude].
+
+Collection of measurements taken by `cf-monitord` are is controlled using the
 `monitoring_include` and `monitoring_exclude` `report_data_select` body
 attributes.
 
