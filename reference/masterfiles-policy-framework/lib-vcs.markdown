@@ -13,7 +13,7 @@ To use these bodies, add the following to your policy:
 ```cf3
 body file control
 {
-	inputs => { "vcs.cf" }
+	inputs => { "lib/vcs.cf" };
 }
 ```
 
