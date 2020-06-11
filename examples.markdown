@@ -80,7 +80,7 @@ hosts][Classes and Decisions].
 Activate the bundle manually by executing the following command at prompt:
 
 ```console
-% /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
+/var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
 ```
 
 This command instructs CFEngine to ignore [locks][Controlling Frequency], load
@@ -139,13 +139,13 @@ Now press "esc" to exit the "Insert" mode, then type ```:w``` to save the file c
 Exit vi by typing ```:q``` then "Enter." This will return to the prompt.
 
 Execute the following command:  
-```
+```console
 /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
 ```
 
 The output is shown below:
 
-```
+```console
 # /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
 2013-08-20T14:25:36-0500   notice: R: Hello World!
 ```
@@ -166,7 +166,7 @@ body common control {
 Add the ```#!``` marker ("shebang") to `hello_world.cf` in order to invoke CFEngine policy as an executable script:
 Again type "vi" then "Enter" then ```i``` to insert the following:
 
-```
+```cf3
 #!/var/cfengine/bin/cf-agent --no-lock
 ```
 
@@ -195,19 +195,19 @@ then exit vi by typing ```:q``` then "Enter". This will return to the prompt.
 
 Make the policy file executable, and then run it, by typing the following two commands:
 
-```
+```console
 chmod +x ./hello_world.cf 
 ```
 
 Followed by:
 
-```
+```console
 ./hello_world.cf
 ```
 
 See the output below:
 
-```
+```console
 # chmod +x ./hello_world.cf
 # ./hello_world.cf
 2013-08-20T14:39:34-0500   notice: R: Hello World!
