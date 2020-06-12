@@ -8,7 +8,7 @@ tags: [cfengine enterprise, hub administration]
 By default CFEngine policy is distributed from `/var/cfengine/masterfiles` on
 the policy server. It is common (and recommended) for masterfiles to be backed
 with a version control system (VCS) such as git or subversion. This document
-details usage with git, but the tooling is desinged to be flexible and easily
+details usage with git, but the tooling is designed to be flexible and easily
 modified to support any upstream versioning system.
 
 CFEngine Enterprise ships with tooling to assist in the automated deployment of

@@ -380,7 +380,7 @@ bundle agent example
 {
   packages:
 
-    # Enable the EPEL repo when making sure git is intalled
+    # Enable the EPEL repo when making sure git is installed
     # and up to date.
 
     "git"
