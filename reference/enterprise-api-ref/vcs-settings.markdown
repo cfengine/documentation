@@ -56,7 +56,7 @@ curl -k --user <username>:<password> \
 * **gitServer** *(string)*
     Git repository URL `Emp: https://github.com/cfengine/masterfiles.git`. Required parameter.
 * **gitRefspec** *(string)*
-    The git refspec to checkout. It can be a branch name, a tag name, a commit hash or a partial hash. Required parameter.
+    The Git refspec to checkout. It can be a branch name, a tag name, a commit hash or a partial hash. Required parameter.
 * **gitUsername** *(string)*
     Git username for authentication, not needed for public repositories.
 * **gitPassword** *(string)*

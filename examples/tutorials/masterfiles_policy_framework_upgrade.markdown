@@ -16,13 +16,13 @@ specifics of the changes made to the default policy. This tutorial leverages
 `git` and shows an example of upgrading a simple policy set based on 3.6.7 to
 3.7.4 and can be used as a reference for upgrading your own policy sets.
 
-# Prepare a git clone of your working masterfiles
+# Prepare a Git clone of your working masterfiles
 
-If you are not using git and instead editing directly in
+If you are not using Git and instead editing directly in
 `$(sys.workdir/masterfiles)` you can simply copy your masterfiles into a new
-directory and initalize a new git repository.
+directory and initalize a new Git repository.
 
-If you're using git already simply clone your repository and skip to the next
+If you're using Git already simply clone your repository and skip to the next
 step.
 
 ```console
@@ -30,7 +30,7 @@ step.
 
 ```
 
-Then initialize the new git repository and add all the files to it.
+Then initialize the new Git repository and add all the files to it.
 
 ```console
 [root@hub ~]# cd MPF_upgrade/
@@ -123,7 +123,7 @@ Initialized empty Git repository in /root/MPF_upgrade/.git/
 nothing to commit, working directory clean
 ```
 
-Now we have a git repository that we can start merging in the changes from
+Now we have a Git repository that we can start merging in the changes from
 upstream.
 
 # Merge the upstream changes to the MPF into your policy
@@ -249,7 +249,7 @@ First clone the masterfiles repository for the version you are installing. And
 verify you have the correct tag checked out.
 
 **Note:** Directly checking out a tag as in the example below is only
-supported in git versions 1.7.9.5 and newer.
+supported in Git versions 1.7.9.5 and newer.
 
 ```console
 [root@hub MPF_upgrade]# cd ..

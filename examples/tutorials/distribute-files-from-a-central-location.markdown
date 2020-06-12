@@ -212,7 +212,7 @@ Always inspect what you expect. `git status` shows the status of your current br
 
     git status
 
-Inspect the changes contained in each file. Once satisfied, add them to git's commit staging area.
+Inspect the changes contained in each file. Once satisfied, add them to Git's commit staging area.
 
     git diff file
     git add file

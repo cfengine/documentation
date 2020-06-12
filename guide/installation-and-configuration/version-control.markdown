@@ -8,7 +8,7 @@ tags: [manuals, writing policy, version control, git, subversion]
 
 By default, CFEngine policy is published `/var/cfengine/masterfiles` on the policy
 server. It is recommended that this directory be backed by a version control system
-(VCS), such as git or subversion.
+(VCS), such as Git or Subversion.
 
 ## Repository synchronization
 
@@ -30,9 +30,9 @@ hooks. A hook needs to be installed on the VCS server. Git and subversion
 store their hooks on the server, under directories `.git/hooks` and `hooks`,
 respectively.
 
-### Example git update hook
+### Example Git update hook
 
-We can use a git update hook to prevent a change from being made unless it
+We can use a Git update hook to prevent a change from being made unless it
 passes syntax checking. The idea is to check out the revision in a temporary
 directory and run `cf-promises` on it. Here is an example hook.
 

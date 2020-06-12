@@ -85,7 +85,7 @@ The figure below shows how decisions flow through the parts of a system.
 * It makes sense to have a single point of coordination. Decisions are
   therefore usually made in a single location (the Policy Definition Point).
   The history of decisions and changes can be tracked by a version control
-  system of your choice (e.g. git, Subversion, CVS etc.).
+  system of your choice (e.g. Git, Subversion, CVS etc.).
 
 * Decisions are made by editing CFEngine's policy file `promises.cf` (or one
   of its included sub-files). This process is carried out off-line.

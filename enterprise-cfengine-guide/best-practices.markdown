@@ -90,8 +90,8 @@ This is simply commenting out one line and uncommenting another.
 
 Remember that you need to commit and push these changes to the
 repository you chose in the previous step, so that they are picked up
-when you deploy from the git repository. In your checked out
-`masterfiles` git repository, these commands should normally do the
+when you deploy from the Git repository. In your checked out
+`masterfiles` Git repository, these commands should normally do the
 trick:
 
     git add update.cf
