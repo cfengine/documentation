@@ -22,10 +22,10 @@ The CFEngine documentation is written in regular
 extensions as documented below. Check out the
 [cheatsheet](https://cfengine.com/docs/master/markdown-cheatsheet.html)!
 
-To keep the source readable in git and workable with a broad range of tools,
+To keep the source readable in Git and workable with a broad range of tools,
 keep the line length in paragraphs below 78 characters.
 
-If you don't know git, then you can still contribute to the documentation
+If you don't know Git, then you can still contribute to the documentation
 using the GitHub interface as long as you have a GitHub account. Fork this
 repository (called the *upstream*) using the GitHub web interface, make
 changes in your fork and create pull requests so that your changes can be
@@ -101,7 +101,7 @@ requirements for images.
 
 *Warning:* It is important for images and other binary files to be marked as a
 binary file in `.gitattributes`. Binary file patterns not specifically marked
-may be mangled and corrupted within git.
+may be mangled and corrupted within Git.
 
 ### Links
 

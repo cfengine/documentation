@@ -78,7 +78,7 @@ bundle common tutorials_inventory_owner
 
 **Note:** For the simplicity of this tutorial we assume that
 [masterfiles][sys#sys.masterdir] is not configured for policy updates from a
-git repository. If it is, please add the policy to your repository and ensure
+Git repository. If it is, please add the policy to your repository and ensure
 it gets to its final destination as needed.
 
 This policy will not be activated until it has been included in

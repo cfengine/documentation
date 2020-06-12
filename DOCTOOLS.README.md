@@ -14,7 +14,11 @@ Git (http://git-scm.com) is a revision control and source code management system
 
 Git allows contributors to a project to work independently in their own copy (aka `branch` of the mainline project) and then to have any modifications they make to be merged back. This branching mechanism also provides functionality for documenting each change, rewinding changes and more.
 
-GitHub (https://github.com) is an online service for hosting Git project repositories. It helps provide organizations the infrastructure and tools to setup then manage repositories and users that they would otherwise need to do themselves. In general it contains many features and improvements to a normal git workflow.
+GitHub (https://github.com) is an online service for hosting Git project
+repositories. It helps provide organizations the infrastructure and tools to
+setup then manage repositories and users that they would otherwise need to do
+themselves. In general it contains many features and improvements to a normal
+Git workflow.
 
 ### Downloading and Installing Git on Windows ###
 
