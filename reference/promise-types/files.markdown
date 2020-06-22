@@ -1404,6 +1404,25 @@ comparison or linking operations).
 
 **See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
 
+### content
+
+**Description:** Complete content the promised file should contain.
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+{%raw%}
+[%CFEngine_include_example(files_content.cf)%]
+{%endraw%}
+
+**History:** Was introduced in 3.16.0
+
+**Note:** You cannot `content` in combination with the other edit operations
+like `edit_line`, `edit_xml`, `edit_template` or `edit_template_string`.
+
 #### dirlinks
 
 **Description:** Menu option policy for dealing with symbolic links to
