@@ -622,7 +622,7 @@ that do not have a clear inheritance policy.
 
 #### hash
 
-**Description:** The `hash` menu option defines the ash files for change detection.
+**Description:** The `hash` menu option defines the type of hash used for change detection.
 
 The `best` option cross correlates the best two available algorithms known in the OpenSSL library.
 
