@@ -2,7 +2,6 @@
 layout: default
 title: lib/testing.cf
 published: true
-sorting: 160
 tags: [reference, standard library, testing, MPF]
 ---
 

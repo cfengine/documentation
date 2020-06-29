@@ -2,7 +2,6 @@
 layout: default
 title: lib/vcs.cf
 published: true
-sorting: 160
 tags: [reference, standard library, vcs, MPF]
 ---
 

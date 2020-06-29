@@ -2,7 +2,6 @@
 layout: default
 title: lib/packages.cf
 published: true
-sorting: 160
 tags: [reference, standard library, packages, MPF]
 ---
 

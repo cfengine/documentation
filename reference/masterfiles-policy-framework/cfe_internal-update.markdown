@@ -2,7 +2,6 @@
 layout: default
 title: cfe_internal/update/
 published: true
-sorting: 60
 tags: [reference, cfe_internal, MPF]
 ---
 

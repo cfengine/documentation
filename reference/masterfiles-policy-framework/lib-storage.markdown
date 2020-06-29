@@ -2,7 +2,6 @@
 layout: default
 title: lib/storage.cf
 published: true
-sorting: 160
 tags: [reference, standard library, storage, MPF]
 ---
 

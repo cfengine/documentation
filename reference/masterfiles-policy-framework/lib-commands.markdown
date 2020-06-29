@@ -2,7 +2,6 @@
 layout: default
 title: lib/commands.cf
 published: true
-sorting: 160
 tags: [reference, standard library, commands, MPF]
 ---
 

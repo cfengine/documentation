@@ -2,7 +2,7 @@
 layout: default
 title: update.cf
 published: true
-sorting: 10
+sorting: 20 
 tags: [reference, update.cf, MPF]
 ---
 

@@ -2,7 +2,6 @@
 layout: default
 title: lib/guest_environments.cf
 published: true
-sorting: 160
 tags: [reference, controls, MPF]
 ---
 

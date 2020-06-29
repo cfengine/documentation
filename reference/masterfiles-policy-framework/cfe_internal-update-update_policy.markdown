@@ -2,7 +2,6 @@
 layout: default
 title: cfe_internal/update/update_policy.cf
 published: true
-sorting: 70
 tags: [reference, cfe_internal, MPF]
 ---
 
