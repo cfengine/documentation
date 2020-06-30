@@ -2,7 +2,6 @@
 layout: default
 title: lib/common.cf
 published: true
-sorting: 160
 tags: [reference, standard library, common, MPF]
 ---
 

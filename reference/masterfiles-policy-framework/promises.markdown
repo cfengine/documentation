@@ -2,7 +2,7 @@
 layout: default
 title: promises.cf
 published: true
-sorting: 20
+sorting: 10 
 tags: [reference, promises.cf, MPF]
 ---
 

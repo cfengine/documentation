@@ -2,7 +2,6 @@
 layout: default
 title: lib/
 published: true
-sorting: 150
 tags: [reference, controls, MPF]
 ---
 

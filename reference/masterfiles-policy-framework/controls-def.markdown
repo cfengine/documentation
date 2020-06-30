@@ -2,7 +2,6 @@
 layout: default
 title: controls/def.cf
 published: true
-sorting: 40
 tags: [reference, controls, def.cf, MPF]
 ---
 

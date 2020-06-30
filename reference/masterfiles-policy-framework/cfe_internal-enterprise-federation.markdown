@@ -2,7 +2,6 @@
 layout: default
 title: cfe_internal/enterprise/federation/
 published: true
-sorting: 80
 tags: [reference, MPF, cfe_internal, federated reporting]
 ---
 

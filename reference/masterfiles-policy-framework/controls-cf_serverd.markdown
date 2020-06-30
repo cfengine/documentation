@@ -2,7 +2,6 @@
 layout: default
 title: controls/cf_serverd.cf
 published: true
-sorting: 40
 tags: [reference, controls, MPF]
 ---
 

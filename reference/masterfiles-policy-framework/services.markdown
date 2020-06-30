@@ -2,7 +2,6 @@
 layout: default
 title: services/
 published: true
-sorting: 130 
 tags: [reference, controls, MPF]
 ---
 
