@@ -225,3 +225,7 @@ and collect only the output from the most recent run.
 **Note:** The Enterprise hub automatically schedules rebase queries if it has
 been unable to collect from a given candidate for `client_history_timeout`
 hours.
+
+### Enable report dumping for the affected client
+
+Enable report dumping by creating `enable_report_dumps` in `WORKDIR` (`/var/cfengine/enable_report_dumps`). When the file is present, `cf-serverd` will log reports provided to `cf-hub` to `WORKDIR/diagnostics/report_dump` (`/var/cfengine/diagnostics/report_dumps`). These diagnostics should be provided to support.
