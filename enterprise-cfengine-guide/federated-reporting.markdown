@@ -34,6 +34,12 @@ are provided at each stage of installation and setup that follows.
 
 ## Requirements ##
 
+### Topology Requirements ###
+
+At this time it is not possible to bootstrap agents to the Superhub. The Superhub
+itself will be present but the behavior of other agents bootstrapped to the Superhub
+is untested and unsupported.
+
 ### Software Requirements ###
 
 If your hub will have SELinux enabled, the `semanage` command must be installed.
