@@ -51,6 +51,9 @@ Inventory API allows to access inventory reports and attributes dictionary.
     | not_match   |
     | contains    |
     | not_contain |
+    | regex_matches |
+    | regex_not_match |
+    
 
 * **sort** *(string)*
     Field name for sorting with "-" for DESC order. Optional parameter.
