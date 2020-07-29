@@ -227,7 +227,7 @@ is the default in 3.7+ and uses a TLS session for encryption.
 
 The following attributes are affected:
 
-- [encrypt`][files#encrypt] in copy from bodies
+- [`encrypt`][files#encrypt] in copy from bodies
 - [`ifencrypted`][access#ifencrypted] in in access promises
 - [`logencryptedtransfers`][cf-serverd#logencryptedtransfers] in body common
   control
