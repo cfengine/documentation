@@ -1184,6 +1184,8 @@ This ensures that the destination file (promiser) gets the same file permissions
 the source. For local copies, all attributes are preserved, including ACLs and SELinux
 security contexts. For remote copies, only Unix mode is preserved.
 
+**Note:** This attribute will not preserve ownership (user/group).
+
 **Type:** [`boolean`][boolean]
 
 **Default value:** false
