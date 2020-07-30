@@ -15,16 +15,7 @@ tags: [reference, io functions, functions, storejson, json, inline_json, contain
 
 **Example:**
 
-```cf3
-   vars:
-
-      "loadthis"
-         data =>  readjson("/tmp/data.json", 4000);
-      "andback"
-         string =>  storejson(loadthis);
-   reports:
-      "Converted /tmp/data.json to '$(andback)'";
-```
+[%CFEngine_include_example(storejson.cf)%]
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
