@@ -48,7 +48,7 @@ highly undesirable if the command is expensive.  Consider using
 `commands` promises instead, which have locking and are not evaluated
 by `cf-promises`.
 
-**See also:** [`returnszero()`][returnszero].
+**See also:** [`returnszero()`][returnszero], [`execresult_as_data()`][execresult_as_data].
 
 **Change:** policy change in CFEngine 3.0.5. Previously newlines were
 changed for spaces, now newlines are preserved.
