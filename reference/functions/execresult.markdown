@@ -5,7 +5,7 @@ published: true
 tags: [reference, utility functions, functions, execresult, cached function]
 ---
 
-[%CFEngine_function_prototype(command, shell)%]
+[%CFEngine_function_prototype(command, shell, output)%]
 
 **Description:** Execute `command` and return output (both `stdout` and `stderr`) as `string`.
 
@@ -17,7 +17,10 @@ remember that each command requires a new process that reads in files beyond
 CFEngine's control. Thus using a shell is both a performance hog and a
 potential security issue.
 
-[%CFEngine_function_attributes(command, shell)%]
+The optional `output` argument allows you to select which output will be
+included, betweeen `stdout`, `stderr`, or `both`. The default is `both`.
+
+[%CFEngine_function_attributes(command, shell, output)%]
 
 **Example:**
 
@@ -25,7 +28,7 @@ Prepare:
 
 [%CFEngine_include_snippet(execresult.cf, #\+begin_src prep, .*end_src)%]
 
-Run:
+Policy:
 
 [%CFEngine_include_snippet(execresult.cf, #\+begin_src cfengine3, .*end_src)%]
 
@@ -43,8 +46,7 @@ only.  Effectively calls to this function will be also repeatedly
 executed by `cf-promises` when it does syntax checking, which is
 highly undesirable if the command is expensive.  Consider using
 `commands` promises instead, which have locking and are not evaluated
-by `cf-promises`. If capturing stderr is undesirable, consider **useshell** and
-redirecting it to `/dev/null`.
+by `cf-promises`.
 
 **See also:** [`returnszero()`][returnszero].
 
