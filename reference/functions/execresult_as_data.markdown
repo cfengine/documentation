@@ -17,10 +17,6 @@ you to test, store, or inspect both exit code and output from the samme command 
 
 **Example:**
 
-Prepare:
-
-[%CFEngine_include_snippet(execresult_as_data.cf, #\+begin_src prep, .*end_src)%]
-
 Policy:
 
 [%CFEngine_include_snippet(execresult_as_data.cf, #\+begin_src cfengine3, .*end_src)%]
