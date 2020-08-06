@@ -27,7 +27,6 @@ included, betweeen `stdout`, `stderr`, or `both`. The default is `both`.
 Prepare:
 
 [%CFEngine_include_snippet(execresult.cf, #\+begin_src prep, .*end_src)%]
-
 Policy:
 
 [%CFEngine_include_snippet(execresult.cf, #\+begin_src cfengine3, .*end_src)%]
@@ -50,5 +49,7 @@ by `cf-promises`.
 
 **See also:** [`returnszero()`][returnszero], [`execresult_as_data()`][execresult_as_data].
 
-**Change:** policy change in CFEngine 3.0.5. Previously newlines were
-changed for spaces, now newlines are preserved.
+**History:**
+
+* 3.0.5 Newlines no longer replaced with spaces in stored output.
+* 3.17.0 Introduced optional parameter `output` added allowing selection of stderr, stdout or both.
