@@ -6,6 +6,17 @@ sorting: 90
 tags: [getting started, mustache, faq]
 ---
 
+## CFEngine specific extensions
+
+CFEngine has several extensions to the mustache standard.
+
+* `-top-` special key representing the complete data given.
+* `%` variable prefix causing data to be rendered as multi-line json representation.
+* `$` variable prefix causing data to be rendered as compact json representation.
+* `@` expands the current key being iterated.
+
+**See Also:** [`template_method` `mustache` extensions][files#template_method-mustache-extensions]
+
 ## How can I pass a data variable to template_data?
 
 Just use `template_data => @(mycontainer)`.
