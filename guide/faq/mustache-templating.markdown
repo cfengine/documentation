@@ -15,7 +15,7 @@ CFEngine has several extensions to the mustache standard.
 * `$` variable prefix causing data to be rendered as compact json representation.
 * `@` expands the current key being iterated.
 
-**See Also:** [`template_method` `mustache` extensions][files#template_method-mustache-extensions]
+**See Also:** [`template_method` `mustache` extensions][files#template_method mustache extensions]
 
 ## How can I pass a data variable to template_data?
 
@@ -24,11 +24,11 @@ Just use `template_data => @(mycontainer)`.
 If you need to extract a portion of the container or merge it with another, use
 `template_data => mergedata("mycontainer[piece]", "othercontainer")`.
 
-# Can I render a Mustache template into a string?
+## Can I render a Mustache template into a string?
 
 Yes, see `string_mustache()`.
 
-# How do I render a section only if a given class is defined?
+## How do I render a section only if a given class is defined?
 
 In this Mustache example the word 'Enterprise' will only be rendered if the
 class 'enterprise' is defined.
@@ -44,7 +44,7 @@ Version: CFEngine {{#classes.enterprise}}Enterprise{{/classes.enterprise}} {{var
 {% endraw %}
 
 
-# How do I use class expressions?
+## How do I use class expressions?
 
 Mustache does not understand CFEngine's class expression logic and it is not
 possible to use full class expressions in mustache templates. Instead, use class
@@ -55,7 +55,7 @@ to conditionally render a block.
 [%CFEngine_include_example(mustache_classes.cf)%]
 {% endraw %}
 
-# How do I iterate over a list?
+## How do I iterate over a list?
 
 This template should not be passed a data container; it uses the `datastate()`
 of the CFEngine system. That's where `vars.mon.listening_tcp4_ports` came from.
@@ -68,7 +68,7 @@ of the CFEngine system. That's where `vars.mon.listening_tcp4_ports` came from.
 ```
 {% endraw %}
 
-# How can I access keys when iterating over a dict?
+## How can I access keys when iterating over a dict?
 
 In CFEngine, the `@` symbol expands to the current key  when iterating over a dict.
 
@@ -76,7 +76,7 @@ In CFEngine, the `@` symbol expands to the current key  when iterating over a di
 [%CFEngine_include_example(mustache_extension_expand_key.cf)%]
 {% endraw %}
 
-# Can you use nested classes?
+## Can you use nested classes?
 
 You can. This is handy when options slightly differ for different operating systems.
 In this example for ssh daemon the authorized key configuration will only be added if
