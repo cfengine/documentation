@@ -7,10 +7,6 @@ tags: [how-to-guides, quick-start guides, vi]
 ---
 
 
-Quick-Start Guide To Using vi
-
-
-
 This guide is designed for the novice user of CFEngine tutorials—and will introduce the basic
 use of a powerful tool that is referenced in the CFEngine learning documentation: the vi visual editor.
 
@@ -39,8 +35,10 @@ Now press "Enter" to go to the next line and type “My name is Gary, and it's n
 
 The output will look like this:
 
-```Hello World
-My name is Gary, and it's nice to meet you```
+```
+Hello World
+My name is Gary, and it's nice to meet you
+```
 
 Step 4. Now exit the insert mode and go back to command mode by pressing the “esc” key.
 
