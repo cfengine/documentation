@@ -8,7 +8,7 @@ tags: [guide, installation]
 
 ## Download Packages
 
-[Download CFEngine](http://cfengine.com/product/free-download)
+[Download CFEngine][enterprise software download page] packages and [verify their signatures][Verifying package signatures].
 
 ## System requirements
 
