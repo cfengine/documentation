@@ -15,7 +15,7 @@ To use these bodies, add the following to your policy:
 ```cf3
 body file control
 {
-	inputs => { "common.cf" }
+	inputs => { "common.cf" };
 }
 ```
 
