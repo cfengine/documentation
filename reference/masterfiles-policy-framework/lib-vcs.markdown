@@ -7,13 +7,4 @@ tags: [reference, standard library, vcs, MPF]
 
 The `vcs.cf` library provides bundles for working with version control tools.
 
-To use these bodies, add the following to your policy:
-
-```cf3
-body file control
-{
-	inputs => { "lib/vcs.cf" };
-}
-```
-
 [%CFEngine_library_include(lib/vcs)%]
