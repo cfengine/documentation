@@ -32,10 +32,24 @@ git commit -m 'Initial masterfiles check in'
 git push origin master
 ```
 
+# Requirements
+
+You must have the following:
+
+- a [git URL](https://git-scm.com/docs/git-fetch#_git_urls)
+- a [git refspec](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec)
+
+Then one of these combinations:
+- a git username and password in the case of an ssh-based or git-based URL (no private key required)
+- a passphrase-less [private key](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) (no username or password required)
+- a [github token](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec) which is really just a username and password but for github this signifies read-only access (no private key required)
+
+The last option, a read-only login, is the best approach as it removes the possibility of write access if credentials are compromised. All of this information is kept secure by limiting access to `root` and `cfapache` users.
+
 # Configure the upstream VCS
 
-To configure the upstream repository. You must provide the uri, credentials
-(passphraseless ssh key) and the branch to deploy from.
+To configure the upstream repository. You must provide the uri and a refspec (branch name usually).
+Credentials can be specified in several ways as mentioned above so pick your choice above and enter in only the needed information in the form.
 
 ## Configuring upstream VCS via Mission Portal
 
@@ -51,6 +65,8 @@ control repository".
 
 The upstream VCS can be configured manually by modifying
 `/opt/cfengine/dc-scripts/params.sh`
+
+Remember that not all of the values must be specified.
 
 # Manually triggering a policy deployment
 
