@@ -28,6 +28,8 @@ are provided at each stage of installation and setup that follows.
 * [Installation][Federated Reporting#Installation]
 * [Setup][Federated Reporting#Setup]
 * [Operation][Federated Reporting#Operation]
+* [Duplicate Host Management][Federated Reporting#Duplicate Host Management]
+* [Troubleshooting][Federated Reporting#Troubleshooting]
 * [API Setup][Federated Reporting#API Setup]
 * [Disable Feeder][Federated Reporting#Disable Feeder]
 * [Uninstall][Federated Reporting#Uninstall]
@@ -177,6 +179,28 @@ each Feeder every 20 minutes as well.
 You can test import immediately by running the agent on the feeders and then
 the superhub.
 
+## Duplicate Host Management ##
+
+There are situations where feeder hubs may have hosts with duplicate hostkeys:
+
+- hosts are able to "float", re-bootstrap or failover to several different feeder hubs
+- hosts may be cloned and not have their hostkey refreshed by running `cf-key` and refreshing `$(sys.workdir)/ppkeys/localhost.pub`.
+
+In the first case you will likely want to remove entries for hosts which are not the latest since the latest data will be most accurate.
+An augment is available to enable moving duplicated host data to a `dup` schema for analysis. The host data which has the most recent `hosts.lastreporttimestamp` will be kept in the `public` schema and all other data will be moved to the `dup` domain (schema).
+
+This feature is disabled by default.
+If enabled it is performed on every import cycle.
+
+```json
+{
+  "classes": {
+    "cfengine_mp_fr_handle_duplicate_hostkeys": ["any::"]
+  }
+}
+```
+
+This class only has an effect on the superhub host.
 ## Troubleshooting ##
 
 Please refer to `/var/cfengine/output`, `/var/log/postgresql.log` and
