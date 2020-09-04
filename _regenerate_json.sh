@@ -58,6 +58,7 @@ done
     echo cf-monitord
     echo cf-net
     echo cf-check
+    echo cf-secret
     echo cf-hub
 ) | while read agent
 do
