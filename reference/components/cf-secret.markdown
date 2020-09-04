@@ -65,3 +65,14 @@ Finally, decrypt the file.
 
 No difference
 ```
+
+## Example leveraging cf-secret from policy
+
+**Policy:**
+
+[%CFEngine_include_example(cf-secret.cf, #\+begin_src\s+cfengine3\s*, .*end_src)%]
+
+**Example Output:**
+
+[%CFEngine_include_example(cf-secret.cf, #\+begin_src\s+static_example_output\s*, .*end_src)%]
+
