@@ -40,7 +40,7 @@ enclose an arbitrary key are being deprecated in favor of the `data` variable ty
 
 **Type:** `int`
 
-**Allowed input range:** `-99999999999,9999999999`
+**Allowed input range:** `-99999999999,99999999999`
 
 **Example:**
 
