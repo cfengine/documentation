@@ -126,6 +126,58 @@ future. Key purging usually take an effect within 5-10 minutes.
 of [`trustkeysfrom`][cf-serverd#trustkeysfrom] for the hub hosts may re-appear
 and resume being collected from after being deleted.
 
+## Hosts list grouped by hard classes
+
+**URI:** https://hub.cfengine.com/api/hosts/by-class
+
+**Method:** GET
+
+**Parameters:**
+
+* **context-include** *(comma delimited string of regular expression strings)*
+* **format** *(string)*
+    Output format. Default value is `json`. Allowed values: `json`, `yaml`.
+    
+**CURL unfiltered request example**
+```
+curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class
+```
+
+**Example response:**    
+```
+{
+    "10_0_2_15": [
+        "ubuntu-xenial.com"
+    ],
+    "127_0_0_1": [
+        "ubuntu-xenial.com"
+    ],
+    "172_28_128_3": [
+        "ubuntu-xenial.com"
+    ],
+    "ubuntu_16": [
+        "ubuntu-xenial.com",
+        "example.com"
+    ]
+}
+```
+
+**CURL filtered request example**
+```
+curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class?context-include=172_.*
+```
+
+**Example response:**
+
+```
+{
+    "172_.*": [
+        "example.com",
+        "vpn.example.com"
+    ]
+}
+```
+
 ## List monitoring attributes for host
 
 **URI:** https://hub.cfengine.com/api/host/:host-id/vital
