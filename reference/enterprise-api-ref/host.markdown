@@ -139,11 +139,13 @@ and resume being collected from after being deleted.
     Output format. Default value is `json`. Allowed values: `json`, `yaml`.
     
 **CURL unfiltered request example**
+
 ```
 curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class
 ```
 
 **Example response:**    
+
 ```
 {
     "10_0_2_15": [
@@ -163,6 +165,7 @@ curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class
 ```
 
 **CURL filtered request example**
+
 ```
 curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class?context-include=172_.*
 ```
