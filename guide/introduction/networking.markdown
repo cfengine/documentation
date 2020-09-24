@@ -108,7 +108,7 @@ Once you have arranged for the right to connect to the server, you must decide
 which hosts will have access to which files. This is done with `access` promises.
 
 ```cf3
-bundle server access_rules()
+bundle server my_access_rules()
 {
   access:
     "/path/file"

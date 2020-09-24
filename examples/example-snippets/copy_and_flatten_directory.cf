@@ -86,7 +86,7 @@ body server control
 }
 #########################################################
 
-bundle server access_rules()
+bundle server my_access_rules()
 {
   access:
       "/home/mark/LapTop"

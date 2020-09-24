@@ -16,7 +16,7 @@ You layer the access policy by denying all access and then allowing it
 only to selected clients, then denying to an even more restricted set.
 
 ```cf3
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 
@@ -302,7 +302,7 @@ aforementioned attributes, and it's **not recommended** to use in new
 policy. Example:
 
 ```cf3
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 
@@ -316,7 +316,7 @@ access:
 The best way to write the same policy would be the following:
 
 ```cf3
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 
@@ -668,7 +668,7 @@ specified hosts. The promiser is an anchored regular expression.
 **Example:**
 
 ```cf3
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 

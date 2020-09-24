@@ -142,7 +142,7 @@ this has a small network cost, and requires some extra configuration on the
 server side to grant access to this context information:
 
 ```cf3
-bundle server access_rules
+bundle server my_access_rules
 {
 access:
 
@@ -311,7 +311,7 @@ allowusers            => { "mark" };
 
 #########################################################
 
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 

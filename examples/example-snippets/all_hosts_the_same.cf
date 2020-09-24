@@ -46,7 +46,7 @@ body server control
 }
 #########################################################
 
-bundle server access_rules()
+bundle server my_access_rules()
 {
   access:
       # myhost.domain.tld makes this file available to 10.20.30*

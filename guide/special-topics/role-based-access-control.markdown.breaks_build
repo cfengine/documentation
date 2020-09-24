@@ -337,10 +337,10 @@ running the agent with a defined class, e.g.
 host# cf-agent -D extraordinary
 ```
 
-However, it is also possible to grant access to these parts of a CFEngine policy that are normally switched off by usingcf-serverdto mediate privilege to execute the agent with this class active. For example, setting:
+However, it is also possible to grant access to these parts of a CFEngine policy that are normally switched off by using cf-serverd to mediate privilege to execute the agent with this class active. For example, setting:
 
 ```cf3
-bundle server access_rules()
+bundle server my_access_rules()
 {
 roles:
 

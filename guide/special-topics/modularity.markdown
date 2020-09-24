@@ -635,7 +635,7 @@ promise_repaired => { "did_task_one","did_task_two", "did_task_three" };
 persist_time => "10";
 }
 
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 
@@ -713,7 +713,7 @@ reports:
 
 #######################################################
 
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 
@@ -810,7 +810,7 @@ commands:
 
 #######################################################
 
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 
@@ -957,7 +957,7 @@ files:
 ############################################################
 
 
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 
@@ -1165,7 +1165,7 @@ reports:
 ############################################################
 
 
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 
@@ -1438,7 +1438,7 @@ insert_lines:
 ############################################################
 
 
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 
