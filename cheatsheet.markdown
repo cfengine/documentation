@@ -525,7 +525,7 @@ show the actual variables will need to be inside of raw tags.
 
 {% raw %}
 site.CFE_manuals_version {{ site.CFE_manuals_version }}
-{% endraw %**
+{% endraw %}
 
 # Testing
 ## Indention with included markdown
