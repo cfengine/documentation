@@ -1090,18 +1090,19 @@ an exact alias for `if`; see its description for details.
 
 ### meta
 
-**Description:** User-data associated with policy, e.g. key=value strings.
+**Description:** A list of strings to be associated with the promise for knowledge management purposes.
+The strings are usually called "meta tags" or simply "tags."
 
-It is sometimes convenient to attach meta-data of a more technical nature to
-policy. It may be used for arbitrary key=value strings for example.
+Any promise (of any type) can be given a "meta" attribute.
+Since the right hand side for this attribute is an slist, multiple strings (tags) can be associated with the same promise.
 
-Note that the inventory reporting of CFEngine Enterprise 3.6 and later uses the
-meta attributes `inventory` and `attribute_name=`, so these should be considered
-reserved for this purpose.
+Note that the inventory reporting of CFEngine Enterprise 3.6 and later uses the meta attributes `inventory` and `attribute_name=`, so these should be considered reserved for this purpose.
+
+A "meta" attribute can likewise be added into any body (of any type).
 
 **Type:** `slist`
 
-**Allowed input range:** (arbitrary string)
+**Allowed input range:** (arbitrary string list)
 
 **Example:**
 
@@ -1110,13 +1111,36 @@ reserved for this purpose.
 
       "/etc/special_file"
 
-        comment => "Special file is a requirement. Talk to Fred X.",
+        comment => "Special file is a requirement. Talk to John.",
         create => "true",
 
-        meta => { "owner=John",  "version=2.0" };
+        meta => { "owner=John",  "version=2.0", "ticket=CFE-1234" };
 ```
 
+Another example:
+
+```cf3
+  some_promise_type:
+      any::
+        "my_promiser"
+          meta => { "Team Foo", "workaround", "non-critical" };
+```
+
+The meta tags may be referred to programmatically in various ways, or may be solely for human consumption.
+Meta tags on vars promises and classes promises are particularly suited for programmatic interpretation;
+meta tags on other promise types (or in bodies) are more likely to be intended only for human consumption.
+
+Relevant CFEngine functions are:
+`classesmatching()`, `classmatch()`, `countclassesmatching()`, `getclassmetatags()`, `getvariablemetatags()`, `variablesmatching()`, `variablesmatching_as_data()`.
+
+Also see [meta promises][meta]: While "meta" attribute can be added to a promise of any type, there can also be promises of promise type "meta" added to any bundle.
+If mention is made of "tags" on a *bundle*, what is actually meant is meta *promises* in that bundle.
+(This is just a terminology point.)
+
+**Note:** When a variable is re-defined the associated meta tags are also re-defined.
+
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012)
+
 
 ### unless
 
@@ -1270,12 +1294,11 @@ body TYPE child(aaa)
 
 ### meta
 
-**Description:** A list of strings to be associated with the promise for knowledge management purposes.  The strings are usually called "meta tags" or simply "tags."
+**Description:** A list of strings to be associated with the body for knowledge management purposes.
+The strings are usually called "meta tags" or simply "tags."
 
-Any promise (of any type) can be given a "meta" attribute.  Since the right hand side
-for this attribute is an slist, multiple strings (tags) can be associated with the same promise.
-
-A "meta" attribute can likewise be added into any body (of any type).
+Any body can be given a "meta" attribute.
+Since the right hand side for this attribute is an slist, multiple strings (tags) can be associated with the same body.
 
 **Type:** `slist`
 
@@ -1286,33 +1309,10 @@ A "meta" attribute can likewise be added into any body (of any type).
 ```cf3
 body ANYTYPE mybody
 {
-  meta => { "deprecated" };
+  meta => { "deprecated" , "CFE-1234", "CVE-2020-1234" };
 }
 ```
 
-Another example:
-
-```cf3
-  some_promise_type:
-      any::
-        "my_promiser"
-          meta => { "Team Foo", "workaround", "non-critical" };
-```
-
-The meta tags may be referred to programmatically in various ways, or may be solely for
-human consumption.  Meta tags on vars promises and classes promises are
-particularly suited for programmatic interpretation; meta tags on other
-promise types (or in bodies) are more likely to be intended only for human consumption.
-
-Relevant CFEngine functions are: `classesmatching()`,
-`classmatch()`, `countclassesmatching()`, `getclassmetatags()`,
-`getvariablemetatags()`, `variablesmatching()`, `variablesmatching_as_data()`
-
-Also see [meta promises][meta]: While "meta" attribute can be added to a promise of any type, there can also be promises of promise type "meta" added to any bundle.
-If mention is made of "tags" on a *bundle*, what is actually meant is meta *promises*
-in that bundle.  (This is just a terminology point.)
-
-**Note:** When a variable is re-defined the associated meta tags are also
-re-defined.
+**Note:** When a variable is re-defined the associated meta tags are also re-defined.
 
 **History:** Was introduced in 3.7.0.
