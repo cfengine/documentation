@@ -13,7 +13,7 @@ https://github.com/cfengine/masterfiles/blob/{{site.cfengine.branch}}/controls/c
 It defaults to `root@$(def.domain)` which is configured in `bundle common def`
 https://github.com/cfengine/masterfiles/blob/{{site.cfengine.branch}}/def.cf.
 
-**See Also:** [`def.mailto`][Masterfiles Policy Framework#mailto].
+**See also:** [`def.mailto`][Masterfiles Policy Framework#mailto].
 
 # How do I disable agent email output?
 

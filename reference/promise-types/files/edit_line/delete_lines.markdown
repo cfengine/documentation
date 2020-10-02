@@ -224,4 +224,4 @@ only negates the match of the initially promised lines.
 
 This body applies to all promise types within `edit_line` bundles.
 
-**See Also:** [```select_region``` with `edit_line` operations][edit_line#select_region], [```select_region``` in `field_edits`][field_edits#select_region], [```select_region``` in `insert_lines`][field_edits#select_region], [```select_region``` in `replace_patterns`][replace_patterns#select_region]
+**See also:** [```select_region``` with `edit_line` operations][edit_line#select_region], [```select_region``` in `field_edits`][field_edits#select_region], [```select_region``` in `insert_lines`][field_edits#select_region], [```select_region``` in `replace_patterns`][replace_patterns#select_region]

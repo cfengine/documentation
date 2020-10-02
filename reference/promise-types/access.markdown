@@ -707,7 +707,7 @@ access:
 }
 ```
 
-**See also**: [--remote-bundles option for cf-runagent][cf-runagent], [cfruncommand in body server control][cf-serverd#cfruncommand]
+**See also:** [--remote-bundles option for cf-runagent][cf-runagent], [cfruncommand in body server control][cf-serverd#cfruncommand]
 
 **History:**
 

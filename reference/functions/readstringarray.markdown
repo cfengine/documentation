@@ -124,4 +124,4 @@ Output:
 
 [%CFEngine_include_snippet(readrealarray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See Also:** [`readrealarray()`][readrealarray], [`readintarray()`][readintarray], [`parserealarray()`][parserealarray], [`parserealarray()`][parserealarray], [`parsestringarray()`][parsestringarray] 
+**See also:** [`readrealarray()`][readrealarray], [`readintarray()`][readintarray], [`parserealarray()`][parserealarray], [`parserealarray()`][parserealarray], [`parsestringarray()`][parsestringarray] 

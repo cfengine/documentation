@@ -19,7 +19,7 @@ which hosts `cf-agent` will be started, and classes that the user requests
 
 [%CFEngine_include_snippet(cf-runagent.help, [\s]*--[a-z], ^$)%]
 
-**See also**: [bundle resource_type in server access promises][access#resource_type], [cfruncommand in body server control][cf-serverd#cfruncommand]
+**See also:** [bundle resource_type in server access promises][access#resource_type], [cfruncommand in body server control][cf-serverd#cfruncommand]
 
 ## Control Promises
 
@@ -289,4 +289,4 @@ body runagent control
 }
 ```
 
-**See Also:** [body `copy_from` timeout][files#timeout], [agent `default_timeout`][cf-agent#default_timeout]
+**See also:** [body `copy_from` timeout][files#timeout], [agent `default_timeout`][cf-agent#default_timeout]

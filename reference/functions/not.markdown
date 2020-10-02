@@ -27,6 +27,6 @@ commands:
 **Notes:** Introduced primarily for use with `ifvarclass`, `if`, and `unless`
 promise attributes.
 
-**See Also:** `and`, `or`, `not`
+**See also:** `and`, `or`, `not`
 
 **History:** Was introduced in 3.2.0, Nova 2.1.0 (2011)

@@ -57,7 +57,7 @@ file.
 
 For example ```services_autorun``` in the MPF documentation the underscore needs to be escaped with a ```\```.
 
-**See Also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
+**See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
 
 ### Link to CFEngine keyword
 

@@ -37,4 +37,4 @@ Output:
 
 [%CFEngine_include_snippet(islink.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See Also:** `fileexists()`, `filestat()`, `isdir()`, `isplain()`, `returnszero()`
+**See also:** `fileexists()`, `filestat()`, `isdir()`, `isplain()`, `returnszero()`

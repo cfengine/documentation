@@ -31,4 +31,4 @@ Output:
 
 - Introduced in 3.12.0.
 
-**See Also:** `splayclass()`
+**See also:** `splayclass()`

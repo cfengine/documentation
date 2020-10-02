@@ -99,7 +99,7 @@ Promise locks can be useful for controlling frequency.
 `access`, `classes`, `defaults`, `meta`, `roles` and `vars` type promises do not
 participate in locking.
 
-**See Also:** [ifelapsed in body agent control][cf-agent#ifelapsed], [ifelapsed action body attribute][Promise Types and Attributes#ifelapsed]
+**See also:** [ifelapsed in body agent control][cf-agent#ifelapsed], [ifelapsed action body attribute][Promise Types and Attributes#ifelapsed]
 
 ### Promise Attributes
 

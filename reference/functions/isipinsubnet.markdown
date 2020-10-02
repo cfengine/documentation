@@ -21,6 +21,6 @@ Output:
 
 [%CFEngine_include_snippet(isipinsubnet.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See Also:** `iprange()`, `host2ip()`, `ip2host()`
+**See also:** `iprange()`, `host2ip()`, `ip2host()`
 
 **History:** Was introduced in CFEngine 3.10.

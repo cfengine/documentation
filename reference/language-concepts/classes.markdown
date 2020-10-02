@@ -59,7 +59,7 @@ the `/var/cfengine/state/env_data` file is secure.
 The `classesmatching()` function searches using a regular expression for classes
 matching a given name and or tag.
 
-**See also**: The ```--show-vars``` option for `cf-promises` and the
+**See also:** The ```--show-vars``` option for `cf-promises` and the
 ```--show-evaluated-vars``` option for `cf-agent`.
 
 ## Tags

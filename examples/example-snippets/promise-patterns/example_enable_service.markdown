@@ -15,7 +15,7 @@ This example shows how to ensure services are started or stopped appropriately.
 custom handling. For example it is not uncommon for some services to not provide
 correct return codes for status checks.
 
-**See Also:**
+**See also:**
 
 * [Services promise type reference][services]
 * [Services bundles and bodies in the standard library][lib/services.cf]

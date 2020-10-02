@@ -280,7 +280,7 @@ shell command at your own risk.
     }
 ```
 
-**See also**: [cf-runagent][cf-runagent], [bundle resource_type in server access promises][access#resource_type]
+**See also:** [cf-runagent][cf-runagent], [bundle resource_type in server access promises][access#resource_type]
 
 ### call_collect_interval
 

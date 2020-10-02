@@ -357,7 +357,7 @@ after which last-seen entries are purged. It is an **enterprise-only** feature.
     }
 ```
 
-**See Also:** [hostsseen()][hostsseen], [cf-hub][cf-hub]
+**See also:** [hostsseen()][hostsseen], [cf-hub][cf-hub]
 
 ### output_prefix
 
