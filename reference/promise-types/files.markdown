@@ -1041,7 +1041,7 @@ absolute path. Windows only supports hard links.
      }
 ```
 
-**See Also**: [link_type][files#link_type].
+**See also:** [link_type][files#link_type].
 
 #### link_type
 
@@ -1282,7 +1282,7 @@ timeout, in seconds.
      }
 ```
 
-**See Also:** [agent `default_timeout`][cf-agent#default_timeout], [`cf-runagent` timeout][cf-runagent#timeout]
+**See also:** [agent `default_timeout`][cf-agent#default_timeout], [`cf-runagent` timeout][cf-runagent#timeout]
 
 **Notes:**
 

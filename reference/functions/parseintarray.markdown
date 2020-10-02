@@ -40,4 +40,4 @@ Output:
 
 **History:** Was introduced in version 3.1.5a1, Nova 2.1.0 (2011**
 
-**See Also:** [`parsestringarray()`][parsestringarray], [`parserealarray()`][parserealarray], [`readstringarray()`][readstringarray], [`readintarray()`][readintarray], [`readrealarray()`][readrealarray]
+**See also:** [`parsestringarray()`][parsestringarray], [`parserealarray()`][parserealarray], [`readstringarray()`][readstringarray], [`readintarray()`][readintarray], [`readrealarray()`][readrealarray]

@@ -22,7 +22,7 @@ The *autorun* feature in the Masterfiles Policy Framework automatically adds
 policy files found in `services/autorun` to inputs and executes bundles tagged
 with *autorun* as methods type promises in lexical order.
 
-**See Also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
+**See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
 
 ## Using augments
 
@@ -55,7 +55,7 @@ To extend inputs in the update policy define `update_inputs`.
 }
 ```
 
-**See Also:** [Augments][Augments], [Extend inputs for update policy in the Masterfiles Policy Framework][Masterfiles Policy Framework#Append to inputs used by update policy]
+**See also:** [Augments][Augments], [Extend inputs for update policy in the Masterfiles Policy Framework][Masterfiles Policy Framework#Append to inputs used by update policy]
 
 ## Using body file control
 
@@ -102,7 +102,7 @@ other.
    }
    ```
 
-**See Also:** [`inputs` in `body file control`][file control#inputs]
+**See also:** [`inputs` in `body file control`][file control#inputs]
 
 ## Using body common control
 
@@ -110,5 +110,5 @@ other.
 make up the policy set ( *inputs* ), and the order of the bundles to be executed
 ( *bundlesequence* ).
 
-**See Also:** [`inputs` in `body common control`][Components and Common Control#inputs], [`bundlesequence` in `body common control`][Components and Common Control#bundlesequence]
+**See also:** [`inputs` in `body common control`][Components and Common Control#inputs], [`bundlesequence` in `body common control`][Components and Common Control#bundlesequence]
 

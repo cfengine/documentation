@@ -28,7 +28,7 @@ to debug the behavior of the resolver.
     }
 ```
 
-**See Also:** `ip2host()`, `isipinsubnet()`,  `iprange()`
+**See also:** `ip2host()`, `isipinsubnet()`,  `iprange()`
 
 **History:** This function was introduced in CFEngine version 3.0.4
 (2010)

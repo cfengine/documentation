@@ -267,7 +267,7 @@ bundle agent my_custom_service_method_DEB( service_identifier, desired_service_s
 }
 ```
 
-**See Also:** [generic standard_services][Services Bodies and Bundles#standard_services]
+**See also:** [generic standard_services][Services Bodies and Bundles#standard_services]
 
 **History:**
 

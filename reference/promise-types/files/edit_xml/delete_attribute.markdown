@@ -25,4 +25,4 @@ Note that typically, only a single attribute, within a single specified
 node, is deleted in each `delete_attribute` promise. You may of course
 have multiple promises that each delete an attribute.
 
-**See Also:** [Common `edit_xml` attributes][edit_xml#common attributes]
+**See also:** [Common `edit_xml` attributes][edit_xml#common attributes]

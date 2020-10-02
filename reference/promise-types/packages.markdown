@@ -256,7 +256,7 @@ body package_module apt_get
 repairs a package using the given `package_module`, when the lock has expired or
 when the agent is run without locks.
 
-**See Also:** `Package Modules`
+**See also:** `Package Modules`
 
 #### query_updates_ifelapsed
 
@@ -290,7 +290,7 @@ expired or when the agent is run without locks.
 [`list-updates-local`][Package Modules#list-updates-local] is called in all
 other conditions.
 
-**See Also:** `Package Modules`
+**See also:** `Package Modules`
 
 #### interpreter
 
@@ -315,7 +315,7 @@ body package_module apt_get
 }
 ```
 
-**See Also:** `Package Modules`
+**See also:** `Package Modules`
 
 **History:** Introduced in 3.13.0, 3.12.2
 
@@ -343,7 +343,7 @@ body package_module yum_all_repos
 }
 ```
 
-**See Also:** `Package Modules`
+**See also:** `Package Modules`
 
 **History:** Introduced in 3.13.0, 3.12.2
 

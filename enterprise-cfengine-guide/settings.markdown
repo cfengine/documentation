@@ -198,7 +198,7 @@ Mission portal can authenticate against an external directory.
 
 - Default roles for users is configured under [Role Management][Settings#Role Management].
 
-**See Also:** [LDAP authentication REST API][LDAP authentication API]
+**See also:** [LDAP authentication REST API][LDAP authentication API]
 
 
 ## Role based access control ##
@@ -224,7 +224,7 @@ To restore the CFEngine admin role permissions run the following sql as root on 
 root@hub:~# /var/cfengine/bin/psql cfsettings -c "INSERT INTO rbac_role_permission (role_id, permission_alias) (SELECT 'admin'::text as role_id, alias as permission_alias FROM rbac_permissions) ON CONFLICT (role_id, permission_alias)  DO NOTHING;"
 ```
 
-**See Also:** [Web RBAC API][Web RBAC API]
+**See also:** [Web RBAC API][Web RBAC API]
 
 
 ## About CFEngine ##

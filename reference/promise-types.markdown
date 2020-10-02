@@ -214,7 +214,7 @@ body agent control
 }
 ```
 
-**See Also:** [promise locking][Promises#Promise Locking], [ifelapsed in body agent control][cf-agent#ifelapsed]
+**See also:** [promise locking][Promises#Promise Locking], [ifelapsed in body agent control][cf-agent#ifelapsed]
 
 #### expireafter
 
@@ -244,7 +244,7 @@ body action example
 }
 ```
 
-**See Also:** [`body contain exec_timeout`][commands#exec_timeout], [`body agent control expireafter`][cf-agent#expireafter], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+**See also:** [`body contain exec_timeout`][commands#exec_timeout], [`body agent control expireafter`][cf-agent#expireafter], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
 
 #### log_string
 
@@ -479,7 +479,7 @@ body action background
 }
 ```
 
-**See Also**: [`max_children` in body agent control][cf-agent#max_children]
+**See also:** [`max_children` in body agent control][cf-agent#max_children]
 
 #### report_level
 

@@ -15,7 +15,7 @@ CFEngine has several extensions to the mustache standard.
 * `$` variable prefix causing data to be rendered as compact json representation.
 * `@` expands the current key being iterated.
 
-**See Also:** [`template_method` `mustache` extensions][files#template_method mustache extensions]
+**See also:** [`template_method` `mustache` extensions][files#template_method mustache extensions]
 
 ## How can I pass a data variable to template_data?
 

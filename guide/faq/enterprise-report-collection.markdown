@@ -21,7 +21,7 @@ tries to collect from up to the LICENSED number of hosts for each collection
 round as identified by `hub_schedule` as defined
 in [`body hub control`](cf-hub#control-promises).
 
-* **See Also:** `hostsseen()`, `hostswithclass()`
+* **See also:** `hostsseen()`, `hostswithclass()`
 
 ## How often does cf-hub re-check the LICENSE
 
@@ -111,7 +111,7 @@ $ curl -s -u admin:admin http://hub/api/query -X POST -d @agent_execution_time_i
 ]
 ```
 
-**See Also**: `Enterprise API Reference`, `Enterprise API Examples`
+**See also:** `Enterprise API Reference`, `Enterprise API Examples`
 
 ## How are hosts not reporting determined?
 
@@ -132,7 +132,7 @@ Note: It's called "blueHostHorizon" because older versions of Mission Portal
 would turn these hosts to a blue color as an indication of "hypoxia" (lack
 of oxygen, where oxygen is access to latest policy) to indicate a health issue.
 
-**See Also**: `Enterprise API Reference`, `Enterprise API Examples`, [Enterprise Settings][Settings#preferences]
+**See also:** `Enterprise API Reference`, `Enterprise API Examples`, [Enterprise Settings][Settings#preferences]
 
 ## Which hosts are pending trust revocation?
 

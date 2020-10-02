@@ -40,4 +40,4 @@ Output:
 [%CFEngine_include_snippet(readreallist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 
-**See Also:** [`readstringlist()`][readstringlist], [`readintlist()`][readintlist]
+**See also:** [`readstringlist()`][readstringlist], [`readintlist()`][readintlist]
