@@ -34,113 +34,7 @@ depends on the [bundle][bundles] type:
 See each promise type's reference documentation for detailed lists of available
 attributes.
 
-## Common Body Attributes
-
-The following attributes are available to all body types.
-
-### inherit_from
-
-**Description:** Inherits all attributes from another body of the same
-type as a function call. For a detailed description, see
-[**Bodies**][bodies].
-
-**Type:** `fncall`
-
-**Allowed input range:** (arbitrary body invocation)
-
-**Example:**
-
-A simple example first, which has no parameters:
-
-```cf3
-body TYPE parent
-{
-  atribute1 => 100;
-  atribute2 => { "a" };
-  atribute3 => 75;
-}
-
-    body TYPE child
-{
-  inherit_from => parent; # same as parent()
-  atribute3 => 300; # overwrites parent's attribute3
-  # has atribute1 => 100;
-  # has atribute2 => { "a" };
-}
-```
-
-Now with parameters. The child calls the parent as a function call.
-Note that the child's parameters can be passed up to the parent.
-
-```cf3
-body TYPE parent(a1, a2)
-{
-  atribute1 => $(a1);
-  atribute2 => { $(a2) };
-  atribute3 => 75;
-}
-
-body TYPE child(aaa)
-{
-  inherit_from => parent(5, $(aaa));
-  atribute3 => 300; # overwrites parent's attribute3
-  # has atribute1 => 5;
-  # has atribute2 => { $(aaa) };
-}
-```
-
-**History:** Was introduced in 3.8.0.
-
-### meta
-
-**Description:** A list of strings to be associated with the promise for knowledge management purposes.  The strings are usually called "meta tags" or simply "tags."
-
-Any promise (of any type) can be given a "meta" attribute.  Since the right hand side
-for this attribute is an slist, multiple strings (tags) can be associated with the same promise.
-
-A "meta" attribute can likewise be added into any body (of any type).
-
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string list)
-
-**Example:**
-
-```cf3
-body ANYTYPE mybody
-{
-  meta => { "deprecated" };
-}
-```
-
-Another example:
-
-```cf3
-  some_promise_type:
-      any::
-        "my_promiser"
-          meta => { "Team Foo", "workaround", "non-critical" };
-```
-
-The meta tags may be referred to programmatically in various ways, or may be solely for
-human consumption.  Meta tags on vars promises and classes promises are
-particularly suited for programmatic interpretation; meta tags on other
-promise types (or in bodies) are more likely to be intended only for human consumption.
-
-Relevant CFEngine functions are: `classesmatching()`,
-`classmatch()`, `countclassesmatching()`, `getclassmetatags()`,
-`getvariablemetatags()`, `variablesmatching()`, `variablesmatching_as_data()`
-
-Also see [meta promises][meta]: While "meta" attribute can be added to a promise of any type, there can also be promises of promise type "meta" added to any bundle.
-If mention is made of "tags" on a *bundle*, what is actually meant is meta *promises*
-in that bundle.  (This is just a terminology point.)
-
-**Note:** When a variable is re-defined the associated meta tags are also
-re-defined.
-
-**History:** Was introduced in 3.7.0.
-
-## Common Attributes
+## Common Promise Attributes
 
 The following attributes are available to all promise types.
 
@@ -1316,3 +1210,109 @@ Output:
 [%CFEngine_include_snippet(with.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **History:** Was introduced in 3.11.0
+
+## Common Body Attributes
+
+The following attributes are available to all body types.
+
+### inherit_from
+
+**Description:** Inherits all attributes from another body of the same
+type as a function call. For a detailed description, see
+[**Bodies**][bodies].
+
+**Type:** `fncall`
+
+**Allowed input range:** (arbitrary body invocation)
+
+**Example:**
+
+A simple example first, which has no parameters:
+
+```cf3
+body TYPE parent
+{
+  atribute1 => 100;
+  atribute2 => { "a" };
+  atribute3 => 75;
+}
+
+    body TYPE child
+{
+  inherit_from => parent; # same as parent()
+  atribute3 => 300; # overwrites parent's attribute3
+  # has atribute1 => 100;
+  # has atribute2 => { "a" };
+}
+```
+
+Now with parameters. The child calls the parent as a function call.
+Note that the child's parameters can be passed up to the parent.
+
+```cf3
+body TYPE parent(a1, a2)
+{
+  atribute1 => $(a1);
+  atribute2 => { $(a2) };
+  atribute3 => 75;
+}
+
+body TYPE child(aaa)
+{
+  inherit_from => parent(5, $(aaa));
+  atribute3 => 300; # overwrites parent's attribute3
+  # has atribute1 => 5;
+  # has atribute2 => { $(aaa) };
+}
+```
+
+**History:** Was introduced in 3.8.0.
+
+### meta
+
+**Description:** A list of strings to be associated with the promise for knowledge management purposes.  The strings are usually called "meta tags" or simply "tags."
+
+Any promise (of any type) can be given a "meta" attribute.  Since the right hand side
+for this attribute is an slist, multiple strings (tags) can be associated with the same promise.
+
+A "meta" attribute can likewise be added into any body (of any type).
+
+**Type:** `slist`
+
+**Allowed input range:** (arbitrary string list)
+
+**Example:**
+
+```cf3
+body ANYTYPE mybody
+{
+  meta => { "deprecated" };
+}
+```
+
+Another example:
+
+```cf3
+  some_promise_type:
+      any::
+        "my_promiser"
+          meta => { "Team Foo", "workaround", "non-critical" };
+```
+
+The meta tags may be referred to programmatically in various ways, or may be solely for
+human consumption.  Meta tags on vars promises and classes promises are
+particularly suited for programmatic interpretation; meta tags on other
+promise types (or in bodies) are more likely to be intended only for human consumption.
+
+Relevant CFEngine functions are: `classesmatching()`,
+`classmatch()`, `countclassesmatching()`, `getclassmetatags()`,
+`getvariablemetatags()`, `variablesmatching()`, `variablesmatching_as_data()`
+
+Also see [meta promises][meta]: While "meta" attribute can be added to a promise of any type, there can also be promises of promise type "meta" added to any bundle.
+If mention is made of "tags" on a *bundle*, what is actually meant is meta *promises*
+in that bundle.  (This is just a terminology point.)
+
+**Note:** When a variable is re-defined the associated meta tags are also
+re-defined.
+
+**History:** Was introduced in 3.7.0.
