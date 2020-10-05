@@ -27,7 +27,7 @@ body server control
 }
 #######################################################
 
-bundle server access_rules()
+bundle server my_access_rules()
 {
   access:
     10_20_30_123::

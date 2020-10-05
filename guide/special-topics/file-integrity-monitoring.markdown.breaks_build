@@ -296,7 +296,8 @@ The copy rule attempts to copy the database to some file in a safekeeping direct
 
 Finally, in order to make this copy, you must, of course, grant access to the database in by granting access to the database in a bundle of server promises:
 
-bundle server access_rules()
+```cf3
+bundle server my_access_rules()
 {
 vars:
 
@@ -317,6 +318,8 @@ access:
      handle => "grant_hash_tables",
     admit   => { @(acl) },
     maproot => { @(acl) };
+}
+```
 
 Let us now consider what happens if an attacker changes a file an edits the checksum database. Each of the four hosts that has been designated a neighbour will attempt to update their own copy of the database. If the database has been tampered with, they will detect a change in the hashes of the remote copy versus the original. The file will therefore be copied.
 
