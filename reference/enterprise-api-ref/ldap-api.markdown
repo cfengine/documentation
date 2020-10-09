@@ -69,6 +69,8 @@ HTTP 200 Ok
     The base distinguished name is the base distinguished name you'd like to perform operations on. An example base DN would be DC=corp,DC=acme,DC=org.
 * **login_attribute**
     Login attribute like cn or uid
+* **group_attribute**
+    Group attribute (e.g. memberOf in Active Directory). Required for [LDAP roles syncing][Settings#LDAP groups syncing] with internal roles.
 * **port**
     The port option is used for authenticating and binding to your AD server. The default ports are already used for non SSL and SSL connections (389 and 636).
 * **use_ssl**
