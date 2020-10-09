@@ -5,14 +5,14 @@ published: true
 tags: [reference, communication functions, functions, iprange]
 ---
 
-[%CFEngine_function_prototype(range, interface)%]
+[%CFEngine_function_prototype(range, optional_interface)%]
 
 **Description:** Returns whether the current host lies in the range of
 IP addresses specified, optionally checking only `interface`.
 
 Pattern matching based on IP addresses.
 
-[%CFEngine_function_attributes(range, interface)%]
+[%CFEngine_function_attributes(range, optional_interface)%]
 
 **Example:**
 
@@ -41,5 +41,7 @@ reports:
 
 **See Also:** `isipinsubnet()`, `host2ip()`, `ip2host()`
 
-**History:** The optional `interface` parameter was introduced in CFEngine 3.9.
+**History:**
+
+- Optional `interface` parameter introduced in CFEngine 3.9.
 
