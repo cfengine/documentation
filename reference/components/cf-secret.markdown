@@ -76,3 +76,6 @@ No difference
 
 [%CFEngine_include_example(cf-secret.cf, #\+begin_src\s+static_example_output\s*, .*end_src)%]
 
+**History:**
+
+* Introduced in 3.16.0, 3.15.3
