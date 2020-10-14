@@ -27,7 +27,7 @@ The bundle is defined like this:
 
 [%CFEngine_include_example(mustache_template_motd.cf)%]
 
-Example run:
+**Example run:**
 
 ```console
 root@debian8:~/core/examples# cf-agent -KIf ./mustache_template_motd.cf; cat /etc/motd
