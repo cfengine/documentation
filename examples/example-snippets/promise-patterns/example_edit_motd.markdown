@@ -27,37 +27,26 @@ The bundle is defined like this:
 
 [%CFEngine_include_example(mustache_template_motd.cf)%]
 
-Here is the mustache:
-
-{% raw %}
-[%CFEngine_include_example(mustache_template_motd.cf.mustache)%]
-{% endraw %}
-
 Example run:
 
 ```console
-root@debian8:~/core/examples# cf-agent --no-lock --bundlesequence motd --define DEBUG_motd --file ./mustache_template_motd.cf
-    info: Using command line specified bundlesequence
-R: 3.7.2 is the detected version
-R: debian8 is the detected hostname
-R: 10.100.251.53 is the ipv4 address for debian8
-R: Policy Client is the detected role for debian8
-R: 20 packages can be updated
-R: This host is managed by root@localhost
-root@debian8:~/core/examples# cat /etc/motd
- WARNING Environment Unknown
-      ¤¤¤
-      ¤¤¤
-      ¤¤¤	 Welcome into debian8
+root@debian8:~/core/examples# cf-agent -KIf ./mustache_template_motd.cf; cat /etc/motd
+    info: Updated rendering of '/etc/motd' from mustache template 'inline'
+    info: files promise '/etc/motd' repaired
+# Managed by CFEngine
+WARNING: Environment unknown (missing environment semaphores)
+  ***
+  ***    Welcome to nickanderson-thinkpad-w550s
+  ***
 
-    ¤ ¤¤¤ ¤      This system is controlled by
-    ¤ ¤¤¤ ¤      CFEngine 3.8.0
-    ¤ ¤¤¤ ¤	 And is a Policy Client
-    ¤     ¤
-      ¤¤¤
-      ¤ ¤	
-      ¤ ¤	 Host IP 10.100.251.53
-      ¤ ¤	 20 package updates available.
-                 Support Contact:
-                   - root@localhost
+* *** *      CFEngine Role: Policy Client
+* *** *      CFEngine Version:3.17.0
+* *** *
+*     *      Host IP: 192.168.42.189
+  ***        No package updates available or status unknown.
+  * *
+  * *
+  * *
+             For support contact:
+               - root@localhost
 ```
