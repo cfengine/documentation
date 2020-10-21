@@ -152,6 +152,8 @@ and resume being collected from after being deleted.
 * **context-include** *(comma delimited string of regular expression strings)*
 * **format** *(string)*
     Output format. Default value is `json`. Allowed values: `json`, `yaml`.
+* **withInventory** *(boolean)*
+    Include inventory data to the API response. Default value is `false`. Allowed values: `true`, `false`  
     
 **CURL unfiltered request example**
 
@@ -163,36 +165,60 @@ curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class
 
 ```
 {
-    "10_0_2_15": [
-        "ubuntu-xenial.com"
-    ],
-    "127_0_0_1": [
-        "ubuntu-xenial.com"
-    ],
-    "172_28_128_3": [
-        "ubuntu-xenial.com"
-    ],
-    "ubuntu_16": [
-        "ubuntu-xenial.com",
-        "example.com"
-    ]
+    "10_0_2_15": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    },
+    "127_0_0_1": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    },
+    "ubuntu_16": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    }
 }
 ```
 
-**CURL filtered request example**
+**CURL request with inventory data example**
 
 ```
-curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class?context-include=172_.*
+curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class?withInventory=true
 ```
 
 **Example response:**
 
 ```
 {
-    "172_.*": [
-        "example.com",
-        "vpn.example.com"
-    ]
+    "_meta": {
+        "hostvars": {
+            "ubuntu-xenial": {
+                "CFEngine Inventory": {
+                    "OS": "Ubuntu 16.04.6 LTS",
+                    "OS type": "linux",
+                    "Timezone": "UTC"
+                }
+            }
+        }
+    },
+    "10_0_2_15": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    },
+    "127_0_0_1": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    },
+    "ubuntu_16": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    }
 }
 ```
 
