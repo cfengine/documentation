@@ -33,8 +33,8 @@ processes:
 commands:
 
    "/var/cfengine/bin/$(component)"
-       ifvarclass => canonify("start_$(component)"); # Evaluate the class "start_<component>", CFEngine will run
-                                                   # the command if "start_<component> is set.
+       if => canonify("start_$(component)"); # Evaluate the class "start_<component>", CFEngine will run
+                                             # the command if "start_<component> is set.
 
 }
 ```

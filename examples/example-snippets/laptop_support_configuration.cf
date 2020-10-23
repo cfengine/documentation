@@ -65,7 +65,7 @@ bundle agent main
 
   commands:
       "$(sys.workdir)/bin/$(component)"
-      ifvarclass => canonify("start_$(component)");
+      if => canonify("start_$(component)");
 }
 #######################################################
 # Backup

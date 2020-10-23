@@ -16,6 +16,6 @@ bundle agent CFEngine_processes
       "$(sys.workdir)/bin/$(component)"
 
       comment => "Make sure server parts of CFEngine are running",
-      ifvarclass => canonify("start_$(components)");
+      if => canonify("start_$(components)");
 
 }

@@ -23,7 +23,7 @@ bundle agent hand_edited_template
 
       comment => "Update the company document repository including manuals to a local copy",
       contain => silent_in_dir("$(masterfiles)/trunk"),
-      ifvarclass => canonify("$(policy_server)");
+      if => canonify("$(policy_server)");
 
 }
 ```
