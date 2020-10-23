@@ -2,13 +2,12 @@ bundle agent hand_edited_template
 {
   vars:
 
-      "masterfiles"   string => "/mysite/masterfiles";
-      "policy_server" string => "policy_host.domain.tld";
+    "masterfiles"   string => "/mysite/masterfiles";
+    "policy_server" string => "policy_host.domain.tld";
 
   files:
 
-      "/etc/hosts"
-
+    "/etc/hosts"
       comment => "Synchronize hosts with a hand-edited template in svn",
       perms => m("644"),
       create => "true",
@@ -18,9 +17,7 @@ bundle agent hand_edited_template
 
   commands:
 
-
-      "/usr/bin/svn update"
-
+    "/usr/bin/svn update"
       comment => "Update the company document repository including manuals to a local copy",
       contain => silent_in_dir("$(masterfiles)/trunk"),
       if => canonify("$(policy_server)");

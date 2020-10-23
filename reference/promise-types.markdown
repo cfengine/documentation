@@ -973,7 +973,6 @@ such characters.
   access:
 
       "/source"
-
         handle  => "update_rule",
         admit   => { "127.0.0.1" };
 ```
@@ -1006,7 +1005,6 @@ The generic example has the form:
   promise-type:
 
       "promiser"
-
         if => "$(program)_running|($(program)_notfoundHr12)";
 ```
 
@@ -1044,7 +1042,6 @@ and classes. For example:
   commands:
 
       "/var/cfengine/bin/$(component)"
-
         if => canonify("start_$(component)");
 ```
 

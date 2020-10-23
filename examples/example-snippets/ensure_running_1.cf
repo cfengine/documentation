@@ -2,19 +2,17 @@ bundle agent CFEngine_processes
 {
   vars:
 
-      "components" slist => { "cf-execd", "cf-monitord", "cf-serverd", "cf-hub" };
+    "components" slist => { "cf-execd", "cf-monitord", "cf-serverd", "cf-hub" };
 
   processes:
 
-      "$(components)"
-
+    "$(components)"
       comment => "Make sure server parts of CFEngine are running",
       restart_class => canonify("start_$(component)");
 
   commands:
 
-      "$(sys.workdir)/bin/$(component)"
-
+    "$(sys.workdir)/bin/$(component)"
       comment => "Make sure server parts of CFEngine are running",
       if => canonify("start_$(components)");
 
