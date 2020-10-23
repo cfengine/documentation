@@ -6,42 +6,42 @@
 
 body common control
 {
-      bundlesequence  => {
-                           "update",
-                           "garbage_collection",
-                           "main",
-                           "backup",
-      };
-      inputs          => {
-                           "update.cf",
-                           "site.cf",
-                           "library.cf"
-      };
+    bundlesequence  => {
+        "update",
+        "garbage_collection",
+        "main",
+        "backup",
+    };
+    inputs => {
+        "update.cf",
+        "site.cf",
+        "library.cf"
+    };
 }
 #######################################################
 
 body agent control
 {
-      # if default runtime is 5 mins we need this for long jobs
-      ifelapsed => "15";
+    # if default runtime is 5 mins we need this for long jobs
+    ifelapsed => "15";
 }
 #######################################################
 
 body monitor control
 {
-      forgetrate => "0.7";
+    forgetrate => "0.7";
 }
 #######################################################
 
 body executor control
 {
-      splaytime => "1";
-      mailto => "mark@iu.hio.no";
-      smtpserver => "localhost";
-      mailmaxlines => "30";
-      # Instead of a separate update script, now do this
+    splaytime => "1";
+    mailto => "mark@iu.hio.no";
+    smtpserver => "localhost";
+    mailmaxlines => "30";
+    # Instead of a separate update script, now do this
 
-      exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent";
+    exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent";
 }
 #######################################################
 # General site issues can be in bundles like this one
@@ -50,22 +50,22 @@ body executor control
 bundle agent main
 {
   vars:
-      "component" slist => { "cf-monitord", "cf-serverd" };
+    "component" slist => { "cf-monitord", "cf-serverd" };
       # - - - - - - - - - - - - - - - - - - - - - - - -
 
   files:
-      "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
+    "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
       create        => "true",
       edit_line     => resolver,
       edit_defaults => def;
 
   processes:
-      "$(component)" restart_class => canonify("start_$(component)");
+    "$(component)" restart_class => canonify("start_$(component)");
       # - - - - - - - - - - - - - - - - - - - - - - - -
 
   commands:
-      "$(sys.workdir)/bin/$(component)"
-      ifvarclass => canonify("start_$(component)");
+    "$(sys.workdir)/bin/$(component)"
+      if => canonify("start_$(component)");
 }
 #######################################################
 # Backup
@@ -74,7 +74,7 @@ bundle agent main
 bundle agent backup
 {
   files:
-      "/home/backup"
+    "/home/backup"
       copy_from => cp("/home/mark"),
       depth_search => recurse("inf"),
       file_select => exclude_files,
@@ -87,7 +87,7 @@ bundle agent backup
 bundle agent garbage_collection
 {
   files:
-      "$(sys.workdir)/outputs"
+    "$(sys.workdir)/outputs"
       delete => tidy,
       file_select => days_old("3"),
       depth_search => recurse("inf");

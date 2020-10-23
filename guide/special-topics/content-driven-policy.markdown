@@ -55,7 +55,7 @@ bundle agent service_example
       service_policy     => "stop",
       service_method     => force_deps,
       action             => policy("fix"),
-      ifvarclass         => "windows";
+      if                 => "windows";
 
     "ALG"
       comment            => "Check services status of ALG",
@@ -63,7 +63,7 @@ bundle agent service_example
       service_policy     => "start",
       service_method     => force_deps,
       action             => policy("warn"),
-      ifvarclass         => "windows";
+      if                 => "windows";
 
     "RemoteRegistry"
       comment            => "Check services status of ALG",
@@ -71,7 +71,7 @@ bundle agent service_example
       service_policy     => "start",
       service_method     => force_deps,
       action             => policy("fix"),
-      ifvarclass         => "Windows_Server_2008";
+      if                 => "Windows_Server_2008";
 }
 ```
 

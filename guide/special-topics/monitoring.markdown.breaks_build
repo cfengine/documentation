@@ -548,7 +548,7 @@ vars:
 
 commands:
     "$(m[$(watch_milter.milter)])"
-	ifvarclass => "$(watch_milter.milter)_high";
+      if => "$(watch_milter.milter)_high";
 }
 
 Next: Threshold monitoring, Previous: Milter, Up: Monitoring customization
@@ -645,7 +645,7 @@ classes:
 
 reports:
 
-  "Help $(probes)!" ifvarclass => "$(probes)_threshold";
+  "Help $(probes)!" if => "$(probes)_threshold";
 
 Previous: Threshold monitoring, Up: Monitoring customization
 Summary Monitoring

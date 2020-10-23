@@ -3368,7 +3368,7 @@ extension).
         "/etc/postfix/alias.cdb"
            create => "true",        # Must have this!
            transformer => "/usr/sbin/postalias /etc/postfix/alias",
-           ifvarclass => "do_update";
+           if => "do_update";
 ```
 
 In the second example, the promise is made on the file *resulting from*

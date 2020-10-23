@@ -99,7 +99,7 @@ bundle agent run
 
   reports:
       "keys = $(keys)";
-      "I am in class $(keys)" ifvarclass => $(keys);
+      "I am in class $(keys)" if => $(keys);
 }
 ```
 

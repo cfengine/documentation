@@ -14,7 +14,7 @@ the [Promise Types and Attributes] page. The common attributes are as follows:
 
 #### [handle][Promise Types and Attributes#handle]
 
-#### [ifvarclass][Promise Types and Attributes#ifvarclass]
+#### [if][Promise Types and Attributes#if]
 
 #### [meta][Promise Types and Attributes#meta]
 

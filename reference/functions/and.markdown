@@ -18,13 +18,12 @@ classes.
 ```cf3
     commands:
       "/usr/bin/generate_config $(config)"
-        ifvarclass => and( "generating_configs",
-                           not(fileexists("/etc/config/$(config)"))
-                         );
+        if => and( "generating_configs",
+                   not(fileexists("/etc/config/$(config)"))
+                 );
 ```
 
-**Notes:** Introduced primarily for use with `ifvarclass`, `if`, and `unless`
-promise attributes.
+**Notes:** Introduced primarily for use with `if` and `unless` promise attributes.
 
 **See also:** `and`, `or`, `not`
 

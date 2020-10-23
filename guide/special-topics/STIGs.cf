@@ -470,7 +470,7 @@ bundle agent STIGs
          comment => "CAT III, (Previously - G229) UNIX STIG: 3.3 Root Account",
           handle => "stigs_files_redhat_5_usr_bin_root_shells",
           rename => disable,
-      ifvarclass => "have_usr_partitioned.have_usr_$(shells)";
+              if => "have_usr_partitioned.have_usr_$(shells)";
 
    "$(usr_dir)/$(shells).cfdisabled" -> { "GEN001080" }
       comment => "CAT III, (Previously - G229) UNIX STIG: 3.3 Root Account",
@@ -592,7 +592,7 @@ bundle agent STIGs
           handle => "stigs_files_redhat_5_remove_and_symlink_hosts_related_files",
           delete => tidy,
        link_from => ln_s("/dev/null"),
-      ifvarclass => canonify("do_$(hosts_related_files)");  
+              if => canonify("do_$(hosts_related_files)");
 
    "$(pam_files)" -> { "GEN002100" }
         comment => "CAT II UNIX STIG: 3.9 Trusted System/System Access Control Files",
@@ -632,7 +632,7 @@ bundle agent STIGs
          comment => "CAT I & II (Previously - G649, G092) UNIX STIG: 3.15 Default Accounts, 4.8.1 FTP Configuration",
           handle => "stigs_files_redhat_5_default_accounts_shell",
        edit_line => set_user_field("$(allusers_not_root)","7","/sbin/nologin"),
-      ifvarclass => "$(allusers_not_root)_less_than_500";
+              if => "$(allusers_not_root)_less_than_500";
 
    "/etc/passwd" -> { "GEN002640" }
          comment => "CAT II (Previously - G092) UNIX STIG: 3.15 Default Accounts",
@@ -819,7 +819,7 @@ bundle agent STIGs
          comment => "CAT II (Previously - G141) UNIX STIG: 4.8.1 FTP Configuration",
           handle => "stigs_files_redhat_5_editing_etc_ftpusers",
        edit_line => maintain_ftpusers("$(allusers_not_root)"),
-      ifvarclass => "$(allusers_not_root)_less_than_500";
+              if => "$(allusers_not_root)_less_than_500";
 
    "/etc/snmp/snmpd.conf" -> { "GEN005320", "GEN005360" }
       comment => "CAT II (Previously - G225) UNIX STIG: 4.13 Simple Network Management Protocol (SNMP)",
@@ -914,7 +914,7 @@ bundle agent STIGs
          comment => "CAT II (Previously - L032) UNIX STIG: 12.10 X Windows",
           handle => "stigs_files_redhat_5_etc_gdm_custom_conf",
        edit_line => maintain_gdm_custom_conf,
-      ifvarclass => "have_xwindows";
+              if => "have_xwindows";
 
 #
 
@@ -925,12 +925,12 @@ bundle agent STIGs
    "/sbin/chkconfig $(preferred_services) on" -> { "GEN002660" }
          comment => "CAT II (Previously - G093) UNIX STIG: 3.16 Audit Requirements",
           handle => "stigs_commands_redhat_5_enable_preferred_services",
-      ifvarclass => "$(preferred_services)_off";
+              if => "$(preferred_services)_off";
 
    "/sbin/chkconfig $(unneeded_services) off" -> { "GEN003700", "GEN003860" }
          comment => "CAT II (Previously - V046) UNIX STIG: 4 Network Services",
           handle => "stigs_commands_redhat_5_disable_unneeded_services",
-      ifvarclass => "$(unneeded_services)_on";
+              if => "$(unneeded_services)_on";
 
   restart_syslog::
 
@@ -1036,7 +1036,7 @@ bundle agent disable_accounts_without_passwd(string)
         comment => "Set user shell /sbin/nologin",
          handle => "disable_accounts_without_passwd_files_etc_passwd",
       edit_line => set_user_field("$(name[0])","7","/sbin/nologin"),
-     ifvarclass => "no_passwd";
+             if => "no_passwd";
 }
 
 # GEN002420
@@ -1060,19 +1060,19 @@ bundle agent filesystem_mounted_with_nosuid(path,string)
  files:
   "$(path)"
      edit_line => set_fstab_field("/home","4","$(option[1]),nosuid,nodev,acl"),
-     ifvarclass => "have_home.no_acl";
+            if => "have_home.no_acl";
   "$(path)"
      edit_line => set_fstab_field("/boot","4","$(option[1]),nosuid,acl"),
-     ifvarclass => "have_boot.no_acl";
+            if => "have_boot.no_acl";
   "$(path)"
      edit_line => set_fstab_field("/sys","4","$(option[1]),nosuid,acl"),
-     ifvarclass => "have_sys.no_acl";
+            if => "have_sys.no_acl";
   "$(path)"
      edit_line => set_fstab_field("/usr","4","$(option[1]),nodev,acl"),
-     ifvarclass => "have_usr.no_acl";
+            if => "have_usr.no_acl";
   "$(path)"
      edit_line => set_fstab_field("/usr/local","4","$(option[1]),nodev,acl"),
-     ifvarclass => "have_usr_local.no_acl";
+            if => "have_usr_local.no_acl";
 }
 
 # GEN004828, GEN004840

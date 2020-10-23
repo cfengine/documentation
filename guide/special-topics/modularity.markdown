@@ -353,7 +353,7 @@ commands:
   "$(res.start[$(service)])"
 
            comment => "Method for starting this service",
-        ifvarclass => canonify("$(service)_restart");
+                if => canonify("$(service)_restart");
 
 }
 ```
@@ -1345,7 +1345,7 @@ files:
         comment => "Unleash the dragon",
       rename => to("/tmp/enter_the_dragon"),
         classes => if_repaired("dispatch_dragon_$(satellite)"),
-     ifvarclass => "$(dragons_lair)";
+             if => "$(dragons_lair)";
 
   # if we are the dragon's lair, welcome the dragon back, shooed from the satellite
 
@@ -1354,7 +1354,7 @@ files:
         comment => "Returning from a visit to a satellite",
       copy_from => secure_cp("/tmp/shoo_dragon_$(predecessor)","$(predecessor)"),
         classes => if_repaired("dispatch_dragon_$(satellite)"),
-     ifvarclass => "$(dragons_lair)";
+             if => "$(dragons_lair)";
 
   # If we are a satellite, receive the dragon from its lair
 
@@ -1362,7 +1362,7 @@ files:
         comment => "Wait for our cue or relay/conductor baton",
       copy_from => secure_cp("/tmp/dragon_$(satellite)","$(dragons_lair)"),
         classes => if_repaired("cue_action_on_$(satellite)"),
-     ifvarclass => "$(satellite)";
+             if => "$(satellite)";
 
 methods:
 
@@ -1370,13 +1370,13 @@ methods:
         comment => "Edit the load balancer?",
       usebundle => switch_satellite(" -> Send dragon to $(satellite)"),
         classes => if_repaired("send_the_dragon_to_$(satellite)"),
-     ifvarclass => "dispatch_dragon_$(satellite)";
+             if => "dispatch_dragon_$(satellite)";
 
    "dragon visits"
         comment => "One off activity that the nodes carry out while the dragon visits",
       usebundle => $(method)("$(satellite)"),
         classes => if_repaired("send_the_dragon_back_from_$(satellite)"),
-     ifvarclass => "cue_action_on_$(satellite)";
+             if => "cue_action_on_$(satellite)";
 
 
 files:
@@ -1387,7 +1387,7 @@ files:
          create => "true",
         comment => "Add our signature to the dragon's tail",
       edit_line => sign_visitor_book("Dragon returned from $(predecessor)"),
-     ifvarclass => "send_the_dragon_to_$(satellite)";
+             if => "send_the_dragon_to_$(satellite)";
 
    # Satellite signs the book and shoos dragon for hub to collect
 
@@ -1395,7 +1395,7 @@ files:
          create => "true",
         comment => "Add our signature to the dragon's tail",
       edit_line => sign_visitor_book("Dragon visited $(satellite) and did: $(method)"),
-     ifvarclass => "send_the_dragon_back_from_$(satellite)";
+             if => "send_the_dragon_back_from_$(satellite)";
 
 reports:
 

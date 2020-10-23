@@ -21,11 +21,10 @@ any argument evaluates to true.
 ```cf3
 commands:
   "/usr/bin/generate_config $(config)"
-    ifvarclass => not( fileexists("/etc/config/$(config)") );
+    if => not( fileexists("/etc/config/$(config)") );
 ```
 
-**Notes:** Introduced primarily for use with `ifvarclass`, `if`, and `unless`
-promise attributes.
+**Notes:** Introduced primarily for use with `if` and `unless` promise attributes.
 
 **See also:** `and`, `or`, `not`
 
