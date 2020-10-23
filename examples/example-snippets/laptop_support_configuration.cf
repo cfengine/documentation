@@ -60,12 +60,12 @@ bundle agent main
       edit_defaults => def;
 
   processes:
-    "$(component)" restart_class => canonify("start_$(component)");
+    "$(component)" restart_class => canonify("$(component)_not_running");
       # - - - - - - - - - - - - - - - - - - - - - - - -
 
   commands:
     "$(sys.workdir)/bin/$(component)"
-      if => canonify("start_$(component)");
+      if => canonify("$(component)_not_running");
 }
 #######################################################
 # Backup

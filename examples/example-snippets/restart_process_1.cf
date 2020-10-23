@@ -20,11 +20,11 @@ bundle agent process_restart
   processes:
 
     "$(component)"
-      restart_class => canonify("start_$(component)");
+      restart_class => canonify("not_running_$(component)");
 
   commands:
 
     "/var/cfengine/bin/$(component)"
-      if => canonify("start_$(component)");
+      if => canonify("not_running_$(component)");
 
 }
