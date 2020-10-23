@@ -553,7 +553,7 @@ classes:
 
 reports:
 
-  "Help me $(probes)!" ifvarclass => "$(probes)_threshold";
+  "Help me $(probes)!" if => "$(probes)_threshold";
 
 The value of the CFEngine's component integration is to have transparent access to the detailed running state of the system at all times. It is possible to defined quite complex policies, and to respond to incidents based on the specific data discovered.
 
@@ -870,7 +870,7 @@ vars:
 
 commands:
     "$(m[$(watch_milter.milter)])"
-	ifvarclass => "$(watch_milter.milter)_high";
+      if => "$(watch_milter.milter)_high";
 }
 
 Previous: Milter, Up: Log scanning

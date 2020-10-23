@@ -273,7 +273,7 @@ bundle agent example
       "/usr/bin/git"
         args    => "pull",
         contain => in_dir("/var/srv/myrepo"),
-        ifvarclass => "redhat",
+        if      => "redhat",
         handle  => "example_commands_dev_redhat_git_pull";
 }
 ```
