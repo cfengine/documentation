@@ -26,7 +26,7 @@ bundle common def
 
       "mailto"
         string => "root@$(def.domain)",
-        ifvarclass => not(isvariable("mailto"));
+        if => not(isvariable("mailto"));
 
   # ...
 }

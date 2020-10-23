@@ -28,7 +28,7 @@ a list, but files in the list may have the same name when
 
        "/var/cfengine/bin/$(component)"
 
-           ifvarclass => canonifyuniquely("start_$(component)");
+           if => canonifyuniquely("start_$(component)");
 ```
 
 **See also:** [canonify()][canonify]).

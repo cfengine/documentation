@@ -337,9 +337,9 @@ variables:
 
 
 
-As you saw above, the class predicate `if` (alias of `ifvarclass`;
-`unless` is also available) can be used if variable class expressions
-are required. It is `AND`ed with the normal class expression, and is
+As you saw above, the class predicate `if` (`unless` is also available)
+can be used if variable class expressions are required.
+It is `AND`ed with the normal class expression, and is
 evaluated together with the promise. Both may contain variables as long
 as the resulting expansion is a legal class expression.
 
@@ -364,15 +364,15 @@ as the resulting expansion is a legal class expression.
 
         Morning.italy::
           "Good morning from Italy",
-            ifvarclass => "$(all_cities)";
+            if => "$(all_cities)";
 
         Afternoon.germany::
           "Good afternoon from Germany",
-            ifvarclass => "$(all_cities)";
+            if => "$(all_cities)";
 
         france::
           "Hello from France",
-            ifvarclass => "$(all_cities)";
+            if => "$(all_cities)";
 
         france::
           "IMPOSSSIBLE!  THIS WILL NOT PRINT!!!",
@@ -381,8 +381,8 @@ as the resulting expansion is a legal class expression.
         "$(all_cities)"::
           "Hello from $(all_cities)";
 
-        "Hello from $(all_cities), ifvarclass edition",
-          ifvarclass => "$(all_cities)";
+        "Hello from $(all_cities), if edition",
+          if => "$(all_cities)";
     }
 ```
 
@@ -392,18 +392,18 @@ Example Output:
     cf-agent -Kf example.cf -D lawrence -b example
     R: It's Tue May 28 16:47:33 2013 here
     R: Hello from lawrence
-    R: Hello from lawrence, ifvarclass edition
+    R: Hello from lawrence, if edition
 
     cf-agent -Kf example.cf -D paris -b example
     R: It's Tue May 28 16:48:18 2013 here
     R: Hello from France
     R: Hello from paris
-    R: Hello from paris, ifvarclass edition
+    R: Hello from paris, if edition
 
     cf-agent -Kf example.cf -D milan -b example
     R: It's Tue May 28 16:48:40 2013 here
     R: Hello from milan
-    R: Hello from milan, ifvarclass edition
+    R: Hello from milan, if edition
 
     cf-agent -Kf example.cf -D germany -b example
     R: It's Tue May 28 16:49:01 2013 here
@@ -412,7 +412,7 @@ Example Output:
     R: It's Tue May 28 16:51:53 2013 here
     R: Good afternoon from Germany
     R: Hello from berlin
-    R: Hello from berlin, ifvarclass edition
+    R: Hello from berlin, if edition
 ```
 
 
