@@ -20,8 +20,12 @@ tags: [reference, system functions, functions, getusers]
 [%CFEngine_include_snippet(getusers.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **Notes:**
-This function is currently only available on Unix-like systems.
 
-**History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010).
+* This function is currently only available on Unix-like systems.
+* This function will return both local and remote (for example, users defined in an external directory like LDAP) users on a system.
+
+**History:**
+
+* Introduced in CFEngine 3.1.0b1, CFEngine Nova/Enterprise 2.0.0b1 (2010).
 
 **See also:** [`getuserinfo()`][getuserinfo], [`users`][users].
