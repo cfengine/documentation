@@ -142,11 +142,11 @@ bundle agent process_restart
 
   processes:
     "$(component)"
-      restart_class => canonify("start_$(component)");
+      restart_class => canonify("$(component)_not_running");
 
   commands:
     "/var/cfengine/bin/$(component)"
-      if => canonify("start_$(component)");
+      if => canonify("$(component)_not_running");
 }
 ########################################################
 #
@@ -170,10 +170,10 @@ bundle agent testbundle
     cfservd_out_of_control::
       "cfservd"
         signals       => { "stop" , "term" },
-        restart_class => "start_cfserv";
+        restart_class => "stopped_out_of_control_cf_serverd";
 
   commands:
-    start_cfserv::
+    stopped_out_of_control_cf_serverd::
       "/usr/local/sbin/cfservd";
 }
 ########################################################

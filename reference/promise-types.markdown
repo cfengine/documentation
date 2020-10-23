@@ -1037,12 +1037,12 @@ and classes. For example:
 
   processes:
 
-      "$(component)" restart_class => canonify("start_$(component)");
+      "$(component)" restart_class => canonify("$(component)_not_runnning");
 
   commands:
 
       "/var/cfengine/bin/$(component)"
-        if => canonify("start_$(component)");
+        if => canonify("$(component)_not_runnning");
 ```
 
 **Notes:**
