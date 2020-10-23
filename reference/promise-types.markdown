@@ -985,8 +985,7 @@ rather than its content.
 ### if
 
 **Description:** Class expression to further restrict the promise context.
-Previously called `ifvarclass`, and for backward compatibility, both names
-work.
+Previously called `ifvarclass`.
 
 This is an additional class expression that will be evaluated after the
 `class::` classes have selected promises. It is provided in order to enable a
@@ -1081,12 +1080,9 @@ skip.
 
 ### ifvarclass
 
-**Description:** Class expression to further restrict the promise context. This
-an exact alias for `if`; see its description for details.
+**Description:** Deprecated, use [`if`][Promise Types and Attributes#if] instead.
 
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
+**History:** New name `if` was introduced in 3.7.0, `ifvarclass` deprecated in 3.17.0.
 
 ### meta
 
@@ -1145,7 +1141,7 @@ If mention is made of "tags" on a *bundle*, what is actually meant is meta *prom
 ### unless
 
 **Description:** Class expression to further restrict the promise context. This
-is exactly like `if`(`ifvarclass`) but logically inverted; see its description
+is exactly like `if` but logically inverted; see its description
 for details. For any case where `if` would skip the promise, unless should
 evaluate the promise.
 
