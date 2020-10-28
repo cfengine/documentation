@@ -405,6 +405,42 @@ bundle agent example
 
 * Requires Python version 2 or 3 to be installed on the host.
 
+* If ```policy => "latest"``` *and* ```version``` is set this package module will downgrade the promised package if necessary.
+
+  ```console
+  [root ~]# yum --show-duplicates list screen
+  Loaded plugins: fastestmirror
+  Loading mirror speeds from cached hostfile
+   * base: centos.mirror.constant.com
+   * epel: epel.mirror.constant.com
+   * extras: mirror.ette.biz
+   * updates: mirror.trouble-free.net
+  Installed Packages
+  screen.x86_64            4.1.0-0.25.20120314git3c2946.el7             @base     
+  Available Packages
+  screen.x86_64            4.1.0-0.19.20120314git3c2946.el7             local-repo
+  screen.x86_64            4.1.0-0.25.20120314git3c2946.el7             base      
+  ```
+
+  Policy with promise that old version of screen is installed.
+
+  ```cf3
+  bundle agent example_yum_downgrades_if_necessary
+  {
+    packages:
+      redhat_7|centos_7::
+        "screen"
+          policy => "present",
+          version => "4.1.0-0.19.20120314git3c2946.el7";
+  }
+  ```
+
+  Executing policy and the version of screen installed after policy run.
+
+  ```console
+  [root ~]# cf-agent -Kb example_yum_downgrades_if_necessary; rpm -q screen
+  screen-4.1.0-0.19.20120314git3c2946.el7.x86_64
+  ```
 
 **History:**
 
