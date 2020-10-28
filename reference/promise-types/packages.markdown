@@ -350,60 +350,61 @@ body package_module yum_all_repos
 ## Package modules out-of-the-box
 ### yum
 
-Manage packages using ```yum```.
+Manage packages using ```yum```. This is the [default package module](lib/packages.cf#package_module_knowledge) for Red Hat, CentOS and Amazon Linux.
 
-**Example:**
+**Examples:**
 
-Example showing file based package source.
+File based package source.
 
 ```cf3
   packages:
+    redhat|centos|amazon_linux::
       "/mnt/nfs/packages/httpd-2.2.22.x86_64.rpm"
-        policy => "present",
-        package_module => yum;
+        policy => "present";
 ```
 
-Example showing repository based package source.
+Repository based package source with a specific version of the package.
 
 ```cf3
   packages:
+    redhat|centos|amazon_linux::
       "httpd"
         policy => "present",
-        package_module => yum,
         version => "2.2.22";
 ```
 
-Example showing how to enable a specific repository for a specific promise.
+Enable a specific repository for a specific promise.
 
 ```cf3
 bundle agent example
 {
   packages:
 
-    # Enable the EPEL repo when making sure git is installed
-    # and up to date.
+    redhat|centos|amazon_linux::
+      # Enable the EPEL repo when making sure git is installed
+      # and up to date.
 
-    "git"
-        policy => "present",
-        version => "latest",
-        package_module => yum,
-        options => { "enablerepo=EPEL" };
+      "git"
+         policy => "present",
+         version => "latest",
+         options => { "enablerepo=EPEL" };
 
-    # Only consider updates from the main repositories for
-    # httpd and disable all other repositories
+      # Only consider updates from the main repositories for
+      # httpd and disable all other repositories
 
-     "httpd"
-        policy => "present",
-        version => "latest",
-        package_module => yum,
-        options => { "disablerepo=* enablerepo=UPDATES" };
+      "httpd"
+         policy => "present",
+         version => "latest",
+         options => { "disablerepo=* enablerepo=UPDATES" };
 }
 ```
 
 **Notes:**
 
 * Supports file path and repository sourced packages.
-* Requires Python version 2 to be installed on the host.
+
+* Requires Python version 2 or 3 to be installed on the host.
+
 
 **History:**
 
