@@ -1102,8 +1102,7 @@ required or available at all times. For example if there is a host specific data
 that each host attempts to copy this will allow you to not have many promise
 failures when a host does not have any data prepared for it.
 
-**See also:** [`seed_cp`][lib/files.cf#seed_cp] in the MPF,
-[`compare`][files#compare] in body `copy_from`
+**See also:** [`seed_cp`][lib/files.cf#seed_cp] in the MPF, [`compare`][files#compare] in body `copy_from`
 
 **History:**
 
