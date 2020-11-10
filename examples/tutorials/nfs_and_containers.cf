@@ -68,7 +68,7 @@ bundle agent install_wget
 bundle agent get_cfe_script
 {
   commands:
-    "/usr/bin/wget -nc -P /root http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-enterprise.sh";
+    "/usr/bin/wget -nc -P /root https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh";
 }
 
 bundle agent install_ssh_server_and_client
