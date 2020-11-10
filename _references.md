@@ -39,3 +39,4 @@
 [Inventory API]: reference-enterprise-api-ref-inventory.html
 [sys.uqhost]: reference-special-variables-sys.html#sys-uqhost
 [sys.policy_hub]: reference-special-variables-sys.html#sys-policy_hub
+[seed_cp]: reference-masterfiles-policy-framework-lib-files.html#seed_cp
