@@ -129,7 +129,7 @@ Run the following script on your designated Policy Server (hub), the virtual mac
 configured firewall from earlier steps:
 
 ```console
-$ wget http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-enterprise.sh && sudo bash ./quick-install-cfengine-enterprise.sh hub
+$ wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh && sudo bash ./quick-install-cfengine-enterprise.sh hub
 ```
 
 This script installs the latest CFEngine Enterprise Policy Server on your server machine.
@@ -158,7 +158,7 @@ Upon successful completion, a confirmation message appears: "Bootstrap to '172.3
 * Install CFEngine client version using the following:
 
 ```console
-$ wget http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-enterprise.sh && sudo bash ./quick-install-cfengine-enterprise.sh agent
+$ wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh && sudo bash ./quick-install-cfengine-enterprise.sh agent
 ```
 
 Note: The installation will work on 64-bit and 32-bit client machines (the host requires a 64-bit machine).
