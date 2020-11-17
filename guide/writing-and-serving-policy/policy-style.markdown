@@ -430,13 +430,78 @@ bundle agent old
                     };
 }
 ```
-## Automatic reindentation
+## Tooling
+
+Currently, there is no canonical policy linting or reformatting tool. There are a few different tools that can be useful apart from an [editor with syntax support](https://cfengine.com/cfengine-code-editors/) for achieving regular formatting.
+
+### cf-promises
+
+`cf-promises` can output the parsed policy using the ```--policy-output-format``` option. Beware, this will strip macros as they are done during parse time. 
+
+Example policy:
+
+```cf3
+bundle agent satellite_bootstrap_main
+{
+
+@if feature(this_is_not_the_feature_your_looking_for)
+   Hello there. 
+@endif
+
+  meta:
+
+    (!ubuntu&!vvlan&!role_satellite)::
+      "tags" slist => { "autorun" };
+
+  methods:
+
+      "bootstrap rhel7 servers to satellite every 24 hours"
+        usebundle => satellite_bootstrap,
+        action => if_elapsed(1440);
+
+}
+```
+
+Output the parsed policy in ```cf``` format:
+
+```console
+    cf-promises -f /tmp/example.cf --policy-output-format cf
+```
+
+Formatted parsed policy:
+
+```cf3
+bundle agent satellite_bootstrap_main()
+{
+meta:
+  (!ubuntu&!vvlan&!sarcrole_satellite)::
+    "tags"        slist =>  {"autorun"};
+
+methods:
+  any::
+    "bootstrap rhel7 servers to satellite every 24 hours"        usebundle => satellite_bootstrap,
+        action => if_elapsed("1440");
+
+
+}
+
+body file control()
+{
+  inputs =>  {"$(sys.libdir)/stdlib.cf"};
+
+}
+```
+
+### CFEngine beautifier
+
+Written as a package for the Sublime Text editor, the [CFEngine Beautifier](https://github.com/naksu/cfengine_beautifier) can also be used from the command line as a stand-alone tool.
+
+### reindent.pl
 
 [`reindent.pl`](https://github.com/cfengine/core/blob/master/contrib/reindent.pl)
-is available from the core repository. You can run `reindent.pl
-FILE1.cf FILE2.c FILE3.h` to reindent files, if you don't want to set
-up Emacs.  It will rewrite them with the new indentation, using Emacs
-in batch mode.
+is available from the contrib directory in the core repository. You can run
+`reindent.pl FILE1.cf FILE2.c FILE3.h` to reindent files, if you don't want to
+set up Emacs. It will rewrite them with the new indentation, using Emacs in
+batch mode.
 
-Some [editors](https://cfengine.com/cfengine-code-editors/) also have
-support for automatic re-indentation.
+
