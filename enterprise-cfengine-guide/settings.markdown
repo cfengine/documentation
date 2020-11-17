@@ -198,7 +198,19 @@ Mission portal can authenticate against an external directory.
 
 - Default roles for users is configured under [Role Management][Settings#Role Management].
 
-**See Also:** [LDAP authentication REST API][LDAP authentication API]
+### LDAP groups syncing ###
+
+- Ldap group syncing can be turned on by clicking the corresponding checkbox
+    
+    - User group attribute must be provided to obtain groups from an LDAP user entity. 
+    The default value for Active Directory is `memberOf`. 
+    The group name will be taken from `cn` attribute
+    - List of groups to sync, names must match in LDAP/MP. Each role should be added on a new line.
+    - Click `Perform sync on every login` checkbox to synchronize user roles on every login, otherwise
+    roles will be assigned to a user only on sign-up (first login).
+    
+
+**See also:** [LDAP authentication REST API][LDAP authentication API]
 
 
 ## Role based access control ##
