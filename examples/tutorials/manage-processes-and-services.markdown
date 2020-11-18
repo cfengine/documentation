@@ -36,7 +36,7 @@ bundle agent main
 }
 ```
 
-This example is designed to be run on an Ubuntu 12.04 system, and assumes the ntp package is already installed).
+This example is designed to be run on an Ubuntu 12.04 system, and assumes the ntp package is already installed.
 
 Let us quickly explain this code:
 
@@ -65,7 +65,6 @@ First, we verify that the ntpd process is not running:
 
 Then we run our CFEngine policy:
 
-
 ```console
 # cf-agent -f ./ensure_process.cf
 2014-03-20T06:33:56+0000   notice: /default/main/commands/'/etc/init.d/ntp start'[0]: Q: "...init.d/ntp star":  * Starting NTP server ntpd
@@ -73,7 +72,6 @@ Q: "...init.d/ntp star":    ...done.
 ```
 
 Finally, we verify that ntpd is now running on the system:
-
 
 ```console
 # ps axuww | grep ntp
