@@ -6,6 +6,8 @@ sorting: 3
 tags: [getting started, tutorial]
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BUajq2b081E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Package management is a critical task for any system administrator. In this
 tutorial we will show you how easy it is to install, manage and remove packages
 using CFEngine.
