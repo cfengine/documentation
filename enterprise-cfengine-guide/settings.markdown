@@ -150,7 +150,7 @@ status (on or off).
 
 ## Version Control Repository ##
 
-![Version Control Repository](Settings-5.png)
+![Version Control Repository](settings-vcs.png)
 
 The repository holding the organization's masterfiles can be adjusted
 on the Version Control Repository screen.
