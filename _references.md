@@ -40,3 +40,5 @@
 [sys.uqhost]: reference-special-variables-sys.html#sys-uqhost
 [sys.policy_hub]: reference-special-variables-sys.html#sys-policy_hub
 [seed_cp]: reference-masterfiles-policy-framework-lib-files.html#seed_cp
+[Append to inputs used by main policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-main-policy
+[Append to inputs used by update policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-update-policy
