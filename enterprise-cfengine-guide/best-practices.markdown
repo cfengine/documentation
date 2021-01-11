@@ -58,7 +58,7 @@ infrastructure.
 
 ### How to enable it ###
 
-Follow detailed instructions in the [Policy Deployment][Hub Administration#Policy Deployment] guide.
+Follow detailed instructions in the [Policy Deployment][Policy Deployment] guide.
 
 ## Scalability ##
 
