@@ -14,7 +14,7 @@ modified to support any upstream versioning system.
 CFEngine Enterprise ships with tooling to assist in the automated deployment of
 policy from a version control system to `/var/cfengine/masterfiles` on the hub.
 
-# Ensure policy in upstream repository is current
+## Ensure policy in upstream repository is current
 
 This is critical. When you deploying policy, you **will** overwrite your current
 `/var/cfengine/masterfiles`. So take the current contents thereof and make sure
@@ -32,7 +32,7 @@ git commit -m 'Initial masterfiles check in'
 git push origin master
 ```
 
-# Requirements
+## Requirements
 
 You must have the following:
 
@@ -46,12 +46,12 @@ Then one of these combinations:
 
 The last option, a read-only login, is the best approach as it removes the possibility of write access if credentials are compromised. All of this information is kept secure by limiting access to `root` and `cfapache` users.
 
-# Configure the upstream VCS
+## Configure the upstream VCS
 
 To configure the upstream repository. You must provide the uri and a refspec (branch name usually).
 Credentials can be specified in several ways as mentioned above so pick your choice above and enter in only the needed information in the form.
 
-## Configuring upstream VCS via Mission Portal
+### Configuring upstream VCS via Mission Portal
 
 In the Mission Portal VCS integration panel. To access it, click on "Settings"
 in the top-left menu of the Mission Portal screen, and then select "Version
@@ -61,14 +61,14 @@ control repository".
 
 ![VCS settings screen](settings-vcs.png)
 
-## Configuring upstream VCS manually
+### Configuring upstream VCS manually
 
 The upstream VCS can be configured manually by modifying
 `/opt/cfengine/dc-scripts/params.sh`
 
 Remember that not all of the values must be specified.
 
-# Manually triggering a policy deployment
+## Manually triggering a policy deployment
 
 After the upstream VCS has been configured you can trigger a policy deployment
 manually by defining the `cfengine_internal_masterfiles_update` for a run of the
@@ -85,12 +85,12 @@ For example:
 
 This is useful if you would like more manual control of policy releases.
 
-# Configuring automatic policy deployments
+## Configuring automatic policy deployments
 
 To configure automatic deployments simply ensure the
 `cfengine_internal_masterfiles_update` class is defined on your policy hub.
 
-## Configuring automatic policy deployments with the augments file
+### Configuring automatic policy deployments with the augments file
 
 Create `def.json` in the root of your masterfiles with the following content:
 
@@ -102,7 +102,7 @@ Create `def.json` in the root of your masterfiles with the following content:
 }
 ```
 
-## Configuring automatic policy deployments with policy
+### Configuring automatic policy deployments with policy
 
 Simply edit `bundle common update_def` in `controls/update_def.cf`.
 
@@ -118,8 +118,7 @@ bundle common update_def
 }
 ```
 
-
-# Troubleshooting policy deployments
+## Troubleshooting policy deployments
 
 Before policy is deployed from the upstream VCS to `/var/cfengine/masterfiles`
 the policy is first validated by the hub. If this validation fails the policy
