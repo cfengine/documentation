@@ -1627,8 +1627,7 @@ dangerous assumption and links are not traversed.
 
 #### xdev
 
-**Description:** true/false exclude directories that are on different
-devices
+**Description:** When **true** files and directories on different devices from the promiser will be excluded from `depth_search` results.
 
 **Type:** [`boolean`][boolean]
 
@@ -1637,10 +1636,10 @@ devices
 **Example:**
 
 ```cf3
-     body depth_search example
-     {
-     xdev => "true";
-     }
+body depth_search example
+{
+  xdev => "true";
+}
 ```
 
 ### edit_defaults
