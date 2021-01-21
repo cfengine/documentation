@@ -215,12 +215,14 @@ For example:
     vars:
       # JSON or YAML can be inlined since CFEngine 3.7
       "inline1" data => '{"key":"value"}'; # JSON
-      "inline2" data => '---\n- key2: value2'; # YAML requires "---\n" header
+      "inline2" data => '---
+- key2: value2'; # YAML requires "---" header followed by a newline
 ```
 
-Inline YAML data has to begin with the `---\n` preamble. This preamble
+Inline YAML data has to begin with the `---` preamble followed by a newline. This preamble
 is normally optional but here (for inline YAML) it's required by
-CFEngine.
+CFEngine. To generate that in CFEngine, use `$(const.n)` or a literal
+newline as shown in the example.
 
 Inline JSON or YAML data may contain CFEngine variable references.
 They will be expanded at runtime as if they were simply calls to
