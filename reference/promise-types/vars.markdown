@@ -291,7 +291,7 @@ Output:
 
      # JSON or YAML can be inlined since CFEngine 3.7
      "inline1" data => '{"key":"value"}'; # JSON
-     "inline2" data => '---\n- key2: value2'; # YAML requires "---\n" header
+     "inline2" data => '---$(const.n)- key2: value2'; # YAML requires "---$(const.n)" header
 
 ```
 
