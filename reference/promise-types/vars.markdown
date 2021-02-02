@@ -209,9 +209,6 @@ modified, once created.
 ### Inline YAML and JSON data
 
 Data containers can be specified inline, without calling functions.
-For example:
-
-[%CFEngine_include_example(inline-yaml.cf)%]
 
 Inline YAML data has to begin with the `---` preamble followed by a newline. This preamble
 is normally optional but here (for inline YAML) it's required by
@@ -229,6 +226,15 @@ references, it will be parsed at compile time, which means that
 `cf-promises` will be able to find syntax errors in your JSON or YAML
 data early. Thus it is highly recommended that you try to avoid
 variable references in your inline JSON or YAML data.
+
+For example:
+#### Inline Yaml example
+
+[%CFEngine_include_example(inline-yaml.cf)%]
+
+#### Inline Json example
+
+[%CFEngine_include_example(inline-json.cf)%]
 
 ### Passing data containers to bundles
 
