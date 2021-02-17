@@ -8,7 +8,7 @@ tags: [getting started, tutorial]
 
 To define new Desired States in CFEngine, you need to write policy files. These are plain text-files, traditionally with a `.cf` extension.
 
-## `/var/cfengine/inputs` and `promises.cf`
+## /var/cfengine/inputs and promises.cf
 
 In CFEngine, `cf-agent` executes all policies. `cf-agent` runs every 5 minutes
 by default, and it executes policies found locally in the `/var/cfengine/inputs`
