@@ -28,13 +28,13 @@ Allowed users <br />
  &nbsp;&nbsp;&nbsp;malin=guest
 </td>
 <td><strong>myapp.conf.template &#8211; the template:</strong>.<br />
-Port {{port}}<br />
-Protocol {{protocol}}<br />
-Filepath {{filepath}}<br />
-Encryption {{encryption-level}}<br />
-Loglevel {{loglevel}}<br />
-Allowed users {{#users}}<br />
- {{user}}={{level}}{{/users}}
+{% raw %}Port {{port}}{% endraw %}<br />
+{% raw %}Protocol {{protocol}}{% endraw %}<br />
+{% raw %}Filepath {{filepath}}{% endraw %}<br />
+{% raw %}Encryption {{encryption-level}}{% endraw %}<br />
+{% raw %}Loglevel {{loglevel}}{% endraw %}<br />
+{% raw %}Allowed users {{#users}}{% endraw %}<br />
+{% raw %} {{user}}={{level}}{{/users}}{% endraw %}
 </td>
 </tr>
 </table>

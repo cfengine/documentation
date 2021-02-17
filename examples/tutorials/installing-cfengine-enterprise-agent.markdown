@@ -48,6 +48,4 @@ If you would like to see what version of CFEngine you are running, type:
 
 Now, you have a client-server CFEngine running. If you would like to install more hosts, simply repeat steps 1 to 3 above. You are free to have up to 25 hosts. Enjoy!
 
-Once you have installed the number of hosts you want, a good next step would be to take a look at our:
-
-How-to write your first policy
+Once you have installed the number of hosts you want, a good next step would be to take a look at our [How-to write your first policy][Write cfengine policy] tutorial.
