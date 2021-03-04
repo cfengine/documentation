@@ -24,7 +24,7 @@ all your CFEngine clients in case of failover.
 
 ### Hardware configuration and OS pre-configuration steps ###
 
-* CFEngine 3.6.2 (or later) hub package for RHEL6 or CentOS6.
+* CFEngine 3.15.3 (or later) hub package for RHEL7 or CentOS7.
 * We recommend selecting dedicated interface used for PostgreSQL replication and optionally one for heartbeat.
 * We recommend having one shared IP address assigned for interface where MP is accessible
   (optionally) and one where PostgreSQL replication is configured (mandatory).
@@ -155,7 +155,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    pcs resource defaults resource-stickiness="INFINITY"
    pcs resource defaults migration-threshold="1"
    pcs resource create cfvirtip IPaddr2 ip=192.168.100.100 cidr_netmask=24 --group cfengine
-   pcs cluster enable --all node{1,2}
+   pcs cluster enable --all
    ```
 
 10. Verify that the cfvirtip resource is properly configured and running.
@@ -452,7 +452,17 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    EOF
    ```
 
-2. Bootstrap the nodes.
+2. Mask the *cf-postgres.service* and make sure it is not required by the
+   *cf-hub.service* **on both nodes** (PostgreSQL is managed by the cluster
+   resource, not by the service).
+
+   ```
+   sed -ri s/Requires/Wants/ /usr/lib/systemd/system/cf-hub.service
+   systemctl daemon-reload
+   systemctl mask cf-postgres.service
+   ```
+
+3. Bootstrap the nodes.
 
    Bootstrap the **node1** to itself and make sure the initial policy (`promises.cf`) evaluation is
    skipped:
@@ -469,13 +479,13 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    cf-agent --bootstrap 192.168.100.11 --skip-bootstrap-policy-run
    ```
 
-3. Stop CFEngine **on both nodes**.
+4. Stop CFEngine **on both nodes**.
 
    ```
    service cfengine3 stop
    ```
 
-4. Create the HA JSON configuration file **on both nodes**.
+5. Create the HA JSON configuration file **on both nodes**.
 
    ```
    cat <<EOF > /var/cfengine/masterfiles/cfe_internal/enterprise/ha/ha_info.json
@@ -503,7 +513,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
    **IMPORTANT:** Copy over only the hashes, without the `SHA=` prefix.
 
-5. **On both nodes,** modify the */var/cfengine/masterfiles/controls/def.cf* and
+6. **On both nodes,** modify the */var/cfengine/masterfiles/controls/def.cf* and
    */var/cfengine/masterfiles/controls/update_def.cf* files to enable HA by uncommenting the
    following line:
 
@@ -517,16 +527,16 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    "enable_cfengine_enterprise_hub_ha" expression => "!any";`
    ```
 
-6. **On both nodes,** run `cf-agent -Kf update.cf` to make sure that the new policy is copied from
+7. **On both nodes,** run `cf-agent -Kf update.cf` to make sure that the new policy is copied from
    *masterfiles* to *inputs*.
 
-7. Start CFEngine **on both nodes**.
+8. Start CFEngine **on both nodes**.
 
    ```
    service cfengine3 start
    ```
 
-8. Check that the CFEngine HA setup is working by logging in to the Mission Portal at the
+9. Check that the CFEngine HA setup is working by logging in to the Mission Portal at the
    https://192.168.100.100 address in your browser. Note that it takes up to 15 minutes for
    everything to settle and the `OK` HA status being reported in the Mission Portal's header.
 
