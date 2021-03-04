@@ -513,18 +513,15 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
    **IMPORTANT:** Copy over only the hashes, without the `SHA=` prefix.
 
-6. **On both nodes,** modify the */var/cfengine/masterfiles/controls/def.cf* and
-   */var/cfengine/masterfiles/controls/update_def.cf* files to enable HA by uncommenting the
-   following line:
+6. **On both nodes,** add the following class definition to the */var/cfengine/masterfiles/def.json*
+   file to enable HA:
 
    ```
-   "enable_cfengine_enterprise_hub_ha" expression => "enterprise_edition";
-   ```
-
-   and commenting or removing the line
-
-   ```
-   "enable_cfengine_enterprise_hub_ha" expression => "!any";`
+   {
+     "classes": {
+       "enable_cfengine_enterprise_hub_ha": [ "any::" ]
+     }
+   }
    ```
 
 7. **On both nodes,** run `cf-agent -Kf update.cf` to make sure that the new policy is copied from
