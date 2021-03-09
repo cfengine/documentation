@@ -5,37 +5,9 @@ published: true
 tags: [reference, bundle agent, files, promises, files promises, promise types]
 ---
 
-Files promises are an umbrella for attributes of files. Operations fall
-basically into three categories: create, delete and edit.
+Files promises manage all aspects of files. Presence, absence, file content, permissions, and ownership. File content can be fully or partially managed.
 
-```cf3
-    files:
-
-      "/path/file_object"
-
-          perms => perms_body,
-          ... ;
-```
-
-Prior to version 3, file promises were scattered into many different
-types, including `files`, `tidy`, `copy`, and `links`. File handling in
-CFEngine 3 uses regular expressions everywhere for pattern matching. The
-old 'wildcard/globbing' expressions `\*` and `?` are deprecated, and
-everything is based consistently on Perl Compatible Regular Expressions.
-
-There is a natural ordering in file processing that obviates the need
-for the `actionsequence`. For example, the trick of using multiple
-`actionsequence` items with different classes.
-
-```cf3
-    actionsequence = ( ... files.one  ..  files.two )
-```
-
-can now be handled more elegantly using bundles. The natural ordering
-uses that fact that some operations are mutually exclusive and that some
-operations do not make sense in reverse order. For example, editing a
-file and then copying onto it would be nonsense. Similarly, you cannot
-both remove a file and rename it.
+[%CFEngine_include_example(files_content.cf)%]
 
 ### File copying
 
