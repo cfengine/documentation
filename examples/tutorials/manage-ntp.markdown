@@ -239,11 +239,9 @@ bundle agent ntp
 }
 ```
 
-What does this policy do?
+### What does this policy do?
 
 Let's dissect this policy and review the differences in the policy.
-
-Hard classes
 
 #### vars
 
