@@ -372,7 +372,7 @@ keys /etc/ntp/keys
       perms                 => mog( "644", "root", "root" ),
       template_method       => "inline_mustache",
       edit_template_string  => "$(config_template_string)",
-      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers}' ),
+      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
       classes               => results( "bundle", "ntp_config" );
 
    services:
@@ -442,7 +442,7 @@ Now let's walk through the files promise in detail.
       perms                 => mog( "644", "root", "root" ),
       template_method       => "inline_mustache",
       edit_template_string  => "$(config_template_string)",
-      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers}' ),
+      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
       classes               => results( "bundle", "ntp_config" );
 ```
 
@@ -499,7 +499,7 @@ The `edit_template_string` attribute is set to `$(config_template_string)` which
 ##### template_data
 
 ```cf3
-      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers}' ),
+      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
 ```
 
 `template_data` is assigned a data container that is in this case constructed by `mergedata()` so that only the necessary data is provided to the template. If `template_data` is not explicitly provided, CFEngine uses `datastate()` by default. It is considered best practice to provide explicit data as this makes it easier to delegate responsibility of the template and that data to different entities where neither are required to know anything about CFEngine itself and it's *much* more efficient to send the templating engine only the data the template actually uses.
@@ -614,7 +614,7 @@ keys /etc/ntp/keys
       perms                 => mog( "644", "root", "root" ),
       template_method       => "inline_mustache",
       edit_template_string  => "$(config_template_string)",
-      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers}' ),
+      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
       classes               => results( "bundle", "ntp_config" );
 
    services:
