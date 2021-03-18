@@ -470,7 +470,7 @@ This attribute sets the permissions and ownership of the file. `mog()` is a `per
       handle                => "ntp_files_conf",
 ```
 
-This is a descriptive handle that will uniquely identify the promise within this policy. The [policy style guide][Policy Style Guide#promise handles] recommends a naming scheme for the handles e.g. `bundle_name_promise_type_class_restriction_promiser`.
+A handle uniquely identifies a promise within a policy set. The [policy style guide][Policy Style Guide#promise handles] recommends a naming scheme for the handles e.g. `bundle_name_promise_type_class_restriction_promiser`. Handles are optional, but can be very useful when reviewing logs and can also be used to influence promise ordering with `depends_on`.
 
 ##### classes
 
