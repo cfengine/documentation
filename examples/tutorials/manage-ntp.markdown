@@ -252,7 +252,7 @@ Let's dissect this policy and review the differences in the policy.
        "ntp_service_name" string => "ntp";
 ```
 
-The first thing that you will notice is that the variable declarations section has been expanded. Recall that you completed part 1 of this tutorial by creating packages promises that works across Debian and redhat. While the package name for NTP is the same between Debian and Red Hat, the service names are actually different. Therefore, classes introduced here to distinguish the service name for NTP between these two environments. The CFEngine agents automatically discover environment properties and creates a set “hard classes” that can be used – this includes classes such as `debian` and `redhat` that define the host's operating system.
+The first thing that you will notice is that the variable declarations section has been expanded. Recall that you completed part 1 of this tutorial by creating packages promises that works across Debian and redhat. While the package name for NTP is the same between Debian and Red Hat, the service names are actually different. Therefore, classes introduced here to distinguish the service name for NTP between these two environments. The CFEngine agents automatically discover environment properties and defines [*hard classes*][Classes and Decisions#Hard Classes] that can be used – this includes classes such as `debian` and `redhat` that define the host's operating system.
 
 #### reports
 
