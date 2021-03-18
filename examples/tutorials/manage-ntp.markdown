@@ -462,7 +462,7 @@ Valid values for this attribute are `true` or `false` to instruct the agent whet
       perms                 => mog( "644", "root", "root" ),
 ```
 
-This attribute sets the permissions and ownership of the file. `mog()` is a `perms` body in the CFEngine standard library that sets the `mode`, `owner`, and `group` of the file. In this example, the permissions for the NTP configuration file are set to `644` with owner and group both assigned to `root`.
+This attribute sets the permissions and ownership of the file. [`mog()`][lib/files.cf#mog] is a `perms` body in the CFEngine standard library that sets the `mode`, `owner`, and `group` of the file. In this example, the permissions for the NTP configuration file are set to `644` with owner and group both assigned to `root`.
 
 ##### handle
 
