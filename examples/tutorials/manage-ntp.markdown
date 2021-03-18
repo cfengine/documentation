@@ -296,7 +296,7 @@ After making changes it's always a good idea to validate the policy file you mod
 If the code has no syntax error, you should see no output.
 
 
-Perform a manual policy run and review the output to ensure that the policy executed successfully. Upon a successful run you should expect to see an output similar to this:
+Perform a manual policy run and review the output to ensure that the policy executed successfully. Upon a successful run you should expect to see an output similar to this (depending on the init system your OS is using):
 
 ```console
 [root@hub masterfiles]# cf-agent -KIf update.cf;
