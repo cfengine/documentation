@@ -88,7 +88,7 @@ This promiser has a number of additional attributes defined:
 ```cf3
        package_module  => yum,
 ```
-The package_module attribute describes the package manager to be used. This first example assumes a Enterprise Linux (Red Hat and derivatives) environment, hence we specify yum as the package manager. If you are using a Debian/Ubuntu environment, you would specify the package manager as apt.
+The package_module attribute describes the package manager to be used. This first example assumes a Enterprise Linux (Red Hat and derivatives) environment, hence we specify yum as the package manager. If you are using a Debian/Ubuntu environment, you would specify the package module as `apt_get`.
 
 ###### handle
 
