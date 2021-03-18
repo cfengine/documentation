@@ -315,8 +315,6 @@ You have now written a complete policy to ensure that the NTP package is install
 
 ## Manage NTP configuration
 
-Now we will use templates to manage the configuration file for the NTP service.
-
 Now we will manage the configuration file using the built-in mustache templating engine, set up appropriate file permissions, and restart the service when necessary.
 
 By default, the NTP service leverages configuration properties specified in /etc/ntp.conf. In this tutorial, we introduce the concept of the files promise type. With this promise type, you can create, delete, and edit files using CFEngine policies. The example policy below illustrates the use of the files promise.
