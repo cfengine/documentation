@@ -502,7 +502,7 @@ The `edit_template_string` attribute is set to `$(config_template_string)` which
       template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers}' ),
 ```
 
-`template_data` is assigned a data container that is in this case constructed by `mergedata()` so that only the necessary data is provided to the template. If `template_data` is not explicitly provided, CFEngine uses `datastate()` by default. It is considered best practice to provide explicit data as this makes it easier to delegate responsibility of the template and that data to different entities where neither are required to know anything about CFEngine itself and it's /much/ more efficient to send the templating engine only the data the template actually uses.
+`template_data` is assigned a data container that is in this case constructed by `mergedata()` so that only the necessary data is provided to the template. If `template_data` is not explicitly provided, CFEngine uses `datastate()` by default. It is considered best practice to provide explicit data as this makes it easier to delegate responsibility of the template and that data to different entities where neither are required to know anything about CFEngine itself and it's *much* more efficient to send the templating engine only the data the template actually uses.
 
 The result of `mergedata()` in the example is equivalent to this json:
 
