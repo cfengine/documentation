@@ -711,7 +711,7 @@ Now, let's validate the JSON and force a policy run and inspect the result.
 
 
 ```console
-[root@hub masterfiles]# cat def.json | python -m json.tool
+[root@hub masterfiles]# python -m json.tool < def.json
 {
     "inputs": [
         "services/ntp.cf"
