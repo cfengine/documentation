@@ -146,6 +146,12 @@ Now, check the syntax, it's always a good idea any time you edit policy.
 Now, we need to make sure the agent knows it should use this policy file and bundle. Create `def.json` an Augments file with the following content: 
 
 ```json
+{
+  "inputs": [ "services/ntp.cf" ],
+  "vars": {
+    "control_common_bundlesequence_end": [ "ntp" ]
+  }
+}
 ```
 
 Validate it.
