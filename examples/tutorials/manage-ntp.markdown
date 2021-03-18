@@ -673,8 +673,6 @@ bundle agent ntp
 
 Notice two promises were introduced, one setting `driftfile` to the value of `$(def.ntp[config][driftfile])` if it is defined and one setting servers to the list of values for `def.ntp[config][servers]` if it is defined. [Augments][Augments] allows for variables to be set in the *def* bundle scope very early before policy is evaluated.
 
-You will notice that in this iteration of the variable declaration, we have removed the references to a list of IP addresses for operating system specific time servers. We've also removed the declaration of the driftfile variable. Instead, we now declare a variable called ntp_json_config_data which references JSON data files that contain this data, again classified by Red Hat and Debian operating systems. The agent expects to find these JSON files in the same location as the policy, as referenced by $(this.promise_dirname). We will create the content for the JSON file further down in this tutorial.
-
 ### Modify and run the policy
 
 First modify `services/ntp.cf` as shown previously (don't forget to check syntax with `cf-promises` after modification), then run the policy.
