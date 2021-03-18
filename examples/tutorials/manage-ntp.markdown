@@ -88,7 +88,7 @@ This promiser has a number of additional attributes defined:
 ```cf3
        package_module  => yum,
 ```
-The package_module attribute describes the package manager to be used. This first example assumes a Enterprise Linux (Red Hat and derivatives) environment, hence we specify yum as the package manager. If you are using a Debian/Ubuntu environment, you would specify the package module as `apt_get`.
+The package_module attribute describes the package manager to be used. This first example assumes a Red Hat (or derivative) environment, hence we specify yum as the package manager. If you are using a Debian/Ubuntu environment, you would specify the package module as `apt_get`.
 
 ###### handle
 
@@ -108,7 +108,7 @@ The handle uniquely identifies a promise within a policy. A recommended naming s
 
 ## Modifying bundle agent ntp to account for platform variations
 
-We've discussed the example above in great length, but let's add a small twist here. Let's improve this policy to handle the NTP package in both CentOS and Debian environments. On Debian environments, the package manager is `apt_get` rather than `yum`.
+We've discussed the example above in great length, but let's add a small twist here. Let's improve this policy to handle the NTP package in both Red Hat and Debian environments. On Debian environments, the package manager is `apt_get` rather than `yum`.
 
 On your hub create `services/ntp.cf` inside *masterfiles* with the following content:
 
@@ -674,7 +674,7 @@ bundle agent ntp
 
 Notice two promises were introduced, one setting `driftfile` to the value of `$(def.ntp[config][driftfile])` if it is defined and one setting servers to the list of values for `def.ntp[config][servers]` if it is defined. [Augments][Augments] allows for variables to be set in the *def* bundle scope very early before policy is evaluated.
 
-You will notice that in this iteration of the variable declaration, we have removed the references to a list of IP addresses for operating system specific time servers. We've also removed the declaration of the driftfile variable. Instead, we now declare a variable called ntp_json_config_data which references JSON data files that contain this data, again classified by CentOS and Debian operating systems. The agent expects to find these JSON files in the same location as the policy, as referenced by $(this.promise_dirname). We will create the content for the JSON file further down in this tutorial.
+You will notice that in this iteration of the variable declaration, we have removed the references to a list of IP addresses for operating system specific time servers. We've also removed the declaration of the driftfile variable. Instead, we now declare a variable called ntp_json_config_data which references JSON data files that contain this data, again classified by Red Hat and Debian operating systems. The agent expects to find these JSON files in the same location as the policy, as referenced by $(this.promise_dirname). We will create the content for the JSON file further down in this tutorial.
 
 ### Modify and run the policy
 
