@@ -170,7 +170,7 @@ Validate it.
 }
 ```
 
-Force a policy update. Remember cfengine is running the background, so it's possible that by the time you force a policy update and run the agent may have already done it and your output may differ.
+Force a policy update. Remember, CFEngine is running in the background, so it's possible that by the time you force a policy update and run the agent may have already done it and your output may differ.
 
 ```
 cf-agent -KIf update.cf
