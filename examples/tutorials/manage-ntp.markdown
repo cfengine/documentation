@@ -477,7 +477,8 @@ A handle uniquely identifies a promise within a policy set. The [policy style gu
 ```cf3
       classes               => results( "bundle", "ntp_config" );
 ```
-The classes attribute here indicates that every time this promise is triggered, whether the file is created, or the content of the file is updated, the class `restart_ntpd` will be set. Recall that this class was also set in the processes promise when the agent determines that the NTP process is not running. Setting this class activates the commands promise which will proactively issue a command to restart the service.
+
+The classes attribute here uses the [`results()`][lib/common.cf#results] classes body from the standard library. The `results()` body defines classes for every outcome a promise has. Every time this promise is executed classes will be defined bundle scoped classes prefixed with `ntp_config`. If the promise changes the file content or permissions the class `ntp_config_repaired` will be set.
 
 ##### template_method
 
