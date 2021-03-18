@@ -22,7 +22,6 @@ bundle agent ntp
    packages:
        "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
        policy          => "present",
-       package_module  => yum,
        handle          => "ntp_packages_$(ntp_package_name)",
        classes         => results("bundle", "ntp_package");
 }
@@ -58,7 +57,6 @@ A variable with the name `ntp_package_name` is declared and it is assigned a val
    packages:
        "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
          policy          => "present",
-         package_module  => yum,
          handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
 ```
@@ -83,13 +81,6 @@ This promiser has a number of additional attributes defined:
 
     The package_policy attribute describes what you want to do the package. In this case you want to ensure that it is present on the system. Other valid values of this attribute include delete, update, patch, reinstall, addupdate, and verify. Because of the self-healing capabilities of CFEngine, the agents will continuously check to make sure the package is installed. If it is not installed, CFEngine will try to install it according to its policy.
 
-###### package_module
-
-```cf3
-       package_module  => yum,
-```
-The package_module attribute describes the package manager to be used. This first example assumes a Red Hat (or derivative) environment, hence we specify yum as the package manager. If you are using a Debian/Ubuntu environment, you would specify the package module as `apt_get`.
-
 ###### handle
 
 ```cf3
@@ -106,10 +97,6 @@ The handle uniquely identifies a promise within a policy. A recommended naming s
 
 `classes` provide context which can help drive the logic in your policies. In this example, classes for each promise outcome are defined prefixed with `ntp_package_`, for details check out the implementation of `body classes results` in the stdlib. For example, `ntp_package_repaired` will be defined if cf-agent did not have the ntp package installed and had to install it. `ntp_package_kept` would be defined if the ntp package is already installed and `ntp_package_notkept` would be defined. 
 
-## Modifying bundle agent ntp to account for platform variations
-
-We've discussed the example above in great length, but let's add a small twist here. Let's improve this policy to handle the NTP package in both Red Hat and Debian environments. On Debian environments, the package manager is `apt_get` rather than `yum`.
-
 On your hub create `services/ntp.cf` inside *masterfiles* with the following content:
 
 ```cf3
@@ -119,19 +106,11 @@ bundle agent ntp
        "ntp_package_name" string => "ntp";
 
    packages:
-     redhat::
        "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
          policy          => "present",
-         package_module  => yum,
-         handle          => "ntp_packages_yum_$(ntp_package_name)",
+         handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
 
-     debian::
-      "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
-         policy          => "present",
-         package_module  => apt_get,
-         handle          => "ntp_packages_apt_$(ntp_package_name)",
-         classes         => results("bundle", "ntp_package");
 }
 ```
 
@@ -213,21 +192,12 @@ bundle agent ntp
          "ntp_service_name" string => "ntp";
 
    packages:
-     redhat::
        "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
          policy          => "present",
-         package_module  => yum,
-         handle          => "ntp_packages_yum_$(ntp_package_name)",
+         handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
 
-     debian::
-      "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
-         policy          => "present",
-         package_module  => apt_get,
-         handle          => "ntp_packages_apt_$(ntp_package_name)",
-         classes         => results("bundle", "ntp_package");
-
-   services:
+  services:
      "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" } 
        service_policy => "start",
        classes => results( "bundle", "ntp_service")
@@ -351,18 +321,9 @@ keys /etc/ntp/keys
          "ntp_service_name" string => "ntp";
 
    packages:
-     redhat::
        "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
          policy          => "present",
-         package_module  => yum,
-         handle          => "ntp_packages_yum_$(ntp_package_name)",
-         classes         => results("bundle", "ntp_package");
-
-     debian::
-      "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
-         policy          => "present",
-         package_module  => apt_get,
-         handle          => "ntp_packages_apt_$(ntp_package_name)",
+         handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
 
    files:
@@ -593,18 +554,9 @@ keys /etc/ntp/keys
          "ntp_service_name" string => "ntp";
 
    packages:
-     redhat::
        "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
          policy          => "present",
-         package_module  => yum,
-         handle          => "ntp_packages_yum_$(ntp_package_name)",
-         classes         => results("bundle", "ntp_package");
-
-     debian::
-      "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
-         policy          => "present",
-         package_module  => apt_get,
-         handle          => "ntp_packages_apt_$(ntp_package_name)",
+         handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
 
    files:
@@ -754,3 +706,4 @@ server 3.north-america.pool.ntp.org iburst
 Mission Accomplished!
 
 You have successfully completed this tutorial that showed you how to write a simple policy to ensure that NTP is installed, running and configured appropriately.
+
