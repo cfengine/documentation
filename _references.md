@@ -42,3 +42,6 @@
 [seed_cp]: reference-masterfiles-policy-framework-lib-files.html#seed_cp
 [Append to inputs used by main policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-main-policy
 [Append to inputs used by update policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-update-policy
+[Classes and Decisions ]: reference-language-concepts-classes
+[lib/files.cf]: reference-masterfiles-policy-framework-lib-files
+[stdlib-mog]: reference-masterfiles-policy-framework-lib-files.html#mog
