@@ -46,3 +46,4 @@
 [language-concepts-classes-hard]: reference-language-concepts-classes.html#hard-classes.html "Language Concepts -> Classes and Decisions: Hard classes"
 [lib/files.cf]: reference-masterfiles-policy-framework-lib-files
 [stdlib-mog]: reference-masterfiles-policy-framework-lib-files.html#mog
+[jq-project]: https://stedolan.github.io/jq/ "jq is a lightweight and flexible command-line JSON processor. Try online at jqplay.org!"
