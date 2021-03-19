@@ -21,7 +21,7 @@ This tutorial provides instructions for the following:
 
 * [Run Reports][Custom Inventory#Run Reports]
 
-**Note:** This tutorial uses the [CFEngine Enterprise Vagrant Environment][Installing Enterprise Vagrant Environemt] and files located in the vagrant project directory are automatically available to all hosts.
+**Note:** This tutorial uses the [CFEngine Enterprise Vagrant Environment][Using Vagrant] and files located in the vagrant project directory are automatically available to all hosts.
 
 ## Choose an Attribute to Inventory
 
