@@ -19,7 +19,7 @@ This tutorial provides instructions for the following:
 
 * [Create and deploy inventory policy][Custom Inventory#Create and Deploy Inventory Policy]
 
-* [Run Reports][Custom Inventory#Run Reports]
+* [Run Reports][Custom Inventory#Reporting]
 
 **Note:** This tutorial uses the [CFEngine Enterprise Vagrant Environment][Using Vagrant] and files located in the vagrant project directory are automatically available to all hosts.
 
