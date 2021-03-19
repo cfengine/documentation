@@ -110,7 +110,7 @@ No output and return code `0` indicate the policy was successfully validated.
 
 **JSON Validation:**
 
-You can use your favorite JSON validate. I like [`jq`][jq-prpoject], plus it's handy for picking apart API responses so let's install that and use it.
+You can use your favorite JSON validate. I like [`jq`][jq-project], plus it's handy for picking apart API responses so let's install that and use it.
 
 ```console
 [root@hub ~]# wget -q -O /var/cfengine/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
