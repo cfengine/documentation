@@ -6,5 +6,5 @@ published: true
 tags: [Examples, Tutorials]
 ---
 
-Familarize yourself with CFEngine by following these step by step
+Familiarize yourself with CFEngine by following these step by step
 tutorials.
