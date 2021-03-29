@@ -42,3 +42,9 @@
 [seed_cp]: reference-masterfiles-policy-framework-lib-files.html#seed_cp
 [Append to inputs used by main policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-main-policy
 [Append to inputs used by update policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-update-policy
+[Classes and Decisions]: reference-language-concepts-classes
+[language-concepts-classes-hard]: reference-language-concepts-classes.html#hard-classes.html "Language Concepts -> Classes and Decisions: Hard classes"
+[lib/files.cf]: reference-masterfiles-policy-framework-lib-files
+[stdlib-mog]: reference-masterfiles-policy-framework-lib-files.html#mog
+[jq-project]: https://stedolan.github.io/jq/ "jq is a lightweight and flexible command-line JSON processor. Try online at jqplay.org!"
+[Using Vagrant]: guide-installation-and-configuration-general-installation-installation-enterprise-vagrant.html "The CFEngine Vagrant Environment provides an easy way to test and explore CFEngine Enterprise."
