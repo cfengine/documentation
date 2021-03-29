@@ -487,6 +487,19 @@ Would render like this:
 {% comment %} TODO: We should try to improve this at some point.{% endcomment %}
 ```
 
+# FAQ
+## When should I use `verbatim` vs **bold** or *italic*?
+
+If it's code or something you would see on the command line (policy language, file names, command line options, binaries / CLI programs) use monospace (single backticks for inline, triple backticks for block, or when you have inline word that could also be an automatic link target that is undesirable, e.g. `files` ({% raw %}`files`{% endraw %}) vs ```files``` ({% raw %}```files```{% endraw %}) ).
+
+If you are referring to something within UI / screenshots / buttons etc use bold and capitalize it as it is within the UI/Button/whatever.
+
+  
+**References:**
+
+* https://www.patternfly.org/v4/ux-writing/punctuation/
+* https://docs.microsoft.com/en-us/style-guide/procedures-instructions/formatting-text-in-instructions
+
 # Sandbox
 
 ## symlink example
