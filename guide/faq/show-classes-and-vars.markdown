@@ -27,7 +27,7 @@ is evaluated.
 cf-promises --show-classes
 ```
 
-[%CFEngine_include_snippet(cf-promises_--show-classes.txt)%]
+[%CFEngine_include_snippet(cf-promises_--show-classes.txt, [\w], ^$)%]
 
 # Show first order variables with cf-promises
 
@@ -35,5 +35,6 @@ cf-promises --show-classes
 cf-promises --show-vars
 ```
 
-[%CFEngine_include_snippet(cf-promises_--show-classes.txt)%]
+[%CFEngine_include_snippet(cf-promises_--show-classes.txt, [\w], ^$)%]
+
 
