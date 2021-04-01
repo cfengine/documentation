@@ -77,3 +77,11 @@ do
         echo "WARNING: No executable agent found at ${WRKDIR}/nova/${agent}/${agent}"
     fi
 done
+
+# Here we execute and store some command output so that examples can always be up to date.
+
+# cf-promises
+${WRKDIR}/core/cf-promises/cf-promises --file "${POLICYROOT}/promises.cf" --show-vars > ${OUTDIR}/cf-promises_--show-vars.txt && echo "Stored cf-promises --show-vars output in ${OUTDIR}/cf-promises_--show-vars.txt"
+
+${WRKDIR}/core/cf-promises/cf-promises --file "${POLICYROOT}/promises.cf" --show-classes > ${OUTDIR}/cf-promises_--show-classes.txt && echo "Stored cf-promises --show-classes output in ${OUTDIR}/cf-promises_--show-classes.txt"
+
