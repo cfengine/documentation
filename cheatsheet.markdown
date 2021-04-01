@@ -419,6 +419,14 @@ Examples from cfengine/core can be rendered using the `CFEngine_include_example`
   [%CFEngine_include_example(class-automatic-canonificiation.cf)%]
   {% endraw %}
 
+## Include snippet of text from a file
+
+Sometimes it's nice to include a snippet from another file. For example, we dynamically generate the `--help` output for each component on each doc build and that output is included on each component page.
+
+  `[%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]`
+
+  [%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]
+
 
 # Level 1
 
