@@ -536,11 +536,27 @@ FreeBSD [pkg](https://www.freebsd.org/doc/handbook/pkgng-intro.html).
       "emacs"
         policy => "absent",
         package_module => pkg;
+
+      "mypackage"
+        policy => "present",
+        package_module => pkg,
+        options => { "option=NAMESERVER=127.0.0.01",
+                     "option=FETCH_RETRY=5",
+                     "repository=myrepo" };
+
 ```
+
+**Notes:**
+
+* Supports [```options```][packages#options] attribute.
+** `option` :: Allows specification of additional options ( `-o` )
+** `repository` :: Allows specification of repository ( `-r` )
 
 **History:**
 
 * Added in CFEngine 3.9.0
+* Added `repo` alias for repository option in CFEngine 3.20.0, 3.18.2
+* Added `option` option in CFEngine 3.20.0, 3.18.2
 
 ### pkgsrc
 
