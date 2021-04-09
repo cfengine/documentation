@@ -43,8 +43,7 @@ different approach][General Installation#More Detailed Installation Guides].
 ## Install Vagrant
 
 This tutorial uses Vagrant to configure your VMs. It is available for Linux,
-Windows and MacOS and can be downloaded from vagrantup.com (this guide has been
-tested with version [1.7.4](http://www.vagrantup.com/download-archive/v1.7.4.html)). After
+Windows and MacOS and can be downloaded from vagrantup.com. After
 downloading Vagrant, install it on your computer. You may want to reference the
 Windows Mac or Linux vagrant install guides.
 
@@ -52,9 +51,7 @@ Windows Mac or Linux vagrant install guides.
 
 This tutorial uses VirtualBox to create virtual machines on your computer, to
 which Vagrant deploys CFEngine. VirtualBox can be downloaded from
-virtualbox.org (this guide has been tested with version
-[5.0.2](http://download.virtualbox.org/virtualbox/5.0.2/)). After
-downloading VirtualBox, install it on your computer.
+virtualbox.org. After downloading VirtualBox, install it on your computer.
 
 **Note:** To avoid problems, disable other virtualization environments you are
 running.
