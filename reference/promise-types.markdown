@@ -34,113 +34,7 @@ depends on the [bundle][bundles] type:
 See each promise type's reference documentation for detailed lists of available
 attributes.
 
-## Common Body Attributes
-
-The following attributes are available to all body types.
-
-### inherit_from
-
-**Description:** Inherits all attributes from another body of the same
-type as a function call. For a detailed description, see
-[**Bodies**][bodies].
-
-**Type:** `fncall`
-
-**Allowed input range:** (arbitrary body invocation)
-
-**Example:**
-
-A simple example first, which has no parameters:
-
-```cf3
-body TYPE parent
-{
-  atribute1 => 100;
-  atribute2 => { "a" };
-  atribute3 => 75;
-}
-
-    body TYPE child
-{
-  inherit_from => parent; # same as parent()
-  atribute3 => 300; # overwrites parent's attribute3
-  # has atribute1 => 100;
-  # has atribute2 => { "a" };
-}
-```
-
-Now with parameters. The child calls the parent as a function call.
-Note that the child's parameters can be passed up to the parent.
-
-```cf3
-body TYPE parent(a1, a2)
-{
-  atribute1 => $(a1);
-  atribute2 => { $(a2) };
-  atribute3 => 75;
-}
-
-body TYPE child(aaa)
-{
-  inherit_from => parent(5, $(aaa));
-  atribute3 => 300; # overwrites parent's attribute3
-  # has atribute1 => 5;
-  # has atribute2 => { $(aaa) };
-}
-```
-
-**History:** Was introduced in 3.8.0.
-
-### meta
-
-**Description:** A list of strings to be associated with the promise for knowledge management purposes.  The strings are usually called "meta tags" or simply "tags."
-
-Any promise (of any type) can be given a "meta" attribute.  Since the right hand side
-for this attribute is an slist, multiple strings (tags) can be associated with the same promise.
-
-A "meta" attribute can likewise be added into any body (of any type).
-
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string list)
-
-**Example:**
-
-```cf3
-body ANYTYPE mybody
-{
-  meta => { "deprecated" };
-}
-```
-
-Another example:
-
-```cf3
-  some_promise_type:
-      any::
-        "my_promiser"
-          meta => { "Team Foo", "workaround", "non-critical" };
-```
-
-The meta tags may be referred to programmatically in various ways, or may be solely for
-human consumption.  Meta tags on vars promises and classes promises are
-particularly suited for programmatic interpretation; meta tags on other
-promise types (or in bodies) are more likely to be intended only for human consumption.
-
-Relevant CFEngine functions are: `classesmatching()`,
-`classmatch()`, `countclassesmatching()`, `getclassmetatags()`,
-`getvariablemetatags()`, `variablesmatching()`, `variablesmatching_as_data()`
-
-Also see [meta promises][meta]: While "meta" attribute can be added to a promise of any type, there can also be promises of promise type "meta" added to any bundle.
-If mention is made of "tags" on a *bundle*, what is actually meant is meta *promises*
-in that bundle.  (This is just a terminology point.)
-
-**Note:** When a variable is re-defined the associated meta tags are also
-re-defined.
-
-**History:** Was introduced in 3.7.0.
-
-## Common Attributes
+## Common Promise Attributes
 
 The following attributes are available to all promise types.
 
@@ -214,7 +108,7 @@ body agent control
 }
 ```
 
-**See Also:** [promise locking][Promises#Promise Locking], [ifelapsed in body agent control][cf-agent#ifelapsed]
+**See also:** [promise locking][Promises#Promise Locking], [ifelapsed in body agent control][cf-agent#ifelapsed]
 
 #### expireafter
 
@@ -244,7 +138,7 @@ body action example
 }
 ```
 
-**See Also:** [`body contain exec_timeout`][commands#exec_timeout], [`body agent control expireafter`][cf-agent#expireafter], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+**See also:** [`body contain exec_timeout`][commands#exec_timeout], [`body agent control expireafter`][cf-agent#expireafter], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
 
 #### log_string
 
@@ -479,7 +373,7 @@ body action background
 }
 ```
 
-**See Also**: [`max_children` in body agent control][cf-agent#max_children]
+**See also:** [`max_children` in body agent control][cf-agent#max_children]
 
 #### report_level
 
@@ -1079,7 +973,6 @@ such characters.
   access:
 
       "/source"
-
         handle  => "update_rule",
         admit   => { "127.0.0.1" };
 ```
@@ -1091,8 +984,7 @@ rather than its content.
 ### if
 
 **Description:** Class expression to further restrict the promise context.
-Previously called `ifvarclass`, and for backward compatibility, both names
-work.
+Previously called `ifvarclass`.
 
 This is an additional class expression that will be evaluated after the
 `class::` classes have selected promises. It is provided in order to enable a
@@ -1113,7 +1005,6 @@ The generic example has the form:
   promise-type:
 
       "promiser"
-
         if => "$(program)_running|($(program)_notfoundHr12)";
 ```
 
@@ -1146,13 +1037,12 @@ and classes. For example:
 
   processes:
 
-      "$(component)" restart_class => canonify("start_$(component)");
+      "$(component)" restart_class => canonify("$(component)_not_runnning");
 
   commands:
 
       "/var/cfengine/bin/$(component)"
-
-        if => canonify("start_$(component)");
+        if => canonify("$(component)_not_runnning");
 ```
 
 **Notes:**
@@ -1187,27 +1077,25 @@ skip.
 
 ### ifvarclass
 
-**Description:** Class expression to further restrict the promise context. This
-an exact alias for `if`; see its description for details.
+**Description:** Deprecated, use [`if`][Promise Types and Attributes#if] instead.
 
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
+**History:** New name `if` was introduced in 3.7.0, `ifvarclass` deprecated in 3.17.0.
 
 ### meta
 
-**Description:** User-data associated with policy, e.g. key=value strings.
+**Description:** A list of strings to be associated with the promise for knowledge management purposes.
+The strings are usually called "meta tags" or simply "tags."
 
-It is sometimes convenient to attach meta-data of a more technical nature to
-policy. It may be used for arbitrary key=value strings for example.
+Any promise (of any type) can be given a "meta" attribute.
+Since the right hand side for this attribute is an slist, multiple strings (tags) can be associated with the same promise.
 
-Note that the inventory reporting of CFEngine Enterprise 3.6 and later uses the
-meta attributes `inventory` and `attribute_name=`, so these should be considered
-reserved for this purpose.
+Note that the inventory reporting of CFEngine Enterprise 3.6 and later uses the meta attributes `inventory` and `attribute_name=`, so these should be considered reserved for this purpose.
+
+A "meta" attribute can likewise be added into any body (of any type).
 
 **Type:** `slist`
 
-**Allowed input range:** (arbitrary string)
+**Allowed input range:** (arbitrary string list)
 
 **Example:**
 
@@ -1216,18 +1104,41 @@ reserved for this purpose.
 
       "/etc/special_file"
 
-        comment => "Special file is a requirement. Talk to Fred X.",
+        comment => "Special file is a requirement. Talk to John.",
         create => "true",
 
-        meta => { "owner=John",  "version=2.0" };
+        meta => { "owner=John",  "version=2.0", "ticket=CFE-1234" };
 ```
 
+Another example:
+
+```cf3
+  some_promise_type:
+      any::
+        "my_promiser"
+          meta => { "Team Foo", "workaround", "non-critical" };
+```
+
+The meta tags may be referred to programmatically in various ways, or may be solely for human consumption.
+Meta tags on vars promises and classes promises are particularly suited for programmatic interpretation;
+meta tags on other promise types (or in bodies) are more likely to be intended only for human consumption.
+
+Relevant CFEngine functions are:
+`classesmatching()`, `classmatch()`, `countclassesmatching()`, `getclassmetatags()`, `getvariablemetatags()`, `variablesmatching()`, `variablesmatching_as_data()`.
+
+Also see [meta promises][meta]: While "meta" attribute can be added to a promise of any type, there can also be promises of promise type "meta" added to any bundle.
+If mention is made of "tags" on a *bundle*, what is actually meant is meta *promises* in that bundle.
+(This is just a terminology point.)
+
+**Note:** When a variable is re-defined the associated meta tags are also re-defined.
+
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012)
+
 
 ### unless
 
 **Description:** Class expression to further restrict the promise context. This
-is exactly like `if`(`ifvarclass`) but logically inverted; see its description
+is exactly like `if` but logically inverted; see its description
 for details. For any case where `if` would skip the promise, unless should
 evaluate the promise.
 
@@ -1316,3 +1227,85 @@ Output:
 [%CFEngine_include_snippet(with.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **History:** Was introduced in 3.11.0
+
+## Common Body Attributes
+
+The following attributes are available to all body types.
+
+### inherit_from
+
+**Description:** Inherits all attributes from another body of the same
+type as a function call. For a detailed description, see
+[**Bodies**][bodies].
+
+**Type:** `fncall`
+
+**Allowed input range:** (arbitrary body invocation)
+
+**Example:**
+
+A simple example first, which has no parameters:
+
+```cf3
+body TYPE parent
+{
+  atribute1 => 100;
+  atribute2 => { "a" };
+  atribute3 => 75;
+}
+
+    body TYPE child
+{
+  inherit_from => parent; # same as parent()
+  atribute3 => 300; # overwrites parent's attribute3
+  # has atribute1 => 100;
+  # has atribute2 => { "a" };
+}
+```
+
+Now with parameters. The child calls the parent as a function call.
+Note that the child's parameters can be passed up to the parent.
+
+```cf3
+body TYPE parent(a1, a2)
+{
+  atribute1 => $(a1);
+  atribute2 => { $(a2) };
+  atribute3 => 75;
+}
+
+body TYPE child(aaa)
+{
+  inherit_from => parent(5, $(aaa));
+  atribute3 => 300; # overwrites parent's attribute3
+  # has atribute1 => 5;
+  # has atribute2 => { $(aaa) };
+}
+```
+
+**History:** Was introduced in 3.8.0.
+
+### meta
+
+**Description:** A list of strings to be associated with the body for knowledge management purposes.
+The strings are usually called "meta tags" or simply "tags."
+
+Any body can be given a "meta" attribute.
+Since the right hand side for this attribute is an slist, multiple strings (tags) can be associated with the same body.
+
+**Type:** `slist`
+
+**Allowed input range:** (arbitrary string list)
+
+**Example:**
+
+```cf3
+body ANYTYPE mybody
+{
+  meta => { "deprecated" , "CFE-1234", "CVE-2020-1234" };
+}
+```
+
+**Note:** When a variable is re-defined the associated meta tags are also re-defined.
+
+**History:** Was introduced in 3.7.0.

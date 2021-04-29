@@ -48,4 +48,4 @@ Output:
 
 [%CFEngine_include_snippet(readintarray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See Also:** [`readstringarray()`][readstringarray], [`readrealarray()`][readrealarray], [`parseintarray()`][parseintarray], [`parserealarray()`][parserealarray], [`parsestringarray()`][parsestringarray] 
+**See also:** [`readstringarray()`][readstringarray], [`readrealarray()`][readrealarray], [`parseintarray()`][parseintarray], [`parserealarray()`][parserealarray], [`parsestringarray()`][parsestringarray] 

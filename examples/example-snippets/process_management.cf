@@ -1,12 +1,12 @@
 body common control
 {
-      bundlesequence => { "test" };
+    bundlesequence => { "test" };
 }
 
 bundle agent test
 {
   processes:
-      "sleep"
+    "sleep"
       signals => { "term", "kill" };
 }
 ########################################################
@@ -17,14 +17,14 @@ bundle agent test
 
 body common control
 {
-      bundlesequence  => { "testbundle"  };
+    bundlesequence => { "testbundle" };
 }
 ########################################################
 
 bundle agent testbundle
 {
   processes:
-      "sleep"
+    "sleep"
       process_count   => up("sleep");
   reports:
     sleep_out_of_control::
@@ -34,8 +34,8 @@ bundle agent testbundle
 
 body process_count up(s)
 {
-      match_range => "5,10"; # or irange("1","10");
-      out_of_range_define => { "$(s)_out_of_control" };
+    match_range         => "5,10"; # or irange("1","10");
+    out_of_range_define => { "$(s)_out_of_control" };
 }
 ########################################################
 #
@@ -45,30 +45,30 @@ body process_count up(s)
 
 body common control
 {
-      bundlesequence  => { "testbundle"  };
+    bundlesequence => { "testbundle" };
 }
 ########################################################
 
 bundle agent testbundle
 {
   processes:
-      ".*"
-      process_select  => proc_finder("a.*"),
-      process_count   => up("cfservd");
+    ".*"
+      process_select => proc_finder("a.*"),
+      process_count  => up("cfservd");
 }
 ########################################################
 
 body process_count up(s)
 {
-      match_range => "1,10"; # or irange("1","10");
-      out_of_range_define => { "$(s)_out_of_control" };
+    match_range         => "1,10"; # or irange("1","10");
+    out_of_range_define => { "$(s)_out_of_control" };
 }
 ########################################################
 
 body process_select proc_finder(p)
 {
-      stime_range => irange(ago("0","0","0","2","0","0"),now);
-      process_result => "stime";
+    stime_range    => irange(ago("0","0","0","2","0","0"),now);
+    process_result => "stime";
 }
 
 ########################################################
@@ -79,14 +79,14 @@ body process_select proc_finder(p)
 
 body common control
 {
-      bundlesequence  => { "testbundle"  };
+    bundlesequence => { "testbundle" };
 }
 ########################################################
 
 bundle agent testbundle
 {
   processes:
-      ".*"
+    ".*"
       process_select  => proc_finder("a.*"),
       process_count   => up("cfservd");
 }
@@ -94,30 +94,30 @@ bundle agent testbundle
 
 body process_count up(s)
 {
-      match_range => "1,10"; # or irange("1","10");
-      out_of_range_define => { "$(s)_out_of_control" };
+    match_range         => "1,10"; # or irange("1","10");
+    out_of_range_define => { "$(s)_out_of_control" };
 }
 ########################################################
 
 body process_select proc_finder(p)
 {
-      process_owner  => { "avahi", "bin" };
-      command        => "$(p)";
-      pid            => "100,199";
-      vsize          => "0,1000";
-      process_result => "command.(process_owner|vsize)";
+    process_owner  => { "avahi", "bin" };
+    command        => "$(p)";
+    pid            => "100,199";
+    vsize          => "0,1000";
+    process_result => "command.(process_owner|vsize)";
 }
 
 body common control
 {
-      bundlesequence => { "process_restart" };
+    bundlesequence => { "process_restart" };
 }
 #########################################################
 
 bundle agent process_restart
 {
   processes:
-      "/usr/bin/daemon"
+    "/usr/bin/daemon"
       restart_class => "launch";
 
   commands:
@@ -126,26 +126,27 @@ bundle agent process_restart
 }
 body common control
 {
-      bundlesequence => { "process_restart" };
+    bundlesequence => { "process_restart" };
 }
 #########################################################
 
 bundle agent process_restart
 {
   vars:
-      "component" slist => {
-                             "cf-monitord",
-                             "cf-serverd",
-                             "cf-execd"
+    "component"
+      slist => {
+        "cf-monitord",
+        "cf-serverd",
+        "cf-execd"
       };
 
   processes:
-      "$(component)"
-      restart_class => canonify("start_$(component)");
+    "$(component)"
+      restart_class => canonify("$(component)_not_running");
 
   commands:
-      "/var/cfengine/bin/$(component)"
-      ifvarclass => canonify("start_$(component)");
+    "/var/cfengine/bin/$(component)"
+      if => canonify("$(component)_not_running");
 }
 ########################################################
 #
@@ -155,7 +156,7 @@ bundle agent process_restart
 
 body common control
 {
-      bundlesequence  => { "testbundle"  };
+    bundlesequence => { "testbundle" };
 }
 ########################################################
 
@@ -163,22 +164,22 @@ bundle agent testbundle
 {
   processes:
 
-      "cfservd"
-      process_count   => up("cfservd");
+    "cfservd"
+      process_count => up("cfservd");
 
     cfservd_out_of_control::
       "cfservd"
-      signals         => { "stop" , "term" },
-      restart_class   => "start_cfserv";
+        signals       => { "stop" , "term" },
+        restart_class => "stopped_out_of_control_cf_serverd";
 
   commands:
-    start_cfserv::
+    stopped_out_of_control_cf_serverd::
       "/usr/local/sbin/cfservd";
 }
 ########################################################
 
 body process_count up(s)
 {
-      match_range => "1,10"; # or irange("1","10");
-      out_of_range_define => { "$(s)_out_of_control" };
+    match_range => "1,10"; # or irange("1","10");
+    out_of_range_define => { "$(s)_out_of_control" };
 }

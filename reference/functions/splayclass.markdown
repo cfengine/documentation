@@ -54,4 +54,4 @@ by the `splayclass` is a time when you have told CFEngine *not* to run).
     }
 ```
 
-**See Also:** `hash_to_int()`
+**See also:** `hash_to_int()`

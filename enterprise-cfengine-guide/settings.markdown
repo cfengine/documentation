@@ -150,7 +150,7 @@ status (on or off).
 
 ## Version Control Repository ##
 
-![Version Control Repository](Settings-5.png)
+![Version Control Repository](settings-vcs.png)
 
 The repository holding the organization's masterfiles can be adjusted
 on the Version Control Repository screen.
@@ -198,7 +198,19 @@ Mission portal can authenticate against an external directory.
 
 - Default roles for users is configured under [Role Management][Settings#Role Management].
 
-**See Also:** [LDAP authentication REST API][LDAP authentication API]
+### LDAP groups syncing ###
+
+- Ldap group syncing can be turned on by clicking the corresponding checkbox
+    
+    - User group attribute must be provided to obtain groups from an LDAP user entity. 
+    The default value for Active Directory is `memberOf`. 
+    The group name will be taken from `cn` attribute
+    - List of groups to sync, names must match in LDAP/MP. Each role should be added on a new line.
+    - Click `Perform sync on every login` checkbox to synchronize user roles on every login, otherwise
+    roles will be assigned to a user only on sign-up (first login).
+    
+
+**See also:** [LDAP authentication REST API][LDAP authentication API]
 
 
 ## Role based access control ##
@@ -224,7 +236,7 @@ To restore the CFEngine admin role permissions run the following sql as root on 
 root@hub:~# /var/cfengine/bin/psql cfsettings -c "INSERT INTO rbac_role_permission (role_id, permission_alias) (SELECT 'admin'::text as role_id, alias as permission_alias FROM rbac_permissions) ON CONFLICT (role_id, permission_alias)  DO NOTHING;"
 ```
 
-**See Also:** [Web RBAC API][Web RBAC API]
+**See also:** [Web RBAC API][Web RBAC API]
 
 
 ## About CFEngine ##

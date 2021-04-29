@@ -141,6 +141,87 @@ The hostkey is then removed from:
 of [`trustkeysfrom`][cf-serverd#trustkeysfrom] for the hub hosts may re-appear
 and resume being collected from after being deleted.
 
+## Hosts list grouped by hard classes
+
+**URI:** https://hub.cfengine.com/api/hosts/by-class
+
+**Method:** GET
+
+**Parameters:**
+
+* **context-include** *(comma delimited string of regular expression strings)*
+* **format** *(string)*
+    Output format. Default value is `json`. Allowed values: `json`, `yaml`.
+* **withInventory** *(boolean)*
+    Include inventory data to the API response. Default value is `false`. Allowed values: `true`, `false`  
+    
+**CURL unfiltered request example**
+
+```
+curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class
+```
+
+**Example response:**    
+
+```
+{
+    "10_0_2_15": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    },
+    "127_0_0_1": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    },
+    "ubuntu_16": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    }
+}
+```
+
+**CURL request with inventory data example**
+
+```
+curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class?withInventory=true
+```
+
+**Example response:**
+
+```
+{
+    "_meta": {
+        "hostvars": {
+            "ubuntu-xenial": {
+                "CFEngine Inventory": {
+                    "OS": "Ubuntu 16.04.6 LTS",
+                    "OS type": "linux",
+                    "Timezone": "UTC"
+                }
+            }
+        }
+    },
+    "10_0_2_15": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    },
+    "127_0_0_1": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    },
+    "ubuntu_16": {
+            "hosts": [
+                "ubuntu-xenial"
+            ]
+    }
+}
+```
+
 ## List monitoring attributes for host
 
 **URI:** https://hub.cfengine.com/api/host/:host-id/vital

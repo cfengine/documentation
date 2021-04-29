@@ -5,37 +5,9 @@ published: true
 tags: [reference, bundle agent, files, promises, files promises, promise types]
 ---
 
-Files promises are an umbrella for attributes of files. Operations fall
-basically into three categories: create, delete and edit.
+Files promises manage all aspects of files. Presence, absence, file content, permissions, and ownership. File content can be fully or partially managed.
 
-```cf3
-    files:
-
-      "/path/file_object"
-
-          perms => perms_body,
-          ... ;
-```
-
-Prior to version 3, file promises were scattered into many different
-types, including `files`, `tidy`, `copy`, and `links`. File handling in
-CFEngine 3 uses regular expressions everywhere for pattern matching. The
-old 'wildcard/globbing' expressions `\*` and `?` are deprecated, and
-everything is based consistently on Perl Compatible Regular Expressions.
-
-There is a natural ordering in file processing that obviates the need
-for the `actionsequence`. For example, the trick of using multiple
-`actionsequence` items with different classes.
-
-```cf3
-    actionsequence = ( ... files.one  ..  files.two )
-```
-
-can now be handled more elegantly using bundles. The natural ordering
-uses that fact that some operations are mutually exclusive and that some
-operations do not make sense in reverse order. For example, editing a
-file and then copying onto it would be nonsense. Similarly, you cannot
-both remove a file and rename it.
+[%CFEngine_include_example(files_content.cf)%]
 
 ### File copying
 
@@ -1041,7 +1013,7 @@ absolute path. Windows only supports hard links.
      }
 ```
 
-**See Also**: [link_type][files#link_type].
+**See also:** [link_type][files#link_type].
 
 #### link_type
 
@@ -1103,8 +1075,7 @@ required or available at all times. For example if there is a host specific data
 that each host attempts to copy this will allow you to not have many promise
 failures when a host does not have any data prepared for it.
 
-**See also:** [`seed_cp`][lib/files.cf#seed_cp] in the MPF,
-[`compare`][files#compare] in body `copy_from`
+**See also:** [`seed_cp`][seed_cp] in the MPF, [`compare`][files#compare] in body `copy_from`
 
 **History:**
 
@@ -1282,7 +1253,7 @@ timeout, in seconds.
      }
 ```
 
-**See Also:** [agent `default_timeout`][cf-agent#default_timeout], [`cf-runagent` timeout][cf-runagent#timeout]
+**See also:** [agent `default_timeout`][cf-agent#default_timeout], [`cf-runagent` timeout][cf-runagent#timeout]
 
 **Notes:**
 
@@ -1628,8 +1599,7 @@ dangerous assumption and links are not traversed.
 
 #### xdev
 
-**Description:** true/false exclude directories that are on different
-devices
+**Description:** When **true** files and directories on different devices from the promiser will be excluded from `depth_search` results.
 
 **Type:** [`boolean`][boolean]
 
@@ -1638,10 +1608,10 @@ devices
 **Example:**
 
 ```cf3
-     body depth_search example
-     {
-     xdev => "true";
-     }
+body depth_search example
+{
+  xdev => "true";
+}
 ```
 
 ### edit_defaults
@@ -3368,7 +3338,7 @@ extension).
         "/etc/postfix/alias.cdb"
            create => "true",        # Must have this!
            transformer => "/usr/sbin/postalias /etc/postfix/alias",
-           ifvarclass => "do_update";
+           if => "do_update";
 ```
 
 In the second example, the promise is made on the file *resulting from*

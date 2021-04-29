@@ -34,3 +34,23 @@ Output:
 [%CFEngine_include_snippet(datastate.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **See also:** `getindices()`, `classesmatching()`, `variablesmatching()`, `mergedata()`, `template_method`, `mustache`, `inline_mustache`, `bundlestate()`
+
+**Notes:**
+
+* Beware, when assigning `datastate()` to a variable, multiple passes will result in recursive growth of the data structure. Consider guarding against re-definition of a variable populated by `datastate()`.
+
+Example illustrating how to prevent recursive growth of variable populated by `datastate()`.
+
+```cf3
+bundle agent main
+{
+  vars:
+    "_state"
+      data => datastate(),
+      unless => isvariable( $(this.promiser) );
+}
+```
+
+**History:**
+
+* Introduced in CFEngine 3.6.0

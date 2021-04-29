@@ -39,4 +39,4 @@ Comparisons like this are normally used for updating files (like the
     }
 ```
 
-**See Also:** `accessedbefore()`, `isnewerthan()`
+**See also:** `accessedbefore()`, `isnewerthan()`

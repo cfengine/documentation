@@ -1,6 +1,6 @@
 body common control
 {
-      bundlesequence => { "process_restart" };
+    bundlesequence => { "process_restart" };
 }
 
 #########################################################
@@ -10,19 +10,21 @@ bundle agent process_restart
 {
   vars:
 
-      "component" slist => {
-                             "cf-monitord",
-                             "cf-serverd",
-                             "cf-execd"
+    "component"
+      slist => {
+        "cf-monitord",
+        "cf-serverd",
+        "cf-execd"
       };
+
   processes:
 
-      "$(component)"
-      restart_class => canonify("start_$(component)");
+    "$(component)"
+      restart_class => canonify("not_running_$(component)");
 
   commands:
 
-      "/var/cfengine/bin/$(component)"
-      ifvarclass => canonify("start_$(component)");
+    "/var/cfengine/bin/$(component)"
+      if => canonify("not_running_$(component)");
 
 }

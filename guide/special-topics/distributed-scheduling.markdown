@@ -142,7 +142,7 @@ this has a small network cost, and requires some extra configuration on the
 server side to grant access to this context information:
 
 ```cf3
-bundle server access_rules
+bundle server my_access_rules
 {
 access:
 
@@ -250,10 +250,10 @@ classes:
     # derive some classes from the names defined in variables
 
     "client_primed" expression => classmatch(canonify("$(client)")),
-                    ifvarclass => "$(time)";
+                            if => "$(time)";
 
     "server_primed" expression => classmatch(canonify("$(server)")),
-                    ifvarclass => "$(time)";
+                            if => "$(time)";
 
  client_primed::
 
@@ -269,7 +269,7 @@ methods:
 
     "downstream" usebundle => do_job("Starting local follow-up job"),
                     action => if_elapsed("5"),
-                ifvarclass => "hostX_$(g.signal)";
+                        if => "hostX_$(g.signal)";
 
  server_primed::
 
@@ -283,7 +283,7 @@ reports:
 
     "Server communication failed",
 
-                 ifvarclass => "$(time)";
+                 if => "$(time)";
 }
 
 #########################################################
@@ -311,7 +311,7 @@ allowusers            => { "mark" };
 
 #########################################################
 
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 
@@ -361,7 +361,7 @@ classes:
                                                         "no",
                                                         "hostX"
                                                         ),
-                         ifvarclass => "Host$(n)";
+                                 if => "Host$(n)";
 methods:
 
   Host2.Host3.Host4.hostX_did_my_job

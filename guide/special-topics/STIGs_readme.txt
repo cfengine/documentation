@@ -241,7 +241,7 @@ bundle agent disable_accounts_without_passwd(string)
         comment => "Set user shell /sbin/nologin",
          handle => "disable_accounts_without_passwd_files_etc_passwd",
       edit_line => set_user_field("$(name[0])","7","/sbin/nologin"),
-     ifvarclass => "no_passwd";
+             if => "no_passwd";
 }
 
 ######################################
@@ -308,7 +308,7 @@ The SA will ensure .rhosts, .shosts, hosts.equiv, nor shosts.equiv are used, unl
           handle => "stig_files_redhat_remove_and_symlink_hosts_related_files",
           delete => tidy,
        link_from => ln_s("/dev/null"),
-      ifvarclass => canonify("do_$(hosts_related_files)");
+              if => canonify("do_$(hosts_related_files)");
 
 ######################################
 (GEN002700: CAT I) (Previously – G095)
@@ -1578,19 +1578,19 @@ bundle agent filesystem_mounted_with_nosuid(path,string)
  files:
   "$(path)"
      edit_line => set_fstab_field("/home","4","$(option[1]),nosuid,nodev,acl"),
-     ifvarclass => "have_home.no_acl";
+            if => "have_home.no_acl";
   "$(path)"
      edit_line => set_fstab_field("/boot","4","$(option[1]),nosuid,acl"),
-     ifvarclass => "have_boot.no_acl";
+            if => "have_boot.no_acl";
   "$(path)"
      edit_line => set_fstab_field("/sys","4","$(option[1]),nosuid,acl"),
-     ifvarclass => "have_sys.no_acl";
+            if => "have_sys.no_acl";
   "$(path)"
      edit_line => set_fstab_field("/usr","4","$(option[1]),nodev,acl"),
-     ifvarclass => "have_usr.no_acl";
+            if => "have_usr.no_acl";
   "$(path)"
      edit_line => set_fstab_field("/usr/local","4","$(option[1]),nodev,acl"),
-     ifvarclass => "have_usr_local.no_acl";
+            if => "have_usr_local.no_acl";
 }
 
 bundle edit_line set_fstab_field(path,field,val)
@@ -1649,7 +1649,7 @@ The SA will ensure logon capability to default system accounts (e.g., bin, lib, 
          comment => "CAT I & II (Previously - G649, G092) UNIX STIG: 3.15 Default Accounts, 4.8.1 FTP Configuration",
           handle => "stig_files_redhat_default_accounts_shell",
        edit_line => set_user_field("$(allusers_not_root)","7","/sbin/nologin"),
-      ifvarclass => "$(allusers_not_root)_less_than_500";
+              if => "$(allusers_not_root)_less_than_500";
 
    "/etc/passwd" -> { "GEN002640" }
          comment => "CAT II (Previously - G092) UNIX STIG: 3.15 Default Accounts",
@@ -2197,7 +2197,7 @@ The SA will ensure inetd (xinetd for Linux) is disabled if all inetd/xinetd base
    "/sbin/chkconfig $(unneeded_services) off" -> { "GEN003700", "GEN003860" }
          comment => "CAT II (Previously - V046) UNIX STIG: 4 Network Services",
           handle => "stig_commands_redhat_disable_unneeded_services",
-      ifvarclass => "$(unneeded_services)_on";
+              if => "$(unneeded_services)_on";
 
 #######################################
 (GEN003720: CAT II) (Previously – G107)
@@ -2390,7 +2390,7 @@ The SA will ensure the ftpusers file contains the usernames of users not allowed
          comment => "CAT II (Previously - G141) UNIX STIG: 4.8.1 FTP Configuration",
           handle => "stig_files_redhat_editing_etc_ftpusers",
        edit_line => maintain_ftpusers("$(allusers_not_root)"),
-      ifvarclass => "$(allusers_not_root)_less_than_500";
+              if => "$(allusers_not_root)_less_than_500";
 
 bundle edit_line maintain_ftpusers(name)
 {
@@ -2711,7 +2711,7 @@ The SA will enable the X server -audit (at level 4) and -s option (with 15 minut
          comment => "CAT II (Previously - L032) UNIX STIG: 12.10 X Windows",
           handle => "stig_files_redhat_etc_gdm_custom_conf",
        edit_line => maintain_gdm_custom_conf,
-      ifvarclass => "have_xwindows";
+              if => "have_xwindows";
 
 bundle edit_line maintain_gdm_custom_conf
 {
@@ -2831,7 +2831,7 @@ The SA will ensure the root shell is not located in /usr if /usr is partitioned.
          comment => "CAT III, (Previously - G229) UNIX STIG: 3.3 Root Account",
           handle => "stig_files_redhat_usr_bin_root_shells",
           rename => disable,
-      ifvarclass => "have_usr_partitioned.have_usr_$(shells)";
+              if => "have_usr_partitioned.have_usr_$(shells)";
 
    "$(usr_dir)/$(shells).cfdisabled" -> { "GEN001080" }
       comment => "CAT III, (Previously - G229) UNIX STIG: 3.3 Root Account",

@@ -15,7 +15,7 @@ for all supported platforms and [binary packages for popular Linux distributions
 
 | Platform         | Versions             | Architecture      |
 | :--------------: | :------------------: | :---------------: |
-| CentOS/RHEL      | 6, 7                 | x86-64            |
+| CentOS/RHEL      | 6, 7, 8.1+           | x86-64            |
 | Debian           | 7, 8, 9, 10          | x86-64            |
 | Ubuntu           | 14.04, 16.04, 18.04  | x86-64            |
 

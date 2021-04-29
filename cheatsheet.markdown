@@ -57,7 +57,7 @@ file.
 
 For example ```services_autorun``` in the MPF documentation the underscore needs to be escaped with a ```\```.
 
-**See Also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
+**See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
 
 ### Link to CFEngine keyword
 
@@ -419,6 +419,14 @@ Examples from cfengine/core can be rendered using the `CFEngine_include_example`
   [%CFEngine_include_example(class-automatic-canonificiation.cf)%]
   {% endraw %}
 
+## Include snippet of text from a file
+
+Sometimes it's nice to include a snippet from another file. For example, we dynamically generate the `--help` output for each component on each doc build and that output is included on each component page.
+
+  `[%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]`
+
+  [%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]
+
 
 # Level 1
 
@@ -487,6 +495,19 @@ Would render like this:
 {% comment %} TODO: We should try to improve this at some point.{% endcomment %}
 ```
 
+# FAQ
+## When should I use `verbatim` vs **bold** or *italic*?
+
+If it's code or something you would see on the command line (policy language, file names, command line options, binaries / CLI programs) use monospace (single backticks for inline, triple backticks for block, or when you have inline word that could also be an automatic link target that is undesirable, e.g. `files` ({% raw %}`files`{% endraw %}) vs ```files``` ({% raw %}```files```{% endraw %}) ).
+
+If you are referring to something within UI / screenshots / buttons etc use bold and capitalize it as it is within the UI/Button/whatever.
+
+  
+**References:**
+
+* https://www.patternfly.org/v4/ux-writing/punctuation/
+* https://docs.microsoft.com/en-us/style-guide/procedures-instructions/formatting-text-in-instructions
+
 # Sandbox
 
 ## symlink example
@@ -525,7 +546,7 @@ show the actual variables will need to be inside of raw tags.
 
 {% raw %}
 site.CFE_manuals_version {{ site.CFE_manuals_version }}
-{% endraw %**
+{% endraw %}
 
 # Testing
 ## Indention with included markdown

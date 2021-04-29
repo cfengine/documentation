@@ -31,4 +31,4 @@ reports:
 }
 ```
 
-**See Also:** [lastseenexpireafter in body common control][Components and Common Control#lastseenexpireafter]
+**See also:** [lastseenexpireafter in body common control][Components and Common Control#lastseenexpireafter]

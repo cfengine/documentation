@@ -65,7 +65,7 @@ anything goes wrong.
    root@hub:~# find /etc -name 'cfengine*' | tar cfz /tmp/$(date +%Y-%m-%d)-cfengine-init-backup.tar.gz -T -
    ```
 
-   **See Also:** [Hub administration backup and restore][Backup and Restore]
+   **See also:** [Hub administration backup and restore][Backup and Restore]
 
 3. Copy the archive to a safe location.
 

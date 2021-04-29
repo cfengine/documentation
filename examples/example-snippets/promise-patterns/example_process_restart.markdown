@@ -25,16 +25,17 @@ vars:
                          "cf-serverd",
                          "cf-execd"
                        };
+
 processes:
 
   "$(component)"
-      restart_class => canonify("start_$(component)"); # Set the class "start_<component>" if it is not running
+      # Set the class "<component>_not_running" if it is not running:
+      restart_class => canonify("$(component)_not_running");
 
 commands:
 
-   "/var/cfengine/bin/$(component)"
-       ifvarclass => canonify("start_$(component)"); # Evaluate the class "start_<component>", CFEngine will run
-                                                   # the command if "start_<component> is set.
+  "/var/cfengine/bin/$(component)"
+    if => canonify("$(component)_not_running");
 
 }
 ```

@@ -11,7 +11,7 @@ number of URI resources that support one or more GET, PUT, POST, or
 DELETE operations. While reporting is done using SQL, this query is
 always wrapped in a JSON request.
 
-**See Also**: [Enterprise API Examples][Enterprise API Examples]
+**See also:** [Enterprise API Examples][Enterprise API Examples]
 
 ## Requests
 

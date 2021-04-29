@@ -444,7 +444,7 @@ the file no matter what the value of `select_end_match_eof` is set to.
      }
 ```
 
-**See Also:** [`select_end_match_eof` in body agent control][cf-agent#select_end_match_eof]
+**See also:** [`select_end_match_eof` in body agent control][cf-agent#select_end_match_eof]
 
 **History:**
 

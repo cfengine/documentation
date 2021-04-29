@@ -6,7 +6,7 @@ sorting: 30
 tags: [what's new, enterprise]
 ---
 
-**See Also:** [Core Changelog][Changelog], [Masterfiles Changelog][Masterfiles Changelog]
+**See also:** [Core Changelog][Changelog], [Masterfiles Changelog][Masterfiles Changelog]
 
 <pre>
 [%CFEngine_include_markdown(enterprise/ChangeLog.Enterprise)%]

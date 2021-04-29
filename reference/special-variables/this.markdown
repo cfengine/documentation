@@ -152,7 +152,7 @@ body service_method non_standard_services
 This is typically used in the adaptations for custom services bundles in
 the service methods.
 
-**See Also:**
+**See also:**
 
 * `Services Bundles and Bodies` in the `Masterfiles Policy Framework standard
   library`

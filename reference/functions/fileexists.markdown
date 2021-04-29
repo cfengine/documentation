@@ -30,4 +30,4 @@ Output:
 
 [%CFEngine_include_snippet(fileexists.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See Also:** `filestat()`, `isdir()`, `islink()`, `isplain()`, `returnszero()`
+**See also:** `filestat()`, `isdir()`, `islink()`, `isplain()`, `returnszero()`

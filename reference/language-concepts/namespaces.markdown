@@ -73,7 +73,7 @@ colon as a namespace prefix:
 **Note** that this means that if you are in a namespace that's not `default`, you *must* qualify classes from `default` fully:
 
     default:myclass::
-    "do something" ifvarclass => "default:myotherclass";
+    "do something" if => "default:myotherclass";
 
 ### Namespacing of classes and variables created in policy
 

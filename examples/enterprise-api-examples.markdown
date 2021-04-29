@@ -14,4 +14,4 @@ tags: [examples, enterprise, REST, API, reporting]
 * [Schedule reports][SQL Query Examples#Subscribed Query Example: Creating A Subscribed Query] for email and later download
 * [Tracking changes performed by CFEngine][Tracking changes]
 
-**See Also**: [Enterprise API Reference][Enterprise API Reference]
+**See also:** [Enterprise API Reference][Enterprise API Reference]

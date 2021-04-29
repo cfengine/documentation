@@ -25,7 +25,7 @@ send classes when using `cf-runagent` in order to activate sleeping
 promises. This mechanism limits their ability to do this.
 
 ```cf3
-bundle server access_rules()
+bundle server my_access_rules()
 
 {
 roles:

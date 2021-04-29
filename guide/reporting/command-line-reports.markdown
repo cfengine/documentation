@@ -114,7 +114,7 @@ reports:
       Host has software $(software)<br>
       "
 
-        ifvarclass     => "have_$(software)",
+        if             => "have_$(software)",
         report_to_file => "/tmp/report.html";
 
       #

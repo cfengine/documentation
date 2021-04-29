@@ -37,22 +37,24 @@ Inventory API allows to access inventory reports and attributes dictionary.
 
     **Operators:**
 
-    For filtering you can use operators bellow:
+    For filtering you can use the operators below:
 
-    |Operator     |
-    |-------------|
-    | <           |
-    | >           |
-    | =           |
-    | !=          |
-    | <=          |
-    | >=          |
-    | matches     |
-    | not_match   |
-    | contains    |
-    | not_contain |
-    | regex_matches |
+    |Operator         |
+    |-----------------|
+    | <               |
+    | >               |
+    | =               |
+    | !=              |
+    | <=              |
+    | >=              |
+    | matches         |
+    | not_match       |
+    | contains        |
+    | not_contain     |
+    | regex_matches   |
     | regex_not_match |
+    | is_reported     |
+    | is_not_reported |
     
 
 * **sort** *(string)*

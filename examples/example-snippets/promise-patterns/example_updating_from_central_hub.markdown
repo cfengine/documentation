@@ -54,10 +54,10 @@ trustkeysfrom         => { "127.0.0.1" , "10.20.30.0/24" };
 
 Since we assume that all hosts are on network 10.20.30.* they will be granted access. In the default policy this is set to `$(sys.policy_hub)/16`, i.e. all hosts in the same class B network as the hub will gain access. You will need to modify the access control list in `body server control` if you have clients outside of the policy server's class B network.
 
-Granting access to files and folders needs to be done in `bundle server access_rules()`:
+Granting access to files and folders needs to be done using `access` type promises in a `server` bundle, for example, `bundle server my_access_rules()`:
 
 ```cf3
-bundle server access_rules()
+bundle server my_access_rules()
 {
 access:
 

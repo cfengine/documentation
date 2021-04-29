@@ -331,7 +331,7 @@ syslog facility level.
 
 This is ignored on Windows, as CFEngine Enterprise creates event logs.
 
-**See Also**: Manual pages for syslog.
+**See also:** Manual pages for syslog.
 
 ### allclassesreport
 
@@ -572,7 +572,7 @@ body agent control
 }
 ```
 
-**See Also:** [body `copy_from` timeout][files#timeout], [`cf-runagent` timeout][cf-runagent#timeout]
+**See also:** [body `copy_from` timeout][files#timeout], [`cf-runagent` timeout][cf-runagent#timeout]
 
 **Notes:**
 
@@ -715,7 +715,7 @@ kill and restart its attempt to keep a promise.
     }
 ```
 
-**See Also:** [`body action expireafter`][Promise Types and Attributes#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+**See also:** [`body action expireafter`][Promise Types and Attributes#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
 
 ### files_single_copy
 
@@ -831,7 +831,7 @@ another which is not tied to a specific time.
     }
 ```
 
-**See Also:** [Promise locking][Promises#Promise Locking], [ifelapsed action body attribute][Promise Types and Attributes#ifelapsed]
+**See also:** [Promise locking][Promises#Promise Locking], [ifelapsed action body attribute][Promise Types and Attributes#ifelapsed]
 
 ### inform
 
@@ -891,7 +891,7 @@ diminishing returns.
     }
 ```
 
-**See Also**: [`background` in action bodies][Promise Types and Attributes#background]
+**See also:** [`background` in action bodies][Promise Types and Attributes#background]
 
 ### maxconnections
 
@@ -1060,7 +1060,7 @@ body agent control
 }
 ```
 
-**See Also:** [select_end_match_eof in delete_lines][delete_lines], [select_end_match_eof in field_edits][field_edits], [select_end_match_eof in insert_lines][insert_lines], [select_end_match_eof in replace_patterns][replace_patterns]
+**See also:** [select_end_match_eof in delete_lines][delete_lines], [select_end_match_eof in field_edits][field_edits], [select_end_match_eof in insert_lines][insert_lines], [select_end_match_eof in replace_patterns][replace_patterns]
 
 ### sensiblecount
 

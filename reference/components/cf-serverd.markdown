@@ -280,7 +280,7 @@ shell command at your own risk.
     }
 ```
 
-**See also**: [cf-runagent][cf-runagent], [bundle resource_type in server access promises][access#resource_type]
+**See also:** [cf-runagent][cf-runagent], [bundle resource_type in server access promises][access#resource_type]
 
 ### call_collect_interval
 
@@ -341,48 +341,50 @@ The sequence of events is this:
 
     call_collect_interval => "5";
 
-The full configuration would look something like this
+The full configuration to enable client initiated reporting would look something like this:
 
 ```cf3
-        #########################################################
-        # Server config
-        #########################################################
+#########################################################
+# Server config
+#########################################################
 
-        body server control
-        {
-        allowconnects         => { "10.10.10.0/24" , "::1" };
-        allowallconnects      => { "10.10.10.0/24" , "::1" };
-        trustkeysfrom         => { "10.10.10.0/24" , "::1" };
+body server control
+{
+  allowconnects         => { "10.10.10.0/24" , "::1" };
+  allowallconnects      => { "10.10.10.0/24" , "::1" };
+  trustkeysfrom         => { "10.10.10.0/24" , "::1" };
 
-        call_collect_interval => "5";
-        }
+  call_collect_interval => "5";
+}
 
-        #########################################################
+#########################################################
 
-        bundle server access_rules()
+bundle server my_access_rules()
+{
+  access:
 
-        {
-        access:
+    policy_server::
 
-          policy_server::
+     "collect_calls"
+         resource_type => "query",
+               admit   => { "10.10.10.10" },
+               comment => "The policy server must admit queries for collect_calls (client initated reporting).";
 
-           "collect_calls"
-               resource_type => "query",
-                     admit   => { "10.10.10.10" };
+    satellite_hosts::
 
-          satellite_hosts::
+      "delta"
+               comment => "Grant access to cfengine hub to collect report deltas",
+         resource_type => "query",
+               admit   => { "policy_hub" };
 
-            "delta"
-                     comment => "Grant access to cfengine hub to collect report deltas",
-               resource_type => "query",
-                     admit   => { "policy_hub" };
-
-            "full"
-                    comment => "Grant access to cfengine hub to collect full report dump",
-              resource_type => "query",
-                    admit   => { "policy_hub"  };
-        }
+      "full"
+              comment => "Grant access to cfengine hub to collect full report dump",
+        resource_type => "query",
+              admit   => { "policy_hub"  };
+}
 ```
+
+**Note:** In the [Masterfiles Policy Framework][Masterfiles Policy Framework], `body server control` and default access rules are found in `controls/cf_serverd.cf`.
 
 **History:** Was introduced in Enterprise 3.0.0 (2012)
 

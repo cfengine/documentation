@@ -40,7 +40,7 @@ enclose an arbitrary key are being deprecated in favor of the `data` variable ty
 
 **Type:** `int`
 
-**Allowed input range:** `-99999999999,9999999999`
+**Allowed input range:** `-99999999999,99999999999`
 
 **Example:**
 
@@ -209,18 +209,11 @@ modified, once created.
 ### Inline YAML and JSON data
 
 Data containers can be specified inline, without calling functions.
-For example:
 
-```cf3
-    vars:
-      # JSON or YAML can be inlined since CFEngine 3.7
-      "inline1" data => '{"key":"value"}'; # JSON
-      "inline2" data => '---\n- key2: value2'; # YAML requires "---\n" header
-```
-
-Inline YAML data has to begin with the `---\n` preamble. This preamble
+Inline YAML data has to begin with the `---` preamble followed by a newline. This preamble
 is normally optional but here (for inline YAML) it's required by
-CFEngine.
+CFEngine. To generate that in CFEngine, use `$(const.n)` or a literal
+newline as shown in the example.
 
 Inline JSON or YAML data may contain CFEngine variable references.
 They will be expanded at runtime as if they were simply calls to
@@ -233,6 +226,15 @@ references, it will be parsed at compile time, which means that
 `cf-promises` will be able to find syntax errors in your JSON or YAML
 data early. Thus it is highly recommended that you try to avoid
 variable references in your inline JSON or YAML data.
+
+For example:
+#### Inline Yaml example
+
+[%CFEngine_include_example(inline-yaml.cf)%]
+
+#### Inline Json example
+
+[%CFEngine_include_example(inline-json.cf)%]
 
 ### Passing data containers to bundles
 
@@ -295,7 +297,7 @@ Output:
 
      # JSON or YAML can be inlined since CFEngine 3.7
      "inline1" data => '{"key":"value"}'; # JSON
-     "inline2" data => '---\n- key2: value2'; # YAML requires "---\n" header
+     "inline2" data => '---$(const.n)- key2: value2'; # YAML requires "---$(const.n)" header
 
 ```
 
@@ -378,3 +380,272 @@ two_example_com::
 ```
 
 (Promises within the same bundle are evaluated top to bottom, so vars promises further down in a bundle can overwrite previous values of a variable. See [**normal ordering**][Normal Ordering] for more information).
+
+## Defining variables in foreign bundles
+
+As a general rule, variables can only be defined or re-defined from within the
+bundle where they were defined. There are a few notable exceptions to this
+general rule which are described below.
+
+### Meta type promises
+
+Variables defined by the *meta* promise type are defined in a bundle scope with the same name as the executing bundle suffixed with ```meta```.
+
+**Example policy:**
+
+```cf3
+    bundle agent example_meta_vars
+    {
+      meta:
+        "tags" slist => { "autorun" };
+    
+      vars:
+        "myvar" string => "my value";
+    
+      reports:
+        "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*example_meta_vars.*" ) );
+    
+    }
+    bundle agent __main__
+    {
+       methods: "example_meta_vars";
+    }
+```
+
+**Example output:**
+
+```
+    R: {
+      "default:example_meta_vars.myvar": "my value",
+      "default:example_meta_vars_meta.tags": [
+        "autorun"
+      ]
+    }
+```
+
+### Injecting variables into undefined bundles
+
+Variables can be directly set in foreign bundles if the bundle is not defined.
+
+**Example policy:**
+
+```cf3
+    bundle agent example_variable_injection
+    {
+      vars:
+        "undefined.myvar" string => "my value";
+        "cant_push_this.myvar" string => "my value";
+    
+      reports:
+        "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*myvar.*" ) );
+    
+    }
+    bundle agent cant_push_this
+    {
+          # If a bundle is defined, you can't simply define a variable in it from
+          # another bundle, unless the variable is defined via the module protocol.
+    }
+    bundle agent __main__
+    {
+       methods: "example_variable_injection";
+    }
+```
+
+**Example output:**
+
+```
+       error: Ignoring remotely-injected variable 'myvar'
+       error: Remote bundle variable injection detected!
+       error: Variable identifier 'cant_push_this.myvar' is not legal
+       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+       error: Ignoring remotely-injected variable 'myvar'
+       error: Remote bundle variable injection detected!
+       error: Variable identifier 'cant_push_this.myvar' is not legal
+       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+       error: Remote bundle variable injection detected!
+       error: Variable identifier 'cant_push_this.myvar' is not legal
+       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+       error: Remote bundle variable injection detected!
+       error: Variable identifier 'cant_push_this.myvar' is not legal
+       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+       error: Remote bundle variable injection detected!
+       error: Variable identifier 'cant_push_this.myvar' is not legal
+       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+       error: Remote bundle variable injection detected!
+       error: Variable identifier 'cant_push_this.myvar' is not legal
+       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+    R: {
+      "default:undefined.myvar": "my value"
+    }
+       error: Remote bundle variable injection detected!
+       error: Variable identifier 'cant_push_this.myvar' is not legal
+       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+       error: Remote bundle variable injection detected!
+       error: Variable identifier 'cant_push_this.myvar' is not legal
+       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+       error: Remote bundle variable injection detected!
+       error: Variable identifier 'cant_push_this.myvar' is not legal
+       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+       error: Remote bundle variable injection detected!
+       error: Variable identifier 'cant_push_this.myvar' is not legal
+       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+```
+
+### Module protocol
+
+The module protocol allows specification of *context* (the bundle scope within which a variable gets defined).
+
+**Example policy:**
+
+```cf3
+    bundle agent example_variable_injection_via_module
+    {
+      commands:
+        "/bin/echo '^context=undefined$(const.n)=myvar=my value" module => "true";
+        "/bin/echo '^context=cant_push_this$(const.n)=myvar=my value" module => "true";
+    
+      reports:
+        "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*myvar.*" ) );
+    
+    }
+    bundle agent cant_push_this
+    {
+        # If a bundle is defined, you can't simply define a variable in it from
+        # another bundle, unless the variable is defined via the module protocol.
+    }
+    bundle agent __main__
+    {
+       methods: "example_variable_injection_via_module";
+    }
+```
+
+**Example output:**
+
+```
+    R: {
+      "default:cant_push_this.myvar": "my value",
+      "default:undefined.myvar": "my value"
+    }
+```
+
+### Augments
+
+Augments defines variables in the *def* bundle scope.
+
+This augments file that defines `my_var` will be used for all examples shown here (`/tmp/def.json`).
+
+```json
+{
+  "vars": {
+    "my_var": "My value defined from augments"
+    }
+}
+```
+
+This example policy illustrates how augments defines variables in the def bundle scope (`/tmp/example.cf`).
+
+```cf3
+bundle common def
+{
+  vars:
+    "some_var"
+      string => "My value for $(this.promiser) defined in Policy";
+}
+bundle agent __main__
+{
+  reports:
+    "$(with)"
+      with => string_mustache( "{{%-top-}}", variablesmatching_as_data( "default:def.*") );
+}
+```
+
+This command shows the execution and output from the policy above.
+
+```console
+cf-agent -Kf /tmp/example.cf
+```
+
+```
+R: {
+  "default:def.jq": "jq --compact-output --monochrome-output --ascii-output --unbuffered --sort-keys",
+  "default:def.my_var": "My value defined from augments",
+  "default:def.some_var": "My value for some_var defined in Policy"
+}
+```
+
+Note, augments defines the variables at the start of agent initialization. The variables can be re-defined by policy during evaluation.
+
+This example policy illustrates how policy will, by default, re-define variables set via augments (`/tmp/example2.cf`).
+
+```cf3
+bundle common def
+{
+  vars:
+    "some_var"
+      string => "My value for $(this.promiser) defined in Policy";
+    "my_var"
+      string => "My value for $(this.promiser) defined in Policy";
+}
+bundle agent __main__
+{
+  reports:
+    "$(with)"
+      with => string_mustache( "{{%-top-}}", variablesmatching_as_data( "default:def.*") );
+}
+```
+
+This command shows the execution and output from the policy above.
+
+```console
+cf-agent -Kf /tmp/example2.cf
+```
+
+```
+R: {
+  "default:def.jq": "jq --compact-output --monochrome-output --ascii-output --unbuffered --sort-keys",
+  "default:def.my_var": "My value for my_var defined in Policy",
+  "default:def.some_var": "My value for some_var defined in Policy"
+}
+```
+
+Thus augments can be used to override defaults if the policy is instrumented to support it.
+
+This example policy illustrates how policy can be instrumented to avoid re-definition of variables set via augments (`/tmp/example3.cf`).
+
+```cf3
+bundle common def
+{
+  vars:
+    "some_var"
+      string => "My value for $(this.promiser) defined in Policy";
+
+    # Here we set my_var if it has not yet been defined (as in the case where
+    # augments would define it before the policy was evaluated).
+
+    "my_var"
+      string => "My value for $(this.promiser) defined in Policy",
+      unless => isvariable( $(this.promiser) );
+
+}
+bundle agent __main__
+{
+  reports:
+    "$(with)"
+      with => string_mustache( "{{%-top-}}", variablesmatching_as_data( "default:def.*") );
+}
+```
+
+This command shows the execution and output from the policy above.
+
+```console
+cf-agent -Kf /tmp/example3.cf
+```
+
+```
+R: {
+  "default:def.jq": "jq --compact-output --monochrome-output --ascii-output --unbuffered --sort-keys",
+  "default:def.my_var": "My value defined from augments",
+  "default:def.some_var": "My value for some_var defined in Policy"
+}
+```
+

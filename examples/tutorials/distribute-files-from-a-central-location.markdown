@@ -66,16 +66,20 @@ These common variables can be referenced from the rest of the policy by using th
 
 Access must be granted before files can be copied. The right to access a file
 is provided by `cf-serverd`, the server component of CFEngine. Enter access information using the `access`
-promise type in the `bundle server access_rules` section. This section is located in
-`controls/cf_serverd.cf` in the policy framework.
+promise type in a `server` bundle. The default access rules defined by the MPF (Masterfiles Policy Framework) can be found in
+`controls/cf_serverd.cf`.
 
-For our example, add the following information to `controls/cf_serverd.cf`:
+There is no need to modify the vendored policy, instead define your own server bundle. For our example, add the following to `services/main.cf`:
 
-```
-"$(def.dir_patch_store)"
-  handle => "server_access_grant_locations_files_patch_store_for_hosts",
-  admit => { ".*$(def.domain)", @(def.acl) },
-  comment => "Hosts need to download patch files from the central location";
+```cf3
+bundle server my_access_rules
+{
+  access:
+    "$(def.dir_patch_store)"
+      handle => "server_access_grant_locations_files_patch_store_for_hosts",
+      admit => { ".*$(def.domain)", @(def.acl) },
+      comment => "Hosts need to download patch files from the central location";
+}
 ```
 
 ### Create a custom library for reusable synchronization policy

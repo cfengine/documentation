@@ -6,8 +6,5 @@ published: true
 tags: [Examples, Tutorials]
 ---
 
-Familarize yourself with CFEngine by following these step by step
+Familiarize yourself with CFEngine by following these step by step
 tutorials.
-
-Additional tutorials to help you get started including screen casts can
-be found in the [CFEngine Learning Center](https://cfengine.com/learn/).

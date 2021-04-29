@@ -42,7 +42,7 @@ Please Note: Internet access is required from the host if you wish to use the qu
 Run the following script on your designated Policy Server (hub) 64-bit machine (32-bit is not supported on the Policy Server):
 
 ```console
-$ wget http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh hub
+$ wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh hub
 ```
 
 This script installs the latest CFEngine Enterprise Policy Server on your machine.
@@ -76,7 +76,7 @@ install Enterprise on 25 Hosts. Note that the Hosts must be
 on the same network as the Policy Server that you just installed in Step 2.
 
 ```console
-$ wget http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh agent
+$ wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh agent
 ```
 
 Note that this installation works on 64- and 32-bit machines.
