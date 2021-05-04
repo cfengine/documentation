@@ -1242,46 +1242,11 @@ type as a function call. For a detailed description, see
 
 **Allowed input range:** (arbitrary body invocation)
 
-**Example:**
+**Examples:**
 
-A simple example first, which has no parameters:
+[%CFEngine_include_example(inherit_from.cf)%]
 
-```cf3
-body TYPE parent
-{
-  atribute1 => 100;
-  atribute2 => { "a" };
-  atribute3 => 75;
-}
-
-    body TYPE child
-{
-  inherit_from => parent; # same as parent()
-  atribute3 => 300; # overwrites parent's attribute3
-  # has atribute1 => 100;
-  # has atribute2 => { "a" };
-}
-```
-
-Now with parameters. The child calls the parent as a function call.
-Note that the child's parameters can be passed up to the parent.
-
-```cf3
-body TYPE parent(a1, a2)
-{
-  atribute1 => $(a1);
-  atribute2 => { $(a2) };
-  atribute3 => 75;
-}
-
-body TYPE child(aaa)
-{
-  inherit_from => parent(5, $(aaa));
-  atribute3 => 300; # overwrites parent's attribute3
-  # has atribute1 => 5;
-  # has atribute2 => { $(aaa) };
-}
-```
+[%CFEngine_include_example(inherit_from_classes.cf)%]
 
 **History:** Was introduced in 3.8.0.
 
