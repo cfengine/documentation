@@ -112,24 +112,20 @@ Include part of a file in a report.
 
 **Default value:** `5`
 
-**Allowed input range:** `0,99999999999`
+**Allowed input range:** `-99999999999,99999999999`
+
+**Note:** Prints lines from end of file when a negative number is passed to
+argument `number_of_lines`
 
 **Example:**
 
-```cf3
-     bundle agent example
-     {
-     reports:
-         "$(sys.date) - current message of the day:"
-            printfile => "motd";
-     }
+[%CFEngine_include_snippet(printfile.cf, #\+begin_src prep, .*end_src)%]
 
-     body printfile motd
-     {
-         file_to_print   => "/etc/motd";
-         number_of_lines => "10";
-     }
-```
+[%CFEngine_include_snippet(printfile.cf, #\+begin_src cfengine3, .*end_src)%]
+
+Output:
+
+[%CFEngine_include_snippet(printfile.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 
 ### report_to_file
