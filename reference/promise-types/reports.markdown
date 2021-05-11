@@ -108,11 +108,7 @@ Include part of a file in a report.
 
 **Description:** Integer maximum number of lines to print from selected file
 
-**Type:** `int`
-
-**Default value:** `5`
-
-**Allowed input range:** `-99999999999,99999999999`
+[%CFEngine_promise_attribute(5)%]
 
 **Note:** Prints lines from end of file when a negative number is passed to
 argument `number_of_lines`
@@ -127,6 +123,9 @@ Output:
 
 [%CFEngine_include_snippet(printfile.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
+**History:**
+
+- Introduced negative number support in 3.18.0
 
 ### report_to_file
 
