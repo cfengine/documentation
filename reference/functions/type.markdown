@@ -69,3 +69,7 @@ with different combinations of the arguments `type` and `detail`.
 Output:
 
 [%CFEngine_include_snippet(type.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+**History:**
+
+* Introduced in 3.18.0
