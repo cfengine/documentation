@@ -108,7 +108,11 @@ Include part of a file in a report.
 
 **Description:** Integer maximum number of lines to print from selected file
 
-[%CFEngine_promise_attribute(5)%]
+**Type:** `int`
+
+**Default value:** `5`
+
+**Allowed input range:** `-99999999999,99999999999`
 
 **Note:** Prints lines from end of file when a negative number is passed to
 argument `number_of_lines`
