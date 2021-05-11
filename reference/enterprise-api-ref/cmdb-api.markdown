@@ -9,7 +9,7 @@ Configuration management database API enables you to manage classes and variable
 
 ## List CMDB 
 
-You can see a list of stored hosts-specific configurations
+You can see a list of stored host-specific configurations
 
 **URI:** https://hub.cfengine.com/cmdb
 
