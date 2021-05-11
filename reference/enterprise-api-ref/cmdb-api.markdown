@@ -18,8 +18,8 @@ You can see a list of stored host-specific configurations
 **Parameters:**
 * **fromEpoch** *(integer)*
   Returns configurations with epoch value greater than set in the filter.
-  Epoch is the sequence number of the latest CMDB change. In every API list request, you
-  might see `most_recent_cmdb_change` property on the meta section, which contains the maximum
+  Epoch is the sequence number of the latest CMDB change. In every API list request,
+  `most_recent_cmdb_change` will be present in the meta section, which contains the maximum
   epoch value among selected items. Optional parameter.
 * **fromTime** *(timestamp)*
   Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS` or `YYYY-mm-dd`
