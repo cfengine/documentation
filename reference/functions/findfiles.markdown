@@ -36,4 +36,4 @@ Output:
 
 [%CFEngine_include_snippet(findfiles.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [`bundlesmatching()`][bundlesmatching].
+**See also:** [`bundlesmatching()`][bundlesmatching], [`findfiles_up()`][findfiles_up].
