@@ -5,7 +5,7 @@ published: true
 tags: [reference, enterprise, API, CMDB, classes, variables]
 ---
 
-Configuration management database API enables you to manage classes and variables for specific hosts.
+The configuration management database (CMDB) API enables you to manage classes and variables for specific hosts.
 
 ## List CMDB 
 
@@ -38,7 +38,7 @@ You can see a list of stored host-specific configurations
     
 **Example request (curl):**
  
-```
+```console
 curl -k --user <username>:<password> \
   -X GET \
   https://hub.cfengine.com/api/cmdb?epochFrom=2&hostContextInclude[]=ubuntu 
@@ -96,7 +96,7 @@ HTTP 200 Ok
 
 **Example request (curl):**
 
-```
+```console
 curl -k --user <username>:<password> \
   -X GET \
   https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/variables/HubCMDB:My.hostname/
@@ -132,7 +132,7 @@ HTTP 200 Ok
 
 **Example request (curl):**
 
-```
+```console
 curl -k --user <username>:<password> \
   -X GET \
   https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab 
@@ -193,7 +193,7 @@ HTTP 200 Ok
 
 **Example request (curl):**
 
-```
+```console
 curl -k --user <username>:<password> \
   -X POST \
   https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/variables/Namespace:BundleName.Ports/ \
@@ -225,7 +225,8 @@ HTTP 200 Ok
   The format is a JSON object where the key is class name and value is another JSON object
   with optionals `comment` and `tags` property.
   Example:
-```
+  
+  ```json
 {
    "classes":{
       "My_class": {},
@@ -241,7 +242,8 @@ HTTP 200 Ok
   The format is a JSON object where the key is variable name and value is another JSON object
   with a required `value` property and optionals `comment` and `tags`.
   Example:
-```
+  
+  ```json
 {
    "variables":{
       "Namespace:BundleName.VariableName":{
@@ -259,7 +261,7 @@ HTTP 200 Ok
 
 **Example request (curl):**
 
-```
+```console
 curl -k --user <username>:<password> \
   -X POST \
   https://hub.cfengine.com/api/cmdb \
@@ -332,7 +334,7 @@ HTTP 201 Created
 
 **Example request (curl):**
 
-```
+```console
 curl -k --user <username>:<password> \
   -X PATCH \
   https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/variables/Namespace:BundleName.Ports/ \
@@ -364,7 +366,8 @@ HTTP 200 Ok
   The format is a JSON object where the key is class name and value is another JSON object
   with an optional `comment` property.
   Example:
-```
+  
+  ```json
 {
    "classes":{
       "My_class":{
@@ -378,18 +381,21 @@ HTTP 200 Ok
 ```
 
 If you need to delete all classes from host you need to set null value:
-```
+
+```json
 {
     "classes": null
 }
 ```
+
 If your request body misses classes then the previous value will be preserved.
 
 * **variables** *(JSON object)*
   The format is a JSON object where the key is variable name and value is another JSON object
   with a required `value` property and an optional `comment` property.
   Example:
-```
+  
+  ```json
 {
    "variables":{
       "Namespace:BundleName.VariableName":{
@@ -402,8 +408,10 @@ If your request body misses classes then the previous value will be preserved.
    }
 }
 ```
+
 If you need to delete all variables from host you need to set null value:
-```
+
+```json
 {
     "variables": null
 }
@@ -412,7 +420,7 @@ If your request body misses variables then the previous value will be preserved.
 
 **Example request (curl):**
 
-```
+```console
 curl -k --user <username>:<password> \
   -X PATCH \
   https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab \
@@ -454,7 +462,7 @@ HTTP 200 Ok
 
 **Example request (curl):**
 
-```
+```console
 curl -k --user <username>:<password> \
   -X DELETE \
   https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab 
@@ -485,7 +493,7 @@ HTTP 204 No Content
 
 **Example request (curl):**
 
-```
+```console
 curl -k --user <username>:<password> \
   -X DELETE \
   https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/classes/My_class2/
