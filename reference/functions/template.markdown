@@ -11,11 +11,7 @@ tags: [reference, functions, more, tags]
 
 **Return type:** `data|int|real|string|(i|r|s)list|class|(i|r)range|`
 
-**Arguments:**
-
-* `arguments`: `type`, in the range `.*`
-* `here`: `tyep`, in the range: `true,false,yes,no,on,off`
-
+[%CFEngine_function_attributes(arguments, here)%]
 
 Write a detailed description here.
 
