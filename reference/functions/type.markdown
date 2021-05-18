@@ -20,7 +20,7 @@ This function returns a variables type description as a string. The function
 expects a variable identifier as the first argument `var`. An optional second
 argument `detail` may be used to enable detailed description. When set to
 `"true"` the returned string comes in a two word format including type and
-subtype. This lets us to easily
+subtype. This lets us easily
 differentiate between policy- and data primitives. Argument `detail` defaults
 to `"false"` when not specified.
 
