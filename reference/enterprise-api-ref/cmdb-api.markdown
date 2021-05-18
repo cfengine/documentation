@@ -232,7 +232,7 @@ HTTP 200 Ok
       "My_class": {},
       "My_class2": {
          "comment":"comment body",
-         "tags": ["suggestion-001", "reportring"]
+         "tags": ["suggestion-001", "reporting"]
       }
    }
 }
@@ -252,7 +252,7 @@ HTTP 200 Ok
       "HubCMDB:My.hostname":{
          "value":"host1.cfengine.com",
          "comment":"My hostname should be set to this",
-         "tags": ["suggestion-001", "reportring"]
+         "tags": ["suggestion-001", "reporting"]
       }
    }
 }
@@ -272,7 +272,7 @@ curl -k --user <username>:<password> \
        "My_class": {},
       "My_class2":{
          "comment":"comment body",
-         "tags": ["suggestion-001", "reportring"]
+         "tags": ["suggestion-001", "reporting"]
       }
    },
    "variables":{
