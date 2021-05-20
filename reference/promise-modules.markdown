@@ -6,5 +6,5 @@ sorting: 70
 tags: [reference, custom promise type, promise module]
 ---
 
-[%CFEngine_include_markdown(core/custom_promise_types/modules.md%]
+[%CFEngine_include_markdown(../../core/custom_promise_types/modules.md%]
 
