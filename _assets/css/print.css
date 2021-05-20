@@ -80,7 +80,7 @@
     }
 
     body:before {
-        background: url('../media/images/logo_100x26.png') no-repeat;
+        background: url('../media/images/cfengine-logo.svg') no-repeat;
         color: transparent;
         content: "CFEngine";
         height: 26px;
