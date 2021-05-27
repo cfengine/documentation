@@ -2719,7 +2719,7 @@ target
 
 The first named group in the list is the default that will be configured
 if the file does not match an element of the list. The reserved word
-none may be used to match files that are not owned by a registered
+`none` may be used to match files that are not owned by a registered
 group.
 
 **Type:** `slist`
@@ -2770,7 +2770,7 @@ target
 
 The first user is the reference value that CFEngine will set the file to
 if none of the list items matches the true state of the file. The
-reserved word none may be used to match files that are not owned by a
+reserved word `none` may be used to match files that are not owned by a
 registered user.
 
 **Type:** `slist`
