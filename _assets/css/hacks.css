@@ -122,3 +122,7 @@ html {
 #nav_level1_wrapper>ul {
     border: 1px solid #A7AAB2 !important;
 }
+
+#left_col .level1>ul>:nth-child(1) {
+    border-top: none !important;
+}
