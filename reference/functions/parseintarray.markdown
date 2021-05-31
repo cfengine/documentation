@@ -32,11 +32,11 @@ split into fields. Using the empty string (`""`) indicates no comments.
 
 **Example:**
 
-[%CFEngine_include_snippet(parseintrealstringarray.cf, #\+begin_src cfengine3, .*end_src)%]
+[%CFEngine_include_snippet(parseintarray.cf, #\+begin_src cfengine3, .*end_src)%]
 
 Output:
 
-[%CFEngine_include_snippet(parseintrealstringarray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+[%CFEngine_include_snippet(parseintarray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **History:** Was introduced in version 3.1.5a1, Nova 2.1.0 (2011**
 
