@@ -9,6 +9,15 @@ Custom promise types can be added as _Promise modules_.
 These enable users to implement their own promise types for managing new resources.
 They can be added without a binary upgrade, and shared between users.
 
+This documentation article provides a complete and detailed specification.
+It includes how to use them, how to implement them using modules, how the protocol works, etc.
+If you are interested in shorter tutorials, there are a few different ones available:
+
+* [Introducing CFEngine Custom Promise Types - Installation and usage](https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/)
+* [How to implement CFEngine Custom Promise Types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
+* [How to implement CFEngine custom promise types in bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
+* [Custom Promise outcomes in Mission Portal](https://cfengine.com/blog/2021/custom-promise-outcomes-in-mission-portal/)
+
 ## Using custom promise types
 
 A new top level `promise` block (similar to `body`) is used to add new promise types.
@@ -436,3 +445,12 @@ log_verbose=No users left in list
 ```
 
 This enables the agent to filter the log messages based on log level, and also print them in the correct order.
+
+## Additional reading
+
+See these tutorials / blog posts, for more examples or inspiration:
+
+* [Introducing CFEngine Custom Promise Types - Installation and usage](https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/)
+* [How to implement CFEngine Custom Promise Types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
+* [How to implement CFEngine Custom Promise Types in Bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
+* [Custom Promise outcomes in Mission Portal](https://cfengine.com/blog/2021/custom-promise-outcomes-in-mission-portal/)
