@@ -11,6 +11,10 @@ a {
     color: #052569 !important;
 }
 
+strong {
+  font-weight: bold !important;
+}
+
 footer {
     background-color: #052569 !important;
 }
