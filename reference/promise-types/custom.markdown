@@ -9,6 +9,9 @@ Custom promise types can be added as _Promise modules_.
 These enable users to implement their own promise types for managing new resources.
 They can be added without a binary upgrade, and shared between users.
 
+**History:** Custom promise types were first introduced in 3.17.0.
+Many improvements and bug fixes were made between 3.17.0 and 3.18.0 LTS.
+
 This documentation article provides a complete and detailed specification.
 It includes how to use them, how to implement them using modules, how the protocol works, etc.
 If you are interested in shorter tutorials, there are a few different ones available:
