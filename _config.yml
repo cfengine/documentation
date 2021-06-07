@@ -16,13 +16,13 @@ CFE_OUTPUT: true
 #CFE_DIR - output folder if CFE_OUTPUT turned on
 CFE_DIR: _site
 #to create correct links in sitemap
-CFE_manuals_version: master
+CFE_manuals_version: 3.18.0
 cfengine:
-  branch: master
-  core_branch: "master"
-  latest_patch_release: NA
-  latest_package_build: NA
-  masterfiles_branch: "master"
+  branch: 3.18
+  core_branch: "3.18.x"
+  latest_patch_release: 0
+  latest_package_build: 1
+  masterfiles_branch: "3.18.x"
 
 Template:
   parse:
@@ -44,5 +44,5 @@ asset_pipeline:
   bundle: true            # Default = true
   compress: true          # Default = true
   output_path: assets     # Default = assets
-  display_path: docs/master/assets       # Default = nil
+  display_path: docs/3.18/assets       # Default = nil
   gzip: false             # Default = false
