@@ -9,5 +9,7 @@ tags: [what's new]
 **See Also:** [Enterprise Changelog][Enterprise Changelog], [Masterfiles Changelog][Masterfiles Changelog]
 
 <pre>
+{% raw %}
 [%CFEngine_include_markdown(core/ChangeLog)%]
+{% endraw %}
 </pre>
