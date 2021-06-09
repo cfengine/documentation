@@ -9,5 +9,7 @@ tags: [what's new, enterprise]
 **See Also:** [Core Changelog][Changelog], [Masterfiles Changelog][Masterfiles Changelog]
 
 <pre>
+{% raw %}
 [%CFEngine_include_markdown(enterprise/ChangeLog.Enterprise)%]
+{% endraw %}
 </pre>
