@@ -6,18 +6,37 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
-## Host Compliance ##
+## Hosts ##
 
-CFEngine collects data on `promise` compliance. Each host is in one of two groups: out of compliance or fully compliant.
+The Hosts app provides a customizable global overview of _promise_ compliance. A summary of compliant vs non-compliant hosts is provided at each branch in the tree.
+
+Each host is in one of two groups: out of compliance or fully compliant.
 
 * A host is considered out of compliance if less than 100% of its promises were kept.
 * A host is considered fully compliant if 100% of its promises were kept.
 
-You can look at a specific sub-set of your hosts by selecting a category from the menu on the left.
+![Hosts app overview](Hosts-app-overview.png)
+
+A host tree based on OS (Operating system) is present by default. Host trees map hosts based on reported classes into a hierarchy. Additional host trees can be added based on classes, which could be used to view different perspectives such as geographic location, production tier, business unit, etc.... Furthermore, Each host tree can be shared based on Mission Portal role.
+
+![Hosts app custom tree for geographic region](Hosts-app-custom-tree-geographic-region.png)
+
+Visiting a leaf node provides a summary of host specific information.
 
 ### Host Info ###
 
-Here you will find extensive information on single hosts that CFEngine detects automatically in your environment. Since this is data gathered per host, you need to select a single host from the menu on the left first.
+The host info page provides extensive information for an individual hosts including information about:
+
+* Identity
+* Operating System
+* Network details
+* Reporting Status
+* Software
+* Health
+* Inventory
+* Measurements
+
+![Host info page](Host-info-page.png)
 
 ## Host Health ##
 
