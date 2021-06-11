@@ -25,18 +25,26 @@ Visiting a leaf node provides a summary of host specific information.
 
 ### Host Info ###
 
-The host info page provides extensive information for an individual hosts including information about:
-
-* Identity
-* Operating System
-* Network details
-* Reporting Status
-* Software
-* Health
-* Inventory
-* Measurements
+The host info page provides extensive information for an individual host.
 
 ![Host info page](Host-info-page.png)
+
+#### Host Actions ####
+
+Take action on a host.
+
+![Host action buttons](host-action-buttons.png)
+
+* ![Run agent](host-info-run-agent.png) :: Request an unscheduled policy run
+* ![Collect reports](host-info-collect-reports.png):: Request report collection
+* ![Get URL](host-info-get-url.png):: Get the URL to the specific hosts info page
+* ![Delete host](host-info-delete-host.png) :: Delete the host
+
+#### Host specific data ####
+
+Assign host specific _Variables_ and _Classes_.
+
+![Host specific data](host-specific-data.png)
 
 ## Host Health ##
 
