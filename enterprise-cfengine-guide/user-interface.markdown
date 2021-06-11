@@ -20,7 +20,8 @@ The reports can be designed in a GUI report builder or directly with SQL
 statements passed to PostgreSQL.
 
 * [Dashboard][User Interface#Dashboard]
-* [Hosts and Health][User Interface#Hosts and Health]
+* [Hosts][User Interface#Hosts]
+* [Health][User Interface#Health]
 * [Reporting][User Interface#Reporting]
 * [Sharing][User Interface#Sharing]
 * [Measurements][User Interface#Measurements]
@@ -85,12 +86,18 @@ The hosts count widget helps to visualize the number of hosts bootstrapped to cf
 
 ![Dashboard Host count](dashboard-widget-hosts-count.png)
 
-## Hosts and Health
+## Hosts
 
 CFEngine collects data on promise compliance, and sorts hosts according to 3
 different categories: erroneous, fully compliant, and lacking data.
 
-Find out more: [Hosts and Health][]
+Find out more: [Hosts][]
+
+## Health
+
+Mission Portal highlights potential issues related to the correct function of CFEngine Enterprise.
+
+Find out more: [Health][]
 
 ## Reporting
 
