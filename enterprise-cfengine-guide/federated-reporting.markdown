@@ -59,7 +59,7 @@ federation policy to ensure that `semanage` is installed.
 }
 ```
 
-See the [federation.cf semanage_installed][cfe_internal/enterprise/federation/federation.cf#semanage_installed] bundle for details on which packages are used for various distributions.
+See the [federation.cf semanage_installed][cfe_internal/enterprise/federation/federation.cf#cfengine\_enterprise\_federation:semanage\_installed] bundle for details on which packages are used for various distributions.
 
 ### Hardware Requirements ###
 
