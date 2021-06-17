@@ -12,7 +12,11 @@ JSON data files, so you should view and edit them with a JSON-aware editor if
 possible. This is a convenient way to override defaults defined in the
 Masterfiles Policy Framework without modifying the shipped policy itself.
 
-There are two canonical augments files, `$(sys.workdir)/data/host_specific.json` (typically `/var/cfengine/data/host_specific.json`), which is read first and who's Variables take precedence, and `$(sys.policy_entry_dirname)/def.json` (typically `/var/cfengine/inputs/def.json`) which may load additional Augments as specified by the `augments` key.
+There are two canonical augments files, `$(sys.workdir)/data/host_specific.json`
+(typically `/var/cfengine/data/host_specific.json`), which is read first and
+who's Variables take precedence, and `$(sys.policy_entry_dirname)/def.json`
+(typically `/var/cfengine/inputs/def.json`) which may load additional Augments
+as specified by the `augments` key.
 
 The file `def.json` is found based on the location of the policy entry (the first policy file read by the agent):
 
@@ -408,11 +412,12 @@ R: def.centos_6_var == Defined ONLY in centos_6.json
 # History
 
 * 3.18.0
-** Introduced `variables` key with support for metadata (`comment`, `tags`) and targeting the _namespace_ and _bundle_.
-** Introduced ability for `vars` to target _namespace_ and _bundle_ `variables` key with support for metadata (`comment`, `tags`).
-** Introduced metadata (`comment`, `tags`) support for `classes` key.
-** Introduced `def_preferred.json` and  `--ignore-preferred-augments` to disable it.
-** Classes defined from augments are now _soft_ classes and not _hard_ classes.
+  * Introduced `variables` key with support for metadata (`comment`, `tags`) and targeting the _namespace_ and _bundle_.
+  * Introduced ability for `vars` to target _namespace_ and _bundle_ `variables` key with support for metadata (`comment`, `tags`).
+  * Introduced metadata (`comment`, `tags`) support for `classes` key.
+  * Introduced `def_preferred.json` and  `--ignore-preferred-augments` to disable it.
+  * Classes defined from augments are now _soft_ classes and not _hard_ classes.
+  * Introduced parsing of `$(sys.workdir)/data/host_specific.json`
 * 3.12.2, 3.14.0 introduced class expression interpretation (`::` suffix) to classes key
 * 3.12.0 introduced the `augments` key
 * 3.7.3 back port `def.json` parsing in core agent and load `def.json` if present next to policy entry
