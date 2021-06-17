@@ -146,7 +146,7 @@ bundle agent my_bundle
 
 **History:**
 
-- Added in 3.18.0
+* Added in 3.18.0
 
 ## vars
 
@@ -206,7 +206,7 @@ Variables of other types than string can be defined too, like in this example
 
 **History:**
 
-- 3.18.0 gained ability to specify the _namespace_ and _bundle_ the variable should be defined in.
+* 3.18.0 gained ability to specify the _namespace_ and _bundle_ the variable should be defined in.
 
 ## classes
 
@@ -358,8 +358,8 @@ myclass_defined_by_augments_in_def_json_3_18_0_v1            optional,tags,sourc
 **History:**
 
 * 3.18.0
-** Support for dict structure for classes and support for metadata (`comment`, `tags`) added.
-** Classes are defined as _soft_ classes instead of _hard_ classes.
+  * Support for dict structure for classes and support for metadata (`comment`, `tags`) added.
+  * Classes are defined as _soft_ classes instead of _hard_ classes.
 
 
 ## augments
