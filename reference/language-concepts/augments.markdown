@@ -409,7 +409,7 @@ R: def.my_other_var == Defined ONLY in def.json
 R: def.centos_6_var == Defined ONLY in centos_6.json
 ```
 
-**History:**
+## History
 
 * 3.18.0
   * Introduced `variables` key with support for metadata (`comment`, `tags`) and targeting the _namespace_ and _bundle_.
