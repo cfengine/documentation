@@ -13,7 +13,7 @@ tags: [reference, functions, string]
 
 If `arg` is a container reference it will be serialized to a string.
 The reference must be indicated with `@(some_container)`.
-Strings are *not* interpretted as references.
+Strings are *not* interpreted as references.
 
 **Example:** 
 

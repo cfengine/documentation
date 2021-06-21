@@ -11,7 +11,7 @@ tags: [reference, utility functions, functions, execresult_as_data, cached funct
 
 Functions in the same way as [`execresult()`][execresult], and takes the same parameters.
 Unlike [`execresult()`][execresult], and [`returnszero()`][returnszero], this function allows
-you to test, store, or inspect both exit code and output from the samme command execution.
+you to test, store, or inspect both exit code and output from the same command execution.
 
 [%CFEngine_function_attributes(command, shell, output)%]
 
