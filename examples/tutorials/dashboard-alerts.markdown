@@ -44,7 +44,7 @@ Done!
 
 You have created a Dashboard Alert for our user management policy. Whenever the policy is out of compliance (not kept), we will be notified.
 
-On the first screen below, we see that the alert has been triggered on zeor of our three hosts (0 / 3). This is exactly what we want. There is no promise not kept anywhere, which means we are in compliance.
+On the first screen below, we see that the alert has been triggered on zero of our three hosts (0 / 3). This is exactly what we want. There is no promise not kept anywhere, which means we are in compliance.
 
 ![Details of alerts in widget](create_dashboard_alert4.png)
 
