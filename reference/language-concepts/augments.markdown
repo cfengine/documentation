@@ -51,9 +51,11 @@ For example:
 ```json
 {
     "variables": {
-        "VariableWithImplicitNamespaceAndBundle": "value",
-        "comment": "An optional note about why this variable is important",
-        "tags": [ "optional", "tags" ]
+        "VariableWithImplicitNamespaceAndBundle": {
+            "value": "value",
+            "comment": "An optional note about why this variable is important",
+            "tags": [ "optional", "tags" ]
+        }
     }
 }
 ```
@@ -65,9 +67,11 @@ For example:
 ```json
 {
     "variables": {
-        "my_bundle.VariableWithImplicitNamespace": "value",
-        "comment": "An optional note about why this variable is important",
-        "tags": [ "optional", "tags" ]
+        "my_bundle.VariableWithImplicitNamespace": {
+            "value": "value",
+            "comment": "An optional note about why this variable is important",
+            "tags": [ "optional", "tags" ]
+        }
     }
 }
 ```
@@ -79,9 +83,11 @@ For example:
 ```json
 {
     "variables": {
-        "MyNamespace:my_bundle.Variable": "value",
-        "comment": "An optional note about why this variable is important",
-        "tags": [ "optional", "tags" ]
+        "MyNamespace:my_bundle.Variable": {
+            "value": "value",
+            "comment": "An optional note about why this variable is important",
+            "tags": [ "optional", "tags" ]
+        }
     }
 }
 ```
@@ -93,8 +99,10 @@ For example, this JSON:
 ```json
 {
     "variables": {
-        "MyNamespace:my_bundle.Variable": "value",
-        "comment": "An optional note about why this variable is important"
+        "MyNamespace:my_bundle.Variable": {
+            "value": "value",
+            "comment": "An optional note about why this variable is important"
+        }
     }
 }
 ```
@@ -122,8 +130,10 @@ For example, this JSON:
 ```json
 {
     "variables": {
-        "MyNamespace:my_bundle.Variable": "value",
-        "tags": [ "inventory", "attribute_name=My Inventory" ]
+        "MyNamespace:my_bundle.Variable": {
+            "value": "value",
+            "tags": [ "inventory", "attribute_name=My Inventory" ]
+        }
     }
 }
 ```
