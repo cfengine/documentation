@@ -42,7 +42,7 @@ files.
 
 ## variables
 
-This key is supported in both `host_sepecific.json`, `def.json`, `def_preferred.json`, and augments loaded by the augments key.
+This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the augments key.
 
 Variables defined here can target a _namespace_ and or _bundle_ scope explicitly. When defined from `host_specific.json`, variables default to the `main` _bundle_ in the `data` __namespace_ (`$(data:main.MyVariable)`).
 
