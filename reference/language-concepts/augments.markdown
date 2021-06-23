@@ -52,9 +52,7 @@ For example:
 {
     "variables": {
         "VariableWithImplicitNamespaceAndBundle": {
-            "value": "value",
-            "comment": "An optional note about why this variable is important",
-            "tags": [ "optional", "tags" ]
+            "value": "value"
         }
     }
 }
@@ -68,9 +66,7 @@ For example:
 {
     "variables": {
         "my_bundle.VariableWithImplicitNamespace": {
-            "value": "value",
-            "comment": "An optional note about why this variable is important",
-            "tags": [ "optional", "tags" ]
+            "value": "value"
         }
     }
 }
@@ -84,9 +80,7 @@ For example:
 {
     "variables": {
         "MyNamespace:my_bundle.Variable": {
-            "value": "value",
-            "comment": "An optional note about why this variable is important",
-            "tags": [ "optional", "tags" ]
+            "value": "value"
         }
     }
 }
