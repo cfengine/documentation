@@ -42,7 +42,7 @@ files.
 
 ## variables
 
-This key is supported in both `host_sepecific.json`, `def.json`, `def_preferred.json`, and augments loaded by the augments key.
+This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the augments key.
 
 Variables defined here can target a _namespace_ and or _bundle_ scope explicitly. When defined from `host_specific.json`, variables default to the `main` _bundle_ in the `data` __namespace_ (`$(data:main.MyVariable)`).
 
@@ -51,9 +51,9 @@ For example:
 ```json
 {
     "variables": {
-        "VariableWithImplicitNamespaceAndBundle": "value",
-        "comment": "An optional note about why this variable is important",
-        "tags": [ "optional", "tags" ]
+        "VariableWithImplicitNamespaceAndBundle": {
+            "value": "value"
+        }
     }
 }
 ```
@@ -65,9 +65,9 @@ For example:
 ```json
 {
     "variables": {
-        "my_bundle.VariableWithImplicitNamespace": "value",
-        "comment": "An optional note about why this variable is important",
-        "tags": [ "optional", "tags" ]
+        "my_bundle.VariableWithImplicitNamespace": {
+            "value": "value"
+        }
     }
 }
 ```
@@ -79,9 +79,9 @@ For example:
 ```json
 {
     "variables": {
-        "MyNamespace:my_bundle.Variable": "value",
-        "comment": "An optional note about why this variable is important",
-        "tags": [ "optional", "tags" ]
+        "MyNamespace:my_bundle.Variable": {
+            "value": "value"
+        }
     }
 }
 ```
@@ -93,8 +93,10 @@ For example, this JSON:
 ```json
 {
     "variables": {
-        "MyNamespace:my_bundle.Variable": "value",
-        "comment": "An optional note about why this variable is important"
+        "MyNamespace:my_bundle.Variable": {
+            "value": "value",
+            "comment": "An optional note about why this variable is important"
+        }
     }
 }
 ```
@@ -122,8 +124,10 @@ For example, this JSON:
 ```json
 {
     "variables": {
-        "MyNamespace:my_bundle.Variable": "value",
-        "tags": [ "inventory", "attribute_name=My Inventory" ]
+        "MyNamespace:my_bundle.Variable": {
+            "value": "value",
+            "tags": [ "inventory", "attribute_name=My Inventory" ]
+        }
     }
 }
 ```
