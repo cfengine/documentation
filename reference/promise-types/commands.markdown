@@ -423,7 +423,7 @@ be useful in all cases.
 
 **Type:** [`boolean`][boolean]
 
-**Default value:** false
+**Default value:** true
 
 **Example:**
 
