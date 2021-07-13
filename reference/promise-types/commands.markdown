@@ -86,6 +86,8 @@ is to use a wrapper script which prints the line `cfengine-die` to STDOUT after
 restarting the process. This causes cfengine to close the pipe forcibly and
 continue.
 
+**See also:** [Bundles and Bodies for commands in the stdlib][lib/commands.cf]
+
 ****
 
 ## Attributes ##
