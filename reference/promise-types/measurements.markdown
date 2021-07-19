@@ -169,7 +169,7 @@ A synonym for 'scalar'.
 * `log`
 
 The measured value is logged as an infinite time-series in
-`$(sys.workdir)/state`.
+`$(sys.workdir)/state/<handle>_measure.log`.
 
 * `weekly`
 
@@ -188,6 +188,13 @@ is retained.
       units => "kB",
       match_value => free_memory;
 ```
+
+**Notes:**
+
+* Measurements with history type `weekly` _are collected_ by CFEngine Enterprise reporting.
+* Measurements with history type `static` are _not collected_ by CFEngine Enterprise reporting.
+* Measurements with history type `scalar` are _not collected_ by CFEngine Enterprise reporting.
+* Measurements with history type `log` are _not collected_ by CFEngine Enterprise reporting.
 
 ### units
 
