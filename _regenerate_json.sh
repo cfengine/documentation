@@ -22,10 +22,36 @@ OUTDIR=${WRKDIR}/documentation-generator/_generated/
 # documentation system.
 POLICYROOT=${WRKDIR}/masterfiles/
 
+# use different paths to executables depending on whether we build using "legacy" pipeline
+# (in this case they are in build dir), or pr-pipeline (in this case they are installed in
+# /var/cfengine/bin dir)
+if [[ $BUILD_TAG =~ jenkins-build-documentation ]]
+then
+    cf_promises="${WRKDIR}/core/cf-promises/cf-promises"
+    dumpHelp() {
+        # helper function to find and execute given ($1) binary
+        # either in $WRKDIR/core or nova subdir
+        agent="$1"
+        if [ -x "${WRKDIR}/core/${agent}/${agent}" ]; then
+            ${WRKDIR}/core/${agent}/${agent} --help > ${OUTDIR}/${agent}.help && echo "Extracted --help output from ${agent}"
+        elif [ -x "${WRKDIR}/nova/${agent}/${agent}" ]; then
+            ${WRKDIR}/nova/${agent}/${agent} --help > ${OUTDIR}/${agent}.help && echo "Extracted --help output from ${agent}"
+        else
+            echo "WARNING: No executable agent found at ${WRKDIR}/core/${agent}/${agent}"
+            echo "WARNING: No executable agent found at ${WRKDIR}/nova/${agent}/${agent}"
+        fi
+    }
+else
+    cf_promises="/var/cfengine/bin/cf-promises"
+    dumpHelp() {
+        "/var/cfengine/bin/$1" --help
+    }
+fi
+
 # Here we generate the syntax map. This is used to ensure information about
 # function prototypes, return types, and default values are up to date.
 
-${WRKDIR}/core/cf-promises/cf-promises --syntax-description json > ${OUTDIR}/syntax_map.json
+"$cf_promises" --syntax-description json > ${OUTDIR}/syntax_map.json
 
 # We generate a JSON representation of each .cf file that is not in the tests
 # directory
@@ -43,7 +69,7 @@ do
     fi
 
     # We strip error lines because of CFE-2370 and CFE-2696
-    ${WRKDIR}/core/cf-promises/cf-promises --eval-functions --policy-output-format=json ${policy} | sed '/   error\:.*/d' >  ${out}
+    "$cf_promises" --eval-functions --policy-output-format=json ${policy} | sed '/   error\:.*/d' >  ${out}
     # Do we need --eval-functions?
     echo "Writing '${out}'"
     printf '%0.1s' "-"{1..60}
@@ -68,20 +94,12 @@ done
     echo cf-secret
 ) | while read agent
 do
-    if [ -x "${WRKDIR}/core/${agent}/${agent}" ]; then
-        ${WRKDIR}/core/${agent}/${agent} --help > ${OUTDIR}/${agent}.help && echo "Extracted --help output from ${agent}"
-    elif [ -x "${WRKDIR}/nova/${agent}/${agent}" ]; then
-         ${WRKDIR}/nova/${agent}/${agent} --help > ${OUTDIR}/${agent}.help && echo "Extracted --help output from ${agent}"
-    else
-        echo "WARNING: No executable agent found at ${WRKDIR}/core/${agent}/${agent}"
-        echo "WARNING: No executable agent found at ${WRKDIR}/nova/${agent}/${agent}"
-    fi
+    dumpHelp ${agent} > ${OUTDIR}/${agent}.help
 done
 
 # Here we execute and store some command output so that examples can always be up to date.
 
 # cf-promises
-${WRKDIR}/core/cf-promises/cf-promises --file "${POLICYROOT}/promises.cf" --show-vars > ${OUTDIR}/cf-promises_--show-vars.txt && echo "Stored cf-promises --show-vars output in ${OUTDIR}/cf-promises_--show-vars.txt"
+"$cf_promises" --file "${POLICYROOT}/promises.cf" --show-vars > ${OUTDIR}/cf-promises_--show-vars.txt && echo "Stored cf-promises --show-vars output in ${OUTDIR}/cf-promises_--show-vars.txt"
 
-${WRKDIR}/core/cf-promises/cf-promises --file "${POLICYROOT}/promises.cf" --show-classes > ${OUTDIR}/cf-promises_--show-classes.txt && echo "Stored cf-promises --show-classes output in ${OUTDIR}/cf-promises_--show-classes.txt"
-
+"$cf_promises" --file "${POLICYROOT}/promises.cf" --show-classes > ${OUTDIR}/cf-promises_--show-classes.txt && echo "Stored cf-promises --show-classes output in ${OUTDIR}/cf-promises_--show-classes.txt"
