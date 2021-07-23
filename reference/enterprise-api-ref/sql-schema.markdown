@@ -753,6 +753,7 @@ Stores 1 record for each observable per host.
 
 * **lastupdatedsample** *(integer)*
     Value of most recently collected measurement.
+
 ## Table: PromiseExecutions
 
 Promises executed on hosts during their last reported cf-agent run.
