@@ -34,7 +34,7 @@ most easily with the `cf-check` command:
 cf-check dump /var/cfengine/state/cf_observations.lmdb
 ```
 
-By default in the [Masterfiles Policy Framework][Masterfiles Policy Framework], `cf-serverd` uses two variables, `def.default_data_select_host_monitoring_include` and `def.default_data_select_policy_hub_monitoring_include` to [configure which measurements will be included in enterprise reporting][Masterfiles Policy Framework#Configure Enterprise Measurement/Monitoring Collection].
+By default in the [Masterfiles Policy Framework][Masterfiles Policy Framework], `cf-serverd` uses two variables, `def.default_data_select_host_monitoring_include` and `def.default_data_select_policy_hub_monitoring_include` to [configure which measurements will be included in enterprise reporting][mpf-configure-measurement-collection].
 
 On the hub side, reports are collected and measurements data is inserted into the [`MonitoringHG`][SQL Schema#Table: MonitoringYrMeta]  [`MonitoringMgMeta`][SQL Schema#Table: MonitoringMgMeta] and [`MonitoringYrMeta`][SQL Schema#Table: MonitoringYrMeta] tables of the Enterprise Hub database.
 
@@ -58,7 +58,7 @@ Measurement data is presented in Mission Portal in the [`Measurements App`][Meas
 
 When policy is changed in regards to monitor bundles, both `cf-monitord` _and_ `cf-serverd` should be restarted in order to receive the updated policy.
 
-It is possible to [configure masterfiles to restart `cf-monitord` when variables which affect it's configuration are changed][Masterfiles Policy Framework#Configure MPF to automatically restart components on relevant data change].
+It is possible to [configure masterfiles to restart `cf-monitord` when variables which affect it's configuration are changed][mpf-configure-component-restart].
 
 All measurements historical data is stored in `${sys.statedir}/cf_observations.lmdb`. This is where reporting data is pulled from.
 
