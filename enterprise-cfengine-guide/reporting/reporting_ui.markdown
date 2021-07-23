@@ -51,6 +51,8 @@ Users not familiar with SQL syntax can easily create their own custom reports in
 * Limit - Limit the number of entries in your report. This is a recommended practice for testing your query, and even in production it may be helpful if you don't need to see every entry.
 * Show me the query - View and edit the SQL query directly. Please note, that editing the query directly here will invalidate your choices in the query builder interface, and changing your selections there will override your SQL query.
 
+![Report Builder](Report-Builder-3.18.0.png)
+
 ### Ensure the report collection is working ###
 
 * The reporting bundle must be called from `promises.cf`. For example,

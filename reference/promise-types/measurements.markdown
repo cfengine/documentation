@@ -20,27 +20,91 @@ bundle destined for the agent concerned, in this case `monitor`. However, it is
 not necessary to add them to the `bundlesequence`, because `cf-monitord`
 executes all bundles of type `monitor`.
 
+Information gathered by `cf-monitord` is stored in `${sys.statedir}/env_data` to
+share with other agents like `cf-agent` and `cf-promises` which both provide three
+variables per measurement with different prefixes: `value_` for the latest measurement,
+`av_` for the running average and `dev_` for the standard deviation of the running average.
+
+The standard measurements and their variable names are listed in [`mon` special variables][mon].
+
+The data over time is stored in `${sys.statedir}/cf_observations.lmdb` which can be examined
+most easily with the `cf-check` command:
+
+```
+cf-check dump /var/cfengine/state/cf_observations.lmdb
+```
+
+By default in the [Masterfiles Policy Framework][Masterfiles Policy Framework], `cf-serverd` uses two variables, `def.default_data_select_host_monitoring_include` and `def.default_data_select_policy_hub_monitoring_include` to [configure which measurements will be included in enterprise reporting][Masterfiles Policy Framework#Configure Enterprise Measurement/Monitoring Collection].
+
+On the hub side, reports are collected and measurements data is inserted into the [`MonitoringHG`][SQL Schema#Table: MonitoringYrMeta]  [`MonitoringMgMeta`][SQL Schema#Table: MonitoringMgMeta] and [`MonitoringYrMeta`][SQL Schema#Table: MonitoringYrMeta] tables of the Enterprise Hub database.
+
+A diagnostic query to run with a [Custom Report in Mission Portal][Reporting UI].
+
+Select all unique observables in the database:
+
+```sql
+SELECT distinct(observable) FROM monitoringmgmeta;
+```
+
+To see which measures are collected for each host, select all data from this
+table and then use report result filters to examine a particular host or measure's having
+data or not.
+
+```sql
+SELECT * FROM monitoringmgmeta;
+```
+
+Measurement data is presented in Mission Portal in the [`Measurements App`][Measurements App] and in the ```Measurements``` section of the [`Host Info page`][Hosts#Host Info].
+
+When policy is changed in regards to monitor bundles, both `cf-monitord` _and_ `cf-serverd` should be restarted in order to receive the updated policy.
+
+It is possible to [configure masterfiles to restart `cf-monitord` when variables which affect it's configuration are changed][Masterfiles Policy Framework#Configure MPF to automatically restart components on relevant data change].
+
+All measurements historical data is stored in `${sys.statedir}/cf_observations.lmdb`. This is where reporting data is pulled from.
+
+`${sys.statedir}/env_data` is a current snapshot of measurement values which agents (`cf-agent` and `cf-promises`) use to generate the [special monitor variables][mon].
+
+`${sys.statedir}/ts_key` is the source for the list of observables/measurements used in the system. This file includes the integer id, name and other meta data in a slightly human readable form, for example:
+
+```
+0,users,Users with active processes - including system users,average users per 2.5 mins,0.000,100.000,1
+```
+
+The `ts_key` file should not be altered.
+
+Note that if a measurement has _always_ had a value of zero it will not be reported and so not available in Mission Portal Measurements or Host Info pages.
+
 ```cf3
 bundle monitor self_watch
 {
   measurements:
     # Follow a special process over time
     # using CFEngine's process cache to avoid resampling
+
+    # Example content from /var/cfengine/state/cf_rootprocs
+    #USER                             PID         PPID          PGID          %CPU         %MEM        VSZ        NI         RSS    TTY      NLWP STIME     ELAPSED     TIME COMMAND
+    #root                             19103       1             19103         0.2          2.1         71716      0          10676  ?           1 18:09       40:13 00:00:06 /var/cfengine/bin/cf-monitord --no-fork
+
+    # match_value:
+    #root \s+                         [0-9.]+ \s+ [0-9.]+  \s+  [0-9.]+ \s+   [0-9.]+ \s+  [0-9.]+ \s+ [0-9]+ \s+ [0-9]+ \s+ ([0-9]+) .*"
+
   
      "/var/cfengine/state/cf_rootprocs"
   
-        handle => "monitor_self_watch",
+        handle => "cf_monitord_RSS",
         stream_type => "file",
         data_type => "int",
         history_type => "weekly",
-        units => "kB",
+        units => "kb",
         match_value => proc_value(".*cf-monitord.*",
-           "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
+        "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*"),
+        comment => "The ammount of memory (RSS or Resident Set Size) cf-monitored is consuming";
 }
 
 body match_value proc_value(x,y)
 {
   select_line_matching => "$(x)";
+  select_multiline_policy => "sum";
   extraction_regex => "$(y)";
 }
 ```
