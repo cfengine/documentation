@@ -20,6 +20,75 @@ bundle destined for the agent concerned, in this case `monitor`. However, it is
 not necessary to add them to the `bundlesequence`, because `cf-monitord`
 executes all bundles of type `monitor`.
 
+```cf3
+bundle monitor self_watch
+{
+  measurements:
+    # Follow a special process over time
+    # using CFEngine's process cache to avoid resampling
+
+    # Example content from /var/cfengine/state/cf_rootprocs
+    #USER                             PID         PPID          PGID          %CPU         %MEM        VSZ        NI         RSS    TTY      NLWP STIME     ELAPSED     TIME COMMAND
+    #root                             19103       1             19103         0.2          2.1         71716      0          10676  ?           1 18:09       40:13 00:00:06 /var/cfengine/bin/cf-monitord --no-fork
+
+    # match_value:
+    #root \s+                         [0-9.]+ \s+ [0-9.]+  \s+  [0-9.]+ \s+   [0-9.]+ \s+  [0-9.]+ \s+ [0-9]+ \s+ [0-9]+ \s+ ([0-9]+) .*"
+
+
+     "/var/cfengine/state/cf_rootprocs"
+
+        handle => "cf_monitord_RSS",
+        stream_type => "file",
+        data_type => "int",
+        history_type => "weekly",
+        units => "kb",
+        match_value => proc_value(".*cf-monitord.*",
+        "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*"),
+        comment => "The ammount of memory (RSS or Resident Set Size) cf-monitored is consuming";
+}
+
+body match_value proc_value(x,y)
+{
+  select_line_matching => "$(x)";
+  select_multiline_policy => "sum";
+  extraction_regex => "$(y)";
+}
+```
+
+
+```cf3
+bundle monitor watch_diskspace
+{
+  measurements:
+    # Discover disk device information
+    "/bin/df"
+      handle => "free_diskspace_watch",
+      stream_type => "pipe",
+      data_type => "slist",
+      history_type => "static",
+      units => "device",
+      match_value => file_systems;
+
+}
+
+body match_value file_systems
+{
+  select_line_matching => "/.*";
+  extraction_regex => "(.*)";
+}
+```
+
+The general pattern of these promises is to decide whether the source of the
+information is either a file or pipe, determine the data type (integer, string
+etc.), specify a pattern to match the result in the file stream and then specify
+what to do with the result afterwards.
+
+**History:**
+
+* Custom measurements open sourced in 3.12.0
+
+## Architecture
+
 Information gathered by `cf-monitord` is stored in `${sys.statedir}/env_data` to
 share with other agents like `cf-agent` and `cf-promises` which both provide three
 variables per measurement with different prefixes: `value_` for the latest measurement,
@@ -74,78 +143,12 @@ The `ts_key` file should not be altered.
 
 Note that if a measurement has _always_ had a value of zero it will not be reported and so not available in Mission Portal Measurements or Host Info pages.
 
-```cf3
-bundle monitor self_watch
-{
-  measurements:
-    # Follow a special process over time
-    # using CFEngine's process cache to avoid resampling
-
-    # Example content from /var/cfengine/state/cf_rootprocs
-    #USER                             PID         PPID          PGID          %CPU         %MEM        VSZ        NI         RSS    TTY      NLWP STIME     ELAPSED     TIME COMMAND
-    #root                             19103       1             19103         0.2          2.1         71716      0          10676  ?           1 18:09       40:13 00:00:06 /var/cfengine/bin/cf-monitord --no-fork
-
-    # match_value:
-    #root \s+                         [0-9.]+ \s+ [0-9.]+  \s+  [0-9.]+ \s+   [0-9.]+ \s+  [0-9.]+ \s+ [0-9]+ \s+ [0-9]+ \s+ ([0-9]+) .*"
-
-  
-     "/var/cfengine/state/cf_rootprocs"
-  
-        handle => "cf_monitord_RSS",
-        stream_type => "file",
-        data_type => "int",
-        history_type => "weekly",
-        units => "kb",
-        match_value => proc_value(".*cf-monitord.*",
-        "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*"),
-        comment => "The ammount of memory (RSS or Resident Set Size) cf-monitored is consuming";
-}
-
-body match_value proc_value(x,y)
-{
-  select_line_matching => "$(x)";
-  select_multiline_policy => "sum";
-  extraction_regex => "$(y)";
-}
-```
-
 It is important to specify a promise `handle` for measurement promises, as the
 names defined in the handle are used to determine the name of the log file or
 variable to which data will be reported. Log files are created under
 `WORKDIR/state`. Data that have no history type are stored in a special variable
 context called `mon`, analogous to the system variables in sys. Thus the values
 may be used in other promises in the form `$(mon.handle)`.
-
-```cf3
-bundle monitor watch_diskspace
-{
-  measurements:
-    # Discover disk device information
-    "/bin/df"
-      handle => "free_diskspace_watch",
-      stream_type => "pipe",
-      data_type => "slist",
-      history_type => "static",
-      units => "device",
-      match_value => file_systems;
-
-}
-
-body match_value file_systems
-{
-  select_line_matching => "/.*";
-  extraction_regex => "(.*)";
-}
-```
-
-The general pattern of these promises is to decide whether the source of the
-information is either a file or pipe, determine the data type (integer, string
-etc.), specify a pattern to match the result in the file stream and then specify
-what to do with the result afterwards.
-
-**History:**
-
-* Custom measurements open sourced in 3.12.0
 
 ***
 
