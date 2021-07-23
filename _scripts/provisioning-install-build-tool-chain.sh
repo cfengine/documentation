@@ -64,7 +64,7 @@ sudo apt-get -qy install bison flex binutils build-essential fakeroot ntp dpkg-d
 ## RVM helps us manage the ruby dependencies and ruby versions in a contained way.
 
 # Install mpapis public key (might need `gpg2` and or `sudo`)
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 
 echo "Downloading and installing Ruby Version Manager"
 # Download the installer
