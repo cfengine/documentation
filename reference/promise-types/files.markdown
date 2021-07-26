@@ -2795,12 +2795,7 @@ the r flag is specified in `mode`.
 
 **Example:**
 
-```cf3
-     body perms rxdirs
-     {
-     rxdirs => "false";
-     }
-```
+[%CFEngine_include_example(rxdirs.cf)%]
 
 **See also:** `mode`
 
