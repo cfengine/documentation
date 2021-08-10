@@ -8,7 +8,7 @@ tags: [Examples, Tutorials, Alerts, Enterprise, Custom Actions]
 
 Custom actions can be used to integrate with external 3rd party systems. This tutorial shows how to use a custom action script to open a ticket in Jira when a condition is observed.
 
-<iframe width="560" height="315" src="https://youtu.be/X5zXn1LdqP0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X5zXn1LdqP0" frameborder="0" allowfullscreen></iframe>
 
 ## How it works
 
