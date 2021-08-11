@@ -6,13 +6,12 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-{% comment %}
 Diego Zamboni, discusses why CFEngine is a critical component of maintaining IT system security. Many vulnerabilities are directly caused by faulty configurations, so security is closely linked to how well configuration management works.
 
 Learn how security has been built into CFEngine architecture and how CFEngine keeps your organization secure by continuously running checks of settings, files, databases, services and registries, and correcting them when required.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7gb7ic0T708" frameborder="0" allowfullscreen></iframe>
-{% endcomment %}
+
 ## Architecture Principles
 
 CFEngine is agent based software. It resides on and runs processes on each
