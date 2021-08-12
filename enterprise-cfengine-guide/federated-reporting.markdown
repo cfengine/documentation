@@ -694,7 +694,7 @@ Follow this procedure:
 * Import any saved information into Mission Portal via the [Import & Export API] or Mission Portal Settings UI
 * Wait 20 minutes for federated reporting to be updated from feeders to superhub
 
-or
+  or
 
-- run `cf-agent -KI` on each feeder, and then `cf-agent -KI` on the superhub to manually force a Federated Reporting collection cycle.
+  * run `cf-agent -KI` on each feeder, and then `cf-agent -KI` on the superhub to manually force a Federated Reporting collection cycle.
 
