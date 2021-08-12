@@ -670,7 +670,7 @@ Follow this procedure:
 
 (Note: for the superhub it is a good idea to bootstrap to localhost to prevent any agents from connecting to the superhub)
 - Reconfigure all feeders (3.15 series and newer, skip for 3.12 series feeder hubs)
-   - edit /opt/cfengine/federation/cfapache/federation-config.json to remove all entries in the `remote_hubs` property.
+   - edit `/opt/cfengine/federation/cfapache/federation-config.json` to remove all entries in the `remote_hubs` property.
      similar to the following:
       ```json
       {
@@ -681,7 +681,7 @@ Follow this procedure:
       }
       ```
 
- - On 3.15.x and greater feeders, also truncate the remote_hubs table:
+ - On 3.15.x and greater feeders, also truncate the `remote_hubs` table:
 
     ```console
     # /var/cfengine/bin/psql cfsettings -s 'truncate remote_hubs'
