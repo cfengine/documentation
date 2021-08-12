@@ -631,15 +631,15 @@ If there are unique items like custom reports, dashboards, alerts or conditions 
 you may use the [Import & Export API] or Mission Portal Settings UI to export and then import after upgrading.
 
 Follow this procedure:
-- Download the new version from the [Enterprise Downloads Page][enterprise software download page]
-- Export any items from Mission Portal you wish to migrate
-- Stop all cfengine services on the superhub
+* Download the new version from the [Enterprise Downloads Page][enterprise software download page]
+* Export any items from Mission Portal you wish to migrate
+* Stop all cfengine services on the superhub
 
    ```console
    # systemctl stop cfengine3
    ```
 
-- Uninstall cfengine hub
+* Uninstall cfengine hub
 
    ```console
    # rpm -e cfengine-nova-hub
@@ -651,20 +651,20 @@ Follow this procedure:
    # apt-get remove cfengine-nova-hub
    ```
 
-- Cleanup directories
+* Cleanup directories
 
    ```console
    # rm -rf /var/cfengine
    # rm -rf /opt/cfengine
    ```
-- Install new version of cfengine
-- Confirm succesful installation
+* Install new version of cfengine
+* Confirm succesful installation
 
    ```console
    # grep -i err /var/log/CFEngineInstall.log
    ```
 
-- Bootstrap the superhub to itself
+* Bootstrap the superhub to itself
 
    ```console
    # cf-agent --bootstrap localhost
@@ -672,9 +672,10 @@ Follow this procedure:
 
    (Note: for the superhub it is a good idea to bootstrap to localhost to prevent any agents from connecting to the superhub)
 
-- Reconfigure all feeders (3.15 series and newer, skip for 3.12 series feeder hubs)
-   - edit `/opt/cfengine/federation/cfapache/federation-config.json` to remove all entries in the `remote_hubs` property.
+* Reconfigure all feeders (3.15 series and newer, skip for 3.12 series feeder hubs)
+   * edit `/opt/cfengine/federation/cfapache/federation-config.json` to remove all entries in the `remote_hubs` property.
      similar to the following:
+
       ```json
       {
           "hostname": null,
@@ -684,14 +685,14 @@ Follow this procedure:
       }
       ```
 
- - On 3.15.x and greater feeders, also truncate the `remote_hubs` table:
+   * On 3.15.x and greater feeders, also truncate the `remote_hubs` table:
 
-    ```console
-    # /var/cfengine/bin/psql cfsettings -s 'truncate remote_hubs'
-    ```
-- Reinstall and configure the superhub as described in [Installation][Federated Reporting#Installation]
-- Import any saved information into Mission Portal via the [Import & Export API] or Mission Portal Settings UI
-- Wait 20 minutes for federated reporting to be updated from feeders to superhub
+      ```console
+      # /var/cfengine/bin/psql cfsettings -s 'truncate remote_hubs'
+      ```
+* Reinstall and configure the superhub as described in [Installation][Federated Reporting#Installation]
+* Import any saved information into Mission Portal via the [Import & Export API] or Mission Portal Settings UI
+* Wait 20 minutes for federated reporting to be updated from feeders to superhub
 
 or
 
