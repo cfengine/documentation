@@ -650,7 +650,9 @@ Follow this procedure:
    ```console
    # apt-get remove cfengine-nova-hub
    ```
+
 - Cleanup directories
+
    ```console
    # rm -rf /var/cfengine
    # rm -rf /opt/cfengine
@@ -668,7 +670,8 @@ Follow this procedure:
    # cf-agent --bootstrap localhost
    ```
 
-(Note: for the superhub it is a good idea to bootstrap to localhost to prevent any agents from connecting to the superhub)
+   (Note: for the superhub it is a good idea to bootstrap to localhost to prevent any agents from connecting to the superhub)
+
 - Reconfigure all feeders (3.15 series and newer, skip for 3.12 series feeder hubs)
    - edit `/opt/cfengine/federation/cfapache/federation-config.json` to remove all entries in the `remote_hubs` property.
      similar to the following:
@@ -686,8 +689,7 @@ Follow this procedure:
     ```console
     # /var/cfengine/bin/psql cfsettings -s 'truncate remote_hubs'
     ```
-
-- Reinstall and configure the superhub as described in [#Installation]
+- Reinstall and configure the superhub as described in [Installation][Federated Reporting#Installation]
 - Import any saved information into Mission Portal via the [Import & Export API] or Mission Portal Settings UI
 - Wait 20 minutes for federated reporting to be updated from feeders to superhub
 
