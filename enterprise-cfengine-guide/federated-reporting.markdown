@@ -623,7 +623,7 @@ $ curl -k -s -X DELETE -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub/1
 
 ## Superhub Upgrade ##
 
-For hub versions in the 3.15 and 3.18 series the superhub can not be upgraded by installing a new binary package.
+For hub versions in the 3.15 and 3.18 series the superhub can not be directly upgraded by installing a new binary package.
 
 Typically the superhub doesn't have unique information or serve policy.
 This makes it reasonable and easy to upgrade the superhub with a fresh install.
