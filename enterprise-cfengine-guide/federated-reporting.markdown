@@ -635,36 +635,36 @@ Follow this procedure:
 - Export any items from Mission Portal you wish to migrate
 - Stop all cfengine services on the superhub
 
-   ```
+   ```console
    # systemctl stop cfengine3
    ```
 
 - Uninstall cfengine hub
 
-   ```
+   ```console
    # rpm -e cfengine-nova-hub
    ```
 
    or
 
-   ```
+   ```console
    # apt-get remove cfengine-nova-hub
    ```
 - Cleanup directories
-   ```
+   ```console
    # rm -rf /var/cfengine
    # rm -rf /opt/cfengine
    ```
 - Install new version of cfengine
 - Confirm succesful installation
 
-   ```
+   ```console
    # grep -i err /var/log/CFEngineInstall.log
    ```
 
 - Bootstrap the superhub to itself
 
-   ```
+   ```console
    # cf-agent --bootstrap localhost
    ```
 
@@ -672,7 +672,7 @@ Follow this procedure:
 - Reconfigure all feeders (3.15 series and newer, skip for 3.12 series feeder hubs)
    - edit /opt/cfengine/federation/cfapache/federation-config.json to remove all entries in the `remote_hubs` property.
      similar to the following:
-      ```
+      ```json
       {
           "hostname": null,
           "role": "feeder",
@@ -683,7 +683,7 @@ Follow this procedure:
 
  - On 3.15.x and greater feeders, also truncate the remote_hubs table:
 
-    ```
+    ```console
     # /var/cfengine/bin/psql cfsettings -s 'truncate remote_hubs'
     ```
 
