@@ -631,6 +631,7 @@ If there are unique items like custom reports, dashboards, alerts or conditions 
 you may use the [Import & Export API] or Mission Portal Settings UI to export and then import after upgrading.
 
 Follow this procedure:
+
 * Download the new version from the [Enterprise Downloads Page][enterprise software download page]
 * Export any items from Mission Portal you wish to migrate
 * Stop all cfengine services on the superhub
