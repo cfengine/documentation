@@ -689,7 +689,7 @@ Follow this procedure:
    * On 3.15.x and greater feeders, also truncate the `remote_hubs` table:
 
       ```console
-      # /var/cfengine/bin/psql cfsettings -s 'truncate remote_hubs'
+      # /var/cfengine/bin/psql cfsettings -c 'TRUNCATE remote_hubs'
       ```
 * Reinstall and configure the superhub as described in [Installation][Federated Reporting#Installation]
 * Import any saved information into Mission Portal via the [Import & Export API] or Mission Portal Settings UI
