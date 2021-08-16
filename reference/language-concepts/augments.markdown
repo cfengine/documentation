@@ -73,15 +73,6 @@ The above Augments results in `$(sys.policy_entry_dirname)/services/hello-world.
 
 The above Augments results in `$(sys.policy_entry_dirname)/goodbye.cf` being added to inputs.
 
-
-```json
-{
-    "vars": {
-        "augments_inputs": [ "goodbye.cf" ]
-    }
-}
-```
-
 ## variables
 
 This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the augments key.
