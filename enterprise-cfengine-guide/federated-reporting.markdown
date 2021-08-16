@@ -668,10 +668,8 @@ Follow this procedure:
 * Bootstrap the superhub to itself
 
    ```console
-   # cf-agent --bootstrap localhost
+   # cf-agent --bootstrap <hostname or ip>
    ```
-
-   (Note: for the superhub it is a good idea to bootstrap to localhost to prevent any agents from connecting to the superhub)
 
 * Reconfigure all feeders (3.15 series and newer, skip for 3.12 series feeder hubs)
    * edit `/opt/cfengine/federation/cfapache/federation-config.json` to remove all entries in the `remote_hubs` property.
