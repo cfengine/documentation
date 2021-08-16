@@ -34,11 +34,44 @@ An augments file can contain the following keys:
 
 ## inputs
 
-This key is supported in `def.json`, `def_preferred.json`, and augments loaded by the augments key.
+This key is supported in `def.json`, `def_preferred.json`, and augments loaded by the _augments_ key.
 
-Any filenames you put here will appear in the `def.augments_inputs` variable.
-The standard set of masterfiles refers to this variable and will autoload those
-files.
+Filenames entered here will appear in the `def.augments_inputs` variable.
+
+**Notes:**
+
+* Files are loaded relative to `sys.policy_entry_dirname`.
+
+* The *inputs* key has precedence over the *vars* key.
+
+* If both the _inputs_ key and `vars.augments_inputs` are populated concurrently,
+  the variable `def.augments_inputs` will hold the value set by the *inputs*
+  key. The `def.augments_inputs` variable is part of the default inputs in the
+  `Masterfiles Policy Framework`.
+
+**Examples:**
+
+```json
+{
+    "inputs": [ "services/hello-world.cf", "example.cf", "/tmp/my_policy.cf" ],
+    "vars": {
+        "augments_inputs": [ "goodbye.cf" ]
+    }
+}
+```
+
+The above Augments results in `$(sys.policy_entry_dirname)/services/hello-world.cf`, `$(sys.policy_entry_dirname)/example.cf` and `/tmp/my_policy.cf` being added to inputs.
+
+
+```json
+{
+    "vars": {
+        "augments_inputs": [ "goodbye.cf" ]
+    }
+}
+```
+
+The above Augments results in `$(sys.policy_entry_dirname)/goodbye.cf` being added to inputs.
 
 ## variables
 
