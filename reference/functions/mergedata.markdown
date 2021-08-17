@@ -38,9 +38,17 @@ traditional list and array data types in CFEngine.
 
 [%CFEngine_include_snippet(mergedata.cf, #\+begin_src cfengine3, .*end_src)%]
 
-Output:
+**Output:**
 
 [%CFEngine_include_snippet(mergedata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+**Example:**
+
+[%CFEngine_include_snippet(mergedata-last-key-wins.cf, #\+begin_src cfengine3, .*end_src)%]
+
+**Output:**
+
+[%CFEngine_include_snippet(mergedata-last-key-wins.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **History:** Was introduced in CFEngine 3.6.0 (2014). The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
