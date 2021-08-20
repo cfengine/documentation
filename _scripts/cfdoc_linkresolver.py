@@ -124,7 +124,9 @@ def parseMarkdownForAnchors(file_name, config):
 		# ignore code blocks
 		if line.find("    ") == 0:
 			continue
-		elif line.find("```") == 0:
+		elif line.find("```") == 0 and line.find("```", 3) == -1:
+            # line which starts with triple backticks denotes start/end of codeblock,
+            # _unless_ it contains triple backticks somewhere else
 			in_pre = not in_pre
 		if in_pre:
 			continue
