@@ -222,6 +222,51 @@ curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class?wit
 }
 ```
 
+## Get deleted hosts list
+
+**URI:** https://hub.cfengine.com/api/hosts/deleted
+
+**Method:** GET
+
+**Parameters:**
+
+* **skip** *(integer)*
+  Number of results to skip for the processed query.  
+  Optional parameter.
+* **limit**  *(integer)*
+  Limit the number of results in the query.  
+  No limit when parameter is not set. Optional parameter.
+
+**Example request (curl):**
+```
+curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/deleted
+```
+**Example response:**
+
+```
+HTTP 200 Ok
+{
+    "data": [
+        {
+            "hostkey": "SHA=2123f85b38189008ae12be159fb961584dda1249c94efed43fec2c70f233975d",
+            "iscallcollected": false,
+            "lastreporttimestamp": "2017-02-17 18:00:17+00",
+            "firstreporttimestamp": "2017-01-09 17:35:35.427063+00",
+            "hostkeycollisions": 0,
+            "deleted": "2021-08-19 09:20:02.752463+00",
+            "ipaddress": "10.0.2.15"
+        }
+    ],
+    "meta": {
+        "total": 1,
+        "page": 1,
+        "count": 1,
+        "timestamp": 1629365174
+    }
+}
+```
+
+
 ## List monitoring attributes for host
 
 **URI:** https://hub.cfengine.com/api/host/:host-id/vital
