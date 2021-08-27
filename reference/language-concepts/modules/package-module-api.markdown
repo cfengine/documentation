@@ -3,33 +3,29 @@ layout: default
 title: Package Modules
 published: true
 sorting: 70
-tags: [reference, standard library]
+tags: [reference, language concepts, modules, package module api]
 ---
+
+Package modules are back-ends that enable the package promise to work
+with different types of platform package managers.
 
 See the [`packages` promises][packages] documentation for a
 comprehensive reference on the body types and attributes used here.
 
-
-## Package Module API
-
-This section describes how to create a package module for the CFEngine package
-promise. Package modules are backends that enable the package promise to work
-with different types of platform package managers.
-
-
-### The CFEngine side
+## The CFEngine side
 
 CFEngine never calls any package manager commands, it only ever calls the
 package module. The information that CFEngine deals in is:
 
-  * Which packages are currently installed:
-    * Name
-    * Version
-    * Architecture
-  * Which of the installed packages have updates available:
-    * Name
-    * Version
-    * Architecture
+* Which packages are currently installed:
+  * Name
+  * Version
+  * Architecture
+
+* Which of the installed packages have updates available:
+  * Name
+  * Version
+  * Architecture
 
 These two lists are everything that CFEngine needs to know to decide whether its
 package promises are fulfilled or not. In addition to this it will carry out
@@ -49,21 +45,19 @@ that the promise failed.
 In the same fashion, if we try to install an update, that update is expected to
 disappear from the list of available updates after the operation.
 
-
-### The package module
+## The package module
 
 The package module itself is simply an executable, and can be in any executable
 format, whether than is Python, Perl, Shell script or native binary.
 
-The package module resides in the /var/cfengine/modules/packages both on the hub
+The package module resides in the `/var/cfengine/modules/packages` both on the hub
 and the clients, and out of the box CFEngine is set up to synchronize this
 directory among its clients. For this reason it is advised to avoid native
 binary formats for package modules, to reduce the burden of distribution to
 different platforms, but the API does not forbid it, and it may be useful in
 some circumstances.
 
-
-### The API
+## The API
 
 The API consists of commands which are passed in the module arguments, combined
 with a simple text protocol that will be fed on the module's standard input, and
@@ -78,8 +72,7 @@ CFEngine itself.
 The API commands are listed roughly in the order that they should be
 implemented, in order to facilitate a nice debugging cycle during development.
 
-
-#### options attribute
+### options attribute
 
 All the API commands listed below, except `supports-api-version`, support the
 `options` attribute. This attribute will contain the contents from the `options`
@@ -98,8 +91,7 @@ modules.
 The `options` attribute is valid in all of the commands except 
 `supports-api-version`, even when the description reads "no input".
 
-
-#### supports-api-version
+### supports-api-version
 
 The very first command that any package module must implement is
 `supports-api-version`. This command takes no input, and is expected to print
@@ -111,14 +103,13 @@ This is the only command which does not support the `options` attribute.
 
 Example:
 
-```
+```console
 $ ./package-module supports-api-version < /dev/null
 1
 $
 ```
 
-
-#### get-package-data
+### get-package-data
 
 CFEngine uses this command to determine what kind of promise has been
 made. Currently two types are supported: "file" and "repo".
@@ -158,7 +149,7 @@ discrepancies will be handled at the install stage instead.
 
 Example 1:
 
-```
+```console
 $ ./package-module get-package-data <<EOF
 File=zip
 Version=3.0-4
@@ -171,7 +162,7 @@ $
 
 Example 2:
 
-```
+```console
 $ ./package-module get-package-data <<EOF
 File=zip
 EOF
@@ -182,7 +173,7 @@ $
 
 Example 3:
 
-```
+```console
 $ ./package-module get-package-data <<EOF
 File=/home/johndoe/zip-3.0-4.el5.x86_64.rpm
 Version=3.0-4
@@ -197,7 +188,7 @@ $
 
 Example 4:
 
-```
+```console
 $ ./package-module get-package-data <<EOF
 File=/home/johndoe/zip-3.0-4.el5.x86_64.rpm
 EOF
@@ -208,8 +199,7 @@ Architecture=amd64
 $
 ```
 
-
-#### list-installed
+### list-installed
 
 This command is expected to return a list of all currently installed packages on
 the system. It takes no input, and the output is expected to be a list of
@@ -217,7 +207,7 @@ triplets of `Name/Version/Architecture`.
 
 Example:
 
-```
+```console
 $ ./package-module list-installed < /dev/null
 Name=zip
 Version=3.0-4
@@ -232,7 +222,7 @@ Architecture=i386
 $
 ```
 
-#### list-updates
+### list-updates
 
 This command is expected to return a list of all the available updates for
 currently installed updates. The command takes no input, and the output is
@@ -250,7 +240,7 @@ in this command. See more about caching and `list-updates-local` below.
 
 Example:
 
-```
+```console
 $ ./package-module list-updates < /dev/null
 Name=zip
 Version=3.0-4
@@ -265,8 +255,7 @@ Architecture=i386
 $
 ```
 
-
-#### list-updates-local
+### list-updates-local
 
 This command is expected to return a list of all the available updates for
 currently installed updates. The command takes no input, and the output is
@@ -283,7 +272,7 @@ operations.
 
 Example:
 
-```
+```console
 $ ./package-module list-updates-local < /dev/null
 Name=zip
 Version=3.0-4
@@ -298,8 +287,7 @@ Architecture=i386
 $
 ```
 
-
-#### repo-install
+### repo-install
 
 This command is used by CFEngine to ask the package module to install packages
 from the package repository. Note that CFEngine itself has no notion of *which*
@@ -318,7 +306,7 @@ No output is expected.
 
 Example:
 
-```
+```console
 $ ./package-module repo-install <<EOF
 Option=-o
 Option=APT::Install-Recommends=0
@@ -333,8 +321,7 @@ EOF
 $
 ```
 
-
-#### file-install
+### file-install
 
 This command is used by CFEngine to ask the package module to install a specific
 package file. The command will be called for promises where `get-package-data`
@@ -351,7 +338,7 @@ No output is expected.
 
 Example:
 
-```
+```console
 $ ./package-module file-install <<EOF
 File=/mnt/storage/zip-3.0-4.el5.x86_64.rpm
 File=/mnt/storage/libc6-2.15.el5.i386.rpm
@@ -361,8 +348,7 @@ EOF
 $
 ```
 
-
-#### remove
+### remove
 
 To remove packages, CFEngine will call the package module with the `remove`
 command.
@@ -376,7 +362,7 @@ No output is expected.
 
 Example:
 
-```
+```console
 $ ./package-module remove <<EOF
 Name=zip
 Name=libc6
@@ -390,8 +376,7 @@ EOF
 $
 ```
 
-
-### Error messages
+## Error messages
 
 All of the package module commands except `supports-api-version` have the option
 of returning error messages. The error messages are simply an attribute
@@ -401,7 +386,7 @@ to a specific promise.
 
 Example:
 
-```
+```console
 $ ./package-module file-install <<EOF
 File=/mnt/storage/zip-3.0-4.el5.x86_64.rpm
 File=/mnt/storage/libc6-2.15.el5.i386.rpm
@@ -417,8 +402,7 @@ ErrorMessage=Doesn't contain architecture 'x86_64'
 $
 ```
 
-
-### Other output
+## Other output
 
 CFEngine does not expect any other output on the package module's standard
 output, so the module should make sure it silences the output from its sub
@@ -427,18 +411,18 @@ but this will not be formatted using CFEngine's normal log formatting and is not
 recommended.
 
 
-### Caching
+## Caching
 
 For performance reasons, CFEngine will cache the list of packages returned from
 `list-packages` and the list of updates from either of `list-updates` or
 `list-updates-local`. The exact circumstances where each is called is:
 
-  * `list-packages`: When either the system is changed, or
-    `query_installed_ifelapsed` in the policy has expired.
+* `list-packages`: When either the system is changed, or
+  `query_installed_ifelapsed` in the policy has expired.
 
-  * `list-updates`: Only when `query_updates_ifelapsed` in the policy has expired.
+* `list-updates`: Only when `query_updates_ifelapsed` in the policy has expired.
 
-  * `list-updates-local`: Only when the system is changed.
+* `list-updates-local`: Only when the system is changed.
 
 Whenever one is called its result is cached by CFEngine and will be used
 internally. It is a good idea to set the two policy attributes,
