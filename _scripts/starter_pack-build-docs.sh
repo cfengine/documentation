@@ -11,10 +11,15 @@ cd $WRKDIR
 
 $WRKDIR/documentation-generator/_scripts/cfdoc_bootstrap.py master
 
-# Prepare core for syntax docs
-cd /northern.tech/cfengine/core
-./configure --with-lmdb=/usr/local --without-pam
-make
+if dpkg --get-selections | grep -q "^cfengine-nova-hub[[:space:]]*install$" >/dev/null; then
+    echo Found cfengine-nova-hub package installed, skipping build
+else
+  echo Did not find package cfengine-nova-hub installed, trying to build from source
+  # Prepare core for syntax docs
+  cd /northern.tech/cfengine/core
+  ./configure
+  make
+fi
 
 export WRKDIR=/northern.tech/cfengine
 cd /northern.tech/cfengine/documentation-generator
