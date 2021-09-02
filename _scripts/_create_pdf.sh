@@ -1,11 +1,12 @@
 #!/bin/sh
-if [[ type -P "weasyprint" ]]; then
-    echo "PDF generation started"
-else
-    echo "weasyprint not found in \$PATH. Skipping pdf generation"
-    exit 0
-fi
-
+for p in $(echo "$PATH" | tr ":" " ") ;do
+    if [ -e "$p/weasyprint" ]; then
+        echo "Found weasyprint, PDF generation started"
+    else
+        echo "weasyprint not found in \$PATH. Skipping pdf generation"
+        exit 0
+    fi
+done
 #
 # This script will generate PDF from html files and write them to the _site/pdf
 #
