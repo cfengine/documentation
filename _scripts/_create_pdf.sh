@@ -1,5 +1,10 @@
 #!/bin/sh
-echo "PDF generation started"
+if [[ type -P "weasyprint" ]]; then
+    echo "PDF generation started"
+else
+    echo "weasyprint not found in \$PATH. Skipping pdf generation"
+    exit 0
+fi
 
 #
 # This script will generate PDF from html files and write them to the _site/pdf
