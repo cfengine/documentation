@@ -43,7 +43,7 @@
 [Append to inputs used by main policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-main-policy
 [mpf_extra_autorun_inputs]: reference-masterfiles-policy-framework.html#additional-automatically-loaded-inputs
 [Append to inputs used by update policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-update-policy
-[Classes and Decisions]: reference-language-concepts-classes
+[Classes and Decisions]: reference-language-concepts-classes.html
 [language-concepts-classes-hard]: reference-language-concepts-classes.html#hard-classes.html "Language Concepts -> Classes and Decisions: Hard classes"
 [lib/files.cf]: reference-masterfiles-policy-framework-lib-files
 [stdlib-mog]: reference-masterfiles-policy-framework-lib-files.html#mog
