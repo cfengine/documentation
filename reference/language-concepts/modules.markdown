@@ -17,7 +17,7 @@ cfbs (CFEngine Build System) Modules provide a way to share and consume CFEngine
 
 ## Promise Modules
 
-Promise modules allow for the implementation of [*custom* promise types][promise-type-custom], extending the CFEngine Language. They communicate with `cf-agent` using the [*Promise Module Protocol*][promise-type-custom#protocol].
+Promise modules allow for the implementation of [*custom* promise types][promise-type-custom], extending the CFEngine Language. They communicate with `cf-agent` using the [*Promise Module Protocol*][promise-type-custom-protocol].
 
 **History:**
 
@@ -27,7 +27,7 @@ Promise modules allow for the implementation of [*custom* promise types][promise
 
 [Package Modules][Package Modules] implement the logic behind *packages* type promises, superseding the *package\_method* based implementation. They interact with package managers like `yum`, `apt`, `msiexec`, and `pip` to determine which packages are currently installed or have updates available as well as installing, upgrading or un-installing packages.
 
-Package modules communicate with `cf-agent` via the [Package Module Protocol][Package Modules#the-api].
+Package modules communicate with `cf-agent` via the [Package Module Protocol][package-modules-the-api].
 
 **History:**
 
