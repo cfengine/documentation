@@ -17,7 +17,7 @@ cfbs (CFEngine Build System) Modules provide a way to share and consume CFEngine
 
 ## Promise Modules
 
-Promise modules allow for the implementation of [*custom* promise types][promise-type-custom], extending the CFEngine Language. They communicate with `cf-agent` using the [*Promise Module Protocol*][promise-type-custom#protocol].
+Promise modules allow for the implementation of [*custom* promise types][promise-type-custom], extending the CFEngine Language. They communicate with `cf-agent` using the [*Promise Module Protocol*][promise-type-custom-protocol].
 
 **History:**
 
