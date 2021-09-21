@@ -51,6 +51,8 @@
 [Using Vagrant]: guide-installation-and-configuration-general-installation-installation-enterprise-vagrant.html "The CFEngine Vagrant Environment provides an easy way to test and explore CFEngine Enterprise."
 [type]: reference-functions-type.html
 [promise-type-measurements]: reference-promise-types-measurements.html
+[promise-type-custom]: reference-promise-types-custom.html
+[promise-type-custom-protocol]: reference-promise-types-custom.html#protocol
 [component-cf-monitord]: reference-components-cf-monitord.html
 [component-cf-hub]: reference-components-cf-hub.html
 [mpf-configure-measurement-collection]: reference-masterfiles-policy-framework.html#configure-enterprise-measurement-monitoring-collection.html
