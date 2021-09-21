@@ -122,7 +122,7 @@ def addLinkToSource(file_name,config):
     for line in lines:
         line = line.replace("\">markdown source</a>]", source_file + "\">markdown source</a>]")
         if unresolved_link.search(line) != None:
-            print "Unresolved link in '%s', html-line '%s'\n" % (file_name, line)
+            print "Unresolved link in '%s', html-line '%s'\n\n Perhaps you need to add an entry to to _references.md in the documentation-generator repository" % (file_name, line)
             error_count += 1
         if unexpanded_macro.search(line) != None:
             print "Unexpanded macro in '%s', html-line '%s'\n" % (file_name, line)
