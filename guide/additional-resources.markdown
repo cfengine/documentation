@@ -92,7 +92,7 @@ target="_blank">LinkedIn</a>
 * <a href="https://www.facebook.com/pages/Cfengine/311003700627?ref=ts"
 target="_blank">Facebook</a>
 
-* The #cfengine IRC channel on the [irc.freenode.org](irc:irc.freenode.org) network.
+* The #cfengine IRC channel on the [libera.chat](https://web.libera.chat/?channel=#cfengine) network.
 
 If you want to learn more about how CFEngine can help you and your
 organization, [contact us][contact us].
