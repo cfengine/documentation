@@ -566,7 +566,7 @@ components may promise to send data.
 
 **Example:**
 
-Prevent messages lower than /critical/ on Windows.
+Prevent messages lower than _critical_ on Windows.
 
 ```cf3
 body common control
