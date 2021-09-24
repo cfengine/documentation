@@ -115,7 +115,8 @@ body agent control
 [`ifelapsed` and function caching][Functions#function caching]
 
 **History:**
-- `ifelapsed => "0"` disables function caching for specific promise introduced in 3.19.0, 3.18.1
+
+* `ifelapsed => "0"` disables function caching for specific promise introduced in 3.19.0, 3.18.1
 
 #### expireafter
 
