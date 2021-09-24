@@ -554,6 +554,35 @@ components may promise to send data.
     }
 ```
 
+### system_log_level
+
+**Description:** The minimum log level required for log messages to go to the system log (e.g. syslog, Windows Event Log).
+
+**Type:** `string`
+
+**Allowed Input range:** `(critical|error|warning|notice|info)`
+
+**Default value:** `none`
+
+**Example:**
+
+Prevent messages lower than /critical/ on Windows.
+
+```cf3
+body common control
+{
+@if minimum_version(3.18.1)
+  windows::
+    system_log_level => "critical";
+  cfengine::
+@endif
+}
+```
+
+**History:**
+
+* Introduced in 3.19.0, 3.18.1
+
 ### tls_ciphers
 
 **Description:** List of ciphers allowed when making **outgoing** connections.
