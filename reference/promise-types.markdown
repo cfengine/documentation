@@ -83,7 +83,7 @@ every 5 minutes provided resource intensive operations are not performed on
 every run. Using time classes such as `Hr12` is one part of this strategy;
 using `ifelapsed` is another, which is not tied to a specific time.
 
-`ifelapsed => "0"` disables [function caching][Functions#function-caching]
+`ifelapsed => "0"` disables [function caching][Functions#function caching]
 for the specific promise it's attached to.
 
 **Type:** `int`
@@ -112,7 +112,7 @@ body agent control
 ```
 
 **See also:** [promise locking][Promises#Promise Locking], [ifelapsed in body agent control][cf-agent#ifelapsed],
-[ifelapsed and function caching][Functions#function-caching]
+[`ifelapsed` and function caching][Functions#function caching]
 
 **History:**
 - `ifelapsed => "0"` disables function caching for specific promise introduced in 3.19.0, 3.18.1
