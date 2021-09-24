@@ -125,8 +125,10 @@ they are in the same bundle or not) only the first executed function will be
 cached. That cached result will be re-used for other identical function
 occurrences.
 
-Function caching can be disabled by setting `cache_system_functions` in body
-common control to `false`.
+Function caching can be globally disabled by setting `cache_system_functions` in
+body common control to `false` or locally for a specific promise by using
+`ifelapsed => "0"` in the [action body][Promise Types and Attributes#ifelapsed]
+of the promise.
 
 ## Function Skipping
 
