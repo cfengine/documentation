@@ -40,22 +40,23 @@ Paragraphs
 
 ### Link within documentation and to known pages
 
-You can link to any documentation page section using `[linktext][PageTitle#optional section]`.
+You can link to any documentation page using `[linktext][PageTitle]`.
 
-For example I can link to [collecting functions][Functions#collecting functions] using `[collecting functions][Functions#collecting functions]`.
+#### Link to a specific section of a known page
 
-`[top of the page][Markdown Cheatsheet], to the [Markdown Cheatsheet][], [inside page][Markdown Cheatsheet#Links] and [inside current page][#Links]`
+You can link to any documentation page section using `[linktext][PageTitle#section]`.
 
-<!--- Cheating here - this page is not published, so included from link map -->
-[top of the page](markdown-cheatsheet.html), to the [Markdown Cheatsheet](markdown-cheatsheet.html), [inside page](markdown-cheatsheet.html#Links) and [inside current page](markdown-cheatsheet.html#Links)
+When linking to a section, you should use the section name as it is rendered on the page.
 
-**Note:** For known pages, see the
-[_references.md](https://github.com/cfengine/documentation-generator/blob/master/_references.md)
-file.
+For example, On the [functions][Functions] page we can link to the [collecting functions][Functions#collecting functions] section using `[collecting functions][Functions#collecting functions]`.
+
+Sometimes (because `¯\_(ツ)_/¯`, maybe the page linked to hasn't been parsed yet) a page may not be automatically known. In this case an entry in [_references.md](https://github.com/cfengine/documentation-generator/blob/master/_references.md) of the [documentation-generator](https://github.com/cfengine/documentation-generator) may be required.
 
 **NOTE:** Anchors with underscores are problematic!
 
 For example ```services_autorun``` in the MPF documentation the underscore needs to be escaped with a ```\```.
+
+```**See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]```
 
 **See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
 
