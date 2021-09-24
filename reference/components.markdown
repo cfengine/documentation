@@ -149,7 +149,7 @@ facilities.
 
 **Note:** Bandwidth limiting is currently not supported on Windows.
 
-**Type:** [`float`][float]
+**Type:** `float`
 
 **Default value:** none (no limit)
 
