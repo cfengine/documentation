@@ -314,7 +314,7 @@ log message.
 
 * `udp_syslog`
 
-Log messages to [syslog_host][Components and Common Control#syslog_host] as
+Log messages to [syslog_host][Components#syslog_host] as
 defined in body common control over UDP. Please note
 [UDP is unreliable](http://en.wikipedia.org/wiki/Syslog#Limitations).
 

@@ -122,7 +122,7 @@ On the client side, i.e. `cf-runagent` and `cf-agent`, there are three issues:
 1.  Choosing which server to connect to.
 2.  Trusting the key of any previously unknown servers
 3.  Choosing whether data transfers should be encrypted (with
-    [`encrypt`][files#encrypt]) - not applicable if you are using new [`protocol_version`][Components and Common Control#protocol_version].
+    [`encrypt`][files#encrypt]) - not applicable if you are using new [`protocol_version`][Components#protocol_version].
 
 There are two ways of managing trust of server keys by a client. One is an
 automated option, setting the option [`trustkey`][files#trustkey] in a `copy_from` files promise, e.g.
@@ -220,7 +220,7 @@ that cf-serverd requires to be encrypted can be logged by setting the
 ### Protocol 2
 
 3.6 introduced a new protocol option for communication with
-cf-serverd. [Protocol 2][Components and Common Control#protocol_version]
+cf-serverd. [Protocol 2][Components#protocol_version]
 is the default in 3.7+ and uses a TLS session for encryption.
 
 **Note:** When protocol 2 is in use legacy encryption attributes are **noop**.
@@ -239,14 +239,14 @@ setting the
 [body server control `allowciphers` attribute][cf-serverd#allowciphers]. Controlling
 which ciphers are allowed to be used in **outgoing** connections is
 done by setting
-[body common control `tls_ciphers`][Components and Common Control#tls_ciphers].
+[body common control `tls_ciphers`][Components#tls_ciphers].
 
 Additionally the minimum version of TLS required for **incoming**
 connections can be set in
 [body server control `allowtlsversion`][cf-serverd#allowtlsversion]
 and the minimum version of TLS required for **outgoing** connections
 can be set in
-[body common control `tls_min_version`][Components and Common Control#tls_min_version].
+[body common control `tls_min_version`][Components#tls_min_version].
 
 There are debug and verbose level logs produced by cf-agent to
 indicate when TLS is in use.

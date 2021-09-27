@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Components and Common Control
+title: Components
 published: true
 sorting: 10
 tags: [Reference, Components]
@@ -443,7 +443,7 @@ body common control
 using the [`body copy_from protocol_version`][files#protocol_version]
 attribute.
 
-**See also:**  [`body copy_from protocol_version`][files#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
+**See also:**  [`body copy_from protocol_version`][files#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`tls_ciphers`][Components#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
 
 **History:** Introduced in CFEngine 3.6.0
 
@@ -572,7 +572,7 @@ body common control
 }
 ```
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
+**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
 
 **History:** Introduced in CFEngine 3.7.0
 
@@ -590,7 +590,7 @@ body common control
 }
 ```
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`ifencrypted`][access#ifencrypted], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers]
+**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_ciphers`][Components#tls_ciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`ifencrypted`][access#ifencrypted], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers]
 
 **History:** Introduced in CFEngine 3.7.0
 

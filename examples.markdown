@@ -109,7 +109,7 @@ Thus, CFEngine can function even if everything else fails
 ### Make the Example Stand Alone ###
 
 Instead of specifying the bundle sequence on the command line (as it was above), a [body common
-control][Components and Common Control#Common Control] section can be added to
+control][Components#Common Control] section can be added to
 the policy file. The **body common control** refers to those promises that are hard-coded into
 all CFEngine components and therefore affect the behavior of all components. Note that only
  one `body common control` is allowed per agent activation.
@@ -252,7 +252,7 @@ from the example.
 		  };
 	```
 
-4. Insert the policy file name in the [`inputs`][Components and Common Control#inputs] section of the main policy file
+4. Insert the policy file name in the [`inputs`][Components#inputs] section of the main policy file
     `/var/cfengine/masterfiles/promises.cf`:
 
 	```cf3  

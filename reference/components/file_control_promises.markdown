@@ -37,8 +37,46 @@ Use `sys.libdir` (absolute library path), `sys.local_libdir` (library path relat
 current masterfiles), and `this.promise_dirname` (the directory of the currently processed
 file) to avoid hard-coding paths.
 
-**See also:** [`inputs`][Components and Common Control#inputs] in
-[`body common control`][Components and Common Control]
+Note that in `this.` variables are not available in `body file control` or `body common control`
+but this can be worked around with a `bundle common` vars promise as follows:
+
+```cf3
+# one.cf
+bundle common one
+{
+  vars:
+    "inputs" slist => { "$(this.promise_dirname)/two.cf" };
+}
+
+body file control
+{
+  inputs => { "@(one.inputs)" };
+}
+
+bundle agent main
+{
+  methods:
+    "two";
+}
+```
+
+```cf3
+# two.cf
+bundle agent two
+{
+  reports:
+    "hello, from $(this.promise_filename)";
+}
+```
+
+```sh
+$ cf-agent -KIf ./one.cf
+R: hello, from /home/agent/./two.cf
+```
+
+
+**See also:** [`inputs`][Components#inputs] in
+[`body common control`][Components]
 
 **History:** Was introduced in CFEngine 3.6.0
 
