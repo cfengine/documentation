@@ -183,7 +183,7 @@ as a non-privileged user inside an isolated directory tree.
     }
 ```
 
-**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### useshell
 
@@ -324,7 +324,7 @@ case of failure.
      }
 ```
 
-**See also:** [`body action expireafter`][Promise Types and Attributes#expireafter],  [`body agent control expireafter`][cf-agent#expireafter], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+**See also:** [`body action expireafter`][Promise Types#expireafter],  [`body agent control expireafter`][cf-agent#expireafter], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
 
 #### chdir
 

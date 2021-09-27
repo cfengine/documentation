@@ -133,7 +133,7 @@ verbose: Outcome of version (not specified) (agent-0): Promises observed - Total
 
 ### Promise logging
 
-Promises can be configured to [log their outcomes][Promise Types and Attributes#log_repaired]
+Promises can be configured to [log their outcomes][Promise Types#log_repaired]
 to a file with `log_kept`, `log_repaired`, and `log_failed` attributes in an action body.
 
 ```cf3

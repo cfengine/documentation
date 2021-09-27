@@ -174,7 +174,7 @@ List changes performed by CFEngine to the infrastructure. List can be narrowed d
 * **data.promiser**
     Object affected by a promise.
 * **data.promisetype**
-    [Type][Promise Types and Attributes] of the promise.
+    [Type][Promise Types] of the promise.
 * **data.stackpath**
     Call stack of the promise.
 

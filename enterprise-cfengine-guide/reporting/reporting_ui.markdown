@@ -70,7 +70,7 @@ the following defines the attribute `Role` which is set to
 	}
 	```
 
-* note the [`meta`][Promise Types and Attributes#meta] tag `inventory`
+* note the [`meta`][Promise Types#meta] tag `inventory`
 
 * The hub must be able to collect the reports from the client. TCP
 port 5308 must be open and, because 3.6 uses TLS, should not be
