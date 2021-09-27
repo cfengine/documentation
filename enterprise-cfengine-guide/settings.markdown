@@ -213,6 +213,12 @@ Mission portal can authenticate against an external directory.
 **See also:** [LDAP authentication REST API][LDAP authentication API]
 
 
+## Export/Import ##
+
+Mission Portal's configuration can be exported and imported.
+
+![Export/Import](settings-export-import-3.18.0.png)
+
 ## Role based access control ##
 
 ![Role based access control](role_based_access_control_settings.png)
