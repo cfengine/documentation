@@ -1,4 +1,4 @@
-### Common Attributes
+### Common Promise Attributes
 
 Common attributes are available to all promise types. Full details for common
 attributes can be found in the [Common Promise Attributes section][Promise Types#Common Promise Attributes] of
