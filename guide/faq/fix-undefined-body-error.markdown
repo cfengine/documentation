@@ -16,7 +16,7 @@ When running policy you see `error: Undefined body`. For example:
 
 The above errors indicate that the `tidy` and `recurse` bodies are not found in
 inputs. Bodies and bundles must either be defined within the same policy file or
-included from [body common control inputs][Components and Common Control#inputs]
+included from [body common control inputs][Components#inputs]
 or [body file control inputs][file control#inputs].
 
 # Example: Add stdlib via body common control

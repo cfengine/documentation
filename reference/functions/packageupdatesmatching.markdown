@@ -36,7 +36,7 @@ this:
 * `arch_regex` - Regular expression matching package architecutre
 * `method_regex` - Regular expression matching package method (apt-get, rpm, etc ...)
 
-**IMPORTANT:** Please note that you need to provide `package_inventory` attribute in `body common control` in order to be able to use this function. Also depending on the value(s) of `package_inventory` only packages from selected package modules will be returned. For more information about `package_inventory` please read [`package_inventory`][Components and Common Control#package_inventory] section.
+**IMPORTANT:** Please note that you need to provide `package_inventory` attribute in `body common control` in order to be able to use this function. Also depending on the value(s) of `package_inventory` only packages from selected package modules will be returned. For more information about `package_inventory` please read [`package_inventory`][Components#package_inventory] section.
 
 
 **Example:**

@@ -901,7 +901,7 @@ for the client and server hosts.
 **Note:** When used with `protocol_version` 2 or greater this attribute is a
 noop as the entire session is encrypted.
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`ifencrypted`][access#ifencrypted], [`protocol_version`][Components and Common Control#protocol_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion]
+**See also:** [`protocol_version`][Components#protocol_version], [`ifencrypted`][access#ifencrypted], [`protocol_version`][Components#protocol_version], [`tls_ciphers`][Components#tls_ciphers], [`tls_min_version`][Components#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion]
 
 #### check_root
 
@@ -1181,7 +1181,7 @@ copy operation.
 
 **Note:** The value here will override the setting from [`body common control`][body common].
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version] in
+**See also:** [`protocol_version`][Components#protocol_version] in
 [`body common`][body common], `allowlegacyconnects`
 
 **History:** Introduced in CFEngine 3.6.0

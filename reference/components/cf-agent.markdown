@@ -9,7 +9,7 @@ keywords: [agent]
 
 `cf-agent` evaluates policy code and makes changes to the system. Policy
 bundles are evaluated in the order of the provided `bundlesequence` (this is normally specified in the
-[`common control body`][Components and Common Control#Common Control]). For
+[`common control body`][Components#Common Control]). For
 each bundle, `cf-agent` groups promise statements according to their type.
 Promise types are then evaluated in a preset order to ensure fast system
 convergence to policy.
