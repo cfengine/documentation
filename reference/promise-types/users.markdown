@@ -205,7 +205,7 @@ that contains information about a user's password.
     }
 ```
 
-**See also:** [Common Body Attributes][Promise Types#Common Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### format
 

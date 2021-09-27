@@ -265,7 +265,7 @@ packages:
 
 **Type:** `body package_method`
 
-**See also:** [Common Body Attributes][Promise Types#Common Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### package_add_command
 

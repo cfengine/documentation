@@ -91,7 +91,7 @@ and has no effect. Deprecated in CFEngine 3.4.
 
 **Type:** `body printfile`
 
-**See also:** [Common Body Attributes][Promise Types#Common Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### file_to_print
 

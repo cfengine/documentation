@@ -226,7 +226,7 @@ This is an arbitrary string used in documentation only.
 
 **Type:** `body match_value`
 
-**See also:** [Common Body Attributes][Promise Types#Common Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### select_line_matching
 

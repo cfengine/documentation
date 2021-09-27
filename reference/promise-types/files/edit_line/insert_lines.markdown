@@ -204,7 +204,7 @@ file:
 
 **Type:** `body insert_select`
 
-**See also:** [Common Body Attributes][Promise Types#Common Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### insert_if_startwith_from_list
 
@@ -360,7 +360,7 @@ found in the secondary file, it is inserted into the file being edited.
 
 **Type:** `body location`
 
-**See also:** [Common Body Attributes][Promise Types#Common Attributes], [`location` bodies in the standard library](reference-standard-library-files.html#location-bodies), [`start` location body in the standard library](reference-standard-library-files.html#location-bodies), [`before(srt)` location body in the standard library](reference-standard-library-files.html#before), [`after(srt)` location body in the standard library](reference-standard-library-files.html#after)
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes], [`location` bodies in the standard library](reference-standard-library-files.html#location-bodies), [`start` location body in the standard library](reference-standard-library-files.html#location-bodies), [`before(srt)` location body in the standard library](reference-standard-library-files.html#before), [`after(srt)` location body in the standard library](reference-standard-library-files.html#after)
 
 #### before_after
 
