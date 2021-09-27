@@ -75,8 +75,8 @@ R: hello, from /home/agent/./two.cf
 ```
 
 
-**See also:** [`inputs`][Components and Common Control#inputs] in
-[`body common control`][Components and Common Control]
+**See also:** [`inputs`][Components#inputs] in
+[`body common control`][Components]
 
 **History:** Was introduced in CFEngine 3.6.0
 
