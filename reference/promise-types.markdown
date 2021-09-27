@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Promise Types and Attributes
+title: Promise Types
 published: true
 sorting: 20
 tags: [reference, bundles, common, promises]
@@ -983,7 +983,7 @@ not running. When a persistent class is activated it gets `scope` namespace.
      }
 ```
 
-**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types and Attributes#persist_time]
+**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types#persist_time]
 
 #### timer_policy
 
@@ -1187,8 +1187,7 @@ skip.
 
 ### ifvarclass
 
-**Description:** Class expression to further restrict the promise context. This
-an exact alias for `if`; see its description for details.
+**Description:** Deprecated, use [`if`][Promise Types#if] instead.
 
 **Type:** `string`
 

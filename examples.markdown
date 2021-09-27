@@ -70,7 +70,7 @@ Following these steps, you will login to your policy server via the SSH protocol
 In the policy file above, we have defined an **agent bundle** named `hello_world`. Agent
 bundles are only evaluated by **cf-agent**, the [agent component][cf-agent] of CFEngine.
 
-This bundle [promises][Promise Types and Attributes] to [report][reports] on any [class of
+This bundle [promises][Promise Types] to [report][reports] on any [class of
 hosts][Classes and Decisions]. 
 
 

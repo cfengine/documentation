@@ -44,7 +44,7 @@ promise.
 
 **Type:** `body delete_select`
 
-**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### delete_if_startwith_from_list
 

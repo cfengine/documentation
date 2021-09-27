@@ -193,7 +193,11 @@ runs of e.g. `cf-agent` and `cf-promises`.
     cache_system_functions => "true";
 ```
 
-**History:** Was introduced in version 3.6.0.
+**See also:** [`ifelapsed` in action bodies][Promise Types#ifelapsed]
+
+**History:**
+
+* Introduced in version 3.6.0.
 
 ### domain
 
