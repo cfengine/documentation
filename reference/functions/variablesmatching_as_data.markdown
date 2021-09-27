@@ -22,7 +22,7 @@ but not `inventory`, *both* are returned by variablesmatching_as_data(".*", "inv
 If you want logical AND semantics instead, you can make two calls to the function
 with one tag in each call and use the `intersection` function on the return values.
 
-Variable tags are set using the [`meta`][Promise Types and Attributes#meta] attribute.
+Variable tags are set using the [`meta`][Promise Types#meta] attribute.
 
 This function behaves exactly like `variablesmatching()` but returns a data
 container with the full contents of all the variables instead of just their

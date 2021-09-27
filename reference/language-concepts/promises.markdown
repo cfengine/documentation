@@ -34,7 +34,7 @@ systems such as rpm and apt.
 Some promise types are common to all CFEngine components, while others can
 only be executed by one of them. `cf-serverd` cannot keep `packages` promises,
 and `cf-agent` cannot keep `access` promises. See the
-[Promise Type reference][Promise Types and Attributes] for a comprehensive
+[Promise Type reference][Promise Types] for a comprehensive
 list of promise types.
 
 ### The Promiser
@@ -99,7 +99,7 @@ Promise locks can be useful for controlling frequency.
 `access`, `classes`, `defaults`, `meta`, `roles` and `vars` type promises do not
 participate in locking.
 
-**See also:** [ifelapsed in body agent control][cf-agent#ifelapsed], [ifelapsed action body attribute][Promise Types and Attributes#ifelapsed]
+**See also:** [ifelapsed in body agent control][cf-agent#ifelapsed], [ifelapsed action body attribute][Promise Types#ifelapsed]
 
 ### Promise Attributes
 

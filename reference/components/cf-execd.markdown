@@ -82,7 +82,7 @@ set it to `120` and you are using a 5-minute agent schedule, a
 maximum of 120 / 5 = 24 agents should be enforced.
 
 
-**See also:** [`body action expireafter`][Promise Types and Attributes#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body agent control expireafter`][cf-agent#expireafter]
+**See also:** [`body action expireafter`][Promise Types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body agent control expireafter`][cf-agent#expireafter]
 
 ### executorfacility
 
