@@ -32,7 +32,7 @@ frequently asked questions (and answers :)
 
 *Shortcuts:*
 
-## [Components][Components and Common Control]
+## [Components][Components]
 Cf-agent, cf-serverd, cf-execd,  cf-promises, etc.
 
 ## [Language concepts][Language Concepts]

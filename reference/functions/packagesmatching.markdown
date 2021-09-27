@@ -40,7 +40,7 @@ this:
 The following code extracts just the package names, then looks for
 some desired packages, and finally reports if they are installed.
 
-**IMPORTANT:** Please note that you need to provide `package_inventory` attribute in `body common control` in order to be able to use this function. Also depending on the value(s) of `package_inventory` only packages from selected package modules will be returned. For more information about `package_inventory` please read [`package_inventory`][Components and Common Control#package_inventory] section.
+**IMPORTANT:** Please note that you need to provide `package_inventory` attribute in `body common control` in order to be able to use this function. Also depending on the value(s) of `package_inventory` only packages from selected package modules will be returned. For more information about `package_inventory` please read [`package_inventory`][Components#package_inventory] section.
 
 [%CFEngine_include_example(packagesmatching.cf)%]
 

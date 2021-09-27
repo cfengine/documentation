@@ -134,7 +134,7 @@ specify a list of hosts allowed to use the legacy protocol.
 
 [%CFEngine_promise_attribute()%]
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version]
+**See also:** [`protocol_version`][Components#protocol_version]
 
 
 ### allowciphers
@@ -155,13 +155,13 @@ body server control
 ```
 
 **Note:** When used with
-[`protocol_version`][Components and Common Control#protocol_version] 1 (classic protocol),
+[`protocol_version`][Components#protocol_version] 1 (classic protocol),
 this does not do anything as the classic protocol does not support TLS ciphers.
 
 **See also:**
-[`protocol_version`][Components and Common Control#protocol_version],
-[`tls_ciphers`][Components and Common Control#tls_ciphers],
-[`tls_min_version`][Components and Common Control#tls_min_version],
+[`protocol_version`][Components#protocol_version],
+[`tls_ciphers`][Components#tls_ciphers],
+[`tls_min_version`][Components#tls_min_version],
 [`allowtlsversion`][cf-serverd#allowtlsversion],
 [`encrypt`][files#encrypt],
 [`logencryptedtransfers`][cf-serverd#logencryptedtransfers],
@@ -187,13 +187,13 @@ body server control
 ```
 
 **Note:** When used with
-[`protocol_version`][Components and Common Control#protocol_version] 1 (classic protocol),
+[`protocol_version`][Components#protocol_version] 1 (classic protocol),
 this attribute does not do anything.
 
 **See also:**
-[`protocol_version`][Components and Common Control#protocol_version],
-[`tls_ciphers`][Components and Common Control#tls_ciphers],
-[`tls_min_version`][Components and Common Control#tls_min_version],
+[`protocol_version`][Components#protocol_version],
+[`tls_ciphers`][Components#tls_ciphers],
+[`tls_min_version`][Components#tls_min_version],
 [`allowciphers`][cf-serverd#allowciphers],
 [`encrypt`][files#encrypt],
 [`logencryptedtransfers`][cf-serverd#logencryptedtransfers],
@@ -489,7 +489,7 @@ to syslog. These files are deemed to be particularly sensitive.
     }
 ```
 
-**See also:** [`ifencrypted`][access#ifencrypted], [`encrypt`][files#encrypt], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`protocol_version`][Components and Common Control#protocol_version]
+**See also:** [`ifencrypted`][access#ifencrypted], [`encrypt`][files#encrypt], [`tls_ciphers`][Components#tls_ciphers], [`tls_min_version`][Components#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`protocol_version`][Components#protocol_version]
 
 
 ### maxconnections
