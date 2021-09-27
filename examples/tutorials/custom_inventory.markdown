@@ -82,7 +82,7 @@ Git repository. If it is, please add the policy to your repository and ensure
 it gets to its final destination as needed.
 
 This policy will not be activated until it has been included in
-[inputs][Components and Common Control#inputs]. For simplicity we will be
+[inputs][Components#inputs]. For simplicity we will be
 adding it via [Augments][Augments] (`def.json`).
 
 Create `/var/cfengine/masterfiles/def.json` and populate it with the following content:

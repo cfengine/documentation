@@ -215,7 +215,7 @@ and `MyNamespace:MyBundle.MyVariable` with the value `MyValue` in
 Again, note that this happens before policy is parsed or evaluated.
 
 You can see the list of variables thus defined in the output of `cf-promises
---show-vars` (see [Components and Common Control][]). They will be tagged with
+--show-vars` (see [Components][]). They will be tagged with
 the tag `source=augments_file`. For instance, the above two variables (assuming
 you placed the data in `$(sys.inputdir)/def.json`) result in
 
@@ -374,7 +374,7 @@ results in
 * `myclass_defined_by_augments_in_def_json_3_18_0_v1` will be defined because the expression `cfengine.**` will match at least one defined class, `cfengine`
 
 You can see the list of classes thus defined through `def.json` in the output
-of `cf-promises --show-classes` (see [Components and Common Control][]). They
+of `cf-promises --show-classes` (see [Components][]). They
 will be tagged with the tags `source=augments_file`. For instance:
 
 ```console

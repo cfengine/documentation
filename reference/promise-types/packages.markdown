@@ -36,7 +36,7 @@ the local filesystem, like this:
 ```
 
 The default package module can be globally specified with the
-[`package_module`][Components and Common Control#package_module] attribute
+[`package_module`][Components#package_module] attribute
 in body common control.
 
 Note that if your `policy` attribute specifies "absent", then the promiser
@@ -201,7 +201,7 @@ ensure the latest available version from a repository is installed.
 
 The package module body you wish to use for the package promise. The default is
 platform dependent, see
-[`package_module`][Components and Common Control#package_module] in Components
+[`package_module`][Components#package_module] in Components
 and Common Control. The name of the body is expected to be the same as the name
 of the package module inside `/var/cfengine/modules/packages`.
 

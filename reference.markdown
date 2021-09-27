@@ -10,7 +10,7 @@ components, bodies, functions, variables, classes and attributes in detail.
 Language elements that belong together are typically documented on the same
 page.
 
-* [Components and Common Control][Components and Common Control]
+* [Components][Components]
 * [Promise Types][Promise Types]
 * [Functions][Functions]
 * [Language Concepts][Language Concepts]
