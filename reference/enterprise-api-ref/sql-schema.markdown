@@ -779,7 +779,7 @@ Promises executed on hosts during their last reported cf-agent run.
     [Bundle][Bundles] name where the promise is executed.
 
 * **PromiseType** *(text)*
-    [Type][Promise Types and Attributes] of the promise.
+    [Type][Promise Types] of the promise.
 
 * **Promiser** *(text)*
     Object affected by a promise.
@@ -914,7 +914,7 @@ Promise status / outcome changes over period of time.
     [Bundle][Bundles] name where the promise is executed.
 
 * **PromiseType** *(text)*
-    [Type][Promise Types and Attributes] of the promise.
+    [Type][Promise Types] of the promise.
 
 * **Promiser** *(text)*
     Object affected by a promise.
@@ -1049,7 +1049,7 @@ History of promises executed on hosts.
     [Bundle][Bundles] name where the promise is executed.
 
 * **PromiseType** *(text)*
-    [Type][Promise Types and Attributes] of the promise.
+    [Type][Promise Types] of the promise.
 
 * **Promiser** *(text)*
     Object affected by a promise.

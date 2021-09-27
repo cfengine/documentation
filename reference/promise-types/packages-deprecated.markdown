@@ -265,7 +265,7 @@ packages:
 
 **Type:** `body package_method`
 
-**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### package_add_command
 
@@ -593,7 +593,7 @@ executed at intervals determined by `package_list_update_ifelapsed`.
 
 #### package_list_update_ifelapsed
 
-**Description:** The [`ifelapsed`][Promise Types and Attributes#ifelapsed]
+**Description:** The [`ifelapsed`][Promise Types#ifelapsed]
 locking time in between updates of the package list
 
 **Type:** `int`

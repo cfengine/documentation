@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, getvariablemetatags, meta, tags]
 
 [%CFEngine_function_prototype(varname, optional_tag)%]
 
-**Description:** Returns the list of [`meta`][Promise Types and Attributes#meta] tags for variable `varname`.
+**Description:** Returns the list of [`meta`][Promise Types#meta] tags for variable `varname`.
 
 Make sure you specify the correct scope when supplying the name of the
 variable.

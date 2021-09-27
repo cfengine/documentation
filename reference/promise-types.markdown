@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Promise Types and Attributes
+title: Promise Types
 published: true
 sorting: 20
 tags: [reference, bundles, common, promises]
@@ -885,7 +885,7 @@ body classes example
 }
 ```
 
-**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types and Attributes#persist_time]
+**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types#persist_time]
 
 #### timer_policy
 
@@ -1085,7 +1085,7 @@ skip.
 
 ### ifvarclass
 
-**Description:** Deprecated, use [`if`][Promise Types and Attributes#if] instead.
+**Description:** Deprecated, use [`if`][Promise Types#if] instead.
 
 **History:** New name `if` was introduced in 3.7.0, `ifvarclass` deprecated in 3.17.0.
 
