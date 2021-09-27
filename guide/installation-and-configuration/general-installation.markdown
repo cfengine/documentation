@@ -62,7 +62,7 @@ The bootstrap command must then be run on any client attaching itself to this se
 
 ## Post-Installation Configuration ##
 
-CFEngine itself is configured through policy as well (see [Components and Common Control][] and
+CFEngine itself is configured through policy as well (see [Components][] and
 [Masterfiles Policy Framework][] for details). The following basic changes to the default policy will configure
 `cf-serverd` and `cf-execd` for your environment.
 

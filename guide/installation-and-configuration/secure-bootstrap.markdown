@@ -57,7 +57,7 @@ wish to bootstrap. And install it using `cf-key`.
 [root@host001]# cf-key --trust-key /path/to/hubs/key.pub
 ```
 
-**Note:** If you are using [protocol_version `1` or `classic`][Components and Common Control#protocol_version]
+**Note:** If you are using [protocol_version `1` or `classic`][Components#protocol_version]
 you need to supply an IP address before the path to the key.
 
 For example:
