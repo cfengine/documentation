@@ -157,7 +157,7 @@ a hierarchy of depth 1.
 
 **Type:** `body database_server`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][common-body-attributes]
 
 #### db_server_owner
 

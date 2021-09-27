@@ -99,7 +99,7 @@ promise together with that class.
 
 **Type:** `body process_count`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][common-body-attributes]
 
 #### in_range_define
 
@@ -168,7 +168,7 @@ failure to be kept.
 
 **Type:** `body process_select`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][common-body-attributes]
 
 #### command
 

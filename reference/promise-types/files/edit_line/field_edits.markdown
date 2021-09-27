@@ -115,7 +115,7 @@ ordering the items within them.
      }
 ```
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][common-body-attributes]
 
 #### allow_blank_fields
 

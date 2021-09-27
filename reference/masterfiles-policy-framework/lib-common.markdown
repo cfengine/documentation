@@ -7,7 +7,7 @@ tags: [reference, standard library, common, MPF]
 ---
 
 See
-the [common promise attributes][Promise Types#Common Promise Attributes]
+the [common promise attributes][common-promise-attributes]
 documentation for a comprehensive reference on the body types and attributes
 used here.
 
