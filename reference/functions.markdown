@@ -127,7 +127,7 @@ occurrences.
 
 Function caching can be globally disabled by setting `cache_system_functions` in
 body common control to `false` or locally for a specific promise by using
-`ifelapsed => "0"` in the [action body][Promise Types and Attributes#ifelapsed]
+`ifelapsed => "0"` in the [action body][Promise Types#ifelapsed]
 of the promise.
 
 ## Function Skipping

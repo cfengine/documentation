@@ -17,7 +17,7 @@ classes. The search order is hard, soft, then local to the current bundle.
 
 When any tags are given, only the classes with those tags matching the given
 [anchored][anchored] regular expressions are returned. Class tags are set
-using the [`meta`][Promise Types and Attributes#meta] attribute.
+using the [`meta`][Promise Types#meta] attribute.
 
 [%CFEngine_function_attributes(name, tag1, tag2, ...)%]
 

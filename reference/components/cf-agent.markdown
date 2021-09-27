@@ -715,7 +715,7 @@ kill and restart its attempt to keep a promise.
     }
 ```
 
-**See also:** [`body action expireafter`][Promise Types and Attributes#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+**See also:** [`body action expireafter`][Promise Types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
 
 ### files_single_copy
 
@@ -831,7 +831,7 @@ another which is not tied to a specific time.
     }
 ```
 
-**See also:** [Promise locking][Promises#Promise Locking], [ifelapsed action body attribute][Promise Types and Attributes#ifelapsed]
+**See also:** [Promise locking][Promises#Promise Locking], [ifelapsed action body attribute][Promise Types#ifelapsed]
 
 ### inform
 
@@ -891,7 +891,7 @@ diminishing returns.
     }
 ```
 
-**See also:** [`background` in action bodies][Promise Types and Attributes#background]
+**See also:** [`background` in action bodies][Promise Types#background]
 
 ### maxconnections
 

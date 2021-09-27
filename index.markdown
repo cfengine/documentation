@@ -38,7 +38,7 @@ Cf-agent, cf-serverd, cf-execd,  cf-promises, etc.
 ## [Language concepts][Language Concepts]
 Bundles, Bodies, Promises, Classes and Decisions, Variables, etc.
 
-## [Promise types (aka resources to be managed)][Promise Types and Attributes]
+## [Promise types (aka resources to be managed)][Promise Types]
 processes, packages, users, files, storage, services, etc
 
 ## [Masterfiles framework][Masterfiles Policy Framework]

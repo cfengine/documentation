@@ -11,7 +11,7 @@ Language elements that belong together are typically documented on the same
 page.
 
 * [Components and Common Control][Components and Common Control]
-* [Promise Types and Attributes][Promise Types and Attributes]
+* [Promise Types][Promise Types]
 * [Functions][Functions]
 * [Language Concepts][Language Concepts]
 * [Special Variables][Special Variables]
