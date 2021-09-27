@@ -562,7 +562,7 @@ components may promise to send data.
 
 **Allowed Input range:** `(critical|error|warning|notice|info)`
 
-**Default value:** `none`
+**Default value:** ` ` (unspecified)
 
 **Example:**
 
