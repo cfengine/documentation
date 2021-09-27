@@ -308,7 +308,7 @@ Then create `classes.cf`
 
 **History:** Was introduced in CFEngine 3.3.0
 
-**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types and Attributes#persist_time]
+**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types#persist_time]
 
 ### not
 
@@ -365,7 +365,7 @@ on [Negative Knowledge][classes and decisions].
           scope => "bundle";
 ```
 
-**See also:** [`scope` in `body classes`][Promise Types and Attributes#scope]
+**See also:** [`scope` in `body classes`][Promise Types#scope]
 
 ### select_class
 

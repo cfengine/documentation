@@ -186,7 +186,7 @@ Output:
 
 [%CFEngine_include_snippet(select_region.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [Common Body Attributes][Promise Types and Attributes#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### Scope and lifetime
 

@@ -74,8 +74,8 @@ attributes:
 * `edit_template`
 * [`source`][files#source] in `copy_from`
 * `exec_program` in `file_select`
-* class names in [`body classes`][Promise Types and Attributes#classes]
-* logging attributes in [`body action`][Promise Types and Attributes#action]
+* class names in [`body classes`][Promise Types#classes]
+* logging attributes in [`body action`][Promise Types#action]
 * promised service name in `service_method`
 
 For example:

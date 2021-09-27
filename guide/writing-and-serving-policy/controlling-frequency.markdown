@@ -46,7 +46,7 @@ setting is defined in `body agent control`.
 This setting tells CFEngine not to verify promises until 60 minutes have
 elapsed, ie ensures that the global frequency for all promise verification is
 one hour. This global setting of one hour could be changed for a specific
-promise body by setting [`ifelapsed`][Promise Types and Attributes#ifelapsed] in the promise body.
+promise body by setting [`ifelapsed`][Promise Types#ifelapsed] in the promise body.
 
 ```cf3
     body action example

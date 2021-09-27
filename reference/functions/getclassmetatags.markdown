@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, getclassmetatags, meta, tags]
 
 [%CFEngine_function_prototype(classname, optional_tag)%]
 
-**Description:** Returns the list of [`meta`][Promise Types and Attributes#meta] tags for class `classname`.
+**Description:** Returns the list of [`meta`][Promise Types#meta] tags for class `classname`.
 
 [%CFEngine_function_attributes(classname, optional_tag)%]
 
