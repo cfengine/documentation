@@ -50,3 +50,4 @@
 [jq-project]: https://stedolan.github.io/jq/ "jq is a lightweight and flexible command-line JSON processor. Try online at jqplay.org!"
 [Using Vagrant]: guide-installation-and-configuration-general-installation-installation-enterprise-vagrant.html "The CFEngine Vagrant Environment provides an easy way to test and explore CFEngine Enterprise."
 [common-promise-attributes]: reference-promise-types.html#common-promise-attributes
+[common-body-attributes]: reference-promise-types.html#common-body-attributes
