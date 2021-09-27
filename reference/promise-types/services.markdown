@@ -315,7 +315,7 @@ and `$(this.service_policy)` (the policy state the service should have).
 
 **Notes:** `service_bundle` is not used when `service_type` is ```windows```.
 
-**See also:** [Common Body Attributes][Promise Types#Common Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### service_args
 

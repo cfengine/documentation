@@ -183,7 +183,7 @@ as a non-privileged user inside an isolated directory tree.
     }
 ```
 
-**See also:** [Common Body Attributes][Promise Types#Common Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### useshell
 

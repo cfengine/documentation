@@ -94,7 +94,7 @@ This attribute is required.
 
 **Type:** `body environment_interface`
 
-**See also:** [Common Body Attributes][Promise Types#Common Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### env_addresses
 
@@ -182,7 +182,7 @@ identifier used as 'promiser' by the virtualization manager.
 
 **Type:** `body environment_resources`
 
-**See also:** [Common Body Attributes][Promise Types#Common Attributes]
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
 #### env_cpus
 
