@@ -221,6 +221,8 @@ Mission Portal's configuration can be exported and imported.
 
 ![Export/Import](settings-export-import-3.18.0.png)
 
+**See also:** [Export/Import API][Import & Export API]
+
 ## Role based access control ##
 
 ![Role based access control](role_based_access_control_settings.png)
