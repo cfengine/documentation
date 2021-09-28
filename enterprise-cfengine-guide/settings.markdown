@@ -18,6 +18,8 @@ Settings view.
 * [Host Identifier][Settings#Host Identifier]
 * [Mail Settings][Settings#Mail settings]
 * [Authentication settings][Settings#Authentication settings]
+* [Export/Import][Settings#Export/Import]
+* [Role based access control][Settings#Role based access control]
 * [About CFEngine][Settings#About CFEngine]
 
 
@@ -218,6 +220,8 @@ Mission portal can authenticate against an external directory.
 Mission Portal's configuration can be exported and imported.
 
 ![Export/Import](settings-export-import-3.18.0.png)
+
+**See also:** [Export/Import API][Import & Export API]
 
 ## Role based access control ##
 
