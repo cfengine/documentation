@@ -18,7 +18,7 @@ Settings view.
 * [Host Identifier][Settings#Host Identifier]
 * [Mail Settings][Settings#Mail settings]
 * [Authentication settings][Settings#Authentication settings]
-* [Export/Import][Settings#Export\_Import]
+* [Export/Import][Settings#Export/Import]
 * [Role based access control][Settings#Role based access control]
 * [About CFEngine][Settings#About CFEngine]
 
