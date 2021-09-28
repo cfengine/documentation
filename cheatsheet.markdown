@@ -52,7 +52,14 @@ For example, On the [functions][Functions] page we can link to the [collecting f
 
 Sometimes (because `¯\_(ツ)_/¯`, maybe the page linked to hasn't been parsed yet) a page may not be automatically known. In this case an entry in [_references.md](https://github.com/cfengine/documentation-generator/blob/master/_references.md) of the [documentation-generator](https://github.com/cfengine/documentation-generator) may be required.
 
-**NOTE:** Anchors with underscores are problematic!
+##### Special Characters in link targets
+
+_Most_ (`¯\_(ツ)_/¯`) special characters are _okay_. For example:
+
+* Link targets with `/` (forward slashes) work
+   * ```[Export/Import][Settings#Export/Import]``` == [Export/Import][Settings#Export/Import]
+
+Anchors with _underscores_ are problematic, they need to be escaped.
 
 For example ```services_autorun``` in the MPF documentation the underscore needs to be escaped with a ```\```.
 
