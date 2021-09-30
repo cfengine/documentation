@@ -58,4 +58,4 @@ this:
 
 **History:** Introduced in CFEngine 3.6
 
-**See also:** `packagesmatching()`.
+**See also:** `packagesmatching()`, [Package information cache tunables in the MPF][Masterfiles Policy Framework#Configure periodic package inventory refresh interval]
