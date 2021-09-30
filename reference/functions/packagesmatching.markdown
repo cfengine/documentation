@@ -62,4 +62,4 @@ some desired packages, and finally reports if they are installed.
 
 **History:** Introduced in CFEngine 3.6
 
-**See also:** `packageupdatesmatching()`.
+**See also:** `packageupdatesmatching()`, [Package information cache tunables in the MPF][Masterfiles Policy Framework#Configure periodic package inventory refresh interval]
