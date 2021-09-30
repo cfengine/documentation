@@ -26,6 +26,9 @@ commands:
 
 **Notes:** Introduced primarily for use with `if` and `unless` promise attributes.
 
-**See also:** `and`, `or`, `not`
+**See also:** `and()`, `or()`
 
-**History:** Was introduced in 3.2.0, Nova 2.1.0 (2011)
+**History:**
+
+* Introduced in 3.2.0, Nova 2.1.0 (2011)
+* Return type changed from `string` to `boolean` in 3.17.0 (2020) (CFE-3470)
