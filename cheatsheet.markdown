@@ -279,7 +279,7 @@ SELECT
 		+++ b/README.md
 		@@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
 
-		 * follow the [Policy Style Guide](manuals/policy-style.markdown)
+		 * follow the [Policy Style Guide](guide/writing-and-serving-policy/policy-style.markdown)
 		   in examples and code snippets
 		-* always run it through Pygments plus the appropriate lexer (only cf3
 		-  supported for now)
@@ -300,7 +300,7 @@ index 92555a2..b49c0bb 100644
 +++ b/README.md
 @@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
 
- * follow the [Policy Style Guide](manuals/policy-style.markdown)
+ * follow the [Policy Style Guide](guide/writing-and-serving-policy/policy-style.markdown)
    in examples and code snippets
 -* always run it through Pygments plus the appropriate lexer (only cf3
 -  supported for now)
