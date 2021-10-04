@@ -1,9 +1,9 @@
 # CFEngine Documentation
 
 This repository holds the sources for the technical
-[CFEngine documentation](https://cfengine.com/docs) in
+[CFEngine documentation](https://docs.cfengine.com/docs/) in
 markdown files. If you have a texteditor, know how to write
-[markdown](http://daringfireball.net/projects/markdown/syntax) and
+[markdown](https://daringfireball.net/projects/markdown/syntax) and
 English and would like to contribute to the CFEngine documentation, then we'd
 like to invite you to collaborate here!
 
@@ -18,9 +18,9 @@ CFEngine users by correcting some of them.
 ## Writing Documentation
 
 The CFEngine documentation is written in regular
-[markdown](http://daringfireball.net/projects/markdown/syntax), with some
+[markdown](https://daringfireball.net/projects/markdown/syntax), with some
 extensions as documented below. Check out the
-[cheatsheet](https://cfengine.com/docs/master/markdown-cheatsheet.html)!
+[cheatsheet](https://docs.cfengine.com/docs/master/markdown-cheatsheet.html)!
 
 To keep the source readable in git and workable with a broad range of tools,
 keep the line length in paragraphs below 78 characters.
@@ -48,7 +48,7 @@ The content of the file
 
 will generate a HTML page
 
-    docs.cfengine.com/version/path-of-categories.html
+    docs.cfengine.com/docs/version/path-of-categories.html
 
 with equivalent location in the left-hand navigation tree.
 
@@ -96,7 +96,7 @@ META tag values will be interpreted literally, and cannot contain `:`, `[` and
 Image files are in the same directory as the markdown files that embed them.
 Give files unique names to avoid overwrites in the generated website.
 
-See [Style Guide - Charts and graphs](#Charts_and_graphs) for style
+See [Style Guide - Charts and graphs](#charts-and-graphs) for style
 requirements for images.
 
 *Warning:* It is important for images and other binary files to be marked as a
@@ -427,13 +427,13 @@ As a general note, avoiding abbreviations provides better readability.
 
 ## Technical reference documentation
 
-* follow the [Policy Style Guide](manuals/policy-style.markdown)
+* follow the [Policy Style Guide](guide/writing-and-serving-policy/policy-style.markdown)
   in examples and code snippets
 * use the appropriate lexer for syntax highlighting via Pygments
 
   Most important are the `cf3` lexer, as well as `bash`, `console`,
   `diff`, `shell-session` and `sql`. But Jekyll supports
-  [many more lexers](http://pygments.org/docs/lexers/)
+  [many more lexers](https://pygments.org/docs/lexers/)
 
 * avoid custom color schemes and hand-coded HTML
 * document the example after the example code
@@ -586,11 +586,11 @@ https://github.com/cfengine/documentation-generator. After you compile pages,
 Jekyll will place all files into the _site folder, without subdirectories.
 
 Commits in this repository trigger the documentation generator to run, which
-then updates the contents of http://cfengine.com/docs/
+then updates the contents of https://docs.cfengine.com/docs/
 
 The documentation generation creates a log file that lists undocumented
 syntax elements, ambiguous link targets and other stuff that can be improved at
-https://cfengine.com/docs/master/cfdoc_log.html
+https://docs.cfengine.com/docs/master/cfdoc_log.html
 
 ## License
 
