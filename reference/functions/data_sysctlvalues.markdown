@@ -13,8 +13,6 @@ tags: [reference, system functions, functions, sysctl, data_sysctlvalues]
 
 **Example:**
 
-**Example:**
-
 Policy:
 
 [%CFEngine_include_example(data_sysctlvalues.cf, #\+begin_src\s+cfengine3, .*end_src)%]
