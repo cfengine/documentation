@@ -13,21 +13,15 @@ tags: [reference, system functions, functions, sysctl, data_sysctlvalues]
 
 **Example:**
 
-```cf3
-    vars:
-      "sysctl" data => data_sysctlvalues(); # get everything!
-```
+**Example:**
+
+Policy:
+
+[%CFEngine_include_example(data_sysctlvalues.cf, #\+begin_src\s+cfengine3, .*end_src)%]
 
 Output:
 
-```
-{
-  "sysctl": {
-  ...
-    "net.unix.max_dgram_qlen": "512",
-  ...
-  }
-```
+[%CFEngine_include_snippet(data_sysctlvalues.cf, #\+begin_src\s+mock_example_output\s*, .*end_src)%]
 
 **Notes:**
 
