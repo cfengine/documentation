@@ -12,11 +12,23 @@ JSON data files, so you should view and edit them with a JSON-aware editor if
 possible. This is a convenient way to override defaults defined in the
 Masterfiles Policy Framework without modifying the shipped policy itself.
 
-There are two canonical augments files, `$(sys.workdir)/data/host_specific.json`
-(typically `/var/cfengine/data/host_specific.json`), which is read first and
-who's Variables take precedence, and `$(sys.policy_entry_dirname)/def.json`
-(typically `/var/cfengine/inputs/def.json`) which may load additional Augments
-as specified by the `augments` key.
+## Augments Files ##
+
+There are two canonical augments files, `host_specific.json`, and `def.json` which may load additional Augments
+as specified by the [_augments_ key][Augments#augments].
+
+
+### host_specific.json ###
+
+If `$(sys.workdir)/data/host_specific.json` (typically `/var/cfengine/data/host_specific.json`) is the first augments file that is loaded. Any variables defined as a result of processing this file
+are automatically tagged with `source=cmdb`. Variables defined from this file can not be overridden by subsequently processed augments files. Policy always wins and thus _can_ overwrite the variable.
+
+**Notes:**
+
+* This file does not support the [_augments_ key][Augments#augments].
+* This file does not support expansion of CFEngine variables, including `sys` variables (unlike `def.json`).
+
+### def.json ###
 
 The file `def.json` is found based on the location of the policy entry (the first policy file read by the agent):
 
@@ -25,16 +37,18 @@ The file `def.json` is found based on the location of the policy entry (the firs
 * with `-f /dirname/myfile.cf`, it's in `/dirname/def.json`
 * with `-f ./myfile.cf`, it's in `./def.json`
 
-`def_preferred.json` will be used instead of `def.json` if it is present. This preferential loading can be disabled by providing the `--ignore-preferred-augments` option to the agent.
+**Notes:**
 
-Values will be expanded, so you can use the variables from
-[Special Variables][].
+* `sys` variables are expanded (unlike `host_specific.json`).
+* `def_preferred.json` will be used instead of `def.json` if it is present. This preferential loading can be disabled by providing the `--ignore-preferred-augments` option to the agent.
+
+## Augments Keys ##
 
 An augments file can contain the following keys:
 
-## inputs
+### inputs ###
 
-This key is supported in `def.json`, `def_preferred.json`, and augments loaded by the _augments_ key.
+This key is supported in `def.json`, `def_preferred.json`, and augments loaded by the [_augments_ key][Augments#augments].
 
 Filenames entered here will appear in the `def.augments_inputs` variable.
 
@@ -73,9 +87,10 @@ The above Augments results in `$(sys.policy_entry_dirname)/services/hello-world.
 
 The above Augments results in `$(sys.policy_entry_dirname)/goodbye.cf` being added to inputs.
 
-## variables
+### variables ###
 
-This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the augments key.
+
+This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the [_augments_ key][Augments#augments].
 
 Variables defined here can target a _namespace_ and or _bundle_ scope explicitly. When defined from `host_specific.json`, variables default to the `main` _bundle_ in the `data` _namespace_ (`$(data:main.MyVariable)`).
 
@@ -185,7 +200,7 @@ bundle agent my_bundle
 
 * Added in 3.18.0
 
-## vars
+### vars ###
 
 This key is supported in both `host_sepecific.json`, `def.json`, and `def_preferred.json` and augments loaded by the augments key.
 
@@ -245,7 +260,7 @@ Variables of other types than string can be defined too, like in this example
 
 * 3.18.0 gained ability to specify the _namespace_ and _bundle_ the variable should be defined in.
 
-## classes
+### classes ###
 
 This key is supported in both `host_sepecific.json`, `def.json`, `def_preferred.json`, and augments loaded by the augments key.
 
@@ -399,9 +414,9 @@ myclass_defined_by_augments_in_def_json_3_18_0_v1            optional,tags,sourc
   * Classes are defined as _soft_ classes instead of _hard_ classes.
 
 
-## augments
+### augments ###
 
-This key is supported in `def.json`, `def_preferred.json`, and augments loaded by the augments key.
+This key is supported in `def.json`, `def_preferred.json`, and augments loaded by the [_augments_ key][Augments#augments].
 
 A list of file names that should be merged using `mergedata()` semantic
 
