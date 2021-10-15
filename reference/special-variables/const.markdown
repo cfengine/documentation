@@ -8,6 +8,21 @@ tags: [reference, variables, const, const]
 CFEngine defines a number of variables for embedding unprintable values
 or values with special meanings in strings.
 
+[%CFEngine_include_example(const.cf)%]
+
+### const.at
+
+```cf3
+    reports:
+
+       "The value of $(const.at) is @";
+
+```
+
+**History:**
+
+* Added in CFEngine 3.19.0, 3.18.1
+
 ### const.dollar
 
 
