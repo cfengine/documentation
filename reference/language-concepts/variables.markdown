@@ -166,59 +166,29 @@ variables.
 
 ## Associative Arrays
 
-Note that associative arrays are being deprecated in favor of the `data`
-variable type. It is recommended to use the `data` variable type instead
-whenever possible to ensure future compatibility of your CFEngine policy.
+Associative arrays in CFEngine are fundamentally a collection of individual
+variables that together represent a data structure with key value pairs. They
+can be built up, dynamically one key at a time and individual keys can be
+re-defined.
+
+While in many cases associative arrays can be used interchangeably with `data`
+variables (e.g. as input to a function) if there is not explicit need to use an
+associative array for it's ability to be built up dynamically or for managing
+the size of individual variables use of a `data` variable is recommended.
 
 Every value in an associative array is subject to the same size
 limitations as a regular scalar.
 
 Associative array variables are written with `[` and `]` brackets that enclose
-an arbitrary key. These keys are associated with values
-
-```cf3
-    bundle agent example
-    {
-        vars:
-
-            "component" slist => { "cf-monitord", "cf-serverd", "cf-execd" };
-
-            "array[cf-monitord]" string => "The monitor";
-            "array[cf-serverd]" string => "The server";
-            "array[cf-execd]" string => "The executor, not executioner";
-
-        commands:
-
-            "/bin/echo $(component) is"
-                args => "$(array[$(component)])";
-    }
-```
-
-This example defines three values in an associative array under the keys
-`cf-monitord`, `cf-serverd`, and `cf-execd`. They are sequentially printed
-with the echo command.
+an arbitrary key.
 
 Arrays are associative and may be of type scalar or list. Enumerated arrays
 are simply treated as a special case of associative arrays, since there are no
 numerical loops in CFEngine. Special functions exist to extract lists of keys
 from array variables for iteration purposes.
 
-Here is an example of using the function [`getindices()`][getindices] which
-extracts all of the keys from an associative array. If this series of promises
-were executed it would print out two messages, one for each key.
+**Example:**
 
-```cf3
-    bundle agent array
-    {
-      vars:
+[%CFEngine_include_example(arrays.cf)%]
 
-          "v[index_1]" string => "value_1";
-          "v[index_2]" string => "value_2";
-
-          "parameter_name" slist => getindices("v");
-
-      reports:
-          "Found index: $(parameter_name)";
-    }
-```
-
+**See also:** `getindices()`, `getvalues()`
