@@ -154,6 +154,8 @@ and resume being collected from after being deleted.
     Output format. Default value is `json`. Allowed values: `json`, `yaml`.
 * **withInventory** *(boolean)*
     Include inventory data to the API response. Default value is `false`. Allowed values: `true`, `false`  
+* **inventoryFile** *(boolean)*
+    Make hosts' children values objects which aligns with Ansible inventory that is sourced from a file (so this format is appropriate for caching responses), wby default when `inventoryFile` is `false`, the output format aligns with Ansible inventory sourced from a script. Default value is `false`. Allowed values: `true`, `false`
     
 **CURL unfiltered request example**
 
@@ -178,6 +180,34 @@ curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class
     "ubuntu_16": {
             "hosts": [
                 "ubuntu-xenial"
+            ]
+    }
+}
+```
+
+**inventoryFile=true**
+
+```
+curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class?inventoryFile=true
+```
+
+**Example response:**
+
+```
+{
+    "10_0_2_15": {
+            "hosts": [
+                "ubuntu-xenial": {}
+            ]
+    },
+    "127_0_0_1": {
+            "hosts": [
+                "ubuntu-xenial": {}
+            ]
+    },
+    "ubuntu_16": {
+            "hosts": [
+                "ubuntu-xenial": {}
             ]
     }
 }
@@ -440,3 +470,6 @@ HTTP 200 Ok
 *   **count**
     The bootstrapped hosts to the hub count.
 
+## History
+
+* `inventoryFile=true` parameter added in CFEngine 3.19.0, 3.18.1
