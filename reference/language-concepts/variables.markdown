@@ -189,6 +189,6 @@ from array variables for iteration purposes.
 
 **Example:**
 
-[%CFEngine_include_example(array.cf)%]
+[%CFEngine_include_example(arrays.cf)%]
 
 **See also:** `getindices()`, `getvalues()`
