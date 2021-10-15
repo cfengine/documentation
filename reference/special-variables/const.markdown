@@ -21,7 +21,7 @@ or values with special meanings in strings.
 
 **History:**
 
-* Added in CFEngine 3.19.0
+* Added in CFEngine 3.19.0, 3.18.1
 
 ### const.dollar
 
