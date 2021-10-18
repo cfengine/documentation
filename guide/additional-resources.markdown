@@ -36,10 +36,6 @@ configuration management best practices from the CFEngine team.
 
 * [Beyond Automation](http://shop.oreilly.com/product/110000787.do) Learn how to go beyond classical automation with CFEngine 3, one of the most established configuration management systems available. In this video tutorial, host and CFEngine creator Mark Burgess takes you on a tour of discovery from basic automation concepts to more complex examples, such as implementing distributed orchestration.
 
-* [Learn](http://cfengine.com/learn) Videos which demonstrate the key capabilities of CFEngine Enterprise and Community editions.
-
-* CFEngine as a powerful security tool: Three [presentations](http://prezi.com/user/zzamboni/) by Diego Zamboni
-
 ## Tools ##
 
 * Download CFEngine [code editors](https://cfengine.com/cfengine-code-editors).
