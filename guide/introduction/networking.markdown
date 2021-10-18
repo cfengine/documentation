@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Networking
+title: Client server communication
 published: true
 sorting: 30
 tags: [overviews, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]

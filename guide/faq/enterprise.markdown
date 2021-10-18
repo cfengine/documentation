@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine Enterprise
+title: Enterprise Reporting database
 published: true
 sorting: 90
 tags: [getting started, installation, faq]

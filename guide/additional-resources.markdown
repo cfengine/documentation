@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Additional Resources
+title: External resources
 published: true
 sorting: 110
 tags: [overviews, learning]
@@ -8,11 +8,11 @@ tags: [overviews, learning]
 
 Use the following links to learn more about CFEngine:
 
-* [Reading][Additional Resources#Reading]
-* [Training][Additional Resources#Training]
-* [Tools][Additional Resources#Tools]
-* [Support and Community][Additional Resources#Support and Community]
-* [Contribute to CFEngine][Additional Resources#Contribute to CFEngine]
+* [Reading][External resources#Reading]
+* [Training][External resources#Training]
+* [Tools][External resources#Tools]
+* [Support and Community][External resources#Support and Community]
+* [Contribute to CFEngine][External resources#Contribute to CFEngine]
 
 ## Reading ##
 
