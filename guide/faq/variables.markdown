@@ -1,12 +1,10 @@
 ---
 layout: default
-title: Variables
+title: How do I pass a data type variable?
 published: true
 sorting: 90
 tags: [getting started, vars, faq]
 ---
-
-# How do I pass a data type variable?
 
 Data type variables also known as "data containers" are passed using the same
 syntax as passing a list.
