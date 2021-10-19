@@ -6,8 +6,7 @@ sorting: 60
 tags: [Components, cf-key]
 ---
 
-The CFEngine key generator makes key pairs for [remote
-authentication][Networking].
+The CFEngine key generator makes key pairs for [remote authentication][Client server communication].
 
 ## Command reference ##
 
