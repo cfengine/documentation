@@ -51,12 +51,12 @@ feel for the power and value of CFEngine:
 
 Take a look at [the CFEngine Guide][Guide] to learn more about CFEngine's architecture and components, as well as how to write policy that can help manage IT systems.
 
-Check out [Additional Resources][Additional Resources] and the [CFEngine Learning Center][learning center], for more guides, demos, and other resources from our CFEngine staff and our special CFEngine contributors.
+Check out [External resources][External resources], for more guides, demos, and other resources from our CFEngine staff and our special CFEngine contributors.
 
 
 ## Use our Help
 
-[Support and Community][Additional Resources#Support and Community] We provide a number of ways to connect you to CFEngine
+[Support and Community][External Resources#Support and Community] We provide a number of ways to connect you to CFEngine
 experts if you need more help. Contact us!
 
 ## CFEngine Guide ##
@@ -74,4 +74,4 @@ experts if you need more help. Contact us!
 	* [Authoring Policy Tools & Workflow][]
 * [Reports][]
 * [FAQ][]
-* [Additional Resources][]
+* [External Resources][]

@@ -140,4 +140,4 @@ direction). All of the desired-state changes are managed locally by each
 individual host, and continuously repaired to ensure on-going compliance
 with policy.
 
-See Also: [Networking][Networking]
+See Also: [Client server communication][Client server communication]
