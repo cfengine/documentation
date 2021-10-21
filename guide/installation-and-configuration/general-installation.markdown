@@ -41,7 +41,7 @@ Note: Install actions logged to `/var/logs/cfengine-install.log`.
 
 Bootstrapping a client means to configure it initially.  With CFEngine, the default bootstrap:
 
-* records the server's address (accessible as `sys.policy_hub`) and public key, and gives the server the client's key to establish trust (see [Bootstrapping][Networking#Bootstrapping])
+* records the server's address (accessible as `sys.policy_hub`) and public key, and gives the server the client's key to establish trust (see [Bootstrapping][Client server communication#Bootstrapping])
 * copies **all** the contents of `/var/cfengine/masterfiles` on the policy server (AKA `sys.masterdir`) to `/var/cfengine/inputs` (AKA `sys.inputdir`).  See `update.cf` for details.
 
 Run the bootstrap command, **first** on the policy server:
