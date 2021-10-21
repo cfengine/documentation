@@ -56,7 +56,7 @@ Check out [External resources][External resources], for more guides, demos, and 
 
 ## Use our Help
 
-[Support and Community][Additional Resources#Support and Community] We provide a number of ways to connect you to CFEngine
+[Support and Community][External Resources#Support and Community] We provide a number of ways to connect you to CFEngine
 experts if you need more help. Contact us!
 
 ## CFEngine Guide ##
@@ -74,4 +74,4 @@ experts if you need more help. Contact us!
 	* [Authoring Policy Tools & Workflow][]
 * [Reports][]
 * [FAQ][]
-* [Additional Resources][]
+* [External Resources][]
