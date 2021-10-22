@@ -405,7 +405,7 @@ bundle agent example
 
 * Requires Python version 2 or 3 to be installed on the host.
 
-* If ```policy => "latest"``` *and* ```version``` is set this package module will downgrade the promised package if necessary.
+* If ```policy => "present"``` *and* ```version``` is set this package module will downgrade the promised package if necessary.
 
   ```console
   [root ~]# yum --show-duplicates list screen
