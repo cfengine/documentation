@@ -16,6 +16,10 @@ including, but not limited to, implied warranties of merchantability, fitness
 for a particular purpose, title and non-infringement with regard to the
 Licensed Software.
 
+## CFEngine Documentation License
+
+The documentation is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-sa/3.0/deed.en_US).
+
 ## 3rd Party Licenses and Libraries
 
 CFEngine includes the following 3rd party libraries and components:
