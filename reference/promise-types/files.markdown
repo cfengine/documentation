@@ -3269,37 +3269,32 @@ with `.`.
 (no shell wrapper used)
 
 A command to execute, usually for the promised file to transform it to
-something else (but possibly to create the promised file based on a
-different origin file).
+something else.
 
-The promiser file must exist in order to effect the transformer.
+**Notes:**
 
-Note also that if you use the `$(this.promiser)` variable or other
-variable in this command, and the file object contains spaces, then you
-should quote the variable. For example:
+* The promised file *must* exist or the transformer will not be triggered.
 
-```cf3
-    transformer => "/usr/bin/gzip \"$(this.promiser)\"",
-```
+* The transformer *should* result in the promised file no longer existing.
 
-Note also that the transformer does not actually need to change the
-file. You can, for example, simply report on the existence of files
-with:
+* By default, if the transformer returns zero, the promise will be considered
+  repaired, even if the transformation does not result in the promised file
+  becoming absent. Depending on other context restrictions this may result in
+  the transformer being executed during each agent execution. For example:
 
-```cf3
-    transformer => "/bin/echo I found a file named $(this.promiser)",
-```
+  ```cf3
+  transformer => "/bin/echo I found a file named $(this.promiser)",
+  ```
 
-The file streams `stdout` and `stderr` are redirected by CFEngine, and
-will not appear in any output unless you run `cf-agent` with the -v
-switch.
+* The interpretation of the transformer return code can be managed similarly to
+  `commands` type promises by using a `classes` body with `kept_returncodes`,
+  `repaired_returncodes` and `failed_returncodes` attributes.
 
-It is possible to set classes based on the return code of a
-transformer-command in a very flexible way. See the `kept_returncodes`,
-`repaired_returncodes` and `failed_returncodes` attributes.
+* `stdout` and `stderr` are redirected by CFEngine, and will not appear in any
+  output unless you run `cf-agent` with verbose logging.
 
-Finally, you should note that the command is not run in a shell. This
-means that you cannot perform file redirection or create pipelines.
+* The command is not run in a shell. This means that you cannot perform file
+  redirection or create pipelines.
 
 **Type:** `string`
 
@@ -3307,37 +3302,9 @@ means that you cannot perform file redirection or create pipelines.
 
 **Example:**
 
-These examples show both types of promises.
+[%CFEngine_include_example(files_transformer.cf)%]
 
-```cf3
-    files:
-      "/home/mark/tmp/testcopy"
-
-        file_select => pdf_files,
-        transformer => "/usr/bin/gzip $(this.promiser)",
-        depth_search => recurse("inf");
-```
-
-In the first example, the promise is made on the file that we wish to
-transform. If the promised file exists, the transformer will change the
-file to a compressed version (and the next time CFEngine runs, the
-promised file will no longer exist, because it now has the .gz
-extension).
-
-```cf3
-     classes:
-        "do_update" expression => isnewerthan("/etc/postfix/alias",
-                                              "/etc/postfix/alias.cdb");
-
-     files:
-        "/etc/postfix/alias.cdb"
-           create => "true",        # Must have this!
-           transformer => "/usr/sbin/postalias /etc/postfix/alias",
-           if => "do_update";
-```
-
-In the second example, the promise is made on the file *resulting from*
-the transformation (and the promise is conditional on the original file
-being newer than the result file). In this case, we *must* specify
-create = true. If we do not, then if the promised file is removed the
-transformer will not be executed.
+In the example, the promise is made on the file that we wish to transform. If
+the promised file exists, the transformer will change the file to a compressed
+version (and the next time CFEngine runs, the promised file will no longer
+exist, because it now has the `.gz` extension).
