@@ -53,6 +53,8 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
+* **vscType** *(string)*
+  VCS type. Allowed values: `GIT`, `GIT_CFBS`
 * **gitServer** *(string)*
     Git repository URL `Emp: https://github.com/cfengine/masterfiles.git`. Required parameter.
 * **gitRefspec** *(string)*
