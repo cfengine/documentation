@@ -33,3 +33,7 @@ Output:
 [%CFEngine_include_snippet(bundlestate.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **See also:** `getindices()`, `classesmatching()`, `variablesmatching()`, `mergedata()`, `template_method`, `mustache`, `inline_mustache`, `datastate()`
+
+**History:**
+
+* Introduced in CFEngine 3.7.0
