@@ -17,6 +17,9 @@ tags: [reference, io functions, functions, storejson, json, inline_json, contain
 
 [%CFEngine_include_example(storejson.cf)%]
 
-**History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+**History:**
+
+* Introduced in CFEngine 3.6.0
+* The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
 **See also:** `readjson()`, `readyaml()`, `parsejson()`, `parseyaml()`, [about collecting functions][Functions#collecting functions], and `data` documentation.
