@@ -24,3 +24,7 @@ first `maxbytes` bytes are read from `filename`.
 ```
 
 **See also:** `readdata()`, `parsejson()`, `storejson()`, `parseyaml()`, `readyaml()`, `mergedata()`, `validjson()`, and `data` documentation.
+
+**History:**
+
+* Introduced in CFEngine 3.6.0
