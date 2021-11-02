@@ -36,3 +36,7 @@ Output:
 [%CFEngine_include_snippet(data_readstringarray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **See also:** `data_readstringarrayidx()`, `data`
+
+**History:**
+
+* Added in CFEngine 3.6.0
