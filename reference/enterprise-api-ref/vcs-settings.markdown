@@ -53,6 +53,8 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
+* **vscType** *(string)*
+  VCS type. Allowed values: `GIT`, `GIT_CFBS`. Default value: `GIT`
 * **gitServer** *(string)*
     Git repository URL `Emp: https://github.com/cfengine/masterfiles.git`. Required parameter.
 * **gitRefspec** *(string)*
@@ -92,3 +94,7 @@ curl -k --user <username>:<password> \
      "gitPrivateKey": "/opt/cfengine/userworkdir/admin/.ssh/id_rsa.pvt"
  }
 ```
+
+## History
+
+* `vscType` parameter added in 3.19.0, 3.18.1
