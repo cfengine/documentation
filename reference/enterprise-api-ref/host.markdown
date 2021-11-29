@@ -155,7 +155,7 @@ and resume being collected from after being deleted.
 * **withInventory** *(boolean)*
     Include inventory data to the API response. Default value is `false`. Allowed values: `true`, `false`  
 * **inventoryFile** *(boolean)*
-    Make hosts' children values objects which aligns with Ansible inventory that is sourced from a file (so this format is appropriate for caching responses), wby default when `inventoryFile` is `false`, the output format aligns with Ansible inventory sourced from a script. Default value is `false`. Allowed values: `true`, `false`
+    Make hosts' children values objects which aligns with Ansible inventory that is sourced from a file (so this format is appropriate for caching responses), by default when `inventoryFile` is `false`, the output format aligns with Ansible inventory sourced from a script. Default value is `false`. Allowed values: `true`, `false`
     
 **CURL unfiltered request example**
 
