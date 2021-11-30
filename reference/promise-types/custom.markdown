@@ -371,6 +371,38 @@ You can also include log messages in the JSON data:
 
 (Formatted here for readability, JSON data must still be on a single line in protocol).
 
+The JSON based protocol also supports the use of custom bodies.
+Custom bodies are sent as JSON objects within the respective attribute.
+The following is an example using the members attribute of the custom groups promise type:
+
+```
+body members foo_members
+{
+  include => { "alice", "bob" };
+  exclude => { "malcom" };
+}
+
+bundle agent foo_group
+{
+  groups:
+      "foo"
+        policy => "present",
+        members => foo_members;
+}
+```
+
+The attributes from the above example would be sent like this:
+
+```
+"attributes": {
+  "policy": "present",
+  "members": {
+    "include": ["alice", "bob"],
+    "exclude": ["malcom"]
+  }
+}
+```
+
 #### Line based protocol
 
 The line based protocol supports a limited subset of features of CFEngine promises, which should be enough for most use cases.
