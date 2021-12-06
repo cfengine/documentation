@@ -232,6 +232,8 @@ $ export FEEDER=34.244.118.58
 $ export FEEDER_BS=172.31.43.102   # _BS is bootstrap IP
 ```
 
+In these examples we use the `admin` account because the Admin Role which this user has contains the proper Role Based Access Control privileges to access the needed API endpoints.
+
 ### Stop cf-execd on the superhub and feeder
 
 We don't want periodic agent runs to get in our ways so let's disable
@@ -571,55 +573,113 @@ you wish to disable and change the top-level `target_state` property value to `o
 ### Remove Feeder from Mission Portal Hub Management
 
 At this time it is not possible to remove a connected hub in the Mission Portal Hub
-management app. The recommended way to remove a connected hub is with the API.
+management app.
 
-First list all feeders to find the id value. Use of ```jq``` is optional for pretty printing the JSON.
+* List all feeders to find the id value. Use of ```jq``` is optional for pretty printing the JSON.
 
-```console
-$ curl -k -s -X GET -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub | jq '.'
-```
+   (Set approprivate values in your shell for `PASSWORD` and `SUPERHUB`)
+   ```console
+   $ curl -k -s -X GET -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub | jq '.'
+   ```
 
-```json
-{
-  "id": 1,
-  "hostkey": "SHA=cd4be31f20f0c7d019a5d3bfe368415f2d34fec8af26ee28c4c123c6a0af49a2",
-  "api_url": "https://100.90.80.70",
-  "ui_name": "feeder1",
-  "role": "feeder",
-  "target_state": "on",
-  "transport": {
-    "mode": "pull_over_rsync",
-    "ssh_user": "cftransport",
-    "ssh_host": "172.32.1.20",
-    "ssh_pubkey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVGoBB3zLKfVTzDNum/JWlmNJrSuDGrhTW1ZGtZEKjxFViFr4j0F8s6gIr5KOMcWtd91XvW6klpCPqKH3lfY767AI/RQa8JgVXgtvUG8rkD+gJ/wzGJm+VoGpxxs9dyBgSOtkaOSIDc574Om8dBR8enRcgxo1cNpvDVLVYKx9IzqhBwqp1gzEtGoIi+CDoGmoj1BT9XTlCRvGXYmSSBrgLARVO2mh5iqhP0XRVCp9Ki6OB9vMcs9rxIgQaPt8tVCt7/FK03IXrWPUsJC4M/kXiaKgHlE96H0CEvYl7GczaIU2NN5AHXZlviL79Zb8kOcUzsMdKv40G9YVa7/kyDOUX root@ip-172-32-1-20",
-    "ssh_fingerprint": "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBF18li5PyCyVy27+Lv09HDRxhyEnlL+zK++WaLc78W+Gji5i2VSRDg/jVV0xU2ZUmkohULZ66OmI5/sCOOIa3XU=\nssh-ed25519"
-  },
-  "statistics": []
-}
-{
-  "id": 2,
-  "hostkey": "SHA=30b6bb15fb94c9b7e386521bbe566934d266db2f6f63cd85f5e6fc406d11110b",
-  "api_url": "https://100.90.80.60",
-  "ui_name": "feeder2",
-  "role": "feeder",
-  "target_state": "on",
-  "transport": {
-    "mode": "pull_over_rsync",
-    "ssh_user": "cftransport",
-    "ssh_host": "172.32.1.21",
-    "ssh_pubkey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDin59ffTXhtQxahrYkqNi3x36XIO08GnOvvVe3s+DmuT3kBn8Lh4P30kOVONSGKcfNZLnWVPrk2qqNWuEi6xg861G1kXqce02c26BW+4L/tnz86/kmTBGc2vb6d1NpEKA/1bg6bMf1da+EInxuMsS+yOWCe+s6DJ00bg6iCnmlLYtzAkMXmXK5QgVG6AImJXqG1Px5DlsRcKto00J8WJswfTpQXbZbuog4J6Ltm/J4DQW1/x7pEJby/r+/lKPJWp19t0gaGXfsxwHEPFK6YC8zmFzkBeqiVpAizhs7G8mZDgAAhMyY8d2eYIp+hDIFpfQA3aHHr0L7emsFeDa/rExt root@ip-172-32-1-21",
-    "ssh_fingerprint": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7HE4qJfTLP9j02jZnkpTpUMCBiFzmAemgvIPcJjWJVNcawh1hpGSsWjw9EM1kwn7J6fWrjEkY8lTi2pNTnobL9qt+oQvwFqUvs5EZ8gAVIAyDjKE8GLckZRt8VGxLWMtOlBKaAmPBn0eFP6ToPqnPygJiiM05vKtxPui1xuCTrW+rXShtolUJLwwGH2APcDqjKAdZceQK4nybJzk4J1P77sJc+9IlHJCTpfj8AQEbh/Z3cHtNKauaz1mhDn5YT/QWwzKavGlqFSlSDwLXT2go6P6FoSaVYTV45V9l7q6ahEy3zEe7+7psMFVucS512qYFEKn5FoSIVQLgT3I8MfI1\necdsa-sha2-nistp256"
-  },
-  "statistics": []
-}
-```
+   ```json
+   {
+     "id": 1,
+     "hostkey": "SHA=cd4be31f20f0c7d019a5d3bfe368415f2d34fec8af26ee28c4c123c6a0af49a2",
+     "api_url": "https://100.90.80.70",
+     "ui_name": "feeder1",
+     "role": "feeder",
+     "target_state": "on",
+     "transport": {
+       "mode": "pull_over_rsync",
+       "ssh_user": "cftransport",
+       "ssh_host": "172.32.1.20",
+       "ssh_pubkey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVGoBB3zLKfVTzDNum/JWlmNJrSuDGrhTW1ZGtZEKjxFViFr4j0F8s6gIr5KOMcWtd91XvW6klpCPqKH3lfY767AI/RQa8JgVXgtvUG8rkD+gJ/wzGJm+VoGpxxs9dyBgSOtkaOSIDc574Om8dBR8enRcgxo1cNpvDVLVYKx9IzqhBwqp1gzEtGoIi+CDoGmoj1BT9XTlCRvGXYmSSBrgLARVO2mh5iqhP0XRVCp9Ki6OB9vMcs9rxIgQaPt8tVCt7/FK03IXrWPUsJC4M/kXiaKgHlE96H0CEvYl7GczaIU2NN5AHXZlviL79Zb8kOcUzsMdKv40G9YVa7/kyDOUX root@ip-172-32-1-20",
+       "ssh_fingerprint": "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBF18li5PyCyVy27+Lv09HDRxhyEnlL+zK++WaLc78W+Gji5i2VSRDg/jVV0xU2ZUmkohULZ66OmI5/sCOOIa3XU=\nssh-ed25519"
+     },
+     "statistics": []
+   }
+   {
+     "id": 2,
+     "hostkey": "SHA=30b6bb15fb94c9b7e386521bbe566934d266db2f6f63cd85f5e6fc406d11110b",
+     "api_url": "https://100.90.80.60",
+     "ui_name": "feeder2",
+     "role": "feeder",
+     "target_state": "on",
+     "transport": {
+       "mode": "pull_over_rsync",
+       "ssh_user": "cftransport",
+       "ssh_host": "172.32.1.21",
+       "ssh_pubkey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDin59ffTXhtQxahrYkqNi3x36XIO08GnOvvVe3s+DmuT3kBn8Lh4P30kOVONSGKcfNZLnWVPrk2qqNWuEi6xg861G1kXqce02c26BW+4L/tnz86/kmTBGc2vb6d1NpEKA/1bg6bMf1da+EInxuMsS+yOWCe+s6DJ00bg6iCnmlLYtzAkMXmXK5QgVG6AImJXqG1Px5DlsRcKto00J8WJswfTpQXbZbuog4J6Ltm/J4DQW1/x7pEJby/r+/lKPJWp19t0gaGXfsxwHEPFK6YC8zmFzkBeqiVpAizhs7G8mZDgAAhMyY8d2eYIp+hDIFpfQA3aHHr0L7emsFeDa/rExt root@ip-172-32-1-21",
+       "ssh_fingerprint": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7HE4qJfTLP9j02jZnkpTpUMCBiFzmAemgvIPcJjWJVNcawh1hpGSsWjw9EM1kwn7J6fWrjEkY8lTi2pNTnobL9qt+oQvwFqUvs5EZ8gAVIAyDjKE8GLckZRt8VGxLWMtOlBKaAmPBn0eFP6ToPqnPygJiiM05vKtxPui1xuCTrW+rXShtolUJLwwGH2APcDqjKAdZceQK4nybJzk4J1P77sJc+9IlHJCTpfj8AQEbh/Z3cHtNKauaz1mhDn5YT/QWwzKavGlqFSlSDwLXT2go6P6FoSaVYTV45V9l7q6ahEy3zEe7+7psMFVucS512qYFEKn5FoSIVQLgT3I8MfI1\necdsa-sha2-nistp256"
+     },
+     "statistics": []
+   }
+   ```
 
-Determine the id from the "id" property value and delete the remote hub. In this case
+* Determine the id from the "id" property value and delete the remote hub with the API. In this case
 we use the number "1".
 
-```console
-$ curl -k -s -X DELETE -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub/1
-```
+   ```console
+   root@superhub: ~# REMOTE_HUB_ID=1
+   root@superhub: ~# curl -k -s -X DELETE -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub/$REMOTE_HUB_ID
+   ```
+
+* Remove the feeder from `/opt/cfengine/federation/cfapache/federation-config.json`. Replace "id-1" below with the appropriate id from the previous steps.
+
+   ```console
+   root@superhub: ~# contents=$(jq 'del(.remote_hubs ."id-1")' /opt/cfengine/federation/cfapache/federation-config.json) && echo "${contents}" > /opt/cfengine/federation/cfapache/federation-config.json
+   ```
+   
+* Remove items associated with this feeder in the `cfdb` database.
+
+    Determine the cfdb-specific `hub_id`.
+
+   ```console
+   root@superhub: ~# /var/cfengine/bin/psql cfdb -c "select * from __hubs"
+   ```
+
+   Typical output would be like the following.
+
+   ```
+   hub_id |                               hostkey                                | last_import_ts                                                               
+   --------+----------------------------------------------------------------------+----------------                                                              
+      0 | SHA=50d370f41c81b3e119506befecc5deaa63c0f1d9039f674c68f9253a07f7ad84 |                                                                              
+      1 | SHA=bfd6f580f9d19cb190139452f068f38f843bf9227ca3515f7adfecfa39f68728 |                                      
+   (2 rows) 
+   ```
+
+   `hub_id` of `0` is the superhub. The others are the feeders.
+   In this case, it happens that the `hub_id` is also "1" so we will use that in the following queries.
+
+* Execute the following commands to remove the namespace for that feeder as well as the entry in the `__hubs` table.
+
+   ```console
+   root@superhub: ~# /var/cfengine/bin/psql cfdb -c 'drop schema "hub_1" cascade;'
+   root@superhub: ~# /var/cfengine/bin/psql cfdb -c "delete from __hubs where hub_id = 1"
+   ```
+
+* On the feeder, replace `/opt/cfengine/federation/cfapache/federation-config.json` with the following content.
+  
+  If you wish to re-add this feeder to a superhub, change "target_state" from "off" to "on".
+  Remember to trigger or wait for an agent run for the change from off to on to take effect.
+
+   ```json
+   {
+       "hostname": null,
+       "role": "feeder",
+       "target_state": "off",
+       "remote_hubs": { }
+   }
+   ```
+   
+
+* On 3.15.x and greater feeders, also run the following commands to truncate two tables:
+
+   ```console
+   root@feeder: ~# /var/cfengine/bin/psql cfsettings -c 'TRUNCATE remote_hubs'
+   root@feeder: ~# /var/cfengine/bin/psql cfsettings -c 'TRUNCATE federated_reporting_settings'
+   ```
 
 ## Superhub Upgrade ##
 
