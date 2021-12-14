@@ -546,6 +546,10 @@ $ cat > target-state-off.json
 $ curl -k -i -s -X PUT -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
 ```
 
+```console
+$ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/federation-config
+```
+
 ### Uninstall without API
 
 Edit ```/opt/cfengine/federation/cfapache/federation-config.json``` on the feeder
