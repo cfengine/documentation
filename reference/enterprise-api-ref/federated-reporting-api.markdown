@@ -198,7 +198,8 @@ HTTP 202 ACCEPTED
     "role": "feeder",
     "enable_request_sent": true,
     "transport_ssh_public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFpTZhfubmkXONNReTAXA9v2eYo3xQ4GKcsB3J7i5arw root@ubuntu-xenial",
-    "ssh_fingerprint": false
+    "ssh_fingerprint": false,
+    "target_state": "on"
 }
 ```
 
