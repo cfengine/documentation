@@ -12,7 +12,7 @@ diagnostics.
 
 **Request**
 
-    curl -k --user admin:admin https://test.cfengine.com/api/
+    curl -k --user admin:admin --location https://test.cfengine.com/api/
 
 **Response**
 
