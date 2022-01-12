@@ -118,7 +118,7 @@ Host API allows to access host specific information.
 **Method:** DELETE
 
 Remove data about the host from reporting database and stop collecting reports from the host.
-This should be done when the host is no longer active, activities such as a new bootstrap can cause the host to reappear.
+This should be done when the host is no longer active.
 
 If host is found and scheduled for deletion, status code `202 ACCEPTED` is returned.
 If host is not found, status code `404 NOT FOUND` is returned.
@@ -137,9 +137,7 @@ The hostkey is then removed from:
  * Public key directory, containing cryptographic keys exchaned during bootstrap (`/var/cfengine/ppkeys`).
  * The previously mentioned `KeysPendingForDeletion` table.
 
-[Depending on the configuration][Masterfiles Policy Framework#trustkeysfrom]
-of [`trustkeysfrom`][cf-serverd#trustkeysfrom] for the hub hosts may re-appear
-and resume being collected from after being deleted.
+Note: There is a record of the host retained that includes the time when the host was deleted and this record also prevents further collection from this host identity.
 
 ## Hosts list grouped by hard classes
 
