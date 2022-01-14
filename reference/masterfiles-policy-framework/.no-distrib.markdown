@@ -6,4 +6,4 @@ sorting: 20
 tags: [reference, .no-distrib , MPF]
 ---
 
-[%CFEngine_library_include(.no-distrib/README.md)%]
+[%CFEngine_include_markdown(../../masterfiles/.no-distrib/README.md)%]
