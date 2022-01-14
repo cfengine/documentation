@@ -55,6 +55,8 @@ with equivalent location in the left-hand navigation tree.
 The documentation generation inserts a link to the source markdown in the
 footer of each page.
 
+Note: Do not use markdown files prefixed with `.`. They are not picked up by the documentation generator. You can use `.` prefixed page titles.
+
 ### META tags
 
 Additional META tags you should set are:
