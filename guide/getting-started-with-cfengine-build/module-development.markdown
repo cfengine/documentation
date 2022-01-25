@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Reporting and Web UI
+title: Developing modules
 published: true
 sorting: 50
-tags: [guide, getting started, mission portal]
+tags: [guide, getting started]
 ---
 
 Coming soon.
