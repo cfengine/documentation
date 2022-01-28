@@ -136,7 +136,7 @@ Remember to replace the IP and username with what works in your case.
 From your development machine, use `cf-remote` to install CFEngine on the Linux VM:
 
 ```
-$ cf-remote install --hub "$SSH" --bootstrap "$HUB"
+$ cf-remote install --hub "root@128.199.44.119" --bootstrap "$HUB"
 ```
 
 ## Open the CFEngine Web UI
