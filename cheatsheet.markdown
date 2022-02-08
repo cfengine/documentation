@@ -94,7 +94,7 @@ However, the preprocess will not create links if the code word is in triple back
 
 ## Lists
 
-Unordered lists - Markdown supports other markers than the asterisk, but in
+### Unordered lists - Markdown supports other markers than the asterisk, but in
 CFEngine we use only `*`.
 
 ```
@@ -113,9 +113,7 @@ CFEngine we use only `*`.
 
     Four spaces indented
 
-
-
-Ordered lists - the numbers you use don't matter.
+### Ordered lists - the numbers you use don't matter.
 
 ```
 1. first
@@ -126,6 +124,38 @@ Ordered lists - the numbers you use don't matter.
 1. first
 1. second
 9. Third
+
+### Nested lists
+
+```
+
+* Item 1
+  1. First
+  2. First
+    1. 1.2.1
+* Item 2
+  * Item 2a (2 spaces)
+      
+      I am indented 4 spaces
+
+* Multi paragraph item
+
+    I am indented four spaces
+```
+
+* Item 1
+  1. First
+  2. First
+    1. 1.2.1
+* Item 2
+  * Item 2a (2 spaces)
+      
+      I am indented 4 spaces
+
+* Multi paragraph item
+
+    I am indented four spaces
+
 
 ## Tables
 
