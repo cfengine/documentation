@@ -549,8 +549,8 @@ FreeBSD [pkg](https://www.freebsd.org/doc/handbook/pkgng-intro.html).
 **Notes:**
 
 * Supports [```options```][packages#options] attribute.
-** `option` :: Allows specification of additional options ( `-o` )
-** `repository` :: Allows specification of repository ( `-r` )
+  * `option` :: Allows specification of additional options ( `-o` )
+  * `repository` :: Allows specification of repository ( `-r` )
 
 **History:**
 
