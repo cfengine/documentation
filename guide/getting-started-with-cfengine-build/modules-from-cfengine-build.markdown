@@ -52,6 +52,14 @@ $ cfbs add compliance-report-os-is-vendor-supported
 
 This will add a report to Mission Portal, highlighting any hosts which are not running supported operating systems.
 
+Finally, let's add another module which gives us some interesting reporting (inventory) data:
+
+```
+$ cfbs add inventory-sudoers
+```
+
+This module checks which users have access to use sudo, and makes this reporting data available in Mission Portal.
+
 ## Step 2: Build
 
 Once we are done adding modules, it is time to build them, combining it all into the policy set which will be deployed to our hub:
@@ -63,15 +71,14 @@ $ cfbs build
 The output from this command shows a lot of what happened:
 
 ```
-$ cfbs build
-
 Modules:
 001 masterfiles                              @ f3a8f65e77428a6ab9d62c34057a7ace6ae54ce9 (Downloaded)
 002 library-for-promise-types-in-python      @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
 003 promise-type-git                         @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
-004 compliance-report-imports                @ 22220dcecba4cf2a774d92f55b96712543cca84d (Downloaded)
+004 compliance-report-imports                @ 9d4a1cb1f919454a49baf22469ebc0b1606ae904 (Downloaded)
 005 autorun                                  @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
 006 compliance-report-os-is-vendor-supported @ d9e0aad225535b2b16ba2126e8302f8ffc5e7d38 (Downloaded)
+007 inventory-sudoers                        @ ba9768f0e09914e41dae95fbf81caed90c1e6ed4 (Downloaded)
 
 Steps:
 001 masterfiles                              : run './prepare.sh -y'
@@ -82,6 +89,8 @@ Steps:
 004 compliance-report-imports                : copy './compliance-report-imports.cf' 'masterfiles/services/autorun/'
 005 autorun                                  : json 'def.json' 'masterfiles/def.json'
 006 compliance-report-os-is-vendor-supported : copy './os-is-vendor-supported.json' 'masterfiles/.no-distrib/compliance-report-definitions/os-is-vendor-supported.json'
+007 inventory-sudoers                        : copy './policy/main.cf' 'masterfiles/services/inventory-sudoers/main.cf'
+007 inventory-sudoers                        : json './cfbs/def.json' 'masterfiles/def.json'
 
 Generating tarball...
 
@@ -93,20 +102,46 @@ To install on this machine: cfbs install
 To deploy on remote hub(s): cf-remote deploy --hub hub out/masterfiles.tgz
 ```
 
-Importantly, we see that our policy was built successfully, from 6 different modules.
-3 of those are modules we added, and the 3 others were added as dependencies.
+Importantly, we see that our policy was built successfully, from 7 different modules.
+4 of those are modules we added, and the 3 others were added as dependencies.
 The output of the build, the policy set, is available in the `out/` directory.
+Feel free to look at some of the files in `out/masterfiles/`, if you want to understand how these modules work.
 
 ## Step 3: Deploy
 
-Now, let's deploy what we built to the hub.
-Replace `root@128.199.44.119` with your username and IP address combination for the hub:
+Now, let's deploy what we built to the hub:
 
 ```
-$ cf-remote deploy --hub "root@128.199.44.119" out/masterfiles.tgz
+$ cf-remote deploy --hub hub out/masterfiles.tgz
+```
+
+**Note:** This assumes your hub is saved in cf-remote, with the group name `hub`.
+We did this in the first part of the series, while installing CFEngine, but if you haven't you can do it like this:
+
+```
+$ cf-remote save -H root@128.199.44.119 --role hub --name hub
 ```
 
 ## Step 4: Observe
+
+Open your web browser and enter the IP address of your hub in the address bar to go the Mission Portal web UI.
+For example:
+
+https://128.199.44.119/
+
+Log in with your username and password.
+(The default is `admin:admin` if you haven't changed it, or `admin:password` if you used the `--demo` option in cf-remote when installing).
+
+You can open an inventory report by clicking _Reports_ in the left navigation bar, and then _Inventory_.
+Inside the report you can add a new column with the data from our `inventory-sudoers` module, it shows up as _Users with sudo_:
+
+![](inventory-sudoers.gif)
+
+(Reports in CFEngine Mission Portal can be saved as PDF or CSV or scheduled to be sent to your email periodically).
+
+By clicking on _Reports_ and _Compliance_ we can see the report we added, _OS is vendor supported_:
+
+![](os-is-vendor-supported.gif)
 
 ## What's next
 
@@ -114,16 +149,15 @@ Now that you've successfully added modules and seen the results in Mission Porta
 Here are some examples of modules you might be interested in:
 
 * [Scan and report on potentially vulnerable log4j installations](https://build.cfengine.com/modules/cve-2021-44228-log4j/)
-* [Add reporting data (inventory) for who can use `sudo`](https://build.cfengine.com/modules/inventory-sudoers/)
 * [Make policy fetching, evaluation, and reporting happen every minute](https://build.cfengine.com/modules/every-minute/)
 * [Promise type to perform HTTP requests](https://build.cfengine.com/modules/promise-type-http/)
 
 To add more modules, just repeat the commands from steps 1-3, for example:
 
 ```
-$ cfbs add inventory-sudoers
+$ cfbs add every-minute
 $ cfbs build
-$ cf-remote deploy --hub "root@128.199.44.119" out/masterfiles.tgz
+$ cf-remote deploy --hub hub out/masterfiles.tgz
 ```
 
 In the next tutorial we will look more at the reporting and Web UI, called Mission Portal:
