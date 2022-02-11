@@ -115,7 +115,7 @@ Now, let's deploy what we built to the hub:
 $ cf-remote deploy --hub hub out/masterfiles.tgz
 ```
 
-**Note:** This assumes your hub is saved in cf-remote, with the group name `hub`.
+**Note:** This assumes your hub is saved in `cf-remote`, with the group name _hub_.
 We did this in the first part of the series, while installing CFEngine, but if you haven't you can do it like this:
 
 ```
@@ -129,8 +129,7 @@ For example:
 
 https://128.199.44.119/
 
-Log in with your username and password.
-(The default is `admin:admin` if you haven't changed it, or `admin:password` if you used the `--demo` option in cf-remote when installing).
+(Log in with username `admin` and password `admin`, or whatever you changed it to when you first logged into your hub).
 
 You can open an inventory report by clicking _Reports_ in the left navigation bar, and then _Inventory_.
 Inside the report you can add a new column with the data from our `inventory-sudoers` module, it shows up as _Users with sudo_:
@@ -145,7 +144,7 @@ By clicking on _Reports_ and _Compliance_ we can see the report we added, _OS is
 
 ## What's next
 
-Now that you've successfully added modules and seen the results in Mission Portal, you're ready to look for more modules, or continue to the next part.
+Now that you've successfully added modules and seen the results in Mission Portal, you're ready to look for more modules, or explore Mission Portal further.
 Here are some examples of modules you might be interested in:
 
 * [Scan and report on potentially vulnerable log4j installations](https://build.cfengine.com/modules/cve-2021-44228-log4j/)

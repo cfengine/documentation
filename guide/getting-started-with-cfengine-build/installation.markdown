@@ -6,6 +6,8 @@ sorting: 10
 tags: [guide, getting started, installation, modules]
 ---
 
+## Introduction
+
 CFEngine allows you to configure and automate all your IT infrastructure, including, servers, desktops and IoT devices.
 It enables efficient changes across large fleets of devices and automatic self-healing / drift correction according to the desired state.
 With it's flexible and performant reporting system, you can have up to date inventory and compliance reports even with hundreds of thousands of endpoints under management.
@@ -149,7 +151,7 @@ Shows this output:
 root@128.199.44.119
 OS            : ubuntu (debian)
 Architecture  : x86_64
-CFEngine      : 3.18.1 (Enterprise)
+CFEngine      : Not installed
 Policy server : 128.199.44.119
 Binaries      : dpkg, apt
 ```
@@ -165,7 +167,11 @@ $ cf-remote install --hub hub --bootstrap hub
 ## Open the CFEngine Web UI
 
 Open a browser and put in the IP address of the hub in the address bar (same IP as in last step).
-You should see the CFEngine Enterprise login screen.
+You might get warnings about an insecure connection or invalid certificate.
+At this point, your hub has a self signed certificate, which means there is no certificate authority that can verify which server you are talking to.
+In the future you might want to set up a DNS entry for your hub and give it a proper certificate, but for now, you can click the options in your browser to Ignore / Continue.
+
+After this, you should see the CFEngine Enterprise login screen.
 Log in with username admin, password admin, and you will be asked to change the password.
 
 ![](mp_login.png)
