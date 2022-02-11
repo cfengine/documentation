@@ -131,12 +131,35 @@ $ ssh root@128.199.44.119
 
 Remember to replace the IP and username with what works in your case.
 
+Save the host in `cf-remote` so you can copy-paste our later commands:
+
+```
+$ cf-remote save -H root@128.199.44.119 --role hub --name hub
+```
+
+The host is now in a `cf-remote` group called `hub`, so we don't have to type the username and IP, for example:
+
+```
+$ cf-remote info -H hub
+```
+
+Shows this output:
+
+```
+root@128.199.44.119
+OS            : ubuntu (debian)
+Architecture  : x86_64
+CFEngine      : 3.18.1 (Enterprise)
+Policy server : 128.199.44.119
+Binaries      : dpkg, apt
+```
+
 ## Install CFEngine
 
 From your development machine, use `cf-remote` to install CFEngine on the Linux VM:
 
 ```
-$ cf-remote install --hub "root@128.199.44.119" --bootstrap "$HUB"
+$ cf-remote install --hub hub --bootstrap hub
 ```
 
 ## Open the CFEngine Web UI
