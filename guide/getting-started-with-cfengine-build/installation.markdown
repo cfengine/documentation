@@ -121,7 +121,7 @@ master, 3.19.0, 3.18.x, 3.18.1, 3.18.0, 3.15.x, 3.15.5, 3.15.4, 3.15.3, 3.15.2, 
 Find the IP address of your virtual machine, and the username so you can log in with SSH.
 In my case, in Digital Ocean, the username is `root`, and the IP is `128.199.44.119` (found in top left of droplet screen as "ipv4"):
 
-![](digital_ocean.png)
+![](digital-ocean.png)
 
 **On your development machine:**
 
@@ -174,7 +174,7 @@ In the future you might want to set up a DNS entry for your hub and give it a pr
 After this, you should see the CFEngine Enterprise login screen.
 Log in with username admin, password admin, and you will be asked to change the password.
 
-![](mp_login.png)
+![](mp-login.png)
 
 After changing the password to something more secure, you should be able to log in and see the dashboard.
 
