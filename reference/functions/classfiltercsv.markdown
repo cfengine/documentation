@@ -22,7 +22,7 @@ minus `1`.
 
 **Example:**
 
-**Prepare:**
+**Prepare CSV:**
 
 [%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src prep, .*end_src)%]
 
