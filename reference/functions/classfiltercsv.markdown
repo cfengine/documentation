@@ -34,6 +34,20 @@ minus `1`.
 
 [%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
+**Notes:**
+
+* If the CSV file is stored in a `git` repository the `.gitattributes` file can be used to ensure proper line endings.
+
+   For example:
+
+   ```
+   # .gitattribtues
+   *.csv     text eol=crlf
+   RFC-4180-non-compliant-line-endings.csv eol=lf
+   *.mustache text
+   *.sh       text eol=lf
+   ```
+
 **See also:** [readcsv()][readcsv], [classmatch()][classmatch]
 
 **History:**
