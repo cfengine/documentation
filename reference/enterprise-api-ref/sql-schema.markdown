@@ -139,7 +139,7 @@ CFEngine contexts present on hosts at their last reported cf-agent execution.
 
 * **ChangeTimeStamp** *(timestamp)*
     Timestamp since when context is set in its current form.
-    **Note:** If any of context attributes change, the timestamp will be updated.
+    **Note:** If any of the context attributes change, the timestamp will be updated.
 
 **Example query:**
 
