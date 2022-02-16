@@ -22,17 +22,31 @@ minus `1`.
 
 **Example:**
 
-**Prepare:**
+**Prepare CSV:**
 
 [%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src prep, .*end_src)%]
 
-Policy:
+**Policy:**
 
 [%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src cfengine3, .*end_src)%]
 
 **Output:**
 
 [%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+**Notes:**
+
+* If the CSV file is stored in a `git` repository the `.gitattributes` file can be used to ensure proper line endings.
+
+   For example:
+
+   ```
+   # .gitattribtues
+   *.csv     text eol=crlf
+   RFC-4180-non-compliant-line-endings.csv eol=lf
+   *.mustache text
+   *.sh       text eol=lf
+   ```
 
 **See also:** [readcsv()][readcsv], [classmatch()][classmatch]
 
