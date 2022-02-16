@@ -18,11 +18,15 @@ requests.
 `cf-serverd` keeps the promises made in `common` and `server` bundles, and is
 affected by `common` and `server` control bodies.
 
-**Note:** This daemon reloads it's config when the SIGHUP signal is received.
+**Notes:**
+
+* This daemon reloads it's config when the SIGHUP signal is received.
+* If `enable_report_dumps` exists in `WORKDIR` (`/var/cfengine/enable_report_dumps`) `cf-serverd` will log reports provided to `cf-hub` to `WORKDIR/diagnostics/report_dump` (`/var/cfengine/diagnostics/report_dumps`). This data is useful when troubleshooting reporting issues with CFEngine Enterprise.
 
 **History:**
 
 - SIGHUP behavior added in 3.7.0
+- `enable_report_dumps` added in 3.16.0
 
 ## Command reference ##
 
