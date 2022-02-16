@@ -113,70 +113,6 @@ body agent control
 ```
 
 
-### abortclasses
-
-**Description:** The `abortclasses` slist contains regular expressions that
-match classes which if defined lead to termination of cf-agent.
-
-Regular expressions are used for classes that `cf-agent` will watch out
-for. If any matching class becomes defined, it will cause the
-current execution of `cf-agent` to be aborted. This may be used for
-validation, for example.
-
-**Type:** `slist`
-
-**Allowed input range:** `.*`
-
-**Example:**
-
-```cf3
-body agent control
-{
-  abortclasses => { "danger.*", "should_not_continue" };
-}
-bundle agent main
-{
-  methods:
-    "bundle_a";
-    "bundle_b";
-    "bundle_c";
-}
-bundle agent bundle_a
-{
-  classes:
-    "abort_condition_a"
-      expression => "any",
-      scope => "namespace";
-}
-
-bundle common bundle_b
-{
-  classes:
-    "abort_condition_b" expression => "any";
-}
-
-bundle agent bundle_c
-{
-  classes:
-
-    # Here we define a class that will match the abortclasses under more complex
-    # conditions
-
-    "should_not_continue"
-      expression => "(abort_condition_a.abort_condition_b).!something_else",
-      scope => "namespace";
-}
-```
-
-**Output**:
-
-```
-error: Fatal CFEngine error: cf-agent aborted on defined class 'should_not_continue'
-```
-
-**Note:** CFEngine class expressions are **not** supported. To handle class
-expressions, simply create an alias for the expression with a single name.
-
 ### abortbundleclasses
 
 **Description:** The `abortbundleclasses` slist contains regular expressions
@@ -247,6 +183,70 @@ method bundle.
     }
 ```
 
+
+### abortclasses
+
+**Description:** The `abortclasses` slist contains regular expressions that
+match classes which if defined lead to termination of cf-agent.
+
+Regular expressions are used for classes that `cf-agent` will watch out
+for. If any matching class becomes defined, it will cause the
+current execution of `cf-agent` to be aborted. This may be used for
+validation, for example.
+
+**Type:** `slist`
+
+**Allowed input range:** `.*`
+
+**Example:**
+
+```cf3
+body agent control
+{
+  abortclasses => { "danger.*", "should_not_continue" };
+}
+bundle agent main
+{
+  methods:
+    "bundle_a";
+    "bundle_b";
+    "bundle_c";
+}
+bundle agent bundle_a
+{
+  classes:
+    "abort_condition_a"
+      expression => "any",
+      scope => "namespace";
+}
+
+bundle common bundle_b
+{
+  classes:
+    "abort_condition_b" expression => "any";
+}
+
+bundle agent bundle_c
+{
+  classes:
+
+    # Here we define a class that will match the abortclasses under more complex
+    # conditions
+
+    "should_not_continue"
+      expression => "(abort_condition_a.abort_condition_b).!something_else",
+      scope => "namespace";
+}
+```
+
+**Output**:
+
+```
+error: Fatal CFEngine error: cf-agent aborted on defined class 'should_not_continue'
+```
+
+**Note:** CFEngine class expressions are **not** supported. To handle class
+expressions, simply create an alias for the expression with a single name.
 
 ### addclasses
 
@@ -422,51 +422,6 @@ be given as the argument, not the device name.
     bindtointerface => "192.168.1.1";
 ```
 
-### hashupdates
-
-**Description:** The `hashupdates` determines whether stored hashes are
-updated when change is detected in source.
-
-If 'true' the stored reference value is updated as soon as a warning
-message has been given. As most changes are benign (package updates
-etc) this is a common setting.
-
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example:**
-
-```cf3
-    body agent control
-    {
-    hashupdates => "true";
-    }
-```
-
-
-### childlibpath
-
-**Description:** The `childlibpath` string contains the LD\_LIBRARY\_PATH
-for child processes.
-
-This string may be used to set the internal `LD_LIBRARY_PATH` environment
-of the agent.
-
-**Type:** `string`
-
-**Allowed input range:** `.*`
-
-**Example:**
-
-```cf3
-    body agent control
-    {
-    childlibpath => "/usr/local/lib:/usr/local/gnu/lib";
-    }
-```
-
-
 ### checksum_alert_time
 
 **Description:** The value of checksum_alert_time represents the
@@ -491,29 +446,24 @@ class.
     }
 ```
 
-### defaultcopytype
+### childlibpath
 
-**Description:** The `defaultcopytype` menu option policy sets the global
-default policy for comparing source and image in copy transactions.
+**Description:** The `childlibpath` string contains the LD\_LIBRARY\_PATH
+for child processes.
 
-**Type:** (menu option)
+This string may be used to set the internal `LD_LIBRARY_PATH` environment
+of the agent.
 
-**Allowed input range:**
+**Type:** `string`
 
-       mtime
-       atime
-       ctime
-       digest
-       hash
-       binary
+**Allowed input range:** `.*`
 
 **Example:**
 
 ```cf3
     body agent control
     {
-    #...
-    defaultcopytype => "digest";
+    childlibpath => "/usr/local/lib:/usr/local/gnu/lib";
     }
 ```
 
@@ -578,6 +528,33 @@ body agent control
 
 * `cf-serverd` will time out any transfer that takes longer than 10 minutes
   (this is not currently tunable).
+
+
+### defaultcopytype
+
+**Description:** The `defaultcopytype` menu option policy sets the global
+default policy for comparing source and image in copy transactions.
+
+**Type:** (menu option)
+
+**Allowed input range:**
+
+       mtime
+       atime
+       ctime
+       digest
+       hash
+       binary
+
+**Example:**
+
+```cf3
+    body agent control
+    {
+    #...
+    defaultcopytype => "digest";
+    }
+```
 
 
 ### dryrun
@@ -717,31 +694,6 @@ kill and restart its attempt to keep a promise.
 
 **See also:** [`body action expireafter`][Promise Types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
 
-### files_single_copy
-
-**Description:** The `files_single_copy` slist contains filenames to be
-watched for multiple-source conflicts.
-
-This list of regular expressions will ensure that files matching
-the patterns of the list are never copied from more than one source
-during a single run of `cf-agent`. This may be considered a
-protection against accidental overlap of copies from diverse
-remote sources, or as a first-come-first-served disambiguation tool
-for lazy-evaluation of overlapping file-copy promises.
-
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
-
-**Example:**
-
-```cf3
-    body agent control
-    {
-    files_single_copy => { "/etc/.*", "/special/file" };
-    }
-```
-
 ### files_auto_define
 
 **Description:** The `files_auto_define` slist contains filenames to
@@ -768,6 +720,54 @@ automatically.
     files_auto_define => { "/etc/syslog\.c.*", "/etc/passwd" };
     }
 ```
+
+### files_single_copy
+
+**Description:** The `files_single_copy` slist contains filenames to be
+watched for multiple-source conflicts.
+
+This list of regular expressions will ensure that files matching
+the patterns of the list are never copied from more than one source
+during a single run of `cf-agent`. This may be considered a
+protection against accidental overlap of copies from diverse
+remote sources, or as a first-come-first-served disambiguation tool
+for lazy-evaluation of overlapping file-copy promises.
+
+**Type:** `slist`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+```cf3
+    body agent control
+    {
+    files_single_copy => { "/etc/.*", "/special/file" };
+    }
+```
+
+### hashupdates
+
+**Description:** The `hashupdates` determines whether stored hashes are
+updated when change is detected in source.
+
+If 'true' the stored reference value is updated as soon as a warning
+message has been given. As most changes are benign (package updates
+etc) this is a common setting.
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** false
+
+**Example:**
+
+```cf3
+    body agent control
+    {
+    hashupdates => "true";
+    }
+```
+
 
 ### hostnamekeys
 
@@ -962,28 +962,6 @@ This test is applied in all recursive/depth searches.
     }
 ```
 
-### repchar
-
-**Description:** The `repchar` string represents a character used to
-canonize pathnames in the file repository.
-
-**Type:** `string`
-
-**Allowed input range:** `.`
-
-**Default value:** `_`
-
-**Example:**
-
-```cf3
-    body agent control
-    {
-    repchar => "_";
-    }
-```
-
-**Notes:**
-
 ### refresh_processes
 
 **Description:** The `refresh_processes` slist contains bundles to reload
@@ -1017,6 +995,74 @@ efficiency of the agent.
 
 **History:** Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
 
+### repchar
+
+**Description:** The `repchar` string represents a character used to
+canonize pathnames in the file repository.
+
+**Type:** `string`
+
+**Allowed input range:** `.`
+
+**Default value:** `_`
+
+**Example:**
+
+```cf3
+    body agent control
+    {
+    repchar => "_";
+    }
+```
+
+**Notes:**
+
+### report_class_log
+
+**Description:** The `report_class_log` option enables logging of classes set by
+cf-agent. Each class set by cf-agent will be logged at the end of agent
+execution (all classes defined during the same cf-agent execution will have the
+same timestamp).
+
+Time classes are ignored.
+Destination: '/var/cfengine/state/classes.jsonl'
+
+Format(jsonl):
+
+```
+{"name":"class_123","timestamp":1456933993}\r\n
+{"name":"pk_sha_123","timestamp":1456933993}\r\n
+```
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** false
+
+**Example:**
+
+```cf3
+body agent control
+{
+  report_class_log => "true";
+}
+```
+
+**History:**
+
+* Added in 3.9.0
+
+**Notes:**
+
+* Available in CFEngine Enterprise.
+* Persistent classes are logged with the timestamp of each agent run.
+
+The following classes are excluded from logging:
+
+* Time based classes (`Hr01`, `Tuesday`, `Morning`, etc ...)
+* `license_expired`
+* `any`
+* `from_cfexecd`
+* Life cycle (`Lcycle_0`, `GMT_Lcycle_3`)
 ### secureinput
 
 **Description:** The `secureinput` menu option policy checks whether
@@ -1038,7 +1084,7 @@ owned by a privileged user.
     }
 ```
 
-#### select_end_match_eof
+### select_end_match_eof
 
 **Description:** When `true` this sets the default behavior for `edit_line`
 promises to allow the end of a file to mark the end of a region when ```select_end```
@@ -1153,11 +1199,6 @@ it will skip them and output a warning message.
 **Deprecated:** This menu option policy is deprecated as of 3.6.0. It performs
 no action and is kept for backward compatibility.
 
-### track_value
-
-**Deprecated:** This menu option policy is deprecated as of 3.6.0. It performs
-no action and is kept for backward compatibility.
-
 ### timezone
 
 **Description:** The `timezone` slist contains allowed timezones this
@@ -1176,6 +1217,11 @@ machine must comply with.
     }
 ```
 
+
+### track_value
+
+**Deprecated:** This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.
 
 ### verbose
 
@@ -1199,49 +1245,3 @@ promise.
     }
 ```
 
-### report_class_log
-
-**Description:** The `report_class_log` option enables logging of classes set by
-cf-agent. Each class set by cf-agent will be logged at the end of agent
-execution (all classes defined during the same cf-agent execution will have the
-same timestamp).
-
-Time classes are ignored.
-Destination: '/var/cfengine/state/classes.jsonl'
-
-Format(jsonl):
-
-```
-{"name":"class_123","timestamp":1456933993}\r\n
-{"name":"pk_sha_123","timestamp":1456933993}\r\n
-```
-
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example:**
-
-```cf3
-body agent control
-{
-  report_class_log => "true";
-}
-```
-
-**History:**
-
-* Added in 3.9.0
-
-**Notes:**
-
-* Available in CFEngine Enterprise.
-* Persistent classes are logged with the timestamp of each agent run.
-
-The following classes are excluded from logging:
-
-* Time based classes (`Hr01`, `Tuesday`, `Morning`, etc ...)
-* `license_expired`
-* `any`
-* `from_cfexecd`
-* Life cycle (`Lcycle_0`, `GMT_Lcycle_3`)
