@@ -468,6 +468,24 @@ of the agent.
 ```
 
 
+### copyfrom_restrict_keys
+
+This attribute restricts `cf-agent` to copying files from hosts that have a key explicitly defined in this list.
+
+**Example:**
+
+```cf3
+body agent control {
+  copyfrom_restrict_keys => { "SHA=6565a8e647e61e4a7ff2c709e0fe772acce2e45aaa294b2bb713de0ba5a6d8c3",
+                              "SHA=727dd7f6f8b2344c6d69cf1d3ed0446c0f9f095ce1a114481d691bf1cb2b300d"
+}
+```
+
+**See Also:** `admit_keys`, `controls/cf_agent.cf`
+
+**History:**
+* Introduced in 3.20.0
+
 ### default_repository
 
 **Description:** The `default_repository` string contains the path to the

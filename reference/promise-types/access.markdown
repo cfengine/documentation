@@ -195,7 +195,7 @@ access:
 
 [%CFEngine_promise_attribute()%]
 
-**See also:** `deny_keys`, `admit_hostnames`, `admit_ips`
+**See also:** `deny_keys`, `admit_hostnames`, `admit_ips`, `copyfrom_restrict_keys`
 
 **History:** Introduced in CFEngine 3.6.0
 
