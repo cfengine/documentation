@@ -26,7 +26,7 @@ minus `1`.
 
 [%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src prep, .*end_src)%]
 
-Policy:
+**Policy:**
 
 [%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src cfengine3, .*end_src)%]
 
