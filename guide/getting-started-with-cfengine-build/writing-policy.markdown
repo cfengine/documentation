@@ -203,13 +203,16 @@ bundle agent hello_world
 `if => fileexists()` was added to ensure the order of things; we want `git clone` to happen when the parent directory exists, and we want `git log` to happen after `git clone`, so when the `.git` folder is there.
 Generally speaking, CFEngine does not evaluate the policy from top to bottom, so if you want some things to happen after other things, you should ensure this, for example with an `if`.
 By adding `meta => { "inventory", "attribute_name=Hugo commit" },` to the variable, we are saying that we want this as an inventory attribute, a part of the reporting data, and we want the attribute name, shown in the Web UI and reports, to be _Hugo commit_.
-And indeed, after deploying this policy, we can see it show up in inventory reports:
+And indeed, after deploying this policy, we can see it show up in _Inventory reports_:
 
-INSERT SCREENSHOT.
+![](hugo-commit.png)
+
+*Tip:* CFEngine's reporting happens on a schedule, so it might take some minutes for this new inventory attribute to appear for the first time.
+To speed it up, you can click the hostname to go to the host info page, and the _Play_ button in the top right corner to trigger an extra agent run and report collection.
 
 ## Next steps
 
 This is by no means a complete guide to policy writing, but should give you an idea of how to use modules, and get started building and experimenting.
 Next, we will look at implementing modules, such as the git promise type we used here:
 
-[Deveoloping modules][Deveoloping modules]
+[Developing modules][Developing modules]
