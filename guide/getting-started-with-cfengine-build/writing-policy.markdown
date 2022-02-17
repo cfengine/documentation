@@ -144,7 +144,7 @@ bundle agent hello_world
   
   files:
     "$(github_path)/." # /. means a folder
-      create => true;
+      create => "true";
 
   git:
     "$(github_path)/hugo"
@@ -190,7 +190,7 @@ bundle agent hello_world
 
   files:
     "$(github_path)/." # /. means a folder
-      create => true;
+      create => "true";
 
   git:
     "$(hugo_path)"
