@@ -122,6 +122,8 @@ We did this in the first part of the series, while installing CFEngine, but if y
 $ cf-remote save -H root@128.199.44.119 --role hub --name hub
 ```
 
+(Replace SSH username and IP with what works on your hub).
+
 ## Step 4: Observe
 
 Open your web browser and enter the IP address of your hub in the address bar to go the Mission Portal web UI.
