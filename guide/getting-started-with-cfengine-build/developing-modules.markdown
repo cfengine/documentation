@@ -92,7 +92,7 @@ $ cfbs build && cf-remote deploy --hub hub out/masterfiles.tgz
 And just like before, you can run manual agent runs to test:
 
 ```
-cf-remote sudo -H hub "rm -rf /tmp/hugo && cf-agent -KI"
+$ cf-remote sudo -H hub "rm -rf /tmp/hugo && cf-agent -KI"
 ```
 
 ## Changing / updating the python file
@@ -112,7 +112,7 @@ And then you can test it:
 $ cf-remote sudo -H hub "cf-agent -KIf update.cf && cf-agent -KI"
 ```
 
-*Note:* Every 5 minutes (by default) CFEngine will copy files from `/var/cfengine/masterfiles` (on the hub) to other locations, such as `/var/cfengine/inputs` and `/var/cfengine/modules`.
+**Note:** Every 5 minutes (by default) CFEngine will copy files from `/var/cfengine/masterfiles` (on the hub) to other locations, such as `/var/cfengine/inputs` and `/var/cfengine/modules`.
 This is the responsibility of the update policy, `update.cf`.
 By editing the file inside `/var/cfengine/masterfiles`, and then running `cf-agent -KIf update.cf` we can be sure that our modules and policy files are correct and in sync, our changes will not be reverted the next time CFEngine runs in the background.
 

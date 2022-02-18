@@ -207,7 +207,7 @@ And indeed, after deploying this policy, we can see it show up in _Inventory rep
 
 ![](hugo-commit.png)
 
-*Tip:* CFEngine's reporting happens on a schedule, so it might take some minutes for this new inventory attribute to appear for the first time.
+**Tip:** CFEngine's reporting happens on a schedule, so it might take some minutes for this new inventory attribute to appear for the first time.
 To speed it up, you can click the hostname to go to the host info page, and the _Play_ button in the top right corner to trigger an extra agent run and report collection.
 
 ## Next steps
