@@ -141,7 +141,7 @@ bundle agent hello_world
   vars:
     "github_path"
       string => "/tmp/github.com";
-  
+
   files:
     "$(github_path)/." # /. means a folder
       create => "true";
@@ -216,3 +216,9 @@ This is by no means a complete guide to policy writing, but should give you an i
 Next, we will look at implementing modules, such as the git promise type we used here:
 
 [Developing modules][Developing modules]
+
+If you would like to learn more about policy writing, these are some good resources to look at:
+
+* [Language concepts](/reference-language-concepts.html)
+* [Promise Types](/reference-promise-types.html)
+* [Functions](/reference-functions.html)

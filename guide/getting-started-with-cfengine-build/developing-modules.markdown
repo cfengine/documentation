@@ -115,3 +115,13 @@ $ cf-remote sudo -H hub "cf-agent -KIf update.cf && cf-agent -KI"
 *Note:* Every 5 minutes (by default) CFEngine will copy files from `/var/cfengine/masterfiles` (on the hub) to other locations, such as `/var/cfengine/inputs` and `/var/cfengine/modules`.
 This is the responsibility of the update policy, `update.cf`.
 By editing the file inside `/var/cfengine/masterfiles`, and then running `cf-agent -KIf update.cf` we can be sure that our modules and policy files are correct and in sync, our changes will not be reverted the next time CFEngine runs in the background.
+
+## Additional resources
+
+There are several places to look for more information or inspiration when writing modules:
+
+* [The real git promise type code](https://github.com/cfengine/modules/tree/c3b7329b240cf7ad062a0a64ee8b607af2cb912a/promise-types/git/)
+* [HTTP promise type module](https://github.com/cfengine/modules/tree/c861789d4b376147d904fccd76963a92e65eaa97/promise-types/http/)
+* [CFEngine custom promise type specification](/reference-promise-types-custom.html)
+* [Blog post: How to implement CFEngine Custom Promise Types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
+* [Blog post: How to implement CFEngine Custom Promise Types in Bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
