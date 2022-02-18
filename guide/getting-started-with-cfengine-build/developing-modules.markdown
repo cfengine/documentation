@@ -116,6 +116,12 @@ $ cf-remote sudo -H hub "cf-agent -KIf update.cf && cf-agent -KI"
 This is the responsibility of the update policy, `update.cf`.
 By editing the file inside `/var/cfengine/masterfiles`, and then running `cf-agent -KIf update.cf` we can be sure that our modules and policy files are correct and in sync, our changes will not be reverted the next time CFEngine runs in the background.
 
+## Submitting your module to CFEngine Build
+
+Once you have your module working and would like to share it with others, take a look at our contribution guide:
+
+https://github.com/cfengine/build-index/blob/master/CONTRIBUTING.md
+
 ## Additional resources
 
 There are several places to look for more information or inspiration when writing modules:
