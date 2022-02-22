@@ -68,7 +68,7 @@ Now, build and deploy again:
 
 ```
 $ cfbs build
-$ cf-remote deploy --hub hub out/masterfiles.tgz
+$ cf-remote deploy
 ```
 
 The policy has been deployed and that `/tmp/hello` file should be ready.
@@ -114,7 +114,7 @@ This policy uses the `git` promise type to clone the Hugo project's source code 
 Again, put the code snippet above in the `my_policy.cf` file, build, and deploy:
 
 ```
-$ cfbs build && cf-remote deploy --hub hub out/masterfiles.tgz
+$ cfbs build && cf-remote deploy
 ```
 
 From now on, feel free to put each example in the `my_policy.cf`, and run the command to build and deploy it.

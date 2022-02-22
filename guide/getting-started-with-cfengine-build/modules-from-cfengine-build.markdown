@@ -98,8 +98,8 @@ Build complete, ready to deploy 🐿
  -> Directory: out/masterfiles
  -> Tarball:   out/masterfiles.tgz
 
-To install on this machine: cfbs install
-To deploy on remote hub(s): cf-remote deploy --hub hub out/masterfiles.tgz
+To install on this machine: sudo cfbs install
+To deploy on remote hub(s): cf-remote deploy
 ```
 
 Importantly, we see that our policy was built successfully, from 7 different modules.
@@ -112,7 +112,7 @@ Feel free to look at some of the files in `out/masterfiles/`, if you want to und
 Now, let's deploy what we built to the hub:
 
 ```
-$ cf-remote deploy --hub hub out/masterfiles.tgz
+$ cf-remote deploy
 ```
 
 **Note:** This assumes your hub is saved in `cf-remote`, with the group name _hub_.
@@ -158,7 +158,7 @@ To add more modules, just repeat the commands from steps 1-3, for example:
 ```
 $ cfbs add every-minute
 $ cfbs build
-$ cf-remote deploy --hub hub out/masterfiles.tgz
+$ cf-remote deploy
 ```
 
 In the next tutorial we will look more at the reporting and Web UI, called Mission Portal:
