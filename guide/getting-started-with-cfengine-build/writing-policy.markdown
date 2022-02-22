@@ -141,7 +141,7 @@ bundle agent hello_world
   vars:
     "github_path"
       string => "/tmp/github.com";
-  
+
   files:
     "$(github_path)/." # /. means a folder
       create => "true";
@@ -207,7 +207,7 @@ And indeed, after deploying this policy, we can see it show up in _Inventory rep
 
 ![](hugo-commit.png)
 
-*Tip:* CFEngine's reporting happens on a schedule, so it might take some minutes for this new inventory attribute to appear for the first time.
+**Tip:** CFEngine's reporting happens on a schedule, so it might take some minutes for this new inventory attribute to appear for the first time.
 To speed it up, you can click the hostname to go to the host info page, and the _Play_ button in the top right corner to trigger an extra agent run and report collection.
 
 ## Next steps
@@ -216,3 +216,9 @@ This is by no means a complete guide to policy writing, but should give you an i
 Next, we will look at implementing modules, such as the git promise type we used here:
 
 [Developing modules][Developing modules]
+
+If you would like to learn more about policy writing, these are some good resources to look at:
+
+* [Language concepts](/reference-language-concepts.html)
+* [Promise Types](/reference-promise-types.html)
+* [Functions](/reference-functions.html)

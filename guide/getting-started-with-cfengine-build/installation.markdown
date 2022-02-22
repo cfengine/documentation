@@ -6,18 +6,6 @@ sorting: 10
 tags: [guide, getting started, installation, modules]
 ---
 
-## Introduction
-
-CFEngine allows you to configure and automate all your IT infrastructure, including, servers, desktops and IoT devices.
-It enables efficient changes across large fleets of devices and automatic self-healing / drift correction according to the desired state.
-With it's flexible and performant reporting system, you can have up to date inventory and compliance reports even with hundreds of thousands of endpoints under management.
-
-[CFEngine Build](https://build.cfengine.com) is the website where the CFEngine users can share and find modules from the rest of the community.
-These modules allow you to add functionality and achieve useful tasks in CFEngine without writing any code.
-
-In this tutorial series we will learn CFEngine the easy way, first focusing on installation, out of the box functionality, ready to use modules, and the web user interface (Mission Portal).
-Afterwards, we will continue to more advanced topics, such as policy writing and module development.
-
 ![](https://cfengine.com/images/overview/cfe-desktop.svg)
 
 In CFEngine you mainly interact with the CFEngine Hub, for example using the Mission Portal Web UI, APIs, ssh, or git.
