@@ -86,7 +86,7 @@ $ cfbs remove promise-type-git-example && cfbs add https://github.com/cfengine/p
 Then, build and deploy the project again:
 
 ```
-$ cfbs build && cf-remote deploy --hub hub out/masterfiles.tgz
+$ cfbs build && cf-remote deploy
 ```
 
 And just like before, you can run manual agent runs to test:
