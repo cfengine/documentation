@@ -6,12 +6,12 @@ sorting: 10
 tags: [guide, getting started, installation, modules]
 ---
 
-![](https://cfengine.com/images/overview/cfe-desktop.svg)
-
 In CFEngine you mainly interact with the CFEngine Hub, for example using the Mission Portal Web UI, APIs, ssh, or git.
 All other hosts in your infrastructure will communicate with the hub, to fetch policy, modules and data, and to send back reporting data.
 For you, this means that the experience of working with just 1 host, or 1000 hosts, is largely the same.
 So, the only thing you need to get started is to set up 1 CFEngine Hub.
+
+![](https://cfengine.com/images/overview/cfe-desktop.svg)
 
 ## Linux virtual machine
 
