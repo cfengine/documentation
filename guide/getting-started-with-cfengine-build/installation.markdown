@@ -56,7 +56,7 @@ $ sudo apt-get install python3 python3-pip
 ```
 
 If you are using Windows and Ubuntu inside of WSL, the command is the same.
-Not all systems use `apt-get` as the package manager - if you are not using Ubuntu, look up how to install python 3 and pip on your system.
+Not all systems use `apt-get` as the package manager - if you are not using Ubuntu, look up [how to install python 3 and pip on your system](https://packaging.python.org/en/latest/tutorials/installing-packages/).
 
 **Check that it was successful:**
 
@@ -91,7 +91,7 @@ pip3 install cfbs cf-remote
 sudo pip3 install cfbs cf-remote
 ```
 
-There are many ways to install command line tools with pip, if you want to do it without sudo, and install it in your home directory, and edit the PATH variable, you can.
+There are many ways to install command line tools with pip, if you want to do it without sudo, and install it in your home directory, and edit the PATH variable, or if you want to use virtual environments, you can.
 The command above is a suggestion which should work for most people.
 Importantly, you need the command line tools working after you've installed them:
 
