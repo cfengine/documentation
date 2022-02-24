@@ -26,6 +26,10 @@ If you've never set up a virtual machine (VM) before, these are some easy ways:
 * Linux: Install and run Vagrant and libvirt.
 * Windows: Use Windows Subsystem for Linux (WSL).
 
+We recommend using Digital Ocean because it is very easy to use the GUI, and spawn a virtual without installing something locally.
+However, since it requires you to create an account, some users might prefer to install virtualization software and run everything themself.
+This is also possible, for example using Vagrant and VirtualBox, and we will provide instructions for both.
+
 ## Development machine and CFEngine Hub
 
 When you've set up a Linux VM there are now 2 machines we will be talking about:
@@ -104,27 +108,40 @@ Available CFEngine versions:
 master, 3.19.0, 3.18.x, 3.18.1, 3.18.0, 3.15.x, 3.15.5, 3.15.4, 3.15.3, 3.15.2, 3.15.1, 3.15.0, 3.15.0b1
 ```
 
-## SSH user and IP address
+## Virtual Machine IP and username
 
+Decide on whether you want to use VMs in the cloud (Digital Ocean) or locally (Vagrant and Virtual Box) and follow the appropriate instructions below.
+
+**Using Digital Ocean / Cloud platforms:**
+
+Spawn an Ubuntu 20.04 Linux Virtual Machine using the web GUI.
 Find the IP address of your virtual machine, and the username so you can log in with SSH.
-In my case, in Digital Ocean, the username is `root`, and the IP is `128.199.44.119` (found in top left of droplet screen as "ipv4"):
+For example, in Digital Ocean, the username is `root`, and the IP might be `128.199.44.119` (found in top left of droplet screen as "ipv4"):
 
 ![](digital-ocean.png)
+
+**Note:** In the rest of this tutorial, replace the IP address we use in the examples, `192.168.100.100` with that IP.
+
+**Using Vagrant and Virtualbox:**
+
+Come back to this tutorial after you have completed the installation and setup of a VM as explained in this tutorial:
+
+[Setting up a virtual machine with vagrant][Setting up a virtual machine with vagrant]
+
+## Connecting with SSH
 
 **On your development machine:**
 
 Test that ssh works:
 
 ```
-$ ssh root@128.199.44.119
+$ ssh root@192.168.100.100
 ```
-
-Remember to replace the IP and username with what works in your case.
 
 Save the host in `cf-remote` so you can copy-paste our later commands:
 
 ```
-$ cf-remote save -H root@128.199.44.119 --role hub --name hub
+$ cf-remote save -H root@192.168.100.100 --role hub --name hub
 ```
 
 The host is now in a `cf-remote` group called `hub`, so we don't have to type the username and IP, for example:
@@ -136,11 +153,11 @@ $ cf-remote info -H hub
 Shows this output:
 
 ```
-root@128.199.44.119
+root@192.168.100.100
 OS            : ubuntu (debian)
 Architecture  : x86_64
 CFEngine      : Not installed
-Policy server : 128.199.44.119
+Policy server : None
 Binaries      : dpkg, apt
 ```
 
@@ -154,10 +171,14 @@ $ cf-remote install --hub hub --bootstrap hub
 
 ## Open the CFEngine Web UI
 
-Open a browser and put in the IP address of the hub in the address bar (same IP as in last step).
+Open the CFEngine Web UI in a web browser by clicking this link, or typing the appropriate IP in the address bar:
+
+https://192.168.100.100/
+
 You might get warnings about an insecure connection or invalid certificate.
 At this point, your hub has a self signed certificate, which means there is no certificate authority that can verify which server you are talking to.
 In the future you might want to set up a DNS entry for your hub and give it a proper certificate, but for now, you can click the options in your browser to Ignore / Continue.
+(In Chrome, there might not be an "Accept and continue button", but you can type `thisisunsafe` to bypass the security warning).
 
 After this, you should see the CFEngine Enterprise login screen.
 Log in with username admin, password admin, and you will be asked to change the password.
