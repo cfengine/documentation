@@ -119,7 +119,7 @@ $ cf-remote deploy
 We did this in the first part of the series, while installing CFEngine, but if you haven't you can do it like this:
 
 ```
-$ cf-remote save -H root@192.168.56.2 --role hub --name hub
+$ cf-remote save -H root@192.0.2.2 --role hub --name hub
 ```
 
 (Replace SSH username and IP with what works on your hub).
@@ -129,7 +129,7 @@ $ cf-remote save -H root@192.168.56.2 --role hub --name hub
 Open your web browser and enter the IP address of your hub in the address bar to go the Mission Portal web UI.
 For example:
 
-https://192.168.56.2/
+https://192.0.2.2/
 
 (Log in with username `admin` and password `admin`, or whatever you changed it to when you first logged into your hub).
 

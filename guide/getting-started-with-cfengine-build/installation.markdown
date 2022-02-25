@@ -128,7 +128,7 @@ For example, in Digital Ocean, the username is `root`, and the IP might be `128.
 
 ![](digital-ocean.png)
 
-**Note:** In the rest of this tutorial, replace the IP address we use in the examples, `192.168.56.2` with that IP.
+**Note:** In the rest of this tutorial, replace the IP address we use in the examples, `192.0.2.2` with that IP.
 
 **Using Vagrant and Virtualbox:**
 
@@ -143,13 +143,13 @@ Come back to this tutorial after you have completed the installation and setup o
 Test that ssh works:
 
 ```
-$ ssh root@192.168.56.2
+$ ssh root@192.0.2.2
 ```
 
 Save the host in `cf-remote` so you can copy-paste our later commands:
 
 ```
-$ cf-remote save -H root@192.168.56.2 --role hub --name hub
+$ cf-remote save -H root@192.0.2.2 --role hub --name hub
 ```
 
 The host is now in a `cf-remote` group called `hub`, so we don't have to type the username and IP, for example:
@@ -161,7 +161,7 @@ $ cf-remote info -H hub
 Shows this output:
 
 ```
-root@192.168.56.2
+root@192.0.2.2
 OS            : ubuntu (debian)
 Architecture  : x86_64
 CFEngine      : Not installed
@@ -181,7 +181,7 @@ $ cf-remote install --hub hub --bootstrap hub
 
 Open the CFEngine Web UI in a web browser by clicking this link, or typing the appropriate IP in the address bar:
 
-https://192.168.56.2/
+https://192.0.2.2/
 
 You might get warnings about an insecure connection or invalid certificate.
 At this point, your hub has a self signed certificate, which means there is no certificate authority that can verify which server you are talking to.

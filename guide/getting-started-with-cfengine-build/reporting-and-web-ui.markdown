@@ -11,7 +11,7 @@ This is by no means an exhaustive list of everything Mission Portal offers, but 
 If you haven't already, open your web browser and put the IP address (or hostname) of your CFEngine Hub in the address bar.
 For example:
 
-https://192.168.56.2/
+https://192.0.2.2/
 
 (Log in with the username and password for your hub, the default is `admin` as both and you will be prompted to change it on the first login).
 
