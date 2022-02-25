@@ -35,7 +35,7 @@ Further down there is a section for _Inventory_ (reporting data) which you can c
 In the _Host specific data_ section you can assign CFEngine variables and classes to that host, changing the behavior of the policy running there.
 If you haven't started writing any policy yet, the _Suggestions_ menu can be used to make some changes to what the default policy is doing, such as making the agent run every minute instead of the 5-minute default:
 
-![](host-specific-data.png)
+![](host-specific-data-with-suggestion.png)
 
 ## Inventory reports
 
