@@ -1,12 +1,14 @@
 ---
 layout: default
-title: Setting up a virtual machine with vagrant
+title: Local virtual machine
 published: true
 sorting: 15
 tags: [guide, getting started, installation, modules]
 ---
 
 This short tutorial shows you how to set up a Linux Virtual Machine locally, if you prefer this over creating an account and using an online cloud provider like Digital Ocean.
+
+**Note:** If you are using Digital Ocean or another cloud platform, you don't need this tutorial.
 
 ## Download and install virtualization software
 
@@ -81,7 +83,6 @@ Vagrant.configure("2") do |config|
             v.memory = 2048
             v.cpus = 4
         end
-
     end
 end
 ```
