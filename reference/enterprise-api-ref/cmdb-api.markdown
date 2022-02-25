@@ -308,16 +308,6 @@ HTTP 201 Created
 * **name** *(string)*
   Configuration name. Classes or variables name.
 
-**Parameters:**
-* **hostkey** *(string)*
-  Unique host identifier.
-
-* **type** *(string)*
-  Configuration type. Allowed value: `variables`, `classes`
-
-* **name** *(string)*
-  Configuration name. Classes or variables name.
-
 **Request body parameters:**
 
 * **value** *(string|array)*
