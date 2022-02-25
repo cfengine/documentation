@@ -76,7 +76,7 @@ You can log in with SSH to check this, or use `cf-remote`:
 
 ```
 $ cf-remote sudo -H hub "cat /tmp/hello"
-root@192.168.100.100: 'cat /tmp/hello' -> 'Hello, world!'
+root@192.168.56.1: 'cat /tmp/hello' -> 'Hello, world!'
 ```
 
 ## Running the agent
