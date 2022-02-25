@@ -126,7 +126,7 @@ For example, in Digital Ocean, the username is `root`, and the IP might be `128.
 
 Come back to this tutorial after you have completed the installation and setup of a VM as explained in this tutorial:
 
-[Setting up a virtual machine with vagrant][Setting up a virtual machine with vagrant]
+[Local virtual machine][Local virtual machine]
 
 ## Connecting with SSH
 
