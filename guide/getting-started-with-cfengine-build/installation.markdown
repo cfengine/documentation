@@ -32,15 +32,23 @@ This is also possible, for example using Vagrant and VirtualBox, and we will pro
 
 ## Development machine and CFEngine Hub
 
-When you've set up a Linux VM there are now 2 machines we will be talking about:
+With the Linux VM there are 2 machines we will be talking about:
 
 ![](machines.png)
 
-Your **development machine** is the machine you have in front of you, it can be any platform (Linux, Mac, Windows, ...).
-This is where you will run a terminal, browser, text editor, and some python tools.
-
 The **CFEngine hub** is the aforementioned Ubuntu 20.04 VM.
 We will access this via SSH, and install CFEngine there.
+
+Your **development machine** is the machine you have in front of you, it can be any platform (Linux, Mac, Windows, ...).
+This is where you will run a terminal, browser, text editor, and some python tools.
+Throughout this tutorial we will tell you various commands to run on the command line (terminal), like this:
+
+```
+$ echo hello
+hello
+```
+
+The dollar sign is the _command prompt_, the rest of the line is the command, so in this example you should copy `echo hello` into your terminal. (The `hello` on the next line is the output of the program, you should not copy this).
 
 ## Install python 3 on your development machine
 
