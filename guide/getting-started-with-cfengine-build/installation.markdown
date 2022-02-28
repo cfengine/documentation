@@ -104,8 +104,8 @@ However, on other systems, notably popular **Linux** distributions, it is common
 $ sudo pip3 install cfbs cf-remote
 ```
 
-There are many ways to install command line tools with pip, if you want to do it without sudo, and install it in your home directory, and edit the PATH variable, or if you want to use virtual environments, you can.
-The command above is a suggestion which should work for most people.
+There are many ways to install command line tools with `pip`, if you want to do it without `sudo`, and install it in your home directory, and edit the `PATH` variable, or if you want to use virtual environments, you can.
+The commands above are suggestions which should work for most people.
 Importantly, you need the command line tools working after you've installed them:
 
 ```
