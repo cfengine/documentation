@@ -144,14 +144,24 @@ Come back to this tutorial after you have completed the installation and setup o
 Test that ssh works:
 
 ```
-$ ssh root@192.168.56.2
+$ ssh root@192.168.56.2 -C "echo hello"
+hello
 ```
 
-Save the host in `cf-remote` so you can copy-paste our later commands:
+If you see `hello` printed, it worked! If not, these are some of the more common error scenarios:
+
+* If it prints `Connection refused`, it might be because you just started the machine, wait a bit and try again.
+* If it hangs for many seconds, it might mean that you typed the wrong IP address (`Ctrl + C` to interrupt).
+* If it prints `Connection timed out`, you are most likely using the wrong IP address.
+* If it gives any other errors, such as `Permission denied (publickey)` you may be using the wrong user / SSH key or IP address. Double check and try again.
+
+After you see ssh working, save the host in `cf-remote` so you can copy-paste our later commands:
 
 ```
 $ cf-remote save -H root@192.168.56.2 --role hub --name hub
 ```
+
+**Note:** If you are not using the vagrant machine with that IP address, remember to replace it with the one you use.
 
 The host is now in a `cf-remote` group called `hub`, so we don't have to type the username and IP, for example:
 
