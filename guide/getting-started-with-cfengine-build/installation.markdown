@@ -91,16 +91,17 @@ The python version must be at least 3.6, and it's important that the pip output 
 In this tutorial series, we will be using 2 command line tools: `cf-remote` and `cfbs`.
 These are small python tools and don't make changes to your system, they are only for working with CFEngine projects, modules, and installing / deploying to remote machines.
 
-**On macOS:**
+Depending on your operating system and how you installed python, you may be able to install python tools without `sudo`.
+This is common on **macOS**:
 
 ```
-pip3 install cfbs cf-remote
+$ pip3 install cfbs cf-remote
 ```
 
-**On Linux / WSL:**
+However, on other systems, notably popular **Linux** distributions, it is common to require root privileges (or extra configuration) to install python packages:
 
 ```
-sudo pip3 install cfbs cf-remote
+$ sudo pip3 install cfbs cf-remote
 ```
 
 There are many ways to install command line tools with pip, if you want to do it without sudo, and install it in your home directory, and edit the PATH variable, or if you want to use virtual environments, you can.
