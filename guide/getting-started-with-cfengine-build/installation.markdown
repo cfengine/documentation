@@ -110,9 +110,9 @@ Importantly, you need the command line tools working after you've installed them
 
 ```
 $ cfbs --version
-cfbs 1.2.1
+cfbs 1.3.3
 $ cf-remote --version
-cf-remote version 0.3.9
+cf-remote version 0.3.13
 Available CFEngine versions:
 master, 3.19.0, 3.18.x, 3.18.1, 3.18.0, 3.15.x, 3.15.5, 3.15.4, 3.15.3, 3.15.2, 3.15.1, 3.15.0, 3.15.0b1
 ```
@@ -167,11 +167,7 @@ The host is now in a `cf-remote` group called `hub`, so we don't have to type th
 
 ```
 $ cf-remote info -H hub
-```
 
-Shows this output:
-
-```
 root@192.168.56.2
 OS            : ubuntu (debian)
 Architecture  : x86_64
@@ -187,6 +183,8 @@ From your development machine, use `cf-remote` to install CFEngine on the Linux 
 ```
 $ cf-remote install --hub hub --bootstrap hub
 ```
+
+CFEngine is now installed and running on your hub, including the Web UI, the reporting database, and the components responsible for making changes to your system, serving and fetching policy, etc.
 
 ## Open the CFEngine Web UI
 

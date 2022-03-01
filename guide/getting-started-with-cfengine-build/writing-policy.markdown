@@ -81,15 +81,23 @@ root@192.168.56.2: 'cat /tmp/hello' -> 'Hello, world!'
 
 ## Running the agent
 
-The agent, an executable called `cf-agent`, is the component which reads your policy files and makes changes to your systems.
-When we ran the deploy command, the agent was ran automatically, but you can also run it manually.
-For example, you can test that your policy works:
+In CFEngine, the program which runs all your policy / modules and makes changes to the system is called `cf-agent`, or _the agent_.
+Just like above, we can use `cf-remote sudo` to run the agent on the hub:
 
 ```
-$ cf-remote sudo -H hub "rm /tmp/hello && /var/cfengine/bin/cf-agent -KI"
+$ cf-remote sudo -H hub "cf-agent --no-lock --info"
 ```
 
-`rm /tmp/hello` deletes the file, causing the agent to recreate it.
+When experimenting with modules, policy, and making changes, knowing how to perform an agent run to speed things up or get feedback from what your policy is doing can be useful.
+This is similar to triggering an agent run with the buttons in Mission Portal, or logging in with `ssh` and running `cf-agent --no-lock --info` from the command prompt.
+
+**Tip:** `cf-agent --no-lock --info` can also be written using short options; `cf-agent -KI`.
+
+To test that our policy works, let's delete the `/tmp/hello` file and watch CFEngine create it:
+
+```
+$ cf-remote sudo -H hub "rm /tmp/hello && cf-agent -KI"
+```
 
 ## Git promises
 
