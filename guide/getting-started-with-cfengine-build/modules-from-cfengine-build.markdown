@@ -44,21 +44,17 @@ For the purposes of this tutorial, let's add the git module so we can work with 
 $ cfbs add git
 ```
 
-Additionally, let's add a compliance report:
+Additionally, let's add a module to make CFEngine run policy and report collection every minute instead of the default 5 minute interval:
+
+```
+$ cfbs add every-minute
+```
+
+Finally, let's add a report for whether the OS is supported by the OS vendor:
 
 ```
 $ cfbs add compliance-report-os-is-vendor-supported
 ```
-
-This will add a report to Mission Portal, highlighting any hosts which are not running supported operating systems.
-
-Finally, let's add another module which gives us some interesting reporting (inventory) data:
-
-```
-$ cfbs add inventory-sudoers
-```
-
-This module checks which users have access to use sudo, and makes this reporting data available in Mission Portal.
 
 ## Step 2: Build
 
@@ -66,19 +62,15 @@ Once we are done adding modules, it is time to build them, combining it all into
 
 ```
 $ cfbs build
-```
 
-The output from this command shows a lot of what happened:
-
-```
 Modules:
 001 masterfiles                              @ f3a8f65e77428a6ab9d62c34057a7ace6ae54ce9 (Downloaded)
 002 library-for-promise-types-in-python      @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
 003 promise-type-git                         @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
-004 compliance-report-imports                @ 9d4a1cb1f919454a49baf22469ebc0b1606ae904 (Downloaded)
-005 autorun                                  @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
-006 compliance-report-os-is-vendor-supported @ d9e0aad225535b2b16ba2126e8302f8ffc5e7d38 (Downloaded)
-007 inventory-sudoers                        @ ba9768f0e09914e41dae95fbf81caed90c1e6ed4 (Downloaded)
+004 every-minute                             @ 05bf5e5b1c014018a7b93a524e035c1a21bcffa4 (Downloaded)
+005 compliance-report-imports                @ 9d4a1cb1f919454a49baf22469ebc0b1606ae904 (Downloaded)
+006 autorun                                  @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
+007 compliance-report-os-is-vendor-supported @ d9e0aad225535b2b16ba2126e8302f8ffc5e7d38 (Downloaded)
 
 Steps:
 001 masterfiles                              : run './prepare.sh -y'
@@ -86,11 +78,10 @@ Steps:
 002 library-for-promise-types-in-python      : copy 'cfengine.py' 'masterfiles/modules/promises/'
 003 promise-type-git                         : copy 'git.py' 'masterfiles/modules/promises/'
 003 promise-type-git                         : append 'enable.cf' 'masterfiles/services/init.cf'
-004 compliance-report-imports                : copy './compliance-report-imports.cf' 'masterfiles/services/autorun/'
-005 autorun                                  : json 'def.json' 'masterfiles/def.json'
-006 compliance-report-os-is-vendor-supported : copy './os-is-vendor-supported.json' 'masterfiles/.no-distrib/compliance-report-definitions/os-is-vendor-supported.json'
-007 inventory-sudoers                        : copy './policy/main.cf' 'masterfiles/services/inventory-sudoers/main.cf'
-007 inventory-sudoers                        : json './cfbs/def.json' 'masterfiles/def.json'
+004 every-minute                             : json 'def.json' 'masterfiles/def.json'
+005 compliance-report-imports                : copy './compliance-report-imports.cf' 'masterfiles/services/autorun/'
+006 autorun                                  : json 'def.json' 'masterfiles/def.json'
+007 compliance-report-os-is-vendor-supported : copy './os-is-vendor-supported.json' 'masterfiles/.no-distrib/compliance-report-definitions/os-is-vendor-supported.json'
 
 Generating tarball...
 
@@ -133,16 +124,11 @@ https://192.168.56.2/
 
 (Log in with username `admin` and password `admin`, or whatever you changed it to when you first logged into your hub).
 
-You can open an inventory report by clicking _Reports_ in the left navigation bar, and then _Inventory_.
-Inside the report you can add a new column with the data from our `inventory-sudoers` module, it shows up as _Users with sudo_:
-
-![](inventory-sudoers.gif)
-
-(Reports in CFEngine Mission Portal can be saved as PDF or CSV or scheduled to be sent to your email periodically).
-
 By clicking on _Reports_ and _Compliance_ we can see the report we added, _OS is vendor supported_:
 
 ![](os-is-vendor-supported.gif)
+
+(Reports in CFEngine Mission Portal can be saved as PDF or CSV or scheduled to be sent to your email periodically).
 
 ## What's next
 
@@ -150,13 +136,13 @@ Now that you've successfully added modules and seen the results in Mission Porta
 Here are some examples of modules you might be interested in:
 
 * [Scan and report on potentially vulnerable log4j installations](https://build.cfengine.com/modules/cve-2021-44228-log4j/)
-* [Make policy fetching, evaluation, and reporting happen every minute](https://build.cfengine.com/modules/every-minute/)
+* [Inventory (reporting) data of who can use sudo on each host](https://build.cfengine.com/modules/inventory-sudoers/)
 * [Promise type to perform HTTP requests](https://build.cfengine.com/modules/promise-type-http/)
 
 To add more modules, just repeat the commands from steps 1-3, for example:
 
 ```
-$ cfbs add every-minute
+$ cfbs add inventory-sudoers
 $ cfbs build
 $ cf-remote deploy
 ```
