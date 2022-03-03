@@ -264,7 +264,7 @@ body perms null_perms_body {
     ## Bug #4862: Recursive ACLs not working by default only with perms
     ##
     ## Dummy perms body is used as otherwise ACLs are not applied recursively
-    rxdirs => "true";
+    rxdirs => "false"; # This is the default value for rxdirs
 }
 ```
 
@@ -2785,11 +2785,12 @@ on Windows (such as the Administrators group).
 
 #### rxdirs
 
-**Description:** true/false add execute flag for directories if read flag
-is set
+**Description:** true/false add execute flag for directories if read flag is set
 
-Default behavior is to set the x flag on directories automatically if
-the r flag is specified in `mode`.
+When `true` set the `x` flag on directories automatically if the `r` flag is
+specified in `mode`.
+
+**Default:** `false`
 
 **Type:** [`boolean`][boolean]
 
@@ -2801,6 +2802,11 @@ the r flag is specified in `mode`.
 
 **Notes:**
 This is ignored on Windows, as the permission model uses ACLs.
+
+**History:**
+
+* Default value changed from `true` to `false` in CFEngine 3.20.0
+* Added warning if default value is not explicitly set in 3.18.2, 3.20.0
 
 ### rename
 
