@@ -5,6 +5,8 @@ published: true
 tags: [getting started, faq, logging, reporting ]
 ---
 
+This page presents a few ways of understanding what CFEngine has done to your machine.
+
 ## CFEngine Core/Community
 
 ### The verbose agent log
@@ -170,7 +172,7 @@ R: Mon Dec  4 21:21:38 2017 REPAIRED /bin/true
 
 ## CFEngine Enterprise
 
-CFEngine enterprise provides details logging without special configuration.
+In addition to all of the core functionality CFEngine enterprise provides details logging without special configuration.
 
 ### Changes UI
 
