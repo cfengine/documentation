@@ -5,7 +5,7 @@ published: true
 sorting: 1
 ---
 
-Welcome! This is the documentation for CFEngine {{site.cfengine.core_branch}}.
+Welcome! This is the revamp of documentation for CFEngine {{site.cfengine.core_branch}}. Version 0 (nothing was changed yet).
 
 *Parts of the documentation:*
 
