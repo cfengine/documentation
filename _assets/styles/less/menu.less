@@ -72,6 +72,7 @@ aside {
             background: rgba(227, 241, 253, 0.6);
             position: absolute;
             height: 100%;
+            width: 33rem;
             z-index: -1;
             top: 0;
           }
@@ -127,7 +128,6 @@ aside {
     li.current.level-@{i} {
       &:before {
         margin-left: -@width !important;
-        width: calc(100% + @width);
       }
     }
     .level-loop(@i - 1);
