@@ -44,7 +44,7 @@ module Jekyll
       html = ""
       items.sort_by{|k, v| v["title"]}.each do |key, item|
         hasChildren = !item["children"].nil? && !item["children"].empty?
-        html += "<li class=\"#{(hasChildren ? 'parent' : '')} level-#{level}\" data-url=\"/#{item["url"]}\"><a href=\"#{item["url"]}\">#{item["title"]}</a>"
+        html += "<li class=\"#{(hasChildren ? 'parent' : '')} level-#{level}\" data-url=\"#{item["url"]}\"><a href=\"#{item["url"]}\">#{item["title"]}</a>"
         if hasChildren
           html += '<ul>'
           html += buildHtmlMenu(item["children"], level + 1)

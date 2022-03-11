@@ -13,7 +13,8 @@
     <div class="float-right">
         <div id="top_version_wrapper">
             <script>
-                const url = document.location.pathname;
+                const urlPaths = document.location.pathname.split('/');
+                const url = urlPaths[urlPaths.length - 1]; // get last url part
                 const currentMenuItem = document.querySelector(`.left-menu li[data-url="${url}"]`);
                 currentMenuItem.className += ' opened current';
 
