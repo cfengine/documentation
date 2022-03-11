@@ -15,27 +15,6 @@
         <link rel="canonical" href="https://docs.cfengine.com/latest/{{ page.url | remove: '/pages/' | replace: '/', '-' }}">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         {% css_asset_tag global %}
-        - _assets/css/style.css
-        - _assets/css/responsive.css
-        - _assets/css/navigation.css
-        - _assets/css/sidr_mobile_menu.css
-        - _assets/css/pygments.css
-        - _assets/css/hacks.css
-        - _assets/css/print.css
+        - _assets/css/styles.min.css
         {% endcss_asset_tag %}
-
-       
-        <style>
-            @media print {
-                 @page
-                    {
-                    @top-right{
-                        content: "{% if page.title %}{{ page.title }}{% else %}CFEngine documentation{% endif %}";
-                        width: 100%;
-                        vertical-align: bottom;
-                        border-bottom: .5pt solid;
-                        margin-bottom: .7cm;
-                    }
-            }
-        </style>
     </head>

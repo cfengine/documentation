@@ -1,0 +1,137 @@
+aside {
+  .select {
+    select {
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      color: #0B132A;
+
+      border: 1px solid #8C8D8E;
+      border-radius: .4rem;
+      display: block;
+      height: 3.2rem;
+      padding-left: .8rem;
+      width: 27rem;
+
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      &::-ms-expand {
+        display: none;
+      }
+    }
+    position: relative;
+    display: flex;
+    &:after {
+      content: url("/media/images/carret-down-fill.svg");
+      position: absolute;
+      top: .9rem;
+      right: .9rem;
+      pointer-events: none;
+    }
+  }
+
+
+  .left-menu {
+    margin-top: 2.4rem;
+
+    > ul {
+      overflow: hidden;
+      padding-left: .8rem;
+    }
+
+    a {
+      color: #5E6366;
+      text-decoration: none;
+      line-height: 2rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      display: inline-block;
+      max-width: 90%;
+    }
+
+    ul {
+      li {
+        font-size: 1.4rem;
+        font-weight: 500;
+        padding-left: 2rem;
+        display: none;
+
+        &.opened {
+          display: block;
+
+          > ul > li {
+            display: block;
+          }
+        }
+
+        &.current {
+          position: relative;
+
+          &:before {
+            content: " ";
+            background: rgba(227, 241, 253, 0.6);
+            position: absolute;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+          }
+
+          > a {
+            color: @blue-700;
+          }
+        }
+
+        &.parent {
+          > a {
+            position: relative;
+            &:before {
+              content: "";
+              position: absolute;
+              left: -1.8rem;
+              top: 1.5rem;
+              width: 0;
+              height: 0;
+              border-top: .5rem solid transparent;
+              border-bottom: .5rem solid transparent;
+              border-left: .5rem solid #8C8D8E;
+            }
+          }
+
+          &.opened {
+            > a {
+              &:before {
+                border: none;
+                border-left: .5rem solid transparent;
+                border-right: .5rem solid transparent;
+                border-top: .5rem solid #8C8D8E;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    > ul {
+      > li {
+        display: block;
+        border-bottom: 1px solid #F1F3F4;
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  .level-loop (@i) when (@i > 0) {
+    @width: @i*3rem;
+    li.current.level-@{i} {
+      &:before {
+        margin-left: -@width !important;
+        width: calc(100% + @width);
+      }
+    }
+    .level-loop(@i - 1);
+  }
+
+  .level-loop(20);
+}

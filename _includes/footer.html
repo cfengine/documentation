@@ -1,30 +1,13 @@
 {% include move_to_top.html %}
-<footer>
-    <div class="wrapper">
-        <div class="download_info">
-            <a href="cfengine-documentation-{{site.cfengine.branch}}.tar.gz"><i class="fa fa-arrow-circle-o-down"></i>Download all CFEngine documentation</a> for offline reading.
-        </div>
-        <div class="group">
-            <div class="license_info">
-               <br /><br />
-               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
-
-               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
-
-               <p>Updated: {{site.time | date_to_long_string}}
-               {% if site.git-repository != nil %}
-                from [<a target="_blank" href="http://{{site.git-repository}}{% if site.git-branch != nil %}/blob/{{site.git-branch}}{% endif %}">markdown source</a>]
-               {% if site.git-revision != nil %} revision <a href="http://{{site.git-repository}}/commit/{{site.git-revision}}" target="_blank">{{site.git-revision}}</a>{% endif %}{% endif %}.
-               </p>
-            </div>
-            <div class="contact_info" style="text-align:right">
-               <p>CFEngine</p>
-               <p>470 Ramona Street,</p>
-               <p>Palo Alto, CA 94301</p>
-               <p>Phone: +1 650 560-4888</p>
-               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
-           </div>
-        </div>
+<footer class="footer">
+    <div class="container">
+        <ul>
+            <li><a target="_blank" href="https://cfengine.com"><img  alt="CFEngine homepage"src="/media/images/cfengine-logo-white.svg" /></a></li>
+            <li><a href="cfengine-documentation-{{site.cfengine.branch}}.tar.gz">Download all CFEngine documentation</a></li>
+            <li><a href="legal.html">Legal and Licenses</a></li>
+            <li><a target="_blank" href="https://cfengine.com/contact/">Contact us</a></li>
+            <li>Last update on {{site.time | date_to_long_string}}</li>
+        </ul>
     </div>
 </footer>
 {% javascript_asset_tag footer %}
@@ -35,7 +18,7 @@
 - _assets/js/jquery.hammer.min.js
 - _assets/js/custom.js
 {% endjavascript_asset_tag %}
-<div id ="mobile_naw_wrapper">
+<div id ="mobile_naw_wrapper" style="display: none">
     <div id="mobile_links">
         <table>
              <tr>
@@ -46,4 +29,3 @@
         </table>
     </div>
 </div>
-

@@ -1,0 +1,61 @@
+.home {
+  h1 {
+    color: @blue-800;
+    font-size: 3.2rem;
+    line-height: 3.6rem;
+  }
+  &-top {
+    text-align: center;
+    max-width: 62.6rem;
+    margin: 0 auto 4.7rem;
+
+    div {
+      margin-top: 1.6rem;
+      &:last-child {
+        margin-top: 2rem;
+      }
+    }
+    &_versions {
+      margin-top: 1.6rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  &-links {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 3.9rem;
+    border-bottom: 1px solid #E2E2E2;
+    ul {
+      max-width: 41.5rem;
+      list-style: none;
+      li {
+        margin-bottom: 2.4rem;
+        &:first-child {
+          padding-bottom: 1.2rem;
+          border-bottom: 1px solid #E2E2E2;;
+        }
+        &.cfe-build {
+          span {
+            display: block;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #E2E2E2;
+            margin-bottom: 1.6rem;
+          }
+          a {
+            margin-top: 1.6rem;
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+            color: @textColorDarkBlue;
+          }
+        }
+      }
+    }
+    a {
+      color: @blue-700;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: .4rem;
+    }
+  }
+}

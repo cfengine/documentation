@@ -1,85 +1,25 @@
 <header>
-    <div class="wrapper">
-        <div id="top_form" class="group">
-            <div class="float-right">
-               <div id="top_version_wrapper">
-                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
-			{% include header_nav_options.html %}
-                   </select>
-                   <script>
-                       function fillVersionWrapperSelect(url) {
-                           // Fills above <select> with data from a json file.
-                           var xmlhttp = new XMLHttpRequest();
-                           xmlhttp.open('GET', url, true);
-                           xmlhttp.onreadystatechange = function() {
-                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
-                                   return
-                               }
-                               var str = ''; //generated HTML
-                               var data = JSON.parse(xmlhttp.responseText);
-                               for(var i = 0; i<data.docs.length; i++){
-                                   var branch = data.docs[i];
-                                   var selected = '';
-                                   if(location.pathname.indexOf(branch.Link)==0){
-                                       // this is version that we're currently looking at
-                                       selected = ' selected';
-                                       window.currentVersionLink = branch.Link;
-                                   }
-                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
-                               }
-                               document.querySelector('#top_version_wrapper select').innerHTML = str;
-                           }
-                           xmlhttp.send(null);
-                       };
-                       function selectVersion(value){
-                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
-                               window.location = window.location.href.replace(window.currentVersionLink, value);
-                           } else {
-                               window.location = value;
-                           }
-                       };
-                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
-                   </script>
-                </div>
-                <div class="top_search_form">
-                   <form id="cse-search-box" action="search.html">
-			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
-                       <input type="hidden" name="ie" value="UTF-8" />
-                       <div class="formbody">
-                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
-                       </div>
-                   </form>
-               </div>
-            </div>
-        </div>
-
-        <div class="group" id="nav_container">
+    <div class="top_menu">
+        <div class="container">
             <div id="logo">
-                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+                <a href="/"><img src="media/images/docs-logo.svg" alt="CFEngine documentation homepage"></a>
             </div>
 
-            <nav id="nav_wrapper">
-                <ul id="nav_links">
-                    <li>
-                        <a href="index.html" {% if  page.categories[0] == 'index' %} class="navselected" {% endif %}>Home</a>
-                    </li>
-                    <li>
-                        <a href="guide.html" {% if page.categories[0] == "guide" %} class="navselected" {% endif %}>Guide</a>
-                    </li>
-                    <li>
-                        <a href="{{site.baseurl}}enterprise-cfengine-guide.html" {% if page.categories[0] == "enterprise-cfengine-guide" %} class="navselected" {% endif %}>CFEngine Enterprise</a>
-                    </li>
-                    <li>
-                        <a href="examples.html" {% if page.categories[0] == 'examples' %} class="navselected" {% endif %}>Examples</a>
-                    </li>
-                    <li>
-                        <a href="reference.html" {% if page.categories[0] == 'reference' %} class="navselected" {% endif %}>Reference</a>
-                    </li>
-                    <li>
-                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
-                    </li>
-                </ul>
-            </nav>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+
+            <ul>
+                <li><a target="_blank" href="https://cfengine.com/product-overview/">Product</a></li>
+                <li><a target="_blank" href="https://cfengine.com/blog/">Blog</a></li>
+                <li><a class="btn btn-orange" href="https://cfengine.com/download/" target="_blank">Try for free</a></li>
+            </ul>
         </div>
     </div>
 </header>
