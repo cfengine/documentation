@@ -1,15 +1,63 @@
-{% assign tmp = '' %}
-{% assign pageKey = '' %}
-{% for category in page.categories %}
-          {% if tmp == '' %}
-          {% assign tmp = category %}
-             {% else %}
-         {% assign tmp = tmp | append: '_' | append: category | removeUnvantedChars %}
-           {% endif %}
-           {% assign pageKey = tmp | removeUnvantedChars  %}
-    {% endfor %}
-<div id="left_col">
-    <div id="nav_level1_wrapper" class="level1">
-         {{ site.leftNavigation[pageKey] }}
+<aside>
+    <div class="select">
+        <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+            {% include header_nav_options.html %}
+        </select>
+    </div>
+    <div class="left-menu">
+         {{ site.mainNavigation }}
+    </div>
+</aside>
+
+<div id="top_form" class="group">
+    <div class="float-right">
+        <div id="top_version_wrapper">
+            <script>
+                const url = document.location.pathname;
+                const currentMenuItem = document.querySelector(`.left-menu li[data-url="${url}"]`);
+                currentMenuItem.className += ' opened current';
+
+                let closest = currentMenuItem.closest('ul').closest('li');
+                while (true) {
+                    if (!closest) break;
+                    closest.classList.add('opened');
+                    closest = closest.closest('ul').closest('li');
+                }
+
+                function fillVersionWrapperSelect(url) {
+                    // Fills above <select> with data from a json file.
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.open('GET', url, true);
+                    xmlhttp.onreadystatechange = function() {
+                        if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                            return
+                        }
+                        var str = ''; //generated HTML
+                        var data = JSON.parse(xmlhttp.responseText);
+                        for(var i = 0; i<data.docs.length; i++){
+                            var branch = data.docs[i];
+                            var selected = '';
+                            if(location.pathname.indexOf(branch.Link)==0){
+                                // this is version that we're currently looking at
+                                selected = ' selected';
+                                window.currentVersionLink = branch.Link;
+                            }
+                            str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                        }
+                        document.querySelector('#top_version_wrapper select').innerHTML = str;
+                    }
+                    xmlhttp.send(null);
+                };
+                function selectVersion(value){
+                    if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                        window.location = window.location.href.replace(window.currentVersionLink, value);
+                    } else {
+                        window.location = value;
+                    }
+                };
+                document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+            </script>
+        </div>
+
     </div>
 </div>

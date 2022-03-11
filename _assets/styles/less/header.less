@@ -1,0 +1,58 @@
+.top_menu {
+  padding: 1.9rem 0 1.3rem 0;
+  box-shadow: 0 .2rem 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 6.2rem;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    li {
+      margin-left: 2.4rem;
+      .btn, a {
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        font-weight: 500;
+      }
+      a {
+        color: #000000;
+        text-decoration: none;
+      }
+    }
+  }
+  #cse-search-box {
+    #top_search {
+      background: #F7F8F9;
+      border-radius: 4rem;
+      padding: 1.25rem 2.2rem ;
+      border: none;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      width: 31.7rem;
+      margin-left: 5rem;
+      &::placeholder {
+        color: #868686;
+      }
+    }
+    .formbody {
+      position: relative;
+      &:after {
+        content: " ";
+        position: absolute;
+        right: 2.1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background-image: url("/media/images/zoom-in.svg");
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+  }
+
+}
