@@ -69,7 +69,7 @@ alias: index.html
                CFEngine Build is a catalogue of policy and modules created by CFEngine, our partner and community that 
                helps you to simplify the automation process. 
             </div>
-            <a target="_blank" class="btn btn-transparent" href="https://build.cfengine.com">Go to the page <img src="/media/images/arrow-right.svg" /></a>
+            <a target="_blank" class="btn btn-transparent" href="https://build.cfengine.com">Go to the page <img src="./media/images/arrow-right.svg" /></a>
          </li>
       </ul>
    </div>
