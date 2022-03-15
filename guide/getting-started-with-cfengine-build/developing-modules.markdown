@@ -28,7 +28,7 @@ https://github.com/cfengine/promise-type-template
 We can add it to our project with the full URL:
 
 ```
-$ cfbs add https://github.com/cfengine/promise-type-template.git
+$ cfbs add https://github.com/cfengine/promise-type-template
 ```
 
 From that repo, we have now added a new promise type, it is called `git_example` to avoid confusion with the "real" git promise type used earlier in the tutorial.
@@ -80,8 +80,10 @@ Start by editing `cfbs.json`, at least changing the `repo` and `by` URLs.
 To test your changes, make sure they are pushed to GitHub, and re-add your module, for example:
 
 ```
-$ cfbs remove promise-type-git-example && cfbs add https://github.com/cfengine/promise-type-template.git
+$ cfbs remove promise-type-git-example && cfbs add https://github.com/cfengine/promise-type-template
 ```
+
+**Tip:** Replace the URL with your own repository URL when you've create one using the template.
 
 Then, build and deploy the project again:
 

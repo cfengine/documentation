@@ -77,6 +77,7 @@ Vagrant.configure("2") do |config|
     # Ubuntu 20.04 VM, for CFEngine Enterprise Hub:
     config.vm.define "hub", autostart: false do |hub|
         hub.vm.box = "ubuntu/focal64"
+        hub.vm.hostname = "hub"
         hub.vm.network "private_network", ip: "192.168.56.2"
         hub.ssh.insert_key = true
         hub.vm.provider "virtualbox" do |v|
@@ -89,10 +90,13 @@ end
 
 The `Vagrantfile` above does some important things:
 
-* Defines a Ubuntu 20.04 Virtual machine called `hub`
+* Defines a Ubuntu 20.04 Virtual machine called `hub`, with hostname `hub`
 * Sets its IP address to be `192.168.56.2`
 * Sets how much memory and CPU cores we want the VM to have
 * Copies the `id_rsa.pub` public key into the host when it starts, so we can use `ssh`
+
+**Note:** The machine will be called `hub` in `vagrant`, `cf-remote` and in Mission Portal (based on hostname), but this is just because we were consistent when naming it in all 3 places.
+These 3 names do not have to match, but it is easier to remember
 
 ## Start the Virtual Machine
 
