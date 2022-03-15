@@ -227,6 +227,6 @@ Next, we will look at implementing modules, such as the git promise type we used
 
 If you would like to learn more about policy writing, these are some good resources to look at:
 
-* [Language concepts](/reference-language-concepts.html)
-* [Promise Types](/reference-promise-types.html)
-* [Functions](/reference-functions.html)
+* [Language concepts][Language Concepts]
+* [Promise Types][Promise Types]
+* [Functions][Functions]
