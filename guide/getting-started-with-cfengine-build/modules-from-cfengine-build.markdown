@@ -16,7 +16,7 @@ The workflow will look like this:
 Create a folder for you project, for example in your home directory:
 
 ```
-$ mkdir ~/cfengine_project
+$ mkdir -p ~/cfengine_project
 ```
 
 Initialize it:
