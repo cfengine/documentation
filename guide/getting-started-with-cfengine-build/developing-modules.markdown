@@ -50,7 +50,7 @@ bundle agent hello_world
 That's it, you can now build and deploy:
 
 ```
-$ cfbs build && cf-remote deploy --hub hub out/masterfiles.tgz
+$ cfbs build && cf-remote deploy
 ```
 
 And to test it, we can delete the folder and run the agent again:

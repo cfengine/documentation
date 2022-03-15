@@ -37,6 +37,10 @@ If you haven't started writing any policy yet, the _Suggestions_ menu can be use
 
 ![](host-specific-data-with-suggestion.png)
 
+**Tip:** Host Specific data can be used to make temporary or permanent changes to the data (configuration) of specific hosts.
+Using the suggestion from the screenshot above has the same effect as the `every-minute` module we added earlier in the tutorial series.
+The advantage of not using that module and instead using host specific data is that we can quickly enable and disable this functionality on a per-host basis, and without rebuilding and deploying a new policy set to all our hosts.
+
 ## Inventory reports
 
 Inventory reports allow you to easily get an overview of all your hosts, and what is on them.
