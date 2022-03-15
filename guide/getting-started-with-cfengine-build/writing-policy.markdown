@@ -37,7 +37,7 @@ If that file already exists, with the correct content, nothing is done.
 
 In CFEngine, a `bundle` is a collection of promises, _things_ you want to be true, your desired state.
 In the example above, `agent` specifies which component this is for, the `agent` is the binary which makes changes to the system, (as opposed to the file server or other parts of CFEngine).
-`main` is the name of the bundle, and has a special meaning, the name bundle will be run by default.
+`main` is the name of the bundle, and has a special meaning, the bundle named `main` will be run by default.
 The promise type, `files` in this case, is the type of resource we want to manage.
 With `files` promises you can manipulate file permissions, edit lines, render templates to files, copy files around, etc.
 
