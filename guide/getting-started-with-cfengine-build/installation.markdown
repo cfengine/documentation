@@ -13,6 +13,12 @@ So, the only thing you need to get started is to set up 1 CFEngine Hub.
 
 ![](https://cfengine.com/images/overview/cfe-desktop.svg)
 
+## Video
+
+There is a video version of this tutorial available on YouTube:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VaPZRWSxNfA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Linux virtual machine
 
 CFEngine runs on a wide variety of platforms, including Windows, Mac, Linux, and BSD.
