@@ -44,7 +44,7 @@ Example:
 Class name                                                   Meta tags
 10_0_2_15                                                    inventory,attribute_name=none,source=agent,hardclass
 127_0_0_1                                                    inventory,attribute_name=none,source=agent,hardclass
-192_168_33_2                                                 inventory,attribute_name=none,source=agent,hardclass
+192.168.56_2                                                 inventory,attribute_name=none,source=agent,hardclass
 1_cpu                                                        source=agent,derived-from=sys.cpus,hardclass
 64_bit                                                       source=agent,hardclass
 Afternoon                                                    time_based,source=agent,hardclass

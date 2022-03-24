@@ -156,21 +156,21 @@ help to expose so called *patching* issues. If the same amount of data is
 collected twice a **rebase** may resolve it.
 
 ```console
-[root@hub ~]# cf-hub -q delta -H 192.168.33.2 -v
+[root@hub ~]# cf-hub -q delta -H 192.168.56.2 -v
  verbose: ----------------------------------------------------------------
  verbose:  Initialization preamble 
  verbose: ----------------------------------------------------------------
  # <snipped for brevity>
- verbose: Connecting to host 192.168.33.2, port 5308 as address 192.168.33.2
+ verbose: Connecting to host 192.168.56.2, port 5308 as address 192.168.56.2
  verbose: Waiting to connect...
  verbose: Setting socket timeout to 10 seconds.
- verbose: Connected to host 192.168.33.2 address 192.168.33.2 port 5308 (socket descriptor 4)
+ verbose: Connected to host 192.168.56.2 address 192.168.56.2 port 5308 (socket descriptor 4)
  verbose: TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3
  verbose: TLS session established, checking trust...
  verbose: Received public key compares equal to the one we have stored
  verbose: Server is TRUSTED, received key 'SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1' MATCHES stored one.
- verbose: Key digest for address '192.168.33.2' is SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1
- verbose: Will request from host 192.168.33.2 (digest = SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1) data later than timestamp 1481901790
+ verbose: Key digest for address '192.168.56.2' is SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1
+ verbose: Will request from host 192.168.56.2 (digest = SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1) data later than timestamp 1481901790
  verbose: Successfully opened extension plugin 'cfengine-report-collect.so' from '/var/cfengine/lib/cfengine-report-collect.so'
  verbose: Successfully loaded extension plugin 'cfengine-report-collect.so'
  verbose: Sending query at Fri Dec 16 15:24:23 2016
@@ -182,7 +182,7 @@ collected twice a **rebase** may resolve it.
  verbose: Processing report: MOH (items: 22)
  verbose: Processing report: EXS (items: 1)
  verbose: Received 5 kb of report data with 115 individual items
- verbose: Connection to 192.168.33.2 is closed
+ verbose: Connection to 192.168.56.2 is closed
 ```
 
 ### Perform manual rebase collection for a single host
@@ -191,20 +191,20 @@ A `rebase` causes the hub to throw away all reports since the last collection
 and collect only the output from the most recent run.
 
 ```console
-[root@hub ~]# cf-hub -q rebase -H 192.168.33.2 -v
+[root@hub ~]# cf-hub -q rebase -H 192.168.56.2 -v
  verbose: ----------------------------------------------------------------
  verbose:  Initialization preamble 
  verbose: ----------------------------------------------------------------
  # <snipped for brevity>
- verbose: Connecting to host 192.168.33.2, port 5308 as address 192.168.33.2
+ verbose: Connecting to host 192.168.56.2, port 5308 as address 192.168.56.2
  verbose: Waiting to connect...
  verbose: Setting socket timeout to 10 seconds.
- verbose: Connected to host 192.168.33.2 address 192.168.33.2 port 5308 (socket descriptor 4)
+ verbose: Connected to host 192.168.56.2 address 192.168.56.2 port 5308 (socket descriptor 4)
  verbose: TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3
  verbose: TLS session established, checking trust...
  verbose: Received public key compares equal to the one we have stored
  verbose: Server is TRUSTED, received key 'SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1' MATCHES stored one.
- verbose: Key digest for address '192.168.33.2' is SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1
+ verbose: Key digest for address '192.168.56.2' is SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1
  verbose: Successfully opened extension plugin 'cfengine-report-collect.so' from '/var/cfengine/lib/cfengine-report-collect.so'
  verbose: Successfully loaded extension plugin 'cfengine-report-collect.so'
  verbose: Sending query at Fri Dec 16 15:35:10 2016
@@ -219,7 +219,7 @@ and collect only the output from the most recent run.
  verbose: Processing report: ELD (items: 205)
  verbose: 	ts #0 > 1481902510
  verbose: Received 125 kb of report data with 786 individual items
- verbose: Connection to 192.168.33.2 is closed
+ verbose: Connection to 192.168.56.2 is closed
 ```
 
 **Note:** The Enterprise hub automatically schedules rebase queries if it has

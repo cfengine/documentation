@@ -40,14 +40,14 @@ Host API allows to access host specific information.
     {
       "id": "SHA=27b88b8a92f1b10b1839ac5b26d022c98d48629bd761c4324d1f1fb0f04f17ba",
       "hostname": "host001",
-      "ip": "192.168.33.151",
+      "ip": "192.168.56.151",
       "lastreport": "1437141907",
       "firstseen": "1437138906"
     },
     {
       "id": "SHA=4a18877bbb7b79f4dde4b03d3ba05bcd66346124cbcd9373590416a90177fcaa",
       "hostname": "hub",
-      "ip": "192.168.33.65",
+      "ip": "192.168.56.65",
       "lastreport": "1437141907",
       "firstseen": "1437138666"
     }
@@ -90,7 +90,7 @@ Host API allows to access host specific information.
     {
       "id": "SHA=27b88b8a92f1b10b1839ac5b26d022c98d48629bd",
       "hostname": "host001",
-      "ip": "192.168.33.151",
+      "ip": "192.168.56.151",
       "lastreport": "1437144007",
       "firstseen": "1437138906"
     }
