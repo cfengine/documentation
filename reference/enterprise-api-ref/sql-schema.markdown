@@ -341,19 +341,19 @@ FROM   hosts;
 -[ RECORD 1 ]--------|-----------------------
 hostkey              | SHA=a4dd...
 hostname             | host001
-ipaddress            | 192.168.33.151
+ipaddress            | 192.168.56.151
 lastreporttimestamp  | 2015-03-10 14:20:20+00
 firstreporttimestamp | 2015-03-10 13:40:20+00
 -[ RECORD 2 ]--------|-----------------------
 hostkey              | SHA=3b94...
 hostname             | hub
-ipaddress            | 192.168.33.65
+ipaddress            | 192.168.56.65
 lastreporttimestamp  | 2015-03-10 14:20:20+00
 firstreporttimestamp | 2015-03-10 13:34:20+00
 -[ RECORD 3 ]--------|-----------------------
 hostkey              | SHA=2aab...
 hostname             | host002
-ipaddress            | 192.168.33.152
+ipaddress            | 192.168.56.152
 lastreporttimestamp  | 2015-03-10 14:20:20+00
 firstreporttimestamp | 2015-03-10 13:40:20+00
 ```
@@ -586,21 +586,21 @@ FROM   lastseenhosts;
 hostkey           | SHA=3b94d...
 lastseendirection | OUTGOING
 remotehostkey     | SHA=2aab8...
-remotehostip      | 192.168.33.152
+remotehostip      | 192.168.56.152
 lastseentimestamp | 2015-03-13 12:20:45+00
 lastseeninterval  | 299
 -[ RECORD 2 ]-----|------------------------
 hostkey           | SHA=3b94d...
 lastseendirection | INCOMING
 remotehostkey     | SHA=a4dd5...
-remotehostip      | 192.168.33.151
+remotehostip      | 192.168.56.151
 lastseentimestamp | 2015-03-13 12:22:06+00
 lastseeninterval  | 298
 -[ RECORD 3 ]-----|------------------------
 hostkey           | SHA=2aab8...
 lastseendirection | INCOMING
 remotehostkey     | SHA=3b94d...
-remotehostip      | 192.168.33.65
+remotehostip      | 192.168.56.65
 lastseentimestamp | 2015-03-13 12:20:45+00
 lastseeninterval  | 299
 ```
@@ -650,21 +650,21 @@ FROM   LastSeenHostsLogs;
 hostkey           | SHA=3b94d...
 lastseendirection | OUTGOING
 remotehostkey     | SHA=2aab8...
-remotehostip      | 192.168.33.152
+remotehostip      | 192.168.56.152
 lastseentimestamp | 2015-03-13 12:20:45+00
 lastseeninterval  | 299
 -[ RECORD 2 ]-----|------------------------
 hostkey           | SHA=3b94d...
 lastseendirection | INCOMING
 remotehostkey     | SHA=a4dd5...
-remotehostip      | 192.168.33.151
+remotehostip      | 192.168.56.151
 lastseentimestamp | 2015-03-13 12:22:06+00
 lastseeninterval  | 298
 -[ RECORD 3 ]-----|------------------------
 hostkey           | SHA=2aab8...
 lastseendirection | INCOMING
 remotehostkey     | SHA=3b94d...
-remotehostip      | 192.168.33.65
+remotehostip      | 192.168.56.65
 lastseentimestamp | 2015-03-13 12:20:45+00
 lastseeninterval  | 299
 ```
@@ -1764,19 +1764,19 @@ FROM   hosts;
 -[ RECORD 1 ]--------|-----------------------
 hostkey              | SHA=a4dd...
 hostname             | host001
-ipaddress            | 192.168.33.151
+ipaddress            | 192.168.56.151
 lastreporttimestamp  | 2015-03-10 14:20:20+00
 firstreporttimestamp | 2015-03-10 13:40:20+00
 -[ RECORD 2 ]--------|-----------------------
 hostkey              | SHA=3b94...
 hostname             | hub
-ipaddress            | 192.168.33.65
+ipaddress            | 192.168.56.65
 lastreporttimestamp  | 2015-03-10 14:20:20+00
 firstreporttimestamp | 2015-03-10 13:34:20+00
 -[ RECORD 3 ]--------|-----------------------
 hostkey              | SHA=2aab...
 hostname             | host002
-ipaddress            | 192.168.33.152
+ipaddress            | 192.168.56.152
 lastreporttimestamp  | 2015-03-10 14:20:20+00
 firstreporttimestamp | 2015-03-10 13:40:20+00
 ```

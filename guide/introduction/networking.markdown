@@ -257,7 +257,7 @@ mode.
 `/var/cfenigne/bin/cf-agent -Kdf update.cf`
 
 ```
-verbose: Connected to host 192.168.33.2 address 192.168.33.2 port 5308
+verbose: Connected to host 192.168.56.2 address 192.168.56.2 port 5308
   debug: TLSVerifyCallback: no ssl->peer_cert
   debug: TLSVerifyCallback: no conn_info->key
   debug: This must be the initial TLS handshake, accepting
@@ -277,23 +277,23 @@ with debug mode.
 `/var/cfenigne/bin/cf-serverd -Fd`
 
 ```
-verbose: New connection (from 192.168.33.3, sd 7), spawning new thread...
+verbose: New connection (from 192.168.56.3, sd 7), spawning new thread...
 verbose: CollectCallHasPending: false
   debug: Waiting at incoming select...
-   info: 192.168.33.3> Accepting connection
-verbose: 192.168.33.3> Setting socket timeout to 600 seconds.
-verbose: 192.168.33.3> Peeked nothing important in TCP stream, considering the protocol as TLS
-  debug: 192.168.33.3> Peeked data: ....2......ak.
-  debug: 192.168.33.3> TLSVerifyCallback: no ssl->peer_cert
-  debug: 192.168.33.3> TLSVerifyCallback: no conn_info->key
-  debug: 192.168.33.3> This must be the initial TLS handshake, accepting
-verbose: 192.168.33.3> TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3
-verbose: 192.168.33.3> TLS session established, checking trust...
-  debug: 192.168.33.3> TLSRecvLines(): CFE_v2 cf-agent 3.7.1.
-  debug: 192.168.33.3> TLSRecvLines(): IDENTITY USERNAME=root.
-verbose: 192.168.33.3> Setting IDENTITY: USERNAME=root
-verbose: 192.168.33.3> Received public key compares equal to the one we have stored
-verbose: 192.168.33.3> SHA=4f25279831eeaf579d2e3451345854a93fdefc856ad741bd59515b859fb84dea: Client is TRUSTED, public key MATCHES stored one.
+   info: 192.168.56.3> Accepting connection
+verbose: 192.168.56.3> Setting socket timeout to 600 seconds.
+verbose: 192.168.56.3> Peeked nothing important in TCP stream, considering the protocol as TLS
+  debug: 192.168.56.3> Peeked data: ....2......ak.
+  debug: 192.168.56.3> TLSVerifyCallback: no ssl->peer_cert
+  debug: 192.168.56.3> TLSVerifyCallback: no conn_info->key
+  debug: 192.168.56.3> This must be the initial TLS handshake, accepting
+verbose: 192.168.56.3> TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3
+verbose: 192.168.56.3> TLS session established, checking trust...
+  debug: 192.168.56.3> TLSRecvLines(): CFE_v2 cf-agent 3.7.1.
+  debug: 192.168.56.3> TLSRecvLines(): IDENTITY USERNAME=root.
+verbose: 192.168.56.3> Setting IDENTITY: USERNAME=root
+verbose: 192.168.56.3> Received public key compares equal to the one we have stored
+verbose: 192.168.56.3> SHA=4f25279831eeaf579d2e3451345854a93fdefc856ad741bd59515b859fb84dea: Client is TRUSTED, public key MATCHES stored one.
 ```
 
 ## Troubleshooting

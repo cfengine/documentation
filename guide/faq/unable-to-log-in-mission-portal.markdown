@@ -16,7 +16,7 @@ Verify the name used to access mission portal resolves correctly:
   Portal listed in the second column.
 
 ```
-192.168.33.1 hub.cfengine.com hub
+192.168.56.1 hub.cfengine.com hub
 ```
 
 * `hostname -f` returns the fqdn used to access Mission Portal.
