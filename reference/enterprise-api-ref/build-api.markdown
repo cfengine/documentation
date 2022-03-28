@@ -17,7 +17,10 @@ The Build API enables you to configure modules easily to your projects.
 
 **Parameters:**
 * **repositoryUrl** *(string)*
-  Git repository URL. Project will be synchronized with this repository. Supported protocols: `http`, `ssh`, `git`. Required. 
+  Git repository URL. Project will be synchronized with this repository. 
+  Supported protocols: `http`, `https`, `ssh`, `git`. 
+  Required.
+  Git repository URL example: https://github.com/cfengine/build-index.git
 
 * **branch** *(string)*
   Repository branch. Required.
@@ -40,7 +43,7 @@ The Build API enables you to configure modules easily to your projects.
 **Example request (curl):**
 
 ```console
-curl -k --user <username>:<password> \
+curl --user <username>:<password> \
   -X POST \
   https://hub.cfengine.com/api/build/projects \
   -H 'content-type: application/json' \
@@ -85,7 +88,10 @@ HTTP 200 Ok
   Project's ID
 
 * **repositoryUrl** *(string)*
-  Git repository URL. Project will be synchronized with this repository. Supported protocols: `http`, `ssh`, `git`.
+  Git repository URL. Project will be synchronized with this repository.
+  Supported protocols: `http`, `https`, `ssh`, `git`.
+  Required.
+  Git repository URL example: https://github.com/cfengine/build-index.git
 
 * **branch** *(string)*
   Repository branch.
@@ -97,10 +103,10 @@ HTTP 200 Ok
   Authentication type that will be used to get access to the repository. Allowed values: `password`, `ssh_key`.
 
 * **username** *(string)*
-  Username for authentication to the repository.
+  Username for authentication to the repository. Required when authentication type is `password`.
 
 * **password** *(string)*
-  Password for authentication to the repository.
+  Password for authentication to the repository. Required when authentication type is `password`.
 
 * **sshPrivateKey** *(string)*
   SSH private key for authentication to the repository.
@@ -108,7 +114,7 @@ HTTP 200 Ok
 **Example request (curl):**
 
 ```console
-curl -k --user <username>:<password> \
+curl --user <username>:<password> \
   -X PATCH \
   https://hub.cfengine.com/api/build/projects/2 \
   -H 'content-type: application/json' \
@@ -129,7 +135,7 @@ HTTP 204 No content
 | HTTP response code | Description |
 |--------|-------------|
 | 204 No content | Project successfully updated |
-| 404 Not found | Project does not found |
+| 404 Not found | Project not found |
 | 422 Unprocessable entity | Validation error occurred |
 | 409 Conflict | Project with the same repository url and branch already exists |
 | 500 Internal server error | Internal server error |
@@ -148,7 +154,7 @@ HTTP 204 No content
 **Example request (curl):**
 
 ```console
-curl -k --user <username>:<password> \
+curl --user <username>:<password> \
   -X GET \
   https://hub.cfengine.com/api/build/projects/2 
 ```
@@ -178,7 +184,7 @@ API does not return password or ssh private key, but returns `set` or `not set`.
 | HTTP response code | Description |
 |--------|-------------|
 | 200 Ok | Successful response  |
-| 404 Not found | Project does not found |
+| 404 Not found | Project not found |
 | 500 Internal server error | Internal server error |
 
 ## Get projects list
@@ -189,13 +195,16 @@ API does not return password or ssh private key, but returns `set` or `not set`.
 
 **Parameters:**
 
-* **id** *(integer)*
-  Project's ID
+* **skip** *(integer)*
+  Number of results to skip for the processed
+  query. The Mission Portal uses this for pagination. Optional parameter.
+* **limit**  *(integer)*
+  Limit the number of results in the query. Optional parameter.
 
 **Example request (curl):**
 
 ```console
-curl -k --user <username>:<password> \
+curl --user <username>:<password> \
   -X GET \
   https://hub.cfengine.com/api/build/projects
 ```
@@ -247,7 +256,7 @@ API does not return password or ssh private key, but returns `set` or `not set`.
 | HTTP response code | Description |
 |--------|-------------|
 | 200 Ok | Successful response  |
-| 404 Not found | Project does not found |
+| 404 Not found | Project not found |
 | 500 Internal server error | Internal server error |
 
 ## Delete project
@@ -264,7 +273,7 @@ API does not return password or ssh private key, but returns `set` or `not set`.
 **Example request (curl):**
 
 ```console
-curl -k --user <username>:<password> \
+curl --user <username>:<password> \
   -X DELETE \
   https://hub.cfengine.com/api/build/projects/2 
 ```
@@ -282,5 +291,5 @@ API does not return password or ssh private key, but returns `set` or `not set`.
 | HTTP response code | Description |
 |--------|-------------|
 | 204 No content | Project successfully deleted |
-| 404 Not found | Project does not found |
+| 404 Not found | Project not found |
 | 500 Internal server error | Internal server error |
