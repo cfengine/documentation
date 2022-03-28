@@ -520,13 +520,15 @@ commands:
 
 ### signals
 
-**Description:** A list of menu options representing signals to be sent to
-a process.
+**Description:** A list of names of signals to be sent to a process or sleeps
+between signals.
 
-Signals are presented as an ordered list to the process. On Windows,
-only the kill signal is supported, which terminates the process.
+Signals from the given list are sent to the process in a sequence. Special
+strings of the form `Ns` or just `N` where `N` is a positive integer can be used
+to add sleeps between the signals. On Windows, only the kill signal is
+supported, which terminates the process.
 
-**Type:** (option list)
+**Type:** (`slist`)
 
 **Allowed input range:**
 
@@ -546,6 +548,7 @@ only the kill signal is supported, which terminates the process.
        usr2
        bus
        segv
+       [0-9]+s?
 ```
 
 **Example:**
@@ -564,6 +567,6 @@ only the kill signal is supported, which terminates the process.
 
        "snmpd"
 
-            signals         => { "term" , "kill" };
+            signals         => { "term" , "5s" , "kill" };
 ```
 
