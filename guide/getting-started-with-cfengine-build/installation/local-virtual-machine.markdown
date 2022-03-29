@@ -10,6 +10,12 @@ This short tutorial shows you how to set up a Linux Virtual Machine locally, if 
 
 **Note:** If you are using Digital Ocean or another cloud platform, you don't need this tutorial.
 
+## Video
+
+There is a video version of this tutorial available on YouTube:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VDe5n2Ugt_w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Download and install virtualization software
 
 Install Vagrant and VirtualBox from their respective websites:
