@@ -8,7 +8,7 @@ tags: [tools, editor, vim, emacs, vscode, kate, sublime text, atom, eclipse ]
 
 Using an editor that provides syntax highlighting and other features can significantly enhance prodcutivity and quality of life.
 
-## Emacs ##
+## Emacs
 
 For Emacs users, editing CFEngine policies is easy with the built-in CFEngine 3 mode in the [cfengine.el library](https://github.com/cfengine/core/blob/master/contrib/cfengine.el). For an overview of the capabilities, see the [webinar by Ted Zlatanov](https://www.youtube.com/watch?v=-PPVhwSKNdE) and Appendix A of Diego Zamboni’s [Learning CFEngine](https://leanpub.com/learning-cfengine/) book.
 	
