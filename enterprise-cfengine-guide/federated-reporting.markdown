@@ -128,7 +128,7 @@ install CFEngine Hub on a Superhub as well as Feeder hubs.
 ![Enable Hub Management](fr-hub-management-enabled.png)
 
 On the Superhub and all Feeders enable the Hub management
-app by [Opening Settings][Settings#opening settings] then 
+app by [Opening Settings][Settings#opening settings] then
 selecting [Manage Apps][Settings#manage apps] and finally
 by clicking the `On` radio button for Hub management in the Status column.
 
@@ -634,7 +634,7 @@ we use the number "1".
    ```console
    root@superhub: ~# contents=$(jq 'del(.remote_hubs ."id-1")' /opt/cfengine/federation/cfapache/federation-config.json) && echo "${contents}" > /opt/cfengine/federation/cfapache/federation-config.json
    ```
-   
+
 * Remove items associated with this feeder in the `cfdb` database.
 
     Determine the cfdb-specific `hub_id`.
@@ -650,7 +650,7 @@ we use the number "1".
    --------+----------------------------------------------------------------------+----------------                                                              
       0 | SHA=50d370f41c81b3e119506befecc5deaa63c0f1d9039f674c68f9253a07f7ad84 |                                                                              
       1 | SHA=bfd6f580f9d19cb190139452f068f38f843bf9227ca3515f7adfecfa39f68728 |                                      
-   (2 rows) 
+   (2 rows)
    ```
 
    `hub_id` of `0` is the superhub. The others are the feeders.
@@ -664,7 +664,7 @@ we use the number "1".
    ```
 
 * On the feeder, replace `/opt/cfengine/federation/cfapache/federation-config.json` with the following content.
-  
+
   If you wish to re-add this feeder to a superhub, change "target_state" from "off" to "on".
   Remember to trigger or wait for an agent run for the change from off to on to take effect.
 
@@ -676,7 +676,7 @@ we use the number "1".
        "remote_hubs": { }
    }
    ```
-   
+
 
 * On 3.15.x and greater feeders, also run the following commands to truncate two tables:
 
@@ -760,4 +760,3 @@ Follow this procedure:
   or
 
   * run `cf-agent -KI` on each feeder, and then `cf-agent -KI` on the superhub to manually force a Federated Reporting collection cycle.
-
