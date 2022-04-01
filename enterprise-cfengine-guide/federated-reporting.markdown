@@ -219,7 +219,7 @@ An API may be used instead of the UI. This could be used to automate the setup
 of infrastructure related to Federated Reporting and Feeder hubs.
 
 Command line examples follow using [curl](https://curl.haxx.se/) and
-[cf-remote](https://github.com/cfengine/core/tree/master/contrib/cf-remote).
+[cf-remote](https://github.com/cfengine/cf-remote).
 
 Some environment variables should be set according to your environment so that you
 can simply copy/paste steps as you go.
