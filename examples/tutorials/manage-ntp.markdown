@@ -447,7 +447,7 @@ The classes attribute here uses the [`results()`][lib/common.cf#results] classes
       template_method       => "inline_mustache",
 ```
 
-CFEngine supports multiple templating engines, the `template_method` attribute specifies how the promised file content will be resolved. The value `inline_mustache` indicates that we will use the mustache templating engine and specify the template in-line, instead of in an external file.
+CFEngine supports multiple templating engines, the [template_method][files#template_method] attribute specifies how the promised file content will be resolved. The value `inline_mustache` indicates that we will use the mustache templating engine and specify the template in-line, instead of in an external file.
 
 ##### edit_template_string
 
