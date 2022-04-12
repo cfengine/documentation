@@ -432,7 +432,7 @@ bundle agent old
 ```
 ## Tooling
 
-Currently, there is no canonical policy linting or reformatting tool. There are a few different tools that can be useful apart from an [editor with syntax support](https://cfengine.com/cfengine-code-editors/) for achieving regular formatting.
+Currently, there is no canonical policy linting or reformatting tool. There are a few different tools that can be useful apart from an [editor with syntax support][Editors] for achieving regular formatting.
 
 ### cf-promises
 
