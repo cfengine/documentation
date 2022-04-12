@@ -38,11 +38,7 @@ configuration management best practices from the CFEngine team.
 
 ## Tools ##
 
-* Download CFEngine [code editors](https://cfengine.com/cfengine-code-editors).
-
-* Download syntax highlighters for
-  [vim](https://github.com/neilhwatson/vim_cf3) or
-  [emacs](https://github.com/cfengine/core/blob/master/contrib/cfengine.el).
+* [Editors with syntax support][Editors]
 
 ### Sign Up
 
