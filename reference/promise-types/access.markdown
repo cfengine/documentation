@@ -448,7 +448,17 @@ Here are the built-in `report_data_select` bodies `default_data_select_host()` a
 
 **See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
-**History:** Introduced in Enterprise 3.5.0
+**History:**
+
+* Introduced in Enterprise 3.5.0
+
+* `metatags_exclude`, `metatags_include`, `promise_handle_exclude`, and
+  `promise_handle_include` body attributes added in 3.6.0.
+
+* `classes_exclude`, `classes_include`, `promise_notkept_log_exclude`,
+  `promise_notkept_log_include`, `promise_repaired_log_exclude`,
+  `promise_repaired_log_include`, `variables_exclude`, and `variables_include`
+  body attributes removed in 3.6.0
 
 #### metatags_exclude
 
@@ -551,63 +561,6 @@ subset.
 **See also:** `monitoring_include`, `promise_handle_exclude`, `metatags_exclude`
 
 **History:** Introduced in Enterprise 3.5.0
-
-
-#### classes_include
-
-**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility. Filter data by meta-tags instead.
-
-**See also:** `metatags_include`, `metatags_exclude`
-
-#### classes_exclude
-
-**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility. Filter data by meta-tags instead.
-
-**See also:** `metatags_include`, `metatags_exclude`
-
-#### variables_include
-
-**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility. Filter data by meta-tags instead.
-
-**See also:** `metatags_include`, `metatags_exclude`
-
-#### variables_exclude
-
-**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility. Filter data by meta-tags instead.
-
-**See also:** `metatags_include`, `metatags_exclude`
-
-#### promise_notkept_log_include
-
-**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility. Filter data by handle instead.
-
-**See also:** `promise_handle_exclude`
-
-#### promise_notkept_log_exclude
-
-**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility. Filter data by handle instead.
-
-**See also:** `promise_handle_exclude`
-
-#### promise_repaired_log_include
-
-**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility. Filter data by handle instead.
-
-**See also:** `promise_handle_exclude`
-
-#### promise_repaired_log_exclude
-
-**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility. Filter data by handle instead.
-
-**See also:** `promise_handle_exclude`
 
 ### resource_type
 
