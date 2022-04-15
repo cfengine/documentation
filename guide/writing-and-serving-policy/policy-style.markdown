@@ -408,12 +408,6 @@ bundle agent main
 }
 ```
 
-### Internal variables & classes
-
-Variables and classes that have no centralized reporting value are considered
-"internal". By convention internal variables and classes should be prefixed with
-an underscore "_".
-
 ## Deprecating Bundles
 As your policy library changes over time you may want to deprecate various
 bundles in favor of newer implimentations. To indicate that a bundle is
