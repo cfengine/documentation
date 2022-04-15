@@ -21,14 +21,14 @@ for a policy hub.
 Controlling which variables and classes should be collected by an Enterprise Hub
 is done primarily with a list of regular expressions matching promise meta tags
 for either [inclusion][access#metatags_include] or
-[exclusion][access#metatags_exclude]. `cf-hub` collects `variables` that are not
-prefixed with an underscore (`_`) or have meta tags matching
-[`metatags_include`][access#metatags_include] and do not have any meta tags
-matching [`metatags_exclude`][access#metatags_exclude] and does not have a
-handle matching [`promise_handle_exclude`][access#promise_handle_exclude].
-`cf-hub` collects *namespace* scoped (global) `classes` having any meta tags
-matching [`metatags_include`][access#metatags_include] that do not have any meta
-tags matching [`metatags_exclude`][access#metatags_exclude].
+[exclusion][access#metatags_exclude]. `cf-hub` collects `variables` that have
+meta tags matching [`metatags_include`][access#metatags_include] and do not have
+any meta tags matching [`metatags_exclude`][access#metatags_exclude] and does
+not have a handle matching
+[`promise_handle_exclude`][access#promise_handle_exclude]. `cf-hub` collects
+*namespace* scoped (global) `classes` having any meta tags matching
+[`metatags_include`][access#metatags_include] that do not have any meta tags
+matching [`metatags_exclude`][access#metatags_exclude].
 
 Instead of modifying the list of regular expressions to control collection, we
 recommend that you leverage the defaults provided by the MPF (Masterfiles Policy
