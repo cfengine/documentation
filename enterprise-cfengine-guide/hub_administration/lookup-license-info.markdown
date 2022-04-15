@@ -27,7 +27,13 @@ $ curl -u admin http://localhost/api/
 Run as `root` from the hub itself.
 
 ```console
-# cf-hub -Fvn | grep -i expiring
-2016-07-11T15:54:23+0000  verbose: Found 25 CFEngine Enterprise licenses, expiring on 2222-12-25 for FREE ENTERPRISE - http://cfengine.com/terms for terms
+[root@hub ~]# cf-hub --show-license
+License file:     /var/cfengine/licenses/hub-SHA=d13c14c3dc46ef1c5824eb70ffae3a1d1c67c7ce70a1e8e8634b1324d0041131.dat
+License status:   Valid
+License count:    50
+Company name:     CFEngine (hub.example.com)
+License host key: SHA=2e5c7d9636c5644d023d71859f3296755f8d53d5d183af98efc1540655731fcc
+Expiration date:  3018-01-01
+Utilization:      20/50 (Approximate)
 ```
 
