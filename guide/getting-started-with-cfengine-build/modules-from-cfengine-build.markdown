@@ -15,7 +15,7 @@ The workflow will look like this:
 
 There is a video version of this tutorial available on YouTube:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5V5URRv6SEs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m2vHvJ7_iug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Step 0: Creating a new project
 

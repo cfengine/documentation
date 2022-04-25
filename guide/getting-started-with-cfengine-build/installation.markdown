@@ -17,7 +17,7 @@ So, the only thing you need to get started is to set up 1 CFEngine Hub.
 
 There is a video version of this tutorial available on YouTube:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VaPZRWSxNfA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GSaRfDlfh7I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Linux virtual machine
 

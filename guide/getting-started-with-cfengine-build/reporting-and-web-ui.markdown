@@ -15,6 +15,12 @@ https://192.168.56.2/
 
 (Log in with the username and password for your hub, the default is `admin` as both and you will be prompted to change it on the first login).
 
+## Video
+
+There is a video version of this tutorial available on YouTube:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/S7n8lqPzst0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## The host info page
 
 You can find individual hosts by using the search bar in the top right corner of Mission Portal, or by clicking _Hosts_ in the left navigation bar and looking through the different categories in the tree.
