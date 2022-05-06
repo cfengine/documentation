@@ -430,22 +430,18 @@ body common control
 
 **Description:** Defines the protocol to use for all outgoing connections.
 
-[%CFEngine_promise_attribute(2)%]
-
-* 0 -
-* undefined -
-* 1 - Classic protocol
-* classic - Alias to protocol 1
-* 2 - TLS
-* latest - Alias to protocol 2
+[%CFEngine_promise_attribute(undefined)%]
 
 **Note:** `protocol_version` can be specified at the individual promise level
 using the [`body copy_from protocol_version`][files#protocol_version]
-attribute.
+attribute. When undefined (the default) peers automatically negotiate the latest protocol version.
 
 **See also:**  [`body copy_from protocol_version`][files#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`tls_ciphers`][Components#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
 
-**History:** Introduced in CFEngine 3.6.0
+**History:**
+
+* Introduced in CFEngine 3.6.0 with `protocol_version` `1` (`classic`) and `protocol_version` `2` (`tls`)
+* Added `protocol_version` `3` (`cookie`) in CFEngine 3.15.0
 
 ### require_comments
 
