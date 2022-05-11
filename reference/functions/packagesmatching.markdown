@@ -51,7 +51,7 @@ some desired packages, and finally reports if they are installed.
 ```
 
 **Refresh rules:**
-* inastalled packages cache used by packagesmatching() is refreshed at the end of each agent run in accordance with constraints defined in the relevant package module body.
+* installed packages cache used by packagesmatching() is refreshed at the end of each agent run in accordance with constraints defined in the relevant package module body.
 * installed packages cache is refreshed after installing or removing a package.
 * installed packages cache is refreshed if no local cache exists.
         This means a reliable way to force a refresh of CFEngine's internal package cache is to simply delete the local cache:
