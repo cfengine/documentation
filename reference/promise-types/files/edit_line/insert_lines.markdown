@@ -426,7 +426,6 @@ significance.
 The expression must match a whole line, not a fragment within a line;
 that is, it is [anchored][anchored].
 
-This attribute is mutually exclusive of `select_line_number`.
 
 **Type:** `string`
 
@@ -448,6 +447,11 @@ This attribute is mutually exclusive of `select_line_number`.
      select_line_matching => "Expression match.* whole line";
      }
 ```
+
+**Notes:**
+
+* This attribute is mutually exclusive of `select_line_number`.
+* This attribute can not match a multiple line pattern (`(?m)` has no effect).
 
 ### select_region
 
