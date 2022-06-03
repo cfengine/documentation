@@ -195,4 +195,6 @@ Return values are limited to scalars.
     }
 ```
 
+**See also:** [reports bundle_return_value_index attribute][reports#bundle_return_value_index]
+
 **History:** Was introduced in 3.4.0 (2012)
