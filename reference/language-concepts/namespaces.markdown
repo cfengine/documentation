@@ -6,12 +6,13 @@ sorting: 100
 tags: [manuals, language, syntax, concepts, namespace]
 ---
 
-Namespaces are private bundle and body "playgrounds", allowing
-multiple files to define the bundles and bodies with the same name in
-different namespaces without conflict.  They are key to writing
-reusable policies.
+By default all things are in the `default` namespace. Specifying a namespace
+places the bundle or body in a different namespace to allow re-use of common
+names. Using namespaces makes it easier to share and consume policy from other
+authors.
 
-Everything in CFEngine lives in a namespace (it's the `default` namespace if not set).
+Like bundle names and classes, namespaces may only contain alphanumeric and
+underscore characters (`a-zA-Z0-9_`).
 
 ### Specifying a namespace
 
