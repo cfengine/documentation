@@ -17,7 +17,7 @@ underscore characters (`a-zA-Z0-9_`).
 ## Declaration
 
 Namespaces are declared with [`body file control`][file control#namespace]. A
-namespace applies within a single file to all subsequently defined bodies
+namespace applies within a single file to all subsequently defined bodies and bundles
 following the namespace declaration until a different namespace has been
 declared or until the end of the file.
 
