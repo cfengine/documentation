@@ -61,7 +61,7 @@ as the promiser but can also be referenced fully qualified with the namespace.
 **Notes:**
 
 - The [`variables` Augments key][Augments#variables] defines variables in the
-  `main` bundle of the `data` namespace by default supports seeding variable
+  `main` bundle of the `data` namespace by default but supports seeding variable
   values in any specified namespace.
 
 ## Classes
