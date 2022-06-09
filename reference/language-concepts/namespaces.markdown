@@ -38,30 +38,15 @@ namespace by prefixing the bundle name with the namespace followed by a colon
 
 [%CFEngine_include_example(namespace_methods-usebundle.cf)%]
 
+### Bodies
+
+Bodies are assumed to be within the same namespace as the promiser. To use a body from another namespace the namespace must be specified by prefixing the body name with the namespace followed by a colon (`:`).
+
+A common mistake is forgetting to specify `default:` when using bodies from the standard library which resides in the `default` namespace.
+
+[%CFEngine_include_example(namespace_bodies.cf)%]
+
 ### Accessing syntax elements between namespaces and the default namespace
-
-To distinguish a body from one in another namespace, you can prefix the body name with the namespace, separated by a colon.
-
-```cf3
-    files:
-       "/file"
-          create => "true",
-           perms => name1:settings;
-```
-
-If you don't make any namespace declarations, you'll be in the
-`default` namespace.  Bundles, bodies, classes, and variables from the
-`default` namespace can be accessed like any other:
-
-```cf3
-    files:
-      "/file"
-         create => "true",
-          perms => default:settings;
-```
-
-If you use the standard library from your own namespace, remember to
-specify this `default:` prefix.
 
 To access classes, variables, or meta-data in bundles in a different namespace, use the
 colon as a namespace prefix:
