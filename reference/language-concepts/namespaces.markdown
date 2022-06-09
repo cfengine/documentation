@@ -14,20 +14,11 @@ authors.
 Like bundle names and classes, namespaces may only contain alphanumeric and
 underscore characters (`a-zA-Z0-9_`).
 
-### Specifying a namespace
+### Declaration
 
-To isolate a file into its own namespace, you add a
-[file control promise][file control#namespace] to the file before the relevant
-bundles or bodies. All bundles and bodies start off in the `default` namespace
-if you don't explicitly set this. Once set, this applies until the end of the
-file or the next namespace change.
+Namespaces are declared with [`body file control`][file control#namespace]. A namespace applies within a single file to all subsequently defined bodies following the namespace declaration until a different namespace has been declared or until the end of the file.
 
-```cf3
-    body file control
-    {
-       namespace => "myspace";
-    }
-```
+[%CFEngine_include_example(namespace_declaration.cf)%]
 
 ### Accessing syntax elements between namespaces and the default namespace
 
