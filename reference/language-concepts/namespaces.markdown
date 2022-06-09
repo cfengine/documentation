@@ -16,9 +16,18 @@ underscore characters (`a-zA-Z0-9_`).
 
 ### Declaration
 
-Namespaces are declared with [`body file control`][file control#namespace]. A namespace applies within a single file to all subsequently defined bodies following the namespace declaration until a different namespace has been declared or until the end of the file.
+Namespaces are declared with [`body file control`][file control#namespace]. A
+namespace applies within a single file to all subsequently defined bodies
+following the namespace declaration until a different namespace has been
+declared or until the end of the file.
 
 [%CFEngine_include_example(namespace_declaration.cf)%]
+
+**Notes:**
+
+- Multiple namespaces can be declared within the same file
+- The same namespace can be declared in multiple files
+- The same namespace can be declared in the same file multiple times
 
 ### Accessing syntax elements between namespaces and the default namespace
 
