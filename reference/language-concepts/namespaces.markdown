@@ -46,48 +46,36 @@ A common mistake is forgetting to specify `default:` when using bodies from the 
 
 [%CFEngine_include_example(namespace_bodies.cf)%]
 
-### Accessing syntax elements between namespaces and the default namespace
+### Variables
 
-To access classes, variables, or meta-data in bundles in a different namespace, use the
-colon as a namespace prefix:
+Variables (except for Special Variables) are assumed to be within the same scope
+as the promiser but can also be referenced fully qualified with the namespace.
 
-    $(namespace:bundle.variable)
-    $(namespace:bundle_meta.variable)
+[%CFEngine_include_example(namespace_variable_references.cf)%]
 
-**Note** that this means that if you are in a namespace that's not `default`, you *must* qualify classes from `default` fully:
+[Special variables][Special Variables] are always accessible without a namespace
+  prefix. For example, `this`, `mon`, `sys`, and `const` fall in this category.
 
-    default:myclass::
-    "do something" if => "default:myotherclass";
+[%CFEngine_include_example(namespace_special_var_exception.cf)%]
 
-### Namespacing of classes and variables created in policy
+**Notes:**
 
-In policy, you can't create classes outside your own namespace.  So
-the following, for example, will create the class `mynamespace:done`
-if it runs in the namespace `mynamespace`.
+- The [`variables` Augments key][Augments#variables] defines variables in the
+  `main` bundle of the `data` namespace by default supports seeding variable
+  values in any specified namespace.
 
-```cf3
-    files:
-      "/file"
-         create => "true",
-         action => if_repaired("done");
-```
+### Classes
 
-Similarly, variables you create in a namespaced bundle have to be
-prefixed like `mynamespace:mybundle.myvar` from outside your
-namespace, but can use `mybundle.myvar` inside the namespace and
-`myvar` inside `mybundle`.
+Promises can only define classes within the current namespace. Classes are
+understood to refer to classes in the current namespace if a namespace is not
+specified (except for Hard Classes). To refer to a
+class in a different namespace prefix the class with the namespace suffixed by a
+colon (`:`).
 
-As a workaround, you could have a helper bundle in another namespace
-to create classes and variables as needed.
+[%CFEngine_include_example(namespace_classes.cf)%]
 
-### Exceptions to namespacing rules
+[Hard classes][Classes and Decisions#Hard Classes] exist in all namespaces and
+thus can be referred to from any namespace without qualification.
 
-Exceptions to the rules above:
+[%CFEngine_include_example(namespace_hard_classes.cf)%]
 
-* All hard classes can be used as-is from any namespace, without a namespace
-  prefix.  These are classes like `linux`.  They will have the
-  tag `hardclass`.
-
-* All special variable contexts, as documented in [Special Variables],
-  are always accessible without a namespace prefix.  For
-  example, `this`, `mon`, `sys`, and `const` fall in this category.
