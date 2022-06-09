@@ -6,7 +6,7 @@ sorting: 100
 tags: [manuals, language, syntax, concepts, namespace]
 ---
 
-By default all things are in the `default` namespace. Specifying a namespace
+By default all promises are made in the `default` namespace. Specifying a namespace
 places the bundle or body in a different namespace to allow re-use of common
 names. Using namespaces makes it easier to share and consume policy from other
 authors.
