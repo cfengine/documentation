@@ -14,7 +14,7 @@ authors.
 Like bundle names and classes, namespaces may only contain alphanumeric and
 underscore characters (`a-zA-Z0-9_`).
 
-### Declaration
+## Declaration
 
 Namespaces are declared with [`body file control`][file control#namespace]. A
 namespace applies within a single file to all subsequently defined bodies
@@ -29,7 +29,7 @@ declared or until the end of the file.
 - The same namespace can be declared in multiple files
 - The same namespace can be declared in the same file multiple times
 
-### Methods|usebundle
+## Methods|usebundle
 
 Methods promises assume you are referring to a bundle in the same namespace as
 the promiser. To refer to a bundle in another namespace you *must* specify the
@@ -38,7 +38,7 @@ namespace by prefixing the bundle name with the namespace followed by a colon
 
 [%CFEngine_include_example(namespace_methods-usebundle.cf)%]
 
-### Bodies
+## Bodies
 
 Bodies are assumed to be within the same namespace as the promiser. To use a body from another namespace the namespace must be specified by prefixing the body name with the namespace followed by a colon (`:`).
 
@@ -46,7 +46,7 @@ A common mistake is forgetting to specify `default:` when using bodies from the 
 
 [%CFEngine_include_example(namespace_bodies.cf)%]
 
-### Variables
+## Variables
 
 Variables (except for Special Variables) are assumed to be within the same scope
 as the promiser but can also be referenced fully qualified with the namespace.
@@ -64,7 +64,7 @@ as the promiser but can also be referenced fully qualified with the namespace.
   `main` bundle of the `data` namespace by default supports seeding variable
   values in any specified namespace.
 
-### Classes
+## Classes
 
 Promises can only define classes within the current namespace. Classes are
 understood to refer to classes in the current namespace if a namespace is not
