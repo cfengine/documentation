@@ -29,18 +29,16 @@ declared or until the end of the file.
 - The same namespace can be declared in multiple files
 - The same namespace can be declared in the same file multiple times
 
+### Methods|usebundle
+
+Methods promises assume you are referring to a bundle in the same namespace as
+the promiser. To refer to a bundle in another namespace you *must* specify the
+namespace by prefixing the bundle name with the namespace followed by a colon
+(`:`).
+
+[%CFEngine_include_example(namespace_methods-usebundle.cf)%]
+
 ### Accessing syntax elements between namespaces and the default namespace
-
-To distinguish the bundle `mymethod` in the default namespace from one in
-another namespace, you prefix the bundle name with the namespace, separated by
-a colon.
-
-```cf3
-    methods:
-
-      "namespace demo" usebundle => myspace:mymethod("arg1");
-      "namespace demo" usebundle => mymethod("arg1","arg2");
-```
 
 To distinguish a body from one in another namespace, you can prefix the body name with the namespace, separated by a colon.
 
