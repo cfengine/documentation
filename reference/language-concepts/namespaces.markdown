@@ -6,104 +6,76 @@ sorting: 100
 tags: [manuals, language, syntax, concepts, namespace]
 ---
 
-Namespaces are private bundle and body "playgrounds", allowing
-multiple files to define the bundles and bodies with the same name in
-different namespaces without conflict.  They are key to writing
-reusable policies.
+By default all promises are made in the `default` namespace. Specifying a namespace
+places the bundle or body in a different namespace to allow re-use of common
+names. Using namespaces makes it easier to share and consume policy from other
+authors.
 
-Everything in CFEngine lives in a namespace (it's the `default` namespace if not set).
+Like bundle names and classes, namespaces may only contain alphanumeric and
+underscore characters (`a-zA-Z0-9_`).
 
-### Specifying a namespace
+## Declaration
 
-To isolate a file into its own namespace, you add a
-[file control promise][file control#namespace] to the file before the relevant
-bundles or bodies. All bundles and bodies start off in the `default` namespace
-if you don't explicitly set this. Once set, this applies until the end of the
-file or the next namespace change.
+Namespaces are declared with [`body file control`][file control#namespace]. A
+namespace applies within a single file to all subsequently defined bodies and bundles
+following the namespace declaration until a different namespace has been
+declared or until the end of the file.
 
-```cf3
-    body file control
-    {
-       namespace => "myspace";
-    }
-```
+[%CFEngine_include_example(namespace_declaration.cf)%]
 
-### Accessing syntax elements between namespaces and the default namespace
+**Notes:**
 
-To distinguish the bundle `mymethod` in the default namespace from one in
-another namespace, you prefix the bundle name with the namespace, separated by
-a colon.
+- Multiple namespaces can be declared within the same file
+- The same namespace can be declared in multiple files
+- The same namespace can be declared in the same file multiple times
 
-```cf3
-    methods:
+## Methods|usebundle
 
-      "namespace demo" usebundle => myspace:mymethod("arg1");
-      "namespace demo" usebundle => mymethod("arg1","arg2");
-```
+Methods promises assume you are referring to a bundle in the same namespace as
+the promiser. To refer to a bundle in another namespace you *must* specify the
+namespace by prefixing the bundle name with the namespace followed by a colon
+(`:`).
 
-To distinguish a body from one in another namespace, you can prefix the body name with the namespace, separated by a colon.
+[%CFEngine_include_example(namespace_methods-usebundle.cf)%]
 
-```cf3
-    files:
-       "/file"
-          create => "true",
-           perms => name1:settings;
-```
+## Bodies
 
-If you don't make any namespace declarations, you'll be in the
-`default` namespace.  Bundles, bodies, classes, and variables from the
-`default` namespace can be accessed like any other:
+Bodies are assumed to be within the same namespace as the promiser. To use a body from another namespace the namespace must be specified by prefixing the body name with the namespace followed by a colon (`:`).
 
-```cf3
-    files:
-      "/file"
-         create => "true",
-          perms => default:settings;
-```
+A common mistake is forgetting to specify `default:` when using bodies from the standard library which resides in the `default` namespace.
 
-If you use the standard library from your own namespace, remember to
-specify this `default:` prefix.
+[%CFEngine_include_example(namespace_bodies.cf)%]
 
-To access classes, variables, or meta-data in bundles in a different namespace, use the
-colon as a namespace prefix:
+## Variables
 
-    $(namespace:bundle.variable)
-    $(namespace:bundle_meta.variable)
+Variables (except for Special Variables) are assumed to be within the same scope
+as the promiser but can also be referenced fully qualified with the namespace.
 
-**Note** that this means that if you are in a namespace that's not `default`, you *must* qualify classes from `default` fully:
+[%CFEngine_include_example(namespace_variable_references.cf)%]
 
-    default:myclass::
-    "do something" if => "default:myotherclass";
+[Special variables][Special Variables] are always accessible without a namespace
+  prefix. For example, `this`, `mon`, `sys`, and `const` fall in this category.
 
-### Namespacing of classes and variables created in policy
+[%CFEngine_include_example(namespace_special_var_exception.cf)%]
 
-In policy, you can't create classes outside your own namespace.  So
-the following, for example, will create the class `mynamespace:done`
-if it runs in the namespace `mynamespace`.
+**Notes:**
 
-```cf3
-    files:
-      "/file"
-         create => "true",
-         action => if_repaired("done");
-```
+- The [`variables` Augments key][Augments#variables] defines variables in the
+  `main` bundle of the `data` namespace by default but supports seeding variable
+  values in any specified namespace.
 
-Similarly, variables you create in a namespaced bundle have to be
-prefixed like `mynamespace:mybundle.myvar` from outside your
-namespace, but can use `mybundle.myvar` inside the namespace and
-`myvar` inside `mybundle`.
+## Classes
 
-As a workaround, you could have a helper bundle in another namespace
-to create classes and variables as needed.
+Promises can only define classes within the current namespace. Classes are
+understood to refer to classes in the current namespace if a namespace is not
+specified (except for Hard Classes). To refer to a
+class in a different namespace prefix the class with the namespace suffixed by a
+colon (`:`).
 
-### Exceptions to namespacing rules
+[%CFEngine_include_example(namespace_classes.cf)%]
 
-Exceptions to the rules above:
+[Hard classes][Classes and Decisions#Hard Classes] exist in all namespaces and
+thus can be referred to from any namespace without qualification.
 
-* All hard classes can be used as-is from any namespace, without a namespace
-  prefix.  These are classes like `linux`.  They will have the
-  tag `hardclass`.
+[%CFEngine_include_example(namespace_hard_classes.cf)%]
 
-* All special variable contexts, as documented in [Special Variables],
-  are always accessible without a namespace prefix.  For
-  example, `this`, `mon`, `sys`, and `const` fall in this category.
