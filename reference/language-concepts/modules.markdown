@@ -57,7 +57,8 @@ The protocol is *line based*. Lines that begin with `^` apply to all following l
 
 **Notes:**
 
-*   If no context is provided, the context is the leaf name of the module.
+*   It is not possible to define variables or classes in a namespace other than the default (`default`).
+*   If no context is provided, the context is the canonified leaf name of the module. For example, if the module is `/tmp/path/my-module.sh` the default context would be `my_module_sh` in the `default` namespace (`default:my_module_sh`).
 *   All *variables* and *classes* will be tagged with `source=module` in addition to any specified tags.
 *   All lines of output that do not match the module protocol are treated as *errors*.
 *   Variable names defined by the module protocol are limited to alphanumeric characters and `_`, `.`, `-`, `[`, `]`, `@`, and `/`.
