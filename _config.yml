@@ -4,6 +4,7 @@ safe: false
 plugins: ./_plugins/
 # baseurl: /docs/3.15/
 git-repository: github.com/cfengine/documentation
+git-branch: 3.15
 #source:      ./pages/
 #destination:
 #layouts:     ./_layouts/
