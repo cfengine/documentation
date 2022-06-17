@@ -281,28 +281,34 @@ evaluated.
 
 ## Making Decisions based on classes
 
-The easiest way to limit the application of a promise to certain conditions is to use the following notation:
+Class guards are the most common way to restrict a promise to a specific context. Once stated the restriction applies until a new context is specified. A new promise type automatically resets to an unrestricted context (the unrestricted context is typically referred to as `any`). 
+
+This example illustrates how a class guard applies (to multiple promises) until a new context is specified.
+
+[%CFEngine_include_example(classes_context_applies_multiple_promises.cf)%]
+
+Another Example:
 
 ```cf3
-    bundle agent greetings
-    {
-     reports:
-       Morning::
-         "Good morning!";
+bundle agent greetings
+{
+  reports:
+    Morning::
+      "Good morning!";
 
-       Evening::
-         "Good evening!";
+    Evening::
+      "Good evening!";
 
-       "! any"::
-         "This report won't ever be seen.";
+      "! any"::
+      "This report won't ever be seen.";
 
-       # whitespace allowed only in 3.8 and later
-       Friday . Evening::
-         "It's Friday evening, TGIF!";
+      # whitespace allowed only in 3.8 and later
+      Friday . Evening::
+      "It's Friday evening, TGIF!";
 
-       "Monday . Evening"::
-         "It's Monday evening.";
-    }
+      "Monday . Evening"::
+      "It's Monday evening.";
+}
 ```
 
 In this example, the report "Good morning!" is only printed if the class
