@@ -188,6 +188,59 @@ There are situations where feeder hubs may have hosts with duplicate hostkeys:
 - hosts may be cloned and not have their hostkey refreshed by running `cf-key` and refreshing `$(sys.workdir)/ppkeys/localhost.pub`.
 
 In the first case you will likely want to remove entries for hosts which are not the latest since the latest data will be most accurate.
+
+There are two options available for handling these situations depending on your environment: Distributed Cleanup or Handle Duplicate Hostkeys.
+
+### Distributed cleanup ###
+This is the most thorough, performant and automated option.
+This utility is a python script which runs on the superhub, searches for the most recent contact for each host, then communicates with the appropriate feeders to delete stale hosts.
+
+A few pre-requisites should be handled before enabling this utility:
+
+- gather the admin passwords for the superhub and all feeders
+- ensure that the attached feeders resolve their hostnames properly
+  (you may need to add entries to your DNS or /etc/hosts)
+- after enabling the policy will install python3 and the urllib3 module
+  On CentOS 6 you will have to install these manually. Python 3 is actually quite easy to install with the standard [building python](https://docs.python.org/3.10/using/unix.html#building-python) instructions.
+
+After those steps, ensure `cfengine_mp_fr_enable_distributed_cleanup` is present in augments for your superhub and all feeders.
+
+```json
+{
+  "classes": {
+    "cfengine_mp_fr_enable_distributed_cleanup": ["any::"]
+  }
+}
+```
+(Note that this augment should be in addition to any others that you need such as `cfengine_mp_fr_dependencies_auto_install`)
+
+Let the policy run a few times on superhub and feeders.
+This will distribute the needed certificates from feeders to superhub so that the script on the superhub may securely connect to the feeder API endpoints.
+
+When run manually for the first time the utility will create a limited privileges user to view and delete hosts on the feeders.
+You will need to enter the following information at the prompts when running the utility manually:
+- admin password for the superhub
+- email address for the fr_distributed_cleanup limited privileges user
+- admin password for each feeder
+
+After confirming all feeder certs and public keys are present on the superhub, run the distributed cleanup script manually.
+```bash
+# ls /opt/cfengine/federation/cftransport/distributed_cleanup/
+superhub.pub  feeder1.cert  feeder1.pub feeder2.cert feeder2.pub
+
+# /opt/cfengine/federation/bin/distributed_cleanup.py
+Enter admin credentials for superhub https://superhub.domain/api: 
+Enter email for fr_distributed_cleanup accounts: 
+Enter admin credentials for feeder1 at https://feeder1.domain/api:
+Enter admin credentials for feeder2 at https://feeder2.domain/api:
+```
+
+The passwords are only kept for the duration of the script execution and are not saved.
+
+The policy will now run the distributed cleanup utility every agent run and cleanup any hosts which are stale on feeders leaving only the most recently contacts host for each unique hostkey.
+
+### Handle duplicate hostkeys ###
+The other option removes duplicates during each import cycle.
 An augment is available to enable moving duplicated host data to a `dup` schema for analysis. The host data which has the most recent `hosts.lastreporttimestamp` will be kept in the `public` schema and all other data will be moved to the `dup` domain (schema).
 
 This feature is disabled by default.
