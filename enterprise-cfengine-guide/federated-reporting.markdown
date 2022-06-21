@@ -590,20 +590,27 @@ There are two ways to change the `target_state` of a feeder.
 
 ### Uninstall with the API
 
-```console
-$ cat > target-state-off.json
-{
-  "target_state": "off"
-}
-```
+1. Prepare a JSON data file:
 
-```console
-$ curl -k -i -s -X PUT -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
-```
+  ```console
+  $ cat <<EOF > target-state-off.json
+  {
+    "target_state": "off"
+  }
+  EOF
+  ```
 
-```console
-$ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/federation-config
-```
+2. Change the state of the feeder:
+
+  ```console
+  $ curl -k -i -s -X PUT -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
+  ```
+
+3. **Save the federation config:**
+
+  ```console
+  $ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/federation-config
+  ```
 
 ### Uninstall without API
 
