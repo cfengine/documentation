@@ -12,10 +12,10 @@ JSON data files, so you should view and edit them with a JSON-aware editor if
 possible. This is a convenient way to override defaults defined in the default policy,
 the Masterfiles Policy Framework (MPF), without modifying the shipped policy files.
 
-## Modifying the behavior of the MPF without editing it ##
+## Using the MPF without maintaining your own patches to it ##
 
 As an example, you can add your own policy file to inputs and bundle name to the
-bundle sequence, without editing `promises.cf` by editing the Augments file
+bundle sequence, without editing `promises.cf`, by adding the Augments file below
 (`/var/cfengine/masterfiles/def.json`):
 
 ```json
