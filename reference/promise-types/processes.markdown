@@ -570,3 +570,6 @@ supported, which terminates the process.
             signals         => { "term" , "5s" , "kill" };
 ```
 
+**History:**
+
+* 3.18.2, 3.20.0 Added ability to sleep between signals using `Ns`
