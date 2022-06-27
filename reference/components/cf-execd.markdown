@@ -371,3 +371,28 @@ The CFEngine default policy sets `splaytime` to 1.
 
 **See also:** The [`splayclass()`][splayclass] function for a task-specific
 means for setting splay times.
+
+## Sockets
+
+`cf-execd` creates `STATEDIR/cf-execd.sockets/runagent.socket` (`/var/cfengine/state/cf-execd.sockets/runagent.socket`).
+
+The `body executor control` attribute `runagent_socket_allow_users` controls the list of users that should be allowed to access (**RW**) the socket via ACLs.
+
+**Notes:**
+
+* Unlike execution triggered with the `cf-runagent` binary, there is currently no capability to define additional options like defining additional classes, or the remote bundlesequence.
+
+**Example:**
+
+Write the name or IP into the socket to request unscheduled execution on that host:
+
+```console
+echo 'host001' > /var/cfengine/state/cf-execd.sockets/cf-runagent.socket
+```
+
+**See also:** [`cf-runagent`][cf-runagent], [`runagent_socket_allow_users`][cf-execd#runagent_socket_allow_users]
+
+**History:**
+
+* 3.18.0 Added socket for triggering `cf-runagent` by hostname or IP.
+
