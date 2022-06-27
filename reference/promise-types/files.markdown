@@ -1384,11 +1384,17 @@ files:
      create =>   "true";
 ```
 
-**Note:** In general, you should not use `create` with `copy_from` or
-`link_from` in files promises. These latter attributes automatically create
-the promised file, and using `create` may actually prevent the copy or link
-promise from being kept (since `create` acts first, which may affect file
-comparison or linking operations).
+**Notes:** In general, you should not use `create` with `copy_from`, `link_from`,
+`template_method`, or `content` attributes in files promises. These latter
+attributes automatically create the promised file, and using `create` may
+actually prevent the copy or link promise from being kept (since `create` acts
+first, which may affect file comparison or linking operations). Furthermore, an
+explicitly created file will be empty in the case of failure to render template
+if the `create` attribute is explicitly used.
+
+**History:**
+
+* 3.20.0 Changed default from `false` to `true` for cases of full file management ( e.g. when `template_method` is `mustache`, `inline_mustache` or `cfengine`, or when the `content` or `copy_from` attributes are used ).
 
 ### delete
 
