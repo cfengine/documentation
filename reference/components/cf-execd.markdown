@@ -372,6 +372,35 @@ The CFEngine default policy sets `splaytime` to 1.
 **See also:** The [`splayclass()`][splayclass] function for a task-specific
 means for setting splay times.
 
+### runagent_socket_allow_users
+
+**Description:** Users who are allowed access the socket (`STATEDIR/cf-execd.sockets/runagent.socket`).
+
+**Type:** `slist`
+
+**Allowed input range:** `.*`
+
+**Default value:** none
+
+**Notes:**
+
+* By default, in the Masterfiles Policy Framework, `cfapache` is allowed to access the socket on Enterprise Hubs.
+
+**Example:**
+
+```cf3
+body executor control
+{
+    runagent_socket_allow_users => { "yoda", "obi-wan" };
+}
+```
+
+**See also:** [`cf-runagent`][cf-runagent]
+
+**History:**
+
+* 3.18.0 Added `runagent_socket_allow_users` attribute
+
 ## Sockets
 
 `cf-execd` creates `STATEDIR/cf-execd.sockets/runagent.socket` (`/var/cfengine/state/cf-execd.sockets/runagent.socket`).
