@@ -195,13 +195,27 @@ There are two options available for handling these situations depending on your 
 This is the most thorough, performant and automated option.
 This utility is a python script which runs on the superhub, searches for the most recent contact for each host, then communicates with the appropriate feeders to delete stale hosts.
 
-A few pre-requisites should be handled before enabling this utility:
+A few pre-requisites must be handled before enabling this utility:
 
 - gather the admin passwords for the superhub and all feeders
 - ensure that the attached feeders resolve their hostnames properly
   (you may need to add entries to your DNS or /etc/hosts)
-- after enabling the policy will install python3 and the urllib3 module
-  On CentOS 6 you will have to install these manually. Python 3 is actually quite easy to install with the standard [building python](https://docs.python.org/3.10/using/unix.html#building-python) instructions.
+- ensure python3 and urllib3 module for python3 are installed
+
+On Debian/Ubuntu:
+
+``` bash
+# apt install -qy python3 python3-urllib3
+```
+
+On RedHat/CentOS versions 7 and above:
+
+``` bash
+# yum install -qy python3 python3-urllib3
+```
+
+On RedHat/CentOS 6 you will have to install python3 manually and the install urllib3 with pip3.
+Python 3 is actually quite easy to install with the standard [building python](https://docs.python.org/3.10/using/unix.html#building-python) instructions.
 
 After those steps, ensure `cfengine_mp_fr_enable_distributed_cleanup` is present in augments for your superhub and all feeders.
 
