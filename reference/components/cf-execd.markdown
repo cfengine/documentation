@@ -18,7 +18,11 @@ network.
 `cf-execd` keeps the promises made in `common` bundles, and is affected by
 `common` and `executor` control bodies.
 
-**Note:** This daemon reloads it's config when the SIGHUP signal is received.
+**Notes:**
+
+* This daemon reloads it's config when the SIGHUP signal is received.
+* `cf-execd` always considers the class ```executor``` to be defined.
+
 
 **History:**
 

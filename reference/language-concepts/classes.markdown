@@ -122,7 +122,15 @@ of a week.
     * `opt_dry_run`: set when the `--dry-run` option is given
     * `failsafe_fallback`: set when the base policy is invalid and the built-in `failsafe.cf` (see `bootstrap.c`) is invoked
     * (`community`, `community_edition`) and (`enterprise`, `enterprise_edition`): the two different CFEngine products, Community and Enterprise, can be distinguished by these mutually exclusive sets of hard classes
-    * `agent` *cf-agent*, `server` *cf-serverd*, `monitor` *cf-monitord*, `executor` *cf-execd*, `runagent` *cf-runagent*, `keygenerator` *cf-keygen*, `hub` *cf-hub*, `common` *cf-promises* and others: classes that identify the current component.  `cf-promises` is a special case because it's not an agent in the CFEngine sense, so note that using `cf-promises --show-classes` will not show these classes because it can't.
+    * Component Specific Classes (each component has a class that is always considered defined by that component):
+        * `cf-agent` :: ```agent```
+        * `cf-serverd` :: ```server```
+        * `cf-monitord` :: ```monitor```
+        * `cf-execd` :: ```executor```
+        * `cf-runagent` :: ```runagent```
+        * `cf-key` :: ```keygenerator```
+        * `cf-hub` :: ```hub```
+        * `cf-promises` :: ```common```
 * Operating System Classes (note that the presence of these classes doesn't imply platform support)
     * Operating System Architecture -  `arista`, `big_ip`, `debian`, `eos`, `fedora`, `Mandrake`, `Mandriva`, `oracle`, `redhat`, `slackware`, `smartmachine`, `smartos`, `solarisx86`, `sun4`, `SuSE`, `ubuntu`, `ultrix`, the always-favorite `unknown_ostype`, etc.
     * VM or hypervisor specific: `VMware`, `virt_guest_vz`, `virt_host_vz`, `virt_host_vz_vzps`, `xen`, `xen_dom0`, `xen_domu_hv`, `xen_domu_pv`, `oraclevmserver`, etc.
