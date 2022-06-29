@@ -17,11 +17,11 @@ CFE_OUTPUT: true
 #CFE_DIR - output folder if CFE_OUTPUT turned on
 CFE_DIR: _site
 #to create correct links in sitemap
-CFE_manuals_version: 3.18.0
+CFE_manuals_version: 3.18
 cfengine:
   branch: 3.18
   core_branch: "3.18.x"
-  latest_patch_release: 1
+  latest_patch_release: 2
   latest_package_build: 1
   masterfiles_branch: "3.18.x"
 
@@ -30,10 +30,10 @@ Template:
     line_numbers: true
 
 vagrant:
-  version: "2.2.14"
+  version: "2.2.29"
 
 virtualbox:
-  version: "6.1.26"
+  version: "6.1.32"
 
 paginate: 500
 
