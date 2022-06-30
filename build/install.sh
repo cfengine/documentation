@@ -1,10 +1,13 @@
 #!/bin/bash
 
-set -x
+set -ex
 
 # All of these commands are executed by the jenkins user.
 
-sudo apt-get install -y curl gnupg2 gnupg-curl wget git
+sudo apt-get install -y curl gnupg2 wget git
+
+# some of packages below depend on tzdata. Installing it without DEBIAN_FRONTEND=noninteractive causes it to ask where in the world are you, interrupting the build process
+DEBIAN_FRONTEND=noninteractive sudo --preserve-env=DEBIAN_FRONTEND apt-get install -y tzdata
 
 # Docslave specifics
 # These packages are needed as a dependency of the nokogiri ruby gem (which in turn is a dependency of the sanitize ruby gem).
@@ -13,29 +16,23 @@ sudo apt-get install -y libxslt-dev libxml2-dev
 
 # Python is needed for our pre and post processing scripts.
 
-sudo apt-get install -y python
+sudo apt-get install -y python3
 
 # These packages are needed to satisfy rvm requirements.
 
-sudo apt-get install -y libyaml-dev libsqlite3-dev sqlite3 autoconf libgmp-dev libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev
+# hint: to figure out rvm requirements, comment this line and watch output of `rvm install ... ruby`.
+# To make script stop at that command, change --autolibs argument to read-fail.
+# Also you likely will want to exclude 'libssl1.0-dev' since it's and openssl 1.0 library, which is not shipped on modern distros.
+sudo apt-get install -y gawk g++ gcc autoconf automake bison libc6-dev libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev make pkg-config sqlite3 zlib1g-dev libgmp-dev libreadline-dev
 
 # We currently use pygments for syntax highlighting. Jekyll 0.12.1 errors during install without this.
 
-sudo apt-get install -y python-pygments
+sudo apt-get install -y python3-pygments
 
 # yui-compressor (ruby gem dependency) is written in java, so we need to install it.
 
 sudo apt-get install -y default-jdk
 
-sudo apt-get install -y libssl-dev zlib1g-dev
-
-# For making cfenigne
-# sudo apt-get -qy install bison flex binutils build-essential fakeroot ntp dpkg-dev libpam0g-dev liblmdb-dev libpcre3-dev
-
-#begin_make_nova
-# For making nova
-# sudo apt-get -qy install libpq-dev libpqtypes-dev libpgtypes3 libecpg-dev php7.0 php7.0-dev
-#end_make_nova
 
 
 ## Install RVM and Ruby
@@ -44,14 +41,14 @@ sudo apt-get install -y libssl-dev zlib1g-dev
 # Install mpapis public key (might need `gpg2` and or `sudo`)
 #keyserver=keys.gnupg.net
 keyserver=keyserver.ubuntu.com
-gpg --keyserver hkps://$keyserver --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+gpg2 --keyserver hkps://$keyserver --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 
 echo "Downloading and installing Ruby Version Manager"
 # Download the installer
 curl -O https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer
 curl -O https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer.asc
 
-if gpg --verify rvm-installer.asc; then
+if gpg2 --verify rvm-installer.asc; then
   bash rvm-installer --autolibs=read-fail --ignore-dotfiles stable
 else
   echo "Ruby Version Manager signature check fail."
@@ -65,18 +62,8 @@ set +x
 echo "+ source ~/.rvm/scripts/rvm"
 source ~/.rvm/scripts/rvm
 
-echo "+ rvm autolibs enable"
-rvm autolibs enable
-echo "+ rvm install ruby-1.9.3-p551"
-rvm install ruby-1.9.3-p551
-echo "+ rvm --default use 1.9.3-p551"
-rvm --default use 1.9.3-p551
-
-echo "+ source ~/.profile"
-source ~/.profile
-echo "+ source ~/.rvm/scripts/rvm"
-source ~/.rvm/scripts/rvm
-set -x
+echo "+ rvm_rubygems_version=none rvm install --autolibs=read-only ruby-1.9.3-p551 -C --without-openssl"
+rvm_rubygems_version=none rvm install --autolibs=read-only ruby-1.9.3-p551 -C --without-openssl
 
 gem install jekyll --version 0.12.1
 gem install jekyll-asset-pipeline --version 0.1.6

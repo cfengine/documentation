@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # The MIT License (MIT)
 #
@@ -31,9 +31,9 @@ config = environment.validate(sys.argv[1])
 try:
 	git.createData(config)
 except:
-	print "cfdoc_preprocess: Fatal error generating git tags"
+	print("cfdoc_preprocess: Fatal error generating git tags")
 	sys.stdout.write("       Exception: ")
-	print sys.exc_info()
+	print(sys.exc_info())
 	exit(1)
 
 exit(0)
