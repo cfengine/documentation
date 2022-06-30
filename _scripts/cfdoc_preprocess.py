@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # The MIT License (MIT)
 #
@@ -39,32 +39,32 @@ qa.initialize(config)
 try:
 	metadata.run(config)
 except:
-	print "cfdoc_preprocess: Fatal error setting meta data"
+	print("cfdoc_preprocess: Fatal error setting meta data")
 	sys.stdout.write("       Exception: ")
-	print sys.exc_info()
+	print(sys.exc_info())
 	exit(2)
 
 try:
 	linkresolver.run(config)
 except:
-	print "cfdoc_preprocess: Fatal error generating link map"
+	print("cfdoc_preprocess: Fatal error generating link map")
 	sys.stdout.write("       Exception: ")
-	print sys.exc_info()
+	print(sys.exc_info())
 	exit(3)
 
 try:
 	macros.run(config)
 except:
-	print "cfdoc_macros: Error generating documentation from syntax maps"
+	print("cfdoc_macros: Error generating documentation from syntax maps")
 	sys.stdout.write("      Exception: ")
-	print sys.exc_info()
+	print(sys.exc_info())
 
 try: # update the link map with content added by macros
 	linkresolver.run(config)
 except:
-	print "cfdoc_preprocess: Fatal error updating link map"
+	print("cfdoc_preprocess: Fatal error updating link map")
 	sys.stdout.write("       Exception: ")
-	print sys.exc_info()
+	print(sys.exc_info())
 	exit(4)
 
 # generate links to known targets
@@ -75,15 +75,15 @@ linkresolver.apply(config)
 try:
 	printsource.run(config)
 except:
-	print "cfdoc_printsource: Error generating print-pages"
+	print("cfdoc_printsource: Error generating print-pages")
 	sys.stdout.write("      Exception: ")
-	print sys.exc_info()
+	print(sys.exc_info())
 
 try:
 	patch_header_nav.patch(sys.argv[1])
 except:
-	print "cfdoc_patch_header_nav: Error patching header navigation"
+	print("cfdoc_patch_header_nav: Error patching header navigation")
 	sys.stdout.write("      Exception: ")
-	print sys.exc_info()
+	print(sys.exc_info())
 
 exit(0)

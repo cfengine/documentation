@@ -40,8 +40,8 @@ def verifyRegex(regex, tests):
         expected = test[1]
         actual = regex.search(line) != None
         if actual != expected:
-            print "Programming error: regex '%s' doesn't match '%s' correctly!" % (regex, line)
-            print "    expected result: %s" % expected
+            print("Programming error: regex '%s' doesn't match '%s' correctly!" % (regex, line))
+            print("    expected result: %s" % expected)
             exit(-1)
 
 def unresolvedLinkRegex():
@@ -114,7 +114,7 @@ def addLinkToSource(file_name,config):
         lines = in_file.readlines()
         in_file.close()
     except:
-        print "cfdoc_sourcelinks: Error opening " + html_file
+        print("cfdoc_sourcelinks: Error opening " + html_file)
         return 0 # tolerate missing HTML files
 
     new_html_file = html_file + ".new"
@@ -122,10 +122,10 @@ def addLinkToSource(file_name,config):
     for line in lines:
         line = line.replace("\">markdown source</a>]", source_file + "\">markdown source</a>]")
         if unresolved_link.search(line) != None:
-            print "Unresolved link in '%s', html-line '%s'\n\n Perhaps you need to add an entry to to _references.md in the documentation-generator repository" % (file_name, line)
+            print("Unresolved link in '%s', html-line '%s'\n\n Perhaps you need to add an entry to to _references.md in the documentation-generator repository" % (file_name, line))
             error_count += 1
         if unexpanded_macro.search(line) != None:
-            print "Unexpanded macro in '%s', html-line '%s'\n" % (file_name, line)
+            print("Unexpanded macro in '%s', html-line '%s'\n" % (file_name, line))
             error_count += 1
         out_file.write(line)
     out_file.close()

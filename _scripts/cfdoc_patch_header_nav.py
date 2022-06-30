@@ -20,18 +20,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import json
 import sys
 
 def patch(current_branch):
     url = "https://docs.cfengine.com/docs/branches.json"
-    response = urllib.urlopen(url)
+    response = urllib.request.urlopen(url)
     data = json.loads(response.read())
     with open("_includes/header_nav_options.html", "w") as f:
         for branch in data['docs']:
             selected = ''
             if branch['Version'] == current_branch:
                 selected = ' selected'
-            print >>f, '<option value="%s"%s>%s</option>' % (
-                    branch['Link'], selected, branch['Title'])
+            print('<option value="%s"%s>%s</option>' % (
+                    branch['Link'], selected, branch['Title']), file=f)
