@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # The MIT License (MIT)
 #
@@ -32,7 +32,7 @@ try:
 	sourcelinks.run(config)
 except:
 	sys.stdout.write("      Exception: ")
-	print sys.exc_info()
+	print(sys.exc_info())
 	exit(1)
 
 exit(0)
