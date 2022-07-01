@@ -9,10 +9,11 @@ tags: [faq]
 
 When I bootstrap a host, I get errors:
 
--   `No suitable server responded to hail`
--   `Authentication dialogue with '<IP>' failed`
--   `Protocol transaction broken off (1). (ReceiveTransaction: Connection reset by peer)`
--   `Couldn't receive. (recv: Connection reset by peer)`
+- `No suitable server found for '<path>'`
+- `No suitable server responded to hail`
+- `Authentication dialogue with '<IP>' failed`
+- `Protocol transaction broken off (1). (ReceiveTransaction: Connection reset by peer)`
+- `Couldn't receive. (recv: Connection reset by peer)`
 
 These types of errors typically indicate a problem with access.
 
