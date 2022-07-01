@@ -19,7 +19,7 @@ CFE_DIR: _site
 #to create correct links in sitemap
 CFE_manuals_version: 3.20
 cfengine:
-  branch: 3.20
+  branch: "3.20"
   core_branch: "3.20"
   latest_patch_release: 0
   latest_package_build: 1
