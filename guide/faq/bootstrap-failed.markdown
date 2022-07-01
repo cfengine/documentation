@@ -14,6 +14,8 @@ When I bootstrap a host, I get errors:
 - `Authentication dialogue with '<IP>' failed`
 - `Protocol transaction broken off (1). (ReceiveTransaction: Connection reset by peer)`
 - `Couldn't receive. (recv: Connection reset by peer)`
+- `Failed to establish TLS connection: underlying network error ()`
+- `Failed to establish TLS connection: underlying network error (Connection reset by peer)`
 
 These types of errors typically indicate a problem with access.
 
@@ -124,6 +126,10 @@ verbose:  === END summary of access promises ===
 
 In order for a host to communicate it must be within an IP range that is allowed to connect to the server.
 
+`cf-serverd` logs errors when a host not in allow connects tries to communicate.
+
+* `Remote host '<ip>' not in allowconnects, denying connection`
+
 **Notes:**
 
 * `def.acl` in the Masterfiles Policy Framework is included in this list by default.
@@ -133,5 +139,12 @@ See also: [`def.acl`][Masterfiles Policy Framework#acl], [`def.trustkeysfrom`][M
 ### `trustkeysfrom` in `body server control`
 
 This defines networks from which a host will automatically trust hosts. If you do not use automatic trust establishment you must arrange trust separately. The [Secure Bootstrap guide][Secure Bootstrap] details a step-by-step procedure to securely bootstrap hosts.
+
+`cf-serverd` logs verbose and notice messages relating to un-trusted clients trying to connect:
+
+* `notice: 192.168.56.4>    TRUST FAILED, peer presented an untrusted key, dropping connection!`
+* `verbose: 192.168.56.4>    Did not find new key format '/var/cfengine/ppkeys/root-SHA=85f8a23d6738599e03951e6930e661bcd9bb3ae12f32486c9795cc9baa7d5b4e.pub'`
+* `verbose: 192.168.56.4>    Trying old style '/var/cfengine/ppkeys/root-192.168.56.4.pub'`
+* `verbose: 192.168.56.4>    Received key 'SHA=85f8a23d6738599e03951e6930e661bcd9bb3ae12f32486c9795cc9baa7d5b4e' not found in ppkeys`
 
 See also: [`def.acl`][Masterfiles Policy Framework#acl], [`def.trustkeysfrom`][Masterfiles Policy Framework#trustkeysfrom]
