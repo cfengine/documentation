@@ -238,6 +238,7 @@ You will need to enter the following information at the prompts when running the
 - admin password for each feeder
 
 After confirming all feeder certs and public keys are present on the superhub, run the distributed cleanup script manually.
+
 ```bash
 # ls /opt/cfengine/federation/cftransport/distributed_cleanup/
 superhub.pub  feeder1.cert  feeder1.pub feeder2.cert feeder2.pub
