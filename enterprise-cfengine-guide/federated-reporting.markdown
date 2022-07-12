@@ -761,7 +761,11 @@ we use the number "1".
 
 ## Superhub Upgrade ##
 
-For hub versions in the 3.15 and 3.18 series the superhub can not be directly upgraded by installing a new binary package.
+Starting with 3.15.6 and 3.18.2 superhubs can be directly upgraded by installing the new hub package.
+
+For versions 3.15.5, and 3.18.1 and older the superhub can not be directly upgraded by installing a new binary package and the hub software must be uninstalled and re-installed.
+
+### Uninstall/re-install ###
 
 Typically the superhub doesn't have unique information or serve policy.
 This makes it reasonable and easy to upgrade the superhub with a fresh install.
