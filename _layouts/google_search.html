@@ -5,17 +5,46 @@
         <div class="wrapper" id="googleSearchPage">
             <div id="content_col" class="googleSearch">
                 <form id="cse-search-box" action="search.html">
-                    <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
-                    <input type="hidden" name="ie" value="UTF-8" />
                     <div class="formbody">
-                        <input type="text" name="q" id="top_search_searchpage" class="text" value="" placeholder="Search" />
-                        <input type="submit" value="Search" class="submit" >
+                        <input class="text" id="top_search_searchpage" name="q" placeholder="Search" type="text" value="" />
                     </div>
                 </form>
                 <article>
                     <h1>Search results</h1>
-                    <gcse:searchresults-only></gcse:searchresults-only>
+                    <div id="searchResults"></div>
                 </article>
+                <script>
+                    const version = window.location.pathname.split('/')[2];
+                    const queryParams = new URLSearchParams(window.location.search);
+                    const searchInput = document.getElementById('top_search_searchpage');
+                    const searchResults = document.getElementById('searchResults');
+
+                    const displayResults = (results) => {
+                        let html = '<ol>';
+                        if (results.length > 0) {
+                            for (const result of results) {
+                                html += `<li><a href="${result.uri}">${result.title}</a></li>`;
+                            }
+                        } else {
+                            html += `No results found`;
+                        }
+
+                        html += `</ol>`;
+                        searchResults.innerHTML = html;
+                    }
+
+                    const search = searchQuery =>
+                        fetch(`${window.location.protocol}//${window.location.hostname}:8082/${version}/?searchQuery=${searchQuery}`)
+                            .then(response => response.json()).then(data => displayResults(data))
+                            .catch(() => searchResults.innerTextr = 'An error happened while search');
+
+                    searchInput.oninput = searchInput.onchange = () => search(searchInput.value);
+
+                    if (queryParams.has('q')) {
+                        searchInput.value = queryParams.get('q');
+                        searchInput.dispatchEvent(new Event('change'));
+                    }
+                </script>
             </div>
         </div>
 
