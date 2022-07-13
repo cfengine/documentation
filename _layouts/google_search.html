@@ -25,16 +25,16 @@
                             for (const result of results) {
                                 html += `<li><a href="${result.uri}">${result.title}</a></li>`;
                             }
+                            html += `</ol>`;
                         } else {
-                            html += `No results found`;
+                            html = `No results found`;
                         }
 
-                        html += `</ol>`;
                         searchResults.innerHTML = html;
                     }
 
                     const search = searchQuery =>
-                        fetch(`${window.location.protocol}//${window.location.hostname}:8082/${version}/?searchQuery=${searchQuery}`)
+                        fetch(`http://${window.location.hostname}:8082/${version}/?searchQuery=${searchQuery}`)
                             .then(response => response.json()).then(data => displayResults(data))
                             .catch(() => searchResults.innerTextr = 'An error happened while search');
 
