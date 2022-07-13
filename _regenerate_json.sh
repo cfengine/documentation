@@ -92,6 +92,7 @@ done
     echo cf-check
     echo cf-hub
     echo cf-secret
+    echo cf-reactor
 ) | while read agent
 do
     dumpHelp ${agent} > ${OUTDIR}/${agent}.help
