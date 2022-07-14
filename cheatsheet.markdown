@@ -508,10 +508,6 @@ Here I am including a bundle named `cfe_autorun_inventory_listening_ports`. It m
 
 [%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%] 
 
-#### body delete tidy from lib/files.cf in the MPF
-
-[%CFEngine_include_MPF_snippet(lib/files.cf, body\s+delete\s+tidy, \})%]
-
 ## Comments inside documentation
 
 Sometimes it's nice to be able to put an internal comment into the
