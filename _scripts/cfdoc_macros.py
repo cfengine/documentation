@@ -620,6 +620,7 @@ def include_example(parameters, config):
 	return markdown_lines
 
 def include_MPF_snippet(parameters, config):
+        # This doesnt work, it never worked, I tired but failed.
 	parameters.append(".*") # first line starts
 
 	markdown_lines = include_snippet(parameters, config)
