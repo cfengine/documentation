@@ -116,6 +116,6 @@ echo "+ bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6"
 bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6
 
 cd $WRKDIR/documentation-generator/build/search
-/usr/bin/npm i
-/usr/bin/node createIndex.js
+$(which npm) i
+$(which node) createIndex.js
 cp -rf ./searchIndex ./../../_site/assets/
