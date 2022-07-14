@@ -126,3 +126,5 @@ patch -b page.rb < /tmp/jekyll-0.12.1-cfengine.patch
 curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
 sudo apt-get install -y nodejs
+$(which node) --version
+$(which npm) --version
