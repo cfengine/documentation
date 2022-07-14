@@ -1,5 +1,8 @@
 ---
-layout: default title: SSH keys API published: true tags: [reference, enterprise, API, build, SSH]
+layout: default
+title: SSH keys API
+published: true
+tags: [reference, enterprise, API, build, SSH]
 ---
 
 The SSH keys API enables you to generate a key pair that can be used for authorization.
