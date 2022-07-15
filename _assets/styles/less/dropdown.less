@@ -1,0 +1,102 @@
+.dropdown-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  span {
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    display: flex;
+    align-content: space-between;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    padding: .8rem 1.2rem;
+    background: #FFFFFF;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid @gray-500;
+    border-radius: 4px;
+    i {
+      margin-left: 0.4rem;
+    }
+    &:after {
+      content: url("../media/images/chevron-down.svg");
+      position: absolute;
+      right: 9px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  &_options {
+    position: absolute;
+    display: none;
+    top: 3.5rem;
+    left: 0;
+    z-index: 2;
+    background: #FFFFFF;
+    border: 1px solid #BFBFBF;
+    box-shadow: 0px .2rem .4rem rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    min-width: 16.4rem;
+    width: calc(100% - 2px);
+    div, a {
+      display: block;
+      padding: 1rem 3.6rem;
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      color: #0B132A;
+      cursor: pointer;
+      color: inherit;
+      text-decoration: none;
+      &:first-child {
+        border-radius: .4rem .4rem 0 0 ;
+      }
+      &:last-child {
+        border-radius: 0 0 .4rem .4rem;
+      }
+      &:hover {
+        background: @gray-50;
+      }
+      &[selected="selected"] {
+        &:after {
+          content: url("../media/images/check.svg");
+          position: absolute;
+          left: 1.4rem;
+        }
+      }
+    }
+  }
+  &.opened {
+    .dropdown-select_options {
+      display: block;
+      white-space: nowrap;
+    }
+    span {
+      &:after {
+        transform: rotate(180deg);
+        top: 1.2rem
+      }
+    }
+  }
+}
+
+.select {
+  label {
+    display: block;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    margin-bottom: .2rem;
+  }
+}
+
+.versions-dropdown {
+  .dropdown-select_options {
+    a, div {
+      &:last-child {
+        border-top: 1px solid @gray-200;
+      }
+    }
+  }
+}
