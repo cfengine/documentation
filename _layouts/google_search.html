@@ -34,7 +34,7 @@
                     }
 
                     const search = searchQuery =>
-                        fetch(`http://${window.location.hostname}:8082/${version}/?searchQuery=${searchQuery}`)
+                        fetch(`https://${window.location.hostname}:8082/${version}/?searchQuery=${searchQuery}`)
                             .then(response => response.json()).then(data => displayResults(data))
                             .catch(() => searchResults.innerTextr = 'An error happened while search');
 
