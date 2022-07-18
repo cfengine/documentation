@@ -28,15 +28,17 @@ const getHtmlFiles = async (dir) =>
     let mappedFilesWithTitle = [];
     for (const key in htmlFiles) {
         const htmlContent = fs.readFileSync(`${htmlFilesDir}/${htmlFiles[key]}`).toString();
+        const htmlContentMatch =  htmlContent.match(/<article>([\s\S]*?)<\/article>/gm);
+        if (htmlContentMatch == null) continue;
         let document = {
             number: key, // use sequential number as key to reduce search index size
-            content: htmlContent.match(/<article>([\s\S]*?)<\/article>/gm)[0].replace(/<\/?[^>]+(>|$)/g, ""),
+            content: htmlContentMatch[0].replace(/<\/?[^>]+(>|$)/g, ""),
         };
         const titleMatch =  htmlContent.match(/<h1 id="top">([\s\S]*?)<\/h1>/gm);
 
         if (titleMatch != null) {
             const title = titleMatch[0].replace(/<\/?[^>]+(>|$)/g, "").trim();
-            mappedFilesWithTitle.push({uri: (htmlFiles[key]), title })
+            mappedFilesWithTitle[key] = {uri: (htmlFiles[key]), title };
             document.title = title;
         }
 
