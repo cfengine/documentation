@@ -1,7 +1,9 @@
 {% include head.html %}
 <body>
-    <div id="full_container">
-        {% include header_nav.html %}
+{% include header_nav.html %}
+<main class="main_wrapper container search-page">
+    {% include left_col.html %}
+    <article>
         <div class="wrapper" id="googleSearchPage">
             <div id="content_col" class="googleSearch">
                 <form id="cse-search-box" action="search.html">
@@ -34,7 +36,7 @@
                     }
 
                     const search = searchQuery =>
-                        fetch(`https://${window.location.hostname}:8082/${version}/?searchQuery=${searchQuery}`)
+                        fetch(`https://${window.location.hostname}/docs/search/${version}/?searchQuery=${searchQuery}`)
                             .then(response => response.json()).then(data => displayResults(data))
                             .catch(() => searchResults.innerTextr = 'An error happened while search');
 
@@ -47,8 +49,8 @@
                 </script>
             </div>
         </div>
-
-        {% include footer.html %}
-    </div>
+    </article>
+</main>
+{% include footer.html %}
 </body>
 </html>
