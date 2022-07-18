@@ -28,10 +28,19 @@ def patch(current_branch):
     url = "https://docs.cfengine.com/docs/branches.json"
     response = urllib.urlopen(url)
     data = json.loads(response.read())
+
     with open("_includes/header_nav_options.html", "w") as f:
         for branch in data['docs']:
+            if "(LTS)" not in branch['Title'] and branch['Version'] != "master" and branch['Version'] != current_branch:
+                continue
             selected = ''
+            link = branch['Link']
             if branch['Version'] == current_branch:
-                selected = ' selected'
-            print >>f, '<option value="%s"%s>%s</option>' % (
-                    branch['Link'], selected, branch['Title'])
+                selected = ' selected="selected"'
+                link = 'javascript:void(0);'
+            print >>f, '<a href="%s"%s>%s</a>' % (link, selected, branch['Title'].replace('Version ', ''))
+        print >>f, '<a href="./versions.html">view all versions</a>'
+
+    with open("_includes/versions_list.html", "w") as f:
+        for branch in data['docs']:
+            print >>f, '<li><a href="%s">%s</a></li>' % (branch['Link'], branch['Title'].replace('Version ', ''))

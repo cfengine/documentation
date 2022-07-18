@@ -1,0 +1,15 @@
+{% include head.html %}
+<body>
+{% include header_nav.html %}
+<main class="main_wrapper container versions-page">
+    {% include left_col.html %}
+    <article>
+        {{ content }}
+        <ul>
+            {% include versions_list.html %}
+        </ul>
+    </article>
+</main>
+{% include footer.html %}
+</body>
+</html>

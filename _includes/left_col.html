@@ -1,8 +1,12 @@
 <aside>
-    <div class="select">
-        <select onchange="selectVersion(this.options[this.selectedIndex].value)">
-            {% include header_nav_options.html %}
-        </select>
+    <div class="select versions-dropdown">
+        <label>Version</label>
+        <div class="dropdown-select">
+            <span>Version&nbsp;<div></div></span>
+            <div class="dropdown-select_options">
+                {% include header_nav_options.html %}
+            </div>
+        </div>
     </div>
     <div class="left-menu">
          {{ site.mainNavigation }}
