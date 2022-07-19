@@ -6,7 +6,7 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal, health]
 ---
 
-<img style="width: 493px;" src="Mission-portal-health-dignostics-header.png">
+<img width="493px" src="Mission-portal-health-dignostics-header.png">
 
 You can get quick access to the health of hosts, including direct links to reports, from the Health drop down at the top of every Enterprise UI screen. Hosts are listed as unhealthy if:
 
