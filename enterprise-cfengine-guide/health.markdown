@@ -6,7 +6,7 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal, health]
 ---
 
-![Health](Mission-portal-health-dignostics-header.png)
+<img style="width: 493px;" src="Mission-portal-health-dignostics-header.png">
 
 You can get quick access to the health of hosts, including direct links to reports, from the Health drop down at the top of every Enterprise UI screen. Hosts are listed as unhealthy if:
 
@@ -17,4 +17,3 @@ You can get quick access to the health of hosts, including direct links to repor
 
 These categories are non-overlapping, meaning a host will only appear in one category at at time even if conditions satisfying multiple categories might be present. This makes reports simpler to read, and makes it easier to detect and fix the root cause of the issue. As one issue is resolved the host might then move to another category.
 In either situation the data from that host will be from old runs and probably not reflect the current state of that host.
-
