@@ -39,7 +39,7 @@ stored in an event log for later inspection and analysis.
 
 ### Make changes to shared dashboard
 
-<img src="clone-dashboard.png" alt="Clone dashboard possibility" width="590px">
+<img src="clone-dashboard.png" alt="Clone dashboard possibility" width="490px">
 
 Create an editable copy by clicking the button that appears when you hover over 
 the dashboard's row.
@@ -174,8 +174,7 @@ From the profile, you can adjust timezone options.
   * You can select any time zone from the searchable drop-down.
 * Autodetect time zone change and ask for update
   * If this option is selected Mission portal will ask you to update time zone when a difference is detected from your browser.
-
-<img src="Time-zone-modal.png" alt="Time zone modal" width="520px">
+  <img src="Time-zone-modal.png" alt="Time zone modal" width="520px">
 
 * Always use system/browser time
   * Mission portal will automatically change your profile timezone when a system/browser timezone is changed.
