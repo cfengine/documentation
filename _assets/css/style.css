@@ -1,4 +1,4 @@
-html{color:#555;background:#FFF}body,div,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,select,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,button,caption,cite,code,dfn,em,input,optgroup,option,select,strong,textarea,th,var{font:inherit}del,ins{text-decoration:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:baseline}sub{vertical-align:baseline}
+html{color:#555;background:#FFF; font-size: 62.5%;  // 1 rem = 10 px}body,div,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,select,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,button,caption,cite,code,dfn,em,input,optgroup,option,select,strong,textarea,th,var{font:inherit}del,ins{text-decoration:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:baseline}sub{vertical-align:baseline}
 table {border-collapse: collapse; border-spacing: 0}
 .clear {clear:both; height:0; font-size:0; overflow:hidden}
 .invisible {display:none}
@@ -32,10 +32,10 @@ a:link {
     color: #008cbc;
 }
 
-a:link {color: #008cbc;text-decoration:none;}      
-a:visited {color: #008cbc;text-decoration:none;}  
-a:hover {color: #008cbc;text-decoration:underline;}  
-a:active {color: #008cbc;text-decoration:none;} 
+a:link {color: #008cbc;text-decoration:none;}
+a:visited {color: #008cbc;text-decoration:none;}
+a:hover {color: #008cbc;text-decoration:underline;}
+a:active {color: #008cbc;text-decoration:none;}
 
 .float-right {
     float:right;
@@ -89,26 +89,26 @@ footer {
         float: left;
         width: 640px;
     }
-   
+
     footer .contact_info {
         margin-left: 797px;
         color: #222;
     }
-    
+
     footer .contact_info h5 {
-        color: #FFF; 
+        color: #FFF;
 	padding-bottom: 8px;
         font-weight: 300;
     }
-    
+
     footer .contact_info a {
         color: #222;
     }
-    
+
     footer .download_info {
         margin-bottom: 10px;
     }
-    
+
     footer .download_info i {
         font-family: FontAwesome;
         font-size: 20px;
@@ -116,12 +116,12 @@ footer {
         margin-right: 8px;
         vertical-align:top;
     }
-       
+
     footer a:hover {
         color: #F5821F;
     }
 
-    
+
 ul li {
     list-style: disc;
     list-style-position: outside;
@@ -195,57 +195,70 @@ sup {
 }
 
 code {
-    background: #ECF0F3;
-    color: #444;
-    font-family: "Liberation Mono", Consolas, monospace;
-    font-size: small;
-    font-weight: bold;
+    background: #EEEFF0;
+    border-radius: 4px;
+    padding: 0 5px;
+    line-height: 24px;
+    font-size: 15px;
 }
 
-p code {
-    color: #444
+div.highlight {
+    background: #F7F7F7;
+    padding-right: 40px;
+    position: relative;
+    border: 1px solid #D1D2D3;
+    margin: 1.2rem 0 4rem 0;
+}
+
+div.highlight .copy-to-clipboard {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    background: #F7F7F7;
+}
+
+div.highlight .copy-to-clipboard:hover {
+    color: #1F83E7;
+}
+
+div.highlight .copy-to-clipboard:hover:after {
+    color: #010101;
+    font-style: normal;
+    content: "Copy to clipboard";
+    position: absolute;
+    left: 20px;
+    top: 3px;
+    width: max-content;
+    background: #efefef;
+    border: 1px solid #d1d1d1;
+    border-radius: 0.4rem;
+    padding: 0 0.8rem;
+    font-size: 11px;
+    line-height: 16px;
+}
+
+div.highlight .copy-to-clipboard:hover.bi-check2:after {
+    content: "Copied!";
 }
 
 pre {
-    -webkit-box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px inset;
-    -moz-box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px inset;
-    -o-box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px inset;
-    border-radius: 3px;
-    font-weight: normal;
-
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
-    white-space: -pre-wrap; /* Opera 4-6 */
-    white-space: -o-pre-wrap; /* Opera 7 */
-    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    background: #F7F7F7;
+    overflow: visible;
+    overflow-y: hidden;
+    padding: 2rem;
+    font-family: "Menlo";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 150%;
 }
 
 pre code {
-        background: #f5f9fb;
-        border: 1px solid #e8eff1;
-        display: block;
-        font-weight: normal;
-        margin: 2em 0;
-        overflow: auto;
-        padding: 2% 2% 2% 1%;
-        width: 96%;
-    }
-	
-code div {
-    background: #f5f9fb;
-    border: 1px solid #e8eff1;
-    display: block;
-    font-weight: normal;
-    margin: 2em 0;
-    overflow: auto;
-    padding: 2% 2% 2% 1%;
-    width: 96%;
-	white-space: pre;
-}	
-
-img {
-    max-height: 100%;
-    max-width: 100%;
+    background: none;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
 }
 
 .tableOverflow {
@@ -359,13 +372,15 @@ th {
 
 article {
     margin-top: 20px;
-    font-weight: 300;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
 }
     .article_title {
         width: 477px;
         display:inline-block;
     }
-    
+
     article i.fa-link {
         font-size: 18px;
         color: #4386A5;
@@ -376,7 +391,7 @@ article {
         top:-3px;
         margin-right: 8px;
     }
-    
+
     .article_title i.fa-link {
         margin-right: 0;
     }
@@ -387,9 +402,10 @@ article {
     article h4,
     article h5,
     article h6 {
-       font-weight: 300;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
     }
-    
+
     article h1:hover i,
     article h2:hover i,
     article h3:hover i,
@@ -399,22 +415,21 @@ article {
     }
 
     article h1 {
-        color: #f5821f;
-        font-size: 32px;
-	line-height: 48px;
-	padding-bottom: 22px;
+        color: #0b132a;
+        font-size: 36px;
+        line-height: 44px;
     }
 
     article h2 {
-        font-size: 26px;
-	line-height: 38px;
-	padding-bottom: 16px;
+        font-size: 24px;
+        line-height: 32px;
+        margin-top: 4rem;
     }
-    
+
     article h3 {
-        font-size: 22px;
-	line-height: 33px;
-	padding-bottom: 8px;
+        font-size: 19px;
+        line-height: 24px;
+        margin-top: 2.4rem;
     }
 
     article h4 {
@@ -422,7 +437,7 @@ article {
 	line-height: 27px;
 	padding-bottom: 8px;
     }
-    
+
     article h5 {
         font-size: 16px;
 	font-style: italic;
@@ -435,31 +450,49 @@ article {
     }
 
     article p {
-        font-weight: 300;
-	font-size: 16px;
-	line-height: 24px;
-	padding-bottom: 16px;
-    }
-    
-    .article a {
-        font-weight: 300;
+        font-weight: 400;
         font-size: 16px;
-        color: #4386A5;
         line-height: 24px;
-        text-decoration: underline;
+        margin-bottom: 16px;
     }
-    
+
+    .article a {
+        color: #1D71D3 !important;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+.article a:hover {
+    font-weight: 400;
+    font-size: 16px;
+    color: #4386A5 !important;
+    line-height: 24px;
+}
+
     .article a:hover {
-        color:#F5821F;
+        border-bottom: .1rem solid #4386A5 !important;
     }
-    
+
     .article a.anchor {
         margin-left: -26px;
     }
-    
-    .article ul {
-        margin-top: 0;
+
+    .article ul, .article ol {
+        margin-left: 3.2rem;
+        margin-bottom: 2.4rem;
+        padding-left: 0;
     }
+
+.article img, .article iframe {
+    margin: 32px 16px 40px;
+    max-width: 100%;
+}
+
+.article img {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
 
 #nav_show_category {
     border-top: 1px solid #e5e5e5;

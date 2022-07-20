@@ -78,30 +78,6 @@ article h2 {
     border-radius: 8px !important;
 }
 
-pre {
-    background-color: #F7F7F7 !important;
-    padding: 20px !important;
-    overflow: visible !important;
-    overflow-y: hidden !important;
-    border: none !important;
-    border-radius: 10px !important;
-    font-family: monospace !important;
-    -webkit-box-shadow: none !important;
-    margin-bottom: 2em !important;
-}
-
-code {
-    padding: 3px !important;
-}
-
-pre code {
-    border: none !important;
-    background-color: #F7F7F7 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    font-size: 13px !important;
-}
-
 body {
     font-family: "Red Hat Display", "Helvetica", "Arial" !important;
 }
