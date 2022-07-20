@@ -13,14 +13,10 @@ tags: [cfengine enterprise, user interface, mission portal]
 * When the cursor is hovering over top, an **Add** button will appear.
 
 
-![New Alerts](Alerts.new.png)
-
 <img src="Alerts.new.png" alt="New Alerts" width="590px">
 
 * Click the button to begin creating the alert.
 
-
-![New Alerts Name](Alerts.top.name.png)
 
 <img src="Alerts.top.name.png" alt="New Alerts Name" width="650px">
 
@@ -32,8 +28,6 @@ tags: [cfengine enterprise, user interface, mission portal]
 	* **High**: Red
 	
 
-![New Alerts Severity](Alerts.top.severity.png)
-
 <img src="Alerts.top.severity.png" alt="New Alerts Severity" width="412px">
 
 * From the **Severity** dropdown box, select one of the three options available.
@@ -41,16 +35,12 @@ tags: [cfengine enterprise, user interface, mission portal]
 * The **Select Condition** drop down box represents an inventory of existing conditional rules, as well as an option to create a new one	
 
 
-![New Alerts Condition](Alerts.top.condition.png)
-
 <img src="Alerts.top.condition.png" alt="New Alerts Condition" width="590px">
 
 * When selecting an existing conditional rule, the name of the condition will automatically populate the mandatory condition **Name** field.
 
 * When creating a new condition the **Name** field must be filled in.
 
-
-![New Alerts Condition Type](Alerts.bottom.condition.type.png)
 
 <img src="Alerts.bottom.condition.type.png" alt="New Alerts Condition Type" width="412px">
 
@@ -65,13 +55,10 @@ tags: [cfengine enterprise, user interface, mission portal]
 
 * Alert conditions can be limited to a subset of hosts.
 
-![New Alerts Hosts](Alerts.bottom.hosts.png)
-
 <img src="Alerts.bottom.hosts.png" alt="New Alerts Hosts" width="590px">
 
 * Notifications of alerts may be sent by email or custom action scripts.
 
-![New Alerts Notifications](Alerts.bottom.notifications.png)
 
 <img src="Alerts.bottom.notifications.png" alt="New Alerts Notifications" width="590px">
 
