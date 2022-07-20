@@ -117,13 +117,6 @@ $(document).ready(function() {
             }
         }
     });
-    
-    $(".article :header").each(function(){
-        var url = window.location.href;
-        url = url.replace(window.location.hash,'');
-        $(this).prepend('<a class="anchor" href="' + url + '#' + $(this).attr("id") + '"><i class="fa fa-link"></i></a>');
-    });
-    
 });
 
 document.querySelectorAll('pre').forEach(function (pre) {
