@@ -237,60 +237,36 @@
 }
 
 #tags {
-    display: block;
-    margin: 64px 0 2em 0;
-    width: 100%;
+    color: #15357F;
+    padding-bottom: 3.2rem;
+    margin: 4rem 0;
+    border-bottom: 1px solid #E2E2E2;
 }
 
-    #tags li {
-        float: left;
-        list-style: none;
-        margin-bottom: 16px;
-        margin-right: 16px;
-    }
-    
-    #tags li:last-child {
-        margin-right: 0;
-    }
+#tags ul {
+    list-style: none;
+    padding-left: 0;
+}
 
-        #tags li,
-        #tags li a {
-            font-weight: 300;
-            color: #4386A5;
-            display: inline-block;
-            font-size: 15px;
-            line-height: 28px;
-        }
+#tags li {
+    display: inline-block;
+    border: 1px solid #15357F;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-right: 8px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
 
-        #tags li  {
-            border-radius: 5px;
-            border: 1px solid #87ABAE;
-        }
-        
-        #tags li a {
-            padding :0 5px;
-        }
-        
-        #tags li a:first-letter {
-            text-transform: uppercase;
-        }
-        
-         #tags li:hover,
-         #tags li:hover a {
-            color:#FFF;
-            text-decoration: none;
-        }
-        
-        #tags li:hover {
-            background-color: #87ABAE;
-            color:#FFF;
-            font-weight: 500;
-        }
+#tags li:hover, #tags li:focus {
+    background: #E6E9F3;
+}
 
-    #tags ul {
-        margin: 0;
-        padding: 0;
-    }
+#tags a {
+    color: inherit;
+    text-decoration: none;
+}
 
 #TOCbox_wrapper {
     float: right;
@@ -393,11 +369,6 @@
             font-size: 13px;
             color: #F5821F;
             line-height: 25px;
-        }
-
-        #TOCbox_list li a:hover,
-        #TOCbox_list_mobile li a:hover {
-            text-decoration: underline
         }
 
         #TOCbox_list li a {
