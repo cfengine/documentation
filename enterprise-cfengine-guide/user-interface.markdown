@@ -39,26 +39,26 @@ stored in an event log for later inspection and analysis.
 
 ### Make changes to shared dashboard
 
-![Clone dashboard possibility](clone-dashboard.png)
+<img src="clone-dashboard.png" alt="Clone dashboard possibility" width="590px">
 
 Create an editable copy by clicking the button that appears when you hover over 
 the dashboard's row.
 
 ### Alert widgets
 
-![Enterprise UI Alerts](welcome_2nd_screen.png)
+<img src="welcome_2nd_screen.png" alt="Enterprise UI Alerts" width="520px">
 
 Alerts can have three different severity level: low, medium and high. These are
 represented by yellow, orange and red rings respectively, along with the
 percentage of hosts alerts have triggered on. Hovering over the widget will show
 the information as text in a convenient list format.
 
-![Enterprise UI Alerts](widget_1.gif)
+<img src="widget_1.gif" alt="Enterprise UI Alerts" width="300px">
 
 You can pause alerts during maintenance windows or while working on resolving an
 underlying issue to avoid unnecessary triggering and notifications.
 
-![Enterprise UI Alerts](pause_alerts.gif)
+<img src="pause_alerts.gif" alt="Enterprise UI Alerts" width="670px">
 
 Alerts can have three different states: OK, triggered, and paused. It is easy to
 filter by state on each widget's alert overview.
@@ -70,7 +70,7 @@ Find out more: [Alerts and Notifications][]
 The changes widget helps to visualize the number of changes (promises repaired)
 made by `cf-agent`.
 
-![Dashboard Changes widget](dashboard-widget-changes.png)
+<img src="dashboard-widget-changes.png" alt="Dashboard Changes widget" width="490px">
 
 ### Event log
 
@@ -78,13 +78,14 @@ The event log on the dashboard is filtered to show only information relevant
 based on the widgets present. It shows when alerts are triggered and cleared and
 when hosts are bootstrapped or decommissioned.
 
-![Dashboard Event log](dashboard-event-log.png)
+
+<img src="dashboard-event-log.png" alt="Dashboard Event log" width="380px">
 
 ### Host count widget
 
 The hosts count widget helps to visualize the number of hosts bootstrapped to cfengine over time.
 
-![Dashboard Host count](dashboard-widget-hosts-count.png)
+<img src="dashboard-widget-hosts-count.png" alt="Dashboard Host count" width="412px">
 
 ## Hosts
 
@@ -119,7 +120,7 @@ Add and remove columns from the results table in real time, and once you're
 happy with your report, save it, export it, or schedule it to be sent by email
 regularly.
 
-![Enterprise API Overview](add_columns.png)
+<img src="add_columns.png" alt="Enterprise API Overview" width="650px">
 
 Find out more: [Reporting][Reporting UI]
 
@@ -163,17 +164,19 @@ Find out more: [Settings][]
 
 The user profile is accessible from any view of the mission portal, from the drop down in the top right hand corner.
 
-![Opening Profile](Settings-1.png)
+<img src="Settings-1.png" alt="Opening Profile" width="400px">
 
 From the profile, you can adjust timezone options.
 
-![User Profile](User-profile.png)
+<img src="User-profile.png" alt="User Profile" width="412px">
 
 * Time zone
   * You can select any time zone from the searchable drop-down.
 * Autodetect time zone change and ask for update
   * If this option is selected Mission portal will ask you to update time zone when a difference is detected from your browser.
-  ![Time zone modal](Time-zone-modal.png)
+
+<img src="Time-zone-modal.png" alt="Time zone modal" width="520px">
+
 * Always use system/browser time
   * Mission portal will automatically change your profile timezone when a system/browser timezone is changed.
   
