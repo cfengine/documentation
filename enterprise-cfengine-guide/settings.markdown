@@ -25,14 +25,14 @@ Settings view.
 
 ## Opening Settings ##
 
-![Opening Settings](Settings-1.png)
+<img src="Settings-1.png" alt="Opening Settings" width="424px">
 
 Settings are accessible from any view of the mission portal, from the
 drop down in the top right hand corner.
 
 ## Preferences ##
 
-![Preferences](Settings-2.png)
+<img src="Settings-2.png" alt="Preferences" width="700px">
 
 User settings and preferences allows the CFEngine Enterprise
 administrator to change various options, including:
@@ -49,14 +49,14 @@ administrator to change various options, including:
 
 ## User Management ##
 
-![User Management](Settings-3.png)
+<img src="Settings-3.png" alt="User Management" width="700px">
 
 User management is for adding or adjusting CFEngine Enterprise UI
 users, including their name, role, and password.
 
 ## Role Management ##
 
-![Role Management](Settings-role.png)
+<img src="Settings-role.png" alt="Role Management" width="430px">
 
 Roles limit access to host data and access to shared assets like saved reports
 and dashboards.
@@ -128,7 +128,7 @@ User three will only be able to see hosts that have reported the `ubuntu` class.
 
 To set the default role, click Settings -> User management -> Roles. You can then select which role will be the default role for new users.
 
-![DefaultRoleSelecting](roles-list.png)
+<img src="roles-list.png" alt="DefaultRoleSelecting" width="700px">
 
 **Behaviour of Default Role:**
 
@@ -140,11 +140,11 @@ Note that the default role will not have any effect on users that already exist 
 
 In effect this allows you to set the default permissions for new users (e.g. which hosts a user is allowed to see) by configuring the access for the default role.
 
-![AddNewUser](add-new-user.png)
+<img src="add-new-user.png" alt="AddNewUser" width="430px">
 
 ## Manage Apps ##
 
-![Manage Apps](Settings-4.png)
+<img src="Settings-4.png" alt="Manage Apps" width="780px">
 
 Application settings can help adjust some of CFEngine Enterprise UI
 app features, including the order in which the apps appear and their
@@ -152,14 +152,14 @@ status (on or off).
 
 ## Version Control Repository ##
 
-![Version Control Repository](settings-vcs.png)
+<img src="settings-vcs.png" alt="Version Control Repository" width="780px">
 
 The repository holding the organization's masterfiles can be adjusted
 on the Version Control Repository screen.
 
 ## Host Identifier ##
 
-![Host Identifier](Settings-6.png)
+<img src="Settings-6.png" alt="Host Identifier" width="780px">
 
 Host identity for the server can be set within settings, and can be
 adjusted to refer to the FQDN, IP address, or an unqualified domain
@@ -167,7 +167,7 @@ name.
 
 ## Mail settings ##
 
-![Mail settings](mail-settings.png)
+<img src="mail-settings.png" alt="Mail settings" width="780px">
 
 Configure outbound mail settings:
 
@@ -182,7 +182,7 @@ Configure outbound mail settings:
 
 ## Authentication settings ##
 
-![Authentication settings](Authentication-settings.png)
+<img src="Authentication-settings.png" alt="Authentication settings" width="780px">
 
 Mission portal can authenticate against an external directory.
 
@@ -219,13 +219,13 @@ Mission portal can authenticate against an external directory.
 
 Mission Portal's configuration can be exported and imported.
 
-![Export/Import](settings-export-import-3.18.0.png)
+<img src="settings-export-import-3.18.0.png" alt="Export/Import" width="590px">
 
 **See also:** [Export/Import API][Import & Export API]
 
 ## Role based access control ##
 
-![Role based access control](role_based_access_control_settings.png)
+<img src="role_based_access_control_settings.png" alt="Role based access control" width="590px">
 
 Roles in Mission portal can be restricted to perform only configured actions. 
 Configure role-based access controls from settings.
@@ -251,7 +251,7 @@ root@hub:~# /var/cfengine/bin/psql cfsettings -c "INSERT INTO rbac_role_permissi
 
 ## About CFEngine ##
 
-![About CFEngine](Settings-7.png)
+<img src="Settings-7.png" alt="About CFEngine" width="870px">
 
 The About CFEngine screen contains important information about the
 specific version of CFEngine being used, license information, and
