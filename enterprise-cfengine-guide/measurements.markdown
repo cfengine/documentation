@@ -9,7 +9,7 @@ tags: [cfengine enterprise, user interface, mission portal]
 
 Measurements allows you to get an overview of specific metrics on your hosts over time.
 
-![Monitoring](Mission-Portal-Monitoring-1.png)
+<img src="Mission-Portal-Monitoring-1.png" alt="Monitoring" width="650px">
 
 If multiple hosts are selected in the menu on the left, then you can select one of three key measurements that is then displayed for all hosts:
 
