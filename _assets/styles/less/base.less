@@ -195,13 +195,64 @@ table {
 
   }
 }
-
+code {
+  background: @gray-100;
+  border-radius: 4px;
+  padding: 0 5px;
+  line-height: 24px;
+  font-size: 15px;
+}
+div.highlight {
+  background: #F7F7F7;
+  padding-right: 40px;
+  position: relative;
+  border: 1px solid @gray-300;
+  margin: 1.2rem 0 4rem 0;
+  .copy-to-clipboard {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    background: #F7F7F7;
+    &:hover {
+      color: @blue-600;
+      &:after {
+        color: @MainMenuTextColor;
+        font-style: normal;
+        content: "Copy to clipboard";
+        position: absolute;
+        left: 20px;
+        top: -1px;
+        width: max-content;
+        background: #efefef;
+        border: 1px solid #d1d1d1;
+        border-radius: .4rem;
+        padding: 0 .8rem;
+      }
+      &.bi-check2:after {
+        content: "Copied!";
+      }
+    }
+  }
+}
 pre {
-  background: @lightGray;
-  border-radius: 1rem;
-  padding: 1rem 2rem;
+  background: #F7F7F7;
+
+
   overflow: visible;
   overflow-y: hidden;
+  padding: 2rem;
+  font-family: 'Menlo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 150%;
+  code {
+    background: none;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+  }
 }
 
 .main_wrapper {

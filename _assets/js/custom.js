@@ -117,12 +117,20 @@ $(document).ready(function() {
             }
         }
     });
-    
-    $(".article :header").each(function(){
-        var url = window.location.href;
-        url = url.replace(window.location.hash,'');
-        $(this).prepend('<a class="anchor" href="' + url + '#' + $(this).attr("id") + '"><i class="fa fa-link"></i></a>');
-    });
-    
 });
 
+document.querySelectorAll('pre').forEach(function (pre) {
+    pre.closest('div.highlight').innerHTML += '<i data-closest=".highlight" data-copyfrom="code" class="bi bi-clipboard copy-to-clipboard"></i>';
+});
+
+document.querySelectorAll(".copy-to-clipboard").forEach(function (el) {
+    el.addEventListener("click", function (event) {
+        event.preventDefault();
+        var target = event.target;
+        var copyText = target.closest(event.target.dataset.closest).querySelector(event.target.dataset.copyfrom).innerText;
+        navigator.clipboard.writeText(copyText);
+        target.classList.remove('bi-clipboard');
+        target.className += ' bi-check2 ';
+        setTimeout(function ()  { target.className = 'bi bi-clipboard copy-to-clipboard' }, 2000);
+    })
+});
