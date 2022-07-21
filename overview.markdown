@@ -7,9 +7,9 @@ sorting: 10
 
 CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves with a policy server (see [Installation and Configuration][Installation and Configuration]), will each be running a set of CFEngine component applications that manage and interpret textual files called policies. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or *bundles*, of what are known in the CFEngine world as [Promises][Promises]. *Promises* are at the heart of Promise Theory, which is in turn what CFEngine is all about.
 
-* [Policy Language and Compliance][Introduction and System Overview#Policy Language and Compliance]
-* [CFEngine Policy Servers and Hosts][Introduction and System Overview#CFEngine Policy Servers and Hosts]
-* [CFEngine Component Applications and Daemons][Introduction and System Overview#CFEngine Component Applications and Daemons]
+* [Policy Language and Compliance][Overview#Policy Language and Compliance]
+* [CFEngine Policy Servers and Hosts][Overview#CFEngine Policy Servers and Hosts]
+* [CFEngine Component Applications and Daemons][Overview#CFEngine Component Applications and Daemons]
 
 ## Policy Language and Compliance ##
 
@@ -50,16 +50,16 @@ All CFEngine software components exist in `/var/cfengine/bin`.
 
 ![Components overview](components-overview.png)
 
-* [Daemons][Introduction and System Overview#Daemons]
-* [Other Applications][Introduction and System Overview#Other Component Applications]
+* [Daemons][Overview#Daemons]
+* [Other Applications][Overview#Other Component Applications]
 
 ### Daemons ###
 
 All machines, whether they are policy servers or hosts, will have these three important daemons running at all times:
 
-* [/var/cfengine/bin/cf-execd][Introduction and System Overview#cf-execd]
-* [/var/cfengine/bin/cf-serverd][Introduction and System Overview#cf-serverd]
-* [/var/cfengine/bin/cf-monitord][Introduction and System Overview#cf-monitord]
+* [/var/cfengine/bin/cf-execd][Overview#cf-execd]
+* [/var/cfengine/bin/cf-serverd][Overview#cf-serverd]
+* [/var/cfengine/bin/cf-monitord][Overview#cf-monitord]
 
 #### cf-execd ####
 
@@ -100,10 +100,10 @@ See also: [cf-monitord][cf-monitord] reference documentation.
 
 ### Other Component Applications ###
 
-* [/var/cfengine/bin/cf-agent][Introduction and System Overview#cf-agent]
-* [/var/cfengine/bin/cf-key][Introduction and System Overview#cf-key]
-* [/var/cfengine/bin/cf-promises][Introduction and System Overview#cf-promises]
-* [/var/cfengine/bin/cf-runagent][Introduction and System Overview#cf-runagent]
+* [/var/cfengine/bin/cf-agent][Overview#cf-agent]
+* [/var/cfengine/bin/cf-key][Overview#cf-key]
+* [/var/cfengine/bin/cf-promises][Overview#cf-promises]
+* [/var/cfengine/bin/cf-runagent][Overview#cf-runagent]
 
 #### cf-agent ####
 
