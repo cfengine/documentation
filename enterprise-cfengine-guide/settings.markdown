@@ -144,7 +144,7 @@ In effect this allows you to set the default permissions for new users (e.g. whi
 
 ## Manage Apps ##
 
-<img src="Settings-4.png" alt="Manage Apps" width="780px">
+<img src="Settings-4.png" alt="Manage Apps" width="700px">
 
 Application settings can help adjust some of CFEngine Enterprise UI
 app features, including the order in which the apps appear and their
@@ -152,14 +152,14 @@ status (on or off).
 
 ## Version Control Repository ##
 
-<img src="settings-vcs.png" alt="Version Control Repository" width="780px">
+<img src="settings-vcs.png" alt="Version Control Repository" width="700px">
 
 The repository holding the organization's masterfiles can be adjusted
 on the Version Control Repository screen.
 
 ## Host Identifier ##
 
-<img src="Settings-6.png" alt="Host Identifier" width="780px">
+<img src="Settings-6.png" alt="Host Identifier" width="700px">
 
 Host identity for the server can be set within settings, and can be
 adjusted to refer to the FQDN, IP address, or an unqualified domain
@@ -167,7 +167,7 @@ name.
 
 ## Mail settings ##
 
-<img src="mail-settings.png" alt="Mail settings" width="780px">
+<img src="mail-settings.png" alt="Mail settings" width="700px">
 
 Configure outbound mail settings:
 
@@ -182,7 +182,7 @@ Configure outbound mail settings:
 
 ## Authentication settings ##
 
-<img src="Authentication-settings.png" alt="Authentication settings" width="780px">
+<img src="Authentication-settings.png" alt="Authentication settings" width="700px">
 
 Mission portal can authenticate against an external directory.
 
@@ -251,7 +251,7 @@ root@hub:~# /var/cfengine/bin/psql cfsettings -c "INSERT INTO rbac_role_permissi
 
 ## About CFEngine ##
 
-<img src="Settings-7.png" alt="About CFEngine" width="870px">
+<img src="Settings-7.png" alt="About CFEngine" width="700px">
 
 The About CFEngine screen contains important information about the
 specific version of CFEngine being used, license information, and
