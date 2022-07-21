@@ -51,7 +51,7 @@ Users not familiar with SQL syntax can easily create their own custom reports in
 * Limit - Limit the number of entries in your report. This is a recommended practice for testing your query, and even in production it may be helpful if you don't need to see every entry.
 * Show me the query - View and edit the SQL query directly. Please note, that editing the query directly here will invalidate your choices in the query builder interface, and changing your selections there will override your SQL query.
 
-![Report Builder](Report-Builder-3.18.0.png)
+<img src="Report-Builder-3.18.0.png" alt="Report Builder" width="700px">
 
 ### Ensure the report collection is working ###
 
@@ -131,20 +131,20 @@ Inventory allows you to define the set of hosts to report on.
 
 The main Inventory screen shows the current set of hosts, together with relevant information such as operating system type, kernel and memory size.
 
-![Inventory Management](Reports-Inventory-1.png)
+<img src="Reports-Inventory-1.png" alt="Inventory Management" width="590px">
 
 To begin filtering, one would first select the *Filters* drop down, and then select an attribute to filter on (e.g. OS type = linux)
 
-![Inventory Management](Reports-Inventory-2.png)
+<img src="Reports-Inventory-2.png" alt="Inventory Management" width="590px">
 
 After applying the filter, it may be convenient to add the attribute as one of the table columns.
 
-![Inventory Management](Reports-Inventory-4.png)
+<img src="Reports-Inventory-4.png" alt="Inventory Management" width="590px">
 
 Changing the filter, or adding additional attributes for filtering, is just as easy.
 
-![Inventory Management](Reports-Inventory-5.png)
+<img src="Reports-Inventory-5.png" alt="Inventory Management" width="590px">
 
 We can see here that there are no Windows machines bootstrapped to this hub.
 
-![Inventory Management](Reports-Inventory-6.png)
+<img src="Reports-Inventory-6.png" alt="Inventory Management" width="650px">
