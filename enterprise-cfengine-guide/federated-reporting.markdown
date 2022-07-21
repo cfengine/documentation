@@ -125,7 +125,7 @@ install CFEngine Hub on a Superhub as well as Feeder hubs.
 
 ### Enable Hub management app ###
 
-![Enable Hub Management](fr-hub-management-enabled.png)
+<img src="fr-hub-management-enabled.png" alt="Enable Hub Management" width="700px">
 
 On the Superhub and all Feeders enable the Hub management
 app by [Opening Settings][Settings#opening settings] then
@@ -136,7 +136,7 @@ Note: for pre 3.14 feeders this step is not performed.
 
 ### Enable Federated Reporting ###
 
-![Enable Federated Reporting](fr-hub-management-default.png)
+<img src="fr-hub-management-default.png" alt="Enable Federated Reporting" width="700px">
 
 The Hub management app should now appear in the bottom left corner of mission
 portal.
@@ -150,7 +150,7 @@ Note: for pre 3.14 feeders, you must [Enable feeder without API][Federated Repor
 
 ### Connect Feeder Hubs ###
 
-![Connect Feeder Hubs](fr-superhub-enabled-no-feeders.png)
+<img src="fr-superhub-enabled-no-feeders.png" alt="Connect Feeder Hubs" width="700px">
 
 Refresh the Hub management on each hub to see that Federated Reporting is
 enabled.
@@ -160,7 +160,7 @@ Superhub to connect the Feeder hubs.
 
 On the Superhub, click on the Connect hub button to show the Connect a hub dialog.
 
-![Connect a hub](fr-connect-a-hub.png)
+<img src="fr-connect-a-hub.png" alt="Connect a hub" width="420px">
 
 Fill out the form with the base URL of your feeder hub Mission Portal and enter
 credentials for a user with administrative credentials. These credentials will
@@ -169,7 +169,7 @@ only be used to authenticate to the feeder hub and will not be saved otherwise.
 The Hub management view will show all connected hubs, the number of bootstrapped
 hosts and allow you to edit the settings.
 
-![Feeders connected](fr-feeder-added.png)
+<img src="fr-feeder-added.png" alt="Feeders connected" width="700px">
 
 ## Operation ##
 
@@ -575,7 +575,7 @@ $ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "/var/cfengine/bin/c
 
 ## Disable Feeder
 
-![Edit Hub Disable](fr-edit-hub-disable.png)
+<img src="fr-edit-hub-disable.png" alt="Edit Hub Disable" width="420px">
 
 A Feeder Hub may be disabled from the Hub Management app so that it will no
 longer participate in Federated Reporting. No further attempts to pull data from
