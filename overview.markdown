@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Introduction and System Overview
+title: Overview
 published: true
 sorting: 10
 ---
