@@ -27,21 +27,21 @@ def validate(branch):
 	config = {}
 	config["WORKDIR"] = os.environ.get('WRKDIR')
 	if config["WORKDIR"] == None:
-		print 'Environment variable WRKDIR is not set, setting it to current working directory'
+		print('Environment variable WRKDIR is not set, setting it to current working directory')
 		config["WORKDIR"] = os.getcwd()
 		os.environ["WRKDIR"] = os.getcwd()
 
 	if not os.path.exists(config["WORKDIR"]):
-		print "Directory WORKDIR not found: " + config["WORKDIR"]
+		print("Directory WORKDIR not found: " + config["WORKDIR"])
 		exit(2)
 		
 	config["project_directory"] = config["WORKDIR"] + "/documentation-generator"
 	if not os.path.exists(config["project_directory"]):
-		print "Directory 'documentation-generator' not found in WORKDIR"
+		print("Directory 'documentation-generator' not found in WORKDIR")
 	
 	config["markdown_directory"] = config["WORKDIR"] + "/documentation"
 	if not os.path.exists(config["markdown_directory"]):
-		print "Directory 'documentation' not found in WORKDIR"
+		print("Directory 'documentation' not found in WORKDIR")
 
 
 	version = branch
@@ -75,9 +75,9 @@ def validate(branch):
 			
 			config[key] = value
 			
-	print 'cfdoc_environment: cwd              = ' + os.getcwd()
-	print '                   config           = '
-	print config
+	print('cfdoc_environment: cwd              = ' + os.getcwd())
+	print('                   config           = ')
+	print(config)
 	
 	markdown_files = []
 	scanDirectory(config["markdown_directory"], "", ".markdown", markdown_files)
