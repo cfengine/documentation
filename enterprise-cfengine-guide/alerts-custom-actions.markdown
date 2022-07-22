@@ -127,18 +127,18 @@ What gets logged to syslog depends on which alert is associated with the script,
 
 Members of the admin role can manage Custom action scripts in the Mission Portal settings.
 
-![Custom action scripts overview](mp-settings-custom-notification.png)
+<img src="mp-settings-custom-notification.png" alt="Custom action scripts overview" width="700px">
 
 A new script can be uploaded, together with a name and description, which will be shown when creating the alerts.
 
-![Adding Custom action syslog script](mp-settings-custom-notification-add.png)
+<img src="mp-settings-custom-notification-add.png" alt="Adding Custom action syslog script" width="700px">
 
 
 ## Associating a Custom action with an alert ##
 
 Alerts can have any number of Custom action scripts as well as an email notification associated with them. This can be configured during alert creation. Note that for security reasons, only members of the admin role may associate alerts with Custom action scripts.
 
-![Adding Custom action script to alert](create-alert-custom-action-syslog.png)
+<img src="create-alert-custom-action-syslog.png" alt="Adding Custom action script to alert" width="420px">
 
 Conversely, several alerts may be associated with the same Custom action script.
 
