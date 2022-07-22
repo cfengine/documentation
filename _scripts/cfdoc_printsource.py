@@ -86,7 +86,7 @@ def run(config):
 	
 	new_pages = dict()
 	print_pages(pagetree, 1, None, new_pages)
-	for new_page in new_pages.keys():
+	for new_page in list(new_pages.keys()):
 		headers = new_pages[new_page]
 		in_file = open(new_page, 'r')
 		lines = in_file.readlines()
