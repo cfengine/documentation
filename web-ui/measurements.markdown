@@ -2,7 +2,7 @@
 layout: default
 title: Measurements app
 alias: Measurements
-sorting: 60
+sorting: 70
 published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
