@@ -6,7 +6,7 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
-Once you have become familiar with the [Alerts widgets][User Interface#Alert widgets], you might see the need to integrate the alerts with an existing system like Nagios, instead of relying on emails for getting notified.
+Once you have become familiar with the [Alerts widgets][Web UI#Alert widgets], you might see the need to integrate the alerts with an existing system like Nagios, instead of relying on emails for getting notified.
 
 This is where the Custom actions come in. A Custom action is a way to execute a script on the hub whenever an alert is triggered or cleared, as well as when a reminder happens (if set). The script will receive a set of parameters containing the state of the alert, and can do practically anything with this information. Typically, it is used to integrate with other alerting or monitoring systems like PagerDuty or Nagios.
 
