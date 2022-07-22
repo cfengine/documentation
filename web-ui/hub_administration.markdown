@@ -2,6 +2,7 @@
 layout: default
 title: Hub Administration
 published: true
+sorting: 80
 tags: [cfengine enterprise, hub administration]
 ---
 
