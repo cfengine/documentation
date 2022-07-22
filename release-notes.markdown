@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Latest Release
+title: Release Notes
 published: true
 sorting: 20
 tags: [overviews, releases, latest release, platforms, versions]
