@@ -2,7 +2,7 @@
 layout: default
 title: External resources
 published: true
-sorting: 110
+sorting: 30
 tags: [overviews, learning]
 ---
 
