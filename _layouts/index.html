@@ -1,7 +1,7 @@
 {% include head.html %}
 <body>
 {% include header_nav.html %}
-<main class="main_wrapper container">
+<main class="main_wrapper container home-page">
     {% include left_col.html %}
     <article>
         {{ content }}
@@ -10,7 +10,7 @@
                 <h3>Help us to improve the CFEngine docs</h3>
                 <div>All CFEngine docs are open source. See something that's wrong or unclear? Submit a pull request.
                 </div>
-                <a class="btn btn-bordered" href="https://github.com/cfengine/documentation/edit/master/index.markdown"
+                <a class="btn btn-bordered" href="https://github.com/cfengine/documentation/edit/{{site.cfengine.branch}}/index.markdown"
                    target="_blank"><img
                         src="./media/images/github.svg"/> Make a contribution</a>
             </div>
