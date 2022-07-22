@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Glossary
-sorting: 100
-published: false
+sorting: 50
+published: true
 tags: [guide, glossary]
 ---
 
