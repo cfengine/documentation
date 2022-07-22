@@ -1,10 +1,18 @@
 ---
 layout: default
 title: Getting started with CFEngine Build
-published: true
+published: false
 sorting: 40
 tags: [guide, getting started, installation, modules]
 ---
+
+{% comment %}
+Nick Anderson set published to false as part of Information Architecture changes.
+This content https://docs.cfengine.com/docs/master/guide-introduction-getting-started-with-cfengine-build.html
+Seems to be incomplete and nearly duplicates https://docs.cfengine.com/docs/master/guide-getting-started-with-cfengine-build.html
+Preferring the latter so unpublished this one.
+Promises you cannot keep are no better than lies!
+https://www.youtube.com/watch?v=Zd9-wdGzedU {% endcomment %}
 
 [CFEngine Build](https://build.cfengine.com) is the website where the CFEngine users can share and find modules from the rest of the community.
 These modules allow you to add functionality and achieve useful tasks in CFEngine without writing any code.

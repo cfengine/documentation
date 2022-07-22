@@ -39,7 +39,7 @@ The CFEngine application is fully contained within the /var/cfengine directory t
 * `runalerts.sh`: Updates Mission Portal status and activates alert actions (Enterprise only)
 * `cf-hub`: Responsible for collecting reports from remote agents. (CFEngine Enterprise only)
 
-See Also: [CFEngine Component Applications and Daemons][Introduction and System Overview#CFEngine Component Applications and Daemons]
+See Also: [CFEngine Component Applications and Daemons][Overview#CFEngine Component Applications and Daemons]
 
 ## Directories for Policy Files ##
 

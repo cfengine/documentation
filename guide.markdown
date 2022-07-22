@@ -9,7 +9,7 @@ CFEngine is a configuration management system that provides a framework for auto
 
 CFEngine is decentralized and highly scalable. It is powered by autonomous agents that can continuously monitor, self-repair, and update or restore an entire IT system, with negligible impact on system resources or performance.
 
-See Also: [Introduction and System Overview][Introduction and System Overview]
+See Also: [Overview][Overview]
 
 ## CFEngine Features ##
 
@@ -61,7 +61,7 @@ experts if you need more help. Contact us!
 
 ## CFEngine Guide ##
 
-* [Introduction and System Overview][]
+* [Overview][]
 * [Latest Release][]
 * [Installation and Configuration][]
 	* [Pre-Installation Checklist]
