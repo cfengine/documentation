@@ -9,7 +9,7 @@ Welcome! This is the documentation for CFEngine {{site.cfengine.core_branch}}.
 
 *Parts of the documentation:*
 
-## [What's new in latest release?][Latest Release]
+## [What's new in latest release?][Release Notes]
 includes what is new, supported platforms, how to upgrade
 
 ## [Tutorial][Guide]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Health
-sorting: 30
+sorting: 20
 published: true
 tags: [cfengine enterprise, user interface, mission portal, health]
 ---

@@ -62,7 +62,7 @@ experts if you need more help. Contact us!
 ## CFEngine Guide ##
 
 * [Overview][]
-* [Latest Release][]
+* [Release Notes][]
 * [Installation and Configuration][]
 	* [Pre-Installation Checklist]
 	* [General Installation]
