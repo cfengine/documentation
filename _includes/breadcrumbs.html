@@ -5,32 +5,36 @@ do not show breadcrumb for the first level page
 <div id="breadcrumbs_wrapper">
 {% if page.categories.size > 1 %}
     <div id="breadcrumbs">
-        <ul>
+        <ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
             {% assign breadcrumbKey = '' %}
                 {% for category in page.categories %}
-
                 {% if breadcrumbKey == '' %}
                     {% assign breadcrumbKey = category | removeUnvantedChars %}
                 {% else %}
                     {% assign tmp = breadcrumbKey | append: '_' | append: category %}
                     {% assign breadcrumbKey = tmp | removeUnvantedChars %}
                 {% endif %}
-
                 {% if site.breadcrumbsNavigation[breadcrumbKey] != nil %}
-
                     {% if site.breadcrumbsNavigation[breadcrumbKey].alias != page.alias %}
-                        <li>
-                            <a href="{{ site.breadcrumbsNavigation[breadcrumbKey].alias }}">{{ site.breadcrumbsNavigation[breadcrumbKey].title }}</a>
+                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a
+                                    itemid="{{ site.breadcrumbsNavigation[breadcrumbKey].alias }}"
+                                    itemprop="item" itemscope=""
+                                    itemtype="http://schema.org/Thing"
+                                    href="{{ site.breadcrumbsNavigation[breadcrumbKey].alias }}">
+                                <span itemprop="name">{{ site.breadcrumbsNavigation[breadcrumbKey].title }}</span>
+                            </a>
                         </li>
+                        <li>/</li>
                     {% endif %}
                 {% endif %}
             {% endfor %}
+            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                <span itemid="{{ page.url }}" itemprop="item" itemscope="" itemtype="http://schema.org/Thing">
+                    <span itemprop="name">{{ page.title }}</span>
+                </span>
+            </li>
         </ul>
     </div>
 {% endif %}
-    <div id="edit_link">
-        <a href="" class="float-right">
-            <i class="fa fa-pencil"></i>
-        </a>
-    </div>
 </div>
