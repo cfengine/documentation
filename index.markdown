@@ -14,7 +14,7 @@ alias: index.html
          It includes the reference for the following version of CFEngine: 
       </div>
       <ul class="home-top_versions">
-         <li>CFEngine {{site.cfengine.core_branch}}</li>
+         {% include lts_versions_list.html %}
       </ul>
    </div>
    <div class="home-links">
