@@ -2,7 +2,7 @@
 layout: default
 title: API
 published: true
-sorting: 80
+sorting: 50
 tags: [overviews, enterprise, REST, API, reporting]
 ---
 

@@ -1,8 +1,9 @@
 ---
 layout: default
-title: CFEngine Reference
+title: Reference
+alias: CFEngine Reference
 published: true
-sorting: 50
+sorting: 70
 ---
 
 The reference documentation explains the available promise and bundle types,

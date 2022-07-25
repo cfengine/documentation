@@ -125,5 +125,4 @@ number you use in your **Vagrantfile** (e.g. policyserver.vm.network "forwarded_
 
 ## Recommended Reading
 
-* [CFEngine Guide][Guide]
 * [Tutorials and Examples][Examples and Tutorials]

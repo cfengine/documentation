@@ -198,5 +198,4 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 
 ### Recommended Reading ###
 
-* [CFEngine Guide][Guide]
 * [Tutorials and Examples][Examples and Tutorials]
