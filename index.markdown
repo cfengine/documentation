@@ -21,9 +21,6 @@ describes syntax and language elements
 ## [Examples][Examples and Tutorials]
 a set of examples, including “hello world”
 
-## [Enterprise version][CFEngine Enterprise]
-documentation related to the commercial version
-
 ## [Library Reference][All Promise and Body Types]
 overview of all promises and attributes
 
