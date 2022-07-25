@@ -37,7 +37,7 @@ See also:
 
 [%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
 
-See [Installation and Configuration][Installation and Configuration] for a more detailed guide on how to get
+See [Installation][Installation] for a more detailed guide on how to get
 CFEngine up and running for various environments.
 
 ## Try It
@@ -63,7 +63,7 @@ experts if you need more help. Contact us!
 
 * [Overview][]
 * [Release Notes][]
-* [Installation and Configuration][]
+* [Installation][]
 	* [Pre-Installation Checklist]
 	* [General Installation]
 	* [Upgrading]
