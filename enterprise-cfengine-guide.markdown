@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CFEngine Enterprise
-published: true
+published: false
 sorting: 3
 ---
 
