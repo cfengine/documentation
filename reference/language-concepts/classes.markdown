@@ -24,7 +24,7 @@ are visible from any bundle. `bundle` scoped classes can only be checked within
 that bundle or from a bundle called with inheritance. Hard classes always have a
 namespace scope.
 
-In [CFEngine Enterprise][], classes that are defined can be reported to the
+In [CFEngine Enterprise](https://cfengine.com/product-overview/), classes that are defined can be reported to the
 CFEngine Database Server and can be used there for reporting, grouping of hosts
 and inventory management. For more information about how this is configured please read the documentation on [Enterprise Reporting][].
 

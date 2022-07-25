@@ -185,7 +185,7 @@ regular system output messages.
 
 **Hint**: The promise handle [`$(this.handle)`][this#this.handle] can be a
 useful referent in a log message, indicating the origin of the message. In
-[CFEngine Enterprise][], promise handles make it easy to interpret report data.
+[CFEngine Enterprise](https://cfengine.com/product-overview/), promise handles make it easy to interpret report data.
 
 #### log_kept
 #### log_repaired

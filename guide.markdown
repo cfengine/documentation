@@ -21,7 +21,7 @@ See Also: [Overview][Overview]
 
 ## Choose a CFEngine Version
 
-[CFEngine Enterprise][CFEngine Enterprise] is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers).
+[CFEngine Enterprise](https://cfengine.com/product-overview/) is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers).
 
 * [Get the Enterprise Edition][evaluate cfengine]
 

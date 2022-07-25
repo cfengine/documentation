@@ -10,7 +10,7 @@ There are several ways to approach authoring promises and ensuring they are copi
 1. Create or modify files directly in the `masterfiles` directory.
 2. Copy new or modified files into the `masterfiles` directory (e.g. local file copy using `cp`, `scp` over `ssh`).
 3. Utilize a version control system (e.g. Git) to push/pull changes or add new files to the `masterfiles` directory.
-4. Utilize CFEngine Enterprise's integrated Git respository. The [CFEngine Enterprise Guide][CFEngine Enterprise] contains more information.
+4. Utilize CFEngine Enterprise's integrated Git repository.
 
 ### Authoring on a Workstation and Pushing to the Hub Using Git + GitHub
 
