@@ -12,7 +12,7 @@ Welcome! This is the documentation for CFEngine {{site.cfengine.core_branch}}.
 ## [What's new in latest release?][Release Notes]
 includes what is new, supported platforms, how to upgrade
 
-## [Language Reference][CFEngine Reference]
+## [Language Reference][Reference]
 describes syntax and language elements 
 
 ## [Examples][Examples and Tutorials]
