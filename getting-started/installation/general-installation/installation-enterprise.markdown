@@ -268,6 +268,4 @@ Learn more about CFEngine by using the following resources:
 
 * Tutorial: [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
 
-* [CFEngine Guide][Guide]
-
 * [Tutorials and Examples][Examples and Tutorials]

@@ -12,9 +12,6 @@ Welcome! This is the documentation for CFEngine {{site.cfengine.core_branch}}.
 ## [What's new in latest release?][Release Notes]
 includes what is new, supported platforms, how to upgrade
 
-## [Tutorial][Guide]
-learn how to install, write policy and get automation going
-
 ## [Language Reference][CFEngine Reference]
 describes syntax and language elements 
 

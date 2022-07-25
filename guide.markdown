@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Guide
-published: true
+published: false
 sorting: 20
 ---
 
@@ -49,7 +49,7 @@ feel for the power and value of CFEngine:
 
 ## Learn More
 
-Take a look at [the CFEngine Guide][Guide] to learn more about CFEngine's architecture and components, as well as how to write policy that can help manage IT systems.
+Take a look at the [Getting Started][] section to learn more about CFEngine's architecture and components, as well as how to write policy that can help manage IT systems.
 
 Check out [External resources][External resources], for more guides, demos, and other resources from our CFEngine staff and our special CFEngine contributors.
 
