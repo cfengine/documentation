@@ -1,6 +1,7 @@
 ---
 layout: default
-title: CFEngine Reference
+title: Reference
+alias: CFEngine Reference
 published: true
 sorting: 70
 ---
