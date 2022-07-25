@@ -6,10 +6,6 @@ published: true
 tags: [cfengine enterprise, best practices, user interface, mission portal]
 ---
 
-* [Policy Style Guide][Best Practices#Policy Style Guide]
-* [Version Control and Configuration Policy][Best Practices#Version Control and Configuration Policy]
-* [Scalability][Best Practices#Scalability]
-
 ## Policy Style Guide ##
 
 When writing CFEngine policy using our [Policy Style Guide][Policy Style Guide] helps make your policy easily understood, debuggable and maintainable.
