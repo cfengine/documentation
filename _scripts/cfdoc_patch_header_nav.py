@@ -44,3 +44,7 @@ def patch(current_branch):
     with open("_includes/versions_list.html", "w") as f:
         for branch in data['docs']:
             print >>f, '<li><a href="%s">%s</a></li>' % (branch['Link'], branch['Title'].replace('Version ', ''))
+    with open("_includes/lts_versions_list.html", "w") as f:
+        for branch in data['docs']:
+            if "(LTS)" in branch['Title']:
+                print >>f, '<li><a href="%s">%s</a></li>' % (branch['Link'], branch['Title'].replace('Version ', 'CFEngine '))

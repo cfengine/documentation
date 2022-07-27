@@ -37,7 +37,6 @@ $(document).ready(function() {
 
 
     var ToC_start =
-        "<div class='TOCheader'><i class='fa fa-chevron-down'></i>Table of Contents</div>" +
         "<nav role='navigation'>" +
              "<ul>";
     var ToC_End =
@@ -45,7 +44,7 @@ $(document).ready(function() {
         "</nav>";
 
     var newLine, el, title, link, elClass, url, ToC='';
-    $("article h1, article h2, article h3, article h4").each(function() {
+    $(".article h2, .article h3, .article h4").each(function() {
         el      = $(this);
         title   = el.text();
         link    = "#" + el.attr("id");
@@ -78,6 +77,8 @@ $(document).ready(function() {
 
         $("#TOCbox_wrapper #TOCbox_list").append(result);
         $("#print_TOC").append(result);
+    } else {
+        $("#TOCbox_wrapper").hide();
     }
 
     // detect print event, display TOC
@@ -103,20 +104,6 @@ $(document).ready(function() {
     window.onafterprint = afterPrint;
 
 
-});
-
-$(document).ready(function() {
-    $("#TOCbox_wrapper").click(function() { 
-        $("#TOCbox_list").toggle();
-    });
-
-    $(document).click(function(event) { 
-        if(!$(event.target).closest('#TOCbox_wrapper').length) {
-            if($('#TOCbox_list').is(":visible")) {
-                $('#TOCbox_list').hide();
-            }
-        }
-    });
 });
 
 document.querySelectorAll('pre').forEach(function (pre) {

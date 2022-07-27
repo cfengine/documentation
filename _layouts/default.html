@@ -1,26 +1,25 @@
 {% include head.html %}
 <body>
 {% include header_nav.html %}
-<main class="main_wrapper container">
+<main class="main_wrapper container pages-wrapper">
     {% include left_col.html %}
     <article>
-
-        {% comment %} Additional TOC which is visible only if user print page. Does not apply to PDF {% endcomment %}
-        <div id="print_TOC_wrapper">Table of Contents<br>
-            <div id="print_TOC"></div>
-        </div>
+        {% include breadcrumbs.html %}
         <div class="article">
             {% if page.title  %}
             <div class="article_title">
                 <h1 id="top">
                     {{page.title}}
                 </h1>
+                <div class="suggestChanges">
+                    <a class="btn btn-transparent btn-bordered"
+                       href='https://github.com/cfengine/documentation/edit/{{site.cfengine.branch}}/{{ page.categories | join: "/" }}.markdown'
+                       target="_blank">
+                        <i class="bi bi-github"></i> Suggest changes
+                    </a>
+                </div>
             </div>
             {% endif %}
-            <div id="TOCbox_wrapper">
-                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
-            </div>
-
             {{ content }}
         </div>
         {% if page.tags != nil %}
@@ -44,6 +43,16 @@
             </div>
         </div>
     </article>
+    {% if page.grouptype != 'tag' %}
+    <div class="right-sidebar">
+        <div class="TOC" id="TOCbox_wrapper">
+            <div class="TOC-title">Table of contents</div>
+            <span id="TOCbox">
+                <div id="TOCbox_list"></div>
+            </span>
+        </div>
+    </div>
+    {% endif %}
 </main>
 {% include footer.html %}
 </body>

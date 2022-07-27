@@ -222,12 +222,15 @@ div.highlight {
         content: "Copy to clipboard";
         position: absolute;
         left: 20px;
-        top: -1px;
+        top: 3px;
         width: max-content;
         background: #efefef;
         border: 1px solid #d1d1d1;
         border-radius: .4rem;
-        padding: 0 .8rem;
+        padding: 0 0.8rem;
+        font-size: 11px;
+        line-height: 16px;
+        z-index: 10;
       }
       &.bi-check2:after {
         content: "Copied!";
@@ -237,8 +240,6 @@ div.highlight {
 }
 pre {
   background: #F7F7F7;
-
-
   overflow: visible;
   overflow-y: hidden;
   padding: 2rem;
@@ -257,6 +258,7 @@ pre {
 
 .main_wrapper {
   display: flex;
+  min-height: calc(100vh - 344px); // 100 viewport height minus header and footer height to stick the footer to the bottom
 }
 
 aside {
@@ -267,5 +269,5 @@ aside {
 
 article {
   flex-grow: 1;
-  max-width: 86.3rem;
+  max-width: 67.2rem;
 }
