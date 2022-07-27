@@ -304,6 +304,7 @@
    }
 
 #TOCbox_list {
+    z-index: 1;
     display: none;
     max-height: 420px;
     overflow: auto;
