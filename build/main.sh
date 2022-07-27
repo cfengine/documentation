@@ -15,7 +15,7 @@ export PACKAGE_UPLOAD_DIRECTORY=$3
 export PACKAGE_BUILD=$4
 
 export JOB_TO_UPLOAD=$PACKAGE_JOB
-export FLAG_FILE_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/PACKAGES_HUB_x86_64_linux_ubuntu_16/core-commitID"
+export FLAG_FILE_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/PACKAGES_HUB_x86_64_linux_ubuntu_18/core-commitID"
 export NO_OUTPUT_DIR=1
 
 env
