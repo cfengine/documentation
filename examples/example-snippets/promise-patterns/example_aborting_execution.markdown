@@ -43,4 +43,3 @@ the end of the file it should look something like this:
     abortbundleclasses => { "invalid" };
 }
 ```
-

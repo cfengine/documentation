@@ -167,6 +167,3 @@ a query on a schedule and have it emailed to someone.
 **Response:**
 
     204 No Content
-
-
-

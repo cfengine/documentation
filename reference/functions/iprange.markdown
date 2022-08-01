@@ -44,4 +44,3 @@ reports:
 **History:**
 
 - Optional `interface` parameter introduced in CFEngine 3.9.
-

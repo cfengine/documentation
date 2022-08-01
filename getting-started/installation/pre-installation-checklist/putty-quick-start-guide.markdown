@@ -175,5 +175,3 @@ The PuTTY interface with the two virtual machines saved. We can now proceed to c
 ![The PuTTY command-line window](Installing-CFE-on-AWS-7.png)
 
 The PuTTY command-line window, which we will use to configure the virtual machines with CFEngine.
-
-

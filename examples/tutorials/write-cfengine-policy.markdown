@@ -192,4 +192,3 @@ promise kept.
 Congratulations! You now have the basic knowledge needed to write and run
 CFEngine policies. Let's continue with an example on how to manage users. Click
 here to continue.
-

@@ -43,4 +43,3 @@ Take action on a host.
 Assign host specific _Variables_ and _Classes_.
 
 ![Host specific data](host-specific-data.png)
-

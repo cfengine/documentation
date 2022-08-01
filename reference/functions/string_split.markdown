@@ -31,4 +31,3 @@ Output:
 **History:** Introduced in CFEngine 3.6; deprecates `splitstring()`.
 
 **See also:** `splitstring()`
-

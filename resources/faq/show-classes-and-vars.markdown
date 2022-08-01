@@ -36,5 +36,3 @@ cf-promises --show-vars
 ```
 
 [%CFEngine_include_snippet(cf-promises_--show-classes.txt, [\w], ^$)%]
-
-

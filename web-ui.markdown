@@ -169,4 +169,3 @@ From the profile, you can adjust timezone options.
 
 * Always use system/browser time
   * Mission portal will automatically change your profile timezone when a system/browser timezone is changed.
-

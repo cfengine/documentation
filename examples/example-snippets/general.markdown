@@ -46,4 +46,3 @@ what_type:
 ## Array example ##
 
 [%CFEngine_include_snippet(array_example.cf, .* )%]
-

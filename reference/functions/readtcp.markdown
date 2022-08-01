@@ -34,4 +34,3 @@ R: Server is alive
 successfully interrupt the waiting system calls so this might hang if you send
 an incorrect query string. This should not happen, but the cause has yet to be
 diagnosed.
-

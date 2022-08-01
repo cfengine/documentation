@@ -61,4 +61,3 @@ access:
 performance impact of reverse dns lookups for each connection avoid using
 `admit_hostnames`, using hostnames in your `admit` rules, and these
 `connection` variables.
-

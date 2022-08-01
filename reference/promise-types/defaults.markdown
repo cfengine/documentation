@@ -106,4 +106,3 @@ with the default value.
 **Example:**
 
 [%CFEngine_include_example(defaults.cf)%]
-

@@ -231,4 +231,3 @@ curl -k --user <username>:<password> \
 ```
 HTTP 200 Ok
 ```
-

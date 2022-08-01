@@ -612,5 +612,3 @@ site.CFE_manuals_version {{ site.CFE_manuals_version }}
      ```
 
 2. Some other thing
-
-

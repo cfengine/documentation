@@ -111,4 +111,3 @@ make up the policy set ( *inputs* ), and the order of the bundles to be executed
 ( *bundlesequence* ).
 
 **See also:** [`inputs` in `body common control`][Components#inputs], [`bundlesequence` in `body common control`][Components#bundlesequence]
-

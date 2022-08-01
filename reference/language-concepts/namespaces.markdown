@@ -78,4 +78,3 @@ colon (`:`).
 thus can be referred to from any namespace without qualification.
 
 [%CFEngine_include_example(namespace_hard_classes.cf)%]
-

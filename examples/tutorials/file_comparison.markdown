@@ -422,4 +422,3 @@ bundle agent list_file_2
 ## Full Policy ##
 
 [%CFEngine_include_snippet(documentation/examples/tutorials/file_compare_test.cf, .* )%]
-

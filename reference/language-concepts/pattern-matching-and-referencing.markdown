@@ -422,4 +422,3 @@ work slightly differently, so check the documentation for the specifics):
 
 The `/s`, `/m`, and `/x` switches from PCRE are also available, but use them
 with great care!
-

@@ -428,4 +428,3 @@ echo 'host001' > /var/cfengine/state/cf-execd.sockets/cf-runagent.socket
 **History:**
 
 * 3.18.0 Added socket for triggering `cf-runagent` by hostname or IP.
-

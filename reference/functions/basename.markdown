@@ -20,5 +20,3 @@ This function implements the same behavior of basename program on Unix and Unix-
 **History:**
 
 - Introduced in 3.15.0
-
-

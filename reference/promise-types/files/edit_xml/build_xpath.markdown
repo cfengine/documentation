@@ -33,5 +33,3 @@ The resulting document can then be further modified using `insert_tree`,
 `set_text`, `set_attribute` etc promises. Using predicate statements to set
 attributes or text values directly via build_xpath can lead to non-convergent
 behavior, and is discouraged.
-
-
