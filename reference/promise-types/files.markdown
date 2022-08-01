@@ -1768,6 +1768,10 @@ recipe allows an ordered procedure to be convergent.
 
 **Default value:** false
 
+**Notes:**
+
+* Within `edit_line` bundles the variable `$(edit.empty_before_use)` holds this value, allowing for decisions to be bade based on it.
+
 **Example:**
 
 ```cf3
@@ -1776,6 +1780,7 @@ recipe allows an ordered procedure to be convergent.
      empty_file_before_editing => "true";
      }
 ```
+
 
 #### inherit
 
