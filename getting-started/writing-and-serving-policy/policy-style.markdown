@@ -34,7 +34,7 @@ but there seems to be a trend toward the reader optimized style.
 Here is an example of a policy written in the Normal Order. Note how
 `packages` are listed after `files`. This could confuse a novice who
 thinks that it is necessary for the files promise to only be attempted
-after the package promsie is kept. However this style can be useful to
+after the package promise is kept. However this style can be useful to
 a policy expert who is familiar with Normal Ordering.
 
 ```cf3

@@ -608,7 +608,7 @@ reports:
     "Some aspect of the promise was kept";
 
   signal_class_notkept::
-    "Some aspect of the promsie was unable to be repaired";
+    "Some aspect of the promise was unable to be repaired";
 
   signal_class_kept.signal_class_notkept::
     "All promise aspects were as desired";

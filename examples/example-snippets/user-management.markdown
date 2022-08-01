@@ -171,7 +171,7 @@ to have a separate promise to perform that cleanup.
 
 ## Local group management
 
-CFEngine does not currently have a native `groups` type promsie so you
+CFEngine does not currently have a native `groups` type promise so you
 will need to either edit the necessary files using `files` type
 promises, or arrange for the proper commands to be run in order to
 create or delete groups.

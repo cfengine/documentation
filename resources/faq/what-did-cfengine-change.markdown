@@ -53,7 +53,7 @@ bundle edit_line lines_present(lines)
 }
 ```
 
-In the verbose output as each promise is actuated a `BEGIN promsie` is emitted
+In the verbose output as each promise is actuated a `BEGIN promise` is emitted
 with the promise handle or filename and line number position if it does not have
 a handle. In the example output we can see that the promise for `/tmp/example`
 was `REPAIRED`.
