@@ -64,16 +64,16 @@ root@host001:~# cf-agent -Kf update.cf; cf-agent -KI
     info: Created directory '/home/bob/.ssh/.'
     info: Owner of '/home/bob/.ssh' was 0, setting to 1002
     info: Object '/home/bob/.ssh' had permission 0755, changed it to 0700
-    info: Copying from '192.168.33.2:/srv/ssh_authorized_keys/bob'
+    info: Copying from '192.168.56.2:/srv/ssh_authorized_keys/bob'
     info: Owner of '/home/bob/.ssh/authorized_keys' was 0, setting to 1002
     info: Created directory '/home/frank/.ssh/.'
     info: Owner of '/home/frank/.ssh' was 0, setting to 1003
     info: Object '/home/frank/.ssh' had permission 0755, changed it to 0700
-    info: Copying from '192.168.33.2:/srv/ssh_authorized_keys/frank'
+    info: Copying from '192.168.56.2:/srv/ssh_authorized_keys/frank'
     info: Owner of '/home/frank/.ssh/authorized_keys' was 0, setting to 1003
     info: Created directory '/home/kelly/.ssh/.'
     info: Owner of '/home/kelly/.ssh' was 0, setting to 1004
     info: Object '/home/kelly/.ssh' had permission 0755, changed it to 0700
-    info: Copying from '192.168.33.2:/srv/ssh_authorized_keys/kelly'
+    info: Copying from '192.168.56.2:/srv/ssh_authorized_keys/kelly'
     info: Owner of '/home/kelly/.ssh/authorized_keys' was 0, setting to 1004
 ```

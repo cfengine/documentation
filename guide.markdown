@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Guide
-published: true
+published: false
 sorting: 20
 ---
 
@@ -9,7 +9,7 @@ CFEngine is a configuration management system that provides a framework for auto
 
 CFEngine is decentralized and highly scalable. It is powered by autonomous agents that can continuously monitor, self-repair, and update or restore an entire IT system, with negligible impact on system resources or performance.
 
-See Also: [Introduction and System Overview][Introduction and System Overview]
+See Also: [Overview][Overview]
 
 ## CFEngine Features ##
 
@@ -21,7 +21,7 @@ See Also: [Introduction and System Overview][Introduction and System Overview]
 
 ## Choose a CFEngine Version
 
-[CFEngine Enterprise][CFEngine Enterprise] is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers).
+[CFEngine Enterprise](https://cfengine.com/product-overview/) is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers).
 
 * [Get the Enterprise Edition][evaluate cfengine]
 
@@ -37,7 +37,7 @@ See also:
 
 [%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
 
-See [Installation and Configuration][Installation and Configuration] for a more detailed guide on how to get
+See [Installation][Installation] for a more detailed guide on how to get
 CFEngine up and running for various environments.
 
 ## Try It
@@ -49,7 +49,7 @@ feel for the power and value of CFEngine:
 
 ## Learn More
 
-Take a look at [the CFEngine Guide][Guide] to learn more about CFEngine's architecture and components, as well as how to write policy that can help manage IT systems.
+Take a look at the [Getting Started][] section to learn more about CFEngine's architecture and components, as well as how to write policy that can help manage IT systems.
 
 Check out [External resources][External resources], for more guides, demos, and other resources from our CFEngine staff and our special CFEngine contributors.
 
@@ -61,9 +61,9 @@ experts if you need more help. Contact us!
 
 ## CFEngine Guide ##
 
-* [Introduction and System Overview][]
-* [Latest Release][]
-* [Installation and Configuration][]
+* [Overview][]
+* [Release Notes][]
+* [Installation][]
 	* [Pre-Installation Checklist]
 	* [General Installation]
 	* [Upgrading]

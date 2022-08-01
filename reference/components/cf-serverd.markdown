@@ -22,6 +22,7 @@ affected by `common` and `server` control bodies.
 
 * This daemon reloads it's config when the SIGHUP signal is received.
 * If `enable_report_dumps` exists in `WORKDIR` (`/var/cfengine/enable_report_dumps`) `cf-serverd` will log reports provided to `cf-hub` to `WORKDIR/diagnostics/report_dump` (`/var/cfengine/diagnostics/report_dumps`). This data is useful when troubleshooting reporting issues with CFEngine Enterprise.
+* `cf-serverd` always considers the class ```server``` to be defined.
 
 **History:**
 

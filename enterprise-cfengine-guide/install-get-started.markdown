@@ -1,9 +1,15 @@
 ---
 layout: default
 title: Install and Get Started
-published: true
+published: false
 sorting: 10
 ---
+
+<!--
+Delete  "Enterprise Install and Get Started"
+https://docs.google.com/document/d/1CeRR8cuMtrrr0X27gzVzP2ndiU0HuHvo7dJT2vIWfp0/edit#heading=h.978wiks7ber1
+-->
+
 
 * [Installation][Install and Get Started#Installation]
 * [Post-Install Configuration][Install and Get Started#Post-Install Configuration]
@@ -45,53 +51,7 @@ default. Metrics must match `monitoring_include` in the appropriate
 The [Masterfiles Policy Framework][Masterfiles Policy Framework] uses `body
 report_data_select default_data_select_policy_hub` to specify metrics that
 should be collected from policy hubs and `default_data_select_host` to specify
-metrics that should be collected from non hubs.
-
-For example:
-
-To collect all metrics from hubs:
-
-```cf3
-body report_data_select default_data_select_policy_hub
-# @brief Data to collect from policy servers by default
-#
-# By convention variables and classes known to be internal, (having no
-# reporting value) should be prefixed with an underscore. By default the policy
-# framework explicitly excludes these variables and classes from collection.
-{
-      metatags_include => { "inventory", "report" };
-      metatags_exclude => { "noreport" };
-      promise_handle_exclude => { "noreport_.*" };
-      monitoring_include => { ".*" };
-}
-```
-
-To collect ```cpu```, ```loadavg``` , ```diskfree```, ```swap_page_in```,
-```cpu_utilization```, ```swap_utilization```, and ```memory_utilization``` from
-non hubs:
-
-```cf3
-body report_data_select default_data_select_host
-# @brief Data to collect from remote hosts by default
-#
-# By convention variables and classes known to be internal, (having no
-# reporting value) should be prefixed with an underscore. By default the policy
-# framework explicitly excludes these variables and classes from collection.
-{
-      metatags_include => { "inventory", "report" };
-      metatags_exclude => { "noreport" };
-      promise_handle_exclude => { "noreport_.*" };
-      monitoring_include => {
-                              "cpu",
-                              "loadavg",
-                              "diskfree",
-                              "swap_page_in",
-                              "cpu_utilization",
-                              "swap_utilization",
-                              "memory_utilization",
-                              };
-}
-```
+metrics that should be collected from non hubs. Augments can be used to [configure which metrics should be collected][Masterfiles Policy Framework#Configure Enterprise Measurement/Monitoring Collection] for central reporting.
 
 ### Review settings
 

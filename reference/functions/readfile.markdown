@@ -10,7 +10,7 @@ tags: [reference, io functions, functions, readfile]
 **Description:**
 Returns the first `maxbytes` bytes from file `filename`.
 `maxbytes` is optional, if specified, only the first `maxbytes` bytes are read from `filename`.
-When `maxbytes` is `0` or not specified, the whole file will be read (but see **Notes** below).
+When `maxbytes` is `0`, `inf` or not specified, the whole file will be read (but see **Notes** below).
 
 [%CFEngine_function_attributes(filename, optional_maxbytes)%]
 
@@ -30,23 +30,14 @@ Output:
 
 **Notes:**
 
-* To reliably read files located within /proc or /sys directories,
-`maxsize` has to be set to `0`.
-
-* At the moment, only 4095 bytes can fit into a string variable.  This
-limitation may be removed in the future.  If this should happen, a
-warning will be printed.
-
-* If you request more bytes than CFEngine can read into a string
-variable (e.g. `999999999`), a warning will also be printed.
-
-* If either because you specified a large value, or you specified `0`,
-more bytes are read than will fit in a string, the string is
-truncated to the maximum.
-
 * On Windows, the file will be read in text mode, which means that
 CRLF line endings will be converted to LF line endings in the
 resulting variable. This can make the variable length shorter than the
 size of the file being read.
 
-**History:** Warnings about the size limit and the special `0` value were introduced in 3.6.0
+**History:**
+
+* Warnings about the size limit and the special `0` value were introduced in 3.6.0
+* 4095 bytes limitation removed in 3.6.3
+
+

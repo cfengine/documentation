@@ -1384,11 +1384,17 @@ files:
      create =>   "true";
 ```
 
-**Note:** In general, you should not use `create` with `copy_from` or
-`link_from` in files promises. These latter attributes automatically create
-the promised file, and using `create` may actually prevent the copy or link
-promise from being kept (since `create` acts first, which may affect file
-comparison or linking operations).
+**Notes:** In general, you should not use `create` with `copy_from`, `link_from`,
+`template_method`, or `content` attributes in files promises. These latter
+attributes automatically create the promised file, and using `create` may
+actually prevent the copy or link promise from being kept (since `create` acts
+first, which may affect file comparison or linking operations). Furthermore, an
+explicitly created file will be empty in the case of failure to render template
+if the `create` attribute is explicitly used.
+
+**History:**
+
+* 3.20.0 Changed default from `false` to `true` for cases of full file management ( e.g. when `template_method` is `mustache`, `inline_mustache` or `cfengine`, or when the `content` or `copy_from` attributes are used ).
 
 ### delete
 
@@ -1948,7 +1954,7 @@ bundle agent example
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012).  Mustache templates were introduced in 3.6.0.
 
-**See also:** `template_method`, `template_data`, `readjson()`, `parsejson()`,
+**See also:** [template_method][files#template_method], `template_data`, `readjson()`, `parsejson()`,
 `readyaml()`, `parseyaml()`, `mergedata()`,
 `data`, [Customize Message of the Day][Customize Message of the Day]
 
@@ -1969,7 +1975,7 @@ bundle agent example
 
 **History:** Was introduced in 3.12.0
 
-**See also:** `template_method`, `template_data`, `readjson()`, `parsejson()`,
+**See also:** [template_method][files#template_method], `template_data`, `readjson()`, `parsejson()`,
 `readyaml()`, `parseyaml()`, `mergedata()`,
 `data`, [Customize Message of the Day][Customize Message of the Day]
 
@@ -2994,7 +3000,7 @@ If this attribute is omitted, the result of the `datastate()` function
 call is used instead. See `edit_template` for how you can use the data
 state in Mustache.
 
-**See also:** `edit_template`, `template_method`, `datastate()`
+**See also:** `edit_template`, [template_method][files#template_method], `datastate()`
 
 ### template_method
 
@@ -3008,7 +3014,7 @@ implementation, but you can use `mustache` or `inline_mustache` as well.
 #### template_method cfengine
 
 The default native-CFEngine template format (selected when
-`template_method` is `cfengine` or unspecified) uses inline tags to
+[template_method][files#template_method] is `cfengine` or unspecified) uses inline tags to
 mark regions and classes. Each line represents an `insert_lines`
 promise, unless the promises are grouped into a block using:
 
@@ -3095,7 +3101,7 @@ Example ```cfengine``` template for apache vhost directives:
 
 #### template_method inline_mustache
 
-When `template_method` is `inline_mustache` the mustache input is not a file
+When [template_method][files#template_method] is `inline_mustache` the mustache input is not a file
 but a string and you must set `edit_template_string`.  The same rules apply
 for `inline_mustache` and `mustache`.  For mustache explanation see
 `template_method mustache`
@@ -3113,7 +3119,7 @@ for `inline_mustache` and `mustache`.  For mustache explanation see
 
 #### template_method mustache
 
-When `template_method` is `mustache` data must be provided to render the
+When [template_method][files#template_method] is `mustache` data must be provided to render the
 template with. Data can be provided by functions that return data ( i.e.
 `mergedata()`, `mapdata()`, `readdata()`, `findprocesses()`, etc ...), lists or
 data variables by reference `@(data)`, or by specifying data as inline json

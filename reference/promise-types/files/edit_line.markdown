@@ -89,14 +89,14 @@ There are several things to notice:
     -   CFEngine makes all the edits in the **copy** of the file. The
         filename is the same as your original file with the extension
         .cf-after-edit appended.
-    -   After all edits are complete (the `delete_lines`, `field_edits`,
-        `insert_lines`, and finally `replace_patterns` promises),
+    -   After all promises are complete (the `vars`, `classes`, `delete_lines`, `field_edits`,
+        `insert_lines`, `replace_patterns`, and finally `reports` promises),
         CFEngine checks to see if the new file is the same as the
         original one. If there are no differences, the promises have
         converged, so it deletes the copy, and the original is left
         completely unmodified.
     -   If there are any differences, CFEngine makes a copy of your
-        original file with the extension .cf-before-edit (so you always
+        original file with the extension `.cf-before-edit` (so you always
         have the most recent backup available), and then renames the
         edited version to your original filename.
 
