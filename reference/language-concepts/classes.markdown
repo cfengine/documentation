@@ -689,4 +689,3 @@ defining classes for a period of time as well as canceling them on demand.
 
 You can cancel a class with a [`classes`][Promise Types#classes] body.
 See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
-

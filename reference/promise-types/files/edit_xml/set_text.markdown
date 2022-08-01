@@ -24,4 +24,3 @@ The promise object referred to is a literal string of text.
 Note that typically only a single value string, within a single selected
 node, is set in each `set_text` promise. You may of course have multiple
 promises that each set a value string.
-

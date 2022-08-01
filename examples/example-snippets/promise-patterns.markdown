@@ -26,8 +26,3 @@ write policy for your system.
 * [Set up time management through NTP][Set up time management through NTP]
 * [Set up name resolution with DNS][Set up name resolution with DNS]
 * [Updating from a central policy server][Updating from a central policy server]
-
-
-
-
-

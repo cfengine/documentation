@@ -24,4 +24,3 @@ body-attributes. The promise object referred to is a literal string of text.
 Note that typically, only a single value string, within a single
 specified node, is deleted in each `delete_text` promise. You may of
 course have multiple promises that each delete a value string.
-

@@ -22,4 +22,3 @@ argument must be a user name or user id.
 Output:
 
 [%CFEngine_include_snippet(userexists.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-

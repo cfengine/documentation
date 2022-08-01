@@ -432,5 +432,3 @@ guest_environments:
        environment_host      => "atlas";
 }
 ```
-
-

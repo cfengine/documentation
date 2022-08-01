@@ -112,4 +112,3 @@ Ps. If you would like play around with the policy, delete the users after each r
 ```
 
 Mission accomplished!
-

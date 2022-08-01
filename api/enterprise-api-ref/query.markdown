@@ -178,5 +178,3 @@ Check the status of async scheduled job. When the query is finished it will retu
 **URI:** https://hub.cfengine.com/api/query/async/:id
 
 **Method:** DELETE
-
-

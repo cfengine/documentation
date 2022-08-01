@@ -102,5 +102,3 @@ organization, [contact us][contact us].
 * Bugs and improvement suggestions can be registered with our development team
 in our [public bug tracker][bug tracker]. Read the bug tracker information before you
 submit a bug.
-
-

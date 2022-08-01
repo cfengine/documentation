@@ -39,5 +39,3 @@ size of the file being read.
 
 * Warnings about the size limit and the special `0` value were introduced in 3.6.0
 * 4095 bytes limitation removed in 3.6.3
-
-

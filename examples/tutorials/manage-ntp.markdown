@@ -706,4 +706,3 @@ server 3.north-america.pool.ntp.org iburst
 Mission Accomplished!
 
 You have successfully completed this tutorial that showed you how to write a simple policy to ensure that NTP is installed, running and configured appropriately.
-

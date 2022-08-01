@@ -120,7 +120,3 @@ With CFEngine you can simplify management of configurations using templating. CF
 PS. If you manually change anything in `myapp.conf`, CFEngine will now restore it back to its desired state upon next run.
 
 If there is no change in the template (`myapp.conf.template`), the file (`myapp.config`), or the data used by the template, CFEngine will not make any changes.
-
-
-
-

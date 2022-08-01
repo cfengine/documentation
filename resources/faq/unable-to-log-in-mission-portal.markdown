@@ -63,4 +63,3 @@ try to log into Mission Portal.
 [root@hub ~]# cf-agent -Kf update.cf; cf-agent -KI
     info: Updated '/var/cfengine/httpd/htdocs/application/config/config.php' from source '/var/cfengine/share/GUI/application/config/config.php' on 'localhost'
 ```
-

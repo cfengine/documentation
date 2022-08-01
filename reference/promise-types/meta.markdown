@@ -28,4 +28,3 @@ CFEngine Enterprise variable reports.
 ```
 
 The value of meta data can be of the types `string` or `slist` or `data`.
-

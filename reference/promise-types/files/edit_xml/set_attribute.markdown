@@ -38,4 +38,3 @@ of the XML file
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
-

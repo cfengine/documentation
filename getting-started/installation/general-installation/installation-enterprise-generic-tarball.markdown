@@ -60,4 +60,3 @@ Finally, bootstrap the agent, and start the cfengine services:
   # Start the cfengine3 service.
   systemctl start cfengine3
 ```
-

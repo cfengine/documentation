@@ -57,4 +57,3 @@ If you click on the Dashboard tab and go to the front page, you will see that ou
 In this tutorial, we have shown how easy it is to prove compliance of any of your policies by using the Dashboard alert functionality.
 
 If you would like to get an overview of whenever CFEngine is making a change to your system, simply create another alert, but this time set the Promise Status to ‘Repaired’. This time you will see an alert whenever CFEngine is repairing a drift, for instance if a user is accidentially deleted.
-

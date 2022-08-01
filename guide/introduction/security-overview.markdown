@@ -8,8 +8,3 @@ tags: [overviews, security overview]
 
 
 ## Security and CFEngine ##
-
-
-
-
-

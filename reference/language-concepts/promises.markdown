@@ -171,4 +171,3 @@ echo command:
 
 These two promises have default attributes for everything except the
 `promiser'. Both promises simply cause CFEngine to print a message.
-

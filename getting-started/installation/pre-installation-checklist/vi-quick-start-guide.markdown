@@ -53,5 +53,3 @@ exits from files, and the _insert_ mode with which the user inserts text—eithe
 then edit any part of the text in the file.
 
 open file using `vi filename`
-
-

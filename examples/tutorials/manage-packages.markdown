@@ -140,4 +140,3 @@ your entire infrastructure. This is where the real power of CFEngine becomes
 apparent! With few changes in a single place, you can control the desired state
 of your entire infrastructure, whether it’s composed of a few or many thousands
 of machines.
-

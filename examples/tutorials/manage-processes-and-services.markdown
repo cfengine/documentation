@@ -83,4 +83,3 @@ Congratulations!
 That’s it! Every time CFEngine runs the policy, it will check for the process,
 and if it’s not there, will start it. This is how CFEngine maintains your system
 in the correct, desired state.
-

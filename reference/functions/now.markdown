@@ -78,4 +78,3 @@ based on a time relative to the agent start can make use of this function.
 select processes based on relative execution time.
 
 [%CFEngine_include_example(processes_define_class_based_on_process_runtime.cf)%]
-

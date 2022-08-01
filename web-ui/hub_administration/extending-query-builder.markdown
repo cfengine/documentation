@@ -196,7 +196,3 @@ table in the Query builder. You can use this table as predefined ones.
 Report based on the new table:
 
 ![Report based on the new table](extended-query-builder-report.png)
-
-
-
-

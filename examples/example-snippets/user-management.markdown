@@ -244,4 +244,3 @@ usermod: group 'cfengineers' does not exist
 ## Get a list of users
 
 [%CFEngine_include_snippet(get_a_list_of_users.cf, .* )%]
-

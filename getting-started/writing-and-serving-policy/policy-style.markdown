@@ -529,5 +529,3 @@ is available from the contrib directory in the core repository. You can run
 `reindent.pl FILE1.cf FILE2.c FILE3.h` to reindent files, if you don't want to
 set up Emacs. It will rewrite them with the new indentation, using Emacs in
 batch mode.
-
-

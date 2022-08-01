@@ -658,5 +658,3 @@ bundle agent main
 
 - version `latest` is *not* supported when promising an absence
 - `list-updates` is *not* implemented, snaps are automatically updated by default
-
-

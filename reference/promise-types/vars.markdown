@@ -648,4 +648,3 @@ R: {
   "default:def.some_var": "My value for some_var defined in Policy"
 }
 ```
-

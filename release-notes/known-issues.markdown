@@ -86,4 +86,3 @@ platforms than Debian, Ubuntu and Red Hat/CentOS.
 
 In order to add software inventory for other platforms,
 please contact support for a custom policy.
-

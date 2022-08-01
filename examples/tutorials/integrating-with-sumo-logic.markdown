@@ -199,5 +199,3 @@ The policy as found in `sumologic_policy_update.cf`.
     {
             empty_file_before_editing => "true";
     }
-
-

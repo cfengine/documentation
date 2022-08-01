@@ -6,4 +6,3 @@ tags: [reference, cfe_internal, MPF]
 ---
 
 [%CFEngine_library_include(cfe_internal/recommendations)%]
-
