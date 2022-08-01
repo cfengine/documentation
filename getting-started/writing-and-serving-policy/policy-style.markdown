@@ -355,7 +355,7 @@ Words are delimited by capital letters, except the initial word.
 
 ### Hungarian notation
 
-[Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation) where can
+[Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation) can
 help improve the readability of policy, especially when working with lists and
 data containers where the use of `@` or `$` significantly affects the behavior
 of the policy.
