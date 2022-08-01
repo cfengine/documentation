@@ -1516,8 +1516,8 @@ a file system.
 ```cf3
 body depth_search
 {
-# no dot directories
-exclude_dirs => { "\..*" };
+    # no dot directories
+    exclude_dirs => { "\..*" };
 }
 ```
 
@@ -2202,9 +2202,9 @@ not other attributes, such as permissions.
 ```cf3
 body files_select example
 {
-# Files modified more than one year ago (i.e., not in mtime range)
-mtime => irange(ago(1,0,0,0,0,0),now);
-file_result => "!mtime";
+    # Files modified more than one year ago (i.e., not in mtime range)
+    mtime => irange(ago(1,0,0,0,0,0),now);
+    file_result => "!mtime";
 }
 ```
 
@@ -2224,17 +2224,17 @@ A range of times during which a file was accessed can be specified in a
 ```cf3
 body file_select used_recently
 {
-# files accessed within the last hour
-atime     => irange(ago(0,0,0,1,0,0),now);
-file_result => "atime";
+    # files accessed within the last hour
+    atime     => irange(ago(0,0,0,1,0,0),now);
+    file_result => "atime";
 }
 
 
 body file_select not_used_much
 {
-# files not accessed since 00:00 1st Jan 2000 (in the local timezime)
-atime     => irange(on(2000,1,1,0,0,0),now);
-file_result => "!atime";
+    # files not accessed since 00:00 1st Jan 2000 (in the local timezime)
+    atime     => irange(on(2000,1,1,0,0,0),now);
+    file_result => "!atime";
 }
 ```
 
