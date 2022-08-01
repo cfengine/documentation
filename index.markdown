@@ -16,7 +16,7 @@ includes what is new, supported platforms, how to upgrade
 describes syntax and language elements
 
 ## [Examples][Examples and Tutorials]
-a set of examples, including “hello world”
+a set of examples, including "hello world"
 
 ## [Library Reference][All Promise and Body Types]
 overview of all promises and attributes

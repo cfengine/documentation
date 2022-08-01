@@ -29,7 +29,7 @@ Gain visibility into your infrastructure and applications, and be alerted to iss
 
 ### User Interface ###
 
-The CFEngine Enterprise Mission Portal provides a central dashboard for real-time monitoring, search, and reporting for immediate visibility into your environment’s actual vs desired state. You can also use Mission Portal to set individual and group alerts and track system events that make you aware of specific infrastructure changes.
+The CFEngine Enterprise Mission Portal provides a central dashboard for real-time monitoring, search, and reporting for immediate visibility into your environment's actual vs desired state. You can also use Mission Portal to set individual and group alerts and track system events that make you aware of specific infrastructure changes.
 
 <img src="Dashboard.png" alt="Dashboard" image="700px">
 

@@ -138,5 +138,5 @@ Run `cf-promises` on the policy to verify that there are no errors.
 Wait a few minutes for the new policy to propagate and start taking effect in
 your entire infrastructure. This is where the real power of CFEngine becomes
 apparent! With few changes in a single place, you can control the desired state
-of your entire infrastructure, whether it’s composed of a few or many thousands
+of your entire infrastructure, whether it's composed of a few or many thousands
 of machines.

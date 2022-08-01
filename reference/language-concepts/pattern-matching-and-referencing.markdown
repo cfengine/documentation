@@ -55,11 +55,11 @@ Consider the examples below:
 There are other filenames that could match this pattern, but if, for example,
 there were to exist a file `/home/mark/tmp/cf3_test`, then we would have:
 
-    ‘$(match.0)’
+    '$(match.0)'
     equal to `/home/mark/tmp/cf3_test'
-    ‘$(match.1)’
+    '$(match.1)'
     equal to `3'
-    ‘$(match.2)’
+    '$(match.2)'
     equal to `test'
 
 Note that because the pattern allows for an optional '2' or '3' to follow the
@@ -67,11 +67,11 @@ letters `cf`, it is possible that `$(match.1)` would contain the empty string.
 For example, if there was a file named `/home/mark/tmp/cf_widgets`, then we
 would have
 
-    ‘$(match.0)’
+    '$(match.0)'
     equal to `/home/mark/tmp/cf_widgets'
-    ‘$(match.1)’
+    '$(match.1)'
     equal to `'
-    ‘$(match.2)’
+    '$(match.2)'
     equal to `widgets'
 
 Now look at the edit bundle. This takes a parameter (which is the
@@ -166,7 +166,7 @@ The resulting file is edited like this:
 Be careful when using patterns to search for files that are altered by
 CFEngine if you are not using a file repository. Each time CFEngine makes a
 change it saves an old file into a copy like `cf3_test.cf-before-edit`. These
-new files then get matched by the same expression above – because it ends in
+new files then get matched by the same expression above - because it ends in
 the `generic.*`), or does not specify a tail for the expression. Thus CFEngine
 will happily edit backups of the edit file too, and generate a recursive
 process, resulting in something like the following:
@@ -317,17 +317,17 @@ case of `/tmp//something` (or `/tmp/something`).
 ### Anchored vs. unanchored regular expressions
 
 CFEngine uses the full power of regular expressions, but there are two
-“flavors” of regex. Because they behave somewhat differently (while still
+"flavors" of regex. Because they behave somewhat differently (while still
 utilizing the same syntax), it is important to know which one is used for a
 particular component of CFEngine:
 
-An “anchored” regular expression will only successfully match an entire
+An "anchored" regular expression will only successfully match an entire
 string, from start to end. An anchored regular expression behaves as if it
 starts with `^` and ends with `$`, whether you specify them yourself or not.
 Furthermore, an anchored regular expression cannot have these automatic
 anchors removed.
 
-An “unanchored” regular expression may successfully match anywhere in a
+An "unanchored" regular expression may successfully match anywhere in a
 string. An unanchored regex may use anchors (such as `^`, `$`, `\A`, `\Z`,
 `\b`, etc.) to restrict where in the string it may match. That is, an
 unanchored regular expression may be easily converted into a partially- or

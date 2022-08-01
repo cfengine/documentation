@@ -10,7 +10,7 @@ tags: [overviews, special topics, guide]
 
 DevOps is a term coined by Patrick Debois in 2009, from an amalgamation of
 Development and Operations. It expresses a change in the way companies are
-thinking about IT – a change from segregated IT infrastructure to highly
+thinking about IT - a change from segregated IT infrastructure to highly
 integrated platforms. Leading the way is a group of highly innovative Web-based
 companies whose businesses depend on very specific arrangements of
 infrastructure. It is about giving software developers more influence over the
@@ -21,7 +21,7 @@ speed as agile development teams.
 
 
 The proliferation of Free and Open Source software has put powerful software
-components in the hands of a broader range of developers than ever before – and
+components in the hands of a broader range of developers than ever before - and
 businesses everywhere are exploiting this software by adapting it and combining
 it is a wealth of mutations. This blurs the line between what used to be
 development and what used to be the system administrator's domain (operations).
@@ -35,7 +35,7 @@ consumers. With this basic premise of agility, companies working in this area
 naturally embrace a rapid innovation cycle, meaning a fast release cycle too.
 Traditional IT management methods can be perceived as too slow in such an
 environment. An important part of DevOps is that it naturally encompasses the
-idea of business integration – or IT for a purpose.
+idea of business integration - or IT for a purpose.
 
 # Should Web and IT management be closely related?
 
@@ -59,7 +59,7 @@ suggest not. HTTP is an inefficient protocol for operations. It was designed for
 decentralized 1000000:1 communication, as testified by the extensive need for
 load balancers in web farms.
 
-At CFEngine, we believe in lightweight management – made as simple as possible,
+At CFEngine, we believe in lightweight management - made as simple as possible,
 but no simpler.
 
 # How do we make controlled change faster?
@@ -243,7 +243,7 @@ to the next,...' and so on, because our brains are wired to see patterns.
 Thus, loops are as useful for configuration as for programming. We only want to
 simplify the syntax once again to hide redundant words like `foreach'. To do
 this, CFEngine makes loops implicit. If you use a scalar variable reference
-‘$(mylist)’ to a list variable ‘@(mylist)’, CFEngine assumes you want to iterate
+'$(mylist)' to a list variable '@(mylist)', CFEngine assumes you want to iterate
 over each case.
 
 ```cf3

@@ -112,7 +112,7 @@ The CFEngine 3 language has a few simple rules:
 
     In each of these cases, the right hand side is a user choice.
 
-	CFEngine uses many `constraint expressions' as part of the body of a promise. These take the form: left-hand-side (cfengine word) ‘=>’ right-hand-side (user defined data). This can take several forms:
+	CFEngine uses many `constraint expressions' as part of the body of a promise. These take the form: left-hand-side (cfengine word) '=>' right-hand-side (user defined data). This can take several forms:
 
 	    cfengine_word => user_defined_template(parameters)
 	        user_defined_template

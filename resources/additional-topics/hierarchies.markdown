@@ -28,7 +28,7 @@ to beauthoritative, i.e. more important than the `leaves'. Each leaf node is
 then subject to the control of the root in a top down manner.
 
 The opposite of a hierarchy is a mesh or web (figure (c)), which has no special
-or privileged node – nodes are simply connected by some kind of relationship. In
+or privileged node - nodes are simply connected by some kind of relationship. In
 mesh organization, each individual has an area of responsibility and they talk
 on demand to other nodes, without any particular ranking. If you move in a mesh,
 you cannot easily measure how far you are away from a given point, as their
@@ -38,7 +38,7 @@ Mesh architectures are often robust to failure as there can be multiple `peer to
 peer' routes for passing messages or information.
 
 Top-down is is a cultural prejudice or `norm', as most human societies work in
-this way. However it is not a necessity. A network service is bottom-up – there
+this way. However it is not a necessity. A network service is bottom-up - there
 it is the leaves which drive requests that end at a single central server.
 Hierarchies are special cases of networks, and (as all special cases) they are
 fragile, because the have top-down redundancy, but not bottom-up redundancy. We
@@ -123,7 +123,7 @@ hierarchy.
 
     `Sets, sets, sets ... all you ever think about it sets!'
 
-    – Anonymous
+    - Anonymous
 
 Underlying hierarchies and networks is the concept of sets. A set or collection
 of something is just a number of instances that satisfy some property. For
@@ -137,7 +137,7 @@ members. Containment in classes is the basis for hierarchies in Object
 Orientation, for instance.
 
 We often write subset membership using a membership `.' character, e.g. if
-‘linux’ is the set of hosts with property `linux', then a subset (or sub-class)
+'linux' is the set of hosts with property `linux', then a subset (or sub-class)
 of these hosts is `debian' (see figure). The class 64 bit hosts is not a subset
 of linux, as part of it lies outside. It is a subset of hosts.
 
@@ -160,7 +160,7 @@ Indeed, it encourages you to use as many overlapping sets as possible to create
 optimum, simple categories to address the parts of your organization. This gives
 us great power. We can for instance extract the list of all English speaking
 entities from the definitions about our organization, by adding a defintion of
-set union (OR or ‘|’) and intersection (AND or ‘.’):
+set union (OR or '|') and intersection (AND or '.'):
 
 ```cf3
 bundle agent example
@@ -262,7 +262,7 @@ automatically inherited by all other bundles.
 ## Inheritance of variable definitions
 
 Variables in CFEngine are globally accessible, but you must say what bundle you
-are talking about by writing ‘$(bundle.scalar)’ or ‘@(bundle.list)’. If you omit
+are talking about by writing '$(bundle.scalar)' or '@(bundle.list)'. If you omit
 the `bundle', it is assumed that the variable is in the current bundle.
 
 ```cf3
@@ -320,7 +320,7 @@ using the following body agent control promises.
 
 Be aware of the security implications of inheritance. Because of the assumption
 of authority, by promising to use the inheritance, you have subordinated your
-input to the source – or voluntarily given up the right to say no to whatever
+input to the source - or voluntarily given up the right to say no to whatever
 you have subscribed to. You have implicity trusted them.
 
 # Expressing `is a' or `has a'
@@ -366,8 +366,8 @@ the dilemma that programmers face when designing new software, and if they make
 the wrong choices for their class hierarchy, it can cost a lot of work to
 redesign everything again from the beginning. This is why inheritance and strict
 class hierarchies are a very fragile way of organizing something. Using a
-patchwork of sets, CFEngine potentially avoids this problem – but you can still
-make a mess – it seems to be programmed into us to put systems into
+patchwork of sets, CFEngine potentially avoids this problem - but you can still
+make a mess - it seems to be programmed into us to put systems into
 hierarchy-like `container' categories anyway, and this can end with confusion.
 
 The keyt issue is: how tdo we slice and dice the cake into the largest pieces?

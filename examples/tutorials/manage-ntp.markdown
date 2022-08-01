@@ -69,7 +69,7 @@ A variable with the name `ntp_package_name` is declared and it is assigned a val
        "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
 ```
 
-Notice the `ntp_package_name` variable is referenced here, which evaluates to `ntp` as the promiser. You can also associate a stakeholder aka promisee to this promiser. The stakeholder association is optional, but is particularly useful in when you wish to provide some structure in your policy to tie it to a business rule. In this example, what we are stating is this – "Make sure NTP is installed as it is described in StandardsDoc 3.2.1".
+Notice the `ntp_package_name` variable is referenced here, which evaluates to `ntp` as the promiser. You can also associate a stakeholder aka promisee to this promiser. The stakeholder association is optional, but is particularly useful in when you wish to provide some structure in your policy to tie it to a business rule. In this example, what we are stating is this - "Make sure NTP is installed as it is described in StandardsDoc 3.2.1".
 
 This promiser has a number of additional attributes defined:
 
@@ -222,7 +222,7 @@ Let's dissect this policy and review the differences in the policy.
        "ntp_service_name" string => "ntp";
 ```
 
-The first thing that you will notice is that the variable declarations section has been expanded. Recall that you completed part 1 of this tutorial by creating packages promises that works across Debian and redhat. While the package name for NTP is the same between Debian and Red Hat, the service names are actually different. Therefore, classes introduced here to distinguish the service name for NTP between these two environments. The CFEngine agents automatically discover environment properties and defines [*hard classes*][language-concepts-classes-hard] that can be used – this includes classes such as `debian` and `redhat` that define the host's operating system.
+The first thing that you will notice is that the variable declarations section has been expanded. Recall that you completed part 1 of this tutorial by creating packages promises that works across Debian and redhat. While the package name for NTP is the same between Debian and Red Hat, the service names are actually different. Therefore, classes introduced here to distinguish the service name for NTP between these two environments. The CFEngine agents automatically discover environment properties and defines [*hard classes*][language-concepts-classes-hard] that can be used - this includes classes such as `debian` and `redhat` that define the host's operating system.
 
 #### reports
 

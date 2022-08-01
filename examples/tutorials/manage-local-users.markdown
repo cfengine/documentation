@@ -96,7 +96,7 @@ Congratulations! You should now see adam and eva added to the groups security
 and webadmin. **NOTE:** CFEngine's users type promise will not create groups, so
 you must make sure the groups exists.
 
-Verify the result: Have ssh-keys have been copied from `/tmp` to user’s `~/.ssh`
+Verify the result: Have ssh-keys have been copied from `/tmp` to user's `~/.ssh`
 directory?
 
 ```console

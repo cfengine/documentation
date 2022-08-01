@@ -30,10 +30,10 @@ access a viewpoint that is not available to an individual. An orchestra is a
 weakly coupled expert system in which the management (conductor) provides a
 service to the players.
 
-CFEngine works like an orchestra – this is why is scales so well. Each computer
+CFEngine works like an orchestra - this is why is scales so well. Each computer
 is an autonomous entity, getting its script and a few occasional pieces of
 information from the policy server (conductor). The coupling between the agents
-is weak – there is slack that makes the behaviour robust to minor errors in
+is weak - there is slack that makes the behaviour robust to minor errors in
 communication or timing.
 
 # How does CFEngine deal with modularity and orchestration?
@@ -49,7 +49,7 @@ can be independent (and therefore parallelizable) or they can be dependent (in
 which case the sequence in which they verify their promises matters).
 
 In a computer centre with many different machines, there is an additional
-dimension to orchestration – multiple orchestras. Each machine has a number of
+dimension to orchestration - multiple orchestras. Each machine has a number of
 resources that need to be orchestrated, and the different machines themselves
 might also need to cooperate because they provide services to one another. The
 principles are the same in both cases, but the confusion between them is
@@ -197,7 +197,7 @@ bundlesequence => {
 ```
 
 This obviously looks simple, but this kind of simplicity is cheating as we are
-hiding all the details of what is going to happen – we don't know if they are
+hiding all the details of what is going to happen - we don't know if they are
 hard-coded, or whether we can decide ourselves. Anyone can play that game! The
 true test is whether we can retain the power to decide the low-level details
 without having to program in a low level language like Ruby, Python or Perl.
@@ -253,7 +253,7 @@ services:
 # Hiding details
 
 Resource abstraction, or hiding system specific details inside a kind of
-grey-box, is just another service as far as CFEngine is concerned – and we
+grey-box, is just another service as far as CFEngine is concerned - and we
 generally map services to bundles.
 
 Many system variables are discovered automatically by CFEngine and provided "out
@@ -440,7 +440,7 @@ Nevertheless there are sometimes cases of strong inter-dependency (that we
 strive to avoid, as they lead to most of the difficulties of system management)
 where order is important. In re-designing CFEngine, we have taken a pragmatic
 approach to ordering. Essentially, CFEngine takes care of ordering for you for
-most cases – and you can override the order in three ways:
+most cases - and you can override the order in three ways:
 
  * CFEngine checks promises of the same type in the order in which they are
    defined, unless overridden
@@ -748,8 +748,8 @@ attractive in some cases. As a strategy this way of thinking requires a lot of
 caution. We have to assume that all knowledge gathered about an environment is
 subject to errors, latencies and a dozen other uncertainties that make any
 snapshot of remotely assessed current state subject to considerable healthy
-suspicion. This is not a weakness of CFEngine – in fact CFEngine has mechanisms
-that make it as reliable as you are likely to find in any technology – rather it
+suspicion. This is not a weakness of CFEngine - in fact CFEngine has mechanisms
+that make it as reliable as you are likely to find in any technology - rather it
 is a fundamental limitation of distributed systems, and it is strongly dependent
 on the architectures you build.
 
