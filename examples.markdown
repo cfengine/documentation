@@ -2,7 +2,7 @@
 layout: default
 title: Examples and Tutorials
 published: true
-sorting: 40
+sorting: 60
 tags: [Examples]
 ---
 

@@ -15,6 +15,10 @@ which hosts `cf-agent` will be started, and classes that the user requests
 `cf-agent` should define on execution. The latter type is regulated by
 `cf-serverd`'s [role based access control][roles].
 
+**Notes:**
+
+* `cf-runagent` always considers the class ```runagent``` to be defined.
+
 ## Command reference ##
 
 [%CFEngine_include_snippet(cf-runagent.help, [\s]*--[a-z], ^$)%]
@@ -290,3 +294,23 @@ body runagent control
 ```
 
 **See also:** [body `copy_from` timeout][files#timeout], [agent `default_timeout`][cf-agent#default_timeout]
+
+## Sockets
+
+`cf-runagent` can be triggered by writing a hostname or IP into a socket provided by `cf-execd`.
+
+**Notes:**
+
+* Unlike execution triggered with the `cf-runagent` binary, there is currently no capability to define additional options like defining additional classes, or the remote bundlesequence.
+
+**Example:**
+
+```console
+echo 'host001' > /var/cfengine/state/cf-execd.sockets/cf-runagent.socket
+```
+
+**See also:** [`cf-execd`][cf-execd], [`runagent_socket_allow_users`][cf-execd#runagent_socket_allow_users]
+
+**History:**
+
+* 3.18.0 Added socket for triggering `cf-runagent` by hostname or IP.

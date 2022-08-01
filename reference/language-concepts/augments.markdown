@@ -9,8 +9,49 @@ tags: [manuals, language, syntax, concepts, augments]
 Augments files can be used to define variables and classes for use by
 **all** CFEngine components **before** any parsing or evaluation happen. Augments are fundamentally
 JSON data files, so you should view and edit them with a JSON-aware editor if
-possible. This is a convenient way to override defaults defined in the
-Masterfiles Policy Framework without modifying the shipped policy itself.
+possible. This is a convenient way to override defaults defined in the default policy,
+the Masterfiles Policy Framework (MPF), without modifying the shipped policy files.
+
+## Using the MPF without maintaining your own patches to it ##
+
+As an example, you can add your own policy file to inputs and bundle name to the
+bundle sequence, without editing `promises.cf`, by adding the Augments file below
+(`/var/cfengine/masterfiles/def.json`):
+
+```json
+{
+  "inputs": ["services/my_policy_file.cf"],
+  "vars":
+  {
+    "control_common_bundlesequence_end": ["my_bundle_name"]
+  }
+}
+```
+
+In this case, the contents of the policy file, `/var/cfengine/masterfiles/services/my_policy_file.cf`, could look something like this:
+
+```cf3
+bundle agent my_bundle_name
+{
+  files:
+    "/tmp/hello"
+      create => "true",
+      content => "cfengine";
+}
+```
+
+You can ensure the file is deleted and use the info log output to confirm that the policy is actually being run:
+
+```
+$ cf-agent -Kf update.cf && cf-agent -K
+$ rm /tmp/hello ; cf-agent -KI
+    info: Created file '/tmp/hello', mode 0600
+    info: Updated content of '/tmp/hello' with content 'cfengine'
+```
+
+In this example, `control_common_bundlesequence_end` is a special variable, handled by the Masterfiles Policy Framework (MPF).
+To learn about more variables like this and ways to interact with the MPF without editing it, see the [MPF Reference documentation][Masterfiles Policy Framework].
+The rest of this documentation page below focuses on the specifics of how augments files work, independently of everything they can be used for in the MPF.
 
 ## Augments Files ##
 
@@ -196,6 +237,10 @@ bundle agent my_bundle
 }
 ```
 
+**Notes:**
+* ```vars``` and ```variables``` keys are allowed concurrently in the same file.
+* If ```vars``` and ```variables``` keys in the same augments file define the same variable, the definition provided by the **```variables``` key wins**.
+
 **History:**
 
 * Added in 3.18.0
@@ -255,6 +300,10 @@ Variables of other types than string can be defined too, like in this example
     }
 }
 ```
+
+**Notes:**
+* ```vars``` and ```variables``` keys are allowed concurrently in the same file.
+* If ```vars``` and ```variables``` keys in the same augments file define the same variable, the definition provided by the **```variables``` key wins**.
 
 **History:**
 

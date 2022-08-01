@@ -1156,6 +1156,30 @@ The name of the operating system according to the kernel.
 
 **See also:** [`sys.ostype`][sys#sys.ostype]
 
+### sys.os_name_human
+
+A human friendly version of the operating system that's running.
+
+**Example policy:**
+
+```cf3
+bundle agent __main__
+{
+   reports:
+    "$(sys.os_name_human)";
+}
+```
+
+**Example policy output:**
+
+```
+R: Ubuntu
+```
+
+**History:**
+
+* 3.18.0 introduced
+
 ### sys.os_release
 
 Information parsed from `/etc/os-release` if present.
@@ -1191,6 +1215,31 @@ R: {
 **History:**
 
 - Added in 3.11.0
+
+### sys.os_version_major
+
+The major version of the operating system that's running.
+
+**Example policy:**
+
+```cf3
+bundle agent __main__
+{
+   reports:
+    "$(sys.os_version_major)";
+}
+```
+
+**Example policy output:**
+
+```
+R: 22
+```
+
+**History:**
+
+* 3.18.0 introduced
+
 
 ### sys.ostype
 
