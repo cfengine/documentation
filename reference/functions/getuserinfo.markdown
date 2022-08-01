@@ -38,7 +38,7 @@ And variable contents:
     "uid": 1000,
     "username": "theuser"
   }
-  
+
   "root": {
     "description": "root",
     "gid": 0,

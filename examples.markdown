@@ -10,13 +10,13 @@ tags: [Examples]
 
 * [Example Snippets][Example Snippets]: This section is divided into topical areas and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.
 
-Note: CFEngine also includes a small set of examples by default, which can be 
+Note: CFEngine also includes a small set of examples by default, which can be
 found in `/var/cfengine/share/doc/examples`.
 
 * [Enterprise API Examples][Enterprise API Examples]
 * [Tutorials][Tutorials]
 
-See Also: 
+See Also:
 
 * [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
 	* ["Hello World" Policy Example][Examples and Tutorials#"Hello World" Policy Example]
@@ -45,7 +45,7 @@ intent. Bundles allow related promises to be grouped together, as illustrated in
 
 Following these steps, you will login to your policy server via the SSH protocol, use the vi command line editor to create a policy file named hello_world.cf, and create a bundle that calls a promise to display some text.
 
-1. Log into a running server machine using ssh (PuTTY may be used if using Windows). 
+1. Log into a running server machine using ssh (PuTTY may be used if using Windows).
 2. Type ```sudo su``` for super user (enter your password if prompted).
 3. To get to the __masterfiles__ directory, type ```cd /var/cfengine/masterfiles```.
 4. Create the file with the command: ```vi hello_world.cf ```
@@ -57,21 +57,21 @@ Following these steps, you will login to your policy server via the SSH protocol
 	  reports:
 
 		any::
-		  
+
 		  "Hello World!";
 
 	}
 	```
 
 6. Exit the "Insert" mode by pressing the "esc" button. This will return to the command prompt.
-7. Save the changes to the file by typing ```:w``` then "Enter". 
+7. Save the changes to the file by typing ```:w``` then "Enter".
 8. Exit vi by typing ```:q``` then "Enter".
 
 In the policy file above, we have defined an **agent bundle** named `hello_world`. Agent
 bundles are only evaluated by **cf-agent**, the [agent component][cf-agent] of CFEngine.
 
 This bundle [promises][Promise Types] to [report][reports] on any [class of
-hosts][Classes and Decisions]. 
+hosts][Classes and Decisions].
 
 
 
@@ -99,10 +99,10 @@ As you get familiar with CFEngine, you'll probably start shortening this command
 
 
 Note the full path to the binary in the above command. CFEngine stores its binaries in /var/cfengine/bin
-on Linux and Unix systems. Your path might vary depending on your platform and the packages your are using. 
-CFEngine uses /var because it is one of the Unix file systems that resides locally. 
-Thus, CFEngine can function even if everything else fails 
-(your other file systems, your network, and even system binaries) and possibly repair problems. 
+on Linux and Unix systems. Your path might vary depending on your platform and the packages your are using.
+CFEngine uses /var because it is one of the Unix file systems that resides locally.
+Thus, CFEngine can function even if everything else fails
+(your other file systems, your network, and even system binaries) and possibly repair problems.
 
 
 
@@ -115,7 +115,7 @@ all CFEngine components and therefore affect the behavior of all components. Not
  one `body common control` is allowed per agent activation.
 
 Go back into vi by typing "vi" at the prompt. Then type ```i``` to insert
- __body common control__ to `hello_world.cf`. Place it above __bundle agent hello_world__, as 
+ __body common control__ to `hello_world.cf`. Place it above __bundle agent hello_world__, as
 shown in the following example:
 
 ```cf3
@@ -129,7 +129,7 @@ bundle agent hello_world
   reports:
 
     any::
-      
+
       "Hello World!";
 
 }
@@ -138,7 +138,7 @@ bundle agent hello_world
 Now press "esc" to exit the "Insert" mode, then type ```:w``` to save the file changes and "Enter".
 Exit vi by typing ```:q``` then "Enter." This will return to the prompt.
 
-Execute the following command:  
+Execute the following command:
 ```console
 /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
 ```
@@ -184,19 +184,19 @@ bundle agent hello_world
   reports:
 
     any::
-      
+
       "Hello World!";
 
 }
 ```
 
-Now exit "Insert" mode by pressing "esc". Save file changes by typing ```:w``` then "Enter" 
+Now exit "Insert" mode by pressing "esc". Save file changes by typing ```:w``` then "Enter"
 then exit vi by typing ```:q``` then "Enter". This will return to the prompt.
 
 Make the policy file executable, and then run it, by typing the following two commands:
 
 ```console
-chmod +x ./hello_world.cf 
+chmod +x ./hello_world.cf
 ```
 
 Followed by:
@@ -221,16 +221,16 @@ doing the following on your policy server:
 
 1. Ensure the example is located in `/var/cfengine/masterfiles`.
 
-2. If the example contains a `body common control` section, delete it. That 
+2. If the example contains a `body common control` section, delete it. That
 section will look something like this:
 
-	```cf3  
+	```cf3
 		  body common control
 		  {
 			bundlesequence  => { "hello_world" };
 		  }
 	```
-		
+
 You cannot have duplicate control bodies (i.e. two
 agent control bodies, one in the main file and one
 in the example) as CFEngine won't know which it
@@ -239,12 +239,12 @@ should use and they may conflict.
 To resolve this, copy the contents of the control body section from the
 example into the identically named control body section in the main policy
 file `/var/cfengine/masterfiles/promises.cf`and then remove the control body
-from the example.		
+from the example.
 
 3. Insert the example's bundle name in the `bundlesequence` section
     of the main policy file `/var/cfengine/masterfiles/promises.cf`:
 
-	```cf3  
+	```cf3
 		  bundlesequence => {
 			  ...
 			  "hello_world",
@@ -255,7 +255,7 @@ from the example.
 4. Insert the policy file name in the [`inputs`][Components#inputs] section of the main policy file
     `/var/cfengine/masterfiles/promises.cf`:
 
-	```cf3  
+	```cf3
 	inputs => {
 	    ...
 		"hello_world.cf",
@@ -263,10 +263,10 @@ from the example.
 	};
 	```
 
-5. You must also remove any inputs section from the example that 
+5. You must also remove any inputs section from the example that
    includes the external library:
 
-	```cf3  
+	```cf3
     inputs => {
 	    "libraries/cfengine_stdlib.cf"
     };

@@ -73,7 +73,7 @@ HTTP 200 Ok
 }
 ```
 
-    
+
 ## Import
 
 **URI:** https://hub.example/advancedreports/complianceReport/import
@@ -99,11 +99,11 @@ HTTP 200 Ok
         * **id** *(text)*
              Condition ID
         * **name** *(text)*
-            Condition name 
+            Condition name
         * **description** *(text)*
             Condition description
         * **condition_for** *(text)*
-            Condition for `passing` or `failing`. 
+            Condition for `passing` or `failing`.
         * **type** *(text)*
             Condition type. Possible values: `inventory`, `custom`, `fileChanged`, `policy`, `software`
         * **rules** *(json object)*
@@ -125,7 +125,7 @@ HTTP 200 Ok
                     Condition. Possible values: `matches`, `is`
                 * **time-period** *(int)*
                     Changed within the time period (hours).
-            * **policy**  
+            * **policy**
                 * **filter-by** *(text)*
                     Filter by: `Bundlename`, `Promisees`, `Promiser`
                 * **value** *(text)*
@@ -146,7 +146,7 @@ HTTP 200 Ok
         * **severity** *(text)*
             Condition severity. Possible values: `low`, `medium`, `high`
         * **host_filter** *(text)*
-            Host filter, should be valid class expression. 
+            Host filter, should be valid class expression.
 
 
 * **overwrite** *(booleans)*

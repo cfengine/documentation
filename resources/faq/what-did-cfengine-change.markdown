@@ -260,7 +260,7 @@ NOT ilike '%cfe_internal%'
 GROUP BY namespace, bundlename, promisetype,promisehandle,promiser
 ORDER BY count DESC
 ```
-  
+
 Reference: [query api examples][SQL Query Examples]
 
 ### promise_log.jsonl

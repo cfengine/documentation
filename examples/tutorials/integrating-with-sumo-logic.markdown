@@ -56,7 +56,7 @@ files:
   edit_defaults => file;
 
  "$(policy_update_file)"
-  classes => if_repaired("new_policy_update"), 
+  classes => if_repaired("new_policy_update"),
   changes => change_detections;
 
 body changes change_detections
@@ -156,17 +156,17 @@ The policy as found in `sumologic_policy_update.cf`.
             string => "MY_SECRET_KEY";
           "curl_args"
             string => "-X POST -T $(policy_update_file) $(sumo_url)$(sumo_secret)";
-    
+
       files:
           "$(policy_update_file)"
             create => "true",
             edit_line => insert("CFEngine_update: $(sys.last_policy_update)"),
             edit_defaults => file;
-    
+
           "$(policy_update_file)"
             classes => if_repaired("new_policy_update"),
             changes => change_detections;
-    
+
       commands:
         new_policy_update::
           "/usr/bin/curl"
@@ -175,7 +175,7 @@ The policy as found in `sumologic_policy_update.cf`.
             contain => shell_command,
             handle => "New sumo logic event created";
     }
-    
+
     body changes change_detections
     {
             hash => "md5";
@@ -183,18 +183,18 @@ The policy as found in `sumologic_policy_update.cf`.
             report_changes => "content";
             report_diffs => "true";
     }
-    
+
     body contain shell_command
     {
             useshell => "useshell";
     }
-    
+
     bundle edit_line insert(str)
     {
       insert_lines:
           "$(str)";
     }
-    
+
     body edit_defaults file
     {
             empty_file_before_editing => "true";

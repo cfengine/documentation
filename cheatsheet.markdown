@@ -135,7 +135,7 @@ CFEngine we use only `*`.
     1. 1.2.1
 * Item 2
   * Item 2a (2 spaces)
-      
+
       I am indented 4 spaces
 
 * Multi paragraph item
@@ -149,7 +149,7 @@ CFEngine we use only `*`.
     1. 1.2.1
 * Item 2
   * Item 2a (2 spaces)
-      
+
       I am indented 4 spaces
 
 * Multi paragraph item
@@ -449,7 +449,7 @@ Examples from cfengine/core can be rendered using the `CFEngine_include_example`
 
 - Lines inside `src` starting with `#@ ` are interpreted as markdown.
 
-- Wrap macro in `raw` and `endraw` tags if the file contains mustache. This allows it to be rendered correctly. 
+- Wrap macro in `raw` and `endraw` tags if the file contains mustache. This allows it to be rendered correctly.
 
   `[\%CFEngine_include_example(class-automatic-canonificiation.cf)\%]`
 
@@ -503,10 +503,10 @@ Sometimes it's nice to include an external file
 Here I am including a bundle named `cfe_autorun_inventory_listening_ports`. It may be a common or an agent bundle (in case the bundle ever changes types).
 
 <pre>
-[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%] 
+[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%]
 </pre>
 
-[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%] 
+[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%]
 
 ## Comments inside documentation
 
@@ -536,7 +536,7 @@ If it's code or something you would see on the command line (policy language, fi
 
 If you are referring to something within UI / screenshots / buttons etc use bold and capitalize it as it is within the UI/Button/whatever.
 
-  
+
 **References:**
 
 * https://www.patternfly.org/v4/ux-writing/punctuation/
@@ -610,7 +610,7 @@ site.CFE_manuals_version {{ site.CFE_manuals_version }}
             ]
          }'
      ```
-  
+
 2. Some other thing
 
 

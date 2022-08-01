@@ -123,7 +123,7 @@ So in the example above the command would be:
 
 ### arglist
 
-**Description:** Allows to separate the arguments to the command from the 
+**Description:** Allows to separate the arguments to the command from the
 command itself, using an slist.
 
 As with `args`, it is convenient to separate command and arguments.

@@ -467,7 +467,7 @@ Inventory data
 
 * **keyname** *(text)*
     Name of the key.
-    
+
 * **type** *(text)*
     Type of the variable. [List][Variables] of supported variable types.
 
@@ -518,7 +518,7 @@ Inventory data grouped by host
 
 * **values** *(jsonb)*
     Inventory values presented in JSON format
-    
+
 
 **Example query:**
 
@@ -1532,8 +1532,8 @@ Inventory attributes, these data are using in [List of inventory attributes API]
 
 **Columns:**
 
-* **Id** *(integer)*	
-    Auto incremental ID	 
+* **Id** *(integer)*
+    Auto incremental ID
 * **Attribute_name** *(text)*
     Attribute name
 * **Category** *(text)* *(`Hardware`,`Software`,`Network`, `Security`, `User defined`)*
@@ -1547,7 +1547,7 @@ Inventory attributes, these data are using in [List of inventory attributes API]
 * **keyname** *(text)*
     Key name
 * **Enabled** *(integer)* *(`0`,`1`)*
-    Is attribute enabled for the API   
+    Is attribute enabled for the API
 
 **Example query:**
 
@@ -1569,7 +1569,7 @@ attribute_name  | Architecture
 category        | Software
 readonly        | 1
 type            | string
-convert_function| 
+convert_function|
 enabled         | 1
 -[ RECORD 2 ]---|-----------------------------------------------------
 attribute_name  | IPv4 addresses
@@ -1721,7 +1721,7 @@ firstreporttimestamp | 2015-03-10 13:40:20+00
 
 ## Table: vm_hosts
 
-vm_hosts table contains basic information about hosts managed by CFEngine. 
+vm_hosts table contains basic information about hosts managed by CFEngine.
 In this table data are cached what gives a better query performance
 
 **Columns:**

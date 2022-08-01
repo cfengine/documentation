@@ -74,7 +74,7 @@ currently not supported.
 **Allowed input range:** (arbitrary string)
 
 **Default value:** `{ "Min00", "Min05", "Min10", "Min15", "Min20", "Min25", "Min30", "Min35", "Min40", "Min45", "Min50", "Min55" }`
- 
+
 **Example:**
 
 ```cf3

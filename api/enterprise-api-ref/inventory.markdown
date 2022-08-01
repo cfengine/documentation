@@ -7,7 +7,7 @@ tags: [reference, enterprise, API, reporting, URI]
 Inventory API allows to access inventory reports and attributes dictionary.
 
 ## Inventory Reports
-   
+
 
 **URI:** https://hub.cfengine.com/api/inventory
 
@@ -55,7 +55,7 @@ Inventory API allows to access inventory reports and attributes dictionary.
     | regex_not_match |
     | is_reported     |
     | is_not_reported |
-    
+
 
 * **sort** *(string)*
     Field name for sorting with "-" for DESC order. Optional parameter.
@@ -100,22 +100,22 @@ curl -k --user <username>:<password> \
 
 
 ```
-{  
+{
    "sort":"Host name",
-   "filter":{  
-      "Host name":{  
+   "filter":{
+      "Host name":{
          "matches":"value1",
          "=":"value2"
       }
    },
-   "select":[  
+   "select":[
       "Host name",
       "OS type",
       "IPv4 addresses",
       "CFEngine version",
       "Ports listening"
    ],
-   "hostContextExclude":[  
+   "hostContextExclude":[
       "policy_server"
    ]
 }
@@ -187,7 +187,7 @@ curl -k --user <username>:<password> \
 
 Shows list of all inventory attributes available in the system.
 
-See more details: 
+See more details:
 * [Custom Inventory][Custom Inventory]
 
 **CURL request example**
@@ -239,14 +239,14 @@ Only `readonly - 0` attribute can be edited
 * **type** *(string)*
     Attribute's type. Allowed values: int, real, slist, string
 * **convert_function** *(string)*
-    Convert Function. 
+    Convert Function.
     Emp.: `cf_clearSlist` - to transform string like `{"1", "2"}` to `1, 2`
 
 
 **CURL request example**
 ```
 curl -k --user admin:admin -X  PATCH  https://hub.cfengine.com/api/inventory/attributes-dictionary/260  -H 'content-type: application/json'   -d '{
-                              "category":"Hardware", 
+                              "category":"Hardware",
                               "type": "int"
                              }'
 ```
@@ -255,7 +255,7 @@ curl -k --user admin:admin -X  PATCH  https://hub.cfengine.com/api/inventory/att
 
 ```
 {
- "category":"Hardware", 
+ "category":"Hardware",
  "type": "int"
 }
 ```

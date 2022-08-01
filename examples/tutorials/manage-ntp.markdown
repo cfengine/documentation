@@ -20,7 +20,7 @@ bundle agent ntp
        "ntp_package_name" string => "ntp";
 
    packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
        policy          => "present",
        handle          => "ntp_packages_$(ntp_package_name)",
        classes         => results("bundle", "ntp_package");
@@ -55,7 +55,7 @@ A variable with the name `ntp_package_name` is declared and it is assigned a val
 
 ```cf3
    packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
          policy          => "present",
          handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
@@ -66,7 +66,7 @@ A variable with the name `ntp_package_name` is declared and it is assigned a val
 ##### $(ntp_package_name)
 
 ```
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
 ```
 
 Notice the `ntp_package_name` variable is referenced here, which evaluates to `ntp` as the promiser. You can also associate a stakeholder aka promisee to this promiser. The stakeholder association is optional, but is particularly useful in when you wish to provide some structure in your policy to tie it to a business rule. In this example, what we are stating is this – "Make sure NTP is installed as it is described in StandardsDoc 3.2.1".
@@ -95,7 +95,7 @@ The handle uniquely identifies a promise within a policy. A recommended naming s
        classes         => results("bundle", "ntp_package_");
 ```
 
-`classes` provide context which can help drive the logic in your policies. In this example, classes for each promise outcome are defined prefixed with `ntp_package_`, for details check out the implementation of `body classes results` in the stdlib. For example, `ntp_package_repaired` will be defined if cf-agent did not have the ntp package installed and had to install it. `ntp_package_kept` would be defined if the ntp package is already installed and `ntp_package_notkept` would be defined. 
+`classes` provide context which can help drive the logic in your policies. In this example, classes for each promise outcome are defined prefixed with `ntp_package_`, for details check out the implementation of `body classes results` in the stdlib. For example, `ntp_package_repaired` will be defined if cf-agent did not have the ntp package installed and had to install it. `ntp_package_kept` would be defined if the ntp package is already installed and `ntp_package_notkept` would be defined.
 
 On your hub create `services/ntp.cf` inside *masterfiles* with the following content:
 
@@ -106,7 +106,7 @@ bundle agent ntp
        "ntp_package_name" string => "ntp";
 
    packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
          policy          => "present",
          handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
@@ -117,12 +117,12 @@ bundle agent ntp
 Now, check the syntax, it's always a good idea any time you edit policy.
 
 ```
-[root@hub masterfiles]# cf-promises -f ./services/ntp.cf 
+[root@hub masterfiles]# cf-promises -f ./services/ntp.cf
 [root@hub masterfiles]# echo $?
 0
 ```
 
-Now, we need to make sure the agent knows it should use this policy file and bundle. Create `def.json` an Augments file with the following content: 
+Now, we need to make sure the agent knows it should use this policy file and bundle. Create `def.json` an Augments file with the following content:
 
 ```json
 {
@@ -192,13 +192,13 @@ bundle agent ntp
          "ntp_service_name" string => "ntp";
 
    packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
          policy          => "present",
          handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
 
   services:
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" } 
+     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "start",
        classes => results( "bundle", "ntp_service")
 
@@ -307,7 +307,7 @@ restrict default kod nomodify notrap nopeer noquery
 restrict -6 default kod nomodify notrap nopeer noquery
 restrict 127.0.0.1
 restrict -6 ::1
-{{#servers}} 
+{{#servers}}
 server {{{.}}} iburst
 {{/servers}}
 includefile /etc/ntp/crypto/pw
@@ -321,7 +321,7 @@ keys /etc/ntp/keys
          "ntp_service_name" string => "ntp";
 
    packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
          policy          => "present",
          handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
@@ -337,12 +337,12 @@ keys /etc/ntp/keys
       classes               => results( "bundle", "ntp_config" );
 
    services:
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" } 
+     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "start",
        classes => results( "bundle", "ntp_service_running" );
 
     ntp_config_repaired::
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" } 
+     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "restart",
        classes => results( "bundle", "ntp_service_config_change" );
 
@@ -380,7 +380,7 @@ restrict default kod nomodify notrap nopeer noquery
 restrict -6 default kod nomodify notrap nopeer noquery
 restrict 127.0.0.1
 restrict -6 ::1
-{{#servers}} 
+{{#servers}}
 server {{{.}}} iburst
 {{/servers}}
 includefile /etc/ntp/crypto/pw
@@ -540,7 +540,7 @@ restrict default kod nomodify notrap nopeer noquery
 restrict -6 default kod nomodify notrap nopeer noquery
 restrict 127.0.0.1
 restrict -6 ::1
-{{#servers}} 
+{{#servers}}
 server {{{.}}} iburst
 {{/servers}}
 includefile /etc/ntp/crypto/pw
@@ -554,7 +554,7 @@ keys /etc/ntp/keys
          "ntp_service_name" string => "ntp";
 
    packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
          policy          => "present",
          handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
@@ -570,12 +570,12 @@ keys /etc/ntp/keys
       classes               => results( "bundle", "ntp_config" );
 
    services:
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" } 
+     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "start",
        classes => results( "bundle", "ntp_service_running" );
 
     ntp_config_repaired::
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" } 
+     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "restart",
        classes => results( "bundle", "ntp_service_config_change" );
 
@@ -667,18 +667,18 @@ Now, let's validate the JSON and force a policy run and inspect the result.
 {
     "inputs": [
         "services/ntp.cf"
-    ], 
+    ],
     "vars": {
         "control_common_bundlesequence_end": [
             "ntp"
-        ], 
+        ],
         "ntp": {
             "config": {
-                "driftfile": "/tmp/drift", 
+                "driftfile": "/tmp/drift",
                 "servers": [
-                    "0.north-america.pool.ntp.org", 
-                    "1.north-america.pool.ntp.org", 
-                    "2.north-america.pool.ntp.org", 
+                    "0.north-america.pool.ntp.org",
+                    "1.north-america.pool.ntp.org",
+                    "2.north-america.pool.ntp.org",
                     "3.north-america.pool.ntp.org"
                 ]
             }

@@ -14,12 +14,12 @@ CFEngine Enterprise provides a secure and stable platform for building and manag
 WebScale does not just imply large server deployments. The speed at which changes are conceived and committed across infrastructure and applications is equally important. Due to execution times measurable in seconds, and one of the most efficient verification mechanisms, CFEngine reduces exposure to unwarranted changes, and prevents extreme delays for planned changes that need to be applied urgently at scale.
 
 ## Intelligent Automation of Infrastructure ##
-		
-Automate your infrastructure with self-service capabilities. CFEngine Enterprise enables you to take advantage of agile, secure, and scalable infrastructure automation that makes repairs using a policy-based approach. 		
+
+Automate your infrastructure with self-service capabilities. CFEngine Enterprise enables you to take advantage of agile, secure, and scalable infrastructure automation that makes repairs using a policy-based approach.
 
 ## Policy-Based Application Deployment ##
 
-Achieve repeatable, error-free and automated deployment of middleware and application components to a datacenter or cloud-based infrastructure. Along with infrastructure, automated application deployment provides a standardized platform. 		
+Achieve repeatable, error-free and automated deployment of middleware and application components to a datacenter or cloud-based infrastructure. Along with infrastructure, automated application deployment provides a standardized platform.
 
 ## Self-Healing Continuous Operations ##
 

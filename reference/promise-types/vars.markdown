@@ -398,13 +398,13 @@ Variables defined by the *meta* promise type are defined in a bundle scope with 
     {
       meta:
         "tags" slist => { "autorun" };
-    
+
       vars:
         "myvar" string => "my value";
-    
+
       reports:
         "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*example_meta_vars.*" ) );
-    
+
     }
     bundle agent __main__
     {
@@ -435,10 +435,10 @@ Variables can be directly set in foreign bundles if the bundle is not defined.
       vars:
         "undefined.myvar" string => "my value";
         "cant_push_this.myvar" string => "my value";
-    
+
       reports:
         "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*myvar.*" ) );
-    
+
     }
     bundle agent cant_push_this
     {
@@ -503,10 +503,10 @@ The module protocol allows specification of *context* (the bundle scope within w
       commands:
         "/bin/echo '^context=undefined$(const.n)=myvar=my value" module => "true";
         "/bin/echo '^context=cant_push_this$(const.n)=myvar=my value" module => "true";
-    
+
       reports:
         "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*myvar.*" ) );
-    
+
     }
     bundle agent cant_push_this
     {

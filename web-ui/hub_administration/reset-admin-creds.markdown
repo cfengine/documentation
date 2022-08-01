@@ -12,8 +12,8 @@ cfsettings-setadminpassword.sql:
 ```sql
 INSERT INTO "users" ("username", "password", "salt", "name", "email", "external", "active", "roles", "changetimestamp")
        SELECT 'admin', 'SHA=aa459b45ecf9816d472c2252af0b6c104f92a6faf2844547a03338e42e426f52', 'eWAbKQmxNP', 'admin',  'admin@organisation.com', false, '1',  '{admin,cf_remoteagent}', now()
-ON CONFLICT (username, external) DO UPDATE 
-  SET password = 'SHA=aa459b45ecf9816d472c2252af0b6c104f92a6faf2844547a03338e42e426f52', 
+ON CONFLICT (username, external) DO UPDATE
+  SET password = 'SHA=aa459b45ecf9816d472c2252af0b6c104f92a6faf2844547a03338e42e426f52',
       salt = 'eWAbKQmxNP';
 ```
 
@@ -84,7 +84,7 @@ else
   CFROBOT_FILE="$PREFIX/httpd/htdocs/application/config/cf_robot.php"
   sed -i "/CFE_ROBOT_PASSWORD/c\$config['CFE_ROBOT_PASSWORD'] = \"$CFE_ROBOT_PW\";" $CFROBOT_FILE
 fi
-CFE_ROBOT_PW_SALT=`pwgen 10` 
+CFE_ROBOT_PW_SALT=`pwgen 10`
 CFE_ROBOT_PW_HASH=`pwhash "$CFE_ROBOT_PW_SALT$CFE_ROBOT_PW"`
 echo "UPDATE users SET password = 'SHA=$CFE_ROBOT_PW_HASH', salt = '$CFE_ROBOT_PW_SALT' WHERE username = 'CFE_ROBOT'" | "$PREFIX/bin/psql" cfsettings
 ```

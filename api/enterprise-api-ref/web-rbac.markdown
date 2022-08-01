@@ -161,7 +161,7 @@ curl -k --user <username>:<password> \
 ]
 ```
 
-## Add permissions to role 
+## Add permissions to role
 
 **URI:** https://hub.cfengine.com/api/role/:role_name/permissions
 
@@ -173,12 +173,12 @@ Assign new permission to role. Permissions will be added to existing permission 
 
 * **role_name** *(string)*
     Role name
-    
+
 * **alias** *(array)*
     Array of permission aliases `Emp: ["Inventory.post", "VariablesDictionary.get"]`. Required parameter.
 
 **Example request (curl):**
- 
+
 ```
 curl -k --user <username>:<password> \
   -X POST \
@@ -194,24 +194,24 @@ curl -k --user <username>:<password> \
 ```
 
 
-## Rewrite role's permissions 
+## Rewrite role's permissions
 
 **URI:** https://hub.cfengine.com/api/role/:role_name/permissions
 
 **Method:** PUT
 
-Assign permission to role. New permissions replace existing. 
+Assign permission to role. New permissions replace existing.
 
 **Parameters:**
 
 * **role_name** *(string)*
     Role name
-    
+
 * **alias** *(array)*
     Array of permission aliases `Emp: ["Inventory.post", "VariablesDictionary.get"]`. Required parameter.
 
 **Example request (curl):**
- 
+
 ```
 curl -k --user <username>:<password> \
   -X PUT \
@@ -242,7 +242,7 @@ curl -k --user <username>:<password> \
     Array of permission aliases `Emp: ["Inventory.post", "VariablesDictionary.get"]`. Required parameter.
 
 **Example request (curl):**
- 
+
 ```
 curl -k --user <username>:<password> \
   -X DELETE \

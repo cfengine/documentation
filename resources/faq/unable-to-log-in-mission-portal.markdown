@@ -34,7 +34,7 @@ Get `MP` `client_secret`:
 
 ```console
 [root@hub ~]# psql cfsettings -c "SELECT client_secret from oauth_clients where client_id = 'MP'";
-          client_secret           
+          client_secret
 ----------------------------------
  aUI2sAtrPpr1dmwZDCVuKONnMXHYHDLB
 (1 row)

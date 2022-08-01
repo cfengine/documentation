@@ -110,7 +110,7 @@ API call allowed only for administrator.
     Whether external authentication is activated.
 * **logLevel** *("emergency", "alert", "critical", "error", "warning", "notice", "info", "debug")*
     Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error).
-* **sameHostsNumberOfRuns** *(integer)*    
+* **sameHostsNumberOfRuns** *(integer)*
     Number of samples used to identify a duplicate identity. Default value is 3.
 
 
@@ -137,7 +137,7 @@ administrator.
     Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error).
 * **blueHostHorizon** *(900)*
     Threshold in minutes that hosts are unreachable before they are considered a health issue.
-* **sameHostsNumberOfRuns** *(integer)*    
+* **sameHostsNumberOfRuns** *(integer)*
     Number of samples used to identify a duplicate identity. Default value is 3.
 
 

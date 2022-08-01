@@ -416,10 +416,10 @@ bundle agent example
    * extras: mirror.ette.biz
    * updates: mirror.trouble-free.net
   Installed Packages
-  screen.x86_64            4.1.0-0.25.20120314git3c2946.el7             @base     
+  screen.x86_64            4.1.0-0.25.20120314git3c2946.el7             @base
   Available Packages
   screen.x86_64            4.1.0-0.19.20120314git3c2946.el7             local-repo
-  screen.x86_64            4.1.0-0.25.20120314git3c2946.el7             base      
+  screen.x86_64            4.1.0-0.25.20120314git3c2946.el7             base
   ```
 
   Policy with promise that old version of screen is installed.
