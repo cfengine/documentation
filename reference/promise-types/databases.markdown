@@ -56,88 +56,88 @@ pre-requisite for making SQL database promises is to grant a point of
 access on the server.
 
 ```cf3
-    databases:
+databases:
 
-    "database/subkey or table"
+"database/subkey or table"
 
-       database_operation => "create/delete/drop",
-       database_type => "sql/ms_registry",
-       database_columns => {
-                           "name,type,size",
-                           "name,type",
-                           },
+   database_operation => "create/delete/drop",
+   database_type => "sql/ms_registry",
+   database_columns => {
+                       "name,type,size",
+                       "name,type",
+                       },
 
-       database_server => body;
+   database_server => body;
 
-    body database_server name
-    {
-      db_server_owner => "account name";
-      db_server_password => "password";
-      db_server_host => "hostname or omit for localhost";
-      db_server_type => "mysql/posgres";
-      db_server_connection_db => "database we can connect to";
-    }
+body database_server name
+{
+  db_server_owner => "account name";
+  db_server_password => "password";
+  db_server_host => "hostname or omit for localhost";
+  db_server_type => "mysql/posgres";
+  db_server_connection_db => "database we can connect to";
+}
 ```
 
 
 
 ```cf3
-    body common control
-    {
-    bundlesequence => { "databases" };
-    }
+body common control
+{
+bundlesequence => { "databases" };
+}
 
-    bundle agent databases
+bundle agent databases
 
-    {
-    #commands:
+{
+#commands:
 
-    #  "/usr/bin/createdb cf_topic_maps",
+#  "/usr/bin/createdb cf_topic_maps",
 
-    #        contain => as_user("mysql");
+#        contain => as_user("mysql");
 
-    databases:
+databases:
 
-      "cf_topic_maps/topics"
+  "cf_topic_maps/topics"
 
-        database_operation => "create",
-        database_type => "sql",
-        database_columns => {
-                            "topic_name,varchar,256",
-                            "topic_comment,varchar,1024",
-                            "topic_id,varchar,256",
-                            "topic_type,varchar,256",
-                            "topic_extra,varchar,26"
-                            },
+    database_operation => "create",
+    database_type => "sql",
+    database_columns => {
+                        "topic_name,varchar,256",
+                        "topic_comment,varchar,1024",
+                        "topic_id,varchar,256",
+                        "topic_type,varchar,256",
+                        "topic_extra,varchar,26"
+                        },
 
-        database_server => myserver;
+    database_server => myserver;
 
 
 
-    }
+}
 
-    ################################################
+################################################
 
-    body database_server myserver
-    {
-    any::
-     db_server_owner => "postgres";
-     db_server_password => "";
-     db_server_host => "localhost";
-     db_server_type => "postgres";
-     db_server_connection_db => "postgres";
-    none::
-     db_server_owner => "root";
-     db_server_password => "";
-     db_server_host => "localhost";
-     db_server_type => "mysql";
-     db_server_connection_db => "mysql";
-    }
+body database_server myserver
+{
+any::
+ db_server_owner => "postgres";
+ db_server_password => "";
+ db_server_host => "localhost";
+ db_server_type => "postgres";
+ db_server_connection_db => "postgres";
+none::
+ db_server_owner => "root";
+ db_server_password => "";
+ db_server_host => "localhost";
+ db_server_type => "mysql";
+ db_server_connection_db => "mysql";
+}
 
-    body contain as_user(x)
-    {
-    exec_owner => "$(x)";
-    }
+body contain as_user(x)
+{
+exec_owner => "$(x)";
+}
 ```
 
 The promiser in database promises is a concatenation of the database
@@ -171,7 +171,7 @@ for a database connection.
 **Example:**
 
 ```cf3
-     db_server_owner => "mark";
+db_server_owner => "mark";
 ```
 
 #### db_server_password
@@ -186,7 +186,7 @@ text password for a database connection.
 **Example:**
 
 ```cf3
-     db_server_password => "xyz.1234";
+db_server_password => "xyz.1234";
 ```
 
 #### db_server_host
@@ -202,7 +202,7 @@ A blank value is equal to localhost.
 
 **Example:**
 ```cf3
-     db_server_host => "sqlserv.example.org";
+db_server_host => "sqlserv.example.org";
 ```
 
 #### db_server_type
@@ -215,8 +215,8 @@ database server being used.
 **Allowed input range:**
 
 ```
-    postgres
-    mysql
+postgres
+mysql
 ```
 
 **Default value:** none
@@ -224,7 +224,7 @@ database server being used.
 **Example:**
 
 ```cf3
-     db_server_type => "postgres";
+db_server_type => "postgres";
 ```
 
 #### db_server_connection_db
@@ -246,14 +246,14 @@ for their respective database servers.
 **Example:**
 
 ```cf3
-     body database_server myserver(x)
-     {
-     db_server_owner => "$(x)";
-     db_server_password => "";
-     db_server_host => "localhost";
-     db_server_type => "$(mysql)";
-     db_server_connection_db => "$(x)";
-     }
+body database_server myserver(x)
+{
+db_server_owner => "$(x)";
+db_server_password => "";
+db_server_host => "localhost";
+db_server_type => "$(mysql)";
+db_server_connection_db => "$(x)";
+}
 ```
 
 where x is currently `mysql` or `postgres`.
@@ -268,8 +268,8 @@ that is to be manipulated.
 **Allowed input range:**
 
 ```
-    sql
-    ms_registry
+sql
+ms_registry
 ```
 
 **Default value:** none
@@ -290,12 +290,12 @@ nature of the promise.
 **Allowed input range:**
 
 ```
-    create
-    delete
-    drop
-    cache
-    verify
-    restore
+create
+delete
+drop
+cache
+verify
+restore
 ```
 
 **Example:**
@@ -319,19 +319,19 @@ and fixed size data elements are doublets.
 **Example:**
 
 ```cf3
-  "cf_topic_maps/topics"
+"cf_topic_maps/topics"
 
-    database_operation => "create",
-    database_type => "sql",
-    database_columns => {
-                        "topic_name,varchar,256",
-                        "topic_comment,varchar,1024",
-                        "topic_id,varchar,256",
-                        "topic_type,varchar,256",
-                        "topic_extra,varchar,26"
-                        },
+  database_operation => "create",
+  database_type => "sql",
+  database_columns => {
+                      "topic_name,varchar,256",
+                      "topic_comment,varchar,1024",
+                      "topic_id,varchar,256",
+                      "topic_type,varchar,256",
+                      "topic_extra,varchar,26"
+                      },
 
-    database_server => myserver;
+  database_server => myserver;
 ```
 
 ### database_rows

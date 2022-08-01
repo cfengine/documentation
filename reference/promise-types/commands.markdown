@@ -10,13 +10,13 @@ processes must be coded as a separate command. This stricter type separation
 allows for more careful conflict analysis to be carried out.
 
 ```cf3
-     commands:
+commands:
 
-       "/path/to/command args"
+  "/path/to/command args"
 
-                  args => "more args",
-                  contain => contain_body,
-                  module => "true|false";
+             args => "more args",
+             contain => contain_body,
+             module => "true|false";
 ```
 
 Output from commands executed here is quoted inline, but prefixed with
@@ -49,15 +49,15 @@ the entire program string separately so that CFEngine knows the name of the
 executable file. For example:
 
 ```cf3
-      commands:
+commands:
 
-       windows::
+ windows::
 
-        "\"c:\Program Files\my name with space\" arg1 arg2";
+  "\"c:\Program Files\my name with space\" arg1 arg2";
 
-       linux::
+ linux::
 
-        "\"/usr/bin/funny command name\" -a -b -c";
+  "\"/usr/bin/funny command name\" -a -b -c";
 ```
 **Note:** Commands executed with CFEngine get the environment variables set in
 [`environment`][cf-agent#environment] in body agent control. If you want to set
@@ -116,7 +116,7 @@ commands:
 So in the example above the command would be:
 
 ```cf3
- /bin/echo one two three
+/bin/echo one two three
 ```
 
 **See also:** `arglist`, `join()`, `concat()`, `format()`
@@ -152,7 +152,7 @@ commands:
 So in the example above the command would be:
 
 ```cf3
- /bin/echo one two three four five
+/bin/echo one two three four five
 ```
 
 **History:** Was introduced in CFEngine 3.9.0.
@@ -171,16 +171,16 @@ as a non-privileged user inside an isolated directory tree.
 **Example:**
 
 ```cf3
-    body contain example
-    {
-        useshell => "noshell";
-           umask => "077";
-      exec_owner => "mysql_user";
-      exec_group => "nogroup";
-    exec_timeout => "60";
-           chdir => "/working/path";
-          chroot => "/private/path";
-    }
+body contain example
+{
+    useshell => "noshell";
+       umask => "077";
+  exec_owner => "mysql_user";
+  exec_group => "nogroup";
+exec_timeout => "60";
+       chdir => "/working/path";
+      chroot => "/private/path";
+}
 ```
 
 **See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
@@ -205,9 +205,9 @@ to `powershell`.
 **Allowed input range:**
 
 ```
-    useshell
-    noshell
-    powershell
+useshell
+noshell
+powershell
 ```
 
 For compatibility, the boolean values are also supported, and map to
@@ -218,10 +218,10 @@ For compatibility, the boolean values are also supported, and map to
 **Example:**
 
 ```cf3
-     body contain example
-     {
-     useshell => "useshell";
-     }
+body contain example
+{
+useshell => "useshell";
+}
 ```
 
 #### umask
@@ -236,25 +236,25 @@ thus ignored by Windows versions of CFEngine.
 **Allowed input range:**
 
 ```
-    0
-    77
-    22
-    27
-    72
-    002
-    077
-    022
-    027
-    072
+0
+77
+22
+27
+72
+002
+077
+022
+027
+072
 ```
 
 **Example:**
 
 ```cf3
-     body contain example
-     {
-     umask => "077";
-     }
+body contain example
+{
+umask => "077";
+}
 ```
 
 #### exec_owner
@@ -276,10 +276,10 @@ CFEngine.
 **Example:**
 
 ```cf3
-     body contain example
-     {
-     exec_owner => "mysql_user";
-     }
+body contain example
+{
+exec_owner => "mysql_user";
+}
 ```
 
 #### exec_group
@@ -298,10 +298,10 @@ them.
 **Example:**
 
 ```cf3
-     body contain example
-     {
-     exec_group => "nogroup";
-     }
+body contain example
+{
+exec_group => "nogroup";
+}
 ```
 
 #### exec_timeout
@@ -318,10 +318,10 @@ case of failure.
 **Example:**
 
 ```cf3
-     body contain example
-     {
-     exec_timeout => "30";
-     }
+body contain example
+{
+exec_timeout => "30";
+}
 ```
 
 **See also:** [`body action expireafter`][Promise Types#expireafter],  [`body agent control expireafter`][cf-agent#expireafter], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
@@ -341,11 +341,11 @@ it works like the cd shell command.
 **Example:**
 
 ```cf3
-     body contain example
+body contain example
 
-     {
-     chdir => "/containment/directory";
-     }
+{
+chdir => "/containment/directory";
+}
 ```
 
 #### chroot
@@ -364,11 +364,11 @@ process. Windows does not support this feature.
 **Example:**
 
 ```cf3
-     body contain example
+body contain example
 
-     {
-     chroot => "/private/path";
-     }
+{
+chroot => "/private/path";
+}
 ```
 
 #### preview
@@ -389,10 +389,10 @@ checks to user defined scripts.
 **Example:**
 
 ```cf3
-     body contain example
-     {
-     preview => "true";
-     }
+body contain example
+{
+preview => "true";
+}
 ```
 
 #### no_output
@@ -409,10 +409,10 @@ error to `/dev/null`.
 **Example:**
 
 ```cf3
-     body contain example
-     {
-     no_output => "true";
-     }
+body contain example
+{
+no_output => "true";
+}
 ```
 
 ### inform
@@ -486,68 +486,68 @@ alphanumeric characters and ```_```, ```.```, ```-```, ```[```, ```]```, ```@```
 Here is an example module written in shell:
 
 ```sh
-     #!/bin/sh
-     /bin/echo "@mylist= { \"one\", \"two\", \"three\" }"
-     /bin/echo "=myscalar= scalar val"
-     /bin/echo "=myarray[key]= array key val"
-     /bin/echo "%mydata=[1,2,3]"
-     /bin/echo "+module_class"
-     /bin/echo "^persistence=10"
-     /bin/echo "+persistent_10_minute_class"
+#!/bin/sh
+/bin/echo "@mylist= { \"one\", \"two\", \"three\" }"
+/bin/echo "=myscalar= scalar val"
+/bin/echo "=myarray[key]= array key val"
+/bin/echo "%mydata=[1,2,3]"
+/bin/echo "+module_class"
+/bin/echo "^persistence=10"
+/bin/echo "+persistent_10_minute_class"
 ```
 
 And here is an example using it:
 
 ```cf3
-    body common control
-    {
-    bundlesequence  => { def, modtest };
-    }
+body common control
+{
+bundlesequence  => { def, modtest };
+}
 
-    bundle agent def
-    {
-    commands:
+bundle agent def
+{
+commands:
 
-      "$(sys.workdir)/modules/module_name"
-        module => "true";
+  "$(sys.workdir)/modules/module_name"
+    module => "true";
 
-    reports:
+reports:
 
-      # Each module forms a private context with its name as id
-      module_class::
+  # Each module forms a private context with its name as id
+  module_class::
 
-        "Module set variable $(module_name.myscalar)";
-    }
+    "Module set variable $(module_name.myscalar)";
+}
 
 
-    bundle agent modtest
-    {
-    vars:
+bundle agent modtest
+{
+vars:
 
-      "mylist" slist => { @(module_name.mylist) };
+  "mylist" slist => { @(module_name.mylist) };
 
-    reports:
+reports:
 
-      module_class::
+  module_class::
 
-        "Module set variable $(mylist)";
-    }
+    "Module set variable $(mylist)";
+}
 ```
 
 Here is an example module written in Perl:
 
 ```perl
-     #!/usr/bin/perl
-     #
-     # module:myplugin
-     #
+#!/usr/bin/perl
+#
+# module:myplugin
+#
 
-       # lots of computation....
+  # lots of computation....
 
-     if (special-condition)
-        {
-        print "+specialclass";
-        }
+if (special-condition)
+   {
+   print "+specialclass";
+   }
 ```
 
 If your module is simple and is best expressed as a shell command, then we
@@ -558,33 +558,33 @@ promises file). For example, the promises could read as follows (the two
 execution of a command):
 
 ```cf3
-    bundle agent sendmail
-    {
-    commands:
-      # This next module checks a specific failure mode of dcc, namely
-      # more than 3 error states since the last time we ran cf-agent
-      is_mailhost::
-            "/bin/test `/usr/bin/tail -100 /var/log/maillog | /usr/bin/grep 'Milter (dcc): to error state' | /usr/bin/wc -l` -gt 3  echo '+start_dccm' || echo
-    ''"
-        contain => shell_command,
-        module => "true";
+bundle agent sendmail
+{
+commands:
+  # This next module checks a specific failure mode of dcc, namely
+  # more than 3 error states since the last time we ran cf-agent
+  is_mailhost::
+        "/bin/test `/usr/bin/tail -100 /var/log/maillog | /usr/bin/grep 'Milter (dcc): to error state' | /usr/bin/wc -l` -gt 3  echo '+start_dccm' || echo
+''"
+    contain => shell_command,
+    module => "true";
 
-        start_dccm::
-          "/var/dcc/libexec/start-dccm"
-              contain => not_paranoid;
-    }
+    start_dccm::
+      "/var/dcc/libexec/start-dccm"
+          contain => not_paranoid;
+}
 
-    body contain shell_command
-    {
-        useshell    => "useshell";
-    }
+body contain shell_command
+{
+    useshell    => "useshell";
+}
 
-    body contain not_paranoid
-    {
-        useshell    => "no";
-        exec_owner  => "root";
-        umask       => "22";
-    }
+body contain not_paranoid
+{
+    useshell    => "no";
+    exec_owner  => "root";
+    umask       => "22";
+}
 ```
 
 Modules inherit the environment variables from `cf-agent` and accept

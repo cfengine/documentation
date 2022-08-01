@@ -190,7 +190,7 @@ curl -k --user <username>:<password> \
 **Example response:**
 
 ```
- HTTP 201 Created
+HTTP 201 Created
 ```
 
 
@@ -223,7 +223,7 @@ curl -k --user <username>:<password> \
 **Example response:**
 
 ```
- HTTP 201 Created
+HTTP 201 Created
 ```
 
 
@@ -254,5 +254,5 @@ curl -k --user <username>:<password> \
 **Example response:**
 
 ```
- HTTP 204 No Content
+HTTP 204 No Content
 ```

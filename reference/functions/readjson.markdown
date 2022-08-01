@@ -16,11 +16,11 @@ first `maxbytes` bytes are read from `filename`.
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-      "loadthis"
+  "loadthis"
 
-         data =>  readjson("/tmp/data.json", 4000);
+     data =>  readjson("/tmp/data.json", 4000);
 ```
 
 **See also:** `readdata()`, `parsejson()`, `storejson()`, `parseyaml()`, `readyaml()`, `mergedata()`, `validjson()`, and `data` documentation.

@@ -25,10 +25,10 @@ are sequences of characters, integers are whole numbers, and reals are float
 pointing numbers.
 
 ```cf3
-    vars:
-      "my_scalar" string => "String contents...";
-      "my_int" int       => "1234";
-      "my_real" real     => "567.89";
+vars:
+  "my_scalar" string => "String contents...";
+  "my_int" int       => "1234";
+  "my_real" real     => "567.89";
 ```
 
 Integer constants may use suffixes to represent large numbers.  The following
@@ -112,10 +112,10 @@ regular scalar.
 They are declared as follows:
 
 ```cf3
-     vars:
-         "my_slist" slist => { "list", "of", "strings" };
-         "my_ilist" ilist => { "1234", "5678" };
-         "my_rlist" rlist => { "567.89" };
+vars:
+    "my_slist" slist => { "list", "of", "strings" };
+    "my_ilist" ilist => { "1234", "5678" };
+    "my_rlist" rlist => { "567.89" };
 ```
 
 ### List Substitution and Expansion
@@ -125,9 +125,9 @@ entirety in any context where a list is expected as `@(list)`. For example,
 the following variable definition references a list named "shortlist":
 
 ```cf3
-    vars:
-        "shortlist" slist => { "you", "me" };
-        "longlist" slist => { @(shortlist), "plus", "plus" };
+vars:
+    "shortlist" slist => { "you", "me" };
+    "longlist" slist => { @(shortlist), "plus", "plus" };
 ```
 
 The declaration order does not matter - CFEngine will understand the

@@ -105,7 +105,6 @@ HTTP 200 Ok
 curl -k -g --user <username>:<password> \
   -X GET \
   'https://hub.example/index.php/data_transfer/api/export?encryptionKey=key&exportOnlyUserItems=true&items[]=categorizations&items[]=dashboards&items[]=settingsAuthentication&items[]=settingsMail'
-
 ```
 
 **Example response:**
@@ -143,7 +142,6 @@ curl -k -g --user <username>:<password> \
   -X GET \
   --output /save/file/here/export_12-14-2018_15:19:40.381400.phar \
   'https://hub.example/index.php/data_transfer/api/download/export_12-14-2018_15:19:40.381400.phar'
-
 ```
 
 **Example response:**

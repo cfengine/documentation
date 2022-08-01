@@ -13,13 +13,13 @@ is determined by body-attributes. The promise object referred to is a literal
 string of text.
 
 ```cf3
-    bundle edit_xml example
-    {
-    insert_text:
+bundle edit_xml example
+{
+insert_text:
 
-      "text content to be appended to existing text, including whitespace, within specified node"
-        select_xpath => "/Server/Service/Engine/Host/Alias";
-    }
+  "text content to be appended to existing text, including whitespace, within specified node"
+    select_xpath => "/Server/Service/Engine/Host/Alias";
+}
 ```
 
 Note that typically only a single value string, within a single

@@ -13,13 +13,13 @@ The promise object referred to is a literal string representation of a balanced
 XML subtree.
 
 ```cf3
-    bundle edit_xml example
-    {
-    delete_tree:
+bundle edit_xml example
+{
+delete_tree:
 
-      "<Host name=\"cfe_host\"></Host>"
-        select_xpath => "/Server/Service/Engine";
-    }
+  "<Host name=\"cfe_host\"></Host>"
+    select_xpath => "/Server/Service/Engine";
+}
 ```
 
 Note that typically, only a single tree, within a single specified node,

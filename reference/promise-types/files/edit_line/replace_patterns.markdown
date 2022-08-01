@@ -9,30 +9,30 @@ This promise refers to arbitrary text patterns in a file. The pattern is
 expressed as a PCRE regular expression.
 
 ```cf3
-       replace_patterns:
+replace_patterns:
 
-        "search pattern"
+ "search pattern"
 
-           replace_with => replace_body,
-           ...;
+    replace_with => replace_body,
+    ...;
 ```
 
 In `replace_patterns` promises, the regular expression may
 match a line fragment, that is, it is [unanchored][unanchored].
 
 ```cf3
-    bundle edit_line upgrade_cfexecd
-    {
-      replace_patterns:
+bundle edit_line upgrade_cfexecd
+{
+  replace_patterns:
 
-        "cfexecd" replace_with => value("cf-execd");
-    }
+    "cfexecd" replace_with => value("cf-execd");
+}
 
-    body replace_with value(x)  # defined in cfengine_stdlib.cf
-    {
-    replace_value => "$(x)";
-    occurrences => "all";
-    }
+body replace_with value(x)  # defined in cfengine_stdlib.cf
+{
+replace_value => "$(x)";
+occurrences => "all";
+}
 ```
 
 This is a straightforward search and replace function. Only the portion
@@ -77,10 +77,10 @@ Replace only the first occurrence. Note: this is non-convergent.
 **Example:**
 
 ```cf3
-     body replace_with example
-     {
-     occurrences => "first";        # Warning! Using "first" is non-convergent
-     }
+body replace_with example
+{
+occurrences => "first";        # Warning! Using "first" is non-convergent
+}
 ```
 
 #### replace_value
@@ -94,10 +94,10 @@ Replace only the first occurrence. Note: this is non-convergent.
 **Example:**
 
 ```cf3
-     body replace_with example(s)
-     {
-     replace_value => "$(s)";
-     }
+body replace_with example(s)
+{
+replace_value => "$(s)";
+}
 ```
 
 ### select_region

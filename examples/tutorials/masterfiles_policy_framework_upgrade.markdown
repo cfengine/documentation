@@ -27,7 +27,6 @@ step.
 
 ```console
 [root@hub MPF_upgrade]# rsync -a /var/cfengine/masterfiles/ MPF_upgrade/
-
 ```
 
 Then initialize the new Git repository and add all the files to it.

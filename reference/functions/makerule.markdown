@@ -17,8 +17,8 @@ The function is provided to emulate the semantics of the Unix `make` program.
 In a traditional Makefile, rules take the form
 
 ```
- target: source1 source2 ..
- (tab) commands
+target: source1 source2 ..
+(tab) commands
 ```
 
 The top line evaluates to a predicate for executing a number of commands, which is true

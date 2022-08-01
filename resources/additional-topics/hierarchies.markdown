@@ -453,7 +453,6 @@ webservers for different parts of a larger corporation, we might see something
 like this:
 
 ```cf3
-
 bundle agent example
 {
   files:

@@ -101,9 +101,9 @@ need to meet a challenge. In other words: how well equipped are we? As
 engineers, we could write something like this:
 
 ```
-                Available speed under control        Changes available
-    Agility =~  -----------------------------  *  -----------------------
-                      Required speed                 Changes Required
+            Available speed under control        Changes available
+Agility =~  -----------------------------  *  -----------------------
+                  Required speed                 Changes Required
 ```
 
 Although such a scale might be hard to measure and follow in practice, the
@@ -144,9 +144,9 @@ reliably maintain over time divided by the number of challenges we have to share
 between.
 
 ```
-                                Expected capacity * reliability
-    Average available speed =~  -------------------------------
-                                    Consumers or challenges
+                            Expected capacity * reliability
+Average available speed =~  -------------------------------
+                                Consumers or challenges
 ```
 
 This expression says that the rate at which we get work done on average depends

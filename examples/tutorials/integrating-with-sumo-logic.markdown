@@ -31,15 +31,15 @@ First, we define a couple of variables.
 The two Sumo variables are used to access the service, while the `curl_args` is the actual curl command that will upload our timestamp file to Sumo Logic.
 
 ```cf3
-    vars:
-      "policy_update_file"
-        string => "/tmp/CFEngine_policy_updated";
-      "sumo_url"
-        string => "https://collectors.sumologic.com/receiver/v1/http/";
-      "sumo_secret"
-        string => "ZaVnC4dhaV1-MY_SECRET_KEY";
-      "curl_args"
-        string => "-X POST -T $(policy_update_file) $(sumo_url)$(sumo_secret)";
+vars:
+  "policy_update_file"
+    string => "/tmp/CFEngine_policy_updated";
+  "sumo_url"
+    string => "https://collectors.sumologic.com/receiver/v1/http/";
+  "sumo_secret"
+    string => "ZaVnC4dhaV1-MY_SECRET_KEY";
+  "curl_args"
+    string => "-X POST -T $(policy_update_file) $(sumo_url)$(sumo_secret)";
 ```
 
 In this next section we tell CFEngine to ensure that the `/tmp/CFEngine_policy_updated` file, as defined by the variable `policy_update_file` always exists.

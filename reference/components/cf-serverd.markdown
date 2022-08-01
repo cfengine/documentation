@@ -41,14 +41,14 @@ the connection protocol: i.e. access to the server itself. Access to specific
 files must be granted in addition.
 
 ```cf3
-    body server control
-    {
-        allowconnects         => { "127.0.0.1" , "::1" };
-        allowallconnects      => { "127.0.0.1" , "::1" };
+body server control
+{
+    allowconnects         => { "127.0.0.1" , "::1" };
+    allowallconnects      => { "127.0.0.1" , "::1" };
 
-        # Uncomment me under controlled circumstances
-        #trustkeysfrom         => { "127.0.0.1" , "::1" };
-    }
+    # Uncomment me under controlled circumstances
+    #trustkeysfrom         => { "127.0.0.1" , "::1" };
+}
 ```
 
 
@@ -71,12 +71,12 @@ See also the warning about regular expressions in
 **Examples**:
 
 ```cf3
-    allowconnects => {
-         "127.0.0.1",
-         "::1",
-         "200.1.10.0/24",
-         "200\.1\.10\..*",
-         };
+allowconnects => {
+     "127.0.0.1",
+     "::1",
+     "200.1.10.0/24",
+     "200\.1\.10\..*",
+     };
 ```
 
 
@@ -104,12 +104,12 @@ will potentially match more than one hostname (e.g.,
 **Examples**:
 
 ```cf3
-    allowallconnects      => {
-         "127.0.0.1",
-         "::1",
-         "200.1.10.0/24",
-         "200\.1\.10\..*",
-         };
+allowallconnects      => {
+     "127.0.0.1",
+     "::1",
+     "200.1.10.0/24",
+     "200\.1\.10\..*",
+     };
 ```
 
 
@@ -121,7 +121,7 @@ that are not using the latest protocol.
 To define subnets or address ranges, use CIDR notation:
 
 ```cf3
-    allowlegacyconnects =>  { "192.168.1.0/24", "192.168.2.123" }
+allowlegacyconnects =>  { "192.168.1.0/24", "192.168.2.123" }
 ```
 
 In CFEngine <= 3.8, absence of this attribute means that connections from all hosts are accepted,
@@ -131,7 +131,7 @@ Set this attribute to an empty list to not allow any incoming connections
 using legacy protocol versions:
 
 ```cf3
-    allowlegacyconnects => { }
+allowlegacyconnects => { }
 ```
 
 In CFEngine >= 3.9, legacy protocol is disallowed by default, and you have to
@@ -223,7 +223,7 @@ correspond to system identities on the server-side system.
 **Example:**
 
 ```cf3
-    allowusers => { "cfengine", "root" };
+allowusers => { "cfengine", "root" };
 ```
 
 
@@ -241,13 +241,13 @@ be given as the argument, not the device name.
 **Allowed input range:** (arbitrary string)
 
 ```cf3
-    bindtointerface => "192.168.1.1";
+bindtointerface => "192.168.1.1";
 ```
 
 To bind to all interfaces, including IPV6:
 
 ```cf3
-    bindtointerface => "::";
+bindtointerface => "::";
 ```
 
 Note that a bug in netstat will not correctly report that cf-serverd is
@@ -255,12 +255,12 @@ listening on both IPV4 and IPV6 interfaces. A test with netcat (nc) will
 confirm.
 
 ```cf3
-   # nc -v -4 172.16.100.1 5308
-   Connection to 172.16.100.1 5308 port [tcp/cfengine] succeeded!
-   ^C
-   # nc -v -6 fe80:470:1d:a2f::2 5308
-   Connection to fe80:470:1d:a2f::2 5308 port [tcp/cfengine] succeeded!
-   ^C
+# nc -v -4 172.16.100.1 5308
+Connection to 172.16.100.1 5308 port [tcp/cfengine] succeeded!
+^C
+# nc -v -6 fe80:470:1d:a2f::2 5308
+Connection to fe80:470:1d:a2f::2 5308 port [tcp/cfengine] succeeded!
+^C
 ```
 
 
@@ -279,10 +279,10 @@ shell command at your own risk.
 
 
 ```cf3
-    body server control
-    {
-    cfruncommand => "/var/cfengine/bin/cf-agent";
-    }
+body server control
+{
+cfruncommand => "/var/cfengine/bin/cf-agent";
+}
 ```
 
 **See also:** [cf-runagent][cf-runagent], [bundle resource_type in server access promises][access#resource_type]
@@ -432,10 +432,10 @@ attempts based on clock corruption.
 **Example:**
 
 ```cf3
-    body server control
-    {
-    denybadclocks => "true";
-    }
+body server control
+{
+denybadclocks => "true";
+}
 ```
 
 
@@ -462,10 +462,10 @@ See also the warning about regular expressions in
 **Example:**
 
 ```cf3
-    body server control
-    {
-    denyconnects => { "badhost\.domain\.evil", "host3\.domain\.com" };
-    }
+body server control
+{
+denyconnects => { "badhost\.domain\.evil", "host3\.domain\.com" };
+}
 ```
 
 
@@ -490,10 +490,10 @@ to syslog. These files are deemed to be particularly sensitive.
 **Example:**
 
 ```cf3
-    body server control
-    {
-    logencryptedtransfers => "true";
-    }
+body server control
+{
+logencryptedtransfers => "true";
+}
 ```
 
 **See also:** [`ifencrypted`][access#ifencrypted], [`encrypt`][files#encrypt], [`tls_ciphers`][Components#tls_ciphers], [`tls_min_version`][Components#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`protocol_version`][Components#protocol_version]
@@ -514,19 +514,19 @@ to syslog. These files are deemed to be particularly sensitive.
 **Example:**
 
 ```cf3
-    # client side
+# client side
 
-    body agent control
-    {
-    maxconnections => "1000";
-    }
+body agent control
+{
+maxconnections => "1000";
+}
 
-    # server side
+# server side
 
-    body server control
-    {
-    maxconnections => "1000";
-    }
+body server control
+{
+maxconnections => "1000";
+}
 ```
 
 
@@ -543,19 +543,19 @@ to syslog. These files are deemed to be particularly sensitive.
 **Example:**
 
 ```cf3
-    body hub control
-    {
-    port => "5308";
-    }
+body hub control
+{
+port => "5308";
+}
 
-    body server control
-    {
-    specialhost::
-     port => "5308";
+body server control
+{
+specialhost::
+ port => "5308";
 
-    !specialhost::
-     port => "5308";
-    }
+!specialhost::
+ port => "5308";
+}
 ```
 
 **Notes:**
@@ -593,10 +593,10 @@ See syslog notes.
 **Example:**
 
 ```cf3
-    body server control
-    {
-    serverfacility => "LOG_USER";
-    }
+body server control
+{
+serverfacility => "LOG_USER";
+}
 ```
 
 
@@ -612,10 +612,10 @@ for backward compatibility.
 **Example:**
 
 ```cf3
-    body server control
-    {
-    skipverify => { "special_host.*", "192.168\..*" };
-    }
+body server control
+{
+skipverify => { "special_host.*", "192.168\..*" };
+}
 ```
 
 
@@ -647,10 +647,10 @@ See also the warning about regular expressions in
 **Example:**
 
 ```cf3
-    body server control
-    {
-    trustkeysfrom => { "10.0.1.1", "192.168.0.0/16"};
-    }
+body server control
+{
+trustkeysfrom => { "10.0.1.1", "192.168.0.0/16"};
+}
 ```
 
 
@@ -673,15 +673,15 @@ not be affected. Changing this setting requires a restart of
 **Example:**
 
 ```cf3
-    body server control
-    {
+body server control
+{
 
-      listening_host_context::
-        listen => "true";
+  listening_host_context::
+    listen => "true";
 
-      !listening_host_context::
-        listen => "false";
-    }
+  !listening_host_context::
+    listen => "false";
+}
 ```
 
 **History:** Was introduced in 3.4.0, Enterprise 3.0 (2012)

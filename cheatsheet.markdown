@@ -128,7 +128,6 @@ CFEngine we use only `*`.
 ### Nested lists
 
 ```
-
 * Item 1
   1. First
   2. First
@@ -194,8 +193,8 @@ Code blocks are either indendented by four spaces:
 Just indent by four spaces:
 
 ```
-    $ code block
-    $ without syntax highlighting
+$ code block
+$ without syntax highlighting
 ```
 
     $ code block

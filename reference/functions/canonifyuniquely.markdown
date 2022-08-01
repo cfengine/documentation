@@ -24,11 +24,11 @@ a list, but files in the list may have the same name when
 
 
 ```cf3
-    commands:
+commands:
 
-       "/var/cfengine/bin/$(component)"
+   "/var/cfengine/bin/$(component)"
 
-           if => canonifyuniquely("start_$(component)");
+       if => canonifyuniquely("start_$(component)");
 ```
 
 **See also:** [canonify()][canonify]).

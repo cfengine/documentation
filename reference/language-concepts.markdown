@@ -9,19 +9,19 @@ tags: [overviews, language, syntax, concepts, promises]
 There is only one grammatical form for statements in the language:
 
 ```cf3
-    bundle bundle_type name
-    {
-    promise_type:
+bundle bundle_type name
+{
+promise_type:
 
-      classes::
+  classes::
 
-        "promiser" -> { "promisee1", "promisee2", ... }
+    "promiser" -> { "promisee1", "promisee2", ... }
 
-            attribute_1 => value_1,
-            attribute_2 => value_2,
-            ...
-            attribute_n => value_n;
-    }
+        attribute_1 => value_1,
+        attribute_2 => value_2,
+        ...
+        attribute_n => value_n;
+}
 ```
 
 In addition, CFEngine bodies can be defined and used as attribute values.  Here's a real-life example of a body and its usage.
@@ -36,8 +36,6 @@ body edit_defaults no_backup
 
   files:
     "myfile" edit_defaults => no_backup;
-
-
 ```
 
 You can recognize *everything* in CFEngine from just those few concepts.

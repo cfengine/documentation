@@ -86,13 +86,13 @@ curl -k --user <username>:<password> \
 **Example response:**
 
 ```
- {
-     "gitServer": "https://github.com/cfengine/masterfiles.git",
-     "gitRefspec": "master",
-     "gitUsername": "gituser",
-     "gitPassword": "passwordOrToken",
-     "gitPrivateKey": "/opt/cfengine/userworkdir/admin/.ssh/id_rsa.pvt"
- }
+{
+    "gitServer": "https://github.com/cfengine/masterfiles.git",
+    "gitRefspec": "master",
+    "gitUsername": "gituser",
+    "gitPassword": "passwordOrToken",
+    "gitPrivateKey": "/opt/cfengine/userworkdir/admin/.ssh/id_rsa.pvt"
+}
 ```
 
 ## History

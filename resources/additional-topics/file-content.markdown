@@ -163,9 +163,9 @@ For example, the source template file might look like this, with embedded
 CFEngine variables:
 
 ```
-     mail_relay = $(sys.fqhost)
-     important_user = $(mybundle.variable)
-     #...
+mail_relay = $(sys.fqhost)
+important_user = $(mybundle.variable)
+#...
 ```
 
 These variables will be filled in by CFEngine assuming they are defined within

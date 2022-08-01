@@ -32,31 +32,30 @@ Generate a keypair for the client:
 Then install the systemd units:
 
 ```sh
-  for each in $(ls /var/cfengine/share/usr/lib/systemd/system); do
-    cp /var/cfengine/share/usr/lib/systemd/system/${each} /etc/systemd/system/${each}
-    chmod 664 /etc/systemd/system/${each}
-  done
-  systemctl daemon-reload
+for each in $(ls /var/cfengine/share/usr/lib/systemd/system); do
+  cp /var/cfengine/share/usr/lib/systemd/system/${each} /etc/systemd/system/${each}
+  chmod 664 /etc/systemd/system/${each}
+done
+systemctl daemon-reload
 ```
 
 Next enable the necessary service units:
 
 ```sh
-  systemctl enable cf-execd
-  systemctl enable cf-monitord
-  systemctl enable cf-serverd
-  systemctl enable cfengine3
+systemctl enable cf-execd
+systemctl enable cf-monitord
+systemctl enable cf-serverd
+systemctl enable cfengine3
 ```
 
 Finally, bootstrap the agent, and start the cfengine services:
 
 ```sh
+export POLICY_SERVER="myhub";
 
-  export POLICY_SERVER="myhub";
+# Bootstrap to hub
+/var/cfengine/bin/cf-agent --bootstrap ${POLICY_SERVER}
 
-  # Bootstrap to hub
-  /var/cfengine/bin/cf-agent --bootstrap ${POLICY_SERVER}
-
-  # Start the cfengine3 service.
-  systemctl start cfengine3
+# Start the cfengine3 service.
+systemctl start cfengine3
 ```

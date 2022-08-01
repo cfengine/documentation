@@ -35,11 +35,11 @@ accesses user defined data.
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-      guard::
+  guard::
 
-       "global_number" string => hubknowledge("number_variable");
+   "global_number" string => hubknowledge("number_variable");
 ```
 
 **See also:** `remotescalar()`, `remoteclassesmatching()`, `hostswithclass()`

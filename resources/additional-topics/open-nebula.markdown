@@ -133,7 +133,6 @@ vars:
 			"nfs-client",
 			"kvm-pxe"
 			};
-
 ```
 
 Promises to perform dependency installation:
@@ -193,7 +192,6 @@ commands:
 front_end.!opennebula_installed::
 	"/usr/bin/dpkg -i /root/opennebula_2.0-1_i386.deb",
 	comment => "install opennebula package if it isnt already";
-
 ```
 
 This promise points to the Open Nebula package file in /root/. To prevent
@@ -254,7 +252,6 @@ files:
 To ensure the NFS service remains available:
 
 ```cf3
-
 processes:
 
 ensure_nfs_running::
@@ -266,7 +263,6 @@ If this is found to be false then we classify:
 start_nfs::
         "service nfs-kernel-server restart",
                  comment => "restart nfs";
-
 ```
 
 In order to ensure the share is mounted on all node controllers we can use the
@@ -396,7 +392,6 @@ vars:
                                "bridge_maxwait  0",
                                "bridge_fd       0"
                                };
-
 ```
 Next we edit the interfaces file to include our new settings:
 

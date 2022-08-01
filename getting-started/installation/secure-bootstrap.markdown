@@ -63,7 +63,7 @@ you need to supply an IP address before the path to the key.
 For example:
 
 ```
-  notice: Establishing trust might be incomplete. For completeness, use --trust-key IPADDR:filename
+notice: Establishing trust might be incomplete. For completeness, use --trust-key IPADDR:filename
 ```
 
 Next copy the hosts public key (`/var/cfengine/ppkeys/localhost.pub`) to the hub

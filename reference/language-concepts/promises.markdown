@@ -62,12 +62,12 @@ they enable a wide range of behavior.
 ### Promise Example
 
 ```cf3
-     # Promise type
-     files:
-         "/home/mark/tmp/test_plain" -> "system blue team",
-             create  => "true",
-             perms   => owner("@(usernames)"),
-             comment => "Hello World";
+# Promise type
+files:
+    "/home/mark/tmp/test_plain" -> "system blue team",
+        create  => "true",
+        perms   => owner("@(usernames)"),
+        comment => "Hello World";
 ```
 
 In this example, the promise is about a file named `test_plain` in the
@@ -157,8 +157,8 @@ Some promise types can have implicit behavior. For example, the following
 promise simply prints out a log message "hello world".
 
 ```cf3
-   reports:
-     "hello world";
+reports:
+  "hello world";
 ```
 
 The same promise could be implemented using the `commands` type, invoking the

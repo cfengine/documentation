@@ -37,19 +37,18 @@ replacement during file editing, and the other is in searching for files.
 Consider the examples below:
 
 ```cf3
+bundle agent testbundle
+{
+files:
 
-    bundle agent testbundle
-    {
-    files:
+  # This might be a dangerous pattern - see explanation in the next section
 
-      # This might be a dangerous pattern - see explanation in the next section
-
-      # on "Runaway change warning"
+  # on "Runaway change warning"
 
 
-      "/home/mark/tmp/cf([23])?_(.*)"
-           edit_line => myedit("second backref: $(match.2)");
-    }
+  "/home/mark/tmp/cf([23])?_(.*)"
+       edit_line => myedit("second backref: $(match.2)");
+}
 ```
 
 There are other filenames that could match this pattern, but if, for example,
@@ -83,43 +82,43 @@ refer to the filename components, but instead to the hash-commented line in
 the `replace_patterns` promise.
 
 ```cf3
-    bundle edit_line myedit(parameter)
-    {
-      vars:
+bundle edit_line myedit(parameter)
+{
+  vars:
 
-       "edit_variable" string => "private edit variable is $(parameter)";
+   "edit_variable" string => "private edit variable is $(parameter)";
 
-      insert_lines:
+  insert_lines:
 
-         "$(edit_variable)";
+     "$(edit_variable)";
 
-      replace_patterns:
+  replace_patterns:
 
-      # replace shell comments with C comments
+  # replace shell comments with C comments
 
-       "#(.*)"
+   "#(.*)"
 
-          replace_with => C_comment,
-         select_region => MySection("New section");
-      }
+      replace_with => C_comment,
+     select_region => MySection("New section");
+  }
 
-    ########################################
-    # Bodies
-    ########################################
+########################################
+# Bodies
+########################################
 
-    body replace_with C_comment
-    {
-    replace_value => "/* $(match.1) */"; # backreference from replace_patterns
-    occurrences => "all";  # first, last, or all
-    }
+body replace_with C_comment
+{
+replace_value => "/* $(match.1) */"; # backreference from replace_patterns
+occurrences => "all";  # first, last, or all
+}
 
-    ########################################################
+########################################################
 
-    body select_region MySection(x)
-    {
-        select_start => "\[$(x)\]";
-        select_end => "\[.*\]";
-    }
+body select_region MySection(x)
+{
+    select_start => "\[$(x)\]";
+    select_end => "\[.*\]";
+}
 ```
 
 Try this example on the file
@@ -184,54 +183,54 @@ The following example shows how you would hash-comment lines in a file using
 CFEngine.
 
 ```cf3
-    ######################################################################
-    #
-    # HashCommentLines implemented in CFEngine 3
-    #
-    ######################################################################
+######################################################################
+#
+# HashCommentLines implemented in CFEngine 3
+#
+######################################################################
 
 
-    body common control
-    {
-        version => "1.2.3";
-        bundlesequence  => { "testbundle"  };
-    }
+body common control
+{
+    version => "1.2.3";
+    bundlesequence  => { "testbundle"  };
+}
 
-    ########################################################
+########################################################
 
-    bundle agent testbundle
-    {
-    files:
-      "/home/mark/tmp/comment_test"
-           create    => "true",
-           edit_line => comment_lines_matching;
-    }
+bundle agent testbundle
+{
+files:
+  "/home/mark/tmp/comment_test"
+       create    => "true",
+       edit_line => comment_lines_matching;
+}
 
-    ########################################################
-
-
-    bundle edit_line comment_lines_matching
-      {
-      vars:
-
-        "regexes" slist => { "one.*", "two.*", "four.*" };
-
-      replace_patterns:
-
-       "^($(regexes))$"
-          replace_with => comment("# ");
-      }
-
-    ########################################
-    # Bodies
-    ########################################
+########################################################
 
 
-    body replace_with comment(c)
-    {
-        replace_value => "$(c) $(match.1)";
-        occurrences => "all";
-    }
+bundle edit_line comment_lines_matching
+  {
+  vars:
+
+    "regexes" slist => { "one.*", "two.*", "four.*" };
+
+  replace_patterns:
+
+   "^($(regexes))$"
+      replace_with => comment("# ");
+  }
+
+########################################
+# Bodies
+########################################
+
+
+body replace_with comment(c)
+{
+    replace_value => "$(c) $(match.1)";
+    occurrences => "all";
+}
 ```
 
 ### Regular expressions in paths
@@ -256,38 +255,38 @@ The values `literal` and `regex` explicitly force CFEngine to interpret the
 pathname either one way or another. (see the `pathtype` attribute).
 
 ```cf3
-    body common control
-    {
-        bundlesequence => { "wintest" };
-    }
+body common control
+{
+    bundlesequence => { "wintest" };
+}
 
-    ########################################
-
-
-    bundle agent wintest
-    {
-    files:
-      "c:/tmp/file/f.*"		# "best guess" interpretation
-        delete => nodir;
+########################################
 
 
-      "c:\tmp\file"
-        delete => nodir,
-        pathtype => "literal";	# force literal string interpretation
+bundle agent wintest
+{
+files:
+  "c:/tmp/file/f.*"		# "best guess" interpretation
+    delete => nodir;
 
 
-      "C:/windows/tmp/f\d"
-        delete => nodir,
-        pathtype => "regex";	# force regular expression interpretation
-    }
-
-    ########################################
+  "c:\tmp\file"
+    delete => nodir,
+    pathtype => "literal";	# force literal string interpretation
 
 
-    body delete nodir
-    {
-        rmdirs => "false";
-    }
+  "C:/windows/tmp/f\d"
+    delete => nodir,
+    pathtype => "regex";	# force regular expression interpretation
+}
+
+########################################
+
+
+body delete nodir
+{
+    rmdirs => "false";
+}
 ```
 
 Note that the path `/tmp/gar.*` will only match filenames like `/tmp/gar`,
@@ -382,8 +381,8 @@ filenames foolish, foolishly, bearish, bearishly, garish, and garishly in the
 back-reference:
 
 ```cf3
-    files:
-        "/tmp/(?:foo|bear|gar)ish(ly)?"
+files:
+    "/tmp/(?:foo|bear|gar)ish(ly)?"
 ```
 
 Note that sometimes multi-line strings are subject to be matched by regular
@@ -397,8 +396,8 @@ match the files `/tmp/Foolish` or `/tmp/fOoLish`, etc. There are two ways to
 achieve case-insensitivity. The first is to use character classes:
 
 ```cf3
-    files:
-        "/tmp/[Ff][Oo][Oo][Ll][Ii][Ss][Hh]"
+files:
+    "/tmp/[Ff][Oo][Oo][Ll][Ii][Ss][Hh]"
 ```
 
 While this is certainly correct, it can also lead to unreadability. The PCRE
@@ -406,8 +405,8 @@ patterns in CFEngine have another way of introducing case-insensitivity into a
 pattern:
 
 ```cf3
-    files:
-        "/tmp/(?i:foolish)"
+files:
+    "/tmp/(?i:foolish)"
 ```
 
 The `(?i:)` brackets impose case-insensitive matching on the text that it
@@ -416,8 +415,8 @@ expression like this (but be aware that the two expressions are different, and
 work slightly differently, so check the documentation for the specifics):
 
 ```cf3
-    files:
-        "/tmp/(?i)foolish"
+files:
+    "/tmp/(?i)foolish"
 ```
 
 The `/s`, `/m`, and `/x` switches from PCRE are also available, but use them

@@ -37,10 +37,10 @@ global ones. All times are written in units of minutes. The following global
 setting is defined in `body agent control`.
 
 ```cf3
-    body agent control
-    {
-        ifelapsed => "60";	# one hour
-    }
+body agent control
+{
+    ifelapsed => "60";	# one hour
+}
 ```
 
 This setting tells CFEngine not to verify promises until 60 minutes have
@@ -49,10 +49,10 @@ one hour. This global setting of one hour could be changed for a specific
 promise body by setting [`ifelapsed`][Promise Types#ifelapsed] in the promise body.
 
 ```cf3
-    body action example
-    {
-        ifelapsed => "90";	# 1.5 hours
-    }
+body action example
+{
+    ifelapsed => "90";	# 1.5 hours
+}
 ```
 
 This promise which overrides the global 60 minute time period and defines a
