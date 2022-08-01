@@ -227,16 +227,16 @@ HTTP 200 Ok
   Example:
 
   ```json
-{
-   "classes":{
-      "My_class": {},
-      "My_class2": {
-         "comment":"comment body",
-         "tags": ["suggestion-001", "reporting"]
-      }
-   }
-}
-```
+  {
+     "classes":{
+        "My_class": {},
+        "My_class2": {
+           "comment":"comment body",
+           "tags": ["suggestion-001", "reporting"]
+        }
+     }
+  }
+  ```
 
 * **variables** *(JSON object)*
   The format is a JSON object where the key is variable name and value is another JSON object
@@ -244,19 +244,19 @@ HTTP 200 Ok
   Example:
 
   ```json
-{
-   "variables":{
-      "Namespace:BundleName.VariableName":{
-         "value":"myvalue"
-      },
-      "HubCMDB:My.hostname":{
-         "value":"host1.cfengine.com",
-         "comment":"My hostname should be set to this",
-         "tags": ["suggestion-001", "reporting"]
-      }
-   }
-}
-```
+  {
+     "variables":{
+        "Namespace:BundleName.VariableName":{
+           "value":"myvalue"
+        },
+        "HubCMDB:My.hostname":{
+           "value":"host1.cfengine.com",
+           "comment":"My hostname should be set to this",
+           "tags": ["suggestion-001", "reporting"]
+        }
+     }
+  }
+  ```
 
 
 **Example request (curl):**
@@ -358,17 +358,17 @@ HTTP 200 Ok
   Example:
 
   ```json
-{
-   "classes":{
-      "My_class":{
+  {
+     "classes":{
+        "My_class":{
 
-      },
-      "My_class2":{
-         "comment":"comment body"
-      }
-   }
-}
-```
+        },
+        "My_class2":{
+           "comment":"comment body"
+        }
+     }
+  }
+  ```
 
 If you need to delete all classes from host you need to set null value:
 
@@ -386,18 +386,18 @@ If your request body misses classes then the previous value will be preserved.
   Example:
 
   ```json
-{
-   "variables":{
-      "Namespace:BundleName.VariableName":{
-         "value":"myvalue"
-      },
-      "HubCMDB:My.hostname":{
-         "value":"host1.cfengine.com",
-         "comment":"My hostname should be set to this"
-      }
-   }
-}
-```
+  {
+     "variables":{
+        "Namespace:BundleName.VariableName":{
+           "value":"myvalue"
+        },
+        "HubCMDB:My.hostname":{
+           "value":"host1.cfengine.com",
+           "comment":"My hostname should be set to this"
+        }
+     }
+  }
+  ```
 
 If you need to delete all variables from host you need to set null value:
 

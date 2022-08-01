@@ -234,11 +234,11 @@ viewed on demand. A reference to the appropriate file is given.
 **Example:**
 
 ```cf3
-    body executor control
-    {
-    mailmaxlines => "100";
-    }
-````
+body executor control
+{
+mailmaxlines => "100";
+}
+```
 
 ### mailsubject
 

@@ -19,11 +19,11 @@ found in `/var/cfengine/share/doc/examples`.
 See Also:
 
 * [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
-	* ["Hello World" Policy Example][Examples and Tutorials#"Hello World" Policy Example]
-	* [Activate a Bundle Manually][Examples and Tutorials#Activate a Bundle Manually]
-	* [Make the Example Stand Alone][Examples and Tutorials#Make the Example Stand Alone]
-	* [Make the Example an Executable Script][Examples and Tutorials#Make the Example an Executable Script]
-	* [Integrating the Example into your Main Policy][Examples and Tutorials#Integrating the Example into your Main Policy]
+  * ["Hello World" Policy Example][Examples and Tutorials#"Hello World" Policy Example]
+  * [Activate a Bundle Manually][Examples and Tutorials#Activate a Bundle Manually]
+  * [Make the Example Stand Alone][Examples and Tutorials#Make the Example Stand Alone]
+  * [Make the Example an Executable Script][Examples and Tutorials#Make the Example an Executable Script]
+  * [Integrating the Example into your Main Policy][Examples and Tutorials#Integrating the Example into your Main Policy]
 
 
 ## Tutorial for Running Examples ##
@@ -51,17 +51,17 @@ Following these steps, you will login to your policy server via the SSH protocol
 4. Create the file with the command: ```vi hello_world.cf ```
 5. In the vi editor, enter ```i``` for "Insert" and enter the following content (ie. copy and paste from a text editor):
 
-	```cf3
-	bundle agent hello_world
-	{
-	  reports:
+    ```cf3
+    bundle agent hello_world
+    {
+      reports:
 
-		any::
+        any::
 
-		  "Hello World!";
+          "Hello World!";
 
-	}
-	```
+    }
+    ```
 
 6. Exit the "Insert" mode by pressing the "esc" button. This will return to the command prompt.
 7. Save the changes to the file by typing ```:w``` then "Enter".
@@ -154,7 +154,6 @@ Note: It may be necessary to add a reference to the standard library within the 
 
 ```cf3
 body common control {
-
     inputs => {
        "libraries/cfengine_stdlib.cf",
     };
@@ -224,12 +223,12 @@ doing the following on your policy server:
 2. If the example contains a `body common control` section, delete it. That
 section will look something like this:
 
-	```cf3
-		  body common control
-		  {
-			bundlesequence  => { "hello_world" };
-		  }
-	```
+   ```cf3
+   body common control
+   {
+     bundlesequence  => { "hello_world" };
+   }
+   ```
 
 You cannot have duplicate control bodies (i.e. two
 agent control bodies, one in the main file and one
@@ -244,33 +243,33 @@ from the example.
 3. Insert the example's bundle name in the `bundlesequence` section
     of the main policy file `/var/cfengine/masterfiles/promises.cf`:
 
-	```cf3
-		  bundlesequence => {
-			  ...
-			  "hello_world",
-			  ...
-		  };
-	```
+    ```cf3
+    bundlesequence => {
+        ...
+        "hello_world",
+        ...
+    };
+    ```
 
 4. Insert the policy file name in the [`inputs`][Components#inputs] section of the main policy file
     `/var/cfengine/masterfiles/promises.cf`:
 
-	```cf3
-	inputs => {
-	    ...
-		"hello_world.cf",
+    ```cf3
+    inputs => {
         ...
-	};
-	```
+        "hello_world.cf",
+        ...
+    };
+    ```
 
 5. You must also remove any inputs section from the example that
    includes the external library:
 
-	```cf3
+    ```cf3
     inputs => {
-	    "libraries/cfengine_stdlib.cf"
+        "libraries/cfengine_stdlib.cf"
     };
-	```
+    ```
 
     This is necessary, since `cfengine_stdlib.cf` is already included
     in the inputs section of the master policy.

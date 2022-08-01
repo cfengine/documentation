@@ -993,7 +993,7 @@ If we break the tower, by giving it an impossible promise to keep, e.g. changing
 the name of the directory in tier 3 to something that cannot be created2, then
 tier 3 will fail and the output looks like this:
 
-``console
+```console
 host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/self-healing-chain.cf -K
 Unable to make directories to /xtmp/something_to_do_3
  !!! System reports error for cf_mkdir: "Permission denied"

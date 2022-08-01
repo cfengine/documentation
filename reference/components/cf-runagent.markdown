@@ -184,7 +184,7 @@ body copy_from example
   servers  => { "remote-host.example.org" };
   encrypt => "true";
 }
-````
+```
 
 ### background_children
 

@@ -41,7 +41,7 @@ anything goes wrong.
 
    For SysVinit:
 
-    ```console
+   ```console
    root@hub:~# service cfengine3 stop
    ```
 
@@ -79,7 +79,7 @@ anything goes wrong.
 
    For SysVinit:
 
-    ```console
+   ```console
    root@hub:~# service cfengine3 start
    ```
 
@@ -110,7 +110,7 @@ agents you are ready to begin binary upgrades.
 
    For SysVinit:
 
-    ```console
+   ```console
    root@hub:~# service cfengine3 start
    ```
 

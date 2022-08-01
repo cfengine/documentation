@@ -240,14 +240,14 @@ Other frequently used syntax highlighers shown below.
 
 #### Bash Script Code Blocks
 
-		```bash
-		#!/bin/bash
+        ```bash
+        #!/bin/bash
         echo hi
         for i in `seq 1 10`;
         do
           echo $i
         done
-		```
+        ```
 
 ```bash
 #!/bin/bash
@@ -261,7 +261,7 @@ done
 #### Console Blocks
 
         ```console
-		root@policy_server # /etc/init.d/cfengine3 stop
+        root@policy_server # /etc/init.d/cfengine3 stop
         ```
 
 ```console
@@ -270,20 +270,20 @@ root@policy_server # /etc/init.d/cfengine3 stop
 
 #### SQL Code Blocks
 
-		```sql
-	    SELECT
-	         FileChanges.FileName,
-	         Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
-	         COUNT(1) AS ChangeCount
-	      FROM
-	         FileChanges JOIN Contexts
-	      WHERE
-	         Contexts.ContextName='ubuntu'
-	      GROUP BY
-	         FileChanges.FileName
-	      ORDER BY
-	         ChangeCount DESC
-		```
+        ```sql
+        SELECT
+             FileChanges.FileName,
+             Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
+             COUNT(1) AS ChangeCount
+          FROM
+             FileChanges JOIN Contexts
+          WHERE
+             Contexts.ContextName='ubuntu'
+          GROUP BY
+             FileChanges.FileName
+          ORDER BY
+             ChangeCount DESC
+        ```
 
 ```sql
 SELECT
@@ -302,26 +302,26 @@ SELECT
 
 #### Diff Code Blocks
 
-		```diff
-		diff --git a/README.md b/README.md
-		index 92555a2..b49c0bb 100644
-		--- a/README.md
-		+++ b/README.md
-		@@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
+        ```diff
+        diff --git a/README.md b/README.md
+        index 92555a2..b49c0bb 100644
+        --- a/README.md
+        +++ b/README.md
+        @@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
 
-		 * follow the [Policy Style Guide](guide/writing-and-serving-policy/policy-style.markdown)
-		   in examples and code snippets
-		-* always run it through Pygments plus the appropriate lexer (only cf3
-		-  supported for now)
-		+* always run it through Pygments plus the appropriate lexer
-		+
-		+Most important are the `cf3` lexer, as well as `bash`, `console`,
-		+`diff`, `shell-session` and `postgresql`. But Jekyll supports
-		+[many more lexers](http://pygments.org/docs/lexers/)
-		+
-		 * avoid custom color schemes and hand-coded HTML
-		 * document the example after the example code
-		```
+         * follow the [Policy Style Guide](guide/writing-and-serving-policy/policy-style.markdown)
+           in examples and code snippets
+        -* always run it through Pygments plus the appropriate lexer (only cf3
+        -  supported for now)
+        +* always run it through Pygments plus the appropriate lexer
+        +
+        +Most important are the `cf3` lexer, as well as `bash`, `console`,
+        +`diff`, `shell-session` and `postgresql`. But Jekyll supports
+        +[many more lexers](http://pygments.org/docs/lexers/)
+        +
+         * avoid custom color schemes and hand-coded HTML
+         * document the example after the example code
+        ```
 
 ```diff
 diff --git a/README.md b/README.md
@@ -404,26 +404,26 @@ You can also use backticks (and get syntax highlighting) - just make sure the ba
 
     1. First
 
-    	```cf3
-    	# CFEngine block
+        ```cf3
+        # CFEngine block
 
-    	bundle agent example()
-    	{
-    	}
-    	```
+        bundle agent example()
+        {
+        }
+        ```
 
     2. Second
     3. Third
 
 1. First
 
-	```cf3
-	# CFEngine block
+    ```cf3
+    # CFEngine block
 
-	bundle agent example()
-	{
-	}
-	```
+    bundle agent example()
+    {
+    }
+    ```
 
 2. Second
 3. Third

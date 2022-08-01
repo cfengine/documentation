@@ -164,10 +164,10 @@ reports:
 The same promise could be implemented using the `commands` type, invoking the
 echo command:
 
-````cf3
-   commands:
-     "/bin/echo hello world";
-````
+```cf3
+commands:
+  "/bin/echo hello world";
+```
 
 These two promises have default attributes for everything except the
 `promiser'. Both promises simply cause CFEngine to print a message.
