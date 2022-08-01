@@ -62,7 +62,7 @@ def processFile(markdown, config):
 			current_html = markdown_line.split('alias: ')
 			current_html = current_html[1].rstrip()
 			config["context_current_html"] = current_html
-		elif markdown_line[0] == '#':
+		elif not in_pre and markdown_line[0] == '#':
 			for header_depth in range(1,6):
 				header_marker = "#" * header_depth + " "
 				if markdown_line.find(header_marker) == 0:
