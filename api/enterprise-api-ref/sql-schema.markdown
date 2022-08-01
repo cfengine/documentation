@@ -22,7 +22,7 @@ Agent status contains information about last cf-agent execution.
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
 * **AgentExecutionInterval** *(integer)*
-    Estimated interval in which cf-agent is being executed, as cf-agent execution interval is expressed in cfengine context expressions (Min00_05 etc.) it can be not regular, this interval is discovered by analyzing last few cf-agent execution timestamps. Expressed in seconds.
+    Estimated interval in which cf-agent is being executed, as cf-agent execution interval is expressed in CFEngine context expressions (Min00_05 etc.) it can be not regular, this interval is discovered by analyzing last few cf-agent execution timestamps. Expressed in seconds.
 
 * **LastAgentLocalExecutionTimeStamp** *(timestamp)*
     Timestamp of last cf-agent execution on the host.

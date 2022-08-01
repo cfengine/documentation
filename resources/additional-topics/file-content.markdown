@@ -20,7 +20,7 @@ long-standing Unix tools awk and sed. Adding a user to a structured file such as
 the password file, only if the user is not already defined, is a more complex
 operation.
 
-Cfengine allows you to model both whole files and parts of files, in any format,
+CFEngine allows you to model both whole files and parts of files, in any format,
 and promise that these fragments will satisfy certain promises about their
 state. This is potentially different from more common templating approaches to
 file management in which pre-adjusted copies of files are generated for all

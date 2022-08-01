@@ -83,7 +83,7 @@ exiting child process and go into a deadlock trying to read from an already
 dead process.  This leaves a zombie behind (the parent daemon process which
 forked and was supposed to exit) though the child continues. A way around this
 is to use a wrapper script which prints the line `cfengine-die` to STDOUT after
-restarting the process. This causes cfengine to close the pipe forcibly and
+restarting the process. This causes CFEngine to close the pipe forcibly and
 continue.
 
 **See also:** [Bundles and Bodies for commands in the stdlib][lib/commands.cf]

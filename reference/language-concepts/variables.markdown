@@ -77,7 +77,7 @@ of the bundle in which it is defined:
 
 ### Quoting
 
-When quoting strings cfengine allows the use of `'`, `"`, and or `` ` ``. This
+When quoting strings CFEngine allows the use of `'`, `"`, and or `` ` ``. This
 allows flexibilty when defining strings that contain quotes. Single or double
 quotes can be escaped with `\` however, please note that backticks (`` ` ``) can **not**
 be escaped.

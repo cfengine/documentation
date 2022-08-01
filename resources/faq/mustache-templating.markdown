@@ -48,7 +48,7 @@ Version: CFEngine {{#classes.enterprise}}Enterprise{{/classes.enterprise}} {{var
 
 Mustache does not understand CFEngine's class expression logic and it is not
 possible to use full class expressions in mustache templates. Instead, use class
-expressions inside cfengine policy to define a singular class which can be used
+expressions inside CFEngine policy to define a singular class which can be used
 to conditionally render a block.
 
 {% raw %}

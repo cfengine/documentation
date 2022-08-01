@@ -74,7 +74,7 @@ when hosts are bootstrapped or decommissioned.
 
 ### Host count widget
 
-The hosts count widget helps to visualize the number of hosts bootstrapped to cfengine over time.
+The hosts count widget helps to visualize the number of hosts bootstrapped to CFEngine over time.
 
 <img src="dashboard-widget-hosts-count.png" alt="Dashboard Host count" width="412px">
 

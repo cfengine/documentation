@@ -188,7 +188,7 @@ Mission portal can authenticate against an external directory.
 
 **Special Notes:**
 
-- LDAP API Url refers to the API cfengine uses internally for authentication.
+- LDAP API Url refers to the API CFEngine uses internally for authentication.
   Most likely you will not alter the default value.
 
 - LDAP filter must be supplied.

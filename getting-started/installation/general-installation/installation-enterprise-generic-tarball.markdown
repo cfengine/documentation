@@ -48,7 +48,7 @@ systemctl enable cf-serverd
 systemctl enable cfengine3
 ```
 
-Finally, bootstrap the agent, and start the cfengine services:
+Finally, bootstrap the agent, and start the CFEngine services:
 
 ```sh
 export POLICY_SERVER="myhub";

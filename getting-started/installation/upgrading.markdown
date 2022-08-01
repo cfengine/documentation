@@ -45,7 +45,7 @@ anything goes wrong.
    root@hub:~# service cfengine3 stop
    ```
 
-2. Create an archive containing **all** cfengine information.
+2. Create an archive containing **all** CFEngine information.
 
    Ensure you have enough disk space where your backup archive will be created.
 
@@ -159,7 +159,7 @@ agents you are ready to begin binary upgrades.
 
 2. Define the `trigger_upgrade` class to allow hosts to attempt self upgrade. In
    this example hosts with IPv4 addresses in 192.0.2.0/24 or 203.0.113.0/24
-   network range, or hosts running cfengine 3.10.x except for cfengine 3.10.2.
+   network range, or hosts running CFEngine 3.10.x except for CFEngine 3.10.2.
    It's recommended to start with a small scope, and gradually increase until
    all hosts are upgraded.
 

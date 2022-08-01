@@ -777,13 +777,13 @@ Follow this procedure:
 
 * Download the new version from the [Enterprise Downloads Page][enterprise software download page]
 * Export any items from Mission Portal you wish to migrate
-* Stop all cfengine services on the superhub
+* Stop all CFEngine services on the superhub
 
    ```console
    # systemctl stop cfengine3
    ```
 
-* Uninstall cfengine hub
+* Uninstall CFEngine hub
 
    ```console
    # rpm -e cfengine-nova-hub

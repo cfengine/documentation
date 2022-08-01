@@ -201,7 +201,7 @@ body executor control
 
 ### mailfrom
 
-**Description:** Email-address cfengine mail appears to come from
+**Description:** Email-address CFEngine mail appears to come from
 
 **Type:** `string`
 
@@ -262,7 +262,7 @@ body executor control
 
 ### mailto
 
-**Description:** Email-address cfengine mail is sent to
+**Description:** Email-address CFEngine mail is sent to
 
 The address to whom email is sent if an smtp host is configured.
 

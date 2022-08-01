@@ -244,7 +244,7 @@ The custom reports interface and associated [query rest api][Query REST API] all
 reports to be run.
 
 Queries can be made against the `promiselog` table. This query finds the
-promises that are repaired the most excluding internal cfengine related promises
+promises that are repaired the most excluding internal CFEngine related promises
 and promises from the standard library.
 
 ```sql

@@ -27,7 +27,7 @@ traditional list and array data types in CFEngine.
 
 **Notes:**
 
-- Bare values try to expand a named cfengine data container
+- Bare values try to expand a named CFEngine data container
 - It is only possible to wrap data containers in the current namespace.
 - true and false are reserved bare values
 - In the event of key collision the *last* key merged wins
