@@ -120,7 +120,7 @@ They are declared as follows:
 
 ### List Substitution and Expansion
 
-An entire list is referenced with the symbol ‘@’ and can be passed in their
+An entire list is referenced with the symbol '@' and can be passed in their
 entirety in any context where a list is expected as `@(list)`. For example,
 the following variable definition references a list named "shortlist":
 
@@ -130,7 +130,7 @@ the following variable definition references a list named "shortlist":
         "longlist" slist => { @(shortlist), "plus", "plus" };
 ```
 
-The declaration order does not matter – CFEngine will understand the
+The declaration order does not matter - CFEngine will understand the
 dependency, and execute the promise to assign the variable `@(shortlist)`
 before the promise to assign the variable `@(longlist)`.
 

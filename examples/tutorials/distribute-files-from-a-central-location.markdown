@@ -157,7 +157,7 @@ Create `services/patching.cf` with the following content:
 The above policy contains two bundles. We have separated a top-level patching
 bundle from a more specific `patch_distribution` bundle. This is an
 illustration of how to use bundles in order to abstract details. You
-might, for example, have some hosts that you don’t want to fully
+might, for example, have some hosts that you don't want to fully
 synchronize so you might use a different method or copy from a
 different path. Creating numerous bundles allows you to move those details away from the top
 level of what is involved in patching. If people are interested in what

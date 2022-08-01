@@ -77,8 +77,8 @@ The output looks something like this:
     2013-06-12T18:56:01+0200   notice: R: cf-execd is The executor, not executionist
 
 You see from this that, if we refer to a list variable using the scalar
-reference operator `$()`, CFEngine interprets this to mean “please iterate
-over all values of the list”. Thus, we have effectively a `foreach' loop,
+reference operator `$()`, CFEngine interprets this to mean "please iterate
+over all values of the list". Thus, we have effectively a `foreach' loop,
 without the attendant syntax.
 
 If a variable is repeated, its value is tied throughout the expression; so the

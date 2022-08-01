@@ -87,7 +87,7 @@ bundle agent __main__
 }
 ```
 
-Let’s save this policy in `/tmp/my-policy.cf`.
+Let's save this policy in `/tmp/my-policy.cf`.
 
 You can now run this policy either in Distributed (client-server) System or in a
 Stand Alone system. The next two sections will cover each of the options.

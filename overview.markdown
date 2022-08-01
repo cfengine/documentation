@@ -9,7 +9,7 @@ CFEngine is a distributed system for managing and monitoring computers across an
 
 ## Policy Language and Compliance ##
 
-For many users, CFEngine is simply a configuration tool – i.e. software for deploying and patching systems according to a policy. Policy is described using promises. Every statement in CFEngine 3 is a promise to be kept at some time or location. More than this, however, CFEngine is not like other automation tools that "roll out" an image of some software once and hope for the best. Every promise that you make in CFEngine is continuously verified and maintained. It is not a one-off operation, but a self-repairing process should anything deviate from the policy.
+For many users, CFEngine is simply a configuration tool - i.e. software for deploying and patching systems according to a policy. Policy is described using promises. Every statement in CFEngine 3 is a promise to be kept at some time or location. More than this, however, CFEngine is not like other automation tools that "roll out" an image of some software once and hope for the best. Every promise that you make in CFEngine is continuously verified and maintained. It is not a one-off operation, but a self-repairing process should anything deviate from the policy.
 
 CFEngine ensures that the actual state of a system is in compliance with the predefined model of desired state for the system. If it is not in compliance CFEngine will bring it into compliance.  This is known as *convergence*.
 
@@ -17,7 +17,7 @@ That model is represented by one or more policies that have been written using t
 
 Those policies are distributed across all hosts within the system via download from the policy server. Every host will then interpret and execute each of the instructions it has been given in a predetermined order.
 
-CFEngine continually monitors all of the hosts in real-time, and should the system’s current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.
+CFEngine continually monitors all of the hosts in real-time, and should the system's current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.
 
 See Also: [Language Concepts][], [Writing and Serving Policy][]
 

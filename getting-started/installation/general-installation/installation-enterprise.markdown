@@ -47,7 +47,7 @@ promise executions) by adjusting `def.max_client_history_size`.
 
 **Network**
 
-* Verify that the machine’s network connection is working and that
+* Verify that the machine's network connection is working and that
   port 5308 (used by CFEngine) is open for both incoming and outgoing
   connections.
 

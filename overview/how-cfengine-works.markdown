@@ -68,7 +68,7 @@ End-user and CFEngine agents workflow
 Thanks to the autonomous nature of CFEngine, systems will be continuously
 maintained even if the Server is down. CFEngine agents on the hosts will
 opportunistically try to connect to the server. If it fails, last successful
-policy will apply, and since all evaluation is local, it doesn’t matter if the
+policy will apply, and since all evaluation is local, it doesn't matter if the
 characteristics of the host changes and needs to be reconfigured. CFEngine will
 figure it out and ensure compliance. CFEngine has been reported to run on many
 different platforms in many different environments including traditional

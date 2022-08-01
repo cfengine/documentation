@@ -213,8 +213,8 @@ the update command is run.
 Finally, we set classes from the software update in case we want to act
 differently depending on the outcome.
 
-Replacing the policy ‘update’ with ‘add’ is all that is required to install the
-package (once) instead of updating. Using policy ‘add’ will do nothing if the
+Replacing the policy 'update' with 'add' is all that is required to install the
+package (once) instead of updating. Using policy 'add' will do nothing if the
 package is already installed, but installs the largest version available if it
 is not. Use package_select => "==" to install the exact version instead of the
 largest.

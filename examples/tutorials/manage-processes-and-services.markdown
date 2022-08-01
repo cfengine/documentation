@@ -80,6 +80,6 @@ ntp       5756  0.3  0.1  37696  2172 ?        Ss   06:33   0:00 /usr/sbin/ntpd 
 
 Congratulations!
 
-That’s it! Every time CFEngine runs the policy, it will check for the process,
-and if it’s not there, will start it. This is how CFEngine maintains your system
+That's it! Every time CFEngine runs the policy, it will check for the process,
+and if it's not there, will start it. This is how CFEngine maintains your system
 in the correct, desired state.

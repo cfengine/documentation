@@ -17,7 +17,7 @@ views of the service desk and human remediation. This document explains how to
 accomplish the major goals of ITIL, in the automated framework of CFEngine.
 
 More concretely, the IT Infrastructure Library (ITIL) is a collection of books,
-in which “best practices” for IT Service Management (ITSM) are described. Today,
+in which "best practices" for IT Service Management (ITSM) are described. Today,
 ITIL can be seen as a de-facto standard in the discipline of ITSM, for which it
 provides guidelines by its current core titles Service Strategy, Service Design,
 Service Transition, Service Operation and Continual Service Improvement. ITIL
@@ -121,7 +121,7 @@ principles. The five service life cycle stages accordant to versin 3 are:
 Why service and process orientation? What is ITIL trying to do? As we mentioned
 in the introduction, the `top down hierarchical' control view of human
 organization fell from favour in business research in the 1980s and service
-oriented autonomy was identified as a new paradigm for levelling organizations –
+oriented autonomy was identified as a new paradigm for levelling organizations -
 getting rid of deep hierarchies that hinder communication and open up
 communication directly.
 
@@ -242,7 +242,7 @@ to service-oriented thinking.
 How shall we support service operation? What resources do we need to provide,
 both human and computer? Can we be certain of having these resources at all
 times, or is there resource sharing taking place? If services are chained into
-“supply chains”, remember that each link of the chain is a possible delay, and a
+"supply chains", remember that each link of the chain is a possible delay, and a
 possible misunderstanding. Successfully running services can be more complex at
 task than we expect, and this is why it is useful to formalize them in an ITIL
 fashion.
@@ -278,11 +278,11 @@ ever new tools and computer-aided solutions for ITIL-compliant IT Service
 Management, this book analyses how the existing and well-established
 technologies used for traditional systems administration can fit into an
 ITIL-driven IT management environment, and it guides potential practitioners in
-integrating a respective tool suite – namely CFEngine – with ITIL and its
+integrating a respective tool suite - namely CFEngine - with ITIL and its
 processes.
 
-To avoid any misunderstanding: We do not argue that CFEngine – originally
-invented for configuring distributed hosts – may be deployed as a comprehensive
+To avoid any misunderstanding: We do not argue that CFEngine - originally
+invented for configuring distributed hosts - may be deployed as a comprehensive
 solution for automating ITIL, but what we believe is CFEngine and its more
 recent innovations can bridge the gap between the technology of distributed
 systems management and business-driven IT Service Management. To make the case
@@ -320,7 +320,7 @@ Service support is composed of a number of issues:
 
 * Change management: implementing major sequenced changes in the infrastructure.
 
-* Release management: planning and implementing major “product” changes.
+* Release management: planning and implementing major "product" changes.
 
 Although the difference between change management and release management is not
 completely clear in ITIL, we can think of a release as a change in the nature of
@@ -336,7 +336,7 @@ Service delivery, on the other hand, is dissected as follows:
 * Release management
 
 These issues are somewhat clearer once we understand the usage of the terms
-“problem”, “service” and “configuration”. Once again, it is important that we
+"problem", "service" and "configuration". Once again, it is important that we
 don't mix up configuration management in ITIL with configuration management as
 used in a Unix parlance.
 
@@ -363,14 +363,14 @@ Perhaps the most obvious example is the term configuration management.
   configuration items (CI) required to deliver an IT service, including their
   relationships.
 
-As we see, this is comparable to our intuitive idea of “asset management”, but
-with “relationships” between the items included. ITIL also defines “Asset
-Management” as “a process responsible for tracking and reporting the value of
-financially valuable assets” and is a component of ITIL Configuration
+As we see, this is comparable to our intuitive idea of "asset management", but
+with "relationships" between the items included. ITIL also defines "Asset
+Management" as "a process responsible for tracking and reporting the value of
+financially valuable assets" and is a component of ITIL Configuration
 Management.
 
 In the CFEngine world, configuration management involves planning, deciding,
-implementing (“base-lining”) and verifying (“auditing”) the inventory. It also
+implementing ("base-lining") and verifying ("auditing") the inventory. It also
 involves maintaining the security and privacy of the data, so that only
 authorized changes can be made and private assets are not made public.
 
@@ -442,9 +442,9 @@ necessarily need. ITIL's ideas apply to the management of CFEngine's
 configuration, not specifically to the way in which CFEngine carries out its
 automated manipulations of the system.
 
-In traditional idea of change management you start by “base-lining” a system, or
+In traditional idea of change management you start by "base-lining" a system, or
 establishing a known starting configuration. Then you assume that things only
-change when you actively implement a change, such as “rolling out a new version”
+change when you actively implement a change, such as "rolling out a new version"
 or committing a release. This, of course, is very optimistic.
 
 In most cases all kinds of things change beyond our control. Items are stolen,
@@ -454,13 +454,13 @@ changes is nonsense.
 
 CFEngine takes a different view. It thinks that changes in circumstances are
 part of the picture, as well as changes in inventory and releases. It deals with
-the idea of “convergence”. In this way of thinking, the configuration details
+the idea of "convergence". In this way of thinking, the configuration details
 might be changing at random in a quite unpredictable way, and it is our job to
 continuously monitor and repair general dilapidation. Rather than assuming a
-constant state in between changes, CFEngine assumes a constant “ideal state” or
+constant state in between changes, CFEngine assumes a constant "ideal state" or
 goal to be achieved between changes. An important thing to realize about
-including changes of external circumstances is that you cannot “roll back”
-circumstances to an earlier state – they are beyond our control.
+including changes of external circumstances is that you cannot "roll back"
+circumstances to an earlier state - they are beyond our control.
 
 ## Release management
 
@@ -536,7 +536,7 @@ words, CFEngine is itself part of the infrastructure that we might change.
 
 
 Traditional methods of managing IT infrastructure involve working from crisis to
-crisis – waiting for `incidents' to occur and then initiating fire suppression
+crisis - waiting for `incidents' to occur and then initiating fire suppression
 responses or, if there is time, proactive changes. With CFEngine, these can be
 combined and made into a managementservice, with continuous service quality.
 
@@ -601,8 +601,8 @@ improvement if you like: the important thing is that the process your be
 pro-active and not too expensive.
 
 Maintenance is necessary because we do not control all of the changes that take
-place in a system. There is always some kind of “weather” that we have to work
-against. CFEngine is about this process of Maintenance. We call it “convergence”
+place in a system. There is always some kind of "weather" that we have to work
+against. CFEngine is about this process of Maintenance. We call it "convergence"
 to the ideal state, where the ideal state is the specified version release. Keep
 this in mind as you read about ITIL change management.
 
@@ -676,7 +676,7 @@ state).
 The recorded state of something at a specific point in time.
 
 CFEngine does not use this term in any of its documentation, though our general
-understanding of a “benchmark” is that of a standardized performance measurement
+understanding of a "benchmark" is that of a standardized performance measurement
 under special conditions. CFEngine regularly records state and performance data
 in a variety of ways, for example when making file copies.
 
@@ -696,11 +696,11 @@ CFEngine's default modus operandi is to not record changes made to a system
 unless requested by the user. Changes can be written as log entries or audit
 entries by switching on reporting.
 
-An “inform” promise means that cf-agent promises to notify the changes to its
+An "inform" promise means that cf-agent promises to notify the changes to its
 standard output (which is usually sent by email or printed on a console output).
-A “syslog” promise implies that cfagent will log the message to the system log
+A "syslog" promise implies that cfagent will log the message to the system log
 daemon. Both of the foregoing messages give only a simple message of actual
-changes. An “audit” promise is a promise to record extensive details about the
+changes. An "audit" promise is a promise to record extensive details about the
 process that cfagent undergoes in its checking of other promises.
 
 ## Chronological Analysis
@@ -725,7 +725,7 @@ A component of an infrastructure which is or will be under the control of
 configuration management.
 
 A configuration item is any object making a promise in CFEngine. We often speak
-of the promise object, or “promiser”.
+of the promise object, or "promiser".
 
 ## Configuration Management Database (CMDB)
 
@@ -748,7 +748,7 @@ the file and the filesystem on which it resides.
 
 ## Emergency Change
 
-A change that must be introduced as soon as possible – for example to solve a
+A change that must be introduced as soon as possible - for example to solve a
 major incident or to implement a critical security patch.
 
 CFEngine has no specific concept for this.
@@ -759,8 +759,8 @@ A design flaw or malfunction that causes a failure.
 
 CFEngine often uses the term configuration error to mean a deviation of a
 configuration from its promised state. The ITIL meaning of the term would
-translated into “bug in the CFEngine software” or “bug in the promised
-configuration”.
+translated into "bug in the CFEngine software" or "bug in the promised
+configuration".
 
 ## Event
 
@@ -854,7 +854,7 @@ required.
 
 ## Promise, Reactive Monitoring, Problem, Summary
 
-ITIL does not define this term, although promises are deployed in various ways –
+ITIL does not define this term, although promises are deployed in various ways -
 for instance in terms of cooperation, communication interfaces within or between
 processes or contractual relationships as defined by Service Level Agreements,
 Operational Level Agreements and Underpinning Contracts.
@@ -865,7 +865,7 @@ CFEngine monitor.
 
 ## Reactive Monitoring
 
-Monitoring that takes action in response to an event – for example submitting a
+Monitoring that takes action in response to an event - for example submitting a
 batch job when the previous job completes, or logging an incident when an error
 occurs.
 
@@ -873,8 +873,8 @@ The concept of reactive monitoring is unclear because the duration of an event
 and the speed of a response are undefined. In a sense, all CFEngine monitoring
 is potentially reactive. It is possible to attach actions which keep promises to
 any observable condition discernable by CFEngine's monitor. CFEngine is not
-usually considered event driven however, since it does not react “as soon as
-possible” but at programmed intervals.
+usually considered event driven however, since it does not react "as soon as
+possible" but at programmed intervals.
 
 ## Record
 
@@ -891,7 +891,7 @@ of an IT service often includes recovering data to a known consistent state.
 All CFEngine promises refer to the state of a system that is desired. The
 promises are automatically enforced, hence CFEngine recovers a system (in
 principle) on every invocation. CFEngine always returns to a known state, due to
-the property of “convergence”. There is no distinction between the concepts of
+the property of "convergence". There is no distinction between the concepts of
 repair, recovery or remediation.
 
 ## Remediation
@@ -901,10 +901,10 @@ Recovery to a known state after a failed change or release.
 All CFEngine promises refer to the state of a system that is desired. The
 promises are automatically enforced, hence CFEngine recovers a system (in
 principle) on every invocation. CFEngine always returns to a known state, due to
-the property of “convergence”. There is no distinction between the concepts of
+the property of "convergence". There is no distinction between the concepts of
 repair, recovery or remediation.
 
-However, this concept is like the notion of “rollback” which often involves a
+However, this concept is like the notion of "rollback" which often involves a
 more significant restoration of a system from backup. This is discussed later.
 
 ## Repair
@@ -914,7 +914,7 @@ The replacement or correction of a failed configuration item.
 All CFEngine promises refer to the state of a system that is desired. The
 promises are automatically enforced, hence CFEngine recovers a system (in
 principle) on every invocation. CFEngine always returns to a known state, due to
-the property of “convergence”. There is no distinction between the concepts of
+the property of "convergence". There is no distinction between the concepts of
 repair, recovery or remediation.
 
 ## Release, Request for Change, Repair, Summary
@@ -966,7 +966,7 @@ from an incident.
 All CFEngine promises refer to the state of a system that is desired. The
 promises are automatically enforced, hence CFEngine recovers a system (in
 principle) on every invocation. CFEngine always returns to a known state, due to
-the property of “convergence”. There is no distinction between the concepts of
+the property of "convergence". There is no distinction between the concepts of
 repair, recovery or remediation.
 
 However, this concept seems to suggest a more catastrophic failure which often
@@ -980,8 +980,8 @@ team. Roles are defined in processes.
 
 A role in CFEngine is a class of agents that make the same kind of promise. The
 type of role played by the class is determined by the nature of the promise they
-make. e.g. a promise to run a web server would naturally lead to the role “web
-server”.
+make. e.g. a promise to run a web server would naturally lead to the role "web
+server".
 
 ## Service desk
 
@@ -1009,4 +1009,4 @@ An event that is generated when a service or device is approaching its threshold
 
 A message generated in place of a correction to system state when a deviation
 from policy is detected. Note that CFEngine is not based on fixed thresholds.
-All “thresholds” for action or warning are defined as a matter of policy.
+All "thresholds" for action or warning are defined as a matter of policy.

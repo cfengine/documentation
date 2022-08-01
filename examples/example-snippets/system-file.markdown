@@ -8,7 +8,7 @@ tags: [Examples,System Administration,System Files]
 
 ## Editing password or group files ##
 
-To change the password of a system, we need to edit a file. A file is a complex object – once open there is a new world of possible promises to make about its contents. CFEngine has bundles of promises that are specially for editing.
+To change the password of a system, we need to edit a file. A file is a complex object - once open there is a new world of possible promises to make about its contents. CFEngine has bundles of promises that are specially for editing.
 
 
 [%CFEngine_include_snippet(editing_password_or_group_files.cf, .* )%]
@@ -53,7 +53,7 @@ We'll assume that you have a version control repository that is located on some 
 
 ### Macro template
 
-The next simplest approach to file management is to add variables to the template that will be expanded into local values at the end system, e.g. using variables like ‘$(sys.host)’ for the name of the host within the body of the versioned template.
+The next simplest approach to file management is to add variables to the template that will be expanded into local values at the end system, e.g. using variables like '$(sys.host)' for the name of the host within the body of the versioned template.
 
 
 [%CFEngine_include_snippet(macro_template.cf, .* )%]

@@ -11,7 +11,7 @@ tags: [Examples, CFEngine Administration]
 
 ## Ordering promises
 
-This counts to five by default. If we change ‘/bin/echo one’ to ‘/bin/echox one’, then the command will fail, causing us to skip five and go to six instead.
+This counts to five by default. If we change '/bin/echo one' to '/bin/echox one', then the command will fail, causing us to skip five and go to six instead.
 
 This shows how dependencies can be chained in spite of the order of promises in the bundle.
 

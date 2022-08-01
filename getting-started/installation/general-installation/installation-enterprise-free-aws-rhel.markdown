@@ -116,7 +116,7 @@ Note: Turning off the firewall in a production environment is considered unsafe.
 
 ## CFEngine Installation Overview ##
 
-We ready now ready to install the CFEngine software on both the server and client virtual machines. These also referred to as the “hub” and “host” machines, respectively. During the course of the instructions outlined in this guide, you will perform the following tasks:
+We ready now ready to install the CFEngine software on both the server and client virtual machines. These also referred to as the "hub" and "host" machines, respectively. During the course of the instructions outlined in this guide, you will perform the following tasks:
 
 * Install CFEngine Enterprise onto a Policy Server and onto Hosts. A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts. Hosts are clients that retrieve and execute promises.
 * Bootstrap the Policy Server to itself and then bootstrap each of the Hosts to the Policy Server. Bootstrapping establishes a trust relationship between the Policy Server and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company. Bootstrapping completes the installation process.

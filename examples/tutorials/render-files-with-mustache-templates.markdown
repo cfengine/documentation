@@ -12,7 +12,7 @@ In this tutorial we will show how to use CFEngine to manage file configurations 
 
 How it works
 
-When working with templates, you need a template and data (parameters). Based on this CFEngine will render a file that fills the data in the appropriate places based on the template. Let’s create a templating solution for our home grown myapp-application. Below you can see the desired end state of the config file to the left. The right column shows the template we will use.
+When working with templates, you need a template and data (parameters). Based on this CFEngine will render a file that fills the data in the appropriate places based on the template. Let's create a templating solution for our home grown myapp-application. Below you can see the desired end state of the config file to the left. The right column shows the template we will use.
 
 <table>
 <tr>

@@ -141,7 +141,7 @@ of a week.
 * Network Classes
     * Unqualified Name of Host. CFEngine truncates it at the first dot.
       Note: `www.sales.company.com` and `www.research.company.com` have the
-      same unqualified name – `www`
+      same unqualified name - `www`
     * The IPv4 address octets of any active interface (in the form
       `ipv4_192_0_0_1`, `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`)
     * The IPv6 addresses of all active interfaces (with dots replaced by
@@ -465,22 +465,22 @@ For example `a . b` is equivalent to `a.b` and perhaps more readable.
 Classes may be combined with the operators listed here in order from highest
 to lowest precedence:
 
-* ‘()'::
+* '()'::
     ~ The parenthesis group operator.
 
-* ‘!’::
+* '!'::
     ~ The NOT operator.
 
-* ‘.’::
+* '.'::
     ~ The AND operator.
 
-* ‘&’::
+* '&'::
     ~ The AND operator (alternative).
 
-* ‘|’::
+* '|'::
     ~ The OR operator.
 
-* ‘||’::
+* '||'::
     ~ The OR operator (alternative).
 
 These operators can be combined to form complex expressions.  For example, the

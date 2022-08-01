@@ -106,11 +106,11 @@ The following sequence forms a checklist for deploying successful policy change:
 
 *  Make a change in the CFEngine input files.
 
-*  Run the configuration through ‘cf-promises --inform’ to check for problems.
+*  Run the configuration through 'cf-promises --inform' to check for problems.
 
 *  Move the policy to a test system.
 
-*  Try running the configuration in dry-run model: ‘cf-agent --dry-run’
+*  Try running the configuration in dry-run model: 'cf-agent --dry-run'
 
 *  Try running the policy once on a single system, being observant of unexpected
    behaviour.
@@ -170,7 +170,7 @@ detail.
 
 * Classes report
 
-  User defined classes observed on the system – inventory data.
+  User defined classes observed on the system - inventory data.
 
 * Compliance report
 
