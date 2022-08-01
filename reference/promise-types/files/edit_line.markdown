@@ -118,6 +118,10 @@ There are several things to notice:
     a table, to append, order and delete items from lists inside fields.
 -   The special variable `$(edit.filename)` contains the name of the
     file being edited within an edit bundle.
+-   The special variable `$(edit.empty_before_use)` holds the current value of
+    `empty_file_before_editing` which can be set by `edit_defaults bodies`. This
+    is used to know if the prior state of the file will have any effect on the
+    promise.
 -   On Windows, a text file may be stored stored either with CRLF line
     endings (Windows style), or LF line endings (Unix style). CFEngine
     will respect the existing line ending type and make modifications
