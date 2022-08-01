@@ -331,6 +331,38 @@ Which one do you prefer?
 
 ## Naming Conventions
 
+Naming conventions can also help to provide clarity.
+
+### Snakecase
+
+Words delimited by an underscore. This style is prevalant for *variables*,
+*classes*, *bundle* and *body* names in the Masterfiles Policy Framework.
+
+
+[%CFEngine_include_example(style_snake_case.cf)%]
+
+### Pascalecase
+
+Words delimited by capital Letters.
+
+[%CFEngine_include_example(style_PascaleCase.cf)%]
+
+### Camelcase
+
+Words are delimited by capital letters, except the initial word.
+
+[%CFEngine_include_example(style_camelCase.cf)%]
+
+### Hungarian notation
+
+[Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation) where can
+help improve the readability of policy, especially when working with lists and
+data containers where the use of `@` or `$` significantly affects the behavior
+of the policy.
+
+
+[%CFEngine_include_example(style_hungarian.cf)%]
+
 ## Classes
 
 Classes are intended to describe an aspect of the system, and they are
