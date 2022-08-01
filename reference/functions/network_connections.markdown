@@ -21,17 +21,17 @@ The returned data container has four keys:
 Under each key, there's an array of connection objects that all look like this:
 
 ```
-      {
-        "local": {
-          "address": "...source address...",
-          "port": "...source port..."
-        },
-        "remote": {
-          "address": "...remote address...",
-          "port": "...remote port..."
-        },
-        "state": "...connection state..."
-      }
+{
+  "local": {
+    "address": "...source address...",
+    "port": "...source port..."
+  },
+  "remote": {
+    "address": "...remote address...",
+    "port": "...remote port..."
+  },
+  "state": "...connection state..."
+}
 ```
 
 The address will be either IPv4 or IPv6 as appropriate. The port will
@@ -57,8 +57,8 @@ On Linux, all the data is collected from the files `/proc/net/tcp`,
 **Example:**
 
 ```cf3
-    vars:
-      "connections" data => network_connections();
+vars:
+  "connections" data => network_connections();
 ```
 
 Output:
@@ -66,57 +66,57 @@ Output:
 The SSH daemon:
 
 ```
+{
+  "tcp": [
    {
-     "tcp": [
-      {
-        "local": {
-          "address": "0.0.0.0",
-          "port": "22"
-        },
-        "remote": {
-          "address": "0.0.0.0",
-          "port": "0"
-        },
-        "state": "UNKNOWN"
-      }
-    ]
+     "local": {
+       "address": "0.0.0.0",
+       "port": "22"
+     },
+     "remote": {
+       "address": "0.0.0.0",
+       "port": "0"
+     },
+     "state": "UNKNOWN"
    }
+ ]
+}
 ```
 
 The printer daemon listening only to local IPv6 connections on port `631`:
 
 ```
-    "tcp6": [
-      {
-        "local": {
-          "address": "0:100:0:0:0:0:0:0",
-          "port": "631"
-        },
-        "remote": {
-          "address": "0:0:0:0:0:0:0:0",
-          "port": "0"
-        },
-        "state": "UNKNOWN"
-      }
-   ]
+ "tcp6": [
+   {
+     "local": {
+       "address": "0:100:0:0:0:0:0:0",
+       "port": "631"
+     },
+     "remote": {
+       "address": "0:0:0:0:0:0:0:0",
+       "port": "0"
+     },
+     "state": "UNKNOWN"
+   }
+]
 ```
 
 An established connection on port 2200:
 
 ```
-     "tcp": [
-      {
-        "local": {
-          "address": "192.168.1.33",
-          "port": "2200"
-        },
-        "remote": {
-          "address": "1.2.3.4",
-          "port": "8533"
-        },
-        "state": "ESTABLISHED"
-      }
-    ]
+ "tcp": [
+  {
+    "local": {
+      "address": "192.168.1.33",
+      "port": "2200"
+    },
+    "remote": {
+      "address": "1.2.3.4",
+      "port": "8533"
+    },
+    "state": "ESTABLISHED"
+  }
+]
 ```
 
 **History:** Introduced in CFEngine 3.9

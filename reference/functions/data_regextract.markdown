@@ -20,8 +20,8 @@ then the data container will be populated with the values, in the
 manner:
 
 ```
-    $(container[0]) = entire string
-    $(container[1]) = back reference 1, etc
+$(container[0]) = entire string
+$(container[1]) = back reference 1, etc
 ```
 
 Note `0` and `1` are string keys in a map, not offsets.

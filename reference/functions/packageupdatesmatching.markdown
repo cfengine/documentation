@@ -42,7 +42,7 @@ this:
 **Example:**
 
 ```cf3
-      "all_package_updates" data => packageupdatesmatching(".*", ".*", ".*", ".*");
+"all_package_updates" data => packageupdatesmatching(".*", ".*", ".*", ".*");
 ```
 
 **Refresh rules:**
@@ -52,7 +52,7 @@ this:
         This means a reliable way to force a refresh of CFEngine's internal package cache is to simply delete the local cache:
 
 ```cf3
-            $(sys.statedir)/packages_updates_<package_module>.lmdb*
+$(sys.statedir)/packages_updates_<package_module>.lmdb*
 ```
 
 

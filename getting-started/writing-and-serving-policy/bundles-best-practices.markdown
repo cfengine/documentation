@@ -62,39 +62,39 @@ Write the promises (which may or may not be ordered) using a parameter for the d
 names, and then call the method passing the list of names as a parameter to reduce the amount of code.
 
 ```cf3
-     bundle agent testbundle
-     {
-     vars:
+bundle agent testbundle
+{
+vars:
 
-      "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
+ "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
 
-     methods:
+methods:
 
-      "any" usebundle => subtest("$(userlist)");
+ "any" usebundle => subtest("$(userlist)");
 
-     }
+}
 
-     ###########################################
+###########################################
 
-     bundle agent subtest(user)
+bundle agent subtest(user)
 
-     {
-     commands:
+{
+commands:
 
-      "/bin/echo Fix $(user)";
+ "/bin/echo Fix $(user)";
 
-     files:
+files:
 
-      "/home/$(user)/."
+ "/home/$(user)/."
 
-         create =>  "true";
+    create =>  "true";
 
-     reports:
+reports:
 
-      linux::
+ linux::
 
-       "Finished doing stuff for $(user)";
-     }
+  "Finished doing stuff for $(user)";
+}
 ```
 
 ### When to use classes in common bundles

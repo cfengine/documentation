@@ -13,12 +13,12 @@ to is a literal string representation of the name of the attribute to be
 deleted.
 
 ```cf3
-    bundle edit_xml example
-    {
-    delete_attribute:
-      "attribute name"
-        select_xpath => "/Server/Service/Engine/Host";
-    }
+bundle edit_xml example
+{
+delete_attribute:
+  "attribute name"
+    select_xpath => "/Server/Service/Engine/Host";
+}
 ```
 
 Note that typically, only a single attribute, within a single specified

@@ -29,14 +29,14 @@ data used may change per platform and per CFEngine release.
 **Example:**
 
 ```cf3
-    vars:
-      "holmes" data => findprocesses(".*sherlock.*");
+vars:
+  "holmes" data => findprocesses(".*sherlock.*");
 ```
 
 Output:
 
 ```
-    [ { "pid": "2378", "line": "...the ps output here" }, ... ]
+[ { "pid": "2378", "line": "...the ps output here" }, ... ]
 ```
 
 **History:** Introduced in CFEngine 3.9

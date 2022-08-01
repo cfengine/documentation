@@ -27,26 +27,26 @@ affect the behavior of all the components.
 
 
 ```cf3
-     body common control
+body common control
 
-     {
-     inputs  => {
-                "update.cf",
-                "library.cf"
-                };
+{
+inputs  => {
+           "update.cf",
+           "library.cf"
+           };
 
-     bundlesequence  => {
-                        update("policy_host.domain.tld"),
-                        "main",
-                        "cfengine2"
-                        };
+bundlesequence  => {
+                   update("policy_host.domain.tld"),
+                   "main",
+                   "cfengine2"
+                   };
 
-     goal_categories => { "goals", "targets", "milestones" };
-     goal_patterns   => { "goal_.*", "target.*" };
+goal_categories => { "goals", "targets", "milestones" };
+goal_patterns   => { "goal_.*", "target.*" };
 
-     output_prefix => "cfengine>";
-     version => "1.2.3";
-     }
+output_prefix => "cfengine>";
+version => "1.2.3";
+}
 ```
 
 
@@ -72,15 +72,15 @@ A `bundlesequence` may also be specified using the `-b` or
 **Example:**
 
 ```cf3
-    body common control
+body common control
 
-    {
-    bundlesequence  => {
-                       update("policy_host.domain.tld"),
-                       "main",
-                       "cfengine2"
-                       };
-    }
+{
+bundlesequence  => {
+                   update("policy_host.domain.tld"),
+                   "main",
+                   "cfengine2"
+                   };
+}
 ```
 
 **Note:** Only `common` and `agent` bundles are allowed to be listed in the
@@ -96,37 +96,37 @@ different systems to have different `bundlesequences`, distinguish
 them with classes
 
 ```cf3
-    webservers::
+webservers::
 
-      bundlesequence => { "main", "web" };
+  bundlesequence => { "main", "web" };
 
-    others::
+others::
 
-      bundlesequence => { "main", "otherstuff" };
+  bundlesequence => { "main", "otherstuff" };
 ```
 
 If you want to add a basic common sequence to all sequences, then
 use global variable lists to do this:
 
 ```cf3
-    body common control
-    {
-    webservers::
+body common control
+{
+webservers::
 
-      bundlesequence => { @(g.bs), "web" };
+  bundlesequence => { @(g.bs), "web" };
 
-    others::
+others::
 
-      bundlesequence => { @(g.bs), "otherstuff" };
+  bundlesequence => { @(g.bs), "otherstuff" };
 
-    }
+}
 
-    bundle common g
-    {
-    vars:
+bundle common g
+{
+vars:
 
-      "bs" slist => { "main", "basic_stuff" };
-    }
+  "bs" slist => { "main", "basic_stuff" };
+}
 ```
 
 **History:** The default to `{ "main" }` was introduced in version 3.7.0, so if
@@ -156,11 +156,11 @@ facilities.
 **Example:**
 
 ```cf3
-    body common control
+body common control
 
-    {
-      bwlimit => "10M";
-    }
+{
+  bwlimit => "10M";
+}
 ```
 
 In this example,  bwlimit is set to 10MBytes/sec = 80Mbit/s meaning that
@@ -190,7 +190,7 @@ runs of e.g. `cf-agent` and `cf-promises`.
 **Example:**
 
 ```cf3
-    cache_system_functions => "true";
+cache_system_functions => "true";
 ```
 
 **See also:** [`ifelapsed` in action bodies][Promise Types#ifelapsed]
@@ -214,10 +214,10 @@ discovery and name-lookup.
 **Example:**
 
 ```cf3
-    body common control
-    {
-    domain => "example.org";
-    }
+body common control
+{
+domain => "example.org";
+}
 ```
 
 
@@ -237,10 +237,10 @@ business goals in promises.
 **Example:**
 
 ```cf3
-    body common control
-    {
-    goal_patterns => { "goal_.*", "target.*" };
-    }
+body common control
+{
+goal_patterns => { "goal_.*", "target.*" };
+}
 ```
 
 **History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)
@@ -260,7 +260,7 @@ sequence do not exist, ignore and continue.
 **Example:**
 
 ```cf3
-    ignore_missing_bundles => "true";
+ignore_missing_bundles => "true";
 ```
 
 **Notes:**
@@ -293,7 +293,7 @@ not found.
 **Example:**
 
 ```cf3
-    ignore_missing_inputs => "true";
+ignore_missing_inputs => "true";
 ```
 
 ### inputs
@@ -312,13 +312,13 @@ as the file which references them (this is usually
 **Example:**
 
 ```cf3
-    body common control
-    {
-    inputs  => {
-               "update.cf",
-               "library.cf"
-               };
-    }
+body common control
+{
+inputs  => {
+           "update.cf",
+           "library.cf"
+           };
+}
 ```
 
 **See also:** [`inputs`][file control#inputs] in `body file control`
@@ -355,10 +355,10 @@ after which last-seen entries are purged. It is an **enterprise-only** feature.
 **Example:**
 
 ```cf3
-    body common control
-    {
-    lastseenexpireafter => "72";
-    }
+body common control
+{
+lastseenexpireafter => "72";
+}
 ```
 
 **See also:** [hostsseen()][hostsseen], [cf-hub][cf-hub]
@@ -374,10 +374,10 @@ after which last-seen entries are purged. It is an **enterprise-only** feature.
 **Example:**
 
 ```cf3
-    body common control
-    {
-    output_prefix => "my_cf3";
-    }
+body common control
+{
+output_prefix => "my_cf3";
+}
 ```
 
 **Notes:**
@@ -461,13 +461,13 @@ promises.
 **Example:**
 
 ```cf3
-    body common control
+body common control
 
-    {
-    common::
+{
+common::
 
-    require_comments => "true";
-    }
+require_comments => "true";
+}
 ```
 
 
@@ -493,10 +493,10 @@ Each string is expected to be a class.
 **Example:**
 
 ```cf3
-    body common control
-    {
-    site_classes => { "datacenters","datacentres"  }; # locations is by default
-    }
+body common control
+{
+site_classes => { "datacenters","datacentres"  }; # locations is by default
+}
 ```
 
 **History:** Was introduced in version 3.2.0, Nova 2.1.0 (2011)
@@ -519,11 +519,11 @@ CFEngine's components may promise to send data.
 **Example:**
 
 ```cf3
-    body common control
-    {
-    syslog_host => "syslog.example.org";
-    syslog_port => "514";
-    }
+body common control
+{
+syslog_host => "syslog.example.org";
+syslog_port => "514";
+}
 ```
 
 ### syslog_port
@@ -543,11 +543,11 @@ components may promise to send data.
 **Example:**
 
 ```cf3
-    body common control
-    {
-    syslog_host => "syslog.example.org";
-    syslog_port => "514";
-    }
+body common control
+{
+syslog_host => "syslog.example.org";
+syslog_port => "514";
+}
 ```
 
 ### system_log_level
@@ -637,10 +637,10 @@ restriction might be lifted later.
 **Example:**
 
 ```cf3
-    body common control
-    {
-    version => "1.2.3";
-    }
+body common control
+{
+version => "1.2.3";
+}
 ```
 
 

@@ -25,7 +25,7 @@ This function contacts a remote `cf-serverd` and requests access to defined
 **Example:**
 
 ```cf3
-   "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
+"succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
 ```
 
 **Notes:** Note that this function assumes that you have already performed a

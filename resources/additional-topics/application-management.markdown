@@ -227,7 +227,7 @@ format. Other than that, all we have to change is thepackage_method, yielding
 the following.
 
 ```
-    package_method           => msi_version("c:\software_repo"),
+package_method           => msi_version("c:\software_repo"),
 ```
 
 Refer to the msi_version body in the standard library.

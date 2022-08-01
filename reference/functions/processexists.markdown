@@ -25,9 +25,9 @@ data used may change per platform and per CFEngine release.
 **Example:**
 
 ```cf3
-    classes:
-      # the class "holmes" will be set if a process line contains the word "sherlock"
-      "holmes" expression => processexists(".*sherlock.*");
+classes:
+  # the class "holmes" will be set if a process line contains the word "sherlock"
+  "holmes" expression => processexists(".*sherlock.*");
 ```
 
 **History:** Introduced in CFEngine 3.9

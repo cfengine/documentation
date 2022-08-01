@@ -37,43 +37,43 @@ passes syntax checking. The idea is to check out the revision in a temporary
 directory and run `cf-promises` on it. Here is an example hook.
 
 ```
-    #!/bin/sh
+#!/bin/sh
 
-    # --- Command line
-    REF_NAME="$1"
-    OLD_REV="$2"
-    NEW_REV="$3"
+# --- Command line
+REF_NAME="$1"
+OLD_REV="$2"
+NEW_REV="$3"
 
-    GIT=/usr/bin/git
-    TAR=/bin/tar
-    CF_PROMISES=/home/a10021/Source/core/cf-promises/cf-promises
-    TMP_CHECKOUT_DIR=/tmp/cfengine-post-commit-syntax-check/
-    MAIN_POLICY_FILE=promises.cf
+GIT=/usr/bin/git
+TAR=/bin/tar
+CF_PROMISES=/home/a10021/Source/core/cf-promises/cf-promises
+TMP_CHECKOUT_DIR=/tmp/cfengine-post-commit-syntax-check/
+MAIN_POLICY_FILE=promises.cf
 
-    echo "Creating temporary checkout directory at ${TMP_CHECKOUT_DIR}"
-    mkdir -p ${TMP_CHECKOUT_DIR}
+echo "Creating temporary checkout directory at ${TMP_CHECKOUT_DIR}"
+mkdir -p ${TMP_CHECKOUT_DIR}
 
-    echo "Clearing potential data in temporary checkout directory"
-    rm -rf ${TMP_CHECKOUT_DIR}/*
-    rm -rf ${TMP_CHECKOUT_DIR}/.svn
+echo "Clearing potential data in temporary checkout directory"
+rm -rf ${TMP_CHECKOUT_DIR}/*
+rm -rf ${TMP_CHECKOUT_DIR}/.svn
 
-    echo "Checking out revision ${REV} from ${REPOS} to file://${TMP_CHECKOUT_DIR}"
-    ${GIT} archive ${NEW_REV} | tar -x -C ${TMP_CHECKOUT_DIR}
-    if [ $? -ne 0 ]; then
-        echo "Error checking out repository to temporary folder during post-commit syntax checking!" >&2
-        return 1
-    fi
+echo "Checking out revision ${REV} from ${REPOS} to file://${TMP_CHECKOUT_DIR}"
+${GIT} archive ${NEW_REV} | tar -x -C ${TMP_CHECKOUT_DIR}
+if [ $? -ne 0 ]; then
+    echo "Error checking out repository to temporary folder during post-commit syntax checking!" >&2
+    return 1
+fi
 
-    echo "Running cf-promises -cf on ${TMP_CHECKOUT_DIR}/${MAIN_POLICY_FILE}"
-    ${CF_PROMISES} -cf ${TMP_CHECKOUT_DIR}/${MAIN_POLICY_FILE}
+echo "Running cf-promises -cf on ${TMP_CHECKOUT_DIR}/${MAIN_POLICY_FILE}"
+${CF_PROMISES} -cf ${TMP_CHECKOUT_DIR}/${MAIN_POLICY_FILE}
 
-    if [ $? -ne 0 ]; then
-        echo "There were policy errors in pushed revision ${REV}" >&2
-        return 1
-    else
-        echo "Policy check completed successfully!"
-        return 0
-    fi
+if [ $? -ne 0 ]; then
+    echo "There were policy errors in pushed revision ${REV}" >&2
+    return 1
+else
+    echo "Policy check completed successfully!"
+    return 0
+fi
 ```
 
 ### Example subversion post-commit hook
@@ -83,38 +83,38 @@ post-commit hook the check is run after update, so the repository may be left
 with a syntax error, but the committer is notified.
 
 ```
-    #!/bin/sh
+#!/bin/sh
 
-    REPOS="$1"
-    REV="$2"
+REPOS="$1"
+REV="$2"
 
-    SVN=/usr/bin/svn
-    CF_PROMISES=/home/a10021/Source/core/cf-promises/cf-promises
-    TMP_CHECKOUT_DIR=/tmp/cfengine-post-commit-syntax-check/
-    MAIN_POLICY_FILE=trunk/promises.cf
+SVN=/usr/bin/svn
+CF_PROMISES=/home/a10021/Source/core/cf-promises/cf-promises
+TMP_CHECKOUT_DIR=/tmp/cfengine-post-commit-syntax-check/
+MAIN_POLICY_FILE=trunk/promises.cf
 
-    echo "Creating temporary checkout directory at ${TMP_CHECKOUT_DIR}"
-    mkdir -p ${TMP_CHECKOUT_DIR}
+echo "Creating temporary checkout directory at ${TMP_CHECKOUT_DIR}"
+mkdir -p ${TMP_CHECKOUT_DIR}
 
-    echo "Clearing potential data in temporary checkout directory"
-    rm -rf ${TMP_CHECKOUT_DIR}/*
-    rm -rf ${TMP_CHECKOUT_DIR}/.svn
+echo "Clearing potential data in temporary checkout directory"
+rm -rf ${TMP_CHECKOUT_DIR}/*
+rm -rf ${TMP_CHECKOUT_DIR}/.svn
 
-    echo "Checking out revision ${REV} from ${REPOS} to file://${TMP_CHECKOUT_DIR}"
-    ${SVN} co -r ${REV} file://${REPOS} ${TMP_CHECKOUT_DIR}
-    if [ $? -ne 0 ]; then
-        echo "Error checking out repository to temporary folder during post-commit syntax checking!" >&2
-        return 1
-    fi
+echo "Checking out revision ${REV} from ${REPOS} to file://${TMP_CHECKOUT_DIR}"
+${SVN} co -r ${REV} file://${REPOS} ${TMP_CHECKOUT_DIR}
+if [ $? -ne 0 ]; then
+    echo "Error checking out repository to temporary folder during post-commit syntax checking!" >&2
+    return 1
+fi
 
-    echo "Running cf-promises -cf on ${TMP_CHECKOUT_DIR}/${MAIN_POLICY_FILE}"
-    ${CF_PROMISES} -cf ${TMP_CHECKOUT_DIR}/${MAIN_POLICY_FILE}
+echo "Running cf-promises -cf on ${TMP_CHECKOUT_DIR}/${MAIN_POLICY_FILE}"
+${CF_PROMISES} -cf ${TMP_CHECKOUT_DIR}/${MAIN_POLICY_FILE}
 
-    if [ $? -ne 0 ]; then
-        echo "There were policy errors in committed revision ${REV}" >&2
-        return 1
-    else
-        echo "Policy check completed successfully!"
-        return 0
-    fi
+if [ $? -ne 0 ]; then
+    echo "There were policy errors in committed revision ${REV}" >&2
+    return 1
+else
+    echo "Policy check completed successfully!"
+    return 0
+fi
 ```

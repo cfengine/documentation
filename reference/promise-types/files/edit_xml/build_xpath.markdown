@@ -15,11 +15,11 @@ described by the XPath and also found within the document. The promise object
 referred to is a literal string representation of an XPath.
 
 ```cf3
-    bundle edit_xml example
-    {
-    build_xpath:
-       "/Server/Service/Engine/Host";
-    }
+bundle edit_xml example
+{
+build_xpath:
+   "/Server/Service/Engine/Host";
+}
 ```
 
 Note that typically, only a single XPath is built in each `build_xpath`

@@ -21,14 +21,14 @@ version of `callstack_callers()` intended for quick debugging.
 **Example:**
 
 ```cf3
-    vars:
-      "my_promisers" slist => callstack_promisers();
+vars:
+  "my_promisers" slist => callstack_promisers();
 ```
 
 Output:
 
 ```
-    { "my_promisers" }
+{ "my_promisers" }
 ```
 
 **History:** Introduced in CFEngine 3.9

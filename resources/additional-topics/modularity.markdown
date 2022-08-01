@@ -485,7 +485,6 @@ methods:
    "any" usebundle => bundle_three("something");
 
 }
-
 ```
 
 Alternatively, the same effect can be achieved as follows.
@@ -500,7 +499,6 @@ methods:
    "any" usebundle => generic_bundle("something","three");
 
 }
-
 ```
 
 Or ultimately:
@@ -1186,13 +1184,11 @@ file_to_print   => "$(file)";
 number_of_lines => "10";
 }
 ```
-
 When executed, this produces output only on the final host in the chain, showing
 the correct ordering out operations. The sequence also passes a file from host
 to host as a coordination token, like a baton in a relay race, and each host
 signs this so that the final host has a log of every host involved in the
 cascade.
-
 ```
 R: Singing the overture...
 R: Singing the first adagio...
@@ -1460,11 +1456,9 @@ file_to_print   => "$(file)";
 number_of_lines => "100";
 }
 ```
-
 Let's test it on a single host, equipped with aliases to the see entire flow.
 
 Without the trigger, this simply yields
-
 ```
 R: Done host1
 R: Done host2

@@ -53,25 +53,25 @@ R: 24 hours ago was 2019-06-11 20:40:00 or in unix format '1560372000'
 based on a time relative to the agent start can make use of this function.
 
 ```cf3
-    bundle agent gzip_recent_pdfs
-    {
-       files:
+bundle agent gzip_recent_pdfs
+{
+   files:
 
-         # Ensure that any file ending in .pdf that has been
-         # modified in the last year is compressed
+     # Ensure that any file ending in .pdf that has been
+     # modified in the last year is compressed
 
-         "/tmp/"
-           file_select => pdf_modified_within_last_year,
-           transformer => '/bin/gzip $(this.promiser)';
-    }
+     "/tmp/"
+       file_select => pdf_modified_within_last_year,
+       transformer => '/bin/gzip $(this.promiser)';
+}
 
-    body file_select pdf_modified_within_last_year
-    # @brief Sllect files that have been modified in the last year AND end in .pdf
-    {
-      mtime       => irange(ago(1,0,0,0,0,0),now);
-      leaf_name => { ".*\.pdf" };
-      file_result => "mtime.leaf_name";
-    }
+body file_select pdf_modified_within_last_year
+# @brief Sllect files that have been modified in the last year AND end in .pdf
+{
+  mtime       => irange(ago(1,0,0,0,0,0),now);
+  leaf_name => { ".*\.pdf" };
+  file_result => "mtime.leaf_name";
+}
 ```
 
 `processes` type promises using ```process_select``` can use this function to

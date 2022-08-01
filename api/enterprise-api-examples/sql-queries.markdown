@@ -10,7 +10,7 @@ tags: [examples, enterprise, rest, api, reporting, sql, queries]
 **Request:**
 
 ```bash
-    curl -k --user admin:admin https://test.cfengine.com/api/query -X POST -d '{ "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts"}'
+curl -k --user admin:admin https://test.cfengine.com/api/query -X POST -d '{ "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts"}'
 ```
 
 **Response:**
@@ -70,13 +70,13 @@ link to a PDF version of the report.
 **Request:**
 
 ```bash
-    curl -k --user admin:admin https://test.cfengine.com/api/user/milton/ subscription/query/file-changes-report -X PUT -d '{"to": "boss@megaco.com", "query": "SELECT FileName, Count(*) FROM FileChangesLog GROUP BY FileName", "schedule": "Monday.Hr23.Min59", "title": "A very important file changes report""description": "Text that will be included in email""outputTypes": [ "pdf" ] }'
+curl -k --user admin:admin https://test.cfengine.com/api/user/milton/ subscription/query/file-changes-report -X PUT -d '{"to": "boss@megaco.com", "query": "SELECT FileName, Count(*) FROM FileChangesLog GROUP BY FileName", "schedule": "Monday.Hr23.Min59", "title": "A very important file changes report""description": "Text that will be included in email""outputTypes": [ "pdf" ] }'
 ```
 
 **Response:**
 
 ```
-    204 No Content
+204 No Content
 ```
 
 ### Subscribed Query Example: Listing Report Subscriptions
@@ -86,7 +86,7 @@ Milton can list all his current subscriptions by issuing the following.
 **Request:**
 
 ```bash
-    curl -k --user admin:admin https://test.cfengine.com/api/user/milton/subscription/query
+curl -k --user admin:admin https://test.cfengine.com/api/user/milton/subscription/query
 ```
 
 **Response:**
@@ -120,11 +120,11 @@ Milton can list all his current subscriptions by issuing the following.
 **Request:**
 
 ```bash
-    curl -k --user admin:admin https://test.cfengine.com/api/user/milton/subscription/query/file-changes-report -X DELETE
+curl -k --user admin:admin https://test.cfengine.com/api/user/milton/subscription/query/file-changes-report -X DELETE
 ```
 
 **Response:**
 
 ```
-    204 No Content
+204 No Content
 ```

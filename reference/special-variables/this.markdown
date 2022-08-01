@@ -12,15 +12,15 @@ or available, but provides a context for variables where one is needed
 `edit_line` promise from a `files` promise).
 
 ```cf3
-    bundle agent resolver(s,n)
-    {
-    files:
-      "$(sys.resolv)"
+bundle agent resolver(s,n)
+{
+files:
+  "$(sys.resolv)"
 
-          create        => "true",
-          edit_line     => doresolv("@(this.s)","@(this.n)"),
-          edit_defaults => reconstruct;
-    }
+      create        => "true",
+      edit_line     => doresolv("@(this.s)","@(this.n)"),
+      edit_defaults => reconstruct;
+}
 ```
 
 Note that every unqualified variable is automatically considered to be
@@ -81,24 +81,24 @@ attributes:
 For example:
 
 ```cf3
-    bundle agent find666
-    {
-    files:
-      "/home"
-        file_select => world_writeable,
-        transformer => "/bin/echo DETECTED $(this.promiser)",
-        depth_search => recurse("inf");
+bundle agent find666
+{
+files:
+  "/home"
+    file_select => world_writeable,
+    transformer => "/bin/echo DETECTED $(this.promiser)",
+    depth_search => recurse("inf");
 
-      "/etc/.*"
-        file_select => world_writeable,
-        transformer => "/bin/echo DETECTED $(this.promiser)";
-    }
+  "/etc/.*"
+    file_select => world_writeable,
+    transformer => "/bin/echo DETECTED $(this.promiser)";
+}
 
-    body file_select world_writeable
-    {
-      search_mode => { "o+w" };
-      file_result => "mode";
-    }
+body file_select world_writeable
+{
+  search_mode => { "o+w" };
+  file_result => "mode";
+}
 ```
 
 ### this.promiser_uid

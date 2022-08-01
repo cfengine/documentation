@@ -169,8 +169,8 @@ However pipes from executed commands may also be invoked.
 **Allowed input range:**
 
 ```cf3
-     pipe
-     file
+pipe
+file
 ```
 
 **Example:**
@@ -190,28 +190,27 @@ When CFEngine observes data, such as the attached partitions in the example abov
 **Allowed input range:**
 
 ```
-    counter
-    int
-    real
-    string
-    slist
+counter
+int
+real
+string
+slist
 ```
 
 **Example:**
 
 ```cf3
-  "/bin/df"
+"/bin/df"
 
-      handle => "free_disk_watch",
-      stream_type => "pipe",
+    handle => "free_disk_watch",
+    stream_type => "pipe",
 
-      data_type => "slist",
+    data_type => "slist",
 
-      history_type => "static",
-      units => "device",
-      match_value => file_systems,
-      action => sample_min(10,15);
-
+    history_type => "static",
+    units => "device",
+    match_value => file_systems,
+    action => sample_min(10,15);
 ```
 
 ### history_type
@@ -246,14 +245,14 @@ is retained.
 **Example:**
 
 ```cf3
- "/proc/meminfo"
+"/proc/meminfo"
 
-      handle => "free_memory_watch",
-      stream_type => "file",
-      data_type => "int",
-      history_type => "weekly",
-      units => "kB",
-      match_value => free_memory;
+     handle => "free_memory_watch",
+     stream_type => "file",
+     data_type => "int",
+     history_type => "weekly",
+     units => "kB",
+     match_value => free_memory;
 ```
 
 **Notes:**
@@ -277,16 +276,16 @@ This is an arbitrary string used in documentation only.
 **Example:**
 
 ```cf3
-   "/var/cfengine/state/cf_rootprocs"
+"/var/cfengine/state/cf_rootprocs"
 
-      handle => "monitor_self_watch",
-      stream_type => "file",
-      data_type => "int",
-      history_type => "weekly",
-      units => "kB",
-      match_value => proc_value(".*cf-monitord.*",
+   handle => "monitor_self_watch",
+   stream_type => "file",
+   data_type => "int",
+   history_type => "weekly",
+   units => "kB",
+   match_value => proc_value(".*cf-monitord.*",
 
-         "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
+      "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
 ```
 
 ### match_value
@@ -311,19 +310,19 @@ This attribute is mutually exclusive of `select_line_number`.
 **Example:**
 
 ```cf3
-     # Editing
+# Editing
 
-     body location example
-     {
-     select_line_matching => "Expression match.* whole line";
-     }
+body location example
+{
+select_line_matching => "Expression match.* whole line";
+}
 
-     # Measurement promises
+# Measurement promises
 
-     body match_value example
-     {
-     select_line_matching => "Expression match.* whole line";
-     }
+body match_value example
+{
+select_line_matching => "Expression match.* whole line";
+}
 ```
 
 #### select_line_number
@@ -339,10 +338,10 @@ This is mutually exclusive of [`select_line_matching`][measurements#select_line_
 **Example:**
 
 ```cf3
-     body match_value find_line
-     {
-     select_line_number => "2";
-     }
+body match_value find_line
+{
+select_line_number => "2";
+}
 ```
 
 #### extraction_regex
@@ -361,11 +360,11 @@ it may match a partial string
 **Example:**
 
 ```cf3
-     body match_value free_memory
-     {
-     select_line_matching => "MemFree:.*";
-     extraction_regex => "MemFree:\s+([0-9]+).*";
-     }
+body match_value free_memory
+{
+select_line_matching => "MemFree:.*";
+extraction_regex => "MemFree:\s+([0-9]+).*";
+}
 ```
 
 #### track_growing_file
@@ -388,36 +387,36 @@ logfile | grep pattern in Unix parlance.
 **Example:**
 
 ```cf3
-     bundle monitor watch
-     {
-     measurements:
+bundle monitor watch
+{
+measurements:
 
-        "/home/mark/tmp/file"
+   "/home/mark/tmp/file"
 
-              handle => "line_counter",
-         stream_type => "file",
-           data_type => "counter",
-         match_value => scan_log("MYLINE.*"),
-        history_type => "log",
-              action => sample_rate("0");
+         handle => "line_counter",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scan_log("MYLINE.*"),
+   history_type => "log",
+         action => sample_rate("0");
 
-     }
+}
 
-     #
+#
 
-     body match_value scan_log(x)
-     {
-     select_line_matching => "^$(x)$";
-     track_growing_file => "true";
-     }
+body match_value scan_log(x)
+{
+select_line_matching => "^$(x)$";
+track_growing_file => "true";
+}
 
-     #
+#
 
-     body action sample_rate(x)
-     {
-     ifelapsed => "$(x)";
-     expireafter => "10";
-     }
+body action sample_rate(x)
+{
+ifelapsed => "$(x)";
+expireafter => "10";
+}
 ```
 
 
@@ -435,21 +434,21 @@ are used only the first match is used.
 **Allowed input range:**
 
 ```
-    average
-    sum
-    first
-    last
+average
+sum
+first
+last
 ```
 
 **Example:**
 
 ```cf3
-     body match_value myvalue(xxx)
-     {
-      select_line_matching => ".*$(xxx).*";
-      extraction_regex => "root\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+).*";
-      select_multiline_policy => "sum";
-     }
+body match_value myvalue(xxx)
+{
+ select_line_matching => ".*$(xxx).*";
+ extraction_regex => "root\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+).*";
+ select_multiline_policy => "sum";
+}
 ```
 
 **History:** Was introduced in 3.4.0 (2012)

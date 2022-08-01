@@ -28,25 +28,25 @@ that is used to keep the promises in the bundle. So `cf-agent` has bundles
 declared as:
 
 ```cf3
-    bundle agent my_name
-    {
-    }
+bundle agent my_name
+{
+}
 ```
 
 while `cf-serverd` has bundles declared as:
 
 ```cf3
-    bundle server my_name
-    {
-    }
+bundle server my_name
+{
+}
 ```
 
 and `cf-monitord` has bundles declared as
 
 ```cf3
-    bundle monitor my_name
-    {
-    }
+bundle monitor my_name
+{
+}
 ```
 
 A number of promises can be made in any kind of bundle since they are of a
@@ -60,16 +60,16 @@ all bodies. Their main function is to define cross-component global
 definitions.
 
 ```cf3
-     bundle common globals
-     {
-     vars:
+bundle common globals
+{
+vars:
 
-       "global_var" string => "value";
+  "global_var" string => "value";
 
-     classes:
+classes:
 
-       "global_class" expression => "value";
-     }
+  "global_class" expression => "value";
+}
 ```
 
 Common bundles are observed by every agent, whereas the agent
@@ -92,40 +92,40 @@ same thing over and over again with slight variations, using a promise bundle
 is an easy way to avoid unnecessary duplication in your promises.
 
 ```
-    bundle agent hello_world
-    {
-      vars:
-          "myfiles"     => "/tmp/world.txt";
-          "desired_content" string => "hello";
-          "userinfo" data => parsejson('{ "mark": 10, "jeang":20, "jonhenrik":30, "thomas":40, "eben":-1 }');
+bundle agent hello_world
+{
+  vars:
+      "myfiles"     => "/tmp/world.txt";
+      "desired_content" string => "hello";
+      "userinfo" data => parsejson('{ "mark": 10, "jeang":20, "jonhenrik":30, "thomas":40, "eben":-1 }');
 
-      methods:
-          "Hello World"
-            usebundle => ensure_file_has_content("$(myfiles)", "$(desired_content)");
+  methods:
+      "Hello World"
+        usebundle => ensure_file_has_content("$(myfiles)", "$(desired_content)");
 
-          "report" usebundle => subtest_c(@(userinfo));
+      "report" usebundle => subtest_c(@(userinfo));
 
-    }
+}
 
-    bundle agent ensure_file_has_content(file, content)
-    {
-      files:
+bundle agent ensure_file_has_content(file, content)
+{
+  files:
 
-          "$(file)"
-            handle => "$(this.bundle)_file_content",
-            create => "true",
-            edit_defaults => empty,
-            edit_line => append_if_no_line("$(content)"),
-            comment => "Ensure that the given parameter for file '$(file)' has only
-                        the contents of the given parameter for content '$(content)'";
+      "$(file)"
+        handle => "$(this.bundle)_file_content",
+        create => "true",
+        edit_defaults => empty,
+        edit_line => append_if_no_line("$(content)"),
+        comment => "Ensure that the given parameter for file '$(file)' has only
+                    the contents of the given parameter for content '$(content)'";
 
-    }
+}
 
-    bundle agent subtest_c(info)
-    {
-      reports:
-       "user ID of mark is $(info[mark])";
-    }
+bundle agent subtest_c(info)
+{
+  reports:
+   "user ID of mark is $(info[mark])";
+}
 ```
 
 You can pass `slist` and `data` variables to other bundles with

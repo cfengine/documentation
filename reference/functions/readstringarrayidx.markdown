@@ -29,41 +29,40 @@ mimic the behavior of the *getpwnam(3)* on the file `/etc/passwd`), use
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-      "dim_array"
+  "dim_array"
 
-         int =>  readstringarrayidx("array_name","/tmp/array","\s*#[^\n]*",":",10,4000);
+     int =>  readstringarrayidx("array_name","/tmp/array","\s*#[^\n]*",":",10,4000);
 ```
 
 Input example:
 
 ```
-
-     at spaced:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
-     duplicate:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
-     beagleindex:x:104:106:User for Beagle indexing:/var/cache/beagle:/bin/bash
-     duplicate:x:1:1:bin:/bin:/bin/bash
-     # Daemon has the default shell
-     daemon:x:2:2:Daemon:/sbin:
+at spaced:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
+duplicate:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
+beagleindex:x:104:106:User for Beagle indexing:/var/cache/beagle:/bin/bash
+duplicate:x:1:1:bin:/bin:/bin/bash
+# Daemon has the default shell
+daemon:x:2:2:Daemon:/sbin:
 ```
 
 Results in a systematically indexed map of the file:
 
 ```
-     array_name[0][0]       at spaced
-     array_name[0][1]       x
-     array_name[0][2]       25
-     array_name[0][3]       25
-     array_name[0][4]       Batch jobs daemon
-     array_name[0][5]       /var/spool/atjobs
-     array_name[0][6]       /bin/bash
-     array_name[1][0]       duplicate
-     array_name[1][1]       x
-     array_name[1][2]       103
-     array_name[1][3]       105
-     array_name[1][4]       User for Avahi
-     array_name[1][5]       /var/run/avahi-daemon
-     array_name[1][6]       /bin/false
-     ...
+array_name[0][0]       at spaced
+array_name[0][1]       x
+array_name[0][2]       25
+array_name[0][3]       25
+array_name[0][4]       Batch jobs daemon
+array_name[0][5]       /var/spool/atjobs
+array_name[0][6]       /bin/bash
+array_name[1][0]       duplicate
+array_name[1][1]       x
+array_name[1][2]       103
+array_name[1][3]       105
+array_name[1][4]       User for Avahi
+array_name[1][5]       /var/run/avahi-daemon
+array_name[1][6]       /bin/false
+...
 ```

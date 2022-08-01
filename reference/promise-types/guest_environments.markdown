@@ -31,21 +31,21 @@ other machine.
 
 
 ```cf3
- site1::
+site1::
 
-  "unique_name1"
+ "unique_name1"
 
-       environment_resources => myresources("2GB","512MB"),
-       environment_interface => mymachine("hostname"),
-            environment_type => "xen",
-            environment_state => "running",
-            environment_host => "atlas";
+      environment_resources => myresources("2GB","512MB"),
+      environment_interface => mymachine("hostname"),
+           environment_type => "xen",
+           environment_state => "running",
+           environment_host => "atlas";
 
-  "unique_name2"
+ "unique_name2"
 
-            environment_type => "xen_net",
-           environment_state => "create",
-            environment_host => "atlas";
+           environment_type => "xen_net",
+          environment_state => "create",
+           environment_host => "atlas";
 ```
 
 CFEngine currently provides a convergent interface to *libvirt*.
@@ -111,20 +111,20 @@ time.
 **Example:**
 
 ```cf3
-     body environment_interface vnet(primary)
-     {
-     env_name      => "$(this.promiser)";
-     env_addresses => { "$(primary)" };
+body environment_interface vnet(primary)
+{
+env_name      => "$(this.promiser)";
+env_addresses => { "$(primary)" };
 
-     host1::
+host1::
 
-       env_network => "default_vnet1";
+  env_network => "default_vnet1";
 
-     host2::
+host2::
 
-       env_network => "default_vnet2";
+  env_network => "default_vnet2";
 
-     }
+}
 ```
 
 #### env_name
@@ -141,17 +141,17 @@ identifier used as 'promiser' by the virtualization manager.
 **Example:**
 
 ```cf3
-     body environment_interface vnet(primary)
-     {
-     env_name      => "$(this.promiser)";
-     env_addresses => { "$(primary)" };
+body environment_interface vnet(primary)
+{
+env_name      => "$(this.promiser)";
+env_addresses => { "$(primary)" };
 
-     host1::
-       env_network => "default_vnet1";
+host1::
+  env_network => "default_vnet1";
 
-     host2::
-       env_network => "default_vnet2";
-     }
+host2::
+  env_network => "default_vnet2";
+}
 ```
 
 #### env_network
@@ -165,17 +165,17 @@ identifier used as 'promiser' by the virtualization manager.
 **Example:**
 
 ```cf3
-    body environment_interface vnet(primary)
-    {
-    env_name      => "$(this.promiser)";
-    env_addresses => { "$(primary)" };
+body environment_interface vnet(primary)
+{
+env_name      => "$(this.promiser)";
+env_addresses => { "$(primary)" };
 
-    host1::
-      env_network => "default_vnet1";
+host1::
+  env_network => "default_vnet1";
 
-    host2::
-      env_network => "default_vnet2";
-    }
+host2::
+  env_network => "default_vnet2";
+}
 ```
 
 ### environment_resources
@@ -199,12 +199,12 @@ will set a natural limit on this value.
 **Example:**
 
 ```cf3
-     body environment_resources my_environment
-     {
-     env_cpus => "2";
-     env_memory => "512"; # in KB
-     env_disk => "1024";  # in MB
-     }
+body environment_resources my_environment
+{
+env_cpus => "2";
+env_memory => "512"; # in KB
+env_disk => "1024";  # in MB
+}
 ```
 
 **Notes:**
@@ -225,12 +225,12 @@ natural limit on this value.
 **Example:**
 
 ```cf3
-     body environment_resources my_environment
-     {
-     env_cpus => "2";
-     env_memory => "512"; # in KB
-     env_disk => "1024";  # in MB
-     }
+body environment_resources my_environment
+{
+env_cpus => "2";
+env_memory => "512"; # in KB
+env_disk => "1024";  # in MB
+}
 ```
 
 **Notes:**
@@ -250,12 +250,12 @@ This parameter is currently unsupported, for future extension.
 **Example:**
 
 ```cf3
-     body environment_resources my_environment
-     {
-     env_cpus => "2";
-     env_memory => "512"; # in KB
-     env_disk => "1024";  # in MB
-     }
+body environment_resources my_environment
+{
+env_cpus => "2";
+env_memory => "512"; # in KB
+env_disk => "1024";  # in MB
+}
 ```
 
 **Notes:**
@@ -275,7 +275,7 @@ image with which to baseline the virtual environment.
 **Example:**
 
 ```cf3
-     env_baseline => "/path/to/image";
+env_baseline => "/path/to/image";
 ```
 
 **Notes:**
@@ -296,36 +296,36 @@ creation; in other words, when `environment_state` is create.
 **Example:**
 
 ```cf3
-     body environment_resources virt_xml(host)
-     {
-     env_spec =>
+body environment_resources virt_xml(host)
+{
+env_spec =>
 
-     "<domain type='xen'>
-       <name>$(host)/name>
-       <os>
-         <type>linux/type>
-         <kernel>/var/lib/xen/install/vmlinuz-ubuntu10.4-x86_64/kernel>
-         <initrd>/var/lib/xen/install/initrd-vmlinuz-ubuntu10.4-x86_64/initrd>
-         <cmdline> kickstart=http://example.com/myguest.ks /cmdline>
-       </os>
-       <memory>131072/memory>
-       <vcpu>1/vcpu>
-       <devices>
-         <disk type='file'>
-           <source file='/var/lib/xen/images/$(host).img'/>
-           <target dev='sda1'/>
-         </disk>
-         <interface type='bridge'>
-           <source bridge='xenbr0'/>
-           <mac address='aa:00:00:00:00:11'/>
-           <script path='/etc/xen/scripts/vif-bridge'/>
-         </interface>
-         <graphics type='vnc' port='-1'/>
-         <console tty='/dev/pts/5'/>
-       </devices>
-     </domain>
-     ";
-     }
+"<domain type='xen'>
+  <name>$(host)/name>
+  <os>
+    <type>linux/type>
+    <kernel>/var/lib/xen/install/vmlinuz-ubuntu10.4-x86_64/kernel>
+    <initrd>/var/lib/xen/install/initrd-vmlinuz-ubuntu10.4-x86_64/initrd>
+    <cmdline> kickstart=http://example.com/myguest.ks /cmdline>
+  </os>
+  <memory>131072/memory>
+  <vcpu>1/vcpu>
+  <devices>
+    <disk type='file'>
+      <source file='/var/lib/xen/images/$(host).img'/>
+      <target dev='sda1'/>
+    </disk>
+    <interface type='bridge'>
+      <source bridge='xenbr0'/>
+      <mac address='aa:00:00:00:00:11'/>
+      <script path='/etc/xen/scripts/vif-bridge'/>
+    </interface>
+    <graphics type='vnc' port='-1'/>
+    <console tty='/dev/pts/5'/>
+  </devices>
+</domain>
+";
+}
 ```
 
 **Notes:**
@@ -377,7 +377,6 @@ guest_environments:
         environment_type => "kvm",
        environment_state => "suspended",
         environment_host => "ubuntu";
-
 ```
 
 ### environment_type
@@ -392,18 +391,18 @@ will be added in the future.
 **Allowed input range:**
 
 ```
-    xen
-    kvm
-    esx
-    vbox
-    test
-    xen_net
-    kvm_net
-    esx_net
-    test_net
-    zone
-    ec2
-    eucalyptus
+xen
+kvm
+esx
+vbox
+test
+xen_net
+kvm_net
+esx_net
+test_net
+zone
+ec2
+eucalyptus
 ```
 
 **Example:**

@@ -44,13 +44,13 @@ Allowed users <br />
 Create a file called `/tmp/myapp.conf.template` with the following content:
 
 ```
-    Port {{port}}
-    Protocol {{protocol}}
-    Filepath {{filepath}}
-    Encryption {{encryption-level}}
-    Loglevel {{loglevel}}
-    Allowed users {{#users}}
-      {{user}}={{level}}{{/users}}
+Port {{port}}
+Protocol {{protocol}}
+Filepath {{filepath}}
+Encryption {{encryption-level}}
+Loglevel {{loglevel}}
+Allowed users {{#users}}
+  {{user}}={{level}}{{/users}}
 ```
 
 2. Create CFEngine policy

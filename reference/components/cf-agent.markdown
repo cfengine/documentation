@@ -40,7 +40,7 @@ To make the CFEngine Server discoverable, it needs to register itself as an
 Avahi service. Run the following command:
 
 ```
-    $ /var/cfengine/bin/cf-serverd -A
+$ /var/cfengine/bin/cf-serverd -A
 ```
 
 This generates the configuration file for Avahi in `/etc/avahi/services` and
@@ -51,21 +51,21 @@ To verify that the server is visible, run the following command (requires
 `avahi-utils`):
 
 ```
-    $ avahi-browse -atr | grep cfenginehub
+$ avahi-browse -atr | grep cfenginehub
 ```
 
 The sample output looks like this:
 
 ```
-    eth0 IPv4 CFEngine Community 3.5.0 Policy Server on policy_hub_debian7
-    _cfenginehub._tcp local
+eth0 IPv4 CFEngine Community 3.5.0 Policy Server on policy_hub_debian7
+_cfenginehub._tcp local
 ```
 
 Once the Policy Server is configured with the Avahi service, you can
 auto-bootstrap Hosts to it.
 
 ```
-    $ /var/cfengine/bin/cf-agent -B :avahi
+$ /var/cfengine/bin/cf-agent -B :avahi
 ```
 
 The Hosts require Avahi libraries to be installed in order to use this
@@ -75,7 +75,7 @@ installed in a non-standard location (i.e. compiled from source), set the
 `AVAHI_PATH` environmental variable to specify the path.
 
 ```
-   $ AVAHI_PATH=/lib/libavahi-client.so.3 /var/cfengine/bin/cf-agent -B
+$ AVAHI_PATH=/lib/libavahi-client.so.3 /var/cfengine/bin/cf-agent -B
 ```
 
 If more than one server is found, or if the server has more than one IP
@@ -84,7 +84,7 @@ manually specify the IP address of the correct server by running the standard
 bootstrap command of cf-agent:
 
 ```
-   $ /var/cfengine/bin/cf-agent --bootstrap <IP address>
+$ /var/cfengine/bin/cf-agent --bootstrap <IP address>
 ```
 
 If only one Policy Server is found in the network, `cf-agent` performs the
@@ -136,55 +136,55 @@ This example shows how to use the feature to validate input to a
 method bundle.
 
 ```cf3
-    body common control
+body common control
 
-    {
-    bundlesequence  => { "testbundle"  };
-    version => "1.2.3";
-    }
+{
+bundlesequence  => { "testbundle"  };
+version => "1.2.3";
+}
 
-    #################################
+#################################
 
-    body agent control
+body agent control
 
-    {
-    abortbundleclasses => { "invalid.*" };
-    }
+{
+abortbundleclasses => { "invalid.*" };
+}
 
-    #################################
+#################################
 
-    bundle agent testbundle
-    {
-    vars:
+bundle agent testbundle
+{
+vars:
 
-     "userlist" slist => { "xyz", "mark", "jeang", "jonhenrik", "thomas", "eben" };
+ "userlist" slist => { "xyz", "mark", "jeang", "jonhenrik", "thomas", "eben" };
 
-    methods:
+methods:
 
-     "any" usebundle => subtest("$(userlist)");
+ "any" usebundle => subtest("$(userlist)");
 
-    }
+}
 
-    #################################
+#################################
 
-    bundle agent subtest(user)
+bundle agent subtest(user)
 
-    {
-    classes:
+{
+classes:
 
-      "invalid" not => regcmp("[a-z]{4}","$(user)");
+  "invalid" not => regcmp("[a-z]{4}","$(user)");
 
-    reports:
+reports:
 
-     !invalid::
+ !invalid::
 
-      "User name $(user) is valid at exactly 4 letters";
+  "User name $(user) is valid at exactly 4 letters";
 
-     # abortbundleclasses will prevent this from being evaluated
-     invalid::
+ # abortbundleclasses will prevent this from being evaluated
+ invalid::
 
-      "User name $(user) is invalid";
-    }
+  "User name $(user) is invalid";
+}
 ```
 
 
@@ -267,14 +267,13 @@ the control section are hard-classes.
 **Example:**
 
 ```cf3
+any::
 
-    any::
+  addclasses => { "My_Organization" }
 
-      addclasses => { "My_Organization" }
+solaris::
 
-    solaris::
-
-      addclasses => { "some_solaris_alive", "running_on_sunshine" };
+  addclasses => { "some_solaris_alive", "running_on_sunshine" };
 ```
 
 **Notes:**
@@ -301,7 +300,7 @@ rather than a security measure.
 **Example:**
 
 ```cf3
-     agentaccess => { "mark", "root", "sudo" };
+agentaccess => { "mark", "root", "sudo" };
 ```
 
 ### agentfacility
@@ -329,7 +328,7 @@ syslog facility level.
 **Example:**
 
 ```cf3
-    agentfacility => "LOG_USER";
+agentfacility => "LOG_USER";
 ```
 **Notes:**
 
@@ -352,10 +351,10 @@ during agent execution.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    allclassesreport => "true";
-    }
+body agent control
+{
+allclassesreport => "true";
+}
 ```
 
 **Notes:**
@@ -377,14 +376,14 @@ executing, or only after updates.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    Min00_05::
+body agent control
+{
+Min00_05::
 
-      # revalidate once per hour, regardless of change in configuration
+  # revalidate once per hour, regardless of change in configuration
 
-      alwaysvalidate => "true";
-    }
+  alwaysvalidate => "true";
+}
 ```
 
 **Notes:**
@@ -423,7 +422,7 @@ be given as the argument, not the device name.
 **Example:**
 
 ```cf3
-    bindtointerface => "192.168.1.1";
+bindtointerface => "192.168.1.1";
 ```
 
 ### checksum_alert_time
@@ -444,10 +443,10 @@ class.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    checksum_alert_time => "30";
-    }
+body agent control
+{
+checksum_alert_time => "30";
+}
 ```
 
 ### childlibpath
@@ -465,10 +464,10 @@ of the agent.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    childlibpath => "/usr/local/lib:/usr/local/gnu/lib";
-    }
+body agent control
+{
+childlibpath => "/usr/local/lib:/usr/local/gnu/lib";
+}
 ```
 
 
@@ -510,10 +509,10 @@ repository.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    default_repository => "/var/cfengine/repository";
-    }
+body agent control
+{
+default_repository => "/var/cfengine/repository";
+}
 ```
 
 **Notes:** When a repository is specified, the files are stored using the
@@ -571,11 +570,11 @@ default policy for comparing source and image in copy transactions.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    #...
-    defaultcopytype => "digest";
-    }
+body agent control
+{
+#...
+defaultcopytype => "digest";
+}
 ```
 
 
@@ -591,10 +590,10 @@ the system, and will only report what it needs to do.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    dryrun => "true";
-    }
+body agent control
+{
+dryrun => "true";
+}
 ```
 
 
@@ -615,10 +614,10 @@ and may be overridden on a per-promise basis with `max_file_size`.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    edibinaryfilesize => "10M";
-    }
+body agent control
+{
+edibinaryfilesize => "10M";
+}
 ```
 
 **Notes:**
@@ -642,10 +641,10 @@ overridden on a per-promise basis with `max_file_size`.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    editfilesize => "120k";
-    }
+body agent control
+{
+editfilesize => "120k";
+}
 ```
 
 ### environment
@@ -663,30 +662,30 @@ The values of environment variables are inherited by child commands.
 **Example:**
 
 ```cf3
-    body common control
-    {
-    bundlesequence => { "one" };
-    }
+body common control
+{
+bundlesequence => { "one" };
+}
 
-    body agent control
-    {
-    environment => { "A=123", "B=456", "PGK_PATH=/tmp"};
-    }
+body agent control
+{
+environment => { "A=123", "B=456", "PGK_PATH=/tmp"};
+}
 
-    bundle agent one
-    {
-    commands:
+bundle agent one
+{
+commands:
 
-      "/usr/bin/env";
-    }
+  "/usr/bin/env";
+}
 ```
 
 Some interactive programs insist on values being set, for example:
 
 ```cf3
-    # Required by apt-cache, debian
+# Required by apt-cache, debian
 
-    environment => { "LANG=C"};
+environment => { "LANG=C"};
 ```
 
 
@@ -707,11 +706,11 @@ kill and restart its attempt to keep a promise.
 **Example:**
 
 ```cf3
-    body action example
-    {
-    ifelapsed   => "120";   # 2 hours
-    expireafter => "240";   # 4 hours
-    }
+body action example
+{
+ifelapsed   => "120";   # 2 hours
+expireafter => "240";   # 4 hours
+}
 ```
 
 **See also:** [`body action expireafter`][Promise Types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
@@ -737,10 +736,10 @@ automatically.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    files_auto_define => { "/etc/syslog\.c.*", "/etc/passwd" };
-    }
+body agent control
+{
+files_auto_define => { "/etc/syslog\.c.*", "/etc/passwd" };
+}
 ```
 
 ### files_single_copy
@@ -762,10 +761,10 @@ for lazy-evaluation of overlapping file-copy promises.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    files_single_copy => { "/etc/.*", "/special/file" };
-    }
+body agent control
+{
+files_single_copy => { "/etc/.*", "/special/file" };
+}
 ```
 
 ### hashupdates
@@ -784,10 +783,10 @@ etc) this is a common setting.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    hashupdates => "true";
-    }
+body agent control
+{
+hashupdates => "true";
+}
 ```
 
 
@@ -809,10 +808,10 @@ addresses.
 **Example:**
 
 ```cf3
-    body server control
-    {
-    hostnamekeys => "true";
-    }
+body server control
+{
+hostnamekeys => "true";
+}
 ```
 
 ### ifelapsed
@@ -837,20 +836,20 @@ another which is not tied to a specific time.
 **Example:**
 
 ```cf3
-    #local
+#local
 
-    body action example
-    {
-    ifelapsed   => "120";   # 2 hours
-    expireafter => "240";   # 4 hours
-    }
+body action example
+{
+ifelapsed   => "120";   # 2 hours
+expireafter => "240";   # 4 hours
+}
 
-    # global
+# global
 
-    body agent control
-    {
-    ifelapsed   => "180";   # 3 hours
-    }
+body agent control
+{
+ifelapsed   => "180";   # 3 hours
+}
 ```
 
 **See also:** [Promise locking][Promises#Promise Locking], [ifelapsed action body attribute][Promise Types#ifelapsed]
@@ -870,10 +869,10 @@ It is equivalent to (and when present, overrides) the command line option
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    inform => "true";
-    }
+body agent control
+{
+inform => "true";
+}
 ```
 
 ### intermittency
@@ -907,10 +906,10 @@ diminishing returns.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    max_children => "10";
-    }
+body agent control
+{
+max_children => "10";
+}
 ```
 
 **See also:** [`background` in action bodies][Promise Types#background]
@@ -929,12 +928,12 @@ number of outgoing connections to `cf-serverd`.
 **Example:**
 
 ```cf3
-    # client side
+# client side
 
-    body agent control
-    {
-    maxconnections => "1000";
-    }
+body agent control
+{
+maxconnections => "1000";
+}
 ```
 
 **Notes:**
@@ -958,10 +957,10 @@ file system table.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    mountfilesystems => "true";
-    }
+body agent control
+{
+mountfilesystems => "true";
+}
 ```
 
 ### nonalphanumfiles
@@ -978,10 +977,10 @@ This test is applied in all recursive/depth searches.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    nonalphanumfiles => "true";
-    }
+body agent control
+{
+nonalphanumfiles => "true";
+}
 ```
 
 ### refresh_processes
@@ -1003,11 +1002,11 @@ at the start of every scheduled bundle.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    refresh_processes => { "mybundle" };
-    #refresh_processes => { "none" };
-    }
+body agent control
+{
+refresh_processes => { "mybundle" };
+#refresh_processes => { "none" };
+}
 ```
 
 This examples uses a non-empty list with the name 'none'. This is not a
@@ -1031,10 +1030,10 @@ canonize pathnames in the file repository.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    repchar => "_";
-    }
+body agent control
+{
+repchar => "_";
+}
 ```
 
 **Notes:**
@@ -1100,10 +1099,10 @@ owned by a privileged user.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    secureinput => "true";
-    }
+body agent control
+{
+secureinput => "true";
+}
 ```
 
 ### select_end_match_eof
@@ -1144,10 +1143,10 @@ number of files a mounted filesystem is expected to have.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    sensiblecount => "20";
-    }
+body agent control
+{
+sensiblecount => "20";
+}
 ```
 
 ### sensiblesize
@@ -1164,10 +1163,10 @@ number of bytes a mounted filesystem is expected to have.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    sensiblesize => "20K";
-    }
+body agent control
+{
+sensiblesize => "20K";
+}
 ```
 
 
@@ -1189,10 +1188,10 @@ credentials.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    skipidentify => "true";
-    }
+body agent control
+{
+skipidentify => "true";
+}
 ```
 
 ### suspiciousnames
@@ -1210,10 +1209,10 @@ it will skip them and output a warning message.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    suspiciousnames => { ".mo", "lrk3", "rootkit" };
-    }
+body agent control
+{
+suspiciousnames => { ".mo", "lrk3", "rootkit" };
+}
 ```
 
 ### syslog
@@ -1233,10 +1232,10 @@ machine must comply with.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    timezone => { "MET", "CET", "GMT+1" };
-    }
+body agent control
+{
+timezone => { "MET", "CET", "GMT+1" };
+}
 ```
 
 
@@ -1261,8 +1260,8 @@ promise.
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    verbose => "true";
-    }
+body agent control
+{
+verbose => "true";
+}
 ```

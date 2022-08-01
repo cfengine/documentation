@@ -225,7 +225,6 @@ by an enterprise-wide global infrastructure service.
 
   # All other local promises here ....
  }
-
 ```
 
 The CFEngine code snippet above represents the CFEngine configuration for any of

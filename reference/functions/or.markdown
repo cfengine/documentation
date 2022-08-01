@@ -16,11 +16,11 @@ classes.
 **Example:**
 
 ```cf3
-    commands:
-      "/usr/bin/generate_config $(config)"
-        if => or( "force_configs",
-                  not(fileexists("/etc/config/$(config)"))
-                );
+commands:
+  "/usr/bin/generate_config $(config)"
+    if => or( "force_configs",
+              not(fileexists("/etc/config/$(config)"))
+            );
 ```
 
 **Notes:** Introduced primarily for use with `if` and `unless` promise attributes.

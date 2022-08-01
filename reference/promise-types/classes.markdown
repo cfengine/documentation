@@ -10,15 +10,15 @@ classes type promises in `common` bundles are `namespace` (aka global) scoped by
 default.
 
 ```cf3
-    bundle common g
-    {
-    classes:
+bundle common g
+{
+classes:
 
-      "one" expression => "any"; # always defined
-      "two"; # always defined
+  "one" expression => "any"; # always defined
+  "two"; # always defined
 
-      "client_network" expression => iprange("128.39.89.0/24");
-    }
+  "client_network" expression => iprange("128.39.89.0/24");
+}
 ```
 
 **Notes:**
@@ -90,9 +90,9 @@ on the right-hand side are true.
 **Example:**
 
 ```cf3
-    classes:
+classes:
 
-      "compound_class" and => { classmatch("host[0-9].*"), "Monday", "Hr02" };
+  "compound_class" and => { classmatch("host[0-9].*"), "Monday", "Hr02" };
 ```
 
 **Notes:**
@@ -115,11 +115,11 @@ probability distribution.
 **Example:**
 
 ```cf3
-    classes:
+classes:
 
-      "my_dist"
+  "my_dist"
 
-        dist => { "10", "20", "40", "50" };
+    dist => { "10", "20", "40", "50" };
 ```
 
 **Notes:**
@@ -129,10 +129,10 @@ the distribution, CFEngine picks a number between `1-120`, and set the class
 `my_dist` as well as one of the following classes:
 
 ```cf3
-    my_dist_10 (10/120 of the time)
-    my_dist_20 (20/120 of the time)
-    my_dist_40 (40/120 of the time)
-    my_dist_50 (50/120 of the time)
+my_dist_10 (10/120 of the time)
+my_dist_20 (20/120 of the time)
+my_dist_40 (40/120 of the time)
+my_dist_50 (50/120 of the time)
 ```
 
 ### expression
@@ -172,25 +172,25 @@ Expressions can be:
 **Example:**
 
 ```cf3
-    classes:
+classes:
 
-      "class_name" expression => "solaris|(linux.specialclass)";
-      "has_toor"   expression => userexists("toor");
+  "class_name" expression => "solaris|(linux.specialclass)";
+  "has_toor"   expression => userexists("toor");
 
-      # it's unlikely a machine will become Linux during execution
-      # so this is fairly safe
-      "not_linux"   expression => "!linux";
+  # it's unlikely a machine will become Linux during execution
+  # so this is fairly safe
+  "not_linux"   expression => "!linux";
 
-      "a_or_b"   expression => "a|b";
-      # yes, it's OK to define a class twice, and this is the same outcome
-      # with different syntax
-      "a_and_b"   expression => "a&b";
-      "a_and_b"   expression => "a.b";
+  "a_or_b"   expression => "a|b";
+  # yes, it's OK to define a class twice, and this is the same outcome
+  # with different syntax
+  "a_and_b"   expression => "a&b";
+  "a_and_b"   expression => "a.b";
 
-      # yes, it's OK to define a class twice, and this is the same outcome
-      # with different syntax
-      "linux_and_has_toor" expression => and(userexists("toor"), "linux");
-      "linux_and_has_toor" and => { userexists("toor"), "linux" };
+  # yes, it's OK to define a class twice, and this is the same outcome
+  # with different syntax
+  "linux_and_has_toor" expression => and(userexists("toor"), "linux");
+  "linux_and_has_toor" and => { userexists("toor"), "linux" };
 ```
 
 ### or
@@ -259,51 +259,51 @@ For example, to create a conditional inclusion of costly class evaluations,
 put them into a separate bundle in a file `classes.cf.`
 
 ```cf3
-    # promises.cf
+# promises.cf
 
-    body common control
-    {
-    persistent_classes::
-      bundlesequence => { "test" };
+body common control
+{
+persistent_classes::
+  bundlesequence => { "test" };
 
-    !persistent_classes::
-      bundlesequence => {  "setclasses", "test" };
+!persistent_classes::
+  bundlesequence => {  "setclasses", "test" };
 
-    !persistent_classes::
-      inputs => { "classes.cf" };
-    }
+!persistent_classes::
+  inputs => { "classes.cf" };
+}
 
 
-    bundle agent test
-    {
-    reports:
+bundle agent test
+{
+reports:
 
-      !my_persistent_class::
-       "no persistent class";
+  !my_persistent_class::
+   "no persistent class";
 
-      my_persistent_class::
-        "persistent class defined";
-    }
+  my_persistent_class::
+    "persistent class defined";
+}
 ```
 
 Then create `classes.cf`
 
 ```cf3
-    # classes.cf
+# classes.cf
 
-    bundle common setclasses
-    {
-    classes:
+bundle common setclasses
+{
+classes:
 
-      "persistent_classes"            # timer flag
-             expression => "any",
-            persistence => "480";
+  "persistent_classes"            # timer flag
+         expression => "any",
+        persistence => "480";
 
-      "my_persistent_class"
-                    or => { ...long list or heavy function... } ,
-           persistence => "480";
+  "my_persistent_class"
+                or => { ...long list or heavy function... } ,
+       persistence => "480";
 
-    }
+}
 ```
 
 **History:** Was introduced in CFEngine 3.3.0
@@ -325,10 +325,10 @@ right-hand side evaluates to false.
 **Example:**
 
 ```cf3
-    classes:
+classes:
 
-       "others"  not => "linux|solaris";
-       "no_toor" not => userexists("toor");
+   "others"  not => "linux|solaris";
+   "no_toor" not => userexists("toor");
 ```
 
 **Notes:**
@@ -346,8 +346,8 @@ on [Negative Knowledge][classes and decisions].
 **Allowed input range:**
 
 ```
-    namespace
-    bundle
+namespace
+bundle
 ```
 
 **Default value:** `bundle` in agent bundles, `namespace` in common bundles
@@ -355,14 +355,14 @@ on [Negative Knowledge][classes and decisions].
 **Example:**
 
 ```cf3
-    classes:
-      "namespace_context"
-          scope => "namespace";
+classes:
+  "namespace_context"
+      scope => "namespace";
 
-      "bundle_or_namespace_context"; # without an explicit scope, depends on bundle type
+  "bundle_or_namespace_context"; # without an explicit scope, depends on bundle type
 
-      "bundle_context"
-          scope => "bundle";
+  "bundle_context"
+      scope => "bundle";
 ```
 
 **See also:** [`scope` in `body classes`][Promise Types#scope]
@@ -386,19 +386,19 @@ CFEngine.
 **Example:**
 
 ```cf3
-    bundle common g
-    {
-    classes:
-      "selection" select_class => { "one", "two" };
+bundle common g
+{
+classes:
+  "selection" select_class => { "one", "two" };
 
-    reports:
-      one::
-        "One was selected";
-      two::
-        "Two was selected";
-      selection::
-         "A selection was made";
-    }
+reports:
+  one::
+    "One was selected";
+  two::
+    "Two was selected";
+  selection::
+     "A selection was made";
+}
 ```
 
 **Notes:**
@@ -430,7 +430,7 @@ expressions.
 **Example:**
 
 ```cf3
-    classes:
+classes:
 
-    "order_lunch" xor => { "Friday", "Hr11"}; # we get pizza every Friday
+"order_lunch" xor => { "Friday", "Hr11"}; # we get pizza every Friday
 ```

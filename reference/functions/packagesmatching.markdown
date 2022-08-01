@@ -25,7 +25,6 @@ this:
       "version":"5.0.7-5ubuntu1"
    }
 ]
-
 ```
 
 [%CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex)%]
@@ -47,7 +46,7 @@ some desired packages, and finally reports if they are installed.
 **Example:**
 
 ```cf3
-      "all_packages" data => packagesmatching(".*", ".*", ".*", ".*");
+"all_packages" data => packagesmatching(".*", ".*", ".*", ".*");
 ```
 
 **Refresh rules:**
@@ -57,7 +56,7 @@ some desired packages, and finally reports if they are installed.
         This means a reliable way to force a refresh of CFEngine's internal package cache is to simply delete the local cache:
 
 ```cf3
-            $(sys.statedir)/packages_installed_<package_module>.lmdb*
+$(sys.statedir)/packages_installed_<package_module>.lmdb*
 ```
 
 **History:** Introduced in CFEngine 3.6

@@ -314,23 +314,23 @@ editing. Setting this option to true makes it included.
 **Example:**
 
 ```cf3
-     body select_region BracketSection(x)
-     {
-     select_start => "$(x) \{";
-     select_end => "}";
-     include_end_delimiter => "true";
-     }
+body select_region BracketSection(x)
+{
+select_start => "$(x) \{";
+select_end => "}";
+include_end_delimiter => "true";
+}
 ```
 
 Input file:
 
 ```cf3
-     /var/log/mail.log {
-         monthly
-         missingok
-         notifempty
-         rotate 7
-         }
+/var/log/mail.log {
+    monthly
+    missingok
+    notifempty
+    rotate 7
+    }
 ```
 
 The section does not normally include the line containing }. By setting
@@ -366,21 +366,21 @@ editing). Setting this option to true makes it included.
 **Example:**
 
 ```cf3
-     body select_region MySection(x)
-     {
-       select_start => "\[$(x)\]";
-       select_end => "\[.*\]";
-       include_start_delimiter => "true";
-     }
+body select_region MySection(x)
+{
+  select_start => "\[$(x)\]";
+  select_end => "\[.*\]";
+  include_start_delimiter => "true";
+}
 ```
 
 Input file:
 
 ```cf3
-     [My section]
-     one
-     two
-     three
+[My section]
+one
+two
+three
 ```
 
 In this example, the section does not normally include the line [My
@@ -406,11 +406,11 @@ unaffected by any `delete_lines` promises. See the next section on
 **Example:**
 
 ```cf3
-     body select_region example(x)
-     {
-     select_start => "\[$(x)\]";
-     select_end => "\[.*\]";
-     }
+body select_region example(x)
+{
+select_start => "\[$(x)\]";
+select_end => "\[.*\]";
+}
 ```
 
 If you want to match from a starting location to the end of the file
@@ -440,12 +440,12 @@ the file no matter what the value of `select_end_match_eof` is set to.
 **Example:**
 
 ```cf3
-     body select_region example(x)
-     {
-     select_start => "\[$(x)\]";
-     select_end => "\[.*\]";
-     select_end_match_eof => "true";
-     }
+body select_region example(x)
+{
+select_start => "\[$(x)\]";
+select_end => "\[.*\]";
+select_end_match_eof => "true";
+}
 ```
 
 **See also:** [`select_end_match_eof` in body agent control][cf-agent#select_end_match_eof]
@@ -465,9 +465,9 @@ the file no matter what the value of `select_end_match_eof` is set to.
 **Example:**
 
 ```cf3
-     body select_region example(x)
-     {
-       select_start => "\[$(x)\]";
-       select_end => "\[.*\]";
-     }
+body select_region example(x)
+{
+  select_start => "\[$(x)\]";
+  select_end => "\[.*\]";
+}
 ```

@@ -12,13 +12,13 @@ modified with further pattern matching in `delete_select` and/or changed
 with `not_matching`).
 
 ```cf3
-    bundle edit_line example
-    {
-    delete_lines:
+bundle edit_line example
+{
+delete_lines:
 
-      "olduser:.*";
+  "olduser:.*";
 
-    }
+}
 ```
 
 Note that typically, only a single line is specified in each
@@ -62,17 +62,17 @@ selection).
 **Example:**
 
 ```cf3
-     bundle edit_line alpha
-     {
-     delete_lines:
-         ".*alpha.*"
-        delete_select => starters;
-     }
+bundle edit_line alpha
+{
+delete_lines:
+    ".*alpha.*"
+   delete_select => starters;
+}
 
-     body delete_select starters
-     {
-         delete_if_startwith_from_list => { "begin", "start", "init" };
-     }
+body delete_select starters
+{
+    delete_if_startwith_from_list => { "begin", "start", "init" };
+}
 ```
 
 If the file contains the following lines, then this promise initially
@@ -80,13 +80,13 @@ selects the four lines containing alpha, but is moderated by the
 `delete_select` attribute.
 
 ```cf3
-     start alpha igniter
-     start beta igniter
-     init alpha burner
-     init beta burner
-     stop beta igniter
-     stop alpha igniter
-     stop alpha burner
+start alpha igniter
+start beta igniter
+init alpha burner
+init beta burner
+stop beta igniter
+stop alpha igniter
+stop alpha burner
 ```
 
 Thus, the promise will delete only the first and third lines of the file:
@@ -107,10 +107,10 @@ selection.
 **Example:**
 
 ```cf3
-     body delete_select example(s)
-     {
-     delete_if_not_startwith_from_list => { @(s) };
-     }
+body delete_select example(s)
+{
+delete_if_not_startwith_from_list => { @(s) };
+}
 ```
 
 #### delete_if_match_from_list
@@ -127,10 +127,10 @@ initial selection, and the match determination is made only on promised lines.
 **Example:**
 
 ```cf3
-     body delete_select example(s)
-     {
-     delete_if_match_from_list => { @(s) };
-     }
+body delete_select example(s)
+{
+delete_if_match_from_list => { @(s) };
+}
 ```
 
 #### delete_if_not_match_from_list
@@ -147,10 +147,10 @@ initial selection, and the match determination is made only on promised lines.
 **Example:**
 
 ```cf3
-     body delete_select example(s)
-     {
-     delete_if_not_match_from_list => { @(s) };
-     }
+body delete_select example(s)
+{
+delete_if_not_match_from_list => { @(s) };
+}
 ```
 
 #### delete_if_contains_from_list
@@ -168,10 +168,10 @@ initial selection, and the match determination is made only on promised lines.
 **Example:**
 
 ```cf3
-     body delete_select example(s)
-     {
-     delete_if_contains_from_list => { @(s) };
-     }
+body delete_select example(s)
+{
+delete_if_contains_from_list => { @(s) };
+}
 ```
 
 #### delete_if_not_contains_from_list
@@ -189,10 +189,10 @@ promised lines.
 **Example:**
 
 ```cf3
-     body delete_select discard(s)
-     {
-     delete_if_not_contains_from_list => { "substring1", "substring2" };
-     }
+body delete_select discard(s)
+{
+delete_if_not_contains_from_list => { "substring1", "substring2" };
+}
 ```
 
 ### not_matching
@@ -211,11 +211,11 @@ only negates the match of the initially promised lines.
 **Example:**
 
 ```cf3
-    delete_lines:
+delete_lines:
 
-      # edit /etc/passwd - account names that are not "mark" or "root"
+  # edit /etc/passwd - account names that are not "mark" or "root"
 
-      "(mark|root):.*" not_matching => "true";
+  "(mark|root):.*" not_matching => "true";
 ```
 
 ### select_region

@@ -18,7 +18,6 @@ tags: [examples, tutorials, file]
 	export CFE_FILE2="test_plain_2.txt"
 
 	/var/cfengine/bin/cf-agent /var/cfengine/masterfiles/file_test.cf --bundlesequence robot,global_vars,packages,create_aout_source_file,create_aout,test_delete,do_files_exist_1,create_file_1,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,stat,outer_bundle_2,list_file_2
-
 	```
 
 Here is the order in which bundles are called in the command line above (some other support bundles are contained within file_test.cf but are not included here):

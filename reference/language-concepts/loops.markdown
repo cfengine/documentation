@@ -14,19 +14,19 @@ It's as if you said "I know three colors: red green blue. Let's talk
 about color."
 
 ```cf3
-    body common control
-    {
-        bundlesequence  => { "color_example" };
-    }
+body common control
+{
+    bundlesequence  => { "color_example" };
+}
 
-    bundle agent color_example
-    {
-        vars:
-            "color" slist => { "red", "green", "blue" };
+bundle agent color_example
+{
+    vars:
+        "color" slist => { "red", "green", "blue" };
 
-        reports:
-            "Let's talk about $(color)";
-    }
+    reports:
+        "Let's talk about $(color)";
+}
 ```
 
 CFEngine will implicitly loop over each `$(color)`:
@@ -37,29 +37,28 @@ CFEngine will implicitly loop over each `$(color)`:
 R: Let's talk about red
 R: Let's talk about green
 R: Let's talk about blue
-
 ```
 
 Here's a more complex example.
 
 ```cf3
-    body common control
-    {
-        bundlesequence  => { "example" };
-    }
+body common control
+{
+    bundlesequence  => { "example" };
+}
 
-    bundle agent example
-    {
-        vars:
-            "component" slist => { "cf-monitord", "cf-serverd", "cf-execd" };
+bundle agent example
+{
+    vars:
+        "component" slist => { "cf-monitord", "cf-serverd", "cf-execd" };
 
-            "array[cf-monitord]" string => "The monitor";
-            "array[cf-serverd]" string => "The server";
-            "array[cf-execd]" string => "The executor, not executionist";
+        "array[cf-monitord]" string => "The monitor";
+        "array[cf-serverd]" string => "The server";
+        "array[cf-execd]" string => "The executor, not executionist";
 
-        reports:
-            "$(component) is $(array[$(component)])";
-    }
+    reports:
+        "$(component) is $(array[$(component)])";
+}
 ```
 
 In this example, the list `component` has three elements. The list as a whole
@@ -85,24 +84,24 @@ If a variable is repeated, its value is tied throughout the expression; so the
 output of:
 
 ```cf3
-    body common control
-    {
-        bundlesequence  => { "example" };
-    }
+body common control
+{
+    bundlesequence  => { "example" };
+}
 
-    bundle agent example
-    {
-    vars:
-      "component" slist => { "cf-monitord", "cf-serverd", "cf-execd" };
+bundle agent example
+{
+vars:
+  "component" slist => { "cf-monitord", "cf-serverd", "cf-execd" };
 
-      "array[cf-monitord]" string => "The monitor";
-      "array[cf-serverd]" string => "The server";
-      "array[cf-execd]" string => "The executor, not executioner";
+  "array[cf-monitord]" string => "The monitor";
+  "array[cf-serverd]" string => "The server";
+  "array[cf-execd]" string => "The executor, not executioner";
 
-    commands:
-       "/bin/echo $(component) is"
-                args => "$(array[$(component)])";
-    }
+commands:
+   "/bin/echo $(component) is"
+            args => "$(array[$(component)])";
+}
 ```
 
 is as follows:
@@ -116,20 +115,20 @@ is as follows:
 CFEngine can iterate across multiple lists simultaneously.
 
 ```cf3
-    bundle agent iteration
-    {
-    vars:
-        "stats"   slist => { "value", "av", "dev" };
+bundle agent iteration
+{
+vars:
+    "stats"   slist => { "value", "av", "dev" };
 
-        "monvars" slist => {
-                           "rootprocs",
-                           "otherprocs",
-                           "diskfree",
-                           "loadavg"
-                           };
-    reports:
-        "mon.$(stats)_$(monvars) is $(mon.$(stats)_$(monvars))";
-    }
+    "monvars" slist => {
+                       "rootprocs",
+                       "otherprocs",
+                       "diskfree",
+                       "loadavg"
+                       };
+reports:
+    "mon.$(stats)_$(monvars) is $(mon.$(stats)_$(monvars))";
+}
 ```
 
 This example uses two lists, `stats` and `monvars`. We can now iterate over both lists in the same promise. The reports that we thus generate will report on `value_rootprocs`, `av_rootprocs`, and `dev_rootprocs`, followed next by `value_otherprocs`, `av_otherprocs`, etc, ending finally with `dev_loadavg`.
