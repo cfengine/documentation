@@ -77,7 +77,7 @@ The output looks something like this:
 
 You see from this that, if we refer to a list variable using the scalar
 reference operator `$()`, CFEngine interprets this to mean "please iterate
-over all values of the list". Thus, we have effectively a `foreach' loop,
+over all values of the list". Thus, we have effectively a `foreach` loop,
 without the attendant syntax.
 
 If a variable is repeated, its value is tied throughout the expression; so the

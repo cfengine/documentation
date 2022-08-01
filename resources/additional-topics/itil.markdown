@@ -38,7 +38,7 @@ ITIL has its roots in the early 1990s, and since then was subject to numerous
 improvements and enhancements. Today, the most popular release of ITIL is given
 by the books of ITIL version 2 (often referred to as ITILv2), while the British
 OGC (Office of Government Commerce), owner and publisher of ITIL, is currently
-promoting ITIL version 3 (ITILv3) under the device "`ITIL Reloaded"'. A further
+promoting ITIL version 3 (ITILv3) under the device `"ITIL Reloaded"`. A further
 ITIL version has already been planned, owing to perceived problems with version
 3.
 
@@ -119,7 +119,7 @@ principles. The five service life cycle stages accordant to versin 3 are:
 # Service orientation and ITIL
 
 Why service and process orientation? What is ITIL trying to do? As we mentioned
-in the introduction, the `top down hierarchical' control view of human
+in the introduction, the `top down hierarchical` control view of human
 organization fell from favour in business research in the 1980s and service
 oriented autonomy was identified as a new paradigm for levelling organizations -
 getting rid of deep hierarchies that hinder communication and open up
@@ -536,7 +536,7 @@ words, CFEngine is itself part of the infrastructure that we might change.
 
 
 Traditional methods of managing IT infrastructure involve working from crisis to
-crisis - waiting for `incidents' to occur and then initiating fire suppression
+crisis - waiting for `incidents` to occur and then initiating fire suppression
 responses or, if there is time, proactive changes. With CFEngine, these can be
 combined and made into a managementservice, with continuous service quality.
 

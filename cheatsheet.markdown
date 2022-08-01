@@ -63,7 +63,9 @@ Anchors with _underscores_ are problematic, they need to be escaped.
 
 For example ```services_autorun``` in the MPF documentation the underscore needs to be escaped with a ```\```.
 
-```**See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]```
+```
+**See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
+```
 
 **See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
 
@@ -81,9 +83,9 @@ The documentation pre-processor will create those automatically.
 However, the preprocess will not create links if the code word is in triple backticks:
 
 
-    ```classes``` and ```readfile()```
+    No links: ```classes``` and ```readfile()```
 
-```classes``` and ```readfile()```
+No links: ```classes``` and ```readfile()```
 
 ### Link to External URL
 
@@ -188,32 +190,23 @@ See the note above on implicit linking - single backticks will link, triple back
 
 ### Code Blocks
 
-Code blocks are either indendented by four spaces:
-
-Just indent by four spaces:
-
-```
-$ code block
-$ without syntax highlighting
-```
-
-    $ code block
-    $ without syntax highlighting
-
-or use three backticks:
+Start a code block using triple backticks:
 
     ```
-    some more code
+    some code
     in a block
     ```
 
 ```
-some more code
+some code
 in a block
 ```
 
-To turn on syntax highlighting, specify the brush directly after the opening three
-backticks. Syntax highlighting is provided by pygments. Find all available lexers [here](http://pygments.org/docs/lexers/).
+You can also create a code block by indenting your code by 4 spaces,
+however this does not support syntax highlighting and triple backticks are preferred.
+
+To turn on syntax highlighting, specify the language ("brush") directly after the opening three backticks.
+Syntax highlighting is provided by pygments. Find all available lexers [here](http://pygments.org/docs/lexers/).
 
 #### CFEngine Code Blocks
 
@@ -236,7 +229,7 @@ bundle agent example()
 ```
 
 
-Other frequently used syntax highlighers shown below.
+Other frequently used syntax highlighters shown below.
 
 #### Bash Script Code Blocks
 
