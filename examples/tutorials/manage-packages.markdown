@@ -49,8 +49,8 @@ openssl.x86_64          1.0.0-27.el6    @anaconda-CentOS-201303020151.x86_64/6.4
 openssl-devel.x86_64    1.0.0-27.el6    @anaconda-CentOS-201303020151.x86_64/6.4
 # cf-agent -K ./manage_packages.cf"
 # yum list installed | grep openssl
-openssl.x86_64          1.0.1e-42.el6   @base                                   
-openssl-devel.x86_64    1.0.1e-42.el6   @base         
+openssl.x86_64          1.0.1e-42.el6   @base
+openssl-devel.x86_64    1.0.1e-42.el6   @base
 ```
 
 Additionally, you may want to make sure certain packages are not installed on
@@ -59,7 +59,7 @@ installed.
 
 ```console
 # yum list installed | grep telnet
-telnet.x86_64           1:0.17-48.el6   @base 
+telnet.x86_64           1:0.17-48.el6   @base
 # which telnet
 /usr/bin/telnet
 ```

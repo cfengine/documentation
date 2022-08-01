@@ -462,7 +462,7 @@ Currently, there is no canonical policy linting or reformatting tool. There are 
 
 ### cf-promises
 
-`cf-promises` can output the parsed policy using the ```--policy-output-format``` option. Beware, this will strip macros as they are done during parse time. 
+`cf-promises` can output the parsed policy using the ```--policy-output-format``` option. Beware, this will strip macros as they are done during parse time.
 
 Example policy:
 
@@ -471,7 +471,7 @@ bundle agent satellite_bootstrap_main
 {
 
 @if feature(this_is_not_the_feature_your_looking_for)
-   Hello there. 
+   Hello there.
 @endif
 
   meta:

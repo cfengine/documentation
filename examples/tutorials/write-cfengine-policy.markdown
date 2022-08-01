@@ -66,7 +66,7 @@ To see a list of available classes on your host, just type the following command
 
 ```console
 # cf-promises --show-classes
-``` 
+```
 
 ## Running policy
 

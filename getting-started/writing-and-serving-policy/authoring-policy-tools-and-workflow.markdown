@@ -74,7 +74,7 @@ A) Generate a key pair and add it to GitHub
 13. Provide a `Title` for the label (e.g. CFEngine).
 14. Paste the key contents from the clipboard into the `Key` textarea.
 15. Click `Add key`.
-16. If prompted to do so, provide your GitHub password, and then click the `Confirm` button.	
+16. If prompted to do so, provide your GitHub password, and then click the `Confirm` button.
 
 B) Or, change the remote url to `https://GitUserName@password:github.com/GitUserName/cfengine-masterfiles.git`. This is not safe in a production environment and should only be used for basic testing purposes (if at all).
 
@@ -123,7 +123,7 @@ body common control
 
       inputs => {
                  ...
-				
+
                   "vcs_update.cf",
       };
 ```

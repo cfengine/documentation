@@ -7,7 +7,7 @@ tags: [reference, enterprise, API, CMDB, classes, variables]
 
 The configuration management database (CMDB) API enables you to manage classes and variables for specific hosts.
 
-## List CMDB 
+## List CMDB
 
 You can see a list of stored host-specific configurations
 
@@ -35,13 +35,13 @@ You can see a list of stored host-specific configurations
 * **hostContextExclude** *(array)*
   Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one of the specified contexts set will be excluded from the results. Optional parameter.
 
-    
+
 **Example request (curl):**
- 
+
 ```console
 curl -k --user <username>:<password> \
   -X GET \
-  https://hub.cfengine.com/api/cmdb?epochFrom=2&hostContextInclude[]=ubuntu 
+  https://hub.cfengine.com/api/cmdb?epochFrom=2&hostContextInclude[]=ubuntu
 ```
 
 **Example response:**
@@ -92,7 +92,7 @@ HTTP 200 Ok
   Configuration type. Allowed value: `variables`, `classes`
 
 * **name** *(string)*
-  Configuration name. Classes or variables name.  
+  Configuration name. Classes or variables name.
 
 **Example request (curl):**
 
@@ -135,7 +135,7 @@ HTTP 200 Ok
 ```console
 curl -k --user <username>:<password> \
   -X GET \
-  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab 
+  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab
 ```
 
 **Example response:**
@@ -184,7 +184,7 @@ HTTP 200 Ok
 
 * **value** *(string|array)*
   Variable value, can be array or text. Classes do not support values.
-  
+
 * **comment** *(string)*
   Variables or classes description. Optional parameter.
 
@@ -225,7 +225,7 @@ HTTP 200 Ok
   The format is a JSON object where the key is class name and value is another JSON object
   with optionals `comment` and `tags` property.
   Example:
-  
+
   ```json
 {
    "classes":{
@@ -237,12 +237,12 @@ HTTP 200 Ok
    }
 }
 ```
-  
+
 * **variables** *(JSON object)*
   The format is a JSON object where the key is variable name and value is another JSON object
   with a required `value` property and optionals `comment` and `tags`.
   Example:
-  
+
   ```json
 {
    "variables":{
@@ -356,12 +356,12 @@ HTTP 200 Ok
   The format is a JSON object where the key is class name and value is another JSON object
   with an optional `comment` property.
   Example:
-  
+
   ```json
 {
    "classes":{
       "My_class":{
-         
+
       },
       "My_class2":{
          "comment":"comment body"
@@ -384,7 +384,7 @@ If your request body misses classes then the previous value will be preserved.
   The format is a JSON object where the key is variable name and value is another JSON object
   with a required `value` property and an optional `comment` property.
   Example:
-  
+
   ```json
 {
    "variables":{
@@ -455,7 +455,7 @@ HTTP 200 Ok
 ```console
 curl -k --user <username>:<password> \
   -X DELETE \
-  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab 
+  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab
 ```
 
 **Example response:**

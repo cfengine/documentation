@@ -40,7 +40,7 @@ restore the history of policy outcomes you must backup and restore.
 
 `cfdb` stores data related to policy runs on your hosts for example host inventory.
 
-**Backup:** 
+**Backup:**
 
 ```console
 # pg_dump -Fc cfdb > cfdb.bak
@@ -56,9 +56,9 @@ restore the history of policy outcomes you must backup and restore.
 
  `cfmp` and `cfsettings` store Mission Portals configuration information for
  example shared dashboards.
- 
-**Backup:** 
- 
+
+**Backup:**
+
 ```console
 # pg_dump -Fc cfmp > cfmp.bak
 # pg_dump -Fc cfsettings > cfsettings.bak

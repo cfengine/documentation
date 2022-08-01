@@ -23,7 +23,7 @@ Create the files `id_rsa` and `id_rsa.pub` in `/tmp`.
 Create user group security and webadmin.
 
 ```console
-# sudo groupadd security 
+# sudo groupadd security
 # sudo groupadd webadmin
 ```
 

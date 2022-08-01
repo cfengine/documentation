@@ -31,7 +31,7 @@ tags: [ FAQ, Enterprise, debug, Mission Portal ]
     For sysv init managed systems:
 
     ```sh
-    pkill httpd 
+    pkill httpd
     cf-agent -KI
     ```
 

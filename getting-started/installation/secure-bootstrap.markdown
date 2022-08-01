@@ -76,7 +76,7 @@ and install it using `cf-key`.
 Now that the hosts trust each other we can bootstrap the host to the hub.
 
 ```console
-[root@host001]# cf-agent --trust-server no --bootstrap $HUB 
+[root@host001]# cf-agent --trust-server no --bootstrap $HUB
 ```
 
 ## Manually establishing trust

@@ -244,8 +244,8 @@ After confirming all feeder certs and public keys are present on the superhub, r
 superhub.pub  feeder1.cert  feeder1.pub feeder2.cert feeder2.pub
 
 # /opt/cfengine/federation/bin/distributed_cleanup.py
-Enter admin credentials for superhub https://superhub.domain/api: 
-Enter email for fr_distributed_cleanup accounts: 
+Enter admin credentials for superhub https://superhub.domain/api:
+Enter email for fr_distributed_cleanup accounts:
 Enter admin credentials for feeder1 at https://feeder1.domain/api:
 Enter admin credentials for feeder2 at https://feeder2.domain/api:
 ```
@@ -721,10 +721,10 @@ we use the number "1".
    Typical output would be like the following.
 
    ```
-   hub_id |                               hostkey                                | last_import_ts                                                               
-   --------+----------------------------------------------------------------------+----------------                                                              
-      0 | SHA=50d370f41c81b3e119506befecc5deaa63c0f1d9039f674c68f9253a07f7ad84 |                                                                              
-      1 | SHA=bfd6f580f9d19cb190139452f068f38f843bf9227ca3515f7adfecfa39f68728 |                                      
+   hub_id |                               hostkey                                | last_import_ts
+   --------+----------------------------------------------------------------------+----------------
+      0 | SHA=50d370f41c81b3e119506befecc5deaa63c0f1d9039f674c68f9253a07f7ad84 |
+      1 | SHA=bfd6f580f9d19cb190139452f068f38f843bf9227ca3515f7adfecfa39f68728 |
    (2 rows)
    ```
 

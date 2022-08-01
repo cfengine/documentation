@@ -32,7 +32,7 @@ stored in an event log for later inspection and analysis.
 
 <img src="clone-dashboard.png" alt="Clone dashboard possibility" width="490px">
 
-Create an editable copy by clicking the button that appears when you hover over 
+Create an editable copy by clicking the button that appears when you hover over
 the dashboard's row.
 
 ### Alert widgets

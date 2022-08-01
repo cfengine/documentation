@@ -289,7 +289,7 @@ evaluated.
 
 ## Making Decisions based on classes
 
-Class guards are the most common way to restrict a promise to a specific context. Once stated the restriction applies until a new context is specified. A new promise type automatically resets to an unrestricted context (the unrestricted context is typically referred to as `any`). 
+Class guards are the most common way to restrict a promise to a specific context. Once stated the restriction applies until a new context is specified. A new promise type automatically resets to an unrestricted context (the unrestricted context is typically referred to as `any`).
 
 This example illustrates how a class guard applies (to multiple promises) until a new context is specified.
 

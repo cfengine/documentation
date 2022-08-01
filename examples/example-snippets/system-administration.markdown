@@ -62,7 +62,7 @@ Laptops do not need a lot of confguration support. IP addresses are set by DHCP 
 
 ## Process management
 
-	
+
 [%CFEngine_include_snippet(process_management.cf, .* )%]
 
 ## Kill process ##

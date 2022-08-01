@@ -106,7 +106,7 @@ Protocol 2
 Filepath /mypath/
 Encryption 256
 Loglevel 1
-Allowed users 
+Allowed users
   thomas=admin
   malin=guest
 ```

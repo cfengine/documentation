@@ -206,11 +206,11 @@ HTTP 202 ACCEPTED
 # Federation config
 
 Federated reporting must be enabled before generating or removing federation configuration, please
-see `Enable hub for Federated Reporting` section above. Otherwise an error will be thrown and 
+see `Enable hub for Federated Reporting` section above. Otherwise an error will be thrown and
 config file will not be created/deleted.
 
 ## Generate federation config
- 
+
 **URI:** https://hub.cfengine.com/api/fr/federation-config
 
 **Method:** POST
@@ -222,7 +222,7 @@ HTTP 202 ACCEPTED
 ```
 
 ## Delete federation config
- 
+
 **URI:** https://hub.cfengine.com/api/fr/federation-config
 
 **Method:** DELETE

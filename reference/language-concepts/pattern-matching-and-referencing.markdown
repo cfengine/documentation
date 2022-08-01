@@ -120,7 +120,7 @@ the `replace_patterns` promise.
         select_start => "\[$(x)\]";
         select_end => "\[.*\]";
     }
-```	
+```
 
 Try this example on the file
 
