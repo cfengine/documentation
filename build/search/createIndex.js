@@ -25,26 +25,33 @@ const getHtmlFiles = async (dir) =>
     })
 
     const htmlFiles = await getHtmlFiles(htmlFilesDir);
-    let mappedFilesWithTitle = [];
     for (const key in htmlFiles) {
         const htmlContent = fs.readFileSync(`${htmlFilesDir}/${htmlFiles[key]}`).toString();
-        const htmlContentMatch =  htmlContent.match(/<article>([\s\S]*?)<\/article>/gm);
-        if (htmlContentMatch == null) continue;
+        const htmlContentMatch = htmlContent.match(/<div class="article">([\s\S]*?)<div id="tags">/gm);
+        const titleMatch = htmlContent.match(/<h1 id="top">([\s\S]*?)<\/h1>/gm);
+        if (htmlContentMatch == null || titleMatch == null) continue;
         let document = {
             number: key, // use sequential number as key to reduce search index size
-            content: htmlContentMatch[0].replace(/<\/?[^>]+(>|$)/g, ""),
+            content: htmlContentMatch[0]
+                .replace(/<\/?[^>]+(>|$)/g, "")
+                .replace(/\s\s+/g, ' ')
+                .replace(/\n/g, " ")
+                .replace('Suggest changes', ''),
+            title: titleMatch[0].replace(/<\/?[^>]+(>|$)/g, "").trim(),
         };
-        const titleMatch =  htmlContent.match(/<h1 id="top">([\s\S]*?)<\/h1>/gm);
-
-        if (titleMatch != null) {
-            const title = titleMatch[0].replace(/<\/?[^>]+(>|$)/g, "").trim();
-            mappedFilesWithTitle[key] = {uri: (htmlFiles[key]), title };
-            document.title = title;
+        let breadCrumbs = '';
+        const breadCrumbsMatch = htmlContent.match(/<div id="breadcrumbs">([^]*?)<\/div>/gm);
+        if (breadCrumbsMatch != null) {
+            breadCrumbs = breadCrumbsMatch[0].replace(/\s\s+/g, ' ').replace(/\n/g, " ");
         }
 
+        fs.writeFileSync(`searchIndex/documents/${key}.json`, JSON.stringify({
+            ...document,
+            uri: (htmlFiles[key]),
+            breadCrumbs
+        }));
         index.add(document)
     }
 
-    fs.writeFileSync(`searchIndex/fileNamesMap.json`, JSON.stringify(mappedFilesWithTitle));
     index.export((key, data) => fs.writeFileSync(`searchIndex/${key}.json`, data || ''));
 })();

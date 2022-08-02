@@ -6,28 +6,30 @@
     <article>
         <div class="wrapper article" id="googleSearchPage">
             <div id="content_col" class="googleSearch">
-                <form id="cse-search-box" action="search.html">
-                    <div class="formbody">
-                        <input class="text" id="top_search_searchpage" name="q" placeholder="Search" type="text" value="" />
-                    </div>
-                </form>
                 <article>
-                    <h1>Search results</h1>
+                    <h1>Search results for: <span class="searchQuery"></span></h1>
+                    <div class="resultsCount"><span></span> results</div>
                     <div id="searchResults"></div>
                 </article>
                 <script>
                     const version = window.location.pathname.split('/')[2];
                     const queryParams = new URLSearchParams(window.location.search);
-                    const searchInput = document.getElementById('top_search_searchpage');
+                    const searchInput = document.getElementById('top_search');
                     const searchResults = document.getElementById('searchResults');
+                    const searchFor = document.querySelector('.searchQuery');
+                    const resultsCount = document.querySelector('.resultsCount span');
 
                     const displayResults = (results) => {
-                        let html = '<ol>';
+                        let html = '<ul>';
+                        resultsCount.innerHTML = results.length;
                         if (results.length > 0) {
                             for (const result of results) {
-                                html += `<li><a href="${result.uri}">${result.title}</a></li>`;
+                                html += `<li>
+                                            ${result.breadCrumbs}<a href="${result.uri}">${result.title}</a>
+                                            <div class="search-description">${result.content}</div>
+                                        </li>`;
                             }
-                            html += `</ol>`;
+                            html += `</ul>`;
                         } else {
                             html = `No results found`;
                         }
@@ -40,10 +42,14 @@
                             .then(response => response.json()).then(data => displayResults(data))
                             .catch(() => searchResults.innerTextr = 'An error happened while search');
 
-                    searchInput.oninput = searchInput.onchange = () => search(searchInput.value);
+                    searchInput.oninput = searchInput.onchange = () => {
+                        search(searchInput.value);
+                        searchFor.innerText = searchInput.value;
+                    }
 
                     if (queryParams.has('q')) {
                         searchInput.value = queryParams.get('q');
+                        searchFor.innerText = queryParams.get('q');
                         searchInput.dispatchEvent(new Event('change'));
                     }
                 </script>
