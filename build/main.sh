@@ -74,7 +74,7 @@ done
 wget -O- $FLAG_FILE_URL
 
 echo "Detecting version"
-HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_16
+HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_18
 HUB_DIR_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/$HUB_DIR_NAME/"
 HUB_PACKAGE_NAME="$(wget $HUB_DIR_URL -O- | sed '/deb/!d;s/.*"\([^"]*\.deb\)".*/\1/')"
 

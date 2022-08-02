@@ -4,7 +4,7 @@ set -ex
 trap "echo FAILURE" ERR
 
 if ! buildah inspect docs-revamp >/dev/null 2>&1; then
-  buildah build-using-dockerfile -t docs-revamp documentation-generator/build
+  buildah build-using-dockerfile -t docs-revamp-22 documentation-generator/build
 fi
 
 # current path must have the following repos cloned:
@@ -21,7 +21,7 @@ true "${PACKAGE_JOB?undefined}"
 true "${PACKAGE_UPLOAD_DIRECTORY?undefined}"
 true "${PACKAGE_BUILD?undefined}"
 
-c=$(buildah from -v $PWD:/nt docs-revamp)
+c=$(buildah from -v $PWD:/nt docs-revamp-22)
 trap "buildah rm $c >/dev/null" EXIT
 buildah run $c bash -x documentation-generator/build/main.sh $BRANCH $PACKAGE_JOB $PACKAGE_UPLOAD_DIRECTORY $PACKAGE_BUILD
 buildah run $c bash -x documentation-generator/_scripts/_publish.sh $BRANCH
