@@ -13,12 +13,12 @@ If you are familiar with SQL syntax, you can input your query into the interface
 You can share the report with other users - either by using "Save" button, or by base64-encoding the report query into a URL. You can also provide an optional title by adding `title` parameter to the URL, like this:
 
 ```console
-  HUB_URL="https://hub"
-  API="/index.php/advancedreports/#/report/run?sql="
-  SQL_QUERY="SELECT Hosts.HostName AS 'Host Name' FROM Hosts"
-  REPORT_TITLE="Example Report"
-  LINK="${HUB_URL}${API}$(echo ${SQL_QUERY} | base64)&title=$(/usr/bin/urlencode ${REPORT_TITLE})"
-  echo "${LINK}"
+HUB_URL="https://hub"
+API="/index.php/advancedreports/#/report/run?sql="
+SQL_QUERY="SELECT Hosts.HostName AS 'Host Name' FROM Hosts"
+REPORT_TITLE="Example Report"
+LINK="${HUB_URL}${API}$(echo ${SQL_QUERY} | base64)&title=$(/usr/bin/urlencode ${REPORT_TITLE})"
+echo "${LINK}"
 ```
 
 ```
@@ -42,7 +42,7 @@ Users not familiar with SQL syntax can easily create their own custom reports in
     * When more than one table is selected the Query builder opens modal window to select the ([join strategy  between tables](https://www.postgresql.org/docs/current/tutorial-join.html)):
         * Main table - the main data source, other tables will be connected to it.
         * Extend main table (left join) - returns all records from the main table, and the matched records from the joined table.
-        * Include only common rows (inner join) - returns records from the main table that intersect the joined table. 
+        * Include only common rows (inner join) - returns records from the main table that intersect the joined table.
         Useful for filtering, in the case where you have custom views that have pre-filtered hosts. For example, web_servers - a custom view that contains hostkeys of hosts that are web servers.
 * Fields - Define your table columns based on your selection above.
 * Filters - Filter your results.  Remember that unless you filter, you may be querying large data sets, so think about what you absolutely need in your report.

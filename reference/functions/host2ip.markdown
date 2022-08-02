@@ -22,10 +22,10 @@ to debug the behavior of the resolver.
 **Example:**
 
 ```cf3
-    bundle server control
-    {
-      allowconnects         => { escape(host2ip("www.example.com")) };
-    }
+bundle server control
+{
+  allowconnects         => { escape(host2ip("www.example.com")) };
+}
 ```
 
 **See also:** `ip2host()`, `isipinsubnet()`,  `iprange()`

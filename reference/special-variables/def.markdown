@@ -41,5 +41,5 @@ code that you can override in the `vars` section of the
 [augments file][Augments] or in policy as described above.
 
 ```cf3
-    # def.jq = jq --compact-output --monochrome-output --ascii-output --unbuffered --sort-keys
+# def.jq = jq --compact-output --monochrome-output --ascii-output --unbuffered --sort-keys
 ```

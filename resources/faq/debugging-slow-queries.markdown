@@ -6,7 +6,7 @@ sorting: 90
 tags: [ FAQ, Enterprise, debug, Mission Portal ]
 ---
 
-If Mission Portal seems to take too much time to generate pages or reports or if API calls seem 
+If Mission Portal seems to take too much time to generate pages or reports or if API calls seem
 to be taking too long. You can enable logging and analyzing slow queries in postgresql with the
 following changes:
 

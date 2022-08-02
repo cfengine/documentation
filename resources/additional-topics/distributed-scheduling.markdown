@@ -128,11 +128,11 @@ commands:
 ```
 
 In this example, the methods promise runs on Host2 and the commands promise runs
-one Host1 as before. Now, host 1 sets a signal class ‘did_my_job’ when it
+one Host1 as before. Now, host 1 sets a signal class 'did_my_job' when it
 carries out the job, and Host2 collects it by contacting the cf-serverd on Host1.
 Assuming that Host1 has agreed to let Host2 know this information, by granting
 access to it, Host2 can inherit this class, with a prefix of its own choosing.
-Thus is transforms the class ‘did_my_job’ on Host1 into ‘hostX_did_my_job’ on
+Thus is transforms the class 'did_my_job' on Host1 into 'hostX_did_my_job' on
 Host2.
 
 The advantage of this method is that the second job will only be started if the
@@ -156,7 +156,7 @@ access:
 ## Regular workflows
 
 To make a job happen at a specific time, we used a very specific time classifier
-‘Day24.January.Year2012.Hr16.Min45_50’. If we now want to make this workflow
+'Day24.January.Year2012.Hr16.Min45_50'. If we now want to make this workflow
 into a regular occurrence, repeating at some interval we have two options:
 
 * We repeat this at the same time each week, day, hour, etc.
@@ -439,7 +439,7 @@ the concept of a convergent workflow, i.e. one that, if we repeat everything a
 sufficient number of times, will eventually lead to the result. The outcome of
 the chained sequence of jobs must have an outcome that is repeatably achievable
 and which will eventually be achieved if we try a sufficient number of times.
-Using CFEngine this is a natural outcome – however, most system designers do not
+Using CFEngine this is a natural outcome - however, most system designers do not
 think in terms of repeatable sustainable outcomes and fault-tolerance.
 
 Beware however, one-off jobs cannot be made convergent, because they only have a single chance to succeed. It is a question of business process design whether you design workflows to be sustainable and repeatable, or whether you trust the outcome of a single shot process. Using the persistent classes in CFEngine together with the if-elapsed locks to send signals between hosts, it is simple and automatic to make convergent self-healing workflows.

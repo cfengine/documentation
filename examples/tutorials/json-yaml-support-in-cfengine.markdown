@@ -112,13 +112,13 @@ through them and look up values.
 Well, you can change
 
 ```cf3
-      "bykey" data => parsejson('{ "dev": ["c", "b"], "prod": ["flea"], "qa": ["a"], "private": ["linux"] }');
+"bykey" data => parsejson('{ "dev": ["c", "b"], "prod": ["flea"], "qa": ["a"], "private": ["linux"] }');
 ```
 
 with
 
 ```cf3
-      "bykey" data => data_readstringarray(...);
+"bykey" data => data_readstringarray(...);
 ```
 
 and read the same container from a text file. The file should be
@@ -135,7 +135,7 @@ You can also use
 
 
 ```cf3
-      "bykey" data => readjson(...);
+"bykey" data => readjson(...);
 ```
 
 and read the same container from a JSON file.

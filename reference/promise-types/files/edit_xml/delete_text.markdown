@@ -12,16 +12,15 @@ from within the specified node. The specified node is determined by
 body-attributes. The promise object referred to is a literal string of text.
 
 ```cf3
-    bundle edit_xml example
-    {
-    delete_text:
+bundle edit_xml example
+{
+delete_text:
 
-      "text content to match, as a substring, of text to be deleted from specified node"
-        select_xpath => "/Server/Service/Engine/Host/Alias";
-    }
+  "text content to match, as a substring, of text to be deleted from specified node"
+    select_xpath => "/Server/Service/Engine/Host/Alias";
+}
 ```
 
 Note that typically, only a single value string, within a single
 specified node, is deleted in each `delete_text` promise. You may of
 course have multiple promises that each delete a value string.
-

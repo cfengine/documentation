@@ -20,23 +20,23 @@ Comparisons like this are normally used for updating files (like the
 **Example:**
 
 ```cf3
-    body common control
-    {
-      bundlesequence  => { "example" };
-    }
+body common control
+{
+  bundlesequence  => { "example" };
+}
 
-    bundle agent example
-    {
-      classes:
+bundle agent example
+{
+  classes:
 
-        "do_it" and => { changedbefore("/tmp/earlier","/tmp/later"), "linux" };
+    "do_it" and => { changedbefore("/tmp/earlier","/tmp/later"), "linux" };
 
-      reports:
+  reports:
 
-        do_it::
+    do_it::
 
-          "The derived file needs updating";
-    }
+      "The derived file needs updating";
+}
 ```
 
 **See also:** `accessedbefore()`, `isnewerthan()`

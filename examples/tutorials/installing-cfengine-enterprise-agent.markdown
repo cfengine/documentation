@@ -38,7 +38,7 @@ sudo /var/cfengine/bin/cf-agent --bootstrap <Name or IP address of policy server
 If you encounter any issue, please make sure the host is on the same domain/subnet as CFEngine policy server will only allow connection from these trusted sources as default configuration.
 
 3. Congratulation you are done!
-The CFEngine host is installed and ready. That was easy, wasn’t it?
+The CFEngine host is installed and ready. That was easy, wasn't it?
 
 If you would like to see what version of CFEngine you are running, type:
 

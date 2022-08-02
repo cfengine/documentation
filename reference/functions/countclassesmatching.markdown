@@ -25,4 +25,4 @@ Output:
 
 [%CFEngine_include_snippet(countclassesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [classes defined via augments][Augments#classes], [classmatch()][classmatch], [classesmatching()][classesmatching] 
+**See also:** [classes defined via augments][Augments#classes], [classmatch()][classmatch], [classesmatching()][classesmatching]

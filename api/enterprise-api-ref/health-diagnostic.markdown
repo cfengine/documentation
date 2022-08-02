@@ -154,7 +154,7 @@ curl -k --user <username>:<password> -X POST \
 **CURL Request Example:**
 ```
 curl -k --user <username>:<password> -X GET \
-  https://hub.cfengine.com/api/health-diagnostic/dismiss/notRecentlyCollected?limit=3&offset=0 
+  https://hub.cfengine.com/api/health-diagnostic/dismiss/notRecentlyCollected?limit=3&offset=0
 ```
 
 **Example response:**

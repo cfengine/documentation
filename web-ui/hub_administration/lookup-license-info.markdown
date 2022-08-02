@@ -36,4 +36,3 @@ License host key: SHA=2e5c7d9636c5644d023d71859f3296755f8d53d5d183af98efc1540655
 Expiration date:  3018-01-01
 Utilization:      20/50 (Approximate)
 ```
-

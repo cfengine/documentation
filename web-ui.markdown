@@ -32,7 +32,7 @@ stored in an event log for later inspection and analysis.
 
 <img src="clone-dashboard.png" alt="Clone dashboard possibility" width="490px">
 
-Create an editable copy by clicking the button that appears when you hover over 
+Create an editable copy by clicking the button that appears when you hover over
 the dashboard's row.
 
 ### Alert widgets
@@ -74,7 +74,7 @@ when hosts are bootstrapped or decommissioned.
 
 ### Host count widget
 
-The hosts count widget helps to visualize the number of hosts bootstrapped to cfengine over time.
+The hosts count widget helps to visualize the number of hosts bootstrapped to CFEngine over time.
 
 <img src="dashboard-widget-hosts-count.png" alt="Dashboard Host count" width="412px">
 
@@ -169,4 +169,3 @@ From the profile, you can adjust timezone options.
 
 * Always use system/browser time
   * Mission portal will automatically change your profile timezone when a system/browser timezone is changed.
-

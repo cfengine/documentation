@@ -158,7 +158,7 @@ collected twice a **rebase** may resolve it.
 ```console
 [root@hub ~]# cf-hub -q delta -H 192.168.56.2 -v
  verbose: ----------------------------------------------------------------
- verbose:  Initialization preamble 
+ verbose:  Initialization preamble
  verbose: ----------------------------------------------------------------
  # <snipped for brevity>
  verbose: Connecting to host 192.168.56.2, port 5308 as address 192.168.56.2
@@ -193,7 +193,7 @@ and collect only the output from the most recent run.
 ```console
 [root@hub ~]# cf-hub -q rebase -H 192.168.56.2 -v
  verbose: ----------------------------------------------------------------
- verbose:  Initialization preamble 
+ verbose:  Initialization preamble
  verbose: ----------------------------------------------------------------
  # <snipped for brevity>
  verbose: Connecting to host 192.168.56.2, port 5308 as address 192.168.56.2

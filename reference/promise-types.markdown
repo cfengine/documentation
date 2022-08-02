@@ -272,10 +272,10 @@ include a message when the promise is kept or repaired in the event log.
 **Allowed input range:**
 
 ```
-    inform
-    verbose
-    error
-    log
+inform
+verbose
+error
+log
 ```
 
 **Example:**
@@ -298,14 +298,14 @@ verbose than specified by an agent option ( `-v`, `--verbose`, `-I`, `--inform`,
 **Allowed input range:**
 
 ```
-    emergency
-    alert
-    critical
-    error
-    warning
-    notice
-    info
-    debug
+emergency
+alert
+critical
+error
+warning
+notice
+info
+debug
 ```
 
 **Description:** The `log_priority` menu option policy is the priority level
@@ -397,10 +397,10 @@ setting (but not less).
 **Allowed input range:**
 
 ```
-    inform
-    verbose
-    error
-    log
+inform
+verbose
+error
+log
 ```
 
 **Default value:** none
@@ -439,7 +439,7 @@ The identifier forms a partial identity for optional performance scanning of
 promises of the form:
 
 ```cf3
-    ID:promise-type:promiser.
+ID:promise-type:promiser.
 ```
 
 
@@ -456,8 +456,8 @@ promises of the form:
 **Allowed input range:**
 
 ```
-    namespace
-    bundle
+namespace
+bundle
 ```
 
 **Default value:** namespace
@@ -901,8 +901,8 @@ limited duration as a rare event then an absolute time limit is useful.
 **Allowed input range:**
 
 ```
-    absolute
-    reset
+absolute
+reset
 ```
 
 **Default value:** reset
@@ -930,7 +930,7 @@ they appear in verbose logs and error messages.
 **Example:**
 
 ```cf3
-  comment => "This comment follows the data for reference ...",
+comment => "This comment follows the data for reference ...",
 ```
 
 ### depends_on
@@ -978,11 +978,11 @@ such characters.
 **Example:**
 
 ```cf3
-  access:
+access:
 
-      "/source"
-        handle  => "update_rule",
-        admit   => { "127.0.0.1" };
+    "/source"
+      handle  => "update_rule",
+      admit   => { "127.0.0.1" };
 ```
 
 **Notes:** If the handle name is based on a variable, and the variable
@@ -1010,10 +1010,10 @@ classes.
 The generic example has the form:
 
 ```cf3
-  promise-type:
+promise-type:
 
-      "promiser"
-        if => "$(program)_running|($(program)_notfoundHr12)";
+    "promiser"
+      if => "$(program)_running|($(program)_notfoundHr12)";
 ```
 
 A specific example would be:
@@ -1037,20 +1037,20 @@ This function is provided so that one can form expressions that link variables
 and classes. For example:
 
 ```cf3
-  # Check that all components are running
+# Check that all components are running
 
-  vars:
+vars:
 
-      "component" slist => { "cf-monitord", "cf-serverd" };
+    "component" slist => { "cf-monitord", "cf-serverd" };
 
-  processes:
+processes:
 
-      "$(component)" restart_class => canonify("$(component)_not_runnning");
+    "$(component)" restart_class => canonify("$(component)_not_runnning");
 
-  commands:
+commands:
 
-      "/var/cfengine/bin/$(component)"
-        if => canonify("$(component)_not_runnning");
+    "/var/cfengine/bin/$(component)"
+      if => canonify("$(component)_not_runnning");
 ```
 
 **Notes:**
@@ -1108,23 +1108,23 @@ A "meta" attribute can likewise be added into any body (of any type).
 **Example:**
 
 ```cf3
-  files:
+files:
 
-      "/etc/special_file"
+    "/etc/special_file"
 
-        comment => "Special file is a requirement. Talk to John.",
-        create => "true",
+      comment => "Special file is a requirement. Talk to John.",
+      create => "true",
 
-        meta => { "owner=John",  "version=2.0", "ticket=CFE-1234" };
+      meta => { "owner=John",  "version=2.0", "ticket=CFE-1234" };
 ```
 
 Another example:
 
 ```cf3
-  some_promise_type:
-      any::
-        "my_promiser"
-          meta => { "Team Foo", "workaround", "non-critical" };
+some_promise_type:
+    any::
+      "my_promiser"
+        meta => { "Team Foo", "workaround", "non-critical" };
 ```
 
 The meta tags may be referred to programmatically in various ways, or may be solely for human consumption.
@@ -1159,9 +1159,9 @@ evaluate the promise.
 The generic example has the form:
 
 ```cf3
-  promise-type:
-      "promiser"
-        unless => "forbidden";
+promise-type:
+    "promiser"
+      unless => "forbidden";
 ```
 
 A specific example would be:

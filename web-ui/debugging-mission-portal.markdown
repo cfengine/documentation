@@ -25,13 +25,13 @@ tags: [ FAQ, Enterprise, debug, Mission Portal ]
     For systemd manged systems (RedHat/Centos7, Debian 7+, Ubuntu 15.04+):
 
     ```sh
-        systemctl restart cf-apache
+    systemctl restart cf-apache
     ```
 
     For sysv init managed systems:
 
     ```sh
-    pkill httpd 
+    pkill httpd
     cf-agent -KI
     ```
 

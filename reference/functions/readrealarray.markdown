@@ -37,80 +37,80 @@ lines matched.
 **Example:**
 
 ```cf3
-    readintarray("array_name","/tmp/array","#[^\n]*",":",10,4000);
+readintarray("array_name","/tmp/array","#[^\n]*",":",10,4000);
 ```
 
 Input:
 
 ```cf3
-     1: 5.0:7:21:13
-     2:19:8.1:14:14
-     3:45:1:78.2:22
-     4:64:2:98:99.3
+1: 5.0:7:21:13
+2:19:8.1:14:14
+3:45:1:78.2:22
+4:64:2:98:99.3
 ```
 
 Results in:
 
 ```cf3
-     array_name[1][0]   1
-     array_name[1][1]   5
-     array_name[1][2]   7
-     array_name[1][3]   21
-     array_name[1][4]   13
-     array_name[2][0]   2
-     array_name[2][1]   19
-     array_name[2][2]   8
-     array_name[2][3]   14
-     array_name[2][4]   14
-     array_name[3][0]   3
-     array_name[3][1]   45
-     array_name[3][2]   1
-     array_name[3][3]   78
-     array_name[3][4]   22
-     array_name[4][0]   4
-     array_name[4][1]   64
-     array_name[4][2]   2
-     array_name[4][3]   98
-     array_name[4][4]   99
+array_name[1][0]   1
+array_name[1][1]   5
+array_name[1][2]   7
+array_name[1][3]   21
+array_name[1][4]   13
+array_name[2][0]   2
+array_name[2][1]   19
+array_name[2][2]   8
+array_name[2][3]   14
+array_name[2][4]   14
+array_name[3][0]   3
+array_name[3][1]   45
+array_name[3][2]   1
+array_name[3][3]   78
+array_name[3][4]   22
+array_name[4][0]   4
+array_name[4][1]   64
+array_name[4][2]   2
+array_name[4][3]   98
+array_name[4][4]   99
 ```
 
 ```cf3
-    readstringarray("array_name","/tmp/array","\s*#[^\n]*",":",10,4000);
+readstringarray("array_name","/tmp/array","\s*#[^\n]*",":",10,4000);
 ```
 
 Input:
 
 ```cf3
-     at:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
-     avahi:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
-     beagleindex:x:104:106:User for Beagle indexing:/var/cache/beagle:/bin/bash
-     bin:x:1:1:bin:/bin:/bin/bash
-     # Daemon has the default shell
-     daemon:x:2:2:Daemon:/sbin:
+at:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
+avahi:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
+beagleindex:x:104:106:User for Beagle indexing:/var/cache/beagle:/bin/bash
+bin:x:1:1:bin:/bin:/bin/bash
+# Daemon has the default shell
+daemon:x:2:2:Daemon:/sbin:
 ```
 
 Results in a systematically indexed map of the file:
 
 ```cf3
-     ...
-     array_name[daemon][0]   daemon
-     array_name[daemon][1]   x
-     array_name[daemon][2]   2
-     array_name[daemon][3]   2
-     array_name[daemon][4]   Daemon
-     array_name[daemon][5]   /sbin
-     array_name[daemon][6]   /bin/bash
-     ...
-     array_name[at][3]       25
-     array_name[at][4]       Batch jobs daemon
-     array_name[at][5]       /var/spool/atjobs
-     array_name[at][6]       /bin/bash
-     ...
-     array_name[games][3]    100
-     array_name[games][4]    Games account
-     array_name[games][5]    /var/games
-     array_name[games][6]    /bin/bash
-     ...
+...
+array_name[daemon][0]   daemon
+array_name[daemon][1]   x
+array_name[daemon][2]   2
+array_name[daemon][3]   2
+array_name[daemon][4]   Daemon
+array_name[daemon][5]   /sbin
+array_name[daemon][6]   /bin/bash
+...
+array_name[at][3]       25
+array_name[at][4]       Batch jobs daemon
+array_name[at][5]       /var/spool/atjobs
+array_name[at][6]       /bin/bash
+...
+array_name[games][3]    100
+array_name[games][4]    Games account
+array_name[games][5]    /var/games
+array_name[games][6]    /bin/bash
+...
 ```
 Prepare:
 
@@ -124,4 +124,4 @@ Output:
 
 [%CFEngine_include_snippet(readrealarray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [`readstringarray()`][readstringarray], [`readintarray()`][readintarray], [`parserealarray()`][parserealarray], [`parserealarray()`][parserealarray], [`parsestringarray()`][parsestringarray] 
+**See also:** [`readstringarray()`][readstringarray], [`readintarray()`][readintarray], [`parserealarray()`][parserealarray], [`parserealarray()`][parserealarray], [`parsestringarray()`][parsestringarray]

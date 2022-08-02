@@ -19,7 +19,7 @@ Commoditization of computers is an important strategy for business because it
 has the potential to eliminate a lot of the investment overhead for equipment
 during times of rapid change, as well as to recycle no-longer needed resources
 and save on redundant investment. You may think of Cloud Computing as
-`Recycle-able Computing' – a world in which you can use something for a short
+`Recycle-able Computing' - a world in which you can use something for a short
 time and then discard it, without fear of waste.
 
 # Is Cloud Computing for everything and everyone?

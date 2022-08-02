@@ -24,10 +24,10 @@ To test CFEngine as an ordinary user, do the following:
 Copy the binaries into the work directory:
 
 ```
-    host$ mkdir -p ~/.cfagent/inputs
-    host$ mkdir -p ~/.cfagent/bin
-    host$ cp /var/cfengine/bin/cf-* ~/.cfagent/bin
-    host$ cp /var/cfengine/inputs/*.cf ~/.cfagent/inputs
+host$ mkdir -p ~/.cfagent/inputs
+host$ mkdir -p ~/.cfagent/bin
+host$ cp /var/cfengine/bin/cf-* ~/.cfagent/bin
+host$ cp /var/cfengine/inputs/*.cf ~/.cfagent/inputs
 ```
 
 You can test the software and play with configuration files by editing the

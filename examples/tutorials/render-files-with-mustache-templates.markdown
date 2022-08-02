@@ -12,7 +12,7 @@ In this tutorial we will show how to use CFEngine to manage file configurations 
 
 How it works
 
-When working with templates, you need a template and data (parameters). Based on this CFEngine will render a file that fills the data in the appropriate places based on the template. Let’s create a templating solution for our home grown myapp-application. Below you can see the desired end state of the config file to the left. The right column shows the template we will use.
+When working with templates, you need a template and data (parameters). Based on this CFEngine will render a file that fills the data in the appropriate places based on the template. Let's create a templating solution for our home grown myapp-application. Below you can see the desired end state of the config file to the left. The right column shows the template we will use.
 
 <table>
 <tr>
@@ -44,13 +44,13 @@ Allowed users <br />
 Create a file called `/tmp/myapp.conf.template` with the following content:
 
 ```
-    Port {{port}}
-    Protocol {{protocol}}
-    Filepath {{filepath}}
-    Encryption {{encryption-level}}
-    Loglevel {{loglevel}}
-    Allowed users {{#users}}
-      {{user}}={{level}}{{/users}}
+Port {{port}}
+Protocol {{protocol}}
+Filepath {{filepath}}
+Encryption {{encryption-level}}
+Loglevel {{loglevel}}
+Allowed users {{#users}}
+  {{user}}={{level}}{{/users}}
 ```
 
 2. Create CFEngine policy
@@ -106,7 +106,7 @@ Protocol 2
 Filepath /mypath/
 Encryption 256
 Loglevel 1
-Allowed users 
+Allowed users
   thomas=admin
   malin=guest
 ```
@@ -120,7 +120,3 @@ With CFEngine you can simplify management of configurations using templating. CF
 PS. If you manually change anything in `myapp.conf`, CFEngine will now restore it back to its desired state upon next run.
 
 If there is no change in the template (`myapp.conf.template`), the file (`myapp.config`), or the data used by the template, CFEngine will not make any changes.
-
-
-
-

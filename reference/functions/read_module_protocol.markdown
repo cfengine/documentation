@@ -22,5 +22,3 @@ This function is useful for reducing overhead by caching and then reading module
 **History:**
 
 - Introduced in 3.15.0
-
-

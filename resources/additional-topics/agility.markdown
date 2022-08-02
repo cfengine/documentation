@@ -101,9 +101,9 @@ need to meet a challenge. In other words: how well equipped are we? As
 engineers, we could write something like this:
 
 ```
-                Available speed under control        Changes available
-    Agility =~  -----------------------------  *  -----------------------
-                      Required speed                 Changes Required
+            Available speed under control        Changes available
+Agility =~  -----------------------------  *  -----------------------
+                  Required speed                 Changes Required
 ```
 
 Although such a scale might be hard to measure and follow in practice, the
@@ -144,9 +144,9 @@ reliably maintain over time divided by the number of challenges we have to share
 between.
 
 ```
-                                Expected capacity * reliability
-    Average available speed =~  -------------------------------
-                                    Consumers or challenges
+                            Expected capacity * reliability
+Average available speed =~  -------------------------------
+                                Consumers or challenges
 ```
 
 This expression says that the rate at which we get work done on average depends
@@ -192,7 +192,7 @@ Precision is maximized when:
   implementation.
 
 
-CFEngine is a fault tolerant system – it continues to work on what it can even
+CFEngine is a fault tolerant system - it continues to work on what it can even
 when some parts of its model don't work out as expected[^6].
 
 Next: Efficiency, Previous: Precision, Up: Understanding Agility
@@ -201,7 +201,7 @@ Next: Efficiency, Previous: Precision, Up: Understanding Agility
 The next challenge is concerns a human limitation. One of the greatest challenges in any organization lies in comprehending the system.
 
 
-Comprehensibility increases if something is predictable, or steady in its behaviour, but it decreases in proportion to the number of things we need to think about – which includes the many different contexts such as environments, or groups of machines with different purposes or profiles.
+Comprehensibility increases if something is predictable, or steady in its behaviour, but it decreases in proportion to the number of things we need to think about - which includes the many different contexts such as environments, or groups of machines with different purposes or profiles.
 
                         Predictability (Reliability)    Predictability
   Comprehensibility =~  ---------------------------- = ----------------
@@ -265,12 +265,12 @@ We can now summarize some qualities of CFEngine that favour agility:
   execution framework verifies promises every 5 minutes for rapid fault
   detection and change deployment (clock speed)7 .
 
-* A quick system monitoring/sampling rate – every 2.5 minutes (Nyquist
+* A quick system monitoring/sampling rate - every 2.5 minutes (Nyquist
   frequency), for automated hands-free response to errors.
 
 * Ability to recover cheaply. The lightweight resource footprint of CFEngine
   that consumes few system resources required for actual business (system speed
-  – low overhead, maximum capacity).
+  - low overhead, maximum capacity).
 
 * Ability to increase number of clients without significant penalty (scalability
   and easy increase of capacity).
@@ -425,12 +425,12 @@ Precision:
     "Precision is exquisitely important in an HPC grid. When making a
     configuration change, due to the homogeneity of the environment, small
     changes can have enormous impacts due to the quantity of affected systems. I
-    liken this to the "monoculture" problem in replanted forests – everything is
+    liken this to the "monoculture" problem in replanted forests - everything is
     the same, so what would ordinarily be a small, easily-contained problem like
     a fungus outbreak, quickly spreads into an uncontrollable disaster. Thus,
     with HPC systems it is imperative that any changes deployed are precise, to
     ensure that no unintended consequences will occur. This is clearly directly
-    related to comprehensibility of the environment – it is difficult or
+    related to comprehensibility of the environment - it is difficult or
     impossible to make a precise change when you don't fully comprehend the
     environment."
 
@@ -643,7 +643,7 @@ bundle agent example
 ```
 
 In this promise, all of the details of what happens to turn on the web service
-have been hidden behind this simple identifier ‘www’. This looks easy, but is it
+have been hidden behind this simple identifier 'www'. This looks easy, but is it
 simple?
 
 In this case, it is both easy and simple. Let's check why. We have to ask the
@@ -667,7 +667,7 @@ barrier to changing the meaning of the definition.
 Capacity in IT infrastructure is increased by increasing machine power. Today,
 at the limit of hardware capacity, this typically means increasing the number of
 machines serving a task. Cloud services have increased the speed agility with
-which resources can be deployed – whether public or private cloud – but they do
+which resources can be deployed - whether public or private cloud - but they do
 not usually provide any customization tools. This is where CFEngine brings
 significant value.
 
@@ -786,7 +786,7 @@ Simplicity in CFEngine is addressed in the following ways:
 
 * Each host works as an independent entity, reducing communication fragility.
 
-* The configuration model is based on Promise Theory – a very consistent and
+* The configuration model is based on Promise Theory - a very consistent and
   simple approach to modelling autonomous cooperative systems.
 
 * All hosts run the same software agents on all operating platforms (from mobile
@@ -797,7 +797,7 @@ Simplicity in CFEngine is addressed in the following ways:
 * Comprehensive facilities are allowed for making use of patterns and other
   total-information-reducing tactics.
 
-A certain level of complexity might be necessary and desirable – complexity is
+A certain level of complexity might be necessary and desirable - complexity is
 relative. Some organizations still try to remain agile by avoiding complexity.
 However, the ability to respond to complex scenarios often requires us to dabble
 with diversity. Avoiding it merely creates a lack of agility, as one is held
@@ -839,7 +839,7 @@ Look to the long term cost, or the Total Cost of Ownership over the next 5
 years.
 
 Many businesses have used the argument: everything is getting cheaper so it
-doesn't matter if my software is inefficient – I can brute force it in a year's
+doesn't matter if my software is inefficient - I can brute force it in a year's
 time with more memory and a faster CPU. The flaw in this argument is that
 complexity and scale are also increasing, and you will need those savings down
 the line even more than you do now.
@@ -864,7 +864,7 @@ controlling only certain parts on which crucial things depend.
 CFEngine is designed to have a low Total Cost of Ownership, by being
 exceptionally lightweight and conceptually simple. The investment in CFEngine is
 a `learning curve' that some find daunting. Indeed, at CFEngine, we work on
-reducing this initial learning curve all the time – but what really saves you in
+reducing this initial learning curve all the time - but what really saves you in
 the end is simplicity without over-simplification.
 
 At a deployment in the banking sector, CFEngine replaced an incumbent software
@@ -912,7 +912,7 @@ Footnotes
     changeability then we can even claim a super-efficiency.
 
 [^4]: In the 20th century, science learned that there is no such thing as
-    determinism – the idea that you can guarantee an outcome absolutely. If you
+    determinism - the idea that you can guarantee an outcome absolutely. If you
     still think in such terms, you will be quickly disappointed. The best we can
     accomplish is to maximize the likelihood of a predictable result, relative
     to the kind of environment in which we work.

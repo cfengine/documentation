@@ -26,4 +26,3 @@ Many DevOps organizations use CFEngine to ensure consistency across different st
 
 
 Mark Burgess, Founder and author of CFEngine talks about the reasons CFEngine is a Configuration Management system for the century.
-

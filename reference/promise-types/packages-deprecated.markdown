@@ -24,20 +24,20 @@ manipulations. Since no agent can make unconditional promises about
 another, this is the best that can be achieved.
 
 ```cf3
- vars:
+vars:
 
-  "match_package" slist => {
-                           "apache2",
-                           "apache2-mod_php5",
-                           "apache2-prefork",
-                           "php5"
-                           };
- packages:
+ "match_package" slist => {
+                          "apache2",
+                          "apache2-mod_php5",
+                          "apache2-prefork",
+                          "php5"
+                          };
+packages:
 
-    "$(match_package)"
+   "$(match_package)"
 
-         package_policy => "add",
-         package_method => yum;
+        package_policy => "add",
+        package_method => yum;
 ```
 
 Packages are treated as black-boxes with three labels:
@@ -88,15 +88,15 @@ one of two different ways:
 * They may be specified independently, e.g.
 
 ```cf3
-     packages:
+packages:
 
-       "mypackage"
+  "mypackage"
 
-          package_policy => "add",
-          package_method => rpm,
-          package_select => ">=",
-          package_architectures => { "x86_64", "i586" },
-          package_version => "1.2.3";
+     package_policy => "add",
+     package_method => rpm,
+     package_select => ">=",
+     package_architectures => { "x86_64", "i586" },
+     package_version => "1.2.3";
 ```
 
 * They may be extracted from a package identifier (promiser) or
@@ -105,9 +105,9 @@ one of two different ways:
     following:
 
 ```cf3
-      package_name_regex => "^(\S+)-(\d+\.?)+";
-      package_version_regex => "^\S+-((\d+\.?)+)";
-      package_arch_regex => "^\S+-[\d\.]+-(.*).msi";
+package_name_regex => "^(\S+)-(\d+\.?)+";
+package_version_regex => "^\S+-((\d+\.?)+)";
+package_arch_regex => "^\S+-[\d\.]+-(.*).msi";
 ```
 
 When scanning a list of installed packages different managers present
@@ -156,26 +156,26 @@ Normal ordering for packages is the following:
 
 
 ```cf3
-    bundle agent packages
-    {
-    vars:
+bundle agent packages
+{
+vars:
 
-     # Test the simplest case -- leave everything to the yum smart manager
+ # Test the simplest case -- leave everything to the yum smart manager
 
-     "match_package" slist => {
-                              "apache2",
-                              "apache2-mod_php5",
-                              "apache2-prefork",
-                              "php5"
-                              };
-    packages:
+ "match_package" slist => {
+                          "apache2",
+                          "apache2-mod_php5",
+                          "apache2-prefork",
+                          "php5"
+                          };
+packages:
 
-      "$(match_package)"
+  "$(match_package)"
 
-         package_policy => "add",
-         package_method => yum;
+     package_policy => "add",
+     package_method => yum;
 
-    }
+}
 ```
 
 Packages promises can be very simple if the package manager is of the
@@ -289,10 +289,10 @@ prevents CFEngine from appending the package name to the string.
 **Example:**
 
 ```cf3
-     body package_method rpm
-     {
-     package_add_command => "/bin/rpm -i ";
-     }
+body package_method rpm
+{
+package_add_command => "/bin/rpm -i ";
+}
 ```
 
 #### package_arch_regex
@@ -313,11 +313,11 @@ the *promiser* at which the architecture is specified.
 **Example:**
 
 ```cf3
-     body package_method rpm
+body package_method rpm
 
-     {
-     package_list_arch_regex    => "[^.]+\.([^.]+)";
-     }
+{
+package_list_arch_regex    => "[^.]+\.([^.]+)";
+}
 ```
 
 **Notes:** If no architecture is specified for thegiven package manager, then
@@ -340,18 +340,18 @@ the operating system's package manager to handle dependencies.
 **Allowed input range:**
 
 ```
-      individual
-      bulk
+individual
+bulk
 ```
 
 **Example:**
 
 ```cf3
-     body package_method rpm
+body package_method rpm
 
-     {
-     package_changes => "bulk";
-     }
+{
+package_changes => "bulk";
+}
 ```
 
 #### package_delete_command
@@ -373,10 +373,10 @@ prevents CFEngine from appending the package name to the string.
 **Example:**
 
 ```cf3
-     body package_method rpm
-     {
-     package_delete_command => "/bin/rpm -e --nodeps";
-     }
+body package_method rpm
+{
+package_delete_command => "/bin/rpm -e --nodeps";
+}
 ```
 
 #### package_delete_convention
@@ -405,13 +405,13 @@ to expand the first repository containing the package. For example:
 **Example:**
 
 ```cf3
-     body package_method freebsd
+body package_method freebsd
 
-     {
-     package_file_repositories => { "/path/to/packages" };
-     package_name_convention => "$(name)-$(version).tbz";
-     package_delete_convention => "$(name)-$(version)";
-     }
+{
+package_file_repositories => { "/path/to/packages" };
+package_name_convention => "$(name)-$(version).tbz";
+package_delete_convention => "$(name)-$(version)";
+}
 ```
 
 **Notes:**
@@ -434,10 +434,10 @@ the package name in the package commands.
 **Example:**
 
 ```cf3
-     body package_method filebased
-     {
-     package_file_repositories => { "/package/repos1", "/packages/repos2" };
-     }
+body package_method filebased
+{
+package_file_repositories => { "/package/repos1", "/packages/repos2" };
+}
 ```
 
 #### package_installed_regex
@@ -458,10 +458,10 @@ be ignored.
 **Example:**
 
 ```cf3
-     body package_method yum
-     {
-     package_installed_regex => ".*installed.*";
-     }
+body package_method yum
+{
+package_installed_regex => ".*installed.*";
+}
 ```
 
 #### package_default_arch_command
@@ -483,12 +483,12 @@ architecture.
 **Example:**
 
 ```cf3
-     body package_method dpkg
-     {
-       package_default_arch_command => "/usr/bin/dpkg --print-architecture";
+body package_method dpkg
+{
+  package_default_arch_command => "/usr/bin/dpkg --print-architecture";
 
-       # ...
-     }
+  # ...
+}
 ```
 
 **History:** Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
@@ -509,10 +509,10 @@ architecture is specified.
 **Example:**
 
 ```cf3
-     body package_method rpm
-     {
-     package_list_arch_regex    => "[^|]+\|[^|]+\|[^|]+\|[^|]+\|\s+([^\s]+).*";
-     }
+body package_method rpm
+{
+package_list_arch_regex    => "[^|]+\|[^|]+\|[^|]+\|[^|]+\|\s+([^\s]+).*";
+}
 ```
 
 **Notes:** If no architecture is specified for the given package manager, then
@@ -538,11 +538,11 @@ prevents CFEngine from appending the package name to the string.
 **Example:**
 
 ```cf3
-     body package_method rpm
+body package_method rpm
 
-     {
-     package_list_command => "/bin/rpm -qa --queryformat \"%{name} %{version}-%{release}\n\"";
-     }
+{
+package_list_command => "/bin/rpm -qa --queryformat \"%{name} %{version}-%{release}\n\"";
+}
 ```
 
 #### package_list_name_regex
@@ -560,11 +560,11 @@ reference which marks the name of the package from the package listing.
 **Example:**
 
 ```cf3
-     body package_method rpm
+body package_method rpm
 
-     {
-     package_list_name_regex    => "([^\s]+).*";
-     }
+{
+package_list_name_regex    => "([^\s]+).*";
+}
 ```
 
 #### package_list_update_command
@@ -582,13 +582,13 @@ executed at intervals determined by `package_list_update_ifelapsed`.
 **Example:**
 
 ```cf3
-     body package_method xyz
-     {
-     debian|ubuntu::
+body package_method xyz
+{
+debian|ubuntu::
 
-     package_list_update_command => "/usr/bin/apt-get update";
-     package_list_update_ifelapsed => "240";        # 4 hours
-     }
+package_list_update_command => "/usr/bin/apt-get update";
+package_list_update_ifelapsed => "240";        # 4 hours
+}
 ```
 
 #### package_list_update_ifelapsed
@@ -603,13 +603,13 @@ locking time in between updates of the package list
 **Example:**
 
 ```cf3
-     body package_method xyz
-     {
-     debian|ubuntu::
+body package_method xyz
+{
+debian|ubuntu::
 
-     package_list_update_command => "/usr/bin/apt-get update";
-     package_list_update_ifelapsed => "240";        # 4 hours
-     }
+package_list_update_command => "/usr/bin/apt-get update";
+package_list_update_ifelapsed => "240";        # 4 hours
+}
 ```
 
 #### package_list_version_regex
@@ -628,11 +628,11 @@ installed.
 **Example:**
 
 ```cf3
-     body package_method rpm
+body package_method rpm
 
-     {
-     package_list_version_regex => "[^\s]+ ([^.]+).*";
-     }
+{
+package_list_version_regex => "[^\s]+ ([^.]+).*";
+}
 ```
 
 #### package_name_convention
@@ -660,10 +660,10 @@ If this is not defined, it defaults to the value `$(name)`.
 **Example:**
 
 ```cf3
-     body package_method rpm
-     {
-     package_name_convention => "$(name).$(arch).rpm";
-     }
+body package_method rpm
+{
+package_name_convention => "$(name).$(arch).rpm";
+}
 ```
 
 #### package_name_regex
@@ -683,10 +683,10 @@ back-reference to extract the name of the package from the string.
 **Example:**
 
 ```cf3
-     body package_method rpm
-     {
-     package_name_regex => "([^\s]).*";
-     }
+body package_method rpm
+{
+package_name_regex => "([^\s]).*";
+}
 ```
 
 #### package_noverify_regex
@@ -704,12 +704,12 @@ broken.
 **Example:**
 
 ```cf3
-     body package_method xyz
+body package_method xyz
 
-     {
-     package_noverify_regex => "Package .* is not installed.*";
-     package_verify_command => "/usr/bin/dpkg -s";
-     }
+{
+package_noverify_regex => "Package .* is not installed.*";
+package_verify_command => "/usr/bin/dpkg -s";
+}
 ```
 
 #### package_noverify_returncode
@@ -727,11 +727,11 @@ signal for a failed package verification.
 **Example:**
 
 ```cf3
-     body package_method xyz
-     {
-     package_noverify_returncode => "-1";
-     package_verify_command => "/bin/rpm -V";
-     }
+body package_method xyz
+{
+package_noverify_returncode => "-1";
+package_verify_command => "/bin/rpm -V";
+}
 ```
 
 #### package_patch_arch_regex
@@ -750,10 +750,10 @@ an analogous command struct to the packages for patch updates.
 **Example:**
 
 ```cf3
-     body package_method zypper
-     {
-     package_patch_arch_regex => "";
-     }
+body package_method zypper
+{
+package_patch_arch_regex => "";
+}
 ```
 
 #### package_patch_command
@@ -774,11 +774,11 @@ interpret as an instruction to not append package names.
 **Example:**
 
 ```cf3
-     body package_method zypper
+body package_method zypper
 
-     {
-     package_patch_command => "/usr/bin/zypper -non-interactive patch";
-     }
+{
+package_patch_command => "/usr/bin/zypper -non-interactive patch";
+}
 ```
 
 #### package_patch_installed_regex
@@ -797,10 +797,10 @@ analogous command struct to the packages for patch updates.
 **Example:**
 
 ```cf3
-     body package_method zypper
-     {
-     package_patch_installed_regex => ".*(Installed|Not Applicable).*";
-     }
+body package_method zypper
+{
+package_patch_installed_regex => ".*(Installed|Not Applicable).*";
+}
 ```
 
 #### package_patch_list_command
@@ -825,7 +825,7 @@ prevents CFEngine from appending the package name to the string.
 **Example:**
 
 ```cf3
-      package_patch_list_command => "/usr/bin/zypper patches";
+package_patch_list_command => "/usr/bin/zypper patches";
 ```
 
 #### package_patch_name_regex
@@ -844,10 +844,10 @@ an analogous command struct to the packages for patch updates.
 **Example:**
 
 ```cf3
-     body package_method zypper
-     {
-     package_patch_name_regex    => "[^|]+\|\s+([^\s]+).*";
-     }
+body package_method zypper
+{
+package_patch_name_regex    => "[^|]+\|\s+([^\s]+).*";
+}
 ```
 
 #### package_patch_version_regex
@@ -866,10 +866,10 @@ an analogous command struct to the packages for patch updates.
 **Example:**
 
 ```cf3
-     body package_method zypper
-     {
-     package_patch_version_regex => "[^|]+\|[^|]+\|\s+([^\s]+).*";
-     }
+body package_method zypper
+{
+package_patch_version_regex => "[^|]+\|[^|]+\|\s+([^\s]+).*";
+}
 ```
 
 #### package_update_command
@@ -895,10 +895,10 @@ carry out the update.
 **Example:**
 
 ```cf3
-     body package_method zypper
-     {
-     package_update_command => "/usr/bin/zypper -non-interactive update";
-     }
+body package_method zypper
+{
+package_update_command => "/usr/bin/zypper -non-interactive update";
+}
 ```
 
 #### package_verify_command
@@ -930,12 +930,12 @@ prevents CFEngine from appending the package name to the string.
 **Example:**
 
 ```cf3
-     body package_method rpm
+body package_method rpm
 
-     {
-     package_verify_command => "/bin/rpm -V";
-     package_noverify_returncode => "-1";
-     }
+{
+package_verify_command => "/bin/rpm -V";
+package_noverify_returncode => "-1";
+}
 ```
 
 #### package_version_regex
@@ -955,10 +955,10 @@ version string in the promiser.
 **Example:**
 
 ```cf3
-     body package_method rpm
-     {
-     package_version_regex => "[^\s]+ ([^.]+).*";
-     }
+body package_method rpm
+{
+package_version_regex => "[^\s]+ ([^.]+).*";
+}
 ```
 
 #### package_multiline_start
@@ -978,13 +978,13 @@ record.
 **Example:**
 
 ```cf3
-     body package_method solaris (pkgname, spoolfile, adminfile)
-     {
-     package_changes => "individual";
-     package_list_command => "/usr/bin/pkginfo -l";
-     package_multiline_start    =>  "\s*PKGINST:\s+[^\s]+";
-     ...
-     }
+body package_method solaris (pkgname, spoolfile, adminfile)
+{
+package_changes => "individual";
+package_list_command => "/usr/bin/pkginfo -l";
+package_multiline_start    =>  "\s*PKGINST:\s+[^\s]+";
+...
+}
 ```
 
 #### package_commands_useshell
@@ -1029,11 +1029,11 @@ v2, and v2 is not less than v1).
 **Example:**
 
 ```cf3
-     body package_method deb
-     {
-     ...
-     package_version_less_command => "dpkg --compare-versions ${v1} lt ${v2}";
-     }
+body package_method deb
+{
+...
+package_version_less_command => "dpkg --compare-versions ${v1} lt ${v2}";
+}
 ```
 
 **History:** Was introduced in 3.4.0 (2012)
@@ -1066,11 +1066,11 @@ v2, and v2 is not less than v1).
 **Example:**
 
 ```cf3
-     body package_method deb
-     {
-     ...
-     package_version_equal_command => "dpkg --compare-versions ${v1} eq ${v2}";
-     }
+body package_method deb
+{
+...
+package_version_equal_command => "dpkg --compare-versions ${v1} eq ${v2}";
+}
 ```
 
 **Notes:**
@@ -1165,12 +1165,12 @@ version requirement.
 **Allowed input range:**
 
 ```
-     <
-     >
-     ==
-     !=
-     >=
-     <=
+<
+>
+==
+!=
+>=
+<=
 ```
 
 **Example:**
@@ -1210,4 +1210,3 @@ packages:
      package_select => "==",
      package_version => "1.2.3";
 ```
-

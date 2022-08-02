@@ -9,13 +9,11 @@ Methods are compound promises that refer to whole bundles of promises.
 Methods may be parameterized.
 
 ```cf3
+methods:
 
-    methods:
+  "any"
 
-      "any"
-
-         usebundle => method_id("parameter",...);
-
+     usebundle => method_id("parameter",...);
 ```
 
 Methods are useful for encapsulating repeatedly used configuration issues and
@@ -25,40 +23,40 @@ may omit the `usebundle` attribute and give the bundle name directly in
 the promiser string.
 
 ```cf3
-    bundle agent example
-    {
-      vars:
+bundle agent example
+{
+  vars:
 
-       "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
-       "userinfo" data => parsejson('{ "mark": 10, "jeang":20, "jonhenrik":30, "thomas":40, "eben":-1 }');
+   "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
+   "userinfo" data => parsejson('{ "mark": 10, "jeang":20, "jonhenrik":30, "thomas":40, "eben":-1 }');
 
-      methods:
-       # Activate subtest once for each list item
-       "any" usebundle => subtest("$(userlist)");
+  methods:
+   # Activate subtest once for each list item
+   "any" usebundle => subtest("$(userlist)");
 
-       # Activate subtest once passing the entire list
-       "amy" usebundle => subtest(@(userlist));
+   # Activate subtest once passing the entire list
+   "amy" usebundle => subtest(@(userlist));
 
-       # Pass a data type variable aka data container
-       "amp" usebundle => subtest_c(@(userinfo));
-    }
+   # Pass a data type variable aka data container
+   "amp" usebundle => subtest_c(@(userinfo));
+}
 
-    bundle agent subtest(user)
-    {
-      commands:
+bundle agent subtest(user)
+{
+  commands:
 
-       "/bin/echo Fix $(user)";
+   "/bin/echo Fix $(user)";
 
-      reports:
+  reports:
 
-        "Finished doing stuff for $(user)";
-    }
+    "Finished doing stuff for $(user)";
+}
 
-    bundle agent subtest_c(info)
-    {
-      reports:
-       "user ID of mark is $(info[mark])";
-    }
+bundle agent subtest_c(info)
+{
+  reports:
+   "user ID of mark is $(info[mark])";
+}
 ```
 
 Methods offer powerful ways to encapsulate multiple issues pertaining to
@@ -83,16 +81,16 @@ function call uniquely classified, CFEngine requires the promiser to
 contain the variable name of the method if the variable is a list.
 
 ```cf3
-    bundle agent default
-    {
-    vars:
-        "m" slist  => { "x", "y" };
-        "p" string => "myfunction";
+bundle agent default
+{
+vars:
+    "m" slist  => { "x", "y" };
+    "p" string => "myfunction";
 
-    methods:
-        "set of $(m)" usebundle => $(m)("one");
-        "any"         usebundle => $(p)("two");
-    }
+methods:
+    "set of $(m)" usebundle => $(m)("one");
+    "any"         usebundle => $(p)("two");
+}
 ```
 
 Please note that method names must be either simple strings or slists.
@@ -136,19 +134,19 @@ example: `$(bundle.variable)`.
 **Example:**
 
 ```cf3
-    bundle agent name
-    {
-    methods:
+bundle agent name
+{
+methods:
 
-      "group name" usebundle => my_method,
-                     inherit => "true";
-    }
+  "group name" usebundle => my_method,
+                 inherit => "true";
+}
 
 
-    body edit_defaults example
-    {
-    inherit => "true";
-    }
+body edit_defaults example
+{
+inherit => "true";
+}
 ```
 
 **History:** Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
@@ -171,28 +169,28 @@ Return values are limited to scalars.
 **Example:**
 
 ```cf3
-    bundle agent test
-    {
-    methods:
+bundle agent test
+{
+methods:
 
-       "any" usebundle => child,
-             useresult => "my_return_var";
+   "any" usebundle => child,
+         useresult => "my_return_var";
 
-    reports:
-        "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\"";
-    }
+reports:
+    "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\"";
+}
 
-    bundle agent child
-    {
-    reports:
-       # Map these indices into the useresult namespace
+bundle agent child
+{
+reports:
+   # Map these indices into the useresult namespace
 
-       "this is a return value"
-          bundle_return_value_index => "1";
+   "this is a return value"
+      bundle_return_value_index => "1";
 
-       "this is another return value"
-          bundle_return_value_index => "2";
-    }
+   "this is another return value"
+      bundle_return_value_index => "2";
+}
 ```
 
 **See also:** [reports bundle_return_value_index attribute][reports#bundle_return_value_index]

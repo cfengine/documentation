@@ -10,7 +10,6 @@ reviewed-by: atsaloli
 There are many ways to configure name resolution. A simple and straightforward approach is to implement this as a simple editing promise for the `/etc/resolv.conf` file.
 
 ```cf3
-
 body common control
 {
 bundlesequence => { "edit_name_resolution" };

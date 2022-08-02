@@ -113,7 +113,7 @@ file system and any un-pushed/un-deployed(terminology in Mission Portal UI) chan
 * **password** *(string)*
   Password for authentication to the repository. Required when authentication type is `password`.
 * **sshPrivateKey** *(string)*
-  SSH private key for authentication to the repository. Required when authentication type is `ssh_key` and `sshKeyId` 
+  SSH private key for authentication to the repository. Required when authentication type is `ssh_key` and `sshKeyId`
   is not set.
 * **sshKeyId** *(integer)*
   Generated SSH private key ID by [SSH keys API][SSH keys API#Generate SSH key] for authentication to the repository.
@@ -166,7 +166,7 @@ HTTP 200 OK
 ```console
 curl --user <username>:<password> \
   -X GET \
-  https://hub.cfengine.com/api/build/projects/2 
+  https://hub.cfengine.com/api/build/projects/2
 ```
 
 **Successful response example:**
@@ -286,7 +286,7 @@ HTTP 200 OK
 ```console
 curl --user <username>:<password> \
   -X DELETE \
-  https://hub.cfengine.com/api/build/projects/2 
+  https://hub.cfengine.com/api/build/projects/2
 ```
 
 **Successful response example:**
@@ -314,10 +314,10 @@ HTTP 204 No content
 * **id** *(integer)*
   Project's ID. Required.
 * **action** *(string)*
-  Action. Allowed actions: 
+  Action. Allowed actions:
   - `push` - pushes local changes to the upstream repository
   - `rebase` - rebases local changes from the upstream
-  - `force-pull` - overwrites local project files from upstream repository 
+  - `force-pull` - overwrites local project files from upstream repository
   - `force-rebase` - force rebases local changes from the upstream
 
 **Example request (curl):**
@@ -381,11 +381,11 @@ HTTP 200 OK
 **Output:**
 
 * **status**
-  Project's status. Possible values: 
+  Project's status. Possible values:
   - `ok` - project is up-to-date
   - `behind` - there are changes in upstream which are not pulled
   - `ahead` - there are changes in the local project which are not pushed
-  - `diverged` - there are changes which are not pushed and not pulled at the same time 
+  - `diverged` - there are changes which are not pushed and not pulled at the same time
 
 **Responses:**
 
@@ -530,7 +530,7 @@ HTTP 201 Created
 ```console
 curl --user <username>:<password> \
   -X DELETE \
-  https://hub.cfengine.com/api/build/projects/1/modules/autorun 
+  https://hub.cfengine.com/api/build/projects/1/modules/autorun
 ```
 
 **Successful response example:**

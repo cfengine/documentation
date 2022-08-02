@@ -30,7 +30,6 @@ Note: The following workflow assumes the directory /home/user already exists. If
 1. Create a file /var/cfengine/masterfiles/file_test.cf that includes the following text:
 
 	```cf3
-
 	bundle agent list_file
 	{
 
@@ -88,7 +87,6 @@ Note: The following workflow assumes the directory /home/user already exists. If
 ## Create a File ##
 
 ```cf3
-
 bundle agent testbundle
 {
 
@@ -345,7 +343,6 @@ rm /home/user/test_plain.txt
 ## Copy a File and Edit its Text##
 
 ```cf3
-
 body common control {
 
     inputs => {
@@ -523,12 +520,6 @@ body perms system
 {
       mode  => "0640";
 }
-
-
-
-
-
-
 ```
 
 ```console

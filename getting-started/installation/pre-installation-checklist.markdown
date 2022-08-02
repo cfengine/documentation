@@ -23,4 +23,3 @@ for [Supported Platforms and Versions][Supported Platforms and Versions] operati
 * command line text editing (e.g. vi/vim, Emacs)
 
 See Also: [Quick-Start Guide to Using vi][Quick-Start Guide to Using vi], [Quick-Start Guide to Using PuTTY][Quick-Start Guide to Using PuTTY]
-

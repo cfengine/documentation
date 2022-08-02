@@ -15,7 +15,7 @@ If `arg` is a container reference it will be serialized to a string.
 The reference must be indicated with `@(some_container)`.
 Strings are *not* interpreted as references.
 
-**Example:** 
+**Example:**
 
 [%CFEngine_include_example(string.cf)%]
 

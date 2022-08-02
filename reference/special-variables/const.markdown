@@ -13,10 +13,9 @@ or values with special meanings in strings.
 ### const.at
 
 ```cf3
-    reports:
+reports:
 
-       "The value of $(const.at) is @";
-
+   "The value of $(const.at) is @";
 ```
 
 **History:**
@@ -27,56 +26,56 @@ or values with special meanings in strings.
 
 
 ```cf3
-    reports:
+reports:
 
-       # This will report: The value of $(const.dollar) is $
-       "The value of $(const.dollar)(const.dollar) is $(const.dollar)";
+   # This will report: The value of $(const.dollar) is $
+   "The value of $(const.dollar)(const.dollar) is $(const.dollar)";
 
-       # This will report: But the value of $(dollar) is $(dollar)
-       "But the value of $(dollar) is $(dollar)";
+   # This will report: But the value of $(dollar) is $(dollar)
+   "But the value of $(dollar) is $(dollar)";
 ```
 
 ### const.dirsep
 
 
 ```cf3
-    reports:
+reports:
 
-       # On Unix hosts this will report: The value of $(const.dirsep) is /
-       # On Windows hosts this will report: The value of $(const.dirsep) is \\
-       "The value of $(const.dollar)(const.dirsep) is $(const.dirsep)";
+   # On Unix hosts this will report: The value of $(const.dirsep) is /
+   # On Windows hosts this will report: The value of $(const.dirsep) is \\
+   "The value of $(const.dollar)(const.dirsep) is $(const.dirsep)";
 ```
 
 ### const.endl
 
 ```cf3
-    reports:
+reports:
 
-      "A newline with either $(const.n) or with $(const.endl) is ok";
-      "But a string with \n in it does not have a newline!";
+  "A newline with either $(const.n) or with $(const.endl) is ok";
+  "But a string with \n in it does not have a newline!";
 ```
 
 ### const.n
 
 ```cf3
-    reports:
+reports:
 
-      "A newline with either $(const.n) or with $(const.endl) is ok";
-      "But a string with \n in it does not have a newline!";
+  "A newline with either $(const.n) or with $(const.endl) is ok";
+  "But a string with \n in it does not have a newline!";
 ```
 
 ### const.r
 
 ```cf3
-    reports:
+reports:
 
-      "A carriage return character is $(const.r)";
+  "A carriage return character is $(const.r)";
 ```
 
 ### const.t
 
 ```cf3
-    reports:
+reports:
 
-      "A report with a$(const.t)tab in it";
+  "A report with a$(const.t)tab in it";
 ```

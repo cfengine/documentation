@@ -38,14 +38,14 @@ These body settings determine the behavior of `cf-execd`,including scheduling
 times and output capture to `WORKDIR/outputs` and relay via email.
 
 ```cf3
-     body executor control
-     {
-         splaytime  => "5";
-         mailto     => "cfengine@example.org";
-         mailfrom   => "cfengine@$(host).example.org";
-         smtpserver => "localhost";
-         schedule   => { "Min00_05", "Min30_35" }
-     }
+body executor control
+{
+    splaytime  => "5";
+    mailto     => "cfengine@example.org";
+    mailfrom   => "cfengine@$(host).example.org";
+    smtpserver => "localhost";
+    schedule   => { "Min00_05", "Min30_35" }
+}
 ```
 
 
@@ -73,10 +73,10 @@ this threshold. This will reset the timer.
 **Example:**
 
 ```cf3
-    body executor control
-    {
-    agent_expireafter => "120";
-    }
+body executor control
+{
+agent_expireafter => "120";
+}
 ```
 
 **Notes:**
@@ -114,10 +114,10 @@ See the syslog manual pages.
 **Example:**
 
 ```cf3
-    body executor control
-    {
-    executorfacility => "LOG_USER";
-    }
+body executor control
+{
+executorfacility => "LOG_USER";
+}
 ```
 
 ### exec_command
@@ -160,11 +160,11 @@ different from the previous run for an email to be generated.
 **Example:**
 
 ```cf3
-    body executor control
-    {
-        # Ignore agent execution emails about permission errors.
-        mailfilter_exclude => { ".*Permission denied.*" };
-    }
+body executor control
+{
+    # Ignore agent execution emails about permission errors.
+    mailfilter_exclude => { ".*Permission denied.*" };
+}
 ```
 
 **History:** Introduced in CFEngine 3.9.
@@ -190,18 +190,18 @@ different from the previous run for an email to be generated.
 **Example:**
 
 ```cf3
-    body executor control
-    {
-        # Only include reports in agent execution emails.
-        mailfilter_include => { "R:.*" };
-    }
+body executor control
+{
+    # Only include reports in agent execution emails.
+    mailfilter_include => { "R:.*" };
+}
 ```
 
 **History:** Introduced in CFEngine 3.9.
 
 ### mailfrom
 
-**Description:** Email-address cfengine mail appears to come from
+**Description:** Email-address CFEngine mail appears to come from
 
 **Type:** `string`
 
@@ -210,10 +210,10 @@ different from the previous run for an email to be generated.
 **Example:**
 
 ```cf3
-    body executor control
-    {
-        mailfrom => "mrcfengine@example.org";
-    }
+body executor control
+{
+    mailfrom => "mrcfengine@example.org";
+}
 ```
 
 ### mailmaxlines
@@ -234,11 +234,11 @@ viewed on demand. A reference to the appropriate file is given.
 **Example:**
 
 ```cf3
-    body executor control
-    {
-    mailmaxlines => "100";
-    }
-````
+body executor control
+{
+mailmaxlines => "100";
+}
+```
 
 ### mailsubject
 
@@ -254,15 +254,15 @@ architecture.
 **Example:**
 
 ```cf3
-    body executor control
-    {
-        mailsubject => "CFEngine report ($(sys.fqhost))";
-    }
+body executor control
+{
+    mailsubject => "CFEngine report ($(sys.fqhost))";
+}
 ```
 
 ### mailto
 
-**Description:** Email-address cfengine mail is sent to
+**Description:** Email-address CFEngine mail is sent to
 
 The address to whom email is sent if an smtp host is configured.
 
@@ -273,10 +273,10 @@ The address to whom email is sent if an smtp host is configured.
 **Example:**
 
 ```cf3
-    body executor control
-    {
-        mailto => "cfengine_alias@example.org";
-    }
+body executor control
+{
+    mailto => "cfengine_alias@example.org";
+}
 ```
 
 ### schedule
@@ -307,10 +307,10 @@ function may be affected by changing the `schedule`.
 **Example:**
 
 ```cf3
-    body executor control
-    {
-    schedule => { "Min00", "(Evening|Night).Min15_20", "Min30", "(Evening|Night).Min45_50" };
-    }
+body executor control
+{
+schedule => { "Min00", "(Evening|Night).Min15_20", "Min30", "(Evening|Night).Min45_50" };
+}
 ```
 
 ### smtpserver
@@ -329,10 +329,10 @@ localhost and point this to localhost.
 **Example:**
 
 ```cf3
-  body executor control
-  {
-      smtpserver => "smtp.example.org";
-  }
+body executor control
+{
+    smtpserver => "smtp.example.org";
+}
 ```
 
 ### splaytime
@@ -367,10 +367,10 @@ The CFEngine default policy sets `splaytime` to 1.
 **Example:**
 
 ```cf3
-  body executor control
-  {
-      splaytime => "2";
-  }
+body executor control
+{
+    splaytime => "2";
+}
 ```
 
 **See also:** The [`splayclass()`][splayclass] function for a task-specific
@@ -428,4 +428,3 @@ echo 'host001' > /var/cfengine/state/cf-execd.sockets/cf-runagent.socket
 **History:**
 
 * 3.18.0 Added socket for triggering `cf-runagent` by hostname or IP.
-

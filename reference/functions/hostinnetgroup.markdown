@@ -14,7 +14,7 @@ tags: [reference, system functions, functions, hostinnetgroup]
 **Example:**
 
 ```cf3
-    classes:
+classes:
 
-      "ingroup" expression => hostinnetgroup("my_net_group");
+  "ingroup" expression => hostinnetgroup("my_net_group");
 ```

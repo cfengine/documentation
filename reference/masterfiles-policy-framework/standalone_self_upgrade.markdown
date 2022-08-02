@@ -2,7 +2,7 @@
 layout: default
 title: standalone_self_upgrade.cf
 published: true
-sorting: 30 
+sorting: 30
 tags: [reference, policy entry, MPF]
 ---
 

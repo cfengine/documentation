@@ -13,11 +13,11 @@ must be attached to trusted public keys in order to be accepted. The
 regular expression is [anchored][anchored], meaning it must match the entire name.
 
 ```cf3
-    roles:
+roles:
 
-    "regex"
+"regex"
 
-       authorize => { "usernames", ... };
+   authorize => { "usernames", ... };
 ```
 
 It is worth re-iterating here that it is not possible to send commands or modify promise definitions by remote access. At best users may try to
@@ -61,7 +61,7 @@ already trusted on the system.
 **Example:**
 
 ```cf3
-    roles:
+roles:
 
-      ".*"  authorize => { "mark", "marks_friend" };
+  ".*"  authorize => { "mark", "marks_friend" };
 ```

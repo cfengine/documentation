@@ -12,20 +12,19 @@ are implemented as variables, and the values map to a variable context called
 CFEngine Enterprise variable reports.
 
 ```cf3
-    bundle agent example
-    {
-    meta:
+bundle agent example
+{
+meta:
 
-      "bundle_version" string => "1.2.3";
-      "works_with_cfengine" slist => { "3.4.0", "3.5.0" };
+  "bundle_version" string => "1.2.3";
+  "works_with_cfengine" slist => { "3.4.0", "3.5.0" };
 
-    reports:
+reports:
 
-      "Not a local variable: $(bundle_version)";
-      "Meta data (variable): $(example_meta.bundle_version)";
+  "Not a local variable: $(bundle_version)";
+  "Meta data (variable): $(example_meta.bundle_version)";
 
-    }
+}
 ```
 
 The value of meta data can be of the types `string` or `slist` or `data`.
-

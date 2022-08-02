@@ -27,9 +27,9 @@ Generally, if `ifelse` were called with arguments `(a1, a2, b1,
 b2, c)`, the behavior expressed as pseudo-code is:
 
 ```
-    if a1 then return a2
-    else-if b1 then return b2
-    else return c
+if a1 then return a2
+else-if b1 then return b2
+else return c
 ```
 
 (But again, note that any odd number of arguments is supported.)
@@ -39,23 +39,23 @@ explicitly stating the negative of all the expected cases; this
 problem is commonly seen like so:
 
 ```cf3
-    class1.class2::
-      "myvar" string => "x";
+class1.class2::
+  "myvar" string => "x";
 
-    class3.!class2::
-      "myvar" string => "y";
+class3.!class2::
+  "myvar" string => "y";
 
-    !((class1.class2)||class3.!class2)::
-      "myvar" string => "z";
+!((class1.class2)||class3.!class2)::
+  "myvar" string => "z";
 ```
 
 That's hard to read and error-prone (do you know how `class2` will
 affect the default case?).  Here's the alternative with `ifelse`:
 
 ```cf3
-    "myvar" string => ifelse("class1.class2", "x",
-                             "class3.!class2", "y",
-                             "z");
+"myvar" string => ifelse("class1.class2", "x",
+                         "class3.!class2", "y",
+                         "z");
 ```
 
 **Example:**

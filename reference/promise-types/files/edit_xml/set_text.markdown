@@ -12,16 +12,15 @@ within the specified node. The specified node is determined by body-attributes.
 The promise object referred to is a literal string of text.
 
 ```cf3
-    bundle edit_xml example
-    {
-    set_text:
-      "text content to replace existing text, including whitespace, within selected node"
+bundle edit_xml example
+{
+set_text:
+  "text content to replace existing text, including whitespace, within selected node"
 
-        select_xpath => "/Server/Service/Engine/Host/Alias";
-    }
+    select_xpath => "/Server/Service/Engine/Host/Alias";
+}
 ```
 
 Note that typically only a single value string, within a single selected
 node, is set in each `set_text` promise. You may of course have multiple
 promises that each set a value string.
-

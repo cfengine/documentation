@@ -115,7 +115,7 @@ You can use your favorite JSON validate. I like [`jq`][jq-project], plus it's ha
 ```console
 [root@hub ~]# wget -q -O /var/cfengine/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
 [root@hub ~]# chmod +x /var/cfengine/bin/jq
-[root@hub ~]# 
+[root@hub ~]#
 ```
 
 Once it's installed, we can use it to validate our JSON.

@@ -10,7 +10,6 @@ reviewed-by: atsaloli
 Setting up sudo is straightforward, we recommend managing it by copying trusted files from a repository. The following bundle will copy a master sudoers file to `/etc/sudoers` (`/tmp/sudoers` in this example - change it to `/etc/sudoers` to use in production).
 
 ```cf3
-
 body common control
 {
 bundlesequence => { "sudoers" };

@@ -8,42 +8,42 @@ tags: [reference, bundle agent, storage, storage promises, mount, filesystem, di
 Storage promises refer to disks and filesystem properties.
 
 ```cf3
-      storage:
+storage:
 
-         "/disk volume or mountpoint"
+   "/disk volume or mountpoint"
 
-           volume => volume_body,
-           ...;
+     volume => volume_body,
+     ...;
 ```
 
 
 ```cf3
-    bundle agent storage
-    {
-      storage:
+bundle agent storage
+{
+  storage:
 
-        "/usr" volume  => mycheck("10%");
-        "/mnt" mount   => nfs("nfsserv.example.org","/home");
+    "/usr" volume  => mycheck("10%");
+    "/mnt" mount   => nfs("nfsserv.example.org","/home");
 
-    }
+}
 
-    body volume mycheck(free)   # reusable template
+body volume mycheck(free)   # reusable template
 
-    {
-      check_foreign  => "false";
-      freespace      => "$(free)";
-      sensible_size  => "10000";
-      sensible_count => "2";
-    }
+{
+  check_foreign  => "false";
+  freespace      => "$(free)";
+  sensible_size  => "10000";
+  sensible_count => "2";
+}
 
-    body mount nfs(server,source)
+body mount nfs(server,source)
 
-    {
-      mount_type => "nfs";
-      mount_source => "$(source)";
-      mount_server => "$(server)";
-      edit_fstab => "true";
-    }
+{
+  mount_type => "nfs";
+  mount_source => "$(source)";
+  mount_server => "$(server)";
+  edit_fstab => "true";
+}
 ```
 
 ***
@@ -72,10 +72,10 @@ The default behavior is to not place edits in the file system table.
 **Example:**
 
 ```cf3
-     body mount example
-     {
-       edit_fstab => "true";
-     }
+body mount example
+{
+  edit_fstab => "true";
+}
 ```
 
 #### mount_type
@@ -115,10 +115,10 @@ This is the location on the remote device, server, SAN etc.
 **Example:**
 
 ```cf3
-     body mount example
-     {
-     mount_source "/location/disk/directory";
-     }
+body mount example
+{
+mount_source "/location/disk/directory";
+}
 ```
 
 #### mount_server
@@ -132,10 +132,10 @@ This is the location on the remote device, server, SAN etc.
 **Example:**
 
 ```cf3
-     body mount example
-     {
-       mount_server => "nfs_host.example.org";
-     }
+body mount example
+{
+  mount_server => "nfs_host.example.org";
+}
 ```
 
 #### mount_options
@@ -153,10 +153,10 @@ options must be legal options for the system mount commands.
 **Example:**
 
 ```cf3
-     body mount example
-     {
-       mount_options => { "rw", "acls" };
-     }
+body mount example
+{
+  mount_options => { "rw", "acls" };
+}
 ```
 
 #### unmount
@@ -170,10 +170,10 @@ options must be legal options for the system mount commands.
 **Example:**
 
 ```cf3
-     body mount example
-     {
-     unmount => "true";
-     }
+body mount example
+{
+unmount => "true";
+}
 ```
 
 ### volume
@@ -199,10 +199,10 @@ on other systems.
 **Example:**
 
 ```cf3
-     body volume example
-     {
-       check_foreign  => "true";
-     }
+body volume example
+{
+  check_foreign  => "true";
+}
 ```
 
 #### freespace
@@ -222,15 +222,15 @@ the results of this promise to control other promises.
 **Example:**
 
 ```cf3
-     body volume example1
-     {
-     freespace => "10%";
-     }
+body volume example1
+{
+freespace => "10%";
+}
 
-     body volume example2
-     {
-     freespace => "50M";
-     }
+body volume example2
+{
+freespace => "50M";
+}
 ```
 
 #### sensible_size
@@ -245,10 +245,10 @@ sensible-looking storage device
 **Example:**
 
 ```cf3
-     body volume example
-     {
-     sensible_size => "20K";
-     }
+body volume example
+{
+sensible_size => "20K";
+}
 ```
 
 #### sensible_count
@@ -266,10 +266,10 @@ the agent has privileges on volumes being checked.
 **Example:**
 
 ```cf3
-     body volume example
-     {
-     sensible_count => "20";
-     }
+body volume example
+{
+sensible_count => "20";
+}
 ```
 
 #### scan_arrivals
@@ -289,8 +289,8 @@ a number of analyses including optimum backup schedule computation.
 **Example:**
 
 ```cf3
-     body volume example
-     {
-       scan_arrivals => "true";
-     }
+body volume example
+{
+  scan_arrivals => "true";
+}
 ```

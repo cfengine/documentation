@@ -196,7 +196,7 @@ invalidate these course corrections, if you have not promised to monitor and
 avoid them. That is why modern navigators use beacons.
 
 In CFEngine, a beacon is a promise of desired end-state (the end of your
-journey). It's the place you want to be – and the journey doesn't interest you.
+journey). It's the place you want to be - and the journey doesn't interest you.
 Navigators used fixed stars, lighthouses and now artificial radio signals to
 guide ships and planes on their intended course at all times, because beacons
 promise absolute desired location, not relative instructions to get there.
@@ -334,12 +334,12 @@ suggestion that only authorized people actually make changes is simply wrong.
 ![Demolish](./demolish.png)
 
 In reality, circumstances are part of the picture, as well as changing inventory
-and releases. CFEngine uses the idea of “convergence” (see figure below) to
+and releases. CFEngine uses the idea of "convergence" (see figure below) to
 ensure desired state, independently of where you start from. In this way of
 thinking, the configuration details might be changing in a quite unpredictable
 way, and it is our job to continuously monitor and repair this general
 dilapidation. Rather than assuming a constant state in between changes, CFEngine
-assumes a constant “ideal state” or goal to be achieved at all times.
+assumes a constant "ideal state" or goal to be achieved at all times.
 
 # Change and convergence
 
@@ -439,7 +439,7 @@ work everywhere in the same way.
 Footnotes
 
 [^1]: For example, suppose a process runs out of control and starts filling up
-    logs with error messages – the disk might fill up and cause a much more
+    logs with error messages - the disk might fill up and cause a much more
     serious problem, such as a total system failure with crash, if this were
     left unattended.
 

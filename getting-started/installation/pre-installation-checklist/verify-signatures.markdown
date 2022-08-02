@@ -27,15 +27,15 @@ NOTE: AIX rpms currently are NOT signed because it's not supported on older vers
 2. Validate the signature.
 
 ```console
-# rpm -K ./cfengine-nova-hub-3.12.2-2.x86_64.rpm 
+# rpm -K ./cfengine-nova-hub-3.12.2-2.x86_64.rpm
 ./cfengine-nova-hub-3.12.2-2.x86_64.rpm: rsa sha1 (md5) pgp md5 OK
 ```
 
 NOTE: If you don't import the public key first, you will get an error about the key missing:
 
 ```console
-# rpm -K ./cfengine-nova-hub-3.12.2-2.x86_64.rpm 
-./cfengine-nova-hub-3.12.2-2.x86_64.rpm: RSA sha1 ((MD5) PGP) md5 NOT OK (MISSING KEYS: (MD5) PGP#a86e7afa) 
+# rpm -K ./cfengine-nova-hub-3.12.2-2.x86_64.rpm
+./cfengine-nova-hub-3.12.2-2.x86_64.rpm: RSA sha1 ((MD5) PGP) md5 NOT OK (MISSING KEYS: (MD5) PGP#a86e7afa)
 ```
 
 ## Validating signature of DEB

@@ -102,4 +102,3 @@ classes it is using must be resolvable during pre-evaluation as the full
 evaluation is only allowed when the classes are found to be defined.
 
 **See also:** [How is "recently seen" determined][Components#lastseenexpireafter], [`cf-runagent`][cf-runagent], [pre-evaluation][Normal Ordering#agent pre-evaluation step]
-

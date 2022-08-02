@@ -2,7 +2,7 @@
 layout: default
 title: promises.cf
 published: true
-sorting: 10 
+sorting: 10
 tags: [reference, promises.cf, MPF]
 ---
 
@@ -13,4 +13,3 @@ part of the policy and the order in which to run bundles.
 ## Policy
 
 [%CFEngine_library_include(promises)%]
-

@@ -13,10 +13,10 @@ Welcome! This is the documentation for CFEngine {{site.cfengine.core_branch}}.
 includes what is new, supported platforms, how to upgrade
 
 ## [Language Reference][Reference]
-describes syntax and language elements 
+describes syntax and language elements
 
 ## [Examples][Examples and Tutorials]
-a set of examples, including “hello world”
+a set of examples, including "hello world"
 
 ## [Library Reference][All Promise and Body Types]
 overview of all promises and attributes

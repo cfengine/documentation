@@ -123,7 +123,7 @@ User three will only be able to see hosts that have reported the `ubuntu` class.
 
 * ```admin``` - The admin role can see everything and do anything.
 * ```cf_remoteagent``` - This role allows execution of `cf-runagent`.
-  
+
 ### Default Role
 
 To set the default role, click Settings -> User management -> Roles. You can then select which role will be the default role for new users.
@@ -186,9 +186,9 @@ Configure outbound mail settings:
 
 Mission portal can authenticate against an external directory.
 
-**Special Notes:** 
+**Special Notes:**
 
-- LDAP API Url refers to the API cfengine uses internally for authentication.
+- LDAP API Url refers to the API CFEngine uses internally for authentication.
   Most likely you will not alter the default value.
 
 - LDAP filter must be supplied.
@@ -203,14 +203,14 @@ Mission portal can authenticate against an external directory.
 ### LDAP groups syncing ###
 
 - Ldap group syncing can be turned on by clicking the corresponding checkbox
-    
-    - User group attribute must be provided to obtain groups from an LDAP user entity. 
-    The default value for Active Directory is `memberOf`. 
+
+    - User group attribute must be provided to obtain groups from an LDAP user entity.
+    The default value for Active Directory is `memberOf`.
     The group name will be taken from `cn` attribute
     - List of groups to sync, names must match in LDAP/MP. Each role should be added on a new line.
     - Click `Perform sync on every login` checkbox to synchronize user roles on every login, otherwise
     roles will be assigned to a user only on sign-up (first login).
-    
+
 
 **See also:** [LDAP authentication REST API][LDAP authentication API]
 
@@ -227,10 +227,10 @@ Mission Portal's configuration can be exported and imported.
 
 <img src="role_based_access_control_settings.png" alt="Role based access control" width="590px">
 
-Roles in Mission portal can be restricted to perform only configured actions. 
+Roles in Mission portal can be restricted to perform only configured actions.
 Configure role-based access controls from settings.
 
-**Special Notes:** 
+**Special Notes:**
 
 - Admin role has all permissions by default.
 
@@ -238,7 +238,7 @@ Configure role-based access controls from settings.
 
 - Permissions granted by roles are additive, users with multiple roles are permitted to perform actions granted by each role.
 
-**Restore admin role permissions:** 
+**Restore admin role permissions:**
 
 To restore the CFEngine admin role permissions run the following sql as root on your hub
 

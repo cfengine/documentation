@@ -25,10 +25,10 @@ are sequences of characters, integers are whole numbers, and reals are float
 pointing numbers.
 
 ```cf3
-    vars:
-      "my_scalar" string => "String contents...";
-      "my_int" int       => "1234";
-      "my_real" real     => "567.89";
+vars:
+  "my_scalar" string => "String contents...";
+  "my_int" int       => "1234";
+  "my_real" real     => "567.89";
 ```
 
 Integer constants may use suffixes to represent large numbers.  The following
@@ -77,7 +77,7 @@ of the bundle in which it is defined:
 
 ### Quoting
 
-When quoting strings cfengine allows the use of `'`, `"`, and or `` ` ``. This
+When quoting strings CFEngine allows the use of `'`, `"`, and or `` ` ``. This
 allows flexibilty when defining strings that contain quotes. Single or double
 quotes can be escaped with `\` however, please note that backticks (`` ` ``) can **not**
 be escaped.
@@ -112,25 +112,25 @@ regular scalar.
 They are declared as follows:
 
 ```cf3
-     vars:
-         "my_slist" slist => { "list", "of", "strings" };
-         "my_ilist" ilist => { "1234", "5678" };
-         "my_rlist" rlist => { "567.89" };
+vars:
+    "my_slist" slist => { "list", "of", "strings" };
+    "my_ilist" ilist => { "1234", "5678" };
+    "my_rlist" rlist => { "567.89" };
 ```
 
 ### List Substitution and Expansion
 
-An entire list is referenced with the symbol ‘@’ and can be passed in their
+An entire list is referenced with the symbol '@' and can be passed in their
 entirety in any context where a list is expected as `@(list)`. For example,
 the following variable definition references a list named "shortlist":
 
 ```cf3
-    vars:
-        "shortlist" slist => { "you", "me" };
-        "longlist" slist => { @(shortlist), "plus", "plus" };
+vars:
+    "shortlist" slist => { "you", "me" };
+    "longlist" slist => { @(shortlist), "plus", "plus" };
 ```
 
-The declaration order does not matter – CFEngine will understand the
+The declaration order does not matter - CFEngine will understand the
 dependency, and execute the promise to assign the variable `@(shortlist)`
 before the promise to assign the variable `@(longlist)`.
 

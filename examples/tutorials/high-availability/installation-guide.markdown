@@ -95,7 +95,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    ```
    node1: Authorized
    node2: Authorized
-   ````
+   ```
 
 5. Create the cluster by running the following command **on the node1**:
 
@@ -564,7 +564,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    Should give:
    ```
    pid  | usesysid |  usename   | application_name |  client_addr   | client_hostname | client_port |         backend_start         |   state   | sent_location | write_location | flush_location | replay_location | sync_priority | sync_state
-  ------+----------+------------+------------------+----------------+-----------------+-------------+-------------------------------+-----------+---------------+----------------+----------------+-----------------+---------------+------------
+   ------+----------+------------+------------------+----------------+-----------------+-------------+-------------------------------+-----------+---------------+----------------+----------------+-----------------+---------------+------------
    9252 |       10 | cfpostgres | node2            | 192.168.100.11 |                 |       58919 | 2015-08-24 07:14:45.925341+00 | streaming | 0/2A7034D0    | 0/2A7034D0     | 0/2A7034D0     | 0/2A7034D0      |             0 | async
    9276 |       10 | cfpostgres | node3            | 192.168.100.12 |                 |       52202 | 2015-08-24 07:14:46.038676+00 | streaming | 0/2A7034D0    | 0/2A7034D0     | 0/2A7034D0     | 0/2A7034D0      |             0 | async
 

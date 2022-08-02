@@ -29,4 +29,3 @@ part.
 **Example Output:**
 
 [%CFEngine_include_example(hostrange.cf, #\+begin_src\s+static_example_output\s*, .*end_src)%]
-

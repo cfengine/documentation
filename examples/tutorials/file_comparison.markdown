@@ -18,7 +18,6 @@ tags: [examples, tutorials, file]
 	export CFE_FILE2="test_plain_2.txt"
 
 	/var/cfengine/bin/cf-agent /var/cfengine/masterfiles/file_test.cf --bundlesequence robot,global_vars,packages,create_aout_source_file,create_aout,test_delete,do_files_exist_1,create_file_1,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,stat,outer_bundle_2,list_file_2
-
 	```
 
 Here is the order in which bundles are called in the command line above (some other support bundles are contained within file_test.cf but are not included here):
@@ -42,11 +41,11 @@ Here is the order in which bundles are called in the command line above (some ot
 ## robot ##
 
 Demonstrates use of `reports`, using an ascii art representation of the CFEngine robot.
-	
+
 ## global_vars ##
 
 Sets up some global variables that are used frequently by other bundles.
-	
+
 ```cf3
 bundle common global_vars
 {
@@ -71,11 +70,11 @@ bundle common global_vars
 
 }
 ```
-	
+
 ## packages ##
 
 Ensures that the gcc package is installed, for later use by the create_aout bundle.
-	
+
 ```cf3
 	bundle agent packages
 	{
@@ -98,11 +97,11 @@ Ensures that the gcc package is installed, for later use by the create_aout bund
 
 	}
 ```
-	
+
 ## create_aout_source_file ##
 
 Creates the c source file that will generate a binary application in create_aout.
-	
+
 ```cf3
 bundle agent create_aout_source_file
 {
@@ -129,13 +128,13 @@ bundle agent create_aout_source_file
 
 }
 ```
-	
+
 ## create_aout ##
 
 This bundle creates a binary application from the source in  create_aout_source_file that uses the stat library to compare two files, determine if the modified times are different, nd whether the second file is newer than the first.
-	
-The difference between this application and using CFEngine's built in support for getting file stats is that normally the accuracy is only to the second of the modified file time but in order to better compare two files requires parts of a second as well. The stat library provides the extra support for retrieving the additional information required.	
-	
+
+The difference between this application and using CFEngine's built in support for getting file stats is that normally the accuracy is only to the second of the modified file time but in order to better compare two files requires parts of a second as well. The stat library provides the extra support for retrieving the additional information required.
+
 ```cf3
 bundle agent create_aout
 {
@@ -149,7 +148,7 @@ bundle agent create_aout
 
 	# Removes any previous binary
 	"rmaout" string => execresult("$(global_vars.rmexec) $(global_vars.aoutexec)","noshell");
-	
+
 	doesfileacexist::
 	"compilestr" string => "$(global_vars.gccexec) $(global_vars.workdir)/a.c -o $(global_vars.aoutexec)";
 	"gccaout" string => execresult("$(compilestr)","noshell");
@@ -159,18 +158,18 @@ bundle agent create_aout
 	  "gcc output: $(gccaout)";
 	  "Creating aout using $(compilestr)";
 	!doesfileacexist::
-	  "Cannot compile a.out, $(global_vars.workdir)/a.c does not exist.";	
+	  "Cannot compile a.out, $(global_vars.workdir)/a.c does not exist.";
 	doesaoutexist::
 	  "The binary application aout has been compiled from the source in the create_aout_source_file bundle. It uses the stat library to compare two files, determine if the modified times are different, and whether the second file is newer than the first. The difference between this application and using CFEngine's built in support for getting file stats (e.g. filestat, isnewerthan), which provides file modification time accurate to a second. However, in order to better compare two files might sometimes require parts of a second as well. The stat library provides the extra support for retrieving the additional information required to get better accuracy (down to parts of a second), and is utilized by the binary application a.out that is compiled within the create_aout bundle.";
 	  "*********************************";
 
 }
 ```
-	
+
 ## test_delete ##
 
 Deletes any previous copy of the test files used in the example.
-	
+
 ```cf3
 bundle agent test_delete
 {
@@ -180,11 +179,11 @@ bundle agent test_delete
 	  delete => tidy;
 }
 ```
-	
+
 ## do_files_exist_1 ##
 
 Verifies whether the test files exist or not.
-	
+
 ```cf3
 bundle agent do_files_exist_1
 
@@ -199,28 +198,28 @@ bundle agent do_files_exist_1
 
 	doesfile1exist::
 
-	"any" usebundle => delete_file("$(global_vars.file1)");	
+	"any" usebundle => delete_file("$(global_vars.file1)");
 	doesfile2exist::
-	"any" usebundle => delete_file("$(global_vars.file2)");	
+	"any" usebundle => delete_file("$(global_vars.file2)");
   reports:
 
 	!doesfile1exist::
 	  "$(global_vars.file1) does not exist.";
 	doesfile1exist::
-	  "$(global_vars.file1) did exist. Call to delete it was made.";	
-	
+	  "$(global_vars.file1) did exist. Call to delete it was made.";
+
 	!doesfile2exist::
 	  "$(global_vars.file2) does not exist.";
 	doesfile2exist::
-	  "$(global_vars.file2) did exist. Call to delete it was made.";	
+	  "$(global_vars.file2) did exist. Call to delete it was made.";
 
 }
 ```
-	
+
 ## create_file_1 ##
 
 Creates the first test file, as an empty file.
-	
+
 ```cf3
 bundle agent create_file_1
 {
@@ -234,11 +233,11 @@ bundle agent create_file_1
 	"$(global_vars.file1) has been created";
 }
 ```
-	
+
 ## outer_bundle_1 ##
 
 Adds some text to the first test file.
-	
+
 ```cf3
 bundle agent outer_bundle_1
 {
@@ -249,11 +248,11 @@ bundle agent outer_bundle_1
 	   edit_line => inner_bundle_1;
 }
 ```
-	
+
 ## copy_a_file ##
 
 Makes a copy of the test file.
-	
+
 ```cf3
 bundle agent copy_a_file
 {
@@ -266,11 +265,11 @@ bundle agent copy_a_file
 	 "$(global_vars.file1) has been copied to $(global_vars.file2)";
 }
 ```
-	
+
 ## do_files_exist_2 ##
 
 Verifies that both test files exist.
-	
+
 ```cf3
 bundle agent do_files_exist_2
 {
@@ -280,16 +279,16 @@ bundle agent do_files_exist_2
 	"any" usebundle => does_file_exist($(global_vars.file2));
 }
 ```
-	
+
 ## list_file_1 ##
 
 Reports the contents of each test file.
-	
+
 ```cf3
 bundle agent list_file_1
 {
 
-  methods:	
+  methods:
 	"any" usebundle => file_content($(global_vars.file1));
 	"any" usebundle => file_content($(global_vars.file2));
   reports:
@@ -321,11 +320,11 @@ bundle agent exec_aout
 
 }
 ```
-	
+
 ## stat ##
 
 Compares the modified time of each test file using the binary application compiled in create_aout to see if it is newer.
-	
+
 ```cf3
 bundle agent stat
 {
@@ -338,7 +337,7 @@ bundle agent stat
   vars:
 
 	doesfile1exist::
-	
+
 	"file1" string => "$(global_vars.file1)";
 	"file2" string => "$(global_vars.file2)";
 
@@ -353,7 +352,7 @@ bundle agent stat
 	"file2_split2" string => nth("file2_split1",1);
 	"file2_split3" slist => string_split($(file2_split2),"\.",3);
 	"file2_split4" string => nth("file2_split3",1);
-	
+
   methods:
 
 	  "any" usebundle => exec_aout();
@@ -369,11 +368,11 @@ bundle agent stat
 
 }
 ```
-	
+
 ## outer_bundle_2 ##
 
 Modifies the text in the second file.
-	
+
 ```cf3
 bundle agent outer_bundle_2
 {
@@ -384,19 +383,19 @@ bundle agent outer_bundle_2
 	   edit_line => inner_bundle_2;
 }
 ```
-	
+
 ## list_file_2 ##
 
 Uses `filestat` and `isnewerthan` to compare the two test files to see if the second one is newer. Sometimes the modifications already performed, such as copy and modifying text, happen too quickly and filestat and isnewerthan may both report that the second test file is not newer than the first, while the more accurate stat based checks in the stat bundle (see step 12) will recognize the difference.
-	
+
 ```cf3
 bundle agent list_file_2
 {
-	
+
   methods:
 
 	  "any" usebundle => file_content($(global_vars.file1));
-	  "any" usebundle => file_content($(global_vars.file2));	
+	  "any" usebundle => file_content($(global_vars.file2));
 
   classes:
 
@@ -417,9 +416,8 @@ bundle agent list_file_2
 
 }
 ```
-	
-	
+
+
 ## Full Policy ##
 
 [%CFEngine_include_snippet(documentation/examples/tutorials/file_compare_test.cf, .* )%]
-

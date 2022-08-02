@@ -66,7 +66,7 @@ To see a list of available classes on your host, just type the following command
 
 ```console
 # cf-promises --show-classes
-``` 
+```
 
 ## Running policy
 
@@ -87,7 +87,7 @@ bundle agent __main__
 }
 ```
 
-Let’s save this policy in `/tmp/my-policy.cf`.
+Let's save this policy in `/tmp/my-policy.cf`.
 
 You can now run this policy either in Distributed (client-server) System or in a
 Stand Alone system. The next two sections will cover each of the options.
@@ -192,4 +192,3 @@ promise kept.
 Congratulations! You now have the basic knowledge needed to write and run
 CFEngine policies. Let's continue with an example on how to manage users. Click
 here to continue.
-

@@ -58,7 +58,7 @@ Next: Example package promises, Previous: Package promises, Up: Top
 How CFEngine compares package versions
 
 
-Cfengine uses a model for packages that is generic enough to support all the known package managers. It classifies packages into
+CFEngine uses a model for packages that is generic enough to support all the known package managers. It classifies packages into
 
 Name
     The name of the packet is usually the name of the software itself, e.g. ‘cfengine’.

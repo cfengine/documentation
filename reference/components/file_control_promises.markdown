@@ -8,15 +8,15 @@ tags: [body, bodies, components, common, namespace, promises, bundlesequence]
 
 
 ```cf3
-    body file control
-    {
-    namespace => "name1";
-    }
+body file control
+{
+namespace => "name1";
+}
 
-    bundle agent private
-    {
-    ....
-    }
+bundle agent private
+{
+....
+}
 ```
 
 **History:** Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
@@ -92,10 +92,10 @@ to switch to in order to protect the current file from duplicate definitions.
 **Example:**
 
 ```cf3
-    body file control
-    {
-    namespace => "name1";
-    }
+body file control
+{
+namespace => "name1";
+}
 ```
 
 **Notes:**

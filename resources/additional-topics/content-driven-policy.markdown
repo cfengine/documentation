@@ -13,7 +13,7 @@ reviewed: 2019-05-06
 A Content-Driven Policy is a text file with lines containing semi-colon
 separated fields, like a spreadsheet or tabular file. Each line in the file is
 parsed and results in a specific type of promise being made, depending on which
-type the Content-Driven Policy is. The ‘services’ Content-Driven Policy is shown
+type the Content-Driven Policy is. The 'services' Content-Driven Policy is shown
 below.
 
 ```
@@ -90,9 +90,9 @@ like the following.
 # How do Content-Driven Policies work in detail?
 
 
-The text files in masterfiles/cdp_inputs/(e.g. ‘registry_list.txt’) are parsed
+The text files in masterfiles/cdp_inputs/(e.g. 'registry_list.txt') are parsed
 into CFEngine lists by corresponding cdp_*files in masterfiles/(e.g.
-‘cdp_registry.cf’). It is the latter set of files that actually implement the
+'cdp_registry.cf'). It is the latter set of files that actually implement the
 policies in the text files.
 
 The Knowledge Map contains reports specifically designed to match the

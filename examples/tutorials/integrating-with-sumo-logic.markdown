@@ -31,15 +31,15 @@ First, we define a couple of variables.
 The two Sumo variables are used to access the service, while the `curl_args` is the actual curl command that will upload our timestamp file to Sumo Logic.
 
 ```cf3
-    vars:
-      "policy_update_file"
-        string => "/tmp/CFEngine_policy_updated";
-      "sumo_url"
-        string => "https://collectors.sumologic.com/receiver/v1/http/";
-      "sumo_secret"
-        string => "ZaVnC4dhaV1-MY_SECRET_KEY";
-      "curl_args"
-        string => "-X POST -T $(policy_update_file) $(sumo_url)$(sumo_secret)";
+vars:
+  "policy_update_file"
+    string => "/tmp/CFEngine_policy_updated";
+  "sumo_url"
+    string => "https://collectors.sumologic.com/receiver/v1/http/";
+  "sumo_secret"
+    string => "ZaVnC4dhaV1-MY_SECRET_KEY";
+  "curl_args"
+    string => "-X POST -T $(policy_update_file) $(sumo_url)$(sumo_secret)";
 ```
 
 In this next section we tell CFEngine to ensure that the `/tmp/CFEngine_policy_updated` file, as defined by the variable `policy_update_file` always exists.
@@ -56,7 +56,7 @@ files:
   edit_defaults => file;
 
  "$(policy_update_file)"
-  classes => if_repaired("new_policy_update"), 
+  classes => if_repaired("new_policy_update"),
   changes => change_detections;
 
 body changes change_detections
@@ -156,17 +156,17 @@ The policy as found in `sumologic_policy_update.cf`.
             string => "MY_SECRET_KEY";
           "curl_args"
             string => "-X POST -T $(policy_update_file) $(sumo_url)$(sumo_secret)";
-    
+
       files:
           "$(policy_update_file)"
             create => "true",
             edit_line => insert("CFEngine_update: $(sys.last_policy_update)"),
             edit_defaults => file;
-    
+
           "$(policy_update_file)"
             classes => if_repaired("new_policy_update"),
             changes => change_detections;
-    
+
       commands:
         new_policy_update::
           "/usr/bin/curl"
@@ -175,7 +175,7 @@ The policy as found in `sumologic_policy_update.cf`.
             contain => shell_command,
             handle => "New sumo logic event created";
     }
-    
+
     body changes change_detections
     {
             hash => "md5";
@@ -183,21 +183,19 @@ The policy as found in `sumologic_policy_update.cf`.
             report_changes => "content";
             report_diffs => "true";
     }
-    
+
     body contain shell_command
     {
             useshell => "useshell";
     }
-    
+
     bundle edit_line insert(str)
     {
       insert_lines:
           "$(str)";
     }
-    
+
     body edit_defaults file
     {
             empty_file_before_editing => "true";
     }
-
-

@@ -35,8 +35,8 @@ Output:
 
 [%CFEngine_include_snippet(nth.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:**  
-The [collecting function][Functions#collecting functions] behavior was added in 3.9.  
+**History:**
+The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 The ability to use negative indices was added in 3.15.
 
 **See also:** `length()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

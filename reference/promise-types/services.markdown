@@ -37,23 +37,23 @@ and can automatically start or stop these, if desired. Parameters can be
 passed to services that are started by CFEngine.
 
 ```cf3
-    bundle agent example
-    {
-    services:
+bundle agent example
+{
+services:
 
-      "Dhcp"
-        service_policy => "start",
-        service_dependencies => { "Alerter", "W32Time" },
-        service_method => winmethod;
-    }
+  "Dhcp"
+    service_policy => "start",
+    service_dependencies => { "Alerter", "W32Time" },
+    service_method => winmethod;
+}
 
-    body service_method winmethod
-    {
-      service_type => "windows";
-      service_args => "--netmask=255.255.0.0";
-      service_autostart_policy => "none";
-      service_dependence_chain => "start_parent_services";
-    }
+body service_method winmethod
+{
+  service_type => "windows";
+  service_args => "--netmask=255.255.0.0";
+  service_autostart_policy => "none";
+  service_dependence_chain => "start_parent_services";
+}
 ```
 
 **Notes:**
@@ -78,10 +78,10 @@ systems and are merely as a convenient front-end to `processes` and
 reserved agent bundle called
 
 ```cf3
-    bundle agent standard_services(service,state)
-    {
-    ...
-    }
+bundle agent standard_services(service,state)
+{
+...
+}
 ```
 
 This bundle is called with two parameters: the name of the service and a
@@ -95,34 +95,34 @@ service bundle, so this is merely a front-end.
 The standard bundle can be replaced with another, as follows:
 
 ```cf3
-    bundle agent test
-    {
-    vars:
+bundle agent test
+{
+vars:
 
-     "mail" slist => { "spamassassin", "postfix" };
+ "mail" slist => { "spamassassin", "postfix" };
 
-    services:
+services:
 
-      "www" service_policy => "start",
-            service_method => service_test;
+  "www" service_policy => "start",
+        service_method => service_test;
 
-      "$(mail)" service_policy => "stop",
-            service_method => service_test;
-    }
+  "$(mail)" service_policy => "stop",
+        service_method => service_test;
+}
 
-    body service_method service_test
-    {
-      service_bundle => non_standard_services("$(this.promiser)","$(this.service_policy)");
-    }
+body service_method service_test
+{
+  service_bundle => non_standard_services("$(this.promiser)","$(this.service_policy)");
+}
 
-    bundle agent non_standard_services(service,state)
-    {
-    reports:
+bundle agent non_standard_services(service,state)
+{
+reports:
 
-      !done::
+  !done::
 
-        "Test service promise for \"$(service)\" -> $(state)";
-    }
+    "Test service promise for \"$(service)\" -> $(state)";
+}
 ```
 
 Note that the special variables [`$(this.promiser)`][this#this.promiser] and
@@ -336,10 +336,10 @@ optional.
 **Example:**
 
 ```cf3
-     body service_method example
-     {
-       service_args => "-f filename.conf --some-argument";
-     }
+body service_method example
+{
+  service_args => "-f filename.conf --some-argument";
+}
 ```
 
 #### service_autostart_policy
@@ -357,18 +357,18 @@ dispatched once it is being used.
 **Allowed input range:**
 
 ```
-    none
-    boot_time
-    on_demand
+none
+boot_time
+on_demand
 ```
 
 **Example:**
 
 ```cf3
-     body service_method example
-     {
-       service_autostart_policy => "boot_time";
-     }
+body service_method example
+{
+  service_autostart_policy => "boot_time";
+}
 ```
 
 **Notes:** `on_demand` is not supported by Windows, and is implemented through
@@ -418,19 +418,19 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 **Allowed input range:**
 
 ```
-    ignore
-    start_parent_services
-    stop_child_services
-    all_related
+ignore
+start_parent_services
+stop_child_services
+all_related
 ```
 
 **Example:**
 
 ```cf3
-     body service_method example
-     {
-       service_dependence_chain => "start_parent_services";
-     }
+body service_method example
+{
+  service_dependence_chain => "start_parent_services";
+}
 ```
 
 #### service_type
@@ -442,17 +442,17 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 **Allowed input range:**
 
 ```
-    windows
-    generic
+windows
+generic
 ```
 
 **Example:**
 
 ```cf3
-     body service_method example
-     {
-       service_type => "windows";
-     }
+body service_method example
+{
+  service_type => "windows";
+}
 ```
 
 **Notes:** On Windows this defaults to, and must be `windows`. Unix systems can

@@ -50,4 +50,3 @@ Seconds of runtime
 Output:
 
 [%CFEngine_include_snippet(ago.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-

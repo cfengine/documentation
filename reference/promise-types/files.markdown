@@ -35,45 +35,45 @@ that file editing is done "atomically".
 The pseudo-code for this logic is shown in the diagram and below:
 
 ```cf3
- for each file promise-object
-    {
-    if (depth_search)
-      do
-        DepthSearch (HandleLeaf)
-      else
-        (HandleLeaf)
-      done
-    }
-
- HandleLeaf()
+for each file promise-object
    {
-   Does leaf-file exist?
-
-     NO:  create
-     YES: rename,delete,touch,
-
+   if (depth_search)
      do
-      for all servers in {localhost, @(servers)}
-         {
-         if (server-will-provide)
-            do
-              if (depth_search)
-                 embedded source-depth-search (use file source)
-                 break
-              else
-                 (use file source)
-                 break
-              done
-            done
-         }
+       DepthSearch (HandleLeaf)
+     else
+       (HandleLeaf)
      done
-
-   Do all links (always local)
-
-   Check Permissions
-
-   Do edits
    }
+
+HandleLeaf()
+  {
+  Does leaf-file exist?
+
+    NO:  create
+    YES: rename,delete,touch,
+
+    do
+     for all servers in {localhost, @(servers)}
+        {
+        if (server-will-provide)
+           do
+             if (depth_search)
+                embedded source-depth-search (use file source)
+                break
+             else
+                (use file source)
+                break
+             done
+           done
+        }
+    done
+
+  Do all links (always local)
+
+  Check Permissions
+
+  Do edits
+  }
 ```
 
 ### Depth searches (aka 'recursion') during searches
@@ -285,11 +285,11 @@ with CFEngine Enterprise.
 Form of the permissions is as follows:
 
 ```cf3
-                aces = {
-                        "user:uid:mode[:perm_type]", ...,
-                        "group:gid:mode[:perm_type]", ...,
-                        "all:mode[:perm_type]"
-                        };
+aces = {
+        "user:uid:mode[:perm_type]", ...,
+        "group:gid:mode[:perm_type]", ...,
+        "all:mode[:perm_type]"
+        };
 ```
 
 * `user`
@@ -450,29 +450,29 @@ the directory.
 **Allowed input range:**
 
 ```
-    nochange
-    access
-    specify
-    clear
+nochange
+access
+specify
+clear
 ```
 
 **Example:**
 
 ```cf3
-     body acl template
+body acl template
 
-     {
-     acl_method => "overwrite";
-     acl_type => "posix";
-     acl_default => "access";
+{
+acl_method => "overwrite";
+acl_type => "posix";
+acl_default => "access";
 
-     aces => {
-             "user:*:rwx:allow",
-             "group:*:+rw:allow",
-             "mask:rx:allow",
-             "all:r"
-             };
-     }
+aces => {
+        "user:*:rwx:allow",
+        "group:*:+rw:allow",
+        "mask:rx:allow",
+        "all:r"
+        };
+}
 ```
 
 **History:** Was introduced in 3.5. Replaces the now deprecated
@@ -507,20 +507,20 @@ owner, group and all. For example `user:*:rwx`, `group:*:rx`, and `all:---`.
 **Allowed input range:**
 
 ```
-    append
-    overwrite
+append
+overwrite
 ```
 
 **Example:**
 
 ```cf3
-     body acl template
+body acl template
 
-     {
-     acl_method => "overwrite";
-     acl_type => "posix";
-     aces => { "user:*:rw:allow", "group:*:+r:allow", "all:"};
-     }
+{
+acl_method => "overwrite";
+acl_type => "posix";
+aces => { "user:*:rw:allow", "group:*:+r:allow", "all:"};
+}
 ```
 
 #### acl_type
@@ -542,20 +542,20 @@ platform. Currently, the supported values are `posix` and `ntfs`.
 **Allowed input range:**
 
 ```
-    generic
-    posix
-    ntfs
+generic
+posix
+ntfs
 ```
 
 **Example:**
 
 ```cf3
-     body acl template
+body acl template
 
-     {
-     acl_type => "ntfs";
-     aces => { "user:Administrator:rwx(po)", "user:Auditor:r(o)"};
-     }
+{
+acl_type => "ntfs";
+aces => { "user:Administrator:rwx(po)", "user:Auditor:r(o)"};
+}
 ```
 
 #### specify_default_aces
@@ -580,10 +580,10 @@ that do not have a clear inheritance policy.
 **Example:**
 
 ```cf3
-     body acl template
-     {
-     specify_default_aces => {  "all:r" };
-     }
+body acl template
+{
+specify_default_aces => {  "all:r" };
+}
 ```
 
 ### changes
@@ -603,22 +603,22 @@ The `best` option cross correlates the best two available algorithms known in th
 **Allowed input range:**
 
 ```
-    md5
-    sha1
-    sha224
-    sha256
-    sha384
-    sha512
-    best
+md5
+sha1
+sha224
+sha256
+sha384
+sha512
+best
 ```
 
 **Example:**
 
 ```cf3
-     body changes example
-     {
-     hash => "md5";
-     }
+body changes example
+{
+hash => "md5";
+}
 ```
 
 
@@ -633,19 +633,19 @@ Files can change in permissions and contents, i.e. external or internal attribut
 **Allowed input range:**
 
 ```
-    all
-    stats
-    content
-    none
+all
+stats
+content
+none
 ```
 
 **Example:**
 
 ```cf3
-     body changes example
-     {
-     report_changes => "content";
-     }
+body changes example
+{
+report_changes => "content";
+}
 ```
 
 #### update_hashes
@@ -662,10 +662,10 @@ applies to addition and removal too.
 **Example:**
 
 ```cf3
-     body changes example
-     {
-     update_hashes => "true";
-     }
+body changes example
+{
+update_hashes => "true";
+}
 ```
 
 #### report_diffs
@@ -696,10 +696,10 @@ Diffs for binary files are not generated. Files are considered binary files if [
 **Example:**
 
 ```cf3
-     body changes example
-     {
-     report_diffs => "true";
-     }
+body changes example
+{
+report_diffs => "true";
+}
 ```
 
 ### copy_from
@@ -725,11 +725,10 @@ activation.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     source => "/path/to/source";
-     }
-
+body copy_from example
+{
+source => "/path/to/source";
+}
 ```
 
 #### servers
@@ -743,11 +742,11 @@ activation.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     servers => { "primary.example.org", "secondary.example.org",
-                      "tertiary.other.domain" };
-     }
+body copy_from example
+{
+servers => { "primary.example.org", "secondary.example.org",
+                 "tertiary.other.domain" };
+}
 ```
 
 #### collapse_destination_dir
@@ -767,12 +766,12 @@ itself; in other words, a single destination directory. So `src/subdir/file` wil
 **Example:**
 
 ```cf3
-     body copy_from mycopy(from,server)
-     {
-     source      => "$(from)";
-     servers     => { "$(server)" };
-     collapse_destination_dir => "true";
-     }
+body copy_from mycopy(from,server)
+{
+source      => "$(from)";
+servers     => { "$(server)" };
+collapse_destination_dir => "true";
+}
 ```
 
 #### compare
@@ -838,10 +837,10 @@ used.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     compare => "digest";
-     }
+body copy_from example
+{
+compare => "digest";
+}
 ```
 
 #### copy_backup
@@ -857,9 +856,9 @@ defined repository affects the location at which the backup is stored.
 **Allowed input range:**
 
 ```
-    true
-    false
-    timestamp
+true
+false
+timestamp
 ```
 
 **Default value:** true
@@ -891,11 +890,11 @@ for the client and server hosts.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     servers  => { "remote-host.example.org" };
-     encrypt => "true";
-     }
+body copy_from example
+{
+servers  => { "remote-host.example.org" };
+encrypt => "true";
+}
 ```
 
 **Note:** When used with `protocol_version` 2 or greater this attribute is a
@@ -917,10 +916,10 @@ objects and subdirectories within this root (false).
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     check_root => "true";
-     }
+body copy_from example
+{
+check_root => "true";
+}
 ```
 
 #### copylink_patterns
@@ -939,10 +938,10 @@ feature is not available there.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     copylink_patterns => { "special_node1", "other_node.*" };
-     }
+body copy_from example
+{
+copylink_patterns => { "special_node1", "other_node.*" };
+}
 ```
 
 #### copy_size
@@ -962,10 +961,10 @@ comma separated numbers.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     copy_size => irange("0","50000");
-     }
+body copy_from example
+{
+copy_size => irange("0","50000");
+}
 ```
 
 #### findertype
@@ -979,16 +978,16 @@ This applies only to the Mac OS X variants.
 **Allowed input range:**
 
 ```
-    MacOSX
+MacOSX
 ```
 
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     findertype => "MacOSX";
-     }
+body copy_from example
+{
+findertype => "MacOSX";
+}
 ```
 
 #### linkcopy_patterns
@@ -1006,11 +1005,11 @@ absolute path. Windows only supports hard links.
 **Example:**
 
 ```cf3
-     body copy_from mycopy(from)
-     {
-     source            => "$(from)";
-     linkcopy_patterns => { ".*" };
-     }
+body copy_from mycopy(from)
+{
+source            => "$(from)";
+linkcopy_patterns => { ".*" };
+}
 ```
 
 **See also:** [link_type][files#link_type].
@@ -1035,10 +1034,10 @@ source, so relative and absolute links are mutually exclusive.
 **Allowed input range:**
 
 ```
-    symlink
-    hardlink
-    relative
-    absolute
+symlink
+hardlink
+relative
+absolute
 ```
 
 **Default value:** symlink
@@ -1046,11 +1045,11 @@ source, so relative and absolute links are mutually exclusive.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     link_type => "symlink";
-     source => "/tmp/source";
-     }
+body copy_from example
+{
+link_type => "symlink";
+source => "/tmp/source";
+}
 ```
 
 #### missing_ok
@@ -1099,10 +1098,10 @@ by network disruptions.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     force_update => "true";
-     }
+body copy_from example
+{
+force_update => "true";
+}
 ```
 
 #### force_ipv4
@@ -1118,10 +1117,10 @@ IPv6 should be harmless to most users unless you have a partially or mis-configu
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     force_ipv4 => "true";
-     }
+body copy_from example
+{
+force_ipv4 => "true";
+}
 ```
 
 #### portnumber
@@ -1140,10 +1139,10 @@ change in the future.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     portnumber => "5308";
-     }
+body copy_from example
+{
+portnumber => "5308";
+}
 ```
 
 #### preserve
@@ -1164,10 +1163,10 @@ security contexts. For remote copies, only Unix mode is preserved.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     preserve => "true";
-     }
+body copy_from example
+{
+preserve => "true";
+}
 ```
 
 **History:** Version 3.1.0b3,Nova 2.0.0b1 (2010)
@@ -1208,10 +1207,10 @@ is set to true.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     purge => "true";
-     }
+body copy_from example
+{
+purge => "true";
+}
 ```
 
 #### stealth
@@ -1227,10 +1226,10 @@ modification times on the promiser files.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     stealth => "true";
-     }
+body copy_from example
+{
+stealth => "true";
+}
 ```
 
 #### timeout
@@ -1247,10 +1246,10 @@ timeout, in seconds.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     timeout => "10";
-     }
+body copy_from example
+{
+timeout => "10";
+}
 ```
 
 **See also:** [agent `default_timeout`][cf-agent#default_timeout], [`cf-runagent` timeout][cf-runagent#timeout]
@@ -1287,10 +1286,10 @@ revoked by a system administrator. Keys are stored in `WORKDIR/ppkeys`.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     trustkey => "true";
-     }
+body copy_from example
+{
+trustkey => "true";
+}
 ```
 
 #### type_check
@@ -1307,10 +1306,10 @@ off.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     type_check => "false";
-     }
+body copy_from example
+{
+type_check => "false";
+}
 ```
 
 #### verify
@@ -1328,10 +1327,10 @@ recommended for large file transfers.
 **Example:**
 
 ```cf3
-     body copy_from example
-     {
-     verify => "true";
-     }
+body copy_from example
+{
+verify => "true";
+}
 ```
 
 ### content
@@ -1422,18 +1421,18 @@ remove directory links.
 **Allowed input range:**
 
 ```
-    delete
-    tidy
-    keep
+delete
+tidy
+keep
 ```
 
 **Example:**
 
 ```cf3
-     body delete example
-     {
-     dirlinks => "keep";
-     }
+body delete example
+{
+dirlinks => "keep";
+}
 ```
 
 **Default value** (only if body is present): `dirlinks = delete`
@@ -1453,10 +1452,10 @@ recursive deletion
 **Example:**
 
 ```cf3
-     body delete example
-     {
-     rmdirs => "true";
-     }
+body delete example
+{
+rmdirs => "true";
+}
 ```
 
 Note the parent directory of a search is not deleted in recursive deletions. You
@@ -1494,10 +1493,10 @@ Note that the value inf may be used for an unlimited value.
 **Example:**
 
 ```cf3
-     body depth_search example
-     {
-     depth => "inf";
-     }
+body depth_search example
+{
+depth => "inf";
+}
 ```
 
 #### exclude_dirs
@@ -1515,11 +1514,11 @@ a file system.
 **Example:**
 
 ```cf3
-     body depth_search
-     {
-     # no dot directories
-     exclude_dirs => { "\..*" };
-     }
+body depth_search
+{
+    # no dot directories
+    exclude_dirs => { "\..*" };
+}
 ```
 
 #### include_basedir
@@ -1556,10 +1555,10 @@ This is the complement of `exclude_dirs`.
 **Example:**
 
 ```cf3
-     body depth_search example
-     {
-     include_dirs => { "subdir1", "subdir2", "pattern.*" };
-     }
+body depth_search example
+{
+include_dirs => { "subdir1", "subdir2", "pattern.*" };
+}
 ```
 
 #### rmdeadlinks
@@ -1576,10 +1575,10 @@ exist should be deleted; or kept if set to false.
 **Example:**
 
 ```cf3
-     body depth_search example
-     {
-     rmdeadlinks => "true";
-     }
+body depth_search example
+{
+rmdeadlinks => "true";
+}
 ```
 
 #### traverse_links
@@ -1597,10 +1596,10 @@ dangerous assumption and links are not traversed.
 **Example:**
 
 ```cf3
-     body depth_search example
-     {
-     traverse_links => "true";
-     }
+body depth_search example
+{
+traverse_links => "true";
+}
 ```
 
 #### xdev
@@ -1635,10 +1634,10 @@ body depth_search example
 **Allowed input range:**
 
 ```
-    true
-    false
-    timestamp
-    rotate
+true
+false
+timestamp
+rotate
 ```
 
 **Default value:** true
@@ -1781,10 +1780,10 @@ recipe allows an ordered procedure to be convergent.
 **Example:**
 
 ```cf3
-     body edit_defaults example
-     {
-     empty_file_before_editing => "true";
-     }
+body edit_defaults example
+{
+empty_file_before_editing => "true";
+}
 ```
 
 
@@ -1798,18 +1797,18 @@ classes of its parent
 **Example:**
 
 ```cf3
-     bundle agent name
-     {
-     methods:
+bundle agent name
+{
+methods:
 
-       "group name" usebundle => my_method,
-                      inherit => "true";
-     }
+  "group name" usebundle => my_method,
+                 inherit => "true";
+}
 
-     body edit_defaults example
-     {
-     inherit => "true";
-     }
+body edit_defaults example
+{
+inherit => "true";
+}
 ```
 
 **History:** Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
@@ -1841,10 +1840,10 @@ determined by the global control body setting whose default value is
 **Example:**
 
 ```cf3
-     body edit_defaults example
-     {
-     max_file_size => "50K";
-     }
+body edit_defaults example
+{
+max_file_size => "50K";
+}
 ```
 
 #### recognize_join
@@ -1868,20 +1867,20 @@ in a meaningful and convergent fashion.
 **Example:**
 
 ```cf3
-     files:
+files:
 
-       "/tmp/test_insert"
-                 create => "true",
-              edit_line => Insert("$(insert.v)"),
-          edit_defaults => join;
-     }
+  "/tmp/test_insert"
+            create => "true",
+         edit_line => Insert("$(insert.v)"),
+     edit_defaults => join;
+}
 
-     #
+#
 
-     body edit_defaults join
-     {
-     recognize_join => "true";
-     }
+body edit_defaults join
+{
+recognize_join => "true";
+}
 ```
 
 #### rotate
@@ -1913,11 +1912,11 @@ deleted (that is, it "falls off the end" of the rotation).
 **Example:**
 
 ```cf3
-     body edit_defaults example
-     {
-     edit_backup => "rotate";
-     rotate => "4";
-     }
+body edit_defaults example
+{
+edit_backup => "rotate";
+rotate => "4";
+}
 ```
 
 **See also:** [`edit_backup` in ```body edit_defaults```][files#edit_backup]
@@ -2007,11 +2006,11 @@ This pattern matches only the node name of the file, not its path.
 **Example:**
 
 ```cf3
-     body file_select example
-     {
-     leaf_name => { "S[0-9]+[a-zA-Z]+", "K[0-9]+[a-zA-Z]+" };
-     file_result => "leaf_name";
-     }
+body file_select example
+{
+leaf_name => { "S[0-9]+[a-zA-Z]+", "K[0-9]+[a-zA-Z]+" };
+file_result => "leaf_name";
+}
 ```
 
 #### path_name
@@ -2028,13 +2027,13 @@ of appropriate regular expressions.
 **Example:**
 
 ```cf3
-     body file_select example
-     {
-     leaf_name => { "prog.pid", "prog.log" };
-     path_name => { "/etc/.*", "/var/run/.*" };
+body file_select example
+{
+leaf_name => { "prog.pid", "prog.log" };
+path_name => { "/etc/.*", "/var/run/.*" };
 
-     file_result => "leaf_name.path_name"
-     }
+file_result => "leaf_name.path_name"
+}
 ```
 
 #### search_mode
@@ -2052,28 +2051,28 @@ implies `u` AND `g`.
 **Example:**
 
 ```cf3
-     bundle agent testbundle
-     {
-     files:
+bundle agent testbundle
+{
+files:
 
-       "/home/mark/tmp/testcopy"
+  "/home/mark/tmp/testcopy"
 
-         file_select => by_modes,
-         transformer => "/bin/echo DETECTED $(this.promiser)",
-         depth_search => recurse("inf");
+    file_select => by_modes,
+    transformer => "/bin/echo DETECTED $(this.promiser)",
+    depth_search => recurse("inf");
 
-     }
+}
 
-     body file_select by_modes
-     {
-     search_mode => { "711" , "666" };
-     file_result => "mode";
-     }
+body file_select by_modes
+{
+search_mode => { "711" , "666" };
+file_result => "mode";
+}
 
-     body depth_search recurse(d)
-     {
-     depth => "$(d)";
-     }
+body depth_search recurse(d)
+{
+depth => "$(d)";
+}
 ```
 
 #### search_size
@@ -2087,11 +2086,11 @@ implies `u` AND `g`.
 **Example:**
 
 ```cf3
-     body file_select example
-     {
-     search_size => irange("0","20k");
-     file_result => "size";
-     }
+body file_select example
+{
+search_size => irange("0","20k");
+file_result => "size";
+}
 ```
 
 #### search_owners
@@ -2109,11 +2108,11 @@ userid.
 **Example:**
 
 ```cf3
-     body file_select example
-     {
-     search_owners => { "mark", "jeang", "student_.*" };
-     file_result => "owner";
-     }
+body file_select example
+{
+search_owners => { "mark", "jeang", "student_.*" };
+file_result => "owner";
+}
 ```
 
 **Notes:**
@@ -2133,11 +2132,11 @@ A list of [anchored][anchored] regular expressions, any of which must match the 
 **Example:**
 
 ```cf3
-     body file_select example
-     {
-     search_groups => { "users", "special_.*" };
-     file_result => "group";
-     }
+body file_select example
+{
+search_groups => { "users", "special_.*" };
+file_result => "group";
+}
 ```
 
 **Notes:**
@@ -2158,11 +2157,11 @@ CFEngine). See the manual page for `chflags` for more details.
 **Example:**
 
 ```cf3
-     body file_select xyz
-     {
-     search_bsdflags => "archived|dump";
-     file_result => "bsdflags";
-     }
+body file_select xyz
+{
+search_bsdflags => "archived|dump";
+file_result => "bsdflags";
+}
 ```
 
 #### ctime
@@ -2180,11 +2179,11 @@ time.
 **Example:**
 
 ```cf3
-     body files_select example
-     {
-     ctime => irange(ago(1,0,0,0,0,0),now);
-     file_result => "ctime";
-     }
+body files_select example
+{
+ctime => irange(ago(1,0,0,0,0,0),now);
+file_result => "ctime";
+}
 ```
 
 #### mtime
@@ -2201,12 +2200,12 @@ not other attributes, such as permissions.
 **Example:**
 
 ```cf3
-     body files_select example
-     {
-     # Files modified more than one year ago (i.e., not in mtime range)
-     mtime => irange(ago(1,0,0,0,0,0),now);
-     file_result => "!mtime";
-     }
+body files_select example
+{
+    # Files modified more than one year ago (i.e., not in mtime range)
+    mtime => irange(ago(1,0,0,0,0,0),now);
+    file_result => "!mtime";
+}
 ```
 
 #### atime
@@ -2223,20 +2222,20 @@ A range of times during which a file was accessed can be specified in a
 **Example:**
 
 ```cf3
-     body file_select used_recently
-     {
-     # files accessed within the last hour
-     atime     => irange(ago(0,0,0,1,0,0),now);
-     file_result => "atime";
-     }
+body file_select used_recently
+{
+    # files accessed within the last hour
+    atime     => irange(ago(0,0,0,1,0,0),now);
+    file_result => "atime";
+}
 
 
-     body file_select not_used_much
-     {
-     # files not accessed since 00:00 1st Jan 2000 (in the local timezime)
-     atime     => irange(on(2000,1,1,0,0,0),now);
-     file_result => "!atime";
-     }
+body file_select not_used_much
+{
+    # files not accessed since 00:00 1st Jan 2000 (in the local timezime)
+    atime     => irange(on(2000,1,1,0,0,0),now);
+    file_result => "!atime";
+}
 ```
 
 #### exec_regex
@@ -2256,12 +2255,12 @@ output must be matched.
 **Example:**
 
 ```cf3
-     body file_select example
-     {
-     exec_regex => "SPECIAL_LINE: .*";
-     exec_program => "/path/test_program $(this.promiser)";
-     file_result => "exec_program.exec_regex";
-     }
+body file_select example
+{
+exec_regex => "SPECIAL_LINE: .*";
+exec_program => "/path/test_program $(this.promiser)";
+file_result => "exec_program.exec_regex";
+}
 ```
 
 #### exec_program
@@ -2280,11 +2279,11 @@ matched.
 **Example:**
 
 ```cf3
-     body file_select example
-     {
-     exec_program => "/path/test_program $(this.promiser)";
-     file_result => "exec_program";
-     }
+body file_select example
+{
+exec_program => "/path/test_program $(this.promiser)";
+file_result => "exec_program";
+}
 ```
 
 #### file_types
@@ -2300,26 +2299,26 @@ plain. In both cases this means not one of the "special" file types.
 **Allowed input range:**
 
 ```cf3
-    plain
-    reg
-    symlink
-    dir
-    socket
-    fifo
-    door
-    char
-    block
+plain
+reg
+symlink
+dir
+socket
+fifo
+door
+char
+block
 ```
 
 **Example:**
 
 ```cf3
-     body file_select filter
-     {
-     file_types => { "plain","symlink" };
+body file_select filter
+{
+file_types => { "plain","symlink" };
 
-     file_result => "file_types";
-     }
+file_result => "file_types";
+}
 ```
 
 #### issymlinkto
@@ -2336,10 +2335,10 @@ expressions, the file will be selected.
 **Example:**
 
 ```cf3
-     body file_select example
-     {
-     issymlinkto => { "/etc/[^/]*", "/etc/init\.d/[a-z0-9]*" };
-     }
+body file_select example
+{
+issymlinkto => { "/etc/[^/]*", "/etc/init\.d/[a-z0-9]*" };
+}
 ```
 
 **Notes:**
@@ -2364,20 +2363,20 @@ components.
 **Example:**
 
 ```cf3
-     body file_select year_or_less
-     {
-     mtime       => irange(ago(1,0,0,0,0,0),now);
-     file_result => "mtime";
-     }
+body file_select year_or_less
+{
+mtime       => irange(ago(1,0,0,0,0,0),now);
+file_result => "mtime";
+}
 
-     body file_select my_pdf_files_morethan1dayold
-     {
-     mtime         => irange(ago(0,0,1,0,0,0),now);
-     leaf_name     => { ".*\.pdf" , ".*\.fdf" };
-     search_owners => { "mark" };
+body file_select my_pdf_files_morethan1dayold
+{
+mtime         => irange(ago(0,0,1,0,0,0),now);
+leaf_name     => { ".*\.pdf" , ".*\.fdf" };
+search_owners => { "mark" };
 
-     file_result => "owner.leaf_name.!mtime";
-     }
+file_result => "owner.leaf_name.!mtime";
+}
 ```
 
 You may specify arbitrarily complex file-matching parameters, such as what is
@@ -2398,8 +2397,8 @@ specifying `fifo` in `file_type`.
 **Allowed input range:**
 
 ```
-    regular
-    fifo
+regular
+fifo
 ```
 
 [%CFEngine_promise_attribute(cfengine)%]
@@ -2428,10 +2427,10 @@ updated by modification time.
 **Example:**
 
 ```cf3
-     body link_from example
-     {
-     copy_patterns =>  { "special_node1", "/path/special_node2" };
-     }
+body link_from example
+{
+copy_patterns =>  { "special_node1", "/path/special_node2" };
+}
 ```
 
 #### link_children
@@ -2475,10 +2474,10 @@ are mutually exclusive.
 **Allowed input range:**
 
 ```
-    symlink
-    hardlink
-    relative
-    absolute
+symlink
+hardlink
+relative
+absolute
 ```
 
 **Default value:** symlink
@@ -2487,11 +2486,11 @@ are mutually exclusive.
 
 [%CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##)%]
 ```cf3
-     body link_from example
-     {
-     link_type => "symlink";
-     source => "/tmp/source";
-     }
+body link_from example
+{
+link_type => "symlink";
+source => "/tmp/source";
+}
 ```
 
 **Example usage:**
@@ -2515,10 +2514,10 @@ For remote copies this refers to the file name on the remote server.
 **Example:**
 
 ```cf3
-     body link_from example
-     {
-     source => "/path/to/source";
-     }
+body link_from example
+{
+source => "/path/to/source";
+}
 ```
 
 
@@ -2540,17 +2539,17 @@ certain fields overridden.
 **Allowed input range:**
 
 ```
-    override_file
-    if_no_such_file
+override_file
+if_no_such_file
 ```
 
 **Example:**
 
 ```cf3
-     body link_from example
-     {
-     when_linking_children => "if_no_such_file";
-     }
+body link_from example
+{
+when_linking_children => "if_no_such_file";
+}
 ```
 
 #### when_no_source
@@ -2567,9 +2566,9 @@ or do nothing.
 **Allowed input range:**
 
 ```
-    force
-    delete
-    nop
+force
+delete
+nop
 ```
 
 **Default value:** `nop`
@@ -2577,10 +2576,10 @@ or do nothing.
 **Example:**
 
 ```cf3
-     body link_from example
-     {
-     when_no_source => "force";
-     }
+body link_from example
+{
+when_no_source => "force";
+}
 ```
 
 ### move_obstructions
@@ -2606,13 +2605,13 @@ side of caution.
 **Example:**
 
 ```cf3
-    files:
+files:
 
-      "/tmp/testcopy"
+  "/tmp/testcopy"
 
-        copy_from    => mycopy("/tmp/source"),
-        move_obstructions => "true",
-        depth_search => recurse("inf");
+    copy_from    => mycopy("/tmp/source"),
+    move_obstructions => "true",
+    depth_search => recurse("inf");
 ```
 
 **Notes:**
@@ -2639,9 +2638,9 @@ you have the option to declare your intention.
 **Allowed input range:**
 
 ```
-    literal
-    regex
-    guess
+literal
+regex
+guess
 ```
 
 If the keyword `literal` is invoked, a path will be treated as a literal
@@ -2702,11 +2701,11 @@ separator.
 **Example:**
 
 ```cf3
-     body perms example
-     {
-     bsdflags => { "uappnd","uchg","uunlnk","nodump",
-                   "opaque","sappnd","schg","sunlnk" };
-     }
+body perms example
+{
+bsdflags => { "uappnd","uchg","uunlnk","nodump",
+              "opaque","sappnd","schg","sunlnk" };
+}
 ```
 
 **Notes:**
@@ -2731,10 +2730,10 @@ group.
 **Example:**
 
 ```cf3
-     body perms example
-     {
-     groups => { "users", "administrators" };
-     }
+body perms example
+{
+groups => { "users", "administrators" };
+}
 ```
 
 **Notes:**
@@ -2754,10 +2753,10 @@ The mode string may be symbolic or numerical, like `chmod`.
 **Example:**
 
 ```cf3
-     body perms example
-     {
-     mode => "a+rx,o+w";
-     }
+body perms example
+{
+mode => "a+rx,o+w";
+}
 ```
 
 **See also:** `rxdirs`
@@ -2782,10 +2781,10 @@ registered user.
 **Example:**
 
 ```cf3
-     body perms example
-     {
-     owners => { "mark", "wwwrun", "jeang" };
-     }
+body perms example
+{
+owners => { "mark", "wwwrun", "jeang" };
+}
 ```
 
 **Notes:**
@@ -2840,11 +2839,11 @@ unreadable.
 **Example:**
 
 ```cf3
-     body rename example
-     {
-     disable => "true";
-     disable_suffix => ".nuked";
-     }
+body rename example
+{
+disable => "true";
+disable_suffix => ".nuked";
+}
 ```
 
 #### disable_mode
@@ -2861,10 +2860,10 @@ remove the executable flag.
 **Example:**
 
 ```cf3
-     body rename example
-     {
-     disable_mode => "0600";
-     }
+body rename example
+{
+disable_mode => "0600";
+}
 ```
 
 #### disable_suffix
@@ -2882,11 +2881,11 @@ To disable files in a particular manner, use this string suffix.
 **Example:**
 
 ```cf3
-     body rename example
-     {
-     disable => "true";
-     disable_suffix => ".nuked";
-     }
+body rename example
+{
+disable => "true";
+disable_suffix => ".nuked";
+}
 ```
 
 #### newname
@@ -2900,10 +2899,10 @@ To disable files in a particular manner, use this string suffix.
 **Example:**
 
 ```cf3
-     body rename example(s)
-     {
-     newname => "$(s)";
-     }
+body rename example(s)
+{
+newname => "$(s)";
+}
 ```
 
 #### rotate
@@ -2931,10 +2930,10 @@ files plus the one "main" file.
 **Example:**
 
 ```cf3
-     body rename example
-     {
-     rotate => "4";
-     }
+body rename example
+{
+rotate => "4";
+}
 ```
 
 In the example above, the file `foo.3` will be renamed `foo.4`, but the old
@@ -2960,12 +2959,12 @@ ordinarily be stored in an alternative repository as
 **Example:**
 
 ```cf3
-    files:
+files:
 
-     "/path/file"
+ "/path/file"
 
-       copy_from => source,
-       repository => "/var/cfengine/repository";
+   copy_from => source,
+   repository => "/var/cfengine/repository";
 ```
 
 ### template_data
@@ -2977,28 +2976,28 @@ ordinarily be stored in an alternative repository as
 **Example:**
 
 ```cf3
-    files:
+files:
 
-     "/path/file"
-     ...
-     edit_template => "mytemplate.mustache",
-     template_data => parsejson('{"message":"hello"}'),
-     template_method => "mustache";
+ "/path/file"
+ ...
+ edit_template => "mytemplate.mustache",
+ template_data => parsejson('{"message":"hello"}'),
+ template_method => "mustache";
 ```
 
 **Example:**
 
 ```cf3
-    vars:
-     "mycontainer" data => '[ 1, 2, 3 ]';
+vars:
+ "mycontainer" data => '[ 1, 2, 3 ]';
 
-    files:
+files:
 
-     "/path/file"
-     ...
-     edit_template => "mytemplate.mustache",
-     template_data => @(mycontainer),
-     template_method => "mustache";
+ "/path/file"
+ ...
+ edit_template => "mytemplate.mustache",
+ template_data => @(mycontainer),
+ template_method => "mustache";
 ```
 
 If this attribute is omitted, the result of the `datastate()` function
@@ -3024,9 +3023,9 @@ mark regions and classes. Each line represents an `insert_lines`
 promise, unless the promises are grouped into a block using:
 
 ```cf3
-    [%CFEngine BEGIN %]
-    ...
-    [%CFEngine END %]
+[%CFEngine BEGIN %]
+...
+[%CFEngine END %]
 ```
 
 Variables, scalars and list variables are expanded within each promise
@@ -3050,58 +3049,58 @@ block. This includes blank lines.
 Example contrived ```cfengine``` template:
 
 ```cf3
-    #This is a template file /templates/input.tmpl
+#This is a template file /templates/input.tmpl
 
-    These lines apply to anyone
+These lines apply to anyone
 
-    [%CFEngine solaris.Monday:: %]
-    Everything after here applies only to solaris on Mondays
-    until overridden...
+[%CFEngine solaris.Monday:: %]
+Everything after here applies only to solaris on Mondays
+until overridden...
 
-    [%CFEngine linux:: %]
-    Everything after here now applies now to linux only.
+[%CFEngine linux:: %]
+Everything after here now applies now to linux only.
 
-    [%CFEngine BEGIN %]
-    This is a block of text
-    That contains list variables: $(some.list)
-    With text before and after.
-    [%CFEngine END %]
+[%CFEngine BEGIN %]
+This is a block of text
+That contains list variables: $(some.list)
+With text before and after.
+[%CFEngine END %]
 
-    nameserver $(some.list)
+nameserver $(some.list)
 ```
 
 Example ```cfengine``` template for apache vhost directives:
 
 ```cf3
-    [%CFEngine any:: %]
-    VirtualHost $(sys.ipv4[eth0]):80>
-            ServerAdmin             $(stage_file.params[apache_mail_address][1])
-            DocumentRoot            /var/www/htdocs
-            ServerName              $(stage_file.params[apache_server_name][1])
-            AddHandler              cgi-script cgi
-            ErrorLog                /var/log/httpd/error.log
-            AddType                 application/x-x509-ca-cert .crt
-            AddType                 application/x-pkcs7-crl    .crl
-            SSLEngine               off
-            CustomLog               /var/log/httpd/access.log
-    /VirtualHost>
+[%CFEngine any:: %]
+VirtualHost $(sys.ipv4[eth0]):80>
+        ServerAdmin             $(stage_file.params[apache_mail_address][1])
+        DocumentRoot            /var/www/htdocs
+        ServerName              $(stage_file.params[apache_server_name][1])
+        AddHandler              cgi-script cgi
+        ErrorLog                /var/log/httpd/error.log
+        AddType                 application/x-x509-ca-cert .crt
+        AddType                 application/x-pkcs7-crl    .crl
+        SSLEngine               off
+        CustomLog               /var/log/httpd/access.log
+/VirtualHost>
 
-    [%CFEngine webservers_prod:: %]
-    [%CFEngine BEGIN %]
-    VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>
-            ServerAdmin             $(stage_file.params[apache_mail_address][1])
-            DocumentRoot            /var/www/htdocs
-            ServerName              $(stage_file.params[apache_server_name][1])
-            AddHandler              cgi-script cgi
-            ErrorLog                /var/log/httpd/error.log
-            AddType                 application/x-x509-ca-cert .crt
-            AddType                 application/x-pkcs7-crl    .crl
-            SSLEngine               on
-            SSLCertificateFile      $(stage_file.params[apache_ssl_crt][1])
-            SSLCertificateKeyFile   $(stage_file.params[apache_ssl_key][1])
-            CustomLog               /var/log/httpd/access.log
-    /VirtualHost>
-    [%CFEngine END %]
+[%CFEngine webservers_prod:: %]
+[%CFEngine BEGIN %]
+VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>
+        ServerAdmin             $(stage_file.params[apache_mail_address][1])
+        DocumentRoot            /var/www/htdocs
+        ServerName              $(stage_file.params[apache_server_name][1])
+        AddHandler              cgi-script cgi
+        ErrorLog                /var/log/httpd/error.log
+        AddType                 application/x-x509-ca-cert .crt
+        AddType                 application/x-pkcs7-crl    .crl
+        SSLEngine               on
+        SSLCertificateFile      $(stage_file.params[apache_ssl_crt][1])
+        SSLCertificateKeyFile   $(stage_file.params[apache_ssl_key][1])
+        CustomLog               /var/log/httpd/access.log
+/VirtualHost>
+[%CFEngine END %]
 ```
 
 #### template_method inline_mustache
@@ -3273,11 +3272,11 @@ with `.`.
 **Example:**
 
 ```cf3
-    files:
+files:
 
-     "/path/file"
+ "/path/file"
 
-       touch => "true";
+   touch => "true";
 ```
 
 ### transformer

@@ -63,7 +63,9 @@ Anchors with _underscores_ are problematic, they need to be escaped.
 
 For example ```services_autorun``` in the MPF documentation the underscore needs to be escaped with a ```\```.
 
-```**See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]```
+```
+**See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
+```
 
 **See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
 
@@ -81,9 +83,9 @@ The documentation pre-processor will create those automatically.
 However, the preprocess will not create links if the code word is in triple backticks:
 
 
-    ```classes``` and ```readfile()```
+    No links: ```classes``` and ```readfile()```
 
-```classes``` and ```readfile()```
+No links: ```classes``` and ```readfile()```
 
 ### Link to External URL
 
@@ -128,14 +130,13 @@ CFEngine we use only `*`.
 ### Nested lists
 
 ```
-
 * Item 1
   1. First
   2. First
     1. 1.2.1
 * Item 2
   * Item 2a (2 spaces)
-      
+
       I am indented 4 spaces
 
 * Multi paragraph item
@@ -149,7 +150,7 @@ CFEngine we use only `*`.
     1. 1.2.1
 * Item 2
   * Item 2a (2 spaces)
-      
+
       I am indented 4 spaces
 
 * Multi paragraph item
@@ -189,32 +190,23 @@ See the note above on implicit linking - single backticks will link, triple back
 
 ### Code Blocks
 
-Code blocks are either indendented by four spaces:
-
-Just indent by four spaces:
-
-```
-    $ code block
-    $ without syntax highlighting
-```
-
-    $ code block
-    $ without syntax highlighting
-
-or use three backticks:
+Start a code block using triple backticks:
 
     ```
-    some more code
+    some code
     in a block
     ```
 
 ```
-some more code
+some code
 in a block
 ```
 
-To turn on syntax highlighting, specify the brush directly after the opening three
-backticks. Syntax highlighting is provided by pygments. Find all available lexers [here](http://pygments.org/docs/lexers/).
+You can also create a code block by indenting your code by 4 spaces,
+however this does not support syntax highlighting and triple backticks are preferred.
+
+To turn on syntax highlighting, specify the language ("brush") directly after the opening three backticks.
+Syntax highlighting is provided by pygments. Find all available lexers [here](http://pygments.org/docs/lexers/).
 
 #### CFEngine Code Blocks
 
@@ -237,18 +229,18 @@ bundle agent example()
 ```
 
 
-Other frequently used syntax highlighers shown below.
+Other frequently used syntax highlighters shown below.
 
 #### Bash Script Code Blocks
 
-		```bash
-		#!/bin/bash
+        ```bash
+        #!/bin/bash
         echo hi
         for i in `seq 1 10`;
         do
           echo $i
         done
-		```
+        ```
 
 ```bash
 #!/bin/bash
@@ -262,7 +254,7 @@ done
 #### Console Blocks
 
         ```console
-		root@policy_server # /etc/init.d/cfengine3 stop
+        root@policy_server # /etc/init.d/cfengine3 stop
         ```
 
 ```console
@@ -271,20 +263,20 @@ root@policy_server # /etc/init.d/cfengine3 stop
 
 #### SQL Code Blocks
 
-		```sql
-	    SELECT
-	         FileChanges.FileName,
-	         Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
-	         COUNT(1) AS ChangeCount
-	      FROM
-	         FileChanges JOIN Contexts
-	      WHERE
-	         Contexts.ContextName='ubuntu'
-	      GROUP BY
-	         FileChanges.FileName
-	      ORDER BY
-	         ChangeCount DESC
-		```
+        ```sql
+        SELECT
+             FileChanges.FileName,
+             Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
+             COUNT(1) AS ChangeCount
+          FROM
+             FileChanges JOIN Contexts
+          WHERE
+             Contexts.ContextName='ubuntu'
+          GROUP BY
+             FileChanges.FileName
+          ORDER BY
+             ChangeCount DESC
+        ```
 
 ```sql
 SELECT
@@ -303,26 +295,26 @@ SELECT
 
 #### Diff Code Blocks
 
-		```diff
-		diff --git a/README.md b/README.md
-		index 92555a2..b49c0bb 100644
-		--- a/README.md
-		+++ b/README.md
-		@@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
+        ```diff
+        diff --git a/README.md b/README.md
+        index 92555a2..b49c0bb 100644
+        --- a/README.md
+        +++ b/README.md
+        @@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
 
-		 * follow the [Policy Style Guide](guide/writing-and-serving-policy/policy-style.markdown)
-		   in examples and code snippets
-		-* always run it through Pygments plus the appropriate lexer (only cf3
-		-  supported for now)
-		+* always run it through Pygments plus the appropriate lexer
-		+
-		+Most important are the `cf3` lexer, as well as `bash`, `console`,
-		+`diff`, `shell-session` and `postgresql`. But Jekyll supports
-		+[many more lexers](http://pygments.org/docs/lexers/)
-		+
-		 * avoid custom color schemes and hand-coded HTML
-		 * document the example after the example code
-		```
+         * follow the [Policy Style Guide](guide/writing-and-serving-policy/policy-style.markdown)
+           in examples and code snippets
+        -* always run it through Pygments plus the appropriate lexer (only cf3
+        -  supported for now)
+        +* always run it through Pygments plus the appropriate lexer
+        +
+        +Most important are the `cf3` lexer, as well as `bash`, `console`,
+        +`diff`, `shell-session` and `postgresql`. But Jekyll supports
+        +[many more lexers](http://pygments.org/docs/lexers/)
+        +
+         * avoid custom color schemes and hand-coded HTML
+         * document the example after the example code
+        ```
 
 ```diff
 diff --git a/README.md b/README.md
@@ -405,26 +397,26 @@ You can also use backticks (and get syntax highlighting) - just make sure the ba
 
     1. First
 
-    	```cf3
-    	# CFEngine block
+        ```cf3
+        # CFEngine block
 
-    	bundle agent example()
-    	{
-    	}
-    	```
+        bundle agent example()
+        {
+        }
+        ```
 
     2. Second
     3. Third
 
 1. First
 
-	```cf3
-	# CFEngine block
+    ```cf3
+    # CFEngine block
 
-	bundle agent example()
-	{
-	}
-	```
+    bundle agent example()
+    {
+    }
+    ```
 
 2. Second
 3. Third
@@ -449,7 +441,7 @@ Examples from cfengine/core can be rendered using the `CFEngine_include_example`
 
 - Lines inside `src` starting with `#@ ` are interpreted as markdown.
 
-- Wrap macro in `raw` and `endraw` tags if the file contains mustache. This allows it to be rendered correctly. 
+- Wrap macro in `raw` and `endraw` tags if the file contains mustache. This allows it to be rendered correctly.
 
   `[\%CFEngine_include_example(class-automatic-canonificiation.cf)\%]`
 
@@ -503,10 +495,10 @@ Sometimes it's nice to include an external file
 Here I am including a bundle named `cfe_autorun_inventory_listening_ports`. It may be a common or an agent bundle (in case the bundle ever changes types).
 
 <pre>
-[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%] 
+[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%]
 </pre>
 
-[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%] 
+[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%]
 
 ## Comments inside documentation
 
@@ -536,7 +528,7 @@ If it's code or something you would see on the command line (policy language, fi
 
 If you are referring to something within UI / screenshots / buttons etc use bold and capitalize it as it is within the UI/Button/whatever.
 
-  
+
 **References:**
 
 * https://www.patternfly.org/v4/ux-writing/punctuation/
@@ -610,7 +602,5 @@ site.CFE_manuals_version {{ site.CFE_manuals_version }}
             ]
          }'
      ```
-  
+
 2. Some other thing
-
-

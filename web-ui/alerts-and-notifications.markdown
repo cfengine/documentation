@@ -26,13 +26,13 @@ tags: [cfengine enterprise, user interface, mission portal]
 	* **Low**: Yellow
 	* **Medium**: Orange
 	* **High**: Red
-	
+
 
 <img src="Alerts.top.severity.png" alt="New Alerts Severity" width="412px">
 
 * From the **Severity** dropdown box, select one of the three options available.
-	
-* The **Select Condition** drop down box represents an inventory of existing conditional rules, as well as an option to create a new one	
+
+* The **Select Condition** drop down box represents an inventory of existing conditional rules, as well as an option to create a new one
 
 
 <img src="Alerts.top.condition.png" alt="New Alerts Condition" width="590px">
@@ -50,7 +50,7 @@ tags: [cfengine enterprise, user interface, mission portal]
 	* **Inventory** conditions trigger alerts for inventory attributes. These attributes correspond to the ones found in inventory reports.
 
 	* **Software Updates** conditions trigger alerts based on packages available for update in the repository. They can be set either for a specific version or trigger on the latest version available. If neither a package nor a version is specified, they will trigger alerts for any update.
-	
+
 	* **Custom SQL** conditions trigger alerts based on an SQL query. The SQL query must returns at least one column - `hostkey`.
 
 * Alert conditions can be limited to a subset of hosts.

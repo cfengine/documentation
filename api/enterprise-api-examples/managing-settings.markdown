@@ -66,4 +66,3 @@ standard log level is `error`. Changing it to `info` is done as follows.
 **Response**
 
     204 No Content
-
