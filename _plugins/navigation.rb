@@ -6,12 +6,11 @@ module Jekyll
 
     def generate(site)
       site.pages.each do |page|
-        if page.data["published"] != true || page.data['categories'] == nil || page.data['categories'].first() == "index"
+        if page.data["published"] != true || !page.data.key?("title") || page.data['categories'] == nil || page.data['categories'].first() == "index"
           next
         end
         writePageIntoMenuItems(page)
       end
-      puts $menu_items
       site.config["mainNavigation"] = "<ul>" + buildHtmlMenu($menu_items, 1) + "</ul>";
     end
 
