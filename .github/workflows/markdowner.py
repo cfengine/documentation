@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # To run this on all markdown files do:
-# find . -name '*.markdown' -type f -exec python3 ./markdowner.py {} all \; | tee output.log
+# find . -name '*.markdown' -type f -exec python3 .github/workflows/markdowner.py {} all \; | tee output.log
 
 import sys
 from collections import defaultdict
