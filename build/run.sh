@@ -3,7 +3,7 @@
 set -ex
 trap "echo FAILURE" ERR
 
-if ! buildah inspect docs-revamp >/dev/null 2>&1; then
+if ! buildah inspect docs-revamp-22 >/dev/null 2>&1; then
   buildah build-using-dockerfile -t docs-revamp-22 documentation-generator/build
 fi
 
