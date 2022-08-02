@@ -1,0 +1,26 @@
+name: Run markdowner.py on all markdown files and see if there are changes
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+    workflow_dispatch:
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checks-out repository
+      uses: actions/checkout@v2
+    - name: Set up Python 3.6
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.6"
+    - name: Run markdowner.py to (hopefully not) edit markdown files
+      run: |
+        # TODO: Fix last warnings in output of script and ensure no warnings here
+        find . -name '*.markdown' -type f -exec python3 .github/workflows/markdowner.py {} all \;
+    - name: Check if there are changes
+      run: |
+        git diff --exit-code
