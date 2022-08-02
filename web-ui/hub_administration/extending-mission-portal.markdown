@@ -35,7 +35,8 @@ spaces. Files must be readable by the `cfapache` user.
 ### Example
 
 File `test_documentation.html` was uploaded to the directory specified above.
-![Extended menu](extended-menu.png)
+
+<img src="extended-menu.png" alt="Extended menu" width="300px">
 
 ### Mission Portal Style
 
