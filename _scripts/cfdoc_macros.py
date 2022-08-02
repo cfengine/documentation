@@ -62,7 +62,7 @@ def processFile(markdown, config):
 			current_html = markdown_line.split('alias: ')
 			current_html = current_html[1].rstrip()
 			config["context_current_html"] = current_html
-		elif markdown_line[0] == '#':
+		elif not in_pre and markdown_line[0] == '#':
 			for header_depth in range(1,6):
 				header_marker = "#" * header_depth + " "
 				if markdown_line.find(header_marker) == 0:
@@ -108,16 +108,16 @@ def processFile(markdown, config):
 				new_lines = functor(parameters, config)
 			except:
 				sys.stdout.write("cfdoc_macros: Exception calling ")
-				print functor
+				print(functor)
 				sys.stdout.write("                 in " + config["context_current_file"])
 				sys.stdout.write("(%d): " % config["context_current_line_number"])
 				sys.stdout.write('`%s`' % config["context_current_line"])
 				sys.stdout.write("     Exception : ")
-				print sys.exc_info()
+				print(sys.exc_info())
 		else:
-			print "cfdoc_macros: Unknown function `" + function + "`"
-			print "                 in " + markdown + "(%d)" % markdown_line_number
-			print "                 " + markdown_line
+			print("cfdoc_macros: Unknown function `" + function + "`")
+			print("                 in " + markdown + "(%d)" % markdown_line_number)
+			print("                 " + markdown_line)
 			new_lines += "<!-- " + markdown_line + "-->"
 			
 		if len(new_lines) > 0:
@@ -450,7 +450,7 @@ def document_syntax_map(tree, branch, config):
 			common_attributes = copy.deepcopy(tree.get("classes").get("attributes"))
 		except:
 			qa.Log(config, "cfdoc_macros: syntax_map - no promise type classes?!")
-		for common_attribute in common_attributes.keys():
+		for common_attribute in list(common_attributes.keys()):
 			type_count = 0
 			for type in types:
 				if tree.get(type).get("attributes").get(common_attribute):
@@ -465,7 +465,7 @@ def document_syntax_map(tree, branch, config):
 			lines.append("### [Common Attributes][Promise Types and Attributes#Common Attributes]\n\n")
 			lines.append(document_type("common", common_definition, [], config))
 			
-	excludes = common_attributes.keys()
+	excludes = list(common_attributes.keys())
 	
 	link_map = config["link_map"]
 	for type in types:
@@ -539,7 +539,7 @@ def load_include_file(filename):
 	in_file = open(filename, 'r')
 	lines = in_file.readlines()
 	if len(lines) == 0:
-		print "load_include_file: Failed to load text from: '%s'" % filename
+		print("load_include_file: Failed to load text from: '%s'" % filename)
 		return None
 	return lines
 
@@ -620,6 +620,7 @@ def include_example(parameters, config):
 	return markdown_lines
 
 def include_MPF_snippet(parameters, config):
+        # This doesnt work, it never worked, I tired but failed.
 	parameters.append(".*") # first line starts
 
 	markdown_lines = include_snippet(parameters, config)
@@ -704,7 +705,7 @@ def library_include(parameters, config):
 		config[policy_filename] = policy_json
 		
 	# for all bundles and bodies...
-	for key in policy_json.keys():
+	for key in list(policy_json.keys()):
 		element_list = policy_json[key]
 		current_type = None
 		for element in element_list:
@@ -924,7 +925,7 @@ def redirect(parameters, config):
 
 	target_url = html_map.get(target_anchor)
 	if target_url == None:
-		print "Invalid redirect target '%s', redirecting to home" % target_anchor
+		print("Invalid redirect target '%s', redirecting to home" % target_anchor)
 		target_url = "index.html"
 	
 	markdown_lines.append("<script type=\"text/javascript\">\n")

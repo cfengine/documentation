@@ -18,11 +18,11 @@
 [community package repositories]: http://cfengine.com/cfengine-linux-distros "Community package repositories"
 [community download page]: https://cfengine.com/community/download/ "Community package download page"
 [enterprise software download page]: https://cfengine.com/product/free-download/ "Enterprise download page"
-[boolean]: guide-language-concepts-promises.html#promise-attributes
-[clist]: guide-language-concepts-promises.html#promise-attributes
+[boolean]: reference-language-concepts-promises.html#promise-attributes
+[clist]: reference-language-concepts-promises.html#promise-attributes
 [anchored]: reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
 [unanchored]: reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
-[datatypes]: guide-language-concepts-variables.html
+[datatypes]: reference-language-concepts-variables.html
 [utility functions]: tags-utility-functions.html
 [data functions]: tags-data-functions.html
 [system functions]: tags-system-functions.html
@@ -31,7 +31,7 @@
 [files functions]: tags-files-functions.html
 [body classes]: reference-promise-types.html#classes
 [body common]: reference-components.html#common-control
-[body file]: guide-language-concepts-namespaces.html
+[body file]: reference-language-concepts-namespaces.html
 [body hub control port]: reference-components-cf-hub.html#port
 [sys.policy_entry_dirname]: reference-special-variables-sys.html#sys-policy_entry_dirname
 [sys.policy_entry_filename]: reference-special-variables-sys.html#sys-policy_entry_filename
@@ -48,7 +48,7 @@
 [lib/files.cf]: reference-masterfiles-policy-framework-lib-files
 [stdlib-mog]: reference-masterfiles-policy-framework-lib-files.html#mog
 [jq-project]: https://stedolan.github.io/jq/ "jq is a lightweight and flexible command-line JSON processor. Try online at jqplay.org!"
-[Using Vagrant]: guide-installation-and-configuration-general-installation-installation-enterprise-vagrant.html "The CFEngine Vagrant Environment provides an easy way to test and explore CFEngine Enterprise."
+[Using Vagrant]: getting-started-installation-general-installation-installation-enterprise-vagrant.html "The CFEngine Vagrant Environment provides an easy way to test and explore CFEngine Enterprise."
 [type]: reference-functions-type.html
 [promise-type-measurements]: reference-promise-types-measurements.html
 [promise-type-custom]: reference-promise-types-custom.html

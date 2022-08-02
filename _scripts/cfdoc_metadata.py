@@ -42,14 +42,14 @@ def run(config):
 	for node in category_tree:
 		branch = category_tree.get(node)
 		if branch == None: # orphan
-			print "Orphan in the category tree! Check path to '%s / %s'" % (branch, node)
+			print("Orphan in the category tree! Check path to '%s / %s'" % (branch, node))
 			exit(1)
 		last_branch = branch.split("/")[-1]
 		if last_branch == "":
 			continue
 		parent_branch = category_tree.get(last_branch)
 		if parent_branch == None: # gaps
-			print "ERROR: Missing index file '%s.markdown'" % (branch)
+			print("ERROR: Missing index file '%s.markdown'" % (branch))
 			exit(2)
 
 # parse meta data lines, remove existing header for later reconstruction
@@ -69,7 +69,7 @@ def parseHeader(lines):
 			continue
 		token_list = line.split(":")
 		if len(token_list) != 2:
-			print "parseHeader: ERROR in %s - wrong number of tokens" % line
+			print("parseHeader: ERROR in %s - wrong number of tokens" % line)
 			continue
 		tag = token_list[0].lstrip().rstrip()
 		value = token_list[1].lstrip().lstrip('\"').rstrip().rstrip('\"')
@@ -96,7 +96,7 @@ def processMetaData(file_path, config):
 	if header.get("layout") != "default": # ignore special pages
 		return
 	if not "title" in header: # ignore pages without title, but that's an error at this point
-		print "ERROR! Page without title: %s" % file_name
+		print("ERROR! Page without title: %s" % file_name)
 		return
 
 	categories = []
