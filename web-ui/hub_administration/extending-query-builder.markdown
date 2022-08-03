@@ -191,8 +191,8 @@ INSERT INTO "test" SELECT "hostkey", (random() * 100)::int as random_number  FRO
 After the next cf-agent run file should be changed in the Mission Portal and you will be able to see the new
 table in the Query builder. You can use this table as predefined ones.
 
-![Extended query builder](extended-query-builder.png)
+<img src="extended-query-builder.png" alt="Extended query builder" width="700px">
 
 Report based on the new table:
 
-![Report based on the new table](extended-query-builder-report.png)
+<img src="extended-query-builder-report.png" alt="Report based on the new table" width="650px">
