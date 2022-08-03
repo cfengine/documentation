@@ -57,9 +57,9 @@ In the Mission Portal VCS integration panel. To access it, click on "Settings"
 in the top-left menu of the Mission Portal screen, and then select "Version
 control repository".
 
-![Settings menu](settings-menu.png)
+<img src="settings-menu.png" alt="Settings menu" width="320px">
 
-![VCS settings screen](settings-vcs.png)
+<img src="settings-vcs.png" alt="VCS settings screen" width="640px">
 
 ### Configuring upstream VCS manually
 
