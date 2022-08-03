@@ -33,10 +33,10 @@ Take action on a host.
 
 <img src="host-action-buttons.png" alt="Host action buttons" width="280px">
 
-<img src="host-info-run-agent.png" alt="Run agent" width="50px"> :: Request an unscheduled policy run
-<img src="host-info-collect-reports.png" alt="Collect reports" width="50px">:: Request report collection
-<img src="host-info-get-url.png" alt="Get URL" width="50px">:: Get the URL to the specific hosts info page
-<img src="host-info-delete-host.png" alt="Delete host" width="50px"> :: Delete the host
+* <img src="host-info-run-agent.png" alt="Run agent" width="50px"> :: Request an unscheduled policy run
+* <img src="host-info-collect-reports.png" alt="Collect reports" width="50px">:: Request report collection
+* <img src="host-info-get-url.png" alt="Get URL" width="50px">:: Get the URL to the specific hosts info page
+* <img src="host-info-delete-host.png" alt="Delete host" width="50px"> :: Delete the host
 
 ### Host specific data ###
 
