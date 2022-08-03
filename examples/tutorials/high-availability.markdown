@@ -70,7 +70,7 @@ already established trust with the passive hub as well.
 Mission Portal since 3.6.2 has a new indicator whitch shows the status of the High Availability
 configuration.
 
-![HAHealth](ha_health_OK.png)
+<img src="ha_health_OK.png" alt="HAHealth" width="480px">
 
 High Availability status is constantly monitored so that once some malfunction is discovered the
 user is notified about the degraded state of the system. Besides simple visualization of High
@@ -78,9 +78,7 @@ Availability, the user is able to get detailed information regarding the reason 
 state, as well as when data was last reported from each hub. This gives quite comprehensive
 knowledge and overview of the whole setup.
 
-![HADegraded](ha_degraded_indicator.png)
-
-![HADegradedDetails](ha_degraded_details.png)
+<img src="ha_degraded_indicator.png" alt="HADegraded" width="480px">
 
 
 ### Inventory
@@ -90,7 +88,7 @@ instance and status of the High Availability installation on each of the hubs. L
 reports is especially helpful to diagnose any problems when High Availability is reported as
 *degraded*.
 
-![HAInventory](ha_inventory.png)
+<img src="ha_inventory.png" alt="HAInventory" width="700px">
 
 
 ### CFEngine High Availability installation
