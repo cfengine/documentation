@@ -158,3 +158,59 @@
     }
   }
 }
+
+.search-page {
+  article div.article  {
+    h1 {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+    }
+    ul, ol {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .resultsCount {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #E2E2E2;
+      margin-bottom: 32px;
+    }
+    #breadcrumbs {
+      margin-bottom: .7rem;
+      ul {
+        li {
+          a, a span {
+            text-decoration: none;
+            color: @gray-600;
+            border-color: @gray-600;
+          }
+          &:nth-last-child(2), &:last-child {
+            display: none;
+          }
+        }
+      }
+    }
+    #searchResults {
+      > ul > li {
+        margin-bottom: 4rem;
+        .search-description {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+          color: @textColorDarkBlue;
+        }
+        > a {
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 32px;
+          color: @blue-700;
+          margin-bottom: .4rem;
+        }
+      }
+    }
+  }
+}

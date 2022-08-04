@@ -38,13 +38,13 @@ def patch(current_branch):
             if branch['Version'] == current_branch:
                 selected = ' selected="selected"'
                 link = 'javascript:void(0);'
-            print >>f, '<a href="%s"%s>%s</a>' % (link, selected, branch['Title'].replace('Version ', ''))
-        print >>f, '<a href="./versions.html">view all versions</a>'
+            print('<a href="%s"%s>%s</a>' % (link, selected, branch['Title'].replace('Version ', '')), file=f)
+        print('<a href="./versions.html">view all versions</a>', file=f)
 
     with open("_includes/versions_list.html", "w") as f:
         for branch in data['docs']:
-            print >>f, '<li><a href="%s">%s</a></li>' % (branch['Link'], branch['Title'].replace('Version ', ''))
+             print('<li><a href="%s">%s</a></li>' % (branch['Link'], branch['Title'].replace('Version ', '')), file=f)
     with open("_includes/lts_versions_list.html", "w") as f:
         for branch in data['docs']:
             if "(LTS)" in branch['Title']:
-                print >>f, '<li><a href="%s">%s</a></li>' % (branch['Link'], branch['Title'].replace('Version ', 'CFEngine '))
+                print('<li><a href="%s">%s</a></li>' % (branch['Link'], branch['Title'].replace('Version ', 'CFEngine ')), file=f)
