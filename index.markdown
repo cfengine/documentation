@@ -21,46 +21,46 @@ alias: index.html
       <ul>
          <li>Getting started</li>
          <li>
-            <a href="/docs/{{site.cfengine.branch}}/guide-installation-and-configuration-pre-installation-checklist.html">Pre-installation Checklist</a>
+            <a href="getting-started-installation-pre-installation-checklist.html">Pre-installation Checklist</a>
             <div>Download package and check the system requirements for installation.</div>
          </li>
          <li>
-            <a href="/docs/{{site.cfengine.branch}}/guide-installation-and-configuration-general-installation.html">General Installation</a>
+            <a href="getting-started-installation-general-installation.html">General Installation</a>
             <div>The Steps to bring up a CFEngine installation within an organization.</div>
          </li>
          <li>
-            <a href="/docs/{{site.cfengine.branch}}/guide-writing-and-serving-policy.html">Writing and serving policy</a>
+            <a href="getting-started-writing-and-serving-policy.html">Writing and serving policy</a>
             <div>Create promises which defines how some part of an overall system should behave.</div>
          </li>
          <li>
-            <a href="/docs/{{site.cfengine.branch}}/guide-reporting.html">Reporting</a>
+            <a href="examples-tutorials-reporting.html">Reporting</a>
             <div>Configure different reports for various stakeholders within organization.</div>
          </li>
          <li>
-            <a href="/docs/{{site.cfengine.branch}}/guide-introduction-directory-structure.html">CFEngine Directory Structure</a>
+            <a href="overview-directory-structure.html">CFEngine Directory Structure</a>
             <div>Understand the directory structure and some of the files and functions associated with each subdirectory.</div>
          </li>
          <li>
-            <a href="/docs/{{site.cfengine.branch}}/guide-introduction-networking.html">Client Server Communication</a>
+            <a href="overview-client-server-communication.html">Client Server Communication</a>
             <div>Sets up a line of communication between hosts.</div>
          </li>
       </ul>
       <ul>
          <li>Popular</li>
          <li>
-            <a href="/docs/{{site.cfengine.branch}}/reference-promise-types.html">Promise type</a>
+            <a href="reference-promise-types.html">Promise types</a>
             <div>Learn about processes, packages, users, files, storage, services, etc.</div>
          </li>
          <li>
-            <a href="/docs/{{site.cfengine.branch}}/reference-enterprise-api-ref.html">API reference</a>
+            <a href="api-enterprise-api-ref.html">API reference</a>
             <div>The API is a conventional REST API which supports one or more GET, PUT, POST, or DELETE operations.</div>
          </li>
          <li>
-            <a href="/docs/{{site.cfengine.branch}}/reference-language-concepts.html">Language concepts</a>
+            <a href="reference-language-concepts.html">Language concepts</a>
             <div>Learn Bundles, Bodies, Promises, Classes and Decisions, Variables, etc.</div>
          </li>
          <li>
-            <a href="/docs/{{site.cfengine.branch}}/examples-tutorials-manage-packages.html">Manage packages</a>
+            <a href="examples-tutorials-manage-packages.html">Manage packages</a>
             <div>Learn how to install, manage and remove packages using CFEngine.</div>
          </li>
          <li class="cfe-build">
