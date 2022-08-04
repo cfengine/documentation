@@ -88,6 +88,9 @@ sudo dpkg --unpack cfengine-nova-hub.deb
 sudo cp -a /var/cfengine/share/NovaBase/masterfiles "$WRKDIR"
 sudo chmod -R a+rX "$WRKDIR"/masterfiles
 
+# write current branch into the config.yml
+echo "branch: $BRANCH" >> $WRKDIR/documentation-generator/_config.yml
+
 # Generate syntax data
 ./_regenerate_json.sh || exit 4
 
