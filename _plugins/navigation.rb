@@ -27,6 +27,11 @@ module Jekyll
           tmp['title'] ||= page.data['title']
           tmp['url'] ||= page.data['alias']
         end
+        if page.data['sorting'] == nil
+          tmp['sorting'] = 100
+        else
+          tmp['sorting'] = page.data['sorting'].to_i
+        end
         tmp = tmp['children']
       end
     end
@@ -41,7 +46,7 @@ module Jekyll
 
     def buildHtmlMenu(items, level)
       html = ""
-      items.sort_by{|k, v| v["title"]}.each do |key, item|
+      items.sort_by{|k, v| [v["sorting"], v["title"]]}.each do |key, item|
         hasChildren = !item["children"].nil? && !item["children"].empty?
         html += "<li class=\"#{(hasChildren ? 'parent' : '')} level-#{level}\" data-url=\"#{item["url"]}\"><a href=\"#{item["url"]}\">#{item["title"]}</a>"
         if hasChildren

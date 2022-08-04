@@ -27,7 +27,7 @@ const getHtmlFiles = async (dir) =>
     const htmlFiles = await getHtmlFiles(htmlFilesDir);
     for (const key in htmlFiles) {
         const htmlContent = fs.readFileSync(`${htmlFilesDir}/${htmlFiles[key]}`).toString();
-        const htmlContentMatch = htmlContent.match(/<div class="article">([\s\S]*?)<div id="tags">/gm);
+        const htmlContentMatch = htmlContent.match(/<div class="article">([\s\S]*?)<div class="footer-top">/gm);
         const titleMatch = htmlContent.match(/<h1 id="top">([\s\S]*?)<\/h1>/gm);
         if (htmlContentMatch == null || titleMatch == null) continue;
         let document = {
