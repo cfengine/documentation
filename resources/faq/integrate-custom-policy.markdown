@@ -67,26 +67,26 @@ other.
 
 -   `body file control` can **not** be used to specify bundles that should be executed.
 -   `this.promise_*` variables can **not** be used directly in `body file control`.
-   
+
    ```cf3
    body file control
    {
      inputs => { "$(this.policy_dirname)/../stdlib.cf" };
    }
    ```
-    
-    Bundle variables can be used to achieve relative inputs. 
-    
+
+    Bundle variables can be used to achieve relative inputs.
+
    ```cf3
    bundle common example_file_control
    {
       vars:
         "policy[stdlib]"
           string => "$(this.policy_dirname)/../my_other_policy.cf";
-   
+
         "inputs" slist => getvalues( policy );
    }
-   
+
    body file control
    {
      inputs => { "$(example_file_control.inputs)" };
@@ -94,7 +94,7 @@ other.
    ```
 
 -   `sys.policy_*` variables **can** be used directly in `body file control`.
-    
+
    ```cf3
    body file control
    {
@@ -111,4 +111,3 @@ make up the policy set ( *inputs* ), and the order of the bundles to be executed
 ( *bundlesequence* ).
 
 **See also:** [`inputs` in `body common control`][Components#inputs], [`bundlesequence` in `body common control`][Components#bundlesequence]
-

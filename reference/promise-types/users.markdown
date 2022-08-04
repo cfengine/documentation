@@ -32,14 +32,14 @@ separately.
 **Example:**
 
 ```cf3
-      users:
-         "jsmith"
-            policy => "present",
-            description => "John Smith",
-            home_dir => "/remote/home/jsmith",
-            group_primary => "users",
-            groups_secondary => { "printers", "webadmin" },
-            shell => "/bin/bash";
+users:
+   "jsmith"
+      policy => "present",
+      description => "John Smith",
+      home_dir => "/remote/home/jsmith",
+      group_primary => "users",
+      groups_secondary => { "printers", "webadmin" },
+      shell => "/bin/bash";
 ```
 
 ****
@@ -62,10 +62,10 @@ display it on graphical login terminals.
 **Example:**
 
 ```cf3
-      users:
-         "jsmith"
-            policy => "present",
-            description => "John Smith";
+users:
+   "jsmith"
+      policy => "present",
+      description => "John Smith";
 ```
 
 ### group_primary
@@ -80,10 +80,10 @@ secondary groups so specifying either one works.
 **Example:**
 
 ```cf3
-      users:
-         "jsmith"
-            policy => "present",
-            group_primary => "users";
+users:
+   "jsmith"
+      policy => "present",
+      group_primary => "users";
 ```
 
 ### groups_secondary
@@ -99,10 +99,10 @@ secondary groups so specifying either one works.
 **Example:**
 
 ```cf3
-      users:
-         "jsmith"
-            policy => "present",
-            groups_secondary => { "site_a", "tester" };
+users:
+   "jsmith"
+      policy => "present",
+      groups_secondary => { "site_a", "tester" };
 ```
 
 ### home_bundle
@@ -142,27 +142,27 @@ in the current bundle are inherited by the bundle specified in the
 **Example:**
 
 ```cf3
-   bundle agent main
-   {
-      vars:
-         "user" string => "jack";
-      classes:
-         "should_have_home_dir" expression => regcmp("j.*", "$(user)");
-      users:
-         "$(user)"
-            policy => "present",
-            home_dir => "/home/$(user)",
-            home_bundle => setup_home_dir("$(user)"),
-            home_bundle_inherit => "true";
-   }
+bundle agent main
+{
+   vars:
+      "user" string => "jack";
+   classes:
+      "should_have_home_dir" expression => regcmp("j.*", "$(user)");
+   users:
+      "$(user)"
+         policy => "present",
+         home_dir => "/home/$(user)",
+         home_bundle => setup_home_dir("$(user)"),
+         home_bundle_inherit => "true";
+}
 
-   bundle agent setup_home_dir(user)
-   {
-      files:
-         should_have_home_dir::
-            "/home/$(user)/."
-               create => "true";
-   }
+bundle agent setup_home_dir(user)
+{
+   files:
+      should_have_home_dir::
+         "/home/$(user)/."
+            create => "true";
+}
 ```
 
 The user "jack" will have his home directory created, since his
@@ -182,10 +182,10 @@ directory in the user database.
 **Example:**
 
 ```cf3
-      users:
-         "jsmith"
-            policy => "present",
-            home_dir => "/home/j/jsmith";
+users:
+   "jsmith"
+      policy => "present",
+      home_dir => "/home/j/jsmith";
 ```
 
 ### password
@@ -198,11 +198,11 @@ that contains information about a user's password.
 **Example:**
 
 ```cf3
-    body password user_password
-    {
-        format => "hash";
-          data => "jiJSlLSkZuVLE"; # "CFEngine"
-    }
+body password user_password
+{
+    format => "hash";
+      data => "jiJSlLSkZuVLE"; # "CFEngine"
+}
 ```
 
 **See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
@@ -231,11 +231,11 @@ hashed passwords.
 **Example:**
 
 ```cf3
-    body password user_password
-    {
-        format => "plaintext";
-          data => "CFEngine";
-    }
+body password user_password
+{
+    format => "plaintext";
+      data => "CFEngine";
+}
 ```
 
 #### data ####
@@ -249,11 +249,11 @@ The format of the password data depends on the `format` attribute.
 **Example:**
 
 ```cf3
-    body password user_password
-    {
-        format => "plaintext";
-          data => "CFEngine";
-    }
+body password user_password
+{
+    format => "plaintext";
+      data => "CFEngine";
+}
 ```
 
 ### policy
@@ -288,9 +288,9 @@ and additional steps may be required.
 **Example:**
 
 ```cf3
-      users:
-         "jsmith"
-            policy => "locked";
+users:
+   "jsmith"
+      policy => "locked";
 ```
 
 ### shell
@@ -303,9 +303,9 @@ shell.
 **Example:**
 
 ```cf3
-      users:
-         "jsmith"
-            shell => "/bin/bash";
+users:
+   "jsmith"
+      shell => "/bin/bash";
 ```
 
 ### uid
@@ -321,7 +321,7 @@ separate `files` promise for this.
 **Example:**
 
 ```cf3
-      users:
-         "jsmith"
-            uid => "1357";
+users:
+   "jsmith"
+      uid => "1357";
 ```

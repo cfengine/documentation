@@ -28,10 +28,10 @@ enclose an arbitrary key are being deprecated in favor of the `data` variable ty
 
 
 ```cf3
-    vars:
+vars:
 
-     "xxx"    string => "Some literal string...";
-     "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
+ "xxx"    string => "Some literal string...";
+ "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
 ```
 
 ### int
@@ -45,17 +45,17 @@ enclose an arbitrary key are being deprecated in favor of the `data` variable ty
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-     "scalar" int    => "16k";
-     "ran"    int    => randomint(4,88);
-     "dim_array" int =>  readstringarray(
-         "array_name",
-         "/etc/passwd",
-         "#[^\n]*",
-         ":",
-         10,
-         4000);
+ "scalar" int    => "16k";
+ "ran"    int    => randomint(4,88);
+ "dim_array" int =>  readstringarray(
+     "array_name",
+     "/etc/passwd",
+     "#[^\n]*",
+     ":",
+     10,
+     4000);
 ```
 
 **Notes:**
@@ -76,9 +76,9 @@ the value you assign to it looks like an integer (e.g., 3, -17, 16K).
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-     "scalar" real   => "0.5";
+ "scalar" real   => "0.5";
 ```
 
 **Notes:**
@@ -108,27 +108,27 @@ list of values. The order of the list is preserved by CFEngine.
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-     "xxx"    slist  => {  "literal1",  "literal2" };
-     "xxx1"   slist  => {  "1", @(xxx) }; # interpolated in order
-     "yyy"    slist  => {
-                        readstringlist(
-                                      "/home/mark/tmp/testlist",
-                                      "#[a-zA-Z0-9 ]*",
-                                      "[^a-zA-Z0-9]",
-                                      15,
-                                      4000
-                                      )
-                        };
+ "xxx"    slist  => {  "literal1",  "literal2" };
+ "xxx1"   slist  => {  "1", @(xxx) }; # interpolated in order
+ "yyy"    slist  => {
+                    readstringlist(
+                                  "/home/mark/tmp/testlist",
+                                  "#[a-zA-Z0-9 ]*",
+                                  "[^a-zA-Z0-9]",
+                                  15,
+                                  4000
+                                  )
+                    };
 
-     "zzz"    slist  => { readstringlist(
-        "/home/mark/tmp/testlist2",
-        "#[^\n]*",
-        ",",
-        5,
-        4000)
-        };
+ "zzz"    slist  => { readstringlist(
+    "/home/mark/tmp/testlist2",
+    "#[^\n]*",
+    ",",
+    5,
+    4000)
+    };
 ```
 
 **Notes:**
@@ -148,13 +148,13 @@ may contain the values copied from another `slist`, `rlist`, or `ilist`. See
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-      "variable_id"
+  "variable_id"
 
-           ilist => { "10", "11", "12" };
+       ilist => { "10", "11", "12" };
 
-      "xxx1" ilist  => {  "1", @(variable_id) }; # interpolated in order
+  "xxx1" ilist  => {  "1", @(variable_id) }; # interpolated in order
 ```
 
 **Notes:**
@@ -180,11 +180,11 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-      "varid" rlist => { "0.1", "0.2", "0.3" };
+  "varid" rlist => { "0.1", "0.2", "0.3" };
 
-      "xxx1" rlist  => {  "1.3", @(varid) }; # interpolated in order
+  "xxx1" rlist  => {  "1.3", @(varid) }; # interpolated in order
 ```
 
 **Notes:**
@@ -287,18 +287,17 @@ Output:
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-     "loaded1" data => readjson("/tmp/myfile.json", 40000);
-     "loaded2" data => parsejson('{"key":"value"}');
-     "loaded3" data => readyaml("/tmp/myfile.yaml", 40000);
-     "loaded4" data => parseyaml('- key2: value2');
-     "merged1" data => mergedata(loaded1, loaded2, loaded3, loaded4);
+ "loaded1" data => readjson("/tmp/myfile.json", 40000);
+ "loaded2" data => parsejson('{"key":"value"}');
+ "loaded3" data => readyaml("/tmp/myfile.yaml", 40000);
+ "loaded4" data => parseyaml('- key2: value2');
+ "merged1" data => mergedata(loaded1, loaded2, loaded3, loaded4);
 
-     # JSON or YAML can be inlined since CFEngine 3.7
-     "inline1" data => '{"key":"value"}'; # JSON
-     "inline2" data => '---$(const.n)- key2: value2'; # YAML requires "---$(const.n)" header
-
+ # JSON or YAML can be inlined since CFEngine 3.7
+ "inline1" data => '{"key":"value"}'; # JSON
+ "inline2" data => '---$(const.n)- key2: value2'; # YAML requires "---$(const.n)" header
 ```
 
 ***
@@ -317,10 +316,10 @@ redefined) or they can be constant.
 **Allowed input range:**
 
 ```
-    free
-    overridable
-    constant
-    ifdefined
+free
+overridable
+constant
+ifdefined
 ```
 
 **Default value:**
@@ -330,10 +329,10 @@ redefined) or they can be constant.
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-      "varid" string => "value...",
-              policy => "free";
+  "varid" string => "value...",
+          policy => "free";
 ```
 
 **Notes:**
@@ -348,10 +347,10 @@ value as an indicator of the failure to quench the variable reference, for
 example:
 
 ```cf3
-    "one" slist => { "1", "2", "3" };
+"one" slist => { "1", "2", "3" };
 
-    "list" slist => { "@(one)", @(two) },
-          policy => "ifdefined";
+"list" slist => { "@(one)", @(two) },
+      policy => "ifdefined";
 ```
 
 This results in `@(list)` being the same as `@(one)`, and the reference to
@@ -394,33 +393,33 @@ Variables defined by the *meta* promise type are defined in a bundle scope with 
 **Example policy:**
 
 ```cf3
-    bundle agent example_meta_vars
-    {
-      meta:
-        "tags" slist => { "autorun" };
-    
-      vars:
-        "myvar" string => "my value";
-    
-      reports:
-        "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*example_meta_vars.*" ) );
-    
-    }
-    bundle agent __main__
-    {
-       methods: "example_meta_vars";
-    }
+bundle agent example_meta_vars
+{
+  meta:
+    "tags" slist => { "autorun" };
+
+  vars:
+    "myvar" string => "my value";
+
+  reports:
+    "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*example_meta_vars.*" ) );
+
+}
+bundle agent __main__
+{
+   methods: "example_meta_vars";
+}
 ```
 
 **Example output:**
 
 ```
-    R: {
-      "default:example_meta_vars.myvar": "my value",
-      "default:example_meta_vars_meta.tags": [
-        "autorun"
-      ]
-    }
+R: {
+  "default:example_meta_vars.myvar": "my value",
+  "default:example_meta_vars_meta.tags": [
+    "autorun"
+  ]
+}
 ```
 
 ### Injecting variables into undefined bundles
@@ -430,65 +429,65 @@ Variables can be directly set in foreign bundles if the bundle is not defined.
 **Example policy:**
 
 ```cf3
-    bundle agent example_variable_injection
-    {
-      vars:
-        "undefined.myvar" string => "my value";
-        "cant_push_this.myvar" string => "my value";
-    
-      reports:
-        "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*myvar.*" ) );
-    
-    }
-    bundle agent cant_push_this
-    {
-          # If a bundle is defined, you can't simply define a variable in it from
-          # another bundle, unless the variable is defined via the module protocol.
-    }
-    bundle agent __main__
-    {
-       methods: "example_variable_injection";
-    }
+bundle agent example_variable_injection
+{
+  vars:
+    "undefined.myvar" string => "my value";
+    "cant_push_this.myvar" string => "my value";
+
+  reports:
+    "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*myvar.*" ) );
+
+}
+bundle agent cant_push_this
+{
+      # If a bundle is defined, you can't simply define a variable in it from
+      # another bundle, unless the variable is defined via the module protocol.
+}
+bundle agent __main__
+{
+   methods: "example_variable_injection";
+}
 ```
 
 **Example output:**
 
 ```
-       error: Ignoring remotely-injected variable 'myvar'
-       error: Remote bundle variable injection detected!
-       error: Variable identifier 'cant_push_this.myvar' is not legal
-       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
-       error: Ignoring remotely-injected variable 'myvar'
-       error: Remote bundle variable injection detected!
-       error: Variable identifier 'cant_push_this.myvar' is not legal
-       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
-       error: Remote bundle variable injection detected!
-       error: Variable identifier 'cant_push_this.myvar' is not legal
-       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
-       error: Remote bundle variable injection detected!
-       error: Variable identifier 'cant_push_this.myvar' is not legal
-       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
-       error: Remote bundle variable injection detected!
-       error: Variable identifier 'cant_push_this.myvar' is not legal
-       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
-       error: Remote bundle variable injection detected!
-       error: Variable identifier 'cant_push_this.myvar' is not legal
-       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
-    R: {
-      "default:undefined.myvar": "my value"
-    }
-       error: Remote bundle variable injection detected!
-       error: Variable identifier 'cant_push_this.myvar' is not legal
-       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
-       error: Remote bundle variable injection detected!
-       error: Variable identifier 'cant_push_this.myvar' is not legal
-       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
-       error: Remote bundle variable injection detected!
-       error: Variable identifier 'cant_push_this.myvar' is not legal
-       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
-       error: Remote bundle variable injection detected!
-       error: Variable identifier 'cant_push_this.myvar' is not legal
-       error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+   error: Ignoring remotely-injected variable 'myvar'
+   error: Remote bundle variable injection detected!
+   error: Variable identifier 'cant_push_this.myvar' is not legal
+   error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+   error: Ignoring remotely-injected variable 'myvar'
+   error: Remote bundle variable injection detected!
+   error: Variable identifier 'cant_push_this.myvar' is not legal
+   error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+   error: Remote bundle variable injection detected!
+   error: Variable identifier 'cant_push_this.myvar' is not legal
+   error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+   error: Remote bundle variable injection detected!
+   error: Variable identifier 'cant_push_this.myvar' is not legal
+   error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+   error: Remote bundle variable injection detected!
+   error: Variable identifier 'cant_push_this.myvar' is not legal
+   error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+   error: Remote bundle variable injection detected!
+   error: Variable identifier 'cant_push_this.myvar' is not legal
+   error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+R: {
+  "default:undefined.myvar": "my value"
+}
+   error: Remote bundle variable injection detected!
+   error: Variable identifier 'cant_push_this.myvar' is not legal
+   error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+   error: Remote bundle variable injection detected!
+   error: Variable identifier 'cant_push_this.myvar' is not legal
+   error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+   error: Remote bundle variable injection detected!
+   error: Variable identifier 'cant_push_this.myvar' is not legal
+   error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
+   error: Remote bundle variable injection detected!
+   error: Variable identifier 'cant_push_this.myvar' is not legal
+   error: Promise belongs to bundle 'example_variable_injection' in file '/tmp/example_variable_injection.cf' near line 6
 ```
 
 ### Module protocol
@@ -498,34 +497,34 @@ The module protocol allows specification of *context* (the bundle scope within w
 **Example policy:**
 
 ```cf3
-    bundle agent example_variable_injection_via_module
-    {
-      commands:
-        "/bin/echo '^context=undefined$(const.n)=myvar=my value" module => "true";
-        "/bin/echo '^context=cant_push_this$(const.n)=myvar=my value" module => "true";
-    
-      reports:
-        "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*myvar.*" ) );
-    
-    }
-    bundle agent cant_push_this
-    {
-        # If a bundle is defined, you can't simply define a variable in it from
-        # another bundle, unless the variable is defined via the module protocol.
-    }
-    bundle agent __main__
-    {
-       methods: "example_variable_injection_via_module";
-    }
+bundle agent example_variable_injection_via_module
+{
+  commands:
+    "/bin/echo '^context=undefined$(const.n)=myvar=my value" module => "true";
+    "/bin/echo '^context=cant_push_this$(const.n)=myvar=my value" module => "true";
+
+  reports:
+    "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*myvar.*" ) );
+
+}
+bundle agent cant_push_this
+{
+    # If a bundle is defined, you can't simply define a variable in it from
+    # another bundle, unless the variable is defined via the module protocol.
+}
+bundle agent __main__
+{
+   methods: "example_variable_injection_via_module";
+}
 ```
 
 **Example output:**
 
 ```
-    R: {
-      "default:cant_push_this.myvar": "my value",
-      "default:undefined.myvar": "my value"
-    }
+R: {
+  "default:cant_push_this.myvar": "my value",
+  "default:undefined.myvar": "my value"
+}
 ```
 
 ### Augments
@@ -648,4 +647,3 @@ R: {
   "default:def.some_var": "My value for some_var defined in Policy"
 }
 ```
-

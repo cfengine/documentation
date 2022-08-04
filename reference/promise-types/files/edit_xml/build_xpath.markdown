@@ -15,11 +15,11 @@ described by the XPath and also found within the document. The promise object
 referred to is a literal string representation of an XPath.
 
 ```cf3
-    bundle edit_xml example
-    {
-    build_xpath:
-       "/Server/Service/Engine/Host";
-    }
+bundle edit_xml example
+{
+build_xpath:
+   "/Server/Service/Engine/Host";
+}
 ```
 
 Note that typically, only a single XPath is built in each `build_xpath`
@@ -33,5 +33,3 @@ The resulting document can then be further modified using `insert_tree`,
 `set_text`, `set_attribute` etc promises. Using predicate statements to set
 attributes or text values directly via build_xpath can lead to non-convergent
 behavior, and is discouraged.
-
-

@@ -17,9 +17,9 @@ This is useful for transforming variables into classes.
 **Example:**
 
 ```cf3
-    classes:
+classes:
 
-     "i_am_the_policy_host" expression => classify("master.example.org");
+ "i_am_the_policy_host" expression => classify("master.example.org");
 ```
 
 **See also:** [canonify()][canonify], [classmatch()][classmatch], [classesmatching()][classesmatching]

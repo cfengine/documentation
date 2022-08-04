@@ -50,7 +50,6 @@ existing setting when updating an individual key value.
   "logLevel": "warning",
   "rbacEnabled": true
 }
-
 ```
 
 ### Pagination
@@ -63,17 +62,17 @@ Enterprise API responses are always of the following format, consisting of a
 'meta' object and a 'data' array.
 
 ```
-    {
-      "meta": {
-        "page": 1,
-        "count": 1,
-        "total": 1,
-        "timestamp": 1350922925
-      },
-      "data": [
-         ...
-      ]
-    }
+{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1350922925
+  },
+  "data": [
+     ...
+  ]
+}
 ```
 
 `page` refers to the current page number of the request. `count` is the number of results in the current page, equaling the length of the `data` array. `total` is the number of results in all available pages combined. `timestamp` is the time the request was processed by the API. The `data` array is resource dependent, but will always contain objects. Response objects typically do not contain error codes.

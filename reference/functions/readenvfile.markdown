@@ -19,9 +19,9 @@ Keys and values are interpreted as strings.
 **Syntax example:**
 
 ```cf3
-    vars:
-      "loadthis"
-         data => readenvfile("/etc/os-release");
+vars:
+  "loadthis"
+     data => readenvfile("/etc/os-release");
 ```
 
 **Complete example:**

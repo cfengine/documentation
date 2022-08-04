@@ -26,12 +26,12 @@ like writing and deploying promises, the core of the CFEngine technology.
 
 Learning the basics of vi is quite simple. The best way is by walking through an example.
 
-Step 1. Inside the shell prompt, simply type “vi”. This will allow the user to insert text and create a new file.
+Step 1. Inside the shell prompt, simply type "vi". This will allow the user to insert text and create a new file.
 
-Step 2. type “i” then press the “Enter” key. This takes the user to the insert mode, and allow typing in text or copying and pasting.
+Step 2. type "i" then press the "Enter" key. This takes the user to the insert mode, and allow typing in text or copying and pasting.
 
-Step 3. Type some text—for example, the  obligatory “Hello World” (which will be the subject of a later tutorial).
-Now press "Enter" to go to the next line and type “My name is Gary, and it's nice to meet you.”
+Step 3. Type some text—for example, the  obligatory "Hello World" (which will be the subject of a later tutorial).
+Now press "Enter" to go to the next line and type "My name is Gary, and it's nice to meet you."
 
 The output will look like this:
 
@@ -40,18 +40,16 @@ Hello World
 My name is Gary, and it's nice to meet you
 ```
 
-Step 4. Now exit the insert mode and go back to command mode by pressing the “esc” key.
+Step 4. Now exit the insert mode and go back to command mode by pressing the "esc" key.
 
-Step 5. Save the file by typing “:w (filename)”
+Step 5. Save the file by typing ":w (filename)"
 
-Step 6. exit vi by typing “:q”
+Step 6. exit vi by typing ":q"
 
-You can also save and exit with one command, “:wq”
+You can also save and exit with one command, ":wq"
 
 It is important to remember that there are two basic operation modes in vi: the _command mode_, with which the user opens, saves and
 exits from files, and the _insert_ mode with which the user inserts text—either by typing it in, or by copying and pasting—and can
 then edit any part of the text in the file.
 
 open file using `vi filename`
-
-

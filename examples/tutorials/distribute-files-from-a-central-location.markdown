@@ -91,19 +91,19 @@ use is a good idea. This information is stored in a custom library.
 Create a custom library called `lib/custom/files.cf`. Add the following content:
 
 ```cf3
-    bundle agent sync_from_policyserver(source_path, dest_path)
-    # @brief Sync files from the policy server to the agent
-    #
-    # @param source_path  Location on policy server to copy files from
-    # @param dest_path Location on agent host to copy files to
-    {
-      files:
-        "$(dest_path)/."
-          handle       => "sync_from_policy_server_files_dest_path_copy_from_source_path_sys_policy_hub",
-          copy_from    => sync_cp("$(source_path)", "$(sys.policy_hub)"),
-          depth_search => recurse("inf"),
-          comment      => "Ensure files from $(sys.policy_hub):$(source_path) exist in $(dest_path)";
-    }
+bundle agent sync_from_policyserver(source_path, dest_path)
+# @brief Sync files from the policy server to the agent
+#
+# @param source_path  Location on policy server to copy files from
+# @param dest_path Location on agent host to copy files to
+{
+  files:
+    "$(dest_path)/."
+      handle       => "sync_from_policy_server_files_dest_path_copy_from_source_path_sys_policy_hub",
+      copy_from    => sync_cp("$(source_path)", "$(sys.policy_hub)"),
+      depth_search => recurse("inf"),
+      comment      => "Ensure files from $(sys.policy_hub):$(source_path) exist in $(dest_path)";
+}
 ```
 This reusable policy will be used to synchronize a directory on the policy server to a
 directory on the agent host.
@@ -116,48 +116,48 @@ policy by services.
 Create `services/patching.cf` with the following content:
 
 ```cf3
-    # Patching Policy
+# Patching Policy
 
-    bundle agent patching
-    # @brief Ensure various aspects of patching are handeled
+bundle agent patching
+# @brief Ensure various aspects of patching are handeled
 
-    # We can break down the various parts of patching into separate bundles. This
-    # allows us to become less overwhelmed by details if numerous specifics
-    # exist in one or more aspect for different host classifications.
-    {
-      methods:
+# We can break down the various parts of patching into separate bundles. This
+# allows us to become less overwhelmed by details if numerous specifics
+# exist in one or more aspect for different host classifications.
+{
+  methods:
 
-        "Patch Distribution"
-          handle    => "patching_methods_patch_distribution",
-          usebundle => "patch_distribution",
-          comment   => "Ensure patches are properly distributed";
-    }
+    "Patch Distribution"
+      handle    => "patching_methods_patch_distribution",
+      usebundle => "patch_distribution",
+      comment   => "Ensure patches are properly distributed";
+}
 
-    bundle agent patch_distribution
-    # @brief Ensures that our patches are distributed to the proper locations
-    {
-      files:
-        "$(def.dir_patch_deploy)/."
-          handle  => "patch_distribution_files_def_dir_patch_deploy_exists",
-          create  => "true",
-          comment => "If the destination directory does not exist, we have no place
-                      to which to copy the patches.";
+bundle agent patch_distribution
+# @brief Ensures that our patches are distributed to the proper locations
+{
+  files:
+    "$(def.dir_patch_deploy)/."
+      handle  => "patch_distribution_files_def_dir_patch_deploy_exists",
+      create  => "true",
+      comment => "If the destination directory does not exist, we have no place
+                  to which to copy the patches.";
 
-      methods:
+  methods:
 
-        "Patches"
-          handle    => "patch_distribution_methods_patches_from_policyserver_def_dir_patch_store_to_def_dir_patch_deploy",
-          usebundle => sync_from_policyserver("$(def.dir_patch_store)", "$(def.dir_patch_deploy)"),
-          comment   => "Patches need to be present on host systems so that we can use
-                       them. By convention we use the policy server as the central
-                       distribution point.";
-    }
+    "Patches"
+      handle    => "patch_distribution_methods_patches_from_policyserver_def_dir_patch_store_to_def_dir_patch_deploy",
+      usebundle => sync_from_policyserver("$(def.dir_patch_store)", "$(def.dir_patch_deploy)"),
+      comment   => "Patches need to be present on host systems so that we can use
+                   them. By convention we use the policy server as the central
+                   distribution point.";
+}
 ```
 
 The above policy contains two bundles. We have separated a top-level patching
 bundle from a more specific `patch_distribution` bundle. This is an
 illustration of how to use bundles in order to abstract details. You
-might, for example, have some hosts that you don’t want to fully
+might, for example, have some hosts that you don't want to fully
 synchronize so you might use a different method or copy from a
 different path. Creating numerous bundles allows you to move those details away from the top
 level of what is involved in patching. If people are interested in what

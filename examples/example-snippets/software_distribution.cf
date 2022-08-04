@@ -3,13 +3,13 @@
 #   software_local.cf - Application Deployment From Directory Repository
 #
 #   NOTE: Windows needs to support WMI queries about installed msi files
-#         in order for Cfengine to detect them. On Windows 2003,
+#         in order for CFEngine to detect them. On Windows 2003,
 #         go to Control Panel -> Add/Remove Programs ->
 #         Windows Components -> Mgmnt and Monitoring Tools and check
 #         WMI Windows Installer Provider.
 #
 #   NOTE: Naming conventions are important when updating packages.
-#         By default, Cfengine expects "name-version-arch.msi"
+#         By default, CFEngine expects "name-version-arch.msi"
 #         on Windows, where name is lowercase, and arch is
 #         i686 or x86_64. No spaces should be included in the filename.
 #         The Caption and Version fields inside the msi package

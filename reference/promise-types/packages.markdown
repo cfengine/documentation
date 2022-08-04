@@ -29,10 +29,10 @@ It is also possible to specify a package file name, if the package resides on
 the local filesystem, like this:
 
 ```cf3
-  packages:
-      "/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm"
-        policy => "present",
-        package_module => yum;
+packages:
+    "/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm"
+      policy => "present",
+      package_module => yum;
 ```
 
 The default package module can be globally specified with the
@@ -53,42 +53,42 @@ string needs to be a bare package name, you cannot use a file name for this.
   using the `package_module` based implementation.
 
   ```cf3
-    packages:
+  packages:
 
-      debian::
+    debian::
 
-        "apache2"
-          policy => "present",
-          version => "2.2.22",
-          package_module => apt_get,
-          comment => "Install apache from repository";
+      "apache2"
+        policy => "present",
+        version => "2.2.22",
+        package_module => apt_get,
+        comment => "Install apache from repository";
 
-      redhat::
+    redhat::
 
-        "/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm"
-          policy => "present",
-          package_module => yum,
-          comment => "Install apache from a specific RPM";
+      "/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm"
+        policy => "present",
+        package_module => yum,
+        comment => "Install apache from a specific RPM";
   ```
 
   The following usage is NOT valid.
 
   ```cf3
-    packages:
+  packages:
 
-      debian::
+    debian::
 
-        "apache2-2.2.22"
-          policy => "present",
-          package_module => apt_get,
-          comment => "INVALID specification of package version";
+      "apache2-2.2.22"
+        policy => "present",
+        package_module => apt_get,
+        comment => "INVALID specification of package version";
 
-    redhat::
-        "/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm"
-          policy => "present",
-          package_module => yum,
-          version => "2.2.22",
-          comment => "INVALID specification of package version.";
+  redhat::
+      "/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm"
+        policy => "present",
+        package_module => yum,
+        version => "2.2.22",
+        comment => "INVALID specification of package version.";
   ```
 
 ## Attributes ##
@@ -110,11 +110,11 @@ indirectly affect other architectures.
 **Example:**
 
 ```cf3
-  packages:
-    "apache"
-        policy => "present",
-        package_module => apt_get,
-        architecture => "x86_64";
+packages:
+  "apache"
+      policy => "present",
+      package_module => apt_get,
+      architecture => "x86_64";
 ```
 
 
@@ -135,16 +135,16 @@ for this attribute, its usage depends on the package module in question.
 **Example:**
 
 ```cf3
-  packages:
-    "apache"
-        policy => "present",
-        package_module => my_package_module,
-        options => { "repository=myrepo" };
-    debian::
-      "php7.0"
-        policy => "present",
-        package_module => apt_get,
-        options => { "-o", "APT::Install-Recommends=0" };
+packages:
+  "apache"
+      policy => "present",
+      package_module => my_package_module,
+      options => { "repository=myrepo" };
+  debian::
+    "php7.0"
+      policy => "present",
+      package_module => apt_get,
+      options => { "-o", "APT::Install-Recommends=0" };
 ```
 
 
@@ -161,10 +161,10 @@ for this attribute, its usage depends on the package module in question.
 **Example:**
 
 ```cf3
-  packages:
-    "apache"
-        policy => "absent",
-        package_module => apt_get;
+packages:
+  "apache"
+      policy => "absent",
+      package_module => apt_get;
 ```
 
 
@@ -182,16 +182,16 @@ ensure the latest available version from a repository is installed.
 **Example:**
 
 ```cf3
-  packages:
-    "apache"
-        policy => "absent",
-        package_module => apt_get,
-        version => "2.2.22";
+packages:
+  "apache"
+      policy => "absent",
+      package_module => apt_get,
+      version => "2.2.22";
 
-    "ssh"
-        policy => "present",
-        package_module => apt_get,
-        version => "latest";
+  "ssh"
+      policy => "present",
+      package_module => apt_get,
+      version => "latest";
 ```
 
 
@@ -357,20 +357,20 @@ Manage packages using ```yum```. This is the [default package module](lib/packag
 File based package source.
 
 ```cf3
-  packages:
-    redhat|centos|amazon_linux::
-      "/mnt/nfs/packages/httpd-2.2.22.x86_64.rpm"
-        policy => "present";
+packages:
+  redhat|centos|amazon_linux::
+    "/mnt/nfs/packages/httpd-2.2.22.x86_64.rpm"
+      policy => "present";
 ```
 
 Repository based package source with a specific version of the package.
 
 ```cf3
-  packages:
-    redhat|centos|amazon_linux::
-      "httpd"
-        policy => "present",
-        version => "2.2.22";
+packages:
+  redhat|centos|amazon_linux::
+    "httpd"
+      policy => "present",
+      version => "2.2.22";
 ```
 
 Enable a specific repository for a specific promise.
@@ -416,10 +416,10 @@ bundle agent example
    * extras: mirror.ette.biz
    * updates: mirror.trouble-free.net
   Installed Packages
-  screen.x86_64            4.1.0-0.25.20120314git3c2946.el7             @base     
+  screen.x86_64            4.1.0-0.25.20120314git3c2946.el7             @base
   Available Packages
   screen.x86_64            4.1.0-0.19.20120314git3c2946.el7             local-repo
-  screen.x86_64            4.1.0-0.25.20120314git3c2946.el7             base      
+  screen.x86_64            4.1.0-0.25.20120314git3c2946.el7             base
   ```
 
   Policy with promise that old version of screen is installed.
@@ -456,21 +456,21 @@ Manage packages using ```apt-get```.
 Example showing file based package source.
 
 ```cf3
-  packages:
-      "/mnt/nfs/packages/apache2-2.2.22.x86_64.deb"
-        policy => "present",
-        package_module => apt_get;
+packages:
+    "/mnt/nfs/packages/apache2-2.2.22.x86_64.deb"
+      policy => "present",
+      package_module => apt_get;
 ```
 
 Example showing repository based package source.
 
 ```cf3
-  packages:
-      "apache2"
-        policy => "present",
-        package_module => apt_get,
-        version => "2.2.22",
-        options => { "-o", "APT::Install-Recommends=0" };
+packages:
+    "apache2"
+      policy => "present",
+      package_module => apt_get,
+      version => "2.2.22",
+      options => { "-o", "APT::Install-Recommends=0" };
 ```
 
 **Notes:**
@@ -500,12 +500,12 @@ Manage packages using `nimclient` on AIX.
 **Example:**
 
 ```cf3
-  packages:
-    aix::
-      "expect.base"
-        policy => "present",
-        package_module => nimclient,
-        options => { "lpp_source=lppaix710304" };
+packages:
+  aix::
+    "expect.base"
+      policy => "present",
+      package_module => nimclient,
+      options => { "lpp_source=lppaix710304" };
 ```
 
 
@@ -527,23 +527,22 @@ FreeBSD [pkg](https://www.freebsd.org/doc/handbook/pkgng-intro.html).
 **Example:**
 
 ```cf3
-  packages:
-    freebsd::
-      "emacs-nox11"
-        policy => "present",
-        package_module => pkg;
+packages:
+  freebsd::
+    "emacs-nox11"
+      policy => "present",
+      package_module => pkg;
 
-      "emacs"
-        policy => "absent",
-        package_module => pkg;
+    "emacs"
+      policy => "absent",
+      package_module => pkg;
 
-      "mypackage"
-        policy => "present",
-        package_module => pkg,
-        options => { "option=NAMESERVER=127.0.0.01",
-                     "option=FETCH_RETRY=5",
-                     "repository=myrepo" };
-
+    "mypackage"
+      policy => "present",
+      package_module => pkg,
+      options => { "option=NAMESERVER=127.0.0.01",
+                   "option=FETCH_RETRY=5",
+                   "repository=myrepo" };
 ```
 
 **Notes:**
@@ -573,11 +572,11 @@ Manage packages using Slackware's [slackpkg](https://slackpkg.org).
 **Example**
 
 ```cf3
-  packages:
-    slackware::
-      "nmap"
-        policy => "absent",
-        package_module => slackpkg;
+packages:
+  slackware::
+    "nmap"
+      policy => "absent",
+      package_module => slackpkg;
 ```
 
 **History:**
@@ -601,15 +600,15 @@ that version from this particluar MSI is installed):
 [Google Chrome]: https://cloud.google.com/chrome-enterprise/browser/download/#chrome-browser-update
 
 ```cf3
-  packages:
-    windows::
-      "C:\GoogleChromeStandaloneEnterprise.msi"
-        policy => "present",
-        package_module => msiexec;
+packages:
+  windows::
+    "C:\GoogleChromeStandaloneEnterprise.msi"
+      policy => "present",
+      package_module => msiexec;
 
-      "Google Update Helper"
-        policy => "absent",
-        package_module => msiexec;
+    "Google Update Helper"
+      policy => "absent",
+      package_module => msiexec;
 ```
 
 **History:**
@@ -658,5 +657,3 @@ bundle agent main
 
 - version `latest` is *not* supported when promising an absence
 - `list-updates` is *not* implemented, snaps are automatically updated by default
-
-

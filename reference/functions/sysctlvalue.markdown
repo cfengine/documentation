@@ -14,16 +14,16 @@ tags: [reference, system functions, functions, sysctl, sysctlvalue]
 **Example:**
 
 ```cf3
-    vars:
-      "tested" slist => { "net.ipv4.tcp_mem", "net.unix.max_dgram_qlen" };
-      "values[$(tested)]" string => sysctlvalue($(tested));
+vars:
+  "tested" slist => { "net.ipv4.tcp_mem", "net.unix.max_dgram_qlen" };
+  "values[$(tested)]" string => sysctlvalue($(tested));
 ```
 
 Output:
 
 ```
-  "values[net.ipv4.tcp_mem]" = "383133\t510845\t766266"
-  "values[net.unix.max_dgram_qlen]" = "512"
+"values[net.ipv4.tcp_mem]" = "383133\t510845\t766266"
+"values[net.unix.max_dgram_qlen]" = "512"
 ```
 
 **Notes:**

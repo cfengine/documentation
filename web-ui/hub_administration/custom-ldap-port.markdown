@@ -8,7 +8,7 @@ tags: [cfengine enterprise, hub administration, ldap]
 Mission Portals User settings and preferences provides a radio button
 encryption. This controls the encryption and the port to connect to.
 
-![Ldap Settings](custom-ldap-port-settings.png)
+<img src="custom-ldap-port-settings.png" alt="Ldap Settings" width="640px">
 
 If you want to configure LDAP authentication to use a custom port you can do so
 via the Status and Setting REST API.

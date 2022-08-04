@@ -13,19 +13,19 @@ used to encapsulate the details of complex promise attribute values. Bodies
 can optionally have parameters.
 
 ```cf3
-    bundle agent example
-    {
-      files:
-        !windows::
-          "/etc/passwd"
-            handle => "example_files_not_windows_passwd",
-            perms => system;
+bundle agent example
+{
+  files:
+    !windows::
+      "/etc/passwd"
+        handle => "example_files_not_windows_passwd",
+        perms => system;
 
-          "/home/bill/id_rsa.pub"
-            handle => "example_files_not_windows_bills_priv_ssh_key",
-            perms => mog("600", "bill", "sysop"),
-            create => "true";
-    }
+      "/home/bill/id_rsa.pub"
+        handle => "example_files_not_windows_bills_priv_ssh_key",
+        perms => mog("600", "bill", "sysop"),
+        create => "true";
+}
 ```
 
 The promisers in this example are the files `/etc/passwd` and
@@ -34,19 +34,19 @@ associated with a named, user-defined promise body `system` and `mog`
 respectively.
 
 ```cf3
-    body perms system
-    {
-      mode => "644";
-      owners => { "root" };
-      groups => { "root" };
-    }
+body perms system
+{
+  mode => "644";
+  owners => { "root" };
+  groups => { "root" };
+}
 
-    body perms mog(mode,user,group)
-    {
-      owners => { "$(user)" };
-      groups => { "$(group)" };
-      mode   => "$(mode)";
-    }
+body perms mog(mode,user,group)
+{
+  owners => { "$(user)" };
+  groups => { "$(group)" };
+  mode   => "$(mode)";
+}
 ```
 
 Like [bundles][bundles], bodies have a *type*. The type of the body has to match the left-hand side of the promise attribute in which it is used. In this case, `files` promises have an attribute `perms` that can be associated with any body of type `perms`.
@@ -65,18 +65,17 @@ two bodies **must** have the same type.
 Let's see it with the `system` and `mog` bodies from earlier:
 
 ```cf3
-    body perms system
-    {
-      mode => "644";
-      owners => { "root" };
-      groups => { "root" };
-    }
+body perms system
+{
+  mode => "644";
+  owners => { "root" };
+  groups => { "root" };
+}
 
-    body perms system_inherited
-    {
-      inherit_from => mog("644", "root", "root");
-    }
-
+body perms system_inherited
+{
+  inherit_from => mog("644", "root", "root");
+}
 ```
 
 The earlier `system` body and this `system_inherited` body have the
@@ -98,11 +97,10 @@ parameters are specified inside the body. So
 "root")`.
 
 ```cf3
-    body perms system_inherited_mode(mode)
-    {
-      inherit_from => mog($(mode), "root", "root");
-    }
-
+body perms system_inherited_mode(mode)
+{
+  inherit_from => mog($(mode), "root", "root");
+}
 ```
 
 Again, whether you prefer this or directly calling the `mog` body is
@@ -114,26 +112,25 @@ body. The latest wins. Let's see an example with a chain of
 inheritance from the `system` body from earlier:
 
 ```cf3
-    body perms system
-    {
-      mode => "644";
-      owners => { "root" };
-      groups => { "root" };
-    }
+body perms system
+{
+  mode => "644";
+  owners => { "root" };
+  groups => { "root" };
+}
 
-    body perms system_once(x)
-    {
-      inherit_from => system;
-      owners => { $(x) };
-      mode => "645";
-    }
+body perms system_once(x)
+{
+  inherit_from => system;
+  owners => { $(x) };
+  mode => "645";
+}
 
-    body perms system_twice
-    {
-      inherit_from => system_once("mark");
-      mode => "646";
-    }
-
+body perms system_twice
+{
+  inherit_from => system_once("mark");
+  mode => "646";
+}
 ```
 
 The inheritance chain goes from `system` to `system_once` to
@@ -154,19 +151,19 @@ operation of the agents, such as `cf-agent` and `cf-serverd`. Each agent has a
 special body whose name is `control`.
 
 ```cf3
-    body agent control
-    {
-        bundlesequence => { "test" };
-    }
+body agent control
+{
+    bundlesequence => { "test" };
+}
 ```
 
 This promise bodies configures the `bundlesequence` to execute on a cf-agent.
 
 ```cf3
-    body server control
-    {
-        allowconnects         => { "127.0.0.1" , "::1", @(def.acl) };
-    }
+body server control
+{
+    allowconnects         => { "127.0.0.1" , "::1", @(def.acl) };
+}
 ```
 
 This promise body defines the clients allowed to connect to a cf-serverd.

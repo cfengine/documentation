@@ -81,8 +81,7 @@ target="_blank">LinkedIn</a>
 
 * <a href="https://twitter.com/cfengine" target="_blank">Twitter</a>
 
-* <a href="https://www.facebook.com/pages/Cfengine/311003700627?ref=ts"
-target="_blank">Facebook</a>
+* <a href="https://www.facebook.com/cfengine" target="_blank">Facebook</a>
 
 * The #cfengine IRC channel on the [libera.chat](https://web.libera.chat/?channel=#cfengine) network.
 
@@ -102,5 +101,3 @@ organization, [contact us][contact us].
 * Bugs and improvement suggestions can be registered with our development team
 in our [public bug tracker][bug tracker]. Read the bug tracker information before you
 submit a bug.
-
-

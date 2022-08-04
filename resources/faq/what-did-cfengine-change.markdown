@@ -53,7 +53,7 @@ bundle edit_line lines_present(lines)
 }
 ```
 
-In the verbose output as each promise is actuated a `BEGIN promsie` is emitted
+In the verbose output as each promise is actuated a `BEGIN promise` is emitted
 with the promise handle or filename and line number position if it does not have
 a handle. In the example output we can see that the promise for `/tmp/example`
 was `REPAIRED`.
@@ -195,45 +195,45 @@ Example query:
 Example response:
 
 ```json
-  {
-      "data": [
-          {
-              "bundlename": "cfe_internal_update_policy",
-              "changetime": 1512427971,
-              "hostkey": "SHA=01fe75e93ca88bbd381eb720e9b43d0840ea8727aae8fc84391c297c42798f5c",
-              "hostname": "hub",
-              "logmessages": [
-                  "Copying from 'localhost:/var/cfengine/masterfiles/cf_promises_release_id'"
-              ],
-              "policyfile": "/var/cfengine/inputs/cfe_internal/update/update_policy.cf",
-              "promisees": [],
-              "promisehandle": "cfe_internal_update_policy_files_inputs_dir",
-              "promiser": "/var/cfengine/inputs",
-              "promisetype": "files",
-              "stackpath": "/default/cfe_internal_update_policy/files/'/var/cfengine/inputs'[1]"
-          },
-          {
-              "bundlename": "cfe_internal_setup_knowledge",
-              "changetime": 1512428912,
-              "hostkey": "SHA=01fe75e93ca88bbd381eb720e9b43d0840ea8727aae8fc84391c297c42798f5c",
-              "hostname": "hub",
-              "logmessages": [
-                  "Owner of '/var/cfengine/httpd/htdocs/application/logs/./log-2017-12-04.log' was 0, setting to 497",
-                  "Group of '/var/cfengine/httpd/htdocs/application/logs/./log-2017-12-04.log' was 0, setting to 497",
-                  "Object '/var/cfengine/httpd/htdocs/application/logs/./log-2017-12-04.log' had permission 0644, changed it to 0640"
-              ],
-              "policyfile": "/var/cfengine/inputs/cfe_internal/enterprise/CFE_knowledge.cf",
-              "promisees": [],
-              "promisehandle": "cfe_internal_setup_knowledge_files_doc_root_application_logs",
-              "promiser": "/var/cfengine/httpd/htdocs/application/logs/.",
-              "promisetype": "files",
-              "stackpath": "/default/cfe_internal_management/methods/'CFEngine_Internals'/default/cfe_internal_enterprise_main/methods/'hub'/default/cfe_internal_setup_knowledge/files/'/var/cfengine/httpd/htdocs/application/logs/.'[1]"
-          }
-      ],
-      "total": 2,
-      "next": null,
-      "previous": null
-  }
+{
+    "data": [
+        {
+            "bundlename": "cfe_internal_update_policy",
+            "changetime": 1512427971,
+            "hostkey": "SHA=01fe75e93ca88bbd381eb720e9b43d0840ea8727aae8fc84391c297c42798f5c",
+            "hostname": "hub",
+            "logmessages": [
+                "Copying from 'localhost:/var/cfengine/masterfiles/cf_promises_release_id'"
+            ],
+            "policyfile": "/var/cfengine/inputs/cfe_internal/update/update_policy.cf",
+            "promisees": [],
+            "promisehandle": "cfe_internal_update_policy_files_inputs_dir",
+            "promiser": "/var/cfengine/inputs",
+            "promisetype": "files",
+            "stackpath": "/default/cfe_internal_update_policy/files/'/var/cfengine/inputs'[1]"
+        },
+        {
+            "bundlename": "cfe_internal_setup_knowledge",
+            "changetime": 1512428912,
+            "hostkey": "SHA=01fe75e93ca88bbd381eb720e9b43d0840ea8727aae8fc84391c297c42798f5c",
+            "hostname": "hub",
+            "logmessages": [
+                "Owner of '/var/cfengine/httpd/htdocs/application/logs/./log-2017-12-04.log' was 0, setting to 497",
+                "Group of '/var/cfengine/httpd/htdocs/application/logs/./log-2017-12-04.log' was 0, setting to 497",
+                "Object '/var/cfengine/httpd/htdocs/application/logs/./log-2017-12-04.log' had permission 0644, changed it to 0640"
+            ],
+            "policyfile": "/var/cfengine/inputs/cfe_internal/enterprise/CFE_knowledge.cf",
+            "promisees": [],
+            "promisehandle": "cfe_internal_setup_knowledge_files_doc_root_application_logs",
+            "promiser": "/var/cfengine/httpd/htdocs/application/logs/.",
+            "promisetype": "files",
+            "stackpath": "/default/cfe_internal_management/methods/'CFEngine_Internals'/default/cfe_internal_enterprise_main/methods/'hub'/default/cfe_internal_setup_knowledge/files/'/var/cfengine/httpd/htdocs/application/logs/.'[1]"
+        }
+    ],
+    "total": 2,
+    "next": null,
+    "previous": null
+}
 ```
 
 See Also: [query rest api][Tracking changes]
@@ -244,7 +244,7 @@ The custom reports interface and associated [query rest api][Query REST API] all
 reports to be run.
 
 Queries can be made against the `promiselog` table. This query finds the
-promises that are repaired the most excluding internal cfengine related promises
+promises that are repaired the most excluding internal CFEngine related promises
 and promises from the standard library.
 
 ```sql
@@ -260,7 +260,7 @@ NOT ilike '%cfe_internal%'
 GROUP BY namespace, bundlename, promisetype,promisehandle,promiser
 ORDER BY count DESC
 ```
-  
+
 Reference: [query api examples][SQL Query Examples]
 
 ### promise_log.jsonl

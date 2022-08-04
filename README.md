@@ -594,6 +594,24 @@ The documentation generation creates a log file that lists undocumented
 syntax elements, ambiguous link targets and other stuff that can be improved at
 https://docs.cfengine.com/docs/master/cfdoc_log.html
 
+## Semi-automatic formatting
+
+We have a Python script and GitHub Action to automatically fix some common markdown mistakes.
+This is designed to not be super strict on purpose, it only fixes very specific things, such as:
+* Trims trailing whitespace at the end of lines
+* Replace some utf-8 symbols which have an ascii lookalike
+* Ensures exactly 1 newline before the end of the file
+* De-indents code blocks where everything inside the code block is indented
+
+When someone makes one of these "mistakes" it is highlighted in the Pull Request by the GitHub Action.
+If you want to run this script locally and have it fix these things for you, you can:
+
+```
+find . -name '*.markdown' -type f -exec python3 .github/workflows/markdowner.py {} all \;
+```
+
+In many cases, you can also configure your editor to help you with these things.
+
 ## License
 
 See the LICENSE file.

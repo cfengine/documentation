@@ -14,14 +14,14 @@ value are each determined by body-attributes. The promise object referred to is
 a literal string representation of the name of the attribute to be set.
 
 ```cf3
-    bundle edit_xml example
-    {
-    set_attribute:
-      "name"
+bundle edit_xml example
+{
+set_attribute:
+  "name"
 
-        attribute_value => "cfe_host",
-           select_xpath => "/Server/Service/Engine/Host";
-    }
+    attribute_value => "cfe_host",
+       select_xpath => "/Server/Service/Engine/Host";
+}
 ```
 
 Note that typically only a single attribute, within a single selected
@@ -38,4 +38,3 @@ of the XML file
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
-

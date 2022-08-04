@@ -104,7 +104,7 @@ You can see all of the hard classes defined on a particular host by running the
 following command as a privileged user.
 
 ```console
-    $ cf-promises --show-classes|grep hardclass
+$ cf-promises --show-classes|grep hardclass
 ```
 
 These are classes that describe your operating system, the time of
@@ -141,7 +141,7 @@ of a week.
 * Network Classes
     * Unqualified Name of Host. CFEngine truncates it at the first dot.
       Note: `www.sales.company.com` and `www.research.company.com` have the
-      same unqualified name – `www`
+      same unqualified name - `www`
     * The IPv4 address octets of any active interface (in the form
       `ipv4_192_0_0_1`, `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`)
     * The IPv6 addresses of all active interfaces (with dots replaced by
@@ -289,7 +289,7 @@ evaluated.
 
 ## Making Decisions based on classes
 
-Class guards are the most common way to restrict a promise to a specific context. Once stated the restriction applies until a new context is specified. A new promise type automatically resets to an unrestricted context (the unrestricted context is typically referred to as `any`). 
+Class guards are the most common way to restrict a promise to a specific context. Once stated the restriction applies until a new context is specified. A new promise type automatically resets to an unrestricted context (the unrestricted context is typically referred to as `any`).
 
 This example illustrates how a class guard applies (to multiple promises) until a new context is specified.
 
@@ -335,18 +335,18 @@ example shows two ways to execute code conditionally based on such
 variables:
 
 ```cf3
-    bundle agent greetings
-    {
-     vars:
-      "myclassname" string => "Evening";
+bundle agent greetings
+{
+ vars:
+  "myclassname" string => "Evening";
 
-      reports:
-       "$(myclassname)"::
-         "Good evening!";
+  reports:
+   "$(myclassname)"::
+     "Good evening!";
 
-       "any"::
-         "Good evening too!" if => "$(myclassname)";
-    }
+   "any"::
+     "Good evening too!" if => "$(myclassname)";
+}
 ```
 
 
@@ -358,75 +358,75 @@ evaluated together with the promise. Both may contain variables as long
 as the resulting expansion is a legal class expression.
 
 ```cf3
-    bundle agent example
-    {
-      vars:
-              "french_cities"  slist => { "toulouse", "paris" };
-              "german_cities"  slist => { "berlin" };
-              "italian_cities" slist => { "milan" };
-              "usa_cities"     slist => { "lawrence" };
+bundle agent example
+{
+  vars:
+          "french_cities"  slist => { "toulouse", "paris" };
+          "german_cities"  slist => { "berlin" };
+          "italian_cities" slist => { "milan" };
+          "usa_cities"     slist => { "lawrence" };
 
-              "all_cities" slist => { @(french_cities), @(german_cities), @(italian_cities), @(usa_cities) };
+          "all_cities" slist => { @(french_cities), @(german_cities), @(italian_cities), @(usa_cities) };
 
-      classes:
-          "italy"   or => { @(italian_cities) };
-          "germany" or => { @(german_cities) };
-          "france"  or => { @(french_cities) };
+  classes:
+      "italy"   or => { @(italian_cities) };
+      "germany" or => { @(german_cities) };
+      "france"  or => { @(french_cities) };
 
-      reports:
-        "It's $(sys.date) here";
+  reports:
+    "It's $(sys.date) here";
 
-        Morning.italy::
-          "Good morning from Italy",
-            if => "$(all_cities)";
+    Morning.italy::
+      "Good morning from Italy",
+        if => "$(all_cities)";
 
-        Afternoon.germany::
-          "Good afternoon from Germany",
-            if => "$(all_cities)";
+    Afternoon.germany::
+      "Good afternoon from Germany",
+        if => "$(all_cities)";
 
-        france::
-          "Hello from France",
-            if => "$(all_cities)";
+    france::
+      "Hello from France",
+        if => "$(all_cities)";
 
-        france::
-          "IMPOSSSIBLE!  THIS WILL NOT PRINT!!!",
-            unless => "france";
+    france::
+      "IMPOSSSIBLE!  THIS WILL NOT PRINT!!!",
+        unless => "france";
 
-        "$(all_cities)"::
-          "Hello from $(all_cities)";
+    "$(all_cities)"::
+      "Hello from $(all_cities)";
 
-        "Hello from $(all_cities), if edition",
-          if => "$(all_cities)";
-    }
+    "Hello from $(all_cities), if edition",
+      if => "$(all_cities)";
+}
 ```
 
 Example Output:
 
 ```
-    cf-agent -Kf example.cf -D lawrence -b example
-    R: It's Tue May 28 16:47:33 2013 here
-    R: Hello from lawrence
-    R: Hello from lawrence, if edition
+cf-agent -Kf example.cf -D lawrence -b example
+R: It's Tue May 28 16:47:33 2013 here
+R: Hello from lawrence
+R: Hello from lawrence, if edition
 
-    cf-agent -Kf example.cf -D paris -b example
-    R: It's Tue May 28 16:48:18 2013 here
-    R: Hello from France
-    R: Hello from paris
-    R: Hello from paris, if edition
+cf-agent -Kf example.cf -D paris -b example
+R: It's Tue May 28 16:48:18 2013 here
+R: Hello from France
+R: Hello from paris
+R: Hello from paris, if edition
 
-    cf-agent -Kf example.cf -D milan -b example
-    R: It's Tue May 28 16:48:40 2013 here
-    R: Hello from milan
-    R: Hello from milan, if edition
+cf-agent -Kf example.cf -D milan -b example
+R: It's Tue May 28 16:48:40 2013 here
+R: Hello from milan
+R: Hello from milan, if edition
 
-    cf-agent -Kf example.cf -D germany -b example
-    R: It's Tue May 28 16:49:01 2013 here
+cf-agent -Kf example.cf -D germany -b example
+R: It's Tue May 28 16:49:01 2013 here
 
-    cf-agent -Kf example.cf -D berlin -b example
-    R: It's Tue May 28 16:51:53 2013 here
-    R: Good afternoon from Germany
-    R: Hello from berlin
-    R: Hello from berlin, if edition
+cf-agent -Kf example.cf -D berlin -b example
+R: It's Tue May 28 16:51:53 2013 here
+R: Good afternoon from Germany
+R: Hello from berlin
+R: Hello from berlin, if edition
 ```
 
 
@@ -465,22 +465,22 @@ For example `a . b` is equivalent to `a.b` and perhaps more readable.
 Classes may be combined with the operators listed here in order from highest
 to lowest precedence:
 
-* ‘()'::
+* '()'::
     ~ The parenthesis group operator.
 
-* ‘!’::
+* '!'::
     ~ The NOT operator.
 
-* ‘.’::
+* '.'::
     ~ The AND operator.
 
-* ‘&’::
+* '&'::
     ~ The AND operator (alternative).
 
-* ‘|’::
+* '|'::
     ~ The OR operator.
 
-* ‘||’::
+* '||'::
     ~ The OR operator (alternative).
 
 These operators can be combined to form complex expressions.  For example, the
@@ -500,15 +500,15 @@ true or false before using them as operands in a logical expression.
 e.g.
 
 ```cf3
-    ...
-    classes:
-            "variable_1"
-            expression => fileexists("/etc/aliases.db");
-    ...
+...
+classes:
+        "variable_1"
+        expression => fileexists("/etc/aliases.db");
+...
 
-    "result"
-    or => { isnewerthan("/etc/aliases", "/etc/aliases.db"),
-    "!variable_1" };
+"result"
+or => { isnewerthan("/etc/aliases", "/etc/aliases.db"),
+"!variable_1" };
 ```
 
 The function, `isnewerthan` can return "undefined" if one or other of the files
@@ -580,9 +580,9 @@ using a [classes body][Promise Types#classes]. To set a class if
 a promise is repaired, one might write:
 
 ```cf3
-     "promiser..."
-        ...
-        classes => if_repaired("signal_class");
+"promiser..."
+   ...
+   classes => if_repaired("signal_class");
 ```
 
 These classes are `namespace` scoped by default. The
@@ -594,24 +594,24 @@ will define ```signal_class``` prefixed classes with a suffix matching the
 promise outcome (```_kept```, ```_repaired```, ```_notkept```).
 
 ```cf3
-     "promiser..."
-        ...
-        classes => results("bundle", "signal_class");
+ "promiser..."
+    ...
+    classes => results("bundle", "signal_class");
 
-    reports:
+reports:
 
-      signal_class_repaired::
-        "Some aspect of the promise was repaired.";
-        "The agent made a change to take us closer to the desired state";
+  signal_class_repaired::
+    "Some aspect of the promise was repaired.";
+    "The agent made a change to take us closer to the desired state";
 
-      signal_class_kept::
-        "Some aspect of the promise was kept";
+  signal_class_kept::
+    "Some aspect of the promise was kept";
 
-      signal_class_notkept::
-        "Some aspect of the promsie was unable to be repaired";
+  signal_class_notkept::
+    "Some aspect of the promise was unable to be repaired";
 
-      signal_class_kept.signal_class_notkept::
-        "All promise aspects were as desired";
+  signal_class_kept.signal_class_notkept::
+    "All promise aspects were as desired";
 ```
 
 Classes defined by the [module protocol][commands#module] are `namespace`
@@ -622,45 +622,45 @@ Finally, `restart_class` classes in `processes` are global.
 ### Class Scopes: A More Complex Example
 
 ```cf3
-    body common control
-    {
-        bundlesequence => { "global","local_one", "local_two" };
-    }
+body common control
+{
+    bundlesequence => { "global","local_one", "local_two" };
+}
 
-    #################################
+#################################
 
-    bundle common global
-    {
-        classes:
-            # The soft class "zero" is always satisfied,
-            # and is global in scope
-            "zero" expression => "any";
-    }
+bundle common global
+{
+    classes:
+        # The soft class "zero" is always satisfied,
+        # and is global in scope
+        "zero" expression => "any";
+}
 
-    #################################
+#################################
 
-    bundle agent local_one
-    {
-        classes:
-            # The soft class "one" is always satisfied,
-            # and is local in scope to local_one
-            "one" expression => "any";
-    }
+bundle agent local_one
+{
+    classes:
+        # The soft class "one" is always satisfied,
+        # and is local in scope to local_one
+        "one" expression => "any";
+}
 
-    #################################
+#################################
 
-    bundle agent local_two
-    {
-        classes:
-            # The soft class "two" is always satisfied,
-            # and is local in scope to ls_2
-            "two" expression => "any";
+bundle agent local_two
+{
+    classes:
+        # The soft class "two" is always satisfied,
+        # and is local in scope to ls_2
+        "two" expression => "any";
 
-        reports:
-            zero.!one.two::
-                # This report will be generated
-                "Success";
-    }
+    reports:
+        zero.!one.two::
+            # This report will be generated
+            "Success";
+}
 ```
 
 In this example, there are three bundles. One common bundle named `global`
@@ -689,4 +689,3 @@ defining classes for a period of time as well as canceling them on demand.
 
 You can cancel a class with a [`classes`][Promise Types#classes] body.
 See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
-

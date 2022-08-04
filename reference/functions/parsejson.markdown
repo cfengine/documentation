@@ -21,16 +21,16 @@ types of quotes around a string).
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-      "loadthis"
+  "loadthis"
 
-         data =>  parsejson('{ "key": "value" }');
+     data =>  parsejson('{ "key": "value" }');
 
-      # inline syntax since 3.7
-      "loadthis_inline"
+  # inline syntax since 3.7
+  "loadthis_inline"
 
-         data =>  '{ "key": "value" }';
+     data =>  '{ "key": "value" }';
 ```
 
 **History:**

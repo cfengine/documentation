@@ -45,7 +45,7 @@ Note however that it is possible to expand on this by adjusting the Custom actio
 1. Log into the Mission Portal of CFEngine, click the Dashboard tab.
 
 2. Click on the existing Policy compliance widget, followed by Add alert.
-   
+
     ![Add alert to Policy Compliance widget](integrating-alerts-with-ticketing-systems_policy-compliance-add-alert.png)
 
 3. Name the alert "`Web service`" and set `Severity-level` at "`high`".
@@ -71,4 +71,3 @@ In this tutorial, we have shown how easy it is to integrate with a ticketing sys
 Using this Custom action, you can choose to open JIRA tickets when some or all of your alerts are triggered. But this is just the beginning; using Custom actions, you can integrate with virtually *any* external system for notifying about- or handling triggered alerts.
 
 Read more in the [Custom action documentation][Custom actions for Alerts].
-

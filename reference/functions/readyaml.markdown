@@ -16,11 +16,11 @@ first `maxbytes` bytes are read from `filename`.
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-      "loadthis"
+  "loadthis"
 
-         data =>  readyaml("/tmp/data.yaml", 4000);
+     data =>  readyaml("/tmp/data.yaml", 4000);
 ```
 
 **See also:** `readdata()`, `parsejson()`, `parseyaml()`, `storejson()`, `mergedata()`, and `data` documentation.

@@ -15,7 +15,7 @@
 #
 #  You are licensed to modify this code for your own private purposes.
 #  No derivative of this work may be shared with any third party without
-#  the permission of the Cfengine company.
+#  the permission of the CFEngine company.
 #
 #  $Id:$
 #
@@ -29,7 +29,7 @@ body common control
 }
 
 #
-# STIGs compliance with Cfengine 3 (Nova)
+# STIGs compliance with CFEngine 3 (Nova)
 #
 
 bundle agent STIGs

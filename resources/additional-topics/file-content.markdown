@@ -20,7 +20,7 @@ long-standing Unix tools awk and sed. Adding a user to a structured file such as
 the password file, only if the user is not already defined, is a more complex
 operation.
 
-Cfengine allows you to model both whole files and parts of files, in any format,
+CFEngine allows you to model both whole files and parts of files, in any format,
 and promise that these fragments will satisfy certain promises about their
 state. This is potentially different from more common templating approaches to
 file management in which pre-adjusted copies of files are generated for all
@@ -163,9 +163,9 @@ For example, the source template file might look like this, with embedded
 CFEngine variables:
 
 ```
-     mail_relay = $(sys.fqhost)
-     important_user = $(mybundle.variable)
-     #...
+mail_relay = $(sys.fqhost)
+important_user = $(mybundle.variable)
+#...
 ```
 
 These variables will be filled in by CFEngine assuming they are defined within
@@ -796,13 +796,13 @@ encode complex file templates. These templates map simply to edit_line bundles
 in the following way.
 
 * Each line in a template maps to a separate insert_lines promise unless it is
-  grouped with ‘[%CFEngine BEGIN %]’ and ‘[%CFEngine END %]’ tags.
+  grouped with '[%CFEngine BEGIN %]' and '[%CFEngine END %]' tags.
 
-* Each multi-line group, marked with ‘[%CFEngine BEGIN %]’ and
-  ‘[%CFEngine END %]’ tags maps to a multi-line insert_lines promise, with
+* Each multi-line group, marked with '[%CFEngine BEGIN %]' and
+  '[%CFEngine END %]' tags maps to a multi-line insert_lines promise, with
   insert_type => "preserve_block".
 
-* Each line that expresses a context-class: ‘[%CFEngine classexpression:: %]’
+* Each line that expresses a context-class: '[%CFEngine classexpression:: %]'
   maps to a normal class expression in a bundle.
 
 The order of lines in the template is preserved within each block, or if

@@ -30,23 +30,23 @@ frames along the stack frame path, the maps have additional keys:
 **Example:**
 
 ```cf3
-    vars:
-      "stack" data => callstack_callers();
+vars:
+  "stack" data => callstack_callers();
 ```
 
 Output:
 
 ```
-    [ ... call stack information ... ,
-      {
-        "depth": 2,
-        "frame": 9,
-        "promise_classes": "any",
-        "promise_comment": "",
-        "promise_type": "methods",
-        "promiser": "",
-        "type": "promise"
-      }, ... more call stack information ... ]
+[ ... call stack information ... ,
+  {
+    "depth": 2,
+    "frame": 9,
+    "promise_classes": "any",
+    "promise_comment": "",
+    "promise_type": "methods",
+    "promiser": "",
+    "type": "promise"
+  }, ... more call stack information ... ]
 ```
 
 **History:** Introduced in CFEngine 3.9

@@ -20,7 +20,7 @@ bundle agent ntp
        "ntp_package_name" string => "ntp";
 
    packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
        policy          => "present",
        handle          => "ntp_packages_$(ntp_package_name)",
        classes         => results("bundle", "ntp_package");
@@ -46,7 +46,7 @@ vars:
 ##### ntp_package_name
 
 ```cf3
-    "ntp_package_name" string => "ntp";
+"ntp_package_name" string => "ntp";
 ```
 
 A variable with the name `ntp_package_name` is declared and it is assigned a value, `ntp`. This string variable will be referenced in the other sections of the bundle.
@@ -54,11 +54,11 @@ A variable with the name `ntp_package_name` is declared and it is assigned a val
 #### packages
 
 ```cf3
-   packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
-         policy          => "present",
-         handle          => "ntp_packages_$(ntp_package_name)",
-         classes         => results("bundle", "ntp_package");
+packages:
+    "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
+      policy          => "present",
+      handle          => "ntp_packages_$(ntp_package_name)",
+      classes         => results("bundle", "ntp_package");
 ```
 
 `packages` is a promise type that ensures the presence or absence of a package on a system.
@@ -66,17 +66,17 @@ A variable with the name `ntp_package_name` is declared and it is assigned a val
 ##### $(ntp_package_name)
 
 ```
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+"$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
 ```
 
-Notice the `ntp_package_name` variable is referenced here, which evaluates to `ntp` as the promiser. You can also associate a stakeholder aka promisee to this promiser. The stakeholder association is optional, but is particularly useful in when you wish to provide some structure in your policy to tie it to a business rule. In this example, what we are stating is this – "Make sure NTP is installed as it is described in StandardsDoc 3.2.1".
+Notice the `ntp_package_name` variable is referenced here, which evaluates to `ntp` as the promiser. You can also associate a stakeholder aka promisee to this promiser. The stakeholder association is optional, but is particularly useful in when you wish to provide some structure in your policy to tie it to a business rule. In this example, what we are stating is this - "Make sure NTP is installed as it is described in StandardsDoc 3.2.1".
 
 This promiser has a number of additional attributes defined:
 
 ###### policy
 
 ```cf3
-       policy          => "present",
+policy          => "present",
 ```
 
     The package_policy attribute describes what you want to do the package. In this case you want to ensure that it is present on the system. Other valid values of this attribute include delete, update, patch, reinstall, addupdate, and verify. Because of the self-healing capabilities of CFEngine, the agents will continuously check to make sure the package is installed. If it is not installed, CFEngine will try to install it according to its policy.
@@ -84,7 +84,7 @@ This promiser has a number of additional attributes defined:
 ###### handle
 
 ```cf3
-       handle          => "ntp_packages_$(ntp_package_name)",
+handle          => "ntp_packages_$(ntp_package_name)",
 ```
 
 The handle uniquely identifies a promise within a policy. A recommended naming scheme for the handle is `bundle_name_promise_type_class_restriction_promiser`. It is often used for documentation and compliance purposes. As shown in this example, you can easily substitute values of variables for the handle.
@@ -92,10 +92,10 @@ The handle uniquely identifies a promise within a policy. A recommended naming s
 ###### classes
 
 ```cf3
-       classes         => results("bundle", "ntp_package_");
+classes         => results("bundle", "ntp_package_");
 ```
 
-`classes` provide context which can help drive the logic in your policies. In this example, classes for each promise outcome are defined prefixed with `ntp_package_`, for details check out the implementation of `body classes results` in the stdlib. For example, `ntp_package_repaired` will be defined if cf-agent did not have the ntp package installed and had to install it. `ntp_package_kept` would be defined if the ntp package is already installed and `ntp_package_notkept` would be defined. 
+`classes` provide context which can help drive the logic in your policies. In this example, classes for each promise outcome are defined prefixed with `ntp_package_`, for details check out the implementation of `body classes results` in the stdlib. For example, `ntp_package_repaired` will be defined if cf-agent did not have the ntp package installed and had to install it. `ntp_package_kept` would be defined if the ntp package is already installed and `ntp_package_notkept` would be defined.
 
 On your hub create `services/ntp.cf` inside *masterfiles* with the following content:
 
@@ -106,7 +106,7 @@ bundle agent ntp
        "ntp_package_name" string => "ntp";
 
    packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
          policy          => "present",
          handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
@@ -117,12 +117,12 @@ bundle agent ntp
 Now, check the syntax, it's always a good idea any time you edit policy.
 
 ```
-[root@hub masterfiles]# cf-promises -f ./services/ntp.cf 
+[root@hub masterfiles]# cf-promises -f ./services/ntp.cf
 [root@hub masterfiles]# echo $?
 0
 ```
 
-Now, we need to make sure the agent knows it should use this policy file and bundle. Create `def.json` an Augments file with the following content: 
+Now, we need to make sure the agent knows it should use this policy file and bundle. Create `def.json` an Augments file with the following content:
 
 ```json
 {
@@ -192,13 +192,13 @@ bundle agent ntp
          "ntp_service_name" string => "ntp";
 
    packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
          policy          => "present",
          handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
 
   services:
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" } 
+     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "start",
        classes => results( "bundle", "ntp_service")
 
@@ -216,20 +216,20 @@ Let's dissect this policy and review the differences in the policy.
 #### vars
 
 ```cf3
-   redhat::
-       "ntp_service_name" string => "ntpd";
-   debian::
-       "ntp_service_name" string => "ntp";
+redhat::
+    "ntp_service_name" string => "ntpd";
+debian::
+    "ntp_service_name" string => "ntp";
 ```
 
-The first thing that you will notice is that the variable declarations section has been expanded. Recall that you completed part 1 of this tutorial by creating packages promises that works across Debian and redhat. While the package name for NTP is the same between Debian and Red Hat, the service names are actually different. Therefore, classes introduced here to distinguish the service name for NTP between these two environments. The CFEngine agents automatically discover environment properties and defines [*hard classes*][language-concepts-classes-hard] that can be used – this includes classes such as `debian` and `redhat` that define the host's operating system.
+The first thing that you will notice is that the variable declarations section has been expanded. Recall that you completed part 1 of this tutorial by creating packages promises that works across Debian and redhat. While the package name for NTP is the same between Debian and Red Hat, the service names are actually different. Therefore, classes introduced here to distinguish the service name for NTP between these two environments. The CFEngine agents automatically discover environment properties and defines [*hard classes*][language-concepts-classes-hard] that can be used - this includes classes such as `debian` and `redhat` that define the host's operating system.
 
 #### reports
 
 ```cf3
-   reports:
-     ntp_service_repaired.inform_mode::
-       "NTP service repaired";
+reports:
+  ntp_service_repaired.inform_mode::
+    "NTP service repaired";
 ```
 
 The reports promise type emits information from the agent. Most commonly and by default, information is emitted to standard out. Reports are useful when tracking or reporting on the progress of the policy execution.
@@ -241,7 +241,7 @@ ntp_service_repaired.inform_mode::
 This line restricts the context for the promises that follow to hosts that have `ntp_service_repaired` and `inform_mode` defined. Note: `inform_mode` is defined when information level logging is requested, e.g.  the `-I`, `--inform`, or `--log-level inform` options are given to `cf-agent` defined.
 
 ```cf3
-       "NTP service repaired";
+"NTP service repaired";
 ```
 
 This defines the line that should be emitted by the `reports` promise type.
@@ -307,7 +307,7 @@ restrict default kod nomodify notrap nopeer noquery
 restrict -6 default kod nomodify notrap nopeer noquery
 restrict 127.0.0.1
 restrict -6 ::1
-{{#servers}} 
+{{#servers}}
 server {{{.}}} iburst
 {{/servers}}
 includefile /etc/ntp/crypto/pw
@@ -321,7 +321,7 @@ keys /etc/ntp/keys
          "ntp_service_name" string => "ntp";
 
    packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
          policy          => "present",
          handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
@@ -337,12 +337,12 @@ keys /etc/ntp/keys
       classes               => results( "bundle", "ntp_config" );
 
    services:
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" } 
+     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "start",
        classes => results( "bundle", "ntp_service_running" );
 
     ntp_config_repaired::
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" } 
+     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "restart",
        classes => results( "bundle", "ntp_service_config_change" );
 
@@ -380,13 +380,12 @@ restrict default kod nomodify notrap nopeer noquery
 restrict -6 default kod nomodify notrap nopeer noquery
 restrict 127.0.0.1
 restrict -6 ::1
-{{#servers}} 
+{{#servers}}
 server {{{.}}} iburst
 {{/servers}}
 includefile /etc/ntp/crypto/pw
 keys /etc/ntp/keys
 ";
-
 ```
 
 A few new variables are defined. The variables `ntp_package_name`, `config_file`, `driftfile`, `servers`, and `config_template_string` are defined under the `linux` context (so only linux hosts will define them). `config_file` is the path to the ntp configuration file, `driftfile` and `servers` are both variables that will be used when rendering the configuration file and `config_template_string` is the template that will be used to render the configuration file. While both `driftfile` and `servers` are set the same for all linux hosts, those variables could easily be set to different values under different contexts.
@@ -396,15 +395,15 @@ A few new variables are defined. The variables `ntp_package_name`, `config_file`
 Now let's walk through the files promise in detail.
 
 ```cf3
-   files:
-    "$(config_file)"
-      create                => "true",
-      handle                => "ntp_files_conf",
-      perms                 => mog( "644", "root", "root" ),
-      template_method       => "inline_mustache",
-      edit_template_string  => "$(config_template_string)",
-      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
-      classes               => results( "bundle", "ntp_config" );
+files:
+ "$(config_file)"
+   create                => "true",
+   handle                => "ntp_files_conf",
+   perms                 => mog( "644", "root", "root" ),
+   template_method       => "inline_mustache",
+   edit_template_string  => "$(config_template_string)",
+   template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
+   classes               => results( "bundle", "ntp_config" );
 ```
 
 The promiser here is referenced by the `config_file` variable. In this case, it is the configuration file for the NTP service. There are a number of additional attributes that describe this promise.
@@ -412,7 +411,7 @@ The promiser here is referenced by the `config_file` variable. In this case, it 
 ##### create
 
 ```cf3
-      create                => "true",
+create                => "true",
 ```
 
 Valid values for this attribute are `true` or `false` to instruct the agent whether or not to create the file. In other words, the file must exist. If it does not exist, it will be created.
@@ -420,7 +419,7 @@ Valid values for this attribute are `true` or `false` to instruct the agent whet
 ##### perms
 
 ```cf3
-      perms                 => mog( "644", "root", "root" ),
+perms                 => mog( "644", "root", "root" ),
 ```
 
 This attribute sets the permissions and ownership of the file. [`mog()`][stdlib-mog] is a `perms` body in the CFEngine standard library that sets the ```mode```, ```owner```, and ```group``` of the file. In this example, the permissions for the NTP configuration file are set to ```644``` with *owner* and *group* both assigned to ```root```.
@@ -428,7 +427,7 @@ This attribute sets the permissions and ownership of the file. [`mog()`][stdlib-
 ##### handle
 
 ```cf3
-      handle                => "ntp_files_conf",
+handle                => "ntp_files_conf",
 ```
 
 A handle uniquely identifies a promise within a policy set. The [policy style guide][Policy Style Guide#promise handles] recommends a naming scheme for the handles e.g. `bundle_name_promise_type_class_restriction_promiser`. Handles are optional, but can be very useful when reviewing logs and can also be used to influence promise ordering with `depends_on`.
@@ -436,7 +435,7 @@ A handle uniquely identifies a promise within a policy set. The [policy style gu
 ##### classes
 
 ```cf3
-      classes               => results( "bundle", "ntp_config" );
+classes               => results( "bundle", "ntp_config" );
 ```
 
 The classes attribute here uses the [`results()`][lib/common.cf#results] classes body from the standard library. The `results()` body defines classes for every outcome a promise has. Every time this promise is executed classes will be defined bundle scoped classes prefixed with `ntp_config`. If the promise changes the file content or permissions the class `ntp_config_repaired` will be set.
@@ -444,7 +443,7 @@ The classes attribute here uses the [`results()`][lib/common.cf#results] classes
 ##### template_method
 
 ```cf3
-      template_method       => "inline_mustache",
+template_method       => "inline_mustache",
 ```
 
 CFEngine supports multiple templating engines, the [template_method][files#template_method] attribute specifies how the promised file content will be resolved. The value `inline_mustache` indicates that we will use the mustache templating engine and specify the template in-line, instead of in an external file.
@@ -452,7 +451,7 @@ CFEngine supports multiple templating engines, the [template_method][files#templ
 ##### edit_template_string
 
 ```cf3
-      edit_template_string  => "$(config_template_string)",
+edit_template_string  => "$(config_template_string)",
 ```
 
 The `edit_template_string` attribute is set to `$(config_template_string)` which holds the mustache template used to render the file content.
@@ -460,7 +459,7 @@ The `edit_template_string` attribute is set to `$(config_template_string)` which
 ##### template_data
 
 ```cf3
-      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
+template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
 ```
 
 `template_data` is assigned a data container that is in this case constructed by [`mergedata()`][mergedata] so that only the necessary data is provided to the template. If `template_data` is not explicitly provided, CFEngine uses `datastate()` by default. It is considered best practice to provide explicit data as this makes it easier to delegate responsibility of the template and that data to different entities where neither are required to know anything about CFEngine itself and it's *much* more efficient to send the templating engine only the data the template actually uses.
@@ -540,7 +539,7 @@ restrict default kod nomodify notrap nopeer noquery
 restrict -6 default kod nomodify notrap nopeer noquery
 restrict 127.0.0.1
 restrict -6 ::1
-{{#servers}} 
+{{#servers}}
 server {{{.}}} iburst
 {{/servers}}
 includefile /etc/ntp/crypto/pw
@@ -554,7 +553,7 @@ keys /etc/ntp/keys
          "ntp_service_name" string => "ntp";
 
    packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" } 
+       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
          policy          => "present",
          handle          => "ntp_packages_$(ntp_package_name)",
          classes         => results("bundle", "ntp_package");
@@ -570,12 +569,12 @@ keys /etc/ntp/keys
       classes               => results( "bundle", "ntp_config" );
 
    services:
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" } 
+     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "start",
        classes => results( "bundle", "ntp_service_running" );
 
     ntp_config_repaired::
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" } 
+     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "restart",
        classes => results( "bundle", "ntp_service_config_change" );
 
@@ -667,18 +666,18 @@ Now, let's validate the JSON and force a policy run and inspect the result.
 {
     "inputs": [
         "services/ntp.cf"
-    ], 
+    ],
     "vars": {
         "control_common_bundlesequence_end": [
             "ntp"
-        ], 
+        ],
         "ntp": {
             "config": {
-                "driftfile": "/tmp/drift", 
+                "driftfile": "/tmp/drift",
                 "servers": [
-                    "0.north-america.pool.ntp.org", 
-                    "1.north-america.pool.ntp.org", 
-                    "2.north-america.pool.ntp.org", 
+                    "0.north-america.pool.ntp.org",
+                    "1.north-america.pool.ntp.org",
+                    "2.north-america.pool.ntp.org",
                     "3.north-america.pool.ntp.org"
                 ]
             }
@@ -706,4 +705,3 @@ server 3.north-america.pool.ntp.org iburst
 Mission Accomplished!
 
 You have successfully completed this tutorial that showed you how to write a simple policy to ensure that NTP is installed, running and configured appropriately.
-

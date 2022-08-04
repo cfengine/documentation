@@ -34,7 +34,7 @@ Get `MP` `client_secret`:
 
 ```console
 [root@hub ~]# psql cfsettings -c "SELECT client_secret from oauth_clients where client_id = 'MP'";
-          client_secret           
+          client_secret
 ----------------------------------
  aUI2sAtrPpr1dmwZDCVuKONnMXHYHDLB
 (1 row)
@@ -63,4 +63,3 @@ try to log into Mission Portal.
 [root@hub ~]# cf-agent -Kf update.cf; cf-agent -KI
     info: Updated '/var/cfengine/httpd/htdocs/application/config/config.php' from source '/var/cfengine/share/GUI/application/config/config.php' on 'localhost'
 ```
-

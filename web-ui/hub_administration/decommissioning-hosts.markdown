@@ -63,4 +63,3 @@ cf-key -r SHA=92eff6add6e8add0bb51f1af52d8f56ed69b56ccdca27509952ae07fe5b2997b
 If there are coherency problems with your `cf_lastseen.lmdb` database, this will prevent you from removing keys.
 You are advised to review the output and try to understand why the problems are occurring.
 Optionally, you can force the removal of a key, using `--force-removal` in the `cf-key` command.
-

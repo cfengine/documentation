@@ -131,17 +131,17 @@ The outcome of this promise is a file called /tmp/report.html which contains
 the following output:
 
 ```cf3
-      <html>
-      Name of this host is: atlas<br>
-      Type of this host is: linux<br>
+<html>
+Name of this host is: atlas<br>
+Type of this host is: linux<br>
 
-      Host has software gpg<br>
+Host has software gpg<br>
 
-      Host has software zip<br>
+Host has software zip<br>
 
-      Host has software rsync<br>
+Host has software rsync<br>
 
-      </html>
+</html>
 ```
 
 The mechanism shown above can clearly be used to create a wide variety of report formats,
@@ -196,7 +196,6 @@ reports:
     average $(mon.average_www_in) pm $(mon.stddev_www_in)"
 
       showstate => { "incoming.www" };
-
 ```
 
 This produces the following standard output:

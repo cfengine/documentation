@@ -200,7 +200,7 @@ reports:
 ```
 
 Notice that the promise is repeated twice, but the only thing that is different
-is the right hand side of the promise – the contents of the list, expanded using
+is the right hand side of the promise - the contents of the list, expanded using
 iteration over the inout list variable. Not only will this not do what we want,
 it will generate an error, because the second promise on the variable monvars
 will overwrite the value promised in the first promise! All that we will see in
@@ -367,7 +367,7 @@ case we'll have 2*3 = 6 elements in the array, covering all the combinations of
 the two lists inout and inout-names.
 
 The values of the array elements can be whatever we like. In this case, we're
-making all the values 0, because we don't care what the actual values are – we
+making all the values 0, because we don't care what the actual values are - we
 only care about the keys of the array. We add the list of the keys to the
 monvars list by using the return value from `getindices("io_vars")`.
 

@@ -267,5 +267,3 @@ system. An NTP daemon setup as shown above, on the other hand, slowly adapts the
 to avoid causing disruption. In addition, the NTP daemon can be configured to learn your
 system's time drift and automatically adjust for it without having to be in touch with
 the server at all times.
-
-

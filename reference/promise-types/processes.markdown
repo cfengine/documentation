@@ -11,13 +11,13 @@ patterns that are [unanchored][unanchored], meaning that they match parts of
 command lines in the system process table.
 
 ```cf3
-      processes:
+processes:
 
-        "regex contained in process line"
+  "regex contained in process line"
 
-            process_select = process_filter_body,
-            restart_class = "activation class for process",
-            ..;
+      process_select = process_filter_body,
+      restart_class = "activation class for process",
+      ..;
 ```
 
 **Note**: CFEngine uses the output from the `ps` command to inspect running
@@ -69,13 +69,13 @@ restart a process, you should set a class to activate and then use a `commands`
 promise together with that class.
 
 ```cf3
-    processes:
-        "/path/executable"
-          restart_class => "restart_me";
+processes:
+    "/path/executable"
+      restart_class => "restart_me";
 
-    commands:
-      restart_me::
-       "/path/executable" ... ;
+commands:
+  restart_me::
+   "/path/executable" ... ;
 ```
 
 **Notes:**
@@ -116,10 +116,10 @@ the number of processes matching the other criteria is kept.
 **Example:**
 
 ```cf3
-     body process_count example
-     {
-     in_range_define => { "class1", "class2" };
-     }
+body process_count example
+{
+in_range_define => { "class1", "class2" };
+}
 ```
 
 #### match_range
@@ -138,10 +138,10 @@ the promise is considered kept.
 **Example:**
 
 ```cf3
-     body process_count example
-     {
-     match_range => irange("10","50");
-     }
+body process_count example
+{
+match_range => irange("10","50");
+}
 ```
 
 #### out_of_range_define
@@ -158,10 +158,10 @@ failure to be kept.
 **Example:**
 
 ```cf3
-     body process_count example(s)
-     {
-     out_of_range_define => { "process_anomaly", "anomaly_$(s)"};
-     }
+body process_count example(s)
+{
+out_of_range_define => { "process_anomaly", "anomaly_$(s)"};
+}
 ```
 
 ### process_select
@@ -190,13 +190,13 @@ the end of line.
 **Example:**
 
 ```cf3
-     body process_select example
+body process_select example
 
-     {
-     command => "cf-.*";
+{
+command => "cf-.*";
 
-     process_result => "command";
-     }
+process_result => "command";
+}
 ```
 
 #### pid
@@ -210,11 +210,11 @@ the end of line.
 **Example:**
 
 ```cf3
-     body process_select example
-     {
-     pid => irange("1","10");
-     process_result => "pid";
-     }
+body process_select example
+{
+pid => irange("1","10");
+process_result => "pid";
+}
 ```
 
 #### pgid
@@ -229,11 +229,11 @@ process
 **Example:**
 
 ```cf3
-     body process_select example
-     {
-     pgid => irange("1","10");
-     process_result => "pgid";
-     }
+body process_select example
+{
+pgid => irange("1","10");
+process_result => "pgid";
+}
 ```
 
 #### ppid
@@ -248,11 +248,11 @@ process
 **Example:**
 
 ```cf3
-     body process_select example
-     {
-     ppid => irange("407","511");
-     process_result => "ppid";
-     }
+body process_select example
+{
+ppid => irange("407","511");
+process_result => "ppid";
+}
 ```
 
 #### priority
@@ -267,10 +267,10 @@ a process
 **Example:**
 
 ```cf3
-     body process_select example
-     {
-     priority => irange("-5","0");
-     }
+body process_select example
+{
+priority => irange("-5","0");
+}
 ```
 
 #### process_owner
@@ -306,15 +306,15 @@ together.
 **Example:**
 
 ```cf3
-     body process_select proc_finder(p)
+body process_select proc_finder(p)
 
-     {
-     process_owner  => { "avahi", "bin" };
-     command        => "$(p)";
-     pid            => irange("100","199");
-     vsize          => irange("0","1000");
-     process_result => "command.(process_owner|vsize).!pid";
-     }
+{
+process_owner  => { "avahi", "bin" };
+command        => "$(p)";
+pid            => irange("100","199");
+vsize          => irange("0","1000");
+process_result => "command.(process_owner|vsize).!pid";
+}
 ```
 
 **See also:** `file_result`
@@ -331,11 +331,10 @@ process, in kilobytes
 **Example:**
 
 ```cf3
-     body process_select
-     {
-     rsize => irange("4000","8000");
-     }
-
+body process_select
+{
+rsize => irange("4000","8000");
+}
 ```
 
 #### status
@@ -352,10 +351,10 @@ have status fields.
 **Example:**
 
 ```cf3
-     body process_select example
-     {
-     status => "Z";
-     }
+body process_select example
+{
+status => "Z";
+}
 ```
 
 #### stime_range
@@ -373,10 +372,10 @@ hour off. This is for now a bug to be fixed.
 **Example:**
 
 ```cf3
-     body process_select example
-     {
-     stime_range => irange(ago(0,0,0,1,0,0),now);
-     }
+body process_select example
+{
+stime_range => irange(ago(0,0,0,1,0,0),now);
+}
 ```
 
 #### ttime_range
@@ -393,10 +392,10 @@ This is total accumulated time for a process.
 **Example:**
 
 ```cf3
-     body process_select example
-     {
-     ttime_range => irange(0,accumulated(0,1,0,0,0,0));
-     }
+body process_select example
+{
+ttime_range => irange(0,accumulated(0,1,0,0,0,0));
+}
 ```
 
 #### tty
@@ -413,10 +412,10 @@ all have tty '?'.
 **Example:**
 
 ```cf3
-     body process_select example
-     {
-     tty => "pts/[0-9]+";
-     }
+body process_select example
+{
+tty => "pts/[0-9]+";
+}
 ```
 
 #### threads
@@ -431,10 +430,10 @@ process
 **Example:**
 
 ```cf3
-     body process_select example
-     {
-     threads => irange(1,5);
-     }
+body process_select example
+{
+threads => irange(1,5);
+}
 ```
 
 #### vsize
@@ -453,10 +452,10 @@ Size (Windows 2008), or VM Size (Windows XP).
 **Example:**
 
 ```cf3
-     body process_select example
-     {
-     vsize => irange("4000","9000");
-     }
+body process_select example
+{
+vsize => irange("4000","9000");
+}
 ```
 
 ### process_stop
@@ -473,11 +472,11 @@ one may call a 'stop script' to perform a graceful shutdown.
 **Example:**
 
 ```cf3
-    processes:
+processes:
 
-     "snmpd"
+ "snmpd"
 
-            process_stop => "/etc/init.d/snmp stop";
+        process_stop => "/etc/init.d/snmp stop";
 ```
 
 
@@ -533,41 +532,41 @@ supported, which terminates the process.
 **Allowed input range:**
 
 ```cf3
-       hup
-       int
-       trap
-       kill
-       pipe
-       cont
-       abrt
-       stop
-       quit
-       term
-       child
-       usr1
-       usr2
-       bus
-       segv
-       [0-9]+s?
+hup
+int
+trap
+kill
+pipe
+cont
+abrt
+stop
+quit
+term
+child
+usr1
+usr2
+bus
+segv
+[0-9]+s?
 ```
 
 **Example:**
 
 ```cf3
-    processes:
+processes:
 
-     cfservd_out_of_control::
+ cfservd_out_of_control::
 
-       "cfservd"
+   "cfservd"
 
-            signals         => { "stop" , "term" },
-            restart_class   => "start_cfserv";
+        signals         => { "stop" , "term" },
+        restart_class   => "start_cfserv";
 
-     any::
+ any::
 
-       "snmpd"
+   "snmpd"
 
-            signals         => { "term" , "5s" , "kill" };
+        signals         => { "term" , "5s" , "kill" };
 ```
 
 **History:**

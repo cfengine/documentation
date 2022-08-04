@@ -22,7 +22,7 @@ Generates a key with 4096 bits, sha2-512 digest and in rfc4716 (default openssh)
 ```console
 curl --user <username>:<password> \
   -X POST \
-  https://hub.cfengine.com/api/ssh-key 
+  https://hub.cfengine.com/api/ssh-key
 ```
 
 **Successful response example:**

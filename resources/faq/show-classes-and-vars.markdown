@@ -16,7 +16,7 @@ will show all the classes that contain `MT` like `GMT_July`.
 You can see the variables and namespace scoped classes defined at the end of an
 agent execution by using the ```--show-evaluated-vars``` or
 ```--show-evaluated-classes``` options to `cf-agent`. In addition to the
-variables and classes shown by `cf-promsies --show-classes` or `cf-promises
+variables and classes shown by `cf-promises --show-classes` or `cf-promises
 --show-vars` this will show variables and namespace scoped classes that get
 defined during a full agent run where the system may be modified and more policy
 is evaluated.
@@ -36,5 +36,3 @@ cf-promises --show-vars
 ```
 
 [%CFEngine_include_snippet(cf-promises_--show-classes.txt, [\w], ^$)%]
-
-

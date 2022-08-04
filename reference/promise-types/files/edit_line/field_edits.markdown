@@ -11,7 +11,7 @@ files, but there are many ways to use this  feature. For example, editing a
 string:
 
 ```cf3
-    VARIABLE="one two three"
+VARIABLE="one two three"
 ```
 
 View this line as a tabular line separated by " and with sub-separator
@@ -21,70 +21,70 @@ Field editing allows us to edit tabular files in a unique way, adding and
 removing data from addressable fields.
 
 ```cf3
-    bundle agent example
-    {
-      vars:
+bundle agent example
+{
+  vars:
 
-       "userset" slist => { "one-x", "two-x", "three-x" };
+   "userset" slist => { "one-x", "two-x", "three-x" };
 
-      files:
+  files:
 
-        "/tmp/passwd"
+    "/tmp/passwd"
 
-             create    => "true",
-             edit_line => SetUserParam("mark","6","/set/this/shell");
+         create    => "true",
+         edit_line => SetUserParam("mark","6","/set/this/shell");
 
-        "/tmp/group"
+    "/tmp/group"
 
-             create    => "true",
-             edit_line => AppendUserParam("root","4","@(userset)");
-    }
+         create    => "true",
+         edit_line => AppendUserParam("root","4","@(userset)");
+}
 ```
 
 The promise in this example assumes a parameterizable model for editing the
 fields of such files.
 
 ```cf3
-    bundle edit_line SetUserParam(user,field,val)
-    {
-      field_edits:
+bundle edit_line SetUserParam(user,field,val)
+{
+  field_edits:
 
-       "$(user):.*"
+   "$(user):.*"
 
-          # Set field of the file to parameter
+      # Set field of the file to parameter
 
-          edit_field => col(":","$(field)","$(val)","set");
-    }
+      edit_field => col(":","$(field)","$(val)","set");
+}
 
-    bundle edit_line AppendUserParam(user,field,allusers)
-    {
-      vars:
+bundle edit_line AppendUserParam(user,field,allusers)
+{
+  vars:
 
-        "val" slist => { @(allusers) };
+    "val" slist => { @(allusers) };
 
-      field_edits:
+  field_edits:
 
-       "$(user):.*"
+   "$(user):.*"
 
-          # Set field of the file to parameter
+      # Set field of the file to parameter
 
-          edit_field => col(":","$(field)","$(val)","alphanum");
-    }
+      edit_field => col(":","$(field)","$(val)","alphanum");
+}
 ```
 
 First you match the line with a regular expression. The regular expression
 must match the entire line; that is, it is [anchored][anchored].
 
 ```cf3
-    body edit_field col(split,col,newval,method)
-    {
-      field_separator => "$(split)";
-      select_field    => "$(col)";
-      value_separator  => ",";
-      field_value     => "$(newval)";
-      field_operation => "$(method)";
-      extend_fields => "true";
-    }
+body edit_field col(split,col,newval,method)
+{
+  field_separator => "$(split)";
+  select_field    => "$(col)";
+  value_separator  => ",";
+  field_value     => "$(newval)";
+  field_operation => "$(method)";
+  extend_fields => "true";
+}
 ```
 
 Then a `field_edits` body describes the separators for fields and
@@ -102,17 +102,17 @@ ordering the items within them.
 **Example:**
 
 ```cf3
-     body edit_field col(split, col, newval, method)
-     {
-       field_separator    => "$(split)";
-       select_field       => "$(col)";
-       value_separator    => ",";
-       field_value        => "$(newval)";
-       field_operation    => "$(method)";
-       extend_fields      => "true";
-       allow_blank_fields => "true";
-       start_fields_from_zero => "true";
-     }
+body edit_field col(split, col, newval, method)
+{
+  field_separator    => "$(split)";
+  select_field       => "$(col)";
+  value_separator    => ",";
+  field_value        => "$(newval)";
+  field_operation    => "$(method)";
+  extend_fields      => "true";
+  allow_blank_fields => "true";
+  start_fields_from_zero => "true";
+}
 ```
 
 **See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
@@ -133,10 +133,10 @@ number of field separators.
 **Example:**
 
 ```cf3
-     body edit_field example
-     {
-     allow_blank_fields => "true";
-     }
+body edit_field example
+{
+allow_blank_fields => "true";
+}
 ```
 
 #### extend_fields
@@ -157,10 +157,10 @@ If in doubt, set this to true.
 **Example:**
 
 ```cf3
-     body edit_field example
-     {
-     extend_fields => "true";
-     }
+body edit_field example
+{
+extend_fields => "true";
+}
 ```
 
 #### field_operation
@@ -202,10 +202,10 @@ Delete the specified value (if present) in the specified field/column.
 **Example:**
 
 ```cf3
-     body edit_field example
-     {
-     field_operation => "append";
-     }
+body edit_field example
+{
+field_operation => "append";
+}
 ```
 
 #### field_separator
@@ -225,10 +225,10 @@ edit all kinds of line-based text files.
 **Example:**
 
 ```cf3
-     body edit_field example
-     {
-     field_separator => ":";
-     }
+body edit_field example
+{
+field_separator => ":";
+}
 ```
 
 #### field_value
@@ -245,10 +245,10 @@ fixed list.
 **Example:**
 
 ```cf3
-     body edit_field example(s)
-     {
-     field_value => "$(s)";
-     }
+body edit_field example(s)
+{
+field_value => "$(s)";
+}
 ```
 
 #### select_field
@@ -262,10 +262,10 @@ fixed list.
 **Example:**
 
 ```cf3
-     body field_edits example
-     {
-     select_field => "5";
-     }
+body field_edits example
+{
+select_field => "5";
+}
 ```
 
 #### start_fields_from_zero
@@ -297,10 +297,10 @@ the lists of users in these fields are separated by a comma (',').
 **Example:**
 
 ```cf3
-     body field_edit example
-     {
-     value_separator => ",";
-     }
+body field_edit example
+{
+value_separator => ",";
+}
 ```
 
 

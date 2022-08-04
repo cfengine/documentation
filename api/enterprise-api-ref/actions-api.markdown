@@ -19,9 +19,9 @@ You can trigger a delta report collection in order to have fresh host data.
 
 * **hostkey** *(string)*
     Unique host identifier
-    
+
 **Example request (curl):**
- 
+
 ```
 curl -k --user <username>:<password> \
   -X POST \

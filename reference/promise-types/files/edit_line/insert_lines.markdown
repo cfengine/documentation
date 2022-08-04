@@ -11,12 +11,12 @@ body-attributes. The promise object referred to can be a literal line or
 a file-reference from which to read lines.
 
 ```cf3
-      insert_lines:
+insert_lines:
 
-        "literal line or file reference"
+  "literal line or file reference"
 
-           location => location_body,
-           ...;
+     location => location_body,
+     ...;
 ```
 
 By parameterizing the editing bundle, one can make generic and reusable
@@ -28,19 +28,19 @@ set of lines in a given order after a marker, then the following is
 incorrect:
 
 ```cf3
-    bundle edit_line x
-    {
-    insert_lines:
+bundle edit_line x
+{
+insert_lines:
 
-      "line one" location => myloc;
-      "line two" location => myloc;
-    }
+  "line one" location => myloc;
+  "line two" location => myloc;
+}
 
-    body location myloc
-    {
-      select_line_matching => "# Right here.*";
-      before_after => "after";
-    }
+body location myloc
+{
+  select_line_matching => "# Right here.*";
+  before_after => "after";
+}
 ```
 
 This will reverse the order of the lines and will not converge, since
@@ -51,25 +51,25 @@ To add multiple ordered lines after the marker, a single correlated promise
 should be used:
 
 ```cf3
-    bundle edit_line x
-    {
-    insert_lines:
+bundle edit_line x
+{
+insert_lines:
 
-     "line one$(const.n)line two" location => myloc;
-    }
+ "line one$(const.n)line two" location => myloc;
+}
 ```
 
 Or:
 
 ```cf3
-    bundle edit_line x
-    {
-    insert_lines:
+bundle edit_line x
+{
+insert_lines:
 
-      "line one
-    line two"
-      location => myloc;
-    }
+  "line one
+line two"
+  location => myloc;
+}
 ```
 
 ****
@@ -86,9 +86,9 @@ bundle in which this promise is made. In other words, you should qualify
 the variables with the bundle in which they are defined. For example:
 
 ```cf3
-    $(bundle.variable)
-    $(sys.host)
-    $(mon.www_in)
+$(bundle.variable)
+$(sys.host)
+$(mon.www_in)
 ```
 
 **Type:** [`boolean`][boolean]
@@ -169,35 +169,35 @@ This was added in CFEngine 3.5.x.
 **Example:**
 
 ```cf3
-    bundle edit_line lynryd_skynyrd
-    {
-     vars:
-        "keepers" slist => { "Won't you give me", "Gimme three steps" };
+bundle edit_line lynryd_skynyrd
+{
+ vars:
+    "keepers" slist => { "Won't you give me", "Gimme three steps" };
 
-     insert_lines:
+ insert_lines:
 
-         "And you'll never see me no more"
-           insert_type => "literal";    # the default
+     "And you'll never see me no more"
+       insert_type => "literal";    # the default
 
-         "/song/lyrics"
-           insert_type => "file",  # read selected lines from /song/lyrics
-           insert_select => keep("@{keepers}");
-    }
+     "/song/lyrics"
+       insert_type => "file",  # read selected lines from /song/lyrics
+       insert_select => keep("@{keepers}");
+}
 
-    body insert_select keep(s)
-    {
-    insert_if_startwith_from_list => { "@(s)" };
-    }
+body insert_select keep(s)
+{
+insert_if_startwith_from_list => { "@(s)" };
+}
 ```
 
 This will ensure that the following lines are inserted into the promised
 file:
 
 ```cf3
-    And you'll never see me no more
-    Gimme three steps, Mister
-    Gimme three steps towards the door
-    Gimme three steps
+And you'll never see me no more
+Gimme three steps, Mister
+Gimme three steps towards the door
+Gimme three steps
 ```
 
 ### insert_select
@@ -226,10 +226,10 @@ location in the primary file.
 **Example:**
 
 ```cf3
-     body insert_select example
-     {
-     insert_if_startwith_from_list => { "find_me_1", "find_me_2" };
-     }
+body insert_select example
+{
+insert_if_startwith_from_list => { "find_me_1", "find_me_2" };
+}
 ```
 
 #### insert_if_not_startwith_from_list
@@ -250,10 +250,10 @@ file being edited.
 **Example:**
 
 ```cf3
-     body insert_select example
-     {
-     insert_if_not_startwith_from_list => { "find_me_1", "find_me_2" };
-     }
+body insert_select example
+{
+insert_if_not_startwith_from_list => { "find_me_1", "find_me_2" };
+}
 ```
 
 #### insert_if_match_from_list
@@ -276,10 +276,10 @@ or the promiser is a multi-line block.
 **Example:**
 
 ```cf3
-     body insert_select example
-     {
-     insert_if_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
-     }
+body insert_select example
+{
+insert_if_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
+}
 ```
 
 #### insert_if_not_match_from_list
@@ -300,10 +300,10 @@ edited.
 **Example:**
 
 ```cf3
-     body insert_select example
-     {
-     insert_if_not_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
-     }
+body insert_select example
+{
+insert_if_not_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
+}
 ```
 
 #### insert_if_contains_from_list
@@ -326,10 +326,10 @@ location in the primary file.
 **Example:**
 
 ```cf3
-     body insert_select example
-     {
-     insert_if_contains_from_list => { "find_me_1", "find_me_2" };
-     }
+body insert_select example
+{
+insert_if_contains_from_list => { "find_me_1", "find_me_2" };
+}
 ```
 
 #### insert_if_not_contains_from_list
@@ -350,10 +350,10 @@ found in the secondary file, it is inserted into the file being edited.
 **Example:**
 
 ```cf3
-     body insert_select example
-     {
-     insert_if_not_contains_from_list => { "find_me_1", "find_me_2" };
-     }
+body insert_select example
+{
+insert_if_not_contains_from_list => { "find_me_1", "find_me_2" };
+}
 ```
 
 ### location
@@ -374,8 +374,8 @@ matched line.
 **Allowed input range:**
 
 ```
-    before
-    after
+before
+after
 ```
 
 **Default value:** after
@@ -383,10 +383,10 @@ matched line.
 **Example:**
 
 ```cf3
-     body location append
-     {
-     before_after => "before";
-     }
+body location append
+{
+before_after => "before";
+}
 ```
 
 #### first_last
@@ -404,8 +404,8 @@ significance.
 **Allowed input range:**
 
 ```
-    first
-    last
+first
+last
 ```
 
 **Default value:** last
@@ -413,10 +413,10 @@ significance.
 **Example:**
 
 ```cf3
-     body location example
-     {
-     first_last => "last";
-     }
+body location example
+{
+first_last => "last";
+}
 ```
 
 #### select_line_matching
@@ -434,18 +434,18 @@ that is, it is [anchored][anchored].
 **Example:**
 
 ```cf3
-     # Editing
+# Editing
 
-     body location example
-     {
-     select_line_matching => "Expression match.* whole line";
-     }
+body location example
+{
+select_line_matching => "Expression match.* whole line";
+}
 
-     # Measurement promises
-     body match_value example
-     {
-     select_line_matching => "Expression match.* whole line";
-     }
+# Measurement promises
+body match_value example
+{
+select_line_matching => "Expression match.* whole line";
+}
 ```
 
 **Notes:**
@@ -487,10 +487,10 @@ such as `authpriv.* /var/log/something` into a syslog config file.
 **Allowed input range:**
 
 ```cf3
-    ignore_leading
-    ignore_trailing
-    ignore_embedded
-    exact_match
+ignore_leading
+ignore_trailing
+ignore_embedded
+exact_match
 ```
 
 **Default value:** `exact_match`

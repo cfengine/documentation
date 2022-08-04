@@ -151,7 +151,7 @@ never seen the other side before.
 ### Time windows (races)
 
 All security is based on a moment of trust that is granted by a user at some
-point in time – and is assumed thereafter (once given, hard to rescind).
+point in time - and is assumed thereafter (once given, hard to rescind).
 Cryptographic key methods only remove the need for a repeat of the trust
 decision. After the first exchange, trust is no longer needed, because the
 keys allow identity to be actually verified.

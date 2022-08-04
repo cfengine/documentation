@@ -13,7 +13,7 @@ all files in their expected locations. In addition, you may choose to follow
 this standard in locating your master configuration and work areas.
 
 CFEngine was introduced at about the same time as the FHS standard and since
-cfengine 2.x, cfengine defaults to placing all components under `/var/cfengine`
+cfengine 2.x, CFEngine defaults to placing all components under `/var/cfengine`
 (similar to `/var/cron`):
 
 * `/var/cfengine`

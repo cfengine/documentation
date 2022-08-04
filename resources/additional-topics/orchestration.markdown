@@ -61,7 +61,7 @@ discouraged from acting independently, the amplification of effort is lost.
 
 ![Coordination implies common knowledge](./coordination.png)
 
-The need for coordination is often exaggerated in human organizations – it comes
+The need for coordination is often exaggerated in human organizations - it comes
 from an unrealistic desire to absolutely determine the outcome of decisions.
 Realistically, it is only a means to bring consistency to distributed parts.
 
@@ -146,7 +146,7 @@ solutions.
 
 When an organization is formed by merging independent parts, this is especially
 important. The loss of identity and the feeling of loss of autonomy by these
-parts can fuel a breakdown of the social contract – i.e. a loss of loss of
+parts can fuel a breakdown of the social contract - i.e. a loss of loss of
 voluntary cooperation. In terms of system management, it therefore makes sense
 to preserve as much of the identity and autonomy of the parts as possible.
 
@@ -225,7 +225,6 @@ by an enterprise-wide global infrastructure service.
 
   # All other local promises here ....
  }
-
 ```
 
 The CFEngine code snippet above represents the CFEngine configuration for any of
@@ -293,7 +292,7 @@ take them apart. The same applies to any system, whether human, software or
 mechanical.
 
 To merge two systems or enterprises, it will be much simpler if they are fluid
-to begin with – i.e. they are basically composed of autonomous parts, loosely
+to begin with - i.e. they are basically composed of autonomous parts, loosely
 coupled, not rigidly joined together. Hierarchical organization is rigid, like a
 house of cards. Service-oriented systems are loosely coupled. By keeping the
 internal organization of systems as far as possible like independent service
@@ -337,7 +336,7 @@ Rules of thumb for scalable management:
 
 Hierarchy is familiar, but not essential. A hierarchy is only a so-called
 "spanning tree" for a more general network of relationships. It may be thought
-of as one possible point of view, amongst many – one way of traversing a network
+of as one possible point of view, amongst many - one way of traversing a network
 of relationships.
 
 A federated organization is automatically specialized into departments, each of
@@ -356,7 +355,7 @@ to lack of trust, will add overhead and increase costs, without improving the
 certainty of outcome.
 
 Promise Theory tells us that organization by autonomy automatically indentifies
-the parts of a system that can operate independently – i.e., the essential
+the parts of a system that can operate independently - i.e., the essential
 "atoms" of the system. Thus, it is a method for identifying the raw material
 building blocks from which everything else can be built. Starting with these
 available raw materials, it encourages a rational approach to design of systems
@@ -376,5 +375,5 @@ of each autonomous player to determine whether the orchestra is playing together
 and is playing the same piece of music.
 
 [4] This is why society needs a police force to monitor and respond to those who
-do not obey proposed law – whether they have promised to or not. This is the
+do not obey proposed law - whether they have promised to or not. This is the
 role of CFEngine.

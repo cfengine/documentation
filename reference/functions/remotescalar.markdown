@@ -33,21 +33,21 @@ relying on the availability of network resources.
 **Example:**
 
 ```cf3
-    vars:
+vars:
 
-     "remote" string => remotescalar("test_scalar","127.0.0.1","yes");
+ "remote" string => remotescalar("test_scalar","127.0.0.1","yes");
 ```
 
 ```cf3
-    bundle server access
-    {
-    access:
-      "value of my test_scalar, can expand variables here - $(sys.host)"
-        handle => "test_scalar",
-        comment => "Grant access to contents of test_scalar VAR",
-        resource_type => "literal",
-        admit => { "127.0.0.1" };
-    }
+bundle server access
+{
+access:
+  "value of my test_scalar, can expand variables here - $(sys.host)"
+    handle => "test_scalar",
+    comment => "Grant access to contents of test_scalar VAR",
+    resource_type => "literal",
+    admit => { "127.0.0.1" };
+}
 ```
 
 **Notes:** Note that this function assumes that you have already performed a

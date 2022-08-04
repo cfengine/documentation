@@ -151,17 +151,17 @@ Note: There is a record of the host retained that includes the time when the hos
 * **format** *(string)*
     Output format. Default value is `json`. Allowed values: `json`, `yaml`.
 * **withInventory** *(boolean)*
-    Include inventory data to the API response. Default value is `false`. Allowed values: `true`, `false`  
+    Include inventory data to the API response. Default value is `false`. Allowed values: `true`, `false`
 * **inventoryFile** *(boolean)*
     Make hosts' children values objects which aligns with Ansible inventory that is sourced from a file (so this format is appropriate for caching responses), by default when `inventoryFile` is `false`, the output format aligns with Ansible inventory sourced from a script. Default value is `false`. Allowed values: `true`, `false`
-    
+
 **CURL unfiltered request example**
 
 ```
 curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class
 ```
 
-**Example response:**    
+**Example response:**
 
 ```
 {
@@ -259,10 +259,10 @@ curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class?wit
 **Parameters:**
 
 * **skip** *(integer)*
-  Number of results to skip for the processed query.  
+  Number of results to skip for the processed query.
   Optional parameter.
 * **limit**  *(integer)*
-  Limit the number of results in the query.  
+  Limit the number of results in the query.
   No limit when parameter is not set. Optional parameter.
 
 **Example request (curl):**

@@ -6,7 +6,7 @@ sorting: 20
 tags: [what's new, MPF, masterfiles]
 ---
 
-**See also:** [Core Changelog][Changelog], [Enterprise Changelog][Enterprise Changelog] 
+**See also:** [Core Changelog][Changelog], [Enterprise Changelog][Enterprise Changelog]
 
 <pre>
 {% raw %}

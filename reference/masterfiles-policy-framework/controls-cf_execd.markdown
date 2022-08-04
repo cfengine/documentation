@@ -9,4 +9,3 @@ This is where `body executor control` is defined. `body executor control` is whe
 various settings related to `cf-execd` can be tuned.
 
 [%CFEngine_library_include(controls/cf_execd)%]
-

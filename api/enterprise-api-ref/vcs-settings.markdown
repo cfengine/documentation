@@ -7,7 +7,7 @@ tags: [reference, enterprise, API, settings, VCS]
 VCS API for managing version control repository settings.
 
 ## Get VCS settings
-   
+
 
 **URI:** https://hub.cfengine.com/api/vcs/settings
 
@@ -18,7 +18,7 @@ VCS API for managing version control repository settings.
 ```
 curl -k --user <username>:<password> \
   -X GET \
-  https://hub.cfengine.com/api/vcs/settings 
+  https://hub.cfengine.com/api/vcs/settings
 '
 ```
 
@@ -65,9 +65,9 @@ curl -k --user <username>:<password> \
     Git password or token for authentication, not needed for public repositories.
 * **gitPrivateKey** *(string)*
     Git private key raw content for authentication.
- 
+
 **Example request (curl):**
- 
+
 ```
 curl -k --user <username>:<password> \
   -X POST \
@@ -86,13 +86,13 @@ curl -k --user <username>:<password> \
 **Example response:**
 
 ```
- {
-     "gitServer": "https://github.com/cfengine/masterfiles.git",
-     "gitRefspec": "master",
-     "gitUsername": "gituser",
-     "gitPassword": "passwordOrToken",
-     "gitPrivateKey": "/opt/cfengine/userworkdir/admin/.ssh/id_rsa.pvt"
- }
+{
+    "gitServer": "https://github.com/cfengine/masterfiles.git",
+    "gitRefspec": "master",
+    "gitUsername": "gituser",
+    "gitPassword": "passwordOrToken",
+    "gitPrivateKey": "/opt/cfengine/userworkdir/admin/.ssh/id_rsa.pvt"
+}
 ```
 
 ## History

@@ -18,4 +18,3 @@ trust? Use this snippet to figure out which public key file in
  fi
 done
 ```
-

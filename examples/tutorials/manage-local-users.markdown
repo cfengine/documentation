@@ -23,7 +23,7 @@ Create the files `id_rsa` and `id_rsa.pub` in `/tmp`.
 Create user group security and webadmin.
 
 ```console
-# sudo groupadd security 
+# sudo groupadd security
 # sudo groupadd webadmin
 ```
 
@@ -96,7 +96,7 @@ Congratulations! You should now see adam and eva added to the groups security
 and webadmin. **NOTE:** CFEngine's users type promise will not create groups, so
 you must make sure the groups exists.
 
-Verify the result: Have ssh-keys have been copied from `/tmp` to user’s `~/.ssh`
+Verify the result: Have ssh-keys have been copied from `/tmp` to user's `~/.ssh`
 directory?
 
 ```console
@@ -112,4 +112,3 @@ Ps. If you would like play around with the policy, delete the users after each r
 ```
 
 Mission accomplished!
-

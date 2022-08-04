@@ -8,11 +8,11 @@ tags: [uninstall, reinstall]
 
 # What is left behind after uninstalling?
 
-Uninstalling a cfengine package does not remove any user data. Most data
+Uninstalling a CFEngine package does not remove any user data. Most data
 including the host identity (`$(sys.workdir)/ppkeys/localhost.{pub,priv}`),
 state, policy, and logs remain.
 
-To completely remove cfengine delete `$(sys.workdir)` typically `/var/cfengine`
+To completely remove CFEngine delete `$(sys.workdir)` typically `/var/cfengine`
 or `C:\Program Files\Cfengine` after uninstalling the package.
 
 # Should I delete anything if I am re-installing?

@@ -50,4 +50,3 @@ Edits to the XML document take place within the selected node. This
 attribute is not used when inserting XML content into an empty file.
 
 [%CFEngine_promise_attribute()%]
-

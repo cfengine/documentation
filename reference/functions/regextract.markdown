@@ -17,8 +17,8 @@ support named captures.
 If there are any back reference matches from the regular expression, then the array will be populated with the values, in the manner:
 
 ```
-    $(backref[0]) = entire string
-    $(backref[1]) = back reference 1, etc
+$(backref[0]) = entire string
+$(backref[1]) = back reference 1, etc
 ```
 
 [%CFEngine_function_attributes(regex, string, backref)%]

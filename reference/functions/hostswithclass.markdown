@@ -24,19 +24,19 @@ classes set during the most recently collected agent run.
 **Example:**
 
 ```cf3
-    bundle agent debian_hosts
-    {
-    vars:
+bundle agent debian_hosts
+{
+vars:
 
-      am_policy_hub::
-        "host_list" slist => hostswithclass( "debian", "name" );
+  am_policy_hub::
+    "host_list" slist => hostswithclass( "debian", "name" );
 
-    files:
-      am_policy_hub::
-        "/tmp/master_config.cfg"
-             edit_line => insert_lines("host=$(host_list)"),
-                create => "true";
-    }
+files:
+  am_policy_hub::
+    "/tmp/master_config.cfg"
+         edit_line => insert_lines("host=$(host_list)"),
+            create => "true";
+}
 ```
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012)

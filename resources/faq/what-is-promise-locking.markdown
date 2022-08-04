@@ -1,6 +1,6 @@
 ---
 layout: default
-title: What is promise locking? 
+title: What is promise locking?
 published: true
 sorting: 90
 tags: [getting started, faq, locking]

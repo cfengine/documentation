@@ -44,9 +44,9 @@ files, a special variable context `connection` is available with variables `ip`,
 and `hostname`, containing information about the connection through which access is attempted.
 
 ```cf3
-   "/var/cfengine/cmdb/$(connection.key).json"
-      shortcut   => "me.json",
-      admit_keys => { "$(connection.key)" };
+"/var/cfengine/cmdb/$(connection.key).json"
+   shortcut   => "me.json",
+   admit_keys => { "$(connection.key)" };
 ```
 
 In this example, requesting the file `me.json` will transfer the file stored on the
@@ -101,7 +101,6 @@ reporting and orchestration.
 
 
 }
-
 ```
 
 Using the built-in `report_data_select` body `default_data_select_host`:
@@ -676,9 +675,9 @@ its shortcut name.
 **Example:**
 
 ```cf3
-  "/var/cfengine/cmdb/$(connection.key).json"
-    shortcut   => "me.json",
-    admit_keys => { "$(connection.key)" };
+"/var/cfengine/cmdb/$(connection.key).json"
+  shortcut   => "me.json",
+  admit_keys => { "$(connection.key)" };
 ```
 
 In this example, requesting the file `me.json` will transfer the file stored on the

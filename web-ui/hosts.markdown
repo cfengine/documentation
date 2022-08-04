@@ -13,11 +13,11 @@ Each host is in one of two groups: out of compliance or fully compliant.
 * A host is considered out of compliance if less than 100% of its promises were kept.
 * A host is considered fully compliant if 100% of its promises were kept.
 
-![Hosts app overview](Hosts-app-overview.png)
+<img src="Hosts-app-overview.png" alt="Hosts app overview" width="700px">
 
 A host tree based on OS (Operating system) is present by default. Host trees map hosts based on reported classes into a hierarchy. Additional host trees can be added based on classes, which could be used to view different perspectives such as geographic location, production tier, business unit, etc.... Furthermore, Each host tree can be shared based on Mission Portal role.
 
-![Hosts app custom tree for geographic region](Hosts-app-custom-tree-geographic-region.png)
+<img src="Hosts-app-custom-tree-geographic-region.png" alt="Hosts app custom tree for geographic region" width="439px">
 
 Visiting a leaf node provides a summary of host specific information.
 
@@ -25,22 +25,21 @@ Visiting a leaf node provides a summary of host specific information.
 
 The host info page provides extensive information for an individual host.
 
-![Host info page](Host-info-page.png)
+<img src="Host-info-page.png" alt="Host info page" width="700px">
 
 ### Host Actions ###
 
 Take action on a host.
 
-![Host action buttons](host-action-buttons.png)
+<img src="host-action-buttons.png" alt="Host action buttons" width="280px">
 
-* ![Run agent](host-info-run-agent.png) :: Request an unscheduled policy run
-* ![Collect reports](host-info-collect-reports.png):: Request report collection
-* ![Get URL](host-info-get-url.png):: Get the URL to the specific hosts info page
-* ![Delete host](host-info-delete-host.png) :: Delete the host
+* <img src="host-info-run-agent.png" alt="Run agent" width="50px"> :: Request an unscheduled policy run
+* <img src="host-info-collect-reports.png" alt="Collect reports" width="50px">:: Request report collection
+* <img src="host-info-get-url.png" alt="Get URL" width="50px">:: Get the URL to the specific hosts info page
+* <img src="host-info-delete-host.png" alt="Delete host" width="50px"> :: Delete the host
 
 ### Host specific data ###
 
 Assign host specific _Variables_ and _Classes_.
 
-![Host specific data](host-specific-data.png)
-
+<img src="host-specific-data.png" alt="Host specific data" width="488px">

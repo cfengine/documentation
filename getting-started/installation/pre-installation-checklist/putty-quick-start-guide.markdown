@@ -22,7 +22,7 @@ The important thing about PuTTY is that it is a _secure_ way to connect a client
 using the  SSH network protocol. It has a powerful and easy-to-use graphical user interface (GUI) and is used
 to run a remote session over a network.
 
-What is SSH? It is short-form for “Secure Shell,” which means it creates a _secure channel_ over an
+What is SSH? It is short-form for "Secure Shell," which means it creates a _secure channel_ over an
 insecure network—like the internet, for example.
 
 How does SSH do this? By encrypting the communications between the client and the server, using
@@ -175,5 +175,3 @@ The PuTTY interface with the two virtual machines saved. We can now proceed to c
 ![The PuTTY command-line window](Installing-CFE-on-AWS-7.png)
 
 The PuTTY command-line window, which we will use to configure the virtual machines with CFEngine.
-
-
