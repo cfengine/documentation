@@ -1,25 +1,62 @@
 {% include head.html %}
 <body>
-    <div id="full_container">
-        {% include header_nav.html %}
-        <div class="wrapper" id="googleSearchPage">
+{% include header_nav.html %}
+<main class="main_wrapper container search-page">
+    {% include left_col.html %}
+    <article>
+        <div class="wrapper article" id="googleSearchPage">
             <div id="content_col" class="googleSearch">
-                <form id="cse-search-box" action="search.html">
-                    <input type="hidden" name="cx" value="96c0f638b03564284" />
-                    <input type="hidden" name="ie" value="UTF-8" />
-                    <div class="formbody">
-                        <input type="text" name="q" id="top_search_searchpage" class="text" value="" placeholder="Search" />
-                        <input type="submit" value="Search" class="submit" >
-                    </div>
-                </form>
                 <article>
-                    <h1>Search results</h1>
-                    <gcse:searchresults-only></gcse:searchresults-only>
+                    <h1>Search results for: <span class="searchQuery"></span></h1>
+                    <div class="resultsCount"><span></span> results</div>
+                    <div id="searchResults"></div>
                 </article>
+                <script>
+                    const version = window.location.pathname.split('/')[2];
+                    const queryParams = new URLSearchParams(window.location.search);
+                    const searchInput = document.getElementById('top_search');
+                    const searchResults = document.getElementById('searchResults');
+                    const searchFor = document.querySelector('.searchQuery');
+                    const resultsCount = document.querySelector('.resultsCount span');
+
+                    const displayResults = (results) => {
+                        let html = '<ul>';
+                        resultsCount.innerHTML = results.length;
+                        if (results.length > 0) {
+                            for (const result of results) {
+                                html += `<li>
+                                            ${result.breadCrumbs}<a href="${result.uri}">${result.title}</a>
+                                            <div class="search-description">${result.content}</div>
+                                        </li>`;
+                            }
+                            html += `</ul>`;
+                        } else {
+                            html = `No results found`;
+                        }
+
+                        searchResults.innerHTML = html;
+                    }
+
+                    const search = searchQuery =>
+                        fetch(`https://${window.location.hostname}/docs/search/${version}/?searchQuery=${searchQuery}`)
+                            .then(response => response.json()).then(data => displayResults(data))
+                            .catch(() => searchResults.innerTextr = 'An error happened while search');
+
+                    searchInput.oninput = searchInput.onchange = () => {
+                        search(searchInput.value);
+                        searchFor.innerText = searchInput.value;
+                    }
+
+                    if (queryParams.has('q')) {
+                        searchInput.value = queryParams.get('q');
+                        searchFor.innerText = queryParams.get('q');
+                        searchInput.dispatchEvent(new Event('change'));
+                    }
+                </script>
             </div>
         </div>
-
-        {% include footer.html %}
-    </div>
+    </article>
+</main>
+{% include footer.html %}
 </body>
 </html>

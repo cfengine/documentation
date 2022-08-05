@@ -88,6 +88,9 @@ sudo dpkg --unpack cfengine-nova-hub.deb
 sudo cp -a /var/cfengine/share/NovaBase/masterfiles "$WRKDIR"
 sudo chmod -R a+rX "$WRKDIR"/masterfiles
 
+# write current branch into the config.yml
+echo "branch: $BRANCH" >> $WRKDIR/documentation-generator/_config.yml
+
 # Generate syntax data
 ./_regenerate_json.sh || exit 4
 
@@ -111,6 +114,14 @@ source ~/.rvm/scripts/rvm
 
 export LC_ALL=C.UTF-8
 
+$(which npx) -p less lessc  --compress  $WRKDIR/documentation-generator/_assets/styles/cfengine.less $WRKDIR/documentation-generator/_assets/css/styles.min.css
+
 # finally, run actual jekyll
 echo "+ bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6"
 bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6
+
+cd $WRKDIR/documentation-generator/build/search
+$(which npm) i
+$(which node) createIndex.js
+cp -rf ./searchIndex ./../../_site/assets/
+npm install --prefix $WRKDIR/documentation-generator/_site/assets bootstrap-icons  @fontsource/red-hat-display @fontsource/red-hat-mono @fontsource/roboto
