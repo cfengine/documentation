@@ -222,12 +222,12 @@ The header sent by cf-agent consists of 3 space-separated parts:
 * CFEngine version - Example: `3.16.0`
 * Highest supported protocol version - Example: `v1`
 
-The header response sent by the module consists of 3 or more space separated parts:
+The header response sent by the module consists of 4 or more space separated parts:
 
 * Module name - Example: `git_promise_module`
 * Module version - Example: `0.0.1`
 * Requested protocol version - Example: `v1`
-* Rest of line, optional: Feature requests/flags - Example: `line_based`
+* Rest of line: Feature flags separated by spaces. At least `json_based` or `line_based` is required - Example: `line_based`
 
 The header has the same syntax regardless of protocol (It is used to determine protocol).
 The module should respond with the same protocol version, or lower.
