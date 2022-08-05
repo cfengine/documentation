@@ -10,8 +10,8 @@ alias: index.html
    <div class="home-top">
       <h1>Welcome to CFEngine Documentation</h1>
       <div>
-         This site contains information on how to manage and automate the infrastructure with CFEngine. 
-         It includes the reference for the following version of CFEngine: 
+         This site contains information on how to manage and automate the infrastructure with CFEngine.
+         It includes the reference for the following version of CFEngine:
       </div>
       <ul class="home-top_versions">
          {% include lts_versions_list.html %}
@@ -66,8 +66,8 @@ alias: index.html
          <li class="cfe-build">
             <span><b>CFEngine Build</b></span>
             <div>
-               CFEngine Build is a catalogue of policy and modules created by CFEngine, our partner and community that 
-               helps you to simplify the automation process. 
+               CFEngine Build is a catalogue of policy and modules created by CFEngine, our partner and community that
+               helps you to simplify the automation process.
             </div>
             <a target="_blank" class="btn btn-transparent" href="https://build.cfengine.com">Go to the page <img src="./media/images/arrow-right.svg" /></a>
          </li>
