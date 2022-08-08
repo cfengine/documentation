@@ -214,7 +214,7 @@ bundle agent example(param1)
                          # tossed the emperor into the Death
                          # Star's reactor shaft we are including
                          # him.
-                      };
+      };
   classes:
       # Most of the time we don't need differentiation of redhat and centos
       "EL5" or => { "centos_5", "redhat_5" };
