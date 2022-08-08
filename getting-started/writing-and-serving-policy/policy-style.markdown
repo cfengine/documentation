@@ -17,7 +17,7 @@ guide.
 * vertically align opening and closing curly braces unless on same line
 * promise type = 1 indent
 * context class expression = 2 indents
-* promiser = 3 indents
+* promiser = 3 indents, to allow for adding class guards without changing indent
 * promise attributes = (we suggest 3 or 4 indents)
 
 ## Promise Ordering
@@ -121,7 +121,8 @@ whitespace. Generally line length should not surpass 80 characters.
 ## Curly brace alignment
 
 Generally if opening and closing braces are not on a single line they should
-be aligned vertically.
+be aligned vertically. Content inside braces can be indented one level over
+instead of to the right of the braces.
 
 Example:
 
@@ -130,12 +131,12 @@ bundle agent example
 {
   vars:
       "people" slist => {
-                          "Obi-Wan Kenobi",
-                          "Luke Skywalker",
-                          "Chewbacca",
-                          "Yoda",
-                          "Darth Vader",
-                        };
+          "Obi-Wan Kenobi",
+          "Luke Skywalker",
+          "Chewbacca",
+          "Yoda",
+          "Darth Vader",
+      };
 
       "cuddly" slist => { "Chewbacca", "Yoda" };
 }
@@ -206,13 +207,13 @@ bundle agent example(param1)
       "copy_of_param1" string => "$(param1)";
 
       "jedi" slist => {
-                        "Obi-Wan Kenobi",
-                        "Luke Skywalker",
-                        "Yoda",
-                        "Darth Vader", # He used to be a Jedi, and since he
-                                       # tossed the emperor into the Death
-                                       # Star's reactor shaft we are including
-                                       # him.
+          "Obi-Wan Kenobi",
+          "Luke Skywalker",
+          "Yoda",
+          "Darth Vader", # He used to be a Jedi, and since he
+                         # tossed the emperor into the Death
+                         # Star's reactor shaft we are including
+                         # him.
                       };
   classes:
       # Most of the time we don't need differentiation of redhat and centos
@@ -449,10 +450,10 @@ bundle agent old
 {
   meta:
     "tags" slist => {
-                      "deprecated=3.6.0",
-                      "deprecation-reason=More feature rich implimentation",
-                      "replaced-by=newbundle",
-                    };
+      "deprecated=3.6.0",
+      "deprecation-reason=More feature rich implimentation",
+      "replaced-by=newbundle",
+    };
 }
 ```
 ## Tooling
