@@ -81,6 +81,32 @@ currently has less support for out-of-the-box probes.
 52. cpu1: %CPU utilization core 1
 53. cpu2: %CPU utilization core 2
 54. cpu3: %CPU utilization core 3
+55. microsoft\_ds\_out: Samba/MS\_ds name sessions (out)
+56. www\_alt\_in: Alternative web service connections (in)
+57. www\_alt\_out: Alternative web client connections (out)
+58. imaps\_in: encrypted imap mail service sessions (in)
+59. imaps\_out: encrypted imap mail client sessions (out)
+60. ldap\_in: LDAP directory service service sessions (in)
+61. ldap\_out: LDAP directory service client sessions (out)
+62. ldaps\_in: LDAP directory service service sessions (in)
+63. ldaps\_out: LDAP directory service client sessions (out)
+64. mongo\_in: Mongo database service sessions (in)
+65. mongo\_out: Mongo database client sessions (out)
+66. mysql\_in: MySQL database service sessions (in)
+67. mysql\_out: MySQL database client sessions (out)
+68. postgres\_in: PostgreSQL database service sessions (in)
+69. postgres\_out: PostgreSQL database client sessions (out)
+70. ipp\_in: Internet Printer Protocol (in)
+71. ipp\_out: Internet Printer Protocol (out)
+72. io\_reads: Number of I/O reads
+73. io\_writes: Number of I/O writes
+74. io\_readdata: Aggregate mount of data read across all devices
+75. io\_writtendata: Aggregate amount of data written across all devices
+76. mem\_total: Total system memory
+77. mem\_free: Free system memory
+78. mem\_cached: Size of disk cache
+79. mem\_swap: Total swap size
+80. mem\_freeswap: Free swap size
 
 Slots with a higher number are used for custom measurement promises in
 CFEngine Enterprise.
