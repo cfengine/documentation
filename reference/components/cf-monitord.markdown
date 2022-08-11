@@ -116,6 +116,19 @@ into agent variables in the `$(mon.`name`)` context.
 
 Note: There is no way for force a refresh of the monitored data.
 
+## Data storage ##
+
+`cf-monitord` records data in `$(sys.statedir)` (typically `/var/cfengine/state`).
+
+* `cf_observations.lmdb`
+* `nova_measures.lmdb`
+* `ts_key`
+* `env_data`
+* `cf_incoming.<service id>`
+* `cf_outgoing.<service id>`
+* `cf_state.lmdb`
+* `history.lmdb`
+
 ## Control Promises
 
 Settings describing the details of the fixed behavioral promises
