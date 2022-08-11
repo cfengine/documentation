@@ -17,6 +17,10 @@ policy decisions.
 `cf-monitord` keeps the promises made in `common`and `monitor` bundles, and is
 affected by  `common` and `monitor` control bodies.
 
+**Notes:**
+
+* `cf-monitord` always considers the class ```monitor``` to be defined.
+
 ## Command reference ##
 
 [%CFEngine_include_snippet(cf-monitord.help, [\s]*--[a-z], ^$)%]
