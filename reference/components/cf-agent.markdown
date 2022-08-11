@@ -17,6 +17,10 @@ convergence to policy.
 `cf-agent` keeps the promises made in `common` and `agent` bundles, and is
 affected by `common` and `agent` control bodies.
 
+**Notes:**
+
+* `cf-agent` always considers the class ```agent``` to be defined.
+
 ## Command reference ##
 
 [%CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$)%]
