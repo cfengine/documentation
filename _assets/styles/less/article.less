@@ -4,6 +4,40 @@ article {
     font-size: 16px;
     line-height: 24px;
 
+    display: grid;
+    grid-template-areas:
+    "title  table-of-contents"
+    "content  table-of-contents"
+    "content  table-of-contents";
+    grid-template-columns: 100% 24rem;
+    column-gap: 9.6rem;
+
+    @media @desktop-wide-down {
+      column-gap: 5.6rem;
+    }
+
+    @media @desktop-down {
+      flex-wrap: wrap;
+      display: block;
+    }
+
+    .article_title {
+      grid-area: title;
+    }
+
+    .table-of-contents {
+      grid-area: table-of-contents;
+      margin-top: 2rem;
+
+      ul {
+        margin-left: 0;
+      }
+    }
+
+    .main-content {
+      grid-area: content;
+    }
+
     img, iframe {
       padding: 32px 16px 40px;
       max-width: 100%;
@@ -13,7 +47,7 @@ article {
       filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, h4, h5 {
       font-weight: 700;
       margin-bottom: 1.2rem;
     }
@@ -36,6 +70,18 @@ article {
       margin-top: 2.4rem;
     }
 
+    h4 {
+      font-size: 18px;
+      line-height: 24px;
+      margin-top: 2.4rem;
+    }
+
+    h5 {
+      font-size: 17px;
+      line-height: 24px;
+      margin-top: 2.4rem;
+    }
+
     p {
       margin-bottom: 16px;
     }
@@ -54,11 +100,18 @@ article {
         border-bottom: .1rem solid @blue-700;
       }
     }
+
     .article_title {
       display: flex;
       align-items: center;
+
       h1 {
         flex-grow: 1;
+      }
+
+      @media @phone-down {
+        display: block;
+        margin-bottom: 2.4rem;
       }
     }
   }
@@ -76,9 +129,11 @@ article {
       border-radius: 4px;
       padding: 4px 8px;
       margin-right: 8px;
+      margin-top: 8px;
       font-weight: 400;
       font-size: 12px;
       line-height: 16px;
+
       &:hover, &:focus {
         background: @blue-50;
       }
@@ -88,6 +143,7 @@ article {
       color: inherit;
       text-decoration: none;
     }
+
     padding-bottom: 3.2rem;
     margin: 4rem 0;
     border-bottom: 1px solid #E2E2E2;
