@@ -142,12 +142,12 @@ depending on the measurement.
 
 The following suffixes may be used when defining classes:
 
-* `_high` :: The last measurement was greater than the average.
-* `_low` :: The last measurement was lower than the average.
-* `_normal` ::
-* `_ldt` ::
-* `_dev1` :: The last measurement was at least 1 standard deviation higher than the average.
-* `_dev2` :: The last measurement was at least 2 standard deviations higher than the average. These classes are persistently defined for a number of minutes.
+* `_high` :: The last measurement seemed high. It was greater than the average of all time and also greater than the recent average. This could indicate that the measured value is experiencing a "spike" or trending in a positive direction.
+* `_low` :: The last measurement was low. It was lower than the average of all time and also lower than the recent average. This could indicate that the measured value is experiencing a "dip" or trending in a negative direction.
+* `_normal` :: The value was neither high nor low, (as per how those are described above).
+* `_ldt` :: A leap (step) detected, meaning a distinct (significant) change in the average.
+* `_dev1` :: The last measurement was at least 1 standard deviation higher/lower than the average.
+* `_dev2` :: The last measurement was at least 2 standard deviations higher/lower than the average. These classes are persistently defined for a number of minutes.
 * `_anomaly` :: The last measurement was at least 3 standard deviations than the average. These classes are persistently defined for a number of minutes.
 * `_microanomaly` :: The last measurement was at least 2 standard deviations higher than the average.
 
