@@ -25,10 +25,10 @@ then
 fi
 
 #html source
-DIR=$WRKDIR/documentation-generator/_site
+DIR=$WRKDIR/documentation/generator/_site
 
 #output pdf folder
-DIR2=$WRKDIR/documentation-generator/_site/pdf
+DIR2=$WRKDIR/documentation/generator/_site/pdf
 
 #git branch
 CUR_BRANCH='master'
