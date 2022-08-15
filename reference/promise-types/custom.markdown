@@ -340,6 +340,10 @@ the promiser and other attributes, for example:
 warning: Should update file '/tmp/test' with content 'Hello,world!', but only warning promised"
 ```
 
+**History:**
+
+* 3.21.0, 3.18.3 support in custom promise types introduced.
+
 #### JSON protocol
 
 The JSON based protocol supports all aspects of CFEngine promises, including `slist`, `data` containers, and strings with newlines, tabs, etc.
