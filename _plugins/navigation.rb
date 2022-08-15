@@ -11,7 +11,7 @@ module Jekyll
         end
         writePageIntoMenuItems(page)
       end
-      site.config["mainNavigation"] = "<ul>" + buildHtmlMenu($menu_items, 1) + "</ul>";
+      site.config["mainNavigation"] = "<ul class='mainMenu'>" + buildHtmlMenu($menu_items, 1) + "</ul>";
     end
 
     def writePageIntoMenuItems(page)

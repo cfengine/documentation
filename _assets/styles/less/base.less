@@ -75,12 +75,16 @@ ul {
   max-width: 144rem;
   margin: 0 auto;
   position: relative;
-  padding: 0 2rem;
+  padding: 0 3.6rem;
+  @media @desktop-wide-down {
+    padding: 0 2.4rem;
+  }
 }
 
 .relative {
   position: relative;
 }
+
 .half {
   flex-grow: 0;
   flex-shrink: 0;
@@ -146,18 +150,23 @@ ul {
   &-45 {
     transform: rotate(45deg);
   }
+
   &-90 {
     transform: rotate(90deg);
   }
+
   &-135 {
     transform: rotate(135deg);
   }
+
   &-180 {
     transform: rotate(180deg);
   }
+
   &-225 {
     transform: rotate(225deg);
   }
+
   &-270 {
     transform: rotate(270deg);
   }
@@ -195,6 +204,7 @@ table {
 
   }
 }
+
 code {
   font-family: "Red Hat Mono";
   background: @gray-100;
@@ -203,20 +213,24 @@ code {
   line-height: 24px;
   font-size: 15px;
 }
+
 div.highlight {
   background: #F7F7F7;
   padding-right: 40px;
   position: relative;
   border: 1px solid @gray-300;
   margin: 1.2rem 0 4rem 0;
+
   .copy-to-clipboard {
     position: absolute;
     right: 20px;
     top: 20px;
     cursor: pointer;
     background: #F7F7F7;
+
     &:hover {
       color: @blue-600;
+
       &:after {
         color: @MainMenuTextColor;
         font-style: normal;
@@ -233,12 +247,14 @@ div.highlight {
         line-height: 16px;
         z-index: 10;
       }
+
       &.bi-check2:after {
         content: "Copied!";
       }
     }
   }
 }
+
 pre {
   background: #F7F7F7;
   overflow: visible;
@@ -249,6 +265,7 @@ pre {
   font-weight: 400;
   font-size: 13px;
   line-height: 150%;
+
   code {
     background: none;
     padding: 0;
@@ -260,15 +277,28 @@ pre {
 .main_wrapper {
   display: flex;
   min-height: calc(100vh - 344px); // 100 viewport height minus header and footer height to stick the footer to the bottom
+  @media @tablet-down {
+    flex-wrap: wrap;
+  }
 }
 
 aside {
   width: 28rem;
   margin-left: 4rem;
   margin-right: 5.6rem;
+  @media @desktop-wide-down {
+    margin-right: 1.6rem;
+  }
 }
 
 article {
   flex-grow: 1;
   max-width: 67.2rem;
+  @media @desktop-wide-down {
+    min-width: 56rem;
+  }
+  @media @phone-down {
+    min-width: 0;
+    margin-right: 0 !important;
+  }
 }
