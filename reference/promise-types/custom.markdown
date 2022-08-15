@@ -222,12 +222,13 @@ The header sent by cf-agent consists of 3 space-separated parts:
 * CFEngine version - Example: `3.16.0`
 * Highest supported protocol version - Example: `v1`
 
-The header response sent by the module consists of 3 or more space separated parts:
+The header response sent by the module consists of 4 or more space separated parts:
 
 * Module name - Example: `git_promise_module`
 * Module version - Example: `0.0.1`
 * Requested protocol version - Example: `v1`
-* Rest of line, optional: Feature requests/flags - Example: `line_based`
+* Rest of line: [Feature flags](#features) separated by spaces. At least `json_based` or
+  `line_based` is required - Example: `json_based action_policy`
 
 The header has the same syntax regardless of protocol (It is used to determine protocol).
 The module should respond with the same protocol version, or lower.
@@ -299,6 +300,45 @@ Both how many classes are set, and the class names can be dynamic, depending on 
 In the JSON protocol, they are a list of strings, in the line based protocol, they are a comma separated list.
 In both cases, the key is `result_classes`.
 See examples for both protocols in their sections below.
+
+#### Features
+
+Modules can optionally implement extra features that they can advertise as supported in the protocol
+header. Following are the currently recognized features supported by cf-agent.
+
+##### Action policy
+
+The *Action policy* feature, advertised as supported by the `action_policy` feature flag, indicates
+that the module can properly handle the action policy mechanism which allows user to specify that
+promises should only check the state of the system and produce warnings in case of mismatch instead
+of actually repairing the state. When supported by the module, the cf-agent will allow use of the
+promises handled by the module with:
+
+* the `action_policy => "warn"` promise attribute and/or
+* in one of the evaluation modes that disable making changes: `--dry-run` and `--simulate`.
+
+In all the above cases, the `action_policy` attribute with the value `"warn"` is sent to the module
+as part of the request. There is currently no differentiation between the cases. **If the module
+doesn't support the feature promises handled by it fail validation in the above cases.** The reason
+is that it would be unsafe to evaluate such promises in the above cases because the evaluation could
+make changes to the system while the user requested no changes to be made and only warnings to be
+produced instead.
+
+The implementation of the *Action policy* feature must ensure that if the `action_policy` attribute
+is sent by cf-agent with the value `"warn"` then either the state of the system:
+
+* is as described by the promise in which case the result is `kept` with only `debug` or `verbose`
+  messages returned by the module, or
+* would require changes to be made in which case the result is `not_kept` with log messages with the
+  log level `warning` returned by the module, **but no changes are made on the system**.
+
+A common pattern for warnings about changes that should be made is *"Should ACTION ON SOMETHING, but
+only warnings promised"* with the *ACTION ON SOMETHING* part describing what should be done based on
+the promiser and other attributes, for example:
+
+```
+warning: Should update file '/tmp/test' with content 'Hello,world!', but only warning promised"
+```
 
 #### JSON protocol
 
