@@ -50,7 +50,7 @@ When linking to a section, you should use the section name as it is rendered on 
 
 For example, On the [functions][Functions] page we can link to the [collecting functions][Functions#collecting functions] section using `[collecting functions][Functions#collecting functions]`.
 
-Sometimes (because `¯\_(ツ)_/¯`, maybe the page linked to hasn't been parsed yet) a page may not be automatically known. In this case an entry in [_references.md](https://github.com/cfengine/documentation-generator/blob/master/_references.md) of the [documentation-generator](https://github.com/cfengine/documentation-generator) may be required.
+Sometimes (because `¯\_(ツ)_/¯`, maybe the page linked to hasn't been parsed yet) a page may not be automatically known. In this case an entry in [_references.md](https://github.com/cfengine/documentation/blob/master/generator/_references.md).
 
 ##### Special Characters in link targets
 
@@ -569,8 +569,8 @@ updated with each new version.
 
 Variables that are defined in the front matter (thats the content between the
 three dashes at the top) or in
-[_config.yaml](https://github.com/cfengine/documentation-generator/blob/master/_config.yml)
-in the documentation-generator repository can be used directly within markdown.
+[_config.yaml](https://github.com/cfengine/documentation/blob/master/generator/_config.yml)
+can be used directly within markdown.
 
 For example this is the '{{site.CFE_manuals_version}}' version of the
 documentation. That variable comes from _config.yaml.
