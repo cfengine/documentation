@@ -133,6 +133,30 @@ Note: There is no way for force a refresh of the monitored data.
 * `cf_state.lmdb`
 * `history.lmdb`
 
+## Statistical Classes
+
+`cf-monitord` automatically defines classes based on the observation of the data
+is has collected. Classes defined are named for the measurement id (the promise
+handle in the case of custom measurement promises) with prefixes and or suffixes
+depending on the measurement.
+
+The following suffixes may be used when defining classes:
+
+* `_high` :: The last measurement was greater than the average.
+* `_low` :: The last measurement was lower than the average.
+* `_normal` ::
+* `_ldt` ::
+* `_dev1` :: The last measurement was at least 1 standard deviation higher than the average.
+* `_dev2` :: The last measurement was at least 2 standard deviations higher than the average. These classes are persistently defined for a number of minutes.
+* `_anomaly` :: The last measurement was at least 3 standard deviations than the average. These classes are persistently defined for a number of minutes.
+* `_microanomaly` :: The last measurement was at least 2 standard deviations higher than the average.
+
+The following prefixes may be used when defining classes:
+
+* `entropy_` ::
+
+Note: These suffixes and prefixes may be combined, resulting in a class like `rootprocs_high`, `loadavg_high_ldt`, `cpu1_high_dev3`, and `entropy_postgresql_out_low`.
+
 ## Control Promises
 
 Settings describing the details of the fixed behavioral promises
