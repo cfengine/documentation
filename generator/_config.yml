@@ -11,7 +11,7 @@ git-branch: "master"
 #permalink: /:title.html
 
 #CFEngine addon
-# CFE_OUTPUT turn on special rules for output, see step2.txt about jekyll core hack (https://github.com/cfengine/documentation-generator/blob/master/_setup/step2.txt)
+# CFE_OUTPUT turn on special rules for output, see step2.txt about jekyll core hack (https://github.com/cfengine/documentation/blob/master/generator/_setup/step2.txt)
 CFE_OUTPUT: true
 
 #CFE_DIR - output folder if CFE_OUTPUT turned on
