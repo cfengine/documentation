@@ -124,7 +124,7 @@ To links to sections within the current page, you can also skip the page title:
     [Go to section][#Section in Current Page]
 
 For standard URLs and locations to link to, see the
-[mapping](https://github.com/cfengine/documentation-generator/blob/master/_references.md).
+[mapping](https://github.com/cfengine/documentation/generator/blob/master/_references.md).
 
 #### Automatic linking
 
@@ -584,7 +584,7 @@ Special Variables are documented within the page of their context.
 ## Publishing
 
 Jekyll is used to generate the HTML pages. The toolchain is available at
-https://github.com/cfengine/documentation-generator. After you compile pages,
+https://github.com/cfengine/documentation/generator. After you compile pages,
 Jekyll will place all files into the _site folder, without subdirectories.
 
 Commits in this repository trigger the documentation generator to run, which

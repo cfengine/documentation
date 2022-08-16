@@ -1,0 +1,36 @@
+{% comment %}
+do not show current page item
+do not show breadcrumb for the first level page
+{% endcomment %}
+<div id="breadcrumbs_wrapper">
+{% if page.categories.size > 1 %}
+    <div id="breadcrumbs">
+        <ul>
+            {% assign breadcrumbKey = '' %}
+                {% for category in page.categories %}
+
+                {% if breadcrumbKey == '' %}
+                    {% assign breadcrumbKey = category | removeUnvantedChars %}
+                {% else %}
+                    {% assign tmp = breadcrumbKey | append: '_' | append: category %}
+                    {% assign breadcrumbKey = tmp | removeUnvantedChars %}
+                {% endif %}
+
+                {% if site.breadcrumbsNavigation[breadcrumbKey] != nil %}
+
+                    {% if site.breadcrumbsNavigation[breadcrumbKey].alias != page.alias %}
+                        <li>
+                            <a href="{{ site.breadcrumbsNavigation[breadcrumbKey].alias }}">{{ site.breadcrumbsNavigation[breadcrumbKey].title }}</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
