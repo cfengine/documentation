@@ -13,8 +13,7 @@ You will need to have the following repos checked out:
 * nova (used for changelog)
 * enterprise (used for changelog)
 * masterfiles (used to document masterfies)
-* documentation
-* documentation-generator (this repo)
+* documentation (this repo)
 
 Usage
 -----

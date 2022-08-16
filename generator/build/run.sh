@@ -12,8 +12,7 @@ fi
 # * nova (used for changelog)
 # * enterprise (used for changelog)
 # * masterfiles (used to document masterfies)
-# * documentation
-# * documentation-generator (this repo)
+# * documentation (this repo)
 
 # these env vars must be defined
 true "${BRANCH?undefined}"
