@@ -7,10 +7,8 @@
 
             <div class="top_search_form">
                 <form id="cse-search-box" action="search.html">
-                    <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
-                    <input type="hidden" name="ie" value="UTF-8" />
                     <div class="formbody">
-                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                        <input type="text" name="q" id="top_search" class="text" value="" autocomplete="off" placeholder="Search" />
                     </div>
                 </form>
             </div>
@@ -18,8 +16,21 @@
             <ul>
                 <li><a target="_blank" href="https://cfengine.com/product-overview/">Product</a></li>
                 <li><a target="_blank" href="https://cfengine.com/blog/">Blog</a></li>
+                <li class="top_menu-versions">
+                    <div class="top_menu-versions-title">
+                        <div>Docs versions</div>
+                        <span>Version <span></span></span>
+                    </div>
+                    <div class="top_menu-versions-list">
+                        {% include header_nav_options.html %}
+                    </div>
+                </li>
                 <li><a class="btn btn-orange" href="https://cfengine.com/download/" target="_blank">Try for free</a></li>
             </ul>
+            <div onclick="openMenuHandler(this)" class="collapse center-align relative">
+                <i class="vertical-middle centered collapse-open bi bi-list"></i>
+                <i class="vertical-middle centered collapse-close bi bi-x"></i>
+            </div>
         </div>
     </div>
 </header>

@@ -13,18 +13,52 @@
     list-style: none;
     font-size: 1.4rem;
     line-height: 1.6rem;
-    padding-left: 12rem;
+    @media @tablet-down {
+      flex-wrap: wrap;
+    }
+    @media @phone-down {
+      display: block;
+    }
+
     a {
       color: white;
       text-decoration: none;
+
       &:hover {
         border-bottom: 1px solid white;
       }
     }
+
     li {
+      @media @tablet-down {
+        &:not(:first-child) {
+          flex: 1;
+        }
+
+        &:first-child {
+          width: 100%;
+          margin-bottom: 3.2rem;
+        }
+      }
+      @media @phone-down {
+        margin-bottom: 1.6rem;
+        padding-left: 2.6rem;
+        margin-left: 0 !important;
+        &:first-child {
+          margin-bottom: 1.6rem;
+          padding-left: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
       margin-left: 5.6rem;
+      @media @desktop-down {
+        margin-left: 4.6rem;
+      }
+
       &:first-child {
-        margin-right: 5.6rem;
         a {
           &:hover {
             border: none;
@@ -37,10 +71,25 @@
   &-top {
     margin-top: 4rem;
     display: flex;
+    @media @phone-down {
+      display: block;
+      margin-top: 0;
+    }
 
     > div {
-      padding-right: 4.8rem;
-      max-width: 40rem;
+      margin-right: 3.2rem;
+      width: 41.5rem;
+
+      @media @desktop-wide-down {
+        width: 36.3rem;
+      }
+      @media @desktop-down {
+        width: 27.7rem;
+      }
+
+      @media @phone-down {
+        margin-top: 4rem;
+      }
 
       a {
         margin-top: .8rem;

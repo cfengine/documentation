@@ -121,3 +121,170 @@ document.querySelectorAll(".copy-to-clipboard").forEach(function (el) {
         setTimeout(function ()  { target.className = 'bi bi-clipboard copy-to-clipboard' }, 2000);
     })
 });
+
+var tableOfContents = document.querySelector('.table-of-contents .TOC');
+if (tableOfContents) {
+    window.onclick = function (e) {
+        if (!e.target.closest('.TOC') && !tableOfContents.querySelector('.closed')) {
+            tableOfContents.classList.add('closed');
+        }
+    };
+    tableOfContents.onclick = function () {
+        tableOfContents.classList.toggle('closed');
+    };
+}
+
+
+var menu = document.querySelector('.top_menu ul');
+var overlay = document.querySelector('#overlay');
+var openedClass = "opened";
+var openMenuHandler = function (collapseMenu) {
+    if (collapseMenu.className.indexOf(openedClass) == -1) {
+        collapseMenu.classList.add(openedClass);
+        menu.classList.add('d-b');
+        overlay.style.display = "block";
+    } else {
+        collapseMenu.classList.remove(openedClass);
+        menu.classList.remove('d-b');
+        overlay.style.display = "none";
+    }
+}
+
+var openNavigationHandler = function () {
+    document.querySelector('.left-menu').classList.add(openedClass);
+    overlay.style.display = "block";
+}
+
+document.querySelector('.left-menu .menu-close').onclick = function () {
+    document.querySelector('.left-menu').classList.remove(openedClass);
+    overlay.style.display = "none";
+}
+
+overlay.onclick = function () {
+    document.querySelector('.collapse').classList.remove(openedClass);
+    document.querySelector('.left-menu').classList.remove(openedClass);
+    menu.classList.remove('d-b');
+    overlay.style.display = "none";
+}
+
+var topMenuVersions = document.querySelector('.top_menu-versions');
+topMenuVersions.onclick = function (event) {
+    topMenuVersions.classList.toggle('opened');
+}
+
+document.querySelector('.top_menu-versions-title > span > span').innerText = document.querySelector('.top_menu-versions-list a[selected="selected"]').innerText;
+
+var mainMenuCopy = document.querySelector('.left-menu ul.mainMenu').cloneNode(true);
+var clickedMenuHistory = [{href: './', name: 'Home'}];
+var renderNestedMenu = function (href) {
+    if (href == null) {
+        document.querySelector('.left-menu ul.mainMenu').replaceWith(mainMenuCopy);
+    } else {
+        var ul = mainMenuCopy.querySelector('li[data-url="'+ href +'"]').querySelector('ul').cloneNode(true);
+        ul.classList.add('mainMenu');
+        document.querySelector('.left-menu ul.mainMenu').replaceWith(ul);
+    }
+
+    applyOnclickToMenuItems();
+}
+var menuItemClickFn = function (e) {
+    if (window.innerWidth < 1024) { // if the window width is less than 1024 then treat the menu as mobile one
+        if (e.target.closest('li').classList.contains('parent')) {
+            e.preventDefault();
+            renderNestedMenu(e.target.getAttribute('href'));
+            clickedMenuHistory.push({href: e.target.getAttribute('href'), name: e.target.innerText});
+            buildBreadcrumbs(clickedMenuHistory);
+        }
+    }
+};
+
+var applyOnclickToMenuItems = function () {
+    document
+        .querySelector('.left-menu')
+        .querySelectorAll('ul li.parent > a')
+        .forEach(function (item) {
+            item.onclick = menuItemClickFn
+        });
+}
+applyOnclickToMenuItems();
+
+var selectedMenu = document.querySelector('.selectedMenu');
+var leftMenuBreadcrumbs = document.querySelector('.left-menu-breadcrumbs');
+var buildBreadcrumbs = function (items) {
+    var html = '';
+    if (items.length > 3) {
+        items = items.slice(-3);
+        html = '<li>...</li><li>/</li>';
+    }
+    items.forEach(function (item, index) {
+        if (index > 0) {
+            html += '<li>/</li>';
+        }
+        html += '<li><a href="'+ item.href +'"><span>'+ item.name +'</span></a></li>'
+    })
+    leftMenuBreadcrumbs.innerHTML = html;
+    var lastItem = items[items.length - 1];
+    selectedMenu.innerHTML = lastItem.name !== 'Home' ?
+        '<a href="'+ lastItem.href +'">'+ lastItem.name +' <i class="bi bi-box-arrow-up-right"></i></a>' :
+        '';
+}
+buildBreadcrumbs(clickedMenuHistory);
+
+document.querySelector('.menu-back').onclick = function () {
+    if (clickedMenuHistory.length != 1) {
+        clickedMenuHistory.pop();
+        var lastHistoryElement = clickedMenuHistory[clickedMenuHistory.length - 1];
+        renderNestedMenu(lastHistoryElement['name'] !== 'Home' ? lastHistoryElement['href'] : null);
+        buildBreadcrumbs(clickedMenuHistory);
+    }
+}
+
+var urlPaths = document.location.pathname.split('/');
+var url = urlPaths[urlPaths.length - 1]; // get last url part
+var currentMenuItem = document.querySelector('.left-menu li[data-url="'+ url +'"]');
+currentMenuItem.className += ' opened current';
+
+if (window.innerWidth > 1023) { // if the window width more than 1023 then treat the menu as desktop one
+    var closest = currentMenuItem.closest('ul').closest('li');
+    while (true) {
+        if (!closest) break;
+        closest.classList.add('opened');
+        closest = closest.closest('ul').closest('li');
+    }
+}
+
+function fillVersionWrapperSelect(url) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', url, true);
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+            return
+        }
+        var str = ''; //generated HTML
+        var data = JSON.parse(xmlhttp.responseText);
+        for (var i = 0; i < data.docs.length; i++) {
+            var branch = data.docs[i];
+            var selected = '';
+            if (location.pathname.indexOf(branch.Link) == 0) {
+                // this is version that we're currently looking at
+                selected = ' selected';
+                window.currentVersionLink = branch.Link;
+            }
+            str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+        }
+        document.querySelector('#top_version_wrapper select').innerHTML = str;
+    }
+    xmlhttp.send(null);
+};
+
+function selectVersion(value) {
+    if (value.indexOf('archive') == -1 && window.currentVersionLink) {
+        window.location = window.location.href.replace(window.currentVersionLink, value);
+    } else {
+        window.location = value;
+    }
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+    fillVersionWrapperSelect('/docs/branches.json')
+});

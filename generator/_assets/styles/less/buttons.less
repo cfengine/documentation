@@ -12,16 +12,21 @@
   font-weight: 500;
   color: @textColorDarkBlue;
   padding: .8rem 1.2rem;
-  &:focus {outline:0;}
+
+  &:focus {
+    outline: 0;
+  }
 
 
   &-orange {
     background: @orange;
     color: @white !important;
     border: none;
+
     &:before {
       background: linear-gradient(45deg, @orange, @white, @orange);
     }
+
     &-secondary {
       &:hover, &:focus {
         background-color: #BA6622;
@@ -46,12 +51,15 @@
       vertical-align: middle;
       margin: 0 1rem;
     }
+
     &:hover, &:focus {
       color: @textColorGray;
     }
   }
+
   &-white {
     color: @white;
+
     &:hover, &:focus {
       color: #A7AAB2 !important;
     }
