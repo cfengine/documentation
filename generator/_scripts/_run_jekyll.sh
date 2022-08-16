@@ -14,6 +14,7 @@ mv $WRKDIR/documentation/generator/new_references.md $WRKDIR/documentation/gener
 
 mkdir $WRKDIR/documentation/generator/pages
 cp -r $WRKDIR/documentation/* $WRKDIR/documentation/generator/pages
+rm -rf $WRKDIR/documentation/generator/pages/generator
 cd $WRKDIR/documentation/generator
 
 # rvm commands are insane scripts which pollut output
