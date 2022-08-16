@@ -1,0 +1,304 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-family: "Red Hat Display";
+  font-size: 62.5%; // 1 rem = 10 px
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 500;
+}
+
+ul {
+  list-style: inside;
+}
+
+.unstyled {
+  list-style: none;
+}
+
+.flex {
+  display: flex;
+
+  &--end {
+    justify-content: flex-end;
+  }
+
+  &--start {
+    justify-content: flex-start;
+  }
+
+  &--midle {
+    justify-content: center;
+  }
+
+  &--align_center {
+    align-items: center
+  }
+
+  &--align_end {
+    align-items: flex-end;
+  }
+
+  &--align_baseline {
+    align-items: baseline;
+  }
+
+  &-space-between {
+    justify-content: space-between !important;
+  }
+
+  &-space-around {
+    justify-content: space-around;
+  }
+
+  &-grow {
+    flex-grow: 1;
+  }
+
+  &--wrap {
+    flex-wrap: wrap;
+  }
+}
+
+.container {
+  max-width: 144rem;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 3.6rem;
+  @media @desktop-wide-down {
+    padding: 0 2.4rem;
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+.half {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 50%;
+}
+
+.row-full {
+  width: 100vw;
+  position: relative;
+  margin-left: -51vw;
+  left: 50%;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &-vertical {
+    left: 0;
+    transform: translate(0, -50%)
+  }
+}
+
+.d-b {
+  display: block !important;
+}
+
+.center-align {
+  text-align: center !important;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.vertical-middle {
+  vertical-align: middle;
+}
+
+.lightBlue {
+  color: @lightBlue;
+}
+
+.green {
+  color: @green;
+}
+
+.purple {
+  color: @purple;
+}
+
+.darkBeige {
+  color: @darkBeige;
+}
+
+.grayedBackground {
+  background: @lightGray;
+}
+
+.rotate {
+  &-45 {
+    transform: rotate(45deg);
+  }
+
+  &-90 {
+    transform: rotate(90deg);
+  }
+
+  &-135 {
+    transform: rotate(135deg);
+  }
+
+  &-180 {
+    transform: rotate(180deg);
+  }
+
+  &-225 {
+    transform: rotate(225deg);
+  }
+
+  &-270 {
+    transform: rotate(270deg);
+  }
+}
+
+table {
+  margin-top: 5rem;
+  line-height: 4.4rem;
+  border: none;
+  max-width: 100%;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  th, td {
+    width: 18rem;
+    padding-left: 1rem;
+  }
+
+  tr {
+    height: 5rem;
+
+    &:nth-child(odd) {
+      background: @lightGray;
+      height: 3.7rem;
+    }
+  }
+
+  thead {
+    font-weight: bold;
+
+    tr {
+      background: none !important;
+    }
+
+  }
+}
+
+code {
+  font-family: "Red Hat Mono";
+  background: @gray-100;
+  border-radius: 4px;
+  padding: 0 5px;
+  line-height: 24px;
+  font-size: 15px;
+}
+
+div.highlight {
+  background: #F7F7F7;
+  padding-right: 40px;
+  position: relative;
+  border: 1px solid @gray-300;
+  margin: 1.2rem 0 4rem 0;
+
+  .copy-to-clipboard {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    background: #F7F7F7;
+
+    &:hover {
+      color: @blue-600;
+
+      &:after {
+        color: @MainMenuTextColor;
+        font-style: normal;
+        content: "Copy to clipboard";
+        position: absolute;
+        left: 20px;
+        top: 3px;
+        width: max-content;
+        background: #efefef;
+        border: 1px solid #d1d1d1;
+        border-radius: .4rem;
+        padding: 0 0.8rem;
+        font-size: 11px;
+        line-height: 16px;
+        z-index: 10;
+      }
+
+      &.bi-check2:after {
+        content: "Copied!";
+      }
+    }
+  }
+}
+
+pre {
+  background: #F7F7F7;
+  overflow: visible;
+  overflow-y: hidden;
+  padding: 2rem;
+  font-family: 'Menlo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 150%;
+
+  code {
+    background: none;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+  }
+}
+
+.main_wrapper {
+  display: flex;
+  min-height: calc(100vh - 344px); // 100 viewport height minus header and footer height to stick the footer to the bottom
+  @media @tablet-down {
+    flex-wrap: wrap;
+  }
+}
+
+aside {
+  width: 28rem;
+  margin-left: 4rem;
+  margin-right: 5.6rem;
+  @media @desktop-wide-down {
+    margin-right: 1.6rem;
+  }
+}
+
+article {
+  flex-grow: 1;
+  max-width: 67.2rem;
+  @media @desktop-wide-down {
+    min-width: 56rem;
+  }
+  @media @phone-down {
+    min-width: 0;
+    margin-right: 0 !important;
+  }
+}
