@@ -1,0 +1,190 @@
+#+Title: CFEngine Documentation System
+
+* Writing Documentation
+:PROPERTIES:
+:ID:       ce6c1ae3-7302-4e56-a409-1b4440dc8aad
+:END:
+
+Documentation is written in Markdown. Our [[https://github.com/cfengine/documentation/blob/master/cheatsheet.markdown][Markdown Cheatsheet]] shows useful
+formatting examples including usage of our custom extensions.
+
+
+** Site-wide Variables
+:PROPERTIES:
+:ID:       0121d94c-7e2e-4efb-a66f-b6ceaac54128
+:END:
+
+For a given branch it can be useful to define variables that can be expanded
+anywhere in the documentation. Variables can be defined in [[./_config.yml][=_config.yml=]] and
+then referenced in markdown. Jekyll uses the [[https://github.com/Shopify/liquid/wiki][Liquid templating language]] to
+process templates.
+
+[[https://github.com/cfengine/documentation/commit/1793bf6fe8a632e5bb290290cd6044695728f2a6][This commit]] shows liquid variables in use.
+
+* Building Documentation
+:PROPERTIES:
+:ID:       4e51b3c2-0970-438d-9587-6a54369533a6
+:END:
+
+The documentation is rendered using [[https://jekyllrb.com/][jekyll]]. Jekyll is a ruby based static site
+generator and is the engine used by GitHub Pages.
+
+** Build Environment Setup
+:PROPERTIES:
+:ID:       6b24605a-c9f6-481a-9af5-97aafb68115e
+:END:
+
+*Note:* The documentation build environment has very particular requirements for
+*old* libraries and environment.
+
+***  Installation
+:PROPERTIES:
+:ID:       8a488c3a-6870-463d-bb6a-eba032727aba
+:END:
+
+This installation was tested on ubuntu 10.04 with vagrant, ruby 1.9.3 and
+Java 7. Make sure your machine has everything according to jekyll requirements:
+https://github.com/mojombo/jekyll.
+
+=git= is required to checkout documentation.
+
+You also need:
+- =java= - for closure compiler
+- =python-pygments= 1.5 or later for the code highlighting
+
+Gems:
+- =jekyll-asset-pipeline=
+- =closure-compiler=
+- =yui-compressor=
+- =redcarpet=
+- =albino=
+- =uglifier=
+- =execjs=
+- =sanitize=
+
+If =pandoc= is used:
+- =pandoc-ruby=
+- =rdiscount=
+
+
+- [[./_setup/start.sh][=_setup/start.sh=]] is a shell script to install these dependencies. It needs to
+be reviewed and adjusted to your environment accordingly. Clean setup
+
+- Review steps described in file [[./_setup/step2.txt][=_setup/step2.txt=]]
+
+- Create pages folder and checkout [[https://github.com/cfengine/documentation.git][CFEngine documentation]] inside.
+
+- All *content* files should be inside [[./pages][=pages=]] folder.
+- All files must have *=meta=* data on top. See (Page meta data section).
+- Templates are saved in the [[./_layouts][=_layouts=]] folder.
+- Images and other materials saved in *media* folder.
+- JS and css saved in _assets folder. To include new files open
+  [[./_includes/head.html][=_includes/head.html=]] file.
+- Make sure you set correct settings in =_config.yml= for =CFE_OUTPUT= and
+  =CFE_DIR=
+
+To build the project change into to the project root folder and run =jekyll=.
+Your can find the finished rendered files inside [[./pages][=pages=]] folder
+
+Run local server and automatically build changes to pages:
+Change into the project root folder and run =jekyll --auth --server 4000=
+where =4000= is the local port number to run the webserver on.
+
+*Note:* you must restart server after changes in =_config.yml=.
+
+To configure jekyll edit =_config.yml=. See the [[https://github.com/mojombo/jekyll/wiki/Configuration][jekyll Configuration Wiki]] for a
+description of all available options.
+
+** CI Pipelines for Documentation
+:PROPERTIES:
+:ID:       63d4b942-d0f1-49a2-a043-4b53691e1d87
+:END:
+
+The documentation is built automatically by Jenkins. For details see the =Poll
+SCM= setting in each =bootstrap-documentation-*= job configuration.
+
+You can trigger a documentation build for a branch by starting the appropriate
+=bootstrap-documentation-*= job manually.
+
+*** Build Preparation
+:PROPERTIES:
+:ID:       3ee78a67-cfee-469f-8c59-05c75c90063f
+:END:
+
+The official documentation uses multiple sources in its build.
+
+- [[https://github.com/cfengine/buildscripts.git][cfengine/buildscripts.git]]
+- [[https://github.com/cfengine/core.git][cfengine/core.git]]
+- [[https://github.com/cfengine/core.git][cfenigne/core.git]]
+- [[https://github.com/cfengine/design-center.git][cfengine/design-center.git]]
+- [[https://github.com/cfengine/masterfiles.git][cfengine/masterfiles.git]]
+- [[https://github.com/cfengine/nova.git][cfengine/nova.git]]
+- [[https://github.com/cfengine/enterprise.git][cfengine/enterprise.git]]
+- [[https://github.com/cfengine/mission-portal.git][cfengine/mission-portal.git]]
+- [[https://github.com/cfengine/documentation.git][cfengine/documentation.git]]
+- [[https://github.com/cfengine/documentation-generator.git][cfengine/documentation-generator.git]]
+
+After all repositories are updated and available the following is executed.
+
+#+BEGIN_SRC sh
+export WRKDIR=`pwd`
+$WRKDIR/documentation-generator/_scripts/cfdoc_bootstrap.py master
+cd $WRKDIR/core
+NO_CONFIGURE=1 ./autogen.sh
+#+END_SRC
+
+*** Building
+:PROPERTIES:
+:ID:       ca019978-b49c-4f51-8e7f-f1693cfbb375
+:END:
+
+Documentation builds are performed by the =build-documentation-*= jobs. See
+=Execute shell= in one of the =build-documentation-*= jobs.
+
+For example:
+
+#+BEGIN_SRC sh
+  #!/bin/bash
+
+  set -x
+
+  export WRKDIR=`pwd`
+  cd $WRKDIR/core
+
+  ./configure --with-lmdb=/usr/local --without-pam || exit 1
+
+  make || exit 2
+
+  cd $WRKDIR/documentation-generator
+
+  bash -x ./_regenerate_json.sh || exit 3
+
+  ./_scripts/cfdoc_preprocess.py master || exit 4
+
+  bash -x ./_scripts/_run_jekyll.sh master || exit 5
+#+END_SRC
+
+
+Parts of the documentation rely on agent output (syntax description from
+=cf-promises --syntax-description json=) so compiling the agent is the first
+step in building the documentation.
+
+After the agent has been built the syntax map is regenerated by the
+[[https://github.com/cfengine/documentation-generator/blob/master/_regenerate_json.sh][_regenerate_json.sh]] script.
+
+Once the syntax map has been regenerated [[https://github.com/cfengine/documentation-generator/blob/master/_scripts/cfdoc_preprocess.py][cfdoc_preprocess.py]] is executed. The
+=cfdoc_preprocess.py= script appears to be responsible for resolving metadata
+(whatever that means), resolving links, expanding our custom macros and creating
+printable (dead trees) versions of the documentation.
+
+After pre-processing is complete [[https://github.com/cfengine/documentation-generator/blob/master/_scripts/_run_jekyll.sh][_run_jekyll.sh]] performs the =jekyll= build,
+post processes the build with [[https://github.com/cfengine/documentation-generator/blob/master/_scripts/cfdoc_postprocess.py][cfdoc_postprocess.py]]
+
+*** Publishing
+:PROPERTIES:
+:ID:       b42ac865-1aae-4862-8695-2d4d88ba0470
+:END:
+
+At the end of a successful documentation build the artifacts are published to a
+public server with the [[https://github.com/cfengine/documentation-generator/blob/master/_scripts/_publish.sh][_publish.sh]] script. See =Post build task= for one of the
+=build-documentation-*= jobs.
