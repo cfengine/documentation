@@ -1,0 +1,20 @@
+Usage: cf-hub [OPTION]... [FILE]
+
+Options:
+  --continuous  , -c       - Continuous update mode of operation
+  --debug       , -d value - Set debugging level 0,1,2,3
+  --no-fork     , -F       - Run as a foreground processes (do not fork)
+  --file        , -f value - Specify an alternative input file than the default
+  --help        , -h       - Print the help message
+  --no-lock     , -K       - Ignore locking constraints during execution (ifelapsed/expireafter) if "too soon" to run
+  --logging     , -l       - Enable logging of report collection and maintenance to hub_log in the working directory
+  --dry-run     , -n       - All talk and no action mode - make no changes, only inform of promises not kept
+  --splay_updates, -s       - Splay/load balance full-updates, overriding bootstrap times, assuming a default 5 minute update schedule.
+  --query       , -q value - Collect reports from remote host. Value is 'full' or 'delta'. -H option is required.
+  --query-host  , -H value - Remote hosts to gather reports from (for -q)
+  --version     , -V       - Output the version of the software
+  --verbose     , -v       - Output verbose information about the behaviour of the agent
+  --color       , -C value - Enable colorized output. Possible values: 'always', 'auto', 'never'. If option is used, the default value is 'auto'
+
+Website: http://www.cfengine.com
+This software is Copyright (C) 2008,2010-present CFEngine AS.

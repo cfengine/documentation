@@ -1,0 +1,9 @@
+# Build Artifacts
+_cache/*
+_site/*
+_generated/*
+/nbproject/private/
+/pages/*
+*.pyc
+.DS_Store
+

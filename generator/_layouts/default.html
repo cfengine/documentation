@@ -1,0 +1,61 @@
+{% include head.html %}
+<body>
+{% include header_nav.html %}
+<main class="main_wrapper container pages-wrapper">
+    {% include left_col.html %}
+    <article>
+        {% include breadcrumbs.html %}
+        <div class="article">
+            {% if page.title  %}
+            <div class="article_title">
+                <h1 id="top">
+                    {{page.title}}
+                </h1>
+                <div class="suggestChanges">
+                    <a class="btn btn-transparent btn-bordered"
+                       href='https://github.com/cfengine/documentation/edit/{{site.branch}}/{{ page.categories | join: "/" }}.markdown'
+                       target="_blank">
+                        <i class="bi bi-github"></i> Suggest changes
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            {% if page.grouptype != 'tag' %}
+            <div class="table-of-contents">
+                <div class="TOC closed" id="TOCbox_wrapper">
+                    <div class="TOC-title">Table of contents</div>
+                    <span id="TOCbox">
+                        <div id="TOCbox_list"></div>
+                    </span>
+                </div>
+            </div>
+            {% endif %}
+            <div class="main-content">
+                {{ content }}
+            </div>
+        </div>
+        {% if page.tags != nil %}
+        <div id="tags">
+            <ul>
+                {% for tag in page.tags %}
+                <li>
+                    <a href="tags-{{ tag | removeUnvantedChars | downcase}}.html">{{ tag }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="clear"></div>
+        </div>
+        {% endif %}
+        <div class="footer-top">
+            <div>
+                <h3>Still need help? </h3>
+                <a href="#" target="_blank"><img src="./media/images/chat-square-dots-fill.svg"/> Chat</a>
+                <a href="#" target="_blank"><img src="./media/images/people-fill.svg"/> Ask a question on Github</a>
+                <a href="#" target="_blank"><img src="./media/images/mail.svg"/> Mailing list</a>
+            </div>
+        </div>
+    </article>
+</main>
+{% include footer.html %}
+</body>
+</html>
