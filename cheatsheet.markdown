@@ -50,7 +50,7 @@ For example I can link to [collecting functions][Functions#collecting functions]
 [top of the page](markdown-cheatsheet.html), to the [Markdown Cheatsheet](markdown-cheatsheet.html), [inside page](markdown-cheatsheet.html#Links) and [inside current page](markdown-cheatsheet.html#Links)
 
 **Note:** For known pages, see the
-[_references.md](https://github.com/cfengine/documentation-generator/blob/master/_references.md)
+[_references.md](https://github.com/cfengine/documentation/generator/blob/master/_references.md)
 file.
 
 **NOTE:** Anchors with underscores are problematic!
@@ -514,8 +514,8 @@ updated with each new version.
 
 Variables that are defined in the front matter (thats the content between the
 three dashes at the top) or in
-[_config.yaml](https://github.com/cfengine/documentation-generator/blob/master/_config.yml)
-in the documentation-generator repository can be used directly within markdown.
+[_config.yaml](https://github.com/cfengine/documentation/generator/blob/master/_config.yml)
+in the documentation/generator repository can be used directly within markdown.
 
 For example this is the '{{site.CFE_manuals_version}}' version of the
 documentation. That variable comes from _config.yaml.
