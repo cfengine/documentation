@@ -1,0 +1,49 @@
+#auto: true
+safe: false
+#include: ./pages/
+plugins: ./_plugins/
+# baseurl: /docs/master/
+git-repository: github.com/cfengine/documentation
+git-branch: 3.18
+#source:      ./pages/
+#destination:
+#layouts:     ./_layouts/
+#permalink: /:title.html
+
+#CFEngine addon
+# CFE_OUTPUT turn on special rules for output, see step2.txt about jekyll core hack (https://github.com/cfengine/documentation-generator/blob/master/_setup/step2.txt)
+CFE_OUTPUT: true
+
+#CFE_DIR - output folder if CFE_OUTPUT turned on
+CFE_DIR: _site
+#to create correct links in sitemap
+CFE_manuals_version: 3.18
+cfengine:
+  branch: 3.18
+  core_branch: "3.18.x"
+  latest_patch_release: 2
+  latest_package_build: 1
+  masterfiles_branch: "3.18.x"
+
+Template:
+  parse:
+    line_numbers: true
+
+vagrant:
+  version: "2.2.29"
+
+virtualbox:
+  version: "6.1.32"
+
+paginate: 500
+
+pygments: true
+markdown: redcarpet2
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "tables"]
+asset_pipeline:
+  bundle: true            # Default = true
+  compress: true          # Default = true
+  output_path: assets     # Default = assets
+  display_path: docs/3.18/assets       # Default = nil
+  gzip: false             # Default = false
