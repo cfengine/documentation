@@ -54,11 +54,11 @@ or
 To run docs job in a container, run:
 
 	c=$(buildah from -v $PWD:/nt docs)
-	buildah run $c bash -x documentation-generator/build/main.sh $BRANCH $PACKAGE_JOB $PACKAGE_UPLOAD_DIRECTORY $PACKAGE_BUILD
-	buildah run $c bash -x documentation-generator/_scripts/_publish.sh $BRANCH
+	buildah run $c bash -x documentation/generator/build/main.sh $BRANCH $PACKAGE_JOB $PACKAGE_UPLOAD_DIRECTORY $PACKAGE_BUILD
+	buildah run $c bash -x documentation/generator/_scripts/_publish.sh $BRANCH
 	buildah rm $c
 
 or
 
-	docker run --rm -it -v $PWD:/nt docs bash -x documentation-generator/build/main.sh $BRANCH $PACKAGE_JOB $PACKAGE_UPLOAD_DIRECTORY $PACKAGE_BUILD
-	docker run --rm -it -v $PWD:/nt docs bash -x documentation-generator/_scripts/_publish.sh $BRANCH
+	docker run --rm -it -v $PWD:/nt docs bash -x documentation/generator/build/main.sh $BRANCH $PACKAGE_JOB $PACKAGE_UPLOAD_DIRECTORY $PACKAGE_BUILD
+	docker run --rm -it -v $PWD:/nt docs bash -x documentation/generator/_scripts/_publish.sh $BRANCH

@@ -26,7 +26,7 @@ sudo chown -R jenkins:jenkins .
 
 export WRKDIR=`pwd`
 
-cd $WRKDIR/documentation-generator
+cd $WRKDIR/documentation/generator
 
 
 ### download CFEngine ###
