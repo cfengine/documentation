@@ -35,9 +35,9 @@ def validate(branch):
 		print("Directory WORKDIR not found: " + config["WORKDIR"])
 		exit(2)
 		
-	config["project_directory"] = config["WORKDIR"] + "/documentation-generator"
+	config["project_directory"] = config["WORKDIR"] + "/documentation/generator"
 	if not os.path.exists(config["project_directory"]):
-		print("Directory 'documentation-generator' not found in WORKDIR")
+		print("Directory 'documentation/generator' not found in WORKDIR")
 	
 	config["markdown_directory"] = config["WORKDIR"] + "/documentation"
 	if not os.path.exists(config["markdown_directory"]):
@@ -50,7 +50,7 @@ def validate(branch):
 	config["include_directories"].append(config["WORKDIR"])
 	config["include_directories"].append(config["WORKDIR"] + "/core/examples")
 	config["include_directories"].append(config["WORKDIR"] + "/documentation/examples/example-snippets")
-	config["include_directories"].append(config["WORKDIR"] + "/documentation-generator/_generated")
+	config["include_directories"].append(config["WORKDIR"] + "/documentation/generator/_generated")
 	config["include_directories"].append(config["WORKDIR"] + "/masterfiles/_generated")
 	config["include_directories"].append(config["WORKDIR"] + "/masterfiles")
 	config["include_directories"].append(config["WORKDIR"] + "/masterfiles/lib/")
