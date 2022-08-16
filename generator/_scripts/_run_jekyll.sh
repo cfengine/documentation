@@ -9,12 +9,12 @@ fi
 
 echo "Generating documentation from '$WRKDIR'..."
 
-sed '/^\[.*\[.*\].*\]/d' $WRKDIR/documentation-generator/_references.md > $WRKDIR/documentation-generator/new_references.md
-mv $WRKDIR/documentation-generator/new_references.md $WRKDIR/documentation-generator/_references.md
+sed '/^\[.*\[.*\].*\]/d' $WRKDIR/documentation/generator/_references.md > $WRKDIR/documentation/generator/new_references.md
+mv $WRKDIR/documentation/generator/new_references.md $WRKDIR/documentation/generator/_references.md
 
-mkdir $WRKDIR/documentation-generator/pages
-cp -r $WRKDIR/documentation/* $WRKDIR/documentation-generator/pages
-cd $WRKDIR/documentation-generator
+mkdir $WRKDIR/documentation/generator/pages
+cp -r $WRKDIR/documentation/* $WRKDIR/documentation/generator/pages
+cd $WRKDIR/documentation/generator
 # rvm commands are insane scripts which pollut output
 # so instead of set -x we just echo each command ourselves
 set +x
@@ -31,12 +31,12 @@ if [ "$?" -gt "0" ]; then
    exit 1;
 fi
 
-$WRKDIR/documentation-generator/_scripts/cfdoc_postprocess.py "$@"
+$WRKDIR/documentation/generator/_scripts/cfdoc_postprocess.py "$@"
 if [ "$?" -gt "0" ]; then
    exit 2;
 fi
 
-$WRKDIR/documentation-generator/_scripts/_create_pdf.sh
+$WRKDIR/documentation/generator/_scripts/_create_pdf.sh
 if [ "$?" -gt "0" ]; then
    exit 3;
 fi

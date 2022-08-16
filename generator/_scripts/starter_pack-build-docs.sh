@@ -9,7 +9,7 @@ NO_CONFIGURE=1 ./autogen.sh
 
 cd $WRKDIR
 
-$WRKDIR/documentation-generator/_scripts/cfdoc_bootstrap.py master
+$WRKDIR/documentation/generator/_scripts/cfdoc_bootstrap.py master
 
 # Prepare core for syntax docs
 cd /northern.tech/cfengine/core
@@ -17,7 +17,7 @@ cd /northern.tech/cfengine/core
 make
 
 export WRKDIR=/northern.tech/cfengine
-cd /northern.tech/cfengine/documentation-generator
+cd /northern.tech/cfengine/documentation/generator
 
 # Generate syntax data
 source ~/.profile
