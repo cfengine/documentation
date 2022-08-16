@@ -1,0 +1,15 @@
+{% assign tmp = '' %}
+{% assign pageKey = '' %}
+{% for category in page.categories %}
+          {% if tmp == '' %}
+          {% assign tmp = category %}
+             {% else %}
+         {% assign tmp = tmp | append: '_' | append: category | removeUnvantedChars %}
+           {% endif %}
+           {% assign pageKey = tmp | removeUnvantedChars  %}
+    {% endfor %}
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         {{ site.leftNavigation[pageKey] }}
+    </div>
+</div>
