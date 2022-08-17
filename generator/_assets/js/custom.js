@@ -242,14 +242,16 @@ document.querySelector('.menu-back').onclick = function () {
 var urlPaths = document.location.pathname.split('/');
 var url = urlPaths[urlPaths.length - 1]; // get last url part
 var currentMenuItem = document.querySelector('.left-menu li[data-url="'+ url +'"]');
-currentMenuItem.className += ' opened current';
+if (currentMenuItem != null) {
+    currentMenuItem.className += ' opened current';
 
-if (window.innerWidth > 1023) { // if the window width more than 1023 then treat the menu as desktop one
-    var closest = currentMenuItem.closest('ul').closest('li');
-    while (true) {
-        if (!closest) break;
-        closest.classList.add('opened');
-        closest = closest.closest('ul').closest('li');
+    if (window.innerWidth > 1023) { // if the window width more than 1023 then treat the menu as desktop one
+        var closest = currentMenuItem.closest('ul').closest('li');
+        while (true) {
+            if (!closest) break;
+            closest.classList.add('opened');
+            closest = closest.closest('ul').closest('li');
+        }
     }
 }
 
