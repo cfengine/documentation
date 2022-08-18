@@ -255,6 +255,15 @@ if (currentMenuItem != null) {
     }
 }
 
+if (window.innerWidth > 1023) {
+    document.querySelectorAll('.mainMenu li.parent > i').forEach(function (element) {
+        element.onclick = function (event) {
+            event.stopImmediatePropagation();
+            element.closest('li.parent').classList.toggle('opened');
+        }
+    });
+}
+
 function fillVersionWrapperSelect(url) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', url, true);
@@ -274,7 +283,11 @@ function fillVersionWrapperSelect(url) {
             }
             str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
         }
-        document.querySelector('#top_version_wrapper select').innerHTML = str;
+        var top_version_wrapper = document.querySelector('#top_version_wrapper select');
+
+        if (top_version_wrapper) {
+            top_version_wrapper.innerHTML = str;
+        }
     }
     xmlhttp.send(null);
 };
