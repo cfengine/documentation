@@ -114,7 +114,7 @@ source ~/.rvm/scripts/rvm
 
 export LC_ALL=C.UTF-8
 
-$(which npx) -p less lessc  --compress  $WRKDIR/documentation/generator/_assets/styles/cfengine.less $WRKDIR/documentation/generator/_assets/css/styles.min.css
+$(which npx) -y -p less lessc --compress  $WRKDIR/documentation/generator/_assets/styles/cfengine.less $WRKDIR/documentation/generator/_assets/css/styles.min.css
 
 # finally, run actual jekyll
 echo "+ bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6"

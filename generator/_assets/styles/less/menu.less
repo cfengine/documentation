@@ -74,6 +74,14 @@ aside {
 
     ul {
       li {
+        > i {
+
+        }
+        a {
+          &:hover {
+            text-decoration: underline;
+          }
+        }
         font-size: 1.4rem;
         font-weight: 500;
         padding-left: 2rem;
@@ -106,20 +114,18 @@ aside {
         }
 
         &.parent {
-          > a {
-            position: relative;
+          position: relative;
 
-            &:before {
-              content: "";
-              position: absolute;
-              left: -1.8rem;
-              top: 1.5rem;
-              width: 0;
-              height: 0;
-              border-top: .5rem solid transparent;
-              border-bottom: .5rem solid transparent;
-              border-left: .5rem solid #8C8D8E;
-            }
+          > i  {
+            position: absolute;
+            left: 0;
+            top: 1.5rem;
+            width: 1.5rem;
+            width: 1.5rem;
+            border-top: .5rem solid transparent;
+            border-bottom: .5rem solid transparent;
+            border-left: .5rem solid #8C8D8E;
+            cursor: pointer;
           }
 
           &.opened {
@@ -219,21 +225,20 @@ aside {
 
         li {
           padding-left: 3.2rem;
+          > i {
+            display: none;
+          }
         }
 
         li.parent > a {
           display: block;
           color: @gray-600;
 
-          &:before {
-            content: none;
-          }
-
           &:after {
             content: '\F285';
             font-family: bootstrap-icons;
             position: absolute;
-            right: 0;
+            right: 2rem;
             top: 50%;
             transform: translateY(-50%);
             color: @gray-500;
