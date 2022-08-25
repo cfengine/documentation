@@ -56,6 +56,9 @@
 [promise-type-custom-protocol]: reference-promise-types-custom.html#protocol
 [component-cf-monitord]: reference-components-cf-monitord.html
 [component-cf-hub]: reference-components-cf-hub.html
+[component-cf-hub#hub_schedule]: reference-components-cf-hub.html#hub_schedule
+[component-cf-hub#exclude_hosts]: reference-components-cf-hub.html#exclude_hosts
+[component-cf-hub#control-promises]: reference-components-cf-hub.html#control-promises
 [mpf-configure-measurement-collection]: reference-masterfiles-policy-framework.html#configure-enterprise-measurement-monitoring-collection.html
 [mpf-configure-component-restart]: reference-masterfiles-policy-framework.html#configure-mpf-to-automatically-restart-components-on-relevant-data-change.html
 [mpf-classification-bundles]: reference-masterfiles-policy-framework.html#classification-bundles-before-autorun.html
