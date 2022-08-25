@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Getting Started with CFEngine Build
+title: Getting Started
 published: true
 sorting: 20
 ---
