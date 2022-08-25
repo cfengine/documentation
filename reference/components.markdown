@@ -361,7 +361,7 @@ lastseenexpireafter => "72";
 }
 ```
 
-**See also:** [hostsseen()][hostsseen], [cf-hub][component-cf-hub]
+**See also:** [hostsseen()][hostsseen], [cf-hub][cf-hub]
 
 ### output_prefix
 
