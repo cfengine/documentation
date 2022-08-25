@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Installation
+title: Installation overview
 sorting: 30
 published: true
 tags: [getting started, installation]
