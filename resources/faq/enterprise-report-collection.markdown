@@ -19,7 +19,7 @@ the lastseen database (viewable with ```cf-key -s```)
 on [`body hub control port`][body hub control port] (5308 by default). The hub
 tries to collect from up to the LICENSED number of hosts for each collection
 round as identified by `hub_schedule` as defined
-in [`body hub control`](cf-hub#control-promises).
+in [`body hub control`][cf-hub#control-promises].
 
 * **See also:** `hostsseen()`, `hostswithclass()`
 
@@ -53,9 +53,9 @@ are over the LICENSED number.
 
 Yes, it can be.
 Mission Portal only sees the hosts which `cf-hub` has put into the PostgreSQL database.
-`cf-hub` can skip hosts for a few reasons, for example if they are in [`exclude_hosts`](cf-hub#exclude_hosts), or if it has reached the license count.
+`cf-hub` can skip hosts for a few reasons, for example if they are in [`exclude_hosts`][cf-hub#exclude_hosts], or if it has reached the license count.
 Thus, it is possible to appear to be within license count in Mission Portal, but cf-hub is detecting that you are over license.
-If you believe you should be within license count, the [Host DELETE API]([Host REST API#Remove host from the hub]) can be used to remove old / inactive hosts.
+If you believe you should be within license count, the [Host DELETE API][Host REST API#Remove host from the hub] can be used to remove old / inactive hosts.
 
 ## When is a hub behaving as **over-licensed** ?
 
