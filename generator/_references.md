@@ -36,7 +36,7 @@
 [sys.policy_entry_dirname]: reference-special-variables-sys.html#sys-policy_entry_dirname
 [sys.policy_entry_filename]: reference-special-variables-sys.html#sys-policy_entry_filename
 [supported versions]: https://cfengine.com/extended-support/
-[Inventory API]: reference-enterprise-api-ref-inventory.html
+[Inventory API]: api-enterprise-api-ref-inventory.html
 [sys.uqhost]: reference-special-variables-sys.html#sys-uqhost
 [sys.policy_hub]: reference-special-variables-sys.html#sys-policy_hub
 [seed_cp]: reference-masterfiles-policy-framework-lib-files.html#seed_cp
@@ -46,6 +46,7 @@
 [Classes and Decisions]: reference-language-concepts-classes.html
 [language-concepts-classes-hard]: reference-language-concepts-classes.html#hard-classes.html "Language Concepts -> Classes and Decisions: Hard classes"
 [lib/files.cf]: reference-masterfiles-policy-framework-lib-files
+[lib/packages.cf]: reference-masterfiles-policy-framework-lib-packages
 [stdlib-mog]: reference-masterfiles-policy-framework-lib-files.html#mog
 [jq-project]: https://stedolan.github.io/jq/ "jq is a lightweight and flexible command-line JSON processor. Try online at jqplay.org!"
 [Using Vagrant]: getting-started-installation-general-installation-installation-enterprise-vagrant.html "The CFEngine Vagrant Environment provides an easy way to test and explore CFEngine Enterprise."
@@ -54,9 +55,9 @@
 [promise-type-custom]: reference-promise-types-custom.html
 [promise-type-custom-protocol]: reference-promise-types-custom.html#protocol
 [component-cf-monitord]: reference-components-cf-monitord.html
-[component-cf-hub]: reference-components-cf-hub.html
+[cf-hub]: reference-components-cf-hub.html
 [mpf-configure-measurement-collection]: reference-masterfiles-policy-framework.html#configure-enterprise-measurement-monitoring-collection.html
 [mpf-configure-component-restart]: reference-masterfiles-policy-framework.html#configure-mpf-to-automatically-restart-components-on-relevant-data-change.html
 [mpf-classification-bundles]: reference-masterfiles-policy-framework.html#classification-bundles-before-autorun.html
 [mpf-services-autorun]: reference-masterfiles-policy-framework-services-autorun.html
-[package-modules-the-api]: reference-language-concepts-modules-package-modules.html#the-api
+[package-modules-the-api]: reference-language-concepts-modules-package-module-api.html#the-api

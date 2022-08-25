@@ -73,7 +73,7 @@ File name input box.
 c. Navigate to the location on disk where the _public-key_ file was downloaded in earlier steps, in this
 case a _.pem_ file. Click _Open_. The following window will appear:
 
-![The PuTTYgen Key Generator Window; note  that the actual key and key fingerprint has been blanked out](putty-key-generator-window)
+![The PuTTYgen Key Generator Window; note  that the actual key and key fingerprint has been blanked out](putty-key-generator-window.png)
 
 d. Enter a _Passphrase_ and confirm the _Passphrase_. If no _Passphrase_ is desired, leave those fields empty.
 

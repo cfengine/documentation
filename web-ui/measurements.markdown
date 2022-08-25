@@ -27,4 +27,4 @@ Clicking on an individual graph allows to select different time spans for which 
 If you don't see any data, make sure that:
 
 * [`cf-monitord`][component-cf-monitord] is running on your hosts.
-* [`cf-hub`][component-cf-hub] has access to collecting the monitoring data from your hosts. See [Configuring Enterprise Measurement and Monitoring Collection][mpf-configure-measurement-collection] in the Masterfiles Policy Framework.
+* [`cf-hub`][cf-hub] has access to collecting the monitoring data from your hosts. See [Configuring Enterprise Measurement and Monitoring Collection][mpf-configure-measurement-collection] in the Masterfiles Policy Framework.

@@ -146,4 +146,4 @@ The figure below shows how a number of policy authoring teams can work together
 safely and securely to write the policy for a number of hosts, by vetting
 through a checkpoint, in a classic `bow-tie' formation.
 
-![Bow-tie Delegation](./bowtie-delegation.png)
+![Bow-tie Delegation](./bow-tie-delegation.png)
