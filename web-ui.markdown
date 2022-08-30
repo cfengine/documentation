@@ -65,12 +65,33 @@ made by `cf-agent`.
 
 ### Event log
 
-The event log on the dashboard is filtered to show only information relevant
-based on the widgets present. It shows when alerts are triggered and cleared and
-when hosts are bootstrapped or decommissioned.
+The Event Log records a time-line of *significant events*.
 
+Examples of significant events include:
+
+- A new host registering to a hub (aka bootstrapping a host)
+- Deleting a host
+- Alert status change
+
+Events are accessible <!--via the Events API and -->from every Mission Portal
+dashboard. The event log on the dashboard is filtered to show only information
+relevant based on the widgets present. It shows when alerts are triggered and
+cleared and when hosts are bootstrapped or decommissioned.
 
 <img src="dashboard-event-log.png" alt="Dashboard Event log" width="380px">
+
+- The Events API Role Based Access Control (RBAC) for `Get event list` and `Get event` are required to view event log entries.
+
+<img src="web-ui-events-api-rbac-get-event-list-event-checked.png" alt="Events API - Get event list & Get event RBAC" width="380px">
+
+All Events an be search and viewed from the Event Log page.
+
+<img src="web-ui-event-log.png" alt="Events Log page" width="670px">
+
+-  The Mission Portal RBAC for `View whole system events` is required to view the Event Log page.
+
+<img src="web-ui-mission-portal-api-view-whole-system-events-rbac.png" alt="Mission Portal - Events View whole system events RBAC page" width="380px">
+
 
 ### Host count widget
 
