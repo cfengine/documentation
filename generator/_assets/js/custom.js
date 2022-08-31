@@ -172,7 +172,7 @@ topMenuVersions.onclick = function (event) {
     topMenuVersions.classList.toggle('opened');
 }
 
-document.querySelector('.top_menu-versions-title > span > span').innerText = document.querySelector('.top_menu-versions-list a[selected="selected"]').innerText;
+document.querySelector('.top_menu-versions-title > span > span').innerText = document.querySelector('.top_menu-versions-list a[selected="selected"], .top_menu-versions-list a').innerText;
 
 var mainMenuCopy = document.querySelector('.left-menu ul.mainMenu').cloneNode(true);
 var clickedMenuHistory = [{href: './', name: 'Home'}];
