@@ -84,7 +84,7 @@ cleared and when hosts are bootstrapped or decommissioned.
 
 <img src="web-ui-events-api-rbac-get-event-list-event-checked.png" alt="Events API - Get event list & Get event RBAC" width="380px">
 
-All Events an be search and viewed from the Event Log page.
+All Events can be searched and viewed from the Event Log page.
 
 <img src="web-ui-event-log.png" alt="Events Log page" width="670px">
 
