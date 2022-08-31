@@ -247,7 +247,7 @@ pre {
     overflow: visible;
     overflow-y: hidden;
     padding: 2rem;
-    font-family: "Menlo";
+    font-family: Menlo, monospace, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
