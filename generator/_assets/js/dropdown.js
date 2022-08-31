@@ -13,6 +13,8 @@ document.querySelectorAll('.dropdown-select span').forEach(function (item) {
 });
 
 document.querySelectorAll('.dropdown-select').forEach(function (item) {
-    var selected = item.querySelector('a[selected="selected"]').textContent;
+    // select first version in dropdown if no selected version
+    // this happens on build previews, because branch name isn't master there
+    var selected = item.querySelector('a[selected="selected"], a').textContent;
     item.querySelector('span div').textContent = selected;
 });
