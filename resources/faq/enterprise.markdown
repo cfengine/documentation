@@ -6,7 +6,7 @@ sorting: 90
 tags: [getting started, installation, faq]
 ---
 
-Frequently asked questions on the Enterprise reporting database
+Frequently asked questions on the Enterprise reporting database.
 
 ## Can I use an existing PostgreSQL installation?
 
