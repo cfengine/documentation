@@ -19,7 +19,7 @@ inputs. Bodies and bundles must either be defined within the same policy file or
 included from [body common control inputs][Components#inputs]
 or [body file control inputs][file control#inputs].
 
-# Example: Add stdlib via body common control
+## Example: Add stdlib via body common control
 
 ```cf3
 body common control
@@ -29,7 +29,7 @@ body common control
 }
 ```
 
-# Example: Add stdlib via body file control
+## Example: Add stdlib via body file control
 
 Body file control allows you to build modular policy. Body file control inputs
 are typically relative to the policy file itself.
@@ -49,7 +49,7 @@ body file control
 }
 ```
 
-# Tip: Locate bodies or bundles with cf-locate
+## Tip: Locate bodies or bundles with cf-locate
 
 `cf-locate` is a small utility that makes searching for and referencing body or
 bundle definitions quick and easy. Simply download the utility from

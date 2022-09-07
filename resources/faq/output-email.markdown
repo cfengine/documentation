@@ -6,7 +6,7 @@ sorting: 90
 tags: [getting started, installation, faq]
 ---
 
-# How do I set the email where agent reports are sent?
+## How do I set the email where agent reports are sent?
 
 The agent report email functionality is configured in `body executor control`
 https://github.com/cfengine/masterfiles/blob/{{site.cfengine.branch}}/controls/cf_execd.cf.
@@ -15,7 +15,7 @@ https://github.com/cfengine/masterfiles/blob/{{site.cfengine.branch}}/def.cf.
 
 **See also:** [`def.mailto`][Masterfiles Policy Framework#mailto].
 
-# How do I disable agent email output?
+## How do I disable agent email output?
 
 You can simply remove or comment out the settings.
 

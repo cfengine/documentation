@@ -29,7 +29,7 @@ cf-promises --show-classes
 
 [%CFEngine_include_snippet(cf-promises_--show-classes.txt, [\w], ^$)%]
 
-# Show first order variables with cf-promises
+## Show first order variables with cf-promises
 
 ```console
 cf-promises --show-vars
