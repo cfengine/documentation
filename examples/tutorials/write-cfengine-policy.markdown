@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Write cfengine policy
+title: Write CFEngine policy
 published: true
 sorting: 3
 tags: [getting started, tutorial]

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Why does cfengine install into /var/cfengine instead of following the FHS?
+title: Why does CFEngine install into /var/cfengine instead of following the FHS?
 published: true
 sorting: 90
 tags: [FAQ, FHS ]

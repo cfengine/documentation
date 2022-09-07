@@ -1,6 +1,6 @@
 ---
 layout: default
-title: What did cfengine do?
+title: What did CFEngine do?
 published: true
 tags: [getting started, faq, logging, reporting ]
 ---
