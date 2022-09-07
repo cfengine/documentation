@@ -6,6 +6,8 @@ sorting: 90
 tags: [getting started, installation, faq]
 ---
 
+Frequently asked questions on manual execution.
+
 # How do I run a standalone policy file?
 
 The `--file` or `-f` option to `cf-agent` specifys the policy file. The `-K` or

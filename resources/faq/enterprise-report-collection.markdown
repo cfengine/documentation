@@ -6,6 +6,8 @@ sorting: 90
 tags: [ FAQ, Enterprise, reporting, health, cf-hub ]
 ---
 
+Frequently asked questions on Enterprise report collection.
+
 ## What are reports?
 
 Reports are the records that the components ( `cf-agent`, `cf-monitord`,

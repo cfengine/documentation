@@ -5,6 +5,8 @@ published: true
 tags: [faq]
 ---
 
+Frequently asked questions around bootstrapping, the process of starting CFEngine for the first time, and connecting the agents to the correct policy server.
+
 ## Why did bootstrap fail?
 
 When I bootstrap a host, I get errors:
