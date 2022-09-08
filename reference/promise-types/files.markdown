@@ -21,7 +21,7 @@ bundle agent __main__
 ```
 
 Before making changes to the system, CFEngine will check what the current state is, and whether it matches the desired state.
-In this case, CFEngine will create and edit the file only if necessary, if `/tmp/hello` already exists with the correct content, no changes are made.
+In this case, CFEngine will create and edit the file only if necessary. If `/tmp/hello` already exists with the correct content, no changes are made.
 
 **Tip:** In this and other examples, we use the `__main__` bundle.
 This allows you to easily run a policy file directly.
