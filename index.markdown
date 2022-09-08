@@ -21,28 +21,28 @@ alias: index.html
       <ul>
          <li>Getting started</li>
          <li>
-            <a href="getting-started-installation-pre-installation-checklist.html">Pre-installation Checklist</a>
-            <div>Download package and check the system requirements for installation.</div>
+            <a href="getting-started-installation.html">Installation</a>
+            <div>Download and install CFEngine for the first time.</div>
          </li>
          <li>
-            <a href="getting-started-installation-general-installation.html">General Installation</a>
-            <div>The Steps to bring up a CFEngine installation within an organization.</div>
+            <a href="getting-started-modules-from-cfengine-build.html">Modules</a>
+            <div>Use modules to easily add reports or get things done without writing any code.</div>
          </li>
          <li>
-            <a href="getting-started-writing-and-serving-policy.html">Writing and serving policy</a>
-            <div>Create promises which defines how some part of an overall system should behave.</div>
+            <a href="getting-started-writing-and-serving-policy.html">Reporting and Web UI</a>
+            <div>Know more about your infrastructure and hosts, their data, compliance and make changes from within the Web UI.</div>
          </li>
          <li>
-            <a href="examples-tutorials-reporting.html">Reporting</a>
-            <div>Configure different reports for various stakeholders within organization.</div>
+            <a href="getting-started-writing-policy.html">Writing policy</a>
+            <div>Write and deploy your first policy files to make changes to systems.</div>
          </li>
          <li>
-            <a href="overview-directory-structure.html">CFEngine Directory Structure</a>
-            <div>Understand the directory structure and some of the files and functions associated with each subdirectory.</div>
+            <a href="getting-started-developing-modules.html">Developing modules</a>
+            <div>Turn your policy, reoprts, or python code into CFEngine Build modules for others to use.</div>
          </li>
          <li>
-            <a href="overview-client-server-communication.html">Client Server Communication</a>
-            <div>Sets up a line of communication between hosts.</div>
+            <a href="examples-tutorials-writing-and-serving-policy.html">Tutorial series on policy language</a>
+            <div>In-depth tutorials on how to work with CFEngine policy.</div>
          </li>
       </ul>
       <ul>
