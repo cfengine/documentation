@@ -7,7 +7,78 @@ tags: [reference, bundle agent, files, promises, files promises, promise types]
 
 Files promises manage all aspects of files. Presence, absence, file content, permissions, and ownership. File content can be fully or partially managed.
 
-[%CFEngine_include_example(files_content.cf)%]
+## Examples
+
+### Creating a file with content
+
+```cf3
+bundle agent __main__
+{
+  files:
+    "/tmp/hello"
+      content => "Hello, CFEngine";
+}
+```
+
+Before making changes to the system, CFEngine will check what the current state is, and whether it matches the desired state.
+In this case, CFEngine will create and edit the file only if necessary, if `/tmp/hello` already exists with the correct content, no changes are made.
+
+**Tip:** In this and other examples, we use the `__main__` bundle.
+This allows you to easily run a policy file directly.
+In the real world, when incorporating policy into your policy set, you will want to pick a descriptive and unique bundle name, and ensure this bundle is evaluated by including it in the `bundlesequence`.
+
+### Overwriting the contents of a file only if it exists
+
+Building on the previous example, we can add the `if` attribute to make CFEngine only edit the file if it exists.
+
+```cf3
+bundle agent __main__
+{
+  files:
+    "/tmp/hello"
+      content => "Hello, CFEngine",
+      if => fileexists("/tmp/hello");
+}
+```
+
+In the example above, `fileexists()` is a built in function call.
+There are many others available to use, see: [Functions][Functions].
+
+### On specific platforms, ensure a file exists by creating it if necessary
+
+```cf3
+bundle agent __main__
+{
+  files:
+    ubuntu_18|ubuntu_20::
+      "/tmp/hello"
+        create => "true";
+}
+```
+
+The line with `ubuntu_18|ubuntu_20::` is called a class guard - it means the promise will only be evaluated if the `ubuntu_18` or `ubuntu_20` class is defined.
+We can say that this defines the context where the promise is relevant.
+This is similar to how we used `if` above.
+In class guards you cannot have function calls, so they are typically used for more static / high level conditions, such as operating system, machine role, environment, or classes which have already been defined earlier in your policy set.
+Then, the `if` attribute can be used for more advanced conditions with function calls, for example checking if a file exists, comparing strings, or even looking at the output of a shell command.
+
+### Using the output of another function or shell command
+
+The with attribute and variable expansion allows you to easily store the output of a function in a temporary variable, which you can then expand inside content, or other strings within the same promise:
+
+```cf3
+bundle agent __main__
+{
+  files:
+    "/tmp/hello"
+      content => "Output of uname: $(with)",
+      with => execresult("uname", "useshell");
+}
+```
+
+**Tip:** Shell commands come with their own security risks and performance implications.
+Whenever you run shell commands within CFEngine policy, using `execresult()`, `returnszero()`, or `commands` promises, be careful what data actually gets sent to the shell, you may want to limit or sanitize that data depending on where it comes from.
+You should also consider whether you can achieve the same result without shell commands, using built in CFEngine promise types and functions, which is generally preferable.
 
 ### File copying
 
