@@ -4,6 +4,10 @@ const {readdir} = require('fs').promises;
 
 const htmlFilesDir = '../../_site';
 
+String.prototype.stripHtmlTags = function () {
+    return this.replace(/<\/?[^>]+(>|$)/g, "");
+}
+
 const getHtmlFiles = async (dir) =>
     await Promise.all(
         (await readdir(dir, {withFileTypes: true}))
@@ -16,7 +20,7 @@ const getHtmlFiles = async (dir) =>
     let index = new FlexSearch.Document({
         document: {
             id: 'number',
-            index: ['content', 'title']
+            index: ['content', 'headers', 'title']
         },
         charset: "latin",
         tokenize: "full",
@@ -27,18 +31,23 @@ const getHtmlFiles = async (dir) =>
     const htmlFiles = await getHtmlFiles(htmlFilesDir);
     for (const key in htmlFiles) {
         const htmlContent = fs.readFileSync(`${htmlFilesDir}/${htmlFiles[key]}`).toString();
+
         const htmlContentMatch = htmlContent.match(/<div class="article">([\s\S]*?)<div class="footer-top">/gm);
         const titleMatch = htmlContent.match(/<h1 id="top">([\s\S]*?)<\/h1>/gm);
+        const headersMatch = htmlContent.match(/<h[1-6].*>(.*)<\/h[1-6].*>/gm);
+
         if (htmlContentMatch == null || titleMatch == null) continue;
         let document = {
             number: key, // use sequential number as key to reduce search index size
             content: htmlContentMatch[0]
-                .replace(/<\/?[^>]+(>|$)/g, "")
+                .stripHtmlTags()
                 .replace(/\s\s+/g, ' ')
                 .replace(/\n/g, " ")
                 .replace('Suggest changes', ''),
-            title: titleMatch[0].replace(/<\/?[^>]+(>|$)/g, "").trim(),
+            title: titleMatch[0].stripHtmlTags().trim(),
+            headers: headersMatch.reduce((reducer, header) => (reducer += ` ${header.stripHtmlTags()}`), "")
         };
+
         let breadCrumbs = '';
         const breadCrumbsMatch = htmlContent.match(/<div id="breadcrumbs">([^]*?)<\/div>/gm);
         if (breadCrumbsMatch != null) {
