@@ -41,7 +41,7 @@ bundle agent __main__
 }
 ```
 
-In the example above, `fileexists()` is a built in function call.
+In the example above, `fileexists()` is a built-in function call.
 There are many others available to use, see: [Functions][Functions].
 
 ### On specific platforms, ensure a file exists by creating it if necessary
