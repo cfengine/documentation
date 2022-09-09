@@ -29,7 +29,7 @@ alias: index.html
             <div>Use modules to easily add reports or get things done without writing any code.</div>
          </li>
          <li>
-            <a href="getting-started-writing-and-serving-policy.html">Reporting and Web UI</a>
+            <a href="getting-started-reporting-and-web-ui.html">Reporting and Web UI</a>
             <div>Know more about your infrastructure and hosts, their data, compliance and make changes from within the Web UI.</div>
          </li>
          <li>
