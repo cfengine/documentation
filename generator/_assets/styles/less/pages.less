@@ -178,6 +178,11 @@
     li {
       margin-right: .8rem;
       color: rgba(0, 0, 0, 0.45);
+      &:last-child {
+        a span {
+          color: @gray-600 !important;
+        }
+      }
     }
   }
 
@@ -248,6 +253,17 @@
       }
     }
 
+    .headerItem {
+      #breadcrumbs {
+        ul {
+          li {
+            &:nth-last-child(2), &:last-child {
+              display: block;
+            }
+          }
+        }
+      }
+    }
     #searchResults {
       > ul > li {
         margin-bottom: 4rem;

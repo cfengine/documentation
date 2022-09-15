@@ -24,7 +24,7 @@
                         resultsCount.innerHTML = results.length;
                         if (results.length > 0) {
                             for (const result of results) {
-                                html += `<li>
+                                html += `<li ${result.foundHeaderId ? 'class="headerItem"' : ''}">
                                             ${result.breadCrumbs}<a href="${result.uri}">${result.title}</a>
                                             <div class="search-description">${result.content}</div>
                                         </li>`;

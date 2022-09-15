@@ -31,10 +31,9 @@ const getHtmlFiles = async (dir) =>
     const htmlFiles = await getHtmlFiles(htmlFilesDir);
     for (const key in htmlFiles) {
         const htmlContent = fs.readFileSync(`${htmlFilesDir}/${htmlFiles[key]}`).toString();
-
         const htmlContentMatch = htmlContent.match(/<div class="article">([\s\S]*?)<div class="footer-top">/gm);
         const titleMatch = htmlContent.match(/<h1 id="top">([\s\S]*?)<\/h1>/gm);
-        const headersMatch = htmlContent.match(/<h[1-6].*>(.*)<\/h[1-6].*>/gm);
+        const headersMatch = htmlContent.match(/<h[1-6].*id.*>(.*)<\/h[1-6]>/gm);
 
         if (htmlContentMatch == null || titleMatch == null) continue;
         let document = {
@@ -45,8 +44,17 @@ const getHtmlFiles = async (dir) =>
                 .replace(/\n/g, " ")
                 .replace('Suggest changes', ''),
             title: titleMatch[0].stripHtmlTags().trim(),
-            headers: headersMatch.reduce((reducer, header) => (reducer += ` ${header.stripHtmlTags()}`), "")
+            headers: '',
+            headersMap: {}
         };
+
+        if (headersMatch) {
+            headersMatch.map((header) => {
+                const idMatch = header.match(/id="(.*?)"/i);
+                document.headersMap[idMatch[1]] = header.stripHtmlTags();
+                document.headers += ` ${header.stripHtmlTags()}`;
+            });
+        }
 
         let breadCrumbs = '';
         const breadCrumbsMatch = htmlContent.match(/<div id="breadcrumbs">([^]*?)<\/div>/gm);
