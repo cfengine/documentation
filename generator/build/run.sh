@@ -23,6 +23,8 @@ true "${PACKAGE_BUILD?undefined}"
 sudo chmod -R a+rwX $PWD
 c=$(buildah from -v $PWD:/nt docs-revamp-22)
 trap "buildah rm $c >/dev/null; sudo chmod -R a+rwX $PWD" EXIT
+ls -lah documentation/generator/build/main.sh
+buildah run $c ls -lah documentation/generator/build/main.sh
 buildah run $c bash -x documentation/generator/build/main.sh $BRANCH $PACKAGE_JOB $PACKAGE_UPLOAD_DIRECTORY $PACKAGE_BUILD
 buildah run $c bash -x documentation/generator/_scripts/_publish.sh $BRANCH
 
