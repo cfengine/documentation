@@ -107,7 +107,10 @@ $(document).ready(function() {
 });
 
 document.querySelectorAll('pre').forEach(function (pre) {
-    pre.closest('div.highlight').innerHTML += '<i data-closest=".highlight" data-copyfrom="code" class="bi bi-clipboard copy-to-clipboard"></i>';
+    const closest = pre.closest('div.highlight');
+    if (closest) {
+        closest.innerHTML += '<i data-closest=".highlight" data-copyfrom="code" class="bi bi-clipboard copy-to-clipboard"></i>';
+    }
 });
 
 document.querySelectorAll(".copy-to-clipboard").forEach(function (el) {
