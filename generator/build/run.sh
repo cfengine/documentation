@@ -4,7 +4,7 @@ set -ex
 trap "echo FAILURE" ERR
 
 if ! buildah inspect docs-revamp-22 >/dev/null 2>&1; then
-  buildah build-using-dockerfile -t docs-revamp-22 documentation/generator/build
+  buildah build-using-dockerfile --security-opt seccomp=unconfined -t docs-revamp-22 documentation/generator/build
 fi
 
 # current path must have the following repos cloned:
