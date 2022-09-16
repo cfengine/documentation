@@ -21,11 +21,8 @@ true "${PACKAGE_UPLOAD_DIRECTORY?undefined}"
 true "${PACKAGE_BUILD?undefined}"
 
 sudo chmod -R a+rwX $PWD
-c=$(buildah from -v $PWD:/nt docs-revamp-22)
+c=$(buildah from --security-opt seccomp=unconfined -v $PWD:/nt docs-revamp-22)
 trap "buildah rm $c >/dev/null; sudo chmod -R a+rwX $PWD" EXIT
-ls -lah
-buildah run $c ls -lah /
-buildah run $c pwd
 buildah run $c ls -lah
 buildah run $c ls -lah documentation
 buildah run $c ls -lah documentation/generator/build
