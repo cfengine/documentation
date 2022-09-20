@@ -280,23 +280,11 @@ alter such a socket. This is a known issue, documented in
 
 **Type:** `body acl`
 
-Please note that for CFEngine versions before 3.7.5 and 3.10.0 (see [this
-ticket](https://dev.cfengine.com/issues/4862)) you need to specify a `perms`
-body or only the base directory will be considered. As a workaround, use the
-following `perms` body if you are not specifying one already, as suggested in
-that ticket:
+**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
 
-```cf3
-body perms null_perms_body {
-    ## Workaround for https://dev.cfengine.com/issues/4862
-    ## Bug #4862: Recursive ACLs not working by default only with perms
-    ##
-    ## Dummy perms body is used as otherwise ACLs are not applied recursively
-    rxdirs => "true";
-}
-```
+**History:**
 
-**See also:** [Common Body Attributes][common-body-attributes]
+- perms body no longer required for base directory to be considered by files promise 3.7.5, 3.10.0
 
 #### aces
 
