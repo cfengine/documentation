@@ -12,6 +12,18 @@
         <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
         <!-- <link rel="canonical" href="https://docs.cfengine.com/latest{{ page.url | remove: 'pages/' | replace: '/', '-' }}"> -->
         <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website">
+        <meta prefix="og: http://ogp.me/ns#" property="og:title" content="{% if page.title %}{{ page.title }} - {% endif %}CFEngine{% if site.CFE_manuals_version %} {{ site.CFE_manuals_version }} {% endif %} Docs">
+        <meta prefix="og: http://ogp.me/ns#" property="og:description" content="{% if page.preview_description %}{{ page.preview_description }}{% endif %}">
+        <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://docs.cfengine.com/docs/master/media/images/logo_wide_opengraph.png">
+        <meta prefix="og: http://ogp.me/ns#" property="og:url" content="docs.cfengine.com">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="docs.cfengine.com">
+        <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {% endif %}CFEngine{% if site.CFE_manuals_version %} {{ site.CFE_manuals_version }} {% endif %} Docs">
+        <meta name="twitter:description" content="{% if page.preview_description %}{{ page.preview_description }}{% endif %}">
+        <meta name="twitter:image" content="https://docs.cfengine.com/docs/master/media/images/agent_white_background.png">
+
         <link rel="canonical" href="https://docs.cfengine.com/latest/{{ page.url | remove: '/pages/' | replace: '/', '-' }}">
         {% css_asset_tag global %}
         - _assets/css/styles.min.css
