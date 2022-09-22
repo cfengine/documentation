@@ -12,9 +12,13 @@ CFEngine policy language is a flexible, declarative language for describing the 
 To start, create a new file and open it, or the folder, in your editor:
 
 ```
-$ cd ~/cfengine_project
-$ touch my_policy.cf
-$ code .
+cd ~/cfengine_project && touch my_policy.cf
+```
+
+Open the project folder (or just the policy file) in your editor:
+
+```
+code .
 ```
 
 (Here we are using `code` - VS Code, but you can use whatever editor you want).
@@ -61,21 +65,25 @@ The bundles tagged `autorun` will be run automatically, regardless of their name
 Put the code snippet above in a file called `my_policy.cf`, and add it to the project:
 
 ```
-$ cfbs add ./my_policy.cf
+cfbs add ./my_policy.cf
 ```
 
 Now, build and deploy again:
 
 ```
-$ cfbs build
-$ cf-remote deploy
+cfbs build && cf-remote deploy
 ```
 
 The policy has been deployed and that `/tmp/hello` file should be ready.
 You can log in with SSH to check this, or use `cf-remote`:
 
 ```
-$ cf-remote sudo -H hub "cat /tmp/hello"
+cf-remote sudo -H hub "cat /tmp/hello"
+```
+
+The output should look like this:
+
+```
 root@192.168.56.2: 'cat /tmp/hello' -> 'Hello, world!'
 ```
 
@@ -85,7 +93,7 @@ In CFEngine, the program which runs all your policy / modules and makes changes 
 Just like above, we can use `cf-remote sudo` to run the agent on the hub:
 
 ```
-$ cf-remote sudo -H hub "cf-agent --no-lock --info"
+cf-remote sudo -H hub "cf-agent --no-lock --info"
 ```
 
 When experimenting with modules, policy, and making changes, knowing how to perform an agent run to speed things up or get feedback from what your policy is doing can be useful.
@@ -96,7 +104,7 @@ This is similar to triggering an agent run with the buttons in Mission Portal, o
 To test that our policy works, let's delete the `/tmp/hello` file and watch CFEngine create it:
 
 ```
-$ cf-remote sudo -H hub "rm /tmp/hello && cf-agent -KI"
+cf-remote sudo -H hub "rm /tmp/hello && cf-agent -KI"
 ```
 
 ## Git promises
@@ -122,7 +130,7 @@ This policy uses the `git` promise type to clone the Hugo project's source code 
 Again, put the code snippet above in the `my_policy.cf` file, build, and deploy:
 
 ```
-$ cfbs build && cf-remote deploy
+cfbs build && cf-remote deploy
 ```
 
 From now on, feel free to put each example in the `my_policy.cf`, and run the command to build and deploy it.
@@ -171,7 +179,7 @@ Since we clone and track the `master` branch, there isn't necessarily a version 
 From the command line, you could find this by:
 
 ```
-$ git log -1 --format="%H"
+git log -1 --format="%H"
 ```
 
 We want to put this in a variable and include it in our reports we can see in Mission Portal.
