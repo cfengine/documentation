@@ -40,7 +40,7 @@ this:
 When `package_inventory` in `body common control` is configured, CFEngine will record the packages installed and the package updates available for the configured package modules.
 In the [Masterfiles Policy Framework][Masterfiles Policy Framework] `package_inventory` will be [configured](https://github.com/cfengine/masterfiles/blob/3dc1f629544b24261975ecf86e02554d4daf346e/promises.cf.in#L92) to the default for the hosts platform.
 Since only one `body common control` can be present in a policy set any bundles which use these functions will typically need to execute in the context of a full policy run.
-If there is no `package_inventory` attribute such as on package module unsupported platforms or when a bundle is entered directly with the `--bundlesequence -b` argument then the legacy package methods data will be used.
+If there is no `package_inventory` attribute such as on package module unsupported platforms or when a policy entry file other than promises.cf is selected with the `--file -f` argument then the legacy package methods data will be used.
 At no time will both standard and legacy data be available to these functions.
 
 
