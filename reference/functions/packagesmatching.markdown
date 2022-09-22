@@ -40,7 +40,12 @@ this:
 The following code extracts just the package names, then looks for
 some desired packages, and finally reports if they are installed.
 
-**IMPORTANT:** Please note that you need to provide `package_inventory` attribute in `body common control` in order to be able to use this function. Also depending on the value(s) of `package_inventory` only packages from selected package modules will be returned. For more information about `package_inventory` please read [`package_inventory`][Components#package_inventory] section.
+**IMPORTANT:** The data source used when querying depends on policy configuration.
+When `package_inventory` in `body common control` is configured, CFEngine will record the packages installed and the package updates available for the configured package modules.
+In the [Masterfiles Policy Framework][Masterfiles Policy Framework] `package_inventory` will be [configured](https://github.com/cfengine/masterfiles/blob/3dc1f629544b24261975ecf86e02554d4daf346e/promises.cf.in#L92) to the default for the hosts platform.
+Since only one `body common control` can be present in a policy set any bundles which use these functions will typically need to execute in the context of a full policy run.
+If there is no `package_inventory` attribute such as on package module unsupported platforms or when a policy entry file other than promises.cf is selected with the `--file -f` argument then the legacy package methods data will be used.
+At no time will both standard and legacy data be available to these functions.
 
 [%CFEngine_include_example(packagesmatching.cf)%]
 
@@ -59,6 +64,13 @@ some desired packages, and finally reports if they are installed.
 ```cf3
             $(sys.statedir)/packages_installed_<package_module>.lmdb*
 ```
+
+Or in the case of legacy package methods:
+
+```cf3
+$(sys.statedir)/software_packages.csv
+```
+
 
 **History:** Introduced in CFEngine 3.6
 
