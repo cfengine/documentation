@@ -11,7 +11,7 @@ alias: index.html
       <h1>Welcome to CFEngine Documentation</h1>
       <div>
          This site contains information on how to manage and automate the infrastructure with CFEngine.
-         It includes the reference for the following version of CFEngine:
+         It includes the reference for the following versions of CFEngine:
       </div>
       <ul class="home-top_versions">
          {% include lts_versions_list.html %}
