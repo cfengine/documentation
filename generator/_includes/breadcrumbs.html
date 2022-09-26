@@ -30,7 +30,7 @@ do not show breadcrumb for the first level page
                 {% endif %}
             {% endfor %}
             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                <a itemid="{{ page.url }}" itemprop="item" itemscope="" itemtype="http://schema.org/Thing" href="{{ page.url }}">
+                <a itemid="{{ page.alias }}" itemprop="item" itemscope="" itemtype="http://schema.org/Thing" href="{{ page.alias }}">
                     <span itemprop="name">{{ page.title }}</span>
                 </a>
             </li>
