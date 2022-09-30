@@ -29,7 +29,6 @@ The CFEngine application is fully contained within the /var/cfengine directory t
 * `cf-key`
 * `cf-promises`: Verifies CFEngine's configuration syntax
 * `cf-runagent`: Contacts a remote system to run cf-agent
-* `cf-twin`
 
 ### Daemons ###
 
@@ -93,8 +92,6 @@ Log data for incoming and outgoing connections.
 ### /var/cfengine/lib ###
 
 Directory to store shared objects and dependencies that are in the bundled packages.
-
-### /var/cfengine/lib-twin ###
 
 ### /var/cfengine/master_software_updates ###
 
