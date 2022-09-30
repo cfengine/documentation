@@ -95,13 +95,6 @@ If an agent receives a policy proposal that is badly formed or in some way
 non-executable, it switches to a failover strategy to recover. It will continue
 in this mode until a new policy proposal is available that can be executed.
 
-The CFEngine agent clones itself to avoid limitations of operating systems like
-Windows, where programs and disk files cannot be altered while in use. When new
-software updates are available, CFEngine can update itself from a suitable
-source, and restart its own services. Should the new version be corrupt, the
-twin will still be the old working version, hence the software will be able to
-recover as soon as a new valid version is available.
-
 ### Distributed execution and federation
 
 Each agent runs independently of others, unless it promises to acquire services
