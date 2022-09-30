@@ -17,7 +17,7 @@ Example is searching for changes that are performed by *linux* machines within *
 **Request**
 
 ```
-curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy/count?include[]=linux&bundlename=generate_repairs'
+curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy/count?include\[\]=linux&bundlename=generate_repairs'
 ```
 
 **Response**
@@ -30,14 +30,14 @@ curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy/count?i
 
 ## Example: Show vacuum command executions
 
-Show all *vacuumdb* executions within last 24 hours executed on policy server.
+Show all *vacuumdb* executions within last 24 hours executed on hosts reporting the `policy_server` or `test_cfengine_com` class.
 
-Example is searching for changes that are performed by *policy_server* machines that execute *commands* promise with command */var/cfengine/bin/vacuumdb%* - there is '%' sign at the end which is a wildcard as vacuumdb is executed with different options across policy.
+Example is searching for changes that are performed by *policy_server* machines that execute *commands* promise with command */var/cfengine/bin/vacuumdb%* - there is `%` sign at the end which is a wildcard as `vacuumdb` is executed with different options across policy.
 
 **Request**
 
 ```
-curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy?include[]=policy_server&promisetype=commands&promiser=/var/cfengine/bin/vacuumdb%'
+curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy?include\[\]='policy_server\|test_cfengine_com'&promisetype=commands&promiser=/var/cfengine/bin/vacuumdb%'
 ```
 
 **Response**
