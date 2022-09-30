@@ -11,7 +11,7 @@ The configuration management database (CMDB) API enables you to manage classes a
 
 You can see a list of stored host-specific configurations
 
-**URI:** https://hub.cfengine.com/cmdb
+**URI:** https://hub.cfengine.com/api/cmdb
 
 **Method:** GET
 
@@ -80,7 +80,7 @@ HTTP 200 Ok
 
 ## Get host's specific configuration
 
-**URI:** https://hub.cfengine.com/cmdb/:hostkey/:type/:name/
+**URI:** https://hub.cfengine.com/api/cmdb/:hostkey/:type/:name/
 
 **Method:** GET
 
@@ -122,7 +122,7 @@ HTTP 200 Ok
 
 ## Get host's configurations
 
-**URI:** https://hub.cfengine.com/cmdb/:hostkey
+**URI:** https://hub.cfengine.com/api/cmdb/:hostkey
 
 **Method:** GET
 
@@ -166,7 +166,7 @@ HTTP 200 Ok
 
 ## Create configuration
 
-**URI:** https://hub.cfengine.com/cmdb/:hostkey/:type/:name/
+**URI:** https://hub.cfengine.com/api/cmdb/:hostkey/:type/:name/
 
 **Method:** POST
 
@@ -214,7 +214,7 @@ HTTP 200 Ok
 
 ## Batch create configurations
 
-**URI:** https://hub.cfengine.com/cmdb
+**URI:** https://hub.cfengine.com/api/cmdb
 
 **Method:** POST
 
@@ -294,7 +294,7 @@ HTTP 201 Created
 ```
 ## Update configuration
 
-**URI:** https://hub.cfengine.com/cmdb/:hostkey/:type/:name/
+**URI:** https://hub.cfengine.com/api/cmdb/:hostkey/:type/:name/
 
 **Method:** PATCH
 
@@ -345,7 +345,7 @@ HTTP 200 Ok
 
 ## Batch update configurations
 
-**URI:** https://hub.cfengine.com/cmdb/:hostkey
+**URI:** https://hub.cfengine.com/api/cmdb/:hostkey
 
 **Method:** PATCH
 
@@ -442,7 +442,7 @@ HTTP 200 Ok
 
 ## Delete host's configurations
 
-**URI:** https://hub.cfengine.com/cmdb/:hostkey
+**URI:** https://hub.cfengine.com/api/cmdb/:hostkey
 
 **Method:** DELETE
 
@@ -466,7 +466,7 @@ HTTP 204 No Content
 
 ## Delete specific configuration
 
-**URI:** https://hub.cfengine.com/cmdb/:hostkey/:type/:name/
+**URI:** https://hub.cfengine.com/api/cmdb/:hostkey/:type/:name/
 
 **Method:** DELETE
 
