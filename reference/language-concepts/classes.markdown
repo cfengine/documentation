@@ -356,12 +356,10 @@ bundle agent greetings
      "Good evening!";
      "What a wonderful sunset";
 
-   "any"::
+   any::
      "Good evening too!" if => "$(myclassname)";
 }
 ```
-
-
 
 As you saw above, the class predicate `if` (`unless` is also available)
 can be used if variable class expressions are required.
