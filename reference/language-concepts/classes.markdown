@@ -356,8 +356,8 @@ bundle agent greetings
        "Good evening!";
        "What a wonderful sunset";
 
-  "any"::
-    "Good evening too!" if => "$(myclassname)";
+     any::
+       "Good evening too!" if => "$(myclassname)";
 }
 ```
 
