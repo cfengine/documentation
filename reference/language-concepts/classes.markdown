@@ -330,26 +330,36 @@ The `"Monday . Evening"` context will only be true on Monday evenings.
 The `Friday . Evening` context will only be true on Friday evenings.
 See below for more on context operators.
 
-Sometimes it's convenient to put class names in variables. This
-example shows two ways to execute code conditionally based on such
+### Variable class expressions
+
+Sometimes it's convenient to put class names in variables. Variables can be used
+in quoted class expressions as well as the if and unless promise attributes.
+
+Variables used in quoted class expressions apply to all promises following the
+quoted class expression until the end of the promise type or until a new class
+expression is stated.
+
+**Note:** The double colon (`::`) at the end of the class expression should
+remain _outside_ of the quoted string.
+
+This example shows two ways to execute code conditionally based on such
 variables:
 
 ```cf3
-    bundle agent greetings
-    {
-     vars:
-      "myclassname" string => "Evening";
+bundle agent greetings
+{
+ vars:
+   "myclassname" string => "Evening";
 
-      reports:
-       "$(myclassname)"::
-         "Good evening!";
+  reports:
+    "$(myclassname)"::
+      "Good evening!";
+      "What a wonderful sunset";
 
-       "any"::
-         "Good evening too!" if => "$(myclassname)";
-    }
+    "any"::
+       "Good evening too!" if => "$(myclassname)";
+}
 ```
-
-
 
 As you saw above, the class predicate `if` (alias of `ifvarclass`;
 `unless` is also available) can be used if variable class expressions
@@ -440,9 +450,10 @@ report "Good morning from Italy", this is further qualified by ensuring that
 the report is only generated if one of the known cities also has a class
 defined.
 
-**Note:** Classes are automatically canonified when they are defined. Classes
-are not automatically canonified when they are checked.
+### Automatic canonification on class definition
 
+Classes are automatically canonified when they are defined. Classes
+are not automatically canonified when they are checked.
 
 This example shows how classes are automatically canonified when they are
 defined and that you must explicitly canonify when verifying classes.
