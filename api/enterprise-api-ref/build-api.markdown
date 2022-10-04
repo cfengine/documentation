@@ -590,7 +590,7 @@ HTTP No content
 | 422 Unprocessable entity | Validation error occurred |
 | 500 Internal server error | Internal server error |
 
-# Get list of available CFEngine Build modules
+## Get list of available CFEngine Build modules
 
 **URI:** https://hub.cfengine.com/api/build/modules
 
@@ -674,7 +674,7 @@ HTTP 200 OK
 | 200 Ok | Successful response  |
 | 500 Internal server error | Internal server error |
 
-# Update list of available CFEngine Build modules
+## Update list of available CFEngine Build modules
 
 Modules will be received from the official CFEngine Build modules catalogue https://build.cfengine.com
 
@@ -703,7 +703,7 @@ curl --user <username>:<password> \
 | 204 No content | Modules list successfully updated |
 | 500 Internal server error | Internal server error |
 
-# Get CFEngine build module by name
+## Get CFEngine build module by name
 
 **URI:** https://hub.cfengine.com/api/build/modules/:name
 
@@ -767,7 +767,7 @@ HTTP 200 OK
 | 404 Not found | Module not found  |
 | 500 Internal server error | Internal server error |
 
-# Get specific version of a CFEngine Build module by name
+## Get specific version of a CFEngine Build module by name
 
 **URI:** https://hub.cfengine.com/api/build/modules/:name/:version/
 
