@@ -124,4 +124,4 @@ cd $WRKDIR/documentation/generator/build/search
 $(which npm) i
 $(which node) createIndex.js
 cp -rf ./searchIndex ./../../_site/assets/
-npm install --prefix $WRKDIR/documentation/generator/_site/assets bootstrap-icons  @fontsource/red-hat-display @fontsource/red-hat-mono @fontsource/roboto
+npm install --prefix $WRKDIR/documentation/generator/_site/assets bootstrap-icons  @fontsource/red-hat-display @fontsource/red-hat-text @fontsource/red-hat-mono @fontsource/roboto
