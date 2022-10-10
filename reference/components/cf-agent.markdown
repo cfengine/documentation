@@ -717,8 +717,7 @@ expireafter => "240";   # 4 hours
 
 ### files_auto_define
 
-**Description:** The `files_auto_define` slist contains filenames to
-define classes if copied.
+**Description:** The `files_auto_define` slist contains a list of regular expressions matching filenames. When a file matching one of these regular expressions is **copied to** classes prefixed with `auto_` are defined.
 
 Classes are automatically defined by the files that are copied. The
 file is named according to the prefixed 'canonization' of the file
@@ -735,12 +734,7 @@ automatically.
 
 **Example:**
 
-```cf3
-body agent control
-{
-files_auto_define => { "/etc/syslog\.c.*", "/etc/passwd" };
-}
-```
+[%CFEngine_include_example(files_auto_define.cf)%]
 
 ### files_single_copy
 
