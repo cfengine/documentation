@@ -103,6 +103,8 @@ Within each evaluation pass of a bundle, the promises are not evaluated from top
 Custom promise types are added dynamically and don't have a predefined order, they are evaluated as they appear within a bundle (top to bottom), but at the end of each evaluation pass, after all the built in promise types.
 As with other promise types, we recommend not relying too much on this ordering, if you want some promises to be evaluated before others, use the `bundlesequence` or `depends_on` attribute to achieve this.
 
+**Note:** All promises of the same type are evaluated together, so splitting up the promises of one type or interleaving promises of multiple types will not make a difference. All promises of the custom promise type which appeared first will be evaluated before all the promises of the custom promise type which appeared second are evaluated, and so on.
+
 ## Creating custom promise types
 
 The agent spawns the promise module as a subprocess and communicates with it using it's standard input and output (stdin, stdout).
