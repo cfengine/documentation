@@ -25,6 +25,7 @@ If you are interested in shorter tutorials, there are a few different ones avail
 
 A new top level `promise` block (similar to `body`) is used to add new promise types.
 After adding a promise type, it is used in the same way as built-in promise types, there is no special syntax.
+Custom promise types are only for `cf-agent`, so the `promise` block should always specify the `agent` component, and the promise types should only be used in `agent` bundles.
 
 ### Example of using a promise module
 
@@ -94,6 +95,13 @@ Due to the implementation details, the following attributes from the `classes` b
 * `failed_returncodes`
 * `persist_time`
 * `timer_policy`
+
+### Evaluation passes and normal order
+
+In CFEngine, each bundle is evaluated in multiple passes (3 main passes for most promise types).
+Within each evaluation pass of a bundle, the promises are not evaluated from top to bottom, but based on a [normal order][Normal Ordering] of the promise types.
+Custom promise types are added dynamically and don't have a predefined order, they are evaluated as they appear within a bundle (top to bottom), but at the end of each evaluation pass, after all the built in promise types.
+As with other promise types, we recommend not relying too much on this ordering, if you want some promises to be evaluated before others, use the `bundlesequence` or `depends_on` attribute to achieve this.
 
 ## Creating custom promise types
 
