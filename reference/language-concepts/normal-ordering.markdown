@@ -109,34 +109,35 @@ according to so-called `normal ordering` (essentially deletion first, followed
 by creation). The actual sequence continues for up to three iterations of the
 following, converging towards a final state:
 
-    meta
-    vars
-    defaults
-    classes
-    users
-    files
-    packages
-    guest_environments
-    methods
-    processes
-    services
-    commands
-    storage
-    databases
-    reports
+1. [meta][meta]
+2. [vars][vars]
+3. [defaults][defaults]
+4. [classes][classes]
+5. [users][users]
+6. [files][files]
+7. [packages][packages]
+8. [guest_environments][guest_environments]
+9. [methods][methods]
+10. [processes][processes]
+11. [services][services]
+12. [commands][commands]
+13. [storage][storage]
+14. [databases][databases]
+15. [reports][reports]
+16. [Custom promise types, in written order][custom]
 
 Within [`edit_line` bundles in files promises][edit_line],
 the normal ordering is:
 
-    meta
-    vars
-    defaults
-    classes
-    delete_lines
-    field_edits
-    insert_lines
-    replace_patterns
-    reports
+1. [meta][meta]
+2. [vars][vars]
+3. [defaults][defaults]
+4. [classes][classes]
+5. [delete_lines][delete_lines]
+6. [field_edits][field_edits]
+7. [insert_lines][insert_lines]
+8. [replace_patterns][replace_patterns]
+9. [reports][reports]
 
 The order of promises within one of the above types follows their top-down
 ordering within the bundle itself. In vars this can be used to override the
@@ -163,10 +164,10 @@ process with no additional freedoms.
 
 Within a server bundle, the normal ordering is:
 
-    vars
-    classes
-    roles
-    access
+1. [vars][vars]
+2. [classes][classes]
+3. [roles][roles]
+4. [access][access]
 
 ## Monitor normal ordering
 
@@ -177,10 +178,10 @@ agent.
 
 Within a monitor bundle, the normal ordering is:
 
-    vars
-    classes
-    measurements
-    reports
+1. [vars][vars]
+2. [classes][classes]
+3. [measurements][measurements]
+4. [reports][reports]
 
 <!---
 ### Knowledge normal ordering
