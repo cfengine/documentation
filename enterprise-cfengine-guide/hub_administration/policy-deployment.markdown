@@ -26,11 +26,18 @@ the contents of `masterfiles` to it with the following commands (assuming you
 are already in your local repository checkout):
 
 ```
+cat <<EOF >> .gitignore
+cf_promises_validated
+cf_promises_release_id
+EOF
 cp -r /var/cfengine/masterfiles/* .
+rm -f cf_promises_validated cf_promises_release_id
 git add *
 git commit -m 'Initial masterfiles check in'
 git push origin master
 ```
+
+**Note:** `cf_promises_validated` and `cf_promises_release_id` should be explicitly excluded from VCS as shown above. They are generated files and involved in controlling policy updates. If these files are checked into the repository it can create issues with policy distribution.
 
 ## Requirements
 
