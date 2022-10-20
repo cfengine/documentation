@@ -50,10 +50,14 @@ Method Two: Create Masterfiles Repository Using the GitHub Application
 #### Initialize Git Repository in Masterfiles on the Hub ####
 
 1. `> cd /var/cfengine/masterfiles`
-2. `> git init`
-3. `> git commit -m "First commit"`
-4. `> git remote add origin https://github.com/GitUserName/cfengine-masterfiles.git`
-5. `> git push -u origin master`
+2. `> echo cf_promises_validated >> .gitignore`
+3. `> echo cf_promises_release_id >> .gitignore`
+4. `> git init`
+5. `> git commit -m "First commit"`
+6. `> git remote add origin https://github.com/GitUserName/cfengine-masterfiles.git`
+7. `> git push -u origin master`
+
+**Note:** `cf_promises_validated` and `cf_promises_release_id` should be explicitly excluded from VCS as shown above. They are generated files and involved in controlling policy updates. If these files are checked into the repository it can create issues with policy distribution.
 
 Using the above steps on a private repository will fail with a 403 error. There are different approaches to deal with this:
 
@@ -85,7 +89,7 @@ B) Or, change the remote url to `https://GitUserName@password:github.com/GitUser
 2. Create the remote using the following pattern:
 	* `> git remote add upstream ssh://git@github.com/GitUserName/cfengine-masterfiles.git`.
 3. Verify the remote was registered properly by typing `git remote -v` and pressing enter.
-	* You will see the remote definition in a list alongside any other previously defined remote enteries.
+	* You will see the remote definition in a list alongside any other previously defined remote entries.
 
 #### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub ####
 
