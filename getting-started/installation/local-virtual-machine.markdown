@@ -30,14 +30,19 @@ VirtualBox is used for virtualization, and vagrant is a nice way of interacting 
 If you've never used SSH before, you need to generate a new SSH key:
 
 ```
-$ ssh-keygen
+ssh-keygen
 ```
 
 You can use the defaults, just press enter instead of typing things.
 After running the commands or if you already have been using SSH, you should be able to find your public key:
 
 ```
-$ ls ~/.ssh/
+ls ~/.ssh/
+```
+
+The output should look like this:
+
+```
 id_rsa         id_rsa.pub     known_hosts
 ```
 
@@ -50,15 +55,13 @@ id_rsa         id_rsa.pub     known_hosts
 We need a project folder where we will place the file(s) needed for both vagrant and later CFEngine:
 
 ```
-$ mkdir -p ~/cfengine_project
-$ cd ~/cfengine_project
+mkdir -p ~/cfengine_project && cd ~/cfengine_project
 ```
 
 Now, inside the folder, we can create and edit the `Vagrantfile`:
 
 ```
-$ touch Vagrantfile
-$ code Vagrantfile
+touch Vagrantfile && code Vagrantfile
 ```
 
 (We are using `code`, VS Code, but you can use any editor you want).
@@ -109,7 +112,7 @@ These 3 names do not have to match, but it is easier to remember
 To start our VM, make sure you've saved the file above, with the filename `Vagrantfile` and run this command in the same folder:
 
 ```
-$ vagrant up hub
+vagrant up hub
 ```
 
 At this point, the VM should work like any Linux VM, similar to if you spawned it in the cloud, and we won't be using more features of vagrant or VirtualBox.
@@ -117,7 +120,7 @@ At this point, the VM should work like any Linux VM, similar to if you spawned i
 **Note:** Later, when you are done working with the Virtual Machine and want to get rid of it, run the following command:
 
 ```
-$ vagrant destroy hub
+vagrant destroy hub
 ```
 
 ## Back to CFEngine Installation
