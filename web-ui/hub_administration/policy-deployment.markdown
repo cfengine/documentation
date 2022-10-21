@@ -26,10 +26,8 @@ the contents of `masterfiles` to it with the following commands (assuming you
 are already in your local repository checkout):
 
 ```
-cat <<EOF >> .gitignore
-cf_promises_validated
-cf_promises_release_id
-EOF
+echo cf_promises_validated >> .gitignore
+echo cf_promises_release_id >> .gitignore
 cp -r /var/cfengine/masterfiles/* .
 rm -f cf_promises_validated cf_promises_release_id
 git add *
