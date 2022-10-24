@@ -16,6 +16,7 @@ You can see a list of stored host-specific configurations
 **Method:** GET
 
 **Parameters:**
+
 * **fromEpoch** *(integer)*
   Returns configurations with epoch value greater than set in the filter.
   Epoch is the sequence number of the latest CMDB change. In every API list request,
@@ -85,6 +86,7 @@ HTTP 200 Ok
 **Method:** GET
 
 **Parameters:**
+
 * **hostkey** *(string)*
   Unique host identifier.
 
@@ -127,6 +129,7 @@ HTTP 200 Ok
 **Method:** GET
 
 **Parameters:**
+
 * **hostkey** *(string)*
   Unique host identifier.
 
@@ -171,6 +174,7 @@ HTTP 200 Ok
 **Method:** POST
 
 **Parameters:**
+
 * **hostkey** *(string)*
   Unique host identifier.
 
@@ -219,6 +223,7 @@ HTTP 200 Ok
 **Method:** POST
 
 **Parameters:**
+
 * **hostkey** *(string)*
   Unique host identifier.
 * **classes** *(JSON object)*
@@ -299,6 +304,7 @@ HTTP 201 Created
 **Method:** PATCH
 
 **Parameters:**
+
 * **hostkey** *(string)*
   Unique host identifier.
 
@@ -350,6 +356,7 @@ HTTP 200 Ok
 **Method:** PATCH
 
 **Parameters:**
+
 * **hostkey** *(string)*
   Unique host identifier.
 * **classes** *(JSON object)*
@@ -447,6 +454,7 @@ HTTP 200 Ok
 **Method:** DELETE
 
 **Parameters:**
+
 * **hostkey** *(string)*
   Unique host identifier.
 
@@ -471,6 +479,7 @@ HTTP 204 No Content
 **Method:** DELETE
 
 **Parameters:**
+
 * **hostkey** *(string)*
   Unique host identifier.
 
