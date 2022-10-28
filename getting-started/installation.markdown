@@ -86,7 +86,7 @@ python3 --version
 The output should look like this:
 
 ```
-Python 3.8.10
+Python 3.10.8
 ```
 
 And similar for `pip`:
@@ -98,7 +98,7 @@ pip3 --version
 Output:
 
 ```
-pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)
+pip 22.3 from /usr/local/lib/python3.10/site-packages/pip (python 3.10)
 ```
 
 The python version must be at least 3.6, and it's important that the pip output shows a matching python version (otherwise pip is using another installation of python).
@@ -132,7 +132,7 @@ cfbs --version
 Just as above, with python, you should see the version number like this:
 
 ```
-cfbs 1.3.3
+cfbs 3.1.1
 ```
 
 And similarly for `cf-remote`:
@@ -144,9 +144,9 @@ cf-remote --version
 Output:
 
 ```
-cf-remote version 0.3.13
+cf-remote version 0.4.5
 Available CFEngine versions:
-master, 3.19.0, 3.18.x, 3.18.1, 3.18.0, 3.15.x, 3.15.5, 3.15.4, 3.15.3, 3.15.2, 3.15.1, 3.15.0, 3.15.0b1
+master, 3.20.0, 3.18.x, 3.18.2, 3.18.1, 3.18.0, 3.15.x, 3.15.6, 3.15.5, 3.15.4, 3.15.3, 3.15.2, 3.15.1, 3.15.0, 3.15.0b1
 ```
 
 ## Virtual Machine IP and username
@@ -204,7 +204,7 @@ The output shows you the information needed for SSH (username and hostname / IP)
 
 ```
 root@192.168.56.2
-OS            : ubuntu (debian)
+OS            : Ubuntu 20
 Architecture  : x86_64
 CFEngine      : Not installed
 Policy server : None
