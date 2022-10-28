@@ -62,8 +62,8 @@ cf-remote sudo -H hub "rm -rf /tmp/hugo && cf-agent -KI | grep hugo"
 The output printed from that remote machine shows that `cf-agent` cloned the repository again, after we deleted it:
 
 ```
-root@137.184.114.168: 'rm -rf /tmp/hugo && cf-agent -KI | grep hugo' -> '    info: Cloning 'https://github.com/gohugoio/hugo.git' -> '/tmp/hugo'...'
-root@137.184.114.168:                                                   '    info: Successfully cloned 'https://github.com/gohugoio/hugo.git' -> '/tmp/hugo''
+root@192.168.56.2: 'rm -rf /tmp/hugo && cf-agent -KI | grep hugo' -> '    info: Cloning 'https://github.com/gohugoio/hugo.git' -> '/tmp/hugo'...'
+root@192.168.56.2:                                                   '    info: Successfully cloned 'https://github.com/gohugoio/hugo.git' -> '/tmp/hugo''
 ```
 
 ## Creating your own repository

@@ -31,18 +31,24 @@ Initialize it:
 cd ~/cfengine_project && cfbs init
 ```
 
+When you run `cfbs init` it will prompt you about what to name the project, whether you want to use `git`, etc.
+Other commands which you use to edit a CFEngine Build project, such as `cfbs add`, `cfbs remove`, etc. have similar prompts.
+Just read the questions/instructions in your terminal, answer as you see fit, and if you are unsure, you can always just press enter to use the default.
+For simplicity, we won't keep mentioning the prompts throughout this tutorial.
+
 ## Step 1: Explore and add modules
 
-The first module you should add is `masterfiles`.
+The first module in your project should be `masterfiles`, or a version of it.
 This is the default policy which is included in the CFEngine packages, so it is already running on your hub.
-Use this command to add it to your project:
+It is needed for various features of CFEngine and CFEngine Enterprise to work correctly.
+If you didn't add it as part of the previous `cfbs init`, add it now:
 
 ```
 cfbs add masterfiles
 ```
 
 At this point, you can go to [build.cfengine.com](https://build.cfengine.com) and find modules you would like to use.
-The command to add them is the same as you just ran to add `masterfiles`.
+The command to add them is the same as above.
 For the purposes of this tutorial, let's add the git module so we can work with git repositories later:
 
 ```
@@ -73,11 +79,11 @@ Output:
 
 ```
 Modules:
-001 masterfiles                              @ f3a8f65e77428a6ab9d62c34057a7ace6ae54ce9 (Downloaded)
+001 masterfiles                              @ a87b7fea6f7a88808b327730a4ba784a3dc664eb (Downloaded)
 002 library-for-promise-types-in-python      @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
 003 promise-type-git                         @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
-004 every-minute                             @ 05bf5e5b1c014018a7b93a524e035c1a21bcffa4 (Downloaded)
-005 compliance-report-imports                @ 9d4a1cb1f919454a49baf22469ebc0b1606ae904 (Downloaded)
+004 every-minute                             @ 74b6776ca4e120285f9c44e68ccf79eef84accfd (Downloaded)
+005 compliance-report-imports                @ 06f0894b662befbba4e775884f21cfe8573c32d6 (Downloaded)
 006 autorun                                  @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
 007 compliance-report-os-is-vendor-supported @ d9e0aad225535b2b16ba2126e8302f8ffc5e7d38 (Downloaded)
 
@@ -137,7 +143,7 @@ By clicking on _Reports_ and _Compliance_ we can see the report we added, _OS is
 
 ![](os-is-vendor-supported.gif)
 
-(Reports in CFEngine Mission Portal can be saved as PDF or CSV or scheduled to be sent to your email periodically).
+(It may take a few minutes before the report shows up).
 
 ## What's next
 
@@ -146,7 +152,7 @@ Here are some examples of modules you might be interested in:
 
 * [Inventory (reporting) data of who can use sudo on each host](https://build.cfengine.com/modules/inventory-sudoers/)
 * [Scan and report on potentially vulnerable log4j installations](https://build.cfengine.com/modules/cve-2021-44228-log4j/)
-* [Upgrade all packages with the system's package manager (apt, yum, etc.)](https://build.cfengine.com/modules/all-packages-upgraded/)
+* [Upgrade all packages with the system's package manager (apt, yum, etc.)](https://build.cfengine.com/modules/upgrade-all-packages/)
 
 To add more modules, just repeat the commands from steps 1-3.
 For example, add the `inventory-sudoers` module to your project:

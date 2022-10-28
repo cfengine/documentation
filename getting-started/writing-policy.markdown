@@ -28,7 +28,7 @@ code .
 Let's take a look at the traditional "Hello, world!" example:
 
 ```cfengine3
-bundle agent main
+bundle agent hello_world
 {
   files:
     "/tmp/hello"
@@ -40,33 +40,22 @@ The policy above will create and write `Hello, world!` to the `/tmp/hello` file,
 If that file already exists, with the correct content, nothing is done.
 
 In CFEngine, a `bundle` is a collection of promises, _things_ you want to be true, your desired state.
-In the example above, `agent` specifies which component this is for, the `agent` is the binary which makes changes to the system, (as opposed to the file server or other parts of CFEngine).
-`main` is the name of the bundle, and has a special meaning, the bundle named `main` will be run by default.
+`agent` signifies that this bundle is for the cf-agent binary, which makes changes to the system (as opposed to the file server or other parts of CFEngine).
+`hello_world` is the name of the bundle.
+If you want to use this bundle from somewhere else in the policy, you need to refer to it by its name.
+Bundle names should be descriptive and unique within your policy set, or at least within each namespace, if you are using multiple namespaces.
+
 The promise type, `files` in this case, is the type of resource we want to manage.
 With `files` promises you can manipulate file permissions, edit lines, render templates to files, copy files around, etc.
 
-If you are just using 1 policy file, you can run the example above from the command line, however, our project has many policy files, and we cannot have many `main` bundles, so we need to change that:
-
-```cfengine3
-bundle agent hello_world
-{
-  meta:
-    "tags"
-      slist => { "autorun" };
-
-  files:
-    "/tmp/hello"
-      content => "Hello, world!";
-}
-```
-
-By changing the name of the bundle to something unique, `hello_world`, and adding the `autorun` tag to the metadata, we can now include the file in our project.
-The bundles tagged `autorun` will be run automatically, regardless of their name.
 Put the code snippet above in a file called `my_policy.cf`, and add it to the project:
 
 ```
 cfbs add ./my_policy.cf
 ```
+
+`cfbs` will ask you whether you want any of the bundles in this file to be run (added to bundle sequence).
+The default is the first bundle, `hello_world`, which is what we want.
 
 Now, build and deploy again:
 
@@ -115,10 +104,6 @@ This means that we can just start using the new promise type in policy:
 ```cfengine3
 bundle agent hello_world
 {
-  meta:
-    "tags"
-      slist => { "autorun" };
-
   git:
     "/tmp/hugo"
       repository => "https://github.com/gohugoio/hugo.git",
@@ -150,10 +135,6 @@ Here is a simple example:
 ```cfengine3
 bundle agent hello_world
 {
-  meta:
-    "tags"
-      slist => { "autorun" };
-
   vars:
     "github_path"
       string => "/tmp/github.com";
@@ -188,10 +169,6 @@ To take the output of a command and put it in a variable, we will use the `execr
 ```cfengine3
 bundle agent hello_world
 {
-  meta:
-    "tags"
-      slist => { "autorun" };
-
   vars:
     "github_path"
       string => "/tmp/github.com";
