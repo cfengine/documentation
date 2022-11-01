@@ -28,4 +28,4 @@ Tuning tools like [pgtune](https://github.com/kofemann/pgtune) and [pgconfigurat
 **See Also:**
 
 - [Debugging slow queries][debugging slow queries].
-- [Policy server requirements][Installing enterrpsie for production#Policy Server Requirements].
+- [Policy server requirements][Installing enterprise for production#Policy Server Requirements].
