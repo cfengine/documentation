@@ -258,7 +258,7 @@ div.highlight {
 h1, h2, h3, h4, h5, h6 {
   a.anchor {
     font-weight: 400;
-    font-size: 24px;
+    font-size: inherit;
     position: relative;
     visibility: hidden;
     margin-left: 5px;
@@ -269,8 +269,9 @@ h1, h2, h3, h4, h5, h6 {
         font-style: normal;
         content: "Copy link to clipboard";
         position: absolute;
-        left: 30px;
-        top: 4px;
+        left: 40px;
+        top: 50%;
+        transform: translateY(-50%);
         width: max-content;
         background: #efefef;
         border: 1px solid #d1d1d1;
