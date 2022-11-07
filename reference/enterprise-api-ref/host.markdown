@@ -141,6 +141,8 @@ The hostkey is then removed from:
 of [`trustkeysfrom`][cf-serverd#trustkeysfrom] for the hub hosts may re-appear
 and resume being collected from after being deleted.
 
+**See also:** [Example removing host data][Browsing Host Information#example: removing host data]
+
 ## Hosts list grouped by hard classes
 
 **URI:** https://hub.cfengine.com/api/hosts/by-class

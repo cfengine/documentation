@@ -121,6 +121,8 @@ SHA=1c8fafe478e05eec60fe08d2934415c81a51d2075aac27c9936e19012d625cb8 -X DELETE
 
     204 No Content
 
+**See also:** [Host REST API][Host REST API#remove host from the hub]
+
 ## Example: Listing Available Vital Signs For A Host
 
 Each host record on the Hub has a set of vital signs collected by `cf-monitord`
