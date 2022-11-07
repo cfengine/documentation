@@ -139,6 +139,8 @@ The hostkey is then removed from:
 
 Note: There is a record of the host retained that includes the time when the host was deleted and this record also prevents further collection from this host identity.
 
+**See also:** [Example removing host data][Browsing Host Information#example: removing host data]
+
 ## Hosts list grouped by hard classes
 
 **URI:** https://hub.cfengine.com/api/hosts/by-class
