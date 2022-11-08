@@ -78,3 +78,10 @@ body file_select pdf_modified_within_last_year
 select processes based on relative execution time.
 
 [%CFEngine_include_example(processes_define_class_based_on_process_runtime.cf)%]
+
+**See also:**
+
+* Related functions
+    * [`ago()`][ago]
+    * [`accumulated()`][accumulated]
+    * [`irange()`][irange]

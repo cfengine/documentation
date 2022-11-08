@@ -217,6 +217,8 @@ process_result => "pid";
 }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### pgid
 
 **Description:** Range of integers matching the parent group id of a
@@ -235,6 +237,8 @@ pgid => irange("1","10");
 process_result => "pgid";
 }
 ```
+
+**See also:** [Function: irange()][irange]
 
 #### ppid
 
@@ -255,6 +259,8 @@ process_result => "ppid";
 }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### priority
 
 **Description:** Range of integers matching the priority field (PRI/NI) of
@@ -272,6 +278,8 @@ body process_select example
 priority => irange("-5","0");
 }
 ```
+
+**See also:** [Function: irange()][irange]
 
 #### process_owner
 
@@ -337,6 +345,8 @@ rsize => irange("4000","8000");
 }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### status
 
 **Description:** Regular expression matching the status field of a process
@@ -378,6 +388,8 @@ stime_range => irange(ago(0,0,0,1,0,0),now);
 }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### ttime_range
 
 **Description:** Range of integers matching the total elapsed time of a
@@ -397,6 +409,8 @@ body process_select example
 ttime_range => irange(0,accumulated(0,1,0,0,0,0));
 }
 ```
+
+**See also:** [Function: irange()][irange]
 
 #### tty
 
@@ -436,6 +450,8 @@ threads => irange(1,5);
 }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### vsize
 
 **Description:** Range of integers matching the virtual memory size of a
@@ -457,6 +473,8 @@ body process_select example
 vsize => irange("4000","9000");
 }
 ```
+
+**See also:** [Function: irange()][irange]
 
 ### process_stop
 
