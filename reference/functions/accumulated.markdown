@@ -78,3 +78,10 @@ Seconds of runtime
 
 In the example we look for processes that have accumulated between 2 and
 20 minutes of total run time.
+
+**See also:**
+
+* Related functions
+    * [`ago()`][ago]
+    * [`now()`][now]
+    * [`irange()`][irange]
