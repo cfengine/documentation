@@ -984,6 +984,8 @@ comma separated numbers.
      }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### findertype
 
 **Description:** The `findertype` menu option policy describes the default finder type on MacOSX.
@@ -2173,6 +2175,8 @@ time.
      }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### mtime
 
 **Description:** Range of modification times (mtime) for acceptable files
@@ -2194,6 +2198,8 @@ not other attributes, such as permissions.
      file_result => "!mtime";
      }
 ```
+
+**See also:** [Function: irange()][irange]
 
 #### atime
 
@@ -2224,6 +2230,8 @@ A range of times during which a file was accessed can be specified in a
      file_result => "!atime";
      }
 ```
+
+**See also:** [Function: irange()][irange]
 
 #### exec_regex
 

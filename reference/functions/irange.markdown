@@ -23,3 +23,26 @@ also use the functions `ago()`, `now()`, `accumulated()`, etc.
 
     irange(ago(0,0,0,1,30,0), "0");
 ```
+
+**See also:**
+
+* Functions commonly used with [`irange()`][irange]
+  * [`ago()`][ago]
+  * [`now()`][now]
+  * [`accumulated()`][accumulated]
+* Attributes of type irange
+    * [`atime` in body `file_select`][files#atime]
+    * [`copy_size` in body `copy_from`][files#copy_size]
+    * [`ctime` in body `file_select`][files#ctime]
+    * [`mtime` in body `file_select`][files#mtime]
+    * [`match_range` in body `process_count`][processes#match_range]
+    * [`pgid` in body `process_count`][processes#pgid]
+    * [`pid` in body `process_count`][processes#pid]
+    * [`ppid` in body `process_count`][processes#ppid]
+    * [`priority` in body `process_count`][processes#priority]
+    * [`rsize` in body `process_count`][processes#rsize]
+    * [`search_size` in body `file_select`][files#search_size]
+    * [`stime_range` in body `process_count`][processes#stime_range]
+    * [`threads` in body `process_count`][processes#threads]
+    * [`ttime_range` in body `process_count`][processes#ttime_range]
+    * [`vsize` in body `process_count`][processes#vsize]
