@@ -217,6 +217,8 @@ the end of line.
      }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### pgid
 
 **Description:** Range of integers matching the parent group id of a
@@ -235,6 +237,8 @@ process
      process_result => "pgid";
      }
 ```
+
+**See also:** [Function: irange()][irange]
 
 #### ppid
 
@@ -255,6 +259,8 @@ process
      }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### priority
 
 **Description:** Range of integers matching the priority field (PRI/NI) of
@@ -272,6 +278,8 @@ a process
      priority => irange("-5","0");
      }
 ```
+
+**See also:** [Function: irange()][irange]
 
 #### process_owner
 
@@ -338,6 +346,8 @@ process, in kilobytes
 
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### status
 
 **Description:** Regular expression matching the status field of a process
@@ -379,6 +389,8 @@ hour off. This is for now a bug to be fixed.
      }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### ttime_range
 
 **Description:** Range of integers matching the total elapsed time of a
@@ -398,6 +410,8 @@ This is total accumulated time for a process.
      ttime_range => irange(0,accumulated(0,1,0,0,0,0));
      }
 ```
+
+**See also:** [Function: irange()][irange]
 
 #### tty
 
@@ -437,6 +451,8 @@ process
      }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### vsize
 
 **Description:** Range of integers matching the virtual memory size of a
@@ -458,6 +474,8 @@ Size (Windows 2008), or VM Size (Windows XP).
      vsize => irange("4000","9000");
      }
 ```
+
+**See also:** [Function: irange()][irange]
 
 ### process_stop
 
