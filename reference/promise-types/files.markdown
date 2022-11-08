@@ -1026,6 +1026,8 @@ copy_size => irange("0","50000");
 }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### findertype
 
 **Description:** The `findertype` menu option policy describes the default finder type on MacOSX.
@@ -2245,6 +2247,8 @@ file_result => "ctime";
 }
 ```
 
+**See also:** [Function: irange()][irange]
+
 #### mtime
 
 **Description:** Range of modification times (mtime) for acceptable files
@@ -2266,6 +2270,8 @@ body files_select example
     file_result => "!mtime";
 }
 ```
+
+**See also:** [Function: irange()][irange]
 
 #### atime
 
@@ -2296,6 +2302,8 @@ body file_select not_used_much
     file_result => "!atime";
 }
 ```
+
+**See also:** [Function: irange()][irange]
 
 #### exec_regex
 
