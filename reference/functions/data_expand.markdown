@@ -41,4 +41,4 @@ Output:
 
 **History:** Was introduced in version 3.7.0 (2015). The [collecting functions][Functions#collecting functions] behavior was added in 3.9.
 
-**See also:** `readcsv()`, `readjson()`, `readyaml()`, `mergedata()`, [about collecting functions][Functions#collecting functions], and `data` documentation.
+**See also:** [`readcsv()`][readcsv], [`readjson()`][readjson], [`readyaml()`][readyaml], [`mergedata()`][mergedata], [`readenvfile()`][readenvfile], [`classfiltercsv()`][classfiltercsv], [about collecting functions][Functions#collecting functions], and `data` documentation.

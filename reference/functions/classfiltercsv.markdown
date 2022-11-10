@@ -48,7 +48,7 @@ minus `1`.
    *.sh       text eol=lf
    ```
 
-**See also:** [readcsv()][readcsv], [classmatch()][classmatch]
+**See also:** [`data_expand()`][data_expand], [`readcsv()`][readcsv], [`classmatch()`][classmatch]
 
 **History:**
 

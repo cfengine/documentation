@@ -35,6 +35,6 @@ Output:
 
 [%CFEngine_include_snippet(readdata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** `readcsv()`, `readyaml()`, `readjson()`, `readenvfile()`, `validdata()`, `data` documentation.
+**See also:** [`data_expand()`][data_expand], `readcsv()`, `readyaml()`, `readjson()`, `readenvfile()`, `validdata()`, `data` documentation.
 
 **History:** Was introduced in 3.7.0.

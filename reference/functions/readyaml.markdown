@@ -23,4 +23,4 @@ vars:
      data =>  readyaml("/tmp/data.yaml", 4000);
 ```
 
-**See also:** `readdata()`, `parsejson()`, `parseyaml()`, `storejson()`, `mergedata()`, and `data` documentation.
+**See also:** [`data_expand()`][data_expand], `readdata()`, `parsejson()`, `parseyaml()`, `storejson()`, `mergedata()`, and `data` documentation.

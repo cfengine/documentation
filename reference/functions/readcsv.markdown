@@ -41,6 +41,6 @@ Output:
 sequence. Thus a text file created on Unix with standard Unix tools
 like vi will not, by default, have those line endings.
 
-**See also:** `readdata()`, `data_readstringarrayidx()`,`data_readstringarray()`, `parsejson()`, `storejson()`, `mergedata()`, and `data` documentation.
+**See also:** [`data_expand()`][data_expand], `readdata()`, `data_readstringarrayidx()`,`data_readstringarray()`, `parsejson()`, `storejson()`, `mergedata()`, and `data` documentation.
 
 **History:** Was introduced in 3.7.0.
