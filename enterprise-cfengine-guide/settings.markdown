@@ -123,7 +123,7 @@ User three will only be able to see hosts that have reported the `ubuntu` class.
 
 * ```admin``` - The admin role can see everything and do anything.
 * ```cf_remoteagent``` - This role allows execution of `cf-runagent`.
-  
+
 ### Default Role
 
 To set the default role, click Settings -> User management -> Roles. You can then select which role will be the default role for new users.
@@ -186,7 +186,7 @@ Configure outbound mail settings:
 
 Mission portal can authenticate against an external directory.
 
-**Special Notes:** 
+**Special Notes:**
 
 - LDAP API Url refers to the API cfengine uses internally for authentication.
   Most likely you will not alter the default value.
@@ -228,10 +228,10 @@ Mission Portal's configuration can be exported and imported.
 
 ![Role based access control](role_based_access_control_settings.png)
 
-Roles in Mission portal can be restricted to perform only configured actions. 
+Roles in Mission portal can be restricted to perform only configured actions.
 Configure role-based access controls from settings.
 
-**Special Notes:** 
+**Special Notes:**
 
 - Admin role has all permissions by default.
 
@@ -239,7 +239,7 @@ Configure role-based access controls from settings.
 
 - Permissions granted by roles are additive, users with multiple roles are permitted to perform actions granted by each role.
 
-**Restore admin role permissions:** 
+**Restore admin role permissions:**
 
 To restore the CFEngine admin role permissions run the following sql as root on your hub
 
