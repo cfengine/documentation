@@ -5,7 +5,7 @@ const {readdir} = require('fs').promises;
 const htmlFilesDir = '../../_site';
 
 String.prototype.stripHtmlTags = function () {
-    return this.replace(/<\/?[^>]+(>|$)/g, "");
+    return this.replace(/<\/?[^>]+(>|$)/g, " ");
 }
 
 const getHtmlFiles = async (dir) =>
@@ -33,7 +33,7 @@ const getHtmlFiles = async (dir) =>
         const htmlContent = fs.readFileSync(`${htmlFilesDir}/${htmlFiles[key]}`).toString();
         const htmlContentMatch = htmlContent.match(/<div class="article">([\s\S]*?)<div class="footer-top">/gm);
         const titleMatch = htmlContent.match(/<h1 id="top">([\s\S]*?)<\/h1>/gm);
-        const headersMatch = htmlContent.match(/<h[1-6].*id.*>(.*)<\/h[1-6]>/gm);
+        const headersMatch = htmlContent.match(/<h[1-6].*?id.*?>(.*?)<\/h[1-6]>/gm);
 
         if (htmlContentMatch == null || titleMatch == null) continue;
         let document = {
