@@ -23,7 +23,7 @@ vars:
      data =>  readjson("/tmp/data.json", 4000);
 ```
 
-**See also:** `readdata()`, `parsejson()`, `storejson()`, `parseyaml()`, `readyaml()`, `mergedata()`, `validjson()`, and `data` documentation.
+**See also:** [`data_expand()`][data_expand], `readdata()`, `parsejson()`, `storejson()`, `parseyaml()`, `readyaml()`, `mergedata()`, `validjson()`, and `data` documentation.
 
 **History:**
 

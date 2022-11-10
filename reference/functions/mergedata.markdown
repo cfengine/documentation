@@ -55,4 +55,4 @@ traditional list and array data types in CFEngine.
 * Introduced in CFEngine 3.6.0 (2014).
 * The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
-**See also:** `getindices()`, `getvalues()`, `readjson()`, `parsejson()`, `readyaml()`, `parseyaml()`, [about collecting functions][Functions#collecting functions], and `data` documentation.
+**See also:** [`data_expand()`][data_expand], `getindices()`, `getvalues()`, `readjson()`, `parsejson()`, `readyaml()`, `parseyaml()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

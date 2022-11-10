@@ -41,7 +41,7 @@ Output:
 **Notes:**
 This function is used internally to load `/etc/os-release` into `sys.os_release`.
 
-**See also:** `readdata()`, `parsejson()`, `parseyaml()`, `storejson()`, `mergedata()`, and `data` documentation.
+**See also:** [`data_expand()`][data_expand], `readdata()`, `parsejson()`, `parseyaml()`, `storejson()`, `mergedata()`, and `data` documentation.
 
 **History:**
 
