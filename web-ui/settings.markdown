@@ -202,7 +202,7 @@ Mission portal can authenticate against an external directory.
 
 ### LDAP groups syncing ###
 
-- Ldap group syncing can be turned on by clicking the corresponding checkbox
+- LDAP group syncing can be turned on by clicking the corresponding checkbox
 
     - User group attribute must be provided to obtain groups from an LDAP user entity.
     The default value for Active Directory is `memberOf`.
@@ -211,9 +211,10 @@ Mission portal can authenticate against an external directory.
     - Click `Perform sync on every login` checkbox to synchronize user roles on every login, otherwise
     roles will be assigned to a user only on sign-up (first login).
 
+**Note:** Roles *must* be created in Mission Portal. Enabling LDAP group sync
+will not result in addition or removal of Mission Portal roles.
 
-**See also:** [LDAP authentication REST API][LDAP authentication API]
-
+**See also:** [LDAP authentication REST API][LDAP authentication API], [Role Management][Settings#Role Management]
 
 ## Export/Import ##
 
