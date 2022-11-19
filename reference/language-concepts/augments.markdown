@@ -247,7 +247,7 @@ bundle agent my_bundle
 
 ### vars ###
 
-This key is supported in both `host_sepecific.json`, `def.json`, and `def_preferred.json` and augments loaded by the augments key.
+This key is supported in both `host_specific.json`, `def.json`, and `def_preferred.json` and augments loaded by the augments key.
 
 Variables defined here can target a _namespace_ and or _bundle_ scope
 explicitly. When defined from `def.json`, variables default to the `def`
@@ -311,7 +311,7 @@ Variables of other types than string can be defined too, like in this example
 
 ### classes ###
 
-This key is supported in both `host_sepecific.json`, `def.json`, `def_preferred.json`, and augments loaded by the augments key.
+This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the augments key.
 
 Any class defined via augments will be evaluated and installed as
 [**soft** classes][Classes and Decisions]. This key supports both
