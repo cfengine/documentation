@@ -36,6 +36,7 @@ const getHtmlFiles = async (dir) =>
         const headersMatch = htmlContent.match(/<h[1-6].*?id.*?>(.*?)<\/h[1-6]>/gm);
 
         if (htmlContentMatch == null || titleMatch == null) continue;
+        const title = titleMatch[0].stripHtmlTags().trim();
         let document = {
             number: key, // use sequential number as key to reduce search index size
             content: htmlContentMatch[0]
@@ -43,9 +44,9 @@ const getHtmlFiles = async (dir) =>
                 .replace(/\s\s+/g, ' ')
                 .replace(/\n/g, " ")
                 .replace('Suggest changes', ''),
-            title: titleMatch[0].stripHtmlTags().trim(),
-            headers: '',
-            headersMap: {}
+            title,
+            headers: title,
+            headersMap: {'top': title}
         };
 
         if (headersMatch) {
