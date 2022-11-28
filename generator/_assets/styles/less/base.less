@@ -315,6 +315,12 @@ pre {
 
 .main_wrapper {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+  @media (max-width: 951px) {
+    flex-direction: column-reverse;
+  }
   min-height: calc(100vh - 344px); // 100 viewport height minus header and footer height to stick the footer to the bottom
   @media @tablet-down {
     flex-wrap: wrap;
@@ -339,5 +345,6 @@ article {
   @media @phone-down {
     min-width: 0;
     margin-right: 0 !important;
+    max-width: 100% !important;
   }
 }

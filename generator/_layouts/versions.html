@@ -2,13 +2,13 @@
 <body>
 {% include header_nav.html %}
 <main class="main_wrapper container versions-page">
-    {% include left_col.html %}
     <article>
         {{ content }}
         <ul>
             {% include versions_list.html %}
         </ul>
     </article>
+    {% include left_col.html %}
 </main>
 {% include footer.html %}
 </body>
