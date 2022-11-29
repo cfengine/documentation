@@ -117,7 +117,11 @@ document.querySelectorAll(".copy-to-clipboard").forEach(function (el) {
     el.addEventListener("click", function (event) {
         event.preventDefault();
         var target = event.target;
-        var copyText = target.closest(event.target.dataset.closest).querySelector(event.target.dataset.copyfrom).innerText;
+        var copyText = target
+            .closest(event.target.dataset.closest)
+            .querySelector(event.target.dataset.copyfrom)
+            .innerText
+            .replace(/\n+$/, ""); // remove trailing newlines from the copied text
         navigator.clipboard.writeText(copyText);
         target.classList.remove('bi-clipboard');
         target.className += ' bi-check2 ';
