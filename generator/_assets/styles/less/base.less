@@ -314,20 +314,28 @@ pre {
 }
 
 .main_wrapper {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-
-  @media (max-width: 951px) {
-    flex-direction: column-reverse;
-  }
+  display: grid;
+  grid-template-areas:
+    "navigation article"
+    "navigation article";
+  grid-template-columns: 36rem 100%;
   min-height: calc(100vh - 344px); // 100 viewport height minus header and footer height to stick the footer to the bottom
+
   @media @tablet-down {
-    flex-wrap: wrap;
+    grid-template-areas:
+    "navigation navigation"
+    "article article";
+    grid-template-columns: 100%;
+    width: fit-content;
+  }
+
+  @media (max-width: 700px) {
+    justify-items: normal;
   }
 }
 
 aside {
+  grid-area: navigation;
   width: 28rem;
   margin-left: 4rem;
   margin-right: 5.6rem;
@@ -337,14 +345,20 @@ aside {
 }
 
 article {
-  flex-grow: 1;
-  max-width: 67.2rem;
+  grid-area: article;
+  max-width: calc(100% - 73rem);
   @media @desktop-wide-down {
-    min-width: 56rem;
+    max-width: 56rem;
+    margin-right: 0 !important;
+  }
+  @media @tablet-down {
+    max-width: 65rem;
+  }
+  @media (max-width: 750px) {
+    max-width: 56rem;
   }
   @media @phone-down {
     min-width: 0;
     margin-right: 0 !important;
-    max-width: 100% !important;
   }
 }

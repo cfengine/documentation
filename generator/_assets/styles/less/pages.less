@@ -39,16 +39,22 @@
 }
 
 .home-page {
+  @media @tablet-down {
+    max-width: fit-content;
+  }
   article {
     max-width: 86.3rem;
+    @media @desktop-down {
+      max-width: 63.3rem;
+    }
+    @media (max-width: 654px) {
+      max-width: 56.3rem;
+    }
   }
 }
 
 .pages-wrapper {
-  display: flex;
-
   article {
-    flex-grow: 1;
     margin-right: 9.6rem;
     @media @desktop-wide-down {
       margin-right: 5.6rem;
