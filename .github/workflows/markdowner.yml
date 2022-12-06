@@ -13,10 +13,10 @@ jobs:
     steps:
     - name: Checks-out repository
       uses: actions/checkout@v2
-    - name: Set up Python 3.6
+    - name: Set up Python 3.7
       uses: actions/setup-python@v2
       with:
-        python-version: "3.6"
+        python-version: "3.7"
     - name: Run markdowner.py to (hopefully not) edit markdown files
       run: |
         # TODO: Fix last warnings in output of script and ensure no warnings here
