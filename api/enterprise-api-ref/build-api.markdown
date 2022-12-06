@@ -833,3 +833,163 @@ HTTP 200 OK
 | 200 Ok | Successful response  |
 | 404 Not found | Module not found  |
 | 500 Internal server error | Internal server error |
+
+
+## Get CFEngine Build module input data
+
+**URI:** https://hub.cfengine.com/api/build/projects/:id/modules/:name/input
+
+**Method:** GET
+
+**Parameters:**
+
+* **id** *(integer)*
+  Project's ID. Required.
+* **name** *(string)*
+  Module name. Required.
+
+**Example request (curl):**
+
+```console
+curl --user <username>:<password> \
+  -X GET \
+  https://hub.cfengine.com/api/build/projects/1/modules/delete-files/input
+```
+
+**Successful response example:**
+
+```
+HTTP 200 OK
+{
+    "status": "ok",
+    "input_spec": [
+        {
+            "type": "list",
+            "label": "Files",
+            "while": "Specify another file you want deleted on your hosts?",
+            "bundle": "delete_files",
+            "subtype": [
+                {
+                    "key": "path",
+                    "type": "string",
+                    "label": "Path",
+                    "question": "Path to file"
+                },
+                {
+                    "key": "why",
+                    "type": "string",
+                    "label": "Why",
+                    "default": "Unknown",
+                    "question": "Why should this file be deleted?"
+                }
+            ],
+            "response": [
+                {
+                    "path": "/tmp/test",
+                    "why": "no tests, please"
+                }
+            ],
+            "variable": "files",
+            "namespace": "delete_files"
+        }
+    ]
+}
+```
+
+**Output:**
+
+* **input_spec** *(JSON array of objects)*
+  Input specification represented as an JSON array of objects.
+  Each object specifies one input entry for the module.
+  To discover more information about these fields,
+  please read [Modules with input](https://github.com/cfengine/cfbs/blob/master/JSON.md#modules-with-input) document.
+
+**Responses:**
+
+| HTTP response code        | Description                 |
+|---------------------------|-----------------------------|
+| 200 Ok                    | Successful response         |
+| 404 Not found             | Project or module not found |
+| 500 Internal server error | Internal server error       |
+
+
+## Set CFEngine Build module input data
+
+**URI:** https://hub.cfengine.com/api/build/projects/:id/modules/:name/input
+
+**Method:** POST
+
+**Parameters:**
+
+* **id** *(integer)*
+  Project's ID. Required.
+* **name** *(string)*
+  Module name. Required.
+
+**Request body:**
+
+  Request body should contain input specification from the [Get input data request][Build API#Get CFEngine Build module input data]
+  where each object should have a `response` property with the data.
+
+  **response** might be:
+  * an JSON array of objects, in case of list input type with string subtypes.
+  An object should be a key-value pair where a key is from input specification
+  and value should be a string.
+  * string, in case of string input type
+
+**Example request (curl):**
+
+```console
+curl --user <username>:<password> \
+  -X POST \
+  https://hub.cfengine.com/api/build/projects/1/modules/delete-files/input \
+  --header 'Content-Type: application/json' \
+  --data-raw '[
+   {
+      "type":"list",
+      "label":"Files",
+      "while":"Specify another file you want deleted on your hosts?",
+      "bundle":"delete_files",
+      "subtype":[
+         {
+            "key":"path",
+            "type":"string",
+            "label":"Path",
+            "question":"Path to file"
+         },
+         {
+            "key":"why",
+            "type":"string",
+            "label":"Why",
+            "default":"Unknown",
+            "question":"Why should this file be deleted?"
+         }
+      ],
+      "variable":"files",
+      "namespace":"delete_files",
+      "response":[
+         {
+            "path":"/etc/test",
+            "why":"no tests, please"
+         }
+      ]
+   }
+]'
+```
+
+**Successful response example:**
+
+```
+HTTP 200 OK
+{
+    "status": "ok"
+}
+```
+
+**Responses:**
+
+| HTTP response code        | Description                 |
+|---------------------------|-----------------------------|
+| 200 Ok                    | Successful response         |
+| 404 Not found             | Project or module not found |
+| 500 Internal server error | Internal server error       |
