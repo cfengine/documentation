@@ -4,7 +4,7 @@ safe: false
 plugins: ./_plugins/
 # baseurl: /docs/master/
 git-repository: github.com/cfengine/documentation
-git-branch: "master"
+git-branch: "3.21"
 #source:      ./pages/
 #destination:
 #layouts:     ./_layouts/
@@ -34,7 +34,7 @@ vagrant:
   version: "2.2.19"
 
 virtualbox:
-  version: "6.1.32"
+  version: "6.1.38"
 
 paginate: 500
 
@@ -46,5 +46,5 @@ asset_pipeline:
   bundle: true            # Default = true
   compress: true          # Default = true
   output_path: assets     # Default = assets
-  display_path: docs/3.20/assets       # Default = nil
+  display_path: docs/3.21/assets       # Default = nil
   gzip: false             # Default = false
