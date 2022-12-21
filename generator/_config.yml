@@ -21,8 +21,8 @@ CFE_manuals_version: 3.18
 cfengine:
   branch: 3.18
   core_branch: "3.18.x"
-  latest_patch_release: 2
-  latest_package_build: 1
+  latest_patch_release: 3
+  latest_package_build: 2
   masterfiles_branch: "3.18.x"
 
 Template:
