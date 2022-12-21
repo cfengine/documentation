@@ -203,15 +203,15 @@ Server (hub) and the other is for each Host (client).
 1. On the designated Policy Server, install the `cfengine-nova-hub` package:
 
     ```console
-    [RedHat/CentOS/SUSE] # rpm -i <hub package>.rpm
-    [Debian/Ubuntu]      # dpkg -i <hub package>.deb
+    [RedHat/CentOS/SUSE] # yum -y install /path/to/<hub package>.rpm
+    [Debian/Ubuntu]      # apt -y install /path/to/<hub package>.deb
     ```
 
 2. On each Host, install the `cfengine-nova` package:
 
     ```console
-    [RedHat/CentOS/SUSE] # rpm -i <agent package>.rpm
-    [Debian/Ubuntu]      # dpkg -i <agent package>.deb
+    [RedHat/CentOS/SUSE] # yum -y install /path/to/<agent package>.rpm
+    [Debian/Ubuntu]      # apt -y install /path/to/<agent package>.deb
     [Solaris]            # pkgadd -d <agent package>.pkg all
     [AIX]                # installp -a -d <agent package>.bff cfengine.cfengine-nova
     [HP-UX]              # swinstall -s <full path to agent package>.depot cfengine-nova

@@ -24,15 +24,15 @@ Note: See [Installing Community][Installing Community] for the community version
 1. On the designated Policy Server, install the `cfengine-nova-hub` package:
 
     ```
-    [RedHat/CentOS/SUSE] $ rpm -i <server hub package>.rpm
-    [Debian/Ubuntu]      $ dpkg -i <server hub package>.deb
+    [RedHat/CentOS/SUSE] # yum -y install /path/to/<server hub package>.rpm
+    [Debian/Ubuntu]      # apt -y install /path/to/<server hub package>.deb
     ```
 
 2. On each Host, install the `cfengine-nova` package:
 
     ```
-    [RedHat/CentOS/SUSE] $ rpm -i <agent package>.rpm
-    [Debian/Ubuntu]      $ dpkg -i <agent package>.deb
+    [RedHat/CentOS/SUSE] # yum -y install /path/to/<agent package>.rpm
+    [Debian/Ubuntu]      # apt -y install /path/to/<agent package>.deb
     ```
 
 Note: Install actions logged to `/var/logs/cfengine-install.log`.
