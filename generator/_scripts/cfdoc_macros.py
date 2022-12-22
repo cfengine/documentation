@@ -462,7 +462,7 @@ def document_syntax_map(tree, branch, config):
 			common_definition = dict()
 			common_definition["status"] = "normal"
 			common_definition["attributes"] = common_attributes
-			lines.append("### [Common Attributes][Promise Types and Attributes#Common Attributes]\n\n")
+			lines.append("### [Common Attributes][Promise Types#Common Promise Attributes]\n\n")
 			lines.append(document_type("common", common_definition, [], config))
 			
 	excludes = list(common_attributes.keys())
