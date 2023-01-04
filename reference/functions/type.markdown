@@ -9,7 +9,7 @@ tags: [reference, utility functions, functions, type]
 
 **Description:** Returns a variables type description.
 
-[%CFEngine_function_attributes(exclude_names, exclude_ids)%]
+[%CFEngine_function_attributes(var, detail)%]
 
 This function returns a variables type description as a string. The function
 expects a variable identifier as the first argument `var`. An optional second
