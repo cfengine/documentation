@@ -332,7 +332,7 @@ def function_attributes(parameters, config):
 
 		arguments += "* ```" + parameter_name  + "```: "
 		if option_arg:
-			arguments += "one of\n"
+			arguments += " - " + parameter_description + " - one of\n"
 			options = parameter["range"].split(',')
 			for option in options:
 				arguments += "    * ```" + option + "```\n"
