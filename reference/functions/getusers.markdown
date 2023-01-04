@@ -7,7 +7,7 @@ tags: [reference, system functions, functions, getusers]
 
 [%CFEngine_function_prototype(exclude_names, exclude_ids)%]
 
-**Description:** Returns a list of all users defined, except those names in `exclude_names` and uids in `exclude_ids`
+**Description:** Returns a list of all users defined, except those names in the comma separated string of `exclude_names` and the comma separated string of uids in `exclude_ids`
 
 [%CFEngine_function_attributes(exclude_names, exclude_ids)%]
 
