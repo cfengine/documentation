@@ -7,14 +7,9 @@ tags: [reference, utility functions, functions, type]
 
 [%CFEngine_function_prototype(var, detail)%]
 
-**Description:** Returns a variables type decription.
+**Description:** Returns a variables type description.
 
-**Return type:** `string`
-
-**Arguments:**
-
-* `var`: `string`, in the range `.*`
-* `detail`: `boolean`, in the range: `true,false,yes,no,on,off`
+[%CFEngine_function_attributes(var, detail)%]
 
 This function returns a variables type description as a string. The function
 expects a variable identifier as the first argument `var`. An optional second
