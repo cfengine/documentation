@@ -7,7 +7,7 @@ PYGMENTS_CACHE_DIR = File.expand_path('../../_cache', __FILE__)
 FileUtils.mkdir_p(PYGMENTS_CACHE_DIR)
 
 class Redcarpet2Markdown < Redcarpet::Render::HTML
-  def block_code(code, lang)
+  def block_code(code, lang, type, filename)
     lang = lang || "text"
     path = File.join(PYGMENTS_CACHE_DIR, "#{lang}-#{Digest::MD5.hexdigest code}.html")
     cache(path) do
@@ -16,9 +16,9 @@ class Redcarpet2Markdown < Redcarpet::Render::HTML
     end
   end
 
-  def add_code_tags(code, lang)
+  def add_code_tags(code, lang, type, filename)
 
-    code.sub(/<pre>/, "<pre><code class=\"#{lang}\">").
+    code.sub(/<pre>/, "{type} {filename} <pre><code class=\"#{lang}\">").
       sub(/<\/pre>/, "</code></pre>")
 
   end
