@@ -5,12 +5,12 @@ published: true
 tags: [reference, functions, validjson, JSON, context]
 ---
 
-[%CFEngine_function_prototype(data_container)%]
+[%CFEngine_function_prototype(string)%]
 
-**Description:** Validates a JSON container from `data_container` and returns
+**Description:** Validates a JSON container from `string` and returns
 `true` if the contents are valid JSON.
 
-[%CFEngine_function_attributes(data_container)%]
+[%CFEngine_function_attributes(string)%]
 
 **Example:**
 
