@@ -208,6 +208,77 @@ however this does not support syntax highlighting and triple backticks are prefe
 To turn on syntax highlighting, specify the language ("brush") directly after the opening three backticks.
 Syntax highlighting is provided by pygments. Find all available lexers [here](http://pygments.org/docs/lexers/).
 
+#### Command code blocks
+
+```command
+python3 -v
+```
+
+This code block will have `command` in the header and corresponding icon.
+
+#### Command code block with output
+
+To have a component that shows command, and it's output you need to place output code block following command one.
+
+```command
+uname
+```
+
+```output
+Linux
+```
+
+You might also specify output syntax highlighting by adding language
+after the starting backticks and placing `[output]` in the first line.
+This line won't be shown in the resulted HTML.
+
+```command
+curl --user admin:admin https://test.cfengine.com/api/user
+```
+
+```json
+[output]
+{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1350994249d
+  },
+  "data": [
+    {
+      "id": "calvin",
+      "external": true,
+      "roles": [
+        "Huguenots", "Marketing"
+      ]
+    }
+  ]
+}
+```
+
+These two blocks will be joined into one element on the UI.
+
+#### File code block
+
+You can specify file name of the code block by adding  `[file=Name of the file]` in the first line.
+This line won't be shown in the resulting HTML (it will be converted to the heading / frame).
+
+```cf3
+[file=policy.cf]
+bundle agent hello_world
+{
+  meta:
+    "tags"
+      slist => { "autorun" };
+  vars:
+    "github_path"
+      string => "/tmp/github.com";
+}
+```
+
+The resulting code block will show `policy.cf` as the filename.
+
 #### CFEngine Code Blocks
 
 If you want CFEngine syntax highlighting, use
