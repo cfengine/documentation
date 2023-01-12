@@ -49,7 +49,7 @@ Your **development machine** is the machine you have in front of you, it can be 
 This is where you will run a terminal, browser, text editor, and some python tools.
 Throughout this tutorial we will tell you various commands to run on the command line (terminal), like this:
 
-```
+```command
 echo hello
 ```
 
@@ -62,13 +62,13 @@ Feel free to use the copy to clipboard button and paste it into your terminal, o
 Install brew from [brew.sh](https://brew.sh/).
 Use brew to install Python 3:
 
-```
+```command
 brew install python3
 ```
 
 **On Ubuntu:**
 
-```
+```command
 sudo apt-get install python3 python3-pip
 ```
 
@@ -79,25 +79,21 @@ Not all systems use `apt-get` as the package manager - if you are not using Ubun
 
 To continue, you will need to be able to use `python3` and `pip3`:
 
-```
+```command
 python3 --version
 ```
 
-The output should look like this:
-
-```
+```output
 Python 3.10.8
 ```
 
 And similar for `pip`:
 
-```
+```command
 pip3 --version
 ```
 
-Output:
-
-```
+```output
 pip 22.3 from /usr/local/lib/python3.10/site-packages/pip (python 3.10)
 ```
 
@@ -111,13 +107,13 @@ These are small python tools and don't make changes to your system, they are onl
 Depending on your operating system and how you installed python, you may be able to install python tools without `sudo`.
 This is common on **macOS**:
 
-```
+```command
 pip3 install cfbs cf-remote
 ```
 
 However, on other systems, notably popular **Linux** distributions, it is common to require root privileges (or extra configuration) to install python packages:
 
-```
+```command
 sudo pip3 install cfbs cf-remote
 ```
 
@@ -125,25 +121,23 @@ There are many ways to install command line tools with `pip`, if you want to do 
 The commands above are suggestions which should work for most people.
 Importantly, you need the command line tools working after you've installed them:
 
-```
+```command
 cfbs --version
 ```
 
 Just as above, with python, you should see the version number like this:
 
-```
+```output
 cfbs 3.1.1
 ```
 
 And similarly for `cf-remote`:
 
-```
+```command
 cf-remote --version
 ```
 
-Output:
-
-```
+```output
 cf-remote version 0.4.5
 Available CFEngine versions:
 master, 3.20.0, 3.18.x, 3.18.2, 3.18.1, 3.18.0, 3.15.x, 3.15.6, 3.15.5, 3.15.4, 3.15.3, 3.15.2, 3.15.1, 3.15.0, 3.15.0b1
@@ -175,7 +169,7 @@ Come back to this tutorial after you have completed the installation and setup o
 
 Test that ssh works:
 
-```
+```command
 ssh root@192.168.56.2 -C "echo hello"
 ```
 
@@ -188,7 +182,7 @@ If you see `hello` printed, it worked! If not, these are some of the more common
 
 After you see ssh working, save the host in `cf-remote` so you can copy-paste our later commands:
 
-```
+```command
 cf-remote save -H root@192.168.56.2 --role hub --name hub
 ```
 
@@ -196,13 +190,11 @@ cf-remote save -H root@192.168.56.2 --role hub --name hub
 
 The host is now in a `cf-remote` group called `hub`, so we don't have to type the username and IP, for example:
 
-```
+```command
 cf-remote info -H hub
 ```
 
-The output shows you the information needed for SSH (username and hostname / IP) as well as some key information about the host, such as architecture and operating system:
-
-```
+```output
 root@192.168.56.2
 OS            : Ubuntu 20
 Architecture  : x86_64
@@ -211,11 +203,13 @@ Policy server : None
 Binaries      : dpkg, apt
 ```
 
+The output shows you the information needed for SSH (username and hostname / IP) as well as some key information about the host, such as architecture and operating system:
+
 ## Install CFEngine
 
 From your development machine, use `cf-remote` to install CFEngine on the Linux VM:
 
-```
+```command
 cf-remote install --hub hub --bootstrap hub
 ```
 
