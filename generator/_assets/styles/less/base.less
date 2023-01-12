@@ -216,17 +216,74 @@ code {
 
 div.highlight {
   background: #F7F7F7;
-  padding-right: 40px;
   position: relative;
   border: 1px solid @gray-300;
+  border-radius: .4rem;
   margin: 1.2rem 0 4rem 0;
+
+  .code_block {
+    > div {
+      background: white;
+      border-radius: .4rem .4rem 0 0;
+      display: flex;
+      padding: 1rem 1.6rem;
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+
+      .file, .command, .code {
+        margin-right: 1.2rem;
+
+        &:after {
+          font-family: bootstrap-icons;
+          font-style: normal;
+        }
+      }
+
+      i.file:after {
+        content: '\F38B';
+      }
+
+      i.command:after {
+        content: '\F5C3';
+      }
+
+      i.code:after {
+        content: '\F2C8';
+      }
+    }
+
+    pre {
+      padding: 1.2rem 1.6rem;
+      border-radius: 0 0 .4rem .4rem;
+      border-top: 1px solid @gray-300;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    &.command {
+      pre {
+        position: relative;
+        padding-left: 2.8rem;
+        &:before {
+          position: absolute;
+          top: 1.4rem;
+          left: 1.2rem;
+          content: '$';
+          font-weight: 500;
+          font-size: 14px;
+        }
+      }
+    }
+  }
 
   .copy-to-clipboard {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 0;
+    top: 5.4rem;
     cursor: pointer;
-    background: #F7F7F7;
+    background: linear-gradient(90deg, rgba(247,247,247,0.5) 0%, rgba(247,247,247,0.9) 20%, rgba(247,247,247,1) 30%, rgba(247,247,247,1) 100%);
+    width: 4rem;
+    text-align: center;
 
     &:hover {
       color: @blue-600;
@@ -236,7 +293,7 @@ div.highlight {
         font-style: normal;
         content: "Copy to clipboard";
         position: absolute;
-        left: 20px;
+        left: 30px;
         top: 3px;
         width: max-content;
         background: #efefef;
@@ -252,6 +309,22 @@ div.highlight {
         content: "Copied!";
       }
     }
+  }
+}
+
+.command+.output, .code+.output {
+  border-radius: 0;
+  margin-top: -4.3rem;
+  .code_block {
+    > div {
+      padding: .7rem 1.6rem;
+    }
+  }
+}
+
+.output {
+  .copy-to-clipboard {
+    display: none;
   }
 }
 
