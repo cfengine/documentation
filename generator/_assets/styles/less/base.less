@@ -310,6 +310,23 @@ div.highlight {
       }
     }
   }
+
+  &.code {
+    .code_block {
+      > div {
+        display: none;
+      }
+
+      pre {
+        border-top: none;
+        border-radius: .4rem;
+      }
+    }
+
+    .copy-to-clipboard {
+      top: 1.4rem;
+    }
+  }
 }
 
 .command+.output, .code+.output {
