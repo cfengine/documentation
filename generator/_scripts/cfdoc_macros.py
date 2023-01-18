@@ -410,6 +410,9 @@ def document_type(type, type_definition, excludes, config):
 				highscore = 0
 				for a in anchors:
 					score = 0
+					# if type is common attributes then prioritize Promise types page, where the common attributes are listed, as anchor
+					if type == "common" and "Promise Types" in a:
+						score += 3
 					if type in a:
 						score += 1
 					if attribute in a:
