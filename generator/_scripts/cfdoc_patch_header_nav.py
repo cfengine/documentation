@@ -38,7 +38,7 @@ def patch(current_branch):
             if branch['Version'] == current_branch:
                 selected = ' selected="selected"'
                 link = 'javascript:void(0);'
-            print('<a href="%s"%s>%s</a>' % (link, selected, branch['Title'].replace('Version ', '')), file=f)
+            print('<a onclick="selectVersion(\'%s\')" href="#"%s>%s</a>' % (link, selected, branch['Title'].replace('Version ', '')), file=f)
         print('<a href="./versions.html">view all versions</a>', file=f)
 
     with open("_includes/versions_list.html", "w") as f:
