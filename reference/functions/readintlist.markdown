@@ -5,9 +5,7 @@ published: true
 tags: [reference, io functions, functions, readintlist]
 ---
 
-**Prototype:** `readintlist(filename, comment, split, maxentries, maxbytes)`<br>
-
-**Return type:** `ilist`
+[%CFEngine_function_prototype(filename, comment, split, maxentries, maxbytes)%]
 
 **Description:** Splits the file `filename` into separated
 values and returns the list.
@@ -16,14 +14,7 @@ The `comment` field is a multiline regular expression and will strip out
 unwanted patterns from the file being read, leaving unstripped characters to be
 split into fields. Using the empty string (`""`) indicates no comments.
 
-**Arguments**:
-
-* `filename` : File name to read, in the range `"?(/.*)`
-* `comment` : [Unanchored][unanchored] regex matching comments, in the range `.*`
-* `split` : [Unanchored][unanchored] regex to split data, in the range `.*`
-* `maxentries` : Maximum number of entries to read, in the range
-`0,99999999999`
-* `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
+[%CFEngine_function_attributes(filename, comment, split, maxentries, maxbytes)%]
 
 **Example:**
 
