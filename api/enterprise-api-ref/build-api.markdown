@@ -76,11 +76,11 @@ HTTP 200 Ok
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 200 OK | Project successfully created |
-| 422 Unprocessable entity | Validation error occurred |
-| 500 Internal server error | Internal server error |
+| HTTP response code        | Description                  |
+|---------------------------|------------------------------|
+| 200 OK                    | Project successfully created |
+| 422 Unprocessable entity  | Validation error occurred    |
+| 500 Internal server error | Internal server error        |
 
 ## Create local project
 
@@ -174,12 +174,12 @@ HTTP 200 OK
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 204 No content | Project successfully updated |
-| 404 Not found | Project not found |
-| 422 Unprocessable entity | Validation error occurred |
-| 500 Internal server error | Internal server error |
+| HTTP response code        | Description                  |
+|---------------------------|------------------------------|
+| 204 No content            | Project successfully updated |
+| 404 Not found             | Project not found            |
+| 422 Unprocessable entity  | Validation error occurred    |
+| 500 Internal server error | Internal server error        |
 
 ## Get project
 
@@ -224,10 +224,10 @@ HTTP 200 OK
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 200 Ok | Successful response  |
-| 404 Not found | Project not found |
+| HTTP response code        | Description           |
+|---------------------------|-----------------------|
+| 200 Ok                    | Successful response   |
+| 404 Not found             | Project not found     |
 | 500 Internal server error | Internal server error |
 
 ## Get projects list
@@ -295,10 +295,10 @@ HTTP 200 OK
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 200 Ok | Successful response  |
-| 404 Not found | Project not found |
+| HTTP response code        | Description           |
+|---------------------------|-----------------------|
+| 200 Ok                    | Successful response   |
+| 404 Not found             | Project not found     |
 | 500 Internal server error | Internal server error |
 
 ## Delete project
@@ -328,11 +328,11 @@ HTTP 204 No content
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 204 No content | Project successfully deleted |
-| 404 Not found | Project not found |
-| 500 Internal server error | Internal server error |
+| HTTP response code        | Description                  |
+|---------------------------|------------------------------|
+| 204 No content            | Project successfully deleted |
+| 404 Not found             | Project not found            |
+| 500 Internal server error | Internal server error        |
 
 ## Sync project
 
@@ -371,11 +371,11 @@ HTTP 204 No content
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 204 No content | Project successfully synced |
-| 404 Not found | Project not found |
-| 500 Internal server error | Internal server error |
+| HTTP response code        | Description                 |
+|---------------------------|-----------------------------|
+| 204 No content            | Project successfully synced |
+| 404 Not found             | Project not found           |
+| 500 Internal server error | Internal server error       |
 
 ##  Refresh project
 
@@ -420,10 +420,10 @@ HTTP 200 OK
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 200 Ok | Successful response  |
-| 404 Not found | Project not found |
+| HTTP response code        | Description           |
+|---------------------------|-----------------------|
+| 200 Ok                    | Successful response   |
+| 404 Not found             | Project not found     |
 | 500 Internal server error | Internal server error |
 
 ## List of CFEngine Build modules added to project
@@ -494,10 +494,10 @@ HTTP 200 OK
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 200 Ok | Successful response  |
-| 404 Not found | Project not found |
+| HTTP response code        | Description           |
+|---------------------------|-----------------------|
+| 200 Ok                    | Successful response   |
+| 404 Not found             | Project not found     |
 | 500 Internal server error | Internal server error |
 
 ## Add CFEngine Build module to project
@@ -536,12 +536,12 @@ HTTP 201 Created
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 201 Created | Module successfully added |
-| 404 Not found | Project not found |
-| 422 Unprocessable entity | Validation error occurred |
-| 500 Internal server error | Internal server error |
+| HTTP response code        | Description               |
+|---------------------------|---------------------------|
+| 201 Created               | Module successfully added |
+| 404 Not found             | Project not found         |
+| 422 Unprocessable entity  | Validation error occurred |
+| 500 Internal server error | Internal server error     |
 
 ## Delete CFEngine Build module from project
 
@@ -572,11 +572,11 @@ HTTP 204 No content
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 204 No content | Module successfully deleted from project |
-| 404 Not found | Project not found |
-| 500 Internal server error | Internal server error |
+| HTTP response code        | Description                              |
+|---------------------------|------------------------------------------|
+| 204 No content            | Module successfully deleted from project |
+| 404 Not found             | Project not found                        |
+| 500 Internal server error | Internal server error                    |
 
 ## Update CFEngine Build module version
 
@@ -614,12 +614,12 @@ HTTP No content
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 204 No content | Module successfully updated |
-| 404 Not found | Project not found |
-| 422 Unprocessable entity | Validation error occurred |
-| 500 Internal server error | Internal server error |
+| HTTP response code        | Description                 |
+|---------------------------|-----------------------------|
+| 204 No content            | Module successfully updated |
+| 404 Not found             | Project not found           |
+| 422 Unprocessable entity  | Validation error occurred   |
+| 500 Internal server error | Internal server error       |
 
 ## Get list of available CFEngine Build modules
 
@@ -700,9 +700,9 @@ HTTP 200 OK
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 200 Ok | Successful response  |
+| HTTP response code        | Description           |
+|---------------------------|-----------------------|
+| 200 Ok                    | Successful response   |
 | 500 Internal server error | Internal server error |
 
 ## Update list of available CFEngine Build modules
@@ -729,10 +729,10 @@ curl --user <username>:<password> \
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 204 No content | Modules list successfully updated |
-| 500 Internal server error | Internal server error |
+| HTTP response code        | Description                       |
+|---------------------------|-----------------------------------|
+| 204 No content            | Modules list successfully updated |
+| 500 Internal server error | Internal server error             |
 
 ## Get CFEngine build module by name
 
@@ -792,10 +792,10 @@ HTTP 200 OK
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 200 Ok | Successful response  |
-| 404 Not found | Module not found  |
+| HTTP response code        | Description           |
+|---------------------------|-----------------------|
+| 200 Ok                    | Successful response   |
+| 404 Not found             | Module not found      |
 | 500 Internal server error | Internal server error |
 
 ## Get specific version of a CFEngine Build module by name
@@ -859,10 +859,10 @@ HTTP 200 OK
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 200 Ok | Successful response  |
-| 404 Not found | Module not found  |
+| HTTP response code        | Description           |
+|---------------------------|-----------------------|
+| 200 Ok                    | Successful response   |
+| 404 Not found             | Module not found      |
 | 500 Internal server error | Internal server error |
 
 
