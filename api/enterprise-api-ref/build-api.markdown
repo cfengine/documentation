@@ -82,6 +82,37 @@ HTTP 200 Ok
 | 422 Unprocessable entity | Validation error occurred |
 | 500 Internal server error | Internal server error |
 
+## Create local project
+
+You can create a local project without repository data and the project will exist only locally.
+This type of project is useful for testing purposes.
+
+**URI:** https://hub.cfengine.com/api/build/projects/local
+
+**Method:** POST
+
+**Example request (curl):**
+
+```console
+curl --user <username>:<password> -X POST https://hub.cfengine.com/api/build/projects/local
+```
+
+**Successful response example:**
+
+```
+HTTP 200 Ok
+{
+    "id": "1"
+}
+```
+
+**Responses:**
+
+| HTTP response code        | Description                  |
+|---------------------------|------------------------------|
+| 200 OK                    | Project successfully created |
+| 500 Internal server error | Internal server error        |
+
 ## Update project
 
 By changing the repository url or branch you will initialize a new project and the current one will be removed from the
