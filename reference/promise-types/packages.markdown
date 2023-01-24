@@ -350,7 +350,7 @@ body package_module yum_all_repos
 ## Package modules out-of-the-box
 ### yum
 
-Manage packages using ```yum```. This is the [default package module](lib/packages.cf#package_module_knowledge) for Red Hat, CentOS and Amazon Linux.
+Manage packages using ```yum```. This is the [default package module][lib/packages.cf#package_module_knowledge] for Red Hat, CentOS and Amazon Linux.
 
 **Examples:**
 
