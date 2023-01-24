@@ -36,7 +36,7 @@ Please note that:
 
 Single hosts can be removed by visiting the host info page, and clicking the trash can next to the host identifier (header):
 
-![Remove host](../Mission-portal-remove-host.png)
+![Remove host](./Mission-portal-remove-host.png)
 
 ## Host removal through Enterprise API ##
 
