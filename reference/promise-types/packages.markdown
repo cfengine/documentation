@@ -617,7 +617,7 @@ packages:
 
 ### snap
 
-Manage packages using [snap](https://en.wikipedia.org/wiki/Snappy_(package_manager)).
+Manage packages using [snap](https://en.wikipedia.org/wiki/Snappy_%28package_manager%29).
 
 ```cf3
 bundle agent main
