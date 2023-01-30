@@ -135,6 +135,6 @@ There are several places to look for more information or inspiration when writin
 
 * [The real git promise type code](https://github.com/cfengine/modules/tree/c3b7329b240cf7ad062a0a64ee8b607af2cb912a/promise-types/git/)
 * [HTTP promise type module](https://github.com/cfengine/modules/tree/c861789d4b376147d904fccd76963a92e65eaa97/promise-types/http/)
-* [CFEngine custom promise type specification](/reference-promise-types-custom.html)
+* [CFEngine custom promise type specification](./reference-promise-types-custom.html)
 * [Blog post: How to implement CFEngine Custom Promise Types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
 * [Blog post: How to implement CFEngine Custom Promise Types in Bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
