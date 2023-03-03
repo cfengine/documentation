@@ -58,6 +58,8 @@ The rest of this documentation page below focuses on the specifics of how augmen
 There are two canonical augments files, `host_specific.json`, and `def.json` which may load additional Augments
 as specified by the [_augments_ key][Augments#augments].
 
+**Notes:**
+* CFEngine variables are **not** expanded unless otherwise noted.
 
 ### host_specific.json ###
 
@@ -67,7 +69,6 @@ are automatically tagged with `source=cmdb`. Variables defined from this file ca
 **Notes:**
 
 * This file does not support the [_augments_ key][Augments#augments].
-* This file does not support expansion of CFEngine variables, including `sys` variables (unlike `def.json`).
 
 ### def.json ###
 
@@ -80,7 +81,7 @@ The file `def.json` is found based on the location of the policy entry (the firs
 
 **Notes:**
 
-* `sys` variables are expanded (unlike `host_specific.json`).
+* `sys` variables are expanded in `def.json` and all subsequently loaded augments as specified by the `augments` key.
 * `def_preferred.json` will be used instead of `def.json` if it is present. This preferential loading can be disabled by providing the `--ignore-preferred-augments` option to the agent.
 
 ## Augments Keys ##
