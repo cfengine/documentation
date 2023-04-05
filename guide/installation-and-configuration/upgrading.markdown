@@ -25,6 +25,15 @@ In short, the steps are:
   compatibility. For example, a host running 3.15.0 will not be able to report
   to a hub running 3.12.3.
 
+- Masterfiles Policy Framework (MPF) should always be newer than or equal to
+  your newest binary version. While things often work without performing the MPF
+  upgrade you may miss important changes where the policy has been instrumented
+  to account for changes in binary behavior. For example, if you upgraded to
+  3.18.2 or later without upgrading your policy framework you would see many
+  warnings that the framework upgrade would have suppressed. That specific
+  change was detailed in this
+  [blog post about changes in behavior to directory permissions and the execute bit](https://cfengine.com/blog/2022/rxdirs-default-changing-from-true-to-false/).
+
 ## Backup
 
 Backups are made during the hub package upgrade, but it's prudent to take a full
