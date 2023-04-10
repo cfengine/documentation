@@ -112,6 +112,12 @@ day, the week of the year, etc. Time-varying classes (tagged with
 `time_based`) will change if you do this a few times over the course
 of a week.
 
+**Notes:**
+
+* Hard classes can **not** be undefined. If you try to undefine or cancel a hard
+  class an error will be emitted, for example `error: You cannot cancel a
+  reserved hard class 'cfengine' in post-condition classes`.
+
 * CFEngine-specific classes
     * `any`: this class is always set
     * `am_policy_hub`, `policy_server`: set when the file

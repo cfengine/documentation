@@ -639,6 +639,12 @@ body classes example
 In the above example, if the promise was already kept and nothing was done,
 cancel (undefine) any of the listed classes so that they are no longer defined.
 
+**Notes:**
+
+* Hard classes can **not** be undefined. If you try to undefine or cancel a hard
+  class an error will be emitted, for example `error: You cannot cancel a
+  reserved hard class 'cfengine' in post-condition classes`.
+
 **History:** This attribute was introduced in CFEngine version 3.0.4 (2010)
 
 #### cancel_repaired
@@ -664,6 +670,12 @@ body classes example
 In the above example, if the promise was repaired and changes were made to the
 system, cancel (undefine) any of the listed classes so that they are no longer
 defined.
+
+**Notes:**
+
+* Hard classes can **not** be undefined. If you try to undefine or cancel a hard
+  class an error will be emitted, for example `error: You cannot cancel a
+  reserved hard class 'cfengine' in post-condition classes`.
 
 **History:** This attribute was introduced in CFEngine version 3.0.4 (2010)
 
@@ -691,6 +703,12 @@ body classes example
 In the above example, if the promise was not kept but nothing could be done,
 cancel (undefine) any of the listed classes so that they are no longer
 defined.
+
+**Notes:**
+
+* Hard classes can **not** be undefined. If you try to undefine or cancel a hard
+  class an error will be emitted, for example `error: You cannot cancel a
+  reserved hard class 'cfengine' in post-condition classes`.
 
 **History:** This attribute was introduced in CFEngine version 3.0.4 (2010)
 
