@@ -33,6 +33,10 @@ vars:
      data =>  '{ "key": "value" }';
 ```
 
+**Notes:**
+
+* This functions does not parse _primitives_.
+
 **History:**
 
 * Introduced in CFEngine 3.6.0
