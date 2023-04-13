@@ -10,14 +10,14 @@ CFEngine defects are managed in our [bug tracker][bug tracker]. Please report
 bugs or unexpected behavior there, following the documented guideline for new
 bug reports.
 
-* Core Issues affecting [{{site.cfengine.branch}}](https://tracker.mender.io/secure/QuickSearch.jspa?searchString=v:{{site.cfengine.branch}}*)
+* Core Issues affecting [{{site.cfengine.branch}}](https://northerntech.atlassian.net/secure/QuickSearch.jspa?searchString=v:{{site.cfengine.branch}}*)
 
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
 ### `cf-agent -N` or `cf-agent --negate` is not working
 
-As reported in [CFE-1589](https://tracker.mender.io/browse/CFE-1589) the
+As reported in [CFE-1589](https://northerntech.atlassian.net/browse/CFE-1589) the
 functionality of negating persistent classes on the command line, was
 removed sometime before 3.5, commit
 cf63db27945f0628caa5bf45338f7709d5d12b21. The ticket is open until the
