@@ -258,7 +258,7 @@ This contains the MAC address of the named interface. For example:
         "Tell me $(sys.hardware_mac[eth0])";
 ```
 
-**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-3224](https://northerntech.atlassian.net/browse/CFE-3224).
+**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
 
 **History:** Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
@@ -988,7 +988,7 @@ e.g. `$(sys.ip2iface[1.2.3.4])`.
 from any of the other associative arrays). Only those interfaces which are
 marked as "up" and have an IP address will have entries.
 
-- The *values* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be `wlan0_1`. Ref: [CFE-3224](https://northerntech.atlassian.net/browse/CFE-3224).
+- The *values* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be `wlan0_1`. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
 
 **History:** Was introduced in 3.9.
 
@@ -1037,19 +1037,19 @@ are marked as "up" and have an IP address will be listed.
 The first octet of the IPv4 address of the system interface named as the
 associative array index, e.g. `$(ipv4_1[le0])` or `$(ipv4_1[xr1])`.
 
-**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-3224](https://northerntech.atlassian.net/browse/CFE-3224).
+**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
 
 ### sys.ipv4_2[interface_name]
 
 The first two octets of the IPv4 address of the system interface named as the associative array index, e.g. `$(ipv4_2[le0])` or `$(ipv4_2[xr1])`.
 
-**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-3224](https://northerntech.atlassian.net/browse/CFE-3224).
+**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
 
 ### sys.ipv4_3[interface_name]
 
 The first three octets of the IPv4 address of the system interface named as the associative array index, e.g. `$(ipv4_3[le0])` or `$(ipv4_3[xr1])`.
 
-**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-3224](https://northerntech.atlassian.net/browse/CFE-3224).
+**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
 
 ### sys.key_digest
 
