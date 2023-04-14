@@ -236,7 +236,7 @@ Example response:
 }
 ```
 
-See Also: [query rest api][Tracking changes]
+See also: [query rest api][Tracking changes]
 
 ### Custom Reports and Query API
 

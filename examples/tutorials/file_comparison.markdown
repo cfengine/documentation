@@ -6,7 +6,7 @@ sorting: 100
 tags: [examples, tutorials, file]
 ---
 
-1. Add the [policy contents][File comparison#Full Policy] (also can be downloaded from <a href="file_compare_test.cf">file_compare_test.cf</a>) to a new file, such as /var/cfengine/masterfiles/file_test.cf.
+1. Add the [policy contents][File comparison#Full policy] (also can be downloaded from <a href="file_compare_test.cf">file_compare_test.cf</a>) to a new file, such as /var/cfengine/masterfiles/file_test.cf.
 2. Run the following commands as root on the command line:
 
 	```console
@@ -418,6 +418,6 @@ bundle agent list_file_2
 ```
 
 
-## Full Policy
+## Full policy
 
 [%CFEngine_include_snippet(documentation/examples/tutorials/file_compare_test.cf, .* )%]

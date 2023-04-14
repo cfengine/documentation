@@ -26,17 +26,17 @@ The database runs under the `cfpostgres` user.
 
 ## What are the requirements for installing CFEngine Enterprise?
 
-### General Information
+### General information
 
 * [Pre-installation checklist][Pre-installation checklist]
 * [Supported platforms and versions][Supported platforms and versions]
 
-### Users and Permissions
+### Users and permissions
 
 * CFEngine Enterprise makes an attempt to create the local users `cfapache` and
   `cfpostgres`, as well as group `cfapache` during install.
 
-## How does Enterprise Scale?
+## How does Enterprise scale?
 
 See best practices on [scalability][Best practices#Scalability]
 
@@ -47,7 +47,7 @@ See best practices on [scalability][Best practices#Scalability]
 ## What steps should I take after installing CFEngine Enterprise?
 
 There are general steps to be taken outlined in
-[Post-Installation Configuration][General installation#Post-Installation Configuration].
+[Post-installation configuration][General installation#Post-installation configuration].
 
 In addition to this, Enterprise uses the local mail relay, and it is assumed
 that the server where CFEngine Enterprise is installed on has proper mail setup.

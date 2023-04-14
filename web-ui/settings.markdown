@@ -9,23 +9,23 @@ tags: [cfengine enterprise, user interface, mission portal]
 A variety of CFEngine and system properties can be changed in the
 Settings view.
 
-* [Opening Settings][Settings#Opening Settings]
+* [Opening settings][Settings#Opening settings]
 * [Preferences][Settings#Preferences]
-* [User Management][Settings#User Management]
-* [Role Management][Settings#Role Management]
-* [Manage Apps][Settings#Manage Apps]
-* [Version control Repository][Settings#Version control Repository]
-* [Host Identifier][Settings#Host Identifier]
+* [User management][Settings#User management]
+* [Role management][Settings#Role management]
+* [Manage apps][Settings#Manage apps]
+* [Version control repository][Settings#Version control repository]
+* [Host identifier][Settings#Host identifier]
 * [Mail Settings][Settings#Mail settings]
 * [Authentication settings][Settings#Authentication settings]
-* [Export/Import][Settings#Export/Import]
+* [Export/import][Settings#Export/import]
 * [Role based access control][Settings#Role based access control]
 * [About CFEngine][Settings#About CFEngine]
 
 
-## Opening Settings
+## Opening settings
 
-<img src="Settings-1.png" alt="Opening Settings" width="424px">
+<img src="Settings-1.png" alt="Opening settings" width="424px">
 
 Settings are accessible from any view of the mission portal, from the
 drop down in the top right hand corner.
@@ -47,16 +47,16 @@ administrator to change various options, including:
 * Log level
 * Customize the user experience with the organization logo
 
-## User Management
+## User management
 
-<img src="Settings-3.png" alt="User Management" width="700px">
+<img src="Settings-3.png" alt="User management" width="700px">
 
 User management is for adding or adjusting CFEngine Enterprise UI
 users, including their name, role, and password.
 
-## Role Management
+## Role management
 
-<img src="Settings-role.png" alt="Role Management" width="430px">
+<img src="Settings-role.png" alt="Role management" width="430px">
 
 Roles limit access to host data and access to shared assets like saved reports
 and dashboards.
@@ -142,24 +142,24 @@ In effect this allows you to set the default permissions for new users (e.g. whi
 
 <img src="add-new-user.png" alt="AddNewUser" width="430px">
 
-## Manage Apps
+## Manage apps
 
-<img src="Settings-4.png" alt="Manage Apps" width="700px">
+<img src="Settings-4.png" alt="Manage apps" width="700px">
 
 Application settings can help adjust some of CFEngine Enterprise UI
 app features, including the order in which the apps appear and their
 status (on or off).
 
-## Version control Repository
+## Version control repository
 
-<img src="settings-vcs.png" alt="Version control Repository" width="700px">
+<img src="settings-vcs.png" alt="Version control repository" width="700px">
 
 The repository holding the organization's masterfiles can be adjusted
-on the Version control Repository screen.
+on the Version control repository screen.
 
-## Host Identifier
+## Host identifier
 
-<img src="Settings-6.png" alt="Host Identifier" width="700px">
+<img src="Settings-6.png" alt="Host identifier" width="700px">
 
 Host identity for the server can be set within settings, and can be
 adjusted to refer to the FQDN, IP address, or an unqualified domain
@@ -198,7 +198,7 @@ Mission portal can authenticate against an external directory.
 - LDAP bind username should be the username used to bind and search the LDAP
   directory. It must be provided in distinguished name format.
 
-- Default roles for users is configured under [Role Management][Settings#Role Management].
+- Default roles for users is configured under [Role management][Settings#Role management].
 
 ### LDAP groups syncing
 
@@ -214,15 +214,15 @@ Mission portal can authenticate against an external directory.
 **Note:** Roles *must* be created in Mission Portal. Enabling LDAP group sync
 will not result in addition or removal of Mission Portal roles.
 
-**See also:** [LDAP authentication REST API][LDAP authentication API], [Role Management][Settings#Role Management]
+**See also:** [LDAP authentication REST API][LDAP authentication API], [Role management][Settings#Role management]
 
-## Export/Import
+## Export/import
 
 Mission Portal's configuration can be exported and imported.
 
-<img src="settings-export-import-3.18.0.png" alt="Export/Import" width="590px">
+<img src="settings-export-import-3.18.0.png" alt="Export/import" width="590px">
 
-**See also:** [Export/Import API][Import & export API]
+**See also:** [Export/import API][Import & export API]
 
 ## Role based access control
 

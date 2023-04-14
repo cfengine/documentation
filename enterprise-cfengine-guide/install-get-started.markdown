@@ -12,7 +12,7 @@ https://docs.google.com/document/d/1CeRR8cuMtrrr0X27gzVzP2ndiU0HuHvo7dJT2vIWfp0/
 
 
 * [Installation][Install and Get Started#Installation]
-* [Post-Install Configuration][Install and Get Started#Post-Install Configuration]
+* [Post-install configuration][Install and Get Started#Post-install configuration]
 
 ## Installation
 
@@ -24,7 +24,7 @@ Before you begin, you should have your license key, unless you only
 plan to use the free 25 node license. The installation instructions
 will be provided with the key.
 
-## Post-Install Configuration
+## Post-install configuration
 
 ### Change Email Setup After CFEngine Enterprise Installation
 
@@ -36,7 +36,7 @@ The default FROM email for all emails sent from the Mission Portal is ```admin@o
 
 Consider enabling the built-in version control of your policies as
 described in
-[Version control and Configuration Policy][Best practices#Version control and Configuration Policy]
+[Version control and configuration policy][Best practices#Version control and configuration policy]
 
 Whether you do or not, please put your policies in some kind of
 backed-up VCS. Losing work because of "fat fingering" `rm` commands is

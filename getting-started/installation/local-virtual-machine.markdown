@@ -107,7 +107,7 @@ The `Vagrantfile` above does some important things:
 **Note:** The machine will be called `hub` in `vagrant`, `cf-remote` and in Mission Portal (based on hostname), but this is just because we were consistent when naming it in all 3 places.
 These 3 names do not have to match, but it is easier to remember
 
-## Start the Virtual Machine
+## Start the virtual machine
 
 To start our VM, make sure you've saved the file above, with the filename `Vagrantfile` and run this command in the same folder:
 
@@ -123,7 +123,7 @@ At this point, the VM should work like any Linux VM, similar to if you spawned i
 vagrant destroy hub
 ```
 
-## Back to CFEngine Installation
+## Back to CFEngine installation
 
 Now that you have a Linux VM ready, go back to the main tutorial to install CFEngine:
 

@@ -15,7 +15,7 @@ by default, and it executes policies found locally in the `/var/cfengine/inputs`
 directory. The default policy entry is a file called `promises.cf`. In this file
 you normally reference bundles and other policy files.
 
-## Bundles, Promise types, and Classes oh my!
+## Bundles, promise types, and classes oh my!
 
 These concepts are core to CFEngine so they are covered in brief here. For more
 detailed information see the Language concepts section of the Reference manual.
@@ -92,7 +92,7 @@ Let's save this policy in `/tmp/my-policy.cf`.
 You can now run this policy either in Distributed (client-server) System or in a
 Stand Alone system. The next two sections will cover each of the options.
 
-## Option#1: Running the Policy on a Stand alone system
+## Option#1: Running the policy on a stand alone system
 
 Since CFEngine is fully distributed we can run policies locally. This can come
 in handy as the result of a run is instant, especially during the design phase

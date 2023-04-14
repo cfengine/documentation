@@ -22,7 +22,7 @@ new or manipulate existing XML documents.
 # build_xpath
 -->
 
-## Common Attributes
+## Common attributes
 <!-- Don't change the name of this heading. It affects how the
 CFEngine_promise_attribute macro functions. If the name changes, then promise
 prototypes will not work. -->

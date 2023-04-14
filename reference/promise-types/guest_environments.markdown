@@ -94,7 +94,7 @@ This attribute is required.
 
 **Type:** `body environment_interface`
 
-**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### env_addresses
 
@@ -182,7 +182,7 @@ host2::
 
 **Type:** `body environment_resources`
 
-**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### env_cpus
 

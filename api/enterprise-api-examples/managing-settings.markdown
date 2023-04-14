@@ -49,7 +49,7 @@ are managed by the LDAP API and not this Settings API.
     204 No Content
 
 
-## Example: Changing The Log Level
+## Example: Changing the log level
 
 The API uses standard Unix syslog to log a number of events. Additionally, log
 events are sent to `stderr`, which means they may also end up in your Apache

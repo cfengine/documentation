@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-## What is Application Management?
+## What is application management?
 
 Application management concerns the deployment and updating of software, as well
 as customization of for actual use, in other words all the activities required
@@ -85,7 +85,7 @@ package manager to query information and get the system into the desired state.
 CFEngine can edit configuration files in real time to ensure that applications
 are customized to local needs at all times.
 
-## Enterprise Software Reporting
+## Enterprise software reporting
 
 In commercial releases of CFEngine, the state of software installation is
 reported centrally and is easily accessible through the Knowledge Map.

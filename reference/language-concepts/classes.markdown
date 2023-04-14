@@ -28,7 +28,7 @@ In [CFEngine Enterprise](https://cfengine.com/product-overview/), classes that a
 CFEngine Database Server and can be used there for reporting, grouping of hosts
 and inventory management. For more information about how this is configured please read the documentation on [Enterprise reporting][].
 
-## Listing Classes
+## Listing classes
 
 To see the first order of `hard classes` and `soft classes` run `cf-promises
 --show-classes` as a privileged user. Alternatively run `cf-agent
@@ -93,7 +93,7 @@ Enterprise only:
 * `source=ldap`: this soft class or variable was created from an LDAP lookup.
 * `source=observation`: this class or variable came from a `measurements` system observation and will also have the `monitoring` tag.
 
-## Hard Classes
+## Hard classes
 
 Hard classes are discovered by CFEngine. Each time it wakes up, it discovers
 and reads properties of the environment or context in which it runs.It turns
@@ -191,7 +191,7 @@ of a week.
 -   System status and entropy information reported by
     `cf-monitord`.
 
-## Soft Classes
+## Soft classes
 
 Soft classes are user-defined classes which you can use to implement your own
 classifications.
@@ -284,7 +284,7 @@ reports:
 
 
 
-### Negative Knowledge
+### Negative knowledge
 
 If a class is set, then it is certain that the corresponding fact is true.
 However, that a class is not set could mean that something is not the case, or
@@ -293,7 +293,7 @@ where the state of a class can change during the execution of a policy,
 depending on the [order][normal ordering] in which bundles and promises are
 evaluated.
 
-## Making Decisions based on classes
+## Making decisions based on classes
 
 Class guards are the most common way to restrict a promise to a specific context. Once stated the restriction applies until a new context is specified. A new promise type automatically resets to an unrestricted context (the unrestricted context is typically referred to as `any`).
 
@@ -467,7 +467,7 @@ defined and that you must explicitly canonify when verifying classes.
 [%CFEngine_include_example(class-automatic-canonificiation.cf)%]
 
 
-## Operators and Precedence
+## Operators and precedence
 
 Classes promises define new classes based on combinations of old ones. This is
 how to make complex decisions in CFEngine, with readable results. It is like
@@ -636,7 +636,7 @@ scoped.
 
 Finally, `restart_class` classes in `processes` are global.
 
-### Class Scopes: A More Complex Example
+### Class scopes: A more complex example
 
 ```cf3
 body common control

@@ -11,7 +11,7 @@ Use the following links to learn more about CFEngine:
 * [Reading][External resources#Reading]
 * [Training][External resources#Training]
 * [Tools][External resources#Tools]
-* [Support and Community][External resources#Support and Community]
+* [Support and community][External resources#Support and community]
 * [Contribute to CFEngine][External resources#Contribute to CFEngine]
 
 ## Reading
@@ -40,7 +40,7 @@ configuration management best practices from the CFEngine team.
 
 * [Editors with syntax support][Editors]
 
-### Sign Up
+### Sign up
 
 * [On-Site Training](https://cfengine.com/events) Sign up for professional training courses
 that provide a better understanding of CFEngine and how it can help improve configuration
@@ -48,11 +48,11 @@ management in your organization.
 
 * [Contact us](http://info.cfengine.com/ContactUs.html) to get more info on training courses.
 
-## Support and Community
+## Support and community
 
-### Support Desk
+### Support desk
 
-* [CFEngine Enterprise Support Desk][support desk] Enterprise users have access to our support desk.
+* [CFEngine Enterprise Support desk][support desk] Enterprise users have access to our support desk.
 
 ### Forums
 
@@ -64,13 +64,13 @@ have downloaded the free version of CFEngine 3 Enterprise.
 
 * [help-cfengine][help-cfengine] General help for all your CFEngine questions.
 
-### Learning Resources
+### Learning resources
 
 Sometimes the best help is already written.
 
 * Visit our [learning resources][learning center] for guides, demos, training videos, and tools.
 
-### Social Media
+### Social media
 
 Stay in touch. Follow us:
 

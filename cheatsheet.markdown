@@ -14,7 +14,7 @@ to make it even simpler. Here's a list of the most commonly used formats.
 
 * **"Always pull never push"**
 
-## Basic Formatting
+## Basic formatting
 
 ```
 One
@@ -57,7 +57,7 @@ Sometimes (because `¯\_(ツ)_/¯`, maybe the page linked to hasn't been parsed 
 _Most_ (`¯\_(ツ)_/¯`) special characters are _okay_. For example:
 
 * Link targets with `/` (forward slashes) work
-   * ```[Export/Import][Settings#Export/Import]``` == [Export/Import][Settings#Export/Import]
+   * ```[Export/import][Settings#Export/import]``` == [Export/import][Settings#Export/import]
 
 Anchors with _underscores_ are problematic, they need to be escaped.
 
@@ -553,7 +553,7 @@ Sometimes it's nice to include a snippet from another file. For example, we dyna
 
 *****
 
-## Including External Files
+## Including external files
 
 Sometimes it's nice to include an external file
 
@@ -613,7 +613,7 @@ If you are referring to something within UI / screenshots / buttons etc use bold
 
 
 
-## Self Documenting Policy
+## Self documenting policy
 ### For the stdlib:
 
 [%CFEngine_library_include(lib/commands)%]

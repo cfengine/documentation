@@ -17,7 +17,7 @@ If `string` represents a floating point number then the decimals are *truncated*
 
 [%CFEngine_include_example(int.cf)%]
 
-**See Also:** [`string()`][string]
+**See also:** [`string()`][string]
 
 **History:**
 

@@ -10,7 +10,7 @@ These instructions describe how to install the latest version of
 CFEngine Enterprise in a production environment using pre-compiled rpm
 and deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.
 
-## General Requirements
+## General requirements
 
 CFEngine recommends the following:
 
@@ -70,7 +70,7 @@ resource utilization may vary depending on the policy CFEngine is
 running.  The VIOS should be configured with Shared Processors in
 Uncapped mode.
 
-## Policy Server Requirements
+## Policy server requirements
 
 Please note that the resource requirements below are meant as minimum
 guidelines and have been obtained with synthetic testing, and it is
@@ -187,11 +187,11 @@ limits with this command:
 cat /proc/$(pgrep cf-serverd)/limits
 ```
 
-## Download Packages
+## Download packages
 
 [Download CFEngine](http://cfengine.com/product/free-download)
 
-## Install Packages
+## Install packages
 
 CFEngine Enterprise is provided in two packages; one is for the Policy
 Server (hub) and the other is for each Host (client).
@@ -257,7 +257,7 @@ license with `cf-key`.
 # cf-key --install-license ./license.dat
 ```
 
-## Next Steps
+## Next steps
 
 When bootstrapping is complete, CFEngine is up and running on your system.
 
@@ -266,6 +266,6 @@ through your web browser at http://`<IP address of your Policy Server>`.
 
 Learn more about CFEngine by using the following resources:
 
-* Tutorial: [Tutorial for Running Examples][Examples and tutorials#Tutorial for Running Examples]
+* Tutorial: [Tutorial for running examples][Examples and tutorials#Tutorial for running examples]
 
 * [Tutorials and Examples][Examples and tutorials]

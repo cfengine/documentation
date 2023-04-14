@@ -53,7 +53,7 @@ In this example, `control_common_bundlesequence_end` is a special variable, hand
 To learn about more variables like this and ways to interact with the MPF without editing it, see the [MPF Reference documentation][Masterfiles Policy Framework].
 The rest of this documentation page below focuses on the specifics of how augments files work, independently of everything they can be used for in the MPF.
 
-## Augments Files
+## Augments files
 
 There are two canonical augments files, `host_specific.json`, and `def.json` which may load additional Augments
 as specified by the [_augments_ key][Augments#augments].
@@ -84,7 +84,7 @@ The file `def.json` is found based on the location of the policy entry (the firs
 * `sys` variables are expanded in `def.json` and all subsequently loaded augments as specified by the `augments` key.
 * `def_preferred.json` will be used instead of `def.json` if it is present. This preferential loading can be disabled by providing the `--ignore-preferred-augments` option to the agent.
 
-## Augments Keys
+## Augments keys
 
 An augments file can contain the following keys:
 

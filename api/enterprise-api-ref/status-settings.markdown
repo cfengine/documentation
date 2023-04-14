@@ -154,4 +154,4 @@ administrator.
 }
 ```
 
-**Example usage:** `Example: Configuring LDAP`, `Example: Changing The Log Level`
+**Example usage:** `Example: Configuring LDAP`, `Example: Changing the log level`

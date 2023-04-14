@@ -7,7 +7,7 @@ tags: [reference, enterprise, API, import, export]
 
 Import & export API provides users the ability to transfer Mission Portal data between hubs.
 
-**See also:** [Export/Import Settings UI][Settings#Export/Import]
+**See also:** [Export/import Settings UI][Settings#Export/import]
 
 ## Get available items to export
 

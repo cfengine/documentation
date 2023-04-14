@@ -260,7 +260,7 @@ provided, e.g. reviews once per week, once per month? No one can tell you about
 your needs. You have to decide this from local needs.
 
 
-## Tool Support
+## Tool support
 
 
 In the field of tool support for IT Service Management accordant to ITIL,
