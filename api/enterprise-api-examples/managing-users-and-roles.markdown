@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Managing Users and Roles
+title:  Managing users and roles
 published: true
 sorting: 40
 tags: [examples, enterprise, rest, api, reporting, users, roles]

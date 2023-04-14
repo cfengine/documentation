@@ -31,7 +31,7 @@ CFEngine Community, a free GPL v3 open source edition.
 
 See also:
 
-* [Supported Platforms and Versions][Supported Platforms and Versions]
+* [Supported platforms and versions][Supported platforms and versions]
 
 ## Install It
 
@@ -45,11 +45,11 @@ CFEngine up and running for various environments.
 Walk through the examples, tutorials and how to guides to get a better
 feel for the power and value of CFEngine:
 
-* [Policy Examples and Tutorials][Examples and Tutorials]
+* [Policy Examples and tutorials][Examples and tutorials]
 
 ## Learn More
 
-Take a look at the [Getting Started][] section to learn more about CFEngine's architecture and components, as well as how to write policy that can help manage IT systems.
+Take a look at the [Getting started][] section to learn more about CFEngine's architecture and components, as well as how to write policy that can help manage IT systems.
 
 Check out [External resources][External resources], for more guides, demos, and other resources from our CFEngine staff and our special CFEngine contributors.
 
@@ -62,16 +62,16 @@ experts if you need more help. Contact us!
 ## CFEngine Guide ##
 
 * [Overview][]
-* [Release Notes][]
+* [Release notes][]
 * [Installation][]
-	* [Pre-Installation Checklist]
-	* [General Installation]
+	* [Pre-installation checklist]
+	* [General installation]
 	* [Upgrading]
-	* [Secure Bootstrap]
-* [Writing and Serving Policy][]
-	* [Language Concepts][]
-	* [Promises Available in CFEngine][]
-	* [Authoring Policy Tools & Workflow][]
+	* [Secure bootstrap]
+* [Writing and serving policy][]
+	* [Language concepts][]
+	* [Promises available in CFEngine][]
+	* [Authoring policy tools & workflow][]
 * [Reports][]
 * [FAQ][]
 * [External Resources][]

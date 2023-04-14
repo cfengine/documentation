@@ -70,4 +70,4 @@ In this tutorial, we have shown how easy it is to integrate with a ticketing sys
 
 Using this Custom action, you can choose to open JIRA tickets when some or all of your alerts are triggered. But this is just the beginning; using Custom actions, you can integrate with virtually *any* external system for notifying about- or handling triggered alerts.
 
-Read more in the [Custom action documentation][Custom actions for Alerts].
+Read more in the [Custom action documentation][Custom actions for alerts].

@@ -1,17 +1,17 @@
 ---
 layout: default
-title: System Information Examples
+title: System information examples
 published: true
 sorting: 11
 tags: [Examples,System Information]
 ---
 
-* [Change detection][System Information Examples#Change detection]
-* [Hashing for change detection (tripwire)][System Information Examples#Hashing for change detection (tripwire)]
-* [Check filesystem space][System Information Examples#Check filesystem space]
-* [Class match example][System Information Examples#Class match example]
-* [Global classes][System Information Examples#Global classes]
-* [Logging][System Information Examples#Logging]
+* [Change detection][System information examples#Change detection]
+* [Hashing for change detection (tripwire)][System information examples#Hashing for change detection (tripwire)]
+* [Check filesystem space][System information examples#Check filesystem space]
+* [Class match example][System information examples#Class match example]
+* [Global classes][System information examples#Global classes]
+* [Logging][System information examples#Logging]
 * Check filesystem space
 
 ## Change detection

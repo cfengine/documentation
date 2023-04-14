@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Installing CFEngine Enterprise Agent
+title: Installing CFEngine Enterprise agent
 published: true
 sorting: 3
 tags: [getting started, tutorial]

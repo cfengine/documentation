@@ -1,18 +1,18 @@
 ---
 layout: default
-title: Commands, Scripts, and Execution Examples
+title: Commands, scripts, and execution examples
 published: true
 sorting: 5
 tags: [Examples,Commands,Scripts]
 ---
 
-* [Command or script execution][Commands, Scripts, and Execution Examples#Command or script execution]
-* [Change directory for command][Commands, Scripts, and Execution Examples#Change directory for command]
-* [Commands example][Commands, Scripts, and Execution Examples#Commands example]
-* [Execresult example][Commands, Scripts, and Execution Examples#Execresult example]
-* [Methods][Commands, Scripts, and Execution Examples#Methods]
-* [Method validation][Commands, Scripts, and Execution Examples#Method validation]
-* [Trigger classes][Commands, Scripts, and Execution Examples#Trigger classes]
+* [Command or script execution][Commands, scripts, and execution examples#Command or script execution]
+* [Change directory for command][Commands, scripts, and execution examples#Change directory for command]
+* [Commands example][Commands, scripts, and execution examples#Commands example]
+* [Execresult example][Commands, scripts, and execution examples#Execresult example]
+* [Methods][Commands, scripts, and execution examples#Methods]
+* [Method validation][Commands, scripts, and execution examples#Method validation]
+* [Trigger classes][Commands, scripts, and execution examples#Trigger classes]
 
 ## Command or script execution ##
 

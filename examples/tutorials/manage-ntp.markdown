@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Manage Network Time Protocol
+title: Manage network time protocol
 published: true
 sorting: 3
 tags: [getting started, tutorial]
@@ -430,7 +430,7 @@ This attribute sets the permissions and ownership of the file. [`mog()`][stdlib-
 handle                => "ntp_files_conf",
 ```
 
-A handle uniquely identifies a promise within a policy set. The [policy style guide][Policy Style Guide#promise handles] recommends a naming scheme for the handles e.g. `bundle_name_promise_type_class_restriction_promiser`. Handles are optional, but can be very useful when reviewing logs and can also be used to influence promise ordering with `depends_on`.
+A handle uniquely identifies a promise within a policy set. The [policy style guide][Policy style guide#promise handles] recommends a naming scheme for the handles e.g. `bundle_name_promise_type_class_restriction_promiser`. Handles are optional, but can be very useful when reviewing logs and can also be used to influence promise ordering with `depends_on`.
 
 ##### classes
 

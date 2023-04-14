@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Policy Deployment
+title: Policy deployment
 published: true
 tags: [cfengine enterprise, hub administration]
 ---

@@ -323,7 +323,7 @@ alter such a socket. This is a known issue, documented in
 
 **Type:** `body acl`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 **History:**
 
@@ -649,7 +649,7 @@ specify_default_aces => {  "all:r" };
 
 **Type:** `body changes`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### hash
 
@@ -771,7 +771,7 @@ The copy_from body specifies the details for making remote copies.
 are re-used. Currently connection caching is done per pass in each bundle
 activation.
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### source
 
@@ -931,7 +931,7 @@ body copy_from example
 }
 ```
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes], [`default_repository` in ```body agent control```][cf-agent#default_repository], [`edit_backup` in ```body edit_defaults```][files#edit_backup]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes], [`default_repository` in ```body agent control```][cf-agent#default_repository], [`edit_backup` in ```body edit_defaults```][files#edit_backup]
 
 #### encrypt
 
@@ -1460,7 +1460,7 @@ if the `create` attribute is explicitly used.
 
 **Type:** `body delete`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### dirlinks
 
@@ -1539,7 +1539,7 @@ This should be used in combination with `file_select`.
 
 **Type:** `body depth_search`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### depth
 
@@ -1684,7 +1684,7 @@ body depth_search example
 
 **Type:** `body edit_defaults`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### edit_backup
 
@@ -2021,7 +2021,7 @@ bundle agent example
 
 **See also:** [template_method][files#template_method], `template_data`, `readjson()`, `parsejson()`,
 `readyaml()`, `parseyaml()`, `mergedata()`,
-`data`, [Customize Message of the Day][Customize Message of the Day]
+`data`, [Customize message of the day][Customize message of the day]
 
 ### edit_template_string
 
@@ -2042,7 +2042,7 @@ bundle agent example
 
 **See also:** [template_method][files#template_method], `template_data`, `readjson()`, `parsejson()`,
 `readyaml()`, `parseyaml()`, `mergedata()`,
-`data`, [Customize Message of the Day][Customize Message of the Day]
+`data`, [Customize message of the day][Customize message of the day]
 
 ### edit_xml
 
@@ -2052,7 +2052,7 @@ bundle agent example
 
 **Type:** `body file_select`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### leaf_name
 
@@ -2474,7 +2474,7 @@ fifo
 
 **Type:** `body link_from`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### copy_patterns
 
@@ -2754,7 +2754,7 @@ separator.
 
 **Type:** `body perms`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### bsdflags
 
@@ -2889,7 +2889,7 @@ This is ignored on Windows, as the permission model uses ACLs.
 
 **Type:** `body rename`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### disable
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Policy Style Guide
+title: Policy style guide
 published: true
 sorting: 10
 tags: [manuals, style, policy]
@@ -23,7 +23,7 @@ guide.
 ## Promise Ordering
 
 There are two common styles that are used when writing policy. The
-[Normal Order][Normal Ordering] style dictates that promises should be
+[Normal Order][Normal ordering] style dictates that promises should be
 written in in the Normal Order that the agent evaluates promises
 in. The other is reader optimized where promises are written in the
 order they make sense to the reader. Both styles have their merits,
@@ -35,7 +35,7 @@ Here is an example of a policy written in the Normal Order. Note how
 `packages` are listed after `files`. This could confuse a novice who
 thinks that it is necessary for the files promise to only be attempted
 after the package promise is kept. However this style can be useful to
-a policy expert who is familiar with Normal Ordering.
+a policy expert who is familiar with Normal ordering.
 
 ```cf3
 bundle agent main
@@ -76,7 +76,7 @@ Here is an example of a policy written to be optimized for the reader.
 Note how packages are listed before files in the order which users
 think about taking imperitive action. This style can make it
 significantly easier for a novice to understand the desired state, but
-it is important to remember that Normal Ordering still applies and
+it is important to remember that Normal ordering still applies and
 that the promises will not be actuated in the order they are written.
 
 ```cf3

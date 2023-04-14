@@ -713,7 +713,7 @@ expireafter => "240";   # 4 hours
 }
 ```
 
-**See also:** [`body action expireafter`][Promise Types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+**See also:** [`body action expireafter`][Promise types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
 
 ### files_auto_define
 
@@ -846,7 +846,7 @@ ifelapsed   => "180";   # 3 hours
 }
 ```
 
-**See also:** [Promise locking][Promises#Promise Locking], [ifelapsed action body attribute][Promise Types#ifelapsed]
+**See also:** [Promise locking][Promises#Promise Locking], [ifelapsed action body attribute][Promise types#ifelapsed]
 
 ### inform
 
@@ -906,7 +906,7 @@ max_children => "10";
 }
 ```
 
-**See also:** [`background` in action bodies][Promise Types#background]
+**See also:** [`background` in action bodies][Promise types#background]
 
 ### maxconnections
 

@@ -31,8 +31,8 @@ You can also filter on the type of promise: user defined, system defined, or all
 
 See also:
 
-* [Reporting Architecture][Reporting Architecture]
-* [SQL Queries Using the Enterprise API][SQL Queries Using the Enterprise API]
+* [Reporting architecture][Reporting architecture]
+* [SQL queries using the Enterprise API][SQL queries using the Enterprise API]
 
 ## Query Builder ##
 
@@ -70,7 +70,7 @@ the following defines the attribute `Role` which is set to
 	}
 	```
 
-* note the [`meta`][Promise Types#meta] tag `inventory`
+* note the [`meta`][Promise types#meta] tag `inventory`
 
 * The hub must be able to collect the reports from the client. TCP
 port 5308 must be open and, because 3.6 uses TLS, should not be

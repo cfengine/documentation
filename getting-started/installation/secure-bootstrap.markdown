@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Secure Bootstrap
+title: Secure bootstrap
 published: true
 sorting: 20
 tags: [guide, installation, install, security]

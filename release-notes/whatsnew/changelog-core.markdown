@@ -6,7 +6,7 @@ sorting: 10
 tags: [what's new]
 ---
 
-**See also:** [Enterprise Changelog][Enterprise Changelog], [Masterfiles Changelog][Masterfiles Changelog]
+**See also:** [Enterprise changelog][Enterprise changelog], [Masterfiles changelog][Masterfiles changelog]
 
 <pre>
 {% raw %}

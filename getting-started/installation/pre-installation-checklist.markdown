@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Pre-Installation Checklist
+title: Pre-installation checklist
 published: true
 sorting: 10
 tags: [guide, installation]
@@ -12,8 +12,8 @@ tags: [guide, installation]
 
 ## System requirements
 
-Please see [Installing Enterprise for Production][Installing Enterprise for Production] for hardware and configuration requirements, and
-for [Supported Platforms and Versions][Supported Platforms and Versions] operating system support.
+Please see [Installing Enterprise for production][Installing Enterprise for production] for hardware and configuration requirements, and
+for [Supported platforms and versions][Supported platforms and versions] operating system support.
 
 ## Required knowledge
 

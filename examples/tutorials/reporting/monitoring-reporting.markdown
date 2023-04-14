@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Monitoring and Reporting
+title: Monitoring and reporting
 published: true
 sorting: 10
 ---
 
-## What are Monitoring and Reporting?
+## What are Monitoring and reporting?
 
 Monitoring is the sampling of system variables at regular intervals in
 order to present an overview of actual changes taking place over time.

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Installing Enterprise for Production
+title: Installing Enterprise for production
 published: true
 sorting: 40
 tags: [getting started, installation, enterprise production]
@@ -266,6 +266,6 @@ through your web browser at http://`<IP address of your Policy Server>`.
 
 Learn more about CFEngine by using the following resources:
 
-* Tutorial: [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
+* Tutorial: [Tutorial for Running Examples][Examples and tutorials#Tutorial for Running Examples]
 
-* [Tutorials and Examples][Examples and Tutorials]
+* [Tutorials and Examples][Examples and tutorials]

@@ -204,7 +204,7 @@ Gimme three steps
 
 **Type:** `body insert_select`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### insert_if_startwith_from_list
 
@@ -360,7 +360,7 @@ insert_if_not_contains_from_list => { "find_me_1", "find_me_2" };
 
 **Type:** `body location`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes], [`location` bodies in the standard library](reference-masterfiles-policy-framework-lib-files.html#location-bodies), [`start` location body in the standard library](reference-masterfiles-policy-framework-lib-files.html#location-bodies), [`before(srt)` location body in the standard library](reference-masterfiles-policy-framework-lib-files.html#before), [`after(srt)` location body in the standard library](reference-masterfiles-policy-framework-lib-files.html#after)
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes], [`location` bodies in the standard library](reference-masterfiles-policy-framework-lib-files.html#location-bodies), [`start` location body in the standard library](reference-masterfiles-policy-framework-lib-files.html#location-bodies), [`before(srt)` location body in the standard library](reference-masterfiles-policy-framework-lib-files.html#before), [`after(srt)` location body in the standard library](reference-masterfiles-policy-framework-lib-files.html#after)
 
 #### before_after
 

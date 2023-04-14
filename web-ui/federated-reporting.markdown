@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Federated Reporting
+title: Federated reporting
 published: true
 sorting: 60
 tags: [enterprise, guide, federated reporting]
@@ -8,10 +8,10 @@ tags: [enterprise, guide, federated reporting]
 
 ## Overview ##
 
-Federated Reporting enables the collection of data from multiple Hubs to provide
+Federated reporting enables the collection of data from multiple Hubs to provide
 a view in Mission Portal which can scale up beyond the capabilities of a Hub
 which manages hosts. CFEngine supports a large number of hosts per hub, around
-5,000 hosts per hub depending on many factors. With Federated Reporting it is
+5,000 hosts per hub depending on many factors. With Federated reporting it is
 possible to scale up to 100,000 hosts or more for the purposes of analysis and
 reporting.
 
@@ -24,16 +24,16 @@ configure and connect the Superhub and Feeder hubs. For Feeder hubs with an
 earlier version than 3.14.0 some manual steps must be taken. Links to these
 are provided at each stage of installation and setup that follows.
 
-* [Requirements][Federated Reporting#Requirements]
-* [Installation][Federated Reporting#Installation]
-* [Setup][Federated Reporting#Setup]
-* [Operation][Federated Reporting#Operation]
-* [Duplicate Host Management][Federated Reporting#Duplicate Host Management]
-* [Troubleshooting][Federated Reporting#Troubleshooting]
-* [API Setup][Federated Reporting#API Setup]
-* [Disable Feeder][Federated Reporting#Disable Feeder]
-* [Uninstall][Federated Reporting#Uninstall]
-* [Superhub Upgrade][Federated Reporting#Superhub Upgrade]
+* [Requirements][Federated reporting#Requirements]
+* [Installation][Federated reporting#Installation]
+* [Setup][Federated reporting#Setup]
+* [Operation][Federated reporting#Operation]
+* [Duplicate Host Management][Federated reporting#Duplicate Host Management]
+* [Troubleshooting][Federated reporting#Troubleshooting]
+* [API Setup][Federated reporting#API Setup]
+* [Disable Feeder][Federated reporting#Disable Feeder]
+* [Uninstall][Federated reporting#Uninstall]
+* [Superhub Upgrade][Federated reporting#Superhub Upgrade]
 
 ## Requirements ##
 
@@ -46,7 +46,7 @@ is untested and unsupported.
 ### Software Requirements ###
 
 If your hub will have SELinux enabled, the `semanage` command must be installed.
-This allows Federated Reporting policy to manage the trust between the superhub and
+This allows Federated reporting policy to manage the trust between the superhub and
 feeder hubs.
 
 Add the `cfengine_mp_fr_dependencies_auto_install` to your augments file to allow
@@ -74,7 +74,7 @@ to HW requirements for the Superhub are:
 * The amount of data gathered on the Feeders from the reports sent by the
   hosts bootstrapped to them.
 
-The current implementation of Federated Reporting is not aggregating monitoring
+The current implementation of Federated reporting is not aggregating monitoring
 data on the Superhub which saves a lot of network traffic, processing power and
 disk space on the Superhub.
 
@@ -105,7 +105,7 @@ and 5000 hosts per connected Feeder is:
   * 135 KiB of network data transfer per host per one pull of the data from
     Feeders.
 
-The Federated Reporting process is logging information to the system log and so
+The Federated reporting process is logging information to the system log and so
 timestamps from the log messages can be used to determine how long each round of
 the pull-import process has taken. If it is close to the configured refresh
 interval, the interval needs to be made longer or the hardware configuration of
@@ -118,7 +118,7 @@ connecting more Feeders.
 
 ## Installation ##
 
-The [General Installation][General Installation] instructions should be used to
+The [General installation][General installation] instructions should be used to
 install CFEngine Hub on a Superhub as well as Feeder hubs.
 
 ## Setup ##
@@ -134,9 +134,9 @@ by clicking the `On` radio button for Hub management in the Status column.
 
 Note: for pre 3.14 feeders this step is not performed.
 
-### Enable Federated Reporting ###
+### Enable Federated reporting ###
 
-<img src="fr-hub-management-default.png" alt="Enable Federated Reporting" width="700px">
+<img src="fr-hub-management-default.png" alt="Enable Federated reporting" width="700px">
 
 The Hub management app should now appear in the bottom left corner of mission
 portal.
@@ -146,16 +146,16 @@ cause some configuration to be written in the filesystem and on next agent run
 policy will make the needed changes. You can speed up this process by running
 the agent manually.
 
-Note: for pre 3.14 feeders, you must [Enable feeder without API][Federated Reporting#Enable feeder without API].
+Note: for pre 3.14 feeders, you must [Enable feeder without API][Federated reporting#Enable feeder without API].
 
 ### Connect Feeder Hubs ###
 
 <img src="fr-superhub-enabled-no-feeders.png" alt="Connect Feeder Hubs" width="700px">
 
-Refresh the Hub management on each hub to see that Federated Reporting is
+Refresh the Hub management on each hub to see that Federated reporting is
 enabled.
 
-After all hubs have Federated Reporting enabled visit Hub management on the
+After all hubs have Federated reporting enabled visit Hub management on the
 Superhub to connect the Feeder hubs.
 
 On the Superhub, click on the Connect hub button to show the Connect a hub dialog.
@@ -275,16 +275,16 @@ This class only has an effect on the superhub host.
 Please refer to `/var/cfengine/output`, `/var/log/postgresql.log` and
 `/opt/cfengine/federation/superhub/import/*.log.gz` when problems occur. Sending
 these logs to us in bug reports will help significantly as we fine tune the
-Federated Reporting feature.
+Federated reporting feature.
 
-Also see [Disable Feeder][Federated Reporting#Disable Feeder] for information
-about how to temporarily disable a feeder's participation in Federated Reporting
+Also see [Disable Feeder][Federated reporting#Disable Feeder] for information
+about how to temporarily disable a feeder's participation in Federated reporting
 in case that is causing an issue for the Feeder Hub.
 
 ## API Setup ##
 
 An API may be used instead of the UI. This could be used to automate the setup
-of infrastructure related to Federated Reporting and Feeder hubs.
+of infrastructure related to Federated reporting and Feeder hubs.
 
 Command line examples follow using [curl](https://curl.haxx.se/) and
 [cf-remote](https://github.com/cfengine/cf-remote).
@@ -455,7 +455,7 @@ $ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/federation-con
 (The second API call is needed to save the updated config to file,
 `federation-config.json`).
 
-Note: for pre 3.14 feeders, you must [Add superhub to feeder without API][Federated Reporting#Add superhub to feeder without API]
+Note: for pre 3.14 feeders, you must [Add superhub to feeder without API][Federated reporting#Add superhub to feeder without API]
 
 #### Add superhub to feeder without API
 
@@ -578,7 +578,7 @@ $ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "/var/cfengine/bin/c
 <img src="fr-edit-hub-disable.png" alt="Edit Hub Disable" width="420px">
 
 A Feeder Hub may be disabled from the Hub Management app so that it will no
-longer participate in Federated Reporting. No further attempts to pull data from
+longer participate in Federated reporting. No further attempts to pull data from
 that feeder will occur until it is enabled again.
 
 Click the edit button for the feeder, enter URL and credentials information as
@@ -591,9 +591,9 @@ The list of connected hubs should now reflect the disabled state.
 
 ## Uninstall
 
-Uninstalling Federated Reporting from a superhub is not possible at this time.
+Uninstalling Federated reporting from a superhub is not possible at this time.
 
-In order to remove Federated Reporting from a feeder you must set the `target_state`
+In order to remove Federated reporting from a feeder you must set the `target_state`
 to `off`. On the next agent run the `cftransport` user will be removed, thus removing
 the trust established with the superhub and causing no further dump/import procedures
 to occur.
@@ -771,7 +771,7 @@ For versions 3.15.5, and 3.18.1 and older the superhub can not be directly upgra
 Typically the superhub doesn't have unique information or serve policy.
 This makes it reasonable and easy to upgrade the superhub with a fresh install.
 If there are unique items like custom reports, dashboards, alerts or conditions on the superhub which need to be preserved
-you may use the [Import & Export API] or Mission Portal Settings UI to export and then import after upgrading.
+you may use the [Import & export API] or Mission Portal Settings UI to export and then import after upgrading.
 
 Follow this procedure:
 
@@ -832,10 +832,10 @@ Follow this procedure:
       ```console
       # /var/cfengine/bin/psql cfsettings -c 'TRUNCATE remote_hubs'
       ```
-* Reinstall and configure the superhub as described in [Installation][Federated Reporting#Installation]
-* Import any saved information into Mission Portal via the [Import & Export API] or Mission Portal Settings UI
+* Reinstall and configure the superhub as described in [Installation][Federated reporting#Installation]
+* Import any saved information into Mission Portal via the [Import & export API] or Mission Portal Settings UI
 * Wait 20 minutes for federated reporting to be updated from feeders to superhub
 
   or
 
-  * run `cf-agent -KI` on each feeder, and then `cf-agent -KI` on the superhub to manually force a Federated Reporting collection cycle.
+  * run `cf-agent -KI` on each feeder, and then `cf-agent -KI` on the superhub to manually force a Federated reporting collection cycle.

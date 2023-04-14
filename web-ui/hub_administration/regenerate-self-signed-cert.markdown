@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Regenerate Self Signed SSL Certificate
+title: Regenerate self signed SSL certificate
 published: true
 tags: [cfengine enterprise, hub administration, SSL]
 ---

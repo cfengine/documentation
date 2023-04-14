@@ -1,6 +1,6 @@
 ---
 layout: default
-title: General Installation
+title: General installation
 published: true
 sorting: 20
 tags: [guide, installation, install]
@@ -10,7 +10,7 @@ tags: [guide, installation, install]
 
 ## Before Installation ##
 
-Check the [Pre-Installation Checklist][Pre-Installation Checklist] and [Supported Platforms and Versions][Supported Platforms and Versions] for requirements and other information that is useful for the installation procedure.
+Check the [Pre-installation checklist][Pre-installation checklist] and [Supported platforms and versions][Supported platforms and versions] for requirements and other information that is useful for the installation procedure.
 
 ## Install Packages ##
 
@@ -125,11 +125,11 @@ Edit `/etc/hosts` and add an entry for the IP address and hostname of the server
 See: [What steps should I take after installing CFEngine Enterprise?][FAQ#What steps should I take after installing CFEngine Enterprise]
 
 
-## More Detailed Installation Guides ##
+## More Detailed Installation guides ##
 
 Although most install procedures follow the same general workflow, there are several ways of installing CFEngine depending on your environment and which version of CFEngine you are using.
 
-* [Installing Enterprise for Production][Installing Enterprise for Production]
+* [Installing Enterprise for production][Installing Enterprise for production]
 * Install and test the latest version using our [native version][Installing Enterprise 25 Free], for free!
 * Installing CFEngine on virtual machine instances using [Amazon Web Services' (AWS) EC2 service][Using Amazon Web Services]
 	* This is especially useful for people running Windows on their workstation or laptop.
@@ -138,4 +138,4 @@ Although most install procedures follow the same general workflow, there are sev
 
 ## Next Steps ##
 
-* Learn about [Writing and Serving Policy][Writing and Serving Policy]
+* Learn about [Writing and serving policy][Writing and serving policy]

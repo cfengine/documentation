@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine Directory Structure
+title: CFEngine directory structure
 published: true
 sorting: 20
 tags: [guide, system, system overview, directory structure, directories, files]
@@ -8,18 +8,18 @@ tags: [guide, system, system overview, directory structure, directories, files]
 
 The CFEngine application is fully contained within the /var/cfengine directory tree. Here is a quick breakdown of the directory structure and some of the files and functions associated with each subdirectory.
 
-* [/var/cfengine/bin][CFEngine Directory Structure#/var/cfengine/bin]
-* [Directories for Policy Files][CFEngine Directory Structure#Directories for Policy Files]
-* [Output Directories][CFEngine Directory Structure#Output Directories]
-* [Log Files in /var/cfengine][CFEngine Directory Structure#Log Files in /var/cfengine]
-* [Database Files in /var/cfengine][CFEngine Directory Structure#Database Files in /var/cfengine]
-* [Process (AKA PID) Files in /var/cfengine][CFEngine Directory Structure#Process (AKA PID) Files in /var/cfengine]
-* [Sockets in /var/cfengine][CFEngine Directory Structure#Sockets in /var/cfengine]
-* [Datafiles in /var/cfengine][CFEngine Directory Structure#Datafiles in /var/cfengine]
-* [Binary Files in /var/cfengine][CFEngine Directory Structure#Binary Files in /var/cfengine]
-* [git in /var/cfengine/bin][CFEngine Directory Structure#git in /var/cfengine/bin]
-* [Misc. in /var/cfengine/bin][CFEngine Directory Structure#Misc. in /var/cfengine/bin]
-* [Postgres in /var/cfengine/bin][CFEngine Directory Structure#Postgres in /var/cfengine/bin]
+* [/var/cfengine/bin][CFEngine directory structure#/var/cfengine/bin]
+* [Directories for Policy Files][CFEngine directory structure#Directories for Policy Files]
+* [Output Directories][CFEngine directory structure#Output Directories]
+* [Log Files in /var/cfengine][CFEngine directory structure#Log Files in /var/cfengine]
+* [Database Files in /var/cfengine][CFEngine directory structure#Database Files in /var/cfengine]
+* [Process (AKA PID) Files in /var/cfengine][CFEngine directory structure#Process (AKA PID) Files in /var/cfengine]
+* [Sockets in /var/cfengine][CFEngine directory structure#Sockets in /var/cfengine]
+* [Datafiles in /var/cfengine][CFEngine directory structure#Datafiles in /var/cfengine]
+* [Binary Files in /var/cfengine][CFEngine directory structure#Binary Files in /var/cfengine]
+* [git in /var/cfengine/bin][CFEngine directory structure#git in /var/cfengine/bin]
+* [Misc. in /var/cfengine/bin][CFEngine directory structure#Misc. in /var/cfengine/bin]
+* [Postgres in /var/cfengine/bin][CFEngine directory structure#Postgres in /var/cfengine/bin]
 
 ## /var/cfengine/bin ##
 

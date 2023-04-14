@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reporting and Web UI
+title: Reporting and web UI
 published: true
 sorting: 30
 tags: [guide, getting started, mission portal]

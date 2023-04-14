@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Classes and Decisions
+title: Classes and decisions
 published: true
 sorting: 50
 tags: [manuals, language, syntax, concepts, classes, decisions]
@@ -26,7 +26,7 @@ namespace scope.
 
 In [CFEngine Enterprise](https://cfengine.com/product-overview/), classes that are defined can be reported to the
 CFEngine Database Server and can be used there for reporting, grouping of hosts
-and inventory management. For more information about how this is configured please read the documentation on [Enterprise Reporting][].
+and inventory management. For more information about how this is configured please read the documentation on [Enterprise reporting][].
 
 ## Listing Classes
 
@@ -68,7 +68,7 @@ Classes and variables have tags that describe their provenance (who
 created them) and purpose (why were they created).
 
 While you can provide your own tags for soft classes in policy with
-the [`meta`][Promise Types#meta] attribute, there are some tags applied to hard classes and
+the [`meta`][Promise types#meta] attribute, there are some tags applied to hard classes and
 other special cases.  This list may change in future versions of
 CFEngine.
 
@@ -179,7 +179,7 @@ of a week.
     * **See also:** `sys.fqhost`, `sys.uqhost`.
 -   An arbitrary user-defined string (as specified in the `-D`
     command line option, or defined in a [`classes` promise][classes] promise or
-    [`classes` body][Promise Types#classes],
+    [`classes` body][Promise types#classes],
     `restart_class` in a `processes` promise, etc).
 -   The IP address octets of any active interface (in the form
     `ipv4_192_0_0_1<!-- /@w -->`, `ipv4_192_0_0<!-- /@w -->`,
@@ -593,7 +593,7 @@ above and add [`and`][classes#and] or [`xor`][classes#xor] constraints to the
 single promise.
 
 Additionally classes can be defined or undefined as the result of a promise by
-using a [classes body][Promise Types#classes]. To set a class if
+using a [classes body][Promise types#classes]. To set a class if
 a promise is repaired, one might write:
 
 ```cf3
@@ -603,7 +603,7 @@ a promise is repaired, one might write:
 ```
 
 These classes are `namespace` scoped by default. The
-[`scope`][Promise Types#scope] attribute can be used to make them
+[`scope`][Promise types#scope] attribute can be used to make them
 local to the bundle.
 
 It is recommended to use bundle scoped classes whenever possible. This example
@@ -700,9 +700,9 @@ The standard library in the Masterfiles Policy Framework contains
 the [`feature`][lib/feature.cf] bundle which implements a useful model for
 defining classes for a period of time as well as canceling them on demand.
 
-**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types#persist_time], [`lib/event.cf`][lib/event.cf] in the MPF, [`lib/feature.cf`][lib/feature.cf] in the MPF
+**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise types#persist_time], [`lib/event.cf`][lib/event.cf] in the MPF, [`lib/feature.cf`][lib/feature.cf] in the MPF
 
 ## Canceling classes
 
-You can cancel a class with a [`classes`][Promise Types#classes] body.
+You can cancel a class with a [`classes`][Promise types#classes] body.
 See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.

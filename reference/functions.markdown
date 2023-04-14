@@ -57,7 +57,7 @@ bundle agent main
 **Note:** the truth of a class expression or the result of a function call may
 change during evaluation, but typically, a class, once defined, will stay defined.
 
-**See also:** [persistence in classes and decisions][Classes and Decisions#persistence]
+**See also:** [persistence in classes and decisions][Classes and decisions#persistence]
 
 ### Promise attributes and function calls
 
@@ -112,11 +112,11 @@ When enabled
 [cached functions](https://docs.cfengine.com/docs/{{site.cfengine.branch}}/search.html?q=The+return+value+is+cached)
 are **not executed on every pass of convergence**. Instead, the function will
 only be executed once during the
-[agent evaluation step][Normal Ordering#Agent evaluation step]
+[agent evaluation step][Normal ordering#Agent evaluation step]
 and its result will be cached until the end of that agent execution.
 
 **Note:** Cached functions are executed multiple times during
-[policy validation and pre-evaluation][Normal Ordering#cf-promises policy validation step].
+[policy validation and pre-evaluation][Normal ordering#cf-promises policy validation step].
 Function caching is *per-process*, so results will not be cached between
 separate components e.g. `cf-agent`, `cf-serverd` and `cf-promises`.
 Additionally functions are cached by hashing the function arguments. If you have
@@ -127,7 +127,7 @@ occurrences.
 
 Function caching can be globally disabled by setting `cache_system_functions` in
 body common control to `false` or locally for a specific promise by using
-`ifelapsed => "0"` in the [action body][Promise Types#ifelapsed]
+`ifelapsed => "0"` in the [action body][Promise types#ifelapsed]
 of the promise.
 
 ## Function Skipping

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Create, Modify, and Delete Files
+title: Create, modify, and delete Files
 sorting: 10
 published: true
 tags: [Examples, Tutorials]
@@ -8,8 +8,8 @@ tags: [Examples, Tutorials]
 
 ## Prerequisites ##
 
-* Read the tutorial [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
-* Ensure you have read and understand the section on [how to make an example stand alone][Examples and Tutorials#Make the Example Stand Alone]
+* Read the tutorial [Tutorial for Running Examples][Examples and tutorials#Tutorial for Running Examples]
+* Ensure you have read and understand the section on [how to make an example stand alone][Examples and tutorials#Make the Example Stand Alone]
 * Ensure you have read the note at the end of that section regarding modification of the body common control to the following:
 
 ```cf3

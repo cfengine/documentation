@@ -315,12 +315,12 @@ Variables of other types than string can be defined too, like in this example
 This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the augments key.
 
 Any class defined via augments will be evaluated and installed as
-[**soft** classes][Classes and Decisions]. This key supports both
+[**soft** classes][Classes and decisions]. This key supports both
 _array_ and _dict_ formats.
 
 For an array each element of the array is tested against currently defined
 classes as an [anchored regular expression][anchored] unless the string ends with ```::``` indicating it should be interpreted as a
-[*class expression*][Classes and Decisions].
+[*class expression*][Classes and decisions].
 
 **For example:**
 
@@ -364,9 +364,9 @@ are supported when using the _dict_ structure.
 ```
 
 Note that augments is processed at the very beginning of agent evaluation. You
-can use any **hard** classes, [**persistent** classes][Classes and Decisions]
+can use any **hard** classes, [**persistent** classes][Classes and decisions]
 , or classes defined earlier in the augments list. Test carefully,
-custom [**soft** classes][Classes and Decisions] may not be defined early enough
+custom [**soft** classes][Classes and decisions] may not be defined early enough
 for use. Thus:
 
 ```json

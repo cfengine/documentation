@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Custom Inventory
+title: Custom inventory
 sorting: 15
 published: true
 tags: [Examples, Tutorials, Inventory, Enterprise]
@@ -15,11 +15,11 @@ For a more detailed overview on how the inventory system works please reference
 
 This tutorial provides instructions for the following:
 
-* [Choose an attribute][Custom Inventory#Choose an Attribute to Inventory]
+* [Choose an attribute][Custom inventory#Choose an Attribute to Inventory]
 
-* [Create and deploy inventory policy][Custom Inventory#Create and Deploy Inventory Policy]
+* [Create and deploy inventory policy][Custom inventory#Create and Deploy Inventory Policy]
 
-* [Run Reports][Custom Inventory#Reporting]
+* [Run Reports][Custom inventory#Reporting]
 
 **Note:** This tutorial uses the [CFEngine Enterprise Vagrant Environment][Using Vagrant] and files located in the vagrant project directory are automatically available to all hosts.
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Client Initiated Reporting / Call collect
+title: Client initiated reporting / call collect
 sorting: 60
 published: true
 tags: [cfengine enterprise, reporting, call collect]

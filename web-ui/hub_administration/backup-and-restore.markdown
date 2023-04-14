@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Backup and Restore
+title: Backup and restore
 published: true
 tags: [cfengine enterprise, hub administration, backup, restore]
 ---

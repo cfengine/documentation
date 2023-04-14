@@ -29,7 +29,7 @@ and motherboards necessarily support hardware virtualization.
 
 If your system lacks this support you will need to choose another computer to
 take advantage of the 64-bit virtual machines or [install CFEngine using a
-different approach][General Installation#More Detailed Installation Guides].
+different approach][General installation#More Detailed Installation guides].
 
 ## Overview
 

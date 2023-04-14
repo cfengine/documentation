@@ -74,7 +74,7 @@ anything goes wrong.
    root@hub:~# find /etc -name 'cfengine*' | tar cfz /tmp/$(date +%Y-%m-%d)-cfengine-init-backup.tar.gz -T -
    ```
 
-   **See also:** [Hub administration backup and restore][Backup and Restore]
+   **See also:** [Hub administration backup and restore][Backup and restore]
 
 3. Copy the archive to a safe location.
 
@@ -102,7 +102,7 @@ Normally most files can be replaced with new ones, files that typically contain
 user modifications include `promises.cf`, `controls/*.cf`, and
 `services/main.cf`.
 
-- [Masterfiles Policy Framework Upgrade Tutorial][Masterfiles Policy Framework Upgrade]
+- [Masterfiles Policy Framework upgrade Tutorial][Masterfiles Policy Framework upgrade]
 
 Once the Masterfiles Policy Framework has been qualified and distributed to all
 agents you are ready to begin binary upgrades.

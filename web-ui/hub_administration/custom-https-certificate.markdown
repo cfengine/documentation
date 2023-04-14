@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Custom SSL Certificate
+title: Custom SSL certificate
 published: true
 tags: [cfengine enterprise, hub administration, SSL]
 ---

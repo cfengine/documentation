@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Enterprise Reporting database
+title: Enterprise reporting database
 published: true
 sorting: 90
 tags: [getting started, installation, faq]
@@ -28,8 +28,8 @@ The database runs under the `cfpostgres` user.
 
 ### General Information
 
-* [Pre-Installation Checklist][Pre-Installation Checklist]
-* [Supported Platforms and Versions][Supported Platforms and Versions]
+* [Pre-installation checklist][Pre-installation checklist]
+* [Supported platforms and versions][Supported platforms and versions]
 
 ### Users and Permissions
 
@@ -38,7 +38,7 @@ The database runs under the `cfpostgres` user.
 
 ## How does Enterprise Scale?
 
-See best practices on [scalability][Best Practices#Scalability]
+See best practices on [scalability][Best practices#Scalability]
 
 ## Is it normal to have many cf-hub processes running?
 
@@ -47,7 +47,7 @@ See best practices on [scalability][Best Practices#Scalability]
 ## What steps should I take after installing CFEngine Enterprise?
 
 There are general steps to be taken outlined in
-[Post-Installation Configuration][General Installation#Post-Installation Configuration].
+[Post-Installation Configuration][General installation#Post-Installation Configuration].
 
 In addition to this, Enterprise uses the local mail relay, and it is assumed
 that the server where CFEngine Enterprise is installed on has proper mail setup.

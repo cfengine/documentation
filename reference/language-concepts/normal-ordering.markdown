@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Normal Ordering
+title: Normal ordering
 published: true
 sorting: 40
 tags: [manuals, language, syntax, concepts, ordering, depends_on]

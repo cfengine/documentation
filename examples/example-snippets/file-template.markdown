@@ -1,12 +1,12 @@
 ---
 layout: default
-title: File Template Examples
+title: File template examples
 published: true
 sorting: 7
 tags: [Examples]
 ---
 
-* [Templating][File Template Examples#Templating]
+* [Templating][File template examples#Templating]
 
 ## Templating
 

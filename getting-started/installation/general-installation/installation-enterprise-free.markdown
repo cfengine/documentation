@@ -116,7 +116,7 @@ number you use in your **Vagrantfile** (e.g. policyserver.vm.network "forwarded_
 
 ## Tutorials
 
-* [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
+* [Tutorial for Running Examples][Examples and tutorials#Tutorial for Running Examples]
 
 * [Distribute files from a central location.][Distribute files from a central location]
 
@@ -125,4 +125,4 @@ number you use in your **Vagrantfile** (e.g. policyserver.vm.network "forwarded_
 
 ## Recommended Reading
 
-* [Tutorials and Examples][Examples and Tutorials]
+* [Tutorials and Examples][Examples and tutorials]

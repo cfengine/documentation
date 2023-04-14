@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  SQL Query Examples
+title:  SQL query examples
 published: true
 tags: [examples, enterprise, rest, api, reporting, sql, queries]
 ---

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Language Concepts
+title: Language concepts
 published: true
 sorting: 50
 tags: [overviews, language, syntax, concepts, promises]
@@ -66,9 +66,9 @@ scalar value or a list of scalar values: a string, integer or real number.
 
 This documentation about the language concepts introduces in addition
 
-* [**normal ordering**][Normal Ordering],
+* [**normal ordering**][Normal ordering],
 * [**loops**][Loops],
-* [**pattern matching and referencing**][Pattern Matching and Referencing],
+* [**pattern matching and referencing**][Pattern matching and referencing],
   and
 * [**namespaces**][namespaces]
 
@@ -161,7 +161,7 @@ Paths beginning with a backslash are assumed to be win32 paths.
 They must begin with a drive letter or double-slash server name.
 
 Note that in many cases, you have `sys.inputdir` and other
-[Special Variables] that work equally well on Windows and non-Windows
+[Special variables] that work equally well on Windows and non-Windows
 system.
 
 Note in recent versions of Cygwin you can decide to use the

@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Promise Types
+title: Promise types
 published: true
 sorting: 20
 tags: [reference, bundles, common, promises]
 ---
 
 Within a bundle, the promise types are executed in a round-robin fashion in the
-following [normal ordering][Normal Ordering]. Which promise types are available
+following [normal ordering][Normal ordering]. Which promise types are available
 depends on the [bundle][bundles] type:
 
 | Promise Type   | common | agent | server | monitor |
@@ -903,7 +903,7 @@ body classes example
 }
 ```
 
-**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types#persist_time]
+**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise types#persist_time]
 
 #### timer_policy
 
@@ -1103,7 +1103,7 @@ skip.
 
 ### ifvarclass
 
-**Description:** Deprecated, use [`if`][Promise Types#if] instead.
+**Description:** Deprecated, use [`if`][Promise types#if] instead.
 
 **History:** New name `if` was introduced in 3.7.0, `ifvarclass` deprecated in 3.17.0.
 

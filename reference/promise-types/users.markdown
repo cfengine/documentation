@@ -205,7 +205,7 @@ body password user_password
 }
 ```
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### format
 

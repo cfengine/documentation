@@ -140,7 +140,7 @@ See also: [`def.acl`][Masterfiles Policy Framework#acl], [`def.trustkeysfrom`][M
 
 ### `trustkeysfrom` in `body server control`
 
-This defines networks from which a host will automatically trust hosts. If you do not use automatic trust establishment you must arrange trust separately. The [Secure Bootstrap guide][Secure Bootstrap] details a step-by-step procedure to securely bootstrap hosts.
+This defines networks from which a host will automatically trust hosts. If you do not use automatic trust establishment you must arrange trust separately. The [Secure bootstrap guide][Secure bootstrap] details a step-by-step procedure to securely bootstrap hosts.
 
 `cf-serverd` logs verbose and notice messages relating to un-trusted clients trying to connect:
 

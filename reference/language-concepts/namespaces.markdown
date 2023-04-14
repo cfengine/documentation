@@ -48,12 +48,12 @@ A common mistake is forgetting to specify `default:` when using bodies from the 
 
 ## Variables
 
-Variables (except for Special Variables) are assumed to be within the same scope
+Variables (except for Special variables) are assumed to be within the same scope
 as the promiser but can also be referenced fully qualified with the namespace.
 
 [%CFEngine_include_example(namespace_variable_references.cf)%]
 
-[Special variables][Special Variables] are always accessible without a namespace
+[Special variables][Special variables] are always accessible without a namespace
   prefix. For example, `this`, `mon`, `sys`, and `const` fall in this category.
 
 [%CFEngine_include_example(namespace_special_var_exception.cf)%]
@@ -74,7 +74,7 @@ colon (`:`).
 
 [%CFEngine_include_example(namespace_classes.cf)%]
 
-[Hard classes][Classes and Decisions#Hard Classes] exist in all namespaces and
+[Hard classes][Classes and decisions#Hard Classes] exist in all namespaces and
 thus can be referred to from any namespace without qualification.
 
 [%CFEngine_include_example(namespace_hard_classes.cf)%]

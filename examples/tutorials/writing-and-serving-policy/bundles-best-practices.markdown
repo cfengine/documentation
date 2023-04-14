@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Bundles Best Practices
+title: Bundles best practices
 published: true
 sorting: 20
 tags: [manuals, bundles, policy, best practices]

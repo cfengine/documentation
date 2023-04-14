@@ -16,8 +16,8 @@ This documentation article provides a complete and detailed specification.
 It includes how to use them, how to implement them using modules, how the protocol works, etc.
 If you are interested in shorter tutorials, there are a few different ones available:
 
-* [Introducing CFEngine Custom Promise Types - Installation and usage](https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/)
-* [How to implement CFEngine Custom Promise Types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
+* [Introducing CFEngine Custom Promise types - Installation and usage](https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/)
+* [How to implement CFEngine Custom Promise types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
 * [How to implement CFEngine custom promise types in bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
 * [Custom Promise outcomes in Mission Portal](https://cfengine.com/blog/2021/custom-promise-outcomes-in-mission-portal/)
 
@@ -99,7 +99,7 @@ Due to the implementation details, the following attributes from the `classes` b
 ### Evaluation passes and normal order
 
 In CFEngine, each bundle is evaluated in multiple passes (3 main passes for most promise types).
-Within each evaluation pass of a bundle, the promises are not evaluated from top to bottom, but based on a [normal order][Normal Ordering] of the promise types.
+Within each evaluation pass of a bundle, the promises are not evaluated from top to bottom, but based on a [normal order][Normal ordering] of the promise types.
 Custom promise types are added dynamically and don't have a predefined order, they are evaluated as they appear within a bundle (top to bottom), but at the end of each evaluation pass, after all the built in promise types.
 As with other promise types, we recommend not relying too much on this ordering, if you want some promises to be evaluated before others, use the `bundlesequence` or `depends_on` attribute to achieve this.
 
@@ -539,7 +539,7 @@ This enables the agent to filter the log messages based on log level, and also p
 
 See these tutorials / blog posts, for more examples or inspiration:
 
-* [Introducing CFEngine Custom Promise Types - Installation and usage](https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/)
-* [How to implement CFEngine Custom Promise Types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
-* [How to implement CFEngine Custom Promise Types in Bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
+* [Introducing CFEngine Custom Promise types - Installation and usage](https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/)
+* [How to implement CFEngine Custom Promise types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
+* [How to implement CFEngine Custom Promise types in Bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
 * [Custom Promise outcomes in Mission Portal](https://cfengine.com/blog/2021/custom-promise-outcomes-in-mission-portal/)

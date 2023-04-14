@@ -12,14 +12,14 @@ Language elements that belong together are typically documented on the same
 page.
 
 * [Components][Components]
-* [Promise Types][Promise Types]
+* [Promise types][Promise types]
 * [Functions][Functions]
-* [Language Concepts][Language Concepts]
-* [Special Variables][Special Variables]
-* [Enterprise API Reference][Enterprise API Reference]
-* [Syntax, identifiers and names][Language Concepts#Syntax, identifiers and names]
+* [Language concepts][Language concepts]
+* [Special variables][Special variables]
+* [Enterprise API reference][Enterprise API reference]
+* [Syntax, identifiers and names][Language concepts#Syntax, identifiers and names]
 * [Masterfiles Policy Framework][Masterfiles Policy Framework]
-* [All Promise and Body Types][All Promise and Body Types]
+* [All promise and body types][All promise and body types]
 * [Macros][Macros]
 
-See Also: [All Promise Types][All Promise and Body Types#All Promise Types], [All Body Types][All Promise and Body Types#All Body Types]
+See Also: [All Promise types][All promise and body types#All Promise types], [All Body Types][All promise and body types#All Body Types]

@@ -18,7 +18,7 @@ you normally reference bundles and other policy files.
 ## Bundles, Promise types, and Classes oh my!
 
 These concepts are core to CFEngine so they are covered in brief here. For more
-detailed information see the Language Concepts section of the Reference manual.
+detailed information see the Language concepts section of the Reference manual.
 
 ### Bundles
 

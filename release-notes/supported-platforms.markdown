@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Supported Platforms and Versions
+title: Supported platforms and versions
 sorting: 20
 published: true
 tags: [overviews, releases, latest release, platforms, versions, support]
@@ -11,7 +11,7 @@ provide support for the platforms most frequently used by our users. CFEngine
 provides [binary packages of the Enterprise edition][enterprise software download page]
 for all supported platforms and [binary packages for popular Linux distributions for the Community edition][community download page].
 
-## Enterprise Server ##
+## Enterprise server ##
 
 | Platform    | Versions                   | Architecture |
 |:-----------:|:--------------------------:|:------------:|
@@ -39,7 +39,7 @@ Any supported host can be a policy server in Community installations of CFEngine
 | Windows     | 2012, 2016, 2019          | x86-64, x86   |
 
 
-[Known Issues][] also includes platform-specific notes.
+[Known issues][] also includes platform-specific notes.
 
 
 CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493) from IBM.

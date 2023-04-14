@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Browsing Host Information
+title: Browsing host information
 published: true
 sorting: 50
 tags: [examples, enterprise, rest, api, reporting, hosts]
 ---
 
 A resource [/api/host][Host REST API#List hosts] is added as an alternative interface for browsing host
-information. For full flexibility we recommend using [SQL][SQL Schema]
+information. For full flexibility we recommend using [SQL][SQL schema]
 reports via [/api/query][Query REST API#Execute SQL query] for this. however, currently vital signs (data
 gathered from `cf-monitord`) is not part of the SQL reports data model.
 
