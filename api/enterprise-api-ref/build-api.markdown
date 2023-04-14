@@ -7,11 +7,11 @@ tags: [reference, enterprise, API, build, modules]
 
 The Build API enables you to easily manage policy projects and their respective CFEngine Build modules.
 
-# Projects API
+## Projects API
 
 A project is a set of CFEngine Build modules and custom files/json/policy files.
 
-## Create project
+### Create project
 
 **URI:** https://hub.cfengine.com/api/build/projects
 
@@ -82,7 +82,7 @@ HTTP 200 Ok
 | 422 Unprocessable entity | Validation error occurred |
 | 500 Internal server error | Internal server error |
 
-## Update project
+### Update project
 
 By changing the repository url or branch you will initialize a new project and the current one will be removed from the
 file system and any un-pushed/un-deployed(terminology in Mission Portal UI) changes will be lost.
@@ -150,7 +150,7 @@ HTTP 200 OK
 | 422 Unprocessable entity | Validation error occurred |
 | 500 Internal server error | Internal server error |
 
-## Get project
+### Get project
 
 **URI:** https://hub.cfengine.com/api/build/projects/:id
 
@@ -199,7 +199,7 @@ HTTP 200 OK
 | 404 Not found | Project not found |
 | 500 Internal server error | Internal server error |
 
-## Get projects list
+### Get projects list
 
 **URI:** https://hub.cfengine.com/api/build/projects
 
@@ -270,7 +270,7 @@ HTTP 200 OK
 | 404 Not found | Project not found |
 | 500 Internal server error | Internal server error |
 
-## Delete project
+### Delete project
 
 **URI:** https://hub.cfengine.com/api/build/projects/:id
 
@@ -303,7 +303,7 @@ HTTP 204 No content
 | 404 Not found | Project not found |
 | 500 Internal server error | Internal server error |
 
-## Sync project
+### Sync project
 
 **URI:** https://hub.cfengine.com/build/projects/:id/sync
 
@@ -346,7 +346,7 @@ HTTP 204 No content
 | 404 Not found | Project not found |
 | 500 Internal server error | Internal server error |
 
-##  Refresh project
+###  Refresh project
 
 Fetch upstream repository and return the current state.
 
@@ -395,7 +395,7 @@ HTTP 200 OK
 | 404 Not found | Project not found |
 | 500 Internal server error | Internal server error |
 
-## List of CFEngine Build modules added to project
+### List of CFEngine Build modules added to project
 
 **URI:** https://hub.cfengine.com/api/build/projects/:id/modules
 
@@ -469,7 +469,7 @@ HTTP 200 OK
 | 404 Not found | Project not found |
 | 500 Internal server error | Internal server error |
 
-## Add CFEngine Build module to project
+### Add CFEngine Build module to project
 
 **URI:** https://hub.cfengine.com/api/build/projects/:id/modules/:module
 
@@ -512,7 +512,7 @@ HTTP 201 Created
 | 422 Unprocessable entity | Validation error occurred |
 | 500 Internal server error | Internal server error |
 
-## Delete CFEngine Build module from project
+### Delete CFEngine Build module from project
 
 **URI:** https://hub.cfengine.com/api/build/projects/:id/modules/:module
 
@@ -547,7 +547,7 @@ HTTP 204 No content
 | 404 Not found | Project not found |
 | 500 Internal server error | Internal server error |
 
-## Update CFEngine Build module version
+### Update CFEngine Build module version
 
 **URI:** https://hub.cfengine.com/api/build/projects/:id/modules/:module
 
@@ -590,7 +590,7 @@ HTTP No content
 | 422 Unprocessable entity | Validation error occurred |
 | 500 Internal server error | Internal server error |
 
-## Get list of available CFEngine Build modules
+### Get list of available CFEngine Build modules
 
 **URI:** https://hub.cfengine.com/api/build/modules
 
@@ -674,7 +674,7 @@ HTTP 200 OK
 | 200 Ok | Successful response  |
 | 500 Internal server error | Internal server error |
 
-## Update list of available CFEngine Build modules
+### Update list of available CFEngine Build modules
 
 Modules will be received from the official CFEngine Build modules catalogue https://build.cfengine.com
 
@@ -703,7 +703,7 @@ curl --user <username>:<password> \
 | 204 No content | Modules list successfully updated |
 | 500 Internal server error | Internal server error |
 
-## Get CFEngine build module by name
+### Get CFEngine build module by name
 
 **URI:** https://hub.cfengine.com/api/build/modules/:name
 
@@ -767,7 +767,7 @@ HTTP 200 OK
 | 404 Not found | Module not found  |
 | 500 Internal server error | Internal server error |
 
-## Get specific version of a CFEngine Build module by name
+### Get specific version of a CFEngine Build module by name
 
 **URI:** https://hub.cfengine.com/api/build/modules/:name/:version/
 
@@ -835,7 +835,7 @@ HTTP 200 OK
 | 500 Internal server error | Internal server error |
 
 
-## Get CFEngine Build module input data
+### Get CFEngine Build module input data
 
 **URI:** https://hub.cfengine.com/api/build/projects/:id/modules/:name/input
 
@@ -913,7 +913,7 @@ HTTP 200 OK
 | 500 Internal server error | Internal server error       |
 
 
-## Set CFEngine Build module input data
+### Set CFEngine Build module input data
 
 **URI:** https://hub.cfengine.com/api/build/projects/:id/modules/:name/input
 

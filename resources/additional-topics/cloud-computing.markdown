@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-# What is cloud computing?
+## What is cloud computing?
 
 Cloud Computing refers to the commoditization of computing, i.e. a world in
 which computers may be borrowed on demand from a resource pool, like renting a
@@ -22,7 +22,7 @@ and save on redundant investment. You may think of Cloud Computing as
 `Recycle-able Computing' - a world in which you can use something for a short
 time and then discard it, without fear of waste.
 
-# Is cloud computing for everything and everyone?
+## Is cloud computing for everything and everyone?
 
 Cloud Computing does for computers what the database did for information.
 Instead of having to keep reams of paper physically on site, databases allowed
@@ -45,7 +45,7 @@ efficiently. Some people still buy books, cars and dig wells, while others loan
 books, rent cars and get water from the water authority. Different economic
 models have different applications.
 
-# How does CFEngine enable cloud computing?
+## How does CFEngine enable cloud computing?
 
 CFEngine has technology that can quickly bring machines, either real or virtual,
 from an uninitiated state to a fully working and customized state in seconds or
@@ -54,7 +54,7 @@ into a specialized managed service on demand. CFEngine makes it extremely cheap
 to rebuild systems from scratch. This is exactly what a vibrant recycling regime
 needs to work efficiently.
 
-# Permanent infra-structure with vibrant change
+## Permanent infra-structure with vibrant change
 
 Not all your computers should be disposable. Certain key infrastructure items
 like DNS servers, directory servers, databases, etc are part of a permanent
@@ -73,7 +73,7 @@ investment will last you for a long time, unchanged. For that reason, cloud
 services will never solve everyone's needs all the time. It is merely one
 product of choice.
 
-# How does Cloud relate to virtualization?
+## How does Cloud relate to virtualization?
 
 Virtualization is the tool that makes Cloud Computing practical. Every time a
 physical machine needs to be deployed or retired, it requires the physical
@@ -92,7 +92,7 @@ machine software is running on. CFEngine can bring stability to the hosts or the
 virtual guests, or it can keep virtual machines running without the need to
 reboot[^1].
 
-# Isn't virtualization inefficient?
+## Isn't virtualization inefficient?
 
 Virtualized computers run as software simulations, adding an extra layer of
 overhead. Using virtual machines is thus not as fast or processor-efficient as
@@ -114,7 +114,7 @@ dealing with services belonging to different companies or different users on the
 same physical host. The packaging aspect of virtual machines is therefore a form
 of `information management'.
 
-# Challenges for Cloud Computing
+## Challenges for Cloud Computing
 
 Dealing with scale, rapid change and impermanence could quickly lead to a
 processing overhead for humans, i.e. in the management of the cloud computers.
@@ -157,7 +157,7 @@ can be understood both by technicians and management stakeholders.
 
 * Bring systems from any state into compliance.
 
-# What if I change my mind about Cloud Computing?
+## What if I change my mind about Cloud Computing?
 
 CFEngine can be used in a public or in a private cloud, and it can be used on
 local servers, desktops and even mobile devices. CFEngine is designed to be
@@ -167,7 +167,7 @@ you want to move a service or a server-role, it is a simple matter to do so.
 CFEngine will continue to manage the service no matter what the underlying
 resource model.
 
-# The future - molecular computing
+## The future - molecular computing
 
 At CFEngine, we believe that Cloud Computing is just a rehearsal for a real
 change in the way computing services are managed. In the future, the

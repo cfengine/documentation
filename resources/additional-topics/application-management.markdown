@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-# What is application management?
+## What is application management?
 
 Application management concerns the deployment and updating of software, as well
 as customization of for actual use, in other words all the activities required
@@ -24,7 +24,7 @@ issues.
 Using CFEngine, you can verify that the software is in a promised state and is
 properly customized for use.
 
-# How can CFEngine help?
+## How can CFEngine help?
 
 
 CFEngine assists with application management in a number of ways. Following the
@@ -50,7 +50,7 @@ BDMA lifecycle, we note:
     CFEngine can monitor and report on packages and patches installed on systems
     and their versions and status.
 
-# Package management
+## Package management
 
 
 Application management is simple today on most operating systems due to the
@@ -85,7 +85,7 @@ package manager to query information and get the system into the desired state.
 CFEngine can edit configuration files in real time to ensure that applications
 are customized to local needs at all times.
 
-# Enterprise software reporting
+## Enterprise software reporting
 
 In commercial releases of CFEngine, the state of software installation is
 reported centrally and is easily accessible through the Knowledge Map.
@@ -94,7 +94,7 @@ Commercial editions of CFEngine also support querying Windows machines for
 installed MSI packages and thus allows for easy software deployment in
 heterogeneous Unix and Windows environments.
 
-# Integrated software installation
+## Integrated software installation
 
 CFEngine gives complete freedom to users, so there are many ways to design a
 system that achieves a desired software end-state. Consider the following
@@ -111,7 +111,7 @@ standard library.
 
 ![Package Management Flow](./package-flow.png)
 
-## Distributing software packages to client hosts
+### Distributing software packages to client hosts
 
 To begin with, we promise that the relevant software packages will be locally
 available to the agents from software servers, i.e. we promise that a local copy
@@ -143,7 +143,7 @@ When the agent copies a relevant software package from the software server
 defined. This class can act as a trigger to stop the application, update it, and
 start it again.
 
-## Stopping and restarting an application for update
+### Stopping and restarting an application for update
 
 On some operating systems, software cannot be updated while it is running.
 CFEngine can promise to enure that a program is stopped before update:
@@ -219,7 +219,7 @@ package is already installed, but installs the largest version available if it
 is not. Use package_select => "==" to install the exact version instead of the
 largest.
 
-## Adapting to Windows
+### Adapting to Windows
 
 To adapt our example to Windows, we change the path to the local software
 repository from/software_repotoc:\software_repo, to support the Windows path
@@ -232,7 +232,7 @@ package_method           => msi_version("c:\software_repo"),
 
 Refer to the msi_version body in the standard library.
 
-## Notes on Windows systems
+### Notes on Windows systems
 
 CFEngine implements Windows packaging using the MSI subsystem, internally
 querying the Windows Management Interface for information. However, not all
@@ -251,7 +251,7 @@ For the formats to match, we can change the product name to 7zip and the version
 to 4.65 in the msi-package. Free tools such as InstEd can both view and change
 the product name and version (Tables->Property->ProductName and ProductVersion).
 
-# Customizing applications
+## Customizing applications
 
 
 By definition, we cannot explain how to customize software for all cases. For
@@ -298,7 +298,7 @@ bundle agent my_application_customize
 You can also create file templates with customizable variables using
 theexpand_templatemethod from the standard library.
 
-# Starting and stopping software
+## Starting and stopping software
 
 CFEngine is promise or compliance oriented. You promise whether software will be
 running or not running at different times and locations by making processes or
@@ -355,7 +355,7 @@ bundle agent example
 }
 ```
 
-# Auditing software applications
+## Auditing software applications
 
 Commercial Editions of CFEngine generate reports about installed software,
 showing package names and versions that are installed. There is a huge variety
