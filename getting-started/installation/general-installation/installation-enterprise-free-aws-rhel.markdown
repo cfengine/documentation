@@ -20,16 +20,16 @@ This tutorial will cover the following steps:
 4. Configuring the Firewall on the Policy Server.
 5. Installing CFEngine on both the Policy Server and Host Virtual Machines.
 
-## Initial Configuration of the Virtual Machines in AWS ##
+## Initial Configuration of the Virtual Machines in AWS
 
-### Configure 2 RHEL Virtual Machine Instances in AWS ###
+### Configure 2 RHEL Virtual Machine Instances in AWS
 
 * Login to AWS.
 * Under `Create Instance` click on `Launch Instance`.
 * On the line `Red Hat Enterprise Linux 64 Bit Free tier eligible` press the `Select` button.
 * On the `Choose Instance Type` screen ensure the `Micro Instances` tab on the left is selected.
 
-### Configure Instance Details ###
+### Configure Instance Details
 
 * Press `Next: Configure Instance Details`.
 * On the `Configure Instance Details` screen change the number of instances to 2.
@@ -38,7 +38,7 @@ This tutorial will cover the following steps:
 * Ensure `Public IP` is checked.
 * Leave all else at their default values.
 
-### Review and Launch ###
+### Review and Launch
 * Click `Review and Launch`.
 * Make a note of `Security group` name on the `Review Instance Launch` screen.
 * Click `Launch`.
@@ -48,7 +48,7 @@ This tutorial will cover the following steps:
 * After the .pem file is saved click the `Launch Instance` button.
 * On the `Launch Status` screen click the `View Instances` button.
 
-### Configure the Security Group ###
+### Configure the Security Group
 
 * On the left hand side of the AWS console click `NETWORK & SECURITY > Security Groups`
 * Remembering the `Security group` name from earlier, click on the appropriate line item in the list.
@@ -60,19 +60,19 @@ This tutorial will cover the following steps:
 * Copy the "Group ID" from the line containing your "Group Name" and copy the "Group ID" into the text entry in the last column. Click "Save."
 * Click the "Edit" button again. On the "Custom TCP" Rule, select "Anywhere" from the "Source" drop-down list. Click "Save."
 
-## Accessing the Virtual Machines Using SSH ##
+## Accessing the Virtual Machines Using SSH
 
 See: [Quick-Start Guide to Using PuTTY][Quick-Start Guide to Using PuTTY]
 
-## Install and Configure the Firewall ##
+## Install and Configure the Firewall
 
-### Install the Firewall ###
+### Install the Firewall
 
 * Ensure you are logged into both virtual machines.
 * In both enter `sudo yum install system-config-firewall` to install.
 * Hit 'y' if prompted.
 
-### Configure the Firewall on the Policy Server (AKA hub) ###
+### Configure the Firewall on the Policy Server (AKA hub)
 
 The following steps are only necessary for one of the two virtual machines, the one that is designated as the policy server; these steps can be omitted on the second (client machine). Note that CFEngine refers to a client machine by the name `Host`:
 
@@ -82,12 +82,12 @@ The following steps are only necessary for one of the two virtual machines, the 
 
 ![The firewall Configuration window](Installing-CFE-on-AWS-8.png)
 
-#### Open Port 80 (HTTPD) ####
+#### Open Port 80 (HTTPD)
 
 * On the `Trusted Services` screen, scroll down to `WWW (HTTP)`, AKA port 80.
 * Hit the `Space Bar` to toggle the `WWW` entry (i.e. ensure it is on, showing an asterisk beside the name).
 
-#### Open Port 5308 (CFEngine) ####
+#### Open Port 5308 (CFEngine)
 
 * Hit the `Tab` key again until `Forward` is highlighted, then hit `Enter`.
 * Hit the `Tab` key until `Add` is highlighted, then hit `Enter`.
@@ -101,12 +101,12 @@ The `Port and Protocol` are entered in the blue boxes, with entries of `5308` an
 Then the `Tab` key is used to highlight the `OK` button, and the user presses `Enter`.
 
 
-#### Wrapping Up Firewall Configuration ####
+#### Wrapping Up Firewall Configuration
 
 * Hit the `Tab` key until `Close` is highlighted, and hit `Enter`.
 * Hit the `Tab` key or arrow keys until `OK` is highlighted, and hit `Enter`.
 
-#### Disabling Firewall on a Host (Warning: Only Do This If Absolutely Necessary) ####
+#### Disabling Firewall on a Host (Warning: Only Do This If Absolutely Necessary)
 
 For the second virtual machine, which is the client machine (also called `host`), you may need to do the following if you see an error when bootstrapping this virtual machine in later steps:
 * In the `Firewall Configuration` screen use the `Tab` key to go to Firewall.
@@ -114,7 +114,7 @@ For the second virtual machine, which is the client machine (also called `host`)
 
 Note: Turning off the firewall in a production environment is considered unsafe.
 
-## CFEngine Installation Overview ##
+## CFEngine Installation Overview
 
 We ready now ready to install the CFEngine software on both the server and client virtual machines. These also referred to as the "hub" and "host" machines, respectively. During the course of the instructions outlined in this guide, you will perform the following tasks:
 
@@ -123,7 +123,7 @@ We ready now ready to install the CFEngine software on both the server and clien
 * Log in to the Mission Portal. The Mission Portal is a graphical user interface that allows you to verify the actual state of all your Hosts, thus ensuring that your promises are being executed.
 * Try out the Tutorials. Links to three tutorials give you a head start on learning CFEngine.
 
-### Step 1. Download and install Enterprise on a Policy Server ###
+### Step 1. Download and install Enterprise on a Policy Server
 
 Run the following script on your designated Policy Server (hub), the virtual machine with the
 configured firewall from earlier steps:
@@ -134,7 +134,7 @@ $ wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterpr
 
 This script installs the latest CFEngine Enterprise Policy Server on your server machine.
 
-### Step 2. Bootstrap the Policy Server ###
+### Step 2. Bootstrap the Policy Server
 
 * The Policy Server must be bootstrapped to itself. Find the IP address of your Policy Server:
 	`$ ifconfig`.
@@ -152,7 +152,7 @@ Upon successful completion, a confirmation message appears: "Bootstrap to '172.3
 
 * The Policy Server is now installed.
 
-### Step 3. Install Enterprise on Host (Client) ###
+### Step 3. Install Enterprise on Host (Client)
 
 * Ensure you are logged into the host machine setup earlier.
 * Install CFEngine client version using the following:
@@ -169,7 +169,7 @@ The client software (host), has been installed on the second virtual machine.
 
 Note: You can install CFEngine Enterprise on up to 25 hosts using the script above.
 
-### Step 4. Bootstrap the Host to the Policy Server ###
+### Step 4. Bootstrap the Host to the Policy Server
 
 * All hosts must be bootstrapped to the Policy Server in order to establish a connection between the `Host` and the `Policy Server`.
 * Run the same commands that you ran in Step 2, `$ sudo /var/cfengine/bin/cfagent bootstrap <IP address of policy server>`.
@@ -178,16 +178,16 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 
 * The installation process is complete and CFEngine Enterprise is up and running on your system.
 
-### Step 5. Log in to the Mission Portal ###
+### Step 5. Log in to the Mission Portal
 
 * The Mission Portal is immediately accessible. Connect to the Policy Server through your web browser at: http://<External IP address of your Policy Server> (Note: The External IP address is available in the AWS console).
 * The default username for the Mission Portal is `admin`, and the password is also `admin`.
 * The Mission Portal runs TCP port 80 by default. [Configure mission portal to use HTTPS instead of HTTP](https://cfengine.zendesk.com/entries/25005193-Configure-Mission-Portal-to-use-HTTPS-instead-of-HTTP).
 * During the initial setup, the Host(s) might take a few minutes to show up in the Mission Portal. Refresh the web page and login again if necessary.
 
-## What Next? ##
+## What Next?
 
-### Tutorials ###
+### Tutorials
 
 * [Tutorial for Running Examples][Examples and tutorials#Tutorial for Running Examples]
 
@@ -196,6 +196,6 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
   Whereas the first tutorial in this list teaches you how to deploy business policy
   through the Mission Portal, this advanced, command-line tutorial shows you how to distribute policy files from the Policy Server to all pertinent Hosts.
 
-### Recommended Reading ###
+### Recommended Reading
 
 * [Tutorials and Examples][Examples and tutorials]

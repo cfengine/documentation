@@ -6,14 +6,14 @@ sorting: 13
 tags: [Examples,System Administration,System Files]
 ---
 
-## Editing password or group files ##
+## Editing password or group files
 
 To change the password of a system, we need to edit a file. A file is a complex object - once open there is a new world of possible promises to make about its contents. CFEngine has bundles of promises that are specially for editing.
 
 
 [%CFEngine_include_snippet(editing_password_or_group_files.cf, .* )%]
 
-## Editing password or group files custom ##
+## Editing password or group files custom
 
 In this example the bundles from the Community Open Promise-Body Library are included directly in the policy instead of being input as a separate file.
 

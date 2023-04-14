@@ -6,7 +6,7 @@ published: true
 tags: [getting started, installation]
 ---
 
-## Installation ##
+## Installation
 
 [%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
 
@@ -16,7 +16,7 @@ See [Secure bootstrap] for a guide on bootstrapping CFEngine in untrusted networ
 
 See also: [Pre-installation checklist][Pre-installation checklist], [Supported platforms and versions][Supported platforms and versions]
 
-## Setup & Configuration ##
+## Setup & Configuration
 
 Additional options for configuring CFEngine policy are as follows:
 

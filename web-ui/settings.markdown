@@ -23,14 +23,14 @@ Settings view.
 * [About CFEngine][Settings#About CFEngine]
 
 
-## Opening Settings ##
+## Opening Settings
 
 <img src="Settings-1.png" alt="Opening Settings" width="424px">
 
 Settings are accessible from any view of the mission portal, from the
 drop down in the top right hand corner.
 
-## Preferences ##
+## Preferences
 
 <img src="Settings-2.png" alt="Preferences" width="700px">
 
@@ -47,14 +47,14 @@ administrator to change various options, including:
 * Log level
 * Customize the user experience with the organization logo
 
-## User Management ##
+## User Management
 
 <img src="Settings-3.png" alt="User Management" width="700px">
 
 User management is for adding or adjusting CFEngine Enterprise UI
 users, including their name, role, and password.
 
-## Role Management ##
+## Role Management
 
 <img src="Settings-role.png" alt="Role Management" width="430px">
 
@@ -142,7 +142,7 @@ In effect this allows you to set the default permissions for new users (e.g. whi
 
 <img src="add-new-user.png" alt="AddNewUser" width="430px">
 
-## Manage Apps ##
+## Manage Apps
 
 <img src="Settings-4.png" alt="Manage Apps" width="700px">
 
@@ -150,14 +150,14 @@ Application settings can help adjust some of CFEngine Enterprise UI
 app features, including the order in which the apps appear and their
 status (on or off).
 
-## Version control Repository ##
+## Version control Repository
 
 <img src="settings-vcs.png" alt="Version control Repository" width="700px">
 
 The repository holding the organization's masterfiles can be adjusted
 on the Version control Repository screen.
 
-## Host Identifier ##
+## Host Identifier
 
 <img src="Settings-6.png" alt="Host Identifier" width="700px">
 
@@ -165,7 +165,7 @@ Host identity for the server can be set within settings, and can be
 adjusted to refer to the FQDN, IP address, or an unqualified domain
 name.
 
-## Mail settings ##
+## Mail settings
 
 <img src="mail-settings.png" alt="Mail settings" width="700px">
 
@@ -180,7 +180,7 @@ Configure outbound mail settings:
   exceeding this will have the attachment replaced with links to download the
   large files.
 
-## Authentication settings ##
+## Authentication settings
 
 <img src="Authentication-settings.png" alt="Authentication settings" width="700px">
 
@@ -200,7 +200,7 @@ Mission portal can authenticate against an external directory.
 
 - Default roles for users is configured under [Role Management][Settings#Role Management].
 
-### LDAP groups syncing ###
+### LDAP groups syncing
 
 - LDAP group syncing can be turned on by clicking the corresponding checkbox
 
@@ -216,7 +216,7 @@ will not result in addition or removal of Mission Portal roles.
 
 **See also:** [LDAP authentication REST API][LDAP authentication API], [Role Management][Settings#Role Management]
 
-## Export/Import ##
+## Export/Import
 
 Mission Portal's configuration can be exported and imported.
 
@@ -224,7 +224,7 @@ Mission Portal's configuration can be exported and imported.
 
 **See also:** [Export/Import API][Import & export API]
 
-## Role based access control ##
+## Role based access control
 
 <img src="role_based_access_control_settings.png" alt="Role based access control" width="590px">
 
@@ -250,7 +250,7 @@ root@hub:~# /var/cfengine/bin/psql cfsettings -c "INSERT INTO rbac_role_permissi
 **See also:** [Web RBAC API][Web RBAC API]
 
 
-## About CFEngine ##
+## About CFEngine
 
 <img src="Settings-7.png" alt="About CFEngine" width="700px">
 

@@ -21,7 +21,7 @@ affected by `common` and `agent` control bodies.
 
 * `cf-agent` always considers the class ```agent``` to be defined.
 
-## Command reference ##
+## Command reference
 
 [%CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$)%]
 

@@ -315,7 +315,7 @@ alter such a socket. This is a known issue, documented in
 
 ***
 
-## Attributes ##
+## Attributes
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
 

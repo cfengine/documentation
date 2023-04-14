@@ -135,7 +135,7 @@ for services promises.
 
 ****
 
-## Attributes ##
+## Attributes
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
 

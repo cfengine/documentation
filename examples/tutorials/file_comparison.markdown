@@ -38,11 +38,11 @@ Here is the order in which bundles are called in the command line above (some ot
 14. [outer_bundle_2][#outer_bundle_2] - modifies the contents of the second file.
 15. [list_file_2][#list_file_2] - shows the contents of both files and uses CFEngine functionality to compare the modified time for each file.
 
-## robot ##
+## robot
 
 Demonstrates use of `reports`, using an ascii art representation of the CFEngine robot.
 
-## global_vars ##
+## global_vars
 
 Sets up some global variables that are used frequently by other bundles.
 
@@ -71,7 +71,7 @@ bundle common global_vars
 }
 ```
 
-## packages ##
+## packages
 
 Ensures that the gcc package is installed, for later use by the create_aout bundle.
 
@@ -98,7 +98,7 @@ Ensures that the gcc package is installed, for later use by the create_aout bund
 	}
 ```
 
-## create_aout_source_file ##
+## create_aout_source_file
 
 Creates the c source file that will generate a binary application in create_aout.
 
@@ -129,7 +129,7 @@ bundle agent create_aout_source_file
 }
 ```
 
-## create_aout ##
+## create_aout
 
 This bundle creates a binary application from the source in  create_aout_source_file that uses the stat library to compare two files, determine if the modified times are different, nd whether the second file is newer than the first.
 
@@ -166,7 +166,7 @@ bundle agent create_aout
 }
 ```
 
-## test_delete ##
+## test_delete
 
 Deletes any previous copy of the test files used in the example.
 
@@ -180,7 +180,7 @@ bundle agent test_delete
 }
 ```
 
-## do_files_exist_1 ##
+## do_files_exist_1
 
 Verifies whether the test files exist or not.
 
@@ -216,7 +216,7 @@ bundle agent do_files_exist_1
 }
 ```
 
-## create_file_1 ##
+## create_file_1
 
 Creates the first test file, as an empty file.
 
@@ -234,7 +234,7 @@ bundle agent create_file_1
 }
 ```
 
-## outer_bundle_1 ##
+## outer_bundle_1
 
 Adds some text to the first test file.
 
@@ -249,7 +249,7 @@ bundle agent outer_bundle_1
 }
 ```
 
-## copy_a_file ##
+## copy_a_file
 
 Makes a copy of the test file.
 
@@ -266,7 +266,7 @@ bundle agent copy_a_file
 }
 ```
 
-## do_files_exist_2 ##
+## do_files_exist_2
 
 Verifies that both test files exist.
 
@@ -280,7 +280,7 @@ bundle agent do_files_exist_2
 }
 ```
 
-## list_file_1 ##
+## list_file_1
 
 Reports the contents of each test file.
 
@@ -297,7 +297,7 @@ bundle agent list_file_1
 }
 ```
 
-## exec_aout ##
+## exec_aout
 
 ```cf3
 bundle agent exec_aout
@@ -321,7 +321,7 @@ bundle agent exec_aout
 }
 ```
 
-## stat ##
+## stat
 
 Compares the modified time of each test file using the binary application compiled in create_aout to see if it is newer.
 
@@ -369,7 +369,7 @@ bundle agent stat
 }
 ```
 
-## outer_bundle_2 ##
+## outer_bundle_2
 
 Modifies the text in the second file.
 
@@ -384,7 +384,7 @@ bundle agent outer_bundle_2
 }
 ```
 
-## list_file_2 ##
+## list_file_2
 
 Uses `filestat` and `isnewerthan` to compare the two test files to see if the second one is newer. Sometimes the modifications already performed, such as copy and modifying text, happen too quickly and filestat and isnewerthan may both report that the second test file is not newer than the first, while the more accurate stat based checks in the stat bundle (see step 12) will recognize the difference.
 
@@ -418,6 +418,6 @@ bundle agent list_file_2
 ```
 
 
-## Full Policy ##
+## Full Policy
 
 [%CFEngine_include_snippet(documentation/examples/tutorials/file_compare_test.cf, .* )%]

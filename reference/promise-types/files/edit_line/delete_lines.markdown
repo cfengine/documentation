@@ -38,7 +38,7 @@ promise.
 
 ***
 
-## Attributes ##
+## Attributes
 
 ### delete_select
 

@@ -17,7 +17,7 @@ sorting: 100
 * [Promises available in CFEngine][Promises available in CFEngine]
 * [Authoring policy tools & workflow][Authoring policy tools & workflow]
 
-## About Policies and Promises ##
+## About Policies and Promises
 
 Central to CFEngine's effectiveness in system administration is the concept of a "promise," which defines the intent and expectation of how some part of an overall system should behave.
 
@@ -25,17 +25,17 @@ CFEngine emphasizes the promises a client makes to the overall CFEngine network.
 
 This document describes in brief what a promise is and what a promise does. There are other resources for finding out additional details about "promises" in the See Also section at the end of this document.
 
-### What Are Promises ###
+### What Are Promises
 
 A promise is the documentation or definition of an intention to act or behave in some manner. They are the rules which CFEngine clients are responsible for implementing.
 
-### The Value of a Promise ###
+### The Value of a Promise
 
 When you make a promise it is an effort to improve trust, which is an economic time-saver. If you have trust then there is less need to verify, which in turn saves time and money.
 
 When individual components are empowered with clear guidance, independent decision making power, and the trust that they will fulfil their duties, then systems that are complex and scalable, yet still manageable, become possible.
 
-### Anatomy of a Promise ###
+### Anatomy of a Promise
 
 ```cf3
 bundle agent hello_world
@@ -50,11 +50,11 @@ bundle agent hello_world
 }
 ```
 
-## How Promises Work ##
+## How Promises Work
 
 Everything in CFEngine can be thought of as a promise to be kept by different resources in the system. In a system that delivers a web site using Apache, an important promise may be to make sure that the `httpd` or `apache` package is installed, running, and accessible on port 80.
 
-### Summary for Writing, Deploying and Using Promises ###
+### Summary for Writing, Deploying and Using Promises
 
 Writing, deploying, and using CFEngine `promises` will generally follow these simple steps:
 
@@ -69,7 +69,7 @@ Writing, deploying, and using CFEngine `promises` will generally follow these si
 
 See [Tutorial for Running Examples][Examples and tutorials#Tutorial for Running Examples] for a more detailed step by step tutorial.
 
-## Policy Workflow ##
+## Policy Workflow
 
 CFEngine does not make absolute choices for you, like other tools.  Almost
 everything about its behavior is a matter of policy and can be changed.
@@ -110,7 +110,7 @@ recover from deployment errors easily. By placing the burden of responsibility
 for decision at the top, and for implementation at the bottom, we avoid
 needless fragility and keep two independent quality assurance processes apart.
 
-## Best practices ##
+## Best practices
 
 * [Policy style guide][Policy style guide] This covers punctuation, whitespace, and other styles to remember when writing policy.
 
@@ -119,5 +119,5 @@ needless fragility and keep two independent quality assurance processes apart.
 * [Testing policies][Testing policies] This page describes how to locally test CFEngine and play with configuration files.
 
 
-## See Also ##
+## See Also
 * [Promises][Promises]

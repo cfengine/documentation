@@ -13,7 +13,7 @@ It is a Command-Line-Interface (CLI) to the CFEngine network protocol, and a sta
 The tool can be used to send commands like `GET` and `OPENDIR` without writing policy.
 It is in some ways an extremely light-weight version of `cf-agent` - policy evaluation is replaced with easy to use command line arguments.
 
-## Command reference ##
+## Command reference
 
 [%CFEngine_include_snippet(cf-net.help, [\s]*--[a-z], ^$)%]
 

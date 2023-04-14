@@ -44,7 +44,7 @@ users:
 
 ****
 
-## Attributes ##
+## Attributes
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
 
@@ -238,7 +238,7 @@ body password user_password
 }
 ```
 
-#### data ####
+#### data
 
 **Description:** Specifies the password data.
 

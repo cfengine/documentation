@@ -9,7 +9,7 @@ tags: [how-to-guides, quick-start guides, putty, puttygen]
 * [Using PuTTY in Simple Steps][Quick-Start Guide to Using PuTTY#Using PuTTY in Simple Steps]
 * [Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen][Quick-Start Guide to Using PuTTY#Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen]
 
-## Using PuTTY in Simple Steps ##
+## Using PuTTY in Simple Steps
 
 This guide is intended for Windows users who are not accustomed to using SSH, or need some additional support for understanding how to work with SSH from their machine (e.g. challenges with key pairs).
 
@@ -83,16 +83,16 @@ f. If saving without a _Passphrase_ a dialog box will pop up; click _yes_ to sav
 
 g. Now close PuTTYgen.
 
-## Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen ##
+## Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen
 
-### Get PuTTY and PuTTYgen ###
+### Get PuTTY and PuTTYgen
 
 * To get PuTTY and PuTTYgen, first go to
 http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html and either:
  * Download and install using the PuTTY binaries installer
  * Or, download PuTTY and PuTTYgen individually
 
-### Prepare Private Key Using PuTTYgen ###
+### Prepare Private Key Using PuTTYgen
 * After the binaries have been downloaded and/or installed either:
  * Double click `puttygen.exe` from the download location, if downloaded directly.
  * Or, if the PuTTY installer was used above, one of either:
@@ -117,7 +117,7 @@ The Puttygen popup window. Click `Yes`, to proceed without a passphrase. You can
 * Finally, navigate to a good location on disk to save the key file, enter a name for the private key, ensure PuTTY Private Key Files (*.ppk) type is selected, and then click the Save button.
 * You can now close the Puttygen application. You will call up the .ppk file when you configure the virtual machines using PuTTY.
 
-### Configure PuTTY ###
+### Configure PuTTY
 
 * Before configuring PuTTY, go back to your AWS Console, then navigate to INSTANCES > Instances.
 * Make a note of the 2 different Public DNS entries for the virtual machines that were setup earlier (e.g. ec2xxxxxxxxxxxx.uswest1.compute.amazonaws.com, where the x's represent numbers).
@@ -163,7 +163,7 @@ Note that `Auth` has been selected on left-side tree, in order to bring up this 
 
 The PuTTY interface with the two virtual machines saved. We can now proceed to configure those virtual machines with CFEngine.
 
-### Login to Virtual Machines Using PuTTY ###
+### Login to Virtual Machines Using PuTTY
 
 * If one of the two virtual machines is configured and its details loaded in the PuTTY interface, first select the machine, then click the Open button. This will close the above PuTTY interface and open a command-line window, from which we will setup CFEngine on each of the two machines. One machine will act as the Server and the other as the client, and they will each be set up with different software.
 * Once the first virtual machine is logged into, right click the top of PuTTY's application window (e.g. the part of the window decoration displaying the virtual machine name).

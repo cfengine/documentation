@@ -11,7 +11,7 @@ keywords: [cf-secret]
 
 Files can be encrypted for one or more public keys. A matching private key is required for decryption.
 
-## Command reference ##
+## Command reference
 
 [%CFEngine_include_snippet(cf-secret.help, [\s]*--[a-z], ^$)%]
 

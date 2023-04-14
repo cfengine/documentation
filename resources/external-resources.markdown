@@ -14,7 +14,7 @@ Use the following links to learn more about CFEngine:
 * [Support and Community][External resources#Support and Community]
 * [Contribute to CFEngine][External resources#Contribute to CFEngine]
 
-## Reading ##
+## Reading
 
 Learn by reading information brought to you by CFEngine experts:
 
@@ -30,13 +30,13 @@ Sysadmin, Inc, a sysadmin training company and an authorized CFEngine training p
 * [CFEngine Development blog](http://cfengine.com/blog/tag/Development) Posts on
 configuration management best practices from the CFEngine team.
 
-## Training ##
+## Training
 
 * [Online Training](https://www.youtube.com/playlist?list=PLh71Vl9YjMajsWxT8zQuRKEPwosG9HdzV) An introduction to CFEngine by our founder, Mark Burgess. These video recordings explain the basic principles and syntax of the CFEngine language and suggests some examples to try out.
 
 * [Beyond Automation](http://shop.oreilly.com/product/110000787.do) Learn how to go beyond classical automation with CFEngine 3, one of the most established configuration management systems available. In this video tutorial, host and CFEngine creator Mark Burgess takes you on a tour of discovery from basic automation concepts to more complex examples, such as implementing distributed orchestration.
 
-## Tools ##
+## Tools
 
 * [Editors with syntax support][Editors]
 
@@ -48,7 +48,7 @@ management in your organization.
 
 * [Contact us](http://info.cfengine.com/ContactUs.html) to get more info on training courses.
 
-## Support and Community ##
+## Support and Community
 
 ### Support Desk
 
@@ -88,7 +88,7 @@ target="_blank">LinkedIn</a>
 If you want to learn more about how CFEngine can help you and your
 organization, [contact us][contact us].
 
-## Contribute to CFEngine ##
+## Contribute to CFEngine
 
 **CFEngine Github**
 

@@ -6,7 +6,7 @@ sorting: 60
 tags: [Examples]
 ---
 
-## Links to Examples ##
+## Links to Examples
 
 * [Example snippets][Example snippets]: This section is divided into topical areas and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.
 
@@ -26,7 +26,7 @@ See Also:
   * [Integrating the Example into your Main Policy][Examples and tutorials#Integrating the Example into your Main Policy]
 
 
-## Tutorial for Running Examples ##
+## Tutorial for Running Examples
 
 
 In this tutorial, you will perform the following:
@@ -38,7 +38,7 @@ In this tutorial, you will perform the following:
 
 **Note** if your CFEngine administrator has enabled continuous deployment of the policy from a Version control System, your changes may be overwritten!
 
-### "Hello World" Policy Example ###
+### "Hello World" Policy Example
 
 Policies contain **bundles**, which are collections of promises. A **promise** is a declaration of
 intent. Bundles allow related promises to be grouped together, as illustrated in the steps that follow.
@@ -75,7 +75,7 @@ hosts][Classes and decisions].
 
 
 
-### Activate a Bundle Manually ###
+### Activate a Bundle Manually
 
 Activate the bundle manually by executing the following command at prompt:
 
@@ -106,7 +106,7 @@ Thus, CFEngine can function even if everything else fails
 
 
 
-### Make the Example Stand Alone ###
+### Make the Example Stand Alone
 
 Instead of specifying the bundle sequence on the command line (as it was above), a [body common
 control][Components#Common Control] section can be added to
@@ -160,7 +160,7 @@ body common control {
 }
 ```
 
-### Make the Example an Executable Script ###
+### Make the Example an Executable Script
 
 Add the ```#!``` marker ("shebang") to `hello_world.cf` in order to invoke CFEngine policy as an executable script:
 Again type "vi" then "Enter" then ```i``` to insert the following:
@@ -213,7 +213,7 @@ See the output below:
 ```
 
 
-### Integrating the Example into your Main Policy ###
+### Integrating the Example into your Main Policy
 
 Make the example policy part of your main policy by
 doing the following on your policy server:

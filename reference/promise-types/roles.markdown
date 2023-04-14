@@ -42,7 +42,7 @@ classes matching the regular expression `Myclass_.*` hen using the
 
 ****
 
-## Attributes ##
+## Attributes
 
 ### authorize
 

@@ -18,7 +18,7 @@ tags: [Examples,Software Administration]
 * Managing Software
 * Install packages
 
-## Software and patch installation ##
+## Software and patch installation
 
 Example for Debian:
 
@@ -59,7 +59,7 @@ Adapt this template to your operating system by adding multiple classes. Each we
 
 [%CFEngine_include_snippet(set_up_a_web_server.cf, .* )%]
 
-## Add software packages to the system ##
+## Add software packages to the system
 
 
 [%CFEngine_include_snippet(add_software_packages_to_the_system.cf, .* )%]

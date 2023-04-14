@@ -8,11 +8,11 @@ tags: [guide, installation, install]
 
 [%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
 
-## Before Installation ##
+## Before Installation
 
 Check the [Pre-installation checklist][Pre-installation checklist] and [Supported platforms and versions][Supported platforms and versions] for requirements and other information that is useful for the installation procedure.
 
-## Install Packages ##
+## Install Packages
 
 CFEngine Enterprise is provided in two packages; one is for the Policy
 Server (hub) and the other is for each Host (client).
@@ -37,7 +37,7 @@ Note: See [Installing Community][Installing Community] for the community version
 
 Note: Install actions logged to `/var/logs/cfengine-install.log`.
 
-## Bootstrap ##
+## Bootstrap
 
 Bootstrapping a client means to configure it initially.  With CFEngine, the default bootstrap:
 
@@ -60,7 +60,7 @@ Run the bootstrap command, **first** on the policy server:
 
 The bootstrap command must then be run on any client attaching itself to this server, using the ip address of the policy server (i.e. exactly the same as the command run on the policy server itself).
 
-## Post-Installation Configuration ##
+## Post-Installation Configuration
 
 CFEngine itself is configured through policy as well (see [Components][] and
 [Masterfiles Policy Framework][] for details). The following basic changes to the default policy will configure
@@ -116,16 +116,16 @@ Alternatively you can define the class from `def.cf`.
 **Note:** It's best practice to restart daemons after adjusting it's settings to
 ensure they have taken effect.
 
-### Server IP Address and Hostname ###
+### Server IP Address and Hostname
 
 Edit `/etc/hosts` and add an entry for the IP address and hostname of the server.
 
-### CFEngine Enterprise Post-Installation Setup ###
+### CFEngine Enterprise Post-Installation Setup
 
 See: [What steps should I take after installing CFEngine Enterprise?][FAQ#What steps should I take after installing CFEngine Enterprise]
 
 
-## More Detailed Installation guides ##
+## More Detailed Installation guides
 
 Although most install procedures follow the same general workflow, there are several ways of installing CFEngine depending on your environment and which version of CFEngine you are using.
 
@@ -136,6 +136,6 @@ Although most install procedures follow the same general workflow, there are sev
 * Install and test the latest version using our pre-packaged [Vagrant environment][Using Vagrant]
 * [Installing CFEngine Community Edition][Installing Community]
 
-## Next Steps ##
+## Next Steps
 
 * Learn about [Writing and serving policy][Writing and serving policy]

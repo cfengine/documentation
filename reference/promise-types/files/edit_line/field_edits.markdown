@@ -93,7 +93,7 @@ ordering the items within them.
 
 ***
 
-## Attributes ##
+## Attributes
 
 ### edit_field
 

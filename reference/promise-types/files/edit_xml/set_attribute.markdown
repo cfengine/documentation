@@ -28,7 +28,7 @@ Note that typically only a single attribute, within a single selected
 node, is set in each `set_attribute` promise. You may of course have
 multiple promises that each set an attribute.
 
-## Attributes ##
+## Attributes
 
 ### attribute_value
 

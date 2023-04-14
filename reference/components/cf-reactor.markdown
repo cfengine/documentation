@@ -25,6 +25,6 @@ refreshes the CMDB data file (`host_specific.json`) for the particular host.
 
 * 3.18.2, 3.20.0 Introduced new component (`cf-reactor`).
 
-## Command reference ##
+## Command reference
 
 [%CFEngine_include_snippet(cf-reactor.help, [\s]*--[a-z], ^$)%]

@@ -13,13 +13,13 @@ This is where the Custom actions come in. A Custom action is a way to execute a 
 Any scripting language may be used, as long as the hub has an interpreter for it.
 
 
-## Alert parameters ##
+## Alert parameters
 
 The Custom action script gets called with one parameter: the path to a file with a set of KEY=VALUE lines.
 Most of the keys are common for all alerts, but some additional keys are defined based on the alert type, as shown below.
 
 
-### Common keys ###
+### Common keys
 
 These keys are present for all alert types.
 
@@ -40,7 +40,7 @@ These keys are present for all alert types.
 
 
 
-### Policy keys ###
+### Policy keys
 
 In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='policy'.
 
@@ -52,7 +52,7 @@ In addition to the common keys, the following keys are present when ALERT_CONDIT
 | ALERT_POLICY_CONDITION_PROMISEOUTCOME | Promise outcome to filter by, as selected when creating the alert. Can be either 'KEPT', 'REPAIRED' or 'NOTKEPT'. |
 
 
-### Inventory keys ###
+### Inventory keys
 
 In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='inventory'.
 
@@ -62,7 +62,7 @@ In addition to the common keys, the following keys are present when ALERT_CONDIT
 | ALERT_INVENTORY_CONDITION_FILTER_$(ATTRIBUTE_NAME)_CONDITION | The name of the attribute as selected when creating the alert is part of the key (expanded), while the value is the comparison operator selected. Can be 'ILIKE' (matches), 'NOT ILIKE' (doesn't match), '=' (is), '!=' (is not), '<', '>'. |
 | ...                                                          | There will be pairs of key=value for each attribute name defined in the alert.                                                                                                                                                                |
 
-### Software updates keys ###
+### Software updates keys
 
 In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='softwareupdate'.
 
@@ -72,7 +72,7 @@ In addition to the common keys, the following keys are present when ALERT_CONDIT
 | ALERT_SOFTWARE_UPDATE_CONDITION_PATCHARCHITECTURE | The architecture of the package, as defined when creating the alert, or empty if undefined (string). |
 
 
-## Example parameters: policy bundle alert not kept ##
+## Example parameters: policy bundle alert not kept
 
 Given an alert that triggers on a policy bundle being not kept (failed), the following is example content of the file being provided as an argument to a Custom action script.
 
@@ -100,7 +100,7 @@ You could then simply test your Custom action script, e.g. 'cfengine_custom_acti
 When you get this to work as expected on the commmand line, you are ready to upload the script to the Mission Portal, as outlined below.
 
 
-## Example script: logging policy alert to syslog ##
+## Example script: logging policy alert to syslog
 
 The following Custom action script will log the status and definition of a policy alert to syslog.
 
@@ -123,7 +123,7 @@ What gets logged to syslog depends on which alert is associated with the script,
 
 
 
-## Uploading the script to the Mission Portal ##
+## Uploading the script to the Mission Portal
 
 Members of the admin role can manage Custom action scripts in the Mission Portal settings.
 
@@ -134,7 +134,7 @@ A new script can be uploaded, together with a name and description, which will b
 <img src="mp-settings-custom-notification-add.png" alt="Adding Custom action syslog script" width="700px">
 
 
-## Associating a Custom action with an alert ##
+## Associating a Custom action with an alert
 
 Alerts can have any number of Custom action scripts as well as an email notification associated with them. This can be configured during alert creation. Note that for security reasons, only members of the admin role may associate alerts with Custom action scripts.
 

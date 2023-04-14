@@ -14,7 +14,7 @@ There are several ways to approach authoring promises and ensuring they are copi
 
 ### Authoring on a Workstation and Pushing to the Hub Using Git + GitHub
 
-#### General Summary ####
+#### General Summary
 
 1. The "masterfiles" directory contains the promises and other related files (this is true in all situations).
 2. Replace the out of the box setup with an initialized `git` repository and remote to a clone hosted on GitHub.
@@ -26,7 +26,7 @@ There are several ways to approach authoring promises and ensuring they are copi
 7. As described in step 3, CFEngine will pull any new changes that were pushed to GitHub (sometime within a five minute time interval).
 8. Those changes will first exist in `masterfiles`, and then afterwards will be deployed to CFEngine hosts that are bootstrapped to the hub.
 
-#### Create a Repository on GitHub for Masterfiles ####
+#### Create a Repository on GitHub for Masterfiles
 
 There are two methods possible with GitHub: one is to use the web interface at GitHub.com; the second is to use the GitHub application.
 
@@ -47,7 +47,7 @@ Method Two: Create Masterfiles Repository Using the GitHub Application
 5. Click on the "Create" button at the bottom of the screen. A new repository will be created in your local GitHub folder.
 
 
-#### Initialize Git Repository in Masterfiles on the Hub ####
+#### Initialize Git Repository in Masterfiles on the Hub
 
 1. `> cd /var/cfengine/masterfiles`
 2. `> echo cf_promises_validated >> .gitignore`
@@ -82,7 +82,7 @@ A) Generate a key pair and add it to GitHub
 
 B) Or, change the remote url to `https://GitUserName@password:github.com/GitUserName/cfengine-masterfiles.git`. This is not safe in a production environment and should only be used for basic testing purposes (if at all).
 
-#### Create a Remote in Masterfiles on the Hub to Masterfiles on GitHub ####
+#### Create a Remote in Masterfiles on the Hub to Masterfiles on GitHub
 
 1. Change back to the `masterfiles` directory, if not already there:
 	* `> cd /var/cfengine/masterfiles`
@@ -91,7 +91,7 @@ B) Or, change the remote url to `https://GitUserName@password:github.com/GitUser
 3. Verify the remote was registered properly by typing `git remote -v` and pressing enter.
 	* You will see the remote definition in a list alongside any other previously defined remote entries.
 
-#### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub ####
+#### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub
 
 1. Create a new file in `/var/cfengine/masterfiles` with a unique filename (e.g. `vcs_update.cf`)
 2. Add the following text to the `vcs_update.cf` file:

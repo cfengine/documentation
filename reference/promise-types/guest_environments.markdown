@@ -52,7 +52,7 @@ CFEngine currently provides a convergent interface to *libvirt*.
 
 ***
 
-## Attributes ##
+## Attributes
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
 

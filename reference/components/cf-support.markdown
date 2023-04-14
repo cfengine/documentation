@@ -11,10 +11,10 @@ keywords: [cf-support]
 If the system is an enterprise hub then additional details will be gathered and included.
 The utility will prompt for an optional support ticket number as well as prompt whether to include masterfiles in the tarball.
 
-## Command reference ##
+## Command reference
 
 [%CFEngine_include_snippet(cf-support.help, [\s]*--[a-z], ^$)%]
 
-## History ##
+## History
 
 * Introduced in 3.21.0, 3.18.3

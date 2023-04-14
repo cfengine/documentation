@@ -152,7 +152,7 @@ may be used in other promises in the form `$(mon.handle)`.
 
 ***
 
-## Attributes ##
+## Attributes
 
 ### stream_type
 

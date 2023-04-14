@@ -19,14 +19,14 @@ tags: [Examples,System Information]
 
 [%CFEngine_include_snippet(change_detection.cf, .* )%]
 
-## Hashing for change detection (tripwire) ##
+## Hashing for change detection (tripwire)
 
 Change detection is a powerful and easy way to monitor your environment, increase awareness and harden your system against security breaches.
 
 
 [%CFEngine_include_snippet(hashing_for_change_detection_(tripwire).cf, .* )%]
 
-## Check filesystem space ##
+## Check filesystem space
 
 
 [%CFEngine_include_snippet(check_filesystem_space.cf, .* )%]
