@@ -8,9 +8,9 @@ alias: index.html
 ---
 <div class="home">
    <div class="home-top">
-      <h1>Welcome to CFEngine Documentation</h1>
+      <h1>Welcome to the CFEngine Documentation</h1>
       <div>
-         This site contains information on how to manage and automate the infrastructure with CFEngine.
+         This site contains information on how to manage and automate infrastructure with CFEngine.
          It includes the reference for the following versions of CFEngine:
       </div>
       <ul class="home-top_versions">
@@ -38,7 +38,7 @@ alias: index.html
          </li>
          <li>
             <a href="getting-started-developing-modules.html">Developing modules</a>
-            <div>Turn your policy, reoprts, or python code into CFEngine Build modules for others to use.</div>
+            <div>Turn your policy, reports, or python code into CFEngine Build modules for others to use.</div>
          </li>
          <li>
             <a href="examples-tutorials-writing-and-serving-policy.html">Tutorial series on policy language</a>
@@ -53,21 +53,21 @@ alias: index.html
          </li>
          <li>
             <a href="api-enterprise-api-ref.html">API reference</a>
-            <div>The API is a conventional REST API which supports one or more GET, PUT, POST, or DELETE operations.</div>
+            <div>The API is a conventional REST API which supports HTTP GET, PUT, POST, and DELETE operations.</div>
          </li>
          <li>
             <a href="reference-language-concepts.html">Language concepts</a>
-            <div>Learn Bundles, Bodies, Promises, Classes and Decisions, Variables, etc.</div>
+            <div>Learn about bundles, bodies, promises, variables, classes and decisions.</div>
          </li>
          <li>
             <a href="examples-tutorials-manage-packages.html">Manage packages</a>
-            <div>Learn how to install, manage and remove packages using CFEngine.</div>
+            <div>Learn how to install, manage, and remove packages using CFEngine.</div>
          </li>
          <li class="cfe-build">
             <span><b>CFEngine Build</b></span>
             <div>
-               CFEngine Build is a catalogue of policy and modules created by CFEngine, our partner and community that
-               helps you to simplify the automation process.
+               CFEngine Build is a catalog of policy and modules created by CFEngine, our partners and community which
+               helps you simplify the automation process.
             </div>
             <a target="_blank" class="btn btn-transparent" href="https://build.cfengine.com">Go to the page <img src="./media/images/arrow-right.svg" /></a>
          </li>
