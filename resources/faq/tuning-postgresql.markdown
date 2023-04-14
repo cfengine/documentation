@@ -37,7 +37,7 @@ Parameters commonly tuned:
 
 Tuning tools like [pgtune](https://github.com/kofemann/pgtune) and [pgconfigurator](https://www.cybertec-postgresql.com/en/products/pgconfigurator/) can be helpful in adjusting your settings.
 
-**See Also:**
+**See also:**
 
 - [Debugging slow queries][debugging slow queries].
-- [Policy server requirements][Installing enterprise for production#Policy Server Requirements].
+- [Policy server requirements][Installing enterprise for production#Policy server requirements].

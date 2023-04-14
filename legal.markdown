@@ -6,7 +6,7 @@ sorting: 999
 alias: legal.html
 ---
 
-## General Legal Disclaimer
+## general legal disclaimer
 
 Please note that CFEngine is offered on an "as is" basis without warranty of
 any kind, and that our products are not error or bug free. To the maximum
@@ -16,11 +16,11 @@ including, but not limited to, implied warranties of merchantability, fitness
 for a particular purpose, title and non-infringement with regard to the
 Licensed Software.
 
-## CFEngine Documentation License
+## CFEngine documentation license
 
 The documentation is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-sa/3.0/deed.en_US).
 
-## 3rd Party Licenses and Libraries
+## 3rd party licenses and libraries
 
 CFEngine includes the following 3rd party libraries and components:
 

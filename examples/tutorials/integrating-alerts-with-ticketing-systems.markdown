@@ -18,7 +18,7 @@ As we are already using the JIRA ticketing system to get notified about issues w
 
 Note however that it is possible to expand on this by adjusting the Custom action script. For example, we could create reminder tickets, or even automatically close tickets when the alert clears.
 
-## Create a Custom action script that creates a new ticket
+## Create a custom action script that creates a new ticket
 
 1.  Log in to the console of your CFEngine hub, and make sure you have python and the jira python package installed (normally by running `pip install jira`).
 
@@ -30,9 +30,9 @@ Note however that it is possible to expand on this by adjusting the Custom actio
 
 5.  Verify the previous step created a ticket in JIRA. If not, recheck the information to typed in, connectivity and any output generated when running the script.
 
-## Upload the Custom action script to the Mission Portal
+## Upload the custom action script to the mission portal
 
-1. Log in to the Mission Portal of CFEngine, go to Settings (top right) followed by Custom notification scripts.
+1. Log in to the mission portal of CFEngine, go to Settings (top right) followed by Custom notification scripts.
 
 2. Click on the button to Add a script, upload the script and fill in the information as shown in the screenshot.
 
@@ -40,7 +40,7 @@ Note however that it is possible to expand on this by adjusting the Custom actio
 
 3.  Click save to allow the script to be used when creating alerts.
 
-## Create a new alert and associate the Custom action script
+## Create a new alert and associate the custom action script
 
 1. Log into the Mission Portal of CFEngine, click the Dashboard tab.
 

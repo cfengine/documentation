@@ -27,15 +27,15 @@ During the course of the instructions outlined in this guide, you will perform t
 * **Install CFEngine Enterprise onto a Policy Server and onto Hosts.**
 A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts.
 Hosts are clients that retrieve and execute promises.
-* **Bootstrap the Policy Server to itself and then bootstrap each of the Hosts to the Policy Server.** Bootstrapping establishes a trust relationship between the Policy Server
+* **Bootstrap the policy server to itself and then bootstrap each of the Hosts to the Policy Server.** Bootstrapping establishes a trust relationship between the Policy Server
 and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company.
 Bootstrapping completes the installation process.
-* **Log in to the Mission Portal.** The Mission Portal is a graphical user interface that allows you to verify the
+* **Log in to the mission portal.** The Mission Portal is a graphical user interface that allows you to verify the
 the actual state of all your Hosts, thus ensuring that your promises are being executed.
 * **Try out the Tutorials.** Links to three tutorials give you a head start on learning CFEngine.
 
 
-## 1. Download and install Enterprise on a Policy Server
+## 1. Download and install Enterprise on a policy server
 
 Please Note: Internet access is required from the host if you wish to use the quick install script.
 
@@ -47,7 +47,7 @@ $ wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterpr
 
 This script installs the latest CFEngine Enterprise Policy Server on your machine.
 
-## 2. Bootstrap the Policy Server
+## 2. Bootstrap the policy server
 
 The Policy Server must be bootstrapped to itself. Find the IP address of your Policy Server (type $ ifconfig).
 
@@ -81,7 +81,7 @@ $ wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterpr
 
 Note that this installation works on 64- and 32-bit machines.
 
-## 4. Bootstrap the Host to the Policy Server
+## 4. Bootstrap the host to the policy server
 
 All Hosts must be bootstrapped to the Policy Server in order to establish a connection between the Host and
 the Policy Server. Run the same commands that you ran in Step 3.
@@ -94,7 +94,7 @@ $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 
 The installation process is complete and CFEngine Enterprise is up and running on your system.
 
-## 5. Log in to the Mission Portal
+## 5. Log in to the mission portal
 
 The Mission Portal is immediately accessible. Connect to the Policy Server
 through your web browser at:
@@ -116,13 +116,13 @@ number you use in your **Vagrantfile** (e.g. policyserver.vm.network "forwarded_
 
 ## Tutorials
 
-* [Tutorial for Running Examples][Examples and tutorials#Tutorial for Running Examples]
+* [Tutorial for running examples][Examples and tutorials#Tutorial for running examples]
 
 * [Distribute files from a central location.][Distribute files from a central location]
 
   Whereas the first tutorial in this list teaches you how to deploy business policy
   through the Mission Portal, this advanced, command-line tutorial shows you how to distribute policy files from the Policy Server to all pertinent Hosts.
 
-## Recommended Reading
+## Recommended reading
 
 * [Tutorials and Examples][Examples and tutorials]

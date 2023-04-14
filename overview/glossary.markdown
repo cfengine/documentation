@@ -35,7 +35,7 @@ In CFEngine, a bundle refers to a collection of promises that has a name.
 A Configuration Management Database. A term coined as part of the IT Infrastructure Library (ITIL) as an outgrowth of an inventory database.
 
 #### Commands
-#### Common Control
+#### Common control
 #### Components
 
 Standalone applications include cf-agent, cf-promises, cf-runagent, cf-know, cf-report, cf-hub
@@ -89,7 +89,7 @@ Typically the policy server is set by the bootstrapping process.
 A policy is a set of intentions about the system, coded as a list of promises. A policy is not a standard, but the result of specific organizational management decisions.
 
 #### Precedence
-#### Promise Attributes
+#### Promise attributes
 #### Promise types
 #### Promise
 

@@ -335,7 +335,7 @@ classes:
 
 Knowing that something is not the case is not the same as not knowing whether
 something is the case. That a class is not set could mean either. See the note
-on [Negative Knowledge][classes and decisions].
+on [Negative knowledge][classes and decisions].
 
 ### scope
 

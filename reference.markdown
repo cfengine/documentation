@@ -22,4 +22,4 @@ page.
 * [All promise and body types][All promise and body types]
 * [Macros][Macros]
 
-See Also: [All Promise types][All promise and body types#All Promise types], [All Body Types][All promise and body types#All Body Types]
+See also: [All promise types][All promise and body types#All promise types], [All body Types][All promise and body types#All body Types]

@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-## Understanding Agility
+## Understanding agility
 
 We intuitively recognize agility as the capability to respond rapidly enough and
 flexibly enough to a difficult challenge. If we imagine an animal surviving in
@@ -195,7 +195,7 @@ Precision is maximized when:
 CFEngine is a fault tolerant system - it continues to work on what it can even
 when some parts of its model don't work out as expected[^6].
 
-Next: Efficiency, Previous: Precision, Up: Understanding Agility
+Next: Efficiency, Previous: Precision, Up: Understanding agility
 1.5 Comprehension
 
 The next challenge is concerns a human limitation. One of the greatest challenges in any organization lies in comprehending the system.
@@ -212,7 +212,7 @@ Our ability to comprehend behaviour depends on how predictable it is, i.e. how w
 
 To keep the number of contexts to a minimum, CFEngine avoids mixing up what policy is being expressed with how the promises are kept. It uses a declarative language to separate the what from the how. This allows ordinary users to see what was intended without having to know the meaning of how, as was the case when scripting was used to configure systems.
 
-Previous: Comprehension, Up: Understanding Agility
+Previous: Comprehension, Up: Understanding agility
 1.6 Efficiency
 
 Finally, if we think about the efficiency of a configuration, which is another way of estimating its simplicity, we are interested in how much work it takes to represent our intentions. There are two ways we can think about efficiency: the efficiency of the automated process and the human efficiency in deploying it.
@@ -241,7 +241,7 @@ General patterns play a role too in simplifying, because the reduce the number o
 
 Efficiency therefore plays a role in agility, because it affects the cost of change. Greater efficiency generally means greater speed, and more greater likelihood for precision.
 
-Next: Agility in your work, Previous: Understanding Agility, Up: Top
+Next: Agility in your work, Previous: Understanding agility, Up: Top
 2 Aspects of CFEngine that bring agility
 
 
@@ -301,7 +301,7 @@ that limber systems must prevail in IT's evolutionary jungle.
 * Desktop management
 * Web shops
 * Cloud providers
-* High Performance Computing
+* High performance computing
 * Government
 * Finance
 * Manufacturing
@@ -403,7 +403,7 @@ Precision:
     demand is probably the fastest rate of change.
 
 
-#### High Performance Computing
+#### High performance computing
 
 High Performance clusters are typically found in the oil and gas industry, in
 movie, financial, weather and aviation industries, and any other modelling
@@ -507,7 +507,7 @@ Precision:
     probe to detect microscopic fractures in the layers, one tool may just track
     it's position in line. Supply and demand, cost and revenue."
 
-### Separating What from How (DevOps)
+### Separating what from how (DevOps)
 
 
 If you have to designs a programmatic solution to a challenge, it will cost you

@@ -158,7 +158,7 @@ properly.
 Once you have integrated the policy into `def.json` it will run by all agents
 after they have updated their policy. Once the hub has had a chance to collect
 reports the `Owner` attribute will be available to select as a Table column for
-Inventory Reports. Custom attributes appear under the `User defined` section.
+Inventory reports. Custom attributes appear under the `User defined` section.
 
 **Note:** It may take up to 15 minutes for your custom inventory attributes to
 be collected and made available for reporting.

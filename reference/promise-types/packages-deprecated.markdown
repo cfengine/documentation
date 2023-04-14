@@ -265,7 +265,7 @@ packages:
 
 **Type:** `body package_method`
 
-**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### package_add_command
 
@@ -1109,7 +1109,7 @@ Update the package if an update is available (manager dependent).
 Equivalent to add if the package is not installed, and update if it is
 installed. Note: This attribute requires the specification of `package_version`
 and `package_select` in order to select the proper version to update to if
-available. *See Also* [package_latest][lib/packages.cf#package_latest]
+available. *See also* [package_latest][lib/packages.cf#package_latest]
 [package_specific_latest][lib/packages.cf#package_specific_latest] in the
 standard library.
 

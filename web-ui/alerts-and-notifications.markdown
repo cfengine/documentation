@@ -6,7 +6,7 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
-## Create a New Alert
+## Create a new alert
 
 * From the Dashboard, locate the rectangle with the dotted border.
 

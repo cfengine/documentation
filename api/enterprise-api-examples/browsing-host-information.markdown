@@ -12,7 +12,7 @@ reports via [/api/query][Query REST API#Execute SQL query] for this. however, cu
 gathered from `cf-monitord`) is not part of the SQL reports data model.
 
 
-## Example: Listing Hosts With A Given Context
+## Example: Listing hosts with a given context
 
 **Request**
 
@@ -41,7 +41,7 @@ gathered from `cf-monitord`) is not part of the SQL reports data model.
       ]
     }
 
-## Example: Looking Up Hosts By Hostname
+## Example: Looking up hosts by hostname
 
 Contexts, also known as classes, are powerful.  You can use them to
 categorize hosts according to a rich set of tags. For example, each
@@ -74,7 +74,7 @@ for presentability).
     }
 
 
-#### Example: Looking Up Hosts By IP
+#### Example: Looking up hosts by IP
 
 Similarly we can lookup the host with hostname
 `windows2008-2.test.cfengine.com` by IP as follows (lines split and indented
@@ -104,7 +104,7 @@ for presentability).
     }
 
 
-## Example: Removing Host Data
+## Example: Removing host data
 
 If a host has been decommissioned from a Hub, we can explicitly remove data
 associated with the host from the Hub, by issuing a DELETE request (lines
@@ -123,7 +123,7 @@ SHA=1c8fafe478e05eec60fe08d2934415c81a51d2075aac27c9936e19012d625cb8 -X DELETE
 
 **See also:** [Host REST API][Host REST API#remove host from the hub]
 
-## Example: Listing Available Vital Signs For A Host
+## Example: Listing available vital signs for a host
 
 Each host record on the Hub has a set of vital signs collected by `cf-monitord`
 on the agent. We can view the list of vitals signs from as host as follows
@@ -172,7 +172,7 @@ SHA=4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a/vital
         },
     }
 
-## Example: Retrieving Vital Sign Data
+## Example: Retrieving vital sign data
 
 Each vital sign has a collected time series of values for up to one week. Here
 we retrieve the time series for the `mem_free` vital sign at host

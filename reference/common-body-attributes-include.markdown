@@ -1,8 +1,8 @@
-#### Common Body Attributes
+#### Common body attributes
 
 Common body attributes are available to all body types. Full details for common
 body attributes can be found in the
-[Common Body Attributes section][Promise types#Common Body Attributes]
+[Common body attributes section][Promise types#Common body attributes]
 of the [Promise types] page. The common attributes are as
 follows:
 

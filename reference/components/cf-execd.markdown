@@ -32,7 +32,7 @@ network.
 
 [%CFEngine_include_snippet(cf-execd.help, [\s]*--[a-z], ^$)%]
 
-## Control Promises
+## Control promises
 
 These body settings determine the behavior of `cf-execd`,including scheduling
 times and output capture to `WORKDIR/outputs` and relay via email.
