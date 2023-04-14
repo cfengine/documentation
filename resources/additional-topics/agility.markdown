@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-# Understanding Agility
+## Understanding Agility
 
 We intuitively recognize agility as the capability to respond rapidly enough and
 flexibly enough to a difficult challenge. If we imagine an animal surviving in
@@ -35,7 +35,7 @@ associated with a lack of agility: a blow, a fall or a loss.
 * Comprehension
 * Efficiency
 
-## What make agility possible?
+### What make agility possible?
 
 
 To understand agility, we have to understand time and the capacity for change.
@@ -62,7 +62,7 @@ can help with this, if we adopt sound practices.
 Intuitively, we understand agility to be related to our capacity to respond to a
 situation. Let's try to pin this idea down more precisely.
 
-## The capacity of a system
+### The capacity of a system
 
 The capacity of a system is defined to be its maximum rate of change. Most
 often, this refers to speed of the system response to a single request1.
@@ -70,7 +70,7 @@ often, this refers to speed of the system response to a single request1.
 In engineering, capacity is measured in changes per second, so it represents the
 maximum speed of a system within a single thread of activity2.
 
-## Speed
+### Speed
 
 Speed is the rate at which change takes place. For a configuration tool like
 CFEngine, speed can be measured either as
@@ -160,7 +160,7 @@ agility. Remarkably this is usually unexpected for most practitioners, and most
 of system planning goes into first time deployment, rather than maintaining
 operational state.
 
-## Precision
+### Precision
 
 Acting quickly is not enough: we also need to be accurate in responding to
 change[^4]. We need to be able to:
@@ -288,7 +288,7 @@ We can now summarize some qualities of CFEngine that favour agility:
 
 * Increasing system capacity - by scaling
 
-## What agility means in different environments
+### What agility means in different environments
 
 Let's examine some example cases where agility plays a role. Agility only has
 meaning relative to an environment, so in the following sections, we cite the
@@ -306,7 +306,7 @@ that limber systems must prevail in IT's evolutionary jungle.
 * Finance
 * Manufacturing
 
-### Desktop management
+#### Desktop management
 
 "The desktop space can be a very volatile environment, with multiple platforms."
 
@@ -347,7 +347,7 @@ Precision:
     greatly reduce the time needed to return to the most current enterprise
     build.
 
-### Web shops
+#### Web shops
 
 Modern web-based companies often base their entire financial operations around
 an active web site. Down-time of the web service is mission critical.
@@ -386,7 +386,7 @@ Precision:
     Customization and individuality is a large part of a website's business
     competitiveness. Maintaining precise
 
-### Cloud providers
+#### Cloud providers
 
 Speed:
 
@@ -403,7 +403,7 @@ Precision:
     demand is probably the fastest rate of change.
 
 
-### High Performance Computing
+#### High Performance Computing
 
 High Performance clusters are typically found in the oil and gas industry, in
 movie, financial, weather and aviation industries, and any other modelling
@@ -434,7 +434,7 @@ Precision:
     impossible to make a precise change when you don't fully comprehend the
     environment."
 
-### Government
+#### Government
 
 Speed:
 
@@ -452,7 +452,7 @@ Precision:
     Finance is big money trying to make more big money. Government is focused
     more on compliance with its own regulations."
 
-### Finance
+#### Finance
 
 Speed:
 
@@ -474,7 +474,7 @@ Precision:
     past, but this will have to change as the rest of the world's IT services
     accelerate.
 
-### Manufacturing
+#### Manufacturing
 
 SCADA (supervisory control and data acquisition) generally refers to industrial
 control systems (ICS): computer systems that monitor and control industrial,
@@ -507,7 +507,7 @@ Precision:
     probe to detect microscopic fractures in the layers, one tool may just track
     it's position in line. Supply and demand, cost and revenue."
 
-## Separating What from How (DevOps)
+### Separating What from How (DevOps)
 
 
 If you have to designs a programmatic solution to a challenge, it will cost you
@@ -626,7 +626,7 @@ bundle agent example
 }
 ```
 
-## How abstraction improves agility
+### How abstraction improves agility
 
 Abstraction allows us to turn special cases into general patterns. This leads to
 a compression of information, as we can make defaults for the general patterns,
@@ -662,7 +662,7 @@ need the promise, with only a small amount of work.
 Thus, simplicity is assured by having consistency of interface and low cost
 barrier to changing the meaning of the definition.
 
-## Increasing system capacity (by scaling)
+### Increasing system capacity (by scaling)
 
 Capacity in IT infrastructure is increased by increasing machine power. Today,
 at the limit of hardware capacity, this typically means increasing the number of
@@ -702,7 +702,7 @@ lowest-common-denominator standardization.
 Scalability is addressed in a separate document: Scale and Scalability, so we
 shall not discuss it further here.
 
-# Agility in your work
+## Agility in your work
 
 * Easy versus simple
 * How does complexity affect agility?
@@ -711,7 +711,7 @@ shall not discuss it further here.
 * What does agility cost?
 * Who is responsible for agility?
 
-## Easy versus simple
+### Easy versus simple
 
 Just as we separate goals from actions, and strategy from tactics, so we can
 separate what is easy from what is simple. Easy brings short-term gratification,
@@ -738,7 +738,7 @@ only what you want to happen. This is always done by using the same kinds of
 declarations, based on the same model. You don't need to learn new principles
 and ideas, just more of the same.
 
-## How does complexity affect agility?
+### How does complexity affect agility?
 
 
 In the past[^11], it was common to manage change by making everything the same.
@@ -803,7 +803,7 @@ However, the ability to respond to complex scenarios often requires us to dabble
 with diversity. Avoiding it merely creates a lack of agility, as one is held
 back by the need to over-simplify.
 
-## An effective understanding helps agility
+### An effective understanding helps agility
 
 
 All configuration issues, including fitness for purpose, boil down to three
@@ -820,7 +820,7 @@ In configuration `what' represents transitory knowledge, while `how' is often
 more lasting and can be absorbed into the infrastructure. The consistency and
 repairability of `how' makes it simpler to change what without risk.
 
-## Maximizing business imperatives
+### Maximizing business imperatives
 
 Agility allows companies and public services to compete and address the needs of
 continuous service improvement. This requires insight into IT operations from
@@ -859,7 +859,7 @@ to work. Thus one is reduced to a more even state of affairs: learning to work
 with the environment `as is', with clear expectations of what is possible and
 controlling only certain parts on which crucial things depend.
 
-## What does agility cost?
+### What does agility cost?
 
 CFEngine is designed to have a low Total Cost of Ownership, by being
 exceptionally lightweight and conceptually simple. The investment in CFEngine is
@@ -878,7 +878,7 @@ replacement the clock-time required for system updates went from 45 minutes to
 The total cost of providing for agility can be costly or it can be cheap. By
 design, CFEngine aims to make scale and agility inexpensive in the long run.
 
-## Who is responsible for agility?
+### Who is responsible for agility?
 
 The bottom line is: you are! Diversity and customization are basic freedoms that
 user-driven services demand in today's world, and having the agility to meet

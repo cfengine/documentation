@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-# What is modularity?
+## What is modularity?
 
 Modularity is the ability to separate concerns within a total process, and hide
 the details of the different concerns in different containers. In CFEngine, this
@@ -15,7 +15,7 @@ and turned into generic components that offer a service. We often talk about
 black boxes, grey boxes or white boxes depending on the extent to which the user
 of a service can see the details within the containers.
 
-# What is orchestration?
+## What is orchestration?
 
 Orchestration is the ability to coordinate many different processes in time and
 space, around a system, so that the sum of those processes yields a harmonious
@@ -36,7 +36,7 @@ information from the policy server (conductor). The coupling between the agents
 is weak - there is slack that makes the behaviour robust to minor errors in
 communication or timing.
 
-# How does CFEngine deal with modularity and orchestration?
+## How does CFEngine deal with modularity and orchestration?
 
 Promise Theory provides simple principles for hiding details: agents are
 considered to reveal a kind of service interface to peers, that is advertised by
@@ -55,13 +55,13 @@ might also need to cooperate because they provide services to one another. The
 principles are the same in both cases, but the confusion between them is
 typically the reason why large systems do not scale well.
 
-# Levels of policy abstraction
+## Levels of policy abstraction
 
 CFEngine offers a number of layers of abstraction. The most fundamental atom in
 CFEngine is the promise. Promises can be made about many system issues, and you
 described in what context promises are to be kept.
 
-## Menu level
+### Menu level
 
 At this high level, a user `selects' from a set of pre-defined `services' (or
 bundles in CFEngine parlance). In commercial editions, users may view the set of
@@ -98,7 +98,7 @@ The resulting menu of services can be browsed in the Mission Portal interface.
 A human-readable Service Catalogue generated from technical specifications shows
 what goals are being attended to automatically
 
-## Bundle level
+### Bundle level
 
 At this level, users can switch on and off predefined features, or re-use
 standard methods, e.g. for editing files:
@@ -117,7 +117,7 @@ bundlesequence => {
 
 The set of bundles that can be selected from is extensible by the user.
 
-## Promise level
+### Promise level
 
 This is the most detailed level of configuration, and gives full convergent
 promise behaviour to the user. At this promise level, you can specificy every
@@ -146,7 +146,7 @@ files:
 }
 ```
 
-## Spread-sheet level (data-driven)
+### Spread-sheet level (data-driven)
 
 CFEngine community and commercial editions support a kind of spreadsheet. In a
 spreadsheet approach, you create only the data to be inserted into predefined
@@ -154,7 +154,7 @@ promises. The data are entered in tabular form, and may be browsed in the web
 interface. This form of entry is preferred in some environments, especially on
 the Windows platform.
 
-# Is CFEngine patch-oriented or package-oriented?
+## Is CFEngine patch-oriented or package-oriented?
 
 Some system management products are patching systems. They package lumps of
 software and configuration along with scripts. If something goes wrong they
@@ -171,7 +171,7 @@ one bit of a flag in each file in a set of directories. The power to express
 sophisticated patterns is what makes CFEngine's approach both non-intrusive and
 robust.
 
-# High level services in CFEngine
+## High level services in CFEngine
 
 CFEngine is designed to handle high level simplicity (without sacrificing low
 level capability) by working with configuration patterns, after all
@@ -250,7 +250,7 @@ services:
 }
 ```
 
-# Hiding details
+## Hiding details
 
 Resource abstraction, or hiding system specific details inside a kind of
 grey-box, is just another service as far as CFEngine is concerned - and we
@@ -297,7 +297,7 @@ decisions, meaning that minor changes in operating system versions require basic
 re-coding of the software. CFEngine does not make decisions for you without your
 permission.
 
-# Black, grey and white box encapsulation in CFEngine
+## Black, grey and white box encapsulation in CFEngine
 
 CFEngine's ability to abstract system decisions as promises also applies to
 bundles of promises. After all, we can package promises as bumper compendia for
@@ -358,7 +358,7 @@ commands:
 }
 ```
 
-# Bulk operations are handled by repeating patterns over lists
+## Bulk operations are handled by repeating patterns over lists
 
 The power of CFEngine is to be able to handle lists of similar patterns in a
 powerful way. You can also wrap the whole experience in a method-bundle, and we
@@ -429,7 +429,7 @@ reports:
 }
 ```
 
-# Ordering operations in CFEngine
+## Ordering operations in CFEngine
 
 Ordering of operations is less important than you probably think. We are taught
 to think of computing as an linear sequence of steps, but this ignores a crucial
@@ -556,7 +556,7 @@ Q: ".../bin/echo four": four
 Q: ".../bin/echo five": five
 ```
 
-# Distributed Orchestration between hosts with CFEngine Enterprise
+## Distributed Orchestration between hosts with CFEngine Enterprise
 
 CFEngine Enterprise edition adds many powerful features to CFEngine, including a
 decentralized approach to coordinating activities across multiple hosts. Some
@@ -570,7 +570,7 @@ location, but this has two problems:
 With CFEngine Nova there are are both decentralized network approaches to this
 problem, and probabilistic methods that do not require the network at all.
 
-## Basic communication methods for orchestration
+### Basic communication methods for orchestration
 
 The two examples below illustrate the basic syntax constructions for
 communication using systems. We can pass class data and variable data between
@@ -739,7 +739,7 @@ R: GOT knowedge scalar value of my test_scalar, can expand variables here - cflu
 R: GOT persistent scalar 1
 ```
 
-## Run job or reboot only if n out m systems are running
+### Run job or reboot only if n out m systems are running
 
 The ability to base local promises on global knowledge seems superficially
 attractive in some cases. As a strategy this way of thinking requires a lot of
@@ -825,7 +825,7 @@ access:
 }
 ```
 
-# The self-healing chain - inverse Dominoes
+## The self-healing chain - inverse Dominoes
 
 A self-healing chain is the opposite of a dominoe event. If a part of the chain
 is `down', it will be revived. If these events depend on one another, then the
@@ -1017,7 +1017,7 @@ R: tier 3 is ok
 R: The Tower is standing
 ```
 
-## A Domino sequence
+### A Domino sequence
 
 A different kind of orchestration is a domino cascade, that starts from some
 initial trigger, and causes a change in one host that causes a change in the
@@ -1207,7 +1207,7 @@ chain multiplied by the run-interval, if normal cf-execd splaytime is used.
 Without any splaying, the average time will be the run interval multiplied by
 the chain length. The completion time could be increased by using cf-runagent.
 
-## A Chinese Dragon star pattern
+### A Chinese Dragon star pattern
 
 The Chinese dragon darts back and forth between different hosts, forming a chain
 of events, and leaving a trail behind it. This pattern is much like the Domino

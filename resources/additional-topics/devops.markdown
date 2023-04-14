@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-# What is DevOps?
+## What is DevOps?
 
 DevOps is a term coined by Patrick Debois in 2009, from an amalgamation of
 Development and Operations. It expresses a change in the way companies are
@@ -17,7 +17,7 @@ infrastructure. It is about giving software developers more influence over the
 IT infrastructure their applications run on, and allowing change at the same
 speed as agile development teams.
 
-# Why is DevOps happening now?
+## Why is DevOps happening now?
 
 
 The proliferation of Free and Open Source software has put powerful software
@@ -37,7 +37,7 @@ Traditional IT management methods can be perceived as too slow in such an
 environment. An important part of DevOps is that it naturally encompasses the
 idea of business integration - or IT for a purpose.
 
-# Should Web and IT management be closely related?
+## Should Web and IT management be closely related?
 
 Web frameworks have seen the rise of languages like PHP, Java, Python and Ruby,
 all of which offer frameworks for fast deployment. Languages that work well for
@@ -62,7 +62,7 @@ load balancers in web farms.
 At CFEngine, we believe in lightweight management - made as simple as possible,
 but no simpler.
 
-# How do we make controlled change faster?
+## How do we make controlled change faster?
 
 
 It is important to be able to make changes quickly. Automation can implement
@@ -82,7 +82,7 @@ requirements2. All web-based companies using credit cards will know about the
 need for PCI-DSS compliance, for instance. And US-traded companies will know
 about Sarbanes-Oxley (SOX).
 
-# What role does CFEngine play in DevOps?
+## What role does CFEngine play in DevOps?
 
 The challenges for IT management today are about increasing complexity (driven
 by the circuitry of online applications) and increasing scale.
@@ -105,7 +105,7 @@ The advantage CFEngine brings is that users can have clear expectations about
 their systems at all times. Today's programmers are more sophisticated than
 script monkeys.
 
-# Getting used to declarative expression
+## Getting used to declarative expression
 
 CFEngine uses a pragmatic mixture of the declarative (functional) and imperative
 to represent configurations. Programmers are taught mainly imperative
@@ -120,7 +120,7 @@ optimized for clarity.
 The main goals of CFEngine are convergence to a desired state, repeatability and
 clear intentions.
 
-## Expressing actions or tasks in CFEngine
+### Expressing actions or tasks in CFEngine
 
 Most of the actionable items have builtin operational support, which is designed
 to be convergent and safely repeatable. To keep declarations clear, CFEngine
@@ -153,7 +153,7 @@ bundle agent SomeUserDefinedName
 }
 ```
 
-## Expressing conditionals in CFEngine
+### Expressing conditionals in CFEngine
 
 CFEngine uses the idea of contexts (also called classes or class-contexts3) to
 address declarations to certain environments. The contexts or classes are
@@ -233,7 +233,7 @@ decentralized manner avoiding clogging of network communications that befuddles
 many centralized approaches. This keeps CFEngine execution very fast and with a
 low overhead.
 
-## Expressing loops in CFEngine
+### Expressing loops in CFEngine
 
 Lists and loops go hand in hand, and they are a very effective way of reducing
 syntax and simplifying the expression of intent. Saying `do this to all the
@@ -333,7 +333,7 @@ R: Hello b 4 z
 R: Hello c 4 z
 ```
 
-## Expressing subroutines in CFEngine
+### Expressing subroutines in CFEngine
 
 Subroutines are used for both expressing and reusing parameterizable chunks of
 code, and for naming chunks for better management of intention. In CFEngine you
@@ -372,7 +372,7 @@ commands:
 The use of methods brings multi-dimensional patterns to convergent configuration
 management.
 
-# Using CFEngine to integrate software components
+##Using CFEngine to integrate software components
 
 Integration of software components may be addressed with a variety of approaches
 and techniques:

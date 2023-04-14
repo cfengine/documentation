@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-# CFEngine STIGs Compliance Example
+## CFEngine STIGs Compliance Example
 
 The Security Technical Implementation Guides (STIGs) are a method for
 standardized secure installation and maintenance of computer software and
@@ -61,7 +61,7 @@ compliance. What are the different parts of this policy example?
   Explanation of the various policy components (human readable), referencing
   STIGs requirements id (such as ```GEN000560```)
 
-# What are the terms of this STIGs example?
+## What are the terms of this STIGs example?
 
 This example policy is intended as a practical example of how to achieve STIGs
 compliance within the CFEngine framework. It is provided on an as-is basis, with
