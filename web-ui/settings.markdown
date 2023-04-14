@@ -119,18 +119,18 @@ class.
 
 User three will only be able to see hosts that have reported the `ubuntu` class.
 
-### Predefined Roles
+### Predefined roles
 
 * ```admin``` - The admin role can see everything and do anything.
 * ```cf_remoteagent``` - This role allows execution of `cf-runagent`.
 
-### Default Role
+### Default role
 
 To set the default role, click Settings -> User management -> Roles. You can then select which role will be the default role for new users.
 
 <img src="roles-list.png" alt="DefaultRoleSelecting" width="700px">
 
-**Behaviour of Default Role:**
+**Behaviour of default role:**
 
 Any new users created in Mission Portal's local user database will have this new role assigned.
 

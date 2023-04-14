@@ -18,7 +18,7 @@ https://docs.google.com/document/d/1CeRR8cuMtrrr0X27gzVzP2ndiU0HuHvo7dJT2vIWfp0/
 
 The [General installation][General installation] instructions provide the detailed steps for installing CFEngine, which are generally the same steps to follow for CFEngine Enterprise, with the exception of license keys (if applicable), and also some aspects of post-installation and configuration.
 
-### Installing Enterprise Licenses
+### Installing Enterprise licenses
 
 Before you begin, you should have your license key, unless you only
 plan to use the free 25 node license. The installation instructions
@@ -26,7 +26,7 @@ will be provided with the key.
 
 ## Post-install configuration
 
-### Change Email Setup After CFEngine Enterprise Installation
+### Change email setup after CFEngine Enterprise installation
 
 For Enterprise 3.6 local mail relay is used, and it is assumed the server has a proper mail setup.
 

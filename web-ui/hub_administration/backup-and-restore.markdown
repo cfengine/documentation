@@ -8,7 +8,7 @@ tags: [cfengine enterprise, hub administration, backup, restore]
 With policy stored in version control there are few things that should be
 preserved in your backup and restore plan.
 
-## Hub Identity
+## Hub identity
 
 CFEngines trust model is based on public and private key exchange. In order to
 re-provision a hub and for remote agents to retain trust the hubs key pair must
@@ -19,7 +19,7 @@ Include `$(sys.workdir)/ppkeys/localhost.pub` and
 
 **Note:** This is the most important thing to backup.
 
-## Hub License
+## Hub license
 
 Enterprise hubs will collect for up to the licensed number of hosts. When
 re-provisioning a hub you will need the license that matches the hub identity in
@@ -27,7 +27,7 @@ order to be able to collect reports for more than 25 hosts.
 
 Include `$(sys.workdir)/licenses` in your backup plan.
 
-## Hub Databases
+## Hub databases
 
 Data collected from remote hosts and configuration information for Mission
 Portal is stored on the hub in PostgreSQL which can be backed up and restored
@@ -36,7 +36,7 @@ using standard tools.
 If you wish to rebuild a hub and
 restore the history of policy outcomes you must backup and restore.
 
-### Host Data
+### Host data
 
 `cfdb` stores data related to policy runs on your hosts for example host inventory.
 

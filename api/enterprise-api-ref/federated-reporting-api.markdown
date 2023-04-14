@@ -159,7 +159,7 @@ HTTP 202 ACCEPTED
 
 ## Enable hub for federated reporting
 
-### Enable hub as a Superhub
+### Enable hub as a superhub
 
 **URI:** https://hub.cfengine.com/api/fr/setup-hub/superhub
 
@@ -172,7 +172,7 @@ HTTP 202 ACCEPTED
 ```
 
 
-### Enable hub as a Feeder
+### Enable hub as a feeder
 
 **URI:** https://hub.cfengine.com/api/fr/setup-hub/feeder
 

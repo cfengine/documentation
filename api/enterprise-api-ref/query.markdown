@@ -87,7 +87,7 @@ API performance depend on the query result size, to achieve fastest results cons
 }
 ```
 
-**Example usage:**  `Synchronous Example: Listing Hostname and IP for Ubuntu Hosts`
+**Example usage:**  `Synchronous Example: Listing hostname and IP for Ubuntu hosts`
 
 ## Schedule SQL query as long running job
 

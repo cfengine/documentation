@@ -36,7 +36,7 @@ See also:
 
 ## Query builder
 
-Users not familiar with SQL syntax can easily create their own custom reports in this interface. Please note that query builder can be [extended with your custom data][Extending Query builder in Mission portal#How to add new table to Query builder].
+Users not familiar with SQL syntax can easily create their own custom reports in this interface. Please note that query builder can be [extended with your custom data][Extending Query builder in Mission portal#How to add new table to query builder].
 
 * Tables - Select the data tables you want include in your report first.
     * When more than one table is selected the Query builder opens modal window to select the ([join strategy  between tables](https://www.postgresql.org/docs/current/tutorial-join.html)):
