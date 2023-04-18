@@ -88,7 +88,7 @@ There are several things to notice:
     -   CFEngine makes a copy of the file you you want to edit.
     -   CFEngine makes all the edits in the **copy** of the file. The
         filename is the same as your original file with the extension
-        .cf-after-edit appended.
+        `.cf-after-edit` appended.
     -   After all promises are complete (the `vars`, `classes`, `delete_lines`, `field_edits`,
         `insert_lines`, `replace_patterns`, and finally `reports` promises),
         CFEngine checks to see if the new file is the same as the
@@ -104,7 +104,7 @@ There are several things to notice:
     operating system), any application program will either see the old
     version of the file or the new one. There is no "window of
     opportunity" where a partially edited file can be seen (unless an
-    application intentionally looks for the .cf-after-edit file).
+    application intentionally looks for the `.cf-after-edit` file).
     Problems during editing (such as disk-full or permission errors) are
     likewise detected, and CFEngine will not rename a partial file over
     your original.
