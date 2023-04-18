@@ -43,6 +43,23 @@ Version: CFEngine {{#classes.enterprise}}Enterprise{{/classes.enterprise}} {{var
 ```
 {% endraw %}
 
+## How do I render a section only if a given class is not defined?
+
+In the mustache documentation this is referred to as an *inverted section*.
+
+In this mustache example the word ```Enterprise``` will only be rendered if the
+class ```cfengine_enterprise``` is defined and the word ```Community``` will
+only be rendered if the class ```cfengine_enterprise``` is not defined.
+
+This template should not be passed a data container; it uses the `datastate()`
+of the CFEngine system. That's where `classes.cfengine_enterprise` and
+`vars.sys.cf_version` came from.
+
+{% raw %}
+```
+Version: CFEngine {{#classes.cfengine_enterprise}}Enterprise{{/classes.cfengine_enterprise}}{{^classes.cfengine_enterprise}}Community{{/classes.cfengine_enterprise}} {{vars.sys.cf_version}}
+```
+{% endraw %}
 
 ## How do I use class expressions?
 
