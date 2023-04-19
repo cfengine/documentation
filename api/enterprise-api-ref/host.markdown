@@ -60,7 +60,7 @@ Host API allows to access host specific information.
 * **id**
     Unique host identifier.
 * **hostname**
-    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and Settings REST API#Update settings].
+    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and settings REST API#Update settings].
 * **ip**
     IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
 * **lastreport**
@@ -103,7 +103,7 @@ Host API allows to access host specific information.
 * **id**
     Unique host identifier.
 * **hostname**
-    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and Settings REST API#Update settings].
+    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and settings REST API#Update settings].
 * **ip**
     IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
 * **lastreport**
@@ -139,7 +139,7 @@ The hostkey is then removed from:
 
 Note: There is a record of the host retained that includes the time when the host was deleted and this record also prevents further collection from this host identity.
 
-**See also:** [Example removing host data][Browsing Host Information#example: removing host data]
+**See also:** [Example removing host data][Browsing host information#example: removing host data]
 
 ## Hosts list grouped by hard classes
 

@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Best Practices
+title: Best practices
 sorting: 100
 published: true
 tags: [cfengine enterprise, best practices, user interface, mission portal]
 ---
 
-## Policy Style Guide ##
+## Policy style guide ##
 
-When writing CFEngine policy using our [Policy Style Guide][Policy Style Guide] helps make your policy easily understood, debuggable and maintainable.
+When writing CFEngine policy using our [Policy style guide][Policy style guide] helps make your policy easily understood, debuggable and maintainable.
 
-## Version Control and Configuration Policy ##
+## Version control and Configuration Policy ##
 
 CFEngine users version their policies.  It's a reasonable, easy thing
 to do: you just put `/var/cfengine/masterfiles` under version control
@@ -54,7 +54,7 @@ infrastructure.
 
 ### How to enable it ###
 
-Follow detailed instructions in the [Policy Deployment][Policy Deployment] guide.
+Follow detailed instructions in the [Policy deployment][Policy deployment] guide.
 
 ## Scalability ##
 

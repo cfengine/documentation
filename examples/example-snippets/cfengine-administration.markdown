@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Administration Examples
+title: Administration examples
 published: true
 sorting: 2
 tags: [Examples, CFEngine Administration]
 ---
 
-* [Ordering promises][Administration Examples#Ordering promises]
-* [Aborting execution][Administration Examples#Aborting execution]
+* [Ordering promises][Administration examples#Ordering promises]
+* [Aborting execution][Administration examples#Aborting execution]
 
 ## Ordering promises
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Layers of Abstraction in Policy
+title: Layers of abstraction in policy
 published: true
 sorting: 2
 tags: [overviews, writing policy, policy]

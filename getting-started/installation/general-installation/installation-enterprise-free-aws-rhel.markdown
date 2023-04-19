@@ -189,7 +189,7 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 
 ### Tutorials ###
 
-* [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
+* [Tutorial for Running Examples][Examples and tutorials#Tutorial for Running Examples]
 
 * [Distribute files from a central location.][Distribute files from a central location]
 
@@ -198,4 +198,4 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 
 ### Recommended Reading ###
 
-* [Tutorials and Examples][Examples and Tutorials]
+* [Tutorials and Examples][Examples and tutorials]

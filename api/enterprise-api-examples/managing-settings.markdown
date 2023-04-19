@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Managing Settings
+title:  Managing settings
 published: true
 sorting: 30
 tags: [examples, enterprise, rest, api, reporting, settings, ldap]

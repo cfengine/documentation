@@ -34,7 +34,7 @@ so it's available out of the box in either Community or Enterprise.
 
 In the Enterprise Mission Portal, you can then make a report for
 "Ports listening" across all your machines. For more details, see
-[Enterprise Reporting][Enterprise Reporting]
+[Enterprise reporting][Enterprise reporting]
 
 Class tags work exactly the same way, you just apply them to a
 `classes` promise with the `meta` attribute.
@@ -102,12 +102,12 @@ This will create class `x` and variable `a` with tag `inventory`.
 Then it will create class `y` and variable `b` with tags `report` and
 `attribute_name=My vars`.
 
-## Enterprise Reporting with tags
+## Enterprise reporting with tags
 
 In CFEngine Enterprise, you can build reports based on tagged variables and
 classes.
 
-Please see [Enterprise Reporting][Enterprise Reporting] for a full tutorial,
+Please see [Enterprise reporting][Enterprise reporting] for a full tutorial,
 including troubleshooting possible errors. In short, this is an extremely easy
 way to categorize various data accessible to the agent.
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Extending Query Builder in Mission Portal
+title: Extending query builder in Mission Portal
 published: true
 sorting: 90
 tags: [faq, mission portal, hub administration, query builder]

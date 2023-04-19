@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Enterprise Reporting
+title: Enterprise reporting
 sorting: 50
 published: true
 tags: [cfengine enterprise, user interface, mission portal]
@@ -10,7 +10,7 @@ CFEngine Enterprise can report on promise outcomes (changes made by `cf-agent`
 across your infrastructure), variables, classes, and measurements taken by
 `cf-monitord`. Reports cover fine grained policy details, explore all the
 options by checking out the [custom reports section][Reporting UI#query builder]
-of the Enterprise Reporting module.
+of the Enterprise reporting module.
 
 Specifically which information allowed to be collected by the hub for reporting
 is configured by [`report_data_select` bodies][access#report_data_select].
@@ -39,7 +39,7 @@ Framework). The MPF includes ```inventory``` and ```report``` in
 
 If it's desirable for the classes and variables to be available in specialized
 inventory subsystem then it should be tagged with `inventory` and given an
-additional `attribute_name=` tag as described in the [custom inventory example][Custom Inventory].
+additional `attribute_name=` tag as described in the [custom inventory example][Custom inventory].
 
 ```cf-hub``` collects information resulting from all other promise types (except
 `reports`, and `defaults` which cf-hub does not collect for). This can be

@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Import & Export API
+title: Import & export API
 published: true
 tags: [reference, enterprise, API, import, export]
 ---
 
-Import & Export API provides users the ability to transfer Mission Portal data between hubs.
+Import & export API provides users the ability to transfer Mission Portal data between hubs.
 
 **See also:** [Export/Import Settings UI][Settings#Export/Import]
 
@@ -91,7 +91,7 @@ HTTP 200 Ok
 
 * **item_id** *(array)*
     Item id to be exported.
-    List of item ids you can obtain through [List of items to export][Import & Export API#Get available items to export]
+    List of item ids you can obtain through [List of items to export][Import & export API#Get available items to export]
         call described below.
 
 * **encryptionKey** *(string)*

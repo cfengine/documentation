@@ -169,4 +169,4 @@ cfbs build && cf-remote deploy
 
 In the next tutorial we will look more at the reporting and Web UI, called Mission Portal:
 
-[Reporting and Web UI][Reporting and Web UI]
+[Reporting and web UI][Reporting and web UI]

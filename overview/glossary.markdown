@@ -49,7 +49,7 @@ CFEngine's data types describe what a variable can contain.  A variable can't be
 #### Directories ####
 #### Distribution ####
 #### Enterprise API ####
-#### Enterprise Reporting ####
+#### Enterprise reporting ####
 #### File Structure ####
 #### Frequency ####
 #### Functions ####
@@ -68,7 +68,7 @@ A software component in CFEngine Enterprise that acts as a single point of manag
 #### Monitoring ####
 #### Namespaces ####
 #### Networking ####
-#### Normal Ordering ####
+#### Normal ordering ####
 #### Operators ####
 #### Pattern Matching ####
 
@@ -90,7 +90,7 @@ A policy is a set of intentions about the system, coded as a list of promises. A
 
 #### Precedence ####
 #### Promise Attributes ####
-#### Promise Types ####
+#### Promise types ####
 #### Promise ####
 
 The CFEngine software manages every intended system outcome as "promises" to be kept. A CFEngine Promise corresponds roughly to a rule in other software products, but importantly promises are always things that can be kept and repaired continuously, on a real time basis, not just once at install-time.
@@ -114,11 +114,11 @@ In CFEngine, cf-serverd is a software component that serves files from one compu
 
 The special server that others consult for the latest policies is called the Policy Server.
 
-#### Special Variables ####
+#### Special variables ####
 #### Standard Library ####
 
 The standard library lives in a `masterfiles/lib` subdirectory.  It's a collection of useful bundles and bodies you can use.
 
 #### Syntax ####
 #### Variables ####
-#### Version Control ####
+#### Version control ####

@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Enterprise ChangeLog
+title: Enterprise changelog
 published: true
 sorting: 30
 tags: [what's new, enterprise]
 ---
 
-**See also:** [Core Changelog][Changelog], [Masterfiles Changelog][Masterfiles Changelog]
+**See also:** [Core changelog][Changelog], [Masterfiles changelog][Masterfiles changelog]
 
 <pre>
 {% raw %}

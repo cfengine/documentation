@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reporting Architecture
+title: Reporting architecture
 published: true
 sorting: 10
 tags: [manuals, enterprise, reporting, architecture, cf-hub]

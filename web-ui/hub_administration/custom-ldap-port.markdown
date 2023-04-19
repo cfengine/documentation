@@ -13,7 +13,7 @@ encryption. This controls the encryption and the port to connect to.
 If you want to configure LDAP authentication to use a custom port you can do so
 via the Status and Setting REST API.
 
-Status and Settings REST API
+Status and settings REST API
 This example shows using jq to preserve the existing settings and update the
 SSL LDAP port to `3269`.
 

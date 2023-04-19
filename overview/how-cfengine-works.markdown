@@ -19,7 +19,7 @@ compliance and easy reporting. Using CFEngine, can be described in the following
 As an end-user you can use the CFEngine Domain Specific Language (DSL) to define
 desired states. CFEngine allows you to define a variety of states ranging from
 process management to software deployment and file integrity. You can check out
-CFEngine Promise Types to get an idea of the most common states you can define.
+CFEngine Promise types to get an idea of the most common states you can define.
 
 Normally, all desired states are stored in `.cf` text-files in the
 `/var/cfengine/masterfiles` directory on one or more central distribution points,

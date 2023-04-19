@@ -7,7 +7,7 @@ tags: [reference, enterprise, REST, API, SQL, reporting, URI]
 
 In case of a need for full flexibility, Query API allow users to execute SQL queries on CFEngine Database.
 
-Database schema available can be found [here][SQL Schema].
+Database schema available can be found [here][SQL schema].
 
 ## Execute SQL query
 

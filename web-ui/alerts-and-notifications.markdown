@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Alerts and Notifications
+title: Alerts and notifications
 sorting: 40
 published: true
 tags: [cfengine enterprise, user interface, mission portal]

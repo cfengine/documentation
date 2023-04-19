@@ -1,21 +1,21 @@
 ---
 layout: default
-title: Writing and Serving Policy
+title: Writing and serving policy
 published: true
 sorting: 100
 ---
 
-* [About Policies and Promises][Writing and Serving Policy#About Policies and Promises]
-	* [What Are Promises][Writing and Serving Policy#What Are Promises]
-	* [The Value of a Promise][Writing and Serving Policy#The Value of a Promise]
-	* [Anatomy of a Promise][Writing and Serving Policy#Anatomy of a Promise]
-* [Policy Workflow][Writing and Serving Policy#Policy Workflow]
-* [How Promises Work][Writing and Serving Policy#How Promises Work]
-	* [Summary for Writing, Deploying and Using Promises][Writing and Serving Policy#Summary for Writing, Deploying and Using Promises]
-* [Best Practices][Writing and Serving Policy#Best Practices]
-* [Layers of Abstraction in Policy][Layers of Abstraction in Policy]
-* [Promises Available in CFEngine][Promises Available in CFEngine]
-* [Authoring Policy Tools & Workflow][Authoring Policy Tools & Workflow]
+* [About Policies and Promises][Writing and serving policy#About Policies and Promises]
+	* [What Are Promises][Writing and serving policy#What Are Promises]
+	* [The Value of a Promise][Writing and serving policy#The Value of a Promise]
+	* [Anatomy of a Promise][Writing and serving policy#Anatomy of a Promise]
+* [Policy Workflow][Writing and serving policy#Policy Workflow]
+* [How Promises Work][Writing and serving policy#How Promises Work]
+	* [Summary for Writing, Deploying and Using Promises][Writing and serving policy#Summary for Writing, Deploying and Using Promises]
+* [Best practices][Writing and serving policy#Best practices]
+* [Layers of abstraction in policy][Layers of abstraction in policy]
+* [Promises available in CFEngine][Promises available in CFEngine]
+* [Authoring policy tools & workflow][Authoring policy tools & workflow]
 
 ## About Policies and Promises ##
 
@@ -59,7 +59,7 @@ Everything in CFEngine can be thought of as a promise to be kept by different re
 Writing, deploying, and using CFEngine `promises` will generally follow these simple steps:
 
 1. Using a text editor, create a new file (e.g. `hello_world.cf`).
-2. Create a bundle and promise in the file (see ["Hello World" Policy Example][Examples and Tutorials#"Hello World" Policy Example]).
+2. Create a bundle and promise in the file (see ["Hello World" Policy Example][Examples and tutorials#"Hello World" Policy Example]).
 3. Save the file on the policy server somewhere under `/var/cfengine/masterfiles` (can be under a sub-directory).
 4. Let CFEngine know about the `promise` on the `policy server`, generally in the file `/var/cfengine/masterfiles/promises.cf`, or a file elsewhere but referred to in `promises.cf`.
 
@@ -67,7 +67,7 @@ Writing, deploying, and using CFEngine `promises` will generally follow these si
 
 5. Verify the `policy file` was deployed and successfully run.
 
-See [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples] for a more detailed step by step tutorial.
+See [Tutorial for Running Examples][Examples and tutorials#Tutorial for Running Examples] for a more detailed step by step tutorial.
 
 ## Policy Workflow ##
 
@@ -110,13 +110,13 @@ recover from deployment errors easily. By placing the burden of responsibility
 for decision at the top, and for implementation at the bottom, we avoid
 needless fragility and keep two independent quality assurance processes apart.
 
-## Best Practices ##
+## Best practices ##
 
-* [Policy Style Guide][Policy Style Guide] This covers punctuation, whitespace, and other styles to remember when writing policy.
+* [Policy style guide][Policy style guide] This covers punctuation, whitespace, and other styles to remember when writing policy.
 
-* [Bundles Best Practices][Bundles Best Practices] Refer to this page as you decide when to make a bundle and when to use classes and/or variables in them.
+* [Bundles best practices][Bundles best practices] Refer to this page as you decide when to make a bundle and when to use classes and/or variables in them.
 
-* [Testing Policies][Testing Policies] This page describes how to locally test CFEngine and play with configuration files.
+* [Testing policies][Testing policies] This page describes how to locally test CFEngine and play with configuration files.
 
 
 ## See Also ##

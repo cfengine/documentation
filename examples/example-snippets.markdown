@@ -1,23 +1,23 @@
 ---
 layout: default
-title: Example Snippets
+title: Example snippets
 sorting: 1
 published: true
 tags: [examples, policy, example snippets]
 ---
 
-* [General Examples][General Examples]
-* [Administration Examples][Administration Examples]
-* [Measuring Examples][Measuring Examples]
-* [Software Administration Examples][Software Administration Examples]
-* [Commands, Scripts, and Execution Examples][Commands, Scripts, and Execution Examples]
-* [File and Directory Examples][File and Directory Examples]
-* [File Template Examples][File Template Examples]
-* [Database Examples][Database Examples]
-* [Network Examples][Network Examples]
-* [System Security Examples][System Security Examples]
-* [System Information Examples][System Information Examples]
-* [System Administration Examples][System Administration Examples]
-* [System File Examples][System File Examples]
-* [Windows Registry Examples][Windows Registry Examples]
-* [User Management][User Management Examples]
+* [General examples][General examples]
+* [Administration examples][Administration examples]
+* [Measuring examples][Measuring examples]
+* [Software administration examples][Software administration examples]
+* [Commands, scripts, and execution examples][Commands, scripts, and execution examples]
+* [File and directory examples][File and directory examples]
+* [File template examples][File template examples]
+* [Database examples][Database examples]
+* [Network examples][Network examples]
+* [System security examples][System security examples]
+* [System information examples][System information examples]
+* [System administration examples][System administration examples]
+* [System file examples][System file examples]
+* [Windows registry examples][Windows registry examples]
+* [User Management][User management examples]

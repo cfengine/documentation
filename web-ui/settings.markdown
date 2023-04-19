@@ -14,7 +14,7 @@ Settings view.
 * [User Management][Settings#User Management]
 * [Role Management][Settings#Role Management]
 * [Manage Apps][Settings#Manage Apps]
-* [Version Control Repository][Settings#Version Control Repository]
+* [Version control Repository][Settings#Version control Repository]
 * [Host Identifier][Settings#Host Identifier]
 * [Mail Settings][Settings#Mail settings]
 * [Authentication settings][Settings#Authentication settings]
@@ -150,12 +150,12 @@ Application settings can help adjust some of CFEngine Enterprise UI
 app features, including the order in which the apps appear and their
 status (on or off).
 
-## Version Control Repository ##
+## Version control Repository ##
 
-<img src="settings-vcs.png" alt="Version Control Repository" width="700px">
+<img src="settings-vcs.png" alt="Version control Repository" width="700px">
 
 The repository holding the organization's masterfiles can be adjusted
-on the Version Control Repository screen.
+on the Version control Repository screen.
 
 ## Host Identifier ##
 
@@ -222,7 +222,7 @@ Mission Portal's configuration can be exported and imported.
 
 <img src="settings-export-import-3.18.0.png" alt="Export/Import" width="590px">
 
-**See also:** [Export/Import API][Import & Export API]
+**See also:** [Export/Import API][Import & export API]
 
 ## Role based access control ##
 

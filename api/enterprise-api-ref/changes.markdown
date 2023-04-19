@@ -162,7 +162,7 @@ List changes performed by CFEngine to the infrastructure. List can be narrowed d
 * **data.hostkey**
     Unique host identifier.
 * **data.hostname**
-    Host name locally detected on the host, configurable as `hostIdentifier` option in [Settings API][Status and Settings REST API#Get settings] and Mission Portal settings UI.
+    Host name locally detected on the host, configurable as `hostIdentifier` option in [Settings API][Status and settings REST API#Get settings] and Mission Portal settings UI.
 * **data.logmessages**
     List of 5 last messages generated during promise execution. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
 * **data.policyfile**
@@ -174,7 +174,7 @@ List changes performed by CFEngine to the infrastructure. List can be narrowed d
 * **data.promiser**
     Object affected by a promise.
 * **data.promisetype**
-    [Type][Promise Types] of the promise.
+    [Type][Promise types] of the promise.
 * **data.stackpath**
     Call stack of the promise.
 

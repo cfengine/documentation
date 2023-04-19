@@ -16,7 +16,7 @@ https://docs.google.com/document/d/1CeRR8cuMtrrr0X27gzVzP2ndiU0HuHvo7dJT2vIWfp0/
 
 ## Installation ##
 
-The [General Installation][General Installation] instructions provide the detailed steps for installing CFEngine, which are generally the same steps to follow for CFEngine Enterprise, with the exception of license keys (if applicable), and also some aspects of post-installation and configuration.
+The [General installation][General installation] instructions provide the detailed steps for installing CFEngine, which are generally the same steps to follow for CFEngine Enterprise, with the exception of license keys (if applicable), and also some aspects of post-installation and configuration.
 
 ### Installing Enterprise Licenses ###
 
@@ -36,7 +36,7 @@ The default FROM email for all emails sent from the Mission Portal is ```admin@o
 
 Consider enabling the built-in version control of your policies as
 described in
-[Version Control and Configuration Policy][Best Practices#Version Control and Configuration Policy]
+[Version control and Configuration Policy][Best practices#Version control and Configuration Policy]
 
 Whether you do or not, please put your policies in some kind of
 backed-up VCS. Losing work because of "fat fingering" `rm` commands is

@@ -378,7 +378,7 @@ two_example_com::
     comment => "Define a global domain for hosts in the two.example.com domain";
 ```
 
-(Promises within the same bundle are evaluated top to bottom, so vars promises further down in a bundle can overwrite previous values of a variable. See [**normal ordering**][Normal Ordering] for more information).
+(Promises within the same bundle are evaluated top to bottom, so vars promises further down in a bundle can overwrite previous values of a variable. See [**normal ordering**][Normal ordering] for more information).
 
 ## Defining variables in foreign bundles
 

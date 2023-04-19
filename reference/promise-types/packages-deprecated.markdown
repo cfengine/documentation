@@ -265,7 +265,7 @@ packages:
 
 **Type:** `body package_method`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
 
 #### package_add_command
 
@@ -593,7 +593,7 @@ package_list_update_ifelapsed => "240";        # 4 hours
 
 #### package_list_update_ifelapsed
 
-**Description:** The [`ifelapsed`][Promise Types#ifelapsed]
+**Description:** The [`ifelapsed`][Promise types#ifelapsed]
 locking time in between updates of the package list
 
 **Type:** `int`

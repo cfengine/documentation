@@ -1,6 +1,6 @@
 ---
 layout: default
-title: File Changes API
+title: File changes API
 published: true
 tags: [reference, enterprise, API, reporting, file changes]
 ---

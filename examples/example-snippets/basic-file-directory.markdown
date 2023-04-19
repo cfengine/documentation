@@ -1,36 +1,36 @@
 ---
 layout: default
-title: File and Directory Examples
+title: File and directory examples
 published: true
 sorting: 6
 tags: [Examples,Files,Directories]
 ---
 
-* [Create files and directories][File and Directory Examples#Create files and directories]
-* [Copy single files][File and Directory Examples#Copy single files]
-* [Copy directory trees][File and Directory Examples#Copy directory trees]
-* [Disabling and rotating files][File and Directory Examples#Disabling and rotating files]
-* [Add lines to a file][File and Directory Examples#Add lines to a file]
-* [Check file or directory permissions][File and Directory Examples#Check file or directory permissions]
-* [Commenting lines in a file][File and Directory Examples#Commenting lines in a file]
-* [Copy files][File and Directory Examples#Copy files]
-* [Copy and flatten directory][File and Directory Examples#Copy and flatten directory]
-* [Copy then edit a file convergently][File and Directory Examples#Copy then edit a file convergently]
-* [Deleting lines from a file][File and Directory Examples#Deleting lines from a file]
-* [Deleting lines exception][File and Directory Examples#Deleting lines exception]
-* [Delete files recursively][File and Directory Examples#Delete files recursively]
-* [Editing files][File and Directory Examples#Editing files]
-* [Editing tabular files][File and Directory Examples#Editing tabular files]
-* [Inserting lines in a file][File and Directory Examples#Inserting lines in a file]
-* [Back references in filenames][File and Directory Examples#Back references in filenames]
-* [Add variable definitions to a file][File and Directory Examples#Add variable definitions to a file]
-* [Linking files][File and Directory Examples#Linking files]
-* [Listing files-pattern in a directory][File and Directory Examples#Listing files-pattern in a directory]
-* [Locate and transform files][File and Directory Examples#Locate and transform files]
-* [BSD flags][File and Directory Examples#BSD flags]
-* [Search and replace text][File and Directory Examples#Search and replace text]
-* [Selecting a region in a file][File and Directory Examples#Selecting a region in a file]
-* [Warn if matching line in file][File and Directory Examples#Warn if matching line in file]
+* [Create files and directories][File and directory examples#Create files and directories]
+* [Copy single files][File and directory examples#Copy single files]
+* [Copy directory trees][File and directory examples#Copy directory trees]
+* [Disabling and rotating files][File and directory examples#Disabling and rotating files]
+* [Add lines to a file][File and directory examples#Add lines to a file]
+* [Check file or directory permissions][File and directory examples#Check file or directory permissions]
+* [Commenting lines in a file][File and directory examples#Commenting lines in a file]
+* [Copy files][File and directory examples#Copy files]
+* [Copy and flatten directory][File and directory examples#Copy and flatten directory]
+* [Copy then edit a file convergently][File and directory examples#Copy then edit a file convergently]
+* [Deleting lines from a file][File and directory examples#Deleting lines from a file]
+* [Deleting lines exception][File and directory examples#Deleting lines exception]
+* [Delete files recursively][File and directory examples#Delete files recursively]
+* [Editing files][File and directory examples#Editing files]
+* [Editing tabular files][File and directory examples#Editing tabular files]
+* [Inserting lines in a file][File and directory examples#Inserting lines in a file]
+* [Back references in filenames][File and directory examples#Back references in filenames]
+* [Add variable definitions to a file][File and directory examples#Add variable definitions to a file]
+* [Linking files][File and directory examples#Linking files]
+* [Listing files-pattern in a directory][File and directory examples#Listing files-pattern in a directory]
+* [Locate and transform files][File and directory examples#Locate and transform files]
+* [BSD flags][File and directory examples#BSD flags]
+* [Search and replace text][File and directory examples#Search and replace text]
+* [Selecting a region in a file][File and directory examples#Selecting a region in a file]
+* [Warn if matching line in file][File and directory examples#Warn if matching line in file]
 
 ## Create files and directories ##
 

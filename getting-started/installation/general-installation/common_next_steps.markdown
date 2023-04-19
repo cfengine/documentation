@@ -1,11 +1,11 @@
 # Next Steps
 
-* [Writing and Serving Policy][Writing and Serving Policy]
-* [Examples and Tutorials][Examples and Tutorials]
-* ["Hello World" Tutorial][Examples and Tutorials#Tutorial for Running Examples]
+* [Writing and serving policy][Writing and serving policy]
+* [Examples and tutorials][Examples and tutorials]
+* ["Hello World" Tutorial][Examples and tutorials#Tutorial for Running Examples]
 
 ## See also
 
-* [General Installation][General Installation]
-* [Post-Installation Configuration][General Installation#Post-Installation Configuration]
+* [General installation][General installation]
+* [Post-Installation Configuration][General installation#Post-Installation Configuration]
 * [FAQ][FAQ]

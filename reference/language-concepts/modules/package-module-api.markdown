@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Package Modules
+title: Package modules
 published: true
 sorting: 70
 tags: [reference, language concepts, modules, package module api]

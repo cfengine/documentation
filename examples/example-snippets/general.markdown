@@ -1,14 +1,14 @@
 ---
 layout: default
-title: General Examples
+title: General examples
 published: true
 sorting: 1
 tags: [Examples]
 ---
 
-* [Basic Example][General Examples#Basic Example]
-* [Hello world][General Examples#Hello world]
-* [Array example][General Examples#Array example]
+* [Basic Example][General examples#Basic Example]
+* [Hello world][General examples#Hello world]
+* [Array example][General examples#Array example]
 
 ## Basic Example ##
 

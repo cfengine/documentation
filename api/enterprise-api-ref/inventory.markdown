@@ -188,7 +188,7 @@ curl -k --user <username>:<password> \
 Shows list of all inventory attributes available in the system.
 
 See more details:
-* [Custom Inventory][Custom Inventory]
+* [Custom inventory][Custom inventory]
 
 **CURL request example**
 ```
