@@ -232,7 +232,7 @@ library for supported operating systems.
 Currently, `packages` promises do not work on HP-UX because CFEngine
 does not come with package bodies for that platform.
 
-## Attributes ##
+## Attributes
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
 

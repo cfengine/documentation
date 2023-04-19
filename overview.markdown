@@ -7,7 +7,7 @@ sorting: 10
 
 CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves with a policy server (see [Installation][Installation]), will each be running a set of CFEngine component applications that manage and interpret textual files called policies. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or *bundles*, of what are known in the CFEngine world as [Promises][Promises]. *Promises* are at the heart of Promise Theory, which is in turn what CFEngine is all about.
 
-## Policy Language and Compliance ##
+## Policy Language and Compliance
 
 For many users, CFEngine is simply a configuration tool - i.e. software for deploying and patching systems according to a policy. Policy is described using promises. Every statement in CFEngine 3 is a promise to be kept at some time or location. More than this, however, CFEngine is not like other automation tools that "roll out" an image of some software once and hope for the best. Every promise that you make in CFEngine is continuously verified and maintained. It is not a one-off operation, but a self-repairing process should anything deviate from the policy.
 
@@ -21,7 +21,7 @@ CFEngine continually monitors all of the hosts in real-time, and should the syst
 
 See Also: [Language concepts][], [Writing and serving policy][]
 
-## CFEngine Policy Servers and Hosts ##
+## CFEngine Policy Servers and Hosts
 
 There are basically two categories of machines in a CFEngine environment: policy servers and their client hosts. Policy servers are responsible for making policy files available to each of the client hosts that have registered with it (a.k.a. bootstrapped), including itself. Hosts on the other hand are responsible for ensuring they continuously pull in the latest policies, or changes to policies, from the policy server. They are additionally responsible for ensuring they remain fully compliant with the instructions contained within the policy files, at all times.
 
@@ -29,7 +29,7 @@ The role of a particular machine where CFEngine is deployed determines which of 
 
 See Also: [Writing and serving policy][]
 
-## CFEngine Component Applications and Daemons ##
+## CFEngine Component Applications and Daemons
 
 There are a number of components in CFEngine, with each component performing a
 unique function: components responsible for implementing promises, components
@@ -49,7 +49,7 @@ All CFEngine software components exist in `/var/cfengine/bin`.
 * [Daemons][Overview#Daemons]
 * [Other Applications][Overview#Other Component Applications]
 
-### Daemons ###
+### Daemons
 
 All machines, whether they are policy servers or hosts, will have these three important daemons running at all times:
 
@@ -57,7 +57,7 @@ All machines, whether they are policy servers or hosts, will have these three im
 * [/var/cfengine/bin/cf-serverd][Overview#cf-serverd]
 * [/var/cfengine/bin/cf-monitord][Overview#cf-monitord]
 
-#### cf-execd ####
+#### cf-execd
 
 `cf-execd` is the scheduling daemon for `cf-agent`, similar to cron. It executes and collects the output of `cf-agent` and
 e-mails any output to the configured e-mail address.
@@ -68,7 +68,7 @@ e-mails any output to the configured e-mail address.
 
 See also: [cf-execd][cf-execd] reference documentation.
 
-#### cf-serverd ####
+#### cf-serverd
 
 `cf-serverd` is a socket listening daemon providing two services: it acts as a file server for remote file copying and it allows an authorized `cf-runagent` to start a `cf-agent` run. `cf-agent` typically connects to a `cf-serverd` instance to request updated policy code, but may also request additional files for download. `cf-serverd` employs role based access control (defined in policy code) to authorize requests.
 
@@ -86,7 +86,7 @@ containing [access promises][access].
 
 See also: [cf-serverd][cf-serverd] reference documentation.
 
-#### cf-monitord ####
+#### cf-monitord
 
 `cf-monitord` is the monitoring daemon for CFEngine. It samples probes defined in policy using measurements type promises and attempts to learn the normal system state based on current and past observations. Current estimates are made available as special variables (e.g. $(mon.av_cpu)) to `cf-agent`, which may use them to inform policy decisions.
 
@@ -94,14 +94,14 @@ See also: [cf-serverd][cf-serverd] reference documentation.
 
 See also: [cf-monitord][cf-monitord] reference documentation.
 
-### Other Component Applications ###
+### Other Component Applications
 
 * [/var/cfengine/bin/cf-agent][Overview#cf-agent]
 * [/var/cfengine/bin/cf-key][Overview#cf-key]
 * [/var/cfengine/bin/cf-promises][Overview#cf-promises]
 * [/var/cfengine/bin/cf-runagent][Overview#cf-runagent]
 
-#### cf-agent ####
+#### cf-agent
 
 `cf-agent` evaluates policy code and makes changes to the system. Policy bundles are evaluated in the order of the provided `bundlesequence` (this is normally specified in the common control body and defaults to just the `main` bundle if unspecified). For each bundle, cf-agent groups promise statements according to their type. Promise types are then evaluated in a preset order to ensure fast system convergence to policy.
 
@@ -117,13 +117,13 @@ able to request access to files from the server component.
 
 See also: [cf-agent][cf-agent] reference documentation.
 
-#### cf-key ####
+#### cf-key
 
 The CFEngine key generator makes key pairs for remote authentication.
 
 See also: [cf-key][cf-key] reference documentation.
 
-#### cf-promises ####
+#### cf-promises
 
 `cf-promises` is CFEngine's promise verifier. It is used to run a "pre-check" of
 policy code before `cf-agent` attempts to execute.
@@ -134,7 +134,7 @@ In 3.6.0 and later, `cf-promises` will not evaluate function calls either. This 
 
 See also: [cf-promises][cf-promises] reference documentation.
 
-#### cf-runagent ####
+#### cf-runagent
 
 `cf-runagent` is a helper program that can be used to run `cf-agent` on a number of remote
 hosts. It cannot be used to tell `cf-agent` what to do, it can only ask

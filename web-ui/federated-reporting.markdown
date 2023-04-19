@@ -6,7 +6,7 @@ sorting: 60
 tags: [enterprise, guide, federated reporting]
 ---
 
-## Overview ##
+## Overview
 
 Federated reporting enables the collection of data from multiple Hubs to provide
 a view in Mission Portal which can scale up beyond the capabilities of a Hub
@@ -35,15 +35,15 @@ are provided at each stage of installation and setup that follows.
 * [Uninstall][Federated reporting#Uninstall]
 * [Superhub Upgrade][Federated reporting#Superhub Upgrade]
 
-## Requirements ##
+## Requirements
 
-### Topology Requirements ###
+### Topology Requirements
 
 At this time it is not possible to bootstrap agents to the Superhub. The Superhub
 itself will be present but the behavior of other agents bootstrapped to the Superhub
 is untested and unsupported.
 
-### Software Requirements ###
+### Software Requirements
 
 If your hub will have SELinux enabled, the `semanage` command must be installed.
 This allows Federated reporting policy to manage the trust between the superhub and
@@ -62,7 +62,7 @@ federation policy to ensure that `semanage` is installed.
 
 See `cfengine_enterprise_federation:semanage_installed` in [cfe_internal/enterprise/federation/federation.cf][cfe_internal/enterprise/federation/federation.cf] for details on which packages are used for various distributions.
 
-### Hardware Requirements ###
+### Hardware Requirements
 
 The Superhub aggregates all the data from all the Feeders connected to it which
 is a periodically running resource intensive task. The key factors contributing
@@ -116,14 +116,14 @@ factors mentioned above. It is thus highly recommended to connect the Feeders to
 the Superhub one or two at a time and check the intervals in the logs before
 connecting more Feeders.
 
-## Installation ##
+## Installation
 
 The [General installation][General installation] instructions should be used to
 install CFEngine Hub on a Superhub as well as Feeder hubs.
 
-## Setup ##
+## Setup
 
-### Enable Hub management app ###
+### Enable Hub management app
 
 <img src="fr-hub-management-enabled.png" alt="Enable Hub Management" width="700px">
 
@@ -134,7 +134,7 @@ by clicking the `On` radio button for Hub management in the Status column.
 
 Note: for pre 3.14 feeders this step is not performed.
 
-### Enable Federated reporting ###
+### Enable Federated reporting
 
 <img src="fr-hub-management-default.png" alt="Enable Federated reporting" width="700px">
 
@@ -148,7 +148,7 @@ the agent manually.
 
 Note: for pre 3.14 feeders, you must [Enable feeder without API][Federated reporting#Enable feeder without API].
 
-### Connect Feeder Hubs ###
+### Connect Feeder Hubs
 
 <img src="fr-superhub-enabled-no-feeders.png" alt="Connect Feeder Hubs" width="700px">
 
@@ -171,7 +171,7 @@ hosts and allow you to edit the settings.
 
 <img src="fr-feeder-added.png" alt="Feeders connected" width="700px">
 
-## Operation ##
+## Operation
 
 Now that everything is configured the Feeder hubs will generate a database
 dump every 20 minutes and the Superhub will pull any available dumps from
@@ -180,7 +180,7 @@ each Feeder every 20 minutes as well.
 You can test import immediately by running the agent on the feeders and then
 the superhub.
 
-## Duplicate Host Management ##
+## Duplicate Host Management
 
 There are situations where feeder hubs may have hosts with duplicate hostkeys:
 
@@ -191,7 +191,7 @@ In the first case you will likely want to remove entries for hosts which are not
 
 There are two options available for handling these situations depending on your environment: Distributed Cleanup or Handle Duplicate Hostkeys.
 
-### Distributed cleanup ###
+### Distributed cleanup
 This is the most thorough, performant and automated option.
 This utility is a python script which runs on the superhub, searches for the most recent contact for each host, then communicates with the appropriate feeders to delete stale hosts.
 
@@ -254,7 +254,7 @@ The passwords are only kept for the duration of the script execution and are not
 
 The policy will now run the distributed cleanup utility every agent run and cleanup any hosts which are stale on feeders leaving only the most recently contacts host for each unique hostkey.
 
-### Handle duplicate hostkeys ###
+### Handle duplicate hostkeys
 The other option removes duplicates during each import cycle.
 An augment is available to enable moving duplicated host data to a `dup` schema for analysis. The host data which has the most recent `hosts.lastreporttimestamp` will be kept in the `public` schema and all other data will be moved to the `dup` domain (schema).
 
@@ -270,7 +270,7 @@ If enabled it is performed on every import cycle.
 ```
 
 This class only has an effect on the superhub host.
-## Troubleshooting ##
+## Troubleshooting
 
 Please refer to `/var/cfengine/output`, `/var/log/postgresql.log` and
 `/opt/cfengine/federation/superhub/import/*.log.gz` when problems occur. Sending
@@ -281,7 +281,7 @@ Also see [Disable Feeder][Federated reporting#Disable Feeder] for information
 about how to temporarily disable a feeder's participation in Federated reporting
 in case that is causing an issue for the Feeder Hub.
 
-## API Setup ##
+## API Setup
 
 An API may be used instead of the UI. This could be used to automate the setup
 of infrastructure related to Federated reporting and Feeder hubs.
@@ -760,13 +760,13 @@ we use the number "1".
    root@feeder: ~# /var/cfengine/bin/psql cfsettings -c 'TRUNCATE federated_reporting_settings'
    ```
 
-## Superhub Upgrade ##
+## Superhub Upgrade
 
 Starting with 3.15.6 and 3.18.2 superhubs can be directly upgraded by installing the new hub package.
 
 For versions 3.15.5, and 3.18.1 and older the superhub can not be directly upgraded by installing a new binary package and the hub software must be uninstalled and re-installed.
 
-### Uninstall/re-install ###
+### Uninstall/re-install
 
 Typically the superhub doesn't have unique information or serve policy.
 This makes it reasonable and easy to upgrade the superhub with a fresh install.

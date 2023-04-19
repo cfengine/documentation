@@ -71,7 +71,7 @@ R: found class: report_not_repaired
 
 ****
 
-## Attributes ##
+## Attributes
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
 

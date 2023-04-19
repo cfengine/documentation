@@ -14,7 +14,7 @@ tags: [Examples,Commands,Scripts]
 * [Method validation][Commands, scripts, and execution examples#Method validation]
 * [Trigger classes][Commands, scripts, and execution examples#Trigger classes]
 
-## Command or script execution ##
+## Command or script execution
 
 Execute a command, for instance to start a MySQL service. Note that simple shell commands like rm or mkdir cannot be managed by CFEngine, so none of the protections that CFEngine offers can be applied to the process. Moreover, this starts a new process, adding to the burden on the system.
 

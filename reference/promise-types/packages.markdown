@@ -91,7 +91,7 @@ string needs to be a bare package name, you cannot use a file name for this.
         comment => "INVALID specification of package version.";
   ```
 
-## Attributes ##
+## Attributes
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
 

@@ -32,13 +32,13 @@ Please note that:
 * For these reasons the HTTP response code is normally `202 Accepted`.
     * At the time of the API response, it is not possible to know whether the host exists in all the places mentioned above.
 
-## Host removal through Mission Portal UI ##
+## Host removal through Mission Portal UI
 
 Single hosts can be removed by visiting the host info page, and clicking the trash can next to the host identifier (header):
 
 ![Remove host](./Mission-portal-remove-host.png)
 
-## Host removal through Enterprise API ##
+## Host removal through Enterprise API
 
 If you decommission hosts regularly, it can be cumbersome to use the UI for every host.
 Decommissioning can be done via API, for example using curl:
@@ -50,7 +50,7 @@ curl --user admin:admin http://127.0.0.1/api/host/cf-key -r SHA=92eff6add6e8add0
 It is a good idea to add this to decommissioning procedure, or automated decommissioning scripts.
 (Replace `127.0.0.1` with the IP or hostname of your Mission Portal instance).
 
-## Host removal using cf-key CLI ##
+## Host removal using cf-key CLI
 
 This method is generally not recommended on the CFEngine Enterprise Hub, as it **does not** remove hosts from the PostgreSQL database.
 

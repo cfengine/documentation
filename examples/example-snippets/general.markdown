@@ -10,7 +10,7 @@ tags: [Examples]
 * [Hello world][General examples#Hello world]
 * [Array example][General examples#Array example]
 
-## Basic Example ##
+## Basic Example
 
 To get started with CFEngine, you can imagine the following template for entering examples. This part of the code is common to all the examples.
 
@@ -43,6 +43,6 @@ what_type:
 
 [%CFEngine_include_snippet(hello_world.cf, .* )%]
 
-## Array example ##
+## Array example
 
 [%CFEngine_include_snippet(array_example.cf, .* )%]

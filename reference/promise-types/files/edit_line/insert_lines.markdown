@@ -74,7 +74,7 @@ line two"
 
 ****
 
-## Attributes ##
+## Attributes
 
 ### expand_scalars
 

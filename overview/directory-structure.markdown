@@ -21,16 +21,16 @@ The CFEngine application is fully contained within the /var/cfengine directory t
 * [Misc. in /var/cfengine/bin][CFEngine directory structure#Misc. in /var/cfengine/bin]
 * [Postgres in /var/cfengine/bin][CFEngine directory structure#Postgres in /var/cfengine/bin]
 
-## /var/cfengine/bin ##
+## /var/cfengine/bin
 
-### Agents ###
+### Agents
 
 * `cf-agent`: Executes the promises.cf file; ensures that all promises are being kept
 * `cf-key`
 * `cf-promises`: Verifies CFEngine's configuration syntax
 * `cf-runagent`: Contacts a remote system to run cf-agent
 
-### Daemons ###
+### Daemons
 
 * `cf-execd`: Starts the cf-agent process at a specified time interval.
 * `cf-monitord`: Collects system statistics
@@ -40,18 +40,18 @@ The CFEngine application is fully contained within the /var/cfengine directory t
 
 See Also: [CFEngine Component Applications and Daemons][Overview#CFEngine Component Applications and Daemons]
 
-## Directories for Policy Files ##
+## Directories for Policy Files
 
-### /var/cfengine/modules ###
+### /var/cfengine/modules
 
 Location of scripts used in `commands` promises.
 
-### /var/cfengine/inputs ###
+### /var/cfengine/inputs
 
 Cached policy repository on each CFEngine client. When `cf-agent` is
 invoked by `cf-execd`, it reads only from this directory.
 
-### /var/cfengine/masterfiles ###
+### /var/cfengine/masterfiles
 
 Policy repository which grants access to local or bootstrapped CFEngine
 clients when they need to update their policies. Policies obtained from
@@ -59,9 +59,9 @@ clients when they need to update their policies. Policies obtained from
 local policy execution. The `cf-agent` executable does not execute policies
 directly from this repository.
 
-## Output Directories ##
+## Output Directories
 
-### /var/cfengine/outputs ###
+### /var/cfengine/outputs
 
 Directory where `cf-agent` creates its output files. The outputs directory is
 a record of spooled run-reports. These are often mailed to the administrator
@@ -69,46 +69,46 @@ by `cf-execd`, or can be copied to another central location and viewed in an
 alternative browser. However, not all hosts have an email capability or are
 online, so the reports are kept here.
 
-### /var/cfengine/reports ###
+### /var/cfengine/reports
 
 Directory used to store reports. Reports are not tidied automatically, so you
 should delete these files after a time to avoid a build up.
 
-### /var/cfengine/state ###
+### /var/cfengine/state
 
 State data such as current process identifiers of running processes,
 persistent classes and other cached data.
 
-### /var/cfengine/lastseen ###
+### /var/cfengine/lastseen
 
 Log data for incoming and outgoing connections.
 
-### /var/cfengine/cfapache ###
+### /var/cfengine/cfapache
 
-### /var/cfengine/config ###
+### /var/cfengine/config
 
-### /var/cfengine/httpd ###
+### /var/cfengine/httpd
 
-### /var/cfengine/lib ###
+### /var/cfengine/lib
 
 Directory to store shared objects and dependencies that are in the bundled packages.
 
-### /var/cfengine/master_software_updates ###
+### /var/cfengine/master_software_updates
 
-### /var/cfengine/plugins ###
+### /var/cfengine/plugins
 
-### /var/cfengine/ppkeys ###
+### /var/cfengine/ppkeys
 
 Directory used to store encrypted public/private keys for CFEngine
 client/server network communications.
 
-### /var/cfengine/share ###
+### /var/cfengine/share
 
-### /var/cfengine/software_updates ###
+### /var/cfengine/software_updates
 
-### /var/cfengine/ssl ###
+### /var/cfengine/ssl
 
-## Log Files in /var/cfengine ##
+## Log Files in /var/cfengine
 
 On hosts, CFEngine writes numerous logs and records to its private workspace.
 
@@ -141,7 +141,7 @@ In CFEngine Enterprise, a list of promises, with handles and comments, that were
 A time-stamped log of the percentage fraction of promises kept after
 each run.
 
-## Database Files in /var/cfengine ##
+## Database Files in /var/cfengine
 
 * bundles.lmdb
 * `cf_classes.lmdb`
@@ -169,7 +169,7 @@ longer tasks such as command execution and file copying are measured by
 default. Other checks can be instrumented by setting a
 `measurement_class` in the `action` body of a promise.
 
-## Process (AKA PID) Files in /var/cfengine ##
+## Process (AKA PID) Files in /var/cfengine
 
 The CFEngine components keep their current process identifier number in
 `pid files' in the work directory.
@@ -179,21 +179,21 @@ The CFEngine components keep their current process identifier number in
 * `cf-monitord.pid`
 * `cf-serverd.pid`
 
-## Sockets in /var/cfengine ##
+## Sockets in /var/cfengine
 
 * `cf-hub-local`
 
-## Datafiles in /var/cfengine ##
+## Datafiles in /var/cfengine
 
 * `policy_server.dat`
 
 IP address of the policy server
 
-## Binary Files in /var/cfengine ##
+## Binary Files in /var/cfengine
 
 * `randseed`
 
-## git in /var/cfengine/bin ##
+## git in /var/cfengine/bin
 
 * `bin/git`
 * `bin/git-cvsserver`
@@ -203,7 +203,7 @@ IP address of the policy server
 * `bin/git-upload-archive`
 * `bin/git-upload-pack`
 
-## Misc. in /var/cfengine/bin ##
+## Misc. in /var/cfengine/bin
 
 * `bin/curl`
 * `bin/lmdump`
@@ -212,7 +212,7 @@ IP address of the policy server
 * `bin/rsync`
 * `bin/runalerts.sh`
 
-## Postgres in /var/cfengine/bin ##
+## Postgres in /var/cfengine/bin
 
 * `bin/clusterdb`
 * `bin/createdb`
@@ -239,7 +239,7 @@ IP address of the policy server
 * `bin/vacuumdb`
 
 
-## Not Verified ##
+## Not Verified
 
 * `state/cf_lock.lmdb`
 

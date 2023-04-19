@@ -5,14 +5,14 @@ title: Installation guide
 tags: [cfengine enterprise, high availability]
 ---
 
-## Overview ##
+## Overview
 
 This tutorial is describing the installation steps of the **CFEngine High availability** feature. It
 is suitable for both upgrading existing CFEngine installations to HA and for installing HA from
 scratch. Before starting installation we strongly recommend reading the [CFEngine High availability
 overview][High availability].
 
-## Installation procedure ##
+## Installation procedure
 
 As with most High availability systems, setting it up requires carefully following a series of steps
 with dependencies on network components. The setup can therefore be error-prone, so if you are a
@@ -22,7 +22,7 @@ CFEngine Enterprise customer we recommend that you contact support for assistanc
 Please also make sure you have a valid license for the passive hub so that it will be able to handle
 all your CFEngine clients in case of failover.
 
-### Hardware configuration and OS pre-configuration steps ###
+### Hardware configuration and OS pre-configuration steps
 
 * CFEngine 3.15.3 (or later) hub package for RHEL7 or CentOS7.
 * We recommend selecting dedicated interface used for PostgreSQL replication and optionally one for heartbeat.
@@ -31,7 +31,7 @@ all your CFEngine clients in case of failover.
 * Both active and passive hub machines must be configured so that host names are different.
 * Basic hostname resolution works (hub names can be placed in */etc/hosts* or DNS configured).
 
-### Example configuration used in this tutorial ###
+### Example configuration used in this tutorial
 
 In this tutorial we use the following network configuration:
 
@@ -53,7 +53,7 @@ Detailed network configuration is shown on the picture below:
 ![HAGuideNetworkSetup](ha_network_setup.png)
 
 
-## Install cluster management tools ##
+## Install cluster management tools
 
    **On both nodes:**
 
@@ -184,7 +184,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
         cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
     ```
 
-## PostgreSQL configuration ##
+## PostgreSQL configuration
 
 1. Install the CFEngine hub package **on both node1 and node2**.
 2. Make sure CFEngine is not running (**on both node1 and node2**):
@@ -323,7 +323,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    sed -i "/standby\.conf/d" /var/cfengine/state/pg/data/postgresql.conf
    ```
 
-### Cluster resource configuration ###
+### Cluster resource configuration
 
 1. Download the PostgreSQL resource agent supporting the CFEngine HA setup **on both nodes**.
 
@@ -440,7 +440,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
                   *HS:async* or *HS:alone*.
 
 
-### CFEngine configuration ###
+### CFEngine configuration
 
 1. Create the HA configuration file **on both nodes**.
 
@@ -538,7 +538,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    everything to settle and the `OK` HA status being reported in the Mission Portal's header.
 
 
-### Configuring 3rd node as disaster-recovery or database backup (optional) ###
+### Configuring 3rd node as disaster-recovery or database backup (optional)
 
 1. Install the CFEngine hub package on the node which will be used as disaster-recovery or database
    backup node (node3).
@@ -607,7 +607,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 
 
-### Manual failover to disaster-recovery node ###
+### Manual failover to disaster-recovery node
 
 1. Before starting manual failover process make sure both active and passive nodes are not running.
 
@@ -621,7 +621,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 
 
-### Troubleshooting ###
+### Troubleshooting
 
 1. If either the IPaddr2 or pgslq resource is not running, try to enable it first with ```pcs cluster enable --all```. If this is not strting the resources, you can try to run them in debug mode with this command ```pcs resource debug-start <resource-name>```. The latter command should print diagnostics messages on why resources are not started.
 

@@ -74,7 +74,7 @@ bundle agent example
 
 ***
 
-## Attributes ##
+## Attributes
 
 ### and
 

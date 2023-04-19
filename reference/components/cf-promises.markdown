@@ -23,6 +23,6 @@ Use the new `--eval-functions yes` command-line option (default is
 it.  In that case `--eval-functions` is not specified, so functions
 are not evaluated prematurely (as you would expect).
 
-## Command reference ##
+## Command reference
 
 [%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]

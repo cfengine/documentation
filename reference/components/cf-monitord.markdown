@@ -21,7 +21,7 @@ affected by  `common` and `monitor` control bodies.
 
 * `cf-monitord` always considers the class ```monitor``` to be defined.
 
-## Command reference ##
+## Command reference
 
 [%CFEngine_include_snippet(cf-monitord.help, [\s]*--[a-z], ^$)%]
 
@@ -120,7 +120,7 @@ into agent variables in the `$(mon.`name`)` context.
 
 Note: There is no way for force a refresh of the monitored data.
 
-## Data storage ##
+## Data storage
 
 `cf-monitord` records data in `$(sys.statedir)` (typically `/var/cfengine/state`).
 

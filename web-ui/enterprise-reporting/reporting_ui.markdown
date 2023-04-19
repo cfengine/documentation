@@ -34,7 +34,7 @@ See also:
 * [Reporting architecture][Reporting architecture]
 * [SQL queries using the Enterprise API][SQL queries using the Enterprise API]
 
-## Query Builder ##
+## Query Builder
 
 Users not familiar with SQL syntax can easily create their own custom reports in this interface. Please note that query builder can be [extended with your custom data][Extending Query Builder in Mission portal#How to add new table to Query builder].
 
@@ -53,7 +53,7 @@ Users not familiar with SQL syntax can easily create their own custom reports in
 
 <img src="Report-Builder-3.18.0.png" alt="Report Builder" width="700px">
 
-### Ensure the report collection is working ###
+### Ensure the report collection is working
 
 * The reporting bundle must be called from `promises.cf`. For example,
 the following defines the attribute `Role` which is set to
@@ -97,7 +97,7 @@ large number of clinets that have not been collected from that become available
 at once can cause increased load on the hub collector and affect its
 performance until it has been able to collect from all hosts.
 
-## Define a New Single Table Report ##
+## Define a New Single Table Report
 
 1. In *Mission Portal* select the *Report* application icon on the left hand side of the screen.
 2. This will bring you to the *Report builder* screen.
@@ -110,7 +110,7 @@ performance until it has been able to collect from all hosts.
 9. Leave *Filters*, *Sort*, and *Limit* at the default settings.
 10. Click the orange *Run* button in the bottom right hand corner.
 
-## Check Report Results ##
+## Check Report Results
 
 1. The report generated will show each of the selected columns across the report table's header row.
 2. In this tutorial the columns being reported back should be: *Host key*, *Last report time*, *Host name*, *IP address*, *First report-time*.
@@ -125,7 +125,7 @@ performance until it has been able to collect from all hosts.
 11. Click *OK* to download or email the *csv* or *pdf* version of the report.
 12. Once the report is generated it will be available for download or will be emailed.
 
-## Inventory Management ##
+## Inventory Management
 
 Inventory allows you to define the set of hosts to report on.
 

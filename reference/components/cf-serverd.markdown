@@ -29,7 +29,7 @@ affected by `common` and `server` control bodies.
 - SIGHUP behavior added in 3.7.0
 - `enable_report_dumps` added in 3.16.0
 
-## Command reference ##
+## Command reference
 
 [%CFEngine_include_snippet(cf-serverd.help, [\s]*--[a-z], ^$)%]
 

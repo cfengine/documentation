@@ -9,7 +9,7 @@ tags: [manuals, enterprise, reporting, architecture, cf-hub]
 The reporting architecture of CFEngine Enterprise uses two software
 components from the CFEngine Enterprise hub package.
 
-## cf-hub ##
+## cf-hub
 
 Like all CFEngine components, `cf-hub` is
 located in `/var/cfengine/bin`. It is a daemon process that runs in the
@@ -30,7 +30,7 @@ last collection. Rebase (full) reports collect everything. You can choose the fu
 adding `-q rebase` (for backwards comapatibility, also available as
 `-q full`).
 
-## Apache ##
+## Apache
 
 REST over HTTP is provided by the
 [Apache http server](http://httpd.apache.org) which also hosts the

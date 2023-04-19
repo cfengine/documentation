@@ -6,12 +6,12 @@ published: true
 tags: [Examples, Tutorials, Enterprise, Inventory, Dashboard, Alerts]
 ---
 
-## Prerequisites ##
+## Prerequisites
 
 * CFEngine 3.6 Enterprise Hub
 * At least one client vulnerable to CVE-2014-6271
 
-## Overview ##
+## Overview
 
 Remediating security vulnerabilities is a common issue. Sometimes you want to
 know the extent to which your estate is affected by a threat.
@@ -25,7 +25,7 @@ other issues.
 **Note:** The included policy does not require CFEngine Enterprise. Only the
 reporting functionality (Mission Portal) requires the Enterprise version.
 
-## Inventory CVE-2013-6271 ##
+## Inventory CVE-2013-6271
 
 Writing inventory policy with CFEngine is just like any other CFEngine policy,
 except for the addition of special `meta` attributes used to augment the
@@ -75,7 +75,7 @@ bundle agent inventory_CVE_2014_6271
 }
 ```
 
-### What does this inventory policy do? ###
+### What does this inventory policy do?
 
 Meta type promises are used to attach additional information to bundles. We
 have set 'description' so that future readers of the policy will know what the
@@ -104,7 +104,7 @@ On the second pass only that variable 'vulnerable' will be set with the value
 'inventory' and 'attribute_name='. These are special meta tags that CFEngine
 Enterprise uses in order to display information.
 
-### Deploy the policy ###
+### Deploy the policy
 
 As noted previously, in this example we will use autorun for simplicity. Please
 ensure that the class "services_autorun" is defined. The easiest way to do this
@@ -114,7 +114,7 @@ expression => "any";` in `def.cf`.
 Once you have autorun enabled you need only save the policy into
 `services/autorun/inventory_CVE_2014_6271.cf`.
 
-### Report on affected system inventory ###
+### Report on affected system inventory
 
 Within 20 minutes of deploying the policy you should be able to see results in the Inventory Reporting interface.
 
@@ -130,7 +130,7 @@ Chart the Vulnerable CVE(s) and get a visual breakdown.
 ![Chart the Vulnerable CVE(s) and get a visual breakdown - pie](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_004.jpg)
 ![Chart the Vulnerable CVE(s) and get a visual breakdown - column](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_005.jpg)
 
-### Build Dashboard Widget with Alerts ###
+### Build Dashboard Widget with Alerts
 
 Let's add alerts for CVE(s) to the dashboard.
 ![Let's add alerts for CVE(s) to the dashboard](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_006.jpg)
@@ -150,7 +150,7 @@ See the dashboard alert in action.
 ![See an the dashboard alert in action - alert details 1](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_014.jpg)
 ![See an the dashboard alert in action - specifc alert details](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_015.jpg)
 
-## Remediate Vulnerabilities ##
+## Remediate Vulnerabilities
 
 Now that we know the extent of exposure lets ensure bash gets updated on some
 of the affected systems. Save the following policy into
@@ -172,7 +172,7 @@ bundle agent remediate_CVE_2014_6271
 }
 ```
 
-### What does this remediation policy do? ###
+### What does this remediation policy do?
 
 For simplicity of the example this policy defines the class allow_update on hub
 and host001, but you could use any class that makes sense to you. If the
@@ -180,7 +180,7 @@ allow_update class is set, and the class *CVE_2014_6271* is defined (indicating
 the host is vulnerable) then the policy ensures that bash is updated to the
 latest version available.
 
-### Report on affected systems inventory after remediation ###
+### Report on affected systems inventory after remediation
 
 Within 20 minutes or so of the policy being deployed you will be able to report on the state of remediation.
 
@@ -198,7 +198,7 @@ Chart the Vulnerable CVE(s) and get a visual breakdown.
 ![Chart the Vulnerable CVE(s) and get a visual breakdown - pie](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_021.jpg)
 ![Chart the Vulnerable CVE(s) and get a visual breakdown - bar](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_022.jpg)
 
-## Summary ##
+## Summary
 
 In this tutorial you have learned how to use the reporting and inventory
 features of CFEngine Enterprise to discover and report on affected systems

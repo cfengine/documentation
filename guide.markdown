@@ -11,7 +11,7 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
 
 See Also: [Overview][Overview]
 
-## CFEngine Features ##
+## CFEngine Features
 
 * Defines the configuration of an entire IT system, including: Devices, Users, Applications, and Services.
 * Helps maintain that system over time.
@@ -59,7 +59,7 @@ Check out [External resources][External resources], for more guides, demos, and 
 [Support and Community][External Resources#Support and Community] We provide a number of ways to connect you to CFEngine
 experts if you need more help. Contact us!
 
-## CFEngine Guide ##
+## CFEngine Guide
 
 * [Overview][]
 * [Release notes][]

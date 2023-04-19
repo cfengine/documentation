@@ -21,13 +21,13 @@ A host tree based on OS (Operating system) is present by default. Host trees map
 
 Visiting a leaf node provides a summary of host specific information.
 
-## Host Info ##
+## Host Info
 
 The host info page provides extensive information for an individual host.
 
 <img src="Host-info-page.png" alt="Host info page" width="700px">
 
-### Host Actions ###
+### Host Actions
 
 Take action on a host.
 
@@ -38,7 +38,7 @@ Take action on a host.
 * <img src="host-info-get-url.png" alt="Get URL" width="50px">:: Get the URL to the specific hosts info page
 * <img src="host-info-delete-host.png" alt="Delete host" width="50px"> :: Delete the host
 
-### Host specific data ###
+### Host specific data
 
 Assign host specific _Variables_ and _Classes_.
 

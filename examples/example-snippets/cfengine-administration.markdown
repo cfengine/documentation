@@ -20,6 +20,6 @@ Normally the order of promises in a bundle is followed, within each promise type
 
 [%CFEngine_include_snippet(ordering_promises.cf, .* )%]
 
-## Aborting execution ##
+## Aborting execution
 
 [%CFEngine_include_snippet(aborting_execution.cf, .* )%]

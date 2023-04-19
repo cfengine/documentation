@@ -19,7 +19,7 @@ which hosts `cf-agent` will be started, and classes that the user requests
 
 * `cf-runagent` always considers the class ```runagent``` to be defined.
 
-## Command reference ##
+## Command reference
 
 [%CFEngine_include_snippet(cf-runagent.help, [\s]*--[a-z], ^$)%]
 

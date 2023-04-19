@@ -11,7 +11,7 @@ leveraged in policy and reported on in the CFEngine Enterprise Mission Portal.
 For a more detailed overview on how the inventory system works please reference
 [CFEngine 3 inventory modules][inventory/].
 
-## Overview ##
+## Overview
 
 This tutorial provides instructions for the following:
 

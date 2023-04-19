@@ -12,7 +12,7 @@ JSON data files, so you should view and edit them with a JSON-aware editor if
 possible. This is a convenient way to override defaults defined in the default policy,
 the Masterfiles Policy Framework (MPF), without modifying the shipped policy files.
 
-## Using the MPF without maintaining your own patches to it ##
+## Using the MPF without maintaining your own patches to it
 
 As an example, you can add your own policy file to inputs and bundle name to the
 bundle sequence, without editing `promises.cf`, by adding the Augments file below
@@ -53,7 +53,7 @@ In this example, `control_common_bundlesequence_end` is a special variable, hand
 To learn about more variables like this and ways to interact with the MPF without editing it, see the [MPF Reference documentation][Masterfiles Policy Framework].
 The rest of this documentation page below focuses on the specifics of how augments files work, independently of everything they can be used for in the MPF.
 
-## Augments Files ##
+## Augments Files
 
 There are two canonical augments files, `host_specific.json`, and `def.json` which may load additional Augments
 as specified by the [_augments_ key][Augments#augments].
@@ -61,7 +61,7 @@ as specified by the [_augments_ key][Augments#augments].
 **Notes:**
 * CFEngine variables are **not** expanded unless otherwise noted.
 
-### host_specific.json ###
+### host_specific.json
 
 If `$(sys.workdir)/data/host_specific.json` (typically `/var/cfengine/data/host_specific.json`) is the first augments file that is loaded. Any variables defined as a result of processing this file
 are automatically tagged with `source=cmdb`. Variables defined from this file can not be overridden by subsequently processed augments files. Policy always wins and thus _can_ overwrite the variable.
@@ -70,7 +70,7 @@ are automatically tagged with `source=cmdb`. Variables defined from this file ca
 
 * This file does not support the [_augments_ key][Augments#augments].
 
-### def.json ###
+### def.json
 
 The file `def.json` is found based on the location of the policy entry (the first policy file read by the agent):
 
@@ -84,11 +84,11 @@ The file `def.json` is found based on the location of the policy entry (the firs
 * `sys` variables are expanded in `def.json` and all subsequently loaded augments as specified by the `augments` key.
 * `def_preferred.json` will be used instead of `def.json` if it is present. This preferential loading can be disabled by providing the `--ignore-preferred-augments` option to the agent.
 
-## Augments Keys ##
+## Augments Keys
 
 An augments file can contain the following keys:
 
-### inputs ###
+### inputs
 
 This key is supported in `def.json`, `def_preferred.json`, and augments loaded by the [_augments_ key][Augments#augments].
 
@@ -129,7 +129,7 @@ The above Augments results in `$(sys.policy_entry_dirname)/services/hello-world.
 
 The above Augments results in `$(sys.policy_entry_dirname)/goodbye.cf` being added to inputs.
 
-### variables ###
+### variables
 
 
 This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the [_augments_ key][Augments#augments].
@@ -246,7 +246,7 @@ bundle agent my_bundle
 
 * Added in 3.18.0
 
-### vars ###
+### vars
 
 This key is supported in both `host_specific.json`, `def.json`, and `def_preferred.json` and augments loaded by the augments key.
 
@@ -310,7 +310,7 @@ Variables of other types than string can be defined too, like in this example
 
 * 3.18.0 gained ability to specify the _namespace_ and _bundle_ the variable should be defined in.
 
-### classes ###
+### classes
 
 This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the augments key.
 
@@ -464,7 +464,7 @@ myclass_defined_by_augments_in_def_json_3_18_0_v1            optional,tags,sourc
   * Classes are defined as _soft_ classes instead of _hard_ classes.
 
 
-### augments ###
+### augments
 
 This key is supported in `def.json`, `def_preferred.json`, and augments loaded by the [_augments_ key][Augments#augments].
 

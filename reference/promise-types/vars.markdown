@@ -302,7 +302,7 @@ vars:
 
 ***
 
-## Attributes ##
+## Attributes
 
 ### policy
 

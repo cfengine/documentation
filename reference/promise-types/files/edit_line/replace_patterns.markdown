@@ -43,7 +43,7 @@ pattern will match.
 
 ****
 
-## Attributes ##
+## Attributes
 
 ### replace_with
 

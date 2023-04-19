@@ -65,12 +65,12 @@ Laptops do not need a lot of confguration support. IP addresses are set by DHCP 
 
 [%CFEngine_include_snippet(process_management.cf, .* )%]
 
-## Kill process ##
+## Kill process
 
 
 [%CFEngine_include_snippet(kill_process.cf, .* )%]
 
-## Restart process ##
+## Restart process
 
 A basic pattern for restarting processes:
 
@@ -83,7 +83,7 @@ This can be made more sophisticated to handle generic lists:
 
 Why? Separating this into two parts gives a high level of control and conistency to CFEngine. There are many options for command execution, like the ability to run commands in a sandbox or as `setuid'. These should not be reproduced in processes.
 
-## Mount a filesystem ##
+## Mount a filesystem
 
 
 [%CFEngine_include_snippet(mount_a_filesystem.cf, .* )%]

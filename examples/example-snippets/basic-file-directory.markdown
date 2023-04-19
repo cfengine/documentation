@@ -32,35 +32,35 @@ tags: [Examples,Files,Directories]
 * [Selecting a region in a file][File and directory examples#Selecting a region in a file]
 * [Warn if matching line in file][File and directory examples#Warn if matching line in file]
 
-## Create files and directories ##
+## Create files and directories
 
 Create files and directories and set permissions.
 
 
 [%CFEngine_include_snippet(create_files_and_directories.cf, .* )%]
 
-## Copy single files ##
+## Copy single files
 
 Copy single files, locally (local_cp) or from a remote site (secure_cp). The Community Open Promise-Body Library (COPBL; cfengine_stdlib.cf) should be included in the /var/cfengine/inputs/ directory and input as below.
 
 
 [%CFEngine_include_snippet(copy_single_files.cf, .* )%]
 
-## Copy directory trees ##
+## Copy directory trees
 
 Copy directory trees, locally (local_cp) or from a remote site (secure_cp). (depth_search => recurse("")) defines the number of sublevels to include, ("inf") gets entire tree.
 
 
 [%CFEngine_include_snippet(copy_directory_trees.cf, .* )%]
 
-## Disabling and rotating files ##
+## Disabling and rotating files
 
 Use the following simple steps to disable and rotate files. See the Community Open Promise-Body Library if you wish more details on what disable and rotate does.
 
 
 [%CFEngine_include_snippet(disabling_and_rotating_files.cf, .* )%]
 
-## Add lines to a file ##
+## Add lines to a file
 
 There are numerous approaches to adding lines to a file. Often the order of a configuration file is unimportant, we just need to ensure settings within it. A simple way of adding lines is show below.
 
@@ -170,7 +170,7 @@ An example of this would be to add variables to /etc/sysctl.conf on Linux:
 
 [%CFEngine_include_snippet(locate_and_transform_files.cf, .* )%]
 
-## BSD flags ##
+## BSD flags
 
 
 [%CFEngine_include_snippet(bsd_flags.cf, .* )%]

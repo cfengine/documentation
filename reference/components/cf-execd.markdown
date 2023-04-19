@@ -28,7 +28,7 @@ network.
 
 - SIGHUP behavior added in 3.7.0
 
-## Command reference ##
+## Command reference
 
 [%CFEngine_include_snippet(cf-execd.help, [\s]*--[a-z], ^$)%]
 
