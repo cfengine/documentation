@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-# What is change management?
+## What is change management?
 
 Change Management is about the planning and implementation of intended changes
 to an IT system, as well as the detection, documentation and possible repair of
@@ -20,7 +20,7 @@ CFEngine automation, some of these approaches are considered antiquated. This
 guide explains change management in the framework of CFEngine's self-healing
 automation.
 
-# Regulation: authorized and unauthorized change
+## Regulation: authorized and unauthorized change
 
 It is common to speak of authorized and unauthorized change in the IT industry. Many
 organizations think in these authoritarian terms and use management techniques
@@ -75,7 +75,7 @@ period of stable operations is like a smooth flight, on course to the correct
 destination. If unintended changes happen to change that, like the weather,
 immediate course corrections should be made to avoid loss.
 
-# Intended and unintended change
+## Intended and unintended change
 
 To institue a rational approach to change management, i.e. one that is suited to
 business's operational time-scales, we need to think about separating change
@@ -96,7 +96,7 @@ without switching them off. A mandatory level of risk must be anticipated.
 It is by defining a desired operational state that one can avoid re-processing
 every since repair to a system.
 
-# How fast should changes be made?
+## How fast should changes be made?
 
 Time scales are crucially important in engineering, and deserve equal importance
 in IT management. Ask yourself: how do you know if something is changing or not?
@@ -137,7 +137,7 @@ system at twice this rate 2R. In CFEngine, we have chosen a repair resolution of
 5 minutes for configuration sampling, because measurements show that many system
 characteristics have auto-correlations times of 10-20 minutes[^2].
 
-# Partially centralized change
+## Partially centralized change
 
 It is not necessary to assume a central model of authority to manage change.
 Indeed, many CFEngine users have highly devolved organizations with many
@@ -155,7 +155,7 @@ Mission Portal. This shows the policy itself in different regions, as well as
 reports about the compliance of systems. Users can also exchange messages about
 their intentions, through policy comments and personal logs in the system.
 
-# The decision point
+## The decision point
 
 By making all changes through a single point of control and verification, you
 avoid[^3] the problem of multiple intentions, because all intentions will be clear
@@ -168,7 +168,7 @@ If you work in a federated environment, then each distinct region of policy can
 have its own policy server or hub. These will not conflict, unless a host
 subscribes to updates from more than one hub.
 
-# Promises about change vs state
+## Promises about change vs state
 
 CFEngine works by keeping promises, so think about how promises apply to change.
 
@@ -204,7 +204,7 @@ CFEngine uses promises in the same way, to guide systems to their desired
 outcomes, not merely a script of relative corrections. So CFEngine works
 somewhat like a system auto-pilot.
 
-# Promises about change
+## Promises about change
 
 To help you think of change in terms of promises, consider the following
 promises made during change management, with CFEngine examples.
@@ -291,7 +291,7 @@ management:
 If you have made no promise about your system state, you should not be surprised
 by anything that happens there. You cannot assume that no change will happen.
 
-# Change management and knowledge management
+## Change management and knowledge management
 
 
 The decision to manage change is an economic trade-off. The more promises we
@@ -317,7 +317,7 @@ unpleasant surprises. The key to predictability in system operations is
 CFEngine's core principle of convergence. CFEngine Missions Specialists always
 think convergence.
 
-# Non-destructive change
+## Non-destructive change
 
 The IT industry, for the most part, has not really progressed beyond the idea of
 baselining systems. In the traditional conception of change management you start
@@ -341,7 +341,7 @@ way, and it is our job to continuously monitor and repair this general
 dilapidation. Rather than assuming a constant state in between changes, CFEngine
 assumes a constant "ideal state" or goal to be achieved at all times.
 
-# Change and convergence
+## Change and convergence
 
 Change requires action, and implementation is the most dangerous part of change,
 as it leads to consquences that a difficult to predict, especially if you have
@@ -362,7 +362,7 @@ repeated a infinite number of times[^4] without adverse consquences, because
 every action will only bring you to the desired state, no matter where you start
 from.
 
-# The change decision process or release management
+## The change decision process or release management
 
 The process of managing intended changes is often called release management. A
 release is a collection of authorized changes to the promises of desired state
@@ -405,7 +405,7 @@ At each stage, we make careful, low-risk incursions on the system and see how it
 responds. Note that some side-effects could take days to emerge, so the schedule
 for change should account for the expected impact.
 
-# Deploying policy changes
+## Deploying policy changes
 
 The following sequence forms a checklist for deploying successful policy change:
 

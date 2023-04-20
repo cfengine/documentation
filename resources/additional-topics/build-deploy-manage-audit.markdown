@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide, BDMA]
 ---
 
-# What is BDMA?
+## What is BDMA?
 
 The four mission phases are sometimes referred to as
 
@@ -45,7 +45,7 @@ The four mission phases are sometimes referred to as
 
 ![BDMA Knowledge Management Diagram](./BDMA-model.png)
 
-# Stem cell hosts
+## Stem cell hosts
 
 At CFEngine we talk about stem cell hosts. A stem cell host is a generic
 foundation of software that is the necessary and sufficient basis for any future
@@ -59,7 +59,7 @@ rather, you use CFEngine to implement and maintain the morphology of the
 differences. Stem cell hosts are normally built using PXE services by booting
 and installing automatically from the network.
 
-# Recommendations for Build
+## Recommendations for Build
 
 There are many approaches to building complete systems. When you use CFEngine,
 you should try to progress from thinking only about putting bytes on disks, to
@@ -91,7 +91,7 @@ optimized build that can shave off many minutes from the build time for
 machines. CFEngine can then take over where rPath leaves off, performing
 surgically precise customization.
 
-# Recommendations for Deploy
+## Recommendations for Deploy
 
 Deploying a policy is a potentially dangerous operation, as it will lead to
 change, with associated risk. Side-effects are common, and often result from
@@ -131,7 +131,7 @@ CFEngine allows you to apply changes at a much finer level of granularity than
 any package based management system, thus it complements basic package
 management with its deployment and real time repair (see next section).
 
-# Recommendations for Manage
+## Recommendations for Manage
 
 Managing systems is an almost trivial task with CFEngine. Once a model for
 desired state has been created, you just sit back and watch. You should be ready
@@ -153,7 +153,7 @@ computers in a single day. Learning to trust the software saves unnecessary
 communication and needless human involvement. The Nova Mission Portal makes
 notification and alerting largely unnecessary.
 
-# Recommendations for Audit
+## Recommendations for Audit
 
 Auditing systems is a continuous process when using CFEngine Nova. Report data
 are collected on a continuous and distributed basis. These data are then
@@ -232,7 +232,7 @@ detail.
 
   Current variable values expanded on different hosts.
 
-# Summary BDMA workflow
+## Summary BDMA workflow
 
 * Define a stem cell host template.
 
