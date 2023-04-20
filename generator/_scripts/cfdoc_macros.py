@@ -163,15 +163,15 @@ def promise_attribute(parameters, config):
 			else:
 				lines.append("**Type:** `body %s`\n\n" % header[3])
 				return lines
-	elif header[2] == "Control Promises" or header[2] == "Common Control":
+	elif header[2] == "Control promises" or header[2] == "Common control":
 		# assume body control promise
 		# header[1] = component name (cf-*)
-		# header[2] = "Control Promises"
+		# header[2] = "Control promises"
 		# header[3] = body attribute
 		# cut off the cf- prefix and 'd'; this will leave the executor
 		# general exception for body common control
 		component_name = header[1][3:]
-		if header[2] == "Common Control":
+		if header[2] == "Common control":
 			component_name = "common"
 		if component_name[-1] == 'd':
 			component_name = component_name[:-1]
@@ -271,10 +271,10 @@ def function_table(parameters, config):
 		elif returnType in ["irange","rrange"]: returnType = "(i,r)range"
 		addToDict(returnTypeDict, returnType, function)
 		
-	lines.append("### Functions by Category\n\n")
+	lines.append("### Functions by category\n\n")
 	lines += dictToTable(categoryDict)
 	
-	lines.append("### Functions by Return Type\n\n")
+	lines.append("### Functions by return type\n\n")
 	lines += dictToTable(returnTypeDict)
 	
 	return lines
@@ -411,7 +411,7 @@ def document_type(type, type_definition, excludes, config):
 				for a in anchors:
 					score = 0
 					# if type is common attributes then prioritize Promise types page, where the common attributes are listed, as anchor
-					if type == "common" and "Promise Types" in a:
+					if type == "common" and "Promise types" in a:
 						score += 3
 					if type in a:
 						score += 1
@@ -466,7 +466,7 @@ def document_syntax_map(tree, branch, config):
 			common_definition = dict()
 			common_definition["status"] = "normal"
 			common_definition["attributes"] = common_attributes
-			lines.append("### [Common Attributes][Promise Types#Common Promise Attributes]\n\n")
+			lines.append("### [Common attributes][Promise types#Common promise attributes]\n\n")
 			lines.append(document_type("common", common_definition, [], config))
 			
 	excludes = list(common_attributes.keys())
