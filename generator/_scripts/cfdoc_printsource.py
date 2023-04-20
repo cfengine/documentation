@@ -98,7 +98,7 @@ def run(config):
 				alias = line[line.find(':') + 1:].lstrip().rstrip()
 				out_file.write(line)
 			elif line.find("[%CFEngine_TOC%]") == 0:
-				out_file.write("# Table of Content\n")
+				out_file.write("# Table of contents\n")
 				out_file.write("\n")
 				first = True
 				for header in headers:
