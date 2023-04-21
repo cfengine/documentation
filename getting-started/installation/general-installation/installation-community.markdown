@@ -26,14 +26,15 @@ Please Note: Internet access is required from the host if you wish to use the qu
 
 Use the following script to install CFEngine on your 32- or 64-bit machine.
 
-```
-$ wget -O- http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-community.sh | sudo bash
+```console
+wget -O- http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-community.sh | sudo bash
 ```
 
 1. Run this script on your designated Policy Server machine **and** on your designated Host machine(s).
 2. Bootstrap the Policy Server to itself and then bootstrap your Host(s) to the Policy Server by running the following command:
-```
-$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+
+```console
+sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
 ## 1. Download Packages
@@ -49,38 +50,38 @@ Choose the right command for your operating system:
 
 **Newer 64-bit RPM based distributions: (Redhat/CentOS/SUSE)**
 
-```
-$ sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el6.x86_64.rpm
+```console
+sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el6.x86_64.rpm
 ```
 
 **Older 64-bit RPM based distributions: (Redhat/CentOS/SUSE)** (not recommended for policy server)
 
-```
-$ sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el4.x86_64.rpm
+```console
+sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el4.x86_64.rpm
 ```
 
 **32-bit RPM based distributions: (Redhat/CentOS/SUSE)** (not recommended for policy server)
 
-```
-$ sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el4.i386.rpm
+```console
+sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el4.i386.rpm
 ```
 
 **Newer 64-bit DEB based distributions: (Ubuntu/Debian)**
 
-```
-$ sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian7.deb`
+```console
+sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian7.deb`
 ```
 
 **Older 64-bit DEB based distributions: (Ubuntu/Debian)** (not recommended for policy server)
 
-```
-$ sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian4.deb`
+```console
+sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian4.deb`
 ```
 
 **32-bit DEB based distributions: (Ubuntu/Debian)** (not recommended for policy server)
 
-```
-$ sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_i386-debian4.deb`
+```console
+sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_i386-debian4.deb`
 ```
 
 **Note:** You might get a message like this: "Policy is not found in /var/cfengine/inputs, not starting CFEngine." Do not worry;
@@ -93,8 +94,8 @@ The Policy Server must be bootstrapped to itself. Find the IP address of your Po
 
 Run the bootstrap command:
 
-```
-$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+```console
+sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
 **Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12**
@@ -103,8 +104,8 @@ Upon successful completion, a confirmation message appears: "Bootstrap to '192.1
 
 Type the following to check which version of CFEngine your are running:
 
-```
-$ /var/cfengine/bin/cf-promises --version
+```console
+/var/cfengine/bin/cf-promises --version
 ```
 
 The Policy Server is installed.
@@ -120,8 +121,8 @@ to at least one more VM or server and it must be on the same network as the Poli
 The Host(s) must be bootstrapped to the Policy Server in order to establish a connection between the Host and
 the Policy Server. Run the same commands that you ran in Step 3.
 
-```
-$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+```console
+sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
 **Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12**
