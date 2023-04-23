@@ -1,12 +1,12 @@
-[cfengine]: https://cfengine.com "CFEngine Homepage"
-[support desk]: https://support.northern.tech "CFEngine - Support Desk"
-[professional services]: https://cfengine.com/support/ "CFEngine - Help and Support"
+[cfengine]: https://cfengine.com "CFEngine homepage"
+[support desk]: https://support.northern.tech "CFEngine - Support desk"
+[professional services]: https://cfengine.com/support/ "CFEngine - Help and support"
 [Free25 Forum]: https://groups.google.com/forum/?hl=en&fromgroups#!forum/cfengine-enterprise-free-25 "Free25 Forum"
-[help-cfengine]: https://groups.google.com/forum/?hl=en&fromgroups#!forum/help-cfengine "Help Forum"
+[help-cfengine]: https://groups.google.com/forum/?hl=en&fromgroups#!forum/help-cfengine "Help forum"
 [bug tracker]: http://northerntech.atlassian.net/projects/CFE/issues "Bug Tracker"
 [cfengine blog]: http://cfengine.com/blog "CFEngine - Blog"
-[learning center]: http://cfengine.com/learn "CFEngine Learning Center"
-[contact us]: https://cfengine.com/contactUs "CFEngine - Contact Us"
+[learning center]: http://cfengine.com/learn "CFEngine learning center"
+[contact us]: https://cfengine.com/contactUs "CFEngine - Contact us"
 [github]: https://github.com "GitHub"
 [github core]: https://github.com/cfengine/core "Core repository on GitHub"
 [github documentation]: https://github.com/cfengine/documentation "Documentation repository on GitHub"
@@ -44,12 +44,12 @@
 [mpf_extra_autorun_inputs]: reference-masterfiles-policy-framework.html#additional-automatically-loaded-inputs
 [Append to inputs used by update policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-update-policy
 [Classes and decisions]: reference-language-concepts-classes.html
-[language-concepts-classes-hard]: reference-language-concepts-classes.html#hard-classes.html "Language Concepts -> Classes and decisions: Hard classes"
+[language-concepts-classes-hard]: reference-language-concepts-classes.html#hard-classes.html "Language concepts -> Classes and decisions: Hard classes"
 [lib/files.cf]: reference-masterfiles-policy-framework-lib-files
 [lib/packages.cf]: reference-masterfiles-policy-framework-lib-packages
 [stdlib-mog]: reference-masterfiles-policy-framework-lib-files.html#mog
 [jq-project]: https://stedolan.github.io/jq/ "jq is a lightweight and flexible command-line JSON processor. Try online at jqplay.org!"
-[Using Vagrant]: getting-started-installation-general-installation-installation-enterprise-vagrant.html "The CFEngine Vagrant Environment provides an easy way to test and explore CFEngine Enterprise."
+[Using Vagrant]: getting-started-installation-general-installation-installation-enterprise-vagrant.html "The CFEngine Vagrant environment provides an easy way to test and explore CFEngine Enterprise."
 [type]: reference-functions-type.html
 [promise-type-measurements]: reference-promise-types-measurements.html
 [promise-type-custom]: reference-promise-types-custom.html
