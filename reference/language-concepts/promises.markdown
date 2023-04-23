@@ -34,7 +34,7 @@ systems such as rpm and apt.
 Some promise types are common to all CFEngine components, while others can
 only be executed by one of them. `cf-serverd` cannot keep `packages` promises,
 and `cf-agent` cannot keep `access` promises. See the
-[Promise Type reference][Promise types] for a comprehensive
+[Promise type reference][Promise types] for a comprehensive
 list of promise types.
 
 ### The Promiser

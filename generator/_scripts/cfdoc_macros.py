@@ -411,7 +411,7 @@ def document_type(type, type_definition, excludes, config):
 				for a in anchors:
 					score = 0
 					# if type is common attributes then prioritize Promise types page, where the common attributes are listed, as anchor
-					if type == "common" and "Promise Types" in a:
+					if type == "common" and "Promise types" in a:
 						score += 3
 					if type in a:
 						score += 1
@@ -466,7 +466,7 @@ def document_syntax_map(tree, branch, config):
 			common_definition = dict()
 			common_definition["status"] = "normal"
 			common_definition["attributes"] = common_attributes
-			lines.append("### [Common Attributes][Promise Types#Common Promise Attributes]\n\n")
+			lines.append("### [Common Attributes][Promise types#Common Promise Attributes]\n\n")
 			lines.append(document_type("common", common_definition, [], config))
 			
 	excludes = list(common_attributes.keys())

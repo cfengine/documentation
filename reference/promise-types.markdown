@@ -10,7 +10,7 @@ Within a bundle, the promise types are executed in a round-robin fashion in the
 following [normal ordering][Normal ordering]. Which promise types are available
 depends on the [bundle][bundles] type:
 
-| Promise Type   | common | agent | server | monitor |
+| Promise type   | common | agent | server | monitor |
 |----------------|:------:|:-----:|:------:|:--------|
 | [defaults][defaults] - a default value for bundle parameters | x      | x     | x      | x       |
 | [classes][classes] - a class, representing a state of the system | x      | x     | x      | x       |
