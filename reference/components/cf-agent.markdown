@@ -93,7 +93,7 @@ bootstrap without further manual user intervention.
 **Note:** Automatic bootstrapping support is ONLY for Linux, and it is limited
 only to one subnet.
 
-## Control Promises
+## Control promises
 
 Settings describing the details of the fixed behavioral promises
 made by `cf-agent`.

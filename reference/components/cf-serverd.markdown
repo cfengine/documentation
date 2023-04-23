@@ -33,7 +33,7 @@ affected by `common` and `server` control bodies.
 
 [%CFEngine_include_snippet(cf-serverd.help, [\s]*--[a-z], ^$)%]
 
-## Control Promises
+## Control promises
 
 Settings describing the details of the fixed behavioral promises made by
 `cf-serverd`. Server controls are mainly about determining access policy for

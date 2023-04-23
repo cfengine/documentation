@@ -157,7 +157,7 @@ The following prefixes may be used when defining classes:
 
 Note: These suffixes and prefixes may be combined, resulting in a class like `rootprocs_high`, `loadavg_high_ldt`, `cpu1_high_dev3`, and `entropy_postgresql_out_low`.
 
-## Control Promises
+## Control promises
 
 Settings describing the details of the fixed behavioral promises
 made by `cf-monitord`. The system defaults will be sufficient for

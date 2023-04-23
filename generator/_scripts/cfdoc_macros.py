@@ -163,10 +163,10 @@ def promise_attribute(parameters, config):
 			else:
 				lines.append("**Type:** `body %s`\n\n" % header[3])
 				return lines
-	elif header[2] == "Control Promises" or header[2] == "Common Control":
+	elif header[2] == "Control promises" or header[2] == "Common Control":
 		# assume body control promise
 		# header[1] = component name (cf-*)
-		# header[2] = "Control Promises"
+		# header[2] = "Control promises"
 		# header[3] = body attribute
 		# cut off the cf- prefix and 'd'; this will leave the executor
 		# general exception for body common control
