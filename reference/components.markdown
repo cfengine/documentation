@@ -19,7 +19,7 @@ for a high-level overview of the
 CFEngine components, and each component's reference documentation for the
 details about the specific control bodies.
 
-## Common Control
+## Common control
 
 The `common` control body refers to those promises that are
 hard-coded into all the components of CFEngine, and therefore

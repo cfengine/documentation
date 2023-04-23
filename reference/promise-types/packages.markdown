@@ -202,7 +202,7 @@ packages:
 The package module body you wish to use for the package promise. The default is
 platform dependent, see
 [`package_module`][Components#package_module] in Components
-and Common Control. The name of the body is expected to be the same as the name
+and Common control. The name of the body is expected to be the same as the name
 of the package module inside `/var/cfengine/modules/packages`.
 
 **See also:** [Common Body Attributes][Promise types#Common Body Attributes]
