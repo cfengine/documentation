@@ -34,7 +34,7 @@ depends on the [bundle][bundles] type:
 See each promise type's reference documentation for detailed lists of available
 attributes.
 
-## Common Promise Attributes
+## Common promise attributes
 
 The following attributes are available to all promise types.
 
