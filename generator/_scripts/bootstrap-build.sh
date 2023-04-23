@@ -2,7 +2,7 @@
 
 usage()
 {
-  echo "Usage: $0 [WORKDIR] [BRANCH]
+    echo "Usage: $0 [WORKDIR] [BRANCH]
 
     WORKDIR :: Defaults to current working directory
     BRANCH :: Branch to build (defaults to currently checked out branch in current working directory)"
@@ -10,23 +10,23 @@ usage()
 }
 
 case $# in
-  "0" )
-    echo "No arguments supplied"
-    export WRKDIR="$(pwd)"
-    BRANCH="$(git symbolic-ref --quiet --short HEAD)"
-    ;;
-  "1" )
-    export WRKDIR=$1
-    BRANCH="$(git symbolic-ref --short HEAD 2>/dev/null)"
-    ;;
-  "2" )
-    export WRKDIR=$1
-    BRANCH="$2"
-    ;;
-  * )
-    echo "Error: Too many arguments"
-    usage
-    exit;;
+    "0" )
+        echo "No arguments supplied"
+        export WRKDIR="$(pwd)"
+        BRANCH="$(git symbolic-ref --quiet --short HEAD)"
+        ;;
+    "1" )
+        export WRKDIR=$1
+        BRANCH="$(git symbolic-ref --short HEAD 2>/dev/null)"
+        ;;
+    "2" )
+        export WRKDIR=$1
+        BRANCH="$2"
+        ;;
+    * )
+        echo "Error: Too many arguments"
+        usage
+        exit;;
 esac
 
 echo "Set WRKDIR=$WRKDIR"
