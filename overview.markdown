@@ -81,7 +81,7 @@ information to CFEngine from outside.
 
 This daemon authenticates requests from the network and processes them
 according to rules specified in the
-[server control body][cf-serverd#Control Promises] and server bundles
+[server control body][cf-serverd#Control promises] and server bundles
 containing [access promises][access].
 
 See also: [cf-serverd][cf-serverd] reference documentation.
