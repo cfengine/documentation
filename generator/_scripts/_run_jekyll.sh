@@ -21,11 +21,11 @@ cd $WRKDIR/documentation/generator
 # so instead of set -x we just echo each command ourselves
 set +x
 if [ -e "/home/jenkins/.rvm/scripts/rvm" ]; then
-  echo "+ /home/jenkins/.rvm/scripts/rvm"
-  source /home/jenkins/.rvm/scripts/rvm
+    echo "+ /home/jenkins/.rvm/scripts/rvm"
+    source /home/jenkins/.rvm/scripts/rvm
 elif [ -e "$HOME/.rvm/scripts/rvm" ]; then
-  echo "+ $HOME/.rvm/scripts/rvm"
-  source $HOME/.rvm/scripts/rvm
+    echo "+ $HOME/.rvm/scripts/rvm"
+    source $HOME/.rvm/scripts/rvm
 else
     echo "ERROR: I couldn't source rvm from '/home/jenkins/.rvm/scripts/rvm' or '\$HOME/.rvm/scripts/rvm', probably jekyll won't work"
 fi
@@ -38,16 +38,15 @@ echo "*********************************************************" >> $WRKDIR/outp
 set -x
 jekyll
 if [ "$?" -gt "0" ]; then
-   exit 1;
+    exit 1;
 fi
 
 $WRKDIR/documentation/generator/_scripts/cfdoc_postprocess.py "$@"
 if [ "$?" -gt "0" ]; then
-   exit 2;
+    exit 2;
 fi
 
 $WRKDIR/documentation/generator/_scripts/_create_pdf.sh
 if [ "$?" -gt "0" ]; then
-   exit 3;
+    exit 3;
 fi
-

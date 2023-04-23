@@ -1,12 +1,12 @@
 #!/bin/bash
 
 if [ "$#" != 4 ]; then
-	echo "Pass 4 args, please:"
-	echo BRANCH
-	echo PACKAGE_JOB
-	echo PACKAGE_UPLOAD_DIRECTORY
-	echo PACKAGE_BUILD
-	exit 1
+    echo "Pass 4 args, please:"
+    echo BRANCH
+    echo PACKAGE_JOB
+    echo PACKAGE_UPLOAD_DIRECTORY
+    echo PACKAGE_BUILD
+    exit 1
 fi
 
 export BRANCH=$1
@@ -29,30 +29,30 @@ export WRKDIR=`pwd`
 cd $WRKDIR/documentation/generator
 
 
-### download CFEngine ###
+### Download CFEngine:
 
 # c https://github.com/cfengine/misc/blob/master/vagrant_quickstart/build.sh
 
 function fetch_file() {
-  # $1 -- URL to fetch
-  # $2 -- destination
-  # $3 -- number of tries (with 10s pauses) [optional, default=1]
-  local target="$1"
-  local destination="$2"
-  local tries=1
-  if [ $# -gt 2 ]; then
-    tries="$3"
-  fi
-  local success=1                     # 1 means False in bash, 0 means True
-  set +e
-  for i in `seq 1 $tries`; do
-    wget "$target" -O "$destination" && success=0 && break
-    if [ $i -lt $tries ]; then
-      sleep 10s
+    # $1 -- URL to fetch
+    # $2 -- destination
+    # $3 -- number of tries (with 10s pauses) [optional, default=1]
+    local target="$1"
+    local destination="$2"
+    local tries=1
+    if [ $# -gt 2 ]; then
+        tries="$3"
     fi
-  done
-  set -e
-  return $success
+    local success=1                     # 1 means False in bash, 0 means True
+    set +e
+    for i in `seq 1 $tries`; do
+        wget "$target" -O "$destination" && success=0 && break
+        if [ $i -lt $tries ]; then
+            sleep 10s
+        fi
+    done
+    set -e
+    return $success
 }
 
 set -ex
