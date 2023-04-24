@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Classes and Decisions
+title: Classes and decisions
 published: true
 sorting: 50
 tags: [manuals, language, syntax, concepts, classes, decisions]
@@ -26,9 +26,9 @@ namespace scope.
 
 In [CFEngine Enterprise](https://cfengine.com/product-overview/), classes that are defined can be reported to the
 CFEngine Database Server and can be used there for reporting, grouping of hosts
-and inventory management. For more information about how this is configured please read the documentation on [Enterprise Reporting][].
+and inventory management. For more information about how this is configured please read the documentation on [Enterprise reporting][].
 
-## Listing Classes
+## Listing classes
 
 To see the first order of `hard classes` and `soft classes` run `cf-promises
 --show-classes` as a privileged user. Alternatively run `cf-agent
@@ -68,7 +68,7 @@ Classes and variables have tags that describe their provenance (who
 created them) and purpose (why were they created).
 
 While you can provide your own tags for soft classes in policy with
-the [`meta`][Promise Types#meta] attribute, there are some tags applied to hard classes and
+the [`meta`][Promise types#meta] attribute, there are some tags applied to hard classes and
 other special cases.  This list may change in future versions of
 CFEngine.
 
@@ -93,7 +93,7 @@ Enterprise only:
 * `source=ldap`: this soft class or variable was created from an LDAP lookup.
 * `source=observation`: this class or variable came from a `measurements` system observation and will also have the `monitoring` tag.
 
-## Hard Classes
+## Hard classes
 
 Hard classes are discovered by CFEngine. Each time it wakes up, it discovers
 and reads properties of the environment or context in which it runs.It turns
@@ -179,7 +179,7 @@ of a week.
     * **See also:** `sys.fqhost`, `sys.uqhost`.
 -   An arbitrary user-defined string (as specified in the `-D`
     command line option, or defined in a [`classes` promise][classes] promise or
-    [`classes` body][Promise Types#classes],
+    [`classes` body][Promise types#classes],
     `restart_class` in a `processes` promise, etc).
 -   The IP address octets of any active interface (in the form
     `ipv4_192_0_0_1<!-- /@w -->`, `ipv4_192_0_0<!-- /@w -->`,
@@ -191,7 +191,7 @@ of a week.
 -   System status and entropy information reported by
     `cf-monitord`.
 
-## Soft Classes
+## Soft classes
 
 Soft classes are user-defined classes which you can use to implement your own
 classifications.
@@ -284,7 +284,7 @@ reports:
 
 
 
-### Negative Knowledge
+### Negative knowledge
 
 If a class is set, then it is certain that the corresponding fact is true.
 However, that a class is not set could mean that something is not the case, or
@@ -293,7 +293,7 @@ where the state of a class can change during the execution of a policy,
 depending on the [order][normal ordering] in which bundles and promises are
 evaluated.
 
-## Making Decisions based on classes
+## Making decisions based on classes
 
 Class guards are the most common way to restrict a promise to a specific context. Once stated the restriction applies until a new context is specified. A new promise type automatically resets to an unrestricted context (the unrestricted context is typically referred to as `any`).
 
@@ -467,7 +467,7 @@ defined and that you must explicitly canonify when verifying classes.
 [%CFEngine_include_example(class-automatic-canonificiation.cf)%]
 
 
-## Operators and Precedence
+## Operators and precedence
 
 Classes promises define new classes based on combinations of old ones. This is
 how to make complex decisions in CFEngine, with readable results. It is like
@@ -593,7 +593,7 @@ above and add [`and`][classes#and] or [`xor`][classes#xor] constraints to the
 single promise.
 
 Additionally classes can be defined or undefined as the result of a promise by
-using a [classes body][Promise Types#classes]. To set a class if
+using a [classes body][Promise types#classes]. To set a class if
 a promise is repaired, one might write:
 
 ```cf3
@@ -603,7 +603,7 @@ a promise is repaired, one might write:
 ```
 
 These classes are `namespace` scoped by default. The
-[`scope`][Promise Types#scope] attribute can be used to make them
+[`scope`][Promise types#scope] attribute can be used to make them
 local to the bundle.
 
 It is recommended to use bundle scoped classes whenever possible. This example
@@ -636,7 +636,7 @@ scoped.
 
 Finally, `restart_class` classes in `processes` are global.
 
-### Class Scopes: A More Complex Example
+### Class scopes: A more complex example
 
 ```cf3
 body common control
@@ -700,9 +700,9 @@ The standard library in the Masterfiles Policy Framework contains
 the [`feature`][lib/feature.cf] bundle which implements a useful model for
 defining classes for a period of time as well as canceling them on demand.
 
-**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types#persist_time], [`lib/event.cf`][lib/event.cf] in the MPF, [`lib/feature.cf`][lib/feature.cf] in the MPF
+**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise types#persist_time], [`lib/event.cf`][lib/event.cf] in the MPF, [`lib/feature.cf`][lib/feature.cf] in the MPF
 
 ## Canceling classes
 
-You can cancel a class with a [`classes`][Promise Types#classes] body.
+You can cancel a class with a [`classes`][Promise types#classes] body.
 See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.

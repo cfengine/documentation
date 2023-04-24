@@ -206,7 +206,7 @@ it will generate an error, because the second promise on the variable monvars
 will overwrite the value promised in the first promise! All that we will see in
 the reports are the second definition of the monvars list.
 
-# Fixing Iterating across nested lists
+# Fixing iterating across nested lists
 
 ```cf3
 bundle agent iteration3c

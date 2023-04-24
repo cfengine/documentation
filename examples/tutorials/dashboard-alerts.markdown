@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Dashboard Alerts
+title: Dashboard alerts
 sorting: 15
 published: true
 tags: [Examples, Tutorials, Dashboard, Alerts, Enterprise]

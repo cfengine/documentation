@@ -1,19 +1,19 @@
 ---
 layout: default
-title: Software Administration Examples
+title: Software administration examples
 published: true
 sorting: 4
 tags: [Examples,Software Administration]
 ---
 
-* [Software and patch installation][Software Administration Examples#Software and patch installation]
-* [Postfix mail configuration][Software Administration Examples#Postfix mail configuration]
-* [Set up a web server][Software Administration Examples#Set up a web server]
-* [Add software packages to the system][Software Administration Examples#Add software packages to the system]
-* [Application baseline][Software Administration Examples#Application baseline]
-* [Service management (windows)][Software Administration Examples#Service management (windows)]
-* [Software distribution][Software Administration Examples#Software distribution]
-* [Web server modules][Software Administration Examples#Web server modules]
+* [Software and patch installation][Software administration examples#Software and patch installation]
+* [Postfix mail configuration][Software administration examples#Postfix mail configuration]
+* [Set up a web server][Software administration examples#Set up a web server]
+* [Add software packages to the system][Software administration examples#Add software packages to the system]
+* [Application baseline][Software administration examples#Application baseline]
+* [Service management (windows)][Software administration examples#Service management (windows)]
+* [Software distribution][Software administration examples#Software distribution]
+* [Web server modules][Software administration examples#Web server modules]
 * Ensure a service is enabled and running
 * Managing Software
 * Install packages

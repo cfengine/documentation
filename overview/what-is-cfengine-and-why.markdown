@@ -1,6 +1,6 @@
 ---
 layout: default
-title: What is CFEngine and Why?
+title: What is CFEngine and why?
 published: true
 sorting: 1
 tags: [getting started, faq]

@@ -308,7 +308,7 @@ classes:
 
 **History:** Was introduced in CFEngine 3.3.0
 
-**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise Types#persist_time]
+**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise types#persist_time]
 
 ### not
 
@@ -335,7 +335,7 @@ classes:
 
 Knowing that something is not the case is not the same as not knowing whether
 something is the case. That a class is not set could mean either. See the note
-on [Negative Knowledge][classes and decisions].
+on [Negative knowledge][classes and decisions].
 
 ### scope
 
@@ -365,7 +365,7 @@ classes:
       scope => "bundle";
 ```
 
-**See also:** [`scope` in `body classes`][Promise Types#scope]
+**See also:** [`scope` in `body classes`][Promise types#scope]
 
 ### select_class
 

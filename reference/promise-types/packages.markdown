@@ -17,7 +17,7 @@ does not currently cover. To read about the old package promise, go to the
 [old package promise section][packages (deprecated)].
 
 The actual communication with the package manager on the system is handled by so
-called [package modules][Package Modules], which are specifically written for
+called [package modules][Package modules], which are specifically written for
 each type of package manager.
 
 In this example, we want the software package "apache2" to be present on the
@@ -202,10 +202,10 @@ packages:
 The package module body you wish to use for the package promise. The default is
 platform dependent, see
 [`package_module`][Components#package_module] in Components
-and Common Control. The name of the body is expected to be the same as the name
+and Common control. The name of the body is expected to be the same as the name
 of the package module inside `/var/cfengine/modules/packages`.
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### default_options
 
@@ -252,11 +252,11 @@ body package_module apt_get
 ```
 
 **Note for `package_module` authors**:
-[`list-installed`][Package Modules#list-installed] will be called when the agent
+[`list-installed`][Package modules#list-installed] will be called when the agent
 repairs a package using the given `package_module`, when the lock has expired or
 when the agent is run without locks.
 
-**See also:** `Package Modules`
+**See also:** `Package modules`
 
 #### query_updates_ifelapsed
 
@@ -285,12 +285,12 @@ body package_module apt_get
 ```
 
 **Note for `package_module` authors**:
-[`list-updates`][Package Modules#list-updates] will be called when the lock has
+[`list-updates`][Package modules#list-updates] will be called when the lock has
 expired or when the agent is run without locks.
-[`list-updates-local`][Package Modules#list-updates-local] is called in all
+[`list-updates-local`][Package modules#list-updates-local] is called in all
 other conditions.
 
-**See also:** `Package Modules`
+**See also:** `Package modules`
 
 #### interpreter
 
@@ -315,7 +315,7 @@ body package_module apt_get
 }
 ```
 
-**See also:** `Package Modules`
+**See also:** `Package modules`
 
 **History:** Introduced in 3.13.0, 3.12.2
 
@@ -343,7 +343,7 @@ body package_module yum_all_repos
 }
 ```
 
-**See also:** `Package Modules`
+**See also:** `Package modules`
 
 **History:** Introduced in 3.13.0, 3.12.2
 

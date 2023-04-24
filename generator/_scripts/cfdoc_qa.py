@@ -24,67 +24,92 @@ import os
 import sys
 from time import gmtime, strftime
 
+
 def initialize(config):
-	config["log_file"] = config["markdown_directory"] + "/cfdoc_log.markdown"
-	if os.path.exists(config["log_file"]):
-		os.remove(config["log_file"])
-	logfile = open(config["log_file"], "w")
-	logfile.write("---\n")
-	logfile.write("layout: printable\n")
-	logfile.write("title: \"Documentation Issues\"\n")
-	logfile.write("published: true\n")
-	logfile.write("alias: cfdoc_log.html\n")
-	logfile.write("---\n")
-	logfile.write("\n")
-	logfile.write("Documentation generated at %s GMT\n" % strftime("%Y-%m-%d %H:%M:%S", gmtime()))
-	logfile.write("\n")
-	logfile.write("# Logging\n")
-	logfile.write("\n")
-	logfile.close()
+    config["log_file"] = config["markdown_directory"] + "/cfdoc_log.markdown"
+    if os.path.exists(config["log_file"]):
+        os.remove(config["log_file"])
+    logfile = open(config["log_file"], "w")
+    logfile.write("---\n")
+    logfile.write("layout: printable\n")
+    logfile.write('title: "Documentation Issues"\n')
+    logfile.write("published: true\n")
+    logfile.write("alias: cfdoc_log.html\n")
+    logfile.write("---\n")
+    logfile.write("\n")
+    logfile.write(
+        "Documentation generated at %s GMT\n" % strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    )
+    logfile.write("\n")
+    logfile.write("# Logging\n")
+    logfile.write("\n")
+    logfile.close()
 
 
 def OpenLogFile(config):
-	logfile = open(config["log_file"], "a")
-	return logfile
+    logfile = open(config["log_file"], "a")
+    return logfile
+
 
 def LogProcessStart(config, string):
-	logfile = OpenLogFile(config)
-	logfile.write("\n")
-	logfile.write("### %s\n" % string)
-	logfile.write("\n")
-	logfile.close()
+    logfile = OpenLogFile(config)
+    logfile.write("\n")
+    logfile.write("### %s\n" % string)
+    logfile.write("\n")
+    logfile.close()
+
 
 def LogMissingDocumentation(config, element, strings, location):
-	logfile = OpenLogFile(config)
-	if not element.startswith("`"):
-		element = "`%s`" % element
-	logfile.write("* %s:\n" % element)
-	if len(strings):
-		logfile.write("    * Errors:\n")
-	for string in strings:
-		logfile.write("        * **%s**\n" % string)
-	if len(location):
-		logfile.write("    * Source location: `%s`\n" % location)
-	logfile.write("    * Triggered by: `%s` (%d)\n" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"]))
-	logfile.close()
+    logfile = OpenLogFile(config)
+    if not element.startswith("`"):
+        element = "`%s`" % element
+    logfile.write("* %s:\n" % element)
+    if len(strings):
+        logfile.write("    * Errors:\n")
+    for string in strings:
+        logfile.write("        * **%s**\n" % string)
+    if len(location):
+        logfile.write("    * Source location: `%s`\n" % location)
+    logfile.write(
+        "    * Triggered by: `%s` (%d)\n"
+        % (
+            os.path.relpath(config["context_current_file"]),
+            config["context_current_line_number"],
+        )
+    )
+    logfile.close()
+
 
 def Log(config, string):
-	# Prepend the error string as a general error without context of current process
-	logfile = open(config["log_file"], 'r')
-	original = logfile.readlines()
-	logfile.close()
+    # Prepend the error string as a general error without context of current process
+    logfile = open(config["log_file"], "r")
+    original = logfile.readlines()
+    logfile.close()
 
-	logfile = open(config["log_file"], 'w')
-	line_offset = 0
-	for line in original:
-		logfile.write(line)
-		line_offset += 1
-		if line == "# Logging\n":
-			break
+    logfile = open(config["log_file"], "w")
+    line_offset = 0
+    for line in original:
+        logfile.write(line)
+        line_offset += 1
+        if line == "# Logging\n":
+            break
 
-	logfile.write("\n* %s\n" % string)
-	logfile.write("    * Triggered by: `%s` (%d)\n" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"]))
-	print("%s (%d): %s" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"], string))
+    logfile.write("\n* %s\n" % string)
+    logfile.write(
+        "    * Triggered by: `%s` (%d)\n"
+        % (
+            os.path.relpath(config["context_current_file"]),
+            config["context_current_line_number"],
+        )
+    )
+    print(
+        "%s (%d): %s"
+        % (
+            os.path.relpath(config["context_current_file"]),
+            config["context_current_line_number"],
+            string,
+        )
+    )
 
-	logfile.writelines(original[line_offset:])
-	logfile.close()
+    logfile.writelines(original[line_offset:])
+    logfile.close()

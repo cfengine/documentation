@@ -9,7 +9,7 @@ tags: [overviews, troubleshooting, connectivity, network, server, access, remote
 Starting `cf-serverd` sets up a line of communication between
 hosts. This daemon authenticates requests from the network and processes them
 according to rules specified in the
-[`server control`][cf-serverd#Control Promises] body and server bundles
+[`server control`][cf-serverd#Control promises] body and server bundles
 containing `access` promises.
 
 The server can allow the network to access files or to execute CFEngine:
@@ -43,7 +43,7 @@ In order to connect to the CFEngine server you need:
   run `cf-key`.
 * **Network connectivity** with an IPv4 or IPv6 address.
 * **Permission to connect** to the server.
-  The [`server control`][cf-serverd#Control Promises] body must grant access
+  The [`server control`][cf-serverd#Control promises] body must grant access
   to your computer and public key by name or IP address, by listing it in
   the appropriate access lists (see below).
 * **Mutual key trust**.
@@ -64,7 +64,7 @@ variety of forms, usually files, but sometimes console output.
 
 ## Bootstrapping
 
-[Bootstrap][General Installation#Bootstrap] is the manual first run of cf-agent that establishes
+[Bootstrap][General installation#Bootstrap] is the manual first run of cf-agent that establishes
 communication with the policy server.
 Bootstrapping executes the `failsafe.cf` policy that connects to
 the server, establishes trust to the server's key, and that starts the
@@ -312,7 +312,7 @@ information which might be useful to them.
 There is a simple checklist for curing this problem:
 
 1. Make sure that you have granted access to the client's address in the
-   [`server control`][cf-serverd#Control Promises] body.
+   [`server control`][cf-serverd#Control promises] body.
 2. Make sure the connecting client is granted access to the requested resources
    (files usually) in the `access_rules` promise bundle.
 3. See the verbose log of the server for the exact error message, since the

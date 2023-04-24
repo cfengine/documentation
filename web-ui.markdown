@@ -54,7 +54,7 @@ underlying issue to avoid unnecessary triggering and notifications.
 Alerts can have three different states: OK, triggered, and paused. It is easy to
 filter by state on each widget's alert overview.
 
-Find out more: [Alerts and Notifications][]
+Find out more: [Alerts and notifications][]
 
 ### Changes widget
 
@@ -136,7 +136,7 @@ regularly.
 
 Find out more: [Reporting][Reporting UI]
 
-Follow along in the [custom inventory tutorial][Custom Inventory] or read the
+Follow along in the [custom inventory tutorial][Custom inventory] or read the
 [MPF policy that provides inventory][inventory/].
 
 ## Sharing

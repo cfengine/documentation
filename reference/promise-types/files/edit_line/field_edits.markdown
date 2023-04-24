@@ -115,7 +115,7 @@ body edit_field col(split, col, newval, method)
 }
 ```
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### allow_blank_fields
 

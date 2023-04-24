@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Re-installing Enterprise Hub
+title: Re-installing Enterprise hub
 published: true
 tags: [cfengine enterprise, hub administration, re-install]
 ---

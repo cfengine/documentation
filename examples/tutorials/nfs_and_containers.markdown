@@ -15,6 +15,6 @@ The policy has some notes in reports for several of the bundles used in the bund
 
 
 
-## Full Policy ##
+## Full policy ##
 
 [%CFEngine_include_snippet(documentation/examples/tutorials/nfs_and_containers.cf, .* )%]

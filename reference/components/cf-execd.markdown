@@ -32,7 +32,7 @@ network.
 
 [%CFEngine_include_snippet(cf-execd.help, [\s]*--[a-z], ^$)%]
 
-## Control Promises
+## Control promises
 
 These body settings determine the behavior of `cf-execd`,including scheduling
 times and output capture to `WORKDIR/outputs` and relay via email.
@@ -86,7 +86,7 @@ set it to `120` and you are using a 5-minute agent schedule, a
 maximum of 120 / 5 = 24 agents should be enforced.
 
 
-**See also:** [`body action expireafter`][Promise Types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body agent control expireafter`][cf-agent#expireafter]
+**See also:** [`body action expireafter`][Promise types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body agent control expireafter`][cf-agent#expireafter]
 
 ### executorfacility
 

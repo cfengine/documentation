@@ -1,6 +1,6 @@
 ---
 layout: default
-title: External Data
+title: External data
 published: true
 sorting: 50
 tags: [manuals, writing policy, external data, augments]

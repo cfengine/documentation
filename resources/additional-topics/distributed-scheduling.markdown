@@ -451,7 +451,7 @@ created by repeating the pattern above several times. Note however, that each
 link in the chain introduces a new level of uncertainty and potential failure.
 In general, we would not recommend creating workflows with long chains.
 
-# Summary of Distributed Scheduling
+# Summary of distributed scheduling
 
 Distributed scheduling is about tying together jobs to create a workflow across
 multiple machines. It introduces a level of fragility into system automation.

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Special Variables
+title: Special variables
 published: true
 sorting: 50
 tags: [reference, variables]

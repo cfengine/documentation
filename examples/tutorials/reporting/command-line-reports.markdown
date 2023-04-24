@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Command-Line Reports
+title: Command-Line reports
 published: true
 sorting: 60
 ---
@@ -11,19 +11,19 @@ sorting: 60
 
 The following report topics are included:
 
-[CFEngine output levels][Command-Line Reports#CFEngine output levels]
+[CFEngine output levels][Command-Line reports#CFEngine output levels]
 
-[Creating custom reports][Command-Line Reports#Creating custom reports]
+[Creating custom reports][Command-Line reports#Creating custom reports]
 
-[Including data in reports][Command-Line Reports#Including data in reports]
+[Including data in reports][Command-Line reports#Including data in reports]
 
-[Excluding data from reports][Command-Line Reports#Excluding data from reports]
+[Excluding data from reports][Command-Line reports#Excluding data from reports]
 
-[Creating custom logs][Command-Line Reports#Creating custom logs]
+[Creating custom logs][Command-Line reports#Creating custom logs]
 
-[Redirecting output to logs][Command-Line Reports#Redirecting output to logs]
+[Redirecting output to logs][Command-Line reports#Redirecting output to logs]
 
-[Change detection: tripwires][Command-Line Reports#Change detection: tripwires]
+[Change detection: tripwires][Command-Line reports#Change detection: tripwires]
 
 
 ### CFEngine output levels

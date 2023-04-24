@@ -7,7 +7,7 @@ tags: [reference, enterprise, REST, API, SQL, reporting, URI]
 
 In case of a need for full flexibility, Query API allow users to execute SQL queries on CFEngine Database.
 
-Database schema available can be found [here][SQL Schema].
+Database schema available can be found [here][SQL schema].
 
 ## Execute SQL query
 
@@ -87,7 +87,7 @@ API performance depend on the query result size, to achieve fastest results cons
 }
 ```
 
-**Example usage:**  `Synchronous Example: Listing Hostname and IP for Ubuntu Hosts`
+**Example usage:**  `Synchronous Example: Listing hostname and IP for Ubuntu hosts`
 
 ## Schedule SQL query as long running job
 

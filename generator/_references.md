@@ -1,5 +1,5 @@
 [cfengine]: https://cfengine.com "CFEngine Homepage"
-[support desk]: https://support.northern.tech "CFEngine - Support Desk"
+[support desk]: https://support.northern.tech "CFEngine - Support desk"
 [professional services]: https://cfengine.com/support/ "CFEngine - Help and Support"
 [Free25 Forum]: https://groups.google.com/forum/?hl=en&fromgroups#!forum/cfengine-enterprise-free-25 "Free25 Forum"
 [help-cfengine]: https://groups.google.com/forum/?hl=en&fromgroups#!forum/help-cfengine "Help Forum"
@@ -43,8 +43,8 @@
 [Append to inputs used by main policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-main-policy
 [mpf_extra_autorun_inputs]: reference-masterfiles-policy-framework.html#additional-automatically-loaded-inputs
 [Append to inputs used by update policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-update-policy
-[Classes and Decisions]: reference-language-concepts-classes.html
-[language-concepts-classes-hard]: reference-language-concepts-classes.html#hard-classes.html "Language Concepts -> Classes and Decisions: Hard classes"
+[Classes and decisions]: reference-language-concepts-classes.html
+[language-concepts-classes-hard]: reference-language-concepts-classes.html#hard-classes.html "Language concepts -> Classes and decisions: Hard classes"
 [lib/files.cf]: reference-masterfiles-policy-framework-lib-files
 [lib/packages.cf]: reference-masterfiles-policy-framework-lib-packages
 [stdlib-mog]: reference-masterfiles-policy-framework-lib-files.html#mog

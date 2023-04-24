@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Database Examples
+title: Database examples
 published: true
 sorting: 8
 tags: [Examples,Databases]
 ---
 
-* [Database creation][Database Examples#Database creation]
+* [Database creation][Database examples#Database creation]
 
 ## Database creation
 

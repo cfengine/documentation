@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Users and Access-Control REST API
+title: Users and access-control REST API
 published: true
 tags: [reference, enterprise, REST, API, reporting, URI, users, rbac]
 ---
@@ -76,7 +76,7 @@ API call allowed only for administrator.
 * **external**
     Is user from external source (LDAP/AD).
 
-**Example usage:** `Example: Listing Users`
+**Example usage:** `Example: Listing users`
 
 ## Get user data
 
@@ -125,7 +125,7 @@ API call allowed only for administrator.
 * **time_zone**
     Time zone
 
-**Example usage:** `Example: Retrieving a User`
+**Example usage:** `Example: Retrieving a user`
 
 ## Create new user
 
@@ -160,7 +160,7 @@ API call allowed only for administrator.
 }
 ```
 
-**Example usage:** `Example: Creating a New User`
+**Example usage:** `Example: Creating a new user`
 
 ## Update user
 
@@ -195,7 +195,7 @@ API call allowed only for administrator.
 }
 ```
 
-**Example usage:** `Example: Updating an Existing User`, `Example: Adding a User to a Role`
+**Example usage:** `Example: Updating an existing user`, `Example: Adding a user to a role`
 
 ## Delete user
 
@@ -206,7 +206,7 @@ API call allowed only for administrator.
 Remove internal user.
 API call allowed only for administrator.
 
-**Example usage:** `Example: Deleting a User`
+**Example usage:** `Example: Deleting a user`
 
 ## List RBAC roles
 

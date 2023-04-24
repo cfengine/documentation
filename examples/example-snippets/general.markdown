@@ -1,16 +1,16 @@
 ---
 layout: default
-title: General Examples
+title: General examples
 published: true
 sorting: 1
 tags: [Examples]
 ---
 
-* [Basic Example][General Examples#Basic Example]
-* [Hello world][General Examples#Hello world]
-* [Array example][General Examples#Array example]
+* [Basic example][General examples#Basic example]
+* [Hello world][General examples#Hello world]
+* [Array example][General examples#Array example]
 
-## Basic Example ##
+## Basic example ##
 
 To get started with CFEngine, you can imagine the following template for entering examples. This part of the code is common to all the examples.
 

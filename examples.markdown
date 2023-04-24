@@ -1,32 +1,32 @@
 ---
 layout: default
-title: Examples and Tutorials
+title: Examples and tutorials
 published: true
 sorting: 60
 tags: [Examples]
 ---
 
-## Links to Examples ##
+## Links to examples ##
 
-* [Example Snippets][Example Snippets]: This section is divided into topical areas and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.
+* [Example snippets][Example snippets]: This section is divided into topical areas and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.
 
 Note: CFEngine also includes a small set of examples by default, which can be
 found in `/var/cfengine/share/doc/examples`.
 
-* [Enterprise API Examples][Enterprise API Examples]
+* [Enterprise API examples][Enterprise API examples]
 * [Tutorials][Tutorials]
 
-See Also:
+See also:
 
-* [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
-  * ["Hello World" Policy Example][Examples and Tutorials#"Hello World" Policy Example]
-  * [Activate a Bundle Manually][Examples and Tutorials#Activate a Bundle Manually]
-  * [Make the Example Stand Alone][Examples and Tutorials#Make the Example Stand Alone]
-  * [Make the Example an Executable Script][Examples and Tutorials#Make the Example an Executable Script]
-  * [Integrating the Example into your Main Policy][Examples and Tutorials#Integrating the Example into your Main Policy]
+* [Tutorial for running examples][Examples and tutorials#Tutorial for running examples]
+  * ["Hello world" policy example][Examples and tutorials#"Hello world" policy example]
+  * [Activate a bundle manually][Examples and tutorials#Activate a bundle manually]
+  * [Make the example stand alone][Examples and tutorials#Make the example stand alone]
+  * [Make the example an executable script][Examples and tutorials#Make the example an executable script]
+  * [Integrating the example into your main policy][Examples and tutorials#Integrating the example into your main policy]
 
 
-## Tutorial for Running Examples ##
+## Tutorial for running examples ##
 
 
 In this tutorial, you will perform the following:
@@ -36,9 +36,9 @@ In this tutorial, you will perform the following:
 * Make the example an executable script
 * Add the example to the main policy file (`promises.cf`)
 
-**Note** if your CFEngine administrator has enabled continuous deployment of the policy from a Version Control System, your changes may be overwritten!
+**Note** if your CFEngine administrator has enabled continuous deployment of the policy from a Version control System, your changes may be overwritten!
 
-### "Hello World" Policy Example ###
+### "Hello world" policy example ###
 
 Policies contain **bundles**, which are collections of promises. A **promise** is a declaration of
 intent. Bundles allow related promises to be grouped together, as illustrated in the steps that follow.
@@ -70,12 +70,12 @@ Following these steps, you will login to your policy server via the SSH protocol
 In the policy file above, we have defined an **agent bundle** named `hello_world`. Agent
 bundles are only evaluated by **cf-agent**, the [agent component][cf-agent] of CFEngine.
 
-This bundle [promises][Promise Types] to [report][reports] on any [class of
-hosts][Classes and Decisions].
+This bundle [promises][Promise types] to [report][reports] on any [class of
+hosts][Classes and decisions].
 
 
 
-### Activate a Bundle Manually ###
+### Activate a bundle manually ###
 
 Activate the bundle manually by executing the following command at prompt:
 
@@ -83,7 +83,7 @@ Activate the bundle manually by executing the following command at prompt:
 /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
 ```
 
-This command instructs CFEngine to ignore [locks][Controlling Frequency], load
+This command instructs CFEngine to ignore [locks][Controlling frequency], load
 the `hello_world.cf` policy, and activate the `hello_world` bundle. See the output below:
 
 ```console
@@ -106,10 +106,10 @@ Thus, CFEngine can function even if everything else fails
 
 
 
-### Make the Example Stand Alone ###
+### Make the example stand alone ###
 
 Instead of specifying the bundle sequence on the command line (as it was above), a [body common
-control][Components#Common Control] section can be added to
+control][Components#Common control] section can be added to
 the policy file. The **body common control** refers to those promises that are hard-coded into
 all CFEngine components and therefore affect the behavior of all components. Note that only
  one `body common control` is allowed per agent activation.
@@ -160,7 +160,7 @@ body common control {
 }
 ```
 
-### Make the Example an Executable Script ###
+### Make the example an executable script ###
 
 Add the ```#!``` marker ("shebang") to `hello_world.cf` in order to invoke CFEngine policy as an executable script:
 Again type "vi" then "Enter" then ```i``` to insert the following:
@@ -213,7 +213,7 @@ See the output below:
 ```
 
 
-### Integrating the Example into your Main Policy ###
+### Integrating the example into your main policy ###
 
 Make the example policy part of your main policy by
 doing the following on your policy server:

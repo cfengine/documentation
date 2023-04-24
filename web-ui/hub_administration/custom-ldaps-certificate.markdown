@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Custom LDAPs Certificate
+title: Custom LDAPs certificate
 published: true
 tags: [cfengine enterprise, hub administration, LDAP, authentication]
 ---

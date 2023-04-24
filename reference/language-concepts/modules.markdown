@@ -15,7 +15,7 @@ cfbs (CFEngine Build System) Modules provide a way to share and consume CFEngine
 ### Specification
 {% endcomment %}
 
-## Promise Modules
+## Promise modules
 
 Promise modules allow for the implementation of [*custom* promise types][promise-type-custom], extending the CFEngine Language. They communicate with `cf-agent` using the [*Promise Module Protocol*][promise-type-custom-protocol].
 
@@ -23,9 +23,9 @@ Promise modules allow for the implementation of [*custom* promise types][promise
 
 * Introduced 3.17.0
 
-## Package Modules
+## Package modules
 
-[Package Modules][Package Modules] implement the logic behind *packages* type promises, superseding the *package\_method* based implementation. They interact with package managers like `yum`, `apt`, `msiexec`, and `pip` to determine which packages are currently installed or have updates available as well as installing, upgrading or un-installing packages.
+[Package modules][Package modules] implement the logic behind *packages* type promises, superseding the *package\_method* based implementation. They interact with package managers like `yum`, `apt`, `msiexec`, and `pip` to determine which packages are currently installed or have updates available as well as installing, upgrading or un-installing packages.
 
 Package modules communicate with `cf-agent` via the [Package Module Protocol][package-modules-the-api].
 
@@ -33,13 +33,13 @@ Package modules communicate with `cf-agent` via the [Package Module Protocol][pa
 
 * Introduced 3.7.0
 
-## Variables and Classes Modules
+## Variables and classes modules
 
-Variables and Classes Modules are the original way to extend CFEngine. The Variable and Class Module Protocol allows for *variables* and *classes* to be defined. The protocol can be interpreted by functions like [`usemodule()`][usemodule] and [`read_module_protocol()`][read_module_protocol] as well as output from [*commands* type promises][commands] with the [`module => "true"`][commands#module] attribute.
+Variables and classes modules are the original way to extend CFEngine. The Variable and Class Module Protocol allows for *variables* and *classes* to be defined. The protocol can be interpreted by functions like [`usemodule()`][usemodule] and [`read_module_protocol()`][read_module_protocol] as well as output from [*commands* type promises][commands] with the [`module => "true"`][commands#module] attribute.
 
 The choice of interpretation can depend on many factors but a primary differentiate between functions and classes relate to CFEngine's evaluation details. Functions are evaluated during early during policy execution unless they are explicitly guarded to delay execution. Commands promises are not executed until the bundle is actuated for it's three pass evaluation.
 
-Variables and Classes Modules are intended for use as system probes rather than additional configuration promises, especially now that promise modules are available.
+Variables and classes modules are intended for use as system probes rather than additional configuration promises, especially now that promise modules are available.
 
 ### Specification
 

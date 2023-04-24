@@ -445,7 +445,7 @@ Here are the built-in `report_data_select` bodies `default_data_select_host()` a
 
 [%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_policy_hub, \})%]
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 **History:**
 

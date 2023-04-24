@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Extending Query Builder in Mission Portal
+title: Extending query builder in Mission Portal
 published: true
 sorting: 90
 tags: [faq, mission portal, hub administration, query builder]
 ---
 
-This instruction is created to explain how to extend the [Query Builder][Reporting UI#Query Builder] in the case where
+This instruction is created to explain how to extend the [Query builder][Reporting UI#Query builder] in the case where
 the enterprise hub database has new or custom tables that you want to use on the reporting page.
 
 The workflow in this guide is to edit a file that will be updated by CFEngine when you upgrade to a newer version of CFEngine.
@@ -14,7 +14,7 @@ Thus your changes are going to be deleted. Please make sure to either keep a cop
 or add a relative file path `scripts/advancedreports/dca.js` to `$(sys.workdir)/httpd/htdocs/preserve_during_upgrade.txt`
 to preserve `dca.js` during the CFEngine upgrade process.
 
-### How to add new table to Query Builder
+### How to add new table to Query builder
 
 To extend the query builder with your custom data you need to edit the javascript file located on your hub here:
 `$(sys.workdir)/share/GUI/scripts/advancedreports/dca.js`.
@@ -186,7 +186,7 @@ INSERT INTO "test" SELECT "hostkey", (random() * 100)::int as random_number  FRO
     }
 ```
 
-4. See the result in the Query Builder
+4. See the result in the Query builder
 
 After the next cf-agent run file should be changed in the Mission Portal and you will be able to see the new
 table in the Query builder. You can use this table as predefined ones.

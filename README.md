@@ -429,7 +429,7 @@ As a general note, avoiding abbreviations provides better readability.
 
 ## Technical reference documentation
 
-* follow the [Policy Style Guide](guide/writing-and-serving-policy/policy-style.markdown)
+* follow the [Policy style guide](guide/writing-and-serving-policy/policy-style.markdown)
   in examples and code snippets
 * use the appropriate lexer for syntax highlighting via Pygments
 
@@ -443,7 +443,7 @@ As a general note, avoiding abbreviations provides better readability.
 The structure of the technical documentation about CFEngine attributes,
 functions etc is as follows:
 
-### Promise Attributes
+### Promise attributes
 
 Promise attributes are documented within the respective promise types's reference
 page. Level-3 headers are used to start a new attribute (if the promise attribute
@@ -571,9 +571,9 @@ use the macro, and list the attributes explicitly:
     This argument does that.
 
 
-### Special Variables
+### Special variables
 
-Special Variables are documented within the page of their context.
+Special variables are documented within the page of their context.
 
     ### context.variable
 

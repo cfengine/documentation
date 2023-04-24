@@ -143,7 +143,7 @@ Available CFEngine versions:
 master, 3.20.0, 3.18.x, 3.18.2, 3.18.1, 3.18.0, 3.15.x, 3.15.6, 3.15.5, 3.15.4, 3.15.3, 3.15.2, 3.15.1, 3.15.0, 3.15.0b1
 ```
 
-## Virtual Machine IP and username
+## Virtual machine IP and username
 
 Decide on whether you want to use VMs in the cloud (Digital Ocean) or locally (Vagrant and Virtual Box) and follow the appropriate instructions below.
 
@@ -215,9 +215,9 @@ cf-remote install --hub hub --bootstrap hub
 
 CFEngine is now installed and running on your hub, including the Web UI, the reporting database, and the components responsible for making changes to your system, serving and fetching policy, etc.
 
-## Open the CFEngine Web UI
+## Open the CFEngine web UI
 
-Open the CFEngine Web UI in a web browser by clicking this link, or typing the appropriate IP in the address bar:
+Open the CFEngine web UI in a web browser by clicking this link, or typing the appropriate IP in the address bar:
 
 https://192.168.56.2/
 

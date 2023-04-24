@@ -83,7 +83,7 @@ known as "voluntary cooperation" used by CFEngine, which implies that each
 federated part must effectively choose which inputs it is willing to use from
 external parties.
 
-# The Authority Paradox
+# The authority paradox
 
 For some, the idea that an organization should be built on voluntary cooperation
 sounds wrong. However, no matter how much we might crave certainty of outcome,

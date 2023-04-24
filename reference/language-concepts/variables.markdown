@@ -18,7 +18,7 @@ data containers.
 * a list is a collection of scalars.
 * a data container is a lot like a JSON document, it can be a key-value map or an array or anything else allowed by the JSON standard with unlimited nesting.
 
-## Scalar Variables
+## Scalar variables
 
 Each scalar may have one of three types: string, int or real. String scalars
 are sequences of characters, integers are whole numbers, and reals are float
@@ -65,7 +65,7 @@ values into int and real types, and if it cannot it will report an error.
 However, arguments to built-in [functions][Functions] check the
 defined argument type for consistency.
 
-### Scalar Referencing and Expansion
+### Scalar referencing and expansion
 
 Scalar variables are referenced by `$(my_scalar)` (or `${my_scalar}`) and
 expand to the single value they hold at that time. If you refer to a variable
@@ -84,7 +84,7 @@ be escaped.
 
 [%CFEngine_include_example(quoting.cf)%]
 
-### Scalar Size Limitations
+### Scalar size limitations
 
 At the moment, up to 4095 bytes can fit into a scalar variable.  This
 limitation may be removed in the future.
@@ -118,7 +118,7 @@ vars:
     "my_rlist" rlist => { "567.89" };
 ```
 
-### List Substitution and Expansion
+### List substitution and expansion
 
 An entire list is referenced with the symbol '@' and can be passed in their
 entirety in any context where a list is expected as `@(list)`. For example,
@@ -146,7 +146,7 @@ the list.
 In some function calls, `listname` instead of `@(listname)` is
 expected.  See the specific function's documentation to be sure.
 
-## Data Container Variables
+## Data container variables
 
 The `data` containers can contain several levels of data structures,
 e.g. list of lists of key-value arrays. They are used to store
@@ -164,7 +164,7 @@ variables.
 
 [%CFEngine_include_example(reference_values_inside_data.cf)%]
 
-## Associative Arrays
+## Associative arrays
 
 Associative arrays in CFEngine are fundamentally a collection of individual
 variables that together represent a data structure with key value pairs. They

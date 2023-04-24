@@ -1,32 +1,32 @@
 ---
 layout: default
-title: System Administration Examples
+title: System administration examples
 published: true
 sorting: 12
 tags: [Examples,System Administration]
 ---
 
-* [Centralized Management][System Administration Examples#Centralized Management]
-	* [All hosts the same][System Administration Examples#All hosts the same]
-	* [Variation in hosts][System Administration Examples#Variation in hosts]
-	* [Updating from a central hub][System Administration Examples#Updating from a central hub]
-* [Laptop support configuration][System Administration Examples#Laptop support configuration]
-* [Process management][System Administration Examples#Process management]
-* [Kill process][System Administration Examples#Kill process]
-* [Restart process][System Administration Examples#Restart process]
-* [Mount a filesystem][System Administration Examples#Mount a filesystem]
-* [Manage a system process][System Administration Examples#Manage a system process]
-	* [Ensure running][System Administration Examples#Ensure running]
-	* [Ensure not running][System Administration Examples#Ensure not running]
-	* [Prune processes][System Administration Examples#Prune processes]
-* [Set up HPC clusters][System Administration Examples#Set up HPC clusters]
-* [Set up name resolution][System Administration Examples#Set up name resolution]
-* [Set up sudo][System Administration Examples#Set up sudo]
-* [Environments (virtual)][System Administration Examples#Environments (virtual)]
-* [Environment variables][System Administration Examples#Environment variables]
-* [Tidying garbage files][System Administration Examples#Tidying garbage files]
+* [Centralized management][System administration examples#Centralized management]
+	* [All hosts the same][System administration examples#All hosts the same]
+	* [Variation in hosts][System administration examples#Variation in hosts]
+	* [Updating from a central hub][System administration examples#Updating from a central hub]
+* [Laptop support configuration][System administration examples#Laptop support configuration]
+* [Process management][System administration examples#Process management]
+* [Kill process][System administration examples#Kill process]
+* [Restart process][System administration examples#Restart process]
+* [Mount a filesystem][System administration examples#Mount a filesystem]
+* [Manage a system process][System administration examples#Manage a system process]
+	* [Ensure running][System administration examples#Ensure running]
+	* [Ensure not running][System administration examples#Ensure not running]
+	* [Prune processes][System administration examples#Prune processes]
+* [Set up HPC clusters][System administration examples#Set up HPC clusters]
+* [Set up name resolution][System administration examples#Set up name resolution]
+* [Set up sudo][System administration examples#Set up sudo]
+* [Environments (virtual)][System administration examples#Environments (virtual)]
+* [Environment variables][System administration examples#Environment variables]
+* [Tidying garbage files][System administration examples#Tidying garbage files]
 
-## Centralized Management
+## Centralized management
 
 These examples show a simple setup for starting with a central approach to management of servers. Centralization of management is a simple approach suitable for small environments with few requirements. It is useful for clusters where systems are all alike.
 

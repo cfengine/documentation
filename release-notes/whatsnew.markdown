@@ -8,6 +8,6 @@ tags: [what's new]
 
 See what's new in this release.
 
-* [Core Changelog][Changelog]
-* [Enterprise Changelog][Enterprise Changelog]
-* [Masterfiles Changelog][Masterfiles Changelog]
+* [Core changelog][Changelog]
+* [Enterprise changelog][Enterprise changelog]
+* [Masterfiles changelog][Masterfiles changelog]

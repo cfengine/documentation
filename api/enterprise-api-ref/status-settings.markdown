@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Status and Settings REST API
+title: Status and settings REST API
 published: true
 tags: [reference, enterprise, REST, API, reporting, status, URI, ldap, settings]
 ---
@@ -66,7 +66,7 @@ REST API for managing settings, checking hub status.
 * **license.licenseType**
     License description.
 
-**Example usage:** `Checking Status`
+**Example usage:** `Checking status`
 
 ## Get settings
 
@@ -154,4 +154,4 @@ administrator.
 }
 ```
 
-**Example usage:** `Example: Configuring LDAP`, `Example: Changing The Log Level`
+**Example usage:** `Example: Configuring LDAP`, `Example: Changing the log level`

@@ -105,7 +105,7 @@ cf-check dump /var/cfengine/state/cf_observations.lmdb
 
 By default in the [Masterfiles Policy Framework][Masterfiles Policy Framework], `cf-serverd` uses two variables, `def.default_data_select_host_monitoring_include` and `def.default_data_select_policy_hub_monitoring_include` to [configure which measurements will be included in enterprise reporting][mpf-configure-measurement-collection].
 
-On the hub side, reports are collected and measurements data is inserted into the [`MonitoringHG`][SQL Schema#Table: MonitoringYrMeta]  [`MonitoringMgMeta`][SQL Schema#Table: MonitoringMgMeta] and [`MonitoringYrMeta`][SQL Schema#Table: MonitoringYrMeta] tables of the Enterprise Hub database.
+On the hub side, reports are collected and measurements data is inserted into the [`MonitoringHG`][SQL schema#Table: MonitoringYrMeta]  [`MonitoringMgMeta`][SQL schema#Table: MonitoringMgMeta] and [`MonitoringYrMeta`][SQL schema#Table: MonitoringYrMeta] tables of the Enterprise Hub database.
 
 A diagnostic query to run with a [Custom Report in Mission Portal][Reporting UI].
 
@@ -123,7 +123,7 @@ data or not.
 SELECT * FROM monitoringmgmeta;
 ```
 
-Measurement data is presented in Mission Portal in the [`Measurements App`][Measurements App] and in the ```Measurements``` section of the [`Host Info page`][Hosts#Host Info].
+Measurement data is presented in Mission Portal in the [`Measurements App`][Measurements App] and in the ```Measurements``` section of the [`Host info page`][Hosts#Host info].
 
 When policy is changed in regards to monitor bundles, both `cf-monitord` _and_ `cf-serverd` should be restarted in order to receive the updated policy.
 
@@ -141,7 +141,7 @@ All measurements historical data is stored in `${sys.statedir}/cf_observations.l
 
 The `ts_key` file should not be altered.
 
-Note that if a measurement has _always_ had a value of zero it will not be reported and so not available in Mission Portal Measurements or Host Info pages.
+Note that if a measurement has _always_ had a value of zero it will not be reported and so not available in Mission Portal Measurements or Host info pages.
 
 It is important to specify a promise `handle` for measurement promises, as the
 names defined in the handle are used to determine the name of the log file or
@@ -292,7 +292,7 @@ This is an arbitrary string used in documentation only.
 
 **Type:** `body match_value`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### select_line_matching
 

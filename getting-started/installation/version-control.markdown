@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Version Control
+title: Version control
 published: true
 sorting: 60
 tags: [manuals, writing policy, version control, git, subversion]
@@ -16,7 +16,7 @@ CFEngine Enterprise ships with
 [masterfiles-stage](https://github.com/cfengine/core/tree/master/contrib/masterfiles-stage),
 tooling to assist with deploying policy from a version control system.
 
-Enterprise users can configure automatic publication of policy from Mission Portal as described in [Policy Deployment] or by using the [VCS settings API][VCS settings API]. Community users can also install and use this tooling by following the
+Enterprise users can configure automatic publication of policy from Mission Portal as described in [Policy deployment] or by using the [VCS settings API][VCS settings API]. Community users can also install and use this tooling by following the
 [installation instructions](https://github.com/cfengine/core/tree/master/contrib/masterfiles-stage#installation).
 
 ## Commit hooks

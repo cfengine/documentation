@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Known Issues
+title: Known issues
 sorting: 50
 published: true
 tags: [overviews, releases, latest release, platforms, versions, known issues]
@@ -77,7 +77,7 @@ ERROR - 2016-06-15 07:24:15 --> Severity: Warning --> readfile(https://myhostnam
 
 The solution is to generate a new certificate with the correct CN,
 i.e. the one you use to access the CFEngine Server. To see how to do
-this, look at the documentation for using a [Custom SSL certificate][Custom SSL Certificate].
+this, look at the documentation for using a [Custom SSL certificate][Custom SSL certificate].
 
 ### Enterprise software inventory is not out-of-the-box
 

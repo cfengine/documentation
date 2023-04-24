@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Customize Message of the Day
+title: Customize message of the day
 published: true
 tags: [Examples, Policy, motd, file editing, files]
 reviewed: 2015-12-18

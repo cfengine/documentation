@@ -1,9 +1,9 @@
 ---
 layout: default
-title: User Management Examples
+title: User management examples
 published: true
 sorting: 15
-tags: [Examples,User Management]
+tags: [Examples,User management]
 ---
 
 ## Local user management

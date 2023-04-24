@@ -1,6 +1,6 @@
 ---
 layout: default
-title: SQL Schema
+title: SQL schema
 published: true
 tags: [reference, enterprise, REST, API, reporting, sql, schema]
 ---
@@ -132,7 +132,7 @@ CFEngine contexts present on hosts at their last reported cf-agent execution.
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
 * **ContextName** *(text)*
-    CFEngine [context][Classes and Decisions] set by cf-agent.
+    CFEngine [context][Classes and decisions] set by cf-agent.
 
 * **MetaTags** *(text[])*
     List of [meta tags][Tags for variables, classes, and bundles] set for the context.
@@ -192,7 +192,7 @@ CFEngine contexts set on hosts by CFEngine over period of time.
     * `UNTRACKED` - CFEngine provides a mechanism for filtering unwanted data from being reported. `UNTRACKED` marker states that information about this context is being filtered and will not report any future information about it.
 
 * **ContextName** *(text)*
-    CFEngine [context][Classes and Decisions] set by cf-agent.
+    CFEngine [context][Classes and decisions] set by cf-agent.
 
 * **MetaTags** *(text[])*
     List of [meta tags][Tags for variables, classes, and bundles] set for the context.
@@ -309,7 +309,7 @@ Hosts table contains basic information about hosts managed by CFEngine.
 
 * **HostName** *(text)*
     Host name locally detected on the host, configurable as `hostIdentifier`
-    option in [Settings API][Status and Settings REST API#Get settings] and
+    option in [Settings API][Status and settings REST API#Get settings] and
     Mission Portal settings UI.
 
 * **IPAddress** *(text)*
@@ -779,7 +779,7 @@ Promises executed on hosts during their last reported cf-agent run.
     [Bundle][Bundles] name where the promise is executed.
 
 * **PromiseType** *(text)*
-    [Type][Promise Types] of the promise.
+    [Type][Promise types] of the promise.
 
 * **Promiser** *(text)*
     Object affected by a promise.
@@ -914,7 +914,7 @@ Promise status / outcome changes over period of time.
     [Bundle][Bundles] name where the promise is executed.
 
 * **PromiseType** *(text)*
-    [Type][Promise Types] of the promise.
+    [Type][Promise types] of the promise.
 
 * **Promiser** *(text)*
     Object affected by a promise.
@@ -1049,7 +1049,7 @@ History of promises executed on hosts.
     [Bundle][Bundles] name where the promise is executed.
 
 * **PromiseType** *(text)*
-    [Type][Promise Types] of the promise.
+    [Type][Promise types] of the promise.
 
 * **Promiser** *(text)*
     Object affected by a promise.
@@ -1732,7 +1732,7 @@ In this table data are cached what gives a better query performance
 
 * **HostName** *(text)*
     Host name locally detected on the host, configurable as `hostIdentifier`
-    option in [Settings API][Status and Settings REST API#Get settings] and
+    option in [Settings API][Status and settings REST API#Get settings] and
     Mission Portal settings UI.
 
 * **IPAddress** *(text)*

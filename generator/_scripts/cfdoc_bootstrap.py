@@ -29,11 +29,11 @@ import sys
 config = environment.validate(sys.argv[1])
 
 try:
-	git.createData(config)
+    git.createData(config)
 except:
-	print("cfdoc_preprocess: Fatal error generating git tags")
-	sys.stdout.write("       Exception: ")
-	print(sys.exc_info())
-	exit(1)
+    print("cfdoc_preprocess: Fatal error generating git tags")
+    sys.stdout.write("       Exception: ")
+    print(sys.exc_info())
+    exit(1)
 
 exit(0)

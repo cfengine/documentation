@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Custom actions for Alerts
+title: Custom actions for alerts
 sorting: 50
 published: true
 tags: [cfengine enterprise, user interface, mission portal]

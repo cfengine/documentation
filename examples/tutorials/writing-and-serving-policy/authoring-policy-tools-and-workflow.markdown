@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Authoring Policy Tools & Workflow
+title: Authoring policy tools & workflow
 published: true
 sorting: 5
 ---

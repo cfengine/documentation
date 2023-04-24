@@ -9,7 +9,7 @@ keywords: [agent]
 
 `cf-agent` evaluates policy code and makes changes to the system. Policy
 bundles are evaluated in the order of the provided `bundlesequence` (this is normally specified in the
-[`common control body`][Components#Common Control]). For
+[`common control body`][Components#Common control]). For
 each bundle, `cf-agent` groups promise statements according to their type.
 Promise types are then evaluated in a preset order to ensure fast system
 convergence to policy.
@@ -25,7 +25,7 @@ affected by `common` and `agent` control bodies.
 
 [%CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$)%]
 
-## Automatic Bootstrapping
+## Automatic bootstrapping
 
 Automatic bootstrapping allows the user to connect a CFEngine Host to a Policy
 Server without specifying the IP address manually. It uses the *Avahi* service
@@ -93,7 +93,7 @@ bootstrap without further manual user intervention.
 **Note:** Automatic bootstrapping support is ONLY for Linux, and it is limited
 only to one subnet.
 
-## Control Promises
+## Control promises
 
 Settings describing the details of the fixed behavioral promises
 made by `cf-agent`.
@@ -484,7 +484,7 @@ body agent control {
 }
 ```
 
-**See Also:** `admit_keys`, `controls/cf_agent.cf`
+**See also:** `admit_keys`, `controls/cf_agent.cf`
 
 **History:**
 * Introduced in 3.20.0
@@ -713,7 +713,7 @@ expireafter => "240";   # 4 hours
 }
 ```
 
-**See also:** [`body action expireafter`][Promise Types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+**See also:** [`body action expireafter`][Promise types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
 
 ### files_auto_define
 
@@ -846,7 +846,7 @@ ifelapsed   => "180";   # 3 hours
 }
 ```
 
-**See also:** [Promise locking][Promises#Promise Locking], [ifelapsed action body attribute][Promise Types#ifelapsed]
+**See also:** [Promise locking][Promises#Promise locking], [ifelapsed action body attribute][Promise types#ifelapsed]
 
 ### inform
 
@@ -906,7 +906,7 @@ max_children => "10";
 }
 ```
 
-**See also:** [`background` in action bodies][Promise Types#background]
+**See also:** [`background` in action bodies][Promise types#background]
 
 ### maxconnections
 
