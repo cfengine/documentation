@@ -49,11 +49,11 @@ curl -O https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installe
 curl -O https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer.asc
 
 if gpg2 --verify rvm-installer.asc; then
-  bash rvm-installer --autolibs=read-fail --ignore-dotfiles stable
+    bash rvm-installer --autolibs=read-fail --ignore-dotfiles stable
 else
-  echo "Ruby Version Manager signature check fail."
-  echo "Github is hacked, or trying to hack us, or our script is wrong. Aborting everything"
-  exit 1
+    echo "Ruby Version Manager signature check fail."
+    echo "Github is hacked, or trying to hack us, or our script is wrong. Aborting everything"
+    exit 1
 fi
 
 # rvm commands are insane scripts which pollut output

@@ -49,7 +49,7 @@ pattern will match.
 
 **Type:** `body replace_with`
 
-**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### occurrences
 

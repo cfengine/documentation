@@ -6,7 +6,7 @@ sorting: 12
 tags: [Examples,System Administration]
 ---
 
-* [Centralized Management][System administration examples#Centralized Management]
+* [Centralized management][System administration examples#Centralized management]
 	* [All hosts the same][System administration examples#All hosts the same]
 	* [Variation in hosts][System administration examples#Variation in hosts]
 	* [Updating from a central hub][System administration examples#Updating from a central hub]
@@ -26,7 +26,7 @@ tags: [Examples,System Administration]
 * [Environment variables][System administration examples#Environment variables]
 * [Tidying garbage files][System administration examples#Tidying garbage files]
 
-## Centralized Management
+## Centralized management
 
 These examples show a simple setup for starting with a central approach to management of servers. Centralization of management is a simple approach suitable for small environments with few requirements. It is useful for clusters where systems are all alike.
 

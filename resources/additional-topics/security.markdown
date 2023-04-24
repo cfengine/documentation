@@ -12,7 +12,7 @@ Learn how security has been built into CFEngine architecture and how CFEngine ke
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7gb7ic0T708" frameborder="0" allowfullscreen></iframe>
 
-## Architecture Principles
+## Architecture principles
 
 CFEngine is agent based software. It resides on and runs processes on each
 individual computer under its management. That means you do not need to grant
@@ -113,7 +113,7 @@ and large companies (e.g. formed through acquisition) are typical candidates for
 federated management. Federation is facilitated by a service
 oriented architecture, i.e. a weak coupling.
 
-## Security Principles
+## Security principles
 
 ### What is security?
 
@@ -155,7 +155,7 @@ Infrastructure.
  * Authentication by Public Key is mandatory.
  * Encryption of data transfer is optional.
 
-## Communication Security
+## Communication security
 ### TCP wrappers
 
 The right to connect to the server is the first line of defence. CFEngine has
@@ -290,7 +290,7 @@ firewall security model of trusted/untrusted regions. The firewall does not
 mitigate the responsibility of security every host in a network regardless of
 which side of the firewall it is connected.
 
-### CFEngine and Firewalls
+### CFEngine and firewalls
 
 Some users want to use CFEngine's remote copying mechanism through a firewall,
 in particular to update the CFEngine policy on hosts inside a DMZ (so-called
@@ -324,7 +324,7 @@ processes on the outside of the firewall to receive updated policies from the
 inside of the firewall, information has to traverse the firewall.
 
 * CFEngine trust model
-* Policy Mirror in the DMZ
+* Policy mirror in the DMZ
 * Pulling through a wormhole
 
 #### CFEngine trust model
@@ -361,7 +361,7 @@ latter to offer at this point:
   ludicrous to suggest that an arbitrary employee's machine is more secure than
   an inaccessible host in the DMZ.
 
-#### Policy Mirror in the DMZ
+#### Policy mirror in the DMZ
 
 By creating a policy mirror in the DMZ, these issues can be worked around. This
 is the recommended way to copy files, so that normal CFEngine pull methods can

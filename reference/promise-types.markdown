@@ -10,7 +10,7 @@ Within a bundle, the promise types are executed in a round-robin fashion in the
 following [normal ordering][Normal ordering]. Which promise types are available
 depends on the [bundle][bundles] type:
 
-| Promise Type   | common | agent | server | monitor |
+| Promise type   | common | agent | server | monitor |
 |----------------|:------:|:-----:|:------:|:--------|
 | [defaults][defaults] - a default value for bundle parameters | x      | x     | x      | x       |
 | [classes][classes] - a class, representing a state of the system | x      | x     | x      | x       |
@@ -34,7 +34,7 @@ depends on the [bundle][bundles] type:
 See each promise type's reference documentation for detailed lists of available
 attributes.
 
-## Common Promise Attributes
+## Common promise attributes
 
 The following attributes are available to all promise types.
 
@@ -111,7 +111,7 @@ body agent control
 }
 ```
 
-**See also:** [promise locking][Promises#Promise Locking], [ifelapsed in body agent control][cf-agent#ifelapsed],
+**See also:** [promise locking][Promises#Promise locking], [ifelapsed in body agent control][cf-agent#ifelapsed],
 [`ifelapsed` and function caching][Functions#function caching]
 
 **History:**
@@ -1078,7 +1078,7 @@ automatically canonified when checking. You may need to use `canonify()` to
 convert strings containing invalid class characters into a valid class.
 
 In most cases, `if => something` and `if => not(something)` are opposite,
-but because of [function skipping][Functions#Function Skipping], both of these
+but because of [function skipping][Functions#Function skipping], both of these
 will be skipped if `something` is never resolved:
 
 ```cf3
@@ -1254,7 +1254,7 @@ Output:
 
 **History:** Was introduced in 3.11.0
 
-## Common Body Attributes
+## Common body attributes
 
 The following attributes are available to all body types.
 

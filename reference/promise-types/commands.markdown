@@ -183,7 +183,7 @@ exec_timeout => "60";
 }
 ```
 
-**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### useshell
 

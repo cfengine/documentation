@@ -25,7 +25,7 @@ which hosts `cf-agent` will be started, and classes that the user requests
 
 **See also:** [bundle resource_type in server access promises][access#resource_type], [cfruncommand in body server control][cf-serverd#cfruncommand]
 
-## Control Promises
+## Control promises
 
 Settings describing the details of the fixed behavioral promises made by
 `cf-runagent`. The most important parameter here is the list of hosts that the

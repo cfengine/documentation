@@ -48,7 +48,7 @@ Open Nebula's focus is on managing the deployment and recycling of the computing
 infrastructure. CFEngine picks up where Open Nebula leaves off and manages the
 dynamic lifecycle of software, applications and runtime state.
 
-## Example Setup
+## Example setup
 
 This guide is based on an example setup provding a framework to demonstrate how
 CFEngine can be used to automate Open Nebula configuration. The following
@@ -485,7 +485,7 @@ If we increase the leases in our network template each time the onevm create
 command is issued a new virtual machine will be launched up to the number of
 available leases.
 
-### Open Nebula Commands
+### Open Nebula commands
 
 It should be noted that commands, particularly those that are Open Nebula
 specific, will be run each time cf-agent is executed. Since this goes against
@@ -562,7 +562,7 @@ files:
      action => u_immediate;
 ```
 
-## Open Nebula Summary
+## Open Nebula summary
 
 Now we have a convergent self-repairing, Open Nebula powered private cloud! The
 main benefits in combining CFEngine and Open Nebula are the facility to increase

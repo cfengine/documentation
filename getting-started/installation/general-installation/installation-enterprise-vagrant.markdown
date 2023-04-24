@@ -29,7 +29,7 @@ and motherboards necessarily support hardware virtualization.
 
 If your system lacks this support you will need to choose another computer to
 take advantage of the 64-bit virtual machines or [install CFEngine using a
-different approach][General installation#More Detailed Installation guides].
+different approach][General installation#More detailed installation guides].
 
 ## Overview
 
@@ -56,7 +56,7 @@ virtualbox.org. After downloading VirtualBox, install it on your computer.
 **Note:** To avoid problems, disable other virtualization environments you are
 running.
 
-## Start the CFEngine Enterprise {{site.cfengine.branch}} Vagrant Environment
+## Start the CFEngine Enterprise {{site.cfengine.branch}} Vagrant environment
 
 Step 1. Download our ready-made Vagrant project
 [tar-file](https://cfengine-package-repos.s3.amazonaws.com/enterprise/Enterprise-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}/misc/CFEngine_Enterprise_vagrant_quickstart-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.tar.gz).
@@ -100,7 +100,7 @@ password: admin
 Portal.
 
 That's all there is to it, the install is complete! Move on and explore the environment.
-## Exploring the Environment
+## Exploring the environment
 
 ### Accessing VMs
 
@@ -152,7 +152,7 @@ vagrant project directory.
 $ vagrant up
 ```
 
-### Stop the environment (Halt/Suspend/Destroy)
+### Stop the environment (halt/suspend/destroy)
 
 To shut down the vms run `vagrant halt`. This will preserve the vms and any
 changes made inside.
@@ -191,7 +191,7 @@ $ vagrant destroy
 ==> hub: Running cleanup tasks for 'shell' provisioner...
 ```
 
-## Uninstall Vagrant Environment
+## Uninstall Vagrant environment
 
 When you have completed your evaluation are ready to use CFEngine on
 production servers, remove the VMs that you created above by following these

@@ -14,12 +14,12 @@ defined in bodies because the actual promises are fixed and you only
 change their details within sensible limits.
 
 See the
-[introduction][Overview#CFEngine Component Applications and Daemons]
+[introduction][Overview#CFEngine component applications and daemons]
 for a high-level overview of the
 CFEngine components, and each component's reference documentation for the
 details about the specific control bodies.
 
-## Common Control
+## Common control
 
 The `common` control body refers to those promises that are
 hard-coded into all the components of CFEngine, and therefore

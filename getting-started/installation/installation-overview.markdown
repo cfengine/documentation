@@ -16,7 +16,7 @@ See [Secure bootstrap] for a guide on bootstrapping CFEngine in untrusted networ
 
 See also: [Pre-installation checklist][Pre-installation checklist], [Supported platforms and versions][Supported platforms and versions]
 
-## Setup & Configuration
+## Setup & configuration
 
 Additional options for configuring CFEngine policy are as follows:
 

@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-## CFEngine STIGs Compliance Example
+## CFEngine STIGs compliance example
 
 The Security Technical Implementation Guides (STIGs) are a method for
 standardized secure installation and maintenance of computer software and

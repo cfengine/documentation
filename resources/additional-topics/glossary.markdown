@@ -125,7 +125,7 @@ tags: [overviews, special topics, guide]
 
 * GUI
 
-  Graphical User Interface.
+  Graphical User interface.
 
 * Host
 

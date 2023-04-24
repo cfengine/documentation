@@ -130,7 +130,7 @@ body common control to `false` or locally for a specific promise by using
 `ifelapsed => "0"` in the [action body][Promise types#ifelapsed]
 of the promise.
 
-## Function Skipping
+## Function skipping
 
 If a variable passed to a function is unable to be resolved the function will
 be skipped. The function will be evaluated during a later pass when all

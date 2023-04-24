@@ -80,7 +80,7 @@ Normally, to ensure your policy file is put into action, you would need to follo
 
    Next we need to a new service in PagerDuty which we will notify whenever a change is detected by CFEngine.
 
-## Create a new Service in PagerDuty
+## Create a new service in PagerDuty
 
 1. Go to PagerDuty.com. In your account, under Services tab, click `Add New Service`
 
@@ -92,7 +92,7 @@ Normally, to ensure your policy file is put into action, you would need to follo
 
 3. Click `Add Service` button. Copy the integration email which we will use in CFEngine.
 
-## Create a new Alert in CFEngine Mission Portal
+## Create a new alert in CFEngine Mission Portal
 
 1. Go to the the CFEngine Dashboard and click `Add` button to create a new alert.
 

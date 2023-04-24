@@ -120,7 +120,7 @@ The CFEngine 3 language has a few simple rules:
 
 	In each of these cases, the right hand side is a user choice.
 
-## Filenames and Paths
+## Filenames and paths
 
 Filenames in Unix-like operating systems use the forward slash '/'
 character for their directory separator. All references to file
