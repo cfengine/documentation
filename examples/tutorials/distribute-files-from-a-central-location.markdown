@@ -59,7 +59,7 @@ Add the following variable information to the `masterfiles/def.cf` file:
 ```
 
 These common variables can be referenced from the rest of the policy by using their fully
- [qualified names][Variables#Scalar Referencing and Expansion],
+ [qualified names][Variables#Scalar referencing and expansion],
 `$(def.dir_patch_store)` and `$(def.dir_patch_deploy)`
 
 ### Grant file access

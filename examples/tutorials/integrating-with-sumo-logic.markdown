@@ -20,7 +20,7 @@ Whenever there is a policy update or a new policy is detected by CFEngine, a spe
 
 We will store this timestamp in a file, and then via api upload the file to Sumo Logic.
 
-# Create the CFEngine Policy file
+# Create the CFEngine policy file
 
 In this section we will explain the most important parts of our policy file.
 
@@ -108,7 +108,7 @@ Under the body common control, add `sumo_logic_policy_update` to your bundle seq
 
 ![integrating-with-sumo-logic_bundle_sequence.png](integrating-with-sumo-logic_bundle_sequence.png)
 
-Under body common control, add /sumologic\_policy\_update.cf/ to your inputs section.
+Under body common control, add /sumologic\_policy\_update.cf/ to your inputs section.
 
 ![integrating-with-sumo-logic_inputs1.png](integrating-with-sumo-logic_inputs1.png)
 
@@ -122,7 +122,7 @@ To test it, we need to make a change to any CFEngine policy, and then go to Sumo
 * Make a change to any policy file, for examle `promises.cf`:
 
 ```console
-# vi /var/cfengine/masterfiles/promises.cf  
+# vi /var/cfengine/masterfiles/promises.cf
 ```
 
 Add a comment and close the file.
@@ -130,7 +130,7 @@ Add a comment and close the file.
 * Check if timestamp has been updated
 
 ```console
-# cat /tmp/CFEngine_policy_updated  
+# cat /tmp/CFEngine_policy_updated
 ```
 
 *   Check with Sumo Logic

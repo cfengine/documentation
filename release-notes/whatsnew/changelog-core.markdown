@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ChangeLog
+title: Changelog
 published: true
 sorting: 10
 tags: [what's new]

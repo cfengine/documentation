@@ -23,73 +23,88 @@
 import os
 import re
 
+
 def validate(branch):
-	config = {}
-	config["WORKDIR"] = os.environ.get('WRKDIR')
-	if config["WORKDIR"] == None:
-		print('Environment variable WRKDIR is not set, setting it to current working directory')
-		config["WORKDIR"] = os.getcwd()
-		os.environ["WRKDIR"] = os.getcwd()
+    config = {}
+    config["WORKDIR"] = os.environ.get("WRKDIR")
+    if config["WORKDIR"] == None:
+        print(
+            "Environment variable WRKDIR is not set, setting it to current working directory"
+        )
+        config["WORKDIR"] = os.getcwd()
+        os.environ["WRKDIR"] = os.getcwd()
 
-	if not os.path.exists(config["WORKDIR"]):
-		print("Directory WORKDIR not found: " + config["WORKDIR"])
-		exit(2)
-		
-	config["project_directory"] = config["WORKDIR"] + "/documentation/generator"
-	if not os.path.exists(config["project_directory"]):
-		print("Directory 'documentation/generator' not found in WORKDIR")
-	
-	config["markdown_directory"] = config["WORKDIR"] + "/documentation"
-	if not os.path.exists(config["markdown_directory"]):
-		print("Directory 'documentation' not found in WORKDIR")
+    if not os.path.exists(config["WORKDIR"]):
+        print("Directory WORKDIR not found: " + config["WORKDIR"])
+        exit(2)
 
+    config["project_directory"] = config["WORKDIR"] + "/documentation/generator"
+    if not os.path.exists(config["project_directory"]):
+        print("Directory 'documentation/generator' not found in WORKDIR")
 
-	version = branch
+    config["markdown_directory"] = config["WORKDIR"] + "/documentation"
+    if not os.path.exists(config["markdown_directory"]):
+        print("Directory 'documentation' not found in WORKDIR")
 
-	config["include_directories"] = []
-	config["include_directories"].append(config["WORKDIR"])
-	config["include_directories"].append(config["WORKDIR"] + "/core/examples")
-	config["include_directories"].append(config["WORKDIR"] + "/documentation/examples/example-snippets")
-	config["include_directories"].append(config["WORKDIR"] + "/documentation/generator/_generated")
-	config["include_directories"].append(config["WORKDIR"] + "/masterfiles/_generated")
-	config["include_directories"].append(config["WORKDIR"] + "/masterfiles")
-	config["include_directories"].append(config["WORKDIR"] + "/masterfiles/lib/")
-	config["include_directories"].append(config["WORKDIR"] + "/core/tests")
+    version = branch
 
-	config["reference_path"] = config["project_directory"] + "/_references.md"
-	config["config_path"] = config["project_directory"] + "/_config.yml"
-	
-	with open(config["config_path"], 'r') as config_file:
-		lines = config_file.readlines()
-		for line in lines:
-			comment = line.find('#')
-			if comment != -1:
-				line = line[:comment]
-			assign = line.split(':')
-			if assign.__len__() != 2:
-				continue
-			if assign[1] == '' or assign[1] == '\n':
-				continue
-			key = assign[0].lstrip().rstrip()
-			value = assign[1].lstrip().rstrip()
-			
-			config[key] = value
-			
-	print('cfdoc_environment: cwd              = ' + os.getcwd())
-	print('                   config           = ')
-	print(config)
-	
-	markdown_files = []
-	scanDirectory(config["markdown_directory"], "", ".markdown", markdown_files)
-	config["markdown_files"] = markdown_files
-	
-	return config
+    config["include_directories"] = []
+    config["include_directories"].append(config["WORKDIR"])
+    config["include_directories"].append(config["WORKDIR"] + "/core/examples")
+    config["include_directories"].append(
+        config["WORKDIR"] + "/documentation/examples/example-snippets"
+    )
+    config["include_directories"].append(
+        config["WORKDIR"] + "/documentation/generator/_generated"
+    )
+    config["include_directories"].append(config["WORKDIR"] + "/masterfiles/_generated")
+    config["include_directories"].append(config["WORKDIR"] + "/masterfiles")
+    config["include_directories"].append(config["WORKDIR"] + "/masterfiles/lib/")
+    config["include_directories"].append(config["WORKDIR"] + "/core/tests")
+
+    config["reference_path"] = config["project_directory"] + "/_references.md"
+    config["config_path"] = config["project_directory"] + "/_config.yml"
+
+    with open(config["config_path"], "r") as config_file:
+        lines = config_file.readlines()
+        for line in lines:
+            comment = line.find("#")
+            if comment != -1:
+                line = line[:comment]
+            assign = line.split(":")
+            if assign.__len__() != 2:
+                continue
+            if assign[1] == "" or assign[1] == "\n":
+                continue
+            key = assign[0].lstrip().rstrip()
+            value = assign[1].lstrip().rstrip()
+
+            config[key] = value
+
+    print("cfdoc_environment: cwd              = " + os.getcwd())
+    print("                   config           = ")
+    print(config)
+
+    markdown_files = []
+    scanDirectory(config["markdown_directory"], "", ".markdown", markdown_files)
+    config["markdown_files"] = markdown_files
+
+    return config
+
 
 def scanDirectory(cur_name, cur_dir, ext, file_list):
-	if os.path.isdir(cur_name) == True:
-		markdownfiles = os.listdir(cur_name)
-		for file_name in markdownfiles:
-			if os.path.isdir(cur_name+"/"+file_name) == True and file_name[0] != '.':
-				scanDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, ext, file_list)
-			elif os.path.isdir(file_name) == False and file_name[-len(ext):] == ext:
-				file_list.append(cur_name + "/" + file_name)
+    if os.path.isdir(cur_name) == True:
+        markdownfiles = os.listdir(cur_name)
+        for file_name in markdownfiles:
+            if (
+                os.path.isdir(cur_name + "/" + file_name) == True
+                and file_name[0] != "."
+            ):
+                scanDirectory(
+                    cur_name + "/" + file_name,
+                    cur_dir + "/" + file_name,
+                    ext,
+                    file_list,
+                )
+            elif os.path.isdir(file_name) == False and file_name[-len(ext) :] == ext:
+                file_list.append(cur_name + "/" + file_name)

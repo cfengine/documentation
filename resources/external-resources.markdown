@@ -8,12 +8,6 @@ tags: [overviews, learning]
 
 Use the following links to learn more about CFEngine:
 
-* [Reading][External resources#Reading]
-* [Training][External resources#Training]
-* [Tools][External resources#Tools]
-* [Support and community][External resources#Support and community]
-* [Contribute to CFEngine][External resources#Contribute to CFEngine]
-
 ## Reading
 
 Learn by reading information brought to you by CFEngine experts:

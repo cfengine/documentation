@@ -72,7 +72,7 @@ tags: [overviews, special topics, guide]
   The lowest level enterprise edition of CFEngine, that automatically creates a
   simple `star network' mangement model for hosts in an environment.
 
-* ChangeLog
+* Changelog
 
     A file used to describe the changes made since the last version of the
     software.

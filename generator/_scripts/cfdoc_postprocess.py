@@ -29,10 +29,10 @@ import sys
 
 config = environment.validate(sys.argv[1])
 try:
-	sourcelinks.run(config)
+    sourcelinks.run(config)
 except:
-	sys.stdout.write("      Exception: ")
-	print(sys.exc_info())
-	exit(1)
+    sys.stdout.write("      Exception: ")
+    print(sys.exc_info())
+    exit(1)
 
 exit(0)

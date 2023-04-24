@@ -6,22 +6,7 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
-A variety of CFEngine and system properties can be changed in the
-Settings view.
-
-* [Opening settings][Settings#Opening settings]
-* [Preferences][Settings#Preferences]
-* [User management][Settings#User management]
-* [Role management][Settings#Role management]
-* [Manage apps][Settings#Manage apps]
-* [Version control repository][Settings#Version control repository]
-* [Host identifier][Settings#Host identifier]
-* [Mail Settings][Settings#Mail settings]
-* [Authentication settings][Settings#Authentication settings]
-* [Export/import][Settings#Export/import]
-* [Role based access control][Settings#Role based access control]
-* [About CFEngine][Settings#About CFEngine]
-
+A variety of CFEngine and system properties can be changed in the settings view.
 
 ## Opening settings
 

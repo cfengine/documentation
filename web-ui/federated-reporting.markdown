@@ -24,17 +24,6 @@ configure and connect the Superhub and Feeder hubs. For Feeder hubs with an
 earlier version than 3.14.0 some manual steps must be taken. Links to these
 are provided at each stage of installation and setup that follows.
 
-* [Requirements][Federated reporting#Requirements]
-* [Installation][Federated reporting#Installation]
-* [Setup][Federated reporting#Setup]
-* [Operation][Federated reporting#Operation]
-* [Duplicate host management][Federated reporting#Duplicate host management]
-* [Troubleshooting][Federated reporting#Troubleshooting]
-* [API setup][Federated reporting#API setup]
-* [Disable feeder][Federated reporting#Disable feeder]
-* [Uninstall][Federated reporting#Uninstall]
-* [Superhub upgrade][Federated reporting#Superhub upgrade]
-
 ## Requirements
 
 ### Topology requirements

@@ -65,7 +65,7 @@ values into int and real types, and if it cannot it will report an error.
 However, arguments to built-in [functions][Functions] check the
 defined argument type for consistency.
 
-### Scalar Referencing and Expansion
+### Scalar referencing and expansion
 
 Scalar variables are referenced by `$(my_scalar)` (or `${my_scalar}`) and
 expand to the single value they hold at that time. If you refer to a variable
@@ -84,7 +84,7 @@ be escaped.
 
 [%CFEngine_include_example(quoting.cf)%]
 
-### Scalar Size Limitations
+### Scalar size limitations
 
 At the moment, up to 4095 bytes can fit into a scalar variable.  This
 limitation may be removed in the future.

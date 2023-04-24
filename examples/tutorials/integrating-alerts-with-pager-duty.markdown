@@ -25,7 +25,7 @@ Run the following command on your policy server to create the file we want to ma
 # touch /tmp/file-integrity
 ```
 
-## Create a new policy to manage the file
+## Create a new policy to manage the file
 
 Insert the following policy into `/tmp/file_example.cf`
 

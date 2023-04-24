@@ -22,49 +22,51 @@
 
 import os
 
+
 def createData(config):
-	configpath = config["config_path"]
-	if not os.path.exists(configpath):
-		print("cfdoc_git: \"_config.yml\" not found in " + configpath)
-		return
+    configpath = config["config_path"]
+    if not os.path.exists(configpath):
+        print('cfdoc_git: "_config.yml" not found in ' + configpath)
+        return
 
-	cwd = os.getcwd()
-	os.chdir(config["markdown_directory"])
-	config["branch"] = "master"
-	try:
-		git = os.popen("git rev-list -1 HEAD")
-		while True:
-			line = git.readline().rstrip()
-			if line == '': break
-			config["revision"] = line
-		git.close()
-	except:
-		print("cfdoc_git: Exception when reading revision")
-		print("cfdoc_git: cwd = " + os.getcwd())
-	
-	branch = "master"
-	try:
-		git = os.popen("git branch --no-color")
-		while True:
-			line = git.readline().rstrip()
-			if line == '': break
-			if line.find('*') == 0 and line.find('(') == -1:
-				branch = line.split(' ')[1].rstrip()
-	except:
-		print("cfdoc_git: Exception when reading current branch")
+    cwd = os.getcwd()
+    os.chdir(config["markdown_directory"])
+    config["branch"] = "master"
+    try:
+        git = os.popen("git rev-list -1 HEAD")
+        while True:
+            line = git.readline().rstrip()
+            if line == "":
+                break
+            config["revision"] = line
+        git.close()
+    except:
+        print("cfdoc_git: Exception when reading revision")
+        print("cfdoc_git: cwd = " + os.getcwd())
 
-	config["branch"] = branch
-	print("cfdoc_git: Updating " + configpath)
-	print("           branch   = \'" + config["branch"] + "\'")
-	print("           revision = \'" + config.get("revision", "NOT FOUND!") + "\'")
-	try:
-		config_file = open(configpath, "a")
-		config_file.write("git-branch: \"" + config.get("branch", "master") + "\"\n")
-		if "revision" in config:
-			config_file.write("git-revision: \"" + config["revision"] + "\"\n")
-		config_file.close()
-	except:
-		print("cfdoc_git: Exception when updating " + configpath)
+    branch = "master"
+    try:
+        git = os.popen("git branch --no-color")
+        while True:
+            line = git.readline().rstrip()
+            if line == "":
+                break
+            if line.find("*") == 0 and line.find("(") == -1:
+                branch = line.split(" ")[1].rstrip()
+    except:
+        print("cfdoc_git: Exception when reading current branch")
 
-	os.chdir(cwd)
+    config["branch"] = branch
+    print("cfdoc_git: Updating " + configpath)
+    print("           branch   = '" + config["branch"] + "'")
+    print("           revision = '" + config.get("revision", "NOT FOUND!") + "'")
+    try:
+        config_file = open(configpath, "a")
+        config_file.write('git-branch: "' + config.get("branch", "master") + '"\n')
+        if "revision" in config:
+            config_file.write('git-revision: "' + config["revision"] + '"\n')
+        config_file.close()
+    except:
+        print("cfdoc_git: Exception when updating " + configpath)
 
+    os.chdir(cwd)

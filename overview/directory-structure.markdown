@@ -8,19 +8,6 @@ tags: [guide, system, system overview, directory structure, directories, files]
 
 The CFEngine application is fully contained within the /var/cfengine directory tree. Here is a quick breakdown of the directory structure and some of the files and functions associated with each subdirectory.
 
-* [/var/cfengine/bin][CFEngine directory structure#/var/cfengine/bin]
-* [Directories for policy files][CFEngine directory structure#Directories for policy files]
-* [Output directories][CFEngine directory structure#Output directories]
-* [Log Files in /var/cfengine][CFEngine directory structure#Log Files in /var/cfengine]
-* [Database files in /var/cfengine][CFEngine directory structure#Database files in /var/cfengine]
-* [Process (AKA PID) files in /var/cfengine][CFEngine directory structure#Process (AKA PID) files in /var/cfengine]
-* [Sockets in /var/cfengine][CFEngine directory structure#Sockets in /var/cfengine]
-* [Datafiles in /var/cfengine][CFEngine directory structure#Datafiles in /var/cfengine]
-* [Binary files in /var/cfengine][CFEngine directory structure#Binary files in /var/cfengine]
-* [git in /var/cfengine/bin][CFEngine directory structure#git in /var/cfengine/bin]
-* [Misc. in /var/cfengine/bin][CFEngine directory structure#Misc. in /var/cfengine/bin]
-* [Postgres in /var/cfengine/bin][CFEngine directory structure#Postgres in /var/cfengine/bin]
-
 ## /var/cfengine/bin
 
 ### Agents
