@@ -14,18 +14,18 @@ managed resources are available in logs and an enterprise database for
 compliance and easy reporting. Using CFEngine, can be described in the following
 3 simple steps.
 
-## 1. Define Desired State
+## 1. Define desired state
 
 As an end-user you can use the CFEngine Domain Specific Language (DSL) to define
 desired states. CFEngine allows you to define a variety of states ranging from
 process management to software deployment and file integrity. You can check out
-CFEngine Promise Types to get an idea of the most common states you can define.
+CFEngine Promise types to get an idea of the most common states you can define.
 
 Normally, all desired states are stored in `.cf` text-files in the
 `/var/cfengine/masterfiles` directory on one or more central distribution points,
 referred to as CFEngine Policy Hubs.
 
-## 2. Ensure Actual State
+## 2. Ensure actual state
 
 CFEngine typically runs locally on each managed resource. A resource can be
 anything from a server, network switch, raspberry pi, or any other computational
@@ -38,7 +38,7 @@ policy updates, cf-agent will download the latest policy to its own
 `/var/cfengine/inputs` directory, run a syntax check and upon success start to
 execute.
 
-## 3. Verify Actual State
+## 3. Verify actual state
 
 Whenever the agent runs, it creates a log of local inventory, system states and
 execution results. The logs are stored in `/var/cfengine/outputs`. For enterprise
@@ -87,7 +87,7 @@ To use CFEngine effectively, you should spend a little time learning about the
 approach to management, as this will save you a lot of time and effort in the
 long run.
 
-## The Mission Plan
+## The Mission plan
 
 At CFEngine, we refer to the management of your datacentre as *The Mission*. The
 diagram below shows the main steps in preparing mission control. Some training
@@ -101,7 +101,7 @@ Planning does not mean sitting around a table, or in front of a whiteboard.
 Successful planning is a dialogue between theory and practice. It should include
 test pilots and proof-of-concept implementations.
 
-## Commercial or Free?
+## Commercial or free?
 
 The first decision you should make is whether you will choose a route of
 commercial assistance or manage entirely on your own. You can choose different
@@ -117,7 +117,7 @@ The advantages of the commercial products include greatly simplified set up
 procedures, continuous monitoring and automatic knowledge integration. See the
 CFEngine Nova Supplement for more information.
 
-## Installation or Pilot
+## Installation or pilot
 
 You are free to download Community Editions of CFEngine at any time to test the
 software. There is a considerable amount of documentation and example policy
@@ -128,7 +128,7 @@ If you intend to purchase a significant number of commercial licenses for
 CFEngine software, you can request a pilot process, during which a specialist
 will install and demonstrate the commercial edition on site.
 
-## Identifying the Team
+## Identifying the team
 
 CFEngine will become a core discipline in your organization, taking you from
 reactive fire-fighting to proactive and strategic practices. You should invest
@@ -144,13 +144,13 @@ All teams are important centres for knowledge, and you should provide incentives
 to keep the core team strong and in constant dialogue with your organization's
 strategic leadership. Treat your CFEngine team as a trusted partner in business.
 
-## Training and Certification
+## Training and certification
 
 Once you have tried the simplest examples using CFEngine, we recommend at least
 three days of in-depth training. We can also arrange more in-depth training to
 qualify as a CFEngine Mission Specialist.
 
-## Mission Goal and Knowledge Management
+## Mission goal and knowledge management
 
 The main aim of Knowledge Management is to learn from experience, and use the
 accumulated learning to improve the predictability of workflow processes. During
@@ -180,7 +180,7 @@ can help you in this process, with training and Professional Services, but you
 must establish a culture of commitment to the mission and learn how to express
 these commitments in terms of CFEngine promises.
 
-## Build, Deploy, Manage, Audit
+## Build, deploy, manage, audit
 
 The four mission phases are sometimes referred to as
 
@@ -220,7 +220,7 @@ The four mission phases are sometimes referred to as
 [Contact CFEngine](mailto:contact@cfengine.com)
 
 
-# CFEngine Architecture and Design
+# CFEngine architecture and design
 CFEngine operates autonomously in a network, under your guidance. While
 CFEngine supports anything from 1 servers to 100,000+ servers, the essence of
 any CFEngine deployment is the same.
@@ -253,7 +253,7 @@ which are independent of external requirements. CFEngine works in all
 the places you think it should, and all the new places you haven't even
 thought of yet.
 
-## Managing Expectations with Promises
+## Managing expectations with promises
 
 CFEngine works on a simple notion of **promises**. A promise is the
 documentation of an intention to act or behave in some manner. When you make a
@@ -301,9 +301,9 @@ operating systems, network topology or system processes. You describe the
 ideal state of a given system by creating promises and the CFEngine agents
 ensures that the necessary steps are taken to achieve this state. Automation
 in CFEngine is executed through a series of
-[components][Overview#CFEngine Component Applications and Daemons] that run locally on hosts.
+[components][Overview#CFEngine component applications and daemons] that run locally on hosts.
 
-## Phases of System Management
+## Phases of system management
 
 There are four commonly cited phases in managing systems with CFEngine: Build,
 Deploy, Manage, and Audit.
@@ -355,4 +355,4 @@ direction). All of the desired-state changes are managed locally by each
 individual host, and continuously repaired to ensure on-going compliance
 with policy.
 
-See Also: [Client server communication][Client server communication]
+See also: [Client server communication][Client server communication]

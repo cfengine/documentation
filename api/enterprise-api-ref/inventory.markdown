@@ -6,7 +6,7 @@ tags: [reference, enterprise, API, reporting, URI]
 ---
 Inventory API allows to access inventory reports and attributes dictionary.
 
-## Inventory Reports
+## Inventory reports
 
 
 **URI:** https://hub.cfengine.com/api/inventory
@@ -188,7 +188,7 @@ curl -k --user <username>:<password> \
 Shows list of all inventory attributes available in the system.
 
 See more details:
-* [Custom Inventory][Custom Inventory]
+* [Custom inventory][Custom inventory]
 
 **CURL request example**
 ```

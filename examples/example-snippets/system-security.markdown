@@ -1,13 +1,13 @@
 ---
 layout: default
-title: System Security Examples
+title: System security examples
 published: true
 sorting: 10
 tags: [Examples,System Security]
 ---
 
-* [Distribute root passwords][System Security Examples#Distribute root passwords]
-* [Distribute ssh keys][System Security Examples#Distribute ssh keys]
+* [Distribute root passwords][System security examples#Distribute root passwords]
+* [Distribute ssh keys][System security examples#Distribute ssh keys]
 * Distribute ssh keys
 
 ## Distribute root passwords

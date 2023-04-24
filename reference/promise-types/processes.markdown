@@ -99,7 +99,7 @@ commands:
 
 **Type:** `body process_count`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### in_range_define
 
@@ -168,7 +168,7 @@ out_of_range_define => { "process_anomaly", "anomaly_$(s)"};
 
 **Type:** `body process_select`
 
-**See also:** [Common Body Attributes][Promise Types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### command
 

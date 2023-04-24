@@ -133,7 +133,7 @@ Note: There is no way for force a refresh of the monitored data.
 * `cf_state.lmdb`
 * `history.lmdb`
 
-## Statistical Classes
+## Statistical classes
 
 `cf-monitord` automatically defines classes based on the observation of the data
 is has collected. Classes defined are named for the measurement id (the promise

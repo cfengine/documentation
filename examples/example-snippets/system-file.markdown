@@ -1,6 +1,6 @@
 ---
 layout: default
-title: System File Examples
+title: System file examples
 published: true
 sorting: 13
 tags: [Examples,System Administration,System Files]

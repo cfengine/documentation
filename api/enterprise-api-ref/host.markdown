@@ -60,7 +60,7 @@ Host API allows to access host specific information.
 * **id**
     Unique host identifier.
 * **hostname**
-    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and Settings REST API#Update settings].
+    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and settings REST API#Update settings].
 * **ip**
     IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
 * **lastreport**
@@ -68,9 +68,9 @@ Host API allows to access host specific information.
 * **firstseen**
     Time of receiving the first status report from the client. It is equivalent to the time when the client have been bootstrapped to the server for the first time. Represented as UNIX TIMESTAMP.
 
-**Example usage:** `Example: Listing Hosts With A Given Context`, `Example: Looking Up Hosts By Hostname`, `Example: Looking Up Hosts By IP`
+**Example usage:** `Example: Listing hosts with a given context`, `Example: Looking up hosts by hostname`, `Example: Looking up hosts by IP`
 
-## Host Details
+## Host details
 
 **URI:** https://hub.cfengine.com/api/host/:host-id
 
@@ -103,7 +103,7 @@ Host API allows to access host specific information.
 * **id**
     Unique host identifier.
 * **hostname**
-    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and Settings REST API#Update settings].
+    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and settings REST API#Update settings].
 * **ip**
     IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
 * **lastreport**
@@ -139,7 +139,7 @@ The hostkey is then removed from:
 
 Note: There is a record of the host retained that includes the time when the host was deleted and this record also prevents further collection from this host identity.
 
-**See also:** [Example removing host data][Browsing Host Information#example: removing host data]
+**See also:** [Example removing host data][Browsing host information#example: removing host data]
 
 ## Hosts list grouped by hard classes
 
@@ -357,7 +357,7 @@ Note: Collecting monitoring data by default is disabled.
 * **units**
     Units for the samples.
 
-**Example usage:** `Example: Listing Available Vital Signs For A Host`
+**Example usage:** `Example: Listing available vital signs for a host`
 
 ## Get samples from vital
 
@@ -420,7 +420,7 @@ Note: Collecting monitoring data by default is disabled.
 *   **values**
     Vital sign data. *(array of [ t, y ], where t is the sample timestamp)*
 
-**Example usage:** `Example: Retrieving Vital Sign Data`
+**Example usage:** `Example: Retrieving vital sign data`
 
 
 ## Get count of bootstrapped hosts by date range

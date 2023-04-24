@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Policy Style Guide
+title: Policy style guide
 published: true
 sorting: 10
 tags: [manuals, style, policy]
@@ -10,7 +10,7 @@ Style is a very personal choice and the contents of this guide should only be
 considered suggestions. We invite you to contribute to the growth of this
 guide.
 
-## Style Summary
+## Style summary
 
 * one indent = 2 spaces
 * avoid letting line length surpass 80 characters.
@@ -20,10 +20,10 @@ guide.
 * promiser = 3 indents, to allow for adding class guards without changing indent
 * promise attributes = (we suggest 3 or 4 indents)
 
-## Promise Ordering
+## Promise ordering
 
 There are two common styles that are used when writing policy. The
-[Normal Order][Normal Ordering] style dictates that promises should be
+[Normal Order][Normal ordering] style dictates that promises should be
 written in in the Normal Order that the agent evaluates promises
 in. The other is reader optimized where promises are written in the
 order they make sense to the reader. Both styles have their merits,
@@ -35,7 +35,7 @@ Here is an example of a policy written in the Normal Order. Note how
 `packages` are listed after `files`. This could confuse a novice who
 thinks that it is necessary for the files promise to only be attempted
 after the package promise is kept. However this style can be useful to
-a policy expert who is familiar with Normal Ordering.
+a policy expert who is familiar with Normal ordering.
 
 ```cf3
 bundle agent main
@@ -76,7 +76,7 @@ Here is an example of a policy written to be optimized for the reader.
 Note how packages are listed before files in the order which users
 think about taking imperitive action. This style can make it
 significantly easier for a novice to understand the desired state, but
-it is important to remember that Normal Ordering still applies and
+it is important to remember that Normal ordering still applies and
 that the promises will not be actuated in the order they are written.
 
 ```cf3
@@ -113,7 +113,7 @@ bundle agent main
 }
 ```
 
-## Whitespace and Line Length
+## Whitespace and line length
 
 Spaces are preferred to tab characters. Lines should not have trailing
 whitespace. Generally line length should not surpass 80 characters.
@@ -187,7 +187,7 @@ bundle agent example
 }
 ```
 
-## Policy Comments
+## Policy comments
 
 In-line policy comments are useful for debugging and explaining why something
 is done a specific way. We encourage you to document your policy thoroughly.
@@ -222,7 +222,7 @@ bundle agent example(param1)
 }
 ```
 
-## Policy Reports
+## Policy reports
 
 It is common and useful to include reports in policy to get detailed
 information about what is going on. During a normal agent run the goal is to
@@ -259,7 +259,7 @@ polluting the `inform_mode` and `verbose_mode` output, and it allows you to get
 debug output for ALL policy or just a select bundle which is incredibly useful
 when debugging a large policy set.
 
-## Promise Handles
+## Promise handles
 
 Promise handles uniquely identify a promise within a policy. We suggest a simple naming
 scheme of `bundle_name_promise_type_class_restriction_promiser` to keep handles unique and
@@ -329,7 +329,7 @@ bundle agent example
 
 Which one do you prefer?
 
-## Naming Conventions
+## Naming conventions
 
 Naming conventions can also help to provide clarity.
 
@@ -440,7 +440,7 @@ bundle agent main
 }
 ```
 
-## Deprecating Bundles
+## Deprecating bundles
 As your policy library changes over time you may want to deprecate various
 bundles in favor of newer implimentations. To indicate that a bundle is
 deprecated we recommend the following style.

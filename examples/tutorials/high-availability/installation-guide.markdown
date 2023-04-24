@@ -1,20 +1,20 @@
 ---
 layout: default
 published: true
-title: Installation Guide
+title: Installation guide
 tags: [cfengine enterprise, high availability]
 ---
 
 ## Overview ##
 
-This tutorial is describing the installation steps of the **CFEngine High Availability** feature. It
+This tutorial is describing the installation steps of the **CFEngine High availability** feature. It
 is suitable for both upgrading existing CFEngine installations to HA and for installing HA from
-scratch. Before starting installation we strongly recommend reading the [CFEngine High Availability
-overview][High Availability].
+scratch. Before starting installation we strongly recommend reading the [CFEngine High availability
+overview][High availability].
 
 ## Installation procedure ##
 
-As with most High Availability systems, setting it up requires carefully following a series of steps
+As with most High availability systems, setting it up requires carefully following a series of steps
 with dependencies on network components. The setup can therefore be error-prone, so if you are a
 CFEngine Enterprise customer we recommend that you contact support for assistance if you do not feel
 100% comfortable of doing this on your own.

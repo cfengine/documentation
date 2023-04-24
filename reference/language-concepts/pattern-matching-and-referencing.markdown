@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Pattern Matching and Referencing
+title: Pattern matching and referencing
 published: true
 sorting: 80
 tags: [manuals, language, syntax, concepts, pattern, regexp, matching]

@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Enterprise API Reference
+title:  Enterprise API reference
 published: true
 sorting: 70
 tags: [reference, enterprise, REST, API, reporting, sql]
@@ -11,17 +11,17 @@ number of URI resources that support one or more GET, PUT, POST, or
 DELETE operations. While reporting is done using SQL, this query is
 always wrapped in a JSON request.
 
-**See also:** [Enterprise API Examples][Enterprise API Examples]
+**See also:** [Enterprise API examples][Enterprise API examples]
 
 ## Requests
 
 **GET** requests are one of **listing** or **getting**. **Listing** resources
 means that a number of results will be returned, but each entry may contain
-limited information. An example of a **listing** query is [/api/user][Users and Access-Control REST API#List users] to list
+limited information. An example of a **listing** query is [/api/user][Users and access-control REST API#List users] to list
 users. Notice that URI components are always non-plural. An exception to this
-is [/api/settings][Status and Settings REST API#Get settings], which returns the singleton resource for settings.
+is [/api/settings][Status and settings REST API#Get settings], which returns the singleton resource for settings.
 **Getting** a resource specifies an individual resource to return, e.g.
-[/api/user/homer][Users and Access-Control REST API#Get user data].
+[/api/user/homer][Users and access-control REST API#Get user data].
 
 **PUT** request typically create a new resource, e.g. a user.
 
@@ -86,9 +86,9 @@ All timestamps are reported in *Unix Time*, i.e. seconds since 1970.
 The API supports both internal and external authentication. The internal users
 table will always be consulted first, followed by an external source specified
 in the settings. External sources are *OpenLDAP* or *Active Directory* servers
-configurable through [/api/settings][Status and Settings REST API#Update settings].
+configurable through [/api/settings][Status and settings REST API#Update settings].
 
 
 ## Authorization
 
-Some resources require that the request user is a member of the *admin* role. Roles are managed with [/api/role][Users and Access-Control REST API#List RBAC roles]. Role Based Access Control (RBAC) is configurable through the settings. Users typically have permission to access their own resources, e.g. their own scheduled reports.
+Some resources require that the request user is a member of the *admin* role. Roles are managed with [/api/role][Users and access-control REST API#List RBAC roles]. Role Based Access Control (RBAC) is configurable through the settings. Users typically have permission to access their own resources, e.g. their own scheduled reports.

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Masterfiles Policy Framework Upgrade
+title: Masterfiles Policy Framework upgrade
 published: true
 sorting: 14
 tags: [MPF, upgrade, masterfiles, tutorial]

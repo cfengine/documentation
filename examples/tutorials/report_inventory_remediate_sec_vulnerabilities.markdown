@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reporting and Remediation of Security Vulnerabilities
+title: Reporting and remediation of security vulnerabilities
 sorting: 10
 published: true
 tags: [Examples, Tutorials, Enterprise, Inventory, Dashboard, Alerts]
@@ -150,7 +150,7 @@ See the dashboard alert in action.
 ![See an the dashboard alert in action - alert details 1](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_014.jpg)
 ![See an the dashboard alert in action - specifc alert details](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_015.jpg)
 
-## Remediate Vulnerabilities ##
+## Remediate vulnerabilities ##
 
 Now that we know the extent of exposure lets ensure bash gets updated on some
 of the affected systems. Save the following policy into

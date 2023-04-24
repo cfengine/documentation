@@ -1,18 +1,18 @@
 ---
 layout: default
-title: All Promise and Body Types
+title: All promise and body types
 published: true
 sorting: 110
 tags: [reference]
 ---
 
-* [All Promise Types][All Promise and Body Types#All Promise Types]
-* [All Body Types][All Promise and Body Types#All Body Types]
+* [All promise types][All promise and body types#All promise types]
+* [All body Types][All promise and body types#All body Types]
 
-## All Promise Types
+## All promise types
 
 [%CFEngine_syntax_map(promiseTypes)]
 
-## All Body Types
+## All body Types
 
 [%CFEngine_syntax_map(bodyTypes)]

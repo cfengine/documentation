@@ -113,7 +113,7 @@ $ curl -s -u admin:admin http://hub/api/query -X POST -d @agent_execution_time_i
 ]
 ```
 
-**See also:** `Enterprise API Reference`, `Enterprise API Examples`
+**See also:** `Enterprise API reference`, `Enterprise API examples`
 
 ## How are hosts not reporting determined?
 
@@ -134,7 +134,7 @@ Note: It's called "blueHostHorizon" because older versions of Mission Portal
 would turn these hosts to a blue color as an indication of "hypoxia" (lack
 of oxygen, where oxygen is access to latest policy) to indicate a health issue.
 
-**See also:** `Enterprise API Reference`, `Enterprise API Examples`, [Enterprise Settings][Settings#preferences]
+**See also:** `Enterprise API reference`, `Enterprise API examples`, [Enterprise Settings][Settings#preferences]
 
 ## Which hosts are pending trust revocation?
 

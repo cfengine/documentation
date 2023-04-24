@@ -1,9 +1,9 @@
 ---
 layout: default
-title: File Permissions
+title: File permissions
 published: true
 sorting: 15
-tags: [Examples,File Permissions,Extended ACLs]
+tags: [Examples,File permissions,Extended ACLs]
 ---
 
 ## ACL file example

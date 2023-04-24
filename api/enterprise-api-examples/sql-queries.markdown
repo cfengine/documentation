@@ -1,11 +1,11 @@
 ---
 layout: default
-title:  SQL Query Examples
+title:  SQL query examples
 published: true
 tags: [examples, enterprise, rest, api, reporting, sql, queries]
 ---
 
-### Synchronous Example: Listing Hostname and IP for Ubuntu Hosts
+### Synchronous Example: Listing hostname and IP for Ubuntu hosts
 
 **Request:**
 
@@ -57,7 +57,7 @@ curl -k --user admin:admin https://test.cfengine.com/api/query -X POST -d '{ "qu
 }
 ```
 
-### Subscribed Query Example: Creating A Subscribed Query
+### Subscribed query example: Creating a subscribed query
 
 Here we create a new query to count file changes by name and have the result
 sent to us by email. The schedule field is any CFEngine context expression.
@@ -79,7 +79,7 @@ curl -k --user admin:admin https://test.cfengine.com/api/user/milton/ subscripti
 204 No Content
 ```
 
-### Subscribed Query Example: Listing Report Subscriptions
+### Subscribed query example: Listing report subscriptions
 
 Milton can list all his current subscriptions by issuing the following.
 
@@ -115,7 +115,7 @@ curl -k --user admin:admin https://test.cfengine.com/api/user/milton/subscriptio
 }
 ```
 
-### Subscribed Query Example: Removing A Report Subscription
+### Subscribed query example: Removing a report subscription
 
 **Request:**
 

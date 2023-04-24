@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Language Concepts
+title: Language concepts
 published: true
 sorting: 50
 tags: [overviews, language, syntax, concepts, promises]
@@ -59,16 +59,16 @@ separate and re-usable parts.  Effectively a body is like a promise attribute th
 
 CFEngine's boolean classifiers that describe context.
 
-* [**Variables and Datatypes**][variables]
+* [**Variables and datatypes**][variables]
 
 An association of the form "LVALUE *represents* RVALUE", where RVALUE may be a
 scalar value or a list of scalar values: a string, integer or real number.
 
 This documentation about the language concepts introduces in addition
 
-* [**normal ordering**][Normal Ordering],
+* [**normal ordering**][Normal ordering],
 * [**loops**][Loops],
-* [**pattern matching and referencing**][Pattern Matching and Referencing],
+* [**pattern matching and referencing**][Pattern matching and referencing],
   and
 * [**namespaces**][namespaces]
 
@@ -120,7 +120,7 @@ The CFEngine 3 language has a few simple rules:
 
 	In each of these cases, the right hand side is a user choice.
 
-## Filenames and Paths
+## Filenames and paths
 
 Filenames in Unix-like operating systems use the forward slash '/'
 character for their directory separator. All references to file
@@ -161,7 +161,7 @@ Paths beginning with a backslash are assumed to be win32 paths.
 They must begin with a drive letter or double-slash server name.
 
 Note that in many cases, you have `sys.inputdir` and other
-[Special Variables] that work equally well on Windows and non-Windows
+[Special variables] that work equally well on Windows and non-Windows
 system.
 
 Note in recent versions of Cygwin you can decide to use the

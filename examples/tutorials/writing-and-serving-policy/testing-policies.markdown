@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Testing Policies
+title: Testing policies
 published: true
 sorting: 50
 tags: [manuals, systems, configuration management, automation, testing, work directory]

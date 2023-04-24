@@ -10,7 +10,7 @@ One concept in CFEngine should stand out from the rest as being the most
 important: promises. Everything else is just an abstraction that allows us to
 declare promises and model the various actors in the system.
 
-## Everything is a Promise
+## Everything is a promise
 
 Everything in CFEngine 3 can be interpreted as a promise. Promises can be made
 about all kinds of different subjects, from file attributes, to the execution
@@ -23,7 +23,7 @@ the proper owner to serve web pages via Apache.
 This simple but powerful idea allows a very practical uniformity in CFEngine
 syntax.
 
-### Promise Types
+### Promise types
 
 The `promise_type` defines what kind of object is making the promise. The type
 dictates how CFEngine interprets the promise body. These promise types are
@@ -34,10 +34,10 @@ systems such as rpm and apt.
 Some promise types are common to all CFEngine components, while others can
 only be executed by one of them. `cf-serverd` cannot keep `packages` promises,
 and `cf-agent` cannot keep `access` promises. See the
-[Promise Type reference][Promise Types] for a comprehensive
+[Promise Type reference][Promise types] for a comprehensive
 list of promise types.
 
-### The Promiser
+### The promiser
 
 The promiser is an object affected by a promise, and this can be anything: a
 file, a port on a network. It is the entity that is making a promise that a
@@ -59,7 +59,7 @@ making][classes and decisions] section.
 Not all of these elements are necessary every time, but when you combine them
 they enable a wide range of behavior.
 
-### Promise Example
+### Promise example
 
 ```cf3
 # Promise type
@@ -88,7 +88,7 @@ CFEngine you can do this without having to execute the `touch`, `chmod`, and
 promise) that you want CFEngine to keep and you leave the details up to the
 tool.
 
-### Promise Locking
+### Promise locking
 
 When a promise is validated (has an outcome of kept or repaired) it is locked
 for [body agent control ifelapsed][cf-agent#ifelapsed] minutes (1 by default). Locks are based on a
@@ -99,9 +99,9 @@ Promise locks can be useful for controlling frequency.
 `access`, `classes`, `defaults`, `meta`, `roles` and `vars` type promises do not
 participate in locking.
 
-**See also:** [ifelapsed in body agent control][cf-agent#ifelapsed], [ifelapsed action body attribute][Promise Types#ifelapsed]
+**See also:** [ifelapsed in body agent control][cf-agent#ifelapsed], [ifelapsed action body attribute][Promise types#ifelapsed]
 
-### Promise Attributes
+### Promise attributes
 
 Promise attributes have a type and a value. The type can be any of the
 [datatypes][datatypes] that are allowed for variables, and in addition
@@ -151,7 +151,7 @@ bundle agent bad_example
 }
 ```
 
-### Implicit Promises
+### Implicit promises
 
 Some promise types can have implicit behavior. For example, the following
 promise simply prints out a log message "hello world".

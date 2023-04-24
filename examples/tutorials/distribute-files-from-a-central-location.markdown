@@ -33,7 +33,7 @@ Before files can be copied we must know where files should be copied from and
 where files should be copied to. If these locations are used by multiple
 components, then defining them in a [common bundle][Bundles]
 can reduce repetition. Variables and classes that are defined in common bundles are
-accessible by all [CFEngine components][Overview#CFEngine Component Applications and Daemons]. This is
+accessible by all [CFEngine components][Overview#CFEngine component applications and daemons]. This is
 especially useful in the case of file copies because the same variable
 definition can be used both by the policy server when granting access and by the agent host
 when performing the copy.
@@ -59,7 +59,7 @@ Add the following variable information to the `masterfiles/def.cf` file:
 ```
 
 These common variables can be referenced from the rest of the policy by using their fully
- [qualified names][Variables#Scalar Referencing and Expansion],
+ [qualified names][Variables#Scalar referencing and expansion],
 `$(def.dir_patch_store)` and `$(def.dir_patch_deploy)`
 
 ### Grant file access

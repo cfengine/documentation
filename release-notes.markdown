@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Release Notes
+title: Release notes
 published: true
 sorting: 30
 tags: [overviews, releases, latest release, platforms, versions]
@@ -9,8 +9,8 @@ tags: [overviews, releases, latest release, platforms, versions]
 * [New in CFEngine][New in CFEngine]
   Learn about the newest features in CFEngine {{site.cfengine.branch}}
 
-* [Supported Platforms and Versions][Supported Platforms and Versions]
+* [Supported platforms and versions][Supported platforms and versions]
   These are the supported platforms for the current release.
 
-* [Known Issues][Known Issues]
+* [Known issues][Known issues]
   View any issues of which we are currently aware and investigating. View possible workarounds.

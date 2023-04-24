@@ -14,7 +14,7 @@ to make it even simpler. Here's a list of the most commonly used formats.
 
 * **"Always pull never push"**
 
-## Basic Formatting
+## Basic formatting
 
 ```
 One
@@ -52,12 +52,12 @@ For example, On the [functions][Functions] page we can link to the [collecting f
 
 Sometimes (because `¯\_(ツ)_/¯`, maybe the page linked to hasn't been parsed yet) a page may not be automatically known. In this case an entry in [_references.md](https://github.com/cfengine/documentation/blob/master/generator/_references.md).
 
-##### Special Characters in link targets
+##### Special characters in link targets
 
 _Most_ (`¯\_(ツ)_/¯`) special characters are _okay_. For example:
 
 * Link targets with `/` (forward slashes) work
-   * ```[Export/Import][Settings#Export/Import]``` == [Export/Import][Settings#Export/Import]
+   * ```[Export/import][Settings#Export/import]``` == [Export/import][Settings#Export/import]
 
 Anchors with _underscores_ are problematic, they need to be escaped.
 
@@ -87,7 +87,7 @@ However, the preprocess will not create links if the code word is in triple back
 
 No links: ```classes``` and ```readfile()```
 
-### Link to External URL
+### Link to external URL
 
 `[Markdown Documentation](http://daringfireball.net/projects/markdown/)`
 
@@ -279,7 +279,7 @@ bundle agent hello_world
 
 The resulting code block will show `policy.cf` as the filename.
 
-#### CFEngine Code Blocks
+#### CFEngine code blocks
 
 If you want CFEngine syntax highlighting, use
 
@@ -302,7 +302,7 @@ bundle agent example()
 
 Other frequently used syntax highlighters shown below.
 
-#### Bash Script Code Blocks
+#### Bash script code blocks
 
         ```bash
         #!/bin/bash
@@ -322,7 +322,7 @@ do
 done
 ```
 
-#### Console Blocks
+#### Console blocks
 
         ```console
         root@policy_server # /etc/init.d/cfengine3 stop
@@ -332,7 +332,7 @@ done
 root@policy_server # /etc/init.d/cfengine3 stop
 ```
 
-#### SQL Code Blocks
+#### SQL code blocks
 
         ```sql
         SELECT
@@ -364,7 +364,7 @@ SELECT
      ChangeCount DESC
 ```
 
-#### Diff Code Blocks
+#### Diff code blocks
 
         ```diff
         diff --git a/README.md b/README.md
@@ -373,7 +373,7 @@ SELECT
         +++ b/README.md
         @@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
 
-         * follow the [Policy Style Guide](guide/writing-and-serving-policy/policy-style.markdown)
+         * follow the [Policy style guide](guide/writing-and-serving-policy/policy-style.markdown)
            in examples and code snippets
         -* always run it through Pygments plus the appropriate lexer (only cf3
         -  supported for now)
@@ -394,7 +394,7 @@ index 92555a2..b49c0bb 100644
 +++ b/README.md
 @@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
 
- * follow the [Policy Style Guide](guide/writing-and-serving-policy/policy-style.markdown)
+ * follow the [Policy style guide](guide/writing-and-serving-policy/policy-style.markdown)
    in examples and code snippets
 -* always run it through Pygments plus the appropriate lexer (only cf3
 -  supported for now)
@@ -409,7 +409,7 @@ index 92555a2..b49c0bb 100644
 ```
 
 
-#### JSON Code Blocks
+#### JSON code blocks
 
 {% raw %}
 ```json
@@ -449,7 +449,7 @@ index 92555a2..b49c0bb 100644
       - "any"
 ```
 
-### Code Blocks and Lists
+### Code blocks and lists
 
 If you want to include a code block within a list, put two tabs (8 spaces) in front of the entire block (4 to make the paragraph part of the list item, and 4 for it a code block):
 
@@ -505,7 +505,7 @@ You can also use backticks (and get syntax highlighting) - just make sure the ba
 
 `# Level 1`
 
-# CFEngine Extensions
+# CFEngine extensions
 ## Example policy from core
 
 Examples from cfengine/core can be rendered using the `CFEngine_include_example` macro.
@@ -553,7 +553,7 @@ Sometimes it's nice to include a snippet from another file. For example, we dyna
 
 *****
 
-## Including External Files
+## Including external files
 
 Sometimes it's nice to include an external file
 
@@ -613,7 +613,7 @@ If you are referring to something within UI / screenshots / buttons etc use bold
 
 
 
-## Self Documenting Policy
+## Self documenting policy
 ### For the stdlib:
 
 [%CFEngine_library_include(lib/commands)%]

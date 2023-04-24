@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Import & Export Compliance Report API
+title: Import & export compliance report API
 published: true
 tags: [reference, enterprise, API, import, export, compliance report]
 ---

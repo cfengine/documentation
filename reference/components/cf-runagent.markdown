@@ -9,7 +9,7 @@ keywords: [runagent]
 
 `cf-runagent` connects to a list of running instances of
 `cf-serverd`. It allows foregoing the usual `cf-execd` schedule to activate `cf-agent`.
-Additionally, a user may send [classes][Classes and Decisions] to be defined
+Additionally, a user may send [classes][Classes and decisions] to be defined
 on the remote host. Two kinds of classes may be sent: classes to decide on
 which hosts `cf-agent` will be started, and classes that the user requests
 `cf-agent` should define on execution. The latter type is regulated by

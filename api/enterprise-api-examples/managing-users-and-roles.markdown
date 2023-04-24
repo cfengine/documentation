@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Managing Users and Roles
+title:  Managing users and roles
 published: true
 sorting: 40
 tags: [examples, enterprise, rest, api, reporting, users, roles]
@@ -11,7 +11,7 @@ Roles are defined by regular expressions that determine which hosts the
 user can see, and what policy outcomes are restricted.
 
 
-## Example: Listing Users
+## Example: Listing users
 
 **Request**
 
@@ -47,7 +47,7 @@ user can see, and what policy outcomes are restricted.
     }
 
 
-## Example: Creating a New User
+## Example: Creating a new user
 
 All users will be created for the internal user table. The API will never
 attempt to write to an external LDAP server.
@@ -68,7 +68,7 @@ attempt to write to an external LDAP server.
     }
 
 
-## Example: Updating an Existing User
+## Example: Updating an existing user
 
 Both internal and external users may be updated. When updating an external
 users, the API will essentially annotate metadata for the user, it will never
@@ -84,7 +84,7 @@ credentials.
 
     204 No Content
 
-## Example: Retrieving a User
+## Example: Retrieving a user
 
 It is possible to retrieve data on a single user instead of listing
 everything. The following query is similar to issuing `GET
@@ -116,7 +116,7 @@ a regular expression for `id`.
       ]
     }
 
-## Example: Adding a User to a Role
+## Example: Adding a user to a role
 
 Adding a user to a role is just an update operation on the user. The full
 role-set is updated, so if you are only appending a role, you may want to
@@ -138,7 +138,7 @@ is used to remove a user from a role.
     }
 
 
-## Example: Deleting a User
+## Example: Deleting a user
 
 Users can only be deleted from the internal users table.
 

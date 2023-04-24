@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Lookup License Info
+title: Lookup license info
 published: true
 tags: [cfengine enterprise, hub administration, license]
 ---

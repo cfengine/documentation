@@ -135,7 +135,7 @@ verbose: Outcome of version (not specified) (agent-0): Promises observed - Total
 
 ### Promise logging
 
-Promises can be configured to [log their outcomes][Promise Types#log_repaired]
+Promises can be configured to [log their outcomes][Promise types#log_repaired]
 to a file with `log_kept`, `log_repaired`, and `log_failed` attributes in an action body.
 
 ```cf3
@@ -236,7 +236,7 @@ Example response:
 }
 ```
 
-See Also: [query rest api][Tracking changes]
+See also: [query rest api][Tracking changes]
 
 ### Custom Reports and Query API
 
@@ -261,7 +261,7 @@ GROUP BY namespace, bundlename, promisetype,promisehandle,promiser
 ORDER BY count DESC
 ```
 
-Reference: [query api examples][SQL Query Examples]
+Reference: [query api examples][SQL query examples]
 
 ### promise_log.jsonl
 

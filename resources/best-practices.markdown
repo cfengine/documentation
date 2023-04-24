@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Best Practices
+title: Best practices
 sorting: 100
 published: true
 tags: [cfengine enterprise, best practices, user interface, mission portal]
 ---
 
-## Policy Style Guide ##
+## Policy style guide ##
 
-When writing CFEngine policy using our [Policy Style Guide][Policy Style Guide] helps make your policy easily understood, debuggable and maintainable.
+When writing CFEngine policy using our [Policy style guide][Policy style guide] helps make your policy easily understood, debuggable and maintainable.
 
-## Version Control and Configuration Policy ##
+## Version control and configuration policy ##
 
 CFEngine users version their policies.  It's a reasonable, easy thing
 to do: you just put `/var/cfengine/masterfiles` under version control
@@ -54,7 +54,7 @@ infrastructure.
 
 ### How to enable it ###
 
-Follow detailed instructions in the [Policy Deployment][Policy Deployment] guide.
+Follow detailed instructions in the [Policy deployment][Policy deployment] guide.
 
 ## Scalability ##
 
@@ -63,7 +63,7 @@ When running CFEngine Enterprise in a large-scale IT environment with many thous
 With CFEngine 3.6, significant testing was performed to identify the issues surrounding scalability and to determine best practices in large-scale installations of CFEngine.
 
 
-### Moving PostgreSQL to Separate Hard Drive ###
+### Moving PostgreSQL to separate hard drive ###
 
 Moving the PostgreSQL database to another physical hard drive from the other CFEngine components can improve the stability of large-scale installations, particularly when using a solid-state drive (SSD) for hosting the PostgreSQL database.
 

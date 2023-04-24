@@ -51,7 +51,7 @@ Git is a very powerful and robust command line tool at its heart. While it has a
 * pull
 * reset
 
-#### Basic Examples ####
+#### Basic examples ####
 
 Note: Statements using the following format `> git command something` are to be done on the command line (e.g. Command Prompt/PowerShell on Windows, bash etc. on Linux / Mac). Do not type the `>` at the start of the statement -- beging typing the instructions that follow it (e.g. `git...`).
 

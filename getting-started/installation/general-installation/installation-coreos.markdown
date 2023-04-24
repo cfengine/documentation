@@ -10,11 +10,11 @@ These instructions describe how to install the latest version of CFEngine
 Enterprise on CoreOS. The CoreOS package uses a file-system image in order to
 contain modifications to the root file-system.
 
-## Download Packages
+## Download packages
 
 Download the file-system image package for CoreOS from the [Enterprise Downloads Page](http://cfengine.com/product/free-download).
 
-## Install Package
+## Install package
 
 1. On the CoreOS Host, extract the `fs-img-pkg.tar.gz` archive:
 
@@ -38,7 +38,7 @@ Run the bootstrap command:
 core@coreos ~ $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
 ```
 
-## Next Steps
+## Next steps
 
 When bootstrapping is complete, CFEngine is up and running on your system. You
 can begin to manage the host through policy and report on its state from Mission

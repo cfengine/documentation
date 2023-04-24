@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Monitoring and Reporting
+title: Monitoring and reporting
 published: true
 sorting: 10
 ---
 
-## What are Monitoring and Reporting?
+## What are monitoring and reporting?
 
 Monitoring is the sampling of system variables at regular intervals in
 order to present an overview of actual changes taking place over time.
@@ -21,7 +21,7 @@ discovered changes and faults.
 The challenge of both these activities is to compare intended or
 promised, behavior with the actual observed behavior of the system.
 
-## Should Monitoring and Configuration be Separate?
+## Should monitoring and configuration be separate?
 
 The traditional view of IT operations is that configuration, monitoring,
 and reporting are three different things that should not be joined. Traditionally,
