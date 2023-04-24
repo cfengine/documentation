@@ -59,7 +59,7 @@ separate and re-usable parts.  Effectively a body is like a promise attribute th
 
 CFEngine's boolean classifiers that describe context.
 
-* [**Variables and Datatypes**][variables]
+* [**Variables and datatypes**][variables]
 
 An association of the form "LVALUE *represents* RVALUE", where RVALUE may be a
 scalar value or a list of scalar values: a string, integer or real number.

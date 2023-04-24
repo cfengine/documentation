@@ -14,7 +14,7 @@ Thus your changes are going to be deleted. Please make sure to either keep a cop
 or add a relative file path `scripts/advancedreports/dca.js` to `$(sys.workdir)/httpd/htdocs/preserve_during_upgrade.txt`
 to preserve `dca.js` during the CFEngine upgrade process.
 
-### How to add new table to Query builder
+### How to add new table to query builder
 
 To extend the query builder with your custom data you need to edit the javascript file located on your hub here:
 `$(sys.workdir)/share/GUI/scripts/advancedreports/dca.js`.
