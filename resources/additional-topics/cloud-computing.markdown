@@ -6,7 +6,7 @@ sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-## What is Cloud Computing?
+## What is cloud computing?
 
 Cloud Computing refers to the commoditization of computing, i.e. a world in
 which computers may be borrowed on demand from a resource pool, like renting a
@@ -22,7 +22,7 @@ and save on redundant investment. You may think of Cloud Computing as
 `Recycle-able Computing' - a world in which you can use something for a short
 time and then discard it, without fear of waste.
 
-## Is Cloud Computing for everything and everyone?
+## Is cloud computing for everything and everyone?
 
 Cloud Computing does for computers what the database did for information.
 Instead of having to keep reams of paper physically on site, databases allowed
@@ -45,7 +45,7 @@ efficiently. Some people still buy books, cars and dig wells, while others loan
 books, rent cars and get water from the water authority. Different economic
 models have different applications.
 
-## How does CFEngine enable Cloud Computing?
+## How does CFEngine enable cloud computing?
 
 CFEngine has technology that can quickly bring machines, either real or virtual,
 from an uninitiated state to a fully working and customized state in seconds or

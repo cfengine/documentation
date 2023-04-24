@@ -25,7 +25,7 @@ affected by `common` and `agent` control bodies.
 
 [%CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$)%]
 
-## Automatic Bootstrapping
+## Automatic bootstrapping
 
 Automatic bootstrapping allows the user to connect a CFEngine Host to a Policy
 Server without specifying the IP address manually. It uses the *Avahi* service
@@ -484,7 +484,7 @@ body agent control {
 }
 ```
 
-**See Also:** `admit_keys`, `controls/cf_agent.cf`
+**See also:** `admit_keys`, `controls/cf_agent.cf`
 
 **History:**
 * Introduced in 3.20.0
@@ -846,7 +846,7 @@ ifelapsed   => "180";   # 3 hours
 }
 ```
 
-**See also:** [Promise locking][Promises#Promise Locking], [ifelapsed action body attribute][Promise types#ifelapsed]
+**See also:** [Promise locking][Promises#Promise locking], [ifelapsed action body attribute][Promise types#ifelapsed]
 
 ### inform
 

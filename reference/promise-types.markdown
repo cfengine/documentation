@@ -111,7 +111,7 @@ body agent control
 }
 ```
 
-**See also:** [promise locking][Promises#Promise Locking], [ifelapsed in body agent control][cf-agent#ifelapsed],
+**See also:** [promise locking][Promises#Promise locking], [ifelapsed in body agent control][cf-agent#ifelapsed],
 [`ifelapsed` and function caching][Functions#function caching]
 
 **History:**
@@ -1078,7 +1078,7 @@ automatically canonified when checking. You may need to use `canonify()` to
 convert strings containing invalid class characters into a valid class.
 
 In most cases, `if => something` and `if => not(something)` are opposite,
-but because of [function skipping][Functions#Function Skipping], both of these
+but because of [function skipping][Functions#Function skipping], both of these
 will be skipped if `something` is never resolved:
 
 ```cf3
@@ -1254,7 +1254,7 @@ Output:
 
 **History:** Was introduced in 3.11.0
 
-## Common Body Attributes
+## Common body attributes
 
 The following attributes are available to all body types.
 

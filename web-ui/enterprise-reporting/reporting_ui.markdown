@@ -6,9 +6,9 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
-CFEngine collects a large amount of data. To inspect it, you can run and schedule pre-defined reports or use the [query builder][Reporting UI#Query Builder] for your own custom reports. You can save these queries for later use, and schedule reports for specified times.
+CFEngine collects a large amount of data. To inspect it, you can run and schedule pre-defined reports or use the [query builder][Reporting UI#Query builder] for your own custom reports. You can save these queries for later use, and schedule reports for specified times.
 
-If you are familiar with SQL syntax, you can input your query into the interface directly. Make sure to take a look at the database schema. Please note: manual entries in the query field at the bottom of the [query builder][Reporting UI#Query Builder] will invalidate all field selections and filters above, and vice-versa.
+If you are familiar with SQL syntax, you can input your query into the interface directly. Make sure to take a look at the database schema. Please note: manual entries in the query field at the bottom of the [query builder][Reporting UI#Query builder] will invalidate all field selections and filters above, and vice-versa.
 
 You can share the report with other users - either by using "Save" button, or by base64-encoding the report query into a URL. You can also provide an optional title by adding `title` parameter to the URL, like this:
 
@@ -34,9 +34,9 @@ See also:
 * [Reporting architecture][Reporting architecture]
 * [SQL queries using the Enterprise API][SQL queries using the Enterprise API]
 
-## Query Builder
+## Query builder
 
-Users not familiar with SQL syntax can easily create their own custom reports in this interface. Please note that query builder can be [extended with your custom data][Extending Query Builder in Mission portal#How to add new table to Query builder].
+Users not familiar with SQL syntax can easily create their own custom reports in this interface. Please note that query builder can be [extended with your custom data][Extending Query builder in Mission portal#How to add new table to query builder].
 
 * Tables - Select the data tables you want include in your report first.
     * When more than one table is selected the Query builder opens modal window to select the ([join strategy  between tables](https://www.postgresql.org/docs/current/tutorial-join.html)):
@@ -97,7 +97,7 @@ large number of clinets that have not been collected from that become available
 at once can cause increased load on the hub collector and affect its
 performance until it has been able to collect from all hosts.
 
-## Define a New Single Table Report
+## Define a new single table report
 
 1. In *Mission Portal* select the *Report* application icon on the left hand side of the screen.
 2. This will bring you to the *Report builder* screen.
@@ -110,7 +110,7 @@ performance until it has been able to collect from all hosts.
 9. Leave *Filters*, *Sort*, and *Limit* at the default settings.
 10. Click the orange *Run* button in the bottom right hand corner.
 
-## Check Report Results
+## Check report results
 
 1. The report generated will show each of the selected columns across the report table's header row.
 2. In this tutorial the columns being reported back should be: *Host key*, *Last report time*, *Host name*, *IP address*, *First report-time*.
@@ -125,26 +125,26 @@ performance until it has been able to collect from all hosts.
 11. Click *OK* to download or email the *csv* or *pdf* version of the report.
 12. Once the report is generated it will be available for download or will be emailed.
 
-## Inventory Management
+## Inventory management
 
 Inventory allows you to define the set of hosts to report on.
 
 The main Inventory screen shows the current set of hosts, together with relevant information such as operating system type, kernel and memory size.
 
-<img src="Reports-Inventory-1.png" alt="Inventory Management" width="590px">
+<img src="Reports-Inventory-1.png" alt="Inventory management" width="590px">
 
 To begin filtering, one would first select the *Filters* drop down, and then select an attribute to filter on (e.g. OS type = linux)
 
-<img src="Reports-Inventory-2.png" alt="Inventory Management" width="590px">
+<img src="Reports-Inventory-2.png" alt="Inventory management" width="590px">
 
 After applying the filter, it may be convenient to add the attribute as one of the table columns.
 
-<img src="Reports-Inventory-4.png" alt="Inventory Management" width="590px">
+<img src="Reports-Inventory-4.png" alt="Inventory management" width="590px">
 
 Changing the filter, or adding additional attributes for filtering, is just as easy.
 
-<img src="Reports-Inventory-5.png" alt="Inventory Management" width="590px">
+<img src="Reports-Inventory-5.png" alt="Inventory management" width="590px">
 
 We can see here that there are no Windows machines bootstrapped to this hub.
 
-<img src="Reports-Inventory-6.png" alt="Inventory Management" width="650px">
+<img src="Reports-Inventory-6.png" alt="Inventory management" width="650px">

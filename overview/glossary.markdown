@@ -89,7 +89,7 @@ Typically the policy server is set by the bootstrapping process.
 A policy is a set of intentions about the system, coded as a list of promises. A policy is not a standard, but the result of specific organizational management decisions.
 
 #### Precedence
-#### Promise Attributes
+#### Promise attributes
 #### Promise types
 #### Promise
 

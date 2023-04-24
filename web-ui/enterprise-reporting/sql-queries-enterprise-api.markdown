@@ -21,7 +21,7 @@ queries. The API can create the following report queries:
 -   Subscribed query: Specify a query to be run on a schedule
     and have the result emailed to someone.
 
-### Synchronous Queries
+### Synchronous queries
 
 Issuing a synchronous query is the most straightforward way of running
 an SQL query. We simply issue the query and wait for a result to come
@@ -59,7 +59,7 @@ back.
       ]
     }
 
-## Asynchronous Queries
+## Asynchronous queries
 
 Because some queries can take some time to compute, you can
 fire off a query and check the status of it later. This is useful for

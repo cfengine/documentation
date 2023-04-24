@@ -9,14 +9,14 @@ tags: [guide, system, system overview, directory structure, directories, files]
 The CFEngine application is fully contained within the /var/cfengine directory tree. Here is a quick breakdown of the directory structure and some of the files and functions associated with each subdirectory.
 
 * [/var/cfengine/bin][CFEngine directory structure#/var/cfengine/bin]
-* [Directories for Policy Files][CFEngine directory structure#Directories for Policy Files]
-* [Output Directories][CFEngine directory structure#Output Directories]
+* [Directories for policy files][CFEngine directory structure#Directories for policy files]
+* [Output directories][CFEngine directory structure#Output directories]
 * [Log Files in /var/cfengine][CFEngine directory structure#Log Files in /var/cfengine]
-* [Database Files in /var/cfengine][CFEngine directory structure#Database Files in /var/cfengine]
-* [Process (AKA PID) Files in /var/cfengine][CFEngine directory structure#Process (AKA PID) Files in /var/cfengine]
+* [Database files in /var/cfengine][CFEngine directory structure#Database files in /var/cfengine]
+* [Process (AKA PID) files in /var/cfengine][CFEngine directory structure#Process (AKA PID) files in /var/cfengine]
 * [Sockets in /var/cfengine][CFEngine directory structure#Sockets in /var/cfengine]
 * [Datafiles in /var/cfengine][CFEngine directory structure#Datafiles in /var/cfengine]
-* [Binary Files in /var/cfengine][CFEngine directory structure#Binary Files in /var/cfengine]
+* [Binary files in /var/cfengine][CFEngine directory structure#Binary files in /var/cfengine]
 * [git in /var/cfengine/bin][CFEngine directory structure#git in /var/cfengine/bin]
 * [Misc. in /var/cfengine/bin][CFEngine directory structure#Misc. in /var/cfengine/bin]
 * [Postgres in /var/cfengine/bin][CFEngine directory structure#Postgres in /var/cfengine/bin]
@@ -38,9 +38,9 @@ The CFEngine application is fully contained within the /var/cfengine directory t
 * `runalerts.sh`: Updates Mission Portal status and activates alert actions (Enterprise only)
 * `cf-hub`: Responsible for collecting reports from remote agents. (CFEngine Enterprise only)
 
-See Also: [CFEngine Component Applications and Daemons][Overview#CFEngine Component Applications and Daemons]
+See also: [CFEngine component applications and daemons][Overview#CFEngine component applications and daemons]
 
-## Directories for Policy Files
+## Directories for policy files
 
 ### /var/cfengine/modules
 
@@ -59,7 +59,7 @@ clients when they need to update their policies. Policies obtained from
 local policy execution. The `cf-agent` executable does not execute policies
 directly from this repository.
 
-## Output Directories
+## Output directories
 
 ### /var/cfengine/outputs
 
@@ -141,7 +141,7 @@ In CFEngine Enterprise, a list of promises, with handles and comments, that were
 A time-stamped log of the percentage fraction of promises kept after
 each run.
 
-## Database Files in /var/cfengine
+## Database files in /var/cfengine
 
 * bundles.lmdb
 * `cf_classes.lmdb`
@@ -169,7 +169,7 @@ longer tasks such as command execution and file copying are measured by
 default. Other checks can be instrumented by setting a
 `measurement_class` in the `action` body of a promise.
 
-## Process (AKA PID) Files in /var/cfengine
+## Process (AKA PID) files in /var/cfengine
 
 The CFEngine components keep their current process identifier number in
 `pid files' in the work directory.
@@ -189,7 +189,7 @@ The CFEngine components keep their current process identifier number in
 
 IP address of the policy server
 
-## Binary Files in /var/cfengine
+## Binary files in /var/cfengine
 
 * `randseed`
 
@@ -239,7 +239,7 @@ IP address of the policy server
 * `bin/vacuumdb`
 
 
-## Not Verified
+## Not verified
 
 * `state/cf_lock.lmdb`
 

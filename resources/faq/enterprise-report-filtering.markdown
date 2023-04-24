@@ -6,7 +6,7 @@ sorting: 90
 tags: [getting started, faq, enterprise]
 ---
 
-## Filtering Inventoried Lists
+## Filtering inventoried lists
 
 When filtering an inventoried list item filtering can be based on one or more
 elements of the specific inventoried item. Note that when filtering for multiple

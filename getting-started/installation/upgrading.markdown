@@ -13,7 +13,7 @@ In short, the steps are:
 
 1. [Backup][Upgrading#Backup]
 2. [Masterfiles Policy Framework upgrade][Upgrading#Masterfiles Policy Framework upgrade]
-3. [Enterprise Hub binary upgrade][Upgrading#Enterprise Hub binary upgrade]
+3. [Enterprise hub binary upgrade][Upgrading#Enterprise hub binary upgrade]
 4. [Agent binary upgrade][Upgrading#Agent binary upgrade]
 
 **Notes:**
@@ -107,7 +107,7 @@ user modifications include `promises.cf`, `controls/*.cf`, and
 Once the Masterfiles Policy Framework has been qualified and distributed to all
 agents you are ready to begin binary upgrades.
 
-## Enterprise Hub binary upgrade
+## Enterprise hub binary upgrade
 
 1. Ensure the CFEngine services are **running**
 
@@ -189,8 +189,8 @@ agents you are ready to begin binary upgrades.
 
 3. Verify that the selected hosts are upgrading successfully.
 
-   - Mission Portal [Inventory reporting interface][Reporting UI#Inventory Management]
-     ![Inventory Management](Reports-Inventory-1.png)
+   - Mission Portal [Inventory reporting interface][Reporting UI#Inventory management]
+     ![Inventory management](Reports-Inventory-1.png)
 
    - [Inventory API][Inventory API]
 

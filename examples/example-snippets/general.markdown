@@ -6,11 +6,11 @@ sorting: 1
 tags: [Examples]
 ---
 
-* [Basic Example][General examples#Basic Example]
+* [Basic example][General examples#Basic example]
 * [Hello world][General examples#Hello world]
 * [Array example][General examples#Array example]
 
-## Basic Example
+## Basic example
 
 To get started with CFEngine, you can imagine the following template for entering examples. This part of the code is common to all the examples.
 

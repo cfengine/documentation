@@ -68,13 +68,13 @@ as the promiser but can also be referenced fully qualified with the namespace.
 
 Promises can only define classes within the current namespace. Classes are
 understood to refer to classes in the current namespace if a namespace is not
-specified (except for Hard Classes). To refer to a
+specified (except for Hard classes). To refer to a
 class in a different namespace prefix the class with the namespace suffixed by a
 colon (`:`).
 
 [%CFEngine_include_example(namespace_classes.cf)%]
 
-[Hard classes][Classes and decisions#Hard Classes] exist in all namespaces and
+[Hard classes][Classes and decisions#Hard classes] exist in all namespaces and
 thus can be referred to from any namespace without qualification.
 
 [%CFEngine_include_example(namespace_hard_classes.cf)%]

@@ -56,7 +56,7 @@ body mount nfs(server,source)
 
 **Type:** `body mount`
 
-**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### edit_fstab
 
@@ -180,7 +180,7 @@ unmount => "true";
 
 **Type:** `body volume`
 
-**See also:** [Common Body Attributes][Promise types#Common Body Attributes]
+**See also:** [Common body attributes][Promise types#Common body attributes]
 
 #### check_foreign
 

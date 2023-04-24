@@ -7,7 +7,7 @@ sorting: 10
 
 CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves with a policy server (see [Installation][Installation]), will each be running a set of CFEngine component applications that manage and interpret textual files called policies. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or *bundles*, of what are known in the CFEngine world as [Promises][Promises]. *Promises* are at the heart of Promise Theory, which is in turn what CFEngine is all about.
 
-## Policy Language and Compliance
+## Policy language and compliance
 
 For many users, CFEngine is simply a configuration tool - i.e. software for deploying and patching systems according to a policy. Policy is described using promises. Every statement in CFEngine 3 is a promise to be kept at some time or location. More than this, however, CFEngine is not like other automation tools that "roll out" an image of some software once and hope for the best. Every promise that you make in CFEngine is continuously verified and maintained. It is not a one-off operation, but a self-repairing process should anything deviate from the policy.
 
@@ -19,17 +19,17 @@ Those policies are distributed across all hosts within the system via download f
 
 CFEngine continually monitors all of the hosts in real-time, and should the system's current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.
 
-See Also: [Language concepts][], [Writing and serving policy][]
+See also: [Language concepts][], [Writing and serving policy][]
 
-## CFEngine Policy Servers and Hosts
+## CFEngine policy servers and hosts
 
 There are basically two categories of machines in a CFEngine environment: policy servers and their client hosts. Policy servers are responsible for making policy files available to each of the client hosts that have registered with it (a.k.a. bootstrapped), including itself. Hosts on the other hand are responsible for ensuring they continuously pull in the latest policies, or changes to policies, from the policy server. They are additionally responsible for ensuring they remain fully compliant with the instructions contained within the policy files, at all times.
 
 The role of a particular machine where CFEngine is deployed determines which of the components will be installed and running at any given moment.
 
-See Also: [Writing and serving policy][]
+See also: [Writing and serving policy][]
 
-## CFEngine Component Applications and Daemons
+## CFEngine component applications and daemons
 
 There are a number of components in CFEngine, with each component performing a
 unique function: components responsible for implementing promises, components
@@ -47,7 +47,7 @@ All CFEngine software components exist in `/var/cfengine/bin`.
 ![Components overview](components-overview.png)
 
 * [Daemons][Overview#Daemons]
-* [Other Applications][Overview#Other Component Applications]
+* [Other Applications][Overview#Other component applications]
 
 ### Daemons
 
@@ -94,7 +94,7 @@ See also: [cf-serverd][cf-serverd] reference documentation.
 
 See also: [cf-monitord][cf-monitord] reference documentation.
 
-### Other Component Applications
+### Other component applications
 
 * [/var/cfengine/bin/cf-agent][Overview#cf-agent]
 * [/var/cfengine/bin/cf-key][Overview#cf-key]

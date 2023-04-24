@@ -499,7 +499,7 @@ server time.nist.gov iburst
 
 Mission Accomplished!
 
-## Instrumenting for tunability via Augments
+## Instrumenting for tunability via augments
 
 Next we will augment file/template management with data sourced from a JSON data file. This is a simple extension of what we have done previously illustrating how tunables in policy can be exposed and leveraged from a data feed.
 

@@ -6,7 +6,7 @@ sorting: 10
 tags: [guide, installation]
 ---
 
-## Download Packages
+## Download packages
 
 [Download CFEngine][enterprise software download page] packages and [verify their signatures][Verifying package signatures].
 
@@ -22,4 +22,4 @@ for [Supported platforms and versions][Supported platforms and versions] operati
 * bash
 * command line text editing (e.g. vi/vim, Emacs)
 
-See Also: [Quick-Start Guide to Using vi][Quick-Start Guide to Using vi], [Quick-Start Guide to Using PuTTY][Quick-Start Guide to Using PuTTY]
+See also: [Quick-Start Guide to Using vi][Quick-Start Guide to Using vi], [Quick-Start Guide to Using PuTTY][Quick-Start Guide to Using PuTTY]

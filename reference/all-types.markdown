@@ -6,13 +6,13 @@ sorting: 110
 tags: [reference]
 ---
 
-* [All Promise types][All promise and body types#All Promise types]
-* [All Body Types][All promise and body types#All Body Types]
+* [All promise types][All promise and body types#All promise types]
+* [All body Types][All promise and body types#All body Types]
 
-## All Promise types
+## All promise types
 
 [%CFEngine_syntax_map(promiseTypes)]
 
-## All Body Types
+## All body Types
 
 [%CFEngine_syntax_map(bodyTypes)]
