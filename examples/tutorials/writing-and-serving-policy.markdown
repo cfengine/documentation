@@ -5,18 +5,6 @@ published: true
 sorting: 100
 ---
 
-* [About policies and promises][Writing and serving policy#About policies and promises]
-	* [What are promises][Writing and serving policy#What are promises]
-	* [The value of a promise][Writing and serving policy#The value of a promise]
-	* [Anatomy of a promise][Writing and serving policy#Anatomy of a promise]
-* [Policy workflow][Writing and serving policy#Policy workflow]
-* [How promises work][Writing and serving policy#How promises work]
-	* [Summary for writing, deploying and using promises][Writing and serving policy#Summary for writing, deploying and using promises]
-* [Best practices][Writing and serving policy#Best practices]
-* [Layers of abstraction in policy][Layers of abstraction in policy]
-* [Promises available in CFEngine][Promises available in CFEngine]
-* [Authoring policy tools & workflow][Authoring policy tools & workflow]
-
 ## About policies and promises ##
 
 Central to CFEngine's effectiveness in system administration is the concept of a "promise," which defines the intent and expectation of how some part of an overall system should behave.
