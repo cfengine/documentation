@@ -5,15 +5,19 @@
 import sys
 from collections import defaultdict
 
+
 class EasyDict(defaultdict):
     def __getattr__(self, key):
         return self[key]
+
     def __setattr__(self, key, value):
         self[key] = value
         return value
+
     def set_flag_list(self, l):
         for x in l:
             self.__setattr__(x, True)
+
 
 def replace_with_dict(content, replacements, filename):
     for k, v in replacements.items():
@@ -22,14 +26,15 @@ def replace_with_dict(content, replacements, filename):
             content = content.replace(k, v)
     return content
 
+
 def process_codeblock(lines, filename, lineno_start):
     result = []
     begin = lines[0]
     end = lines[-1]
     lines = lines[1:-1]
 
-    prefix = begin[0:begin.index("```")]
-    lang = begin[len(prefix)+3:].strip()
+    prefix = begin[0 : begin.index("```")]
+    lang = begin[len(prefix) + 3 :].strip()
 
     # Checks for warnings which make us leave the code block alone:
     if not end == (prefix + "```"):
@@ -58,7 +63,7 @@ def process_codeblock(lines, filename, lineno_start):
         if line == "":
             lineno += 1
             continue
-        if (line[len(prefix):][0] != ' '):
+        if line[len(prefix) :][0] != " ":
             common_indent = None
             break
         index = len(prefix)
@@ -78,22 +83,32 @@ def process_codeblock(lines, filename, lineno_start):
     # Remove common indent if found:
     if common_indent is not None and common_indent > 0:
         spaces = common_indent
-        lines = [x if x == "" else x[0:len(prefix)] + x[len(prefix) + spaces:] for x in lines]
-        print(f"{filename}:{lineno_start}: De-indented {lang + ' ' if lang else ''}code block")
+        lines = [
+            x if x == "" else x[0 : len(prefix)] + x[len(prefix) + spaces :]
+            for x in lines
+        ]
+        print(
+            f"{filename}:{lineno_start}: De-indented {lang + ' ' if lang else ''}code block"
+        )
 
     # Remove empty lines at beginning and end:
     while lines and lines[0] == "":
         lines = lines[1:]
-        print(f"{filename}:{lineno_start}: Removed empty line at beginning of {lang + ' ' if lang else ''} code block")
+        print(
+            f"{filename}:{lineno_start}: Removed empty line at beginning of {lang + ' ' if lang else ''} code block"
+        )
     while lines and lines[-1] == "":
         lines = lines[0:-1]
-        print(f"{filename}:{lineno_start}: Removed empty line at beginning of {lang + ' ' if lang else ''} code block")
+        print(
+            f"{filename}:{lineno_start}: Removed empty line at beginning of {lang + ' ' if lang else ''} code block"
+        )
 
     # "Render" result - May or may not be different
     result.append(begin)
     result.extend(lines)
     result.append(end)
     return result
+
 
 def edit_codeblocks(content, filename):
     done = []
@@ -115,7 +130,9 @@ def edit_codeblocks(content, filename):
                 lineno_start = lineno
                 will_try = True
             elif count % 2 != 0:
-                print(f"WARNING {filename}:{lineno}: Start of code block not on start of line")
+                print(
+                    f"WARNING {filename}:{lineno}: Start of code block not on start of line"
+                )
                 done.append(line)
                 will_try = False
                 state = "inside"
@@ -133,7 +150,9 @@ def edit_codeblocks(content, filename):
                     to_do = []
                 state = "outside"
             elif "```" in line:
-                print(f"WARNING {filename}:{lineno}: End of code block not on start of line")
+                print(
+                    f"WARNING {filename}:{lineno}: End of code block not on start of line"
+                )
                 will_try = False
                 done.extend(to_do)
                 to_do = []
@@ -146,13 +165,14 @@ def edit_codeblocks(content, filename):
     content = "\n".join(done)
     return content
 
+
 def perform_edits(content, flags, filename):
     if flags.trailing or flags.all:
         replacements = {" \n": "\n", "\t\n": "\n"}
         content = replace_with_dict(content, replacements, filename)
 
     if flags.ascii or flags.all:
-        replacements = {"‘":"'", "’": "'", "“": '"', "”": '"', "–": "-"}
+        replacements = {"‘": "'", "’": "'", "“": '"', "”": '"', "–": "-"}
         content = replace_with_dict(content, replacements, filename)
 
     if flags.eof or flags.all:
@@ -166,6 +186,7 @@ def perform_edits(content, flags, filename):
     if flags.codeblocks or flags.all:
         content = edit_codeblocks(content, filename)
     return content
+
 
 def main():
     # Argument parsing:
@@ -190,6 +211,7 @@ def main():
     if content != OLD_CONTENT:
         with open(filename, "w") as f:
             f.write(content)
+
 
 if __name__ == "__main__":
     main()
