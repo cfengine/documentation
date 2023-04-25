@@ -91,7 +91,7 @@ reports is especially helpful to diagnose any problems when High availability is
 <img src="ha_inventory.png" alt="HAInventory" width="700px">
 
 
-### CFEngine High availability installation
+### CFEngine high availability installation
 
 Existing CFEngine Enterprise installations can upgrade their single-node hub to a High availability
 system in versions 3.6.2 and newer. Detailed instructions how to upgrade from single hub to High

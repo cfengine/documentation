@@ -15,15 +15,15 @@ For a more detailed overview on how the inventory system works please reference
 
 This tutorial provides instructions for the following:
 
-* [Choose an attribute][Custom inventory#Choose an Attribute to Inventory]
+* [Choose an attribute][Custom inventory#Choose an attribute to inventory]
 
-* [Create and deploy inventory policy][Custom inventory#Create and Deploy Inventory Policy]
+* [Create and deploy inventory policy][Custom inventory#Create and deploy inventory policy]
 
 * [Run Reports][Custom inventory#Reporting]
 
 **Note:** This tutorial uses the [CFEngine Enterprise Vagrant Environment][Using Vagrant] and files located in the vagrant project directory are automatically available to all hosts.
 
-## Choose an Attribute to Inventory
+## Choose an attribute to inventory
 
 Writing inventory policy is incredibly easy. Simply add the `inventory` and
 `attribute_name=` tags to any variable or [namespace scoped classes][classes#scope].
@@ -39,7 +39,7 @@ hub, Operations Team <ops@cfengine.com>
 host001, Development <dev@cfengine.com>
 ```
 
-## Create and Deploy Inventory Policy
+## Create and deploy inventory policy
 
 Now that each of your hosts has access to a data source that provides the Owner
 information we will write an inventory policy to report that information.
