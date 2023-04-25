@@ -23,7 +23,7 @@ body common control {
 
 Note: This change is not necessary for supporting each of the examples in this tutorial. It will be included only in those examples that require it.
 
-## List Files ##
+## List files ##
 
 Note: The following workflow assumes the directory /home/user already exists. If it does not either create the directory or adjust the example to a path of your choosing.
 
@@ -84,7 +84,7 @@ Note: The following workflow assumes the directory /home/user already exists. If
 	rm /home/user/test_plain.txt
 	```
 
-## Create a File ##
+## Create a file ##
 
 ```cf3
 bundle agent testbundle
@@ -138,7 +138,7 @@ ls /home/user/test_plain.txt
 rm /home/user/test_plain.txt
 
 
-## Delete a File ##
+## Delete a file ##
 
 ```cf3
 body common control {
@@ -213,7 +213,7 @@ rm /home/user/test_plain.txt
 
 (last command will throw an error because the file doesn't exist!)
 
-## Modify a File ##
+## Modify a file ##
 
 rm /home/user/test_plain.txt
 
