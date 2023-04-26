@@ -289,6 +289,7 @@ Now we will manage the configuration file using the built-in mustache templating
 
 By default, the NTP service leverages configuration properties specified in /etc/ntp.conf. In this tutorial, we introduce the concept of the files promise type. With this promise type, you can create, delete, and edit files using CFEngine policies. The example policy below illustrates the use of the files promise.
 
+{%raw%}
 ```cf3
 bundle agent ntp
 {
@@ -356,6 +357,7 @@ keys /etc/ntp/keys
 
 }
 ```
+{%endraw%}
 
 What does this policy do?
 
@@ -363,7 +365,7 @@ Let's review the different sections of the code, starting with the variable decl
 
 #### vars
 
-
+{%raw%}
 ```cf3
    vars:
      linux::
@@ -387,6 +389,7 @@ includefile /etc/ntp/crypto/pw
 keys /etc/ntp/keys
 ";
 ```
+{%endraw%}
 
 A few new variables are defined. The variables `ntp_package_name`, `config_file`, `driftfile`, `servers`, and `config_template_string` are defined under the `linux` context (so only linux hosts will define them). `config_file` is the path to the ntp configuration file, `driftfile` and `servers` are both variables that will be used when rendering the configuration file and `config_template_string` is the template that will be used to render the configuration file. While both `driftfile` and `servers` are set the same for all linux hosts, those variables could easily be set to different values under different contexts.
 
@@ -505,6 +508,7 @@ Next we will augment file/template management with data sourced from a JSON data
 
 CFEngine offers out-of-the-box support for reading and writing JSON data structures. In this tutorial, we will default the NTP configuration properties in policy, but provide a path for the properties to be overridden from Augments.
 
+{% raw %}
 ```cf3
 bundle agent ntp
 {
@@ -588,6 +592,7 @@ keys /etc/ntp/keys
 
 }
 ```
+{% endraw %}
 
 What does this policy do?
 
