@@ -144,7 +144,7 @@ specify a list of hosts allowed to use the legacy protocol.
 
 ### allowciphers
 
-**Description:** List of TLS ciphers the server accepts for **incoming** connections.
+**Description:** List of TLS ciphers the server accepts both **incoming** and **outgoing** (in the case of client initiated reporting with CFEngine Enterprise) connections using `cf-serverd`.
 For a list of possible ciphers, see man page for "openssl ciphers".
 
 [%CFEngine_promise_attribute(AES256-GCM-SHA384:AES256-SHA)%]
@@ -177,7 +177,7 @@ this does not do anything as the classic protocol does not support TLS ciphers.
 
 ### allowtlsversion
 
-**Description:** Minimum TLS version allowed for **incoming** connections.
+**Description:** Minimum TLS version allowed for both **incoming** and **outgoing** (in the case of client initiated reporting with CFEngine Enterprise) connections using `cf-serverd`.
 
 [%CFEngine_promise_attribute(1.0)%]
 
