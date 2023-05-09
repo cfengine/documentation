@@ -581,7 +581,7 @@ body common control
 
 ### tls_ciphers
 
-**Description:** List of ciphers allowed when making **outgoing** connections.
+**Description:** List of ciphers allowed when making **outgoing** connections from components other than `cf-serverd`.
 
 For a list of possible ciphers, see man page for "openssl ciphers".
 
@@ -603,7 +603,7 @@ body common control
 
 ### tls_min_version
 
-**Description:** Minimum tls version to allow for **outgoing** connections.
+**Description:** Minimum tls version to allow for **outgoing** connections from components other than `cf-serverd`.
 
 [%CFEngine_promise_attribute(1.0)%]
 
