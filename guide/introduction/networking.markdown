@@ -194,7 +194,7 @@ authentication. Secrets should not be transferred through policy, encrypted or
 not. Policy files should be considered public, and any leakage should not
 reveal secret information.
 
-**Note:** Connections from the cf-agent are cached as described in the
+**Note:** Connections from the `cf-agent` are cached as described in the
 documentation for body [`copy_from`][files#copy_from].
 
 ### Protocol Classic
@@ -209,18 +209,18 @@ and server hosts. After the initial connection is established
 subsequent connections and data transfer is encrypted by a randomly
 generated Blowfish key that is refreshed each session.
 
-With the classic protocol cf-serverd has the ability to enforce that a
+With the classic protocol `cf-serverd` has the ability to enforce that a
 file transfer be encrypted by setting the
 [`ifencrypted` access attribute][access#ifencrypted]. When ACLs that
-require encryption have unencrypted access attempts cf-serverd logs an
+require encryption have unencrypted access attempts `cf-serverd` logs an
 error message indicating the file requires encryption. Access to files
-that cf-serverd requires to be encrypted can be logged by setting the
+that `cf-serverd` requires to be encrypted can be logged by setting the
 [body server control `logencryptedtransfers` attribute][cf-serverd#logencryptedtransfers].
 
 ### Protocol 2
 
 3.6 introduced a new protocol option for communication with
-cf-serverd. [Protocol 2][Components#protocol_version]
+`cf-serverd`. [Protocol 2][Components#protocol_version]
 is the default in 3.7+ and uses a TLS session for encryption.
 
 **Note:** When protocol 2 is in use legacy encryption attributes are **noop**.
@@ -234,21 +234,21 @@ The following attributes are affected:
 
 The specific encryption algorithm used depends on the cipher
 negotiated between the client and the server. You can control which
-ciphers are allowed by cf-serverd for **incoming** connections by
+ciphers are allowed by `cf-serverd` for both **incoming** and **outgoing** (in the case of client initiated reporting in CFEngine Enterprise) connections by
 setting the
 [body server control `allowciphers` attribute][cf-serverd#allowciphers]. Controlling
-which ciphers are allowed to be used in **outgoing** connections is
+which ciphers are allowed to be used by `cf-agent` is
 done by setting
 [body common control `tls_ciphers`][Components#tls_ciphers].
 
-Additionally the minimum version of TLS required for **incoming**
+Additionally the minimum version of TLS required for **incoming** and **outgoing** (in the case of client initiated reporting in CFEngine Enterprise)
 connections can be set in
 [body server control `allowtlsversion`][cf-serverd#allowtlsversion]
-and the minimum version of TLS required for **outgoing** connections
-can be set in
+and the minimum version of TLS required for connections
+from `cf-agent` can be set in
 [body common control `tls_min_version`][Components#tls_min_version].
 
-There are debug and verbose level logs produced by cf-agent to
+There are debug and verbose level logs produced by `cf-agent` to
 indicate when TLS is in use.
 
 The following was captured by running the agent update policy in debug
@@ -269,9 +269,9 @@ verbose: Server is TRUSTED, received key 'SHA=5d20c01e4230aa53863eb36686eaa88209
   debug: TLSRecvLines(): OK WELCOME USERNAME=root
 ```
 
-cf-serverd emits verbose and debug log messages indicating when TLS is in use.
+`cf-serverd` emits verbose and debug log messages indicating when TLS is in use.
 
-The following was captured by starting cf-serverd in the foreground
+The following was captured by starting `cf-serverd` in the foreground
 with debug mode.
 
 `/var/cfenigne/bin/cf-serverd -Fd`
