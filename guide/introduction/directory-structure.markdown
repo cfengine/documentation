@@ -154,7 +154,7 @@ including their relative frequencies, scaled like a probability.
 A database of hosts that last contacted this host, or were contacted by
 this host, and includes the times at which they were last observed.
 
-* `checksum_digests.lmdb`
+* `cf_changes.lmdb`
 
 The database of hash values used in CFEngine's change management
 functions.
