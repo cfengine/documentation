@@ -350,7 +350,7 @@ body package_module yum_all_repos
 ## Package modules out-of-the-box
 ### yum
 
-Manage packages using ```yum```. This is the [default package module](lib/packages.cf#package_module_knowledge) for Red Hat, CentOS and Amazon Linux.
+Manage packages using ```yum```. This is the [default package module][lib/packages.cf#package_module_knowledge] for Red Hat, CentOS and Amazon Linux.
 
 **Examples:**
 
@@ -617,7 +617,7 @@ packages:
 
 ### snap
 
-Manage packages using [snap](https://en.wikipedia.org/wiki/Snappy_(package_manager)).
+Manage packages using [snap](https://en.wikipedia.org/wiki/Snappy_%28package_manager%29).
 
 ```cf3
 bundle agent main

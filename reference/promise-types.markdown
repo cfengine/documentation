@@ -1078,7 +1078,7 @@ automatically canonified when checking. You may need to use `canonify()` to
 convert strings containing invalid class characters into a valid class.
 
 In most cases, `if => something` and `if => not(something)` are opposite,
-but because of [function skipping](Functions#Function_Skipping), both of these
+but because of [function skipping][Functions#Function Skipping], both of these
 will be skipped if `something` is never resolved:
 
 ```cf3
