@@ -388,7 +388,7 @@ CFEngine documentation follows the American spelling.
 **Oxford comma**
 
 In punctuation, a serial comma (also called Oxford comma) needs to be placed
-immediately before the conjunction (often “and” or “or”) in a series of three
+immediately before the conjunction (often "and" or "or") in a series of three
 or more terms.
 
 *Example:*
@@ -397,7 +397,7 @@ I would like crackers, cheese, and garlic.
 
 **The comma as a separator between compound sentences**
 
-Use commata to separate independent clauses when they are joined by any of
+Use comma to separate independent clauses when they are joined by any of
 these seven coordinating conjunctions: and, but, for, or, nor, so, yet.
 
 However, the comma can be dropped in the following cases:
