@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Manage packages
+title: Package management
 published: true
 sorting: 3
 tags: [getting started, tutorial]
