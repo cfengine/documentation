@@ -49,7 +49,24 @@ Some names should always be capitalized in a specific way:
 * Mission Portal
 * UI, CVE, TCP, TLS, API, HTTP, JSON (and other abbreviations)
 
+### Titles and verb tenses
 
+Avoid imperative tense in titles.
+Use `-ing` or nouns instead, some examples:
+
+* What not to do:
+  * "Write policy"
+  * "Manage packages"
+  * "Install CFEngine"
+  * "Get started"
+* Titles you can use instead:
+  * "Policy writing" (or "Writing policy")
+  * "Package management" (or "Managing packages")
+  * "CFEngine installation" (or "Installing CFEngine")
+  * "Getting started"
+
+Since anything can be managed, "managing" tends to be used a lot.
+Try to use other words: "editing", "updating", "changing", "creating", "setting".
 
 ## Documentation structure
 
