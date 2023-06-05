@@ -1,4 +1,4 @@
-# CFEngine Documentation
+# CFEngine documentation
 
 This repository holds the sources for the technical
 [CFEngine documentation](https://docs.cfengine.com/docs/) in
@@ -15,7 +15,7 @@ category when you create bugs. And of course you can search the bug tracker
 for known issues with the documentation, and help the community of
 CFEngine users by correcting some of them.
 
-## Writing Documentation
+## Writing documentation
 
 The CFEngine documentation is written in regular
 [markdown](https://daringfireball.net/projects/markdown/syntax), with some
@@ -35,7 +35,23 @@ It is in general advisable to make small commits that are submitted through
 pull requests frequently. Otherwise any structural changes to documentation
 content can cause merge conflicts that are hard to resolve.
 
-## Documentation Structure
+### Capitalization
+
+Avoid capitalizing things unnecessarily (features, concepts, titles).
+Titles and headings use sentence case (so don't capitalize each word).
+Some names should always be capitalized in a specific way:
+
+* CFEngine
+* CFEngine Build
+* CFEngine Docs
+* CFEngine Enterprise
+* Linux, macOS, Windows, Unix (and other names of operating systems)
+* Mission Portal
+* UI, CVE, TCP, TLS, API, HTTP, JSON (and other abbreviations)
+
+
+
+## Documentation structure
 
 ### Structure
 
@@ -209,7 +225,7 @@ expression `begin_rx`, and injects all lines **verbatim** from there
 until the first line that matches `end_rx`. If `end_rx` is omitted,
 all lines until the end of the file will be injected.
 
-#### Documenting Policy Libraries
+#### Documenting policy libraries
 
 * `[%CFEngine_library_include(filename)%]`
 
@@ -247,7 +263,7 @@ will be emitted.
 
 All comments before the first doxygen-style tag will be ignored.
 
-#### Documenting CFEngine Syntax Elements
+#### Documenting CFEngine syntax elements
 
 The following macros require the syntax map to be generated
 via `cf-promises -s` into a file `syntax_map.json` within the
@@ -344,7 +360,7 @@ Renders a table of built-in functions, grouped by function category.
 
 Renders a nested tree of CFEngine words, starting at `subtree`.
 
-#### Other Macros
+#### Other macros
 
 * `[%CFEngine_redirect(target)]`
 
@@ -352,7 +368,7 @@ Injects javascript that redirects the current page to the HTML page for `target`
 which needs to be a title or title#section combination as in regular `[text][title#section]`
 links.
 
-## Content Style Guide
+## Content style guide
 
 Make sure you follow this style guide to make using CFEngine and the
 documentation a consistent and pleasant experience.
