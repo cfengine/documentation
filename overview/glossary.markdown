@@ -27,7 +27,20 @@ A promise body is the description of exactly what is promised (as opposed to wha
 In CFEngine, a bundle refers to a collection of promises that has a name.
 
 #### Call Collect
-#### Classes
+#### Class
+
+Classes are used to classify a system (or the state of it) and to make decisions in CFEngine policy.
+Classes are sometimes referred to as contexts.
+
+#### Class expressions
+
+Multiple classes separated by operators (and, or) to make more complex decisions.
+
+#### Class guards
+
+Used to restrict when / where promises are evaluated.
+Appear in front of promises in CFEngine policy, consisting of a class expression followed by two colons.
+Class guards are sometimes called context class expressions.
 
 #### CMDB
 
