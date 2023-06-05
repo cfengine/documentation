@@ -8,7 +8,7 @@ published: true
 #### Agent
 
 A program that runs independently and automatically to carry out a task (think software robot).
-In CFEngine, the agent is called cf-agent and is responsible for making changes to computers.
+In CFEngine, the agent is called `cf-agent` and is responsible for making changes to computers.
 
 (Originally, the word *robot*, meaning "servile worker," was coined for the influential Czech writer Karel Čapek's play R.U.R by his brother.
 The characters in that play are capable of fairly independent thought, so the original sense of the word is apt to describe CFEngine's agents as well.)
@@ -17,15 +17,15 @@ The characters in that play are capable of fairly independent thought, so the or
 #### Body
 
 A promise body is the description of exactly what is promised (as opposed to what/who is making the promise).
-The term `body' is used in the CFEngine syntax to mean a small template that can be used to contribute as part of a larger promise body.
+The term `body` is used in the CFEngine syntax to mean a small template that can be used to contribute as part of a larger promise body.
 
 #### Bootstrap
-#### Bundles for Knowledge
+#### Bundles for knowledge
 #### Bundle
 
 In CFEngine, a bundle refers to a collection of promises that has a name.
 
-#### Call Collect
+#### Call collect
 #### Class
 
 Classes are used to classify a system (or the state of it) and to make decisions in CFEngine policy.
@@ -50,9 +50,9 @@ A term coined as part of the IT Infrastructure Library (ITIL) as an outgrowth of
 #### Common control
 #### Components
 
-Standalone applications include cf-agent, cf-promises, cf-runagent, cf-know, cf-report, cf-hub
+Standalone applications include `cf-agent`, `cf-promises`, `cf-runagent`, `cf-know`, `cf-report`, `cf-hub`
 
-Daemons include cf-execd, cf-monitord, and cf-serverd
+Daemons include `cf-execd`, `cf-monitord`, and `cf-serverd`
 
 #### Datatypes
 
@@ -64,7 +64,7 @@ The commonly used data types are `string`, `slist`, `int`, `real`, and `data`.
 #### Distribution
 #### Enterprise API
 #### Enterprise reporting
-#### File Structure
+#### File structure
 #### Frequency
 #### Functions
 #### Host
@@ -75,7 +75,7 @@ In practice, "host" is a synonym for "computer."
 #### Hub
 
 A software component in CFEngine Enterprise that acts as a single point of management in a local "star-network."
-The term "hub" is sometimes used to mean policy distribution server, but more commonly a running cf-hub process that does report collection from all CFEngine managed hosts.
+The term "hub" is sometimes used to mean policy distribution server, but more commonly a running `cf-hub` process that does report collection from all CFEngine managed hosts.
 The term hub means the centre of a wheel, from which multiple spokes emerge.
 
 #### Logs
@@ -87,20 +87,20 @@ The term hub means the centre of a wheel, from which multiple spokes emerge.
 #### Networking
 #### Normal ordering
 #### Operators
-#### Pattern Matching
+#### Pattern matching
 
 #### PCI compliance
 
 Payment Card Industry Data Security Standard (PCI DSS) is a set of requirements designed to ensure that ALL companies that process, store or transmit credit card information maintain a secure environment.
 
-#### Policy Levels
-#### Policy Server
+#### Policy levels
+#### Policy server
 
-The special server that others consult for the latest policies is called the *Policy Server*.
+The special server that others consult for the latest policies is called the *policy server*.
 
 Typically the policy server is set by the bootstrapping process.
 
-#### Policy Writing
+#### Policy writing
 #### Policy
 
 A policy is a set of intentions about the system, coded as a list of promises.
@@ -120,7 +120,7 @@ They are also convergent, meaning they can only nudge the system closer to a ste
 While there are ways a user could override this, it's almost never a good idea to do so.
 
 #### Referencing
-#### Report Collector
+#### Report collector
 #### Reporting
 #### Reports
 #### Role-Based Access Control (RBAC)
@@ -128,15 +128,15 @@ While there are ways a user could override this, it's almost never a good idea t
 
 #### Server
 
-For historical reasons, certain computers are referred to as servers, especially when kept in datacentres because such computers often run services.
+For historical reasons, certain computers are referred to as servers, especially when kept in data centers because such computers often run services.
 
-In CFEngine, cf-serverd is a software component that serves files from one computer to another.
-All computers are recommended to run cf-serverd, making all computers CFEngine servers, whether they are laptops, phones or datacentre computers.
+In CFEngine, `cf-serverd` is a software component that serves files from one computer to another.
+All computers are recommended to run `cf-serverd`, making all computers CFEngine servers, whether they are laptops, phones, or data center computers.
 
 The special server that others consult for the latest policies is called the Policy Server.
 
 #### Special variables
-#### Standard Library
+#### Standard library
 
 The standard library lives in a `masterfiles/lib` subdirectory.
 It's a collection of useful bundles and bodies you can use.
