@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Render files with Mustache templates
+title: Rendering files with Mustache templates
 sorting: 15
 published: true
 tags: [Examples, Tutorials, mustache]

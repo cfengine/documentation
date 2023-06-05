@@ -8,7 +8,7 @@ tags: [Examples, Tutorials, Dashboard, Alerts, Enterprise]
 
 At 5 minutes intervals, the CFEngine hub gathers information from all of its connected agents about the current state of the system, including the outcome of its runs. All of this information is available to you. In this tutorial we will show how to use the Dashboard to create compliance overview at a glance
 
-**Note:** This tutorial builds upon [another tutorial that manages local users][Manage local users].
+**Note:** This tutorial builds upon [another tutorial that manages local users][Managing local users].
 
 We will create 3 alerts, one that shows when CFEngine repairs the system (promise repaired), one that shows when CFEngine does not need to make a change (promise kept), and one that shows CFEngine failing to repair the system (promise not kept).
 
