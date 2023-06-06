@@ -207,24 +207,19 @@ by an enterprise-wide global infrastructure service.
 # Federated promises.cf
 #
 
- bundle agent main
- {
- files:
-
-   "$(sys.workdir)/inputs/baseline.cf"
-
+bundle agent main
+{
+  files:
+    "$(sys.workdir)/inputs/baseline.cf"
       copy_from => remote_cp(
-                            "/masterfiles/baseline.cf",
-                            "central_service.example.com"
-                            );
- methods:
-
-  # Inherit the baseline constitution
-
-  "baseline" usebundle => company_baseline;
-
-  # All other local promises here ....
- }
+        "/masterfiles/baseline.cf",
+        "central_service.example.com"
+      );
+  methods:
+    # Inherit the baseline constitution
+    "baseline" usebundle => company_baseline;
+    # All other local promises here ....
+}
 ```
 
 The CFEngine code snippet above represents the CFEngine configuration for any of

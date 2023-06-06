@@ -16,61 +16,59 @@ and filter for the MAC address. We then report on the result.
 ```cf3
 body common control
 {
-bundlesequence => { "example" };
+  bundlesequence => { "example" };
 }
 
 
 bundle agent example
 {
-vars:
+  vars:
 
-  linux::
-    "interface" string => execresult("/sbin/ifconfig eth0", "noshell");
+    linux::
+      "interface"
+        string => execresult("/sbin/ifconfig eth0", "noshell");
 
-  solaris::
-    "interface" string => execresult("/usr/sbin/ifconfig bge0", "noshell");
+    solaris::
+      "interface"
+        string => execresult("/usr/sbin/ifconfig bge0", "noshell");
 
-  freebsd::
-    "interface" string => execresult("/sbin/ifconfig le0", "noshell");
+    freebsd::
+      "interface"
+        string => execresult("/sbin/ifconfig le0", "noshell");
 
-  darwin::
-    "interface" string => execresult("/sbin/ifconfig en0", "noshell");
+    darwin::
+      "interface"
+        string => execresult("/sbin/ifconfig en0", "noshell");
 
-# Use the CFEngine function 'regextract' to match the MAC address,
-# assign it to an array called mac and set a class to indicate positive match
-classes:
+  # Use the CFEngine function 'regextract' to match the MAC address,
+  # assign it to an array called mac and set a class to indicate positive match
+  classes:
+    linux::
+      "ok"
+        expression => regextract(
+          ".*HWaddr ([^\s]+).*(\n.*)*",  # pattern to match
+          "$(interface)",  # string to scan for pattern
+          "mac"  # put the text that matches the pattern into this array
+        );
+    solaris|freebsd::
+      "ok"
+        expression => regextract(
+          ".*ether ([^\s]+).*(\n.*)*",
+          "$(interface)",
+          "mac"
+        );
+    darwin::
+      "ok"
+        expression => regextract(
+          "(?s).*ether ([^\s]+).*(\n.*)*",
+          "$(interface)",
+          "mac"
+        );
 
-  linux::
-
-  "ok" expression => regextract(
-                                ".*HWaddr ([^\s]+).*(\n.*)*",  # pattern to match
-                                "$(interface)",  # string to scan for pattern
-                                "mac"  # put the text that matches the pattern into this array
-                                );
-
-  solaris|freebsd::
-
-   "ok" expression => regextract(
-                                ".*ether ([^\s]+).*(\n.*)*",
-                                "$(interface)",
-                                "mac"
-                                );
-
-
-  darwin::
-
-   "ok" expression => regextract(
-                                "(?s).*ether ([^\s]+).*(\n.*)*",
-                                "$(interface)",
-                                "mac"
-                                );
-
-# Report on the result
-reports:
-
-  ok::
-
-    "MAC address is $(mac[1])";  # return first element in array "mac"
+  # Report on the result
+  reports:
+    ok::
+      "MAC address is $(mac[1])";  # return first element in array "mac"
 
 }
 ```
@@ -93,25 +91,23 @@ address natively:
 ```cf3
 body common control
 {
-bundlesequence => { "example" };
+  bundlesequence => { "example" };
 }
 
 
 bundle agent example
 {
-vars:
+  vars:
+    linux::
+      "interface" string => "eth0";
+    solaris::
+      "interface" string => "bge0";
+    freebsd::
+      "interface" string => "le0";
+    darwin::
+      "interface" string => "en0";
 
-  linux::   "interface" string => "eth0";
-
-  solaris:: "interface" string => "bge0";
-
-  freebsd:: "interface" string => "le0";
-
-  darwin::  "interface" string => "en0";
-
-
-reports:
-
-    "MAC address of $(interface) is: $(sys.hardware_mac[$(interface)])";
+  reports:
+      "MAC address of $(interface) is: $(sys.hardware_mac[$(interface)])";
 }
 ```
