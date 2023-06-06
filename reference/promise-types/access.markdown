@@ -309,11 +309,11 @@ access:
   "/directory/"
     admit => {
       "127.0.0.1",
-      ".example.org"
+      ".example.org",
     },
     deny => {
       "badhost_1.example.org",
-      "badhost_1.example.org"
+      "badhost_1.example.org",
     };
 }
 ```

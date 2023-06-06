@@ -27,7 +27,7 @@ bundle server my_access_rules()
 {
   roles:
     # Allow mark
-    "Myclass_.*"  authorize => { "mark" };
+    "Myclass_.*" authorize => { "mark" };
 }
 ```
 
@@ -57,5 +57,5 @@ already trusted on the system.
 
 ```cf3
 roles:
-  ".*"  authorize => { "mark", "marks_friend" };
+  ".*" authorize => { "mark", "marks_friend" };
 ```

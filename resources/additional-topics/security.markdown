@@ -431,7 +431,6 @@ Consider the following code:
 bundle agent change_management
 {
   vars:
-
     "watch_files"
       slist =>  {
         "/etc/passwd",
@@ -445,7 +444,6 @@ bundle agent change_management
       comment => "Partition the network into groups";
 
   files:
-
     "$(watch_files)"
       comment => "Change detection on the above",
       changes => detect_diff_content;
@@ -456,7 +454,7 @@ bundle agent change_management
 
     "$(sys.workdir)/nw/$(neighbours)_checksum_digests.db"
       comment => "Watching our peers remote hash tables for changes - cross check",
-      copy_from => remote_cp("$(sys.workdir)/checksum_digests.db","$(neighbours)"),
+      copy_from => remote_cp("$(sys.workdir)/checksum_digests.db", "$(neighbours)"),
       depends_on => { "grant_hash_tables" },
       action => neighbourwatch("File changes observed on $(neighbours)");
 ```

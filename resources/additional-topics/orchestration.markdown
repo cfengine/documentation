@@ -213,7 +213,7 @@ bundle agent main
     "$(sys.workdir)/inputs/baseline.cf"
       copy_from => remote_cp(
         "/masterfiles/baseline.cf",
-        "central_service.example.com"
+        "central_service.example.com",
       );
   methods:
     # Inherit the baseline constitution

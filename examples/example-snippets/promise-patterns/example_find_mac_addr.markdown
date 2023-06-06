@@ -23,7 +23,6 @@ body common control
 bundle agent example
 {
   vars:
-
     linux::
       "interface"
         string => execresult("/sbin/ifconfig eth0", "noshell");
