@@ -190,7 +190,7 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 
 * [Tutorial for running examples][Examples and tutorials#Tutorial for running examples]
 
-* [Distribute files from a central location.][Distribute files from a central location]
+* [Distributing files from a central location.][Distributing files from a central location]
 
   Whereas the first tutorial in this list teaches you how to deploy business policy
   through the Mission Portal, this advanced, command-line tutorial shows you how to distribute policy files from the Policy Server to all pertinent Hosts.

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Manage network time protocol
+title: Managing network time protocol
 published: true
 sorting: 3
 ---

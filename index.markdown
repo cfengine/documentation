@@ -60,7 +60,7 @@ alias: index.html
             <div>Learn about bundles, bodies, promises, variables, classes and decisions.</div>
          </li>
          <li>
-            <a href="examples-tutorials-manage-packages.html">Manage packages</a>
+            <a href="examples-tutorials-manage-packages.html">Package management</a>
             <div>Learn how to install, manage, and remove packages using CFEngine.</div>
          </li>
          <li class="cfe-build">

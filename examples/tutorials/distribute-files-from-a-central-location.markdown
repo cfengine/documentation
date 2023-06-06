@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Distribute files from a central location
+title: Distributing files from a central location
 sorting: 10
 published: true
 ---
