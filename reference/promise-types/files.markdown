@@ -2,7 +2,6 @@
 layout: default
 title: files
 published: true
-tags: [reference, bundle agent, files, promises, files promises, promise types]
 ---
 
 Files promises manage all aspects of files. Presence, absence, file content, permissions, and ownership. File content can be fully or partially managed.

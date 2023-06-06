@@ -2,7 +2,6 @@
 layout: default
 title: or
 published: true
-tags: [reference, data functions, functions, or]
 ---
 
 [%CFEngine_function_prototype(...)%]

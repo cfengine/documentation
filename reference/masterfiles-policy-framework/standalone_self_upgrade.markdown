@@ -3,7 +3,6 @@ layout: default
 title: standalone_self_upgrade.cf
 published: true
 sorting: 30
-tags: [reference, policy entry, MPF]
 ---
 
 `$(sys.inputdir)/standalone_self_upgrade.cf` is an independent policy set entry

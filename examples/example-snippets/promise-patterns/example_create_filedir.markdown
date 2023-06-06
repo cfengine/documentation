@@ -2,7 +2,6 @@
 layout: default
 title: Create files and directories
 published: true
-tags: [Examples, Policy, create, files and directories]
 ---
 
 The following is a standalone policy that will create the file

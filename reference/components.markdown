@@ -3,7 +3,6 @@ layout: default
 title: Components
 published: true
 sorting: 10
-tags: [Reference, Components]
 ---
 
 While promises to configure your system are entirely user-defined, the

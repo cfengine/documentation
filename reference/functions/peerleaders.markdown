@@ -2,7 +2,6 @@
 layout: default
 title: peerleaders
 published: true
-tags: [reference, communication functions, functions, peerleaders]
 ---
 
 [%CFEngine_function_prototype(filename, regex, groupsize)%]

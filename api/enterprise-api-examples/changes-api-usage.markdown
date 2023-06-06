@@ -3,7 +3,6 @@ layout: default
 title: Tracking changes
 published: true
 sorting: 50
-tags: [examples, enterprise, rest, api, reporting, hosts, changes, repairs]
 ---
 
 Changes REST API allows to track the changes made by cf-agent in the infrastructure.

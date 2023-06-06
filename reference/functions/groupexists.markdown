@@ -2,7 +2,6 @@
 layout: default
 title: groupexists
 published: true
-tags: [reference, system functions, functions, groupexists]
 ---
 
 [%CFEngine_function_prototype(group)%]

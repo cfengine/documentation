@@ -3,7 +3,6 @@ layout: default
 title: cf-promises
 published: true
 sorting: 40
-tags: [Components, cf-promises]
 ---
 
 `cf-promises` is a  tool for checking CFEngine policy code. It operates by

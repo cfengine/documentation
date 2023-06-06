@@ -3,7 +3,6 @@ layout: default
 title: ITIL
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
 ## What it ITIL?

@@ -3,7 +3,6 @@ layout: default
 title:  Managing users and roles
 published: true
 sorting: 40
-tags: [examples, enterprise, rest, api, reporting, users, roles]
 ---
 
 Users and Roles determine who has access to what data from the API.

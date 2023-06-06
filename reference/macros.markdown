@@ -4,7 +4,6 @@ title: Macros
 categories: [Reference, Macros]
 published: true
 alias: reference-macros.html
-tags: [reference, syntax, if, ifdef, macros, minimum_version, feature]
 ---
 
 Macros allow you to target different versions of the CFEngine binaries / parser.

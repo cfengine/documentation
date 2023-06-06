@@ -2,7 +2,6 @@
 layout: default
 title: accumulated
 published: true
-tags: [reference, data functions, functions, accumulated]
 ---
 
 [%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]

@@ -2,7 +2,6 @@
 layout: default
 title: Updating from a central policy server
 published: true
-tags: [Examples, Policy, updating, policy server]
 reviewed: 2013-06-09
 reviewed-by: atsaloli
 ---

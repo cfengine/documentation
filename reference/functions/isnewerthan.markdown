@@ -2,7 +2,6 @@
 layout: default
 title: isnewerthan
 published: true
-tags: [reference, files functions, functions, isnewerthan]
 ---
 
 [%CFEngine_function_prototype(newer, older)%]

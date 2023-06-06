@@ -3,7 +3,6 @@ layout: default
 title: Cloud Computing
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
 ## What is cloud computing?

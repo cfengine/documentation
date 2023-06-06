@@ -2,7 +2,6 @@
 layout: default
 title: string_head
 published: true
-tags: [reference, text functions, functions, text, head, string_head, substring]
 ---
 
 [%CFEngine_function_prototype(data, max)%]

@@ -2,7 +2,6 @@
 layout: default
 title: isreadable
 published: true
-tags: [reference, file functions, functions, files]
 ---
 
 [%CFEngine_function_prototype(path, timeout)%]

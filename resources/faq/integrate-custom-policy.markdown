@@ -3,7 +3,6 @@ layout: default
 title: How do I integrate custom policy?
 published: true
 sorting: 90
-tags: [getting started, installation, faq]
 ---
 
 There are many different ways that custom polices can be organized. CFEngine

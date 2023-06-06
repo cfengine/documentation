@@ -2,7 +2,6 @@
 layout: default
 title: grep
 published: true
-tags: [reference, data functions, functions, grep, inline_json]
 ---
 
 [%CFEngine_function_prototype(regex, list)%]

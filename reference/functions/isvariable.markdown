@@ -2,7 +2,6 @@
 layout: default
 title: isvariable
 published: true
-tags: [reference, utility functions, functions, isvariable]
 ---
 
 [%CFEngine_function_prototype(var)%]

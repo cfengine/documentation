@@ -2,7 +2,6 @@
 layout: default
 title: "on"
 published: true
-tags: [reference, data functions, functions, "on"]
 ---
 
 [%CFEngine_function_prototype(year, month, day, hour, minute, second)%]

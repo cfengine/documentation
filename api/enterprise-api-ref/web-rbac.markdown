@@ -2,7 +2,6 @@
 layout: default
 title: Web RBAC API
 published: true
-tags: [reference, enterprise, API, settings, RBAC]
 ---
 Web RBAC API for managing role based access control settings.
 

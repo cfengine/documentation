@@ -3,7 +3,6 @@ layout: default
 title: Loops
 published: true
 sorting: 70
-tags: [manuals, language, syntax, concepts, loops]
 ---
 
 There are no explicit loops in CFEngine, instead there are lists. To make a

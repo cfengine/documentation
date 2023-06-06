@@ -2,7 +2,6 @@
 layout: default
 title: read_module_protocol
 published: true
-tags: [reference, data functions, functions, "on"]
 ---
 
 [%CFEngine_function_prototype(file_path)%]

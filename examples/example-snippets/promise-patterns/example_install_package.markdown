@@ -2,7 +2,6 @@
 layout: default
 title: Install packages
 published: true
-tags: [Examples, Policy, packages]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

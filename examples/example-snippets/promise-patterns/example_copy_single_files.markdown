@@ -2,7 +2,6 @@
 layout: default
 title: Copy single files
 published: true
-tags: [Examples, Policy, copy files]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

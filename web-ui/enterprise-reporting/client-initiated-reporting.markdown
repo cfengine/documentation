@@ -3,7 +3,6 @@ layout: default
 title: Client initiated reporting / call collect
 sorting: 60
 published: true
-tags: [cfengine enterprise, reporting, call collect]
 ---
 
 Pull collect is the default mode of reporting.

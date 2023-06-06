@@ -3,7 +3,6 @@ layout: default
 title: Installing Enterprise on CoreOS
 published: true
 sorting: 40
-tags: [getting started, installation, enterprise_edition, coreos]
 ---
 
 These instructions describe how to install the latest version of CFEngine

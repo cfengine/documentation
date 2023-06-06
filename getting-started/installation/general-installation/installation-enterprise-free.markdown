@@ -3,7 +3,6 @@ layout: default
 title: Installing Enterprise 25 Free
 published: true
 sorting: 20
-tags: [getting started, installation, enterprise free]
 ---
 
 These instructions describe how to install the latest version of CFEngine Enterprise 25 Free. This is the full

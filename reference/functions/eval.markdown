@@ -2,7 +2,6 @@
 layout: default
 title: eval
 published: true
-tags: [reference, data functions, functions, eval, context, class, equality, numbers]
 ---
 
 [%CFEngine_function_prototype(expression, mode, options)%]

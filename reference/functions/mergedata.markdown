@@ -2,7 +2,6 @@
 layout: default
 title: mergedata
 published: true
-tags: [reference, data functions, functions, json, merge, mergedata, container, wrap, extract, array, map, inline_json]
 ---
 
 [%CFEngine_function_prototype(one, two, etc)%]

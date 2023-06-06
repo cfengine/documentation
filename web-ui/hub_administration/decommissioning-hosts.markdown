@@ -3,7 +3,6 @@ layout: default
 title: Decommissioning hosts
 sorting: 30
 published: true
-tags: [cfengine enterprise, user interface, mission portal]
 ---
 
 Once a host is shut off, or CFEngine is uninstalled, you should remove it from Mission Portal.

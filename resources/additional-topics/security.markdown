@@ -3,7 +3,6 @@ layout: default
 title: Security
 published: True
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
 Diego Zamboni, discusses why CFEngine is a critical component of maintaining IT system security. Many vulnerabilities are directly caused by faulty configurations, so security is closely linked to how well configuration management works.

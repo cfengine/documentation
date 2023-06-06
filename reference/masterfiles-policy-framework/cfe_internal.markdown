@@ -2,7 +2,6 @@
 layout: default
 title: cfe_internal/
 published: true
-tags: [reference, cfe_internal, MPF]
 ---
 
 This directory contains policy related to the internal control and functioning

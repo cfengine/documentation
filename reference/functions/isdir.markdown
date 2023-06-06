@@ -2,7 +2,6 @@
 layout: default
 title: isdir
 published: true
-tags: [reference, files functions, functions, isdir]
 ---
 
 [%CFEngine_function_prototype(filename)%]

@@ -2,7 +2,6 @@
 layout: default
 title: controls/
 published: true
-tags: [reference, controls, MPF]
 ---
 
 This directory contains policy related to the internal control and functioning

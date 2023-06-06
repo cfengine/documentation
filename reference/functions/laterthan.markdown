@@ -2,7 +2,6 @@
 layout: default
 title: laterthan
 published: true
-tags: [reference, files functions, functions, laterthan]
 ---
 
 [%CFEngine_function_prototype(year, month, day, hour, minute, second)%]

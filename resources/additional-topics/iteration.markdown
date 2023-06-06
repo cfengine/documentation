@@ -3,7 +3,6 @@ layout: default
 title: Iteration (Loops)
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
 ## What is iteration?

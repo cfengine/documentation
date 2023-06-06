@@ -3,7 +3,6 @@ layout: default
 title: Agent output email
 published: true
 sorting: 90
-tags: [getting started, installation, faq]
 ---
 
 ## How do I set the email where agent reports are sent?

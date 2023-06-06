@@ -3,7 +3,6 @@ layout: default
 title: Changelog
 published: true
 sorting: 10
-tags: [what's new]
 ---
 
 **See also:** [Enterprise changelog][Enterprise changelog], [Masterfiles changelog][Masterfiles changelog]

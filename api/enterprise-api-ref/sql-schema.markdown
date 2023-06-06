@@ -2,7 +2,6 @@
 layout: default
 title: SQL schema
 published: true
-tags: [reference, enterprise, REST, API, reporting, sql, schema]
 ---
 
 CFEngine allows standardized SQL `SELECT` queries to be used with [REST API][Query REST API#Execute SQL query].

@@ -2,7 +2,6 @@
 layout: default
 title: "readrealarray"
 published: true
-tags: [reference, io functions, functions, readintarray, readrealarray, readstringarray]
 ---
 
 **Prototype:** `readrealarray(array, filename, comment, split, maxentries, maxbytes)`<br>

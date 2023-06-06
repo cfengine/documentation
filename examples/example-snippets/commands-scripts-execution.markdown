@@ -3,7 +3,6 @@ layout: default
 title: Commands, scripts, and execution examples
 published: true
 sorting: 5
-tags: [Examples,Commands,Scripts]
 ---
 
 * [Command or script execution][Commands, scripts, and execution examples#Command or script execution]

@@ -2,7 +2,6 @@
 layout: default
 title: modules/packages/
 published: true
-tags: [reference, package modules, MPF]
 ---
 This directory tree is used for distributing package modules.
 

@@ -2,7 +2,6 @@
 layout: default
 title: string_downcase
 published: true
-tags: [reference, text functions, functions, text, case, downcase, string_downcase]
 ---
 
 [%CFEngine_function_prototype(data)%]

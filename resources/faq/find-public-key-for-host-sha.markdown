@@ -3,7 +3,6 @@ layout: default
 title: How do I find the public key for a given host
 published: true
 sorting: 90
-tags: [ FAQ, cf-key  ]
 ---
 
 Trying to locate the public key for a host on your hub in order to validate

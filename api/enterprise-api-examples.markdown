@@ -3,7 +3,6 @@ layout: default
 title: Enterprise API examples
 published: true
 sorting: 6
-tags: [examples, enterprise, REST, API, reporting]
 ---
 
 * [Check installation status][Checking status]

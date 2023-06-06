@@ -2,7 +2,6 @@
 layout: default
 title: mon
 published: true
-tags: [reference, variables, mon, cf-monitord, monitoring]
 ---
 
 The variables discovered by `cf-monitord` are placed in this monitoring

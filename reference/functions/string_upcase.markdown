@@ -2,7 +2,6 @@
 layout: default
 title: string_upcase
 published: true
-tags: [reference, text functions, functions, text, case, upcase, string_upcase]
 ---
 
 [%CFEngine_function_prototype(data)%]

@@ -2,7 +2,6 @@
 layout: default
 title: filesize
 published: true
-tags: [reference, files functions, functions, filesize]
 ---
 
 [%CFEngine_function_prototype(filename)%]

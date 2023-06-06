@@ -3,7 +3,6 @@ layout: default
 title: Why are some files inside masterfiles not being updated/distributed?
 published: true
 sorting: 90
-tags: [getting started, installation, faq ]
 ---
 
 During agent bootstrap all files found in `masterfiles` are copied to

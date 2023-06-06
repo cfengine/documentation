@@ -3,7 +3,6 @@ layout: default
 title: Content Driven Policy
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 reviewed: 2019-05-06
 ---
 

@@ -3,7 +3,6 @@ layout: default
 title: Web UI
 published: true
 sorting: 40
-tags: ["Enterprise Edition"]
 ---
 
 The challenge in engineering IT infrastructure, especially as it scales

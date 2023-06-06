@@ -2,7 +2,6 @@
 layout: default
 title: nth
 published: true
-tags: [reference, data functions, functions, nth, inline_json]
 ---
 
 [%CFEngine_function_prototype(list_or_container, position_or_key)%]

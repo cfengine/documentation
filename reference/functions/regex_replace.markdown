@@ -2,7 +2,6 @@
 layout: default
 title: regex_replace
 published: true
-tags: [reference, data functions, functions, regex_replace, pcre]
 ---
 
 [%CFEngine_function_prototype(string, regex, replacement, options)%]

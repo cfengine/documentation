@@ -2,7 +2,6 @@
 layout: default
 title: build_xpath
 published: true
-tags: [reference, bundle agent, edit_xml, xml, files promises, file editing]
 ---
 
 This promise type assures that a balanced XML tree, described by the given

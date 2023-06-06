@@ -2,7 +2,6 @@
 layout: default
 title: string_reverse
 published: true
-tags: [reference, text functions, functions, text, reverse, string_reverse]
 ---
 
 [%CFEngine_function_prototype(data)%]

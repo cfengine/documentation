@@ -2,7 +2,6 @@
 layout: default
 title: CMDB API
 published: true
-tags: [reference, enterprise, API, CMDB, classes, variables]
 ---
 
 The configuration management database (CMDB) API enables you to manage classes and variables for specific hosts.

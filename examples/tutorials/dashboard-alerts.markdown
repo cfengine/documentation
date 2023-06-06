@@ -3,7 +3,6 @@ layout: default
 title: Dashboard alerts
 sorting: 15
 published: true
-tags: [Examples, Tutorials, Dashboard, Alerts, Enterprise]
 ---
 
 At 5 minutes intervals, the CFEngine hub gathers information from all of its connected agents about the current state of the system, including the outcome of its runs. All of this information is available to you. In this tutorial we will show how to use the Dashboard to create compliance overview at a glance

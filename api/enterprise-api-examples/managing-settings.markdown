@@ -3,7 +3,6 @@ layout: default
 title:  Managing settings
 published: true
 sorting: 30
-tags: [examples, enterprise, rest, api, reporting, settings, ldap]
 ---
 
 Settings support two operations, **GET** (view settings) and **POST**

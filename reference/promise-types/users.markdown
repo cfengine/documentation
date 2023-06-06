@@ -2,7 +2,6 @@
 layout: default
 title: users
 published: true
-tags: [reference, bundle agent, cf-agent, users, promise types]
 ---
 
 User promises are promises made about **local users** on a host. They

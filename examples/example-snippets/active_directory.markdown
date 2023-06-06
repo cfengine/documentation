@@ -3,7 +3,6 @@ layout: default
 title: Interacting with directory services
 published: true
 sorting: 7
-tags: [Examples, Active Directory, LDAP, ldaparray(), ldaplist() ]
 ---
 
 ## Active directory example

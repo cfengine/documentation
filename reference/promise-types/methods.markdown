@@ -2,7 +2,6 @@
 layout: default
 title: methods
 published: true
-tags: [reference, bundle agent, methods, promises, promise types]
 ---
 
 Methods are compound promises that refer to whole bundles of promises.

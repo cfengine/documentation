@@ -2,7 +2,6 @@
 layout: default
 title: edit
 published: true
-tags: [reference, variables, edit, edit_line, files promises]
 ---
 
 This context is used to access information about editing promises during

@@ -2,7 +2,6 @@
 layout: default
 title: expandrange
 published: true
-tags: [reference, files functions, functions, expandrange]
 ---
 
 [%CFEngine_function_prototype(string_template, stepsize)%]

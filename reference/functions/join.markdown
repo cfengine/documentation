@@ -2,7 +2,6 @@
 layout: default
 title: join
 published: true
-tags: [reference, data functions, functions, join, inline_json]
 ---
 
 [%CFEngine_function_prototype(glue, list)%]

@@ -2,7 +2,6 @@
 layout: default
 title: lib/services.cf
 published: true
-tags: [reference, standard library, services, MPF]
 ---
 
 See the [`services` promises][services] documentation for a

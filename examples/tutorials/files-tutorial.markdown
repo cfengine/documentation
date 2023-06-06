@@ -3,7 +3,6 @@ layout: default
 title: Create, modify, and delete Files
 sorting: 10
 published: true
-tags: [Examples, Tutorials]
 ---
 
 ## Prerequisites

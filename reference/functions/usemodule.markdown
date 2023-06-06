@@ -2,7 +2,6 @@
 layout: default
 title: usemodule
 published: true
-tags: [reference, utility functions, functions, usemodule]
 ---
 
 [%CFEngine_function_prototype(module, args)%]

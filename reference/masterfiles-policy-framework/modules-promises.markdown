@@ -2,7 +2,6 @@
 layout: default
 title: modules/promises/
 published: true
-tags: [reference, promise modules, MPF]
 ---
 This directory tree is used for distributing promise modules and supporting libraries.
 
