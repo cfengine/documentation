@@ -13,10 +13,8 @@ regular expression is [anchored][anchored], meaning it must match the entire nam
 
 ```cf3
 roles:
-
-"regex"
-
-   authorize => { "usernames", ... };
+  "regex"
+     authorize => { "usernames", ... };
 ```
 
 It is worth re-iterating here that it is not possible to send commands or modify promise definitions by remote access. At best users may try to
@@ -25,13 +23,10 @@ promises. This mechanism limits their ability to do this.
 
 ```cf3
 bundle server my_access_rules()
-
 {
-roles:
-
-  # Allow mark
-
-  "Myclass_.*"  authorize => { "mark" };
+  roles:
+    # Allow mark
+    "Myclass_.*" authorize => { "mark" };
 }
 ```
 
@@ -61,6 +56,5 @@ already trusted on the system.
 
 ```cf3
 roles:
-
-  ".*"  authorize => { "mark", "marks_friend" };
+  ".*" authorize => { "mark", "marks_friend" };
 ```

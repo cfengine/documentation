@@ -6,7 +6,7 @@ sorting: 999
 alias: legal.html
 ---
 
-## general legal disclaimer
+## General legal disclaimer
 
 Please note that CFEngine is offered on an "as is" basis without warranty of
 any kind, and that our products are not error or bug free. To the maximum

@@ -17,11 +17,10 @@ only to selected clients, then denying to an even more restricted set.
 ```cf3
 bundle server my_access_rules()
 {
-access:
-
-  "/source/directory"
-    comment => "Access to file transfer",
-    admit_ips   => { "192.168.0.1/24" };
+  access:
+    "/source/directory"
+      comment => "Access to file transfer",
+      admit_ips => { "192.168.0.1/24" };
 }
 ```
 
@@ -139,9 +138,11 @@ refused access because it's not in the `cfengine.com` domain.
 
 ```cf3
 access:
-
-   "/path/file"
-   admit_hostnames => { ".cfengine.com", "www.cfengine3.com" };
+  "/path/file"
+    admit_hostnames => {
+      ".cfengine.com",
+      "www.cfengine3.com"
+    };
 ```
 
 **See also:** `deny_hostnames`, `admit_ips`, `admit_keys`
@@ -241,9 +242,12 @@ For example, here we'll deny one host, then a subnet, then everyone:
 
 ```cf3
 access:
-
-   "/path/file"
-   deny_ips => {"192.168.0.1", "192.168.0.0/24", "0.0.0.0/0"};
+  "/path/file"
+    deny_ips => {
+      "192.168.0.1",
+      "192.168.0.0/24",
+      "0.0.0.0/0"
+    };
 ```
 
 [%CFEngine_promise_attribute()%]
@@ -264,9 +268,8 @@ For example, here we'll deny the fictitious SHA key `abcdef`:
 
 ```cf3
 access:
-
-   "/path/file"
-   deny_keys => {"SHA=abcdef"};
+  "/path/file"
+    deny_keys => {"SHA=abcdef"};
 ```
 
 In Community, MD5 keys are used, so similarly we can deny the
@@ -274,9 +277,8 @@ fictitious MD5 key `abcdef`:
 
 ```cf3
 access:
-
-   "/path/file"
-   deny_keys => {"MD5=abcdef"};
+  "/path/file"
+    deny_keys => {"MD5=abcdef"};
 ```
 
 **See also:** `admit_keys`, `deny_hostnames`, `deny_ips`
@@ -303,11 +305,15 @@ policy. Example:
 bundle server my_access_rules()
 {
 access:
-
   "/directory/"
-
-    admit   => { "127.0.0.1", ".example.org" },
-    deny    => { "badhost_1.example.org", "badhost_1.example.org" };
+    admit => {
+      "127.0.0.1",
+      ".example.org",
+    },
+    deny => {
+      "badhost_1.example.org",
+      "badhost_1.example.org",
+    };
 }
 ```
 
@@ -316,13 +322,14 @@ The best way to write the same policy would be the following:
 ```cf3
 bundle server my_access_rules()
 {
-access:
-
-  "/directory/"
-
-    admit_ips       => { "127.0.0.1" },
-    admit_hostnames => { ".example.org" },
-    deny_hostnames  => { "badhost_1.example.org", "badhost_1.example.org" };
+  access:
+    "/directory/"
+      admit_ips       => { "127.0.0.1" },
+      admit_hostnames => { ".example.org" },
+      deny_hostnames  => {
+        "badhost_1.example.org",
+        "badhost_1.example.org"
+      };
 }
 ```
 
@@ -355,15 +362,11 @@ user files.
 
 ```cf3
 access:
-
- "/home"
-
-     admit_hostnames => { "backup_host.example.org" },
- ifencrypted => "true",
-
-     # Backup needs to have access to all users
-
-     maproot => { "backup_host.example.org" };
+  "/home"
+    admit_hostnames => { "backup_host.example.org" },
+    ifencrypted => "true",
+    # Backup needs to have access to all users
+    maproot => { "backup_host.example.org" };
 ```
 
 **Notes:**
@@ -389,9 +392,7 @@ connection is encrypted.
 
 ```cf3
 access:
-
-   "/path/file"
-
+  "/path/file"
     admit_hostnames => { ".example.org" },
     ifencrypted => "true";
 ```
@@ -429,9 +430,9 @@ Usage of this body is only allowed in conjunction with using
 ```cf3
 body report_data_select report_data
 {
-    metatags_include => { "inventory", "compliance" };
-    promise_handle_exclude => { "_.*" };
-    monitoring_exclude => { "mem_.*swap" };
+  metatags_include => { "inventory", "compliance" };
+  promise_handle_exclude => { "_.*" };
+  monitoring_exclude => { "mem_.*swap" };
 }
 ```
 
@@ -593,11 +594,9 @@ use the following construction:
 
 ```cf3
 access:
-
   "$(variable_name)"
-
-         handle => "variable_name",
-  resource_type => "literal";
+    handle => "variable_name",
+    resource_type => "literal";
 ```
 
 If the resource type is `context`, the promiser is treated as a regular
@@ -621,40 +620,33 @@ specified hosts. The promiser is an anchored regular expression.
 ```cf3
 bundle server my_access_rules()
 {
-access:
-
-  "value of my test_scalar, can expand variables here - $(sys.host)"
-    handle => "test_scalar",
-    comment => "Grant access to contents of test_scalar VAR",
-    resource_type => "literal",
-    admit_ips => { "127.0.0.1" };
-
-  "XYZ"
-    resource_type => "variable",
-    handle => "XYZ",
-    admit_ips => { "$(sys.policy_hub)" };
-
- "delta"
-    comment => "Grant access to cfengine hub to collect report deltas",
-    resource_type => "query",
-    admit_ips   => { "$(sys.policy_hub)"  };
-
- "full"
-          comment => "Grant access to cfengine hub to collect full report dump",
-    resource_type => "query",
-        admit_ips => { "$(sys.policy_hub)"  };
-
- "magic_bundle"
-          comment => "Grant access to the hub to activate magic_bundle with cf-runagent",
-    resource_type => "bundle",
-        admit_ips => { "$(sys.policy_hub)" };
-
- am_policy_hub::
-
-  "collect_calls"
-     comment       => "Enable call-collect report collection for the specific client",
-     resource_type => "query",
-     admit_ips     => { "1.2.3.4" };
+  access:
+    "value of my test_scalar, can expand variables here - $(sys.host)"
+      handle => "test_scalar",
+      comment => "Grant access to contents of test_scalar VAR",
+      resource_type => "literal",
+      admit_ips => { "127.0.0.1" };
+    "XYZ"
+      resource_type => "variable",
+      handle => "XYZ",
+      admit_ips => { "$(sys.policy_hub)" };
+   "delta"
+      comment => "Grant access to cfengine hub to collect report deltas",
+      resource_type => "query",
+      admit_ips   => { "$(sys.policy_hub)"  };
+   "full"
+      comment => "Grant access to cfengine hub to collect full report dump",
+      resource_type => "query",
+      admit_ips => { "$(sys.policy_hub)"  };
+   "magic_bundle"
+      comment => "Grant access to the hub to activate magic_bundle with cf-runagent",
+      resource_type => "bundle",
+      admit_ips => { "$(sys.policy_hub)" };
+   am_policy_hub::
+    "collect_calls"
+       comment => "Enable call-collect report collection for the specific client",
+       resource_type => "query",
+       admit_ips => { "1.2.3.4" };
 }
 ```
 

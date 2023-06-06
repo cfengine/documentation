@@ -544,7 +544,6 @@ If not, the service is restarted
 ```cf3
 commands:
   start_apache::
-
     "/etc/init.d/apache2 restart";
 ```
 
@@ -554,11 +553,10 @@ webserver:
 ```cf3
 files:
   "/var/www"
-
-     perms => system("744"),
-     copy_from => uu_scp("/root/webserver_site_files","192.168.1.6"),
-     depth_search => recurse("inf"),
-     action => u_immediate;
+    perms => system("744"),
+    copy_from => uu_scp("/root/webserver_site_files","192.168.1.6"),
+    depth_search => recurse("inf"),
+    action => u_immediate;
 ```
 
 ## Open Nebula summary

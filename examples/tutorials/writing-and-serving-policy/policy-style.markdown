@@ -11,13 +11,19 @@ guide.
 
 ## Style summary
 
-* one indent = 2 spaces
-* avoid letting line length surpass 80 characters.
-* vertically align opening and closing curly braces unless on same line
-* promise type = 1 indent
-* context class expression = 2 indents
-* promiser = 3 indents, to allow for adding class guards without changing indent
-* promise attributes = (we suggest 3 or 4 indents)
+* One indent = 2 spaces
+* Avoid letting line length surpass 80 characters.
+  * When writing policy for documentation / blog posts / tutorials:
+    Try to split up lines and fit within 45 characters in general, as long as it's not too problematic.
+    (This will avoid horizontal scrolling on small windows and mobile).
+* Add one indentation level per nesting of logic you are inside (promise type, class guard, promise, parenthesis, curly brace);
+  * **Macros (`@if` etc.):** 0 indents (never indented)
+  * **Promise types:** 1 indent
+  * **Class guards:** +1 indent (2 indents in bundle, 1 indent in body)
+  * **Promisers:** +1 indent (2 or 3 indents, depending on whether there is a class guard or not)
+  * **Promise attributes:** +1 indent from promiser (3 or 4 indents).
+  * **Parentheses:** +1 indent (function calls or bundle invokations across multiple lines).
+  * **Curly braces:** +1 indent (slists / JSON / data containers).
 
 ## Promise ordering
 
@@ -114,14 +120,14 @@ bundle agent main
 
 ## Whitespace and line length
 
-Spaces are preferred to tab characters. Lines should not have trailing
-whitespace. Generally line length should not surpass 80 characters.
+Spaces are preferred to tab characters.
+Lines should not have trailing whitespace.
+Generally line length should not surpass 80 characters.
 
 ## Curly brace alignment
 
-Generally if opening and closing braces are not on a single line they should
-be aligned vertically. Content inside braces can be indented one level over
-instead of to the right of the braces.
+The curly braces for top level blocks (bundle, body, promise) should be on separate lines.
+Content inside should be indented one level.
 
 Example:
 
@@ -129,15 +135,16 @@ Example:
 bundle agent example
 {
   vars:
-      "people" slist => {
-          "Obi-Wan Kenobi",
-          "Luke Skywalker",
-          "Chewbacca",
-          "Yoda",
-          "Darth Vader",
+    "people"
+      slist => {
+        "Obi-Wan Kenobi",
+        "Luke Skywalker",
+        "Chewbacca",
+        "Yoda",
+        "Darth Vader",
       };
 
-      "cuddly" slist => { "Chewbacca", "Yoda" };
+    "cuddly" slist => { "Chewbacca", "Yoda" };
 }
 ```
 
@@ -152,37 +159,79 @@ This example illustrates the blank line before the "classes" type.
 bundle agent example
 {
   vars:
-      "policyhost" string => "MyPolicyServerHostname";
+    "policyhost" string => "MyPolicyServerHostname";
 
   classes:
-      "EL5" or => { "centos_5", "redhat_5" };
-      "EL6" or => { "centos_6", "redhat_6" };
+    "EL5" or => { "centos_5", "redhat_5" };
+    "EL6" or => { "centos_6", "redhat_6" };
 }
 ```
 
-## Context class expressions
+## Class guards
 
-Context class expressions should have 2 indents and each context class
-expression after the first listed within a given promise type should have a
-blank line preceding it.
+Class guards (sometimes called context class expressions) should have +1 indent, meaning 2 indents in bundles, and 1 indent in bodies.
 
-This example illustrates the blank line before the second context class
-expression (solaris) in the files type promise section:
+The implicit `any::` class guard can be added to more clearly mark what belongs to which class guard:
+
+Example:
 
 ```cf3
 bundle agent example
 {
-  files:
+  vars:
     any::
-      "/var/cfengine/inputs/"
-        copy_from    => update_policy( "/var/cfengine/masterfiles","$(policyhost)" ),
-        classes      => policy_updated( "policy_updated" ),
-        depth_search => recurse("inf");
+      "foo" string => "bar";
+    windows::
+      "foo" string => "baz";
+    any::
+      "fizz" string => "buzz";
+}
+```
 
-    solaris::
-      "/var/cfengine/inputs"
-        copy_from => update_policy( "/var/cfengine/masterfiles", "$(policyhost" ),
-        classes   => policy_updated( "policy_updated" );
+## Single line and multi line promises
+
+Promises with 1 (or 0) attributes may be put on a single line as long as they fit within 80 characters.
+Often it can improve readability to split up a promise into multiple lines, even if it does not exceed 80 characters.
+
+Promises with multiple attributes should never be put on a single line.
+Promises over multiple lines should always have the attributes on separate lines.
+Examples:
+
+```
+bundle agent example
+{
+  vars:
+    # Short promises can be on one line:
+    "a" string => "foo";
+    # Small lists are also okay:
+    "b" slist => { "1", "2", "3" };
+
+    # Don't put multiple attributes on one line:
+    "c" string => "foo", comment => "bar";
+
+    # Not like this either:
+    "c"
+      string => "foo", comment => "bar";
+
+    # Split up instead:
+    "c"
+      string => "foo",
+      comment => "bar";
+
+    # When splitting up, don't keep the attribute name on the same line:
+    "e" slist => {
+        "lorem ipsum dolor sit",
+        "foo bar baz",
+        "fizz buzz fizzbuzz",
+      };
+
+   # Instead, put the attribute name on a separate line:
+   "e"
+     slist => {
+       "lorem ipsum dolor sit",
+       "foo bar baz",
+       "fizz buzz fizzbuzz",
+     };
 }
 ```
 
@@ -299,8 +348,8 @@ bundle agent example
         classes   => policy_updated( "modules_updated" );
 
   classes:
-      "EL5" or => { "centos_5", "redhat_5" };
-      "EL6" or => { "centos_6", "redhat_6" };
+    "EL5" or => { "centos_5", "redhat_5" };
+    "EL6" or => { "centos_6", "redhat_6" };
 }
 ```
 
@@ -321,8 +370,8 @@ bundle agent example
         classes => policy_updated( "modules_updated" );
 
   classes:
-      "EL5" or => { "centos_5", "redhat_5" };
-      "EL6" or => { "centos_6", "redhat_6" };
+    "EL5" or => { "centos_5", "redhat_5" };
+    "EL6" or => { "centos_6", "redhat_6" };
 }
 ```
 
@@ -366,35 +415,32 @@ of the policy.
 
 Classes are intended to describe an aspect of the system, and they are
 combined in expressions to restrict when and where a promise should be
-actuated. To make this desired state easier to read classes should be
+actuated (class guards). To make this desired state easier to read classes should be
 named to describe the current state, not an action that should take
 place.
 
 For example, here is a policy that uses a class that indicates an
-action that should be taken after having repaired the sshd config.
+action that should be taken after having repaired the `sshd` config.
 
 ```cf3
 bundle agent main
 {
   vars:
-      "sshd_config" string => "/etc/ssh/sshd_config";
+    "sshd_config" string => "/etc/ssh/sshd_config";
 
   files:
-      "$(sshd_config)"
-        edit_line => insert_lines("PermitRootLogin no"),
-        classes => if_repaired("restart_sshd");
+    "$(sshd_config)"
+      edit_line => insert_lines("PermitRootLogin no"),
+      classes => if_repaired("restart_sshd");
 
   services:
-
     !windows::
-
       "ssh"
         service_policy => "start",
         comment => "We always want ssh to be running so that we have
                     administrative access";
 
     restart_sshd::
-
       "ssh"
         service_policy => "restart",
         comment => "Here it's kind of hard to tell *why* we are
@@ -413,24 +459,22 @@ highly recommended.
 bundle agent main
 {
   vars:
-      "sshd_config" string => "/etc/ssh/sshd_config";
+    "sshd_config"
+      string => "/etc/ssh/sshd_config";
 
   files:
-      "$(sshd_config)"
-        edit_line => insert_lines("PermitRootLogin no"),
-        classes => results("bundle", "sshd_config");
+    "$(sshd_config)"
+      edit_line => insert_lines("PermitRootLogin no"),
+      classes => results("bundle", "sshd_config");
 
   services:
-
     !windows::
-
       "ssh"
         service_policy => "start",
         comment => "We always want ssh to be running so that we have
                     administrative access";
 
     sshd_config_repaired::
-
       "ssh"
         service_policy => "restart",
         comment => "After the sshd config file has been repaired, the
@@ -440,6 +484,7 @@ bundle agent main
 ```
 
 ## Deprecating bundles
+
 As your policy library changes over time you may want to deprecate various
 bundles in favor of newer implimentations. To indicate that a bundle is
 deprecated we recommend the following style.
@@ -448,11 +493,12 @@ deprecated we recommend the following style.
 bundle agent old
 {
   meta:
-    "tags" slist => {
-      "deprecated=3.6.0",
-      "deprecation-reason=More feature rich implimentation",
-      "replaced-by=newbundle",
-    };
+    "tags"
+      slist => {
+        "deprecated=3.6.0",
+        "deprecation-reason=More feature rich implimentation",
+        "replaced-by=newbundle",
+      };
 }
 ```
 ## Tooling
@@ -474,15 +520,13 @@ bundle agent satellite_bootstrap_main
 @endif
 
   meta:
-
     (!ubuntu&!vvlan&!role_satellite)::
       "tags" slist => { "autorun" };
 
   methods:
-
-      "bootstrap rhel7 servers to satellite every 24 hours"
-        usebundle => satellite_bootstrap,
-        action => if_elapsed(1440);
+    "bootstrap rhel7 servers to satellite every 24 hours"
+      usebundle => satellite_bootstrap,
+      action => if_elapsed(1440);
 
 }
 ```
@@ -504,16 +548,14 @@ meta:
 
 methods:
   any::
-    "bootstrap rhel7 servers to satellite every 24 hours"        usebundle => satellite_bootstrap,
-        action => if_elapsed("1440");
-
-
+    "bootstrap rhel7 servers to satellite every 24 hours"
+      usebundle => satellite_bootstrap,
+      action => if_elapsed("1440");
 }
 
 body file control()
 {
-  inputs =>  {"$(sys.libdir)/stdlib.cf"};
-
+  inputs =>  { "$(sys.libdir)/stdlib.cf" };
 }
 ```
 
