@@ -69,7 +69,7 @@ The commonly used data types are `string`, `slist`, `int`, `real`, and `data`.
 #### Functions
 #### Host
 
-UNIX terminology for a computer the runs "guest programs."
+Unix terminology for a computer that runs "guest programs."
 In practice, "host" is a synonym for "computer."
 
 #### Hub
