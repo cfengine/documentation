@@ -2,7 +2,6 @@
 layout: default
 title: reports
 published: true
-tags: [reference, bundle common, reports, promises]
 ---
 
 Reports promises simply print messages. Outputting a message without

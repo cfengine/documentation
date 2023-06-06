@@ -2,7 +2,6 @@
 layout: default
 title: classesmatching
 published: true
-tags: [reference, utility functions, functions, classesmatching]
 ---
 
 [%CFEngine_function_prototype(name, tag1, tag2, ...)%]

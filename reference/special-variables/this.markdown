@@ -2,7 +2,6 @@
 layout: default
 title: this
 published: true
-tags: [reference, variables, this, this]
 ---
 
 The context `this` is used to access information about promises during

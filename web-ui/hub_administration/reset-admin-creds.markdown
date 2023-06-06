@@ -2,7 +2,6 @@
 layout: default
 title: Reset administrative credentials
 published: true
-tags: [cfengine enterprise, hub administration, credentials]
 ---
 
 The default `admin` user can be reset to defaults using the following SQL.

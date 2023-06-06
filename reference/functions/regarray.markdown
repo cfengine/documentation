@@ -2,7 +2,6 @@
 layout: default
 title: regarray
 published: true
-tags: [reference, data functions, functions, regarray]
 ---
 
 [%CFEngine_function_prototype(array, regex)%]

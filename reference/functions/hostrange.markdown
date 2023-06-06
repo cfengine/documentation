@@ -2,7 +2,6 @@
 layout: default
 title: hostrange
 published: true
-tags: [reference, communication functions, functions, hostrange]
 ---
 
 [%CFEngine_function_prototype(prefix, range)%]

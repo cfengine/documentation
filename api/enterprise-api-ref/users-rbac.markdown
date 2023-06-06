@@ -2,7 +2,6 @@
 layout: default
 title: Users and access-control REST API
 published: true
-tags: [reference, enterprise, REST, API, reporting, URI, users, rbac]
 ---
 
 This REST API allows to manage users allowed to use Mission Portal as also Role Based Access Control settings.

@@ -2,7 +2,6 @@
 layout: default
 title: readyaml
 published: true
-tags: [reference, io functions, functions, readyaml, yaml, json, container]
 ---
 
 [%CFEngine_function_prototype(filename, optional_maxbytes)%]

@@ -2,7 +2,6 @@
 layout: default
 title: insert_text
 published: true
-tags: [reference, bundle agent, edit_xml, xml, files promises, file editing]
 ---
 
 This proimse type assures that a value string, containing the matching

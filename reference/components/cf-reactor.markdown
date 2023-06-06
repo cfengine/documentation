@@ -2,7 +2,6 @@
 layout: default
 title: cf-reactor
 published: true
-tags: [Components, cf-reactor, Enterprise]
 keywords: [reactor]
 ---
 

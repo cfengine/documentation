@@ -2,7 +2,6 @@
 layout: default
 title: bundlestate
 published: true
-tags: [reference, data functions, functions, json, bundlestate, evaluation, vars, classes, container]
 ---
 
 [%CFEngine_function_prototype(bundlename)%]

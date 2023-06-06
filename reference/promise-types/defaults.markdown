@@ -2,7 +2,6 @@
 layout: default
 title: defaults
 published: true
-tags: [reference, bundle common, defaults, promises]
 ---
 
 Defaults promises are related to [variables][variables]. If a variable or

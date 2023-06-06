@@ -2,7 +2,6 @@
 layout: default
 title: Aborting execution
 published: true
-tags: [Examples, Policy, aborting execution]
 reviewed: 2013-05-30
 reviewed-by: atsaloli
 ---

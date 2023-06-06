@@ -3,7 +3,6 @@ layout: default
 title: cf-net
 published: true
 sorting: 90
-tags: [Components, cf-net]
 keywords: [protocol, cli]
 ---
 

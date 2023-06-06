@@ -2,7 +2,6 @@
 layout: default
 title: readfile
 published: true
-tags: [reference, io functions, functions, readfile]
 ---
 
 [%CFEngine_function_prototype(filename, optional_maxbytes)%]

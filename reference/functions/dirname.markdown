@@ -2,7 +2,6 @@
 layout: default
 title: dirname
 published: true
-tags: [reference, files functions, functions, dirname]
 ---
 
 [%CFEngine_function_prototype(path)%]

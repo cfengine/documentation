@@ -3,7 +3,6 @@ layout: default
 title: Examples and tutorials
 published: true
 sorting: 60
-tags: [Examples]
 ---
 
 ## Links to examples

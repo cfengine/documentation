@@ -2,7 +2,6 @@
 layout: default
 title: validjson
 published: true
-tags: [reference, functions, validjson, JSON, context]
 ---
 
 [%CFEngine_function_prototype(string)%]

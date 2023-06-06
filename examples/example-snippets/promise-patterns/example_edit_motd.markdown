@@ -2,7 +2,6 @@
 layout: default
 title: Customize message of the day
 published: true
-tags: [Examples, Policy, motd, file editing, files]
 reviewed: 2015-12-18
 reviewed-by: enrico & nick
 ---

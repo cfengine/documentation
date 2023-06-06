@@ -2,7 +2,6 @@
 layout: default
 title: getenv
 published: true
-tags: [reference, system functions, functions, getenv]
 ---
 
 [%CFEngine_function_prototype(variable, maxlength)%]

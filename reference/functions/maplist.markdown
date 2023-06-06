@@ -2,7 +2,6 @@
 layout: default
 title: maplist
 published: true
-tags: [reference, data functions, functions, maplist, inline_json]
 ---
 
 [%CFEngine_function_prototype(pattern, list)%]

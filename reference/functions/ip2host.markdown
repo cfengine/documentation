@@ -2,7 +2,6 @@
 layout: default
 title: ip2host
 published: true
-tags: [reference, communication functions, functions, ip2host, cached function]
 ---
 
 [%CFEngine_function_prototype(ip)%]

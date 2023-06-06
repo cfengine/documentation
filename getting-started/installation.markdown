@@ -3,7 +3,6 @@ layout: default
 title: Installation
 published: true
 sorting: 10
-tags: [guide, getting started, installation, modules]
 ---
 
 In CFEngine you mainly interact with the CFEngine Hub, for example using the Mission Portal Web UI, APIs, ssh, or git.

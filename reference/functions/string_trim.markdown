@@ -2,7 +2,6 @@
 layout: default
 title: string_trim
 published: true
-tags: [reference, text functions, functions, text, string_trim, trim, substring]
 ---
 
 [%CFEngine_function_prototype(string)%]

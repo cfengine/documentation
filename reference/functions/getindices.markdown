@@ -2,7 +2,6 @@
 layout: default
 title: getindices
 published: true
-tags: [reference, data functions, functions, getindices, inline_json]
 ---
 
 [%CFEngine_function_prototype(varref)%]

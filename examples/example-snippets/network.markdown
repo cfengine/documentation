@@ -3,7 +3,6 @@ layout: default
 title: Network examples
 published: true
 sorting: 9
-tags: [Examples]
 ---
 
 * [Find MAC address][Network examples#Find MAC address]

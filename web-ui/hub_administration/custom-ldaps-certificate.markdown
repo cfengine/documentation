@@ -2,7 +2,6 @@
 layout: default
 title: Custom LDAPs certificate
 published: true
-tags: [cfengine enterprise, hub administration, LDAP, authentication]
 ---
 
 To use a custom LDAPs certificate install it into your hubs operating system.

@@ -3,7 +3,6 @@ layout: default
 title: Bodies
 published: true
 sorting: 20
-tags: [language, concepts, syntax, body]
 ---
 
 While the idea of a promise is very simple, the definition of a promise can

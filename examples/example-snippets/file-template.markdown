@@ -3,7 +3,6 @@ layout: default
 title: File template examples
 published: true
 sorting: 7
-tags: [Examples]
 ---
 
 * [Templating][File template examples#Templating]

@@ -2,7 +2,6 @@
 layout: default
 title: lib/processes.cf
 published: true
-tags: [reference, standard library, processes, MPF]
 ---
 
 See the [`processes` promises][processes] documentation for a

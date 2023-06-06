@@ -2,7 +2,6 @@
 layout: default
 title: mapdata
 published: true
-tags: [reference, data functions, functions, mapdata, inline_json]
 ---
 
 [%CFEngine_function_prototype(interpretation, pattern, array_or_container)%]

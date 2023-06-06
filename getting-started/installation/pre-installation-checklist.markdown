@@ -3,7 +3,6 @@ layout: default
 title: Pre-installation checklist
 published: true
 sorting: 10
-tags: [guide, installation]
 ---
 
 ## Download packages

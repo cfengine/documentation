@@ -2,7 +2,6 @@
 layout: default
 title: replace_patterns
 published: true
-tags: [reference, bundle agent, edit_line, files promises, file editing]
 ---
 
 This promise refers to arbitrary text patterns in a file. The pattern is

@@ -3,7 +3,6 @@ layout: default
 title: Variables
 published: true
 sorting: 60
-tags: [manuals, language, syntax, concepts, variables]
 ---
 
 Just like [classes][classes and decisions] are defined as

@@ -3,7 +3,6 @@ layout: default
 title: Bundles
 published: true
 sorting: 10
-tags: [language, concepts, syntax, body, bundle]
 ---
 
 A bundle is a collection of promises. They allow to group related promises

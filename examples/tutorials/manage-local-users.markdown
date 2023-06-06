@@ -3,7 +3,6 @@ layout: default
 title: Manage local users
 published: true
 sorting: 3
-tags: [getting started, tutorial]
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/23QHpDEvYU8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

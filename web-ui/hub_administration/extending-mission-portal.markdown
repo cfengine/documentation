@@ -3,7 +3,6 @@ layout: default
 title: Extending Mission Portal
 published: true
 sorting: 90
-tags: [faq, mission portal, hub administration]
 ---
 
 ## Custom pages requiring authenticated users

@@ -2,7 +2,6 @@
 layout: default
 title: controls/reports.cf
 published: true
-tags: [reference, controls, MPF]
 ---
 
 This is where report settings for CFEngine Enterprise are found. Control which

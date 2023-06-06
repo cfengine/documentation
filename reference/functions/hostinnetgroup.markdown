@@ -2,7 +2,6 @@
 layout: default
 title: hostinnetgroup
 published: true
-tags: [reference, system functions, functions, hostinnetgroup]
 ---
 
 [%CFEngine_function_prototype(netgroup)%]

@@ -3,7 +3,6 @@ layout: default
 title: Language concepts
 published: true
 sorting: 50
-tags: [overviews, language, syntax, concepts, promises]
 ---
 
 There is only one grammatical form for statements in the language:

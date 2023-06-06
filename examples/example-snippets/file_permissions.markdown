@@ -3,7 +3,6 @@ layout: default
 title: File permissions
 published: true
 sorting: 15
-tags: [Examples,File permissions,Extended ACLs]
 ---
 
 ## ACL file example

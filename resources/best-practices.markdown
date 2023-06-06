@@ -3,7 +3,6 @@ layout: default
 title: Best practices
 sorting: 100
 published: true
-tags: [cfengine enterprise, best practices, user interface, mission portal]
 ---
 
 ## Policy style guide

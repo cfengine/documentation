@@ -2,7 +2,6 @@
 layout: default
 title: classify
 published: true
-tags: [reference, data functions, functions, classify]
 ---
 
 [%CFEngine_function_prototype(text)%]

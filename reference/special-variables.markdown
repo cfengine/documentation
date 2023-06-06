@@ -3,7 +3,6 @@ layout: default
 title: Special variables
 published: true
 sorting: 50
-tags: [reference, variables]
 ---
 
 Variables are promises that can be defined in any promise bundle. Users can create their

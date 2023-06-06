@@ -2,7 +2,6 @@
 layout: default
 title: match
 published: true
-tags: [reference, variables, match, strings, file editing, files promises, edit_line]
 ---
 
 Each time CFEngine matches a string, these values are assigned to a special

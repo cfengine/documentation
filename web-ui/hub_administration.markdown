@@ -3,7 +3,6 @@ layout: default
 title: Hub administration
 published: true
 sorting: 80
-tags: [cfengine enterprise, hub administration]
 ---
 
 Find out how to perform common hub administration tasks like

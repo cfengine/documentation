@@ -3,7 +3,6 @@ layout: default
 title: Settings
 sorting: 10
 published: true
-tags: [cfengine enterprise, user interface, mission portal]
 ---
 
 A variety of CFEngine and system properties can be changed in the settings view.

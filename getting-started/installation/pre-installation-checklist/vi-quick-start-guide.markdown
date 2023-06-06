@@ -3,7 +3,6 @@ layout: default
 title: Quick-Start Guide to Using vi
 published: true
 sorting: 1
-tags: [how-to-guides, quick-start guides, vi]
 ---
 
 

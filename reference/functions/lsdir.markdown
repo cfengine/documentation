@@ -2,7 +2,6 @@
 layout: default
 title: lsdir
 published: true
-tags: [reference, files functions, functions, lsdir]
 ---
 
 [%CFEngine_function_prototype(path, regex, include_base)%]

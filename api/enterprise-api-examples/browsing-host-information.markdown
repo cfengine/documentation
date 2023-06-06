@@ -3,7 +3,6 @@ layout: default
 title: Browsing host information
 published: true
 sorting: 50
-tags: [examples, enterprise, rest, api, reporting, hosts]
 ---
 
 A resource [/api/host][Host REST API#List hosts] is added as an alternative interface for browsing host

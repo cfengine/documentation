@@ -3,7 +3,6 @@ layout: default
 title: cf-support
 published: true
 sorting: 10
-tags: [Components, cf-support]
 keywords: [cf-support]
 ---
 

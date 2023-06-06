@@ -3,7 +3,6 @@ layout: default
 title: API
 published: true
 sorting: 50
-tags: [overviews, enterprise, REST, API, reporting]
 ---
 
 The CFEngine Enterprise API allows HTTP clients to interact with the

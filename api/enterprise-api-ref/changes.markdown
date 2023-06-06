@@ -2,7 +2,6 @@
 layout: default
 title: Changes REST API
 published: true
-tags: [reference, enterprise, REST, API, reporting, changes, repairs]
 ---
 
 **Changes API** allows to track changes performed by CFEngine agent in the infrastructure.

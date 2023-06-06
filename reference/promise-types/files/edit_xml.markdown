@@ -2,7 +2,6 @@
 layout: default
 title: edit_xml
 published: true
-tags: [reference, bundle agent, edit_xml, xml, files promises, file editing]
 ---
 
 The use of XML documents in systems configuration is widespread. XML

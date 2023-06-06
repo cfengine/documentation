@@ -2,7 +2,6 @@
 layout: default
 title: hash_to_int
 published: true
-tags: [reference, functions, hash_to_int, function_returns_int]
 ---
 
 [%CFEngine_function_prototype( lower, upper, string )%]

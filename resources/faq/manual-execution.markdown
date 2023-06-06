@@ -3,7 +3,6 @@ layout: default
 title: Manual Execution
 published: true
 sorting: 90
-tags: [getting started, installation, faq]
 ---
 
 Frequently asked questions on manual execution.

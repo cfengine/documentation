@@ -2,7 +2,6 @@
 layout: default
 title: Actions API
 published: true
-tags: [reference, enterprise, API, report collection]
 ---
 
 Actions API enables you to perform specific actions such a requesting report collection.

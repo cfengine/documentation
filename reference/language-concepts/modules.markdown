@@ -2,7 +2,6 @@
 layout: default
 title: Modules
 published: true
-tags: [language, concepts, syntax, modules]
 ---
 
 Modules allow users to extend the capabilities of CFEngine in a modular way, they can be easily added and upgraded independently of when you upgrade your CFEngine version. Several different types of modules are available.

@@ -2,7 +2,6 @@
 layout: default
 title: storejson
 published: true
-tags: [reference, io functions, functions, storejson, json, inline_json, container]
 ---
 
 [%CFEngine_function_prototype(data_container)%]

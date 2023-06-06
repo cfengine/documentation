@@ -3,7 +3,6 @@ layout: default
 title: Policy style guide
 published: true
 sorting: 10
-tags: [manuals, style, policy]
 ---
 
 Style is a very personal choice and the contents of this guide should only be

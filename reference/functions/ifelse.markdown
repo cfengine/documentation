@@ -2,7 +2,6 @@
 layout: default
 title: ifelse
 published: true
-tags: [reference, data functions, functions, ifelse]
 ---
 
 [%CFEngine_function_prototype(...)%]

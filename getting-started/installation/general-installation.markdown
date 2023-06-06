@@ -3,7 +3,6 @@ layout: default
 title: General installation
 published: true
 sorting: 20
-tags: [guide, installation, install]
 ---
 
 [%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]

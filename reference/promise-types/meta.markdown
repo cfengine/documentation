@@ -2,7 +2,6 @@
 layout: default
 title: meta
 published: true
-tags: [reference, bundle common, meta, promises]
 ---
 
 Meta-data promises have no internal function. They are intended to be used to

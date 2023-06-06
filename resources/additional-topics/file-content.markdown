@@ -3,7 +3,6 @@ layout: default
 title: File Content
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
 ## From boiler-plates to convergent file editing

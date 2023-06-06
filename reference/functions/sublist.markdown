@@ -2,7 +2,6 @@
 layout: default
 title: sublist
 published: true
-tags: [reference, data functions, functions, sublist, inline_json]
 ---
 
 [%CFEngine_function_prototype(list, head_or_tail, max_elements)%]

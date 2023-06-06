@@ -2,7 +2,6 @@
 layout: default
 title: modules/promises/cfengine.sh
 published: true
-tags: [reference, promise modules, MPF]
 ---
 {% raw %}
 ```

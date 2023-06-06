@@ -2,7 +2,6 @@
 layout: default
 title: inventory/any.cf
 published: true
-tags: [reference, controls, MPF]
 ---
 
 This policy is inventory related policy that can be run on any OS. This

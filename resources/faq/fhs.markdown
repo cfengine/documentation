@@ -3,7 +3,6 @@ layout: default
 title: Why does CFEngine install into /var/cfengine instead of following the FHS?
 published: true
 sorting: 90
-tags: [FAQ, FHS ]
 ---
 
 The Unix Filesystem Hierarchy Standard is a specification for standardizing

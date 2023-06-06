@@ -2,7 +2,6 @@
 layout: default
 title: access
 published: true
-tags: [reference, bundle server, cf-serverd, access, server, promise types, acl, trust, encryption]
 ---
 
 Access promises are conditional promises made by resources living on the server.

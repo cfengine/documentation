@@ -3,7 +3,6 @@ layout: default
 title: Reporting architecture
 published: true
 sorting: 10
-tags: [manuals, enterprise, reporting, architecture, cf-hub]
 ---
 
 The reporting architecture of CFEngine Enterprise uses two software

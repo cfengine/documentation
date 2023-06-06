@@ -2,7 +2,6 @@
 layout: default
 title: getgid
 published: true
-tags: [reference, data functions, functions, getgid]
 ---
 
 [%CFEngine_function_prototype(groupname)%]

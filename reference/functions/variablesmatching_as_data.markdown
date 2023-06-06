@@ -2,7 +2,6 @@
 layout: default
 title: variablesmatching_as_data
 published: true
-tags: [reference, utility functions, functions, variablesmatching, variablesmatching_as_data]
 ---
 
 [%CFEngine_function_prototype(name, tag1, tag2, ...)%]

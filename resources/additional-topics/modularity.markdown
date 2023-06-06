@@ -3,7 +3,6 @@ layout: default
 title: Modularity and Orchestrating System Policy
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
 ## What is modularity?

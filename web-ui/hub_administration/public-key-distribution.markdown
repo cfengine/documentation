@@ -2,7 +2,6 @@
 layout: default
 title: Public key distribution
 published: true
-tags: [cfengine enterprise, hub administration, key distribution, trust establishment]
 ---
 
 > How can I arrange for the hosts in my infrastructure to trust a new key?

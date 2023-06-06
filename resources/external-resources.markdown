@@ -3,7 +3,6 @@ layout: default
 title: External resources
 published: true
 sorting: 30
-tags: [overviews, learning]
 ---
 
 Use the following links to learn more about CFEngine:

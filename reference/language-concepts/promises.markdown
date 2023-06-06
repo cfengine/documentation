@@ -3,7 +3,6 @@ layout: default
 title: Promises
 published: true
 sorting: 30
-tags: [manuals, language, syntax, concepts, promises]
 ---
 
 One concept in CFEngine should stand out from the rest as being the most

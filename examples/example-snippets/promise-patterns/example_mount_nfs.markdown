@@ -2,7 +2,6 @@
 layout: default
 title: Mount NFS filesystem
 published: true
-tags: [Examples, Policy, mount, nfs, filesystem]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---
