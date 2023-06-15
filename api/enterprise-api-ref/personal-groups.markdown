@@ -167,7 +167,7 @@ curl -k --user <username>:<password> \
             An array of hosts keys.
 
 ```json
-{ 
+{
   "filter": {
       "filter":{
           "Attribute name": {
@@ -182,8 +182,8 @@ curl -k --user <username>:<password> \
           "excludes": {
               "type": "hostkey",
               "data": ["SHA=first2"]
-          }       
-      },            
+          }
+      },
       "hostContextExclude": ["class_value"],
       "hostContextInclude": ["class_value"]
   }
