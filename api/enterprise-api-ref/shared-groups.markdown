@@ -662,7 +662,7 @@ HTTP 200 Ok
 
 
 
-## Delete host's configurations
+## Delete group's configurations
 
 **URI:** https://hub.cfengine.com/api/host-groups/shared/:id/cmdb
 
