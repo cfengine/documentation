@@ -28,9 +28,9 @@ The shared groups API enables creating host groups based on host filters (the sa
   * **hostContextInclude** *(array)* Optional parameter.
     Includes only results that concern hosts which have all specified CFEngine contexts (class) set.
   * **hostContextExclude** *(array)*  Optional parameter.
-    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one 
+    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one
     of the specified contexts set will be excluded from the results.
-  
+
   * **hostsFilter** *(json object)* Optional parameter.
     * **includes** *(json object)* Optional parameter.
       Object that specifies hosts to be included.
@@ -49,7 +49,7 @@ The shared groups API enables creating host groups based on host filters (the sa
 
 
 ```json
-{ 
+{
   "filter": {
       "filter":{
           "Attribute name": {
@@ -65,8 +65,8 @@ The shared groups API enables creating host groups based on host filters (the sa
           "excludes": {
               "type": "hostkey",
               "data": ["SHA=first2"]
-          }       
-      },            
+          }
+      },
       "hostContextExclude": ["class_value"],
       "hostContextInclude": ["class_value"]
   }
@@ -150,7 +150,7 @@ curl -k --user <username>:<password> \
   * **hostContextInclude** *(array)* Optional parameter.
     Includes only results that concern hosts which have all specified CFEngine contexts (class) set.
   * **hostContextExclude** *(array)*  Optional parameter.
-    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one 
+    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one
     of the specified contexts set will be excluded from the results.
   * **hostsFilter** *(json object)* Optional parameter.
     * **includes** *(json object)* Optional parameter.
@@ -170,7 +170,7 @@ curl -k --user <username>:<password> \
 
 
 ```json
-{ 
+{
   "filter": {
       "filter":{
           "Attribute name": {
@@ -185,8 +185,8 @@ curl -k --user <username>:<password> \
           "excludes": {
               "type": "hostkey",
               "data": ["SHA=first2"]
-          }       
-      },            
+          }
+      },
       "hostContextExclude": ["class_value"],
       "hostContextInclude": ["class_value"]
   }
