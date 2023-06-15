@@ -4,7 +4,7 @@ safe: false
 plugins: ./_plugins/
 # baseurl: /docs/master/
 git-repository: github.com/cfengine/documentation
-git-branch: "master"
+git-branch: "3.22"
 #source:      ./pages/
 #destination:
 #layouts:     ./_layouts/
@@ -17,14 +17,14 @@ CFE_OUTPUT: true
 #CFE_DIR - output folder if CFE_OUTPUT turned on
 CFE_DIR: _site
 #to create correct links in sitemap
-CFE_manuals_version: "3.21"
+CFE_manuals_version: "3.22"
 cfengine:
-  branch: "3.21"
-  core_branch: "3.21"
+  branch: "3.22"
+  core_branch: "3.22"
   latest_patch_release: 0
   latest_package_build: 1
   vagrant_package_build: 1
-  masterfiles_branch: "3.21.x"
+  masterfiles_branch: "3.22.x"
 
 Template:
   parse:
@@ -46,5 +46,5 @@ asset_pipeline:
   bundle: true            # Default = true
   compress: true          # Default = true
   output_path: assets     # Default = assets
-  display_path: docs/3.20/assets       # Default = nil
+  display_path: docs/3.22/assets       # Default = nil
   gzip: false             # Default = false
