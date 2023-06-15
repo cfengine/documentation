@@ -3,7 +3,7 @@ layout: default
 title: Personal Groups API
 published: true
 ---
-Personal Groups API allows to create host groups based on the inventory filters.
+The personal groups API enables creating host groups based on host filters (the same ones used in inventory reports).
 
 ## Create group
 
