@@ -20,8 +20,7 @@ Shared Groups API allows to create host groups based on the inventory filters an
   Group description.
 
 * **priority** *(number)*
-  Group priority. Groups with the higher priorities will take precedence
-  in the CMDB data merging in case of conflicts.
+  Group priority. Groups with a higher priority will take precedence in case of conflicts when merging CMDB data. (A lower number indicates higher priority, so 1 means 1st priority, 2 means 2nd most important, and so on).
 
 * **filter** *(json object)*  Group filter object. Includes inventory filter and classes filters
   * **filter** *(json object)*  Optional parameter.
