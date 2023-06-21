@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Manage processes and services
+title: Managing processes and services
 published: true
 sorting: 3
 ---

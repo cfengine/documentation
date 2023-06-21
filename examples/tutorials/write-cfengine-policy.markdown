@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Write CFEngine policy
+title: Writing CFEngine policy
 published: true
 sorting: 3
 ---
