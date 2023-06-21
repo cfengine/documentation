@@ -2,7 +2,6 @@
 layout: default
 title: data_expand
 published: true
-tags: [reference, data functions, functions, json, container, expand, inline_json]
 ---
 
 [%CFEngine_function_prototype(data_container)%]

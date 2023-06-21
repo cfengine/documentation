@@ -2,7 +2,6 @@
 layout: default
 title: host2ip
 published: true
-tags: [reference, communication functions, functions, host2ip, cached function]
 ---
 
 [%CFEngine_function_prototype(hostname)%]

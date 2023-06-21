@@ -3,7 +3,6 @@ layout: default
 title: Normal ordering
 published: true
 sorting: 40
-tags: [manuals, language, syntax, concepts, ordering, depends_on]
 ---
 
 CFEngine takes a pragmatic point of view to ordering. When promising `scalar`

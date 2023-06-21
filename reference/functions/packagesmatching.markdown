@@ -2,7 +2,6 @@
 layout: default
 title: packagesmatching
 published: true
-tags: [reference, utility functions, functions, packages, inventory, packagesmatching]
 ---
 
 [%CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex)%]

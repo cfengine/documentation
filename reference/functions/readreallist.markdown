@@ -2,7 +2,6 @@
 layout: default
 title: readreallist
 published: true
-tags: [reference, io functions, functions, readreallist]
 ---
 
 **Prototype:** `readreallist(filename, comment, split, maxentries, maxbytes)`<br>

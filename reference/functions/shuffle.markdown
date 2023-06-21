@@ -2,7 +2,6 @@
 layout: default
 title: shuffle
 published: true
-tags: [reference, data functions, functions, shuffle, inline_json]
 ---
 
 [%CFEngine_function_prototype(list, seed)%]

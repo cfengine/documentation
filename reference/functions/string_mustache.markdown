@@ -2,7 +2,6 @@
 layout: default
 title: string_mustache
 published: true
-tags: [reference, text functions, functions, text, mustache, string_mustache, json]
 ---
 
 [%CFEngine_function_prototype(template_string, optional_data_container)%]

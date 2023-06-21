@@ -3,7 +3,6 @@ layout: default
 title: Application Management
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
 # What is application management?

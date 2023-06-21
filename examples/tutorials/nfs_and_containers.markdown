@@ -3,7 +3,6 @@ layout: default
 title: NFS and LXC
 published: false
 sorting: 110
-tags: [examples, tutorials, nfs, lxc, containers]
 ---
 
 1. Downloaded <a href="nfs_and_containers.cf">nfs_and_containers.cf</a>). Place it in /var/cfengine/masterfiles/nfs_and_containers.cf.

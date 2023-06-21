@@ -3,7 +3,6 @@ layout: default
 title: Requesting a CFEngine Enterprise License
 published: true
 sorting: 40
-tags: [getting started, installation, enterprise production, license]
 ---
 
 To get a license please open a [support request](https://support.northern.tech)

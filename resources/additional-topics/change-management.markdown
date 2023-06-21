@@ -3,7 +3,6 @@ layout: default
 title: Change Management
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
 # What is change management?

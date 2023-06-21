@@ -2,7 +2,6 @@
 layout: default
 title: islessthan
 published: true
-tags: [reference, data functions, functions, islessthan]
 ---
 
 [%CFEngine_function_prototype(value1, value2)%]

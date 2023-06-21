@@ -3,7 +3,6 @@ layout: default
 title: How do I fix undefined body errors?
 published: true
 sorting: 90
-tags: [getting started, installation, faq]
 ---
 
 When running policy you see `error: Undefined body`. For example:

@@ -3,7 +3,6 @@ layout: default
 title: Promise types
 published: true
 sorting: 20
-tags: [reference, bundles, common, promises]
 ---
 
 Within a bundle, the promise types are executed in a round-robin fashion in the

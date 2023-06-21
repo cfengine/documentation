@@ -3,7 +3,6 @@ layout: default
 title: How CFEngine works
 published: true
 sorting: 2
-tags: [getting started, faq]
 ---
 
 CFEngine is a fully distributed system that allows you to define desired states

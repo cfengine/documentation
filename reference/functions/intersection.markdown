@@ -2,7 +2,6 @@
 layout: default
 title: intersection
 published: true
-tags: [reference, data functions, functions, intersection, inline_json]
 ---
 
 [%CFEngine_function_prototype(list1, list2)%]

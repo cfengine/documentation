@@ -3,7 +3,6 @@ layout: default
 title: promises.cf
 published: true
 sorting: 10
-tags: [reference, promises.cf, MPF]
 ---
 
 `$(sys.inputdir)/promises.cf` is the default policy run by the agent. It is

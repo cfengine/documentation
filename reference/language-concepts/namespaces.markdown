@@ -3,7 +3,6 @@ layout: default
 title: Namespaces
 published: true
 sorting: 100
-tags: [manuals, language, syntax, concepts, namespace]
 ---
 
 By default all promises are made in the `default` namespace. Specifying a namespace

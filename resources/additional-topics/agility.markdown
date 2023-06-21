@@ -3,7 +3,6 @@ layout: default
 title: Agility
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
 # Understanding agility

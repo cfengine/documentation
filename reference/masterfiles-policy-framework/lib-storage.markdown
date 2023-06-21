@@ -2,7 +2,6 @@
 layout: default
 title: lib/storage.cf
 published: true
-tags: [reference, standard library, storage, MPF]
 ---
 
 See the [`storage` promises][storage] documentation for a

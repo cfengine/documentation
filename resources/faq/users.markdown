@@ -3,7 +3,6 @@ layout: default
 title: Users
 published: true
 sorting: 90
-tags: [getting started, installation, enterprise, faq]
 ---
 
 Frequently asked questions about managing users from policy.

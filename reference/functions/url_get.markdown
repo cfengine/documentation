@@ -2,7 +2,6 @@
 layout: default
 title: url_get
 published: true
-tags: [reference, communication functions, functions, url, www, file, ftp, http, https, url_get, inline_json]
 ---
 
 [%CFEngine_function_prototype(url, options_container)%]

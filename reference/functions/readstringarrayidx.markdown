@@ -2,7 +2,6 @@
 layout: default
 title: readstringarrayidx
 published: true
-tags: [reference, io functions, functions, readstringarrayidx]
 ---
 
 [%CFEngine_function_prototype(array, filename, comment, split, maxentries, maxbytes)%]

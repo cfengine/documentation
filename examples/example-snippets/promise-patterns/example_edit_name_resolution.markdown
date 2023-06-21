@@ -2,7 +2,6 @@
 layout: default
 title: Set up name resolution with DNS
 published: true
-tags: [Examples, Policy, dns, file editing, files]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

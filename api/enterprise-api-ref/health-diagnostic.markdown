@@ -2,7 +2,6 @@
 layout: default
 title: Health diagnostic API
 published: true
-tags: [reference, enterprise, API, reporting, URI, health]
 ---
 
 This API provides access to health diagnostic information.

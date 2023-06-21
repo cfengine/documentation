@@ -2,7 +2,6 @@
 layout: default
 title: Custom SSL certificate
 published: true
-tags: [cfengine enterprise, hub administration, SSL]
 ---
 
 When first installed a self-signed ssl certificate is automatically generated

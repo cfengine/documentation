@@ -2,7 +2,6 @@
 layout: default
 title: "readintarray"
 published: true
-tags: [reference, io functions, functions, readintarray]
 ---
 
 **Prototype:** `readintarray(array, filename, comment, split, maxentries, maxbytes)`<br>

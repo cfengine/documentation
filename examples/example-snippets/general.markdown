@@ -3,7 +3,6 @@ layout: default
 title: General examples
 published: true
 sorting: 1
-tags: [Examples]
 ---
 
 * [Basic example][General examples#Basic example]

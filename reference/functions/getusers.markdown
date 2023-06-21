@@ -2,7 +2,6 @@
 layout: default
 title: getusers
 published: true
-tags: [reference, system functions, functions, getusers]
 ---
 
 [%CFEngine_function_prototype(exclude_names, exclude_ids)%]

@@ -2,7 +2,6 @@
 layout: default
 title: cf_version_before
 published: true
-tags: [reference, utility functions, functions]
 ---
 
 [%CFEngine_function_prototype(string)%]

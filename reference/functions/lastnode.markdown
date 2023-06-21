@@ -2,7 +2,6 @@
 layout: default
 title: lastnode
 published: true
-tags: [reference, data functions, functions, lastnode]
 ---
 
 [%CFEngine_function_prototype(string, separator)%]

@@ -2,7 +2,6 @@
 layout: default
 title: Query REST API
 published: true
-tags: [reference, enterprise, REST, API, SQL, reporting, URI]
 ---
 
 In case of a need for full flexibility, Query API allow users to execute SQL queries on CFEngine Database.

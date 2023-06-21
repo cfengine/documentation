@@ -3,7 +3,6 @@ layout: default
 title: Testing policies
 published: true
 sorting: 50
-tags: [manuals, systems, configuration management, automation, testing, work directory]
 ---
 
 One of the practical advantages of CFEngine is that you can test it without

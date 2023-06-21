@@ -2,7 +2,6 @@
 layout: default
 title: custom
 published: true
-tags: [bundle agent, promises]
 ---
 
 Custom promise types can be added as _Promise modules_.

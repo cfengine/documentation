@@ -2,7 +2,6 @@
 layout: default
 title: lib/packages.cf
 published: true
-tags: [reference, standard library, packages, MPF]
 ---
 
 See the [`packages` promises][packages] documentation for a

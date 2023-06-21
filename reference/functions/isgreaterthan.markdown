@@ -2,7 +2,6 @@
 layout: default
 title: isgreaterthan
 published: true
-tags: [reference, data functions, functions, isgreaterthan]
 ---
 
 [%CFEngine_function_prototype(value1, value2)%]

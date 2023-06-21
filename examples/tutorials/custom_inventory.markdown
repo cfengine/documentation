@@ -3,7 +3,6 @@ layout: default
 title: Custom inventory
 sorting: 15
 published: true
-tags: [Examples, Tutorials, Inventory, Enterprise]
 ---
 
 This tutorial will show you how to add custom inventory attributes that can be

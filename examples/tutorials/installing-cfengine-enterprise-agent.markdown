@@ -3,7 +3,6 @@ layout: default
 title: Installing CFEngine Enterprise agent
 published: true
 sorting: 3
-tags: [getting started, tutorial]
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CBkTS-kmbos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

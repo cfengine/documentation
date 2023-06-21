@@ -2,7 +2,6 @@
 layout: default
 title: delete_text
 published: true
-tags: [reference, bundle agent, edit_xml, xml, files promises, file editing]
 ---
 
 This promise type assures that a value string, containing the matching

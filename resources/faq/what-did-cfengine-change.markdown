@@ -2,7 +2,6 @@
 layout: default
 title: What did CFEngine do?
 published: true
-tags: [getting started, faq, logging, reporting ]
 ---
 
 This page presents a few ways of understanding what CFEngine has done to your machine.

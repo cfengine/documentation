@@ -2,7 +2,6 @@
 layout: default
 title: readjson
 published: true
-tags: [reference, io functions, functions, readjson, json, container]
 ---
 
 [%CFEngine_function_prototype(filename, optional_maxbytes)%]

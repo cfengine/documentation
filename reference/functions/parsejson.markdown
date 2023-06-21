@@ -2,7 +2,6 @@
 layout: default
 title: parsejson
 published: true
-tags: [reference, io functions, functions, parsejson, json, container, inline_json]
 ---
 
 [%CFEngine_function_prototype(json_data)%]

@@ -2,7 +2,6 @@
 layout: default
 title: ago
 published: true
-tags: [reference, data functions, functions, ago]
 ---
 
 [%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]

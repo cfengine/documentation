@@ -3,7 +3,6 @@ layout: default
 title: Hierarchies
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
 Authority, Structure and Inheritance

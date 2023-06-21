@@ -2,7 +2,6 @@
 layout: default
 title: Adjusting schedules
 published: true
-tags: [cfengine enterprise, hub administration, scheduling, cf-execd, cf-agent, cf-hub]
 ---
 
 ## Set cf-execd agent execution schedule

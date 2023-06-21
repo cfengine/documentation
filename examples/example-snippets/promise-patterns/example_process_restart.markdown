@@ -2,7 +2,6 @@
 layout: default
 title: Restart a process
 published: true
-tags: [Examples, Policy, process, restart]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

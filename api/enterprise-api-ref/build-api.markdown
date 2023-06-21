@@ -2,7 +2,6 @@
 layout: default
 title: Build API
 published: true
-tags: [reference, enterprise, API, build, modules]
 ---
 
 The Build API enables you to easily manage policy projects and their respective CFEngine Build modules.

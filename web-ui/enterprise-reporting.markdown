@@ -3,7 +3,6 @@ layout: default
 title: Enterprise reporting
 sorting: 50
 published: true
-tags: [cfengine enterprise, user interface, mission portal]
 ---
 
 CFEngine Enterprise can report on promise outcomes (changes made by `cf-agent`

@@ -2,7 +2,6 @@
 layout: default
 title: hostswithclass
 published: true
-tags: [reference, communication functions, functions, hostswithclass]
 ---
 
 **This function is only available in CFEngine Enterprise.**

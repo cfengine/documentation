@@ -2,7 +2,6 @@
 layout: default
 title: concat
 published: true
-tags: [reference, data functions, functions, concat]
 ---
 
 [%CFEngine_function_prototype(...)%]

@@ -2,7 +2,6 @@
 layout: default
 title: controls/cf_serverd.cf
 published: true
-tags: [reference, controls, MPF]
 ---
 
 This is where `body server control` is defined. `body server control` is where

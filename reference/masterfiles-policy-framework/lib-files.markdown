@@ -2,7 +2,6 @@
 layout: default
 title: lib/files.cf
 published: true
-tags: [reference, standard library, files, MPF]
 ---
 
 See the [`files` promises][files] and [`edit_line` bundles][edit_line]

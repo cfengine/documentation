@@ -2,7 +2,6 @@
 layout: default
 title: ldaplist
 published: true
-tags: [reference, communication functions, functions, ldap, cached function]
 ---
 
 **This function is only available in CFEngine Enterprise.**

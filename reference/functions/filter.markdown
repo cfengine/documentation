@@ -2,7 +2,6 @@
 layout: default
 title: filter
 published: true
-tags: [reference, data functions, functions, filter, inline_json]
 ---
 
 [%CFEngine_function_prototype(filter, list, is_regex, invert, max_return)%]

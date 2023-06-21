@@ -3,7 +3,6 @@ layout: default
 title: Uninstalling/Reinstalling
 published: true
 sorting: 40
-tags: [uninstall, reinstall]
 ---
 
 ## What is left behind after uninstalling?

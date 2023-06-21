@@ -2,7 +2,6 @@
 layout: default
 title: datastate
 published: true
-tags: [reference, data functions, functions, json, datastate, evaluation, vars, classes, container]
 ---
 
 [%CFEngine_function_prototype()%]

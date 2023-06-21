@@ -3,7 +3,6 @@ layout: default
 title: Using CFEngine with Open Nebula
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
 # What is Open Nebula?

@@ -2,7 +2,6 @@
 layout: default
 title: length
 published: true
-tags: [reference, data functions, functions, length, inline_json]
 ---
 
 [%CFEngine_function_prototype(list)%]

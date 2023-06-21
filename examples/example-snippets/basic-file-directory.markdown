@@ -3,7 +3,6 @@ layout: default
 title: File and directory examples
 published: true
 sorting: 6
-tags: [Examples,Files,Directories]
 ---
 
 * [Create files and directories][File and directory examples#Create files and directories]

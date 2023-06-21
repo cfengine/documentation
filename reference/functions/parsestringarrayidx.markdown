@@ -2,7 +2,6 @@
 layout: default
 title: parsestringarrayidx
 published: true
-tags: [reference, io functions, functions, parsestringarrayidx]
 ---
 
 [%CFEngine_function_prototype(array, input, comment, split, maxentries, maxbytes)%]

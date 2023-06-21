@@ -2,7 +2,6 @@
 layout: default
 title: string_length
 published: true
-tags: [reference, text functions, functions, text, string_length, length, strlen, substring]
 ---
 
 [%CFEngine_function_prototype(data)%]

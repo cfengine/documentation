@@ -2,7 +2,6 @@
 layout: default
 title: Configure a custom LDAP port
 published: true
-tags: [cfengine enterprise, hub administration, ldap]
 ---
 
 Mission Portals User settings and preferences provides a radio button

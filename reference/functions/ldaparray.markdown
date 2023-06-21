@@ -2,7 +2,6 @@
 layout: default
 title: ldaparray
 published: true
-tags: [reference, communication functions, functions, ldap]
 ---
 
 **This function is only available in CFEngine Enterprise.**

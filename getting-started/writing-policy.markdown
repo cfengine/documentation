@@ -3,7 +3,6 @@ layout: default
 title: Writing policy
 published: true
 sorting: 40
-tags: [guide, getting started, mission portal]
 ---
 
 Now that we are familiar with how CFEngine works, and how you can use modules and the web UI, let's take a look at policy.
