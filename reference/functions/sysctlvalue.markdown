@@ -2,7 +2,6 @@
 layout: default
 title: sysctlvalue
 published: true
-tags: [reference, system functions, functions, sysctl, sysctlvalue]
 ---
 
 [%CFEngine_function_prototype(key)%]

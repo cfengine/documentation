@@ -2,7 +2,6 @@
 layout: default
 title: Set up sudo
 published: true
-tags: [Examples, Policy, sudo, file editing]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

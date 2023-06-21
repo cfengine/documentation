@@ -3,7 +3,6 @@ layout: default
 title: What is promise locking?
 published: true
 sorting: 90
-tags: [getting started, faq, locking]
 ---
 
 By default when the agent runs each promise that has an outcome

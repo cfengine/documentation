@@ -2,7 +2,6 @@
 layout: default
 title: Import & export compliance report API
 published: true
-tags: [reference, enterprise, API, import, export, compliance report]
 ---
 
 This provides users the ability to transfer compliance reports between hubs or create reports from a JSON definition file.

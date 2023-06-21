@@ -3,7 +3,6 @@ layout: default
 title: Package modules
 published: true
 sorting: 70
-tags: [reference, language concepts, modules, package module api]
 ---
 
 Package modules are back-ends that enable the package promise to work

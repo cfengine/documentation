@@ -2,7 +2,6 @@
 layout: default
 title: field_edits
 published: true
-tags: [reference, bundle agent, edit_line, files promises, file editing, field_edits]
 ---
 
 Certain types of text files are tabular in nature, with field separators (e.g.

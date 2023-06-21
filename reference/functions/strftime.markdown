@@ -2,7 +2,6 @@
 layout: default
 title: strftime
 published: true
-tags: [reference, data functions, functions, strftime]
 ---
 
 [%CFEngine_function_prototype(mode, template, time)%]

@@ -2,7 +2,6 @@
 layout: default
 title: string_replace
 published: true
-tags: [reference, data functions, functions, string_replace]
 ---
 
 [%CFEngine_function_prototype(string, match, replacement)%]

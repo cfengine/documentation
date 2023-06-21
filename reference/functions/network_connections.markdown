@@ -2,7 +2,6 @@
 layout: default
 title: network_connections
 published: true
-tags: [reference, network functions, functions, network_connections, network, connections, inet, inet6, tcp, tcp6, udp, udp6]
 ---
 
 [%CFEngine_function_prototype()%]

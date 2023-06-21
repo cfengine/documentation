@@ -2,7 +2,6 @@
 layout: default
 title: iprange
 published: true
-tags: [reference, communication functions, functions, iprange]
 ---
 
 [%CFEngine_function_prototype(range, optional_interface)%]

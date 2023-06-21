@@ -3,7 +3,6 @@ layout: default
 title: Classes and decisions
 published: true
 sorting: 50
-tags: [manuals, language, syntax, concepts, classes, decisions]
 ---
 
 Classes are used to apply promises only to particular environments, depending

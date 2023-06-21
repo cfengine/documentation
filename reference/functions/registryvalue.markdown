@@ -2,7 +2,6 @@
 layout: default
 title: registryvalue
 published: true
-tags: [reference, system functions, functions, registryvalue]
 ---
 
 [%CFEngine_function_prototype(key, valueid)%]

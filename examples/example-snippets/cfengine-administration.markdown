@@ -3,7 +3,6 @@ layout: default
 title: Administration examples
 published: true
 sorting: 2
-tags: [Examples, CFEngine Administration]
 ---
 
 * [Ordering promises][Administration examples#Ordering promises]

@@ -2,7 +2,6 @@
 layout: default
 published: true
 title: Installation guide
-tags: [cfengine enterprise, high availability]
 ---
 
 ## Overview ##

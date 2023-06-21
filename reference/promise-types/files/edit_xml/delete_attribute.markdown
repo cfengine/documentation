@@ -2,7 +2,6 @@
 layout: default
 title: delete_attribute
 published: true
-tags: [reference, bundle agent, edit_xml, xml, files promises, file editing]
 ---
 
 This promise type assures that an attribute, with the given name, will not be

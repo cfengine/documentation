@@ -2,7 +2,6 @@
 layout: default
 title: parseyaml
 published: true
-tags: [reference, io functions, functions, parseyaml, yaml, json, container]
 ---
 
 [%CFEngine_function_prototype(yaml_data)%]

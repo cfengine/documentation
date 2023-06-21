@@ -3,7 +3,6 @@ layout: default
 title: System file examples
 published: true
 sorting: 13
-tags: [Examples,System Administration,System Files]
 ---
 
 ## Editing password or group files ##

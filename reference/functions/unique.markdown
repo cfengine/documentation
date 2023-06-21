@@ -2,7 +2,6 @@
 layout: default
 title: unique
 published: true
-tags: [reference, data functions, functions, unique, inline_json]
 ---
 
 [%CFEngine_function_prototype(list)%]

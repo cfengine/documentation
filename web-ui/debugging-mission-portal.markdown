@@ -3,7 +3,6 @@ layout: default
 title: Debugging Mission Portal
 published: true
 sorting: 90
-tags: [ FAQ, Enterprise, debug, Mission Portal ]
 ---
 
 1.  Set the API log level to DEBUG in Mission Portal settings.

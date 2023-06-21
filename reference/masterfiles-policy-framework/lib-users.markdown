@@ -2,7 +2,6 @@
 layout: default
 title: lib/users.cf
 published: true
-tags: [reference, standard library, users, MPF]
 ---
 
 See the [`users` promises][users] documentation for a

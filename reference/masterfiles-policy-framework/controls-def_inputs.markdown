@@ -2,7 +2,6 @@
 layout: default
 title: controls/def_inputs.cf
 published: true
-tags: [reference, controls, MPF]
 ---
 
 This is where the list of policy files to include as defined from the augments

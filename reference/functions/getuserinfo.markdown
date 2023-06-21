@@ -2,7 +2,6 @@
 layout: default
 title: getuserinfo
 published: true
-tags: [reference, user functions, functions, getuserinfo, users, uid, gid, gecos, homedir, shell]
 ---
 
 [%CFEngine_function_prototype(optional_uidorname)%]

@@ -2,7 +2,6 @@
 layout: default
 title: splayclass
 published: true
-tags: [reference, utility functions, functions, splayclass]
 ---
 
 [%CFEngine_function_prototype(input, policy)%]

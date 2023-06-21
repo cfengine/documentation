@@ -2,7 +2,6 @@
 layout: default
 title: file_hash
 published: true
-tags: [reference, data functions, functions, hash]
 ---
 
 [%CFEngine_function_prototype(file, algorithm)%]

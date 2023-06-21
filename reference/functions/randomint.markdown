@@ -2,7 +2,6 @@
 layout: default
 title: randomint
 published: true
-tags: [reference, data functions, functions, randomint]
 ---
 
 [%CFEngine_function_prototype(lower, upper)%]

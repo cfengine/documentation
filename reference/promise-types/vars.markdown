@@ -2,7 +2,6 @@
 layout: default
 title: vars
 published: true
-tags: [reference, bundle common, vars, promises]
 ---
 
 [Variables][variables] in CFEngine are defined

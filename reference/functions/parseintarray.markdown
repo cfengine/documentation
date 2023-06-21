@@ -2,7 +2,6 @@
 layout: default
 title: "parseintarray"
 published: true
-tags: [reference, io functions, functions, parseintarray]
 ---
 
 **Prototype:** `parseintarray(array, input, comment, split, maxentries, maxbytes)`<br>

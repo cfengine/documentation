@@ -3,7 +3,6 @@ layout: default
 title: Hosts
 sorting: 30
 published: true
-tags: [cfengine enterprise, user interface, mission portal]
 ---
 
 The Hosts app provides a customizable global overview of _promise_ compliance. A summary of compliant vs non-compliant hosts is provided at each branch in the tree.

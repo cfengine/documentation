@@ -2,7 +2,6 @@
 layout: default
 title: sys
 published: true
-tags: [reference, variables, sys, discovery, system, inventory]
 ---
 
 System variables are derived from CFEngine's automated discovery of system

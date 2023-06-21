@@ -2,7 +2,6 @@
 layout: default
 title: storage
 published: true
-tags: [reference, bundle agent, storage, storage promises, mount, filesystem, disks]
 ---
 
 Storage promises refer to disks and filesystem properties.

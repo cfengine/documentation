@@ -2,7 +2,6 @@
 layout: default
 title: strcmp
 published: true
-tags: [reference, data functions, functions, strcmp]
 ---
 
 [%CFEngine_function_prototype(string1, string2)%]

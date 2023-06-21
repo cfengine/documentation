@@ -2,7 +2,6 @@
 layout: default
 title: "readstringarray"
 published: true
-tags: [reference, io functions, functions, readstringarray]
 ---
 
 **Prototype:** `readstringarray(array, filename, comment, split, maxentries, maxbytes)`

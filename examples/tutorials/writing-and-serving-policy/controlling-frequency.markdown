@@ -3,7 +3,6 @@ layout: default
 title: Controlling frequency
 published: true
 sorting: 90
-tags: [manuals, systems, configuration management, automation, control, frequency, performance]
 ---
 
 When checking a series of expensive functions and verifying complex promises,

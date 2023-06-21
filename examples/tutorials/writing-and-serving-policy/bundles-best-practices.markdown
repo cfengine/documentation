@@ -3,7 +3,6 @@ layout: default
 title: Bundles best practices
 published: true
 sorting: 20
-tags: [manuals, bundles, policy, best practices]
 ---
 
 The following contains practices to remember when creating bundles as

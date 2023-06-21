@@ -2,7 +2,6 @@
 layout: default
 title: regline
 published: true
-tags: [reference, io functions, functions, regline]
 ---
 
 [%CFEngine_function_prototype(regex, filename)%]

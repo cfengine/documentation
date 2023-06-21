@@ -3,7 +3,6 @@ layout: default
 title: How can I tell what Classes and Variables are defined?
 published: true
 sorting: 90
-tags: [getting started, installation, faq]
 ---
 
 You can see a high level overview of the first order classes and variables using

@@ -3,7 +3,6 @@ layout: default
 title: System administration examples
 published: true
 sorting: 12
-tags: [Examples,System Administration]
 ---
 
 * [Centralized management][System administration examples#Centralized management]

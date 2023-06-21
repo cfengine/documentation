@@ -2,7 +2,6 @@
 layout: default
 title:  SQL query examples
 published: true
-tags: [examples, enterprise, rest, api, reporting, sql, queries]
 ---
 
 ### Synchronous Example: Listing hostname and IP for Ubuntu hosts

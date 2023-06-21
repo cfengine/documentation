@@ -3,7 +3,6 @@ title: Quick-Start Guide to Using PuTTY
 layout: default
 published: true
 sorting: 2
-tags: [how-to-guides, quick-start guides, putty, puttygen]
 ---
 
 * [Using PuTTY in simple steps][Quick-Start Guide to Using PuTTY#Using PuTTY in simple steps]

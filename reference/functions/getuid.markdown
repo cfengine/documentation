@@ -2,7 +2,6 @@
 layout: default
 title: getuid
 published: true
-tags: [reference, system functions, functions, getuid]
 ---
 
 [%CFEngine_function_prototype(username)%]

@@ -3,7 +3,6 @@ layout: default
 title: Debugging Slow Queries
 published: true
 sorting: 90
-tags: [ FAQ, Enterprise, debug, Mission Portal ]
 ---
 
 If Mission Portal seems to take too much time to generate pages or reports or if API calls seem

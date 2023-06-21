@@ -2,7 +2,6 @@
 layout: default
 title: bundlesmatching
 published: true
-tags: [reference, utility functions, functions, bundlesmatching]
 ---
 
 [%CFEngine_function_prototype(name, tag1, tag2, ...)%]

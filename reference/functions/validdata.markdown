@@ -2,7 +2,6 @@
 layout: default
 title: validdata
 published: true
-tags: [reference, functions, validdata, JSON, context]
 ---
 
 [%CFEngine_function_prototype(data_container, type)%]

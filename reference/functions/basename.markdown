@@ -2,7 +2,6 @@
 layout: default
 title: basename
 published: true
-tags: [reference, functions, basename]
 ---
 
 [%CFEngine_function_prototype(filename, optional_extension)%]

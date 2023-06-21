@@ -2,7 +2,6 @@
 layout: default
 title: roles
 published: true
-tags: [reference, bundle server, cf-serverd, cf-runagent, access control, users, roles, server, promise types]
 ---
 
 Roles promises are server-side decisions about which users are allowed

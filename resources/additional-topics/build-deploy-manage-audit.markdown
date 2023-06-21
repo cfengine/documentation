@@ -3,7 +3,6 @@ layout: default
 title: Build Deploy Manage Audit
 published: true
 sorting: 80
-tags: [overviews, special topics, guide, BDMA]
 ---
 
 # What is BDMA?

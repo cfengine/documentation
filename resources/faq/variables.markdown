@@ -3,7 +3,6 @@ layout: default
 title: How do I pass a data type variable?
 published: true
 sorting: 90
-tags: [getting started, vars, faq]
 ---
 
 Data type variables also known as "data containers" are passed using the same

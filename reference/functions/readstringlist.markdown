@@ -2,7 +2,6 @@
 layout: default
 title: readstringlist
 published: true
-tags: [reference, io functions, functions, readstringlist]
 ---
 
 **Prototype:** `readstringlist(filename, comment, split, maxentries, maxbytes)`

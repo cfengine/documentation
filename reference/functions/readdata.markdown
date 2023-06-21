@@ -2,7 +2,6 @@
 layout: default
 title: readdata
 published: true
-tags: [reference, io functions, functions, readcsv, readjson, readyaml, readdata, readenvfile, CSV, JSON, YAML, ENV, container]
 ---
 
 [%CFEngine_function_prototype(filename, filetype)%]

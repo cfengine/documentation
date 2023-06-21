@@ -2,7 +2,6 @@
 layout: default
 title: controls/update_def.cf
 published: true
-tags: [reference, controls, MPF]
 ---
 
 This is where most common variables and classes are defined for the update

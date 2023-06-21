@@ -3,7 +3,6 @@ layout: default
 title: External data
 published: true
 sorting: 50
-tags: [manuals, writing policy, external data, augments]
 ---
 
 It is common to integrate CFEngine with external data sources. External data

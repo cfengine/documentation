@@ -2,7 +2,6 @@
 layout: default
 title: lib/commands.cf
 published: true
-tags: [reference, standard library, commands, MPF]
 ---
 
 See the [`commands` promises][commands] documentation for a

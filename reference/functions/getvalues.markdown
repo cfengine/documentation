@@ -2,7 +2,6 @@
 layout: default
 title: getvalues
 published: true
-tags: [reference, data functions, functions, getvalues, inline_json]
 ---
 
 [%CFEngine_function_prototype(varref)%]

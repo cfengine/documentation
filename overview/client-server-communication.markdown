@@ -3,7 +3,6 @@ layout: default
 title: Client server communication
 published: true
 sorting: 30
-tags: [overviews, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
 
 Starting `cf-serverd` sets up a line of communication between

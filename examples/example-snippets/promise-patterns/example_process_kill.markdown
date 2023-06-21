@@ -2,7 +2,6 @@
 layout: default
 title: Ensure a process is not running
 published: true
-tags: [Examples, Policy, process, kill]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

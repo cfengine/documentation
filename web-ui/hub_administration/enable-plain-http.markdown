@@ -2,7 +2,6 @@
 layout: default
 title: Enable plain http
 published: true
-tags: [cfengine enterprise, hub administration, SSL]
 ---
 
 By default HTTPS is enforced by redirecting any non secure connection requests.

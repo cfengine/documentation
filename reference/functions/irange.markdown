@@ -2,7 +2,6 @@
 layout: default
 title: irange
 published: true
-tags: [reference, data functions, functions, irange]
 ---
 
 [%CFEngine_function_prototype(arg1, arg2)%]

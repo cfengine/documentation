@@ -3,7 +3,6 @@ layout: default
 title: Promises available in CFEngine
 sorting: 4
 published: true
-tags: [overviews, promises]
 ---
 
 ### meta - information about promise bundles ###

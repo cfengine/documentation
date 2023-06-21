@@ -3,7 +3,6 @@ layout: default
 title: Modules from CFEngine Build
 published: true
 sorting: 20
-tags: [guide, getting started, modules]
 ---
 
 Now that you've installed CFEngine and the tools we need, we can start working with modules from CFEngine Build.

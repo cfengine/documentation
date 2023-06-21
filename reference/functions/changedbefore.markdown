@@ -2,7 +2,6 @@
 layout: default
 title: changedbefore
 published: true
-tags: [reference, files functions, functions, changedbefore]
 ---
 
 [%CFEngine_function_prototype(newer,older)%]

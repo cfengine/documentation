@@ -2,7 +2,6 @@
 layout: default
 title: maparray
 published: true
-tags: [reference, data functions, functions, maparray, inline_json]
 ---
 
 [%CFEngine_function_prototype(pattern, array_or_container)%]

@@ -2,7 +2,6 @@
 layout: default
 title: filesexist
 published: true
-tags: [reference, files functions, functions, filesexist]
 ---
 
 [%CFEngine_function_prototype(list)%]

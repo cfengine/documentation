@@ -2,7 +2,6 @@
 layout: default
 title: splitstring
 published: true
-tags: [reference, data functions, functions, splitstring]
 ---
 
 [%CFEngine_function_prototype(string, regex, maxent)%]

@@ -3,7 +3,6 @@ layout: default
 title: databases
 published: true
 sorting: 9999
-tags: [Reference, bundle agent, databases, promises, promise types]
 ---
 
 CFEngine can interact with commonly used database servers to keep

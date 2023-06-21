@@ -2,7 +2,6 @@
 layout: default
 title: getvariablemetatags
 published: true
-tags: [reference, data functions, functions, getvariablemetatags, meta, tags]
 ---
 
 [%CFEngine_function_prototype(varname, optional_tag)%]

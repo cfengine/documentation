@@ -3,7 +3,6 @@ layout: default
 title: Reporting UI
 sorting: 50
 published: true
-tags: [cfengine enterprise, user interface, mission portal]
 ---
 
 CFEngine collects a large amount of data. To inspect it, you can run and schedule pre-defined reports or use the [query builder][Reporting UI#Query builder] for your own custom reports. You can save these queries for later use, and schedule reports for specified times.

@@ -3,7 +3,6 @@ layout: default
 title: Enterprise reporting database
 published: true
 sorting: 90
-tags: [getting started, installation, faq]
 ---
 
 Frequently asked questions on the Enterprise reporting database.

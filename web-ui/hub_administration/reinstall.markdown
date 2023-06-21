@@ -2,7 +2,6 @@
 layout: default
 title: Re-installing Enterprise hub
 published: true
-tags: [cfengine enterprise, hub administration, re-install]
 ---
 
 Sometimes it is useful to re-install the hub while still preserving existing

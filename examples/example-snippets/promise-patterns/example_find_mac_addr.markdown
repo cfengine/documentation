@@ -2,7 +2,6 @@
 layout: default
 title: Find the MAC address
 published: true
-tags: [Examples, Policy, MAC address]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

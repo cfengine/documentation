@@ -3,7 +3,6 @@ layout: default
 title: File comparison
 published: true
 sorting: 100
-tags: [examples, tutorials, file]
 ---
 
 1. Add the [policy contents][File comparison#Full policy] (also can be downloaded from <a href="file_compare_test.cf">file_compare_test.cf</a>) to a new file, such as /var/cfengine/masterfiles/file_test.cf.

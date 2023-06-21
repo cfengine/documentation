@@ -2,7 +2,6 @@
 layout: default
 title: services
 published: true
-tags: [reference, bundle agent, services, processes, services promises, promise types]
 ---
 
 `services` type promises in their simplest *generic* form are an abstraction on

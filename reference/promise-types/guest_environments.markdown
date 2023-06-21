@@ -3,7 +3,6 @@ layout: default
 title: guest_environments
 published: true
 sorting: 9999
-tags: [reference, bundle agent, guest_environments, promises, promise types, virtual machines, agent, promises, libvirt, KVM, VMWare, deprecated]
 ---
 
 **WARNING**: Due to lack of use this promise type has been removed from the

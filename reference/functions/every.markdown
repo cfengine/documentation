@@ -2,7 +2,6 @@
 layout: default
 title: every
 published: true
-tags: [reference, data functions, functions, every, inline_json]
 ---
 
 [%CFEngine_function_prototype(regex, list)%]

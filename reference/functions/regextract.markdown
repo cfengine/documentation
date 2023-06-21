@@ -2,7 +2,6 @@
 layout: default
 title: regextract
 published: true
-tags: [reference, data functions, functions, regextract, pcre]
 ---
 
 [%CFEngine_function_prototype(regex, string, backref)%]

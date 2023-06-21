@@ -2,7 +2,6 @@
 layout: default
 title: filestat
 published: true
-tags: [reference, files functions, functions, filestat]
 ---
 
 [%CFEngine_function_prototype(filename, field)%]

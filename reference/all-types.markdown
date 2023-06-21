@@ -3,7 +3,6 @@ layout: default
 title: All promise and body types
 published: true
 sorting: 110
-tags: [reference]
 ---
 
 * [All promise types][All promise and body types#All promise types]

@@ -2,7 +2,6 @@
 layout: default
 title: commands
 published: true
-tags: [reference, bundle agent, commands, promises, promise types]
 ---
 
 Commands and [processes][processes] are separated cleanly. Restarting of

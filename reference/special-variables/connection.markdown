@@ -2,7 +2,6 @@
 layout: default
 title: connection
 published: true
-tags: [reference, variables, connection]
 ---
 
 The context `connection` is used by the `shortcut` attribute in `access`

@@ -3,7 +3,6 @@ layout: default
 title: Release notes
 published: true
 sorting: 30
-tags: [overviews, releases, latest release, platforms, versions]
 ---
 
 * [New in CFEngine][New in CFEngine]

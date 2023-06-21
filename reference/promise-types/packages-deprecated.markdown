@@ -2,7 +2,6 @@
 layout: default
 title: packages (deprecated)
 published: true
-tags: [reference, bundle agent, packages, packages promises, promise types]
 ---
 
 **NOTE:** This package promise is deprecated and has been superseded by

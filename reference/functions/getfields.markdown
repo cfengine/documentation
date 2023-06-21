@@ -2,7 +2,6 @@
 layout: default
 title: getfields
 published: true
-tags: [reference, data functions, functions, getfields]
 ---
 
 [%CFEngine_function_prototype(regex, filename, split, array_lval)%]

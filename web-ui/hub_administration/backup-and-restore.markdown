@@ -2,7 +2,6 @@
 layout: default
 title: Backup and restore
 published: true
-tags: [cfengine enterprise, hub administration, backup, restore]
 ---
 
 With policy stored in version control there are few things that should be

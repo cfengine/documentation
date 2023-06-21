@@ -3,7 +3,6 @@ layout: default
 title: Mustache templating
 published: true
 sorting: 90
-tags: [getting started, mustache, faq]
 ---
 
 ## CFEngine specific extensions

@@ -2,7 +2,6 @@
 layout: default
 title: findfiles_up
 published: true
-tags: [reference, file functions, functions, findfiles_up, files, glob]
 ---
 
 [%CFEngine_function_prototype(path, glob, level)%]

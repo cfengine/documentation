@@ -3,7 +3,6 @@ layout: default
 title: update.cf
 published: true
 sorting: 20
-tags: [reference, update.cf, MPF]
 ---
 
 `$(sys.inputdir)/update.cf` is responsible for updating

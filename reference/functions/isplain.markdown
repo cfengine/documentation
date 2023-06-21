@@ -2,7 +2,6 @@
 layout: default
 title: isplain
 published: true
-tags: [reference, files functions, functions, isplain]
 ---
 
 [%CFEngine_function_prototype(filename)%]

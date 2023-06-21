@@ -2,7 +2,6 @@
 layout: default
 title: Change detection
 published: true
-tags: [Examples, Policy, change detection]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

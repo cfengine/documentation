@@ -3,7 +3,6 @@ layout: default
 title: Enterprise report collection
 published: true
 sorting: 90
-tags: [ FAQ, Enterprise, reporting, health, cf-hub ]
 ---
 
 Frequently asked questions on Enterprise report collection.

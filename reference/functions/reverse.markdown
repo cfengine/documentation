@@ -2,7 +2,6 @@
 layout: default
 title: reverse
 published: true
-tags: [reference, data functions, functions, reverse, inline_json]
 ---
 
 [%CFEngine_function_prototype(list)%]
