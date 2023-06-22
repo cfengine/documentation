@@ -42,8 +42,10 @@ some desired packages, and finally reports if they are installed.
 When `package_inventory` in `body common control` is configured, CFEngine will record the packages installed and the package updates available for the configured package modules.
 In the [Masterfiles Policy Framework][Masterfiles Policy Framework] `package_inventory` will be [configured](https://github.com/cfengine/masterfiles/blob/3dc1f629544b24261975ecf86e02554d4daf346e/promises.cf.in#L92) to the default for the hosts platform.
 Since only one `body common control` can be present in a policy set any bundles which use these functions will typically need to execute in the context of a full policy run.
-If there is no `package_inventory` attribute such as on package module unsupported platforms or when a policy entry file other than promises.cf is selected with the `--file -f` argument then the legacy package methods data will be used.
-At no time will both standard and legacy data be available to these functions.
+However, since the release of CFEngine 3.22, the `packagesmatching` and `packageupdatesmatching` policy functions will look for and use the existing software inventory databases (available in `$(sys.statedir)`), if the default package inventory is not configured.
+This change enables the usage of these policy functions in standalone policy files. But please note that you still need the default package inventory attribute specified in the policy framework for the software inventory databases to exist in the first place and for them to be maintained/updated.
+If there is no `package_inventory` attribute (such as on package module unsupported platforms) and there are no software inventory databases available in `$(sys.statedir)` then the legacy package methods data will be used instead.
+At no time will both the standard and the legacy data be available to these functions silmontaneously.
 
 [%CFEngine_include_example(packagesmatching.cf)%]
 
