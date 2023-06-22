@@ -43,7 +43,7 @@ Since only one `body common control` can be present in a policy set any bundles 
 However, since the release of CFEngine 3.22, the `packagesmatching` and `packageupdatesmatching` policy functions will look for and use the existing software inventory databases (available in `$(sys.statedir)`), if the default package inventory is not configured.
 This change enables the usage of these policy functions in standalone policy files. But please note that you still need the default package inventory attribute specified in the policy framework for the software inventory databases to exist in the first place and for them to be maintained/updated.
 If there is no `package_inventory` attribute (such as on package module unsupported platforms) and there are no software inventory databases available in `$(sys.statedir)` then the legacy package methods data will be used instead.
-At no time will both the standard and the legacy data be available to these functions silmontaneously.
+At no time will both the standard and the legacy data be available to these functions simultaneously.
 
 
 **Example:**
