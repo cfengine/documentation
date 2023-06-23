@@ -18,12 +18,12 @@ Acyclic Graphs (DAG) in mathematics (see figure below (a) and (b)).
 ![Network Organizational Structures](./network-organizational-structures.png)
 
 Hierarchies are often associated withauthority, as we use hierarchies to
-organize human `chains of command'. In this case, a hierarchy typically has
+organize human 'chains of command'. In this case, a hierarchy typically has
 multiple levels, as in (b). You might interpret this diagram as showing a single
 point of top level management, then satellite areas of middle management each
 with their own clusters of slaves (leaf nodes). When drawing hierarchies, the
 root of the tree is placed at the top or centre of the picture and is considered
-to beauthoritative, i.e. more important than the `leaves'. Each leaf node is
+to beauthoritative, i.e. more important than the 'leaves'. Each leaf node is
 then subject to the control of the root in a top down manner.
 
 The opposite of a hierarchy is a mesh or web (figure (c)), which has no special
@@ -492,18 +492,6 @@ apparent.
 5) Using dist classes to select from a set of machines, not just query them in order; also splayclass
 6) Versioning, RPM/SVN for distro, vs CFEngine
 7) updating with cf-agent -DUpdateNow
-
-Table of Contents
-
-    Hierarchies
-        What is a hierarchy?
-        How hierarchy compares to sets
-        Classes are sets
-        For and against hierarchies
-        Inheritance and its forms
-        Expressing `is a` or `has a`
-        How to organize your organization
-        Applications of hierarchy
 
 Footnotes
 
