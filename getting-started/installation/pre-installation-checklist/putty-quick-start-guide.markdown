@@ -1,5 +1,5 @@
 ---
-title: Quick-Start Guide to Using PuTTY
+title: Quick-Start guide to using PuTTY
 layout: default
 published: true
 sorting: 2
