@@ -11,7 +11,7 @@ Many configuration management systems allow you to determine configuration file
 content to some extent, usually by over-writing files with boiler-plate
 (template) files. This approach works for some cases, but it is a blunt and
 inflexible instrument, which forces you to take over the ownership of the file
-`all or nothing' and determine its entire content yourself. This is more than is
+_all or nothing_ and determine its entire content yourself. This is more than is
 necessary or desirable in general.
 
 Other approaches to file editing us search and replace, e.g. with the
@@ -38,7 +38,7 @@ and they cannot always be determined from a single source of information. To
 determine the outcome of a file we have to adopt either a fully deterministic
 approach, or live with a partial approximation.
 
-Some approaches to file editing try to `know' the intended format of a file, by
+Some approaches to file editing try to _know_ the intended format of a file, by
 hardcoding it. If the file then fails to follow this format, the algorithms
 might break. CFEngine gives you generic tools to be able to handle files in any
 line-based format, without the need to hard-code specialist knowledge about file

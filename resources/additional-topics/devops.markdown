@@ -69,7 +69,7 @@ change quickly if humans can get their acts together. Human IT processes and
 best practices (e.g. ITIL, COBIT, etc) tend to over bureaucratize change,
 leading to unnecessary overhead which frustrates agile companies.
 
-To be confident and efficient (`less haste more speed'), there needs to be a
+To be confident and efficient (_less haste more speed_), there needs to be a
 model for the system that everyone agrees on. Models compress information and
 cache understanding, meaning we have less to talk about1. Finally, models allow
 us to make predictions, so they aid understanding and help us to avoid mistake.
@@ -88,7 +88,7 @@ by the circuitry of online applications) and increasing scale.
 
 CFEngine is not a programming language, but a documentation language for system
 state that has the pleasant side effect of enforcing that state on a continuous
-basis. It gets away from the idea of `build automation' to complete lifecycle
+basis. It gets away from the idea of _build automation_ to complete lifecycle
 management. It's continuity is a natural partner for a rapid development
 environment, as mistakes can be quickly fixed on the fly with minimal impact on
 the system.
@@ -234,10 +234,8 @@ low overhead.
 
 ### Expressing loops in CFEngine
 
-Lists and loops go hand in hand, and they are a very effective way of reducing
-syntax and simplifying the expression of intent. Saying `do this to all the
-following' is generally easier to comprehend than `do this to the first, do this
-to the next,...' and so on, because our brains are wired to see patterns.
+Lists and loops go hand in hand, and they are a very effective way of reducing syntax and simplifying the expression of intent.
+Saying _do this to all the following_ is generally easier to comprehend than _do this to the first, do this to the next,..._ and so on, because our brains are wired to see patterns.
 
 Thus, loops are as useful for configuration as for programming. We only want to
 simplify the syntax once again to hide redundant words like `foreach`. To do
@@ -376,7 +374,7 @@ management.
 Integration of software components may be addressed with a variety of approaches
 and techniques:
 
-* Standard template methods from the COPBL community library (`out of the box'
+* Standard template methods from the COPBL community library (_out of the box_
   solutions).
 
 * Customized, personalized configurations.

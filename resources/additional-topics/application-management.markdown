@@ -184,7 +184,7 @@ packages:
 By promising carefully what package and version you want, using package_policy,
 package_select, and package_version, CFEngine can keep this promise by updating
 to the latest version of the package available in the directory repository
-/software_repo. If the available versions are all `less than' than "1.0.0", an
+/software_repo. If the available versions are all _less than_ than "1.0.0", an
 update will not take place. The package_version specification should match the
 versioning format of the software, whatever it is, e.g. you would write
 something like "1.00.00.0" if two digits were used in the two middle version

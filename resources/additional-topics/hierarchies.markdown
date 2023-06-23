@@ -33,10 +33,9 @@ on demand to other nodes, without any particular ranking. If you move in a mesh,
 you cannot easily measure how far you are away from a given point, as their
 might be more than one way of getting there.
 
-Mesh architectures are often robust to failure as there can be multiple `peer to
-peer' routes for passing messages or information.
+Mesh architectures are often robust to failure as there can be multiple _peer to peer_ routes for passing messages or information.
 
-Top-down is is a cultural prejudice or `norm', as most human societies work in
+Top-down is is a cultural prejudice or _norm_, as most human societies work in
 this way. However it is not a necessity. A network service is bottom-up - there
 it is the leaves which drive requests that end at a single central server.
 Hierarchies are special cases of networks, and (as all special cases) they are
