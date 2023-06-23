@@ -231,7 +231,7 @@ the users or consumers of the information are so-called derived classes.
 We can use the notion of inheritance at different levels within CFEngine. These
 are a matter of using the global scope with bundle names.
 
-### Inheritance of classes/sets ###
+### Inheritance of classes/sets
 
 We can aggregate smaller classes into larger ones (yielding multiple inheritance
 of class attributes):
@@ -252,13 +252,13 @@ bundle agent example
 Note that CFEngine naturally forms a bottom-up hierarchy, never a top-down
 hierarchy.
 
-### Inheritance of class definitions ###
+### Inheritance of class definitions
 
 CFEngine divides its promises into bundles that have private classes and
 variables. Bundles called `common bundles` define global classes, so they are
 automatically inherited by all other bundles.
 
-### Inheritance of variable definitions ###
+### Inheritance of variable definitions
 
 Variables in CFEngine are globally accessible, but you must say what bundle you
 are talking about by writing '$(bundle.scalar)' or '@(bundle.list)'. If you omit
@@ -284,7 +284,7 @@ The policy ifdefined means that CFEngine will ignore the foreign list if it does
 not exist. This means you can include a number of lists from other bundles to
 extend the behviour of your own, if they are provided.
 
-### Inheritance of bundles ###
+### Inheritance of bundles
 
 Bundles cannot really be merged like sets, but since they make promises you can
 use them.
