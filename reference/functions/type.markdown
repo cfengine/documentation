@@ -2,7 +2,6 @@
 layout: default
 title: type
 published: true
-tags: [reference, utility functions, functions, type]
 ---
 
 [%CFEngine_function_prototype(var, detail)%]

@@ -3,7 +3,6 @@ layout: default
 title: Extending query builder in Mission Portal
 published: true
 sorting: 90
-tags: [faq, mission portal, hub administration, query builder]
 ---
 
 This instruction is created to explain how to extend the [Query builder][Reporting UI#Query builder] in the case where

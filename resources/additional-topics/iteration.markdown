@@ -3,10 +3,9 @@ layout: default
 title: Iteration (Loops)
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 ---
 
-# What is iteration?
+## What is iteration?
 
 Iteration is about repeating operations in a list. In CFEngine, iteration is
 used to make a number of related promises, that fall into a pattern based on
@@ -25,7 +24,7 @@ scalar reference `$(list)`, then CFEngine understands this to mean, take each
 scalar item in the list and repeat the current promise, replacing the instance
 with elements of the list in turn.
 
-# Iterated promises
+## Iterated promises
 
 Consider the following set of promises to report on the values of four separate
 monitor values:
@@ -88,7 +87,7 @@ the semantics of the reports from the list of monitoring variables.
 Admittedly, this is a simple example, but if you understand this one, we can
 continue with more compelling examples.
 
-# Iterating across multiple lists
+## Iterating across multiple lists
 
 
 Although iteration is a powerful concept in and of itself, CFEngine can iterate
@@ -124,7 +123,7 @@ report on `value_rootprocs`, `av_rootprocs`, and `dev_rootprocs`, followed next 
 leftward lists are iterated over completely before going to the next value in
 the rightward lists.
 
-# Iterating over nested lists
+## Iterating over nested lists
 
 Recall that CFEngine iterates over complete promise units, not small parts of a
 promise. Let's look at an example that could show a common misunderstanding.
@@ -206,7 +205,7 @@ it will generate an error, because the second promise on the variable monvars
 will overwrite the value promised in the first promise! All that we will see in
 the reports are the second definition of the monvars list.
 
-# Fixing iterating across nested lists
+## Fixing iterating across nested lists
 
 ```cf3
 bundle agent iteration3c
@@ -234,7 +233,7 @@ you. Note that we had to explicitly refer to the two variables that we created:
 `$(monvars_in)` and `$(monvars_out)`, and specifying more will get very messy
 very quickly. However, the next sections show an easier-to-read workaround.
 
-# Iterating across multiple lists, revisted
+## Iterating across multiple lists, revisted
 
 When a list variable is referenced as a scalar variable (that is, when the list
 variable is referenced as `$(list)`) instead of as a list (using `@(list)`),
@@ -298,7 +297,7 @@ commands:
 }
 ```
 
-# Nesting promises workaround
+## Nesting promises workaround
 
 Recall the problem of nesting iterations, we can now see how to repair our
 error. The key is to ensure that there is a distinct and unique promise created
@@ -398,7 +397,7 @@ reports:
 However, this is wrong. We cannot use `@(io_vars)`, because `io_vars` is not a
 list, it is an array! You can only use the `@` dereferencing sigil on lists.
 
-# The power of iteration in CFEngine
+## The power of iteration in CFEngine
 
 Iteration and abstraction are power tools in CFEngine. In closing, consider the
 following simple and straightforward example, where we report on all of the
@@ -457,7 +456,7 @@ reports promise and intelligent use of lists and arrays, we are able to report
 on every one of the 3*(8+2*18+4*2)==156 monitor variables. And to change the
 format of every report, we will only have a single statement to change.
 
-# Summary of iteration
+## Summary of iteration
 
 Used judiciously and intelligently, iterators are a powerful way of expressing
 patterns. They enable you to abstract out the concepts from the nitty-gritty

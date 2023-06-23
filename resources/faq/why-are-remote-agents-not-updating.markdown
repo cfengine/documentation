@@ -3,7 +3,6 @@ layout: default
 title: Why are remote agents not updating?
 published: true
 sorting: 90
-tags: [getting started, installation, faq, cf_promises_validated ]
 ---
 
 The [masterfiles policy framework][Masterfiles Policy Framework] defaults to using

@@ -3,7 +3,6 @@ layout: default
 title: Augments
 published: true
 sorting: 70
-tags: [manuals, language, syntax, concepts, augments]
 ---
 
 Augments files can be used to define variables and classes for use by

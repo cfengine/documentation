@@ -2,7 +2,6 @@
 layout: default
 title: regcmp
 published: true
-tags: [reference, data functions, functions, regcmp]
 ---
 
 [%CFEngine_function_prototype(regex, string)%]

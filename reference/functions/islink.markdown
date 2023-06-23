@@ -2,7 +2,6 @@
 layout: default
 title: islink
 published: true
-tags: [reference, files functions, functions, islink]
 ---
 
 [%CFEngine_function_prototype(filename)%]

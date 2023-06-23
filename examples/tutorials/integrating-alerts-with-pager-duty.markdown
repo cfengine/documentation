@@ -3,7 +3,6 @@ layout: default
 title: Integrating alerts with PagerDuty
 sorting: 15
 published: true
-tags: [Examples, Tutorials, Alerts, Enterprise, Custom Actions, PagerDuty]
 ---
 
 In this How To tutorial we will show you can integrate with [PagerDuty](http://www.pagerduty.com/) using the CFEngine notification dashboard.

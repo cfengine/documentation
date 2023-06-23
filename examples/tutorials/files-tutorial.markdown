@@ -1,9 +1,8 @@
 ---
 layout: default
-title: Create, modify, and delete Files
+title: File editing
 sorting: 10
 published: true
-tags: [Examples, Tutorials]
 ---
 
 ## Prerequisites ##

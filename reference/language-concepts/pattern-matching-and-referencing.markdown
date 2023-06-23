@@ -3,7 +3,6 @@ layout: default
 title: Pattern matching and referencing
 published: true
 sorting: 80
-tags: [manuals, language, syntax, concepts, pattern, regexp, matching]
 ---
 
 One of the strengths of CFEngine 3 is the ability to recognize and exploit

@@ -2,7 +2,6 @@
 layout: default
 title: readcsv
 published: true
-tags: [reference, io functions, functions, readcsv, CSV, container]
 ---
 
 [%CFEngine_function_prototype(filename, optional_maxbytes)%]

@@ -3,11 +3,10 @@ layout: default
 title: Content Driven Policy
 published: true
 sorting: 80
-tags: [overviews, special topics, guide]
 reviewed: 2019-05-06
 ---
 
-# What is a content-driven policy?
+## What is a content-driven policy?
 
 
 A Content-Driven Policy is a text file with lines containing semi-colon
@@ -35,7 +34,7 @@ of masterfiles since 3.6.0. [`cdp_inputs` was removed](https://github.com/cfengi
 unified base for policy that works with both CFEngine Community and CFEngine
 Enterprise.
 
-# Why should i use content-driven policies?
+## Why should i use content-driven policies?
 
 
 As seen in the example above, Content-Driven Policies are easy to write and
@@ -87,7 +86,7 @@ like the following.
 * Database management
 * Application / script management
 
-# How do content-driven policies work in detail?
+## How do content-driven policies work in detail?
 
 
 The text files in masterfiles/cdp_inputs/(e.g. 'registry_list.txt') are parsed
@@ -98,7 +97,7 @@ policies in the text files.
 The Knowledge Map contains reports specifically designed to match the
 Content-Driven Policies.
 
-# Can I make my own content-driven policies?
+## Can I make my own content-driven policies?
 
 
 It is possible to mimic the structure of the existing Content-Driven Policies to

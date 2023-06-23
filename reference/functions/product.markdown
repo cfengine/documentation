@@ -2,7 +2,6 @@
 layout: default
 title: product
 published: true
-tags: [reference, data functions, functions, product, inline_json]
 ---
 
 [%CFEngine_function_prototype(list)%]

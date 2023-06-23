@@ -3,7 +3,6 @@ layout: default
 title: Reporting and web UI
 published: true
 sorting: 30
-tags: [guide, getting started, mission portal]
 ---
 
 After setting up your CFEngine Hub, adding modules and deployed your first policy set, it's appropriate to get familiar with the CFEngine Web UI, Mission Portal, and some of it's useful features.

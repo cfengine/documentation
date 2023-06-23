@@ -2,7 +2,6 @@
 layout: default
 title: translatepath
 published: true
-tags: [reference, files functions, functions, translatepath]
 ---
 
 [%CFEngine_function_prototype(path)%]

@@ -2,7 +2,6 @@
 layout: default
 title: VCS settings API
 published: true
-tags: [reference, enterprise, API, settings, VCS]
 ---
 VCS API for managing version control repository settings.
 

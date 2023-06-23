@@ -2,7 +2,6 @@
 layout: default
 title: def
 published: true
-tags: [reference, variables, def, augments]
 ---
 
 The context `def` is populated by the

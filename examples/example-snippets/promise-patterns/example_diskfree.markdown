@@ -2,7 +2,6 @@
 layout: default
 title: Check filesystem space
 published: true
-tags: [Examples, Policy, check, filesystem]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

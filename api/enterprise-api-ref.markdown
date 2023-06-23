@@ -3,7 +3,6 @@ layout: default
 title:  Enterprise API reference
 published: true
 sorting: 70
-tags: [reference, enterprise, REST, API, reporting, sql]
 ---
 
 The Enterprise API is a conventional REST API in the sense that it has a

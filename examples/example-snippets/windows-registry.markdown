@@ -3,7 +3,6 @@ layout: default
 title: Windows registry examples
 published: true
 sorting: 14
-tags: [Examples,Windows Registry]
 ---
 
 * [Windows registry][Windows registry examples#Windows registry]

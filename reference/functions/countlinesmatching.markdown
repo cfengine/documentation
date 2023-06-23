@@ -2,7 +2,6 @@
 layout: default
 title: countlinesmatching
 published: true
-tags: [reference, io functions, functions, countlinesmatching]
 ---
 
 [%CFEngine_function_prototype(regex, filename)%]

@@ -3,7 +3,6 @@ layout: default
 title: Version control
 published: true
 sorting: 60
-tags: [manuals, writing policy, version control, git, subversion]
 ---
 
 By default, CFEngine policy is published `/var/cfengine/masterfiles` on the policy

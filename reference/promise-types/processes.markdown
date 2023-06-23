@@ -2,7 +2,6 @@
 layout: default
 title: processes
 published: true
-tags: [reference, bundle agent, promise types, processes, processes promises, promise types]
 ---
 
 Process promises refer to items in the system process table, i.e., a command in

@@ -2,7 +2,6 @@
 layout: default
 title: isexecutable
 published: true
-tags: [reference, files functions, functions, isexecutable]
 ---
 
 [%CFEngine_function_prototype(filename)%]

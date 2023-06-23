@@ -2,7 +2,6 @@
 layout: default
 title: some
 published: true
-tags: [reference, data functions, functions, some, inline_json]
 ---
 
 [%CFEngine_function_prototype(regex, list)%]

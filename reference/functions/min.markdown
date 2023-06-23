@@ -2,7 +2,6 @@
 layout: default
 title: min
 published: true
-tags: [reference, data functions, functions, min, inline_json]
 ---
 
 [%CFEngine_function_prototype(list, sortmode)%]

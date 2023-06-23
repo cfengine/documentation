@@ -2,7 +2,6 @@
 layout: default
 title: callstack_promisers
 published: true
-tags: [reference, internal functions, functions, callstack_promisers, call, stack, promisers, debugging]
 ---
 
 [%CFEngine_function_prototype()%]

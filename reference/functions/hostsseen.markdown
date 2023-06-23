@@ -2,7 +2,6 @@
 layout: default
 title: hostsseen
 published: true
-tags: [reference, communication functions, functions, hostsseen]
 ---
 
 [%CFEngine_function_prototype(horizon, seen, field)%]

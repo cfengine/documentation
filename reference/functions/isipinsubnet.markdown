@@ -2,7 +2,6 @@
 layout: default
 title: isipinsubnet
 published: true
-tags: [reference, communication functions, functions, subnet, networking, IPv4, IP, isipinsubnet]
 ---
 
 [%CFEngine_function_prototype(range, ip_address1, ip_address2, ...)%]

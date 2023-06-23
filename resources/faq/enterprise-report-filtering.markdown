@@ -3,7 +3,6 @@ layout: default
 title: Enterprise Report Filtering
 published: true
 sorting: 90
-tags: [getting started, faq, enterprise]
 ---
 
 ## Filtering inventoried lists

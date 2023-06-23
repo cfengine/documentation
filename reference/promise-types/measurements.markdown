@@ -2,7 +2,6 @@
 layout: default
 title: measurements
 published: true
-tags: [reference, bundle monitor, measurements, monitoring, promise types]
 ---
 
 By default, CFEngine's monitoring component `cf-monitord` records performance

@@ -2,7 +2,6 @@
 layout: default
 title: "parserealarray"
 published: true
-tags: [reference, io functions, functions, parserealarray]
 ---
 
 **Prototype:** `parserealarray(array, input, comment, split, maxentries, maxbytes)`<br>

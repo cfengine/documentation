@@ -2,7 +2,6 @@
 layout: default
 title: escape
 published: true
-tags: [reference, data functions, functions, escape]
 ---
 
 [%CFEngine_function_prototype(text)%]

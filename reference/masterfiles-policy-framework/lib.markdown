@@ -2,7 +2,6 @@
 layout: default
 title: lib/
 published: true
-tags: [reference, controls, MPF]
 ---
 
 This directory contains the standard library akak COPBL or the Community Open

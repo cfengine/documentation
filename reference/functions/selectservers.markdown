@@ -2,7 +2,6 @@
 layout: default
 title: selectservers
 published: true
-tags: [reference, communication functions, functions, selectservers]
 ---
 
 [%CFEngine_function_prototype(hostlist, port, query, regex, maxbytes, array)%]

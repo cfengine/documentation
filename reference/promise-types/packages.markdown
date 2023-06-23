@@ -2,7 +2,6 @@
 layout: default
 title: packages
 published: true
-tags: [reference, bundle agent, packages, packages promises, promise types]
 ---
 
 CFEngine 3.7 and later supports package management through a simple promise

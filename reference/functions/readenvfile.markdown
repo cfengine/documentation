@@ -2,7 +2,6 @@
 layout: default
 title: readenvfile
 published: true
-tags: [reference, io functions, functions, readenvfile, json, env, os-release, container]
 ---
 
 [%CFEngine_function_prototype(filename, optional_maxbytes)%]

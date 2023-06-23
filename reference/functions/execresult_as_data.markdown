@@ -2,7 +2,6 @@
 layout: default
 title: execresult_as_data
 published: true
-tags: [reference, utility functions, functions, execresult_as_data, cached function]
 ---
 
 [%CFEngine_function_prototype(command, shell, output)%]

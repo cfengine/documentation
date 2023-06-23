@@ -2,7 +2,6 @@
 layout: default
 title: classes
 published: true
-tags: [bundle common, classes, promises]
 ---
 
 [Classes][classes] promises may be made in any bundle. Classes defined by

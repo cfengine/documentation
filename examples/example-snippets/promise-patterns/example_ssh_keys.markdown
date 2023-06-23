@@ -2,7 +2,6 @@
 layout: default
 title: Distribute ssh keys
 published: true
-tags: [Examples, Policy, ssh, authorized_keys, distribution]
 reviewed: 2015-12-15
 reviewed-by: nickanderson, enrico
 ---

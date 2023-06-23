@@ -2,7 +2,6 @@
 layout: default
 title: userexists
 published: true
-tags: [reference, system functions, functions, userexists]
 ---
 
 [%CFEngine_function_prototype(user)%]

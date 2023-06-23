@@ -3,7 +3,6 @@ layout: default
 title: cf-serverd
 published: true
 sorting: 20
-tags: [Components, cf-serverd]
 keywords: [server]
 ---
 

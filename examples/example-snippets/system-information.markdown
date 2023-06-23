@@ -3,7 +3,6 @@ layout: default
 title: System information examples
 published: true
 sorting: 11
-tags: [Examples,System Information]
 ---
 
 * [Change detection][System information examples#Change detection]

@@ -2,7 +2,6 @@
 layout: default
 title: controls/cf_runagent.cf
 published: true
-tags: [reference, controls, MPF]
 ---
 
 This is where `body runagent control` is defined. `body runagent control` is where

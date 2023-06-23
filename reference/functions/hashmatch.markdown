@@ -2,7 +2,6 @@
 layout: default
 title: hashmatch
 published: true
-tags: [reference, data functions, functions, hashmatch]
 ---
 
 [%CFEngine_function_prototype(filename, algorithm, hash)%]

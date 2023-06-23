@@ -3,7 +3,6 @@ layout: default
 title: Reporting
 published: true
 sorting: 80
-tags: [overviews, reports, reporting]
 ---
 
 No promises made in CFEngine imply automatic aggregation of data to a central location. In

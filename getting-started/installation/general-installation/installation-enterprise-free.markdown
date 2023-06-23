@@ -3,7 +3,6 @@ layout: default
 title: Installing Enterprise 25 Free
 published: true
 sorting: 20
-tags: [getting started, installation, enterprise free]
 ---
 
 These instructions describe how to install the latest version of CFEngine Enterprise 25 Free. This is the full
@@ -118,7 +117,7 @@ number you use in your **Vagrantfile** (e.g. policyserver.vm.network "forwarded_
 
 * [Tutorial for running examples][Examples and tutorials#Tutorial for running examples]
 
-* [Distribute files from a central location.][Distribute files from a central location]
+* [Distributing files from a central location.][Distributing files from a central location]
 
   Whereas the first tutorial in this list teaches you how to deploy business policy
   through the Mission Portal, this advanced, command-line tutorial shows you how to distribute policy files from the Policy Server to all pertinent Hosts.

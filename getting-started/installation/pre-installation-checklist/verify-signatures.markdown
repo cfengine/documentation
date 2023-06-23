@@ -3,7 +3,6 @@ layout: default
 title: Verifying package signatures
 published: true
 sorting: 40
-tags: [getting started, installation]
 ---
 
 On the [Download CFEngine][enterprise software download page], you will find

@@ -2,7 +2,6 @@
 layout: default
 title: diskfree
 published: true
-tags: [reference, files functions, functions, diskfree]
 ---
 
 [%CFEngine_function_prototype(path)%]

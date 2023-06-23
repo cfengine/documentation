@@ -2,7 +2,6 @@
 layout: default
 title: data_sysctlvalues
 published: true
-tags: [reference, system functions, functions, sysctl, data_sysctlvalues]
 ---
 
 [%CFEngine_function_prototype()%]

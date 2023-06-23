@@ -2,7 +2,6 @@
 layout: default
 title: now
 published: true
-tags: [reference, system functions, functions, now]
 ---
 
 [%CFEngine_function_prototype()%]

@@ -2,7 +2,6 @@
 layout: default
 title: makerule
 published: true
-tags: [reference, files functions, functions, makerule, inline_json]
 ---
 
 [%CFEngine_function_prototype(target, sources)%]

@@ -2,7 +2,6 @@
 layout: default
 title: not
 published: true
-tags: [reference, data functions, functions, not]
 ---
 
 [%CFEngine_function_prototype(expression)%]

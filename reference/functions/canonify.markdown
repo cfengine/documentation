@@ -2,7 +2,6 @@
 layout: default
 title: canonify
 published: true
-tags: [reference, data functions, functions, canonify]
 ---
 
 [%CFEngine_function_prototype(text)%]

@@ -2,7 +2,6 @@
 layout: default
 title: readintlist
 published: true
-tags: [reference, io functions, functions, readintlist]
 ---
 
 [%CFEngine_function_prototype(filename, comment, split, maxentries, maxbytes)%]

@@ -3,7 +3,6 @@ layout: default
 title: Health
 sorting: 20
 published: true
-tags: [cfengine enterprise, user interface, mission portal, health]
 ---
 
 <img width="493px" src="Mission-portal-health-dignostics-header.png">

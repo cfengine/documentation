@@ -2,7 +2,6 @@
 layout: default
 title: High availability
 published: true
-tags: [cfengine enterprise, high availability]
 ---
 
 ## Overview

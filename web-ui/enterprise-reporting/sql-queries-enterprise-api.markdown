@@ -3,7 +3,6 @@ layout: default
 title: SQL queries using the Enterprise API
 published: true
 sorting: 20
-tags: [manuals, enterprise, reporting]
 ---
 
 The CFEngine Enterprise Hub collects information about the

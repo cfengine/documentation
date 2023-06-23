@@ -3,7 +3,6 @@ layout: default
 title: Editors
 published: true
 sorting: 10
-tags: [tools, editor, vim, emacs, vscode, kate, sublime text, atom, eclipse ]
 ---
 
 Using an editor that provides syntax highlighting and other features can significantly enhance prodcutivity and quality of life.

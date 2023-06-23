@@ -2,7 +2,6 @@
 layout: default
 title: data_regextract
 published: true
-tags: [reference, data functions, functions, json, container, regextract, pcre]
 ---
 
 [%CFEngine_function_prototype(regex, string)%]

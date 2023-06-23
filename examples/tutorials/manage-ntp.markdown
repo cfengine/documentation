@@ -1,9 +1,8 @@
 ---
 layout: default
-title: Manage network time protocol
+title: Managing network time protocol
 published: true
 sorting: 3
-tags: [getting started, tutorial]
 ---
 
 In this tutorial we will write a simple policy to ensure that the latest version of the NTP service is installed on your system. Once the NTP software is installed, we will extend the policy to manage the service state as well as the software configuration.

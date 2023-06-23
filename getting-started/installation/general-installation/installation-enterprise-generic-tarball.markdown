@@ -3,7 +3,6 @@ layout: default
 title: Installing from binary tarball
 published: true
 sorting: 50
-tags: [getting started, installation]
 ---
 
 Not all systems come with a package manager. For these systems you can install

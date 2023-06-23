@@ -2,7 +2,6 @@
 layout: default
 title: lib/databases.cf
 published: true
-tags: [reference, standard library, databases, MPF]
 ---
 
 See the [`databases` promises][databases] documentation for a

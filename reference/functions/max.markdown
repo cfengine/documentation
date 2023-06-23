@@ -2,7 +2,6 @@
 layout: default
 title: max
 published: true
-tags: [reference, data functions, functions, max, inline_json]
 ---
 
 [%CFEngine_function_prototype(list, sortmode)%]

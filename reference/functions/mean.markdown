@@ -2,7 +2,6 @@
 layout: default
 title: mean
 published: true
-tags: [reference, data functions, functions, mean, inline_json]
 ---
 
 [%CFEngine_function_prototype(list)%]

@@ -2,7 +2,6 @@
 layout: default
 title: Host REST API
 published: true
-tags: [reference, enterprise, REST, API, reporting, host, monitoring]
 ---
 
 Host API allows to access host specific information.

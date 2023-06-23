@@ -2,7 +2,6 @@
 layout: default
 title: cfe_internal/update/
 published: true
-tags: [reference, cfe_internal, MPF]
 ---
 
 This directory contains internal management polcies related to the default

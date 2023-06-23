@@ -2,7 +2,6 @@
 layout: default
 title: sum
 published: true
-tags: [reference, data functions, functions, sum, inline_json]
 ---
 
 [%CFEngine_function_prototype(list)%]

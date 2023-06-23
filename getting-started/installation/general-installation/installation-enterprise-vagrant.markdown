@@ -3,7 +3,6 @@ layout: default
 title: Using Vagrant
 published: true
 sorting: 30
-tags: [getting started, installation, enterprise, vagrant]
 ---
 
 The CFEngine Enterprise Vagrant Environment provides an easy way to test and

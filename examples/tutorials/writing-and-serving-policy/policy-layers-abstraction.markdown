@@ -3,7 +3,6 @@ layout: default
 title: Layers of abstraction in policy
 published: true
 sorting: 2
-tags: [overviews, writing policy, policy]
 ---
 
 CFEngine offers a number of layers of abstraction. The most fundamental atom

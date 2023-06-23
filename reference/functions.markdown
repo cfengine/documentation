@@ -3,7 +3,6 @@ layout: default
 title: Functions
 published: true
 sorting: 30
-tags: [Reference, Functions]
 ---
 
 Functions take zero or more values as arguments and return a value.

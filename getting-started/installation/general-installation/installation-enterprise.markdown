@@ -3,7 +3,6 @@ layout: default
 title: Installing Enterprise for production
 published: true
 sorting: 40
-tags: [getting started, installation, enterprise production]
 ---
 
 These instructions describe how to install the latest version of

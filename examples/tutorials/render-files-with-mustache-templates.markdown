@@ -1,9 +1,8 @@
 ---
 layout: default
-title: Render files with Mustache templates
+title: Rendering files with Mustache templates
 sorting: 15
 published: true
-tags: [Examples, Tutorials, mustache]
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BUajq2b081E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

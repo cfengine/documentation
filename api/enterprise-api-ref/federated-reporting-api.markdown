@@ -2,17 +2,16 @@
 layout: default
 title: Federated reporting configuration API
 published: true
-tags: [reference, enterprise, API, reporting]
 ---
 
 This API is used for configuring hubs so that a single hub can be used to report on any host connected to participating feeder hubs.
 
-# Remote hubs
+## Remote hubs
 
 Federated reporting must be enabled before it is possible to use the remote hubs API, please
 see the `Enable hub for federated reporting` section below.
 
-## Remote hubs list
+### Remote hubs list
 
 **URI:** https://hub.cfengine.com/api/fr/remote-hub
 
@@ -56,7 +55,7 @@ HTTP 200 OK
 }
 ```
 
-## Get remote hub
+### Get remote hub
 
 **URI:** https://hub.cfengine.com/api/fr/remote-hub/:remote_hub_id
 
@@ -88,7 +87,7 @@ HTTP 200 OK
 }
 ```
 
-## Add remote hub
+### Add remote hub
 
 **URI:** https://hub.cfengine.com/api/fr/remote-hub
 
@@ -113,7 +112,7 @@ HTTP 200 OK
 HTTP 201 CREATED
 ```
 
-## Update remote hub
+### Update remote hub
 
 **URI:** https://hub.cfengine.com/api/fr/remote-hub/:remote_hub_id
 
@@ -140,7 +139,7 @@ HTTP 201 CREATED
 HTTP 202 ACCEPTED
 ```
 
-## Delete remote hub
+### Delete remote hub
 
 **URI:** https://hub.cfengine.com/api/fr/remote-hub/:remote_hub_id
 
@@ -157,9 +156,9 @@ HTTP 202 ACCEPTED
 HTTP 202 ACCEPTED
 ```
 
-# Enable hub for federated reporting
+## Enable hub for federated reporting
 
-## Enable hub as a superhub
+### Enable hub as a superhub
 
 **URI:** https://hub.cfengine.com/api/fr/setup-hub/superhub
 
@@ -172,7 +171,7 @@ HTTP 202 ACCEPTED
 ```
 
 
-## Enable hub as a feeder
+### Enable hub as a feeder
 
 **URI:** https://hub.cfengine.com/api/fr/setup-hub/feeder
 
@@ -184,7 +183,7 @@ HTTP 202 ACCEPTED
 HTTP 202 ACCEPTED
 ```
 
-## Hub status
+### Hub status
 
 **URI:** https://hub.cfengine.com/api/fr/hub-status
 
@@ -203,13 +202,13 @@ HTTP 202 ACCEPTED
 }
 ```
 
-# Federation config
+## Federation config
 
 Federated reporting must be enabled before generating or removing federation configuration, please
 see `Enable hub for federated reporting` section above. Otherwise an error will be thrown and
 config file will not be created/deleted.
 
-## Generate federation config
+### Generate federation config
 
 **URI:** https://hub.cfengine.com/api/fr/federation-config
 
@@ -221,7 +220,7 @@ config file will not be created/deleted.
 HTTP 202 ACCEPTED
 ```
 
-## Delete federation config
+### Delete federation config
 
 **URI:** https://hub.cfengine.com/api/fr/federation-config
 
