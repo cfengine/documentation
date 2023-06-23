@@ -16,7 +16,7 @@ To get started with CFEngine, you can imagine the following template for enterin
 
 [%CFEngine_include_snippet(basic_example.cf, .* )%]
 
-# The general pattern
+## The general pattern
 
 The general pattern of the syntax is like this (colors in html version: red, CFEngine word; blue, user-defined word):
 
@@ -26,7 +26,7 @@ bundle component name(parameters)
 what_type:
  where_when::
 
-  # Traditional comment
+  ## Traditional comment
 
 
   "promiser" -> { "promisee1", "promisee2" },
@@ -37,11 +37,11 @@ what_type:
 }
 ```
 
-## Hello world
+### Hello world
 
 
 [%CFEngine_include_snippet(hello_world.cf, .* )%]
 
-## Array example ##
+### Array example
 
 [%CFEngine_include_snippet(array_example.cf, .* )%]

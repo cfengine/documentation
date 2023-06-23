@@ -5,7 +5,7 @@ published: true
 sorting: 80
 ---
 
-# What is team-work?
+## What is team-work?
 
 
 Team work is a collaboration between individuals with different skills. It is
@@ -38,7 +38,7 @@ Team work and policy design for inter-host cooperation are closely related. Use
 promises as a tool to explain to the individuals in a team which individual is
 responsible for what role, and to what extent.
 
-# Creative roles
+## Creative roles
 
 
 M. Belbin, a researcher in teamwork has identified nine abilities or roles
@@ -79,7 +79,7 @@ ourselves: how can we use the freedom to organize into specialized teams to
 maximize human creativity, while passing hard work over to machines. Solving
 this problem is what CFEngine is about.
 
-# Delegating roles in a collaboration
+## Delegating roles in a collaboration
 
 
 We need to delegate responsiblity to divide and conquer a problem, both when

@@ -5,7 +5,7 @@ published: true
 sorting: 80
 ---
 
-# From boiler-plates to convergent file editing
+## From boiler-plates to convergent file editing
 
 Many configuration management systems allow you to determine configuration file
 content to some extent, usually by over-writing files with boiler-plate
@@ -30,7 +30,7 @@ being predictable. There are three ways to approach this problem. You should
 choose the simplest approach that solves your problem and try not to be
 prejudiced by what you have done before.
 
-# Why is file editing difficult?
+## Why is file editing difficult?
 
 File content is not made up of simple data objects like permission flags or
 process tables: files contain compound, ordered structures (known as grammars)
@@ -47,7 +47,7 @@ formats.
 Remember that all changes are adapted to your local context and implemented at
 the final destination by cf-agent.
 
-# What does file editing involve?
+## What does file editing involve?
 
 
 There are several ways to approach desired state management of file contents:
@@ -76,7 +76,7 @@ of the file you are starting from. Approach 3 is generally required when
 adapting configuration files provided by a third party, since the basic content
 is determined by them.
 
-# Three approaches to managing files
+## Three approaches to managing files
 
 * Copying a finished file template into place
 
@@ -88,7 +88,7 @@ is determined by them.
 
 * Making delta changes to someone else's file
 
-## Copying a finished file template into place
+### Copying a finished file template into place
 
 Use this approach if a simple substution of data will solve the problem in all
 contexts.
@@ -110,7 +110,7 @@ files:
 }
 ```
 
-## Contextual adaptation of a file template
+### Contextual adaptation of a file template
 
 There are several approaches here:
 
@@ -231,7 +231,7 @@ nameserver 2
 nameserver 3
 ```
 
-## Example file template
+### Example file template
 
 ```
 [%CFEngine any:: %]
@@ -265,7 +265,7 @@ nameserver 3
 [%CFEngine END %]
 ```
 
-## Combining copy with template expansion
+### Combining copy with template expansion
 
 What about getting your template to the end-host? To convergently copy a file
 from a source and then edit it, use the following construction with a staging
@@ -296,7 +296,7 @@ replace_patterns:
 }
 ```
 
-## Making delta changes to someone else's file
+### Making delta changes to someone else's file
 
 Edit a file with multiple promises about its state, when you do not want to
 determine the entire content of the file, or if it is unsafe to make unilateral
@@ -348,7 +348,7 @@ delete_lines:
 }
 ```
 
-# Constructing files from promises
+## Constructing files from promises
 
 
 Making finished templates for files and filling in the blanks using variables is
@@ -415,7 +415,7 @@ host$ more /tmp/my_result
    e.g Mary had a little lamb
 ```
 
-## Adding a line here and there
+### Adding a line here and there
 
 A simple file like this could also be defined in-line, without a separate
 template file:
@@ -454,7 +454,7 @@ files:
 }
 ```
 
-## Lists inline
+### Lists inline
 
 
 Here is a more complicated example, that includes list expansion. List expansion
@@ -692,7 +692,7 @@ insert_lines:
 }
 ```
 
-# Editing bundles
+## Editing bundles
 
 Unlike other aspects of configuration, promising the content of a single file
 object involves possibly many promises about the atoms within the file. Thus we
@@ -731,7 +731,7 @@ insert_lines:
 
 * Expressing expand_template as promises
 
-## Standard library methods for simple editing
+### Standard library methods for simple editing
 
 You may choose to write your own editing bundles for specific purposes; you can
 also use ready-made templates from the standard library for a lot of purposes.
@@ -788,7 +788,7 @@ Some other examples of the standard editing methods are:
 
 You find these in the documentation for the COPBL.
 
-## Expressing expand_template as promises
+### Expressing expand_template as promises
 
 As on CFEngine 3.3.0, CFEngine has a new template mechanism to make it easier to
 encode complex file templates. These templates map simply to edit_line bundles
@@ -819,7 +819,7 @@ bundle agent example
 }
 ```
 
-# Choosing an approach to file editing
+## Choosing an approach to file editing
 
 There are two decisions to make when choosing how to manage file content:
 
@@ -834,7 +834,7 @@ How can the desired content be constructed from the necessary source(s)?
 Use the simplest approach that requires the smallest number of promises to solve
 the problem.
 
-# Pitfalls to watch out for in file editing
+## Pitfalls to watch out for in file editing
 
 File editing is different from most other kinds of configuration promise because
 it is fundamentally an order dependent configuration process. Files contain

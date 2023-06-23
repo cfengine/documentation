@@ -5,7 +5,7 @@ published: true
 sorting: 80
 ---
 
-# What is distributed scheduling?
+## What is distributed scheduling?
 
 Scheduling refers to the execution of non-interactive processes or tasks
 (usually called `jobs') at designated times and places around a network of
@@ -15,7 +15,7 @@ several computers. For example, you schedule a processing job
 on machine1 and machine2, and when these are finished you need to schedule a job
 on machine3. This is distributed scheduling.
 
-# Coordinating dispatch
+## Coordinating dispatch
 
 Dispatch is the term used for starting actually the execution of a job that has
 been scheduled. There are two ways to achieve distributed job scheduling:
@@ -34,7 +34,7 @@ CFEngine is a naturally decentralized system, and only policy definition is
 usually centralized, but you can set up practically any architecture you like,
 in a secure fashion.
 
-# Job scheduling and periodic maintenance
+## Job scheduling and periodic maintenance
 
 You promise to execute tasks or keep promises at distributed places and times:
 
@@ -55,7 +55,7 @@ This list transfers to workflow processes too. If one job needs to follow after
 another (because it depends on it for something), we can ask if this workflow is
 a standard and regular occurrence, or a one-off phenomenon.
 
-## One-off workflows
+### One-off workflows
 
 In CFEngine, you code a one-off workflow by specifying the space-time
 coordinates of the event that starts it. For example, if you want a job to be
@@ -152,7 +152,7 @@ access:
 }
 ```
 
-## Regular workflows
+### Regular workflows
 
 To make a job happen at a specific time, we used a very specific time classifier
 'Day24.January.Year2012.Hr16.Min45_50'. If we now want to make this workflow
@@ -208,7 +208,7 @@ commands:
 ```
 
 
-# Fancy distributed encapsulation
+## Fancy distributed encapsulation
 
 We could try to be fancy about distributed scheduling, packaging it into a
 reusable structure. This may or may not be a good idea, depending on your
@@ -321,7 +321,7 @@ access:
 }
 ```
 
-# More links in the chain
+## More links in the chain
 
 In the examples above, we only had two hosts cooperating about jobs. In general,
 it is not a good idea to link together many different hosts unless there is a
@@ -338,7 +338,7 @@ number of jobs to drive a single follow-up.
 
 ![Scheduling Patterns](./scheduleing-patterns.png)
 
-## Aggregation of multiple jobs
+### Aggregation of multiple jobs
 
 When aggregating jobs, we must combine their exit status using AND or OR. The
 most common case it that we require all the prerequisites in place in order to
@@ -395,7 +395,7 @@ bundle agent example
 }
 ```
 
-## Triggering multiple follow-ups
+### Triggering multiple follow-ups
 
 The converse scenario is to trigger a number of jobs from a single
 pre-requisite. This is simply a case of listing the jobs under the trigger
@@ -431,7 +431,7 @@ commands:
         classes => state_repaired("did_my_job");
 ```
 
-# Self-healing workflows
+## Self-healing workflows
 
 To apply CFEngine's self-healing concepts to workflow scheduling, we can imagine
 the concept of a convergent workflow, i.e. one that, if we repeat everything a
@@ -443,14 +443,14 @@ think in terms of repeatable sustainable outcomes and fault-tolerance.
 
 Beware however, one-off jobs cannot be made convergent, because they only have a single chance to succeed. It is a question of business process design whether you design workflows to be sustainable and repeatable, or whether you trust the outcome of a single shot process. Using the persistent classes in CFEngine together with the if-elapsed locks to send signals between hosts, it is simple and automatic to make convergent self-healing workflows.
 
-# Long workflow chains
+## Long workflow chains
 
 Long workflow chains are those which involve more than one trigger. These can be
 created by repeating the pattern above several times. Note however, that each
 link in the chain introduces a new level of uncertainty and potential failure.
 In general, we would not recommend creating workflows with long chains.
 
-# Summary of distributed scheduling
+## Summary of distributed scheduling
 
 Distributed scheduling is about tying together jobs to create a workflow across
 multiple machines. It introduces a level of fragility into system automation.

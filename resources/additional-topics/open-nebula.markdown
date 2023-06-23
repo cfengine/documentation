@@ -5,14 +5,14 @@ published: true
 sorting: 80
 ---
 
-# What is Open Nebula?
+## What is Open Nebula?
 
 Open Nebula is an Open Source framework for Cloud Computing that aims to become
 an industry standard. The project is designed to be scalable and offer
 compatibility with Amazon EC2 the Open Cloud Computing Interface (OCCI). Open
 Nebula is used as a cloud controller in a number of large private clouds.
 
-# How can CFEngine work with Open Nebula?
+## How can CFEngine work with Open Nebula?
 
 CFEngine is a lifecycle management tool that can be integrated with a Cloud
 Computing framework in a number of ways. Of the four phases of the computer
@@ -47,7 +47,7 @@ Open Nebula's focus is on managing the deployment and recycling of the computing
 infrastructure. CFEngine picks up where Open Nebula leaves off and manages the
 dynamic lifecycle of software, applications and runtime state.
 
-# Example setup
+## Example setup
 
 This guide is based on an example setup provding a framework to demonstrate how
 CFEngine can be used to automate Open Nebula configuration. The following
@@ -69,7 +69,7 @@ cluster-node.
 
 ![Open Nebula Architecture](./open-nebula-architecture.png)
 
-##  Installation and dependancy configuration
+###  Installation and dependancy configuration
 
 
 First we can classify the physical machines in this case by IP address:
@@ -285,7 +285,7 @@ Next we will create a directory to hold our virtual machine images:
         create => "true";
 ```
 
-## Open Nebula environment configuration
+### Open Nebula environment configuration
 
 Create the oneadmin bashrc file containing the ONE_XMLRPC environment variable with appropriate permissions:
 
@@ -367,7 +367,7 @@ files:
 		contain => oneadmin;
 ```
 
-## Network configuration
+### Network configuration
 
 Before we can create virtual networks we must configure our node controller
 interfaces. In this example we will bridge a virtual interface (vbr0) with eth0.
@@ -441,7 +441,7 @@ commands:
         contain => oneadmin;
 ```
 
-## Virtual machine template configuration
+### Virtual machine template configuration
 
 This follows the same pattern as virtual network setup. First we create the
 template file:
@@ -484,7 +484,7 @@ If we increase the leases in our network template each time the onevm create
 command is issued a new virtual machine will be launched up to the number of
 available leases.
 
-## Open Nebula commands
+### Open Nebula commands
 
 It should be noted that commands, particularly those that are Open Nebula
 specific, will be run each time cf-agent is executed. Since this goes against
@@ -494,7 +494,7 @@ successfully executed. If this file exists then (or if its time stamp is
 older/newer than some value) the machines classified as having to run the
 command loose that class preventing future execution.
 
-## Virtual machine configuration
+### Virtual machine configuration
 
 With CFEngine preinstalled in our virtual machine image we can configure our
 generic image to the required specification on the fly. For community edition we
@@ -514,7 +514,7 @@ with a meaningful name:
 Now we have define webserver we can simply apply promises to it as if it was any
 other machine for example:
 
-## Webserver in Open Nebula
+### Webserver in Open Nebula
 
 First we install apache:
 
@@ -561,7 +561,7 @@ files:
      action => u_immediate;
 ```
 
-# Open Nebula summary
+## Open Nebula summary
 
 Now we have a convergent self-repairing, Open Nebula powered private cloud! The
 main benefits in combining CFEngine and Open Nebula are the facility to increase

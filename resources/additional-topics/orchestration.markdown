@@ -5,7 +5,7 @@ published: true
 sorting: 80
 ---
 
-# What is organizational complexity?
+## What is organizational complexity?
 
 Complexity is a measure of the amount of information needed to explain
 something. It implies a "mental cost" (and therefore a time and monetary cost)
@@ -24,7 +24,7 @@ complexity of a system is commonly defined as the length of the shortest
 document that fully describes it. A complex system requires a long document to
 capture its workings; a simple system requires only a short document.
 
-# What is federation?
+## What is federation?
 
 A federation is a pattern of organization obtained by merging a number of
 initially independent parts. The implication is that the resulting organization
@@ -82,7 +82,7 @@ known as "voluntary cooperation" used by CFEngine, which implies that each
 federated part must effectively choose which inputs it is willing to use from
 external parties.
 
-# The authority paradox
+## The authority paradox
 
 For some, the idea that an organization should be built on voluntary cooperation
 sounds wrong. However, no matter how much we might crave certainty of outcome,
@@ -135,7 +135,7 @@ No central management of either enterprise or computers can force individual
 agents to comply with their wishes, without their low level consent. The
 perception of authority is thus only a fiction1.
 
-# The social contract
+## The social contract
 
 Social contracts lie at the heart of all human and computer organizations. For
 computers these contracts may be as simple as "access control settings",
@@ -158,7 +158,7 @@ worst lead to the disconnection of decision making from expertise.
 Low level autonomy is a cost saving strategy that reduces the overhead of
 management and improves the link between expertise and action.
 
-# Service oriented federation
+## Service oriented federation
 
 Service oriented means business oriented. Let us now consider what this means
 for IT configuration. In particular, how should a CFEngine configuration be
@@ -166,7 +166,7 @@ structured for an efficient organization? In the examples below, we shall adopt
 a service oriented view, in which an enterprise is organized as a set of
 federated entities, some of whom depend on each other for services.
 
-# Each part disconnected, providing services
+## Each part disconnected, providing services
 
 Each federated entity manages its own promises.cf file. Each has, in effect, its
 own independent CFEngine configuration.
@@ -177,7 +177,7 @@ The configuration may still use resources provided by other entities' machines,
 but the other entities have no influence on the set of promises used to maintain
 any given one.
 
-# Disconnected parts inheriting a single baseline
+## Disconnected parts inheriting a single baseline
 
 A more common model for federation is to have a baseline constitution for all
 the parts of the enterprise defined by an umbrella organization. We can refer to
@@ -245,7 +245,7 @@ must be that their own special promises must not conflict with the global
 infrastructure proposal. So all requirements are met without the need for
 central enforcement.
 
-# Handling multiple sources
+## Handling multiple sources
 
 Consider briefly the case in which there is more than one entity offering
 promise proposals. If a part of the federation serves two masters (see
@@ -260,7 +260,7 @@ make the decision about which of the sources to obey.
 The possiblity of conflict is easily handled in this architecture, because it
 recognizes that the federated entity must be the final arbiter of confict.
 
-# Global assurance
+## Global assurance
 
 The lack of a hierarchy has not made information chaotic and disorganized. It
 has only provided a simple means of scalability and conflict resolution.
@@ -278,7 +278,7 @@ federation according to a single standard3.
 CFEngine allows single-point-of-coodination monitoring of hosts by a variety of
 mechanisms, so that compliance can be assured.
 
-# Merging and dividing enterprises
+## Merging and dividing enterprises
 
 Autonomy makes the merging and division of enterprise systems trivial. It is the
 way to enable out-sourcing and in-sourcing.
@@ -297,7 +297,7 @@ house of cards. Service-oriented systems are loosely coupled. By keeping the
 internal organization of systems as far as possible like independent service
 atoms, you facilitate reorganization by merging and division.
 
-# Why federation does not reduce predictabilty
+## Why federation does not reduce predictabilty
 
 The fear that many traditionalists have of federated management is that they
 cannot be certain of the outcome unless they have absolute authority. This fear
@@ -331,7 +331,7 @@ Rules of thumb for scalable management:
 
 * Trust lowers costs.
 
-# The benefits of federated management
+## The benefits of federated management
 
 Hierarchy is familiar, but not essential. A hierarchy is only a so-called
 "spanning tree" for a more general network of relationships. It may be thought

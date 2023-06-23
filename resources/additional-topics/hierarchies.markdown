@@ -7,7 +7,7 @@ sorting: 80
 
 Authority, Structure and Inheritance
 
-# What is a hierarchy?
+## What is a hierarchy?
 
 A hierarchy is an organizational structure with tree-like branches. In a
 hierarchy, parts of the system belong to other parts, like collections of boxes
@@ -46,7 +46,7 @@ that point will disconnect the network.
 
 ![Single points of failure](./single-points-of-failure.png)
 
-# How hierarchy compares to sets
+## How hierarchy compares to sets
 
 Some languages (like Object Oriented languages) are designed to enforce
 hierarchies. CFEngine is not one of these. In CFEngine you can build a hierarchy
@@ -118,7 +118,7 @@ prevents that. The key is to notice that the `.` (dot) operator is really an
 intersection of sets (AND)1, and that this is a much more flexible notion than
 hierarchy.
 
-# Classes are sets
+## Classes are sets
 
     `Sets, sets, sets ... all you ever think about it sets!`
 
@@ -177,7 +177,7 @@ bundle agent example
 Thus the English speakers are those entities belonging to the USA `AND` the UK,
 excepting presumably the legal department.
 
-# For and against hierarchies
+## For and against hierarchies
 
 Hierarchies are good at bringing consistency. They are bad at scaling. They
 bring consistency because the root node acts as a single point of authority,
@@ -199,7 +199,7 @@ CFEngine does not encourage it.
 This document tries to show how to use hierarchy sensibly and usefully to
 simplify rather than to enforce authority.
 
-# Inheritance and its forms
+## Inheritance and its forms
 
 Perhaps the most popular application of hierarchy is to use the property of
 having a single-point of definition to avoid maintaining the same information in
@@ -231,7 +231,7 @@ the users or consumers of the information are so-called derived classes.
 We can use the notion of inheritance at different levels within CFEngine. These
 are a matter of using the global scope with bundle names.
 
-## Inheritance of classes/sets
+### Inheritance of classes/sets
 
 We can aggregate smaller classes into larger ones (yielding multiple inheritance
 of class attributes):
@@ -252,13 +252,13 @@ bundle agent example
 Note that CFEngine naturally forms a bottom-up hierarchy, never a top-down
 hierarchy.
 
-## Inheritance of class definitions
+### Inheritance of class definitions
 
 CFEngine divides its promises into bundles that have private classes and
 variables. Bundles called `common bundles` define global classes, so they are
 automatically inherited by all other bundles.
 
-## Inheritance of variable definitions
+### Inheritance of variable definitions
 
 Variables in CFEngine are globally accessible, but you must say what bundle you
 are talking about by writing '$(bundle.scalar)' or '@(bundle.list)'. If you omit
@@ -284,7 +284,7 @@ The policy ifdefined means that CFEngine will ignore the foreign list if it does
 not exist. This means you can include a number of lists from other bundles to
 extend the behviour of your own, if they are provided.
 
-## Inheritance of bundles
+### Inheritance of bundles
 
 Bundles cannot really be merged like sets, but since they make promises you can
 use them.
@@ -322,7 +322,7 @@ of authority, by promising to use the inheritance, you have subordinated your
 input to the source - or voluntarily given up the right to say no to whatever
 you have subscribed to. You have implicity trusted them.
 
-# Expressing `is a` or `has a`
+## Expressing `is a` or `has a`
 
 Let us re-emphasize for the record that CFEngine is not intended to be an object
 oriented system. At CFEngine we do not believe that Object Orientation is a good
@@ -358,7 +358,7 @@ bundle agent example
 }
 ```
 
-# How to organize your organization
+## How to organize your organization
 
 Faced with the choice of how to classify systems, where does one begin? This is
 the dilemma that programmers face when designing new software, and if they make
@@ -388,7 +388,7 @@ system operations? Some alternatives include:
 However, you choose to begin, you can further subdivide these major categories
 by simply ANDing with other categories.
 
-# Applications of hierarchy
+## Applications of hierarchy
 
 When a small organization uses CFEngine, machines are often configured by "what
 they do" or "what they have" (e.g., they "are a webserver" or they "have

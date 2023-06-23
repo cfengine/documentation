@@ -6,9 +6,9 @@ published: true
 
 The SSH keys API enables you to generate a key pair that can be used for authorization.
 
-# SSH keys API
+## SSH keys API
 
-## Generate SSH key
+### Generate SSH key
 
 Generates a key with 4096 bits, sha2-512 digest and in rfc4716 (default openssh) format.
 
@@ -41,7 +41,7 @@ HTTP 200 Ok
 | 200 OK | SSH key successfully created |
 | 500 Internal server error | Internal server error |
 
-## Get SSH keys list
+### Get SSH keys list
 
 **URI:** https://hub.cfengine.com/api/ssh-key
 
@@ -82,7 +82,7 @@ HTTP 200 OK
 | 200 Ok | Successful response  |
 | 500 Internal server error | Internal server error |
 
-## Get SSH key
+### Get SSH key
 
 **URI:** https://hub.cfengine.com/api/ssh-key/:id
 
@@ -121,7 +121,7 @@ HTTP 200 OK
 | 404 Not found | SSH key not found |
 | 500 Internal server error | Internal server error |
 
-## Delete SSH key
+### Delete SSH key
 
 **URI:** https://hub.cfengine.com/api/ssh-key/:id
 
