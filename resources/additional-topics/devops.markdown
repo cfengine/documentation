@@ -240,7 +240,7 @@ following' is generally easier to comprehend than `do this to the first, do this
 to the next,...' and so on, because our brains are wired to see patterns.
 
 Thus, loops are as useful for configuration as for programming. We only want to
-simplify the syntax once again to hide redundant words like `foreach'. To do
+simplify the syntax once again to hide redundant words like `foreach`. To do
 this, CFEngine makes loops implicit. If you use a scalar variable reference
 '$(mylist)' to a list variable '@(mylist)', CFEngine assumes you want to iterate
 over each case.

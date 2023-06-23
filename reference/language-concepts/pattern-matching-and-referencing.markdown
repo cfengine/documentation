@@ -56,9 +56,9 @@ there were to exist a file `/home/mark/tmp/cf3_test`, then we would have:
     '$(match.0)'
     equal to `/home/mark/tmp/cf3_test'
     '$(match.1)'
-    equal to `3'
+    equal to `3`
     '$(match.2)'
-    equal to `test'
+    equal to `test`
 
 Note that because the pattern allows for an optional '2' or '3' to follow the
 letters `cf`, it is possible that `$(match.1)` would contain the empty string.
@@ -70,7 +70,7 @@ would have
     '$(match.1)'
     equal to `'
     '$(match.2)'
-    equal to `widgets'
+    equal to `widgets`
 
 Now look at the edit bundle. This takes a parameter (which is the
 back-reference from the filename match), but it also uses back references to
