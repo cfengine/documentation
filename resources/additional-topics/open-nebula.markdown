@@ -110,28 +110,27 @@ list and use the CFEngine standard library package promises to install them:
 
 ```cf3
 vars:
-
-"front_end_deps" slist => {
-                          "libcurl3",
-                          "libmysqlclient16",
-                          "libruby1.8",
-                          "libsqlite3-ruby",
-                          "libsqlite3-ruby1.8",
-                          "libxmlrpc-c3",
-                          "libxmlrpc-core-c3",
-                          "mysql-common",
-                          "ruby",
-                          "ruby1.8",
-                          "nfs-kernel-server"
-                          };
-"cluster_node_deps" slist => {
-			"ruby",
-			"kvm",
-			"libvirt-bin",
-			"ubuntu-vm-builder",
-			"nfs-client",
-			"kvm-pxe"
-			};
+  "front_end_deps" slist => {
+    "libcurl3",
+    "libmysqlclient16",
+    "libruby1.8",
+    "libsqlite3-ruby",
+    "libsqlite3-ruby1.8",
+    "libxmlrpc-c3",
+    "libxmlrpc-core-c3",
+    "mysql-common",
+    "ruby",
+    "ruby1.8",
+    "nfs-kernel-server"
+  };
+  "cluster_node_deps" slist => {
+    "ruby",
+    "kvm",
+    "libvirt-bin",
+    "ubuntu-vm-builder",
+    "nfs-client",
+    "kvm-pxe"
+  };
 ```
 
 Promises to perform dependency installation:
@@ -164,8 +163,8 @@ times:
 front_end::
 
 ensure_opennebula_running::
-        ".*oned.*",
-		restart_class => "start_oned";
+  ".*oned.*",
+    restart_class => "start_oned";
 ```
 
 Resulting in:
@@ -174,10 +173,10 @@ Resulting in:
 ```cf3
 commands:
 
-start_oned::
-	"/usr/bin/one start",
-		comment => "Execute the opennebula daemon",
-		contain => oneadmin;
+  start_oned::
+    "/usr/bin/one start",
+      comment => "Execute the opennebula daemon",
+      contain => oneadmin;
 ```
 
 
@@ -188,9 +187,9 @@ package:
 ```cf3
 commands:
 
-front_end.!opennebula_installed::
-	"/usr/bin/dpkg -i /root/opennebula_2.0-1_i386.deb",
-	comment => "install opennebula package if it isnt already";
+  front_end.!opennebula_installed::
+    "/usr/bin/dpkg -i /root/opennebula_2.0-1_i386.deb",
+      comment => "install opennebula package if it isnt already";
 ```
 
 This promise points to the Open Nebula package file in /root/. To prevent
@@ -201,7 +200,7 @@ in existence:
 ```cf3
 classes:
 
-	"opennebula_installed" or => {fileexists("/etc/one/oned.conf")};
+  "opennebula_installed" or => {fileexists("/etc/one/oned.conf")};
 ```
 
 Open nebula requires a privileged user "oneadmin" to issue commands. In order to
@@ -209,7 +208,7 @@ have CFEngine perform these commands with the correct privileges we can use the
 contain body by appending the following to commands promises:
 
 ```cf3
-	contain => oneadmin
+contain => oneadmin
 ```
 
 
@@ -218,8 +217,8 @@ This will in turn apply owner and group permissions of the oneadmin user:
 ```cf3
 body contain oneadmin
 {
-exec_owner => "oneadmin";
-exec_group => "oneadmin";
+  exec_owner => "oneadmin";
+  exec_group => "oneadmin";
 }
 ```
 
@@ -270,19 +269,19 @@ NFS promise:
 ```cf3
 storage:
 
-cluster_node::
-"/var/lib/one",
-       mount  => nfs("192.168.1.2","/var/lib/one"),
-       comment => "mount image repo from front end";
+  cluster_node::
+    "/var/lib/one",
+      mount => nfs("192.168.1.2","/var/lib/one"),
+      comment => "mount image repo from front end";
 ```
 
 Next we will create a directory to hold our virtual machine images:
 
 ```cf3
 "/var/lib/one/images/.",
-        comment => "create dir in image repo share",
-        perms => mog("644", "oneadmin", "oneadmin"),
-        create => "true";
+  comment => "create dir in image repo share",
+  perms => mog("644", "oneadmin", "oneadmin"),
+  create => "true";
 ```
 
 ### Open Nebula environment configuration
@@ -291,25 +290,25 @@ Create the oneadmin bashrc file containing the ONE_XMLRPC environment variable w
 
 ```cf3
 files:
- front_end::
-  "/var/lib/one/.bashrc"
-        comment => "setup oneadmin env",
-        perms => mog("644", "oneadmin", "oneadmin"),
-        create => "true",
-		edit_line => append_if_no_line(
-			"export ONE_XMLRPC=http://localhost:2633/RPC2");
+  front_end::
+    "/var/lib/one/.bashrc"
+      comment => "setup oneadmin env",
+      perms => mog("644", "oneadmin", "oneadmin"),
+      create => "true",
+      edit_line => append_if_no_line(
+    "export ONE_XMLRPC=http://localhost:2633/RPC2");
 ```
 
 We also need to create the one_auth file:
 
 ```cf3
 files:
- front_end::
-  "/var/lib/one/.one/one_auth",
-        comment => "create open nebula auth file",
-        perms => mog("644", "oneadmin", "oneadmin"),
-        create => "true",
-        edit_line => append_if_no_line("username:password");
+  front_end::
+    "/var/lib/one/.one/one_auth",
+      comment => "create open nebula auth file",
+      perms => mog("644", "oneadmin", "oneadmin"),
+      create => "true",
+      edit_line => append_if_no_line("username:password");
 ```
 
 Finally password-less authentication for the oneadmin user:
@@ -320,21 +319,21 @@ Add key to autorized_keys file:
 files:
   front_end::
     "/var/lib/one/.ssh/authorized_keys",
-        comment => "copy sshkey to authorized",
-        perms => mog("644", "oneadmin", "oneadmin"),
-        copy_from => local_cp("/var/lib/one/.ssh/id_rsa.pub");
+      comment => "copy sshkey to authorized",
+      perms => mog("644", "oneadmin", "oneadmin"),
+      copy_from => local_cp("/var/lib/one/.ssh/id_rsa.pub");
 ```
 
 Disable known hosts prompt:
 
 ```cf3
 front_end::
-"/var/lib/one/.ssh/config",
-        comment => "disable strict host key checking",
-        perms => mog("644", "oneadmin", "oneadmin"),
-        create => "true",
-        edit_line => append_if_no_line("Host *
-        StrictHostKeyChecking no");
+  "/var/lib/one/.ssh/config",
+    comment => "disable strict host key checking",
+    perms => mog("644", "oneadmin", "oneadmin"),
+    create => "true",
+    edit_line => append_if_no_line("Host *
+    StrictHostKeyChecking no");
 ```
 
 Now on the node controller(s) we need to add the oneadmin group and user with
@@ -343,16 +342,16 @@ group:
 
 ```cf3
 files:
- node_controller::
-  "/etc/passwd",
+  node_controller::
+    "/etc/passwd",
       comment => "add oneadmin user to node controller",
       edit_line => append_if_no_line("oneadmin:x:999:999::/srv/cloud/one:/bin/bash");
 
- "/etc/group",
+    "/etc/group",
       comment => "add oneadmin group to node controller",
       edit_line => append_if_no_line("oneadmin:x:999:");
 
- "/etc/group",
+    "/etc/group",
       comment =>"add oneadmin to libvirtd group",
       edit_line => append_user_field("libvirtd","4","oneadmin");
 ```
@@ -362,9 +361,9 @@ with the front end:
 
 ```cf3
 files:
- front_end::
-      "/usr/bin/onehost create 192.168.1.2 im_kvm vmm_kvm tm_nfs",
-		contain => oneadmin;
+  front_end::
+    "/usr/bin/onehost create 192.168.1.2 im_kvm vmm_kvm tm_nfs",
+      contain => oneadmin;
 ```
 
 ### Network configuration
@@ -376,32 +375,32 @@ First we define the contents of the interfaces file in a variable:
 ```cf3
 vars:
 "interfaces_contents" slist => {
-                               "auto lo",
-                               "iface lo inet loopback",
-                               "auto vbr0",
-                               "iface vbr0 inet static",
-                               "address 192.168.1.2",
-                               "netmask 255.255.255.0",
-                               "network 192.168.1.0",
-                               "broadcast 192.168.1.255",
-                               "gateway 192.168.1.1",
-                               "dns-nameservers 192.168.1.1",
-                               "bridge_ports    eth0",
-                               "bridge_stp      off",
-                               "bridge_maxwait  0",
-                               "bridge_fd       0"
-                               };
+  "auto lo",
+  "iface lo inet loopback",
+  "auto vbr0",
+  "iface vbr0 inet static",
+  "address 192.168.1.2",
+  "netmask 255.255.255.0",
+  "network 192.168.1.0",
+  "broadcast 192.168.1.255",
+  "gateway 192.168.1.1",
+  "dns-nameservers 192.168.1.1",
+  "bridge_ports    eth0",
+  "bridge_stp      off",
+  "bridge_maxwait  0",
+  "bridge_fd       0"
+};
 ```
 Next we edit the interfaces file to include our new settings:
 
 ```cf3
 files:
-node_controller::
-"/etc/network/interfaces",
-        comment => "ensure bridge for open nebula vm networks",
-        edit_line => append_if_no_lines($(interfaces_contents)),
-        create => "true",
-        perms => mog("644", "root", "root");
+  node_controller::
+    "/etc/network/interfaces",
+      comment => "ensure bridge for open nebula vm networks",
+      edit_line => append_if_no_lines($(interfaces_contents)),
+      create => "true",
+      perms => mog("644", "root", "root");
 ```
 
 And restart networking:
@@ -409,9 +408,8 @@ And restart networking:
 ```cf3
 commands:
   restart_networking::
-
     "/etc/init.d/networking restart",
-       comment => "restart networking";
+      comment => "restart networking";
 ```
 
 Now we have configured the network bridge we can create an Open Nebula virtual
@@ -421,10 +419,10 @@ case it is passed as a parameter to the append promise body:
 
 ```cf3
 "/var/lib/one/network.template",
-        comment => "create lan template",
-        create => "true",
-        perms => mog("644", "oneadmin", "oneadmin"),
-        edit_line => append_if_no_line("NAME = \"VM LAN\"
+  comment => "create lan template",
+  create => "true",
+  perms => mog("644", "oneadmin", "oneadmin"),
+  edit_line => append_if_no_line("NAME = \"VM LAN\"
 TYPE = FIXED
 BRIDGE = vbr0
 LEASES = [IP=192.168.1.100]");
@@ -450,10 +448,10 @@ template file:
 files:
 
   "/var/lib/one/vm.template",
-        comment => "create vm template",
-        create => "true",
-        perms => mog("644", "oneadmin", "oneadmin"),
-        edit_line => append_if_no_line("NAME   = ubuntu-10.04-i386
+    comment => "create vm template",
+    create => "true",
+    perms => mog("644", "oneadmin", "oneadmin"),
+    edit_line => append_if_no_line("NAME   = ubuntu-10.04-i386
 CPU    = 0.1
 MEMORY = 256
 DISK   = [
@@ -476,8 +474,8 @@ Now we can launch the virtual machine defined in its template file:
 ```cf3
 commands:
   front_end::
-      "/usr/bin/onevm create /var/lib/one/vm.template",
-		contain => oneadmin;
+    "/usr/bin/onevm create /var/lib/one/vm.template",
+      contain => oneadmin;
 ```
 
 If we increase the leases in our network template each time the onevm create
@@ -520,13 +518,12 @@ First we install apache:
 
 ```cf3
 packages:
- webserver::
-
-   "apache2",
-	comment => "install apache2 on webserver vm",
-	package_policy => "add",
-        package_method => generic,
-        classes => if_ok("ensure_apache_running");
+  webserver::
+    "apache2",
+      comment => "install apache2 on webserver vm",
+      package_policy => "add",
+      package_method => generic,
+      classes => if_ok("ensure_apache_running");
 ```
 
 Next we ensure it is running
@@ -534,9 +531,8 @@ Next we ensure it is running
 ```cf3
 processes:
   ensure_apache_running::
-
-         ".*apache2.*"
-                restart_class => "start_apache";
+    ".*apache2.*"
+      restart_class => "start_apache";
 ```
 
 If not, the service is restarted

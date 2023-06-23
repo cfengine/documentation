@@ -401,40 +401,26 @@ For example:
 bundle agent maintain_servers
 {
   classes:
-    "has_dhcpd"	or	=> { classmatch("ipv4_10_\d+_\d+_1") };
-  	"has_httpd"	or	=> { "www_example_com" };
-  	"has_sshd"	or	=> { "any" };
+    "has_dhcpd" or => { classmatch("ipv4_10_\d+_\d+_1") };
+    "has_httpd" or => { "www_example_com" };
+    "has_sshd" or => { "any" };
 
   processes:
-
     has_dhcpd::
-
       "dhcpd" restart_class => "start_dhcpd";
-
     has_httpd::
-
-  	  "httpd" restart_class => "start_httpd";
-
+      "httpd" restart_class => "start_httpd";
     has_sshd::
-
-       "sshd" restart_class => "start_sshd";
+      "sshd" restart_class => "start_sshd";
 
   commands:
-
     freebsd.start_dhcpd::
-
       "/usr/local/etc/rc.d/isc-dhcpd.sh start";
-
     start_httpd::
-
       "/usr/local/sbin/apachectl start";
-
     freebsd.start_sshd::
-
       "/etc/rc.d/sshd start";
-
     linux.start_sshd::
-
       "/etc/init.d/ssh start";
 }
 ```
@@ -456,22 +442,22 @@ bundle agent example
   files:
 
     internal.has_httpd.nyc::
-	# Files maintained for internal webserver in New York
+    # Files maintained for internal webserver in New York
 
     external.has_httpd.nyc::
-	# Files maintained for external webserver in New York
+    # Files maintained for external webserver in New York
 
     internal.has_httpd.london::
-	# Files maintained for internal webserver in London
+    # Files maintained for internal webserver in London
 
     external.has_httpd.london::
-	# Files maintained for external webserver in London
+    # Files maintained for external webserver in London
 
     internal.has_httpd.tokyo::
-	# Files maintained for internal webserver in Tokyo
+    # Files maintained for internal webserver in Tokyo
 
     external.has_httpd.tokyo::
-	# Files maintained for external webserver in Tokyo
+    # Files maintained for external webserver in Tokyo
 }
 ```
 
