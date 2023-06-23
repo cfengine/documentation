@@ -33,10 +33,9 @@ on demand to other nodes, without any particular ranking. If you move in a mesh,
 you cannot easily measure how far you are away from a given point, as their
 might be more than one way of getting there.
 
-Mesh architectures are often robust to failure as there can be multiple `peer to
-peer' routes for passing messages or information.
+Mesh architectures are often robust to failure as there can be multiple _peer to peer_ routes for passing messages or information.
 
-Top-down is is a cultural prejudice or `norm', as most human societies work in
+Top-down is is a cultural prejudice or _norm_, as most human societies work in
 this way. However it is not a necessity. A network service is bottom-up - there
 it is the leaves which drive requests that end at a single central server.
 Hierarchies are special cases of networks, and (as all special cases) they are
@@ -261,7 +260,7 @@ automatically inherited by all other bundles.
 ### Inheritance of variable definitions
 
 Variables in CFEngine are globally accessible, but you must say what bundle you
-are talking about by writing '$(bundle.scalar)' or '@(bundle.list)'. If you omit
+are talking about by writing `$(bundle.scalar)` or `@(bundle.list)`. If you omit
 the `bundle`, it is assumed that the variable is in the current bundle.
 
 ```cf3
@@ -402,40 +401,26 @@ For example:
 bundle agent maintain_servers
 {
   classes:
-    "has_dhcpd"	or	=> { classmatch("ipv4_10_\d+_\d+_1") };
-  	"has_httpd"	or	=> { "www_example_com" };
-  	"has_sshd"	or	=> { "any" };
+    "has_dhcpd" or => { classmatch("ipv4_10_\d+_\d+_1") };
+    "has_httpd" or => { "www_example_com" };
+    "has_sshd" or => { "any" };
 
   processes:
-
     has_dhcpd::
-
       "dhcpd" restart_class => "start_dhcpd";
-
     has_httpd::
-
-  	  "httpd" restart_class => "start_httpd";
-
+      "httpd" restart_class => "start_httpd";
     has_sshd::
-
-       "sshd" restart_class => "start_sshd";
+      "sshd" restart_class => "start_sshd";
 
   commands:
-
     freebsd.start_dhcpd::
-
       "/usr/local/etc/rc.d/isc-dhcpd.sh start";
-
     start_httpd::
-
       "/usr/local/sbin/apachectl start";
-
     freebsd.start_sshd::
-
       "/etc/rc.d/sshd start";
-
     linux.start_sshd::
-
       "/etc/init.d/ssh start";
 }
 ```
@@ -457,22 +442,22 @@ bundle agent example
   files:
 
     internal.has_httpd.nyc::
-	# Files maintained for internal webserver in New York
+    # Files maintained for internal webserver in New York
 
     external.has_httpd.nyc::
-	# Files maintained for external webserver in New York
+    # Files maintained for external webserver in New York
 
     internal.has_httpd.london::
-	# Files maintained for internal webserver in London
+    # Files maintained for internal webserver in London
 
     external.has_httpd.london::
-	# Files maintained for external webserver in London
+    # Files maintained for external webserver in London
 
     internal.has_httpd.tokyo::
-	# Files maintained for internal webserver in Tokyo
+    # Files maintained for internal webserver in Tokyo
 
     external.has_httpd.tokyo::
-	# Files maintained for external webserver in Tokyo
+    # Files maintained for external webserver in Tokyo
 }
 ```
 

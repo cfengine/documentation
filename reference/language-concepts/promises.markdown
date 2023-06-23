@@ -169,4 +169,4 @@ commands:
 ```
 
 These two promises have default attributes for everything except the
-`promiser'. Both promises simply cause CFEngine to print a message.
+_promiser_. Both promises simply cause CFEngine to print a message.

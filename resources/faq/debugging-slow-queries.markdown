@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Debugging Slow Queries
+title: Debugging slow queries
 published: true
 sorting: 90
 ---

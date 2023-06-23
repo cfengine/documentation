@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Modularity and Orchestrating System Policy
+title: Modularity and orchestrating system policy
 published: true
 sorting: 80
 ---
@@ -62,7 +62,7 @@ described in what context promises are to be kept.
 
 ### Menu level
 
-At this high level, a user `selects' from a set of pre-defined `services' (or
+At this high level, a user _selects_ from a set of pre-defined _services_ (or
 bundles in CFEngine parlance). In commercial editions, users may view the set of
 services as a Service Catalogue, from which each host selects its roles. The
 selection is not made by every host, rather one places hosts into roles that
@@ -258,7 +258,7 @@ generally map services to bundles.
 Many system variables are discovered automatically by CFEngine and provided "out
 of the box", e.g. the location of the filesystem table might be /etc/fstab, or
 /etc/vfstab or even /etc/filesystems, but CFEngine allows you to refer simply to
-**$(sys.fstab)**. Soft-coded abstraction needs cannot be discovered by the
+`$(sys.fstab)`. Soft-coded abstraction needs cannot be discovered by the
 system however. So how do we create this mythical resource abstraction layer? It
 is simple. Elsewhere we have defined basic settings.
 
@@ -472,7 +472,7 @@ more sophisticated ways) using methods promises. Methods promises are simply
 promises to re-use bundles, possibly with different parameters.
 
 The default behaviour is to retain the order of these promises; the effect is to
-`execute' these bundles in the assumed order:
+_execute_ these bundles in the assumed order:
 
 ```cf3
 bundle agent a_bundle_subsequence
@@ -827,7 +827,7 @@ access:
 ## The self-healing chain - inverse Dominoes
 
 A self-healing chain is the opposite of a dominoe event. If a part of the chain
-is `down', it will be revived. If these events depend on one another, then the
+is _down_, it will be revived. If these events depend on one another, then the
 resuscitation of this part which cause all of the subsequent parts to be
 repaired too.
 

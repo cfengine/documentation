@@ -12,7 +12,7 @@ The four mission phases are sometimes referred to as
 * Build
 
   A mission is based on decisions and resources that need to be assembled or
-  `built' before they can be applied. This is the planning phase.
+  _built_ before they can be applied. This is the planning phase.
 
   In CFEngine, what you build is a template of proposed promises for the
   machines in an organization such that, if the machines all make and keep these
@@ -22,8 +22,8 @@ The four mission phases are sometimes referred to as
 * Deploy
 
   Deploying really means launching the policy into production. In CFEngine you
-  simply publish your policy (in CFEngine parlance these are `promise
-  proposals') and the machines see the new proposals and can adjust accordingly.
+  simply publish your policy (in CFEngine parlance these are _promise proposals_)
+  and the machines see the new proposals and can adjust accordingly.
   Each machine runs an agent that is capable of keeping the system on course and
   maintaining it over time without further assistance.
 
@@ -49,11 +49,11 @@ The four mission phases are sometimes referred to as
 At CFEngine we talk about stem cell hosts. A stem cell host is a generic
 foundation of software that is the necessary and sufficient basis for any future
 purpose. To make a finished system from this stem cell host, you only have to
-`differentiate' the system from this generic basis by running CFEngine.
+_differentiate_ the system from this generic basis by running CFEngine.
 
 Differentiation of hosts involves adding or subtracting software packages,
 and/or configuring the basic system. This strategy is cost effective, as you do
-not have to maintain more than one base-line `image' for each operating system;
+not have to maintain more than one base-line _image_ for each operating system;
 rather, you use CFEngine to implement and maintain the morphology of the
 differences. Stem cell hosts are normally built using PXE services by booting
 and installing automatically from the network.
@@ -134,7 +134,7 @@ management with its deployment and real time repair (see next section).
 
 Managing systems is an almost trivial task with CFEngine. Once a model for
 desired state has been created, you just sit back and watch. You should be ready
-for `hands free' operation. No one should make changes to the system by hand.
+for _hands free_ operation. No one should make changes to the system by hand.
 All changes should follow the deployment strategy above.
 
 All that remains to do is wait for email alerts from CFEngine and to browse
@@ -256,4 +256,4 @@ detail.
 CFEngine works well with package based management software. Users of rPath, for
 example, can achieve substantially improved efficiency in the build phase.
 CFEngine takes over where package based systems leave off, providing an
-unprecedented level of control `hands free'.
+unprecedented level of control _hands free_.

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Distributed Scheduling
+title: Distributed scheduling
 published: true
 sorting: 80
 ---
@@ -8,7 +8,7 @@ sorting: 80
 ## What is distributed scheduling?
 
 Scheduling refers to the execution of non-interactive processes or tasks
-(usually called `jobs') at designated times and places around a network of
+(usually called _jobs_) at designated times and places around a network of
 computers (see the Special Topics Guide on Scheduling). Distributed Scheduling
 refers to the chaining of different jobs into a coordinated workflow that spans
 several computers. For example, you schedule a processing job
@@ -28,7 +28,7 @@ There are pros and cons to centralization. Centralization makes consistency easy
 to determine, but it creates bottlenecks in processing and allows one machine to
 see all information. Decentralization provides an automatic and natural
 load-balancing of job dispatch, and it allows machines to reveal information on
-a `need to know' basis.
+a _need to know_ basis.
 
 CFEngine is a naturally decentralized system, and only policy definition is
 usually centralized, but you can set up practically any architecture you like,

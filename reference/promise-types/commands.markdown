@@ -162,7 +162,7 @@ So in the example above the command would be:
 
 **Description:** Allows running the command in a 'sandbox'.
 
-Command containment allows you to make a `sandbox' around a command, to run it
+Command containment allows you to make a _sandbox_ around a command, to run it
 as a non-privileged user inside an isolated directory tree.
 
 **Type:** `body contain`

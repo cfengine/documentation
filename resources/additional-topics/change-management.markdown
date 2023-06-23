@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Change Management
+title: Change management
 published: true
 sorting: 80
 ---
@@ -67,7 +67,7 @@ stable equilibrium. One should not believe that systems continue flawlessly
 because no intended changes are made. Change management with CFEngine should be
 about planning one stable state after another, but expecting run-time errors.
 The rate at which you move through revisions of stable policy depends on your
-needs. The rate at which compliance is repaired should be `as soon as possible'.
+needs. The rate at which compliance is repaired should be _as soon as possible_.
 
 To use an analogy: if policy changes are like take-off and landing, then a
 period of stable operations is like a smooth flight, on course to the correct
@@ -89,7 +89,7 @@ services. We need to distinguish:
   maintenance).
 
 What is intended and what actually happens should not be confused. It is
-impossible to `lock down' or fully control changes made to computer systems,
+impossible to _lock down_ or fully control changes made to computer systems,
 without switching them off. A mandatory level of risk must be anticipated.
 
 It is by defining a desired operational state that one can avoid re-processing
@@ -145,8 +145,8 @@ policies, aligned with different cultures if necessary.
 
 What may be problematic is to have teams that are not aligned, so that there are
 conficting intentions. In this case, one individual might instigate a change
-that conflicts with another. This often happens in `hit'n'run system
-administration', where there is no concerted plan or modus operandi.
+that conflicts with another. This often happens in _hit'n'run system administration_,
+where there is no concerted plan or modus operandi.
 
 To keep federated teams aligned with common criteria for policy, strong
 communication is required. For this we provide access to information through the
@@ -306,7 +306,7 @@ reactively.
 Knowledge Management is necessary to maintain a guidance system that makes
 course programming reliable and effective. CFEngine allows you to document all
 of your intentions as promises to be kept. CFEngine Nova additionally provides a
-continuously updated knowledge map as part of its `auto-pilot navigation'
+continuously updated knowledge map as part of its _auto-pilot navigation_
 facilities, based on what we promise and what it discovers about the environment
 impacting on systems. Hence, it tracks both promised state, and unintended
 changes.
@@ -368,7 +368,7 @@ release is a collection of authorized changes to the promises of desired state
 for a system.
 
 A release is traditionally a larger umbrella under which many smaller changes
-are made. Changes are assembled into releases and then they are `rolled out'.
+are made. Changes are assembled into releases and then they are _rolled out_.
 
 At CFEngine we encourage many small, incremental changes above large risky
 changes, as every change has unexpected consequences, and small changes minimize
@@ -415,7 +415,7 @@ The following sequence forms a checklist for deploying successful policy change:
 
 * Make a change in the CFEngine input files.
 
-* Run the configuration through `cf-promises --inform1 to check for problems.
+* Run the configuration through `cf-promises --inform` to check for problems.
 
 * Commit the tested changes to promises in version control, e.g. subversion.
 

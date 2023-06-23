@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Install and Get Started
+title: Install and get started
 published: false
 sorting: 10
 ---

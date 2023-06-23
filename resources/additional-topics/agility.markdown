@@ -174,7 +174,7 @@ change[^4]. We need to be able to:
 Precision is maximized when:
 
 
-* Changes are `precise', i.e. they can be made at a highly granular level,
+* Changes are _precise_, i.e. they can be made at a highly granular level,
   without disturbing areas that are not relevant (few side-effects).
 
 * Policy is able to model or describe the desired state accurately, i.e. within
@@ -330,7 +330,7 @@ Precision:
 
     Desktop environments can involve many different platforms: Windows, multiple
     flavours of Linux and Macintosh, etc. A uniform low-cost way of
-    `provisioning' and maintaining all of these, as well as responding to common
+    _provisioning_ and maintaining all of these, as well as responding to common
     threats is of significant value.
 
     Precision is important to ensure that the resources made available are
@@ -518,11 +518,11 @@ carry-over from the era of 2nd Wave industrialization8.
 Think of CFEngine as an active knowledge management system, rather than as a
 relatively passive programming framework.
 
-For `DevOps': programming is for your application, consider its deployment to be
+For _DevOps_: programming is for your application, consider its deployment to be
 part of the documentation.
 
-Many programmatic systems and `APIs' force you to explain how something will be
-accomplished and the statement about `what' the outcome will be is left to an
+Many programmatic systems and _APIs_ force you to explain how something will be
+accomplished and the statement about _what_ the outcome will be is left to an
 implicit assumption. Such systems are called imperative systems.
 
 CFEngine is a declarative system. In a declarative system, the reverse is true.
@@ -553,7 +553,7 @@ bundle agent name
 }
 ```
 
-By separating `what' data like this out of the details of how they are used, it
+By separating _what_ data like this out of the details of how they are used, it
 becomes easier to comprehend and locate, and it becomes fast to change, and the
 accuracy of the change is easily perceived. Moreover, CFEngine can track the
 impact of such a change by seeing where the data are used.
@@ -575,7 +575,7 @@ Unix-like system do for passwords and user management.
 What you might lose when making an input matrix is the why. Is there an
 explanation that fits all these cases, or does each case need a special
 explanation? We recommend that you include as much information as possible about
-`why'.
+_why_.
 
 ## Packaging limits agility
 
@@ -732,7 +732,7 @@ Total cost of ownership is reduced if a design is simple, as there are only a
 few things to learn in total. Even if those things are hard to learn, it is a
 one-off investment and everything that follows will be easy.
 
-Unlike some tools, with CFEngine, you do not need to program `how' to do things,
+Unlike some tools, with CFEngine, you do not need to program _how_ to do things,
 only what you want to happen. This is always done by using the same kinds of
 declarations, based on the same model. You don't need to learn new principles
 and ideas, just more of the same.
@@ -747,15 +747,15 @@ therefore to agility. To put it another way, in the modern world of commerce,
 consumers rule the roost, and agility is competitive edge in a market of many
 more players than before.
 
-Of course, it is not quite that simple. Today, we live in a culture of `ease',
+Of course, it is not quite that simple. Today, we live in a culture of _ease_,
 and we focus on what can be done easily (low initial investment) rather than
 worrying about long term simplicity (Total Cost of Ownership).
 
-At CFEngine, we believe that `easy' answers often suffer from the sin of
+At CFEngine, we believe that _easy_ answers often suffer from the sin of
 over-simplification, and can lead to risky practices. After all, anyone can make
 something appear superficially easy by papering over a mess, or applying raw
 effort, but this will not necessarily scale up cheaply over time. Moreover,
-making a risky process `too easy' can encourage haste and carelessness.
+making a risky process _too easy_ can encourage haste and carelessness.
 
 Any problem has an intrinsic complexity, which can be measured by the smallest
 amount of information required to manage it, without loss of control.
@@ -808,25 +808,25 @@ back by the need to over-simplify.
 All configuration issues, including fitness for purpose, boil down to three
 things: why, what and how. Knowing why we do something is the most important way
 of avoiding error and risk of failure. Simplicity then comes from keeping the
-`what' and the `how' separate, and reducing the how to a predictable, repairable
+_what_ and the _how_ separate, and reducing the how to a predictable, repairable
 transaction. This is what CFEngine'sconvergent promisetechnology does.
 
 Knowledge is an antidote to uncertainty. Insight into patterns, brings
 simplicity to the information management, and insight into behaviour allows us
 to estimate impact of change, thus avoiding the risk associated with agility.
 
-In configuration `what' represents transitory knowledge, while `how' is often
+In configuration _what_ represents transitory knowledge, while _how_ is often
 more lasting and can be absorbed into the infrastructure. The consistency and
-repairability of `how' makes it simpler to change what without risk.
+repairability of _how_ makes it simpler to change what without risk.
 
 ### Maximizing business imperatives
 
 Agility allows companies and public services to compete and address the needs of
 continuous service improvement. This requires insight into IT operations from
-business and vice versa. Recently, the `DevOps' movement in web arenas has
+business and vice versa. Recently, the _DevOps_ movement in web arenas has
 emphasized the need for a more streamlined approach to integrating
 business-driven change and IT operations. Whatever we choose to call this, and
-in whatever arena, `connecting the dots between business and IT' is a major
+in whatever arena, _connecting the dots between business and IT_ is a major
 enabler for agility to business imperatives.
 
 Some business issues are inherently complex, e.g. software customization and
@@ -848,21 +848,21 @@ insight and understanding; this, in turn, allows us to anticipate and comprehend
 challenges. CFEngine's knowledge management features help to make the
 configuration itself a part of the documentation of the system. Instead of
 relying on command line tools to interact, the user documents intentions (as
-`promises to be kept'). These promises, and how well they have been kept, can be
+_promises to be kept_). These promises, and how well they have been kept, can be
 examined either from the original specification or in the Mission Portal.
 
 In the industrial age, the strategy was to supply sufficient force to a small
-problem in order to `control' it by brute force. In systems today the scale and
+problem in order to _control_ it by brute force. In systems today the scale and
 complexity are such that no such brute force approach can seriously be expected
 to work. Thus one is reduced to a more even state of affairs: learning to work
-with the environment `as is', with clear expectations of what is possible and
+with the environment _as is_, with clear expectations of what is possible and
 controlling only certain parts on which crucial things depend.
 
 ### What does agility cost?
 
 CFEngine is designed to have a low Total Cost of Ownership, by being
 exceptionally lightweight and conceptually simple. The investment in CFEngine is
-a `learning curve' that some find daunting. Indeed, at CFEngine, we work on
+a _learning curve_ that some find daunting. Indeed, at CFEngine, we work on
 reducing this initial learning curve all the time - but what really saves you in
 the end is simplicity without over-simplification.
 
@@ -897,7 +897,7 @@ term, by investing in knowledge management, speed and efficiency.
 
 Footnotes
 
-[^1]: Capacity is often loosely referred to as `bandwidth' because of its
+[^1]: Capacity is often loosely referred to as _bandwidth_ because of its
     connection to signal propagation in communication science, but this is not
     strictly correct, as bandwidth refers to parallel channels.
 
@@ -932,7 +932,7 @@ Footnotes
     Recovery agility plays a role in avoiding cascade failure. (ii) If the time
     to repair is long, or the repair is inaccurate, this could result if more
     widespread problems. Inaccurate change or repair often leads to attempts to
-    `roll-back', causing further problems.
+    _roll-back_, causing further problems.
 
 [^8]: See http://www.cfengine.com/blog/sysadmin-3.0-and-the-third-wave
 
