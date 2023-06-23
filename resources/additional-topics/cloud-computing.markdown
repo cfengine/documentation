@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Cloud Computing
+title: Cloud computing
 published: true
 sorting: 80
 ---

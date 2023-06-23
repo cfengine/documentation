@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Change Management
+title: Change management
 published: true
 sorting: 80
 ---

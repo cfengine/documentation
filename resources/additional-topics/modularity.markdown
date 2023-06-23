@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Modularity and Orchestrating System Policy
+title: Modularity and orchestrating system policy
 published: true
 sorting: 80
 ---
