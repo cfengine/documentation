@@ -1,6 +1,6 @@
 ---
 layout: printable
-title: Markdown Cheatsheet
+title: Markdown cheatsheet
 published: true
 sorting: 1
 alias: markdown-cheatsheet.html

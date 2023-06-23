@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Manual Execution
+title: Manual execution
 published: true
 sorting: 90
 ---

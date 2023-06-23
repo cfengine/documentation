@@ -56,9 +56,9 @@ there were to exist a file `/home/mark/tmp/cf3_test`, then we would have:
     '$(match.0)'
     equal to `/home/mark/tmp/cf3_test'
     '$(match.1)'
-    equal to `3'
+    equal to `3`
     '$(match.2)'
-    equal to `test'
+    equal to `test`
 
 Note that because the pattern allows for an optional '2' or '3' to follow the
 letters `cf`, it is possible that `$(match.1)` would contain the empty string.
@@ -70,7 +70,7 @@ would have
     '$(match.1)'
     equal to `'
     '$(match.2)'
-    equal to `widgets'
+    equal to `widgets`
 
 Now look at the edit bundle. This takes a parameter (which is the
 back-reference from the filename match), but it also uses back references to
@@ -237,7 +237,7 @@ body replace_with comment(c)
 When applying regular expressions in paths, the path will first be split at
 the path separators, and each element matched independently. For example, this
 makes it possible to write expressions like `/home/.*/file` to match a single
-file inside a lot of directories — the `.*` does not eat the whole string.
+file inside a lot of directories - the `.*` does not eat the whole string.
 
 Note that whenever regular expressions are used in paths, the `/` is always
 used as the path separator, even on Windows. However, on Windows, if the

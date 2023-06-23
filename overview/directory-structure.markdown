@@ -158,7 +158,7 @@ default. Other checks can be instrumented by setting a
 ## Process (AKA PID) files in /var/cfengine
 
 The CFEngine components keep their current process identifier number in
-`pid files' in the work directory.
+_pid files_ in the work directory.
 
 * `cf-execd.pid`
 * `cf-hub.pid`

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Application Management
+title: Application management
 published: true
 sorting: 80
 ---
@@ -76,7 +76,7 @@ management.
 When software packages are available on local storage, CFEngine can check
 whether they are already installed, and if so, which version and architecture
 are installed. This, in turn, can be verified against the policy for the
-software — should it indeed be installed, updated or removed?
+software - should it indeed be installed, updated or removed?
 
 Using the CFEngine standard library, agents know how to talk to the native
 package manager to query information and get the system into the desired state.
@@ -184,7 +184,7 @@ packages:
 By promising carefully what package and version you want, using package_policy,
 package_select, and package_version, CFEngine can keep this promise by updating
 to the latest version of the package available in the directory repository
-/software_repo. If the available versions are all `less than' than "1.0.0", an
+/software_repo. If the available versions are all _less than_ than "1.0.0", an
 update will not take place. The package_version specification should match the
 versioning format of the software, whatever it is, e.g. you would write
 something like "1.00.00.0" if two digits were used in the two middle version
@@ -206,7 +206,7 @@ From the promise above, we see that CFEngine will interpret app1 as the name,
 while looking at the package_name_convention in the rpm package method, we see
 that CFEngine will look for packages named as app1-X.Y.Z-i586.rpm, with X, Y, Z
 producing the largest version available in the directory repository. If an
-available version is larger than the one installed, an update will take place —
+available version is larger than the one installed, an update will take place -
 the update command is run.
 
 Finally, we set classes from the software update in case we want to act

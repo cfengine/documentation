@@ -59,15 +59,15 @@ the following defines the attribute `Role` which is set to
 `database_server`. You need to add it to the top-level
 `bundlesequence` in `promises.cf` or in a bundle that it calls.
 
-	```cf3
-	bundle agent myreport
-	{
-	  vars:
-		  "myrole"
-		  string => "database_server",
-		  meta => { "inventory", "attribute_name=Role" };
-	}
-	```
+```cf3
+bundle agent myreport
+{
+  vars:
+    "myrole"
+      string => "database_server",
+      meta => { "inventory", "attribute_name=Role" };
+}
+```
 
 * note the [`meta`][Promise types#meta] tag `inventory`
 
