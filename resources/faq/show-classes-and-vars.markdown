@@ -1,6 +1,6 @@
 ---
 layout: default
-title: How can I tell what Classes and Variables are defined?
+title: How can I tell what classes and variables are defined?
 published: true
 sorting: 90
 ---
