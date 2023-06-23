@@ -52,20 +52,22 @@ Example run:
 
 For reference we include an example of a simple sudoers file:
 
-	# /etc/sudoers
-	#
-	# This file MUST be edited with the 'visudo' command as root.
-	#
+```
+# /etc/sudoers
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
 
-	Defaults        env_reset
+Defaults        env_reset
 
-	# User privilege specification
-	root    ALL=(ALL) ALL
+# User privilege specification
+root    ALL=(ALL) ALL
 
-	# Allow members of group sudo to execute any command after they have
-	# provided their password
-	%sudo ALL=(ALL) ALL
+# Allow members of group sudo to execute any command after they have
+# provided their password
+%sudo ALL=(ALL) ALL
 
-	# Members of the admin group may gain root privileges
-	%admin ALL=(ALL) ALL
-	john  ALL=(ALL)       ALL
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+john  ALL=(ALL)       ALL
+```
