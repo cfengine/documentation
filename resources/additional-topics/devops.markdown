@@ -240,7 +240,7 @@ Saying _do this to all the following_ is generally easier to comprehend than _do
 Thus, loops are as useful for configuration as for programming. We only want to
 simplify the syntax once again to hide redundant words like `foreach`. To do
 this, CFEngine makes loops implicit. If you use a scalar variable reference
-'$(mylist)' to a list variable '@(mylist)', CFEngine assumes you want to iterate
+`$(mylist)` to a list variable `@(mylist)`, CFEngine assumes you want to iterate
 over each case.
 
 ```cf3

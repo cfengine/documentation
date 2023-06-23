@@ -52,7 +52,7 @@ We'll assume that you have a version control repository that is located on some 
 
 ### Macro template
 
-The next simplest approach to file management is to add variables to the template that will be expanded into local values at the end system, e.g. using variables like '$(sys.host)' for the name of the host within the body of the versioned template.
+The next simplest approach to file management is to add variables to the template that will be expanded into local values at the end system, e.g. using variables like `$(sys.host)` for the name of the host within the body of the versioned template.
 
 
 [%CFEngine_include_snippet(macro_template.cf, .* )%]

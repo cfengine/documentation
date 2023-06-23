@@ -258,7 +258,7 @@ generally map services to bundles.
 Many system variables are discovered automatically by CFEngine and provided "out
 of the box", e.g. the location of the filesystem table might be /etc/fstab, or
 /etc/vfstab or even /etc/filesystems, but CFEngine allows you to refer simply to
-**$(sys.fstab)**. Soft-coded abstraction needs cannot be discovered by the
+`$(sys.fstab)`. Soft-coded abstraction needs cannot be discovered by the
 system however. So how do we create this mythical resource abstraction layer? It
 is simple. Elsewhere we have defined basic settings.
 
