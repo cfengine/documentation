@@ -1,6 +1,6 @@
 ---
 layout: default
-title: File Content
+title: File content
 published: true
 sorting: 80
 ---

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Content Driven Policy
+title: Content driven policy
 published: true
 sorting: 80
 reviewed: 2019-05-06

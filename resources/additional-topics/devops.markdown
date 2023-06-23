@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Devops
+title: DevOps
 published: true
 sorting: 80
 ---
