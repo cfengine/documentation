@@ -80,7 +80,7 @@ This can be made more sophisticated to handle generic lists:
 
 [%CFEngine_include_snippet(restart_process_1.cf, .* )%]
 
-Why? Separating this into two parts gives a high level of control and conistency to CFEngine. There are many options for command execution, like the ability to run commands in a sandbox or as `setuid'. These should not be reproduced in processes.
+Why? Separating this into two parts gives a high level of control and conistency to CFEngine. There are many options for command execution, like the ability to run commands in a sandbox or as `setuid`. These should not be reproduced in processes.
 
 ## Mount a filesystem
 
@@ -163,6 +163,6 @@ Setting up sudo is straightforward, and is best managed by copying trusted files
 
 ## Tidying garbage files
 
-Emulating the `tidy' feature of CFEngine 2.
+Emulating the `tidy` feature of CFEngine 2.
 
 [%CFEngine_include_snippet(tidying_garbage_files.cf, .* )%]

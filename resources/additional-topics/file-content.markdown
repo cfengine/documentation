@@ -361,7 +361,7 @@ files that are read in.
 If you are using CFEngine 3.3 or later, you have the option of using
 edit_template and its embedded language constructs to keep decisions and loops
 inside templates. Let's set aside that for a while and look at the alternatives,
-placing the data entirely within bundles of `edit'-promises.
+placing the data entirely within bundles of `edit`-promises.
 
 There is language support for this kind of editing in the standard library, and
 you can store data and template components within a CFEngine configuration
