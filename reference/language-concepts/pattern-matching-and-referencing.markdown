@@ -237,7 +237,7 @@ body replace_with comment(c)
 When applying regular expressions in paths, the path will first be split at
 the path separators, and each element matched independently. For example, this
 makes it possible to write expressions like `/home/.*/file` to match a single
-file inside a lot of directories — the `.*` does not eat the whole string.
+file inside a lot of directories - the `.*` does not eat the whole string.
 
 Note that whenever regular expressions are used in paths, the `/` is always
 used as the path separator, even on Windows. However, on Windows, if the
