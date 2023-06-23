@@ -22,15 +22,15 @@ using the  SSH network protocol. It has a powerful and easy-to-use graphical use
 to run a remote session over a network.
 
 What is SSH? It is short-form for "Secure Shell," which means it creates a _secure channel_ over an
-insecure network—like the internet, for example.
+insecure network-like the internet, for example.
 
 How does SSH do this? By encrypting the communications between the client and the server, using
-public-key cryptography, which means that a key-pair is generated—one of them public, and the other
+public-key cryptography, which means that a key-pair is generated-one of them public, and the other
 private, or secret, known only to the user.
 
 Since CFEngine is a client-server enterprise software system, it is essential to access the servers
 securely. This is true whether the CFEngine system is run on a cloud platform, like Amazon Web Services
-and many others—or on a private network.
+and many others-or on a private network.
 
 That is where PuTTY comes into the picture, since it uses  SSH protocol for connecting a client to a server.
 
