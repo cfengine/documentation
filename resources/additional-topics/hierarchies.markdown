@@ -260,7 +260,7 @@ automatically inherited by all other bundles.
 ### Inheritance of variable definitions ###
 
 Variables in CFEngine are globally accessible, but you must say what bundle you
-are talking about by writing '$(bundle.scalar)' or '@(bundle.list)'. If you omit
+are talking about by writing `$(bundle.scalar)` or `@(bundle.list)`. If you omit
 the `bundle`, it is assumed that the variable is in the current bundle.
 
 ```cf3

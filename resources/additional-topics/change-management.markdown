@@ -415,7 +415,7 @@ The following sequence forms a checklist for deploying successful policy change:
 
 * Make a change in the CFEngine input files.
 
-* Run the configuration through `cf-promises --inform1 to check for problems.
+* Run the configuration through `cf-promises --inform` to check for problems.
 
 * Commit the tested changes to promises in version control, e.g. subversion.
 
