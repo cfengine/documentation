@@ -38,7 +38,7 @@ sorting: 80
 * CFEngine
 
   The name of the CFEngine Company, as well as the name of the Software.
-  CFEngine comes from a contraction of `ConFiguration Engine'.
+  CFEngine comes from a contraction of _ConFiguration Engine_.
 
 * CFEngine 3.x
 
@@ -69,7 +69,7 @@ sorting: 80
 * CFEngine Nova
 
   The lowest level enterprise edition of CFEngine, that automatically creates a
-  simple `star network' mangement model for hosts in an environment.
+  simple _star network_ mangement model for hosts in an environment.
 
 * Changelog
 
@@ -128,13 +128,13 @@ sorting: 80
 
 * Host
 
-  UNIX terminology for a computer the runs `guest programs'. In practice, `host'
-  is a synonym for `computer'.
+  UNIX terminology for a computer the runs _guest programs_. In practice, _host_
+  is a synonym for _computer_.
 
 * Hub
 
   A software component in CFE Nova and CFE Constellation that works as a single
-  point of management in a local `star-network'. The term hub is sometimes used
+  point of management in a local _star-network_. The term hub is sometimes used
   to mean policy distribution server, but more commonly a running cf-hub process
   that does report collection from all CFEngine managed hosts. The term hub
   means the centre of a wheel, from which multiple spokes emerge.
@@ -143,7 +143,7 @@ sorting: 80
 
   A master index of all the information known about a CFEngine managed
   environment, represented as a set of web pages with an interactive interface
-  based on a `semantic web'. The CFEngine Mission Portal provides a web-based
+  based on a _semantic web_. The CFEngine Mission Portal provides a web-based
   interface for browsing this knowledge map index.
 
 * Mission
@@ -163,7 +163,7 @@ sorting: 80
 
 * LDAP
 
-  The Lightweight Directory Access Protocol. A kind of `phone book' service
+  The Lightweight Directory Access Protocol. A kind of _phone book_ service
   providing information about persons and computers in an organization.
 
 * Libraries
@@ -196,7 +196,7 @@ sorting: 80
 
 * Promise
 
-  The CFEngine software manages every intended system outcome as `promises' to
+  The CFEngine software manages every intended system outcome as _promises_ to
   be kept. A CFEngine Promise corresponds roughly to a rule in other software
   products, but importantly promises are always things that can be kept and
   repaired continuously, on a real time basis, not just once at install-time.
@@ -227,7 +227,7 @@ sorting: 80
 
 * Service Catalogue
 
-  A kind of directory of `services' provided in an environment. The concept of a
+  A kind of directory of _services_ provided in an environment. The concept of a
   service could be anything from a human help desk to a machine controlled email
   subsystem. In the CFEngine Mission Portal, the service catalogue (for
   maintenance) treats promise-bundles of promises as low-level maintenance
@@ -247,7 +247,7 @@ sorting: 80
 
   A template is an incomplete piece of CFEngine code, with blanks to fill in. It
   is often a policy fragment that can be re-used in different scenarios. This is
-  often used interchangeably with the term `library'.
+  often used interchangeably with the term _library_.
 
 * UI
 

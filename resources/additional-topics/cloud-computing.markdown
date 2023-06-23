@@ -9,7 +9,7 @@ sorting: 80
 
 Cloud Computing refers to the commoditization of computing, i.e. a world in
 which computers may be borrowed on demand from a resource pool, like renting a
-car or loaning a book from the library. The term `Cloud' comes from a model of
+car or loaning a book from the library. The term _Cloud_ comes from a model of
 the Internet, where the precise details of how everything fits together are
 fuzzy. In a strongly networked environment, it might matter less where objects
 are physically located.
@@ -18,7 +18,7 @@ Commoditization of computers is an important strategy for business because it
 has the potential to eliminate a lot of the investment overhead for equipment
 during times of rapid change, as well as to recycle no-longer needed resources
 and save on redundant investment. You may think of Cloud Computing as
-`Recycle-able Computing' - a world in which you can use something for a short
+_Recycle-able Computing_ - a world in which you can use something for a short
 time and then discard it, without fear of waste.
 
 ## Is cloud computing for everything and everyone?
@@ -62,7 +62,7 @@ impermanence.
 
 CFEngine's lightweight repair capabilities are not only suitable for building
 machines quickly, but also for maintaining their state over time. It only pays
-to `rent services' (either from yourself or from a third party cloud provider)
+to _rent services_ (either from yourself or from a third party cloud provider)
 if you use the service infrequently, or your needs are constantly changing. The
 lack of permanence of cloud services can itself become an overhead if what you
 really need is constancy and security.
@@ -108,17 +108,17 @@ physical host container, one has a net saving of electrical power and man-power
 and often indistinguishable performance.
 
 Virtualization is a form of packaging, which enables service providers to
-separate services more easily with a `Chinese Wall' barrier. This is useful when
+separate services more easily with a _Chinese Wall_ barrier. This is useful when
 dealing with services belonging to different companies or different users on the
 same physical host. The packaging aspect of virtual machines is therefore a form
-of `information management'.
+of _information management_.
 
 ## Challenges for Cloud Computing
 
 Dealing with scale, rapid change and impermanence could quickly lead to a
 processing overhead for humans, i.e. in the management of the cloud computers.
 In order to cope, some models force an oversimplification onto the user, forcing
-them to make do with second best (a `cheap rental').
+them to make do with second best (a _cheap rental_).
 
 However, the requirements of computing are getting more complicated, not less.
 Even as this new economic management of resources comes into focus, companies
@@ -147,7 +147,7 @@ can be understood both by technicians and management stakeholders.
 
 * Deployment and maintaining real or virtual machines
 
-* Instant Managed services from `stem cell' hosts
+* Instant Managed services from _stem cell_ hosts
 
 * Modelling the required properties of all machines and allowing non-experts
   insight into that model to see how their business goals are being handled.

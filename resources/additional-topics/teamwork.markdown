@@ -90,7 +90,7 @@ and coordination.
 
 Promise theory shows that coordination needs a single point of coordination to
 be the arbiter of correctness in any collaborative process: a so-called
-`checkpoint' or `team leader', like passport control at an airport. This
+_checkpoint_ or _team leader_, like passport control at an airport. This
 checkpoint has to examine each contribution to the team and look for conflicts.
 
 For humans, this might be a matter of communication by meeting. CFEngine, on the
@@ -105,7 +105,7 @@ certain hosts.
 CFEngine Community Edition has roles promises, which offer a partial solution,
 but it does not address the core issue which is that collaboration in change
 requires freedom to act, not restriction. Delegation therefore requires trust.
-CFEngine Nova/Enterprise has `hubs' which can be coordinate large numbers of
+CFEngine Nova/Enterprise has _hubs_ which can be coordinate large numbers of
 hosts. Coordination can also be pre-arranged as policy, so that everyone has
 their own copy of the script. This is how an orchestra scales, for instance.
 
@@ -132,7 +132,7 @@ following.
 
 A review procedure for policy-promises is a good solution if you want to
 delegate responsibility for different parts of a policy to different sources.
-Human judgement as the `arbiter' is irreplaceable, but tools can be added to
+Human judgement as the _arbiter_ is irreplaceable, but tools can be added to
 make conflicts easier to detect.
 
 Promise theory underlines that, if a host or computing device accepts policy
