@@ -44,9 +44,9 @@ At no time will both the standard and the legacy data be available to these func
 vars:
   "all_package_updates"
     data => packageupdatesmatching(".*", # Package name regex
-                                      ".*",  # Version regex
-                                      ".*",  # Arch regex
-                                      ".*"); # Method regex
+                                   ".*",  # Version regex
+                                   ".*",  # Arch regex
+                                   ".*"); # Method regex
 ```
 
 **Refresh rules:**
