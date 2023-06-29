@@ -41,7 +41,12 @@ At no time will both the standard and the legacy data be available to these func
 **Example:**
 
 ```cf3
-"all_package_updates" data => packageupdatesmatching(".*", ".*", ".*", ".*");
+vars:
+  "all_package_updates"
+    data => packageupdatesmatching(".*", # Package name regex
+                                      ".*",  # Version regex
+                                      ".*",  # Arch regex
+                                      ".*"); # Method regex
 ```
 
 **Refresh rules:**
