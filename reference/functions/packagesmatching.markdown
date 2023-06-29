@@ -16,7 +16,7 @@ list of currently installed packages.
 The return is a data container with a list of package descriptions, looking like
 this:
 
-```
+```json
 [
    {
       "arch":"default",
@@ -30,26 +30,14 @@ this:
 
 [%CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex)%]
 
-**Argument Descriptions:**
-
-* `package_regex` - Regular expression matching packge name
-* `version_regex` - Regular expression matching package version
-* `arch_regex` - Regular expression matching package architecutre
-* `method_regex` - Regular expression matching package method (apt-get, rpm, etc ...)
-
-The following code extracts just the package names, then looks for
-some desired packages, and finally reports if they are installed.
-
 **IMPORTANT:** The data source used when querying depends on policy configuration.
 When `package_inventory` in `body common control` is configured, CFEngine will record the packages installed and the package updates available for the configured package modules.
 In the [Masterfiles Policy Framework][Masterfiles Policy Framework] `package_inventory` will be [configured](https://github.com/cfengine/masterfiles/blob/3dc1f629544b24261975ecf86e02554d4daf346e/promises.cf.in#L92) to the default for the hosts platform.
 Since only one `body common control` can be present in a policy set any bundles which use these functions will typically need to execute in the context of a full policy run.
-However, since the release of CFEngine 3.22, the `packagesmatching` and `packageupdatesmatching` policy functions will look for and use the existing software inventory databases (available in `$(sys.statedir)`), if the default package inventory is not configured.
-This change enables the usage of these policy functions in standalone policy files. But please note that you still need the default package inventory attribute specified in the policy framework for the software inventory databases to exist in the first place and for them to be maintained/updated.
+However, the `packagesmatching` and `packageupdatesmatching` policy functions will look for and use the existing software inventory databases (available in `$(sys.statedir)`), even if the default package inventory is not configured.
+This enables the usage of these policy functions in standalone policy files. But please note that you still need the default package inventory attribute specified in the policy framework for the software inventory databases to exist in the first place and for them to be maintained/updated.
 If there is no `package_inventory` attribute (such as on package module unsupported platforms) and there are no software inventory databases available in `$(sys.statedir)` then the legacy package methods data will be used instead.
 At no time will both the standard and the legacy data be available to these functions simultaneously.
-
-[%CFEngine_include_example(packagesmatching.cf)%]
 
 **Example:**
 
@@ -74,6 +62,13 @@ $(sys.statedir)/software_packages.csv
 ```
 
 
-**History:** Introduced in CFEngine 3.6
+**History:**
+
+* Introduced in CFEngine 3.6
+
+* Function started using `package_module` based data sources by default, even if
+  there is no `package_inventory` attribute defined in `body common control` if
+  available in 3.23.0
+
 
 **See also:** `packageupdatesmatching()`, [Package information cache tunables in the MPF][Masterfiles Policy Framework#Configure periodic package inventory refresh interval]
