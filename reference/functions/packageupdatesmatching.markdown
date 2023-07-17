@@ -42,7 +42,12 @@ At no time will both the standard and the legacy data be available to these func
 **Example:**
 
 ```cf3
-      "all_package_updates" data => packageupdatesmatching(".*", ".*", ".*", ".*");
+vars:
+  "all_package_updates"
+    data => packageupdatesmatching(".*", # Package name regex
+                                   ".*",  # Version regex
+                                   ".*",  # Arch regex
+                                   ".*"); # Method regex
 ```
 
 **Refresh rules:**
@@ -67,7 +72,7 @@ $(sys.statedir)/software_patches_avail.csv
 
 * Function started using `package_module` based data sources by default, even if
   there is no `package_inventory` attribute defined in `body common control` if
-  available in 3.23.0
+  available in 3.23.0, 3.21.3, 3.18.6
 
 
 **See also:** `packagesmatching()`, [Package information cache tunables in the MPF][Masterfiles Policy Framework#Configure periodic package inventory refresh interval]
