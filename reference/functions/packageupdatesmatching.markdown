@@ -71,7 +71,7 @@ $(sys.statedir)/software_patches_avail.csv
 
 * Function started using `package_module` based data sources by default, even if
   there is no `package_inventory` attribute defined in `body common control` if
-  available in 3.23.0
+  available in 3.23.0, 3.21.3
 
 
 **See also:** `packagesmatching()`, [Package information cache tunables in the MPF][Masterfiles Policy Framework#Configure periodic package inventory refresh interval]
