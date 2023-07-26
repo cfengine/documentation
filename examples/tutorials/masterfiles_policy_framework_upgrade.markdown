@@ -6,163 +6,151 @@ sorting: 14
 tags: [MPF, upgrade, masterfiles, tutorial]
 ---
 
-# Introduction
+Upgrading the Masterfiles Policy Framework (MPF) is the first step in upgrading CFEngine from one version to another. The MPF should always be the same version or newer than the binary versions running.
 
-Upgrading the Masterfiles Policy Framework (MPF) is an *optional* but **highly
-recommended** first step when upgrading CFEngine.
+Upgrading the MPF is not an exact process as the details highly depend on the specifics of the changes made to the default policy. This tutorial leverages `git` and shows an example of upgrading a simple policy set based on `3.18.0` to `3.18.5` and can be used as a reference for upgrading your own policy sets.
 
-Upgrading the MPF is not an exact process as the details highly depend on the
-specifics of the changes made to the default policy. This tutorial leverages
-`git` and shows an example of upgrading a simple policy set based on 3.6.7 to
-3.7.4 and can be used as a reference for upgrading your own policy sets.
+
+
 
 # Prepare a Git clone of your working masterfiles
 
-If you are not using Git and instead editing directly in
-`$(sys.workdir/masterfiles)` you can simply copy your masterfiles into a new
-directory and initalize a new Git repository.
+We will perform the integration work in `/tmp/MPF-upgrade/integration`. `masterfiles` should exist in the integration directory and is expected to be both the root of your policy set and a `git` repository.
 
-If you're using Git already simply clone your repository and skip to the next
-step.
 
-```console
-[root@hub MPF_upgrade]# rsync -a /var/cfengine/masterfiles/ MPF_upgrade/
 
+
+## Validating expectations
+
+From `/tmp/MPF-upgrade/integration/masterfiles`. Let's inspect what we expect.
+
+Is it the root of a policy set? `promises.cf` will be present if so.
+
+```bash
+    export INTEGRATION_ROOT="/tmp/MPF-upgrade/integration"
+    cd $INTEGRATION_ROOT/masterfiles
+if [ -e "promises.cf" ]; then
+    echo "promise.cf exists, it's likely the root of a policy set"
+else
+    echo "promises.cf is missing, $INTEGRATION_ROOT/masterfiles does not seem like the root of a policy set"
+fi
 ```
 
-Then initialize the new Git repository and add all the files to it.
+Output:
 
-```console
-[root@hub ~]# cd MPF_upgrade/
-[root@hub MPF_upgrade]# git init
-Initialized empty Git repository in /root/MPF_upgrade/.git/
-[root@hub MPF_upgrade]# git add -A
-[root@hub MPF_upgrade]# git commit -m "Before Upgrade"
-[master (root-commit) 108c210] Before Upgrade
- 78 files changed, 19980 insertions(+)
- create mode 100644 CUSTOM/policy1.cf
- create mode 100644 cf_promises_release_id
- create mode 100644 cf_promises_validated
- create mode 100644 cfe_internal/CFE_cfengine.cf
- create mode 100644 cfe_internal/CFE_hub_specific.cf
- create mode 100644 cfe_internal/CFE_knowledge.cf
- create mode 100644 cfe_internal/cfengine_processes.cf
- create mode 100644 cfe_internal/ha/ha.cf
- create mode 100644 cfe_internal/ha/ha_def.cf
- create mode 100644 cfe_internal/host_info_report.cf
- create mode 100644 controls/3.4/cf_serverd.cf
- create mode 100644 controls/cf_agent.cf
- create mode 100644 controls/cf_execd.cf
- create mode 100644 controls/cf_hub.cf
- create mode 100644 controls/cf_monitord.cf
- create mode 100644 controls/cf_runagent.cf
- create mode 100644 controls/cf_serverd.cf
- create mode 100644 def.cf
- create mode 100644 inventory/any.cf
- create mode 100644 inventory/debian.cf
- create mode 100644 inventory/generic.cf
- create mode 100644 inventory/linux.cf
- create mode 100644 inventory/lsb.cf
- create mode 100644 inventory/macos.cf
- create mode 100644 inventory/os.cf
- create mode 100644 inventory/redhat.cf
- create mode 100644 inventory/suse.cf
- create mode 100644 inventory/windows.cf
- create mode 100644 lib/3.5/bundles.cf
- create mode 100644 lib/3.5/cfe_internal.cf
- create mode 100644 lib/3.5/commands.cf
- create mode 100644 lib/3.5/common.cf
- create mode 100644 lib/3.5/databases.cf
- create mode 100644 lib/3.5/feature.cf
- create mode 100644 lib/3.5/files.cf
- create mode 100644 lib/3.5/guest_environments.cf
- create mode 100644 lib/3.5/monitor.cf
- create mode 100644 lib/3.5/packages.cf
- create mode 100644 lib/3.5/paths.cf
- create mode 100644 lib/3.5/processes.cf
- create mode 100644 lib/3.5/reports.cf
- create mode 100644 lib/3.5/services.cf
- create mode 100644 lib/3.5/storage.cf
- create mode 100644 lib/3.6/bundles.cf
- create mode 100644 lib/3.6/cfe_internal.cf
- create mode 100644 lib/3.6/cfengine_enterprise_hub_ha.cf
- create mode 100644 lib/3.6/commands.cf
- create mode 100644 lib/3.6/common.cf
- create mode 100644 lib/3.6/databases.cf
- create mode 100644 lib/3.6/edit_xml.cf
- create mode 100644 lib/3.6/examples.cf
- create mode 100644 lib/3.6/feature.cf
- create mode 100644 lib/3.6/files.cf
- create mode 100644 lib/3.6/guest_environments.cf
- create mode 100644 lib/3.6/monitor.cf
- create mode 100644 lib/3.6/packages.cf
- create mode 100644 lib/3.6/paths.cf
- create mode 100644 lib/3.6/processes.cf
- create mode 100644 lib/3.6/reports.cf
- create mode 100644 lib/3.6/services.cf
- create mode 100644 lib/3.6/stdlib.cf
- create mode 100644 lib/3.6/storage.cf
- create mode 100644 lib/3.6/users.cf
- create mode 100644 lib/3.6/vcs.cf
- create mode 100644 promises.cf
- create mode 100644 services/autorun.cf
- create mode 100644 services/autorun/custom_policy2.cf
- create mode 100644 services/autorun/hello.cf
- create mode 100644 services/file_change.cf
- create mode 100644 sketches/meta/api-runfile.cf
- create mode 100644 templates/host_info_report.mustache
- create mode 100644 update.cf
- create mode 100644 update/cfe_internal_dc_workflow.cf
- create mode 100644 update/cfe_internal_local_git_remote.cf
- create mode 100644 update/cfe_internal_update_from_repository.cf
- create mode 100644 update/update_bins.cf
- create mode 100644 update/update_policy.cf
- create mode 100644 update/update_processes.cf
-[root@hub MPF_upgrade]# git status
-# On branch master
-nothing to commit, working directory clean
+```
+promise.cf exists, it's likely the root of a policy set
 ```
 
-Now we have a Git repository that we can start merging in the changes from
-upstream.
+Let's see what version of the MPF we are starting from by looking at `version` in `body common control` of `promises.cf`.
 
-# Merge the upstream changes to the MPF into your policy
+```bash
+grep -P "\s+version\s+=>" $INTEGRATION_ROOT/masterfiles/promises.cf 2>&1 \
+    || echo "promises.cf is missing, $INTEGRATION_ROOT/masterfiles does not seem to be the root of a policy set"
+```
 
-## Remove everything except the .git directory.
+Output:
 
-By first removing everything we will easily be able so see which files are
-*new*, *changed*, *moved* or *removed* upstream.
+```
+version => "CFEngine Promises.cf 3.18.0";
+```
 
-```console
-[root@hub MPF_upgrade]# rm -rf *
+And finally, is it a git repository, what is the last commit?
+
+```bash
+git status \
+      || echo "$INTEGRATION_ROOT/masterfiles does not appear to be a git repository!" \
+      && git log -1
+```
+
+Output:
+
+```
+On branch master
+nothing to commit, working tree clean
+commit a1d0b726bb8894848bc877d037c546062228881f
+Author: Nick Anderson <nick@cmdln.org>
+Date:   Wed Jul 26 17:37:31 2023 -0500
+
+    CFEngine Policy set prior to upgrade
+```
 
 
-[root@hub MPF_upgrade]# git status
+
+
+# Merge upstream changes from the MPF into your policy
+
+
+
+
+## Remove everything except the `.git` directory
+
+By first removing everything we will easily be able so see which files are **new**, **changed**, **moved** or **removed** upstream.
+
+```bash
+rm -rf *
+```
+
+Check `git status` to see that all the files have been deleted and are not staged for commit.
+
+```bash
+git status
+```
+
+Output:
+
+```
 On branch master
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	deleted:    CUSTOM/policy1.cf
-	deleted:    cf_promises_release_id
-	deleted:    cf_promises_validated
+  (use "git restore <file>..." to discard changes in working directory)
 	deleted:    cfe_internal/CFE_cfengine.cf
-	deleted:    cfe_internal/CFE_hub_specific.cf
-	deleted:    cfe_internal/CFE_knowledge.cf
-	deleted:    cfe_internal/cfengine_processes.cf
-	deleted:    cfe_internal/ha/ha.cf
-	deleted:    cfe_internal/ha/ha_def.cf
-	deleted:    cfe_internal/host_info_report.cf
-	deleted:    controls/3.4/cf_serverd.cf
+	deleted:    cfe_internal/core/deprecated/cfengine_processes.cf
+	deleted:    cfe_internal/core/host_info_report.cf
+	deleted:    cfe_internal/core/limit_robot_agents.cf
+	deleted:    cfe_internal/core/log_rotation.cf
+	deleted:    cfe_internal/core/main.cf
+	deleted:    cfe_internal/core/watchdog/templates/watchdog-windows.ps1.mustache
+	deleted:    cfe_internal/core/watchdog/templates/watchdog.mustache
+	deleted:    cfe_internal/core/watchdog/watchdog.cf
+	deleted:    cfe_internal/enterprise/CFE_hub_specific.cf
+	deleted:    cfe_internal/enterprise/CFE_knowledge.cf
+	deleted:    cfe_internal/enterprise/federation/federation.cf
+	deleted:    cfe_internal/enterprise/file_change.cf
+	deleted:    cfe_internal/enterprise/ha/ha.cf
+	deleted:    cfe_internal/enterprise/ha/ha_def.cf
+	deleted:    cfe_internal/enterprise/ha/ha_update.cf
+	deleted:    cfe_internal/enterprise/main.cf
+	deleted:    cfe_internal/enterprise/mission_portal.cf
+	deleted:    cfe_internal/enterprise/templates/httpd.conf.mustache
+	deleted:    cfe_internal/enterprise/templates/runalerts.php.mustache
+	deleted:    cfe_internal/enterprise/templates/runalerts.sh.mustache
+	deleted:    cfe_internal/recommendations.cf
+	deleted:    cfe_internal/update/cfe_internal_dc_workflow.cf
+	deleted:    cfe_internal/update/cfe_internal_update_from_repository.cf
+	deleted:    cfe_internal/update/lib.cf
+	deleted:    cfe_internal/update/systemd_units.cf
+	deleted:    cfe_internal/update/update_bins.cf
+	deleted:    cfe_internal/update/update_policy.cf
+	deleted:    cfe_internal/update/update_processes.cf
+	deleted:    cfe_internal/update/windows_unattended_upgrade.cf
 	deleted:    controls/cf_agent.cf
 	deleted:    controls/cf_execd.cf
 	deleted:    controls/cf_hub.cf
 	deleted:    controls/cf_monitord.cf
 	deleted:    controls/cf_runagent.cf
 	deleted:    controls/cf_serverd.cf
-	deleted:    def.cf
+	deleted:    controls/def.cf
+	deleted:    controls/def_inputs.cf
+	deleted:    controls/reports.cf
+	deleted:    controls/update_def.cf
+	deleted:    controls/update_def_inputs.cf
+	deleted:    custom-2.cf
+	deleted:    def.json
+	deleted:    inventory/aix.cf
 	deleted:    inventory/any.cf
 	deleted:    inventory/debian.cf
+	deleted:    inventory/freebsd.cf
 	deleted:    inventory/generic.cf
 	deleted:    inventory/linux.cf
 	deleted:    inventory/lsb.cf
@@ -171,724 +159,880 @@ Changes not staged for commit:
 	deleted:    inventory/redhat.cf
 	deleted:    inventory/suse.cf
 	deleted:    inventory/windows.cf
-	deleted:    lib/3.5/bundles.cf
-	deleted:    lib/3.5/cfe_internal.cf
-	deleted:    lib/3.5/commands.cf
-	deleted:    lib/3.5/common.cf
-	deleted:    lib/3.5/databases.cf
-	deleted:    lib/3.5/feature.cf
-	deleted:    lib/3.5/files.cf
-	deleted:    lib/3.5/guest_environments.cf
-	deleted:    lib/3.5/monitor.cf
-	deleted:    lib/3.5/packages.cf
-	deleted:    lib/3.5/paths.cf
-	deleted:    lib/3.5/processes.cf
-	deleted:    lib/3.5/reports.cf
-	deleted:    lib/3.5/services.cf
-	deleted:    lib/3.5/storage.cf
-	deleted:    lib/3.6/bundles.cf
-	deleted:    lib/3.6/cfe_internal.cf
-	deleted:    lib/3.6/cfengine_enterprise_hub_ha.cf
-	deleted:    lib/3.6/commands.cf
-	deleted:    lib/3.6/common.cf
-	deleted:    lib/3.6/databases.cf
-	deleted:    lib/3.6/edit_xml.cf
-	deleted:    lib/3.6/examples.cf
-	deleted:    lib/3.6/feature.cf
-	deleted:    lib/3.6/files.cf
-	deleted:    lib/3.6/guest_environments.cf
-	deleted:    lib/3.6/monitor.cf
-	deleted:    lib/3.6/packages.cf
-	deleted:    lib/3.6/paths.cf
-	deleted:    lib/3.6/processes.cf
-	deleted:    lib/3.6/reports.cf
-	deleted:    lib/3.6/services.cf
-	deleted:    lib/3.6/stdlib.cf
-	deleted:    lib/3.6/storage.cf
-	deleted:    lib/3.6/users.cf
-	deleted:    lib/3.6/vcs.cf
+	deleted:    lib/autorun.cf
+	deleted:    lib/bundles.cf
+	deleted:    lib/cfe_internal.cf
+	deleted:    lib/cfe_internal_hub.cf
+	deleted:    lib/cfengine_enterprise_hub_ha.cf
+	deleted:    lib/commands.cf
+	deleted:    lib/common.cf
+	deleted:    lib/databases.cf
+	deleted:    lib/deprecated-upstream.cf
+	deleted:    lib/edit_xml.cf
+	deleted:    lib/event.cf
+	deleted:    lib/examples.cf
+	deleted:    lib/feature.cf
+	deleted:    lib/files.cf
+	deleted:    lib/guest_environments.cf
+	deleted:    lib/monitor.cf
+	deleted:    lib/packages-ENT-3719.cf
+	deleted:    lib/packages.cf
+	deleted:    lib/paths.cf
+	deleted:    lib/processes.cf
+	deleted:    lib/reports.cf
+	deleted:    lib/services.cf
+	deleted:    lib/stdlib.cf
+	deleted:    lib/storage.cf
+	deleted:    lib/testing.cf
+	deleted:    lib/users.cf
+	deleted:    lib/vcs.cf
+	deleted:    modules/packages/vendored/WiRunSQL.vbs.mustache
+	deleted:    modules/packages/vendored/apk.mustache
+	deleted:    modules/packages/vendored/apt_get.mustache
+	deleted:    modules/packages/vendored/freebsd_ports.mustache
+	deleted:    modules/packages/vendored/msiexec-list.vbs.mustache
+	deleted:    modules/packages/vendored/msiexec.bat.mustache
+	deleted:    modules/packages/vendored/nimclient.mustache
+	deleted:    modules/packages/vendored/pkg.mustache
+	deleted:    modules/packages/vendored/pkgsrc.mustache
+	deleted:    modules/packages/vendored/slackpkg.mustache
+	deleted:    modules/packages/vendored/snap.mustache
+	deleted:    modules/packages/vendored/yum.mustache
+	deleted:    modules/packages/vendored/zypper.mustache
 	deleted:    promises.cf
-	deleted:    services/autorun.cf
-	deleted:    services/autorun/custom_policy2.cf
+	deleted:    services/autorun/custom-1.cf
 	deleted:    services/autorun/hello.cf
-	deleted:    services/file_change.cf
-	deleted:    sketches/meta/api-runfile.cf
+	deleted:    services/custom-3.cf
+	deleted:    services/init.cf
+	deleted:    services/main.cf
+	deleted:    standalone_self_upgrade.cf
+	deleted:    templates/cf-apache.service.mustache
+	deleted:    templates/cf-execd.service.mustache
+	deleted:    templates/cf-hub.service.mustache
+	deleted:    templates/cf-monitord.service.mustache
+	deleted:    templates/cf-postgres.service.mustache
+	deleted:    templates/cf-runalerts.service.mustache
+	deleted:    templates/cf-serverd.service.mustache
+	deleted:    templates/cfengine3.service.mustache
+	deleted:    templates/cfengine_watchdog.mustache
+	deleted:    templates/federated_reporting/10-base_filter.sed
+	deleted:    templates/federated_reporting/50-merge_inserts.awk
+	deleted:    templates/federated_reporting/config.sh.mustache
+	deleted:    templates/federated_reporting/dump.sh
+	deleted:    templates/federated_reporting/import.sh
+	deleted:    templates/federated_reporting/import_file.sh
+	deleted:    templates/federated_reporting/log.sh.mustache
+	deleted:    templates/federated_reporting/parallel.sh
+	deleted:    templates/federated_reporting/psql_wrapper.sh.mustache
+	deleted:    templates/federated_reporting/pull_dumps_from.sh
+	deleted:    templates/federated_reporting/transport.sh
 	deleted:    templates/host_info_report.mustache
+	deleted:    templates/json_multiline.mustache
+	deleted:    templates/json_serial.mustache
+	deleted:    templates/vercmp.ps1
 	deleted:    update.cf
-	deleted:    update/cfe_internal_dc_workflow.cf
-	deleted:    update/cfe_internal_local_git_remote.cf
-	deleted:    update/cfe_internal_update_from_repository.cf
-	deleted:    update/update_bins.cf
-	deleted:    update/update_policy.cf
-	deleted:    update/update_processes.cf
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-## Install the new MPF
 
-The MPF can be obtained from
-any [community package](https://cfengine.com/product/community/) (in
-```$(sys.workdir)/share/CoreBase/```),
-[enterprise hub package](https://cfengine.com/product/free-download/) (in
-```$(sys.workdir)/share/NovaBase/```),
-[masterfiles source tarball](https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.tar.gz) (requires
-```./configure``` and ```make install```
-),
-[installed masterfiles tarball](https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}.pkg.tar.gz) (ready
-for extraction),
-or
-[directly from github](https://github.com/cfengine/masterfiles/tree/{{site.cfengine.masterfiles_branch}}).
 
-We will install the MPF from source obtained
-directly from github.
 
-**Note:** You will need ```automake``` to install from source.
+## Install the new version of the MPF
 
-First clone the masterfiles repository for the version you are installing. And
-verify you have the correct tag checked out.
 
-**Note:** Directly checking out a tag as in the example below is only
-supported in Git versions 1.7.9.5 and newer.
 
-```console
-[root@hub MPF_upgrade]# cd ..
-[root@hub ~]# git clone -b 3.7.4 https://github.com/cfengine/masterfiles
-[root@hub ~]# cd masterfiles
-[root@hub ~]# git describe
-3.7.4
+
+### Installing from Git
+
+First, clone the desired version of the MPF source.
+
+```bash
+export MPF_VERSION="3.18.5"
+git clone -b $MPF_VERSION https://github.com/cfengine/masterfiles $INTEGRATION_ROOT/masterfiles-source-$MPF_VERSION
 ```
 
-**Note:** For systems without python 3 easily available (such as centos 6) you can use the following to get around problems in autogen with 3rdparty/core/determine-version.py, which requires python3.
+Output:
 
 ```
-export EXPLICIT_VERSION=$(git describe)
+Cloning into '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5'...
+Note: switching to 'ea81b7b790f1bf98cbf145d8700a06b37d74fb84'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
 ```
 
-Now we will install the masterfiles from upstream into the directory where we
-are doing the integration.
+Then build and install targeting the integration root directory. When installed from source masterfiles installs into the `masterfiles` directory.
 
-First we build and install masterfiles to a temporary location.
+```bash
+cd $INTEGRATION_ROOT/masterfiles-source-$MPF_VERSION
+export EXPLICIT_VERSION=$MPF_VERSION
 
-```console
 ./autogen.sh
-[root@hub masterfiles]# ./autogen.sh
-configure.ac:31: installing `./config.guess'
-configure.ac:31: installing `./config.sub'
-configure.ac:34: installing `./install-sh'
-configure.ac:34: installing `./missing'
-checking build system type... x86_64-unknown-linux-gnu
-checking host system type... x86_64-unknown-linux-gnu
-checking target system type... x86_64-unknown-linux-gnu
+make
+make install prefix=$INTEGRATION_ROOT/
+```
+
+Output:
+
+```
+./autogen.sh: Running determine-version.sh ...
+./autogen.sh: Running determine-release.sh ...
+All tags pointing to current commit:
+3.18.5
+3.18.5-build5
+Latest version: 3.18.5
+Could not parse it, using default release number 1
+./autogen.sh: Running autoreconf ...
+configure.ac:40: installing './config.guess'
+configure.ac:40: installing './config.sub'
+configure.ac:43: installing './install-sh'
+configure.ac:43: installing './missing'
+parallel-tests: installing './test-driver'
+/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking target system type... x86_64-pc-linux-gnu
 checking for a BSD-compatible install... /usr/bin/install -c
 checking whether build environment is sane... yes
-checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
 checking for gawk... gawk
 checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether UID '1000' is supported by ustar format... yes
+checking whether GID '1000' is supported by ustar format... yes
 checking how to create a ustar tar archive... gnutar
-checking whether to disable maintainer-specific portions of Makefiles... yes
-checking for a thread-safe mkdir -p... /bin/mkdir -p
-checking for a BSD-compatible install... /usr/bin/install -c
+checking if GNU tar supports --hard-dereference... yes
+checking whether to enable maintainer-specific portions of Makefiles... yes
+checking whether make supports nested variables... (cached) yes
+checking for pkg_install... no
+checking for shunit2... no
 
-Summary of options:
+Summary:
+Version              -> 3.18.5
+Release              -> 1
 Core directory       -> not set - tests are disabled
 Enterprise directory -> not set - some tests are disabled
 Install prefix       -> /var/cfengine
+bindir               -> /var/cfengine/bin
 
 configure: generating makefile targets
+checking that generated files are newer than configure... done
 configure: creating ./config.status
 config.status: creating Makefile
-config.status: creating controls/3.5/update_def.cf
-config.status: creating controls/3.6/update_def.cf
-config.status: creating controls/3.7/update_def.cf
-config.status: creating modules/packages/Makefile
+config.status: creating controls/update_def.cf
 config.status: creating promises.cf
+config.status: creating standalone_self_upgrade.cf
+config.status: creating tests/Makefile
 config.status: creating tests/acceptance/Makefile
 config.status: creating tests/unit/Makefile
 
 DONE: Configuration done. Run "make install" to install CFEngine Masterfiles.
-[root@hub masterfiles]# ./configure --prefix /tmp/masterfiles-3.7.4
-checking build system type... x86_64-unknown-linux-gnu
-checking host system type... x86_64-unknown-linux-gnu
-checking target system type... x86_64-unknown-linux-gnu
-checking for a BSD-compatible install... /usr/bin/install -c
-checking whether build environment is sane... yes
-checking for a thread-safe mkdir -p... /bin/mkdir -p
-checking for gawk... gawk
-checking whether make sets $(MAKE)... yes
-checking how to create a ustar tar archive... gnutar
-checking whether to disable maintainer-specific portions of Makefiles... yes
-checking for a thread-safe mkdir -p... /bin/mkdir -p
-checking for a BSD-compatible install... /usr/bin/install -c
 
-Summary of options:
-Core directory       -> not set - tests are disabled
-Enterprise directory -> not set - some tests are disabled
-Install prefix       -> /tmp/masterfiles-3.7.4
-
-configure: generating makefile targets
-configure: creating ./config.status
-config.status: creating Makefile
-config.status: creating controls/3.5/update_def.cf
-config.status: creating controls/3.6/update_def.cf
-config.status: creating controls/3.7/update_def.cf
-config.status: creating modules/packages/Makefile
-config.status: creating promises.cf
-config.status: creating tests/acceptance/Makefile
-config.status: creating tests/unit/Makefile
-
-DONE: Configuration done. Run "make install" to install CFEngine Masterfiles.
+Making all in tests/
+make[1]: Entering directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests'
+Making all in .
+make[2]: Entering directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests'
+Making all in unit
+make[2]: Entering directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit'
+make[1]: Leaving directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests'
+make[1]: Entering directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5'
+make[1]: Nothing to be done for 'all-am'.
+make[1]: Leaving directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5'
+Making install in tests/
+make[1]: Entering directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests'
+Making install in .
+make[2]: Entering directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests'
+make[3]: Entering directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests'
+make[2]: Leaving directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests'
+Making install in unit
+make[2]: Entering directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit'
+make[3]: Entering directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit'
+make[2]: Leaving directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit'
+make[1]: Leaving directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests'
+make[1]: Entering directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5'
+make[2]: Entering directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5'
+make[2]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core'
+ /usr/bin/install -c -m 644  ./cfe_internal/core/host_info_report.cf ./cfe_internal/core/log_rotation.cf ./cfe_internal/core/main.cf ./cfe_internal/core/limit_robot_agents.cf '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/templates'
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/templates/runalerts.sh.mustache ./cfe_internal/enterprise/templates/httpd.conf.mustache ./cfe_internal/enterprise/templates/apachectl.mustache ./cfe_internal/enterprise/templates/runalerts.php.mustache '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/templates'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/inventory'
+ /usr/bin/install -c -m 644  ./inventory/windows.cf ./inventory/suse.cf ./inventory/macos.cf ./inventory/lsb.cf ./inventory/any.cf ./inventory/os.cf ./inventory/freebsd.cf ./inventory/generic.cf ./inventory/debian.cf ./inventory/linux.cf ./inventory/redhat.cf ./inventory/aix.cf '/tmp/MPF-upgrade/integration//masterfiles/inventory'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/federation'
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/federation/federation.cf '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/federation'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/deprecated'
+ /usr/bin/install -c -m 644  ./cfe_internal/core/deprecated/cfengine_processes.cf '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/deprecated'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/lib/templates'
+ /usr/bin/install -c -m 644  ./lib/templates/tap.mustache ./lib/templates/junit.mustache '/tmp/MPF-upgrade/integration//masterfiles/lib/templates'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/services/autorun'
+ /usr/bin/install -c -m 644  ./services/autorun/hello.cf '/tmp/MPF-upgrade/integration//masterfiles/services/autorun'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/lib'
+ /usr/bin/install -c -m 644  ./lib/testing.cf ./lib/examples.cf ./lib/packages.cf ./lib/common.cf ./lib/users.cf ./lib/guest_environments.cf ./lib/cfengine_enterprise_hub_ha.cf ./lib/edit_xml.cf ./lib/files.cf ./lib/bundles.cf ./lib/reports.cf ./lib/event.cf ./lib/storage.cf ./lib/paths.cf ./lib/vcs.cf ./lib/stdlib.cf ./lib/autorun.cf ./lib/databases.cf ./lib/feature.cf ./lib/cfe_internal_hub.cf ./lib/monitor.cf ./lib/services.cf ./lib/packages-ENT-3719.cf ./lib/commands.cf ./lib/processes.cf ./lib/cfe_internal.cf '/tmp/MPF-upgrade/integration//masterfiles/lib'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/update'
+ /usr/bin/install -c -m 644  ./cfe_internal/update/cfe_internal_dc_workflow.cf ./cfe_internal/update/lib.cf ./cfe_internal/update/update_processes.cf ./cfe_internal/update/windows_unattended_upgrade.cf ./cfe_internal/update/systemd_units.cf ./cfe_internal/update/update_policy.cf ./cfe_internal/update/update_bins.cf ./cfe_internal/update/cfe_internal_update_from_repository.cf '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/update'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/controls'
+ /usr/bin/install -c -m 644  ./controls/cf_agent.cf ./controls/cf_runagent.cf ./controls/cf_execd.cf ./controls/def_inputs.cf ./controls/cf_monitord.cf ./controls/def.cf ./controls/reports.cf ./controls/update_def_inputs.cf ./controls/cf_serverd.cf ./controls/cf_hub.cf ./controls/update_def.cf '/tmp/MPF-upgrade/integration//masterfiles/controls'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/ha'
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/ha/ha_def.cf ./cfe_internal/enterprise/ha/ha.cf ./cfe_internal/enterprise/ha/ha_update.cf '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/ha'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/modules/packages/vendored'
+ /usr/bin/install -c -m 644  ./modules/packages/vendored/apk.mustache ./modules/packages/vendored/msiexec.bat.mustache ./modules/packages/vendored/nimclient.mustache ./modules/packages/vendored/snap.mustache ./modules/packages/vendored/yum.mustache ./modules/packages/vendored/msiexec-list.vbs.mustache ./modules/packages/vendored/apt_get.mustache ./modules/packages/vendored/slackpkg.mustache ./modules/packages/vendored/pkgsrc.mustache ./modules/packages/vendored/pkg.mustache ./modules/packages/vendored/freebsd_ports.mustache ./modules/packages/vendored/zypper.mustache ./modules/packages/vendored/WiRunSQL.vbs.mustache '/tmp/MPF-upgrade/integration//masterfiles/modules/packages/vendored'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal'
+ /usr/bin/install -c -m 644  ./cfe_internal/recommendations.cf ./cfe_internal/CFE_cfengine.cf '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal'
+ /usr/bin/install -c -m 644  ./update.cf ./promises.cf ./standalone_self_upgrade.cf '/tmp/MPF-upgrade/integration//masterfiles/.'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog'
+ /usr/bin/install -c -m 644  ./cfe_internal/core/watchdog/watchdog.cf '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog/templates'
+ /usr/bin/install -c -m 644  ./cfe_internal/core/watchdog/templates/watchdog-windows.ps1.mustache ./cfe_internal/core/watchdog/templates/watchdog.mustache '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog/templates'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/templates'
+ /usr/bin/install -c -m 644  ./templates/cf-execd.service.mustache ./templates/cf-apache.service.mustache ./templates/host_info_report.mustache ./templates/cf-monitord.service.mustache ./templates/json_serial.mustache ./templates/json_multiline.mustache ./templates/cf-hub.service.mustache ./templates/cfengine3.service.mustache ./templates/cf-postgres.service.mustache ./templates/cfengine_watchdog.mustache ./templates/vercmp.ps1 ./templates/cf-runalerts.service.mustache ./templates/cf-serverd.service.mustache ./templates/cf-reactor.service.mustache '/tmp/MPF-upgrade/integration//masterfiles/templates'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise'
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/CFE_knowledge.cf ./cfe_internal/enterprise/file_change.cf ./cfe_internal/enterprise/CFE_hub_specific.cf ./cfe_internal/enterprise/mission_portal.cf ./cfe_internal/enterprise/main.cf '/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/templates/federated_reporting'
+ /usr/bin/install -c -m 644  ./templates/federated_reporting/cfsecret.py ./templates/federated_reporting/import_file.sh ./templates/federated_reporting/psql_wrapper.sh.mustache ./templates/federated_reporting/import.sh ./templates/federated_reporting/transfer_distributed_cleanup_items.sh ./templates/federated_reporting/config.sh.mustache ./templates/federated_reporting/distributed_cleanup.py ./templates/federated_reporting/transport.sh ./templates/federated_reporting/log.sh.mustache ./templates/federated_reporting/dump.sh ./templates/federated_reporting/10-base_filter.sed ./templates/federated_reporting/nova_api.py ./templates/federated_reporting/pull_dumps_from.sh ./templates/federated_reporting/50-merge_inserts.awk ./templates/federated_reporting/parallel.sh '/tmp/MPF-upgrade/integration//masterfiles/templates/federated_reporting'
+ /usr/bin/mkdir -p '/tmp/MPF-upgrade/integration//masterfiles/services'
+ /usr/bin/install -c -m 644  ./services/init.cf ./services/main.cf '/tmp/MPF-upgrade/integration//masterfiles/services'
+make[2]: Leaving directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5'
+make[1]: Leaving directory '/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5'
 ```
 
-Then after running `make install` we move the installed masterfiles into our
-integration directory.
+We no longer need the source, we can clean it up.
 
-```console
-[root@hub masterfiles]# mv /tmp/masterfiles-3.7.4/masterfiles/* ../MPF_upgrade
-[root@hub masterfiles]# cd ../MPF_upgrade/
+```bash
+cd $INTEGRATION_ROOT/
+rm -rf $INTEGRATION_ROOT/masterfiles-source-$MPF_VERSION
 ```
+
+
+
 
 ## Merge differences
 
-Now we can use `git status` to see an overview of the changes to the
-repository between our starting point and the new MPF.
+Now we can use `git status` to see an overview of the changes to the repository between our starting point and the new MPF.
 
-```console
-[root@hub MPF_upgrade]# git status
+```bash
+cd $INTEGRATION_ROOT/masterfiles
+git status
+```
+
+Output:
+
+```
 On branch master
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	deleted:    CUSTOM/policy1.cf
-	deleted:    cf_promises_release_id
-	deleted:    cf_promises_validated
-	modified:   cfe_internal/CFE_cfengine.cf
-	deleted:    cfe_internal/CFE_hub_specific.cf
-	deleted:    cfe_internal/CFE_knowledge.cf
-	deleted:    cfe_internal/cfengine_processes.cf
-	deleted:    cfe_internal/ha/ha.cf
-	deleted:    cfe_internal/ha/ha_def.cf
-	deleted:    cfe_internal/host_info_report.cf
-	deleted:    controls/3.4/cf_serverd.cf
-	deleted:    controls/cf_agent.cf
-	deleted:    controls/cf_execd.cf
-	deleted:    controls/cf_hub.cf
-	deleted:    controls/cf_monitord.cf
-	deleted:    controls/cf_runagent.cf
-	deleted:    controls/cf_serverd.cf
-	deleted:    def.cf
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+	modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+	modified:   cfe_internal/enterprise/CFE_knowledge.cf
+	modified:   cfe_internal/enterprise/federation/federation.cf
+	modified:   cfe_internal/enterprise/file_change.cf
+	modified:   cfe_internal/enterprise/mission_portal.cf
+	modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+	modified:   cfe_internal/update/lib.cf
+	modified:   cfe_internal/update/update_bins.cf
+	modified:   cfe_internal/update/update_policy.cf
+	modified:   cfe_internal/update/update_processes.cf
+	modified:   cfe_internal/update/windows_unattended_upgrade.cf
+	modified:   controls/cf_agent.cf
+	modified:   controls/cf_execd.cf
+	modified:   controls/cf_serverd.cf
+	modified:   controls/def.cf
+	modified:   controls/reports.cf
+	modified:   controls/update_def.cf
+	deleted:    custom-2.cf
+	deleted:    def.json
 	modified:   inventory/any.cf
 	modified:   inventory/linux.cf
-	modified:   inventory/lsb.cf
-	modified:   lib/3.5/cfe_internal.cf
-	modified:   lib/3.5/common.cf
-	modified:   lib/3.5/files.cf
-	modified:   lib/3.5/packages.cf
-	deleted:    lib/3.5/reports.cf
-	modified:   lib/3.6/cfe_internal.cf
-	modified:   lib/3.6/common.cf
-	modified:   lib/3.6/files.cf
-	modified:   lib/3.6/packages.cf
-	deleted:    lib/3.6/reports.cf
-	modified:   lib/3.6/services.cf
-	modified:   lib/3.6/stdlib.cf
+	modified:   inventory/os.cf
+	modified:   inventory/redhat.cf
+	modified:   lib/autorun.cf
+	modified:   lib/bundles.cf
+	modified:   lib/cfe_internal_hub.cf
+	deleted:    lib/deprecated-upstream.cf
+	modified:   lib/files.cf
+	modified:   lib/packages.cf
+	modified:   lib/paths.cf
+	modified:   lib/services.cf
+	modified:   modules/packages/vendored/apt_get.mustache
+	modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+	modified:   modules/packages/vendored/pkg.mustache
+	modified:   modules/packages/vendored/zypper.mustache
 	modified:   promises.cf
-	deleted:    services/autorun.cf
-	deleted:    services/autorun/custom_policy2.cf
-	deleted:    services/file_change.cf
-	modified:   sketches/meta/api-runfile.cf
+	deleted:    services/autorun/custom-1.cf
+	deleted:    services/custom-3.cf
+	modified:   standalone_self_upgrade.cf
+	modified:   templates/cf-apache.service.mustache
+	modified:   templates/cf-execd.service.mustache
+	modified:   templates/cf-hub.service.mustache
+	modified:   templates/cf-monitord.service.mustache
+	modified:   templates/cf-postgres.service.mustache
+	modified:   templates/cf-runalerts.service.mustache
+	modified:   templates/cf-serverd.service.mustache
+	modified:   templates/federated_reporting/config.sh.mustache
+	modified:   templates/federated_reporting/dump.sh
+	modified:   templates/federated_reporting/import.sh
+	modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+	modified:   templates/federated_reporting/pull_dumps_from.sh
 	modified:   update.cf
-	deleted:    update/cfe_internal_dc_workflow.cf
-	deleted:    update/cfe_internal_local_git_remote.cf
-	deleted:    update/cfe_internal_update_from_repository.cf
-	deleted:    update/update_bins.cf
-	deleted:    update/update_policy.cf
-	deleted:    update/update_processes.cf
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-
-	cfe_internal/core/
-	cfe_internal/enterprise/
-	cfe_internal/update/
-	controls/3.5/
-	controls/3.6/
-	controls/3.7/
-	inventory/freebsd.cf
-	lib/3.6/autorun.cf
-	lib/3.6/cfe_internal_hub.cf
-	lib/3.7/
-	services/main.cf
+	cfe_internal/enterprise/templates/apachectl.mustache
+	lib/templates/
+	templates/cf-reactor.service.mustache
+	templates/federated_reporting/cfsecret.py
+	templates/federated_reporting/distributed_cleanup.py
+	templates/federated_reporting/nova_api.py
+	templates/federated_reporting/transfer_distributed_cleanup_items.sh
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-All of the *Untracked files* are new additions from upstream so they should be
-safe to take.
+All of the **Untracked files** are new additions from upstream so they should be safe to take.
 
-```console
-[root@hub MPF_upgrade]# git add cfe_internal/core/ \
-cfe_internal/enterprise/ \
-cfe_internal/update/ \
-controls/3.5/ \
-controls/3.6/ \
-controls/3.7/ \
-inventory/freebsd.cf \
-lib/3.6/autorun.cf \
-lib/3.6/cfe_internal_hub.cf \
-lib/3.7/ \
-services/main.cf
+```bash
+git add cfe_internal/enterprise/templates/apachectl.mustache
+git add lib/templates/junit.mustache
+git add lib/templates/tap.mustache
+git add templates/cf-reactor.service.mustache
+git add templates/federated_reporting/cfsecret.py
+git add templates/federated_reporting/distributed_cleanup.py
+git add templates/federated_reporting/nova_api.py
+git add templates/federated_reporting/transfer_distributed_cleanup_items.sh
 ```
 
 We can run git status again to see the current overview:
 
-```console
-[root@hub MPF_upgrade]# git status
+```bash
+git status
+```
+
+Output:
+
+```
 On branch master
 Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-	new file:   cfe_internal/core/deprecated/cfengine_processes.cf
-	new file:   cfe_internal/core/host_info_report.cf
-	new file:   cfe_internal/core/limit_robot_agents.cf
-	new file:   cfe_internal/core/log_rotation.cf
-	new file:   cfe_internal/core/main.cf
-	new file:   cfe_internal/enterprise/CFE_hub_specific.cf
-	new file:   cfe_internal/enterprise/CFE_knowledge.cf
-	new file:   cfe_internal/enterprise/file_change.cf
-	new file:   cfe_internal/enterprise/ha/ha.cf
-	new file:   cfe_internal/enterprise/ha/ha_def.cf
-	new file:   cfe_internal/enterprise/ha/ha_update.cf
-	new file:   cfe_internal/enterprise/main.cf
-	new file:   cfe_internal/update/cfe_internal_dc_workflow.cf
-	new file:   cfe_internal/update/cfe_internal_local_git_remote.cf
-	new file:   cfe_internal/update/cfe_internal_update_from_repository.cf
-	new file:   cfe_internal/update/update_bins.cf
-	new file:   cfe_internal/update/update_policy.cf
-	new file:   cfe_internal/update/update_processes.cf
-	new file:   controls/3.5/cf_agent.cf
-	new file:   controls/3.5/cf_execd.cf
-	new file:   controls/3.5/cf_hub.cf
-	new file:   controls/3.5/cf_monitord.cf
-	new file:   controls/3.5/cf_runagent.cf
-	new file:   controls/3.5/cf_serverd.cf
-	new file:   controls/3.5/def.cf
-	new file:   controls/3.5/def_inputs.cf
-	new file:   controls/3.5/reports.cf
-	new file:   controls/3.5/update_def.cf
-	new file:   controls/3.5/update_def_inputs.cf
-	new file:   controls/3.6/cf_agent.cf
-	new file:   controls/3.6/cf_execd.cf
-	new file:   controls/3.6/cf_hub.cf
-	new file:   controls/3.6/cf_monitord.cf
-	new file:   controls/3.6/cf_runagent.cf
-	new file:   controls/3.6/cf_serverd.cf
-	new file:   controls/3.6/def.cf
-	new file:   controls/3.6/def_inputs.cf
-	new file:   controls/3.6/reports.cf
-	new file:   controls/3.6/update_def.cf
-	new file:   controls/3.6/update_def_inputs.cf
-	new file:   controls/3.7/cf_agent.cf
-	new file:   controls/3.7/cf_execd.cf
-	new file:   controls/3.7/cf_hub.cf
-	new file:   controls/3.7/cf_monitord.cf
-	new file:   controls/3.7/cf_runagent.cf
-	new file:   controls/3.7/cf_serverd.cf
-	new file:   controls/3.7/def.cf
-	new file:   controls/3.7/def_inputs.cf
-	new file:   controls/3.7/reports.cf
-	new file:   controls/3.7/update_def.cf
-	new file:   controls/3.7/update_def_inputs.cf
-	new file:   inventory/freebsd.cf
-	new file:   lib/3.6/autorun.cf
-	new file:   lib/3.6/cfe_internal_hub.cf
-	new file:   lib/3.7/autorun.cf
-	new file:   lib/3.7/bundles.cf
-	new file:   lib/3.7/cfe_internal.cf
-	new file:   lib/3.7/cfe_internal_hub.cf
-	new file:   lib/3.7/cfengine_enterprise_hub_ha.cf
-	new file:   lib/3.7/commands.cf
-	new file:   lib/3.7/common.cf
-	new file:   lib/3.7/databases.cf
-	new file:   lib/3.7/edit_xml.cf
-	new file:   lib/3.7/examples.cf
-	new file:   lib/3.7/feature.cf
-	new file:   lib/3.7/files.cf
-	new file:   lib/3.7/guest_environments.cf
-	new file:   lib/3.7/monitor.cf
-	new file:   lib/3.7/packages.cf
-	new file:   lib/3.7/paths.cf
-	new file:   lib/3.7/processes.cf
-	new file:   lib/3.7/services.cf
-	new file:   lib/3.7/stdlib.cf
-	new file:   lib/3.7/storage.cf
-	new file:   lib/3.7/users.cf
-	new file:   lib/3.7/vcs.cf
-	new file:   services/main.cf
+  (use "git restore --staged <file>..." to unstage)
+	new file:   cfe_internal/enterprise/templates/apachectl.mustache
+	new file:   lib/templates/junit.mustache
+	new file:   lib/templates/tap.mustache
+	new file:   templates/cf-reactor.service.mustache
+	new file:   templates/federated_reporting/cfsecret.py
+	new file:   templates/federated_reporting/distributed_cleanup.py
+	new file:   templates/federated_reporting/nova_api.py
+	new file:   templates/federated_reporting/transfer_distributed_cleanup_items.sh
 
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	deleted:    CUSTOM/policy1.cf
-	deleted:    cf_promises_release_id
-	deleted:    cf_promises_validated
-	modified:   cfe_internal/CFE_cfengine.cf
-	deleted:    cfe_internal/CFE_hub_specific.cf
-	deleted:    cfe_internal/CFE_knowledge.cf
-	deleted:    cfe_internal/cfengine_processes.cf
-	deleted:    cfe_internal/ha/ha.cf
-	deleted:    cfe_internal/ha/ha_def.cf
-	deleted:    cfe_internal/host_info_report.cf
-	deleted:    controls/3.4/cf_serverd.cf
-	deleted:    controls/cf_agent.cf
-	deleted:    controls/cf_execd.cf
-	deleted:    controls/cf_hub.cf
-	deleted:    controls/cf_monitord.cf
-	deleted:    controls/cf_runagent.cf
-	deleted:    controls/cf_serverd.cf
-	deleted:    def.cf
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+	modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+	modified:   cfe_internal/enterprise/CFE_knowledge.cf
+	modified:   cfe_internal/enterprise/federation/federation.cf
+	modified:   cfe_internal/enterprise/file_change.cf
+	modified:   cfe_internal/enterprise/mission_portal.cf
+	modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+	modified:   cfe_internal/update/lib.cf
+	modified:   cfe_internal/update/update_bins.cf
+	modified:   cfe_internal/update/update_policy.cf
+	modified:   cfe_internal/update/update_processes.cf
+	modified:   cfe_internal/update/windows_unattended_upgrade.cf
+	modified:   controls/cf_agent.cf
+	modified:   controls/cf_execd.cf
+	modified:   controls/cf_serverd.cf
+	modified:   controls/def.cf
+	modified:   controls/reports.cf
+	modified:   controls/update_def.cf
+	deleted:    custom-2.cf
+	deleted:    def.json
 	modified:   inventory/any.cf
 	modified:   inventory/linux.cf
-	modified:   inventory/lsb.cf
-	modified:   lib/3.5/cfe_internal.cf
-	modified:   lib/3.5/common.cf
-	modified:   lib/3.5/files.cf
-	modified:   lib/3.5/packages.cf
-	deleted:    lib/3.5/reports.cf
-	modified:   lib/3.6/cfe_internal.cf
-	modified:   lib/3.6/common.cf
-	modified:   lib/3.6/files.cf
-	modified:   lib/3.6/packages.cf
-	deleted:    lib/3.6/reports.cf
-	modified:   lib/3.6/services.cf
-	modified:   lib/3.6/stdlib.cf
+	modified:   inventory/os.cf
+	modified:   inventory/redhat.cf
+	modified:   lib/autorun.cf
+	modified:   lib/bundles.cf
+	modified:   lib/cfe_internal_hub.cf
+	deleted:    lib/deprecated-upstream.cf
+	modified:   lib/files.cf
+	modified:   lib/packages.cf
+	modified:   lib/paths.cf
+	modified:   lib/services.cf
+	modified:   modules/packages/vendored/apt_get.mustache
+	modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+	modified:   modules/packages/vendored/pkg.mustache
+	modified:   modules/packages/vendored/zypper.mustache
 	modified:   promises.cf
-	deleted:    services/autorun.cf
-	deleted:    services/autorun/custom_policy2.cf
-	deleted:    services/file_change.cf
-	modified:   sketches/meta/api-runfile.cf
+	deleted:    services/autorun/custom-1.cf
+	deleted:    services/custom-3.cf
+	modified:   standalone_self_upgrade.cf
+	modified:   templates/cf-apache.service.mustache
+	modified:   templates/cf-execd.service.mustache
+	modified:   templates/cf-hub.service.mustache
+	modified:   templates/cf-monitord.service.mustache
+	modified:   templates/cf-postgres.service.mustache
+	modified:   templates/cf-runalerts.service.mustache
+	modified:   templates/cf-serverd.service.mustache
+	modified:   templates/federated_reporting/config.sh.mustache
+	modified:   templates/federated_reporting/dump.sh
+	modified:   templates/federated_reporting/import.sh
+	modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+	modified:   templates/federated_reporting/pull_dumps_from.sh
 	modified:   update.cf
-	deleted:    update/cfe_internal_dc_workflow.cf
-	deleted:    update/cfe_internal_local_git_remote.cf
-	deleted:    update/cfe_internal_update_from_repository.cf
-	deleted:    update/update_bins.cf
-	deleted:    update/update_policy.cf
-	deleted:    update/update_processes.cf
+
 ```
 
-Next we want to bring back any of our custom policy files. Keeping your
-polices organized together helps to make this process easy. The custom policy
-files in the example policy set are `CUSTOM/policy1.cf` and
-`services/autorun/custom_policy2.cf`. Restore them with `git checkout`.
+Next we want to bring back any of our custom files. Look through the **deleted** files, identify your custom files and restore them with `git checkout`.
 
-```console
-[root@hub MPF_upgrade] git checkout CUSTOM/policy1.cf services/autorun/custom_policy2.cf
+```bash
+git ls-files --deleted
 ```
 
-The files marked as *modified* in the `git status` output are files that have
-changed upstream.
+Output:
 
-```console
-[root@hub MPF_upgrade]# git status | grep modified
-	modified:   cfe_internal/CFE_cfengine.cf
-	modified:   inventory/any.cf
-	modified:   inventory/linux.cf
-	modified:   inventory/lsb.cf
-	modified:   lib/3.5/cfe_internal.cf
-	modified:   lib/3.5/common.cf
-	modified:   lib/3.5/files.cf
-	modified:   lib/3.5/packages.cf
-	modified:   lib/3.6/cfe_internal.cf
-	modified:   lib/3.6/common.cf
-	modified:   lib/3.6/files.cf
-	modified:   lib/3.6/packages.cf
-	modified:   lib/3.6/services.cf
-	modified:   lib/3.6/stdlib.cf
-	modified:   promises.cf
-	modified:   sketches/meta/api-runfile.cf
-	modified:   update.cf
+    custom-2.cf
+    def.json
+    lib/deprecated-upstream.cf
+    services/autorun/custom-1.cf
+    services/custom-3.cf
+
+Keeping your polices organized together helps to make this process easy. The custom policy files in the example policy set are `def.json`, `services/autorun/custom-1.cf`, `custom-2.cf`, and `services/custom-3.cf`.
+
+```bash
+git checkout custom-2.cf
+git checkout def.json
+git checkout services/autorun/custom-1.cf
+git checkout services/custom-3.cf
 ```
 
-For any files that you have not modified (like those in lib) simply add them
-to gits staging area with `git add`. Carefully review and merge or
-re-integrate your custom changes on top of the upstream files.
+Output:
 
-The remaining files in `git status` marked as *deleted* are files that have
-been moved or removed from upstream.
+    Updated 1 path from the index
+    Updated 1 path from the index
+    Updated 1 path from the index
+    Updated 1 path from the index
 
-**NOTE:** It is uncommon for any files to be moved or deleted between patch
-releases (e.g. 3.7.1 -> 3.7.2).
+Other deleted files from the upstream framework like `lib/deprecated-upstream.cf` should be deleted with `git rm`.
 
-```console
-[root@hub MPF_upgrade]# git status | grep deleted
-	deleted:    cf_promises_release_id
-	deleted:    cf_promises_validated
-	deleted:    cfe_internal/CFE_hub_specific.cf
-	deleted:    cfe_internal/CFE_knowledge.cf
-	deleted:    cfe_internal/cfengine_processes.cf
-	deleted:    cfe_internal/ha/ha.cf
-	deleted:    cfe_internal/ha/ha_def.cf
-	deleted:    cfe_internal/host_info_report.cf
-	deleted:    controls/3.4/cf_serverd.cf
-	deleted:    controls/cf_agent.cf
-	deleted:    controls/cf_execd.cf
-	deleted:    controls/cf_hub.cf
-	deleted:    controls/cf_monitord.cf
-	deleted:    controls/cf_runagent.cf
-	deleted:    controls/cf_serverd.cf
-	deleted:    def.cf
-	deleted:    lib/3.5/reports.cf
-	deleted:    lib/3.6/reports.cf
-	deleted:    services/autorun.cf
-	deleted:    services/file_change.cf
-	deleted:    update/cfe_internal_dc_workflow.cf
-	deleted:    update/cfe_internal_local_git_remote.cf
-	deleted:    update/cfe_internal_update_from_repository.cf
-	deleted:    update/update_bins.cf
-	deleted:    update/update_policy.cf
-	deleted:    update/update_processes.cf
+**Note:** It is uncommon for any files to be moved or deleted between patch releases (e.g. `3.18.0` -> `3.18.5`) like `lib/deprecated-upstream.cf` in this example.
+
+```bash
+git rm lib/deprecated-upstream.cf
 ```
 
-It's a good idea to review these files as some of them might have contained
-modifications, especially `def.cf` and any files under `controls`. Always keep
-track of the modifications you make to any of the files that ship with the
-MPF. Make sure that any necessary customization's to the deleted files are
-carried through to their new locations.
+Output:
 
-Once the files are no longer needed you can `git rm` them.
-
-```console
-[root@hub MPF_upgrade]# git rm def.cf cf_promises_release_id cf_promises_validated cfe_internal/CFE_hub_specific.cf cfe_internal/CFE_knowledge.cf cfe_internal/cfengine_processes.cf cfe_internal/ha/ha.cf cfe_internal/ha/ha_def.cf cfe_internal/host_info_report.cf controls/3.4/cf_serverd.cf controls/cf_agent.cf controls/cf_execd.cf controls/cf_hub.cf controls/cf_monitord.cf controls/cf_runagent.cf controls/cf_serverd.cf lib/3.5/reports.cf lib/3.6/reports.cf services/autorun.cf services/file_change.cf update/cfe_internal_dc_workflow.cf update/cfe_internal_local_git_remote.cf update/cfe_internal_update_from_repository.cf update/update_bins.cf update/update_policy.cf update/update_processes.cf
-rm 'def.cf'
-rm 'cf_promises_release_id'
-rm 'cf_promises_validated'
-rm 'cfe_internal/CFE_hub_specific.cf'
-rm 'cfe_internal/CFE_knowledge.cf'
-rm 'cfe_internal/cfengine_processes.cf'
-rm 'cfe_internal/ha/ha.cf'
-rm 'cfe_internal/ha/ha_def.cf'
-rm 'cfe_internal/host_info_report.cf'
-rm 'controls/3.4/cf_serverd.cf'
-rm 'controls/cf_agent.cf'
-rm 'controls/cf_execd.cf'
-rm 'controls/cf_hub.cf'
-rm 'controls/cf_monitord.cf'
-rm 'controls/cf_runagent.cf'
-rm 'controls/cf_serverd.cf'
-rm 'lib/3.5/reports.cf'
-rm 'lib/3.6/reports.cf'
-rm 'services/autorun.cf'
-rm 'services/file_change.cf'
-rm 'update/cfe_internal_dc_workflow.cf'
-rm 'update/cfe_internal_local_git_remote.cf'
-rm 'update/cfe_internal_update_from_repository.cf'
-rm 'update/update_bins.cf'
-rm 'update/update_policy.cf'
-rm 'update/update_processes.cf'
+```
+rm 'lib/deprecated-upstream.cf'
 ```
 
-Review `git status` and make sure that the policy validates then commit your
-changes.
+The files marked as **modified** in the `git status` output are files that have changed upstream.
 
-```console
-[root@hub MPF_upgrade]# git status
+```bash
+git status
+```
+
+Output:
+
+```
 On branch master
 Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
+  (use "git restore --staged <file>..." to unstage)
+	new file:   cfe_internal/enterprise/templates/apachectl.mustache
+	deleted:    lib/deprecated-upstream.cf
+	new file:   lib/templates/junit.mustache
+	new file:   lib/templates/tap.mustache
+	new file:   templates/cf-reactor.service.mustache
+	new file:   templates/federated_reporting/cfsecret.py
+	new file:   templates/federated_reporting/distributed_cleanup.py
+	new file:   templates/federated_reporting/nova_api.py
+	new file:   templates/federated_reporting/transfer_distributed_cleanup_items.sh
 
-	deleted:    cf_promises_release_id
-	deleted:    cf_promises_validated
-	modified:   cfe_internal/CFE_cfengine.cf
-	renamed:    cfe_internal/cfengine_processes.cf -> cfe_internal/core/deprecated/cfengine_processes.cf
-	renamed:    cfe_internal/host_info_report.cf -> cfe_internal/core/host_info_report.cf
-	new file:   cfe_internal/core/limit_robot_agents.cf
-	new file:   cfe_internal/core/log_rotation.cf
-	new file:   cfe_internal/core/main.cf
-	renamed:    cfe_internal/CFE_hub_specific.cf -> cfe_internal/enterprise/CFE_hub_specific.cf
-	renamed:    cfe_internal/CFE_knowledge.cf -> cfe_internal/enterprise/CFE_knowledge.cf
-	renamed:    services/file_change.cf -> cfe_internal/enterprise/file_change.cf
-	new file:   cfe_internal/enterprise/ha/ha.cf
-	renamed:    cfe_internal/ha/ha_def.cf -> cfe_internal/enterprise/ha/ha_def.cf
-	new file:   cfe_internal/enterprise/ha/ha_update.cf
-	new file:   cfe_internal/enterprise/main.cf
-	deleted:    cfe_internal/ha/ha.cf
-	renamed:    update/cfe_internal_dc_workflow.cf -> cfe_internal/update/cfe_internal_dc_workflow.cf
-	renamed:    update/cfe_internal_local_git_remote.cf -> cfe_internal/update/cfe_internal_local_git_remote.cf
-	new file:   cfe_internal/update/cfe_internal_update_from_repository.cf
-	renamed:    update/update_bins.cf -> cfe_internal/update/update_bins.cf
-	renamed:    update/update_policy.cf -> cfe_internal/update/update_policy.cf
-	renamed:    update/update_processes.cf -> cfe_internal/update/update_processes.cf
-	deleted:    controls/3.4/cf_serverd.cf
-	renamed:    controls/cf_agent.cf -> controls/3.5/cf_agent.cf
-	new file:   controls/3.5/cf_execd.cf
-	renamed:    controls/cf_hub.cf -> controls/3.5/cf_hub.cf
-	renamed:    controls/cf_monitord.cf -> controls/3.5/cf_monitord.cf
-	renamed:    controls/cf_runagent.cf -> controls/3.5/cf_runagent.cf
-	renamed:    controls/cf_serverd.cf -> controls/3.5/cf_serverd.cf
-	renamed:    def.cf -> controls/3.5/def.cf
-	new file:   controls/3.5/def_inputs.cf
-	renamed:    lib/3.5/reports.cf -> controls/3.5/reports.cf
-	renamed:    update.cf -> controls/3.5/update_def.cf
-	new file:   controls/3.5/update_def_inputs.cf
-	new file:   controls/3.6/cf_agent.cf
-	new file:   controls/3.6/cf_execd.cf
-	new file:   controls/3.6/cf_hub.cf
-	new file:   controls/3.6/cf_monitord.cf
-	new file:   controls/3.6/cf_runagent.cf
-	new file:   controls/3.6/cf_serverd.cf
-	new file:   controls/3.6/def.cf
-	new file:   controls/3.6/def_inputs.cf
-	renamed:    lib/3.6/reports.cf -> controls/3.6/reports.cf
-	new file:   controls/3.6/update_def.cf
-	new file:   controls/3.6/update_def_inputs.cf
-	new file:   controls/3.7/cf_agent.cf
-	new file:   controls/3.7/cf_execd.cf
-	new file:   controls/3.7/cf_hub.cf
-	new file:   controls/3.7/cf_monitord.cf
-	new file:   controls/3.7/cf_runagent.cf
-	new file:   controls/3.7/cf_serverd.cf
-	new file:   controls/3.7/def.cf
-	new file:   controls/3.7/def_inputs.cf
-	new file:   controls/3.7/reports.cf
-	new file:   controls/3.7/update_def.cf
-	new file:   controls/3.7/update_def_inputs.cf
-	deleted:    controls/cf_execd.cf
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+	modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+	modified:   cfe_internal/enterprise/CFE_knowledge.cf
+	modified:   cfe_internal/enterprise/federation/federation.cf
+	modified:   cfe_internal/enterprise/file_change.cf
+	modified:   cfe_internal/enterprise/mission_portal.cf
+	modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+	modified:   cfe_internal/update/lib.cf
+	modified:   cfe_internal/update/update_bins.cf
+	modified:   cfe_internal/update/update_policy.cf
+	modified:   cfe_internal/update/update_processes.cf
+	modified:   cfe_internal/update/windows_unattended_upgrade.cf
+	modified:   controls/cf_agent.cf
+	modified:   controls/cf_execd.cf
+	modified:   controls/cf_serverd.cf
+	modified:   controls/def.cf
+	modified:   controls/reports.cf
+	modified:   controls/update_def.cf
 	modified:   inventory/any.cf
-	new file:   inventory/freebsd.cf
 	modified:   inventory/linux.cf
-	modified:   inventory/lsb.cf
-	modified:   lib/3.5/cfe_internal.cf
-	modified:   lib/3.5/common.cf
-	modified:   lib/3.5/files.cf
-	modified:   lib/3.5/packages.cf
-	renamed:    services/autorun.cf -> lib/3.6/autorun.cf
-	modified:   lib/3.6/cfe_internal.cf
-	renamed:    lib/3.6/cfe_internal.cf -> lib/3.6/cfe_internal_hub.cf
-	modified:   lib/3.6/common.cf
-	modified:   lib/3.6/files.cf
-	modified:   lib/3.6/packages.cf
-	modified:   lib/3.6/services.cf
-	modified:   lib/3.6/stdlib.cf
-	new file:   lib/3.7/autorun.cf
-	new file:   lib/3.7/bundles.cf
-	new file:   lib/3.7/cfe_internal.cf
-	new file:   lib/3.7/cfe_internal_hub.cf
-	new file:   lib/3.7/cfengine_enterprise_hub_ha.cf
-	new file:   lib/3.7/commands.cf
-	new file:   lib/3.7/common.cf
-	new file:   lib/3.7/databases.cf
-	new file:   lib/3.7/edit_xml.cf
-	new file:   lib/3.7/examples.cf
-	new file:   lib/3.7/feature.cf
-	new file:   lib/3.7/files.cf
-	new file:   lib/3.7/guest_environments.cf
-	new file:   lib/3.7/monitor.cf
-	new file:   lib/3.7/packages.cf
-	new file:   lib/3.7/paths.cf
-	new file:   lib/3.7/processes.cf
-	new file:   lib/3.7/services.cf
-	new file:   lib/3.7/stdlib.cf
-	new file:   lib/3.7/storage.cf
-	new file:   lib/3.7/users.cf
-	new file:   lib/3.7/vcs.cf
+	modified:   inventory/os.cf
+	modified:   inventory/redhat.cf
+	modified:   lib/autorun.cf
+	modified:   lib/bundles.cf
+	modified:   lib/cfe_internal_hub.cf
+	modified:   lib/files.cf
+	modified:   lib/packages.cf
+	modified:   lib/paths.cf
+	modified:   lib/services.cf
+	modified:   modules/packages/vendored/apt_get.mustache
+	modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+	modified:   modules/packages/vendored/pkg.mustache
+	modified:   modules/packages/vendored/zypper.mustache
 	modified:   promises.cf
-	new file:   services/main.cf
-	modified:   sketches/meta/api-runfile.cf
+	modified:   standalone_self_upgrade.cf
+	modified:   templates/cf-apache.service.mustache
+	modified:   templates/cf-execd.service.mustache
+	modified:   templates/cf-hub.service.mustache
+	modified:   templates/cf-monitord.service.mustache
+	modified:   templates/cf-postgres.service.mustache
+	modified:   templates/cf-runalerts.service.mustache
+	modified:   templates/cf-serverd.service.mustache
+	modified:   templates/federated_reporting/config.sh.mustache
+	modified:   templates/federated_reporting/dump.sh
+	modified:   templates/federated_reporting/import.sh
+	modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+	modified:   templates/federated_reporting/pull_dumps_from.sh
 	modified:   update.cf
-	deleted:    update/cfe_internal_update_from_repository.cf
 
-[root@hub MPF_upgrade]# cf-promises -cf ./promises.cf
-[root@hub MPF_upgrade]# cf-promises -cf ./update.cf
-[root@hub MPF_upgrade]# git commit -m "After Policy Upgrade"
- 100 files changed, 12521 insertions(+), 1493 deletions(-)
- delete mode 100644 cf_promises_release_id
- delete mode 100644 cf_promises_validated
- rewrite cfe_internal/CFE_cfengine.cf (88%)
- rename cfe_internal/{ => core/deprecated}/cfengine_processes.cf (95%)
- rename cfe_internal/{ => core}/host_info_report.cf (98%)
- create mode 100644 cfe_internal/core/limit_robot_agents.cf
- create mode 100644 cfe_internal/core/log_rotation.cf
- create mode 100644 cfe_internal/core/main.cf
- rename cfe_internal/{ => enterprise}/CFE_hub_specific.cf (85%)
- rename cfe_internal/{ => enterprise}/CFE_knowledge.cf (100%)
- rename {services => cfe_internal/enterprise}/file_change.cf (58%)
- create mode 100644 cfe_internal/enterprise/ha/ha.cf
- rename cfe_internal/{ => enterprise}/ha/ha_def.cf (54%)
- create mode 100644 cfe_internal/enterprise/ha/ha_update.cf
- create mode 100644 cfe_internal/enterprise/main.cf
- delete mode 100644 cfe_internal/ha/ha.cf
- rename {update => cfe_internal/update}/cfe_internal_dc_workflow.cf (100%)
- rename {update => cfe_internal/update}/cfe_internal_local_git_remote.cf (100%)
- create mode 100644 cfe_internal/update/cfe_internal_update_from_repository.cf
- rename {update => cfe_internal/update}/update_bins.cf (97%)
- rename {update => cfe_internal/update}/update_policy.cf (92%)
- rename {update => cfe_internal/update}/update_processes.cf (92%)
- delete mode 100644 controls/3.4/cf_serverd.cf
- rename controls/{ => 3.5}/cf_agent.cf (80%)
- create mode 100644 controls/3.5/cf_execd.cf
- rename controls/{ => 3.5}/cf_hub.cf (100%)
- rename controls/{ => 3.5}/cf_monitord.cf (100%)
- rename controls/{ => 3.5}/cf_runagent.cf (100%)
- rename controls/{ => 3.5}/cf_serverd.cf (87%)
- rename def.cf => controls/3.5/def.cf (74%)
- create mode 100644 controls/3.5/def_inputs.cf
- rename {lib => controls}/3.5/reports.cf (80%)
- rename update.cf => controls/3.5/update_def.cf (59%)
- create mode 100644 controls/3.5/update_def_inputs.cf
- create mode 100644 controls/3.6/cf_agent.cf
- create mode 100644 controls/3.6/cf_execd.cf
- create mode 100644 controls/3.6/cf_hub.cf
- create mode 100644 controls/3.6/cf_monitord.cf
- create mode 100644 controls/3.6/cf_runagent.cf
- create mode 100644 controls/3.6/cf_serverd.cf
- create mode 100644 controls/3.6/def.cf
- create mode 100644 controls/3.6/def_inputs.cf
- rename {lib => controls}/3.6/reports.cf (78%)
- create mode 100644 controls/3.6/update_def.cf
- create mode 100644 controls/3.6/update_def_inputs.cf
- create mode 100644 controls/3.7/cf_agent.cf
- create mode 100644 controls/3.7/cf_execd.cf
- create mode 100644 controls/3.7/cf_hub.cf
- create mode 100644 controls/3.7/cf_monitord.cf
- create mode 100644 controls/3.7/cf_runagent.cf
- create mode 100644 controls/3.7/cf_serverd.cf
- create mode 100644 controls/3.7/def.cf
- create mode 100644 controls/3.7/def_inputs.cf
- create mode 100644 controls/3.7/reports.cf
- create mode 100644 controls/3.7/update_def.cf
- create mode 100644 controls/3.7/update_def_inputs.cf
- delete mode 100644 controls/cf_execd.cf
- create mode 100644 inventory/freebsd.cf
- rename {services => lib/3.6}/autorun.cf (50%)
- rewrite lib/3.6/cfe_internal.cf (67%)
- rename lib/3.6/{cfe_internal.cf => cfe_internal_hub.cf} (77%)
- create mode 100644 lib/3.7/autorun.cf
- create mode 100644 lib/3.7/bundles.cf
- create mode 100644 lib/3.7/cfe_internal.cf
- create mode 100644 lib/3.7/cfe_internal_hub.cf
- create mode 100644 lib/3.7/cfengine_enterprise_hub_ha.cf
- create mode 100644 lib/3.7/commands.cf
- create mode 100644 lib/3.7/common.cf
- create mode 100644 lib/3.7/databases.cf
- create mode 100644 lib/3.7/edit_xml.cf
- create mode 100644 lib/3.7/examples.cf
- create mode 100644 lib/3.7/feature.cf
- create mode 100644 lib/3.7/files.cf
- create mode 100644 lib/3.7/guest_environments.cf
- create mode 100644 lib/3.7/monitor.cf
- create mode 100644 lib/3.7/packages.cf
- create mode 100644 lib/3.7/paths.cf
- create mode 100644 lib/3.7/processes.cf
- create mode 100644 lib/3.7/services.cf
- create mode 100644 lib/3.7/stdlib.cf
- create mode 100644 lib/3.7/storage.cf
- create mode 100644 lib/3.7/users.cf
- create mode 100644 lib/3.7/vcs.cf
- create mode 100644 services/main.cf
- rewrite update.cf (78%)
- delete mode 100644 update/cfe_internal_update_from_repository.cf
+```
+
+It's best to review the diff of **each** modified to understand the upstream changes as well as identify any local modifications that need to be retained. You should always keep a good record of any modifications made to vendored files to ensure that nothing is lost during future framework upgrades.
+
+For example, here the diff for `promises.cf` shows upstream changes but also highlights where the vendored policy had been customized to integrate a custom policy.
+
+```bash
+git diff promises.cf
+```
+
+Output:
+
+```diff
+diff --git a/promises.cf b/promises.cf
+index 15c0c40..1fd27e5 100644
+--- a/promises.cf
++++ b/promises.cf
+@@ -59,7 +59,6 @@ body common control
+                           main,
+                           @(cfengine_enterprise_hub_ha.management_bundles),
+                           @(def.bundlesequence_end),
+-custom_2,
+
+       };
+
+@@ -86,23 +85,17 @@ custom_2,
+                   @(services_autorun.inputs),
+
+                   "services/main.cf",
+-"custom-2.cf",
+       };
+
+-      version => "CFEngine Promises.cf 3.18.0";
++      version => "CFEngine Promises.cf 3.18.5";
+
+       # From 3.7 onwards there is a new package promise implementation using package
+       # modules in which you MUST provide package modules used to generate
+       # software inventory reports. You can also provide global default package module
+       # instead of specifying it in all package promises.
+-    (debian).!disable_inventory_package_refresh::
++    (debian|redhat|centos|suse|sles|opensuse|amazon_linux).cfe_python_for_package_modules_supported.!disable_inventory_package_refresh::
+           package_inventory => { $(package_module_knowledge.platform_default) };
+
+-      # We only define pacakge_invetory on redhat like systems that have a
+-      # python version that works with the package module.
+-    (redhat|centos|suse|sles|opensuse|amazon_linux).cfe_yum_package_module_supported.!disable_inventory_package_refresh::
+-        package_inventory => { $(package_module_knowledge.platform_default) };
+-
+     (debian|redhat|suse|sles|opensuse|amazon_linux)::
+           package_module => $(package_module_knowledge.platform_default);
+
+@@ -127,6 +120,12 @@ custom_2,
+         ignore_missing_inputs => "$(def.control_common_ignore_missing_inputs)";
+
+
++    control_common_tls_min_version_defined::
++        tls_min_version => "$(default:def.control_common_tls_min_version)"; # See also: allowtlsversion in body server control
++
++    control_common_tls_ciphers_defined::
++        tls_ciphers => "$(default:def.control_common_tls_ciphers)"; # See also: allowciphers in body server control
++
+ }
+
+ bundle common inventory
+@@ -136,8 +135,6 @@ bundle common inventory
+ #
+ # Inventory bundles are simply common bundles loaded before anything
+ # else in promises.cf
+-#
+-# Tested to work properly against 3.5.x
+ {
+   classes:
+       "other_unix_os" expression => "!(windows|macos|linux|freebsd|aix)";
+@@ -341,9 +338,7 @@ bundle common services_autorun
+ # added to inputs automatically.
+ {
+   vars:
+-    services_autorun::
+-      "inputs" slist => { "$(sys.local_libdir)/autorun.cf" };
+-
++    services_autorun|services_autorun_inputs::
+       "_default_autorun_input_dir"
+         string => "$(this.promise_dirname)/services/autorun";
+       "_default_autorun_inputs"
+@@ -360,23 +355,34 @@ bundle common services_autorun
+       "found_inputs" slist => { @(_default_autorun_inputs),
+                                 sort( getvalues(_extra_autorun_inputs), "lex") };
+
+-      "bundles" slist => { "autorun" }; # run loaded bundles
+-
+-    !services_autorun::
++    !(services_autorun|services_autorun_inputs|services_autorun_bundles)::
+       # If services_autorun is not enabled, then we should not extend inputs
+       # automatically.
+       "inputs" slist => { };
+       "found_inputs" slist => {};
+       "bundles" slist => { "services_autorun" }; # run self
+
++    services_autorun|services_autorun_inputs|services_autorun_bundles::
++      "inputs" slist => { "$(sys.local_libdir)/autorun.cf" };
++      "bundles" slist => { "autorun" }; # run loaded bundles
++
+   reports:
+     DEBUG|DEBUG_services_autorun::
+       "DEBUG $(this.bundle): Services Autorun Disabled"
+-        if => "!services_autorun";
++        if => "!(services_autorun|services_autorun_bundles|services_autorun_inputs)";
+
+       "DEBUG $(this.bundle): Services Autorun Enabled"
+         if => "services_autorun";
+
++      "DEBUG $(this.bundle): Services Autorun Bundles Enabled"
++        if => "services_autorun_bundles";
++
++      "DEBUG $(this.bundle): Services Autorun Inputs Enabled"
++        if => "services_autorun_inputs";
++
++      "DEBUG $(this.bundle): Services Autorun (Bundles & Inputs) Enabled"
++        if => "services_autorun_inputs.services_autorun_bundles";
++
+       "DEBUG $(this.bundle): adding input='$(inputs)'"
+         if => isvariable("inputs");
+
+```
+
+Carefully review the diffs and merge or re-integrate your custom changes on top of the upstream files. If you identify changes to the vendored files consider re-integrating those changes in a way that does not modify vendored files, here for example we have migrated the integration of the custom policy to Augments (`def.json`).
+
+```bash
+git diff def.json
+```
+
+Output:
+
+```diff
+diff --git a/def.json b/def.json
+index a7b98e6..60a0ce1 100644
+--- a/def.json
++++ b/def.json
+@@ -1,8 +1,11 @@
+ {
+-  "inputs": [ "services/custom-3.cf" ],
++  "inputs": [ "custom-2.cf", "services/custom-3.cf" ],
+   "classes": {
+     "default:services_autorun": {
+       "class_expressions": [ "any::" ],
+       "comment": "We want to use the autorun functionality because it is convenient."
+-    }
++    },
++  "vars":{
++    "control_common_bundlesequence_end": [ "custom_2" ]
++  }
+ }
+\ No newline at end of file
+```
+
+So, we now want to accept all the changes to `promises.cf` and `def.json`.
+
+```bash
+git add promises.cf def.json
+```
+
+If you are unsure if or how to integrate customizations without modifying vendored policy reach out to support for help. For any modified files that you have not customized simply stage them for commit with `git add`.
+
+```bash
+git add cfe_internal/core/watchdog/templates/watchdog.mustache
+git add cfe_internal/enterprise/CFE_hub_specific.cf
+git add cfe_internal/enterprise/CFE_knowledge.cf
+git add cfe_internal/enterprise/federation/federation.cf
+git add cfe_internal/enterprise/file_change.cf
+git add cfe_internal/enterprise/mission_portal.cf
+git add cfe_internal/enterprise/templates/httpd.conf.mustache
+git add cfe_internal/update/lib.cf
+git add cfe_internal/update/update_bins.cf
+git add cfe_internal/update/update_policy.cf
+git add cfe_internal/update/update_processes.cf
+git add cfe_internal/update/windows_unattended_upgrade.cf
+git add controls/cf_agent.cf
+git add controls/cf_execd.cf
+git add controls/cf_serverd.cf
+git add controls/def.cf
+git add controls/reports.cf
+git add controls/update_def.cf
+git add def.json
+git add inventory/any.cf
+git add inventory/linux.cf
+git add inventory/os.cf
+git add inventory/redhat.cf
+git add lib/autorun.cf
+git add lib/bundles.cf
+git add lib/cfe_internal_hub.cf
+git add lib/files.cf
+git add lib/packages.cf
+git add lib/paths.cf
+git add lib/services.cf
+git add modules/packages/vendored/apt_get.mustache
+git add modules/packages/vendored/msiexec-list.vbs.mustache
+git add modules/packages/vendored/pkg.mustache
+git add modules/packages/vendored/zypper.mustache
+git add promises.cf
+git add standalone_self_upgrade.cf
+git add templates/cf-apache.service.mustache
+git add templates/cf-execd.service.mustache
+git add templates/cf-hub.service.mustache
+git add templates/cf-monitord.service.mustache
+git add templates/cf-postgres.service.mustache
+git add templates/cf-runalerts.service.mustache
+git add templates/cf-serverd.service.mustache
+git add templates/federated_reporting/config.sh.mustache
+git add templates/federated_reporting/dump.sh
+git add templates/federated_reporting/import.sh
+git add templates/federated_reporting/psql_wrapper.sh.mustache
+git add templates/federated_reporting/pull_dumps_from.sh
+git add update.cf
+```
+
+Review `git status` one more time to make sure the changes are as expected.
+
+```bash
+git status
+```
+
+Output:
+
+```
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+	modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+	modified:   cfe_internal/enterprise/CFE_knowledge.cf
+	modified:   cfe_internal/enterprise/federation/federation.cf
+	modified:   cfe_internal/enterprise/file_change.cf
+	modified:   cfe_internal/enterprise/mission_portal.cf
+	new file:   cfe_internal/enterprise/templates/apachectl.mustache
+	modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+	modified:   cfe_internal/update/lib.cf
+	modified:   cfe_internal/update/update_bins.cf
+	modified:   cfe_internal/update/update_policy.cf
+	modified:   cfe_internal/update/update_processes.cf
+	modified:   cfe_internal/update/windows_unattended_upgrade.cf
+	modified:   controls/cf_agent.cf
+	modified:   controls/cf_execd.cf
+	modified:   controls/cf_serverd.cf
+	modified:   controls/def.cf
+	modified:   controls/reports.cf
+	modified:   controls/update_def.cf
+	modified:   def.json
+	modified:   inventory/any.cf
+	modified:   inventory/linux.cf
+	modified:   inventory/os.cf
+	modified:   inventory/redhat.cf
+	modified:   lib/autorun.cf
+	modified:   lib/bundles.cf
+	modified:   lib/cfe_internal_hub.cf
+	deleted:    lib/deprecated-upstream.cf
+	modified:   lib/files.cf
+	modified:   lib/packages.cf
+	modified:   lib/paths.cf
+	modified:   lib/services.cf
+	new file:   lib/templates/junit.mustache
+	new file:   lib/templates/tap.mustache
+	modified:   modules/packages/vendored/apt_get.mustache
+	modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+	modified:   modules/packages/vendored/pkg.mustache
+	modified:   modules/packages/vendored/zypper.mustache
+	modified:   promises.cf
+	modified:   standalone_self_upgrade.cf
+	modified:   templates/cf-apache.service.mustache
+	modified:   templates/cf-execd.service.mustache
+	modified:   templates/cf-hub.service.mustache
+	modified:   templates/cf-monitord.service.mustache
+	modified:   templates/cf-postgres.service.mustache
+	new file:   templates/cf-reactor.service.mustache
+	modified:   templates/cf-runalerts.service.mustache
+	modified:   templates/cf-serverd.service.mustache
+	new file:   templates/federated_reporting/cfsecret.py
+	modified:   templates/federated_reporting/config.sh.mustache
+	new file:   templates/federated_reporting/distributed_cleanup.py
+	modified:   templates/federated_reporting/dump.sh
+	modified:   templates/federated_reporting/import.sh
+	new file:   templates/federated_reporting/nova_api.py
+	modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+	modified:   templates/federated_reporting/pull_dumps_from.sh
+	new file:   templates/federated_reporting/transfer_distributed_cleanup_items.sh
+	modified:   update.cf
+
+```
+
+Make sure the policy validates and commit your changes.
+
+```bash
+git commit -m "Upgraded MPF from 3.18.0 to 3.18.5"
+```
+
+Output:
+
+```
+[master 6e0cbd2] Upgraded MPF from 3.18.0 to 3.18.5
+ 58 files changed, 2476 insertions(+), 526 deletions(-)
+ create mode 100644 cfe_internal/enterprise/templates/apachectl.mustache
+ rewrite inventory/redhat.cf (63%)
+ delete mode 100644 lib/deprecated-upstream.cf
+ create mode 100644 lib/templates/junit.mustache
+ create mode 100644 lib/templates/tap.mustache
+ create mode 100644 templates/cf-reactor.service.mustache
+ create mode 100644 templates/federated_reporting/cfsecret.py
+ create mode 100644 templates/federated_reporting/distributed_cleanup.py
+ create mode 100644 templates/federated_reporting/nova_api.py
+ create mode 100644 templates/federated_reporting/transfer_distributed_cleanup_items.sh
 ```
 
 Now your Masterfiles Policy Framework is upgraded and ready to be tested.
