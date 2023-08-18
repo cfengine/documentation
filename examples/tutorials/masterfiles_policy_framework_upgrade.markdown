@@ -272,7 +272,6 @@ Or undo this operation with:
   git switch -
 
 Turn off this advice by setting config variable advice.detachedHead to false
-
 ```
 
 Then build and install targeting the integration root directory. When installed from source masterfiles installs into the `masterfiles` directory.
@@ -603,7 +602,6 @@ Changes not staged for commit:
 	modified:   templates/federated_reporting/psql_wrapper.sh.mustache
 	modified:   templates/federated_reporting/pull_dumps_from.sh
 	modified:   update.cf
-
 ```
 
 Next we want to bring back any of our custom files. Look through the **deleted** files, identify your custom files and restore them with `git checkout`.
@@ -723,7 +721,6 @@ Changes not staged for commit:
 	modified:   templates/federated_reporting/psql_wrapper.sh.mustache
 	modified:   templates/federated_reporting/pull_dumps_from.sh
 	modified:   update.cf
-
 ```
 
 It's best to review the diff of **each** modified to understand the upstream changes as well as identify any local modifications that need to be retained. You should always keep a good record of any modifications made to vendored files to ensure that nothing is lost during future framework upgrades.
@@ -846,7 +843,6 @@ index 15c0c40..1fd27e5 100644
 +
        "DEBUG $(this.bundle): adding input='$(inputs)'"
          if => isvariable("inputs");
-
 ```
 
 Carefully review the diffs and merge or re-integrate your custom changes on top of the upstream files. If you identify changes to the vendored files consider re-integrating those changes in a way that does not modify vendored files, here for example we have migrated the integration of the custom policy to Augments (`def.json`).
@@ -1009,7 +1005,6 @@ Changes to be committed:
 	modified:   templates/federated_reporting/pull_dumps_from.sh
 	new file:   templates/federated_reporting/transfer_distributed_cleanup_items.sh
 	modified:   update.cf
-
 ```
 
 Make sure the policy validates and commit your changes.
