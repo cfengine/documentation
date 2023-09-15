@@ -126,12 +126,9 @@ So in the example above the command would be:
 **Description:** Allows to separate the arguments to the command from the 
 command itself, using an slist.
 
-As with `args`, it is convenient to separate command and arguments.
-With `arglist` you can use a slist directly instead of having to
-provide a single string as with `args`. That's particularly useful
-when there are embedded spaces and quotes in your arguments, but also
-when you want to get them directly from a slist without going through
-`join()` or other functions.
+As with `args`, it is convenient to separate command and arguments.  With
+`arglist` you can use a slist directly instead of having to provide a single
+string as with `args`.
 
 The `arglist` is **appended** to `args` if that's defined, to preserve
 backwards compatibility.
