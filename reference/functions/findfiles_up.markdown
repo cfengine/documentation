@@ -23,11 +23,12 @@ shells:
 
 * `*` matches any filename or directory
 * `?` matches a single letter
-* `[a-z]` matches any letter from `a` to `z`
+* `[a-z]` matches any letter from `a` to `z` (not yet supported on Windows)
 
 **Notes:**
 
 - Brace expansion is not currently supported, `{x,y,anything}` will not match `x` or `y` or `anything`.
+- Bracket expressions are currently not supported on Windows. `[a-z]` will be interpreted as its raw string representation on Windows.
 
 [%CFEngine_function_attributes(path, glob, level)%]
 
