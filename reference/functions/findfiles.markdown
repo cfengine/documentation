@@ -23,6 +23,13 @@ deep.
 This function, used together with the `bundlesmatching` function,
 allows you to do dynamic inputs and a dynamic bundle call chain.
 
+**WARNING:**
+- The current implementation of glob patterns on Windows contains bugs.
+  Therefore, we strongly recommend using the `!windows::` class guard
+  expression to safeguard against any use of the function on Windows platforms.
+  Rest assured, we are actively working on resolving these issues and improving
+  its functionality.
+
 **Notes:**
 
 - Brace expansion is not currently supported, `{x,y,anything}` will not match `x` or `y` or `anything`.
