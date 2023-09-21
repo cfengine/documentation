@@ -13,27 +13,29 @@ for all supported platforms and [binary packages for popular Linux distributions
 
 ## Enterprise Server ##
 
-| Platform         | Versions             | Architecture      |
-| :--------------: | :------------------: | :---------------: |
-| CentOS/RHEL      | 7, 8.1+              | x86-64            |
-| Debian           | 9, 10, 11            | x86-64            |
-| Ubuntu           | 16.04, 18.04, 20.04  | x86-64            |
+| Platform    | Versions                   | Architecture |
+|:-----------:|:--------------------------:|:------------:|
+| CentOS/RHEL | 7, 8.1+                    | x86-64       |
+| Debian      | 9, 10, 11                  | x86-64       |
+| Ubuntu      | 16.04, 18.04, 20.04, 22.04 | x86-64       |
+| Ubuntu      | 22.04                      | arm64        |
 
 Any supported host can be a policy server in Community installations of CFEngine.
 
 ## Hosts ##
 
-| Platform    | Versions            | Architectures   |
-| :---------: | :-----------------: | :-------------: |
-| AIX         | 7.1, 7.2            | PowerPC         |
-| CentOS/RHEL | 6, 7, 8.1           | x86-64          |
-| Debian      | 9, 10, 11           | x86-64          |
-| HP-UX       | 11.31+              | Itanium         |
-| SLES        | 11, 12, 15          | x86-64          |
-| Solaris     | 11                  | UltraSparc      |
-| Solaris     | 10                  | UltraSparc, x86 |
-| Ubuntu      | 16.04, 18.04, 20.04 | x86-64          |
-| Windows     | 2012, 2016, 2019    | x86-64, x86     |
+| Platform    | Versions                   | Architectures   |
+|:-----------:|:--------------------------:|:---------------:|
+| AIX         | 7.1, 7.2                   | PowerPC         |
+| CentOS/RHEL | 6, 7, 8.1                  | x86-64          |
+| Debian      | 9, 10, 11                  | x86-64          |
+| HP-UX       | 11.31+                     | Itanium         |
+| SLES        | 11, 12, 15                 | x86-64          |
+| Solaris     | 11                         | UltraSparc      |
+| Solaris     | 10                         | UltraSparc, x86 |
+| Ubuntu      | 16.04, 18.04, 20.04, 22.04 | x86-64          |
+| Ubuntu      | 22.04                      | arm64           |
+| Windows     | 2012, 2016, 2019           | x86-64, x86     |
 
 
 [Known Issues][] also includes platform-specific notes.
