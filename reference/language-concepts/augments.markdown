@@ -133,7 +133,7 @@ The above Augments results in `$(sys.policy_entry_dirname)/goodbye.cf` being add
 
 This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the [_augments_ key][Augments#augments].
 
-Variables defined here can target a _namespace_ and or _bundle_ scope explicitly. When defined from `host_specific.json`, variables default to the `main` _bundle_ in the `data` _namespace_ (`$(data:main.MyVariable)`).
+Variables defined here can target a _namespace_ and or _bundle_ scope explicitly. When defined from `host_specific.json`, variables default to the `variables` _bundle_ in the `data` _namespace_ (`$(data:variables.MyVariable)`).
 
 For example:
 
