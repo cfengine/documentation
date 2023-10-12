@@ -4,11 +4,11 @@ title: version_compare
 published: true
 ---
 
-[%CFEngine_function_prototype(string)%]
+[%CFEngine_function_prototype(version1, comparison, version2)%]
 
 **Description:** Returns `true` if the specified version comparison expression is true.
 
-[%CFEngine_function_attributes(string)%]
+[%CFEngine_function_attributes(version1, comparison, version2)%]
 
 The `version_compare()` function can be used to compare 2 arbitrary semver version numbers.
 This can be useful if you have 2 versions of a package and you want to know if they are the same version, if one is newer than the other etc.
