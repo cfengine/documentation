@@ -223,7 +223,7 @@ curl -k --user <username>:<password> \
 -F file=@/path/to/file.phar  \
 -F encryptionKey=key \
 -F skipDuplicates=1 \
-'https://hub.example/index.php/data_transfer/api/analyzeImportFile' 
+'https://hub.example/index.php/data_transfer/api/import'
 ```
 
 **Example response:**
