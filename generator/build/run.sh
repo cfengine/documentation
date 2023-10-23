@@ -22,5 +22,5 @@ true "${PACKAGE_BUILD?undefined}"
 
 c=$(buildah from -v $PWD:/nt docs-revamp-22)
 trap "buildah run $c bash -c 'sudo chmod -R a+rwX /nt'; buildah rm $c >/dev/null" EXIT
-buildah run $c bash -x documentation/generator/build/main.sh $BRANCH $PACKAGE_JOB $PACKAGE_UPLOAD_DIRECTORY $PACKAGE_BUILD
-buildah run $c bash -x documentation/generator/_scripts/_publish.sh $BRANCH
+buildah run --user "$(id -u)" $c bash -x documentation/generator/build/main.sh $BRANCH $PACKAGE_JOB $PACKAGE_UPLOAD_DIRECTORY $PACKAGE_BUILD
+buildah run --user "$(id -u)" $c bash -x documentation/generator/_scripts/_publish.sh $BRANCH
