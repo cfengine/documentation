@@ -18,15 +18,21 @@ match all files in one directory that end in `.cf` but it won't search
 across directories.  `*/*.cf` on the other hand will look two levels
 deep.
 * `?` matches a single letter
-* `[a-z]` matches any letter from `a` to `z` (not yet supported on Windows)
+* `[a-z]` matches any letter from `a` to `z`
 
 This function, used together with the `bundlesmatching` function,
 allows you to do dynamic inputs and a dynamic bundle call chain.
 
+**WARNING:**
+- The current implementation of glob patterns on Windows contains bugs.
+  Therefore, we strongly recommend using the `!windows::` class guard
+  expression to safeguard against any use of the function on Windows platforms.
+  Rest assured, we are actively working on resolving these issues and improving
+  its functionality.
+
 **Notes:**
 
 - Brace expansion is not currently supported, `{x,y,anything}` will not match `x` or `y` or `anything`.
-- Bracket expressions are currently not supported on Windows. `[a-z]` will be interpreted as its raw string representation on Windows.
 
 **Example:**
 
