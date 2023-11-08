@@ -24,6 +24,54 @@ affected by `common` and `agent` control bodies.
 
 [%CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$)%]
 
+### --simulate
+
+Like the `--dry-run` option, the `--simulate` option tries to identify changes
+to your system without making changes to the system, however it goes further
+than `--dry-run` by making changes in a `chroot` and making a distinction
+between *safe* and *unsafe* functions, e.g. `execresult()`.
+
+The agent will execute promises with unsafe functions when the `--simulate`
+options is given only if the promise using the function is tagged `simulate_safe`.
+
+For example:
+
+```cf3
+bundle agent __main__
+{
+  vars:
+      "msg"
+        string => execresult( "/bin/echo Hello world!", "useshell" ),
+        meta => { "simulate_safe" };
+
+}
+```
+
+The simulate option takes a parameter, `diff`, `manifest`, or `manifest-full`
+which is used to determine the summary output shown at the end of the run.
+
+* `diff` - Show only things that changed during the simulated run.
+* `manifest` - Show files and packages changed by the simulated run.
+* `manifest-full` - Show all files evaluated by the simulated run (including unchanged ones)
+
+    - cf-agent can now simulate the changes done to files in a chroot, printing
+      diff or manifest information about what it would do in a normal evaluation.
+      Use the new command line option: `--simulate=diff` or `--simulate=manifest`.
+      Please note that only files and packages promises are simulated currently.
+
+    - Added a new --simulate=manifest-full mode
+      New simulation mode that manifests all changed files as well as
+      all other files evaluated by the agent run which were not skipped
+      (by file selection rules) (CFE-3506)
+
+#### Notes
+* Supported on Linux for `files` and `packages` type promises
+
+#### History
+* Introduced in version 3.17.0
+* `--simulate=manifest-full` introduced in version 3.18.0
+
+
 ## Automatic bootstrapping
 
 Automatic bootstrapping allows the user to connect a CFEngine Host to a Policy
