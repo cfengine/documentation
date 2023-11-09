@@ -45,6 +45,18 @@ reports:
    "The value of $(const.dollar)(const.dirsep) is $(const.dirsep)";
 ```
 
+### const.linesep
+
+```cf3
+reports:
+
+   # On Unix hosts this will report: The value of $(const.linesep) is \n
+   # On Windows hosts this will report: The value of $(const.linesep) is \r\n
+   "The value of $(const.dollar)(const.linesep) is $(const.linesep)";
+```
+
+**History:** Introduced in CFEngine 3.23.0
+
 ### const.endl
 
 ```cf3
@@ -53,6 +65,11 @@ reports:
   "A newline with either $(const.n) or with $(const.endl) is ok";
   "But a string with \n in it does not have a newline!";
 ```
+
+**Note:** The variable `const.endl` is an alias for `const.n` and nothing more.
+It is commonly mistaken to be a platform agnostic line separator. But this has
+never been the case. However, since CFEngine 3.23 we introduced `const.linesep`
+which is exactly that.
 
 ### const.n
 
