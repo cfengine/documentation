@@ -66,7 +66,18 @@ Inventory API allows to access inventory reports and attributes dictionary.
     Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
 * **hostContextInclude** *(array)*
     Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one of the specified contexts set will be excluded from the results. Optional parameter.
+* **hostFilter** *(json object)* Optional parameter.
+    * **includes** *(json object)* Optional parameter.
+      Object that specifies hosts to be included.
+        * **includeAdditionally** *(boolean)* Default: `false`
+          Defines if hosts will be added to the results returned by inventory filters or class filters.
+        * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+          Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
+    * **excludes** *(json object)* Optional parameter.
+      Object that specifies hosts to be excluded.
+        * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+          Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
 ```
 curl -k --user <username>:<password> \

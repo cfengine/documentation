@@ -30,22 +30,17 @@ The shared groups API enables creating host groups based on host filters (the sa
   * **hostContextExclude** *(array)*  Optional parameter.
     Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one
     of the specified contexts set will be excluded from the results.
-
-  * **hostsFilter** *(json object)* Optional parameter.
+  * **hostFilter** *(json object)* Optional parameter.
     * **includes** *(json object)* Optional parameter.
       Object that specifies hosts to be included.
       * **includeAdditionally** *(boolean)* Default: `false`
-        Defines if hosts will be included additionally on top of the inventory filters or class filters.
-      * **type** (string)
-        Now the only supported type is `hostkey`.
-      * **data** *(array)*
-        An array of hosts keys.
+        Defines if hosts will be added to the results returned by inventory filters or class filters.
+      * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+        Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
     * **excludes** *(json object)* Optional parameter.
       Object that specifies hosts to be excluded.
-      * **type** (string)
-        Now the only supported type is `hostkey`.
-      * **data** *(array)*
-        An array of hosts keys.
+      * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+        Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
 
 ```json
@@ -56,15 +51,35 @@ The shared groups API enables creating host groups based on host filters (the sa
               "operator":"value2"
           }
       },
-      "hostsFilter": {
+    "hostFilter": {
           "includes": {
-              "includeAdditionally": true,
-              "type": "hostkey",
-              "data": ["SHA=first1"]
+            "includeAdditionally":  false,
+            "entries": {
+                "ip": [
+              "192.168.56.5"
+            ],
+            "hostkey": [],
+            "hostname": [
+              "ubuntu-bionic"
+            ],
+            "mac": [
+              "08:00:27:0b:a4:99",
+              "08:00:27:dd:e1:59",
+              "02:9f:d3:59:7e:90"
+            ],
+            "ip_mask": [
+              "10.0.2.16/16"
+            ]
+            }
           },
           "excludes": {
-              "type": "hostkey",
-              "data": ["SHA=first2"]
+            "entries":{
+            "ip": [],
+            "hostkey": [],
+            "hostname": [],
+            "mac": [],
+            "ip_mask": []
+               }
           }
       },
       "hostContextExclude": ["class_value"],
@@ -152,22 +167,17 @@ curl -k --user <username>:<password> \
   * **hostContextExclude** *(array)*  Optional parameter.
     Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one
     of the specified contexts set will be excluded from the results.
-  * **hostsFilter** *(json object)* Optional parameter.
+  * **hostFilter** *(json object)* Optional parameter.
     * **includes** *(json object)* Optional parameter.
       Object that specifies hosts to be included.
       * **includeAdditionally** *(boolean)* Default: `false`
-        Defines if hosts will be included additionally on top of the inventory filters or class filters.
-      * **type** (string)
-        Now the only supported type is `hostkey`.
-      * **data** *(array)*
-        An array of hosts keys.
+        Defines if hosts will be added to the results returned by inventory filters or class filters.
+      * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+        Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
     * **excludes** *(json object)* Optional parameter.
       Object that specifies hosts to be excluded.
-      * **type** (string)
-        Now the only supported type is `hostkey`.
-      * **data** *(array)*
-        An array of hosts keys.
-
+      * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+        Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
 ```json
 {
@@ -177,16 +187,37 @@ curl -k --user <username>:<password> \
               "operator":"value2"
           }
       },
-      "hostsFilter": {
-          "includes": {
-              "type": "hostkey",
-              "data": ["SHA=first1"]
-          },
-          "excludes": {
-              "type": "hostkey",
-              "data": ["SHA=first2"]
-          }
+    "hostFilter": {
+      "includes": {
+        "includeAdditionally":  false,
+        "entries": {
+          "ip": [
+            "192.168.56.5"
+          ],
+          "hostkey": [],
+          "hostname": [
+            "ubuntu-bionic"
+          ],
+          "mac": [
+            "08:00:27:0b:a4:99",
+            "08:00:27:dd:e1:59",
+            "02:9f:d3:59:7e:90"
+          ],
+          "ip_mask": [
+            "10.0.2.16/16"
+          ]
+        }
       },
+      "excludes": {
+        "entries":{
+          "ip": [],
+          "hostkey": [],
+          "hostname": [],
+          "mac": [],
+          "ip_mask": []
+        }
+      }
+    },
       "hostContextExclude": ["class_value"],
       "hostContextInclude": ["class_value"]
   }
