@@ -860,7 +860,7 @@ hostnamekeys => "true";
 **Description:** The value of `ifelapsed` is a global default representing
 the time that must elapse before a promise will be rechecked.
 
-This overrides the global settings. Promises which take a long time
+This configures the default setting for `cf-agent`. Promises which take a long time
 to verify should usually be protected with a long value for this
 parameter. This serves as a resource 'spam' protection. A CFEngine
 check could easily run every 5 minutes provided resource intensive
@@ -877,21 +877,16 @@ another which is not tied to a specific time.
 **Example:**
 
 ```cf3
-#local
-
-body action example
-{
-ifelapsed   => "120";   # 2 hours
-expireafter => "240";   # 4 hours
-}
-
-# global
-
 body agent control
 {
-ifelapsed   => "180";   # 3 hours
+  ifelapsed   => "180";   # 3 hours
 }
 ```
+
+**Notes:**
+* This is not a reliable way to control frequency over a long period of time.
+* Locks provide simple but weak frequency control.
+* Locks older than 4 weeks are automatically purged.
 
 **See also:** [Promise locking][Promises#Promise locking], [ifelapsed action body attribute][Promise types#ifelapsed]
 
