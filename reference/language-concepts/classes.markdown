@@ -184,7 +184,7 @@ of a week.
     `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`), provided they are not excluded by
     a regular expression in the file `WORKDIR/ignore_interfaces.rx` or `WORKDIR/inputs/ignore_interfaces.rx`.
   - Note: Support and preference for `WORKDIR/ignore_interfaces.rx` was added
-    and is present in versions greater than `3.23.0`.
+    and is present in version `3.23.0` and later and in version `3.21.4` and later.
 -   The names of the active interfaces (in the form
     `net_iface_xl0`, `net_iface_vr0`).
 -   System status and entropy information reported by
