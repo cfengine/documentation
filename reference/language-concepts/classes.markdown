@@ -180,11 +180,11 @@ of a week.
     command line option, or defined in a [`classes` promise][classes] promise or
     [`classes` body][Promise types#classes],
     `restart_class` in a `processes` promise, etc).
--   The IP address octets of any active interface (in the form
-    `ipv4_192_0_0_1<!-- /@w -->`, `ipv4_192_0_0<!-- /@w -->`,
-    `ipv4_192_0<!-- /@w -->`, `ipv4_192<!-- /@w -->`), provided they
-    are not excluded by a regular expression in the file
-    `WORKDIR/inputs/ignore_interfaces.rx`.
+-   The IP address octets of any active interface (in the form `ipv4_192_0_0_1`,
+    `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`), provided they are not excluded by
+    a regular expression in the file `WORKDIR/ignore_interfaces.rx` or `WORKDIR/inputs/ignore_interfaces.rx`.
+  - Note: Support and preference for `WORKDIR/ignore_interfaces.rx` was added
+    and is present in version `3.23.0` and later and in version `3.21.4` and later.
 -   The names of the active interfaces (in the form
     `net_iface_xl0`, `net_iface_vr0`).
 -   System status and entropy information reported by
