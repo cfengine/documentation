@@ -60,11 +60,21 @@ _Most_ (`¯\_(ツ)_/¯`) special characters are _okay_. For example:
 * Link targets with `/` (forward slashes) work
    * ```[Export/Import][Settings#Export/Import]``` == [Export/Import][Settings#Export/Import]
 
-Anchors with _underscores_ are problematic, they need to be escaped.
+Anchors with _underscores_ are problematic, *may* need to be escaped.
 
 For example ```services_autorun``` in the MPF documentation the underscore needs to be escaped with a ```\```.
 
 **See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
+
+But not always! For example
+
+```
+**See also:** [cf_lock.lmdb][CFEngine directory structure#state/cf_lock.lmdb]
+```
+
+**See also:** [cf_lock.lmdb][CFEngine directory structure#state/cf_lock.lmdb]
+
+Backticks are problematic. It seems impossible to link to anchors that contain backticks.
 
 ### Link to CFEngine keyword
 
