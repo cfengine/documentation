@@ -129,25 +129,34 @@ each run.
 
 ## Database files in /var/cfengine
 
-* bundles.lmdb
-* `cf_classes.lmdb`
+### state/cf_classes.lmdb
 
-A database of classes that have been defined on the current host,
-including their relative frequencies, scaled like a probability.
+A database of classes that have been defined on the current host, including
+their relative frequencies, scaled like a probability.
 
-* `cf_lastseen.lmdb`
+### state/cf_lastseen.lmdb
 
-A database of hosts that last contacted this host, or were contacted by
-this host, and includes the times at which they were last observed.
+A database of hosts that last contacted this host, or were contacted by this
+host, and includes the times at which they were last observed.
 
-* `cf_changes.lmdb`
+### state/cf_lock.lmdb
+
+A database of active and inactive promise locks and their expiry times. Deleting
+this database will reset all lock protections in CFEngine.
+
+**Note:** Locks are purged in order to maintain the integrity and health of the
+underlying lock database. When the lock database utilization grows to 25%
+locks 4 weeks or older are purged. At 50% locks 2 weeks or older are purged
+and at 75% locks older than 1 week are purged.
+
+### state/cf_changes.lmdb
 
 The database of hash values used in CFEngine's change management
 functions.
 
-* `nova_agent_execution.lmdb`
-* `nova_track.lmdb`
-* `performance.lmdb`
+### state/nova_agent_execution.lmdb
+### state/nova_track.lmdb
+### state/performance.lmdb
 
 A database of last, average and deviation times of jobs recorded by
 `cf-agent`. Most promises take an immeasurably short time to check, but
@@ -226,11 +235,6 @@ IP address of the policy server
 
 
 ## Not verified
-
-* `state/cf_lock.lmdb`
-
-A database of active and inactive locks and their expiry times. Deleting
-this database will reset all lock protections in CFEngine.
 
 * `state/history.lmdb`
 
