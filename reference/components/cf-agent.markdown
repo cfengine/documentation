@@ -883,6 +883,7 @@ another which is not tied to a specific time.
 ```
 
 **Notes:**
+
 * A value of `0` means no locking, all promises will be executed each execution if in context. This also disables function caching.
 * This is not a reliable way to control frequency over a long period of time.
 * Locks provide simple but weak frequency control.
