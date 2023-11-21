@@ -111,8 +111,13 @@ body agent control
 }
 ```
 
-**See also:** [promise locking][Promises#Promise Locking], [ifelapsed in body agent control][cf-agent#ifelapsed],
-[`ifelapsed` and function caching][Functions#function caching]
+**Notes:**
+
+* This is not a reliable way to control frequency over a long period of time.
+* Locks provide simple but weak frequency control.
+* Locks older than 4 weeks are automatically purged.
+
+**See also:** [promise locking][Promises#Promise Locking], [ifelapsed in body agent control][cf-agent#ifelapsed], [`ifelapsed` and function caching][Functions#function caching]
 
 **History:**
 
