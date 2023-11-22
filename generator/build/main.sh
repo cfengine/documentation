@@ -83,8 +83,9 @@ fetch_file "$HUB_DIR_URL$HUB_PACKAGE_NAME" "cfengine-nova-hub.deb" 12
 sudo apt-get -y purge cfengine-nova-hub || true
 sudo rm -rf /*/cfengine
 
-# unpack 
+# unpack
 sudo dpkg --unpack cfengine-nova-hub.deb
+rm cfengine-nova-hub.deb
 sudo cp -a /var/cfengine/share/NovaBase/masterfiles "$WRKDIR"
 sudo chmod -R a+rX "$WRKDIR"/masterfiles
 
