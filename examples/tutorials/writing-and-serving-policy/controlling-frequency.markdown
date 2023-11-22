@@ -123,10 +123,12 @@ bundle agent __main__
 }
 ```
 
-Note: Promise locks are ignored when CFEngine is run with the `--no-lock` or
-`-K` option, e.g. a common **manual** execution of the agent, `cf-agent -KI`
-would not respect promises that are locked from a recent execution. Furthermore,
-locks are purged in order to maintain the integrity and health of the underlying
-lock database.
+**Note:**
+
+* Promise locks are ignored when CFEngine is run with the `--no-lock` or `-K`
+  option, e.g. a common **manual** execution of the agent, `cf-agent -KI` would
+  not respect promises that are locked from a recent execution.
+* Locks are purged based on database utilization and age in order to maintain
+  the integrity and health of the underlying lock database.
 
 **See also:** [cf_lock.lmdb][CFEngine directory structure#state/cf_lock.lmdb]
