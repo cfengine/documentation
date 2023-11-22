@@ -15,7 +15,7 @@ export PACKAGE_UPLOAD_DIRECTORY=$3
 export PACKAGE_BUILD=$4
 
 export JOB_TO_UPLOAD=$PACKAGE_JOB
-export FLAG_FILE_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/PACKAGES_HUB_x86_64_linux_ubuntu_18/core-commitID"
+export FLAG_FILE_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/PACKAGES_HUB_x86_64_linux_ubuntu_22/core-commitID"
 export NO_OUTPUT_DIR=1
 
 env
@@ -74,7 +74,7 @@ done
 wget -O- $FLAG_FILE_URL
 
 echo "Detecting version"
-HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_18
+HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_22
 HUB_DIR_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/$HUB_DIR_NAME/"
 HUB_PACKAGE_NAME="$(wget $HUB_DIR_URL -O- | sed '/deb/!d;s/.*"\([^"]*\.deb\)".*/\1/')"
 

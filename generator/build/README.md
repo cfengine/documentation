@@ -14,14 +14,13 @@ You will need to have the following repos checked out:
 * enterprise (used for changelog)
 * masterfiles (used to document masterfies)
 * documentation
-* documentation/generator (this repo)
 
 Usage
 -----
 
 If you have buildah installed:
 
-1. clone the above repos
+1. clone the above repos (run `clone.sh`)
 
 2. export the following env variables:
 
@@ -30,11 +29,11 @@ If you have buildah installed:
 
 	* `$PACKAGE_JOB` - where to take CFEngine HUB package from,
 	  a dir at http://buildcache.cloud.cfengine.com/packages/,
-	  usually testing-pr
+	  usually `testing-pr`
 
 	* `$PACKAGE_UPLOAD_DIRECTORY` - where to take CFEngine HUB package from,
 	  a dir at http://buildcache.cloud.cfengine.com/packages/testing-pr/,
-	  for example, jenkins-master-nightly-pipeline-943
+	  for example, `jenkins-master-nightly-pipeline-943`
 
 	* `$PACKAGE_BUILD` - RELEASE of the build to be downloaded, usually 1
 
