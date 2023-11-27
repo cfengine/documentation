@@ -110,10 +110,16 @@ article {
 
     .article_title {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      word-wrap: break-word;
+      grid-gap: 12px;
 
       h1 {
         flex-grow: 1;
+        max-width: calc(100% - 110px);
+        @media @phone-down {
+          max-width: 100%;
+        }
       }
 
       @media @phone-down {
