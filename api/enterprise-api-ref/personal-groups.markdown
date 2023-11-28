@@ -36,7 +36,7 @@ The personal groups API enables creating host groups based on host filters (the 
               Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
         * **excludes** *(json object)* Optional parameter.
           Object that specifies hosts to be excluded.
-            * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array
+            * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
               Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 ```json
 {
