@@ -16,6 +16,7 @@ string in any order. Consult http://pcre.org/pcre.txt for the exact
 meaning of the uppercase options, and note that some can be turned on
 inside the regular expression, e.g. `(?s)`.
 
+* `g`: global, replace all matches
 * `i`: case-insensitive
 * `m`: multiline (`PCRE_MULTILINE`)
 * `s`: dot matches newlines too (`PCRE_DOTALL`)
