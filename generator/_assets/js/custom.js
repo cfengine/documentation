@@ -234,11 +234,12 @@ var buildBreadcrumbs = function (items) {
     })
     leftMenuBreadcrumbs.innerHTML = html;
     var lastItem = items[items.length - 1];
-    selectedMenu.innerHTML = lastItem.name !== 'Home' ?
-        '<a href="'+ lastItem.href +'">'+ lastItem.name +' <i class="bi bi-box-arrow-up-right"></i></a>' :
-        '';
+    if (window.innerWidth < 1024){
+        selectedMenu.innerHTML = lastItem.name !== 'Home' ?
+            '<a href="'+ lastItem.href +'">'+ lastItem.name +' <i class="bi bi-box-arrow-up-right"></i></a>' :
+            '';
+    }
 }
-buildBreadcrumbs(clickedMenuHistory);
 
 document.querySelector('.menu-back').onclick = function () {
     if (clickedMenuHistory.length != 1) {
@@ -252,18 +253,34 @@ document.querySelector('.menu-back').onclick = function () {
 var urlPaths = document.location.pathname.split('/');
 var url = urlPaths[urlPaths.length - 1]; // get last url part
 var currentMenuItem = document.querySelector('.left-menu li[data-url="'+ url +'"]');
+
+
 if (currentMenuItem != null) {
     currentMenuItem.className += ' opened current';
-
-    if (window.innerWidth > 1023) { // if the window width more than 1023 then treat the menu as desktop one
-        var closest = currentMenuItem.closest('ul').closest('li');
-        while (true) {
-            if (!closest) break;
-            closest.classList.add('opened');
-            closest = closest.closest('ul').closest('li');
-        }
+    var menuHistory = [];
+    var currentLink = currentMenuItem.querySelector('a');
+    // if selected menu item is a parent we show children on mobile menu
+    if (currentLink && currentMenuItem.classList.contains('parent')){
+        menuHistory.unshift({href: currentLink.getAttribute('href'), name: currentLink.innerText});
     }
+    var closest = currentMenuItem.closest('ul').closest('li');
+
+    while (true) {
+        if (!closest) break;
+        if (window.innerWidth > 1023) { // if the window width more than 1023 then treat the menu as desktop one
+            closest.classList.add('opened');
+        } else {
+            // Restore history from html
+            var link = closest.querySelector('a');
+            if (link){
+                menuHistory.unshift({href: link.getAttribute('href'), name: link.innerText});
+            }
+        }
+        closest = closest.closest('ul').closest('li');
+    }
+    clickedMenuHistory = clickedMenuHistory.concat(menuHistory);
 }
+buildBreadcrumbs(clickedMenuHistory);
 
 if (window.innerWidth > 1023) {
     document.querySelectorAll('.mainMenu li.parent > i').forEach(function (element) {
@@ -272,6 +289,10 @@ if (window.innerWidth > 1023) {
             element.closest('li.parent').classList.toggle('opened');
         }
     });
+} else {
+    // Small screen
+    var lastHistoryElement = clickedMenuHistory[clickedMenuHistory.length - 1];
+    renderNestedMenu(lastHistoryElement.href);
 }
 
 function fillVersionWrapperSelect(url) {
