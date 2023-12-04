@@ -13,151 +13,41 @@ In CFEngine, the agent is called `cf-agent` and is responsible for making change
 (Originally, the word *robot*, meaning "servile worker," was coined for the influential Czech writer Karel Čapek's play R.U.R by his brother.
 The characters in that play are capable of fairly independent thought, so the original sense of the word is apt to describe CFEngine's agents as well.)
 
+#### Agent
+
+A piece of software that runs independently and automatically to carry out a task (think software robot).
+Inn CFEngine, the agent is called `cf-agent` and is responsible for making changes to computers.
+
 #### Authentication
+
+#### Body
+
+A promise body is the description of exactly what is promised (as opposed to what/who is making the promise).
+The term `body` is used in the CFEngine syntax to mean a small template that can be used to contribute as part of a larger promise body.
+
 #### Body
 
 A promise body is the description of exactly what is promised (as opposed to what/who is making the promise).
 The term `body` is used in the CFEngine syntax to mean a small template that can be used to contribute as part of a larger promise body.
 
 #### Bootstrap
+
 #### Bundles for knowledge
+
+#### Bundle
+
+In CFEngine, a bundle refers to a collection of promises that has a name.
+
 #### Bundle
 
 In CFEngine, a bundle refers to a collection of promises that has a name.
 
 #### Call collect
+
 #### Class
 
 Classes are used to classify a system (or the state of it) and to make decisions in CFEngine policy.
 Classes are sometimes referred to as contexts.
-
-#### Class expressions
-
-Multiple classes separated by operators (and, or) to make more complex decisions.
-
-#### Class guards
-
-Used to restrict when / where promises are evaluated.
-Appear in front of promises in CFEngine policy, consisting of a class expression followed by two colons.
-Class guards are sometimes called context class expressions.
-
-#### CMDB
-
-A Configuration Management Database.
-A term coined as part of the IT Infrastructure Library (ITIL) as an outgrowth of an inventory database.
-
-#### Commands
-#### Common control
-#### Components
-
-Standalone applications include `cf-agent`, `cf-promises`, `cf-runagent`, `cf-know`, `cf-report`, `cf-hub`
-
-Daemons include `cf-execd`, `cf-monitord`, and `cf-serverd`
-
-#### Datatypes
-
-CFEngine's data types describe what a variable can contain.
-A variable can't be assigned a different type once it's been set.
-The commonly used data types are `string`, `slist`, `int`, `real`, and `data`.
-
-#### Directories
-#### Distribution
-#### Enterprise API
-#### Enterprise reporting
-#### File structure
-#### Frequency
-#### Functions
-#### Host
-
-Unix terminology for a computer that runs "guest programs."
-In practice, "host" is a synonym for "computer."
-
-#### Hub
-
-A software component in CFEngine Enterprise that acts as a single point of management in a local "star-network."
-The term "hub" is sometimes used to mean policy distribution server, but more commonly a running `cf-hub` process that does report collection from all CFEngine managed hosts.
-The term hub means the centre of a wheel, from which multiple spokes emerge.
-
-#### Logs
-#### Loops
-#### Menus
-#### Mission Portal
-#### Monitoring
-#### Namespaces
-#### Networking
-#### Normal ordering
-#### Operators
-#### Pattern matching
-
-#### PCI compliance
-
-Payment Card Industry Data Security Standard (PCI DSS) is a set of requirements designed to ensure that ALL companies that process, store or transmit credit card information maintain a secure environment.
-
-#### Policy levels
-#### Policy server
-
-The special server that others consult for the latest policies is called the *policy server*.
-
-Typically the policy server is set by the bootstrapping process.
-
-#### Policy writing
-#### Policy
-
-A policy is a set of intentions about the system, coded as a list of promises.
-A policy is not a standard, but the result of specific organizational management decisions.
-
-#### Precedence
-#### Promise attributes
-#### Promise types
-#### Promise
-
-The CFEngine software manages every intended system outcome as "promises" to be kept.
-A CFEngine Promise corresponds roughly to a rule in other software products, but importantly promises are always things that can be kept and repaired continuously, on a real time basis, not just once at install-time.
-
-Promises are idempotent, meaning they can be executed many times with the same outcome.
-
-They are also convergent, meaning they can only nudge the system closer to a steady state, never destabilize it.
-While there are ways a user could override this, it's almost never a good idea to do so.
-
-#### Referencing
-#### Report collector
-#### Reporting
-#### Reports
-#### Role-Based Access Control (RBAC)
-#### Scope
-
-#### Server
-
-For historical reasons, certain computers are referred to as servers, especially when kept in data centers because such computers often run services.
-
-In CFEngine, `cf-serverd` is a software component that serves files from one computer to another.
-All computers are recommended to run `cf-serverd`, making all computers CFEngine servers, whether they are laptops, phones, or data center computers.
-
-The special server that others consult for the latest policies is called the Policy Server.
-
-#### Special variables
-#### Standard library
-
-The standard library lives in a `masterfiles/lib` subdirectory.
-It's a collection of useful bundles and bodies you can use.
-
-#### Syntax
-#### Variables
-#### Version control
-
-#### Agent
-
-A piece of software that runs independently and automatically to carry out a task (think software robot).
-Inn CFEngine, the agent is called `cf-agent` and is responsible for making changes to computers.
-
-#### Body
-
-A promise body is the description of exactly what is promised (as opposed to what/who is making the promise).
-The term `body` is used in the CFEngine syntax to mean a small template that can be used to contribute as part of a larger promise body.
-
-#### Bundle
-
-In CFEngine, a bundle refers to a collection of promises that has a name.
 
 #### CDP
 
@@ -192,6 +82,21 @@ The lowest level enterprise edition of CFEngine, that automatically creates a si
 
 A file used to describe the changes made since the last version of the software.
 
+#### Class expressions
+
+Multiple classes separated by operators (and, or) to make more complex decisions.
+
+#### Class guards
+
+Used to restrict when / where promises are evaluated.
+Appear in front of promises in CFEngine policy, consisting of a class expression followed by two colons.
+Class guards are sometimes called context class expressions.
+
+#### CMDB
+
+A Configuration Management Database.
+A term coined as part of the IT Infrastructure Library (ITIL) as an outgrowth of an inventory database.
+
 #### CMDB
 
 A Configuration Management Database.
@@ -209,6 +114,16 @@ At certain times, the software code splits into different versions following dif
 Each path needs to be maintained separately for a while.
 This often happens when a release is made, because one wants to freeze the development of a public release (allowing nevertheless for some minor bugfixes), while continuing to add features to a branch leading to future versions.
 
+#### Commands
+
+#### Common control
+
+#### Components
+
+Standalone applications include `cf-agent`, `cf-promises`, `cf-runagent`, `cf-know`, `cf-report`, `cf-hub`
+
+Daemons include `cf-execd`, `cf-monitord`, and `cf-serverd`
+
 #### COSL license
 
 The Commercial Open Source License used for the CFEngine.
@@ -218,11 +133,31 @@ The Commercial Open Source License used for the CFEngine.
 Cascading Style Sheets.
 Part of Web technology used to describe page design.
 
+#### Datatypes
+
+CFEngine's data types describe what a variable can contain.
+A variable can't be assigned a different type once it's been set.
+The commonly used data types are `string`, `slist`, `int`, `real`, and `data`.
+
 #### Diff
 
 A `diff` is a report (originally that generated by the UNIX diff command) that
 details the differences between two files.
 The term is often used as slang meaning a file comparison.
+
+#### Directories
+
+#### Distribution
+
+#### Enterprise API
+
+#### Enterprise reporting
+
+#### File structure
+
+#### Frequency
+
+#### Functions
 
 #### GPL3
 
@@ -234,24 +169,26 @@ Graphical User interface.
 
 #### Host
 
+Unix terminology for a computer that runs "guest programs."
+In practice, "host" is a synonym for "computer."
+
+#### Host
+
 UNIX terminology for a computer the runs _guest programs_.
 In practice, _host_
 is a synonym for _computer_.
 
 #### Hub
 
+A software component in CFEngine Enterprise that acts as a single point of management in a local "star-network."
+The term "hub" is sometimes used to mean policy distribution server, but more commonly a running `cf-hub` process that does report collection from all CFEngine managed hosts.
+The term hub means the centre of a wheel, from which multiple spokes emerge.
+
+#### Hub
+
 A software component in CFE Nova and CFE Constellation that works as a single point of management in a local _star-network_.
 The term hub is sometimes used to mean policy distribution server, but more commonly a running `cf-hub` process that does report collection from all CFEngine managed hosts.
 The term hub means the centre of a wheel, from which multiple spokes emerge.
-
-#### Mission Portal
-
-The name given to the user interface used in commercial CFEngine editions,
-where all reports and progress summaries are kept.
-
-#### Modular license
-
-A license granting partial functionality to an Enterprise Edition of CFEngine.
 
 #### LDAP
 
@@ -263,35 +200,120 @@ A kind of _phone book_ service providing information about persons and computers
 A library generally refers to collection of standardized CFEngine code that can be reused in different scenarios and environments.
 This might be bundles of promises, or reusable body-parts.
 
+#### Logs
+
+#### Loops
+
+#### Menus
+
+#### Mission Portal
+
+#### Mission Portal
+
+The name given to the user interface used in commercial CFEngine editions,
+where all reports and progress summaries are kept.
+
+#### Modular license
+
+A license granting partial functionality to an Enterprise Edition of CFEngine.
+
+#### Monitoring
+
+#### Namespaces
+
+#### Networking
+
+#### Normal ordering
+
+#### Operators
+
 #### Packages
 
 Software binaries or executable files.
 The CFEngine company compiles and tests
 software into packages suitable for different platforms.
 
-#### Platforms
-
-This usually refers to an operating system type, e.g. Linux (in its many flavours), or Windows, etc.
-Platforms are described using short identifiers, e.g. RH5, REL5, SuSE 11, SLES, etc.
+#### Pattern matching
 
 #### PCI compliance
 
 Payment Card Industry Data Security Standard (PCI DSS) is a set of requirements designed to ensure that ALL companies that process, store or transmit credit card information maintain a secure environment.
 
-#### Promise
+#### PCI compliance
 
-The CFEngine software manages every intended system outcome as _promises_ to be kept.
-A CFEngine Promise corresponds roughly to a rule in other software products, but importantly promises are always things that can be kept and repaired continuously, on a real time basis, not just once at install-time.
+Payment Card Industry Data Security Standard (PCI DSS) is a set of requirements designed to ensure that ALL companies that process, store or transmit credit card information maintain a secure environment.
+
+#### Platforms
+
+This usually refers to an operating system type, e.g. Linux (in its many flavours), or Windows, etc.
+Platforms are described using short identifiers, e.g. RH5, REL5, SuSE 11, SLES, etc.
+
+#### Policy levels
+
+#### Policy server
+
+The special server that others consult for the latest policies is called the *policy server*.
+
+Typically the policy server is set by the bootstrapping process.
+
+#### Policy writing
 
 #### Policy
 
 A policy is a set of intentions about the system, coded as a list of promises.
 A policy is not a standard, but the result of specific organizational management decisions.
 
+#### Policy
+
+A policy is a set of intentions about the system, coded as a list of promises.
+A policy is not a standard, but the result of specific organizational management decisions.
+
+#### Precedence
+
+#### Promise attributes
+
+#### Promise types
+
+#### Promise
+
+The CFEngine software manages every intended system outcome as "promises" to be kept.
+A CFEngine Promise corresponds roughly to a rule in other software products, but importantly promises are always things that can be kept and repaired continuously, on a real time basis, not just once at install-time.
+
+Promises are idempotent, meaning they can be executed many times with the same outcome.
+
+They are also convergent, meaning they can only nudge the system closer to a steady state, never destabilize it.
+While there are ways a user could override this, it's almost never a good idea to do so.
+
+#### Promise
+
+The CFEngine software manages every intended system outcome as _promises_ to be kept.
+A CFEngine Promise corresponds roughly to a rule in other software products, but importantly promises are always things that can be kept and repaired continuously, on a real time basis, not just once at install-time.
+
+#### Referencing
+
+#### Report collector
+
+#### Reporting
+
+#### Reports
+
+#### Role-Based Access Control (RBAC)
+
+#### Scope
+
 #### Semantic web
 
 A form of web content in which hyperlinks always explain the meaning of the information they point to, in relation to the subject of interest.
 Semantic web technologies include RDF, Topic Maps etc.
+
+#### Server
+
+For historical reasons, certain computers are referred to as servers, especially when kept in data centers because such computers often run services.
+
+In CFEngine, `cf-serverd` is a software component that serves files from one computer to another.
+All computers are recommended to run `cf-serverd`, making all computers CFEngine servers, whether they are laptops, phones, or data center computers.
+
+The special server that others consult for the latest policies is called the Policy Server.
 
 #### Server
 
@@ -312,9 +334,18 @@ In the CFEngine Mission Portal, the service catalogue (for maintenance) treats p
 Sarbanes-Oxley Act compliance.
 An audited accolade for financial data security required by all companies on the New York stock exchange.
 
+#### Special variables
+
+#### Standard library
+
+The standard library lives in a `masterfiles/lib` subdirectory.
+It's a collection of useful bundles and bodies you can use.
+
 #### Standard library
 
 The CFEngine Standard library is a collection of standardized definitions (see COPBL).
+
+#### Syntax
 
 #### Template
 
@@ -325,3 +356,7 @@ This is often used interchangeably with the term _library_.
 #### UI
 
 User interface.
+
+#### Variables
+
+#### Version control
