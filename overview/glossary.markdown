@@ -145,210 +145,183 @@ It's a collection of useful bundles and bodies you can use.
 #### Variables
 #### Version control
 
+#### Agent
 
+A piece of software that runs independently and automatically to carry out a task (think software robot).
+Inn CFEngine, the agent is called `cf-agent` and is responsible for making changes to computers.
 
+#### Body
 
-* Agent
+A promise body is the description of exactly what is promised (as opposed to what/who is making the promise).
+The term `body` is used in the CFEngine syntax to mean a small template that can be used to contribute as part of a larger promise body.
 
-  A piece of software that runs independently and automatically to carry out a
-  task (think software robot). Inn CFEngine, the agent is called cf-agent and is
-  responsible for making changes to computers.
+#### Bundle
 
-* Body
+In CFEngine, a bundle refers to a collection of promises that has a name.
 
-  A promise body is the description of exactly what is promised (as opposed to
-  what/who is making the promise). The term `body` is used in the CFEngine
-  syntax to mean a small template that can be used to contribute as part of a
-  larger promise body.
+#### CDP
 
-* Bundle
+Content Driven Policy.
+A way of simplifying the way users provide information to CFEngine about policy by hiding the overhead of policy coding.
+A CDP is a set of promises that is designed to solve a particular task in a standard way.
+Users provide only a little data in the form of a simple spreadsheet of data in a table.
 
-  In CFEngine, a bundle refers to a collection of promises that has a name.
+#### CFEngine
 
-* CDP
+The name of the CFEngine Company, as well as the name of the Software.
+CFEngine comes from a contraction of _ConFiguration Engine_.
 
-  Content Driven Policy. A way of simplifying the way users provide information
-  to CFEngine about policy by hiding the overhead of policy coding. A CDP is a
-  set of promises that is designed to solve a particular task in a standard way.
-  Users provide only a little data in the form of a simple spreadsheet of data
-  in a table.
+#### CFEngine 3.x
 
-* CFEngine
+Major version 3 of the CFEngine software, started in 2008 and going up to the present day.
+This comes in several editions, both Open Source and Commercial.
 
-  The name of the CFEngine Company, as well as the name of the Software.
-  CFEngine comes from a contraction of _ConFiguration Engine_.
+#### CFEngine Community Edition
 
-* CFEngine 3.x
+Free and Open Source edition of the CFEngine software, published under the GPL3 license, and optionally under the COSL license.
 
-  Major version 3 of the CFEngine software, started in 2008 and going up to the
-  present day. This comes in several editions, both Open Source and Commercial.
+#### CFEngine Enterprise Editions
 
-* CFEngine Community Edition
+Refers to commercial (paid) editions of the CFEngine software, published under the COSL license.
 
-  Free and Open Source edition of the CFEngine software, published under the
-  GPL3 license, and optionally under the COSL license.
+#### CFEngine Nova
 
-* CFEngine Enterprise Editions
+The lowest level enterprise edition of CFEngine, that automatically creates a simple _star network_ mangement model for hosts in an environment.
 
-  Refers to commercial (paid) editions of the CFEngine software, published under
-  the COSL license.
+#### Changelog
 
-* CFEngine Nova
+A file used to describe the changes made since the last version of the software.
 
-  The lowest level enterprise edition of CFEngine, that automatically creates a
-  simple _star network_ mangement model for hosts in an environment.
+#### CMDB
 
-* Changelog
+A Configuration Management Database.
+A term coined as part of the IT Infrastructure Library (ITIL) as an outgrowth of an inventory database.
 
-    A file used to describe the changes made since the last version of the
-    software.
+#### CMS
 
-* CMDB
+Content Management System.
+A kind of editor for maintaining something (often web pages).
 
-  A Configuration Management Database. A term coined as part of the IT
-  Infrastructure Library (ITIL) as an outgrowth of an inventory database.
+#### Code branch
 
-* CMS
+The development of software is a branching process.
+At certain times, the software code splits into different versions following different paths.
+Each path needs to be maintained separately for a while.
+This often happens when a release is made, because one wants to freeze the development of a public release (allowing nevertheless for some minor bugfixes), while continuing to add features to a branch leading to future versions.
 
-  Content Management System. A kind of editor for maintaining something (often
-  web pages).
+#### COSL license
 
-* Code branch
+The Commercial Open Source License used for the CFEngine.
 
-  The development of software is a branching process. At certain times, the
-  software code splits into different versions following different paths. Each
-  path needs to be maintained separately for a while. This often happens when a
-  release is made, because one wants to freeze the development of a public
-  release (allowing nevertheless for some minor bugfixes), while continuing to
-  add features to a branch leading to future versions.
+#### CSS
 
-* COSL license
+Cascading Style Sheets.
+Part of Web technology used to describe page design.
 
-  The Commercial Open Source License used for the CFEngine
+#### Diff
 
-* CSS
+A `diff` is a report (originally that generated by the UNIX diff command) that
+details the differences between two files.
+The term is often used as slang meaning a file comparison.
 
-  Cascading Style Sheets. Part of Web technology used to describe page design.
+#### GPL3
 
-* Diff
+The GNU Public License, version 3.
 
-  A `diff` is a report (originally that generated by the UNIX diff command) that
-  details the differences between two files. The term is often used as slang
-  meaning a file comparison.
+#### GUI
 
-* GPL3
+Graphical User interface.
 
-  The GNU Public License, version 3.
+#### Host
 
-* GUI
+UNIX terminology for a computer the runs _guest programs_.
+In practice, _host_
+is a synonym for _computer_.
 
-  Graphical User interface.
+#### Hub
 
-* Host
+A software component in CFE Nova and CFE Constellation that works as a single point of management in a local _star-network_.
+The term hub is sometimes used to mean policy distribution server, but more commonly a running `cf-hub` process that does report collection from all CFEngine managed hosts.
+The term hub means the centre of a wheel, from which multiple spokes emerge.
 
-  UNIX terminology for a computer the runs _guest programs_. In practice, _host_
-  is a synonym for _computer_.
+#### Mission Portal
 
-* Hub
+The name given to the user interface used in commercial CFEngine editions,
+where all reports and progress summaries are kept.
 
-  A software component in CFE Nova and CFE Constellation that works as a single
-  point of management in a local _star-network_. The term hub is sometimes used
-  to mean policy distribution server, but more commonly a running cf-hub process
-  that does report collection from all CFEngine managed hosts. The term hub
-  means the centre of a wheel, from which multiple spokes emerge.
+#### Modular license
 
-* Mission Portal
+A license granting partial functionality to an Enterprise Edition of CFEngine.
 
-  The name given to the user interface used in commercial CFEngine editions,
-  where all reports and progress summaries are kept.
+#### LDAP
 
-* Modular license
+The Lightweight Directory Access Protocol.
+A kind of _phone book_ service providing information about persons and computers in an organization.
 
-  A license granting partial functionality to an Enterprise Edition of CFEngine.
+#### Libraries
 
-* LDAP
+A library generally refers to collection of standardized CFEngine code that can be reused in different scenarios and environments.
+This might be bundles of promises, or reusable body-parts.
 
-  The Lightweight Directory Access Protocol. A kind of _phone book_ service
-  providing information about persons and computers in an organization.
+#### Packages
 
-* Libraries
+Software binaries or executable files.
+The CFEngine company compiles and tests
+software into packages suitable for different platforms.
 
-  A library generally refers to collection of standardized CFEngine code that
-  can be reused in different scenarios and environments. This might be bundles
-  of promises, or reusable body-parts.
+#### Platforms
 
-* Packages
+This usually refers to an operating system type, e.g. Linux (in its many flavours), or Windows, etc.
+Platforms are described using short identifiers, e.g. RH5, REL5, SuSE 11, SLES, etc.
 
-  Software binaries or executable files. The CFEngine company compiles and tests
-  software into packages suitable for different platforms.
+#### PCI compliance
 
-* Platforms
+Payment Card Industry Data Security Standard (PCI DSS) is a set of requirements designed to ensure that ALL companies that process, store or transmit credit card information maintain a secure environment.
 
-  This usually refers to an operating system type, e.g. Linux (in its many
-  flavours), or Windows, etc. Platforms are described using short identifiers,
-  e.g. RH5, REL5, SuSE 11, SLES, etc.
+#### Promise
 
-* PCI compliance
+The CFEngine software manages every intended system outcome as _promises_ to be kept.
+A CFEngine Promise corresponds roughly to a rule in other software products, but importantly promises are always things that can be kept and repaired continuously, on a real time basis, not just once at install-time.
 
-  Payment Card Industry Data Security Standard (PCI DSS) is a set of
-  requirements designed to ensure that ALL companies that process, store or
-  transmit credit card information maintain a secure environment.
+#### Policy
 
-* Promise
+A policy is a set of intentions about the system, coded as a list of promises.
+A policy is not a standard, but the result of specific organizational management decisions.
 
-  The CFEngine software manages every intended system outcome as _promises_ to
-  be kept. A CFEngine Promise corresponds roughly to a rule in other software
-  products, but importantly promises are always things that can be kept and
-  repaired continuously, on a real time basis, not just once at install-time.
+#### Semantic web
 
-* Policy
+A form of web content in which hyperlinks always explain the meaning of the information they point to, in relation to the subject of interest.
+Semantic web technologies include RDF, Topic Maps etc.
 
-  A policy is a set of intentions about the system, coded as a list of promises.
-  A policy is not a standard, but the result of specific organizational
-  management decisions.
+#### Server
 
-* Semantic web
+A term used in many different ways, riddled with confusion.
+A server is strictly a piece of software that runs on some computer in order to perform a service, e.g. a web server is a program that makes a computer part of the World Wide Web.
+For historical reasons, certain computers are referred to as servers, especially when kept in datacentres because such computers often run services.
+In CFEngine, `cf-serverd` is a software component that serves files from one computer to another.
+All computers are recommended to run `cf-serverd`, making all computers CFEngine servers, whether they are laptops, phones or datacentre computers.
 
-  A form of web content in which hyperlinks always explain the meaning of the
-  information they point to, in relation to the subject of interest. Semantic
-  web technologies include RDF, Topic Maps etc.
+#### Service Catalogue
 
-* Server
+A kind of directory of _services_ provided in an environment.
+The concept of a service could be anything from a human help desk to a machine controlled email subsystem.
+In the CFEngine Mission Portal, the service catalogue (for maintenance) treats promise-bundles of promises as low-level maintenance services, and relates these to high level business goals.
 
-  A term used in many different ways, riddled with confusion. A server is
-  strictly a piece of software that runs on some computer in order to perform a
-  service, e.g. a web server is a program that makes a computer part of the
-  World Wide Web. For historical reasons, certain computers are referred to as
-  servers, especially when kept in datacentres because such computers often run
-  services. In CFEngine, cf-serverd is a software component that serves files
-  from one computer to another. All computers are recommended to run cf-serverd,
-  making all computers CFEngine servers, whether they are laptops, phones or
-  datacentre computers.
+#### SOX Compliance
 
-* Service Catalogue
+Sarbanes-Oxley Act compliance.
+An audited accolade for financial data security required by all companies on the New York stock exchange.
 
-  A kind of directory of _services_ provided in an environment. The concept of a
-  service could be anything from a human help desk to a machine controlled email
-  subsystem. In the CFEngine Mission Portal, the service catalogue (for
-  maintenance) treats promise-bundles of promises as low-level maintenance
-  services, and relates these to high level business goals.
+#### Standard library
 
-* SOX Compliance
+The CFEngine Standard library is a collection of standardized definitions (see COPBL).
 
-  Sarbanes-Oxley Act compliance. An audited accolade for financial data security
-  required by all companies on the New York stock exchange.
+#### Template
 
-* Standard library
+A template is an incomplete piece of CFEngine code, with blanks to fill in.
+It is often a policy fragment that can be re-used in different scenarios.
+This is often used interchangeably with the term _library_.
 
-  The CFEngine Standard library is a collection of standardized definitions (see
-  COPBL).
+#### UI
 
-* Template
-
-  A template is an incomplete piece of CFEngine code, with blanks to fill in. It
-  is often a policy fragment that can be re-used in different scenarios. This is
-  often used interchangeably with the term _library_.
-
-* UI
-
-  User interface.
+User interface.
