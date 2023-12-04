@@ -11,7 +11,6 @@ A piece of software that runs independently and automatically to carry out a tas
 In CFEngine, the agent is called `cf-agent` and is responsible for making changes to computers.
 
 Historically, all the hosts in the infrastructure which are not hubs / policy servers have been referred to as agents.
-(And the software you install on them agent packages, or agent only packages).
 The preferred terms to distinguish between the different roles are hub and client.
 See CFEngine roles.
 
@@ -26,7 +25,7 @@ After installing the CFEngine package, the software does not automatically start
 It is missing some information, most notably where it should be fetching policy from.
 In order to start CFEngine, you run the bootstrap command on all hosts in the infrastructure, with the IP address of the hub as an argument:
 
-```
+```console
 cf-agent --bootstrap <hub IP>
 ```
 
@@ -223,7 +222,7 @@ Namespaces allow you to define new scopes for bundles, variables, and classes.
 By using a specific name for the namespace, you can use short and generic names for the identifiers inside of it.
 
 By default, if you don't specify a namespace, you are using the namespace called `default`.
-The CMDB (group data / host specific data in Mission Portal) uses the `cmdb` namespace, unless you specify a namespace.
+The CMDB (group data / host specific data in Mission Portal) uses the `data` namespace, unless you specify a namespace.
 
 You can think of namespaces in a similar way as putting files inside folders, instead of having all of your files in one folder.
 The result is that things are more organized and less chances of files / classes / variables / bundles having conflicting names.
@@ -317,11 +316,11 @@ It's a collection of useful bundles and bodies you can use.
 
 #### Template
 
-A template is an incomplete piece of CFEngine code, with blanks to fill in.
+A template usually refers to text which can be expanded based on current CFEngine context. CFEngine has a native template language but generally `mustache`, a logic-less templating language is preferred. Sometimes a template is an incomplete piece of CFEngine code, with blanks to fill in.
 It is often a policy fragment that can be re-used in different scenarios.
 This is often used interchangeably with the term _library_.
 
 #### Variables
 
 Variables have a name, a type, and a value (and some optional metadata).
-In CFEngine policy language, variables are similar to variables in other programming languages, they can hold strings, lists, omplext data structures, etc.
+In CFEngine policy language, variables are similar to variables in other programming languages, they can hold strings, lists, complex data structures, etc.
