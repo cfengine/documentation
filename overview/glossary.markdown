@@ -188,17 +188,6 @@ It's a collection of useful bundles and bodies you can use.
   Free and Open Source edition of the CFEngine software, published under the
   GPL3 license, and optionally under the COSL license.
 
-* CFEngine Community Open Promise-Body Library
-
-  A collection of standard definitions that is open to the user community for
-  comment and standardization.
-
-* CFEngine Constellation
-
-  An enterprise edition of CFEngine, that is designed to scale to huge systems
-  by using a federated design. Constellation allows better handling of groups
-  (i.e. constellations of objects) in a network.
-
 * CFEngine Enterprise Editions
 
   Refers to commercial (paid) editions of the CFEngine software, published under
@@ -232,11 +221,6 @@ It's a collection of useful bundles and bodies you can use.
   release is made, because one wants to freeze the development of a public
   release (allowing nevertheless for some minor bugfixes), while continuing to
   add features to a branch leading to future versions.
-
-* COPBL
-
-  CFEngine Community Open Promise-Body Library (abbrev: CFEngine standard
-  library). A collection of standard definitions.
 
 * COSL license
 
@@ -273,19 +257,6 @@ It's a collection of useful bundles and bodies you can use.
   that does report collection from all CFEngine managed hosts. The term hub
   means the centre of a wheel, from which multiple spokes emerge.
 
-* Knowledge Map
-
-  A master index of all the information known about a CFEngine managed
-  environment, represented as a set of web pages with an interactive interface
-  based on a _semantic web_. The CFEngine Mission Portal provides a web-based
-  interface for browsing this knowledge map index.
-
-* Mission
-
-  The mission refers to the raison d'\hat etre of an organization. CFEngine's
-  task is to support this mission by keeping a set of promises for its IT
-  infrastructure.
-
 * Mission Portal
 
   The name given to the user interface used in commercial CFEngine editions,
@@ -316,11 +287,6 @@ It's a collection of useful bundles and bodies you can use.
   This usually refers to an operating system type, e.g. Linux (in its many
   flavours), or Windows, etc. Platforms are described using short identifiers,
   e.g. RH5, REL5, SuSE 11, SLES, etc.
-
-* Knowledge Map
-
-  Content portal containing datacentre information, privately managed knowledge
-  resources and CFEngine documentation.
 
 * PCI compliance
 
