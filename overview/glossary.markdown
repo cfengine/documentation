@@ -18,8 +18,6 @@ The characters in that play are capable of fairly independent thought, so the or
 A piece of software that runs independently and automatically to carry out a task (think software robot).
 Inn CFEngine, the agent is called `cf-agent` and is responsible for making changes to computers.
 
-#### Authentication
-
 #### Body
 
 A promise body is the description of exactly what is promised (as opposed to what/who is making the promise).
@@ -31,8 +29,6 @@ A promise body is the description of exactly what is promised (as opposed to wha
 The term `body` is used in the CFEngine syntax to mean a small template that can be used to contribute as part of a larger promise body.
 
 #### Bootstrap
-
-#### Bundles for knowledge
 
 #### Bundle
 
@@ -113,10 +109,6 @@ The development of software is a branching process.
 At certain times, the software code splits into different versions following different paths.
 Each path needs to be maintained separately for a while.
 This often happens when a release is made, because one wants to freeze the development of a public release (allowing nevertheless for some minor bugfixes), while continuing to add features to a branch leading to future versions.
-
-#### Commands
-
-#### Common control
 
 #### Components
 
@@ -202,10 +194,6 @@ This might be bundles of promises, or reusable body-parts.
 
 #### Logs
 
-#### Loops
-
-#### Menus
-
 #### Mission Portal
 
 #### Mission Portal
@@ -220,8 +208,6 @@ A license granting partial functionality to an Enterprise Edition of CFEngine.
 #### Monitoring
 
 #### Namespaces
-
-#### Networking
 
 #### Normal ordering
 
@@ -248,16 +234,12 @@ Payment Card Industry Data Security Standard (PCI DSS) is a set of requirements 
 This usually refers to an operating system type, e.g. Linux (in its many flavours), or Windows, etc.
 Platforms are described using short identifiers, e.g. RH5, REL5, SuSE 11, SLES, etc.
 
-#### Policy levels
-
 #### Policy server
 
 The special server that others consult for the latest policies is called the *policy server*.
 
 Typically the policy server is set by the bootstrapping process.
 
-#### Policy writing
-
 #### Policy
 
 A policy is a set of intentions about the system, coded as a list of promises.
@@ -267,8 +249,6 @@ A policy is not a standard, but the result of specific organizational management
 
 A policy is a set of intentions about the system, coded as a list of promises.
 A policy is not a standard, but the result of specific organizational management decisions.
-
-#### Precedence
 
 #### Promise attributes
 
@@ -345,8 +325,6 @@ It's a collection of useful bundles and bodies you can use.
 
 The CFEngine Standard library is a collection of standardized definitions (see COPBL).
 
-#### Syntax
-
 #### Template
 
 A template is an incomplete piece of CFEngine code, with blanks to fill in.
@@ -358,5 +336,3 @@ This is often used interchangeably with the term _library_.
 User interface.
 
 #### Variables
-
-#### Version control
