@@ -154,11 +154,6 @@ It's a collection of useful bundles and bodies you can use.
   task (think software robot). Inn CFEngine, the agent is called cf-agent and is
   responsible for making changes to computers.
 
-* Amber host
-
-  A host that has repaired more than 20% of its scheduled promises in the past 5
-  minutes. (See yellow host.)
-
 * Body
 
   A promise body is the description of exactly what is promised (as opposed to
@@ -260,10 +255,6 @@ It's a collection of useful bundles and bodies you can use.
 * GPL3
 
   The GNU Public License, version 3.
-
-* Green Host
-
-  A host for which more than 80% of all promises are kept.
 
 * GUI
 
@@ -395,7 +386,3 @@ It's a collection of useful bundles and bodies you can use.
 * UI
 
   User interface.
-
-* Yellow host.
-
-  See amber host.
