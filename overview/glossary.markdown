@@ -40,13 +40,12 @@ In CFEngine, a bundle refers to a collection of promises that has a name.
 #### Contend driven policy (CDP)
 
 A way of simplifying the way users provide information to CFEngine about policy by hiding the overhead of policy coding.
-A CDP is a set of promises that is designed to solve a particular task in a standard way.
+A CDP is a set of promises designed to solve a particular task in a standard way.
 Users provide only a little data in the form of a simple spreadsheet of data in a table.
 
 #### CFEngine
 
-CFEngine comes from a contraction of _ConFiguration Engine_.
-The CFEngine software is maintained by Northern.tech (previously the CFEngine company).
+CFEngine comes from a contraction of _ConFiguration Engine_ and is maintained by Northern.tech (previously the CFEngine company).
 
 #### CFEngine 3.x
 
@@ -104,7 +103,7 @@ Class guards are sometimes called context class expressions.
 
 #### Client
 
-In traditional computer networks and software, the client is the program which connects to a server, i.e. the software which initiates the connection in a networked system.
+In traditional computer networks and software, the client is the program which connects to a server, i.e., the software which initiates the connection in a networked system.
 We say that a server is listening for incoming connections, and servers frequently serve thousands or even millions of clients simultaneously.
 
 In CFEngine, we use the word client to describe all of the hosts which are not hubs.
@@ -158,8 +157,8 @@ It can be used to generate reports, query data, create alerts, manage users, etc
 
 #### Enterprise reporting
 
-CFEngine's reporting system allows you to access information about your hosts as well as the results of your policy in a centralized system.
-On the hub, you have access to the reporting system through the JSON REST API, the Web UI, the SQL database, as well as generated PDF / CSV reports.
+CFEngine's reporting system allows you to access information about your hosts and the results of your policy in a centralized system.
+You can access the reporting system through the hubs JSON REST API, the Web UI, the SQL database, and generated PDF / CSV reports.
 
 #### GPL3
 
@@ -167,10 +166,10 @@ The GNU Public License, version 3.
 
 #### Graphical user interface (GUI)
 
-As opposed to text / command line based interfaces, GUIs use icons, images, color, spacing, and more complex layouts to improve the user experience.
+In contrast to text / command-line-based interfaces, GUIs use icons, images, color, spacing, and more complex layouts to improve the user experience.
 
 The CFEngine GUI is called Mission Portal and is accessible via a web browser.
-It shows you useful information about your infrastructure, and provides easy ways to make changes.
+It shows you useful information about your infrastructure and provides easy ways to make changes.
 
 #### Host
 
@@ -185,10 +184,10 @@ We split them into 2 roles (categories) - hubs and clients.
 The term hub means the center of a wheel, from which multiple spokes emerge.
 
 In CFEngine, the hub is the host responsible for collecting reports from hosts and serving them policy.
-In addition to the components installed on other CFEngine hosts (clients), the hub runs a database (PostgreSQL), a web server (Apache) and a few additional CFEngine components, most notably `cf-hub` which connects to hosts and retrieves their reporting data.
+In addition to the components installed on other CFEngine hosts (clients), the hub runs a database (PostgreSQL), a web server (Apache) and a few additional CFEngine components, most notably `cf-hub`, which connects to hosts and retrieves their reporting data.
 
 Due to the multiple purposes this host serves, it is sometimes referred to as the policy server, the reporting hub, or the report collector.
-In typical CFEngine Enterprise setups, all hubs are policy servers and all policy servers are hubs, so the distinction is not so important.
+In typical CFEngine Enterprise setups, all hubs are policy servers, and all policy servers are hubs, so the distinction is not so important.
 In general, hub is the preferred term to describe the role of what this host does, and which package to install on it.
 
 See CFEngine role.
@@ -204,7 +203,7 @@ This might be bundles of promises, or reusable body-parts.
 
 #### Logs
 
-Log files tell you some historic, usually timestamped, information about events which happened in the past.
+Log files tell you some historical, usually timestamped, information about events that happened in the past.
 In CFEngine, there are a few notable log files:
 
 * `/var/logs/CFEngineInstall.log` - Information about the installation, especially useful if installing the package failed.
@@ -213,8 +212,7 @@ In CFEngine, there are a few notable log files:
 
 #### Mission Portal (MP)
 
-The name given to the user interface used in commercial CFEngine editions,
-where all reports and progress summaries are kept.
+Name of the user interface used in commercial CFEngine editions, where all reports and progress summaries are kept.
 
 #### Namespaces
 
@@ -222,7 +220,7 @@ Namespaces allow you to define new scopes for bundles, variables, and classes.
 By using a specific name for the namespace, you can use short and generic names for the identifiers inside of it.
 
 By default, if you don't specify a namespace, you are using the namespace called `default`.
-The CMDB (group data / host specific data in Mission Portal) uses the `data` namespace, unless you specify a namespace.
+The CMDB (group data / host-specific data in Mission Portal) uses the `data` namespace unless you specify a namespace.
 
 You can think of namespaces in a similar way as putting files inside folders, instead of having all of your files in one folder.
 The result is that things are more organized and less chances of files / classes / variables / bundles having conflicting names.
@@ -234,8 +232,7 @@ In CFEngine, the promises you write in policy files are evaluated according to a
 #### Packages
 
 Software binaries or executable files.
-The CFEngine company compiles and tests
-software into packages suitable for different platforms.
+The CFEngine company compiles and tests software into packages suitable for different platforms.
 
 #### PCI compliance
 
@@ -243,8 +240,8 @@ Payment Card Industry Data Security Standard (PCI DSS) is a set of requirements 
 
 #### Platforms
 
-This usually refers to an operating system type, e.g. Linux (in its many flavours), or Windows, etc.
-Platforms are described using short identifiers, e.g. RH5, REL5, SuSE 11, SLES, etc.
+This usually refers to an operating system type, e.g., Linux (in its many flavors), Windows, etc.
+Platforms are described using short identifiers, e.g., RH5, REL5, SuSE 11, SLES, etc.
 
 #### Policy server
 
@@ -268,7 +265,7 @@ Sometimes referred to as promise constraints.
 
 Different types of resources you can manage with CFEngine.
 Typical examples include files, users, services, packages, etc.
-Making promises with these types results in CFEngine checking the state of those resources and making changes on the system if necessary.
+Making promises with these types results in CFEngine checking the state of those resources and making changes to the system if necessary.
 
 There are also promise types which are not traditional resources on a system, but rather just for managing state within the CFEngine binaries, such as variables, classes, meta, etc.
 Setting a class or a variable will not alter the system directly, but makes that information available for further policy and promise types in the same execution.
@@ -286,7 +283,7 @@ While there are ways a user could override this, it's almost never a good idea t
 #### Role based access control (RBAC)
 
 RBAC allows you to control the level of access granted to individuals at a granular level.
-Each user can have one or more roles, and each role can grant them access to specific resources as well as actions.
+Each user can have one or more roles, and each role can grant them access to specific resources and actions.
 A flexible RBAC system improves the security of the system, especially when combined with a principle of least privilege approach.
 
 #### Server
@@ -301,8 +298,8 @@ The special server that others consult for the latest policies is called the Pol
 #### Service Catalogue
 
 A kind of directory of _services_ provided in an environment.
-The concept of a service could be anything from a human help desk to a machine controlled email subsystem.
-In the CFEngine Mission Portal, the service catalogue (for maintenance) treats promise-bundles of promises as low-level maintenance services, and relates these to high level business goals.
+The concept of a service could be anything from a human help desk to a machine-controlled email subsystem.
+In the CFEngine Mission Portal, the service catalog (for maintenance) treats promise bundles of promises as low-level maintenance services and relates these to high-level business goals.
 
 #### SOX Compliance
 
@@ -316,8 +313,10 @@ It's a collection of useful bundles and bodies you can use.
 
 #### Template
 
-A template usually refers to text which can be expanded based on current CFEngine context. CFEngine has a native template language but generally `mustache`, a logic-less templating language is preferred. Sometimes a template is an incomplete piece of CFEngine code, with blanks to fill in.
-It is often a policy fragment that can be re-used in different scenarios.
+A template usually refers to text that can be expanded based on the current CFEngine context.
+CFEngine has a native template language, but generally, `mustache`, a logic-less templating language, is preferred.
+Sometimes a template is an incomplete piece of CFEngine code, with blanks to fill in.
+It is often a policy fragment that can be reused in different scenarios.
 This is often used interchangeably with the term _library_.
 
 #### Variables
