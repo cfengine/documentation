@@ -31,7 +31,7 @@ cf-agent --bootstrap <hub IP>
 
 After running this command, CFEngine knows where (which IP address) to use when fetching policy.
 It can also infer its CFEngine role (hubs fetch policy from themselves, while clients fetch policy from a hub).
-Having this information, it can start the various components in the background, causing policy to be fetched, enforced, and reported on regularly, every 5 minutes by default.
+Having this information, CFEngine can start the various components in the background, ensuring that policy is fetched, enforced, and reported regularly, every 5 minutes by default.
 
 #### Bundle
 
@@ -49,8 +49,8 @@ CFEngine comes from a contraction of _ConFiguration Engine_ and is maintained by
 
 #### CFEngine 3.x
 
-Major version 3 of the CFEngine software, started in 2008 and going up to the present day.
-This comes in several editions, both Open Source and Commercial.
+Major version 3 of the CFEngine software was initiated in 2008 and is maintained to the present day.
+It comes in both Enterprise and Open Source Community editions.
 
 #### CFEngine Community
 
@@ -127,7 +127,7 @@ A term coined as part of the IT Infrastructure Library (ITIL) as an outgrowth of
 The development of software is a branching process.
 At certain times, the software code splits into different versions following different paths.
 Each path needs to be maintained separately for a while.
-This often happens when a release is made, because one wants to freeze the development of a public release (allowing nevertheless for some minor bugfixes), while continuing to add features to a branch leading to future versions.
+This often happens when a release is made, because one wants to freeze the development of a public release (allowing only for some minor bug fixes), while continuing to add features to a branch leading to future versions.
 
 #### Components
 
@@ -198,8 +198,8 @@ A kind of _phone book_ service providing information about persons and computers
 
 #### Libraries
 
-A library generally refers to collection of standardized CFEngine code that can be reused in different scenarios and environments.
-This might be bundles of promises, or reusable body-parts.
+A library generally refers to a collection of standardized CFEngine code that can be reused in different scenarios and environments.
+This might be reusable bundles of promises, or bodies.
 
 #### Logs
 
@@ -304,7 +304,7 @@ In the CFEngine Mission Portal, the service catalog (for maintenance) treats pro
 #### SOX Compliance
 
 Sarbanes-Oxley Act compliance.
-An audited accolade for financial data security required by all companies on the New York stock exchange.
+An audited accolade for financial data security required by all companies on the New York Stock Exchange.
 
 #### Standard library
 
