@@ -31,7 +31,7 @@ Template:
     line_numbers: true
 
 vagrant:
-  version: "2.2.19"
+  version: "2.4.0"
 
 virtualbox:
   version: "6.1.38"
