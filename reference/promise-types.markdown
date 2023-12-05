@@ -102,6 +102,7 @@ body action example
 ```
 
 **Notes:**
+
 * This is not a reliable way to control frequency over a long period of time.
 * Locks provide simple but weak frequency control.
 * Locks older than 4 weeks are automatically purged.

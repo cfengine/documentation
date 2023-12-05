@@ -70,9 +70,9 @@ gem install jekyll-asset-pipeline --version 0.1.6
 gem install closure-compiler --version 1.1.8
 gem install yui-compressor --version 0.9.6
 gem install albino --version 1.3.3
+gem install execjs --version 1.4.0
 gem install redcarpet --version 2.2.2
 gem install uglifier --version 1.3.0
-gem install execjs --version 1.4.0
 gem install sanitize --version 2.0.3
 
 cat > /tmp/jekyll-0.12.1-cfengine.patch <<EOF
