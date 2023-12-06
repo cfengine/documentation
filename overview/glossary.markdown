@@ -158,7 +158,7 @@ It can be used to generate reports, query data, create alerts, manage users, etc
 #### Enterprise reporting
 
 CFEngine's reporting system allows you to access information about your hosts and the results of your policy in a centralized system.
-You can access the reporting system through the hubs JSON REST API, the Web UI, the SQL database, and generated PDF / CSV reports.
+You can access the reporting system through the hub's JSON REST API, the Web UI, the SQL database, and generated PDF / CSV reports.
 
 #### GPL3
 
