@@ -320,6 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault();
             navigator.clipboard.writeText(a.href);
             a.classList.add('url-copied');
+            history.replaceState(null, null, a.href);
             setTimeout(function ()  { a.classList.remove('url-copied') }, 2000);
         }
     })
