@@ -1,4 +1,6 @@
 'use strict';
+import '../styles/cfengine.less';
+
 var is_mobile = true;
 $(document).ready(function() {
     if ($(window).width() > 800)
