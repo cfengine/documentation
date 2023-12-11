@@ -25,7 +25,5 @@
         <meta name="twitter:image" content="https://docs.cfengine.com/docs/master/media/images/agent_white_background.png">
 
         <link rel="canonical" href="https://docs.cfengine.com/latest/{{ page.url | remove: '/pages/' | replace: '/', '-' }}">
-        {% css_asset_tag global %}
-        - _assets/css/styles.min.css
-        {% endcss_asset_tag %}
+        <link href='assets/styles.min.css?v={{site.time | date_to_xmlschema}}' rel='stylesheet' type='text/css' media='screen,print' />
     </head>

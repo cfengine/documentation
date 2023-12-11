@@ -6,4 +6,4 @@ _generated/*
 /pages/*
 *.pyc
 .DS_Store
-
+node_modules
