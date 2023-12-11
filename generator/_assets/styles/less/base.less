@@ -452,3 +452,25 @@ article {
     margin-right: 0 !important;
   }
 }
+
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 4rem;
+  right: 3.2rem;
+  height: 4.4rem;
+  width: 4.4rem;
+  background-color: #aaa;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: scale(0);
+  transition: all .6s ease-out 0s;
+  i {
+    font-size: 1.6rem;
+  }
+  &.show {
+    transform: scale(1);
+    transition: all .6s ease-in 0s;
+  }
+}
