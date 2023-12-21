@@ -8,7 +8,8 @@ alias: legal.html
 
 ## General legal disclaimer
 
-Please note that CFEngine is offered on an "as is" basis without warranty of
+Please note that unless otherwise noted (through a customer agreement or similar)
+CFEngine is offered on an "as is" basis without warranty of
 any kind, and that our products are not error or bug free. To the maximum
 extent permitted by applicable law, CFEngine on behalf of itself and its
 suppliers, disclaims all warranties and conditions, either express or implied,
