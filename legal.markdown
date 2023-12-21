@@ -32,13 +32,13 @@ These dependencies are used by both CFEngine Community (Open Source) as well as 
 * [libacl](https://savannah.nongnu.org/projects/acl) under the [LGPL](https://git.savannah.gnu.org/cgit/acl.git/tree/include/acl.h)
 * [libattr](https://savannah.nongnu.org/projects/attr) under the [LGPL](https://git.savannah.gnu.org/cgit/attr.git/tree/include/libattr.h)
 * [libcrypto](https://www.openssl.org/docs/manmaster/man7/crypto.html) under the [LGPL](https://api.libssh.org/master/libcrypto_8h_source.html)
-* [libexpat](https://sourceforge.net/projects/expat/) under the [MIT license](https://opensource.org/licenses/mit-license.html)
-* [libpam](https://github.com/linux-pam/linux-pam) as per the [copyright notice](https://github.com/linux-pam/linux-pam?tab=License-1-ov-file#readme)
-* [libxml2](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/FAQ) under the [MIT license](https://opensource.org/licenses/mit-license.html)
+* [libexpat](https://sourceforge.net/projects/expat/) under the [MIT license](https://opensource.org/license/mit/)
+* [libpam](https://github.com/linux-pam/linux-pam) as per the [copyright notice](https://github.com/linux-pam/linux-pam/blob/master/COPYING)
+* [libxml2](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/FAQ) under the [MIT license](https://opensource.org/license/mit/)
 * [LMDB](https://www.symas.com/lmdb) under the [OpenLDAP Public License](https://www.openldap.org/software/release/license.html)
 * [OpenSSL](https://www.openssl.org) under the [OpenSSL license](https://www.openssl.org/source/license.html)
 * [PCRE](https://www.pcre.org) under the [PCRE license](https://www.pcre.org/licence.txt)
-* [PEG](https://piumarta.com/software/peg/) under the MIT license
+* [PEG](https://piumarta.com/software/peg/) under the [MIT license](https://opensource.org/license/mit/)
 * [zlib](https://www.zlib.net) under the [zlib license](https://www.zlib.net/zlib_license.html)
 
 ### Enterprise only dependencies
@@ -50,15 +50,15 @@ In addition to the common dependencies listed above, these dependencies are spec
 * [APR and APR-util](https://apr.apache.org) under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 * [Chosen](https://harvesthq.github.io/chosen/) under the [MIT license](https://github.com/harvesthq/chosen/blob/master/LICENSE.md)
 * [CodeIgniter](https://codeigniter.com/) under the [CodeIgniter License Agreement](https://ellislab.com/codeigniter/user-guide/license.html)
-* [Disphelper](https://disphelper.sourceforge.net) (only Windows) under the [BSD](https://opensource.org/licenses/bsd-license.php)
+* [Disphelper](https://disphelper.sourceforge.net) (only Windows) under the [BSD license](https://opensource.org/licenses/bsd-license.php)
 * [Flot](https://www.flotcharts.org/) under the [MIT license](https://github.com/flot/flot/blob/master/LICENSE.txt)
 * [Font Awesome](https://fontawesome.com/) by Dave Gandy - https://fontawesome.io/license/
 * [git](https://git-scm.com) under the [GNU General Public License, version 2 (GPLv2)](https://opensource.org/licenses/GPL-2.0)
 * [Glyphicons](https://glyphicons.com/license/) under [Creative Commons Attribution 3.0 Unported (CC BY 3.0)](https://creativecommons.org/licenses/by-sa/3.0/deed.en_US)
-* [HighCharts](https://www.highcharts.com/) under the OEM license by HighSoft
-* [jQuery](https://jquery.com/) under the [MIT license](https://en.wikipedia.org/wiki/MIT_License)
-* [libcurl](https://curl.se) under the [MIT/X derivative license](https://curl.haxx.se/docs/copyright.html)
-* [libmcrypt](https://mcrypt.sourceforge.net) under the [LGPLv2](https://www.opensource.org/licenses/lgpl-license.html)
+* [HighCharts](https://www.highcharts.com/) under the [OEM license by HighSoft](https://shop.highcharts.com/)
+* [jQuery](https://jquery.com/) under the [MIT license](https://opensource.org/license/mit/)
+* [libcurl](https://curl.se) under the [MIT/X derivative license](https://curl.se/docs/copyright.html)
+* [libmcrypt](https://mcrypt.sourceforge.net) under the [LGPLv2](https://opensource.org/license/lgpl-license-html/)
 * [mod_ssl](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html) under a BSD style license
 * [oauth2-server-php](https://github.com/bshaffer/oauth2-server-php) under the [MIT license](https://github.com/bshaffer/oauth2-server-php/blob/develop/LICENSE)
 * [OpenLDAP and liblber](https://www.openldap.org) under the [OpenLDAP Public License](https://www.openldap.org/software/release/license.html)
@@ -66,8 +66,8 @@ In addition to the common dependencies listed above, these dependencies are spec
 * [PostgreSQL](https://www.postgresql.org) under the [PostgreSQL License](https://opensource.org/licenses/postgresql)
 * [rsync](https://rsync.samba.org) under the [GPLv3](https://rsync.samba.org/GPL.html)
 * [Twitter Bootstrap Framework](https://getbootstrap.com) under [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
-* [Bootstrap Icons](https://icons.getbootstrap.com) under the [MIT license](https://github.com/twbs/icons/blob/main/LICENSE.md)
-* [underscore.js](https://underscorejs.org) under the [MIT license](https://opensource.org/licenses/mit-license.html)
+* [Bootstrap Icons](https://icons.getbootstrap.com) under the [MIT license](https://github.com/twbs/icons/blob/main/LICENSE)
+* [underscore.js](https://underscorejs.org) under the [MIT license](https://opensource.org/license/mit/)
 
 ### Optional, non-default dependencies
 
