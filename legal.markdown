@@ -77,5 +77,3 @@ These dependencies are not a part of the packages we build and distribute, but s
 * [libvirt](https://libvirt.org/FAQ.html) under the [LGPL version 2.1](https://www.opensource.org/licenses/lgpl-license.html)
 * [QDBM](https://sourceforge.net/projects/qdbm/) under the [GNU Library or Lesser General Public License 2.0 (LGPLv2)](https://www.opensource.org/licenses/lgpl-license.html)
 * [TokyoCabinet](https://fallabs.com/tokyocabinet/) under the [GNU Lesser General Public License](https://www.opensource.org/licenses/lgpl-license.html)
-
-<!--- * [Piwik.js](https://piwik.org) under the [Simplified BSD license](https://piwik.org/free-software/bsd/) -->
