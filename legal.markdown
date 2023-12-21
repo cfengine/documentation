@@ -25,7 +25,9 @@ The documentation is licensed under a [Creative Commons Attribution-ShareAlike 3
 
 CFEngine includes the following 3rd party libraries and components:
 
-### Community
+### Common dependencies
+
+These dependencies are used by both CFEngine Community (Open Source) as well as CFEngine Enterprise:
 
 * [libacl](https://savannah.nongnu.org/projects/acl) under the [LGPL](https://git.savannah.gnu.org/cgit/acl.git/tree/include/acl.h)
 * [libattr](https://savannah.nongnu.org/projects/attr) under the [LGPL](https://git.savannah.gnu.org/cgit/attr.git/tree/include/libattr.h)
@@ -39,7 +41,9 @@ CFEngine includes the following 3rd party libraries and components:
 * [PEG](https://piumarta.com/software/peg/) under the MIT license
 * [Zlib](https://www.zlib.net) under the [zlib license](https://www.zlib.net/zlib_license.html)
 
-### Enterprise
+### Enterprise only dependencies
+
+In addition to the common dependencies listed above, these dependencies are specific to CFEngine Enterprise:
 
 * [Angular.js](https://angularjs.org) through [MIT Licence](https://github.com/angular/angular.js/blob/master/LICENSE)
 * [Apache](https://httpd.apache.org) under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
