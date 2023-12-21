@@ -31,14 +31,11 @@ CFEngine includes the following 3rd party libraries and components:
 * [libcrypto](https://www.openssl.org/docs/crypto/crypto.html) under the [LGPL](https://api.libssh.org/master/libcrypto_8h_source.html)
 * [libexpat](https://sourceforge.net/projects/expat/) under the [MIT License](https://opensource.org/licenses/mit-license.html)
 * [libpam](https://www.linux-pam.org) as per the [copyright notice](https://git.fedorahosted.org/cgit/linux-pam.git/tree/Copyright)
-* [libvirt](https://libvirt.org/FAQ.html) under the [LGPL version 2.1](https://www.opensource.org/licenses/lgpl-license.html)
 * [libxml2](https://xmlsoft.org/FAQ.html) under the [MIT license](https://opensource.org/licenses/mit-license.html)
 * [LMDB](https://symas.com/mdb/) under the [OpenLDAP Public License](https://www.openldap.org/software/release/license.html)
 * [OpenSSL](https://www.openssl.org) under the [OpenSSL license](https://www.openssl.org/source/license.html)
 * [PCRE](https://www.pcre.org) under the [PCRE license](https://www.pcre.org/licence.txt)
 * [PEG](https://piumarta.com/software/peg/) under the MIT license
-* [QDBM](https://sourceforge.net/projects/qdbm/) under the [GNU Library or Lesser General Public License 2.0 (LGPLv2)](https://www.opensource.org/licenses/lgpl-license.html)
-* [TokyoCabinet](https://fallabs.com/tokyocabinet/) under the [GNU Lesser General Public License](https://www.opensource.org/licenses/lgpl-license.html)
 * [Zlib](https://www.zlib.net) under the [zlib license](https://www.zlib.net/zlib_license.html)
 
 ### Enterprise
@@ -63,10 +60,17 @@ CFEngine includes the following 3rd party libraries and components:
 * [PHP](https://php.net) under the [PHP license version 3.01](https://www.php.net/license/3_01.txt)
 * [php-apc](https://pecl.php.net/package/APC) under the [PHP License](https://www.php.net/license/3_01.txt)
 * [PostgreSQL, libecpg and libecpg_compat](https://www.postgresql.org) under the [PostgreSQL License](https://opensource.org/licenses/postgresql)
-* [redis](https://redis.io) under the [three clause BSD license](https://redis.io/topics/license)
 * [rsync](https://rsync.samba.org) under the [GPLv3](https://rsync.samba.org/GPL.html)
 * [Twitter Bootstrap Framework](https://getbootstrap.com) under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 * [Bootstrap Icons](https://icons.getbootstrap.com) under the [MIT license](https://github.com/twbs/icons/blob/main/LICENSE.md)
 * [underscore.js](https://underscorejs.org) under the MIT license
+
+### Optional, non-default dependencies
+
+These dependencies are not a part of the packages we build and distribute, but specific users or customers may build CFEngine with support for custom functionality and with custom software dependencies:
+
+* [libvirt](https://libvirt.org/FAQ.html) under the [LGPL version 2.1](https://www.opensource.org/licenses/lgpl-license.html)
+* [QDBM](https://sourceforge.net/projects/qdbm/) under the [GNU Library or Lesser General Public License 2.0 (LGPLv2)](https://www.opensource.org/licenses/lgpl-license.html)
+* [TokyoCabinet](https://fallabs.com/tokyocabinet/) under the [GNU Lesser General Public License](https://www.opensource.org/licenses/lgpl-license.html)
 
 <!--- * [Piwik.js](https://piwik.org) under the [Simplified BSD license](https://piwik.org/free-software/bsd/) -->
