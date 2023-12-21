@@ -63,7 +63,6 @@ In addition to the common dependencies listed above, these dependencies are spec
 * [oauth2-server-php](https://github.com/bshaffer/oauth2-server-php) under the [MIT license](https://github.com/bshaffer/oauth2-server-php/blob/develop/LICENSE)
 * [OpenLDAP and liblber](https://www.openldap.org) under the [OpenLDAP Public License](https://www.openldap.org/software/release/license.html)
 * [PHP](https://php.net) under the [PHP license](https://www.php.net/license/3_01.txt)
-* [php-apc](https://pecl.php.net/package/APC) under the [PHP License](https://www.php.net/license/3_01.txt)
 * [PostgreSQL](https://www.postgresql.org) under the [PostgreSQL License](https://opensource.org/licenses/postgresql)
 * [rsync](https://rsync.samba.org) under the [GPLv3](https://rsync.samba.org/GPL.html)
 * [Twitter Bootstrap Framework](https://getbootstrap.com) under [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
