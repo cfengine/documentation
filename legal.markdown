@@ -29,15 +29,18 @@ CFEngine includes the following 3rd party libraries and components:
 
 These dependencies are used by both CFEngine Community (Open Source) as well as CFEngine Enterprise:
 
-* [libacl](https://savannah.nongnu.org/projects/acl) under the [LGPL](https://git.savannah.gnu.org/cgit/acl.git/tree/include/acl.h)
-* [libattr](https://savannah.nongnu.org/projects/attr) under the [LGPL](https://git.savannah.gnu.org/cgit/attr.git/tree/include/libattr.h)
-* [libcrypto](https://www.openssl.org/docs/manmaster/man7/crypto.html) under the [LGPL](https://api.libssh.org/master/libcrypto_8h_source.html)
-* [libexpat](https://sourceforge.net/projects/expat/) under the [MIT license](https://opensource.org/license/mit/)
-* [libpam](https://github.com/linux-pam/linux-pam) as per the [copyright notice](https://github.com/linux-pam/linux-pam/blob/master/COPYING)
+* [libacl](https://savannah.nongnu.org/projects/acl) under the [LGPL](https://git.savannah.gnu.org/cgit/acl.git/tree/include/acl.h) license
+* [libattr](https://savannah.nongnu.org/projects/attr) under the [LGPL](https://git.savannah.gnu.org/cgit/attr.git/tree/include/libattr.h) license
+* [libcurl](https://curl.se) under the [MIT/X derivative license](https://curl.se/docs/copyright.html)
+* [libiconv](http://ftp.gnu.org/gnu/libiconv/) under the [LGPL](https://git.savannah.gnu.org/gitweb/?p=libiconv.git;a=blob;f=include/iconv.h.in) license
 * [libxml2](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/FAQ) under the [MIT license](https://opensource.org/license/mit/)
+* [libyaml](https://pyyaml.org/wiki/LibYAML) under the [MIT license](https://github.com/yaml/libyaml/blob/master/License)
+* [diffutils](https://ftpmirror.gnu.org/diffutils/) under the [GPLv3](https://git.savannah.gnu.org/cgit/diffutils.git/tree/src/diff.c)
 * [LMDB](https://www.symas.com/lmdb) under the [OpenLDAP Public License](https://www.openldap.org/software/release/license.html)
-* [OpenSSL](https://www.openssl.org) under the [OpenSSL license](https://www.openssl.org/source/license.html)
-* [PCRE](https://www.pcre.org) under the [PCRE license](https://www.pcre.org/licence.txt)
+* [OpenSSL](https://www.openssl.org) under the [OpenSSL (OpenSSL 1) or Apache v2 (OpenSSL 3) license](https://www.openssl.org/source/license.html)
+* [PCRE](https://www.pcre.org) under the [PCRE license](https://www.pcre.org/licence.txt) or
+  [PCRE2](https://pcre2project.github.io/pcre2/) under the [PCRE2
+  license](https://github.com/PCRE2Project/pcre2/blob/master/LICENCE)
 * [PEG](https://piumarta.com/software/peg/) under the [MIT license](https://opensource.org/license/mit/)
 * [zlib](https://www.zlib.net) under the [zlib license](https://www.zlib.net/zlib_license.html)
 
@@ -57,8 +60,8 @@ In addition to the common dependencies listed above, these dependencies are spec
 * [Glyphicons](https://glyphicons.com/license/) under [Creative Commons Attribution 3.0 Unported (CC BY 3.0)](https://creativecommons.org/licenses/by-sa/3.0/deed.en_US)
 * [HighCharts](https://www.highcharts.com/) under the [OEM license by HighSoft](https://shop.highcharts.com/)
 * [jQuery](https://jquery.com/) under the [MIT license](https://opensource.org/license/mit/)
-* [libcurl](https://curl.se) under the [MIT/X derivative license](https://curl.se/docs/copyright.html)
-* [libmcrypt](https://mcrypt.sourceforge.net) under the [LGPLv2](https://opensource.org/license/lgpl-license-html/)
+* [libexpat](https://sourceforge.net/projects/expat/) under the [MIT license](https://opensource.org/license/mit/)
+* [libgnurx](http://www.gnu.org/software/rx/rx.html) under the [LGPLv2.1](https://github.com/TimothyGu/libgnurx/blob/libgnurx-2.5.1/regex.h) license
 * [mod_ssl](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html) under a BSD style license
 * [oauth2-server-php](https://github.com/bshaffer/oauth2-server-php) under the [MIT license](https://github.com/bshaffer/oauth2-server-php/blob/develop/LICENSE)
 * [OpenLDAP and liblber](https://www.openldap.org) under the [OpenLDAP Public License](https://www.openldap.org/software/release/license.html)
