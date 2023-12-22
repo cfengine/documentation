@@ -71,6 +71,43 @@ In addition to the common dependencies listed above, these dependencies are spec
 * [Twitter Bootstrap Framework](https://getbootstrap.com) under [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 * [Bootstrap Icons](https://icons.getbootstrap.com) under the [MIT license](https://github.com/twbs/icons/blob/main/LICENSE)
 * [underscore.js](https://underscorejs.org) under the [MIT license](https://opensource.org/license/mit/)
+* [ace-builds](https://github.com/ajaxorg/ace-builds) under the [BSD-3-Clause](https://github.com/ajaxorg/ace-builds/blob/master/LICENSE) license
+* [angular](http://angularjs.org) under the [MIT](https://github.com/angular/angular.js/blob/master/LICENSE) license
+* [angular-chosen-localytics](http://github.com/leocaseiro/angular-chosen) under the [MIT](https://github.com/leocaseiro/angular-chosen/blob/master/LICENSE) license
+* [angular-daterangepicker](https://github.com/fragaria/angular-daterangepicker) under the [MIT](https://github.com/fragaria/angular-daterangepicker/blob/master/LICENSE.md) license
+* [angular-ui](https://github.com/buildium/angular-ui) under the [MIT](https://github.com/buildium/angular-ui/blob/master/LICENSE) license
+* [bootstrap-multiselect](http://davidstutz.github.io/bootstrap-multiselect/) under the [Apache License, Version 2.0](http://davidstutz.github.io/bootstrap-multiselect/#license)
+* [bootstrap-tour](http://bootstraptour.com) under the [MIT](https://github.com/sorich87/bootstrap-tour/blob/master/LICENSE) license
+* [chosen-js](https://harvesthq.github.io/chosen/) under the [MIT](https://github.com/harvesthq/chosen/blob/master/LICENSE.md) license
+* [clipboard](https://clipboardjs.com) under the [MIT](https://github.com/zenorocha/clipboard.js/blob/master/LICENSE) license
+* [datatables](http://datatables.net) under the [MIT](https://datatables.net/license/mit) license
+* [daterangepicker](https://github.com/dangrossman/daterangepicker) under the [MIT](https://github.com/dangrossman/daterangepicker/blob/master/README.md#license) license
+* [google-code-prettify](https://www.npmjs.com/package/google-code-prettify) under the [Apache License 2.0](https://github.com/googlearchive/code-prettify/blob/master/COPYING)
+* [highcharts](http://www.highcharts.com) under the [SLA](https://shop.highcharts.com/license) license
+* [html5shiv](https://github.com/aFarkas/html5shiv#readme) under the [MIT license and GPL2](https://github.com/aFarkas/html5shiv/blob/master/MIT%20and%20GPL2%20licenses.md)
+* [ip-subnet-calculator](https://github.com/franksrevenge/IPSubnetCalculator) under the [MIT](https://github.com/salieri/IPSubnetCalculator/blob/master/LICENSE) license
+* [jquery](https://jquery.com) under the [MIT](https://github.com/salieri/IPSubnetCalculator/blob/master/LICENSE) license
+* [jquery-appear-original](https://github.com/morr/jquery.appear) under the [MIT](https://github.com/morr/jquery.appear/blob/master/LICENSE) license
+* [jquery-form](https://github.com/jquery-form/form) under the [MIT](https://github.com/jquery-form/form/blob/master/LICENSE) license
+* [jquery-multiselect](https://github.com/techhysahil/jquery-MultiSelect) under the [MIT](https://github.com/techhysahil/jquery-MultiSelect/blob/master/LICENSE) license
+* [jquery-ui-timepicker-addon](http://trentrichardson.com/examples/timepicker) under the [MIT](https://github.com/trentrichardson/jQuery-Timepicker-Addon?tab=License-1-ov-file) license
+* [jquery-validation](https://jqueryvalidation.org/) under the [MIT](https://github.com/jquery-validation/jquery-validation/blob/master/LICENSE.md) license
+* [jquery-wheelcolorpicker](https://raffer.one/projects/jquery-wheelcolorpicker) under the [MIT](https://github.com/fujaru/jquery-wheelcolorpicker/blob/master/LICENSE) license
+* [jquery.cookie](https://github.com/carhartl/jquery-cookie) under the [MIT](https://github.com/carhartl/jquery-cookie/blob/master/MIT-LICENSE.txt) license
+* [jquery.flot](https://www.npmjs.com/package/jquery.flot) under the [MIT](https://github.com/flot/flot/blob/master/LICENSE.txt) license
+* [json2](http://github.com/SamuraiJack/JSON2/tree) under the [GNU Lesser General Public License](https://github.com/canonic-epicure/JSON2/blob/master/README.md#copyright-and-license)
+* [jstimezonedetect](https://github.com/pellepim/jstimezonedetect) under the [MIT](https://github.com/pellepim/jstimezonedetect/blob/master/LICENCE.txt) license
+* [notifyjs](https://notifyjs.jpillora.com/) under the [MIT](https://github.com/jpillora/notifyjs/blob/master/LICENSE) license
+* [pluralize](https://github.com/blakeembrey/pluralize) under the [MIT](https://github.com/plurals/pluralize/blob/master/LICENSE) license
+* [zxcvbn](https://github.com/dropbox/zxcvbn) under the [MIT](https://github.com/dropbox/zxcvbn/blob/master/LICENSE.txt) license
+* [FPDF](http://www.fpdf.org/) under the [permissive license](https://github.com/Setasign/FPDF/blob/master/license.txt)
+* [guzzle](https://docs.guzzlephp.org/) under the [MIT](https://docs.guzzlephp.org/en/stable/overview.html#license) license
+* [tcpdf](https://tcpdf.org/) under the [GNU LESSER GENERAL PUBLIC LICENSE](https://tcpdf.org/docs/license/)
+* [Slim](https://www.slimframework.com/) under the [MIT](https://github.com/slimphp/Slim/blob/4.x/LICENSE.md)
+* [monolog](https://seldaek.github.io/monolog/) under the [MIT](https://github.com/Seldaek/monolog/blob/master/LICENSE)
+* [LdapRecord](https://ldaprecord.com/) under the [MIT](https://github.com/DirectoryTree/LdapRecord/blob/master/license.md)
+* [phpseclib](https://phpseclib.com/) under the [MIT](https://github.com/phpseclib/phpseclib/blob/master/LICENSE)
+* [tonic](http://peej.github.com/tonic/) under the [MIT](https://github.com/peej/tonic/blob/master/LICENSE)
 
 ### Optional, non-default dependencies
 
