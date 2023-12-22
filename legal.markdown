@@ -52,8 +52,8 @@ In addition to the common dependencies listed above, these dependencies are spec
 * [Apache](https://httpd.apache.org) under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 * [APR and APR-util](https://apr.apache.org) under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 * [Chosen](https://harvesthq.github.io/chosen/) under the [MIT license](https://github.com/harvesthq/chosen/blob/master/LICENSE.md)
-* [CodeIgniter](https://codeigniter.com/) under the [CodeIgniter License Agreement](https://ellislab.com/codeigniter/user-guide/license.html)
-* [Disphelper](https://disphelper.sourceforge.net) (only Windows) under the [BSD](https://opensource.org/licenses/bsd-license.php)
+* [CodeIgniter](https://github.com/bcit-ci/CodeIgniter/) under the [MIT license](https://github.com/bcit-ci/CodeIgniter/blob/develop/license.txt)
+* [Disphelper](https://disphelper.sourceforge.net) (only Windows) under the [BSD license](https://opensource.org/licenses/bsd-license.php)
 * [Flot](https://www.flotcharts.org/) under the [MIT license](https://github.com/flot/flot/blob/master/LICENSE.txt)
 * [Font Awesome](https://fontawesome.com/) by Dave Gandy - https://fontawesome.io/license/
 * [git](https://git-scm.com) under the [GNU General Public License, version 2 (GPLv2)](https://opensource.org/licenses/GPL-2.0)
@@ -62,7 +62,7 @@ In addition to the common dependencies listed above, these dependencies are spec
 * [jQuery](https://jquery.com/) under the [MIT license](https://opensource.org/license/mit/)
 * [libexpat](https://sourceforge.net/projects/expat/) under the [MIT license](https://opensource.org/license/mit/)
 * [libgnurx](http://www.gnu.org/software/rx/rx.html) under the [LGPLv2.1](https://github.com/TimothyGu/libgnurx/blob/libgnurx-2.5.1/regex.h) license
-* [mod_ssl](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html) under a BSD style license
+* [mod_ssl](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html) under a [BSD style license](http://www.modssl.org/docs/2.8/ssl_overview.html)
 * [oauth2-server-php](https://github.com/bshaffer/oauth2-server-php) under the [MIT license](https://github.com/bshaffer/oauth2-server-php/blob/develop/LICENSE)
 * [OpenLDAP and liblber](https://www.openldap.org) under the [OpenLDAP Public License](https://www.openldap.org/software/release/license.html)
 * [PHP](https://php.net) under the [PHP license](https://www.php.net/license/3_01.txt)
@@ -114,5 +114,5 @@ In addition to the common dependencies listed above, these dependencies are spec
 These dependencies are not a part of the packages we build and distribute, but specific users or customers may build CFEngine with support for custom functionality and with custom software dependencies:
 
 * [libvirt](https://libvirt.org/) under the [LGPL version 2.1](https://www.opensource.org/licenses/lgpl-license.html)
-* [QDBM](https://sourceforge.net/projects/qdbm/) under the [GNU Library or Lesser General Public License 2.0 (LGPLv2)](https://www.opensource.org/licenses/lgpl-license.html)
+* [QDBM](https://sourceforge.net/projects/qdbm/) under the [GNU Library or Lesser General Public License 2.0 (LGPLv2)](https://opensource.org/license/lgpl-2-1/)
 * [TokyoCabinet](https://github.com/hthetiot/Tokyo-Cabinet) under the [GNU Lesser General Public License](https://www.opensource.org/licenses/lgpl-license.html)
