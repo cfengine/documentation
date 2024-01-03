@@ -183,6 +183,11 @@ document.querySelector('.top_menu-versions-title > span > span').innerText = doc
 
 var mainMenuCopy = document.querySelector('.left-menu ul.mainMenu').cloneNode(true);
 var clickedMenuHistory = [{href: './', name: 'Home'}];
+
+var urlPaths = document.location.pathname.split('/');
+var url = urlPaths[urlPaths.length - 1]; // get last url part
+var currentMenuItem = document.querySelector('.left-menu li[data-url="'+ url +'"]');
+
 var renderNestedMenu = function (href) {
     if (href == null) {
         document.querySelector('.left-menu ul.mainMenu').replaceWith(mainMenuCopy);
@@ -190,6 +195,10 @@ var renderNestedMenu = function (href) {
         var ul = mainMenuCopy.querySelector('li[data-url="'+ href +'"]').querySelector('ul').cloneNode(true);
         ul.classList.add('mainMenu');
         document.querySelector('.left-menu ul.mainMenu').replaceWith(ul);
+        var selected = document.querySelector('li[data-url="'+ url +'"]');
+        if (selected){
+            selected.className += ' opened current';
+        }
     }
 
     applyOnclickToMenuItems();
@@ -247,9 +256,6 @@ document.querySelector('.menu-back').onclick = function () {
     }
 }
 
-var urlPaths = document.location.pathname.split('/');
-var url = urlPaths[urlPaths.length - 1]; // get last url part
-var currentMenuItem = document.querySelector('.left-menu li[data-url="'+ url +'"]');
 
 
 if (currentMenuItem != null) {
