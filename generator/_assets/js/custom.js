@@ -147,7 +147,8 @@ if (tableOfContents) {
 var menu = document.querySelector('.top_menu ul');
 var overlay = document.querySelector('#overlay');
 var openedClass = "opened";
-var openMenuHandler = function (collapseMenu) {
+
+window.openMenuHandler = function (collapseMenu) {
     if (collapseMenu.className.indexOf(openedClass) == -1) {
         collapseMenu.classList.add(openedClass);
         menu.classList.add('d-b');
@@ -159,7 +160,7 @@ var openMenuHandler = function (collapseMenu) {
     }
 }
 
-var openNavigationHandler = function () {
+window.openNavigationHandler = function () {
     document.querySelector('.left-menu').classList.add(openedClass);
     overlay.style.display = "block";
 }
