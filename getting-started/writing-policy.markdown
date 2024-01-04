@@ -10,13 +10,13 @@ CFEngine policy language is a flexible, declarative language for describing the 
 
 To start, create a new file and open it, or the folder, in your editor:
 
-```
+```command
 cd ~/cfengine_project && touch my_policy.cf
 ```
 
 Open the project folder (or just the policy file) in your editor:
 
-```
+```command
 code .
 ```
 
@@ -27,6 +27,7 @@ code .
 Let's take a look at the traditional "Hello, world!" example:
 
 ```cfengine3
+[file=my_policy.cf]
 bundle agent hello_world
 {
   files:
@@ -49,7 +50,7 @@ With `files` promises you can manipulate file permissions, edit lines, render te
 
 Put the code snippet above in a file called `my_policy.cf`, and add it to the project:
 
-```
+```command
 cfbs add ./my_policy.cf
 ```
 
@@ -58,20 +59,20 @@ The default is the first bundle, `hello_world`, which is what we want.
 
 Now, build and deploy again:
 
-```
+```command
 cfbs build && cf-remote deploy
 ```
 
 The policy has been deployed and that `/tmp/hello` file should be ready.
 You can log in with SSH to check this, or use `cf-remote`:
 
-```
+```command
 cf-remote sudo -H hub "cat /tmp/hello"
 ```
 
 The output should look like this:
 
-```
+```output
 root@192.168.56.2: 'cat /tmp/hello' -> 'Hello, world!'
 ```
 
@@ -80,7 +81,7 @@ root@192.168.56.2: 'cat /tmp/hello' -> 'Hello, world!'
 In CFEngine, the program which runs all your policy / modules and makes changes to the system is called `cf-agent`, or _the agent_.
 Just like above, we can use `cf-remote sudo` to run the agent on the hub:
 
-```
+```command
 cf-remote sudo -H hub "cf-agent --no-lock --info"
 ```
 
@@ -91,7 +92,7 @@ This is similar to triggering an agent run with the buttons in Mission Portal, o
 
 To test that our policy works, let's delete the `/tmp/hello` file and watch CFEngine create it:
 
-```
+```command
 cf-remote sudo -H hub "rm /tmp/hello && cf-agent -KI"
 ```
 
@@ -101,6 +102,7 @@ Earlier in this tutorial series, we added the `promise-type-git` module to our p
 This means that we can just start using the new promise type in policy:
 
 ```cfengine3
+[file=my_policy.cf]
 bundle agent hello_world
 {
   git:
@@ -113,7 +115,7 @@ bundle agent hello_world
 This policy uses the `git` promise type to clone the Hugo project's source code from GitHub.
 Again, put the code snippet above in the `my_policy.cf` file, build, and deploy:
 
-```
+```command
 cfbs build && cf-remote deploy
 ```
 
@@ -132,6 +134,7 @@ This has several benefits:
 Here is a simple example:
 
 ```cfengine3
+[file=my_policy.cf]
 bundle agent hello_world
 {
   vars:
@@ -158,7 +161,7 @@ We might want to have some version information on which hugo we are using.
 Since we clone and track the `master` branch, there isn't necessarily a version number available, but there is always a commit SHA, so let's look for that.
 From the command line, you could find this by:
 
-```
+```command
 git log -1 --format="%H"
 ```
 
@@ -166,6 +169,7 @@ We want to put this in a variable and include it in our reports we can see in Mi
 To take the output of a command and put it in a variable, we will use the `execresult()` function:
 
 ```cfengine3
+[file=my_policy.cf]
 bundle agent hello_world
 {
   vars:

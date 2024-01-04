@@ -48,13 +48,16 @@ Run the bootstrap command, **first** on the policy server:
 1. Find the IP address of your Policy Server:
 
 
-	    $ ifconfig
+```command
+ifconfig
+```
 
 
 2. Run the bootstrap command:
 
-
-        $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+```command
+sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+```
 
 
 The bootstrap command must then be run on any client attaching itself to this server, using the ip address of the policy server (i.e. exactly the same as the command run on the policy server itself).
@@ -78,7 +81,9 @@ together.
 The preferred way of setting `def.mailfrom` is from the
 [augments file][Augments].
 
-```
+```json
+[file=def.json]
+
 {
   "vars": {
     "mailfrom": "sender@your.domain.here",
@@ -102,7 +107,8 @@ ensure they have taken effect.
 The preferred way to disable the agent from sending emails is to define
 `cfengine_internal_disable_agent_email` from the [augments file][Augments].
 
-```
+```json
+[file=def.json]
 {
   "classes": {
     "cfengine_internal_disable_agent_email": [ "any" ]

@@ -26,7 +26,7 @@ https://github.com/cfengine/promise-type-template
 
 We can add it to our project with the full URL:
 
-```
+```command
 cfbs add https://github.com/cfengine/promise-type-template
 ```
 
@@ -34,6 +34,7 @@ From that repo, we have now added a new promise type, it is called `git_example`
 Then, we should edit our policy example, `my_policy.cf` to use this module:
 
 ```cfengine3
+[file=my_policy.cf]
 bundle agent hello_world
 {
   meta:
@@ -48,19 +49,19 @@ bundle agent hello_world
 
 That's it, you can now build and deploy:
 
-```
+```command
 cfbs build && cf-remote deploy
 ```
 
 And to test it, we can delete the folder and run the agent again:
 
-```
+```command
 cf-remote sudo -H hub "rm -rf /tmp/hugo && cf-agent -KI | grep hugo"
 ```
 
 The output printed from that remote machine shows that `cf-agent` cloned the repository again, after we deleted it:
 
-```
+```output
 root@192.168.56.2: 'rm -rf /tmp/hugo && cf-agent -KI | grep hugo' -> '    info: Cloning 'https://github.com/gohugoio/hugo.git' -> '/tmp/hugo'...'
 root@192.168.56.2:                                                   '    info: Successfully cloned 'https://github.com/gohugoio/hugo.git' -> '/tmp/hugo''
 ```
@@ -83,7 +84,7 @@ Start by editing `cfbs.json`, at least changing the `repo` and `by` URLs.
 
 To test your changes, make sure they are pushed to GitHub, and re-add your module, for example:
 
-```
+```command
 cfbs remove promise-type-git-example && cfbs add https://github.com/cfengine/promise-type-template
 ```
 
@@ -91,13 +92,13 @@ cfbs remove promise-type-git-example && cfbs add https://github.com/cfengine/pro
 
 Then, build and deploy the project again:
 
-```
+```command
 cfbs build && cf-remote deploy
 ```
 
 And just like before, you can run manual agent runs to test:
 
-```
+```command
 cf-remote sudo -H hub "rm -rf /tmp/hugo && cf-agent -KI"
 ```
 
@@ -106,7 +107,7 @@ cf-remote sudo -H hub "rm -rf /tmp/hugo && cf-agent -KI"
 As you've changed the high level things, like file name, promise type name, URLs, etc. and deployed that, the only thing you need to edit is the contents of the python file.
 So, to test your changes to the python file, a full build is not really necessary, you can just copy over that one file:
 
-```
+```command
 cf-remote scp -H hub git_example.py /var/cfengine/masterfiles/modules/promises/git_example.py
 ```
 
@@ -114,7 +115,7 @@ cf-remote scp -H hub git_example.py /var/cfengine/masterfiles/modules/promises/g
 
 And then you can test it:
 
-```
+```command
 cf-remote sudo -H hub "cf-agent -KIf update.cf && cf-agent -KI"
 ```
 

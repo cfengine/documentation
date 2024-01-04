@@ -20,13 +20,13 @@ There is a video version of this tutorial available on YouTube:
 
 Create a folder for you project, for example in your home directory:
 
-```
+```command
 mkdir -p ~/cfengine_project
 ```
 
 Initialize it:
 
-```
+```command
 cd ~/cfengine_project && cfbs init
 ```
 
@@ -42,7 +42,7 @@ This is the default policy which is included in the CFEngine packages, so it is 
 It is needed for various features of CFEngine and CFEngine Enterprise to work correctly.
 If you didn't add it as part of the previous `cfbs init`, add it now:
 
-```
+```command
 cfbs add masterfiles
 ```
 
@@ -50,19 +50,19 @@ At this point, you can go to [build.cfengine.com](https://build.cfengine.com) an
 The command to add them is the same as above.
 For the purposes of this tutorial, let's add the git module so we can work with git repositories later:
 
-```
+```command
 cfbs add git
 ```
 
 Additionally, let's add a module to make CFEngine run policy and report collection every minute instead of the default 5 minute interval:
 
-```
+```command
 cfbs add every-minute
 ```
 
 Finally, let's add a report for whether the OS is supported by the OS vendor:
 
-```
+```command
 cfbs add compliance-report-os-is-vendor-supported
 ```
 
@@ -70,13 +70,11 @@ cfbs add compliance-report-os-is-vendor-supported
 
 Once we are done adding modules, it is time to build them, combining it all into the policy set which will be deployed to our hub:
 
-```
+```command
 cfbs build
 ```
 
-Output:
-
-```
+```output
 Modules:
 001 masterfiles                              @ a87b7fea6f7a88808b327730a4ba784a3dc664eb (Downloaded)
 002 library-for-promise-types-in-python      @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
@@ -116,14 +114,14 @@ Feel free to look at some of the files in `out/masterfiles/`, if you want to und
 
 Now, let's deploy what we built to the hub:
 
-```
+```command
 cf-remote deploy
 ```
 
 **Note:** This assumes your hub is saved in `cf-remote`, with the group name _hub_.
 We did this in the first part of the series, while installing CFEngine, but if you haven't you can do it like this:
 
-```
+```command
 cf-remote save -H root@192.168.56.2 --role hub --name hub
 ```
 
@@ -156,13 +154,13 @@ Here are some examples of modules you might be interested in:
 To add more modules, just repeat the commands from steps 1-3.
 For example, add the `inventory-sudoers` module to your project:
 
-```
+```command
 cfbs add inventory-sudoers
 ```
 
 Then, as usual, build and deploy:
 
-```
+```command
 cfbs build && cf-remote deploy
 ```
 
