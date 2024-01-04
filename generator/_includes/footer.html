@@ -11,12 +11,5 @@
     </div>
 </footer>
 <div id="overlay"></div>
-{% javascript_asset_tag footer %}
-- _assets/js/google_analytics_search.js
-- _assets/js/jquery-1.9.1.min.js
-- _assets/js/jquery-migrate-1.2.1.min.js
-- _assets/js/jquery.sidr.min.js
-- _assets/js/jquery.hammer.min.js
-- _assets/js/custom.js
-- _assets/js/dropdown.js
-{% endjavascript_asset_tag %}
+<button id="scrollToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"><i class="bi bi-chevron-up"></i></button>
+<script src="assets/bundle.min.js?v={{site.time | date_to_xmlschema}}" type="text/javascript"></script>

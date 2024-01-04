@@ -1,4 +1,6 @@
 'use strict';
+import '../styles/cfengine.less';
+
 var is_mobile = true;
 $(document).ready(function() {
     if ($(window).width() > 800)
@@ -145,7 +147,8 @@ if (tableOfContents) {
 var menu = document.querySelector('.top_menu ul');
 var overlay = document.querySelector('#overlay');
 var openedClass = "opened";
-var openMenuHandler = function (collapseMenu) {
+
+window.openMenuHandler = function (collapseMenu) {
     if (collapseMenu.className.indexOf(openedClass) == -1) {
         collapseMenu.classList.add(openedClass);
         menu.classList.add('d-b');
@@ -157,7 +160,7 @@ var openMenuHandler = function (collapseMenu) {
     }
 }
 
-var openNavigationHandler = function () {
+window.openNavigationHandler = function () {
     document.querySelector('.left-menu').classList.add(openedClass);
     overlay.style.display = "block";
 }
@@ -307,11 +310,16 @@ function selectVersion(value) {
     }
 };
 
+
 document.addEventListener("DOMContentLoaded", function () {
     fillVersionWrapperSelect('/docs/branches.json')
 
-    document.querySelectorAll(".article h1, .article h2, .article h3, .article h4, .article h5, .article h6").forEach(function(el){
-        var url = new URL(window.location.href);
+    const anchors = document.querySelectorAll(
+        ".article h1[id], .article h2[id], .article h3[id], .article h4[id], .article h5[id], .article h6[id]"
+    );
+
+    anchors.forEach(function(el){
+        const url = new URL(window.location.href);
         el.insertAdjacentHTML('beforeend', '<a class="anchor" href="' + url.origin + url.pathname + '#' + el.id + '"><i class="bi bi-link-45deg"></i></a>');
     });
 
@@ -323,5 +331,78 @@ document.addEventListener("DOMContentLoaded", function () {
             history.replaceState(null, null, a.href);
             setTimeout(function ()  { a.classList.remove('url-copied') }, 2000);
         }
-    })
+    });
+
+    /**
+     * Highlight the current TOC item when a user scrolls to the corresponding page section.
+     */
+    (() => {
+        const tocLinks = document.querySelectorAll('#TOCbox_list li a');
+
+        if (!tocLinks || !anchors) {
+            return;
+        }
+
+        // offsetTop returns offset to the offsetParent, which is main wrapper, we need to add 130px to get actual offset
+        const fetchOffsets = anchors => [...anchors].map(a => a.offsetTop + 130);
+        let anchorsOffsets = fetchOffsets(anchors);
+
+        let timeout = undefined;
+        const updateActiveTocItem = () => {
+            if (timeout) {
+                clearTimeout(timeout)
+            }
+
+            // The current TOC menu item will be calculated in 100 ms after the user stops scrolling.
+            // Otherwise, there might be redundant calculations.
+            timeout = setTimeout( () => {
+                let scrollTop = window.scrollY;
+                tocLinks.forEach(link =>  link.classList.remove('current'));
+
+                for (let i = anchorsOffsets.length - 1; i >= 0; i--) {
+                    if (scrollTop > anchorsOffsets[i]) {
+                        setActiveLink(anchors[i].id);
+                        break;
+                    }
+                }
+            }, 50); // 0.05s threshold
+
+        }
+
+        const setActiveLink = (id) => {
+            const activeLink = document.querySelector(`#TOCbox_list li a[href$="#${id}"]`);
+            if (activeLink) {
+                activeLink.classList.add('current');
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveTocItem);
+        window.addEventListener("resize", () => {
+            // anchors position change when the window is resized
+            anchorsOffsets = fetchOffsets(anchors);
+        });
+    })();
+
+    /**
+     * Display scroll to top button when the scroll reaches 350px
+     * from the top and window width less than 1280px
+     */
+    (() => {
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        const showClass = 'show';
+
+        if (!scrollToTopBtn) {
+            return;
+        }
+
+        const handleScrollToTopVisibility = () => {
+            if (window.scrollY > 350 && window.innerWidth <= 1280) {
+                scrollToTopBtn.classList.add(showClass);
+            } else {
+                scrollToTopBtn.classList.remove(showClass);
+            }
+        }
+
+        window.addEventListener('scroll', handleScrollToTopVisibility);
+    })();
 });
