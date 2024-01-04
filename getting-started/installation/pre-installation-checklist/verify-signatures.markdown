@@ -19,21 +19,25 @@ NOTE: AIX rpms currently are NOT signed because it's not supported on older vers
 
 1. Import the public GPG key.
 
-```console
-# rpm --import https://cfengine-package-repos.s3.amazonaws.com/pub/gpg.key
+```command
+rpm --import https://cfengine-package-repos.s3.amazonaws.com/pub/gpg.key
 ```
 
 2. Validate the signature.
 
-```console
-# rpm -K ./cfengine-nova-hub-3.12.2-2.x86_64.rpm
+```command
+rpm -K ./cfengine-nova-hub-3.12.2-2.x86_64.rpm
+```
+```output
 ./cfengine-nova-hub-3.12.2-2.x86_64.rpm: rsa sha1 (md5) pgp md5 OK
 ```
 
 NOTE: If you don't import the public key first, you will get an error about the key missing:
 
-```console
-# rpm -K ./cfengine-nova-hub-3.12.2-2.x86_64.rpm
+```command
+rpm -K ./cfengine-nova-hub-3.12.2-2.x86_64.rpm
+```
+```output
 ./cfengine-nova-hub-3.12.2-2.x86_64.rpm: RSA sha1 ((MD5) PGP) md5 NOT OK (MISSING KEYS: (MD5) PGP#a86e7afa)
 ```
 
@@ -68,7 +72,9 @@ NOTE: If you don't import the public key first, you will get an error about the 
 
 3. Validate the signature.
 
-```console
-# debsig-verify cfengine-nova-hub_3.12.2-2_amd64.deb
+```command
+debsig-verify cfengine-nova-hub_3.12.2-2_amd64.deb
+```
+```output
 debsig: Verified package from 'CFEngine 3' (cfengine3)
 ```
