@@ -115,8 +115,6 @@ source ~/.rvm/scripts/rvm
 
 export LC_ALL=C.UTF-8
 
-$(which npx) -y -p less lessc --compress  $WRKDIR/documentation/generator/_assets/styles/cfengine.less $WRKDIR/documentation/generator/_assets/css/styles.min.css
-
 # finally, run actual jekyll
 echo "+ bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6"
 bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6
@@ -125,4 +123,7 @@ cd $WRKDIR/documentation/generator/build/search
 $(which npm) i
 $(which node) createIndex.js
 cp -rf ./searchIndex ./../../_site/assets/
-npm install --prefix $WRKDIR/documentation/generator/_site/assets bootstrap-icons  @fontsource/red-hat-display @fontsource/red-hat-text @fontsource/red-hat-mono @fontsource/roboto
+npm ci --prefix $WRKDIR/documentation/generator/_assets/styles
+cd $WRKDIR/documentation/generator
+npm ci
+node_modules/.bin/webpack-cli --config webpack.config.js --mode production
