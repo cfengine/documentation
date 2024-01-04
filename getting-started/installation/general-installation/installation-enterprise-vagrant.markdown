@@ -66,8 +66,8 @@ creates a Vagrant Project directory.
 Step 3. Open a terminal and navigate to the Vagrant Project directory (e.g.
 `/home/user/CFEngine_Enterprise_vagrant_quickstart-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}`, or `C:\CFEngine_Enterprise_vagrant_quickstart-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}`) and enter the following command:
 
-```console
-$ vagrant up
+```command
+vagrant up
 ```
 
 Vagrant performs the following processes:
@@ -112,8 +112,10 @@ status` output. Both the 'root' and 'vagrant' users passwords are set to
 
 **Example:**
 
-```console
-$ vagrant ssh hub
+```command
+vagrant ssh hub
+```
+```output
 Last login: Fri Jun 13 18:58:10 2014 from 10.0.2.2
 ```
 
@@ -130,8 +132,10 @@ for the clients.
 Running `vagrant status` from the vagrant project directroy will produce
 output like this.
 
-```console
-$ vagrant status
+```command
+vagrant status
+```
+```output
 Current machine states:
 
 hub                       not created (virtualbox)
@@ -147,8 +151,8 @@ VM, run `vagrant status NAME`.
 To start or resume a halted environment simply run `vagrant up` from within the
 vagrant project directory.
 
-```console
-$ vagrant up
+```command
+vagrant up
 ```
 
 ### Stop the environment (halt/suspend/destroy)
@@ -156,8 +160,10 @@ $ vagrant up
 To shut down the vms run `vagrant halt`. This will preserve the vms and any
 changes made inside.
 
-```console
-$ vagrant suspend
+```command
+vagrant suspend
+```
+```output
 ==> hub: Saving VM state and suspending execution...
 ==> host001: Saving VM state and suspending execution...
 ```
@@ -165,8 +171,10 @@ $ vagrant suspend
 To suspend the vms run `vagrant suspend`. This will freeze the state of each vm
 and allows for latter resuming of the environment.
 
-```console
-$ vagrant halt
+```command
+vagrant halt
+```
+```output
 ==> host001: Attempting graceful shutdown of VM...
 ==> hub: Attempting graceful shutdown of VM...
 ```
@@ -174,8 +182,10 @@ $ vagrant halt
 At any time you can run `vagrant destroy` to remove the provisioned vms. This will
 delete the vms and any modifications made to the environment will be lost.
 
-```console
-$ vagrant destroy
+```command
+vagrant destroy
+```
+```output
     host001: Are you sure you want to destroy the 'host001' VM? [y/N] y
 ==> host001: Forcing shutdown of VM...
 ==> host001: Destroying VM and associated drives...

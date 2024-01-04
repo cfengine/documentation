@@ -182,7 +182,7 @@ hard nofile 4000
 Not sure what your open file limits for `cf-serverd` are? Inspect the current
 limits with this command:
 
-```
+```command
 cat /proc/$(pgrep cf-serverd)/limits
 ```
 
@@ -223,14 +223,14 @@ Note: Install actions logged to `/var/logs/cfengine-install.log`.
 Run the bootstrap command, **first** on the policy server and then on each
 host:
 
-```console
-# /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
+```command
+/var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
 ```
 
 After bootstrapping the hub run the policy to complete the hub configuration.
 
-```console
-# /var/cfengine/bin/cf-agent -Kf update.cf; /var/cfengine/bin/cf-agent -K
+```command
+/var/cfengine/bin/cf-agent -Kf update.cf; /var/cfengine/bin/cf-agent -K
 ```
 
 ## Licensed installations
@@ -245,15 +245,15 @@ to CFEngine support to obtain a license.
 It's best to pack the public key into an archive so that it does not
 get corrupt in transit.
 
-```console
-# tar --create --gzip --directory /var/cfengine --file $(hostname)-ppkeys.tar.gz ppkeys/localhost.pub
+```command
+tar --create --gzip --directory /var/cfengine --file $(hostname)-ppkeys.tar.gz ppkeys/localhost.pub
 ```
 
 CFEngine will send you a `license.dat` file. Install the obtained
 license with `cf-key`.
 
-```console
-# cf-key --install-license ./license.dat
+```command
+cf-key --install-license ./license.dat
 ```
 
 ## Next steps
