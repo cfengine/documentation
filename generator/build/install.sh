@@ -60,6 +60,7 @@ fi
 # so instead of set -x we just echo each command ourselves
 set +x
 echo "+ source ~/.rvm/scripts/rvm"
+# shellcheck disable=SC1090
 source ~/.rvm/scripts/rvm
 
 echo "+ rvm_rubygems_version=none rvm install --autolibs=read-only ruby-1.9.3-p551 -C --without-openssl"
@@ -113,5 +114,5 @@ patch -b page.rb < /tmp/jekyll-0.12.1-cfengine.patch
 curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
 sudo apt-get install -y nodejs
-$(which node) --version
-$(which npm) --version
+node --version
+npm --version
