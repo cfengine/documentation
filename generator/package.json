@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
     "less": "^4.2.0",
@@ -9,5 +10,11 @@
     "terser-webpack-plugin": "^5.3.9",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "searchIndex": "npm ci --prefix build/search && node build/search/createIndex.js",
+    "laodFonts": "npm ci --prefix _assets/styles",
+    "bundle": "node_modules/.bin/webpack-cli --config webpack.config.js --mode production",
+    "build": "npm ci && npm run searchIndex && npm run laodFonts && npm run bundle"
   }
 }
