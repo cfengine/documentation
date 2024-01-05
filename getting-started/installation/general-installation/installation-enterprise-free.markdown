@@ -40,8 +40,8 @@ Please Note: Internet access is required from the host if you wish to use the qu
 
 Run the following script on your designated Policy Server (hub) 64-bit machine (32-bit is not supported on the Policy Server):
 
-```console
-$ wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh hub
+```command
+wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh hub
 ```
 
 This script installs the latest CFEngine Enterprise Policy Server on your machine.
@@ -52,8 +52,8 @@ The Policy Server must be bootstrapped to itself. Find the IP address of your Po
 
 Run the bootstrap command:
 
-```console
-$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+```command
+sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
 **Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12**
@@ -62,8 +62,8 @@ Upon successful completion, a confirmation message appears: "Bootstrap to '192.1
 
 Type the following to check which version of CFEngine your are running:
 
-```console
-$ /var/cfengine/bin/cf-promises --version
+```command
+/var/cfengine/bin/cf-promises --version
 ```
 
 The Policy Server is installed.
@@ -74,8 +74,8 @@ Install Enterprise on your designated Host(s) by running the script below. Per t
 install Enterprise on 25 Hosts. Note that the Hosts must be
 on the same network as the Policy Server that you just installed in Step 2.
 
-```console
-$ wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh agent
+```command
+wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh agent
 ```
 
 Note that this installation works on 64- and 32-bit machines.
@@ -85,8 +85,8 @@ Note that this installation works on 64- and 32-bit machines.
 All Hosts must be bootstrapped to the Policy Server in order to establish a connection between the Host and
 the Policy Server. Run the same commands that you ran in Step 3.
 
-```console
-$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+```command
+sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
 **Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12**

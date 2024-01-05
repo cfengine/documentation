@@ -34,7 +34,7 @@ Now press "Enter" to go to the next line and type "My name is Gary, and it's nic
 
 The output will look like this:
 
-```
+```output
 Hello World
 My name is Gary, and it's nice to meet you
 ```

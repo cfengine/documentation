@@ -12,19 +12,19 @@ First download the binary onto the host.
 
 Next unpack the archive. For the 64 bit tarball use:
 
-```sh
+```command
 tar --gunzip --extract --directory / --file ./cfengine-nova-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.x86_64.pkg.tar.gz
 ```
 
 Otherwise, for 32 bit tarball, use:
 
-```sh
+```command
 tar --gunzip --extract --directory / --file ./cfengine-nova-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.i386.pkg.tar.gz
 ```
 
 Generate a keypair for the client:
 
-```sh
+```command
 /var/cfengine/bin/cf-key
 ```
 
