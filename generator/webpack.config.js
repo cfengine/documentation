@@ -1,6 +1,7 @@
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 const jsFiles = [
     'google_analytics_search.js',
@@ -38,6 +39,11 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'styles.min.css'
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: `${__dirname}/build/search/searchIndex`, to: __dirname + '/_site/assets/searchIndex' }
+            ],
         }),
     ],
 };
