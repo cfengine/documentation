@@ -119,11 +119,5 @@ export LC_ALL=C.UTF-8
 echo "+ bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6"
 bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6
 
-cd $WRKDIR/documentation/generator/build/search
-$(which npm) i
-$(which node) createIndex.js
-cp -rf ./searchIndex ./../../_site/assets/
-npm ci --prefix $WRKDIR/documentation/generator/_assets/styles
 cd $WRKDIR/documentation/generator
-npm ci
-node_modules/.bin/webpack-cli --config webpack.config.js --mode production
+npm run build
