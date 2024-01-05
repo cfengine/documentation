@@ -309,7 +309,7 @@ function selectVersion(value) {
         window.location = value;
     }
 };
-
+window.selectVersion = selectVersion;
 
 document.addEventListener("DOMContentLoaded", function () {
     fillVersionWrapperSelect('/docs/branches.json')
