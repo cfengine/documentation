@@ -2,7 +2,7 @@ const FlexSearch = require("flexsearch");
 const fs = require('fs');
 const {readdir} = require('fs').promises;
 
-const htmlFilesDir = '../../_site';
+const htmlFilesDir = `${__dirname}/../../_site`;
 
 String.prototype.stripHtmlTags = function () {
     return this.replace(/<\/?[^>]+(>|$)/g, " ");
@@ -63,7 +63,7 @@ const getHtmlFiles = async (dir) =>
             breadCrumbs = breadCrumbsMatch[0].replace(/\s\s+/g, ' ').replace(/\n/g, " ");
         }
 
-        fs.writeFileSync(`searchIndex/documents/${key}.json`, JSON.stringify({
+        fs.writeFileSync(`${__dirname}/searchIndex/documents/${key}.json`, JSON.stringify({
             ...document,
             uri: (htmlFiles[key]),
             breadCrumbs
@@ -71,5 +71,5 @@ const getHtmlFiles = async (dir) =>
         index.add(document)
     }
 
-    index.export((key, data) => fs.writeFileSync(`searchIndex/${key}.json`, data || ''));
+    index.export((key, data) => fs.writeFileSync(`${__dirname}/searchIndex/${key}.json`, data || ''));
 })();
