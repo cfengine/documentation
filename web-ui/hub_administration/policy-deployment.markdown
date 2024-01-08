@@ -80,11 +80,13 @@ update policy.
 
 For example:
 
-```console
-[root@hub ~]# cf-agent -KIf update.cf --define cfengine_internal_masterfiles_update
-    info: Executing 'no timeout' ... '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh'
-    info: Command related to promiser '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh' returned code defined as promise kept 0
-    info: Completed execution of '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh'
+```command
+cf-agent -KIf update.cf --define cfengine_internal_masterfiles_update
+```
+```output
+info: Executing 'no timeout' ... '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh'
+info: Command related to promiser '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh' returned code defined as promise kept 0
+info: Completed execution of '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh'
 ```
 
 This is useful if you would like more manual control of policy releases.
@@ -98,7 +100,8 @@ To configure automatic deployments simply ensure the
 
 Create `def.json` in the root of your masterfiles with the following content:
 
-```
+```json
+[file=def.json]
 {
   "classes": {
     "cfengine_internal_masterfiles_update": [ "hub" ]
@@ -111,6 +114,7 @@ Create `def.json` in the root of your masterfiles with the following content:
 Simply edit `bundle common update_def` in `controls/update_def.cf`.
 
 ```cf3
+[file=update_def.cf]
 bundle common update_def
 {
 # ...
@@ -130,8 +134,10 @@ will not be deployed.
 
 For example:
 
-```console
-[root@hub ~]# cf-agent -KIf update.cf --define cfengine_internal_masterfiles_update
+```command
+cf-agent -KIf update.cf --define cfengine_internal_masterfiles_update
+```
+```output
     info: Executing 'no timeout' ... '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh'
    error: Command related to promiser '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh' returned code defined as promise failed 1
     info: Completed execution of '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh'
@@ -145,8 +151,10 @@ Policy deployments are logged to `/var/cfengine/outputs/dc-scripts.log`. The
 logs contain useful information about the failed deployment. For example here I
 can see that there is a syntax error in `promises.cf` near line 14.
 
-```console
-[root@prihub ~]# tail -n 5 /var/cfengine/outputs/dc-scripts.log
+```command
+tail -n 5 /var/cfengine/outputs/dc-scripts.log
+```
+```output
 /opt/cfengine/masterfiles_staging_tmp/promises.cf:14:46: error: Expected ',', wrong input '@(inventory.bundles)'
                           @(inventory.bundles),
                                              ^
