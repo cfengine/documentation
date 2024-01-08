@@ -15,6 +15,8 @@ mv $WRKDIR/documentation/generator/new_references.md $WRKDIR/documentation/gener
 mkdir $WRKDIR/documentation/generator/pages
 cp -r $WRKDIR/documentation/* $WRKDIR/documentation/generator/pages
 rm -rf $WRKDIR/documentation/generator/pages/generator
+# remove not published .markdown files
+find $WRKDIR/documentation/generator/pages -type f -name "*.markdown" -exec grep -l '^published: false$' {} + | xargs rm -f
 cd $WRKDIR/documentation/generator
 
 # rvm commands are insane scripts which pollut output
