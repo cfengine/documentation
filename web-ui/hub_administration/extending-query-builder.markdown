@@ -134,7 +134,7 @@ Let's see an example of Query builder extending with a new test table.
 
 1. Create a new table in the cfdb database
 
-```
+```sql
 CREATE TABLE IF NOT EXISTS "test" (
     "hostkey" text  PRIMARY KEY,
     "random_number" integer NOT NULL,
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS "test" (
 
 2. Fill the table with data from the hosts.
 
-```
+```sql
 INSERT INTO "test" SELECT "hostkey", (random() * 100)::int as random_number  FROM "__hosts";
 ```
 

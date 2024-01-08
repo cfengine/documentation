@@ -43,6 +43,7 @@ Use the following structure in your HTML to style the page the same as the rest
 of Mission Portal.
 
 ```html
+[file=file_name.html]
 <div class="contentWrapper help">
     <div class="pageTitle">
         <h1>PAGE TITLE</h1>

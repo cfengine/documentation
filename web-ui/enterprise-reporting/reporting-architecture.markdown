@@ -19,8 +19,9 @@ each host to download new data.
 
 
 To collect reports from any host manually, run the following:
-
-    $ /var/cfengine/bin/cf-hub -H <host IP>
+```command
+/var/cfengine/bin/cf-hub -H <host IP>
+```
 
 * Add `-v` to run in verbose mode to diagnose connectivity issues and trace the data collected.
 

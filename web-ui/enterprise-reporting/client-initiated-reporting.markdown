@@ -20,6 +20,7 @@ Call collect and Client Initiated Reporting are the same, they both refer to the
 The easiest way to enable call collect is via augments files, modify `/var/cfengine/masterfiles/def.json` on the hub:
 
 ```
+[file=def.json]
 {
   "classes": {
     "client_initiated_reporting_enabled": [ "any" ]
@@ -52,7 +53,7 @@ Neither the call collect thread nor the worker thread pool are affected by the h
 
 This is recorded in the PostgreSQL database on the hub, and can be queried from command line:
 
-```
+```command
 /var/cfengine/bin/psql -d cfdb -c "SELECT * FROM __hosts WHERE iscallcollected='t'";
 ```
 
