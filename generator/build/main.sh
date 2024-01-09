@@ -104,20 +104,6 @@ echo "branch: $BRANCH" >> "$WRKDIR"/documentation/generator/_config.yml
 # so instead of set -x we just echo each command ourselves
 set +x
 
-# since May 14 2019, we need this to run jekyll. IDK why.
-echo "+ source ~/.rvm/scripts/rvm"
-# shellcheck disable=SC1090
-source ~/.rvm/scripts/rvm
-echo "+ rvm --default use 1.9.3-p551"
-rvm --default use 1.9.3-p551
-echo "+ source ~/.profile"
-ls -lah ~
-# shellcheck disable=SC1090
-test -f ~/.profile && source ~/.profile
-echo "+ source ~/.rvm/scripts/rvm"
-# shellcheck disable=SC1090
-source ~/.rvm/scripts/rvm
-
 export LC_ALL=C.UTF-8
 
 # finally, run actual jekyll
