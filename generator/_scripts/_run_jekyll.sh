@@ -26,7 +26,7 @@ echo "*********************************************************" >> $WRKDIR/outp
 echo "*                  CONSOLE OUTPUT                       *" >> $WRKDIR/output.log
 echo "*********************************************************" >> $WRKDIR/output.log
 set -x
-jekyll
+$(which jekyll) build
 if [ "$?" -gt "0" ]; then
     exit 1;
 fi
