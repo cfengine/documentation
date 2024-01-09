@@ -41,4 +41,10 @@ Take action on a host.
 
 Assign host specific _Variables_ and _Classes_.
 
-<img src="host-specific-data.png" alt="Host specific data" width="488px">
+<img src="host-specific-data-variables.png" alt="Host specific data variables" width="488px">
+
+Note: When defined via host specific data variables default to the `variables` _bundle_ of the `data` _namespace_. Qualify the variable with the desired bundle and namespace to override the default. For example `my_bundle.myvaribale` to define `my_bundle.myvariable` in the `data` namespace, or `my_namesapce:my_bundle.myvariable` to define `myvariable` in the `my_bundle` bundle of the `my_namespace` namespace.
+
+<img src="host-specific-data-classes.png" alt="Host specific data classes" width="488px">
+
+Note: When defined via host specific data classes default to the `data` _namespace_. Qualify the class with the desired namespace to override the default. For example `default:my_class`, or `my_namespace:my_class`.
