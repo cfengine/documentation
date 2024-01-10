@@ -14,18 +14,20 @@ If any of these classes becomes defined, it will cause the current bundle to be 
 [%CFEngine_include_example(abort.cf)%]
 
 This is how the policy runs when the userlist is valid:
-
-    # cf-agent -f unit_abort.cf
-    R: User name mark is valid at 4 letters
-    R: User name john is valid at 4 letters
-    #
-
+```command
+cf-agent -f unit_abort.cf
+```
+```output
+R: User name mark is valid at 4 letters
+R: User name john is valid at 4 letters
+```
 This is how the policy runs when the userlist contains an invalid entry:
-
-    # cf-agent -f unit_abort.cf
-    Bundle example aborted on defined class "invalid"
-    #
-
+```command
+cf-agent -f unit_abort.cf
+```
+```output
+Bundle example aborted on defined class "invalid"
+```
 To run this example file as part of your main policy you need to make an
 additional change:
 

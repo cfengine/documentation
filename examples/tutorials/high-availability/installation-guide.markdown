@@ -56,7 +56,7 @@ Detailed network configuration is shown on the picture below:
 
    **On both nodes:**
 
-   ```
+   ```command
    yum -y install pcs pacemaker cman fence-agents
    ```
 
@@ -85,20 +85,20 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 4. Authenticate hacluster user for each node of the cluster. Run the command below **on the node1**:
 
-   ```
+   ```command
    pcs cluster auth node1 node2 -u hacluster
    ```
 
    After entering password, you should see a message similar to one below:
 
-   ```
+   ```output
    node1: Authorized
    node2: Authorized
    ```
 
 5. Create the cluster by running the following command **on the node1**:
 
-   ```
+   ```command
    pcs cluster setup --name cfcluster node1 node2
    ```
 
@@ -107,7 +107,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 6. Give the cluster time to settle (cca 1 minute) and then start the cluster by running the
    following command **on the node1**:
 
-   ```
+   ```command
    pcs cluster start --all
    ```
 
@@ -116,7 +116,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 7. At this point the cluster should be up and running. Running ```pcs status``` should print
    something similar to the output below.
 
-   ```
+   ```output
    Cluster name: cfcluster
    WARNING: no stonith devices and stonith-enabled is not false
    Stack: cman
@@ -159,13 +159,13 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 10. Verify that the cfvirtip resource is properly configured and running.
 
-    ```
+    ```command
     pcs status
     ```
 
     should give something like this:
 
-    ```
+    ```output
     Cluster name: cfcluster
     Last updated: Tue Jul  7 09:29:10 2015
     Last change: Fri Jul  3 08:41:24 2015
@@ -188,7 +188,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 1. Install the CFEngine hub package **on both node1 and node2**.
 2. Make sure CFEngine is not running (**on both node1 and node2**):
 
-   ```
+   ```command
    service cfengine3 stop
    ```
 
@@ -232,7 +232,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 4. Do an initial sync of PostgreSQL:
    1. Start PostgreSQL **on node1**:
 
-      ```
+      ```command
       pushd /tmp; su cfpostgres -c "/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start"; popd
       ```
 
@@ -258,33 +258,33 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 5. Start PostgreSQL on the **node2** by running the following command:
 
-    ```
+    ```command
     pushd /tmp; su cfpostgres -c "/var/cfengine/bin/pg_ctl -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start"; popd
     ```
 
 6. Check that PostgreSQL replication is setup and working properly:
    1. The **node2** should report it is in the recovery mode:
 
-      ```
+      ```command
       /var/cfengine/bin/psql -x cfdb -c "SELECT pg_is_in_recovery();"
       ```
 
       should return:
 
-      ```
+      ```output
       -[ RECORD 1 ]-----+--
       pg_is_in_recovery | t
       ```
 
    2. The **node1** should report it is replicating to node2:
 
-      ```
+      ```command
       /var/cfengine/bin/psql -x cfdb -c "SELECT * FROM pg_stat_replication;"
       ```
 
       should return something like this:
 
-      ```
+      ```output
       -[ RECORD 1 ]----+------------------------------
       pid              | 11401
       usesysid         | 10
@@ -309,7 +309,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 7. Stop PostgreSQL **on both nodes**:
 
-   ```
+   ```command
    pushd /tmp; su cfpostgres -c "/var/cfengine/bin/pg_ctl -D /var/cfengine/state/pg/data -l /var/log/postgresql.log stop"; popd
    ```
 
@@ -354,7 +354,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 3. Configure PostgreSQL to work in Master/Slave (active/standby) mode (**on node1**).
 
-   ```
+   ```command
    pcs resource master mscfpgsql cfpgsql master-max=1 master-node-max=1 clone-max=2 clone-node-max=1 notify=true
    ```
 
@@ -370,19 +370,19 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 5. Enable and start the new resource now that it is fully configured (**on node1**).
 
-   ```
+   ```command
    pcs resource enable mscfpgsql --wait=30
    ```
 
 6. Verify that the constraints configuration is correct.
 
-   ```
+   ```command
    pcs constraint
    ```
 
    should give:
 
-   ```
+   ```output
    Location Constraints:
      Resource: mscfpgsql
        Enabled on: node1 (score:INFINITY) (role: Master)
@@ -395,13 +395,13 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 7. Verify that the cluster is now fully setup and running.
 
-   ```
+   ```command
    crm_mon -Afr1
    ```
 
    should give something like:
 
-   ```
+   ```output
    Stack: cman
    Current DC: node1 (version 1.1.18-3.el6-bfe4e80420) - partition with quorum
    Last updated: Tue Oct 16 14:19:37 2018
@@ -466,7 +466,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    Bootstrap the **node1** to itself and make sure the initial policy (`promises.cf`) evaluation is
    skipped:
 
-   ```
+   ```command
    cf-agent --bootstrap 192.168.100.10 --skip-bootstrap-policy-run
    ```
 
@@ -480,7 +480,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 4. Stop CFEngine **on both nodes**.
 
-   ```
+   ```command
    service cfengine3 stop
    ```
 
@@ -506,7 +506,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    The `@NODE1_PKSHA@` and `@NODE2_PKSHA@` strings are placeholders for the host key hashes of the
    nodes. Replace the placeholders with real values obtained by (on any node):
 
-   ```
+   ```command
    cf-key -s
    ```
 
@@ -515,7 +515,8 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 6. **On both nodes,** add the following class definition to the */var/cfengine/masterfiles/def.json*
    file to enable HA:
 
-   ```
+   ```json
+   [file=def.json]
    {
      "classes": {
        "enable_cfengine_enterprise_hub_ha": [ "any::" ]
@@ -528,7 +529,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 8. Start CFEngine **on both nodes**.
 
-   ```
+   ```command
    service cfengine3 start
    ```
 
@@ -556,12 +557,13 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
    Running the following command **on node1**:
 
-   ```
+   ```command
    /var/cfengine/bin/psql cfdb -c "SELECT * FROM pg_stat_replication;"
    ```
 
    Should give:
-   ```
+
+   ```output
    pid  | usesysid |  usename   | application_name |  client_addr   | client_hostname | client_port |         backend_start         |   state   | sent_location | write_location | flush_location | replay_location | sync_priority | sync_state
    ------+----------+------------+------------------+----------------+-----------------+-------------+-------------------------------+-----------+---------------+----------------+----------------+-----------------+---------------+------------
    9252 |       10 | cfpostgres | node2            | 192.168.100.11 |                 |       58919 | 2015-08-24 07:14:45.925341+00 | streaming | 0/2A7034D0    | 0/2A7034D0     | 0/2A7034D0     | 0/2A7034D0      |             0 | async
@@ -573,8 +575,10 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 6. Modify HA JSON configuration file to contain information about the node3 (see CFEngine
    configuration, step 2). You should have configuration similar to one below:
 
+   ```command
+   cat /var/cfengine/masterfiles/cfe_internal/enterprise/ha/ha_info.json
    ```
-   [root@node3 masterfiles]# cat /var/cfengine/masterfiles/cfe_internal/enterprise/ha/ha_info.json
+   ```output
    {
     "192.168.100.10":
     {
@@ -626,8 +630,10 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 2. If ```crm_mon -Afr1``` is printing errors similar to the below
 
-    ```
-    [root@node1]# pcs status
+    ```command
+    pcs status
+   ```
+   ```output
     Cluster name: cfcluster
     Last updated: Tue Jul  7 11:27:23 2015
     Last change: Tue Jul  7 11:02:40 2015
@@ -653,11 +659,16 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
     you can try to clear the errors by running ```pcs resource cleanup <resource-name>```. This should clean errors for the appropriate resource and make the cluster restart it.
 
-    ```
-    [root@node1 vagrant]# pcs resource cleanup cfpgsql
-    Resource: cfpgsql successfully cleaned up
-
-    [root@node1 vagrant]# pcs status
+   ```command
+   pcs resource cleanup cfpgsql
+   ```
+   ```output
+   Resource: cfpgsql successfully cleaned up
+   ```
+   ```command
+   pcs status
+   ```
+   ```output
     Cluster name: cfcluster
     Last updated: Tue Jul  7 11:29:36 2015
     Last change: Tue Jul  7 11:29:08 2015
@@ -681,7 +692,9 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 3. After cluster crash make sure to always start the node that should be active first, and then the one that should be passive. If the cluster is not running on the given node after restart you can enable it by running the following command:
 
-    ```
-    [root@node2]# pcs cluster start
-    Starting Cluster...
-    ```
+   ```command
+   pcs cluster start
+   ```
+   ```output
+   Starting Cluster...
+   ```

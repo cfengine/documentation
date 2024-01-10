@@ -18,6 +18,7 @@ Using CFEngine to ensure certain processes are running is extremely easy.
 Create a new file called `ensure_process.cf`:
 
 ```cf3
+[file=ensure_process.cf]
 body file control
 {
       inputs => { "$(sys.libdir)/stdlib.cf" };
@@ -58,22 +59,26 @@ to true.
 
 First, we verify that the ntpd process is not running:
 
-```console
-# ps axuww | grep ntp
+```command
+ps axuww | grep ntp
 ```
 
 Then we run our CFEngine policy:
 
-```console
-# cf-agent -f ./ensure_process.cf
+```command
+cf-agent -f ./ensure_process.cf
+```
+```output
 2014-03-20T06:33:56+0000   notice: /default/main/commands/'/etc/init.d/ntp start'[0]: Q: "...init.d/ntp star":  * Starting NTP server ntpd
 Q: "...init.d/ntp star":    ...done.
 ```
 
 Finally, we verify that ntpd is now running on the system:
 
-```console
-# ps axuww | grep ntp
+```command
+ps axuww | grep ntp
+```
+```output
 ntp       5756  0.3  0.1  37696  2172 ?        Ss   06:33   0:00 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 104:110
 ```
 

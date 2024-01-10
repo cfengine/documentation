@@ -103,7 +103,7 @@ When you get this to work as expected on the commmand line, you are ready to upl
 ## Example script: logging policy alert to syslog
 
 The following Custom action script will log the status and definition of a policy alert to syslog.
-```shell
+```bash
 [file=cfengine_custom_notification_policy_syslog.sh]
     #!/bin/bash
 

@@ -43,6 +43,7 @@ Allowed users <br />
 Create a file called `/tmp/myapp.conf.template` with the following content:
 
 ```
+[file=myapp.conf.template]
 {% raw %}
 Port {{port}}
 Protocol {{protocol}}
@@ -59,6 +60,7 @@ Allowed users {{#users}}
 Create a file called `/tmp/editconfig.cf` with the following content:
 
 ```cf3
+[file=editconfig.cf]
 bundle agent myapp_confs
 {
   files:
@@ -94,14 +96,16 @@ In this policy we tell CFEngine to ensure a file called `myapp.conf` exists. The
 
 Run CFEngine:
 
-```console
-# /var/cfengine/bin/cf-agent /tmp/editconfig.cf
+```command
+/var/cfengine/bin/cf-agent /tmp/editconfig.cf
 ```
 
 Verify the result:
 
-```console
-# cat /tmp/myapp.conf
+```command
+cat /tmp/myapp.conf
+```
+```output
 Port 3508
 Protocol 2
 Filepath /mypath/

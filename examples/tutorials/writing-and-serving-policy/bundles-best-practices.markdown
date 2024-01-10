@@ -61,6 +61,7 @@ Write the promises (which may or may not be ordered) using a parameter for the d
 names, and then call the method passing the list of names as a parameter to reduce the amount of code.
 
 ```cf3
+[file=testbundle.cf]
 bundle agent testbundle
 {
 vars:

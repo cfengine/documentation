@@ -50,16 +50,24 @@ CFEngine downloads the necessary packages from the default repositories if they 
 
 Example run:
 
+```command
+dpkg -r lynx ntp # remove packages so CFEngine has something to repair
 ```
-# dpkg -r lynx ntp # remove packages so CFEngine has something to repair
+```output
 (Reading database ... 234887 files and directories currently installed.)
 Removing lynx ...
 Removing ntp ...
  * Stopping NTP server ntpd                                                                                                                     [ OK ]
 Processing triggers for ureadahead ...
 Processing triggers for man-db ...
-# cf-agent -f install_packages.cf # install packages
-# dpkg -l lynx ntp # show installed packages
+```
+```command
+cf-agent -f install_packages.cf # install packages
+```
+```command
+dpkg -l lynx ntp # show installed packages
+```
+```output
 Desired=Unknown/Install/Remove/Purge/Hold
 | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
 |/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
@@ -67,7 +75,6 @@ Desired=Unknown/Install/Remove/Purge/Hold
 +++-===============================-====================-====================-====================================================================
 ii  lynx                            2.8.8dev.12-2ubuntu0 all                  Text-mode WWW Browser (transitional package)
 ii  ntp                             1:4.2.6.p3+dfsg-1ubu amd64                Network Time Protocol daemon and utility programs
-#
 ```
 
 There are examples in `/var/cfengine/share/doc/examples/` of installing packages using specific package managers:

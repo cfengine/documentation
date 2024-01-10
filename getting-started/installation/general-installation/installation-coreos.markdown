@@ -33,7 +33,7 @@ Note: Install actions logged to `/var/log/CFEngine-Install.log`.
 
 Run the bootstrap command:
 
-```commmand
+```command
 sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
 ```
 

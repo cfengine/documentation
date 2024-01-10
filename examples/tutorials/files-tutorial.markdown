@@ -29,6 +29,7 @@ Note: The following workflow assumes the directory /home/user already exists. If
 1. Create a file /var/cfengine/masterfiles/file_test.cf that includes the following text:
 
 	```cf3
+ [file=file_test.cf]
 	bundle agent list_file
 	{
 
@@ -43,49 +44,50 @@ Note: The following workflow assumes the directory /home/user already exists. If
 
 2. Run the following command to remove any existing test file at the location we wish to use for testing this example:
 
-	```console
+	```command
 	rm /home/user/test_plain.txt
 	```
 
 3. Test to ensure there is no file /home/user/test_plain.txt, using the following command (the expected result is that there should be no file listed at the location /home/user/test_plain.txt):
 
-	```console
+	```command
 	ls /home/user/test_plain.txt
 	```
 
 5. Run the following command to instruct CFEngine to see if the file exists (the expected result is that no report will be generated (because the file does not exist):
 
-	```console
+	```command
 	/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
 	```
 
 6. Create a file for testing the example, using the following command:
 
-	```console
+	```command
 	touch /home/user/test_plain.txt
 	```
 
 7. Run the following command to instruct CFEngine to search for the file (the expected result is that a report will be generated, because the file exists):
 
-	```console
+	```command
 	/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
 	```
 
 8. Double check the file exists, using the following command (the expected result is that there will be a file listed at the location /home/user/test_plain.txt):
 
-	```console
+	```command
 	ls /home/user/test_plain.txt
 	```
 
 9. Run the following command to remove the file:
 
-	```console
+	```command
 	rm /home/user/test_plain.txt
 	```
 
 ## Create a File
 
 ```cf3
+ [file=file_create.cf]
 bundle agent testbundle
 {
 
@@ -125,7 +127,7 @@ body perms system
       mode  => "0640";
 }
 ```
-
+```console
 ls /home/user/test_plain.txt
 
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence list_file,testbundle,list_file_2
@@ -135,11 +137,12 @@ ls /home/user/test_plain.txt
 ls /home/user/test_plain.txt
 
 rm /home/user/test_plain.txt
-
+```
 
 ## Delete a File
 
 ```cf3
+[file=file_delete.cf]
 body common control {
 
     inputs => {
@@ -195,35 +198,27 @@ body perms system
       mode  => "0640";
 }
 ```
-
+```bash
 rm /home/user/test_plain.txt
-
 ls /home/user/test_plain.txt
-
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence list_file,testbundle,list_file_2
-
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence list_file,list_file_2
-
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence list_file,test_delete,list_file_2
-
 ls /home/user/test_plain.txt
-
 rm /home/user/test_plain.txt
-
+```
 (last command will throw an error because the file doesn't exist!)
 
 ## Modify a File
-
+```bash
 rm /home/user/test_plain.txt
-
 ls /home/user/test_plain.txt
-
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence list_file,testbundle,list_file_2
-
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence list_file,list_file_2
-
+```
 
 ```cf3
+[file=file_modify.cf]
 body common control {
 
     inputs => {
@@ -332,16 +327,16 @@ body perms system
 ```
 
 
-
+```bash
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence list_file,test_delete,list_file_2
-
 ls /home/user/test_plain.txt
-
 rm /home/user/test_plain.txt
+```
 
 ## Copy a file and edit its text
 
 ```cf3
+[file=file_copy.cf]
 body common control {
 
     inputs => {
@@ -521,6 +516,6 @@ body perms system
 }
 ```
 
-```console
+```command
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence test_delete,do_files_exist,testbundle,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,outer_bundle_2,list_file_2
 ```

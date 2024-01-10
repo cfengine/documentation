@@ -47,6 +47,7 @@ Create `/var/cfengine/masterfiles/services/tutorials/inventory/owner.cf` with th
 following content:
 
 ```cf3
+[file=owner.cf]
 bundle agent tutorials_inventory_owner
 # @brief Inventory Owner information
 # @description Inventory owner information from `/vagrant/inventory_owner.csv`.
@@ -114,7 +115,6 @@ You can use your favorite JSON validate. I like [`jq`][jq-project], plus it's ha
 ```console
 [root@hub ~]# wget -q -O /var/cfengine/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
 [root@hub ~]# chmod +x /var/cfengine/bin/jq
-[root@hub ~]#
 ```
 
 Once it's installed, we can use it to validate our JSON.
@@ -141,8 +141,10 @@ You can also perform a manual policy run and check that the correct owner is dis
 
 **Manual Policy Run:**
 
-```console
-[root@hub ~]# cf-agent -KIf /var/cfengine/masterfiles/promises.cf -b tutorials_inventory_owner
+```command
+cf-agent -KIf /var/cfengine/masterfiles/promises.cf -b tutorials_inventory_owner
+```
+```output
     info: Using command line specified bundlesequence
 R: tutorials_inventory_owner: Discovered Owner='Operations Team <ops@cfengine.com>'
 ```
@@ -178,8 +180,10 @@ Let's query the API from the hub itself, and use [`jq`][jq-project] to make it e
 
 Now that we have jq in place, let's query the Inventory API to see what inventory attributes are available.
 
-```console
-[root@hub ~]# curl -s -k --user admin:admin -X GET https://localhost/api/inventory/attributes-dictionary | jq '.[].attribute_name'
+```command
+curl -s -k --user admin:admin -X GET https://localhost/api/inventory/attributes-dictionary | jq '.[].attribute_name'
+```
+```output
 "Architecture"
 "BIOS vendor"
 "BIOS version"
@@ -223,8 +227,10 @@ Yes, we can see our attribute `Owner` is reported.
 
 Now, let's query the Inventory API to see what Owners are reported.
 
-```console
-[root@hub ~]# curl -s -k --user admin:admin -X POST -H 'content-type: application/json' -d '{ "select": [ "Host name", "Owner" ]}' https://localhost/api/inventory | jq '.data[].rows[]'
+```command
+curl -s -k --user admin:admin -X POST -H 'content-type: application/json' -d '{ "select": [ "Host name", "Owner" ]}' https://localhost/api/inventory | jq '.data[].rows[]'
+```
+```output
 [
   "host001.example.com",
   "Development <dev@cfengine.com>"
