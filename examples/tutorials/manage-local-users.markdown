@@ -15,8 +15,8 @@ as part of creating the user.
 
 Create the files `id_rsa` and `id_rsa.pub` in `/tmp`.
 
-```console
-# touch /tmp/id_rsa /tmp/id_rsa.pub
+```command
+touch /tmp/id_rsa /tmp/id_rsa.pub
 ```
 
 Create user group security and webadmin.
@@ -31,6 +31,7 @@ Create user group security and webadmin.
 Create a file `/tmp/users.cf` with the following content:
 
 ```cf3
+[file=users.cf]
 body common control
 {
   inputs => { "$(sys.libdir)/stdlib.cf" };
@@ -65,30 +66,30 @@ bundle agent setup_home_dir(user)
 
 Run CFEngine:
 
-```console
-# /var/cfengine/bin/cf-agent -fK /tmp/users.cf
+```command
+/var/cfengine/bin/cf-agent -fK /tmp/users.cf
 ```
 
 Verify the result: Have users have been created?
 
-```console
-# grep -P "adam|eva" /etc/passwd
+```command
+grep -P "adam|eva" /etc/passwd
 ```
 
 Congratulations! You should now see the users adam and eva listed.
 
 Verify the result: Have users home directory have been created?
 
-```console
-# ls /home | grep -P "adam|eva"
+```command
+ls /home | grep -P "adam|eva"
 ```
 
 Congratulations! You should now see adam and eva listed.
 
 Verify the result: Have users have been added to the correct groups?
 
-```console
-# grep -P "adam|eva" /etc/group
+```command
+grep -P "adam|eva" /etc/group
 ```
 
 Congratulations! You should now see adam and eva added to the groups security
@@ -98,16 +99,16 @@ you must make sure the groups exists.
 Verify the result: Have ssh-keys have been copied from `/tmp` to user's `~/.ssh`
 directory?
 
-```console
-# ls /home/adam/.ssh /home/eva/.ssh
+```command
+ls /home/adam/.ssh /home/eva/.ssh
 ```
 
 Congratulations! You should now see the files `id_rsa` and `id_rsa.pub`.
 
 Ps. If you would like play around with the policy, delete the users after each run with the command
 
-```console
-# deluser -r username
+```command
+deluser -r username
 ```
 
 Mission accomplished!

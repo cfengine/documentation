@@ -6,9 +6,9 @@ published: true
 
 The default `admin` user can be reset to defaults using the following SQL.
 
-cfsettings-setadminpassword.sql:
 
 ```sql
+[file=cfsettings-setadminpassword.sql]
 INSERT INTO "users" ("username", "password", "salt", "name", "email", "external", "active", "roles", "changetimestamp")
        SELECT 'admin', 'SHA=aa459b45ecf9816d472c2252af0b6c104f92a6faf2844547a03338e42e426f52', 'eWAbKQmxNP', 'admin',  'admin@organisation.com', false, '1',  '{admin,cf_remoteagent}', now()
 ON CONFLICT (username, external) DO UPDATE

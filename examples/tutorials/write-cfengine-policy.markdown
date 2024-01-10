@@ -63,8 +63,8 @@ you very granular control.
 
 To see a list of available classes on your host, just type the following command:
 
-```console
-# cf-promises --show-classes
+```command
+cf-promises --show-classes
 ```
 
 ## Running policy
@@ -74,6 +74,7 @@ final policy. As for classes we will use linux to define that the file
 `/tmp/hello-world` must exists on all hosts of type *linux*:
 
 ```cf3
+[file=my_test.cf]
 bundle agent my_test{
  files:
   linux::
@@ -104,29 +105,29 @@ this as it is the same cf-agent that runs on the hosts as on the Policy Server.
 **Tip:** Whenever you make or modify a policy, you can use the `cf-promises`
 command to run a syntax check:
 
-```console
-# cf-promises -f /tmp/my-policy.cf
+```command
+cf-promises -f /tmp/my-policy.cf
 ```
 
 Unless you get any output, the syntax is correct. Now, to run this policy, simply type:
 
-```console
-# cf-agent -Kf /tmp/my-policy.cf
+```command
+cf-agent -Kf /tmp/my-policy.cf
 ```
 
 As you can see, the response is immediate! Running CFEngine locally like this is
 ideal for testing out new policies. To check that the file has been successfully
 created type:
 
-```console
-# ls /tmp/hello-world -l
+```command
+ls /tmp/hello-world -l
 ```
 
 If you want to see what the agent is doing during its run, you can run the agent
 in verbose mode. Try:
 
-```console
-# cf-agent -Kf /tmp/my-policy.cf --verbose
+```command
+cf-agent -Kf /tmp/my-policy.cf --verbose
 ```
 
 In a Stand Alone system, to make and run a policy remember to:
@@ -161,6 +162,7 @@ Now we need to tell CFEngine that there is a new policy in town:
 1. Create `/var/cfengine/masterfiles/def.json` with the following content:
 
 ```json
+[file=def.json]
 {
   "inputs": [ "my-policy.cf" ]
 }
@@ -169,8 +171,8 @@ Now we need to tell CFEngine that there is a new policy in town:
 On the policy server you can run the following command to make sure the syntax
 is correct.
 
-```console
-# cf-agent -cf /var/cfengine/masterfiles/promises.cf
+```command
+cf-agent -cf /var/cfengine/masterfiles/promises.cf
 ```
 
 After some period of time (CFEngine runs by default every 5 minutes), log in to

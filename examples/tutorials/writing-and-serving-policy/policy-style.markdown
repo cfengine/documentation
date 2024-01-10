@@ -489,7 +489,7 @@ bundle agent satellite_bootstrap_main
 
 Output the parsed policy in ```cf``` format:
 
-```console
+```command
 cf-promises -f /tmp/example.cf --policy-output-format cf
 ```
 

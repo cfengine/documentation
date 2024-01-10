@@ -64,13 +64,16 @@ root      8008     1  0 18:18 ?        00:00:00 /var/cfengine/bin/cf-serverd
 
 And again, in Inform mode:
 
+```command
+kill 8008
 ```
-# kill 8008
-# cf-agent -f unit_process_restart.cf -I
+```command
+cf-agent -f unit_process_restart.cf -I
+```
+```output
 2013-06-08T18:19:51-0700     info: This agent is bootstrapped to '192.168.183.208'
 2013-06-08T18:19:51-0700     info: Running full policy integrity checks
 2013-06-08T18:19:51-0700     info: /process_restart/processes/'$(component)': Making a one-time restart promise for 'cf-serverd'
 2013-06-08T18:19:51-0700     info: Executing 'no timeout' ... '/var/cfengine/bin/cf-serverd'
 2013-06-08T18:19:52-0700     info: Completed execution of '/var/cfengine/bin/cf-serverd'
-#
 ```

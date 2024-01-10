@@ -13,13 +13,13 @@ In this How To we will show a simple integrate with [Sumo Logic](http://www.sumo
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5_JaglgmLpg" frameborder="0" allowfullscreen></iframe>
 
-# How it works
+## How it works
 
 Whenever there is a policy update or a new policy is detected by CFEngine, a special variable called "`sys.last_policy_update`" will be updated with current timestamp.
 
 We will store this timestamp in a file, and then via api upload the file to Sumo Logic.
 
-# Create the CFEngine Policy file
+## Create the CFEngine policy file
 
 In this section we will explain the most important parts of our policy file.
 
@@ -85,51 +85,65 @@ That's it! You can copy and paste the whole policy file at the bottom of this pa
 
 Save the policy file you make as `/tmp/sumologic_policy_update.cf`
 
-# Ensure the policy always runs
+## Ensure the policy always runs
 
 Normally, to ensure your policy file is put into action, you would need to follow these two steps:
 
 1. Move the policy file to your masterfiles directory:
 
-```console
-# mv /tmp/sumo.cf /var/cfengine/masterfiles/
-```
+   ```command
+   mv /tmp/sumo.cf /var/cfengine/masterfiles/
+   ```
 
 2. Modify `promises.cf` to include your policy
 
    Unless you use version control system, or has a non-standard CFEngine setup, modify your `promises.cf` file by adding the new bundle name and policy-file so it will be picked up by CFEngine and be part of all it future runs.
 
-```console
-# vi /var/cfengine/masterfiles/promises.cf
-```
+   ```command
+   vi /var/cfengine/masterfiles/promises.cf
+   ```
 
 Under the body common control, add `sumo_logic_policy_update` to your bundle sequence.
 
-![integrating-with-sumo-logic_bundle_sequence.png](integrating-with-sumo-logic_bundle_sequence.png)
+```cf3
+body common control
+
+{
+   bundlesequence = {
+                     # Common bundle first (Best Practice)
+                      sumo_logic_policy_update,
+                      inventory_control,
+                      ...
+```
 
 Under body common control, add /sumologic\_policy\_update.cf/ to your inputs section.
 
-![integrating-with-sumo-logic_inputs1.png](integrating-with-sumo-logic_inputs1.png)
+```cf3
+inputs => {
+           # File definition for global variables and classes
+           "sumologic_policy_update.cf",
+           ...
+```
 
 That's all.
 
 
-# Test it!
+## Test it!
 
 To test it, we need to make a change to any CFEngine policy, and then go to Sumo Logic to see if there is a new timestamp reported.
 
 * Make a change to any policy file, for examle `promises.cf`:
 
-```console
-# vi /var/cfengine/masterfiles/promises.cf  
+```command
+vi /var/cfengine/masterfiles/promises.cf
 ```
 
 Add a comment and close the file.
 
 * Check if timestamp has been updated
 
-```console
-# cat /tmp/CFEngine_policy_updated  
+```command
+cat /tmp/CFEngine_policy_updated
 ```
 
 *   Check with Sumo Logic
@@ -144,6 +158,8 @@ As we can see above CFEngine detected a change on `Thursday Oct 2 at 01:16:42` a
 
 The policy as found in `sumologic_policy_update.cf`.
 
+```cf3
+[file=sumo_logic_policy_update.cf]
     bundle agent sumo_logic_policy_update
     {
       vars:
@@ -198,3 +214,4 @@ The policy as found in `sumologic_policy_update.cf`.
     {
             empty_file_before_editing => "true";
     }
+```

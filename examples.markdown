@@ -51,6 +51,7 @@ Following these steps, you will login to your policy server via the SSH protocol
 5. In the vi editor, enter ```i``` for "Insert" and enter the following content (ie. copy and paste from a text editor):
 
     ```cf3
+   [file=hello_world.cf]
     bundle agent hello_world
     {
       reports:
@@ -78,21 +79,23 @@ hosts][Classes and decisions].
 
 Activate the bundle manually by executing the following command at prompt:
 
-```console
+```command
 /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
 ```
 
 This command instructs CFEngine to ignore [locks][Controlling frequency], load
 the `hello_world.cf` policy, and activate the `hello_world` bundle. See the output below:
 
-```console
-# /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
+```command
+/var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
+```
+```output
 2013-08-20T14:03:43-0500   notice: R: Hello World!
 ```
 
 As you get familiar with CFEngine, you'll probably start shortening this command to this equivalent:
 
-```console
+```command
 /var/cfengine/bin/cf-agent -Kf ./hello_world.cf -b hello_world
 ```
 
@@ -118,6 +121,7 @@ Go back into vi by typing "vi" at the prompt. Then type ```i``` to insert
 shown in the following example:
 
 ```cf3
+[file=hello_world.cf]
 body common control
 {
   bundlesequence => { "hello_world" };
@@ -138,20 +142,23 @@ Now press "esc" to exit the "Insert" mode, then type ```:w``` to save the file c
 Exit vi by typing ```:q``` then "Enter." This will return to the prompt.
 
 Execute the following command:
-```console
+```command
 /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
 ```
 
 The output is shown below:
 
-```console
-# /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
+```command
+/var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
+```
+```output
 2013-08-20T14:25:36-0500   notice: R: Hello World!
 ```
 
 Note: It may be necessary to add a reference to the standard library within the body common control section, and remove the bundlesequence line. Example:
 
 ```cf3
+[file=hello_world.cf]
 body common control {
     inputs => {
        "libraries/cfengine_stdlib.cf",
@@ -171,6 +178,7 @@ Again type "vi" then "Enter" then ```i``` to insert the following:
 Add it before __body common control__, as shown below:
 
 ```cf3
+[file=hello_world.cf]
 #!/var/cfengine/bin/cf-agent --no-lock
 body common control
 {
@@ -193,21 +201,19 @@ then exit vi by typing ```:q``` then "Enter". This will return to the prompt.
 
 Make the policy file executable, and then run it, by typing the following two commands:
 
-```console
+```command
 chmod +x ./hello_world.cf
 ```
 
 Followed by:
 
-```console
+```command
 ./hello_world.cf
 ```
 
 See the output below:
 
-```console
-# chmod +x ./hello_world.cf
-# ./hello_world.cf
+```output
 2013-08-20T14:39:34-0500   notice: R: Hello World!
 ```
 

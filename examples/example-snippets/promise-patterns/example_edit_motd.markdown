@@ -30,8 +30,10 @@ The bundle is defined like this:
 
 **Example run:**
 
-```console
-root@debian8:~/core/examples# cf-agent -KIf ./mustache_template_motd.cf; cat /etc/motd
+```command
+cf-agent -KIf ./mustache_template_motd.cf; cat /etc/motd
+```
+```output
     info: Updated rendering of '/etc/motd' from mustache template 'inline'
     info: files promise '/etc/motd' repaired
 # Managed by CFEngine

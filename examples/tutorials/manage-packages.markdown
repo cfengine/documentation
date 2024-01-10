@@ -15,9 +15,10 @@ to make sure the latest version of OpenSSL is installed in all our hosts, we can
 use the packages promise type, like this:
 
 ```cf3
+[file=manage_packages.cf]
 body common control
 {
-      inputs => { "$(sys.libdir)/stdlib.cf"" };
+      inputs => { "$(sys.libdir)/stdlib.cf" };
 }
 
 bundle agent manage_packages
@@ -40,12 +41,20 @@ want to use. Defaults can be set up by using the `package_module` common control
 attribute. When we run this on an CentOS 6 system, we can verify the openssl
 version before and after running the policy, and we get the following output:
 
-```console
-# yum list installed | grep openssl
+```command
+yum list installed | grep openssl
+```
+```output
 openssl.x86_64          1.0.0-27.el6    @anaconda-CentOS-201303020151.x86_64/6.4
 openssl-devel.x86_64    1.0.0-27.el6    @anaconda-CentOS-201303020151.x86_64/6.4
-# cf-agent -K ./manage_packages.cf"
-# yum list installed | grep openssl
+```
+```command
+cf-agent -K ./manage_packages.cf
+```
+```command
+yum list installed | grep openssl
+```
+```output
 openssl.x86_64          1.0.1e-42.el6   @base
 openssl-devel.x86_64    1.0.1e-42.el6   @base
 ```
@@ -54,10 +63,16 @@ Additionally, you may want to make sure certain packages are not installed on
 the system. On my CentOS 6 system, I can see that the telnet package is
 installed.
 
-```console
-# yum list installed | grep telnet
+```command
+yum list installed | grep telnet
+```
+```output
 telnet.x86_64           1:0.17-48.el6   @base
-# which telnet
+```
+```command
+which telnet
+```
+```output
 /usr/bin/telnet
 ```
 
@@ -65,9 +80,10 @@ Making sure this package is removed from the system is easy. Let's add one more
 promise to our previous policy, this time using the absent policy:
 
 ```cf3
+[file=manage_packages.cf]
 body common control
 {
-      inputs => { "$(sys.libdir)/stdlib.cf"" };
+      inputs => { "$(sys.libdir)/stdlib.cf" };
 }
 
 bundle agent manage_packages
@@ -95,9 +111,11 @@ to ensure that the openssl package is always updated to its latest version. We
 can now see the policy in action:
 
 ```console
-# cf-agent -K ./manage_packages.cf"
+# cf-agent -K ./manage_packages.cf
 # yum list installed | grep telnet
 # which telnet
+```
+```output
 /usr/bin/which: no telnet in (/sbin:/bin:/usr/sbin:/usr/bin:/var/cfengine/bin)
 ```
 
@@ -118,6 +136,7 @@ Copy `manage_packages.cf` to `/var/cfengine/masterfiles/` on your policy hub. In
 declaration, and `manage_packages` to the bundlesequence declaration.
 
 ```json
+[file=def.json]
 {
   "inputs": [ "manage_packages.cf" ],
   "vars": {
@@ -128,8 +147,8 @@ declaration, and `manage_packages` to the bundlesequence declaration.
 
 Run `cf-promises` on the policy to verify that there are no errors.
 
-```
-# cf-promises -cf /var/cfengine/masterfiles/promises.cf
+```command
+cf-promises -cf /var/cfengine/masterfiles/promises.cf
 ```
 
 Wait a few minutes for the new policy to propagate and start taking effect in

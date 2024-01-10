@@ -130,7 +130,8 @@ reports:
 The outcome of this promise is a file called /tmp/report.html which contains
 the following output:
 
-```cf3
+```html
+[file=report.html]
 <html>
 Name of this host is: atlas<br>
 Type of this host is: linux<br>
@@ -200,7 +201,7 @@ reports:
 
 This produces the following standard output:
 
-```cf3
+```
 R: State of otherprocs peaked at Tue Dec  1 12:12:21 2014
 
 R: The peak measured state was q = 98:
@@ -253,7 +254,7 @@ number_of_lines => "$(lines)";
 
 This produces the following output:
 
-```cf3
+```
 R: /etc/passwd except
 R: at:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
 R: avahi:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false
@@ -365,8 +366,10 @@ log_string => "$(sys.date) $(x) promise status";
 
 This generates three different logs with the following output:
 
-```cf3
-atlas$ more /tmp/private_keptlog.log
+```command
+more /tmp/private_keptlog.log
+```
+```output
 Sun Dec  6 11:58:16 2009 /tmp/xyz promise status
 Sun Dec  6 11:58:43 2009 /tmp/xyz promise status
 ```
@@ -443,7 +446,7 @@ depth        => "$(d)";
 In CFEngine Enterprise, reports of the following form are generated when these promises
 are kept by the agent:
 
-```cf3
+```
 Change detected 	 File change
 Sat Dec 5 18:27:44 2013  group for /tmp/testfile changed 100 -> 0
 Sat Dec 5 18:27:44 2013  /tmp/testfile

@@ -22,18 +22,21 @@ First, let's create some files for CFEngine to monitor:
 
 CFEngine detects new files and adds them to the file integrity database:
 
+```command
+cf-agent -f unit_change_detect.cf
 ```
-# cf-agent -f unit_change_detect.cf
+```output
 2013-06-06T20:53:26-0700    error: /example/files/'/etc/example':
 File '/etc/example/example.conf' was not in 'md5' database - new file found
-# cf-agent -f unit_change_detect.cf -K
+```
+```command
+cf-agent -f unit_change_detect.cf -K
 ```
 
 If there are no changes, CFEngine runs silently:
 
-```
-# cf-agent -f unit_change_detect.cf
-#
+```command
+cf-agent -f unit_change_detect.cf
 ```
 
 Now let's update the mtime, and then the mtime and content.

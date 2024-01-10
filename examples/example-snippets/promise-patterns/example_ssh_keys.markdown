@@ -14,7 +14,8 @@ the [Masterfiles Policy Framework][Masterfiles Policy Framework]. The
 you do not have a `def.json` in the root of your masterfiles directory
 simply create it with the following content.
 
-```
+```json
+[file=def.json]
 {
   "classes": {
                "services_autorun": [ "any" ]
@@ -57,22 +58,24 @@ root@host001:~# useradd kelly
 
 Then update the policy and run it:
 
+```command
+cf-agent -Kf update.cf; cf-agent -KI
 ```
-root@host001:~# cf-agent -Kf update.cf; cf-agent -KI
-    info: Installing cfe_internal_non_existing_package...
-    info: Created directory '/home/bob/.ssh/.'
-    info: Owner of '/home/bob/.ssh' was 0, setting to 1002
-    info: Object '/home/bob/.ssh' had permission 0755, changed it to 0700
-    info: Copying from '192.168.56.2:/srv/ssh_authorized_keys/bob'
-    info: Owner of '/home/bob/.ssh/authorized_keys' was 0, setting to 1002
-    info: Created directory '/home/frank/.ssh/.'
-    info: Owner of '/home/frank/.ssh' was 0, setting to 1003
-    info: Object '/home/frank/.ssh' had permission 0755, changed it to 0700
-    info: Copying from '192.168.56.2:/srv/ssh_authorized_keys/frank'
-    info: Owner of '/home/frank/.ssh/authorized_keys' was 0, setting to 1003
-    info: Created directory '/home/kelly/.ssh/.'
-    info: Owner of '/home/kelly/.ssh' was 0, setting to 1004
-    info: Object '/home/kelly/.ssh' had permission 0755, changed it to 0700
-    info: Copying from '192.168.56.2:/srv/ssh_authorized_keys/kelly'
-    info: Owner of '/home/kelly/.ssh/authorized_keys' was 0, setting to 1004
+```output
+info: Installing cfe_internal_non_existing_package...
+info: Created directory '/home/bob/.ssh/.'
+info: Owner of '/home/bob/.ssh' was 0, setting to 1002
+info: Object '/home/bob/.ssh' had permission 0755, changed it to 0700
+info: Copying from '192.168.56.2:/srv/ssh_authorized_keys/bob'
+info: Owner of '/home/bob/.ssh/authorized_keys' was 0, setting to 1002
+info: Created directory '/home/frank/.ssh/.'
+info: Owner of '/home/frank/.ssh' was 0, setting to 1003
+info: Object '/home/frank/.ssh' had permission 0755, changed it to 0700
+info: Copying from '192.168.56.2:/srv/ssh_authorized_keys/frank'
+info: Owner of '/home/frank/.ssh/authorized_keys' was 0, setting to 1003
+info: Created directory '/home/kelly/.ssh/.'
+info: Owner of '/home/kelly/.ssh' was 0, setting to 1004
+info: Object '/home/kelly/.ssh' had permission 0755, changed it to 0700
+info: Copying from '192.168.56.2:/srv/ssh_authorized_keys/kelly'
+info: Owner of '/home/kelly/.ssh/authorized_keys' was 0, setting to 1004
 ```
