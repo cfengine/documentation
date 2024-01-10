@@ -46,9 +46,9 @@ function fetch_file() {
   fi
   local success=1                     # 1 means False in bash, 0 means True
   set +e
-  for i in `seq 1 $tries`; do
+  for i in $(seq 1 "$tries"); do
     wget "$target" -O "$destination" && success=0 && break
-    if [ $i -lt $tries ]; then
+    if [ "$i" -lt "$tries" ]; then
       sleep 10s
     fi
   done
@@ -118,4 +118,4 @@ export LC_ALL=C.UTF-8
 
 # finally, run actual jekyll
 echo "+ bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6"
-bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6
+bash -x ./_scripts/_run_jekyll.sh "$BRANCH" || exit 6
