@@ -60,6 +60,7 @@ fi
 # so instead of set -x we just echo each command ourselves
 set +x
 echo "+ source ~/.rvm/scripts/rvm"
+# shellcheck disable=SC1090
 source ~/.rvm/scripts/rvm
 
 echo "+ rvm_rubygems_version=none rvm install --autolibs=read-only ruby-1.9.3-p551 -C --without-openssl"
