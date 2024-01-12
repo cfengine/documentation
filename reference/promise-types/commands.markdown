@@ -132,6 +132,11 @@ when there are embedded spaces and quotes in your arguments, but also
 when you want to get them directly from a slist without going through
 `join()` or other functions.
 
+**Note:** Spaces are not preserved when the `useshell` attribute is set to
+`"useshell"` or `"powersell"`. The same is true when using commands promises on
+Windows, even when `useshell` is set to `"noshell"`, due to limited support in
+the Win32 API.
+
 The `arglist` is **appended** to `args` if that's defined, to preserve
 backwards compatibility.
 
