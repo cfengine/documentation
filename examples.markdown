@@ -51,7 +51,7 @@ Following these steps, you will login to your policy server via the SSH protocol
 5. In the vi editor, enter ```i``` for "Insert" and enter the following content (ie. copy and paste from a text editor):
 
     ```cf3
-   [file=hello_world.cf]
+    [file=hello_world.cf]
     bundle agent hello_world
     {
       reports:

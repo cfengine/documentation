@@ -169,7 +169,6 @@ Now force a policy run.
 ```command
 cf-agent -KI
 ```
-
 ```output
 info: Successfully installed package 'ntp'
 ```

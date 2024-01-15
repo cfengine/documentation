@@ -81,7 +81,6 @@ To continue, you will need to be able to use `python3` and `pip3`:
 ```command
 python3 --version
 ```
-
 ```output
 Python 3.10.8
 ```
@@ -91,7 +90,6 @@ And similar for `pip`:
 ```command
 pip3 --version
 ```
-
 ```output
 pip 22.3 from /usr/local/lib/python3.10/site-packages/pip (python 3.10)
 ```
@@ -135,7 +133,6 @@ And similarly for `cf-remote`:
 ```command
 cf-remote --version
 ```
-
 ```output
 cf-remote version 0.4.5
 Available CFEngine versions:
@@ -192,7 +189,6 @@ The host is now in a `cf-remote` group called `hub`, so we don't have to type th
 ```command
 cf-remote info -H hub
 ```
-
 ```output
 root@192.168.56.2
 OS            : Ubuntu 20
