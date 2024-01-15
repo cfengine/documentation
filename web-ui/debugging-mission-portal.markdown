@@ -9,13 +9,14 @@ sorting: 90
 
 2.  Edit `/var/cfengine/share/GUI/index.php` and set `ENVIRONMENT` to `development`
 
-    ```
+    ```php
+    [file=/var/cfengine/share/GUI/index.php]
     define('ENVIRONMENT', 'development');
     ```
 
 3.  Run the hubs policy.
 
-    ```sh
+    ```command
     cf-agent -KI
     ```
 
@@ -23,20 +24,19 @@ sorting: 90
 
     For systemd manged systems (RedHat/Centos7, Debian 7+, Ubuntu 15.04+):
 
-    ```sh
+    ```command
     systemctl restart cf-apache
     ```
 
     For sysv init managed systems:
 
-    ```sh
-    pkill httpd
-    cf-agent -KI
+    ```command
+    pkill httpd && cf-agent -KI
     ```
 
     or
 
-    ```sh
+    ```command
     LD_LIBRARY_PATH=/var/cfengine/lib:$LD_LIBRARY_PATH /var/cfengine/httpd/bin/apachectl restart
     ```
 

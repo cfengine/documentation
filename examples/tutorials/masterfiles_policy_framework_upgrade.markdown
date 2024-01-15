@@ -26,7 +26,7 @@ From `/tmp/MPF-upgrade/integration/masterfiles`. Let's inspect what we expect.
 Is it the root of a policy set? `promises.cf` will be present if so.
 
 ```bash
-    export INTEGRATION_ROOT="/tmp/MPF-upgrade/integration"
+export INTEGRATION_ROOT="/tmp/MPF-upgrade/integration"
     cd $INTEGRATION_ROOT/masterfiles
 if [ -e "promises.cf" ]; then
     echo "promise.cf exists, it's likely the root of a policy set"
@@ -35,36 +35,31 @@ else
 fi
 ```
 
-Output:
-
-```
+```output
 promise.cf exists, it's likely the root of a policy set
 ```
 
 Let's see what version of the MPF we are starting from by looking at `version` in `body common control` of `promises.cf`.
 
-```bash
+```command
 grep -P "\s+version\s+=>" $INTEGRATION_ROOT/masterfiles/promises.cf 2>&1 \
     || echo "promises.cf is missing, $INTEGRATION_ROOT/masterfiles does not seem to be the root of a policy set"
 ```
 
-Output:
 
-```
+```output
 version => "CFEngine Promises.cf 3.18.0";
 ```
 
 And finally, is it a git repository, what is the last commit?
 
-```bash
+```command
 git status \
       || echo "$INTEGRATION_ROOT/masterfiles does not appear to be a git repository!" \
       && git log -1
 ```
 
-Output:
-
-```
+```output
 On branch master
 nothing to commit, working tree clean
 commit f4c0e120b0b45bcb9ede01ed8fb465f40b4b1e6f
@@ -86,19 +81,17 @@ Date:   Wed Jul 26 18:43:06 2023 -0500
 
 By first removing everything we will easily be able so see which files are **new**, **changed**, **moved** or **removed** upstream.
 
-```bash
+```command
 rm -rf *
 ```
 
 Check `git status` to see that all the files have been deleted and are not staged for commit.
 
-```bash
+```command
 git status
 ```
 
-Output:
-
-```
+```output
 On branch master
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
@@ -250,10 +243,7 @@ First, clone the desired version of the MPF source.
 export MPF_VERSION="3.21.2"
 git clone -b $MPF_VERSION https://github.com/cfengine/masterfiles $INTEGRATION_ROOT/masterfiles-source-$MPF_VERSION
 ```
-
-Output:
-
-```
+```output
 Cloning into '/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2'...
 Note: switching to 'f495603285f9bd90d5d36df4fec4870aeee751e8'.
 
@@ -283,10 +273,7 @@ export EXPLICIT_VERSION=$MPF_VERSION
 make
 make install prefix=$INTEGRATION_ROOT/
 ```
-
-Output:
-
-```
+```output
 ./autogen.sh: Running determine-version.sh ...
 ./autogen.sh: Running determine-release.sh ...
 All tags pointing to current commit:
@@ -437,9 +424,7 @@ cd $INTEGRATION_ROOT/masterfiles
 git status
 ```
 
-Output:
-
-```
+```output
 On branch master
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
@@ -532,13 +517,10 @@ git add templates/federated_reporting/transfer_distributed_cleanup_items.sh
 
 We can run git status again to see the current overview:
 
-```bash
+```command
 git status
 ```
-
-Output:
-
-```
+```output
 On branch master
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
@@ -617,17 +599,16 @@ Changes not staged for commit:
 
 Next we want to bring back any of our custom files. Look through the **deleted** files, identify your custom files and restore them with `git checkout`.
 
-```bash
+```command
 git ls-files --deleted
 ```
-
-Output:
-
-    custom-2.cf
-    def.json
-    lib/deprecated-upstream.cf
-    services/autorun/custom-1.cf
-    services/custom-3.cf
+```output
+custom-2.cf
+def.json
+lib/deprecated-upstream.cf
+services/autorun/custom-1.cf
+services/custom-3.cf
+```
 
 Keeping your polices organized together helps to make this process easy. The custom policy files in the example policy set are `def.json`, `services/autorun/custom-1.cf`, `custom-2.cf`, and `services/custom-3.cf`.
 
@@ -638,36 +619,33 @@ git checkout services/autorun/custom-1.cf
 git checkout services/custom-3.cf
 ```
 
-Output:
-
-    Updated 1 path from the index
-    Updated 1 path from the index
-    Updated 1 path from the index
-    Updated 1 path from the index
+```output
+Updated 1 path from the index
+Updated 1 path from the index
+Updated 1 path from the index
+Updated 1 path from the index
+```
 
 Other deleted files from the upstream framework like `lib/deprecated-upstream.cf` should be deleted with `git rm`.
 
 **Note:** It is uncommon for any files to be moved or deleted between patch releases (e.g. `3.18.0` -> `3.18.5`) like `lib/deprecated-upstream.cf` in this example.
 
-```bash
+```command
 git rm lib/deprecated-upstream.cf
 ```
 
-Output:
 
-```
+```output
 rm 'lib/deprecated-upstream.cf'
 ```
 
 The files marked as **modified** in the `git status` output are files that have changed upstream.
 
-```bash
+```command
 git status
 ```
 
-Output:
-
-```
+```output
 On branch master
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
@@ -744,7 +722,7 @@ It's best to review the diff of **each** modified file to understand the upstrea
 
 For example, here the diff for `promises.cf` shows upstream changes but also highlights where the vendored policy had been customized to integrate a custom policy.
 
-```bash
+```command
 git diff promises.cf
 ```
 
@@ -890,7 +868,7 @@ index 15c0c40..4611098 100644
 
 Carefully review the diffs and merge or re-integrate your custom changes on top of the upstream files. If you identify changes to the vendored files consider re-integrating those changes in a way that does not modify vendored files, here for example we have migrated the integration of the custom policy to Augments (`def.json`).
 
-```bash
+```command
 git diff def.json
 ```
 
@@ -920,7 +898,7 @@ index a7b98e6..60a0ce1 100644
 
 So, we now want to accept all the changes to `promises.cf` and `def.json`.
 
-```bash
+```command
 git add promises.cf def.json
 ```
 
@@ -986,13 +964,11 @@ git add update.cf
 
 Review `git status` one more time to make sure the changes are as expected.
 
-```bash
+```command
 git status
 ```
 
-Output:
-
-```
+```output
 On branch master
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
@@ -1064,13 +1040,11 @@ Changes to be committed:
 
 Make sure the policy validates and commit your changes.
 
-```bash
+```command
 git commit -m "Upgraded MPF from 3.18.0 to 3.21.2"
 ```
 
-Output:
-
-```
+```output
 [master a5d512c] Upgraded MPF from 3.18.0 to 3.21.2
  64 files changed, 2599 insertions(+), 728 deletions(-)
  create mode 100644 cfe_internal/enterprise/templates/apachectl.mustache

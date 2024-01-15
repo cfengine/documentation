@@ -22,19 +22,21 @@ To test CFEngine as an ordinary user, do the following:
 
 Copy the binaries into the work directory:
 
-```
-host$ mkdir -p ~/.cfagent/inputs
-host$ mkdir -p ~/.cfagent/bin
-host$ cp /var/cfengine/bin/cf-* ~/.cfagent/bin
-host$ cp /var/cfengine/inputs/*.cf ~/.cfagent/inputs
+```console
+mkdir -p ~/.cfagent/inputs
+mkdir -p ~/.cfagent/bin
+cp /var/cfengine/bin/cf-* ~/.cfagent/bin
+cp /var/cfengine/inputs/*.cf ~/.cfagent/inputs
 ```
 
 You can test the software and play with configuration files by editing the
 basic directly in the `~/.cfagent/inputs` directory. For example, try the
 following:
+```console
+~/.cfagent/bin/cf-promises
+~/.cfagent/bin/cf-promises --verbose
+```
 
-    host$ ~/.cfagent/bin/cf-promises
-    host$ ~/.cfagent/bin/cf-promises --verbose
 
 This is always the way to start checking a configuration in CFEngine 3. If a
 configuration does not pass this check/test, you will not be allowed to use

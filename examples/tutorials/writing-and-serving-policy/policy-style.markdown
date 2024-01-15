@@ -197,7 +197,7 @@ Promises with multiple attributes should never be put on a single line.
 Promises over multiple lines should always have the attributes on separate lines.
 Examples:
 
-```
+```cf3
 bundle agent example
 {
   vars:
@@ -533,7 +533,7 @@ bundle agent satellite_bootstrap_main
 
 Output the parsed policy in ```cf``` format:
 
-```console
+```command
 cf-promises -f /tmp/example.cf --policy-output-format cf
 ```
 

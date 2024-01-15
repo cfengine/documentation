@@ -28,6 +28,7 @@ policy server and automatically installed on all hosts.
 
 
 ```cf3
+[file=trust_distkeys.cf]
 bundle agent trust_distkeys
 #@ brief Example public key distribution
 {

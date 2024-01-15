@@ -94,7 +94,9 @@ Given an alert that triggers on a policy bundle being not kept (failed), the fol
 Saving this as a file, e.g. 'alert_parameters_test', can be useful while writing and testing your Custom action script.
 You could then simply test your Custom action script, e.g. 'cfengine_custom_action_ticketing.py', by running
 
-    ./cfengine_custom_action_ticketing alert_parameters_test
+```command
+./cfengine_custom_action_ticketing alert_parameters_test
+```
 
 When you get this to work as expected on the commmand line, you are ready to upload the script to the Mission Portal, as outlined below.
 
@@ -102,7 +104,8 @@ When you get this to work as expected on the commmand line, you are ready to upl
 ## Example script: logging policy alert to syslog
 
 The following Custom action script will log the status and definition of a policy alert to syslog.
-
+```bash
+[file=cfengine_custom_notification_policy_syslog.sh]
     #!/bin/bash
 
     source $1
@@ -115,7 +118,7 @@ The following Custom action script will log the status and definition of a polic
     logger -i "Policy alert '$ALERT_NAME' $ALERT_STATUS. Now triggered on $ALERT_FAILED_HOST hosts. Defined with $ALERT_POLICY_CONDITION_FILTERBY='$ALERT_POLICY_CONDITION_FILTERITEMNAME', promise handle '$ALERT_POLICY_CONDITION_PROMISEHANDLE' and outcome $ALERT_POLICY_CONDITION_PROMISEOUTCOME"
 
     exit $?
-
+```
 What gets logged to syslog depends on which alert is associated with the script, but an example log-line is as follows:
 
     Sep 26 02:00:53 localhost user[18823]: Policy alert 'Web service' fail. Now triggered on 11 hosts. Defined with bundlename='web_service', promise handle '' and outcome NOTKEPT

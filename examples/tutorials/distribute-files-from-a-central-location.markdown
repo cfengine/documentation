@@ -18,11 +18,15 @@ perform the following instructions:
 CFEngine stores the master copy of all policy in the `/var/cfengine/masterfiles` directory.
 Ensure that you are working with the latest version of your `masterfiles`.
 
+```command
+git clone url
+```
 
-    git clone url
 or
 
-    git pull origin master
+```command
+git pull origin master
+```
 
 ## Make policy changes
 
@@ -43,7 +47,8 @@ These variables provide path definitions for storing and deploying patches.
 
 Add the following variable information to the `masterfiles/def.cf` file:
 
-```
+```cf
+[file=def.cf]
 "dir_patch_store"
   string => "/storage/patches",
   comment => "Define patch files source location",
@@ -71,6 +76,7 @@ promise type in a `server` bundle. The default access rules defined by the MPF (
 There is no need to modify the vendored policy, instead define your own server bundle. For our example, add the following to `services/main.cf`:
 
 ```cf3
+[file=main.cf]
 bundle server my_access_rules
 {
   access:
@@ -90,6 +96,7 @@ use is a good idea. This information is stored in a custom library.
 Create a custom library called `lib/custom/files.cf`. Add the following content:
 
 ```cf3
+[file=files.cf]
 bundle agent sync_from_policyserver(source_path, dest_path)
 # @brief Sync files from the policy server to the agent
 #
@@ -115,6 +122,7 @@ policy by services.
 Create `services/patching.cf` with the following content:
 
 ```cf3
+[file=patching.cf]
 # Patching Policy
 
 bundle agent patching
@@ -213,24 +221,39 @@ This tracker allows you to see how the policy reacts as it is activated on your 
 
 Always inspect what you expect. `git status` shows the status of your current branch.
 
-    git status
+```command
+git status
+```
 
-Inspect the changes contained in each file. Once satisfied, add them to Git's commit staging area.
+Inspect the changes contained in each file.
 
-    git diff file
-    git add file
+```command
+git diff file
+```
+
+Once satisfied, add them to Git's commit staging area.
+
+```command
+git add file
+```
 
 Iterate over using git **diff**, **add**, and **status** until all of the changes that you
 expected are listed as **Changes to be committed**. Check the status once more before you
 commit the changes.
 
-    git status
+```command
+git status
+```
 
 Commit the changes to your local repository.
 
-    git commit
+```command
+git commit
+```
 
 Push the changes to the central repository so they can be pulled down to
 your policy server for distribution.
 
-    git push origin master
+```command
+git push origin master
+```

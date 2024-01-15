@@ -60,6 +60,7 @@ the following defines the attribute `Role` which is set to
 `bundlesequence` in `promises.cf` or in a bundle that it calls.
 
 ```cf3
+[file=promises.cf]
 bundle agent myreport
 {
   vars:

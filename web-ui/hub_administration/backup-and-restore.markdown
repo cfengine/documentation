@@ -41,14 +41,14 @@ restore the history of policy outcomes you must backup and restore.
 
 **Backup:**
 
-```console
-# pg_dump -Fc cfdb > cfdb.bak
+```command
+pg_dump -Fc cfdb > cfdb.bak
 ```
 
 **Restore:**
 
-```console
-# pg_restore -Fc cfdb.bak
+```command
+pg_restore -Fc cfdb.bak
 ```
 
 ### Mission Portal

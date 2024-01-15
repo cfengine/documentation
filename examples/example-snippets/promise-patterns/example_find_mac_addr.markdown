@@ -75,10 +75,11 @@ This policy can be found in `/var/cfengine/masterfiles/example_find_mac_addr.cf`
 
 Example run:
 
+```command
+cf-agent -f example_find_mac_addr.cf
 ```
-# cf-agent -f example_find_mac_addr.cf
+```output
 2013-06-08T16:59:19-0700   notice: R: MAC address is a4:ba:db:d7:59:32
-#
 ```
 
 While the above illustrates the flexiblity of CFEngine in
