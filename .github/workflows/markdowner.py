@@ -184,6 +184,8 @@ def perform_edits(content, flags, filename):
             print(f"{filename}: Added newline before EOF")
 
     if flags.codeblocks or flags.all:
+        replacements = {"```\n```command": "```\n\n```command"}
+        content = replace_with_dict(content, replacements, filename)
         content = edit_codeblocks(content, filename)
     return content
 
