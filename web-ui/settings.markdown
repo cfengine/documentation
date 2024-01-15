@@ -228,8 +228,8 @@ Configure role-based access controls from settings.
 
 To restore the CFEngine admin role permissions run the following sql as root on your hub
 
-```console
-root@hub:~# /var/cfengine/bin/psql cfsettings -c "INSERT INTO rbac_role_permission (role_id, permission_alias) (SELECT 'admin'::text as role_id, alias as permission_alias FROM rbac_permissions) ON CONFLICT (role_id, permission_alias)  DO NOTHING;"
+```command
+/var/cfengine/bin/psql cfsettings -c "INSERT INTO rbac_role_permission (role_id, permission_alias) (SELECT 'admin'::text as role_id, alias as permission_alias FROM rbac_permissions) ON CONFLICT (role_id, permission_alias)  DO NOTHING;"
 ```
 
 **See also:** [Web RBAC API][Web RBAC API]

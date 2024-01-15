@@ -20,8 +20,8 @@ We will create a policy that ensures file integrity, and have CFEngine notify Pa
 
 Run the following command on your policy server to create the file we want to manage.
 
-```console
-# touch /tmp/file-integrity
+```command
+touch /tmp/file-integrity
 ```
 
 ## Create a new policy to manage the file
@@ -29,6 +29,7 @@ Run the following command on your policy server to create the file we want to ma
 Insert the following policy into `/tmp/file_example.cf`
 
 ```cf3
+[file=file_example.cf]
 bundle agent file_integrity
 {
   files:
@@ -55,16 +56,16 @@ Normally, to ensure your policy file is put into action, you would need to follo
 
     Normally, to ensure your policy file is put into action, you would need to follow these three steps:
 
-    ```console
-    # mv /tmp/file_example.cf /var/cfengine/masterfiles/
+    ```command
+    mv /tmp/file_example.cf /var/cfengine/masterfiles/
     ```
 
 2. Modify `promises.cf` to include your policy
 
    Unless you use version control system, or has a non-standard CFEngine setup, modify your `promises.cf` file by adding the new bundlename and policy-file so it will be picked up by CFEngine to be included in all future runs.
 
-   ```console
-   # vi /var/cfengine/masterfiles/promises.cf
+   ```command
+   vi /var/cfengine/masterfiles/promises.cf
    ```
 
    a) Under the body common control, add `file_integrity` to your *bundlesequence*
@@ -121,8 +122,8 @@ Now we have a made a policy to monitor the `/tmp/file-integrity` file. Whenever 
 
 1. Make a change to the `/tmp/file_integrity` file on your policy server:
 
-   ```console
-   # echo "Hello World!!" > /tmp/file_integrity
+   ```command
+   echo "Hello World!!" > /tmp/file_integrity
    ```
 
    The next time CFEngine runs, it will detect the change and send an notification to PagerDuty. Go to PagerDuty and wait for an alert to be triggered.

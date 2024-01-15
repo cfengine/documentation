@@ -19,12 +19,16 @@ You can test by verifying you can access the certificate with a unprivileged use
 You can get the fully qualified hostname on your hub by running the following
 commands.
 
-```console
-[root@hub ~]# cf-promises --show-vars=default:sys\.fqhost
+```command
+cf-promises --show-vars=default:sys\.fqhost
+```
+```output
 default:sys.fqhost                       hub                                                          inventory,source=agent,attribute_name=Host name
 ```
 
-```console
-[root@hub ~]# hostname -f
+```command
+hostname -f
+```
+```output
 hub
 ```

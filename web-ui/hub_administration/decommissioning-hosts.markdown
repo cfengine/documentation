@@ -42,7 +42,7 @@ Single hosts can be removed by visiting the host info page, and clicking the tra
 If you decommission hosts regularly, it can be cumbersome to use the UI for every host.
 Decommissioning can be done via API, for example using curl:
 
-```
+```command
 curl --user admin:admin http://127.0.0.1/api/host/cf-key -r SHA=92eff6add6e8add0bb51f1af52d8f56ed69b56ccdca27509952ae07fe5b2997b -X DELETE
 ```
 
@@ -55,7 +55,7 @@ This method is generally not recommended on the CFEngine Enterprise Hub, as it *
 
 The `cf-key` binary allows you to delete hosts from the `cf_lastseen.lmdb` database and `ppkeys`:
 
-```
+```command
 cf-key -r SHA=92eff6add6e8add0bb51f1af52d8f56ed69b56ccdca27509952ae07fe5b2997b
 ```
 

@@ -192,14 +192,14 @@ A few pre-requisites must be handled before enabling this utility:
 
 On Debian/Ubuntu:
 
-``` bash
-# apt install -qy python3 python3-urllib3
+``` command
+apt install -qy python3 python3-urllib3
 ```
 
 On RedHat/CentOS versions 7 and above:
 
-``` bash
-# yum install -qy python3 python3-urllib3
+``` command
+yum install -qy python3 python3-urllib3
 ```
 
 On RedHat/CentOS 6 you will have to install python3 manually and the install urllib3 with pip3.
@@ -322,20 +322,20 @@ administrative rights can make these requests. It is also possible to customize
 the RBAC settings to make a user who only has rights to the needed `api/fr`
 APIs.
 
-```console
-$ export PASSWORD="testingFR"
+```command
+export PASSWORD="testingFR"
 ```
 
 ### Enable superhub
 
-```console
-$ curl -k -i -s -X POST -u admin:$PASSWORD https://$SUPERHUB/api/fr/setup-hub/superhub
+```command
+curl -k -i -s -X POST -u admin:$PASSWORD https://$SUPERHUB/api/fr/setup-hub/superhub
 ```
 
 ### Enable feeder
 
-```console
-$ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/setup-hub/feeder
+```command
+curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/setup-hub/feeder
 ```
 
 ### Enable feeder without API
@@ -359,8 +359,8 @@ $
 
 ### Trigger agent run
 
-```console
-$ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "/var/cfengine/bin/cf-agent -KI"
+```command
+cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "/var/cfengine/bin/cf-agent -KI"
 ```
 
 Ensure there are no errors in the agent run.
@@ -532,8 +532,8 @@ The agent run on the feeder will configure ssh and generate a dump.
 The agent run on the superhub will pull the data and import it.
 Check that each step works without errors:
 
-```console
-$ cf-remote sudo -H $CLOUD_USER$FEEDER,$CLOUD_USER$SUPERHUB "/var/cfengine/bin/cf-agent -KI"
+```command
+cf-remote sudo -H $CLOUD_USER$FEEDER,$CLOUD_USER$SUPERHUB "/var/cfengine/bin/cf-agent -KI"
 ```
 
 ### Do a manual collection of superhub data
@@ -550,8 +550,8 @@ $ cf-remote sudo -H $SUPERHUB "/var/cfengine/bin/cf-hub -I -H $SUPERHUB_BS --que
 
 Let's switch back to ordinary mode of periodic agent runs.
 
-```console
-$ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "systemctl start cf-execd"
+```command
+cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "systemctl start cf-execd"
 ```
 
 On systems running systemd, we need to rename the binary back and start it manually.
@@ -605,14 +605,14 @@ There are two ways to change the `target_state` of a feeder.
 
 2. Change the state of the feeder:
 
-  ```console
-  $ curl -k -i -s -X PUT -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
+  ```command
+  curl -k -i -s -X PUT -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
   ```
 
 3. **Save the federation config:**
 
-  ```console
-  $ curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/federation-config
+  ```command
+  curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/federation-config
   ```
 
 ### Uninstall without API
@@ -645,8 +645,8 @@ management app.
 * List all feeders to find the id value. Use of ```jq``` is optional for pretty printing the JSON.
 
    (Set approprivate values in your shell for `PASSWORD` and `SUPERHUB`)
-   ```console
-   $ curl -k -s -X GET -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub | jq '.'
+   ```command
+   curl -k -s -X GET -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub | jq '.'
    ```
 
    ```json
@@ -694,16 +694,16 @@ we use the number "1".
 
 * Remove the feeder from `/opt/cfengine/federation/cfapache/federation-config.json`. Replace "id-1" below with the appropriate id from the previous steps.
 
-   ```console
-   root@superhub: ~# contents=$(jq 'del(.remote_hubs ."id-1")' /opt/cfengine/federation/cfapache/federation-config.json) && echo "${contents}" > /opt/cfengine/federation/cfapache/federation-config.json
+   ```command
+   contents=$(jq 'del(.remote_hubs ."id-1")' /opt/cfengine/federation/cfapache/federation-config.json) && echo "${contents}" > /opt/cfengine/federation/cfapache/federation-config.json
    ```
 
 * Remove items associated with this feeder in the `cfdb` database.
 
     Determine the cfdb-specific `hub_id`.
 
-   ```console
-   root@superhub: ~# /var/cfengine/bin/psql cfdb -c "select * from __hubs"
+   ```command
+  /var/cfengine/bin/psql cfdb -c "select * from __hubs"
    ```
 
    Typical output would be like the following.
@@ -767,39 +767,38 @@ Follow this procedure:
 * Export any items from Mission Portal you wish to migrate
 * Stop all CFEngine services on the superhub
 
-   ```console
-   # systemctl stop cfengine3
+   ```command
+   systemctl stop cfengine3
    ```
 
 * Uninstall CFEngine hub
 
-   ```console
-   # rpm -e cfengine-nova-hub
+   ```command
+   rpm -e cfengine-nova-hub
    ```
 
    or
 
-   ```console
-   # apt-get remove cfengine-nova-hub
+   ```command
+   apt-get remove cfengine-nova-hub
    ```
 
 * Cleanup directories
 
-   ```console
-   # rm -rf /var/cfengine
-   # rm -rf /opt/cfengine
+   ```command
+   rm -rf /var/cfengine /opt/cfengine
    ```
 * Install new version of cfengine
 * Confirm succesful installation
 
-   ```console
-   # grep -i err /var/log/CFEngineInstall.log
+   ```command
+   grep -i err /var/log/CFEngineInstall.log
    ```
 
 * Bootstrap the superhub to itself
 
-   ```console
-   # cf-agent --bootstrap <hostname or ip>
+   ```command
+   cf-agent --bootstrap <hostname or ip>
    ```
 
 * Reconfigure all feeders (3.15 series and newer, skip for 3.12 series feeder hubs)
@@ -817,8 +816,8 @@ Follow this procedure:
 
    * On 3.15.x and greater feeders, also truncate the `remote_hubs` table:
 
-      ```console
-      # /var/cfengine/bin/psql cfsettings -c 'TRUNCATE remote_hubs'
+      ```command
+      /var/cfengine/bin/psql cfsettings -c 'TRUNCATE remote_hubs'
       ```
 * Reinstall and configure the superhub as described in [Installation][Federated reporting#Installation]
 * Import any saved information into Mission Portal via the [Import & export API] or Mission Portal Settings UI

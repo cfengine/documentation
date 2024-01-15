@@ -13,6 +13,7 @@ Note: For simplicity, in this tutorial we will work directly on top of the Maste
 
 
 ```cf3
+[file=ntp.cf]
 bundle agent ntp
 {
    vars:
@@ -99,6 +100,7 @@ classes         => results("bundle", "ntp_package_");
 On your hub create `services/ntp.cf` inside *masterfiles* with the following content:
 
 ```cf3
+[file=ntp.cf]
 bundle agent ntp
 {
    vars:
@@ -134,8 +136,10 @@ Now, we need to make sure the agent knows it should use this policy file and bun
 
 Validate it.
 
-```console
-[root@hub masterfiles]# python -m json.tool < def.json
+```command
+python -m json.tool < def.json
+```
+```output
 {
     "inputs": [
         "services/ntp.cf"
@@ -150,23 +154,23 @@ Validate it.
 
 Force a policy update. Remember, CFEngine is running in the background, so it's possible that by the time you force a policy update and run the agent may have already done it and your output may differ.
 
-```
+```command
 cf-agent -KIf update.cf
 ```
 
 In the output, you should see something like:
 
-```
+```output
 info: Updated '/var/cfengine/inputs/services/ntp.cf' from source '/var/cfengine/masterfiles/services/ntp.cf' on 'localhost'
 ```
 
 Now force a policy run.
 
-```console
-[root@hub masterfiles]# cf-agent -KI
+```command
+cf-agent -KI
 ```
 
-```
+```output
 info: Successfully installed package 'ntp'
 ```
 
@@ -179,6 +183,7 @@ Now we will extend the policy to ensure that the NTP service is running.
 Now that the NTP service has been installed on the system, we need to make sure that it is running.
 
 ```cf3
+[file=ntp.cf]
 bundle agent ntp
 {
    vars:
@@ -479,11 +484,17 @@ Now that we have dissected the policy, let's go ahead and give it a whirl.
 
 ### Modify and run the policy
 
-```console
-[root@hub masterfiles]# cf-agent -KIf update.cf;
-    info: Copied file '/var/cfengine/masterfiles/services/ntp.cf' to '/var/cfengine/inputs/services/ntp.cf.cfnew' (mode '600')
+```command
+cf-agent -KIf update.cf;
+```
+```output
+info: Copied file '/var/cfengine/masterfiles/services/ntp.cf' to '/var/cfengine/inputs/services/ntp.cf.cfnew' (mode '600')
+```
 
-[root@hub masterfiles]# cf-agent -KI
+```command
+cf-agent -KI
+```
+```output
     info: Updated rendering of '/etc/ntp.conf' from mustache template 'inline'
     info: files promise '/etc/ntp.conf' repaired
     info: Executing 'no timeout' ... '/etc/init.d/ntpd restart'
@@ -493,8 +504,10 @@ R: NTP service restarted after configuration change
 
 More interestingly, if you examine the configuration file `/etc/ntp.conf`, you will notice that it has been updated with the time `server`(s) and `driftfile` you had specified in the policy, for that specific operating system environment. This is the configuration that the NTP service has been restarted with.
 
-```console
-[root@hub masterfiles]# grep -P "^(driftfile|server)" /etc/ntp.conf
+```command
+grep -P "^(driftfile|server)" /etc/ntp.conf
+```
+```output
 driftfile /var/lib/ntp/drift
 server time.nist.gov iburst
 ```
@@ -509,6 +522,7 @@ CFEngine offers out-of-the-box support for reading and writing JSON data structu
 
 {% raw %}
 ```cf3
+[file=ntp.cf]
 bundle agent ntp
 {
    vars:
@@ -633,12 +647,16 @@ Notice two promises were introduced, one setting `driftfile` to the value of `$(
 First modify `services/ntp.cf` as shown previously (don't forget to check syntax with `cf-promises` after modification), then run the policy.
 
 
-```console
-[root@hub masterfiles]# cf-agent -KIf update.cf
-    info: Copied file '/var/cfengine/masterfiles/services/ntp.cf' to '/var/cfengine/inputs/services/ntp.cf.cfnew' (mode '600')
-    info: Copied file '/var/cfengine/masterfiles/def.json' to '/var/cfengine/inputs/def.json.cfnew' (mode '600')
+```command
+cf-agent -KIf update.cf
+```
+```output
+info: Copied file '/var/cfengine/masterfiles/services/ntp.cf' to '/var/cfengine/inputs/services/ntp.cf.cfnew' (mode '600')
+info: Copied file '/var/cfengine/masterfiles/def.json' to '/var/cfengine/inputs/def.json.cfnew' (mode '600')
+```
 
-[root@hub masterfiles]# cf-agent -KI
+```command
+cf-agent -KI
 ```
 
 We do not expect to see the ntp configuration file modified or the service to be restarted since we have only instrumented the policy so far.
@@ -647,6 +665,7 @@ Now, let's modify `def.json` (in the root of masterfiles) and define some differ
 Modify `def.json` so that it looks like this:
 
 ```json
+[file=def.json]
 {
   "inputs": [ "services/ntp.cf" ],
   "vars": {
@@ -665,8 +684,10 @@ Modify `def.json` so that it looks like this:
 Now, let's validate the JSON and force a policy run and inspect the result.
 
 
-```console
-[root@hub masterfiles]# python -m json.tool < def.json
+```command
+python -m json.tool < def.json
+```
+```output
 {
     "inputs": [
         "services/ntp.cf"
@@ -688,8 +709,12 @@ Now, let's validate the JSON and force a policy run and inspect the result.
         }
     }
 }
+```
 
-[root@hub masterfiles]# cf-agent -KI
+```command
+cf-agent -KI
+```
+```output
     info: Updated rendering of '/etc/ntp.conf' from mustache template 'inline'
     info: files promise '/etc/ntp.conf' repaired
     info: Executing 'no timeout' ... '/etc/init.d/ntpd restart'
@@ -697,8 +722,12 @@ Now, let's validate the JSON and force a policy run and inspect the result.
 R: NTP service restarted after configuration change
     info: Can not acquire lock for 'ntp' package promise. Skipping promise evaluation
     info: Can not acquire lock for 'ntp' package promise. Skipping promise evaluation
+```
 
-[root@hub masterfiles]# grep -P "^(driftfile|server)" /etc/ntp.conf
+```command
+grep -P "^(driftfile|server)" /etc/ntp.conf
+```
+```output
 driftfile /tmp/drift
 server 0.north-america.pool.ntp.org iburst
 server 1.north-america.pool.ntp.org iburst

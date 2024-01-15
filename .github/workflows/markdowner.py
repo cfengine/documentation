@@ -3,6 +3,7 @@
 # find . -name '*.markdown' -type f -exec python3 .github/workflows/markdowner.py {} all \; | tee output.log
 
 import sys
+import re
 from collections import defaultdict
 
 
@@ -24,6 +25,14 @@ def replace_with_dict(content, replacements, filename):
         while k in content:
             print(f"{filename}: {repr(k)} -> {repr(v)}")
             content = content.replace(k, v)
+    return content
+
+
+def replace_with_regex_dict(content, replacements, filename):
+    for k, v in replacements.items():
+        while re.search(k, content, flags=re.MULTILINE):
+            print(f"{filename}: {repr(k)} -> {repr(v)}")
+            content = re.sub(k, v, content, flags=re.MULTILINE)
     return content
 
 
@@ -184,6 +193,8 @@ def perform_edits(content, flags, filename):
             print(f"{filename}: Added newline before EOF")
 
     if flags.codeblocks or flags.all:
+        replacements = {r"(?<!\n)\n```command": "\n\n```command"}
+        content = replace_with_regex_dict(content, replacements, filename)
         content = edit_codeblocks(content, filename)
     return content
 

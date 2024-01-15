@@ -47,15 +47,17 @@ Method Two: Create Masterfiles Repository Using the GitHub Application
 5. Click on the "Create" button at the bottom of the screen. A new repository will be created in your local GitHub folder.
 
 
-#### Initialize Git Repository in Masterfiles on the Hub ####
+#### Initialize Git Repository in Masterfiles on the Hub
 
-1. `> cd /var/cfengine/masterfiles`
-2. `> echo cf_promises_validated >> .gitignore`
-3. `> echo cf_promises_release_id >> .gitignore`
-4. `> git init`
-5. `> git commit -m "First commit"`
-6. `> git remote add origin https://github.com/GitUserName/cfengine-masterfiles.git`
-7. `> git push -u origin master`
+```bash
+cd /var/cfengine/masterfiles
+echo cf_promises_validated >> .gitignore
+echo cf_promises_release_id >> .gitignore
+git init
+git commit -m "First commit"
+git remote add origin https://github.com/GitUserName/cfengine-masterfiles.git
+git push -u origin master
+```
 
 **Note:** `cf_promises_validated` and `cf_promises_release_id` should be explicitly excluded from VCS as shown above. They are generated files and involved in controlling policy updates. If these files are checked into the repository it can create issues with policy distribution.
 
@@ -85,10 +87,21 @@ B) Or, change the remote url to `https://GitUserName@password:github.com/GitUser
 #### Create a Remote in Masterfiles on the Hub to Masterfiles on GitHub ####
 
 1. Change back to the `masterfiles` directory, if not already there:
-	* `> cd /var/cfengine/masterfiles`
+
+```command
+cd /var/cfengine/masterfiles
+```
 2. Create the remote using the following pattern:
-	* `> git remote add upstream ssh://git@github.com/GitUserName/cfengine-masterfiles.git`.
-3. Verify the remote was registered properly by typing `git remote -v` and pressing enter.
+
+```command
+git remote add upstream ssh://git@github.com/GitUserName/cfengine-masterfiles.git
+```
+
+3. Verify the remote was registered properly:
+
+```command
+git remote -v
+```
 	* You will see the remote definition in a list alongside any other previously defined remote entries.
 
 #### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub ####
@@ -97,6 +110,7 @@ B) Or, change the remote url to `https://GitUserName@password:github.com/GitUser
 2. Add the following text to the `vcs_update.cf` file:
 
 ```cf3
+[file=vcs_update.cf]
 bundle agent vcs_update
     {
     commands:
@@ -115,6 +129,7 @@ body contain masterfiles_contain
 4. Add bundle and file information to `/var/cfengine/masterfiles/promises.cf`. Example (where `...` represents existing text in the file, omitted for clarity):
 
 ```cf3
+[file=promises.cf]
 body common control
 
 {

@@ -24,14 +24,14 @@ The installation script below has been tested on Red Hat, CentOS, SUSE, Debian a
 1. Download and Install CFEngine Host
 Run the following command to download and automatically install CFEngine on a 32-bit or 64-bit Linux machine (the script will detect correct flavor and architecture).
 
-```console
+```command
 wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh agent
 ```
 
 2. Bootstrap the Host
 Once installed, the host needs to bootstrap to your CFEngine policy server.
 
-```console
+```command
 sudo /var/cfengine/bin/cf-agent --bootstrap <Name or IP address of policy server>
 ```
 If you encounter any issue, please make sure the host is on the same domain/subnet as CFEngine policy server will only allow connection from these trusted sources as default configuration.
@@ -41,7 +41,7 @@ The CFEngine host is installed and ready. That was easy, wasn't it?
 
 If you would like to see what version of CFEngine you are running, type:
 
-```console
+```command
 /var/cfengine/bin/cf-promises --version
 ```
 

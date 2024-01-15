@@ -17,16 +17,18 @@ source of data.
 
 Run from the hub itself.
 
-```console
-$ curl -u admin http://localhost/api/
+```command
+curl -u admin http://localhost/api/
 ```
 
 # Get license info from cf-hub
 
 Run as `root` from the hub itself.
 
-```console
-[root@hub ~]# cf-hub --show-license
+```command
+cf-hub --show-license
+```
+```output
 License file:     /var/cfengine/licenses/hub-SHA=d13c14c3dc46ef1c5824eb70ffae3a1d1c67c7ce70a1e8e8634b1324d0041131.dat
 License status:   Valid
 License count:    50
