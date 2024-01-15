@@ -31,9 +31,14 @@ def replace_with_dict(content, replacements, filename):
 def replace_with_regex_dict(content, replacements, filename):
     for str_pattern, replacement in replacements.items():
         pattern = re.compile(str_pattern, flags=re.MULTILINE)
-        while pattern.search(content):
-            print(f"{filename}: {repr(str_pattern)} -> {repr(replacement)}")
-            content = pattern.sub(replacement, content)
+        while True:
+            match = pattern.search(content)
+            if not match:
+                break
+            start, end = match.span()
+            match = match.group(0)
+            print(f"{filename}: {repr(match)} -> {repr(replacement)}")
+            content = content[0:start] + replacement + content[end:]
     return content
 
 
