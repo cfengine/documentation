@@ -57,10 +57,9 @@ body service_method winmethod
 
 **Notes:**
 
-Services promises for Windows are only available in CFEngine Enterprise. Note
-that the name of a service in Windows may be different from its ```Display
-name```. CFEngine Enterprise policies use the name, not the display name,
-due to the need for uniqueness.
+Services promises for Windows are only available in CFEngine Enterprise.
+Note that the name of a service in Windows may be different from its **Display name**.
+CFEngine Enterprise policies use the name, not the display name, due to the need for uniqueness.
 
 ![WinService](promise-types-services-winservice-properties_name.png)
 
@@ -155,29 +154,15 @@ standard library.
 
 **Allowed input range:** (arbitrary string)|(menu_option) depending on `service_type`
 
-* When `service_type` is `windows` allowed values are limited to `start`,
-  `stop`, `enable`, or `disable`.
-
-   * **start|enable** :: Will start the service if it is not running. ```Startup
-     Type``` will be set to ```Manual``` if it is not ```Automatic``` or
-     ```Automatic (Delayed Start)```. For a service to be configured to start
-     automatically on boot a `service_method` must be declared and
-     `service_autostart_policy` must be set to ```boot_time```.
-
-   * **stop** :: Will stop the service if it is running. ```Startup Type``` will
-     not be modified unless a `service_method` is declared and
-     `service_autostart_policy` is set.
-
-   * **disable** :: Will stop the service if it is running, and ```Startup Type```
-     will be set to ```Disabled```.
-
-
-* When `service_type` is ```generic``` any string is allowed and
-  `service_bundle` is responsible for interpreting and implementing the desired
-  state based on the `service_policy` value.
-
-  Historically `service_type` ```generic``` has supported ```start```,
-  ```stop```, ```enable```, ```disable```, ```restart``` and ```reload```.
+* When `service_type` is `windows` allowed values are limited to `start`, `stop`, `enable`, or `disable`.
+   * **start|enable** :: Will start the service if it is not running.
+     **Startup Type** will be set to **Manual** if it is not **Automatic** or **Automatic (Delayed Start)**.
+     For a service to be configured to start automatically on boot a `service_method` must be declared and `service_autostart_policy` must be set to `boot_time`.
+   * **stop** :: Will stop the service if it is running. **Startup Type** will not be modified unless a `service_method` is declared and `service_autostart_policy` is set.
+   * **disable** :: Will stop the service if it is running, and **Startup Type**
+     will be set to **Disabled**.
+* When `service_type` is `generic` any string is allowed and `service_bundle` is responsible for interpreting and implementing the desired state based on the `service_policy` value.
+  Historically `service_type` `generic` has supported `start`, `stop`, `enable`, `disable`, `restart` and `reload`.
 
 
 **Example:**

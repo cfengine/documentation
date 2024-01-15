@@ -703,7 +703,7 @@ we use the number "1".
     Determine the cfdb-specific `hub_id`.
 
    ```command
-  /var/cfengine/bin/psql cfdb -c "select * from __hubs"
+   /var/cfengine/bin/psql cfdb -c "select * from __hubs"
    ```
 
    Typical output would be like the following.
