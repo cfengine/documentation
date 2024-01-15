@@ -75,6 +75,7 @@ service sysstat status; echo $?
 ```output
 3
 ```
+
 ```command
 service httpd status; echo $?
 ```
@@ -82,6 +83,7 @@ service httpd status; echo $?
 httpd (pid  3740) is running...
 0
 ```
+
 ```command
 service cups status; echo $?
 ```
@@ -89,6 +91,7 @@ service cups status; echo $?
 cupsd (pid  3762) is running...
 0
 ```
+
 ```command
 service sshd status; echo $?
 ```
@@ -96,6 +99,7 @@ service sshd status; echo $?
 openssh-daemon (pid  3794) is running...
 0
 ```
+
 ```command
 service crond status; echo $?
 ```
@@ -128,6 +132,7 @@ service sysstat status; echo $?
 ```output
 3
 ```
+
 ```command
 service httpd status; echo $?
 ```
@@ -135,6 +140,7 @@ service httpd status; echo $?
 httpd is stopped
 3
 ```
+
 ```command
 service cups status; echo $?
 ```
@@ -142,6 +148,7 @@ service cups status; echo $?
 cups is stopped
 3
 ```
+
 ```command
 service sshd status; echo $?
 ```
@@ -149,6 +156,7 @@ service sshd status; echo $?
 openssh-daemon (pid  3794) is running...
 0
 ```
+
 ```command
 service crond status; echo $?
 ```

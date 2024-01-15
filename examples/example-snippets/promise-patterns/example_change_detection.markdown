@@ -29,6 +29,7 @@ cf-agent -f unit_change_detect.cf
 2013-06-06T20:53:26-0700    error: /example/files/'/etc/example':
 File '/etc/example/example.conf' was not in 'md5' database - new file found
 ```
+
 ```command
 cf-agent -f unit_change_detect.cf -K
 ```

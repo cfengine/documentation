@@ -61,9 +61,11 @@ Removing ntp ...
 Processing triggers for ureadahead ...
 Processing triggers for man-db ...
 ```
+
 ```command
 cf-agent -f install_packages.cf # install packages
 ```
+
 ```command
 dpkg -l lynx ntp # show installed packages
 ```
