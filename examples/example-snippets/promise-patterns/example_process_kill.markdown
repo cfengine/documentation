@@ -37,6 +37,7 @@ Example run:
 ```output
 [1] 5370
 ```
+
 ```command
 cf-agent -f unit_process_kill.cf
 ```
@@ -52,6 +53,7 @@ Now let's do it again with inform mode turned on, and CFEngine will show the pro
 ```output
 [1] 5377
 ```
+
 ```command
 cf-agent -f unit_process_kill.cf -IK
 ```

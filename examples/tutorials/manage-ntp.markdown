@@ -490,6 +490,7 @@ cf-agent -KIf update.cf;
 ```output
 info: Copied file '/var/cfengine/masterfiles/services/ntp.cf' to '/var/cfengine/inputs/services/ntp.cf.cfnew' (mode '600')
 ```
+
 ```command
 cf-agent -KI
 ```
@@ -653,6 +654,7 @@ cf-agent -KIf update.cf
 info: Copied file '/var/cfengine/masterfiles/services/ntp.cf' to '/var/cfengine/inputs/services/ntp.cf.cfnew' (mode '600')
 info: Copied file '/var/cfengine/masterfiles/def.json' to '/var/cfengine/inputs/def.json.cfnew' (mode '600')
 ```
+
 ```command
 cf-agent -KI
 ```
@@ -708,6 +710,7 @@ python -m json.tool < def.json
     }
 }
 ```
+
 ```command
 cf-agent -KI
 ```
@@ -720,6 +723,7 @@ R: NTP service restarted after configuration change
     info: Can not acquire lock for 'ntp' package promise. Skipping promise evaluation
     info: Can not acquire lock for 'ntp' package promise. Skipping promise evaluation
 ```
+
 ```command
 grep -P "^(driftfile|server)" /etc/ntp.conf
 ```

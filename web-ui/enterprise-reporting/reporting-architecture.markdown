@@ -19,6 +19,7 @@ each host to download new data.
 
 
 To collect reports from any host manually, run the following:
+
 ```command
 /var/cfengine/bin/cf-hub -H <host IP>
 ```

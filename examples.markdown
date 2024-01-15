@@ -142,6 +142,7 @@ Now press "esc" to exit the "Insert" mode, then type ```:w``` to save the file c
 Exit vi by typing ```:q``` then "Enter." This will return to the prompt.
 
 Execute the following command:
+
 ```command
 /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
 ```

@@ -48,9 +48,11 @@ yum list installed | grep openssl
 openssl.x86_64          1.0.0-27.el6    @anaconda-CentOS-201303020151.x86_64/6.4
 openssl-devel.x86_64    1.0.0-27.el6    @anaconda-CentOS-201303020151.x86_64/6.4
 ```
+
 ```command
 cf-agent -K ./manage_packages.cf
 ```
+
 ```command
 yum list installed | grep openssl
 ```
@@ -69,6 +71,7 @@ yum list installed | grep telnet
 ```output
 telnet.x86_64           1:0.17-48.el6   @base
 ```
+
 ```command
 which telnet
 ```

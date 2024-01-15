@@ -87,15 +87,18 @@ B) Or, change the remote url to `https://GitUserName@password:github.com/GitUser
 #### Create a Remote in Masterfiles on the Hub to Masterfiles on GitHub ####
 
 1. Change back to the `masterfiles` directory, if not already there:
+
 ```command
 cd /var/cfengine/masterfiles
 ```
 2. Create the remote using the following pattern:
+
 ```command
 git remote add upstream ssh://git@github.com/GitUserName/cfengine-masterfiles.git
 ```
 
 3. Verify the remote was registered properly:
+
 ```command
 git remote -v
 ```

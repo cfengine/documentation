@@ -52,12 +52,14 @@ cf-agent -f example_mount_nfs.cf
 ```output
 2013-06-08T17:48:42-0700    error: Attempting abort because mount went into a retry loop.
 ```
+
 ```command
 grep mnt /etc/fstab
 ```
 ```output
 fileserver:/home 	 /mnt 	 nfs 	 rw
 ```
+
 ```command
 df |grep mnt
 ```
