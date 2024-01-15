@@ -23,6 +23,7 @@ git clone url
 ```
 
 or
+
 ```command
 git pull origin master
 ```
@@ -219,16 +220,19 @@ This tracker allows you to see how the policy reacts as it is activated on your 
 ### Deploy changes (Enterprise and Community Users)
 
 Always inspect what you expect. `git status` shows the status of your current branch.
+
 ```command
 git status
 ```
 
 Inspect the changes contained in each file.
+
 ```command
 git diff file
 ```
 
 Once satisfied, add them to Git's commit staging area.
+
 ```command
 git add file
 ```
@@ -236,17 +240,20 @@ git add file
 Iterate over using git **diff**, **add**, and **status** until all of the changes that you
 expected are listed as **Changes to be committed**. Check the status once more before you
 commit the changes.
+
 ```command
 git status
 ```
 
 Commit the changes to your local repository.
+
 ```command
 git commit
 ```
 
 Push the changes to the central repository so they can be pulled down to
 your policy server for distribution.
+
 ```command
 git push origin master
 ```
