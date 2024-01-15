@@ -9,8 +9,7 @@ sorting: 60
 
 * [Example snippets][Example snippets]: This section is divided into topical areas and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.
 
-Note: CFEngine also includes a small set of examples by default, which can be
-found in `/var/cfengine/share/doc/examples`.
+**Note:** CFEngine also includes a small set of examples by default, which can be found in `/var/cfengine/share/doc/examples`.
 
 * [Enterprise API examples][Enterprise API examples]
 * [Tutorials][Tutorials]
@@ -24,9 +23,7 @@ See also:
   * [Make the example an executable script][Examples and tutorials#Make the example an executable script]
   * [Integrating the example into your main policy][Examples and tutorials#Integrating the example into your main policy]
 
-
 ## Tutorial for running examples
-
 
 In this tutorial, you will perform the following:
 
@@ -49,20 +46,15 @@ Following these steps, you will login to your policy server via the SSH protocol
 3. To get to the __masterfiles__ directory, type ```cd /var/cfengine/masterfiles```.
 4. Create the file with the command: ```vi hello_world.cf ```
 5. In the vi editor, enter ```i``` for "Insert" and enter the following content (ie. copy and paste from a text editor):
-
-    ```cf3
-    [file=hello_world.cf]
-    bundle agent hello_world
-    {
-      reports:
-
-        any::
-
-          "Hello World!";
-
-    }
-    ```
-
+   ```cf3
+   [file=hello_world.cf]
+   bundle agent hello_world
+   {
+     reports:
+       any::
+         "Hello World!";
+   }
+   ```
 6. Exit the "Insert" mode by pressing the "esc" button. This will return to the command prompt.
 7. Save the changes to the file by typing ```:w``` then "Enter".
 8. Exit vi by typing ```:q``` then "Enter".
@@ -70,10 +62,7 @@ Following these steps, you will login to your policy server via the SSH protocol
 In the policy file above, we have defined an **agent bundle** named `hello_world`. Agent
 bundles are only evaluated by **cf-agent**, the [agent component][cf-agent] of CFEngine.
 
-This bundle [promises][Promise types] to [report][reports] on any [class of
-hosts][Classes and decisions].
-
-
+This bundle [promises][Promise types] to [report][reports] on any [class of hosts][Classes and decisions].
 
 ### Activate a bundle manually
 
@@ -99,14 +88,11 @@ As you get familiar with CFEngine, you'll probably start shortening this command
 /var/cfengine/bin/cf-agent -Kf ./hello_world.cf -b hello_world
 ```
 
-
-Note the full path to the binary in the above command. CFEngine stores its binaries in /var/cfengine/bin
+Note the full path to the binary in the above command. CFEngine stores its binaries in `/var/cfengine/bin`
 on Linux and Unix systems. Your path might vary depending on your platform and the packages your are using.
 CFEngine uses /var because it is one of the Unix file systems that resides locally.
 Thus, CFEngine can function even if everything else fails
 (your other file systems, your network, and even system binaries) and possibly repair problems.
-
-
 
 ### Make the example stand alone
 
@@ -130,11 +116,8 @@ body common control
 bundle agent hello_world
 {
   reports:
-
     any::
-
       "Hello World!";
-
 }
 ```
 
@@ -146,24 +129,20 @@ Execute the following command:
 ```command
 /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
 ```
-
-The output is shown below:
-
-```command
-/var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
-```
 ```output
-2013-08-20T14:25:36-0500   notice: R: Hello World!
+notice: R: Hello World!
 ```
 
-Note: It may be necessary to add a reference to the standard library within the body common control section, and remove the bundlesequence line. Example:
+**Note:** It may be necessary to add a reference to the standard library within the body common control section, and remove the `bundlesequence` line.
+Example:
 
 ```cf3
 [file=hello_world.cf]
-body common control {
-    inputs => {
-       "libraries/cfengine_stdlib.cf",
-    };
+body common control
+{
+  inputs => {
+    "libraries/cfengine_stdlib.cf",
+  };
 }
 ```
 
@@ -189,31 +168,25 @@ body common control
 bundle agent hello_world
 {
   reports:
-
     any::
-
       "Hello World!";
-
 }
 ```
 
 Now exit "Insert" mode by pressing "esc". Save file changes by typing ```:w``` then "Enter"
 then exit vi by typing ```:q``` then "Enter". This will return to the prompt.
 
-Make the policy file executable, and then run it, by typing the following two commands:
+Make the policy file executable:
 
 ```command
 chmod +x ./hello_world.cf
 ```
 
-Followed by:
+And it can now be run directly:
 
 ```command
 ./hello_world.cf
 ```
-
-See the output below:
-
 ```output
 2013-08-20T14:39:34-0500   notice: R: Hello World!
 ```
