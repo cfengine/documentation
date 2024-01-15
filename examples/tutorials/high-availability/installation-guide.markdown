@@ -630,7 +630,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 2. If ```crm_mon -Afr1``` is printing errors similar to the below
 
-    ```command
+   ```command
     pcs status
    ```
    ```output
@@ -655,9 +655,9 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
     Failed actions:
         cfpgsql_start_0 on node1 'unknown error' (1): call=13, status=complete, last-rc-change='Tue Jul  7 11:25:32 2015', queued=1ms, exec=137ms
-    ```
+   ```
 
-    you can try to clear the errors by running ```pcs resource cleanup <resource-name>```. This should clean errors for the appropriate resource and make the cluster restart it.
+   You can try to clear the errors by running ```pcs resource cleanup <resource-name>```. This should clean errors for the appropriate resource and make the cluster restart it.
 
    ```command
    pcs resource cleanup cfpgsql
@@ -688,7 +688,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
      Master/Slave Set: mscfpgsql [cfpgsql]
          Masters: [ node1 ]
          Stopped: [ node2 ]
-    ```
+   ```
 
 3. After cluster crash make sure to always start the node that should be active first, and then the one that should be passive. If the cluster is not running on the given node after restart you can enable it by running the following command:
 
