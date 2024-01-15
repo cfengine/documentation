@@ -298,7 +298,7 @@ If you want CFEngine syntax highlighting, use
     bundle agent example()
     {
     }
-    ```
+  ```
 
 ```cf3
 # CFEngine code block
