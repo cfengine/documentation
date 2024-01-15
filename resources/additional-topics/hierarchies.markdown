@@ -33,7 +33,8 @@ on demand to other nodes, without any particular ranking. If you move in a mesh,
 you cannot easily measure how far you are away from a given point, as their
 might be more than one way of getting there.
 
-Mesh architectures are often robust to failure as there can be multiple _peer to peer_ routes for passing messages or information.
+Mesh architectures are often robust to failure as there can be multiple
+_peer to peer_ routes for passing messages or information.
 
 Top-down is is a cultural prejudice or _norm_, as most human societies work in
 this way. However it is not a necessity. A network service is bottom-up - there
@@ -60,11 +61,11 @@ bundle agent example
 {
   classes:
 
-   # Conceptual hierarchy
+    # Conceptual hierarchy
 
-   "top"      or => { "middle_1", "middle_2", "middle_3" };
-   "middle_1" or => { "slave_1",  "slave_2",  "slave_3"  };
-   "middle_2" or => { "slave_4",  "slave_5",  "slave_6"  };
+    "top"      or => { "middle_1", "middle_2", "middle_3" };
+    "middle_1" or => { "slave_1",  "slave_2",  "slave_3"  };
+    "middle_2" or => { "slave_4",  "slave_5",  "slave_6"  };
 }
 ```
 
@@ -79,9 +80,8 @@ finance, engineering and legal departments in three countries.
 bundle agent example
 {
   classes:
-
-     "headquarters"  or => { "usa",      "uk",           "norway" };
-     "department"    or => { "finance",  "engineering",  "legal"  };
+    "headquarters"  or => { "usa",     "uk",          "norway" };
+    "department"    or => { "finance", "engineering", "legal"  };
 }
 ```
 
@@ -164,11 +164,12 @@ set union (OR or '|') and intersection (AND or '.'):
 bundle agent example
 {
   classes:
-
-    "headquarters"  or => { "usa",      "uk",           "norway" };
-    "department"    or => { "finance",  "engineering",  "legal"  };
-
- "english_speaking" expression => "(usa|uk).!legal";
+    "headquarters"
+      or => { "usa", "uk", "norway" };
+    "department"
+      or => { "finance", "engineering", "legal"};
+    "english_speaking"
+      expression => "(usa|uk).!legal";
 
 }
 ```
@@ -239,12 +240,12 @@ of class attributes):
 bundle agent example
 {
   classes:
-
-    "group_name" or => {
-                       "base_class_1",
-                       "base_class_2",
-                       "base_class_3"
-                       };
+    "group_name"
+      or => {
+        "base_class_1",
+        "base_class_2",
+        "base_class_3",
+      };
 }
 ```
 
@@ -267,12 +268,11 @@ the `bundle`, it is assumed that the variable is in the current bundle.
 bundle agent child_bundle(parameter)
 {
   vars:
-
-    "extend_list" slist => { "extension", @(foreign.list) },
-                 policy => "ifdefined";
+    "extend_list"
+      slist => { "extension", @(foreign.list) },
+      policy => "ifdefined";
 
   reports:
-
     "Inherit parameter value $(parameter)";
     "Inherit foreign scalar value $(foreign.scalar)";
 
@@ -292,8 +292,8 @@ use them.
 bundle agent child_bundle
 {
   methods:
-
-    "extend_method" use => base_bundle(parameter1,parameter2);
+    "extend_method"
+      use => base_bundle(parameter1,parameter2);
 }
 ```
 
@@ -346,13 +346,11 @@ the set of servers:
 bundle agent example
 {
   classes:
-
-    "servers"  or => { "host1", "host2" };
+    "servers"
+      or => { "host1", "host2" };
 
   processes:
-
     servers::  # the next rules `extend` or add to the class servers
-
       "..."
 }
 ```
@@ -373,15 +371,10 @@ In other words, what is that basic paradigm that you use to partition your
 system operations? Some alternatives include:
 
 * Geographically (by site or country)
-
 * By business department (sales, accounting, research)
-
 * By security zone (private, DMZ, public, etc)
-
 * By operating system (solaris, linux, darwin)
-
 * By customer or client (e.g. for managed services)
-
 * By task, service or role in the network (webservers, dns, workstations)
 
 However, you choose to begin, you can further subdivide these major categories
@@ -401,17 +394,23 @@ For example:
 bundle agent maintain_servers
 {
   classes:
-    "has_dhcpd" or => { classmatch("ipv4_10_\d+_\d+_1") };
-    "has_httpd" or => { "www_example_com" };
-    "has_sshd" or => { "any" };
+    "has_dhcpd"
+      or => { classmatch("ipv4_10_\d+_\d+_1") };
+    "has_httpd"
+      or => { "www_example_com" };
+    "has_sshd"
+      or => { "any" };
 
   processes:
     has_dhcpd::
-      "dhcpd" restart_class => "start_dhcpd";
+      "dhcpd"
+        restart_class => "start_dhcpd";
     has_httpd::
-      "httpd" restart_class => "start_httpd";
+      "httpd"
+        restart_class => "start_httpd";
     has_sshd::
-      "sshd" restart_class => "start_sshd";
+      "sshd"
+        restart_class => "start_sshd";
 
   commands:
     freebsd.start_dhcpd::
@@ -442,22 +441,22 @@ bundle agent example
   files:
 
     internal.has_httpd.nyc::
-    # Files maintained for internal webserver in New York
+      # Files maintained for internal webserver in New York
 
     external.has_httpd.nyc::
-    # Files maintained for external webserver in New York
+      # Files maintained for external webserver in New York
 
     internal.has_httpd.london::
-    # Files maintained for internal webserver in London
+      # Files maintained for internal webserver in London
 
     external.has_httpd.london::
-    # Files maintained for external webserver in London
+      # Files maintained for external webserver in London
 
     internal.has_httpd.tokyo::
-    # Files maintained for internal webserver in Tokyo
+      # Files maintained for internal webserver in Tokyo
 
     external.has_httpd.tokyo::
-    # Files maintained for external webserver in Tokyo
+      # Files maintained for external webserver in Tokyo
 }
 ```
 
@@ -470,14 +469,14 @@ using CFEngine to centrally administer a large network of computers, but there
 are other ways of doing this that make maintenance easier and the logic more
 apparent.
 
-1) Copying files to local machines
-2) Symlinks
-3) Local changes $(site_local)
-4) Machine naming -> classes
-5) Using dist classes to select from a set of machines, not just query them in order; also splayclass
-6) Versioning, RPM/SVN for distro, vs CFEngine
-7) updating with cf-agent -DUpdateNow
+1. Copying files to local machines
+2. Symlinks
+3. Local changes $(site_local)
+4. Machine naming -> classes
+5. Using dist classes to select from a set of machines, not just query them in order; also splayclass
+6. Versioning, RPM/SVN for distro, vs CFEngine
+7. updating with cf-agent -DUpdateNow
 
-Footnotes
+## Footnotes
 
 [1] It is a commutative operator, which is why it makes sense to write both usa.finance and finance.usa.
