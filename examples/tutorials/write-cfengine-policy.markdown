@@ -24,7 +24,10 @@ detailed information see the Language concepts section of the Reference manual.
 Bundles are re-usable and blocks of CFEngine policy. The following defines a *bundle* called `my_test`, and it is a bundle for the agent.
 
 ```cf3
-bundle agent my_test{..policy-code...}
+bundle agent my_test
+{
+  # ...
+}
 ```
 
 A bundle contains one or more promise types.
@@ -75,12 +78,14 @@ final policy. As for classes we will use linux to define that the file
 
 ```cf3
 [file=my_test.cf]
-bundle agent my_test{
- files:
-  linux::
-   "/tmp/hello-world"
-     create => "true";
+bundle agent my_test
+{
+  files:
+    linux::
+      "/tmp/hello-world"
+        create => "true";
 }
+
 bundle agent __main__
 {
   methods: "my_test";
