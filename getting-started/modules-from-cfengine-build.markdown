@@ -73,7 +73,6 @@ Once we are done adding modules, it is time to build them, combining it all into
 ```command
 cfbs build
 ```
-
 ```output
 Modules:
 001 masterfiles                              @ a87b7fea6f7a88808b327730a4ba784a3dc664eb (Downloaded)

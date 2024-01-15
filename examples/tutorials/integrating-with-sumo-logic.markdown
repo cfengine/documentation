@@ -160,58 +160,58 @@ The policy as found in `sumologic_policy_update.cf`.
 
 ```cf3
 [file=sumo_logic_policy_update.cf]
-    bundle agent sumo_logic_policy_update
-    {
-      vars:
-          "policy_update_file"
-            string => "/tmp/CFEngine_policy_updated";
-          "sumo_url"
-            string => "https://collectors.sumologic.com/receiver/v1/http/";
-          "sumo_secret"
-            string => "MY_SECRET_KEY";
-          "curl_args"
-            string => "-X POST -T $(policy_update_file) $(sumo_url)$(sumo_secret)";
+bundle agent sumo_logic_policy_update
+{
+  vars:
+      "policy_update_file"
+        string => "/tmp/CFEngine_policy_updated";
+      "sumo_url"
+        string => "https://collectors.sumologic.com/receiver/v1/http/";
+      "sumo_secret"
+        string => "MY_SECRET_KEY";
+      "curl_args"
+        string => "-X POST -T $(policy_update_file) $(sumo_url)$(sumo_secret)";
 
-      files:
-          "$(policy_update_file)"
-            create => "true",
-            edit_line => insert("CFEngine_update: $(sys.last_policy_update)"),
-            edit_defaults => file;
+  files:
+      "$(policy_update_file)"
+        create => "true",
+        edit_line => insert("CFEngine_update: $(sys.last_policy_update)"),
+        edit_defaults => file;
 
-          "$(policy_update_file)"
-            classes => if_repaired("new_policy_update"),
-            changes => change_detections;
+      "$(policy_update_file)"
+        classes => if_repaired("new_policy_update"),
+        changes => change_detections;
 
-      commands:
-        new_policy_update::
-          "/usr/bin/curl"
-            args => "$(curl_args)",
-            classes => if_repaired("new_policy_update_sent_to_sumo_logic"),
-            contain => shell_command,
-            handle => "New sumo logic event created";
-    }
+  commands:
+    new_policy_update::
+      "/usr/bin/curl"
+        args => "$(curl_args)",
+        classes => if_repaired("new_policy_update_sent_to_sumo_logic"),
+        contain => shell_command,
+        handle => "New sumo logic event created";
+}
 
-    body changes change_detections
-    {
-            hash => "md5";
-            update_hashes => "true";
-            report_changes => "content";
-            report_diffs => "true";
-    }
+body changes change_detections
+{
+        hash => "md5";
+        update_hashes => "true";
+        report_changes => "content";
+        report_diffs => "true";
+}
 
-    body contain shell_command
-    {
-            useshell => "useshell";
-    }
+body contain shell_command
+{
+        useshell => "useshell";
+}
 
-    bundle edit_line insert(str)
-    {
-      insert_lines:
-          "$(str)";
-    }
+bundle edit_line insert(str)
+{
+  insert_lines:
+      "$(str)";
+}
 
-    body edit_defaults file
-    {
-            empty_file_before_editing => "true";
-    }
+body edit_defaults file
+{
+        empty_file_before_editing => "true";
+}
 ```
