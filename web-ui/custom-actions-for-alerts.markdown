@@ -106,18 +106,18 @@ When you get this to work as expected on the commmand line, you are ready to upl
 The following Custom action script will log the status and definition of a policy alert to syslog.
 ```bash
 [file=cfengine_custom_notification_policy_syslog.sh]
-    #!/bin/bash
+#!/bin/bash
 
-    source $1
+source $1
 
-    if [ "$ALERT_CONDITION_TYPE" != "policy" ]; then
-       logger -i "error: CFEngine Custom action script $0 triggered by non-policy alert type"
-       exit 1
-    fi
+if [ "$ALERT_CONDITION_TYPE" != "policy" ]; then
+   logger -i "error: CFEngine Custom action script $0 triggered by non-policy alert type"
+   exit 1
+fi
 
-    logger -i "Policy alert '$ALERT_NAME' $ALERT_STATUS. Now triggered on $ALERT_FAILED_HOST hosts. Defined with $ALERT_POLICY_CONDITION_FILTERBY='$ALERT_POLICY_CONDITION_FILTERITEMNAME', promise handle '$ALERT_POLICY_CONDITION_PROMISEHANDLE' and outcome $ALERT_POLICY_CONDITION_PROMISEOUTCOME"
+logger -i "Policy alert '$ALERT_NAME' $ALERT_STATUS. Now triggered on $ALERT_FAILED_HOST hosts. Defined with $ALERT_POLICY_CONDITION_FILTERBY='$ALERT_POLICY_CONDITION_FILTERITEMNAME', promise handle '$ALERT_POLICY_CONDITION_PROMISEHANDLE' and outcome $ALERT_POLICY_CONDITION_PROMISEOUTCOME"
 
-    exit $?
+exit $?
 ```
 What gets logged to syslog depends on which alert is associated with the script, but an example log-line is as follows:
 

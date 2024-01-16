@@ -169,7 +169,6 @@ Now force a policy run.
 ```command
 cf-agent -KI
 ```
-
 ```output
 info: Successfully installed package 'ntp'
 ```
@@ -272,11 +271,11 @@ If the code has no syntax error, you should see no output.
 
 Perform a manual policy run and review the output to ensure that the policy executed successfully. Upon a successful run you should expect to see an output similar to this (depending on the init system your OS is using):
 
-```console
-[root@hub masterfiles]# cf-agent -KIf update.cf;
+```command
+cf-agent -KIf update.cf ; cf-agent -KI
+```
+```output
     info: Copied file '/var/cfengine/masterfiles/services/ntp.cf' to '/var/cfengine/inputs/services/ntp.cf.cfnew' (mode '600')
-
-[root@hub masterfiles]# cf-agent -KI
     info: Executing 'no timeout' ... '/sbin/chkconfig ntpd on'
     info: Command related to promiser '/sbin/chkconfig ntpd on' returned code defined as promise kept 0
     info: Completed execution of '/sbin/chkconfig ntpd on'

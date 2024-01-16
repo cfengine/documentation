@@ -19,8 +19,10 @@ jobs:
         python-version: "3.7"
     - name: Run markdowner.py to (hopefully not) edit markdown files
       run: |
-        # TODO: Fix last warnings in output of script and ensure no warnings here
-        find . -name '*.markdown' -type f -exec python3 .github/workflows/markdowner.py {} all \;
+        find . -name '*.markdown' -type f -exec python3 .github/workflows/markdowner.py {} all \; | tee output.log
+    - name: Check output.log file for warnings
+      run: |
+        ! grep WARNING output.log
     - name: Check if there are changes
       run: |
         git diff --exit-code

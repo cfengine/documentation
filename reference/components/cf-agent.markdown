@@ -40,10 +40,9 @@ For example:
 bundle agent __main__
 {
   vars:
-      "msg"
-        string => execresult( "/bin/echo Hello world!", "useshell" ),
-        meta => { "simulate_safe" };
-
+    "msg"
+      string => execresult( "/bin/echo Hello world!", "useshell" ),
+      meta => { "simulate_safe" };
 }
 ```
 
@@ -149,20 +148,16 @@ made by `cf-agent`.
 body agent control
 {
   # Agent email report settings based on their domain.
-
-    alpha_cfengine_com::
-      domain => "alpha.cfengine.com";
-      mailto => "admins@alpha.cfengine.com";
-
-    beta_domain_com::
-      domain => "beta.cfengine.com";
-      mailto => "admins@beta.cfengine.com";
-
-    any::
-      mailfrom => "root";
+  alpha_cfengine_com::
+    domain => "alpha.cfengine.com";
+    mailto => "admins@alpha.cfengine.com";
+  beta_domain_com::
+    domain => "beta.cfengine.com";
+    mailto => "admins@beta.cfengine.com";
+  any::
+    mailfrom => "root";
 }
 ```
-
 
 ### abortbundleclasses
 
@@ -184,56 +179,46 @@ method bundle.
 
 ```cf3
 body common control
-
 {
-bundlesequence  => { "testbundle"  };
-version => "1.2.3";
+  bundlesequence  => { "testbundle"  };
+  version => "1.2.3";
 }
 
 #################################
 
 body agent control
-
 {
-abortbundleclasses => { "invalid.*" };
+  abortbundleclasses => { "invalid.*" };
 }
 
 #################################
 
 bundle agent testbundle
 {
-vars:
-
- "userlist" slist => { "xyz", "mark", "jeang", "jonhenrik", "thomas", "eben" };
-
-methods:
-
- "any" usebundle => subtest("$(userlist)");
-
+  vars:
+    "userlist"
+      slist => { "xyz", "mark", "jeang", "jonhenrik", "thomas", "eben" };
+  methods:
+    "any"
+      usebundle => subtest("$(userlist)");
 }
 
 #################################
 
 bundle agent subtest(user)
-
 {
-classes:
+  classes:
+    "invalid"
+      not => regcmp("[a-z]{4}","$(user)");
+  reports:
+    !invalid::
+      "User name $(user) is valid at exactly 4 letters";
 
-  "invalid" not => regcmp("[a-z]{4}","$(user)");
-
-reports:
-
- !invalid::
-
-  "User name $(user) is valid at exactly 4 letters";
-
- # abortbundleclasses will prevent this from being evaluated
- invalid::
-
-  "User name $(user) is invalid";
+    # abortbundleclasses will prevent this from being evaluated
+    invalid::
+      "User name $(user) is invalid";
 }
 ```
-
 
 ### abortclasses
 
@@ -280,10 +265,8 @@ bundle common bundle_b
 bundle agent bundle_c
 {
   classes:
-
     # Here we define a class that will match the abortclasses under more complex
     # conditions
-
     "should_not_continue"
       expression => "(abort_condition_a.abort_condition_b).!something_else",
       scope => "namespace";
@@ -329,7 +312,6 @@ Another place to make global aliases for system hardclasses.
 Classes here are added unequivocally to the system. If classes are
 used to predicate definition, then they must be defined in terms of
 global hard classes.
-
 
 ### agentaccess
 
@@ -400,7 +382,7 @@ during agent execution.
 ```cf3
 body agent control
 {
-allclassesreport => "true";
+  allclassesreport => "true";
 }
 ```
 
@@ -425,11 +407,9 @@ executing, or only after updates.
 ```cf3
 body agent control
 {
-Min00_05::
-
-  # revalidate once per hour, regardless of change in configuration
-
-  alwaysvalidate => "true";
+  Min00_05::
+    # revalidate once per hour, regardless of change in configuration
+    alwaysvalidate => "true";
 }
 ```
 
@@ -442,7 +422,6 @@ changed to save CPU cycles. When this attribute is set, `cf-agent`
 will force a revalidation of the input.
 
 **History:** Was introduced in version 3.1.2,Enterprise 2.0.1 (2010)
-
 
 ### auditing
 
@@ -492,7 +471,7 @@ class.
 ```cf3
 body agent control
 {
-checksum_alert_time => "30";
+  checksum_alert_time => "30";
 }
 ```
 
@@ -513,10 +492,9 @@ of the agent.
 ```cf3
 body agent control
 {
-childlibpath => "/usr/local/lib:/usr/local/gnu/lib";
+  childlibpath => "/usr/local/lib:/usr/local/gnu/lib";
 }
 ```
-
 
 ### copyfrom_restrict_keys
 
@@ -525,9 +503,12 @@ This attribute restricts `cf-agent` to copying files from hosts that have a key 
 **Example:**
 
 ```cf3
-body agent control {
-  copyfrom_restrict_keys => { "SHA=6565a8e647e61e4a7ff2c709e0fe772acce2e45aaa294b2bb713de0ba5a6d8c3",
-                              "SHA=727dd7f6f8b2344c6d69cf1d3ed0446c0f9f095ce1a114481d691bf1cb2b300d"
+body agent control
+{
+  copyfrom_restrict_keys => {
+    "SHA=6565a8e647e61e4a7ff2c709e0fe772acce2e45aaa294b2bb713de0ba5a6d8c3",
+    "SHA=727dd7f6f8b2344c6d69cf1d3ed0446c0f9f095ce1a114481d691bf1cb2b300d",
+  }
 }
 ```
 
@@ -558,7 +539,7 @@ repository.
 ```cf3
 body agent control
 {
-default_repository => "/var/cfengine/repository";
+  default_repository => "/var/cfengine/repository";
 }
 ```
 
@@ -597,7 +578,6 @@ body agent control
 * `cf-serverd` will time out any transfer that takes longer than 10 minutes
   (this is not currently tunable).
 
-
 ### defaultcopytype
 
 **Description:** The `defaultcopytype` menu option policy sets the global
@@ -619,11 +599,10 @@ default policy for comparing source and image in copy transactions.
 ```cf3
 body agent control
 {
-#...
-defaultcopytype => "digest";
+  #...
+  defaultcopytype => "digest";
 }
 ```
-
 
 ### dryrun
 
@@ -639,10 +618,9 @@ the system, and will only report what it needs to do.
 ```cf3
 body agent control
 {
-dryrun => "true";
+  dryrun => "true";
 }
 ```
-
 
 ### editbinaryfilesize
 
@@ -663,7 +641,7 @@ and may be overridden on a per-promise basis with `max_file_size`.
 ```cf3
 body agent control
 {
-edibinaryfilesize => "10M";
+  edibinaryfilesize => "10M";
 }
 ```
 
@@ -690,7 +668,7 @@ overridden on a per-promise basis with `max_file_size`.
 ```cf3
 body agent control
 {
-editfilesize => "120k";
+  editfilesize => "120k";
 }
 ```
 
@@ -711,19 +689,18 @@ The values of environment variables are inherited by child commands.
 ```cf3
 body common control
 {
-bundlesequence => { "one" };
+  bundlesequence => { "one" };
 }
 
 body agent control
 {
-environment => { "A=123", "B=456", "PGK_PATH=/tmp"};
+  environment => { "A=123", "B=456", "PGK_PATH=/tmp"};
 }
 
 bundle agent one
 {
-commands:
-
-  "/usr/bin/env";
+  commands:
+    "/usr/bin/env";
 }
 ```
 
@@ -732,9 +709,8 @@ Some interactive programs insist on values being set, for example:
 ```cf3
 # Required by apt-cache, debian
 
-environment => { "LANG=C"};
+environment => { "LANG=C" };
 ```
-
 
 ### expireafter
 
@@ -755,8 +731,8 @@ kill and restart its attempt to keep a promise.
 ```cf3
 body action example
 {
-ifelapsed   => "120";   # 2 hours
-expireafter => "240";   # 4 hours
+  ifelapsed   => "120";   # 2 hours
+  expireafter => "240";   # 4 hours
 }
 ```
 
@@ -826,10 +802,9 @@ etc) this is a common setting.
 ```cf3
 body agent control
 {
-hashupdates => "true";
+  hashupdates => "true";
 }
 ```
-
 
 ### hostnamekeys
 
@@ -851,7 +826,7 @@ addresses.
 ```cf3
 body server control
 {
-hostnamekeys => "true";
+  hostnamekeys => "true";
 }
 ```
 
@@ -879,7 +854,7 @@ another which is not tied to a specific time.
 ```cf3
 body agent control
 {
-  ifelapsed   => "180";   # 3 hours
+  ifelapsed => "180";   # 3 hours
 }
 ```
 
@@ -909,7 +884,7 @@ It is equivalent to (and when present, overrides) the command line option
 ```cf3
 body agent control
 {
-inform => "true";
+  inform => "true";
 }
 ```
 
@@ -921,7 +896,6 @@ compatibility.
 **Type:** [`boolean`][boolean]
 
 **Default value:** false
-
 
 ### max_children
 
@@ -946,7 +920,7 @@ diminishing returns.
 ```cf3
 body agent control
 {
-max_children => "10";
+  max_children => "10";
 }
 ```
 
@@ -970,7 +944,7 @@ number of outgoing connections to `cf-serverd`.
 
 body agent control
 {
-maxconnections => "1000";
+  maxconnections => "1000";
 }
 ```
 
@@ -978,7 +952,6 @@ maxconnections => "1000";
 
 Watch out for kernel limitations for maximum numbers of open file
 descriptors which can limit this.
-
 
 ### mountfilesystems
 
@@ -997,7 +970,7 @@ file system table.
 ```cf3
 body agent control
 {
-mountfilesystems => "true";
+  mountfilesystems => "true";
 }
 ```
 
@@ -1017,7 +990,7 @@ This test is applied in all recursive/depth searches.
 ```cf3
 body agent control
 {
-nonalphanumfiles => "true";
+  nonalphanumfiles => "true";
 }
 ```
 
@@ -1042,8 +1015,8 @@ at the start of every scheduled bundle.
 ```cf3
 body agent control
 {
-refresh_processes => { "mybundle" };
-#refresh_processes => { "none" };
+  refresh_processes => { "mybundle" };
+  # refresh_processes => { "none" };
 }
 ```
 
@@ -1070,7 +1043,7 @@ canonize pathnames in the file repository.
 ```cf3
 body agent control
 {
-repchar => "_";
+  repchar => "_";
 }
 ```
 
@@ -1139,7 +1112,7 @@ owned by a privileged user.
 ```cf3
 body agent control
 {
-secureinput => "true";
+  secureinput => "true";
 }
 ```
 
@@ -1183,7 +1156,7 @@ number of files a mounted filesystem is expected to have.
 ```cf3
 body agent control
 {
-sensiblecount => "20";
+  sensiblecount => "20";
 }
 ```
 
@@ -1203,10 +1176,9 @@ number of bytes a mounted filesystem is expected to have.
 ```cf3
 body agent control
 {
-sensiblesize => "20K";
+  sensiblesize => "20K";
 }
 ```
-
 
 ### skipidentify
 
@@ -1228,7 +1200,7 @@ credentials.
 ```cf3
 body agent control
 {
-skipidentify => "true";
+  skipidentify => "true";
 }
 ```
 
@@ -1249,7 +1221,7 @@ it will skip them and output a warning message.
 ```cf3
 body agent control
 {
-suspiciousnames => { ".mo", "lrk3", "rootkit" };
+  suspiciousnames => { ".mo", "lrk3", "rootkit" };
 }
 ```
 
@@ -1272,10 +1244,9 @@ machine must comply with.
 ```cf3
 body agent control
 {
-timezone => { "MET", "CET", "GMT+1" };
+  timezone => { "MET", "CET", "GMT+1" };
 }
 ```
-
 
 ### track_value
 
@@ -1300,6 +1271,6 @@ promise.
 ```cf3
 body agent control
 {
-verbose => "true";
+  verbose => "true";
 }
 ```
