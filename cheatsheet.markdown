@@ -233,7 +233,6 @@ To have a component that shows command, and it's output you need to place output
 ```command
 uname
 ```
-
 ```output
 Linux
 ```

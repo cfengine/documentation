@@ -34,7 +34,6 @@ else
     echo "promises.cf is missing, $INTEGRATION_ROOT/masterfiles does not seem like the root of a policy set"
 fi
 ```
-
 ```output
 promise.cf exists, it's likely the root of a policy set
 ```
@@ -45,8 +44,6 @@ Let's see what version of the MPF we are starting from by looking at `version` i
 grep -P "\s+version\s+=>" $INTEGRATION_ROOT/masterfiles/promises.cf 2>&1 \
     || echo "promises.cf is missing, $INTEGRATION_ROOT/masterfiles does not seem to be the root of a policy set"
 ```
-
-
 ```output
 version => "CFEngine Promises.cf 3.18.0";
 ```
@@ -58,7 +55,6 @@ git status \
       || echo "$INTEGRATION_ROOT/masterfiles does not appear to be a git repository!" \
       && git log -1
 ```
-
 ```output
 On branch master
 nothing to commit, working tree clean
@@ -90,7 +86,6 @@ Check `git status` to see that all the files have been deleted and are not stage
 ```command
 git status
 ```
-
 ```output
 On branch master
 Changes not staged for commit:
@@ -423,7 +418,6 @@ Now we can use `git status` to see an overview of the changes to the repository 
 cd $INTEGRATION_ROOT/masterfiles
 git status
 ```
-
 ```output
 On branch master
 Changes not staged for commit:
@@ -618,7 +612,6 @@ git checkout def.json
 git checkout services/autorun/custom-1.cf
 git checkout services/custom-3.cf
 ```
-
 ```output
 Updated 1 path from the index
 Updated 1 path from the index
@@ -633,8 +626,6 @@ Other deleted files from the upstream framework like `lib/deprecated-upstream.cf
 ```command
 git rm lib/deprecated-upstream.cf
 ```
-
-
 ```output
 rm 'lib/deprecated-upstream.cf'
 ```
@@ -644,7 +635,6 @@ The files marked as **modified** in the `git status` output are files that have 
 ```command
 git status
 ```
-
 ```output
 On branch master
 Changes to be committed:
@@ -967,7 +957,6 @@ Review `git status` one more time to make sure the changes are as expected.
 ```command
 git status
 ```
-
 ```output
 On branch master
 Changes to be committed:
@@ -1043,7 +1032,6 @@ Make sure the policy validates and commit your changes.
 ```command
 git commit -m "Upgraded MPF from 3.18.0 to 3.21.2"
 ```
-
 ```output
 [master a5d512c] Upgraded MPF from 3.18.0 to 3.21.2
  64 files changed, 2599 insertions(+), 728 deletions(-)
