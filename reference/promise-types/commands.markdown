@@ -125,9 +125,17 @@ So in the example above the command would be:
 **Description:** Allows to separate the arguments to the command from the
 command itself, using an slist.
 
-As with `args`, it is convenient to separate command and arguments.  With
-`arglist` you can use a slist directly instead of having to provide a single
-string as with `args`.
+As with `args`, it is convenient to separate command and arguments.
+With `arglist` you can use a slist directly instead of having to
+provide a single string as with `args`. That's particularly useful
+when there are embedded spaces and quotes in your arguments, but also
+when you want to get them directly from a slist without going through
+`join()` or other functions.
+
+**Note:** Spaces are not preserved when the `useshell` attribute is set to
+`"useshell"` or `"powersell"`. The same is true when using commands promises on
+Windows, even when `useshell` is set to `"noshell"`, due to limited support in
+the Win32 API.
 
 The `arglist` is **appended** to `args` if that's defined, to preserve
 backwards compatibility.
@@ -151,7 +159,10 @@ So in the example above the command would be:
 /bin/echo one two three four five
 ```
 
-**History:** Was introduced in CFEngine 3.9.0.
+**History:**
+
+* Introduced in CFEngine 3.9.0.
+* Fixed whitespace preservation when not using shell on non-Windows agents in 3.24.0
 
 **See also:** `args`, `join()`, `concat()`, `format()`
 
