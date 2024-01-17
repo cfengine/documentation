@@ -105,7 +105,7 @@ def process_codeblock(lines, filename, lineno_start):
             lineno += 1
             continue
         if line[len(prefix) :][0] != " ":
-            # Fond content without extra indentation -
+            # Found content without extra indentation -
             # no common indentation to remove.
             common_indent = None
             break
