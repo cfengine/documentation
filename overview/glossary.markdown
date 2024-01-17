@@ -219,8 +219,8 @@ Name of the user interface used in commercial CFEngine editions, where all repor
 Namespaces allow you to define new scopes for bundles, variables, and classes.
 By using a specific name for the namespace, you can use short and generic names for the identifiers inside of it.
 
-By default, if you don't specify a namespace, you are using the namespace called `default`.
-The CMDB (group data / host-specific data in Mission Portal) uses the `data` namespace unless you specify a namespace.
+By default, if you don't specify a namespace, you are using the namespace called ```default```.
+The CMDB (group data / host-specific data in Mission Portal) uses the ```data``` namespace unless you specify a namespace.
 
 You can think of namespaces in a similar way as putting files inside folders, instead of having all of your files in one folder.
 The result is that things are more organized and less chances of files / classes / variables / bundles having conflicting names.
