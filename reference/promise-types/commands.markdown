@@ -159,7 +159,10 @@ So in the example above the command would be:
 /bin/echo one two three four five
 ```
 
-**History:** Was introduced in CFEngine 3.9.0.
+**History:**
+
+* Introduced in CFEngine 3.9.0.
+* Fixed whitespace preservation when not using shell on non-Windows agents in 3.24.0
 
 **See also:** `args`, `join()`, `concat()`, `format()`
 
