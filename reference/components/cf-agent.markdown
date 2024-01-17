@@ -70,7 +70,6 @@ which is used to determine the summary output shown at the end of the run.
 * Introduced in version 3.17.0
 * `--simulate=manifest-full` introduced in version 3.18.0
 
-
 ## Automatic bootstrapping
 
 Automatic bootstrapping allows the user to connect a CFEngine Host to a Policy
@@ -85,8 +84,8 @@ following Avahi libraries:
 To make the CFEngine Server discoverable, it needs to register itself as an
 Avahi service. Run the following command:
 
-```
-$ /var/cfengine/bin/cf-serverd -A
+```command
+/var/cfengine/bin/cf-serverd -A
 ```
 
 This generates the configuration file for Avahi in `/etc/avahi/services` and
@@ -96,8 +95,8 @@ From this point on, the Policy Server will be discovered with the Avahi service.
 To verify that the server is visible, run the following command (requires
 `avahi-utils`):
 
-```
-$ avahi-browse -atr | grep cfenginehub
+```command
+avahi-browse -atr | grep cfenginehub
 ```
 
 The sample output looks like this:
@@ -110,8 +109,8 @@ _cfenginehub._tcp local
 Once the Policy Server is configured with the Avahi service, you can
 auto-bootstrap Hosts to it.
 
-```
-$ /var/cfengine/bin/cf-agent -B :avahi
+```command
+/var/cfengine/bin/cf-agent -B :avahi
 ```
 
 The Hosts require Avahi libraries to be installed in order to use this
@@ -120,8 +119,8 @@ locations. Install locations vary from system to system. If Avahi is
 installed in a non-standard location (i.e. compiled from source), set the
 `AVAHI_PATH` environmental variable to specify the path.
 
-```
-$ AVAHI_PATH=/lib/libavahi-client.so.3 /var/cfengine/bin/cf-agent -B
+```command
+AVAHI_PATH=/lib/libavahi-client.so.3 /var/cfengine/bin/cf-agent -B
 ```
 
 If more than one server is found, or if the server has more than one IP
@@ -129,8 +128,8 @@ address, the list of all available servers is printed and the user is asked to
 manually specify the IP address of the correct server by running the standard
 bootstrap command of cf-agent:
 
-```
-$ /var/cfengine/bin/cf-agent --bootstrap <IP address>
+```command
+/var/cfengine/bin/cf-agent --bootstrap <IP address>
 ```
 
 If only one Policy Server is found in the network, `cf-agent` performs the
@@ -241,6 +240,7 @@ body agent control
 {
   abortclasses => { "danger.*", "should_not_continue" };
 }
+
 bundle agent main
 {
   methods:
@@ -248,6 +248,7 @@ bundle agent main
     "bundle_b";
     "bundle_c";
 }
+
 bundle agent bundle_a
 {
   classes:
@@ -731,8 +732,8 @@ kill and restart its attempt to keep a promise.
 ```cf3
 body action example
 {
-  ifelapsed   => "120";   # 2 hours
-  expireafter => "240";   # 4 hours
+  ifelapsed   => "120"; # 2 hours
+  expireafter => "240"; # 4 hours
 }
 ```
 
@@ -780,7 +781,7 @@ for lazy-evaluation of overlapping file-copy promises.
 ```cf3
 body agent control
 {
-files_single_copy => { "/etc/.*", "/special/file" };
+  files_single_copy => { "/etc/.*", "/special/file" };
 }
 ```
 
