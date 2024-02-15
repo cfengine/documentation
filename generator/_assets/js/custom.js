@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 for (let i = anchorsOffsets.length - 1; i >= 0; i--) {
                     if (scrollTop > anchorsOffsets[i]) {
-                        setActiveLink(anchors[i].id);
+                        setActiveLink(anchors[i].id, i);
                         break;
                     }
                 }
@@ -396,11 +396,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        const setActiveLink = (id) => {
+        const setActiveLink = (id, n) => {
             const activeLink = document.querySelector(`#TOCbox_list li a[href$="#${id}"]`);
             if (activeLink) {
                 activeLink.classList.add('current');
             }
+            const tocWrapper = document.getElementById('TOCbox_wrapper');
+            const TOC_TOP_OFFSET = 42;
+            const LI_HEIGHT = 30;
+            const selectedOffset = window.innerHeight-TOC_TOP_OFFSET - (LI_HEIGHT * (n + 1))
+            tocWrapper.style.top = (selectedOffset < 0 ? 12 + selectedOffset : 12) + 'px';
         }
 
         window.addEventListener('scroll', updateActiveTocItem);
