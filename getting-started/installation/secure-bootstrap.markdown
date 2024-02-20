@@ -41,7 +41,7 @@ settings. So after we have set-up our hub (using the standard procedure
 of `cf-agent --bootstrap $HUB_IP`) we take care of the following:
 
 * `cf-serverd` must never accept a connection from a client presenting an
-  untrusted key. [Disable automatic key trust][Masterfiles Policy Framework#trustkeysfrom]
+  untrusted key. [Disable automatic key trust][Masterfiles Policy Framework#Automatic bootstrap - Trusting keys from new hosts with trustkeysfrom]
   by providing an empty list for `default:def.trustkeysfrom`.
 
 ## Bootstrap without automatically trusting
