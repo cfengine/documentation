@@ -22,7 +22,7 @@ Information about build modules available from the index (build.cfengine.com).
   The version of the build module.
 * **author**        *(jsonb)*
   The author information of the build module as a JSON object with keys such as url, name, image.
-* **updated**       *(timestamp *with time zone)
+* **updated**       *(timestamp with time zone)*
   The last updated time of the build module.
 * **downloads**     *(integer)*
   The number of downloads of the build module.
