@@ -9,11 +9,11 @@ The challenge in engineering IT infrastructure, especially as it scales
 vertically and horizontally, is to recognize the system components, what they do
 at any given moment in time (or over time), and when and how they change state.
 
-CFEngine Enterprise's data collection service, the `cf-hub` collector, collects,
+CFEngine Enterprise's data collection service, `cf-hub`, collects,
 organizes, and stores data from every host. The data is stored primarily in a
 PostgreSQL database.
 
-CFEngine Enterprise's user interface, the Mission Portal makes that data
+CFEngine Enterprise's user interface, Mission Portal, makes that data
 available to authorized users as high level reports or alerts and notifications.
 The reports can be designed in a GUI report builder or directly with SQL
 statements passed to PostgreSQL.
@@ -27,18 +27,18 @@ The dashboard contains informative widgets that you can customize to create
 alerts. All notifications of alert state changes, e.g. from OK to not-OK, are
 stored in an event log for later inspection and analysis.
 
-### Make changes to shared dashboard
+### Make changes to a shared dashboard
 
-<img src="clone-dashboard.png" alt="Clone dashboard possibility" width="490px">
+TODO: replace <img src="clone-dashboard.png" alt="Clone dashboard possibility" width="490px">
 
-Create an editable copy by clicking the button that appears when you hover over
+Create an editable copy by clicking the edit button (pencil icon) that appears when you hover over
 the dashboard's row.
 
 ### Alert widgets
 
 <img src="welcome_2nd_screen.png" alt="Enterprise UI Alerts" width="520px">
 
-Alerts can have three different severity level: low, medium and high. These are
+Alerts can have three different severity levels: low, medium and high. These are
 represented by yellow, orange and red rings respectively, along with the
 percentage of hosts alerts have triggered on. Hovering over the widget will show
 the information as text in a convenient list format.
@@ -92,16 +92,15 @@ All Events can be searched and viewed from the Event Log page.
 <img src="web-ui-mission-portal-api-view-whole-system-events-rbac.png" alt="Mission Portal - Events View whole system events RBAC page" width="380px">
 
 
-### Host count widget
+### Newly bootstrapped hosts widget
 
-The hosts count widget helps to visualize the number of hosts bootstrapped to CFEngine over time.
+The Newly bootstrapped hosts widget helps to visualize the number of hosts bootstrapped to CFEngine over time.
 
-<img src="dashboard-widget-hosts-count.png" alt="Dashboard Host count" width="412px">
+TODO: update screenshot <img src="dashboard-widget-hosts-count.png" alt="Dashboard Host count" width="412px">
 
 ## Hosts
 
-CFEngine collects data on promise compliance, and sorts hosts according to 3
-different categories: erroneous, fully compliant, and lacking data.
+CFEngine collects data on promise compliance, and sorts hosts into two categories: 100% compliant, and not.
 
 Find out more: [Hosts][]
 
