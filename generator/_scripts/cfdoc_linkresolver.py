@@ -99,6 +99,7 @@ def headerToAnchor(header):
     # interpreted by us to not include the header in the link map
     anchor = header.lower()
     anchor = anchor.rstrip("#").rstrip()
+    anchor = anchor.replace("--", "-")
     anchor = anchor.replace(" ", "-")
     anchor = anchor.replace(":", "-")
     anchor = anchor.replace(".", "-")
@@ -109,7 +110,6 @@ def headerToAnchor(header):
     anchor = anchor.replace("(", "-")
     anchor = anchor.replace(")", "-")
     anchor = anchor.replace('"', "")
-    anchor = anchor.replace("--", "-")
     anchor = anchor.lstrip("-").rstrip("-")
     return anchor
 
