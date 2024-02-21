@@ -30,7 +30,6 @@ administrator to change various options, including:
 * Unreachable host threshold
 * Number of samples used to identify a duplicate identity
 * Log level
-* Customize the user experience with the organization logo
 
 ## User management ##
 
@@ -57,15 +56,17 @@ if you have the admin role and a role that matches zero hosts, the user will
 not see any hosts in Mission Portal. A shared report will only be accessible
 to a user if the user has all roles that the report was restricted to.
 
-In order to access a shared reports or dashboard the use must have all roles
+In order to access a shared reports or dashboard the user must have all roles
 that the report or dashboard was shared with.
 
 In order to see a host, none of the classes reported by the host can match the
 class exclusions from any role the user has.
 
-Users without a role will not be able to see any hosts in Mission
-Portal.
+Users without a role will not be able to see any hosts in Mission Portal.
 
+Here is a set of example roles, users and the impact on each user will be able to view.
+
+### Example roles
 Role **suse**:
 - Class include: `SUSE`
 - Class exclude: empty
@@ -83,24 +84,24 @@ Role **windows_ubuntu**
 - Class include: `ubuntu`
 - Class exclude: empty
 
+### Example users
 User one has role `SUSE`.
 
 User two has roles `no_windows` and `cfengine_3`.
 
 User three has roles `windows_ubuntu` and `no_windows`.
 
-A report shared with `SUSE` and `no_windows` will not be seen by any of the
-listed users.
+### What reports each user can view
+A report shared with `SUSE` and `no_windows` will not be seen by any of the listed users.
 
-A report shared with `no_windows` and `cfengine_3` will only be seen by user
-two.
+A report shared with `no_windows` and `cfengine_3` will only be seen by user two.
 
 A report shared with `SUSE` will be seen by user one.
 
+### Which hosts each user can view
 User one will only be able to see hosts that report the `SUSE` class.
 
-User two will be able to see all hosts that have **not** reported the `windows`
-class.
+User two will be able to see all hosts that have **not** reported the `windows` class.
 
 User three will only be able to see hosts that have reported the `ubuntu` class.
 
@@ -115,7 +116,7 @@ To set the default role, click Settings -> User management -> Roles. You can the
 
 <img src="roles-list.png" alt="DefaultRoleSelecting" width="700px">
 
-**Behaviour of Default role:**
+**Behaviour of default role:**
 
 Any new users created in Mission Portal's local user database will have this new role assigned.
 
@@ -171,17 +172,13 @@ Configure outbound mail settings:
 
 Mission portal can authenticate against an external directory.
 
-**Special Notes:**
-
-- LDAP API Url refers to the API CFEngine uses internally for authentication.
-  Most likely you will not alter the default value.
-
-- LDAP filter must be supplied.
+**Special notes:**
 
 - LDAP Host refers is the IP or Hostname of your LDAP server.
-
+- LDAP filter must be supplied.
 - LDAP bind username should be the username used to bind and search the LDAP
   directory. It must be provided in distinguished name format.
+  Additionally, you can bind anonymously.
 
 - Default roles for users is configured under [Role management][Settings#Role management].
 
@@ -216,7 +213,7 @@ Mission Portal's configuration can be exported and imported.
 Roles in Mission portal can be restricted to perform only configured actions.
 Configure role-based access controls from settings.
 
-**Special Notes:**
+**Special notes:**
 
 - Admin role has all permissions by default.
 
