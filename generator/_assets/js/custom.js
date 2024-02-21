@@ -46,10 +46,20 @@ $(document).ready(function() {
         "</nav>";
 
     var newLine, el, title, link, elClass, url, ToC='';
+    var usedIds = {};
     $(".article h2, .article h3, .article h4").each(function() {
         el      = $(this);
-        title   = el.text();
-        link    = "#" + el.attr("id");
+        title   = el.text()
+        var id = el.attr("id");
+        var uniqueId = id;
+        if (usedIds[id]){
+            uniqueId = id +'-' + usedIds[id];
+            el.attr("id",uniqueId);
+            usedIds[id] += 1;
+        } else {
+            usedIds[id] = 1;
+        }
+        link    = "#" + uniqueId;
         elClass = "link_" + el.prop("tagName").toLowerCase()
         url     = window.location.pathname;
 
@@ -338,11 +348,11 @@ function selectVersion(value) {
 };
 window.selectVersion = selectVersion;
 
-document.addEventListener("DOMContentLoaded", function () {
+$(document).ready(function () {
     fillVersionWrapperSelect('/docs/branches.json')
 
     const anchors = document.querySelectorAll(
-        ".article h1[id], .article h2[id], .article h3[id], .article h4[id], .article h5[id], .article h6[id]"
+        ".article h1[id], .article h2[id], .article h3[id], .article h4[id]"
     );
 
     anchors.forEach(function(el){
@@ -372,13 +382,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // offsetTop returns offset to the offsetParent, which is main wrapper, we need to add 130px to get actual offset
         const fetchOffsets = anchors => [...anchors].map(a => a.offsetTop + 130);
-        let anchorsOffsets = fetchOffsets(anchors);
-
+        let anchorsOffsets;
         let timeout = undefined;
         const updateActiveTocItem = () => {
             if (timeout) {
                 clearTimeout(timeout)
             }
+            anchorsOffsets = fetchOffsets(anchors);
 
             // The current TOC menu item will be calculated in 100 ms after the user stops scrolling.
             // Otherwise, there might be redundant calculations.
@@ -403,10 +413,22 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             const tocWrapper = document.getElementById('TOCbox_wrapper');
             const TOC_TOP_OFFSET = 42;
-            const LI_HEIGHT = 30;
-            const selectedOffset = window.innerHeight-TOC_TOP_OFFSET - (LI_HEIGHT * (n + 1))
+            let i = 0;
+            const offsetArr = [...tocLinks].map((el,)=>{
+                const li = el.parentElement;
+                i+=li.clientHeight + parseInt(window.getComputedStyle(li).getPropertyValue('margin-bottom'));
+                return i;
+            })
+            const selectedOffset = window.innerHeight-TOC_TOP_OFFSET - (offsetArr[Math.min(offsetArr.length -1 , n + 1)]);
             tocWrapper.style.top = (selectedOffset < 0 ? 12 + selectedOffset : 12) + 'px';
+
         }
+            if (window.location.hash){
+                const id = window.location.hash.slice(1);
+                const n = [...anchors].findIndex(a => a.id === id);
+                setActiveLink(id, n);
+            }
+
 
         window.addEventListener('scroll', updateActiveTocItem);
         window.addEventListener("resize", () => {
