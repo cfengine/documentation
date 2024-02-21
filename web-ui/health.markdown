@@ -9,10 +9,13 @@ published: true
 
 You can get quick access to the health of hosts, including direct links to reports, from the Health drop down at the top of every Enterprise UI screen. Hosts are listed as unhealthy if:
 
-* the hub was not able to connect to and collect data from the host within a set time interval (unreachable host). The time interval can be set in the Mission Portal settings.
-* the policy did not get executed for the last three runs. This could be caused by `cf-execd` not running on the host (scheduling deviation) or an error in policy that stops its execution. The hub is still able to contact the host, but it will return stale data because of this deviation.
-* two or more hosts use the same key. This is detected by "reporting cookies", randomized tokens generated every report collection. If the client presents a mismatching cookie (compared to last collection) a collision is detected. The number of collisions (per hostkey) that cause the unhealthy status is configurable in [settings][Settings#Preferences].
-* reports have recently been collected, but cf-agent has not recently run. "Recently" is defined by the configured run-interval of their cf-agent.
+* Missing reporting data : Host has connected to hub (to get policy), but reports have never been collected from it.
+* Unreachable hosts : Reports from host has been collected in the past, but not recently (as defined by "Unreachable host threshold").
+* Outdated reporting data : The host is communicating correctly and sending its reports, but the data is outdated (there are no recent reports), indicating that there hasn't been any policy runs recently (performed by the cf-agent binary). There is no data to prove that your policy, describing your desired state, is being successfully enforced.
+* Policy errors : Reports have recently been collected and cf-agent has completed a run with an error.
+* Duplicate IDs : CFEngine hosts are identified by the CFEngine key they use. If two or more hosts use the same key the reports will be very unreliable. This is detected by exchanging randomized cookies(tokens) during report collections. If a client sends a mismatching cookie (compared to last collection), it indicates that multiple hosts are using the same ID.
+* Duplicate hostnames: multiple host identities reporting the same host identifier (by default hostname derived from `default:sys.fqhost` variable but changeable in Settings -> Host identifier)
+
 
 These categories are non-overlapping, meaning a host will only appear in one category at at time even if conditions satisfying multiple categories might be present. This makes reports simpler to read, and makes it easier to detect and fix the root cause of the issue. As one issue is resolved the host might then move to another category.
-In either situation the data from that host will be from old runs and probably not reflect the current state of that host.
+Regardless of the situation, the data from the host will be from the latest report collection, representing the most recent known state of the host.
