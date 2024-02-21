@@ -54,6 +54,9 @@ Sometimes (because `¯\_(ツ)_/¯`, maybe the page linked to hasn't been parsed 
 
 ##### Special characters in link targets
 
+See generator/_scripts/cfdoc_linkresolver.py for how various characters are changed to dashes (--, ,:,.,(,)) and erased (").
+Dashes are removed from the beginning and end of links as well.
+
 _Most_ (`¯\_(ツ)_/¯`) special characters are _okay_. For example:
 
 * Link targets with `/` (forward slashes) work
