@@ -8,7 +8,7 @@ sorting: 70
 Package modules are back-ends that enable the package promise to work
 with different types of platform package managers.
 
-See the [`packages` promises][packages] documentation for a
+See the [`packages` promises][packages-v2] documentation for a
 comprehensive reference on the body types and attributes used here.
 
 ## The CFEngine side

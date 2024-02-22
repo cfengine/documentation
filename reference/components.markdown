@@ -388,7 +388,7 @@ string is also prefixed messages in the event log.
 
 **Description:** List of package module bodies to query for package lists.
 
-Defines the list of [`package module bodies`][packages] which will be queries for
+Defines the list of [`package module bodies`][packages-v2] which will be queries for
 package lists, for use in `packagematching()`, `packageupdatesmatching()` and in
 Enterprise inventory reporting.
 
@@ -409,7 +409,7 @@ body common control
 
 **Description:** The default package module body to use.
 
-Defines the default package module body to use for [package promises][packages],
+Defines the default package module body to use for [package promises][packages-v2],
 if none is specified in the promise.
 
 **Type:** `string`

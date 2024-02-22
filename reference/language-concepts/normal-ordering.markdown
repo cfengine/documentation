@@ -114,7 +114,7 @@ following, converging towards a final state:
 4. [classes][classes]
 5. [users][users]
 6. [files][files]
-7. [packages][packages]
+7. [packages-v2][packages]
 8. [guest_environments][guest_environments]
 9. [methods][methods]
 10. [processes][processes]
