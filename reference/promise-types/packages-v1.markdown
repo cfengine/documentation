@@ -1,6 +1,6 @@
 ---
 layout: default
-title: v1 packages promise (package_method)
+title: packages (v2)
 published: true
 ---
 
