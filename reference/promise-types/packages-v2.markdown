@@ -46,7 +46,7 @@ string needs to be a bare package name, you cannot use a file name for this.
 
 * The promiser must be the fully qualified path to a file *or* a *package name*.
   `package_modules` do not have the concept of a
-  flexible [naming convention][packages (deprecated)#package_name_convention].
+  flexible [naming convention][packages-v1#package_name_convention].
 
   For example, here are valid ways to specify a specific package version when
   using the `package_module` based implementation.

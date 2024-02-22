@@ -1117,7 +1117,7 @@ changetimestamp | 2018-10-02 00:04:52+00
 ## Table: Software
 
 Software packages installed (according to local package manager) on the hosts.
-More information about CFEngine and package management can be found [here][packages-v2].
+More information about CFEngine and package management can be found [here][packages].
 
 **Columns:**
 
