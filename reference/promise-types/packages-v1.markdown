@@ -1,6 +1,6 @@
 ---
 layout: default
-title: packages (v2)
+title: packages (v1)
 published: true
 ---
 
