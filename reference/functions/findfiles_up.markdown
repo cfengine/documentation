@@ -11,7 +11,7 @@ by searching up the directory tree.
 
 This function searches for files matching a given glob pattern `glob` in the
 local filesystem by searching up the directory tree from a given absolute
-path `path`. The function searches at moast `level` levels of directories or
+path `path`. The function searches at most `level` levels of directories or
 until the root directory is reached. Argument `level` defaults to `inf` if
 not specified. The function returns a list of files as a data array where
 the first element _(element 0)_ and the last element _(element N)_ is first
