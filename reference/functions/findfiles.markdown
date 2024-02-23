@@ -9,12 +9,12 @@ published: true
 **Description:** Return the list of files that match any of the given glob patterns.
 
 This function searches for the given glob patterns in the local
-filesystem, returning files or directories that match.  Note that glob
-patterns are not regular expressions.  They match like Unix shells:
+filesystem, returning files or directories that match. Note that glob
+patterns are not regular expressions. They match like Unix shells:
 
 * `*` matches any filename or directory at one level, e.g. `*.cf` will
 match all files in one directory that end in `.cf` but it won't search
-across directories.  `*/*.cf` on the other hand will look two levels
+across directories. `*/*.cf` on the other hand will look two levels
 deep.
 * `**` recursively matches up to six subdirectories.
 * `?` matches a single letter.
@@ -31,7 +31,6 @@ allows you to do dynamic inputs and a dynamic bundle call chain.
 - Brace expression (i.e., `{foo,bar}`) and negative bracket expressions (i.e., `[!abc]`) were introduced in 3.24.
 
 **Example:**
-
 
 [%CFEngine_include_snippet(findfiles.cf, #\+begin_src cfengine3, .*end_src)%]
 
