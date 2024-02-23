@@ -19,7 +19,7 @@ depends on the [bundle][bundles] type:
 | [commands][commands] - execute a command |        | x     |        |         |
 | [databases][databases] - configure a database |        | x     |        |         |
 | [files][files] - configure a file |        | x     |        |         |
-| [packages-v2][packages] - install a package |        | x     |        |         |
+| [packages][packages] - install a package |        | x     |        |         |
 | [guest_environments][guest_environments] |        | x     |        |         |
 | [methods][methods] - take on a whole bundle of other promises |        | x     |        |         |
 | [processes][processes] - start or terminate processes |        | x     |        |         |

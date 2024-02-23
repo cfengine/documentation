@@ -1235,7 +1235,7 @@ changetimestamp   | 2015-03-12 10:20:18+00
 
 ## Table: SoftwareLog
 Software packages installed / deleted over period of time.
-More information about CFEngine and package management can be found [here][packages-v2].
+More information about CFEngine and package management can be found [here][packages].
 
 **Columns:**
 
