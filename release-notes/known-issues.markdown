@@ -24,7 +24,7 @@ functionality is reinstated.
 
 ### HP-UX specific
 
-* [Package promises][packages] do not have out-of-the-box support for the HP-UX
+* [Package promises][packages--v2] do not have out-of-the-box support for the HP-UX
   specific package manager. The workaround is to call the package manager
   directly using [commands promises][commands].
 * Some important system information is missing from the HP-UX inventory report,
