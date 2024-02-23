@@ -5,7 +5,7 @@ published: true
 ---
 
 **NOTE:** This package promise is deprecated.
-When possible use the latest [package promise version][packages--v2].
+When possible use the latest [package promise version][packages].
 
 If specific attributes are not specified and there is no `default:package_module_knowledge.platform_default` variable set then this v1 packages promise will be used.
 Also note that if no specific `package_method` attribute is included a default of [`generic`][#Default package method] will be used.

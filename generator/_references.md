@@ -64,4 +64,6 @@
 [mpf-classification-bundles]: reference-masterfiles-policy-framework.html#classification-bundles-before-autorun.html
 [mpf-services-autorun]: reference-masterfiles-policy-framework-services-autorun.html
 [package-modules-the-api]: reference-language-concepts-modules-package-module-api.html#the-api
-[packages]: reference-promise-types-packages-v2.html
+[packages#options]: reference-promise-types-packages-v2.html#options
+[packages-v1]: reference-promise-types-packages-v1.html
+[packages-v1#package_name_convention]: reference-promise-types-packages-v1.html#package_name_convention
