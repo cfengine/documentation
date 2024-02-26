@@ -9,32 +9,28 @@ published: true
 **Description:** Return the list of files that match any of the given glob patterns.
 
 This function searches for the given glob patterns in the local
-filesystem, returning files or directories that match.  Note that glob
-patterns are not regular expressions.  They match like Unix shells:
+filesystem, returning files or directories that match. Note that glob
+patterns are not regular expressions. They match like Unix shells:
 
 * `*` matches any filename or directory at one level, e.g. `*.cf` will
 match all files in one directory that end in `.cf` but it won't search
-across directories.  `*/*.cf` on the other hand will look two levels
+across directories. `*/*.cf` on the other hand will look two levels
 deep.
-* `?` matches a single letter
-* `[a-z]` matches any letter from `a` to `z`
+* `**` recursively matches up to six subdirectories.
+* `?` matches a single letter.
+* `[abc]` matches `a`, `b` or `c`.
+* `[!abc]` matches any letters other than `a`, `b` or `c`.
+* `[a-z]` matches any letter from `a` to `z`.
+* `[!a-z]` matches any letter not from `a` to `z`.
+* `{foo,bar}` matches `foo` or `bar`.
 
 This function, used together with the `bundlesmatching` function,
 allows you to do dynamic inputs and a dynamic bundle call chain.
 
-**WARNING:**
-- The current implementation of glob patterns on Windows contains bugs.
-  Therefore, we strongly recommend using the `!windows::` class guard
-  expression to safeguard against any use of the function on Windows platforms.
-  Rest assured, we are actively working on resolving these issues and improving
-  its functionality.
-
-**Notes:**
-
-- Brace expansion is not currently supported, `{x,y,anything}` will not match `x` or `y` or `anything`.
+**History:**
+- Brace expression (i.e., `{foo,bar}`) and negative bracket expressions (i.e., `[!abc]`) were introduced in 3.24.
 
 **Example:**
-
 
 [%CFEngine_include_snippet(findfiles.cf, #\+begin_src cfengine3, .*end_src)%]
 
