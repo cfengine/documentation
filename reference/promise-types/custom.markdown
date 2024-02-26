@@ -71,7 +71,7 @@ These attributes are handled by the agent, and cannot be used inside promise mod
 * `comment`
 * `depends_on`
 * `handle`
-* `meta`
+* [`meta`][Promise types#meta]
 * `with`
 * `classes`
 
