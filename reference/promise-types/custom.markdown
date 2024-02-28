@@ -122,7 +122,7 @@ from cfengine import PromiseModule, ValidationError
 
 
 class GitPromiseTypeModule(PromiseModule):
-    def validate_promise(self, promiser, attributes):
+    def validate_promise(self, promiser, attributes, metadata):
         if not promiser.startswith("/"):
             raise ValidationError(f"File path '{promiser}' must be absolute")
         for name, value in attributes.items():
@@ -131,7 +131,7 @@ class GitPromiseTypeModule(PromiseModule):
             if name == "repo" and type(value) is not str:
                 raise ValidationError(f"'repo' must be string for git promise types")
 
-    def evaluate_promise(self, promiser, attributes):
+    def evaluate_promise(self, promiser, attributes, metadata):
         if not promiser.startswith("/"):
             raise ValidationError("File path must be absolute")
 
