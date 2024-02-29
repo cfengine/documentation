@@ -122,7 +122,7 @@ from cfengine import PromiseModule, ValidationError
 
 
 class GitPromiseTypeModule(PromiseModule):
-    def validate_promise(self, promiser, attributes):
+    def validate_promise(self, promiser, attributes, metadata):
         if not promiser.startswith("/"):
             raise ValidationError(f"File path '{promiser}' must be absolute")
         for name, value in attributes.items():
@@ -131,7 +131,7 @@ class GitPromiseTypeModule(PromiseModule):
             if name == "repo" and type(value) is not str:
                 raise ValidationError(f"'repo' must be string for git promise types")
 
-    def evaluate_promise(self, promiser, attributes):
+    def evaluate_promise(self, promiser, attributes, metadata):
         if not promiser.startswith("/"):
             raise ValidationError("File path must be absolute")
 
@@ -402,12 +402,12 @@ This is done so the agent can print the messages while the promise is evaluating
 Log messages formatted like this must be before the JSON message, and it is optional.
 You can also include log messages in the JSON data:
 
-```
+```json
 {
   "operation": "evaluate_promise",
   "promiser": "/opt/cfengine/masterfiles",
   "attributes": {
-    "repo": "https://github.com/cfengine/masterfiles"}
+    "repo": "https://github.com/cfengine/masterfiles"
   },
   "log": [
     {
@@ -428,7 +428,7 @@ The JSON based protocol also supports the use of custom bodies.
 Custom bodies are sent as JSON objects within the respective attribute.
 The following is an example using the members attribute of the custom groups promise type:
 
-```
+```cf3
 body members foo_members
 {
   include => { "alice", "bob" };
@@ -438,16 +438,16 @@ body members foo_members
 bundle agent foo_group
 {
   groups:
-      "foo"
-        policy => "present",
-        members => foo_members;
+    "foo"
+      policy => "present",
+      members => foo_members;
 }
 ```
 
 The attributes from the above example would be sent like this:
 
-```
-"attributes": {
+```json
+{
   "policy": "present",
   "members": {
     "include": ["alice", "bob"],
