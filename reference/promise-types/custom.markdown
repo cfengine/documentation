@@ -473,7 +473,7 @@ The value may contain anything (including `=` signs) except for newlines and zer
 
 ##### Example requests in line based protocol
 
-```conf
+```
 cf-agent 3.16.0 v1
 
 operation=validate_promise
@@ -494,7 +494,7 @@ log_level=info
 
 ##### Example response in line based protocol
 
-```conf
+```
 git_promise_module 0.0.1 v1 line_based
 
 operation=validate_promise
