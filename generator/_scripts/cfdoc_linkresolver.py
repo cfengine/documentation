@@ -203,7 +203,7 @@ def parseMarkdownForAnchors(file_name, config):
 
 
 def applyLinkMap(file_name, config):
-    # print("applyLinkMap() filename = %s" % file_name)
+    print("applyLinkMap() filename = %s" % file_name)
     markdown_file = open(file_name, "r")
     markdown_lines = markdown_file.readlines()
     markdown_file.close()
@@ -295,8 +295,8 @@ def applyLinkMap(file_name, config):
                                 candidate_start = -1
                     i += 1
                 if index != -1:
-                    # print("applyLinkMap() candidate = %s" % candidate)
-                    # print("applyLinkMap() markdownline = %s" % markdown_line)
+                    print("applyLinkMap() candidate = %s" % candidate)
+                    print("applyLinkMap() markdownline = %s" % markdown_line)
                     write_changes = True
                     new_line += markdown_line[:index]
                     new_line += "[" + candidate + "]" + anchor

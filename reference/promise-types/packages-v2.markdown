@@ -1,6 +1,6 @@
 ---
 layout: default
-title: packages
+title: packages (v2)
 published: true
 ---
 
@@ -13,7 +13,7 @@ CFEngine 3.6 and older had a different package promise implementation, which is
 still functional, but considered deprecated. However, it may still be in use by
 existing policy files, and it may cover platforms which the new implementation
 does not currently cover. To read about the old package promise, go to the
-[old package promise section][packages (deprecated)].
+[v1 package promise (package_method)][packages-v1].
 
 The actual communication with the package manager on the system is handled by so
 called [package modules][Package modules], which are specifically written for
@@ -46,7 +46,7 @@ string needs to be a bare package name, you cannot use a file name for this.
 
 * The promiser must be the fully qualified path to a file *or* a *package name*.
   `package_modules` do not have the concept of a
-  flexible [naming convention][packages (deprecated)#package_name_convention].
+  flexible [naming convention][packages-v1#package_name_convention].
 
   For example, here are valid ways to specify a specific package version when
   using the `package_module` based implementation.

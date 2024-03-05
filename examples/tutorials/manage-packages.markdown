@@ -126,7 +126,7 @@ The packages promise also supports version pinning, so that you can specify
 exactly the version you want to have installed. It is modular and extensible, so
 that it is easy to add support for new platforms and package managers. For
 complete documentation, please have a look at the [reference manual for the
-packages promise][packages].
+packages promise][packages--v2].
 
 Of course, running the policy by hand is only good for initial testing. Once
 your policy works the way you need, you will want to deploy it to your entire

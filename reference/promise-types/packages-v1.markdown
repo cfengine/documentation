@@ -1,13 +1,14 @@
 ---
 layout: default
-title: packages (deprecated)
+title: packages (v1)
 published: true
 ---
 
-**NOTE:** This package promise is deprecated and has been superseded by
-[the new package promise][packages]. It is recommended to use the new package
-promise whenever possible. Simply using attributes from the new package promise
-interface will select the new implementation.
+**NOTE:** This package promise is deprecated.
+When possible use the latest [package promise version][packages].
+
+If specific attributes are not specified and there is no `default:package_module_knowledge.platform_default` variable set then this v1 packages promise will be used.
+Also note that if no specific `package_method` attribute is included a default of [`generic`][#Default package method] will be used.
 
 NOTE: CFEngine 3.6 introduces bundles `package_absent`, `package_present`,
 `package_latest`, `package_specific_present`, `package_specific_absent`, and
