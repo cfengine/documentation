@@ -5,65 +5,55 @@ published: true
 sorting: 20
 ---
 
-This guide presumes that you already have CFEngine properly installed
-and running on the policy hub, the machine that distributes the policy
-to all the clients. It also presumes that CFEngine is installed, but not
-yet configured, on a number of clients.
+This guide presumes that you already have CFEngine properly installed and running on the policy hub, the machine that distributes the policy to all the clients.
+It also presumes that CFEngine is installed, but not yet configured, on a number of clients.
 
-We present a step-by-step procedure to securely bootstrapping a
-number of servers (referred to as *clients*) to the policy hub, over a
-possibly unsafe network.
+We present a step-by-step procedure to securely bootstrapping a number of servers (referred to as *clients*) to the policy hub, over a possibly unsafe network.
 
 ## Introduction
 
-CFEngine's trust model is based on the secure exchange of keys. This
-exchange of keys between *client* and *hub*, can either happen manually
-or automatically. Usually this step is automated as a dead-simple
-"bootstrap" procedure:
+CFEngine's trust model is based on the secure exchange of keys.
+This exchange of keys between *client* and *hub*, can either happen manually or automatically.
+Usually this step is automated as a dead-simple "bootstrap" procedure:
 
 ```command
 cf-agent --bootstrap $HUB_IP
 ```
 
-It is presumed that during this first key exchange, *the network is
-trusted*, and no attacker will hijack the connection. After
+It is presumed that during this first key exchange, *the network is trusted*, and no attacker will hijack the connection.
+After
 "bootstrapping" is complete, the node can be deployed in the open
 internet, and all connections are considered secure.
 
-However there are cases where initial CFEngine deployment is happening
-over an insecure network, for example the Internet. In such cases we
-already have a secure channel to the clients, usually ssh, and we use
-this channel to *manually establish trust* from the hub to the clients
-and vice-versa.
+However there are cases where initial CFEngine deployment is happening over an insecure network, for example the Internet.
+In such cases we already have a secure channel to the clients, usually ssh, and we use this channel to *manually establish trust* from the hub to the clients and vice-versa.
 
 ## Locking down the policy server
 
-We must change the policy we're distributing to fully locked-down
-settings. So after we have set-up our hub (using the standard procedure
-of `cf-agent --bootstrap $HUB_IP`) we take care of the following:
+We must change the policy we're distributing to fully locked-down settings.
+So after we have set-up our hub (using the standard procedure of `cf-agent --bootstrap $HUB_IP`) we take care of the following:
 
 `cf-serverd` must never accept a connection from a client presenting an untrusted key.
 [Disable automatic key trust][Masterfiles Policy Framework#Automatic bootstrap - Trusting keys from new hosts with trustkeysfrom] by providing an empty list for `default:def.trustkeysfrom`.
 
 ## Bootstrap without automatically trusting
 
-In order to securely bootstrap a host you must have the public key of the host
-you wish to trust.
+In order to securely bootstrap a host you must have the public key of the host you wish to trust.
 
-Copy the hubs public key (`/var/cfengine/ppkeys/localhost.pub`) to the agent you
-wish to bootstrap. And install it using `cf-key`.
+Copy the hubs public key (`/var/cfengine/ppkeys/localhost.pub`) to the agent you wish to bootstrap.
+And install it using `cf-key`.
 
 ```command
 cf-key --trust-key /path/to/hubs/key.pub
 ```
 
-**Note:** If you are using [protocol_version `1` or `classic`][Components#protocol_version]
-you need to supply an IP address before the path to the key.
+**Note:** If you are using [protocol_version `1` or `classic`][Components#protocol_version] you need to supply an IP address before the path to the key.
 
 For example:
 
 ```
-notice: Establishing trust might be incomplete. For completeness, use --trust-key IPADDR:filename
+notice: Establishing trust might be incomplete.
+For completeness, use --trust-key IPADDR:filename
 ```
 
 Next copy the hosts public key (`/var/cfengine/ppkeys/localhost.pub`) to the hub and install it using `cf-key`.
@@ -80,8 +70,7 @@ cf-agent --trust-server no --bootstrap $HUB
 
 ## Manually establishing trust
 
-Get the hub's key and fingerprint, we'll them when configuring the host to trust
-the hub:
+Get the hub's key and fingerprint, we'll them when configuring the host to trust the hub:
 
 ```command
 HUB_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub
@@ -91,8 +80,7 @@ HUB_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub
 
 We will perform a *manual bootstrap*.
 
-Get the client's key and fingerprint, we'll need it later when establishing
-trust on the hub:
+Get the client's key and fingerprint, we'll need it later when establishing trust on the hub:
 
 ```command
 CLIENT_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
@@ -112,8 +100,8 @@ scp $HUB_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${HUB_K
 
 ### Install the clients public key on the hub
 
-Put the client's key into the hub's trusted keys. So
-on the hub, run:
+Put the client's key into the hub's trusted keys.
+So on the hub, run:
 
 ```command
 scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub
