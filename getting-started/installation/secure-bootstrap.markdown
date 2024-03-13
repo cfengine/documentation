@@ -5,38 +5,92 @@ published: true
 sorting: 20
 ---
 
-This guide presumes that you already have CFEngine properly installed and running on the policy hub, the machine that distributes the policy to all the clients.
-It also presumes that CFEngine is installed, but not yet configured, on a number of clients.
-
-We present a step-by-step procedure to securely bootstrapping a number of servers (referred to as *clients*) to the policy hub, over a possibly unsafe network.
-
-## Introduction
+This guide assumes you already have a working CFEngine hub (installed and bootstrapped), and you have installed CFEngine on a client you want to securely connect to the hub (bootstrap).
+See the [Getting started guide][Getting started] for an introduction to CFEngine and how to install it.
 
 CFEngine's trust model is based on the secure exchange of keys.
-This exchange of keys between *client* and *hub*, can either happen manually or automatically.
-Usually this step is automated as a dead-simple "bootstrap" procedure:
+Usually, when getting started with CFEngine, this step is automated as a dead-simple "bootstrap" procedure:
 
 ```command
 cf-agent --bootstrap $HUB_IP
 ```
 
-It is presumed that during this first key exchange, *the network is trusted*, and no attacker will hijack the connection.
-After
-"bootstrapping" is complete, the node can be deployed in the open
-internet, and all connections are considered secure.
+CFEngine uses mutual authentication, so this trust goes in both directions.
+Both the client and the hub refuse to communicate with an unknown, untrusted host.
 
-However there are cases where initial CFEngine deployment is happening over an insecure network, for example the Internet.
-In such cases we already have a secure channel to the clients, usually ssh, and we use this channel to *manually establish trust* from the hub to the clients and vice-versa.
+## Default configuration
 
-## Locking down the policy server
+In the default configuration, the policy server (cf-serverd) on the hub machine trusts incoming connections from the same `/16` subnet.
+This means that:
 
-We must change the policy we're distributing to fully locked-down settings.
-So after we have set-up our hub (using the standard procedure of `cf-agent --bootstrap $HUB_IP`) we take care of the following:
+* Bootstrapping new clients will work as long as the 2 first numbers in the IP address are identical ([IPv4 dot decimal representation](https://en.wikipedia.org/wiki/Dot-decimal_notation)) .
+  The hub and client mutually accept each other's keys, automatically.
+* This applies to _all_ IP addresses within that range, not just the 1 IP address belonging to the client you are currently bootstrapping.
+* The hub will keep accepting new clients from those IP addresses until you change the configuration.
+* If you try to bootstrap a client where those 2 numbers in the IP address do not match the hub, it will fail.
 
-`cf-serverd` must never accept a connection from a client presenting an untrusted key.
-[Disable automatic key trust][Masterfiles Policy Framework#Automatic bootstrap - Trusting keys from new hosts with trustkeysfrom] by providing an empty list for `default:def.trustkeysfrom`.
+This situation, where the client and hub automatically transfer and trust each other's keys is called _automatic trust_ or _automatic bootstrap_.
+When using automatic trust, it is presumed that during this first key exchange, *the network is trusted*, and no attacker will hijack the connection.
+Below we will show ways to change the configuration and bootstrap your clients in more secure ways.
+The goal here is to illustrate the different approaches, explaining what is needed and the implications of each.
+In the end, you will not be running these commands manually, but rather putting them into a provisioning system.
 
-## Bootstrap without automatically trusting
+## Allowing only specific IP addresses / subnets
+
+In order to specify and limit which hosts (IP addresses) are considered trusted and allowed to connect and fetch policy files, you can put the trusted IP addresses and subnets into the `acl` variable:
+
+```json
+[file=/var/cfengine/masterfiles/def.json]
+{
+  "variables": {
+    "default:def.acl": ["1.2.3.4", "4.3.2.1"]
+  }
+}
+```
+
+**Important:** Replace `1.2.3.4` with the IP address of your hub, `4.3.2.1` with the IP address of your client, and extend the list with any additional IP addresses / subnets.
+
+If you are using CFEngine Build, you can use [this module](https://build.cfengine.com/modules/allow-hosts/), putting the IP addresses as module input, or add the json file above to your project.
+(Save it as a file called `def.json` and do `cfbs add ./def.json`).
+
+Once this is set, you are no longer using the default value explained above (the `/16` subnet).
+This variable controls 3 different aspects: IP addresses allowed to connect, IP addresses to automatically trust keys from, and IP addresses allowed to fetch policy files.
+
+**Tip:** Setting the variable to `["0.0.0.0/0"]` will open up your hub to all IPv4 addresses, the entire internet.
+This is generally not recommended, but can make sense if you disable automatic trust (shown below), need to support clients connecting from the public internet, and/or want to manage firewalling restrictions outside of CFEngine.
+
+## Disabling automatic trust - Locking down the policy server
+
+In all cases, it is recommended to disable automatic trust when you are not using it.
+Either immediately after installation (if distributing keys through another channel, see below) or after you are done bootstrapping clients.
+You can edit the augments file to achieve this:
+
+```json
+[file=/var/cfengine/masterfiles/def.json]
+{
+  "variables": {
+    "default:def.trustkeysfrom": []
+  }
+}
+```
+
+If you are using CFEngine Build, you can achieve this by adding [this module](https://build.cfengine.com/modules/disable-automatic-key-trust/), or adding the json file above to your project.
+
+When combined with the variable above, you can create a very restricted setup:
+
+```json
+[file=/var/cfengine/masterfiles/def.json]
+{
+  "variables": {
+    "default:def.acl": ["1.2.3.4", "4.3.2.1"],
+    "default:def.trustkeysfrom": []
+  }
+}
+```
+
+Only those 2 IP addresses are allowed to connect, and they must use their existing keys, no new keys are automatically trusted.
+
+## Key distribution - boostrapping without automatically trusting
 
 In order to securely bootstrap a host you must have the public key of the host you wish to trust.
 
