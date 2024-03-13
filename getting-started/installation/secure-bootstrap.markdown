@@ -21,7 +21,9 @@ exchange of keys between *client* and *hub*, can either happen manually
 or automatically. Usually this step is automated as a dead-simple
 "bootstrap" procedure:
 
-`cf-agent --bootstrap $HUB_IP`
+```command
+cf-agent --bootstrap $HUB_IP
+```
 
 It is presumed that during this first key exchange, *the network is
 trusted*, and no attacker will hijack the connection. After
@@ -52,8 +54,8 @@ you wish to trust.
 Copy the hubs public key (`/var/cfengine/ppkeys/localhost.pub`) to the agent you
 wish to bootstrap. And install it using `cf-key`.
 
-```console
-[root@host001]# cf-key --trust-key /path/to/hubs/key.pub
+```command
+cf-key --trust-key /path/to/hubs/key.pub
 ```
 
 **Note:** If you are using [protocol_version `1` or `classic`][Components#protocol_version]
@@ -65,17 +67,16 @@ For example:
 notice: Establishing trust might be incomplete. For completeness, use --trust-key IPADDR:filename
 ```
 
-Next copy the hosts public key (`/var/cfengine/ppkeys/localhost.pub`) to the hub
-and install it using `cf-key`.
+Next copy the hosts public key (`/var/cfengine/ppkeys/localhost.pub`) to the hub and install it using `cf-key`.
 
-```console
-[root@hub]# cf-key --trust-key /path/to/host001/key.pub
+```command
+cf-key --trust-key /path/to/host001/key.pub
 ```
 
 Now that the hosts trust each other we can bootstrap the host to the hub.
 
-```console
-[root@host001]# cf-agent --trust-server no --bootstrap $HUB
+```command
+cf-agent --trust-server no --bootstrap $HUB
 ```
 
 ## Manually establishing trust
@@ -83,8 +84,8 @@ Now that the hosts trust each other we can bootstrap the host to the hub.
 Get the hub's key and fingerprint, we'll them when configuring the host to trust
 the hub:
 
-```console
-[root@hub]# HUB_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub
+```command
+HUB_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub
 ```
 
 ### On each client we deploy
@@ -94,20 +95,20 @@ We will perform a *manual bootstrap*.
 * Get the client's key and fingerprint, we'll need it later when establishing
   trust on the hub:
 
-  ```console
-  [root@host001]# CLIENT_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
+  ```command
+  CLIENT_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
   ```
 
 * Write the policy hub's IP address to `policy_server.dat`:
 
-  ```console
-  [root@host001]# echo $HUB_IP > /var/cfengine/policy_server.dat
+  ```command
+  echo $HUB_IP > /var/cfengine/policy_server.dat
   ```
 
 * Put the hub's key into the client's trusted keys:
 
-  ```console
-  [root@host001]# scp $HUB_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${HUB_KEY}.pub
+  ```command
+  scp $HUB_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${HUB_KEY}.pub
   ```
 
 ### Install the clients public key on the hub
@@ -115,6 +116,6 @@ We will perform a *manual bootstrap*.
 * Put the client's key into the hub's trusted keys. So
   on the hub, run:
 
-  ```console
-  [root@hub]# scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub
+  ```command
+  scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub
   ```
