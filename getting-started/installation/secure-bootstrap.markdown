@@ -90,6 +90,34 @@ When combined with the variable above, you can create a very restricted setup:
 
 Only those 2 IP addresses are allowed to connect, and they must use their existing keys, no new keys are automatically trusted.
 
+## Key location and generation
+
+If you are installing CFEngine using one of our official packages, keys are automatically generated and you can see them in the expected location:
+
+```command
+sudo ls /var/cfengine/ppkeys
+```
+```output
+ localhost.priv
+ localhost.pub
+'root-SHA=caa398e50c6e6ad554ea90e1bd5e8fee269ca097df6ce0c86ce993be16f6f9e3.pub'
+```
+
+The keypair of the host itself is always in the `localhost.pub` and `localhost.priv` files.
+Additional keypairs from the hosts CFEngine is talking to over the network are in the other `.pub` files.
+
+**Recommendation:** Don't copy, transfer, open, or share the private key (`localhost.priv`).
+It is a secret - putting it in more places is not necessary and increases the chances it could be compromised.
+When distributing keys for establishing trust, we are distributing the public keys (`.pub` files).
+
+If you are compiling CFEngine from source, or spawning a new VM based on an image / snapshot without keys inside, you can generate a new keypair:
+
+```
+sudo cf-key
+```
+
+**Tip:** When using "golden images" to spawn machines with CFEngine already installed, ensure the keys in `/var/cfengine/ppkeys` are deleted before generating the snapshot, and generate / insert keys during provisioning.
+
 ## Key distribution - boostrapping without automatically trusting
 
 In order to securely bootstrap a host you must have the public key of the host you wish to trust.
