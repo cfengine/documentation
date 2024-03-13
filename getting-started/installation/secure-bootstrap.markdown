@@ -42,9 +42,8 @@ We must change the policy we're distributing to fully locked-down
 settings. So after we have set-up our hub (using the standard procedure
 of `cf-agent --bootstrap $HUB_IP`) we take care of the following:
 
-* `cf-serverd` must never accept a connection from a client presenting an
-  untrusted key. [Disable automatic key trust][Masterfiles Policy Framework#Automatic bootstrap - Trusting keys from new hosts with trustkeysfrom]
-  by providing an empty list for `default:def.trustkeysfrom`.
+`cf-serverd` must never accept a connection from a client presenting an untrusted key.
+[Disable automatic key trust][Masterfiles Policy Framework#Automatic bootstrap - Trusting keys from new hosts with trustkeysfrom] by providing an empty list for `default:def.trustkeysfrom`.
 
 ## Bootstrap without automatically trusting
 
@@ -92,30 +91,30 @@ HUB_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub
 
 We will perform a *manual bootstrap*.
 
-* Get the client's key and fingerprint, we'll need it later when establishing
-  trust on the hub:
+Get the client's key and fingerprint, we'll need it later when establishing
+trust on the hub:
 
-  ```command
-  CLIENT_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
-  ```
+```command
+CLIENT_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
+```
 
-* Write the policy hub's IP address to `policy_server.dat`:
+Write the policy hub's IP address to `policy_server.dat`:
 
-  ```command
-  echo $HUB_IP > /var/cfengine/policy_server.dat
-  ```
+```command
+echo $HUB_IP > /var/cfengine/policy_server.dat
+```
 
-* Put the hub's key into the client's trusted keys:
+Put the hub's key into the client's trusted keys:
 
-  ```command
-  scp $HUB_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${HUB_KEY}.pub
-  ```
+```command
+scp $HUB_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${HUB_KEY}.pub
+```
 
 ### Install the clients public key on the hub
 
-* Put the client's key into the hub's trusted keys. So
-  on the hub, run:
+Put the client's key into the hub's trusted keys. So
+on the hub, run:
 
-  ```command
-  scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub
-  ```
+```command
+scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub
+```
