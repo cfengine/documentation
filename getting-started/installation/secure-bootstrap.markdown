@@ -106,3 +106,18 @@ So on the hub, run:
 ```command
 scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub
 ```
+
+### Start the binaries
+
+Now that keys are distributed, trust is established.
+We can run the normal bootstrap command with one crucial difference:
+`--trust-server no` tells the agent to **not** automatically trust an unknown key on the other end.
+This will start the normal CFEngine services (`cf-execd`, `cf-serverd`, etc.):
+
+```
+cf-agent --trust-server no --bootstrap $HUB_IP
+```
+
+When we connect to the hubs IP address, if there is another server answering, a potential [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), it will not work.
+The agent on the client machine will refuse to communicate with the untrusted server.
+This is the main reason (security benefit) of doing mutual authentication and secure key distribution.
