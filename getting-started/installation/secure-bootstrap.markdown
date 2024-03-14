@@ -38,18 +38,18 @@ In the end, you will not be running these commands manually, but rather putting 
 
 ## Allowing only specific IP addresses / subnets
 
-In order to specify and limit which hosts (IP addresses) are considered trusted and allowed to connect and fetch policy files, you can put the trusted IP addresses and subnets into the `acl` variable:
+In order to specify and limit which hosts (IP addresses) are considered trusted and allowed to connect and fetch policy files, you can put the trusted IP addresses and subnets into the ```acl``` variable:
 
 ```json
 [file=/var/cfengine/masterfiles/def.json]
 {
   "variables": {
-    "default:def.acl": ["1.2.3.4", "4.3.2.1"]
+    "default:def.acl": ["192.0.2.42", "198.51.100.7"]
   }
 }
 ```
 
-**Important:** Replace `1.2.3.4` with the IP address of your hub, `4.3.2.1` with the IP address of your client, and extend the list with any additional IP addresses / subnets.
+**Important:** Replace `192.0.2.42` with the IP address of your hub, `198.51.100.7` with the IP address of your client, and extend the list with any additional IP addresses / subnets.
 
 If you are using CFEngine Build, you can use [this module](https://build.cfengine.com/modules/allow-hosts/), putting the IP addresses as module input, or add the json file above to your project.
 (Save it as a file called `def.json` and do `cfbs add ./def.json`).
@@ -60,7 +60,7 @@ This variable controls 3 different aspects: IP addresses allowed to connect, IP 
 At this point, you can run bootstrap on the client to the hub using automatic trust:
 
 ```command
-cf-agent --bootstrap 1.2.3.4
+cf-agent --bootstrap 192.0.2.42
 ```
 
 If the IP addresses are correct, keys will be automatically exchanged, and hosts will start using encrypted communication over TLS, with mutual authentication.
@@ -94,7 +94,7 @@ When combined with the variable above, you can create a very restricted setup:
 [file=/var/cfengine/masterfiles/def.json]
 {
   "variables": {
-    "default:def.acl": ["1.2.3.4", "4.3.2.1"],
+    "default:def.acl": ["192.0.2.42", "198.51.100.7"],
     "default:def.trustkeysfrom": []
   }
 }
@@ -147,7 +147,7 @@ The same applies to passwordless sudo - we're using sudo commands without passwo
 Assuming you are sitting on a laptop / workstation, and have network and SSH access to both the client and the hub, first set up some variables for each of them:
 
 ```command
-BOOTSTRAP_IP="1.2.3.4" HUB_SSH="ubuntu@1.2.3.4" CLIENT_SSH="ubuntu@4.3.2.1"
+BOOTSTRAP_IP="192.0.2.42" HUB_SSH="ubuntu@192.0.2.42" CLIENT_SSH="ubuntu@198.51.100.7"
 ```
 
 Edit the 3 variables according to your situation, they represent:
