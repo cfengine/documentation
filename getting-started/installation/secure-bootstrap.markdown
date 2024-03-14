@@ -9,18 +9,19 @@ This guide assumes you already have a working CFEngine hub (installed and bootst
 See the [Getting started guide][Getting started] for an introduction to CFEngine and how to install it.
 
 CFEngine's trust model is based on the secure exchange of keys.
+Since it's using mutual authentication, this trust goes in both directions.
+Both the client and the hub refuse to communicate with an unknown, untrusted host.
 Usually, when getting started with CFEngine, this step is automated as a dead-simple "bootstrap" procedure:
 
 ```command
 cf-agent --bootstrap <IP address of hub>
 ```
 
-CFEngine uses mutual authentication, so this trust goes in both directions.
-Both the client and the hub refuse to communicate with an unknown, untrusted host.
+However, this is in the default configuration, and there are several limitations and implications of this;
 
 ## Default configuration
 
-In the default configuration, the policy server (cf-serverd) on the hub machine trusts incoming connections from the same `/16` subnet.
+In the default configuration, the policy server (`cf-serverd`) on the hub machine trusts incoming connections from the same `/16` subnet.
 This means that:
 
 * Bootstrapping new clients will work as long as the 2 first numbers in the IP address are identical ([IPv4 dot decimal representation](https://en.wikipedia.org/wiki/Dot-decimal_notation)) .
@@ -56,6 +57,17 @@ If you are using CFEngine Build, you can use [this module](https://build.cfengin
 Once this is set, you are no longer using the default value explained above (the `/16` subnet).
 This variable controls 3 different aspects: IP addresses allowed to connect, IP addresses to automatically trust keys from, and IP addresses allowed to fetch policy files.
 
+At this point, you can run bootstrap on the client to the hub using automatic trust:
+
+```command
+cf-agent --bootstrap 1.2.3.4
+```
+
+If the IP addresses are correct, keys will be automatically exchanged, and hosts will start using encrypted communication over TLS, with mutual authentication.
+At this point CFEngine works on your hub and client, even if they are not on the same `/16` subnet.
+If this is your first time testing CFEngine, feel free to stop reading here and test the various features of Mission Portal, start writing policy, etc.
+In the sections below, we will explore the security implications of this setup further, and show more secure approaches.
+
 **Tip:** Setting the variable to `["0.0.0.0/0"]` will open up your hub to all IPv4 addresses, the entire internet.
 This is generally not recommended, but can make sense if you disable automatic trust (shown below), need to support clients connecting from the public internet, and/or want to manage firewalling restrictions outside of CFEngine.
 
@@ -90,6 +102,12 @@ When combined with the variable above, you can create a very restricted setup:
 
 Only those 2 IP addresses are allowed to connect, and they must use their existing keys, no new keys are automatically trusted.
 
+With what we've discussed up until now, we still need to _trust the network_ for limited periods of time, when we are bootstrapping new hosts.
+(Assuming that we are really communicating with the host we intend to, and that there aren't additional malicious hosts connecting from the same IP addresses / subnets).
+This is sometimes acceptable, especially if you are just testing CFEngine in a disposable and isolated environment.
+However, in a production setup it is recommended to exchange keys in the most secure / trusted method available.
+Below, we will show how.
+
 ## Key location and generation
 
 If you are installing CFEngine using one of our official packages, keys are automatically generated and you can see them in the expected location:
@@ -104,15 +122,16 @@ sudo ls /var/cfengine/ppkeys
 ```
 
 The keypair of the host itself is always in the `localhost.pub` and `localhost.priv` files.
-Additional keypairs from the hosts CFEngine is talking to over the network are in the other `.pub` files.
+Additional public keys from the hosts CFEngine is talking to over the network are in the other `.pub` files.
+The filename has a SHA checksum of the public key file - this is the CFEngine hosts unique ID (in Mission Portal, our API, PostgreSQL and LMDB databases, etc.).
 
 **Recommendation:** Don't copy, transfer, open, or share the private key (`localhost.priv`).
 It is a secret - putting it in more places is not necessary and increases the chances it could be compromised.
 When distributing keys for establishing trust, we are distributing the public keys (`.pub` files).
 
-If you are compiling CFEngine from source, or spawning a new VM based on an image / snapshot without keys inside, you can generate a new keypair:
+If you are compiling CFEngine from source, or spawning a new VM based on a snapshot without keys inside, you can generate a new keypair:
 
-```
+```command
 sudo cf-key
 ```
 
@@ -133,7 +152,7 @@ BOOTSTRAP_IP="1.2.3.4" HUB_SSH="ubuntu@1.2.3.4" CLIENT_SSH="ubuntu@4.3.2.1"
 
 Edit the 3 variables according to your situation, they represent:
 
-* `BOOTSTRAP_IP` - The IP address of the hub, which you want your client to bootstrap to (connect to).
+* `BOOTSTRAP_IP` - The IP address of the hub, which you want `cf-agent` on the client to bootstrap to (connect to).
 * `HUB_SSH` - The username / IP combination you would use to connect to the hub with SSH.
 * `CLIENT_SSH` - The username / IP combination you would use to connect to the hub with SSH.
 
@@ -221,7 +240,7 @@ We can run the normal bootstrap command with one crucial difference:
 `--trust-server no` tells the agent to **not** automatically trust an unknown key on the other end.
 This will start the normal CFEngine services (`cf-execd`, `cf-serverd`, etc.):
 
-```
+```command
 ssh "$CLIENT_SSH" "cf-agent --trust-server no --bootstrap $BOOTSTRAP_IP"
 ```
 
