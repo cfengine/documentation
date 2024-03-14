@@ -12,7 +12,7 @@ CFEngine's trust model is based on the secure exchange of keys.
 Usually, when getting started with CFEngine, this step is automated as a dead-simple "bootstrap" procedure:
 
 ```command
-cf-agent --bootstrap $HUB_IP
+cf-agent --bootstrap <IP address of hub>
 ```
 
 CFEngine uses mutual authentication, so this trust goes in both directions.
@@ -120,76 +120,101 @@ sudo cf-key
 
 ## Key distribution - boostrapping without automatically trusting
 
-In order to securely bootstrap a host you must have the public key of the host you wish to trust.
+To securely bootstrap a host to a hub, without trusting the network (IP addresses), you need to copy the 2 public keys across some trusted channel.
+Below we will be using SSH as the trusted channel, however the commands can easily be translated to however you are able to run commands and transfer files to your hosts.
+(This could be via memory stick, a management interface or some other out-of-band management solution).
+The same applies to passwordless sudo - we're using sudo commands without password prompts below, if you have configured password prompts for sudo, or another way you need to run privileged commands, please adjust accordingly.
 
-Copy the hubs public key (`/var/cfengine/ppkeys/localhost.pub`) to the agent you wish to bootstrap.
-And install it using `cf-key`.
-
-```command
-cf-key --trust-key /path/to/hubs/key.pub
-```
-
-**Note:** If you are using [protocol_version `1` or `classic`][Components#protocol_version] you need to supply an IP address before the path to the key.
-
-For example:
-
-```
-notice: Establishing trust might be incomplete.
-For completeness, use --trust-key IPADDR:filename
-```
-
-Next copy the hosts public key (`/var/cfengine/ppkeys/localhost.pub`) to the hub and install it using `cf-key`.
+Assuming you are sitting on a laptop / workstation, and have network and SSH access to both the client and the hub, first set up some variables for each of them:
 
 ```command
-cf-key --trust-key /path/to/host001/key.pub
+BOOTSTRAP_IP="1.2.3.4" HUB_SSH="ubuntu@1.2.3.4" CLIENT_SSH="ubuntu@4.3.2.1"
 ```
 
-Now that the hosts trust each other we can bootstrap the host to the hub.
+Edit the 3 variables according to your situation, they represent:
+
+* `BOOTSTRAP_IP` - The IP address of the hub, which you want your client to bootstrap to (connect to).
+* `HUB_SSH` - The username / IP combination you would use to connect to the hub with SSH.
+* `CLIENT_SSH` - The username / IP combination you would use to connect to the hub with SSH.
+
+### Trusting the client's key on the hub
+
+Inspect the key:
 
 ```command
-cf-agent --trust-server no --bootstrap $HUB
+ssh "$CLIENT_SSH" "sudo cat /var/cfengine/ppkeys/localhost.pub"
+```
+```output
+-----BEGIN RSA PUBLIC KEY-----
+MIIBCgKCAQEAt93D8fb+M7HGZxsVo+FnOhnLM9E0QCr046N369jOeePY65lPOhAD
+nlWlDPJrYqhnobEdnFr/uNp0ydqb1EASe4qjhQUDi1ujz5+T9dTwhZqUfx22RM6D
+CLulbdoXwImPOCNi157UBRIwYVJ6527rv0/TlTpS9iUQVStg0YCBEasGRcQfX/bU
+DKrL5Ei+ukJtSEx11NlZ9tRYNu22mJYPGGpNJ0FbiHvR+eu7mAuUZ1QeddcuYkGP
+H5/eIe0uTGOmFLXb4gUQymNLJUjQqxoO2l6Km4UpGj61871gCiqMGVTvvZWFbo+g
+1KR3RS6L/Gqv9U89msZTGQafpjFQyVbYnwIDAQAB
+-----END RSA PUBLIC KEY-----
 ```
 
-## Manually establishing trust
+It should have the format above, with `BEGIN RSA PUBLIC KEY`, the arbitrary data, and `END RSA PUBLIC KEY`.
+When you're scripting / automating the copying of keys, you can add some checks for this.
 
-Get the hub's key and fingerprint, we'll them when configuring the host to trust the hub:
+Download the key:
 
 ```command
-HUB_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub
+ssh "$CLIENT_SSH" "sudo cat /var/cfengine/ppkeys/localhost.pub" > client.pub
 ```
 
-### On each client we deploy
-
-We will perform a *manual bootstrap*.
-
-Get the client's key and fingerprint, we'll need it later when establishing trust on the hub:
+Upload it to the hub:
 
 ```command
-CLIENT_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
+scp ./client.pub "$HUB_SSH":client.pub
 ```
 
-Write the policy hub's IP address to `policy_server.dat`:
+And use `cf-key` to trust the key:
 
 ```command
-echo $HUB_IP > /var/cfengine/policy_server.dat
+ssh "$CLIENT_SSH" "sudo cf-key --trust-key client.pub"
 ```
 
-Put the hub's key into the client's trusted keys:
+### Trusting the hub's key on the client
+
+Now, for the client we need to perform exactly the same steps:
+
+Inspect the key:
 
 ```command
-scp $HUB_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${HUB_KEY}.pub
+ssh "$HUB_SSH" "sudo cat /var/cfengine/ppkeys/localhost.pub"
+```
+```output
+-----BEGIN RSA PUBLIC KEY-----
+MIIBCgKCAQEAt8Wti90sRjLiEhLbC5096nEhzV3fU0N4TrxiGPCb26KufavBrXGw
+vmzTeJoWnIFFSn7OYU1g59U7s4aViZwqQ647opc0gZo2dVjDTRFW8lB4dmS7SjAe
+t8NA3iXQigWY+45TbvPOalNHurhyrJ4g1+0ttdqwk/L1fVkK0u9wmHrgfo+UQR0D
+9P96GWnPKyzVp5PdMmfX0Sm6kMBurawRYeiFCq3gqGtkc0rj3FHr1afrM+8egP9D
+sWl43NmMlZ8B9Yt2bP0wdNsbXC7vouDZg8sIQVfvcxSkla+kGceGrEmNTDPuGFlx
+VknPhmpjMJ7XhvaXXR1btu3/PLjGLDj6SwIDAQAB
+-----END RSA PUBLIC KEY-----
 ```
 
-### Install the clients public key on the hub
-
-Put the client's key into the hub's trusted keys.
-So on the hub, run:
+Download the key:
 
 ```command
-scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub
+ssh "$HUB_SSH" "sudo cat /var/cfengine/ppkeys/localhost.pub" > hub.pub
 ```
 
-### Start the binaries
+Upload it to the client:
+
+```command
+scp ./hub.pub "$CLIENT_SSH":hub.pub
+```
+
+And use `cf-key` to trust the key:
+
+```command
+ssh "$CLIENT_SSH" "sudo cf-key --trust-key hub.pub"
+```
+
+### Start CFEngine on the client with a bootstrap command
 
 Now that keys are distributed, trust is established.
 We can run the normal bootstrap command with one crucial difference:
@@ -197,7 +222,7 @@ We can run the normal bootstrap command with one crucial difference:
 This will start the normal CFEngine services (`cf-execd`, `cf-serverd`, etc.):
 
 ```
-cf-agent --trust-server no --bootstrap $HUB_IP
+ssh "$CLIENT_SSH" "cf-agent --trust-server no --bootstrap $BOOTSTRAP_IP"
 ```
 
 When we connect to the hubs IP address, if there is another server answering, a potential [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), it will not work.
