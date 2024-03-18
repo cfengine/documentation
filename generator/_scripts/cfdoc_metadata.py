@@ -135,12 +135,17 @@ def processMetaData(file_path, config):
 
     out_file = open(file_path, "w")
     in_header = False
+    did_header = False
     for line in lines:
+        if did_header:
+            out_file.write(line)
+            continue
         if line.find("---") == 0:
             in_header = not in_header
             if not in_header:  # write new tags before header is terminated
                 out_file.write("categories: [%s]\n" % category)
                 out_file.write("alias: %s.html\n" % alias)
+                did_header = True
         if in_header:  # skip hard-coded duplicates
             if line.find("categories:") == 0:
                 continue
