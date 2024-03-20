@@ -10,7 +10,7 @@ provide support for the platforms most frequently used by our users. CFEngine
 provides [binary packages of the Enterprise edition][enterprise software download page]
 for all supported platforms and [binary packages for popular Linux distributions for the Community edition][community download page].
 
-## Enterprise server
+## Hub
 
 | Platform    | Versions                   | Architecture |
 |:-----------:|:--------------------------:|:------------:|
@@ -22,7 +22,7 @@ for all supported platforms and [binary packages for popular Linux distributions
 
 Any supported host can be a policy server in Community installations of CFEngine.
 
-## Hosts
+## Clients
 
 | Platform    | Versions                  | Architectures |
 |:-----------:|:-------------------------:|:-------------:|
