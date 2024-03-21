@@ -19,12 +19,12 @@ CFE_DIR: _site
 #to create correct links in sitemap
 CFE_manuals_version: "3.24"
 cfengine:
-  branch: "master"
-  core_branch: "master"
+  branch: "3.24"
+  core_branch: "3.24.x"
   latest_patch_release: 0
   latest_package_build: 1a
   vagrant_package_build: 1
-  masterfiles_branch: "master"
+  masterfiles_branch: "3.24.x"
 
 Template:
   parse:
