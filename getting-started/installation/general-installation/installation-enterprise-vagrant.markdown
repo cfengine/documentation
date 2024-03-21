@@ -55,7 +55,7 @@ virtualbox.org. After downloading VirtualBox, install it on your computer.
 **Note:** To avoid problems, disable other virtualization environments you are
 running.
 
-## Start the CFEngine Enterprise {{site.cfengine.branch}} Vagrant environment
+## Start the CFEngine Enterprise {{site.CFE_manuals_version}} Vagrant environment
 
 Step 1. Download our ready-made Vagrant project
 [tar-file](https://cfengine-package-repos.s3.amazonaws.com/enterprise/Enterprise-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}/misc/CFEngine_Enterprise_vagrant_quickstart-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.tar.gz).
