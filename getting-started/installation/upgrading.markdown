@@ -6,7 +6,7 @@ sorting: 30
 ---
 
 This guide documents our recommendation on how to upgrade an existing
-installation of CFEngine Enterprise to {{site.cfengine.branch}}. Community users
+installation of CFEngine Enterprise to {{site.CFE_manuals_version}}. Community users
 can use these instructions as a guide skipping the parts that are not relevant.
 
 In short, the steps are:
