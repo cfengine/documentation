@@ -189,6 +189,72 @@ curl -k --user <username>:<password> \
 }
 ```
 
+**Example Request Body with includeAdditionally set to true:**
+
+
+```
+{
+    "sort": "Host name",
+    "filter": {
+        "OS": {
+            "matches": "non-existing OS"
+        }
+    },
+    "hostFilter": {
+        "includes": {
+            "includeAdditionally": true,
+            "entries": {
+                "hostname": [
+                    "ubuntu-bionic"
+                ]
+            }
+        }
+    },
+    "select": [
+        "Host name",
+        "OS"
+    ]
+}
+```
+
+**Example response:**
+
+
+As you can see, despite the OS filter should return zero hosts, we had one additionally included by the host in the Host filter.
+
+```
+{
+    "data": [
+        {
+            "header": [
+                {
+                    "columnName": "Host name",
+                    "columnType": "STRING"
+                },
+                {
+                    "columnName": "OS",
+                    "columnType": "STRING"
+                }
+            ],
+            "queryTimeMs": 21,
+            "rowCount": 1,
+            "rows": [
+                [
+                    "ubuntu-bionic",
+                    "Ubuntu 18"
+                ]
+            ]
+        }
+    ],
+    "meta": {
+        "count": 1,
+        "page": 1,
+        "timestamp": 1712141765,
+        "total": 1
+    }
+}
+```
+
 ## List of inventory attributes
 
 **URI:** https://hub.cfengine.com/api/inventory/attributes-dictionary
