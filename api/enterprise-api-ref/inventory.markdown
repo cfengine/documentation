@@ -66,7 +66,18 @@ Inventory API allows to access inventory reports and attributes dictionary.
     Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
 * **hostContextInclude** *(array)*
     Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one of the specified contexts set will be excluded from the results. Optional parameter.
+* **hostFilter** *(json object)* Optional parameter.
+    * **includes** *(json object)* Optional parameter.
+      Object that specifies hosts to be included.
+        * **includeAdditionally** *(boolean)* Default: `false`
+          Defines if hosts will be added to the results returned by inventory filters or class filters.
+        * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+          Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
+    * **excludes** *(json object)* Optional parameter.
+      Object that specifies hosts to be excluded.
+        * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+          Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
 ```
 curl -k --user <username>:<password> \
@@ -175,6 +186,72 @@ curl -k --user <username>:<password> \
     "timestamp": 1496222472,
     "total": 1
   }
+}
+```
+
+**Example Request Body with includeAdditionally set to true:**
+
+
+```
+{
+    "sort": "Host name",
+    "filter": {
+        "OS": {
+            "matches": "non-existing OS"
+        }
+    },
+    "hostFilter": {
+        "includes": {
+            "includeAdditionally": true,
+            "entries": {
+                "hostname": [
+                    "ubuntu-bionic"
+                ]
+            }
+        }
+    },
+    "select": [
+        "Host name",
+        "OS"
+    ]
+}
+```
+
+**Example response:**
+
+
+As you can see, despite the OS filter should return zero hosts, we had one additionally included by the host in the Host filter.
+
+```
+{
+    "data": [
+        {
+            "header": [
+                {
+                    "columnName": "Host name",
+                    "columnType": "STRING"
+                },
+                {
+                    "columnName": "OS",
+                    "columnType": "STRING"
+                }
+            ],
+            "queryTimeMs": 21,
+            "rowCount": 1,
+            "rows": [
+                [
+                    "ubuntu-bionic",
+                    "Ubuntu 18"
+                ]
+            ]
+        }
+    ],
+    "meta": {
+        "count": 1,
+        "page": 1,
+        "timestamp": 1712141765,
+        "total": 1
+    }
 }
 ```
 
