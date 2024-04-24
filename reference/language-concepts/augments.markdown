@@ -413,13 +413,13 @@ results in
   class `MISSING` is not defined.
 
 * `augments_class_from_single_class_as_regex` will be defined because the class
-  ```cfengine``` is always defined.
+  `cfengine` is always defined.
 
 * `augments_class_from_single_class_as_expression` will be defined because
-  ```cfengine``` is defined when interpreted as a class expression.
+  `cfengine` is defined when interpreted as a class expression.
 
 * `augments_class_from_classexpression_and` will be defined because the class
-  ```cfengine``` and the class `cfengine_3` are defined and the class expression
+  `cfengine` and the class `cfengine_3` are defined and the class expression
   `cfengine.cfengine_3::` evaluates to true.
 
 * `augments_class_from_classexpression_not` will be defined because the class
@@ -428,18 +428,18 @@ results in
 
 * `augments_class_from_classexpression_or` will be defined because the class
   expression `cfengine|cfengine_3::` evaluates to true since at least one of
-  ```cfengine``` or `cfengine_3` will always be defined by cfengine 3 agents.
+  `cfengine` or `cfengine_3` will always be defined by cfengine 3 agents.
 
 * `augments_class_from_classexpression_complex` will be defined because the
   class expression `(cfengine|cfengine_3).!MISSING::` evaluates to true since at
-  least one of ```cfengine``` or `cfengine_3` will always be defined by cfengine 3
+  least one of `cfengine` or `cfengine_3` will always be defined by cfengine 3
   agents and `MISSING` is not defined.
 
 * `myclass_defined_by_augments_in_def_json_3_18_0_v0` will be defined because
   the class expression `cfengine|linux::` will always be true since there is
-  always a ```cfengine``` class defined.
+  always a `cfengine` class defined.
 
-* `myclass_defined_by_augments_in_def_json_3_18_0_v1` will be defined because the expression `cfengine.**` will match at least one defined class, ```cfengine```
+* `myclass_defined_by_augments_in_def_json_3_18_0_v1` will be defined because the expression `cfengine.**` will match at least one defined class, `cfengine`
 
 You can see the list of classes thus defined through `def.json` in the output
 of `cf-promises --show-classes` (see [Components][]). They
