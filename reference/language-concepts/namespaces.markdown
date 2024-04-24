@@ -47,7 +47,7 @@ A common mistake is forgetting to specify `default:` when using bodies from the 
 
 ## Variables
 
-Variables (except for Special variables) are assumed to be within the same scope
+Variables (except for [Special variables][Special variables]) are assumed to be within the same scope
 as the promiser but can also be referenced fully qualified with the namespace.
 
 [%CFEngine_include_example(namespace_variable_references.cf)%]
