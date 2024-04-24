@@ -58,6 +58,7 @@ There are two canonical augments files, `host_specific.json`, and `def.json` whi
 as specified by the [_augments_ key][Augments#augments].
 
 **Notes:**
+
 * CFEngine variables are **not** expanded unless otherwise noted.
 
 ### host_specific.json ###
