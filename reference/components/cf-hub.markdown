@@ -81,9 +81,9 @@ body hub control
 {
 
   # Collect reports every at the top and half of the hour. Additionally collect
-  # reports during the evening or night between Minute 45 and 50.
+  # reports during the evening or night at Minute 45.
 
-  hub_schedule => { "Min00", "Min30", "(Evening|Night).Min45_50" };
+  hub_schedule => { "Min00", "Min30", "(Evening|Night).Min45" };
 
 }
 ```
