@@ -38,14 +38,14 @@ These body settings determine the behavior of `cf-execd`,including scheduling
 times and output capture to `WORKDIR/outputs` and relay via email.
 
 ```cf3
-     body executor control
-     {
-         splaytime  => "5";
-         mailto     => "cfengine@example.org";
-         mailfrom   => "cfengine@$(host).example.org";
-         smtpserver => "localhost";
-         schedule   => { "Min00_05", "Min30_35" }
-     }
+body executor control
+{
+    splaytime  => "5";
+    mailto     => "cfengine@example.org";
+    mailfrom   => "cfengine@$(host).example.org";
+    smtpserver => "localhost";
+    schedule   => { "Min00", "Min30" }
+}
 ```
 
 
@@ -307,10 +307,10 @@ function may be affected by changing the `schedule`.
 **Example:**
 
 ```cf3
-    body executor control
-    {
-    schedule => { "Min00", "(Evening|Night).Min15_20", "Min30", "(Evening|Night).Min45_50" };
-    }
+body executor control
+{
+schedule => { "Min00", "(Evening|Night).Min15", "Min30", "(Evening|Night).Min45" };
+}
 ```
 
 ### smtpserver
