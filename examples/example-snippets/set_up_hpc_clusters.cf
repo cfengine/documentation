@@ -8,7 +8,7 @@ body executor control
       mailmaxlines => "30";
       # Once per hour, on the hour
 
-      schedule     => { "Min00_05" };
+      schedule     => { "Min00" };
 }
 #######################################################
 
