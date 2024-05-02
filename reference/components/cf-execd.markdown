@@ -43,7 +43,7 @@ body executor control
     mailto     => "cfengine@example.org";
     mailfrom   => "cfengine@$(host).example.org";
     smtpserver => "localhost";
-    schedule   => { "Min00_05", "Min30_35" }
+    schedule   => { "Min00", "Min30" }
 }
 ```
 
@@ -308,7 +308,7 @@ function may be affected by changing the `schedule`.
 ```cf3
 body executor control
 {
-schedule => { "Min00", "(Evening|Night).Min15_20", "Min30", "(Evening|Night).Min45_50" };
+schedule => { "Min00", "(Evening|Night).Min15", "Min30", "(Evening|Night).Min45" };
 }
 ```
 
