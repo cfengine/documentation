@@ -238,6 +238,7 @@ bundle agent my_bundle
 ```
 
 **Notes:**
+
 * ```vars``` and ```variables``` keys are allowed concurrently in the same file.
 * If ```vars``` and ```variables``` keys in the same augments file define the same variable, the definition provided by the **```variables``` key wins**.
 
@@ -302,6 +303,7 @@ Variables of other types than string can be defined too, like in this example
 ```
 
 **Notes:**
+
 * ```vars``` and ```variables``` keys are allowed concurrently in the same file.
 * If ```vars``` and ```variables``` keys in the same augments file define the same variable, the definition provided by the **```variables``` key wins**.
 
@@ -396,6 +398,7 @@ for use. Thus:
 ```
 
 results in
+
 * `augments_class_from_rgex_my_always` being always defined.
 
 * `augments_class_from_regex_my_other_apache` will be defined if the classes
