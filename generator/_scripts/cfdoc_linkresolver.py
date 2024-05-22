@@ -109,6 +109,7 @@ def headerToAnchor(header):
     anchor = anchor.replace("$", "-")
     anchor = anchor.replace("(", "-")
     anchor = anchor.replace(")", "-")
+    anchor = anchor.replace("--", "-")
     anchor = anchor.replace('"', "")
     anchor = anchor.lstrip("-").rstrip("-")
     return anchor
