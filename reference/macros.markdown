@@ -191,7 +191,8 @@ syntax validation, so any CFEngine binary that is not compiled with
 the feature support macro will be able to exclude syntax from
 possibly incompatible versions.
 
-Currently available features are :
+Currently available features are:
+
 * `xml`
 * `yaml`
 * `curl`

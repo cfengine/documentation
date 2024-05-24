@@ -14,6 +14,7 @@ This is the full version of CFEngine Enterprise host, but the number of hosts is
 **System requirements**
 
 CFEngine Hosts (clients)
+
 * 32/64-bit machines with a recent version of Linux
 * 20 mb of memory
 * 20mb of disk space

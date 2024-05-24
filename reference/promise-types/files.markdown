@@ -1453,7 +1453,7 @@ if the `create` attribute is explicitly used.
 
 **History:**
 
-* 3.20.0 Changed default from `false` to `true` for cases of full file management ( e.g. when `template_method` is `mustache`, `inline_mustache` or `cfengine`, or when the `content` or `copy_from` attributes are used ).
+* 3.20.0 Changed default from `false` to `true` for cases of full file management ( e.g. when `template_method` is `mustache`, `inline_mustache` or ```cfengine```, or when the `content` or `copy_from` attributes are used ).
 
 ### delete
 
@@ -3076,7 +3076,7 @@ state in Mustache.
 
 **Description:** The template type.
 
-By default `cfengine` requests the native CFEngine template
+By default ```cfengine``` requests the native CFEngine template
 implementation, but you can use `mustache` or `inline_mustache` as well.
 
 [%CFEngine_promise_attribute(cfengine)%]
@@ -3084,7 +3084,7 @@ implementation, but you can use `mustache` or `inline_mustache` as well.
 #### template_method cfengine
 
 The default native-CFEngine template format (selected when
-[template_method][files#template_method] is `cfengine` or unspecified) uses inline tags to
+[template_method][files#template_method] is ```cfengine``` or unspecified) uses inline tags to
 mark regions and classes. Each line represents an `insert_lines`
 promise, unless the promises are grouped into a block using:
 
