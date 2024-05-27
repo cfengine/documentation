@@ -1,4 +1,3 @@
-[cfengine]: https://cfengine.com "CFEngine Homepage"
 [support desk]: https://support.northern.tech "CFEngine - Support desk"
 [professional services]: https://cfengine.com/support/ "CFEngine - Help and Support"
 [Free25 Forum]: https://groups.google.com/forum/?hl=en&fromgroups#!forum/cfengine-enterprise-free-25 "Free25 Forum"
