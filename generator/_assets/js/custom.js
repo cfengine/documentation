@@ -302,7 +302,12 @@ if (window.innerWidth > 1023) {
     document.querySelectorAll('.mainMenu li.parent > i').forEach(function (element) {
         element.onclick = function (event) {
             event.stopImmediatePropagation();
-            element.closest('li.parent').classList.toggle('opened');
+            var parent = element.closest('li.parent');
+            parent.classList.toggle('opened');
+            var openedSubmenus = parent.querySelectorAll('.' +openedClass);
+            openedSubmenus.forEach((subMenu)=>{
+                subMenu.classList.remove(openedClass);
+            })
         }
     });
 } else {
