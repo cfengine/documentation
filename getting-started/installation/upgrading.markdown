@@ -109,6 +109,11 @@ agents you are ready to begin binary upgrades.
 
 ## Enterprise hub binary upgrade
 
+**Note:** Enterprise Hub packages want at least as much free space in the backup
+directory (`/var/cfengine/state/pg/backup` by default) as what is currently
+consumed in `/var/cfengine/state/pg/data`. Also, the backup directory should be
+empty before performing an Enterprise Hub binary upgrade.
+
 1. Ensure the CFEngine services are **running**
 
    For systemd managed systems:
