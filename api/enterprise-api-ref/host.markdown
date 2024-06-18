@@ -295,6 +295,61 @@ HTTP 200 Ok
 }
 ```
 
+## Restore deleted hosts entry
+
+**URI:** https://hub.cfengine.com/api/hosts/restore-deleted/:host-id
+
+**Method:** POST
+
+Restore host entry in reporting database.
+
+Note: to be able to perform this action related RBAC rule (alias `hosts-undelete.post`) should be enabled.
+
+**Responses:**
+
+| HTTP response code        | Description                |
+|---------------------------|----------------------------|
+| 200 OK                    | Host is found and restored |
+| 404 NOT FOUND             | Host is not found          |
+| 500 Internal server error | Internal server error      |
+
+**Example request (curl):**
+```
+curl -k --user <username>:<password> -X POST https://hub.example.com/api/hosts/restore-deleted/SHA=2123f85b38189008ae12be159fb961584dda1249c94efed43fec2c70f233975d
+```
+**Example response:**
+
+```
+HTTP 200 Ok
+```
+
+## Permanently delete host entry
+
+**URI:** https://hub.cfengine.com/api/hosts/delete-permanently/:host-id
+
+**Method:** POST
+
+Permanently deletes host entry from the reporting database.
+
+Note: to be able to perform this action related RBAC rule (alias `hosts-delete-permanently.delete`) should be enabled.
+
+**Responses:**
+
+| HTTP response code        | Description                                   |
+|---------------------------|-----------------------------------------------|
+| 200 OK                    | Deleted host is found and removed permanently |
+| 404 NOT FOUND             | Host is not found                             |
+| 500 Internal server error | Internal server error                         |
+
+**Example request (curl):**
+```
+curl -k --user <username>:<password> -X DELETE https://hub.example.com/api/hosts/delete-permanently/SHA=2123f85b38189008ae12be159fb961584dda1249c94efed43fec2c70f233975d
+```
+**Example response:**
+
+```
+HTTP 200 Ok
+```
 
 ## List monitoring attributes for host
 
