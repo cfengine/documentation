@@ -17,6 +17,7 @@ This API provides access to health diagnostic information.
 ```
 {
     "hostsNeverCollected": 1,
+    "removedHostsReport": 1,
     "hostNotRecentlyCollected": 0,
     "hostsUsingSameIdentity": 0,
     "agentNotRunRecently": 2,
@@ -37,6 +38,7 @@ This API provides access to health diagnostic information.
 ```
 [
     "hostsNeverCollected",
+    "removedHostsReport",
     "notRecentlyCollected",
     "hostsUsingSameIdentity",
     "agentNotRunRecently",
