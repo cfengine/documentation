@@ -8,11 +8,16 @@ keywords: [runagent]
 
 `cf-runagent` connects to a list of running instances of
 `cf-serverd`. It allows foregoing the usual `cf-execd` schedule to activate `cf-agent`.
-Additionally, a user may send [classes][Classes and decisions] to be defined
+A user may send [classes][Classes and decisions] to be defined
 on the remote host. Two kinds of classes may be sent: classes to decide on
 which hosts `cf-agent` will be started, and classes that the user requests
 `cf-agent` should define on execution. The latter type is regulated by
 `cf-serverd`'s [role based access control][roles].
+Additionally a user may send a list of [bundles][Bundles] to activate on the remote host
+with the `--remote-bundles` argument.
+This argument takes one or more comma separated bundle names.
+Each of the bundles requested must be given explicit permission with an access promise
+matching the bundle names.
 
 **Notes:**
 
