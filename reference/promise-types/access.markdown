@@ -7,12 +7,12 @@ published: true
 Access promises are conditional promises made by resources living on the server.
 
 The promiser is the name of the resource affected and is interpreted to be a path, unless a
-different `resource_type` is specified. Access is then granted to hosts listed in `admit_ips`,
+different `resource_type` is specified. Access must then be granted to hosts listed in `admit_ips`,
 `admit_keys` and `admit_hostnames`, or denied using the counterparts `deny_ips`, `deny_keys`
 and `deny_hostnames`.
 
-You layer the access policy by denying all access and then allowing it
-only to selected clients, then denying to an even more restricted set.
+By default access is denied.
+As a policy writer you must specifically grant access.
 
 ```cf3
 bundle server my_access_rules()
