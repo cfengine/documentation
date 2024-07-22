@@ -22,7 +22,7 @@ cfengine:
   branch: "3.24"
   core_branch: "3.24.x"
   latest_patch_release: 0
-  latest_package_build: 1a
+  latest_package_build: 1
   vagrant_package_build: 1
   masterfiles_branch: "3.24.x"
 
