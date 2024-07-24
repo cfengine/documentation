@@ -29,7 +29,7 @@ stored in an event log for later inspection and analysis.
 
 ### Make changes to a shared dashboard
 
-TODO: replace <img src="clone-dashboard.png" alt="Clone dashboard possibility" width="490px">
+<img src="clone-dashboard.png" alt="Clone dashboard possibility" width="490px">
 
 Create an editable copy by clicking the edit button (pencil icon) that appears when you hover over
 the dashboard's row.
@@ -96,7 +96,7 @@ All Events can be searched and viewed from the Event Log page.
 
 The Newly bootstrapped hosts widget helps to visualize the number of hosts bootstrapped to CFEngine over time.
 
-TODO: update screenshot <img src="dashboard-widget-hosts-count.png" alt="Dashboard Host count" width="412px">
+<img src="dashboard-widget-hosts-count.png" alt="Dashboard Host count" width="412px">
 
 ## Hosts
 
