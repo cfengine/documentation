@@ -13,8 +13,8 @@ string:
 VARIABLE="one two three"
 ```
 
-View this line as a tabular line separated by " and with sub-separator
-given by the space.
+View this line as a tabular line separated by `"` and with sub-separator (`value_separator`)
+being a space.
 
 Field editing allows us to edit tabular files in a unique way, adding and
 removing data from addressable fields.
