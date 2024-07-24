@@ -117,8 +117,6 @@ attributes are also extensible, by tagging any CFEngine variable or class, such
 as the role of the host, inside your CFEngine policy. These custom attributes
 will be automatically added to the Mission Portal.
 
-![Enterprise UI Reporting](inventory-hover.png)
-
 You can reduce the amount of data or find specific information by filtering on
 attributes and host groups. Filtering is independent from the data presented in
 the results table: you can filter on attributes without them being presented in
