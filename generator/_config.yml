@@ -1,7 +1,18 @@
 #auto: true
 safe: false
 #include: ./pages/
-plugins: ./_plugins/
+plugins:
+  - ./_plugins/category_nav.rb
+  - ./_plugins/CfeLiquidUtils.rb
+  - ./_plugins/cfengineAddons.rb
+  - ./_plugins/CfeUtils.rb
+  - ./_plugins/debug.rb
+  - ./_plugins/gentagspages.rb
+  - ./_plugins/jekyll_asset_pipeline.rb
+  - ./_plugins/navigation.rb
+  - ./_plugins/redcarpet2_markdown.rb
+  - ./_plugins/references.rb
+  - ./_plugins/sitemap_generator.rb
 # baseurl: /docs/master/
 git-repository: github.com/cfengine/documentation
 git-branch: "3.23"
@@ -39,7 +50,7 @@ virtualbox:
 paginate: 500
 
 pygments: true
-markdown: redcarpet2
+markdown: kramdown
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "tables"]
 asset_pipeline:
