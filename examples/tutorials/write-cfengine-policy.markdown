@@ -97,7 +97,7 @@ Let's save this policy in `/tmp/my-policy.cf`.
 You can now run this policy either in Distributed (client-server) System or in a
 Stand Alone system. The next two sections will cover each of the options.
 
-## Option#1: Running the policy on a stand alone system
+### Option#1: Running the policy on a stand alone system
 
 Since CFEngine is fully distributed we can run policies locally. This can come
 in handy as the result of a run is instant, especially during the design phase
