@@ -138,7 +138,7 @@ drwxr-xr-x 5 root root 4096 Dec 22 16:37 ..
 From the above output we can see that the local users `jack` and
 `jill` are present, and that they both have home directories.
 
-Now lets activate the example policy and insepect the result.
+Now lets activate the example policy and inspect the result.
 
 ```console
 root@debian-jessie:/core/examples# cf-agent -KIf ./local_users_absent.cf

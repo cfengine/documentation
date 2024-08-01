@@ -1106,6 +1106,7 @@ The following classes are excluded from logging:
 * `any`
 * `from_cfexecd`
 * Life cycle (`Lcycle_0`, `GMT_Lcycle_3`)
+
 ### secureinput
 
 **Description:** The `secureinput` menu option policy checks whether
