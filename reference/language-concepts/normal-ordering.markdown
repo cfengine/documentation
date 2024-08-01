@@ -77,6 +77,7 @@ evaluation perspective as bundles placed in files included in body common
 control inputs will be evaluated before bundles from file control inputs.
 
 The following steps are executed per-bundle for each file parsed, in this order:
+
 1. if it's a common bundle, evaluate **vars** promises
 2. if it's a common bundle, evaluate **classes** promises
 3. evaluate **vars** promises
