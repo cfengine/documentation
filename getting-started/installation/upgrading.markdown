@@ -133,6 +133,8 @@ empty before performing an Enterprise Hub binary upgrade.
    backups made during upgrade are placed in `/var/cfengine/state/pg/backup`,
    this can be overridden by **exporting** `BACKUP_DIR` before package upgrade.
 
+   **NOTE:** `BACKUP_DIR` should not exist and should be removable (e.g. it should not be a direct mount point).
+
    **Red Hat/CentOS:**
 
    ```console
