@@ -40,7 +40,8 @@ API call allowed only for administrator.
         "admin",
         "cf_remoteagent"
       ],
-      "external": false
+      "external": false,
+      "two_factor_enabled": true
     },
     {
       "id": "admin",
@@ -50,7 +51,8 @@ API call allowed only for administrator.
         "admin",
         "cf_remoteagent"
       ],
-      "external": false
+      "external": false,
+      "two_factor_enabled": false
     },
     {
       "id": "user_1",
@@ -74,6 +76,8 @@ API call allowed only for administrator.
     List of assigned RBAC roles.
 * **external**
     Is user from external source (LDAP/AD).
+* **two_factor_enabled**
+    If a user has enabled two-factor authentication
 
 **Example usage:** `Example: Listing users`
 
@@ -105,7 +109,8 @@ API call allowed only for administrator.
         "linux_team"
       ],
       "external": false,
-      "time_zone": "Europe/Oslo"
+      "time_zone": "Europe/Oslo",
+      "two_factor_enabled": false
     }
   ]
 }
@@ -123,6 +128,8 @@ API call allowed only for administrator.
     Is user from external source (LDAP/AD).
 * **time_zone**
     Time zone
+* **two_factor_enabled**
+    If a user has enabled two-factor authentication
 
 **Example usage:** `Example: Retrieving a user`
 
