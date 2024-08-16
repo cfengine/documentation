@@ -163,12 +163,13 @@ When doing a recursive search, the files '.' and '..' are never
 included in the matched files, even if the regular expression in the
 `leaf_name` specifically allows them.
 
-The filename `/dir/ect/ory/.` is a special case used with the `create`
-attribute to indicate the directory named `/dir/ect/ory` and not any of
-the files under it. If you really want to specify a regular expression
-that matches any single-character filename, use `/dir/ect/ory/[\w\W]` as
-your promise regular expression (you can't use `/dir/ect/ory/[^/]`, see
-below for an explanation.
+The filename `/dir/ect/ory/.` is a special case to avoid ambiguity between files
+and directories, especially in the case of creation (both with and without the
+explicit `create` attribute). Using /. ensures that a regular file is not
+created when a directory is actually desired. If you really want to specify a
+regular expression that matches any single-character filename, use
+`/dir/ect/ory/[\w\W]` as your promise regular expression (you can't use
+`/dir/ect/ory/[^/]`, see below for an explanation.
 
 Depth search refers to a search for file objects that starts from the
 one or more matched base-paths as shown in the example above.
