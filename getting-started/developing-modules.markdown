@@ -89,6 +89,8 @@ cfbs remove promise-type-git-example && cfbs add https://github.com/cfengine/pro
 ```
 
 **Tip:** Replace the URL with your own repository URL when you've create one using the template.
+If you are working on a branch of a repo you can add the commit at the end of the URL with `@<commit>`.
+Remember to update the commit in `cfbs.json` when you push changes to your branch.
 
 Then, build and deploy the project again:
 
