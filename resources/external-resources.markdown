@@ -76,7 +76,7 @@ target="_blank">LinkedIn</a>
 
 * <a href="https://www.facebook.com/cfengine" target="_blank">Facebook</a>
 
-* The #cfengine IRC channel on the [libera.chat](https://web.libera.chat/?channel=#cfengine) network.
+* The #CFEngine Matrix channel (#CFEngine:matrix.org).
 
 If you want to learn more about how CFEngine can help you and your
 organization, [contact us][contact us].
