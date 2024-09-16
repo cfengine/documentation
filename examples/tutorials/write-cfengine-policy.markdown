@@ -177,7 +177,7 @@ On the policy server you can run the following command to make sure the syntax
 is correct.
 
 ```command
-cf-promises -cf /var/cfengine/masterfiles/my-policy.cf
+cf-promises -cf /var/cfengine/masterfiles/promises.cf
 ```
 
 After some period of time (CFEngine runs by default every 5 minutes), log in to
