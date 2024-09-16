@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Normal ordering
+title: Policy evaluation
+alias: Normal ordering
 published: true
 sorting: 40
 ---
@@ -10,7 +11,7 @@ attributes and properties, ordering is irrelevant and should not be considered.
 More complex patterned data structures require ordering to be preserved, e.g.
 editing in files. CFEngine solves this in a two-part strategy:
 
-CFEngine maintains a default order of promise-types. This is based on a simple
+CFEngine maintains a default order of promise-types, referred to as `Normal order`. This is based on a simple
 logic of what needs to come first, e.g. it makes no sense to create something
 and then delete it, but it could make sense to delete and then create (an
 equilibrium). This is called normal ordering and is described below.  You can

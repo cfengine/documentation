@@ -289,7 +289,7 @@ If a class is set, then it is certain that the corresponding fact is true.
 However, that a class is not set could mean that something is not the case, or
 that something is simply not known. This is only a problem with soft classes,
 where the state of a class can change during the execution of a policy,
-depending on the [order][normal ordering] in which bundles and promises are
+depending on the [order][Policy evaluation] in which bundles and promises are
 evaluated.
 
 ## Making decisions based on classes
