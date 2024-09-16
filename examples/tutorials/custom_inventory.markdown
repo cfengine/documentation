@@ -67,7 +67,7 @@ bundle agent tutorials_inventory_owner
   reports:
     inform_mode::
       "$(this.bundle): Discovered Owner='$(my_owner)'"
-        if => isvaribale( "my_owner" );
+        if => isvariable( "my_owner" );
 }
 bundle agent __main__
 # @brief Run tutorials_inventory_owner if this policy file is the entry
