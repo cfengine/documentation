@@ -98,7 +98,7 @@ Due to the implementation details, the following attributes from the `classes` b
 ### Evaluation passes and normal order
 
 In CFEngine, each bundle is evaluated in multiple passes (3 main passes for most promise types).
-Within each evaluation pass of a bundle, the promises are not evaluated from top to bottom, but based on a [normal order][Normal ordering] of the promise types.
+Within each evaluation pass of a bundle, the promises are not evaluated from top to bottom, but based on the [normal order][Policy evaluation] of the bundle type.
 Custom promise types are added dynamically and don't have a predefined order, they are evaluated as they appear within a bundle (top to bottom), but at the end of each evaluation pass, after all the built in promise types.
 As with other promise types, we recommend not relying too much on this ordering, if you want some promises to be evaluated before others, use the `bundlesequence` or `depends_on` attribute to achieve this.
 

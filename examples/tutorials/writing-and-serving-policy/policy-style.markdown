@@ -28,9 +28,9 @@ guide.
 ## Promise ordering
 
 There are two common styles that are used when writing policy. The
-[Normal Order][Normal ordering] style dictates that promises should be
-written in in the Normal Order that the agent evaluates promises
-in. The other is reader optimized where promises are written in the
+[Normal Order][Policy evaluation] style dictates that promises should be
+written in the order that the agent evaluates promises.
+The other is reader optimized where promises are written in the
 order they make sense to the reader. Both styles have their merits,
 but there seems to be a trend toward the reader optimized style.
 

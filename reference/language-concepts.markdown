@@ -63,12 +63,11 @@ CFEngine's boolean classifiers that describe context.
 An association of the form "LVALUE *represents* RVALUE", where RVALUE may be a
 scalar value or a list of scalar values: a string, integer or real number.
 
-This documentation about the language concepts introduces in addition
+This documentation about the language concepts introduces:
 
-* [**normal ordering**][Normal ordering],
-* [**loops**][Loops],
-* [**pattern matching and referencing**][Pattern matching and referencing],
-  and
+* Policy evaluation (also known as [**Normal order**][Policy evaluation])
+* [**loops**][Loops] and implicit iteration
+* [**pattern matching and referencing**][Pattern matching and referencing]
 * [**namespaces**][namespaces]
 
 ## Syntax, identifiers and names
