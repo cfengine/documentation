@@ -229,6 +229,8 @@ The result is that things are more organized and less chances of files / classes
 
 In CFEngine, the promises you write in policy files are evaluated according to a predetermined order, not from top to bottom of your policy file.
 
+**See also:** [Policy evaluation][Policy evaluation]
+
 #### Packages
 
 Software binaries or executable files.
