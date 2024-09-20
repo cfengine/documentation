@@ -235,7 +235,7 @@ Refer to the msi_version body in the standard library.
 
 CFEngine implements Windows packaging using the MSI subsystem, internally
 querying the Windows Management Interface for information. However, not all
-Windows systems have the reqired information.
+Windows systems have the required information.
 
 CFEngine relies on the name (lower-cased with spaces replaced by hyphen) and
 version fields found inside the msi packages to look for upgrades in the package
