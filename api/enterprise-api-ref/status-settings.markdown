@@ -88,12 +88,15 @@ API call allowed only for administrator.
   },
   "data": [
     {
-      "hostIdentifier": "default.sys.fqhost",
-      "rbacEnabled": true,
-      "logLevel": "error",
-      "ldapEnabled": true,
-      "blueHostHorizon": 900,
-      "sameHostsNumberOfRuns": 3
+       "blueHostHorizon": 2400,
+       "enforce2FA": false,
+       "hostIdentifier": "default.sys.fqhost",
+       "hostsCollisionsThreshold": 3,
+       "logLevel": "error",
+       "minPasswordLength": 8,
+       "passwordComplexity": 3,
+       "passwordExpirationAfterResetHours": 48,
+       "rbacEnabled": true
     }
   ]
 }
@@ -101,16 +104,7 @@ API call allowed only for administrator.
 
 **Output**:
 
-* **rbacEnabled** *(boolean)*
-    Whether RBAC is applied to requests.
-* **hostIdentifier** *(string)*
-    The identfying string for hosts, such as name or IP.
-* **ldapEnabled** *(boolean)*
-    Whether external authentication is activated.
-* **logLevel** *("emergency", "alert", "critical", "error", "warning", "notice", "info", "debug")*
-    Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error).
-* **sameHostsNumberOfRuns** *(integer)*
-    Number of samples used to identify a duplicate identity. Default value is 3.
+See [Update settings][Status and settings REST API#Update settings] field section for output descriptions
 
 
 **Example usage:** `Example: Viewing settings`
@@ -138,7 +132,21 @@ administrator.
     Threshold in minutes that hosts are unreachable before they are considered a health issue.
 * **sameHostsNumberOfRuns** *(integer)*
     Number of samples used to identify a duplicate identity. Default value is 3.
-
+* **enforce2FA** *(boolean)*
+    Determines if two-factor authentication (2FA) is mandatory for all users.
+    If set to `true`, users must enable 2FA; otherwise, they will be locked out within 48 hours after the first login.
+    Default value: `false`
+* **minPasswordLength** *(integer)*
+    Sets the minimum required length for user passwords.
+    The value represents the number of characters.
+    Default value: `8`
+* **passwordComplexity** *(integer)*
+    Defines the level of password complexity required.
+    The range is from 0 to 4, where zero turns of the password complexity check and four turns on the maximum level.
+    Default value: `3`
+* **passwordExpirationAfterResetHours** *(integer)*
+    Specifies the number of hours after which a password must expire following a reset.
+    Default value: `48`
 
 **Example Request Body:**
 
@@ -149,7 +157,11 @@ administrator.
   "logLevel": "error",
   "ldapEnabled": true,
   "blueHostHorizon": 900,
-  "sameHostsNumberOfRuns": 5
+  "sameHostsNumberOfRuns": 5,
+  "minPasswordLength": 12,
+  "passwordComplexity": 4,
+  "passwordExpirationAfterResetHours": 24,
+  "enforce2FA": true
 }
 ```
 
