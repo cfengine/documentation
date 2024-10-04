@@ -2,7 +2,7 @@
 layout: default
 title: Installing Enterprise on CoreOS
 published: true
-sorting: 40
+sorting: 60
 ---
 
 These instructions describe how to install the latest version of CFEngine
