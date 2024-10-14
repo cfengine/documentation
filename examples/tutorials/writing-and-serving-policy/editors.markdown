@@ -29,7 +29,7 @@ Vi/Vim users can edit CFEngine policies with Neil Watson's CFEngine 3 scripts, a
 
 Microsoft VS Code users have syntax highlighting thanks to AZaugg. Install the syntax highlighting and snippets directly from within Visual Studio Code by running ext install vscode-cfengine.
 
-![Visual Studio Code](guide-writing-and-serving-policy-editors-visual-studio-code.png)
+[![Visual Studio Code](guide-writing-and-serving-policy-editors-visual-studio-code.png)](https://marketplace.visualstudio.com/items?itemName=azaugg.vscode-cfengine)
 
 ## Sublime Text
 
@@ -38,11 +38,19 @@ Sublime Text 2 and 3 users have syntax highlighting and snippets thanks to Valer
 
 ![Sublime Text](guide-writing-and-serving-policy-editors-sublime-text.jpg)
 
-## Atom
+## Zed
 
-Using Githubs hackable editor? You can get syntax highlighting with the language-cfengine3 package.
+Syntax highlighting is available in the [Zed](https://zed.dev/) editor, via [the **CFEngine** extension](https://zed.dev/extensions?q=CFEngine).
 
-![Atom](guide-writing-and-serving-policy-editors-atom.png)
+[![Zed](guide-writing-and-serving-policy-editors-zed.png)](https://zed.dev/extensions?q=CFEngine)
+
+## Atom / Pulsar
+
+Using Githubs hackable editor?
+You can get syntax highlighting with the [language-cfengine3](https://github.com/olehermanse/language-cfengine3) package.
+This extension is available in both [Atom (discontinued)](https://github.blog/news-insights/product-news/sunsetting-atom/) and [Pulsar](https://pulsar-edit.dev/), a fork of Atom.
+
+[![Atom](guide-writing-and-serving-policy-editors-atom.png)](https://web.pulsar-edit.dev/packages/language-cfengine3)
 
 ## Eclipse
 
