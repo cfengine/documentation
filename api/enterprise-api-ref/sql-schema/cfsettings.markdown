@@ -6,6 +6,28 @@ published: true
 
 Settings used by Mission Portal APIs, no reported data.
 
+## Table: audit_logs
+
+Stores system logs about actions performed by users.
+
+**Columns:**
+
+* **id** *(bigint)*
+  The unique identifier of audit log event, generated from a sequence.
+* **time** *(timestamp without a time zone)*
+  Time when an event happened.
+* **action** *(text)*
+   What was done (e.g., updated, created, deleted, deployed).
+* **object_type** *(text)*
+  Type of affected object (e.g., user, role, build project).
+* **object_id** *(text)*
+  Identifier of an affected object (e.g. user, role id, build project id), if applicable.
+* **details** *(json)*
+  More details in the free-json format.
+* **ip_address** *(boolean)*
+  IP address of the user who performed the action.
+
+
 ## Table: build_modules
 
 Information about build modules available from the index (build.cfengine.com).
