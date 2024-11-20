@@ -10,7 +10,7 @@ explore CFEngine Enterprise. This guide describes how to set up a client-server
 model with CFEngine and, through policy, manage both machines. Vagrant will
 create one VirtualBox VM to be the Policy Server (server), and another machine
 that will be the Host Agent (client), or host that can be managed by CFEngine.
-Both will will run CentOS 6.5 64-bit and communicate on a host-only network.
+Both running 64-bit Debian and communicate on a host-only network.
 Apart from a one-time download of Vagrant and VirtualBox, this setup requires
 just one command and takes between 5 and 15 minutes to complete (determined by
 your Internet connection and disk speed). Upon completion, you are ready to
@@ -18,11 +18,11 @@ start working with CFEngine.
 
 ## Requirements
 * 2G disk space
-* 1G memory
+* 3G memory
 * CPU with VT extensions capable of running 64bit guests
 
 Note: VirtualBox requires that your computer support hardware virtualization
-in order to make use of the CentOS 64-bit virtual machines mentioned above.
+in order to make use of the virtual machines mentioned above.
 This is sometimes turned on or off in BIOS settings, but not all processors
 and motherboards necessarily support hardware virtualization.
 
@@ -72,7 +72,7 @@ vagrant up
 
 Vagrant performs the following processes:
 
-* Downloads the CentOS basebox used for both the hub and the client (if it has
+* Downloads the basebox for both the hub and the client (if it has
   not already been cached by vagrant.
 * Provisions, installs and bootstraps the hub
 * Provisions, installs and bootstraps clients
@@ -209,9 +209,9 @@ simple instructions:
 To remove the VMs entirely, type: `vagrant destroy`
 
 If you are completely done and do not anticipate using them anymore, you can
-also remove the base box `centos-6.5-x86_64-cfengine_enterprise-vagrant-201501201245` that was
+also remove the base box that was
 downloaded. You can see it by typing `vagrant box list`. To delete the basebox
-run `vagrant box remove centos-6.5-x86_64-cfengine_enterprise-vagrant-201501201245 virtualbox`.
+run `vagrant box remove <basebox> virtualbox`.
 **Note:** Running `vagrant up` from the vagrant project directory again will
 re-download this basebox.
 
