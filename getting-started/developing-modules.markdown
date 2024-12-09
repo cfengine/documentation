@@ -108,7 +108,7 @@ As you've changed the high level things, like file name, promise type name, URLs
 So, to test your changes to the python file, a full build is not really necessary, you can just copy over that one file:
 
 ```command
-cf-remote scp -H hub git_example.py /var/cfengine/masterfiles/modules/promises/git_example.py
+cf-remote scp -H hub git_example.py && cf-remote run -H hub "mv git_example.py /var/cfengine/masterfiles/modules/promises/git_example.py"
 ```
 
 (Assuming you have the `git_example.py` file in the current directory).
