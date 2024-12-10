@@ -51,13 +51,13 @@ docker run --privileged -dit --name=cfengine-hub registry.access.redhat.com/ubi9
 Prepare the container for **cfengine-hub**
 
 ```command
-docker exec cfengine-hub bash -c "dnf -y update; dnf -y install procps-ng iproute"
+docker exec cfengine-hub bash -c "dnf -y update; dnf -y install procps-ng iproute sudo pip; pip install cf-remote"
 ```
 
 Install cfengine-community package
 
 ```command
-docker exec cfengine-hub bash -c "dnf -y install https://cfengine-package-repos.s3.amazonaws.com/community_binaries/Community-3.24.0/agent_rhel9_x86_64/cfengine-community-3.24.0-1.el9.x86_64.rpm"
+docker exec cfengine-hub bash -c "cf-remote install --edition community --clients localhost"
 ```
 
 Bootstrap cf-agent
@@ -76,13 +76,13 @@ docker run --privileged -dit --name=cfengine-host registry.access.redhat.com/ubi
 Prepare the container for **cfengine-host**
 
 ```command
-docker exec cfengine-host bash -c "dnf -y update; dnf -y install procps-ng iproute"
+docker exec cfengine-host bash -c "dnf -y update; dnf -y install procps-ng iproute sudo pip; pip install cf-remote"
 ```
 
 Install cfengine-community package
 
 ```command
-docker exec cfengine-host bash -c "dnf -y install https://cfengine-package-repos.s3.amazonaws.com/community_binaries/Community-3.24.0/agent_rhel9_x86_64/cfengine-community-3.24.0-1.el9.x86_64.rpm"
+docker exec cfengine-host bash -c "cf-remote install --edition community --clients localhost"
 ```
 
 ### Bootstrap cfengine-host to the policy server container.
@@ -104,11 +104,12 @@ Create a `Dockerfile` with following contents:
 
 ```Dockerfile
 FROM registry.access.redhat.com/ubi9-init:latest
-LABEL description="This Dockerfile builds container image based on ubi9-init for cfengine-community-3.24.0.1 rpm."
+LABEL description="This Dockerfile builds container image based on ubi9-init and latest LTS release of cfengine-community."
 
 RUN dnf -y update \
-&& dnf -y install bind-utils iproute procps-ng \
-&& dnf -y install https://cfengine-package-repos.s3.amazonaws.com/community_binaries/Community-3.24.0/agent_rhel9_x86_64/cfengine-community-3.24.0-1.el9.x86_64.rpm
+&& dnf -y install bind-utils iproute sudo pip procps-ng \
+&& pip install cf-remote \
+&& cf-remote install --edition community --clients localhost
 
 HEALTHCHECK --interval=5s --timeout=15s --retries=3 \
     CMD /usr/local/sbin/cf-agent --self-diagnostics || exit 1
@@ -119,7 +120,7 @@ ENTRYPOINT ["/usr/sbin/init"]
 Validate the Dockerfile
 
 ```command
-docker build -t cfengine:3.24.0-1 -f Dockerfile . --check
+docker build -t cfengine:lts -f Dockerfile . --check
 ```
 ```output
 [+] Building 0.1s (3/3) FINISHED                                        docker:default
@@ -136,7 +137,7 @@ Check complete, no warnings found.
 Build the docker image based on above Dockerfile:
 
 ```command
-docker build -t cfengine:3.24.0-1 -f Dockerfile .
+docker build -t cfengine:lts -f Dockerfile .
 ```
 
 Verify created image:
@@ -146,20 +147,20 @@ docker image ls cfengine
 ```
 ```output
 REPOSITORY   TAG        IMAGE ID       CREATED             SIZE
-cfengine     3.24.0-1   <IMAGE_ID>     About an hour ago   302MB
+cfengine     lts        <IMAGE_ID>     About an hour ago   302MB
 ```
 
 ### Using docker compose service
 Create a `compose.yaml` file with following contents:
 
 ```yaml
-[file=compose.yml]
+[file=compose.yaml]
 name: cfengine-demo
 
 services:
   cfengine-hub:
     container_name: cfengine-hub
-    image: cfengine:3.24.0-1
+    image: cfengine:lts
     build:
       context: .
       dockerfile: Dockerfile
@@ -173,7 +174,7 @@ services:
       - control-plane
 
   cfengine-host:
-    image: cfengine:3.24.0-1
+    image: cfengine:lts
     build:
       context: .
       dockerfile: Dockerfile
