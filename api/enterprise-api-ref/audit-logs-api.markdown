@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Audit logs API
+title: Audit log API
 published: true
 ---
 
-Audit logs API provides access to system audit logs that track user actions across the platform made to critical parts
+Audit log API provides access to system audit logs that track user actions across the platform made to critical parts
 such as settings, host data, users, roles, Build projects, etc.
 
 ## Get audit logs
 
-**URI:** https://hub.cfengine.com/api/audit-logs
+**URI:** https://hub.cfengine.com/api/audit-log
 
 **Method:** GET
 
@@ -18,9 +18,11 @@ such as settings, host data, users, roles, Build projects, etc.
 * **actor** *(string)*
   Filter by user who performed the action.
 * **object_type** *(string)*
-  Filter by object type (see [Allowed object types][Audit logs API#Allowed object types]).
+  Filter by object type (see [Allowed object types][Audit log API#Allowed object types]).
 * **action** *(string)*
-  Filter by action type (see [Allowed actions][Audit logs API#Allowed actions]).
+  Filter by action type (see [Allowed actions][Audit log API#Allowed actions]).
+* **object_name** *(integer)*
+  Filter by object name.
 * **created_after** *(integer)*
   Unix timestamp to filter logs after this time.
 * **created_before** *(integer)*
@@ -35,6 +37,7 @@ such as settings, host data, users, roles, Build projects, etc.
     * actor
     * action
     * object_id
+    * object_name
     * object_type
 * **sort_direction** *(string, default: "DESC")*
   Sort direction. Allowed values:
@@ -44,7 +47,7 @@ such as settings, host data, users, roles, Build projects, etc.
 **Example request (curl):**
 
 ```console
-curl --user <username>:<password> -X GET https://hub.cfengine.com/api/audit-logs
+curl --user <username>:<password> -X GET https://hub.cfengine.com/api/audit-log
 ```
 
 **Successful response example:**
@@ -59,6 +62,7 @@ HTTP 200 OK
             "actor": "admin",
             "action": "created",
             "object_type": "user",
+            "object_name": "test",
             "object_id": "test",
             "details": [
                 "Created user `test`."
@@ -69,6 +73,7 @@ HTTP 200 OK
             "time": "2024-10-24 09:46:56.204391",
             "actor": "admin",
             "action": "created",
+            "object_name": "test",
             "object_type": "role",
             "object_id": "test",
             "details": [
@@ -86,6 +91,7 @@ HTTP 200 OK
             "actor": "admin",
             "action": "updated",
             "object_type": "settings",
+            "object_name": "Preferences",
             "object_id": null,
             "details": [
                 "Settings updated.",
@@ -121,15 +127,15 @@ HTTP 200 OK
 
 | Action               | Description               |
 |----------------------|---------------------------|
-| created              | Resource creation         |
-| updated              | Resource update           |
-| deleted              | Resource deletion         |
-| deployed             | Deployment action         |
-| pushed               | Push action               |
-| module added         | Module addition           |
-| module deleted       | Module removal            |
-| module updated       | Module modification       |
-| module input updated | Module input modification |
+| Created              | Resource creation         |
+| Updated              | Resource update           |
+| Deleted              | Resource deletion         |
+| Deployed             | Deployment action         |
+| Pushed               | Push action               |
+| Module added         | Module addition           |
+| Module deleted       | Module removal            |
+| Module updated       | Module modification       |
+| Module input updated | Module input modification |
 | CMDB updated         | CMDB update               |
 | CMDB deleted         | CMDB deletion             |
 | CMDB created         | CMDB creation             |
@@ -139,10 +145,66 @@ HTTP 200 OK
 
 | Object Type         | Description                                  |
 |---------------------|----------------------------------------------|
-| user                | User account                                 |
-| role                | Role definition                              |
-| settings            | System, Mail, VCS or Authentication settings |
-| federated reporting | Federated reporting configuration            |
-| group               | Host groups                                  |
-| host                | Host configuration                           |
+| User                | User account                                 |
+| Role                | Role definition                              |
+| Settings            | System, Mail, VCS or Authentication settings |
+| Federated reporting | Federated reporting configuration            |
+| Group               | Host groups                                  |
+| Host                | Host configuration                           |
 | Build project       | Build project configuration                  |
+
+
+## Get audit logs actors
+
+Returns list of users who performed actions.
+
+**URI:** https://hub.cfengine.com/api/audit-log/actors
+
+**Method:** GET
+
+**Example request (curl):**
+
+```console
+curl --user <username>:<password> -X GET https://hub.cfengine.com/api/audit-log/actors
+```
+
+**Successful response example:**
+
+```
+HTTP 200 OK
+[
+    "admin",
+    "test"
+]
+```
+
+## Get audit logs object name by type
+
+Returns list of object names filtered by type.
+
+**URI:** https://hub.cfengine.com/api/audit-log/:type/names
+
+**Method:** GET
+
+**Parameters:**
+
+* **object_type** *(string)*
+  Filter by object type (see [Allowed object types][Audit log API#Allowed object types]).
+
+**Example request (curl):**
+
+```console
+curl --user <username>:<password> -X GET https://hub.cfengine.com/api/audit-log/Settings/names
+```
+
+**Successful response example:**
+
+```
+HTTP 200 OK
+[
+    "Preferences",
+    "Mail",
+    "VCS",
+    "Authentication",
+]
+```
