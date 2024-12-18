@@ -2,7 +2,7 @@
 layout: default
 title: Installing Community
 published: true
-sorting: 50
+sorting: 70
 ---
 
 These instructions describe how to download and install the latest version of CFEngine Community using pre-compiled rpm and
