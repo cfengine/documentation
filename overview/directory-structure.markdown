@@ -65,6 +65,12 @@ should delete these files after a time to avoid a build up.
 State data such as current process identifiers of running processes,
 persistent classes and other cached data.
 
+* `/var/cfengine/state/promise_execution.log`: In CFEngine Enterprise `cf-agent` writes promise execution results to this temporary file during execution. When `cf-agent` exits this data is stored for use by the reporting subsystem and the file is purged.
+
+* `/var/cfengine/state/variable.cache.tmp`: In CFEngine Enterprise as `cf-agent` executes information about variables are stored in this file. When `cf-agent` exits this data is stored for use by the reporting subsystem and the file is purged.
+
+* `/var/cfengine/state/context.cache.tmp`: In CFEngine Enterprise as `cf-agent` executes, information about classes that are defined are stored in this file. When `cf-agent` exits this data is stored for use by the reporting subsystem and the file is purged.
+
 ### /var/cfengine/lastseen
 
 Log data for incoming and outgoing connections.
