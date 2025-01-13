@@ -19,26 +19,34 @@ and all Hosts. Thus, business policy that you create in the Policy Server can be
 Bootstrapping completes the installation process.
 
 <hr>
-## Quick setup installation script
+## Quick setup with cf-remote
 
-**Note:** Internet access is required from the host if you wish to use the quick install script.
+`cf-remote` can be used to easily download, install, and bootstrap CFEngine on a host.
 
-Use the following script to install CFEngine on your 32- or 64-bit machine.
+Once `cf-remote` is installed from the Python Package Index (e.g. `pipx install cf-remote`), execute it against a host (either local or remote).
 
-```command
-wget -O- http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-community.sh | sudo bash
-```
-
-1. Run this script on your designated Policy Server machine **and** on your designated Host machine(s).
-2. Bootstrap the policy server to itself and then bootstrap your Host(s) to the Policy Server by running the following command:
+For example, here we install CFEngine Community {{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}} on two hosts and bootstrap to one of them:
 
 ```command
-sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+cf-remote --version={{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}} install --edition community --clients 192.168.56.13,192.168.56.14 --bootstrap 192.168.56.13
 ```
-
 ## 1. Download packages
 
-Packages can be downloaded from the [community download page][community download page].
+Packages can be downloaded from the [community download page][community download page] or using `cf-remote`.
+
+For example, this command downloads CFEngine 3.24.1 packages for ubuntu24 into the current directory:
+
+```command
+cf-remote --version 3.24.1 download ubuntu24 --edition community --output-dir .
+```
+```output
+Available releases: master, 3.25.0, 3.24.x, 3.24.1, 3.24.0, 3.21.x, 3.21.6, 3.21.5, 3.21.4, 3.21.3, 3.21.2, 3.21.1, 3.21.0
+Using 3.24.1 LTS:
+Downloading package: '/home/user/.cfengine/cf-remote/packages/cfengine-community_3.24.1-1.ubuntu24_arm64.deb'
+Copied to '/tmp/cfengine-community_3.24.1-1.ubuntu24_arm64.deb' (Checksum OK).
+Downloading package: '/home/user/.cfengine/cf-remote/packages/cfengine-community_3.24.1-1.ubuntu24_amd64.deb'
+Copied to '/tmp/cfengine-community_3.24.1-1.ubuntu24_amd64.deb' (Checksum OK).
+```
 
 ## 2. Install CFEngine on a policy server
 
