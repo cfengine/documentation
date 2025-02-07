@@ -54,6 +54,7 @@ The last option, a read-only login, is the best approach as it removes the possi
 
 To configure the upstream repository. You must provide the uri and a refspec (branch name usually).
 Credentials can be specified in several ways as mentioned above so pick your choice above and enter in only the needed information in the form.
+If your CFEngine policies are not located in the repository root, you can specify the path in the "Project subdirectory" text input field.
 
 ### Configuring upstream VCS via Mission Portal
 
