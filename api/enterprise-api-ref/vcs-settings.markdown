@@ -34,6 +34,7 @@ curl -k --user <username>:<password> \
     "data": {
         "GIT_URL": "https://github.com/cfengine/masterfiles.git",
         "GIT_REFSPEC": "master",
+        "PROJECT_SUBDIRECTORY": "path/to/policies",
         "GIT_USERNAME": "username",
         "GIT_PASSWORD": "passwordOrToken",
         "GIT_WORKING_BRANCH": "CF_WORKING_BRANCH",
@@ -58,6 +59,9 @@ curl -k --user <username>:<password> \
     Git repository URL `Emp: https://github.com/cfengine/masterfiles.git`. Required parameter.
 * **gitRefspec** *(string)*
     The Git refspec to checkout. It can be a branch name, a tag name, a commit hash or a partial hash. Required parameter.
+* **projectSubdirectory** *(string)*
+    Subdirectory inside Git repository where the project is located.
+    Optional parameter.
 * **gitUsername** *(string)*
     Git username for authentication, not needed for public repositories.
 * **gitPassword** *(string)*
@@ -75,6 +79,7 @@ curl -k --user <username>:<password> \
   -d '{
         "gitServer":"https://github.com/cfengine/masterfiles.git",
         "gitRefspec":"master",
+        "projectSubdirectory":"",
         "gitUsername":"gituser",
         "gitPassword":"passwordOrToken",
         "gitPrivateKey" "Private key raw content"
@@ -88,6 +93,7 @@ curl -k --user <username>:<password> \
 {
     "gitServer": "https://github.com/cfengine/masterfiles.git",
     "gitRefspec": "master",
+    "projectSubdirectory": "",
     "gitUsername": "gituser",
     "gitPassword": "passwordOrToken",
     "gitPrivateKey": "/opt/cfengine/userworkdir/admin/.ssh/id_rsa.pvt"
@@ -97,3 +103,4 @@ curl -k --user <username>:<password> \
 ## History
 
 * `vscType` parameter added in 3.19.0, 3.18.1
+* `projectSubdirectory` parameter added in 3.21.7, 3.24.2, 3.26.0
