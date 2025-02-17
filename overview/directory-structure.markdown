@@ -186,9 +186,36 @@ _pid files_ in the work directory.
 
 ## Datafiles in /var/cfengine
 
-* `policy_server.dat`
+### `policy_server.dat`
 
 IP address of the policy server
+
+### `ignore_interfaces.rx`
+
+CFEngine will ignore interfaces for interfaces that match one of the regular expressions listed in this file (one regular expression per line).
+
+If an interface matches a regular expression in the file then various classes and variables will not be populated with related information. For example, but not limited to:
+
+**Classes:**
+
+* `ipv4_` prefixed classes
+* `mac_` prefixed classes
+
+**Variables:**
+
+* `sys.ipv4_N[iface]`
+* `sys.ip2iface`
+* `sys.ipaddresses`
+* `sys.interface_flags`
+* `sys.inet`
+* `sys.inet6`
+* `sys.hardware_mac[iface]`
+* `sys.hardware_addresses`
+
+**History:**
+
+* Introduced in CFEngine 3.10.0
+* Preferred location moved from `$(sys.inputdir)` to `$(sys.workdir)` in CFEngine 3.23.0
 
 ## Binary files in /var/cfengine
 
