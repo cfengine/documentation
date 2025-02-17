@@ -18,6 +18,8 @@ When any tags are given, only the classes with those tags matching the given
 [anchored][anchored] regular expressions are returned. Class tags are set
 using the [`meta`][Promise types#meta] attribute.
 
+If no classes match `name` and any tags given then an empty list is returned.
+
 [%CFEngine_function_attributes(name, tag1, tag2, ...)%]
 
 **Example:**
