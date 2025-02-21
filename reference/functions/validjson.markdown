@@ -4,12 +4,12 @@ title: validjson
 published: true
 ---
 
-[%CFEngine_function_prototype(string)%]
+[%CFEngine_function_prototype(string, strict)%]
 
 **Description:** Validates a JSON container from `string` and returns
-`true` if the contents are valid JSON.
+`true` if the contents are valid JSON. An optional second argument `strict` may be used to enable strict validation. When set to `"true"` the function will not evaluate to true for JSON primitives.
 
-[%CFEngine_function_attributes(string)%]
+[%CFEngine_function_attributes(string, strict)%]
 
 **Example:**
 
