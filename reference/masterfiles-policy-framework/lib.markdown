@@ -4,7 +4,7 @@ title: lib/
 published: true
 ---
 
-This directory contains the standard library akak COPBL or the Community Open
+This directory contains the standard library aka COPBL or the Community Open
 Promise Body Library. The bodies and bundles found here are contributed and
 maintained by the CFEngine community. They codify many common and useful
 patterns.
