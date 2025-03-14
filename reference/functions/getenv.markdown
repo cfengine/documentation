@@ -24,7 +24,5 @@ Output:
 
 [%CFEngine_include_snippet(getenv.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**Notes:**
-
 **History:** This function was introduced in CFEngine version 3.0.4
 (2010)

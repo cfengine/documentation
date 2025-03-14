@@ -27,9 +27,6 @@ deep.
 This function, used together with the `bundlesmatching` function,
 allows you to do dynamic inputs and a dynamic bundle call chain.
 
-**History:**
-- Brace expression (i.e., `{foo,bar}`) and negative bracket expressions (i.e., `[!abc]`) were introduced in 3.24.
-
 **Example:**
 
 [%CFEngine_include_snippet(findfiles.cf, #\+begin_src cfengine3, .*end_src)%]
@@ -38,4 +35,8 @@ Output:
 
 [%CFEngine_include_snippet(findfiles.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [`bundlesmatching()`][bundlesmatching], [`findfiles_up()`][findfiles_up].
+**History:**
+
+- Brace expression (i.e., `{foo,bar}`) and negative bracket expressions (i.e., `[!abc]`) were introduced in 3.24.
+
+**See also:** `bundlesmatching()`, `findfiles_up()`.

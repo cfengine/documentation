@@ -482,7 +482,7 @@ subset.
 metatags of classes or vars to include in reporting.
 
 Classes and variables with metatags matching any entry of that list will be
-reported to the CFENgine Enterprise server.
+reported to the CFEngine Enterprise server.
 
 When combined with `metatags_exclude`, the exclude list is applied to the subset
 from this list.

@@ -9,10 +9,10 @@ published: true
 **Description:** Convert a time relative to now to an integer system representation.
 
 The `ago` function measures time relative to now. Arguments are applied
-in order, so that ago(0,18,55,27,0,0) means "18 months, 55 days, and 27
+in order, so that `ago(0,18,55,27,0,0)` means "18 months, 55 days, and 27
 hours ago". However, you are strongly encouraged to keep your usage of
-`ago` sensible and readable, e.g., ago(0,0,120,0,0,0) or
-ago(0,0,0,72,0,0).
+`ago` sensible and readable, e.g., `ago(0,0,120,0,0,0)` or
+`ago(0,0,0,72,0,0)`.
 
 **Arguments:**
 
@@ -50,9 +50,4 @@ Output:
 
 [%CFEngine_include_snippet(ago.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:**
-
-* Related functions
-    * [`now()`][now]
-    * [`accumulated()`][accumulated]
-    * [`irange()`][irange]
+**See also:** `now()`, `accumulated()`, `irange()`.

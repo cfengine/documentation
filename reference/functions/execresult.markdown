@@ -17,7 +17,7 @@ CFEngine's control. Thus using a shell is both a performance hog and a
 potential security issue.
 
 The optional `output` argument allows you to select which output will be
-included, betweeen `stdout`, `stderr`, or `both`. The default is `both`.
+included, betweeen `stdout`, `stderr` or `both`. The default is `both`.
 
 [%CFEngine_function_attributes(command, shell, output)%]
 
@@ -46,7 +46,7 @@ highly undesirable if the command is expensive.  Consider using
 `commands` promises instead, which have locking and are not evaluated
 by `cf-promises`.
 
-**See also:** [`returnszero()`][returnszero], [`execresult_as_data()`][execresult_as_data].
+**See also:** `returnszero()`, `execresult_as_data()`.
 
 **History:**
 

@@ -9,10 +9,10 @@ published: true
 **Description:** Convert an accumulated amount of time into a system representation.
 
 The `accumulated` function measures total accumulated runtime. Arguments
-are applied additively, so that accumulated(0,0,2,27,90,0) means "2
+are applied additively, so that `accumulated(0,0,2,27,90,0)` means "2
 days, 27 hours and 90 minutes of runtime" ". However, you are strongly
 encouraged to keep your usage of `accumulated` sensible and readable;
-for example, accumulated(0,0,0,48,0,0) or accumulated(0,0,0,0,90,0).
+for example, `accumulated(0,0,0,48,0,0)` or `accumulated(0,0,0,0,90,0)`.
 
 
 **Arguments:**
@@ -78,9 +78,4 @@ body process_count anyprocs
 In the example we look for processes that have accumulated between 2 and
 20 minutes of total run time.
 
-**See also:**
-
-* Related functions
-    * [`ago()`][ago]
-    * [`now()`][now]
-    * [`irange()`][irange]
+**See also:** `ago()`, `now()`, `irange()`

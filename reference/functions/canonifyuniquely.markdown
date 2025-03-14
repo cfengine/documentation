@@ -10,7 +10,7 @@ published: true
 
 This function turns arbitrary text into class data, appending the
 SHA-1 hash for uniqueness.  It is exactly equivalent to
-`concat(canonify($(string)), "_", hash($(string),"sha1");` for a given
+`concat(canonify($(string)), "_", hash($(string),"sha1"));` for a given
 `$(string)` but is much more convenient to write and remember.
 
 A common use case is when you need unique array keys for each file in
@@ -30,4 +30,4 @@ commands:
        if => canonifyuniquely("start_$(component)");
 ```
 
-**See also:** [canonify()][canonify]).
+**See also:** `canonify()`.
