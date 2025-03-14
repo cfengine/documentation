@@ -11,7 +11,7 @@ published: true
 [%CFEngine_function_attributes(bundlename, optional_tag)%]
 
 The `optional_tag` can be used to look up a specific tag's value. If you have
-```
+```cf3
 bundle agent example
 {
   meta:
