@@ -76,19 +76,19 @@ sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_p
 **Newer 64-bit DEB based distributions: (Ubuntu/Debian)**
 
 ```command
-sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian7.deb`
+sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian7.deb
 ```
 
 **Older 64-bit DEB based distributions: (Ubuntu/Debian)** (not recommended for policy server)
 
 ```command
-sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian4.deb`
+sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian4.deb
 ```
 
 **32-bit DEB based distributions: (Ubuntu/Debian)** (not recommended for policy server)
 
 ```command
-sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_i386-debian4.deb`
+sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_i386-debian4.deb
 ```
 
 **Note:** You might get a message like this: "Policy is not found in /var/cfengine/inputs, not starting CFEngine." Do not worry;
@@ -105,7 +105,11 @@ Run the bootstrap command:
 sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
-**Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12**
+**Example:**
+
+```command
+sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12
+```
 
 Upon successful completion, a confirmation message appears: "Bootstrap to '192.168.1.12' completed successfully!"
 
@@ -132,6 +136,10 @@ the Policy Server. Run the same commands that you ran in Step 3.
 sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
-**Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12**
+**Example:**
+
+```command
+sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12
+```
 
 The CFEngine installation process is complete.

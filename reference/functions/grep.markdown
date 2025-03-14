@@ -21,6 +21,8 @@ Output:
 
 [%CFEngine_include_snippet(grep.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+**History:**
+
+- The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
 **See also:** [About collecting functions][Functions#collecting functions], `filter()`, `every()`, `some()`, and `none()`.

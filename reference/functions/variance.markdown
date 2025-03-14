@@ -24,6 +24,9 @@ Output:
 
 [%CFEngine_include_snippet(max-min-mean-variance.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** Was introduced in version 3.6.0 (2014). The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+**History:**
+
+- Was introduced in version 3.6.0 (2014).
+- The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
 **See also:** `sort()`, `mean()`, `sum()`, `max()`, `min()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

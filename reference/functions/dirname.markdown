@@ -21,9 +21,6 @@ Output:
 
 [%CFEngine_include_snippet(dirname.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**Notes:**
-
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2011)
 
-**See also:** [`lastnode()`][lastnode], [`filestat()`][filestat],
-[`splitstring()`][splitstring].
+**See also:** `lastnode()`, `filestat()`, `splitstring()`.

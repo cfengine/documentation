@@ -13,12 +13,12 @@ available as [special variables][special variables] (e.g.
 [`$(mon.av_cpu)`][mon#mon.av_cpu]) to `cf-agent`, which may use them to inform
 policy decisions.
 
-`cf-monitord` keeps the promises made in `common`and `monitor` bundles, and is
-affected by  `common` and `monitor` control bodies.
+`cf-monitord` keeps the promises made in `common` and `monitor` bundles and is
+affected by `common` and `monitor` control bodies.
 
 **Notes:**
 
-* `cf-monitord` always considers the class ```monitor``` to be defined.
+* `cf-monitord` always considers the class `monitor` to be defined.
 
 ## Command reference
 
@@ -115,9 +115,9 @@ Slots with a higher number are used for custom measurement promises in
 CFEngine Enterprise.
 
 These values collected and analyzed by `cf-monitord` are transformed
-into agent variables in the `$(mon.`name`)` context.
+into agent variables in the `$(mon.name)` context.
 
-Note: There is no way for force a refresh of the monitored data.
+**Note:** There is no way for force a refresh of the monitored data.
 
 ## Data storage
 

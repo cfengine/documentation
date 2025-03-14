@@ -67,3 +67,5 @@ Output:
 **History:**
 
 * Introduced in 3.18.0
+
+**See also:** `is_type()`.

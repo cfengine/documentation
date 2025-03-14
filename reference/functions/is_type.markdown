@@ -1,6 +1,6 @@
 ---
 layout: default
-title: type
+title: is_type
 published: true
 ---
 

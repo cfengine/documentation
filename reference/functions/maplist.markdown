@@ -29,4 +29,4 @@ Output:
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2011). The [collecting function][Functions#collecting functions] behavior was added in 3.9. The delayed evaluation behavior was introduced in 3.10.
 
-**See also:** `maplist()`, `maparray()`, [about collecting functions][Functions#collecting functions], and `data` documentation.
+**See also:** `mapdata()`, `maparray()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

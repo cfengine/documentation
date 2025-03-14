@@ -31,8 +31,6 @@ generated will be:
 six is 6.000000, zero is 0.000000
 ```
 
-**Notes:**
-
 **History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010). The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
 **See also:** `product()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

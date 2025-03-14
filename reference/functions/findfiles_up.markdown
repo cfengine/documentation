@@ -32,9 +32,6 @@ deep.
 * `[!a-z]` matches any letter not from `a` to `z`.
 * `{foo,bar}` matches `foo` or `bar`.
 
-**History:**
-- Brace expression (i.e., `{foo,bar}`) and negative bracket expressions (i.e., `[!abc]`) were introduced in 3.24.
-
 [%CFEngine_function_attributes(path, glob, level)%]
 
 **Example:**
@@ -45,6 +42,9 @@ Output:
 
 [%CFEngine_include_snippet(findfiles_up.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** Introduced in 3.18.
+**History:**
 
-**See also:** [`findfiles()`][findfiles].
+- Introduced in 3.18.
+- Brace expression (i.e., `{foo,bar}`) and negative bracket expressions (i.e., `[!abc]`) were introduced in 3.24.
+
+**See also:** `findfiles()`.

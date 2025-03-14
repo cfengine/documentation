@@ -26,7 +26,6 @@ Output:
 
 [%CFEngine_include_snippet(strftime.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**Notes:** Note that `strftime` is a standard C function and you should consult
-its
+**Notes:** Note that `strftime` is a standard C function and you should consult its
 [reference](https://pubs.opengroup.org/onlinepubs/9699919799/functions/strftime.html)
 to be sure of the specifiers allowed.
