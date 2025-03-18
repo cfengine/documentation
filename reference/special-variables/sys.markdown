@@ -135,6 +135,32 @@ reports:
 
 **History:** Was introduced in 3.3.0, Enterprise 2.2.0 (2012)
 
+### sys.cpusockets
+
+A variable containing the number of CPU sockets detected. Currently only
+supported in Linux-based operating systems.
+
+```cf3
+bundle agent __main__
+{
+  reports:
+    "Number of CPU sockets: $(sys.cpusockets)";
+}
+```
+
+In addition to defining the `sys.cpusockets` variable, the agent derives hard
+classes based on the variable.
+
+```command
+cf-agent --show-evaluated-classes="[0-9]+_cpusockets?"
+```
+```output
+Class name   Meta tags                                           Comment
+1_cpusocket  source=agent,derived-from=sys.cpusockets,hardclass
+```
+
+**History:** Was introduced in 3.26.0
+
 ### sys.crontab
 
 The variable gives the location of the current users's master crontab
