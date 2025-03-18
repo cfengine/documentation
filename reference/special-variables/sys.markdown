@@ -122,8 +122,8 @@ This variable contains the name of the hard-class category for this host
 A variable containing the number of CPU cores detected. On systems which
 provide virtual cores, it is set to the total number of virtual, not
 physical, cores. In addition, on a single-core system the class `1_cpu`
-is set, and on multi-core systems the class *n*`_cpus` is set, where
-*n* is the number of cores identified.
+is set, and on multi-core systems the class `{n}_cpus` is set, where
+`{n}` is the number of cores identified.
 
 ```cf3
 reports:
@@ -134,6 +134,24 @@ reports:
 ```
 
 **History:** Was introduced in 3.3.0, Enterprise 2.2.0 (2012)
+
+### sys.cpusockets
+
+A variable containing the number of CPU sockets detected. This is currently
+available only on Linux systems with the special
+`/sys/devices/system/cpu/cpu*/topology/physical_package_id` information files.
+In addition, on a single-socket system the class `1_cpusocket`
+is set, and on multi-socket systems the class `{n}_cpusockets` is set, where
+`{n}` is the number of sockets identified.
+
+```cf3
+reports:
+ "Number of CPU sockets = $(sys.cpusockets)";
+ 2_cpusockets::
+   "This system has 2 CPU sockets.";
+```
+
+**History:** Was introduced in 3.26.0
 
 ### sys.crontab
 
