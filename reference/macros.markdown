@@ -196,6 +196,9 @@ Currently available features are:
 * `xml`
 * `yaml`
 * `curl`
+* `pam`
 
 
-**History:** This macro was introduced in CFEngine 3.8.0
+**History:**
+- This macro was introduced in CFEngine 3.8.0
+- The `pam` feature support macro was introduced in 3.26.0
