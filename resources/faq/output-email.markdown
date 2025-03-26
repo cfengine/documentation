@@ -7,10 +7,8 @@ sorting: 90
 
 ## How do I set the email where agent reports are sent?
 
-The agent report email functionality is configured in `body executor control`
-https://github.com/cfengine/masterfiles/blob/{{site.cfengine.branch}}.x/controls/cf_execd.cf.
-It defaults to `root@$(def.domain)` which is configured in `bundle common def`
-https://github.com/cfengine/masterfiles/blob/{{site.cfengine.branch}}.x/controls/def.cf.
+The agent report email functionality is configured in `body executor control` ([find in GitHub](https://github.com/search?q=repo%3Acfengine%2Fmasterfiles+mail+path%3A**%2Fcf_execd.cf&type=code)).
+It defaults to `root@$(def.domain)` which is configured in `bundle common def` ([find in GitHub](https://github.com/search?q=repo%3Acfengine%2Fmasterfiles+%22mailto%22+path%3A**%2Fdef.cf&type=code)).
 
 **See also:** [`def.mailto`][Masterfiles Policy Framework#mailto].
 
