@@ -18,7 +18,7 @@ hostnames, ip-addresses or public key SHAs of hosts that have a given class.
 configuration files for (classes of) hosts. Hosts are selected based on the
 classes set during the most recently collected agent run.
 
-[%CFEngine_function_attributes(class, field, hostkey)%]
+[%CFEngine_function_attributes(class, field)%]
 
 **Example:**
 
