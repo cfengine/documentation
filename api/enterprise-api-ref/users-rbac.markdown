@@ -367,3 +367,30 @@ API call allowed only for administrator.
 
 Remove role definition.
 API call allowed only for administrator.
+
+## Unlock user
+
+If a system enforces using two-factor authentication (2FA),
+users must configure it after their first login within 48 hours.
+This endpoint unlocks users who have been locked out due to this reason
+and grants an additional 48 hours to complete the 2FA setup.
+
+Note: to be able to perform this action related RBAC rule (alias `user.unlock`) should be enabled.
+
+**URI:** https://hub.cfengine.com/api/user/:username/unlock
+
+**Method:** POST
+
+**Example request (curl):**
+
+```console
+curl --user <username>:<password> \
+  -X POST \
+  https://hub.cfengine.com/api/user/tom/unlock
+```
+
+**Example response:**
+
+```
+HTTP 202 ACCEPTED
+```
