@@ -2750,6 +2750,53 @@ separator, since the backward slash has a special meaning in a regular
 expression. Literal paths may also use backslash (`\`) as a path
 separator.
 
+### fsattrs
+
+**Description:** Manage file system attributes
+
+**Type** `body fsattrs`
+
+**See also:** [Common body attributes][Promise types#Common body attributes]
+
+**Notes:**
+File system attributes are not supported on all file systems and platforms.
+Hence, CFEngine will do it's best effort without any guarantees.
+**History:**
+
+* Added in CFEngine 3.26.0
+
+#### immutable
+
+**Description:** Set / clear immutable file system attribute
+
+**Type:** [`boolean`][boolean]
+
+**Example:**
+
+```cf3
+body fsattrs set_immutable
+{
+  immutable => "true";
+}
+```
+
+**Notes:**
+Currently only regular files are supported when configuring the immutable bit.
+Furthermore, this will only work on Linux or BSD based systems with filesystems
+that support it. CFEngine will simply ignore the immutable constrain if it is
+not supported.
+
+If the immutable constraint is:
+- set to `"true"`, CFEngine will try to clear the immutable bit (if set) before
+  executing the promise and (re-)set it afterwards.
+- set to `"false"`, CFEngine will try to clear it before executing the promise.
+- unspecified, CFEngine will not try to clear the immutable bit.
+
+**History:**
+
+* Added in CFEngine 3.26.0
+
+
 ### perms
 
 **Type:** `body perms`
