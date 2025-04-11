@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Fist Time Setup API
+title: Fist time setup API
 published: true
 ---
 
