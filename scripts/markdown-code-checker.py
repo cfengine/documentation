@@ -5,7 +5,7 @@ import sys
 
 
 def extract_inline_code(file_path, languages):
-    """extract inline code, language from markdown"""
+    """extract inline code, language and filters from markdown"""
 
     with open(file_path, "r") as f:
         content = f.read()
@@ -13,64 +13,65 @@ def extract_inline_code(file_path, languages):
     parser = md.parser.Parser()
     ast = parser.parse(content)
 
-    code_snippet_count = 0
     for child in ast.children:
-        # TODO: add a way to exclude a code snippet
-        if isinstance(child, md.block.FencedCode) and child.lang in languages:
-            code_snippet_count += 1
-            yield (code_snippet_count, child.lang, child.children[0].children)
+
+        if not isinstance(child, md.block.FencedCode):
+            continue
+
+        info_string = child.lang.split("|")
+        language = info_string[0]
+        flags = info_string[1:]
+
+        if language in languages:
+            yield language, child.children[0].children, flags
 
 
 ignored_dirs = [".git"]
 
 
 def get_markdown_files(start, languages):
-    """locate all markdown files and call check_code_syntax on them"""
+    """locate all markdown files and call extract_inline_code on them"""
 
     if os.path.isfile(start):
-        check_code_syntax(start, languages)
+        return {start: list(extract_inline_code(start, languages))}
 
+    return_dict = {}
     for root, dirs, files in os.walk(start):
         dirs[:] = [d for d in dirs if d not in ignored_dirs]
 
         for f in files:
             if f.endswith(".markdown") or f.endswith(".md"):
                 path = os.path.join(root, f)
-                check_code_syntax(path, languages)
+                return_dict[path] = list(extract_inline_code(path, languages))
+
+    return return_dict
 
 
-def check_code_syntax(path, languages):
-    """check syntax of every code snippet of one specific markdown file"""
-
-    iter = extract_inline_code(path, languages)
-    for i, language, code_snippet in iter:
-
-        file_name = f"{path}.snippet-{i}"
-        match language:
-            case "cf3":
-                write_file(file_name, "cf", code_snippet)
-                # TODO: run cf-promises on the file
-                # maybe also check run cf-agent and check if output is correct
-                break
-            case "json":
-                write_file(file_name, "json", code_snippet)
-                # TODO: check json syntax and run cfbs pretty
-                break
-            case "yaml":
-                write_file(file_name, "yml", code_snippet)
-                # TODO: check yaml syntax
-                break
-
-
-def write_file(file_name, extension, code_snippet):
-    with open(f"{file_name}.{extension}", "w") as f:
+def extract(path, i, language, code_snippet):
+    with open(f"{path}.snippet-{i}.{language}", "w") as f:
         f.write(code_snippet)
+
+
+def check_syntax():
+    pass
+
+
+def check_output():
+    pass
+
+
+def replace():
+    pass
+
+
+def autoformat():
+    pass
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        prog="Markdown inline code syntax checker",
-        description="checks the syntax of documentation inline code",
+        prog="Markdown inline code checker",
+        description="Tool for checking the syntax, the format and the output of markdown inline code",
     )
     parser.add_argument(
         "--path",
@@ -87,12 +88,42 @@ def parse_args():
         default=["cf3", "json", "yaml"],
         required=False,
     )
+    parser.add_argument(
+        "--extract",
+        help="extract the inline code into their own files",
+        action="store_true",
+        required=False,
+    )
+    parser.add_argument(
+        "--autoformat",
+        help="automatically format all inline code",
+        action="store_true",
+        required=False,
+    )
+    parser.add_argument(
+        "--syntax-check",
+        help="check syntax of all inline code",
+        action="store_true",
+        required=False,
+    )
+    parser.add_argument(
+        "--replace",
+        help="replace inline code",
+        action="store_true",
+        required=False,
+    )
+    parser.add_argument(
+        "--output-check",
+        help="check output of all inline code",
+        action="store_true",
+        required=False,
+    )
 
     return parser.parse_args()
 
 
 if __name__ == "__main__":
-    supported_languages = ["cf3", "json", "yaml"]
+    supported_languages = {"cf3": "cf", "json": "json", "yaml": "yml"}
     args = parse_args()
 
     if not os.path.exists(args.path):
@@ -102,8 +133,26 @@ if __name__ == "__main__":
     for language in args.languages:
         if language not in supported_languages:
             print(
-                f"[error] Unsupported language '{language}'. The supported languages are: {", ".join(supported_languages)}"
+                f"[error] Unsupported language '{language}'. The supported languages are: {", ".join(supported_languages.keys())}"
             )
             sys.exit(-1)
 
-    get_markdown_files(args.path, args.languages)
+    parsed_markdown = get_markdown_files(args.path, args.languages)
+
+    for path, inline_code_list in parsed_markdown.items():
+        for i, (language, code_snippet, flags) in enumerate(inline_code_list):
+
+            if args.extract and "noextract" not in flags:
+                extract(path, i + 1, supported_languages[language], code_snippet)
+
+            if args.syntax_check and "novalidate" not in flags:
+                check_syntax()
+
+            if args.autoformat and "noautoformat" not in flags:
+                autoformat()
+
+            if args.replace and "noreplace" not in flags:
+                replace()
+
+            if args.output_check and "noexecute" not in flags:
+                check_output()
