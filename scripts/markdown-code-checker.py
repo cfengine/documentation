@@ -3,9 +3,10 @@ import os
 import argparse
 import sys
 
+
 def extract_inline_code(file_path, languages):
     """extract inline code, language from markdown"""
-    
+
     with open(file_path, "r") as f:
         content = f.read()
 
@@ -16,10 +17,12 @@ def extract_inline_code(file_path, languages):
     for child in ast.children:
         # TODO: add a way to exclude a code snippet
         if isinstance(child, md.block.FencedCode) and child.lang in languages:
-            code_snippet_count+=1
+            code_snippet_count += 1
             yield (code_snippet_count, child.lang, child.children[0].children)
 
+
 ignored_dirs = [".git"]
+
 
 def get_markdown_files(start, languages):
     """locate all markdown files and call check_code_syntax on them"""
@@ -28,10 +31,10 @@ def get_markdown_files(start, languages):
         check_code_syntax(start, languages)
 
     for root, dirs, files in os.walk(start):
-        dirs[:] = [d for d in dirs if d not in ignored_dirs]   
+        dirs[:] = [d for d in dirs if d not in ignored_dirs]
 
         for f in files:
-            if f.endswith('.markdown') or f.endswith('.md'):
+            if f.endswith(".markdown") or f.endswith(".md"):
                 path = os.path.join(root, f)
                 check_code_syntax(path, languages)
 
@@ -60,17 +63,31 @@ def check_code_syntax(path, languages):
 
 
 def write_file(file_name, extension, code_snippet):
-    with open(f"{file_name}.{extension}", 'w') as f:
+    with open(f"{file_name}.{extension}", "w") as f:
         f.write(code_snippet)
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(prog="Markdown inline code syntax checker",
-                                     description="checks the syntax of documentation inline code"
-                                     )
-    parser.add_argument("--path", "-p", help="path of file or directory to check syntax on", default=".", required=False)
-    parser.add_argument("--languages", "-l", nargs='+', help="languages to check syntax of", default=["cf3", "json", "yaml"], required=False)
-                
+    parser = argparse.ArgumentParser(
+        prog="Markdown inline code syntax checker",
+        description="checks the syntax of documentation inline code",
+    )
+    parser.add_argument(
+        "--path",
+        "-p",
+        help="path of file or directory to check syntax on",
+        default=".",
+        required=False,
+    )
+    parser.add_argument(
+        "--languages",
+        "-l",
+        nargs="+",
+        help="languages to check syntax of",
+        default=["cf3", "json", "yaml"],
+        required=False,
+    )
+
     return parser.parse_args()
 
 
@@ -84,7 +101,9 @@ if __name__ == "__main__":
 
     for language in args.languages:
         if language not in supported_languages:
-            print(f"[error] Unsupported language '{language}'. The supported languages are: {", ".join(supported_languages)}")
+            print(
+                f"[error] Unsupported language '{language}'. The supported languages are: {", ".join(supported_languages)}"
+            )
             sys.exit(-1)
 
     get_markdown_files(args.path, args.languages)
