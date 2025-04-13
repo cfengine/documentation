@@ -439,3 +439,26 @@ User settings (name, email, password, timezone, provenance) and roles associated
   The timestamp of when the user settings were last changed.
 * **changetimestamp** *(timestamp with time zone)*
   The time zone of the user, defaults to Etc/GMT+0.
+
+## Table: setup_codes
+
+Stores setup codes used to complete hub setup.
+
+**Columns:**
+
+* **id** *(serial)*
+  Unique auto-incrementing identifier.
+* **code** *(char(6))*
+  Six-character code.
+* **created_at** *(timestamp with time zone)*
+  Timestamp indicating when the setup code was created, defaults to NOW().
+* **expires_at** *(timestamp with time zone)*
+  Timestamp indicating when the setup code will expire.
+* **attempts**  *(integer)*
+  Number of attempts made to use the setup code, defaults to 0.
+* **is_revoked** *(boolean)*
+  Indicates whether the setup code has been revoked before expiration, defaults to false.
+* **is_used** *(boolean)*
+  Indicates whether the setup code has been successfully used, defaults to false.
+* **session_id** *(varchar(64))*
+  Session identifier linking the setup code to a session, can be null.
