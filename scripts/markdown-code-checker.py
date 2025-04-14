@@ -1,4 +1,5 @@
-import marko as md
+from cfbs.pretty import pretty_file
+import markdown_it
 import os
 import argparse
 import sys
@@ -10,20 +11,25 @@ def extract_inline_code(file_path, languages):
     with open(file_path, "r") as f:
         content = f.read()
 
-    parser = md.parser.Parser()
-    ast = parser.parse(content)
+    md = markdown_it.MarkdownIt("commonmark")
+    ast = md.parse(content)
 
-    for child in ast.children:
+    for child in ast:
 
-        if not isinstance(child, md.block.FencedCode):
+        if child.type != "fence":
             continue
 
-        info_string = child.lang.split("|")
+        info_string = child.info.split()
         language = info_string[0]
         flags = info_string[1:]
 
         if language in languages:
-            yield language, child.children[0].children, flags
+            yield {
+                "language": language,
+                "flags": flags,
+                "first_line": child.map[0],
+                "last_line": child.map[1],
+            }
 
 
 ignored_dirs = [".git"]
@@ -33,21 +39,33 @@ def get_markdown_files(start, languages):
     """locate all markdown files and call extract_inline_code on them"""
 
     if os.path.isfile(start):
-        return {start: list(extract_inline_code(start, languages))}
+        return {
+            "files": {
+                start: {"code-blocks": list(extract_inline_code(start, languages))}
+            }
+        }
 
-    return_dict = {}
+    return_dict = {"files": {}}
     for root, dirs, files in os.walk(start):
         dirs[:] = [d for d in dirs if d not in ignored_dirs]
 
         for f in files:
             if f.endswith(".markdown") or f.endswith(".md"):
                 path = os.path.join(root, f)
-                return_dict[path] = list(extract_inline_code(path, languages))
+                return_dict["files"][path] = {
+                    "code-blocks": list(extract_inline_code(path, languages))
+                }
 
     return return_dict
 
 
-def extract(path, i, language, code_snippet):
+def extract(path, i, language, first_line, last_line):
+
+    with open(path, "r") as f:
+        content = f.read()
+
+    code_snippet = "\n".join(content.split("\n")[first_line + 1 : last_line - 1])
+
     with open(f"{path}.snippet-{i}.{language}", "w") as f:
         f.write(code_snippet)
 
@@ -64,8 +82,30 @@ def replace():
     pass
 
 
-def autoformat():
-    pass
+def autoformat(path, i, language, first_line, last_line):
+
+    match language:
+        case "json":
+            file_name = f"{path}.snippet-{i}.{language}"
+
+            try:
+                pretty_file(file_name)
+                with open(file_name, "r") as f:
+                    pretty_content = f.read()
+            except:
+                print(
+                    f"[error] Couldn't find the file '{file_name}'. Run --extract to extract the inline code."
+                )
+                return
+
+            with open(path, "r") as f:
+                origin_content = f.read()
+
+                lines = origin_content.split("\n")
+                lines[first_line + 1 : last_line - 1] = pretty_content.split("\n")
+
+            with open(path, "w") as f:
+                f.write("\n".join(lines))
 
 
 def parse_args():
@@ -74,11 +114,10 @@ def parse_args():
         description="Tool for checking the syntax, the format and the output of markdown inline code",
     )
     parser.add_argument(
-        "--path",
-        "-p",
+        "path",
         help="path of file or directory to check syntax on",
+        nargs="?",
         default=".",
-        required=False,
     )
     parser.add_argument(
         "--languages",
@@ -137,22 +176,34 @@ if __name__ == "__main__":
             )
             sys.exit(-1)
 
-    parsed_markdown = get_markdown_files(args.path, args.languages)
+    parsed_markdowns = get_markdown_files(args.path, args.languages)
 
-    for path, inline_code_list in parsed_markdown.items():
-        for i, (language, code_snippet, flags) in enumerate(inline_code_list):
+    for path in parsed_markdowns["files"].keys():
+        for i, code_block in enumerate(parsed_markdowns["files"][path]["code-blocks"]):
 
-            if args.extract and "noextract" not in flags:
-                extract(path, i + 1, supported_languages[language], code_snippet)
+            if args.extract and "noextract" not in code_block["flags"]:
+                extract(
+                    path,
+                    i + 1,
+                    supported_languages[code_block["language"]],
+                    code_block["first_line"],
+                    code_block["last_line"],
+                )
 
-            if args.syntax_check and "novalidate" not in flags:
+            if args.syntax_check and "novalidate" not in code_block["flags"]:
                 check_syntax()
 
-            if args.autoformat and "noautoformat" not in flags:
-                autoformat()
+            if args.autoformat and "noautoformat" not in code_block["flags"]:
+                autoformat(
+                    path,
+                    i + 1,
+                    supported_languages[code_block["language"]],
+                    code_block["first_line"],
+                    code_block["last_line"],
+                )
 
-            if args.replace and "noreplace" not in flags:
+            if args.replace and "noreplace" not in code_block["flags"]:
                 replace()
 
-            if args.output_check and "noexecute" not in flags:
+            if args.output_check and "noexecute" not in code_block["flags"]:
                 check_output()
