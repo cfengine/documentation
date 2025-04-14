@@ -1,3 +1,4 @@
+from cfbs.pretty import pretty_file
 import markdown_it
 import os
 import argparse
@@ -63,7 +64,7 @@ def extract(path, i, language, first_line, last_line):
     with open(path, "r") as f:
         content = f.read()
 
-    code_snippet = "\n".join(content.split("\n")[first_line+1:last_line-1])
+    code_snippet = "\n".join(content.split("\n")[first_line + 1 : last_line - 1])
 
     with open(f"{path}.snippet-{i}.{language}", "w") as f:
         f.write(code_snippet)
@@ -81,8 +82,30 @@ def replace():
     pass
 
 
-def autoformat():
-    pass
+def autoformat(path, i, language, first_line, last_line):
+
+    match language:
+        case "json":
+            file_name = f"{path}.snippet-{i}.{language}"
+
+            try:
+                pretty_file(file_name)
+                with open(file_name, "r") as f:
+                    pretty_content = f.read()
+            except:
+                print(
+                    f"[error] Couldn't find the file '{file_name}'. Run --extract to extract the inline code."
+                )
+                return
+
+            with open(path, "r") as f:
+                origin_content = f.read()
+
+                lines = origin_content.split("\n")
+                lines[first_line + 1 : last_line - 1] = pretty_content.split("\n")
+
+            with open(path, "w") as f:
+                f.write("\n".join(lines))
 
 
 def parse_args():
@@ -171,7 +194,13 @@ if __name__ == "__main__":
                 check_syntax()
 
             if args.autoformat and "noautoformat" not in code_block["flags"]:
-                autoformat()
+                autoformat(
+                    path,
+                    i + 1,
+                    supported_languages[code_block["language"]],
+                    code_block["first_line"],
+                    code_block["last_line"],
+                )
 
             if args.replace and "noreplace" not in code_block["flags"]:
                 replace()
