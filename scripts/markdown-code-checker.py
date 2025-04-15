@@ -78,34 +78,39 @@ def check_output():
     pass
 
 
-def replace():
-    pass
+def replace(path, i, language, first_line, last_line):
+    file_name = f"{path}.snippet-{i}.{language}"
+
+    try:
+        with open(file_name, "r") as f:
+            pretty_content = f.read()
+    except:
+        print(
+            f"[error] Couldn't find the file '{file_name}'. Run --extract to extract the inline code."
+        )
+        return
+
+    with open(path, "r") as f:
+        markdown_content = f.read()
+        lines = markdown_content.split("\n")
+
+    lines[first_line + 1 : last_line - 1] = pretty_content.split("\n")
+
+    with open(path, "w") as f:
+        f.write("\n".join(lines))
 
 
 def autoformat(path, i, language, first_line, last_line):
+    file_name = f"{path}.snippet-{i}.{language}"
 
     match language:
         case "json":
-            file_name = f"{path}.snippet-{i}.{language}"
-
             try:
                 pretty_file(file_name)
-                with open(file_name, "r") as f:
-                    pretty_content = f.read()
             except:
                 print(
                     f"[error] Couldn't find the file '{file_name}'. Run --extract to extract the inline code."
                 )
-                return
-
-            with open(path, "r") as f:
-                origin_content = f.read()
-
-                lines = origin_content.split("\n")
-                lines[first_line + 1 : last_line - 1] = pretty_content.split("\n")
-
-            with open(path, "w") as f:
-                f.write("\n".join(lines))
 
 
 def parse_args():
@@ -202,8 +207,14 @@ if __name__ == "__main__":
                     code_block["last_line"],
                 )
 
-            if args.replace and "noreplace" not in code_block["flags"]:
-                replace()
-
             if args.output_check and "noexecute" not in code_block["flags"]:
                 check_output()
+
+            if args.replace and "noreplace" not in code_block["flags"]:
+                replace(
+                    path,
+                    i + 1,
+                    supported_languages[code_block["language"]],
+                    code_block["first_line"],
+                    code_block["last_line"],
+                )
