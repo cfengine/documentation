@@ -19,6 +19,9 @@ def extract_inline_code(file_path, languages):
         if child.type != "fence":
             continue
 
+        if not child.info:
+            continue
+
         info_string = child.info.split()
         language = info_string[0]
         flags = info_string[1:]
@@ -91,13 +94,17 @@ def replace(path, i, language, first_line, last_line):
         return
 
     with open(path, "r") as f:
-        markdown_content = f.read()
-        lines = markdown_content.split("\n")
+        lines = f.read().split("\n")
+        pretty_lines = pretty_content.split("\n")
 
-    lines[first_line + 1 : last_line - 1] = pretty_content.split("\n")
+        offset = len(pretty_lines) - len(lines[first_line + 1 : last_line - 1])
+
+    lines[first_line + 1 : last_line - 1] = pretty_lines
 
     with open(path, "w") as f:
         f.write("\n".join(lines))
+
+    return offset
 
 
 def autoformat(path, i, language, first_line, last_line):
@@ -184,7 +191,13 @@ if __name__ == "__main__":
     parsed_markdowns = get_markdown_files(args.path, args.languages)
 
     for path in parsed_markdowns["files"].keys():
+        offset = 0
         for i, code_block in enumerate(parsed_markdowns["files"][path]["code-blocks"]):
+
+            # adjust line numbers after replace
+            for cb in parsed_markdowns["files"][path]["code-blocks"][i:]:
+                cb["first_line"] += offset
+                cb["last_line"] += offset
 
             if args.extract and "noextract" not in code_block["flags"]:
                 extract(
@@ -211,7 +224,7 @@ if __name__ == "__main__":
                 check_output()
 
             if args.replace and "noreplace" not in code_block["flags"]:
-                replace(
+                offset = replace(
                     path,
                     i + 1,
                     supported_languages[code_block["language"]],
