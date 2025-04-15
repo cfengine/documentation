@@ -1,8 +1,10 @@
 from cfbs.pretty import pretty_file
+from shutil import which
 import markdown_it
 import os
 import argparse
 import sys
+import subprocess
 
 
 def extract_inline_code(file_path, languages):
@@ -73,8 +75,28 @@ def extract(path, i, language, first_line, last_line):
         f.write(code_snippet)
 
 
-def check_syntax():
-    pass
+def check_syntax(path, i, language, first_line, last_line):
+    file_name = f"{path}.snippet-{i}.{language}"
+    abs_file_name = os.path.abspath(file_name)
+
+    if not os.path.exists(file_name):
+        print(
+            f"[error] Couldn't find the file '{file_name}'. Run --extract to extract the inline code."
+        )
+        return
+
+    match language:
+        case "cf":
+            p = subprocess.run(
+                ["/var/cfengine/bin/cf-promises", abs_file_name],
+                capture_output=True,
+                text=True,
+            )
+            err = p.stderr
+
+            if err:
+                err = err.replace(abs_file_name, f"{path}:{first_line}")
+                print(err)
 
 
 def check_output():
@@ -181,6 +203,14 @@ if __name__ == "__main__":
         print("[error] This path doesn't exist")
         sys.exit(-1)
 
+    if (
+        args.syntax_check
+        and "cf3" in args.languages
+        and not which("/var/cfengine/bin/cf-promises")
+    ):
+        print("[error] cf-promises is not installed")
+        sys.exit(-1)
+
     for language in args.languages:
         if language not in supported_languages:
             print(
@@ -209,7 +239,13 @@ if __name__ == "__main__":
                 )
 
             if args.syntax_check and "novalidate" not in code_block["flags"]:
-                check_syntax()
+                check_syntax(
+                    path,
+                    i + 1,
+                    supported_languages[code_block["language"]],
+                    code_block["first_line"],
+                    code_block["last_line"],
+                )
 
             if args.autoformat and "noautoformat" not in code_block["flags"]:
                 autoformat(
