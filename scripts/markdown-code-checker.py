@@ -7,10 +7,10 @@ import sys
 import subprocess
 
 
-def extract_inline_code(file_path, languages):
+def extract_inline_code(path, languages):
     """extract inline code, language and filters from markdown"""
 
-    with open(file_path, "r") as f:
+    with open(path, "r") as f:
         content = f.read()
 
     md = markdown_it.MarkdownIt("commonmark")
@@ -64,38 +64,37 @@ def get_markdown_files(start, languages):
     return return_dict
 
 
-def extract(path, i, language, first_line, last_line):
+def extract(origin_path, snippet_path, _language, first_line, last_line):
 
-    with open(path, "r") as f:
+    with open(origin_path, "r") as f:
         content = f.read()
 
     code_snippet = "\n".join(content.split("\n")[first_line + 1 : last_line - 1])
 
-    with open(f"{path}.snippet-{i}.{language}", "w") as f:
+    with open(snippet_path, "w") as f:
         f.write(code_snippet)
 
 
-def check_syntax(path, i, language, first_line, last_line):
-    file_name = f"{path}.snippet-{i}.{language}"
-    abs_file_name = os.path.abspath(file_name)
+def check_syntax(origin_path, snippet_path, language, first_line, _last_line):
+    snippet_abs_path = os.path.abspath(snippet_path)
 
-    if not os.path.exists(file_name):
+    if not os.path.exists(snippet_path):
         print(
-            f"[error] Couldn't find the file '{file_name}'. Run --extract to extract the inline code."
+            f"[error] Couldn't find the file '{snippet_path}'. Run --extract to extract the inline code."
         )
         return
 
     match language:
         case "cf":
             p = subprocess.run(
-                ["/var/cfengine/bin/cf-promises", abs_file_name],
+                ["/var/cfengine/bin/cf-promises", snippet_abs_path],
                 capture_output=True,
                 text=True,
             )
             err = p.stderr
 
             if err:
-                err = err.replace(abs_file_name, f"{path}:{first_line}")
+                err = err.replace(snippet_abs_path, f"{origin_path}:{first_line}")
                 print(err)
 
 
@@ -103,42 +102,40 @@ def check_output():
     pass
 
 
-def replace(path, i, language, first_line, last_line):
-    file_name = f"{path}.snippet-{i}.{language}"
+def replace(origin_path, snippet_path, _language, first_line, last_line):
 
     try:
-        with open(file_name, "r") as f:
+        with open(snippet_path, "r") as f:
             pretty_content = f.read()
     except:
         print(
-            f"[error] Couldn't find the file '{file_name}'. Run --extract to extract the inline code."
+            f"[error] Couldn't find the file '{snippet_path}'. Run --extract to extract the inline code."
         )
         return
 
-    with open(path, "r") as f:
-        lines = f.read().split("\n")
+    with open(origin_path, "r") as f:
+        origin_lines = f.read().split("\n")
         pretty_lines = pretty_content.split("\n")
 
-        offset = len(pretty_lines) - len(lines[first_line + 1 : last_line - 1])
+        offset = len(pretty_lines) - len(origin_lines[first_line + 1 : last_line - 1])
 
-    lines[first_line + 1 : last_line - 1] = pretty_lines
+    origin_lines[first_line + 1 : last_line - 1] = pretty_lines
 
-    with open(path, "w") as f:
-        f.write("\n".join(lines))
+    with open(origin_path, "w") as f:
+        f.write("\n".join(origin_lines))
 
     return offset
 
 
-def autoformat(path, i, language, first_line, last_line):
-    file_name = f"{path}.snippet-{i}.{language}"
+def autoformat(_origin_path, snippet_path, language, _first_line, _last_line):
 
     match language:
         case "json":
             try:
-                pretty_file(file_name)
+                pretty_file(snippet_path)
             except:
                 print(
-                    f"[error] Couldn't find the file '{file_name}'. Run --extract to extract the inline code."
+                    f"[error] Couldn't find the file '{snippet_path}'. Run --extract to extract the inline code."
                 )
 
 
@@ -220,38 +217,43 @@ if __name__ == "__main__":
 
     parsed_markdowns = get_markdown_files(args.path, args.languages)
 
-    for path in parsed_markdowns["files"].keys():
+    for origin_path in parsed_markdowns["files"].keys():
         offset = 0
-        for i, code_block in enumerate(parsed_markdowns["files"][path]["code-blocks"]):
+        for i, code_block in enumerate(
+            parsed_markdowns["files"][origin_path]["code-blocks"]
+        ):
 
             # adjust line numbers after replace
-            for cb in parsed_markdowns["files"][path]["code-blocks"][i:]:
+            for cb in parsed_markdowns["files"][origin_path]["code-blocks"][i:]:
                 cb["first_line"] += offset
                 cb["last_line"] += offset
 
+            language = supported_languages[code_block["language"]]
+            snippet_path = f"{origin_path}.snippet-{i+1}.{language}"
+
             if args.extract and "noextract" not in code_block["flags"]:
                 extract(
-                    path,
-                    i + 1,
-                    supported_languages[code_block["language"]],
+                    origin_path,
+                    snippet_path,
+                    language,
                     code_block["first_line"],
                     code_block["last_line"],
                 )
 
             if args.syntax_check and "novalidate" not in code_block["flags"]:
                 check_syntax(
-                    path,
-                    i + 1,
-                    supported_languages[code_block["language"]],
+                    origin_path,
+                    snippet_path,
+                    language,
                     code_block["first_line"],
                     code_block["last_line"],
                 )
 
             if args.autoformat and "noautoformat" not in code_block["flags"]:
                 autoformat(
-                    path,
-                    i + 1,
-                    supported_languages[code_block["language"]],
+                    origin_path,
+                    snippet_path,
+                    language,
                     code_block["first_line"],
                     code_block["last_line"],
                 )
@@ -261,9 +263,9 @@ if __name__ == "__main__":
 
             if args.replace and "noreplace" not in code_block["flags"]:
                 offset = replace(
-                    path,
-                    i + 1,
-                    supported_languages[code_block["language"]],
+                    origin_path,
+                    snippet_path,
+                    language,
                     code_block["first_line"],
                     code_block["last_line"],
                 )
