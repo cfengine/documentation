@@ -1,9 +1,10 @@
 from cfbs.pretty import pretty_file
+from cfbs.utils import user_error
+import json
 from shutil import which
 import markdown_it
 import os
 import argparse
-import sys
 import subprocess
 
 
@@ -66,36 +67,47 @@ def get_markdown_files(start, languages):
 
 def extract(origin_path, snippet_path, _language, first_line, last_line):
 
-    with open(origin_path, "r") as f:
-        content = f.read()
+    try:
+        with open(origin_path, "r") as f:
+            content = f.read()
 
-    code_snippet = "\n".join(content.split("\n")[first_line + 1 : last_line - 1])
+        code_snippet = "\n".join(content.split("\n")[first_line + 1 : last_line - 1])
 
-    with open(snippet_path, "w") as f:
-        f.write(code_snippet)
+        with open(snippet_path, "w") as f:
+            f.write(code_snippet)
+    except IOError:
+        user_error(f"Couldn't open '{origin_path}' or '{snippet_path}'")
 
 
 def check_syntax(origin_path, snippet_path, language, first_line, _last_line):
     snippet_abs_path = os.path.abspath(snippet_path)
 
     if not os.path.exists(snippet_path):
-        print(
-            f"[error] Couldn't find the file '{snippet_path}'. Run --extract to extract the inline code."
+        user_error(
+            f"Couldn't find the file '{snippet_path}'. Run --extract to extract the inline code."
         )
-        return
 
     match language:
         case "cf":
-            p = subprocess.run(
-                ["/var/cfengine/bin/cf-promises", snippet_abs_path],
-                capture_output=True,
-                text=True,
-            )
-            err = p.stderr
+            try:
+                p = subprocess.run(
+                    ["/var/cfengine/bin/cf-promises", snippet_abs_path],
+                    capture_output=True,
+                    text=True,
+                )
+                err = p.stderr
 
-            if err:
-                err = err.replace(snippet_abs_path, f"{origin_path}:{first_line}")
-                print(err)
+                if err:
+                    err = err.replace(snippet_abs_path, f"{origin_path}:{first_line}")
+                    print(err)
+            except OSError:
+                user_error(f"'{snippet_abs_path}' doesn't exist")
+            except ValueError:
+                user_error("Invalid subprocess arguments")
+            except subprocess.CalledProcessError:
+                user_error(f"Couldn't run cf-promises on '{snippet_abs_path}'")
+            except subprocess.TimeoutExpired:
+                user_error("Timed out")
 
 
 def check_output():
@@ -107,22 +119,25 @@ def replace(origin_path, snippet_path, _language, first_line, last_line):
     try:
         with open(snippet_path, "r") as f:
             pretty_content = f.read()
-    except:
-        print(
-            f"[error] Couldn't find the file '{snippet_path}'. Run --extract to extract the inline code."
+
+        with open(origin_path, "r") as f:
+            origin_lines = f.read().split("\n")
+            pretty_lines = pretty_content.split("\n")
+
+            offset = len(pretty_lines) - len(
+                origin_lines[first_line + 1 : last_line - 1]
+            )
+
+        origin_lines[first_line + 1 : last_line - 1] = pretty_lines
+
+        with open(origin_path, "w") as f:
+            f.write("\n".join(origin_lines))
+    except FileNotFoundError:
+        user_error(
+            f"Couldn't find the file '{snippet_path}'. Run --extract to extract the inline code."
         )
-        return
-
-    with open(origin_path, "r") as f:
-        origin_lines = f.read().split("\n")
-        pretty_lines = pretty_content.split("\n")
-
-        offset = len(pretty_lines) - len(origin_lines[first_line + 1 : last_line - 1])
-
-    origin_lines[first_line + 1 : last_line - 1] = pretty_lines
-
-    with open(origin_path, "w") as f:
-        f.write("\n".join(origin_lines))
+    except IOError:
+        user_error(f"Couldn't open '{origin_path}' or '{snippet_path}'")
 
     return offset
 
@@ -133,10 +148,16 @@ def autoformat(_origin_path, snippet_path, language, _first_line, _last_line):
         case "json":
             try:
                 pretty_file(snippet_path)
-            except:
-                print(
-                    f"[error] Couldn't find the file '{snippet_path}'. Run --extract to extract the inline code."
+            except FileNotFoundError:
+                user_error(
+                    f"Couldn't find the file '{snippet_path}'. Run --extract to extract the inline code."
                 )
+            except PermissionError:
+                user_error(f"Not enough permissions to open '{snippet_path}'")
+            except IOError:
+                user_error(f"Couldn't open '{snippet_path}'")
+            except json.decoder.JSONDecodeError:
+                user_error(f"Invalid json")
 
 
 def parse_args():
@@ -197,23 +218,20 @@ if __name__ == "__main__":
     args = parse_args()
 
     if not os.path.exists(args.path):
-        print("[error] This path doesn't exist")
-        sys.exit(-1)
+        user_error("This path doesn't exist")
 
     if (
         args.syntax_check
         and "cf3" in args.languages
         and not which("/var/cfengine/bin/cf-promises")
     ):
-        print("[error] cf-promises is not installed")
-        sys.exit(-1)
+        user_error("cf-promises is not installed")
 
     for language in args.languages:
         if language not in supported_languages:
-            print(
-                f"[error] Unsupported language '{language}'. The supported languages are: {", ".join(supported_languages.keys())}"
+            user_error(
+                f"Unsupported language '{language}'. The supported languages are: {", ".join(supported_languages.keys())}"
             )
-            sys.exit(-1)
 
     parsed_markdowns = get_markdown_files(args.path, args.languages)
 
