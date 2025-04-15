@@ -25,6 +25,7 @@
 import cfdoc_environment as environment
 import cfdoc_metadata as metadata
 import cfdoc_linkresolver as linkresolver
+import cfdoc_codeblock_resolver as codeblock_resolver
 import cfdoc_macros as macros
 import cfdoc_printsource as printsource
 import cfdoc_git as git
@@ -48,6 +49,14 @@ try:
     linkresolver.run(config)
 except:
     print("cfdoc_preprocess: Fatal error generating link map")
+    sys.stdout.write("       Exception: ")
+    print(sys.exc_info())
+    exit(3)
+
+try:
+    codeblock_resolver.run(config)
+except:
+    print("cfdoc_preprocess: Fatal error processing codeblocks")
     sys.stdout.write("       Exception: ")
     print(sys.exc_info())
     exit(3)
