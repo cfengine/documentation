@@ -76,8 +76,7 @@ Now let's put the bundle, promise type and class components together in a
 final policy. As for classes we will use linux to define that the file
 `/tmp/hello-world` must exists on all hosts of type *linux*:
 
-```cf3
-[file=my_test.cf]
+```cf3 file=my_test.cf
 bundle agent my_test
 {
   files:
@@ -166,8 +165,7 @@ Now we need to tell CFEngine that there is a new policy in town:
 
 1. Create `/var/cfengine/masterfiles/def.json` with the following content:
 
-```json
-[file=def.json]
+```json file=def.json
 {
   "inputs": [ "my-policy.cf" ]
 }

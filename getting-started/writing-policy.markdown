@@ -26,8 +26,7 @@ code .
 
 Let's take a look at the traditional "Hello, world!" example:
 
-```cfengine3
-[file=my_policy.cf]
+```cfengine3 file=my_policy.cf
 bundle agent hello_world
 {
   files:
@@ -101,8 +100,7 @@ cf-remote sudo -H hub "rm /tmp/hello && cf-agent -KI"
 Earlier in this tutorial series, we added the `promise-type-git` module to our project.
 This means that we can just start using the new promise type in policy:
 
-```cfengine3
-[file=my_policy.cf]
+```cfengine3 file=my_policy.cf
 bundle agent hello_world
 {
   git:
@@ -133,8 +131,7 @@ This has several benefits:
 
 Here is a simple example:
 
-```cfengine3
-[file=my_policy.cf]
+```cfengine3 file=my_policy.cf
 bundle agent hello_world
 {
   vars:
@@ -168,8 +165,7 @@ git log -1 --format="%H"
 We want to put this in a variable and include it in our reports we can see in Mission Portal.
 To take the output of a command and put it in a variable, we will use the `execresult()` function:
 
-```cfengine3
-[file=my_policy.cf]
+```cfengine3 file=my_policy.cf
 bundle agent hello_world
 {
   vars:

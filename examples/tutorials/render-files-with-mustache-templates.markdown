@@ -59,8 +59,7 @@ Allowed users {{#users}}
 
 Create a file called `/tmp/editconfig.cf` with the following content:
 
-```cf3
-[file=editconfig.cf]
+```cf3 file=editconfig.cf
 bundle agent myapp_confs
 {
   files:
