@@ -33,8 +33,7 @@ cfbs add https://github.com/cfengine/promise-type-template
 From that repo, we have now added a new promise type, it is called `git_example` to avoid confusion with the "real" git promise type used earlier in the tutorial.
 Then, we should edit our policy example, `my_policy.cf` to use this module:
 
-```cfengine3
-[file=my_policy.cf]
+```cfengine3 file=my_policy.cf
 bundle agent hello_world
 {
   meta:

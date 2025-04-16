@@ -67,8 +67,7 @@ touch Vagrantfile && code Vagrantfile
 
 Put this in your `Vagrantfile`:
 
-```ruby
-[file=Vagrantfile]
+```ruby file=Vagrantfile
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
