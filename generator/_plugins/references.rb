@@ -35,7 +35,7 @@ module Jekyll
 
       # only alter markdown files
       md_class = ((defined? MarkdownConverter) ? MarkdownConverter : Jekyll::Converters::Markdown)
-      return unless converter.instance_of? md_class
+      return unless defined?(converter) && converter.instance_of?(md_class)
 
       # read and cache content of _references.md
       if @@refs_content.nil?
