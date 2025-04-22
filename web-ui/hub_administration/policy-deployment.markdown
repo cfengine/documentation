@@ -101,8 +101,7 @@ To configure automatic deployments simply ensure the
 
 Create `def.json` in the root of your masterfiles with the following content:
 
-```json
-[file=def.json]
+```json file=def.json
 {
   "classes": {
     "cfengine_internal_masterfiles_update": [ "hub" ]
@@ -114,8 +113,7 @@ Create `def.json` in the root of your masterfiles with the following content:
 
 Simply edit `bundle common update_def` in `controls/update_def.cf`.
 
-```cf3
-[file=update_def.cf]
+```cf3 file=update_def.cf
 bundle common update_def
 {
 # ...

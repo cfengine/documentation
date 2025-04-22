@@ -30,8 +30,7 @@ Create user group security and webadmin.
 
 Create a file `/tmp/users.cf` with the following content:
 
-```cf3
-[file=users.cf]
+```cf3 file=users.cf
 body common control
 {
   inputs => { "$(sys.libdir)/stdlib.cf" };

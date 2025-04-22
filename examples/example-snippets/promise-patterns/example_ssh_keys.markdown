@@ -14,8 +14,7 @@ the [Masterfiles Policy Framework][Masterfiles Policy Framework]. The
 you do not have a `def.json` in the root of your masterfiles directory
 simply create it with the following content.
 
-```json
-[file=def.json]
+```json file=def.json
 {
   "classes": {
                "services_autorun": [ "any" ]

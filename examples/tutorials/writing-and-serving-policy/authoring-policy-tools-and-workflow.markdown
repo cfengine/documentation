@@ -107,8 +107,7 @@ git remote -v
 1. Create a new file in `/var/cfengine/masterfiles` with a unique filename (e.g. `vcs_update.cf`)
 2. Add the following text to the `vcs_update.cf` file:
 
-```cf3
-[file=vcs_update.cf]
+```cf3 file=vcs_update.cf
 bundle agent vcs_update
     {
     commands:
@@ -126,8 +125,7 @@ body contain masterfiles_contain
 3. Save the file.
 4. Add bundle and file information to `/var/cfengine/masterfiles/promises.cf`. Example (where `...` represents existing text in the file, omitted for clarity):
 
-```cf3
-[file=promises.cf]
+```cf3 file=promises.cf
 body common control
 
 {
