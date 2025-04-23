@@ -27,8 +27,7 @@ This policy shows how public keys can be stored in a central location on the
 policy server and automatically installed on all hosts.
 
 
-```cf3
-[file=trust_distkeys.cf]
+```cf3 file=trust_distkeys.cf
 bundle agent trust_distkeys
 #@ brief Example public key distribution
 {

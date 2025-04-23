@@ -12,8 +12,7 @@ Note: For simplicity, in this tutorial we will work directly on top of the Maste
 ## Ensuring the NTP package is installed
 
 
-```cf3
-[file=ntp.cf]
+```cf3 file=ntp.cf
 bundle agent ntp
 {
    vars:
@@ -99,8 +98,7 @@ classes         => results("bundle", "ntp_package_");
 
 On your hub create `services/ntp.cf` inside *masterfiles* with the following content:
 
-```cf3
-[file=ntp.cf]
+```cf3 file=ntp.cf
 bundle agent ntp
 {
    vars:
@@ -181,8 +179,7 @@ Now we will extend the policy to ensure that the NTP service is running.
 
 Now that the NTP service has been installed on the system, we need to make sure that it is running.
 
-```cf3
-[file=ntp.cf]
+```cf3 file=ntp.cf
 bundle agent ntp
 {
    vars:
@@ -520,8 +517,7 @@ Next we will augment file/template management with data sourced from a JSON data
 CFEngine offers out-of-the-box support for reading and writing JSON data structures. In this tutorial, we will default the NTP configuration properties in policy, but provide a path for the properties to be overridden from Augments.
 
 {% raw %}
-```cf3
-[file=ntp.cf]
+```cf3 file=ntp.cf
 bundle agent ntp
 {
    vars:
@@ -663,8 +659,7 @@ We do not expect to see the ntp configuration file modified or the service to be
 Now, let's modify `def.json` (in the root of masterfiles) and define some different values for `driftfile` and `servers`.
 Modify `def.json` so that it looks like this:
 
-```json
-[file=def.json]
+```json file=def.json
 {
   "inputs": [ "services/ntp.cf" ],
   "vars": {

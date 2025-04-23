@@ -12,8 +12,7 @@ If you would like to enable plain HTTP you can do so by defining
 For example, simply place the following inside `def.json` in the root of your
 masterfiles.
 
-```json
-[file=def.json]
+```json file=def.json
 {
   "classes": {
     "cfe_enterprise_enable_plain_http": [ "any" ]

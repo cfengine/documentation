@@ -81,8 +81,7 @@ together.
 The preferred way of setting `def.mailfrom` is from the
 [augments file][Augments].
 
-```json
-[file=def.json]
+```json file=def.json
 
 {
   "vars": {
@@ -107,8 +106,7 @@ ensure they have taken effect.
 The preferred way to disable the agent from sending emails is to define
 `cfengine_internal_disable_agent_email` from the [augments file][Augments].
 
-```json
-[file=def.json]
+```json file=def.json
 {
   "classes": {
     "cfengine_internal_disable_agent_email": [ "any" ]
