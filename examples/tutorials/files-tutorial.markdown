@@ -84,7 +84,7 @@ Note: The following workflow assumes the directory /home/user already exists. If
 
 ## Create a File
 
-```cf3 file=file_create.cf
+```cf3 {file="file_create.cf"}
 bundle agent testbundle
 {
   files:
@@ -125,7 +125,7 @@ rm /home/user/test_plain.txt
 
 ## Delete a File
 
-```cf3 file=file_delete.cf
+```cf3 {file="file_delete.cf"}
 body common control
 {
   inputs => {
@@ -191,7 +191,7 @@ ls /home/user/test_plain.txt
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence list_file,list_file_2
 ```
 
-```cf3 file=file_modify.cf
+```cf3 {file="file_modify.cf"}
 body common control
 {
   inputs => {
@@ -289,7 +289,7 @@ rm /home/user/test_plain.txt
 
 ## Copy a file and edit its text
 
-```cf3 file=file_copy.cf
+```cf3 {file="file_copy.cf"}
 body common control
 {
   inputs => {

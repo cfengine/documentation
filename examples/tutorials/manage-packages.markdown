@@ -14,7 +14,7 @@ given the recent disclosure of the Heartbleed vulnerability. If we simply want
 to make sure the latest version of OpenSSL is installed in all our hosts, we can
 use the packages promise type, like this:
 
-```cf3 file=manage_packages.cf
+```cf3 {file="manage_packages.cf"}
 body common control
 {
       inputs => { "$(sys.libdir)/stdlib.cf" };
@@ -81,7 +81,7 @@ which telnet
 Making sure this package is removed from the system is easy. Let's add one more
 promise to our previous policy, this time using the absent policy:
 
-```cf3 file=manage_packages.cf
+```cf3 {file="manage_packages.cf"}
 body common control
 {
       inputs => { "$(sys.libdir)/stdlib.cf" };
@@ -136,7 +136,7 @@ Copy `manage_packages.cf` to `/var/cfengine/masterfiles/` on your policy hub. In
 `/var/cfengine/masterfiles/def.json`, add `manage_packages.cf` to the inputs
 declaration, and `manage_packages` to the bundlesequence declaration.
 
-```json file=def.json
+```json {file="def.json"}
 {
   "inputs": [ "manage_packages.cf" ],
   "vars": {

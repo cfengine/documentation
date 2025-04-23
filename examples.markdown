@@ -106,7 +106,7 @@ Go back into vi by typing "vi" at the prompt. Then type ```i``` to insert
  __body common control__ to `hello_world.cf`. Place it above __bundle agent hello_world__, as
 shown in the following example:
 
-```cf3 file=hello_world.cf
+```cf3 {file="hello_world.cf"}
 body common control
 {
   bundlesequence => { "hello_world" };
@@ -135,7 +135,7 @@ notice: R: Hello World!
 **Note:** It may be necessary to add a reference to the standard library within the body common control section, and remove the `bundlesequence` line.
 Example:
 
-```cf3 file=hello_world.cf
+```cf3 {file="hello_world.cf"}
 body common control
 {
   inputs => {
@@ -155,7 +155,7 @@ Again type "vi" then "Enter" then ```i``` to insert the following:
 
 Add it before __body common control__, as shown below:
 
-```cf3 file=hello_world.cf
+```cf3 {file="hello_world.cf"}
 #!/var/cfengine/bin/cf-agent --no-lock
 body common control
 {

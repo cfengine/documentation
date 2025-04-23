@@ -76,7 +76,7 @@ expressions or class names.
 
 Easy, right?
 
-```cf3 file=json_example.cf
+```cf3 {file="json_example.cf"}
 body common control
 {
       bundlesequence => { "run" };

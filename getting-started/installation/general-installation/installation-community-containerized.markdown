@@ -153,7 +153,7 @@ cfengine     lts        <IMAGE_ID>     About an hour ago   302MB
 ### Using docker compose service
 Create a `compose.yaml` file with following contents:
 
-```yaml file=compose.yaml
+```yaml {file="compose.yaml"}
 name: cfengine-demo
 
 services:
