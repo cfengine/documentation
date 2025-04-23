@@ -37,7 +37,7 @@ def transform_codeblocks(content):
 
     pattern = re.compile(
         r'^```([a-zA-Z0-9_-]+)' # language
-        r'((?:\s+(file=[^\s]+|noindent|noparse|noeval))+)\s*$',  # flags
+        r'\s*\{([^}]*)\}\s*$',  # flags
         re.MULTILINE
     )
 
@@ -46,10 +46,11 @@ def transform_codeblocks(content):
         all_flags = match.group(2)
 
         # Extract the file=... part
-        file_flag_match = re.search(r'file=[^\s]+', all_flags)
+        file_flag_match = re.search(r'file=("([^"]*)"|([^\s}]+))', all_flags)
         if file_flag_match:
-            file_flag = file_flag_match.group()
-            return f"```{language}\n[{file_flag}]"
+            # file name without qoutes might be in group 2 or 3, depends on quotes presence
+            file_name = file_flag_match.group(2) or file_flag_match.group(3)
+            return f"```{language}\n[file={file_name}]"
         else:
             return f"```{language}"
 
