@@ -19,7 +19,7 @@ Call collect and Client Initiated Reporting are the same, they both refer to the
 
 The easiest way to enable call collect is via augments files, modify `/var/cfengine/masterfiles/def.json` on the hub:
 
-```json file=def.json
+```json {file="def.json"}
 {
   "classes": {
     "client_initiated_reporting_enabled": [ "any" ]
