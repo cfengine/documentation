@@ -130,7 +130,7 @@ reports:
 The outcome of this promise is a file called /tmp/report.html which contains
 the following output:
 
-```html file=report.html
+```html {file="report.html"}
 <html>
 Name of this host is: atlas<br>
 Type of this host is: linux<br>

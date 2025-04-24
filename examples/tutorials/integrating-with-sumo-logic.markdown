@@ -158,7 +158,7 @@ As we can see above CFEngine detected a change on `Thursday Oct 2 at 01:16:42` a
 
 The policy as found in `sumologic_policy_update.cf`.
 
-```cf3 file=sumo_logic_policy_update.cf
+```cf3 {file="sumo_logic_policy_update.cf"}
 bundle agent sumo_logic_policy_update
 {
   vars:

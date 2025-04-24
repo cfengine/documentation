@@ -40,7 +40,7 @@ In the end, you will not be running these commands manually, but rather putting 
 
 In order to specify and limit which hosts (IP addresses) are considered trusted and allowed to connect and fetch policy files, you can put the trusted IP addresses and subnets into the ```acl``` variable:
 
-```json file=/var/cfengine/masterfiles/def.json
+```json {file="/var/cfengine/masterfiles/def.json"}
 {
   "variables": {
     "default:def.acl": ["192.0.2.42", "198.51.100.7"]
@@ -76,7 +76,7 @@ In all cases, it is recommended to disable automatic trust when you are not usin
 Either immediately after installation (if distributing keys through another channel, see below) or after you are done bootstrapping clients.
 You can edit the augments file to achieve this:
 
-```json file=/var/cfengine/masterfiles/def.json
+```json {file="/var/cfengine/masterfiles/def.json"}
 {
   "variables": {
     "default:def.trustkeysfrom": []
@@ -88,7 +88,7 @@ If you are using CFEngine Build, you can achieve this by adding [this module](ht
 
 When combined with the variable above, you can create a very restricted setup:
 
-```json file=/var/cfengine/masterfiles/def.json
+```json {file="/var/cfengine/masterfiles/def.json"}
 {
   "variables": {
     "default:def.acl": ["192.0.2.42", "198.51.100.7"],

@@ -46,7 +46,7 @@ information we will write an inventory policy to report that information.
 Create `/var/cfengine/masterfiles/services/tutorials/inventory/owner.cf` with the
 following content:
 
-```cf3 file=owner.cf
+```cf3 {file="owner.cf"}
 bundle agent tutorials_inventory_owner
 # @brief Inventory Owner information
 # @description Inventory owner information from `/vagrant/inventory_owner.csv`.
