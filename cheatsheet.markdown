@@ -276,8 +276,7 @@ These two blocks will be joined into one element on the UI.
 You can specify file name of the code block by adding  `[file=Name of the file]` in the first line.
 This line won't be shown in the resulting HTML (it will be converted to the heading / frame).
 
-```cf3
-[file=policy.cf]
+```cf3 {file="policy.cf"}
 bundle agent hello_world
 {
   meta:

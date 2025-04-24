@@ -35,8 +35,7 @@ We can use a Git update hook to prevent a change from being made unless it
 passes syntax checking. The idea is to check out the revision in a temporary
 directory and run `cf-promises` on it. Here is an example hook.
 
-```shell
-[file=update]
+```shell {file="update"}
 #!/bin/sh
 
 # --- Command line
@@ -82,8 +81,7 @@ For subversion, the principle is essentially the same. Note that for a
 post-commit hook the check is run after update, so the repository may be left
 with a syntax error, but the committer is notified.
 
-```shell
-[file=post-commit]
+```shell {file="post-commit"}
 #!/bin/sh
 
 REPOS="$1"

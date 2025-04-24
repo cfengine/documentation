@@ -59,8 +59,7 @@ the following defines the attribute `Role` which is set to
 `database_server`. You need to add it to the top-level
 `bundlesequence` in `promises.cf` or in a bundle that it calls.
 
-```cf3
-[file=promises.cf]
+```cf3 {file="promises.cf"}
 bundle agent myreport
 {
   vars:

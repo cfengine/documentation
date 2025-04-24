@@ -28,8 +28,7 @@ touch /tmp/file-integrity
 
 Insert the following policy into `/tmp/file_example.cf`
 
-```cf3
-[file=file_example.cf]
+```cf3 {file="file_example.cf"}
 bundle agent file_integrity
 {
   files:

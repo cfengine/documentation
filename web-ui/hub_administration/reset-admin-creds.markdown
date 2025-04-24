@@ -7,8 +7,7 @@ published: true
 The default `admin` user can be reset to defaults using the following SQL.
 
 
-```sql
-[file=cfsettings-setadminpassword.sql]
+```sql {file="cfsettings-setadminpassword.sql"}
 INSERT INTO "users" ("username", "password", "salt", "name", "email", "external", "active", "roles", "changetimestamp")
        SELECT 'admin', 'SHA=aa459b45ecf9816d472c2252af0b6c104f92a6faf2844547a03338e42e426f52', 'eWAbKQmxNP', 'admin',  'admin@organisation.com', false, '1',  '{admin,cf_remoteagent}', now()
 ON CONFLICT (username, external) DO UPDATE
@@ -38,8 +37,7 @@ If these credentials are not synchronized properly you can get "Authentication f
 
 To rotate these credentials execute the following shell script on the hub and then restart the system with `systemctl restart cfengine3` or similar.
 
-```bash
-[file=rotate_mp_credentials.sh]
+```bash {file="rotate_mp_credentials.sh"}
 #!/usr/bin/env bash
 pwgen() {
   dd if=/dev/urandom bs=1024 count=1 2>/dev/null | tr -dc 'a-zA-Z0-9' | fold -w $1 | head -n 1
@@ -65,8 +63,7 @@ If these credentials are out of sync or incorrect you will see errors like "500 
 
 Execute the following shell script to rotate and synchronize the CFE Robot credentials and then restart the system with `systemctl restart cfengine3` or similar.
 
-```bash
-[file=rotate_cfrobot_credentials.sh]
+```bash {file="rotate_cfrobot_credentials.sh"}
 #!/usr/bin/env bash
 pwgen() {
   dd if=/dev/urandom bs=1024 count=1 2>/dev/null | tr -dc 'a-zA-Z0-9' | fold -w $1 | head -n 1

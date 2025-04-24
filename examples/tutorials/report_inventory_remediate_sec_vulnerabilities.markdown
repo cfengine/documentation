@@ -37,8 +37,7 @@ This bundle will check if the host is vulnerable to the CVE, define a class
 *CVE_2014_6217* if it is vulnerable and augment Mission Portals Inventory
 interface in CFEngine Enterprise.
 
-```cf3
-[file=inventory_CVE_2014_6271.cf]
+```cf3 {file="inventory_CVE_2014_6271.cf"}
 bundle agent inventory_CVE_2014_6271
 {
   meta:
@@ -156,8 +155,7 @@ Now that we know the extent of exposure lets ensure bash gets updated on some
 of the affected systems. Save the following policy into
 `services/autorun/remediate_CVE_2014_6271.cf`
 
-```cf3
-[file=remediate_CVE_2014_6271.cf]
+```cf3 {file="remediate_CVE_2014_6271.cf"}
 bundle agent remediate_CVE_2014_6271
 {
   meta:

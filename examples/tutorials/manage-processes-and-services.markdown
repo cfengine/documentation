@@ -17,8 +17,7 @@ Using CFEngine to ensure certain processes are running is extremely easy.
 
 Create a new file called `ensure_process.cf`:
 
-```cf3
-[file=ensure_process.cf]
+```cf3 {file="ensure_process.cf"}
 body file control
 {
       inputs => { "$(sys.libdir)/stdlib.cf" };

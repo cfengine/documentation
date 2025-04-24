@@ -47,8 +47,7 @@ These variables provide path definitions for storing and deploying patches.
 
 Add the following variable information to the `masterfiles/def.cf` file:
 
-```cf3
-[file=def.cf]
+```cf3 {file="def.cf"}
 "dir_patch_store"
   string => "/storage/patches",
   comment => "Define patch files source location",
@@ -75,8 +74,7 @@ promise type in a `server` bundle. The default access rules defined by the MPF (
 
 There is no need to modify the vendored policy, instead define your own server bundle. For our example, add the following to `services/main.cf`:
 
-```cf3
-[file=main.cf]
+```cf3 {file="main.cf"}
 bundle server my_access_rules
 {
   access:
@@ -95,8 +93,7 @@ use is a good idea. This information is stored in a custom library.
 
 Create a custom library called `lib/custom/files.cf`. Add the following content:
 
-```cf3
-[file=files.cf]
+```cf3 {file="files.cf"}
 bundle agent sync_from_policyserver(source_path, dest_path)
 # @brief Sync files from the policy server to the agent
 #
@@ -121,8 +118,7 @@ policy by services.
 
 Create `services/patching.cf` with the following content:
 
-```cf3
-[file=patching.cf]
+```cf3 {file="patching.cf"}
 # Patching Policy
 
 bundle agent patching
