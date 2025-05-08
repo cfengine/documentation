@@ -119,6 +119,10 @@ of a week.
 
 * CFEngine-specific classes
     * `any`: this class is always set
+    * `cfengine`: This class is always defined.
+    * `cfengine_<X>`: This class is always defined where `<X>` represents the major version of CFEngine running. For example, `cfengine_3` is defined on all versions of CFEngine 3.x.
+    * `cfengine_<X>_<Y>`: This class is always defined where `<X>` represents the major version of CFEngine running and `<Y>` represents the minor version. For example, `cfengine_3_24` is defined on all versions of CFEngine 3.24.x.
+    * `cfengine_<X>_<Y>_<Z>`: This class is always defined where `<X>` represents the major version of CFEngine running, `<Y>` represents the minor version, and `<Z>` represents the patch version. For example, `cfengine_3_24_0` is defined only on CFEngine 3.24.0.
     * `am_policy_hub`, `policy_server`: set when the file
       `$(workdir)/state/am_policy_hub` exists. When a host is [bootstrapped][cf-agent], if
       the agent detects that it is bootstrapping to itself the file is created.
