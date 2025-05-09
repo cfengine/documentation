@@ -117,29 +117,46 @@ of a week.
   class an error will be emitted, for example `error: You cannot cancel a
   reserved hard class 'cfengine' in post-condition classes`.
 
-* CFEngine-specific classes
-    * `any`: this class is always set
-    * `cfengine`: This class is always defined.
-    * `cfengine_<X>`: This class is always defined where `<X>` represents the major version of CFEngine running. For example, `cfengine_3` is defined on all versions of CFEngine 3.x.
-    * `cfengine_<X>_<Y>`: This class is always defined where `<X>` represents the major version of CFEngine running and `<Y>` represents the minor version. For example, `cfengine_3_24` is defined on all versions of CFEngine 3.24.x.
-    * `cfengine_<X>_<Y>_<Z>`: This class is always defined where `<X>` represents the major version of CFEngine running, `<Y>` represents the minor version, and `<Z>` represents the patch version. For example, `cfengine_3_24_0` is defined only on CFEngine 3.24.0.
-    * `am_policy_hub`, `policy_server`: set when the file
-      `$(workdir)/state/am_policy_hub` exists. When a host is [bootstrapped][cf-agent], if
-      the agent detects that it is bootstrapping to itself the file is created.
-    * `bootstrap_mode`: set when bootstrapping a host
-    * `inform_mode`, `verbose_mode`, `debug_mode`: log verbosity levels in order of noisiness
-    * `opt_dry_run`: set when the `--dry-run` option is given
-    * `failsafe_fallback`: set when the base policy is invalid and the built-in `failsafe.cf` (see `bootstrap.c`) is invoked
-    * (`community`, `community_edition`) and (`enterprise`, `enterprise_edition`): the two different CFEngine products, Community and Enterprise, can be distinguished by these mutually exclusive sets of hard classes
-    * Component Specific Classes (each component has a class that is always considered defined by that component):
-        * `cf-agent` :: ```agent```
-        * `cf-serverd` :: ```server```
-        * `cf-monitord` :: ```monitor```
-        * `cf-execd` :: ```executor```
-        * `cf-runagent` :: ```runagent```
-        * `cf-key` :: ```keygenerator```
-        * `cf-hub` :: ```hub```
-        * `cf-promises` :: ```common```
+### CFEngine hard classes
+
+Some hard classes are related to aspects of CFEngine itself, like the version and edition of CFEngine that is executing, CFEngine specific roles, options passed to the agent, features that are available.
+
+| Class                      | Meaning                                                                                                                                                                | Example                                                                                                                                        |
+| ```any```                  | This class is always defined.                                                                                                                                          | `any`                                                                                                                                          |
+| ```cfengine```             | This class is always defined.                                                                                                                                          | `cfengine`                                                                                                                                     |
+| ```cfengine_<X>```          | This class is always defined where `<X>` represents the major version of CFEngine running.                                                                             | `cfengine_3`                                                                   |
+| ```cfengine_<X>_<Y>```      | This class is always defined where `<X>` represents the major version of CFEngine running and `<Y>` represents the minor version.                                      | `cfengine_3_7`, `cfengine_3_24`                                                |
+| ```cfengine_<X>_<Y>_<Z>```  | This class is always defined where `<X>` represents the major version of CFEngine running, `<Y>` represents the minor version, and `<Z>` represents the patch version. | `cfengine_3_7_1`, `cfengine_3_24.0`                                            |
+| ```<X>_edition```           | This class is always defined indicating the edition of CFEngine. `*`                                                                                                   | `enterprise_edition`, `community_edition`                                      |
+| ```<edition>_<X>```         | This class is always defined when using the Enterprise edition of CFEngine where `<X>` is the major version of CFEngine.                                               | `enterprise_3`                                                                 |
+| ```<edition>_<X>_<Y>```     | This class is always defined when using the Enterprise edition of CFEngine where `<X>` is the major version and `<Y>` is the minor version of CFEngine.                | `enterprise_3_7`, `enterprise_3_24`, `community_3_7`, `community_3_24`         |
+| ```<edition>_<X>_<Y>_<Z>``` | This class is always defined when using the Enterprise edition of CFEngine where `<X>` is the major, `<Y>` is the minor, and `<Z>` is the patch version of CFEngine.   | `enterprise_3_7_1`, `enterprise_3_24.0`, `community_3_7_1`, `community_3_24.0` |
+| ```agent```                | Defined when executing component is cf-agent.                                                                                                                        | ```agent```                                                                                                                                    |
+| ```server```               | Defined when executing component is cf-serverd.                                                                                                                      | ```server```                                                                                                                                   |
+| ```monitor```              | Defined when executing component is cf-monitord.                                                                                                                     | ```monitor```                                                                                                                                  |
+| ```executor```             | Defined when executing component is cf-execd.                                                                                                                        | ```executor```                                                                                                                                 |
+| ```runagent```             | Defined when executing component is cf-runagent.                                                                                                                     | ```runagent```                                                                                                                                 |
+| ```keygenerator```         | Defined when executing component is cf-key.                                                                                                                          | ```keygenerator```                                                                                                                             |
+| ```hub```                  | Defined when executing component is cf-hub.                                                                                                                          | ```hub```                                                                                                                                      |
+| ```common```               | Defined when executing component is cf-promises.                                                                                                                     | ```common```                                                                                                                                   |
+| ```feature```              | This class is always defined if the agent was compiled with at least one supported feature.                                                                            | `feature`                                                                                                                                      |
+| ```feature_<X>```          | This class is always defined if the agent was compiled with feature `<X>`.                                                                                             | `feature_def_json_preparse`, `feature_copyfrom_restrict_keys`, `feature_host_specific_data_load`, `feature_xml`, `feature_yaml`, `feature_tls` |
+| ```feature_tls_<X>```      | This class is always defined if the agent was compiled with support for specific major version (`<X>`) of tls.                                                         | `feature_tls_1`                                                                                                                                |
+| ```feature_tls_<X>_<Y>```  | This class is always defined if the agent was compiled with support for specific major (`<X>`) and minor (`<Y>`) of tls.                                               | `feature_tls_1_0`, `feature_tls_1_3`                                                                                                           |
+| ```am_policy_hub```        | Defined when the file `$(sys.workdir)/state/am_policy_hub** exists. `**`                                                                                                 | `am_policy_hub`                                                                                                                                |
+| ```policy_server```        | Defined when the file `$(sys.workdir)/state/am_policy_hub` exists.  `**`                                                                                                | `policy_server`                                                                                                                                |
+| ```bootstrap_mode```       | Defined when cf-agent is run with the `--bootstrap` option. `***`                                                                                                     | `bootstrap_mode`                                                                                                                               |
+| ```inform_mode```          | Defined when cf-agent is run with inform logging (e.g. `--log-level info`, `--inform`, `-I**). `***`                                                                   | `inform_mode`                                                                                                                                  |
+| ```verbose_mode```         | Defined when cf-agent is run with verbose logging (e.g. `--log-level verbose`, `--verbose`, `-v`). `***`                                                              | `verbose_mode`                                                                                                                                 |
+| ```debug_mode```           | Defined when cf-agent is run with debug logging (e.g. `--log-level debug`, `--debug`, `-d`). `***`                                                                    | `debug_mode`                                                                                                                                   |
+| ```opt_dry_run```          | Defined when cf-agent is run with the `--dry-run` option is given. `***`                                                                                                  | `opt_dry_run`                                                                                                                                  |
+| ```failsafe_fallback``` | Defined when the executing policy is invalid and the built-in `failsafe.cf` (see `bootstrap.c`) is invoked. | `failsafe_fallback` |
+
+* `*` - A class without the `_edition` suffix is also defined.
+* `**` - When a host is [bootstrapped][cf-agent], if the agent detects that it is bootstrapping to itself the file `$(sys.workdir)/state/am_policy_hub)` is created.
+* `***` - Some, but not all options define classes when they are defined.
+
+### Operating system hard classes
 * Operating System Classes (note that the presence of these classes doesn't imply platform support)
     * Operating System Architecture -  `arista`, `big_ip`, `debian`, `eos`, `fedora`, `Mandrake`, `Mandriva`, `oracle`, `redhat`, `slackware`, `smartmachine`, `smartos`, `solarisx86`, `sun4`, `SuSE`, `ubuntu`, `ultrix`, the always-favorite `unknown_ostype`, etc.
     * VM or hypervisor specific: `VMware`, `virt_guest_vz`, `virt_host_vz`, `virt_host_vz_vzps`, `xen`, `xen_dom0`, `xen_domu_hv`, `xen_domu_pv`, `oraclevmserver`, etc.
@@ -147,7 +164,17 @@ of a week.
     * Windows-specific: `DomainController`, `Win2000`, `WinServer`, `WinServer2003`, `WinServer2008`, `WinVista`, `WinWorkstation`, `WinXP`
     * `have_aptitude`, `powershell`, `systemd`: based on the detected capabilities of the platform or the compiled-in options
     * **See also:** `sys.arch`, `sys.class`, `sys.flavor`, `sys.os`, `sys.ostype`.
-* Network Classes
+
+-   The unqualified name of a particular host (e.g., `www`). If
+    your system returns a fully qualified domain name for your host
+    (e.g., `www.iu.hio.no`), CFEngine will also define a hard class for
+    the fully qualified name, as well as the partially-qualified
+    component names `iu.hio.no`, `hio.no`, and `no`.
+    * **See also:** `sys.fqhost`, `sys.uqhost`.
+
+are hostname classes related to os or networking?
+
+### Networking hard classes
     * Unqualified Name of Host. CFEngine truncates it at the first dot.
       Note: `www.sales.company.com` and `www.research.company.com` have the
       same unqualified name - `www`
@@ -158,7 +185,16 @@ of a week.
     * User-defined Group of Hosts
     * `mac_unknown`: set when the MAC address can't be found
     * **See also:** `sys.domain`, `sys.hardware_addresses`, `sys.sys.host`, `sys.interface`, `sys.interfaces`, `sys.interface_flags`, `sys.ipv4`, `sys.ip_addresses`, `sys.fqhost`, `sys.uqhost`.
-* Time Classes
+
+-   The IP address octets of any active interface (in the form `ipv4_192_0_0_1`,
+    `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`), provided they are not excluded by
+    a regular expression in the file `WORKDIR/ignore_interfaces.rx` or `WORKDIR/inputs/ignore_interfaces.rx`.
+  - Note: Support and preference for `WORKDIR/ignore_interfaces.rx` was added
+    and is present in version `3.23.0` and later and in version `3.21.4` and later.
+-   The names of the active interfaces (in the form
+    `net_iface_xl0`, `net_iface_vr0`).
+
+### Time based hard classes
     * note ALL of these have a local and a GMT version.  The GMT classes are consistent the world over, in case you need global change coordination.
     * Day of the Week - `Monday, Tuesday, Wednesday,...GMT_Monday, GMT_Tuesday, GMT_Wednesday,...`
     * Hour of the Day in Current Time Zone - `Hr00, Hr01,... Hr23` and `Hr0, Hr1,... Hr23`
@@ -174,23 +210,10 @@ of a week.
     * Lifecycle Index - `Lcycle_0, Lcycle_1, Lcycle_2` and `GMT_Lcycle_0, GMT_Lcycle_1, GMT_Lcycle_2` (the year number modulo 3, used in long term resource memory).
     * **See also:** `sys.cdate`, `sys.date`.
 
--   The unqualified name of a particular host (e.g., `www`). If
-    your system returns a fully qualified domain name for your host
-    (e.g., `www.iu.hio.no`), CFEngine will also define a hard class for
-    the fully qualified name, as well as the partially-qualified
-    component names `iu.hio.no`, `hio.no`, and `no`.
-    * **See also:** `sys.fqhost`, `sys.uqhost`.
 -   An arbitrary user-defined string (as specified in the `-D`
     command line option, or defined in a [`classes` promise][classes] promise or
     [`classes` body][Promise types#classes],
     `restart_class` in a `processes` promise, etc).
--   The IP address octets of any active interface (in the form `ipv4_192_0_0_1`,
-    `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`), provided they are not excluded by
-    a regular expression in the file `WORKDIR/ignore_interfaces.rx` or `WORKDIR/inputs/ignore_interfaces.rx`.
-  - Note: Support and preference for `WORKDIR/ignore_interfaces.rx` was added
-    and is present in version `3.23.0` and later and in version `3.21.4` and later.
--   The names of the active interfaces (in the form
-    `net_iface_xl0`, `net_iface_vr0`).
 -   System status and entropy information reported by
     `cf-monitord`.
 
