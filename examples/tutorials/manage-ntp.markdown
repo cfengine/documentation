@@ -137,6 +137,7 @@ Validate it.
 ```command
 python -m json.tool < def.json
 ```
+
 ```output
 {
     "inputs": [
@@ -167,6 +168,7 @@ Now force a policy run.
 ```command
 cf-agent -KI
 ```
+
 ```output
 info: Successfully installed package 'ntp'
 ```
@@ -271,6 +273,7 @@ Perform a manual policy run and review the output to ensure that the policy exec
 ```command
 cf-agent -KIf update.cf ; cf-agent -KI
 ```
+
 ```output
     info: Copied file '/var/cfengine/masterfiles/services/ntp.cf' to '/var/cfengine/inputs/services/ntp.cf.cfnew' (mode '600')
     info: Executing 'no timeout' ... '/sbin/chkconfig ntpd on'
@@ -483,6 +486,7 @@ Now that we have dissected the policy, let's go ahead and give it a whirl.
 ```command
 cf-agent -KIf update.cf;
 ```
+
 ```output
 info: Copied file '/var/cfengine/masterfiles/services/ntp.cf' to '/var/cfengine/inputs/services/ntp.cf.cfnew' (mode '600')
 ```
@@ -490,6 +494,7 @@ info: Copied file '/var/cfengine/masterfiles/services/ntp.cf' to '/var/cfengine/
 ```command
 cf-agent -KI
 ```
+
 ```output
     info: Updated rendering of '/etc/ntp.conf' from mustache template 'inline'
     info: files promise '/etc/ntp.conf' repaired
@@ -503,6 +508,7 @@ More interestingly, if you examine the configuration file `/etc/ntp.conf`, you w
 ```command
 grep -P "^(driftfile|server)" /etc/ntp.conf
 ```
+
 ```output
 driftfile /var/lib/ntp/drift
 server time.nist.gov iburst
@@ -645,6 +651,7 @@ First modify `services/ntp.cf` as shown previously (don't forget to check syntax
 ```command
 cf-agent -KIf update.cf
 ```
+
 ```output
 info: Copied file '/var/cfengine/masterfiles/services/ntp.cf' to '/var/cfengine/inputs/services/ntp.cf.cfnew' (mode '600')
 info: Copied file '/var/cfengine/masterfiles/def.json' to '/var/cfengine/inputs/def.json.cfnew' (mode '600')
@@ -681,6 +688,7 @@ Now, let's validate the JSON and force a policy run and inspect the result.
 ```command
 python -m json.tool < def.json
 ```
+
 ```output
 {
     "inputs": [
@@ -708,6 +716,7 @@ python -m json.tool < def.json
 ```command
 cf-agent -KI
 ```
+
 ```output
     info: Updated rendering of '/etc/ntp.conf' from mustache template 'inline'
     info: files promise '/etc/ntp.conf' repaired
@@ -721,6 +730,7 @@ R: NTP service restarted after configuration change
 ```command
 grep -P "^(driftfile|server)" /etc/ntp.conf
 ```
+
 ```output
 driftfile /tmp/drift
 server 0.north-america.pool.ntp.org iburst

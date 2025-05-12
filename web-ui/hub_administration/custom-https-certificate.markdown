@@ -22,6 +22,7 @@ commands.
 ```command
 cf-promises --show-vars=default:sys\.fqhost
 ```
+
 ```output
 default:sys.fqhost                       hub                                                          inventory,source=agent,attribute_name=Host name
 ```
@@ -29,6 +30,7 @@ default:sys.fqhost                       hub                                    
 ```command
 hostname -f
 ```
+
 ```output
 hub
 ```

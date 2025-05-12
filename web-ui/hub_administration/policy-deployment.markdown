@@ -84,6 +84,7 @@ For example:
 ```command
 cf-agent -KIf update.cf --define cfengine_internal_masterfiles_update
 ```
+
 ```output
 info: Executing 'no timeout' ... '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh'
 info: Command related to promiser '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh' returned code defined as promise kept 0
@@ -136,6 +137,7 @@ For example:
 ```command
 cf-agent -KIf update.cf --define cfengine_internal_masterfiles_update
 ```
+
 ```output
     info: Executing 'no timeout' ... '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh'
    error: Command related to promiser '/var/cfengine/httpd/htdocs/api/dc-scripts/masterfiles-stage.sh' returned code defined as promise failed 1
@@ -153,6 +155,7 @@ can see that there is a syntax error in `promises.cf` near line 14.
 ```command
 tail -n 5 /var/cfengine/outputs/dc-scripts.log
 ```
+
 ```output
 /opt/cfengine/masterfiles_staging_tmp/promises.cf:14:46: error: Expected ',', wrong input '@(inventory.bundles)'
                           @(inventory.bundles),

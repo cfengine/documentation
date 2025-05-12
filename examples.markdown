@@ -78,6 +78,7 @@ the `hello_world.cf` policy, and activate the `hello_world` bundle. See the outp
 ```command
 /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
 ```
+
 ```output
 2013-08-20T14:03:43-0500   notice: R: Hello World!
 ```
@@ -128,6 +129,7 @@ Execute the following command:
 ```command
 /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
 ```
+
 ```output
 notice: R: Hello World!
 ```
@@ -184,6 +186,7 @@ And it can now be run directly:
 ```command
 ./hello_world.cf
 ```
+
 ```output
 2013-08-20T14:39:34-0500   notice: R: Hello World!
 ```

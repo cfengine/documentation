@@ -33,6 +33,7 @@ The bundle is defined like this:
 ```command
 cf-agent -KIf ./mustache_template_motd.cf; cat /etc/motd
 ```
+
 ```output
     info: Updated rendering of '/etc/motd' from mustache template 'inline'
     info: files promise '/etc/motd' repaired

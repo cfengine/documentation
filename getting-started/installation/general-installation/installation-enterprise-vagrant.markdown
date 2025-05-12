@@ -115,6 +115,7 @@ status` output. Both the 'root' and 'vagrant' users passwords are set to
 ```command
 vagrant ssh hub
 ```
+
 ```output
 Last login: Fri Jun 13 18:58:10 2014 from 10.0.2.2
 ```
@@ -135,6 +136,7 @@ output like this.
 ```command
 vagrant status
 ```
+
 ```output
 Current machine states:
 
@@ -163,6 +165,7 @@ changes made inside.
 ```command
 vagrant suspend
 ```
+
 ```output
 ==> hub: Saving VM state and suspending execution...
 ==> host001: Saving VM state and suspending execution...
@@ -174,6 +177,7 @@ and allows for latter resuming of the environment.
 ```command
 vagrant halt
 ```
+
 ```output
 ==> host001: Attempting graceful shutdown of VM...
 ==> hub: Attempting graceful shutdown of VM...
@@ -185,6 +189,7 @@ delete the vms and any modifications made to the environment will be lost.
 ```command
 vagrant destroy
 ```
+
 ```output
     host001: Are you sure you want to destroy the 'host001' VM? [y/N] y
 ==> host001: Forcing shutdown of VM...
