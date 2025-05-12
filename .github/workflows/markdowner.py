@@ -208,8 +208,8 @@ def perform_edits(content, flags, filename):
         replacements = {
             # Empty line (double newline) before command:
             r"(?<!\n)\n```command": "\n\n```command",
-            # No empty line between code block and output:
-            r"```\n\n+```output": "```\n```output",
+            # Exactly one empty line between code block and output:
+            r"```(\n|\n\n\n+)```output": "```\n\n```output",
         }
         content = replace_with_regex_dict(content, replacements, filename)
         content = edit_codeblocks(content, filename)
