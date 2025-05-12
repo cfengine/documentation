@@ -10,7 +10,7 @@ like to invite you to collaborate here!
 If you would like to notify us about incorrect documentation, but don't have
 the time or the knowledge to make a correction directly here, then you can
 report the issue in the regular [CFEngine bug
-tracker](https://cfengine.com/dev/projects/core).  Use the "Documentation"
+tracker](https://cfengine.com/dev/projects/core). Use the "Documentation"
 category when you create bugs. And of course you can search the bug tracker
 for known issues with the documentation, and help the community of
 CFEngine users by correcting some of them.
@@ -27,9 +27,9 @@ keep the line length in paragraphs below 78 characters.
 
 If you don't know Git, then you can still contribute to the documentation
 using the GitHub interface as long as you have a GitHub account. Fork this
-repository (called the *upstream*) using the GitHub web interface, make
+repository (called the _upstream_) using the GitHub web interface, make
 changes in your fork and create pull requests so that your changes can be
-merged into the *upstream* repository.
+merged into the _upstream_ repository.
 
 It is in general advisable to make small commits that are submitted through
 pull requests frequently. Otherwise any structural changes to documentation
@@ -41,29 +41,29 @@ Avoid capitalizing things unnecessarily (features, concepts, titles).
 Titles and headings use sentence case (so don't capitalize each word).
 Some names should always be capitalized in a specific way:
 
-* CFEngine
-* CFEngine Build
-* CFEngine Docs
-* CFEngine Enterprise
-* Linux, macOS, Windows, Unix (and other names of operating systems)
-* Mission Portal
-* UI, CVE, TCP, TLS, API, HTTP, JSON (and other abbreviations)
+- CFEngine
+- CFEngine Build
+- CFEngine Docs
+- CFEngine Enterprise
+- Linux, macOS, Windows, Unix (and other names of operating systems)
+- Mission Portal
+- UI, CVE, TCP, TLS, API, HTTP, JSON (and other abbreviations)
 
 ### Titles and verb tenses
 
 Avoid imperative tense in titles.
 Use `-ing` or nouns instead, some examples:
 
-* What not to do:
-  * "Write policy"
-  * "Manage packages"
-  * "Install CFEngine"
-  * "Get started"
-* Titles you can use instead:
-  * "Policy writing" (or "Writing policy")
-  * "Package management" (or "Managing packages")
-  * "CFEngine installation" (or "Installing CFEngine")
-  * "Getting started"
+- What not to do:
+  - "Write policy"
+  - "Manage packages"
+  - "Install CFEngine"
+  - "Get started"
+- Titles you can use instead:
+  - "Policy writing" (or "Writing policy")
+  - "Package management" (or "Managing packages")
+  - "CFEngine installation" (or "Installing CFEngine")
+  - "Getting started"
 
 Since anything can be managed, "managing" tends to be used a lot.
 Try to use other words: "editing", "updating", "changing", "creating", "setting".
@@ -134,7 +134,7 @@ Give files unique names to avoid overwrites in the generated website.
 See [Style Guide - Charts and graphs](#charts-and-graphs) for style
 requirements for images.
 
-*Warning:* It is important for images and other binary files to be marked as a
+_Warning:_ It is important for images and other binary files to be marked as a
 binary file in `.gitattributes`. Binary file patterns not specifically marked
 may be mangled and corrupted within Git.
 
@@ -167,7 +167,7 @@ markers if that word exists as a page or section title.
     **See also:** `attribute_name`, `function()`
 
 This will automatically link to the section or page with title
-*attribute_name*. To make explicit links from code words, use
+_attribute_name_. To make explicit links from code words, use
 `code` markers in the link text.
 
     **See also:** [`attribute_name`][page#attributename]
@@ -187,7 +187,7 @@ from that automatic linking, use the form
 
 which is otherwise equivalent for the markdown renderer.
 
-To use keywords in inline code *without* creating an automatic link, use
+To use keywords in inline code _without_ creating an automatic link, use
 triple backticks:
 
     The ```meta``` parameter to this function...
@@ -221,11 +221,11 @@ are skipped.
 The generator searches for `filename` in the `core/examples`
 subdirectory of WKRDIR.
 
-* `[%CFEngine_include_example(filename)%]`
+- `[%CFEngine_include_example(filename)%]`
 
 Injects the code from `filename`.
 
-* `[%CFEngine_include_snippet(filename, begin_rx, end_rx [optional])%]`
+- `[%CFEngine_include_snippet(filename, begin_rx, end_rx [optional])%]`
 
 Searches `filename` for the first line that matches the regular
 expression `begin_rx`, and injects all lines as a code block from
@@ -235,7 +235,7 @@ omitted, all lines until the end of the file will be injected.
 If the line that matches the regular expression is a comment, then
 it is excluded from the quote, otherwise it is included.
 
-* `[%CFEngine_include_markdown(filename, begin_rx, end_rx [optional])%]`
+- `[%CFEngine_include_markdown(filename, begin_rx, end_rx [optional])%]`
 
 Searches `filename` for the first line that matches the regular
 expression `begin_rx`, and injects all lines **verbatim** from there
@@ -244,7 +244,7 @@ all lines until the end of the file will be injected.
 
 #### Documenting policy libraries
 
-* `[%CFEngine_library_include(filename)%]`
+- `[%CFEngine_library_include(filename)%]`
 
 Parses the JSON version of the CFEngine policy in `filename` and generates
 documentation from it.
@@ -286,7 +286,7 @@ The following macros require the syntax map to be generated
 via `cf-promises -s` into a file `syntax_map.json` within the
 `_generated` subdirectory of the documentation generator.
 
-* `[%CFEngine_function_prototype(arg1, arg2, ...)%]`
+- `[%CFEngine_function_prototype(arg1, arg2, ...)%]`
 
 Renders the prototype of the function that has the same name as the
 title of the current page. Parameters `arg1` etc are used for the names
@@ -301,7 +301,7 @@ of the parameters:
 Use this before a `**Description:**` section in which the behavior of the
 function as well as the individual parameters are then explained.
 
-* `[%CFEngine_function_attributes(arg1, arg2, ...)%]`
+- `[%CFEngine_function_attributes(arg1, arg2, ...)%]`
 
 Renders a list of attributes for the function that has the same name as the
 title of the current page. `arg1` etc are used for the parameter names:
@@ -321,7 +321,7 @@ Document the individual parameters either directly in the `**Description:**`
 section, or as a block after using this macro. You cannot use the macro if
 individual options of option-type parameters need detailed explanation.
 
-* `[%CFEngine_promise_attribute(default)%]`
+- `[%CFEngine_promise_attribute(default)%]`
 
 Renders the syntax description of the current promise attribute. The current
 markdown needs to comply with the following:
@@ -369,17 +369,17 @@ The generated markdown is:
 If a `default` parameter is provided, then a `**Default value:**` statement
 is created.
 
-* `[%CFEngine_function_table()%]`
+- `[%CFEngine_function_table()%]`
 
 Renders a table of built-in functions, grouped by function category.
 
-* `[%CFEngine_syntax_map(subtree)%]`
+- `[%CFEngine_syntax_map(subtree)%]`
 
 Renders a nested tree of CFEngine words, starting at `subtree`.
 
 #### Other macros
 
-* `[%CFEngine_redirect(target)]`
+- `[%CFEngine_redirect(target)]`
 
 Injects javascript that redirects the current page to the HTML page for `target`,
 which needs to be a title or title#section combination as in regular `[text][title#section]`
@@ -392,9 +392,9 @@ documentation a consistent and pleasant experience.
 
 ### Writing for the web
 
-* use subheadings to structure content
-* keep paragraphs short
-* support scanning of pages
+- use subheadings to structure content
+- keep paragraphs short
+- support scanning of pages
 
 ### Spelling
 
@@ -408,7 +408,7 @@ In punctuation, a serial comma (also called Oxford comma) needs to be placed
 immediately before the conjunction (often "and" or "or") in a series of three
 or more terms.
 
-*Example:*
+_Example:_
 
 I would like crackers, cheese, and garlic.
 
@@ -419,10 +419,10 @@ these seven coordinating conjunctions: and, but, for, or, nor, so, yet.
 
 However, the comma can be dropped in the following cases:
 
-* if both independent clauses are quite short, especially if the two clauses
+- if both independent clauses are quite short, especially if the two clauses
   are very closely related, and even more so if the subject of both clauses is
   the same, or
-* if only the first clause is quite short, especially if the two clauses are
+- if only the first clause is quite short, especially if the two clauses are
   very closely related, and even more so if the subject of both clauses is the
   same.
 
@@ -446,32 +446,32 @@ As a general note, avoiding abbreviations provides better readability.
 
 **Latin expressions commonly used in English**
 
-* i.e. (that is)
-* e.g. (for example)
-* cf. (compare)
-* etc. (and so forth)
-* vs.(versus)
-* et al. (and others)
+- i.e. (that is)
+- e.g. (for example)
+- cf. (compare)
+- etc. (and so forth)
+- vs.(versus)
+- et al. (and others)
 
 ### Charts and graphs
 
-* use clear shapes
-* avoid shadows
-* stick to black, white, and grey
-* avoid background fill colors on large items
+- use clear shapes
+- avoid shadows
+- stick to black, white, and grey
+- avoid background fill colors on large items
 
 ## Technical reference documentation
 
-* follow the [Policy style guide](guide/writing-and-serving-policy/policy-style.markdown)
+- follow the [Policy style guide](guide/writing-and-serving-policy/policy-style.markdown)
   in examples and code snippets
-* use the appropriate lexer for syntax highlighting via Pygments
+- use the appropriate lexer for syntax highlighting via Pygments
 
   Most important are the `cf3` lexer, as well as `bash`, `console`,
   `diff`, `shell-session` and `sql`. But Jekyll supports
   [many more lexers](https://pygments.org/docs/lexers/)
 
-* avoid custom color schemes and hand-coded HTML
-* document the example after the example code
+- avoid custom color schemes and hand-coded HTML
+- document the example after the example code
 
 The structure of the technical documentation about CFEngine attributes,
 functions etc is as follows:
@@ -587,7 +587,6 @@ title is the name of the function.
 
     **See also:** `related_function()`, `related_attribute`
 
-
 **Note:** The `function_attributes` macro will generate a simple enumeration of all attributes,
 with the types and allowed in put range coming from the syntax map, and the names as
 provided. If you want to explain each attribute directly after it being listed, don't
@@ -603,7 +602,6 @@ use the macro, and list the attributes explicitly:
 
     This argument does that.
 
-
 ### Special variables
 
 Special variables are documented within the page of their context.
@@ -618,7 +616,7 @@ Special variables are documented within the page of their context.
 
 Jekyll is used to generate the HTML pages. The toolchain is available at
 https://github.com/cfengine/documentation/tree/master/generator. After you compile pages,
-Jekyll will place all files into the _site folder, without subdirectories.
+Jekyll will place all files into the \_site folder, without subdirectories.
 
 Commits in this repository trigger the documentation generator to run, which
 then updates the contents of https://docs.cfengine.com/docs/
@@ -631,10 +629,11 @@ https://docs.cfengine.com/docs/master/cfdoc_log.html
 
 We have a Python script and GitHub Action to automatically fix some common markdown mistakes.
 This is designed to not be super strict on purpose, it only fixes very specific things, such as:
-* Trims trailing whitespace at the end of lines
-* Replace some utf-8 symbols which have an ascii lookalike
-* Ensures exactly 1 newline before the end of the file
-* De-indents code blocks where everything inside the code block is indented
+
+- Trims trailing whitespace at the end of lines
+- Replace some utf-8 symbols which have an ascii lookalike
+- Ensures exactly 1 newline before the end of the file
+- De-indents code blocks where everything inside the code block is indented
 
 When someone makes one of these "mistakes" it is highlighted in the Pull Request by the GitHub Action.
 If you want to run this script locally and have it fix these things for you, you can:
