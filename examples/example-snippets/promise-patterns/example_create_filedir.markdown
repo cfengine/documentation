@@ -15,6 +15,7 @@ Example output:
 ```command
 cf-agent -f unit_create_filedir.cf -I
 ```
+
 ```output
 2013-06-08T14:56:26-0700     info: /example/files/'/home/mark/tmp/test_plain': Created file '/home/mark/tmp/test_plain', mode 0640
 2013-06-08T14:56:26-0700     info: /example/files/'/home/mark/tmp/test_dir/.': Created directory '/home/mark/tmp/test_dir/.'

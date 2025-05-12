@@ -368,6 +368,7 @@ This generates three different logs with the following output:
 ```command
 more /tmp/private_keptlog.log
 ```
+
 ```output
 Sun Dec  6 11:58:16 2009 /tmp/xyz promise status
 Sun Dec  6 11:58:43 2009 /tmp/xyz promise status

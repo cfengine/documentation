@@ -49,6 +49,7 @@ Now we run CFEngine to mount the filesystem and add it to /etc/fstab:
 ```command
 cf-agent -f example_mount_nfs.cf
 ```
+
 ```output
 2013-06-08T17:48:42-0700    error: Attempting abort because mount went into a retry loop.
 ```
@@ -56,6 +57,7 @@ cf-agent -f example_mount_nfs.cf
 ```command
 grep mnt /etc/fstab
 ```
+
 ```output
 fileserver:/home 	 /mnt 	 nfs 	 rw
 ```
@@ -63,6 +65,7 @@ fileserver:/home 	 /mnt 	 nfs 	 rw
 ```command
 df |grep mnt
 ```
+
 ```output
 fileserver:/home 149912064 94414848  47882240  67% /mnt
 ```

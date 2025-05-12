@@ -122,6 +122,7 @@ Validate the Dockerfile
 ```command
 docker build -t cfengine:lts -f Dockerfile . --check
 ```
+
 ```output
 [+] Building 0.1s (3/3) FINISHED                                        docker:default
  => [internal] load build definition from Dockerfile                            0.0s
@@ -145,6 +146,7 @@ Verify created image:
 ```command
 docker image ls cfengine
 ```
+
 ```output
 REPOSITORY   TAG        IMAGE ID       CREATED             SIZE
 cfengine     lts        <IMAGE_ID>     About an hour ago   302MB
@@ -212,6 +214,7 @@ Bootstrap hub and hosts
 ```command
 docker exec -it cfengine-hub bash -c "/usr/local/sbin/cf-agent --bootstrap \$(ip -4 -o addr show eth0 | awk '{print \$4}' | cut -d'/' -f1)"
 ```
+
 ```output
 R: Bootstrapping from host '192.168.16.2' via built-in policy '/var/cfengine/inputs/failsafe.cf'
 R: This host assumes the role of policy server
@@ -224,6 +227,7 @@ notice: Bootstrap to '192.168.16.2' completed successfully!
 ```command
 docker exec -it cfengine-demo-cfengine-host-1 bash -c "/usr/local/sbin/cf-agent --bootstrap \$(dig +short cfengine-hub|tr -d [:space:])"
 ```
+
 ```output
 notice: Bootstrap mode: implicitly trusting server, use --trust-server=no if server trust is already established
 notice: Trusting new key: MD5=2f406e11cfd3e08d810d77a186e204e2
@@ -240,6 +244,7 @@ Health-check for hub and host
 ```command
 docker exec -it cfengine-hub bash -c "/usr/local/sbin/cf-agent --self-diagnostics"
 ```
+
 ```output
 ...
 [ YES ] Check that agent is bootstrapped: 192.168.16.2
@@ -252,6 +257,7 @@ docker exec -it cfengine-hub bash -c "/usr/local/sbin/cf-agent --self-diagnostic
 ```command
 docker exec -it cfengine-demo-cfengine-host-1 bash -c "/usr/local/sbin/cf-agent --self-diagnostics"
 ```
+
 ```output
 ...
 [ YES ] Check that agent is bootstrapped: 192.168.16.2

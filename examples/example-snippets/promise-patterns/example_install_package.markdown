@@ -53,6 +53,7 @@ Example run:
 ```command
 dpkg -r lynx ntp # remove packages so CFEngine has something to repair
 ```
+
 ```output
 (Reading database ... 234887 files and directories currently installed.)
 Removing lynx ...
@@ -69,6 +70,7 @@ cf-agent -f install_packages.cf # install packages
 ```command
 dpkg -l lynx ntp # show installed packages
 ```
+
 ```output
 Desired=Unknown/Install/Remove/Purge/Hold
 | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend

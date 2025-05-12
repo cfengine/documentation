@@ -143,6 +143,7 @@ You can also perform a manual policy run and check that the correct owner is dis
 ```command
 cf-agent -KIf /var/cfengine/masterfiles/promises.cf -b tutorials_inventory_owner
 ```
+
 ```output
     info: Using command line specified bundlesequence
 R: tutorials_inventory_owner: Discovered Owner='Operations Team <ops@cfengine.com>'
@@ -182,6 +183,7 @@ Now that we have jq in place, let's query the Inventory API to see what inventor
 ```command
 curl -s -k --user admin:admin -X GET https://localhost/api/inventory/attributes-dictionary | jq '.[].attribute_name'
 ```
+
 ```output
 "Architecture"
 "BIOS vendor"
@@ -229,6 +231,7 @@ Now, let's query the Inventory API to see what Owners are reported.
 ```command
 curl -s -k --user admin:admin -X POST -H 'content-type: application/json' -d '{ "select": [ "Host name", "Owner" ]}' https://localhost/api/inventory | jq '.data[].rows[]'
 ```
+
 ```output
 [
   "host001.example.com",

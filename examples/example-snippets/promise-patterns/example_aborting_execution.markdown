@@ -18,6 +18,7 @@ This is how the policy runs when the userlist is valid:
 ```command
 cf-agent -f unit_abort.cf
 ```
+
 ```output
 R: User name mark is valid at 4 letters
 R: User name john is valid at 4 letters
@@ -27,6 +28,7 @@ This is how the policy runs when the userlist contains an invalid entry:
 ```command
 cf-agent -f unit_abort.cf
 ```
+
 ```output
 Bundle example aborted on defined class "invalid"
 ```

@@ -39,6 +39,7 @@ For example, this command downloads CFEngine 3.24.1 packages for ubuntu24 into t
 ```command
 cf-remote --version 3.24.1 download ubuntu24 --edition community --output-dir .
 ```
+
 ```output
 Available releases: master, 3.25.0, 3.24.x, 3.24.1, 3.24.0, 3.21.x, 3.21.6, 3.21.5, 3.21.4, 3.21.3, 3.21.2, 3.21.1, 3.21.0
 Using 3.24.1 LTS:

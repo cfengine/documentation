@@ -60,6 +60,7 @@ Then update the policy and run it:
 ```command
 cf-agent -Kf update.cf; cf-agent -KI
 ```
+
 ```output
 info: Installing cfe_internal_non_existing_package...
 info: Created directory '/home/bob/.ssh/.'
