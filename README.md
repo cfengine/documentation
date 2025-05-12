@@ -20,7 +20,7 @@ CFEngine users by correcting some of them.
 The CFEngine documentation is written in regular
 [markdown](https://daringfireball.net/projects/markdown/syntax), with some
 extensions as documented below. Check out the
-[cheatsheet](https://docs.cfengine.com/docs/master/markdown-cheatsheet.html)!
+[cheatsheet](https://github.com/cfengine/documentation/blob/master/cheatsheet.markdown?plain=1)!
 
 If you don't know Git, then you can still contribute to the documentation
 using the GitHub interface as long as you have a GitHub account. Fork this
@@ -155,7 +155,7 @@ When possible, try to break up long lines, to make reading easier, without the u
 We have components for specifying commands to run, their output, and files to create, with their filename.
 
 Use these whenever possible.
-See examples in the cheatsheet: [`./cheatsheet.markdown`](./cheatsheet.markdown)
+See examples in [the cheatsheet](https://github.com/cfengine/documentation/blob/master/cheatsheet.markdown?plain=1#L229).
 
 ### Commands run as root
 
