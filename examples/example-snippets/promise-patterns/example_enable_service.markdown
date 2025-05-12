@@ -27,6 +27,7 @@ We can see that before the policy run `sysstat` is *inactive*, `apache2` is
 ```command
 systemctl is-active sysstat apache2 cups ssh cron
 ```
+
 ```output
 inactive
 active
@@ -40,6 +41,7 @@ Now we run the policy to converge the system to the desired state.
 ```command
 cf-agent --no-lock --inform --file ./services.cf
 ```
+
 ```output
 info: Executing 'no timeout' ... '/bin/systemctl --no-ask-password --global --system -q stop apache2'
 info: Completed execution of '/bin/systemctl --no-ask-password --global --system -q stop apache2'
@@ -55,6 +57,7 @@ After the policy run we can see that `systat`, `apache2`, and `cups` are
 ```command
 systemctl is-active sysstat apache2 cups ssh cron
 ```
+
 ```output
 inactive
 inactive
@@ -72,6 +75,7 @@ correctly , `httpd` is *running*, `cups` is *running*, `sshd` is *running* and
 ```command
 service sysstat status; echo $?
 ```
+
 ```output
 3
 ```
@@ -79,6 +83,7 @@ service sysstat status; echo $?
 ```command
 service httpd status; echo $?
 ```
+
 ```output
 httpd (pid  3740) is running...
 0
@@ -87,6 +92,7 @@ httpd (pid  3740) is running...
 ```command
 service cups status; echo $?
 ```
+
 ```output
 cupsd (pid  3762) is running...
 0
@@ -95,6 +101,7 @@ cupsd (pid  3762) is running...
 ```command
 service sshd status; echo $?
 ```
+
 ```output
 openssh-daemon (pid  3794) is running...
 0
@@ -103,6 +110,7 @@ openssh-daemon (pid  3794) is running...
 ```command
 service crond status; echo $?
 ```
+
 ```output
 crond is stopped
 3
@@ -113,6 +121,7 @@ Now we run the policy to converge the system to the desired state.
 ```command
 cf-agent -KIf ./services.cf
 ```
+
 ```output
 info: Executing 'no timeout' ... '/etc/init.d/crond start'
 info: Completed execution of '/etc/init.d/crond start'
@@ -129,6 +138,7 @@ After the policy run we can see that `systat` is still not reporting status corr
 ```command
 service sysstat status; echo $?
 ```
+
 ```output
 3
 ```
@@ -136,6 +146,7 @@ service sysstat status; echo $?
 ```command
 service httpd status; echo $?
 ```
+
 ```output
 httpd is stopped
 3
@@ -144,6 +155,7 @@ httpd is stopped
 ```command
 service cups status; echo $?
 ```
+
 ```output
 cups is stopped
 3
@@ -152,6 +164,7 @@ cups is stopped
 ```command
 service sshd status; echo $?
 ```
+
 ```output
 openssh-daemon (pid  3794) is running...
 0
@@ -160,6 +173,7 @@ openssh-daemon (pid  3794) is running...
 ```command
 service crond status; echo $?
 ```
+
 ```output
 crond (pid  3929) is running...
 0

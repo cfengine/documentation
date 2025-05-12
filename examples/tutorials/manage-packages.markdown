@@ -43,6 +43,7 @@ version before and after running the policy, and we get the following output:
 ```command
 yum list installed | grep openssl
 ```
+
 ```output
 openssl.x86_64          1.0.0-27.el6    @anaconda-CentOS-201303020151.x86_64/6.4
 openssl-devel.x86_64    1.0.0-27.el6    @anaconda-CentOS-201303020151.x86_64/6.4
@@ -55,6 +56,7 @@ cf-agent -K ./manage_packages.cf
 ```command
 yum list installed | grep openssl
 ```
+
 ```output
 openssl.x86_64          1.0.1e-42.el6   @base
 openssl-devel.x86_64    1.0.1e-42.el6   @base
@@ -67,6 +69,7 @@ installed.
 ```command
 yum list installed | grep telnet
 ```
+
 ```output
 telnet.x86_64           1:0.17-48.el6   @base
 ```
@@ -74,6 +77,7 @@ telnet.x86_64           1:0.17-48.el6   @base
 ```command
 which telnet
 ```
+
 ```output
 /usr/bin/telnet
 ```
@@ -116,6 +120,7 @@ can now see the policy in action:
 # yum list installed | grep telnet
 # which telnet
 ```
+
 ```output
 /usr/bin/which: no telnet in (/sbin:/bin:/usr/sbin:/usr/bin:/var/cfengine/bin)
 ```

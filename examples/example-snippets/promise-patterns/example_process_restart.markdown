@@ -71,6 +71,7 @@ kill 8008
 ```command
 cf-agent -f unit_process_restart.cf -I
 ```
+
 ```output
 2013-06-08T18:19:51-0700     info: This agent is bootstrapped to '192.168.183.208'
 2013-06-08T18:19:51-0700     info: Running full policy integrity checks

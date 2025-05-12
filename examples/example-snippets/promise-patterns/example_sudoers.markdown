@@ -44,6 +44,7 @@ Example run:
 ```command
 cf-agent -f temp.cf -KI
 ```
+
 ```output
 2013-06-08T19:13:21-0700     info: This agent is bootstrapped to '192.168.183.208'
 2013-06-08T19:13:22-0700     info: Running full policy integrity checks

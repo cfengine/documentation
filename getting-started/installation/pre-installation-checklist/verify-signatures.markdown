@@ -28,6 +28,7 @@ rpm --import https://cfengine-package-repos.s3.amazonaws.com/pub/gpg.key
 ```command
 rpm -K ./cfengine-nova-hub-3.12.2-2.x86_64.rpm
 ```
+
 ```output
 ./cfengine-nova-hub-3.12.2-2.x86_64.rpm: rsa sha1 (md5) pgp md5 OK
 ```
@@ -37,6 +38,7 @@ NOTE: If you don't import the public key first, you will get an error about the 
 ```command
 rpm -K ./cfengine-nova-hub-3.12.2-2.x86_64.rpm
 ```
+
 ```output
 ./cfengine-nova-hub-3.12.2-2.x86_64.rpm: RSA sha1 ((MD5) PGP) md5 NOT OK (MISSING KEYS: (MD5) PGP#a86e7afa)
 ```
@@ -75,6 +77,7 @@ rpm -K ./cfengine-nova-hub-3.12.2-2.x86_64.rpm
 ```command
 debsig-verify cfengine-nova-hub_3.12.2-2_amd64.deb
 ```
+
 ```output
 debsig: Verified package from 'CFEngine 3' (cfengine3)
 ```
