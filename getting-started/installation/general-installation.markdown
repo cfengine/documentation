@@ -82,7 +82,6 @@ The preferred way of setting `def.mailfrom` is from the
 [augments file][Augments].
 
 ```json {file="def.json"}
-
 {
   "vars": {
     "mailfrom": "sender@your.domain.here",

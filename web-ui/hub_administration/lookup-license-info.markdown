@@ -28,6 +28,7 @@ Run as `root` from the hub itself.
 ```command
 cf-hub --show-license
 ```
+
 ```output
 License file:     /var/cfengine/licenses/hub-SHA=d13c14c3dc46ef1c5824eb70ffae3a1d1c67c7ce70a1e8e8634b1324d0041131.dat
 License status:   Valid

@@ -34,6 +34,7 @@ Example run:
 ```command
 /bin/sleep 1000 &
 ```
+
 ```output
 [1] 5370
 ```
@@ -41,6 +42,7 @@ Example run:
 ```command
 cf-agent -f unit_process_kill.cf
 ```
+
 ```output
 [1]+  Terminated              /bin/sleep 1000
 ```
@@ -50,6 +52,7 @@ Now let's do it again with inform mode turned on, and CFEngine will show the pro
 ```command
 /bin/sleep 1000 &
 ```
+
 ```output
 [1] 5377
 ```
@@ -57,6 +60,7 @@ Now let's do it again with inform mode turned on, and CFEngine will show the pro
 ```command
 cf-agent -f unit_process_kill.cf -IK
 ```
+
 ```output
 2013-06-08T16:30:06-0700     info: This agent is bootstrapped to '192.168.183.208'
 2013-06-08T16:30:06-0700     info: Running full policy integrity checks
@@ -69,6 +73,7 @@ If we add the -v switch to turn on verbose mode, we see the /bin/ps command CFEn
 ```command
 cf-agent -f unit_process_kill.cf -Kv
 ```
+
 ```output
 ...
 2013-06-08T16:38:20-0700  verbose: Observe process table with /bin/ps -eo user,pid,ppid,pgid,pcpu,pmem,vsz,ni,rss,nlwp,stime,time,args

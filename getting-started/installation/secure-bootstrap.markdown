@@ -112,6 +112,7 @@ If you are installing CFEngine using one of our official packages, keys are auto
 ```command
 sudo ls /var/cfengine/ppkeys
 ```
+
 ```output
  localhost.priv
  localhost.pub
@@ -160,6 +161,7 @@ Inspect the key:
 ```command
 ssh "$CLIENT_SSH" "sudo cat /var/cfengine/ppkeys/localhost.pub"
 ```
+
 ```output
 -----BEGIN RSA PUBLIC KEY-----
 MIIBCgKCAQEAt93D8fb+M7HGZxsVo+FnOhnLM9E0QCr046N369jOeePY65lPOhAD
@@ -201,6 +203,7 @@ Inspect the key:
 ```command
 ssh "$HUB_SSH" "sudo cat /var/cfengine/ppkeys/localhost.pub"
 ```
+
 ```output
 -----BEGIN RSA PUBLIC KEY-----
 MIIBCgKCAQEAt8Wti90sRjLiEhLbC5096nEhzV3fU0N4TrxiGPCb26KufavBrXGw

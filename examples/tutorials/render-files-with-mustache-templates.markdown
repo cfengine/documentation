@@ -104,6 +104,7 @@ Verify the result:
 ```command
 cat /tmp/myapp.conf
 ```
+
 ```output
 Port 3508
 Protocol 2
