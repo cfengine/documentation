@@ -9,8 +9,9 @@ published: true
 **Description:** Returns whether the file `newer` is newer (modified later)
 than the file `older`.
 
-This function compares the modification time (mtime) of the files, referring
-to changes of content only.
+This function compares the modification time (mtime) of the files. Note that
+access changes such as ownership and permissions as well as status changes
+such as last time the file was read are not included in the mtime timestamp.
 
 [%CFEngine_function_attributes(newer, older)%]
 
