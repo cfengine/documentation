@@ -31,6 +31,7 @@ import cfdoc_printsource as printsource
 import cfdoc_git as git
 import cfdoc_qa as qa
 import cfdoc_patch_header_nav as patch_header_nav
+import cfdoc_references_resolver as references_resolver
 import sys
 import os
 
@@ -94,5 +95,13 @@ except:
     print("cfdoc_patch_header_nav: Error patching header navigation")
     sys.stdout.write("      Exception: ")
     print(sys.exc_info())
+    
+try:
+    references_resolver.run(config)
+except:
+    print("cfdoc_references_resolver: Fatal error resolving references")
+    sys.stdout.write("       Exception: ")
+    print(sys.exc_info())
+    exit(3)
 
 exit(0)
