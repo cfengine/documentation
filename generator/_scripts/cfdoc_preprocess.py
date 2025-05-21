@@ -27,7 +27,6 @@ import cfdoc_metadata as metadata
 import cfdoc_linkresolver as linkresolver
 import cfdoc_codeblock_resolver as codeblock_resolver
 import cfdoc_macros as macros
-import cfdoc_printsource as printsource
 import cfdoc_git as git
 import cfdoc_qa as qa
 import cfdoc_patch_header_nav as patch_header_nav
@@ -81,15 +80,6 @@ except:
 
 # generate links to known targets
 linkresolver.apply(config)
-
-# create printable sources from completely pre-processed markdown
-
-try:
-    printsource.run(config)
-except:
-    print("cfdoc_printsource: Error generating print-pages")
-    sys.stdout.write("      Exception: ")
-    print(sys.exc_info())
 
 try:
     patch_header_nav.patch(sys.argv[1])
