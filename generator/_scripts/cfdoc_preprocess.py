@@ -32,6 +32,7 @@ import cfdoc_git as git
 import cfdoc_qa as qa
 import cfdoc_patch_header_nav as patch_header_nav
 import cfdoc_references_resolver as references_resolver
+import cfdoc_shortcodes_resolver as shortcodes_resolver
 import sys
 import os
 import traceback
@@ -103,6 +104,14 @@ except:
     print("cfdoc_references_resolver: Fatal error resolving references")
     sys.stdout.write("       Exception: ")
     traceback.print_exc()
+    exit(3)
+
+try:
+    shortcodes_resolver.run(config)
+except:
+    print("cfdoc_shortcodes_resolver: Fatal error resolving shortcodes replacement")
+    sys.stdout.write("       Exception: ")
+    print(sys.exc_info())
     exit(3)
 
 exit(0)
