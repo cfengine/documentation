@@ -72,7 +72,7 @@ def parseHeader(lines):
         if not in_header:
             continue
         token_list = line.split(":")
-        if len(token_list) != 2:
+        if len(token_list) != 2 and token_list[0] != "date":
             print("parseHeader: ERROR in %s - wrong number of tokens" % line)
             continue
         tag = token_list[0].lstrip().rstrip()
@@ -127,11 +127,11 @@ def processMetaData(file_path, config):
         category = ", ".join(categories)
 
     if len(rel_file_path):
-        alias = "%s-%s" % (rel_file_path, file_name)
+        alias = "%s/%s" % (rel_file_path, file_name)
     else:
         alias = file_name
 
-    alias = alias.replace("/", "-").lower()
+    alias = alias.lower()
 
     out_file = open(file_path, "w")
     in_header = False
@@ -144,7 +144,7 @@ def processMetaData(file_path, config):
             in_header = not in_header
             if not in_header:  # write new tags before header is terminated
                 out_file.write("categories: [%s]\n" % category)
-                out_file.write("alias: %s.html\n" % alias)
+                out_file.write("alias: %s\n" % alias)
                 did_header = True
         if in_header:  # skip hard-coded duplicates
             if line.find("categories:") == 0:
