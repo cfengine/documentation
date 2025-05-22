@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Updating from a central policy server
-published: true
+date: 2025-05-22T00:00:00+00:00
 reviewed: 2013-06-09
 reviewed-by: atsaloli
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Why does CFEngine install into /var/cfengine instead of following the FHS?
-published: true
+date: 2025-05-22T00:00:00+00:00
 sorting: 90
 ---
 

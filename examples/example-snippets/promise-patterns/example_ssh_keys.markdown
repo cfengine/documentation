@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Distribute ssh keys
-published: true
+date: 2025-05-22T00:00:00+00:00
 reviewed: 2015-12-15
 reviewed-by: nickanderson, enrico
 ---

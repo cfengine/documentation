@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Two-factor authentication API
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 The Two-factor authentication API enables users to add an extra layer of security to their accounts
 by requiring a TOTP (time-based one-time password) in addition to their primary credentials.

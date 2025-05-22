@@ -3,7 +3,7 @@ layout: default
 title: Measurements app
 alias: Measurements
 sorting: 70
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Measurements allows you to get an overview of specific metrics on your hosts over time.

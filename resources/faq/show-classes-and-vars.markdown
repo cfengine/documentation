@@ -1,7 +1,7 @@
 ---
 layout: default
 title: How can I tell what classes and variables are defined?
-published: true
+date: 2025-05-22T00:00:00+00:00
 sorting: 90
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: packagesmatching
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 [%CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex)%]

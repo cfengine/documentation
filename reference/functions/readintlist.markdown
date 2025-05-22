@@ -1,7 +1,7 @@
 ---
 layout: default
 title: readintlist
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 [%CFEngine_function_prototype(filename, comment, split, maxentries, maxbytes)%]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: modules/promises/
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 This directory tree is used for distributing promise modules and supporting libraries.
 

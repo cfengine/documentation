@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Bootstrapping
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Frequently asked questions around bootstrapping, the process of starting CFEngine for the first time, and connecting the agents to the correct policy server.

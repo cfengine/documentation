@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Create files and directories
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 The following is a standalone policy that will create the file

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: delete_tree
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This promise type assures that a balanced XML tree, containing the matching

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: files
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Files promises manage all aspects of files. Presence, absence, file content, permissions, and ownership. File content can be fully or partially managed.

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: sublist
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 [%CFEngine_function_prototype(list, head_or_tail, max_elements)%]

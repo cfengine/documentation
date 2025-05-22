@@ -1,7 +1,7 @@
 ---
 layout: default
 title: mon
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 The variables discovered by `cf-monitord` are placed in this monitoring

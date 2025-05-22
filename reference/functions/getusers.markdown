@@ -1,7 +1,7 @@
 ---
 layout: default
 title: getusers
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 [%CFEngine_function_prototype(exclude_names, exclude_ids)%]

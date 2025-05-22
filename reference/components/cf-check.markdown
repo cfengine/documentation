@@ -1,7 +1,7 @@
 ---
 layout: default
 title: cf-check
-published: true
+date: 2025-05-22T00:00:00+00:00
 sorting: 80
 keywords: [cf-hub]
 ---

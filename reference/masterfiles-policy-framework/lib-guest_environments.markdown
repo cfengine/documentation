@@ -1,7 +1,7 @@
 ---
 layout: default
 title: lib/guest_environments.cf
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 [%CFEngine_library_include(lib/guest_environments)%]

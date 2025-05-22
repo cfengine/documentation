@@ -2,7 +2,7 @@
 layout: default
 title: Reference
 alias: CFEngine Reference
-published: true
+date: 2025-05-22T00:00:00+00:00
 sorting: 70
 ---
 

@@ -2,7 +2,7 @@
 layout: default
 title: Example snippets
 sorting: 1
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 * [General examples][General examples]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: set_text
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This promise type assures that a matching value string will be present in the

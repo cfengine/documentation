@@ -1,7 +1,7 @@
 ---
 layout: default
 title: nth
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 [%CFEngine_function_prototype(list_or_container, position_or_key)%]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Query REST API
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 In case of a need for full flexibility, Query API allow users to execute SQL queries on CFEngine Database.

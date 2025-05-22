@@ -1,7 +1,7 @@
 ---
 layout: default
 title: const
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 CFEngine defines a number of variables for embedding unprintable values

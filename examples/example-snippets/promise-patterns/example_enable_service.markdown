@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Ensure a service is enabled and running
-published: true
+date: 2025-05-22T00:00:00+00:00
 reviewed: 2016-06-28
 reviewed-by: nickanderson
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: vars
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 [Variables][variables] in CFEngine are defined

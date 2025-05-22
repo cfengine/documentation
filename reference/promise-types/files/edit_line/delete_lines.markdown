@@ -1,7 +1,7 @@
 ---
 layout: default
 title: delete_lines
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This promise assures that certain lines exactly matching regular

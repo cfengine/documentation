@@ -1,7 +1,7 @@
 ---
 layout: default
 title: processes
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Process promises refer to items in the system process table, i.e., a command in

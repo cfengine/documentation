@@ -1,7 +1,7 @@
 ---
 layout: default
 title: cfdb
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 CFEngine allows standardized SQL `SELECT` queries to be used with [REST API][Query REST API#Execute SQL query].

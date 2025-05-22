@@ -1,7 +1,7 @@
 ---
 layout: default
 title: lib/packages.cf
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 See the [`packages` promises][packages] documentation for a

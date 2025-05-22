@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Import & export compliance report API
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This provides users the ability to transfer compliance reports between hubs or create reports from a JSON definition file.

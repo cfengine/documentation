@@ -1,7 +1,7 @@
 ---
 layout: default
 title: SSH keys API
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 The SSH keys API enables you to generate a key pair that can be used for authorization.

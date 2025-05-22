@@ -1,7 +1,7 @@
 ---
 layout: default
 title: def
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 The context `def` is populated by the

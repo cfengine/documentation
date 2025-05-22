@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Actions API
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Actions API enables you to perform specific actions such a requesting report collection.

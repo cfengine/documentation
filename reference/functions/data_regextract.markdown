@@ -1,7 +1,7 @@
 ---
 layout: default
 title: data_regextract
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 [%CFEngine_function_prototype(regex, string)%]

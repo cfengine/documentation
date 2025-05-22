@@ -1,7 +1,7 @@
 ---
 layout: default
 title: What did CFEngine do?
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This page presents a few ways of understanding what CFEngine has done to your machine.

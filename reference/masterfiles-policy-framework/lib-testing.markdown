@@ -1,7 +1,7 @@
 ---
 layout: default
 title: lib/testing.cf
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 The `testing.cf` library provides bundles for working testing frameworks like

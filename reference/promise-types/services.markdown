@@ -1,7 +1,7 @@
 ---
 layout: default
 title: services
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 `services` type promises in their simplest *generic* form are an abstraction on

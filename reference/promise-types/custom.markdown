@@ -1,7 +1,7 @@
 ---
 layout: default
 title: custom
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Custom promise types can be added as _Promise modules_.

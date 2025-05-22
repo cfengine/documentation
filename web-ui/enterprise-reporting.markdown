@@ -2,7 +2,7 @@
 layout: default
 title: Enterprise reporting
 sorting: 50
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 CFEngine Enterprise can report on promise outcomes (changes made by `cf-agent`

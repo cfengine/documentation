@@ -2,7 +2,7 @@
 layout: default
 title: Promises available in CFEngine
 sorting: 4
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 ### meta - information about promise bundles

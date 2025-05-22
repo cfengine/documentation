@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Build API
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 The Build API enables you to easily manage policy projects and their respective CFEngine Build modules.

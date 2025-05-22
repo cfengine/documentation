@@ -1,7 +1,7 @@
 ---
 layout: default
 title: ldaplist
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 **This function is only available in CFEngine Enterprise.**
