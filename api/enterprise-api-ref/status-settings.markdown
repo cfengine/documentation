@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Status and settings REST API
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 REST API for managing settings, checking hub status.

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: cfsettings
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Settings used by Mission Portal APIs, no reported data.

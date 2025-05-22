@@ -1,7 +1,7 @@
 ---
 layout: default
 title: cf-reactor
-published: true
+date: 2025-05-22T00:00:00+00:00
 keywords: [reactor]
 ---
 

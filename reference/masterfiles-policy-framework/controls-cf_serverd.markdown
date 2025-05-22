@@ -1,7 +1,7 @@
 ---
 layout: default
 title: controls/cf_serverd.cf
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This is where `body server control` is defined. `body server control` is where

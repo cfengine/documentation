@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Re-installing Enterprise hub
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Sometimes it is useful to re-install the hub while still preserving existing

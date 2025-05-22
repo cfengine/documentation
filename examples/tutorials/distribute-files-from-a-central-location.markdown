@@ -2,7 +2,7 @@
 layout: default
 title: Distributing files from a central location
 sorting: 10
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 CFEngine can manage many machines simply by distributing policies to all its hosts.

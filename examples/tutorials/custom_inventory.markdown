@@ -2,7 +2,7 @@
 layout: default
 title: Custom inventory
 sorting: 15
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This tutorial will show you how to add custom inventory attributes that can be

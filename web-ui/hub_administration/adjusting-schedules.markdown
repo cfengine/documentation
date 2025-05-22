@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Adjusting schedules
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 ## Set cf-execd agent execution schedule

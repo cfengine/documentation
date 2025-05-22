@@ -2,7 +2,7 @@
 layout: default
 title: Rendering files with Mustache templates
 sorting: 15
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BUajq2b081E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

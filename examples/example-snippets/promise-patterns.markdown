@@ -2,7 +2,7 @@
 layout: default
 title:  Common promise patterns
 sorting: 2
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This section includes includes common promise patterns. Refer to them as you

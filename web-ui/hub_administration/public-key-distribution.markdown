@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Public key distribution
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 > How can I arrange for the hosts in my infrastructure to trust a new key?

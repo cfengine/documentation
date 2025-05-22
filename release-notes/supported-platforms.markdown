@@ -2,7 +2,7 @@
 layout: default
 title: Supported platforms and versions
 sorting: 20
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 CFEngine works on a wide range of platforms, and the CFEngine team strives to

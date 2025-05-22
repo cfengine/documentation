@@ -2,7 +2,7 @@
 layout: default
 title: Reporting and remediation of security vulnerabilities
 sorting: 10
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 ## Prerequisites

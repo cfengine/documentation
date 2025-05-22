@@ -1,7 +1,7 @@
 ---
 layout: default
 title: set_attribute
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This promise type assures that an attribute, with the given name and value, will

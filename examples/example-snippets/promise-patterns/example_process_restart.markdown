@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Restart a process
-published: true
+date: 2025-05-22T00:00:00+00:00
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

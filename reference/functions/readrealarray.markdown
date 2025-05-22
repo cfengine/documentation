@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "readrealarray"
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 **Prototype:** `readrealarray(array, filename, comment, split, maxentries, maxbytes)`<br>

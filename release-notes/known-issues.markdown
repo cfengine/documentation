@@ -2,7 +2,7 @@
 layout: default
 title: Known issues
 sorting: 50
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 CFEngine defects are managed in our [bug tracker][bug tracker]. Please report

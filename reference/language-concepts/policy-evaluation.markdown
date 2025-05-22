@@ -2,7 +2,7 @@
 layout: default
 title: Policy evaluation
 alias: Normal ordering
-published: true
+date: 2025-05-22T00:00:00+00:00
 sorting: 40
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: edit_line
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Line based editing is a simple model for editing files. Before XML, and

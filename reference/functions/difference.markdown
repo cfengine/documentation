@@ -1,7 +1,7 @@
 ---
 layout: default
 title: difference
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 [%CFEngine_function_prototype(list1, list2)%]

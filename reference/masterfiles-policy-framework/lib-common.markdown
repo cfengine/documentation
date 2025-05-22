@@ -1,7 +1,7 @@
 ---
 layout: default
 title: lib/common.cf
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 See

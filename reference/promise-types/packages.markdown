@@ -1,7 +1,7 @@
 ---
 layout: default
 title: packages
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 CFEngine 3.7 and later supports package management through a simple promise

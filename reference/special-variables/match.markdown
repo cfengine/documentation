@@ -1,7 +1,7 @@
 ---
 layout: default
 title: match
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Each time CFEngine matches a string, these values are assigned to a special

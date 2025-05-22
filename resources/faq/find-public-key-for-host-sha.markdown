@@ -1,7 +1,7 @@
 ---
 layout: default
 title: How do I find the public key for a given host
-published: true
+date: 2025-05-22T00:00:00+00:00
 sorting: 90
 ---
 

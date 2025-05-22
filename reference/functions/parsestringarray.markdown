@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "parsestringarray"
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 **Prototype:** `parsestringarray(array, input, comment, split, maxentries, maxbytes)`<br>

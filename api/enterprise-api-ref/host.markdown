@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Host REST API
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Host API allows to access host specific information.

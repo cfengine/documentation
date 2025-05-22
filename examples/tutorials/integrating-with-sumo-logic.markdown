@@ -2,7 +2,7 @@
 layout: default
 title: Integrating with Sumo Logic
 sorting: 15
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 In this How To we will show a simple integrate with [Sumo Logic](http://www.sumologic.com). Whenever there is a CFEngine policy update, that event will be exported to Sumo Logic. These events can become valuable traces when using Sumo Logic to analyze and detect unintendent system behavior.
 

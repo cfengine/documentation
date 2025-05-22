@@ -1,7 +1,7 @@
 ---
 layout: default
 title: inventory/any.cf
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This policy is inventory related policy that can be run on any OS. This

@@ -2,7 +2,7 @@
 layout: default
 title: Alerts and notifications
 sorting: 40
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 ## Create a new alert

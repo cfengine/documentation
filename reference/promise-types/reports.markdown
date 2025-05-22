@@ -1,7 +1,7 @@
 ---
 layout: default
 title: reports
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Reports promises simply print messages. Outputting a message without

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: controls/cf_runagent.cf
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This is where `body runagent control` is defined. `body runagent control` is where

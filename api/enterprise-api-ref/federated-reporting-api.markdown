@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Federated reporting configuration API
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 This API is used for configuring hubs so that a single hub can be used to report on any host connected to participating feeder hubs.

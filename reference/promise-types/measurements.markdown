@@ -1,7 +1,7 @@
 ---
 layout: default
 title: measurements
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 By default, CFEngine's monitoring component `cf-monitord` records performance

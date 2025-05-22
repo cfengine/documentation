@@ -2,7 +2,7 @@
 layout: default
 title: Settings
 sorting: 10
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 A variety of CFEngine and system properties can be changed in the settings view.

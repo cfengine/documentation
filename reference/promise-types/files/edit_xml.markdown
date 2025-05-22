@@ -1,7 +1,7 @@
 ---
 layout: default
 title: edit_xml
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 The use of XML documents in systems configuration is widespread. XML

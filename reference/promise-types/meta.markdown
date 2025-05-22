@@ -1,7 +1,7 @@
 ---
 layout: default
 title: meta
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 Meta-data promises have no internal function. They are intended to be used to

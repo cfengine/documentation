@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CMDB API
-published: true
+date: 2025-05-22T00:00:00+00:00
 ---
 
 The configuration management database (CMDB) API enables you to manage classes and variables for specific hosts.
