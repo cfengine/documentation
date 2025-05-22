@@ -1,7 +1,6 @@
 ---
 layout: default
 title: validdata
-published: true
 ---
 
 [%CFEngine_function_prototype(data_container, type, strict)%]

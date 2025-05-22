@@ -1,7 +1,6 @@
 ---
 layout: default
 title: data_regextract
-published: true
 ---
 
 [%CFEngine_function_prototype(regex, string)%]

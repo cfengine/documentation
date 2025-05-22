@@ -1,7 +1,6 @@
 ---
 layout: default
 title: ip2host
-published: true
 ---
 
 [%CFEngine_function_prototype(ip)%]

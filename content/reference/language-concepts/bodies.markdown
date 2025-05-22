@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Bodies
-published: true
 sorting: 20
 ---
 

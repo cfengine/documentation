@@ -1,7 +1,6 @@
 ---
 layout: default
 title: version_compare
-published: true
 ---
 
 [%CFEngine_function_prototype(version1, comparison, version2)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Installing from binary tarball
-published: true
 sorting: 50
 ---
 

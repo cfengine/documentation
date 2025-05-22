@@ -2,7 +2,6 @@
 layout: default
 title:  Common promise patterns
 sorting: 2
-published: true
 ---
 
 This section includes includes common promise patterns. Refer to them as you

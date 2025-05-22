@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-execd
-published: true
 sorting: 30
 keywords: [executor]
 ---

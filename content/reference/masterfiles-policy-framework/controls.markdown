@@ -1,7 +1,6 @@
 ---
 layout: default
 title: controls/
-published: true
 ---
 
 This directory contains policy related to the internal control and functioning

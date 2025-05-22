@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Examples and tutorials
-published: true
 sorting: 60
 ---
 

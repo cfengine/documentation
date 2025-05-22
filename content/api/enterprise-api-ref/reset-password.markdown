@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Reset password API
-published: true
 ---
 
 ## Request reset password link and token

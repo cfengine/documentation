@@ -1,7 +1,6 @@
 ---
 layout: default
 title: execresult
-published: true
 ---
 
 [%CFEngine_function_prototype(command, shell, output)%]

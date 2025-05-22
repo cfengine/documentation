@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Ensure a service is enabled and running
-published: true
 reviewed: 2016-06-28
 reviewed-by: nickanderson
 ---

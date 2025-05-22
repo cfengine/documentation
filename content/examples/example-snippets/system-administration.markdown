@@ -1,7 +1,6 @@
 ---
 layout: default
 title: System administration examples
-published: true
 sorting: 12
 ---
 

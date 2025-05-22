@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Audit log API
-published: true
 ---
 
 Audit log API provides access to system audit logs that track user actions across the platform made to critical parts

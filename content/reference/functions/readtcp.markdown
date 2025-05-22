@@ -1,7 +1,6 @@
 ---
 layout: default
 title: readtcp
-published: true
 ---
 
 [%CFEngine_function_prototype(hostnameip, port, sendstring, maxbytes)%]

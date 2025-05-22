@@ -1,7 +1,6 @@
 ---
 layout: default
 title: useringroup
-published: true
 ---
 
 [%CFEngine_function_prototype(user)%]

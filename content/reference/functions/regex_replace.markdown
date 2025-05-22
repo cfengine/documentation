@@ -1,7 +1,6 @@
 ---
 layout: default
 title: regex_replace
-published: true
 ---
 
 [%CFEngine_function_prototype(string, regex, replacement, options)%]

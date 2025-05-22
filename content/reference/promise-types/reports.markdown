@@ -1,7 +1,6 @@
 ---
 layout: default
 title: reports
-published: true
 ---
 
 Reports promises simply print messages. Outputting a message without

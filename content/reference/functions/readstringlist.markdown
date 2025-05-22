@@ -1,7 +1,6 @@
 ---
 layout: default
 title: readstringlist
-published: true
 ---
 
 **Prototype:** `readstringlist(filename, comment, split, maxentries, maxbytes)`

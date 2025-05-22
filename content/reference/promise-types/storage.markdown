@@ -1,7 +1,6 @@
 ---
 layout: default
 title: storage
-published: true
 ---
 
 Storage promises refer to disks and filesystem properties.

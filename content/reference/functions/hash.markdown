@@ -1,7 +1,6 @@
 ---
 layout: default
 title: hash
-published: true
 ---
 
 [%CFEngine_function_prototype(input, algorithm)%]

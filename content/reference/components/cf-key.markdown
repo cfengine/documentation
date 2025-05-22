@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-key
-published: true
 sorting: 60
 ---
 

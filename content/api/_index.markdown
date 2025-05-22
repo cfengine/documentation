@@ -1,7 +1,6 @@
 ---
 layout: default
 title: API
-published: true
 sorting: 50
 ---
 

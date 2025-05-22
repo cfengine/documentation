@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Installing Community Using Containers
-published: true
 sorting: 80
 ---
 

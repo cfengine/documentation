@@ -1,7 +1,6 @@
 ---
 layout: default
 title: SQL queries using the Enterprise API
-published: true
 sorting: 20
 ---
 

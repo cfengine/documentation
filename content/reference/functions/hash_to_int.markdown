@@ -1,7 +1,6 @@
 ---
 layout: default
 title: hash_to_int
-published: true
 ---
 
 [%CFEngine_function_prototype( lower, upper, string )%]

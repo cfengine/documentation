@@ -1,7 +1,6 @@
 ---
 layout: default
 title: filter
-published: true
 ---
 
 [%CFEngine_function_prototype(filter, list, is_regex, invert, max_return)%]

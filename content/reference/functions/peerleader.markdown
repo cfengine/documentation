@@ -1,7 +1,6 @@
 ---
 layout: default
 title: peerleader
-published: true
 ---
 
 [%CFEngine_function_prototype(filename, regex, groupsize)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: isipinsubnet
-published: true
 ---
 
 [%CFEngine_function_prototype(range, ip_address1, ip_address2, ...)%]

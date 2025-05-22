@@ -1,7 +1,6 @@
 ---
 layout: default
 title: def
-published: true
 ---
 
 The context `def` is populated by the

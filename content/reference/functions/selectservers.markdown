@@ -1,7 +1,6 @@
 ---
 layout: default
 title: selectservers
-published: true
 ---
 
 [%CFEngine_function_prototype(hostlist, port, query, regex, maxbytes, array)%]

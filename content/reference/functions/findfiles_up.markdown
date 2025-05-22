@@ -1,7 +1,6 @@
 ---
 layout: default
 title: findfiles_up
-published: true
 ---
 
 [%CFEngine_function_prototype(path, glob, level)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Manual execution
-published: true
 sorting: 90
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: "on"
-published: true
 ---
 
 [%CFEngine_function_prototype(year, month, day, hour, minute, second)%]

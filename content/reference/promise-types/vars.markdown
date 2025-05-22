@@ -1,7 +1,6 @@
 ---
 layout: default
 title: vars
-published: true
 ---
 
 [Variables][variables] in CFEngine are defined

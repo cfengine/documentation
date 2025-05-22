@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Developing modules
-published: true
 sorting: 50
 ---
 

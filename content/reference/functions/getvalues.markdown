@@ -1,7 +1,6 @@
 ---
 layout: default
 title: getvalues
-published: true
 ---
 
 [%CFEngine_function_prototype(varref)%]

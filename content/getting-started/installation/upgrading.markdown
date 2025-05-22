@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Upgrading
-published: true
 sorting: 30
 ---
 

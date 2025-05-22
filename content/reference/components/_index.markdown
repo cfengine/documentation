@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Components
-published: true
 sorting: 10
 ---
 

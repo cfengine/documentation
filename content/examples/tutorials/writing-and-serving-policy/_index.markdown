@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Writing and serving policy
-published: true
 sorting: 100
 ---
 

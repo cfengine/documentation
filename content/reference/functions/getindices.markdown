@@ -1,7 +1,6 @@
 ---
 layout: default
 title: getindices
-published: true
 ---
 
 [%CFEngine_function_prototype(varref)%]

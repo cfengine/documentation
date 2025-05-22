@@ -1,7 +1,6 @@
 ---
 layout: default
 title: databases
-published: true
 sorting: 9999
 ---
 

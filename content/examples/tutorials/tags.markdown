@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Tags for variables, classes, and bundles
-published: true
 sorting: 14
 ---
 

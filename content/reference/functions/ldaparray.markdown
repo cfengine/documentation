@@ -1,7 +1,6 @@
 ---
 layout: default
 title: ldaparray
-published: true
 ---
 
 **This function is only available in CFEngine Enterprise.**

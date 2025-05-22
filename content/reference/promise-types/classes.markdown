@@ -1,7 +1,6 @@
 ---
 layout: default
 title: classes
-published: true
 ---
 
 [Classes][classes] promises may be made in any bundle. Classes defined by

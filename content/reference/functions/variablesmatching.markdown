@@ -1,7 +1,6 @@
 ---
 layout: default
 title: variablesmatching
-published: true
 ---
 
 [%CFEngine_function_prototype(name, tag1, tag2, ...)%]

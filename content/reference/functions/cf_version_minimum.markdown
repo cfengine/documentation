@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf_version_minimum
-published: true
 ---
 
 [%CFEngine_function_prototype(string)%]

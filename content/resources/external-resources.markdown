@@ -1,7 +1,6 @@
 ---
 layout: default
 title: External resources
-published: true
 sorting: 30
 ---
 

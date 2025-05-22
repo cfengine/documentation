@@ -1,7 +1,6 @@
 ---
 layout: default
 title: validjson
-published: true
 ---
 
 [%CFEngine_function_prototype(string, strict)%]

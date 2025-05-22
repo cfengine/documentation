@@ -1,7 +1,6 @@
 ---
 layout: default
 title: host2ip
-published: true
 ---
 
 [%CFEngine_function_prototype(hostname)%]

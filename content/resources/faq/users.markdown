@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Users
-published: true
 sorting: 90
 ---
 

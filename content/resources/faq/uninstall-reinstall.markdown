@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Uninstalling / reinstalling
-published: true
 sorting: 40
 ---
 

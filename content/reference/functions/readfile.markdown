@@ -1,7 +1,6 @@
 ---
 layout: default
 title: readfile
-published: true
 ---
 
 [%CFEngine_function_prototype(filename, optional_maxbytes)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: rrange
-published: true
 ---
 
 [%CFEngine_function_prototype(arg1, arg2)%]

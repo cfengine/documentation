@@ -1,7 +1,6 @@
 ---
 layout: default
 title: isvariable
-published: true
 ---
 
 [%CFEngine_function_prototype(var)%]

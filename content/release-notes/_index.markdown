@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Release notes
-published: true
 sorting: 30
 ---
 

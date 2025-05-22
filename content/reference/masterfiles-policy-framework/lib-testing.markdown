@@ -1,7 +1,6 @@
 ---
 layout: default
 title: lib/testing.cf
-published: true
 ---
 
 The `testing.cf` library provides bundles for working testing frameworks like

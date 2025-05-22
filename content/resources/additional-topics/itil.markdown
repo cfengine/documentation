@@ -1,7 +1,6 @@
 ---
 layout: default
 title: ITIL
-published: true
 sorting: 80
 ---
 

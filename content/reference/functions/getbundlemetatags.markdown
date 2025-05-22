@@ -1,7 +1,6 @@
 ---
 layout: default
 title: getbundlemetatags
-published: true
 ---
 
 [%CFEngine_function_prototype(bundlename, optional_tag)%]

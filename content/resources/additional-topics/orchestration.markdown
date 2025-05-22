@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Orchestration
-published: true
 sorting: 80
 ---
 

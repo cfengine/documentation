@@ -1,7 +1,6 @@
 ---
 layout: default
 title: strftime
-published: true
 ---
 
 [%CFEngine_function_prototype(mode, template, time)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Why knowledge management?
-published: true
 sorting: 3
 ---
 

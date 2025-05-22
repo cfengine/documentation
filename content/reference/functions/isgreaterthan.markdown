@@ -1,7 +1,6 @@
 ---
 layout: default
 title: isgreaterthan
-published: true
 ---
 
 [%CFEngine_function_prototype(value1, value2)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: file_hash
-published: true
 ---
 
 [%CFEngine_function_prototype(file, algorithm)%]

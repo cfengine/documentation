@@ -1,7 +1,6 @@
 ---
 layout: default
 title: lsdir
-published: true
 ---
 
 [%CFEngine_function_prototype(path, regex, include_base)%]

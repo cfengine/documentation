@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Writing policy
-published: true
 sorting: 40
 ---
 

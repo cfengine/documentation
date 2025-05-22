@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Local virtual machine
-published: true
 sorting: 15
 ---
 

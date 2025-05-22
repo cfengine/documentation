@@ -1,7 +1,6 @@
 ---
 layout: default
 title: inventory/suse.cf
-published: true
 ---
 
 This policy is inventory related to suse hosts.

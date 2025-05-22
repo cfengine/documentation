@@ -1,7 +1,6 @@
 ---
 layout: default
 title: License
-published: true
 ---
 
 ## License information

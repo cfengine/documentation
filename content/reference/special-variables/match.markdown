@@ -1,7 +1,6 @@
 ---
 layout: default
 title: match
-published: true
 ---
 
 Each time CFEngine matches a string, these values are assigned to a special

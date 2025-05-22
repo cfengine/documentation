@@ -1,7 +1,6 @@
 ---
 layout: default
 title: "readintarray"
-published: true
 ---
 
 **Prototype:** `readintarray(array, filename, comment, split, maxentries, maxbytes)`<br>

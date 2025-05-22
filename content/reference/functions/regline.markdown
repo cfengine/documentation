@@ -1,7 +1,6 @@
 ---
 layout: default
 title: regline
-published: true
 ---
 
 [%CFEngine_function_prototype(regex, filename)%]

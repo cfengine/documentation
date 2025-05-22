@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Hierarchies
-published: true
 sorting: 80
 ---
 

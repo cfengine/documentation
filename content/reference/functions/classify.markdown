@@ -1,7 +1,6 @@
 ---
 layout: default
 title: classify
-published: true
 ---
 
 [%CFEngine_function_prototype(text)%]

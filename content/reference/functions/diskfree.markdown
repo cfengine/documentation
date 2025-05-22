@@ -1,7 +1,6 @@
 ---
 layout: default
 title: diskfree
-published: true
 ---
 
 [%CFEngine_function_prototype(path)%]

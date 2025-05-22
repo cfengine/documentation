@@ -1,7 +1,6 @@
 ---
 layout: default
 title: packages (deprecated)
-published: true
 ---
 
 **NOTE:** This package promise is deprecated and has been superseded by

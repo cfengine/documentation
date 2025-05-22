@@ -1,7 +1,6 @@
 ---
 layout: default
 title: custom
-published: true
 ---
 
 Custom promise types can be added as _Promise modules_.

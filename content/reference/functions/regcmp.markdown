@@ -1,7 +1,6 @@
 ---
 layout: default
 title: regcmp
-published: true
 ---
 
 [%CFEngine_function_prototype(regex, string)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Installing Community
-published: true
 sorting: 50
 ---
 

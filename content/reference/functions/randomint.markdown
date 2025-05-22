@@ -1,7 +1,6 @@
 ---
 layout: default
 title: randomint
-published: true
 ---
 
 [%CFEngine_function_prototype(lower, upper)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Reset administrative credentials
-published: true
 ---
 
 The default `admin` user can be reset to defaults using the following SQL.

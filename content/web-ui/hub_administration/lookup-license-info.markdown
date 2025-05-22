@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Lookup license info
-published: true
 ---
 
 Information about the currently issued license can be obtained from the About section in Mission Portal web interface or from the command line as shown here.

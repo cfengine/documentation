@@ -1,7 +1,6 @@
 ---
 layout: default
 title: isconnectable
-published: true
 ---
 
 [%CFEngine_function_prototype(hostname, port, timeout)%]

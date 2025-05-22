@@ -1,7 +1,6 @@
 ---
 layout: default
 title:  Managing settings
-published: true
 sorting: 30
 ---
 

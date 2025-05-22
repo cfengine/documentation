@@ -1,7 +1,6 @@
 ---
 layout: default
 title: lib/
-published: true
 ---
 
 This directory contains the standard library aka COPBL or the Community Open

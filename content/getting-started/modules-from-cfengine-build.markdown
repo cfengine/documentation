@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Modules from CFEngine Build
-published: true
 sorting: 20
 ---
 

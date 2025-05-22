@@ -1,7 +1,6 @@
 ---
 layout: default
 title: set_text
-published: true
 ---
 
 This promise type assures that a matching value string will be present in the

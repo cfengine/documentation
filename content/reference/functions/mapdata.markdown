@@ -1,7 +1,6 @@
 ---
 layout: default
 title: mapdata
-published: true
 ---
 
 [%CFEngine_function_prototype(interpretation, pattern, array_or_container)%]

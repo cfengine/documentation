@@ -1,7 +1,6 @@
 ---
 title: Quick-Start guide to using PuTTY
 layout: default
-published: true
 sorting: 2
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Reporting and web UI
-published: true
 sorting: 30
 ---
 

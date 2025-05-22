@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Language concepts
-published: true
 sorting: 50
 ---
 

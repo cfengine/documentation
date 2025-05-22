@@ -1,7 +1,6 @@
 ---
 layout: default
 title: edit
-published: true
 ---
 
 This context is used to access information about editing promises during

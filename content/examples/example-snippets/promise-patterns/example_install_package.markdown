@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Install packages
-published: true
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

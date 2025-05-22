@@ -1,7 +1,6 @@
 ---
 layout: default
 title: How do I fix undefined body errors?
-published: true
 sorting: 90
 ---
 

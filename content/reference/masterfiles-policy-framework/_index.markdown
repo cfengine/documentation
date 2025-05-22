@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Masterfiles Policy Framework
-published: true
 sorting: 90
 ---
 

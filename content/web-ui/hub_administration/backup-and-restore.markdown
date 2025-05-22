@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Backup and restore
-published: true
 ---
 
 With policy stored in version control there are few things that should be

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: methods
-published: true
 ---
 
 Methods are compound promises that refer to whole bundles of promises.

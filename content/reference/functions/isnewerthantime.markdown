@@ -1,7 +1,6 @@
 ---
 layout: default
 title: isnewerthantime
-published: true
 ---
 
 [%CFEngine_function_prototype(file, time)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: lib/services.cf
-published: true
 ---
 
 See the [`services` promises][services] documentation for a

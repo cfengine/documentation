@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Package modules
-published: true
 sorting: 70
 ---
 

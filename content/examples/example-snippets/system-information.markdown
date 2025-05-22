@@ -1,7 +1,6 @@
 ---
 layout: default
 title: System information examples
-published: true
 sorting: 11
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Teamwork
-published: true
 sorting: 80
 ---
 

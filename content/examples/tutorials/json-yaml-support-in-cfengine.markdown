@@ -1,7 +1,6 @@
 ---
 layout: default
 title: JSON and YAML support in CFEngine
-published: true
 sorting: 2
 ---
 

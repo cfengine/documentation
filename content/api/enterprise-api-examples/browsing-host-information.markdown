@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Browsing host information
-published: true
 sorting: 50
 ---
 

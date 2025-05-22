@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Health diagnostic API
-published: true
 ---
 
 This API provides access to health diagnostic information.

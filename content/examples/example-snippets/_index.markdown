@@ -2,7 +2,6 @@
 layout: default
 title: Example snippets
 sorting: 1
-published: true
 ---
 
 * [General examples][General examples]

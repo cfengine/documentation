@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Status and settings REST API
-published: true
 ---
 
 REST API for managing settings, checking hub status.

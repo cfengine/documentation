@@ -1,7 +1,6 @@
 ---
 layout: default
 title: inventory/debian.cf
-published: true
 ---
 
 This policy is inventory related to debian hosts.

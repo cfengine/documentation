@@ -1,7 +1,6 @@
 ---
 layout: default
 title: getfields
-published: true
 ---
 
 [%CFEngine_function_prototype(regex, filename, split, array_lval)%]

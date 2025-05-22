@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Set up time management through NTP
-published: true
 reviewed: 2013-06-09
 reviewed-by: atsaloli
 ---

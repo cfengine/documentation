@@ -1,7 +1,6 @@
 ---
 layout: default
 title: sys
-published: true
 ---
 
 System variables are derived from CFEngine's automated discovery of system

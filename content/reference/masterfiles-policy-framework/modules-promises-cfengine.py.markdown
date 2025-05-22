@@ -1,7 +1,6 @@
 ---
 layout: default
 title: modules/promises/cfengine.py
-published: true
 ---
 
 ```

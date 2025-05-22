@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Variables
-published: true
 sorting: 60
 ---
 

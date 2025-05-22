@@ -1,7 +1,6 @@
 ---
 layout: default
 title: field_edits
-published: true
 ---
 
 Certain types of text files are tabular in nature, with field separators (e.g.

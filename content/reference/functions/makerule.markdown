@@ -1,7 +1,6 @@
 ---
 layout: default
 title: makerule
-published: true
 ---
 
 [%CFEngine_function_prototype(target, sources)%]

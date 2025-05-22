@@ -1,7 +1,6 @@
 ---
 layout: default
 title: controls/cf_runagent.cf
-published: true
 ---
 
 This is where `body runagent control` is defined. `body runagent control` is where

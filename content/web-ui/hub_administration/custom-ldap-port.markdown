@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Configure a custom LDAP port
-published: true
 ---
 
 Mission Portals User settings and preferences provides a radio button

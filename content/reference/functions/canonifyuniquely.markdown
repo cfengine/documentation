@@ -1,7 +1,6 @@
 ---
 layout: default
 title: canonifyuniquely
-published: true
 ---
 
 [%CFEngine_function_prototype(text)%]

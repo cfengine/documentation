@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Enterprise API examples
-published: true
 sorting: 6
 ---
 

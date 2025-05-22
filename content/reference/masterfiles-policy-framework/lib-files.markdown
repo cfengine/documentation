@@ -1,7 +1,6 @@
 ---
 layout: default
 title: lib/files.cf
-published: true
 ---
 
 See the [`files` promises][files] and [`edit_line` bundles][edit_line]

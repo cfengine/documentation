@@ -1,7 +1,6 @@
 ---
 layout: default
 title: processexists
-published: true
 ---
 
 [%CFEngine_function_prototype(regex)%]

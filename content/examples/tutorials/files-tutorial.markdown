@@ -2,7 +2,6 @@
 layout: default
 title: File editing
 sorting: 10
-published: true
 ---
 
 ## Prerequisites

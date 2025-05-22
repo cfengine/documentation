@@ -1,7 +1,6 @@
 ---
 layout: default
 title: isreadable
-published: true
 ---
 
 [%CFEngine_function_prototype(path, timeout)%]

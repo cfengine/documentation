@@ -1,7 +1,6 @@
 ---
 layout: default
 title: readdata
-published: true
 ---
 
 [%CFEngine_function_prototype(filename, filetype)%]

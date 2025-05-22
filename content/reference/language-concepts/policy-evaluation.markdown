@@ -2,7 +2,6 @@
 layout: default
 title: Policy evaluation
 alias: Normal ordering
-published: true
 sorting: 40
 ---
 

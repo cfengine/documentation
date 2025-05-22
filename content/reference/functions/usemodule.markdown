@@ -1,7 +1,6 @@
 ---
 layout: default
 title: usemodule
-published: true
 ---
 
 [%CFEngine_function_prototype(module, args)%]

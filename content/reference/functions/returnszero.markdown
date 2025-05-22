@@ -1,7 +1,6 @@
 ---
 layout: default
 title: returnszero
-published: true
 ---
 
 [%CFEngine_function_prototype(command, shell)%]

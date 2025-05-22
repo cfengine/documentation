@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Layers of abstraction in policy
-published: true
 sorting: 2
 ---
 

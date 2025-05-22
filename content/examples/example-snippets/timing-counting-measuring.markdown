@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Measuring examples
-published: true
 sorting: 3
 ---
 

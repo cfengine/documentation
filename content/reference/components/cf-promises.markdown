@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-promises
-published: true
 sorting: 40
 ---
 

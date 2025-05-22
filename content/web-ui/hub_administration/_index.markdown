@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Hub administration
-published: true
 sorting: 80
 ---
 

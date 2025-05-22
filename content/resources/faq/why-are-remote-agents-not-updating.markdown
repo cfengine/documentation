@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Why are remote agents not updating?
-published: true
 sorting: 90
 ---
 

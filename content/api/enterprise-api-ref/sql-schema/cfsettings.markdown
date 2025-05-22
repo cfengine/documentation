@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cfsettings
-published: true
 ---
 
 Settings used by Mission Portal APIs, no reported data.

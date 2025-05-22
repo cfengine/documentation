@@ -1,7 +1,6 @@
 ---
 layout: default
 title: How CFEngine works
-published: true
 sorting: 2
 ---
 

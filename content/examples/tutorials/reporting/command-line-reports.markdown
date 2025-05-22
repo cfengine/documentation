@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Command-Line reports
-published: true
 sorting: 60
 ---
 

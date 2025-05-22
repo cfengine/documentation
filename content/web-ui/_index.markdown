@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Web UI
-published: true
 sorting: 40
 ---
 

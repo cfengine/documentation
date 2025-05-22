@@ -1,7 +1,6 @@
 ---
 layout: default
 title: nth
-published: true
 ---
 
 [%CFEngine_function_prototype(list_or_container, position_or_key)%]

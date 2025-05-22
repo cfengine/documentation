@@ -1,7 +1,6 @@
 ---
 layout: default
 title: splayclass
-published: true
 ---
 
 [%CFEngine_function_prototype(input, policy)%]

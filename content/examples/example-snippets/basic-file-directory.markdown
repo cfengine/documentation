@@ -1,7 +1,6 @@
 ---
 layout: default
 title: File and directory examples
-published: true
 sorting: 6
 ---
 

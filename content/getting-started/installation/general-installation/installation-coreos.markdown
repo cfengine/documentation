@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Installing Enterprise on CoreOS
-published: true
 sorting: 40
 ---
 

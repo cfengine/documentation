@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Fist time setup API
-published: true
 ---
 
 The First time setup API enables creation of the initial administrator user.

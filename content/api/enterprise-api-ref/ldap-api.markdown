@@ -1,7 +1,6 @@
 ---
 layout: default
 title: LDAP authentication API
-published: true
 ---
 
 LDAP authentication API allows to check ldap user credentials and change LDAP settings.

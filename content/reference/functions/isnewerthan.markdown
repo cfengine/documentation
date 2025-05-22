@@ -1,7 +1,6 @@
 ---
 layout: default
 title: isnewerthan
-published: true
 ---
 
 [%CFEngine_function_prototype(newer, older)%]

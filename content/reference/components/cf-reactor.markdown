@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-reactor
-published: true
 keywords: [reactor]
 ---
 

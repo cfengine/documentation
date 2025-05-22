@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Enterprise report collection
-published: true
 sorting: 90
 ---
 

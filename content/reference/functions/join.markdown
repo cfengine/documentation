@@ -1,7 +1,6 @@
 ---
 layout: default
 title: join
-published: true
 ---
 
 [%CFEngine_function_prototype(glue, list)%]

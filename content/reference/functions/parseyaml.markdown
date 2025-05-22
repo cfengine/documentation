@@ -1,7 +1,6 @@
 ---
 layout: default
 title: parseyaml
-published: true
 ---
 
 [%CFEngine_function_prototype(yaml_data)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: filestat
-published: true
 ---
 
 [%CFEngine_function_prototype(filename, field)%]

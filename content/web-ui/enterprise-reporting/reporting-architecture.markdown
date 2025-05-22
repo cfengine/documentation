@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Reporting architecture
-published: true
 sorting: 10
 ---
 

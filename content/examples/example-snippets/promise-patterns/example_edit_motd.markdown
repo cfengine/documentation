@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Customize message of the day
-published: true
 reviewed: 2015-12-18
 reviewed-by: enrico & nick
 ---

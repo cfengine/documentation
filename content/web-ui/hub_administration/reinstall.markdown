@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Re-installing Enterprise hub
-published: true
 ---
 
 Sometimes it is useful to re-install the hub while still preserving existing

@@ -2,7 +2,6 @@
 layout: default
 title: Known issues
 sorting: 50
-published: true
 ---
 
 CFEngine defects are managed in our [bug tracker][bug tracker].

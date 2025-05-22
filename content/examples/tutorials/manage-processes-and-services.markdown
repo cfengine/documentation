@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Managing processes and services
-published: true
 sorting: 3
 ---
 

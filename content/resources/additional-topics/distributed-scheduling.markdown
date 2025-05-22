@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Distributed scheduling
-published: true
 sorting: 80
 ---
 

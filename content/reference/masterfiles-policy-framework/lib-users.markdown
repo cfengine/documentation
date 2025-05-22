@@ -1,7 +1,6 @@
 ---
 layout: default
 title: lib/users.cf
-published: true
 ---
 
 See the [`users` promises][users] documentation for a
