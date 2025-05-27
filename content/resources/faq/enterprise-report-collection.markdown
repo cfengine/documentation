@@ -26,7 +26,7 @@ in [`body hub control`][cf-hub#control-promises].
 
 ## How often does cf-hub re-check the LICENSE
 
-{% comment %}cf-hub/license-checking.c:#define SECONDS_BETWEEN_CHECKS (5 * SECONDS_PER_MINUTE){% endcomment %}
+{{% comment %}}cf-hub/license-checking.c:#define SECONDS_BETWEEN_CHECKS (5 * SECONDS_PER_MINUTE){{% /comment %}}
 `cf-hub` re-checks the license when it is started and once every 5 minutes after
 that.
 
