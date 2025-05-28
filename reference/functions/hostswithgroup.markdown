@@ -19,16 +19,16 @@ On CFEngine Enterprise, this hub function can be used to return a list of hostna
 ```cf3
 bundle agent debian_hosts
 {
-vars:
+  vars:
+    am_policy_hub::
+      "host_list"
+        slist => hostswithgroup( "Linux", "name" );
 
-  am_policy_hub::
-    "host_list" slist => hostswithgroup( "Linux", "name" );
-
-files:
-  am_policy_hub::
-    "/tmp/master_config.cfg"
-         edit_line => insert_lines("host=$(host_list)"),
-            create => "true";
+  files:
+    am_policy_hub::
+      "/tmp/master_config.cfg"
+        edit_line => insert_lines("host=$(host_list)"),
+        create => "true";
 }
 ```
 
