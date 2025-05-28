@@ -18,8 +18,7 @@ Looks up the group `"group_name"` in the group database located in /etc/group an
 
 Output:
 
-[%CFEngine_include_snippet(useringroup.cf, #\+begin_src\s+example_output\s*, .*end_src)%**
-
+[%CFEngine_include_snippet(useringroup.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **History:**
 
