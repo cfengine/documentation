@@ -14,7 +14,7 @@ This function checks whether a `hostname`:`port` is connectable within `timeout`
 
 **Example:**
 
-[%CFEngine_include_snippet(isconnectable.cf, #\+begin_src cfengine3, .*end_src)%]
+[%CFEngine_include_example(isconnectable.cf)%]
 
 **History:**
 
