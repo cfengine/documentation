@@ -10,15 +10,22 @@ published: true
 
 [%CFEngine_function_attributes(bundlename, optional_tag)%]
 
-The `optional_tag` can be used to look up a specific tag's value. If you have
+The `optional_tag` can be used to look up a specific tag's value.
+If you have:
+
 ```cf3
 bundle agent example
 {
   meta:
     "tags"
-      slist => { "mykey=myvalue1", "mykey=myvalue2", "yourkey=yourvalue1" };
+      slist => {
+        "mykey=myvalue1",
+        "mykey=myvalue2",
+        "yourkey=yourvalue1",
+      };
 }
 ```
+
 then `getbundlemetatags( "example", "mykey" )` will return a list with two entries, `{ "myvalue1",
 "myvalue2" }`.
 
