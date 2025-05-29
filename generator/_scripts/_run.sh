@@ -23,6 +23,7 @@ find $WRKDIR/documentation/generator/pages -type f -name "*.markdown" -exec grep
 cd $WRKDIR/documentation/hugo
 
 # Hugo build
+npm ci
 npm run build:all
 
 cd $WRKDIR/documentation/generator
