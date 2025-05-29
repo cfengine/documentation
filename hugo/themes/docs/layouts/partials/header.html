@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" {{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>{{ if isset .Params "preview_title" }}{{ index .Params "preview_title" }}{{ else }}{{ .Title }}{{ end }}</title>
+
+<link rel="stylesheet" href="{{ "css/style.min.css" | relURL }}"/>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="{{ if isset .Params "preview_title" }}{{ index .Params "preview_title" }}{{ else }}{{ .Title }}{{ end }}" />
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="{{ if isset .Params "preview_description" }}{{ index .Params "preview_description" }}{{ end }}" />
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="{{ if isset .Params "preview_image_url" }}{{ index .Params "preview_image_url" }}{{ else }}/images/previews/logo_wide_opengraph.png{{ end }}" />
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="docs.alvaldi.com" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="docs.alvaldi.com" />
+<meta name="twitter:title" content="{{ if isset .Params "preview_title" }}{{ index .Params "preview_title" }}{{ else }}{{ .Title }}{{ end }}" />
+<meta name="twitter:description" content="{{ if isset .Params "preview_description" }}{{ index .Params "preview_description" }}{{ end }}" />
+<meta name="twitter:image" content="{{ if isset .Params "preview_image_url" }}{{ index .Params "preview_image_url" }}{{ else }}/images/previews/agent_white_background.png{{ end }}" />
+<style>
+    :root {
+        --primary-color: {{ .Site.Params.Theme.Colors.primary }};
+        --link-color: {{ .Site.Params.Theme.Colors.link }};
+        --footer-color: {{ .Site.Params.Theme.Colors.footer }};
+        --secondary-color: {{ .Site.Params.Theme.Colors.secondary }};
+    }
+</style>
+<script>
+    let gaInitialized = false;
+    document.addEventListener('cookieconsent_allowed', () => {
+        if (gaInitialized === true) return;
+
+        const script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-2576171-2';
+        document.head.appendChild(script);
+
+        script.addEventListener('load', function() {
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'UA-2576171-2');
+            gaInitialized = true;
+        });
+    });
+</script>
+
+</head>
+<body>
+{{ partial "nav" . }}

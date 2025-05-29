@@ -1,0 +1,30 @@
+<aside>
+    <button onclick="openNavigationHandler()" class="btn navigation-btn">
+        <i class="bi bi-list-ul"></i> Navigation table
+    </button>
+    <div class="select versions-dropdown">
+        <label>Version</label>
+        <div class="dropdown-select">
+            <span>Version&nbsp;<div></div></span>
+            <div class="dropdown-select_options">
+                {{ partial "header_nav_options" . }}
+            </div>
+        </div>
+    </div>
+    <div class="left-menu">
+        <div class="left-menu-top">
+            <i class="bi menu-back bi-arrow-left-short"></i>
+            <i class="bi menu-close bi-x"></i>
+        </div>
+        <ul class="left-menu-breadcrumbs"></ul>
+        <div class="selectedMenu"></div>
+        <ul class='mainMenu'>{{ partial "mainMenu" . }}</ul>
+    </div>
+</aside>
+
+
+<div id="top_form" class="group">
+    <div class="float-right">
+        <div id="top_version_wrapper"></div>
+    </div>
+</div>

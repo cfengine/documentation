@@ -1,0 +1,30 @@
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    function onSubmit() {
+        let form = document.getElementById({{  index .Params 0 }});
+
+        let isValid = true;
+        form.querySelectorAll('input[required]').forEach(item => {
+            if (item.value == '') {
+                item.style = 'border-color: red;';
+                isValid = false;
+            } else {
+                item.style = '';
+            }
+        });
+
+        if (isValid == false) {
+            return;
+        }
+
+        let captchaSettings = document.getElementsByName("captcha_settings")[0];
+        let parsedCaptchaValue = JSON.parse(captchaSettings.value);
+        if (parsedCaptchaValue.hasOwnProperty('ts')) {
+            parsedCaptchaValue["ts"] = JSON.stringify(new Date().getTime());
+        }
+
+        captchaSettings.value = JSON.stringify(parsedCaptchaValue);
+        form.submit()
+    }
+</script>

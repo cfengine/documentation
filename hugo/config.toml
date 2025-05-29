@@ -1,0 +1,34 @@
+baseurl = "/"
+languageCode = "en"
+title = "CFEngine Docs"
+theme = "docs"
+copyright = "&copy; 2025 <a href=\"https://northern.tech\">Northern.tech</a> AS"
+enableRobotsTXT = true
+contentDir = "../generator/pages"
+publishDir = "../generator/_site"
+
+[params]
+branch = "master"
+repositoryUrl = "https://github.com/cfengine/documentation"
+
+# Number of posts per page
+[pagination]
+pagerSize = 10
+
+[taxonomies]
+tag = "tags"
+
+[markup]
+[markup.highlight]
+style = 'pygments'
+codeFences = true
+pygmentsCodeFences = true
+
+[markup.goldmark.renderer]
+  unsafe = true # Allow HTML in md files
+
+[params.theme.colors]
+  primary = "#15357f" # home page h1
+  secondary = "#f5821f"
+  link = "#1d71d3"
+  footer = "#052569"

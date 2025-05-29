@@ -1,0 +1,1 @@
+{{/* if a link href is a URL or static directory then no need for prefix otherwise `../` to support relative URLs */}}{{ $hrefPrefix := cond (or (gt (len (findRE "^(#|www|/|http:|https:|mailto:).*?" .Destination)) 0) (fileExists (printf "%s%s" "/static/"  .Destination ))) "" "../" }}<a href="{{ $hrefPrefix }}{{ .Destination | safeURL }}">{{ .Text | safeHTML }}</a>

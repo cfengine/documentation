@@ -1,0 +1,20 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "scripts": {
+    "build:css": "lessc --compress ./themes/docs/styles/docs.less ./themes/docs/static/css/style.min.css",
+    "build:menu": "node scripts/menuBuilder.js",
+    "build:site": "hugo build --logLevel info",
+    "build:all": "npm run build:css && npm run build:menu && npm run build:site"
+  },
+  "devDependencies": {
+    "less": "^4.3.0"
+  },
+  "dependencies": {
+    "@fontsource/red-hat-display": "^5.2.5",
+    "@fontsource/red-hat-mono": "^5.2.5",
+    "@fontsource/red-hat-text": "^5.2.5",
+    "@fontsource/roboto": "^5.2.5",
+    "bootstrap-icons": "^1.13.1"
+  }
+}

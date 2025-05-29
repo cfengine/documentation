@@ -1,0 +1,114 @@
+.home {
+  h1 {
+    color: @primary-color;
+    font-size: 3.2rem;
+    line-height: 3.6rem;
+    font-family: "Red Hat Display", Arial, sans-serif;
+  }
+
+  &-top {
+    text-align: center;
+    max-width: 62.6rem;
+    margin: 0 0 4.7rem 11rem;
+
+    @media @desktop-wide-down {
+      margin-left: 6.2rem;
+    }
+    @media @desktop-down {
+      margin-left: .2rem;
+    }
+    @media @phone-down {
+      margin-bottom: 0;
+      text-align: left;
+    }
+
+    div {
+      margin-top: 1.6rem;
+
+      &:last-child {
+        margin-top: 2rem;
+      }
+    }
+
+    &_versions {
+      margin-top: 1.6rem;
+      display: flex;
+      justify-content: center;
+      @media @phone-down {
+        display: block;
+      }
+
+      li {
+        margin-right: 1.4rem;
+      }
+
+      a {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 110%;
+        color: #000;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &-links {
+    display: flex;
+    padding-bottom: 3.9rem;
+    border-bottom: 1px solid #E2E2E2;
+    @media @phone-down {
+      display: block;
+      padding-bottom: 0;
+    }
+
+    ul {
+      @media @phone-down {
+        margin-top: 4.5rem;
+      }
+
+      &:first-child {
+        margin-right: 3.2rem;
+      }
+
+      width: 41.5rem;
+      list-style: none;
+
+      @media @phone-down {
+        width: 100%;
+      }
+
+      li {
+        margin-bottom: 2.4rem;
+
+        &:first-child {
+          padding-bottom: 1.2rem;
+          border-bottom: 1px solid #E2E2E2;;
+        }
+
+        &.cfe-build {
+          span {
+            display: block;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #E2E2E2;
+            margin-bottom: 1.6rem;
+          }
+
+          a {
+            margin-top: 1.6rem;
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+            font-weight: 700;
+            color: @textColorDarkBlue;
+          }
+        }
+      }
+    }
+
+    a {
+      color: @link-color;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: .4rem;
+    }
+  }
+}

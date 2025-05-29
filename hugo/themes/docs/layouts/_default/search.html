@@ -1,0 +1,18 @@
+{{ partial "header" . }}
+<main class="main_wrapper container search-page">
+    <article>
+        <div class="wrapper article" id="googleSearchPage">
+            <div id="content_col" class="googleSearch">
+                <article>
+                    <h1>Search results for: <span class="searchQuery"></span></h1>
+                    <div class="resultsCount"><span></span> results</div>
+                    <div id="searchResults"></div>
+                </article>
+                <script type="text/javascript" src="{{ "js/search.js" | relURL }}"></script>
+            </div>
+        </div>
+        {{ partial "helpSection" . }}
+    </article>
+    {{ partial "menu" . }}
+</main>
+{{ partial "footer" . }}
