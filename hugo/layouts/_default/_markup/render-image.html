@@ -1,0 +1,11 @@
+{{/* Check if we're in an _index.md file */}}
+{{ $isIndex := strings.HasPrefix .Page.File.LogicalName "_index." }}
+
+{{/* if an image src is a URL or static directory then no need for prefix otherwise './' for _index.md or '../' for regular files */}}
+{{ $srcPrefix := cond (or (gt (len (findRE "^(www|/|http:|https:).*?" .Destination)) 0) (fileExists (printf "%s%s" "/static/" .Destination))) "" (cond $isIndex "./" "../") }}
+
+<img
+    src="{{ $srcPrefix }}{{ .Destination | safeURL }}"
+    alt="{{ .Text }}"
+    {{ with .Title}} title="{{ . }}"{{ end }}
+/>

@@ -1,0 +1,23 @@
+{{ partial "header" . }}
+<main class="main_wrapper container pages-wrapper">
+    <article>
+        <div class="article">
+            {{if (eq $.Type "tags" )}}
+            <div class="">
+                <h1 id="top">
+                    Pages by tag: {{.Title}}
+                </h1>
+            </div>
+            {{ end }}
+            <div class="main-content">
+                <ul>
+                    {{ range sort .Paginator.Pages }}
+                    <li><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if .Draft }} ::Draft{{ end }}</li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </article>
+    {{ partial "menu" . }}
+</main>
+{{ partial "footer" . }}

@@ -1,0 +1,19 @@
+<div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+            {{ range .Ancestors.Reverse }}
+            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                <a itemid="{{ .RelPermalink }}" itemprop="item" itemscope="" itemtype="http://schema.org/Thing" href="{{ .RelPermalink }}">
+                    <span itemprop="name">{{ .Title }}</span>
+                </a>
+            </li>
+            <li>/</li>
+            {{ end }}
+            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                <a itemid="{{ .RelPermalink }}" itemprop="item" itemscope="" itemtype="http://schema.org/Thing" href="{{ .RelPermalink }}">
+                    <span itemprop="name">{{ .Title }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

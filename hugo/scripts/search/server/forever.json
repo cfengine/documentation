@@ -1,0 +1,9 @@
+{
+  "uid": "searchServer",
+  "append": true,
+  "script": "server.js",
+  "sourceDir": "/usr/share/search/server",
+  "logFile": "/home/proxy/logs/forever/log.log",
+  "outFile": "/home/proxy/logs/forever/out.log",
+  "errFile": "/home/proxy/logs/forever/error.log"
+}

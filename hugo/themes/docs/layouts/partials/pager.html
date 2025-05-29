@@ -1,0 +1,6 @@
+<div>
+    <nav role="navigation" class="flex  flex--midle container margin-bottom_5">
+        {{ if .Paginator.HasPrev }}<a class="btn-transparent btn" href="{{ .Paginator.Prev.URL }}"><img alt="" class="rotate-180" src="/images/circle-arrow.svg"> Newer posts </a>{{ end }}
+        {{ if .Paginator.HasNext }}<a class="btn-transparent btn" href="{{ .Paginator.Next.URL }}">Older posts <img alt="" src="/images/circle-arrow.svg"></a>{{ end }}
+    </nav>
+</div>
