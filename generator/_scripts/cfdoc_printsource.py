@@ -61,7 +61,7 @@ def run(config):
                     title = line[line.find(":") + 1 :].lstrip().rstrip()
                 elif line.find("alias: ") == 0:
                     alias = line[line.find(":") + 1 :].lstrip().rstrip()
-                elif line.find("published: true") == 0:
+                elif line.find("date: 2025-05-22T00:00:00+00:00") == 0:
                     publish = True
                 elif line.find("sorting: ") == 0:
                     sortstring = line[9:]
@@ -144,7 +144,7 @@ def print_pages(pages, level, out_file, new_pages):
             out_file.write("---\n")
             out_file.write("layout: printable\n")
             out_file.write('title: "The Complete ' + page.title + '"\n')
-            out_file.write("published: true\n")
+            out_file.write("date: 2025-05-22T00:00:00+00:00\n")
             out_file.write(
                 "alias: %s-printable.html\n" % page.alias[: page.alias.rfind(".")]
             )

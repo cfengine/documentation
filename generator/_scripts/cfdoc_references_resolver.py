@@ -37,9 +37,9 @@ def process(file_path, references):
     
     # Pattern to match reference links: [`text`][reference]
     pattern = r'\[(.*?)\]\[(.*?)\]'
-    
     def replace_link(match):
         text, ref = match.groups()
+        ref = ref or text # if ref is empty use text as ref to support cases like [ref][]
         
         if ref in references:
             url, title = references[ref]
@@ -53,6 +53,22 @@ def process(file_path, references):
     
     new_content = re.sub(pattern, replace_link, content)
     
+    functions_pattern = r'\`(.*?)\(\)\`'
+    def replace_function_link(match):
+        ref = match.group(1)
+        text = f'{ref}()'
+        print( match.group(1), 'ref ref -')
+        if ref in references:
+            url, title = references[ref]
+            if title:
+                return f'[{text}]({url} "{title}")'
+            else:
+                return f'[{text}]({url})'
+        else:
+            print(f"References {ref} is not found in the _references.md. File: {file_path}")
+            return match.group(0)
+    new_content = re.sub(functions_pattern, replace_function_link, new_content)
+        
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write(new_content)
 
