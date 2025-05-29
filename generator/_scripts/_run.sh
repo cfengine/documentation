@@ -20,9 +20,11 @@ cp -rf $WRKDIR/documentation/generator/_includes/versions_list.html $WRKDIR/docu
 rm -rf $WRKDIR/documentation/generator/pages/generator
 # remove not published .markdown files
 find $WRKDIR/documentation/generator/pages -type f -name "*.markdown" -exec grep -l '^published: false$' {} + | xargs rm -f
-cd $WRKDIR/documentation/hugo
 
 # Hugo build
+cd $WRKDIR/documentation/hugo
+wget https://github.com/gohugoio/hugo/releases/download/v0.147.5/hugo_0.147.5_Linux-64bit.tar.gz -O hugo.tar.gz
+tar -zxvf hugo.tar.gz
 npm ci
 npm run build:all
 

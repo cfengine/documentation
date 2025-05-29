@@ -4,7 +4,7 @@
   "scripts": {
     "build:css": "lessc --compress ./themes/docs/styles/docs.less ./themes/docs/static/css/style.min.css",
     "build:menu": "node scripts/menuBuilder.js",
-    "build:site": "hugo build --logLevel info",
+    "build:site": "./hugo build --logLevel info",
     "build:all": "npm run build:css && npm run build:menu && npm run build:site"
   },
   "devDependencies": {
