@@ -184,24 +184,21 @@ if (window.innerWidth > 1023) {
         }
     });
 } else {
-    function splitPath(path) {
+    const urlParts = (function(path) {
         const parts = path.split('/');
+        parts.pop()
         let up = [];
-
-        // Collect ./ and ../ parts
+        // collect ./ and ../ parts into the first item
         while (parts.length && (parts[0] === '.' || parts[0] === '..' || parts[0] === '')) {
-            const part = parts.shift();
+            const part = parts.shift(); // get part and remove from paths
             if (part === '.' || part === '') continue;
             up.push('..');
         }
 
         const upPath = up.length ? up.join('/') : '.';
         return [upPath, ...parts];
-    }
-
-    // let urlParts = currentUrl.replace(/^\//, '').replace(/\/$/, '').split('/');
-    let urlParts = splitPath(currentMenuUrl);
-    urlParts.pop()
+    })(currentMenuUrl);
+   
     let historyUrl = urlParts.shift() + '/';
     const selectedLi = document.querySelector('.left-menu ul.mainMenu li[data-url="' + currentMenuUrl + '"]');
     if (selectedLi) {
@@ -212,7 +209,7 @@ if (window.innerWidth > 1023) {
         urlParts.forEach((item) => {
             if (item == '') return;
             historyUrl += item + '/';
-            console.log(historyUrl)
+ 
             clickedMenuHistory.push({
                 href: historyUrl,
                 name: mainMenuCopy.querySelector('li[data-url="' + historyUrl + '"] > a').text
