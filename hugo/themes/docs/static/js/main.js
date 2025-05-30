@@ -1,6 +1,12 @@
 'use strict';
 const currentUrl = document.location.pathname;
 
+const currentMenuUrl = (function () {
+    const menuItemsElements = document.querySelectorAll('li[data-url]');
+    const menuUrls = [...menuItemsElements].map(i => i.dataset.url).sort((a, b) => b.length - a.length);
+    return menuUrls.find(url => currentUrl.endsWith(url.replace(/^(\.\/|\.\.\/)+/, '')));
+})();
+
 document.querySelectorAll('pre').forEach(function (pre) {
     const closest = pre.closest('div.highlight-command');
     if (closest) {
@@ -20,7 +26,7 @@ document.querySelectorAll(".copy-to-clipboard").forEach(function (el) {
         navigator.clipboard.writeText(copyText);
         target.classList.remove('bi-clipboard');
         target.className += ' bi-check2 ';
-        setTimeout(function ()  { target.className = 'bi bi-clipboard copy-to-clipboard' }, 2000);
+        setTimeout(function () { target.className = 'bi bi-clipboard copy-to-clipboard' }, 2000);
     })
 });
 
@@ -74,7 +80,7 @@ overlay.onclick = function () {
 
 
 const mainMenuCopy = document.querySelector('.left-menu ul.mainMenu').cloneNode(true);
-const clickedMenuHistory = [{href: '/', name: 'Home'}];
+const clickedMenuHistory = [{ href: '/', name: 'Home' }];
 const renderNestedMenu = function (href) {
 
     if (href == null) {
@@ -88,7 +94,7 @@ const renderNestedMenu = function (href) {
         ul.classList.add('mainMenu');
         document.querySelector('.left-menu ul.mainMenu').replaceWith(ul);
         const selected = document.querySelector('li[data-url="' + document.location.pathname + '"]');
-        if (selected){
+        if (selected) {
             selected.className += ' opened current';
         }
     }
@@ -100,7 +106,7 @@ const menuItemClickFn = function (e) {
         if (e.target.closest('li').classList.contains('parent')) {
             e.preventDefault();
             renderNestedMenu(e.target.getAttribute('href'));
-            clickedMenuHistory.push({href: e.target.getAttribute('href'), name: e.target.innerText});
+            clickedMenuHistory.push({ href: e.target.getAttribute('href'), name: e.target.innerText });
             buildBreadcrumbs(clickedMenuHistory);
         }
     }
@@ -148,7 +154,7 @@ document.querySelector('.menu-back').onclick = function () {
 }
 
 const processCurrentMenuItem = function () {
-    const currentMenuItem = document.querySelector('.left-menu li[data-url="' + document.location.pathname + '"]');
+    const currentMenuItem = document.querySelector('.left-menu li[data-url="' + currentMenuUrl + '"]');
 
     if (currentMenuItem != null) {
         currentMenuItem.className += ' opened current';
@@ -172,15 +178,32 @@ if (window.innerWidth > 1023) {
             const parent = element.closest('li.parent');
             parent.classList.toggle('opened');
             const openedSubmenus = parent.querySelectorAll('.' + openedClass);
-            openedSubmenus.forEach((subMenu)=>{
+            openedSubmenus.forEach((subMenu) => {
                 subMenu.classList.remove(openedClass);
             })
         }
     });
 } else {
-    let historyUrl = '/';
-    let urlParts = currentUrl.replace(/^\//, '').replace(/\/$/, '').split('/');
-    const selectedLi = document.querySelector('.left-menu ul.mainMenu li[data-url="' + currentUrl + '"]');
+    function splitPath(path) {
+        const parts = path.split('/');
+        let up = [];
+
+        // Collect ./ and ../ parts
+        while (parts.length && (parts[0] === '.' || parts[0] === '..' || parts[0] === '')) {
+            const part = parts.shift();
+            if (part === '.' || part === '') continue;
+            up.push('..');
+        }
+
+        const upPath = up.length ? up.join('/') : '.';
+        return [upPath, ...parts];
+    }
+
+    // let urlParts = currentUrl.replace(/^\//, '').replace(/\/$/, '').split('/');
+    let urlParts = splitPath(currentMenuUrl);
+    urlParts.pop()
+    let historyUrl = urlParts.shift() + '/';
+    const selectedLi = document.querySelector('.left-menu ul.mainMenu li[data-url="' + currentMenuUrl + '"]');
     if (selectedLi) {
         if (!selectedLi.classList.contains('parent')) {
             urlParts.pop()
@@ -189,12 +212,13 @@ if (window.innerWidth > 1023) {
         urlParts.forEach((item) => {
             if (item == '') return;
             historyUrl += item + '/';
+            console.log(historyUrl)
             clickedMenuHistory.push({
                 href: historyUrl,
                 name: mainMenuCopy.querySelector('li[data-url="' + historyUrl + '"] > a').text
             });
         })
-        renderNestedMenu(currentUrl);
+        renderNestedMenu(currentMenuUrl);
     }
 }
 
@@ -211,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault();
             navigator.clipboard.writeText(a.href);
             a.classList.add('url-copied');
-            history.replaceState(null,null, a.href);
+            history.replaceState(null, null, a.href);
             setTimeout(function () {
                 a.classList.remove('url-copied')
             }, 2000);
@@ -240,9 +264,9 @@ document.addEventListener("DOMContentLoaded", function () {
             anchorsOffsets = fetchOffsets(anchors);
             // The current TOC menu item will be calculated in 100 ms after the user stops scrolling.
             // Otherwise, there might be redundant calculations.
-            timeout = setTimeout( () => {
+            timeout = setTimeout(() => {
                 let scrollTop = window.scrollY;
-                tocLinks.forEach(link =>  link.classList.remove('current'));
+                tocLinks.forEach(link => link.classList.remove('current'));
 
                 for (let i = anchorsOffsets.length - 1; i >= 0; i--) {
                     if (scrollTop > anchorsOffsets[i]) {
@@ -262,15 +286,15 @@ document.addEventListener("DOMContentLoaded", function () {
             const tocWrapper = document.getElementById('TOCbox_wrapper');
             const TOC_TOP_OFFSET = 42;
             let i = 0;
-            const offsetArr = [...tocLinks].map((el,)=>{
+            const offsetArr = [...tocLinks].map((el,) => {
                 const li = el.parentElement;
-                i+=li.clientHeight + parseInt(window.getComputedStyle(li).getPropertyValue('margin-bottom'));
+                i += li.clientHeight + parseInt(window.getComputedStyle(li).getPropertyValue('margin-bottom'));
                 return i;
             })
-            const selectedOffset = window.innerHeight-TOC_TOP_OFFSET - (Math.min(offsetArr.length -1 , n + 1))
+            const selectedOffset = window.innerHeight - TOC_TOP_OFFSET - (Math.min(offsetArr.length - 1, n + 1))
             tocWrapper.style.top = (selectedOffset < 0 ? 12 + selectedOffset : 12) + 'px';
         }
-        if (window.location.hash){
+        if (window.location.hash) {
             const id = window.location.hash.slice(1);
             const n = [...anchors].findIndex(a => a.id === id);
             setActiveLink(id, n);
