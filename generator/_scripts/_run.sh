@@ -30,6 +30,8 @@ npm ci
 npm run build:all
 
 cd $WRKDIR/documentation/generator
+mkdir $WRKDIR/documentation/generator/_site/assets/
+cp -rf $WRKDIR/documentation/hugo/scripts/search/index/searchIndex $WRKDIR/documentation/generator/_site/assets/
 
 $WRKDIR/documentation/generator/_scripts/cfdoc_postprocess.py "$@"
 if [ "$?" -gt "0" ]; then
