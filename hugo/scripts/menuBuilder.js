@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const contentPath = path.resolve(__dirname + '/../../generator/pages');
+const contentPath = path.resolve(__dirname + '/../content');
 const menuHtmlPath = path.resolve(__dirname + '/../layouts/partials/mainMenu.html');
 const contentTreeToJson = require('./contentTreeToJson.js');
 
