@@ -15,6 +15,15 @@
             <ul>
                 <li><a target="_blank" href="https://cfengine.com">Product</a></li>
                 <li><a target="_blank" href="https://cfengine.com/blog/">Blog</a></li>
+                <li class="top_menu-versions">
+                    <div class="top_menu-versions-title">
+                        <div>Docs versions</div>
+                        <span>Version <span></span></span>
+                    </div>
+                    <div class="top_menu-versions-list">
+                        {{ partial "header_nav_options" . }}
+                    </div>
+                </li>
                 <li><a target="_blank" class="btn btn-secondary" href="https://cfengine.com/download/">Try for free</a></li>
             </ul>
             <div onclick="openMenuHandler(this)" class="collapse center-align relative">
