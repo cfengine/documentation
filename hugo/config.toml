@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en"
-title = "CFEngine Docs"
+title = "CFEngine master docs"
 theme = "docs"
 copyright = "&copy; 2025 <a href=\"https://northern.tech\">Northern.tech</a> AS"
 enableRobotsTXT = true
