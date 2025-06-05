@@ -24,6 +24,7 @@ tag = "tags"
 style = 'pygments'
 codeFences = true
 pygmentsCodeFences = true
+wrapperClass = 'hlc'
 
 [markup.goldmark.renderer]
   unsafe = true # Allow HTML in md files
