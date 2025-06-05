@@ -42,9 +42,9 @@ const displayResults = (results) => {
 
     searchResults.innerHTML = html;
 }
-
+const searchBase = document.querySelector('meta[name="search-base"]').content;
 const search = searchQuery =>
-    fetch(`/api/search?searchQuery=${searchQuery}`)
+    fetch(`${searchBase}?searchQuery=${searchQuery}`)
         .then(response => response.json()).then(data => displayResults(data))
         .catch(() => searchResults.innerTextr = 'An error happened while search');
 
