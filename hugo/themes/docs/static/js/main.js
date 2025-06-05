@@ -8,9 +8,9 @@ const currentMenuUrl = (function () {
 })();
 
 document.querySelectorAll('pre').forEach(function (pre) {
-    const closest = pre.closest('div.highlight-command');
+    const closest = pre.closest('div.highlight');
     if (closest) {
-        closest.innerHTML += '<i data-closest=".highlight-command" data-copyfrom="code" class="bi bi-clipboard copy-to-clipboard"></i>';
+        closest.innerHTML += '<i data-closest=".highlight" data-copyfrom="code" class="bi bi-clipboard copy-to-clipboard"></i>';
     }
 });
 

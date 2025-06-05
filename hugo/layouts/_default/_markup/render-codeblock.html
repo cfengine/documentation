@@ -1,16 +1,16 @@
 {{ $lang  := .Attributes.lang  | default .Type }}
 {{ if or (compare.Eq $lang "command") (compare.Eq $lang "output") }}
-<div class="highlight-{{ $lang }} {{ $lang }}">
+<div class="highlight highlight-{{ $lang }} {{ $lang }}">
     <div class="code_block {{ $lang }}">
-        <div><i class="{{ $lang }}"></i>{{ $lang }}</div>
+        <div class="top"><i class="{{ $lang }}"></i>{{ $lang }}</div>
         {{ highlight .Inner $lang }}
     </div>
 </div>
 {{ else if (findRE `^\[file=.*` .Inner) }}
     {{ $matches := findRESubmatch `^\[(file=)(.*)\]` .Inner }}
-<div class="highlight-file file">
+<div class="highlight highlight-file file">
     <div class="code_block file">
-        <div><i class="file"></i> {{ range $matches }}
+        <div class="top"><i class="file"></i> {{ range $matches }}
             {{ index . 2 }}
             {{ end }}</div>
         {{ highlight (replaceRE `\A.*\n` "" .Inner) $lang }}
@@ -18,5 +18,7 @@
     </div>
 </div>
 {{ else }}
+<div class="highlight">
     {{ highlight .Inner $lang }}
+</div>
 {{ end }}
