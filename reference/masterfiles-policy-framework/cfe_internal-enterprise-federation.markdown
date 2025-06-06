@@ -1,7 +1,0 @@
----
-layout: default
-title: cfe_internal/enterprise/federation/
-published: true
----
-
-This directory contains assets related to the function and configuration of [CFEngine Enterprise Federated reporting][Federated reporting].
