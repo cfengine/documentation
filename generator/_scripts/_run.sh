@@ -24,6 +24,7 @@ mkdir $WRKDIR/documentation/hugo/content
 cp -rf $WRKDIR/documentation/generator/pages/* $WRKDIR/documentation/hugo/content
 
 # Hugo build
+cp -rn $WRKDIR/nt-docs/* $WRKDIR/documentation/hugo/
 cd $WRKDIR/documentation/hugo
 wget https://github.com/gohugoio/hugo/releases/download/v0.147.5/hugo_0.147.5_Linux-64bit.tar.gz -O hugo.tar.gz
 tar -zxvf hugo.tar.gz
