@@ -1,0 +1,48 @@
+---
+layout: default
+title: getacls
+published: true
+---
+
+[%CFEngine_function_prototype(path, type)%]
+
+**Description:** Return the Access Control List (ACL) for a given file- or directory path.
+
+This function returns the ACLs for a file or directory given by the `path`
+argument. The `type` argument indicates whether to get the __access__ or
+__default__ ACLs.
+
+The __access__ ACLs defines the permissions for the given file or directory.
+I.e., who (users, groups, others) can perform what actions (read, write,
+execute) on that particular object.
+
+The __default__ ACLs acts like a template of permissions to be inherited by
+objects created within that directory. Please note that only directories can
+have default ACLs.
+
+If ACLs are not supported on the filesystem the function will return an empty
+list.
+
+**Arguments:**
+
+- `path` : Absolute path to file or directory
+- `type` : In the range `(access|default)`
+
+**Example:**
+
+```cf3
+bundle agent __main__
+{
+  vars:
+    "default_acls"
+      string => getacls("/tmp/foo/", "default");
+    "access_acls"
+      string => getacls("/tmp/bar", "access");
+}
+```
+
+**History:**
+
+- Introduced in 3.27.
+
+**See also:** `filestat()`
