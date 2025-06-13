@@ -108,6 +108,3 @@ export LC_ALL=C.UTF-8
 
 echo "+ bash -x ./_scripts/_run.sh $BRANCH || exit 6"
 bash -x ./_scripts/_run.sh "$BRANCH" || exit 6
-
-cd "$WRKDIR"/documentation/generator
-npm run build
