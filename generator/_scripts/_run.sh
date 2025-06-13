@@ -15,7 +15,7 @@ mv $WRKDIR/documentation/generator/new_references.md $WRKDIR/documentation/gener
 mkdir $WRKDIR/documentation/generator/pages
 cp -r $WRKDIR/documentation/content/* $WRKDIR/documentation/generator/pages
 cp -r $WRKDIR/documentation/generator/_includes/lts_versions_list.html $WRKDIR/documentation/hugo/static/
-cp -rf $WRKDIR/documentation/generator/_includes/versions_list.html $WRKDIR/documentation/hugo/layouts/partials/
+cp -rf $WRKDIR/documentation/generator/_includes/versions_list.html $WRKDIR/documentation/hugo/static/
 cp -rf $WRKDIR/documentation/generator/_includes/header_nav_options.html $WRKDIR/documentation/hugo/layouts/partials/
 rm -rf $WRKDIR/documentation/generator/pages/generator
 # remove not published .markdown files
