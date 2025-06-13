@@ -232,7 +232,7 @@ Leave this as `default`.
 The title of the page. Quoting is only necessary if the title contains YAML
 keywords (like "on").
 
-    published: true|false
+    date: 2025-05-22T00:00:00+00:00|false
 
 Pages that set this tag to `false` will not be part of the navigation structure.
 The HTML content will however be generated.

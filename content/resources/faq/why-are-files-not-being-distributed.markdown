@@ -1,0 +1,15 @@
+---
+layout: default
+title: Why are some files inside masterfiles not being updated/distributed?
+date: 2025-05-22T00:00:00+00:00
+sorting: 90
+---
+
+During agent bootstrap all files found in `masterfiles` are copied to
+`$(sys.inputdir)` (commonly `/var/cfengine/inputs`).
+
+However not all files are
+considered for update in the default update policy.
+
+The default update policy in the MPF only copies files matching a list of
+regular expressions defined in [update_def.input_name_patterns][Masterfiles Policy Framework#files considered for copy during policy updates]

@@ -28,3 +28,5 @@ core.includes
 # Mac Finder
 
 .DS_Store
+
+/hugo/node_modules

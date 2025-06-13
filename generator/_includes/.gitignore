@@ -1,0 +1,3 @@
+# everything execpt .gitignore
+*
+!.gitignore
