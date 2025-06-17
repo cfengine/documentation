@@ -1,6 +1,7 @@
 baseurl = "/"
 languageCode = "en"
-title = "CFEngine master docs"
+# %branch% placeholder replaces with actual branch while generation
+title = "CFEngine %branch% docs"
 theme = "docs"
 copyright = "&copy; 2025 <a href=\"https://northern.tech\">Northern.tech</a> AS"
 enableRobotsTXT = true
@@ -8,9 +9,9 @@ publishDir = "../generator/_site"
 relativeURLs = true
 
 [params]
-branch = "master"
+branch = "%branch%"
 repositoryUrl = "https://github.com/cfengine/documentation"
-searchBaseUrl = "/docs/search/master/"
+searchBaseUrl = "/docs/search/%branch%/"
 domain = "docs.cfengine.com"
 
 # Number of posts per page
