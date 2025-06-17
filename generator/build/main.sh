@@ -94,6 +94,9 @@ sudo chmod -R a+rX "$WRKDIR"/masterfiles
 # write current branch into the config.yml
 echo "branch: $BRANCH" >> "$WRKDIR"/documentation/generator/_config.yml
 
+# replace %branch% placeholder with actual branch name
+sed -i "s/%branch%/$BRANCH/g" "$WRKDIR"/documentation/hugo/config.toml
+
 # Generate syntax data
 ./_regenerate_json.sh || exit 4
 
