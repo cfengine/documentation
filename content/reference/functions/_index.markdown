@@ -93,12 +93,12 @@ functions multiple times, which can be a performance concern.
 
 Some _system_ functions are particularly expensive:
 
-{% comment %}
+<!--
 
 You can get this list automatically with cf-promises --syntax-description json and a little jq.
 
 cf-promises --syntax-description json | jq '.functions | with_entries(select(.value.cached==true)) | keys[]'
-{% endcomment %}
+-->
 
 * `execresult()` and `returnszero()` for shell execution
 * `regldap()`, `ldapvalue()`, and `ldaplist()` for LDAP queries

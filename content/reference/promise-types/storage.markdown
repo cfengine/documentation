@@ -84,7 +84,7 @@ body mount example
 **Type:** (menu option)
 
 **Allowed input range:**
-{% comment %}cf-promises --syntax-description=json | jq '.bodyTypes.mount.attributes.mount_type.range|split(",")'{% endcomment %}
+<!--cf-promises --syntax-description=json | jq '.bodyTypes.mount.attributes.mount_type.range|split(",")'-->
 
 * `nfs`
 * `nfs2`

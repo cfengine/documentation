@@ -412,14 +412,14 @@ know how much equipment is in use and how much can be brought in at a moment's
 notice to solve a business problem. These are a few of the reasons why we need
 to keep track of assets.
 
-{% comment %}
+<!--
 TODO: bring back the knowledge map! And we do indeed like to use CMDBs.
 
 CFEngine does not subscribe the the ITIL notion of a CMDB. Instead we have a
 semantic Knowledge Map and distributed knowledge for scalable analysis of the
 system.
 
-{% endcomment %}
+-->
 
 ### Change management in the enterprise
 

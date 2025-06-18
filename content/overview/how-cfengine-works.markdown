@@ -53,8 +53,8 @@ agent was able to repair the state into compliance
 * **Promise not Kept**: Actual state was not equal to Desired state and the
 agent was not able to restore into compliance
 
-{% comment %}Promises you cannot keep are no better than lies!
-https://www.youtube.com/watch?v=Zd9-wdGzedU {% endcomment %}
+<!--Promises you cannot keep are no better than lies!
+https://www.youtube.com/watch?v=Zd9-wdGzedU -->
 
 ## Graphical illustration of CFEngine process
 

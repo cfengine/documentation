@@ -11,9 +11,9 @@ reports are guarded appropriately.
 
 [%CFEngine_include_example(reports.cf)%]
 
-{% comment %} TODO: Should link to a page that describes all CFEngine output
+<!-- TODO: Should link to a page that describes all CFEngine output
 here where we explain that output from reports type promises are
-prefixed with the letter R. {% endcomment %}
+prefixed with the letter R. -->
 
 Messages output by report promises are prefixed with the letter R to
 distinguish them from other output.
