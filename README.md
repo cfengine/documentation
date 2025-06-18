@@ -223,18 +223,14 @@ Note: Do not use markdown files prefixed with `.`. They are not picked up by the
 
 Additional META tags you should set are:
 
-    layout: default
-
-Leave this as `default`.
-
     title: "The Title"
 
 The title of the page. Quoting is only necessary if the title contains YAML
 keywords (like "on").
 
-    published: true|false
+    hidden: true
 
-Pages that set this tag to `false` will not be part of the navigation structure.
+Pages that set this tag to `true` will not be part of the navigation structure.
 The HTML content will however be generated.
 
     tags: [list, of, tags with space, all lowercase]
@@ -326,7 +322,7 @@ With single backticks, this would link to the documentation of the `meta` attrib
 ### Custom macros
 
 The documentation generator will pre-process the markdown content
-before passing it to Jekyll for the rendering. The pre-processor
+before passing it to Hugo for the rendering. The pre-processor
 understands and replaces the macros. Macros all have the form
 
 `[%CFEngine_MACRO(parameters)%]`
@@ -518,11 +514,11 @@ links.
 
 - follow the [Policy style guide](guide/writing-and-serving-policy/policy-style.markdown)
   in examples and code snippets
-- use the appropriate lexer for syntax highlighting via Pygments
+- use the appropriate lexer for syntax highlighting via Chroma
 
   Most important are the `cf3` lexer, as well as `bash`, `console`,
-  `diff`, `shell-session` and `sql`. But Jekyll supports
-  [many more lexers](https://pygments.org/docs/lexers/)
+  `diff`, `shell-session` and `sql`. But Hugo supports
+  [many more lexers](https://gohugo.io/content-management/syntax-highlighting/#languages)
 
 - avoid custom color schemes and hand-coded HTML
 - document the example after the example code
@@ -668,9 +664,9 @@ Special variables are documented within the page of their context.
 
 ## Publishing
 
-Jekyll is used to generate the HTML pages. The toolchain is available at
+Hugo is used to generate the HTML pages. The toolchain is available at
 https://github.com/cfengine/documentation/tree/master/generator. After you compile pages,
-Jekyll will place all files into the \_site folder, without subdirectories.
+Hugo will place all files into the \_site folder.
 
 Commits in this repository trigger the documentation generator to run, which
 then updates the contents of https://docs.cfengine.com/docs/
