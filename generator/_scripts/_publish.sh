@@ -9,13 +9,6 @@ then
     export WRKDIR
 fi
 
-cd $WRKDIR
-find documentation/generator/pages -name "*.markdown" | xargs rm
-cp `find documentation/generator/pages -name "*.*"` documentation/generator/_site
-if [  ! -d documentation/generator/_site ]; then
-    exit 1
-fi
-
 OUTPUT=$WRKDIR/output
 mkdir -p $OUTPUT
 
