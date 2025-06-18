@@ -2033,7 +2033,7 @@ bundle agent example
 
 **Example:**
 
-{% comment %} This example contains mustache, so it needs to be wrapped in raw or else it won't render as desired.{% endcomment %}
+<!-- This example contains mustache, so it needs to be wrapped in raw or else it won't render as desired.-->
 {% raw %}
 [%CFEngine_include_example(template_method-inline_mustache.cf)%]
 {% endraw %}
@@ -3179,7 +3179,7 @@ for `inline_mustache` and `mustache`.  For mustache explanation see
 
 **Example:**
 
-{% comment %} This example contains mustache, so it needs to be wrapped in raw or else it won't render as desired.{% endcomment %}
+<!-- This example contains mustache, so it needs to be wrapped in raw or else it won't render as desired.-->
 {% raw %}
 [%CFEngine_include_example(template_method-inline_mustache.cf)%]
 {% endraw %}

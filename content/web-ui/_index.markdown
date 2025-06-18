@@ -72,7 +72,7 @@ Examples of significant events include:
 - Deleting a host
 - Alert status change
 
-Events are accessible {% comment %}via the Events API {% endcomment %}from every Mission Portal
+Events are accessible <!--via the Events API -->from every Mission Portal
 dashboard. The event log on the dashboard is filtered to show only information
 relevant based on the widgets present. It shows when alerts are triggered and
 cleared and when hosts are bootstrapped or decommissioned.
