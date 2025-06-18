@@ -8,7 +8,7 @@ def process(file):
         
         # Replace the pattern {{%anything}} with {{% print `{{%$1}}` %}}
         # The .*? ensures a non-greedy match for the content between the braces
-        updated_content = re.sub(r'\{\{%(.*?)\}\}', r'{{% print `{{%\1}}` %}}', content)
+        updated_content = re.sub(r'\{\{%([^%]*?)\}\}', r'{{% print `{{%\1}}` %}}', content)
         
         # Write the updated content back to the file
         with open(file, 'w', encoding='utf-8') as f:

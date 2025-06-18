@@ -48,7 +48,7 @@ def patch(current_branch):
                 % (link, selected, branch["Title"].replace("Version ", "")),
                 file=f,
             )
-        print('<a href="./versions.html">view all versions</a>', file=f)
+        print('<a href="/versions/">view all versions</a>', file=f)
 
     with open("_includes/versions_list.html", "w") as f:
         for branch in data["docs"]:
