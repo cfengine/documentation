@@ -25,7 +25,6 @@
 import cfdoc_environment as environment
 import cfdoc_metadata as metadata
 import cfdoc_linkresolver as linkresolver
-import cfdoc_codeblock_resolver as codeblock_resolver
 import cfdoc_macros as macros
 import cfdoc_git as git
 import cfdoc_qa as qa
@@ -41,7 +40,6 @@ qa.initialize(config)
 
 metadata.run(config)
 linkresolver.run(config)
-codeblock_resolver.run(config)
 macros.run(config)
 linkresolver.run(config)
 # generate links to known targets
