@@ -78,11 +78,11 @@ def processMetaData(file_path, config):
         return
 
     if len(rel_file_path):
-        alias = "%s/%s" % (rel_file_path, file_name)
+        alias = "/%s/%s" % (rel_file_path, file_name)
     else:
-        alias = file_name
+        alias = "/" + file_name
 
-    alias = alias.lower()
+    alias = alias.replace("/_index", "").lower()
 
     out_file = open(file_path, "w")
     in_header = False
