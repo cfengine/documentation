@@ -12,16 +12,14 @@ echo "Generating documentation from '$WRKDIR'..."
 sed '/^\[.*\[.*\].*\]/d' $WRKDIR/documentation/generator/_references.md > $WRKDIR/documentation/generator/new_references.md
 mv $WRKDIR/documentation/generator/new_references.md $WRKDIR/documentation/generator/_references.md
 
-mkdir $WRKDIR/documentation/generator/pages
-cp -r $WRKDIR/documentation/content/* $WRKDIR/documentation/generator/pages
+mkdir $WRKDIR/documentation/hugo/content
+cp -r $WRKDIR/documentation/content/* $WRKDIR/documentation/hugo/content
 cp -r $WRKDIR/documentation/generator/_includes/lts_versions_list.html $WRKDIR/documentation/hugo/static/
 cp -rf $WRKDIR/documentation/generator/_includes/versions_list.html $WRKDIR/documentation/hugo/static/
 cp -rf $WRKDIR/documentation/generator/_includes/header_nav_options.html $WRKDIR/documentation/hugo/layouts/partials/
-rm -rf $WRKDIR/documentation/generator/pages/generator
 # remove not published .markdown files
-find $WRKDIR/documentation/generator/pages -type f -name "*.markdown" -exec grep -l '^published: false$' {} + | xargs rm -f
-mkdir $WRKDIR/documentation/hugo/content
-cp -rf $WRKDIR/documentation/generator/pages/* $WRKDIR/documentation/hugo/content
+find $WRKDIR/documentation/generator/content -type f -name "*.markdown" -exec grep -l '^published: false$' {} + | xargs rm -f
+
 
 # Hugo build
 cp -rn $WRKDIR/nt-docs/* $WRKDIR/documentation/hugo/
