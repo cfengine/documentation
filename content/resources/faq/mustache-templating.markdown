@@ -36,11 +36,11 @@ This template should not be passed a data container; it uses the `datastate()`
 of the CFEngine system. That's where `classes.enterprise` and
 `vars.sys.cf_version` came from.
 
-{% raw %}
+
 ```
 Version: CFEngine {{#classes.enterprise}}Enterprise{{/classes.enterprise}} {{vars.sys.cf_version}}
 ```
-{% endraw %}
+
 
 ## How do I render a section only if a given class is not defined?
 
@@ -54,11 +54,11 @@ This template should not be passed a data container; it uses the `datastate()`
 of the CFEngine system. That's where `classes.cfengine_enterprise` and
 `vars.sys.cf_version` came from.
 
-{% raw %}
+
 ```
 Version: CFEngine {{#classes.cfengine_enterprise}}Enterprise{{/classes.cfengine_enterprise}}{{^classes.cfengine_enterprise}}Community{{/classes.cfengine_enterprise}} {{vars.sys.cf_version}}
 ```
-{% endraw %}
+
 
 ## How do I use class expressions?
 
@@ -67,30 +67,30 @@ possible to use full class expressions in mustache templates. Instead, use class
 expressions inside CFEngine policy to define a singular class which can be used
 to conditionally render a block.
 
-{% raw %}
+
 [%CFEngine_include_example(mustache_classes.cf)%]
-{% endraw %}
+
 
 ## How do I iterate over a list?
 
 This template should not be passed a data container; it uses the `datastate()`
 of the CFEngine system. That's where `vars.mon.listening_tcp4_ports` came from.
 
-{% raw %}
+
 ```
 {{#vars.mon.listening_tcp4_ports}}
   * {{.}}
 {{/vars.mon.listening_tcp4_ports}}
 ```
-{% endraw %}
+
 
 ## How can I access keys when iterating over a dict?
 
 In CFEngine, the `@` symbol expands to the current key  when iterating over a dict.
 
-{% raw %}
+
 [%CFEngine_include_example(mustache_extension_expand_key.cf)%]
-{% endraw %}
+
 
 ## Can you use nested classes?
 
@@ -99,7 +99,7 @@ In this example for ssh daemon the authorized key configuration will only be add
 class `SSH_LDAP_PUBKEY_BUNDLE` is true and for the class debian/centos diffenrent
 keywords are added.
 
-{% raw %}
+
 ```
 {{#classes.SSH_LDAP_PUBKEY_BUNDLE}}
     {{#classes.debian}}
@@ -112,4 +112,4 @@ AuthorizedKeysCommandRunAs {{vars.sara_data.ssh.authorized_keys_commanduser}}
     {{/classes.centos}}
 {{/classes.SSH_LDAP_PUBKEY_BUNDLE}}
 ```
-{% endraw %}
+
