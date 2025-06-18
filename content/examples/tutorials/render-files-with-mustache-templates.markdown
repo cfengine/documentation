@@ -27,13 +27,13 @@ Allowed users <br />
  &nbsp;&nbsp;&nbsp;malin=guest
 </td>
 <td><strong>myapp.conf.template &#8211; the template:</strong>.<br />
-{% raw %}Port {{port}}{% endraw %}<br />
-{% raw %}Protocol {{protocol}}{% endraw %}<br />
-{% raw %}Filepath {{filepath}}{% endraw %}<br />
-{% raw %}Encryption {{encryption-level}}{% endraw %}<br />
-{% raw %}Loglevel {{loglevel}}{% endraw %}<br />
-{% raw %}Allowed users {{#users}}{% endraw %}<br />
-{% raw %} {{user}}={{level}}{{/users}}{% endraw %}
+Port {{port}}<br />
+Protocol {{protocol}}<br />
+Filepath {{filepath}}<br />
+Encryption {{encryption-level}}<br />
+Loglevel {{loglevel}}<br />
+Allowed users {{#users}}<br />
+ {{user}}={{level}}{{/users}}
 </td>
 </tr>
 </table>
@@ -44,7 +44,7 @@ Create a file called `/tmp/myapp.conf.template` with the following content:
 
 ```
 [file=myapp.conf.template]
-{% raw %}
+
 Port {{port}}
 Protocol {{protocol}}
 Filepath {{filepath}}
@@ -52,7 +52,7 @@ Encryption {{encryption-level}}
 Loglevel {{loglevel}}
 Allowed users {{#users}}
   {{user}}={{level}}{{/users}}
-{% endraw %}
+
 ```
 
 2. Create CFEngine policy
