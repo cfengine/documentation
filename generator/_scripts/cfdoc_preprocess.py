@@ -35,82 +35,18 @@ import cfdoc_shortcodes_resolver as shortcodes_resolver
 import cfdoc_images_path_resolver as images_path_resolver
 import sys
 import os
-import traceback
 
 config = environment.validate(sys.argv[1])
 qa.initialize(config)
 
-try:
-    metadata.run(config)
-except:
-    print("cfdoc_preprocess: Fatal error setting meta data")
-    sys.stdout.write("       Exception: ")
-    print(sys.exc_info())
-    exit(2)
-
-try:
-    linkresolver.run(config)
-except:
-    print("cfdoc_preprocess: Fatal error generating link map")
-    sys.stdout.write("       Exception: ")
-    print(sys.exc_info())
-    exit(3)
-
-try:
-    codeblock_resolver.run(config)
-except:
-    print("cfdoc_preprocess: Fatal error processing codeblocks")
-    sys.stdout.write("       Exception: ")
-    print(sys.exc_info())
-    exit(3)
-
-try:
-    macros.run(config)
-except:
-    print("cfdoc_macros: Error generating documentation from syntax maps")
-    sys.stdout.write("      Exception: ")
-    print(sys.exc_info())
-
-try:  # update the link map with content added by macros
-    linkresolver.run(config)
-except:
-    print("cfdoc_preprocess: Fatal error updating link map")
-    sys.stdout.write("       Exception: ")
-    print(sys.exc_info())
-    exit(4)
-
+metadata.run(config)
+linkresolver.run(config)
+codeblock_resolver.run(config)
+macros.run(config)
+linkresolver.run(config)
 # generate links to known targets
 linkresolver.apply(config)
-
-try:
-    patch_header_nav.patch(sys.argv[1])
-except:
-    print("cfdoc_patch_header_nav: Error patching header navigation")
-    sys.stdout.write("      Exception: ")
-    print(sys.exc_info())
-    
-try:
-    references_resolver.run(config)
-except:
-    print("cfdoc_references_resolver: Fatal error resolving references")
-    sys.stdout.write("       Exception: ")
-    traceback.print_exc()
-    exit(3)
-
-try:
-    shortcodes_resolver.run(config)
-except:
-    print("cfdoc_shortcodes_resolver: Fatal error resolving shortcodes replacement")
-    sys.stdout.write("       Exception: ")
-    print(sys.exc_info())
-    exit(3)
-
-try:
-    images_path_resolver.run(config)
-except:
-    print("images_path_resolver: Fatal error resolving images paths")
-    sys.stdout.write("       Exception: ")
-    print(sys.exc_info())
-    exit(3)
-
-exit(0)
+patch_header_nav.patch(sys.argv[1])
+references_resolver.run(config)
+shortcodes_resolver.run(config)
+images_path_resolver.run(config)
