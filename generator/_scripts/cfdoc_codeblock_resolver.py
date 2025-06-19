@@ -37,7 +37,7 @@ def transform_codeblocks(content):
 
     pattern = re.compile(
         r'^```([a-zA-Z0-9_-]+)' # language
-        r'\s*\{([^}]*)\}\s*$',  # flags
+        r'[ \t]+\{([^}]*)\}\s*$', # flags
         re.MULTILINE
     )
 
