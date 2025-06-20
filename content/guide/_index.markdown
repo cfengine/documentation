@@ -35,7 +35,7 @@ See also:
 
 ## Install it
 
-[%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
+[%CFEngine_include_markdown(install-bootstrap-configure-summary.include.markdown)%]
 
 See [Installation][Installation] for a more detailed guide on how to get
 CFEngine up and running for various environments.

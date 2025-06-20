@@ -91,7 +91,7 @@ commands:
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+[%CFEngine_include_markdown(common-attributes.include.markdown)%]
 
 ### process_count
 

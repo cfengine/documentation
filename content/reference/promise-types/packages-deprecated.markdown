@@ -232,7 +232,7 @@ does not come with package bodies for that platform.
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+[%CFEngine_include_markdown(common-attributes.include.markdown)%]
 
 ### package_architectures
 
