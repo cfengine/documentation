@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 ### Common attributes
 
 Common attributes are available to all promise types. Full details for common

@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 #### Common body attributes
 
 Common body attributes are available to all body types. Full details for common
