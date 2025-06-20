@@ -71,7 +71,7 @@ R: found class: report_not_repaired
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+[%CFEngine_include_markdown(common-attributes.include.markdown)%]
 
 ### friend_pattern
 

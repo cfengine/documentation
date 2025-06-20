@@ -316,7 +316,7 @@ alter such a socket. This is a known issue, documented in
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+[%CFEngine_include_markdown(common-attributes.include.markdown)%]
 
 ### acl
 

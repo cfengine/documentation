@@ -18,7 +18,9 @@ cp -r $WRKDIR/documentation/generator/_includes/lts_versions_list.html $WRKDIR/d
 cp -rf $WRKDIR/documentation/generator/_includes/versions_list.html $WRKDIR/documentation/hugo/static/
 cp -rf $WRKDIR/documentation/generator/_includes/header_nav_options.html $WRKDIR/documentation/hugo/layouts/partials/
 # remove not published .markdown files
-find $WRKDIR/documentation/generator/content -type f -name "*.markdown" -exec grep -l '^published: false$' {} + | xargs rm -f
+find $WRKDIR/documentation/hugo/content -type f -name "*.markdown" -exec grep -l '^published: false$' {} + | xargs rm -f
+# remove .include.markdown files used in CFEngine_include_markdown function
+find $WRKDIR/documentation/hugo/content -name "*.include.markdown" -type f -delete
 
 
 # Hugo build
