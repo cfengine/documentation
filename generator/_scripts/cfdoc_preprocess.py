@@ -25,74 +25,26 @@
 import cfdoc_environment as environment
 import cfdoc_metadata as metadata
 import cfdoc_linkresolver as linkresolver
-import cfdoc_codeblock_resolver as codeblock_resolver
 import cfdoc_macros as macros
-import cfdoc_printsource as printsource
 import cfdoc_git as git
 import cfdoc_qa as qa
 import cfdoc_patch_header_nav as patch_header_nav
+import cfdoc_references_resolver as references_resolver
+import cfdoc_shortcodes_resolver as shortcodes_resolver
+import cfdoc_images_path_resolver as images_path_resolver
 import sys
 import os
 
 config = environment.validate(sys.argv[1])
 qa.initialize(config)
 
-try:
-    metadata.run(config)
-except:
-    print("cfdoc_preprocess: Fatal error setting meta data")
-    sys.stdout.write("       Exception: ")
-    print(sys.exc_info())
-    exit(2)
-
-try:
-    linkresolver.run(config)
-except:
-    print("cfdoc_preprocess: Fatal error generating link map")
-    sys.stdout.write("       Exception: ")
-    print(sys.exc_info())
-    exit(3)
-
-try:
-    codeblock_resolver.run(config)
-except:
-    print("cfdoc_preprocess: Fatal error processing codeblocks")
-    sys.stdout.write("       Exception: ")
-    print(sys.exc_info())
-    exit(3)
-
-try:
-    macros.run(config)
-except:
-    print("cfdoc_macros: Error generating documentation from syntax maps")
-    sys.stdout.write("      Exception: ")
-    print(sys.exc_info())
-
-try:  # update the link map with content added by macros
-    linkresolver.run(config)
-except:
-    print("cfdoc_preprocess: Fatal error updating link map")
-    sys.stdout.write("       Exception: ")
-    print(sys.exc_info())
-    exit(4)
-
+metadata.run(config)
+linkresolver.run(config)
+macros.run(config)
+linkresolver.run(config)
 # generate links to known targets
 linkresolver.apply(config)
-
-# create printable sources from completely pre-processed markdown
-
-try:
-    printsource.run(config)
-except:
-    print("cfdoc_printsource: Error generating print-pages")
-    sys.stdout.write("      Exception: ")
-    print(sys.exc_info())
-
-try:
-    patch_header_nav.patch(sys.argv[1])
-except:
-    print("cfdoc_patch_header_nav: Error patching header navigation")
-    sys.stdout.write("      Exception: ")
-    print(sys.exc_info())
-
-exit(0)
+patch_header_nav.patch(sys.argv[1])
+references_resolver.run(config)
+shortcodes_resolver.run(config)
+images_path_resolver.run(config)

@@ -12,9 +12,11 @@ RUN chown -R jenkins:jenkins /home/jenkins
 
 # Run rest of setup as jenkins user
 COPY install.sh /
+COPY install_hugo.sh /
 USER jenkins
 WORKDIR /home/jenkins
 RUN bash -x /install.sh
+RUN bash /install_hugo.sh
 
 # This is where our repos will be
 WORKDIR /nt

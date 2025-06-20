@@ -158,7 +158,7 @@ For example:
 
   ./_scripts/cfdoc_preprocess.py master || exit 4
 
-  bash -x ./_scripts/_run_jekyll.sh master || exit 5
+  bash -x ./_scripts/_run.sh master || exit 5
 #+END_SRC
 
 
@@ -174,7 +174,7 @@ Once the syntax map has been regenerated [[https://github.com/cfengine/documenta
 (whatever that means), resolving links, expanding our custom macros and creating
 printable (dead trees) versions of the documentation.
 
-After pre-processing is complete [[https://github.com/cfengine/documentation/blob/master/generator/_scripts/_run_jekyll.sh][_run_jekyll.sh]] performs the =jekyll= build,
+After pre-processing is complete [[https://github.com/cfengine/documentation/blob/master/generator/_scripts/_run.sh][_run.sh]] performs the =jekyll= build,
 post processes the build with [[https://github.com/cfengine/documentation/blob/master/generator/_scripts/cfdoc_postprocess.py][cfdoc_postprocess.py]]
 
 *** Publishing

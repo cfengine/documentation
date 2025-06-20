@@ -34,7 +34,7 @@ bash -x ./_regenerate_json.sh
 ./_scripts/cfdoc_preprocess.py master
 
 # Build docs
-bash -x ./_scripts/_run_jekyll.sh master
+bash -x ./_scripts/_run.sh master
 
 #strip leading slash from assets
 #in the _site directory
