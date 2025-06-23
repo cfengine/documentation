@@ -111,4 +111,3 @@ AuthorizedKeysCommandRunAs {{vars.sara_data.ssh.authorized_keys_commanduser}}
     {{/classes.centos}}
 {{/classes.SSH_LDAP_PUBKEY_BUNDLE}}
 ```
-

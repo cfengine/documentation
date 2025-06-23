@@ -51,7 +51,6 @@ Encryption {{encryption-level}}
 Loglevel {{loglevel}}
 Allowed users {{#users}}
   {{user}}={{level}}{{/users}}
-
 ```
 
 2. Create CFEngine policy
