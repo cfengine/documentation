@@ -31,6 +31,7 @@ npm run build:all
 
 cd $WRKDIR/documentation/generator
 cp -rf $WRKDIR/documentation/hugo/scripts/search/index/searchIndex $WRKDIR/documentation/generator/_site/assets/
+cp -f $WRKDIR/documentation/redirects.conf $WRKDIR/documentation/generator/_site/
 
 $WRKDIR/documentation/generator/_scripts/cfdoc_postprocess.py "$@"
 if [ "$?" -gt "0" ]; then
