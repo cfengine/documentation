@@ -757,6 +757,10 @@ def include_snippet(parameters, config):
                 markdown_lines.append(line)
 
     if not len(markdown_lines):
+        print("Did not find expected content in %s" % filename)
+        print("Full content of file:")
+        for line in lines:
+            print(line, end="")
         raise Exception("Snippet not found: %s" % begin.pattern)
         return list()
 
