@@ -97,6 +97,7 @@ done
 ) | while read agent
 do
     dumpHelp ${agent} > ${OUTDIR}/${agent}.help
+    echo "Dumped help output for ${agent} to ${OUTDIR}/${agent}.help"
 done
 
 # Here we execute and store some command output so that examples can always be up to date.
