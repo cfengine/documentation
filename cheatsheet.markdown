@@ -511,7 +511,7 @@ Sometimes it's nice to include a snippet from another file. For example, we dyna
 
 `[%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]`
 
-[%CFEngine_include_snippet(cf-promises.help, [\s]\*--[a-z], ^$)%]
+[%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]
 
 ---
 
