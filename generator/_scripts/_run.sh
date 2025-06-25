@@ -30,7 +30,9 @@ npm ci
 npm run build:all
 
 cd $WRKDIR/documentation/generator
-cp -rf $WRKDIR/documentation/hugo/scripts/search/index/searchIndex $WRKDIR/documentation/generator/_site/assets/
+mkdir -p $WRKDIR/documentation/generator/_site/assets/searchIndex
+cp -rf $WRKDIR/documentation/hugo/scripts/search/index/searchIndex/* $WRKDIR/documentation/generator/_site/assets/searchIndex
+cp -rf $WRKDIR/documentation/hugo/scripts/search/index/documents $WRKDIR/documentation/generator/_site/assets/searchIndex/documents
 cp -f $WRKDIR/documentation/redirects.conf $WRKDIR/documentation/generator/_site/
 
 $WRKDIR/documentation/generator/_scripts/cfdoc_postprocess.py "$@"
