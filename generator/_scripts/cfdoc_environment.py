@@ -42,9 +42,9 @@ def validate(branch):
     if not os.path.exists(config["project_directory"]):
         print("Directory 'documentation/generator' not found in WORKDIR")
 
-    config["markdown_directory"] = config["WORKDIR"] + "/documentation"
+    config["markdown_directory"] = config["WORKDIR"] + "/documentation/content"
     if not os.path.exists(config["markdown_directory"]):
-        print("Directory 'documentation' not found in WORKDIR")
+        print("Directory 'documentation/content' not found in WORKDIR")
 
     version = branch
 
@@ -52,7 +52,7 @@ def validate(branch):
     config["include_directories"].append(config["WORKDIR"])
     config["include_directories"].append(config["WORKDIR"] + "/core/examples")
     config["include_directories"].append(
-        config["WORKDIR"] + "/documentation/examples/example-snippets"
+        config["WORKDIR"] + "/documentation/content/examples/example-snippets"
     )
     config["include_directories"].append(
         config["WORKDIR"] + "/documentation/generator/_generated"

@@ -1,0 +1,42 @@
+name: Hugo version update
+
+on:
+  schedule:
+    - cron: "0 0 * * 0" #perform every sunday's night
+  workflow_dispatch:    
+
+jobs:
+  update_hugo_version:
+    if: github.repository_owner == 'cfengine' || github.repository_owner == 'mendersoftware' || github.repository_owner == 'NorthernTechHQ'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+    - uses: actions/checkout@v4
+    - name: Fetch latest Hugo release info
+      id: fetch_hugo_version
+      run: |
+        release_info=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest)
+        version=$(echo "$release_info" | jq -r '.tag_name' | sed 's/v//')
+        # download checksums and find checksum of hugo_${version}_Linux-64bit.tar.gz
+        checksum=$( curl -sSL https://github.com/gohugoio/hugo/releases/download/v${version}/hugo_${version}_checksums.txt | grep hugo_${version}_Linux-64bit.tar.gz |  grep -oE "[a-z0-9]{64}")
+        echo "version=$version" >> $GITHUB_OUTPUT
+        echo "checksum=$checksum" >> $GITHUB_OUTPUT
+       
+    - name: Update install_hugo.sh
+      run: |
+        sed -i "s|https://github.com/gohugoio/hugo/releases/download/v.*_Linux-64bit.tar.gz|https://github.com/gohugoio/hugo/releases/download/v${{ steps.fetch_hugo_version.outputs.version }}/hugo_${{ steps.fetch_hugo_version.outputs.version }}_Linux-64bit.tar.gz|" generator/build/install_hugo.sh
+        sed -i "s/.*sha256sum.*/RUN echo \"${{ steps.fetch_hugo_version.outputs.checksum }}  hugo.tar.gz\" | sha256sum -c/" generator/build/install_hugo.sh
+    - name: Create Pull Request
+      uses: cfengine/create-pull-request@v7
+      with:
+        commit-message: Upgraded Hugo version to ${{ steps.fetch_hugo_version.outputs.version }}
+        title: Upgraded Hugo version to ${{ steps.fetch_hugo_version.outputs.version }}
+        body: |
+          This PR updates the version of Hugo used in the generator/build/install_hugo.sh to ${{ steps.fetch_hugo_version.outputs.version }}.
+        reviewers: |
+          aleksandrychev
+
+        branch: hugo-version-update-${{ steps.fetch_hugo_version.outputs.version }}
+        sign-commits: true

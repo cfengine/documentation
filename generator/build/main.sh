@@ -94,6 +94,9 @@ sudo chmod -R a+rX "$WRKDIR"/masterfiles
 # write current branch into the config.yml
 echo "branch: $BRANCH" >> "$WRKDIR"/documentation/generator/_config.yml
 
+# replace %branch% placeholder with actual branch name
+sed -i "s/%branch%/$BRANCH/g" "$WRKDIR"/documentation/hugo/config.toml
+
 # Generate syntax data
 ./_regenerate_json.sh || exit 4
 
@@ -104,25 +107,7 @@ echo "branch: $BRANCH" >> "$WRKDIR"/documentation/generator/_config.yml
 # so instead of set -x we just echo each command ourselves
 set +x
 
-# since May 14 2019, we need this to run jekyll. IDK why.
-echo "+ source ~/.rvm/scripts/rvm"
-# shellcheck disable=SC1090
-source ~/.rvm/scripts/rvm
-echo "+ rvm --default use 1.9.3-p551"
-rvm --default use 1.9.3-p551
-echo "+ source ~/.profile"
-ls -lah ~
-# shellcheck disable=SC1090
-test -f ~/.profile && source ~/.profile
-echo "+ source ~/.rvm/scripts/rvm"
-# shellcheck disable=SC1090
-source ~/.rvm/scripts/rvm
-
 export LC_ALL=C.UTF-8
-
-# finally, run actual jekyll
-echo "+ bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6"
-bash -x ./_scripts/_run_jekyll.sh "$BRANCH" || exit 6
-
-cd "$WRKDIR"/documentation/generator
-npm run build
+bash ./build/install_hugo.sh
+echo "+ bash -x ./_scripts/_run.sh $BRANCH || exit 6"
+bash -x ./_scripts/_run.sh "$BRANCH" || exit 6
