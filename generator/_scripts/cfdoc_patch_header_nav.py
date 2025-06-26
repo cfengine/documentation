@@ -54,7 +54,7 @@ def patch(current_branch):
         for branch in data["docs"]:
             print(
                 '<li><a href="%s">%s</a></li>'
-                % (branch["Link"], branch["Title"].replace("Version ", "")),
+                % ("../../.." + branch["Link"], branch["Title"].replace("Version ", "")),
                 file=f,
             )
     with open("_includes/lts_versions_list.html", "w") as f:
@@ -63,7 +63,7 @@ def patch(current_branch):
                 print(
                     '<li><a href="%s">%s</a></li>'
                     % (
-                        branch["Link"],
+                        "../.." + branch["Link"],
                         branch["Title"].replace("Version ", "CFEngine "),
                     ),
                     file=f,
