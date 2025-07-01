@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "parseintarray"
+title: parseintarray
 ---
 
 **Prototype:** `parseintarray(array, input, comment, split, maxentries, maxbytes)`<br>

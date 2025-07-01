@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "readrealarray"
+title: readrealarray
 ---
 
 **Prototype:** `readrealarray(array, filename, comment, split, maxentries, maxbytes)`<br>

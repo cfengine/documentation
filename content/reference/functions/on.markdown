@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "on"
+title: on
 ---
 
 [%CFEngine_function_prototype(year, month, day, hour, minute, second)%]

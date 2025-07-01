@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "readintarray"
+title: readintarray
 ---
 
 **Prototype:** `readintarray(array, filename, comment, split, maxentries, maxbytes)`<br>
