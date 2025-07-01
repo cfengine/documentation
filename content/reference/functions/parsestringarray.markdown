@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "parsestringarray"
+title: parsestringarray
 ---
 
 **Prototype:** `parsestringarray(array, input, comment, split, maxentries, maxbytes)`<br>

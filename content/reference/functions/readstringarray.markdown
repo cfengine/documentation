@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "readstringarray"
+title: readstringarray
 ---
 
 **Prototype:** `readstringarray(array, filename, comment, split, maxentries, maxbytes)`

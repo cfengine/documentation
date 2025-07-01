@@ -41,4 +41,4 @@ Output:
 
 **History:** Was introduced in version 3.8.0 (2015)
 
-**See also:** `data_regextract()` `regextract()`
+**See also:** `data_regextract()`, `regextract()`
