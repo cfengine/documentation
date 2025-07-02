@@ -1,7 +1,6 @@
 ---
 layout: default
 title: getacls
-published: true
 ---
 
 [%CFEngine_function_prototype(path, type)%]
