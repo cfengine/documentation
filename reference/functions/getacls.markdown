@@ -35,9 +35,9 @@ bundle agent __main__
 {
   vars:
     "default_acls"
-      string => getacls("/tmp/foo/", "default");
+      slist => getacls("/tmp/foo/", "default");
     "access_acls"
-      string => getacls("/tmp/bar", "access");
+      slist => getacls("/tmp/bar", "access");
 }
 ```
 
