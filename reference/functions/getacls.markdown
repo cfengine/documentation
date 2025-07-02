@@ -43,6 +43,6 @@ bundle agent __main__
 
 **History:**
 
-- Introduced in 3.27.
+- Introduced in 3.27.0
 
 **See also:** `filestat()`
