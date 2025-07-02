@@ -9,14 +9,14 @@ published: true
 **Description:** Return the Access Control List (ACL) for a given file- or directory path.
 
 This function returns the ACLs for a file or directory given by the `path`
-argument. The `type` argument indicates whether to get the __access__ or
-__default__ ACLs.
+argument. The `type` argument indicates whether to get the _access_ or
+_default_ ACLs.
 
-The __access__ ACLs defines the permissions for the given file or directory.
+The _access_ ACLs defines the permissions for the given file or directory.
 I.e., who (users, groups, others) can perform what actions (read, write,
 execute) on that particular object.
 
-The __default__ ACLs acts like a template of permissions to be inherited by
+The _default_ ACLs acts like a template of permissions to be inherited by
 objects created within that directory. Please note that only directories can
 have default ACLs.
 
