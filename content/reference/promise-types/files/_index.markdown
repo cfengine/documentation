@@ -2749,6 +2749,59 @@ separator, since the backward slash has a special meaning in a regular
 expression. Literal paths may also use backslash (`\`) as a path
 separator.
 
+### fsattrs
+
+**Description:** Manage file system attributes
+
+**Type** `body fsattrs`
+
+**See also:** [Common body attributes][Promise types#Common body attributes]
+
+**Notes:**
+File system attributes are not supported on all file systems and platforms.
+Hence, CFEngine will do it on a best effort basis (without any guarantees).
+
+**History:**
+* Added in CFEngine 3.27.0
+
+#### immutable
+
+**Description:** Set / clear immutable file system attribute
+
+**Type:** [`boolean`][boolean]
+
+**Example:**
+
+```cf3
+body fsattrs set_immutable
+{
+  immutable => "true";
+}
+```
+
+**Notes:**
+Currently only regular files are supported when configuring the immutable bit.
+Furthermore, this will only work on Linux or BSD based systems with filesystems
+that support it. CFEngine will simply ignore the immutable constraint if it's
+not supported and instead log a verbose message (to avoid too much noise).
+
+- If the immutable constraint is set to `"true"` and the promised file:
+    - **is not** immutable; then the agent will perform all other actions promised
+      before setting the immutable bit.
+    - **is** immutable; then the agent will temporarily clear the immutable bit.
+      The agent will do its best to keep the period of the temporarily cleared bit
+      as short as possible. The immutable bit may be temporarily cleared multiple
+      times during a files promise.
+- If the immutable constraint set to `"false"` and the promised file **is**
+  immutable; then the immutable bit is cleared before performing any other
+  actions promised.
+- If the immutable constraint is unspecified and the promised file **is**
+  immutable; then the agent will fail to do any modifications on the file.
+
+**History:**
+
+* Added in CFEngine 3.27.0
+
 ### perms
 
 **Type:** `body perms`
