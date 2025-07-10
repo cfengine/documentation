@@ -5,6 +5,9 @@ TODO:
 - [ ] provide a way of specifying refs in other repos, like a coordinated multi-pr build
 */
 properties([buildDiscarder(logRotator(numToKeepStr: '3'))])
+
+// clean workspace on Success (specify all the OTHER cases as false)
+cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, cleanWhenUnstable: false
 node('CONTAINERS') {
   dir('documentation') {
     checkout scm
