@@ -7,7 +7,7 @@ TODO:
 properties([buildDiscarder(logRotator(numToKeepStr: '3'))])
 
 // clean workspace on Success (specify all the OTHER cases as false)
-cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, cleanWhenUnstable: false
+
 node('CONTAINERS') {
   dir('documentation') {
     checkout scm
@@ -41,5 +41,8 @@ node('CONTAINERS') {
         // hard code for now, won't actually publish yet so not too big of a deal
         sh 'bash -x documentation/generator/build/run.sh'
     }
+}
+stage('Clean workspace on Success') {
+  cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, cleanWhenUnstable: false
 }
 }
