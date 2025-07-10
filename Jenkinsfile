@@ -31,7 +31,7 @@ node('CONTAINERS') {
         sh 'cd documentation; git log --oneline | head -n1'
     }
     stage('Build') {
-        sh 'bash -x documentation/generator/build/run.sh'
-// need env BRANCH=$DOCS_BRANCH
+        // hard code for now, won't actually publish yet so not too big of a deal
+        sh 'BRANCH=master bash -x documentation/generator/build/run.sh'
     }
 }
