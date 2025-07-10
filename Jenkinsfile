@@ -35,6 +35,11 @@ node('CONTAINERS') {
     }
     stage('Build') {
         // hard code for now, won't actually publish yet so not too big of a deal
-        sh 'BRANCH=master bash -x documentation/generator/build/run.sh'
+        withEnv([
+'BRANCH=master',
+'PACKAGE_JOB=testing-pr'
+]) {
+        sh 'bash -x documentation/generator/build/run.sh'
     }
+}
 }
