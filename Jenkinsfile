@@ -4,22 +4,24 @@ def cfengine_repos = ['core', 'enterprise', 'nova', 'masterfiles']
 TODO:
 - [ ] provide a way of specifying refs in other repos, like a coordinated multi-pr build
 */
-pipeline {
+node('CONTAINERS') {
   options { buildDiscarder(logRotator(numToKeepStr: '3')) }
-  agent {
-    label 'CONTAINERS'
-  }
 
-  stages {
     stage('Checkout repositories') {
       steps {
         script {
           // Note that stages created this way are NOT available for "Restart from Stage" in jenkins UI
           cfengine_repos.each { repo ->
             stage("Checkout ${repo}") {
-              git branch: "master",
-              credentialsId: 'autobuild',
-              url: "git@github.com:cfengine/${repo}"
+              steps {
+                sh "mkdir -p ${repo}"
+                dir ("${repo}")
+                {
+                  git branch: "master",
+                  credentialsId: 'autobuild',
+                  url: "git@github.com:cfengine/${repo}"
+                }
+              }
             }
           }
         }
@@ -39,5 +41,4 @@ pipeline {
 // need env BRANCH=$DOCS_BRANCH
       }
     }
-  }
 }
