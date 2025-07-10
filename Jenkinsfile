@@ -13,7 +13,7 @@ pipeline {
             stage("Checkout ${repo}") {
               git branch: "master",
               credentialsId: 'autobuild',
-              url: 'git@github.com:cfengine/${repo}'
+              url: "git@github.com:cfengine/${repo}"
             }
           }
         }
