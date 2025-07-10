@@ -35,7 +35,8 @@ node('CONTAINERS') {
     }
         withEnv([
 'BRANCH=master',
-'PACKAGE_JOB=testing-pr'
+'PACKAGE_JOB=testing-pr',
+'PACKAGE_UPLOAD_DIRECTORY=junk-craig-test',
 ]) {
     stage('Build') {
         // hard code for now, won't actually publish yet so not too big of a deal
