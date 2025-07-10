@@ -6,6 +6,8 @@ TODO:
 */
 pipeline {
   options { buildDiscarder(logRotator(numToKeepStr: '3')) }
+  stages {}
+  agent any
 }
 node('CONTAINERS') {
   dir('documentation') {
