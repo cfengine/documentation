@@ -1,5 +1,7 @@
 pipeline {
-  agent any
+  agent {
+    label 'CONTAINERS'
+  }
 
   stages {
     stage('Checkout core') {
