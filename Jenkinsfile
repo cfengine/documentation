@@ -25,20 +25,16 @@ node('CONTAINERS') {
 
     stage('Checkout repositories') {
           // Note that stages created this way are NOT available for "Restart from Stage" in jenkins UI
-repos.each {
-  org, org_repos -> {
-    println("organization is ${org}")
-    org_repos.each { 
-      repo -> {
-        stage("Checkout ${repo}") {
-          sh "mkdir -p ${repo}"
-          dir ("${repo}")
-          {
-            git branch: "master",
-            credentialsId: 'autobuild',
-            url: "git@github.com:${org}/${repo}"
-          }
-        }
+repos.each { org ->
+  println("organization is ${org.key}")
+  org.value.each {  repo ->
+    stage("Checkout ${repo}") {
+      sh "mkdir -p ${repo}"
+      dir ("${repo}")
+      {
+        git branch: "master",
+        credentialsId: 'autobuild',
+        url: "git@github.com:${org.key}/${repo}"
       }
     }
   }
