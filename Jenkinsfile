@@ -6,12 +6,16 @@ pipeline {
   }
 
   stages {
-    script {
-      cfengine_repos.each { repo ->
-        stage("Checkout ${repo}") {
-          git branch: "master",
-          credentialsId: 'autobuild',
-          url: 'git@github.com:cfengine/${repo}'
+    stage('Checkout repositories') {
+      steps {
+        script {
+          cfengine_repos.each { repo ->
+            stage("Checkout ${repo}") {
+              git branch: "master",
+              credentialsId: 'autobuild',
+              url: 'git@github.com:cfengine/${repo}'
+            }
+          }
         }
       }
     }
