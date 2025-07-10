@@ -33,12 +33,12 @@ node('CONTAINERS') {
         sh 'ls -la'
         sh 'cd documentation; git log --oneline | head -n1'
     }
-    stage('Build') {
-        // hard code for now, won't actually publish yet so not too big of a deal
         withEnv([
 'BRANCH=master',
 'PACKAGE_JOB=testing-pr'
 ]) {
+    stage('Build') {
+        // hard code for now, won't actually publish yet so not too big of a deal
         sh 'bash -x documentation/generator/build/run.sh'
     }
 }
