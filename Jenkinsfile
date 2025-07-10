@@ -1,3 +1,4 @@
+def cfengine_repos = ['core', 'enterprise', 'nova', 'masterfiles']
 pipeline {
   options { buildDiscarder(logRotator(numToKeepStr: '3')) }
   agent {
@@ -5,25 +6,12 @@ pipeline {
   }
 
   stages {
-    stage('Checkout core') {
-      steps {
-        sh 'mkdir -p core'
-        dir('core')
-        {
+    script {
+      cfengine_repos.each { repo ->
+        stage("Checkout ${repo}") {
           git branch: "master",
           credentialsId: 'autobuild',
-          url: 'git@github.com:cfengine/core'
-        }
-      }
-    }
-    stage('Checkout nova') {
-      steps {
-        sh 'mkdir -p nova'
-        dir('nova')
-        {
-          git branch: "master",
-          credentialsId: 'autobuild',
-          url: 'git@github.com:cfengine/nova'
+          url: 'git@github.com:cfengine/${repo}'
         }
       }
     }
