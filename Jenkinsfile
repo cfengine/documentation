@@ -29,7 +29,7 @@ pipeline {
       steps {
         sh 'pwd'
         sh 'whoami'
-        sh 'ls -la documentation'
+        sh 'ls -la'
         sh 'cd documentation; git log --oneline | head -n1'
       }
     }
