@@ -5,6 +5,9 @@ TODO:
 - [ ] provide a way of specifying refs in other repos, like a coordinated multi-pr build
 */
 node('CONTAINERS') {
+  dir('documentation') {
+    checkout scm
+  }
   options { buildDiscarder(logRotator(numToKeepStr: '3')) }
 
     stage('Checkout repositories') {
