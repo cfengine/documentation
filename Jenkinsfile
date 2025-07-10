@@ -30,19 +30,20 @@ repos.each {
     println("organization is ${org}")
     org_repos.each { 
       repo -> {
-            stage("Checkout ${repo}") {
-                sh "mkdir -p ${repo}"
-                dir ("${repo}")
-                {
-                  git branch: "master",
-                  credentialsId: 'autobuild',
-                  url: "git@github.com:${org}/${repo}"
-                }
-            }
+        stage("Checkout ${repo}") {
+          sh "mkdir -p ${repo}"
+          dir ("${repo}")
+          {
+            git branch: "master",
+            credentialsId: 'autobuild',
+            url: "git@github.com:${org}/${repo}"
+          }
+        }
       }
     }
-} }
+  }
 }
+} // for the stage
     stage('See what cloned') {
         sh 'pwd'
         sh 'whoami'
