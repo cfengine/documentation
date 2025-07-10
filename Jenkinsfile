@@ -36,7 +36,7 @@ node('CONTAINERS') {
         withEnv([
 'BRANCH=master',
 'PACKAGE_JOB=testing-pr',
-'PACKAGE_UPLOAD_DIRECTORY=junk-craig-test',
+'PACKAGE_UPLOAD_DIRECTORY=jenkins-master-nightly-pipeline-152',
 'PACKAGE_BUILD=1',
 ]) {
     stage('Build') {
