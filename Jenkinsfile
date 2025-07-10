@@ -1,4 +1,14 @@
-def cfengine_repos = ['core', 'enterprise', 'nova', 'masterfiles']
+def repos = [
+  'cfengine': [
+    'core',
+'enterprise',
+'nova',
+'masterfiles'
+  ],
+  'NorthernTechHQ': [
+'nt-docs',
+  ]
+]
 
 /* comments OK?
 TODO:
@@ -15,18 +25,24 @@ node('CONTAINERS') {
 
     stage('Checkout repositories') {
           // Note that stages created this way are NOT available for "Restart from Stage" in jenkins UI
-          cfengine_repos.each { repo ->
+repos.each {
+  org, org_repos -> {
+    println("organization is ${org}")
+    org_repos.each { 
+      repo -> {
             stage("Checkout ${repo}") {
                 sh "mkdir -p ${repo}"
                 dir ("${repo}")
                 {
                   git branch: "master",
                   credentialsId: 'autobuild',
-                  url: "git@github.com:cfengine/${repo}"
+                  url: "git@github.com:${org}/${repo}"
                 }
             }
       }
     }
+} }
+}
     stage('See what cloned') {
         sh 'pwd'
         sh 'whoami'
@@ -42,7 +58,6 @@ node('CONTAINERS') {
     stage('Build') {
         // hard code for now, won't actually publish yet so not too big of a deal
         sh 'bash -x documentation/generator/build/run.sh'
-        archiveArtifacts artifacts: 'output/', fingerprint: true
     }
 }
 stage('Clean workspace on Success') {
