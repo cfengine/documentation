@@ -14,7 +14,6 @@ node('CONTAINERS') {
           // Note that stages created this way are NOT available for "Restart from Stage" in jenkins UI
           cfengine_repos.each { repo ->
             stage("Checkout ${repo}") {
-              steps {
                 sh "mkdir -p ${repo}"
                 dir ("${repo}")
                 {
@@ -22,7 +21,6 @@ node('CONTAINERS') {
                   credentialsId: 'autobuild',
                   url: "git@github.com:cfengine/${repo}"
                 }
-              }
             }
       }
     }
