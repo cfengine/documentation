@@ -4,7 +4,7 @@ def cfengine_repos = ['core', 'enterprise', 'nova', 'masterfiles']
 TODO:
 - [ ] provide a way of specifying refs in other repos, like a coordinated multi-pr build
 */
-properties([buildBlocker(blockLevel: <object of type hudson.plugins.buildblocker.BuildBlockerProperty.BlockLevel>, blockingJobs: '', scanQueueFor: <object of type hudson.plugins.buildblocker.BuildBlockerProperty.QueueScanScope>, useBuildBlocker: false), buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')), [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false]])
+properties([buildDiscarder(logRotator(numToKeepStr: '3'))])
 node('CONTAINERS') {
   dir('documentation') {
     checkout scm
