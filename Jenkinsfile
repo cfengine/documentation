@@ -6,7 +6,7 @@ def repos = [
 'masterfiles'
   ],
   'NorthernTechHQ': [
-'nt-docs',
+['nt-docs': 'main'],
   ]
 ]
 
@@ -27,14 +27,19 @@ node('CONTAINERS') {
           // Note that stages created this way are NOT available for "Restart from Stage" in jenkins UI
 repos.each { org ->
   println("organization is ${org.key}")
-  org.value.each {  repo ->
-    stage("Checkout ${repo}") {
-      sh "mkdir -p ${repo}"
-      dir ("${repo}")
-      {
-        git branch: "master",
-        credentialsId: 'autobuild',
-        url: "git@github.com:${org.key}/${repo}"
+  org.value.each {  repo_data ->
+    if (!(repo_data instanceof Map)) {
+      repo_data=["${repo_data}": "master"]
+    }
+    repo_data.each{ repo, branch ->
+      stage("Checkout ${repo}") {
+        sh "mkdir -p ${repo}"
+        dir ("${repo}")
+        {
+          git branch: "${branch}",
+          credentialsId: 'autobuild',
+          url: "git@github.com:${org.key}/${repo}"
+        }
       }
     }
   }
