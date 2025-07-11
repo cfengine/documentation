@@ -17,7 +17,7 @@ TODO:
 - [ ] provide a way of specifying refs in other repos, like a coordinated multi-pr build
 */
 properties([
-  buildDiscarder(logRotator(daysToKeepStr: '10'))
+  buildDiscarder(logRotator(daysToKeepStr: '10')),
   parameters([
     string(name: 'CORE_REV', defaultValue: 'master'),
     string(name: 'NOVA_REV', defaultValue: 'master'),
