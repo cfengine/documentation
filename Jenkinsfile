@@ -10,11 +10,26 @@ def repos = [
   ]
 ]
 
+rev_ref_description="Use NUMBER or 'pull/NUMBER/merge' for pull request (it's merged version, THIS DOESN'T MERGE THE PR) or 'pull/NUMBER/head' to run the tests on the non-merged code. Special syntax 'tag:SOME_TAG' can be used to use a tag as a revision."
+
 /* comments OK?
 TODO:
 - [ ] provide a way of specifying refs in other repos, like a coordinated multi-pr build
 */
-properties([buildDiscarder(logRotator(numToKeepStr: '3'))])
+properties([
+  buildDiscarder(logRotator(daysToKeepStr: '10'))
+  parameters([
+    string(name: 'CORE_REV', defaultValue: 'master'),
+    string(name: 'NOVA_REV', defaultValue: 'master'),
+    string(name: 'ENTERPRISE_REV', defaultValue: 'master'),
+    string(name: 'MASTERFILES_REV', defaultValue: 'master'),
+    string(name: 'DOCS_REV', defaultValue: 'master'),
+    string(name: 'DOCS_BRANCH', defaultValue: 'master', description: 'Where to upload artifacts - to http://buildcache.cloud.cfengine.com/packages/build-documentation-$DOCS_BRANCH/ and https://docs.cfengine.com/docs/$DOCS_BRANCH/'),
+    string(name: 'PACKAGE_JOB', defaultValue: 'testing-pr', description: 'where to take CFEngine HUB package from, a dir at http://buildcache.cloud.cfengine.com/packages/'),
+    string(name: 'USE_NIGHTLIES_FOR', defaultValue: 'master', description: 'branch whose nightlies to use (master, 3.18.x, etc) - will be one of http://buildcache.cloud.cfengine.com/packages/testing-pr/jenkins-$USE_NIGHTLIES_FOR-nightly-pipeline-$NUMBER/'),
+    string(name: 'NT_DOCS_REV', defaultValue: 'main', description: "${rev_ref_description}")
+  ])
+])
 
 // clean workspace on Success (specify all the OTHER cases as false)
 
