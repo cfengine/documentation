@@ -60,6 +60,7 @@ repos.each { org ->
     stage('Build') {
         // hard code for now, won't actually publish yet so not too big of a deal
         sh 'bash -x documentation/generator/build/run.sh'
+        archiveArtifacts artifacts: 'output/', fingerprint: true
     }
 }
 stage('Clean workspace on Success') {
