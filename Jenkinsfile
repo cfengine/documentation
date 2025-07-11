@@ -78,7 +78,39 @@ repos.each { org ->
         archiveArtifacts artifacts: 'output/', fingerprint: true
     }
 }
+stage('Publish') {
+  sshPublisher(publishers: [sshPublisherDesc(configName: 'buildcache.cloud.cfengine.com', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''set -x
+export WRKDIR=`pwd`
+
+mkdir -p upload
+mkdir -p output
+
+# find two tarballs
+archive=`find upload -name \'cfengine-documentation-*.tar.gz\'`
+tarball=`find upload -name packed-for-shipping.tar.gz`
+echo "TARBALL: $tarball"
+echo "ARCHIVE: $archive"
+
+# unpack $tarball
+cd `dirname $tarball`
+tar zxvf packed-for-shipping.tar.gz
+rm packed-for-shipping.tar.gz
+
+# move $archive to the _site
+mv $WRKDIR/$archive _site
+
+ls -la
+cd -
+
+ls -la upload
+
+# note: this triggers systemd job to AV-scan new files
+# and move them to proper places
+mv upload/* output
+''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: 'upload/$BUILD_TAG/build-documentation-$DOCS_BRANCH/$BUILD_TAG/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'output/')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+}
+
 stage('Clean workspace on Success') {
-  cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, cleanWhenUnstable: false
+  cleanWs()
 }
 }
