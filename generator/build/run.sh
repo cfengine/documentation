@@ -1,4 +1,8 @@
 #!/bin/bash
+# documentation/generator/build/run.sh
+# In a container, using buildah, builds the documentation site and produces two files in output/:
+# - cfengine-documentation-<branch>.tar.gz - an archive of the documentation
+# - packed-for-shipping.tgz - the actual site, unpacked to _site
 
 set -ex
 trap "echo FAILURE" ERR
