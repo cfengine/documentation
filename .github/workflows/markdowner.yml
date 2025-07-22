@@ -2,26 +2,26 @@ name: Run markdowner.py on all markdown files and see if there are changes
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   check:
     runs-on: ubuntu-24.04
     steps:
-    - name: Checks-out repository
-      uses: actions/checkout@v4
-    - name: Set up Python 3.12
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.12"
-    - name: Run markdowner.py to (hopefully not) edit markdown files
-      run: |
-        find . -name '*.markdown' -type f -exec python3 .github/workflows/markdowner.py {} all \; | tee output.log
-    - name: Check output.log file for warnings
-      run: |
-        ! grep WARNING output.log
-    - name: Check if there are changes
-      run: |
-        git diff --exit-code
+      - name: Checks-out repository
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run markdowner.py to (hopefully not) edit markdown files
+        run: |
+          find . -name '*.markdown' -type f -exec python3 .github/workflows/markdowner.py {} all \; | tee output.log
+      - name: Check output.log file for warnings
+        run: |
+          ! grep WARNING output.log
+      - name: Check if there are changes
+        run: |
+          git diff --exit-code
