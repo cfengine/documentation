@@ -40,3 +40,4 @@ jobs:
 
         branch: hugo-version-update-${{ steps.fetch_hugo_version.outputs.version }}
         sign-commits: true
+        delete-branch: true
