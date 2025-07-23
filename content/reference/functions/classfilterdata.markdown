@@ -52,4 +52,4 @@ This function can accept many types of data parameters _(See [collecting functio
 
 **History:**
 
-- Introduced in CFEngine 3.27
+- Introduced in CFEngine 3.27.0
