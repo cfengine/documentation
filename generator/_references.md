@@ -63,3 +63,4 @@
 [mpf-classification-bundles]: reference-masterfiles-policy-framework.html#classification-bundles-before-autorun.html
 [mpf-services-autorun]: reference-masterfiles-policy-framework-services-autorun.html
 [package-modules-the-api]: reference-language-concepts-modules-package-module-api.html#the-api
+[Functions#collecting functions]: /reference/functions/#collecting-functions
