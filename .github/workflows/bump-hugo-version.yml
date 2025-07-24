@@ -27,7 +27,7 @@ jobs:
     - name: Update install_hugo.sh
       run: |
         sed -i "s|https://github.com/gohugoio/hugo/releases/download/v.*_Linux-64bit.tar.gz|https://github.com/gohugoio/hugo/releases/download/v${{ steps.fetch_hugo_version.outputs.version }}/hugo_${{ steps.fetch_hugo_version.outputs.version }}_Linux-64bit.tar.gz|" generator/build/install_hugo.sh
-        sed -i "s/.*sha256sum.*/RUN echo \"${{ steps.fetch_hugo_version.outputs.checksum }}  hugo.tar.gz\" | sha256sum -c/" generator/build/install_hugo.sh
+        sed -i "s/.*sha256sum.*/ echo \"${{ steps.fetch_hugo_version.outputs.checksum }}  hugo.tar.gz\" | sha256sum -c/" generator/build/install_hugo.sh
     - name: Create Pull Request
       uses: cfengine/create-pull-request@v7
       with:
