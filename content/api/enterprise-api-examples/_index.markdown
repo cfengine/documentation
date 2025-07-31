@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Enterprise API examples
+title: "Enterprise API examples"
 sorting: 6
 ---
 
