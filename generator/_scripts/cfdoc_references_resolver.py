@@ -54,7 +54,8 @@ def process(file_path, references):
     
     new_content = re.sub(pattern, replace_link, content)
     
-    functions_pattern = r'\`(.*?)\(\)\`'
+    # finds functions except ones already processed inside []
+    functions_pattern = r'(?<!\[)\`([^\s]*?)\(\)\`(?!\])'
     def replace_function_link(match):
         ref = match.group(1)
         text = f'{ref}()'
