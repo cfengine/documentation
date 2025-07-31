@@ -259,7 +259,7 @@ curl --user admin:admin https://test.cfengine.com/api/user
     "page": 1,
     "count": 1,
     "total": 1,
-    "timestamp": 1350994249d
+    "timestamp": 1350994249
   },
   "data": [
     {
@@ -277,8 +277,8 @@ These two blocks will be joined into one element on the UI.
 
 ##### File code block
 
-You can specify file name of the code block by adding `[file=Name of the file]` in the first line.
-This line won't be shown in the resulting HTML (it will be converted to the heading / frame).
+You can specify file name of the code block by adding `{file="<filename>"}` after the language specifier (i.e. on the end of the same line as the triple backticks and `cf3`).
+This metadata won't be shown in the resulting HTML (it will be converted to the heading / frame).
 
 ```cf3 {file="policy.cf"}
 bundle agent hello_world

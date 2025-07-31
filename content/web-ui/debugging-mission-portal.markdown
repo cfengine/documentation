@@ -8,8 +8,7 @@ sorting: 90
 
 2.  Edit `/var/cfengine/share/GUI/index.php` and set `ENVIRONMENT` to `development`
 
-    ```php
-    [file=/var/cfengine/share/GUI/index.php]
+    ```php {file="/var/cfengine/share/GUI/index.php"}
     define('ENVIRONMENT', 'development');
     ```
 

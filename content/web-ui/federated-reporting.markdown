@@ -648,7 +648,7 @@ management app.
    curl -k -s -X GET -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub | jq '.'
    ```
 
-   ```json
+   ```json {skip}
    {
      "id": 1,
      "hostkey": "SHA=cd4be31f20f0c7d019a5d3bfe368415f2d34fec8af26ee28c4c123c6a0af49a2",
@@ -730,7 +730,7 @@ we use the number "1".
   If you wish to re-add this feeder to a superhub, change "target_state" from "off" to "on".
   Remember to trigger or wait for an agent run for the change from off to on to take effect.
 
-   ```json
+   ```json {skip TODO}
    {
        "hostname": null,
        "role": "feeder",
@@ -804,7 +804,7 @@ Follow this procedure:
    * edit `/opt/cfengine/federation/cfapache/federation-config.json` to remove all entries in the `remote_hubs` property.
      similar to the following:
 
-      ```json
+      ```json {skip TODO}
       {
           "hostname": null,
           "role": "feeder",

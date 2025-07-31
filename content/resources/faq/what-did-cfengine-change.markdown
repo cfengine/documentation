@@ -277,7 +277,7 @@ path), and the timestamp of the agent ran.
 
 Here is an example of the output in `promise_log.jsonl`:
 
-```json
+```json {skip}
 {
     "execution": {
         "bundle":"file_make_mustache",

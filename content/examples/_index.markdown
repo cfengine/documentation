@@ -45,8 +45,7 @@ Following these steps, you will login to your policy server via the SSH protocol
 3. To get to the __masterfiles__ directory, type ```cd /var/cfengine/masterfiles```.
 4. Create the file with the command: ```vi hello_world.cf ```
 5. In the vi editor, enter ```i``` for "Insert" and enter the following content (ie. copy and paste from a text editor):
-   ```cf3
-   [file=hello_world.cf]
+   ```cf3 {file="hello_world.cf"}
    bundle agent hello_world
    {
      reports:

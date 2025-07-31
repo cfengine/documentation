@@ -514,8 +514,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 6. **On both nodes,** add the following class definition to the */var/cfengine/masterfiles/def.json*
    file to enable HA:
 
-   ```json
-   [file=def.json]
+   ```json {file="def.json"}
    {
      "classes": {
        "enable_cfengine_enterprise_hub_ha": [ "any::" ]
