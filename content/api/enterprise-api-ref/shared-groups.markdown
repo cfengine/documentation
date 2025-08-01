@@ -44,48 +44,33 @@ The shared groups API enables creating host groups based on host filters (the sa
   ```json
   {
     "filter": {
-        "filter":{
-            "Attribute name": {
-                "operator":"value2"
-            }
-        },
+      "filter": { "Attribute name": {"operator": "value2"} },
       "hostFilter": {
-            "includes": {
-              "includeAdditionally":  false,
-              "entries": {
-                  "ip": [
-                "192.168.56.5"
-              ],
-              "hostkey": [],
-              "hostname": [
-                "ubuntu-bionic"
-              ],
-              "mac": [
-                "08:00:27:0b:a4:99",
-                "08:00:27:dd:e1:59",
-                "02:9f:d3:59:7e:90"
-              ],
-              "ip_mask": [
-                "10.0.2.16/16"
-              ]
-              }
-            },
-            "excludes": {
-              "entries":{
-              "ip": [],
-              "hostkey": [],
-              "hostname": [],
-              "mac": [],
-              "ip_mask": []
-                 }
-            }
+        "includes": {
+          "includeAdditionally": false,
+          "entries": {
+            "ip": ["192.168.56.5"],
+            "hostkey": [],
+            "hostname": ["ubuntu-bionic"],
+            "mac": ["08:00:27:0b:a4:99", "08:00:27:dd:e1:59", "02:9f:d3:59:7e:90"],
+            "ip_mask": ["10.0.2.16/16"]
+          }
         },
-        "hostContextExclude": ["class_value"],
-        "hostContextInclude": ["class_value"]
+        "excludes": {
+          "entries": {
+            "ip": [],
+            "hostkey": [],
+            "hostname": [],
+            "mac": [],
+            "ip_mask": []
+          }
+        }
+      },
+      "hostContextExclude": ["class_value"],
+      "hostContextInclude": ["class_value"]
     }
   }
   ```
-
 
 **Operators:**
 
@@ -108,7 +93,6 @@ For filtering you can use the operators below:
 | is_reported     |
 | is_not_reported |
 
-
 ```
 curl -k --user <username>:<password> \
   -X POST \
@@ -130,11 +114,12 @@ curl -k --user <username>:<password> \
   }'
 ```
 
-
 **Example response:**
 
 ```json
-{"id":"4"}
+{
+  "id": "4"
+}
 ```
 
 ## Update group
@@ -180,34 +165,20 @@ curl -k --user <username>:<password> \
 ```json
 {
   "filter": {
-      "filter":{
-          "Attribute name": {
-              "operator":"value2"
-          }
-      },
+    "filter": { "Attribute name": {"operator": "value2"} },
     "hostFilter": {
       "includes": {
-        "includeAdditionally":  false,
+        "includeAdditionally": false,
         "entries": {
-          "ip": [
-            "192.168.56.5"
-          ],
+          "ip": ["192.168.56.5"],
           "hostkey": [],
-          "hostname": [
-            "ubuntu-bionic"
-          ],
-          "mac": [
-            "08:00:27:0b:a4:99",
-            "08:00:27:dd:e1:59",
-            "02:9f:d3:59:7e:90"
-          ],
-          "ip_mask": [
-            "10.0.2.16/16"
-          ]
+          "hostname": ["ubuntu-bionic"],
+          "mac": ["08:00:27:0b:a4:99", "08:00:27:dd:e1:59", "02:9f:d3:59:7e:90"],
+          "ip_mask": ["10.0.2.16/16"]
         }
       },
       "excludes": {
-        "entries":{
+        "entries": {
           "ip": [],
           "hostkey": [],
           "hostname": [],
@@ -216,8 +187,8 @@ curl -k --user <username>:<password> \
         }
       }
     },
-      "hostContextExclude": ["class_value"],
-      "hostContextInclude": ["class_value"]
+    "hostContextExclude": ["class_value"],
+    "hostContextInclude": ["class_value"]
   }
 }
 ```
@@ -243,7 +214,6 @@ For filtering you can use the operators below:
 | is_reported     |
 | is_not_reported |
 
-
 **Example request:**
 
 ```
@@ -267,11 +237,12 @@ curl -k --user <username>:<password> \
   }'
 ```
 
-
 **Example response:**
 
 ```json
-{"id":"4"}
+{
+  "id": "4"
+}
 ```
 
 ## Get group
@@ -298,27 +269,20 @@ curl -k --user <username>:<password> \
 
 ```json
 {
-    "id": 4,
-    "name": "AIX hosts",
-    "priority": 3,
-    "description": "Host name",
-    "creator": "admin",
-    "creation_time": "2023-06-14 10:41:25.601112+00",
-    "filter": {
-        "filter": {
-            "Architecture": {
-                "matches": "86"
-            }
-        },
-        "hostContextExclude": "",
-        "hostContextInclude": [
-            "aix"
-        ]
-    },
-    "type": "shared"
+  "id": 4,
+  "name": "AIX hosts",
+  "priority": 3,
+  "description": "Host name",
+  "creator": "admin",
+  "creation_time": "2023-06-14 10:41:25.601112+00",
+  "filter": {
+    "filter": { "Architecture": {"matches": "86"} },
+    "hostContextExclude": "",
+    "hostContextInclude": ["aix"]
+  },
+  "type": "shared"
 }
 ```
-
 
 ## Remove group
 
@@ -340,7 +304,6 @@ curl -k --user <username>:<password> \
   -H 'content-type: application/json'
 ```
 
-
 ## Groups list
 
 **URI:** https://hub.cfengine.com/api/host-groups/shared
@@ -360,46 +323,39 @@ curl -k --user <username>:<password> \
 
 ```json
 {
-    "data": [
-        {
-            "id": 1,
-            "name": "All hosts",
-            "priority": 1,
-            "description": "",
-            "creator": "admin",
-            "creation_time": "2023-05-29 09:55:36.878271+00",
-            "filter": []
-        },
-        {
-            "id": 4,
-            "name": "AIX hosts",
-            "priority": 2,
-            "description": "Host name",
-            "creator": "admin",
-            "creation_time": "2023-06-14 10:41:25.601112+00",
-            "filter": {
-                "filter": {
-                    "Architecture": {
-                        "matches": "86"
-                    }
-                },
-                "hostContextExclude": "",
-                "hostContextInclude": [
-                    "aix"
-                ]
-            }
-        }
-    ],
-    "meta": {
-        "count": 2,
-        "page": 1,
-        "timestamp": 1686739758,
-        "total": 2,
-        "hostsCountCacheTime": null
+  "data": [
+    {
+      "id": 1,
+      "name": "All hosts",
+      "priority": 1,
+      "description": "",
+      "creator": "admin",
+      "creation_time": "2023-05-29 09:55:36.878271+00",
+      "filter": []
+    },
+    {
+      "id": 4,
+      "name": "AIX hosts",
+      "priority": 2,
+      "description": "Host name",
+      "creator": "admin",
+      "creation_time": "2023-06-14 10:41:25.601112+00",
+      "filter": {
+        "filter": { "Architecture": {"matches": "86"} },
+        "hostContextExclude": "",
+        "hostContextInclude": ["aix"]
+      }
     }
+  ],
+  "meta": {
+    "count": 2,
+    "page": 1,
+    "timestamp": 1686739758,
+    "total": 2,
+    "hostsCountCacheTime": null
+  }
 }
 ```
-
 
 ## Make shared group personal
 
@@ -425,7 +381,9 @@ curl -k --user <username>:<password> \
 API returns new ID of the personal group.
 
 ```json
-{"id":"6"}
+{
+  "id": "6"
+}
 ```
 
 # Shared Groups CMDB
@@ -637,7 +595,6 @@ curl -k --user <username>:<password> \
 HTTP 200 Ok
 ```
 
-
 ## Update configuration
 
 **URI:** https://hub.cfengine.com/api/host-groups/shared/:id/cmdb/:type/:name/
@@ -689,8 +646,6 @@ curl -k --user <username>:<password> \
 HTTP 200 Ok
 ```
 
-
-
 ## Delete group's configurations
 
 **URI:** https://hub.cfengine.com/api/host-groups/shared/:id/cmdb
@@ -732,7 +687,6 @@ HTTP 204 No Content
 
 * **name** *(string)*
   Configuration name. Classes or variables name.
-
 
 **Example request (curl):**
 

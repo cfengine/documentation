@@ -51,7 +51,6 @@ body server control
 }
 ```
 
-
 ### allowconnects
 
 **Description:** List of IP addresses that may connect to the
@@ -78,7 +77,6 @@ allowconnects => {
      "200\.1\.10\..*",
      };
 ```
-
 
 ### allowallconnects
 
@@ -112,7 +110,6 @@ allowallconnects      => {
      };
 ```
 
-
 ### allowlegacyconnects
 
 **Description:** List of hosts from which the server accepts connections
@@ -140,7 +137,6 @@ specify a list of hosts allowed to use the legacy protocol.
 [%CFEngine_promise_attribute()%]
 
 **See also:** [`protocol_version`][Components#protocol_version]
-
 
 ### allowciphers
 
@@ -174,7 +170,6 @@ this does not do anything as the classic protocol does not support TLS ciphers.
 
 **History:** Introduced in CFEngine 3.6.0
 
-
 ### allowtlsversion
 
 **Description:** Minimum TLS version allowed for both **incoming** and **outgoing** (in the case of client initiated reporting with CFEngine Enterprise) connections using `cf-serverd`.
@@ -206,7 +201,6 @@ this attribute does not do anything.
 
 **History:** Introduced in CFEngine 3.7.0
 
-
 ### allowusers
 
 **Description:** List of usernames who may execute requests from this
@@ -225,7 +219,6 @@ correspond to system identities on the server-side system.
 ```cf3
 allowusers => { "cfengine", "root" };
 ```
-
 
 ### bindtointerface
 
@@ -263,7 +256,6 @@ Connection to fe80:470:1d:a2f::2 5308 port [tcp/cfengine] succeeded!
 ^C
 ```
 
-
 ### cfruncommand
 
 **Description:** Path to the cf-agent command or cf-execd wrapper for
@@ -276,7 +268,6 @@ shell command at your own risk.
 **Type:** `string`
 
 **Allowed input range:** `.+`
-
 
 ```cf3
 body server control
@@ -393,7 +384,6 @@ bundle server my_access_rules()
 
 **History:** Was introduced in Enterprise 3.0.0 (2012)
 
-
 ### collect_window
 
 **CFEngine Enterprise only.**
@@ -410,7 +400,6 @@ open to a hub to attempt a report transfer before it is closed
 **Default value:** 30.
 
 **History:** Was introduced in Enterprise 3.0.0 (2012)
-
 
 ### denybadclocks
 
@@ -437,7 +426,6 @@ body server control
 denybadclocks => "true";
 }
 ```
-
 
 ### denyconnects
 
@@ -468,7 +456,6 @@ denyconnects => { "badhost\.domain\.evil", "host3\.domain\.com" };
 }
 ```
 
-
 ### logallconnections
 
 **Deprecated: This attribute was deprecated in 3.7.0.**
@@ -497,7 +484,6 @@ logencryptedtransfers => "true";
 ```
 
 **See also:** [`ifencrypted`][access#ifencrypted], [`encrypt`][files#encrypt], [`tls_ciphers`][Components#tls_ciphers], [`tls_min_version`][Components#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`protocol_version`][Components#protocol_version]
-
 
 ### maxconnections
 
@@ -528,7 +514,6 @@ body server control
 maxconnections => "1000";
 }
 ```
-
 
 ### port
 
@@ -599,7 +584,6 @@ serverfacility => "LOG_USER";
 }
 ```
 
-
 ### skipverify
 
 **Description:** This option is obsolete, does nothing and is retained
@@ -617,7 +601,6 @@ body server control
 skipverify => { "special_host.*", "192.168\..*" };
 }
 ```
-
 
 ### trustkeysfrom
 
@@ -653,7 +636,6 @@ trustkeysfrom => { "10.0.1.1", "192.168.0.0/16"};
 }
 ```
 
-
 ### listen
 
 **Description:** true/false enable server daemon to listen on defined
@@ -685,7 +667,6 @@ body server control
 ```
 
 **History:** Was introduced in 3.4.0, Enterprise 3.0 (2012)
-
 
 ## Deprecated attributes in body server control
 

@@ -218,7 +218,6 @@ The four mission phases are sometimes referred to as
 
 [Contact CFEngine](https://cfengine.com/contact)
 
-
 ## CFEngine architecture and design
 CFEngine operates autonomously in a network, under your guidance. While
 CFEngine supports anything from 1 servers to 100,000+ servers, the essence of

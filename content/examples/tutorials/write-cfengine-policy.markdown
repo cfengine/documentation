@@ -166,7 +166,7 @@ Now we need to tell CFEngine that there is a new policy in town:
 
 ```json {file="def.json"}
 {
-  "inputs": [ "my-policy.cf" ]
+  "inputs": ["my-policy.cf"]
 }
 ```
 

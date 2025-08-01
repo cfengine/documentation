@@ -53,7 +53,6 @@ Take a look at the [Getting started][] section to learn more about CFEngine's ar
 
 Check out [External resources][External resources], for more guides, demos, and other resources from our CFEngine staff and our special CFEngine contributors.
 
-
 ## Use our help
 
 [Support and community][External Resources#Support and community] We provide a number of ways to connect you to CFEngine

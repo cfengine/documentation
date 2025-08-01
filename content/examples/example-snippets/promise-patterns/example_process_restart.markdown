@@ -13,7 +13,6 @@ body common control
 bundlesequence => { "process_restart" };
 }
 
-
 bundle agent process_restart
 {
 vars:

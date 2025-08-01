@@ -609,7 +609,6 @@ files:
      create => "true",
     classes => set_outcome_classes;
 
-
 reports:
 
  got_did_task_one::
@@ -803,7 +802,6 @@ commands:
      "/bin/shutdown now";
 }
 
-
 #######################################################
 
 bundle server my_access_rules()
@@ -951,7 +949,6 @@ files:
 }
 
 ############################################################
-
 
 bundle server my_access_rules()
 {
@@ -1160,7 +1157,6 @@ reports:
 
 ############################################################
 
-
 bundle server my_access_rules()
 {
 access:
@@ -1174,7 +1170,6 @@ access:
     admit => { "127.0.0.1" };
 
 }
-
 
 body printfile visitors_book(file)
 {
@@ -1372,7 +1367,6 @@ methods:
         classes => if_repaired("send_the_dragon_back_from_$(satellite)"),
              if => "cue_action_on_$(satellite)";
 
-
 files:
 
   # hub/lair hub signs the book too and schedules the dragon for next satellite
@@ -1415,7 +1409,6 @@ reports:
    " X Switching new dragon's target $(name)";
 }
 
-
 ############################################################
 
 bundle edit_line sign_visitor_book(s)
@@ -1430,7 +1423,6 @@ insert_lines:
 }
 
 ############################################################
-
 
 bundle server my_access_rules()
 {

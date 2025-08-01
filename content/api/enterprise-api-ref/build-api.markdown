@@ -863,7 +863,6 @@ HTTP 200 OK
 | 404 Not found             | Module not found      |
 | 500 Internal server error | Internal server error |
 
-
 ### Get CFEngine Build module input data
 
 **URI:** https://hub.cfengine.com/api/build/projects/:id/modules/:name/input
@@ -940,7 +939,6 @@ HTTP 200 OK
 | 200 Ok                    | Successful response         |
 | 404 Not found             | Project or module not found |
 | 500 Internal server error | Internal server error       |
-
 
 ### Set CFEngine Build module input data
 

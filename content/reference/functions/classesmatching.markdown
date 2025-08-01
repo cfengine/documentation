@@ -23,7 +23,6 @@ If no classes match `name` and any tags given then an empty list is returned.
 
 **Example:**
 
-
 [%CFEngine_include_snippet(classesmatching.cf, #\+begin_src cfengine3, .*end_src)%]
 
 Output:

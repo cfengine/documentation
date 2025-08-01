@@ -10,12 +10,10 @@ This is where the Custom actions come in. A Custom action is a way to execute a 
 
 Any scripting language may be used, as long as the hub has an interpreter for it.
 
-
 ## Alert parameters
 
 The Custom action script gets called with one parameter: the path to a file with a set of KEY=VALUE lines.
 Most of the keys are common for all alerts, but some additional keys are defined based on the alert type, as shown below.
-
 
 ### Common keys
 
@@ -36,8 +34,6 @@ These keys are present for all alert types.
 | ALERT_CONDITION_DESCRIPTION | Condition description, as defined when creating the alert (string).                                      |
 | ALERT_CONDITION_TYPE        | Type, as selected when creating the alert. Can be 'policy', 'inventory', or 'softwareupdate'. |
 
-
-
 ### Policy keys
 
 In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='policy'.
@@ -48,7 +44,6 @@ In addition to the common keys, the following keys are present when ALERT_CONDIT
 | ALERT_POLICY_CONDITION_FILTERITEMNAME | Name of the policy object to filter by, as defined when creating the alert (string).                              |
 | ALERT_POLICY_CONDITION_PROMISEHANDLE  | Promise handle to filter by, as defined when creating the alert (string).                                         |
 | ALERT_POLICY_CONDITION_PROMISEOUTCOME | Promise outcome to filter by, as selected when creating the alert. Can be either 'KEPT', 'REPAIRED' or 'NOTKEPT'. |
-
 
 ### Inventory keys
 
@@ -68,7 +63,6 @@ In addition to the common keys, the following keys are present when ALERT_CONDIT
 |---------------------------------------------------|---------------------------------------------------------------------------------------------|
 | ALERT_SOFTWARE_UPDATE_CONDITION_PATCHNAME         | The name of the package, as defined when creating the alert, or empty if undefined (string).         |
 | ALERT_SOFTWARE_UPDATE_CONDITION_PATCHARCHITECTURE | The architecture of the package, as defined when creating the alert, or empty if undefined (string). |
-
 
 ## Example parameters: policy bundle alert not kept
 
@@ -99,7 +93,6 @@ You could then simply test your Custom action script, e.g. 'cfengine_custom_acti
 
 When you get this to work as expected on the commmand line, you are ready to upload the script to the Mission Portal, as outlined below.
 
-
 ## Example script: logging policy alert to syslog
 
 The following Custom action script will log the status and definition of a policy alert to syslog.
@@ -123,8 +116,6 @@ What gets logged to syslog depends on which alert is associated with the script,
 
     Sep 26 02:00:53 localhost user[18823]: Policy alert 'Web service' fail. Now triggered on 11 hosts. Defined with bundlename='web_service', promise handle '' and outcome NOTKEPT
 
-
-
 ## Uploading the script to the Mission Portal
 
 Members of the admin role can manage Custom action scripts in the Mission Portal settings.
@@ -134,7 +125,6 @@ Members of the admin role can manage Custom action scripts in the Mission Portal
 A new script can be uploaded, together with a name and description, which will be shown when creating the alerts.
 
 <img src="mp-settings-custom-notification-add.png" alt="Adding Custom action syslog script" width="700px">
-
 
 ## Associating a Custom action with an alert
 

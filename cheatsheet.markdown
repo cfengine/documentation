@@ -255,20 +255,9 @@ curl --user admin:admin https://test.cfengine.com/api/user
 
 ```json {output}
 {
-  "meta": {
-    "page": 1,
-    "count": 1,
-    "total": 1,
-    "timestamp": 1350994249
-  },
+  "meta": { "page": 1, "count": 1, "total": 1, "timestamp": 1350994249 },
   "data": [
-    {
-      "id": "calvin",
-      "external": true,
-      "roles": [
-        "Huguenots", "Marketing"
-      ]
-    }
+    { "id": "calvin", "external": true, "roles": ["Huguenots", "Marketing"] }
   ]
 }
 ```
@@ -418,9 +407,7 @@ index 92555a2..b49c0bb 100644
 
 ```json
 {
-  "classes": {
-    "services_autorun": ["any"]
-  }
+  "classes": { "services_autorun": ["any"] }
 }
 ```
 
@@ -428,9 +415,7 @@ index 92555a2..b49c0bb 100644
 
 ```json
 {
-  "classes": {
-    "services_autorun": ["any"]
-  }
+  "classes": { "services_autorun": ["any"] }
 }
 ```
 

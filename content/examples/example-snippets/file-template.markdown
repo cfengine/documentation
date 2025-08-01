@@ -15,12 +15,9 @@ With CFEngine you have a choice between editing _deltas_ into files or distribut
 
 Example template:
 
-
 [%CFEngine_include_snippet(templating.cf, .* )%]
 
-
 To copy and expand this template, you can use a pattern like this:
-
 
 [%CFEngine_include_snippet(templating_1.cf, .* )%]
 

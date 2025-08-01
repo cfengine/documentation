@@ -186,7 +186,6 @@ Now that all of the policy has been edited and is in place, check for syntax err
 running `cf-promises -f ./promises.cf`. This promise is activated from the **service_catalogue**
 bundle.
 
-
 ## Commit Changes
 
 ### Set up trackers in the Mission Portal (Enterprise Users Only)
@@ -199,7 +198,6 @@ Navigate to the **Hosts** section. Select **All hosts**. Select the **Events** t
 in the right-hand panel. Click **Add new tracker**.
 
 ![Mission Portal Host Event](hosts-add-new-tracker.png)
-
 
 Name it *Patch Failure*. Set the
 **Report Type** to *Promise not Kept*. Under **Watch**, enter **.patch**.  Set the **Start Time** to **Now**

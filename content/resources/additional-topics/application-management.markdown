@@ -24,7 +24,6 @@ properly customized for use.
 
 ## How can CFEngine help?
 
-
 CFEngine assists with application management in a number of ways. Following the
 BDMA lifecycle, we note:
 
@@ -49,7 +48,6 @@ BDMA lifecycle, we note:
     and their versions and status.
 
 ## Package management
-
 
 Application management is simple today on most operating systems due to the
 introduction ofpackage systems.
@@ -189,10 +187,8 @@ versioning format of the software, whatever it is, e.g. you would write
 something like "1.00.00.0" if two digits were used in the two middle version
 number positions.
 
-
 CFEngine automatically adapts its versioning to the conventions used by
 individual package schemas.
-
 
 To summarize, in order for CFEngine to be able to match installed packages with
 the ones in the directory repository, the same naming convention must be
@@ -250,7 +246,6 @@ to 4.65 in the msi-package. Free tools such as InstEd can both view and change
 the product name and version (Tables->Property->ProductName and ProductVersion).
 
 ## Customizing applications
-
 
 By definition, we cannot explain how to customize software for all cases. For
 Unix-like systems however, software customization is usually a matter of editing
@@ -312,7 +307,6 @@ processes:
    "myprocess"  restart_class => "start_me";
 
 commands:
-
 
   start_me::
 

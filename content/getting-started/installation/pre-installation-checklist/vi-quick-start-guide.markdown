@@ -4,7 +4,6 @@ title: Quick-Start guide to using vi
 sorting: 1
 ---
 
-
 This guide is designed for the novice user of CFEngine tutorials-and will introduce the basic
 use of a powerful tool that is referenced in the CFEngine learning documentation: the vi visual editor.
 

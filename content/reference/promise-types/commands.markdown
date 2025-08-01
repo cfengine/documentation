@@ -525,7 +525,6 @@ reports:
     "Module set variable $(module_name.myscalar)";
 }
 
-
 bundle agent modtest
 {
 vars:

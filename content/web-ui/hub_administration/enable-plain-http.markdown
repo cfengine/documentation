@@ -13,9 +13,6 @@ masterfiles.
 
 ```json {file="def.json"}
 {
-  "classes": {
-    "cfe_enterprise_enable_plain_http": [ "any" ]
-    }
-
+  "classes": { "cfe_enterprise_enable_plain_http": ["any"] }
 }
 ```

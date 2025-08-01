@@ -17,7 +17,6 @@ body common control
   bundlesequence => { "example" };
 }
 
-
 bundle agent example
 {
   vars:
@@ -92,7 +91,6 @@ body common control
 {
   bundlesequence => { "example" };
 }
-
 
 bundle agent example
 {

@@ -839,7 +839,6 @@ variables report to the CFEngine Enterprise Database.
 
 [%CFEngine_include_snippet(sys_interfaces_ip_addresses_ipv4.cf, #\+begin_src\s+static_example_output\s*, .*end_src)%]
 
-
 **History:** Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
 ### sys.interfaces_data
@@ -931,7 +930,6 @@ reports:
 Outputs:
 
     R: eth0 flags: up broadcast running multicast
-
 
 The following device flags are supported:
 
@@ -1043,7 +1041,6 @@ from any of the other associative arrays). Only those interfaces which
 are marked as "up" and have an IP address will be listed.
 
 ### sys.ipv4_1[interface_name]
-
 
 The first octet of the IPv4 address of the system interface named as the
 associative array index, e.g. `$(ipv4_1[le0])` or `$(ipv4_1[xr1])`.
@@ -1251,7 +1248,6 @@ R: 22
 
 * 3.18.0 introduced
 
-
 ### sys.ostype
 
 Another name for the operating system.
@@ -1272,7 +1268,6 @@ The name of the directory where CFEngine saves the daemon pid files.
 
 **History:** Introduced in CFEngine 3.6
 
-
 ### sys.policy_entry_basename
 
 The basename of the first policy file read by the agent. For example
@@ -1291,7 +1286,6 @@ The full path to the directory containing the first policy file read by the agen
 
 **See also:** [`sys.policy_entry_basename`][sys#sys.policy_entry_basename] [`sys.policy_entry_filename`][sys.policy_entry_filename]
 
-
 **History:**
 
 - Introduced 3.12.0
@@ -1302,7 +1296,6 @@ The full path to the first policy file read by the agent. For example
 ```/var/cfengine/inputs/promises.cf``` or ```~/.cfagent/inputs/promises.cf```.
 
 **See also:** [`sys.policy_entry_basename`][sys#sys.policy_entry_basename] [`sys.policy_entry_dirname`][sys#sys.policy_entry_dirname]
-
 
 **History:**
 

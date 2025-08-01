@@ -13,7 +13,6 @@ Docker containers will be created, one container to be the Policy Server (server
 Both the containers will run **_ubi9-init_** images and communicate on a container network.
 Upon completion, you are ready to start working with CFEngine.
 
-
 ## Requirements
 * 1G+ disk space
 * 1G+ memory

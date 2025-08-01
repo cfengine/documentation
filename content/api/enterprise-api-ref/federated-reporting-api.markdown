@@ -169,7 +169,6 @@ HTTP 202 ACCEPTED
 HTTP 202 ACCEPTED
 ```
 
-
 ### Enable hub as a feeder
 
 **URI:** https://hub.cfengine.com/api/fr/setup-hub/feeder

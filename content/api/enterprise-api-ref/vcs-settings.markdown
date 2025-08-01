@@ -6,7 +6,6 @@ VCS API for managing version control repository settings.
 
 ## Get VCS settings
 
-
 **URI:** https://hub.cfengine.com/api/vcs/settings
 
 **Method:** GET

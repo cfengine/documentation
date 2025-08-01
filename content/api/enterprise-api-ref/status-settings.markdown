@@ -105,7 +105,6 @@ API call allowed only for administrator.
 
 See [Update settings][Status and settings REST API#Update settings] field section for output descriptions
 
-
 **Example usage:** `Example: Viewing settings`
 
 ## Update settings

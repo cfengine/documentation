@@ -25,7 +25,6 @@ new or manipulate existing XML documents.
 CFEngine_promise_attribute macro functions. If the name changes, then promise
 prototypes will not work. -->
 
-
 The following attributes are available in all `edit_xml` promise types.
 
 ### build_xpath

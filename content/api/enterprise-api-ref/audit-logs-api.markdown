@@ -121,7 +121,6 @@ HTTP 200 OK
 | 403 Insufficient permissions | Audit logs are not available to user |
 | 500 Internal server error    | Internal server error                |
 
-
 ### Allowed actions
 
 | Action               | Description               |
@@ -151,7 +150,6 @@ HTTP 200 OK
 | Group               | Host groups                                  |
 | Host                | Host configuration                           |
 | Build project       | Build project configuration                  |
-
 
 ## Get audit logs actors
 

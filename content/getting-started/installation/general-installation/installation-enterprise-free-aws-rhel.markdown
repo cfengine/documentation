@@ -98,7 +98,6 @@ The following steps are only necessary for one of the two virtual machines, the 
 The `Port and Protocol` are entered in the blue boxes, with entries of `5308` and `tcp` respectively.
 Then the `Tab` key is used to highlight the `OK` button, and the user presses `Enter`.
 
-
 #### Wrapping up firewall configuration
 
 * Hit the `Tab` key until `Close` is highlighted, and hit `Enter`.

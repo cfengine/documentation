@@ -26,7 +26,6 @@ Stores system logs about actions performed by users.
 * **ip_address** *(boolean)*
   IP address of the user who performed the action.
 
-
 ## Table: build_modules
 
 Information about build modules available from the index (build.cfengine.com).

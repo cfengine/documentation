@@ -13,7 +13,6 @@ days, 27 hours and 90 minutes of runtime" ". However, you are strongly
 encouraged to keep your usage of `accumulated` sensible and readable;
 for example, `accumulated(0,0,0,48,0,0)` or `accumulated(0,0,0,0,90,0)`.
 
-
 **Arguments:**
 
 * `years`, in the range `0,1000`

@@ -41,9 +41,7 @@ federation policy to ensure that `semanage` is installed.
 
 ```json
 {
-  "classes": {
-    "cfengine_mp_fr_dependencies_auto_install" : ["any"]
-  }
+  "classes": { "cfengine_mp_fr_dependencies_auto_install": ["any"] }
 }
 ```
 
@@ -208,9 +206,7 @@ After those steps, ensure `cfengine_mp_fr_enable_distributed_cleanup` is present
 
 ```json
 {
-  "classes": {
-    "cfengine_mp_fr_enable_distributed_cleanup": ["any::"]
-  }
+  "classes": { "cfengine_mp_fr_enable_distributed_cleanup": ["any::"] }
 }
 ```
 (Note that this augment should be in addition to any others that you need such as `cfengine_mp_fr_dependencies_auto_install`)
@@ -250,9 +246,7 @@ If enabled it is performed on every import cycle.
 
 ```json
 {
-  "classes": {
-    "cfengine_mp_fr_handle_duplicate_hostkeys": ["any::"]
-  }
+  "classes": { "cfengine_mp_fr_handle_duplicate_hostkeys": ["any::"] }
 }
 ```
 
@@ -625,8 +619,7 @@ you wish to disable and change the top-level `target_state` property value to `o
   "role": "feeder",
   "enabled": "true",
   "target_state": "off",
-  "transport":
-  {
+  "transport": {
     "mode": "pull_over_rsync",
     "ssh_user": "cftransport",
     "ssh_host": "<superhub-ip>",
@@ -738,7 +731,6 @@ we use the number "1".
        "remote_hubs": { }
    }
    ```
-
 
 * On 3.15.x and greater feeders, also run the following commands to truncate two tables:
 

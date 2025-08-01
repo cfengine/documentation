@@ -10,11 +10,9 @@ sorting: 40
 
 * When the cursor is hovering over top, an **Add** button will appear.
 
-
 <img src="Alerts.new.png" alt="New Alerts" width="590px">
 
 * Click the button to begin creating the alert.
-
 
 <img src="Alerts.top.name.png" alt="New Alerts Name" width="650px">
 
@@ -25,20 +23,17 @@ sorting: 40
   * **Medium**: Orange
   * **High**: Red
 
-
 <img src="Alerts.top.severity.png" alt="New Alerts Severity" width="412px">
 
 * From the **Severity** dropdown box, select one of the three options available.
 
 * The **Select Condition** drop down box represents an inventory of existing conditional rules, as well as an option to create a new one
 
-
 <img src="Alerts.top.condition.png" alt="New Alerts Condition" width="590px">
 
 * When selecting an existing conditional rule, the name of the condition will automatically populate the mandatory condition **Name** field.
 
 * When creating a new condition the **Name** field must be filled in.
-
 
 <img src="Alerts.bottom.condition.type.png" alt="New Alerts Condition Type" width="412px">
 
@@ -56,7 +51,6 @@ sorting: 40
 <img src="Alerts.bottom.hosts.png" alt="New Alerts Hosts" width="590px">
 
 * Notifications of alerts may be sent by email or custom action scripts.
-
 
 <img src="Alerts.bottom.notifications.png" alt="New Alerts Notifications" width="590px">
 

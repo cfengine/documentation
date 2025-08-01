@@ -13,7 +13,6 @@ body common control
 bundlesequence => { "mounts" };
 }
 
-
 bundle agent mounts
 {
 storage:
@@ -22,7 +21,6 @@ storage:
                                                # "fileserver" is the remote fileserver
                                                # "/home" is the path to the remote file system
 }
-
 
 body mount nfs(server,source)
 {

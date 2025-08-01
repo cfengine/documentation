@@ -4,7 +4,6 @@ title: file control
 sorting: 100
 ---
 
-
 ```cf3
 body file control
 {
@@ -71,7 +70,6 @@ bundle agent two
 $ cf-agent -KIf ./one.cf
 R: hello, from /home/agent/./two.cf
 ```
-
 
 **See also:** [`inputs`][Components#inputs] in
 [`body common control`][Components]

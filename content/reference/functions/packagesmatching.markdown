@@ -16,12 +16,12 @@ this:
 
 ```json
 [
-   {
-      "arch":"default",
-      "method":"dpkg",
-      "name":"zsh-common",
-      "version":"5.0.7-5ubuntu1"
-   }
+  {
+    "arch": "default",
+    "method": "dpkg",
+    "name": "zsh-common",
+    "version": "5.0.7-5ubuntu1"
+  }
 ]
 ```
 
@@ -40,7 +40,6 @@ At no time will both the standard and the legacy data be available to these func
 
 The following code extracts just the package names, then looks for
 some desired packages, and finally reports if they are installed.
-
 
 [%CFEngine_include_example(packagesmatching.cf)%]
 
@@ -62,13 +61,11 @@ Or in the case of legacy package methods:
 $(sys.statedir)/software_packages.csv
 ```
 
-
 **History:**
 
 * Introduced in CFEngine 3.6
 * Function started using `package_module` based data sources by default, even if
   there is no `package_inventory` attribute defined in `body common control` if
   available in 3.23.0
-
 
 **See also:** `packageupdatesmatching()`, [Package information cache tunables in the MPF][Masterfiles Policy Framework#Configure periodic package inventory refresh interval]

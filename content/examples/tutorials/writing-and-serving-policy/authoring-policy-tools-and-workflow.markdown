@@ -45,7 +45,6 @@ Method Two: Create Masterfiles Repository Using the GitHub Application
 4. Select one of your "Accounts" where you want the new repository to be created.
 5. Click on the "Create" button at the bottom of the screen. A new repository will be created in your local GitHub folder.
 
-
 #### Initialize Git Repository in Masterfiles on the Hub
 ```bash
 cd /var/cfengine/masterfiles

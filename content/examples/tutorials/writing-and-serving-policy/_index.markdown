@@ -104,6 +104,5 @@ needless fragility and keep two independent quality assurance processes apart.
 
 * [Testing policies][Testing policies] This page describes how to locally test CFEngine and play with configuration files.
 
-
 ## See also
 * [Promises][Promises]

@@ -50,7 +50,6 @@ Detailed network configuration is shown on the picture below:
 
 ![HAGuideNetworkSetup](ha_network_setup.png)
 
-
 ## Install cluster management tools
 
    **On both nodes:**
@@ -62,7 +61,6 @@ Detailed network configuration is shown on the picture below:
 In order to operate cluster, proper fencing must be configured but description how to fence cluster
 and what mechanism use is out of the scope of this document. For reference please use the [Red Hat
 HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/configuring_the_red_hat_high_availability_add-on_with_pacemaker/ch-fencing-haar).
-
 
 **IMPORTANT:** please carefully follow the indicators describing if the given step should be
                performed on the active (node1), the passive (node2) or both nodes.
@@ -129,7 +127,6 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    Online: [ node1 node2 ]
 
    No resources
-
 
    Daemon Status:
      cman: active/disabled
@@ -437,7 +434,6 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
                   *cfpgsql-status* for the active node is reported as *PRI* and passive as
                   *HS:async* or *HS:alone*.
 
-
 ### CFEngine configuration
 
 1. Create the HA configuration file **on both nodes**.
@@ -516,9 +512,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
    ```json {file="def.json"}
    {
-     "classes": {
-       "enable_cfengine_enterprise_hub_ha": [ "any::" ]
-     }
+     "classes": { "enable_cfengine_enterprise_hub_ha": ["any::"] }
    }
    ```
 
@@ -534,7 +528,6 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 9. Check that the CFEngine HA setup is working by logging in to the Mission Portal at the
    https://192.168.100.100 address in your browser. Note that it takes up to 15 minutes for
    everything to settle and the `OK` HA status being reported in the Mission Portal's header.
-
 
 ### Configuring 3rd node as disaster-recovery or database backup (optional)
 
@@ -606,8 +599,6 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    failover to the node3 is not performed). Please also note that during normal operations the
    cf-hub process should not be running on the node3.
 
-
-
 ### Manual failover to disaster-recovery node
 
 1. Before starting manual failover process make sure both active and passive nodes are not running.
@@ -619,8 +610,6 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 4. In order to make failover process as easy as possible there is ```"failover_to_replication_node_enabled"``` class defined both in */var/cfengine/masterfiles/controls/VERSION/def.cf* and */var/cfengine/masterfiles/controls/VERSION/update_def.cf*. In order to stat collecting reports and serving policy from 3rd node uncomment the line defining mentioned class.
 
 **IMPORTANT:** Please note that as long as any of the active or passive cluster nodes is accessible by client to be contacted, failover to 3rd node is not possible. If the active or passive node is running and failover to 3rd node is required make sure to disable network interfaces where clients are bootstrapped to so that clients won't be able to access any other node than disaster-recovery.
-
-
 
 ### Troubleshooting
 

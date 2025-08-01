@@ -278,7 +278,6 @@ body perms system
 }
 ```
 
-
 ```bash
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence list_file,test_delete,list_file_2
 ls /home/user/test_plain.txt

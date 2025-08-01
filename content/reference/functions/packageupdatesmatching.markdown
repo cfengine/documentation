@@ -16,12 +16,12 @@ this:
 
 ```json
 [
-   {
-      "arch":"default",
-      "method":"dpkg",
-      "name":"syncthing",
-      "version":"0.12.8"
-   }
+  {
+    "arch": "default",
+    "method": "dpkg",
+    "name": "syncthing",
+    "version": "0.12.8"
+  }
 ]
 ```
 
@@ -35,7 +35,6 @@ However, the `packagesmatching` and `packageupdatesmatching` policy functions wi
 This enables the usage of these policy functions in standalone policy files. But please note that you still need the default package inventory attribute specified in the policy framework for the software inventory databases to exist in the first place and for them to be maintained/updated.
 If there is no `package_inventory` attribute (such as on package module unsupported platforms) and there are no software inventory databases available in `$(sys.statedir)` then the legacy package methods data will be used instead.
 At no time will both the standard and the legacy data be available to these functions simultaneously.
-
 
 **Example:**
 
@@ -72,6 +71,5 @@ $(sys.statedir)/software_patches_avail.csv
 * Function started using `package_module` based data sources by default, even if
   there is no `package_inventory` attribute defined in `body common control` if
   available in 3.23.0
-
 
 **See also:** `packagesmatching()`, [Package information cache tunables in the MPF][Masterfiles Policy Framework#Configure periodic package inventory refresh interval]

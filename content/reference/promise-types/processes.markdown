@@ -81,7 +81,6 @@ commands:
 * CFEngine will not allow you to signal processes 1-4 or the agent process
   itself for fear of bringing down the system.
 
-
 * Process promises depend on the `ps` native tool, which by default truncates
   lines at 128 columns on HP-UX. It is recommended to edit the file
   `/etc/default/ps` and increase the `DEFAULT_CMD_LINE_WIDTH` setting to 1024 to
@@ -494,7 +493,6 @@ processes:
 
         process_stop => "/etc/init.d/snmp stop";
 ```
-
 
 ### restart_class
 

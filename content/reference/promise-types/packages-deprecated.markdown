@@ -152,7 +152,6 @@ Normal ordering for packages is the following:
 | upgrade | unable | unable |
 | patch | unable | unable |
 
-
 ```cf3
 bundle agent packages
 {
@@ -1075,7 +1074,6 @@ package_version_equal_command => "dpkg --compare-versions ${v1} eq ${v2}";
 
 **History:** Was introduced in 3.4.0 (2012)
 
-
 ### package_policy
 
 **Description:** Criteria for package installation/upgrade on the current
@@ -1121,7 +1119,6 @@ Verify the correctness of the package (manager dependent). The promise
 is kept if the package is installed correctly, not kept otherwise.
 Requires setting `package_verify_command`.
 
-
 **Default value:** verify
 
 **Example:**
@@ -1156,7 +1153,6 @@ requirement. For example, if `package_select` is `<` and
 `package_version` is `3.0.0`, you may still match updates to 2.x.x
 series, like: `2.2.1`, `2.2.2`, `2.3.0`, because they all satisfy the
 version requirement.
-
 
 **Type:** (menu option)
 

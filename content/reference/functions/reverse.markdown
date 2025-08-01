@@ -18,7 +18,6 @@ This is a simple function to reverse a list.
 
 **Example:**
 
-
 [%CFEngine_include_snippet(reverse.cf, #\+begin_src cfengine3, .*end_src)%]
 
 Output:

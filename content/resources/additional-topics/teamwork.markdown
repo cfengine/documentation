@@ -6,7 +6,6 @@ sorting: 80
 
 ## What is team-work?
 
-
 Team work is a collaboration between individuals with different skills. It is
 key element in decentralized organization - both for humans and computers.
 
@@ -38,7 +37,6 @@ promises as a tool to explain to the individuals in a team which individual is
 responsible for what role, and to what extent.
 
 ## Creative roles
-
 
 M. Belbin, a researcher in teamwork has identified nine abilities or roles
 (kinds of promise) to be played in a team collaboration (regardless of how many
@@ -79,7 +77,6 @@ maximize human creativity, while passing hard work over to machines. Solving
 this problem is what CFEngine is about.
 
 ## Delegating roles in a collaboration
-
 
 We need to delegate responsiblity to divide and conquer a problem, both when
 designing policy for computers and when making work schedules for humans. But

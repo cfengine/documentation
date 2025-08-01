@@ -19,10 +19,7 @@ bundle sequence, without editing `promises.cf`, by adding the Augments file belo
 ```json
 {
   "inputs": ["services/my_policy_file.cf"],
-  "vars":
-  {
-    "control_common_bundlesequence_end": ["my_bundle_name"]
-  }
+  "vars": { "control_common_bundlesequence_end": ["my_bundle_name"] }
 }
 ```
 
@@ -108,28 +105,22 @@ Filenames entered here will appear in the `def.augments_inputs` variable.
 
 ```json
 {
-    "inputs": [ "services/hello-world.cf", "example.cf", "/tmp/my_policy.cf" ],
-    "vars": {
-        "augments_inputs": [ "goodbye.cf" ]
-    }
+  "inputs": ["services/hello-world.cf", "example.cf", "/tmp/my_policy.cf"],
+  "vars": { "augments_inputs": ["goodbye.cf"] }
 }
 ```
 
 The above Augments results in `$(sys.policy_entry_dirname)/services/hello-world.cf`, `$(sys.policy_entry_dirname)/example.cf` and `/tmp/my_policy.cf` being added to inputs.
 
-
 ```json
 {
-    "vars": {
-        "augments_inputs": [ "goodbye.cf" ]
-    }
+  "vars": { "augments_inputs": ["goodbye.cf"] }
 }
 ```
 
 The above Augments results in `$(sys.policy_entry_dirname)/goodbye.cf` being added to inputs.
 
 ### variables
-
 
 This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the [_augments_ key][Augments#augments].
 
@@ -139,11 +130,7 @@ For example:
 
 ```json
 {
-    "variables": {
-        "VariableWithImplicitNamespaceAndBundle": {
-            "value": "value"
-        }
-    }
+  "variables": { "VariableWithImplicitNamespaceAndBundle": {"value": "value"} }
 }
 ```
 
@@ -153,11 +140,7 @@ For example:
 
 ```json
 {
-    "variables": {
-        "my_bundle.VariableWithImplicitNamespace": {
-            "value": "value"
-        }
-    }
+  "variables": { "my_bundle.VariableWithImplicitNamespace": {"value": "value"} }
 }
 ```
 
@@ -167,11 +150,7 @@ For example:
 
 ```json
 {
-    "variables": {
-        "MyNamespace:my_bundle.Variable": {
-            "value": "value"
-        }
-    }
+  "variables": { "MyNamespace:my_bundle.Variable": {"value": "value"} }
 }
 ```
 
@@ -181,12 +160,12 @@ For example, this JSON:
 
 ```json
 {
-    "variables": {
-        "MyNamespace:my_bundle.Variable": {
-            "value": "value",
-            "comment": "An optional note about why this variable is important"
-        }
+  "variables": {
+    "MyNamespace:my_bundle.Variable": {
+      "value": "value",
+      "comment": "An optional note about why this variable is important"
     }
+  }
 }
 ```
 
@@ -212,12 +191,12 @@ For example, this JSON:
 
 ```json
 {
-    "variables": {
-        "MyNamespace:my_bundle.Variable": {
-            "value": "value",
-            "tags": [ "inventory", "attribute_name=My Inventory" ]
-        }
+  "variables": {
+    "MyNamespace:my_bundle.Variable": {
+      "value": "value",
+      "tags": ["inventory", "attribute_name=My Inventory"]
     }
+  }
 }
 ```
 
@@ -258,12 +237,12 @@ Thus:
 
 ```json
 {
-    "vars": {
-        "phone": "22-333-4444",
-        "myplatform": "$(sys.os)",
-        "MyBundle.MyVariable": "MyValue in MyBundle.MyVariable",
-        "MyNamespace:MyBundle.MyVariable": "MyValue in MyNamespace:MyBundle.MyVariable"
-    }
+  "vars": {
+    "phone": "22-333-4444",
+    "myplatform": "$(sys.os)",
+    "MyBundle.MyVariable": "MyValue in MyBundle.MyVariable",
+    "MyNamespace:MyBundle.MyVariable": "MyValue in MyNamespace:MyBundle.MyVariable"
+  }
 }
 ```
 
@@ -327,19 +306,23 @@ classes as an [anchored regular expression][anchored] unless the string ends wit
 
 ```json
 {
-    "classes": {
-        "augments_class_from_regex_my_always": [ "any" ],
-        "augments_class_from_regex_my_other_apache": [ "server[34]", "debian.*" ],
-        "augments_class_from_regex_my_other_always": [ "augments_class_from_regex_my_always" ],
-        "augments_class_from_regex_when_MISSING_not_defined": [ "^(?!MISSING).*" ],
-        "augments_class_from_regex": [ "cfengine_\\d+" ],
-        "augments_class_from_single_class_as_regex": [ "cfengine" ],
-        "augments_class_from_single_class_as_expression": [ "cfengine::" ],
-        "augments_class_from_classexpression_and": [ "cfengine.cfengine_3::" ],
-        "augments_class_from_classexpression_not": [ "!MISSING::" ],
-        "augments_class_from_classexpression_or": [ "cfengine|cfengine_3::" ],
-        "augments_class_from_classexpression_complex": [ "(cfengine|cfengine_3).!MISSING::" ]
-    }
+  "classes": {
+    "augments_class_from_regex_my_always": ["any"],
+    "augments_class_from_regex_my_other_apache": ["server[34]", "debian.*"],
+    "augments_class_from_regex_my_other_always": [
+      "augments_class_from_regex_my_always"
+    ],
+    "augments_class_from_regex_when_MISSING_not_defined": ["^(?!MISSING).*"],
+    "augments_class_from_regex": ["cfengine_\\d+"],
+    "augments_class_from_single_class_as_regex": ["cfengine"],
+    "augments_class_from_single_class_as_expression": ["cfengine::"],
+    "augments_class_from_classexpression_and": ["cfengine.cfengine_3::"],
+    "augments_class_from_classexpression_not": ["!MISSING::"],
+    "augments_class_from_classexpression_or": ["cfengine|cfengine_3::"],
+    "augments_class_from_classexpression_complex": [
+      "(cfengine|cfengine_3).!MISSING::"
+    ]
+  }
 }
 ```
 
@@ -350,17 +333,17 @@ are supported when using the _dict_ structure.
 
 ```json
 {
-    "classes": {
-        "myclass_defined_by_augments_in_def_json_3_18_0_v0": {
-            "class_expressions": [ "linux.redhat::", "cfengine|linux::" ],
-            "comment": "Optional description about why this class is important",
-            "tags": [ "optional", "tags" ]
-        },
-        "myclass_defined_by_augments_in_def_json_3_18_0_v1": {
-            "regular_expressions": [ "linux.*", "cfengine.*" ],
-            "tags": [ "optional", "tags" ]
-        }
+  "classes": {
+    "myclass_defined_by_augments_in_def_json_3_18_0_v0": {
+      "class_expressions": ["linux.redhat::", "cfengine|linux::"],
+      "comment": "Optional description about why this class is important",
+      "tags": ["optional", "tags"]
+    },
+    "myclass_defined_by_augments_in_def_json_3_18_0_v1": {
+      "regular_expressions": ["linux.*", "cfengine.*"],
+      "tags": ["optional", "tags"]
     }
+  }
 }
 ```
 
@@ -372,28 +355,32 @@ for use. Thus:
 
 ```json
 {
-    "classes": {
-        "augments_class_from_regex_my_always": [ "any" ],
-        "augments_class_from_regex_my_other_apache": [ "server[34]", "debian.*" ],
-        "augments_class_from_regex_my_other_always": [ "augments_class_from_regex_my_always" ],
-        "augments_class_from_regex_when_MISSING_not_defined": [ "^(?!MISSING).*" ],
-        "augments_class_from_regex": [ "cfengine_\\d+" ],
-        "augments_class_from_single_class_as_regex": [ "cfengine" ],
-        "augments_class_from_single_class_as_expression": [ "cfengine::" ],
-        "augments_class_from_classexpression_and": [ "cfengine.cfengine_3::" ],
-        "augments_class_from_classexpression_not": [ "!MISSING::" ],
-        "augments_class_from_classexpression_or": [ "cfengine|cfengine_3::" ],
-        "augments_class_from_classexpression_complex": [ "(cfengine|cfengine_3).!MISSING::" ],
-        "myclass_defined_by_augments_in_def_json_3_18_0_v0": {
-            "class_expressions": [ "linux.redhat::", "cfengine|linux::" ],
-            "comment": "Optional description about why this class is important",
-            "tags": [ "optional", "tags" ]
-        },
-        "myclass_defined_by_augments_in_def_json_3_18_0_v1": {
-            "regular_expressions": [ "linux.*", "cfengine.*" ],
-            "tags": [ "optional", "tags" ]
-        }
+  "classes": {
+    "augments_class_from_regex_my_always": ["any"],
+    "augments_class_from_regex_my_other_apache": ["server[34]", "debian.*"],
+    "augments_class_from_regex_my_other_always": [
+      "augments_class_from_regex_my_always"
+    ],
+    "augments_class_from_regex_when_MISSING_not_defined": ["^(?!MISSING).*"],
+    "augments_class_from_regex": ["cfengine_\\d+"],
+    "augments_class_from_single_class_as_regex": ["cfengine"],
+    "augments_class_from_single_class_as_expression": ["cfengine::"],
+    "augments_class_from_classexpression_and": ["cfengine.cfengine_3::"],
+    "augments_class_from_classexpression_not": ["!MISSING::"],
+    "augments_class_from_classexpression_or": ["cfengine|cfengine_3::"],
+    "augments_class_from_classexpression_complex": [
+      "(cfengine|cfengine_3).!MISSING::"
+    ],
+    "myclass_defined_by_augments_in_def_json_3_18_0_v0": {
+      "class_expressions": ["linux.redhat::", "cfengine|linux::"],
+      "comment": "Optional description about why this class is important",
+      "tags": ["optional", "tags"]
+    },
+    "myclass_defined_by_augments_in_def_json_3_18_0_v1": {
+      "regular_expressions": ["linux.*", "cfengine.*"],
+      "tags": ["optional", "tags"]
     }
+  }
 }
 ```
 
@@ -465,7 +452,6 @@ myclass_defined_by_augments_in_def_json_3_18_0_v1            optional,tags,sourc
   * Support for dict structure for classes and support for metadata (`comment`, `tags`) added.
   * Classes are defined as _soft_ classes instead of _hard_ classes.
 
-
 ### augments
 
 This key is supported in `def.json`, `def_preferred.json`, and augments loaded by the [_augments_ key][Augments#augments].
@@ -482,13 +468,11 @@ The `def.json` next to the policy entry:
 
 ```json
 {
-  "vars":{
+  "vars": {
     "my_var": "defined in def.json",
     "my_other_var": "Defined ONLY in def.json"
   },
-  "augments": [
-    "/var/cfengine/augments/$(sys.flavor).json"
-  ]
+  "augments": ["/var/cfengine/augments/$(sys.flavor).json"]
 }
 ```
 

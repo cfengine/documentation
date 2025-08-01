@@ -69,8 +69,6 @@ HTTP 200 Ok
 | 200 OK                    | 2FA configuration successfully created |
 | 500 Internal server error | Internal server error                  |
 
-
-
 ## Complete two-factor authentication configuration
 
 **URI:** https://hub.cfengine.com/api/2fa/totp/configure
@@ -105,7 +103,6 @@ HTTP 200 Ok
 | 200 OK                    | 2FA successfully configured |
 | 400 Bad request           | 2FA verification failed.    |
 | 500 Internal server error | Internal server error       |
-
 
 ## Disable two-factor authentication for the current user
 
@@ -177,8 +174,6 @@ HTTP 200 Ok
 | 409 Conflict              | 2FA is not enabled for this user       |
 | 500 Internal server error | Internal server error                  |
 
-
-
 ## Verify two-factor authentication code
 
 This API endpoint verifies the authentication code. If OAuth authentication is used and the code is valid,
@@ -218,7 +213,6 @@ HTTP 200 Ok
 | 409 Conflict              | 2FA is not enabled for this user |
 | 500 Internal server error | Internal server error            |
 
-
 ## Check if verification is needed
 
 This API endpoint checks if 2FA verification is needed. Only needed for OAuth authentication method
@@ -227,7 +221,6 @@ as for the Basic authentication is needed every time.
 **URI:** https://hub.cfengine.com/api/2fa/verification-needed
 
 **Method:** GET
-
 
 **Example request (curl):**
 

@@ -8,7 +8,6 @@ Users and Roles determine who has access to what data from the API.
 Roles are defined by regular expressions that determine which hosts the
 user can see, and what policy outcomes are restricted.
 
-
 ## Example: Listing users
 
 **Request**
@@ -44,7 +43,6 @@ user can see, and what policy outcomes are restricted.
       ]
     }
 
-
 ## Example: Creating a new user
 
 All users will be created for the internal user table. The API will never
@@ -64,7 +62,6 @@ attempt to write to an external LDAP server.
 
     201 Created
     }
-
 
 ## Example: Updating an existing user
 
@@ -134,7 +131,6 @@ is used to remove a user from a role.
 
     204 No Content
     }
-
 
 ## Example: Deleting a user
 

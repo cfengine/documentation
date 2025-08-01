@@ -23,9 +23,7 @@ render a `/etc/motd` using a mustache template and add useful information as:
 
 The bundle is defined like this:
 
-
 [%CFEngine_include_example(mustache_template_motd.cf)%]
-
 
 **Example run:**
 

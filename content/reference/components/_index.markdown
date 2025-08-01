@@ -23,7 +23,6 @@ The `common` control body refers to those promises that are
 hard-coded into all the components of CFEngine, and therefore
 affect the behavior of all the components.
 
-
 ```cf3
 body common control
 
@@ -47,7 +46,6 @@ version => "1.2.3";
 }
 ```
 
-
 ### bundlesequence
 
 **Description:** The `bundlesequence` contains promise bundles
@@ -56,7 +54,6 @@ to verify, in a specific order.
 The `bundlesequence` determines which of the compiled bundles will be executed
 by `cf-agent` and in what order they will be executed. The list refers to the
 names of bundles (which might be parameterized, function-like objects).
-
 
 The default value for `bundlesequence` is `{ "main" }`.
 
@@ -164,7 +161,6 @@ body common control
 In this example,  bwlimit is set to 10MBytes/sec = 80Mbit/s meaning that
 CFEngine would only consume up to ~80% of any 100Mbit ethernet interface.
 
-
 ### cache_system_functions
 
 **Description:** Controls the caching of the results of system
@@ -196,7 +192,6 @@ cache_system_functions => "true";
 **History:**
 - Introduced in version 3.6.0.
 
-
 ### domain
 
 **Description:** The `domain` string specifies the domain name for this host.
@@ -217,7 +212,6 @@ body common control
 domain => "example.org";
 }
 ```
-
 
 ### goal_patterns
 
@@ -243,7 +237,6 @@ goal_patterns => { "goal_.*", "target.*" };
 
 **History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
-
 ### ignore_missing_bundles
 
 **Description:** Determines whether to ignore missing bundles.
@@ -267,7 +260,6 @@ This authorizes the bundlesequence to contain possibly
 "nonexistent" pluggable modules. It defaults to false, whereupon
 undefined bundles cause a fatal error in parsing, and a transition
 to failsafe mode.
-
 
 ### ignore_missing_inputs
 
@@ -468,7 +460,6 @@ require_comments => "true";
 }
 ```
 
-
 ### site_classes
 
 **Description:** A `site_classes` contains classes that will represent
@@ -498,7 +489,6 @@ site_classes => { "datacenters","datacentres"  }; # locations is by default
 ```
 
 **History:** Was introduced in version 3.2.0, Nova 2.1.0 (2011)
-
 
 ### syslog_host
 
@@ -640,7 +630,6 @@ body common control
 version => "1.2.3";
 }
 ```
-
 
 ## Deprecated attributes in body common control
 

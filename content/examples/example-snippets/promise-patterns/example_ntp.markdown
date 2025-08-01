@@ -5,7 +5,6 @@ reviewed: 2013-06-09
 reviewed-by: atsaloli
 ---
 
-
 The following sets up a local NTP server that synchronizes with pool.ntp.org and
 clients that synchronize with your local NTP server. See bottom of this example
 if you don't want to build a server, but use a "brute force" method (repeated

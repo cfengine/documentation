@@ -157,7 +157,6 @@ body changes lay_a_tripwire
 }
 ```
 
-
 ## Common edit_line attributes
 
 These attributes can be used by any promise type that applies to `edit_line`
@@ -295,7 +294,6 @@ desired result.
 
 ****
 
-
 #### include\_end\_delimiter
 
 **Description:** Whether to include the section delimiter
@@ -429,7 +427,6 @@ When `select_end_match_eof` is set to true `select_end` will consider end of
 file as the end region if it is unable to match the end pattern. If the
 `select_end` attribute is omitted, the selected region will run to the end of
 the file no matter what the value of `select_end_match_eof` is set to.
-
 
 **Type:** [`boolean`][boolean]
 

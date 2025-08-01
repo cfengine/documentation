@@ -94,7 +94,6 @@ sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_
 **Note:** You might get a message like this: "Policy is not found in /var/cfengine/inputs, not starting CFEngine." Do not worry;
 this is taken care of during the bootstrapping process.
 
-
 ## 3. Bootstrap the policy server
 
 The Policy Server must be bootstrapped to itself. Find the IP address of your Policy Server.

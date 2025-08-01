@@ -265,7 +265,6 @@ If an interface matches a regular expression in the file then various classes an
 * `bin/reindexdb`
 * `bin/vacuumdb`
 
-
 ## Not verified
 
 * `state/history.lmdb`

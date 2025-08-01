@@ -32,7 +32,6 @@ bundle monitor self_watch
     # match_value:
     #root \s+                         [0-9.]+ \s+ [0-9.]+  \s+  [0-9.]+ \s+   [0-9.]+ \s+  [0-9.]+ \s+ [0-9]+ \s+ [0-9]+ \s+ ([0-9]+) .*"
 
-
      "/var/cfengine/state/cf_rootprocs"
 
         handle => "cf_monitord_RSS",
@@ -52,7 +51,6 @@ body match_value proc_value(x,y)
   extraction_regex => "$(y)";
 }
 ```
-
 
 ```cf3
 bundle monitor watch_diskspace
@@ -416,7 +414,6 @@ ifelapsed => "$(x)";
 expireafter => "10";
 }
 ```
-
 
 #### select_multiline_policy
 

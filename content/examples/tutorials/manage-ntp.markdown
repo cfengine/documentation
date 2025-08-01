@@ -10,7 +10,6 @@ Note: For simplicity, in this tutorial we will work directly on top of the Maste
 
 ## Ensuring the NTP package is installed
 
-
 ```cf3 {file="ntp.cf"}
 bundle agent ntp
 {
@@ -124,10 +123,8 @@ Now, we need to make sure the agent knows it should use this policy file and bun
 
 ```json
 {
-  "inputs": [ "services/ntp.cf" ],
-  "vars": {
-    "control_common_bundlesequence_end": [ "ntp" ]
-  }
+  "inputs": ["services/ntp.cf"],
+  "vars": { "control_common_bundlesequence_end": ["ntp"] }
 }
 ```
 
@@ -266,7 +263,6 @@ After making changes it's always a good idea to validate the policy file you mod
 
 If the code has no syntax error, you should see no output.
 
-
 Perform a manual policy run and review the output to ensure that the policy executed successfully. Upon a successful run you should expect to see an output similar to this (depending on the init system your OS is using):
 
 ```command
@@ -290,7 +286,6 @@ You have now written a complete policy to ensure that the NTP package is install
 Now we will manage the configuration file using the built-in mustache templating engine, set up appropriate file permissions, and restart the service when necessary.
 
 By default, the NTP service leverages configuration properties specified in /etc/ntp.conf. In this tutorial, we introduce the concept of the files promise type. With this promise type, you can create, delete, and edit files using CFEngine policies. The example policy below illustrates the use of the files promise.
-
 
 ```cf3
 bundle agent ntp
@@ -349,7 +344,6 @@ keys /etc/ntp/keys
        service_policy => "restart",
        classes => results( "bundle", "ntp_service_config_change" );
 
-
    reports:
      ntp_service_running_repaired.inform_mode::
        "NTP service started";
@@ -360,13 +354,11 @@ keys /etc/ntp/keys
 }
 ```
 
-
 What does this policy do?
 
 Let's review the different sections of the code, starting with the variable declarations which makes use of operating system environment for classification of the time servers.
 
 #### vars
-
 
 ```cf3
    vars:
@@ -391,7 +383,6 @@ includefile /etc/ntp/crypto/pw
 keys /etc/ntp/keys
 ";
 ```
-
 
 A few new variables are defined. The variables `ntp_package_name`, `config_file`, `driftfile`, `servers`, and `config_template_string` are defined under the `linux` context (so only linux hosts will define them). `config_file` is the path to the ntp configuration file, `driftfile` and `servers` are both variables that will be used when rendering the configuration file and `config_template_string` is the template that will be used to render the configuration file. While both `driftfile` and `servers` are set the same for all linux hosts, those variables could easily be set to different values under different contexts.
 
@@ -474,7 +465,7 @@ Note, `mergedata()` tries to expand bare values from CFEngine variables, so `ser
 ```json
 {
   "driftfile": "/var/lib/ntp/drift",
-  "servers": [ "time.nist.gov" ]
+  "servers": ["time.nist.gov"]
 }
 ```
 
@@ -520,7 +511,6 @@ Mission Accomplished!
 Next we will augment file/template management with data sourced from a JSON data file. This is a simple extension of what we have done previously illustrating how tunables in policy can be exposed and leveraged from a data feed.
 
 CFEngine offers out-of-the-box support for reading and writing JSON data structures. In this tutorial, we will default the NTP configuration properties in policy, but provide a path for the properties to be overridden from Augments.
-
 
 ```cf3 {file="ntp.cf"}
 bundle agent ntp
@@ -595,7 +585,6 @@ keys /etc/ntp/keys
        service_policy => "restart",
        classes => results( "bundle", "ntp_service_config_change" );
 
-
    reports:
      ntp_service_running_repaired.inform_mode::
        "NTP service started";
@@ -605,7 +594,6 @@ keys /etc/ntp/keys
 
 }
 ```
-
 
 What does this policy do?
 
@@ -646,7 +634,6 @@ Notice two promises were introduced, one setting `driftfile` to the value of `$(
 
 First modify `services/ntp.cf` as shown previously (don't forget to check syntax with `cf-promises` after modification), then run the policy.
 
-
 ```command
 cf-agent -KIf update.cf
 ```
@@ -667,14 +654,18 @@ Modify `def.json` so that it looks like this:
 
 ```json {file="def.json"}
 {
-  "inputs": [ "services/ntp.cf" ],
+  "inputs": ["services/ntp.cf"],
   "vars": {
-    "control_common_bundlesequence_end": [ "ntp" ],
+    "control_common_bundlesequence_end": ["ntp"],
     "ntp": {
       "config": {
         "driftfile": "/tmp/drift",
-        "servers": [ "0.north-america.pool.ntp.org", "1.north-america.pool.ntp.org",
-                     "2.north-america.pool.ntp.org", "3.north-america.pool.ntp.org" ]
+        "servers": [
+          "0.north-america.pool.ntp.org",
+          "1.north-america.pool.ntp.org",
+          "2.north-america.pool.ntp.org",
+          "3.north-america.pool.ntp.org"
+        ]
       }
     }
   }
@@ -682,7 +673,6 @@ Modify `def.json` so that it looks like this:
 ```
 
 Now, let's validate the JSON and force a policy run and inspect the result.
-
 
 ```command
 python -m json.tool < def.json

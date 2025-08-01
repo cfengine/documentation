@@ -58,7 +58,6 @@ Output:
 
 [%CFEngine_include_snippet(mapdata_jsonpipe.cf, #\+begin_src\s+output\s*, .*end_src)%]
 
-
 **History:** Was introduced in 3.7.0. `canonify` mode was introduced in 3.9.0. The [collecting function][Functions#collecting functions] behavior was added in 3.9. The `json_pipe` mode was added in 3.9. The delayed evaluation behavior was introduced in 3.10.
 
 **See also:** `maplist()`, `maparray()`, `canonify()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

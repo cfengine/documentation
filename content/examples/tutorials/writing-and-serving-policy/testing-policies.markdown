@@ -36,7 +36,6 @@ following:
 ~/.cfagent/bin/cf-promises --verbose
 ```
 
-
 This is always the way to start checking a configuration in CFEngine 3. If a
 configuration does not pass this check/test, you will not be allowed to use
 it, and `cf-agent` will look for the file `failsafe.cf`.

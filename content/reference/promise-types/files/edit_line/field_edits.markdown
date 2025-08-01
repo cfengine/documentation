@@ -301,7 +301,6 @@ value_separator => ",";
 }
 ```
 
-
 ### select_region
 
 **Description:** Constrains `edit_line` operations to region identified by matching regular expressions.

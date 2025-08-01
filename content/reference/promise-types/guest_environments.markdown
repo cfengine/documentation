@@ -26,8 +26,6 @@ to manage what goes on within the virtual guests. For that purpose you
 should run CFEngine directly on the virtual machine, as if it were any
 other machine.
 
-
-
 ```cf3
 site1::
 
@@ -81,7 +79,6 @@ guest_environments:
        environment_state => "suspended",
         environment_host => "ubuntu";
 ```
-
 
 This attribute is required.
 

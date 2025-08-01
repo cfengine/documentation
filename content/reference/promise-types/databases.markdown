@@ -77,8 +77,6 @@ body database_server name
 }
 ```
 
-
-
 ```cf3
 body common control
 {
@@ -109,8 +107,6 @@ databases:
                         },
 
     database_server => myserver;
-
-
 
 }
 

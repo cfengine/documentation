@@ -126,7 +126,6 @@ inputs => {
 
 That's all.
 
-
 ## Test it!
 
 To test it, we need to make a change to any CFEngine policy, and then go to Sumo Logic to see if there is a new timestamp reported.

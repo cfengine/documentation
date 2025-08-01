@@ -48,7 +48,6 @@ the final destination by cf-agent.
 
 ## What does file editing involve?
 
-
 There are several ways to approach desired state management of file contents:
 
  * Copy a finished file template to the desired location, completely overwriting
@@ -66,7 +65,6 @@ For the approach 	Against the approach
 1. Deterministic. 	Hard to specialize the result and the source must still be maintained by hand.
 2. Deterministic. 	Limited specialization and must come from a single source, again maintained by hand.
 3. Non-deterministic/partial model. 	Full power to customize file even with multiple managers.
-
 
 Approaches 1 and 2 are best for situations where very few variations of a file
 are needed in different circumstances. Approach 3 is best when you need to
@@ -349,7 +347,6 @@ delete_lines:
 
 ## Constructing files from promises
 
-
 Making finished templates for files and filling in the blanks using variables is
 a flexble approach in many cases, but it is not flexible enough for all cases. A
 very flexible approach, but one that requires more thought, is to build a final
@@ -404,7 +401,6 @@ This is a file template containing variables to expand
 e.g $(data.person) had $(data.animal)
 ```
 
-
 Then we would have the file content:
 
 ```console
@@ -455,7 +451,6 @@ files:
 
 ### Lists inline
 
-
 Here is a more complicated example, that includes list expansion. List expansion
 (iteration) adds some trickiness because it is an ordered process, which needs
 to be anchored somehow.
@@ -488,7 +483,6 @@ vars:
 bundle agent main
 {
 files:
-
 
    "/tmp/my_result"
 
@@ -588,7 +582,6 @@ bundle agent main
 {
 files:
 
-
    "/tmp/my_result"
 
         create => "true",
@@ -662,7 +655,6 @@ vars:
 bundle agent main
 {
 files:
-
 
    "/tmp/my_result"
 

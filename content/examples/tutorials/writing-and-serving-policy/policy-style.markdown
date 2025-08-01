@@ -97,7 +97,6 @@ bundle agent main
         policy => "present";
         package_module => apt_get;
 
-
   files:
 
       "$(sshd_config)"
@@ -278,7 +277,6 @@ consider when your policy should generate report output. For policy degbugging
 type information (value of variables, classes that were set or not) the
 following style is recommended:
 
-
 ```cf3
 bundle agent example
 {
@@ -385,7 +383,6 @@ Naming conventions can also help to provide clarity.
 Words delimited by an underscore. This style is prevalant for *variables*,
 *classes*, *bundle* and *body* names in the Masterfiles Policy Framework.
 
-
 [%CFEngine_include_example(style_snake_case.cf)%]
 
 ### Pascalecase
@@ -406,7 +403,6 @@ Words are delimited by capital letters, except the initial word.
 help improve the readability of policy, especially when working with lists and
 data containers where the use of `@` or `$` significantly affects the behavior
 of the policy.
-
 
 [%CFEngine_include_example(style_hungarian.cf)%]
 

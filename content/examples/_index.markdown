@@ -189,7 +189,6 @@ And it can now be run directly:
 2013-08-20T14:39:34-0500   notice: R: Hello World!
 ```
 
-
 ### Integrating the example into your main policy
 
 Make the example policy part of your main policy by

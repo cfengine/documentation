@@ -128,7 +128,6 @@ approach to continuous maintenance.
 
 The approach used by CFEngine is to:
 
-
  * Help to bring comprehension to the scope of the problem (Knowledge Management
    and Model-based Desired State Computing).
 

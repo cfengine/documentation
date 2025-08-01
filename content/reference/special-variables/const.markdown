@@ -22,7 +22,6 @@ reports:
 
 ### const.dollar
 
-
 ```cf3
 reports:
 
@@ -34,7 +33,6 @@ reports:
 ```
 
 ### const.dirsep
-
 
 ```cf3
 reports:

@@ -84,7 +84,6 @@ Below you can see an example of hosts table representation as JSON element.
     }
 ```
 
-
 **Structure:**
 
 Each element has a key and a value. When you create your own JSON element please use a unique key. The value is a
@@ -125,7 +124,6 @@ The element's key should be equal to `sqlField`
 After dca.js editing please validate the content of DCA variable (`var DCA =`) in a JSON validation tooling,
 there are many online tools to do that. Once your content validated and file has saved your changes will appear after
 the next agent run.
-
 
 #### Example
 

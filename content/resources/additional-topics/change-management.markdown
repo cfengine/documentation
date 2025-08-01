@@ -128,7 +128,6 @@ changes can be made a quickly as possible, without significant use of resources.
 CFEngine's lightweight agents can run every five minutes to achieve a tight
 alignment with operational and business goals.
 
-
 In information theory, Nyquist's theorem says that, in order to properly track
 (and potentially correct) a process that happens at rate R, one must sample the
 system at twice this rate 2R. In CFEngine, we have chosen a repair resolution of
@@ -229,8 +228,6 @@ bundle agent example
 }
 ```
 
-
-
 You change a promise you have made about state to promise a new desired state.
 
 You edit promises.cf and track the changes using a change management repository
@@ -290,7 +287,6 @@ If you have made no promise about your system state, you should not be surprised
 by anything that happens there. You cannot assume that no change will happen.
 
 ## Change management and knowledge management
-
 
 The decision to manage change is an economic trade-off. The more promises we
 make about state, the higher the cost of keeping them. You have to decide how
