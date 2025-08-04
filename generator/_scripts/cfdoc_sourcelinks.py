@@ -125,7 +125,7 @@ def addLinkToSource(file_name, config):
         in_file.close()
     except:
         print("cfdoc_sourcelinks: Error opening " + html_file)
-        return 0  # tolerate missing HTML files
+        return 1
 
     new_html_file = html_file + ".new"
     out_file = open(new_html_file, "w")
