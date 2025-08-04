@@ -180,13 +180,13 @@ empty before performing an Enterprise Hub binary upgrade.
 
    ```json
    {
-      "classes": {
+     "classes": {
        "trigger_upgrade": [
          "ipv4_192_0_2",
          "ipv4_203_0_13",
-         "cfengine_3_10_(?!2$)\d+"
+         "cfengine_3_10_(?!2$)\\d+"
        ]
-      }
+     }
    }
    ```
 

@@ -87,7 +87,6 @@ continue with more compelling examples.
 
 ## Iterating across multiple lists
 
-
 Although iteration is a powerful concept in and of itself, CFEngine can iterate
 across multiple lists simultaneously. In the previous example, we looked at the
 current values of four monitor variables, but since CFEngine also gives us

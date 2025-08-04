@@ -167,7 +167,6 @@ change in the future.
 Changing the standard port number is not recommended practice. You should not
 do it without a good reason.
 
-
 ### client_history_timeout
 
 **Description:** If the hub can't reach a client for this many (or more) hours,

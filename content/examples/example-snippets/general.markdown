@@ -12,7 +12,6 @@ sorting: 1
 
 To get started with CFEngine, you can imagine the following template for entering examples. This part of the code is common to all the examples.
 
-
 [%CFEngine_include_snippet(basic_example.cf, .* )%]
 
 ## The general pattern
@@ -27,7 +26,6 @@ what_type:
 
   ## Traditional comment
 
-
   "promiser" -> { "promisee1", "promisee2" },
         comment => "The intention ...",
          handle => "unique_id_label",
@@ -37,7 +35,6 @@ what_type:
 ```
 
 ### Hello world
-
 
 [%CFEngine_include_snippet(hello_world.cf, .* )%]
 

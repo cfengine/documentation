@@ -16,7 +16,6 @@ characters, so that you do not have to.
 
 **Example:**
 
-
 [%CFEngine_include_snippet(escape.cf, #\+begin_src cfengine3, .*end_src)%]
 
 Output:

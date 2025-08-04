@@ -14,7 +14,6 @@ storage:
      ...;
 ```
 
-
 ```cf3
 bundle agent storage
 {

@@ -380,7 +380,6 @@ aces = {
       * The group id is not a valid alternative.
       * This ACL is **required** when `acl_method` is set to `overwrite`.
 
-
 * `gid`
 
     A valid group identifier for the system and cannot be empty. However, in
@@ -440,7 +439,6 @@ aces = {
     | p | Read Permissions |
     | c | Change Permissions |
     | o | Take Ownership |
-
 
 * `perm_type` (optional)
 
@@ -679,7 +677,6 @@ hash => "md5";
 }
 ```
 
-
 #### report_changes
 
 **Description:** Specify criteria for change warnings using the `report_changes` menu option.
@@ -747,7 +744,6 @@ used to attempt to capture random changes of the system.
 Diffs will not be reported for files that are larger than 80MB in size.
 Diffs will not be reported if the number of lines between the first and last change exceed 4500.
 Diffs for binary files are not generated. Files are considered binary files if [control character](http://en.wikipedia.org/wiki/Control_character#In_ASCII) 0-32 excluding 9, 10, 13, and 32, or 127 are found in the file.
-
 
 **Type:** [`boolean`][boolean]
 
@@ -888,7 +884,6 @@ Enterprise versions of CFEngine and all Community versions, MD5 is
 used.
 
 * `digest` a synonym for `hash`
-
 
 **Default value:** mtime or ctime differs
 
@@ -1403,9 +1398,7 @@ verify => "true";
 
 **Example:**
 
-
 [%CFEngine_include_example(files_content.cf)%]
-
 
 **History:** Was introduced in 3.16.0
 
@@ -1475,7 +1468,6 @@ The value `keep` instructs CFEngine not to remove directory links. The
 values `delete` and `tidy` are synonymous, and instruct CFEngine to
 remove directory links.
 
-
 **Type:** (menu option)
 
 **Allowed input range:**
@@ -1505,7 +1497,6 @@ are **not** deleted.
 
 **Description:** true/false whether to delete empty directories during
 recursive deletion
-
 
 **Type:** [`boolean`][boolean]
 
@@ -1591,7 +1582,6 @@ directory. This parameter determines whether that initial directory
 should be considered part of the promise or simply a boundary that marks
 the edge of the search. If true, the promiser directory will also
 promise the same attributes as the files inside it. `rmdirs` in `delete` bodies /ignore/ this attribute. A separate files promise must be made in order to delete the top level directory.
-
 
 **Type:** [`boolean`][boolean]
 
@@ -1846,7 +1836,6 @@ empty_file_before_editing => "true";
 }
 ```
 
-
 #### inherit
 
 **Description:** If true this causes the sub-bundle to inherit the private
@@ -1919,7 +1908,6 @@ Back slash lines will only be concatenated if the file requires editing,
 and will not be restored. Restoration of the backslashes is not possible
 in a meaningful and convergent fashion.
 
-
 **Type:** [`boolean`][boolean]
 
 **Default value:** false
@@ -1963,7 +1951,6 @@ copied/zeroed or rotated (as above) until there are rotate numbered
 files, plus the one "main" file. In the example above, the file foo.3
 will be renamed foo.4, but the old version of the file foo.4 will be
 deleted (that is, it "falls off the end" of the rotation).
-
 
 **Type:** `int`
 
@@ -2035,7 +2022,6 @@ bundle agent example
 <!-- This example contains mustache, so it needs to be wrapped in raw or else it won't render as desired.-->
 
 [%CFEngine_include_example(template_method-inline_mustache.cf)%]
-
 
 **History:** Was introduced in 3.12.0
 
@@ -2292,7 +2278,6 @@ body file_select used_recently
     atime     => irange(ago(0,0,0,1,0,0),now);
     file_result => "atime";
 }
-
 
 body file_select not_used_much
 {
@@ -2563,7 +2548,6 @@ source => "/tmp/source";
 
 [%CFEngine_include_example(symlink.cf)%]
 
-
 **Notes:**
 On Windows, hard links are the only supported type.
 
@@ -2585,7 +2569,6 @@ body link_from example
 source => "/path/to/source";
 }
 ```
-
 
 #### when_linking_children
 
@@ -3235,7 +3218,6 @@ for `inline_mustache` and `mustache`.  For mustache explanation see
 
 [%CFEngine_include_example(template_method-inline_mustache.cf)%]
 
-
 **History:** Was introduced in 3.12.0
 
 **See also:** `edit_template_string`, `template_data`, `datastate()`
@@ -3276,9 +3258,7 @@ HTML, use the triple mustache: ```{{{name}}}``` or an ampersand
 
 A variable "miss" returns an empty string.
 
-
 [%CFEngine_include_example(mustache_variables.cf)%]
-
 
 ##### template_method mustache Sections
 
@@ -3295,24 +3275,18 @@ The behavior of the section is determined by the value of the key.
 If the key exists and has a value of false or an empty list, the HTML between
 the pound and slash will not be displayed.
 
-
 [%CFEngine_include_example(mustache_sections_empty_list.cf)%]
-
 
 **Non-Empty Lists:**
 
-
 [%CFEngine_include_example(mustache_sections_non_empty_list.cf)%]
-
 
 **Non-False Values:**
 
 When the value is non-false but not a list, it will be used as the context for a
 single rendering of the block.
 
-
 [%CFEngine_include_example(mustache_sections_non_false_value.cf)%]
-
 
 ##### template_method mustache Inverted Sections
 
@@ -3325,26 +3299,20 @@ of the key, inverted sections may render text once based on the inverse value of
 the key. That is, they will be rendered if the key doesn't exist, is false, or
 is an empty list.
 
-
 [%CFEngine_include_example(mustache_sections_inverted.cf)%]
-
 
 ##### template_method mustache Comments
 
 Comments begin with a bang and are ignored. Comments may contain newlines.
 
-
 [%CFEngine_include_example(mustache_comments.cf)%]
-
 
 ##### template_method mustache Set Delimiter
 
 Set Delimiter tags start with an equal sign and change the tag delimiters from
 ```{{``` and ```}}``` to custom strings.
 
-
 [%CFEngine_include_example(mustache_set_delimiters.cf)%]
-
 
 ##### template_method mustache extensions
 
@@ -3354,31 +3322,22 @@ The following are **CFEngine-specific extensions**.
 over the top level of a container `{{#-top-}} ... {{/-top-}}`
 and rendering json representation of data given with `$` and `%`.
 
-
 [%CFEngine_include_example(mustache_extension_top.cf)%]
-
 
 `%` variable prefix causing data to be rendered as multi-line json
 representation. Like output from `storejson()`.
 
-
 [%CFEngine_include_example(mustache_extension_multiline_json.cf)%]
-
 
 `$` variable prefix causing data to be rendered as compact json representation.
 Like output from `format()` with the ```%S``` format string.
 
-
 [%CFEngine_include_example(mustache_extension_compact_json.cf)%]
-
 
 `@` expands the current key being iterated to complement the value as accessed
 with `.`.
 
-
 [%CFEngine_include_example(mustache_extension_expand_key.cf)%]
-
-
 
 **See also:** `edit_template`, `template_data`, `datastate()`
 

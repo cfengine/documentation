@@ -13,7 +13,6 @@ Here is an example run.
 
 First, let's create some files for CFEngine to monitor:
 
-
 ```
 # mkdir /etc/example
 # date > /etc/example/example.conf

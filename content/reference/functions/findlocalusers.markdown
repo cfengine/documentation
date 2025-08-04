@@ -19,8 +19,6 @@ The possible attributes are:
 * `dir`: path to home directory
 * `shell`: default shell
 
-
-
 **Example:**
 
 [%CFEngine_include_snippet(findlocalusers.cf, #\+begin_src cfengine3, .*end_src)%]

@@ -206,7 +206,6 @@ commands:
         classes => state_repaired("did_my_job");
 ```
 
-
 ## Fancy distributed encapsulation
 
 We could try to be fancy about distributed scheduling, packaging it into a

@@ -11,7 +11,6 @@ sha256 checksums of all downloadable files which you can verify by using
 In addition to this, `*.deb` and `*.rpm` packages (with the exception of AIX rpms) are
 cryptographically signed using gpg.
 
-
 ## Validating signature of RPM
 
 NOTE: AIX rpms currently are NOT signed because it's not supported on older versions of AIX.

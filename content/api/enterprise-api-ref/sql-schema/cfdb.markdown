@@ -195,7 +195,6 @@ CFEngine contexts set on hosts by CFEngine over period of time.
 * **MetaTags** *(text[])*
     List of [meta tags][Tags for variables, classes, and bundles] set for the context.
 
-
 **Example query:**
 
 ```sql
@@ -516,7 +515,6 @@ Inventory data grouped by host
 
 * **values** *(jsonb)*
     Inventory values presented in JSON format
-
 
 **Example query:**
 
@@ -1009,8 +1007,6 @@ logmessages     | {}
 promisees       | {}
 ```
 
-
-
 ## Table: PromiseLog
 
 History of promises executed on hosts.
@@ -1443,7 +1439,6 @@ patchversion      | 2.19-0ubuntu6.6
 patcharchitecture | default
 patchreporttype   | AVAILABLE
 ```
-
 
 ## Table: Variables
 

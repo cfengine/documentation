@@ -87,10 +87,8 @@ Create `/var/cfengine/masterfiles/def.json` and populate it with the following c
 
 ```json
 {
-  "inputs": [ "services/tutorials/inventory/owner.cf" ],
-  "vars": {
-    "control_common_bundlesequence_end": [ "tutorials_inventory_owner" ]
-  }
+  "inputs": ["services/tutorials/inventory/owner.cf"],
+  "vars": { "control_common_bundlesequence_end": ["tutorials_inventory_owner"] }
 }
 ```
 

@@ -24,7 +24,6 @@ The following report topics are included:
 
 [Change detection: tripwires][Command-Line reports#Change detection: tripwires]
 
-
 ### CFEngine output levels
 
 CFEngine's default behavior is to report to the console (known as standard output). It's
@@ -385,7 +384,6 @@ body common control
 {
 bundlesequence => { "one" };
 }
-
 
 bundle agent one
 {

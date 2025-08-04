@@ -41,9 +41,7 @@ federation policy to ensure that `semanage` is installed.
 
 ```json
 {
-  "classes": {
-    "cfengine_mp_fr_dependencies_auto_install" : ["any"]
-  }
+  "classes": { "cfengine_mp_fr_dependencies_auto_install": ["any"] }
 }
 ```
 
@@ -208,9 +206,7 @@ After those steps, ensure `cfengine_mp_fr_enable_distributed_cleanup` is present
 
 ```json
 {
-  "classes": {
-    "cfengine_mp_fr_enable_distributed_cleanup": ["any::"]
-  }
+  "classes": { "cfengine_mp_fr_enable_distributed_cleanup": ["any::"] }
 }
 ```
 (Note that this augment should be in addition to any others that you need such as `cfengine_mp_fr_dependencies_auto_install`)
@@ -250,9 +246,7 @@ If enabled it is performed on every import cycle.
 
 ```json
 {
-  "classes": {
-    "cfengine_mp_fr_handle_duplicate_hostkeys": ["any::"]
-  }
+  "classes": { "cfengine_mp_fr_handle_duplicate_hostkeys": ["any::"] }
 }
 ```
 
@@ -625,8 +619,7 @@ you wish to disable and change the top-level `target_state` property value to `o
   "role": "feeder",
   "enabled": "true",
   "target_state": "off",
-  "transport":
-  {
+  "transport": {
     "mode": "pull_over_rsync",
     "ssh_user": "cftransport",
     "ssh_host": "<superhub-ip>",
@@ -648,7 +641,7 @@ management app.
    curl -k -s -X GET -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub | jq '.'
    ```
 
-   ```json
+   ```json {skip}
    {
      "id": 1,
      "hostkey": "SHA=cd4be31f20f0c7d019a5d3bfe368415f2d34fec8af26ee28c4c123c6a0af49a2",
@@ -730,7 +723,7 @@ we use the number "1".
   If you wish to re-add this feeder to a superhub, change "target_state" from "off" to "on".
   Remember to trigger or wait for an agent run for the change from off to on to take effect.
 
-   ```json
+   ```json {skip TODO}
    {
        "hostname": null,
        "role": "feeder",
@@ -738,7 +731,6 @@ we use the number "1".
        "remote_hubs": { }
    }
    ```
-
 
 * On 3.15.x and greater feeders, also run the following commands to truncate two tables:
 
@@ -804,7 +796,7 @@ Follow this procedure:
    * edit `/opt/cfengine/federation/cfapache/federation-config.json` to remove all entries in the `remote_hubs` property.
      similar to the following:
 
-      ```json
+      ```json {skip TODO}
       {
           "hostname": null,
           "role": "feeder",

@@ -115,7 +115,6 @@ packages:
       architecture => "x86_64";
 ```
 
-
 ### options
 
 **Description:** Options to pass to the underlying package module.
@@ -145,7 +144,6 @@ packages:
       options => { "-o", "APT::Install-Recommends=0" };
 ```
 
-
 ### policy
 
 **Description:** Whether the package should be present or absent on the system.
@@ -164,7 +162,6 @@ packages:
       policy => "absent",
       package_module => apt_get;
 ```
-
 
 ### version
 
@@ -191,7 +188,6 @@ packages:
       package_module => apt_get,
       version => "latest";
 ```
-
 
 ### package_module
 
@@ -223,7 +219,6 @@ body package_module apt_get
     default_options => { "use_curl=1" };
 }
 ```
-
 
 #### query_installed_ifelapsed
 
@@ -505,7 +500,6 @@ packages:
       package_module => nimclient,
       options => { "lpp_source=lppaix710304" };
 ```
-
 
 **Notes:**
 

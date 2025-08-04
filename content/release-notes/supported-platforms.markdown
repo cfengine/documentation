@@ -36,9 +36,7 @@ Any supported host can be a policy server in Community installations of CFEngine
 | Ubuntu      | 22.04, 24.04        | arm64         |
 | Windows     | 2012, 2016, 2019    | x86-64        |
 
-
 [Known issues][] also includes platform-specific notes.
-
 
 CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493) from IBM.
 This means that CFEngine Enterprise has been technically verified by IBM

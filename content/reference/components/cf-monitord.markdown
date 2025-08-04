@@ -162,7 +162,6 @@ made by `cf-monitord`. The system defaults will be sufficient for
 most users. This configurability potential, however, will be a key
 to developing the integrated monitoring capabilities of CFEngine.
 
-
 ```cf3
 body monitor control
 {
@@ -173,7 +172,6 @@ body monitor control
     tcpdumpcommand => "/usr/sbin/tcpdump -i eth1 -n -t -v";
 }
 ```
-
 
 ### forgetrate
 
@@ -208,7 +206,6 @@ forgetrate => "0.7";
 option is a no-op kept for backward compatibility. It used to cause
 CFEngine to learn the conformally transformed distributions of
 fluctuations about the mean.
-
 
 **Type:** [`boolean`][boolean]
 

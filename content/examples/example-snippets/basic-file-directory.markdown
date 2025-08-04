@@ -34,13 +34,11 @@ sorting: 6
 
 Create files and directories and set permissions.
 
-
 [%CFEngine_include_snippet(create_files_and_directories.cf, .* )%]
 
 ## Copy single files
 
 Copy single files, locally (local_cp) or from a remote site (secure_cp). The Community Open Promise-Body Library (COPBL; cfengine_stdlib.cf) should be included in the /var/cfengine/inputs/ directory and input as below.
-
 
 [%CFEngine_include_snippet(copy_single_files.cf, .* )%]
 
@@ -48,13 +46,11 @@ Copy single files, locally (local_cp) or from a remote site (secure_cp). The Com
 
 Copy directory trees, locally (local_cp) or from a remote site (secure_cp). (depth_search => recurse("")) defines the number of sublevels to include, ("inf") gets entire tree.
 
-
 [%CFEngine_include_snippet(copy_directory_trees.cf, .* )%]
 
 ## Disabling and rotating files
 
 Use the following simple steps to disable and rotate files. See the Community Open Promise-Body Library if you wish more details on what disable and rotate does.
-
 
 [%CFEngine_include_snippet(disabling_and_rotating_files.cf, .* )%]
 
@@ -62,32 +58,25 @@ Use the following simple steps to disable and rotate files. See the Community Op
 
 There are numerous approaches to adding lines to a file. Often the order of a configuration file is unimportant, we just need to ensure settings within it. A simple way of adding lines is show below.
 
-
 [%CFEngine_include_snippet(add_lines_to_a_file.cf, .* )%]
 
 Also you could write this using a list variable:
-
 
 [%CFEngine_include_snippet(add_lines_to_a_file_1.cf, .* )%]
 
 ## Check file or directory permissions
 
-
 [%CFEngine_include_snippet(check_file_or_directory_permissions.cf, .* )%]
 
 ## Commenting lines in a file
-
 
 [%CFEngine_include_snippet(commenting_lines_in_a_file.cf, .* )%]
 
 ## Copy files
 
-
 [%CFEngine_include_snippet(copy_files.cf, .* )%]
 
-
 ## Copy and flatten directory
-
 
 [%CFEngine_include_snippet(copy_and_flatten_directory.cf, .* )%]
 
@@ -95,16 +84,13 @@ Also you could write this using a list variable:
 
 To convergently chain a copy followed by edit, you need a staging file. First you copy to the staging file. Then you edit the final file and insert the staging file into it as part of the editing. This is convergent with respect to both stages of the process.
 
-
 [%CFEngine_include_snippet(copy_then_edit_a_file_convergently.cf, .* )%]
 
 ## Deleting lines from a file
 
-
 [%CFEngine_include_snippet(deleting_lines_from_a_file.cf, .* )%]
 
 ## Deleting lines exception
-
 
 [%CFEngine_include_snippet(deleting_lines_exception.cf, .* )%]
 
@@ -118,27 +104,21 @@ This is a huge topic. See also See Add lines to a file, See Editing tabular file
 
 Here is an example of how to comment out lines matching a number of patterns:
 
-
 [%CFEngine_include_snippet(editing_files.cf, .* )%]
 
-
 ## Editing tabular files
-
 
 [%CFEngine_include_snippet(editing_tabular_files.cf, .* )%]
 
 ## Inserting lines in a file
 
-
 [%CFEngine_include_snippet(inserting_lines_in_a_file.cf, .* )%]
 
 ## Back references in filenames
 
-
 [%CFEngine_include_snippet(back_references_in_filenames.cf, .* )%]
 
 ## Add variable definitions to a file
-
 
 [%CFEngine_include_snippet(add_variable_definitions_to_a_file.cf, .* )%]
 
@@ -150,36 +130,29 @@ Results in:
 
 An example of this would be to add variables to /etc/sysctl.conf on Linux:
 
-
 [%CFEngine_include_snippet(add_variable_definitions_to_a_file_1.cf, .* )%]
 
 ## Linking files
-
 
 [%CFEngine_include_snippet(linking_files.cf, .* )%]
 
 ## Listing files-pattern in a directory
 
-
 [%CFEngine_include_snippet(listing_files-pattern_in_a_directory.cf, .* )%]
 
 ## Locate and transform files
-
 
 [%CFEngine_include_snippet(locate_and_transform_files.cf, .* )%]
 
 ## BSD flags
 
-
 [%CFEngine_include_snippet(bsd_flags.cf, .* )%]
 
 ## Search and replace text
 
-
 [%CFEngine_include_snippet(search_and_replace_text.cf, .* )%]
 
 ## Selecting a region in a file
-
 
 [%CFEngine_include_snippet(selecting_a_region_in_a_file.cf, .* )%]
 

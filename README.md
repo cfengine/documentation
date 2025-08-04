@@ -418,9 +418,9 @@ title of the current page. Parameters `arg1` etc are used for the names
 of the parameters:
 
 ```
-    **Prototype:** `title(arg1, arg2, ...)`
+**Prototype:** `title(arg1, arg2, ...)`
 
-    **Return type:** `type`
+**Return type:** `type`
 ```
 
 Use this before a `**Description:**` section in which the behavior of the
@@ -432,12 +432,12 @@ Renders a list of attributes for the function that has the same name as the
 title of the current page. `arg1` etc are used for the parameter names:
 
 ```
-    **Arguments:**
+**Arguments:**
 
-    * `arg1`: `type1`, in the range: `regex`
-    * `arg2`: `type2`, one of
-        * `option1`
-        * `option2`
+* `arg1`: `type1`, in the range: `regex`
+* `arg2`: `type2`, one of
+    * `option1`
+    * `option2`
 ```
 
 Links to known keywords are generated automatically.
@@ -459,36 +459,36 @@ level 4 header is interpreted to be the body attribute.
 **Example:**
 
 ```
-    ---
-    title: promise_type
-    ---
+---
+title: promise_type
+---
 
-    ## Attributes
+## Attributes
 
-    ### attribute1
+### attribute1
 
-    [%CFEngine_promise_attribute(default)%]
+[%CFEngine_promise_attribute(default)%]
 
-    This will document "attribute1" of "promise_type"
+This will document "attribute1" of "promise_type"
 
-    ### body
+### body
 
-    #### attribute1
+#### attribute1
 
-    [%CFEngine_promise_attribute(default)%]
+[%CFEngine_promise_attribute(default)%]
 
-    This will document "attribute1" of "body"
+This will document "attribute1" of "body"
 ```
 
 The generated markdown is:
 
 ```
-    **Type:** `type`
+**Type:** `type`
 
-    **Allowed input range:** `range`
+**Allowed input range:** `range`
 
-    * `option1`
-    * `option2`
+* `option1`
+* `option2`
 ```
 
 If a `default` parameter is provided, then a `**Default value:**` statement
@@ -552,9 +552,9 @@ requires a body template, then see next section).
     **Example:**
 
     ```f3
-        Some code with
-        cf3 markers
-        for syntax highlighting
+    Some code with
+    cf3 markers
+    for syntax highlighting
     ```
 
     If the example requires explanation, do it here. Consider using
@@ -621,9 +621,9 @@ title is the name of the function.
     **Example:**
 
     ```cf3
-        Some code with
-        cf3 markers
-        for syntax highlighting
+    Some code with
+    cf3 markers
+    for syntax highlighting
     ```
 
     If the example requires explanation, do it here. Consider using

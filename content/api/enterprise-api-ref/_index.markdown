@@ -86,7 +86,6 @@ table will always be consulted first, followed by an external source specified
 in the settings. External sources are *OpenLDAP* or *Active Directory* servers
 configurable through [/api/settings][Status and settings REST API#Update settings].
 
-
 ## Authorization
 
 Some resources require that the request user is a member of the *admin* role. Roles are managed with [/api/role][Users and access-control REST API#List RBAC roles]. Role Based Access Control (RBAC) is configurable through the settings. Users typically have permission to access their own resources, e.g. their own scheduled reports.

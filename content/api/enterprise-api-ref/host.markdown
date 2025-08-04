@@ -475,7 +475,6 @@ Note: Collecting monitoring data by default is disabled.
 
 **Example usage:** `Example: Retrieving vital sign data`
 
-
 ## Get count of bootstrapped hosts by date range
 
 **URI:** https://hub.cfengine.com/api/host-count

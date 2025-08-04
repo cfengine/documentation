@@ -14,7 +14,6 @@ bundlesequence => { "sudoers" };
 inputs => { "libraries/cfengine_stdlib.cf" };
 }
 
-
 bundle agent sudoers
 {
 
@@ -22,7 +21,6 @@ bundle agent sudoers
 vars:
 
   "master_location" string => "/var/cfengine/masterfiles";
-
 
 # Copy the master sudoers file to /etc/sudoers
 files:

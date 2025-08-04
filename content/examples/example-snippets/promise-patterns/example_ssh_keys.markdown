@@ -15,9 +15,7 @@ simply create it with the following content.
 
 ```json {file="def.json"}
 {
-  "classes": {
-               "services_autorun": [ "any" ]
-             }
+  "classes": { "services_autorun": ["any"] }
 }
 ```
 

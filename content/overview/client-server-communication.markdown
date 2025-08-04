@@ -180,7 +180,6 @@ other users are to be granted access to the system, they must also
 generate a key and go through the same process. In addition, the
 users must be added to the server configuration file.
 
-
 ## Encryption
 
 CFEngine has 2 communication protocols. `classic` or `1` and `2` or `latest`.

@@ -71,7 +71,6 @@ HTTP 200 Ok
 }
 ```
 
-
 ## Import
 
 **URI:** https://hub.example/advancedreports/complianceReport/import
@@ -145,7 +144,6 @@ HTTP 200 Ok
             Condition severity. Possible values: `low`, `medium`, `high`
         * **host_filter** *(text)*
             Host filter, should be valid class expression.
-
 
 * **overwrite** *(booleans)*
     Set true to overwrite existing reports or conditions that belong to you. Default: false

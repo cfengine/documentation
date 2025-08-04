@@ -16,7 +16,6 @@ background, and is started by `cf-agent` and from the init scripts.
 `cf-hub` wakes up every 5 minutes and connects to the `cf-serverd` of
 each host to download new data.
 
-
 To collect reports from any host manually, run the following:
 
 ```command

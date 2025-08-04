@@ -424,7 +424,6 @@ first_last => "last";
 The expression must match a whole line, not a fragment within a line;
 that is, it is [anchored][anchored].
 
-
 **Type:** `string`
 
 **Allowed input range:** `.*`

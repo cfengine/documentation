@@ -30,7 +30,6 @@ access:
       admit_keys => { "$(connection.key)" };
 ```
 
-
 ### connection.ip
 
 This variable contains the IP address of the connecting remote agent.
@@ -41,7 +40,6 @@ access:
       shortcut   => "myip.json",
       admit_keys => { "$(connection.key)" };
 ```
-
 
 ### connection.hostname
 

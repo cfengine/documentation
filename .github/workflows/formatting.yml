@@ -1,4 +1,4 @@
-name: Run markdowner.py on all markdown files and see if there are changes
+name: Check formatting
 
 on:
   push:
@@ -19,9 +19,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Run markdowner.py to (hopefully not) edit markdown files
+      - name: Install CFEngine CLI
         run: |
-          find . -name '*.markdown' -type f -exec python3 .github/workflows/markdowner.py {} all \; | tee output.log
+          pipx install cfengine
+      - name: Run formatting command to (hopefully not) make changes
+        run: |
+          cfengine dev docs-format
       - name: Check output.log file for warnings
         run: |
           ! grep WARNING output.log

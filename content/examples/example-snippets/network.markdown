@@ -18,7 +18,6 @@ sorting: 9
 
 Finding the ethernet address can be hard, but on Linux it is straightforward.
 
-
 [%CFEngine_include_snippet(find_mac_address.cf, .* )%]
 
 ## Client-server example
@@ -27,23 +26,19 @@ Finding the ethernet address can be hard, but on Linux it is straightforward.
 
 ## Read from a TCP socket
 
-
 [%CFEngine_include_snippet(read_from_a_tcp_socket.cf, .* )%]
 
 ## Set up a PXE boot server
 
 Use CFEngine to set up a PXE boot server.
 
-
 [%CFEngine_include_snippet(set_up_a_pxe_boot_server.cf, .* )%]
 
 ## Resolver management
 
-
 [%CFEngine_include_snippet(resolver_management.cf, .* )%]
 
 ## Mount NFS filesystem
-
 
 [%CFEngine_include_snippet(mount_nfs_filesystem.cf, .* )%]
 

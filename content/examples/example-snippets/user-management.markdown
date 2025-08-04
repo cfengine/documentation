@@ -108,7 +108,6 @@ absent on linux systems using the native `users` type promise.
 
 [%CFEngine_include_example(local_users_absent.cf)%]
 
-
 Before activating the example policy, lets inspect the current state
 of the system.
 

@@ -46,18 +46,15 @@ Run the bootstrap command, **first** on the policy server:
 
 1. Find the IP address of your Policy Server:
 
-
 ```command
 ifconfig
 ```
-
 
 2. Run the bootstrap command:
 
 ```command
 sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
-
 
 The bootstrap command must then be run on any client attaching itself to this server, using the ip address of the policy server (i.e. exactly the same as the command run on the policy server itself).
 
@@ -66,7 +63,6 @@ The bootstrap command must then be run on any client attaching itself to this se
 CFEngine itself is configured through policy as well (see [Components][] and
 [Masterfiles Policy Framework][] for details). The following basic changes to the default policy will configure
 `cf-serverd` and `cf-execd` for your environment.
-
 
 ### Configure agent email settings
 
@@ -106,9 +102,7 @@ The preferred way to disable the agent from sending emails is to define
 
 ```json {file="def.json"}
 {
-  "classes": {
-    "cfengine_internal_disable_agent_email": [ "any" ]
-  }
+  "classes": { "cfengine_internal_disable_agent_email": ["any"] }
 }
 ```
 
@@ -124,7 +118,6 @@ Edit `/etc/hosts` and add an entry for the IP address and hostname of the server
 ### CFEngine Enterprise post-installation setup
 
 See: [What steps should I take after installing CFEngine Enterprise?][FAQ#What steps should I take after installing CFEngine Enterprise]
-
 
 ## More detailed installation guides
 

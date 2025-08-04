@@ -6,11 +6,9 @@ Inventory API allows to access inventory reports and attributes dictionary.
 
 ## Inventory reports
 
-
 **URI:** https://hub.cfengine.com/api/inventory
 
 **Method:** POST
-
 
 **Parameters:**
 
@@ -53,7 +51,6 @@ Inventory API allows to access inventory reports and attributes dictionary.
     | regex_not_match |
     | is_reported     |
     | is_not_reported |
-
 
 * **sort** *(string)*
     Field name for sorting with "-" for DESC order. Optional parameter.
@@ -107,7 +104,6 @@ curl -k --user <username>:<password> \
 
 **Example Request Body:**
 
-
 ```
 {
    "sort":"Host name",
@@ -131,7 +127,6 @@ curl -k --user <username>:<password> \
 ```
 
 **Example response:**
-
 
 ```
 {
@@ -190,7 +185,6 @@ curl -k --user <username>:<password> \
 
 **Example Request Body with includeAdditionally set to true:**
 
-
 ```
 {
     "sort": "Host name",
@@ -217,7 +211,6 @@ curl -k --user <username>:<password> \
 ```
 
 **Example response:**
-
 
 As you can see, despite the OS filter should return zero hosts, we had one additionally included by the host in the Host filter.
 
@@ -272,7 +265,6 @@ curl -k --user admin:admin -X GET https://hub.cfengine.com/api/inventory/attribu
 
 **Example response:**
 
-
 ```
 [
   {
@@ -316,7 +308,6 @@ Only `readonly - 0` attribute can be edited
 * **convert_function** *(string)*
     Convert Function.
     Emp.: `cf_clearSlist` - to transform string like `{"1", "2"}` to `1, 2`
-
 
 **CURL request example**
 ```

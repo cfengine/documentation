@@ -7,7 +7,6 @@ reviewed: 2019-05-06
 
 ## What is a content-driven policy?
 
-
 A Content-Driven Policy is a text file with lines containing semi-colon
 separated fields, like a spreadsheet or tabular file. Each line in the file is
 parsed and results in a specific type of promise being made, depending on which
@@ -34,7 +33,6 @@ unified base for policy that works with both CFEngine Community and CFEngine
 Enterprise.
 
 ## Why should i use content-driven policies?
-
 
 As seen in the example above, Content-Driven Policies are easy to write and
 maintain, especially for users not very familiar with the CFEngine language.
@@ -87,7 +85,6 @@ like the following.
 
 ## How do content-driven policies work in detail?
 
-
 The text files in masterfiles/cdp_inputs/(e.g. 'registry_list.txt') are parsed
 into CFEngine lists by corresponding cdp_*files in masterfiles/(e.g.
 'cdp_registry.cf'). It is the latter set of files that actually implement the
@@ -97,7 +94,6 @@ The Knowledge Map contains reports specifically designed to match the
 Content-Driven Policies.
 
 ## Can I make my own content-driven policies?
-
 
 It is possible to mimic the structure of the existing Content-Driven Policies to
 implement new ones, for new purposes.

@@ -42,7 +42,6 @@ CFEngine policy evaluation is done in several steps:
 1. Pre-evaluation step is taking place.
 1. Exact policy evaluation is done.
 
-
 For more information regarding each step please see the detailed description
 below.
 

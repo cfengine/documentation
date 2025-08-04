@@ -17,7 +17,6 @@ speed as agile development teams.
 
 ## Why is DevOps happening now?
 
-
 The proliferation of Free and Open Source software has put powerful software
 components in the hands of a broader range of developers than ever before - and
 businesses everywhere are exploiting this software by adapting it and combining
@@ -61,7 +60,6 @@ At CFEngine, we believe in lightweight management - made as simple as possible,
 but no simpler.
 
 ## How do we make controlled change faster?
-
 
 It is important to be able to make changes quickly. Automation can implement
 change quickly if humans can get their acts together. Human IT processes and
@@ -173,7 +171,6 @@ bundle agent SomeUserDefinedName
       make a different promise...
 }
 ```
-
 
 This is the mechanism by which all decisions are made in CFEngine. Class
 contexts are evaluated bycf-agentand are cached so that they can be used at any

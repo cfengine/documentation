@@ -119,7 +119,6 @@ import sys
 import os
 from cfengine import PromiseModule, ValidationError
 
-
 class GitPromiseTypeModule(PromiseModule):
     def validate_promise(self, promiser, attributes, metadata):
         if not promiser.startswith("/"):
@@ -150,7 +149,6 @@ class GitPromiseTypeModule(PromiseModule):
         else:
             self.log_error(f"Failed to clone '{url}' -> '{folder}'")
             self.promise_not_kept()
-
 
 if __name__ == "__main__":
     GitPromiseTypeModule().start()
@@ -405,18 +403,14 @@ You can also include log messages in the JSON data:
 {
   "operation": "evaluate_promise",
   "promiser": "/opt/cfengine/masterfiles",
-  "attributes": {
-    "repo": "https://github.com/cfengine/masterfiles"
-  },
+  "attributes": { "repo": "https://github.com/cfengine/masterfiles" },
   "log": [
     {
       "level": "info",
       "message": "Cloning 'https://github.com/cfengine/masterfiles' -> '/opt/cfengine/masterfiles'..."
     }
   ],
-  "result_classes": [
-    "masterfiles_cloned"
-  ],
+  "result_classes": ["masterfiles_cloned"],
   "result": "repaired"
 }
 ```
@@ -448,10 +442,7 @@ The attributes from the above example would be sent like this:
 ```json
 {
   "policy": "present",
-  "members": {
-    "include": ["alice", "bob"],
-    "exclude": ["malcom"]
-  }
+  "members": { "include": ["alice", "bob"], "exclude": ["malcom"] }
 }
 ```
 

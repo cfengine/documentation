@@ -90,7 +90,6 @@ All Events can be searched and viewed from the Event Log page.
 
 <img src="web-ui-mission-portal-api-view-whole-system-events-rbac.png" alt="Mission Portal - Events View whole system events RBAC page" width="380px">
 
-
 ### Newly bootstrapped hosts widget
 
 The Newly bootstrapped hosts widget helps to visualize the number of hosts bootstrapped to CFEngine over time.

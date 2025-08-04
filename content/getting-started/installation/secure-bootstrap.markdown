@@ -41,9 +41,7 @@ In order to specify and limit which hosts (IP addresses) are considered trusted 
 
 ```json {file="/var/cfengine/masterfiles/def.json"}
 {
-  "variables": {
-    "default:def.acl": ["192.0.2.42", "198.51.100.7"]
-  }
+  "variables": { "default:def.acl": ["192.0.2.42", "198.51.100.7"] }
 }
 ```
 
@@ -77,9 +75,7 @@ You can edit the augments file to achieve this:
 
 ```json {file="/var/cfengine/masterfiles/def.json"}
 {
-  "variables": {
-    "default:def.trustkeysfrom": []
-  }
+  "variables": { "default:def.trustkeysfrom": [] }
 }
 ```
 

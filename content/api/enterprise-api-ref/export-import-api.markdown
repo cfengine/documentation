@@ -78,7 +78,6 @@ HTTP 200 Ok
 * **name**
     Name of export item.
 
-
 ## Export
 
 **URI:** https://hub.example/data_transfer/api/export
@@ -132,7 +131,6 @@ HTTP 200 Ok
 * **file_name** *(string)*
   File name to be downloaded.
 
-
 **Example request (curl):**
 
 ```
@@ -158,7 +156,6 @@ Raw file contetnt
 * Content-Disposition: attachment; filename="export_12-14-2018_16:04:46.093500.phar"
 * Content-Length: 337801
 * Content-Type: application/octet-stream
-
 
 ## Analyze import file
 

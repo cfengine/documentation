@@ -27,8 +27,7 @@ Note: The following workflow assumes the directory /home/user already exists. If
 
 1. Create a file /var/cfengine/masterfiles/file_test.cf that includes the following text:
 
-   ```cf3
-   [file=file_test.cf]
+   ```cf3 {file="file_test.cf"}
    bundle agent list_file
    {
      vars:
@@ -278,7 +277,6 @@ body perms system
   mode  => "0640";
 }
 ```
-
 
 ```bash
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence list_file,test_delete,list_file_2

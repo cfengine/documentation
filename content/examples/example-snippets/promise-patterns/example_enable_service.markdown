@@ -133,7 +133,6 @@ info: Completed execution of '/etc/init.d/cups stop'
 After the policy run we can see that `systat` is still not reporting status correctly (some services do not respond to standard checks), `apache2`, and `cups` are
 *inactive*. `ssh` and `cron` are *active* as specified in the policy.
 
-
 ```command
 service sysstat status; echo $?
 ```

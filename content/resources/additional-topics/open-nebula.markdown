@@ -41,7 +41,6 @@ lifecycle, Open Nebula and CFEngine will play different roles.
   characteristics over time. These may be collected in CFEngine's reporting
   interface or Mission Portal.
 
-
 Open Nebula's focus is on managing the deployment and recycling of the computing
 infrastructure. CFEngine picks up where Open Nebula leaves off and manages the
 dynamic lifecycle of software, applications and runtime state.
@@ -57,7 +56,6 @@ assumptions serve as an example and should be altered to fit your needs:
 * The CFEngine policy hub is running on the Open nebula front end.
 * NFS will be used to share virtual machine images between hosts.
 
-
 Open nebula requires a single front-end machine and one or more node
 controllers. The front end is a management machine that is used to monitor and
 issue commands to the node controllers. Node controllers provide virtual machine
@@ -70,7 +68,6 @@ cluster-node.
 
 ###  Installation and dependancy configuration
 
-
 First we can classify the physical machines in this case by IP address:
 
 ```cf3
@@ -79,12 +76,10 @@ classes:
         "node_controllers" or => {"192.168.1.3"};
 ```
 
-
 If we want multiple node controllers then we can instead setup an slist variable
 IP addresses of intended node controllers. This will allow the "onehost create"
 command to execution each new node controller in turn reducing redundancy in the
 policy file for example:
-
 
 ```cf3
 vars:
@@ -94,7 +89,6 @@ commands:
         "/usr/bin/onehost create $(node_controller) im_kvm vmm_kvm tm_nfs",
                            contain => oneadmin;
 
-
 classes:
 
   "policy_host" or => {
@@ -102,7 +96,6 @@ classes:
                       classmatch(canonify("$(node_controller)"))
                       };
 ```
-
 
 To install the dependancies for each physical machine we can define these in a
 list and use the CFEngine standard library package promises to install them:
@@ -152,11 +145,9 @@ node_controller::
       package_method => generic;
 ```
 
-
 The additional line in the front end dependancy installation promise, assuming a
 successful installation, will ensure the Open Nebula daemon is running at all
 times:
-
 
 ```cf3
 front_end::
@@ -168,7 +159,6 @@ ensure_opennebula_running::
 
 Resulting in:
 
-
 ```cf3
 commands:
 
@@ -178,10 +168,8 @@ commands:
       contain => oneadmin;
 ```
 
-
 Since we will be using Open Nebula version 2 we must manually supply the
 package:
-
 
 ```cf3
 commands:
@@ -210,7 +198,6 @@ contain body by appending the following to commands promises:
 contain => oneadmin
 ```
 
-
 This will in turn apply owner and group permissions of the oneadmin user:
 
 ```cf3
@@ -223,7 +210,6 @@ body contain oneadmin
 
 Next: Open Nebula environment configuration, Previous: Installation and
 dependancy configuration, Up: Top NFS config for shared image repository
-
 
 If not present append the NFS export directory stored in the corresponding
 variable (including a new line):

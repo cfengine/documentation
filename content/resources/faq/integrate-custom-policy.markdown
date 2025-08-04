@@ -29,7 +29,7 @@ in inputs of body common control in promises.cf by default.
 
 ```json
 {
-    "inputs": [ "my_update.cf" ]
+  "inputs": ["my_update.cf"]
 }
 ```
 
@@ -37,9 +37,7 @@ Alternatively you can define `augments_inputs` directly.
 
 ```json
 {
-    "vars": {
-        "augments_inputs": [ "my_policy.cf" ]
-    }
+  "vars": { "augments_inputs": ["my_policy.cf"] }
 }
 ```
 
@@ -47,9 +45,7 @@ To extend inputs in the update policy define `update_inputs`.
 
 ```json
 {
-    "vars": {
-        "update_inputs": [ "my_update.cf" ]
-    }
+  "vars": { "update_inputs": ["my_update.cf"] }
 }
 ```
 

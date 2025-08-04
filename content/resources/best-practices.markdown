@@ -60,7 +60,6 @@ When running CFEngine Enterprise in a large-scale IT environment with many thous
 
 With CFEngine 3.6, significant testing was performed to identify the issues surrounding scalability and to determine best practices in large-scale installations of CFEngine.
 
-
 ### Moving PostgreSQL to separate hard drive
 
 Moving the PostgreSQL database to another physical hard drive from the other CFEngine components can improve the stability of large-scale installations, particularly when using a solid-state drive (SSD) for hosting the PostgreSQL database.

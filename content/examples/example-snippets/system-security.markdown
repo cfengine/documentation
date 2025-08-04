@@ -10,7 +10,6 @@ sorting: 10
 
 ## Distribute root passwords
 
-
 [%CFEngine_include_snippet(distribute_root_passwords.cf, .* )%]
 
 ## Distribute ssh keys

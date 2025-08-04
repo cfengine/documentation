@@ -35,13 +35,11 @@ associated with a lack of agility: a blow, a fall or a loss.
 
 ### What make agility possible?
 
-
 To understand agility, we have to understand time and the capacity for change.
 Agility is a relative concept: it's about adapting quickly enough, in the right
 context, with the right measure and in the right way. Below, we'll try to gain
 an engineering perspective on agility to see what enables it and what throttles
 it.
-
 
 To respond to a challenge there are four stages that need attention:
 
@@ -50,12 +48,10 @@ To respond to a challenge there are four stages that need attention:
 * To respond to the challenge.
 * To confirm or verify the response.
 
-
 Each of these phases takes actual clock-time and requires a certain flexibility.
 Our goal is to keep these phases simple and therefore cheap for the long-term.
 Affording the time and flexibility needed is the key to being agile. Technology
 can help with this, if we adopt sound practices.
-
 
 Intuitively, we understand agility to be related to our capacity to respond to a
 situation. Let's try to pin this idea down more precisely.
@@ -163,15 +159,12 @@ operational state.
 Acting quickly is not enough: we also need to be accurate in responding to
 change[^4]. We need to be able to:
 
-
 * Model the desired outcome accurately in terms of universal policy coordinates:
   **Why**, **When**, **Where**, **What**, **How**.
 
 * Maximize the chance that the promised outcome will be achieved.
 
-
 Precision is maximized when:
-
 
 * Changes are _precise_, i.e. they can be made at a highly granular level,
   without disturbing areas that are not relevant (few side-effects).
@@ -189,7 +182,6 @@ Precision is maximized when:
   whether the problem lies in an incorrect assumption or a flaw in the
   implementation.
 
-
 CFEngine is a fault tolerant system - it continues to work on what it can even
 when some parts of its model don't work out as expected[^6].
 
@@ -198,13 +190,11 @@ Next: Efficiency, Previous: Precision, Up: Understanding agility
 
 The next challenge is concerns a human limitation. One of the greatest challenges in any organization lies in comprehending the system.
 
-
 Comprehensibility increases if something is predictable, or steady in its behaviour, but it decreases in proportion to the number of things we need to think about - which includes the many different contexts such as environments, or groups of machines with different purposes or profiles.
 
                         Predictability (Reliability)    Predictability
   Comprehensibility =~  ---------------------------- = ----------------
                                  Contexts                 Diversity
-
 
 Our ability to comprehend behaviour depends on how predictable it is, i.e. how well it meets our expectations. For technology, we expect behaviour to be as close as possible on our intentions. CFEngine's maintenance of promises ensures that this is done with best possible effort and a rapid cycle of checking.
 
@@ -217,23 +207,19 @@ Finally, if we think about the efficiency of a configuration, which is another w
 
 If the technology has a high overhead, the cost of maintaining change is high and efficiency is low:
 
-
 The efficiency of the technology decreases with the more resources it uses, e.g. like memory and CPU. Resources used to run the technology itself are pure overhead and take away from the real work of your system.
 
                                       Resources used
          Resource Efficiency =~  1 -  ---------------
                                       Total resources
 
-
 It is a design goal of CFEngine to maintain minimal overhead in all situations. The second aspect of efficiency is how much planning or rule-making is needed to manage the relevant issues.
-
 
 The efficiency of a model decreases when you put more effort into managing a certain number of things. If you can manage a large number of things with a few simple constraints, that is efficient.
 
                               Number of objects affected
       Model Efficiency =~  -------------------------------
                            Number of rules and constraints
-
 
 General patterns play a role too in simplifying, because the reduce the number of special rules and constraints down to fewer more generic rules. If we make good use of patterns, we can make few rules that cover many cases. If there are no discernible patterns, every special case is a costly exception. This affects not just the technology cost, but also the cognitive cost (i.e. the comprehensibility).
 
@@ -242,9 +228,7 @@ Efficiency therefore plays a role in agility, because it affects the cost of cha
 Next: Agility in your work, Previous: Understanding agility, Up: Top
 2 Aspects of CFEngine that bring agility
 
-
 We can now summarize some qualities of CFEngine that favour agility:
-
 
 * Ability to express clear intentions about desired outcome (comprehension).
 
@@ -400,7 +384,6 @@ Precision:
     performance and regulation are key issues, and scaling up and down for
     demand is probably the fastest rate of change.
 
-
 #### High performance computing
 
 High Performance clusters are typically found in the oil and gas industry, in
@@ -507,12 +490,10 @@ Precision:
 
 ### Separating what from how (DevOps)
 
-
 If you have to designs a programmatic solution to a challenge, it will cost you
 highly in terms of cognitive investment, testing and clarity of purpose to
 future users. Thinkingprocess(how) instead ofknowledge(what) is a classic
 carry-over from the era of 2nd Wave industrialization8.
-
 
 Think of CFEngine as an active knowledge management system, rather than as a
 relatively passive programming framework.
@@ -715,7 +696,6 @@ Just as we separate goals from actions, and strategy from tactics, so we can
 separate what is easy from what is simple. Easy brings short-term gratification,
 but simple makes the future cost less.
 
-
 Easyis about barriers to adoption. If there is a cost associated with moving
 ahead that makes it hard:
 
@@ -738,7 +718,6 @@ and ideas, just more of the same.
 
 ### How does complexity affect agility?
 
-
 In the past[^11], it was common to manage change by making everything the same.
 Today, the individualized custom experience is what today's information-society
 craves. Being forced into a single mold is a hindrance to adaptability and
@@ -759,11 +738,9 @@ making a risky process _too easy_ can encourage haste and carelessness.
 Any problem has an intrinsic complexity, which can be measured by the smallest
 amount of information required to manage it, without loss of control.
 
-
 * Ease is the absence of a barrier or cost to action.
 
 * Simplicity is a strategy for minimizing Total Cost of Ownership.
-
 
 Making something truly simple is a very hard problem, but it is an investment in
 future change. What is easy today might be expensive to make easy tomorrow. But
@@ -802,7 +779,6 @@ with diversity. Avoiding it merely creates a lack of agility, as one is held
 back by the need to over-simplify.
 
 ### An effective understanding helps agility
-
 
 All configuration issues, including fitness for purpose, boil down to three
 things: why, what and how. Knowing why we do something is the most important way
@@ -914,7 +890,6 @@ Footnotes
     still think in such terms, you will be quickly disappointed. The best we can
     accomplish is to maximize the likelihood of a predictable result, relative
     to the kind of environment in which we work.
-
 
 [^5]: In some other configuration software, assumptions are hard-coded into the
     tools themselves, making the outcome undocumented.

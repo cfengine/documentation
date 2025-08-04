@@ -161,7 +161,6 @@ The maximum number of connections is the maximum number of sessions that
 remote agents bootstrapped to your policy server, 200 would be a good value body
 server control maxconnections.
 
-
 ### Open file descriptors
 
 Open file descriptors should be set at least **two times body server control
@@ -196,7 +195,6 @@ Server (hub) and the other is for each Host (client).
 
 **Log in as root** and then follow these steps to install CFEngine
   Enterprise:
-
 
 1. On the designated Policy Server, install the `cfengine-nova-hub` package:
 

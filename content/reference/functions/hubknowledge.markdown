@@ -27,7 +27,6 @@ a CFEngine system back to the client machines. The data available through this
 channel are generated automatically by discovery, unlike `remotescalar` which
 accesses user defined data.
 
-
 [%CFEngine_function_attributes(id)%]
 
 **Example:**

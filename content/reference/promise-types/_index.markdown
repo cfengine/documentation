@@ -436,7 +436,6 @@ promises of the form:
 ID:promise-type:promiser.
 ```
 
-
 ### classes
 
 **Type:** `body classes`
@@ -502,7 +501,6 @@ with incorrect permissions, `cf-agent` will report that the `promise_kept` for
 the file existence, but `promise_repaired` for the permissions. If you need
 separate reports, you should code two separate promises rather than
 'overloading' a single one.
-
 
 #### repair_failed
 
@@ -846,7 +844,6 @@ bundle agent cmdtest
       "/tmp/test"
         copy_from => copy("/etc/passwd");
 
-
       "/tmp/test"
         classes => example,
         transformer => "/bin/grep -q lkajfo999999 $(this.promiser)";
@@ -1153,7 +1150,6 @@ If mention is made of "tags" on a *bundle*, what is actually meant is meta *prom
 **Note:** When a variable is re-defined the associated meta tags are also re-defined.
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012)
-
 
 ### unless
 

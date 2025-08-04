@@ -62,7 +62,6 @@ aggregation for convenience however.
 Figure: A policy server or `hub` is implemented in CFEngine Nova
 as a simple solution that will scale for most sites out of the box.
 
-
 If you operate CFEngine Nova in its default mode, the hub acts as a server from
 which every other client machine can access policy updates. It also acts as a
 collector, aggregating summary information from each machine and weaving it into
@@ -82,10 +81,8 @@ tested and approved, it will be copied manually to the policy dispatch point on
 one or more distribution servers. All other machines will then download policy
 updates from that single location according to their own schedule.
 
-
 Figure: Policy coordinated from a central root location
 is implemented in a distributed manner at every leaf node.
-
 
 ### Robustness to failure
 
@@ -114,7 +111,6 @@ oriented architecture, i.e. a weak coupling.
 ## Security principles
 
 ### What is security?
-
 
 The concept of security, while various in its interpretation and intented use,
 is related to a feeling of safety. No system is completely safe from every

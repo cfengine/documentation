@@ -10,11 +10,9 @@ sorting: 14
 
 ## Windows registry
 
-
 [%CFEngine_include_snippet(windows_registry.cf, .* )%]
 
 ## unit_registry_cache.cf
-
 
 [%CFEngine_include_snippet(unit_registry_cache.cf.cf, .* )%]
 

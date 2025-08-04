@@ -21,7 +21,6 @@ network.
 * This daemon reloads it's config when the SIGHUP signal is received.
 * `cf-execd` always considers the class ```executor``` to be defined.
 
-
 **History:**
 
 - SIGHUP behavior added in 3.7.0
@@ -45,7 +44,6 @@ body executor control
     schedule   => { "Min00", "Min30" }
 }
 ```
-
 
 ### agent_expireafter
 
@@ -82,7 +80,6 @@ The setting will effectively allow you to set a threshold on the
 number of simultaneous agents that are running. For example, if you
 set it to `120` and you are using a 5-minute agent schedule, a
 maximum of 120 / 5 = 24 agents should be enforced.
-
 
 **See also:** [`body action expireafter`][Promise types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body agent control expireafter`][cf-agent#expireafter]
 

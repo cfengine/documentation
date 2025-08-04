@@ -103,9 +103,7 @@ Create `def.json` in the root of your masterfiles with the following content:
 
 ```json {file="def.json"}
 {
-  "classes": {
-    "cfengine_internal_masterfiles_update": [ "hub" ]
-    }
+  "classes": { "cfengine_internal_masterfiles_update": ["hub"] }
 }
 ```
 

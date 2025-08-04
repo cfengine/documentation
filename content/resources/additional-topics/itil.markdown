@@ -6,7 +6,6 @@ sorting: 80
 
 ## What it ITIL?
 
-
 The IT Infrastructure Library (ITIL) is a set of human management practices
 surrounding IT infrastructure that are designed to bring quality assurance and
 continuous improvement to organizations. ITIL has emerged as a de-facto set of
@@ -28,9 +27,7 @@ Whether this means a centralization or decentralization of IT management in the
 end, depends on the concrete instances of ITIL processes in the respective
 scenario.
 
-
 ## ITIL history and versions
-
 
 ITIL has its roots in the early 1990s, and since then was subject to numerous
 improvements and enhancements. Today, the most popular release of ITIL is given
@@ -46,9 +43,7 @@ with respect to the issue of IT strategies, IT-business-alignment and continual
 improvement. In the following, we run through the basics of both versions,
 highlighting commonalities and differences.
 
-
 ## Basics
-
 
 ITIL is an attempt to implement theDeming Quality Circleas a model for continual
 quality improvement. Quality relates to the provided IT services as well as the
@@ -92,7 +87,6 @@ and quality planning, as well as strategies for customer relationships or
 dealing with unpredictable situations.
 
 ## Version 3
-
 
 In 2007, version 2 was replaced by its successor version 3, aimed at covering
 the entire service life cycle from a management perspective and striving for a
@@ -257,9 +251,7 @@ mean regular on a time-scale that is representative for the service being
 provided, e.g. reviews once per week, once per month? No one can tell you about
 your needs. You have to decide this from local needs.
 
-
 ## Tool support
-
 
 In the field of tool support for IT Service Management accordant to ITIL,
 various white papers and studies have been published. In addition, there are
@@ -394,7 +386,6 @@ already shared objects, such as shared storage.
 
 * CMDB Asset Management
 
-
 Why bother to collect an inventory of this kind? Is it bureaucracy gone mad, or
 do we need it for insurance purposes? Both of these things are of course
 possibilities.
@@ -462,7 +453,6 @@ circumstances to an earlier state - they are beyond our control.
 
 ### Release management
 
-
 A release in ITIL is a collection of authorized changes to a system. One part of
 Change Management is thereforeRelease Management. A release is generally a
 larger umbrella under which many smaller changes are made. It is major change.
@@ -498,14 +488,12 @@ problems, we are in trouble!
 
 ### Service Level Management (SLM)
 
-
 Also loosely referred to as Quality of Service. This is the process of making
 sure that Service Level Promises are kept, or Service Level Agreements (SLA) are
 adhered to. We must assess the impact of changes on the ability to deliver on
 promises.
 
 ## Using CFEngine to implement ITIL objectives
-
 
 How does CFEngine fit into the management of a service organization? There are
 several ways:
@@ -531,7 +519,6 @@ policy and the resulting plans for the configuration of the system. In other
 words, CFEngine is itself part of the infrastructure that we might change.
 
 ## How can CFEngine or promises help an enterprise
-
 
 Traditional methods of managing IT infrastructure involve working from crisis to
 crisis - waiting for `incidents` to occur and then initiating fire suppression

@@ -408,7 +408,6 @@ commands. Alternatively, it may redirect their output to standard error instead,
 but this will not be formatted using CFEngine's normal log formatting and is not
 recommended.
 
-
 ## Caching
 
 For performance reasons, CFEngine will cache the list of packages returned from

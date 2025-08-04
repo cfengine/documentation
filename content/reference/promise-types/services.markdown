@@ -163,7 +163,6 @@ standard library.
 * When `service_type` is `generic` any string is allowed and `service_bundle` is responsible for interpreting and implementing the desired state based on the `service_policy` value.
   Historically `service_type` `generic` has supported `start`, `stop`, `enable`, `disable`, `restart` and `reload`.
 
-
 **Example:**
 
 ```cf3
@@ -186,7 +185,6 @@ bundle agent example
       "myservice"
         service_policy => "my_custom_state",
         service_method => "my_custom_service_method";
-
 
     windows::
 
@@ -217,7 +215,6 @@ bundle agent example
           service_policy => "start",
           comment => "Ensure that the Auto Time Zone Updated is running, and set
                       Startup Type to Manual.";
-
 
 }
 
@@ -356,7 +353,6 @@ body service_method example
 
 **Notes:** `on_demand` is not supported by Windows, and is implemented through
 inetd or xinetd on Unix.
-
 
 #### service_bundle
 

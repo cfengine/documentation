@@ -20,7 +20,6 @@ a list, but files in the list may have the same name when
 
 **Example:**
 
-
 ```cf3
 commands:
 

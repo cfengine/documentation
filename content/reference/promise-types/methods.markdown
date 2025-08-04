@@ -140,7 +140,6 @@ methods:
                  inherit => "true";
 }
 
-
 body edit_defaults example
 {
 inherit => "true";

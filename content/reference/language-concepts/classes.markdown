@@ -248,7 +248,6 @@ bundle is evaluated (for classes with a `bundle` scope) or until the agent
 exits (for classes with a `namespace` scope). See `cancel_kept`,
 `cancel_repaired`, and `cancel_notkept` in classes body.
 
-
 This example defines a few soft classes local to the `myclasses` bundle.
 
 ```cf3
@@ -283,8 +282,6 @@ reports:
 * The `oth_class` soft class is defined as the combination of two `fileexists`
   functions - `/etc/shadow` and `/etc/passwd`.  If both of these files are
   present the `oth_class` class will also be set.
-
-
 
 ### Negative knowledge
 
@@ -447,7 +444,6 @@ R: Hello from berlin
 R: Hello from berlin, if edition
 ```
 
-
 In this example, lists of cities are defined in the `vars` section and these
 lists are combined into a list of all cities. These variable lists are used to
 qualify the greetings and to make the policy more concise. In the [`classes`][classes]
@@ -467,7 +463,6 @@ This example shows how classes are automatically canonified when they are
 defined and that you must explicitly canonify when verifying classes.
 
 [%CFEngine_include_example(class-automatic-canonificiation.cf)%]
-
 
 ## Operators and precedence
 

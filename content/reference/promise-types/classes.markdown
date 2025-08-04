@@ -24,9 +24,7 @@ classes:
 - The promiser is automatically canonified when classes are defined.
 - Classes are not automatically canonified when checked.
 
-
 [%CFEngine_include_example(class-automatic-canonificiation.cf)%]
-
 
 - The term ```class``` and ```context``` are sometimes used interchangeably.
 - The following attributes to make a complete promise.
@@ -271,7 +269,6 @@ persistent_classes::
   inputs => { "classes.cf" };
 }
 
-
 bundle agent test
 {
 reports:
@@ -314,7 +311,6 @@ classes:
 
 The class on the left-hand side will be set if the class expression on the
 right-hand side evaluates to false.
-
 
 **Type:** `class`
 

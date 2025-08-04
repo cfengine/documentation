@@ -24,7 +24,6 @@ enclose an arbitrary key are being deprecated in favor of the `data` variable ty
 
 **Example:**
 
-
 ```cf3
 vars:
 
@@ -533,9 +532,7 @@ This augments file that defines `my_var` will be used for all examples shown her
 
 ```json
 {
-  "vars": {
-    "my_var": "My value defined from augments"
-    }
+  "vars": { "my_var": "My value defined from augments" }
 }
 ```
 

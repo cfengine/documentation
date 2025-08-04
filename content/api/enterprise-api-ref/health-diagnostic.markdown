@@ -150,7 +150,6 @@ curl -k --user <username>:<password> -X POST \
 * **limit**  *(integer)*
     Limit the number of results in the query.
 
-
 **CURL Request Example:**
 ```
 curl -k --user <username>:<password> -X GET \
@@ -236,7 +235,6 @@ curl -k --user <username>:<password> -X GET \
 * **hosts** *(array)*
     Array of host keys to dismiss
 
-
 **CURL Request Example:**
 ```
 curl -k --user admin:admin -X POST \
@@ -251,7 +249,6 @@ curl -k --user admin:admin -X POST \
 HTTP 201 CREATED
 ```
 
-
 ## Remove hosts from dismissed list
 
 **URI:** https://hub.cfengine.com/api/health-diagnostic/dismiss/:report_id
@@ -265,7 +262,6 @@ HTTP 201 CREATED
     List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
 * **hosts** *(array)*
     Array of host keys to remove from dismissed list
-
 
 **CURL Request Example:**
 ```

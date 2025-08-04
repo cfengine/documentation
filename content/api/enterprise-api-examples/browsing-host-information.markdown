@@ -9,7 +9,6 @@ information. For full flexibility we recommend using [SQL][SQL schema]
 reports via [/api/query][Query REST API#Execute SQL query] for this. however, currently vital signs (data
 gathered from `cf-monitord`) is not part of the SQL reports data model.
 
-
 ## Example: Listing hosts with a given context
 
 **Request**
@@ -71,7 +70,6 @@ for presentability).
       ]
     }
 
-
 #### Example: Looking up hosts by IP
 
 Similarly we can lookup the host with hostname
@@ -100,7 +98,6 @@ for presentability).
         }
       ]
     }
-
 
 ## Example: Removing host data
 

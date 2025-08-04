@@ -20,16 +20,13 @@ sorting: 4
 
 Example for Debian:
 
-
 [%CFEngine_include_snippet(software_and_patch_installation.cf, .* )%]
 
 Examples MSI for Windows, by name:
 
-
 [%CFEngine_include_snippet(software_and_patch_installation_1.cf, .* )%]
 
 Windows MSI by version:
-
 
 [%CFEngine_include_snippet(software_and_patch_installation_1.cf, .* )%]
 
@@ -47,18 +44,15 @@ SuSE Linux's package manager zypper is the most powerful alternative:
 
 ## Postfix mail configuration
 
-
 [%CFEngine_include_snippet(postfix_mail_configuration.cf, .* )%]
 
 ## Set up a web server
 
 Adapt this template to your operating system by adding multiple classes. Each web server runs something like the present module, which is entered into the bundlesequence like this:
 
-
 [%CFEngine_include_snippet(set_up_a_web_server.cf, .* )%]
 
 ## Add software packages to the system
-
 
 [%CFEngine_include_snippet(add_software_packages_to_the_system.cf, .* )%]
 
@@ -66,16 +60,13 @@ Note you can also arrange to hide all the differences between package managers o
 
 ## Application baseline
 
-
 [%CFEngine_include_snippet(application_baseline.cf, .* )%]
 
 ## Service management (windows)
 
-
 [%CFEngine_include_snippet(service_management_(windows).cf, .* )%]
 
 ## Software distribution
-
 
 [%CFEngine_include_snippet(software_distribution.cf, .* )%]
 

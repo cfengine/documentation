@@ -229,7 +229,6 @@ To restore the CFEngine admin role permissions run the following sql as root on 
 
 **See also:** [Web RBAC API][Web RBAC API]
 
-
 ## About CFEngine
 
 <img src="Settings-7.png" alt="About CFEngine" width="700px">

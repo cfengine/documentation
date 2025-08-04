@@ -255,20 +255,9 @@ curl --user admin:admin https://test.cfengine.com/api/user
 
 ```json {output}
 {
-  "meta": {
-    "page": 1,
-    "count": 1,
-    "total": 1,
-    "timestamp": 1350994249d
-  },
+  "meta": { "page": 1, "count": 1, "total": 1, "timestamp": 1350994249 },
   "data": [
-    {
-      "id": "calvin",
-      "external": true,
-      "roles": [
-        "Huguenots", "Marketing"
-      ]
-    }
+    { "id": "calvin", "external": true, "roles": ["Huguenots", "Marketing"] }
   ]
 }
 ```
@@ -277,8 +266,8 @@ These two blocks will be joined into one element on the UI.
 
 ##### File code block
 
-You can specify file name of the code block by adding `[file=Name of the file]` in the first line.
-This line won't be shown in the resulting HTML (it will be converted to the heading / frame).
+You can specify file name of the code block by adding `{file="<filename>"}` after the language specifier (i.e. on the end of the same line as the triple backticks and `cf3`).
+This metadata won't be shown in the resulting HTML (it will be converted to the heading / frame).
 
 ```cf3 {file="policy.cf"}
 bundle agent hello_world
@@ -418,9 +407,7 @@ index 92555a2..b49c0bb 100644
 
 ```json
 {
-  "classes": {
-    "services_autorun": ["any"]
-  }
+  "classes": { "services_autorun": ["any"] }
 }
 ```
 
@@ -428,9 +415,7 @@ index 92555a2..b49c0bb 100644
 
 ```json
 {
-  "classes": {
-    "services_autorun": ["any"]
-  }
+  "classes": { "services_autorun": ["any"] }
 }
 ```
 

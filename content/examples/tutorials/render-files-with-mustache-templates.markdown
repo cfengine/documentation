@@ -41,9 +41,7 @@ Allowed users {{#users}}<br />
 
 Create a file called `/tmp/myapp.conf.template` with the following content:
 
-```
-[file=myapp.conf.template]
-
+```{file="/tmp/myapp.conf.template"}
 Port {{port}}
 Protocol {{protocol}}
 Filepath {{filepath}}

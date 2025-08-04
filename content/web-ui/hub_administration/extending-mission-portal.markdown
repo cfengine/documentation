@@ -29,7 +29,6 @@ Upload html files into
 items will appear named for each html file where underscores are replaced with
 spaces. Files must be readable by the `cfapache` user.
 
-
 ### Example
 
 File `test_documentation.html` was uploaded to the directory specified above.

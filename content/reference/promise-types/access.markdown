@@ -64,7 +64,6 @@ reporting and orchestration.
     resource_type => "context",
         admit_ips => { "127.0.0.1" };
 
-
   "value of my test_scalar, can expand variables here - $(sys.host)"
           comment => "Grant access to the string in quotes, by name test_scalar",
            handle => "test_scalar",
@@ -96,14 +95,12 @@ reporting and orchestration.
     resource_type => "query",
         admit_ips => { "10.1.2.0/24" };
 
-
 }
 ```
 
 Using the built-in `report_data_select` body `default_data_select_host`:
 
 [%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \})%]
-
 
 The access promise allows overlapping promises to be made, and these are kept on a
 first-come-first-served basis. Thus file objects (promisers) should be
@@ -113,7 +110,6 @@ promises will override less specific ones.
 ****
 
 ## Attributes
-
 
 ### admit_hostnames
 
@@ -331,7 +327,6 @@ bundle server my_access_rules()
       };
 }
 ```
-
 
 **Notes:**
 Only regular expressions or exact matches are allowed in this list,
@@ -612,7 +607,6 @@ tunneling (see also `call_collect_interval`).
 If the resource type is `bundle` then the specific bundles are allowed
 to be remotely executed with `cf-runagent --remote-bundles` from the
 specified hosts. The promiser is an anchored regular expression.
-
 
 **Example:**
 

@@ -3,7 +3,6 @@ layout: default
 title: File changes API
 ---
 
-
 ## File changes statistics
 
 **URI:** https://hub.cfengine.com/api/file-changes/statistics?fromTime=:fromTime&toTime=:toTime

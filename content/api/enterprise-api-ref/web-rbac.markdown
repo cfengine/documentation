@@ -108,7 +108,6 @@ curl -k --user <username>:<password> \
 ]
 ```
 
-
 ## Get role permissions
 
 **URI:** https://hub.cfengine.com/api/role/:role_name/permissions
@@ -191,7 +190,6 @@ curl -k --user <username>:<password> \
 HTTP 201 Created
 ```
 
-
 ## Rewrite role's permissions
 
 **URI:** https://hub.cfengine.com/api/role/:role_name/permissions
@@ -223,7 +221,6 @@ curl -k --user <username>:<password> \
 ```
 HTTP 201 Created
 ```
-
 
 ## Revoke permissions from role
 

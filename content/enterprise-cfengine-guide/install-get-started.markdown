@@ -10,7 +10,6 @@ Delete  "Enterprise Install and Get Started"
 https://docs.google.com/document/d/1CeRR8cuMtrrr0X27gzVzP2ndiU0HuHvo7dJT2vIWfp0/edit#heading=h.978wiks7ber1
 -->
 
-
 * [Installation][Install and Get Started#Installation]
 * [Post-install configuration][Install and Get Started#Post-install configuration]
 

@@ -32,7 +32,6 @@ Bootstrapping completes the installation process.
 the actual state of all your Hosts, thus ensuring that your promises are being executed.
 * **Try out the Tutorials.** Links to three tutorials give you a head start on learning CFEngine.
 
-
 ## 1. Download and install Enterprise on a policy server
 
 Please Note: Internet access is required from the host if you wish to use the quick install script.

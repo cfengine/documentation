@@ -16,7 +16,6 @@ parenthetic expressions. For instance, suppose we have the string:
 
 and apply the regular expression
 
-
     "Mary ([^l]+)little (.*)"
 
 The pattern matches the entire string, and it contains two parenthesized
@@ -42,7 +41,6 @@ files:
   # This might be a dangerous pattern - see explanation in the next section
 
   # on "Runaway change warning"
-
 
   "/home/mark/tmp/cf([23])?_(.*)"
        edit_line => myedit("second backref: $(match.2)");
@@ -136,7 +134,6 @@ Try this example on the file
     seven
     eleven
 
-
 The resulting file is edited like this:
 
     [First section]
@@ -187,7 +184,6 @@ CFEngine.
 #
 ######################################################################
 
-
 body common control
 {
     version => "1.2.3";
@@ -206,7 +202,6 @@ files:
 
 ########################################################
 
-
 bundle edit_line comment_lines_matching
   {
   vars:
@@ -222,7 +217,6 @@ bundle edit_line comment_lines_matching
 ########################################
 # Bodies
 ########################################
-
 
 body replace_with comment(c)
 {
@@ -260,18 +254,15 @@ body common control
 
 ########################################
 
-
 bundle agent wintest
 {
 files:
   "c:/tmp/file/f.*"		# "best guess" interpretation
     delete => nodir;
 
-
   "c:\tmp\file"
     delete => nodir,
     pathtype => "literal";	# force literal string interpretation
-
 
   "C:/windows/tmp/f\d"
     delete => nodir,
@@ -279,7 +270,6 @@ files:
 }
 
 ########################################
-
 
 body delete nodir
 {
@@ -360,7 +350,6 @@ characters before or after, then it is only a little more complicated if
 CFEngine expects an unanchored regex: `(^|:)bob(:|$)`. But if CFEngine expects
 an anchored regular expression, then it starts getting ugly, and you'd need to
 use `bob:.*|.*:bob:.*|.*:bob`.
-
 
 ### Special topics on Regular Expressions
 

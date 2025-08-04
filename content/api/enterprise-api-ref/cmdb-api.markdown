@@ -34,7 +34,6 @@ You can see a list of stored host-specific configurations
 * **hostContextExclude** *(array)*
   Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one of the specified contexts set will be excluded from the results. Optional parameter.
 
-
 **Example request (curl):**
 
 ```console
@@ -213,7 +212,6 @@ curl -k --user <username>:<password> \
 HTTP 200 Ok
 ```
 
-
 ## Batch create configurations
 
 **URI:** https://hub.cfengine.com/api/cmdb
@@ -231,13 +229,13 @@ HTTP 200 Ok
 
   ```json
   {
-     "classes":{
-        "My_class": {},
-        "My_class2": {
-           "comment":"comment body",
-           "tags": ["suggestion-001", "reporting"]
-        }
-     }
+    "classes": {
+      "My_class": {},
+      "My_class2": {
+        "comment": "comment body",
+        "tags": ["suggestion-001", "reporting"]
+      }
+    }
   }
   ```
 
@@ -248,19 +246,16 @@ HTTP 200 Ok
 
   ```json
   {
-     "variables":{
-        "Namespace:BundleName.VariableName":{
-           "value":"myvalue"
-        },
-        "HubCMDB:My.hostname":{
-           "value":"host1.cfengine.com",
-           "comment":"My hostname should be set to this",
-           "tags": ["suggestion-001", "reporting"]
-        }
-     }
+    "variables": {
+      "Namespace:BundleName.VariableName": { "value": "myvalue" },
+      "HubCMDB:My.hostname": {
+        "value": "host1.cfengine.com",
+        "comment": "My hostname should be set to this",
+        "tags": ["suggestion-001", "reporting"]
+      }
+    }
   }
   ```
-
 
 **Example request (curl):**
 
@@ -346,7 +341,6 @@ curl -k --user <username>:<password> \
 HTTP 200 Ok
 ```
 
-
 ## Batch update configurations
 
 **URI:** https://hub.cfengine.com/api/cmdb/:hostkey
@@ -364,14 +358,7 @@ HTTP 200 Ok
 
   ```json
   {
-     "classes":{
-        "My_class":{
-
-        },
-        "My_class2":{
-           "comment":"comment body"
-        }
-     }
+    "classes": { "My_class": {}, "My_class2": {"comment": "comment body"} }
   }
   ```
 
@@ -379,7 +366,7 @@ If you need to delete all classes from host you need to set null value:
 
 ```json
 {
-    "classes": null
+  "classes": null
 }
 ```
 
@@ -392,15 +379,13 @@ If your request body misses classes then the previous value will be preserved.
 
   ```json
   {
-     "variables":{
-        "Namespace:BundleName.VariableName":{
-           "value":"myvalue"
-        },
-        "HubCMDB:My.hostname":{
-           "value":"host1.cfengine.com",
-           "comment":"My hostname should be set to this"
-        }
-     }
+    "variables": {
+      "Namespace:BundleName.VariableName": { "value": "myvalue" },
+      "HubCMDB:My.hostname": {
+        "value": "host1.cfengine.com",
+        "comment": "My hostname should be set to this"
+      }
+    }
   }
   ```
 
@@ -408,7 +393,7 @@ If you need to delete all variables from host you need to set null value:
 
 ```json
 {
-    "variables": null
+  "variables": null
 }
 ```
 If your request body misses variables then the previous value will be preserved.
@@ -486,7 +471,6 @@ HTTP 204 No Content
 
 * **name** *(string)*
   Configuration name. Classes or variables name.
-
 
 **Example request (curl):**
 
