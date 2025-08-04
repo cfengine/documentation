@@ -169,33 +169,19 @@ To the markdown parser, it doesn't matter how you wrap your sentences, a complet
 
 ### Tools and automatic formatting
 
-**prettier**
+We use a combination of tools to automatically format the documentation.
+If you want to run them locally, install them:
 
-It is recommended, but not required, to use [`prettier`](https://prettier.io/) to automatically format markdown files.
-This replaces some cases where two characters would produce the same output, and prefers the less ambiguous one, i.e. `-` instead of `*` for bulleted lists, `_` instead of `*` for italics.
-It also eliminates some common inconsistencies, such as trailing whitespace, too many / too few consecutive newline characters, etc.
-It doesn't help you with everything, for example, the one sentence per line style mentioned above is not something `prettier`
-does automatically, so you'd still have to do that manually.
-Formatting with `prettier` is currently not enforced, but recommended, especially if you are creating new files.
-
-**markdowner.py**
-
-We have a Python script and GitHub Action to automatically fix some common markdown mistakes.
-This is intentionally not very strict, it only fixes very specific things, such as:
-
-- Trims trailing whitespace at the end of lines
-- Replace some utf-8 symbols which have an ascii lookalike
-- Ensures exactly 1 newline before the end of the file
-- De-indents code blocks where everything inside the code block is indented
-
-When someone makes one of these "mistakes" it is highlighted in the Pull Request by the GitHub Action.
-If you want to run this script locally and have it fix these things for you, you can:
-
-```bash
-find . -name '*.markdown' -type f -exec python3 .github/workflows/markdowner.py {} all \;
+```
+pipx install cfengine black
+npm install --global prettier
 ```
 
-In many cases, you can also configure your editor to help you with these things.
+And run the command:
+
+```
+cfengine dev docs-format
+```
 
 ## Documentation structure
 

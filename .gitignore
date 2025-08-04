@@ -1,9 +1,6 @@
 # Build artifacts
 cfdoc_log.markdown
 
-# Log file from running markdowner.py:
-output.log
-
 # emacs
 
 *~
