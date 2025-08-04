@@ -560,7 +560,7 @@ time a network connection should attempt to connect or read from server.
 The time is in seconds. It is not a guaranteed number, since it
 depends on system behavior.
 
-[%CFEngine_promise_attribute(30 seconds)%
+{{< CFEngine_promise_attribute(30 seconds) >}}
 
 **Example:**
 

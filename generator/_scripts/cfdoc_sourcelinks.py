@@ -81,14 +81,14 @@ def verifyLinkRegex(regex):
 
 
 def unexpandedMacroRegex():
-    return re.compile("\\[%CFEngine_.*%\\]")
+    return re.compile(r"\{\{\< CFEngine_.* \>\}\}")
 
 
 def verifyMacroRegex(regex):
     tests = []
     # unexpanded macro
-    tests.append(("[%CFEngine_include_snippet(foo)%]\n", True))
-    tests.append(("[%CFEngine_include_snippet()%]\n", True))
+    tests.append(("{{< CFEngine_include_snippet(foo) >}}\n", True))
+    tests.append(("{{< CFEngine_include_snippet() >}}\n", True))
 
     # ok
     tests.append(("[%CFTemplate%]\n", False))
