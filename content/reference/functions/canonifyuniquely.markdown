@@ -8,7 +8,7 @@ title: canonifyuniquely
 **Description:** Convert an arbitrary string `text` into a unique legal class name.
 
 This function turns arbitrary text into class data, appending the
-SHA-1 hash for uniqueness.  It is exactly equivalent to
+SHA-1 hash for uniqueness. It is exactly equivalent to
 `concat(canonify($(string)), "_", hash($(string),"sha1"));` for a given
 `$(string)` but is much more convenient to write and remember.
 

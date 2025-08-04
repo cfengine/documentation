@@ -287,6 +287,7 @@ bundle agent x
 ```
 
 Results in:
+
 ```
 R: Hello a 1 x
 R: Hello b 1 x
@@ -370,20 +371,20 @@ management.
 Integration of software components may be addressed with a variety of approaches
 and techniques:
 
-* Standard template methods from the COPBL community library (_out of the box_
+- Standard template methods from the COPBL community library (_out of the box_
   solutions).
 
-* Customized, personalized configurations.
+- Customized, personalized configurations.
 
-* Package management for software dependencies.
+- Package management for software dependencies.
 
-* File management - copying, editing, permissions, etc.
+- File management - copying, editing, permissions, etc.
 
-* Process management - starting, stopping, restarting.
+- Process management - starting, stopping, restarting.
 
-* Security.
+- Security.
 
-* Monitoring performance and change.
+- Monitoring performance and change.
 
 Needless to say, all of these are easily achievable with 5 minute repair
 accuracy using our CFEngine framework.

@@ -45,9 +45,9 @@ some desired packages, and finally reports if they are installed.
 
 **Refresh rules:**
 
-* installed packages cache used by packagesmatching() is refreshed at the end of each agent run in accordance with constraints defined in the relevant package module body.
-* installed packages cache is refreshed after installing or removing a package.
-* installed packages cache is refreshed if no local cache exists.
+- installed packages cache used by packagesmatching() is refreshed at the end of each agent run in accordance with constraints defined in the relevant package module body.
+- installed packages cache is refreshed after installing or removing a package.
+- installed packages cache is refreshed if no local cache exists.
 
 This means a reliable way to force a refresh of CFEngine's internal package cache is to simply delete the local cache:
 
@@ -63,8 +63,8 @@ $(sys.statedir)/software_packages.csv
 
 **History:**
 
-* Introduced in CFEngine 3.6
-* Function started using `package_module` based data sources by default, even if
+- Introduced in CFEngine 3.6
+- Function started using `package_module` based data sources by default, even if
   there is no `package_inventory` attribute defined in `body common control` if
   available in 3.23.0
 

@@ -17,7 +17,7 @@ affected by `common` and `agent` control bodies.
 
 **Notes:**
 
-* `cf-agent` always considers the class ```agent``` to be defined.
+- `cf-agent` always considers the class `agent` to be defined.
 
 ## Command reference
 
@@ -28,7 +28,7 @@ affected by `common` and `agent` control bodies.
 Like the `--dry-run` option, the `--simulate` option tries to identify changes
 to your system without making changes to the system, however it goes further
 than `--dry-run` by making changes in a `chroot` and making a distinction
-between *safe* and *unsafe* functions, e.g. `execresult()`.
+between _safe_ and _unsafe_ functions, e.g. `execresult()`.
 
 The agent will execute promises with unsafe functions when the `--simulate`
 options is given only if the promise using the function is tagged `simulate_safe`.
@@ -48,37 +48,38 @@ bundle agent __main__
 The simulate option takes a parameter, `diff`, `manifest`, or `manifest-full`
 which is used to determine the summary output shown at the end of the run.
 
-* `diff` - Show only things that changed during the simulated run.
-* `manifest` - Show files and packages changed by the simulated run.
-* `manifest-full` - Show all files evaluated by the simulated run (including unchanged ones)
+- `diff` - Show only things that changed during the simulated run.
+- `manifest` - Show files and packages changed by the simulated run.
+- `manifest-full` - Show all files evaluated by the simulated run (including unchanged ones)
+  - cf-agent can now simulate the changes done to files in a chroot, printing
+    diff or manifest information about what it would do in a normal evaluation.
+    Use the new command line option: `--simulate=diff` or `--simulate=manifest`.
+    Please note that only files and packages promises are simulated currently.
 
-    - cf-agent can now simulate the changes done to files in a chroot, printing
-      diff or manifest information about what it would do in a normal evaluation.
-      Use the new command line option: `--simulate=diff` or `--simulate=manifest`.
-      Please note that only files and packages promises are simulated currently.
-
-    - Added a new --simulate=manifest-full mode
-      New simulation mode that manifests all changed files as well as
-      all other files evaluated by the agent run which were not skipped
-      (by file selection rules) (CFE-3506)
+  - Added a new --simulate=manifest-full mode
+    New simulation mode that manifests all changed files as well as
+    all other files evaluated by the agent run which were not skipped
+    (by file selection rules) (CFE-3506)
 
 #### Notes
-* Supported on Linux for `files` and `packages` type promises
+
+- Supported on Linux for `files` and `packages` type promises
 
 #### History
-* Introduced in version 3.17.0
-* `--simulate=manifest-full` introduced in version 3.18.0
+
+- Introduced in version 3.17.0
+- `--simulate=manifest-full` introduced in version 3.18.0
 
 ## Automatic bootstrapping
 
 Automatic bootstrapping allows the user to connect a CFEngine Host to a Policy
-Server without specifying the IP address manually. It uses the *Avahi* service
+Server without specifying the IP address manually. It uses the _Avahi_ service
 discovery implementation of `zeroconf` to locate the Policy Server, obtain its IP
 address, and then connect to it. To use automatic bootstrap, install the
 following Avahi libraries:
 
-* libavahi-client
-* libavahi-common
+- libavahi-client
+- libavahi-common
 
 To make the CFEngine Server discoverable, it needs to register itself as an
 Avahi service. Run the following command:
@@ -359,6 +360,7 @@ syslog facility level.
 ```cf3
 agentfacility => "LOG_USER";
 ```
+
 **Notes:**
 
 This is ignored on Windows, as CFEngine Enterprise creates event logs.
@@ -477,7 +479,7 @@ body agent control
 
 ### childlibpath
 
-**Description:** The `childlibpath` string contains the LD\_LIBRARY\_PATH
+**Description:** The `childlibpath` string contains the LD_LIBRARY_PATH
 for child processes.
 
 This string may be used to set the internal `LD_LIBRARY_PATH` environment
@@ -515,7 +517,8 @@ body agent control
 **See also:** `admit_keys`, `controls/cf_agent.cf`
 
 **History:**
-* Introduced in 3.20.0
+
+- Introduced in 3.20.0
 
 ### default_repository
 
@@ -550,7 +553,7 @@ stored in an alternative repository as `_usr_local_etc_postfix.conf.cfsaved`. If
 unset then backups are stored in the same directory as the original file with an
 identifying suffix.
 
-**See also:** [`edit_backup` in ```body edit_defaults```][files#edit_backup], [`copy_backup` in ```body copy_from```][files#copy_backup]
+**See also:** [`edit_backup` in `body edit_defaults`][files#edit_backup], [`copy_backup` in `body copy_from`][files#copy_backup]
 
 ### default_timeout
 
@@ -575,7 +578,7 @@ body agent control
 
 **Notes:**
 
-* `cf-serverd` will time out any transfer that takes longer than 10 minutes
+- `cf-serverd` will time out any transfer that takes longer than 10 minutes
   (this is not currently tunable).
 
 ### defaultcopytype
@@ -860,16 +863,16 @@ body agent control
 
 **Notes:**
 
-* A value of `0` means no locking, all promises will be executed each execution if in context. This also disables function caching.
-* This is not a reliable way to control frequency over a long period of time.
-* Locks provide simple but weak frequency control.
-* Locks older than 4 weeks are automatically purged.
+- A value of `0` means no locking, all promises will be executed each execution if in context. This also disables function caching.
+- This is not a reliable way to control frequency over a long period of time.
+- Locks provide simple but weak frequency control.
+- Locks older than 4 weeks are automatically purged.
 
 **See also:** [Promise locking][Promises#Promise locking], [ifelapsed action body attribute][Promise types#ifelapsed]
 
 ### inform
 
-**Description:** The `inform` menu option policy sets the default  output
+**Description:** The `inform` menu option policy sets the default output
 level 'permanently' within the class context indicated.
 
 It is equivalent to (and when present, overrides) the command line option
@@ -1022,7 +1025,7 @@ body agent control
 
 This examples uses a non-empty list with the name 'none'. This is not a
 reserved word, but as long as there are no bundles with the name 'none' this
-has the effect of *never* reloading the process table. This keeps improves the
+has the effect of _never_ reloading the process table. This keeps improves the
 efficiency of the agent.
 
 **History:** Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
@@ -1081,20 +1084,20 @@ body agent control
 
 **History:**
 
-* Added in 3.9.0
+- Added in 3.9.0
 
 **Notes:**
 
-* Available in CFEngine Enterprise.
-* Persistent classes are logged with the timestamp of each agent run.
+- Available in CFEngine Enterprise.
+- Persistent classes are logged with the timestamp of each agent run.
 
 The following classes are excluded from logging:
 
-* Time based classes (`Hr01`, `Tuesday`, `Morning`, etc ...)
-* `license_expired`
-* `any`
-* `from_cfexecd`
-* Life cycle (`Lcycle_0`, `GMT_Lcycle_3`)
+- Time based classes (`Hr01`, `Tuesday`, `Morning`, etc ...)
+- `license_expired`
+- `any`
+- `from_cfexecd`
+- Life cycle (`Lcycle_0`, `GMT_Lcycle_3`)
 
 ### secureinput
 
@@ -1120,7 +1123,7 @@ body agent control
 ### select_end_match_eof
 
 **Description:** When `true` this sets the default behavior for `edit_line`
-promises to allow the end of a file to mark the end of a region when ```select_end```
+promises to allow the end of a file to mark the end of a region when `select_end`
 is defined, but not found.
 
 It is useful for configuration files with sections that do not have end markers,

@@ -43,26 +43,26 @@ REST API for managing settings, checking hub status.
 
 **Output:**
 
-* **apiName**
-    Human-friendly API name.
-* **apiVersion**
-    API version string.
-* **enterpriseVersion**
-    Version of the CFEngine Enterprise build.
-* **uiVersion**
-    The internal build number of the Enterprise UI.
-* **coreVersion**
-    The version of CFEngine Core (Community) the Enterprise version was built against.
-* **authenticated** *("internal", "external")*
-    Whether the request was authenticated using the internal users table or an external source.
-* **license.expires**
-    Time when the license expires.
-* **license.owner**
-    The name of the license owner.
-* **license.granted**
-    Host number capacity granted by the license.
-* **license.licenseType**
-    License description.
+- **apiName**
+  Human-friendly API name.
+- **apiVersion**
+  API version string.
+- **enterpriseVersion**
+  Version of the CFEngine Enterprise build.
+- **uiVersion**
+  The internal build number of the Enterprise UI.
+- **coreVersion**
+  The version of CFEngine Core (Community) the Enterprise version was built against.
+- **authenticated** _("internal", "external")_
+  Whether the request was authenticated using the internal users table or an external source.
+- **license.expires**
+  Time when the license expires.
+- **license.owner**
+  The name of the license owner.
+- **license.granted**
+  Host number capacity granted by the license.
+- **license.licenseType**
+  License description.
 
 **Example usage:** `Checking status`
 
@@ -118,33 +118,33 @@ administrator.
 
 **Fields**:
 
-* **rbacEnabled** *(boolean)*
-    Whether RBAC is applied to requests.
-* **hostIdentifier** *(string)*
-    The identfying string for hosts, such as name or IP.
-* **ldapEnabled** *(boolean)*
-    Whether external authentication is activated.
-* **logLevel** *("emergency", "alert", "critical", "error", "warning", "notice", "info", "debug")*
-    Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error).
-* **blueHostHorizon** *(900)*
-    Threshold in minutes that hosts are unreachable before they are considered a health issue.
-* **sameHostsNumberOfRuns** *(integer)*
-    Number of samples used to identify a duplicate identity. Default value is 3.
-* **enforce2FA** *(boolean)*
-    Determines if two-factor authentication (2FA) is mandatory for all users.
-    If set to `true`, users must enable 2FA; otherwise, they will be locked out within 48 hours after the first login.
-    Default value: `false`
-* **minPasswordLength** *(integer)*
-    Sets the minimum required length for user passwords.
-    The value represents the number of characters.
-    Default value: `8`
-* **passwordComplexity** *(integer)*
-    Defines the level of password complexity required.
-    The range is from 0 to 4, where zero turns of the password complexity check and four turns on the maximum level.
-    Default value: `3`
-* **passwordExpirationAfterResetHours** *(integer)*
-    Specifies the number of hours after which a password must expire following a reset.
-    Default value: `48`
+- **rbacEnabled** _(boolean)_
+  Whether RBAC is applied to requests.
+- **hostIdentifier** _(string)_
+  The identfying string for hosts, such as name or IP.
+- **ldapEnabled** _(boolean)_
+  Whether external authentication is activated.
+- **logLevel** _("emergency", "alert", "critical", "error", "warning", "notice", "info", "debug")_
+  Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error).
+- **blueHostHorizon** _(900)_
+  Threshold in minutes that hosts are unreachable before they are considered a health issue.
+- **sameHostsNumberOfRuns** _(integer)_
+  Number of samples used to identify a duplicate identity. Default value is 3.
+- **enforce2FA** _(boolean)_
+  Determines if two-factor authentication (2FA) is mandatory for all users.
+  If set to `true`, users must enable 2FA; otherwise, they will be locked out within 48 hours after the first login.
+  Default value: `false`
+- **minPasswordLength** _(integer)_
+  Sets the minimum required length for user passwords.
+  The value represents the number of characters.
+  Default value: `8`
+- **passwordComplexity** _(integer)_
+  Defines the level of password complexity required.
+  The range is from 0 to 4, where zero turns of the password complexity check and four turns on the maximum level.
+  Default value: `3`
+- **passwordExpirationAfterResetHours** _(integer)_
+  Specifies the number of hours after which a password must expire following a reset.
+  Default value: `48`
 
 **Example Request Body:**
 

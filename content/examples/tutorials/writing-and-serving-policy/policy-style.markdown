@@ -10,19 +10,19 @@ guide.
 
 ## Style summary
 
-* One indent = 2 spaces
-* Avoid letting line length surpass 80 characters.
-  * When writing policy for documentation / blog posts / tutorials:
+- One indent = 2 spaces
+- Avoid letting line length surpass 80 characters.
+  - When writing policy for documentation / blog posts / tutorials:
     Try to split up lines and fit within 45 characters in general, as long as it's not too problematic.
     (This will avoid horizontal scrolling on small windows and mobile).
-* Add one indentation level per nesting of logic you are inside (promise type, class guard, promise, parenthesis, curly brace);
-  * **Macros (`@if` etc.):** 0 indents (never indented)
-  * **Promise types:** 1 indent
-  * **Class guards:** +1 indent (2 indents in bundle, 1 indent in body)
-  * **Promisers:** +1 indent (2 or 3 indents, depending on whether there is a class guard or not)
-  * **Promise attributes:** +1 indent from promiser (3 or 4 indents).
-  * **Parentheses:** +1 indent (function calls or bundle invokations across multiple lines).
-  * **Curly braces:** +1 indent (slists / JSON / data containers).
+- Add one indentation level per nesting of logic you are inside (promise type, class guard, promise, parenthesis, curly brace);
+  - **Macros (`@if` etc.):** 0 indents (never indented)
+  - **Promise types:** 1 indent
+  - **Class guards:** +1 indent (2 indents in bundle, 1 indent in body)
+  - **Promisers:** +1 indent (2 or 3 indents, depending on whether there is a class guard or not)
+  - **Promise attributes:** +1 indent from promiser (3 or 4 indents).
+  - **Parentheses:** +1 indent (function calls or bundle invokations across multiple lines).
+  - **Curly braces:** +1 indent (slists / JSON / data containers).
 
 ## Promise ordering
 
@@ -33,7 +33,7 @@ The other is reader optimized where promises are written in the
 order they make sense to the reader. Both styles have their merits,
 but there seems to be a trend toward the reader optimized style.
 
-1) Normal Order
+1. Normal Order
 
 Here is an example of a policy written in the Normal Order. Note how
 `packages` are listed after `files`. This could confuse a novice who
@@ -74,7 +74,7 @@ bundle agent main
 }
 ```
 
-2) Reader Optimized
+2. Reader Optimized
 
 Here is an example of a policy written to be optimized for the reader.
 Note how packages are listed before files in the order which users
@@ -308,7 +308,7 @@ when debugging a large policy set.
 
 Promise handles uniquely identify a promise within a policy. We suggest a simple naming
 scheme of `bundle_name_promise_type_class_restriction_promiser` to keep handles unique and
-easily identifiable.  Often it may be easier to omit the handle.
+easily identifiable. Often it may be easier to omit the handle.
 
 ```cf3
 bundle agent example
@@ -380,8 +380,8 @@ Naming conventions can also help to provide clarity.
 
 ### Snakecase
 
-Words delimited by an underscore. This style is prevalant for *variables*,
-*classes*, *bundle* and *body* names in the Masterfiles Policy Framework.
+Words delimited by an underscore. This style is prevalant for _variables_,
+_classes_, _bundle_ and _body_ names in the Masterfiles Policy Framework.
 
 {{< CFEngine_include_example(style_snake_case.cf) >}}
 
@@ -496,13 +496,14 @@ bundle agent old
       };
 }
 ```
+
 ## Tooling
 
 Currently, there is no canonical policy linting or reformatting tool. There are a few different tools that can be useful apart from an [editor with syntax support][Editors] for achieving regular formatting.
 
 ### cf-promises
 
-`cf-promises` can output the parsed policy using the ```--policy-output-format``` option. Beware, this will strip macros as they are done during parse time.
+`cf-promises` can output the parsed policy using the `--policy-output-format` option. Beware, this will strip macros as they are done during parse time.
 
 Example policy:
 
@@ -526,7 +527,7 @@ bundle agent satellite_bootstrap_main
 }
 ```
 
-Output the parsed policy in ```cf``` format:
+Output the parsed policy in `cf` format:
 
 ```command
 cf-promises -f /tmp/example.cf --policy-output-format cf

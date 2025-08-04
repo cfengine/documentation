@@ -50,21 +50,22 @@ the final destination by cf-agent.
 
 There are several ways to approach desired state management of file contents:
 
- * Copy a finished file template to the desired location, completely overwriting
-   existing content.
+- Copy a finished file template to the desired location, completely overwriting
+  existing content.
 
- * Copy and adapt an almost finished template, filling in variables or macros to
-   yield a desired content.
+- Copy and adapt an almost finished template, filling in variables or macros to
+  yield a desired content.
 
- * Make corrections to whatever the existing state of the file might be.
+- Make corrections to whatever the existing state of the file might be.
 
 There are advantages and disadvantages with each of these approaches and the
 best approach depends on the type of situation you need to describe.
 
-For the approach 	Against the approach
-1. Deterministic. 	Hard to specialize the result and the source must still be maintained by hand.
-2. Deterministic. 	Limited specialization and must come from a single source, again maintained by hand.
-3. Non-deterministic/partial model. 	Full power to customize file even with multiple managers.
+For the approach Against the approach
+
+1. Deterministic. Hard to specialize the result and the source must still be maintained by hand.
+2. Deterministic. Limited specialization and must come from a single source, again maintained by hand.
+3. Non-deterministic/partial model. Full power to customize file even with multiple managers.
 
 Approaches 1 and 2 are best for situations where very few variations of a file
 are needed in different circumstances. Approach 3 is best when you need to
@@ -75,26 +76,26 @@ is determined by them.
 
 ## Three approaches to managing files
 
-* Copying a finished file template into place
+- Copying a finished file template into place
 
-* Contextual adaptation of a file template
+- Contextual adaptation of a file template
 
-* Example file template
+- Example file template
 
-* Combining copy with template expansion
+- Combining copy with template expansion
 
-* Making delta changes to someone else's file
+- Making delta changes to someone else's file
 
 ### Copying a finished file template into place
 
 Use this approach if a simple substution of data will solve the problem in all
 contexts.
 
-* Maintain the content of the file in a version controlled repository.
+- Maintain the content of the file in a version controlled repository.
 
-* Check out the file into a staging area.
+- Check out the file into a staging area.
 
-* Copy the file into place.
+- Copy the file into place.
 
 ```cf3
 bundle agent something
@@ -111,14 +112,14 @@ files:
 
 There are several approaches here:
 
-* Encode the boiler-plate template directly in the CFEngine configuration, and
+- Encode the boiler-plate template directly in the CFEngine configuration, and
   have full use of the power of the CFEngine language to adapt it.
 
-* Keep a separate boiler-plate file and edit/adapt it.
+- Keep a separate boiler-plate file and edit/adapt it.
 
-* Copy a template from a repository then edit/adapt it.
+- Copy a template from a repository then edit/adapt it.
 
-* Copy a generic template with embedded variables that can be expanded like
+- Copy a generic template with embedded variables that can be expanded like
   macro-substitution.
 
 Choose the approach that you consider to be simplest and most reliable for the
@@ -718,9 +719,9 @@ insert_lines:
 }
 ```
 
-* Standard library methods for simple editing
+- Standard library methods for simple editing
 
-* Expressing expand_template as promises
+- Expressing expand_template as promises
 
 ### Standard library methods for simple editing
 
@@ -759,23 +760,23 @@ bundle agent example
 
 Some other examples of the standard editing methods are:
 
-* append_groups_starting(v)
-* append_if_no_line(str)
-* append_if_no_lines(list)
-* append_user_field(group,field,allusers)
-* append_users_starting(v)
-* comment_lines_containing(regex,comment)
-* edit_line comment_lines_matching(regex,comment)
-* delete_lines_matching(regex)
-* expand_template(templatefile)
-* insert_lines(lines)
-* resolvconf(search,list)
-* set_user_field(user,field,val)
-* set_variable_values(v)
-* set_variable_values2(v)
-* uncomment_lines_containing(regex,comment)
-* uncomment_lines_matching(regex,comment)
-* warn_lines_matching(regex)
+- append_groups_starting(v)
+- append_if_no_line(str)
+- append_if_no_lines(list)
+- append_user_field(group,field,allusers)
+- append_users_starting(v)
+- comment_lines_containing(regex,comment)
+- edit_line comment_lines_matching(regex,comment)
+- delete_lines_matching(regex)
+- expand_template(templatefile)
+- insert_lines(lines)
+- resolvconf(search,list)
+- set_user_field(user,field,val)
+- set_variable_values(v)
+- set_variable_values2(v)
+- uncomment_lines_containing(regex,comment)
+- uncomment_lines_matching(regex,comment)
+- warn_lines_matching(regex)
 
 You find these in the documentation for the COPBL.
 
@@ -785,14 +786,14 @@ As on CFEngine 3.3.0, CFEngine has a new template mechanism to make it easier to
 encode complex file templates. These templates map simply to edit_line bundles
 in the following way.
 
-* Each line in a template maps to a separate insert_lines promise unless it is
+- Each line in a template maps to a separate insert_lines promise unless it is
   grouped with '[%CFEngine BEGIN %]' and '[%CFEngine END %]' tags.
 
-* Each multi-line group, marked with '[%CFEngine BEGIN %]' and
+- Each multi-line group, marked with '[%CFEngine BEGIN %]' and
   '[%CFEngine END %]' tags maps to a multi-line insert_lines promise, with
   insert_type => "preserve_block".
 
-* Each line that expresses a context-class: '[%CFEngine classexpression:: %]'
+- Each line that expresses a context-class: '[%CFEngine classexpression:: %]'
   maps to a normal class expression in a bundle.
 
 The order of lines in the template is preserved within each block, or if
@@ -816,11 +817,11 @@ There are two decisions to make when choosing how to manage file content:
 
 How can the desired content be constructed from the necessary source(s)?
 
-* Is there more than one source of infromation that needs to be merged?
+- Is there more than one source of infromation that needs to be merged?
 
-* Do the contents need to be adapted to the specific environment?
+- Do the contents need to be adapted to the specific environment?
 
-* Is there context-specific information in the file?
+- Is there context-specific information in the file?
 
 Use the simplest approach that requires the smallest number of promises to solve
 the problem.
@@ -836,7 +837,7 @@ dependence as possible.
 Order dependence increases the fragility of maintainence, so you should do what
 you can to minimize it.
 
-* Try to use substitution within a known template if order is important.
+- Try to use substitution within a known template if order is important.
 
 The simplest kinds of files for configuration are line-based, with no special
 order. For such cases, simple line insertions are usually enough to configure

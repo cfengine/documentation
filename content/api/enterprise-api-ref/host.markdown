@@ -13,16 +13,16 @@ Host API allows to access host specific information.
 
 **Parameters:**
 
-* **context-include** *(comma delimited string of regular expression
-    strings)*
-    Includes hosts having context matching the expression.
-* **context-exclude** *(comma delimited string of regular expression
-    strings)*
-    Excludes hosts having context matching the expression.
-* **page** *(integer)*
-    Number of the page with results. By default 1.
-* **count** *(integer)*
-    Size of the page. By default 50 results.
+- **context-include** _(comma delimited string of regular expression
+  strings)_
+  Includes hosts having context matching the expression.
+- **context-exclude** _(comma delimited string of regular expression
+  strings)_
+  Excludes hosts having context matching the expression.
+- **page** _(integer)_
+  Number of the page with results. By default 1.
+- **count** _(integer)_
+  Size of the page. By default 50 results.
 
 **Example response:**
 
@@ -55,16 +55,16 @@ Host API allows to access host specific information.
 
 **Output:**
 
-* **id**
-    Unique host identifier.
-* **hostname**
-    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and settings REST API#Update settings].
-* **ip**
-    IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
-* **lastreport**
-    Time of receiving last report from the client, successfully. Represented as UNIX TIMESTAMP.
-* **firstseen**
-    Time of receiving the first status report from the client. It is equivalent to the time when the client have been bootstrapped to the server for the first time. Represented as UNIX TIMESTAMP.
+- **id**
+  Unique host identifier.
+- **hostname**
+  Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and settings REST API#Update settings].
+- **ip**
+  IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
+- **lastreport**
+  Time of receiving last report from the client, successfully. Represented as UNIX TIMESTAMP.
+- **firstseen**
+  Time of receiving the first status report from the client. It is equivalent to the time when the client have been bootstrapped to the server for the first time. Represented as UNIX TIMESTAMP.
 
 **Example usage:** `Example: Listing hosts with a given context`, `Example: Looking up hosts by hostname`, `Example: Looking up hosts by IP`
 
@@ -98,16 +98,16 @@ Host API allows to access host specific information.
 
 **Output:**
 
-* **id**
-    Unique host identifier.
-* **hostname**
-    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and settings REST API#Update settings].
-* **ip**
-    IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
-* **lastreport**
-    Time of receiving last report from the client, successfully. Represented as UNIX TIMESTAMP.
-* **firstseen**
-    Time of receiving the first status report from the client. It is equivalent to the time when the client have been bootstrapped to the server for the first time. Represented as UNIX TIMESTAMP.
+- **id**
+  Unique host identifier.
+- **hostname**
+  Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and settings REST API#Update settings].
+- **ip**
+  IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
+- **lastreport**
+  Time of receiving last report from the client, successfully. Represented as UNIX TIMESTAMP.
+- **firstseen**
+  Time of receiving the first status report from the client. It is equivalent to the time when the client have been bootstrapped to the server for the first time. Represented as UNIX TIMESTAMP.
 
 ## Remove host from the hub
 
@@ -124,16 +124,16 @@ Other response codes are also possible (access denied, server error, etc.).
 Only users with the admin role are allowed to delete hosts.
 
 Reporting data associated with the host is immediately purged.
-This includes SQL tables like `agentstatus`,  `hosts`, `contexts`, `variables`, etc.
+This includes SQL tables like `agentstatus`, `hosts`, `contexts`, `variables`, etc.
 In order to completely delete the host, a deletion job is scheduled by adding the host to the internal table `KeysPendingForDeletion`.
 To see what hosts are pending deletion, run the query `SELECT HostKey FROM KeysPendingForDeletion;` against the `cfsettings` database.
 
 After 5-10 minutes (one reporting iteration based on the [hub schedule][cf-hub#hub_schedule]), the main thread of cf-hub will pick up the deletion job.
 The hostkey is then removed from:
 
- * "Last seen" database, which contains network connection info (`/var/cfengine/state/cf_lastseen.lmdb`).
- * Public key directory, containing cryptographic keys exchaned during bootstrap (`/var/cfengine/ppkeys`).
- * The previously mentioned `KeysPendingForDeletion` table.
+- "Last seen" database, which contains network connection info (`/var/cfengine/state/cf_lastseen.lmdb`).
+- Public key directory, containing cryptographic keys exchaned during bootstrap (`/var/cfengine/ppkeys`).
+- The previously mentioned `KeysPendingForDeletion` table.
 
 Note: There is a record of the host retained that includes the time when the host was deleted and this record also prevents further collection from this host identity.
 
@@ -147,13 +147,13 @@ Note: There is a record of the host retained that includes the time when the hos
 
 **Parameters:**
 
-* **context-include** *(comma delimited string of regular expression strings)*
-* **format** *(string)*
-    Output format. Default value is `json`. Allowed values: `json`, `yaml`.
-* **withInventory** *(boolean)*
-    Include inventory data to the API response. Default value is `false`. Allowed values: `true`, `false`
-* **inventoryFile** *(boolean)*
-    Make hosts' children values objects which aligns with Ansible inventory that is sourced from a file (so this format is appropriate for caching responses), by default when `inventoryFile` is `false`, the output format aligns with Ansible inventory sourced from a script. Default value is `false`. Allowed values: `true`, `false`
+- **context-include** _(comma delimited string of regular expression strings)_
+- **format** _(string)_
+  Output format. Default value is `json`. Allowed values: `json`, `yaml`.
+- **withInventory** _(boolean)_
+  Include inventory data to the API response. Default value is `false`. Allowed values: `true`, `false`
+- **inventoryFile** _(boolean)_
+  Make hosts' children values objects which aligns with Ansible inventory that is sourced from a file (so this format is appropriate for caching responses), by default when `inventoryFile` is `false`, the output format aligns with Ansible inventory sourced from a script. Default value is `false`. Allowed values: `true`, `false`
 
 **CURL unfiltered request example**
 
@@ -258,17 +258,19 @@ curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class?wit
 
 **Parameters:**
 
-* **skip** *(integer)*
+- **skip** _(integer)_
   Number of results to skip for the processed query.
   Optional parameter.
-* **limit**  *(integer)*
+- **limit** _(integer)_
   Limit the number of results in the query.
   No limit when parameter is not set. Optional parameter.
 
 **Example request (curl):**
+
 ```
 curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/deleted
 ```
+
 **Example response:**
 
 ```
@@ -307,15 +309,17 @@ Note: to be able to perform this action related RBAC rule (alias `hosts-undelete
 **Responses:**
 
 | HTTP response code        | Description                |
-|---------------------------|----------------------------|
+| ------------------------- | -------------------------- |
 | 200 OK                    | Host is found and restored |
 | 404 NOT FOUND             | Host is not found          |
 | 500 Internal server error | Internal server error      |
 
 **Example request (curl):**
+
 ```
 curl -k --user <username>:<password> -X POST https://hub.example.com/api/hosts/restore-deleted/SHA=2123f85b38189008ae12be159fb961584dda1249c94efed43fec2c70f233975d
 ```
+
 **Example response:**
 
 ```
@@ -335,15 +339,17 @@ Note: to be able to perform this action related RBAC rule (alias `hosts-delete-p
 **Responses:**
 
 | HTTP response code        | Description                                   |
-|---------------------------|-----------------------------------------------|
+| ------------------------- | --------------------------------------------- |
 | 200 OK                    | Deleted host is found and removed permanently |
 | 404 NOT FOUND             | Host is not found                             |
 | 500 Internal server error | Internal server error                         |
 
 **Example request (curl):**
+
 ```
 curl -k --user <username>:<password> -X DELETE https://hub.example.com/api/hosts/delete-permanently/SHA=2123f85b38189008ae12be159fb961584dda1249c94efed43fec2c70f233975d
 ```
+
 **Example response:**
 
 ```
@@ -401,14 +407,14 @@ Note: Collecting monitoring data by default is disabled.
 
 **Output:**
 
-* **id**
-    Unique vital identifier.
-* **timestamp**
-    Last measurement time. Represented as UNIX TIMESTAMP.
-* **description**
-    Vital short description.
-* **units**
-    Units for the samples.
+- **id**
+  Unique vital identifier.
+- **timestamp**
+  Last measurement time. Represented as UNIX TIMESTAMP.
+- **description**
+  Vital short description.
+- **units**
+  Units for the samples.
 
 **Example usage:** `Example: Listing available vital signs for a host`
 
@@ -420,10 +426,10 @@ Note: Collecting monitoring data by default is disabled.
 
 **Parameters:**
 
-* **from** *(integer)*
-    Timestamp marking the start of the interval for which to fetch data. Data is only available going back one week.
-* **to** *(integer)*
-    End of data interval to be fetched.
+- **from** _(integer)_
+  Timestamp marking the start of the interval for which to fetch data. Data is only available going back one week.
+- **to** _(integer)_
+  End of data interval to be fetched.
 
 **Example response:**
 
@@ -462,16 +468,16 @@ Note: Collecting monitoring data by default is disabled.
 
 **Output**:
 
-*  **id**
-    ID of vital sign.
-*   **description**
-    Description of vital sign.
-*   **units**
-    Measurement unit of vital sign.
-*   **timestamp**
-    Timestamp of the last received data point.
-*   **values**
-    Vital sign data. *(array of [ t, y ], where t is the sample timestamp)*
+- **id**
+  ID of vital sign.
+- **description**
+  Description of vital sign.
+- **units**
+  Measurement unit of vital sign.
+- **timestamp**
+  Timestamp of the last received data point.
+- **values**
+  Vital sign data. _(array of [ t, y ], where t is the sample timestamp)_
 
 **Example usage:** `Example: Retrieving vital sign data`
 
@@ -483,17 +489,19 @@ Note: Collecting monitoring data by default is disabled.
 
 **Parameters:**
 
-* **from** *(string)*
-    Timestamp marking the start of the interval for which to fetch data. `Emp: 2017-11-28`
-* **to** *(string)*
-    End of data interval to be fetched. `Emp: 2017-12-28`
-* **period** *(string)*
-    Group data by period. Allowed values: `day, week, month, year`.
+- **from** _(string)_
+  Timestamp marking the start of the interval for which to fetch data. `Emp: 2017-11-28`
+- **to** _(string)_
+  End of data interval to be fetched. `Emp: 2017-12-28`
+- **period** _(string)_
+  Group data by period. Allowed values: `day, week, month, year`.
 
 **Example request (curl):**
+
 ```
 curl -k --user admin:admin -X POST https://hub.cfengine.com/api/host-count  -H 'content-type: application/json'   -d '{"period": "month", "from": "2017-11-28", "to" : "2017-12-06"}'
 ```
+
 **Example response:**
 
 ```
@@ -515,13 +523,13 @@ HTTP 200 Ok
 
 **Output**:
 
-*  **period**
-    Period of grouping the data. Allowed values: `day, week, month, year`.
-*   **date**
-    The date of statistic.
-*   **count**
-    The bootstrapped hosts to the hub count.
+- **period**
+  Period of grouping the data. Allowed values: `day, week, month, year`.
+- **date**
+  The date of statistic.
+- **count**
+  The bootstrapped hosts to the hub count.
 
 ## History
 
-* `inventoryFile=true` parameter added in CFEngine 3.19.0, 3.18.1
+- `inventoryFile=true` parameter added in CFEngine 3.19.0, 3.18.1

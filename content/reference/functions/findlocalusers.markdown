@@ -12,12 +12,13 @@ title: findlocalusers
 The `filter` argument can be used to look up users with specific attributes that match values. The filter is a `"data"` container or `"slist"` comprised of pairs of attribute and value/regex pattern `{ "attribute1=value1", "attribute2=value2", ... }`.
 
 The possible attributes are:
-* `name`: name
-* `uid`: user id
-* `gid`: group id
-* `gecos`: description
-* `dir`: path to home directory
-* `shell`: default shell
+
+- `name`: name
+- `uid`: user id
+- `gid`: group id
+- `gecos`: description
+- `dir`: path to home directory
+- `shell`: default shell
 
 **Example:**
 
@@ -29,8 +30,8 @@ Output:
 
 **Notes:**
 
-* This function is currently only available on Unix-like systems.
+- This function is currently only available on Unix-like systems.
 
 **History:**
 
-* Function added in 3.26.0.
+- Function added in 3.26.0.

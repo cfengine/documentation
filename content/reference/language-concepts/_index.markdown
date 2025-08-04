@@ -22,7 +22,7 @@ promise_type:
 }
 ```
 
-In addition, CFEngine bodies can be defined and used as attribute values.  Here's a real-life example of a body and its usage.
+In addition, CFEngine bodies can be defined and used as attribute values. Here's a real-life example of a body and its usage.
 
 ```cf3
 body edit_defaults no_backup
@@ -36,68 +36,68 @@ body edit_defaults no_backup
     "myfile" edit_defaults => no_backup;
 ```
 
-You can recognize *everything* in CFEngine from just those few concepts.
+You can recognize _everything_ in CFEngine from just those few concepts.
 
-* [**Promise**][promises]
+- [**Promise**][promises]
 
-A declaration about the *state* we desire to maintain (e.g., the permissions
+A declaration about the _state_ we desire to maintain (e.g., the permissions
 or contents of a file, the availability or absence of a service, the
 (de)installation of a package).
 
-* [**Bundles**][bundles]
+- [**Bundles**][bundles]
 
 A collection of promises.
 
-* [**Bodies**][bodies]
+- [**Bodies**][bodies]
 
 A part of a promise which details and constrains its nature, possibly in
-separate and re-usable parts.  Effectively a body is like a promise attribute that has several parameters.
+separate and re-usable parts. Effectively a body is like a promise attribute that has several parameters.
 
-* [**Classes**][classes and decisions]
+- [**Classes**][classes and decisions]
 
 CFEngine's boolean classifiers that describe context.
 
-* [**Variables and datatypes**][variables]
+- [**Variables and datatypes**][variables]
 
-An association of the form "LVALUE *represents* RVALUE", where RVALUE may be a
+An association of the form "LVALUE _represents_ RVALUE", where RVALUE may be a
 scalar value or a list of scalar values: a string, integer or real number.
 
 This documentation about the language concepts introduces:
 
-* Policy evaluation (also known as [**Normal order**][Policy evaluation])
-* [**loops**][Loops] and implicit iteration
-* [**pattern matching and referencing**][Pattern matching and referencing]
-* [**namespaces**][namespaces]
+- Policy evaluation (also known as [**Normal order**][Policy evaluation])
+- [**loops**][Loops] and implicit iteration
+- [**pattern matching and referencing**][Pattern matching and referencing]
+- [**namespaces**][namespaces]
 
 ## Syntax, identifiers and names
 
 The CFEngine 3 language has a few simple rules:
 
-* CFEngine built-in words, names of variables, bundles, body templates and classes may only contain the usual alphanumeric and underscore characters (`a-zA-Z0-9_`)
-* All other 'literal' data must be quoted.
-* Declarations of promise bundles in the form:
+- CFEngine built-in words, names of variables, bundles, body templates and classes may only contain the usual alphanumeric and underscore characters (`a-zA-Z0-9_`)
+- All other 'literal' data must be quoted.
+- Declarations of promise bundles in the form:
 
         bundle agent-type identifier
         {
         ...
         }
 
-    where `agent-type` is the CFEngine component responsible for maintaining the promise.
+  where `agent-type` is the CFEngine component responsible for maintaining the promise.
 
-* Declarations of promise body-parts in the form:
+- Declarations of promise body-parts in the form:
 
         body constraint_type template_identifier
         {
         ...
         }
 
-    matching and expanding on a reference inside a promise of the form `constraint_type => template_identifier`
+  matching and expanding on a reference inside a promise of the form `constraint_type => template_identifier`
 
-* attribute expressions in the body of a promise take the form
+- attribute expressions in the body of a promise take the form
 
         left-hand-side (CFEngine_word) => right-hand-side (user defined data).
 
-    This can take several forms:
+  This can take several forms:
 
         cfengine_word => user_defined_template(parameters)
                       user_defined_template
@@ -105,17 +105,17 @@ The CFEngine 3 language has a few simple rules:
                       "quoted literal scalar"
                       { list }
 
-    In each of these cases, the right hand side is a user choice.
+  In each of these cases, the right hand side is a user choice.
 
-	CFEngine uses many _constraint expressions_ as part of the body of a promise. These take the form: left-hand-side (CFEngine word) '=>' right-hand-side (user defined data). This can take several forms:
+  CFEngine uses many _constraint expressions_ as part of the body of a promise. These take the form: left-hand-side (CFEngine word) '=>' right-hand-side (user defined data). This can take several forms:
 
-	    cfengine_word => user_defined_template(parameters)
-	        user_defined_template
-	        builtin_function()
-	        "quoted literal scalar"
-	        { list }
+      cfengine_word => user_defined_template(parameters)
+          user_defined_template
+          builtin_function()
+          "quoted literal scalar"
+          { list }
 
-	In each of these cases, the right hand side is a user choice.
+  In each of these cases, the right hand side is a user choice.
 
 ## Filenames and paths
 

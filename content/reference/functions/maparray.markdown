@@ -23,7 +23,7 @@ example below for an illustration.
 If a value in the array is an `slist`, you'll get one result for each
 value (implicit looping).
 
-The order of the array keys is not guaranteed.  Use the `sort`
+The order of the array keys is not guaranteed. Use the `sort`
 function if you need order in the resulting output.
 
 {{< CFEngine_function_attributes(pattern, array_or_container) >}}

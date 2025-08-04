@@ -12,7 +12,7 @@ CFEngine is designed to handle high level simplicity (without sacrificing low
 level capability) by working with configuration patterns. After all,
 configuration is all about promising consistent patterns in the resources of
 the system. Lists, for instance, are a particularly common kind of pattern:
-*for each of the following... make a similar promise*. There are several ways
+_for each of the following... make a similar promise_. There are several ways
 to organize patterns, using containers, lists and associative arrays.
 
 ## Menu level

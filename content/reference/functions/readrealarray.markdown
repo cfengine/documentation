@@ -23,14 +23,14 @@ lines matched.
 
 **Arguments**:
 
-* `array` : Array identifier to populate, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
-* `filename` : File name to read, in the range `"?(/.*)`
-* `comment` : [Unanchored][unanchored] regex matching comments, in the range `.*`
-* `split` : [Unanchored][unanchored] regex to split lines into fields, in the range `.*`
-* `maxentries` : Maximum number of entries to read, in the range
-`0,99999999999`
-* `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
+- `array` : Array identifier to populate, in the range
+  `[a-zA-Z0-9_$(){}\[\].:]+`
+- `filename` : File name to read, in the range `"?(/.*)`
+- `comment` : [Unanchored][unanchored] regex matching comments, in the range `.*`
+- `split` : [Unanchored][unanchored] regex to split lines into fields, in the range `.*`
+- `maxentries` : Maximum number of entries to read, in the range
+  `0,99999999999`
+- `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
 
 **Example:**
 
@@ -110,6 +110,7 @@ array_name[games][5]    /var/games
 array_name[games][6]    /bin/bash
 ...
 ```
+
 Prepare:
 
 {{< CFEngine_include_snippet(readrealarray.cf, #\+begin_src prep, .*end_src) >}}

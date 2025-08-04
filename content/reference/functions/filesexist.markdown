@@ -14,8 +14,8 @@ this function to return true.
 
 **Arguments:**
 
-* list : The name of the list variable or data container to check, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+- list : The name of the list variable or data container to check, in the range
+  `[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example:**
 

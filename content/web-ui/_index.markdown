@@ -63,7 +63,7 @@ made by `cf-agent`.
 
 ### Event log
 
-The Event Log records a time-line of *significant events*.
+The Event Log records a time-line of _significant events_.
 
 Examples of significant events include:
 
@@ -86,7 +86,7 @@ All Events can be searched and viewed from the Event Log page.
 
 <img src="web-ui-event-log.png" alt="Events Log page" width="670px">
 
--  The Mission Portal RBAC for `View whole system events` is required to view the Event Log page.
+- The Mission Portal RBAC for `View whole system events` is required to view the Event Log page.
 
 <img src="web-ui-mission-portal-api-view-whole-system-events-rbac.png" alt="Mission Portal - Events View whole system events RBAC page" width="380px">
 
@@ -176,11 +176,11 @@ From the profile, you can adjust timezone options.
 
 <img src="User-profile.png" alt="User Profile" width="412px">
 
-* Time zone
-  * You can select any time zone from the searchable drop-down.
-* Autodetect time zone change and ask for update
-  * If this option is selected Mission portal will ask you to update time zone when a difference is detected from your browser.
-  <img src="Time-zone-modal.png" alt="Time zone modal" width="520px">
+- Time zone
+  - You can select any time zone from the searchable drop-down.
+- Autodetect time zone change and ask for update
+  - If this option is selected Mission portal will ask you to update time zone when a difference is detected from your browser.
+    <img src="Time-zone-modal.png" alt="Time zone modal" width="520px">
 
-* Always use system/browser time
-  * Mission portal will automatically change your profile timezone when a system/browser timezone is changed.
+- Always use system/browser time
+  - Mission portal will automatically change your profile timezone when a system/browser timezone is changed.

@@ -13,7 +13,7 @@ editing in files. CFEngine solves this in a two-part strategy:
 CFEngine maintains a default order of promise-types, referred to as `Normal order`. This is based on a simple
 logic of what needs to come first, e.g. it makes no sense to create something
 and then delete it, but it could make sense to delete and then create (an
-equilibrium). This is called normal ordering and is described below.  You can
+equilibrium). This is called normal ordering and is described below. You can
 override normal ordering in exceptional circumstances by making a promise in a
 class context and defining that class based on the outcome of another promise,
 or using the `depends_on` promise attribute.
@@ -49,14 +49,14 @@ below.
 
 Before exact evaluation of promises takes place first command line parameters
 are read and all classes defined using `-D` parameter are set. Next,
-environment detection takes place and hard classes are discovered.  When
+environment detection takes place and hard classes are discovered. When
 environment detection is complete all the persistent classes are loaded and a
 policy sanity check is performed using cf-promises.
 
 #### cf-promises policy validation step
 
 In this step policy is validated and `classes` and `vars` promises are
-evaluated.  Note that cached functions are executed here, and then again during
+evaluated. Note that cached functions are executed here, and then again during
 the normal agent execution. Variables and classes resolved in this step do not
 persist into the following evaluation step, so all functions will run again
 during Agent pre-evaluation.
@@ -80,7 +80,7 @@ The following steps are executed per-bundle for each file parsed, in this order:
 1. if it's a common bundle, evaluate **vars** promises
 2. if it's a common bundle, evaluate **classes** promises
 3. evaluate **vars** promises
-(for details see `PolicyResolve()` in the C code)
+   (for details see `PolicyResolve()` in the C code)
 
 This is done because classes placed in common bundles
 are global whereas classes placed in agent bundles are local (by default) to

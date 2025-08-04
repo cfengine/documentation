@@ -2,6 +2,7 @@
 layout: default
 title: Shared groups API
 ---
+
 The shared groups API enables creating host groups based on host filters (the same ones used in inventory) and assigning CMDB data to them.
 
 ## Create group
@@ -12,33 +13,33 @@ The shared groups API enables creating host groups based on host filters (the sa
 
 **Parameters:**
 
-* **name** *(string)*
+- **name** _(string)_
   Group name.
 
-* **description** *(string)*
+- **description** _(string)_
   Group description.
 
-* **priority** *(number)*
+- **priority** _(number)_
   Group priority. Groups with a higher priority will take precedence in case of conflicts when merging CMDB data. (A lower number indicates higher priority, so 1 means 1st priority, 2 means 2nd most important, and so on).
 
-* **filter** *(json object)*  Group filter object. Includes inventory filter and classes filters
-  * **filter** *(json object)*  Optional parameter.
+- **filter** _(json object)_ Group filter object. Includes inventory filter and classes filters
+  - **filter** _(json object)_ Optional parameter.
     Inventory filter data. You can use array values for multiple filter, the logic will be AND. Format is
-  * **hostContextInclude** *(array)* Optional parameter.
+  - **hostContextInclude** _(array)_ Optional parameter.
     Includes only results that concern hosts which have all specified CFEngine contexts (class) set.
-  * **hostContextExclude** *(array)*  Optional parameter.
+  - **hostContextExclude** _(array)_ Optional parameter.
     Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one
     of the specified contexts set will be excluded from the results.
-  * **hostFilter** *(json object)* Optional parameter.
-    * **includes** *(json object)* Optional parameter.
+  - **hostFilter** _(json object)_ Optional parameter.
+    - **includes** _(json object)_ Optional parameter.
       Object that specifies hosts to be included.
-      * **includeAdditionally** *(boolean)* Default: `false`
+      - **includeAdditionally** _(boolean)_ Default: `false`
         Defines if hosts will be added to the results returned by inventory filters or class filters.
-      * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+      - **entries** _(json object)_ Filter entries object. Where the key is an entry type and the value is an array of strings
         Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
-    * **excludes** *(json object)* Optional parameter.
+    - **excludes** _(json object)_ Optional parameter.
       Object that specifies hosts to be excluded.
-      * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+      - **entries** _(json object)_ Filter entries object. Where the key is an entry type and the value is an array of strings
         Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
   ```json
@@ -77,7 +78,7 @@ The shared groups API enables creating host groups based on host filters (the sa
 For filtering you can use the operators below:
 
 | Operator        |
-|-----------------|
+| --------------- |
 | <               |
 | >               |
 | =               |
@@ -130,36 +131,36 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Unique group identifier.
 
-* **name** *(string)*
+- **name** _(string)_
   Group name.
 
-* **priority** *(number)*
+- **priority** _(number)_
   Group priority. Groups with a higher priority will take precedence in case of conflicts when merging CMDB data. (A lower number indicates higher priority, so 1 means 1st priority, 2 means 2nd most important, and so on).
 
-* **description** *(string)*
+- **description** _(string)_
   Group description.
 
-* **filter** *(json object)*  Group filter object. Includes inventory filter and classes filters
-  * **filter** *(json object)*  Optional parameter.
+- **filter** _(json object)_ Group filter object. Includes inventory filter and classes filters
+  - **filter** _(json object)_ Optional parameter.
     Inventory filter data. You can use array values for multiple filter, the logic will be AND. Format is
-  * **hostContextInclude** *(array)* Optional parameter.
+  - **hostContextInclude** _(array)_ Optional parameter.
     Includes only results that concern hosts which have all specified CFEngine contexts (class) set.
-  * **hostContextExclude** *(array)*  Optional parameter.
+  - **hostContextExclude** _(array)_ Optional parameter.
     Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one
     of the specified contexts set will be excluded from the results.
-  * **hostFilter** *(json object)* Optional parameter.
-    * **includes** *(json object)* Optional parameter.
+  - **hostFilter** _(json object)_ Optional parameter.
+    - **includes** _(json object)_ Optional parameter.
       Object that specifies hosts to be included.
-      * **includeAdditionally** *(boolean)* Default: `false`
+      - **includeAdditionally** _(boolean)_ Default: `false`
         Defines if hosts will be added to the results returned by inventory filters or class filters.
-      * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+      - **entries** _(json object)_ Filter entries object. Where the key is an entry type and the value is an array of strings
         Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
-    * **excludes** *(json object)* Optional parameter.
+    - **excludes** _(json object)_ Optional parameter.
       Object that specifies hosts to be excluded.
-      * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
+      - **entries** _(json object)_ Filter entries object. Where the key is an entry type and the value is an array of strings
         Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
 ```json
@@ -198,7 +199,7 @@ curl -k --user <username>:<password> \
 For filtering you can use the operators below:
 
 | Operator        |
-|-----------------|
+| --------------- |
 | <               |
 | >               |
 | =               |
@@ -253,7 +254,7 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Unique group identifier.
 
 **Example request:**
@@ -292,7 +293,7 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Unique group identifier.
 
 **Example request:**
@@ -365,7 +366,7 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Unique group identifier.
 
 **Example request:**
@@ -400,21 +401,21 @@ You can see a list of stored group-specific configurations
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Unique group identifier.
-* **fromEpoch** *(integer)*
+- **fromEpoch** _(integer)_
   Returns configurations with epoch value greater than set in the filter.
   Epoch is the sequence number of the latest CMDB change. In every API list request,
   `cmdb_epoch` will be present in the meta section, which contains the maximum
   epoch value among selected items. Optional parameter.
-* **fromTime** *(timestamp)*
+- **fromTime** _(timestamp)_
   Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS` or `YYYY-mm-dd`. Optional parameter.
-* **toTime** *(timestamp)*
+- **toTime** _(timestamp)_
   Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS` or `YYYY-mm-dd`. Optional parameter.
-* **skip** *(integer)*
+- **skip** _(integer)_
   Number of results to skip for the processed
   query. The Mission Portal uses this for pagination. Optional parameter.
-* **limit**  *(integer)*
+- **limit** _(integer)_
   Limit the number of results in the query. Optional parameter.
 
 **Example request (curl):**
@@ -467,13 +468,13 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Unique group identifier.
 
-* **type** *(string)*
+- **type** _(string)_
   Configuration type. Allowed value: `variables`, `classes`
 
-* **name** *(string)*
+- **name** _(string)_
   Configuration name. Classes or variables name.
 
 **Example request (curl):**
@@ -510,7 +511,7 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **id** *(string)*
+- **id** _(string)_
   Unique group identifier.
 
 **Example request (curl):**
@@ -555,24 +556,24 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **id** *(string)*
+- **id** _(string)_
   Unique group identifier.
 
-* **type** *(string)*
+- **type** _(string)_
   Configuration type. Allowed value: `variables`, `classes`
 
-* **name** *(string)*
+- **name** _(string)_
   Configuration name. Classes or variables name.
 
 **Request body parameters:**
 
-* **value** *(string|array)*
+- **value** _(string|array)_
   Variable value, can be array or text. Classes do not support values.
 
-* **comment** *(string)*
+- **comment** _(string)_
   Variables or classes description. Optional parameter.
 
-* **tags** *(array)*
+- **tags** _(array)_
   Variables or classes tags. Optional parameter.
 
 **Example request (curl):**
@@ -603,27 +604,27 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **id** *(string)*
+- **id** _(string)_
   Unique group identifier.
 
-* **type** *(string)*
+- **type** _(string)_
   Configuration type. Allowed value: `variables`, `classes`
 
-* **name** *(string)*
+- **name** _(string)_
   Configuration name. Classes or variables name.
 
 **Request body parameters:**
 
-* **value** *(string|array)*
+- **value** _(string|array)_
   Variable value, can be array or text. Classes do not support values.
 
-* **comment** *(string)*
+- **comment** _(string)_
   Variables or classes description. Optional parameter.
 
-* **tags** *(array)*
+- **tags** _(array)_
   Variables or classes tags. Optional parameter.
 
-* **name** *(string)*
+- **name** _(string)_
   New name, in case of renaming. Optional parameter.
 
 **Example request (curl):**
@@ -654,7 +655,7 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **id** *(string)*
+- **id** _(string)_
   Unique group identifier.
 
 **Example request (curl):**
@@ -679,13 +680,13 @@ HTTP 204 No Content
 
 **Parameters:**
 
-* **id** *(string)*
+- **id** _(string)_
   Unique group identifier.
 
-* **type** *(string)*
+- **type** _(string)_
   Configuration type. Allowed value: `variables`, `classes`
 
-* **name** *(string)*
+- **name** _(string)_
   Configuration name. Classes or variables name.
 
 **Example request (curl):**

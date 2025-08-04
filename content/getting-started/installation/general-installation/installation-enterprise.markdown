@@ -45,11 +45,11 @@ promise executions) by adjusting `def.max_client_history_size`.
 
 **Network**
 
-* Verify that the machine's network connection is working and that
+- Verify that the machine's network connection is working and that
   port 5308 (used by CFEngine) is open for both incoming and outgoing
   connections.
 
-* If a firewall is active on your operating system, adapt it to it to
+- If a firewall is active on your operating system, adapt it to it to
   allow for communication on port 5308 or disable it.
 
 CFEngine bundles all critical dependencies into the package; therefore,
@@ -59,13 +59,13 @@ additional software is not required.
 
 CFEngine Enterprise has
 [Virtual I/O Server (VIOS) Recognized status](http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493)
-from IBM.  This means that CFEngine Enterprise has been technically
+from IBM. This means that CFEngine Enterprise has been technically
 verified by IBM to be installed in and manage VIOS environments.
 
 During testing, CFEngine Enterprise was seen to use up to 2% of the
 VIOS CPU during `cf-agent` runs with the default CFEngine policy. The
 resource utilization may vary depending on the policy CFEngine is
-running.  The VIOS should be configured with Shared Processors in
+running. The VIOS should be configured with Shared Processors in
 Uncapped mode.
 
 ## Policy server requirements
@@ -73,14 +73,14 @@ Uncapped mode.
 Please note that the resource requirements below are meant as minimum
 guidelines and have been obtained with synthetic testing, and it is
 always better to leave some headroom if intermittent bottlenecks
-should occur.  The key drivers for the vertical scalability of the
+should occur. The key drivers for the vertical scalability of the
 Policy Servers are 1) the number of agents bootstrapped and 2) the
 size and complexity of the CFEngine policy.
 
 ### cfapache and cfpostgres users
 
 The CFEngine Server requires two users: **cfapache** and
-**cfpostgres**.  If these users do not exist during installation of
+**cfpostgres**. If these users do not exist during installation of
 the server package, they will be created, so if there are constraints
 on user creation, please ensure that these users exists prior to
 installation.
@@ -102,7 +102,7 @@ requirements when doing this.
 ### CPU
 
 A modern 64-bit processor with 12 or more cores for handling up to
-5000 bootstrapped agents.  This number is also linear with respect to
+5000 bootstrapped agents. This number is also linear with respect to
 the number of bootstrapped agents (so 6 cores would suffice for 2500
 agents).
 
@@ -144,8 +144,8 @@ If you do not have separate partitions for `$(sys.workdir)` and
 1500 IOPS and 10.5 MB/s).
 
 **Note** Your storage IOPS specification may be given in 4KiB block
-  size, in which case you would need to divide it by 4 to get the
-  corresponding 16KiB *theoretical maximum*.
+size, in which case you would need to divide it by 4 to get the
+corresponding 16KiB _theoretical maximum_.
 
 ### Network
 
@@ -194,24 +194,24 @@ CFEngine Enterprise is provided in two packages; one is for the Policy
 Server (hub) and the other is for each Host (client).
 
 **Log in as root** and then follow these steps to install CFEngine
-  Enterprise:
+Enterprise:
 
 1. On the designated Policy Server, install the `cfengine-nova-hub` package:
 
-    ```console
-    [RedHat/CentOS/SUSE] # yum -y install /path/to/<hub package>.rpm
-    [Debian/Ubuntu]      # apt -y install /path/to/<hub package>.deb
-    ```
+   ```console
+   [RedHat/CentOS/SUSE] # yum -y install /path/to/<hub package>.rpm
+   [Debian/Ubuntu]      # apt -y install /path/to/<hub package>.deb
+   ```
 
 2. On each Host, install the `cfengine-nova` package:
 
-    ```console
-    [RedHat/CentOS/SUSE] # yum -y install /path/to/<agent package>.rpm
-    [Debian/Ubuntu]      # apt -y install /path/to/<agent package>.deb
-    [Solaris]            # pkgadd -d <agent package>.pkg all
-    [AIX]                # installp -a -d <agent package>.bff cfengine.cfengine-nova
-    [HP-UX]              # swinstall -s <full path to agent package>.depot cfengine-nova
-    ```
+   ```console
+   [RedHat/CentOS/SUSE] # yum -y install /path/to/<agent package>.rpm
+   [Debian/Ubuntu]      # apt -y install /path/to/<agent package>.deb
+   [Solaris]            # pkgadd -d <agent package>.pkg all
+   [AIX]                # installp -a -d <agent package>.bff cfengine.cfengine-nova
+   [HP-UX]              # swinstall -s <full path to agent package>.depot cfengine-nova
+   ```
 
 Note: Install actions logged to `/var/logs/cfengine-install.log`.
 
@@ -262,6 +262,6 @@ through your web browser at http://`<IP address of your Policy Server>`.
 
 Learn more about CFEngine by using the following resources:
 
-* Tutorial: [Tutorial for running examples][Examples and tutorials#Tutorial for running examples]
+- Tutorial: [Tutorial for running examples][Examples and tutorials#Tutorial for running examples]
 
-* [Tutorials and Examples][Examples and tutorials]
+- [Tutorials and Examples][Examples and tutorials]

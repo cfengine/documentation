@@ -200,7 +200,7 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See [`polic
 The `data` variables are obtained from functions that return data
 containers, such as `readjson()`, `readyaml()`, `parsejson()`, or
 `parseyaml()`, the various `data_*` functions, or from merging
-existing data containers with `mergedata()`. They can *NOT* be
+existing data containers with `mergedata()`. They can _NOT_ be
 modified, once created.
 
 ### Inline YAML and JSON data
@@ -225,6 +225,7 @@ data early. Thus it is highly recommended that you try to avoid
 variable references in your inline JSON or YAML data.
 
 For example:
+
 #### Inline Yaml example
 
 {{< CFEngine_include_example(inline-yaml.cf) >}}
@@ -240,20 +241,20 @@ Data containers can be passed to another bundle with the
 
 ### Some useful tips for using data containers
 
-* to extract just `container[x]`, use `mergedata("container[x]")`
-* to wrap a container in an array, use `mergedata("[ container ]")`
-* to wrap a container in a map, use `mergedata('{ "mykey": container }')`
-* they act like "classic" CFEngine arrays in many ways
-* `getindices()` and `getvalues()` work on any level, e.g. `getvalues("container[x][y]")`
-* in reports, you have to reference a part of the container that can be expressed as a string.  So for instance if you have the container `c` with data `{ "x": { "y": 50 }, "z": [ 1,2,3] }` we have two top-level keys, `x` and `z`.  If you report on `$(c[x])` you will not get data, since there is no string there.  But if you ask for `$(c[x][y])` you'll get `50`, and if you ask for `$(c[z])` you'll get implicit iteration on `1,2,3` (just like a slist in a "classic" CFEngine array).
-* read the examples below carefully to see some useful ways to access data container contents
+- to extract just `container[x]`, use `mergedata("container[x]")`
+- to wrap a container in an array, use `mergedata("[ container ]")`
+- to wrap a container in a map, use `mergedata('{ "mykey": container }')`
+- they act like "classic" CFEngine arrays in many ways
+- `getindices()` and `getvalues()` work on any level, e.g. `getvalues("container[x][y]")`
+- in reports, you have to reference a part of the container that can be expressed as a string. So for instance if you have the container `c` with data `{ "x": { "y": 50 }, "z": [ 1,2,3] }` we have two top-level keys, `x` and `z`. If you report on `$(c[x])` you will not get data, since there is no string there. But if you ask for `$(c[x][y])` you'll get `50`, and if you ask for `$(c[z])` you'll get implicit iteration on `1,2,3` (just like a slist in a "classic" CFEngine array).
+- read the examples below carefully to see some useful ways to access data container contents
 
 Iterating through a data container is only guaranteed to respect list
 order (e.g. `[1,3,20]` will be iterated in that order). Key order for
 maps, as per the JSON standard, is not guaranteed. Similarly, calling
 `getindices()` on a data container will give the list order of indices
 0, 1, 2, ... but will not give the keys of a map in any particular
-order.  Here's an example of iterating in list order:
+order. Here's an example of iterating in list order:
 
 {{< CFEngine_include_snippet(container_iteration.cf, #\+begin_src cfengine3, .*end_src) >}}
 
@@ -297,7 +298,7 @@ vars:
  "inline2" data => '---$(const.n)- key2: value2'; # YAML requires "---$(const.n)" header
 ```
 
-***
+---
 
 ## Attributes
 
@@ -334,7 +335,7 @@ vars:
 
 **Notes:**
 
-The policy `free` and `overridable` are synonyms.  The policy `constant` is
+The policy `free` and `overridable` are synonyms. The policy `constant` is
 deprecated, and has no effect. All variables are `free` or `overridable` by
 default which means the variables values may be changed.
 
@@ -385,7 +386,7 @@ general rule which are described below.
 
 ### Meta type promises
 
-Variables defined by the *meta* promise type are defined in a bundle scope with the same name as the executing bundle suffixed with ```meta```.
+Variables defined by the _meta_ promise type are defined in a bundle scope with the same name as the executing bundle suffixed with `meta`.
 
 **Example policy:**
 
@@ -489,7 +490,7 @@ R: {
 
 ### Module protocol
 
-The module protocol allows specification of *context* (the bundle scope within which a variable gets defined).
+The module protocol allows specification of _context_ (the bundle scope within which a variable gets defined).
 
 **Example policy:**
 
@@ -526,7 +527,7 @@ R: {
 
 ### Augments
 
-Augments defines variables in the *def* bundle scope.
+Augments defines variables in the _def_ bundle scope.
 
 This augments file that defines `my_var` will be used for all examples shown here (`/tmp/def.json`).
 

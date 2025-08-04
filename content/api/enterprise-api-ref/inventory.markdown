@@ -2,6 +2,7 @@
 layout: default
 title: Inventory API
 ---
+
 Inventory API allows to access inventory reports and attributes dictionary.
 
 ## Inventory reports
@@ -12,68 +13,68 @@ Inventory API allows to access inventory reports and attributes dictionary.
 
 **Parameters:**
 
-* **select** *(array)*
-    Fields for selecting. Required parameter.
+- **select** _(array)_
+  Fields for selecting. Required parameter.
 
-    List of fields name you can obtain through [List of inventory attributes][Inventory API#List of inventory attributes]
-    call described below. Extra attributes are `hostkey` for selecting host key
-    and `resultCount` for selecting rows count.
+  List of fields name you can obtain through [List of inventory attributes][Inventory API#List of inventory attributes]
+  call described below. Extra attributes are `hostkey` for selecting host key
+  and `resultCount` for selecting rows count.
 
-* **filter** *(json object)* Optionally filter data. You can use array values for multiple filter, the logic will be AND.  Format is
+- **filter** _(json object)_ Optionally filter data. You can use array values for multiple filter, the logic will be AND. Format is
 
-    ```
-    {
-      "Attribute name":{
-        "operator":["value","value1"],
-        "operator2":"value2",
-        "operator4":"value2"
-      }
+  ```
+  {
+    "Attribute name":{
+      "operator":["value","value1"],
+      "operator2":"value2",
+      "operator4":"value2"
     }
-    ```
+  }
+  ```
 
-    **Operators:**
+  **Operators:**
 
-    For filtering you can use the operators below:
+  For filtering you can use the operators below:
 
-    |Operator         |
-    |-----------------|
-    | <               |
-    | >               |
-    | =               |
-    | !=              |
-    | <=              |
-    | >=              |
-    | matches         |
-    | not_match       |
-    | contains        |
-    | not_contain     |
-    | regex_matches   |
-    | regex_not_match |
-    | is_reported     |
-    | is_not_reported |
+  | Operator        |
+  | --------------- |
+  | <               |
+  | >               |
+  | =               |
+  | !=              |
+  | <=              |
+  | >=              |
+  | matches         |
+  | not_match       |
+  | contains        |
+  | not_contain     |
+  | regex_matches   |
+  | regex_not_match |
+  | is_reported     |
+  | is_not_reported |
 
-* **sort** *(string)*
-    Field name for sorting with "-" for DESC order. Optional parameter.
-* **start** *(integer)*
-    Number of results to start from. Optional parameter.
-* **limit**  *(integer)*
-    Limit the number of results in the query. Default value is 1000, max value is 10000.
-* **hostContextExclude** *(array)*
-    Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
-* **hostContextInclude** *(array)*
-    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one of the specified contexts set will be excluded from the results. Optional parameter.
-* **hostFilter** *(json object)* Optional parameter.
-    * **includes** *(json object)* Optional parameter.
-      Object that specifies hosts to be included.
-        * **includeAdditionally** *(boolean)* Default: `false`
-          Defines if hosts will be added to the results returned by inventory filters or class filters.
-        * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
-          Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
+- **sort** _(string)_
+  Field name for sorting with "-" for DESC order. Optional parameter.
+- **start** _(integer)_
+  Number of results to start from. Optional parameter.
+- **limit** _(integer)_
+  Limit the number of results in the query. Default value is 1000, max value is 10000.
+- **hostContextExclude** _(array)_
+  Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
+- **hostContextInclude** _(array)_
+  Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one of the specified contexts set will be excluded from the results. Optional parameter.
+- **hostFilter** _(json object)_ Optional parameter.
+  - **includes** _(json object)_ Optional parameter.
+    Object that specifies hosts to be included.
+    - **includeAdditionally** _(boolean)_ Default: `false`
+      Defines if hosts will be added to the results returned by inventory filters or class filters.
+    - **entries** _(json object)_ Filter entries object. Where the key is an entry type and the value is an array of strings
+      Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
-    * **excludes** *(json object)* Optional parameter.
-      Object that specifies hosts to be excluded.
-        * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
-          Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
+  - **excludes** _(json object)_ Optional parameter.
+    Object that specifies hosts to be excluded.
+    - **entries** _(json object)_ Filter entries object. Where the key is an entry type and the value is an array of strings
+      Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
 ```
 curl -k --user <username>:<password> \
@@ -256,9 +257,11 @@ As you can see, despite the OS filter should return zero hosts, we had one addit
 Shows list of all inventory attributes available in the system.
 
 See more details:
-* [Custom inventory][Custom inventory]
+
+- [Custom inventory][Custom inventory]
 
 **CURL request example**
+
 ```
 curl -k --user admin:admin -X GET https://hub.cfengine.com/api/inventory/attributes-dictionary
 ```
@@ -299,17 +302,18 @@ Only `readonly - 0` attribute can be edited
 
 **Parameters:**
 
-* **id** *(integer)*
-    Attribute Id
-* **category** *(string)*
-    Category of attribute
-* **type** *(string)*
-    Attribute's type. Allowed values: int, real, slist, string
-* **convert_function** *(string)*
-    Convert Function.
-    Emp.: `cf_clearSlist` - to transform string like `{"1", "2"}` to `1, 2`
+- **id** _(integer)_
+  Attribute Id
+- **category** _(string)_
+  Category of attribute
+- **type** _(string)_
+  Attribute's type. Allowed values: int, real, slist, string
+- **convert_function** _(string)_
+  Convert Function.
+  Emp.: `cf_clearSlist` - to transform string like `{"1", "2"}` to `1, 2`
 
 **CURL request example**
+
 ```
 curl -k --user admin:admin -X  PATCH  https://hub.cfengine.com/api/inventory/attributes-dictionary/260  -H 'content-type: application/json'   -d '{
                               "category":"Hardware",

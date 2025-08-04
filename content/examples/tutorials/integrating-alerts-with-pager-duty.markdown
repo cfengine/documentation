@@ -10,8 +10,8 @@ We will create a policy that ensures file integrity, and have CFEngine notify Pa
 
 **System requirements:**
 
-* CFEngine Mission Portal
-* Active PagerDuty Account
+- CFEngine Mission Portal
+- Active PagerDuty Account
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/50ia1ZPfbT8" frameborder="0" allowfullscreen></iframe>
 
@@ -52,11 +52,11 @@ Normally, to ensure your policy file is put into action, you would need to follo
 
 1. Move the policy file to your masterfiles directory (`/var/cfengine/masterfiles`):
 
-    Normally, to ensure your policy file is put into action, you would need to follow these three steps:
+   Normally, to ensure your policy file is put into action, you would need to follow these three steps:
 
-    ```command
-    mv /tmp/file_example.cf /var/cfengine/masterfiles/
-    ```
+   ```command
+   mv /tmp/file_example.cf /var/cfengine/masterfiles/
+   ```
 
 2. Modify `promises.cf` to include your policy
 
@@ -66,13 +66,13 @@ Normally, to ensure your policy file is put into action, you would need to follo
    vi /var/cfengine/masterfiles/promises.cf
    ```
 
-   a) Under the body common control, add `file_integrity` to your *bundlesequence*
+   a) Under the body common control, add `file_integrity` to your _bundlesequence_
 
-      ![integrating-alerts-with-pagerduty_bundlesequence-800x357.png](integrating-alerts-with-pagerduty_bundlesequence-800x357.png)
+   ![integrating-alerts-with-pagerduty_bundlesequence-800x357.png](integrating-alerts-with-pagerduty_bundlesequence-800x357.png)
 
    b) Under `body common control`, add `file_example.cf` to your inputs section.
 
-      ![integrating-alerts-with-pagerduty_inputs-800x179.png](integrating-alerts-with-pagerduty_inputs-800x179.png)
+   ![integrating-alerts-with-pagerduty_inputs-800x179.png](integrating-alerts-with-pagerduty_inputs-800x179.png)
 
    Now, any change you manually make to the `/tmp/file_integrity` file will be picked up by CFEngine!
 
@@ -104,7 +104,7 @@ Normally, to ensure your policy file is put into action, you would need to follo
 
    ![integrating-alerts-with-pagerduty_type_policy.png](integrating-alerts-with-pagerduty_type_policy.png)
 
-4. Select `Bundle`, type in the bundle name which is *file_integrity*, and finally select `Repaired` as the promise status. This means that whenever CFEngine needs to repair the bundle, it will create an alert notification.
+4. Select `Bundle`, type in the bundle name which is _file_integrity_, and finally select `Repaired` as the promise status. This means that whenever CFEngine needs to repair the bundle, it will create an alert notification.
 
    ![integrating-alerts-with-pagerduty_new_alert_bundle_repair.png](integrating-alerts-with-pagerduty_new_alert_bundle_repair.png)
 

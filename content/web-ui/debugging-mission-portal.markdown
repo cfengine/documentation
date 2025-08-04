@@ -38,6 +38,7 @@ sorting: 90
     LD_LIBRARY_PATH=/var/cfengine/lib:$LD_LIBRARY_PATH /var/cfengine/httpd/bin/apachectl restart
     ```
 
-5. Watch the logs:
-* `/var/cfengine/httpd/logs/error_log`
-* `/var/cfengine/httpd/htdocs/application/logs/log-$(date +%Y-%m-%d).php`
+5.  Watch the logs:
+
+- `/var/cfengine/httpd/logs/error_log`
+- `/var/cfengine/httpd/htdocs/application/logs/log-$(date +%Y-%m-%d).php`

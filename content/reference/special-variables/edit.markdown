@@ -25,8 +25,8 @@ bundle depending if the files prior content will or won't have any effect.
 
 **See also:**
 
-* [empty_file_before_editing][files#empty_file_before_editing] in [edit_defaults bodies][files#edit_defaults].
+- [empty_file_before_editing][files#empty_file_before_editing] in [edit_defaults bodies][files#edit_defaults].
 
 **History:**
 
-* 3.21.0, 3.18.3 added
+- 3.21.0, 3.18.3 added

@@ -77,53 +77,54 @@ body location first_line
 
 There are several things to notice:
 
--   The line-editing promises are all convergent promises about patterns
-    within the file. They have bodies, just like other attributes do and
-    these allow us to make simple templates about file editing while
-    extending the power of the basic primitives.
--   All file edits specified in a single `edit_line` bundle are handled
-    "atomically". CFEngine edits files like this:
-    -   CFEngine makes a copy of the file you you want to edit.
-    -   CFEngine makes all the edits in the **copy** of the file. The
-        filename is the same as your original file with the extension
-        `.cf-after-edit` appended.
-    -   After all promises are complete (the `vars`, `classes`, `delete_lines`, `field_edits`,
-        `insert_lines`, `replace_patterns`, and finally `reports` promises),
-        CFEngine checks to see if the new file is the same as the
-        original one. If there are no differences, the promises have
-        converged, so it deletes the copy, and the original is left
-        completely unmodified.
-    -   If there are any differences, CFEngine makes a copy of your
-        original file with the extension `.cf-before-edit` (so you always
-        have the most recent backup available), and then renames the
-        edited version to your original filename.
+- The line-editing promises are all convergent promises about patterns
+  within the file. They have bodies, just like other attributes do and
+  these allow us to make simple templates about file editing while
+  extending the power of the basic primitives.
+- All file edits specified in a single `edit_line` bundle are handled
+  "atomically". CFEngine edits files like this:
+  - CFEngine makes a copy of the file you you want to edit.
+  - CFEngine makes all the edits in the **copy** of the file. The
+    filename is the same as your original file with the extension
+    `.cf-after-edit` appended.
+  - After all promises are complete (the `vars`, `classes`, `delete_lines`, `field_edits`,
+    `insert_lines`, `replace_patterns`, and finally `reports` promises),
+    CFEngine checks to see if the new file is the same as the
+    original one. If there are no differences, the promises have
+    converged, so it deletes the copy, and the original is left
+    completely unmodified.
+  - If there are any differences, CFEngine makes a copy of your
+    original file with the extension `.cf-before-edit` (so you always
+    have the most recent backup available), and then renames the
+    edited version to your original filename.
 
-    Because file rename is an atomic operation (guaranteed by the
-    operating system), any application program will either see the old
-    version of the file or the new one. There is no "window of
-    opportunity" where a partially edited file can be seen (unless an
-    application intentionally looks for the `.cf-after-edit` file).
-    Problems during editing (such as disk-full or permission errors) are
-    likewise detected, and CFEngine will not rename a partial file over
-    your original.
--   All pattern matching is through Perl Compatible Regular Expressions
--   Editing takes place within a marked region (which defaults to the
-    whole file if not otherwise specified).
--   Search/replace functions now allow back-references.
--   The line edit model now contains a field or column model for dealing
-    with tabular files such as Unix passwd and group files. We can now
-    apply powerful convergent editing operations to single fields inside
-    a table, to append, order and delete items from lists inside fields.
--   The special variable `$(edit.filename)` contains the name of the
-    file being edited within an edit bundle.
--   The special variable `$(edit.empty_before_use)` holds the current value of
-    `empty_file_before_editing` which can be set by `edit_defaults bodies`. This
-    is used to know if the prior state of the file will have any effect on the
-    promise.
--   On Windows, a text file may be stored stored either with CRLF line
-    endings (Windows style), or LF line endings (Unix style). CFEngine
-    will respect the existing line ending type and make modifications
-    using the same type. New files will get CRLF line ending type.
+  Because file rename is an atomic operation (guaranteed by the
+  operating system), any application program will either see the old
+  version of the file or the new one. There is no "window of
+  opportunity" where a partially edited file can be seen (unless an
+  application intentionally looks for the `.cf-after-edit` file).
+  Problems during editing (such as disk-full or permission errors) are
+  likewise detected, and CFEngine will not rename a partial file over
+  your original.
+
+- All pattern matching is through Perl Compatible Regular Expressions
+- Editing takes place within a marked region (which defaults to the
+  whole file if not otherwise specified).
+- Search/replace functions now allow back-references.
+- The line edit model now contains a field or column model for dealing
+  with tabular files such as Unix passwd and group files. We can now
+  apply powerful convergent editing operations to single fields inside
+  a table, to append, order and delete items from lists inside fields.
+- The special variable `$(edit.filename)` contains the name of the
+  file being edited within an edit bundle.
+- The special variable `$(edit.empty_before_use)` holds the current value of
+  `empty_file_before_editing` which can be set by `edit_defaults bodies`. This
+  is used to know if the prior state of the file will have any effect on the
+  promise.
+- On Windows, a text file may be stored stored either with CRLF line
+  endings (Windows style), or LF line endings (Unix style). CFEngine
+  will respect the existing line ending type and make modifications
+  using the same type. New files will get CRLF line ending type.
 
 In the example above, back references are used to allow conversion of
 comments from shell-style to C-style.
@@ -168,8 +169,8 @@ bundles.
 
 **Type:** `body select_region`
 
-Restrict edits to a specific region of a file based on ```select_start```
-and ```select_end``` regular expressions. If the beginning and ending regular
+Restrict edits to a specific region of a file based on `select_start`
+and `select_end` regular expressions. If the beginning and ending regular
 expressions match more than one region only the first region will be
 selected for editing.
 
@@ -292,9 +293,9 @@ The solution to this problem is simple: if the marker for a region needs to be r
 In the example above it is enough to change the markers from "BEGIN" to "header" and from "END" to "trailer" to obtain the
 desired result.
 
-****
+---
 
-#### include\_end\_delimiter
+#### include_end_delimiter
 
 **Description:** Whether to include the section delimiter
 
@@ -332,7 +333,7 @@ Input file:
 The section does not normally include the line containing }. By setting
 `include_end_delimiter` to `true` it would be possible for example, to
 delete the entire section, including the section trailer. If however
-`include_end_delimiter` is false, the *contents* of the section could be
+`include_end_delimiter` is false, the _contents_ of the section could be
 deleted, but the header would be unaffected by any `delete_lines`
 promises.
 
@@ -346,7 +347,7 @@ in `include_start_delimiter`).
 
 - Introduced in CFEngine version 3.0.5 (2010)
 
-#### include\_start\_delimiter
+#### include_start_delimiter
 
 **Description:** Whether to include the section delimiter
 
@@ -383,7 +384,7 @@ In this example, the section does not normally include the line [My
 section]. By setting `include_start_delimiter` to `true` it would be
 possible for example, to delete the entire section, including the
 section header. If however `include_start_delimiter` is false, the
-*contents* of the section could be deleted, but the header would be
+_contents_ of the section could be deleted, but the header would be
 unaffected by any `delete_lines` promises. See the next section on
 `include_start_delimiter` for further details.
 
@@ -391,9 +392,9 @@ unaffected by any `delete_lines` promises. See the next section on
 
 - Introduced in CFEngine version 3.0.5 (2010)
 
-#### select\_end
+#### select_end
 
-**Description:** [Anchored][anchored] regular expression matches end of edit region from ```select_start```
+**Description:** [Anchored][anchored] regular expression matches end of edit region from `select_start`
 
 **Type:** `string`
 
@@ -415,11 +416,11 @@ then just omit the `select_end` promise and the selected region will run
 to the end of the file.
 
 **Note:** When a region does not always have an end (like the last section of an
-INI formatted file) ```select_end_match_eof``` can be used to allow the end of
+INI formatted file) `select_end_match_eof` can be used to allow the end of
 the file to be considered the end of the region. The global default can be
 modified with [`select_end_match_eof`][cf-agent#select_end_match_eof].
 
-#### select\_end\_match\_eof
+#### select_end_match_eof
 
 **Description:** Allow the end of a file to be considered the end of a region.
 
@@ -449,7 +450,7 @@ select_end_match_eof => "true";
 
 - Introduced in CFEngine version 3.9.0 (2016)
 
-#### select\_start
+#### select_start
 
 **Description:** [Anchored][anchored] regular expression matching start of edit region
 

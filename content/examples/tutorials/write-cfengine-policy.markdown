@@ -20,7 +20,7 @@ detailed information see the Language concepts section of the Reference manual.
 
 ### Bundles
 
-Bundles are re-usable and blocks of CFEngine policy. The following defines a *bundle* called `my_test`, and it is a bundle for the agent.
+Bundles are re-usable and blocks of CFEngine policy. The following defines a _bundle_ called `my_test`, and it is a bundle for the agent.
 
 ```cf3
 bundle agent my_test
@@ -55,11 +55,11 @@ you want this policy to apply. For that, CFEngine has the concept of classes.
 
 ## Classes
 
-A *class* is an identifier which is used by the agent to decide when and where a
+A _class_ is an identifier which is used by the agent to decide when and where a
 part of a policy shall run. A class can either be user-defined, a so called
 soft-class, or it can be a hard class which is automatically discovered and
-defined by cf-agent during each run. Popular classes include *any* which means
-any or all hosts, *policy_server* which means the host is a policy server. There
+defined by cf-agent during each run. Popular classes include _any_ which means
+any or all hosts, _policy_server_ which means the host is a policy server. There
 are more than 50 hard classes, and combined with regular expressions this gives
 you very granular control.
 
@@ -73,7 +73,7 @@ cf-promises --show-classes
 
 Now let's put the bundle, promise type and class components together in a
 final policy. As for classes we will use linux to define that the file
-`/tmp/hello-world` must exists on all hosts of type *linux*:
+`/tmp/hello-world` must exists on all hosts of type _linux_:
 
 ```cf3 {file="my_test.cf"}
 bundle agent my_test

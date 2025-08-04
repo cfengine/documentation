@@ -12,9 +12,9 @@ the wild, a climber on a rock-face or a wrestler engaged in combat, we identify
 the skills of anticipation, speed of response and the ability to adapt or bend
 without breaking to meet the challenges.
 
-* Anticipate.
-* Act.
-* Adapt.
+- Anticipate.
+- Act.
+- Adapt.
 
 In infrastructure management, agility represents the need to handle changing
 demand for service, to repair an absence of service, and to improve and deploy
@@ -26,12 +26,12 @@ The compelling event that our system must respond to might represent danger, or
 merely a self-imposed deadline. In either case, there is generally a penalty
 associated with a lack of agility: a blow, a fall or a loss.
 
-* What make agility possible?
-* The capacity of a system
-* Speed
-* Precision
-* Comprehension
-* Efficiency
+- What make agility possible?
+- The capacity of a system
+- Speed
+- Precision
+- Comprehension
+- Efficiency
 
 ### What make agility possible?
 
@@ -43,10 +43,10 @@ it.
 
 To respond to a challenge there are four stages that need attention:
 
-* To comprehend the challenge.
-* To solve the challenge.
-* To respond to the challenge.
-* To confirm or verify the response.
+- To comprehend the challenge.
+- To solve the challenge.
+- To respond to the challenge.
+- To confirm or verify the response.
 
 Each of these phases takes actual clock-time and requires a certain flexibility.
 Our goal is to keep these phases simple and therefore cheap for the long-term.
@@ -69,21 +69,21 @@ maximum speed of a system within a single thread of activity2.
 Speed is the rate at which change takes place. For a configuration tool like
 CFEngine, speed can be measured either as
 
-* Clock speed
+- Clock speed
 
-    The actual elapsed wall-clock time-rate at which work gets done, including
-    any breaks and pauses in the schedule.
+  The actual elapsed wall-clock time-rate at which work gets done, including
+  any breaks and pauses in the schedule.
 
-    This depends on how often checks are made, or the interval between them,
-    e.g. in CFEngine, the default schedule is to verify promises every five
-    minutes.
+  This depends on how often checks are made, or the interval between them,
+  e.g. in CFEngine, the default schedule is to verify promises every five
+  minutes.
 
-* System speed
+- System speed
 
-    The average speed of the system when it is actually busy working on a
-    problem, excluding breaks and pauses. For example, once CFEngine has been
-    scheduled at the end of a five minute interval, it might take a few seconds
-    to make necessary changes.
+  The average speed of the system when it is actually busy working on a
+  problem, excluding breaks and pauses. For example, once CFEngine has been
+  scheduled at the end of a five minute interval, it might take a few seconds
+  to make necessary changes.
 
 Engineers can try to define an engineering scale of agility as the ratio of
 available speed to required speed and ratio of number ways a system can be
@@ -118,10 +118,10 @@ bolster them with CFEngine's technology.
 
 For example:
 
-* If we think in terms of services, it is the Service Level you have to achieve
+- If we think in terms of services, it is the Service Level you have to achieve
   in order to comply with a Service Level Agreement.
 
-* If we think of a support ticket, it is the speed we have to work at in order
+- If we think of a support ticket, it is the speed we have to work at in order
   to keep the impact of an unpredicted change within acceptable levels.
 
 What we call /acceptable/ is a subjective judgement, i.e. a matter for policy to
@@ -159,26 +159,26 @@ operational state.
 Acting quickly is not enough: we also need to be accurate in responding to
 change[^4]. We need to be able to:
 
-* Model the desired outcome accurately in terms of universal policy coordinates:
+- Model the desired outcome accurately in terms of universal policy coordinates:
   **Why**, **When**, **Where**, **What**, **How**.
 
-* Maximize the chance that the promised outcome will be achieved.
+- Maximize the chance that the promised outcome will be achieved.
 
 Precision is maximized when:
 
-* Changes are _precise_, i.e. they can be made at a highly granular level,
+- Changes are _precise_, i.e. they can be made at a highly granular level,
   without disturbing areas that are not relevant (few side-effects).
 
-* Policy is able to model or describe the desired state accurately, i.e. within
+- Policy is able to model or describe the desired state accurately, i.e. within
   the relevant area, the state is within acceptable tolerances.
 
-* If any assumptions are hidden, they are describable in terms of the model, not
+- If any assumptions are hidden, they are describable in terms of the model, not
   determined by the limitations of the software5.
 
-* The agent executes the details of the model quickly and verifiably, in a
+- The agent executes the details of the model quickly and verifiably, in a
   partially unpredictable environment, i.e. it should be fault tolerant.
 
-* If the model cannot be implemented, it is possible to determine why and decide
+- If the model cannot be implemented, it is possible to determine why and decide
   whether the problem lies in an incorrect assumption or a flaw in the
   implementation.
 
@@ -193,8 +193,9 @@ The next challenge is concerns a human limitation. One of the greatest challenge
 Comprehensibility increases if something is predictable, or steady in its behaviour, but it decreases in proportion to the number of things we need to think about - which includes the many different contexts such as environments, or groups of machines with different purposes or profiles.
 
                         Predictability (Reliability)    Predictability
-  Comprehensibility =~  ---------------------------- = ----------------
-                                 Contexts                 Diversity
+
+Comprehensibility =~ ---------------------------- = ----------------
+Contexts Diversity
 
 Our ability to comprehend behaviour depends on how predictable it is, i.e. how well it meets our expectations. For technology, we expect behaviour to be as close as possible on our intentions. CFEngine's maintenance of promises ensures that this is done with best possible effort and a rapid cycle of checking.
 
@@ -230,45 +231,45 @@ Next: Agility in your work, Previous: Understanding agility, Up: Top
 
 We can now summarize some qualities of CFEngine that favour agility:
 
-* Ability to express clear intentions about desired outcome (comprehension).
+- Ability to express clear intentions about desired outcome (comprehension).
 
-* Availability of insight into system performance and state (comprehension).
+- Availability of insight into system performance and state (comprehension).
 
-* Ability to manage large numbers of hosts and resources with a few generic
+- Ability to manage large numbers of hosts and resources with a few generic
   patterns (efficiency).
 
-* Ability to bundle related details into simple containers (comprehension
+- Ability to bundle related details into simple containers (comprehension
   without loss of adaptability).
 
-* Ability to accurately customize policy down to a low level without programming
+- Ability to accurately customize policy down to a low level without programming
   (adaptability).
 
-* Ability to recover quickly from faults and failures. The default, parallelized
+- Ability to recover quickly from faults and failures. The default, parallelized
   execution framework verifies promises every 5 minutes for rapid fault
   detection and change deployment (clock speed)7 .
 
-* A quick system monitoring/sampling rate - every 2.5 minutes (Nyquist
+- A quick system monitoring/sampling rate - every 2.5 minutes (Nyquist
   frequency), for automated hands-free response to errors.
 
-* Ability to recover cheaply. The lightweight resource footprint of CFEngine
+- Ability to recover cheaply. The lightweight resource footprint of CFEngine
   that consumes few system resources required for actual business (system speed
   - low overhead, maximum capacity).
 
-* Ability to increase number of clients without significant penalty (scalability
+- Ability to increase number of clients without significant penalty (scalability
   and easy increase of capacity).
 
-* A single framework for all devices and operating systems (ease of migrating
+- A single framework for all devices and operating systems (ease of migrating
   from one platform to another).
 
-* What agility means in different environments
+- What agility means in different environments
 
-* Separating What from How
+- Separating What from How
 
-* Packaging limits agility
+- Packaging limits agility
 
-* How abstraction improves agility
+- How abstraction improves agility
 
-* Increasing system capacity - by scaling
+- Increasing system capacity - by scaling
 
 ### What agility means in different environments
 
@@ -280,13 +281,13 @@ Users' expectations for agility can differ dramatically in the present; but if
 we think just a few years down the line, and follow the trends, it seems clear
 that limber systems must prevail in IT's evolutionary jungle.
 
-* Desktop management
-* Web shops
-* Cloud providers
-* High performance computing
-* Government
-* Finance
-* Manufacturing
+- Desktop management
+- Web shops
+- Cloud providers
+- High performance computing
+- Government
+- Finance
+- Manufacturing
 
 #### Desktop management
 
@@ -544,10 +545,10 @@ data.
 
 You can also keep data outside your policy in databases, or sources like:
 
-* LDAP
-* NIS
-* DNS
-* System files
+- LDAP
+- NIS
+- DNS
+- System files
 
 For example, reading in data from a system file is very convenient. This is what
 Unix-like system do for passwords and user management.
@@ -652,12 +653,12 @@ significant value.
 
 The rapid deployment of new services is assisted by:
 
-* Virtualization hypervisor control or private cloud management (libvirt
+- Virtualization hypervisor control or private cloud management (libvirt
   integration).
 
-* Rapid, massively-parallelized custom configuration.
+- Rapid, massively-parallelized custom configuration.
 
-* Avoidance of network dependencies.
+- Avoidance of network dependencies.
 
 Related to capacity is the issue of scaling services for massive available
 capacity.
@@ -683,12 +684,12 @@ shall not discuss it further here.
 
 ## Agility in your work
 
-* Easy versus simple
-* How does complexity affect agility?
-* An effective understanding helps agility
-* Maximizing business imperatives
-* What does agility cost?
-* Who is responsible for agility?
+- Easy versus simple
+- How does complexity affect agility?
+- An effective understanding helps agility
+- Maximizing business imperatives
+- What does agility cost?
+- Who is responsible for agility?
 
 ### Easy versus simple
 
@@ -699,10 +700,10 @@ but simple makes the future cost less.
 Easyis about barriers to adoption. If there is a cost associated with moving
 ahead that makes it hard:
 
-* A psychological cost
-* A cognitive cost
-* It takes too long
-* It costs too much money
+- A psychological cost
+- A cognitive cost
+- It takes too long
+- It costs too much money
 
 Simple is about what happens next. Once you have started, what happens if you
 want to change something?
@@ -738,9 +739,9 @@ making a risky process _too easy_ can encourage haste and carelessness.
 Any problem has an intrinsic complexity, which can be measured by the smallest
 amount of information required to manage it, without loss of control.
 
-* Ease is the absence of a barrier or cost to action.
+- Ease is the absence of a barrier or cost to action.
 
-* Simplicity is a strategy for minimizing Total Cost of Ownership.
+- Simplicity is a strategy for minimizing Total Cost of Ownership.
 
 Making something truly simple is a very hard problem, but it is an investment in
 future change. What is easy today might be expensive to make easy tomorrow. But
@@ -755,21 +756,21 @@ hurried deployment.
 
 Simplicity in CFEngine is addressed in the following ways:
 
-* The software has few dependencies that complicate installation and upgrading.
+- The software has few dependencies that complicate installation and upgrading.
 
-* Changes made are atomic and minimize dependencies.
+- Changes made are atomic and minimize dependencies.
 
-* Each host works as an independent entity, reducing communication fragility.
+- Each host works as an independent entity, reducing communication fragility.
 
-* The configuration model is based on Promise Theory - a very consistent and
+- The configuration model is based on Promise Theory - a very consistent and
   simple approach to modelling autonomous cooperative systems.
 
-* All hosts run the same software agents on all operating platforms (from mobile
+- All hosts run the same software agents on all operating platforms (from mobile
   phones to mainframes), and understand a single common language of intent,
   which they can translate into native system calls. So there are few exceptions
   to deal with.
 
-* Comprehensive facilities are allowed for making use of patterns and other
+- Comprehensive facilities are allowed for making use of patterns and other
   total-information-reducing tactics.
 
 A certain level of complexity might be necessary and desirable - complexity is
@@ -872,34 +873,41 @@ term, by investing in knowledge management, speed and efficiency.
 
 Footnotes
 
-[^1]: Capacity is often loosely referred to as _bandwidth_ because of its
+[^1]:
+    Capacity is often loosely referred to as _bandwidth_ because of its
     connection to signal propagation in communication science, but this is not
     strictly correct, as bandwidth refers to parallel channels.
 
-[^2]: For example, for a single coding frequency, the capacity of a
+[^2]:
+    For example, for a single coding frequency, the capacity of a
     communications channel is measured in bits per second, and the bandwidth is
     the number multiplied by the number of parallel frequencies.
 
-[^3]: If available speed matches need, and we have the capability to make all
+[^3]:
+    If available speed matches need, and we have the capability to make all
     required changes, then we can claim exactly 100% agility. If we have less
     than required, then we get a smaller number, and if we have excess speed or
     changeability then we can even claim a super-efficiency.
 
-[^4]: In the 20th century, science learned that there is no such thing as
+[^4]:
+    In the 20th century, science learned that there is no such thing as
     determinism - the idea that you can guarantee an outcome absolutely. If you
     still think in such terms, you will be quickly disappointed. The best we can
     accomplish is to maximize the likelihood of a predictable result, relative
     to the kind of environment in which we work.
 
-[^5]: In some other configuration software, assumptions are hard-coded into the
+[^5]:
+    In some other configuration software, assumptions are hard-coded into the
     tools themselves, making the outcome undocumented.
 
-[^6]: Other systems that claim to be deterministic simply stop with error
+[^6]:
+    Other systems that claim to be deterministic simply stop with error
     messages. What is the correct behaviour? Clearly, this is a subjective
     choice. The important thing is that your system for change behaves in a
     predictable way.
 
-[^7]: Two related concepts that are frequently referred to are the classic
+[^7]:
+    Two related concepts that are frequently referred to are the classic
     reliability measures: Mean Time Before Failure (MTBF) or proactive health
     and Mean Time To Repair (MTTR), speed of recovery: (i) If we are proactive
     or quick at recovering from minor problems, larger outages can be avoided.
@@ -910,12 +918,14 @@ Footnotes
 
 [^8]: See http://www.cfengine.com/blog/sysadmin-3.0-and-the-third-wave
 
-[^9]: Service promises, as described here, were introduced into version 3.3.0 of
+[^9]:
+    Service promises, as described here, were introduced into version 3.3.0 of
     CFEngine in 2012.
 
 [^10]: All good magic stories begin like this.
 
-[^11]: Perhaps not just in the past. We are emerging from an industrial era of
+[^11]:
+    Perhaps not just in the past. We are emerging from an industrial era of
     management where mass producing everything the same was the cheapest
     approach to scaling up services. However, today personal freedom demands
     variety and will not tolerate such oversimplification.

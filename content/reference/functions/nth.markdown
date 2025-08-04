@@ -12,11 +12,11 @@ requested, this function does not return a valid value.
 
 [This function can accept many types of data parameters.][Functions#collecting functions]
 
-`list_or_container` can be an slist or a data container.  If it's a
-slist, the offset is simply the position in the list.  If it's a data
+`list_or_container` can be an slist or a data container. If it's a
+slist, the offset is simply the position in the list. If it's a data
 container, the meaning of the `position_or_key` depends on its
 top-level contents: for a list like `[1,2,3,4]` you will get the list
-element at `position_or_key`.  For a key-value map like
+element at `position_or_key`. For a key-value map like
 `{ a: 100, b: 200 }`, a `position_or_key` of `a` returns `100`.
 
 Since 3.15, Nth supports negative indices when indexing lists, starting from

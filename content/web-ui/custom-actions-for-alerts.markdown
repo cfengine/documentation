@@ -19,27 +19,27 @@ Most of the keys are common for all alerts, but some additional keys are defined
 
 These keys are present for all alert types.
 
-| Key                         | Description                                                                                           |
-|-----------------------------|-------------------------------------------------------------------------------------------------------|
-| ALERT_ID                    | Unique ID (number).                                                                          |
-| ALERT_NAME                  | Name, as defined in when creating the alert (string).                                                    |
-| ALERT_SEVERITY              | Severity, as selected when creating the alert (string).                                                |
-| ALERT_LAST_CHECK            | Last time alert state was checked (Unix epoch timestamp).                                              |
-| ALERT_LAST_EVENT_TIME       | Last time the alert created an event log entry (Unix epoch timestamp).                                 |
-| ALERT_LAST_STATUS_CHANGE    | Last time alert changed from triggered to cleared or the other way around (Unix epoch timestamp).      |
-| ALERT_STATUS                | Current status, either 'fail' (triggered) or 'success' (cleared).                                      |
-| ALERT_FAILED_HOST           | Number of hosts currently triggered on (number).                                                       |
-| ALERT_TOTAL_HOST            | Number of hosts defined for (number).                                                                  |
-| ALERT_CONDITION_NAME        | Condition name, as defined when creating the alert (string).                                             |
-| ALERT_CONDITION_DESCRIPTION | Condition description, as defined when creating the alert (string).                                      |
-| ALERT_CONDITION_TYPE        | Type, as selected when creating the alert. Can be 'policy', 'inventory', or 'softwareupdate'. |
+| Key                         | Description                                                                                       |
+| --------------------------- | ------------------------------------------------------------------------------------------------- |
+| ALERT_ID                    | Unique ID (number).                                                                               |
+| ALERT_NAME                  | Name, as defined in when creating the alert (string).                                             |
+| ALERT_SEVERITY              | Severity, as selected when creating the alert (string).                                           |
+| ALERT_LAST_CHECK            | Last time alert state was checked (Unix epoch timestamp).                                         |
+| ALERT_LAST_EVENT_TIME       | Last time the alert created an event log entry (Unix epoch timestamp).                            |
+| ALERT_LAST_STATUS_CHANGE    | Last time alert changed from triggered to cleared or the other way around (Unix epoch timestamp). |
+| ALERT_STATUS                | Current status, either 'fail' (triggered) or 'success' (cleared).                                 |
+| ALERT_FAILED_HOST           | Number of hosts currently triggered on (number).                                                  |
+| ALERT_TOTAL_HOST            | Number of hosts defined for (number).                                                             |
+| ALERT_CONDITION_NAME        | Condition name, as defined when creating the alert (string).                                      |
+| ALERT_CONDITION_DESCRIPTION | Condition description, as defined when creating the alert (string).                               |
+| ALERT_CONDITION_TYPE        | Type, as selected when creating the alert. Can be 'policy', 'inventory', or 'softwareupdate'.     |
 
 ### Policy keys
 
 In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='policy'.
 
-| Key                                   | Description                                                                                                      |
-|---------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| Key                                   | Description                                                                                                       |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | ALERT_POLICY_CONDITION_FILTERBY       | Policy object to filter by, as selected when creating the alert. Can be 'bundlename', 'promiser' or 'promisees'.  |
 | ALERT_POLICY_CONDITION_FILTERITEMNAME | Name of the policy object to filter by, as defined when creating the alert (string).                              |
 | ALERT_POLICY_CONDITION_PROMISEHANDLE  | Promise handle to filter by, as defined when creating the alert (string).                                         |
@@ -49,18 +49,18 @@ In addition to the common keys, the following keys are present when ALERT_CONDIT
 
 In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='inventory'.
 
-| Key                                                          | Description                                                                                                                                                                                                                                    |
-|--------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ALERT_INVENTORY_CONDITION_FILTER_$(ATTRIBUTE_NAME)           | The name of the attribute as selected when creating the alert is part of the key (expanded), while the value set when creating is the value (e.g. ALERT_INVENTORY_CONDITION_FILTER_ARCHITECTURE='x86_64').                                      |
-| ALERT_INVENTORY_CONDITION_FILTER_$(ATTRIBUTE_NAME)_CONDITION | The name of the attribute as selected when creating the alert is part of the key (expanded), while the value is the comparison operator selected. Can be 'ILIKE' (matches), 'NOT ILIKE' (doesn't match), '=' (is), '!=' (is not), '<', '>'. |
-| ...                                                          | There will be pairs of key=value for each attribute name defined in the alert.                                                                                                                                                                |
+| Key                                                           | Description                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ALERT*INVENTORY_CONDITION_FILTER*$(ATTRIBUTE_NAME)            | The name of the attribute as selected when creating the alert is part of the key (expanded), while the value set when creating is the value (e.g. ALERT_INVENTORY_CONDITION_FILTER_ARCHITECTURE='x86_64').                                  |
+| ALERT*INVENTORY_CONDITION_FILTER*$(ATTRIBUTE_NAME)\_CONDITION | The name of the attribute as selected when creating the alert is part of the key (expanded), while the value is the comparison operator selected. Can be 'ILIKE' (matches), 'NOT ILIKE' (doesn't match), '=' (is), '!=' (is not), '<', '>'. |
+| ...                                                           | There will be pairs of key=value for each attribute name defined in the alert.                                                                                                                                                              |
 
 ### Software updates keys
 
 In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='softwareupdate'.
 
-| Key                                               | Description                                                                                 |
-|---------------------------------------------------|---------------------------------------------------------------------------------------------|
+| Key                                               | Description                                                                                          |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | ALERT_SOFTWARE_UPDATE_CONDITION_PATCHNAME         | The name of the package, as defined when creating the alert, or empty if undefined (string).         |
 | ALERT_SOFTWARE_UPDATE_CONDITION_PATCHARCHITECTURE | The architecture of the package, as defined when creating the alert, or empty if undefined (string). |
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Managing users and roles
+title: Managing users and roles
 sorting: 40
 ---
 

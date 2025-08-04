@@ -34,7 +34,7 @@ edit_fstab => "true";          # True/false add or remove entries to the file sy
 
 This policy can be found in `/var/cfengine/share/doc/examples/example_mount_nfs.cf`
 
-Here is an example run.  At start, the filesystem is not in /etc/fstab and is not mounted:
+Here is an example run. At start, the filesystem is not in /etc/fstab and is not mounted:
 
 ```
 # grep mnt /etc/fstab # filesystem is not in /etc/fstab
@@ -68,5 +68,5 @@ fileserver:/home 149912064 94414848  47882240  67% /mnt
 ```
 
 Note: CFEngine errors out after it mounts the filesystem and updates
-/etc/fstab.  There is a ticket https://cfengine.com/dev/issues/2937
+/etc/fstab. There is a ticket https://cfengine.com/dev/issues/2937
 open on this issue.

@@ -22,7 +22,7 @@ Output:
 
 **Tips:**
 
-* Filter out the current (`.`) and parent (`..`) directories with a
+- Filter out the current (`.`) and parent (`..`) directories with a
   negative look ahead. `lsdir( "/tmp", "^(?!(\.$|\.\.$)).*", false )`.
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2011)

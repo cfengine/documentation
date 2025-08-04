@@ -42,31 +42,31 @@ M. Belbin, a researcher in teamwork has identified nine abilities or roles
 (kinds of promise) to be played in a team collaboration (regardless of how many
 people there are in the team):
 
-* Plant - a creative "ideas" person who solves problems.
+- Plant - a creative "ideas" person who solves problems.
 
-* Shaper - this is a dynamic member of the team who thrives on pressure and has
+- Shaper - this is a dynamic member of the team who thrives on pressure and has
   the drive and courage to overcome obstacles.
 
-* Specialist - someone who brings specialist knowledge to the group.
+- Specialist - someone who brings specialist knowledge to the group.
 
-* Implementer - a practical thinker who is rooted in reality and can turn ideas
+- Implementer - a practical thinker who is rooted in reality and can turn ideas
   into practice (who sometimes frustrates more imaginative high flying
   visionaries).
 
-* Resource Investigator - an enabler, or someone who knows where to find the
+- Resource Investigator - an enabler, or someone who knows where to find the
   help the team needs regardless of whether the help is physical, financial or
   human. This person is good at networking.
 
-* Chairman/Co-ordinator - an arbitrator who makes sure that everyone gets their
+- Chairman/Co-ordinator - an arbitrator who makes sure that everyone gets their
   say and can contribute.
 
-* Monitor-Evaluator - is a dispassionate, discerning member who can judge
+- Monitor-Evaluator - is a dispassionate, discerning member who can judge
   progress and achievement accurately during the process.
 
-* Team Worker - someone concerned with the team's inter-personal relationships
+- Team Worker - someone concerned with the team's inter-personal relationships
   and who is sensitive to the atmosphere of the group.
 
-* Completer/Finisher - someone critical and analytical who looks after the
+- Completer/Finisher - someone critical and analytical who looks after the
   details of presentation and spots potential flaws and gaps. The completer is a
   quality control person.
 
@@ -112,18 +112,18 @@ allows us to model the collaborative security implications of this (see the
 figure of the bow-tie structure). A simple method of delegating is the
 following.
 
-* Delegate responsibility for different issues to admin teams 1,2,3, etc.
+- Delegate responsibility for different issues to admin teams 1,2,3, etc.
 
-* Make each of these teams responsible for version control of their own
+- Make each of these teams responsible for version control of their own
   configuration rules.
 
-* Make an intermediate agent responsible for collating and vetting the rules,
+- Make an intermediate agent responsible for collating and vetting the rules,
   checking for irregularities and conflicts. This agent must promise to disallow
   rules by one team that are the responsibility of another team. The agent could
   be a layer of software, but a cheaper and more manageable solution is the make
   this another group of one or more humans.
 
-* Make the resulting collated configuration version controlled. Publish approved
+- Make the resulting collated configuration version controlled. Publish approved
   promises for all hosts to download from a trusted source.
 
 A review procedure for policy-promises is a good solution if you want to

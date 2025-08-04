@@ -33,7 +33,7 @@ In this example user `mark` is granted permission to remotely activate
 classes matching the regular expression `Myclass_.*` hen using the
 `cf-runagent` to activate CFEngine.
 
-****
+---
 
 ## Attributes
 

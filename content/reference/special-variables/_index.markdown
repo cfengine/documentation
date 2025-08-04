@@ -18,28 +18,28 @@ See `classes` for an explanation of the tags.
 
 CFEngine includes the following **special variables**:
 
-* [connection][connection]
-Variables defined for embedding unprintable values or values with special meanings
-in strings.
+- [connection][connection]
+  Variables defined for embedding unprintable values or values with special meanings
+  in strings.
 
-* [const][const]
-Variables defined for embedding unprintable values or values with special meanings
-in strings.
+- [const][const]
+  Variables defined for embedding unprintable values or values with special meanings
+  in strings.
 
-* [edit][edit]
-Variables used to access information about editing promises during their execution.
+- [edit][edit]
+  Variables used to access information about editing promises during their execution.
 
-* [match][match]
-Variable used in string matching.
+- [match][match]
+  Variable used in string matching.
 
-* [mon][mon]
-Variables defined in a monitoring context.
+- [mon][mon]
+  Variables defined in a monitoring context.
 
-* [sys][sys]
-Variables defined in order to automate discovery of system values.
+- [sys][sys]
+  Variables defined in order to automate discovery of system values.
 
-* [def][def]
-Variables with some default value that can be defined by [augments file][Augments] or in policy.
+- [def][def]
+  Variables with some default value that can be defined by [augments file][Augments] or in policy.
 
-* [this][this]
-Variables used to access information about promises during their execution.
+- [this][this]
+  Variables used to access information about promises during their execution.

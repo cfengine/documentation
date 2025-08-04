@@ -15,18 +15,18 @@ elements in `list` that match the filtering rules specified in `filter`,
 
 **Arguments**:
 
-* filter : [Anchored][anchored] regular expression or static string to find, in the range `.*`
-* list : The name of the list variable or data container to check, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
-* is_regex_ : Boolean
+- filter : [Anchored][anchored] regular expression or static string to find, in the range `.*`
+- list : The name of the list variable or data container to check, in the range
+  `[a-zA-Z0-9_$(){}\[\].:]+`
+- is*regex* : Boolean
 
 Treat `filter` as a regular expression or as a static string.
 
-* `invert` : Boolean
+- `invert` : Boolean
 
 Invert filter.
 
-* `max_return` : Maximum number of elements to return in the range `0,999999999`
+- `max_return` : Maximum number of elements to return in the range `0,999999999`
 
 **Example:**
 

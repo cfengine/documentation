@@ -368,7 +368,7 @@ R: mon.dev_smtp_out is $(mon.dev_smtp_out)
 
 In this case, all we are doing is creating an array called `io_vars`. Note that
 the indices of the elements of the array are iterated from two lists, so in this
-case we'll have 2*3 = 6 elements in the array, covering all the combinations of
+case we'll have 2\*3 = 6 elements in the array, covering all the combinations of
 the two lists inout and inout-names.
 
 The values of the array elements can be whatever we like. In this case, we're
@@ -479,7 +479,7 @@ In this example, we create a two arrays (io_vars and n_vars), and a number of
 lists (but the most important ones are stats and monvars). We have but a single
 report promise, but it iterates over these latter two lists. With only a single
 reports promise and intelligent use of lists and arrays, we are able to report
-on every one of the 3*(8+2*18+4*2)==156 monitor variables. And to change the
+on every one of the 3*(8+2*18+4\*2)==156 monitor variables. And to change the
 format of every report, we will only have a single statement to change.
 
 ## Summary of iteration

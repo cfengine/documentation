@@ -12,9 +12,9 @@ as a context when using variables outside of the bundle they are defined in.
 CFEngine variables have three high-level types: scalars, lists, and
 data containers.
 
-* A scalar is a single value,
-* a list is a collection of scalars.
-* a data container is a lot like a JSON document, it can be a key-value map or an array or anything else allowed by the JSON standard with unlimited nesting.
+- A scalar is a single value,
+- a list is a collection of scalars.
+- a data container is a lot like a JSON document, it can be a key-value map or an array or anything else allowed by the JSON standard with unlimited nesting.
 
 ## Scalar variables
 
@@ -29,20 +29,20 @@ vars:
   "my_real" real     => "567.89";
 ```
 
-Integer constants may use suffixes to represent large numbers.  The following
+Integer constants may use suffixes to represent large numbers. The following
 suffixes can be used to create integer values for common powers of 1000.
 
-* 'k' = value times 1000
-* 'm' = value times 1000^2
-* 'g' = value times 1000^3
+- 'k' = value times 1000
+- 'm' = value times 1000^2
+- 'g' = value times 1000^3
 
 Since computing systems such as storage and memory are based on binary values,
 CFEngine also provide the following uppercase suffixes to create integer
 values for common powers of 1024.
 
-* 'K' = value times 1024.
-* 'M' = value times 1024^2
-* 'G' = value times 1024^3
+- 'K' = value times 1024.
+- 'M' = value times 1024^2
+- 'G' = value times 1024^3
 
 However, the values must have an integer numeric part (e.g. 1.5M is not
 allowed).
@@ -52,11 +52,11 @@ In some contexts, `%` can be used a special suffix to denote percentages.
 Lastly, there is a reserved value which can be used to specify a parameter as
 having no limit at all.
 
-* 'inf' = a constant representing an unlimited value.
+- 'inf' = a constant representing an unlimited value.
 
-  ```inf``` is a special value that in the code corresponds to the magic number of ```999999999``` (nine nines). Thus any function that accepts a number, can accept inf without a problem. Keep in mind though that you can get a higher number if you set the upper limit manually, but that's almost never a problem.
+  `inf` is a special value that in the code corresponds to the magic number of `999999999` (nine nines). Thus any function that accepts a number, can accept inf without a problem. Keep in mind though that you can get a higher number if you set the upper limit manually, but that's almost never a problem.
 
-  For a few functions ```inf``` is being treated specially and truly means "there is no limit" instead of "nine nines limit". This is the case for the ```maxbytes``` parameter and applies to most read* functions.
+  For a few functions `inf` is being treated specially and truly means "there is no limit" instead of "nine nines limit". This is the case for the `maxbytes` parameter and applies to most read\* functions.
 
 CFEngine typing is mostly dynamic, and CFEngine will try to coerce string
 values into int and real types, and if it cannot it will report an error.
@@ -84,7 +84,7 @@ be escaped.
 
 ### Scalar size limitations
 
-At the moment, up to 4095 bytes can fit into a scalar variable.  This
+At the moment, up to 4095 bytes can fit into a scalar variable. This
 limitation may be removed in the future.
 
 If you try to expand strings in a variable or string context that add
@@ -142,7 +142,7 @@ iterate over the values in the list. E.g. suppose we have local list variable
 the list.
 
 In some function calls, `listname` instead of `@(listname)` is
-expected.  See the specific function's documentation to be sure.
+expected. See the specific function's documentation to be sure.
 
 ## Data container variables
 
@@ -155,7 +155,7 @@ Data containers are obtained from functions that return `data` types,
 such as `readjson()` or `parsejson()`, `readyaml()` or `parseyaml()`,
 or from merging existing containers.
 
-They can **NOT** be *modified*, once created, but they can be re-defined.
+They can **NOT** be _modified_, once created, but they can be re-defined.
 
 Data containers do not have the size limitations of regular scalar
 variables.

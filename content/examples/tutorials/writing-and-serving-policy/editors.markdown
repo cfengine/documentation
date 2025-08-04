@@ -33,7 +33,7 @@ Microsoft VS Code users have syntax highlighting thanks to AZaugg. Install the s
 ## Sublime Text
 
 Sublime Text 2 and 3 users have syntax highlighting and snippets thanks to Valery Astraverkhau. Get the syntax highlighting and snippets from his github repository. Aki Vanhatalo has contributed a beautifier to automatically re-indent policy in Sublime Text.
-	 Sublime Screenshot
+Sublime Screenshot
 
 ![Sublime Text](guide-writing-and-serving-policy-editors-sublime-text.jpg)
 
@@ -53,7 +53,7 @@ This extension is available in both [Atom (discontinued)](https://github.blog/ne
 
 ## Eclipse
 
-Interested in syntax highlighting for your CFEngine policy in Eclipse? Try this  contributed syntax definition.
+Interested in syntax highlighting for your CFEngine policy in Eclipse? Try this contributed syntax definition.
 
 Want more out of your Eclipse & CFEngine experience? Itemis Xtext expert Boris Holzer developed a CFEngine workbench for Eclipse. They even published a brief screen-cast highlighting many of its features. For more information about their workbench please contact them using this form.
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  SQL query examples
+title: SQL query examples
 ---
 
 ### Synchronous Example: Listing hostname and IP for Ubuntu hosts

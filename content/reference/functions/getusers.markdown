@@ -19,11 +19,11 @@ title: getusers
 
 **Notes:**
 
-* This function is currently only available on Unix-like systems.
-* This function will return both local and remote (for example, users defined in an external directory like LDAP) users on a system.
+- This function is currently only available on Unix-like systems.
+- This function will return both local and remote (for example, users defined in an external directory like LDAP) users on a system.
 
 **History:**
 
-* Introduced in CFEngine 3.1.0b1, CFEngine Nova/Enterprise 2.0.0b1 (2010).
+- Introduced in CFEngine 3.1.0b1, CFEngine Nova/Enterprise 2.0.0b1 (2010).
 
 **See also:** [`getuserinfo()`][getuserinfo], [`users`][users].

@@ -62,8 +62,8 @@ HTTP 200 OK
 
 **Parameters:**
 
-* **remote_hub_id** *(number)*
-    Remote hub id
+- **remote_hub_id** _(number)_
+  Remote hub id
 
 **Example response:**
 
@@ -94,16 +94,16 @@ HTTP 200 OK
 
 **Parameters:**
 
-* **ui_name** *(string)*
-    Remote hub name
-* **hostkey** *(string)*
-    Remote hub hostkey
-* **role** *(string)*
-    Remote hub role. Allowed values: `feeder`, `superhub`
-* **target_state** *(string)*
-    Target state of remote hub. Allowed values: `on`, `paused`
-* **transport** *(json)*
-    Transport data. Emp `{ "mode": "pull_over_rsync", "ssh_user": "cfdrop", "ssh_host": "172.28.128.5", "ssh_pubkey": "", "ssh_fingerprint": ""}`
+- **ui_name** _(string)_
+  Remote hub name
+- **hostkey** _(string)_
+  Remote hub hostkey
+- **role** _(string)_
+  Remote hub role. Allowed values: `feeder`, `superhub`
+- **target_state** _(string)_
+  Target state of remote hub. Allowed values: `on`, `paused`
+- **transport** _(json)_
+  Transport data. Emp `{ "mode": "pull_over_rsync", "ssh_user": "cfdrop", "ssh_host": "172.28.128.5", "ssh_pubkey": "", "ssh_fingerprint": ""}`
 
 **Example response:**
 
@@ -119,18 +119,18 @@ HTTP 201 CREATED
 
 **Parameters:**
 
-* **remote_hub_id** *(number)*
-    Remote hub id
-* **ui_name** *(string)*
-    Remote hub name
-* **hostkey** *(string)*
-    Remote hub hostkey
-* **role** *(string)*
-    Remote hub role. Allowed values: `feeder`, `superhub`
-* **target_state** *(string)*
-    Target state of remote hub. Allowed values: `on`, `paused`
-* **transport** *(json)*
-    Transport data. Emp `{ "mode": "pull_over_rsync", "ssh_user": "cfdrop", "ssh_host": "172.28.128.5", "ssh_pubkey": "", "ssh_fingerprint": ""}`
+- **remote_hub_id** _(number)_
+  Remote hub id
+- **ui_name** _(string)_
+  Remote hub name
+- **hostkey** _(string)_
+  Remote hub hostkey
+- **role** _(string)_
+  Remote hub role. Allowed values: `feeder`, `superhub`
+- **target_state** _(string)_
+  Target state of remote hub. Allowed values: `on`, `paused`
+- **transport** _(json)_
+  Transport data. Emp `{ "mode": "pull_over_rsync", "ssh_user": "cfdrop", "ssh_host": "172.28.128.5", "ssh_pubkey": "", "ssh_fingerprint": ""}`
 
 **Example response:**
 
@@ -146,8 +146,8 @@ HTTP 202 ACCEPTED
 
 **Parameters:**
 
-* **remote_hub_id** *(number)*
-    Remote hub id
+- **remote_hub_id** _(number)_
+  Remote hub id
 
 **Example response:**
 

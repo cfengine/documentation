@@ -31,5 +31,5 @@ Output:
 
 **History:**
 
-* Introduced in CFEngine 3.6.0
-* `optional_tag` added in 3.10.0
+- Introduced in CFEngine 3.6.0
+- `optional_tag` added in 3.10.0

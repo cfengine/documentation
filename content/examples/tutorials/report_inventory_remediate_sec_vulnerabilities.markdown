@@ -6,8 +6,8 @@ sorting: 10
 
 ## Prerequisites
 
-* CFEngine 3.6 Enterprise Hub
-* At least one client vulnerable to CVE-2014-6271
+- CFEngine 3.6 Enterprise Hub
+- At least one client vulnerable to CVE-2014-6271
 
 ## Overview
 
@@ -29,11 +29,11 @@ Writing inventory policy with CFEngine is just like any other CFEngine policy,
 except for the addition of special `meta` attributes used to augment the
 inventory interface. First you must know how to collect the information you
 want. In this case we know that a vulnerable system will have the word
-*vulnerable* listed in the output of the command
+_vulnerable_ listed in the output of the command
 `env x='() { :;}; echo vulnerable' $(bash) -c 'echo testing CVE-2014-6271'`.
 
 This bundle will check if the host is vulnerable to the CVE, define a class
-*CVE_2014_6217* if it is vulnerable and augment Mission Portals Inventory
+_CVE_2014_6217_ if it is vulnerable and augment Mission Portals Inventory
 interface in CFEngine Enterprise.
 
 ```cf3 {file="inventory_CVE_2014_6271.cf"}
@@ -76,30 +76,30 @@ bundle agent inventory_CVE_2014_6271
 ### What does this inventory policy do?
 
 Meta type promises are used to attach additional information to bundles. We
-have set 'description' so that future readers of the policy will know what the
+have set `description` so that future readers of the policy will know what the
 policy is for and how to get more information on the vulnerability. For
-the sake of simplicity in this example set 'autorun' as a tag to the bundle.
+the sake of simplicity in this example set `autorun` as a tag to the bundle.
 This makes the bundle available for automatic activation when using the autorun
 feature in the Masterfiles Policy Framework.
 
 Next we set the paths to the binaries that we will use to exeucte our test
-command. As of this writing the paths for 'env' and 'echo' are both in the
-standard libraries paths bundle, but 'bash' is not. Note that you may need to
+command. As of this writing the paths for `env` and `echo` are both in the
+standard libraries paths bundle, but `bash` is not. Note that you may need to
 adjust the path to bash for your platforms. Then we run our test command and
-place the command output into the 'test_result' variable. Since we have no
-*CVE_2014_6271* class defined yet, the next promise to set the variable
-'vulnerable' to 'CVE-2014-6271' will be skipped on the first pass. Then the
-classes type promise is evaluated and defines the class *CVE_2014_6271* if the
-output matches the regular expression 'vulnerable.*'. Finally the reports are
-evaluated before starting the second pass. If the class 'DEBUG' or
-'DEBUG_inventory_CVE_2014_6271' is set the test command output will be shown,
+place the command output into the `test_result` variable. Since we have no
+`CVE_2014_6271` class defined yet, the next promise to set the variable
+`vulnerable` to `CVE-2014-6271` will be skipped on the first pass. Then the
+classes type promise is evaluated and defines the class `CVE_2014_6271` if the
+output matches the regular expression `vulnerable.\*`. Finally the reports are
+evaluated before starting the second pass. If the class `DEBUG` or
+`DEBUG_inventory_CVE_2014_6271` is set the test command output will be shown,
 and if the vulnerability is present agent is running in inform or verbose mode
 message indicating the host is vulnerable along with the description will be
 output.
 
-On the second pass only that variable 'vulnerable' will be set with the value
-'CVE-2014-6271' if the host is vulnerable. Note how this variable tagged with
-'inventory' and 'attribute_name='. These are special meta tags that CFEngine
+On the second pass only that variable `vulnerable` will be set with the value
+`CVE-2014-6271` if the host is vulnerable. Note how this variable tagged with
+`inventory` and `attribute_name=`. These are special meta tags that CFEngine
 Enterprise uses in order to display information.
 
 ### Deploy the policy
@@ -172,9 +172,9 @@ bundle agent remediate_CVE_2014_6271
 
 ### What does this remediation policy do?
 
-For simplicity of the example this policy defines the class allow_update on hub
+For simplicity of the example this policy defines the class `allow_update` on hub
 and host001, but you could use any class that makes sense to you. If the
-allow_update class is set, and the class *CVE_2014_6271* is defined (indicating
+`allow_update` class is set, and the class `CVE_2014_6271` is defined (indicating
 the host is vulnerable) then the policy ensures that bash is updated to the
 latest version available.
 

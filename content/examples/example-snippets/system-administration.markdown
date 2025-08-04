@@ -20,7 +20,7 @@ This shows the simplest approach in which all hosts are the same. It is too simp
 
 ### Updating from a central hub
 
-The configuration bundled with the CFEngine source code contains an example of centralized updating of policy that covers more subtleties than this example, and handles fault tolerance. Here is the main idea behind it. For simplicity, we assume that all hosts are on network 10.20.30.* and that the central policy server/hub is 10.20.30.123.
+The configuration bundled with the CFEngine source code contains an example of centralized updating of policy that covers more subtleties than this example, and handles fault tolerance. Here is the main idea behind it. For simplicity, we assume that all hosts are on network 10.20.30.\* and that the central policy server/hub is 10.20.30.123.
 
 {{< CFEngine_include_snippet(updating_from_a_central_hub.cf, .* ) >}}
 

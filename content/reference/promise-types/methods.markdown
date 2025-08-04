@@ -92,7 +92,7 @@ methods:
 ```
 
 Please note that method names must be either simple strings or slists.
-They can't be array references, for instance.  As a rule, they can
+They can't be array references, for instance. As a rule, they can
 only look like `$(name)` where `name` is either a string or an slist.
 They can't be `"$(a)$(b)"`, `$(a[b])`, and so on.
 
@@ -110,7 +110,7 @@ Output:
 2013-12-11T13:33:31-0500   notice: /run/methods/'call'/unpack/methods/'relay'/call_2: R: call_2: called with parameters p and q
 ```
 
-***
+---
 
 ## Attributes
 

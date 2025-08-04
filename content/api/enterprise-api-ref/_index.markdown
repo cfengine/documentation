@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Enterprise API reference
+title: Enterprise API reference
 sorting: 70
 ---
 
@@ -77,15 +77,15 @@ Enterprise API responses are always of the following format, consisting of a
 
 If the response is not `200 OK`, the appropriate HTTP error code returned along with a (possibly non-JSON) payload.
 
-All timestamps are reported in *Unix Time*, i.e. seconds since 1970.
+All timestamps are reported in _Unix Time_, i.e. seconds since 1970.
 
 ## Authentication
 
 The API supports both internal and external authentication. The internal users
 table will always be consulted first, followed by an external source specified
-in the settings. External sources are *OpenLDAP* or *Active Directory* servers
+in the settings. External sources are _OpenLDAP_ or _Active Directory_ servers
 configurable through [/api/settings][Status and settings REST API#Update settings].
 
 ## Authorization
 
-Some resources require that the request user is a member of the *admin* role. Roles are managed with [/api/role][Users and access-control REST API#List RBAC roles]. Role Based Access Control (RBAC) is configurable through the settings. Users typically have permission to access their own resources, e.g. their own scheduled reports.
+Some resources require that the request user is a member of the _admin_ role. Roles are managed with [/api/role][Users and access-control REST API#List RBAC roles]. Role Based Access Control (RBAC) is configurable through the settings. Users typically have permission to access their own resources, e.g. their own scheduled reports.

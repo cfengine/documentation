@@ -49,7 +49,7 @@ Writing, deploying, and using CFEngine `promises` will generally follow these si
 2. Create a bundle and promise in the file (see ["Hello world" policy example][Examples and tutorials#"Hello world" policy example]).
 3. Save the file on the policy server somewhere under `/var/cfengine/masterfiles` (can be under a sub-directory).
 4. Let CFEngine know about the `promise` on the `policy server`, generally in the file `/var/cfengine/masterfiles/promises.cf`, or a file elsewhere but referred to in `promises.cf`.
-    * Optional: it is also possible to call a bundle manually, using `cf-agent`.
+   - Optional: it is also possible to call a bundle manually, using `cf-agent`.
 
 5. Verify the `policy file` was deployed and successfully run.
 
@@ -57,12 +57,12 @@ See [Tutorial for running examples][Examples and tutorials#Tutorial for running 
 
 ## Policy workflow
 
-CFEngine does not make absolute choices for you, like other tools.  Almost
+CFEngine does not make absolute choices for you, like other tools. Almost
 everything about its behavior is a matter of policy and can be changed.
 
 In order to keep operations as simple as possible, CFEngine maintains a private
 working directory on each machine, referred to in documentation as `WORKDIR` and
-in policy by the variable ```sys.workdir``` By default, this is located at
+in policy by the variable `sys.workdir` By default, this is located at
 `/var/cfengine` or `C:\var\CFEngine`. It contains everything CFEngine needs to
 run.
 
@@ -70,19 +70,19 @@ The figure below shows how decisions flow through the parts of a system.
 
 ![Policy decision and distribution flowchart](policy-decision-flow.png)
 
-* It makes sense to have a single point of coordination. Decisions are
+- It makes sense to have a single point of coordination. Decisions are
   therefore usually made in a single location (the Policy Definition Point).
   The history of decisions and changes can be tracked by a version control
   system of your choice (e.g. Git, Subversion, CVS etc.).
 
-* Decisions are made by editing CFEngine's policy file `promises.cf` (or one
+- Decisions are made by editing CFEngine's policy file `promises.cf` (or one
   of its included sub-files). This process is carried out off-line.
 
-* Once decisions have been formalized and coded, this new policy is copied to a
-  decision distribution point, ```sys.masterdir``` which defaults to
+- Once decisions have been formalized and coded, this new policy is copied to a
+  decision distribution point, `sys.masterdir` which defaults to
   `/var/cfengine/masterfiles` on all policy distribution servers.
 
-* Every client machine contacts the policy server and downloads these updates.
+- Every client machine contacts the policy server and downloads these updates.
   The policy server can be replicated if the number of clients is very large,
   but we shall assume here that there is only one policy server.
 
@@ -98,11 +98,12 @@ needless fragility and keep two independent quality assurance processes apart.
 
 ## Best practices
 
-* [Policy style guide][Policy style guide] This covers punctuation, whitespace, and other styles to remember when writing policy.
+- [Policy style guide][Policy style guide] This covers punctuation, whitespace, and other styles to remember when writing policy.
 
-* [Bundles best practices][Bundles best practices] Refer to this page as you decide when to make a bundle and when to use classes and/or variables in them.
+- [Bundles best practices][Bundles best practices] Refer to this page as you decide when to make a bundle and when to use classes and/or variables in them.
 
-* [Testing policies][Testing policies] This page describes how to locally test CFEngine and play with configuration files.
+- [Testing policies][Testing policies] This page describes how to locally test CFEngine and play with configuration files.
 
 ## See also
-* [Promises][Promises]
+
+- [Promises][Promises]

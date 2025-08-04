@@ -19,17 +19,17 @@ and last file or directory found respectively.
 Note that glob patterns are not regular expressions. They match like Unix
 shells:
 
-* `*` matches any filename or directory at one level, e.g. `*.cf` will
-match all files in one directory that end in `.cf` but it won't search
-across directories. `*/*.cf` on the other hand will look two levels
-deep.
-* `**` recursively matches up to six subdirectories.
-* `?` matches a single letter.
-* `[abc]` matches `a`, `b` or `c`.
-* `[!abc]` matches any letters other than `a`, `b` or `c`.
-* `[a-z]` matches any letter from `a` to `z`.
-* `[!a-z]` matches any letter not from `a` to `z`.
-* `{foo,bar}` matches `foo` or `bar`.
+- `*` matches any filename or directory at one level, e.g. `*.cf` will
+  match all files in one directory that end in `.cf` but it won't search
+  across directories. `*/*.cf` on the other hand will look two levels
+  deep.
+- `**` recursively matches up to six subdirectories.
+- `?` matches a single letter.
+- `[abc]` matches `a`, `b` or `c`.
+- `[!abc]` matches any letters other than `a`, `b` or `c`.
+- `[a-z]` matches any letter from `a` to `z`.
+- `[!a-z]` matches any letter not from `a` to `z`.
+- `{foo,bar}` matches `foo` or `bar`.
 
 {{< CFEngine_function_attributes(path, glob, level) >}}
 

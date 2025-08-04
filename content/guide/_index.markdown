@@ -13,25 +13,25 @@ See also: [Overview][Overview]
 
 ## CFEngine features
 
-* Defines the configuration of an entire IT system, including: Devices, Users, Applications, and Services.
-* Helps maintain that system over time.
-* Checks the system state at any given moment.
-* Ensures compliance with a desired system state.
-* Propagates real-time modifications or updates across the system.
+- Defines the configuration of an entire IT system, including: Devices, Users, Applications, and Services.
+- Helps maintain that system over time.
+- Checks the system state at any given moment.
+- Ensures compliance with a desired system state.
+- Propagates real-time modifications or updates across the system.
 
 ## Choose a CFEngine version
 
 [CFEngine Enterprise](https://cfengine.com/product-overview/) is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers).
 
-* [Get the Enterprise Edition][evaluate cfengine]
+- [Get the Enterprise Edition][evaluate cfengine]
 
 CFEngine Community, a free GPL v3 open source edition.
 
-* [Get the Community Edition][community download page]
+- [Get the Community Edition][community download page]
 
 See also:
 
-* [Supported platforms and versions][Supported platforms and versions]
+- [Supported platforms and versions][Supported platforms and versions]
 
 ## Install it
 
@@ -45,7 +45,7 @@ CFEngine up and running for various environments.
 Walk through the examples, tutorials and how to guides to get a better
 feel for the power and value of CFEngine:
 
-* [Policy Examples and tutorials][Examples and tutorials]
+- [Policy Examples and tutorials][Examples and tutorials]
 
 ## Learn more
 
@@ -60,17 +60,17 @@ experts if you need more help. Contact us!
 
 ## CFEngine guide
 
-* [Overview][]
-* [Release notes][]
-* [Installation][]
-  * [Pre-installation checklist]
-  * [General installation]
-  * [Upgrading]
-  * [Secure bootstrap]
-* [Writing and serving policy][]
-  * [Language concepts][]
-  * [Promises available in CFEngine][]
-  * [Authoring policy tools & workflow][]
-* [Reports][]
-* [FAQ][]
-* [External Resources][]
+- [Overview][]
+- [Release notes][]
+- [Installation][]
+  - [Pre-installation checklist]
+  - [General installation]
+  - [Upgrading]
+  - [Secure bootstrap]
+- [Writing and serving policy][]
+  - [Language concepts][]
+  - [Promises available in CFEngine][]
+  - [Authoring policy tools & workflow][]
+- [Reports][]
+- [FAQ][]
+- [External Resources][]

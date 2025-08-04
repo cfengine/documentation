@@ -18,8 +18,8 @@ network.
 
 **Notes:**
 
-* This daemon reloads it's config when the SIGHUP signal is received.
-* `cf-execd` always considers the class ```executor``` to be defined.
+- This daemon reloads it's config when the SIGHUP signal is received.
+- `cf-execd` always considers the class `executor` to be defined.
 
 **History:**
 
@@ -383,7 +383,7 @@ means for setting splay times.
 
 **Notes:**
 
-* By default, in the Masterfiles Policy Framework, `cfapache` is allowed to access the socket on Enterprise Hubs.
+- By default, in the Masterfiles Policy Framework, `cfapache` is allowed to access the socket on Enterprise Hubs.
 
 **Example:**
 
@@ -398,7 +398,7 @@ body executor control
 
 **History:**
 
-* 3.18.0 Added `runagent_socket_allow_users` attribute
+- 3.18.0 Added `runagent_socket_allow_users` attribute
 
 ## Sockets
 
@@ -408,7 +408,7 @@ The `body executor control` attribute `runagent_socket_allow_users` controls the
 
 **Notes:**
 
-* Unlike execution triggered with the `cf-runagent` binary, there is currently no capability to define additional options like defining additional classes, or the remote bundlesequence.
+- Unlike execution triggered with the `cf-runagent` binary, there is currently no capability to define additional options like defining additional classes, or the remote bundlesequence.
 
 **Example:**
 
@@ -422,4 +422,4 @@ echo 'host001' > /var/cfengine/state/cf-execd.sockets/cf-runagent.socket
 
 **History:**
 
-* 3.18.0 Added socket for triggering `cf-runagent` by hostname or IP.
+- 3.18.0 Added socket for triggering `cf-runagent` by hostname or IP.

@@ -78,15 +78,15 @@ commands:
 
 **Notes:**
 
-* CFEngine will not allow you to signal processes 1-4 or the agent process
+- CFEngine will not allow you to signal processes 1-4 or the agent process
   itself for fear of bringing down the system.
 
-* Process promises depend on the `ps` native tool, which by default truncates
+- Process promises depend on the `ps` native tool, which by default truncates
   lines at 128 columns on HP-UX. It is recommended to edit the file
   `/etc/default/ps` and increase the `DEFAULT_CMD_LINE_WIDTH` setting to 1024 to
   guarantee that process promises will work smoothly on that platform.
 
-****
+---
 
 ## Attributes
 
@@ -585,4 +585,4 @@ processes:
 
 **History:**
 
-* 3.18.2, 3.20.0 Added ability to sleep between signals using `Ns`
+- 3.18.2, 3.20.0 Added ability to sleep between signals using `Ns`

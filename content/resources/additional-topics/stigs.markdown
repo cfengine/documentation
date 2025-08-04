@@ -50,14 +50,14 @@ PCI, SOX etc. Contact us through your regular CFEngine representative or use the
 contact form to learn how CFEngine can help you implement and achieve desired
 compliance. What are the different parts of this policy example?
 
-* [STIGs.cf](./STIGs.cf)
+- [STIGs.cf](./STIGs.cf)
 
   CFEngine policy file (ASCII), to be run by cf-agent
 
-* [README](./STIGs_readme.txt)
+- [README](./STIGs_readme.txt)
 
   Explanation of the various policy components (human readable), referencing
-  STIGs requirements id (such as ```GEN000560```)
+  STIGs requirements id (such as `GEN000560`)
 
 ## What are the terms of this STIGs example?
 

@@ -15,4 +15,4 @@ The utility will prompt for an optional support ticket number as well as prompt 
 
 ## History
 
-* Introduced in 3.21.0, 3.18.3
+- Introduced in 3.21.0, 3.18.3

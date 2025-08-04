@@ -15,25 +15,25 @@ cfbs (CFEngine Build System) Modules provide a way to share and consume CFEngine
 
 ## Promise modules
 
-Promise modules allow for the implementation of [*custom* promise types][promise-type-custom], extending the CFEngine Language. They communicate with `cf-agent` using the [*Promise Module Protocol*][promise-type-custom-protocol].
+Promise modules allow for the implementation of [_custom_ promise types][promise-type-custom], extending the CFEngine Language. They communicate with `cf-agent` using the [_Promise Module Protocol_][promise-type-custom-protocol].
 
 **History:**
 
-* Introduced 3.17.0
+- Introduced 3.17.0
 
 ## Package modules
 
-[Package modules][Package modules] implement the logic behind *packages* type promises, superseding the *package\_method* based implementation. They interact with package managers like `yum`, `apt`, `msiexec`, and `pip` to determine which packages are currently installed or have updates available as well as installing, upgrading or un-installing packages.
+[Package modules][Package modules] implement the logic behind _packages_ type promises, superseding the _package_method_ based implementation. They interact with package managers like `yum`, `apt`, `msiexec`, and `pip` to determine which packages are currently installed or have updates available as well as installing, upgrading or un-installing packages.
 
 Package modules communicate with `cf-agent` via the [Package Module Protocol][package-modules-the-api].
 
 **History:**
 
-* Introduced 3.7.0
+- Introduced 3.7.0
 
 ## Variables and classes modules
 
-Variables and classes modules are the original way to extend CFEngine. The Variable and Class Module Protocol allows for *variables* and *classes* to be defined. The protocol can be interpreted by functions like [`usemodule()`][usemodule] and [`read_module_protocol()`][read_module_protocol] as well as output from [*commands* type promises][commands] with the [`module => "true"`][commands#module] attribute.
+Variables and classes modules are the original way to extend CFEngine. The Variable and Class Module Protocol allows for _variables_ and _classes_ to be defined. The protocol can be interpreted by functions like [`usemodule()`][usemodule] and [`read_module_protocol()`][read_module_protocol] as well as output from [_commands_ type promises][commands] with the [`module => "true"`][commands#module] attribute.
 
 The choice of interpretation can depend on many factors but a primary differentiate between functions and classes relate to CFEngine's evaluation details. Functions are evaluated early during policy execution unless they are explicitly guarded to delay execution. Commands promises are not executed until the bundle is actuated for it's three pass evaluation.
 
@@ -41,25 +41,25 @@ Variables and classes modules are intended for use as system probes rather than 
 
 ### Specification
 
-The protocol is *line based*. Lines that begin with `^` apply to all following lines.
+The protocol is _line based_. Lines that begin with `^` apply to all following lines.
 
-*   **`^context=BundleName`:** Sets the bundle scope in which *variables* will be defined
-*   **`^meta=Tag1,Tag2`:** Sets a comma separated list of tags that are applied to defined *variables* and *classes*
-*   **`^persistence=X`:** Sets the number of minutes for which *classes* should persist
-*   **`+ClassName`:** Defines a namespace scoped class
-*   **`-ClassName`:** Undefines a class
-*   **`=VariableName=`:** Defines a string variable
-*   **`VariableName[KEY]=`:** Defines an associative array key value
-*   **`@VariableName=`:** Defines a list of strings
-*   **`%VariableName=`:** Must be valid JSON and defines a data container
+- **`^context=BundleName`:** Sets the bundle scope in which _variables_ will be defined
+- **`^meta=Tag1,Tag2`:** Sets a comma separated list of tags that are applied to defined _variables_ and _classes_
+- **`^persistence=X`:** Sets the number of minutes for which _classes_ should persist
+- **`+ClassName`:** Defines a namespace scoped class
+- **`-ClassName`:** Undefines a class
+- **`=VariableName=`:** Defines a string variable
+- **`VariableName[KEY]=`:** Defines an associative array key value
+- **`@VariableName=`:** Defines a list of strings
+- **`%VariableName=`:** Must be valid JSON and defines a data container
 
 **Notes:**
 
-*   It is not possible to define variables or classes in a namespace other than the default (`default`).
-*   If no context is provided, the context is the canonified leaf name of the module. For example, if the module is `/tmp/path/my-module.sh` the default context would be `my_module_sh` in the `default` namespace (`default:my_module_sh`).
-*   All *variables* and *classes* will be tagged with `source=module` in addition to any specified tags.
-*   All lines of output that do not match the module protocol are treated as *errors*.
-*   Variable names defined by the module protocol are limited to alphanumeric characters and `_`, `.`, `-`, `[`, `]`, `@`, and `/`.
+- It is not possible to define variables or classes in a namespace other than the default (`default`).
+- If no context is provided, the context is the canonified leaf name of the module. For example, if the module is `/tmp/path/my-module.sh` the default context would be `my_module_sh` in the `default` namespace (`default:my_module_sh`).
+- All _variables_ and _classes_ will be tagged with `source=module` in addition to any specified tags.
+- All lines of output that do not match the module protocol are treated as _errors_.
+- Variable names defined by the module protocol are limited to alphanumeric characters and `_`, `.`, `-`, `[`, `]`, `@`, and `/`.
 
 **Examples:**
 
@@ -78,8 +78,8 @@ A Variables and Classes module written in shell:
 
 **History:**
 
--   Introduced in 3.0.0
--   `^context`, `^meta` Added in 3.6.0
--   `^persistence` Added in 3.8.0
--   `@` allowed in variables (intended for keys in classic array) 3.15.0, 3.12.3, 3.10.7 (2019)
--   `/` allowed in variables (intended for keys in classic array) 3.14.0, 3.12.2, 3.10.6 (2019)
+- Introduced in 3.0.0
+- `^context`, `^meta` Added in 3.6.0
+- `^persistence` Added in 3.8.0
+- `@` allowed in variables (intended for keys in classic array) 3.15.0, 3.12.3, 3.10.7 (2019)
+- `/` allowed in variables (intended for keys in classic array) 3.14.0, 3.12.2, 3.10.6 (2019)

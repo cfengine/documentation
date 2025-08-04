@@ -38,7 +38,7 @@ using the generic method, you may have to use a method specific to your package
 manager and get to your elbows in the details. But try `generic` first. You
 may get lucky.
 
-Mind package names can differ OS to OS.  For example, Apache httpd
+Mind package names can differ OS to OS. For example, Apache httpd
 is "httpd" on Red Hat, and "apache2" on Debian.
 
 Version comparison can be tricky when involving multipart version
@@ -80,6 +80,7 @@ ii  ntp                             1:4.2.6.p3+dfsg-1ubu amd64                Ne
 ```
 
 There are examples in `/var/cfengine/share/doc/examples/` of installing packages using specific package managers:
+
 - Red Hat (unit_package_yum.cf)
 - Debian (unit_package_apt.cf)
 - MSI for Windows (unit_package_msi_file.cf)

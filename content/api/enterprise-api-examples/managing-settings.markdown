@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Managing settings
+title: Managing settings
 sorting: 30
 ---
 

@@ -14,8 +14,8 @@ If the array contains list values, then all of the list elements are flattened
 into a single list to make the return value a list.
 
 If the data container contains non-scalar values (e.g. nested
-containers) they are skipped.  The special values `true`, `false`, and
-`null` are serialized to their string representations.  Numerical
+containers) they are skipped. The special values `true`, `false`, and
+`null` are serialized to their string representations. Numerical
 values are serialized to their string representations.
 
 You can specify a path inside the container. For example, below you'll

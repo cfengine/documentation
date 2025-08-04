@@ -4,7 +4,7 @@ title: File template examples
 sorting: 7
 ---
 
-* [Templating][File template examples#Templating]
+- [Templating][File template examples#Templating]
 
 ## Templating
 

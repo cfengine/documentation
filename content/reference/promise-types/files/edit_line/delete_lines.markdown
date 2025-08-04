@@ -24,17 +24,17 @@ Note that typically, only a single line is specified in each
 promises that each delete a line.
 
 It is also possible to specify multi-line `delete_lines` promises.
-However, these promises will only delete those lines if *all* the lines
-are present in the file *in exactly the same order* as specified in the
+However, these promises will only delete those lines if _all_ the lines
+are present in the file _in exactly the same order_ as specified in the
 promise (with no intervening lines). That is, all the lines must match
 as a unit for the `delete_lines` promise to be kept.
 
 If the promiser contains multiple lines, then CFEngine assumes that all
 of the lines must exist as a contiguous block in order to be deletes.
-This gives preserve\_block semantics to any multiline `delete_lines`
+This gives preserve_block semantics to any multiline `delete_lines`
 promise.
 
-***
+---
 
 ## Attributes
 
@@ -113,7 +113,7 @@ delete_if_not_startwith_from_list => { @(s) };
 
 #### delete_if_match_from_list
 
-**Description:** Delete lines from a file if the lines *completely* match any of the [anchored][anchored] regular expressions listed.
+**Description:** Delete lines from a file if the lines _completely_ match any of the [anchored][anchored] regular expressions listed.
 
 Note that this attribute modifies the selection criteria, it does not make the
 initial selection, and the match determination is made only on promised lines.
@@ -133,7 +133,7 @@ delete_if_match_from_list => { @(s) };
 
 #### delete_if_not_match_from_list
 
-**Description:** Delete lines from a file unless the lines *completely* match any of the [anchored][anchored] regular expressions listed.
+**Description:** Delete lines from a file unless the lines _completely_ match any of the [anchored][anchored] regular expressions listed.
 
 Note that this attribute modifies the selection criteria, it does not make the
 initial selection, and the match determination is made only on promised lines.
@@ -222,4 +222,4 @@ delete_lines:
 
 This body applies to all promise types within `edit_line` bundles.
 
-**See also:** [```select_region``` with `edit_line` operations][edit_line#select_region], [```select_region``` in `field_edits`][field_edits#select_region], [```select_region``` in `insert_lines`][field_edits#select_region], [```select_region``` in `replace_patterns`][replace_patterns#select_region]
+**See also:** [`select_region` with `edit_line` operations][edit_line#select_region], [`select_region` in `field_edits`][field_edits#select_region], [`select_region` in `insert_lines`][field_edits#select_region], [`select_region` in `replace_patterns`][replace_patterns#select_region]

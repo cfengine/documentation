@@ -9,7 +9,7 @@ title: int
 
 {{< CFEngine_function_attributes(string) >}}
 
-If `string` represents a floating point number then the decimals are *truncated*.
+If `string` represents a floating point number then the decimals are _truncated_.
 
 **Example:**
 
@@ -19,4 +19,4 @@ If `string` represents a floating point number then the decimals are *truncated*
 
 **History:**
 
-* Introduced in 3.18.0
+- Introduced in 3.18.0

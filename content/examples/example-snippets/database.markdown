@@ -4,7 +4,7 @@ title: Database examples
 sorting: 8
 ---
 
-* [Database creation][Database examples#Database creation]
+- [Database creation][Database examples#Database creation]
 
 ## Database creation
 

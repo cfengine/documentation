@@ -7,7 +7,7 @@ title: data_readstringarray
 
 **Description:** Returns a data container (map) with up to
 `maxentries`-1 fields from the first `maxbytes` bytes of file
-`filename`.  The first field becomes the key in the map.
+`filename`. The first field becomes the key in the map.
 
 One dimension is separated by the regex `split`, the other by the
 lines in the file. The array key (the first field) must be unique; if
@@ -37,4 +37,4 @@ Output:
 
 **History:**
 
-* Added in CFEngine 3.6.0
+- Added in CFEngine 3.6.0

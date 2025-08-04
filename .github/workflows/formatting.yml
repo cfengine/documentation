@@ -21,11 +21,17 @@ jobs:
           python-version: "3.12"
       - name: Install tools
         run: |
+          npm install --global prettier
           pipx install cfengine black
       - name: Run formatting command to (hopefully not) make changes
         run: |
-          cfengine dev docs-format
+          # TODO: We can integrate these commands into cfengine dev docs-format
+          #       https://northerntech.atlassian.net/browse/CFE-4572
+          # TODO: There are (small) diffs between cfbs pretty and prettier
+          #       https://northerntech.atlassian.net/browse/CFE-4571
+          find . -name '*.markdown' -type f | parallel -j16 prettier -w {}
           black .
+          cfengine dev docs-format
       - name: Check output.log file for warnings
         run: |
           ! grep WARNING output.log

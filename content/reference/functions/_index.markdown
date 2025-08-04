@@ -62,9 +62,9 @@ change during evaluation, but typically, a class, once defined, will stay define
 Promise attributes which use a class expression (string) as input, like `if`
 and `unless`, can take a function call which returns string or boolean as well.
 
-* A boolean function will be resolved to `any`, which is always true, or `!any`
+- A boolean function will be resolved to `any`, which is always true, or `!any`
   which is always false.
-* A string function will be resolved, and the returned string will be
+- A string function will be resolved, and the returned string will be
   evaluated as a class expression.
 
 ```cf3
@@ -99,12 +99,12 @@ You can get this list automatically with cf-promises --syntax-description json a
 cf-promises --syntax-description json | jq '.functions | with_entries(select(.value.cached==true)) | keys[]'
 -->
 
-* `execresult()` and `returnszero()` for shell execution
-* `regldap()`, `ldapvalue()`, and `ldaplist()` for LDAP queries
-* `findprocesses()`, and `processexists()` for querying processes.
-* `host2ip()` and `ip2host()` for DNS queries
-* `readtcp()` for TCP interactions
-* `hubknowledge()`, and `remotescalar()` for hub queries
+- `execresult()` and `returnszero()` for shell execution
+- `regldap()`, `ldapvalue()`, and `ldaplist()` for LDAP queries
+- `findprocesses()`, and `processexists()` for querying processes.
+- `host2ip()` and `ip2host()` for DNS queries
+- `readtcp()` for TCP interactions
+- `hubknowledge()`, and `remotescalar()` for hub queries
 
 When enabled
 [cached functions](https://docs.cfengine.com/docs/{{site.cfengine.branch}}/search.html?q=The+return+value+is+cached)
@@ -115,7 +115,7 @@ and its result will be cached until the end of that agent execution.
 
 **Note:** Cached functions are executed multiple times during
 [policy validation and pre-evaluation][Policy evaluation#cf-promises policy validation step].
-Function caching is *per-process*, so results will not be cached between
+Function caching is _per-process_, so results will not be cached between
 separate components e.g. `cf-agent`, `cf-serverd` and `cf-promises`.
 Additionally functions are cached by hashing the function arguments. If you have
 the exact same function call in two different promises (it does not matter if
@@ -137,47 +137,47 @@ be evaluated if any argument contains a variable that never resolves.
 
 ### Collecting Functions
 
-Some function arguments are marked as *collecting* which means they
+Some function arguments are marked as _collecting_ which means they
 can "collect" an argument from various sources. The data is normalized
 into the JSON format internally, so all of the following data types
 have consistent behavior.
 
-* If a key inside a data container is specified (`mycontainer[key]`),
-the value under that key is collected. The key can be a string for
-JSON objects or a number for JSON arrays.
+- If a key inside a data container is specified (`mycontainer[key]`),
+  the value under that key is collected. The key can be a string for
+  JSON objects or a number for JSON arrays.
 
-* If a single data container, CFEngine array, or slist is specified
-(`mycontainer` or `myarray` or `myslist`), the contents of it are
-collected.
+- If a single data container, CFEngine array, or slist is specified
+  (`mycontainer` or `myarray` or `myslist`), the contents of it are
+  collected.
 
-* If a single data container, CFEngine array, or slist is specified
-with `@()` around it (`@(mycontainer)` or `@(myarray)` or
-`@(myslist)`), the contents of it are collected.
+- If a single data container, CFEngine array, or slist is specified
+  with `@()` around it (`@(mycontainer)` or `@(myarray)` or
+  `@(myslist)`), the contents of it are collected.
 
-* If a function call that returns a data container or slist is
+- If a function call that returns a data container or slist is
   specified, that function call is evaluated and the results are
   inserted, so you can say for instance `sort(data_expand(...), "lex")`
   to expand a data container then sort it.
 
-* If a list (slist, ilist, or rlist) is named, its entries are collected.
+- If a list (slist, ilist, or rlist) is named, its entries are collected.
 
-* If any CFEngine "classic" array (`array[key]`) is named, it's first
-converted to a JSON key-value map, then collected.
+- If any CFEngine "classic" array (`array[key]`) is named, it's first
+  converted to a JSON key-value map, then collected.
 
-* If a literal JSON string like `[ 1,2,3 ]` or `{ "x": 500 }` is
-provided, it will be parsed and used.
+- If a literal JSON string like `[ 1,2,3 ]` or `{ "x": 500 }` is
+  provided, it will be parsed and used.
 
-* If any of the above-mentioned ways to reference variables are used
-**inside** a literal JSON string they will be expanded (or the
-function call will fail). This is similar to the behavior of
-Javascript, for instance.  For example, `mergedata('[ thing, { "mykey": otherthing[123] } ]')`
-will wrap the `thing` in a JSON array; then the contents of
-`otherthing[123]` will be wrapped in a JSON map which will also go in
-the array.
+- If any of the above-mentioned ways to reference variables are used
+  **inside** a literal JSON string they will be expanded (or the
+  function call will fail). This is similar to the behavior of
+  Javascript, for instance. For example, `mergedata('[ thing, { "mykey": otherthing[123] } ]')`
+  will wrap the `thing` in a JSON array; then the contents of
+  `otherthing[123]` will be wrapped in a JSON map which will also go in
+  the array.
 
 ### Delayed Evaluation Functions
 
-Since CFEngine 3.10, some functions are marked as *delayed evaluation* which
+Since CFEngine 3.10, some functions are marked as _delayed evaluation_ which
 means they can evaluate a function call across every element of a collection.
 This makes intuitive sense for the collection traversing functions `maparray()`,
 `maplist()`, and `mapdata()`.

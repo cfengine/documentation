@@ -4,7 +4,7 @@ title: Measuring examples
 sorting: 3
 ---
 
-* [Measurements][Measuring examples#Measurements]
+- [Measurements][Measuring examples#Measurements]
 
 ## Measurements
 

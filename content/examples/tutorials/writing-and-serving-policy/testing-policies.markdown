@@ -31,6 +31,7 @@ cp /var/cfengine/inputs/*.cf ~/.cfagent/inputs
 You can test the software and play with configuration files by editing the
 basic directly in the `~/.cfagent/inputs` directory. For example, try the
 following:
+
 ```console
 ~/.cfagent/bin/cf-promises
 ~/.cfagent/bin/cf-promises --verbose

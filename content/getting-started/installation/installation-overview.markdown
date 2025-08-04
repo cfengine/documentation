@@ -18,11 +18,11 @@ See also: [Pre-installation checklist][Pre-installation checklist], [Supported p
 
 Additional options for configuring CFEngine policy are as follows:
 
-* [Controlling frequency]
-Learn how to control frequency settings for verifying CFEngine policy.
+- [Controlling frequency]
+  Learn how to control frequency settings for verifying CFEngine policy.
 
-* [Version control]
-Learn how to put your CFEngine policies under version control.
+- [Version control]
+  Learn how to put your CFEngine policies under version control.
 
-* [Masterfiles Policy Framework]
-Learn what options are available out of the box in CFEngine to configure its masterfiles operation.
+- [Masterfiles Policy Framework]
+  Learn what options are available out of the box in CFEngine to configure its masterfiles operation.

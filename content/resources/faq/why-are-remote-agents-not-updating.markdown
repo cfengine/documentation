@@ -24,12 +24,12 @@ update their policy when they notice that change. If the policy does not
 validate `$(sys.masterdir)/cf_promises_validated` is not updated, and remote
 clients will see no need to scan for updates.
 
-* Check that the policy on in `$(sys.masterdir)` on the hub validates with
+- Check that the policy on in `$(sys.masterdir)` on the hub validates with
   `cf-promises`.
-* Check if `$(sys.inputdir)/cf_promises_validated` differs from the
+- Check if `$(sys.inputdir)/cf_promises_validated` differs from the
   `$(sys.masterdir)/cf_promises_validated` on the policy server.
-* Trigger a full policy scan with `cf-agent --no-lock --file update.cf --define
-  validated_updates_ready`
+- Trigger a full policy scan with `cf-agent --no-lock --file update.cf --define
+validated_updates_ready`
 
 **Note:** Dynamic inputs could mean different validation results on different
 hosts. Be conscious of different perspectives when validating policy.

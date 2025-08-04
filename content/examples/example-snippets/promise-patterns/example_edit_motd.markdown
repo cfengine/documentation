@@ -13,13 +13,13 @@ It is often useful to customize the Message of the Day to inform your users
 about some specifics of the system they are connecting to. In this example we
 render a `/etc/motd` using a mustache template and add useful information as:
 
-* The role of the server ( staging / production )
-* The hostname of the server
-* The CFEngine version we are running on the host
-* The CFEngine role of the server ( client / hub )
-* The administrative contacts details conditionally to the environment
-* The primary Ipv4 IP address
-* The number of packages updates available for this host
+- The role of the server ( staging / production )
+- The hostname of the server
+- The CFEngine version we are running on the host
+- The CFEngine role of the server ( client / hub )
+- The administrative contacts details conditionally to the environment
+- The primary Ipv4 IP address
+- The number of packages updates available for this host
 
 The bundle is defined like this:
 

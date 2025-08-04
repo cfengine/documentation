@@ -57,6 +57,7 @@ commands:
 
   "\"/usr/bin/funny command name\" -a -b -c";
 ```
+
 **Note:** Commands executed with CFEngine get the environment variables set in
 [`environment`][cf-agent#environment] in body agent control. If you want to set
 environment variables for an individual command you can prefix the command with
@@ -78,7 +79,7 @@ bundle agent example
 detect the end of file condition). This occurs on POSIX.1 and SVR4 popen calls
 which use wait4. For some reason they fail to find and end-of-file for an
 exiting child process and go into a deadlock trying to read from an already
-dead process.  This leaves a zombie behind (the parent daemon process which
+dead process. This leaves a zombie behind (the parent daemon process which
 forked and was supposed to exit) though the child continues. A way around this
 is to use a wrapper script which prints the line `cfengine-die` to STDOUT after
 restarting the process. This causes CFEngine to close the pipe forcibly and
@@ -86,7 +87,7 @@ continue.
 
 **See also:** [Bundles and Bodies for commands in the stdlib][lib/commands.cf]
 
-****
+---
 
 ## Attributes
 
@@ -160,8 +161,8 @@ So in the example above the command would be:
 
 **History:**
 
-* Introduced in CFEngine 3.9.0.
-* Fixed whitespace preservation when not using shell on non-Windows agents in 3.24.0
+- Introduced in CFEngine 3.9.0.
+- Fixed whitespace preservation when not using shell on non-Windows agents in 3.24.0
 
 **See also:** `args`, `join()`, `concat()`, `format()`
 
@@ -195,7 +196,7 @@ exec_timeout => "60";
 
 **Description:** Specifies whether or not to use a shell when executing the command.
 
-The default is to *not* use a shell when executing commands. Use of a
+The default is to _not_ use a shell when executing commands. Use of a
 shell has both resource and security consequences. A shell consumes an
 extra process and inherits environment variables, reads commands from
 files and performs other actions beyond the control of CFEngine.
@@ -330,7 +331,7 @@ exec_timeout => "30";
 }
 ```
 
-**See also:** [`body action expireafter`][Promise types#expireafter],  [`body agent control expireafter`][cf-agent#expireafter], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+**See also:** [`body action expireafter`][Promise types#expireafter], [`body agent control expireafter`][cf-agent#expireafter], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
 
 #### chdir
 
@@ -452,23 +453,23 @@ promises. Such a module may be written in any language.
 
 This attribute determines whether or not to expect the CFEngine module protocol. If true, the module protocol is supported for this command:
 
-* lines which begin with a `^` are protocol extensions
-  * `^context=xyz` sets the module context to `xyz` instead of the default for any following definitions
-  * `^meta=a,b,c` sets the class and variable tags for any following definitions to `a`, `b`, and `c`
-  * `^persistence=10` sets any following classes to persist for 10 minutes (use 0 to reset)
-  * `^persistence=0` sets any following classes to have no persistence (this is the default)
-* lines which begin with a `+` are treated as classes to be defined (like -D). **NOTE:** classes are defined with the [`namespace` scope][Classes and decisions].
-* lines which begin with a `-` are treated as classes to be undefined (like -N)
-* lines which begin with `=` are scalar variables to be defined
-* lines which begin with `=` and include `[]` are array variables to be defined
-* lines which begin with `@` are lists.
-* lines which begin with `%` are `data` containers.  The value needs to be valid JSON and will be decoded.
+- lines which begin with a `^` are protocol extensions
+  - `^context=xyz` sets the module context to `xyz` instead of the default for any following definitions
+  - `^meta=a,b,c` sets the class and variable tags for any following definitions to `a`, `b`, and `c`
+  - `^persistence=10` sets any following classes to persist for 10 minutes (use 0 to reset)
+  - `^persistence=0` sets any following classes to have no persistence (this is the default)
+- lines which begin with a `+` are treated as classes to be defined (like -D). **NOTE:** classes are defined with the [`namespace` scope][Classes and decisions].
+- lines which begin with a `-` are treated as classes to be undefined (like -N)
+- lines which begin with `=` are scalar variables to be defined
+- lines which begin with `=` and include `[]` are array variables to be defined
+- lines which begin with `@` are lists.
+- lines which begin with `%` are `data` containers. The value needs to be valid JSON and will be decoded.
 
 These variables end up in a context that has the same name as the
 module, unless the `^context` extension is used.
 
 **NOTE**: All variables and classes defined by the module protocol are defined
-in the ```default``` namespace. It is not possible to define variables and
+in the `default` namespace. It is not possible to define variables and
 classes in any other namespace. Protocol extensions ( lines that start with `^`
 ) apply until they are explicitly reset, or until the end of the modules
 execution.
@@ -480,8 +481,8 @@ Any other lines of output are cited by `cf-agent` as being erroneous, so you
 should normally make your module completely silent.
 
 **WARNING:** Variables defined by the module protocol are currently limited to
-alphanumeric characters and ```_```, ```.```, ```-```, ```[```, ```]```, ```@``` and
-```/```.
+alphanumeric characters and `_`, `.`, `-`, `[`, `]`, `@` and
+`/`.
 
 **Type:** [`boolean`][boolean]
 
@@ -556,7 +557,7 @@ if (special-condition)
 ```
 
 If your module is simple and is best expressed as a shell command, then we
-suggest that you *expose* the class being defined in the command being
+suggest that you _expose_ the class being defined in the command being
 executed (making it easier to see what classes are used when reading the
 promises file). For example, the promises could read as follows (the two
 `echo` commands are to ensure that the shell always exits with a successful
@@ -599,5 +600,5 @@ arguments, just as a regular command does.
 
 **History:**
 
-- ```@``` allowed in variables (intended for keys in classic array) 3.15.0, 3.12.3, 3.10.7 (2019)
-- ```/``` allowed in variables (intended for keys in classic array) 3.14.0, 3.12.2, 3.10.6 (2019)
+- `@` allowed in variables (intended for keys in classic array) 3.15.0, 3.12.3, 3.10.7 (2019)
+- `/` allowed in variables (intended for keys in classic array) 3.14.0, 3.12.2, 3.10.6 (2019)

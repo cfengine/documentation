@@ -12,7 +12,7 @@ any argument evaluates to true.
 
 **Argument Descriptions:**
 
-* `expression` - Class, class expression, or function that returns a class
+- `expression` - Class, class expression, or function that returns a class
 
 **Example:**
 
@@ -28,5 +28,5 @@ commands:
 
 **History:**
 
-* Introduced in 3.2.0, Nova 2.1.0 (2011)
-* Return type changed from `string` to `boolean` in 3.17.0 (2020) (CFE-3470)
+- Introduced in 3.2.0, Nova 2.1.0 (2011)
+- Return type changed from `string` to `boolean` in 3.17.0 (2020) (CFE-3470)

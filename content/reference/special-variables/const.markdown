@@ -18,7 +18,7 @@ reports:
 
 **History:**
 
-* Added in CFEngine 3.19.0, 3.18.1
+- Added in CFEngine 3.19.0, 3.18.1
 
 ### const.dollar
 

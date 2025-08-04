@@ -6,7 +6,7 @@ sorting: 3
 
 In this tutorial we will write a simple policy to ensure that the latest version of the NTP service is installed on your system. Once the NTP software is installed, we will extend the policy to manage the service state as well as the software configuration.
 
-Note: For simplicity, in this tutorial we will work directly on top of the Masterfiles Policy Framework (MPF) in `/var/cfengine/masterfiles` (*masterfiles*) and we will not use version control.
+Note: For simplicity, in this tutorial we will work directly on top of the Masterfiles Policy Framework (MPF) in `/var/cfengine/masterfiles` (_masterfiles_) and we will not use version control.
 
 ## Ensuring the NTP package is installed
 
@@ -94,7 +94,7 @@ classes         => results("bundle", "ntp_package_");
 
 `classes` provide context which can help drive the logic in your policies. In this example, classes for each promise outcome are defined prefixed with `ntp_package_`, for details check out the implementation of `body classes results` in the stdlib. For example, `ntp_package_repaired` will be defined if cf-agent did not have the ntp package installed and had to install it. `ntp_package_kept` would be defined if the ntp package is already installed and `ntp_package_notkept` would be defined.
 
-On your hub create `services/ntp.cf` inside *masterfiles* with the following content:
+On your hub create `services/ntp.cf` inside _masterfiles_ with the following content:
 
 ```cf3 {file="ntp.cf"}
 bundle agent ntp
@@ -169,7 +169,7 @@ cf-agent -KI
 info: Successfully installed package 'ntp'
 ```
 
-Now that we have successfully promised the package, let's move on to the *service*.
+Now that we have successfully promised the package, let's move on to the _service_.
 
 ## Manage NTP service
 
@@ -220,7 +220,7 @@ debian::
     "ntp_service_name" string => "ntp";
 ```
 
-The first thing that you will notice is that the variable declarations section has been expanded. Recall that you completed part 1 of this tutorial by creating packages promises that works across Debian and redhat. While the package name for NTP is the same between Debian and Red Hat, the service names are actually different. Therefore, classes introduced here to distinguish the service name for NTP between these two environments. The CFEngine agents automatically discover environment properties and defines [*hard classes*][language-concepts-classes-hard] that can be used - this includes classes such as `debian` and `redhat` that define the host's operating system.
+The first thing that you will notice is that the variable declarations section has been expanded. Recall that you completed part 1 of this tutorial by creating packages promises that works across Debian and redhat. While the package name for NTP is the same between Debian and Red Hat, the service names are actually different. Therefore, classes introduced here to distinguish the service name for NTP between these two environments. The CFEngine agents automatically discover environment properties and defines [_hard classes_][language-concepts-classes-hard] that can be used - this includes classes such as `debian` and `redhat` that define the host's operating system.
 
 #### reports
 
@@ -236,7 +236,7 @@ The reports promise type emits information from the agent. Most commonly and by 
 ntp_service_repaired.inform_mode::
 ```
 
-This line restricts the context for the promises that follow to hosts that have `ntp_service_repaired` and `inform_mode` defined. Note: `inform_mode` is defined when information level logging is requested, e.g.  the `-I`, `--inform`, or `--log-level inform` options are given to `cf-agent` defined.
+This line restricts the context for the promises that follow to hosts that have `ntp_service_repaired` and `inform_mode` defined. Note: `inform_mode` is defined when information level logging is requested, e.g. the `-I`, `--inform`, or `--log-level inform` options are given to `cf-agent` defined.
 
 ```cf3
 "NTP service repaired";
@@ -418,7 +418,7 @@ Valid values for this attribute are `true` or `false` to instruct the agent whet
 perms                 => mog( "644", "root", "root" ),
 ```
 
-This attribute sets the permissions and ownership of the file. [`mog()`][stdlib-mog] is a `perms` body in the CFEngine standard library that sets the ```mode```, ```owner```, and ```group``` of the file. In this example, the permissions for the NTP configuration file are set to ```644``` with *owner* and *group* both assigned to ```root```.
+This attribute sets the permissions and ownership of the file. [`mog()`][stdlib-mog] is a `perms` body in the CFEngine standard library that sets the `mode`, `owner`, and `group` of the file. In this example, the permissions for the NTP configuration file are set to `644` with _owner_ and _group_ both assigned to `root`.
 
 ##### handle
 
@@ -458,7 +458,7 @@ The `edit_template_string` attribute is set to `$(config_template_string)` which
 template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
 ```
 
-`template_data` is assigned a data container that is in this case constructed by [`mergedata()`][mergedata] so that only the necessary data is provided to the template. If `template_data` is not explicitly provided, CFEngine uses `datastate()` by default. It is considered best practice to provide explicit data as this makes it easier to delegate responsibility of the template and that data to different entities where neither are required to know anything about CFEngine itself and it's *much* more efficient to send the templating engine only the data the template actually uses.
+`template_data` is assigned a data container that is in this case constructed by [`mergedata()`][mergedata] so that only the necessary data is provided to the template. If `template_data` is not explicitly provided, CFEngine uses `datastate()` by default. It is considered best practice to provide explicit data as this makes it easier to delegate responsibility of the template and that data to different entities where neither are required to know anything about CFEngine itself and it's _much_ more efficient to send the templating engine only the data the template actually uses.
 
 Note, `mergedata()` tries to expand bare values from CFEngine variables, so `servers` will expand to the entire list of servers. The result of `mergedata()` in the example is equivalent to this json:
 
@@ -628,7 +628,7 @@ bundle agent ntp
          if => isvariable( "def.ntp[config][servers]" );
 ```
 
-Notice two promises were introduced, one setting `driftfile` to the value of `$(def.ntp[config][driftfile])` if it is defined and one setting servers to the list of values for `def.ntp[config][servers]` if it is defined. [Augments][Augments] allows for variables to be set in the *def* bundle scope very early before policy is evaluated.
+Notice two promises were introduced, one setting `driftfile` to the value of `$(def.ntp[config][driftfile])` if it is defined and one setting servers to the list of values for `def.ntp[config][servers]` if it is defined. [Augments][Augments] allows for variables to be set in the _def_ bundle scope very early before policy is evaluated.
 
 ### Modify and run the policy
 

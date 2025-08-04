@@ -55,7 +55,7 @@ as specified by the [_augments_ key][Augments#augments].
 
 **Notes:**
 
-* CFEngine variables are **not** expanded unless otherwise noted.
+- CFEngine variables are **not** expanded unless otherwise noted.
 
 ### host_specific.json
 
@@ -64,21 +64,21 @@ are automatically tagged with `source=cmdb`. Variables defined from this file ca
 
 **Notes:**
 
-* This file does not support the [_augments_ key][Augments#augments].
+- This file does not support the [_augments_ key][Augments#augments].
 
 ### def.json
 
 The file `def.json` is found based on the location of the policy entry (the first policy file read by the agent):
 
-* with no arguments, it's in `$(sys.inputdir)/def.json` because
+- with no arguments, it's in `$(sys.inputdir)/def.json` because
   `$(sys.inputdir)/promises.cf` is used
-* with `-f /dirname/myfile.cf`, it's in `/dirname/def.json`
-* with `-f ./myfile.cf`, it's in `./def.json`
+- with `-f /dirname/myfile.cf`, it's in `/dirname/def.json`
+- with `-f ./myfile.cf`, it's in `./def.json`
 
 **Notes:**
 
-* `sys` variables are expanded in `def.json` and all subsequently loaded augments as specified by the `augments` key.
-* `def_preferred.json` will be used instead of `def.json` if it is present. This preferential loading can be disabled by providing the `--ignore-preferred-augments` option to the agent.
+- `sys` variables are expanded in `def.json` and all subsequently loaded augments as specified by the `augments` key.
+- `def_preferred.json` will be used instead of `def.json` if it is present. This preferential loading can be disabled by providing the `--ignore-preferred-augments` option to the agent.
 
 ## Augments keys
 
@@ -92,12 +92,12 @@ Filenames entered here will appear in the `def.augments_inputs` variable.
 
 **Notes:**
 
-* Files are loaded relative to `sys.policy_entry_dirname`.
+- Files are loaded relative to `sys.policy_entry_dirname`.
 
-* The *inputs* key has precedence over the *vars* key.
+- The _inputs_ key has precedence over the _vars_ key.
 
-* If both the _inputs_ key and `vars.augments_inputs` are populated concurrently,
-  the variable `def.augments_inputs` will hold the value set by the *inputs*
+- If both the _inputs_ key and `vars.augments_inputs` are populated concurrently,
+  the variable `def.augments_inputs` will hold the value set by the _inputs_
   key. The `def.augments_inputs` variable is part of the default inputs in the
   `Masterfiles Policy Framework`.
 
@@ -124,7 +124,7 @@ The above Augments results in `$(sys.policy_entry_dirname)/goodbye.cf` being add
 
 This key is supported in both `host_specific.json`, `def.json`, `def_preferred.json`, and augments loaded by the [_augments_ key][Augments#augments].
 
-Variables defined here can target a _namespace_ and or _bundle_ scope explicitly. When defined from `host_specific.json`, variables default to the ```variables``` _bundle_ in the ```data``` _namespace_ (`$(data:variables.MyVariable)`).
+Variables defined here can target a _namespace_ and or _bundle_ scope explicitly. When defined from `host_specific.json`, variables default to the `variables` _bundle_ in the `data` _namespace_ (`$(data:variables.MyVariable)`).
 
 For example:
 
@@ -218,12 +218,12 @@ bundle agent my_bundle
 
 **Notes:**
 
-* ```vars``` and ```variables``` keys are allowed concurrently in the same file.
-* If ```vars``` and ```variables``` keys in the same augments file define the same variable, the definition provided by the **```variables``` key wins**.
+- `vars` and `variables` keys are allowed concurrently in the same file.
+- If `vars` and `variables` keys in the same augments file define the same variable, the definition provided by the **`variables` key wins**.
 
 **History:**
 
-* Added in 3.18.0
+- Added in 3.18.0
 
 ### vars
 
@@ -283,12 +283,12 @@ Variables of other types than string can be defined too, like in this example
 
 **Notes:**
 
-* ```vars``` and ```variables``` keys are allowed concurrently in the same file.
-* If ```vars``` and ```variables``` keys in the same augments file define the same variable, the definition provided by the **```variables``` key wins**.
+- `vars` and `variables` keys are allowed concurrently in the same file.
+- If `vars` and `variables` keys in the same augments file define the same variable, the definition provided by the **`variables` key wins**.
 
 **History:**
 
-* 3.18.0 gained ability to specify the _namespace_ and _bundle_ the variable should be defined in.
+- 3.18.0 gained ability to specify the _namespace_ and _bundle_ the variable should be defined in.
 
 ### classes
 
@@ -299,8 +299,8 @@ Any class defined via augments will be evaluated and installed as
 _array_ and _dict_ formats.
 
 For an array each element of the array is tested against currently defined
-classes as an [anchored regular expression][anchored] unless the string ends with ```::``` indicating it should be interpreted as a
-[*class expression*][Classes and decisions].
+classes as an [anchored regular expression][anchored] unless the string ends with `::` indicating it should be interpreted as a
+[_class expression_][Classes and decisions].
 
 **For example:**
 
@@ -386,46 +386,46 @@ for use. Thus:
 
 results in
 
-* `augments_class_from_rgex_my_always` being always defined.
+- `augments_class_from_rgex_my_always` being always defined.
 
-* `augments_class_from_regex_my_other_apache` will be defined if the classes
+- `augments_class_from_regex_my_other_apache` will be defined if the classes
   `server3` or `server4` are defined, or if any class starting with `debian` is
   defined.
 
-* `augments_class_from_regex_my_other_always` will be defined because
+- `augments_class_from_regex_my_other_always` will be defined because
   `augments_class_from_regex_my_always` is listed first and always defined.
 
-* `augments_class_from_regex_when_MISSING_not_defined` will be defined if the
+- `augments_class_from_regex_when_MISSING_not_defined` will be defined if the
   class `MISSING` is not defined.
 
-* `augments_class_from_single_class_as_regex` will be defined because the class
+- `augments_class_from_single_class_as_regex` will be defined because the class
   `cfengine` is always defined.
 
-* `augments_class_from_single_class_as_expression` will be defined because
+- `augments_class_from_single_class_as_expression` will be defined because
   `cfengine` is defined when interpreted as a class expression.
 
-* `augments_class_from_classexpression_and` will be defined because the class
+- `augments_class_from_classexpression_and` will be defined because the class
   `cfengine` and the class `cfengine_3` are defined and the class expression
   `cfengine.cfengine_3::` evaluates to true.
 
-* `augments_class_from_classexpression_not` will be defined because the class
+- `augments_class_from_classexpression_not` will be defined because the class
   expression `!MISSING::` evaluates to false since the class `MISSING` is not
   defined.
 
-* `augments_class_from_classexpression_or` will be defined because the class
+- `augments_class_from_classexpression_or` will be defined because the class
   expression `cfengine|cfengine_3::` evaluates to true since at least one of
   `cfengine` or `cfengine_3` will always be defined by cfengine 3 agents.
 
-* `augments_class_from_classexpression_complex` will be defined because the
+- `augments_class_from_classexpression_complex` will be defined because the
   class expression `(cfengine|cfengine_3).!MISSING::` evaluates to true since at
   least one of `cfengine` or `cfengine_3` will always be defined by cfengine 3
   agents and `MISSING` is not defined.
 
-* `myclass_defined_by_augments_in_def_json_3_18_0_v0` will be defined because
+- `myclass_defined_by_augments_in_def_json_3_18_0_v0` will be defined because
   the class expression `cfengine|linux::` will always be true since there is
   always a `cfengine` class defined.
 
-* `myclass_defined_by_augments_in_def_json_3_18_0_v1` will be defined because the expression `cfengine.**` will match at least one defined class, `cfengine`
+- `myclass_defined_by_augments_in_def_json_3_18_0_v1` will be defined because the expression `cfengine.**` will match at least one defined class, `cfengine`
 
 You can see the list of classes thus defined through `def.json` in the output
 of `cf-promises --show-classes` (see [Components][]). They
@@ -443,14 +443,14 @@ myclass_defined_by_augments_in_def_json_3_18_0_v1            optional,tags,sourc
 
 **See also:**
 
-* Functions that use regular expressions with classes: `classesmatching()`,
+- Functions that use regular expressions with classes: `classesmatching()`,
   `classmatch()`, `countclassesmatching()`
 
 **History:**
 
-* 3.18.0
-  * Support for dict structure for classes and support for metadata (`comment`, `tags`) added.
-  * Classes are defined as _soft_ classes instead of _hard_ classes.
+- 3.18.0
+  - Support for dict structure for classes and support for metadata (`comment`, `tags`) added.
+  - Classes are defined as _soft_ classes instead of _hard_ classes.
 
 ### augments
 
@@ -499,16 +499,16 @@ R: def.centos_6_var == Defined ONLY in centos_6.json
 
 ## History
 
-* 3.18.0
-  * Introduced `variables` key with support for metadata (`comment`, `tags`) and targeting the _namespace_ and _bundle_.
-  * Introduced ability for `vars` to target _namespace_ and _bundle_ `variables` key with support for metadata (`comment`, `tags`).
-  * Introduced metadata (`comment`, `tags`) support for `classes` key.
-  * Introduced `def_preferred.json` and  `--ignore-preferred-augments` to disable it.
-  * Classes defined from augments are now _soft_ classes and not _hard_ classes.
-  * Introduced parsing of `$(sys.workdir)/data/host_specific.json`
-* 3.12.2, 3.14.0 introduced class expression interpretation (`::` suffix) to classes key
-* 3.12.0 introduced the `augments` key
-* 3.7.3 back port `def.json` parsing in core agent and load `def.json` if present next to policy entry
-* 3.8.2 removed core support for `inputs` key, load `def.json` if present next to policy entry
-* 3.8.1 `def.json` parsing moved from policy to core agent for resolution of classes and variables to be able to affect control bodies
-* 3.7.0 introduced augments concept into the Masterfiles Policy Framework
+- 3.18.0
+  - Introduced `variables` key with support for metadata (`comment`, `tags`) and targeting the _namespace_ and _bundle_.
+  - Introduced ability for `vars` to target _namespace_ and _bundle_ `variables` key with support for metadata (`comment`, `tags`).
+  - Introduced metadata (`comment`, `tags`) support for `classes` key.
+  - Introduced `def_preferred.json` and `--ignore-preferred-augments` to disable it.
+  - Classes defined from augments are now _soft_ classes and not _hard_ classes.
+  - Introduced parsing of `$(sys.workdir)/data/host_specific.json`
+- 3.12.2, 3.14.0 introduced class expression interpretation (`::` suffix) to classes key
+- 3.12.0 introduced the `augments` key
+- 3.7.3 back port `def.json` parsing in core agent and load `def.json` if present next to policy entry
+- 3.8.2 removed core support for `inputs` key, load `def.json` if present next to policy entry
+- 3.8.1 `def.json` parsing moved from policy to core agent for resolution of classes and variables to be able to affect control bodies
+- 3.7.0 introduced augments concept into the Masterfiles Policy Framework

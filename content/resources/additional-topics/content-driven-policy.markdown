@@ -78,15 +78,15 @@ that is needed.
 CFEngine provides Content-Driven Policies to cover mainstream management tasks
 like the following.
 
-* File change/difference management
-* Service management
-* Database management
-* Application / script management
+- File change/difference management
+- Service management
+- Database management
+- Application / script management
 
 ## How do content-driven policies work in detail?
 
-The text files in masterfiles/cdp_inputs/(e.g. 'registry_list.txt') are parsed
-into CFEngine lists by corresponding cdp_*files in masterfiles/(e.g.
+The text files in masterfiles/cdp*inputs/(e.g. 'registry_list.txt') are parsed
+into CFEngine lists by corresponding cdp*\*files in masterfiles/(e.g.
 'cdp_registry.cf'). It is the latter set of files that actually implement the
 policies in the text files.
 

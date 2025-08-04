@@ -15,29 +15,29 @@ for example, `accumulated(0,0,0,48,0,0)` or `accumulated(0,0,0,0,90,0)`.
 
 **Arguments:**
 
-* `years`, in the range `0,1000`
+- `years`, in the range `0,1000`
 
 Years of run time. For convenience in conversion, a year of runtime is
 always 365 days (one year equals 31,536,000 seconds).
 
-* `month`, in the range `0,1000`
+- `month`, in the range `0,1000`
 
 Months of run time. For convenience in conversion, a month of runtime is
 always equal to 30 days of runtime (one month equals 2,592,000 seconds).
 
-* `days`, in the range `0,1000`
+- `days`, in the range `0,1000`
 
 Days of runtime (one day equals 86,400 seconds)
 
-* `hours`, in the range `0,1000`
+- `hours`, in the range `0,1000`
 
 Hours of runtime
 
-* `minutes`, in the range `0,1000`
+- `minutes`, in the range `0,1000`
 
 Minutes of runtime 0-59
 
-* `seconds`, in the range `0,40000`
+- `seconds`, in the range `0,40000`
 
 Seconds of runtime
 

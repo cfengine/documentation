@@ -11,7 +11,7 @@ title: string
 
 If `arg` is a container reference it will be serialized to a string.
 The reference must be indicated with `@(some_container)`.
-Strings are *not* interpreted as references.
+Strings are _not_ interpreted as references.
 
 **Example:**
 
@@ -21,4 +21,4 @@ Strings are *not* interpreted as references.
 
 **History:**
 
-* Introduced in 3.18.0
+- Introduced in 3.18.0

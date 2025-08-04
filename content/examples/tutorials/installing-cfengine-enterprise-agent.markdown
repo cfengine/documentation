@@ -14,30 +14,31 @@ This is the full version of CFEngine Enterprise host, but the number of hosts is
 
 CFEngine Hosts (clients)
 
-* 32/64-bit machines with a recent version of Linux
-* 20 mb of memory
-* 20mb of disk space
-* Port 5308 needs to be open
+- 32/64-bit machines with a recent version of Linux
+- 20 mb of memory
+- 20mb of disk space
+- Port 5308 needs to be open
 
 The installation script below has been tested on Red Hat, CentOS, SUSE, Debian and Ubuntu.
 
 1. Download and Install CFEngine Host
-Run the following command to download and automatically install CFEngine on a 32-bit or 64-bit Linux machine (the script will detect correct flavor and architecture).
+   Run the following command to download and automatically install CFEngine on a 32-bit or 64-bit Linux machine (the script will detect correct flavor and architecture).
 
 ```command
 wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh agent
 ```
 
 2. Bootstrap the Host
-Once installed, the host needs to bootstrap to your CFEngine policy server.
+   Once installed, the host needs to bootstrap to your CFEngine policy server.
 
 ```command
 sudo /var/cfengine/bin/cf-agent --bootstrap <Name or IP address of policy server>
 ```
+
 If you encounter any issue, please make sure the host is on the same domain/subnet as CFEngine policy server will only allow connection from these trusted sources as default configuration.
 
 3. Congratulation you are done!
-The CFEngine host is installed and ready. That was easy, wasn't it?
+   The CFEngine host is installed and ready. That was easy, wasn't it?
 
 If you would like to see what version of CFEngine you are running, type:
 

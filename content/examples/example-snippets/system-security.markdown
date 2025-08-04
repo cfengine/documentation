@@ -4,9 +4,9 @@ title: System security examples
 sorting: 10
 ---
 
-* [Distribute root passwords][System security examples#Distribute root passwords]
-* [Distribute ssh keys][System security examples#Distribute ssh keys]
-* Distribute ssh keys
+- [Distribute root passwords][System security examples#Distribute root passwords]
+- [Distribute ssh keys][System security examples#Distribute ssh keys]
+- Distribute ssh keys
 
 ## Distribute root passwords
 

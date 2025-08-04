@@ -13,9 +13,9 @@ _Validation_ should check that the correct attributes are used, and any other co
 _Evaluation_ happens after successful _Validation_, and actually performs actions / makes changes to the system.
 When implementing a promise type for CFEngine, there are 3 outcomes you need to understand:
 
-* `Result.KEPT` - The module detected that no changes are necessary, the actual state of the system is already consistent with the desired state
-* `Result.REPAIRED` - The module detected that changes have to be made, and successfully completed all of them
-* `Result.NOT_KEPT` - The module failed to make the necessary changes
+- `Result.KEPT` - The module detected that no changes are necessary, the actual state of the system is already consistent with the desired state
+- `Result.REPAIRED` - The module detected that changes have to be made, and successfully completed all of them
+- `Result.NOT_KEPT` - The module failed to make the necessary changes
 
 ## The template
 
@@ -72,9 +72,9 @@ https://github.com/cfengine/promise-type-template
 
 Take a look at these important files:
 
-* `git_example.py` - The module code itself. This is where you will work the most, changing what the promise type does, implementing functionality, fixing bugs, etc.
-* `cfbs.json` - Metadata about the module(s). Most importantly, the `provides` key has the information needed for `cfbs add`, and subsequently `cfbs build` to work.
-* `enable.cf` - The snippet of policy that needs to be included to enable your promise type.
+- `git_example.py` - The module code itself. This is where you will work the most, changing what the promise type does, implementing functionality, fixing bugs, etc.
+- `cfbs.json` - Metadata about the module(s). Most importantly, the `provides` key has the information needed for `cfbs add`, and subsequently `cfbs build` to work.
+- `enable.cf` - The snippet of policy that needs to be included to enable your promise type.
 
 Start by editing `cfbs.json`, at least changing the `repo` and `by` URLs.
 
@@ -133,8 +133,8 @@ https://github.com/cfengine/build-index/blob/master/CONTRIBUTING.md
 
 There are several places to look for more information or inspiration when writing modules:
 
-* [The real git promise type code](https://github.com/cfengine/modules/tree/c3b7329b240cf7ad062a0a64ee8b607af2cb912a/promise-types/git/)
-* [HTTP promise type module](https://github.com/cfengine/modules/tree/c861789d4b376147d904fccd76963a92e65eaa97/promise-types/http/)
-* [CFEngine custom promise type specification](./reference-promise-types-custom.html)
-* [Blog post: How to implement CFEngine Custom Promise types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
-* [Blog post: How to implement CFEngine Custom Promise types in Bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
+- [The real git promise type code](https://github.com/cfengine/modules/tree/c3b7329b240cf7ad062a0a64ee8b607af2cb912a/promise-types/git/)
+- [HTTP promise type module](https://github.com/cfengine/modules/tree/c861789d4b376147d904fccd76963a92e65eaa97/promise-types/http/)
+- [CFEngine custom promise type specification](./reference-promise-types-custom.html)
+- [Blog post: How to implement CFEngine Custom Promise types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
+- [Blog post: How to implement CFEngine Custom Promise types in Bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)

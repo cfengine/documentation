@@ -34,4 +34,4 @@ Output:
 
 **History:**
 
-* Introduced in CFEngine 3.7.0
+- Introduced in CFEngine 3.7.0

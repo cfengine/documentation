@@ -4,13 +4,13 @@ title: Overview
 sorting: 10
 ---
 
-CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves with a policy server (see [Installation][Installation]), will each be running a set of CFEngine component applications that manage and interpret textual files called policies. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or *bundles*, of what are known in the CFEngine world as [Promises][Promises]. *Promises* are at the heart of Promise Theory, which is in turn what CFEngine is all about.
+CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves with a policy server (see [Installation][Installation]), will each be running a set of CFEngine component applications that manage and interpret textual files called policies. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or _bundles_, of what are known in the CFEngine world as [Promises][Promises]. _Promises_ are at the heart of Promise Theory, which is in turn what CFEngine is all about.
 
 ## Policy language and compliance
 
 For many users, CFEngine is simply a configuration tool - i.e. software for deploying and patching systems according to a policy. Policy is described using promises. Every statement in CFEngine 3 is a promise to be kept at some time or location. More than this, however, CFEngine is not like other automation tools that "roll out" an image of some software once and hope for the best. Every promise that you make in CFEngine is continuously verified and maintained. It is not a one-off operation, but a self-repairing process should anything deviate from the policy.
 
-CFEngine ensures that the actual state of a system is in compliance with the predefined model of desired state for the system. If it is not in compliance CFEngine will bring it into compliance.  This is known as *convergence*.
+CFEngine ensures that the actual state of a system is in compliance with the predefined model of desired state for the system. If it is not in compliance CFEngine will bring it into compliance. This is known as _convergence_.
 
 That model is represented by one or more policies that have been written using the declarative CFEngine policy language. The policy language has been designed with a vocabulary that is intuitive, yet at the same time can still support the design of highly complex IT systems.
 
@@ -45,16 +45,16 @@ All CFEngine software components exist in `/var/cfengine/bin`.
 
 ![Components overview](components-overview.png)
 
-* [Daemons][Overview#Daemons]
-* [Other Applications][Overview#Other component applications]
+- [Daemons][Overview#Daemons]
+- [Other Applications][Overview#Other component applications]
 
 ### Daemons
 
 All machines, whether they are policy servers or hosts, will have these three important daemons running at all times:
 
-* [/var/cfengine/bin/cf-execd][Overview#cf-execd]
-* [/var/cfengine/bin/cf-serverd][Overview#cf-serverd]
-* [/var/cfengine/bin/cf-monitord][Overview#cf-monitord]
+- [/var/cfengine/bin/cf-execd][Overview#cf-execd]
+- [/var/cfengine/bin/cf-serverd][Overview#cf-serverd]
+- [/var/cfengine/bin/cf-monitord][Overview#cf-monitord]
 
 #### cf-execd
 
@@ -95,10 +95,10 @@ See also: [cf-monitord][cf-monitord] reference documentation.
 
 ### Other component applications
 
-* [/var/cfengine/bin/cf-agent][Overview#cf-agent]
-* [/var/cfengine/bin/cf-key][Overview#cf-key]
-* [/var/cfengine/bin/cf-promises][Overview#cf-promises]
-* [/var/cfengine/bin/cf-runagent][Overview#cf-runagent]
+- [/var/cfengine/bin/cf-agent][Overview#cf-agent]
+- [/var/cfengine/bin/cf-key][Overview#cf-key]
+- [/var/cfengine/bin/cf-promises][Overview#cf-promises]
+- [/var/cfengine/bin/cf-runagent][Overview#cf-runagent]
 
 #### cf-agent
 

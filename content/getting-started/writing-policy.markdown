@@ -124,9 +124,9 @@ Since it's the same every time, we won't mention it again and again.
 The promise type `vars` is used for storing data in a variable internally.
 This has several benefits:
 
-* The data, such as a string, gets a short and descriptive name
-* It can be defined in one place, and edited there without having to update multiple places
-* Gives you more flexibiltiy for manipulating the data, with functions and intermediate variables
+- The data, such as a string, gets a short and descriptive name
+- It can be defined in one place, and edited there without having to update multiple places
+- Gives you more flexibiltiy for manipulating the data, with functions and intermediate variables
 
 Here is a simple example:
 
@@ -210,6 +210,6 @@ Next, we will look at implementing modules, such as the git promise type we used
 
 If you would like to learn more about policy writing, these are some good resources to look at:
 
-* [Language concepts][Language concepts]
-* [Promise types][Promise types]
-* [Functions][Functions]
+- [Language concepts][Language concepts]
+- [Promise types][Promise types]
+- [Functions][Functions]

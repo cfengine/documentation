@@ -27,7 +27,7 @@ Step 1. Inside the shell prompt, simply type "vi". This will allow the user to i
 
 Step 2. type "i" then press the "Enter" key. This takes the user to the insert mode, and allow typing in text or copying and pasting.
 
-Step 3. Type some text-for example, the  obligatory "Hello World" (which will be the subject of a later tutorial).
+Step 3. Type some text-for example, the obligatory "Hello World" (which will be the subject of a later tutorial).
 Now press "Enter" to go to the next line and type "My name is Gary, and it's nice to meet you."
 
 The output will look like this:

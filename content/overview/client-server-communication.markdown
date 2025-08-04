@@ -12,11 +12,11 @@ containing `access` promises.
 
 The server can allow the network to access files or to execute CFEngine:
 
-* The only contact [`cf-agent`][cf-agent] makes to the server is via remote copy
+- The only contact [`cf-agent`][cf-agent] makes to the server is via remote copy
   requests. It does not and cannot grant any access to a system from the
   network. It is only able to request access to files on the remote server.
 
-* [`cf-runagent`][cf-runagent] can be used to run `cf-agent` on a number
+- [`cf-runagent`][cf-runagent] can be used to run `cf-agent` on a number
   of remote hosts.
 
 Unlike other approaches to automation, CFEngine does not rely on SSH key
@@ -36,22 +36,22 @@ fault tolerant and opportunistic.
 
 In order to connect to the CFEngine server you need:
 
-* **A public-private key pair**. It is automatically generated during package
+- **A public-private key pair**. It is automatically generated during package
   installation or during bootstrap. To manually create a key pair,
   run `cf-key`.
-* **Network connectivity** with an IPv4 or IPv6 address.
-* **Permission to connect** to the server.
+- **Network connectivity** with an IPv4 or IPv6 address.
+- **Permission to connect** to the server.
   The [`server control`][cf-serverd#Control promises] body must grant access
   to your computer and public key by name or IP address, by listing it in
   the appropriate access lists (see below).
-* **Mutual key trust**.
+- **Mutual key trust**.
   Your public key must be trusted by the server, and you must trust the server's
   public key. The first part is established by having the
   [`trustkeysfrom`][cf-serverd#trustkeysfrom] setting open on the server for the first
   connection of the agent. It should be closed later to avoid trusting new agents.
   The second part is established by bootstrapping the agent to the hub, or by
   executing a `copy_from` files promise using `trustkey=>"true"`.
-* **Permission to access something**.
+- **Permission to access something**.
   Your host name or IP address must be mentioned in an `access` promise
   inside a server bundle, made by the file that you are trying to access.
 
@@ -315,7 +315,7 @@ There is a simple checklist for curing this problem:
 3. See the verbose log of the server for the exact error message, since the
    client always gets the "Unspecified server refusal" reply from the server.
    To run the server in verbose, kill cf-serverd on the policy hub and run:
-    $ cf-serverd -v
+   $ cf-serverd -v
    and then manually run `cf-agent` on the client.
 4. In the unlikely case that you still get no indication of the denial, try
    increasing the agent run verbosity. `cf-agent -I` for info-level messages

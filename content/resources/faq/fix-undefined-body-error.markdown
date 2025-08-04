@@ -7,6 +7,7 @@ sorting: 90
 When running policy you see `error: Undefined body`. For example:
 
 `cf-promises -f ./large-files.cf`:
+
 ```
 ./large-files.cf:14:0: error: Undefined body tidy with type delete
 ./large-files.cf:16:0: error: Undefined body recurse with type depth_search

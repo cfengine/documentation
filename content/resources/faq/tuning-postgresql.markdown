@@ -9,29 +9,29 @@ Depending on various factors your `postgresql.conf` may benefit from further tun
 
 Parameters commonly tuned:
 
-* `max_connections`
+- `max_connections`
 
-* `shared_buffers`
+- `shared_buffers`
 
-* `effective_cache_size`
+- `effective_cache_size`
 
-* `maintenance_work_mem`
+- `maintenance_work_mem`
 
-* `checkpoint_completion_target`
+- `checkpoint_completion_target`
 
-* `wal_buffers`
+- `wal_buffers`
 
-* `default_statistics_target`
+- `default_statistics_target`
 
-* `random_page_cost`
+- `random_page_cost`
 
-* `effective_io_concurrency`
+- `effective_io_concurrency`
 
-* `work_mem`
+- `work_mem`
 
-* `min_wal_size`
+- `min_wal_size`
 
-* `max_wal_size`
+- `max_wal_size`
 
 Tuning tools like [pgtune](https://github.com/kofemann/pgtune) and [pgconfigurator](https://www.cybertec-postgresql.com/en/products/pgconfigurator/) can be helpful in adjusting your settings.
 

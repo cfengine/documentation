@@ -61,13 +61,13 @@ a way that you can start several CFEngine components simultaneously without
 them interfering with each other. You can control two things about each kind
 of action in CFEngine:
 
-* `ifelapsed` - The minimum time (in minutes) which should have passed since the
+- `ifelapsed` - The minimum time (in minutes) which should have passed since the
   last time that promise was verified. It will not be executed again until this
   amount of time has elapsed. If the value is `0` the promise has no lock and
   will always be executed when in context. Additionally, a value of `0` disables
   function caching. Default time is `1` minute.
 
-* `expireafter` - The maximum amount (in minutes) of time `cf-agent` should wait
+- `expireafter` - The maximum amount (in minutes) of time `cf-agent` should wait
   for an old instantiation to finish before killing it and starting again. You
   can think about [`expireafter`][cf-agent#expireafter] as a timeout to use when
   a promise verification may involve an operation that could wait indefinitely.
@@ -124,10 +124,10 @@ bundle agent __main__
 
 **Note:**
 
-* Promise locks are ignored when CFEngine is run with the `--no-lock` or `-K`
+- Promise locks are ignored when CFEngine is run with the `--no-lock` or `-K`
   option, e.g. a common **manual** execution of the agent, `cf-agent -KI` would
   not respect promises that are locked from a recent execution.
-* Locks are purged based on database utilization and age in order to maintain
+- Locks are purged based on database utilization and age in order to maintain
   the integrity and health of the underlying lock database.
 
 **See also:** [cf_lock.lmdb][CFEngine directory structure#state/cf_lock.lmdb]

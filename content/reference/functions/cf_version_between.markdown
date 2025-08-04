@@ -21,4 +21,4 @@ Output:
 
 **History:**
 
-* Introduced in 3.16.0
+- Introduced in 3.16.0

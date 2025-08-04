@@ -8,7 +8,7 @@ title: High availability
 Although CFEngine is a distributed system, with decisions made by autonomous agents running on each
 node, the hub can be viewed as a single point of failure. In order to be able to play both roles
 that hub is responsible for - policy serving and report collection - High availability feature was
-introduced in 3.6.2.  Essentially it is based on well known and broadly used cluster resource
+introduced in 3.6.2. Essentially it is based on well known and broadly used cluster resource
 management tools - [corosync](https://corosync.github.io/corosync/) and
 [pacemaker](https://clusterlabs.org/pacemaker/) as well as PostgreSQL streaming replication feature.
 
@@ -80,7 +80,7 @@ knowledge and overview of the whole setup.
 There are also new Mission Portal inventory variables indicating the IP address of the active hub
 instance and status of the High availability installation on each of the hubs. Looking at inventory
 reports is especially helpful to diagnose any problems when High availability is reported as
-*degraded*.
+_degraded_.
 
 <img src="ha_inventory.png" alt="HAInventory" width="700px">
 

@@ -10,7 +10,7 @@ JSON is a well-known data language. It even has a specification (See http://json
 
 YAML is another well-known data language. It has a longer, much more complex specification (See http://yaml.org).
 
-CFEngine has core support for JSON and YAML.  Let's see what it can do.
+CFEngine has core support for JSON and YAML. Let's see what it can do.
 
 ## Problem statement
 
@@ -29,25 +29,25 @@ syntax.
 
 A new data type, the data container, was introduced in 3.6.
 
-It's simply called `data`.  The documentation with some examples is at https://cfengine.com/docs/master/reference-promise-types-vars.html#data-container-variables
+It's simply called `data`. The documentation with some examples is at https://cfengine.com/docs/master/reference-promise-types-vars.html#data-container-variables
 
 ## Reading JSON
 
 There are many ways to read JSON data; here are a few:
 
-* `readjson()`: read from a JSON file, e.g. `"mydata" data => readjson("/my/file", 100k);`
-* `parsejson()`: read from a JSON string, e.g. `"mydata" data => parsejson('{ "x": "y" }');`
-* `data_readstringarray()` and `data_readstringarrayidx()`: read text data from a file, split it on a delimiter, and make them into structured data.
-* `mergedata()`: merge data containers, slists, and classic CFEngine arrays, e.g. `"mydata" data => mergedata(container1, slist2, array3);`
+- `readjson()`: read from a JSON file, e.g. `"mydata" data => readjson("/my/file", 100k);`
+- `parsejson()`: read from a JSON string, e.g. `"mydata" data => parsejson('{ "x": "y" }');`
+- `data_readstringarray()` and `data_readstringarrayidx()`: read text data from a file, split it on a delimiter, and make them into structured data.
+- `mergedata()`: merge data containers, slists, and classic CFEngine arrays, e.g. `"mydata" data => mergedata(container1, slist2, array3);`
 
-`mergedata` in particular is very powerful.  It can convert a slist or a classic CFEngine array to a data container easily: `"mydata" data => mergedata(myslist);`
+`mergedata` in particular is very powerful. It can convert a slist or a classic CFEngine array to a data container easily: `"mydata" data => mergedata(myslist);`
 
 ## Reading YAML
 
 There are two ways to read YAML data:
 
-* `readyaml()`: read from a YAML file, e.g. `"mydata" data => readyaml("/my/file.yaml", 100k);`
-* `parseyaml()`: read from a YAML string, e.g. `"mydata" data => parseyaml('- arrayentry1');`
+- `readyaml()`: read from a YAML file, e.g. `"mydata" data => readyaml("/my/file.yaml", 100k);`
+- `parseyaml()`: read from a YAML string, e.g. `"mydata" data => parseyaml('- arrayentry1');`
 
 Since these functions return data containers, everything about
 JSON-sourced data structures applies to YAML-sourced data structures
@@ -57,10 +57,10 @@ as well.
 
 To access JSON data, you can use:
 
-* the `nth()` function to access an array element, e.g. `"myx" string => nth(container1, 0);`
-* the `nth` function to access a map element, e.g. `"myx" string => nth(container1, "x");`
-* the `a[b]` notation, e.g. `"myx" string => "$(container1[x])";`.  You can nest, e.g. `a[b][c][0][d]`.  This only works if the element is something that can be expanded in a string.  So a number or a string work.  A list of strings or numbers works.  A key-value map under `x` won't work.
-* the `getindices()` and `getvalues()` functions, just like classic CFEngine arrays
+- the `nth()` function to access an array element, e.g. `"myx" string => nth(container1, 0);`
+- the `nth` function to access a map element, e.g. `"myx" string => nth(container1, "x");`
+- the `a[b]` notation, e.g. `"myx" string => "$(container1[x])";`. You can nest, e.g. `a[b][c][0][d]`. This only works if the element is something that can be expanded in a string. So a number or a string work. A list of strings or numbers works. A key-value map under `x` won't work.
+- the `getindices()` and `getvalues()` functions, just like classic CFEngine arrays
 
 ## A full example
 
@@ -68,10 +68,10 @@ This example can be saved and run. It will load a key-value map where
 the keys are class names and the values are hostname regular
 expressions or class names.
 
-* if your host name is `c` or `b` or the classes `c` or `b` are defined, the `dev` class will be defined
-* if your host name is `flea` or the class `flea` is defined, the `prod` class will be defined
-* if your host name is `a` or the class `a` is defined, the `qa` class will be defined
-* if your host name is `linux` or the class `linux` is defined, the `private` class will be defined
+- if your host name is `c` or `b` or the classes `c` or `b` are defined, the `dev` class will be defined
+- if your host name is `flea` or the class `flea` is defined, the `prod` class will be defined
+- if your host name is `a` or the class `a` is defined, the `qa` class will be defined
+- if your host name is `linux` or the class `linux` is defined, the `private` class will be defined
 
 Easy, right?
 
@@ -139,4 +139,4 @@ and read the same container from a JSON file.
 
 ## Summary
 
-Using JSON and YAML from CFEngine is easy and does not change how you use CFEngine.  Try it out and see for yourself!
+Using JSON and YAML from CFEngine is easy and does not change how you use CFEngine. Try it out and see for yourself!

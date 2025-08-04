@@ -26,15 +26,14 @@ classes:
 
 {{< CFEngine_include_example(class-automatic-canonificiation.cf) >}}
 
-- The term ```class``` and ```context``` are sometimes used interchangeably.
+- The term `class` and `context` are sometimes used interchangeably.
 - The following attributes to make a complete promise.
-
-  * and
-  * expression
-  * dist
-  * or
-  * not
-  * xor
+  - and
+  - expression
+  - dist
+  - or
+  - not
+  - xor
 
 If you omit all of them, the class is always defined (as if you said `expression
 => "any"`).
@@ -68,7 +67,7 @@ bundle agent example
 }
 ```
 
-***
+---
 
 ## Attributes
 
@@ -144,22 +143,22 @@ change during execution.
 
 Expressions can be:
 
-* class names, with or without a namespace
+- class names, with or without a namespace
 
-* the literals `true` (always defined) and `false` (never defined) that allow JSON booleans to be used inside expressions
+- the literals `true` (always defined) and `false` (never defined) that allow JSON booleans to be used inside expressions
 
-* the logical *and* operation, expressed as `a&b` or `a.b`, which is true if both `a` and `b` are true
+- the logical _and_ operation, expressed as `a&b` or `a.b`, which is true if both `a` and `b` are true
 
-* the logical *or* operation, expressed as `a|b`, which is true if either `a` or `b` are true
+- the logical _or_ operation, expressed as `a|b`, which is true if either `a` or `b` are true
 
-* the logical *not* operation, expressed as `!a`, which is true if `a` is not
+- the logical _not_ operation, expressed as `!a`, which is true if `a` is not
   true. Note again here that `a` could **become** true during the execution. So
   if you have `"myclass" expression => "!x"` and `x` starts undefined but is
   defined later, you could have both `x` **and** `myclass` defined!
 
-* parenthesis `(whatever)` which operate as expected to prioritize expression evaluation
+- parenthesis `(whatever)` which operate as expected to prioritize expression evaluation
 
-* the return value of a function that returns a class, such as `fileexists()` `and()` `userexists()` etc.
+- the return value of a function that returns a class, such as `fileexists()` `and()` `userexists()` etc.
 
 **Type:** `class`
 

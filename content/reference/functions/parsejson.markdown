@@ -33,11 +33,11 @@ vars:
 
 **Notes:**
 
-* This functions does not parse _primitives_.
+- This functions does not parse _primitives_.
 
 **History:**
 
-* Introduced in CFEngine 3.6.0
-* The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+- Introduced in CFEngine 3.6.0
+- The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
 **See also:** `readjson()`, `parseyaml()`, `readyaml()`, `mergedata()`, `Inline YAML and JSON data`, [about collecting functions][Functions#collecting functions], and `data` documentation.

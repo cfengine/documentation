@@ -16,7 +16,7 @@ variables.
 When one or more tags are given, the variables with tags matching any
 of the given [anchored][anchored] regular expressions are returned (logical OR semantics).
 For example, if one variable has tag `inventory`, a second variable has tag `time_based`
-but not `inventory`, *both* are returned by variablesmatching_as_data(".*", "inventory", "time_based").
+but not `inventory`, _both_ are returned by variablesmatching_as_data(".\*", "inventory", "time_based").
 If you want logical AND semantics instead, you can make two calls to the function
 with one tag in each call and use the `intersection` function on the return values.
 

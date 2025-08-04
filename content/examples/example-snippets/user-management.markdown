@@ -8,7 +8,7 @@ sorting: 15
 
 There are many approaches to managing users. You can edit system files
 like `/etc/passwd` directly, you can use commands on some systems like
-`useradd`.  However the easiest, and preferred way is to use
+`useradd`. However the easiest, and preferred way is to use
 CFEngine's native `users` type promise.
 
 ### Ensuring a local user has a specific password
@@ -26,6 +26,7 @@ root@debian-jessie:/core/examples# cf-agent -KIf ./local_user_password.cf
 root@debian-jessie:/core/examples# grep root /etc/shadow
 root:$6$1nRTeNoE$DpBSe.eDsuZaME0EydXBEf.DAwuzpSoIJhkhiIAPgRqVKlmI55EONfvjZorkxNQvK2VFfMm9txx93r2bma/4h/:16791:0:99999:7:::
 ```
+
 ### Ensuring local users are present
 
 This example shows ensuring that the local users `jack` and `jill` are

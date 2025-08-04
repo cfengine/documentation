@@ -43,7 +43,7 @@ string needs to be a bare package name, you cannot use a file name for this.
 <a name=noteable-differences-from-package_modules></a>
 **Noteable differences from `package_method` based implementation:**
 
-* The promiser must be the fully qualified path to a file *or* a *package name*.
+- The promiser must be the fully qualified path to a file _or_ a _package name_.
   `package_modules` do not have the concept of a
   flexible [naming convention][packages (deprecated)#package_name_convention].
 
@@ -148,7 +148,7 @@ packages:
 
 **Description:** Whether the package should be present or absent on the system.
 
-**Default value:** ```present```
+**Default value:** `present`
 
 **Type:** `string`
 
@@ -341,9 +341,10 @@ body package_module yum_all_repos
 **History:** Introduced in 3.13.0, 3.12.2
 
 ## Package modules out-of-the-box
+
 ### yum
 
-Manage packages using ```yum```. This is the [default package module][lib/packages.cf#package_module_knowledge] for Red Hat, CentOS and Amazon Linux.
+Manage packages using `yum`. This is the [default package module][lib/packages.cf#package_module_knowledge] for Red Hat, CentOS and Amazon Linux.
 
 **Examples:**
 
@@ -394,11 +395,11 @@ bundle agent example
 
 **Notes:**
 
-* Supports file path and repository sourced packages.
+- Supports file path and repository sourced packages.
 
-* Requires Python version 2 or 3 to be installed on the host.
+- Requires Python version 2 or 3 to be installed on the host.
 
-* If ```policy => "present"``` *and* ```version``` is set this package module will downgrade the promised package if necessary.
+- If `policy => "present"` _and_ `version` is set this package module will downgrade the promised package if necessary.
 
   ```console
   [root ~]# yum --show-duplicates list screen
@@ -437,12 +438,12 @@ bundle agent example
 
 **History:**
 
-* Added in CFEngine 3.7.0
-* `enablerepo` and `disablerepo` option support added in 3.7.8, 3.10.4, 3.12.0
+- Added in CFEngine 3.7.0
+- `enablerepo` and `disablerepo` option support added in 3.7.8, 3.10.4, 3.12.0
 
 ### apt_get
 
-Manage packages using ```apt-get```.
+Manage packages using `apt-get`.
 
 **Example:**
 
@@ -468,14 +469,14 @@ packages:
 
 **Notes:**
 
-* Requires Python version 2 to be installed on the host.
-* Supports [```options```][packages#options] attribute. Each space separate
+- Requires Python version 2 to be installed on the host.
+- Supports [`options`][packages#options] attribute. Each space separate
   option must be added as a separate list element. The options are passed
   directly through to the package manager.
 
 **History:**
 
-* Added in CFEngine 3.7.0
+- Added in CFEngine 3.7.0
 
 ### freebsd_ports
 
@@ -484,7 +485,7 @@ FreeBSD [Ports](https://www.freebsd.org/doc/handbook/ports-using.html).
 
 **History:**
 
-* Added in CFEngine 3.9.0
+- Added in CFEngine 3.9.0
 
 ### nimclient
 
@@ -503,13 +504,13 @@ packages:
 
 **Notes:**
 
-* [```options```][packages#options] attribute support to specify
-  ```lpp_source```. Please note it is **REQUIRED** to specify an
-  ```lpp_source``` when using this package module.
+- [`options`][packages#options] attribute support to specify
+  `lpp_source`. Please note it is **REQUIRED** to specify an
+  `lpp_source` when using this package module.
 
 **History:**
 
-* Added in CFEngine 3.9.0
+- Added in CFEngine 3.9.0
 
 ### pkg
 
@@ -539,15 +540,15 @@ packages:
 
 **Notes:**
 
-* Supports [```options```][packages#options] attribute.
-  * `option` :: Allows specification of additional options ( `-o` )
-  * `repository` :: Allows specification of repository ( `-r` )
+- Supports [`options`][packages#options] attribute.
+  - `option` :: Allows specification of additional options ( `-o` )
+  - `repository` :: Allows specification of repository ( `-r` )
 
 **History:**
 
-* Added in CFEngine 3.9.0
-* Added `repo` alias for repository option in CFEngine 3.20.0, 3.18.2
-* Added `option` option in CFEngine 3.20.0, 3.18.2
+- Added in CFEngine 3.9.0
+- Added `repo` alias for repository option in CFEngine 3.20.0, 3.18.2
+- Added `option` option in CFEngine 3.20.0, 3.18.2
 
 ### pkgsrc
 
@@ -555,7 +556,7 @@ Manage packages using [pkgsrc](https://www.pkgsrc.org).
 
 **History:**
 
-* Added in CFEngine 3.9.0
+- Added in CFEngine 3.9.0
 
 ### slackpkg
 
@@ -573,7 +574,7 @@ packages:
 
 **History:**
 
-* Added in CFEngine 3.12.0
+- Added in CFEngine 3.12.0
 
 ### msiexec
 
@@ -605,7 +606,7 @@ packages:
 
 **History:**
 
-* Added in CFEngine 3.12.2 and 3.14.0
+- Added in CFEngine 3.12.2 and 3.14.0
 
 ### snap
 
@@ -643,9 +644,9 @@ bundle agent main
 
 **History:**
 
-* Added in CFEngine 3.15.0, 3.12.3, 3.10.7
+- Added in CFEngine 3.15.0, 3.12.3, 3.10.7
 
 **Notes:**
 
-- version `latest` is *not* supported when promising an absence
-- `list-updates` is *not* implemented, snaps are automatically updated by default
+- version `latest` is _not_ supported when promising an absence
+- `list-updates` is _not_ implemented, snaps are automatically updated by default

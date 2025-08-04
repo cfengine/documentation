@@ -43,6 +43,7 @@ You must have the following:
 - a [git refspec](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec)
 
 Then one of these combinations:
+
 - a git username and password in the case of an ssh-based or git-based URL (no private key required)
 - a passphrase-less [private key](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) (no username or password required)
 - a [github token](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec) which is really just a username and password but for github this signifies read-only access (no private key required)
