@@ -23,6 +23,7 @@
 import os
 import json
 
+
 def run(config):
     config["syntax_path"] = config["project_directory"] + "/_generated/syntax_map.json"
     config["syntax_map"] = json.load(open(config["syntax_path"], "r"))
@@ -30,6 +31,7 @@ def run(config):
     markdown_files = config["markdown_files"]
     for file in markdown_files:
         processMetaData(file, config)
+
 
 # parse meta data lines, remove existing header for later reconstruction
 def parseHeader(lines):

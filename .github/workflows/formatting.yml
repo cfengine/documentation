@@ -19,12 +19,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install CFEngine CLI
+      - name: Install tools
         run: |
-          pipx install cfengine
+          pipx install cfengine black
       - name: Run formatting command to (hopefully not) make changes
         run: |
           cfengine dev docs-format
+          black .
       - name: Check output.log file for warnings
         run: |
           ! grep WARNING output.log
