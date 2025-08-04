@@ -3,11 +3,11 @@ layout: default
 title: type
 ---
 
-[%CFEngine_function_prototype(var, detail)%]
+{{< CFEngine_function_prototype(var, detail) >}}
 
 **Description:** Returns a variables type description.
 
-[%CFEngine_function_attributes(var, detail)%]
+{{< CFEngine_function_attributes(var, detail) >}}
 
 This function returns a variables type description as a string. The function
 expects a variable identifier as the first argument `var`. An optional second
@@ -57,11 +57,11 @@ with different combinations of the arguments `type` and `detail`.
 
 **Example:**
 
-[%CFEngine_include_snippet(type.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(type.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(type.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(type.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:**
 

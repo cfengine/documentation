@@ -3,7 +3,7 @@ layout: default
 title: filestat
 ---
 
-[%CFEngine_function_prototype(filename, field)%]
+{{< CFEngine_function_prototype(filename, field) >}}
 
 **Description:** Returns the requested file field `field` for the file object
 `filename`.
@@ -45,15 +45,15 @@ On SELinux, the contexts are the same as what you see with `ls -Z`.
 
 Prepare:
 
-[%CFEngine_include_snippet(filestat.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(filestat.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(filestat.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(filestat.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(filestat.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(filestat.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:**
 

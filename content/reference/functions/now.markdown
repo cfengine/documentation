@@ -3,7 +3,7 @@ layout: default
 title: now
 ---
 
-[%CFEngine_function_prototype()%]
+{{< CFEngine_function_prototype() >}}
 
 **Description:** Return the time at which this agent run started
 in system representation.
@@ -75,7 +75,7 @@ body file_select pdf_modified_within_last_year
 `processes` type promises using ```process_select``` can use this function to
 select processes based on relative execution time.
 
-[%CFEngine_include_example(processes_define_class_based_on_process_runtime.cf)%]
+{{< CFEngine_include_example(processes_define_class_based_on_process_runtime.cf) >}}
 
 **See also:**
 

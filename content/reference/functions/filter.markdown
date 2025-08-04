@@ -3,7 +3,7 @@ layout: default
 title: filter
 ---
 
-[%CFEngine_function_prototype(filter, list, is_regex, invert, max_return)%]
+{{< CFEngine_function_prototype(filter, list, is_regex, invert, max_return) >}}
 
 **Description:** Transforms a list or data container into a list subset thereof.
 
@@ -30,11 +30,11 @@ Invert filter.
 
 **Example:**
 
-[%CFEngine_include_snippet(filter.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(filter.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(filter.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(filter.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 

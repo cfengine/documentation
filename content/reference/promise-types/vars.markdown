@@ -227,11 +227,11 @@ variable references in your inline JSON or YAML data.
 For example:
 #### Inline Yaml example
 
-[%CFEngine_include_example(inline-yaml.cf)%]
+{{< CFEngine_include_example(inline-yaml.cf) >}}
 
 #### Inline Json example
 
-[%CFEngine_include_example(inline-json.cf)%]
+{{< CFEngine_include_example(inline-json.cf) >}}
 
 ### Passing data containers to bundles
 
@@ -255,11 +255,11 @@ maps, as per the JSON standard, is not guaranteed. Similarly, calling
 0, 1, 2, ... but will not give the keys of a map in any particular
 order.  Here's an example of iterating in list order:
 
-[%CFEngine_include_snippet(container_iteration.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(container_iteration.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(container_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(container_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 Often you need to iterate through the keys of a container, and the
 value is a key-value property map for that key. The example here shows
@@ -267,11 +267,11 @@ how you can pass the "animals" container and an "animal" key inside it
 to a bundle, which can then report and use the data from the key-value
 property map.
 
-[%CFEngine_include_snippet(container_key_iteration.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(container_key_iteration.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(container_key_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(container_key_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 ### data
 

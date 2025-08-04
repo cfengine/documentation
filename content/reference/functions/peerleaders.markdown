@@ -3,7 +3,7 @@ layout: default
 title: peerleaders
 ---
 
-[%CFEngine_function_prototype(filename, regex, groupsize)%]
+{{< CFEngine_function_prototype(filename, regex, groupsize) >}}
 
 **Description:** Returns a list of partition peer leaders from a file of host names.
 
@@ -33,7 +33,7 @@ The `comment` field is a multiline regular expression and will strip out
 unwanted patterns from the file being read, leaving unstripped characters to be
 split into fields. Using the empty string (`""`) indicates no comments.
 
-[%CFEngine_function_attributes(filename, regex, groupsize)%]
+{{< CFEngine_function_attributes(filename, regex, groupsize) >}}
 
 `groupsize` must be between 2 and 64 to avoid nonsensical promises.
 
@@ -41,12 +41,12 @@ split into fields. Using the empty string (`""`) indicates no comments.
 
 Prepare:
 
-[%CFEngine_include_snippet(peerleaders.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(peerleaders.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(peerleaders.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(peerleaders.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(peerleaders.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(peerleaders.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}

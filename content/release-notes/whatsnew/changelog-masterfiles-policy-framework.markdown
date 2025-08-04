@@ -8,6 +8,6 @@ sorting: 20
 
 <pre>
 
-[%CFEngine_include_markdown(masterfiles/CHANGELOG.md)%]
+{{< CFEngine_include_markdown(masterfiles/CHANGELOG.md) >}}
 
 </pre>

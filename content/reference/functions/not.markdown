@@ -3,12 +3,12 @@ layout: default
 title: not
 ---
 
-[%CFEngine_function_prototype(expression)%]
+{{< CFEngine_function_prototype(expression) >}}
 
 **Description:** Returns `any` if all arguments evaluate to false and `!any` if
 any argument evaluates to true.
 
-[%CFEngine_function_attributes(expression)%]
+{{< CFEngine_function_attributes(expression) >}}
 
 **Argument Descriptions:**
 

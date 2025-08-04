@@ -37,7 +37,7 @@ will be verified and built BEFORE other `edit_xml` promises within same
 promise body. Therefore, the file will not be empty during the execution
 of such promises.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 ### select_xpath
 
@@ -46,4 +46,4 @@ of such promises.
 Edits to the XML document take place within the selected node. This
 attribute is not used when inserting XML content into an empty file.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}

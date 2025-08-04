@@ -8,4 +8,4 @@ various settings related to `cf-runagent` can be tuned.
 
 **See also:** [Run agent on multiple hosts sharing a class][Manual Execution#Remote agent run for many hosts sharing a class]
 
-[%CFEngine_library_include(controls/cf_runagent)%]
+{{< CFEngine_library_include(controls/cf_runagent) >}}

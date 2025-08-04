@@ -3,22 +3,22 @@ layout: default
 title: version_compare
 ---
 
-[%CFEngine_function_prototype(version1, comparison, version2)%]
+{{< CFEngine_function_prototype(version1, comparison, version2) >}}
 
 **Description:** Returns `true` if the specified version comparison expression is true.
 
-[%CFEngine_function_attributes(version1, comparison, version2)%]
+{{< CFEngine_function_attributes(version1, comparison, version2) >}}
 
 The `version_compare()` function can be used to compare 2 arbitrary semver version numbers.
 This can be useful if you have 2 versions of a package and you want to know if they are the same version, if one is newer than the other etc.
 
 **Example:**
 
-[%CFEngine_include_snippet(version_compare.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(version_compare.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(version_compare.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(version_compare.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:**
 

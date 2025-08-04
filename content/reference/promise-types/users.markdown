@@ -44,7 +44,7 @@ users:
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### description
 
@@ -55,7 +55,7 @@ The exact use of this string depends on the operating system,
 but most systems treat it as the full name of the user and therefore
 display it on graphical login terminals.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -73,7 +73,7 @@ users:
 **Note:** On Windows, no difference exists between primary and
 secondary groups so specifying either one works.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -92,7 +92,7 @@ secondary group membership(s), in addition to his/her primary group.
 **Note:** On Windows, no difference exists between primary and
 secondary groups so specifying either one works.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -117,13 +117,13 @@ pass it in.
 Note that this attribute does not set the home directory in the user
 database. For that, you must use the `home_dir` attribute.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(users_type.cf, ### Users main BEGIN ###, ### Users main END ###)%]
+{{< CFEngine_include_snippet(users_type.cf, ### Users main BEGIN ###, ### Users main END ###) >}}
 
-[%CFEngine_include_snippet(users_type.cf, ### Home Bundle BEGIN ###, ### Home Bundle END ###)%]
+{{< CFEngine_include_snippet(users_type.cf, ### Home Bundle BEGIN ###, ### Home Bundle END ###) >}}
 
 This example uses implicit looping to create the two users, "jack"
 and "john." Each has his respective home directory that is created by
@@ -135,7 +135,7 @@ the `files` promise.
 in the current bundle are inherited by the bundle specified in the
 `home_bundle` attribute.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -175,7 +175,7 @@ Note that this attribute does not create the directory. For that you
 must use the `home_bundle` attribute. This just sets the home
 directory in the user database.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -224,7 +224,7 @@ the password in plain text.
 due to a lack of support from the operating system for setting
 hashed passwords.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -242,7 +242,7 @@ body password user_password
 
 The format of the password data depends on the `format` attribute.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -281,7 +281,7 @@ on Solaris it is not possible to set the account expiration date in this
 way, hence SSH logins may still work there after an account is locked
 and additional steps may be required.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -296,7 +296,7 @@ users:
 **Description:** The `shell` attribute specifies the user's login
 shell.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -314,7 +314,7 @@ Note that if the UID of an existing user is changed, the files owned
 by that user do not automatically change ownership. You must create a
 separate `files` promise for this.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 

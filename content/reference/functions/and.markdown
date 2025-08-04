@@ -3,7 +3,7 @@ layout: default
 title: and
 ---
 
-[%CFEngine_function_prototype(...)%]
+{{< CFEngine_function_prototype(...) >}}
 
 **Description:** Returns `any` if all arguments evaluate to true and `!any` if
 any argument evaluates to false.

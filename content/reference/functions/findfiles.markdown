@@ -3,7 +3,7 @@ layout: default
 title: findfiles
 ---
 
-[%CFEngine_function_prototype(glob1, glob2, ...)%]
+{{< CFEngine_function_prototype(glob1, glob2, ...) >}}
 
 **Description:** Return the list of files that match any of the given glob patterns.
 
@@ -28,11 +28,11 @@ allows you to do dynamic inputs and a dynamic bundle call chain.
 
 **Example:**
 
-[%CFEngine_include_snippet(findfiles.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(findfiles.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(findfiles.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(findfiles.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:**
 

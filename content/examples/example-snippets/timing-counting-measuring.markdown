@@ -8,4 +8,4 @@ sorting: 3
 
 ## Measurements
 
-[%CFEngine_include_snippet(measurements.cf, .* )%]
+{{< CFEngine_include_snippet(measurements.cf, .* ) >}}

@@ -420,7 +420,7 @@ body common control
 
 **Description:** Defines the protocol to use for all outgoing connections.
 
-[%CFEngine_promise_attribute(undefined)%]
+{{< CFEngine_promise_attribute(undefined) >}}
 
 **Note:** `protocol_version` can be specified at the individual promise level
 using the [`body copy_from protocol_version`][files#protocol_version]
@@ -573,7 +573,7 @@ body common control
 
 For a list of possible ciphers, see man page for "openssl ciphers".
 
-[%CFEngine_promise_attribute(undefined)%]
+{{< CFEngine_promise_attribute(undefined) >}}
 
 **Example:**
 
@@ -593,7 +593,7 @@ body common control
 
 **Description:** Minimum tls version to allow for **outgoing** connections from components other than `cf-serverd`.
 
-[%CFEngine_promise_attribute(1.0)%]
+{{< CFEngine_promise_attribute(1.0) >}}
 
 ```cf3
 body common control

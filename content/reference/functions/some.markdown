@@ -3,14 +3,14 @@ layout: default
 title: some
 ---
 
-[%CFEngine_function_prototype(regex, list)%]
+{{< CFEngine_function_prototype(regex, list) >}}
 
 **Description:** Return whether any element of `list` matches the
 [Unanchored][unanchored] regular expression `regex`.
 
 [This function can accept many types of data parameters.][Functions#collecting functions]
 
-[%CFEngine_function_attributes(regex, list)%]
+{{< CFEngine_function_attributes(regex, list) >}}
 
 `some()` will return as soon as any element matches.
 
@@ -21,11 +21,11 @@ possible, that is better than using `length()` or `every()` or
 
 **Example:**
 
-[%CFEngine_include_snippet(some.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(some.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(some.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(some.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 

@@ -3,7 +3,7 @@ layout: default
 title: getacls
 ---
 
-[%CFEngine_function_prototype(path, type)%]
+{{< CFEngine_function_prototype(path, type) >}}
 
 **Description:** Return the Access Control List (ACL) for a given file- or directory path.
 

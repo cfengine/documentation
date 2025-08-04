@@ -3,21 +3,21 @@ layout: default
 title: length
 ---
 
-[%CFEngine_function_prototype(list)%]
+{{< CFEngine_function_prototype(list) >}}
 
 **Description:** Returns the length of `list`.
 
 [This function can accept many types of data parameters.][Functions#collecting functions]
 
-[%CFEngine_function_attributes(list)%]
+{{< CFEngine_function_attributes(list) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(length.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(length.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(length.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(length.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 

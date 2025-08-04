@@ -3,7 +3,7 @@ layout: default
 title: accumulated
 ---
 
-[%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]
+{{< CFEngine_function_prototype(years, months, days, hours, minutes, seconds) >}}
 
 **Description:** Convert an accumulated amount of time into a system representation.
 

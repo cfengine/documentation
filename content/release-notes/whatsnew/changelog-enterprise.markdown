@@ -8,6 +8,6 @@ sorting: 30
 
 <pre>
 
-[%CFEngine_include_markdown(enterprise/ChangeLog.Enterprise)%]
+{{< CFEngine_include_markdown(enterprise/ChangeLog.Enterprise) >}}
 
 </pre>

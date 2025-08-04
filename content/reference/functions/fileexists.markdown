@@ -3,7 +3,7 @@ layout: default
 title: fileexists
 ---
 
-[%CFEngine_function_prototype(filename)%]
+{{< CFEngine_function_prototype(filename) >}}
 
 **Description:** Returns whether the file `filename` can be accessed.
 
@@ -18,14 +18,14 @@ this function to return true.
   link target exists. Alternatively use `test` with `returnszero()`, for example
   `returnszero("/bin/test -f myfile")`.
 
-[%CFEngine_function_attributes(filename)%]
+{{< CFEngine_function_attributes(filename) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(fileexists.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(fileexists.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(fileexists.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(fileexists.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** `filestat()`, `isdir()`, `islink()`, `isplain()`, `returnszero()`

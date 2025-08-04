@@ -28,7 +28,7 @@ it represents. This one is actually built into the standard
 [MPF inventory policy][inventory/any.cf#cfe_autorun_inventory_listening_ports],
 so it's available out of the box in either Community or Enterprise.
 
-[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%]
+{{< CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \}) >}}
 
 In the Enterprise Mission Portal, you can then make a report for
 "Ports listening" across all your machines. For more details, see

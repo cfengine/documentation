@@ -3,7 +3,7 @@ layout: default
 title: classfilterdata
 ---
 
-[%CFEngine_function_prototype(data_container, data_structure, key_or_index)%]
+{{< CFEngine_function_prototype(data_container, data_structure, key_or_index) >}}
 
 **Description:**
 This function filters a data container (`data_container`) based on defined
@@ -22,27 +22,27 @@ If the `data_structure` argument is specified to be:
 - `"auto"`, the interpretation is automatically detected based on the data
   structure.
 
-[%CFEngine_function_attributes(data_container, data_structure, key_or_index)%]
+{{< CFEngine_function_attributes(data_container, data_structure, key_or_index) >}}
 
 **Example (with array of arrays):**
 
 **Policy:**
 
-[%CFEngine_include_snippet(classfilterdata_array_of_arrays.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(classfilterdata_array_of_arrays.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 **Output:**
 
-[%CFEngine_include_snippet(classfilterdata_array_of_arrays.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(classfilterdata_array_of_arrays.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Example (with array of objects):**
 
 **Policy:**
 
-[%CFEngine_include_snippet(classfilterdata_array_of_objects.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(classfilterdata_array_of_objects.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 **Output:**
 
-[%CFEngine_include_snippet(classfilterdata_array_of_objects.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(classfilterdata_array_of_objects.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:**
 

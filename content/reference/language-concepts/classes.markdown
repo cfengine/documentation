@@ -298,7 +298,7 @@ Class guards are the most common way to restrict a promise to a specific context
 
 This example illustrates how a class guard applies (to multiple promises) until a new context is specified.
 
-[%CFEngine_include_example(classes_context_applies_multiple_promises.cf)%]
+{{< CFEngine_include_example(classes_context_applies_multiple_promises.cf) >}}
 
 Another Example:
 
@@ -462,7 +462,7 @@ are not automatically canonified when they are checked.
 This example shows how classes are automatically canonified when they are
 defined and that you must explicitly canonify when verifying classes.
 
-[%CFEngine_include_example(class-automatic-canonificiation.cf)%]
+{{< CFEngine_include_example(class-automatic-canonificiation.cf) >}}
 
 ## Operators and precedence
 

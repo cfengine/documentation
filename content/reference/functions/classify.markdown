@@ -3,14 +3,14 @@ layout: default
 title: classify
 ---
 
-[%CFEngine_function_prototype(text)%]
+{{< CFEngine_function_prototype(text) >}}
 
 **Description:** Returns whether the canonicalization of `text` is a currently
 set class.
 
 This is useful for transforming variables into classes.
 
-[%CFEngine_function_attributes(text)%]
+{{< CFEngine_function_attributes(text) >}}
 
 **Example:**
 

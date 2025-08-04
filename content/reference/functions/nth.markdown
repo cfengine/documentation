@@ -3,7 +3,7 @@ layout: default
 title: nth
 ---
 
-[%CFEngine_function_prototype(list_or_container, position_or_key)%]
+{{< CFEngine_function_prototype(list_or_container, position_or_key) >}}
 
 **Description:** Returns the element of `list_or_container` at zero-based `position_or_key`.
 
@@ -23,15 +23,15 @@ Since 3.15, Nth supports negative indices when indexing lists, starting from
 the other end of the list. With a `position_or_key` of `-1`, you will get `4`
 from the list `[1,2,3,4]`.
 
-[%CFEngine_function_attributes(list_or_container, position_or_key)%]
+{{< CFEngine_function_attributes(list_or_container, position_or_key) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(nth.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(nth.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(nth.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(nth.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:**
 The [collecting function][Functions#collecting functions] behavior was added in 3.9.

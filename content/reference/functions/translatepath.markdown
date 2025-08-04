@@ -3,7 +3,7 @@ layout: default
 title: translatepath
 ---
 
-[%CFEngine_function_prototype(path)%]
+{{< CFEngine_function_prototype(path) >}}
 
 **Description:** Translate separators in `path` from Unix style to the host's
 native style and returns the result.
@@ -13,15 +13,15 @@ these to the native format for path separators on the host. For example
 translatepath("a/b/c") would yield "a/b/c" on Unix platforms, but
 "a\\b\\c" on Windows.
 
-[%CFEngine_function_attributes(path)%]
+{{< CFEngine_function_attributes(path) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(translatepath.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(translatepath.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(translatepath.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(translatepath.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:** Be careful when using this function in combination with regular
 expressions, since backslash is also used as escape character in

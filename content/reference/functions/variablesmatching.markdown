@@ -3,7 +3,7 @@ layout: default
 title: variablesmatching
 ---
 
-[%CFEngine_function_prototype(name, tag1, tag2, ...)%]
+{{< CFEngine_function_prototype(name, tag1, tag2, ...) >}}
 
 **Description:** Return the list of variables matching `name` and any tags
 given. Both `name` and tags are regular expressions.
@@ -25,15 +25,15 @@ This function behaves exactly like `variablesmatching_as_data()` but returns
 just the list of all the variables. If you want their contents as well, see that
 function.
 
-[%CFEngine_function_attributes(regex, tag1, tag2, ...)%]
+{{< CFEngine_function_attributes(regex, tag1, tag2, ...) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(variablesmatching.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(variablesmatching.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(variablesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(variablesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** [classesmatching()][classesmatching], [bundlesmatching()][bundlesmatching], [variablesmatching_as_data()][variablesmatching_as_data]
 

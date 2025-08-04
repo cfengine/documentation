@@ -3,7 +3,7 @@ layout: default
 title: readdata
 ---
 
-[%CFEngine_function_prototype(filename, filetype)%]
+{{< CFEngine_function_prototype(filename, filetype) >}}
 
 **Description:** Parses CSV, JSON, or YAML data from file `filename`
 and returns the result as a `data` variable.
@@ -17,21 +17,21 @@ this function behaves like `readcsv()`, `readjson()`, `readyaml()` or `readenvfi
 These functions have an optional parameter `maxbytes` (default: `inf`).
 `maxbytes` can not be set using `readdata()`, if needed use one of the mentioned functions instead.
 
-[%CFEngine_function_attributes(filename, filetype)%]
+{{< CFEngine_function_attributes(filename, filetype) >}}
 
 **Example:**
 
 Prepare:
 
-[%CFEngine_include_snippet(readdata.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(readdata.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(readdata.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(readdata.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(readdata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(readdata.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** [`data_expand()`][data_expand], `readcsv()`, `readyaml()`, `readjson()`, `readenvfile()`, `validdata()`, `data` documentation.
 

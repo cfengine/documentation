@@ -24,7 +24,7 @@ matching the bundle names.
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-runagent.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-runagent.help, [\s]*--[a-z], ^$) >}}
 
 **See also:** [bundle resource_type in server access promises][access#resource_type], [cfruncommand in body server control][cf-serverd#cfruncommand]
 

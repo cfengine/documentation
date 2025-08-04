@@ -3,7 +3,7 @@ layout: default
 title: getfields
 ---
 
-[%CFEngine_function_prototype(regex, filename, split, array_lval)%]
+{{< CFEngine_function_prototype(regex, filename, split, array_lval) >}}
 
 **Description:** Fill `array_lval` with fields in the lines from file `filename` that match `regex`, split on `split`.
 
@@ -34,11 +34,11 @@ The base name of the array that returns the values.
 
 **Example:**
 
-[%CFEngine_include_snippet(getfields.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(getfields.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(getfields.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(getfields.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:**
 This function matches lines (using a regular expression) in the named

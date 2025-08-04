@@ -13,7 +13,7 @@ It is in some ways an extremely light-weight version of `cf-agent` - policy eval
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-net.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-net.help, [\s]*--[a-z], ^$) >}}
 
 <!-- ** <- Terminate syntax highlighting of weird regex -->
 

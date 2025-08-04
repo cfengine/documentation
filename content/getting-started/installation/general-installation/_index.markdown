@@ -4,7 +4,7 @@ title: General installation
 sorting: 20
 ---
 
-[%CFEngine_include_markdown(install-bootstrap-configure-summary.include.markdown)%]
+{{< CFEngine_include_markdown(install-bootstrap-configure-summary.include.markdown) >}}
 
 ## Before installation
 

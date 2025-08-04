@@ -3,7 +3,7 @@ layout: default
 title: data_readstringarrayidx
 ---
 
-[%CFEngine_function_prototype(filename, comment, split, maxentries, maxbytes)%]
+{{< CFEngine_function_prototype(filename, comment, split, maxentries, maxbytes) >}}
 
 **Description:** Returns a data container (array) with up to
 `maxentries` fields from the first `maxbytes` bytes of file `filename`.
@@ -15,21 +15,21 @@ non-identifiers at first field (e.g. duplicates or names with spaces), unlike
 
 The `comment` field will strip out unwanted patterns from the file being read, leaving unstripped characters to be split into fields. Using the empty string (`""`) indicates no comments.
 
-[%CFEngine_function_attributes(filename, comment, split, maxentries, maxbytes)%]
+{{< CFEngine_function_attributes(filename, comment, split, maxentries, maxbytes) >}}
 
 **Example:**
 
 Prepare:
 
-[%CFEngine_include_snippet(data_readstringarray.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(data_readstringarray.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(data_readstringarray.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(data_readstringarray.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(data_readstringarray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(data_readstringarray.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** `data_readstringarray()`, `data`
 

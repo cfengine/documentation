@@ -3,7 +3,7 @@ layout: default
 title: regline
 ---
 
-[%CFEngine_function_prototype(regex, filename)%]
+{{< CFEngine_function_prototype(regex, filename) >}}
 
 **Description:** Returns whether the [anchored][anchored] regular expression
 `regex` matches a line in file `filename`.
@@ -11,15 +11,15 @@ title: regline
 Note that `regex` must match an entire line of the file in order to give a
 true result.
 
-[%CFEngine_function_attributes(regex, filename)%]
+{{< CFEngine_function_attributes(regex, filename) >}}
 
 **Examples:**
 
 This example shows a way to determine if IPV4 forwarding is enabled or not.
 
-[%CFEngine_include_snippet(regline.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(regline.cf, #\+begin_src cfengine3, .*end_src) >}}
 
-[%CFEngine_include_snippet(regline.cf, #\+begin_src\s+random_example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(regline.cf, #\+begin_src\s+random_example_output\s*, .*end_src) >}}
 
 For `edit_line` applications it may be useful to set a class for detecting the
 presence of a string that does not exactly match one being inserted. For

@@ -36,14 +36,14 @@ lines matched.
 
 Prepare:
 
-[%CFEngine_include_snippet(readintarray.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(readintarray.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(readintarray.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(readintarray.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(readintarray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(readintarray.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** [`readstringarray()`][readstringarray], [`readrealarray()`][readrealarray], [`parseintarray()`][parseintarray], [`parserealarray()`][parserealarray], [`parsestringarray()`][parsestringarray]

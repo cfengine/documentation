@@ -3,7 +3,7 @@ layout: default
 title: findprocesses
 ---
 
-[%CFEngine_function_prototype(regex)%]
+{{< CFEngine_function_prototype(regex) >}}
 
 **Description:** Return the list of processes that match the given regular
 expression `regex`.
@@ -13,7 +13,7 @@ table. Use `.*sherlock.*` to find all the processes that match
 `sherlock`. Use `.*\bsherlock\b.*` to exclude partial matches like
 `sherlock123` (`\b` matches a word boundary).
 
-[%CFEngine_function_attributes(regex)%]
+{{< CFEngine_function_attributes(regex) >}}
 
 The returned data container is a list of key-value maps. Each one is
 guaranteed to have the key `pid` with the process ID. The key `line`

@@ -3,7 +3,7 @@ layout: default
 title: getuserinfo
 ---
 
-[%CFEngine_function_prototype(optional_uidorname)%]
+{{< CFEngine_function_prototype(optional_uidorname) >}}
 
 **Description:** Return information about the current user or any other, looked up by user ID (UID) or user name.
 
@@ -16,11 +16,11 @@ LDAP, for instance).
 
 On platforms that don't support these POSIX functions, the function simply fails.
 
-[%CFEngine_function_attributes(optional_uidorname)%]
+{{< CFEngine_function_attributes(optional_uidorname) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(getuserinfo.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(getuserinfo.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 **Typical Results:**
 

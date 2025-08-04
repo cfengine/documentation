@@ -3,7 +3,7 @@ layout: default
 title: mergedata
 ---
 
-[%CFEngine_function_prototype(one, two, etc)%]
+{{< CFEngine_function_prototype(one, two, etc) >}}
 
 **Description:** Returns the merger of any named data containers or lists. Can
 also wrap and unwrap data containers.
@@ -30,23 +30,23 @@ traditional list and array data types in CFEngine.
 - true and false are reserved bare values
 - In the event of key collision the *last* key merged wins
 
-[%CFEngine_function_attributes()%]
+{{< CFEngine_function_attributes() >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(mergedata.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(mergedata.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 **Output:**
 
-[%CFEngine_include_snippet(mergedata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(mergedata.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(mergedata-last-key-wins.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(mergedata-last-key-wins.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 **Output:**
 
-[%CFEngine_include_snippet(mergedata-last-key-wins.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(mergedata-last-key-wins.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:**
 

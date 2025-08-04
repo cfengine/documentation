@@ -62,7 +62,7 @@ possible to use full class expressions in mustache templates. Instead, use class
 expressions inside CFEngine policy to define a singular class which can be used
 to conditionally render a block.
 
-[%CFEngine_include_example(mustache_classes.cf)%]
+{{< CFEngine_include_example(mustache_classes.cf) >}}
 
 ## How do I iterate over a list?
 
@@ -79,7 +79,7 @@ of the CFEngine system. That's where `vars.mon.listening_tcp4_ports` came from.
 
 In CFEngine, the `@` symbol expands to the current key  when iterating over a dict.
 
-[%CFEngine_include_example(mustache_extension_expand_key.cf)%]
+{{< CFEngine_include_example(mustache_extension_expand_key.cf) >}}
 
 ## Can you use nested classes?
 

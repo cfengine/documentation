@@ -12,7 +12,7 @@ sorting: 1
 
 To get started with CFEngine, you can imagine the following template for entering examples. This part of the code is common to all the examples.
 
-[%CFEngine_include_snippet(basic_example.cf, .* )%]
+{{< CFEngine_include_snippet(basic_example.cf, .* ) >}}
 
 ## The general pattern
 
@@ -36,8 +36,8 @@ what_type:
 
 ### Hello world
 
-[%CFEngine_include_snippet(hello_world.cf, .* )%]
+{{< CFEngine_include_snippet(hello_world.cf, .* ) >}}
 
 ### Array example
 
-[%CFEngine_include_snippet(array_example.cf, .* )%]
+{{< CFEngine_include_snippet(array_example.cf, .* ) >}}

@@ -486,16 +486,16 @@ Examples from cfengine/core can be rendered using the `CFEngine_include_example`
   `[\%CFEngine_include_example(class-automatic-canonificiation.cf)\%]`
 
   {% raw %}
-  [%CFEngine_include_example(class-automatic-canonificiation.cf)%]
+  {{< CFEngine_include_example(class-automatic-canonificiation.cf) >}}
   {% endraw %}
 
 ### Include snippet of text from a file
 
 Sometimes it's nice to include a snippet from another file. For example, we dynamically generate the `--help` output for each component on each doc build and that output is included on each component page.
 
-`[%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]`
+`{{< CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$) >}}`
 
-[%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$) >}}
 
 ---
 
@@ -504,7 +504,7 @@ Sometimes it's nice to include a snippet from another file. For example, we dyna
 Sometimes it's nice to include an external file
 
 <pre>
-[%CFEngine_include_markdown(masterfiles/CHANGELOG.md)%]
+{{< CFEngine_include_markdown(masterfiles/CHANGELOG.md) >}}
 </pre>
 
 #### Including chunks of policy from the MPF
@@ -512,10 +512,10 @@ Sometimes it's nice to include an external file
 Here I am including a bundle named `cfe_autorun_inventory_listening_ports`. It may be a common or an agent bundle (in case the bundle ever changes types).
 
 <pre>
-[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%]
+{{< CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \}) >}}
 </pre>
 
-[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%]
+{{< CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \}) >}}
 
 ### Comments inside documentation
 
@@ -555,21 +555,21 @@ If you are referring to something within UI / screenshots / buttons etc use bold
 
 ### symlink example
 
-[%CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##)%]
+{{< CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##) >}}
 
 ### Self documenting policy
 
 #### For the stdlib:
 
-[%CFEngine_library_include(lib/commands)%]
+{{< CFEngine_library_include(lib/commands) >}}
 
 #### For update.cf?
 
-[%CFEngine_library_include(update)%]
+{{< CFEngine_library_include(update) >}}
 
 #### for promises.cf?
 
-[%CFEngine_library_include(promises)%]
+{{< CFEngine_library_include(promises) >}}
 
 ## Variables
 

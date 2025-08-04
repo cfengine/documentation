@@ -3,7 +3,7 @@ layout: default
 title: peers
 ---
 
-[%CFEngine_function_prototype(filename, regex, groupsize)%]
+{{< CFEngine_function_prototype(filename, regex, groupsize) >}}
 
 **Description:** Returns the current host's partition peers (excluding it).
 
@@ -33,7 +33,7 @@ The current host (unqualified or fully qualified) should belong to
 this file if it is expected to interact with the others. The function
 returns an empty list otherwise.
 
-[%CFEngine_function_attributes(filename, regex, groupsize)%]
+{{< CFEngine_function_attributes(filename, regex, groupsize) >}}
 
 `groupsize` must be between 2 and 64 to avoid nonsensical promises.
 
@@ -41,12 +41,12 @@ returns an empty list otherwise.
 
 Prepare:
 
-[%CFEngine_include_snippet(peers.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(peers.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(peers.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(peers.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(peers.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(peers.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}

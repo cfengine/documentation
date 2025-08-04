@@ -3,7 +3,7 @@ layout: default
 title: eval
 ---
 
-[%CFEngine_function_prototype(expression, mode, options)%]
+{{< CFEngine_function_prototype(expression, mode, options) >}}
 
 **Description:** Returns `expression` evaluated according to `mode`
 and `options`. Currently only the `math` and `class` modes with
@@ -73,11 +73,11 @@ The following functions can be used, with parentheses:
 - `abs`: absolute value
 - `step`: 0 if the argument is negative, 1 otherwise
 
-[%CFEngine_function_attributes(expression, mode, options)%]
+{{< CFEngine_function_attributes(expression, mode, options) >}}
 
 **Example:**
 
-[%CFEngine_include_example(eval.cf)%]
+{{< CFEngine_include_example(eval.cf) >}}
 
 **History:**
 
