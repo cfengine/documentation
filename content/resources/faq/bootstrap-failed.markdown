@@ -23,7 +23,7 @@ To troubleshoot these types of errors review `cf-serverd` summary of access prom
 
 ### `cf-serverd` summary of access promises
 
-cf-serverd provides a summary of access promises in *verbose* logs. Use this to see if `cf-serverd` is allowing access to the client.
+cf-serverd provides a summary of access promises in _verbose_ logs. Use this to see if `cf-serverd` is allowing access to the client.
 
 Run cf-serverd with verbose logging and inspect the summary of access promises:
 
@@ -118,9 +118,9 @@ verbose:  === END summary of access promises ===
 
 **Notes:**
 
-* If the summary of access promises looks correct, it may be that `cf-serverd` has not reloaded with a new access rule.
+- If the summary of access promises looks correct, it may be that `cf-serverd` has not reloaded with a new access rule.
 
-    Try stopping `cf-serverd` and starting it in the foreground with verbose logging (`cf-serverd --no-fork --log-level verbose`) and look for logs related to the client that was failing.
+  Try stopping `cf-serverd` and starting it in the foreground with verbose logging (`cf-serverd --no-fork --log-level verbose`) and look for logs related to the client that was failing.
 
 ### `allowconnects` in `body server control`
 
@@ -128,11 +128,11 @@ In order for a host to communicate it must be within an IP range that is allowed
 
 `cf-serverd` logs errors when a host not in allow connects tries to communicate.
 
-* `Remote host '<ip>' not in allowconnects, denying connection`
+- `Remote host '<ip>' not in allowconnects, denying connection`
 
 **Notes:**
 
-* `def.acl` in the Masterfiles Policy Framework is included in this list by default.
+- `def.acl` in the Masterfiles Policy Framework is included in this list by default.
 
 See also: [`def.acl`][Masterfiles Policy Framework#acl], [`def.trustkeysfrom`][Masterfiles Policy Framework#trustkeysfrom]
 
@@ -142,9 +142,9 @@ This defines networks from which a host will automatically trust hosts. If you d
 
 `cf-serverd` logs verbose and notice messages relating to un-trusted clients trying to connect:
 
-* `notice: 192.168.56.4>    TRUST FAILED, peer presented an untrusted key, dropping connection!`
-* `verbose: 192.168.56.4>    Did not find new key format '/var/cfengine/ppkeys/root-SHA=85f8a23d6738599e03951e6930e661bcd9bb3ae12f32486c9795cc9baa7d5b4e.pub'`
-* `verbose: 192.168.56.4>    Trying old style '/var/cfengine/ppkeys/root-192.168.56.4.pub'`
-* `verbose: 192.168.56.4>    Received key 'SHA=85f8a23d6738599e03951e6930e661bcd9bb3ae12f32486c9795cc9baa7d5b4e' not found in ppkeys`
+- `notice: 192.168.56.4>    TRUST FAILED, peer presented an untrusted key, dropping connection!`
+- `verbose: 192.168.56.4>    Did not find new key format '/var/cfengine/ppkeys/root-SHA=85f8a23d6738599e03951e6930e661bcd9bb3ae12f32486c9795cc9baa7d5b4e.pub'`
+- `verbose: 192.168.56.4>    Trying old style '/var/cfengine/ppkeys/root-192.168.56.4.pub'`
+- `verbose: 192.168.56.4>    Received key 'SHA=85f8a23d6738599e03951e6930e661bcd9bb3ae12f32486c9795cc9baa7d5b4e' not found in ppkeys`
 
 See also: [`def.acl`][Masterfiles Policy Framework#acl], [`def.trustkeysfrom`][Masterfiles Policy Framework#trustkeysfrom]

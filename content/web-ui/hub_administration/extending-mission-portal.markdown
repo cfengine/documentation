@@ -42,10 +42,10 @@ of Mission Portal.
 
 ```html {file="file_name.html"}
 <div class="contentWrapper help">
-    <div class="pageTitle">
-        <h1>PAGE TITLE</h1>
-    </div>
+  <div class="pageTitle">
+    <h1>PAGE TITLE</h1>
+  </div>
 
-     <!-- CONTENT --->
+  <!-- CONTENT --->
 </div>
 ```

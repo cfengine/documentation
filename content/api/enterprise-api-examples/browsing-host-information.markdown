@@ -40,7 +40,7 @@ gathered from `cf-monitord`) is not part of the SQL reports data model.
 
 ## Example: Looking up hosts by hostname
 
-Contexts, also known as classes, are powerful.  You can use them to
+Contexts, also known as classes, are powerful. You can use them to
 categorize hosts according to a rich set of tags. For example, each
 host is automatically tagged with a canonicalized version of its
 hostname and IP-address. So we could lookup the host with hostname

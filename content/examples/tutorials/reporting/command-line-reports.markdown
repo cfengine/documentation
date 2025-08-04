@@ -71,6 +71,7 @@ reports:
      report_to_file => "/tmp/test_log";
 }
 ```
+
 We can apply this idea to make more useful custom reports. In this example,
 the agent tests for certain software package and creates a simple HTML file of
 existing software:
@@ -130,15 +131,14 @@ the following output:
 
 ```html {file="report.html"}
 <html>
-Name of this host is: atlas<br>
-Type of this host is: linux<br>
+  Name of this host is: atlas<br />
+  Type of this host is: linux<br />
 
-Host has software gpg<br>
+  Host has software gpg<br />
 
-Host has software zip<br>
+  Host has software zip<br />
 
-Host has software rsync<br>
-
+  Host has software rsync<br />
 </html>
 ```
 

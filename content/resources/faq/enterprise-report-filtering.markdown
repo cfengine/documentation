@@ -36,6 +36,6 @@ The above policy can produce inventory that looks like this:
 
 ![inventoried list items](inventoried-list-items.png)
 
-Adding a filter where "My Inventory" *matches* or *contains* ```common``` AND ```one```:
+Adding a filter where "My Inventory" _matches_ or _contains_ `common` AND `one`:
 
 ![inventoried list items](filter-inventoried-list-items.png)

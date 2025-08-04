@@ -15,23 +15,23 @@ You can see a list of stored host-specific configurations
 
 **Parameters:**
 
-* **fromEpoch** *(integer)*
+- **fromEpoch** _(integer)_
   Returns configurations with epoch value greater than set in the filter.
   Epoch is the sequence number of the latest CMDB change. In every API list request,
   `cmdb_epoch` will be present in the meta section, which contains the maximum
   epoch value among selected items. Optional parameter.
-* **fromTime** *(timestamp)*
+- **fromTime** _(timestamp)_
   Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS` or `YYYY-mm-dd`. Optional parameter.
-* **toTime** *(timestamp)*
+- **toTime** _(timestamp)_
   Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS` or `YYYY-mm-dd`. Optional parameter.
-* **skip** *(integer)*
+- **skip** _(integer)_
   Number of results to skip for the processed
   query. The Mission Portal uses this for pagination. Optional parameter.
-* **limit**  *(integer)*
+- **limit** _(integer)_
   Limit the number of results in the query. Optional parameter.
-* **hostContextInclude** *(array)*
+- **hostContextInclude** _(array)_
   Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
-* **hostContextExclude** *(array)*
+- **hostContextExclude** _(array)_
   Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one of the specified contexts set will be excluded from the results. Optional parameter.
 
 **Example request (curl):**
@@ -84,13 +84,13 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **hostkey** *(string)*
+- **hostkey** _(string)_
   Unique host identifier.
 
-* **type** *(string)*
+- **type** _(string)_
   Configuration type. Allowed value: `variables`, `classes`
 
-* **name** *(string)*
+- **name** _(string)_
   Configuration name. Classes or variables name.
 
 **Example request (curl):**
@@ -127,7 +127,7 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **hostkey** *(string)*
+- **hostkey** _(string)_
   Unique host identifier.
 
 **Example request (curl):**
@@ -172,24 +172,24 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **hostkey** *(string)*
+- **hostkey** _(string)_
   Unique host identifier.
 
-* **type** *(string)*
+- **type** _(string)_
   Configuration type. Allowed value: `variables`, `classes`
 
-* **name** *(string)*
+- **name** _(string)_
   Configuration name. Classes or variables name.
 
 **Request body parameters:**
 
-* **value** *(string|array)*
+- **value** _(string|array)_
   Variable value, can be array or text. Classes do not support values.
 
-* **comment** *(string)*
+- **comment** _(string)_
   Variables or classes description. Optional parameter.
 
-* **tags** *(array)*
+- **tags** _(array)_
   Variables or classes tags. Optional parameter.
 
 **Example request (curl):**
@@ -220,9 +220,9 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **hostkey** *(string)*
+- **hostkey** _(string)_
   Unique host identifier.
-* **classes** *(JSON object)*
+- **classes** _(JSON object)_
   The format is a JSON object where the key is class name and value is another JSON object
   with optionals `comment` and `tags` property.
   Example:
@@ -239,7 +239,7 @@ HTTP 200 Ok
   }
   ```
 
-* **variables** *(JSON object)*
+- **variables** _(JSON object)_
   The format is a JSON object where the key is variable name and value is another JSON object
   with a required `value` property and optionals `comment` and `tags`.
   Example:
@@ -290,6 +290,7 @@ curl -k --user <username>:<password> \
 ```
 HTTP 201 Created
 ```
+
 ## Update configuration
 
 **URI:** https://hub.cfengine.com/api/cmdb/:hostkey/:type/:name/
@@ -298,27 +299,27 @@ HTTP 201 Created
 
 **Parameters:**
 
-* **hostkey** *(string)*
+- **hostkey** _(string)_
   Unique host identifier.
 
-* **type** *(string)*
+- **type** _(string)_
   Configuration type. Allowed value: `variables`, `classes`
 
-* **name** *(string)*
+- **name** _(string)_
   Configuration name. Classes or variables name.
 
 **Request body parameters:**
 
-* **value** *(string|array)*
+- **value** _(string|array)_
   Variable value, can be array or text. Classes do not support values.
 
-* **comment** *(string)*
+- **comment** _(string)_
   Variables or classes description. Optional parameter.
 
-* **tags** *(array)*
+- **tags** _(array)_
   Variables or classes tags. Optional parameter.
 
-* **name** *(string)*
+- **name** _(string)_
   New name, in case of renaming. Optional parameter.
 
 **Example request (curl):**
@@ -349,9 +350,9 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **hostkey** *(string)*
+- **hostkey** _(string)_
   Unique host identifier.
-* **classes** *(JSON object)*
+- **classes** _(JSON object)_
   The format is a JSON object where the key is class name and value is another JSON object
   with an optional `comment` property.
   Example:
@@ -372,7 +373,7 @@ If you need to delete all classes from host you need to set null value:
 
 If your request body misses classes then the previous value will be preserved.
 
-* **variables** *(JSON object)*
+- **variables** _(JSON object)_
   The format is a JSON object where the key is variable name and value is another JSON object
   with a required `value` property and an optional `comment` property.
   Example:
@@ -396,6 +397,7 @@ If you need to delete all variables from host you need to set null value:
   "variables": null
 }
 ```
+
 If your request body misses variables then the previous value will be preserved.
 
 **Example request (curl):**
@@ -438,7 +440,7 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **hostkey** *(string)*
+- **hostkey** _(string)_
   Unique host identifier.
 
 **Example request (curl):**
@@ -463,13 +465,13 @@ HTTP 204 No Content
 
 **Parameters:**
 
-* **hostkey** *(string)*
+- **hostkey** _(string)_
   Unique host identifier.
 
-* **type** *(string)*
+- **type** _(string)_
   Configuration type. Allowed value: `variables`, `classes`
 
-* **name** *(string)*
+- **name** _(string)_
   Configuration name. Classes or variables name.
 
 **Example request (curl):**

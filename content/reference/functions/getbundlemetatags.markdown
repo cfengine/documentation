@@ -42,4 +42,4 @@ Output:
 
 **History:**
 
-* Function added in 3.26.0.
+- Function added in 3.26.0.

@@ -23,4 +23,4 @@ Output:
 
 **History:**
 
-* Introduced in 3.26.0
+- Introduced in 3.26.0

@@ -9,7 +9,7 @@ keywords: [server]
 file server for remote file copying and it allows an authorized
 `cf-runagent` to start a `cf-agent` run. `cf-agent`
 typically connects to a `cf-serverd` instance to request updated policy code,
-but may also request additional files for download. `cf-serverd`  employs
+but may also request additional files for download. `cf-serverd` employs
 [role based access control][roles] (defined in policy code) to authorize
 requests.
 
@@ -18,11 +18,11 @@ affected by `common` and `server` control bodies.
 
 **Notes:**
 
-* This daemon reloads it's config when the SIGHUP signal is received.
-* If `enable_report_dumps` exists in `WORKDIR` (`/var/cfengine/enable_report_dumps`) `cf-serverd` will log reports provided to `cf-hub` to `WORKDIR/diagnostics/report_dump` (`/var/cfengine/diagnostics/report_dumps`). This data is useful when troubleshooting reporting issues with CFEngine Enterprise.
-* `cf-serverd` always considers the class ```server``` to be defined.
-* `SIGUSR1` sets the log level to debug.
-* `SIGUSR2` sets the log level to notice.
+- This daemon reloads it's config when the SIGHUP signal is received.
+- If `enable_report_dumps` exists in `WORKDIR` (`/var/cfengine/enable_report_dumps`) `cf-serverd` will log reports provided to `cf-hub` to `WORKDIR/diagnostics/report_dump` (`/var/cfengine/diagnostics/report_dumps`). This data is useful when troubleshooting reporting issues with CFEngine Enterprise.
+- `cf-serverd` always considers the class `server` to be defined.
+- `SIGUSR1` sets the log level to debug.
+- `SIGUSR2` sets the log level to notice.
 
 **History:**
 
@@ -318,16 +318,16 @@ collection.
 
 The sequence of events is this:
 
--   The host's `cf-serverd` connects to its registered CFEngine Server
--   The host identifies itself to authentication and access
-    control and sends a collect-call pull-request to the server
--   The server might honor this, if the access control grants access.
--   If access is granted, the server has `collect_window` seconds to
-    initiate a query to the host for its reports.
--   The server identifies itself to authentication and access
-    control and sends a query request to the host to collect the
-    reports.
--   When finished, the host closes the tunnel.
+- The host's `cf-serverd` connects to its registered CFEngine Server
+- The host identifies itself to authentication and access
+  control and sends a collect-call pull-request to the server
+- The server might honor this, if the access control grants access.
+- If access is granted, the server has `collect_window` seconds to
+  initiate a query to the host for its reports.
+- The server identifies itself to authentication and access
+  control and sends a query request to the host to collect the
+  reports.
+- When finished, the host closes the tunnel.
 
 **Type:** `int`
 
@@ -488,8 +488,8 @@ logencryptedtransfers => "true";
 ### maxconnections
 
 **Description:** Maximum number of concurrent connections the server
-  will accept. Recommended value for a hub is **two times the total
-  number of hosts bootstrapped to this hub**.
+will accept. Recommended value for a hub is **two times the total
+number of hosts bootstrapped to this hub**.
 
 **Type:** `int`
 
@@ -605,7 +605,7 @@ skipverify => { "special_host.*", "192.168\..*" };
 ### trustkeysfrom
 
 **Description:** List of IPs from whom the server will accept and trust
-new (untrusted) public keys.  They are denoted in either IP or subnet
+new (untrusted) public keys. They are denoted in either IP or subnet
 form. For compatibility reasons, regular expressions are also
 accepted.
 
@@ -675,7 +675,7 @@ of CFEngine, but today they are deprecated, either because
 their functionality is being handled trasparently or because
 it doesn't apply to current CFEngine version.
 
-* ```auditing```
-* ```dynamicaddresses```
-* ```hostnamekeys```
-* ```keycacheTTL```
+- `auditing`
+- `dynamicaddresses`
+- `hostnamekeys`
+- `keycacheTTL`

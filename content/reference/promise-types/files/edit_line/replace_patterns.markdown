@@ -39,7 +39,7 @@ the remainder of the line will not be affected. You can also use PCRE
 look-behind and look-ahead patterns to restrict the lines upon which the
 pattern will match.
 
-****
+---
 
 ## Attributes
 
@@ -62,11 +62,11 @@ applies to.
 
 **Allowed input range:**
 
-* `all`
+- `all`
 
 Replace all occurrence.
 
-* `first`
+- `first`
 
 Replace only the first occurrence. Note: this is non-convergent.
 
@@ -104,4 +104,4 @@ replace_value => "$(s)";
 
 This body applies to all promise types within `edit_line` bundles.
 
-**See also:** [```select_region``` with `edit_line` operations][edit_line#select_region], [```select_region``` in `delete_lines`][delete_lines#select_region], [```select_region``` in `field_edits`][field_edits#select_region], [```select_region``` in `insert_lines`][insert_lines#select_region]
+**See also:** [`select_region` with `edit_line` operations][edit_line#select_region], [`select_region` in `delete_lines`][delete_lines#select_region], [`select_region` in `field_edits`][field_edits#select_region], [`select_region` in `insert_lines`][insert_lines#select_region]

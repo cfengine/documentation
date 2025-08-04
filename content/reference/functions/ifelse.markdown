@@ -48,7 +48,7 @@ class3.!class2::
 ```
 
 That's hard to read and error-prone (do you know how `class2` will
-affect the default case?).  Here's the alternative with `ifelse`:
+affect the default case?). Here's the alternative with `ifelse`:
 
 ```cf3
 "myvar" string => ifelse("class1.class2", "x",
@@ -109,5 +109,5 @@ bundle agent example
 
 **History:**
 
-* Special behavior actuating function with undefined variable references when 3
+- Special behavior actuating function with undefined variable references when 3
   parameters are in use added in `3.7.4` and `3.9.1`.

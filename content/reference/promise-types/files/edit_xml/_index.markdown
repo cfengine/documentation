@@ -14,13 +14,14 @@ the `files` promise needs to be the XML document that is being edited.
 Within an `edit_xml` bundle, various promise types are available to create
 new or manipulate existing XML documents.
 
-***
+---
 
 <!-- Use any suitable promise type for lookups in promise_attribute
 # build_xpath
 -->
 
 ## Common attributes
+
 <!-- Don't change the name of this heading. It affects how the
 CFEngine_promise_attribute macro functions. If the name changes, then promise
 prototypes will not work. -->

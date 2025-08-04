@@ -23,21 +23,21 @@ However, this is in the default configuration, and there are several limitations
 In the default configuration, the policy server (`cf-serverd`) on the hub machine trusts incoming connections from the same `/16` subnet.
 This means that:
 
-* Bootstrapping new clients will work as long as the 2 first numbers in the IP address are identical ([IPv4 dot decimal representation](https://en.wikipedia.org/wiki/Dot-decimal_notation)) .
+- Bootstrapping new clients will work as long as the 2 first numbers in the IP address are identical ([IPv4 dot decimal representation](https://en.wikipedia.org/wiki/Dot-decimal_notation)) .
   The hub and client mutually accept each other's keys, automatically.
-* This applies to _all_ IP addresses within that range, not just the 1 IP address belonging to the client you are currently bootstrapping.
-* The hub will keep accepting new clients from those IP addresses until you change the configuration.
-* If you try to bootstrap a client where those 2 numbers in the IP address do not match the hub, it will fail.
+- This applies to _all_ IP addresses within that range, not just the 1 IP address belonging to the client you are currently bootstrapping.
+- The hub will keep accepting new clients from those IP addresses until you change the configuration.
+- If you try to bootstrap a client where those 2 numbers in the IP address do not match the hub, it will fail.
 
 This situation, where the client and hub automatically transfer and trust each other's keys is called _automatic trust_ or _automatic bootstrap_.
-When using automatic trust, it is presumed that during this first key exchange, *the network is trusted*, and no attacker will hijack the connection.
+When using automatic trust, it is presumed that during this first key exchange, _the network is trusted_, and no attacker will hijack the connection.
 Below we will show ways to change the configuration and bootstrap your clients in more secure ways.
 The goal here is to illustrate the different approaches, explaining what is needed and the implications of each.
 In the end, you will not be running these commands manually, but rather putting them into a provisioning system.
 
 ## Allowing only specific IP addresses / subnets
 
-In order to specify and limit which hosts (IP addresses) are considered trusted and allowed to connect and fetch policy files, you can put the trusted IP addresses and subnets into the ```acl``` variable:
+In order to specify and limit which hosts (IP addresses) are considered trusted and allowed to connect and fetch policy files, you can put the trusted IP addresses and subnets into the `acl` variable:
 
 ```json {file="/var/cfengine/masterfiles/def.json"}
 {
@@ -145,9 +145,9 @@ BOOTSTRAP_IP="192.0.2.42" HUB_SSH="ubuntu@192.0.2.42" CLIENT_SSH="ubuntu@198.51.
 
 Edit the 3 variables according to your situation, they represent:
 
-* `BOOTSTRAP_IP` - The IP address of the hub, which you want `cf-agent` on the client to bootstrap to (connect to).
-* `HUB_SSH` - The username / IP combination you would use to connect to the hub with SSH.
-* `CLIENT_SSH` - The username / IP combination you would use to connect to the hub with SSH.
+- `BOOTSTRAP_IP` - The IP address of the hub, which you want `cf-agent` on the client to bootstrap to (connect to).
+- `HUB_SSH` - The username / IP combination you would use to connect to the hub with SSH.
+- `CLIENT_SSH` - The username / IP combination you would use to connect to the hub with SSH.
 
 ### Trusting the client's key on the hub
 

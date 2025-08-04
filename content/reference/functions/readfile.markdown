@@ -28,12 +28,12 @@ Output:
 
 **Notes:**
 
-* On Windows, the file will be read in text mode, which means that
-CRLF line endings will be converted to LF line endings in the
-resulting variable. This can make the variable length shorter than the
-size of the file being read.
+- On Windows, the file will be read in text mode, which means that
+  CRLF line endings will be converted to LF line endings in the
+  resulting variable. This can make the variable length shorter than the
+  size of the file being read.
 
 **History:**
 
-* Warnings about the size limit and the special `0` value were introduced in 3.6.0
-* 4095 bytes limitation removed in 3.6.3
+- Warnings about the size limit and the special `0` value were introduced in 3.6.0
+- 4095 bytes limitation removed in 3.6.3

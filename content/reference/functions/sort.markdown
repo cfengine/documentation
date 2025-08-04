@@ -10,7 +10,7 @@ title: sort
 [This function can accept many types of data parameters.][Functions#collecting functions]
 
 Lexicographical, integer, real, IP, and MAC address sorting is
-supported currently.  The example below will show each sorting mode in
+supported currently. The example below will show each sorting mode in
 action. `mode` is optional, and defaults to `lex`.
 
 Note IPv6 addresses can not use uppercase hexadecimal characters
@@ -38,8 +38,9 @@ Output:
 ```
 
 **History:**
- - Function added in 3.6.0.
- - [Collecting function][Functions#collecting functions] behavior added in 3.9.0.
- - Optional `mode` defaulting to `lex` behavior added in 3.9.0.
+
+- Function added in 3.6.0.
+- [Collecting function][Functions#collecting functions] behavior added in 3.9.0.
+- Optional `mode` defaulting to `lex` behavior added in 3.9.0.
 
 **See also:** `shuffle()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

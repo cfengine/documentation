@@ -18,10 +18,10 @@ with interfaces to an external environment.
 
 CFEngine currently seeks to add convergence properties to existing
 interfaces for automatic self-healing of guest environments. The current
-implementation integrates with *libvirt*, supporting host virtualization
+implementation integrates with _libvirt_, supporting host virtualization
 for Xen, KVM, VMWare, etc. Thus CFEngine, running on a virtual host, can
 maintain the state and deployment of virtual guest machines defined
-within the *libvirt* framework. Guest environment promises are not meant
+within the _libvirt_ framework. Guest environment promises are not meant
 to manage what goes on within the virtual guests. For that purpose you
 should run CFEngine directly on the virtual machine, as if it were any
 other machine.
@@ -44,9 +44,9 @@ site1::
            environment_host => "atlas";
 ```
 
-CFEngine currently provides a convergent interface to *libvirt*.
+CFEngine currently provides a convergent interface to _libvirt_.
 
-***
+---
 
 ## Attributes
 
@@ -332,30 +332,30 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 ### environment_state
 
 **Description:** The `environment_state` defines the desired dynamic state
- of the specified environment.
+of the specified environment.
 
 **Type:** (menu option)
 
 **Allowed input range:**
 
-* `create`
+- `create`
 
 The guest machine is allocated, installed and left in a running state.
 
-* `delete`
+- `delete`
 
 The guest machine is shut down and deallocated, but no files are removed.
 
-* `running`
+- `running`
 
 The guest machine is in a running state, if it previously exists.
 
-* `suspended`
+- `suspended`
 
 The guest exists in a suspended state or a shutdown state. If the guest
 is running, it is suspended; otherwise it is ignored.
 
-* `down`
+- `down`
 
 The guest machine is shut down, but not deallocated.
 
@@ -378,7 +378,7 @@ guest_environments:
 
 **Description:** `environment_type` defines the virtual environment type.
 
-The currently supported types are those supported by *libvirt*. More
+The currently supported types are those supported by _libvirt_. More
 will be added in the future.
 
 **Type:** (menu option)

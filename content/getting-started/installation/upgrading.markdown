@@ -19,7 +19,7 @@ In short, the steps are:
 
 - Upgrades are supported from any [currently supported version][supported versions].
 
-- Clients should not run *newer* versions of binaries than the hub. While it may
+- Clients should not run _newer_ versions of binaries than the hub. While it may
   work in many cases, Enterprise reporting does not currently guarantee forward
   compatibility. For example, a host running 3.15.0 will not be able to report
   to a hub running 3.12.3.
@@ -148,7 +148,7 @@ empty before performing an Enterprise Hub binary upgrade.
    root@hub:~# dpkg --install cfengine-nova-hub_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-deb7.deb
    ```
 
-   *Community does not have a hub specific package.*
+   _Community does not have a hub specific package._
 
 3. Check `/var/log/CFEngine-Install.log` for errors.
 
@@ -194,7 +194,6 @@ empty before performing an Enterprise Hub binary upgrade.
    automatically turns off on hosts after they reach the target version.
 
 3. Verify that the selected hosts are upgrading successfully.
-
    - Mission Portal [Inventory reporting interface][Reporting UI#Inventory management]
      ![Inventory management](Reports-Inventory-1.png)
 

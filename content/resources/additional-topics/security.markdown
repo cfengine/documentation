@@ -26,8 +26,8 @@ machines, you might need several policy servers, i.e. several hubs.
 Any piece of software has two different architectures, which should not be
 confused:
 
-* The information flow that results in decisions (weak coupling).
-* The software or service dependence graph (strong coupling).
+- The information flow that results in decisions (weak coupling).
+- The software or service dependence graph (strong coupling).
 
 Information flow is about how users determine what promises the software should
 keep; this is entirely informational and once decisions are made they can be
@@ -123,20 +123,20 @@ trusted and risky.
 
 CFEngine adheres to the following design principles:
 
-* It shall be, by design, impossible to send policy-altering data to a CFEngine
+- It shall be, by design, impossible to send policy-altering data to a CFEngine
   agent. Each host shall retain its right to veto policy suggestions at all
   times. This is called the Voluntary Cooperation Model.
 
-* CFEngine will support the encyrption of data transmitted over the network.
+- CFEngine will support the encyrption of data transmitted over the network.
 
-* Each host shall continue to function, as far as possible, without the need for
+- Each host shall continue to function, as far as possible, without the need for
   communication with other hosts.
 
-* CFEngine will use a lightweight peer model for key trust (like the Secure
+- CFEngine will use a lightweight peer model for key trust (like the Secure
   Shell). No centralized certificate authority shall be used. SSL and TLS shall
   not be used.
 
-* CFEngine shall always provide safe defaults, that grant no access to other
+- CFEngine shall always provide safe defaults, that grant no access to other
   hosts.
 
 ### Communications
@@ -146,10 +146,11 @@ that used by OpenSSH (the free version of the Secure Shel). It is based on
 mutual, bi-directional challenge-reponse using an autonomous Public Key
 Infrastructure.
 
- * Authentication by Public Key is mandatory.
- * Encryption of data transfer is optional.
+- Authentication by Public Key is mandatory.
+- Encryption of data transfer is optional.
 
 ## Communication security
+
 ### TCP wrappers
 
 The right to connect to the server is the first line of defence. CFEngine has
@@ -161,36 +162,36 @@ non-authorized hosts the ability to connect to the server at all.
 A client attempts to connect to port 5308 Server examines IP address of
 connection and applies rules from
 
-* allowconnects
-* allowallconnects
-* denyconnects
+- allowconnects
+- allowallconnects
+- denyconnects
 
-* If host is allowed to connect, read max 2048 bytes to look for valid hail
-* Client sends its hostname, username and public key to server
-* Server checks whether public key is known
-  * If known, host and user are confirmed, go to access control
-  * If unknown, use trustkeysfrom rules to check whether we should accept the
+- If host is allowed to connect, read max 2048 bytes to look for valid hail
+- Client sends its hostname, username and public key to server
+- Server checks whether public key is known
+  - If known, host and user are confirmed, go to access control
+  - If unknown, use trustkeysfrom rules to check whether we should accept the
     client's asserted identity
-* If not in trustkeysfrom list, break connection
-* If willing to trust, go to further checks
-* If skipverify is set, ignore reverse DNS lookup checks else check asserted
+- If not in trustkeysfrom list, break connection
+- If willing to trust, go to further checks
+- If skipverify is set, ignore reverse DNS lookup checks else check asserted
   identity by reverse DNS lookup
-* If fails break off
-* Check user ID is in allowusers
-* If fails break off
-* Go to file access control
-* Process admit first then deny
-* Mapping of root privilege on server is governed by maproot. If this is false, only resources owned by the authenticated user name may be transmitted.
-* If ifencrypted is set, access is denied to non-encrypted connections.
-* Symbolic links to files are not honoured by the server when computing access.
-* Access control is evaluated by the rules:
-  * First admit rule that matches wins
-  * All other admit rules are ignored
-  * No admit rule means you're denied!
-  * Then look at deny rules (overrides admit)
-  * First deny rule that matches wins
-  * All other deny rules are ignored
-  * No deny rule means you're admitted
+- If fails break off
+- Check user ID is in allowusers
+- If fails break off
+- Go to file access control
+- Process admit first then deny
+- Mapping of root privilege on server is governed by maproot. If this is false, only resources owned by the authenticated user name may be transmitted.
+- If ifencrypted is set, access is denied to non-encrypted connections.
+- Symbolic links to files are not honoured by the server when computing access.
+- Access control is evaluated by the rules:
+  - First admit rule that matches wins
+  - All other admit rules are ignored
+  - No admit rule means you're denied!
+  - Then look at deny rules (overrides admit)
+  - First deny rule that matches wins
+  - All other deny rules are ignored
+  - No deny rule means you're admitted
 
 ### Encryption algorithms
 
@@ -307,19 +308,19 @@ Our problem is to copy files from the "secure" source machine to hosts in the
 DMZ, in order to send them their configuration policy updates. There are two
 ways of getting files through the firewall:
 
-* An automated CFEngine solution, i.e., pull from outside to inside the secure
+- An automated CFEngine solution, i.e., pull from outside to inside the secure
   area.
 
-* A manual push to the outside of the wall from the inside.
+- A manual push to the outside of the wall from the inside.
 
 One of the main aims of a firewall is to prevent hosts outside the secure area
 from opening connections to hosts in the secure area. If we want cfagent
 processes on the outside of the firewall to receive updated policies from the
 inside of the firewall, information has to traverse the firewall.
 
-* CFEngine trust model
-* Policy mirror in the DMZ
-* Pulling through a wormhole
+- CFEngine trust model
+- Policy mirror in the DMZ
+- Pulling through a wormhole
 
 #### CFEngine trust model
 
@@ -339,16 +340,16 @@ unacceptable (because they are conditioned to trust their firewall). But it is
 important to evaluate the actual risk. We have a few observations about the
 latter to offer at this point:
 
-* It is not the aim of this note to advocate any one method of update. You must
+- It is not the aim of this note to advocate any one method of update. You must
   decide for yourself. The aim here is only to evaluate the security
   implications. Exporting data from the secure area to the DMZ automatically
   downgrades the privacy of the information.
 
-* The CFEngine security model assumes that the security of every host will be
+- The CFEngine security model assumes that the security of every host will be
   taken seriously. A firewall should never be used as a substitute for host
   security.
 
-* Knowing about CFEngine but not your firewall or your secure network, it is
+- Knowing about CFEngine but not your firewall or your secure network, it is
   only possible to say here that it seems, to us, safe to open a hole in a
   firewall to download data from a host of our choice, but we would not accept
   data from just any host on your company network on trust. It would be

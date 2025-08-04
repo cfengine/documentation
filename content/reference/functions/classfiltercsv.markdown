@@ -34,17 +34,17 @@ minus `1`.
 
 **Notes:**
 
-* If the CSV file is stored in a `git` repository the `.gitattributes` file can be used to ensure proper line endings.
+- If the CSV file is stored in a `git` repository the `.gitattributes` file can be used to ensure proper line endings.
 
-   For example:
+  For example:
 
-   ```
-   # .gitattribtues
-   *.csv     text eol=crlf
-   RFC-4180-non-compliant-line-endings.csv eol=lf
-   *.mustache text
-   *.sh       text eol=lf
-   ```
+  ```
+  # .gitattribtues
+  *.csv     text eol=crlf
+  RFC-4180-non-compliant-line-endings.csv eol=lf
+  *.mustache text
+  *.sh       text eol=lf
+  ```
 
 **See also:** `classfilterdata()`, `data_expand()`, `readcsv()`, `classmatch()`
 

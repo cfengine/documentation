@@ -14,24 +14,27 @@ Both the containers will run **_ubi9-init_** images and communicate on a contain
 Upon completion, you are ready to start working with CFEngine.
 
 ## Requirements
-* 1G+ disk space
-* 1G+ memory
-* Working [Docker Engine](https://docs.docker.com/engine/) or [Podman](https://podman.io/) setups on a supported [x86_64](https://en.wikipedia.org/wiki/X86-64) platform.
+
+- 1G+ disk space
+- 1G+ memory
+- Working [Docker Engine](https://docs.docker.com/engine/) or [Podman](https://podman.io/) setups on a supported [x86_64](https://en.wikipedia.org/wiki/X86-64) platform.
 
 **Note**: This document considers [Docker Engine](https://docs.docker.com/engine/) for all examples.
 Use of [Podman](https://podman.io/) shall be similar with adequate adaptations. (_Ref_: [Emulating Docker CLI with Podman](https://podman-desktop.io/docs/migrating-from-docker/emulating-docker-cli-with-podman)).
 
 ## Overview
+
 1. Installing container engine
 2. Preparing CFEngine hub in container
 3. Preparing CFEngine host in container
 4. Using docker compose
-    1. Preparing container image for CFEngine
-    2. Using docker compose service
+   1. Preparing container image for CFEngine
+   2. Using docker compose service
 5. Glossary
 6. References
 
 ## Installing container engine
+
 **Ref**: [Install Docker Engine](https://docs.docker.com/engine/install/)
 
 OR
@@ -40,6 +43,7 @@ OR
 (_Optionally_: [Emulating Docker CLI with Podman](https://podman-desktop.io/docs/migrating-from-docker/emulating-docker-cli-with-podman))
 
 ## Preparing CFEngine hub in container
+
 Run the container with systemd
 
 ```command
@@ -65,6 +69,7 @@ docker exec cfengine-hub bash -c "/usr/local/sbin/cf-agent --bootstrap \$(ip -4 
 ```
 
 ## Preparing CFEngine host in container
+
 The procedure to setup **cfengine-host** is similar to the **cfengine-hub** deployment. The changes are to name of the host container for better identification and bootstrap IP of the **cfengine-hub**.
 
 ```command
@@ -84,6 +89,7 @@ docker exec cfengine-host bash -c "cf-remote install --edition community --clien
 ```
 
 ### Bootstrap cfengine-host to the policy server container.
+
 Find IP address of **cfengine-hub**:
 
 ```command
@@ -97,7 +103,9 @@ docker exec cfengine-host bash -c "/usr/local/sbin/cf-agent --bootstrap ${CFENGI
 ```
 
 ## Using docker compose
+
 ### Preparing container image for CFEngine
+
 Create a `Dockerfile` with following contents:
 
 ```Dockerfile
@@ -151,6 +159,7 @@ cfengine     lts        <IMAGE_ID>     About an hour ago   302MB
 ```
 
 ### Using docker compose service
+
 Create a `compose.yaml` file with following contents:
 
 ```yaml {file="compose.yaml"}
@@ -199,6 +208,7 @@ Validate the `compose.yaml` file
 ```command
 docker compose -f compose.yaml config 1>/dev/null
 ```
+
 **Note**: No output means valid yaml file.
 
 Start service cfengine-demo
@@ -272,6 +282,7 @@ docker compose -f compose.yaml down
 ```
 
 ## Glossary
+
 - [Hub](https://docs.cfengine.com/docs/3.24/overview-glossary.html#hub)
 - [Host](https://docs.cfengine.com/docs/3.24/overview-glossary.html#host)
 - [Client](https://docs.cfengine.com/docs/3.24/overview-glossary.html#client)
@@ -282,6 +293,7 @@ docker compose -f compose.yaml down
 - [Policy server](https://docs.cfengine.com/docs/3.24/overview-glossary.html#policy-server)
 
 ## References
+
 - [Dockerfile](https://docs.docker.com/reference/dockerfile/)
 - [Docker compose file](https://docs.docker.com/reference/compose-file/)
 - [RedHat Universal Base Image (UBI)](https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image)

@@ -16,9 +16,10 @@ your Internet connection and disk speed). Upon completion, you are ready to
 start working with CFEngine.
 
 ## Requirements
-* 2G disk space
-* 3G memory
-* CPU with VT extensions capable of running 64bit guests
+
+- 2G disk space
+- 3G memory
+- CPU with VT extensions capable of running 64bit guests
 
 Note: VirtualBox requires that your computer support hardware virtualization
 in order to make use of the virtual machines mentioned above.
@@ -36,7 +37,7 @@ different approach][General installation#More detailed installation guides].
 3. Start the CFEngine Enterprise Vagrant Environment
 4. Log in to the Mission Portal
 5. Stop CFEngine Enterprise
-5. Uninstall
+6. Uninstall
 
 ## Install Vagrant
 
@@ -71,17 +72,17 @@ vagrant up
 
 Vagrant performs the following processes:
 
-* Downloads the basebox for both the hub and the client (if it has
+- Downloads the basebox for both the hub and the client (if it has
   not already been cached by vagrant.
-* Provisions, installs and bootstraps the hub
-* Provisions, installs and bootstraps clients
+- Provisions, installs and bootstraps the hub
+- Provisions, installs and bootstraps clients
 
 The basebox is ~500MB.
 
 Note: If you want to use more hosts in this environment, you can
-  edit the **Vagrantfile** text file in the directory that you have just created.
-  Change the line that says "hosts = 1" to the number of hosts that you want in
-  the setup. The maximum supported in this evaluation version of CFEngine is 25.
+edit the **Vagrantfile** text file in the directory that you have just created.
+Change the line that says "hosts = 1" to the number of hosts that you want in
+the setup. The maximum supported in this evaluation version of CFEngine is 25.
 
 ## Log in to the Mission Portal
 
@@ -98,6 +99,7 @@ password: admin
 Portal.
 
 That's all there is to it, the install is complete! Move on and explore the environment.
+
 ## Exploring the environment
 
 ### Accessing VMs

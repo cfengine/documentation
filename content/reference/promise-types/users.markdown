@@ -40,7 +40,7 @@ users:
       shell => "/bin/bash";
 ```
 
-****
+---
 
 ## Attributes
 

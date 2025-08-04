@@ -84,7 +84,7 @@ reports:
 }
 ```
 
-***
+---
 
 ## Attributes
 

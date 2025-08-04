@@ -16,7 +16,7 @@ packages. The bundles can be found in the file packages.cf in masterfiles.
 
 CFEngine supports a generic approach to integration with native
 operating support for packaging. Package promises allow CFEngine to make
-promises regarding the state of software packages *conditionally*, given
+promises regarding the state of software packages _conditionally_, given
 the assumption that a native package manager will perform the actual
 manipulations. Since no agent can make unconditional promises about
 another, this is the best that can be achieved.
@@ -40,20 +40,20 @@ packages:
 
 Packages are treated as black-boxes with three labels:
 
--   A package name
--   A version string
--   An architecture name
+- A package name
+- A version string
+- An architecture name
 
 Package managers are treated as black boxes that may support some or all
 of the following promise types:
 
--   List installed packages
--   Add packages
--   Delete packages
--   Reinstall (repair) packages
--   Update packages
--   Patch packages
--   Verify packages
+- List installed packages
+- Add packages
+- Delete packages
+- Reinstall (repair) packages
+- Update packages
+- Patch packages
+- Verify packages
 
 If these services are promised by a package manager, `cf-agent` promises
 to use the service and encapsulate it within the overall CFEngine
@@ -79,11 +79,11 @@ good faith. Packages are basically 'outsourced', to invoke IT parlance.
 ### Behavior
 
 A package promise consists of a name, a version and an architecture,
-*(n,v,a)*, and behavior to be promised about packages that match
-criteria based on these. The components *(n,v,a)* can be determined in
+_(n,v,a)_, and behavior to be promised about packages that match
+criteria based on these. The components _(n,v,a)_ can be determined in
 one of two different ways:
 
-* They may be specified independently, e.g.
+- They may be specified independently, e.g.
 
 ```cf3
 packages:
@@ -97,10 +97,10 @@ packages:
      package_version => "1.2.3";
 ```
 
-* They may be extracted from a package identifier (promiser) or
-    filename, using pattern matching. For example, a promiser
-    7-Zip-4.50-x86_64.msi and a `package_method` containing the
-    following:
+- They may be extracted from a package identifier (promiser) or
+  filename, using pattern matching. For example, a promiser
+  7-Zip-4.50-x86_64.msi and a `package_method` containing the
+  following:
 
 ```cf3
 package_name_regex => "^(\S+)-(\d+\.?)+";
@@ -109,7 +109,7 @@ package_arch_regex => "^\S+-[\d\.]+-(.*).msi";
 ```
 
 When scanning a list of installed packages different managers present
-the information *(n,v,a)* in quite different forms and pattern
+the information _(n,v,a)_ in quite different forms and pattern
 extraction is necessary. When making a promise about a specific package,
 the CFEngine user may choose one or the other model.
 
@@ -134,23 +134,23 @@ Normal ordering for packages is the following:
 
 **Identified package matched by name, but not version**
 
-| Command | Dumb manager | Smart manager |
-|---------|--------------|---------------|
-| add | unable | Never |
-| delete | unable | Attempt deletion |
-| reinstall | unable | Attempt delete/add |
-| upgrade | unable | Upgrade if capable |
-| patch | unable | Patch if capable |
+| Command   | Dumb manager | Smart manager      |
+| --------- | ------------ | ------------------ |
+| add       | unable       | Never              |
+| delete    | unable       | Attempt deletion   |
+| reinstall | unable       | Attempt delete/add |
+| upgrade   | unable       | Upgrade if capable |
+| patch     | unable       | Patch if capable   |
 
 **Package not installed**
 
-| Command | Dumb manager | Smart manager |
-|---------|--------------|---------------|
-| add | Attempt to install named | Install any version |
-| delete | unable | unable |
-| reinstall | Attempt to install named | unable |
-| upgrade | unable | unable |
-| patch | unable | unable |
+| Command   | Dumb manager             | Smart manager       |
+| --------- | ------------------------ | ------------------- |
+| add       | Attempt to install named | Install any version |
+| delete    | unable                   | unable              |
+| reinstall | Attempt to install named | unable              |
+| upgrade   | unable                   | unable              |
+| patch     | unable                   | unable              |
 
 ```cf3
 bundle agent packages
@@ -205,9 +205,9 @@ without specific patch arguments. If so, that command can be called
 periodically under `commands`. The main purposes of patching body items
 are:
 
--   To install specific named patches in a controlled manner.
--   To generate reports of available and installed patches during system
-    reporting.
+- To install specific named patches in a controlled manner.
+- To generate reports of available and installed patches during system
+  reporting.
 
 ### Installers without package/patch arguments
 
@@ -301,7 +301,7 @@ This is for use when extracting architecture from the name of the
 promiser, when the architecture is not specified using the
 `package_architectures` list. It is an [unanchored][unanchored] regular expression that
 contains exactly one parenthesized back-reference which marks the location in
-the *promiser* at which the architecture is specified.
+the _promiser_ at which the architecture is specified.
 
 **Type:** `string`
 
@@ -668,7 +668,7 @@ package_name_convention => "$(name).$(arch).rpm";
 **Description:** Regular expression with one back-reference to extract
 package name string
 
-This [unanchored][unanchored] regular expression is only used when the *promiser* contains
+This [unanchored][unanchored] regular expression is only used when the _promiser_ contains
 not only the name of the package, but its version and architecture also. In
 that case, this expression should contain a single parenthesized
 back-reference to extract the name of the package from the string.
@@ -1083,37 +1083,37 @@ system
 
 **Allowed input range:**
 
-* `add`
+- `add`
 
 Ensure that a package is present (this is the default setting from
 3.3.0).
 
-* `delete`
+- `delete`
 
 Ensure that a package is not present.
 
-* `reinstall`
+- `reinstall`
 
 Delete then add package (warning, non-convergent).
 
-* `update`
+- `update`
 
 Update the package if an update is available (manager dependent).
 
-* `addupdate`
+- `addupdate`
 
 Equivalent to add if the package is not installed, and update if it is
 installed. Note: This attribute requires the specification of `package_version`
 and `package_select` in order to select the proper version to update to if
-available. *See also* [package_latest][lib/packages.cf#package_latest]
+available. _See also_ [package_latest][lib/packages.cf#package_latest]
 [package_specific_latest][lib/packages.cf#package_specific_latest] in the
 standard library.
 
-* `patch`
+- `patch`
 
 Install one or more patches if available (manager dependent).
 
-* `verify`
+- `verify`
 
 Verify the correctness of the package (manager dependent). The promise
 is kept if the package is installed correctly, not kept otherwise.

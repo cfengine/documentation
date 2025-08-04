@@ -3,7 +3,7 @@ layout: default
 title: services
 ---
 
-`services` type promises in their simplest *generic* form are an abstraction on
+`services` type promises in their simplest _generic_ form are an abstraction on
 **bundles**. `services` type promises are implemented by mapping a bundle to
 `service_bundle` in a `service_method` body. Reference the
 [services bodies and bundles in the standard library][lib/services.cf].
@@ -130,7 +130,7 @@ for services promises.
 
 **History:** This promise type was introduced in CFEngine 3.3.0 (2012).
 
-****
+---
 
 ## Attributes
 
@@ -153,14 +153,14 @@ standard library.
 
 **Allowed input range:** (arbitrary string)|(menu_option) depending on `service_type`
 
-* When `service_type` is `windows` allowed values are limited to `start`, `stop`, `enable`, or `disable`.
-   * **start|enable** :: Will start the service if it is not running.
-     **Startup Type** will be set to **Manual** if it is not **Automatic** or **Automatic (Delayed Start)**.
-     For a service to be configured to start automatically on boot a `service_method` must be declared and `service_autostart_policy` must be set to `boot_time`.
-   * **stop** :: Will stop the service if it is running. **Startup Type** will not be modified unless a `service_method` is declared and `service_autostart_policy` is set.
-   * **disable** :: Will stop the service if it is running, and **Startup Type**
-     will be set to **Disabled**.
-* When `service_type` is `generic` any string is allowed and `service_bundle` is responsible for interpreting and implementing the desired state based on the `service_policy` value.
+- When `service_type` is `windows` allowed values are limited to `start`, `stop`, `enable`, or `disable`.
+  - **start|enable** :: Will start the service if it is not running.
+    **Startup Type** will be set to **Manual** if it is not **Automatic** or **Automatic (Delayed Start)**.
+    For a service to be configured to start automatically on boot a `service_method` must be declared and `service_autostart_policy` must be set to `boot_time`.
+  - **stop** :: Will stop the service if it is running. **Startup Type** will not be modified unless a `service_method` is declared and `service_autostart_policy` is set.
+  - **disable** :: Will stop the service if it is running, and **Startup Type**
+    will be set to **Disabled**.
+- When `service_type` is `generic` any string is allowed and `service_bundle` is responsible for interpreting and implementing the desired state based on the `service_policy` value.
   Historically `service_type` `generic` has supported `start`, `stop`, `enable`, `disable`, `restart` and `reload`.
 
 **Example:**
@@ -251,7 +251,7 @@ bundle agent my_custom_service_method_DEB( service_identifier, desired_service_s
 
 **History:**
 
-* Type changed from `menu_option` to `string` and allowed input range changed to
+- Type changed from `menu_option` to `string` and allowed input range changed to
   arbitrary string from start|stop|enable|disable|restart|reload in CFEngine
   3.10. Previously enable was mapped to start, disable was mapped to stop and
   reload was mapped to restart.
@@ -293,7 +293,7 @@ services:
 `service_method` bodies have access to `$(this.promiser)` (the promised service)
 and `$(this.service_policy)` (the policy state the service should have).
 
-**Notes:** `service_bundle` is not used when `service_type` is ```windows```.
+**Notes:** `service_bundle` is not used when `service_type` is `windows`.
 
 **See also:** [Common body attributes][Promise types#Common body attributes]
 
@@ -358,8 +358,8 @@ inetd or xinetd on Unix.
 
 **Description:** The agent bundle to use when managing the service.
 
-**Default:** The canonified promiser string prefixed with ```service_```. Note,
-the ```service_bundle``` **must** be in the same namespace.
+**Default:** The canonified promiser string prefixed with `service_`. Note,
+the `service_bundle` **must** be in the same namespace.
 
 **Type:** `bundle agent`
 
@@ -437,4 +437,4 @@ body service_method example
 **Notes:** On Windows this defaults to, and must be `windows`. Unix systems can
 however have multiple means of registering services, but the choice must be
 available on the given system. `service_bundle` is not used when `service_type`
-is ```windows```.
+is `windows`.

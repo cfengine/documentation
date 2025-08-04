@@ -15,9 +15,9 @@ for [Supported platforms and versions][Supported platforms and versions] operati
 
 ## Required knowledge
 
-* Linux
-* SSH
-* bash
-* command line text editing (e.g. vi/vim, Emacs)
+- Linux
+- SSH
+- bash
+- command line text editing (e.g. vi/vim, Emacs)
 
 See also: [Quick-Start Guide to Using vi][Quick-Start Guide to Using vi], [Quick-Start Guide to Using PuTTY][Quick-Start Guide to Using PuTTY]

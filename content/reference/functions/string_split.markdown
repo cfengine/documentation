@@ -6,14 +6,14 @@ title: string_split
 {{< CFEngine_function_prototype(string, regex, maxent) >}}
 
 **Description:** Splits `string` into at most `maxent` substrings wherever
-`regex` occurs, and  returns the list with those strings.
+`regex` occurs, and returns the list with those strings.
 
 The regular expression is [unanchored][unanchored].
 
 If the maximum number of substrings is insufficient to accommodate all
 the entries, the generated `slist` will have `maxent` items and the
 last one will contain the rest of the string starting with the
-`maxent-1`-th delimiter.  This is standard behavior in many languages
+`maxent-1`-th delimiter. This is standard behavior in many languages
 like Perl or Ruby, and different from the `splitstring()` behavior.
 
 {{< CFEngine_function_attributes(string, regex, maxent) >}}

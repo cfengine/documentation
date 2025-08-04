@@ -146,9 +146,9 @@ By clicking on _Reports_ and _Compliance_ we can see the report we added, _OS is
 Now that you've successfully added modules and seen the results in Mission Portal, you're ready to look for more modules, or explore Mission Portal further.
 Here are some examples of modules you might be interested in:
 
-* [Inventory (reporting) data of who can use sudo on each host](https://build.cfengine.com/modules/inventory-sudoers/)
-* [Scan and report on potentially vulnerable log4j installations](https://build.cfengine.com/modules/cve-2021-44228-log4j/)
-* [Upgrade all packages with the system's package manager (apt, yum, etc.)](https://build.cfengine.com/modules/upgrade-all-packages/)
+- [Inventory (reporting) data of who can use sudo on each host](https://build.cfengine.com/modules/inventory-sudoers/)
+- [Scan and report on potentially vulnerable log4j installations](https://build.cfengine.com/modules/cve-2021-44228-log4j/)
+- [Upgrade all packages with the system's package manager (apt, yum, etc.)](https://build.cfengine.com/modules/upgrade-all-packages/)
 
 To add more modules, just repeat the commands from steps 1-3.
 For example, add the `inventory-sudoers` module to your project:

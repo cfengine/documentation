@@ -47,7 +47,7 @@ R: Today is 2019-06-12 20:40:00 or in unix format '1560372000'
 R: 24 hours ago was 2019-06-11 20:40:00 or in unix format '1560372000'
 ```
 
-`files` type promises using ```file_select``` to limit recursive file selection
+`files` type promises using `file_select` to limit recursive file selection
 based on a time relative to the agent start can make use of this function.
 
 ```cf3
@@ -72,14 +72,14 @@ body file_select pdf_modified_within_last_year
 }
 ```
 
-`processes` type promises using ```process_select``` can use this function to
+`processes` type promises using `process_select` can use this function to
 select processes based on relative execution time.
 
 {{< CFEngine_include_example(processes_define_class_based_on_process_runtime.cf) >}}
 
 **See also:**
 
-* Related functions
-    * [`ago()`][ago]
-    * [`accumulated()`][accumulated]
-    * [`irange()`][irange]
+- Related functions
+  - [`ago()`][ago]
+  - [`accumulated()`][accumulated]
+  - [`irange()`][irange]

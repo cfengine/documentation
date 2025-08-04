@@ -2,6 +2,7 @@
 layout: default
 title: Web RBAC API
 ---
+
 Web RBAC API for managing role based access control settings.
 
 ## Get all permissions list
@@ -51,18 +52,18 @@ curl -k --user <username>:<password> \
 
 **Output:**
 
-* **alias** *(string)*
-    Alias (ID) of a permission
-* **group** *(string)*
-    Group of a permission.
-* **name** *(string)*
-    Name of a permission.
-* **description** *(string)*
-    Description of a permission.
-* **application** *(string)*
-    Application of a permission. Allowed values: `API`, `Mission portal`
-* **allowed_by_default** *(boolean)*
-    Permission allowed by default. New role will be able to perform allowed by default actions.
+- **alias** _(string)_
+  Alias (ID) of a permission
+- **group** _(string)_
+  Group of a permission.
+- **name** _(string)_
+  Name of a permission.
+- **description** _(string)_
+  Description of a permission.
+- **application** _(string)_
+  Application of a permission. Allowed values: `API`, `Mission portal`
+- **allowed_by_default** _(boolean)_
+  Permission allowed by default. New role will be able to perform allowed by default actions.
 
 ## Get current user permissions
 
@@ -79,6 +80,7 @@ curl -k --user <username>:<password> \
 ```
 
 **Example response:**
+
 ```
 [
     {
@@ -116,8 +118,8 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
-* **role_name** *(string)*
-    Role name
+- **role_name** _(string)_
+  Role name
 
 **Example request (curl):**
 
@@ -168,11 +170,11 @@ Assign new permission to role. Permissions will be added to existing permission 
 
 **Parameters:**
 
-* **role_name** *(string)*
-    Role name
+- **role_name** _(string)_
+  Role name
 
-* **alias** *(array)*
-    Array of permission aliases `Emp: ["Inventory.post", "VariablesDictionary.get"]`. Required parameter.
+- **alias** _(array)_
+  Array of permission aliases `Emp: ["Inventory.post", "VariablesDictionary.get"]`. Required parameter.
 
 **Example request (curl):**
 
@@ -200,11 +202,11 @@ Assign permission to role. New permissions replace existing.
 
 **Parameters:**
 
-* **role_name** *(string)*
-    Role name
+- **role_name** _(string)_
+  Role name
 
-* **alias** *(array)*
-    Array of permission aliases `Emp: ["Inventory.post", "VariablesDictionary.get"]`. Required parameter.
+- **alias** _(array)_
+  Array of permission aliases `Emp: ["Inventory.post", "VariablesDictionary.get"]`. Required parameter.
 
 **Example request (curl):**
 
@@ -230,11 +232,11 @@ HTTP 201 Created
 
 **Parameters:**
 
-* **role_name** *(string)*
-    Role name
+- **role_name** _(string)_
+  Role name
 
-* **alias** *(array)*
-    Array of permission aliases `Emp: ["Inventory.post", "VariablesDictionary.get"]`. Required parameter.
+- **alias** _(array)_
+  Array of permission aliases `Emp: ["Inventory.post", "VariablesDictionary.get"]`. Required parameter.
 
 **Example request (curl):**
 

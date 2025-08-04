@@ -21,7 +21,7 @@ This applies to all version macros.
 
 ### Minimum version
 
-The contained policy is only included if the version is greater than or equal to  the specified version.
+The contained policy is only included if the version is greater than or equal to the specified version.
 
 ```cf3
 bundle agent extractor
@@ -37,7 +37,7 @@ vars: "container" data => new_function_3_8(...);
 
 ### Maximum version
 
-The contained policy is only included if the version is lower than or equal to  the specified version.
+The contained policy is only included if the version is lower than or equal to the specified version.
 
 **Example:**
 
@@ -192,12 +192,12 @@ possibly incompatible versions.
 
 Currently available features are:
 
-* `xml`
-* `yaml`
-* `curl`
-* `pam`
+- `xml`
+- `yaml`
+- `curl`
+- `pam`
 
 **History:**
 
-* This macro was introduced in CFEngine 3.8.0
-* `pam` feature was introduced in CFEngine 3.26.0
+- This macro was introduced in CFEngine 3.8.0
+- `pam` feature was introduced in CFEngine 3.26.0

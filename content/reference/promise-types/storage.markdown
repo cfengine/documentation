@@ -43,7 +43,7 @@ body mount nfs(server,source)
 }
 ```
 
-***
+---
 
 ## Attributes
 
@@ -82,14 +82,15 @@ body mount example
 **Type:** (menu option)
 
 **Allowed input range:**
+
 <!--cf-promises --syntax-description=json | jq '.bodyTypes.mount.attributes.mount_type.range|split(",")'-->
 
-* `nfs`
-* `nfs2`
-* `nfs3`
-* `nfs4`
-* `panfs`
-* `cifs`
+- `nfs`
+- `nfs2`
+- `nfs3`
+- `nfs4`
+- `panfs`
+- `cifs`
 
 **Example:**
 
@@ -97,7 +98,7 @@ body mount example
 
 **History:**
 
-* `cifs`, `panfs` added in 3.15.0
+- `cifs`, `panfs` added in 3.15.0
 
 #### mount_source
 

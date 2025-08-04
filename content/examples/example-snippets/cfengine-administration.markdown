@@ -4,8 +4,8 @@ title: Administration examples
 sorting: 2
 ---
 
-* [Ordering promises][Administration examples#Ordering promises]
-* [Aborting execution][Administration examples#Aborting execution]
+- [Ordering promises][Administration examples#Ordering promises]
+- [Aborting execution][Administration examples#Aborting execution]
 
 ## Ordering promises
 

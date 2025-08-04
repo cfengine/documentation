@@ -4,8 +4,8 @@ title: All promise and body types
 sorting: 110
 ---
 
-* [All promise types][All promise and body types#All promise types]
-* [All body Types][All promise and body types#All body Types]
+- [All promise types][All promise and body types#All promise types]
+- [All body Types][All promise and body types#All body Types]
 
 ## All promise types
 

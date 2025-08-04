@@ -32,7 +32,7 @@ thread does not finish in time, the agent will consider the file unreadable.
 If the file is of size 0, the function will return true, if it successfully
 reads 0 bytes (reaches end-of-file).
 
-Please *note* that the agent will evaluate this policy function multiple times,
+Please _note_ that the agent will evaluate this policy function multiple times,
 meaning that the use of this function can cause a significant performance
 penalty.
 

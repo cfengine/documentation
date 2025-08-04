@@ -39,9 +39,9 @@ operation is beyond CFEngine's ability to guarantee convergence, and
 on multiple passes and during syntax verification these function calls
 are executed, resulting in system changes that are **covert**. Calls
 to `execresult` should be for discovery and information extraction
-only.  Effectively calls to this function will be also repeatedly
+only. Effectively calls to this function will be also repeatedly
 executed by `cf-promises` when it does syntax checking, which is
-highly undesirable if the command is expensive.  Consider using
+highly undesirable if the command is expensive. Consider using
 `commands` promises instead, which have locking and are not evaluated
 by `cf-promises`.
 
@@ -49,5 +49,5 @@ by `cf-promises`.
 
 **History:**
 
-* 3.0.5 Newlines no longer replaced with spaces in stored output.
-* 3.17.0 Introduced optional parameter `output` added allowing selection of stderr, stdout or both.
+- 3.0.5 Newlines no longer replaced with spaces in stored output.
+- 3.17.0 Introduced optional parameter `output` added allowing selection of stderr, stdout or both.

@@ -178,17 +178,17 @@ one or more matched base-paths as shown in the example above.
 CFEngine allows regular expressions within filenames, but only after
 first doing some sanity checking to prevent some readily avoidable
 problems. The biggest rule you need to know about filenames and regular
-expressions is that *all* regular expressions in filenames are bounded
+expressions is that _all_ regular expressions in filenames are bounded
 by directory separators, and that each component expression is anchored
 between the directory separators. In other words, CFEngine splits up any
 file paths into its component parts, and then it evaluates any regular
 expressions at a component-level.
 
 What this means is that the path `/tmp/gar.*` will only match filenames
-like `/tmp/gar`, `/tmp/garbage` and `/tmp/garden`. It will *not* match
+like `/tmp/gar`, `/tmp/garbage` and `/tmp/garden`. It will _not_ match
 filename like `/tmp/gar/baz`; because even though the `.*` in a regular
 expression means "zero or more of any character", CFEngine restricts
-that to mean "zero or more of any character *in a path component*".
+that to mean "zero or more of any character _in a path component_".
 
 Correspondingly, CFEngine also restricts where you can use the `/`
 character. For example, you cannot use it in a character class like
@@ -206,7 +206,7 @@ as `/tmp/abc/something` or `/tmp/xyzzy/something`. However, even though the
 pattern `.*` means "zero or more of any character (except /)", CFEngine
 matches files bounded by directory separators. So even though the
 pathname `/tmp//something` is technically the same as the pathname
-`/tmp/something`, the regular expression `/tmp/.*/something` will *not*
+`/tmp/something`, the regular expression `/tmp/.*/something` will _not_
 match on the case of `/tmp//something` (or `/tmp/something`).
 
 ### Promises involving regular expressions
@@ -233,9 +233,10 @@ files:
 
 body classes if_ok(x)
 {
-  promise_repaired => { "$(x)" };
+promise_repaired => { "$(x)" };
   promise_kept => { "$(x)" };
 }
+
 </pre>
 </td>
 <td>
@@ -252,15 +253,16 @@ bundle agent foobaz
 
 body file_select gars
 {
-leaf_name => { "gar.*" };
+leaf_name => { "gar.\*" };
 file_result => "leaf_name";
 }
 
 body classes if_ok(x)
 {
-  promise_repaired => { "$(x)" };
+promise_repaired => { "$(x)" };
   promise_kept => { "$(x)" };
 }
+
 </pre>
 </td></tr>
 </table>
@@ -269,26 +271,26 @@ In the first example, when the configuration containing this promise is
 first executed, any file starting with "gar" that exists in the `/tmp`
 directory will be removed, and the done class will be set. However, when
 the configuration is executed a second time, the pattern `/tmp/gar.*`
-will not match any files, and that promise will not even be *attempted*
-(and, consequently the done class will *not* be set).
+will not match any files, and that promise will not even be _attempted_
+(and, consequently the done class will _not_ be set).
 
 In the second example, when the configuration containing this promise is
 first executed, any file starting with "gar" that exists in the `/tmp`
 directory will also be removed, and the done class will also be set. The
 second time the configuration is executed, however, the promise on the
 `/tmp` directory will still be executed (because `/tmp` of course still
-exists), and the done class *will* be set, because all files matching
+exists), and the done class _will_ be set, because all files matching
 the `file_select` attribute have been deleted from that directory.
 
 ### Local and remote searches
 
 There are two distinct kinds of depth search:
 
-* A local search over promiser agents.
-* A remote search over provider agents.
+- A local search over promiser agents.
+- A remote search over provider agents.
 
-When we are *copying* or *linking* to a file source, it is the search
-over the *remote* source that drives the content of a promise (the
+When we are _copying_ or _linking_ to a file source, it is the search
+over the _remote_ source that drives the content of a promise (the
 promise is a promise to use what the remote source provides). In
 general, the sources are on a different device to the images that make
 the promises. For all other promises, we search over existing local
@@ -312,7 +314,7 @@ alter such a socket. This is a known issue, documented in
 [CFE-1782](https://northerntech.atlassian.net/browse/CFE-1782), and
 [CFE-1830](https://northerntech.atlassian.net/browse/CFE-1830).
 
-***
+---
 
 ## Attributes
 
@@ -350,122 +352,121 @@ aces = {
         };
 ```
 
-* `user`
+- `user`
 
-    A valid username identifier for the system and cannot be empty. However,
-    `user` can be set to `*` as a synonym for the entity that owns the file
-    system object (e.g. `user:*:r`).
+  A valid username identifier for the system and cannot be empty. However,
+  `user` can be set to `*` as a synonym for the entity that owns the file
+  system object (e.g. `user:*:r`).
 
-    **Notes:**
+  **Notes:**
 
       * The user id is not a valid alternative.
       * This ACL is **required** when `acl_method` is set to `overwrite`.
 
-* `uid`
+- `uid`
 
-    A valid user identifier for the system and cannot be empty. However, `uid`
-    can be set to `*` as a synonym for the entity that owns the file system
-    object (e.g. `user:*:r`).
+  A valid user identifier for the system and cannot be empty. However, `uid`
+  can be set to `*` as a synonym for the entity that owns the file system
+  object (e.g. `user:*:r`).
 
-    **Note:** The username is not a valid alternative.
+  **Note:** The username is not a valid alternative.
 
-* `group`
+- `group`
 
-    A valid group identifier for the system and cannot be empty. However,
-    `group` can be set to `*` as a synonym for the group that owns the POSIX
-    file system object (`group:*:rwx`).
+  A valid group identifier for the system and cannot be empty. However,
+  `group` can be set to `*` as a synonym for the group that owns the POSIX
+  file system object (`group:*:rwx`).
 
-    **Notes:**
+  **Notes:**
 
       * The group id is not a valid alternative.
       * This ACL is **required** when `acl_method` is set to `overwrite`.
 
-* `gid`
+- `gid`
 
-    A valid group identifier for the system and cannot be empty. However, in
-    some ACL types, `gid` can be set to `*` to indicate a special group (e.g. in
-    POSIX this refers to the file group).
+  A valid group identifier for the system and cannot be empty. However, in
+  some ACL types, `gid` can be set to `*` to indicate a special group (e.g. in
+  POSIX this refers to the file group).
 
-    **Note:** The group name is not a valid alternative.
+  **Note:** The group name is not a valid alternative.
 
-* `all`
+- `all`
 
-    Indicates that the line applies to every user.
+  Indicates that the line applies to every user.
 
-    **Note:** This ACL is **required** when `acl_method` is set to `overwrite`.
+  **Note:** This ACL is **required** when `acl_method` is set to `overwrite`.
 
-* `mask`
+- `mask`
 
-    A valid mask identifier (e.g. `mask:rwx` ). In essence the mask is an upper
-    bound of the permissions that any entry in the group class will grant. When
-    `acl_method` is `overwrite` if mask is not supplied, it will default to
-    `mask:rwx`).
+  A valid mask identifier (e.g. `mask:rwx` ). In essence the mask is an upper
+  bound of the permissions that any entry in the group class will grant. When
+  `acl_method` is `overwrite` if mask is not supplied, it will default to
+  `mask:rwx`).
 
-* `mode`
+- `mode`
 
-    One or more strings `op`|`perms`|(`nperms`); a concatenation of `op`,
-    `perms` and optionally (`nperms`) separated with commas (e.g. `+rx,-w(s)` ).
-    `mode` is parsed from left to right.
+  One or more strings `op`|`perms`|(`nperms`); a concatenation of `op`,
+  `perms` and optionally (`nperms`) separated with commas (e.g. `+rx,-w(s)` ).
+  `mode` is parsed from left to right.
 
-* `op`
+- `op`
 
-    Specifies the operation on any existing permissions, if the defined ACE
-    already exists. `op` can be =, empty, + or -. = or empty sets the
-    permissions to the ACE as stated. + adds and - removes the permissions from
-    any existing ACE.
+  Specifies the operation on any existing permissions, if the defined ACE
+  already exists. `op` can be =, empty, + or -. = or empty sets the
+  permissions to the ACE as stated. + adds and - removes the permissions from
+  any existing ACE.
 
-* `nperms` (optional)
+- `nperms` (optional)
 
-    Specifies file system specific (native) permissions. Only valid if
-    `acl_type` is defined and will only be enforced if the file object is
-    stored on a file system supporting this ACL type. For
-    example, `nperms` will be ignored if `acl_type:``ntfs` and the object is
-    stored on a file system not supporting NTFS ACLs. Valid values for `nperms`
-    varies with different ACL types. When `acl_type` is set to `ntfs`, the
-    valid flags and their mappings is as follows:
+  Specifies file system specific (native) permissions. Only valid if
+  `acl_type` is defined and will only be enforced if the file object is
+  stored on a file system supporting this ACL type. For
+  example, `nperms` will be ignored if `acl_type:``ntfs` and the object is
+  stored on a file system not supporting NTFS ACLs. Valid values for `nperms`
+  varies with different ACL types. When `acl_type` is set to `ntfs`, the
+  valid flags and their mappings is as follows:
 
-    | CFEngine nperm flag | NTFS Special Permission |
-    |:----:|-------------|
-    | x | Execute File / Traverse Folder |
-    | r | Read Data / List Folder |
-    | t | Read Attributes  |
-    | T | Read Extended Attributes  |
-    | w | Write Data / Create Files  |
-    | a | Append Data / Create Folders |
-    | b | Write Attributes |
-    | B | Write Extended Attributes |
-    | D | Delete Sub-folders and Files |
-    | d | Delete |
-    | p | Read Permissions |
-    | c | Change Permissions |
-    | o | Take Ownership |
+  | CFEngine nperm flag | NTFS Special Permission        |
+  | :-----------------: | ------------------------------ |
+  |          x          | Execute File / Traverse Folder |
+  |          r          | Read Data / List Folder        |
+  |          t          | Read Attributes                |
+  |          T          | Read Extended Attributes       |
+  |          w          | Write Data / Create Files      |
+  |          a          | Append Data / Create Folders   |
+  |          b          | Write Attributes               |
+  |          B          | Write Extended Attributes      |
+  |          D          | Delete Sub-folders and Files   |
+  |          d          | Delete                         |
+  |          p          | Read Permissions               |
+  |          c          | Change Permissions             |
+  |          o          | Take Ownership                 |
 
-* `perm_type` (optional)
+- `perm_type` (optional)
 
-    Can be set to either `allow` or `deny`, and defaults to `allow`. `deny` is
-    only valid if `acl_type` is set to an ACL type that support deny
-    permissions. A `deny` ACE will only be enforced if the file object is stored
-    on a file system supporting the acl type set in `acl_type`.
+  Can be set to either `allow` or `deny`, and defaults to `allow`. `deny` is
+  only valid if `acl_type` is set to an ACL type that support deny
+  permissions. A `deny` ACE will only be enforced if the file object is stored
+  on a file system supporting the acl type set in `acl_type`.
 
-* `gperms` (generic permissions)
+- `gperms` (generic permissions)
 
-    A concatenation of zero or more of the characters shown in the table below. If
-    left empty, none of the permissions are set.
+  A concatenation of zero or more of the characters shown in the table below. If
+  left empty, none of the permissions are set.
 
-    | Flag | Description | Semantics on file | Semantics on directory |
-    |:----:|-------------|-------------------|------------------------|
-    | r    | Read        | Read data, permissions, attributes | Read directory contents, permissions, attributes   |
-    | w    | Write | Write data | Create, delete, rename subobjects |
-    | x    | Execute | Execute file | Access subobjects |
+  | Flag | Description | Semantics on file                  | Semantics on directory                           |
+  | :--: | ----------- | ---------------------------------- | ------------------------------------------------ |
+  |  r   | Read        | Read data, permissions, attributes | Read directory contents, permissions, attributes |
+  |  w   | Write       | Write data                         | Create, delete, rename subobjects                |
+  |  x   | Execute     | Execute file                       | Access subobjects                                |
 
-    **Notes**
+  **Notes**
+  - The `r` permission is not necessary to read an object's permissions and
+    attributes in all file systems. For example, in POSIX, having `x` on its
+    containing directory is sufficient.
 
-    * The `r` permission is not necessary to read an object's permissions and
-      attributes in all file systems. For example, in POSIX, having `x` on its
-      containing directory is sufficient.
-
-    * Capital `X` which is supported by the ```setfacl``` command is not
-      supported by the acl library, and thus not supported by the acl body.
+  - Capital `X` which is supported by the `setfacl` command is not
+    supported by the acl library, and thus not supported by the acl body.
 
 **Example:**
 
@@ -805,7 +806,7 @@ servers => { "primary.example.org", "secondary.example.org",
 
 #### collapse_destination_dir
 
-**Description:** Use `collapse_destination_dir` to flatten the directory hierarchy during copy.  All the files will end up in the root destination directory.
+**Description:** Use `collapse_destination_dir` to flatten the directory hierarchy during copy. All the files will end up in the root destination directory.
 
 Under normal operations, recursive copies cause CFEngine to track
 subdirectories of files. So, for instance, if we copy recursively from src to
@@ -844,28 +845,28 @@ comparison can be used.
 
 **Allowed input range:**
 
-* `mtime`
+- `mtime`
 
 CFEngine copies the file if the modification time of the source file is more
 recent than that of the promised file
 
-* `ctime`
+- `ctime`
 
 CFEngine copies the file if the creation time of the source file is more
 recent than that of the promised file
 
-* `atime`
+- `atime`
 
 CFEngine copies the file if the modification time or creation time of the
 source file is more recent than that of the promised file. If the times are
 equal, a byte-for-bye comparison is done on the files to determine if it needs
 to be copied.
 
-* `exists`
+- `exists`
 
 CFEngine copies the file if the promised file does not already exist.
 
-* `binary`
+- `binary`
 
 CFEngine copies the file if they are both plain files and a
 byte-for-byte comparison determines that they are different. If both
@@ -874,7 +875,7 @@ are not plain files, CFEngine reverts to comparing the `mtime` and
 (e.g. network copy), then `hash` is used instead to reduce network
 bandwidth.
 
-* `hash`
+- `hash`
 
 CFEngine copies the file if they are both plain files and a
 message digest comparison indicates that the files are different. In
@@ -883,7 +884,7 @@ used as a message digest hash to conform with FIPS; in older
 Enterprise versions of CFEngine and all Community versions, MD5 is
 used.
 
-* `digest` a synonym for `hash`
+- `digest` a synonym for `hash`
 
 **Default value:** mtime or ctime differs
 
@@ -925,7 +926,7 @@ body copy_from example
 }
 ```
 
-**See also:** [Common body attributes][Promise types#Common body attributes], [`default_repository` in ```body agent control```][cf-agent#default_repository], [`edit_backup` in ```body edit_defaults```][files#edit_backup]
+**See also:** [Common body attributes][Promise types#Common body attributes], [`default_repository` in `body agent control`][cf-agent#default_repository], [`edit_backup` in `body edit_defaults`][files#edit_backup]
 
 #### encrypt
 
@@ -958,7 +959,7 @@ noop as the entire session is encrypted.
 #### check_root
 
 **Description:** The `check_root` menu option policy checks permissions on the
-root directory when copying files recursively by depth\_search.
+root directory when copying files recursively by depth_search.
 
 This flag determines whether the permissions of the root directory should be
 set from the root of the source. The default is to check only copied file
@@ -1081,7 +1082,7 @@ unpredictable. However, hard links are the only supported type by Windows.
 Note that symlink is synonymous with absolute links, which are different from
 relative links. Although all of these are symbolic links, the nomenclature
 here is defined such that symlink and absolute are equivalent. When verifying
-a link, choosing 'relative' means that the link *must* be relative to the
+a link, choosing 'relative' means that the link _must_ be relative to the
 source, so relative and absolute links are mutually exclusive.
 
 **Type:** (menu option)
@@ -1311,7 +1312,7 @@ timeout => "10";
 
 **Notes:**
 
-* `cf-serverd` will time out any transfer that takes longer than 10 minutes
+- `cf-serverd` will time out any transfer that takes longer than 10 minutes
   (this is not currently tunable).
 
 #### trustkey
@@ -1412,7 +1413,7 @@ like `edit_line`, `edit_xml`, `edit_template` or `edit_template_string`.
 Directories are created by using the `/.` to signify a directory type.
 Note that, if no permissions are specified, mode 600 is chosen for a
 file, and mode 755 is chosen for a directory. If you cannot accept these
-defaults, you *should* specify permissions.
+defaults, you _should_ specify permissions.
 
 Note that technically, `/.` is a regular expression. However, it is used
 as a special case meaning "directory". See **filenames and regular
@@ -1446,7 +1447,7 @@ if the `create` attribute is explicitly used.
 
 **History:**
 
-* 3.20.0 Changed default from `false` to `true` for cases of full file management ( e.g. when `template_method` is `mustache`, `inline_mustache` or `cfengine`, or when the `content` or `copy_from` attributes are used ).
+- 3.20.0 Changed default from `false` to `true` for cases of full file management ( e.g. when `template_method` is `mustache`, `inline_mustache` or `cfengine`, or when the `content` or `copy_from` attributes are used ).
 
 ### delete
 
@@ -1809,7 +1810,7 @@ R: example_edit_backup_rotate.cf-before-edit.1
 R: example_edit_backup_rotate.cf-before-edit.2
 ```
 
-**See also:** [`default_repository` in ```body agent control```][cf-agent#default_repository], [`copy_backup` in ```body copy_from```][files#copy_backup], [`rotate` in `body edit_defaults`][files#rotate]
+**See also:** [`default_repository` in `body agent control`][cf-agent#default_repository], [`copy_backup` in `body copy_from`][files#copy_backup], [`rotate` in `body edit_defaults`][files#rotate]
 
 #### empty_file_before_editing
 
@@ -1825,7 +1826,7 @@ recipe allows an ordered procedure to be convergent.
 
 **Notes:**
 
-* Within `edit_line` bundles the variable `$(edit.empty_before_use)` holds this value, allowing for decisions to be bade based on it.
+- Within `edit_line` bundles the variable `$(edit.empty_before_use)` holds this value, allowing for decisions to be bade based on it.
 
 **Example:**
 
@@ -1966,7 +1967,7 @@ rotate => "4";
 }
 ```
 
-**See also:** [`edit_backup` in ```body edit_defaults```][files#edit_backup]
+**See also:** [`edit_backup` in `body edit_defaults`][files#edit_backup]
 
 ### edit_line
 
@@ -2003,7 +2004,7 @@ bundle agent example
 }
 ```
 
-**History:** Was introduced in 3.3.0, Nova 2.2.0 (2012).  Mustache templates were introduced in 3.6.0.
+**History:** Was introduced in 3.3.0, Nova 2.2.0 (2012). Mustache templates were introduced in 3.6.0.
 
 **See also:** [template_method][files#template_method], `template_data`, `readjson()`, `parsejson()`,
 `readyaml()`, `parseyaml()`, `mergedata()`,
@@ -2517,7 +2518,7 @@ Note that symlink is synonymous with absolute links, which are different
 from relative links. Although all of these are symbolic links, the
 nomenclature here is defined such that symlink and absolute are
 equivalent . When verifying a link, choosing 'relative' means that the
-link *must* be relative to the source, so relative and absolute links
+link _must_ be relative to the source, so relative and absolute links
 are mutually exclusive.
 
 **Type:** (menu option)
@@ -2536,6 +2537,7 @@ absolute
 **Example impelementation:**
 
 {{< CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##) >}}
+
 ```cf3
 body link_from example
 {
@@ -2745,7 +2747,8 @@ File system attributes are not supported on all file systems and platforms.
 Hence, CFEngine will do it on a best effort basis (without any guarantees).
 
 **History:**
-* Added in CFEngine 3.27.0
+
+- Added in CFEngine 3.27.0
 
 #### immutable
 
@@ -2769,12 +2772,12 @@ that support it. CFEngine will simply ignore the immutable constraint if it's
 not supported and instead log a verbose message (to avoid too much noise).
 
 - If the immutable constraint is set to `"true"` and the promised file:
-    - **is not** immutable; then the agent will perform all other actions promised
-      before setting the immutable bit.
-    - **is** immutable; then the agent will temporarily clear the immutable bit.
-      The agent will do its best to keep the period of the temporarily cleared bit
-      as short as possible. The immutable bit may be temporarily cleared multiple
-      times during a files promise.
+  - **is not** immutable; then the agent will perform all other actions promised
+    before setting the immutable bit.
+  - **is** immutable; then the agent will temporarily clear the immutable bit.
+    The agent will do its best to keep the period of the temporarily cleared bit
+    as short as possible. The immutable bit may be temporarily cleared multiple
+    times during a files promise.
 - If the immutable constraint set to `"false"` and the promised file **is**
   immutable; then the immutable bit is cleared before performing any other
   actions promised.
@@ -2783,7 +2786,7 @@ not supported and instead log a verbose message (to avoid too much noise).
 
 **History:**
 
-* Added in CFEngine 3.27.0
+- Added in CFEngine 3.27.0
 
 ### perms
 
@@ -2917,8 +2920,8 @@ This is ignored on Windows, as the permission model uses ACLs.
 
 **History:**
 
-* Default value changed from `true` to `false` in CFEngine 3.20.0
-* Added warning if default value is not explicitly set in 3.18.2, 3.20.0
+- Default value changed from `true` to `false` in CFEngine 3.20.0
+- Added warning if default value is not explicitly set in 3.18.2, 3.20.0
 
 ### rename
 
@@ -3131,7 +3134,7 @@ promise, unless the promises are grouped into a block using:
 ```
 
 Variables, scalars and list variables are expanded within each promise
-based on the current scope of the calling promise.  If lines are
+based on the current scope of the calling promise. If lines are
 grouped into a block, the whole block is repeated when lists are
 expanded (see the Special Topics Guide on editing).
 
@@ -3208,8 +3211,8 @@ VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>
 #### template_method inline_mustache
 
 When [template_method][files#template_method] is `inline_mustache` the mustache input is not a file
-but a string and you must set `edit_template_string`.  The same rules apply
-for `inline_mustache` and `mustache`.  For mustache explanation see
+but a string and you must set `edit_template_string`. The same rules apply
+for `inline_mustache` and `mustache`. For mustache explanation see
 `template_method mustache`
 
 **Example:**
@@ -3247,14 +3250,14 @@ currently supported.
 
 ##### template_method mustache Variables
 
-The most basic tag type is the variable. A ```{{name}}``` tag in a basic
+The most basic tag type is the variable. A `{{name}}` tag in a basic
 template will try to find the name key in the current context. If there is no
 name key, the parent contexts will be checked recursively. If the top context is
 reached and the name key is still not found, nothing will be rendered.
 
 **All variables are HTML escaped by default**. If you want to return unescaped
-HTML, use the triple mustache: ```{{{name}}}``` or an ampersand
-(```{{& name}}```).
+HTML, use the triple mustache: `{{{name}}}` or an ampersand
+(`{{& name}}`).
 
 A variable "miss" returns an empty string.
 
@@ -3265,8 +3268,8 @@ A variable "miss" returns an empty string.
 Sections render blocks of text one or more times, depending on the value of the
 key in the current context.
 
-A section begins with a pound and ends with a slash. That is, ```{{#key}}```
-begins a "person" section while ```{{/key}}``` ends it.
+A section begins with a pound and ends with a slash. That is, `{{#key}}`
+begins a "person" section while `{{/key}}` ends it.
 
 The behavior of the section is determined by the value of the key.
 
@@ -3291,8 +3294,8 @@ single rendering of the block.
 ##### template_method mustache Inverted Sections
 
 An inverted section begins with a caret (hat) and ends with a slash. That is
-```{{^key}}``` begins a "key" inverted section while
-```{{/key}}``` ends it.
+`{{^key}}` begins a "key" inverted section while
+`{{/key}}` ends it.
 
 While sections can be used to render text one or more times based on the value
 of the key, inverted sections may render text once based on the inverse value of
@@ -3310,7 +3313,7 @@ Comments begin with a bang and are ignored. Comments may contain newlines.
 ##### template_method mustache Set Delimiter
 
 Set Delimiter tags start with an equal sign and change the tag delimiters from
-```{{``` and ```}}``` to custom strings.
+`{{` and `}}` to custom strings.
 
 {{< CFEngine_include_example(mustache_set_delimiters.cf) >}}
 
@@ -3330,7 +3333,7 @@ representation. Like output from `storejson()`.
 {{< CFEngine_include_example(mustache_extension_multiline_json.cf) >}}
 
 `$` variable prefix causing data to be rendered as compact json representation.
-Like output from `format()` with the ```%S``` format string.
+Like output from `format()` with the `%S` format string.
 
 {{< CFEngine_include_example(mustache_extension_compact_json.cf) >}}
 
@@ -3367,11 +3370,11 @@ something else.
 
 **Notes:**
 
-* The promised file *must* exist or the transformer will not be triggered.
+- The promised file _must_ exist or the transformer will not be triggered.
 
-* The transformer *should* result in the promised file no longer existing.
+- The transformer _should_ result in the promised file no longer existing.
 
-* By default, if the transformer returns zero, the promise will be considered
+- By default, if the transformer returns zero, the promise will be considered
   repaired, even if the transformation does not result in the promised file
   becoming absent. Depending on other context restrictions this may result in
   the transformer being executed during each agent execution. For example:
@@ -3380,14 +3383,14 @@ something else.
   transformer => "/bin/echo I found a file named $(this.promiser)",
   ```
 
-* The interpretation of the transformer return code can be managed similarly to
+- The interpretation of the transformer return code can be managed similarly to
   `commands` type promises by using a `classes` body with `kept_returncodes`,
   `repaired_returncodes` and `failed_returncodes` attributes.
 
-* `stdout` and `stderr` are redirected by CFEngine, and will not appear in any
+- `stdout` and `stderr` are redirected by CFEngine, and will not appear in any
   output unless you run `cf-agent` with verbose logging.
 
-* The command is not run in a shell. This means that you cannot perform file
+- The command is not run in a shell. This means that you cannot perform file
   redirection or create pipelines.
 
 **Type:** `string`

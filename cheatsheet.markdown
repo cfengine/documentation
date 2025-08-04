@@ -596,7 +596,6 @@ site.CFE_manuals_version {{ site.CFE_manuals_version }}
 ### Indention with included markdown
 
 1. Verify that the selected hosts are upgrading successfully.
-
    - Mission Portal [Inventory reporting interface][Reporting UI#inventory management]
 
    - [Inventory API][Inventory API]

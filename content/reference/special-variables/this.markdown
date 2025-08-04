@@ -68,13 +68,13 @@ to match multiple objects, the variable refers to the file that is currently
 making the promise. However, the variable can only be used in selected
 attributes:
 
-* `transformer`
-* `edit_template`
-* [`source`][files#source] in `copy_from`
-* `exec_program` in `file_select`
-* class names in [`body classes`][Promise types#classes]
-* logging attributes in [`body action`][Promise types#action]
-* promised service name in `service_method`
+- `transformer`
+- `edit_template`
+- [`source`][files#source] in `copy_from`
+- `exec_program` in `file_select`
+- class names in [`body classes`][Promise types#classes]
+- logging attributes in [`body action`][Promise types#action]
+- promised service name in `service_method`
 
 For example:
 
@@ -125,7 +125,7 @@ and is always an integer.
 This variable refers to the `ppid` (parent process ID) of the `cf-agent` program.
 
 **Note:** This variable is reported by the platform dependent `getpid` function,
-and is always an integer.  On the Windows platform it's always 0.
+and is always an integer. On the Windows platform it's always 0.
 
 ### this.service_policy
 
@@ -152,8 +152,8 @@ the service methods.
 
 **See also:**
 
-* `Services Bundles and Bodies` in the `Masterfiles Policy Framework standard
-  library`
+- `Services Bundles and Bodies` in the `Masterfiles Policy Framework standard
+library`
 
 ### this.this
 

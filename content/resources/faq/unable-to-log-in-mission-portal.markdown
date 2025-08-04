@@ -10,15 +10,15 @@ If your ssl certificate does not match the name used to access Mission Portal th
 
 Verify the name used to access mission portal resolves correctly:
 
-* `/etc/hosts` contains a proper entry with the fqdn used to access Mission
+- `/etc/hosts` contains a proper entry with the fqdn used to access Mission
   Portal listed in the second column.
 
 ```
 192.168.56.1 hub.cfengine.com hub
 ```
 
-* `hostname -f` returns the fqdn used to access Mission Portal.
-* `hostname -s` returns the short hostname
+- `hostname -f` returns the fqdn used to access Mission Portal.
+- `hostname -s` returns the short hostname
 
 ## Mis-aligned oauth configuration
 

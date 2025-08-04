@@ -263,7 +263,7 @@ Reference: [query api examples][SQL query examples]
 
 ### promise_log.jsonl
 
-**NOTE:*** These logs are purged upon collection by the hub.
+**NOTE:\*** These logs are purged upon collection by the hub.
 
 Beginning with Enterprise 3.9.0 we began logging promise outcomes to a JSON
 format in `$(sys.statedir)/promise_log.jsonl`

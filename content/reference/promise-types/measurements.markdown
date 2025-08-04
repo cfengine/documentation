@@ -81,7 +81,7 @@ what to do with the result afterwards.
 
 **History:**
 
-* Custom measurements open sourced in 3.12.0
+- Custom measurements open sourced in 3.12.0
 
 ## Architecture
 
@@ -101,7 +101,7 @@ cf-check dump /var/cfengine/state/cf_observations.lmdb
 
 By default in the [Masterfiles Policy Framework][Masterfiles Policy Framework], `cf-serverd` uses two variables, `def.default_data_select_host_monitoring_include` and `def.default_data_select_policy_hub_monitoring_include` to [configure which measurements will be included in enterprise reporting][mpf-configure-measurement-collection].
 
-On the hub side, reports are collected and measurements data is inserted into the [`MonitoringHG`][cfdb#Table: MonitoringYrMeta]  [`MonitoringMgMeta`][cfdb#Table: MonitoringMgMeta] and [`MonitoringYrMeta`][cfdb#Table: MonitoringYrMeta] tables of the Enterprise Hub database.
+On the hub side, reports are collected and measurements data is inserted into the [`MonitoringHG`][cfdb#Table: MonitoringYrMeta] [`MonitoringMgMeta`][cfdb#Table: MonitoringMgMeta] and [`MonitoringYrMeta`][cfdb#Table: MonitoringYrMeta] tables of the Enterprise Hub database.
 
 A diagnostic query to run with a [Custom Report in Mission Portal][Reporting UI].
 
@@ -119,7 +119,7 @@ data or not.
 SELECT * FROM monitoringmgmeta;
 ```
 
-Measurement data is presented in Mission Portal in the [`Measurements App`][Measurements App] and in the ```Measurements``` section of the [`Host info page`][Hosts#Host info].
+Measurement data is presented in Mission Portal in the [`Measurements App`][Measurements App] and in the `Measurements` section of the [`Host info page`][Hosts#Host info].
 
 When policy is changed in regards to monitor bundles, both `cf-monitord` _and_ `cf-serverd` should be restarted in order to receive the updated policy.
 
@@ -146,7 +146,7 @@ variable to which data will be reported. Log files are created under
 context called `mon`, analogous to the system variables in sys. Thus the values
 may be used in other promises in the form `$(mon.handle)`.
 
-***
+---
 
 ## Attributes
 
@@ -154,7 +154,7 @@ may be used in other promises in the form `$(mon.handle)`.
 
 **Description:** The datatype being collected.
 
-**Default:**  ```pipe```
+**Default:** `pipe`
 
 CFEngine treats all input using a stream abstraction. The preferred interface
 is files, since they can be read without incurring the cost of a process.
@@ -218,22 +218,22 @@ isolated value
 
 **Allowed input range:**
 
-* `scalar`
+- `scalar`
 
 A single value, with compressed statistics is retained. The value of the
 data is not expected to change much for the lifetime of the daemon (and
 so will be sampled less often by cf-monitord).
 
-* `static`
+- `static`
 
 A synonym for 'scalar'.
 
-* `log`
+- `log`
 
 The measured value is logged as an infinite time-series in
 `$(sys.workdir)/state/<handle>_measure.log`.
 
-* `weekly`
+- `weekly`
 
 A standard CFEngine two-dimensional time average (over a weekly period)
 is retained.
@@ -253,10 +253,10 @@ is retained.
 
 **Notes:**
 
-* Measurements with history type `weekly` _are collected_ by CFEngine Enterprise reporting.
-* Measurements with history type `static` are _not collected_ by CFEngine Enterprise reporting.
-* Measurements with history type `scalar` are _not collected_ by CFEngine Enterprise reporting.
-* Measurements with history type `log` are _not collected_ by CFEngine Enterprise reporting.
+- Measurements with history type `weekly` _are collected_ by CFEngine Enterprise reporting.
+- Measurements with history type `static` are _not collected_ by CFEngine Enterprise reporting.
+- Measurements with history type `scalar` are _not collected_ by CFEngine Enterprise reporting.
+- Measurements with history type `log` are _not collected_ by CFEngine Enterprise reporting.
 
 ### units
 

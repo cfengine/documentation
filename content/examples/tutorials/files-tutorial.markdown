@@ -6,9 +6,9 @@ sorting: 10
 
 ## Prerequisites
 
-* Read the tutorial [Tutorial for running examples][Examples and tutorials#Tutorial for running examples]
-* Ensure you have read and understand the section on [how to make an example stand alone][Examples and tutorials#Make the example stand alone]
-* Ensure you have read the note at the end of that section regarding modification of the body common control to the following:
+- Read the tutorial [Tutorial for running examples][Examples and tutorials#Tutorial for running examples]
+- Ensure you have read and understand the section on [how to make an example stand alone][Examples and tutorials#Make the example stand alone]
+- Ensure you have read the note at the end of that section regarding modification of the body common control to the following:
 
 ```cf3
 body common control
@@ -50,31 +50,31 @@ Note: The following workflow assumes the directory /home/user already exists. If
    ls /home/user/test_plain.txt
    ```
 
-5. Run the following command to instruct CFEngine to see if the file exists (the expected result is that no report will be generated (because the file does not exist):
+4. Run the following command to instruct CFEngine to see if the file exists (the expected result is that no report will be generated (because the file does not exist):
 
    ```command
    /var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
    ```
 
-6. Create a file for testing the example, using the following command:
+5. Create a file for testing the example, using the following command:
 
    ```command
    touch /home/user/test_plain.txt
    ```
 
-7. Run the following command to instruct CFEngine to search for the file (the expected result is that a report will be generated, because the file exists):
+6. Run the following command to instruct CFEngine to search for the file (the expected result is that a report will be generated, because the file exists):
 
    ```command
    /var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
    ```
 
-8. Double check the file exists, using the following command (the expected result is that there will be a file listed at the location /home/user/test_plain.txt):
+7. Double check the file exists, using the following command (the expected result is that there will be a file listed at the location /home/user/test_plain.txt):
 
    ```command
    ls /home/user/test_plain.txt
    ```
 
-9. Run the following command to remove the file:
+8. Run the following command to remove the file:
 
    ```command
    rm /home/user/test_plain.txt
@@ -113,6 +113,7 @@ body perms system
   mode => "0640";
 }
 ```
+
 ```console
 ls /home/user/test_plain.txt
 /var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence list_file,testbundle,list_file_2
@@ -169,6 +170,7 @@ body perms system
   mode  => "0640";
 }
 ```
+
 ```bash
 rm /home/user/test_plain.txt
 ls /home/user/test_plain.txt
@@ -178,6 +180,7 @@ ls /home/user/test_plain.txt
 ls /home/user/test_plain.txt
 rm /home/user/test_plain.txt
 ```
+
 (last command will throw an error because the file doesn't exist!)
 
 ## Modify a File

@@ -4,9 +4,9 @@ title: Windows registry examples
 sorting: 14
 ---
 
-* [Windows registry][Windows registry examples#Windows registry]
-* [unit_registry_cache.cf][Windows registry examples#unit_registry_cache.cf]
-* [unit_registry.cf][Windows registry examples#unit_registry.cf]
+- [Windows registry][Windows registry examples#Windows registry]
+- [unit_registry_cache.cf][Windows registry examples#unit_registry_cache.cf]
+- [unit_registry.cf][Windows registry examples#unit_registry.cf]
 
 ## Windows registry
 

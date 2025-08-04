@@ -25,7 +25,7 @@ The following table demonstrates the strings you can expect to be returned
 with different combinations of the arguments `type` and `detail`.
 
 | type         | detail | return        |
-|--------------|--------|---------------|
+| ------------ | ------ | ------------- |
 | string       | false  | string        |
 | string       | true   | policy string |
 | int          | false  | int           |
@@ -65,6 +65,6 @@ Output:
 
 **History:**
 
-* Introduced in 3.18.0
+- Introduced in 3.18.0
 
 **See also:** `is_type()`.

@@ -2,6 +2,7 @@
 layout: default
 title: Personal groups API
 ---
+
 The personal groups API enables creating host groups based on host filters (the same ones used in inventory reports).
 
 ## Create group
@@ -12,31 +13,31 @@ The personal groups API enables creating host groups based on host filters (the 
 
 **Parameters:**
 
-* **name** *(string)*
+- **name** _(string)_
   Group name.
 
-* **description** *(string)*
+- **description** _(string)_
   Group description.
 
-* **filter** *(json object)*  Group filter object. Includes inventory filter and classes filters
-    * **filter** *(json object)*  Optional parameter.
-      Inventory filter data. You can use array values for multiple filter, the logic will be AND. Format is
-    * **hostContextInclude** *(array)* Optional parameter.
-      Includes only results that concern hosts which have all specified CFEngine contexts (class) set.
-    * **hostContextExclude** *(array)*  Optional parameter.
-      Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one
-      of the specified contexts set will be excluded from the results.
-    * **hostFilter** *(json object)* Optional parameter.
-        * **includes** *(json object)* Optional parameter.
-          Object that specifies hosts to be included.
-            * **includeAdditionally** *(boolean)* Default: `false`
-              Defines if hosts will be added to the results returned by inventory filters or class filters.
-            * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
-              Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
-        * **excludes** *(json object)* Optional parameter.
-          Object that specifies hosts to be excluded.
-            * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
-              Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
+- **filter** _(json object)_ Group filter object. Includes inventory filter and classes filters
+  - **filter** _(json object)_ Optional parameter.
+    Inventory filter data. You can use array values for multiple filter, the logic will be AND. Format is
+  - **hostContextInclude** _(array)_ Optional parameter.
+    Includes only results that concern hosts which have all specified CFEngine contexts (class) set.
+  - **hostContextExclude** _(array)_ Optional parameter.
+    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one
+    of the specified contexts set will be excluded from the results.
+  - **hostFilter** _(json object)_ Optional parameter.
+    - **includes** _(json object)_ Optional parameter.
+      Object that specifies hosts to be included.
+      - **includeAdditionally** _(boolean)_ Default: `false`
+        Defines if hosts will be added to the results returned by inventory filters or class filters.
+      - **entries** _(json object)_ Filter entries object. Where the key is an entry type and the value is an array of strings
+        Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
+    - **excludes** _(json object)_ Optional parameter.
+      Object that specifies hosts to be excluded.
+      - **entries** _(json object)_ Filter entries object. Where the key is an entry type and the value is an array of strings
+        Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
   ```json
   {
@@ -74,7 +75,7 @@ The personal groups API enables creating host groups based on host filters (the 
 For filtering you can use the operators below:
 
 | Operator        |
-|-----------------|
+| --------------- |
 | <               |
 | >               |
 | =               |
@@ -158,33 +159,33 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Group id.
-* **name** *(string)*
+- **name** _(string)_
   Group name.
 
-* **description** *(string)*
+- **description** _(string)_
   Group description.
 
-* **filter** *(json object)*  Group filter object. Includes inventory filter and classes filters
-    * **filter** *(json object)*  Optional parameter.
-      Inventory filter data. You can use array values for multiple filter, the logic will be AND. Format is
-    * **hostContextInclude** *(array)* Optional parameter.
-      Includes only results that concern hosts which have all specified CFEngine contexts (class) set.
-    * **hostContextExclude** *(array)*  Optional parameter.
-      Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one
-      of the specified contexts set will be excluded from the results.
-    * **hostFilter** *(json object)* Optional parameter.
-        * **includes** *(json object)* Optional parameter.
-          Object that specifies hosts to be included.
-            * **includeAdditionally** *(boolean)* Default: `false`
-              Defines if hosts will be added to the results returned by inventory filters or class filters.
-            * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
-              Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
-        * **excludes** *(json object)* Optional parameter.
-          Object that specifies hosts to be excluded.
-            * **entries** *(json object)* Filter entries object. Where the key is an entry type and the value is an array of strings
-              Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
+- **filter** _(json object)_ Group filter object. Includes inventory filter and classes filters
+  - **filter** _(json object)_ Optional parameter.
+    Inventory filter data. You can use array values for multiple filter, the logic will be AND. Format is
+  - **hostContextInclude** _(array)_ Optional parameter.
+    Includes only results that concern hosts which have all specified CFEngine contexts (class) set.
+  - **hostContextExclude** _(array)_ Optional parameter.
+    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one
+    of the specified contexts set will be excluded from the results.
+  - **hostFilter** _(json object)_ Optional parameter.
+    - **includes** _(json object)_ Optional parameter.
+      Object that specifies hosts to be included.
+      - **includeAdditionally** _(boolean)_ Default: `false`
+        Defines if hosts will be added to the results returned by inventory filters or class filters.
+      - **entries** _(json object)_ Filter entries object. Where the key is an entry type and the value is an array of strings
+        Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
+    - **excludes** _(json object)_ Optional parameter.
+      Object that specifies hosts to be excluded.
+      - **entries** _(json object)_ Filter entries object. Where the key is an entry type and the value is an array of strings
+        Allowed entry types: `hostkey`, `hostname`, `ip`, `mac`, `ip_mask`
 
 ```json
 {
@@ -218,7 +219,7 @@ curl -k --user <username>:<password> \
 For filtering you can use the operators below:
 
 | Operator        |
-|-----------------|
+| --------------- |
 | <               |
 | >               |
 | =               |
@@ -273,7 +274,7 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Group id.
 
 **Example request:**
@@ -311,7 +312,7 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Group id.
 
 **Example request:**
@@ -382,7 +383,7 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Group id.
 
 **Example request:**

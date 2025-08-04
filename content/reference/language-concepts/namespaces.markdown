@@ -30,7 +30,7 @@ declared or until the end of the file.
 ## Methods|usebundle
 
 Methods promises assume you are referring to a bundle in the same namespace as
-the promiser. To refer to a bundle in another namespace you *must* specify the
+the promiser. To refer to a bundle in another namespace you _must_ specify the
 namespace by prefixing the bundle name with the namespace followed by a colon
 (`:`).
 
@@ -52,7 +52,7 @@ as the promiser but can also be referenced fully qualified with the namespace.
 {{< CFEngine_include_example(namespace_variable_references.cf) >}}
 
 [Special variables][Special variables] are always accessible without a namespace
-  prefix. For example, `this`, `mon`, `sys`, and `const` fall in this category.
+prefix. For example, `this`, `mon`, `sys`, and `const` fall in this category.
 
 {{< CFEngine_include_example(namespace_special_var_exception.cf) >}}
 

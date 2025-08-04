@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Checking status
+title: Checking status
 sorting: 20
 ---
 

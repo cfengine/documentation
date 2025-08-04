@@ -6,7 +6,7 @@ title: selectservers
 {{< CFEngine_function_prototype(hostlist, port, query, regex, maxbytes, array) >}}
 
 **Description:** Returns the number of tcp servers from `hostlist` which
-respond with a reply matching `regex` to a `query` send to ```port```, and
+respond with a reply matching `regex` to a `query` send to `port`, and
 populates `array` with their names.
 
 The regular expression is [anchored][anchored]. If `query` is empty, then no

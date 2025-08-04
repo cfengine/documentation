@@ -5,7 +5,7 @@ title: readtcp
 
 {{< CFEngine_function_prototype(hostnameip, port, sendstring, maxbytes) >}}
 
-**Description:** Connects to tcp ```port``` of `hostnameip`, sends `sendstring`,
+**Description:** Connects to tcp `port` of `hostnameip`, sends `sendstring`,
 reads at most `maxbytes` from the response and returns those.
 
 If the send string is empty, no data are sent or received from the

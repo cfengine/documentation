@@ -273,7 +273,7 @@ reports:
     "Tell me $(sys.hardware_mac[eth0])";
 ```
 
-**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
+**Note:** The _keys_ in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
 
 **History:** Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
@@ -933,17 +933,17 @@ Outputs:
 
 The following device flags are supported:
 
-* up
-* broadcast
-* debug
-* loopback
-* pointopoint
-* notrailers
-* running
-* noarp
-* promisc
-* allmulti
-* multicast
+- up
+- broadcast
+- debug
+- loopback
+- pointopoint
+- notrailers
+- running
+- noarp
+- promisc
+- allmulti
+- multicast
 
 **History:** Was introduced in 3.5.0 (2013)
 
@@ -994,10 +994,10 @@ e.g. `$(sys.ip2iface[1.2.3.4])`.
 **Notes:**
 
 - The list of addresses may be acquired with `getindices("sys.ip2iface")` (or
-from any of the other associative arrays). Only those interfaces which are
-marked as "up" and have an IP address will have entries.
+  from any of the other associative arrays). Only those interfaces which are
+  marked as "up" and have an IP address will have entries.
 
-- The *values* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be `wlan0_1`. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
+- The _values_ in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be `wlan0_1`. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
 
 **History:** Was introduced in 3.9.
 
@@ -1045,19 +1045,19 @@ are marked as "up" and have an IP address will be listed.
 The first octet of the IPv4 address of the system interface named as the
 associative array index, e.g. `$(ipv4_1[le0])` or `$(ipv4_1[xr1])`.
 
-**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
+**Note:** The _keys_ in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
 
 ### sys.ipv4_2[interface_name]
 
 The first two octets of the IPv4 address of the system interface named as the associative array index, e.g. `$(ipv4_2[le0])` or `$(ipv4_2[xr1])`.
 
-**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
+**Note:** The _keys_ in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
 
 ### sys.ipv4_3[interface_name]
 
 The first three octets of the IPv4 address of the system interface named as the associative array index, e.g. `$(ipv4_3[le0])` or `$(ipv4_3[xr1])`.
 
-**Note:** The *keys* in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
+**Note:** The _keys_ in this array are [canonified][canonify]. For example, the entry for `wlan0.1` would be found under the `wlan0_1` key. Ref: [CFE-4174](https://northerntech.atlassian.net/browse/CFE-4174).
 
 ### sys.key_digest
 
@@ -1186,7 +1186,7 @@ R: Ubuntu
 
 **History:**
 
-* 3.18.0 introduced
+- 3.18.0 introduced
 
 ### sys.os_release
 
@@ -1246,7 +1246,7 @@ R: 22
 
 **History:**
 
-* 3.18.0 introduced
+- 3.18.0 introduced
 
 ### sys.ostype
 
@@ -1271,7 +1271,7 @@ The name of the directory where CFEngine saves the daemon pid files.
 ### sys.policy_entry_basename
 
 The basename of the first policy file read by the agent. For example
-```promises.cf``` or ```update.cf```.
+`promises.cf` or `update.cf`.
 
 **See also:** [`sys.policy_entry_dirname`][sys.policy_entry_dirname] [`sys.policy_entry_filename`][sys.policy_entry_dirname]
 
@@ -1282,7 +1282,7 @@ The basename of the first policy file read by the agent. For example
 ### sys.policy_entry_dirname
 
 The full path to the directory containing the first policy file read by the agent. For example
-```/var/cfengine/inputs``` or ```~/.cfagent/inputs```.
+`/var/cfengine/inputs` or `~/.cfagent/inputs`.
 
 **See also:** [`sys.policy_entry_basename`][sys#sys.policy_entry_basename] [`sys.policy_entry_filename`][sys.policy_entry_filename]
 
@@ -1293,7 +1293,7 @@ The full path to the directory containing the first policy file read by the agen
 ### sys.policy_entry_filename
 
 The full path to the first policy file read by the agent. For example
-```/var/cfengine/inputs/promises.cf``` or ```~/.cfagent/inputs/promises.cf```.
+`/var/cfengine/inputs/promises.cf` or `~/.cfagent/inputs/promises.cf`.
 
 **See also:** [`sys.policy_entry_basename`][sys#sys.policy_entry_basename] [`sys.policy_entry_dirname`][sys#sys.policy_entry_dirname]
 
@@ -1305,7 +1305,7 @@ The full path to the first policy file read by the agent. For example
 
 IP of the machine acting as the policy server.
 
-```$(sys.workdir)/policy_server.dat``` stores bootstrap information. If bootstrapped to a hostname, the value is the current IP the hostname resolves to. If bootstrapped to an IP, the value is the stored IP. The variable is undefined if ```$(sys.workdir)/policy_server.dat``` does not exist or is empty.
+`$(sys.workdir)/policy_server.dat` stores bootstrap information. If bootstrapped to a hostname, the value is the current IP the hostname resolves to. If bootstrapped to an IP, the value is the stored IP. The variable is undefined if `$(sys.workdir)/policy_server.dat` does not exist or is empty.
 
 ```cf3
 reports:
@@ -1320,10 +1320,10 @@ reports:
 
 ### sys.policy_hub_port
 
-The default port which ```cf-agent``` will use by default when making outbound
-connections to ```cf-serverd```. This defaults to ```5308``` but can be
+The default port which `cf-agent` will use by default when making outbound
+connections to `cf-serverd`. This defaults to `5308` but can be
 overridden based on the data provided during bootstrap stored in
-```$(sys.workdir)/policy_server.dat```.
+`$(sys.workdir)/policy_server.dat`.
 
 **History:**
 
@@ -1398,7 +1398,7 @@ The name of the update policy file.
 ### sys.uptime
 
 A variable containing the number of minutes which the system has been
-online.  (Not implemented on the Windows platform.)
+online. (Not implemented on the Windows platform.)
 
 ```cf3
 # uptime = 69735
@@ -1504,4 +1504,5 @@ files (the directory name may change with the language of Windows):
 ```cf3
 # workdir = C:\Program Files\CFEngine
 ```
+
 -

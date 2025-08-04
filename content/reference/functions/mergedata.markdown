@@ -28,7 +28,7 @@ traditional list and array data types in CFEngine.
 - Bare values try to expand a named CFEngine data container
 - It is only possible to wrap data containers in the current namespace.
 - true and false are reserved bare values
-- In the event of key collision the *last* key merged wins
+- In the event of key collision the _last_ key merged wins
 
 {{< CFEngine_function_attributes() >}}
 
@@ -50,7 +50,7 @@ traditional list and array data types in CFEngine.
 
 **History:**
 
-* Introduced in CFEngine 3.6.0 (2014).
-* The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+- Introduced in CFEngine 3.6.0 (2014).
+- The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
 **See also:** [`data_expand()`][data_expand], `getindices()`, `getvalues()`, `readjson()`, `parsejson()`, `readyaml()`, `parseyaml()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

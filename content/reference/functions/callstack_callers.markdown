@@ -18,12 +18,12 @@ The returned data container is a list of key-value maps.
 The maps all have a `type` key and a `frame` key with a counter. For different
 frames along the stack frame path, the maps have additional keys:
 
-* whenever possible,
-* bodies: under key `body` the entry has a full dump of the body policy as JSON, same as what `cf-promises -p json` would produce, using the internal C function `BodyToJson()`. This may include the `line` and `sourcePath` to locate the exact code line.
-* bundles: under key `bundle` the entry has a full dump of the bundle policy as JSON, same as what `cf-promises -p json` would produce, using the internal C function `BundleToJson()`. This may include the `line` and `sourcePath` to locate the exact code line.
-* promise iteration: the `iteration_index` is recorded
-* promises: the `promise_type`, `promiser`, `promise_classes`, and `promise_comment` are recorded
-* promise sections (types): the `promise_type` is recorded
+- whenever possible,
+- bodies: under key `body` the entry has a full dump of the body policy as JSON, same as what `cf-promises -p json` would produce, using the internal C function `BodyToJson()`. This may include the `line` and `sourcePath` to locate the exact code line.
+- bundles: under key `bundle` the entry has a full dump of the bundle policy as JSON, same as what `cf-promises -p json` would produce, using the internal C function `BundleToJson()`. This may include the `line` and `sourcePath` to locate the exact code line.
+- promise iteration: the `iteration_index` is recorded
+- promises: the `promise_type`, `promiser`, `promise_classes`, and `promise_comment` are recorded
+- promise sections (types): the `promise_type` is recorded
 
 **Example:**
 

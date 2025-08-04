@@ -21,26 +21,26 @@ Note: See [Installing Community][Installing Community] for the community version
 
 1. On the designated Policy Server, install the `cfengine-nova-hub` package:
 
-    ```
-    [RedHat/CentOS/SUSE] # yum -y install /path/to/<server hub package>.rpm
-    [Debian/Ubuntu]      # apt -y install /path/to/<server hub package>.deb
-    ```
+   ```
+   [RedHat/CentOS/SUSE] # yum -y install /path/to/<server hub package>.rpm
+   [Debian/Ubuntu]      # apt -y install /path/to/<server hub package>.deb
+   ```
 
 2. On each Host, install the `cfengine-nova` package:
 
-    ```
-    [RedHat/CentOS/SUSE] # yum -y install /path/to/<agent package>.rpm
-    [Debian/Ubuntu]      # apt -y install /path/to/<agent package>.deb
-    ```
+   ```
+   [RedHat/CentOS/SUSE] # yum -y install /path/to/<agent package>.rpm
+   [Debian/Ubuntu]      # apt -y install /path/to/<agent package>.deb
+   ```
 
 Note: Install actions logged to `/var/logs/cfengine-install.log`.
 
 ## Bootstrap
 
-Bootstrapping a client means to configure it initially.  With CFEngine, the default bootstrap:
+Bootstrapping a client means to configure it initially. With CFEngine, the default bootstrap:
 
-* records the server's address (accessible as `sys.policy_hub`) and public key, and gives the server the client's key to establish trust (see [Bootstrapping][Client server communication#Bootstrapping])
-* copies **all** the contents of `/var/cfengine/masterfiles` on the policy server (AKA `sys.masterdir`) to `/var/cfengine/inputs` (AKA `sys.inputdir`).  See `update.cf` for details.
+- records the server's address (accessible as `sys.policy_hub`) and public key, and gives the server the client's key to establish trust (see [Bootstrapping][Client server communication#Bootstrapping])
+- copies **all** the contents of `/var/cfengine/masterfiles` on the policy server (AKA `sys.masterdir`) to `/var/cfengine/inputs` (AKA `sys.inputdir`). See `update.cf` for details.
 
 Run the bootstrap command, **first** on the policy server:
 
@@ -123,13 +123,13 @@ See: [What steps should I take after installing CFEngine Enterprise?][FAQ#What s
 
 Although most install procedures follow the same general workflow, there are several ways of installing CFEngine depending on your environment and which version of CFEngine you are using.
 
-* [Installing Enterprise for production][Installing Enterprise for production]
-* Install and test the latest version using our [native version][Installing Enterprise 25 Free], for free!
-* Installing CFEngine on virtual machine instances using [Amazon Web Services' (AWS) EC2 service][Using Amazon Web Services]
-	* This is especially useful for people running Windows on their workstation or laptop.
-* Install and test the latest version using our pre-packaged [Vagrant environment][Using Vagrant]
-* [Installing CFEngine Community Edition][Installing Community]
+- [Installing Enterprise for production][Installing Enterprise for production]
+- Install and test the latest version using our [native version][Installing Enterprise 25 Free], for free!
+- Installing CFEngine on virtual machine instances using [Amazon Web Services' (AWS) EC2 service][Using Amazon Web Services]
+  - This is especially useful for people running Windows on their workstation or laptop.
+- Install and test the latest version using our pre-packaged [Vagrant environment][Using Vagrant]
+- [Installing CFEngine Community Edition][Installing Community]
 
 ## Next steps
 
-* Learn about [Writing and serving policy][Writing and serving policy]
+- Learn about [Writing and serving policy][Writing and serving policy]

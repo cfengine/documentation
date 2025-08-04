@@ -52,8 +52,8 @@ pg_restore -Fc cfdb.bak
 
 ### Mission Portal
 
- `cfmp` and `cfsettings` store Mission Portals configuration information for
- example shared dashboards.
+`cfmp` and `cfsettings` store Mission Portals configuration information for
+example shared dashboards.
 
 **Backup:**
 

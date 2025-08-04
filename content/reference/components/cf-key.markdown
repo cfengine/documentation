@@ -8,7 +8,7 @@ The CFEngine key generator makes key pairs for [remote authentication][Client se
 
 **Notes:**
 
-* `cf-key` always considers the class ```keygenerator``` to be defined.
+- `cf-key` always considers the class `keygenerator` to be defined.
 
 ## Command reference
 

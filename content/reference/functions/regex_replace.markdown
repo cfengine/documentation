@@ -14,13 +14,13 @@ string in any order. Consult http://pcre.org/pcre.txt for the exact
 meaning of the uppercase options, and note that some can be turned on
 inside the regular expression, e.g. `(?s)`.
 
-* `g`: global, replace all matches
-* `i`: case-insensitive
-* `m`: multiline (`PCRE_MULTILINE`)
-* `s`: dot matches newlines too (`PCRE_DOTALL`)
-* `x`: extended regular expressions (`PCRE_EXTENDED`, very nice for readability)
-* `U`: ungreedy (`PCRE_UNGREEDY`)
-* `T`: disables special characters and backreferences in the replacement string
+- `g`: global, replace all matches
+- `i`: case-insensitive
+- `m`: multiline (`PCRE_MULTILINE`)
+- `s`: dot matches newlines too (`PCRE_DOTALL`)
+- `x`: extended regular expressions (`PCRE_EXTENDED`, very nice for readability)
+- `U`: ungreedy (`PCRE_UNGREEDY`)
+- `T`: disables special characters and backreferences in the replacement string
 
 In the replacement, `$1` and `\1` refer to the first capture group.
 `$2` and `\2` refer to the second, and so on, except there is no `\10`

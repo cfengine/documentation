@@ -8,7 +8,7 @@ title: remotescalar
 {{< CFEngine_function_prototype(id, server, encrypt) >}}
 
 **Description:** Returns a scalar value identified by `id` from a remote CFEngine
-`server`. Communication is encrytped depending on ```encrypt```.
+`server`. Communication is encrytped depending on `encrypt`.
 
 If the identifier matches a persistent scalar variable then this will be returned
 preferentially. If no such variable is found, then the server will look for a

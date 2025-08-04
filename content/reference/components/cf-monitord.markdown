@@ -17,7 +17,7 @@ affected by `common` and `monitor` control bodies.
 
 **Notes:**
 
-* `cf-monitord` always considers the class `monitor` to be defined.
+- `cf-monitord` always considers the class `monitor` to be defined.
 
 ## Command reference
 
@@ -34,42 +34,42 @@ currently has less support for out-of-the-box probes.
 3.  otherprocs: Non-privileged process
 4.  diskfree: Free disk on / partition
 5.  loadavg: % kernel load utilization
-6.  netbiosns\_in: netbios name lookups (in)
-7.  netbiosns\_out: netbios name lookups (out)
-8.  netbiosdgm\_in: netbios name datagrams (in)
-9.  netbiosdgm\_out: netbios name datagrams (out)
-10. netbiosssn\_in: netbios name sessions (in)
-11. netbiosssn\_out: netbios name sessions (out)
-12. irc\_in: IRC connections (in)
-13. irc\_out: IRC connections (out)
-14. cfengine\_in: CFEngine connections (in)
-15. cfengine\_out: CFEngine connections (out)
-16. nfsd\_in: nfs connections (in)
-17. nfsd\_out: nfs connections (out)
-18. smtp\_in: smtp connections (in)
-19. smtp\_out: smtp connections (out)
-20. www\_in: www connections (in)
-21. www\_out: www connections (out)
-22. ftp\_in: ftp connections (in)
-23. ftp\_out: ftp connections (out)
-24. ssh\_in: ssh connections (in)
-25. ssh\_out: ssh connections (out)
-26. wwws\_in: wwws connections (in)
-27. wwws\_out: wwws connections (out)
-28. icmp\_in: ICMP packets (in)
-29. icmp\_out: ICMP packets (out)
-30. udp\_in: UDP dgrams (in)
-31. udp\_out: UDP dgrams (out)
-32. dns\_in: DNS requests (in)
-33. dns\_out: DNS requests (out)
-34. tcpsyn\_in: TCP sessions (in)
-35. tcpsyn\_out: TCP sessions (out)
-36. tcpack\_in: TCP acks (in)
-37. tcpack\_out: TCP acks (out)
-38. tcpfin\_in: TCP finish (in)
-39. tcpfin\_out: TCP finish (out)
-40. tcpmisc\_in: TCP misc (in)
-41. tcpmisc\_out: TCP misc (out)
+6.  netbiosns_in: netbios name lookups (in)
+7.  netbiosns_out: netbios name lookups (out)
+8.  netbiosdgm_in: netbios name datagrams (in)
+9.  netbiosdgm_out: netbios name datagrams (out)
+10. netbiosssn_in: netbios name sessions (in)
+11. netbiosssn_out: netbios name sessions (out)
+12. irc_in: IRC connections (in)
+13. irc_out: IRC connections (out)
+14. cfengine_in: CFEngine connections (in)
+15. cfengine_out: CFEngine connections (out)
+16. nfsd_in: nfs connections (in)
+17. nfsd_out: nfs connections (out)
+18. smtp_in: smtp connections (in)
+19. smtp_out: smtp connections (out)
+20. www_in: www connections (in)
+21. www_out: www connections (out)
+22. ftp_in: ftp connections (in)
+23. ftp_out: ftp connections (out)
+24. ssh_in: ssh connections (in)
+25. ssh_out: ssh connections (out)
+26. wwws_in: wwws connections (in)
+27. wwws_out: wwws connections (out)
+28. icmp_in: ICMP packets (in)
+29. icmp_out: ICMP packets (out)
+30. udp_in: UDP dgrams (in)
+31. udp_out: UDP dgrams (out)
+32. dns_in: DNS requests (in)
+33. dns_out: DNS requests (out)
+34. tcpsyn_in: TCP sessions (in)
+35. tcpsyn_out: TCP sessions (out)
+36. tcpack_in: TCP acks (in)
+37. tcpack_out: TCP acks (out)
+38. tcpfin_in: TCP finish (in)
+39. tcpfin_out: TCP finish (out)
+40. tcpmisc_in: TCP misc (in)
+41. tcpmisc_out: TCP misc (out)
 42. webaccess: Webserver hits
 43. weberrors: Webserver errors
 44. syslog: New log entries (Syslog)
@@ -83,32 +83,32 @@ currently has less support for out-of-the-box probes.
 52. cpu1: %CPU utilization core 1
 53. cpu2: %CPU utilization core 2
 54. cpu3: %CPU utilization core 3
-55. microsoft\_ds\_out: Samba/MS\_ds name sessions (out)
-56. www\_alt\_in: Alternative web service connections (in)
-57. www\_alt\_out: Alternative web client connections (out)
-58. imaps\_in: encrypted imap mail service sessions (in)
-59. imaps\_out: encrypted imap mail client sessions (out)
-60. ldap\_in: LDAP directory service service sessions (in)
-61. ldap\_out: LDAP directory service client sessions (out)
-62. ldaps\_in: LDAP directory service service sessions (in)
-63. ldaps\_out: LDAP directory service client sessions (out)
-64. mongo\_in: Mongo database service sessions (in)
-65. mongo\_out: Mongo database client sessions (out)
-66. mysql\_in: MySQL database service sessions (in)
-67. mysql\_out: MySQL database client sessions (out)
-68. postgres\_in: PostgreSQL database service sessions (in)
-69. postgres\_out: PostgreSQL database client sessions (out)
-70. ipp\_in: Internet Printer Protocol (in)
-71. ipp\_out: Internet Printer Protocol (out)
-72. io\_reads: Number of I/O reads
-73. io\_writes: Number of I/O writes
-74. io\_readdata: Aggregate mount of data read across all devices
-75. io\_writtendata: Aggregate amount of data written across all devices
-76. mem\_total: Total system memory
-77. mem\_free: Free system memory
-78. mem\_cached: Size of disk cache
-79. mem\_swap: Total swap size
-80. mem\_freeswap: Free swap size
+55. microsoft_ds_out: Samba/MS_ds name sessions (out)
+56. www_alt_in: Alternative web service connections (in)
+57. www_alt_out: Alternative web client connections (out)
+58. imaps_in: encrypted imap mail service sessions (in)
+59. imaps_out: encrypted imap mail client sessions (out)
+60. ldap_in: LDAP directory service service sessions (in)
+61. ldap_out: LDAP directory service client sessions (out)
+62. ldaps_in: LDAP directory service service sessions (in)
+63. ldaps_out: LDAP directory service client sessions (out)
+64. mongo_in: Mongo database service sessions (in)
+65. mongo_out: Mongo database client sessions (out)
+66. mysql_in: MySQL database service sessions (in)
+67. mysql_out: MySQL database client sessions (out)
+68. postgres_in: PostgreSQL database service sessions (in)
+69. postgres_out: PostgreSQL database client sessions (out)
+70. ipp_in: Internet Printer Protocol (in)
+71. ipp_out: Internet Printer Protocol (out)
+72. io_reads: Number of I/O reads
+73. io_writes: Number of I/O writes
+74. io_readdata: Aggregate mount of data read across all devices
+75. io_writtendata: Aggregate amount of data written across all devices
+76. mem_total: Total system memory
+77. mem_free: Free system memory
+78. mem_cached: Size of disk cache
+79. mem_swap: Total swap size
+80. mem_freeswap: Free swap size
 
 Slots with a higher number are used for custom measurement promises in
 CFEngine Enterprise.
@@ -122,14 +122,14 @@ into agent variables in the `$(mon.name)` context.
 
 `cf-monitord` records data in `$(sys.statedir)` (typically `/var/cfengine/state`).
 
-* `cf_observations.lmdb`
-* `nova_measures.lmdb`
-* `ts_key`
-* `env_data`
-* `cf_incoming.<service id>`
-* `cf_outgoing.<service id>`
-* `cf_state.lmdb`
-* `history.lmdb`
+- `cf_observations.lmdb`
+- `nova_measures.lmdb`
+- `ts_key`
+- `env_data`
+- `cf_incoming.<service id>`
+- `cf_outgoing.<service id>`
+- `cf_state.lmdb`
+- `history.lmdb`
 
 ## Statistical classes
 
@@ -140,18 +140,18 @@ depending on the measurement.
 
 The following suffixes may be used when defining classes:
 
-* `_high` :: The last measurement seemed high. It was greater than the average of all time and also greater than the recent average. This could indicate that the measured value is experiencing a "spike" or trending in a positive direction.
-* `_low` :: The last measurement was low. It was lower than the average of all time and also lower than the recent average. This could indicate that the measured value is experiencing a "dip" or trending in a negative direction.
-* `_normal` :: The value was neither high nor low, (as per how those are described above).
-* `_ldt` :: A leap (step) detected, meaning a distinct (significant) change in the average.
-* `_dev1` :: The last measurement was at least 1 standard deviation higher/lower than the average.
-* `_dev2` :: The last measurement was at least 2 standard deviations higher/lower than the average. These classes are persistently defined for a number of minutes.
-* `_anomaly` :: The last measurement was at least 3 standard deviations than the average. These classes are persistently defined for a number of minutes.
-* `_microanomaly` :: The last measurement was at least 2 standard deviations higher than the average.
+- `_high` :: The last measurement seemed high. It was greater than the average of all time and also greater than the recent average. This could indicate that the measured value is experiencing a "spike" or trending in a positive direction.
+- `_low` :: The last measurement was low. It was lower than the average of all time and also lower than the recent average. This could indicate that the measured value is experiencing a "dip" or trending in a negative direction.
+- `_normal` :: The value was neither high nor low, (as per how those are described above).
+- `_ldt` :: A leap (step) detected, meaning a distinct (significant) change in the average.
+- `_dev1` :: The last measurement was at least 1 standard deviation higher/lower than the average.
+- `_dev2` :: The last measurement was at least 2 standard deviations higher/lower than the average. These classes are persistently defined for a number of minutes.
+- `_anomaly` :: The last measurement was at least 3 standard deviations than the average. These classes are persistently defined for a number of minutes.
+- `_microanomaly` :: The last measurement was at least 2 standard deviations higher than the average.
 
 The following prefixes may be used when defining classes:
 
-* `entropy_` ::
+- `entropy_` ::
 
 Note: These suffixes and prefixes may be combined, resulting in a class like `rootprocs_high`, `loadavg_high_ldt`, `cpu1_high_dev3`, and `entropy_postgresql_out_low`.
 

@@ -11,10 +11,10 @@ title: network_connections
 
 The returned data container has four keys:
 
-* `tcp` has all the TCP connections over IPv4
-* `tcp6` has all the TCP connections over IPv6
-* `udp` has all the UDP connections over IPv4
-* `udp6` has all the UDP connections over IPv6
+- `tcp` has all the TCP connections over IPv4
+- `tcp6` has all the TCP connections over IPv6
+- `udp` has all the UDP connections over IPv4
+- `udp6` has all the UDP connections over IPv6
 
 Under each key, there's an array of connection objects that all look like this:
 

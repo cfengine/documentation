@@ -17,4 +17,4 @@ This function checks whether a `hostname`:`port` is connectable within `timeout`
 
 **History:**
 
-* Introduced in 3.26.0
+- Introduced in 3.26.0

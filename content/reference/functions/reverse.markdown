@@ -13,8 +13,8 @@ This is a simple function to reverse a list.
 
 **Arguments**:
 
-* list : The name of the list variable to check, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+- list : The name of the list variable to check, in the range
+  `[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example:**
 

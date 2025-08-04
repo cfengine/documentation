@@ -9,13 +9,13 @@ deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.
 
 It also provides instructions for the following:
 
-* **Install CFEngine on a policy server (hub) and on a Host (client).**
-A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts.
-Hosts are clients that retrieve and execute promises.
-* **Bootstrap the policy server to itself and then bootstrap the Host(s) to the Policy Server.**
-Bootstrapping establishes a trust relationship between the Policy Server
-and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company.
-Bootstrapping completes the installation process.
+- **Install CFEngine on a policy server (hub) and on a Host (client).**
+  A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts.
+  Hosts are clients that retrieve and execute promises.
+- **Bootstrap the policy server to itself and then bootstrap the Host(s) to the Policy Server.**
+  Bootstrapping establishes a trust relationship between the Policy Server
+  and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company.
+  Bootstrapping completes the installation process.
 
 <hr>
 ## Quick setup with cf-remote
@@ -29,6 +29,7 @@ For example, here we install CFEngine Community {{site.cfengine.branch}}.{{site.
 ```command
 cf-remote --version={{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}} install --edition community --clients 192.168.56.13,192.168.56.14 --bootstrap 192.168.56.13
 ```
+
 ## 1. Download packages
 
 Packages can be downloaded from the [community download page][community download page] or using `cf-remote`.
@@ -50,7 +51,7 @@ Copied to '/tmp/cfengine-community_3.24.1-1.ubuntu24_amd64.deb' (Checksum OK).
 
 ## 2. Install CFEngine on a policy server
 
-Install the package on a machine designated as a Policy Server.  A Policy Server is a CFEngine instance that contains promises (business policy)
+Install the package on a machine designated as a Policy Server. A Policy Server is a CFEngine instance that contains promises (business policy)
 that get deployed to Hosts. Hosts are instances (clients) that retrieve and execute promises.
 
 Choose the right command for your operating system:

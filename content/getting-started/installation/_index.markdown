@@ -25,10 +25,10 @@ We will use an Ubuntu 20.04 Linux virtual machine as the CFEngine Hub, and we wi
 
 If you've never set up a virtual machine (VM) before, these are some easy ways:
 
-* Cloud: Create a VM in Digital Ocean, AWS, or any other cloud vendor. **(Recommended)**
-* Mac OS: Install and run Vagrant and Virtual Box.
-* Linux: Install and run Vagrant and libvirt.
-* Windows: Use Windows Subsystem for Linux (WSL).
+- Cloud: Create a VM in Digital Ocean, AWS, or any other cloud vendor. **(Recommended)**
+- Mac OS: Install and run Vagrant and Virtual Box.
+- Linux: Install and run Vagrant and libvirt.
+- Windows: Use Windows Subsystem for Linux (WSL).
 
 We recommend using Digital Ocean because it is very easy to use the GUI, and spawn a virtual without installing something locally.
 However, since it requires you to create an account, some users might prefer to install virtualization software and run everything themself.
@@ -173,10 +173,10 @@ ssh root@192.168.56.2 -C "echo hello"
 
 If you see `hello` printed, it worked! If not, these are some of the more common error scenarios:
 
-* If it prints `Connection refused`, it might be because you just started the machine, wait a bit and try again.
-* If it hangs for many seconds, it might mean that you typed the wrong IP address (`Ctrl + C` to interrupt).
-* If it prints `Connection timed out`, you are most likely using the wrong IP address.
-* If it gives any other errors, such as `Permission denied (publickey)` you may be using the wrong user / SSH key or IP address. Double check and try again.
+- If it prints `Connection refused`, it might be because you just started the machine, wait a bit and try again.
+- If it hangs for many seconds, it might mean that you typed the wrong IP address (`Ctrl + C` to interrupt).
+- If it prints `Connection timed out`, you are most likely using the wrong IP address.
+- If it gives any other errors, such as `Permission denied (publickey)` you may be using the wrong user / SSH key or IP address. Double check and try again.
 
 After you see ssh working, save the host in `cf-remote` so you can copy-paste our later commands:
 

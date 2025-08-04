@@ -4,15 +4,15 @@ title: Network examples
 sorting: 9
 ---
 
-* [Find MAC address][Network examples#Find MAC address]
-* [Client-server example][Network examples#Client-server example]
-* [Read from a TCP socket][Network examples#Read from a TCP socket]
-* [Set up a PXE boot server][Network examples#Set up a PXE boot server]
-* [Resolver management][Network examples#Resolver management]
-* [Mount NFS filesystem][Network examples#Mount NFS filesystem]
-* [Unmount NFS filesystem][Network examples#Unmount NFS filesystem]
-* Find the MAC address
-* Mount NFS filesystem
+- [Find MAC address][Network examples#Find MAC address]
+- [Client-server example][Network examples#Client-server example]
+- [Read from a TCP socket][Network examples#Read from a TCP socket]
+- [Set up a PXE boot server][Network examples#Set up a PXE boot server]
+- [Resolver management][Network examples#Resolver management]
+- [Mount NFS filesystem][Network examples#Mount NFS filesystem]
+- [Unmount NFS filesystem][Network examples#Unmount NFS filesystem]
+- Find the MAC address
+- Mount NFS filesystem
 
 ## Find MAC address
 

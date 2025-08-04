@@ -79,4 +79,4 @@ Thus, it is often more intuitive to use the `>=` operator to mean all versions a
 
 **History:**
 
-* Introduced in 3.23.0
+- Introduced in 3.23.0

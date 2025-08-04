@@ -35,10 +35,10 @@ HTTP 200 Ok
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 200 OK | SSH key successfully created |
-| 500 Internal server error | Internal server error |
+| HTTP response code        | Description                  |
+| ------------------------- | ---------------------------- |
+| 200 OK                    | SSH key successfully created |
+| 500 Internal server error | Internal server error        |
 
 ### Get SSH keys list
 
@@ -76,9 +76,9 @@ HTTP 200 OK
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 200 Ok | Successful response  |
+| HTTP response code        | Description           |
+| ------------------------- | --------------------- |
+| 200 Ok                    | Successful response   |
 | 500 Internal server error | Internal server error |
 
 ### Get SSH key
@@ -89,7 +89,7 @@ HTTP 200 OK
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   SSH key ID. Required.
 
 **Example request (curl):**
@@ -114,10 +114,10 @@ HTTP 200 OK
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 200 Ok | Successful response  |
-| 404 Not found | SSH key not found |
+| HTTP response code        | Description           |
+| ------------------------- | --------------------- |
+| 200 Ok                    | Successful response   |
+| 404 Not found             | SSH key not found     |
 | 500 Internal server error | Internal server error |
 
 ### Delete SSH key
@@ -128,7 +128,7 @@ HTTP 200 OK
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   SSH key ID. Required.
 
 **Example request (curl):**
@@ -147,8 +147,8 @@ HTTP 204 No content
 
 **Responses:**
 
-| HTTP response code | Description |
-|--------|-------------|
-| 204 No content | SSH key successfully deleted |
-| 404 Not found | SSH key not found |
-| 500 Internal server error | Internal server error |
+| HTTP response code        | Description                  |
+| ------------------------- | ---------------------------- |
+| 204 No content            | SSH key successfully deleted |
+| 404 Not found             | SSH key not found            |
+| 500 Internal server error | Internal server error        |

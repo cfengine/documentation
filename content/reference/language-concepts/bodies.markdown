@@ -47,7 +47,7 @@ body perms mog(mode,user,group)
 }
 ```
 
-Like [bundles][bundles], bodies have a *type*. The type of the body has to match the left-hand side of the promise attribute in which it is used. In this case, `files` promises have an attribute `perms` that can be associated with any body of type `perms`.
+Like [bundles][bundles], bodies have a _type_. The type of the body has to match the left-hand side of the promise attribute in which it is used. In this case, `files` promises have an attribute `perms` that can be associated with any body of type `perms`.
 
 The attributes within the body are then type specific. Bodies of type `perms` consist of the file permissions, the file owner, and the file group, which the instance `system` sets to `644`, `root` and `root`, respectively.
 
@@ -139,7 +139,7 @@ whatever `$(x)` is, **overwriting** the value from `system`. Then
 The `mode` attribute will be **overwritten** to `645` in `system_once`
 and then **overwritten** to `646` in `system_twice`.
 
-If this gets complicated, just think *"latest wins"*.
+If this gets complicated, just think _"latest wins"_.
 
 #### Implicit, Control Bodies
 

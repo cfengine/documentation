@@ -8,10 +8,10 @@ sorting: 90
 
 CFEngine has several extensions to the mustache standard.
 
-* `-top-` special key representing the complete data given.
-* `%` variable prefix causing data to be rendered as multi-line json representation.
-* `$` variable prefix causing data to be rendered as compact json representation.
-* `@` expands the current key being iterated.
+- `-top-` special key representing the complete data given.
+- `%` variable prefix causing data to be rendered as multi-line json representation.
+- `$` variable prefix causing data to be rendered as compact json representation.
+- `@` expands the current key being iterated.
 
 **See also:** [`template_method` `mustache` extensions][files#template_method mustache extensions]
 
@@ -41,11 +41,11 @@ Version: CFEngine {{#classes.enterprise}}Enterprise{{/classes.enterprise}} {{var
 
 ## How do I render a section only if a given class is not defined?
 
-In the mustache documentation this is referred to as an *inverted section*.
+In the mustache documentation this is referred to as an _inverted section_.
 
-In this mustache example the word ```Enterprise``` will only be rendered if the
-class ```cfengine_enterprise``` is defined and the word ```Community``` will
-only be rendered if the class ```cfengine_enterprise``` is not defined.
+In this mustache example the word `Enterprise` will only be rendered if the
+class `cfengine_enterprise` is defined and the word `Community` will
+only be rendered if the class `cfengine_enterprise` is not defined.
 
 This template should not be passed a data container; it uses the `datastate()`
 of the CFEngine system. That's where `classes.cfengine_enterprise` and
@@ -77,7 +77,7 @@ of the CFEngine system. That's where `vars.mon.listening_tcp4_ports` came from.
 
 ## How can I access keys when iterating over a dict?
 
-In CFEngine, the `@` symbol expands to the current key  when iterating over a dict.
+In CFEngine, the `@` symbol expands to the current key when iterating over a dict.
 
 {{< CFEngine_include_example(mustache_extension_expand_key.cf) >}}
 

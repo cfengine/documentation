@@ -24,7 +24,7 @@ Output:
 
 **History:**
 
-* Function added in 3.6.0.
-* `optional_tag` added in 3.10.0
+- Function added in 3.6.0.
+- `optional_tag` added in 3.10.0
 
 **See also:** `getvariablemetatags()`

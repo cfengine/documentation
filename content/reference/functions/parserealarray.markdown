@@ -21,13 +21,13 @@ split into fields. Using the empty string (`""`) indicates no comments.
 
 **Arguments**:
 
-* `array` : Array identifier to populate, in the range `[a-zA-Z0-9_$(){}\[\].:]+`
-* `input` : A string to parse for input data, in the range `"?(/.*)`
-* `comment` : [Unanchored][unanchored] regex matching comments, in the range `.*`
-* `split` : [Unanchored][unanchored] regex to split data, in the range `.*`
-* `maxentries` : Maximum number of entries to read, in the range
-`0,99999999999`
-* `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
+- `array` : Array identifier to populate, in the range `[a-zA-Z0-9_$(){}\[\].:]+`
+- `input` : A string to parse for input data, in the range `"?(/.*)`
+- `comment` : [Unanchored][unanchored] regex matching comments, in the range `.*`
+- `split` : [Unanchored][unanchored] regex to split data, in the range `.*`
+- `maxentries` : Maximum number of entries to read, in the range
+  `0,99999999999`
+- `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
 
 **Example:**
 

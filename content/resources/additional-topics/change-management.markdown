@@ -47,7 +47,7 @@ management reprisals, preferring to err on the side of caution, it is necessary
 to evaluate the best strategy for avoiding exposure to risk. To use automation
 effectively, it makes sense to separate change management into two phases:
 
-* Change of policy itself - which defines desired state.
+- Change of policy itself - which defines desired state.
 
   Policy has a strategic impact, and its change deserves a process that includes
   expert opinions, staged testing and ultimately a phased deployment during a
@@ -82,9 +82,9 @@ is desirable to exercise due diligence in the design of a system's intended
 state, but we must be ready to quickly repair faults that might disrupt business
 services. We need to distinguish:
 
-* Purposeful change of an intended policy (planning).
+- Purposeful change of an intended policy (planning).
 
-* Change in the actual system state and behaviour (implementation and
+- Change in the actual system state and behaviour (implementation and
   maintenance).
 
 What is intended and what actually happens should not be confused. It is
@@ -100,8 +100,8 @@ Time scales are crucially important in engineering, and deserve equal importance
 in IT management. Ask yourself: how do you know if something is changing or not?
 You've probably heard catchetisms such as:
 
-* A watched kettle never boils.
-* Tempus fugit (time flies).
+- A watched kettle never boils.
+- Tempus fugit (time flies).
 
 These phrases capture the idea that, if we expect to see change at a certain
 rate, it is possible to miss changes that occur at either a faster or slower
@@ -381,19 +381,19 @@ handle incidents automatically, thus taking them off the list of things to worry
 about. Changes can introduce new incidents, so it is important to test changes
 to promises in advance.
 
-* Formulate proposed intentions in the form of promises.
+- Formulate proposed intentions in the form of promises.
 
-* Discuss the impact of these in your team of CFEngine Mission Specialists (more
+- Discuss the impact of these in your team of CFEngine Mission Specialists (more
   than one pair of eyes).
 
-* Construct a test environment and examine the effect of these promises in
+- Construct a test environment and examine the effect of these promises in
   practice.
 
-* Commit the changes to promises in version control, e.g. subversion.
+- Commit the changes to promises in version control, e.g. subversion.
 
-* Deploy promises changes into live environment on a small number of machines.
+- Deploy promises changes into live environment on a small number of machines.
 
-* Finally deploy to all machines.
+- Finally deploy to all machines.
 
 At each stage, we make careful, low-risk incursions on the system and see how it
 responds. Note that some side-effects could take days to emerge, so the schedule
@@ -403,46 +403,49 @@ for change should account for the expected impact.
 
 The following sequence forms a checklist for deploying successful policy change:
 
-* Discuss the impact of changes in the team.
+- Discuss the impact of changes in the team.
 
-* Construct a test environment and examine the effect of these promises in
+- Construct a test environment and examine the effect of these promises in
   practice.
 
-* Make a change in the CFEngine input files.
+- Make a change in the CFEngine input files.
 
-* Run the configuration through `cf-promises --inform` to check for problems.
+- Run the configuration through `cf-promises --inform` to check for problems.
 
-* Commit the tested changes to promises in version control, e.g. subversion.
+- Commit the tested changes to promises in version control, e.g. subversion.
 
-* Move the policy to a test system.
+- Move the policy to a test system.
 
-* Try running the configuration in dry-run model: `cf-agent --dry-run`
+- Try running the configuration in dry-run model: `cf-agent --dry-run`
 
-* Try running the policy once on a single system, being observant of unexpected
+- Try running the policy once on a single system, being observant of unexpected
   behaviour.
 
-* Try running the policy on a small number of systems.
+- Try running the policy on a small number of systems.
 
-* Move the policy to the production environment.
+- Move the policy to the production environment.
 
-* If possible, test on one or a few machines before releasing for general use.
+- If possible, test on one or a few machines before releasing for general use.
 
 Be aware of the differences in your environment. A decision will not necessarily
 work everywhere in the same way.
 
 Footnotes
 
-[^1]: For example, suppose a process runs out of control and starts filling up
+[^1]:
+    For example, suppose a process runs out of control and starts filling up
     logs with error messages - the disk might fill up and cause a much more
     serious problem, such as a total system failure with crash, if this were
     left unattended.
 
-[^2]: Nyquist's theorem is the main reason why CD-players sample at 44kHz in
+[^2]:
+    Nyquist's theorem is the main reason why CD-players sample at 44kHz in
     order to cover the audible spectrum of 22kHz for most young people. Even
     though hearing deteriorates with age, and most people cannot hear this well,
     it provides a quality margin.
 
-[^3]: Promise theory tells us that coordination requires mutual agreement
+[^3]:
+    Promise theory tells us that coordination requires mutual agreement
     between all agents that work in a coordinated way on common resources. Every
     decision necessarily comes from a single point of origin (but there could be
     many of these, making non-overlapping decisions); consistency only starts to

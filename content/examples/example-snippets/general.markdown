@@ -4,9 +4,9 @@ title: General examples
 sorting: 1
 ---
 
-* [Basic example][General examples#Basic example]
-* [Hello world][General examples#Hello world]
-* [Array example][General examples#Array example]
+- [Basic example][General examples#Basic example]
+- [Hello world][General examples#Hello world]
+- [Array example][General examples#Array example]
 
 ## Basic example
 

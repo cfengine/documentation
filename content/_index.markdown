@@ -5,6 +5,7 @@ sorting: 1
 categories: ["index"]
 alias: index.html
 ---
+
 <div class="home">
    <div class="home-top">
       <h1>Welcome to the CFEngine Documentation</h1>

@@ -13,6 +13,7 @@ false in the current context. The interpretation of the data container depends
 on the specified data structure (`data_structure`).
 
 If the `data_structure` argument is specified to be:
+
 - `"array_of_arrays"`, the `data_container` argument is interpreted as an array
   of arrays, and the `key_or_index` argument is interpreted as an index within
   the children arrays.

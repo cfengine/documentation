@@ -3,12 +3,13 @@ layout: default
 title: Integrating with Sumo Logic
 sorting: 15
 ---
+
 In this How To we will show a simple integrate with [Sumo Logic](http://www.sumologic.com). Whenever there is a CFEngine policy update, that event will be exported to Sumo Logic. These events can become valuable traces when using Sumo Logic to analyze and detect unintendent system behavior.
 
 **Requirements:**
 
--   CFEngine Community/Enterprise
--   Sumo Logic account (secret URL)
+- CFEngine Community/Enterprise
+- Sumo Logic account (secret URL)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5_JaglgmLpg" frameborder="0" allowfullscreen></iframe>
 
@@ -115,7 +116,7 @@ body common control
                       ...
 ```
 
-Under body common control, add /sumologic\_policy\_update.cf/ to your inputs section.
+Under body common control, add /sumologic_policy_update.cf/ to your inputs section.
 
 ```cf3
 inputs => {
@@ -130,7 +131,7 @@ That's all.
 
 To test it, we need to make a change to any CFEngine policy, and then go to Sumo Logic to see if there is a new timestamp reported.
 
-* Make a change to any policy file, for examle `promises.cf`:
+- Make a change to any policy file, for examle `promises.cf`:
 
 ```command
 vi /var/cfengine/masterfiles/promises.cf
@@ -138,13 +139,13 @@ vi /var/cfengine/masterfiles/promises.cf
 
 Add a comment and close the file.
 
-* Check if timestamp has been updated
+- Check if timestamp has been updated
 
 ```command
 cat /tmp/CFEngine_policy_updated
 ```
 
-*   Check with Sumo Logic
+- Check with Sumo Logic
 
 ![integrating-with-sumo-logic_sumo.png](integrating-with-sumo-logic_sumo.png)
 

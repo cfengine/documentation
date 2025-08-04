@@ -17,25 +17,25 @@ CFEngine is a lifecycle management tool that can be integrated with a Cloud
 Computing framework in a number of ways. Of the four phases of the computer
 lifecycle, Open Nebula and CFEngine will play different roles.
 
-* Build
+- Build
 
   Open Nebula focuses on building virtual machines in a managed framework, based
   on pre-built images. CFEngine can further customize these images through
   package of customized installation measures.
 
-* Deploy
+- Deploy
 
   Open Nebula provides manual controls to bring up and tear down generic
   virtualized machines containing a baseline of software. CFEngine can further
   deploy patches and updates to these basic images without needing to take down
   a machine.
 
-* Manage
+- Manage
 
   One a machine is running, CFEngine can manage it exactly like any other
   physical computer.
 
-* Audit/Report
+- Audit/Report
 
   CFEngine's local agents can extract information and learn system trends and
   characteristics over time. These may be collected in CFEngine's reporting
@@ -51,10 +51,10 @@ This guide is based on an example setup provding a framework to demonstrate how
 CFEngine can be used to automate Open Nebula configuration. The following
 assumptions serve as an example and should be altered to fit your needs:
 
-* All physical hosts are running Ubnutu, KVM and CFEngine 3.
-* All physical hosts are on the same network.
-* The CFEngine policy hub is running on the Open nebula front end.
-* NFS will be used to share virtual machine images between hosts.
+- All physical hosts are running Ubnutu, KVM and CFEngine 3.
+- All physical hosts are on the same network.
+- The CFEngine policy hub is running on the Open nebula front end.
+- NFS will be used to share virtual machine images between hosts.
 
 Open nebula requires a single front-end machine and one or more node
 controllers. The front end is a management machine that is used to monitor and
@@ -66,7 +66,7 @@ cluster-node.
 
 ![Open Nebula Architecture](./open-nebula-architecture.png)
 
-###  Installation and dependancy configuration
+### Installation and dependancy configuration
 
 First we can classify the physical machines in this case by IP address:
 
@@ -376,6 +376,7 @@ vars:
   "bridge_fd       0"
 };
 ```
+
 Next we edit the interfaces file to include our new settings:
 
 ```cf3

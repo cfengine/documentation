@@ -25,4 +25,4 @@ vars:
 
 **History:**
 
-* Introduced in CFEngine 3.6.0
+- Introduced in CFEngine 3.6.0

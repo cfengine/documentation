@@ -10,7 +10,7 @@ range of integers, in steps specified by the second argument.
 
 The function is the inverse of functions like `iprange()` which match patterns of numerical ranges that cannot
 be represented as regular expressions. The list of strings is composed from the text as quoted
- in the first argument, and a numerical range in square brackets is replaced by successive numbers
+in the first argument, and a numerical range in square brackets is replaced by successive numbers
 from the range.
 
 {{< CFEngine_function_attributes(string_template, stepsize) >}}

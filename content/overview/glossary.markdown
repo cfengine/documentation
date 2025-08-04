@@ -205,9 +205,9 @@ This might be reusable bundles of promises, or bodies.
 Log files tell you some historical, usually timestamped, information about events that happened in the past.
 In CFEngine, there are a few notable log files:
 
-* `/var/logs/CFEngineInstall.log` - Information about the installation, especially useful if installing the package failed.
-* `/var/cfengine/outputs/` - Output logs of previous scheduled agent runs (if any).
-* `/var/cfengine/httpd/logs/error_log` - Apache errors (Mission Portal / API)
+- `/var/logs/CFEngineInstall.log` - Information about the installation, especially useful if installing the package failed.
+- `/var/cfengine/outputs/` - Output logs of previous scheduled agent runs (if any).
+- `/var/cfengine/httpd/logs/error_log` - Apache errors (Mission Portal / API)
 
 #### Mission Portal (MP)
 
@@ -218,8 +218,8 @@ Name of the user interface used in commercial CFEngine editions, where all repor
 Namespaces allow you to define new scopes for bundles, variables, and classes.
 By using a specific name for the namespace, you can use short and generic names for the identifiers inside of it.
 
-By default, if you don't specify a namespace, you are using the namespace called ```default```.
-The CMDB (group data / host-specific data in Mission Portal) uses the ```data``` namespace unless you specify a namespace.
+By default, if you don't specify a namespace, you are using the namespace called `default`.
+The CMDB (group data / host-specific data in Mission Portal) uses the `data` namespace unless you specify a namespace.
 
 You can think of namespaces in a similar way as putting files inside folders, instead of having all of your files in one folder.
 The result is that things are more organized and less chances of files / classes / variables / bundles having conflicting names.
@@ -246,7 +246,7 @@ Platforms are described using short identifiers, e.g., RH5, REL5, SuSE 11, SLES,
 
 #### Policy server
 
-The special server that others consult for the latest policies is called the *policy server*.
+The special server that others consult for the latest policies is called the _policy server_.
 
 Typically the policy server is set by the bootstrapping process.
 

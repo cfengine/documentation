@@ -15,8 +15,8 @@ You can trigger a delta report collection in order to have fresh host data.
 
 **Parameters:**
 
-* **hostkey** *(string)*
-    Unique host identifier
+- **hostkey** _(string)_
+  Unique host identifier
 
 **Example request (curl):**
 
@@ -44,7 +44,7 @@ You can trigger an agent run for an individual host.
 
 **Parameters:**
 
-* **hostkey** *(string)*
+- **hostkey** _(string)_
   Unique host identifier
 
 **Example request (curl):**

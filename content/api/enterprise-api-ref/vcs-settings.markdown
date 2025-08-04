@@ -2,6 +2,7 @@
 layout: default
 title: VCS settings API
 ---
+
 VCS API for managing version control repository settings.
 
 ## Get VCS settings
@@ -51,21 +52,21 @@ curl -k --user <username>:<password> \
 
 **Parameters:**
 
-* **vscType** *(string)*
+- **vscType** _(string)_
   VCS type. Allowed values: `GIT`, `GIT_CFBS`. Default value: `GIT`
-* **gitServer** *(string)*
-    Git repository URL `Emp: https://github.com/cfengine/masterfiles.git`. Required parameter.
-* **gitRefspec** *(string)*
-    The Git refspec to checkout. It can be a branch name, a tag name, a commit hash or a partial hash. Required parameter.
-* **projectSubdirectory** *(string)*
-    Subdirectory inside Git repository where the project is located.
-    Optional parameter.
-* **gitUsername** *(string)*
-    Git username for authentication, not needed for public repositories.
-* **gitPassword** *(string)*
-    Git password or token for authentication, not needed for public repositories.
-* **gitPrivateKey** *(string)*
-    Git private key raw content for authentication.
+- **gitServer** _(string)_
+  Git repository URL `Emp: https://github.com/cfengine/masterfiles.git`. Required parameter.
+- **gitRefspec** _(string)_
+  The Git refspec to checkout. It can be a branch name, a tag name, a commit hash or a partial hash. Required parameter.
+- **projectSubdirectory** _(string)_
+  Subdirectory inside Git repository where the project is located.
+  Optional parameter.
+- **gitUsername** _(string)_
+  Git username for authentication, not needed for public repositories.
+- **gitPassword** _(string)_
+  Git password or token for authentication, not needed for public repositories.
+- **gitPrivateKey** _(string)_
+  Git private key raw content for authentication.
 
 **Example request (curl):**
 
@@ -100,5 +101,5 @@ curl -k --user <username>:<password> \
 
 ## History
 
-* `vscType` parameter added in 3.19.0, 3.18.1
-* `projectSubdirectory` parameter added in 3.21.7, 3.24.2, 3.26.0
+- `vscType` parameter added in 3.19.0, 3.18.1
+- `projectSubdirectory` parameter added in 3.21.7, 3.24.2, 3.26.0

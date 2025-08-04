@@ -131,7 +131,7 @@ you expect your policies to be run by older version, you'll need an explicit
 ### bwlimit
 
 **Description:** Coarse control of bandwidth any cf-serverd or cf-agent process
-will send *out*. In Bytes/sec.
+will send _out_. In Bytes/sec.
 
 Bandwidth limit is meant to set an upper bound of traffic coming out of CFEngine
 agents or servers, as a countermeasure against network abuse from them. The limit
@@ -158,19 +158,19 @@ body common control
 }
 ```
 
-In this example,  bwlimit is set to 10MBytes/sec = 80Mbit/s meaning that
+In this example, bwlimit is set to 10MBytes/sec = 80Mbit/s meaning that
 CFEngine would only consume up to ~80% of any 100Mbit ethernet interface.
 
 ### cache_system_functions
 
 **Description:** Controls the caching of the results of system
 functions, e.g. `execresult()` and `returnszero()` for shell execution and
-`ldapvalue()` and friends for LDAP queries.  Without this setting,
+`ldapvalue()` and friends for LDAP queries. Without this setting,
 CFEngine's evaluation model will evaluate functions multiple times,
-which is a performance concern.  See [`Functions`][Functions].
+which is a performance concern. See [`Functions`][Functions].
 
 Although you can override this to `false`, in practice you should
-almost never need to do so.  The effect of having it `true` (the
+almost never need to do so. The effect of having it `true` (the
 default) is that the expensive functions will be run just once and
 then their result will be cached.
 
@@ -190,6 +190,7 @@ cache_system_functions => "true";
 **See also:** [`ifelapsed` in action bodies][Promise types#ifelapsed]
 
 **History:**
+
 - Introduced in version 3.6.0.
 
 ### domain
@@ -318,14 +319,14 @@ inputs  => {
 If no filenames are specified, no other filenames will be included in the
 compilation process.
 
-Library contents are checked for duplication by path and by hash.  For
+Library contents are checked for duplication by path and by hash. For
 example, if you put `library.cf` twice in your `inputs`, the duplicate
-`library.cf` is noticed because the same path is included twice.  A
+`library.cf` is noticed because the same path is included twice. A
 verbose-level message is emitted but otherwise there is no error.
 
 In addition, if you include a file once with path `/x/y/z.cf` and
 again with path `/x/./y/z.cf`, the duplicate file will be rejected
-regardless of any path tricks or symbolic links.  The contents are
+regardless of any path tricks or symbolic links. The contents are
 hashed, so the same file can't be included twice.
 
 ### lastseenexpireafter
@@ -426,12 +427,12 @@ body common control
 using the [`body copy_from protocol_version`][files#protocol_version]
 attribute. When undefined (the default) peers automatically negotiate the latest protocol version.
 
-**See also:**  [`body copy_from protocol_version`][files#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`tls_ciphers`][Components#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
+**See also:** [`body copy_from protocol_version`][files#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`tls_ciphers`][Components#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
 
 **History:**
 
-* Introduced in CFEngine 3.6.0 with `protocol_version` `1` (`classic`) and `protocol_version` `2` (`tls`)
-* Added `protocol_version` `3` (`cookie`) in CFEngine 3.15.0
+- Introduced in CFEngine 3.6.0 with `protocol_version` `1` (`classic`) and `protocol_version` `2` (`tls`)
+- Added `protocol_version` `3` (`cookie`) in CFEngine 3.15.0
 
 ### require_comments
 
@@ -502,7 +503,7 @@ CFEngine's components may promise to send data.
 
 **Allowed input range:** `[a-zA-Z0-9_$(){}.:-]+`
 
-**Default value:** ```localhost```
+**Default value:** `localhost`
 
 **Example:**
 
@@ -526,7 +527,7 @@ components may promise to send data.
 
 **Allowed input range:** `0,99999999999`
 
-**Default value:** ```514```
+**Default value:** `514`
 
 **Example:**
 
@@ -565,7 +566,7 @@ body common control
 
 **History:**
 
-* Introduced in 3.19.0, 3.18.1
+- Introduced in 3.19.0, 3.18.1
 
 ### tls_ciphers
 
@@ -638,5 +639,5 @@ of CFEngine, but today they are deprecated, either because
 their functionality is being handled trasparently or because
 it doesn't apply to current CFEngine version.
 
-* fips_mode
-* host_licenses_paid
+- fips_mode
+- host_licenses_paid

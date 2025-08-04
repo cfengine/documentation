@@ -32,4 +32,4 @@ by `cf-promises`.
 
 **History:**
 
-* Introduced in 3.17.0
+- Introduced in 3.17.0

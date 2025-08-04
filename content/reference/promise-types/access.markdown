@@ -107,7 +107,7 @@ first-come-first-served basis. Thus file objects (promisers) should be
 listed in order of most-specific file first. In this way, specific
 promises will override less specific ones.
 
-****
+---
 
 ## Attributes
 
@@ -119,16 +119,16 @@ promises will override less specific ones.
 
 **Note:** The host trying to access the object is identified using a
 reverse DNS lookup on the connecting IP. This introduces latency for
-*every* incoming connection. If possible, avoid this penalty by
+_every_ incoming connection. If possible, avoid this penalty by
 leaving `admit_hostnames` empty and only specifying numeric addresses
 and subnets in `admit_ips`.
 
-To admit an entire domain, start the string with a dot `.`.  This
+To admit an entire domain, start the string with a dot `.`. This
 includes every hostname ending with the domain, but not a machine
 named after the domain itself.
 
 For example, here we'll admit the entire domain `.cfengine.com` and
-the host `www.cfengine3.com`.  A machine named `cfengine.com` would be
+the host `www.cfengine3.com`. A machine named `cfengine.com` would be
 refused access because it's not in the `cfengine.com` domain.
 
 ```cf3
@@ -148,7 +148,7 @@ access:
 
 **Description:** A list of IP addresses that should have access to the object.
 
-Subnets are specified using CIDR notation.  For example, here we'll
+Subnets are specified using CIDR notation. For example, here we'll
 admit one host, then a subnet, then everyone:
 
 ```cf3
@@ -199,12 +199,12 @@ access:
 
 This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
-To deny an entire domain, start the string with a dot `.`.  This
+To deny an entire domain, start the string with a dot `.`. This
 includes every hostname ending with the domain, but not a machine
 named after the domain itself.
 
 For example, here we'll deny the entire domain `.cfengine.com` and the
-host `www.cfengine3.com`.  A machine named `cfengine.com` would be
+host `www.cfengine3.com`. A machine named `cfengine.com` would be
 allowed access (unless it's denied by other promises) because it's not
 in the `cfengine.com` domain.
 
@@ -443,12 +443,12 @@ Here are the built-in `report_data_select` bodies `default_data_select_host()` a
 
 **History:**
 
-* Introduced in Enterprise 3.5.0
+- Introduced in Enterprise 3.5.0
 
-* `metatags_exclude`, `metatags_include`, `promise_handle_exclude`, and
+- `metatags_exclude`, `metatags_include`, `promise_handle_exclude`, and
   `promise_handle_include` body attributes added in 3.6.0.
 
-* `classes_exclude`, `classes_include`, `promise_notkept_log_exclude`,
+- `classes_exclude`, `classes_include`, `promise_notkept_log_exclude`,
   `promise_notkept_log_include`, `promise_repaired_log_exclude`,
   `promise_repaired_log_include`, `variables_exclude`, and `variables_include`
   body attributes removed in 3.6.0
@@ -647,7 +647,7 @@ bundle server my_access_rules()
 
 **History:**
 
-- ```bundle``` `resource_type` added in 3.9.0
+- `bundle` `resource_type` added in 3.9.0
 
 ### shortcut
 

@@ -21,9 +21,9 @@ There are several ways to approach authoring promises and ensuring they are copi
 4. When an author wants to create a new promise, or modify an existing one, they clone the same repository on GitHub so that they have a local copy on their own computer.
 5. The author will make their edits or additions in their local version of the `masterfiles` repository.
 6. After the author is done making their changes commit them using `git commit`.
-6. After the changes are committed they are then pushed back to the remote repository on GitHub.
-7. As described in step 3, CFEngine will pull any new changes that were pushed to GitHub (sometime within a five minute time interval).
-8. Those changes will first exist in `masterfiles`, and then afterwards will be deployed to CFEngine hosts that are bootstrapped to the hub.
+7. After the changes are committed they are then pushed back to the remote repository on GitHub.
+8. As described in step 3, CFEngine will pull any new changes that were pushed to GitHub (sometime within a five minute time interval).
+9. Those changes will first exist in `masterfiles`, and then afterwards will be deployed to CFEngine hosts that are bootstrapped to the hub.
 
 #### Create a Repository on GitHub for Masterfiles
 
@@ -32,10 +32,7 @@ There are two methods possible with GitHub: one is to use the web interface at G
 Method One: Create Masterfiles Repository Using GitHub Web Interface
 
 1a. In the GitHub web interface, click on the `New repository` button.
-1b. Or from the `+` drop down menu on the top right hand side of the screen select `New repository`.
-2. Fill in a value in the `Repository name` text entry (e.g. cfengine-masterfiles).
-3. Select `private` for the type of privacy desired (`public` is also possible, but is not recommended in most situations).
-4. Optionally, check the `Initialize this repository with a README` box. (not required):""
+1b. Or from the `+` drop down menu on the top right hand side of the screen select `New repository`. 2. Fill in a value in the `Repository name` text entry (e.g. cfengine-masterfiles). 3. Select `private` for the type of privacy desired (`public` is also possible, but is not recommended in most situations). 4. Optionally, check the `Initialize this repository with a README` box. (not required):""
 
 Method Two: Create Masterfiles Repository Using the GitHub Application
 
@@ -46,6 +43,7 @@ Method Two: Create Masterfiles Repository Using the GitHub Application
 5. Click on the "Create" button at the bottom of the screen. A new repository will be created in your local GitHub folder.
 
 #### Initialize Git Repository in Masterfiles on the Hub
+
 ```bash
 cd /var/cfengine/masterfiles
 echo cf_promises_validated >> .gitignore
@@ -55,6 +53,7 @@ git commit -m "First commit"
 git remote add origin https://github.com/GitUserName/cfengine-masterfiles.git
 git push -u origin master
 ```
+
 **Note:** `cf_promises_validated` and `cf_promises_release_id` should be explicitly excluded from VCS as shown above. They are generated files and involved in controlling policy updates. If these files are checked into the repository it can create issues with policy distribution.
 
 Using the above steps on a private repository will fail with a 403 error. There are different approaches to deal with this:
@@ -87,6 +86,7 @@ B) Or, change the remote url to `https://GitUserName@password:github.com/GitUser
 ```command
 cd /var/cfengine/masterfiles
 ```
+
 2. Create the remote using the following pattern:
 
 ```command
@@ -98,7 +98,8 @@ git remote add upstream ssh://git@github.com/GitUserName/cfengine-masterfiles.gi
 ```command
 git remote -v
 ```
-	* You will see the remote definition in a list alongside any other previously defined remote entries.
+
+    * You will see the remote definition in a list alongside any other previously defined remote entries.
 
 #### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub
 

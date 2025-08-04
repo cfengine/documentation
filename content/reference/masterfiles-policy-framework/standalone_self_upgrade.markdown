@@ -11,6 +11,6 @@ defined and the host is not seen to be running the desired version of the agent.
 The policy is designed for use with Enterprise packages, but can be customized
 for use with community packages.
 
-***
+---
 
 {{< CFEngine_library_include(standalone_self_upgrade) >}}

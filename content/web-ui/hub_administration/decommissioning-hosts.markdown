@@ -7,8 +7,8 @@ sorting: 30
 Once a host is shut off, or CFEngine is uninstalled, you should remove it from Mission Portal.
 This has 2 benefits:
 
-* Report collection will no longer count it as consuming a license.
-* You won't see its data or get alerts for it in Mission Portal.
+- Report collection will no longer count it as consuming a license.
+- You won't see its data or get alerts for it in Mission Portal.
 
 **Removing a host from the hub / Mission Portal does not uninstall or stop CFEngine on that host.**
 Before removing hosts, please ensure that they are either completely gone (VM destroyed) or definitely not running CFEngine.
@@ -16,19 +16,19 @@ If the host is still running CFEngine, or there is another host running with the
 
 Hosts can be removed via API or UI, the outcome is the same:
 
-* The host is deleted from all tables/views in PostgreSQL, including `hosts`, `inventory`, etc.
-    * There may still be references to the host in reporting data from other hosts.
-* The host is deleted from `cf_lastseen.lmdb` the database used for discovering hosts for report collection.
-* The hosts cryptographic key is removed from the `ppkeys` directory.
+- The host is deleted from all tables/views in PostgreSQL, including `hosts`, `inventory`, etc.
+  - There may still be references to the host in reporting data from other hosts.
+- The host is deleted from `cf_lastseen.lmdb` the database used for discovering hosts for report collection.
+- The hosts cryptographic key is removed from the `ppkeys` directory.
 
 Please note that:
 
-* Users with admin role can delete hosts without reporting data (which don't show up in Mission Portal).
-* Host deletion is a scheduled operation, the `cf-hub` process will pick up the deletion request later.
-    * This is because of security concerns, the Apache user does not have direct access to the necessary files.
-    * It may take a few minutes before the host disappears from all the places listed above.
-* For these reasons the HTTP response code is normally `202 Accepted`.
-    * At the time of the API response, it is not possible to know whether the host exists in all the places mentioned above.
+- Users with admin role can delete hosts without reporting data (which don't show up in Mission Portal).
+- Host deletion is a scheduled operation, the `cf-hub` process will pick up the deletion request later.
+  - This is because of security concerns, the Apache user does not have direct access to the necessary files.
+  - It may take a few minutes before the host disappears from all the places listed above.
+- For these reasons the HTTP response code is normally `202 Accepted`.
+  - At the time of the API response, it is not possible to know whether the host exists in all the places mentioned above.
 
 ## Host removal through Mission Portal UI
 

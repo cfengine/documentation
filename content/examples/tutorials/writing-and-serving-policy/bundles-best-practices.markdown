@@ -17,36 +17,36 @@ understand what they are about.
 
 For example:
 
-* app_mail_postfix
-* app_mail_mailman
-* app_web_apache
-* app_web_squid
-* app_web_php
-* app_db_mysql
-* garbage_collection
-* security_check_files
-* security_check_processes
-* system_name_resolution
-* system_xinetd
-* system_root_password
-* system_processes
-* system_files
-* win_active_directory
-* win_registry
-* win_services
+- app_mail_postfix
+- app_mail_mailman
+- app_web_apache
+- app_web_squid
+- app_web_php
+- app_db_mysql
+- garbage_collection
+- security_check_files
+- security_check_processes
+- system_name_resolution
+- system_xinetd
+- system_root_password
+- system_processes
+- system_files
+- win_active_directory
+- win_registry
+- win_services
 
 ### When to make a bundle
 
 Put items into a single bundle if:
 
-* They belong to the same conceptual aspect of system administration.
-* They do not need to be switched on or off independently.
+- They belong to the same conceptual aspect of system administration.
+- They do not need to be switched on or off independently.
 
 Put items into different bundles if:
 
-* All of the promises in one bundle need to the checked before all of the
-promises in another bundle.
-* You need to re-use the promises with different parameters.
+- All of the promises in one bundle need to the checked before all of the
+  promises in another bundle.
+- You need to re-use the promises with different parameters.
 
 In general, keep the number of bundles to a minimum. This is a knowledge-management issue.
 Clarity comes from differentiation, but only if the number of items is small.
@@ -97,18 +97,18 @@ reports:
 
 ### When to use classes in common bundles
 
-* When you need to use them in multiple bundles (because classes defined in common bundles
-have global scope).
+- When you need to use them in multiple bundles (because classes defined in common bundles
+  have global scope).
 
 ### When to use variables in common bundles
 
-* For rationality, if the variable does not belong to any particular bundle, because it is
-used elsewhere. (Qualified variable names such as `$(mybundle.myname)` are always globally
-accessible, so this is a cosmetic issue.)
+- For rationality, if the variable does not belong to any particular bundle, because it is
+  used elsewhere. (Qualified variable names such as `$(mybundle.myname)` are always globally
+  accessible, so this is a cosmetic issue.)
 
 ### When to use variables in local bundles
 
-* If they are not needed outside the bundles.
-* If they are used for iteration (without qualified scope).
-* If they are tied to a specific aspect of system maintenance represented by the bundle, so
-that accessing `$(bundle.var)` adds clarity.
+- If they are not needed outside the bundles.
+- If they are used for iteration (without qualified scope).
+- If they are tied to a specific aspect of system maintenance represented by the bundle, so
+  that accessing `$(bundle.var)` adds clarity.

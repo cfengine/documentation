@@ -20,7 +20,7 @@ matching the bundle names.
 
 **Notes:**
 
-* `cf-runagent` always considers the class ```runagent``` to be defined.
+- `cf-runagent` always considers the class `runagent` to be defined.
 
 ## Command reference
 
@@ -303,7 +303,7 @@ body runagent control
 
 **Notes:**
 
-* Unlike execution triggered with the `cf-runagent` binary, there is currently no capability to define additional options like defining additional classes, or the remote bundlesequence.
+- Unlike execution triggered with the `cf-runagent` binary, there is currently no capability to define additional options like defining additional classes, or the remote bundlesequence.
 
 **Example:**
 
@@ -315,4 +315,4 @@ echo 'host001' > /var/cfengine/state/cf-execd.sockets/cf-runagent.socket
 
 **History:**
 
-* 3.18.0 Added socket for triggering `cf-runagent` by hostname or IP.
+- 3.18.0 Added socket for triggering `cf-runagent` by hostname or IP.

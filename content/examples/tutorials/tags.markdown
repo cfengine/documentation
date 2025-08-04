@@ -6,7 +6,7 @@ sorting: 14
 
 ## Introduction
 
-*meta tags* can be attached to any promise type using the `meta` attribute.
+_meta tags_ can be attached to any promise type using the `meta` attribute.
 These tags are useful for cross-referencing related promises. `bundles`, `vars`
 and `classes` can be identified and leveraged in different ways within policy
 using these tags.
@@ -57,28 +57,28 @@ This declares an agent bundle with a single tag.
 Several new functions exist to give you access to variable and class
 tags, and to find classes and variables with tags.
 
-* `classesmatching`: this used to be somewhat available with the
-`allclasses.txt` file. You can now call a function to get all the
-defined classes, optionally filtering by name and tags. See
-[classesmatching][classesmatching]
+- `classesmatching`: this used to be somewhat available with the
+  `allclasses.txt` file. You can now call a function to get all the
+  defined classes, optionally filtering by name and tags. See
+  [classesmatching][classesmatching]
 
-* `getvariablemetatags`: get the tags of a variable as an slist. See
-[getvariablemetatags][getvariablemetatags]
+- `getvariablemetatags`: get the tags of a variable as an slist. See
+  [getvariablemetatags][getvariablemetatags]
 
-* `variablesmatching`: just like `classesmatching` but for variables.
-See [variablesmatching][variablesmatching]
+- `variablesmatching`: just like `classesmatching` but for variables.
+  See [variablesmatching][variablesmatching]
 
-* `variablesmatching_as_data`: like `variablesmatching` but the matching
-variables and values are returned as a merged data container. See
-[variablesmatching_as_data][variablesmatching_as_data]
+- `variablesmatching_as_data`: like `variablesmatching` but the matching
+  variables and values are returned as a merged data container. See
+  [variablesmatching_as_data][variablesmatching_as_data]
 
-* `getclassmetatags`: get the tags of a class as an slist. See
-[getclassmetatags][getclassmetatags]
+- `getclassmetatags`: get the tags of a class as an slist. See
+  [getclassmetatags][getclassmetatags]
 
-* `bundlesmatching`: find the bundles matching some tags. See
-[bundlesmatching][bundlesmatching]
-(the example shows how you'd find a `deprecated` bundle like
-`run_deprecated` earlier).
+- `bundlesmatching`: find the bundles matching some tags. See
+  [bundlesmatching][bundlesmatching]
+  (the example shows how you'd find a `deprecated` bundle like
+  `run_deprecated` earlier).
 
 ## Module protocol
 

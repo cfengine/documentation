@@ -15,13 +15,13 @@ correct return codes for status checks.
 
 **See also:**
 
-* [Services promise type reference][services]
-* [Services bundles and bodies in the standard library][lib/services.cf]
+- [Services promise type reference][services]
+- [Services bundles and bodies in the standard library][lib/services.cf]
 
 ## Example usage on systemd
 
-We can see that before the policy run `sysstat` is *inactive*, `apache2` is
-*active*, `cups` is *active*, `ssh` is *active* and `cron` is *inactive*.
+We can see that before the policy run `sysstat` is _inactive_, `apache2` is
+_active_, `cups` is _active_, `ssh` is _active_ and `cron` is _inactive_.
 
 ```command
 systemctl is-active sysstat apache2 cups ssh cron
@@ -51,7 +51,7 @@ info: Completed execution of '/bin/systemctl --no-ask-password --global --system
 ```
 
 After the policy run we can see that `systat`, `apache2`, and `cups` are
-*inactive*. `ssh` and `cron` are *active* as specified in the policy.
+_inactive_. `ssh` and `cron` are _active_ as specified in the policy.
 
 ```command
 systemctl is-active sysstat apache2 cups ssh cron
@@ -68,8 +68,8 @@ active
 ## Example usage with System V
 
 We can see that before the policy run `sysstat` is not reporting status
-correctly , `httpd` is *running*, `cups` is *running*, `sshd` is *running* and
-`crond` is *not running*.
+correctly , `httpd` is _running_, `cups` is _running_, `sshd` is _running_ and
+`crond` is _not running_.
 
 ```command
 service sysstat status; echo $?
@@ -131,7 +131,7 @@ info: Completed execution of '/etc/init.d/cups stop'
 ```
 
 After the policy run we can see that `systat` is still not reporting status correctly (some services do not respond to standard checks), `apache2`, and `cups` are
-*inactive*. `ssh` and `cron` are *active* as specified in the policy.
+_inactive_. `ssh` and `cron` are _active_ as specified in the policy.
 
 ```command
 service sysstat status; echo $?

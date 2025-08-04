@@ -23,24 +23,24 @@ not a recommended task for CFEngine.
 
 There are three kinds of database supported by CFEngine:
 
-* *LDAP - The Lightweight Directory Access Protocol*
+- _LDAP - The Lightweight Directory Access Protocol_
 
-    A hierarchical network database primarily for reading simple schema (Only
-    CFEngine Enterprise).
+  A hierarchical network database primarily for reading simple schema (Only
+  CFEngine Enterprise).
 
-* *SQL - Structured Query Language*
+- _SQL - Structured Query Language_
 
-    A number of relational databases (currently supported: MySQL, Postgres for
-    reading and writing complex data.
+  A number of relational databases (currently supported: MySQL, Postgres for
+  reading and writing complex data.
 
-    **WARNING:** Neither MySQL/MariaDB or PostgreSQL support is built into the
-    default binaries. If you wish to use this functionality you must compile the
-    agent with support.
+  **WARNING:** Neither MySQL/MariaDB or PostgreSQL support is built into the
+  default binaries. If you wish to use this functionality you must compile the
+  agent with support.
 
-* *Registry - Microsoft Registry*
+- _Registry - Microsoft Registry_
 
-    An embedded database for interfacing with system values in Microsoft
-    Windows (Only CFEngine Enterprise)
+  An embedded database for interfacing with system values in Microsoft
+  Windows (Only CFEngine Enterprise)
 
 In addition, CFEngine uses a variety of embedded databases for its own
 internals.
@@ -141,7 +141,7 @@ Windows registry for instance. Entity-relation databases do not normally
 present tables in this way, but no harm is done in representing them as
 a hierarchy of depth 1.
 
-***
+---
 
 ## Attributes
 
@@ -195,6 +195,7 @@ A blank value is equal to localhost.
 **Allowed input range:** (arbitrary string)
 
 **Example:**
+
 ```cf3
 db_server_host => "sqlserv.example.org";
 ```
@@ -366,7 +367,7 @@ data-value pairs. The currently supported types (the middle field) for the
 Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string)
 and `REG_DWORD` (double word).
 
-If a column value has a comma you can escape the comma with backslash ```\,```.
+If a column value has a comma you can escape the comma with backslash `\,`.
 
 ```cf3
 bundle agent main

@@ -25,7 +25,7 @@ e
 
 The peer leaders will be `a` and `c`.
 
-The current host name does not need to belong to this file.  If it's
+The current host name does not need to belong to this file. If it's
 found (fully qualified or unqualified), the string `localhost` is used
 instead of the host name.
 

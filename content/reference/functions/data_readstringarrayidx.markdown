@@ -35,4 +35,4 @@ Output:
 
 **History:**
 
-* Added in CFEngine 3.6.0
+- Added in CFEngine 3.6.0

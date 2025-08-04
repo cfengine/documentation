@@ -30,7 +30,7 @@ bundle agent report
 ```
 
 Reports do not fundamentaly make changes to the system and report type promise
-outcomes are *always* considered kept.
+outcomes are _always_ considered kept.
 
 ```cf3
 bundle agent report
@@ -67,7 +67,7 @@ R: found class: report_reached
 R: found class: report_not_repaired
 ```
 
-****
+---
 
 ## Attributes
 

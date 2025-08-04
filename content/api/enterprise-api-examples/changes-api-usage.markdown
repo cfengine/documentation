@@ -10,7 +10,7 @@ Changes REST API allows to track the changes made by cf-agent in the infrastruct
 
 This examples shows how to count changes performed by cf-agent within last 24h hours.
 
-Example is searching for changes that are performed by *linux* machines within *generate_repairs* bundle.
+Example is searching for changes that are performed by _linux_ machines within _generate_repairs_ bundle.
 
 **Request**
 
@@ -28,9 +28,9 @@ curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy/count?i
 
 ## Example: Show vacuum command executions
 
-Show all *vacuumdb* executions within last 24 hours executed on hosts reporting the `policy_server` or `test_cfengine_com` class.
+Show all _vacuumdb_ executions within last 24 hours executed on hosts reporting the `policy_server` or `test_cfengine_com` class.
 
-Example is searching for changes that are performed by *policy_server* machines that execute *commands* promise with command */var/cfengine/bin/vacuumdb%* - there is `%` sign at the end which is a wildcard as `vacuumdb` is executed with different options across policy.
+Example is searching for changes that are performed by _policy_server_ machines that execute _commands_ promise with command _/var/cfengine/bin/vacuumdb%_ - there is `%` sign at the end which is a wildcard as `vacuumdb` is executed with different options across policy.
 
 **Request**
 
