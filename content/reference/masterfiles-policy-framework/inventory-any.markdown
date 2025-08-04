@@ -10,4 +10,4 @@ these inventoried variables and classes are automatically collected into a
 centralized reporting system. In the CFEngine Community Edition these variables
 are availbale from within policy, and may be reporting in numerous ways.
 
-[%CFEngine_library_include(inventory/any)%]
+{{< CFEngine_library_include(inventory/any) >}}

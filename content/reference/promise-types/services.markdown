@@ -134,7 +134,7 @@ for services promises.
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### service_policy
 
@@ -365,7 +365,7 @@ the ```service_bundle``` **must** be in the same namespace.
 
 **Example:**
 
-[%CFEngine_include_example(services_default_service_bundle.cf)%]
+{{< CFEngine_include_example(services_default_service_bundle.cf) >}}
 
 #### service_dependence_chain
 

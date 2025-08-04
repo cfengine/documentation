@@ -3,7 +3,7 @@ layout: default
 title: escape
 ---
 
-[%CFEngine_function_prototype(text)%]
+{{< CFEngine_function_prototype(text) >}}
 
 **Description:** Escape regular expression characters in `text`.
 
@@ -12,15 +12,15 @@ expression is required, but the literal string contains special
 characters. The function simply 'escapes' all the regular expression
 characters, so that you do not have to.
 
-[%CFEngine_function_attributes(path)%]
+{{< CFEngine_function_attributes(path) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(escape.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(escape.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(escape.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(escape.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 In this example, the string "192.168.2.1" is "escaped" to be equivalent to
 "192\\.168\\.2\\.1", because without the backslashes, the regular expression

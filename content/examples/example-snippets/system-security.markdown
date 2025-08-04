@@ -10,8 +10,8 @@ sorting: 10
 
 ## Distribute root passwords
 
-[%CFEngine_include_snippet(distribute_root_passwords.cf, .* )%]
+{{< CFEngine_include_snippet(distribute_root_passwords.cf, .* ) >}}
 
 ## Distribute ssh keys
 
-[%CFEngine_include_snippet(distribute_ssh_keys.cf, .* )%]
+{{< CFEngine_include_snippet(distribute_ssh_keys.cf, .* ) >}}

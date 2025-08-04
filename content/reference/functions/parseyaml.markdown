@@ -3,12 +3,12 @@ layout: default
 title: parseyaml
 ---
 
-[%CFEngine_function_prototype(yaml_data)%]
+{{< CFEngine_function_prototype(yaml_data) >}}
 
 **Description:** Parses YAML data directly from an inlined string and
 returns the result as a `data` variable
 
-[%CFEngine_function_attributes(yaml_data)%]
+{{< CFEngine_function_attributes(yaml_data) >}}
 
 Please note that it's usually most convenient to use single quotes for
 the string (CFEngine allows both types of quotes around a string).

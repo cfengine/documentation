@@ -100,7 +100,7 @@ Here's a full example of how you might encode bundle names and
 parameters in a slist, if you need to pack and unpack method calls in
 a portable (e.g. written in a file) format.
 
-[%CFEngine_include_snippet(unpack_method_calls.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(unpack_method_calls.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
@@ -114,7 +114,7 @@ Output:
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### inherit
 

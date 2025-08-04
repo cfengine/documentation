@@ -3,7 +3,7 @@ layout: default
 title: ago
 ---
 
-[%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]
+{{< CFEngine_function_prototype(years, months, days, hours, minutes, seconds) >}}
 
 **Description:** Convert a time relative to now to an integer system representation.
 
@@ -43,10 +43,10 @@ Seconds of runtime
 
 **Example:**
 
-[%CFEngine_include_snippet(ago.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(ago.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(ago.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(ago.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** `now()`, `accumulated()`, `irange()`.

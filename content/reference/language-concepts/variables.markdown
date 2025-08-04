@@ -80,7 +80,7 @@ allows flexibilty when defining strings that contain quotes. Single or double
 quotes can be escaped with `\` however, please note that backticks (`` ` ``) can **not**
 be escaped.
 
-[%CFEngine_include_example(quoting.cf)%]
+{{< CFEngine_include_example(quoting.cf) >}}
 
 ### Scalar size limitations
 
@@ -160,7 +160,7 @@ They can **NOT** be *modified*, once created, but they can be re-defined.
 Data containers do not have the size limitations of regular scalar
 variables.
 
-[%CFEngine_include_example(reference_values_inside_data.cf)%]
+{{< CFEngine_include_example(reference_values_inside_data.cf) >}}
 
 ## Associative arrays
 
@@ -187,6 +187,6 @@ from array variables for iteration purposes.
 
 **Example:**
 
-[%CFEngine_include_example(arrays.cf)%]
+{{< CFEngine_include_example(arrays.cf) >}}
 
 **See also:** `getindices()`, `getvalues()`

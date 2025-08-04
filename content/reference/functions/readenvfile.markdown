@@ -3,7 +3,7 @@ layout: default
 title: readenvfile
 ---
 
-[%CFEngine_function_prototype(filename, optional_maxbytes)%]
+{{< CFEngine_function_prototype(filename, optional_maxbytes) >}}
 
 **Description:**
 Parses key-value pairs from the file `filename` in env file format (`man os-release`).
@@ -12,7 +12,7 @@ Keys and values are interpreted as strings.
 `maxbytes` is optional, if specified, only the first `maxbytes` bytes are read from `filename`.
 [Details of the os-release/env file format on freedesktop.org](https://www.freedesktop.org/software/systemd/man/os-release.html)
 
-[%CFEngine_function_attributes(filename, otpional_maxbytes)%]
+{{< CFEngine_function_attributes(filename, otpional_maxbytes) >}}
 
 **Syntax example:**
 
@@ -26,15 +26,15 @@ vars:
 
 Prepare:
 
-[%CFEngine_include_snippet(readenvfile.cf, #\+begin_src prep, .*end_src)%] <!--**-->
+{{< CFEngine_include_snippet(readenvfile.cf, #\+begin_src prep, .*end_src) >}} <!--**-->
 
 Run:
 
-[%CFEngine_include_snippet(readenvfile.cf, #\+begin_src cfengine3, .*end_src)%] <!--**-->
+{{< CFEngine_include_snippet(readenvfile.cf, #\+begin_src cfengine3, .*end_src) >}} <!--**-->
 
 Output:
 
-[%CFEngine_include_snippet(readenvfile.cf, #\+begin_src\s+example_output\s*, .*end_src)%] <!--**-->
+{{< CFEngine_include_snippet(readenvfile.cf, #\+begin_src\s+example_output\s*, .*end_src) >}} <!--**-->
 
 **Notes:**
 This function is used internally to load `/etc/os-release` into `sys.os_release`.

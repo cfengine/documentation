@@ -3,7 +3,7 @@ layout: default
 title: bundlesmatching
 ---
 
-[%CFEngine_function_prototype(name, tag1, tag2, ...)%]
+{{< CFEngine_function_prototype(name, tag1, tag2, ...) >}}
 
 **Description:** Return the list of defined bundles matching `name` and any
 tags given. Both bundlename and tags are regular expressions. `name` is
@@ -23,14 +23,14 @@ to do dynamic inputs and a dynamic bundle call chain.  The dynamic
 chain is constrained by an explicit regular expression to avoid
 accidental or intentional running of unwanted bundles.
 
-[%CFEngine_function_attributes(name, tag1, tag2, ...)%]
+{{< CFEngine_function_attributes(name, tag1, tag2, ...) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(bundlesmatching.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(bundlesmatching.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(bundlesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(bundlesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** [`findfiles()`][findfiles].

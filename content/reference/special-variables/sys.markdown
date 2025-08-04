@@ -833,11 +833,11 @@ variables report to the CFEngine Enterprise Database.
 
 **Example:**
 
-[%CFEngine_include_snippet(sys_interfaces_ip_addresses_ipv4.cf, #\+begin_src\s+cfengine3\s*, .*end_src)%]
+{{< CFEngine_include_snippet(sys_interfaces_ip_addresses_ipv4.cf, #\+begin_src\s+cfengine3\s*, .*end_src) >}}
 
 **Example Output:**
 
-[%CFEngine_include_snippet(sys_interfaces_ip_addresses_ipv4.cf, #\+begin_src\s+static_example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(sys_interfaces_ip_addresses_ipv4.cf, #\+begin_src\s+static_example_output\s*, .*end_src) >}}
 
 **History:** Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 

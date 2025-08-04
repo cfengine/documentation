@@ -23,4 +23,4 @@ are not evaluated prematurely (as you would expect).
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$) >}}

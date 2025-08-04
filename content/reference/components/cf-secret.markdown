@@ -11,7 +11,7 @@ Files can be encrypted for one or more public keys. A matching private key is re
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-secret.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-secret.help, [\s]*--[a-z], ^$) >}}
 
 ## Example encrypting and decrypting data
 
@@ -68,11 +68,11 @@ No difference
 
 **Policy:**
 
-[%CFEngine_include_example(cf-secret.cf, #\+begin_src\s+cfengine3\s*, .*end_src)%]
+{{< CFEngine_include_example(cf-secret.cf, #\+begin_src\s+cfengine3\s*, .*end_src) >}}
 
 **Example Output:**
 
-[%CFEngine_include_example(cf-secret.cf, #\+begin_src\s+static_example_output\s*, .*end_src)%]
+{{< CFEngine_include_example(cf-secret.cf, #\+begin_src\s+static_example_output\s*, .*end_src) >}}
 
 **History:**
 

@@ -3,7 +3,7 @@ layout: default
 title: host2ip
 ---
 
-[%CFEngine_function_prototype(hostname)%]
+{{< CFEngine_function_prototype(hostname) >}}
 
 **Description:** Returns the primary name-service IP address for the named host `hostname`.
 If resolution fails, the input `hostname` is returned (for compatibility reasons).
@@ -15,7 +15,7 @@ lookup procedure for a name, so it mimics internal processes and can
 therefore be used not only to cache multiple lookups in the configuration, but
 to debug the behavior of the resolver.
 
-[%CFEngine_function_attributes(hostname)%]
+{{< CFEngine_function_attributes(hostname) >}}
 
 **Example:**
 

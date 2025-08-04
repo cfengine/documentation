@@ -91,7 +91,7 @@ string needs to be a bare package name, you cannot use a file name for this.
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### architecture
 

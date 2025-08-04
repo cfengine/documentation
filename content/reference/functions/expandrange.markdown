@@ -3,7 +3,7 @@ layout: default
 title: expandrange
 ---
 
-[%CFEngine_function_prototype(string_template, stepsize)%]
+{{< CFEngine_function_prototype(string_template, stepsize) >}}
 
 **Description:** Generates a list based on an ordered list of numbers selected from a
 range of integers, in steps specified by the second argument.
@@ -13,7 +13,7 @@ be represented as regular expressions. The list of strings is composed from the 
  in the first argument, and a numerical range in square brackets is replaced by successive numbers
 from the range.
 
-[%CFEngine_function_attributes(string_template, stepsize)%]
+{{< CFEngine_function_attributes(string_template, stepsize) >}}
 
 ```cf3
 vars:

@@ -3,7 +3,7 @@ layout: default
 title: every
 ---
 
-[%CFEngine_function_prototype(regex, list)%]
+{{< CFEngine_function_prototype(regex, list) >}}
 
 **Description:** Returns whether every element in the variable `list` matches
 the [unanchored][unanchored] `regex`.
@@ -20,11 +20,11 @@ list.
 
 **Example:**
 
-[%CFEngine_include_snippet(every.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(every.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(every.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(every.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 

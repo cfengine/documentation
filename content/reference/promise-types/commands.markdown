@@ -90,7 +90,7 @@ continue.
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### args
 
@@ -435,7 +435,7 @@ be useful in all cases.
 
 **Example:**
 
-[%CFEngine_include_example(inform.cf)%]
+{{< CFEngine_include_example(inform.cf) >}}
 
 **History:**
 

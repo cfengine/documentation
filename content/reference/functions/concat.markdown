@@ -3,7 +3,7 @@ layout: default
 title: concat
 ---
 
-[%CFEngine_function_prototype(...)%]
+{{< CFEngine_function_prototype(...) >}}
 
 **Description:** Concatenates all arguments into a string.
 

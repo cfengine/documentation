@@ -223,4 +223,4 @@ Vagrant and VirtualBox are useful general purpose programs, so you might want
 to keep them around. If not, follow the standard procedures for your OS to
 remove these applications.
 
-[%CFEngine_include_markdown(common_next_steps.include.markdown)%]
+{{< CFEngine_include_markdown(common_next_steps.include.markdown) >}}

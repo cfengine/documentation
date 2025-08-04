@@ -24,7 +24,7 @@ classes:
 - The promiser is automatically canonified when classes are defined.
 - Classes are not automatically canonified when checked.
 
-[%CFEngine_include_example(class-automatic-canonificiation.cf)%]
+{{< CFEngine_include_example(class-automatic-canonificiation.cf) >}}
 
 - The term ```class``` and ```context``` are sometimes used interchangeably.
 - The following attributes to make a complete promise.

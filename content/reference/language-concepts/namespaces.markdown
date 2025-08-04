@@ -19,7 +19,7 @@ namespace applies within a single file to all subsequently defined bodies and bu
 following the namespace declaration until a different namespace has been
 declared or until the end of the file.
 
-[%CFEngine_include_example(namespace_declaration.cf)%]
+{{< CFEngine_include_example(namespace_declaration.cf) >}}
 
 **Notes:**
 
@@ -34,7 +34,7 @@ the promiser. To refer to a bundle in another namespace you *must* specify the
 namespace by prefixing the bundle name with the namespace followed by a colon
 (`:`).
 
-[%CFEngine_include_example(namespace_methods-usebundle.cf)%]
+{{< CFEngine_include_example(namespace_methods-usebundle.cf) >}}
 
 ## Bodies
 
@@ -42,19 +42,19 @@ Bodies are assumed to be within the same namespace as the promiser. To use a bod
 
 A common mistake is forgetting to specify `default:` when using bodies from the standard library which resides in the `default` namespace.
 
-[%CFEngine_include_example(namespace_bodies.cf)%]
+{{< CFEngine_include_example(namespace_bodies.cf) >}}
 
 ## Variables
 
 Variables (except for [Special variables][Special variables]) are assumed to be within the same scope
 as the promiser but can also be referenced fully qualified with the namespace.
 
-[%CFEngine_include_example(namespace_variable_references.cf)%]
+{{< CFEngine_include_example(namespace_variable_references.cf) >}}
 
 [Special variables][Special variables] are always accessible without a namespace
   prefix. For example, `this`, `mon`, `sys`, and `const` fall in this category.
 
-[%CFEngine_include_example(namespace_special_var_exception.cf)%]
+{{< CFEngine_include_example(namespace_special_var_exception.cf) >}}
 
 **Notes:**
 
@@ -70,9 +70,9 @@ specified (except for Hard classes). To refer to a
 class in a different namespace prefix the class with the namespace suffixed by a
 colon (`:`).
 
-[%CFEngine_include_example(namespace_classes.cf)%]
+{{< CFEngine_include_example(namespace_classes.cf) >}}
 
 [Hard classes][Classes and decisions#Hard classes] exist in all namespaces and
 thus can be referred to from any namespace without qualification.
 
-[%CFEngine_include_example(namespace_hard_classes.cf)%]
+{{< CFEngine_include_example(namespace_hard_classes.cf) >}}

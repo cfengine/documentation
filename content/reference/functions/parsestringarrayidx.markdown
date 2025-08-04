@@ -3,7 +3,7 @@ layout: default
 title: parsestringarrayidx
 ---
 
-[%CFEngine_function_prototype(array, input, comment, split, maxentries, maxbytes)%]
+{{< CFEngine_function_prototype(array, input, comment, split, maxentries, maxbytes) >}}
 
 **Description:** Populates the two-dimensional array `array` with up to
 `maxentries` fields from the first `maxbytes` bytes of the string `input`.
@@ -15,14 +15,14 @@ The `comment` field is a multiline regular expression and will strip out
 unwanted patterns from the file being read, leaving unstripped characters to be
 split into fields. Using the empty string (`""`) indicates no comments.
 
-[%CFEngine_function_attributes(array, input, comment, split, maxentries, maxbytes)%]
+{{< CFEngine_function_attributes(array, input, comment, split, maxentries, maxbytes) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(parsestringarrayidx.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(parsestringarrayidx.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(parsestringarrayidx.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(parsestringarrayidx.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)

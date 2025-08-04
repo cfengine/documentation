@@ -5,7 +5,7 @@ title: remotescalar
 
 **This function is only available in CFEngine Enterprise.**
 
-[%CFEngine_function_prototype(id, server, encrypt)%]
+{{< CFEngine_function_prototype(id, server, encrypt) >}}
 
 **Description:** Returns a scalar value identified by `id` from a remote CFEngine
 `server`. Communication is encrytped depending on ```encrypt```.
@@ -26,7 +26,7 @@ needed to resolve the absence of a value can lead to undesirable
 behavior. As a general rule, users are recommended to refrain from
 relying on the availability of network resources.
 
-[%CFEngine_function_attributes(id, server, encrypt)%]
+{{< CFEngine_function_attributes(id, server, encrypt) >}}
 
 **Example:**
 

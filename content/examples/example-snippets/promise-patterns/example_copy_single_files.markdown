@@ -11,4 +11,4 @@ The CFEngine Standard Library (cfengine_stdlib.cf) should be
 included in the `/var/cfengine/inputs/libraries/` directory and
 inputs list as below.
 
-[%CFEngine_include_example(copy_copbl.cf)%]
+{{< CFEngine_include_example(copy_copbl.cf) >}}

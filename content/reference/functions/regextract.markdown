@@ -3,7 +3,7 @@ layout: default
 title: regextract
 ---
 
-[%CFEngine_function_prototype(regex, string, backref)%]
+{{< CFEngine_function_prototype(regex, string, backref) >}}
 
 **Description:** Returns whether the [anchored][anchored] `regex` matches the
 `string`, and fills the array `backref` with back-references.
@@ -19,14 +19,14 @@ $(backref[0]) = entire string
 $(backref[1]) = back reference 1, etc
 ```
 
-[%CFEngine_function_attributes(regex, string, backref)%]
+{{< CFEngine_function_attributes(regex, string, backref) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(regextract.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(regextract.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(regextract.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(regextract.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** `data_regextract()` `regex_replace()`

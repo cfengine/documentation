@@ -3,20 +3,20 @@ layout: default
 title: regcmp
 ---
 
-[%CFEngine_function_prototype(regex, string)%]
+{{< CFEngine_function_prototype(regex, string) >}}
 
 **Description:** Returns whether the [anchored][anchored] regular expression
 `regex` matches the `string.`
 
-[%CFEngine_function_attributes(regex, string)%]
+{{< CFEngine_function_attributes(regex, string) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(regcmp.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(regcmp.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(regcmp.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(regcmp.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 If the string contains multiple lines, then it is necessary to code these
 explicitly, as regular expressions do not normally match the end of line

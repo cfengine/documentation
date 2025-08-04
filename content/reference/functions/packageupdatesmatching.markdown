@@ -3,7 +3,7 @@ layout: default
 title: packageupdatesmatching
 ---
 
-[%CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex)%]
+{{< CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex) >}}
 
 **Description:** Return a data container with the list of available packages
 matching the parameters.
@@ -25,7 +25,7 @@ this:
 ]
 ```
 
-[%CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex)%]
+{{< CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex) >}}
 
 **IMPORTANT:** The data source used when querying depends on policy configuration.
 When `package_inventory` in `body common control` is configured, CFEngine will record the packages installed and the package updates available for the configured package modules.

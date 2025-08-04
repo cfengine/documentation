@@ -40,7 +40,7 @@ the policy server.
 To deploy this policy simply place it in the `services/autorun`
 directory of your masterfiles.
 
-[%CFEngine_include_example(simple_ssh_key_distribution.cf)%]
+{{< CFEngine_include_example(simple_ssh_key_distribution.cf) >}}
 
 Example Run:
 

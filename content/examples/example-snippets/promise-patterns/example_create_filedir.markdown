@@ -7,7 +7,7 @@ The following is a standalone policy that will create the file
 `/home/mark/tmp/test_plain` and the directory `/home/mark/tmp/test_dir/`
 and set permissions on both.
 
-[%CFEngine_include_example(create_filedir.cf)%]
+{{< CFEngine_include_example(create_filedir.cf) >}}
 
 Example output:
 

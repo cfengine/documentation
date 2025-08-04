@@ -7,7 +7,7 @@ reviewed-by: atsaloli
 
 This policy will look for changes recursively in a directory.
 
-[%CFEngine_include_example(change_detect.cf)%]
+{{< CFEngine_include_example(change_detect.cf) >}}
 
 Here is an example run.
 

@@ -3,7 +3,7 @@ layout: default
 title: mapdata
 ---
 
-[%CFEngine_function_prototype(interpretation, pattern, array_or_container)%]
+{{< CFEngine_function_prototype(interpretation, pattern, array_or_container) >}}
 
 **Description:** Returns a data container holding a JSON array. The
 array is a map across each element of `array_or_container`, modified by
@@ -27,15 +27,15 @@ the example below for an illustration.
 The order of the keys is not guaranteed. Use the `sort()` function if
 you need order in the resulting output.
 
-[%CFEngine_function_attributes(interpretation, pattern, array_or_container)%]
+{{< CFEngine_function_attributes(interpretation, pattern, array_or_container) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(mapdata.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(mapdata.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output: (when `show_example` is defined)
 
-[%CFEngine_include_snippet(mapdata.cf, #\+begin_src\s+show_example_example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(mapdata.cf, #\+begin_src\s+show_example_example_output\s*, .*end_src) >}}
 
 **json_pipe**
 
@@ -52,11 +52,11 @@ power for advanced cases where the built-in CFEngine functions are not enough.
 
 **Example with json_pipe:**
 
-[%CFEngine_include_snippet(mapdata_jsonpipe.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(mapdata_jsonpipe.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(mapdata_jsonpipe.cf, #\+begin_src\s+output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(mapdata_jsonpipe.cf, #\+begin_src\s+output\s*, .*end_src) >}}
 
 **History:** Was introduced in 3.7.0. `canonify` mode was introduced in 3.9.0. The [collecting function][Functions#collecting functions] behavior was added in 3.9. The `json_pipe` mode was added in 3.9. The delayed evaluation behavior was introduced in 3.10.
 

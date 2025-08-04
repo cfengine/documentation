@@ -3,17 +3,17 @@ layout: default
 title: basename
 ---
 
-[%CFEngine_function_prototype(filename, optional_extension)%]
+{{< CFEngine_function_prototype(filename, optional_extension) >}}
 
 **Description:** Retrieves the basename of a filename.
 
 This function implements the same behavior of basename program on Unix and Unix-like operating systems.
 
-[%CFEngine_function_attributes(filename, optional_extension)%]
+{{< CFEngine_function_attributes(filename, optional_extension) >}}
 
 **Example:**
 
-[%CFEngine_include_example(basename.cf)%]
+{{< CFEngine_include_example(basename.cf) >}}
 
 **History:**
 

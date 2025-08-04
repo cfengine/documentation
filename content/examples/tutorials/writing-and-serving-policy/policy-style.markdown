@@ -383,19 +383,19 @@ Naming conventions can also help to provide clarity.
 Words delimited by an underscore. This style is prevalant for *variables*,
 *classes*, *bundle* and *body* names in the Masterfiles Policy Framework.
 
-[%CFEngine_include_example(style_snake_case.cf)%]
+{{< CFEngine_include_example(style_snake_case.cf) >}}
 
 ### Pascalecase
 
 Words delimited by capital Letters.
 
-[%CFEngine_include_example(style_PascaleCase.cf)%]
+{{< CFEngine_include_example(style_PascaleCase.cf) >}}
 
 ### Camelcase
 
 Words are delimited by capital letters, except the initial word.
 
-[%CFEngine_include_example(style_camelCase.cf)%]
+{{< CFEngine_include_example(style_camelCase.cf) >}}
 
 ### Hungarian notation
 
@@ -404,7 +404,7 @@ help improve the readability of policy, especially when working with lists and
 data containers where the use of `@` or `$` significantly affects the behavior
 of the policy.
 
-[%CFEngine_include_example(style_hungarian.cf)%]
+{{< CFEngine_include_example(style_hungarian.cf) >}}
 
 ## Classes
 

@@ -8,4 +8,4 @@ sorting: 20
 policy from the hub as well as ensuring various core
 cfenigne components are running.
 
-[%CFEngine_library_include(update)%]
+{{< CFEngine_library_include(update) >}}

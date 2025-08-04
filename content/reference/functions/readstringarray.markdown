@@ -112,14 +112,14 @@ array_name[games][6]    /bin/bash
 ```
 Prepare:
 
-[%CFEngine_include_snippet(readrealarray.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(readrealarray.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(readrealarray.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(readrealarray.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(readrealarray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(readrealarray.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** [`readrealarray()`][readrealarray], [`readintarray()`][readintarray], [`parserealarray()`][parserealarray], [`parserealarray()`][parserealarray], [`parsestringarray()`][parsestringarray]

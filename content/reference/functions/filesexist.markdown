@@ -3,7 +3,7 @@ layout: default
 title: filesexist
 ---
 
-[%CFEngine_function_prototype(list)%]
+{{< CFEngine_function_prototype(list) >}}
 
 **Description:** Returns whether all the files in `list` can be accessed.
 
@@ -19,11 +19,11 @@ this function to return true.
 
 **Example:**
 
-[%CFEngine_include_snippet(filesexist.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(filesexist.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(filesexist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(filesexist.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.12.
 

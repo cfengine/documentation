@@ -53,7 +53,7 @@ bundle agent example
 This example shows using `process_select` and `process_count` to define a class
 when a process has been running for longer than a day.
 
-[%CFEngine_include_example(processes_define_class_based_on_process_runtime.cf)%]
+{{< CFEngine_include_example(processes_define_class_based_on_process_runtime.cf) >}}
 
 Take care to not oversimplify your patterns as it may match
 unexpected processes. For example, on many systems, the process pattern `"^cp"`
@@ -90,7 +90,7 @@ commands:
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### process_count
 
@@ -291,7 +291,7 @@ regex is [anchored][anchored], meaning it must match the entire name.
 
 **Example:**
 
-[%CFEngine_include_example(kill_process_running_wrong_user.cf)%]
+{{< CFEngine_include_example(kill_process_running_wrong_user.cf) >}}
 
 #### process_result
 

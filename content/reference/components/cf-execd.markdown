@@ -27,7 +27,7 @@ network.
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-execd.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-execd.help, [\s]*--[a-z], ^$) >}}
 
 ## Control promises
 

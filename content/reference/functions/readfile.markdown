@@ -3,28 +3,28 @@ layout: default
 title: readfile
 ---
 
-[%CFEngine_function_prototype(filename, optional_maxbytes)%]
+{{< CFEngine_function_prototype(filename, optional_maxbytes) >}}
 
 **Description:**
 Returns the first `maxbytes` bytes from file `filename`.
 `maxbytes` is optional, if specified, only the first `maxbytes` bytes are read from `filename`.
 When `maxbytes` is `0`, `inf` or not specified, the whole file will be read (but see **Notes** below).
 
-[%CFEngine_function_attributes(filename, optional_maxbytes)%]
+{{< CFEngine_function_attributes(filename, optional_maxbytes) >}}
 
 **Example:**
 
 Prepare:
 
-[%CFEngine_include_snippet(readfile.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(readfile.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(readfile.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(readfile.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(readfile.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(readfile.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:**
 

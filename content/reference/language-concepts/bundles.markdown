@@ -168,11 +168,11 @@ namespace).  You just say `namespace:bundle_name` instead of
 
 When running `cf-agent`, the order of bundles to evaluate is determined by the `bundlesequence`.
 The default `bundlesequence` contains `main` for convenience, so this example works:
-[%CFEngine_include_example(main.cf)%]
+{{< CFEngine_include_example(main.cf) >}}
 
 #### Custom bundle sequences
 You can specify a custom `bundlesequence` from the command line using `--bundlesequence`, or in policy:
-[%CFEngine_include_example(bundlesequence.cf)%]
+{{< CFEngine_include_example(bundlesequence.cf) >}}
 
 In this example, cf-agent will not look for a `main` bundle, since it is not in the `bundlesequence`.
 
@@ -188,9 +188,9 @@ Each file can include its own testsuite or some default behavior in a `__main__`
 All parts of the library will then be runnable directly, but also easy to include from other policy:
 
 `main_library.cf`:
-[%CFEngine_include_example(main_library.cf)%]
+{{< CFEngine_include_example(main_library.cf) >}}
 
 `main_entry_point.cf`:
-[%CFEngine_include_example(main_entry_point.cf)%]
+{{< CFEngine_include_example(main_entry_point.cf) >}}
 
 Both of these policy files can be run directly, the included library policy will not have a `main` bundle.

@@ -3,7 +3,7 @@ layout: default
 title: selectservers
 ---
 
-[%CFEngine_function_prototype(hostlist, port, query, regex, maxbytes, array)%]
+{{< CFEngine_function_prototype(hostlist, port, query, regex, maxbytes, array) >}}
 
 **Description:** Returns the number of tcp servers from `hostlist` which
 respond with a reply matching `regex` to a `query` send to ```port```, and
@@ -17,7 +17,7 @@ This function allows discovery of all the TCP ports that are active and
 functioning from an ordered list, and builds an array of their names. This
 allows maintaining a list of pretested failover alternatives.
 
-[%CFEngine_function_attributes(hostlist, port, query, regex, maxbyes, array)%]
+{{< CFEngine_function_attributes(hostlist, port, query, regex, maxbyes, array) >}}
 
 **Example:**
 

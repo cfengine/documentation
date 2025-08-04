@@ -21,7 +21,7 @@ affected by `common` and `agent` control bodies.
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$) >}}
 
 ### --simulate
 
@@ -560,7 +560,7 @@ time a network connection should attempt to connect or read from server.
 The time is in seconds. It is not a guaranteed number, since it
 depends on system behavior.
 
-[%CFEngine_promise_attribute(30 seconds)%
+{{< CFEngine_promise_attribute(30 seconds) >}}
 
 **Example:**
 
@@ -757,7 +757,7 @@ automatically.
 
 **Example:**
 
-[%CFEngine_include_example(files_auto_define.cf)%]
+{{< CFEngine_include_example(files_auto_define.cf) >}}
 
 ### files_single_copy
 

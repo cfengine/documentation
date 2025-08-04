@@ -21,7 +21,7 @@ affected by `common` and `monitor` control bodies.
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-monitord.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-monitord.help, [\s]*--[a-z], ^$) >}}
 
 ## Standard measurements:
 

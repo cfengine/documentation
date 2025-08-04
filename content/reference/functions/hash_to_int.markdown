@@ -3,7 +3,7 @@ layout: default
 title: hash_to_int
 ---
 
-[%CFEngine_function_prototype( lower, upper, string )%]
+{{< CFEngine_function_prototype( lower, upper, string ) >}}
 
 **Description:** Generates an integer between `lower` and `upper` range based on hash of `string`.
 
@@ -15,15 +15,15 @@ spreading out the scheduling, or even for static load balancing. The result
 would may be coupled with an `ifelse()` clause of some sort, or just used
 directly.
 
-[%CFEngine_function_attributes(lower (inclusive), upper (exclusive), string)%]
+{{< CFEngine_function_attributes(lower (inclusive), upper (exclusive), string) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(hash_to_int.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(hash_to_int.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(hash_to_int.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(hash_to_int.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:**
 

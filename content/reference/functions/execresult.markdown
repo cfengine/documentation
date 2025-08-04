@@ -3,7 +3,7 @@ layout: default
 title: execresult
 ---
 
-[%CFEngine_function_prototype(command, shell, output)%]
+{{< CFEngine_function_prototype(command, shell, output) >}}
 
 **Description:** Execute `command` and return output (both `stdout` and `stderr`) as `string`.
 
@@ -18,20 +18,20 @@ potential security issue.
 The optional `output` argument allows you to select which output will be
 included, betweeen `stdout`, `stderr` or `both`. The default is `both`.
 
-[%CFEngine_function_attributes(command, shell, output)%]
+{{< CFEngine_function_attributes(command, shell, output) >}}
 
 **Example:**
 
 Prepare:
 
-[%CFEngine_include_snippet(execresult.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(execresult.cf, #\+begin_src prep, .*end_src) >}}
 Policy:
 
-[%CFEngine_include_snippet(execresult.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(execresult.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(execresult.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(execresult.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:** you should never use this function to execute commands that
 make changes to the system, or perform lengthy computations. Such an

@@ -31,7 +31,7 @@ affected by `common` and `server` control bodies.
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-serverd.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-serverd.help, [\s]*--[a-z], ^$) >}}
 
 ## Control promises
 
@@ -134,7 +134,7 @@ allowlegacyconnects => { }
 In CFEngine >= 3.9, legacy protocol is disallowed by default, and you have to
 specify a list of hosts allowed to use the legacy protocol.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** [`protocol_version`][Components#protocol_version]
 
@@ -143,7 +143,7 @@ specify a list of hosts allowed to use the legacy protocol.
 **Description:** List of TLS ciphers the server accepts both **incoming** and **outgoing** (in the case of client initiated reporting with CFEngine Enterprise) connections using `cf-serverd`.
 For a list of possible ciphers, see man page for "openssl ciphers".
 
-[%CFEngine_promise_attribute(AES256-GCM-SHA384:AES256-SHA)%]
+{{< CFEngine_promise_attribute(AES256-GCM-SHA384:AES256-SHA) >}}
 
 **Example:**
 
@@ -174,7 +174,7 @@ this does not do anything as the classic protocol does not support TLS ciphers.
 
 **Description:** Minimum TLS version allowed for both **incoming** and **outgoing** (in the case of client initiated reporting with CFEngine Enterprise) connections using `cf-serverd`.
 
-[%CFEngine_promise_attribute(1.0)%]
+{{< CFEngine_promise_attribute(1.0) >}}
 
 **Example:**
 

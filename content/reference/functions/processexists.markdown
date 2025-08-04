@@ -3,7 +3,7 @@ layout: default
 title: processexists
 ---
 
-[%CFEngine_function_prototype(regex)%]
+{{< CFEngine_function_prototype(regex) >}}
 
 **Description:** Return whether a process matches the given [anchored][anchored] regular expression
 `regex`.
@@ -13,7 +13,7 @@ table. Use `.*sherlock.*` to find all the processes that match
 `sherlock`. Use `.*\bsherlock\b.*` to exclude partial matches like
 `sherlock123` (`\b` matches a word boundary).
 
-[%CFEngine_function_attributes(regex)%]
+{{< CFEngine_function_attributes(regex) >}}
 
 The process table is usually obtained with something like `ps -eo
 user,pid,ppid,pgid,%cpu,%mem,vsize,ni,rss,stat,nlwp,stime,time,args`, and the

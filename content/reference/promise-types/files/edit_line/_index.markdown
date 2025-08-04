@@ -177,15 +177,15 @@ selected for editing.
 
 Prepare:
 
-[%CFEngine_include_snippet(select_region.cf, #\+begin_src\s+prep, .*end_src)%]
+{{< CFEngine_include_snippet(select_region.cf, #\+begin_src\s+prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(select_region.cf, #\+begin_src\s+cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(select_region.cf, #\+begin_src\s+cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(select_region.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(select_region.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** [Common body attributes][Promise types#Common body attributes]
 

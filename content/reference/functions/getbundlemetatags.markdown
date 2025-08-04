@@ -3,11 +3,11 @@ layout: default
 title: getbundlemetatags
 ---
 
-[%CFEngine_function_prototype(bundlename, optional_tag)%]
+{{< CFEngine_function_prototype(bundlename, optional_tag) >}}
 
 **Description:** Returns the list of [`meta`][Promise types#meta] tags for bundle `bundlename`.
 
-[%CFEngine_function_attributes(bundlename, optional_tag)%]
+{{< CFEngine_function_attributes(bundlename, optional_tag) >}}
 
 The `optional_tag` can be used to look up a specific tag's value.
 If you have:
@@ -30,11 +30,11 @@ then `getbundlemetatags( "example", "mykey" )` will return a list with two entri
 
 **Example:**
 
-[%CFEngine_include_snippet(getbundlemetatags.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(getbundlemetatags.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(getbundlemetatags.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(getbundlemetatags.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:**
 

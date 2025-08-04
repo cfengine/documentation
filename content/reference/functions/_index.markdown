@@ -11,7 +11,7 @@ take an arbitrary amount of arguments.
 
 They can return scalar (string|int|real|bool), list (slist, ilist, rlist) and data values:
 
-[%CFEngine_include_example(function-return-types.cf)%]
+{{< CFEngine_include_example(function-return-types.cf) >}}
 
 ### Boolean return type
 
@@ -194,4 +194,4 @@ wants.
 There are a large number of functions built into CFEngine. The following
 tables might make it easier for you to find the function you need.
 
-[%CFEngine_function_table()%]
+{{< CFEngine_function_table() >}}

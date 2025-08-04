@@ -16,7 +16,7 @@ CFEngine's native `users` type promise.
 This example shows ensuring that the local users `root` is managed if
 there is a specific password hash defined.
 
-[%CFEngine_include_example(local_user_password.cf)%]
+{{< CFEngine_include_example(local_user_password.cf) >}}
 
 ```console
 root@debian-jessie:/core/examples# grep root /etc/shadow
@@ -31,7 +31,7 @@ root:$6$1nRTeNoE$DpBSe.eDsuZaME0EydXBEf.DAwuzpSoIJhkhiIAPgRqVKlmI55EONfvjZorkxNQ
 This example shows ensuring that the local users `jack` and `jill` are
 present on all linux systems using the native `users` type promise.
 
-[%CFEngine_include_example(local_users_present.cf)%]
+{{< CFEngine_include_example(local_users_present.cf) >}}
 
 Lets check the environment to see that the users do not currently
 exist.
@@ -84,7 +84,7 @@ This example shows ensuring that the local users `jack` and `jill` are
 locked if they are present on linux systems using the native `users`
 type promise.
 
-[%CFEngine_include_example(local_users_locked.cf)%]
+{{< CFEngine_include_example(local_users_locked.cf) >}}
 
 This output shows the state of the `/etc/shadow` file before running
 the example policy:
@@ -106,7 +106,7 @@ jill:!x:16791:0:99999:7::1:
 This example shows ensuring that the local users `jack` and `jill` are
 absent on linux systems using the native `users` type promise.
 
-[%CFEngine_include_example(local_users_absent.cf)%]
+{{< CFEngine_include_example(local_users_absent.cf) >}}
 
 Before activating the example policy, lets inspect the current state
 of the system.
@@ -181,7 +181,7 @@ already there.
 This example uses the native operating system commands to show
 ensuring that a group is present.
 
-[%CFEngine_include_example(local_group_present.cf)%]
+{{< CFEngine_include_example(local_group_present.cf) >}}
 
 First lets inspect the current state of the system.
 
@@ -205,7 +205,7 @@ cfengineers:x:1001:
 This example shows using the native `users` type promise to ensure
 that a user is a member of a particular group.
 
-[%CFEngine_include_example(local_user_secondary_group_member.cf)%]
+{{< CFEngine_include_example(local_user_secondary_group_member.cf) >}}
 
 First lets inspect the current state of the system
 
@@ -240,4 +240,4 @@ usermod: group 'cfengineers' does not exist
 
 ## Get a list of users
 
-[%CFEngine_include_snippet(get_a_list_of_users.cf, .* )%]
+{{< CFEngine_include_snippet(get_a_list_of_users.cf, .* ) >}}

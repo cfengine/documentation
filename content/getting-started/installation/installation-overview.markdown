@@ -6,7 +6,7 @@ sorting: 30
 
 ## Installation
 
-[%CFEngine_include_markdown(install-bootstrap-configure-summary.include.markdown)%]
+{{< CFEngine_include_markdown(install-bootstrap-configure-summary.include.markdown) >}}
 
 See [General installation][General installation] for a more detailed guide for how to install CFEngine, and links to installation guides for various versions of CFEngine and different configurations.
 

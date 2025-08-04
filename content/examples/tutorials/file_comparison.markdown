@@ -401,4 +401,4 @@ bundle agent list_file_2
 
 ## Full policy
 
-[%CFEngine_include_snippet(documentation/examples/tutorials/file_compare_test.cf, .* )%]
+{{< CFEngine_include_snippet(documentation/content/examples/tutorials/file_compare_test.cf, .* ) >}}
