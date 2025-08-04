@@ -196,8 +196,8 @@ The four mission phases are sometimes referred to as
 - Deploy
 
   Deploying really means launching the policy into production. In CFEngine you
-  simply publish your policy (in CFEngine parlance these are `promise
-  proposals`) and the machines see the new proposals and can adjust
+  simply publish your policy (in CFEngine parlance these are `promise proposals`)
+  and the machines see the new proposals and can adjust
   accordingly. Each machine runs an agent that is capable of keeping the
   system on course and maintaining it over time without further assistance.
 

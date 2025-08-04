@@ -30,7 +30,7 @@ curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy/count?i
 
 Show all _vacuumdb_ executions within last 24 hours executed on hosts reporting the `policy_server` or `test_cfengine_com` class.
 
-Example is searching for changes that are performed by _policy_server_ machines that execute _commands_ promise with command _/var/cfengine/bin/vacuumdb%_ - there is `%` sign at the end which is a wildcard as `vacuumdb` is executed with different options across policy.
+Example is searching for changes that are performed by _policy_server_ machines that execute _commands_ promise with command `/var/cfengine/bin/vacuumdb%` - there is `%` sign at the end which is a wildcard as `vacuumdb` is executed with different options across policy.
 
 **Request**
 

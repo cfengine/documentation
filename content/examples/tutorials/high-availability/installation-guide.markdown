@@ -27,7 +27,7 @@ all your CFEngine clients in case of failover.
 - We recommend having one shared IP address assigned for interface where MP is accessible
   (optionally) and one where PostgreSQL replication is configured (mandatory).
 - Both active and passive hub machines must be configured so that host names are different.
-- Basic hostname resolution works (hub names can be placed in _/etc/hosts_ or DNS configured).
+- Basic hostname resolution works (hub names can be placed in `/etc/hosts` or DNS configured).
 
 ### Example configuration used in this tutorial
 
@@ -196,7 +196,7 @@ performed on the active (node1), the passive (node2) or both nodes.
       chown -R cfpostgres:cfpostgres /var/cfengine/state/pg/{data/pg_arch,tmp}
       ```
 
-   2. Modify the _/var/cfengine/state/pg/data/postgresql.conf_ configuration file to set the
+   2. Modify the `/var/cfengine/state/pg/data/postgresql.conf` configuration file to set the
       following options accordingly (**uncomment the lines if they are commented out**):
 
       ```
@@ -507,7 +507,7 @@ performed on the active (node1), the passive (node2) or both nodes.
 
    **IMPORTANT:** Copy over only the hashes, without the `SHA=` prefix.
 
-6. **On both nodes,** add the following class definition to the _/var/cfengine/masterfiles/def.json_
+6. **On both nodes,** add the following class definition to the `/var/cfengine/masterfiles/def.json`
    file to enable HA:
 
    ```json {file="def.json"}
@@ -608,7 +608,7 @@ performed on the active (node1), the passive (node2) or both nodes.
 
 3. After verifying that replication is finished and data is synchronized between active database node and replica node (or once node1 and node2 are both down) promote PostgreSQL to exit recovery and begin read-write operations `cd /tmp && su cfpostgres -c "/var/cfengine/bin/pg_ctl -c -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log  promote"`.
 
-4. In order to make failover process as easy as possible there is `"failover_to_replication_node_enabled"` class defined both in _/var/cfengine/masterfiles/controls/VERSION/def.cf_ and _/var/cfengine/masterfiles/controls/VERSION/update_def.cf_. In order to stat collecting reports and serving policy from 3rd node uncomment the line defining mentioned class.
+4. In order to make failover process as easy as possible there is `"failover_to_replication_node_enabled"` class defined both in `/var/cfengine/masterfiles/controls/VERSION/def.cf` and `/var/cfengine/masterfiles/controls/VERSION/update_def.cf`. In order to stat collecting reports and serving policy from 3rd node uncomment the line defining mentioned class.
 
 **IMPORTANT:** Please note that as long as any of the active or passive cluster nodes is accessible by client to be contacted, failover to 3rd node is not possible. If the active or passive node is running and failover to 3rd node is required make sure to disable network interfaces where clients are bootstrapped to so that clients won't be able to access any other node than disaster-recovery.
 
