@@ -97,7 +97,7 @@ def processFile(markdown, config):
                 new_markdown_lines.append(markdown_line)
                 continue
 
-        marker = "[%CFEngine_"
+        marker = "{{< CFEngine_"
         marker_index = markdown_line.find(marker)
         if marker_index == -1:
             new_markdown_lines.append(markdown_line)
@@ -105,7 +105,7 @@ def processFile(markdown, config):
             continue
 
         new_lines = []
-        call = markdown_line[marker_index + len(marker) : markdown_line.find("%]")]
+        call = markdown_line[marker_index + len(marker) : markdown_line.find(" >}}")]
         function = call[: call.find("(")]
         parameters = call[len(function) + 1 : call.rfind(")")]
         parameters = parameters.split(",")
