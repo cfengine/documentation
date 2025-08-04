@@ -11,8 +11,8 @@ aliases:
 
 ## All promise types
 
-[%CFEngine_syntax_map(promiseTypes)]
+{{< CFEngine_syntax_map(promiseTypes) >}}
 
 ## All body Types
 
-[%CFEngine_syntax_map(bodyTypes)]
+{{< CFEngine_syntax_map(bodyTypes) >}}

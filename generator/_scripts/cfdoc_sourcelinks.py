@@ -81,7 +81,7 @@ def verifyLinkRegex(regex):
 
 
 def unexpandedMacroRegex():
-    return re.compile("\\[%CFEngine_.*%\\]")
+    return re.compile(r"\{\{\< CFEngine_.* \>\}\}")
 
 
 def verifyMacroRegex(regex):
