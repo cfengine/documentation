@@ -246,8 +246,7 @@ Linux
 ```
 
 You might also specify output syntax highlighting by adding language
-after the starting backticks and placing `[output]` in the first line.
-This line won't be shown in the resulted HTML.
+after the starting backticks and placing `{output}` at the end of the line.
 
 ```command
 curl --user admin:admin https://test.cfengine.com/api/user

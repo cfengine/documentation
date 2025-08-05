@@ -219,7 +219,7 @@ from the example.
 3. Insert the example's bundle name in the `bundlesequence` section
    of the main policy file `/var/cfengine/masterfiles/promises.cf`:
 
-   ```cf3
+   ```cf3 {skip TODO}
    bundlesequence => {
        ...
        "hello_world",
@@ -230,7 +230,7 @@ from the example.
 4. Insert the policy file name in the [`inputs`][Components#inputs] section of the main policy file
    `/var/cfengine/masterfiles/promises.cf`:
 
-   ```cf3
+   ```cf3 {skip TODO}
    inputs => {
        ...
        "hello_world.cf",
@@ -241,7 +241,7 @@ from the example.
 5. You must also remove any inputs section from the example that
    includes the external library:
 
-   ```cf3
+   ```cf3 {skip TODO}
    inputs => {
        "libraries/cfengine_stdlib.cf"
    };

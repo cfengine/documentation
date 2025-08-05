@@ -176,7 +176,7 @@ reports:
 
 A bonus to this is that you can get CFEngine to report system anomalies:
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
  rootprocs_high_dev2::

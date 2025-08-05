@@ -803,8 +803,8 @@ with the standard library method:
 ```cf3
 bundle agent example
 {
-  "/tmp/expander"
-
+  files:
+    "/tmp/expander"
            create => "true",
     edit_template => "/home/a10004/input.dat",
     edit_defaults => empty;

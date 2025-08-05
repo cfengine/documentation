@@ -512,7 +512,7 @@ bundle agent satellite_bootstrap_main
 {
 
 @if feature(this_is_not_the_feature_your_looking_for)
-   Hello there.
+   some_promise: "foo" unknown => "bar";
 @endif
 
   meta:

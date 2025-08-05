@@ -34,7 +34,7 @@ Body file control allows you to build modular policy. Body file control inputs
 are typically relative to the policy file itself.
 
 ```cf3
-bundle file_remover_control
+bundle common file_remover_control
 {
   vars:
     "inputs" slist => {

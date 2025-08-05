@@ -20,10 +20,10 @@ detailed information see the Language concepts section of the Reference manual.
 
 ### Bundles
 
-Bundles are re-usable and blocks of CFEngine policy. The following defines a _bundle_ called `my_test`, and it is a bundle for the agent.
+Bundles are re-usable and blocks of CFEngine policy. The following defines a _bundle_ called `example`, and it is a bundle for the agent.
 
 ```cf3
-bundle agent my_test
+bundle agent example
 {
   # ...
 }
@@ -45,9 +45,12 @@ do some file configuration for example, you would use the files promise type.
 The following policy ensures the existence of the `/tmp/hello-world` file:
 
 ```cf3
-files:
-  "/tmp/hello-world"
-    create => "true";
+bundle agent example
+{
+  files:
+    "/tmp/hello-world"
+      create => "true";
+}
 ```
 
 When defining desired states it is important to be clear about when and where
@@ -75,8 +78,8 @@ Now let's put the bundle, promise type and class components together in a
 final policy. As for classes we will use linux to define that the file
 `/tmp/hello-world` must exists on all hosts of type _linux_:
 
-```cf3 {file="my_test.cf"}
-bundle agent my_test
+```cf3 {file="example.cf"}
+bundle agent example
 {
   files:
     linux::
@@ -86,11 +89,11 @@ bundle agent my_test
 
 bundle agent __main__
 {
-  methods: "my_test";
+  methods: "example";
 }
 ```
 
-Let's save this policy in `/tmp/my-policy.cf`.
+Let's save this policy in `/tmp/example.cf`.
 
 You can now run this policy either in Distributed (client-server) System or in a
 Stand Alone system. The next two sections will cover each of the options.
@@ -109,13 +112,13 @@ this as it is the same cf-agent that runs on the hosts as on the Policy Server.
 command to run a syntax check:
 
 ```command
-cf-promises -f /tmp/my-policy.cf
+cf-promises -f /tmp/example.cf
 ```
 
 Unless you get any output, the syntax is correct. Now, to run this policy, simply type:
 
 ```command
-cf-agent -Kf /tmp/my-policy.cf
+cf-agent -Kf /tmp/example.cf
 ```
 
 As you can see, the response is immediate! Running CFEngine locally like this is
@@ -130,7 +133,7 @@ If you want to see what the agent is doing during its run, you can run the agent
 in verbose mode. Try:
 
 ```command
-cf-agent -Kf /tmp/my-policy.cf --verbose
+cf-agent -Kf /tmp/example.cf --verbose
 ```
 
 In a Stand Alone system, to make and run a policy remember to:
@@ -154,7 +157,7 @@ directory. When the content changes, cf-agent will download the updated files to
 
 This means that by default you should store all your policies in the
 `/var/cfengine/masterfiles` directory on your policy server. So, now create
-`/var/cfengine/masterfiles/my-policy.cf` with the content of the test policy
+`/var/cfengine/masterfiles/example.cf` with the content of the test policy
 previously authored.
 
 **NOTE:** We recommend that you use a version control system to store the audit
@@ -166,7 +169,7 @@ Now we need to tell CFEngine that there is a new policy in town:
 
 ```json {file="def.json"}
 {
-  "inputs": ["my-policy.cf"]
+  "inputs": ["example.cf"]
 }
 ```
 
@@ -182,7 +185,7 @@ any of the bootstrapped clients and you will find the `/tmp/-hello-world` file
 there.
 
 Whenever a host connects to the Policy Server, the host will ensure that it has
-the `my-policy.cf` file from the masterfiles directory exists in the local
+the `example.cf` file from the masterfiles directory exists in the local
 inputs directory. `def.json` will also be downloaded with the new
 instruction that there is a new policy. Within 5 minutes, whether you have 5
 Linux hosts or 50,000 Linux hosts, they will all have the `/tmp/hello-world` file

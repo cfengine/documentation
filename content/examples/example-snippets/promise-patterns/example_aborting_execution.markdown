@@ -42,7 +42,7 @@ Copy and paste `abortbundleclasses => { "invalid" };` into
 `/var/cfengine/masterfiles/controls/cf_agent.cf`. If you add it to
 the end of the file it should look something like this:
 
-```cf3
+```cf3 {skip TODO}
 ...
     #  dryrun => "true";
 

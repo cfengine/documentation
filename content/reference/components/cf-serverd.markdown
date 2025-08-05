@@ -69,7 +69,7 @@ See also the warning about regular expressions in
 
 **Examples**:
 
-```cf3
+```cf3 {skip TODO}
 allowconnects => {
      "127.0.0.1",
      "::1",
@@ -101,7 +101,7 @@ will potentially match more than one hostname (e.g.,
 
 **Examples**:
 
-```cf3
+```cf3 {skip TODO}
 allowallconnects      => {
      "127.0.0.1",
      "::1",
@@ -117,7 +117,7 @@ that are not using the latest protocol.
 
 To define subnets or address ranges, use CIDR notation:
 
-```cf3
+```cf3 {skip TODO}
 allowlegacyconnects =>  { "192.168.1.0/24", "192.168.2.123" }
 ```
 
@@ -127,7 +127,7 @@ for compatibility with pre-3.6 CFEngine versions.
 Set this attribute to an empty list to not allow any incoming connections
 using legacy protocol versions:
 
-```cf3
+```cf3 {skip TODO}
 allowlegacyconnects => { }
 ```
 
@@ -216,7 +216,7 @@ correspond to system identities on the server-side system.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 allowusers => { "cfengine", "root" };
 ```
 
@@ -233,13 +233,13 @@ be given as the argument, not the device name.
 
 **Allowed input range:** (arbitrary string)
 
-```cf3
+```cf3 {skip TODO}
 bindtointerface => "192.168.1.1";
 ```
 
 To bind to all interfaces, including IPV6:
 
-```cf3
+```cf3 {skip TODO}
 bindtointerface => "::";
 ```
 
