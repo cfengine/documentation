@@ -13,6 +13,7 @@ withCredentials([sshUserPrivateKey(credentialsId:"autobuild", keyFileVariable: "
         sh 'GIT_SSH_COMMAND = "ssh -i $key"'
         sh "git clone git@github.com:cfengine/nova --depth 1"
       }
+}
     }
   }
 }
