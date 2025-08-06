@@ -1,5 +1,5 @@
 pipeline {
-  agent {'CONTAINERS'}
+  agent { label 'CONTAINERS' }
 
   stages {
     stage('Check environment'){
