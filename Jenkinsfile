@@ -9,7 +9,7 @@ pipeline {
         sh "echo \"${pullRequest.title}\" > pull-request-title"
         sh "echo \"${pullRequest.body}\" > pull-request-body"
         sh "pwd; ls; whoami; uname -a"
-        sh "make"
+        sh "git clone git@github.com:cfengine/nova --depth 1"
       }
     }
   }
