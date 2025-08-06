@@ -4,14 +4,10 @@ pipeline {
   stages {
     stage('Check environment'){
       steps {
-script {
-  if (env.CHANGE_ID) {
-    echo pullRequest.properties
-  }
-}
         sh "env"
         sh "echo env CHANGE_ID: ${env.CHANGE_ID}"
-        sh "echo PR title: \"${pullRequest.title}\""
+        sh "echo \"${pullRequest.title}\" > pull-request-title"
+        sh "echo \"${pullRequest.body}\" > pull-request-body"
       }
     }
   }
