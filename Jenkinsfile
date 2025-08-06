@@ -6,7 +6,7 @@ pipeline {
       steps {
 script {
   if (env.CHANGE_ID) {
-    echo pullRequest.getProperties()
+    echo pullRequest.properties
   }
 }
         sh "env"
