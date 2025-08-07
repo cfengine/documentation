@@ -90,7 +90,7 @@ bundles act like characteristics of the systems. If you want
 different systems to have different `bundlesequences`, distinguish
 them with classes
 
-```cf3
+```cf3 {skip TODO}
 webservers::
 
   bundlesequence => { "main", "web" };
@@ -183,7 +183,7 @@ runs of e.g. `cf-agent` and `cf-promises`.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 cache_system_functions => "true";
 ```
 
@@ -251,7 +251,7 @@ sequence do not exist, ignore and continue.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 ignore_missing_bundles => "true";
 ```
 
@@ -283,7 +283,7 @@ not found.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 ignore_missing_inputs => "true";
 ```
 

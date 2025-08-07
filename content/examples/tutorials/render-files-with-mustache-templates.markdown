@@ -78,7 +78,7 @@ bundle agent myapp_confs
           }
     ');
 }
-body agent __main__
+bundle agent __main__
 {
   methods:
     "myapp_confs";

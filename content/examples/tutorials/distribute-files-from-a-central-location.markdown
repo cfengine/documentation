@@ -46,7 +46,7 @@ These variables provide path definitions for storing and deploying patches.
 
 Add the following variable information to the `masterfiles/def.cf` file:
 
-```cf3 {file="def.cf"}
+```cf3 {file="def.cf" skip TODO}
 "dir_patch_store"
   string => "/storage/patches",
   comment => "Define patch files source location",
