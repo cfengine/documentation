@@ -351,7 +351,7 @@ bundle agent example
 
   processes:
     servers::  # the next rules `extend` or add to the class servers
-      "...";
+      "..."
 }
 ```
 

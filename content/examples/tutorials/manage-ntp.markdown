@@ -34,7 +34,7 @@ You can think of bundles as a collection of desired states. You can have as many
 
 #### vars
 
-```cf3 {skip TODO}
+```cf3
 vars:
 ```
 
@@ -42,7 +42,7 @@ vars:
 
 ##### ntp_package_name
 
-```cf3 {skip TODO}
+```cf3
 "ntp_package_name" string => "ntp";
 ```
 
@@ -50,7 +50,7 @@ A variable with the name `ntp_package_name` is declared and it is assigned a val
 
 #### packages
 
-```cf3 {skip TODO}
+```cf3
 packages:
     "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
       policy          => "present",
@@ -62,7 +62,7 @@ packages:
 
 ##### $(ntp_package_name)
 
-```cf3 {skip TODO}
+```
 "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
 ```
 
@@ -72,7 +72,7 @@ This promiser has a number of additional attributes defined:
 
 ###### policy
 
-```cf3 {skip TODO}
+```cf3
 policy          => "present",
 ```
 
@@ -80,7 +80,7 @@ policy          => "present",
 
 ###### handle
 
-```cf3 {skip TODO}
+```cf3
 handle          => "ntp_packages_$(ntp_package_name)",
 ```
 
@@ -88,7 +88,7 @@ The handle uniquely identifies a promise within a policy. A recommended naming s
 
 ###### classes
 
-```cf3 {skip TODO}
+```cf3
 classes         => results("bundle", "ntp_package_");
 ```
 
@@ -134,10 +134,16 @@ Validate it.
 python -m json.tool < def.json
 ```
 
-```json {output}
+```output
 {
-  "inputs": ["services/ntp.cf"],
-  "vars": { "control_common_bundlesequence_end": ["ntp"] }
+    "inputs": [
+        "services/ntp.cf"
+    ],
+    "vars": {
+        "control_common_bundlesequence_end": [
+            "ntp"
+        ]
+    }
 }
 ```
 
@@ -207,7 +213,7 @@ Let's dissect this policy and review the differences in the policy.
 
 #### vars
 
-```cf3 {skip TODO}
+```cf3
 redhat::
     "ntp_service_name" string => "ntpd";
 debian::
@@ -218,7 +224,7 @@ The first thing that you will notice is that the variable declarations section h
 
 #### reports
 
-```cf3 {skip TODO}
+```cf3
 reports:
   ntp_service_repaired.inform_mode::
     "NTP service repaired";
@@ -232,7 +238,7 @@ ntp_service_repaired.inform_mode::
 
 This line restricts the context for the promises that follow to hosts that have `ntp_service_repaired` and `inform_mode` defined. Note: `inform_mode` is defined when information level logging is requested, e.g. the `-I`, `--inform`, or `--log-level inform` options are given to `cf-agent` defined.
 
-```cf3 {skip TODO}
+```cf3
 "NTP service repaired";
 ```
 
@@ -354,7 +360,7 @@ Let's review the different sections of the code, starting with the variable decl
 
 #### vars
 
-```cf3 {skip TODO}
+```cf3
    vars:
      linux::
        "ntp_package_name" string => "ntp";
@@ -384,7 +390,7 @@ A few new variables are defined. The variables `ntp_package_name`, `config_file`
 
 Now let's walk through the files promise in detail.
 
-```cf3 {skip TODO}
+```cf3
 files:
  "$(config_file)"
    create                => "true",
@@ -400,7 +406,7 @@ The promiser here is referenced by the `config_file` variable. In this case, it 
 
 ##### create
 
-```cf3 {skip TODO}
+```cf3
 create                => "true",
 ```
 
@@ -408,7 +414,7 @@ Valid values for this attribute are `true` or `false` to instruct the agent whet
 
 ##### perms
 
-```cf3 {skip TODO}
+```cf3
 perms                 => mog( "644", "root", "root" ),
 ```
 
@@ -416,7 +422,7 @@ This attribute sets the permissions and ownership of the file. [`mog()`][stdlib-
 
 ##### handle
 
-```cf3 {skip TODO}
+```cf3
 handle                => "ntp_files_conf",
 ```
 
@@ -424,7 +430,7 @@ A handle uniquely identifies a promise within a policy set. The [policy style gu
 
 ##### classes
 
-```cf3 {skip TODO}
+```cf3
 classes               => results( "bundle", "ntp_config" );
 ```
 
@@ -432,7 +438,7 @@ The classes attribute here uses the [`results()`][lib/common.cf#results] classes
 
 ##### template_method
 
-```cf3 {skip TODO}
+```cf3
 template_method       => "inline_mustache",
 ```
 
@@ -440,7 +446,7 @@ CFEngine supports multiple templating engines, the [template_method][files#templ
 
 ##### edit_template_string
 
-```cf3 {skip TODO}
+```cf3
 edit_template_string  => "$(config_template_string)",
 ```
 
@@ -448,7 +454,7 @@ The `edit_template_string` attribute is set to `$(config_template_string)` which
 
 ##### template_data
 
-```cf3 {skip TODO}
+```cf3
 template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
 ```
 
