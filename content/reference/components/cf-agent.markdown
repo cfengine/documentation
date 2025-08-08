@@ -297,7 +297,7 @@ the control section are hard-classes.
 
 **Example:**
 
-```cf3 {skip TODO}
+```cf3
 any::
 
   addclasses => { "My_Organization" }
@@ -329,7 +329,7 @@ rather than a security measure.
 
 **Example:**
 
-```cf3 {skip TODO}
+```cf3
 agentaccess => { "mark", "root", "sudo" };
 ```
 
@@ -357,7 +357,7 @@ syslog facility level.
 
 **Example:**
 
-```cf3 {skip TODO}
+```cf3
 agentfacility => "LOG_USER";
 ```
 
@@ -449,7 +449,7 @@ be given as the argument, not the device name.
 
 **Example:**
 
-```cf3 {skip TODO}
+```cf3
 bindtointerface => "192.168.1.1";
 ```
 
@@ -709,7 +709,7 @@ bundle agent one
 
 Some interactive programs insist on values being set, for example:
 
-```cf3 {skip TODO}
+```cf3
 # Required by apt-cache, debian
 
 environment => { "LANG=C" };

@@ -114,7 +114,7 @@ way to categorize various data accessible to the agent.
 Dynamic bundlesequences are extremely easy. First you find all the bundles whos
 name matches a regular expression and N tags.
 
-```cf3 {skip TODO}
+```cf3
 vars:
   "bundles" slist => bundlesmatching("regex", "tag1", "tag2", ...);
 ```
@@ -122,7 +122,7 @@ vars:
 Then every bundle matching the regular expression `regex` and **all**
 the tags will be found and run.
 
-```cf3 {skip TODO}
+```cf3
 methods:
   "run $(bundles)" usebundle => $(bundles);
 ```
