@@ -16,10 +16,18 @@ If the `data_structure` argument is specified to be:
 
 - `"array_of_arrays"`, the `data_container` argument is interpreted as an array
   of arrays, and the `key_or_index` argument is interpreted as an index within
-  the children arrays.
+  the children arrays. The `key_or_index` argument is required.
 - `"array_of_objects"`, the `data_container` argument is interpreted as an array
   of objects, and the `key_or_index` argument is interpreted as a key within the
-  children objects.
+  children objects. The `key_or_index` argument is required.
+- `"object_of_arrays"`, the `data_container` argument is interpreted as an object
+  of arrays, and the `key_or_index` argument is interpreted as an index within
+  the children arrays (if specified). If the `key_or_index` argument is omitted,
+  the key of the child array itself is used as a class expression.
+- `"object_of_objects"`, the `data_container` argument is interpreted as an object
+  if objects, and the `key_or_index` argument is interpreted as a key within the
+  children objects (if specified). If the `key_or_index` argument is omitted, the
+  key of the child object itself is used as a class expression.
 - `"auto"`, the interpretation is automatically detected based on the data
   structure.
 
@@ -44,6 +52,46 @@ If the `data_structure` argument is specified to be:
 **Output:**
 
 {{< CFEngine_include_snippet(classfilterdata_array_of_objects.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
+
+**Example (with object of arrays):**
+
+**Policy:**
+
+{{< CFEngine_include_snippet(classfilterdata_object_of_arrays.cf, #\+begin_src cfengine3, .*end_src) >}}
+
+**Output:**
+
+{{< CFEngine_include_snippet(classfilterdata_object_of_arrays.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
+
+**Example (with object of objects):**
+
+**Policy:**
+
+{{< CFEngine_include_snippet(classfilterdata_object_of_objects.cf, #\+begin_src cfengine3, .*end_src) >}}
+
+**Output:**
+
+{{< CFEngine_include_snippet(classfilterdata_object_of_objects.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
+
+**Example (with object of arrays using exogenous key):**
+
+**Policy:**
+
+{{< CFEngine_include_snippet(classfilterdata_object_of_arrays_exogenous_key.cf, #\+begin_src cfengine3, .*end_src) >}}
+
+**Output:**
+
+{{< CFEngine_include_snippet(classfilterdata_object_of_arrays_exogenous_key.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
+
+**Example (with object of objects using exogenous key):**
+
+**Policy:**
+
+{{< CFEngine_include_snippet(classfilterdata_object_of_objects_exogenous_key.cf, #\+begin_src cfengine3, .*end_src) >}}
+
+**Output:**
+
+{{< CFEngine_include_snippet(classfilterdata_object_of_objects_exogenous_key.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:**
 
