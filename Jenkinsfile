@@ -14,6 +14,11 @@ pipeline {
         sh 'uname -a; pwd; whoami; ls'
       }
     }
+    stage('Clean workspace') {
+      steps {
+        sh 'rm -rf $REPOS'
+      }
+    }
     stage('Checkout repositories'){
       steps {
         sh "echo \"${pullRequest.title}\" > pull-request-title"
