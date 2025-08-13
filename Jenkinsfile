@@ -1,7 +1,7 @@
 pipeline {
   agent { label 'CONTAINERS' }
   parameters {
-    string(name: "CORE_REV", defaultValue: 'master', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax 'tag:SOME_TAG' can be used to use a tag as a revision.')
+    string(name: "CORE_REV", defaultValue: 'master', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
   }
   options {
     checkoutToSubdirectory('documentation')
