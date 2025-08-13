@@ -9,6 +9,9 @@ pipeline {
   environment {
     REPOS = "core enterprise nova masterfiles northerntechhq/nt-docs"
     BASE_BRANCH = "master"
+    PACKAGE_JOB = "cf-remote"
+    PACKAGE_UPLOAD_DIRECTORY = "n/a"
+    PACKAGE_BUILD = "n/a"
   }
   stages {
     stage('Environment check') {

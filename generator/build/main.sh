@@ -64,19 +64,29 @@ test ! -z "$PACKAGE_BUILD"
 
 
 
-echo "Detecting version"
-HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_22
-HUB_DIR_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/$HUB_DIR_NAME/"
-HUB_PACKAGE_NAME="$(wget "$HUB_DIR_URL" -O- | sed '/\.deb/!d;s/.*"\([^"]*\.deb\)".*/\1/')"
+echo "Install hub package"
+if [ "$PACKAGE_JOB" = "cf-remote" ]; then
+  echo "Install using cf-remote"
+  apt install -y pipx
+  pipx install cf-remote
+  cf-remote --version "$BRANCH" install --hub localhost
+else
+  echo "Installing with old-style fetch_file function"
+  HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_22
+  HUB_DIR_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/$HUB_DIR_NAME/"
+  HUB_PACKAGE_NAME="$(wget "$HUB_DIR_URL" -O- | sed '/\.deb/!d;s/.*"\([^"]*\.deb\)".*/\1/')"
 
-fetch_file "$HUB_DIR_URL$HUB_PACKAGE_NAME" "cfengine-nova-hub.deb" 12
+  fetch_file "$HUB_DIR_URL$HUB_PACKAGE_NAME" "cfengine-nova-hub.deb" 12
 
-sudo apt-get -y purge cfengine-nova-hub || true
-sudo rm -rf /*/cfengine
+  sudo apt-get -y purge cfengine-nova-hub || true
+  sudo rm -rf /*/cfengine
 
-# unpack
-sudo dpkg --unpack cfengine-nova-hub.deb
-rm cfengine-nova-hub.deb
+  # unpack
+  sudo dpkg --unpack cfengine-nova-hub.deb
+  rm cfengine-nova-hub.deb
+fi
+
+# TODO: why copy the masterfiles from the package over the top of one we checked out which could have changes from a PR?
 sudo cp -a /var/cfengine/share/NovaBase/masterfiles "$WRKDIR"
 sudo chmod -R a+rX "$WRKDIR"/masterfiles
 
