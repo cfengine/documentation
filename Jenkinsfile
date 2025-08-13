@@ -22,7 +22,7 @@ pipeline {
     }
     stage('Clean workspace') {
       steps {
-        sh 'rm -rf $REPOS'
+        sh 'for r in $REPOS; do rm -rf "$(basename "$r")"; done'
       }
     }
     stage('Checkout repositories'){
@@ -46,7 +46,7 @@ pipeline {
   }
   post {
     cleanup {
-      sh 'rm -rf $REPOS'
+      sh 'for r in $REPOS; do rm -rf "$(basename "$r")"; done'
     }
   }
 }
