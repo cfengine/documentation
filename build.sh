@@ -6,6 +6,7 @@ if [ ! -d documentation ]; then
 fi
 command -v parallel || sudo apt install -y parallel
 command -v buildah || sudo apt install -y buildah
+command -v curl || sudo apt install -y curl
 export REPOS="core enterprise nova masterfiles northerntechhq/nt-docs"
 export BASE_BRANCH="master"
 export CORE_REV="$BASE_BRANCH"
