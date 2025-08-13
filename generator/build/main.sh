@@ -77,8 +77,8 @@ test ! -z "$PACKAGE_BUILD"
 echo "Install hub package"
 if [ "$PACKAGE_JOB" = "cf-remote" ]; then
   echo "Install using cf-remote"
-  apt update -y
-  apt install -y python3-venv pipx
+  sudo apt update -y
+  sudo apt install -y python3-venv pipx
   pipx install cf-remote
   cf-remote --version "$BRANCH" install --hub localhost
 else
