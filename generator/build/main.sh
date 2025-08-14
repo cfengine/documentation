@@ -84,7 +84,8 @@ if [ "$PACKAGE_JOB" = "cf-remote" ]; then
   # TODO, if DEBUG env var is defined then background this command and start "tail -F /var/log/CFEngine-Install.log"
   source /etc/os-release
   cf-remote --version "$BRANCH" download ${ID}$(echo ${VERSION_ID} | cut -d. -f1) hub $(uname -m)
-  find "$HOME/.cfengine -name '*.deb'" -print0 | xargs -0 -I{} cp {} cfengine-nova-hub.deb mv
+  find "$HOME/.cfengine" # debug
+  find "$HOME/.cfengine" -name '*.deb' -print0 | xargs -0 -I{} cp {} cfengine-nova-hub.deb mv
 else
   echo "Installing with old-style fetch_file function"
   HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_22
