@@ -57,9 +57,35 @@ pipeline {
     }
     stage('Publish to buildcache') {
       steps {
-        withCredentials([sshUserPrivateKey(credentialsId:"jenkins@buildcache", keyFileVariable: "BUILDCACHE_ACCESS_PRIVATE_KEY_PATH")]) {
-          sh 'bash -x documentation/generator/build/publish.sh'
-        }
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'buildcache.cloud.cfengine.com', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''set -x
+export WRKDIR=`pwd`
+
+mkdir -p upload
+mkdir -p output
+
+# find two tarballs
+archive=`find upload -name \'cfengine-documentation-*.tar.gz\'`
+tarball=`find upload -name packed-for-shipping.tar.gz`
+echo "TARBALL: $tarball"
+echo "ARCHIVE: $archive"
+
+# unpack $tarball
+echo cd `dirname $tarball`
+echo tar zxvf packed-for-shipping.tar.gz
+echo rm packed-for-shipping.tar.gz
+
+# move $archive to the _site
+echo mv $WRKDIR/$archive _site
+
+ls -la
+cd -
+
+ls -la upload
+
+# note: this triggers systemd job to AV-scan new files
+# and move them to proper places
+echo mv upload/* output
+''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: 'upload/$BUILD_TAG/build-documentation-$DOCS_BRANCH/$BUILD_TAG/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'output/')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
       }
     }
   }
