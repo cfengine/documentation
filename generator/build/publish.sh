@@ -25,11 +25,11 @@ echo "ARCHIVE: $archive"
 
 # unpack $tarball
 cd `dirname $tarball`
-tar zxvf packed-for-shipping.tar.gz
-rm packed-for-shipping.tar.gz
+echo tar zxvf packed-for-shipping.tar.gz
+echo rm packed-for-shipping.tar.gz
 
 # move $archive to the _site
-mv $WRKDIR/$archive _site
+echo mv $WRKDIR/$archive _site
 
 ls -la
 cd -
@@ -38,5 +38,5 @@ ls -la upload
 
 # note: this triggers systemd job to AV-scan new files
 # and move them to proper places
-mv upload/* output
+echo mv upload/* output
 EOF
