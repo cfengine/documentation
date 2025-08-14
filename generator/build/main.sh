@@ -80,6 +80,7 @@ if [ "$PACKAGE_JOB" = "cf-remote" ]; then
   sudo apt update -y
   sudo apt install -y python3-venv pipx
   pipx install cf-remote
+  export PATH="$HOME/.local/bin:$PATH"
   cf-remote --version "$BRANCH" install --hub localhost
 else
   echo "Installing with old-style fetch_file function"
