@@ -55,6 +55,13 @@ pipeline {
         sh 'BRANCH=${DOCS_BRANCH} bash -x documentation/generator/build/run.sh'
       }
     }
+    stage('Publish to buildcache') {
+      steps {
+        withCredentials([sshUserPrivateKey(credentialsId:"jenkins@buildcache", keyFileVariable: "BUILDCACHE_ACCESS_PRIVATE_KEY_PATH)]) {
+          sh 'bash -x documentation/generator/build/publish.sh'
+        }
+      }
+    }
   }
   post {
     cleanup {
