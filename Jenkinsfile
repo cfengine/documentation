@@ -40,6 +40,10 @@ pipeline {
         withCredentials([sshUserPrivateKey(credentialsId:"autobuild", keyFileVariable: "key")]) {
           sh 'export GIT_SSH_COMMAND="ssh -i $key"; ./parallel_git_rev_fetch.sh revisions'
         }
+      }
+    }
+    stage('Build documentation') {
+      steps {
         sh 'BRANCH=${DOCS_BRANCH} bash -x documentation/generator/build/run.sh'
       }
     }
