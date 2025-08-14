@@ -81,7 +81,10 @@ if [ "$PACKAGE_JOB" = "cf-remote" ]; then
   sudo apt install -y python3-venv pipx
   pipx install cf-remote
   export PATH="$HOME/.local/bin:$PATH"
-  cf-remote --version "$BRANCH" install --hub localhost
+  # TODO, if DEBUG env var is defined then background this command and start "tail -F /var/log/CFEngine-Install.log"
+  source /etc/os-release
+  cf-remote --version "$BRANCH" download ${ID}$(echo ${VERSION_ID} | cut -d. -f1) hub $(uname -m)
+  find "$HOME/.cfengine -name '*.deb'" -print0 | xargs -0 -I{} cp {} cfengine-nova-hub.deb mv
 else
   echo "Installing with old-style fetch_file function"
   HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_22
@@ -89,14 +92,14 @@ else
   HUB_PACKAGE_NAME="$(wget "$HUB_DIR_URL" -O- | sed '/\.deb/!d;s/.*"\([^"]*\.deb\)".*/\1/')"
 
   fetch_file "$HUB_DIR_URL$HUB_PACKAGE_NAME" "cfengine-nova-hub.deb" 12
-
-  sudo apt-get -y purge cfengine-nova-hub || true
-  sudo rm -rf /*/cfengine
-
-  # unpack
-  sudo dpkg --unpack cfengine-nova-hub.deb
-  rm cfengine-nova-hub.deb
 fi
+
+sudo apt-get -y purge cfengine-nova-hub || true
+sudo rm -rf /*/cfengine
+
+# unpack
+sudo dpkg --unpack cfengine-nova-hub.deb
+rm cfengine-nova-hub.deb
 
 # TODO: why copy the masterfiles from the package over the top of one we checked out which could have changes from a PR?
 sudo cp -a /var/cfengine/share/NovaBase/masterfiles "$WRKDIR"
