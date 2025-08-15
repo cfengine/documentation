@@ -53,7 +53,7 @@ pipeline {
     }
     stage('Build documentation') {
       steps {
-        sh 'BRANCH=${DOCS_BRANCH} bash -x documentation/generator/build/run.sh'
+        sh 'bash -x documentation/generator/build/run.sh'
       }
     }
     stage('Publish to buildcache') {
