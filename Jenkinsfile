@@ -28,6 +28,7 @@ pipeline {
         sh 'uname -a; pwd; whoami; ls'
       }
     }
+    // we clean FIRST and NOT at the end of the job so that we can replay various stages and have the build result from previous runs
     stage('Clean workspace') {
       steps {
         sh 'for r in $REPOS; do rm -rf "$(basename "$r")"; done'
@@ -115,9 +116,4 @@ mv upload/* output
       } // steps
     } // stage('Publish to buildcache')
   } // stages
-  post {
-    cleanup {
-      sh 'for r in $REPOS; do rm -rf "$(basename "$r")"; done'
-    }
-  }
 }
