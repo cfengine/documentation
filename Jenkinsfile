@@ -58,6 +58,7 @@ pipeline {
     stage('Publish to buildcache') {
       steps {
         sshPublisher(
+          alwaysPublishFromMaster: true, // critical as our build hosts have no access to private buildcache.cloud.cfengine.com needed so this transfers first to jenkins which is in private network and then to buildcache.
           publishers: [
             sshPublisherDesc(
               configName: 'buildcache.cloud.cfengine.com',
