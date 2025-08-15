@@ -99,7 +99,7 @@ fi
 sudo apt-get -y purge cfengine-nova-hub || true
 sudo rm -rf /*/cfengine
 
-# unpack
+# we unpack the hub package instead of installing to get around trouble with the package trying to start up services in a container which doesn't work all that well (yet, 2025)
 sudo dpkg --unpack cfengine-nova-hub.deb
 rm cfengine-nova-hub.deb
 
