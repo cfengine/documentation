@@ -82,8 +82,9 @@ if [ "$PACKAGE_JOB" = "cf-remote" ]; then
   pipx install cf-remote
   export PATH="$HOME/.local/bin:$PATH"
   # TODO, if DEBUG env var is defined then background this command and start "tail -F /var/log/CFEngine-Install.log"
+  # shellcheck source=/dev/null
   source /etc/os-release
-  cf-remote --version "$BRANCH" download ${ID}$(echo ${VERSION_ID} | cut -d. -f1) hub $(uname -m)
+  cf-remote --version "$BRANCH" download "${ID}$(echo "${VERSION_ID}" | cut -d. -f1) hub $(uname -m)"
   find "$HOME/.cfengine" # debug
   find "$HOME/.cfengine" -name '*.deb' -print0 | xargs -0 -I{} cp {} cfengine-nova-hub.deb
 else
