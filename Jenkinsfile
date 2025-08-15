@@ -2,21 +2,21 @@ pipeline {
   agent { label 'CONTAINERS' }
   environment {
     REPOS = "core enterprise nova masterfiles northerntechhq/nt-docs"
-    BASE_BRANCH="""if (pullRequest.CHANGE_ID) { ${pullRequest.base} } else { ${env.BRANCH_NAME} }"""
+    PR_BASE="${pullRequest.base}"
     PACKAGE_JOB = "cf-remote"
     PACKAGE_UPLOAD_DIRECTORY = "n/a"
     PACKAGE_BUILD = "n/a"
   }
   parameters {
-    string(name: "CORE_REV", defaultValue: '${BASE_BRANCH}', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
-    string(name: "NOVA_REV", defaultValue: 'master', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
-    string(name: "ENTERPRISE_REV", defaultValue: 'master', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
-    string(name: "MASTERFILES_REV", defaultValue: 'master', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
-    string(name: "DOCS_REV", defaultValue: 'master', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
+    string(name: "CORE_REV", defaultValue: '', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
+    string(name: "NOVA_REV", defaultValue: '', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
+    string(name: "ENTERPRISE_REV", defaultValue: '', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
+    string(name: "MASTERFILES_REV", defaultValue: '', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
+    string(name: "DOCS_REV", defaultValue: '', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
     string(name: "NT_DOCS_REV", defaultValue: 'main', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
-    string(name: "DOCS_BRANCH", defaultValue: 'master', description: 'Where to upload artifacts - to http://buildcache.cloud.cfengine.com/packages/build-documentation-$DOCS_BRANCH/ and https://docs.cfengine.com/docs/$DOCS_BRANCH/')
+    string(name: "DOCS_BRANCH", defaultValue: '', description: 'Where to upload artifacts - to http://buildcache.cloud.cfengine.com/packages/build-documentation-$DOCS_BRANCH/ and https://docs.cfengine.com/docs/$DOCS_BRANCH/')
     string(name: "PACKAGE_JOB", defaultValue: 'cf-remote', description: 'where to get CFEngine HUB package from, either a dir at http://buildcache.cloud.cfengine.com/packages like testing-pr or a keyword cf-remote to use cf-remote download')
-    string(name: "USE_NIGHTLIES_FOR", defaultValue: 'master', description: 'branch whose nightlies to use (master, 3.18.x, etc) - will be one of http://buildcache.cloud.cfengine.com/packages/testing-pr/jenkins-$USE_NIGHTLIES_FOR-nightly-pipeline-$NUMBER/')
+    string(name: "USE_NIGHTLIES_FOR", defaultValue: '', description: 'branch whose nightlies to use (master, 3.18.x, etc) - will be one of http://buildcache.cloud.cfengine.com/packages/testing-pr/jenkins-$USE_NIGHTLIES_FOR-nightly-pipeline-$NUMBER/')
   }
   options {
     checkoutToSubdirectory('documentation')
