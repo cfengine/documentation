@@ -57,7 +57,15 @@ pipeline {
     }
     stage('Publish to buildcache') {
       steps {
-        sshPublisher(publishers: [sshPublisherDesc(configName: 'buildcache.cloud.cfengine.com', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''set -x
+        sshPublisher(
+          publishers: [
+            sshPublisherDesc(
+              configName: 'buildcache.cloud.cfengine.com',
+              transfers: [
+                sshTransfer(
+                  cleanRemote: false,
+                  excludes: '',
+                  execCommand: '''set -x
 export WRKDIR=`pwd`
 
 mkdir -p upload
@@ -85,10 +93,27 @@ ls -la upload
 # note: this triggers systemd job to AV-scan new files
 # and move them to proper places
 echo mv upload/* output
-''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: 'upload/$BUILD_TAG/build-documentation-$DOCS_BRANCH/$BUILD_TAG/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'output/')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-      }
-    }
-  }
+''',
+                  execTimeout: 120000,
+                  flatten: false,
+                  makeEmptyDirs: false,
+                  noDefaultExcludes: false,
+                  patternSeparator: '[, ]+',
+                  remoteDirectory: 'upload/$BUILD_TAG/build-documentation-$DOCS_BRANCH/$BUILD_TAG/',
+                  remoteDirectorySDF: false,
+                  removePrefix: '',
+                  sourceFiles: 'output/'
+                ) // sshTransfer
+               ], // transfers
+               usePromotionTimestamp: false,
+               useWorkspaceInPromotion: false,
+               verbose: false
+             ) // sshPublisherDesc
+           ] // publishers
+         ) // sshPublisher
+      } // steps
+    } // stage('Publish to buildcache')
+  } // stages
   post {
     cleanup {
       sh 'for r in $REPOS; do rm -rf "$(basename "$r")"; done'
