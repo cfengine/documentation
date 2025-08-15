@@ -13,7 +13,7 @@ pipeline {
     string(name: "ENTERPRISE_REV", defaultValue: '', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
     string(name: "MASTERFILES_REV", defaultValue: '', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
     string(name: "DOCS_REV", defaultValue: '', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
-    string(name: "NT_DOCS_REV", defaultValue: 'main', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
+    string(name: "NT_DOCS_REV", defaultValue: '', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to run the tests on the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
     string(name: "DOCS_BRANCH", defaultValue: '', description: 'Where to upload artifacts - to http://buildcache.cloud.cfengine.com/packages/build-documentation-$DOCS_BRANCH/ and https://docs.cfengine.com/docs/$DOCS_BRANCH/')
     string(name: "PACKAGE_JOB", defaultValue: 'cf-remote', description: 'where to get CFEngine HUB package from, either a dir at http://buildcache.cloud.cfengine.com/packages like testing-pr or a keyword cf-remote to use cf-remote download')
     string(name: "USE_NIGHTLIES_FOR", defaultValue: '', description: 'branch whose nightlies to use (master, 3.18.x, etc) - will be one of http://buildcache.cloud.cfengine.com/packages/testing-pr/jenkins-$USE_NIGHTLIES_FOR-nightly-pipeline-$NUMBER/')
@@ -25,7 +25,8 @@ pipeline {
     stage('Environment check') {
       steps {
         sh 'env'
-        sh 'uname -a; pwd; whoami; ls'
+        sh 'whoami; pwd; ls'
+        sh 'uname -a; cat /etc/os-release'
       }
     }
     // we clean FIRST and NOT at the end of the job so that we can replay various stages and have the build result from previous runs
@@ -38,7 +39,7 @@ pipeline {
       steps {
         sh "echo \"${pullRequest.title}\" > pull-request-title"
         sh "echo \"${pullRequest.body}\" > pull-request-body"
-        sh "pwd; ls; whoami; uname -a"
+// TODO: change URL after merging https://github.com/cfengine/buildscripts/pull/1848
         sh "curl -O https://raw.githubusercontent.com/craigcomstock/buildscripts/refs/heads/ENT-12581/ci/create-revisions-file.sh"
         sh "chmod u+x ./create-revisions-file.sh"
         sh "./create-revisions-file.sh"
@@ -59,7 +60,8 @@ pipeline {
     stage('Publish to buildcache') {
       steps {
         sshPublisher(
-          alwaysPublishFromMaster: true, // critical as our build hosts have no access to private buildcache.cloud.cfengine.com needed so this transfers first to jenkins which is in private network and then to buildcache.
+          // we must use alwaysPublishFromMaster: true because our CONTAINERS build hosts are not in the private network which has access to buildcache.cloud.cfengine.com
+          alwaysPublishFromMaster: true,
           publishers: [
             sshPublisherDesc(
               configName: 'buildcache.cloud.cfengine.com',
