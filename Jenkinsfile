@@ -16,7 +16,14 @@ pipeline {
   }
   environment {
     REPOS = "core enterprise nova masterfiles northerntechhq/nt-docs"
-    BASE_BRANCH = "master"
+
+    // for pull requests we use pullRequest.base, for branches we use env.BRANCH_NAME
+    if (env.CHANGE_ID) {
+      BASE_BRANCH = "${pullRequest.base}"
+    else
+      BASE_BRANCH = "${env.BRANCH_NAME}"
+    }
+
     PACKAGE_JOB = "cf-remote"
     PACKAGE_UPLOAD_DIRECTORY = "n/a"
     PACKAGE_BUILD = "n/a"
