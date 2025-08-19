@@ -15,7 +15,6 @@ export PACKAGE_UPLOAD_DIRECTORY=$3
 export PACKAGE_BUILD=$4
 
 export JOB_TO_UPLOAD=$PACKAGE_JOB
-export FLAG_FILE_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/PACKAGES_HUB_x86_64_linux_ubuntu_22/core-commitID"
 export NO_OUTPUT_DIR=1
 
 env
@@ -63,17 +62,6 @@ test ! -z "$JOB_TO_UPLOAD"
 test ! -z "$PACKAGE_UPLOAD_DIRECTORY"
 test ! -z "$PACKAGE_BUILD"
 
-
-echo "Waiting for flag file to appear"
-for i in $(seq 30); do
-    if wget -O- "$FLAG_FILE_URL"; then
-      break
-    fi
-    echo "Waiting 10 sec"
-    sleep 10
-done
-# check if flag file is there - if not, script will fail here
-wget -O- "$FLAG_FILE_URL"
 
 echo "Detecting version"
 HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_22
