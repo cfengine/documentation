@@ -63,7 +63,7 @@ If the `data_structure` argument is specified to be:
 
 {{< CFEngine_include_snippet(classfilterdata_object_of_arrays.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
-**Example (with object of objects):**
+**Example (with object of objects using key inside the object):**
 
 **Policy:**
 
@@ -73,25 +73,25 @@ If the `data_structure` argument is specified to be:
 
 {{< CFEngine_include_snippet(classfilterdata_object_of_objects.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
-**Example (with object of arrays using exogenous key):**
+**Example (with object of arrays using key to the object itself):**
 
 **Policy:**
 
-{{< CFEngine_include_snippet(classfilterdata_object_of_arrays_exogenous_key.cf, #\+begin_src cfengine3, .*end_src) >}}
+{{< CFEngine_include_snippet(classfilterdata_object_of_arrays_key_to_obj.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 **Output:**
 
-{{< CFEngine_include_snippet(classfilterdata_object_of_arrays_exogenous_key.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
+{{< CFEngine_include_snippet(classfilterdata_object_of_arrays_key_to_obj.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
-**Example (with object of objects using exogenous key):**
+**Example (with object of objects using key to the object itself):**
 
 **Policy:**
 
-{{< CFEngine_include_snippet(classfilterdata_object_of_objects_exogenous_key.cf, #\+begin_src cfengine3, .*end_src) >}}
+{{< CFEngine_include_snippet(classfilterdata_object_of_objects_key_to_obj.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 **Output:**
 
-{{< CFEngine_include_snippet(classfilterdata_object_of_objects_exogenous_key.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
+{{< CFEngine_include_snippet(classfilterdata_object_of_objects_key_to_obj.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:**
 
