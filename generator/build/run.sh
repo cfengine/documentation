@@ -14,8 +14,8 @@ fi
 # * masterfiles (used to document masterfies)
 # * documentation (this repo)
 
-# These env vars must be defined:
-true "${BRANCH?undefined}"
+# The PACKAGE* vars are not needed for fast-build jobs as they use cf-remote --version $BRANCH install
+# We still require them to have a value but by current convention (until cf-remote --version testing-pr-build-number works) we set them to cf-remote in documentation/Jenkinsfile
 true "${PACKAGE_JOB?undefined}"
 true "${PACKAGE_UPLOAD_DIRECTORY?undefined}"
 true "${PACKAGE_BUILD?undefined}"
