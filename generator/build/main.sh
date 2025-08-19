@@ -9,6 +9,16 @@ if [ "$#" != 4 ]; then
     exit 1
 fi
 
+echo "$(basename "$0"): Diagnostic facts about execution environment:"
+echo "======"
+whoami
+cat /etc/os-release
+free -h
+df -h
+uname -a
+echo "======"
+
+
 export BRANCH=$1
 export PACKAGE_JOB=$2
 export PACKAGE_UPLOAD_DIRECTORY=$3
