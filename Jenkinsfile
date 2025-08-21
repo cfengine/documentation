@@ -39,8 +39,7 @@ pipeline {
       steps {
         sh "echo \"${pullRequest.title}\" > pull-request-title"
         sh "echo \"${pullRequest.body}\" > pull-request-body"
-// TODO: change URL after merging https://github.com/cfengine/buildscripts/pull/1848
-        sh "curl -O https://raw.githubusercontent.com/craigcomstock/buildscripts/refs/heads/ENT-12581/ci/create-revisions-file.sh"
+        sh "curl -O https://raw.githubusercontent.com/cfengine/buildscripts/refs/heads/master/ci/create-revisions-file.sh"
         sh "chmod u+x ./create-revisions-file.sh"
         sh "./create-revisions-file.sh"
         sh "cat revisions"
