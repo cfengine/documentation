@@ -2,7 +2,7 @@ pipeline {
   agent { label 'CONTAINERS' }
   environment {
     REPOS = "core enterprise nova masterfiles northerntechhq/nt-docs"
-    PR_BASE="${pullRequest.base}"
+    PR_BASE = getPR_BASE()
     PACKAGE_JOB = "cf-remote"
     PACKAGE_UPLOAD_DIRECTORY = "n/a"
     PACKAGE_BUILD = "n/a"
@@ -37,8 +37,12 @@ pipeline {
     }
     stage('Checkout repositories'){
       steps {
-        sh "echo \"${pullRequest.title}\" > pull-request-title"
-        sh "echo \"${pullRequest.body}\" > pull-request-body"
+        script {
+          if (env.CHANGE_ID) {
+            sh "echo \"${pullRequest.title}\" > pull-request-title"
+            sh "echo \"${pullRequest.body}\" > pull-request-body"
+          }
+        }
         sh "curl -O https://raw.githubusercontent.com/cfengine/buildscripts/refs/heads/master/ci/create-revisions-file.sh"
         sh "chmod u+x ./create-revisions-file.sh"
         sh "./create-revisions-file.sh"
@@ -121,4 +125,11 @@ mv upload/* output
       } // steps
     } // stage('Publish to buildcache')
   } // stages
+}
+def getPR_BASE() {
+  if (env.CHANGE_ID) {
+    return "${pullRequest.base}"
+  } else {
+    return ""
+  }
 }
