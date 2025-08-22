@@ -109,13 +109,13 @@ through them and look up values.
 
 Well, you can change
 
-```cf3 {skip TODO}
+```cf3
 "bykey" data => parsejson('{ "dev": ["c", "b"], "prod": ["flea"], "qa": ["a"], "private": ["linux"] }');
 ```
 
 with
 
-```cf3 {skip TODO}
+```cf3
 "bykey" data => data_readstringarray(...);
 ```
 
@@ -131,7 +131,7 @@ private linux
 
 You can also use
 
-```cf3 {skip TODO}
+```cf3
 "bykey" data => readjson(...);
 ```
 

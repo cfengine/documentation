@@ -70,7 +70,7 @@ cluster-node.
 
 First we can classify the physical machines in this case by IP address:
 
-```cf3 {skip TODO}
+```cf3
 classes:
         "front_end" or => {"192.168.1.2"};
         "node_controllers" or => {"192.168.1.3"};
@@ -81,7 +81,7 @@ IP addresses of intended node controllers. This will allow the "onehost create"
 command to execution each new node controller in turn reducing redundancy in the
 policy file for example:
 
-```cf3 {skip TODO}
+```cf3
 vars:
  "node_controller" slist => { "192.168.1.3", "192.168.1.4", "192.168.1.5" };
 
@@ -100,7 +100,7 @@ classes:
 To install the dependancies for each physical machine we can define these in a
 list and use the CFEngine standard library package promises to install them:
 
-```cf3 {skip TODO}
+```cf3
 vars:
   "front_end_deps" slist => {
     "libcurl3",
@@ -127,7 +127,7 @@ vars:
 
 Promises to perform dependency installation:
 
-```cf3 {skip TODO}
+```cf3
 packages:
 
 front_end::
@@ -149,7 +149,7 @@ The additional line in the front end dependancy installation promise, assuming a
 successful installation, will ensure the Open Nebula daemon is running at all
 times:
 
-```cf3 {skip TODO}
+```cf3
 front_end::
 
 ensure_opennebula_running::
@@ -159,7 +159,7 @@ ensure_opennebula_running::
 
 Resulting in:
 
-```cf3 {skip TODO}
+```cf3
 commands:
 
   start_oned::
@@ -171,7 +171,7 @@ commands:
 Since we will be using Open Nebula version 2 we must manually supply the
 package:
 
-```cf3 {skip TODO}
+```cf3
 commands:
 
   front_end.!opennebula_installed::
@@ -184,7 +184,7 @@ repeated installation we can do a check to see if Open Nebula has already been
 installed by classifying a successful installation as having the oned.conf file
 in existence:
 
-```cf3 {skip TODO}
+```cf3
 classes:
 
   "opennebula_installed" or => {fileexists("/etc/one/oned.conf")};
@@ -194,7 +194,7 @@ Open nebula requires a privileged user "oneadmin" to issue commands. In order to
 have CFEngine perform these commands with the correct privileges we can use the
 contain body by appending the following to commands promises:
 
-```cf3 {skip TODO}
+```cf3
 contain => oneadmin
 ```
 
@@ -214,7 +214,7 @@ dependancy configuration, Up: Top NFS config for shared image repository
 If not present append the NFS export directory stored in the corresponding
 variable (including a new line):
 
-```cf3 {skip TODO}
+```cf3
 vars:
 
 "nfs_export_dir"
@@ -234,7 +234,7 @@ files:
 
 To ensure the NFS service remains available:
 
-```cf3 {skip TODO}
+```cf3
 processes:
 
 ensure_nfs_running::
@@ -251,7 +251,7 @@ start_nfs::
 In order to ensure the share is mounted on all node controllers we can use the
 NFS promise:
 
-```cf3 {skip TODO}
+```cf3
 storage:
 
   cluster_node::
@@ -262,7 +262,7 @@ storage:
 
 Next we will create a directory to hold our virtual machine images:
 
-```cf3 {skip TODO}
+```cf3
 "/var/lib/one/images/.",
   comment => "create dir in image repo share",
   perms => mog("644", "oneadmin", "oneadmin"),
@@ -273,7 +273,7 @@ Next we will create a directory to hold our virtual machine images:
 
 Create the oneadmin bashrc file containing the ONE_XMLRPC environment variable with appropriate permissions:
 
-```cf3 {skip TODO}
+```cf3
 files:
   front_end::
     "/var/lib/one/.bashrc"
@@ -286,7 +286,7 @@ files:
 
 We also need to create the one_auth file:
 
-```cf3 {skip TODO}
+```cf3
 files:
   front_end::
     "/var/lib/one/.one/one_auth",
@@ -300,7 +300,7 @@ Finally password-less authentication for the oneadmin user:
 
 Add key to autorized_keys file:
 
-```cf3 {skip TODO}
+```cf3
 files:
   front_end::
     "/var/lib/one/.ssh/authorized_keys",
@@ -311,7 +311,7 @@ files:
 
 Disable known hosts prompt:
 
-```cf3 {skip TODO}
+```cf3
 front_end::
   "/var/lib/one/.ssh/config",
     comment => "disable strict host key checking",
@@ -325,7 +325,7 @@ Now on the node controller(s) we need to add the oneadmin group and user with
 the same uid and gid as the front end and add the oneadmin user to the libvertd
 group:
 
-```cf3 {skip TODO}
+```cf3
 files:
   node_controller::
     "/etc/passwd",
@@ -344,7 +344,7 @@ files:
 Now that the user environment is configured we can register our node controller
 with the front end:
 
-```cf3 {skip TODO}
+```cf3
 files:
   front_end::
     "/usr/bin/onehost create 192.168.1.2 im_kvm vmm_kvm tm_nfs",
@@ -357,7 +357,7 @@ Before we can create virtual networks we must configure our node controller
 interfaces. In this example we will bridge a virtual interface (vbr0) with eth0.
 First we define the contents of the interfaces file in a variable:
 
-```cf3 {skip TODO}
+```cf3
 vars:
 "interfaces_contents" slist => {
   "auto lo",
@@ -379,7 +379,7 @@ vars:
 
 Next we edit the interfaces file to include our new settings:
 
-```cf3 {skip TODO}
+```cf3
 files:
   node_controller::
     "/etc/network/interfaces",
@@ -391,7 +391,7 @@ files:
 
 And restart networking:
 
-```cf3 {skip TODO}
+```cf3
 commands:
   restart_networking::
     "/etc/init.d/networking restart",
@@ -403,7 +403,7 @@ network file and submit it to the system. The contents of the virtual network
 template file could be defined as a variable as we have seen before but in this
 case it is passed as a parameter to the append promise body:
 
-```cf3 {skip TODO}
+```cf3
 "/var/lib/one/network.template",
   comment => "create lan template",
   create => "true",
@@ -418,7 +418,7 @@ The network template only deals with fixed ip addresses and provides only one
 lease. Obviously this should be altered to suite your requirements. Now we have
 a template we can register it with open nebula:
 
-```cf3 {skip TODO}
+```cf3
 commands:
   front_end::
      "/usr/bin/onevnet create /var/lib/one/network.template",
@@ -430,7 +430,7 @@ commands:
 This follows the same pattern as virtual network setup. First we create the
 template file:
 
-```cf3 {skip TODO}
+```cf3
 files:
 
   "/var/lib/one/vm.template",
@@ -457,7 +457,7 @@ GRAPHICS = [TYPE = \"vnc\", LISTEN = \"localhost\", PORT = 5910]
 
 Now we can launch the virtual machine defined in its template file:
 
-```cf3 {skip TODO}
+```cf3
 commands:
   front_end::
     "/usr/bin/onevm create /var/lib/one/vm.template",
@@ -491,7 +491,7 @@ Once registration is complete we can define a new class based on the ip of our
 virtual machine. In this example that is 192.168.1.100 so we can create a class
 with a meaningful name:
 
-```cf3 {skip TODO}
+```cf3
 "webserver" or => {"192_168_1_100"};
 ```
 
@@ -502,7 +502,7 @@ other machine for example:
 
 First we install apache:
 
-```cf3 {skip TODO}
+```cf3
 packages:
   webserver::
     "apache2",
@@ -514,7 +514,7 @@ packages:
 
 Next we ensure it is running
 
-```cf3 {skip TODO}
+```cf3
 processes:
   ensure_apache_running::
     ".*apache2.*"
@@ -523,7 +523,7 @@ processes:
 
 If not, the service is restarted
 
-```cf3 {skip TODO}
+```cf3
 commands:
   start_apache::
     "/etc/init.d/apache2 restart";
@@ -532,7 +532,7 @@ commands:
 Finally we can copy some content into the document root on our new virtual
 webserver:
 
-```cf3 {skip TODO}
+```cf3
 files:
   "/var/www"
     perms => system("744"),

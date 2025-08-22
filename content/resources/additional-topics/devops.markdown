@@ -126,13 +126,11 @@ organizes similar operations into chapters in a simple separation of concerns.
 bundle agent example
 {
   files:
-    "affected object"
-      # ...details....
-      ;
+     "affected object" ...details....
+
   processes:
-    "affected object"
-      # ...details....
-      ;
+     "affected object" ...details....
+
 }
 ```
 
@@ -140,14 +138,14 @@ In general, many such promises and types are collected into bundles, so that the
 form is
 
 ```cf3
-bundle agent some_user_defined_name
+bundle agent SomeUserDefinedName
 {
   type_of_promise:
+
     "affected object/promiser"
-      # attributes of the promise/details
-      ;
-    # More promises...
-  # More promise types...
+
+     body of the promise/details
+ ...
 }
 ```
 
@@ -159,13 +157,18 @@ written as a prefix, a bit like a target in a Makefile. They represent known
 properties of the environment.
 
 ```cf3
-bundle agent some_user_defined_name
+bundle agent SomeUserDefinedName
 {
+
   type_of_promise:
+
     property::
-      "make one promise...";
+
+      make one promise...
+
     !property::
-      "make a different promise...";
+
+      make a different promise...
 }
 ```
 
@@ -178,7 +181,7 @@ certain hard-classes by default. In addition, you can probe as many more as you
 like, as separate promises.
 
 ```cf3
-bundle agent some_user_defined_name
+bundle agent SomeUserDefinedName
 {
  classes:
 
@@ -197,7 +200,7 @@ To go from if-then-else thinking to using classes, you just need to thihnk about
 classes as booleans:
 
 ```cf3
-bundle agent some_user_defined_name
+bundle agent Name
 {
   classes:
 

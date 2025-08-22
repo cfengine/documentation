@@ -112,7 +112,7 @@ classes:
                                            );
 methods:
 
-  Host2.hostX_did_my_job::
+  Host2.hostX_did_my_job
 
     "any" usebundle => do_my_job_bundle;
 
@@ -193,7 +193,7 @@ classes:
                                                         );
 methods:
 
-  Host2.hostX_did_my_job::
+  Host2.hostX_did_my_job
 
     "any" usebundle => do_my_job_bundle;
 
@@ -361,7 +361,7 @@ classes:
                                  if => "Host$(n)";
 methods:
 
-  Host2.Host3.Host4.hostX_did_my_job::
+  Host2.Host3.Host4.hostX_did_my_job
 
     "any" usebundle => do_my_job_bundle;
 
@@ -382,12 +382,12 @@ no error handling or recovery except to schedule the whole thing again.
 Triggering from one or more predecessors, i.e. combining with OR, looks similar,
 we just have to change the class expression:
 
-```cf3
+```
 bundle agent example
 {
   methods:
 
-    (Host2|Host3|Host4).hostX_did_my_job::
+    (Host2|Host3|Host4).hostX_did_my_job
 
       "any" usebundle => do_my_job_bundle;
 }
@@ -414,7 +414,7 @@ classes:
                                                         );
 methods:
 
-  Host2.hostX_did_my_job::
+  Host2.hostX_did_my_job
 
     "any" usebundle => do_my_job_bundle1;
     "any" usebundle => do_my_job_bundle2;
