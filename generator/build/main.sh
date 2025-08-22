@@ -84,7 +84,17 @@ if [ "$PACKAGE_JOB" = "cf-remote" ]; then
   # shellcheck source=/dev/null
   source /etc/os-release
   rm -rf ~/.cfengine/cf-remote/packages # to ensure we only get one
-  cf-remote --version "$BRANCH" download "${ID}$(echo "${VERSION_ID}" | cut -d. -f1)" hub "$(uname -m)"
+  # in case of LTS branches like 3.21 (without .x since we are in documentation repo) need to add on .x
+  if [ "$(expr "$BRANCH" : ".*.x")" = 0 ]; then
+    if [ "$BRANCH" = "master" ]; then
+      _VERSION=master
+    else
+      _VERSION="$BRANCH".x
+    fi
+  else
+    _VERSION="$BRANCH" # in case someone copy/pastes this to a repo besides documentation
+  fi
+  cf-remote --version "$_VERSION" download "${ID}$(echo "${VERSION_ID}" | cut -d. -f1)" hub "$(uname -m)"
   find "$HOME/.cfengine" # debug
   find "$HOME/.cfengine" -name '*.deb' -print0 | xargs -0 -I{} cp {} cfengine-nova-hub.deb
 else
