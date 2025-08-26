@@ -14,7 +14,7 @@ RUN chown -R jenkins:jenkins /home/jenkins
 COPY install.sh /
 USER jenkins
 WORKDIR /home/jenkins
-RUN bash -x /install.sh
+RUN bash -x /install.sh 2>&1 | tee /install.sh.log
 
 # This is where our repos will be
 WORKDIR /nt
