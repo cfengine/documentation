@@ -3,8 +3,8 @@
 set -ex
 trap "echo FAILURE" ERR
 
-if ! buildah inspect docs-revamp-22 >/dev/null 2>&1; then
-  buildah build-using-dockerfile -t docs-revamp-22 documentation/generator/build
+if ! buildah inspect docs-hugo >/dev/null 2>&1; then
+  buildah build-using-dockerfile -t docs-hugo documentation/generator/build
 fi
 
 # Current path must have the following repos cloned:
@@ -30,7 +30,7 @@ elif [ -n "$BRANCH_NAME" ]; then
   BRANCH="$BRANCH_NAME"
 fi
 
-c=$(buildah from -v "$PWD":/nt docs-revamp-22)
+c=$(buildah from -v "$PWD":/nt docs-hugo)
 trap 'buildah run "$c" bash -c "sudo chown -R root:root /nt; sudo chmod -R a+rwX /nt"; buildah rm "$c" >/dev/null' EXIT
 buildah run "$c" bash -x documentation/generator/build/main.sh "$BRANCH" "$PACKAGE_JOB" "$PACKAGE_UPLOAD_DIRECTORY" "$PACKAGE_BUILD"
 buildah run "$c" bash -x documentation/generator/_scripts/_publish.sh "$BRANCH"
