@@ -27,7 +27,7 @@ find $WRKDIR/documentation/hugo/content -name "*.include.markdown" -type f -dele
 cp -rn $WRKDIR/nt-docs/* $WRKDIR/documentation/hugo/
 cd $WRKDIR/documentation/hugo
 npm ci
-npm run build:all
+npm run build:all || exit 2
 
 cd $WRKDIR/documentation/generator
 mkdir -p $WRKDIR/documentation/generator/_site/assets/searchIndex
