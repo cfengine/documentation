@@ -177,7 +177,7 @@ body in the default namespace. To use a body as default, name it
 ```cf3
 body file control
 {
-   # Default bodies /must/ be defined in the /default/ namespace
+   # Default bodies /must/ be defined in the /bodydefault/ namespace
    namespace => "bodydefault";
 }
 
