@@ -170,21 +170,57 @@ Agents][Components]
 
 #### Default bodies
 
-CFEngine 3.9 introduced a way to create default bodies. It allows defining, for given
-promise and body types, a body that will be used each time no body is defined.
-To use a body as default, name it `<promise_type>_<body_type>` and put it
-in the `bodydefault` namespace. For example, a default `action` body for `files`
-promises will be named `files_action`, and in each `files` promise, if no
-`action` attribute is set, the `files_action` action will be used.
+Default bodies are automatically attached to promises not already using that
+body in the default namespace. To use a body as default, name it
+`<promise_type>_<body_type>` and put it in the `bodydefault` namespace.
+
+```cf3
+body file control
+{
+   # Default bodies /must/ be defined in the /default/ namespace
+   namespace => "bodydefault";
+}
+
+body <body_type> <promise_type>_<body_type>
+{
+  # Attributes set for body <body_type> will be applied to all <promise_type>
+  # promises that do not already have a body of <body_type> attached.
+}
+```
+
+For example, a default `action` body for `files` promises will be named
+`files_action`, and in each `files` promise, if no `action` attribute is set,
+the `files_action` action will be used.
 
 **Note:** The default bodies **only** apply to promises in the `default` namespace.
 
 In the following example, we define a default `action` body for `files`
-promises, that specifies an `action_policy => "warn"` to prevent actually modifying files
-and to only warn about considered modifications. We define it once,
-and don't have to explicitly put this body in all our `files` promises.
+promises, that specifies an `action_policy => "warn"` to prevent actually
+modifying files and to only warn about considered modifications. We define it
+once, and don't have to explicitly put this body in all our `files` promises.
+The example also illustrates how promises in a non-`default` namespace are
+unaffected.
 
 ```cf3
+bundle agent example
+{
+    files:
+
+      # Since the 'files_action' action body is defined in the 'bodydefault' namespce,
+      # and since this promise is in the 'default' namespace (no alternate namespace is
+      # declared previously) this promise will not actually modify the file content if
+      # it is not as promised. Instead it will warn that a change wants to be made.
+
+      "/etc/motd"
+        content => "There are, in fact, rules. You have been notified.";
+
+      # Since this promise has an action body attached, the default action body for
+      # files will not be applied and this file would be fixed.
+
+      "/etc/issue.net"
+        content => "WARNING: You are being monitored. We are all being monitored. This is a cry for help.",
+        action => if_elapsed_day;
+}
 body file control
 {
    namespace => "bodydefault";
@@ -197,6 +233,17 @@ body action files_action
 
 body file control
 {
-    namespace => "default";
+  namespace => "not_affected";
+}
+
+bundle agent not_affected
+{
+  files:
+    "/etc/not-affected-by-bodydefault-files-action-body"
+      content => "Hello world!";
 }
 ```
+
+**History:**
+
+- Added in CFEngine 3.9.0
