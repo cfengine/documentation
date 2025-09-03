@@ -9,13 +9,22 @@ if [ "$#" != 4 ]; then
     exit 1
 fi
 
+echo "$(basename "$0"): Diagnostic facts about execution environment:"
+echo "======"
+whoami
+cat /etc/os-release
+free -h
+df -h
+uname -a
+echo "======"
+
+
 export BRANCH=$1
 export PACKAGE_JOB=$2
 export PACKAGE_UPLOAD_DIRECTORY=$3
 export PACKAGE_BUILD=$4
 
 export JOB_TO_UPLOAD=$PACKAGE_JOB
-export FLAG_FILE_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/PACKAGES_HUB_x86_64_linux_ubuntu_22/core-commitID"
 export NO_OUTPUT_DIR=1
 
 env
@@ -64,30 +73,47 @@ test ! -z "$PACKAGE_UPLOAD_DIRECTORY"
 test ! -z "$PACKAGE_BUILD"
 
 
-echo "Waiting for flag file to appear"
-for i in $(seq 30); do
-    if wget -O- "$FLAG_FILE_URL"; then
-      break
+
+echo "Install hub package"
+if [ "$PACKAGE_JOB" = "cf-remote" ]; then
+  echo "Install using cf-remote"
+  sudo apt update -y
+  sudo apt install -y python3-venv pipx
+  pipx install cf-remote
+  export PATH="$HOME/.local/bin:$PATH"
+  # shellcheck source=/dev/null
+  source /etc/os-release
+  rm -rf ~/.cfengine/cf-remote/packages # to ensure we only get one
+  # in case of LTS branches like 3.21 (without .x since we are in documentation repo) need to add on .x
+  if [ "$(expr "$BRANCH" : ".*.x")" = 0 ]; then
+    if [ "$BRANCH" = "master" ]; then
+      _VERSION=master
+    else
+      _VERSION="$BRANCH".x
     fi
-    echo "Waiting 10 sec"
-    sleep 10
-done
-# check if flag file is there - if not, script will fail here
-wget -O- "$FLAG_FILE_URL"
+  else
+    _VERSION="$BRANCH" # in case someone copy/pastes this to a repo besides documentation
+  fi
+  cf-remote --version "$_VERSION" download "${ID}$(echo "${VERSION_ID}" | cut -d. -f1)" hub "$(uname -m)"
+  find "$HOME/.cfengine" # debug
+  find "$HOME/.cfengine" -name '*.deb' -print0 | xargs -0 -I{} cp {} cfengine-nova-hub.deb
+else
+  echo "Installing with old-style fetch_file function"
+  HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_22
+  HUB_DIR_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/$HUB_DIR_NAME/"
+  HUB_PACKAGE_NAME="$(wget "$HUB_DIR_URL" -O- | sed '/\.deb/!d;s/.*"\([^"]*\.deb\)".*/\1/')"
 
-echo "Detecting version"
-HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_22
-HUB_DIR_URL="http://buildcache.cfengine.com/packages/$PACKAGE_JOB/$PACKAGE_UPLOAD_DIRECTORY/$HUB_DIR_NAME/"
-HUB_PACKAGE_NAME="$(wget "$HUB_DIR_URL" -O- | sed '/\.deb/!d;s/.*"\([^"]*\.deb\)".*/\1/')"
-
-fetch_file "$HUB_DIR_URL$HUB_PACKAGE_NAME" "cfengine-nova-hub.deb" 12
+  fetch_file "$HUB_DIR_URL$HUB_PACKAGE_NAME" "cfengine-nova-hub.deb" 12
+fi
 
 sudo apt-get -y purge cfengine-nova-hub || true
 sudo rm -rf /*/cfengine
 
-# unpack
+# we unpack the hub package instead of installing to get around trouble with the package trying to start up services in a container which doesn't work all that well (yet, 2025)
 sudo dpkg --unpack cfengine-nova-hub.deb
 rm cfengine-nova-hub.deb
+
+# TODO: why copy the masterfiles from the package over the top of one we checked out which could have changes from a PR?
 sudo cp -a /var/cfengine/share/NovaBase/masterfiles "$WRKDIR"
 sudo chmod -R a+rX "$WRKDIR"/masterfiles
 
