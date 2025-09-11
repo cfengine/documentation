@@ -78,7 +78,7 @@ HTTP 200 Ok
 
 ## Get host's specific configuration
 
-**URI:** https://hub.cfengine.com/api/cmdb/:hostkey/:type/:name/
+**URI:** https://hub.cfengine.com/api/cmdb/v2/:hostkey/:type/:name/
 
 **Method:** GET
 
@@ -98,7 +98,7 @@ HTTP 200 Ok
 ```console
 curl -k --user <username>:<password> \
   -X GET \
-  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/variables/HubCMDB:My.hostname/
+  https://hub.cfengine.com/api/cmdb/v2/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/variables/HubCMDB:My.hostname/
 ```
 
 **Example response:**
