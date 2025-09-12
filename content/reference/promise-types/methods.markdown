@@ -134,15 +134,18 @@ example: `$(bundle.variable)`.
 ```cf3
 bundle agent name
 {
-methods:
+classes:
+  "name_class";
 
+methods:
   "group name" usebundle => my_method,
                  inherit => "true";
 }
 
-body edit_defaults example
+bundle agent my_method
 {
-inherit => "true";
+reports:
+  "$(this.bundle) inherited class 'name_class'" if => "name_class";
 }
 ```
 
@@ -161,7 +164,7 @@ Return values are limited to scalars.
 
 **Type:** `string`
 
-**Allowed input range:** `[a-zA-Z0-9_$(){}\[\].:]+
+**Allowed input range:** `[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example:**
 
