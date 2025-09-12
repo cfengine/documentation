@@ -75,6 +75,8 @@ bundle agent example
 
 ## Attributes
 
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
+
 ### and
 
 **Description:** Combine class sources with AND
