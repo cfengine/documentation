@@ -105,7 +105,7 @@ services:
         service_method => service_test;
 
   "$(mail)" service_policy => "stop",
-        service_method => service_test;
+            service_method => service_test;
 }
 
 body service_method service_test
