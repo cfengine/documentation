@@ -45,7 +45,7 @@ The shared groups API enables creating host groups based on host filters (the sa
   ```json
   {
     "filter": {
-      "filter": { "Attribute name": {"operator": "value2"} },
+      "filter": { "Attribute name": { "operator": "value2" } },
       "hostFilter": {
         "includes": {
           "includeAdditionally": false,
@@ -53,7 +53,11 @@ The shared groups API enables creating host groups based on host filters (the sa
             "ip": ["192.168.56.5"],
             "hostkey": [],
             "hostname": ["ubuntu-bionic"],
-            "mac": ["08:00:27:0b:a4:99", "08:00:27:dd:e1:59", "02:9f:d3:59:7e:90"],
+            "mac": [
+              "08:00:27:0b:a4:99",
+              "08:00:27:dd:e1:59",
+              "02:9f:d3:59:7e:90"
+            ],
             "ip_mask": ["10.0.2.16/16"]
           }
         },
@@ -166,7 +170,7 @@ curl -k --user <username>:<password> \
 ```json
 {
   "filter": {
-    "filter": { "Attribute name": {"operator": "value2"} },
+    "filter": { "Attribute name": { "operator": "value2" } },
     "hostFilter": {
       "includes": {
         "includeAdditionally": false,
@@ -174,7 +178,11 @@ curl -k --user <username>:<password> \
           "ip": ["192.168.56.5"],
           "hostkey": [],
           "hostname": ["ubuntu-bionic"],
-          "mac": ["08:00:27:0b:a4:99", "08:00:27:dd:e1:59", "02:9f:d3:59:7e:90"],
+          "mac": [
+            "08:00:27:0b:a4:99",
+            "08:00:27:dd:e1:59",
+            "02:9f:d3:59:7e:90"
+          ],
           "ip_mask": ["10.0.2.16/16"]
         }
       },
@@ -277,7 +285,7 @@ curl -k --user <username>:<password> \
   "creator": "admin",
   "creation_time": "2023-06-14 10:41:25.601112+00",
   "filter": {
-    "filter": { "Architecture": {"matches": "86"} },
+    "filter": { "Architecture": { "matches": "86" } },
     "hostContextExclude": "",
     "hostContextInclude": ["aix"]
   },
@@ -342,7 +350,7 @@ curl -k --user <username>:<password> \
       "creator": "admin",
       "creation_time": "2023-06-14 10:41:25.601112+00",
       "filter": {
-        "filter": { "Architecture": {"matches": "86"} },
+        "filter": { "Architecture": { "matches": "86" } },
         "hostContextExclude": "",
         "hostContextInclude": ["aix"]
       }
