@@ -130,7 +130,9 @@ For example:
 
 ```json
 {
-  "variables": { "VariableWithImplicitNamespaceAndBundle": {"value": "value"} }
+  "variables": {
+    "VariableWithImplicitNamespaceAndBundle": { "value": "value" }
+  }
 }
 ```
 
@@ -140,7 +142,9 @@ For example:
 
 ```json
 {
-  "variables": { "my_bundle.VariableWithImplicitNamespace": {"value": "value"} }
+  "variables": {
+    "my_bundle.VariableWithImplicitNamespace": { "value": "value" }
+  }
 }
 ```
 
@@ -150,7 +154,7 @@ For example:
 
 ```json
 {
-  "variables": { "MyNamespace:my_bundle.Variable": {"value": "value"} }
+  "variables": { "MyNamespace:my_bundle.Variable": { "value": "value" } }
 }
 ```
 

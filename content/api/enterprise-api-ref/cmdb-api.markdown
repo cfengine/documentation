@@ -359,7 +359,7 @@ HTTP 200 Ok
 
   ```json
   {
-    "classes": { "My_class": {}, "My_class2": {"comment": "comment body"} }
+    "classes": { "My_class": {}, "My_class2": { "comment": "comment body" } }
   }
   ```
 
