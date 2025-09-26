@@ -111,6 +111,8 @@ promises will override less specific ones.
 
 ## Attributes
 
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
+
 ### admit_hostnames
 
 **Description:** A list of hostnames or domains that should have access to the object.
