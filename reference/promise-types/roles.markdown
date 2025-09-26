@@ -38,6 +38,8 @@ classes matching the regular expression `Myclass_.*` when using the
 
 ## Attributes
 
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
+
 ### authorize
 
 **Description:** List of public-key user names that are allowed to activate

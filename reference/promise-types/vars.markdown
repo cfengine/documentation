@@ -303,6 +303,8 @@ vars:
 
 ## Attributes
 
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
+
 ### policy
 
 **Description:** The policy for (dis)allowing (re)definition of variables

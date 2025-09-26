@@ -115,6 +115,7 @@ promises will override less specific ones.
 
 ## Attributes
 
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### admit_hostnames
 
