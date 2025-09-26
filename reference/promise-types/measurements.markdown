@@ -153,6 +153,8 @@ may be used in other promises in the form `$(mon.handle)`.
 
 ## Attributes ##
 
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
+
 ### stream_type
 
 **Description:** The datatype being collected.

@@ -16,6 +16,8 @@ the [Promise types] page. The common attributes are as follows:
 
 #### [if][Promise types#if]
 
+#### [unless][Promise types#unless]
+
 #### [meta][Promise types#meta]
 
 #### [with][Promise types#with]
