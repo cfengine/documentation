@@ -88,6 +88,8 @@ reports:
 
 ## Attributes
 
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
+
 ### if_match_regex
 
 **Description:** If this [anchored][anchored] regular expression matches the
