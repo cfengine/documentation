@@ -95,7 +95,6 @@ Some [functions][Functions] return `slist`s, and an `slist`
 may contain the values copied from another `slist`, `rlist`, or `ilist`. See
 [`policy`](#policy).
 
-
 ### string
 
 **Description:** A scalar string
@@ -112,4 +111,3 @@ vars:
  "xxx"    string => "Some literal string...";
  "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
 ```
-
