@@ -180,7 +180,7 @@ npm install --global prettier
 And run the command:
 
 ```
-cfengine dev docs-format
+cfengine dev format-docs
 ```
 
 ## Documentation structure
