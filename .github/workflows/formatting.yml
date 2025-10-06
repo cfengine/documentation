@@ -24,7 +24,7 @@ jobs:
         run: |
           # TODO: There are (small) diffs between cfbs pretty and prettier
           #       https://northerntech.atlassian.net/browse/CFE-4571
-          cfengine dev docs-format
+          cfengine dev format-docs
       - name: Check if there are changes
         run: |
           git diff --exit-code
