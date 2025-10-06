@@ -22,8 +22,6 @@ jobs:
           pipx install cfengine black
       - name: Run formatting command to (hopefully not) make changes
         run: |
-          # TODO: There are (small) diffs between cfbs pretty and prettier
-          #       https://northerntech.atlassian.net/browse/CFE-4571
           cfengine dev format-docs
       - name: Check if there are changes
         run: |
