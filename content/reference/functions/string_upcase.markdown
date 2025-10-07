@@ -1,6 +1,8 @@
 ---
 layout: default
 title: string_upcase
+aliases:
+  - "/reference-functions-string_upcase.html"
 ---
 
 {{< CFEngine_function_prototype(data) >}}

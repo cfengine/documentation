@@ -2,6 +2,8 @@
 layout: default
 title: Promises
 sorting: 30
+aliases:
+  - "/reference-language-concepts-promises.html"
 ---
 
 One concept in CFEngine should stand out from the rest as being the most

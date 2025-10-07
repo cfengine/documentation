@@ -1,6 +1,8 @@
 ---
 layout: default
 title: string_trim
+aliases:
+  - "/reference-functions-string_trim.html"
 ---
 
 {{< CFEngine_function_prototype(string) >}}

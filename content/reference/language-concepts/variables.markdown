@@ -2,6 +2,8 @@
 layout: default
 title: Variables
 sorting: 60
+aliases:
+  - "/reference-language-concepts-variables.html"
 ---
 
 Just like [classes][classes and decisions] are defined as

@@ -2,6 +2,8 @@
 layout: default
 title: Database examples
 sorting: 8
+aliases:
+  - "/examples-example-snippets-database.html"
 ---
 
 - [Database creation][Database examples#Database creation]

@@ -3,6 +3,8 @@ layout: default
 title: cf-secret
 sorting: 10
 keywords: [cf-secret]
+aliases:
+  - "/reference-components-cf-secret.html"
 ---
 
 `cf-secret` encrypts and decrypts files using CFEngine keys.

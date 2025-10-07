@@ -1,6 +1,8 @@
 ---
 layout: default
 title: ifelse
+aliases:
+  - "/reference-functions-ifelse.html"
 ---
 
 {{< CFEngine_function_prototype(...) >}}

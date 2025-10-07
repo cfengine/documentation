@@ -1,6 +1,8 @@
 ---
 layout: default
 title: intersection
+aliases:
+  - "/reference-functions-intersection.html"
 ---
 
 {{< CFEngine_function_prototype(list1, list2) >}}

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: datastate
+aliases:
+  - "/reference-functions-datastate.html"
 ---
 
 {{< CFEngine_function_prototype() >}}

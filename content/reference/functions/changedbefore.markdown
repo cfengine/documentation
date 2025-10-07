@@ -1,6 +1,8 @@
 ---
 layout: default
 title: changedbefore
+aliases:
+  - "/reference-functions-changedbefore.html"
 ---
 
 {{< CFEngine_function_prototype(newer,older) >}}

@@ -3,6 +3,8 @@ layout: default
 title: cf-runagent
 sorting: 70
 keywords: [runagent]
+aliases:
+  - "/reference-components-cf-runagent.html"
 ---
 
 `cf-runagent` connects to a list of running instances of

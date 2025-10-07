@@ -1,6 +1,8 @@
 ---
 layout: default
 title: not
+aliases:
+  - "/reference-functions-not.html"
 ---
 
 {{< CFEngine_function_prototype(expression) >}}

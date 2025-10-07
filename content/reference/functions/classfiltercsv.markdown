@@ -1,6 +1,8 @@
 ---
 layout: default
 title: classfiltercsv
+aliases:
+  - "/reference-functions-classfiltercsv.html"
 ---
 
 {{< CFEngine_function_prototype(filename, has_header, class_column, optional_sort_column) >}}

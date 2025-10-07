@@ -1,6 +1,8 @@
 ---
 layout: default
 title: findfiles_up
+aliases:
+  - "/reference-functions-findfiles_up.html"
 ---
 
 {{< CFEngine_function_prototype(path, glob, level) >}}

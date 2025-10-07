@@ -1,6 +1,8 @@
 ---
 layout: default
 title: files
+aliases:
+  - "/reference-promise-types-files.html"
 ---
 
 Files promises manage all aspects of files. Presence, absence, file content, permissions, and ownership. File content can be fully or partially managed.

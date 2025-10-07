@@ -2,6 +2,8 @@
 layout: default
 title: Alerts and notifications
 sorting: 40
+aliases:
+  - "/web-ui-alerts-and-notifications.html"
 ---
 
 ## Create a new alert

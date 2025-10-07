@@ -1,6 +1,8 @@
 ---
 layout: default
 title: mergedata
+aliases:
+  - "/reference-functions-mergedata.html"
 ---
 
 {{< CFEngine_function_prototype(one, two, etc) >}}

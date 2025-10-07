@@ -2,6 +2,8 @@
 layout: default
 title: SQL queries using the Enterprise API
 sorting: 20
+aliases:
+  - "/web-ui-enterprise-reporting-sql-queries-enterprise-api.html"
 ---
 
 The CFEngine Enterprise Hub collects information about the

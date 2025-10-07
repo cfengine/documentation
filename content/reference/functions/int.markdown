@@ -1,6 +1,8 @@
 ---
 layout: default
 title: int
+aliases:
+  - "/reference-functions-int.html"
 ---
 
 {{< CFEngine_function_prototype(string) >}}

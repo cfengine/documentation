@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getindices
+aliases:
+  - "/reference-functions-getindices.html"
 ---
 
 {{< CFEngine_function_prototype(varref) >}}

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getuid
+aliases:
+  - "/reference-functions-getuid.html"
 ---
 
 {{< CFEngine_function_prototype(username) >}}

@@ -2,6 +2,8 @@
 layout: default
 title: Installing Enterprise for production
 sorting: 40
+aliases:
+  - "/getting-started-installation-general-installation-installation-enterprise.html"
 ---
 
 These instructions describe how to install the latest version of

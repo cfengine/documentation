@@ -2,6 +2,8 @@
 layout: default
 title: File and directory examples
 sorting: 6
+aliases:
+  - "/examples-example-snippets-basic-file-directory.html"
 ---
 
 - [Create files and directories][File and directory examples#Create files and directories]

@@ -2,6 +2,8 @@
 layout: default
 title: Quick-Start guide to using vi
 sorting: 1
+aliases:
+  - "/getting-started-installation-pre-installation-checklist-vi-quick-start-guide.html"
 ---
 
 This guide is designed for the novice user of CFEngine tutorials-and will introduce the basic

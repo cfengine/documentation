@@ -2,6 +2,8 @@
 layout: default
 title: Why are remote agents not updating?
 sorting: 90
+aliases:
+  - "/resources-faq-why-are-remote-agents-not-updating.html"
 ---
 
 The [masterfiles policy framework][Masterfiles Policy Framework] defaults to using

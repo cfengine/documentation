@@ -2,6 +2,8 @@
 layout: default
 title: Settings
 sorting: 10
+aliases:
+  - "/web-ui-settings.html"
 ---
 
 A variety of CFEngine and system properties can be changed in the settings view.

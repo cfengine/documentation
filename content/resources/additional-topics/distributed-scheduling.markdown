@@ -2,6 +2,8 @@
 layout: default
 title: Distributed scheduling
 sorting: 80
+aliases:
+  - "/resources-additional-topics-distributed-scheduling.html"
 ---
 
 ## What is distributed scheduling?

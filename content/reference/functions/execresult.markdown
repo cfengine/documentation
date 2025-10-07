@@ -1,6 +1,8 @@
 ---
 layout: default
 title: execresult
+aliases:
+  - "/reference-functions-execresult.html"
 ---
 
 {{< CFEngine_function_prototype(command, shell, output) >}}

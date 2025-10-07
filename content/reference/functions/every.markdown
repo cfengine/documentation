@@ -1,6 +1,8 @@
 ---
 layout: default
 title: every
+aliases:
+  - "/reference-functions-every.html"
 ---
 
 {{< CFEngine_function_prototype(regex, list) >}}

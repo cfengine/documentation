@@ -2,6 +2,8 @@
 layout: default
 title: DevOps
 sorting: 80
+aliases:
+  - "/resources-additional-topics-devops.html"
 ---
 
 ## What is DevOps?

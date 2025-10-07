@@ -2,6 +2,8 @@
 layout: default
 title: cf-promises
 sorting: 40
+aliases:
+  - "/reference-components-cf-promises.html"
 ---
 
 `cf-promises` is a tool for checking CFEngine policy code. It operates by

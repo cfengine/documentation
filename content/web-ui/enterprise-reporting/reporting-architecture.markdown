@@ -2,6 +2,8 @@
 layout: default
 title: Reporting architecture
 sorting: 10
+aliases:
+  - "/web-ui-enterprise-reporting-reporting-architecture.html"
 ---
 
 The reporting architecture of CFEngine Enterprise uses two software

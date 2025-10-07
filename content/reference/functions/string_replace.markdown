@@ -1,6 +1,8 @@
 ---
 layout: default
 title: string_replace
+aliases:
+  - "/reference-functions-string_replace.html"
 ---
 
 {{< CFEngine_function_prototype(string, match, replacement) >}}

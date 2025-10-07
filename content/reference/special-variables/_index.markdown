@@ -2,6 +2,8 @@
 layout: default
 title: Special variables
 sorting: 50
+aliases:
+  - "/reference-special-variables.html"
 ---
 
 Variables are promises that can be defined in any promise bundle. Users can create their

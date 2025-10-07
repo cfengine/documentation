@@ -2,6 +2,8 @@
 layout: default
 title: Managing users and roles
 sorting: 40
+aliases:
+  - "/api-enterprise-api-examples-managing-users-and-roles.html"
 ---
 
 Users and Roles determine who has access to what data from the API.

@@ -2,6 +2,8 @@
 layout: default
 title: CFEngine directory structure
 sorting: 20
+aliases:
+  - "/overview-directory-structure.html"
 ---
 
 The CFEngine application is fully contained within the /var/cfengine directory tree. Here is a quick breakdown of the directory structure and some of the files and functions associated with each subdirectory.

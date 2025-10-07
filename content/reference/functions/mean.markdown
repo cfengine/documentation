@@ -1,6 +1,8 @@
 ---
 layout: default
 title: mean
+aliases:
+  - "/reference-functions-mean.html"
 ---
 
 {{< CFEngine_function_prototype(list) >}}

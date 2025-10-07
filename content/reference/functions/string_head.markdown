@@ -1,6 +1,8 @@
 ---
 layout: default
 title: string_head
+aliases:
+  - "/reference-functions-string_head.html"
 ---
 
 {{< CFEngine_function_prototype(data, max) >}}

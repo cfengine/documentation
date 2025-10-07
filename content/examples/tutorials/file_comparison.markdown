@@ -2,6 +2,8 @@
 layout: default
 title: File comparison
 sorting: 100
+aliases:
+  - "/examples-tutorials-file_comparison.html"
 ---
 
 1. Add the [policy contents][File comparison#Full policy] (also can be downloaded from <a href="file_compare_test.cf">file_compare_test.cf</a>) to a new file, such as /var/cfengine/masterfiles/file_test.cf.

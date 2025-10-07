@@ -2,6 +2,8 @@
 layout: default
 title: Enterprise API reference
 sorting: 70
+aliases:
+  - "/api-enterprise-api-ref.html"
 ---
 
 The Enterprise API is a conventional REST API in the sense that it has a

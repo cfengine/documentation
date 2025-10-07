@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Fist time setup API
+aliases:
+  - "/api-enterprise-api-ref-first-time-setup.html"
 ---
 
 The First time setup API enables creation of the initial administrator user.

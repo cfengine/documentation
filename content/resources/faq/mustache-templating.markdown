@@ -2,6 +2,8 @@
 layout: default
 title: Mustache templating
 sorting: 90
+aliases:
+  - "/resources-faq-mustache-templating.html"
 ---
 
 ## CFEngine specific extensions

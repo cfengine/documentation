@@ -2,6 +2,8 @@
 layout: default
 title: Software administration examples
 sorting: 4
+aliases:
+  - "/examples-example-snippets-software-adminstration.html"
 ---
 
 - [Software and patch installation][Software administration examples#Software and patch installation]

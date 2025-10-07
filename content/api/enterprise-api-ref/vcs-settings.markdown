@@ -1,6 +1,8 @@
 ---
 layout: default
 title: VCS settings API
+aliases:
+  - "/api-enterprise-api-ref-vcs-settings.html"
 ---
 
 VCS API for managing version control repository settings.

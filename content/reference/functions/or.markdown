@@ -1,6 +1,8 @@
 ---
 layout: default
 title: or
+aliases:
+  - "/reference-functions-or.html"
 ---
 
 {{< CFEngine_function_prototype(...) >}}

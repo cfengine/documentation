@@ -1,6 +1,8 @@
 ---
 layout: default
 title: edit_line
+aliases:
+  - "/reference-promise-types-files-edit_line.html"
 ---
 
 Line based editing is a simple model for editing files. Before XML, and

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: lib/services.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-lib-services.html"
 ---
 
 See the [`services` promises][services] documentation for a

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: lib/testing.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-lib-testing.html"
 ---
 
 The `testing.cf` library provides bundles for working testing frameworks like

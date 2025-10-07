@@ -2,6 +2,8 @@
 layout: default
 title: Administration examples
 sorting: 2
+aliases:
+  - "/examples-example-snippets-cfengine-administration.html"
 ---
 
 - [Ordering promises][Administration examples#Ordering promises]

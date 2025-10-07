@@ -2,6 +2,8 @@
 layout: default
 title: Browsing host information
 sorting: 50
+aliases:
+  - "/api-enterprise-api-examples-browsing-host-information.html"
 ---
 
 A resource [/api/host][Host REST API#List hosts] is added as an alternative interface for browsing host

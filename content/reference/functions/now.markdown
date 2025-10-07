@@ -1,6 +1,8 @@
 ---
 layout: default
 title: now
+aliases:
+  - "/reference-functions-now.html"
 ---
 
 {{< CFEngine_function_prototype() >}}

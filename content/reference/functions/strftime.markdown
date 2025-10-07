@@ -1,6 +1,8 @@
 ---
 layout: default
 title: strftime
+aliases:
+  - "/reference-functions-strftime.html"
 ---
 
 {{< CFEngine_function_prototype(mode, template, time) >}}

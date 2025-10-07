@@ -1,6 +1,8 @@
 ---
 layout: default
 title: variablesmatching_as_data
+aliases:
+  - "/reference-functions-variablesmatching_as_data.html"
 ---
 
 {{< CFEngine_function_prototype(name, tag1, tag2, ...) >}}

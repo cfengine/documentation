@@ -1,6 +1,8 @@
 ---
 layout: default
 title: isgreaterthan
+aliases:
+  - "/reference-functions-isgreaterthan.html"
 ---
 
 {{< CFEngine_function_prototype(value1, value2) >}}

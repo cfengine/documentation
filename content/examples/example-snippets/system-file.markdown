@@ -2,6 +2,8 @@
 layout: default
 title: System file examples
 sorting: 13
+aliases:
+  - "/examples-example-snippets-system-file.html"
 ---
 
 ## Editing password or group files

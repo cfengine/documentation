@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Import & export compliance report API
+aliases:
+  - "/api-enterprise-api-ref-export-import-compliance-report-api.html"
 ---
 
 This provides users the ability to transfer compliance reports between hubs or create reports from a JSON definition file.

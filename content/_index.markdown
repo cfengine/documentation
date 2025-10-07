@@ -4,6 +4,8 @@ title: Home
 sorting: 1
 categories: ["index"]
 alias: index.html
+aliases:
+  - "/index.html"
 ---
 
 <div class="home">

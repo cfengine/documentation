@@ -1,6 +1,8 @@
 ---
 layout: default
 title: regcmp
+aliases:
+  - "/reference-functions-regcmp.html"
 ---
 
 {{< CFEngine_function_prototype(regex, string) >}}

@@ -2,6 +2,8 @@
 layout: default
 title: Release notes
 sorting: 30
+aliases:
+  - "/release-notes.html"
 ---
 
 - [New in CFEngine][New in CFEngine]

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: modules/promises/cfengine.py
+aliases:
+  - "/reference-masterfiles-policy-framework-modules-promises-cfengine.py.html"
 ---
 
 ```

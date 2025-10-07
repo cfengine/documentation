@@ -1,6 +1,8 @@
 ---
 layout: default
 title: ago
+aliases:
+  - "/reference-functions-ago.html"
 ---
 
 {{< CFEngine_function_prototype(years, months, days, hours, minutes, seconds) >}}

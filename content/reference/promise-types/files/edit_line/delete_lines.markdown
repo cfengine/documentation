@@ -1,6 +1,8 @@
 ---
 layout: default
 title: delete_lines
+aliases:
+  - "/reference-promise-types-files-edit_line-delete_lines.html"
 ---
 
 This promise assures that certain lines exactly matching regular

@@ -2,6 +2,8 @@
 layout: default
 title: Using Amazon Web Services
 sorting: 10
+aliases:
+  - "/getting-started-installation-general-installation-installation-enterprise-free-aws-rhel.html"
 ---
 
 This guide describes how to install CFEngine on two Red Hat® Enterprise Linux® (RHEL) virtual machines using Amazon Web Services™ (AWS) and SSH. At the time of writing, under certain conditions, setting up an AWS account and using micro-instances is free.

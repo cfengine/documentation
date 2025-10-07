@@ -1,6 +1,8 @@
 ---
 layout: default
 title: isvariable
+aliases:
+  - "/reference-functions-isvariable.html"
 ---
 
 {{< CFEngine_function_prototype(var) >}}

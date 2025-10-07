@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Inventory API
+aliases:
+  - "/api-enterprise-api-ref-inventory.html"
 ---
 
 Inventory API allows to access inventory reports and attributes dictionary.

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: ip2host
+aliases:
+  - "/reference-functions-ip2host.html"
 ---
 
 {{< CFEngine_function_prototype(ip) >}}

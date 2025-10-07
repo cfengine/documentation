@@ -1,6 +1,8 @@
 ---
 layout: default
 title: diskfree
+aliases:
+  - "/reference-functions-diskfree.html"
 ---
 
 {{< CFEngine_function_prototype(path) >}}

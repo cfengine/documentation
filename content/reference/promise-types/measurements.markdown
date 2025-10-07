@@ -1,6 +1,8 @@
 ---
 layout: default
 title: measurements
+aliases:
+  - "/reference-promise-types-measurements.html"
 ---
 
 By default, CFEngine's monitoring component `cf-monitord` records performance

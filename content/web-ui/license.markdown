@@ -1,6 +1,8 @@
 ---
 layout: default
 title: License
+aliases:
+  - "/web-ui-license.html"
 ---
 
 ## License information

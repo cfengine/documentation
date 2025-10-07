@@ -2,6 +2,8 @@
 layout: default
 title: Enterprise API examples
 sorting: 6
+aliases:
+  - "/api-enterprise-api-examples.html"
 ---
 
 - [Check installation status][Checking status]

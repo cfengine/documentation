@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readjson
+aliases:
+  - "/reference-functions-readjson.html"
 ---
 
 {{< CFEngine_function_prototype(filename, optional_maxbytes) >}}

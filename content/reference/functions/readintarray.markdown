@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readintarray
+aliases:
+  - "/reference-functions-readintarray.html"
 ---
 
 **Prototype:** `readintarray(array, filename, comment, split, maxentries, maxbytes)`<br>

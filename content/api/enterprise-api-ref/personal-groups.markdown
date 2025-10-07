@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Personal groups API
+aliases:
+  - "/api-enterprise-api-ref-personal-groups.html"
 ---
 
 The personal groups API enables creating host groups based on host filters (the same ones used in inventory reports).

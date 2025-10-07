@@ -1,6 +1,8 @@
 ---
 layout: default
 title: parsestringarray
+aliases:
+  - "/reference-functions-parsestringarray.html"
 ---
 
 **Prototype:** `parsestringarray(array, input, comment, split, maxentries, maxbytes)`<br>

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: storejson
+aliases:
+  - "/reference-functions-storejson.html"
 ---
 
 {{< CFEngine_function_prototype(data_container) >}}

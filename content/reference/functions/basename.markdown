@@ -1,6 +1,8 @@
 ---
 layout: default
 title: basename
+aliases:
+  - "/reference-functions-basename.html"
 ---
 
 {{< CFEngine_function_prototype(filename, optional_extension) >}}

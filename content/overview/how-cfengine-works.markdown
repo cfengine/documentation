@@ -2,6 +2,8 @@
 layout: default
 title: How CFEngine works
 sorting: 2
+aliases:
+  - "/overview-how-cfengine-works.html"
 ---
 
 CFEngine is a fully distributed system that allows you to define desired states

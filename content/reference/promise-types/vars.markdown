@@ -1,6 +1,8 @@
 ---
 layout: default
 title: vars
+aliases:
+  - "/reference-promise-types-vars.html"
 ---
 
 [Variables][variables] in CFEngine are defined

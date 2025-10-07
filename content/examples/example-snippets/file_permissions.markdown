@@ -2,6 +2,8 @@
 layout: default
 title: File permissions
 sorting: 15
+aliases:
+  - "/examples-example-snippets-file_permissions.html"
 ---
 
 ## ACL file example

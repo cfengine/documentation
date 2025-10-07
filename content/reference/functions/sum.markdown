@@ -1,6 +1,8 @@
 ---
 layout: default
 title: sum
+aliases:
+  - "/reference-functions-sum.html"
 ---
 
 {{< CFEngine_function_prototype(list) >}}

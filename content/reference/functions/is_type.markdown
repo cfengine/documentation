@@ -1,6 +1,8 @@
 ---
 layout: default
 title: is_type
+aliases:
+  - "/reference-functions-is_type.html"
 ---
 
 {{< CFEngine_function_prototype(var, type) >}}

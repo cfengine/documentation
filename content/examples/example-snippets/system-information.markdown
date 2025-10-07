@@ -2,6 +2,8 @@
 layout: default
 title: System information examples
 sorting: 11
+aliases:
+  - "/examples-example-snippets-system-information.html"
 ---
 
 - [Change detection][System information examples#Change detection]

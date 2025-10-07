@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readcsv
+aliases:
+  - "/reference-functions-readcsv.html"
 ---
 
 {{< CFEngine_function_prototype(filename, optional_maxbytes) >}}

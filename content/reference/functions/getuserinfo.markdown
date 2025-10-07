@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getuserinfo
+aliases:
+  - "/reference-functions-getuserinfo.html"
 ---
 
 {{< CFEngine_function_prototype(optional_uidorname) >}}

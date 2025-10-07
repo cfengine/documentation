@@ -1,6 +1,8 @@
 ---
 layout: default
 title: modules/packages/
+aliases:
+  - "/reference-masterfiles-policy-framework-modules-packages.html"
 ---
 
 This directory tree is used for distributing package modules.

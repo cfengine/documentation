@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Actions API
+aliases:
+  - "/api-enterprise-api-ref-actions-api.html"
 ---
 
 Actions API enables you to perform specific actions such a requesting report collection.

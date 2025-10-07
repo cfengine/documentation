@@ -1,6 +1,8 @@
 ---
 layout: default
 title: data_expand
+aliases:
+  - "/reference-functions-data_expand.html"
 ---
 
 {{< CFEngine_function_prototype(data_container) >}}

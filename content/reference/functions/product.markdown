@@ -1,6 +1,8 @@
 ---
 layout: default
 title: product
+aliases:
+  - "/reference-functions-product.html"
 ---
 
 {{< CFEngine_function_prototype(list) >}}

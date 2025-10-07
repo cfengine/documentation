@@ -1,6 +1,8 @@
 ---
 layout: default
 title: access
+aliases:
+  - "/reference-promise-types-access.html"
 ---
 
 Access promises are conditional promises made by resources living on the server.

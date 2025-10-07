@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Bootstrapping
+aliases:
+  - "/resources-faq-bootstrap-failed.html"
 ---
 
 Frequently asked questions around bootstrapping, the process of starting CFEngine for the first time, and connecting the agents to the correct policy server.

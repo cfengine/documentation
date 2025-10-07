@@ -2,6 +2,8 @@
 title: Quick-Start guide to using PuTTY
 layout: default
 sorting: 2
+aliases:
+  - "/getting-started-installation-pre-installation-checklist-putty-quick-start-guide.html"
 ---
 
 - [Using PuTTY in simple steps][Quick-Start Guide to Using PuTTY#Using PuTTY in simple steps]

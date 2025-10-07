@@ -1,6 +1,8 @@
 ---
 layout: default
 title: useringroup
+aliases:
+  - "/reference-functions-useringroup.html"
 ---
 
 {{< CFEngine_function_prototype(user) >}}

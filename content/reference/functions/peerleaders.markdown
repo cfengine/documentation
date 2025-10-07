@@ -1,6 +1,8 @@
 ---
 layout: default
 title: peerleaders
+aliases:
+  - "/reference-functions-peerleaders.html"
 ---
 
 {{< CFEngine_function_prototype(filename, regex, groupsize) >}}

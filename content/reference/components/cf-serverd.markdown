@@ -3,6 +3,8 @@ layout: default
 title: cf-serverd
 sorting: 20
 keywords: [server]
+aliases:
+  - "/reference-components-cf-serverd.html"
 ---
 
 `cf-serverd` is a socket listening daemon providing two services: it acts as a

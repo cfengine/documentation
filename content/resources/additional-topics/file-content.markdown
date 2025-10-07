@@ -2,6 +2,8 @@
 layout: default
 title: File content
 sorting: 80
+aliases:
+  - "/resources-additional-topics-file-content.html"
 ---
 
 ## From boiler-plates to convergent file editing

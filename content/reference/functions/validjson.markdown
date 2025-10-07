@@ -1,6 +1,8 @@
 ---
 layout: default
 title: validjson
+aliases:
+  - "/reference-functions-validjson.html"
 ---
 
 {{< CFEngine_function_prototype(string, strict) >}}

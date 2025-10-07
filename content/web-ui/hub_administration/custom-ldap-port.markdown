@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Configure a custom LDAP port
+aliases:
+  - "/web-ui-hub_administration-custom-ldap-port.html"
 ---
 
 Mission Portals User settings and preferences provides a radio button

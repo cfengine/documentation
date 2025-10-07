@@ -1,6 +1,8 @@
 ---
 layout: default
 title: findlocalgroups
+aliases:
+  - "/reference-functions-findlocalgroups.html"
 ---
 
 {{< CFEngine_function_prototype(filter) >}}

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: filesize
+aliases:
+  - "/reference-functions-filesize.html"
 ---
 
 {{< CFEngine_function_prototype(filename) >}}

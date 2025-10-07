@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Query REST API
+aliases:
+  - "/api-enterprise-api-ref-query.html"
 ---
 
 In case of a need for full flexibility, Query API allow users to execute SQL queries on CFEngine Database.

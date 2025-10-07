@@ -1,6 +1,8 @@
 ---
 layout: default
 title: isnewerthan
+aliases:
+  - "/reference-functions-isnewerthan.html"
 ---
 
 {{< CFEngine_function_prototype(newer, older) >}}

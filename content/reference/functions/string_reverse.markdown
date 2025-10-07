@@ -1,6 +1,8 @@
 ---
 layout: default
 title: string_reverse
+aliases:
+  - "/reference-functions-string_reverse.html"
 ---
 
 {{< CFEngine_function_prototype(data) >}}

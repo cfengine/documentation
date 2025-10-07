@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readintlist
+aliases:
+  - "/reference-functions-readintlist.html"
 ---
 
 {{< CFEngine_function_prototype(filename, comment, split, maxentries, maxbytes) >}}

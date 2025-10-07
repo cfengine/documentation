@@ -1,6 +1,8 @@
 ---
 layout: default
 title: field_edits
+aliases:
+  - "/reference-promise-types-files-edit_line-field_edits.html"
 ---
 
 Certain types of text files are tabular in nature, with field separators (e.g.

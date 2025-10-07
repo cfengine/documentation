@@ -1,6 +1,8 @@
 ---
 layout: default
 title: selectservers
+aliases:
+  - "/reference-functions-selectservers.html"
 ---
 
 {{< CFEngine_function_prototype(hostlist, port, query, regex, maxbytes, array) >}}

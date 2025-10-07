@@ -1,6 +1,8 @@
 ---
 layout: default
 title: File changes API
+aliases:
+  - "/api-enterprise-api-ref-file-changes.html"
 ---
 
 ## File changes statistics

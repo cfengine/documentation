@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Audit log API
+aliases:
+  - "/api-enterprise-api-ref-audit-logs-api.html"
 ---
 
 Audit log API provides access to system audit logs that track user actions across the platform made to critical parts

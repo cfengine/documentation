@@ -2,6 +2,8 @@
 layout: default
 title: Why are some files inside masterfiles not being updated/distributed?
 sorting: 90
+aliases:
+  - "/resources-faq-why-are-files-not-being-distributed.html"
 ---
 
 During agent bootstrap all files found in `masterfiles` are copied to

@@ -2,6 +2,8 @@
 layout: default
 title: Modules from CFEngine Build
 sorting: 20
+aliases:
+  - "/getting-started-modules-from-cfengine-build.html"
 ---
 
 Now that you've installed CFEngine and the tools we need, we can start working with modules from CFEngine Build.

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: classes
+aliases:
+  - "/reference-promise-types-classes.html"
 ---
 
 [Classes][classes] promises may be made in any bundle. Classes defined by

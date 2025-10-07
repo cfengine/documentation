@@ -1,6 +1,8 @@
 ---
 layout: default
 title: string_downcase
+aliases:
+  - "/reference-functions-string_downcase.html"
 ---
 
 {{< CFEngine_function_prototype(data) >}}

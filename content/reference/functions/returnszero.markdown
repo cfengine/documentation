@@ -1,6 +1,8 @@
 ---
 layout: default
 title: returnszero
+aliases:
+  - "/reference-functions-returnszero.html"
 ---
 
 {{< CFEngine_function_prototype(command, shell) >}}

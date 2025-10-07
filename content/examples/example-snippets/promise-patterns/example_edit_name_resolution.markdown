@@ -3,6 +3,8 @@ layout: default
 title: Set up name resolution with DNS
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_edit_name_resolution.html"
 ---
 
 There are many ways to configure name resolution. A simple and straightforward approach is to implement this as a simple editing promise for the `/etc/resolv.conf` file.

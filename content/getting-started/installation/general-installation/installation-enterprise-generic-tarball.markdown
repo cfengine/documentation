@@ -2,6 +2,8 @@
 layout: default
 title: Installing from binary tarball
 sorting: 50
+aliases:
+  - "/getting-started-installation-general-installation-installation-enterprise-generic-tarball.html"
 ---
 
 Not all systems come with a package manager. For these systems you can install

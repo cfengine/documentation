@@ -1,6 +1,8 @@
 ---
 layout: default
 title: expandrange
+aliases:
+  - "/reference-functions-expandrange.html"
 ---
 
 {{< CFEngine_function_prototype(string_template, stepsize) >}}

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: controls/cf_runagent.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-controls-cf_runagent.html"
 ---
 
 This is where `body runagent control` is defined. `body runagent control` is where

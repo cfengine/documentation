@@ -1,6 +1,8 @@
 ---
 layout: default
 title: escape
+aliases:
+  - "/reference-functions-escape.html"
 ---
 
 {{< CFEngine_function_prototype(text) >}}

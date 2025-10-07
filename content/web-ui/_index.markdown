@@ -2,6 +2,8 @@
 layout: default
 title: Web UI
 sorting: 40
+aliases:
+  - "/web-ui.html"
 ---
 
 The challenge in engineering IT infrastructure, especially as it scales

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Status and settings REST API
+aliases:
+  - "/api-enterprise-api-ref-status-settings.html"
 ---
 
 REST API for managing settings, checking hub status.

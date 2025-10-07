@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Web RBAC API
+aliases:
+  - "/api-enterprise-api-ref-web-rbac.html"
 ---
 
 Web RBAC API for managing role based access control settings.

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Reset password API
+aliases:
+  - "/api-enterprise-api-ref-reset-password.html"
 ---
 
 ## Request reset password link and token

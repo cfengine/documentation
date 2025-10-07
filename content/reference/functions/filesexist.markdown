@@ -1,6 +1,8 @@
 ---
 layout: default
 title: filesexist
+aliases:
+  - "/reference-functions-filesexist.html"
 ---
 
 {{< CFEngine_function_prototype(list) >}}

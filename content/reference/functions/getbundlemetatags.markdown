@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getbundlemetatags
+aliases:
+  - "/reference-functions-getbundlemetatags.html"
 ---
 
 {{< CFEngine_function_prototype(bundlename, optional_tag) >}}

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: insert_text
+aliases:
+  - "/reference-promise-types-files-edit_xml-insert_text.html"
 ---
 
 This proimse type assures that a value string, containing the matching

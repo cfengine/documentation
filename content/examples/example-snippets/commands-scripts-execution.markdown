@@ -2,6 +2,8 @@
 layout: default
 title: Commands, scripts, and execution examples
 sorting: 5
+aliases:
+  - "/examples-example-snippets-commands-scripts-execution.html"
 ---
 
 - [Command or script execution][Commands, scripts, and execution examples#Command or script execution]

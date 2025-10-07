@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getusers
+aliases:
+  - "/reference-functions-getusers.html"
 ---
 
 {{< CFEngine_function_prototype(exclude_names, exclude_ids) >}}

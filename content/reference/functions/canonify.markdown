@@ -1,6 +1,8 @@
 ---
 layout: default
 title: canonify
+aliases:
+  - "/reference-functions-canonify.html"
 ---
 
 {{< CFEngine_function_prototype(text) >}}

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: accessedbefore
+aliases:
+  - "/reference-functions-accessedbefore.html"
 ---
 
 {{< CFEngine_function_prototype(newer,older) >}}

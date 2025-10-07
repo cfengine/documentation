@@ -2,6 +2,8 @@
 layout: default
 title: Debugging slow queries
 sorting: 90
+aliases:
+  - "/resources-faq-debugging-slow-queries.html"
 ---
 
 If Mission Portal seems to take too much time to generate pages or reports or if API calls seem

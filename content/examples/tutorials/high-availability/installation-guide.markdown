@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Installation guide
+aliases:
+  - "/examples-tutorials-high-availability-installation-guide.html"
 ---
 
 ## Overview

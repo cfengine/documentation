@@ -2,6 +2,8 @@
 layout: default
 title: Change management
 sorting: 80
+aliases:
+  - "/resources-additional-topics-change-management.html"
 ---
 
 ## What is change management?

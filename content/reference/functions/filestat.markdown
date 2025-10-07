@@ -1,6 +1,8 @@
 ---
 layout: default
 title: filestat
+aliases:
+  - "/reference-functions-filestat.html"
 ---
 
 {{< CFEngine_function_prototype(filename, field) >}}

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: length
+aliases:
+  - "/reference-functions-length.html"
 ---
 
 {{< CFEngine_function_prototype(list) >}}

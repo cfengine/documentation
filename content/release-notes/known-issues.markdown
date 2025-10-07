@@ -2,6 +2,8 @@
 layout: default
 title: Known issues
 sorting: 50
+aliases:
+  - "/release-notes-known-issues.html"
 ---
 
 CFEngine defects are managed in our [bug tracker][bug tracker].

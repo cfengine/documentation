@@ -1,6 +1,8 @@
 ---
 layout: default
 title: classesmatching
+aliases:
+  - "/reference-functions-classesmatching.html"
 ---
 
 {{< CFEngine_function_prototype(name, tag1, tag2, ...) >}}

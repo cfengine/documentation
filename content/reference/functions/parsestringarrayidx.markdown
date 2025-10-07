@@ -1,6 +1,8 @@
 ---
 layout: default
 title: parsestringarrayidx
+aliases:
+  - "/reference-functions-parsestringarrayidx.html"
 ---
 
 {{< CFEngine_function_prototype(array, input, comment, split, maxentries, maxbytes) >}}

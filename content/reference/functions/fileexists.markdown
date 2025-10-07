@@ -1,6 +1,8 @@
 ---
 layout: default
 title: fileexists
+aliases:
+  - "/reference-functions-fileexists.html"
 ---
 
 {{< CFEngine_function_prototype(filename) >}}

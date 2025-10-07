@@ -1,6 +1,8 @@
 ---
 layout: default
 title: splayclass
+aliases:
+  - "/reference-functions-splayclass.html"
 ---
 
 {{< CFEngine_function_prototype(input, policy) >}}

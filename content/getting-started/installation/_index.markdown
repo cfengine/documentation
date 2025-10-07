@@ -2,6 +2,8 @@
 layout: default
 title: Installation
 sorting: 10
+aliases:
+  - "/getting-started-installation.html"
 ---
 
 In CFEngine you mainly interact with the CFEngine Hub, for example using the Mission Portal Web UI, APIs, ssh, or git.

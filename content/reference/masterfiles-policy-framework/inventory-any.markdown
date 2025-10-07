@@ -1,6 +1,8 @@
 ---
 layout: default
 title: inventory/any.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-inventory-any.html"
 ---
 
 This policy is inventory related policy that can be run on any OS. This

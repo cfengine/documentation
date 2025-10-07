@@ -1,6 +1,8 @@
 ---
 layout: default
 title: def
+aliases:
+  - "/reference-special-variables-def.html"
 ---
 
 The context `def` is populated by the

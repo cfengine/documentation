@@ -1,6 +1,8 @@
 ---
 layout: default
 title: findlocalusers
+aliases:
+  - "/reference-functions-findlocalusers.html"
 ---
 
 {{< CFEngine_function_prototype(filter) >}}

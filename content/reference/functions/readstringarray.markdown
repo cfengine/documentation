@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readstringarray
+aliases:
+  - "/reference-functions-readstringarray.html"
 ---
 
 **Prototype:** `readstringarray(array, filename, comment, split, maxentries, maxbytes)`

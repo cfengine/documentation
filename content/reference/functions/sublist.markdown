@@ -1,6 +1,8 @@
 ---
 layout: default
 title: sublist
+aliases:
+  - "/reference-functions-sublist.html"
 ---
 
 {{< CFEngine_function_prototype(list, head_or_tail, max_elements) >}}

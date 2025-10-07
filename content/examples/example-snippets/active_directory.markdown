@@ -2,6 +2,8 @@
 layout: default
 title: Interacting with directory services
 sorting: 7
+aliases:
+  - "/examples-example-snippets-active_directory.html"
 ---
 
 ## Active directory example

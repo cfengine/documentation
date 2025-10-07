@@ -2,6 +2,8 @@
 layout: default
 title: Health
 sorting: 20
+aliases:
+  - "/web-ui-health.html"
 ---
 
 <img width="493px" src="Mission-portal-health-dignostics-header.png">

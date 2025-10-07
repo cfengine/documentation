@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readrealarray
+aliases:
+  - "/reference-functions-readrealarray.html"
 ---
 
 **Prototype:** `readrealarray(array, filename, comment, split, maxentries, maxbytes)`<br>

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getacls
+aliases:
+  - "/reference-functions-getacls.html"
 ---
 
 {{< CFEngine_function_prototype(path, type) >}}

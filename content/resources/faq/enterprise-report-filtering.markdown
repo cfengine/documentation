@@ -2,6 +2,8 @@
 layout: default
 title: Enterprise Report Filtering
 sorting: 90
+aliases:
+  - "/resources-faq-enterprise-report-filtering.html"
 ---
 
 ## Filtering inventoried lists

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: delete_tree
+aliases:
+  - "/reference-promise-types-files-edit_xml-delete_tree.html"
 ---
 
 This promise type assures that a balanced XML tree, containing the matching

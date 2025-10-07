@@ -1,6 +1,8 @@
 ---
 layout: default
 title: parserealarray
+aliases:
+  - "/reference-functions-parserealarray.html"
 ---
 
 **Prototype:** `parserealarray(array, input, comment, split, maxentries, maxbytes)`<br>

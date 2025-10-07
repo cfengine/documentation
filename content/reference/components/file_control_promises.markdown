@@ -2,6 +2,8 @@
 layout: default
 title: file control
 sorting: 100
+aliases:
+  - "/reference-components-file_control_promises.html"
 ---
 
 ```cf3

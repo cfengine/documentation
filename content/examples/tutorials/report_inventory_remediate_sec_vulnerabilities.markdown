@@ -2,6 +2,8 @@
 layout: default
 title: Reporting and remediation of security vulnerabilities
 sorting: 10
+aliases:
+  - "/examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html"
 ---
 
 ## Prerequisites

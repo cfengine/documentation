@@ -1,6 +1,8 @@
 ---
 layout: default
 title: findprocesses
+aliases:
+  - "/reference-functions-findprocesses.html"
 ---
 
 {{< CFEngine_function_prototype(regex) >}}

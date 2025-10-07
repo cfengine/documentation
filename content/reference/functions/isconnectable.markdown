@@ -1,6 +1,8 @@
 ---
 layout: default
 title: isconnectable
+aliases:
+  - "/reference-functions-isconnectable.html"
 ---
 
 {{< CFEngine_function_prototype(hostname, port, timeout) >}}

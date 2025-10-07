@@ -1,6 +1,8 @@
 ---
 layout: default
 title: findfiles
+aliases:
+  - "/reference-functions-findfiles.html"
 ---
 
 {{< CFEngine_function_prototype(glob1, glob2, ...) >}}

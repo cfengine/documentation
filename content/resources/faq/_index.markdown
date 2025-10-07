@@ -2,6 +2,8 @@
 layout: default
 title: FAQ
 sorting: 10
+aliases:
+  - "/resources-faq.html"
 ---
 
 This is a collection of frequently asked questions. Contributions in the form of

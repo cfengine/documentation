@@ -2,6 +2,8 @@
 layout: default
 title: General installation
 sorting: 20
+aliases:
+  - "/getting-started-installation-general-installation.html"
 ---
 
 {{< CFEngine_include_markdown(install-bootstrap-configure-summary.include.markdown) >}}

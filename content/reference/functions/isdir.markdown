@@ -1,6 +1,8 @@
 ---
 layout: default
 title: isdir
+aliases:
+  - "/reference-functions-isdir.html"
 ---
 
 {{< CFEngine_function_prototype(filename) >}}

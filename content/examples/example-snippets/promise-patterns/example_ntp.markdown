@@ -3,6 +3,8 @@ layout: default
 title: Set up time management through NTP
 reviewed: 2013-06-09
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_ntp.html"
 ---
 
 The following sets up a local NTP server that synchronizes with pool.ntp.org and

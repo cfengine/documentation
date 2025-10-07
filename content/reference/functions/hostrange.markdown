@@ -1,6 +1,8 @@
 ---
 layout: default
 title: hostrange
+aliases:
+  - "/reference-functions-hostrange.html"
 ---
 
 {{< CFEngine_function_prototype(prefix, range) >}}

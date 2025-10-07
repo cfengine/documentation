@@ -1,6 +1,8 @@
 ---
 layout: default
 title: packages
+aliases:
+  - "/reference-promise-types-packages.html"
 ---
 
 CFEngine 3.7 and later supports package management through a simple promise

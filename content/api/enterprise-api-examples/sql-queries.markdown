@@ -1,6 +1,8 @@
 ---
 layout: default
 title: SQL query examples
+aliases:
+  - "/api-enterprise-api-examples-sql-queries.html"
 ---
 
 ### Synchronous Example: Listing hostname and IP for Ubuntu hosts

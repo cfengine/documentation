@@ -1,6 +1,8 @@
 ---
 layout: default
 title: ldapvalue
+aliases:
+  - "/reference-functions-ldapvalue.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**

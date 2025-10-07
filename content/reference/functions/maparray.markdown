@@ -1,6 +1,8 @@
 ---
 layout: default
 title: maparray
+aliases:
+  - "/reference-functions-maparray.html"
 ---
 
 {{< CFEngine_function_prototype(pattern, array_or_container) >}}

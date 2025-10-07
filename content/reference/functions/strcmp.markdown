@@ -1,6 +1,8 @@
 ---
 layout: default
 title: strcmp
+aliases:
+  - "/reference-functions-strcmp.html"
 ---
 
 {{< CFEngine_function_prototype(string1, string2) >}}

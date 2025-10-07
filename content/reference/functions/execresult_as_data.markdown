@@ -1,6 +1,8 @@
 ---
 layout: default
 title: execresult_as_data
+aliases:
+  - "/reference-functions-execresult_as_data.html"
 ---
 
 {{< CFEngine_function_prototype(command, shell, output) >}}

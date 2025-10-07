@@ -2,6 +2,8 @@
 layout: default
 title: Managing settings
 sorting: 30
+aliases:
+  - "/api-enterprise-api-examples-managing-settings.html"
 ---
 
 Settings support two operations, **GET** (view settings) and **POST**
