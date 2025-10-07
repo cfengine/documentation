@@ -10,10 +10,19 @@ relativeURLs = true
 
 [params]
 branch = "%branch%"
+CFE_manuals_version = "%branch%"
 repositoryUrl = "https://github.com/cfengine/documentation"
 searchBaseUrl = "/docs/search/%branch%/"
 searchUrlPrefix = ".."
 domain = "docs.cfengine.com"
+
+[params.cfengine]
+branch = "%branch%"
+core_branch = "master"
+latest_patch_release = 0
+latest_package_build = "1a"
+vagrant_package_build = 1
+masterfiles_branch = "master"
 
 # Number of posts per page
 [pagination]

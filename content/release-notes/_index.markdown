@@ -7,7 +7,7 @@ aliases:
 ---
 
 - [New in CFEngine][New in CFEngine]
-  Learn about the newest features in CFEngine {{site.CFE_manuals_version}}
+  Learn about the newest features in CFEngine {{< params "CFE_manuals_version" >}}
 
 - [Supported platforms and versions][Supported platforms and versions]
   These are the supported platforms for the current release.

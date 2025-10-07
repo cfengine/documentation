@@ -57,16 +57,16 @@ virtualbox.org. After downloading VirtualBox, install it on your computer.
 **Note:** To avoid problems, disable other virtualization environments you are
 running.
 
-## Start the CFEngine Enterprise {{site.CFE_manuals_version}} Vagrant environment
+## Start the CFEngine Enterprise {{< params "CFE_manuals_version" >}} Vagrant environment
 
 Step 1. Download our ready-made Vagrant project
-[tar-file](https://cfengine-package-repos.s3.amazonaws.com/enterprise/Enterprise-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}/misc/CFEngine_Enterprise_vagrant_quickstart-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.tar.gz).
+[tar-file](https://cfengine-package-repos.s3.amazonaws.com/enterprise/Enterprise-{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}/misc/CFEngine_Enterprise_vagrant_quickstart-{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}.tar.gz).
 
 Step 2. Save and unpack the file anywhere on your drive; this
 creates a Vagrant Project directory.
 
 Step 3. Open a terminal and navigate to the Vagrant Project directory (e.g.
-`/home/user/CFEngine_Enterprise_vagrant_quickstart-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}`, or `C:\CFEngine_Enterprise_vagrant_quickstart-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}`) and enter the following command:
+`/home/user/CFEngine_Enterprise_vagrant_quickstart-{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}`, or `C:\CFEngine_Enterprise_vagrant_quickstart-{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}`) and enter the following command:
 
 ```command
 vagrant up
@@ -126,7 +126,7 @@ Last login: Fri Jun 13 18:58:10 2014 from 10.0.2.2
 #### Accessing via GUI
 
 If you launch the virtualbox GUI you should find the vagrant vms named
-`CFEngine Enterprise {{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}} hub`, and `CFEngine Enterprise {{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}} agent host001`. Additionally, you can uncomment the `v.gui=true`
+`CFEngine Enterprise {{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}} hub`, and `CFEngine Enterprise {{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}} agent host001`. Additionally, you can uncomment the `v.gui=true`
 option in the `Vagrantfile` to have the console gui start with the vms.
 **Note:** There are two `v.gui` settings to uncomment; one for the hub, and one
 for the clients.
