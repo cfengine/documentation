@@ -24,10 +24,10 @@ It also provides instructions for the following:
 
 Once `cf-remote` is installed from the Python Package Index (e.g. `pipx install cf-remote`), execute it against a host (either local or remote).
 
-For example, here we install CFEngine Community {{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}} on two hosts and bootstrap to one of them:
+For example, here we install CFEngine Community {{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}} on two hosts and bootstrap to one of them:
 
 ```command
-cf-remote --version={{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}} install --edition community --clients 192.168.56.13,192.168.56.14 --bootstrap 192.168.56.13
+cf-remote --version={{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}} install --edition community --clients 192.168.56.13,192.168.56.14 --bootstrap 192.168.56.13
 ```
 
 ## 1. Download packages
@@ -59,37 +59,37 @@ Choose the right command for your operating system:
 **Newer 64-bit RPM based distributions: (Redhat/CentOS/SUSE)**
 
 ```command
-sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el6.x86_64.rpm
+sudo rpm -i cfengine-community-{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}.el6.x86_64.rpm
 ```
 
 **Older 64-bit RPM based distributions: (Redhat/CentOS/SUSE)** (not recommended for policy server)
 
 ```command
-sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el4.x86_64.rpm
+sudo rpm -i cfengine-community-{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}.el4.x86_64.rpm
 ```
 
 **32-bit RPM based distributions: (Redhat/CentOS/SUSE)** (not recommended for policy server)
 
 ```command
-sudo rpm -i cfengine-community-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el4.i386.rpm
+sudo rpm -i cfengine-community-{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}.el4.i386.rpm
 ```
 
 **Newer 64-bit DEB based distributions: (Ubuntu/Debian)**
 
 ```command
-sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian7.deb
+sudo dpkg -i cfengine-community_{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}_amd64-debian7.deb
 ```
 
 **Older 64-bit DEB based distributions: (Ubuntu/Debian)** (not recommended for policy server)
 
 ```command
-sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-debian4.deb
+sudo dpkg -i cfengine-community_{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}_amd64-debian4.deb
 ```
 
 **32-bit DEB based distributions: (Ubuntu/Debian)** (not recommended for policy server)
 
 ```command
-sudo dpkg -i cfengine-community_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_i386-debian4.deb
+sudo dpkg -i cfengine-community_{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}_i386-debian4.deb
 ```
 
 **Note:** You might get a message like this: "Policy is not found in /var/cfengine/inputs, not starting CFEngine." Do not worry;

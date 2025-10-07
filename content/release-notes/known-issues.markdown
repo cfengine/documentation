@@ -7,8 +7,8 @@ sorting: 50
 CFEngine defects are managed in our [bug tracker][bug tracker].
 Please report bugs or unexpected behavior there, following the documented guideline for new bug reports.
 
-- Issues [affecting {{site.CFE_manuals_version}}](https://northerntech.atlassian.net/issues/?jql=project+in+%28ENT%2C+CFE%29+AND+affectedVersion+%7E+%22{{site.CFE_manuals_version}}.*%22+AND+status+not+in+%28+%22Rejected%22%29)
-- Issues [fixed in {{site.CFE_manuals_version}}](https://northerntech.atlassian.net/issues/?jql=project+in+%28ENT%2C+CFE%29+AND+fixVersion+%7E+%22{{site.CFE_manuals_version}}.*%22)
+- Issues [affecting {{< params "CFE_manuals_version" >}}](https://northerntech.atlassian.net/issues/?jql=project+in+%28ENT%2C+CFE%29+AND+affectedVersion+%7E+%22{{< params "CFE_manuals_version" >}}.%2A%22+AND+status+not+in+%28+%22Rejected%22%29)
+- Issues [fixed in {{< params "CFE_manuals_version" >}}](https://northerntech.atlassian.net/issues/?jql=project+in+%28ENT%2C+CFE%29+AND+fixVersion+%7E+%22{{< params "CFE_manuals_version" >}}.%2A%22)
 
 On this page (below) we will only mention a subset of known issues, which are very severe or noticeable, which we'd like to communicate with users.
 

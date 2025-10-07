@@ -5,7 +5,7 @@ sorting: 30
 ---
 
 This guide documents our recommendation on how to upgrade an existing
-installation of CFEngine Enterprise to {{site.CFE_manuals_version}}. Community users
+installation of CFEngine Enterprise to {{< params "CFE_manuals_version" >}}. Community users
 can use these instructions as a guide skipping the parts that are not relevant.
 
 In short, the steps are:
@@ -138,14 +138,14 @@ empty before performing an Enterprise Hub binary upgrade.
 
    ```console
    root@hub:~# export BACKUP_DIR="/mnt/plenty-of-free-space"
-   root@hub:~# rpm -U cfengine-nova-hub-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.el6.x86_64.rpm
+   root@hub:~# rpm -U cfengine-nova-hub-{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}.el6.x86_64.rpm
    ```
 
    **Debian/Ubuntu:**
 
    ```console
    root@hub:~# export BACKUP_DIR="/mnt/plenty-of-free-space"
-   root@hub:~# dpkg --install cfengine-nova-hub_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64-deb7.deb
+   root@hub:~# dpkg --install cfengine-nova-hub_{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}_amd64-deb7.deb
    ```
 
    _Community does not have a hub specific package._
@@ -209,7 +209,7 @@ empty before performing an Enterprise Hub binary upgrade.
            "sort":"Host name",
            "filter":{
               "CFEngine version":{
-                 "not_match":"{{site.cfengine.branch}}.0"
+                 "not_match":"{{< params "cfengine.branch" >}}.0"
               }
            },
            "select":[

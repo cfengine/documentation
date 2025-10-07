@@ -580,7 +580,7 @@ three dashes at the top) or in
 [\_config.yaml](https://github.com/cfengine/documentation/blob/master/generator/_config.yml)
 can be used directly within markdown.
 
-For example this is the '{{site.CFE_manuals_version}}' version of the
+For example this is the '{{< params "CFE_manuals_version" >}}' version of the
 documentation. That variable comes from \_config.yaml.
 
 Since liquid variables look a lot like mustache variables any time you want to
@@ -609,7 +609,7 @@ site.CFE_manuals_version {{ site.CFE_manuals_version }}
            "sort":"Host name",
            "filter":{
               "CFEngine version":{
-                 "not_match":"{{site.cfengine.branch}}.0"
+                 "not_match":"{{< params "cfengine.branch" >}}.0"
               }
            },
            "select":[

@@ -107,7 +107,7 @@ cf-promises --syntax-description json | jq '.functions | with_entries(select(.va
 - `hubknowledge()`, and `remotescalar()` for hub queries
 
 When enabled
-[cached functions](https://docs.cfengine.com/docs/{{site.cfengine.branch}}/search.html?q=The+return+value+is+cached)
+[cached functions](https://docs.cfengine.com/docs/{{< params "cfengine.branch" >}}/search.html?q=The+return+value+is+cached)
 are **not executed on every pass of convergence**. Instead, the function will
 only be executed once during the
 [agent evaluation step][Policy evaluation#Agent evaluation step]
