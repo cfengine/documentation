@@ -1,6 +1,8 @@
 ---
 layout: default
 title: processes
+aliases:
+  - "/reference-promise-types-processes.html"
 ---
 
 Process promises refer to items in the system process table, i.e., a command in

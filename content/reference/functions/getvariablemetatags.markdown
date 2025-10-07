@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getvariablemetatags
+aliases:
+  - "/reference-functions-getvariablemetatags.html"
 ---
 
 {{< CFEngine_function_prototype(varname, optional_tag) >}}

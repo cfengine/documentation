@@ -1,6 +1,8 @@
 ---
 layout: default
 title: hash_to_int
+aliases:
+  - "/reference-functions-hash_to_int.html"
 ---
 
 {{< CFEngine_function_prototype( lower, upper, string ) >}}

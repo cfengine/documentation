@@ -2,6 +2,8 @@
 layout: default
 title: Upgrading
 sorting: 30
+aliases:
+  - "/getting-started-installation-upgrading.html"
 ---
 
 This guide documents our recommendation on how to upgrade an existing

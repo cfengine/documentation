@@ -1,6 +1,8 @@
 ---
 layout: default
 title: variance
+aliases:
+  - "/reference-functions-variance.html"
 ---
 
 {{< CFEngine_function_prototype(list) >}}

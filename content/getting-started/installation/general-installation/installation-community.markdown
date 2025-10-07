@@ -2,6 +2,8 @@
 layout: default
 title: Installing Community
 sorting: 50
+aliases:
+  - "/getting-started-installation-general-installation-installation-community.html"
 ---
 
 These instructions describe how to download and install the latest version of CFEngine Community using pre-compiled rpm and

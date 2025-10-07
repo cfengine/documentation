@@ -1,6 +1,8 @@
 ---
 layout: default
 title: grep
+aliases:
+  - "/reference-functions-grep.html"
 ---
 
 {{< CFEngine_function_prototype(regex, list) >}}

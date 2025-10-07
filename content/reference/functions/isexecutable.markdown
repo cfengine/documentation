@@ -1,6 +1,8 @@
 ---
 layout: default
 title: isexecutable
+aliases:
+  - "/reference-functions-isexecutable.html"
 ---
 
 {{< CFEngine_function_prototype(filename) >}}

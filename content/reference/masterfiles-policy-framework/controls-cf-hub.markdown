@@ -1,6 +1,8 @@
 ---
 layout: default
 title: controls/cf_hub.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-controls-cf-hub.html"
 ---
 
 This is where `body hub control` is defined. `body hub control` is where

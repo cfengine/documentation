@@ -1,6 +1,8 @@
 ---
 layout: default
 title: SQL schema
+aliases:
+  - "/api-enterprise-api-ref-sql-schema.html"
 ---
 
 CFEngine Enterprise uses multiple databases.

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: classify
+aliases:
+  - "/reference-functions-classify.html"
 ---
 
 {{< CFEngine_function_prototype(text) >}}

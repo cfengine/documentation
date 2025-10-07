@@ -2,6 +2,8 @@
 layout: default
 title: Pre-installation checklist
 sorting: 10
+aliases:
+  - "/getting-started-installation-pre-installation-checklist.html"
 ---
 
 ## Download packages

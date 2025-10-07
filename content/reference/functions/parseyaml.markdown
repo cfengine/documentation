@@ -1,6 +1,8 @@
 ---
 layout: default
 title: parseyaml
+aliases:
+  - "/reference-functions-parseyaml.html"
 ---
 
 {{< CFEngine_function_prototype(yaml_data) >}}

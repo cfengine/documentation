@@ -1,6 +1,8 @@
 ---
 layout: default
 title: islink
+aliases:
+  - "/reference-functions-islink.html"
 ---
 
 {{< CFEngine_function_prototype(filename) >}}

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: accumulated
+aliases:
+  - "/reference-functions-accumulated.html"
 ---
 
 {{< CFEngine_function_prototype(years, months, days, hours, minutes, seconds) >}}

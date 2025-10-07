@@ -1,6 +1,8 @@
 ---
 layout: default
 title: groupexists
+aliases:
+  - "/reference-functions-groupexists.html"
 ---
 
 {{< CFEngine_function_prototype(group) >}}

@@ -2,6 +2,8 @@
 layout: default
 title: Decommissioning hosts
 sorting: 30
+aliases:
+  - "/web-ui-hub_administration-decommissioning-hosts.html"
 ---
 
 Once a host is shut off, or CFEngine is uninstalled, you should remove it from Mission Portal.

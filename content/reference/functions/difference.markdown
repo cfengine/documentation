@@ -1,6 +1,8 @@
 ---
 layout: default
 title: difference
+aliases:
+  - "/reference-functions-difference.html"
 ---
 
 {{< CFEngine_function_prototype(list1, list2) >}}

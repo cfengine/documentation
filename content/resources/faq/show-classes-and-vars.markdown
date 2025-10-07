@@ -2,6 +2,8 @@
 layout: default
 title: How can I tell what classes and variables are defined?
 sorting: 90
+aliases:
+  - "/resources-faq-show-classes-and-vars.html"
 ---
 
 You can see a high level overview of the first order classes and variables using

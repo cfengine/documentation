@@ -1,6 +1,8 @@
 ---
 layout: default
 title: edit
+aliases:
+  - "/reference-special-variables-edit.html"
 ---
 
 This context is used to access information about editing promises during

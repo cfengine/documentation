@@ -1,6 +1,8 @@
 ---
 layout: default
 title: modules/promises/
+aliases:
+  - "/reference-masterfiles-policy-framework-modules-promises.html"
 ---
 
 This directory tree is used for distributing promise modules and supporting libraries.

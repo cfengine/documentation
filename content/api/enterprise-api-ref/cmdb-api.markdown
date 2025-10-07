@@ -1,6 +1,8 @@
 ---
 layout: default
 title: CMDB API
+aliases:
+  - "/api-enterprise-api-ref-cmdb-api.html"
 ---
 
 The configuration management database (CMDB) API enables you to manage classes and variables for specific hosts.

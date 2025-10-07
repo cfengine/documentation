@@ -2,6 +2,8 @@
 layout: default
 title: Orchestration
 sorting: 80
+aliases:
+  - "/resources-additional-topics-orchestration.html"
 ---
 
 ## What is organizational complexity?

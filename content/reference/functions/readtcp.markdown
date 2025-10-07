@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readtcp
+aliases:
+  - "/reference-functions-readtcp.html"
 ---
 
 {{< CFEngine_function_prototype(hostnameip, port, sendstring, maxbytes) >}}

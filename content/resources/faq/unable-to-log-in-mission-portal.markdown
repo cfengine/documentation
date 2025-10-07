@@ -2,6 +2,8 @@
 layout: default
 title: Unable to log into Mission Portal
 sorting: 90
+aliases:
+  - "/resources-faq-unable-to-log-in-mission-portal.html"
 ---
 
 ## Mismatched names in SSL certificate

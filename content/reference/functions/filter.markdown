@@ -1,6 +1,8 @@
 ---
 layout: default
 title: filter
+aliases:
+  - "/reference-functions-filter.html"
 ---
 
 {{< CFEngine_function_prototype(filter, list, is_regex, invert, max_return) >}}

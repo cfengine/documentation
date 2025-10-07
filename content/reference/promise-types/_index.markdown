@@ -2,6 +2,8 @@
 layout: default
 title: Promise types
 sorting: 20
+aliases:
+  - "/reference-promise-types.html"
 ---
 
 Within a bundle, the promise types are executed in a round-robin fashion in the

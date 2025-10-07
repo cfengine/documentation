@@ -1,6 +1,8 @@
 ---
 layout: default
 title: nth
+aliases:
+  - "/reference-functions-nth.html"
 ---
 
 {{< CFEngine_function_prototype(list_or_container, position_or_key) >}}

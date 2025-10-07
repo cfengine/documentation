@@ -1,6 +1,8 @@
 ---
 layout: default
 title: hostinnetgroup
+aliases:
+  - "/reference-functions-hostinnetgroup.html"
 ---
 
 {{< CFEngine_function_prototype(netgroup) >}}

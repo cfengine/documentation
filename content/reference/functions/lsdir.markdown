@@ -1,6 +1,8 @@
 ---
 layout: default
 title: lsdir
+aliases:
+  - "/reference-functions-lsdir.html"
 ---
 
 {{< CFEngine_function_prototype(path, regex, include_base) >}}

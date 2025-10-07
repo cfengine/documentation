@@ -1,6 +1,8 @@
 ---
 layout: default
 title: file_hash
+aliases:
+  - "/reference-functions-file_hash.html"
 ---
 
 {{< CFEngine_function_prototype(file, algorithm) >}}

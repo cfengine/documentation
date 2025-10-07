@@ -2,6 +2,8 @@
 layout: default
 title: Managing local users
 sorting: 3
+aliases:
+  - "/examples-tutorials-manage-local-users.html"
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/23QHpDEvYU8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

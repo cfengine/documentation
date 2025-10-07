@@ -1,6 +1,8 @@
 ---
 layout: default
 title: replace_patterns
+aliases:
+  - "/reference-promise-types-files-edit_line-replace_patterns.html"
 ---
 
 This promise refers to arbitrary text patterns in a file. The pattern is

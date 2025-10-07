@@ -2,6 +2,8 @@
 layout: default
 title: Components
 sorting: 10
+aliases:
+  - "/reference-components.html"
 ---
 
 While promises to configure your system are entirely user-defined, the

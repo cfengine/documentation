@@ -1,6 +1,8 @@
 ---
 layout: default
 title: maplist
+aliases:
+  - "/reference-functions-maplist.html"
 ---
 
 {{< CFEngine_function_prototype(pattern, list) >}}

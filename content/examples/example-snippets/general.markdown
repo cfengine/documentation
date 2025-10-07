@@ -2,6 +2,8 @@
 layout: default
 title: General examples
 sorting: 1
+aliases:
+  - "/examples-example-snippets-general.html"
 ---
 
 - [Basic example][General examples#Basic example]

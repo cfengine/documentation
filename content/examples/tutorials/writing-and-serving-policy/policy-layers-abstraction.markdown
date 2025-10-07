@@ -2,6 +2,8 @@
 layout: default
 title: Layers of abstraction in policy
 sorting: 2
+aliases:
+  - "/examples-tutorials-writing-and-serving-policy-policy-layers-abstraction.html"
 ---
 
 CFEngine offers a number of layers of abstraction. The most fundamental atom

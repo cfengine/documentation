@@ -1,6 +1,8 @@
 ---
 layout: default
 title: registryvalue
+aliases:
+  - "/reference-functions-registryvalue.html"
 ---
 
 {{< CFEngine_function_prototype(key, valueid) >}}

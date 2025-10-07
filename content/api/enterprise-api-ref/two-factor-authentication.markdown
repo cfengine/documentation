@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Two-factor authentication API
+aliases:
+  - "/api-enterprise-api-ref-two-factor-authentication.html"
 ---
 
 The Two-factor authentication API enables users to add an extra layer of security to their accounts

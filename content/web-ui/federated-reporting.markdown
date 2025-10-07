@@ -2,6 +2,8 @@
 layout: default
 title: Federated reporting
 sorting: 60
+aliases:
+  - "/web-ui-federated-reporting.html"
 ---
 
 ## Overview

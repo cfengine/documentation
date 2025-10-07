@@ -1,6 +1,8 @@
 ---
 layout: default
 title: cf_version_maximum
+aliases:
+  - "/reference-functions-cf_version_maximum.html"
 ---
 
 {{< CFEngine_function_prototype(string) >}}

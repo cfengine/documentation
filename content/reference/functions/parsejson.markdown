@@ -1,6 +1,8 @@
 ---
 layout: default
 title: parsejson
+aliases:
+  - "/reference-functions-parsejson.html"
 ---
 
 {{< CFEngine_function_prototype(json_data) >}}

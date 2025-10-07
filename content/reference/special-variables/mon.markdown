@@ -1,6 +1,8 @@
 ---
 layout: default
 title: mon
+aliases:
+  - "/reference-special-variables-mon.html"
 ---
 
 The variables discovered by `cf-monitord` are placed in this monitoring

@@ -2,6 +2,8 @@
 layout: default
 title: Installing Enterprise on CoreOS
 sorting: 40
+aliases:
+  - "/getting-started-installation-general-installation-installation-coreos.html"
 ---
 
 These instructions describe how to install the latest version of CFEngine

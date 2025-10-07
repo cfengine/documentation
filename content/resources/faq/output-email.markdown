@@ -2,6 +2,8 @@
 layout: default
 title: Agent output email
 sorting: 90
+aliases:
+  - "/resources-faq-output-email.html"
 ---
 
 ## How do I set the email where agent reports are sent?

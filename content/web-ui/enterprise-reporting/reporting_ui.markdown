@@ -2,6 +2,8 @@
 layout: default
 title: Reporting UI
 sorting: 50
+aliases:
+  - "/web-ui-enterprise-reporting-reporting_ui.html"
 ---
 
 CFEngine collects a large amount of data. To inspect it, you can run and schedule pre-defined reports or use the [query builder][Reporting UI#Query builder] for your own custom reports. You can save these queries for later use, and schedule reports for specified times.

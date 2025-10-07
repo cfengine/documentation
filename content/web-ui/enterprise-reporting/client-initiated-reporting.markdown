@@ -2,6 +2,8 @@
 layout: default
 title: Client initiated reporting / call collect
 sorting: 60
+aliases:
+  - "/web-ui-enterprise-reporting-client-initiated-reporting.html"
 ---
 
 Pull collect is the default mode of reporting.

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: max
+aliases:
+  - "/reference-functions-max.html"
 ---
 
 {{< CFEngine_function_prototype(list, sortmode) >}}

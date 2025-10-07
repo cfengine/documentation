@@ -1,6 +1,8 @@
 ---
 layout: default
 title: insert_lines
+aliases:
+  - "/reference-promise-types-files-edit_line-insert_lines.html"
 ---
 
 This promise type is part of the line-editing model. It inserts lines into

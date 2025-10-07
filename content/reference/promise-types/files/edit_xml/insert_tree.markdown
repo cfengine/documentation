@@ -1,6 +1,8 @@
 ---
 layout: default
 title: insert_tree
+aliases:
+  - "/reference-promise-types-files-edit_xml-insert_tree.html"
 ---
 
 This promise type assures that a

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readreallist
+aliases:
+  - "/reference-functions-readreallist.html"
 ---
 
 **Prototype:** `readreallist(filename, comment, split, maxentries, maxbytes)`<br>

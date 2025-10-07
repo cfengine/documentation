@@ -3,6 +3,8 @@ layout: default
 title: Change detection
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_change_detection.html"
 ---
 
 This policy will look for changes recursively in a directory.

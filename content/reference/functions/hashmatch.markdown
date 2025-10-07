@@ -1,6 +1,8 @@
 ---
 layout: default
 title: hashmatch
+aliases:
+  - "/reference-functions-hashmatch.html"
 ---
 
 {{< CFEngine_function_prototype(filename, algorithm, hash) >}}

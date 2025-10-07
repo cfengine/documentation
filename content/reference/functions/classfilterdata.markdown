@@ -1,6 +1,8 @@
 ---
 layout: default
 title: classfilterdata
+aliases:
+  - "/reference-functions-classfilterdata.html"
 ---
 
 {{< CFEngine_function_prototype(data_container, data_structure, key_or_index) >}}

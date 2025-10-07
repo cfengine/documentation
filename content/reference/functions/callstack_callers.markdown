@@ -1,6 +1,8 @@
 ---
 layout: default
 title: callstack_callers
+aliases:
+  - "/reference-functions-callstack_callers.html"
 ---
 
 {{< CFEngine_function_prototype() >}}

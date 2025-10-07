@@ -1,6 +1,8 @@
 ---
 layout: default
 title: countlinesmatching
+aliases:
+  - "/reference-functions-countlinesmatching.html"
 ---
 
 {{< CFEngine_function_prototype(regex, filename) >}}

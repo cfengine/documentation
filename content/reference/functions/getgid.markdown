@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getgid
+aliases:
+  - "/reference-functions-getgid.html"
 ---
 
 {{< CFEngine_function_prototype(groupname) >}}

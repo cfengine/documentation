@@ -1,6 +1,8 @@
 ---
 layout: default
 title: hash
+aliases:
+  - "/reference-functions-hash.html"
 ---
 
 {{< CFEngine_function_prototype(input, algorithm) >}}

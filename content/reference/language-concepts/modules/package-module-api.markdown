@@ -2,6 +2,8 @@
 layout: default
 title: Package modules
 sorting: 70
+aliases:
+  - "/reference-language-concepts-modules-package-module-api.html"
 ---
 
 Package modules are back-ends that enable the package promise to work

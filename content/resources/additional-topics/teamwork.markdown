@@ -2,6 +2,8 @@
 layout: default
 title: Teamwork
 sorting: 80
+aliases:
+  - "/resources-additional-topics-teamwork.html"
 ---
 
 ## What is team-work?

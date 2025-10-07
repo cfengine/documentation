@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getvalues
+aliases:
+  - "/reference-functions-getvalues.html"
 ---
 
 {{< CFEngine_function_prototype(varref) >}}

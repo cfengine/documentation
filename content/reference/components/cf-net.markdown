@@ -3,6 +3,8 @@ layout: default
 title: cf-net
 sorting: 90
 keywords: [protocol, cli]
+aliases:
+  - "/reference-components-cf-net.html"
 ---
 
 `cf-net` can be used to send simple protocol commands to a policy server.

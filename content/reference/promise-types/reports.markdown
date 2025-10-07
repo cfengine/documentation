@@ -1,6 +1,8 @@
 ---
 layout: default
 title: reports
+aliases:
+  - "/reference-promise-types-reports.html"
 ---
 
 Reports promises simply print messages. Outputting a message without

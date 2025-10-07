@@ -3,6 +3,8 @@ layout: default
 title: Install packages
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_install_package.html"
 ---
 
 Install desired packages.

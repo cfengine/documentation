@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Policy deployment
+aliases:
+  - "/web-ui-hub_administration-policy-deployment.html"
 ---
 
 By default CFEngine policy is distributed from `/var/cfengine/masterfiles` on

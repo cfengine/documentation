@@ -1,6 +1,8 @@
 ---
 layout: default
 title: islessthan
+aliases:
+  - "/reference-functions-islessthan.html"
 ---
 
 {{< CFEngine_function_prototype(value1, value2) >}}

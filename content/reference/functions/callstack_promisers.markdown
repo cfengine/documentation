@@ -1,6 +1,8 @@
 ---
 layout: default
 title: callstack_promisers
+aliases:
+  - "/reference-functions-callstack_promisers.html"
 ---
 
 {{< CFEngine_function_prototype() >}}

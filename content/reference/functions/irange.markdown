@@ -1,6 +1,8 @@
 ---
 layout: default
 title: irange
+aliases:
+  - "/reference-functions-irange.html"
 ---
 
 {{< CFEngine_function_prototype(arg1, arg2) >}}

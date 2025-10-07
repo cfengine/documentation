@@ -1,6 +1,8 @@
 ---
 layout: default
 title: userexists
+aliases:
+  - "/reference-functions-userexists.html"
 ---
 
 {{< CFEngine_function_prototype(user) >}}

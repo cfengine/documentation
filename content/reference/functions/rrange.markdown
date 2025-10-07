@@ -1,6 +1,8 @@
 ---
 layout: default
 title: rrange
+aliases:
+  - "/reference-functions-rrange.html"
 ---
 
 {{< CFEngine_function_prototype(arg1, arg2) >}}

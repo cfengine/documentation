@@ -1,6 +1,8 @@
 ---
 layout: default
 title: isplain
+aliases:
+  - "/reference-functions-isplain.html"
 ---
 
 {{< CFEngine_function_prototype(filename) >}}

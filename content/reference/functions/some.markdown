@@ -1,6 +1,8 @@
 ---
 layout: default
 title: some
+aliases:
+  - "/reference-functions-some.html"
 ---
 
 {{< CFEngine_function_prototype(regex, list) >}}

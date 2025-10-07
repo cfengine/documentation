@@ -1,6 +1,8 @@
 ---
 layout: default
 title: regldap
+aliases:
+  - "/reference-functions-regldap.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**

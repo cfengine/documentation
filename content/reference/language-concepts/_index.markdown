@@ -2,6 +2,8 @@
 layout: default
 title: Language concepts
 sorting: 50
+aliases:
+  - "/reference-language-concepts.html"
 ---
 
 There is only one grammatical form for statements in the language:

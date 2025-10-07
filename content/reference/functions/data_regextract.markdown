@@ -1,6 +1,8 @@
 ---
 layout: default
 title: data_regextract
+aliases:
+  - "/reference-functions-data_regextract.html"
 ---
 
 {{< CFEngine_function_prototype(regex, string) >}}

@@ -2,6 +2,8 @@
 layout: default
 title: cf-key
 sorting: 60
+aliases:
+  - "/reference-components-cf-key.html"
 ---
 
 The CFEngine key generator makes key pairs for [remote authentication][Client server communication].

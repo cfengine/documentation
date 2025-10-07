@@ -1,6 +1,8 @@
 ---
 layout: default
 title: lib/storage.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-lib-storage.html"
 ---
 
 See the [`storage` promises][storage] documentation for a

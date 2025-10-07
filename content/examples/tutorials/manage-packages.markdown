@@ -2,6 +2,8 @@
 layout: default
 title: Package management
 sorting: 3
+aliases:
+  - "/examples-tutorials-manage-packages.html"
 ---
 
 Package management is a critical task for any system administrator. In this

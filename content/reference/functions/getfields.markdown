@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getfields
+aliases:
+  - "/reference-functions-getfields.html"
 ---
 
 {{< CFEngine_function_prototype(regex, filename, split, array_lval) >}}

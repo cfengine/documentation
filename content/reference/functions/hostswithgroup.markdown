@@ -1,6 +1,8 @@
 ---
 layout: default
 title: hostswithgroup
+aliases:
+  - "/reference-functions-hostswithgroup.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**

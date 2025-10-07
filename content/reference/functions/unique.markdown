@@ -1,6 +1,8 @@
 ---
 layout: default
 title: unique
+aliases:
+  - "/reference-functions-unique.html"
 ---
 
 {{< CFEngine_function_prototype(list) >}}

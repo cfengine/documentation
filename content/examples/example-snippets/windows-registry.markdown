@@ -2,6 +2,8 @@
 layout: default
 title: Windows registry examples
 sorting: 14
+aliases:
+  - "/examples-example-snippets-windows-registry.html"
 ---
 
 - [Windows registry][Windows registry examples#Windows registry]

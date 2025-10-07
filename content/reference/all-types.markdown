@@ -2,6 +2,8 @@
 layout: default
 title: All promise and body types
 sorting: 110
+aliases:
+  - "/reference-all-types.html"
 ---
 
 - [All promise types][All promise and body types#All promise types]

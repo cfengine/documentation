@@ -1,6 +1,8 @@
 ---
 layout: default
 title: bundlesmatching
+aliases:
+  - "/reference-functions-bundlesmatching.html"
 ---
 
 {{< CFEngine_function_prototype(name, tag1, tag2, ...) >}}

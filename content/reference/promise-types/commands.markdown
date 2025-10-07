@@ -1,6 +1,8 @@
 ---
 layout: default
 title: commands
+aliases:
+  - "/reference-promise-types-commands.html"
 ---
 
 Commands and [processes][processes] are separated cleanly. Restarting of

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: usemodule
+aliases:
+  - "/reference-functions-usemodule.html"
 ---
 
 {{< CFEngine_function_prototype(module, args) >}}

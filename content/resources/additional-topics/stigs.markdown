@@ -2,6 +2,8 @@
 layout: default
 title: STIGs
 sorting: 80
+aliases:
+  - "/resources-additional-topics-stigs.html"
 ---
 
 ## CFEngine STIGs compliance example

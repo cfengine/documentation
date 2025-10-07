@@ -2,6 +2,8 @@
 layout: default
 title: Verifying package signatures
 sorting: 40
+aliases:
+  - "/getting-started-installation-pre-installation-checklist-verify-signatures.html"
 ---
 
 On the [Download CFEngine][enterprise software download page], you will find

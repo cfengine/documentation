@@ -1,6 +1,8 @@
 ---
 layout: default
 title: makerule
+aliases:
+  - "/reference-functions-makerule.html"
 ---
 
 {{< CFEngine_function_prototype(target, sources) >}}

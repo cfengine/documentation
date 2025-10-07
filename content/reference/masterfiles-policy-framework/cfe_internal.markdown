@@ -1,6 +1,8 @@
 ---
 layout: default
 title: cfe_internal/
+aliases:
+  - "/reference-masterfiles-policy-framework-cfe_internal.html"
 ---
 
 This directory contains policy related to the internal control and functioning

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: mapdata
+aliases:
+  - "/reference-functions-mapdata.html"
 ---
 
 {{< CFEngine_function_prototype(interpretation, pattern, array_or_container) >}}

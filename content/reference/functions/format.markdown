@@ -1,6 +1,8 @@
 ---
 layout: default
 title: format
+aliases:
+  - "/reference-functions-format.html"
 ---
 
 {{< CFEngine_function_prototype(string, ...) >}}

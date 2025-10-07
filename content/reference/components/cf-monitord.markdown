@@ -3,6 +3,8 @@ layout: default
 title: cf-monitord
 sorting: 50
 keywords: [monitor]
+aliases:
+  - "/reference-components-cf-monitord.html"
 ---
 
 `cf-monitord` is the monitoring daemon for CFEngine. It samples probes defined

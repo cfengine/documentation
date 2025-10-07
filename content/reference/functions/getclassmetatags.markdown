@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getclassmetatags
+aliases:
+  - "/reference-functions-getclassmetatags.html"
 ---
 
 {{< CFEngine_function_prototype(classname, optional_tag) >}}

@@ -2,6 +2,8 @@
 layout: default
 title: Modularity and orchestrating system policy
 sorting: 80
+aliases:
+  - "/resources-additional-topics-modularity.html"
 ---
 
 ## What is modularity?

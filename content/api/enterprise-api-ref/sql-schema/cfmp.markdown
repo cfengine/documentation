@@ -1,6 +1,8 @@
 ---
 layout: default
 title: cfmp
+aliases:
+  - "/api-enterprise-api-ref-sql-schema-cfmp.html"
 ---
 
 This database contains Mission Portal related settings not processed by the API.

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: cf_version_after
+aliases:
+  - "/reference-functions-cf_version_after.html"
 ---
 
 {{< CFEngine_function_prototype(string) >}}

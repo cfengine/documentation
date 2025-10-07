@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Custom LDAPs certificate
+aliases:
+  - "/web-ui-hub_administration-custom-ldaps-certificate.html"
 ---
 
 To use a custom LDAPs certificate install it into your hubs operating system.

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: string_mustache
+aliases:
+  - "/reference-functions-string_mustache.html"
 ---
 
 {{< CFEngine_function_prototype(template_string, optional_data_container) >}}

@@ -2,6 +2,8 @@
 layout: default
 title: JSON and YAML support in CFEngine
 sorting: 2
+aliases:
+  - "/examples-tutorials-json-yaml-support-in-cfengine.html"
 ---
 
 ## Introduction

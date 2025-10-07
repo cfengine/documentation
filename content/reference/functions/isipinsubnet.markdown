@@ -1,6 +1,8 @@
 ---
 layout: default
 title: isipinsubnet
+aliases:
+  - "/reference-functions-isipinsubnet.html"
 ---
 
 {{< CFEngine_function_prototype(range, ip_address1, ip_address2, ...) >}}

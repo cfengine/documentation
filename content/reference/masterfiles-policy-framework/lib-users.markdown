@@ -1,6 +1,8 @@
 ---
 layout: default
 title: lib/users.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-lib-users.html"
 ---
 
 See the [`users` promises][users] documentation for a

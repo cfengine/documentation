@@ -2,6 +2,8 @@
 layout: default
 title: Bodies
 sorting: 20
+aliases:
+  - "/reference-language-concepts-bodies.html"
 ---
 
 While the idea of a promise is very simple, the definition of a promise can

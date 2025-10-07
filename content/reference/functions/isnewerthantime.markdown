@@ -1,6 +1,8 @@
 ---
 layout: default
 title: isnewerthantime
+aliases:
+  - "/reference-functions-isnewerthantime.html"
 ---
 
 {{< CFEngine_function_prototype(file, time) >}}

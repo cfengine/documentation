@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getgroups
+aliases:
+  - "/reference-functions-getgroups.html"
 ---
 
 {{< CFEngine_function_prototype(exclude_names, exclude_ids) >}}

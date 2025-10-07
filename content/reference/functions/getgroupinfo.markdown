@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getgroupinfo
+aliases:
+  - "/reference-functions-getgroupinfo.html"
 ---
 
 {{< CFEngine_function_prototype(optional_gidorname) >}}

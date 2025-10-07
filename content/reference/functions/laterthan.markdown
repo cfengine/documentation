@@ -1,6 +1,8 @@
 ---
 layout: default
 title: laterthan
+aliases:
+  - "/reference-functions-laterthan.html"
 ---
 
 {{< CFEngine_function_prototype(year, month, day, hour, minute, second) >}}

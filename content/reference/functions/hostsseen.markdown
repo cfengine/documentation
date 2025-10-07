@@ -1,6 +1,8 @@
 ---
 layout: default
 title: hostsseen
+aliases:
+  - "/reference-functions-hostsseen.html"
 ---
 
 {{< CFEngine_function_prototype(horizon, seen, field) >}}

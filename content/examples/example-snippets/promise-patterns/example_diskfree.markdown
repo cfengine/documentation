@@ -3,6 +3,8 @@ layout: default
 title: Check filesystem space
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_diskfree.html"
 ---
 
 Check how much space (in KB) is available on a directory's current partition.

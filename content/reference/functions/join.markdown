@@ -1,6 +1,8 @@
 ---
 layout: default
 title: join
+aliases:
+  - "/reference-functions-join.html"
 ---
 
 {{< CFEngine_function_prototype(glue, list) >}}

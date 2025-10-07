@@ -3,6 +3,8 @@ layout: default
 title: Restart a process
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_process_restart.html"
 ---
 
 This is a standalone policy that will restart three CFEngine processes if they are not running.

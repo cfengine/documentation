@@ -1,6 +1,8 @@
 ---
 layout: default
 title: const
+aliases:
+  - "/reference-special-variables-const.html"
 ---
 
 CFEngine defines a number of variables for embedding unprintable values

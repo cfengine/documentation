@@ -2,6 +2,8 @@
 layout: default
 title: Installing Community Using Containers
 sorting: 80
+aliases:
+  - "/getting-started-installation-general-installation-installation-community-containerized.html"
 ---
 
 The instructions in this guide describe how to download and install the latest version of CFEngine Community in a Docker containerized environment using pre-compiled rpm packages and ubi9 images.

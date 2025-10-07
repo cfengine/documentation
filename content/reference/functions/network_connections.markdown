@@ -1,6 +1,8 @@
 ---
 layout: default
 title: network_connections
+aliases:
+  - "/reference-functions-network_connections.html"
 ---
 
 {{< CFEngine_function_prototype() >}}

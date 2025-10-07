@@ -1,6 +1,8 @@
 ---
 layout: default
 title: regarray
+aliases:
+  - "/reference-functions-regarray.html"
 ---
 
 {{< CFEngine_function_prototype(array, regex) >}}

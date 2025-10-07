@@ -1,6 +1,8 @@
 ---
 layout: default
 title: min
+aliases:
+  - "/reference-functions-min.html"
 ---
 
 {{< CFEngine_function_prototype(list, sortmode) >}}

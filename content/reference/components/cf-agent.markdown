@@ -3,6 +3,8 @@ layout: default
 title: cf-agent
 sorting: 10
 keywords: [agent]
+aliases:
+  - "/reference-components-cf-agent.html"
 ---
 
 `cf-agent` evaluates policy code and makes changes to the system. Policy

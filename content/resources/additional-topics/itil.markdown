@@ -2,6 +2,8 @@
 layout: default
 title: ITIL
 sorting: 80
+aliases:
+  - "/resources-additional-topics-itil.html"
 ---
 
 ## What it ITIL?

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: lib/
+aliases:
+  - "/reference-masterfiles-policy-framework-lib.html"
 ---
 
 This directory contains the standard library aka COPBL or the Community Open

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Host REST API
+aliases:
+  - "/api-enterprise-api-ref-host.html"
 ---
 
 Host API allows to access host specific information.

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readfile
+aliases:
+  - "/reference-functions-readfile.html"
 ---
 
 {{< CFEngine_function_prototype(filename, optional_maxbytes) >}}

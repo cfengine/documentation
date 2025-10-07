@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Tuning PostgreSQL
+aliases:
+  - "/resources-faq-tuning-postgresql.html"
 ---
 
 During install the CFEngine Enterprise Hub Package pre-configures PostgreSQL with a configuration for low (<3GB), medium (>3GB <64GB) or high (>64GB) memory which adjusts the values of `effective_cache_size`, `shared_buffers`, and `maintenance_work_mem`.

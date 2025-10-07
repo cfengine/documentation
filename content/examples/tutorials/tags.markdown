@@ -2,6 +2,8 @@
 layout: default
 title: Tags for variables, classes, and bundles
 sorting: 14
+aliases:
+  - "/examples-tutorials-tags.html"
 ---
 
 ## Introduction

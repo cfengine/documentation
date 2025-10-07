@@ -1,6 +1,8 @@
 ---
 layout: default
 title: getenv
+aliases:
+  - "/reference-functions-getenv.html"
 ---
 
 {{< CFEngine_function_prototype(variable, maxlength) >}}

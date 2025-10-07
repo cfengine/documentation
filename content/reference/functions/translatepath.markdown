@@ -1,6 +1,8 @@
 ---
 layout: default
 title: translatepath
+aliases:
+  - "/reference-functions-translatepath.html"
 ---
 
 {{< CFEngine_function_prototype(path) >}}

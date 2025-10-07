@@ -1,6 +1,8 @@
 ---
 layout: default
 title: delete_attribute
+aliases:
+  - "/reference-promise-types-files-edit_xml-delete_attribute.html"
 ---
 
 This promise type assures that an attribute, with the given name, will not be

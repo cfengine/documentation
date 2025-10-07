@@ -1,6 +1,8 @@
 ---
 layout: default
 title: version_compare
+aliases:
+  - "/reference-functions-version_compare.html"
 ---
 
 {{< CFEngine_function_prototype(version1, comparison, version2) >}}

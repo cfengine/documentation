@@ -1,6 +1,8 @@
 ---
 layout: default
 title: read_module_protocol
+aliases:
+  - "/reference-functions-read_module_protocol.html"
 ---
 
 {{< CFEngine_function_prototype(file_path) >}}

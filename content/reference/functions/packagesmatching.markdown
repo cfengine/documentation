@@ -1,6 +1,8 @@
 ---
 layout: default
 title: packagesmatching
+aliases:
+  - "/reference-functions-packagesmatching.html"
 ---
 
 {{< CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex) >}}

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: iprange
+aliases:
+  - "/reference-functions-iprange.html"
 ---
 
 {{< CFEngine_function_prototype(range, optional_interface) >}}

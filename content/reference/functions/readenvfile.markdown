@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readenvfile
+aliases:
+  - "/reference-functions-readenvfile.html"
 ---
 
 {{< CFEngine_function_prototype(filename, optional_maxbytes) >}}

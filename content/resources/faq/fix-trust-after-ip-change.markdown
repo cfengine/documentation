@@ -2,6 +2,8 @@
 layout: default
 title: How do I fix trust after an IP change?
 sorting: 90
+aliases:
+  - "/resources-faq-fix-trust-after-ip-change.html"
 ---
 
 Symptom:

@@ -3,6 +3,8 @@ layout: default
 title: Content driven policy
 sorting: 80
 reviewed: 2019-05-06
+aliases:
+  - "/resources-additional-topics-content-driven-policy.html"
 ---
 
 ## What is a content-driven policy?

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: reglist
+aliases:
+  - "/reference-functions-reglist.html"
 ---
 
 {{< CFEngine_function_prototype(list, regex) >}}

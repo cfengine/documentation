@@ -2,6 +2,8 @@
 layout: default
 title: Network examples
 sorting: 9
+aliases:
+  - "/examples-example-snippets-network.html"
 ---
 
 - [Find MAC address][Network examples#Find MAC address]

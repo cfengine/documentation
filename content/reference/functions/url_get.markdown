@@ -1,6 +1,8 @@
 ---
 layout: default
 title: url_get
+aliases:
+  - "/reference-functions-url_get.html"
 ---
 
 {{< CFEngine_function_prototype(url, options_container) >}}

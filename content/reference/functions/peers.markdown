@@ -1,6 +1,8 @@
 ---
 layout: default
 title: peers
+aliases:
+  - "/reference-functions-peers.html"
 ---
 
 {{< CFEngine_function_prototype(filename, regex, groupsize) >}}

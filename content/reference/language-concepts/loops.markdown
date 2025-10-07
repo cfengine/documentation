@@ -2,6 +2,8 @@
 layout: default
 title: Loops
 sorting: 70
+aliases:
+  - "/reference-language-concepts-loops.html"
 ---
 
 There are no explicit loops in CFEngine, instead there are lists. To make a

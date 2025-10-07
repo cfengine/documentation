@@ -2,6 +2,8 @@
 layout: default
 title: Writing CFEngine policy
 sorting: 3
+aliases:
+  - "/examples-tutorials-write-cfengine-policy.html"
 ---
 
 To define new Desired States in CFEngine, you need to write policy files. These are plain text-files, traditionally with a `.cf` extension.

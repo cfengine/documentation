@@ -1,6 +1,8 @@
 ---
 layout: default
 title: splitstring
+aliases:
+  - "/reference-functions-splitstring.html"
 ---
 
 {{< CFEngine_function_prototype(string, regex, maxent) >}}

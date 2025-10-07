@@ -1,6 +1,8 @@
 ---
 layout: default
 title: regline
+aliases:
+  - "/reference-functions-regline.html"
 ---
 
 {{< CFEngine_function_prototype(regex, filename) >}}

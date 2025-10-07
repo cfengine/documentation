@@ -1,6 +1,8 @@
 ---
 layout: default
 title: string_tail
+aliases:
+  - "/reference-functions-string_tail.html"
 ---
 
 {{< CFEngine_function_prototype(data, max) >}}

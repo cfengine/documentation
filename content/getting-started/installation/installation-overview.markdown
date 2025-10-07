@@ -2,6 +2,8 @@
 layout: default
 title: Installation overview
 sorting: 30
+aliases:
+  - "/getting-started-installation-installation-overview.html"
 ---
 
 ## Installation

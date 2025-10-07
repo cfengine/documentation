@@ -2,6 +2,8 @@
 layout: default
 title: File template examples
 sorting: 7
+aliases:
+  - "/examples-example-snippets-file-template.html"
 ---
 
 - [Templating][File template examples#Templating]

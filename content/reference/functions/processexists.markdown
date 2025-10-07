@@ -1,6 +1,8 @@
 ---
 layout: default
 title: processexists
+aliases:
+  - "/reference-functions-processexists.html"
 ---
 
 {{< CFEngine_function_prototype(regex) >}}

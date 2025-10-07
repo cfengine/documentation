@@ -1,6 +1,8 @@
 ---
 layout: default
 title: eval
+aliases:
+  - "/reference-functions-eval.html"
 ---
 
 {{< CFEngine_function_prototype(expression, mode, options) >}}

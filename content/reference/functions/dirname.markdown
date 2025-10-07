@@ -1,6 +1,8 @@
 ---
 layout: default
 title: dirname
+aliases:
+  - "/reference-functions-dirname.html"
 ---
 
 {{< CFEngine_function_prototype(path) >}}

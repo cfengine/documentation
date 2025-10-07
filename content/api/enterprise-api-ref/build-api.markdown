@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Build API
+aliases:
+  - "/api-enterprise-api-ref-build-api.html"
 ---
 
 The Build API enables you to easily manage policy projects and their respective CFEngine Build modules.

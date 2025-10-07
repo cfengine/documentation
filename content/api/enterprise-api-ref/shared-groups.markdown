@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Shared groups API
+aliases:
+  - "/api-enterprise-api-ref-shared-groups.html"
 ---
 
 The shared groups API enables creating host groups based on host filters (the same ones used in inventory) and assigning CMDB data to them.

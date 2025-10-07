@@ -1,6 +1,8 @@
 ---
 layout: default
 title: isreadable
+aliases:
+  - "/reference-functions-isreadable.html"
 ---
 
 {{< CFEngine_function_prototype(path, timeout) >}}

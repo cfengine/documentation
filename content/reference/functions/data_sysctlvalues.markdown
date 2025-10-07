@@ -1,6 +1,8 @@
 ---
 layout: default
 title: data_sysctlvalues
+aliases:
+  - "/reference-functions-data_sysctlvalues.html"
 ---
 
 {{< CFEngine_function_prototype() >}}

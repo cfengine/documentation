@@ -1,6 +1,8 @@
 ---
 layout: default
 title: shuffle
+aliases:
+  - "/reference-functions-shuffle.html"
 ---
 
 {{< CFEngine_function_prototype(list, seed) >}}

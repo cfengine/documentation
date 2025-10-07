@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readyaml
+aliases:
+  - "/reference-functions-readyaml.html"
 ---
 
 {{< CFEngine_function_prototype(filename, optional_maxbytes) >}}

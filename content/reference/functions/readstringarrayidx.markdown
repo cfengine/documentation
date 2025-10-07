@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readstringarrayidx
+aliases:
+  - "/reference-functions-readstringarrayidx.html"
 ---
 
 {{< CFEngine_function_prototype(array, filename, comment, split, maxentries, maxbytes) >}}

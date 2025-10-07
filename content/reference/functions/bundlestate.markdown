@@ -1,6 +1,8 @@
 ---
 layout: default
 title: bundlestate
+aliases:
+  - "/reference-functions-bundlestate.html"
 ---
 
 {{< CFEngine_function_prototype(bundlename) >}}

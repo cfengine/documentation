@@ -1,6 +1,8 @@
 ---
 layout: default
 title: on
+aliases:
+  - "/reference-functions-on.html"
 ---
 
 {{< CFEngine_function_prototype(year, month, day, hour, minute, second) >}}

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: countclassesmatching
+aliases:
+  - "/reference-functions-countclassesmatching.html"
 ---
 
 {{< CFEngine_function_prototype(regex, tag1, tag2, ...) >}}

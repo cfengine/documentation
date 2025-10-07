@@ -1,6 +1,8 @@
 ---
 layout: default
 title: regex_replace
+aliases:
+  - "/reference-functions-regex_replace.html"
 ---
 
 {{< CFEngine_function_prototype(string, regex, replacement, options) >}}

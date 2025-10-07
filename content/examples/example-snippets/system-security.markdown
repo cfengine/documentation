@@ -2,6 +2,8 @@
 layout: default
 title: System security examples
 sorting: 10
+aliases:
+  - "/examples-example-snippets-system-security.html"
 ---
 
 - [Distribute root passwords][System security examples#Distribute root passwords]

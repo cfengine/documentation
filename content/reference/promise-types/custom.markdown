@@ -1,6 +1,8 @@
 ---
 layout: default
 title: custom
+aliases:
+  - "/reference-promise-types-custom.html"
 ---
 
 Custom promise types can be added as _Promise modules_.

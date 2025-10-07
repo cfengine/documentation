@@ -1,6 +1,8 @@
 ---
 layout: default
 title: lastnode
+aliases:
+  - "/reference-functions-lastnode.html"
 ---
 
 {{< CFEngine_function_prototype(string, separator) >}}

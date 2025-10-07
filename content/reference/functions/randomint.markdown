@@ -1,6 +1,8 @@
 ---
 layout: default
 title: randomint
+aliases:
+  - "/reference-functions-randomint.html"
 ---
 
 {{< CFEngine_function_prototype(lower, upper) >}}

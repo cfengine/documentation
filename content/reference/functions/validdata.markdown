@@ -1,6 +1,8 @@
 ---
 layout: default
 title: validdata
+aliases:
+  - "/reference-functions-validdata.html"
 ---
 
 {{< CFEngine_function_prototype(data_container, type, strict) >}}

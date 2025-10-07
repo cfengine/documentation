@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Reset administrative credentials
+aliases:
+  - "/web-ui-hub_administration-reset-admin-creds.html"
 ---
 
 The default `admin` user can be reset to defaults using the following SQL.

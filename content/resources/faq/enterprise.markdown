@@ -2,6 +2,8 @@
 layout: default
 title: Enterprise reporting database
 sorting: 90
+aliases:
+  - "/resources-faq-enterprise.html"
 ---
 
 Frequently asked questions on the Enterprise reporting database.

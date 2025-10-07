@@ -2,6 +2,8 @@
 layout: default
 title: Hub administration
 sorting: 80
+aliases:
+  - "/web-ui-hub_administration.html"
 ---
 
 Find out how to perform common hub administration tasks like

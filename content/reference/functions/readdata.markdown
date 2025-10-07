@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readdata
+aliases:
+  - "/reference-functions-readdata.html"
 ---
 
 {{< CFEngine_function_prototype(filename, filetype) >}}

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: concat
+aliases:
+  - "/reference-functions-concat.html"
 ---
 
 {{< CFEngine_function_prototype(...) >}}

@@ -3,6 +3,8 @@ layout: default
 title: Policy evaluation
 alias: Normal ordering
 sorting: 40
+aliases:
+  - "/reference-language-concepts-policy-evaluation.html"
 ---
 
 CFEngine takes a pragmatic point of view to ordering. When promising `scalar`

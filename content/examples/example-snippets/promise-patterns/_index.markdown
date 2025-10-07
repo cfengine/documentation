@@ -2,6 +2,8 @@
 layout: default
 title: Common promise patterns
 sorting: 2
+aliases:
+  - "/examples-example-snippets-promise-patterns.html"
 ---
 
 This section includes includes common promise patterns. Refer to them as you
