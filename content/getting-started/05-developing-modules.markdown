@@ -4,6 +4,7 @@ title: Developing modules
 sorting: 50
 aliases:
   - "/getting-started-developing-modules.html"
+  - "/getting-started/developing-modules"
 ---
 
 Modules, such as the one we've used for git promises, are easy to write.
