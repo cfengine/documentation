@@ -26,7 +26,7 @@ depends on machine and server capabilities.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
    "found" expression => regldap(

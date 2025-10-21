@@ -79,7 +79,7 @@ If the file contains the following lines, then this promise initially
 selects the four lines containing alpha, but is moderated by the
 `delete_select` attribute.
 
-```cf3
+```
 start alpha igniter
 start beta igniter
 init alpha burner
@@ -210,7 +210,7 @@ only negates the match of the initially promised lines.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 delete_lines:
 
   # edit /etc/passwd - account names that are not "mark" or "root"

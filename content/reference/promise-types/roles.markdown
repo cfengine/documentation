@@ -12,7 +12,7 @@ of `cf-agent`. This implements a form of Role Based Access Control
 must be attached to trusted public keys in order to be accepted. The
 regular expression is [anchored][anchored], meaning it must match the entire name.
 
-```cf3
+```cf3 {skip TODO}
 roles:
   "regex"
      authorize => { "usernames", ... };
@@ -57,7 +57,7 @@ already trusted on the system.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 roles:
   ".*" authorize => { "mark", "marks_friend" };
 ```

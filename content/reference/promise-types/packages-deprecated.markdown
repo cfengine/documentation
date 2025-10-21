@@ -23,7 +23,7 @@ the assumption that a native package manager will perform the actual
 manipulations. Since no agent can make unconditional promises about
 another, this is the best that can be achieved.
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "match_package" slist => {
@@ -87,7 +87,7 @@ one of two different ways:
 
 - They may be specified independently, e.g.
 
-```cf3
+```cf3 {skip TODO}
 packages:
 
   "mypackage"
@@ -104,7 +104,7 @@ packages:
   7-Zip-4.50-x86_64.msi and a `package_method` containing the
   following:
 
-```cf3
+```cf3 {skip TODO}
 package_name_regex => "^(\S+)-(\d+\.?)+";
 package_version_regex => "^\S+-((\d+\.?)+)";
 package_arch_regex => "^\S+-[\d\.]+-(.*).msi";
@@ -250,7 +250,7 @@ package manager's behavior prevails.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
 
   "$(exact_package)"
@@ -823,7 +823,7 @@ prevents CFEngine from appending the package name to the string.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 package_patch_list_command => "/usr/bin/zypper patches";
 ```
 
@@ -982,7 +982,7 @@ body package_method solaris (pkgname, spoolfile, adminfile)
 package_changes => "individual";
 package_list_command => "/usr/bin/pkginfo -l";
 package_multiline_start    =>  "\s*PKGINST:\s+[^\s]+";
-...
+# ...
 }
 ```
 
@@ -1030,7 +1030,7 @@ v2, and v2 is not less than v1).
 ```cf3
 body package_method deb
 {
-...
+# ...
 package_version_less_command => "dpkg --compare-versions ${v1} lt ${v2}";
 }
 ```
@@ -1067,7 +1067,7 @@ v2, and v2 is not less than v1).
 ```cf3
 body package_method deb
 {
-...
+# ...
 package_version_equal_command => "dpkg --compare-versions ${v1} eq ${v2}";
 }
 ```
@@ -1125,7 +1125,7 @@ Requires setting `package_verify_command`.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
 
   "$(match_package)"
@@ -1171,7 +1171,7 @@ version requirement.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
 
   "$(exact_package)"
@@ -1196,7 +1196,7 @@ written separately from the name of the command.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
 
   "mypackage"

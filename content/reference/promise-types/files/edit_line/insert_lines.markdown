@@ -10,7 +10,7 @@ the file at a specified location. The location is determined by
 body-attributes. The promise object referred to can be a literal line or
 a file-reference from which to read lines.
 
-```cf3
+```cf3 {skip TODO}
 insert_lines:
 
   "literal line or file reference"
@@ -85,7 +85,7 @@ operations. Variables should be named and scoped appropriately for the
 bundle in which this promise is made. In other words, you should qualify
 the variables with the bundle in which they are defined. For example:
 
-```cf3
+```
 $(bundle.variable)
 $(sys.host)
 $(mon.www_in)
@@ -193,7 +193,7 @@ insert_if_startwith_from_list => { "@(s)" };
 This will ensure that the following lines are inserted into the promised
 file:
 
-```cf3
+```
 And you'll never see me no more
 Gimme three steps, Mister
 Gimme three steps towards the door
@@ -485,7 +485,7 @@ such as `authpriv.* /var/log/something` into a syslog config file.
 
 **Allowed input range:**
 
-```cf3
+```
 ignore_leading
 ignore_trailing
 ignore_embedded

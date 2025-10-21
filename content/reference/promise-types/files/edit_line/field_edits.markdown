@@ -10,7 +10,7 @@ Certain types of text files are tabular in nature, with field separators (e.g.
 files, but there are many ways to use this feature. For example, editing a
 string:
 
-```cf3
+```
 VARIABLE="one two three"
 ```
 

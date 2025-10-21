@@ -10,7 +10,7 @@ some state of execution (with a Process Control Block). Promiser objects are
 patterns that are [unanchored][unanchored], meaning that they match parts of
 command lines in the system process table.
 
-```cf3
+```cf3 {skip TODO}
 processes:
 
   "regex contained in process line"
@@ -68,7 +68,7 @@ and `"\B"` may prove very useful to you).
 restart a process, you should set a class to activate and then use a `commands`
 promise together with that class.
 
-```cf3
+```cf3 {skip TODO}
 processes:
     "/path/executable"
       restart_class => "restart_me";
@@ -338,9 +338,9 @@ process, in kilobytes
 **Example:**
 
 ```cf3
-body process_select
+body process_select example
 {
-rsize => irange("4000","8000");
+  rsize => irange("4000","8000");
 }
 ```
 
@@ -488,7 +488,7 @@ one may call a 'stop script' to perform a graceful shutdown.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 processes:
 
  "snmpd"
@@ -519,7 +519,7 @@ information.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 processes:
 
    "cf-serverd"
@@ -547,7 +547,7 @@ supported, which terminates the process.
 
 **Allowed input range:**
 
-```cf3
+```
 hup
 int
 trap
@@ -568,7 +568,7 @@ segv
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 processes:
 
  cfservd_out_of_control::

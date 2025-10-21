@@ -12,7 +12,7 @@ or values with special meanings in strings.
 
 ### const.at
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
    "The value of $(const.at) is @";
@@ -24,7 +24,7 @@ reports:
 
 ### const.dollar
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
    # This will report: The value of $(const.dollar) is $
@@ -36,7 +36,7 @@ reports:
 
 ### const.dirsep
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
    # On Unix hosts this will report: The value of $(const.dirsep) is /
@@ -46,7 +46,7 @@ reports:
 
 ### const.linesep
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
    # On Unix hosts this will report: The value of $(const.linesep) is \n
@@ -58,7 +58,7 @@ reports:
 
 ### const.endl
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
   "A newline with either $(const.n) or with $(const.endl) is ok";
@@ -72,7 +72,7 @@ which is exactly that.
 
 ### const.n
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
   "A newline with either $(const.n) or with $(const.endl) is ok";
@@ -81,7 +81,7 @@ reports:
 
 ### const.r
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
   "A carriage return character is $(const.r)";
@@ -89,7 +89,7 @@ reports:
 
 ### const.t
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
   "A report with a$(const.t)tab in it";

@@ -24,7 +24,7 @@ server capabilities.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
    # Get the first matching value for "uid" in schema

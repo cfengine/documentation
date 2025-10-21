@@ -249,7 +249,7 @@ Note that a bug in netstat will not correctly report that cf-serverd is
 listening on both IPV4 and IPV6 interfaces. A test with netcat (nc) will
 confirm.
 
-```cf3
+```
 # nc -v -4 172.16.100.1 5308
 Connection to 172.16.100.1 5308 port [tcp/cfengine] succeeded!
 ^C

@@ -13,7 +13,7 @@ aliases:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
   "ingroup" expression => hostinnetgroup("my_net_group");

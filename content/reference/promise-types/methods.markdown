@@ -8,7 +8,7 @@ aliases:
 Methods are compound promises that refer to whole bundles of promises.
 Methods may be parameterized.
 
-```cf3
+```cf3 {skip TODO}
 methods:
 
   "any"

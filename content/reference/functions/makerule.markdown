@@ -38,7 +38,7 @@ determine whether the target needs rebuilding.
 
 **Example**:
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
  "build_me" expression => makerule("/tmp/target", "/tmp/source.c");

@@ -515,7 +515,7 @@ true or false before using them as operands in a logical expression.
 
 e.g.
 
-```cf3
+```cf3 {skip TODO}
 ...
 classes:
         "variable_1"
@@ -595,7 +595,7 @@ Additionally classes can be defined or undefined as the result of a promise by
 using a [classes body][Promise types#classes]. To set a class if
 a promise is repaired, one might write:
 
-```cf3
+```cf3 {skip TODO}
 "promiser..."
    ...
    classes => if_repaired("signal_class");
@@ -609,7 +609,7 @@ It is recommended to use bundle scoped classes whenever possible. This example
 will define `signal_class` prefixed classes with a suffix matching the
 promise outcome (`_kept`, `_repaired`, `_notkept`).
 
-```cf3
+```cf3 {skip TODO}
  "promiser..."
     ...
     classes => results("bundle", "signal_class");

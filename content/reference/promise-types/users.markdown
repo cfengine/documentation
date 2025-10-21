@@ -31,7 +31,7 @@ separately.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 users:
    "jsmith"
       policy => "present",
@@ -61,7 +61,7 @@ display it on graphical login terminals.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 users:
    "jsmith"
       policy => "present",
@@ -79,7 +79,7 @@ secondary groups so specifying either one works.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 users:
    "jsmith"
       policy => "present",
@@ -98,7 +98,7 @@ secondary groups so specifying either one works.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 users:
    "jsmith"
       policy => "present",
@@ -181,7 +181,7 @@ directory in the user database.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 users:
    "jsmith"
       policy => "present",
@@ -287,7 +287,7 @@ and additional steps may be required.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 users:
    "jsmith"
       policy => "locked";
@@ -302,7 +302,7 @@ shell.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 users:
    "jsmith"
       shell => "/bin/bash";
@@ -320,7 +320,7 @@ separate `files` promise for this.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 users:
    "jsmith"
       uid => "1357";

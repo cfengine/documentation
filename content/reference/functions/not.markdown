@@ -18,7 +18,7 @@ any argument evaluates to true.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 commands:
   "/usr/bin/generate_config $(config)"
     if => not( fileexists("/etc/config/$(config)") );

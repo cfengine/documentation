@@ -20,7 +20,7 @@ version of `callstack_callers()` intended for quick debugging.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "my_promisers" slist => callstack_promisers();
 ```

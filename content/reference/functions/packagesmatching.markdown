@@ -53,13 +53,13 @@ some desired packages, and finally reports if they are installed.
 
 This means a reliable way to force a refresh of CFEngine's internal package cache is to simply delete the local cache:
 
-```cf3
+```cf3 {skip TODO}
 $(sys.statedir)/packages_installed_<package_module>.lmdb*
 ```
 
 Or in the case of legacy package methods:
 
-```cf3
+```cf3 {skip TODO}
 $(sys.statedir)/software_packages.csv
 ```
 

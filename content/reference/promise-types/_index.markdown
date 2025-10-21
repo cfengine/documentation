@@ -163,7 +163,7 @@ regular system output messages.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
   promise-type:
 
       "promiser"
@@ -436,7 +436,7 @@ body action measure
 The identifier forms a partial identity for optional performance scanning of
 promises of the form:
 
-```cf3
+```
 ID:promise-type:promiser.
 ```
 
@@ -942,7 +942,7 @@ they appear in verbose logs and error messages.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 comment => "This comment follows the data for reference ...",
 ```
 
@@ -990,7 +990,7 @@ such characters.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 access:
 
     "/source"
@@ -1022,7 +1022,7 @@ classes.
 
 The generic example has the form:
 
-```cf3
+```cf3 {skip TODO}
 promise-type:
 
     "promiser"
@@ -1049,7 +1049,7 @@ bundle agent example
 This function is provided so that one can form expressions that link variables
 and classes. For example:
 
-```cf3
+```cf3 {skip TODO}
 # Check that all components are running
 
 vars:
@@ -1120,7 +1120,7 @@ A "meta" attribute can likewise be added into any body (of any type).
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 files:
 
     "/etc/special_file"
@@ -1133,7 +1133,7 @@ files:
 
 Another example:
 
-```cf3
+```cf3 {skip TODO}
 some_promise_type:
     any::
       "my_promiser"
@@ -1170,7 +1170,7 @@ evaluate the promise.
 
 The generic example has the form:
 
-```cf3
+```cf3 {skip TODO}
 promise-type:
     "promiser"
       unless => "forbidden";

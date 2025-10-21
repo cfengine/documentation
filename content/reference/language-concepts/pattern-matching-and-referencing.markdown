@@ -369,7 +369,7 @@ filenames foolish, foolishly, bearish, bearishly, garish, and garishly in the
 `(?:expression)` which matches foo, bear, or gar does not create a
 back-reference:
 
-```cf3
+```cf3 {skip TODO}
 files:
     "/tmp/(?:foo|bear|gar)ish(ly)?"
 ```
@@ -384,7 +384,7 @@ case-sensitive (in all things), so the files promise `/tmp/foolish` will not
 match the files `/tmp/Foolish` or `/tmp/fOoLish`, etc. There are two ways to
 achieve case-insensitivity. The first is to use character classes:
 
-```cf3
+```cf3 {skip TODO}
 files:
     "/tmp/[Ff][Oo][Oo][Ll][Ii][Ss][Hh]"
 ```
@@ -393,7 +393,7 @@ While this is certainly correct, it can also lead to unreadability. The PCRE
 patterns in CFEngine have another way of introducing case-insensitivity into a
 pattern:
 
-```cf3
+```cf3 {skip TODO}
 files:
     "/tmp/(?i:foolish)"
 ```
@@ -403,7 +403,7 @@ surrounds, without creating a sub-expression. You could also write the regular
 expression like this (but be aware that the two expressions are different, and
 work slightly differently, so check the documentation for the specifics):
 
-```cf3
+```cf3 {skip TODO}
 files:
     "/tmp/(?i)foolish"
 ```

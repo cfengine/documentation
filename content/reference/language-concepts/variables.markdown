@@ -24,7 +24,7 @@ Each scalar may have one of three types: string, int or real. String scalars
 are sequences of characters, integers are whole numbers, and reals are float
 pointing numbers.
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "my_scalar" string => "String contents...";
   "my_int" int       => "1234";
@@ -111,7 +111,7 @@ regular scalar.
 
 They are declared as follows:
 
-```cf3
+```cf3 {skip TODO}
 vars:
     "my_slist" slist => { "list", "of", "strings" };
     "my_ilist" ilist => { "1234", "5678" };
@@ -124,7 +124,7 @@ An entire list is referenced with the symbol '@' and can be passed in their
 entirety in any context where a list is expected as `@(list)`. For example,
 the following variable definition references a list named "shortlist":
 
-```cf3
+```cf3 {skip TODO}
 vars:
     "shortlist" slist => { "you", "me" };
     "longlist" slist => { @(shortlist), "plus", "plus" };

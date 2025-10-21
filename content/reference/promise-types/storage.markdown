@@ -7,7 +7,7 @@ aliases:
 
 Storage promises refer to disks and filesystem properties.
 
-```cf3
+```cf3 {skip TODO}
 storage:
 
    "/disk volume or mountpoint"
@@ -117,7 +117,7 @@ This is the location on the remote device, server, SAN etc.
 ```cf3
 body mount example
 {
-mount_source "/location/disk/directory";
+  mount_source => "/location/disk/directory";
 }
 ```
 

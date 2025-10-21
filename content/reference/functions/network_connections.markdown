@@ -56,7 +56,7 @@ On Linux, all the data is collected from the files `/proc/net/tcp`,
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "connections" data => network_connections();
 ```

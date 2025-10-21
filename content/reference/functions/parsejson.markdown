@@ -20,7 +20,7 @@ types of quotes around a string).
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   "loadthis"

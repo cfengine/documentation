@@ -17,7 +17,7 @@ from the range.
 
 {{< CFEngine_function_attributes(string_template, stepsize) >}}
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "int_group1" slist => {

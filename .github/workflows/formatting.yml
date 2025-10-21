@@ -26,3 +26,6 @@ jobs:
       - name: Check if there are changes
         run: |
           git diff --exit-code
+      - name: Run linting to identify other mistakes (inside code blocks)
+        run: |
+          cfengine dev lint-docs

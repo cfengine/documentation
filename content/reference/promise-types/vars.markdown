@@ -26,7 +26,7 @@ enclose an arbitrary key are being deprecated in favor of the `data` variable ty
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "xxx"    string => "Some literal string...";
@@ -43,7 +43,7 @@ vars:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "scalar" int    => "16k";
@@ -74,7 +74,7 @@ the value you assign to it looks like an integer (e.g., 3, -17, 16K).
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "scalar" real   => "0.5";
@@ -106,7 +106,7 @@ list of values. The order of the list is preserved by CFEngine.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "xxx"    slist  => {  "literal1",  "literal2" };
@@ -146,7 +146,7 @@ may contain the values copied from another `slist`, `rlist`, or `ilist`. See
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   "variable_id"
@@ -178,7 +178,7 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   "varid" rlist => { "0.1", "0.2", "0.3" };
@@ -286,7 +286,7 @@ Output:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "loaded1" data => readjson("/tmp/myfile.json", 40000);
@@ -330,7 +330,7 @@ ifdefined
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   "varid" string => "value...",
@@ -348,7 +348,7 @@ undefined lists are dropped. The default behavior is otherwise to retain this
 value as an indicator of the failure to quench the variable reference, for
 example:
 
-```cf3
+```cf3 {skip TODO}
 "one" slist => { "1", "2", "3" };
 
 "list" slist => { "@(one)", @(two) },
@@ -360,7 +360,7 @@ This results in `@(list)` being the same as `@(one)`, and the reference to
 
 For example:
 
-```cf3
+```cf3 {skip TODO}
 example_com::
   "domain"
      string => "example.com",

@@ -24,7 +24,7 @@ server capabilities.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
    # Get all matching values for "uid" - should be a single record match

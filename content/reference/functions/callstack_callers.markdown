@@ -29,7 +29,7 @@ frames along the stack frame path, the maps have additional keys:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "stack" data => callstack_callers();
 ```

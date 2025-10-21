@@ -24,7 +24,7 @@ data used may change per platform and per CFEngine release.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
   # the class "holmes" will be set if a process line contains the word "sherlock"
   "holmes" expression => processexists(".*sherlock.*");

@@ -323,7 +323,7 @@ include_end_delimiter => "true";
 
 Input file:
 
-```cf3
+```
 /var/log/mail.log {
     monthly
     missingok
@@ -375,7 +375,7 @@ body select_region MySection(x)
 
 Input file:
 
-```cf3
+```
 [My section]
 one
 two

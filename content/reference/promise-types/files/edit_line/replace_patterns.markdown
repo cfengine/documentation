@@ -8,7 +8,7 @@ aliases:
 This promise refers to arbitrary text patterns in a file. The pattern is
 expressed as a PCRE regular expression.
 
-```cf3
+```cf3 {skip TODO}
 replace_patterns:
 
  "search pattern"

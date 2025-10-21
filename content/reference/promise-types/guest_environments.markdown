@@ -28,7 +28,7 @@ to manage what goes on within the virtual guests. For that purpose you
 should run CFEngine directly on the virtual machine, as if it were any
 other machine.
 
-```cf3
+```cf3 {skip TODO}
 site1::
 
  "unique_name1"
@@ -69,7 +69,7 @@ take effect.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 guest_environments:
 
  linux::
@@ -271,7 +271,7 @@ image with which to baseline the virtual environment.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 env_baseline => "/path/to/image";
 ```
 
@@ -363,7 +363,7 @@ The guest machine is shut down, but not deallocated.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 guest_environments:
 
  linux::
