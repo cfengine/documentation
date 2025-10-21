@@ -28,7 +28,7 @@ promise will fail.
 It is also possible to specify a package file name, if the package resides on
 the local filesystem, like this:
 
-```cf3
+```cf3 {skip TODO}
 packages:
     "/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm"
       policy => "present",
@@ -52,7 +52,7 @@ string needs to be a bare package name, you cannot use a file name for this.
   For example, here are valid ways to specify a specific package version when
   using the `package_module` based implementation.
 
-  ```cf3
+  ```cf3 {skip TODO}
   packages:
 
     debian::
@@ -73,7 +73,7 @@ string needs to be a bare package name, you cannot use a file name for this.
 
   The following usage is NOT valid.
 
-  ```cf3
+  ```cf3 {skip TODO}
   packages:
 
     debian::
@@ -109,7 +109,7 @@ indirectly affect other architectures.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   "apache"
       policy => "present",
@@ -133,7 +133,7 @@ for this attribute, its usage depends on the package module in question.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   "apache"
       policy => "present",
@@ -158,7 +158,7 @@ packages:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   "apache"
       policy => "absent",
@@ -178,7 +178,7 @@ ensure the latest available version from a repository is installed.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   "apache"
       policy => "absent",
@@ -333,7 +333,7 @@ different attributes (e.g. `default_options`).
 ```cf3
 body package_module yum_all_repos
 {
-    module_path => $(sys.workdir)/modules/packages/yum;
+    module_path => "$(sys.workdir)/modules/packages/yum";
     default_options => { "--enablerepo=*" };
 }
 ```
@@ -352,7 +352,7 @@ Manage packages using `yum`. This is the [default package module][lib/packages.c
 
 File based package source.
 
-```cf3
+```cf3 {skip TODO}
 packages:
   redhat|centos|amazon_linux::
     "/mnt/nfs/packages/httpd-2.2.22.x86_64.rpm"
@@ -361,7 +361,7 @@ packages:
 
 Repository based package source with a specific version of the package.
 
-```cf3
+```cf3 {skip TODO}
 packages:
   redhat|centos|amazon_linux::
     "httpd"
@@ -451,7 +451,7 @@ Manage packages using `apt-get`.
 
 Example showing file based package source.
 
-```cf3
+```cf3 {skip TODO}
 packages:
     "/mnt/nfs/packages/apache2-2.2.22.x86_64.deb"
       policy => "present",
@@ -460,7 +460,7 @@ packages:
 
 Example showing repository based package source.
 
-```cf3
+```cf3 {skip TODO}
 packages:
     "apache2"
       policy => "present",
@@ -495,7 +495,7 @@ Manage packages using `nimclient` on AIX.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   aix::
     "expect.base"
@@ -521,7 +521,7 @@ FreeBSD [pkg](https://www.freebsd.org/doc/handbook/pkgng-intro.html).
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   freebsd::
     "emacs-nox11"
@@ -566,7 +566,7 @@ Manage packages using Slackware's [slackpkg](https://slackpkg.org).
 
 **Example**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   slackware::
     "nmap"
@@ -594,7 +594,7 @@ that version from this particluar MSI is installed):
 
 [Google Chrome]: https://cloud.google.com/chrome-enterprise/browser/download/#chrome-browser-update
 
-```cf3
+```cf3 {skip TODO}
 packages:
   windows::
     "C:\GoogleChromeStandaloneEnterprise.msi"

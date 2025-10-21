@@ -28,7 +28,7 @@ mimic the behavior of the _getpwnam(3)_ on the file `/etc/passwd`), use
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   "dim_array"

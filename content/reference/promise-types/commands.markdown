@@ -9,7 +9,7 @@ Commands and [processes][processes] are separated cleanly. Restarting of
 processes must be coded as a separate command. This stricter type separation
 allows for more careful conflict analysis to be carried out.
 
-```cf3
+```cf3 {skip TODO}
 commands:
 
   "/path/to/command args"
@@ -48,7 +48,7 @@ When referring to executables whose paths contain spaces, you should quote
 the entire program string separately so that CFEngine knows the name of the
 executable file. For example:
 
-```cf3
+```cf3 {skip TODO}
 commands:
 
  windows::
@@ -106,7 +106,7 @@ Sometimes it is convenient to separate command and arguments. The final argument
 
 **Allowed input range:** (arbitrary string)
 
-```cf3
+```cf3 {skip TODO}
 commands:
 
   "/bin/echo one"
@@ -116,7 +116,7 @@ commands:
 
 So in the example above the command would be:
 
-```cf3
+```
 /bin/echo one two three
 ```
 
@@ -146,7 +146,7 @@ backwards compatibility.
 
 **Allowed input range:** (arbitrary string)
 
-```cf3
+```cf3 {skip TODO}
 commands:
 
   "/bin/echo one"
@@ -157,7 +157,7 @@ commands:
 
 So in the example above the command would be:
 
-```cf3
+```
 /bin/echo one two three four five
 ```
 

@@ -15,7 +15,7 @@ first `maxbytes` bytes are read from `filename`.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   "loadthis"

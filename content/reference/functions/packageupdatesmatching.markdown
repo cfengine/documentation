@@ -40,7 +40,7 @@ At no time will both the standard and the legacy data be available to these func
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "all_package_updates"
     data => packageupdatesmatching(".*", # Package name regex
@@ -57,13 +57,13 @@ vars:
 
 This means a reliable way to force a refresh of CFEngine's internal package cache is to simply delete the local cache:
 
-```cf3
+```cf3 {skip TODO}
 $(sys.statedir)/packages_updates_<package_module>.lmdb*
 ```
 
 Or in the case of legacy package methods:
 
-```cf3
+```cf3 {skip TODO}
 $(sys.statedir)/software_patches_avail.csv
 ```
 

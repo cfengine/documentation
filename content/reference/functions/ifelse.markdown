@@ -38,7 +38,7 @@ The `ifelse` function is extremely useful when you want to avoid
 explicitly stating the negative of all the expected cases; this
 problem is commonly seen like so:
 
-```cf3
+```cf3 {skip TODO}
 class1.class2::
   "myvar" string => "x";
 
@@ -52,7 +52,7 @@ class3.!class2::
 That's hard to read and error-prone (do you know how `class2` will
 affect the default case?). Here's the alternative with `ifelse`:
 
-```cf3
+```cf3 {skip TODO}
 "myvar" string => ifelse("class1.class2", "x",
                          "class3.!class2", "y",
                          "z");

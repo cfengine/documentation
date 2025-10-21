@@ -88,7 +88,7 @@ on the right-hand side are true.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
   "compound_class" and => { classmatch("host[0-9].*"), "Monday", "Hr02" };
@@ -113,7 +113,7 @@ probability distribution.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
   "my_dist"
@@ -127,7 +127,7 @@ In the example above the values sum up to `10+20+40+50 = 120`. When generating
 the distribution, CFEngine picks a number between `1-120`, and set the class
 `my_dist` as well as one of the following classes:
 
-```cf3
+```
 my_dist_10 (10/120 of the time)
 my_dist_20 (20/120 of the time)
 my_dist_40 (40/120 of the time)
@@ -170,7 +170,7 @@ Expressions can be:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
   "class_name" expression => "solaris|(linux.specialclass)";
@@ -205,7 +205,7 @@ the class expressions on the right-hand side are true.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
     "compound_test"
@@ -286,7 +286,7 @@ reports:
 
 Then create `classes.cf`
 
-```cf3
+```cf3 {skip TODO}
 # classes.cf
 
 bundle common setclasses
@@ -321,7 +321,7 @@ right-hand side evaluates to false.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
    "others"  not => "linux|solaris";
@@ -351,7 +351,7 @@ bundle
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
   "namespace_context"
       scope => "namespace";
@@ -426,7 +426,7 @@ expressions.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
 "order_lunch" xor => { "Friday", "Hr11"}; # we get pizza every Friday

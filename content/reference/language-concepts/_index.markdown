@@ -15,24 +15,24 @@ promise_type:
 
   classes::
 
-    "promiser" -> { "promisee1", "promisee2", ... }
+    "promiser" -> { "promisee1", "promisee2", "..." }
 
         attribute_1 => value_1,
         attribute_2 => value_2,
-        ...
+        # ...
         attribute_n => value_n;
 }
 ```
 
 In addition, CFEngine bodies can be defined and used as attribute values. Here's a real-life example of a body and its usage.
 
-```cf3
+```cf3 {skip TODO}
 body edit_defaults no_backup
 {
       edit_backup => "false";
 }
 
-... and elsewhere, noting the attribute name matches the body type ...
+# ... and elsewhere, noting the attribute name matches the body type ...
 
   files:
     "myfile" edit_defaults => no_backup;

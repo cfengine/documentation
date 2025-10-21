@@ -32,7 +32,7 @@ relying on the availability of network resources.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "remote" string => remotescalar("test_scalar","127.0.0.1","yes");

@@ -43,7 +43,7 @@ The value of meta data can be of the types `string` or `slist` or `data`.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "loaded1" data => readjson("/tmp/myfile.json", 40000);
@@ -67,7 +67,7 @@ vars:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "xxx"    slist  => {  "literal1",  "literal2" };
@@ -107,7 +107,7 @@ may contain the values copied from another `slist`, `rlist`, or `ilist`. See
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "xxx"    string => "Some literal string...";

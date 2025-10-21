@@ -22,9 +22,9 @@ to debug the behavior of the resolver.
 **Example:**
 
 ```cf3
-bundle server control
+body server control
 {
-  allowconnects         => { escape(host2ip("www.example.com")) };
+  allowconnects => { escape(host2ip("www.example.com")) };
 }
 ```
 

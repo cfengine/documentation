@@ -55,7 +55,7 @@ and CFEngine cannot make promises on their behalf, unless they promise
 pre-requisite for making SQL database promises is to grant a point of
 access on the server.
 
-```cf3
+```cf3 {skip TODO}
 databases:
 
 "database/subkey or table"
@@ -166,7 +166,7 @@ for a database connection.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 db_server_owner => "mark";
 ```
 
@@ -181,7 +181,7 @@ text password for a database connection.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 db_server_password => "xyz.1234";
 ```
 
@@ -198,7 +198,7 @@ A blank value is equal to localhost.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 db_server_host => "sqlserv.example.org";
 ```
 
@@ -220,7 +220,7 @@ mysql
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 db_server_type => "postgres";
 ```
 
@@ -273,7 +273,7 @@ ms_registry
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 database_type => "ms_registry";
 ```
 
@@ -297,7 +297,7 @@ restore
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 database_operation => "create";
 ```
 
@@ -315,7 +315,7 @@ and fixed size data elements are doublets.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 "cf_topic_maps/topics"
 
   database_operation => "create",
@@ -405,7 +405,7 @@ files.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 databases:
 
  "HKEY_LOCAL_MACHINE\SOFTWARE"

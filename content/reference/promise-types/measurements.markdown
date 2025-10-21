@@ -168,14 +168,14 @@ However pipes from executed commands may also be invoked.
 
 **Allowed input range:**
 
-```cf3
+```
 pipe
 file
 ```
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 stream_type => "pipe";
 ```
 
@@ -199,7 +199,7 @@ slist
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 "/bin/df"
 
     handle => "free_disk_watch",
@@ -244,7 +244,7 @@ is retained.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 "/proc/meminfo"
 
      handle => "free_memory_watch",
@@ -275,7 +275,7 @@ This is an arbitrary string used in documentation only.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 "/var/cfengine/state/cf_rootprocs"
 
    handle => "monitor_self_watch",

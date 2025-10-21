@@ -24,7 +24,7 @@ _persistent classes_ on that system. Access must be granted by making an
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
 ```
 

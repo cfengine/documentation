@@ -15,7 +15,7 @@ classes.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 commands:
   "/usr/bin/generate_config $(config)"
     if => or( "force_configs",

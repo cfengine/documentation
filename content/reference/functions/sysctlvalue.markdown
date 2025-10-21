@@ -13,7 +13,7 @@ aliases:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "tested" slist => { "net.ipv4.tcp_mem", "net.unix.max_dgram_qlen" };
   "values[$(tested)]" string => sysctlvalue($(tested));

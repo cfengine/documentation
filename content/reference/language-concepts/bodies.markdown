@@ -176,7 +176,7 @@ Default bodies are automatically attached to promises not already using that
 body in the default namespace. To use a body as default, name it
 `<promise_type>_<body_type>` and put it in the `bodydefault` namespace.
 
-```cf3
+```cf3 {skip TODO}
 body file control
 {
    # Default bodies /must/ be defined in the /bodydefault/ namespace

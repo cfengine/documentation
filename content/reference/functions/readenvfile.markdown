@@ -18,7 +18,7 @@ Keys and values are interpreted as strings.
 
 **Syntax example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "loadthis"
      data => readenvfile("/etc/os-release");

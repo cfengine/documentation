@@ -61,7 +61,7 @@ they enable a wide range of behavior.
 
 ### Promise example
 
-```cf3
+```cf3 {skip TODO}
 # Promise type
 files:
     "/home/mark/tmp/test_plain" -> "system blue team",
@@ -156,7 +156,7 @@ bundle agent bad_example
 Some promise types can have implicit behavior. For example, the following
 promise simply prints out a log message "hello world".
 
-```cf3
+```cf3 {skip TODO}
 reports:
   "hello world";
 ```
@@ -164,7 +164,7 @@ reports:
 The same promise could be implemented using the `commands` type, invoking the
 echo command:
 
-```cf3
+```cf3 {skip TODO}
 commands:
   "/bin/echo hello world";
 ```

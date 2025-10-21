@@ -79,7 +79,7 @@ reserved agent bundle called
 ```cf3
 bundle agent standard_services(service,state)
 {
-...
+# ...
 }
 ```
 
@@ -280,7 +280,7 @@ the service. The complete list of dependencies is thus the union of
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 services:
 
   "ftp"

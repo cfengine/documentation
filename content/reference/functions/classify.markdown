@@ -16,7 +16,7 @@ This is useful for transforming variables into classes.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
  "i_am_the_policy_host" expression => classify("master.example.org");

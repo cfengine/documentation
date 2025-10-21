@@ -25,7 +25,7 @@ server capabilities.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
    "gotdata" expression => ldaparray(

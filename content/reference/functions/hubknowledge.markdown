@@ -33,7 +33,7 @@ accesses user defined data.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   guard::

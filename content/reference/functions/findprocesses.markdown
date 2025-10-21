@@ -28,7 +28,7 @@ data used may change per platform and per CFEngine release.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "holmes" data => findprocesses(".*sherlock.*");
 ```

@@ -105,7 +105,7 @@ that file editing is done "atomically".
 
 The pseudo-code for this logic is shown in the diagram and below:
 
-```cf3
+```
 for each file promise-object
    {
    if (depth_search)
@@ -346,7 +346,7 @@ with CFEngine Enterprise.
 
 Form of the permissions is as follows:
 
-```cf3
+```cf3 {skip TODO}
 aces = {
         "user:uid:mode[:perm_type]", ...,
         "group:gid:mode[:perm_type]", ...,
@@ -1427,7 +1427,7 @@ expressions** for a more complete discussion.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 files:
 
   "/path/plain_file"
@@ -1568,7 +1568,7 @@ a file system.
 **Example:**
 
 ```cf3
-body depth_search
+body depth_search example
 {
     # no dot directories
     exclude_dirs => { "\..*" };
@@ -1917,7 +1917,7 @@ in a meaningful and convergent fashion.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 files:
 
   "/tmp/test_insert"
@@ -2352,7 +2352,7 @@ plain. In both cases this means not one of the "special" file types.
 
 **Allowed input range:**
 
-```cf3
+```
 plain
 reg
 symlink
@@ -2657,7 +2657,7 @@ side of caution.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 files:
 
   "/tmp/testcopy"
@@ -2709,7 +2709,7 @@ comparison will never see this character.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 files:
 
    "/var/lib\d"
@@ -3065,7 +3065,7 @@ ordinarily be stored in an alternative repository as
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 files:
 
  "/path/file"
@@ -3082,7 +3082,7 @@ files:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 files:
 
  "/path/file"
@@ -3094,7 +3094,7 @@ files:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
  "mycontainer" data => '[ 1, 2, 3 ]';
 
@@ -3129,7 +3129,7 @@ The default native-CFEngine template format (selected when
 mark regions and classes. Each line represents an `insert_lines`
 promise, unless the promises are grouped into a block using:
 
-```cf3
+```
 [%CFEngine BEGIN %]
 ...
 [%CFEngine END %]
@@ -3142,7 +3142,7 @@ expanded (see the Special Topics Guide on editing).
 
 If a class-context modified is used:
 
-```cf3
+```
 [%CFEngine class-expression:: %]
 ```
 
@@ -3155,7 +3155,7 @@ block. This includes blank lines.
 
 Example contrived `cfengine` template:
 
-```cf3
+```
 #This is a template file /templates/input.tmpl
 
 These lines apply to anyone
@@ -3178,7 +3178,7 @@ nameserver $(some.list)
 
 Example `cfengine` template for apache vhost directives:
 
-```cf3
+```
 [%CFEngine any:: %]
 VirtualHost $(sys.ipv4[eth0]):80>
         ServerAdmin             $(stage_file.params[apache_mail_address][1])
@@ -3354,7 +3354,7 @@ with `.`.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 files:
 
  "/path/file"
@@ -3381,7 +3381,7 @@ something else.
   becoming absent. Depending on other context restrictions this may result in
   the transformer being executed during each agent execution. For example:
 
-  ```cf3
+  ```cf3 {skip TODO}
   transformer => "/bin/echo I found a file named $(this.promiser)",
   ```
 

@@ -18,7 +18,7 @@ also use the functions `ago()`, `now()`, `accumulated()`, etc.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 irange("1","100");
 
 irange(ago(0,0,0,1,30,0), "0");

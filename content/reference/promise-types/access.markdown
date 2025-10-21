@@ -42,7 +42,7 @@ knowledge of the filesystem layout on the server. Specifically in access promise
 files, a special variable context `connection` is available with variables `ip`, `key`
 and `hostname`, containing information about the connection through which access is attempted.
 
-```cf3
+```cf3 {skip TODO}
 "/var/cfengine/cmdb/$(connection.key).json"
    shortcut   => "me.json",
    admit_keys => { "$(connection.key)" };
@@ -58,7 +58,7 @@ passed to functions or stored in other variables.
 With CFEngine Enteprise, access promises can be made about additional query data for
 reporting and orchestration.
 
-```cf3
+```cf3 {skip TODO}
   # Grant orchestration communication
 
   "did.*"
@@ -135,7 +135,7 @@ For example, here we'll admit the entire domain `.cfengine.com` and
 the host `www.cfengine3.com`. A machine named `cfengine.com` would be
 refused access because it's not in the `cfengine.com` domain.
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/path/file"
     admit_hostnames => {
@@ -155,7 +155,7 @@ access:
 Subnets are specified using CIDR notation. For example, here we'll
 admit one host, then a subnet, then everyone:
 
-```cf3
+```cf3 {skip TODO}
 access:
 
    "/path/file"
@@ -174,7 +174,7 @@ access:
 
 For example, here we'll admit the fictitious SHA key `abcdef`:
 
-```cf3
+```cf3 {skip TODO}
 access:
 
    "/path/file"
@@ -184,7 +184,7 @@ access:
 In Community, MD5 keys are used, so similarly we can admit the
 fictitious MD5 key `abcdef`:
 
-```cf3
+```cf3 {skip TODO}
 access:
 
    "/path/file"
@@ -212,7 +212,7 @@ host `www.cfengine3.com`. A machine named `cfengine.com` would be
 allowed access (unless it's denied by other promises) because it's not
 in the `cfengine.com` domain.
 
-```cf3
+```cf3 {skip TODO}
 access:
 
    "/path/file"
@@ -239,7 +239,7 @@ This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
 For example, here we'll deny one host, then a subnet, then everyone:
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/path/file"
     deny_ips => {
@@ -265,7 +265,7 @@ This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
 For example, here we'll deny the fictitious SHA key `abcdef`:
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/path/file"
     deny_keys => {"SHA=abcdef"};
@@ -274,7 +274,7 @@ access:
 In Community, MD5 keys are used, so similarly we can deny the
 fictitious MD5 key `abcdef`:
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/path/file"
     deny_keys => {"MD5=abcdef"};
@@ -358,7 +358,7 @@ user files.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/home"
     admit_hostnames => { "backup_host.example.org" },
@@ -388,7 +388,7 @@ connection is encrypted.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/path/file"
     admit_hostnames => { ".example.org" },
@@ -590,7 +590,7 @@ host (which for some reason is not available directly through policy on
 the client, e.g. because they have different policies), then you could
 use the following construction:
 
-```cf3
+```cf3 {skip TODO}
 access:
   "$(variable_name)"
     handle => "variable_name",
@@ -662,7 +662,7 @@ its shortcut name.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 "/var/cfengine/cmdb/$(connection.key).json"
   shortcut   => "me.json",
   admit_keys => { "$(connection.key)" };

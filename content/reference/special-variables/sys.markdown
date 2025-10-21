@@ -9,7 +9,7 @@ System variables are derived from CFEngine's automated discovery of system
 values. They are provided as variables in order to make automatically adaptive
 rules for configuration.
 
-```cf3
+```cf3 {skip TODO}
 files:
 
   "$(sys.resolv)"
@@ -23,16 +23,16 @@ files:
 
 The variable gives the kernel's short architecture description.
 
-```cf3
-# arch = x86_64
+```
+sys.arch = x86_64
 ```
 
 ### sys.bindir
 
 The name of the directory where CFEngine looks for its binaries..
 
-```cf3
-# bindir = /var/cfengine/bin
+```
+sys.bindir = /var/cfengine/bin
 ```
 
 **History:** Introduced in CFEngine 3.6
@@ -41,8 +41,8 @@ The name of the directory where CFEngine looks for its binaries..
 
 The date of the system in canonical form, i.e. in the form of a class, from when the agent initialized.
 
-```cf3
-# cdate = Sun_Dec__7_10_39_53_2008_
+```
+sys.cdate = Sun_Dec__7_10_39_53_2008_
 ```
 
 ### sys.cf_promises
@@ -50,7 +50,7 @@ The date of the system in canonical form, i.e. in the form of a class, from when
 A variable containing the path to the CFEngine syntax analyzer
 `cf-promises` on the platform you are using.
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
   "syntax_ok" expression => returnszero("$(sys.cf_promises)");
@@ -60,17 +60,17 @@ classes:
 
 The variable gives the version of the running CFEngine Core.
 
-```cf3
-# cf_version = 3.0.5
+```
+cf_version = 3.0.5
 ```
 
 ### sys.cf_version_major
 
 The variable gives the major version of the running CFEngine Core.
 
-```cf3
-# cf_version = 3.0.5
-# cf_version_major = 3
+```
+cf_version = 3.0.5
+cf_version_major = 3
 ```
 
 **History:** Was introduced in 3.5.1, Enterprise 3.5.1.
@@ -79,9 +79,9 @@ The variable gives the major version of the running CFEngine Core.
 
 The variable gives the minor version of the running CFEngine Core.
 
-```cf3
-# cf_version = 3.0.5
-# cf_version_minor = 0
+```
+cf_version = 3.0.5
+cf_version_minor = 0
 ```
 
 **History:** Was introduced in 3.5.1, Enterprise 3.5.1.
@@ -90,9 +90,9 @@ The variable gives the minor version of the running CFEngine Core.
 
 The variable gives the patch version of the running CFEngine Core.
 
-```cf3
-# cf_version = 3.0.5
-# cf_version_patch = 5
+```
+cf_version = 3.0.5
+cf_version_patch = 5
 ```
 
 **History:** Was introduced in 3.5.1, Enterprise 3.5.1.
@@ -101,8 +101,8 @@ The variable gives the patch version of the running CFEngine Core.
 
 The variable gives the release number of the running CFEngine Core.
 
-```cf3
-# cf_version_release = 1
+```
+cf_version_release = 1
 ```
 
 **History:** Was introduced in 3.16.0.
@@ -112,8 +112,8 @@ The variable gives the release number of the running CFEngine Core.
 This variable contains the name of the hard-class category for this host
 (i.e. its top level operating system type classification).
 
-```cf3
-# class = linux
+```
+class = linux
 ```
 
 **See also:** [`sys.os`][sys#sys.os]
@@ -126,7 +126,7 @@ physical, cores. In addition, on a single-core system the class `1_cpu`
 is set, and on multi-core systems the class `{n}_cpus` is set, where
 `{n}` is the number of cores identified.
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
  "Number of CPUS = $(sys.cpus)";
@@ -145,7 +145,7 @@ In addition, on a single-socket system the class `1_cpusocket`
 is set, and on multi-socket systems the class `{n}_cpusockets` is set, where
 `{n}` is the number of sockets identified.
 
-```cf3
+```cf3 {skip TODO}
 reports:
  "Number of CPU sockets = $(sys.cpusockets)";
  2_cpusockets::
@@ -159,16 +159,16 @@ reports:
 The variable gives the location of the current users's master crontab
 directory.
 
-```cf3
-# crontab = /var/spool/crontab/root
+```
+crontab = /var/spool/crontab/root
 ```
 
 ### sys.date
 
 The date of the system as a text string, from when the agent initialized.
 
-```cf3
-# date = Sun Dec  7 10:39:53 2008
+```
+date = Sun Dec  7 10:39:53 2008
 ```
 
 ### sys.doc_root
@@ -185,8 +185,8 @@ be possible to derive the domain name from its DNS registration, but in
 general there is no way to discover this value automatically. The
 `common control` body permits the ultimate specification of this value.
 
-```cf3
-# domain = example.org
+```
+domain = example.org
 ```
 
 ### sys.enterprise_version
@@ -194,8 +194,8 @@ general there is no way to discover this value automatically. The
 The variable gives the version of the running CFEngine Enterprise
 Edition.
 
-```cf3
-# enterprise_version = 3.0.0
+```
+enterprise_version = 3.0.0
 ```
 
 **History:** Was introduced in 3.5.0, Enterprise 3.0.0.
@@ -211,17 +211,17 @@ Edition.
 
 The location of the system NFS exports file.
 
-```cf3
-# exports = /etc/exports
-# exports = /etc/dfs/dfstab
+```
+exports = /etc/exports
+exports = /etc/dfs/dfstab
 ```
 
 ### sys.failsafe_policy_path
 
 The name of the failsafe policy file.
 
-```cf3
-# failsafe_policy_path = /var/cfengine/inputs/failsafe.cf
+```
+failsafe_policy_path = /var/cfengine/inputs/failsafe.cf
 ```
 
 **History:** Introduced in CFEngine 3.6
@@ -245,8 +245,8 @@ These two variables are synonyms for each other.
 The fully qualified name of the host. In order to compute this value
 properly, the domain name must be defined.
 
-```cf3
-# fqhost = host.example.org
+```
+fqhost = host.example.org
 ```
 
 **See also:** [`sys.uqhost`][sys.uqhost]
@@ -255,8 +255,8 @@ properly, the domain name must be defined.
 
 The location of the system filesystem (mount) table.
 
-```cf3
-# fstab = /etc/fstab
+```
+fstab = /etc/fstab
 ```
 
 ### sys.hardware_addresses
@@ -270,7 +270,7 @@ system interfaces.
 
 This contains the MAC address of the named interface. For example:
 
-```cf3
+```cf3 {skip TODO}
 reports:
     "Tell me $(sys.hardware_mac[eth0])";
 ```
@@ -284,8 +284,8 @@ reports:
 The name of the current host, according to the kernel. It is undefined
 whether this is qualified or unqualified with a domain name.
 
-```cf3
-# host = myhost
+```
+host = myhost
 ```
 
 ### sys.inet
@@ -813,8 +813,8 @@ UdpLite6InCsumErrors            	0
 
 The name of the inputs directory where CFEngine looks for its policy files.
 
-```cf3
-# inputdir = /var/cfengine/inputs
+```
+inputdir = /var/cfengine/inputs
 ```
 
 **History:** Introduced in CFEngine 3.6
@@ -823,8 +823,8 @@ The name of the inputs directory where CFEngine looks for its policy files.
 
 The assumed (default) name of the main system interface on this host.
 
-```cf3
-# interface = eth0
+```
+interface = eth0
 ```
 
 ### sys.interfaces
@@ -924,7 +924,7 @@ wlp3s0:       0       0    0    0    0     0          0         0        0      
 
 Contains a space separated list of the flags of the named interface. e.g.
 
-```cf3
+```cf3 {skip TODO}
 reports:
     "eth0 flags: $(sys.interface_flags[eth0])";
 ```
@@ -983,8 +983,8 @@ reports:
 A map of full IPv4 addresses (key) to the system interface (value),
 e.g. `$(sys.ip2iface[1.2.3.4])`.
 
-```cf3
-# If the IPv4 address on the interfaces are
+```
+If the IPv4 address on the interfaces are
 #    le0 = 192.168.1.101
 #    xr1 = 10.12.7.254
 #
@@ -1020,8 +1020,8 @@ details on obtaining the IPv4 addresses of all interfaces on a system.
 The full IPv4 address of the system interface named as the associative
 array index, e.g. `$(sys.ipv4[le0])` or `$(sys.ipv4[xr1])`.
 
-```cf3
-# If the IPv4 address on the interfaces are
+```
+If the IPv4 address on the interfaces are
 #    le0 = 192.168.1.101
 #    xr1 = 10.12.7.254
 #
@@ -1065,8 +1065,8 @@ The first three octets of the IPv4 address of the system interface named as the 
 
 The digest of the host's cryptographic public key.
 
-```cf3
-# sys.key_digest = MD5=bc230448c9bec14b9123443e1608ac07
+```
+sys.key_digest = MD5=bc230448c9bec14b9123443e1608ac07
 ```
 
 ### sys.last_policy_update
@@ -1077,8 +1077,8 @@ Timestamp when last policy change was seen by host
 
 The name of the directory where CFEngine looks for its libraries.
 
-```cf3
-# libdir = /var/cfengine/inputs/lib
+```
+libdir = /var/cfengine/inputs/lib
 ```
 
 **History:** Introduced in CFEngine 3.6, version based sub directory removed in
@@ -1088,8 +1088,8 @@ CFEngine 3.8.
 
 The name of the directory where CFEngine looks for its libraries, without any prefixes.
 
-```cf3
-# local_libdir = lib
+```
+local_libdir = lib
 ```
 
 **History:** Introduced in CFEngine 3.6, version based sub directory removed in
@@ -1099,8 +1099,8 @@ CFEngine 3.8.
 
 The name of the directory where CFEngine log files are saved
 
-```cf3
-# logdir = /var/cfengine/
+```
+logdir = /var/cfengine/
 ```
 
 **History:** Introduced in CFEngine 3.6
@@ -1124,8 +1124,8 @@ The name of the directory where CFEngine log files are saved
 The long architecture name for this system kernel. This name is
 sometimes quite unwieldy but can be useful for logging purposes.
 
-```cf3
-# long_arch = linux_x86_64_2_6_22_19_0_1_default__1_SMP_2008_10_14_22_17_43__0200
+```
+long_arch = linux_x86_64_2_6_22_19_0_1_default__1_SMP_2008_10_14_22_17_43__0200
 ```
 
 **See also:** [`sys.ostype`][sys#sys.ostype]
@@ -1134,16 +1134,16 @@ sometimes quite unwieldy but can be useful for logging purposes.
 
 The name of the system email spool directory.
 
-```cf3
-# maildir = /var/spool/mail
+```
+maildir = /var/spool/mail
 ```
 
 ### sys.masterdir
 
 The name of the directory on the hub where CFEngine looks for inputs to be validated and copied into `sys.inputdir`.
 
-```cf3
-# masterdir = /var/cfengine/masterfiles
+```
+masterdir = /var/cfengine/masterfiles
 ```
 
 **History:** Introduced in CFEngine 3.6
@@ -1152,16 +1152,16 @@ The name of the directory on the hub where CFEngine looks for inputs to be valid
 
 The variable gives the version of the running CFEngine Enterprise Edition.
 
-```cf3
-# nova_version = 1.1.3
+```
+nova_version = 1.1.3
 ```
 
 ### sys.os
 
 The name of the operating system according to the kernel.
 
-```cf3
-# os = linux
+```
+os = linux
 ```
 
 **See also:** [`sys.ostype`][sys#sys.ostype]
@@ -1254,8 +1254,8 @@ R: 22
 
 Another name for the operating system.
 
-```cf3
-# ostype = linux_x86_64
+```
+ostype = linux_x86_64
 ```
 
 **See also:** [`sys.class`][sys#sys.class]
@@ -1264,8 +1264,8 @@ Another name for the operating system.
 
 The name of the directory where CFEngine saves the daemon pid files.
 
-```cf3
-# piddir = /var/cfengine/
+```
+piddir = /var/cfengine/
 ```
 
 **History:** Introduced in CFEngine 3.6
@@ -1309,7 +1309,7 @@ IP of the machine acting as the policy server.
 
 `$(sys.workdir)/policy_server.dat` stores bootstrap information. If bootstrapped to a hostname, the value is the current IP the hostname resolves to. If bootstrapped to an IP, the value is the stored IP. The variable is undefined if `$(sys.workdir)/policy_server.dat` does not exist or is empty.
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
  "Policy hub is $(sys.policy_hub)";
@@ -1335,24 +1335,24 @@ overridden based on the data provided during bootstrap stored in
 
 The kernel release of the operating system.
 
-```cf3
-# release = 2.6.22.19-0.1-default
+```
+release = 2.6.22.19-0.1-default
 ```
 
 ### sys.resolv
 
 The location of the system resolver file.
 
-```cf3
-# resolv = /etc/resolv.conf
+```
+resolv = /etc/resolv.conf
 ```
 
 ### sys.statedir
 
 The name of the state directory where CFEngine looks for its embedded database files.
 
-```cf3
-# statedir = /var/cfengine/state
+```
+statedir = /var/cfengine/state
 ```
 
 **History:** Introduced in CFEngine 3.7
@@ -1365,8 +1365,8 @@ number of seconds in a day, expressed as an integer. No time zone conversion
 is performed, the direct result of the time() system call is used. This value
 is most commonly used in the /etc/shadow file.
 
-```cf3
-# sysday = 15656
+```
+sysday = 15656
 
 Corresponds to Monday, November 12, 2012.
 ```
@@ -1379,8 +1379,8 @@ A variable containing the result of the time() system call, which is the
 time since the UNIX Epoch (00:00:00 UTC, January 1, 1970), measured in
 seconds. See also `$(sys.sysday)`.
 
-```cf3
-# systime = 1352754900
+```
+systime = 1352754900
 
 Corresponds to Mon Nov 12 21:15:00 2012 UTC.
 ```
@@ -1391,8 +1391,8 @@ Corresponds to Mon Nov 12 21:15:00 2012 UTC.
 
 The name of the update policy file.
 
-```cf3
-# update_policy_path = /var/cfengine/inputs/update.cf
+```
+update_policy_path = /var/cfengine/inputs/update.cf
 ```
 
 **History:** Introduced in CFEngine 3.6
@@ -1402,8 +1402,8 @@ The name of the update policy file.
 A variable containing the number of minutes which the system has been
 online. (Not implemented on the Windows platform.)
 
-```cf3
-# uptime = 69735
+```
+uptime = 69735
 
 Equivalent uptime command output:
  16:24:52 up 48 days, 10:15,  1 user,  load average: 0.00, 0.00, 0.00
@@ -1415,8 +1415,8 @@ Equivalent uptime command output:
 
 A data container with the user information of the user that started the agent.
 
-```cf3
-# user_data = {
+```
+user_data = {
     "description": "root",
     "gid": 0,
     "home_dir": "/root",
@@ -1432,8 +1432,8 @@ A data container with the user information of the user that started the agent.
 
 The unqualified name of the current host.
 
-```cf3
-# uqhost = myhost
+```
+uqhost = myhost
 ```
 
 **See also:** [`sys.fqhost`][sys#sys.fqhost]
@@ -1443,8 +1443,8 @@ The unqualified name of the current host.
 The version of the running kernel. On Linux, this corresponds to the
 output of `uname -v`.
 
-```cf3
-# version = #55-Ubuntu SMP Mon Jan 10 23:42:43 UTC 2011
+```
+version = #55-Ubuntu SMP Mon Jan 10 23:42:43 UTC 2011
 ```
 
 **History:** Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
@@ -1454,8 +1454,8 @@ output of `uname -v`.
 On the Windows version of CFEngine Enterprise, this is the path to the Windows
 directory of this system.
 
-```cf3
-# windir = C:\WINDOWS
+```
+windir = C:\WINDOWS
 ```
 
 ### sys.winprogdir
@@ -1463,8 +1463,8 @@ directory of this system.
 On the Windows version of CFEngine Enterprise, this is the path to the program
 files directory of the system.
 
-```cf3
-# winprogdir = C:\Program Files
+```
+winprogdir = C:\Program Files
 ```
 
 ### sys.winprogdir86
@@ -1472,8 +1472,8 @@ files directory of the system.
 On 64 bit Windows versions of CFEngine Enterprise, this is the path to the 32
 bit (x86) program files directory of the system.
 
-```cf3
-# winprogdir86 = C:\Program Files (x86)
+```
+winprogdir86 = C:\Program Files (x86)
 ```
 
 ### sys.winsysdir
@@ -1481,8 +1481,8 @@ bit (x86) program files directory of the system.
 On the Windows version of CFEngine Enterprise, this is the path to the Windows
 system directory.
 
-```cf3
-# winsysdir = C:\WINDOWS\system32
+```
+winsysdir = C:\WINDOWS\system32
 ```
 
 ### sys.workdir
@@ -1490,21 +1490,21 @@ system directory.
 The location of the CFEngine work directory and cache.
 For the system privileged user this is normally:
 
-```cf3
-# workdir = /var/cfengine
+```
+workdir = /var/cfengine
 ```
 
 For non-privileged users it is in the user's home directory:
 
-```cf3
-# workdir = /home/user/.cfagent
+```
+workdir = /home/user/.cfagent
 ```
 
 On the Windows version of CFEngine Enterprise, it is normally under program
 files (the directory name may change with the language of Windows):
 
-```cf3
-# workdir = C:\Program Files\CFEngine
+```
+workdir = C:\Program Files\CFEngine
 ```
 
 -

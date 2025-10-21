@@ -866,7 +866,7 @@ include copying from a personal `bucket' server.
 ```cf3
 body copy_from xyz
 {
-...
+# ...
 
 bucket1::
      servers     => { "server-abc-1.xyz.com", "failover.xyz.com"  };
