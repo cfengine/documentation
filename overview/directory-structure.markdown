@@ -188,7 +188,14 @@ _pid files_ in the work directory.
 
 ### `policy_server.dat`
 
-IP address of the policy server
+Specifies the host's primary policy server in the format `(<IP>|<Hostname>)[:<Port>]`. This file's contents are used to define the `default:sys.policy_hub` and `default:sys.policy_hub_port` variables.
+
+**See also:** [`default:sys.policy_hub`][sys#sys.policy_hub], [`default:sys.policy_hub_port`][sys#sys.policy_hub_port]
+
+**History:**
+
+- Added in CFEngine 3.2.0
+- Support hostname and port added in CFEngine 3.10.0
 
 ### `ignore_interfaces.rx`
 
