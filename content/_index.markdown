@@ -35,10 +35,6 @@ aliases:
             <div>Know more about your infrastructure and hosts, their data, compliance and make changes from within the Web UI.</div>
          </li>
          <li>
-            <a href="/getting-started/writing-policy">Writing policy</a>
-            <div>Write and deploy your first policy files to make changes to systems.</div>
-         </li>
-         <li>
             <a href="/examples/tutorials/writing-and-serving-policy">Tutorial series on policy language</a>
             <div>In-depth tutorials on how to work with CFEngine policy.</div>
          </li>
