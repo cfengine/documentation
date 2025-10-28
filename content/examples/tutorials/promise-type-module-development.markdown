@@ -1,13 +1,14 @@
 ---
 layout: default
-title: Developing modules
+title: Promise type module development
 sorting: 50
 aliases:
   - "/getting-started-developing-modules.html"
   - "/getting-started/developing-modules"
+  - "/getting-started/05-developing-modules"
 ---
 
-Modules, such as the one we've used for git promises, are easy to write.
+Promise type modules are easy to write.
 In this tutorial, we will focus on implementing a new promise type in Python, with the provided CFEngine library, since this is the easiest and recommended way.
 If you are interested in how modules are implemented, or how you could do it in another programming language, see the [complete documentation][custom].
 

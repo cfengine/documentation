@@ -39,10 +39,6 @@ aliases:
             <div>Write and deploy your first policy files to make changes to systems.</div>
          </li>
          <li>
-            <a href="/getting-started/developing-modules">Developing modules</a>
-            <div>Turn your policy, reports, or python code into CFEngine Build modules for others to use.</div>
-         </li>
-         <li>
             <a href="/examples/tutorials/writing-and-serving-policy">Tutorial series on policy language</a>
             <div>In-depth tutorials on how to work with CFEngine policy.</div>
          </li>
