@@ -317,7 +317,7 @@ ways of getting files through the firewall:
 
 One of the main aims of a firewall is to prevent hosts outside the secure area
 from opening connections to hosts in the secure area. If we want cfagent
-processes on the outside of the firewall to receive updated policies from the
+processes on the outside of the firewall to receive updated policy from the
 inside of the firewall, information has to traverse the firewall.
 
 - CFEngine trust model

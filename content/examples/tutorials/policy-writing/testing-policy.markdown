@@ -1,9 +1,11 @@
 ---
 layout: default
-title: Testing policies
+title: Testing policy
 sorting: 50
 aliases:
   - "/examples-tutorials-writing-and-serving-policy-testing-policies.html"
+  - "/examples/tutorials/writing-and-serving-policy/testing-policies"
+  - "/examples/tutorials/policy-writing/testing-policies"
 ---
 
 One of the practical advantages of CFEngine is that you can test it without

@@ -88,7 +88,7 @@ body edit_field col(split,col,newval,method)
 ```
 
 Then a `field_edits` body describes the separators for fields and
-one level of sub-fields, along with policies for editing these fields,
+one level of sub-fields, along with policy for editing these fields,
 ordering the items within them.
 
 ---

@@ -35,7 +35,7 @@ curl -k --user <username>:<password> \
     "data": {
         "GIT_URL": "https://github.com/cfengine/masterfiles.git",
         "GIT_REFSPEC": "master",
-        "PROJECT_SUBDIRECTORY": "path/to/policies",
+        "PROJECT_SUBDIRECTORY": "path/to/policy",
         "GIT_USERNAME": "username",
         "GIT_PASSWORD": "passwordOrToken",
         "GIT_WORKING_BRANCH": "CF_WORKING_BRANCH",

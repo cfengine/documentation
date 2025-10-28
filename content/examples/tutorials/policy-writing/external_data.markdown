@@ -4,6 +4,7 @@ title: External data
 sorting: 50
 aliases:
   - "/examples-tutorials-writing-and-serving-policy-external_data.html"
+  - "/examples/tutorials/writing-and-serving-policy/external-data"
 ---
 
 It is common to integrate CFEngine with external data sources. External data

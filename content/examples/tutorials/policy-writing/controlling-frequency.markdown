@@ -4,6 +4,7 @@ title: Controlling frequency
 sorting: 90
 aliases:
   - "/examples-tutorials-writing-and-serving-policy-controlling-frequency.html"
+  - "/examples/tutorials/writing-and-serving-policy/controlling-frequency"
 ---
 
 By default CFEngine runs relatively frequently (every 5 minutes) but you may not

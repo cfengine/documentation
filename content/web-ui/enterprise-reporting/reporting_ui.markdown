@@ -76,7 +76,7 @@ bundle agent myreport
   port 5308 must be open and, because 3.6 uses TLS, should not be
   proxied or otherwise intercepted. Note that bootstrapping and other
   standalone client operations go from the client to the server, so the
-  ability to bootstrap and copy policies from the server doesn't
+  ability to bootstrap and copy policy files from the server doesn't
   necessarily mean the reverse connection will work.
 
 - Ensure that variables and classes tagged as `inventory` or `report`

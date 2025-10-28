@@ -24,7 +24,7 @@ Additional options for configuring CFEngine policy are as follows:
   Learn how to control frequency settings for verifying CFEngine policy.
 
 - [Version control]
-  Learn how to put your CFEngine policies under version control.
+  Learn how to put your CFEngine policy under version control.
 
 - [Masterfiles Policy Framework]
   Learn what options are available out of the box in CFEngine to configure its masterfiles operation.

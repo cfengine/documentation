@@ -26,7 +26,7 @@ After installing the CFEngine package, the software does not automatically start
 It is missing some information, most notably where it should be fetching policy from.
 In order to start CFEngine, you run the bootstrap command on all hosts in the infrastructure, with the IP address of the hub as an argument:
 
-```console
+```command
 cf-agent --bootstrap <hub IP>
 ```
 
@@ -132,9 +132,9 @@ This often happens when a release is made, because one wants to freeze the devel
 
 #### Components
 
-Standalone applications include `cf-agent`, `cf-promises`, `cf-runagent`, `cf-know`, `cf-report`, `cf-hub`
-
-Daemons include `cf-execd`, `cf-monitord`, and `cf-serverd`
+The programs (binaries) installed with CFEngine are referred to as components of CFEngine.
+These include: `cf-agent`, `cf-promises`, `cf-runagent`, `cf-hub`, `cf-execd`, `cf-monitord`, and `cf-serverd`.
+The "d" in the last 3, is a common acronym for daemon - long-running backgrounded programs.
 
 #### COSL license
 
@@ -244,18 +244,36 @@ Payment Card Industry Data Security Standard (PCI DSS) is a set of requirements 
 #### Platforms
 
 This usually refers to an operating system type, e.g., Linux (in its many flavors), Windows, etc.
-Platforms are described using short identifiers, e.g., RH5, REL5, SuSE 11, SLES, etc.
-
-#### Policy server
-
-The special server that others consult for the latest policies is called the _policy server_.
-
-Typically the policy server is set by the bootstrapping process.
+Platforms are described using short identifiers, e.g., RHEL 8, SuSE 11, SLES, etc.
 
 #### Policy
 
-A policy is a set of intentions about the system, coded as a list of promises.
-A policy is not a standard, but the result of specific organizational management decisions.
+In CFEngine, code describes the desired state of a system, and we refer to this code as _policy_.
+The CFEngine components, most prominently `cf-agent`, evaluate this policy and make changes to the system to bring it closer to the desired state.
+Policy mainly consists of promises (rules) about the system, organized into bundles.
+
+Never pluralize or _count_ policy - terms like _policy set_, and _policy file_ should be preferred over the ambiguous _policies_, _one policy_, and similar.
+Refering to policy in a generic, uncountable way, is still correct: "Policy style guide", "Writing policy", "All policy should be written in utf-8" are all good uses.
+This is similar to the term _code_ in programming - "writing code" is normal and clear, but "one code" is not (one line of code? one function? one file?).
+
+#### Policy file
+
+A file with `.cf` extension, written in CFEngine policy language, which `cf-agent` and the other components parse and evaluate.
+
+#### Policy language
+
+Another name for CFEngine policy language, the programming language you write to express promises as code.
+
+#### Policy server
+
+The special server that others consult for the latest policy is called the _policy server_.
+Typically the policy server is set by the bootstrapping process.
+
+#### Policy set
+
+A collection of policy files inside a folder hierarchy.
+The policy set is typically deployed to a policy server's `/var/cfengine/masterfiles` directory, and then distributed to the `/var/cfengine/inputs` on each host, where it is run.
+The `cfbs build` command converts a CFEngine Build project into a ready-to-deploy policy set.
 
 #### Promise attributes
 
@@ -263,6 +281,16 @@ As opposed to the promiser string (which is usually the unique identifier of a r
 A basic example is that if you want to ensure a file has a specific set of permissions, you would make a promise where the promiser string is the filename, and the desired permissions are specified as attributes.
 
 Sometimes referred to as promise constraints.
+
+#### Promise
+
+The CFEngine software manages every intended system outcome as "promises" to be kept.
+A CFEngine promise corresponds roughly to a rule in other software products, but importantly promises are always things that can be kept and repaired continuously, on a real time basis, not just once at install-time.
+
+Promises are idempotent, meaning they can be executed many times with the same outcome.
+
+They are also convergent, meaning they can only nudge the system closer to a steady state, never destabilize it.
+While there are ways a user could override this, it's almost never a good idea to do so.
 
 #### Promise types
 
@@ -272,16 +300,6 @@ Making promises with these types results in CFEngine checking the state of those
 
 There are also promise types which are not traditional resources on a system, but rather just for managing state within the CFEngine binaries, such as variables, classes, meta, etc.
 Setting a class or a variable will not alter the system directly, but makes that information available for further policy and promise types in the same execution.
-
-#### Promise
-
-The CFEngine software manages every intended system outcome as "promises" to be kept.
-A CFEngine Promise corresponds roughly to a rule in other software products, but importantly promises are always things that can be kept and repaired continuously, on a real time basis, not just once at install-time.
-
-Promises are idempotent, meaning they can be executed many times with the same outcome.
-
-They are also convergent, meaning they can only nudge the system closer to a steady state, never destabilize it.
-While there are ways a user could override this, it's almost never a good idea to do so.
 
 #### Role based access control (RBAC)
 
@@ -296,15 +314,15 @@ For historical reasons, certain computers are referred to as servers, especially
 In CFEngine, `cf-serverd` is a software component that serves files from one computer to another.
 All computers are recommended to run `cf-serverd`, making all computers CFEngine servers, whether they are laptops, phones, or data center computers.
 
-The special server that others consult for the latest policies is called the Policy Server.
+The special server that others consult for the latest policy is called the policy server.
 
-#### Service Catalogue
+#### Service catalogue
 
 A kind of directory of _services_ provided in an environment.
 The concept of a service could be anything from a human help desk to a machine-controlled email subsystem.
 In the CFEngine Mission Portal, the service catalog (for maintenance) treats promise bundles of promises as low-level maintenance services and relates these to high-level business goals.
 
-#### SOX Compliance
+#### SOX compliance
 
 Sarbanes-Oxley Act compliance.
 An audited accolade for financial data security required by all companies on the New York Stock Exchange.

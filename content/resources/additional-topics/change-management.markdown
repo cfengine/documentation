@@ -141,7 +141,7 @@ characteristics have auto-correlations times of 10-20 minutes[^2].
 It is not necessary to assume a central model of authority to manage change.
 Indeed, many CFEngine users have highly devolved organizations with many
 decision makers. Federated regions of an organization can maintain independent
-policies, aligned with different cultures if necessary.
+policy files, aligned with different cultures if necessary.
 
 What may be problematic is to have teams that are not aligned, so that there are
 conficting intentions. In this case, one individual might instigate a change

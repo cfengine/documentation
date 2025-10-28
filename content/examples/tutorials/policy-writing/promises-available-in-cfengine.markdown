@@ -4,6 +4,7 @@ title: Promises available in CFEngine
 sorting: 4
 aliases:
   - "/examples-tutorials-writing-and-serving-policy-promises-available-in-cfengine.html"
+  - "/examples/tutorials/writing-and-serving-policy/promises-available-in-cfengine"
 ---
 
 ### meta - information about promise bundles

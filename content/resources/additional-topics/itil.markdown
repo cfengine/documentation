@@ -809,7 +809,7 @@ inference.
 
 ### Policy
 
-Formally documented management expectations and intentions. Policies are used to
+Formally documented management expectations and intentions. Policy is used to
 direct decisions, and to ensure consistent and appropriate development and
 implementation of processes, standards, roles, activities, IT infrastructures,
 etc.
@@ -982,7 +982,7 @@ levels and penalties for non-compliance.
 
 An agreement assumes a set of promises that propose behaviour and an acceptance
 of those promises by the client. If we assume that the users are satisfied with
-out policies, then an SLA can be interpreted as a combination of a configuration
+our policy, then an SLA can be interpreted as a combination of a configuration
 policy (configuration service promises), and the CFEngine execution schedule.
 
 ### Service Management

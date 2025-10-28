@@ -325,7 +325,7 @@ transaction systems, one tries to push out changes one-by-one, hence
 `deploying` the decision. In CFEngine you simply publish your policy (in
 CFEngine parlance these are "promise proposals") and the machines see the new
 proposals and can adjust accordingly. Each machine runs an agent that is
-capable of implementing policies and maintaining them over time without
+capable of implementing policy and maintaining them over time without
 further assistance.
 
 #### Manage

@@ -6,7 +6,7 @@ aliases:
   - "/overview.html"
 ---
 
-CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves with a policy server (see [Installation][Installation]), will each be running a set of CFEngine component applications that manage and interpret textual files called policies. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or _bundles_, of what are known in the CFEngine world as [Promises][Promises]. _Promises_ are at the heart of Promise Theory, which is in turn what CFEngine is all about.
+CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves with a policy server (see [Installation][Installation]), will each be running a set of CFEngine component applications that manage and interpret a textual representation of your desired state for the system, referred to as policy. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or _bundles_, of what are known in the CFEngine world as [Promises][Promises]. _Promises_ are at the heart of Promise Theory, which is in turn what CFEngine is all about.
 
 ## Policy language and compliance
 
@@ -14,9 +14,9 @@ For many users, CFEngine is simply a configuration tool - i.e. software for depl
 
 CFEngine ensures that the actual state of a system is in compliance with the predefined model of desired state for the system. If it is not in compliance CFEngine will bring it into compliance. This is known as _convergence_.
 
-That model is represented by one or more policies that have been written using the declarative CFEngine policy language. The policy language has been designed with a vocabulary that is intuitive, yet at the same time can still support the design of highly complex IT systems.
+That model is represented by one or more policy files that have been written using the declarative CFEngine policy language. The policy language has been designed with a vocabulary that is intuitive, yet at the same time can still support the design of highly complex IT systems.
 
-Those policies are distributed across all hosts within the system via download from the policy server. Every host will then interpret and execute each of the instructions it has been given in a predetermined order.
+Those policy files are distributed across all hosts within the system via download from the policy server. Every host will then interpret and execute each of the instructions it has been given in a predetermined order.
 
 CFEngine continually monitors all of the hosts in real-time, and should the system's current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.
 
@@ -24,7 +24,7 @@ See also: [Language concepts][], [Writing and serving policy][]
 
 ## CFEngine policy servers and hosts
 
-There are basically two categories of machines in a CFEngine environment: policy servers and their client hosts. Policy servers are responsible for making policy files available to each of the client hosts that have registered with it (a.k.a. bootstrapped), including itself. Hosts on the other hand are responsible for ensuring they continuously pull in the latest policies, or changes to policies, from the policy server. They are additionally responsible for ensuring they remain fully compliant with the instructions contained within the policy files, at all times.
+There are basically two categories of machines in a CFEngine environment: policy servers and their client hosts. Policy servers are responsible for making policy files available to each of the client hosts that have registered with it (a.k.a. bootstrapped), including itself. Hosts on the other hand are responsible for ensuring they continuously pull in the latest policy files, or changes to them, from the policy server. They are additionally responsible for ensuring they remain fully compliant with the instructions contained within the policy files, at all times.
 
 The role of a particular machine where CFEngine is deployed determines which of the components will be installed and running at any given moment.
 

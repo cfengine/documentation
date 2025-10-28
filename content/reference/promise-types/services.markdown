@@ -60,7 +60,7 @@ body service_method winmethod
 
 Services promises for Windows are only available in CFEngine Enterprise.
 Note that the name of a service in Windows may be different from its **Display name**.
-CFEngine Enterprise policies use the name, not the display name, due to the need for uniqueness.
+CFEngine Enterprise policy use the name, not the display name, due to the need for uniqueness.
 
 ![WinService](promise-types-services-winservice-properties_name.png)
 

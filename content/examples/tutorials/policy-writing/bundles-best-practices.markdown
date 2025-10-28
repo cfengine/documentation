@@ -4,6 +4,7 @@ title: Bundles best practices
 sorting: 20
 aliases:
   - "/examples-tutorials-writing-and-serving-policy-bundles-best-practices.html"
+  - "/examples/tutorials/writing-and-serving-policy/bundles-best-practices"
 ---
 
 The following contains practices to remember when creating bundles as

@@ -5,4 +5,4 @@ aliases:
   - "/reference-masterfiles-policy-framework-services.html"
 ---
 
-This directory is the suggested place to add your custom policies.
+This directory is the suggested place to add your custom policy files.

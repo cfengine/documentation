@@ -427,7 +427,7 @@ be discovered automatically.
 
 * CFEngine runs cf-know -bf enterprise_build.cf to build the knowledge map.
 
-* You may create enterprise process documents and written policies for your
+* You may create enterprise process documents and written policy for your
   organization, which you will link into the knowledge map.
 
 * CFEngine Nova creates the Knowledge Map which includes a conceptual framework

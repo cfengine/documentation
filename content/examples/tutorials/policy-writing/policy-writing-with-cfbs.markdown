@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Writing policy
+title: Policy writing with cfbs
 sorting: 40
 aliases:
   - "/getting-started-writing-policy.html"
   - "/getting-started/writing-policy"
+  - "/getting-started/04-writing-policy"
 ---
 
-Now that we are familiar with how CFEngine works, and how you can use modules and the web UI, let's take a look at policy.
-CFEngine policy language is a flexible, declarative language for describing the desired state of your infrastructure (or individual host).
+In this tutorial we will show how to write and run CFEngine policy for someone already using `cfbs` and `cf-remote`.
 
 To start, create a new file and open it, or the folder, in your editor:
 
@@ -207,10 +207,6 @@ To speed it up, you can click the hostname to go to the host info page, and the 
 ## Next steps
 
 This is by no means a complete guide to policy writing, but should give you an idea of how to use modules, and get started building and experimenting.
-Next, we will look at implementing modules, such as the git promise type we used here:
-
-[Developing modules][Developing modules]
-
 If you would like to learn more about policy writing, these are some good resources to look at:
 
 - [Language concepts][Language concepts]

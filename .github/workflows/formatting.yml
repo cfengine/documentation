@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   check:
-    name: Check formatting using cfengine dev docs-format
+    name: Check formatting using CFEngine CLI
     runs-on: ubuntu-24.04
     steps:
       - name: Checks-out repository
