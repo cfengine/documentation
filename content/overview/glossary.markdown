@@ -266,7 +266,7 @@ Another name for CFEngine policy language, the programming language you write to
 
 #### Policy server
 
-The special server that others consult for the latest policies is called the _policy server_.
+The special server that others consult for the latest policy is called the _policy server_.
 Typically the policy server is set by the bootstrapping process.
 
 #### Policy set
@@ -314,7 +314,7 @@ For historical reasons, certain computers are referred to as servers, especially
 In CFEngine, `cf-serverd` is a software component that serves files from one computer to another.
 All computers are recommended to run `cf-serverd`, making all computers CFEngine servers, whether they are laptops, phones, or data center computers.
 
-The special server that others consult for the latest policies is called the policy server.
+The special server that others consult for the latest policy is called the policy server.
 
 #### Service catalogue
 

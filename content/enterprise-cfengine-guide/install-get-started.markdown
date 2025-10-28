@@ -33,13 +33,13 @@ For Enterprise 3.6 local mail relay is used, and it is assumed the server has a 
 
 The default FROM email for all emails sent from the Mission Portal is `admin@organization.com`. This can be changed on the CFE Server in `/var/cfengine/httpd/htdocs/application/config/appsettings.php:$config['appemail']`.
 
-### Version your policies
+### Version your policy
 
-Consider enabling the built-in version control of your policies as
+Consider enabling the built-in version control of your policy as
 described in
 [Version control and configuration policy][Best practices#Version control and configuration policy]
 
-Whether you do or not, please put your policies in some kind of
+Whether you do or not, please put your policy in some kind of
 backed-up VCS. Losing work because of "fat fingering" `rm` commands is
 very, very depressing.
 

@@ -11,7 +11,7 @@ Using an editor that provides syntax highlighting and other features can signifi
 
 ## Emacs
 
-For Emacs users, editing CFEngine policies is easy with the built-in CFEngine 3 mode in the [cfengine.el library](https://github.com/cfengine/core/blob/master/contrib/cfengine.el). For an overview of the capabilities, see the [webinar by Ted Zlatanov](https://www.youtube.com/watch?v=-PPVhwSKNdE) and Appendix A of Diego Zamboni's [Learning CFEngine](https://leanpub.com/learning-cfengine/) book.
+For Emacs users, editing CFEngine policy is easy with the built-in CFEngine 3 mode in the [cfengine.el library](https://github.com/cfengine/core/blob/master/contrib/cfengine.el). For an overview of the capabilities, see the [webinar by Ted Zlatanov](https://www.youtube.com/watch?v=-PPVhwSKNdE) and Appendix A of Diego Zamboni's [Learning CFEngine](https://leanpub.com/learning-cfengine/) book.
 
 ![Emacs](guide-writing-and-serving-policy-editors-emacs.png)
 
@@ -23,7 +23,7 @@ Spacemacs has a [CFEngine layer](https://github.com/syl20bnr/spacemacs/blob/deve
 
 ## Vi/Vim
 
-Vi/Vim users can edit CFEngine policies with Neil Watson's CFEngine 3 scripts, available as GPL-software [on GitHub](https://github.com/neilhwatson/vim_cf3). Neil's vi mode is also described in Appendix B of Diego Zamboni's "Learning CFEngine" book.
+Vi/Vim users can edit CFEngine policy with Neil Watson's CFEngine 3 scripts, available as GPL-software [on GitHub](https://github.com/neilhwatson/vim_cf3). Neil's vi mode is also described in Appendix B of Diego Zamboni's "Learning CFEngine" book.
 
 ![Vim](guide-writing-and-serving-policy-editors-vim.png)
 

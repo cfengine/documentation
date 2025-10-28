@@ -37,7 +37,7 @@ In this tutorial, you will perform the following:
 
 ### "Hello world" policy example
 
-Policies contain **bundles**, which are collections of promises. A **promise** is a declaration of
+Policy files contain **bundles**, which are collections of promises. A **promise** is a declaration of
 intent. Bundles allow related promises to be grouped together, as illustrated in the steps that follow.
 
 Following these steps, you will login to your policy server via the SSH protocol, use the vi command line editor to create a policy file named hello_world.cf, and create a bundle that calls a promise to display some text.

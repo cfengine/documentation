@@ -11,8 +11,8 @@ To define new Desired States in CFEngine, you need to write policy files. These 
 
 ## /var/cfengine/inputs and promises.cf
 
-In CFEngine, `cf-agent` executes all policies. `cf-agent` runs every 5 minutes
-by default, and it executes policies found locally in the `/var/cfengine/inputs`
+In CFEngine, `cf-agent` enforces your policy. `cf-agent` runs every 5 minutes
+by default, and it evaluates policy files found locally in the `/var/cfengine/inputs`
 directory. The default policy entry is a file called `promises.cf`. In this file
 you normally reference bundles and other policy files.
 
@@ -103,9 +103,9 @@ Stand Alone system. The next two sections will cover each of the options.
 
 ### Option#1: Running the policy on a stand alone system
 
-Since CFEngine is fully distributed we can run policies locally. This can come
+Since CFEngine is fully distributed we can run policy locally. This can come
 in handy as the result of a run is instant, especially during the design phase
-where you would like to test out various policies.
+where you would like to test out various policy files.
 
 To run the file locally, you can log into any of your hosts that has CFEngine
 installed and follow these steps. For this tutorial, use your Policy Server for
@@ -125,7 +125,7 @@ cf-agent -Kf /tmp/example.cf
 ```
 
 As you can see, the response is immediate! Running CFEngine locally like this is
-ideal for testing out new policies. To check that the file has been successfully
+ideal for testing out new policy. To check that the file has been successfully
 created type:
 
 ```command
@@ -145,7 +145,7 @@ In a Stand Alone system, to make and run a policy remember to:
 
 CFEngine is designed for large-scale systems. It is fully distributed which
 means that all the logic and decision making takes place on the end-points, or
-hosts as we call them in CFEngine. The hosts fetch their policies from one
+hosts as we call them in CFEngine. The hosts fetch their policy from one
 central distribution point. To continue with this option you need to have
 CFEngine running on at least one host and one policy server.
 
@@ -158,7 +158,7 @@ By default `cf-serverd` will serve policy from the `/var/cfengine/masterfiles`
 directory. When the content changes, cf-agent will download the updated files to
 `/var/cfengine/inputs` before executing them locally.
 
-This means that by default you should store all your policies in the
+This means that by default you should store all your policy in the
 `/var/cfengine/masterfiles` directory on your policy server. So, now create
 `/var/cfengine/masterfiles/example.cf` with the content of the test policy
 previously authored.
@@ -199,5 +199,5 @@ this a promise repaired. If the file exists during a run, the result would be
 promise kept.
 
 Congratulations! You now have the basic knowledge needed to write and run
-CFEngine policies. Let's continue with an example on how to manage users. Click
+CFEngine policy. Let's continue with an example on how to manage users. Click
 here to continue.

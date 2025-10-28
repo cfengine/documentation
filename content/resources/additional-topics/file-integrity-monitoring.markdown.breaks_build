@@ -555,7 +555,7 @@ reports:
 
   "Help me $(probes)!" if => "$(probes)_threshold";
 
-The value of the CFEngine's component integration is to have transparent access to the detailed running state of the system at all times. It is possible to defined quite complex policies, and to respond to incidents based on the specific data discovered.
+The value of the CFEngine's component integration is to have transparent access to the detailed running state of the system at all times. It is possible to define quite complex policy, and to respond to incidents based on the specific data discovered.
 
 Previous: Threshold monitoring, Up: Process and network scanning
 2.4 Port monitoring

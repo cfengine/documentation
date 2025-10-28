@@ -14,7 +14,7 @@ bytes in string `input` and populates `array`. Returns the dimension.
 This function mirrors the exact behavior of
 [`readintarray()`][readintarray], but reads data from a variable
 instead of a file. By making data readable from a variable, data driven
-policies can be kept inline.
+policy can be kept inline.
 
 The `comment` field is a multiline regular expression and will strip out
 unwanted patterns from the file being read, leaving unstripped characters to be

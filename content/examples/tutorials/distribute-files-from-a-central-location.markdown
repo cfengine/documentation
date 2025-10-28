@@ -6,7 +6,7 @@ aliases:
   - "/examples-tutorials-distribute-files-from-a-central-location.html"
 ---
 
-CFEngine can manage many machines simply by distributing policies to all its hosts.
+CFEngine can manage many machines simply by distributing policy files to all its hosts.
 This tutorial describes how to distribute files to hosts from a central policy server location.
 For this example, we will distribute software patches.
 

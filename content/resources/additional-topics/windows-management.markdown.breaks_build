@@ -37,8 +37,8 @@ priviliges. To ensure this, open a Command Prompt in Administrative mode and run
 'msiexec -i cfengine-nova-VERSION-ARCH.msi' (replace VERSION and ARCH
 appropriately).
 
-If you are just going to test your policies on a Windows host, it is more
-efficient to not bootstrap to a policy server, but run the policies locally just
+If you are just going to test your policy on a Windows host, it is more
+efficient to not bootstrap to a policy server, but run the policy locally just
 after you create them. You can install the license with the cf-key -l command –
 you will need to copy over the licensed public key as advised by cf-key -l.1
 
@@ -52,7 +52,7 @@ following command to bootstrap the Windows host.
 C:\Program Files\Cfengine\bin\cf-agent.exe --bootstrap --policy-server 123.456.789.123
 ```
 
-# Testing policies locally
+# Testing policy locally
 
 Create a new text file Cfengine\inputs\promises.cf and input the following text
 using your favourite text editor.
@@ -158,7 +158,7 @@ starting and stopping dependencies, and configuring when the services should be
 started (e.g. only when they are being used).
 
 Note that the name of a service in Windows may be different from its "Display
-name". CFEngine Enterprise policies use the name, not the display name, due to
+name". CFEngine Enterprise policy use the name, not the display name, due to
 the need of uniqueness.
 
 A complete example of a service management bundle is show below.
@@ -317,9 +317,9 @@ following hard classes is defined.
 
 Note that all defined hard classes for a given system is shown by running cf-promises -v.
 
-# Notes on windows policies
+# Notes on windows policy
 
-A potential problem source when writing policies for windows is that paths to
+A potential problem source when writing policy for windows is that paths to
 executables often contain spaces. This makes it impossible for CFEngine to know
 where the executable ends and the parameters to it starts. To solve this, we
 place escaped quotes around the executable. Windows share paths (double

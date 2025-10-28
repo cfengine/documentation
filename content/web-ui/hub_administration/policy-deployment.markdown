@@ -56,7 +56,7 @@ The last option, a read-only login, is the best approach as it removes the possi
 
 To configure the upstream repository. You must provide the uri and a refspec (branch name usually).
 Credentials can be specified in several ways as mentioned above so pick your choice above and enter in only the needed information in the form.
-If your CFEngine policies are not located in the repository root, you can specify the path in the "Project subdirectory" text input field.
+If your CFEngine policy is not located in the repository root, you can specify the path in the "Project subdirectory" text input field.
 
 ### Configuring upstream VCS via Mission Portal
 
@@ -161,5 +161,5 @@ tail -n 5 /var/cfengine/outputs/dc-scripts.log
                           @(inventory.bundles),
                                              ^
    error: There are syntax errors in policy files
-The staged policies in /opt/cfengine/masterfiles_staging_tmp could not be validated, aborting.: Unknown Error
+The staged policy in /opt/cfengine/masterfiles_staging_tmp could not be validated, aborting.: Unknown Error
 ```

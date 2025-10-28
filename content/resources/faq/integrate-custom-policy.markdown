@@ -14,7 +14,7 @@ policy framework upgrades.
 For example, it is common to store custom policy files under `services/SERVICE`
 or `ORGINIZATION` from the root of your policy set.
 
-Here we only describe ways to include and execute custom policies.
+Here we only describe ways to include and execute custom policy files.
 
 ## Using autorun
 

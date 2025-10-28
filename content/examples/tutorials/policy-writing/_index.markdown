@@ -7,7 +7,7 @@ aliases:
   - "/examples/tutorials/writing-and-serving-policy"
 ---
 
-## About policies and promises
+## About policy and promises
 
 Central to CFEngine's effectiveness in system administration is the concept of a "promise," which defines the intent and expectation of how some part of an overall system should behave.
 
@@ -105,7 +105,7 @@ needless fragility and keep two independent quality assurance processes apart.
 
 - [Bundles best practices][Bundles best practices] Refer to this page as you decide when to make a bundle and when to use classes and/or variables in them.
 
-- [Testing policies][Testing policies] This page describes how to locally test CFEngine and play with configuration files.
+- [Testing policy][Testing policy] This page describes how to locally test CFEngine and play with configuration files.
 
 ## See also
 

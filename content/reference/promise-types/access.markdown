@@ -587,7 +587,7 @@ hold enumerated classes for orchestration purposes.
 
 If you want to send the value of a policy defined variable in the server
 host (which for some reason is not available directly through policy on
-the client, e.g. because they have different policies), then you could
+the client, e.g. because they have different policy files), then you could
 use the following construction:
 
 ```cf3 {skip TODO}

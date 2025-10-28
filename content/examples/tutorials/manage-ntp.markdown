@@ -94,7 +94,7 @@ The handle uniquely identifies a promise within a policy. A recommended naming s
 classes         => results("bundle", "ntp_package_");
 ```
 
-`classes` provide context which can help drive the logic in your policies. In this example, classes for each promise outcome are defined prefixed with `ntp_package_`, for details check out the implementation of `body classes results` in the stdlib. For example, `ntp_package_repaired` will be defined if cf-agent did not have the ntp package installed and had to install it. `ntp_package_kept` would be defined if the ntp package is already installed and `ntp_package_notkept` would be defined.
+`classes` provide context which can help drive the logic in your policy. In this example, classes for each promise outcome are defined prefixed with `ntp_package_`, for details check out the implementation of `body classes results` in the stdlib. For example, `ntp_package_repaired` will be defined if cf-agent did not have the ntp package installed and had to install it. `ntp_package_kept` would be defined if the ntp package is already installed and `ntp_package_notkept` would be defined.
 
 On your hub create `services/ntp.cf` inside _masterfiles_ with the following content:
 
@@ -281,7 +281,7 @@ You have now written a complete policy to ensure that the NTP package is install
 
 Now we will manage the configuration file using the built-in mustache templating engine, set up appropriate file permissions, and restart the service when necessary.
 
-By default, the NTP service leverages configuration properties specified in /etc/ntp.conf. In this tutorial, we introduce the concept of the files promise type. With this promise type, you can create, delete, and edit files using CFEngine policies. The example policy below illustrates the use of the files promise.
+By default, the NTP service leverages configuration properties specified in /etc/ntp.conf. In this tutorial, we introduce the concept of the files promise type. With this promise type, you can create, delete, and edit files using CFEngine policy. The example policy below illustrates the use of the files promise.
 
 ```cf3
 bundle agent ntp

@@ -12,7 +12,7 @@ When writing CFEngine policy using our [Policy style guide][Policy style guide] 
 
 ## Version control and configuration policy
 
-CFEngine users version their policies. It's a reasonable, easy thing
+CFEngine users version their policy. It's a reasonable, easy thing
 to do: you just put `/var/cfengine/masterfiles` under version control
 and... you're done?
 
@@ -29,14 +29,14 @@ by default. This allows users to use branches for separate hubs
 ### Release pipeline
 
 A build and release pipeline is how software is typically delivered to
-production through testing stages. In the case of CFEngine, policies
+production through testing stages. In the case of CFEngine, policy files
 are the software. Users have at least two stages, development and
 production, but typically the sequence has more stages including
 various forms of testing/QA and pre-production.
 
 ### Policy changes
 
-If you want to make manual changes to your policies, simply make those
+If you want to make manual changes to your policy, simply make those
 changes in a checkout of your masterfiles repository, commit and push
 the changes. The next time `update.cf` runs, your changes will be
 checked out and in minutes distributed through your entire
@@ -49,9 +49,9 @@ infrastructure.
   like Subversion, Mercurial, and CVS.
 - tested, reliable, and built-in
 - supports any repository and branch per hub
-- your policies are validated before deployment
+- your policy files are validated before deployment
 - integration happens through shell scripts and `update.cf`, not C
-  code or special policies
+  code or special policy files
 
 ### How to enable it
 

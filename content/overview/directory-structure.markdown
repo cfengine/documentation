@@ -41,9 +41,9 @@ invoked by `cf-execd`, it reads only from this directory.
 ### /var/cfengine/masterfiles
 
 Policy repository which grants access to local or bootstrapped CFEngine
-clients when they need to update their policies. Policies obtained from
+clients when they need to update their policy. Policy files obtained from
 `/var/cfengine/masterfiles` are then cached in `/var/cfengine/inputs` for
-local policy execution. The `cf-agent` executable does not execute policies
+local policy execution. The `cf-agent` executable does not execute policy
 directly from this repository.
 
 ## Output directories

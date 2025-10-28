@@ -274,7 +274,7 @@ This is part of the restriction of privilege for child processes when
 running `cf-agent` as the root user, or a user with privileges.
 
 Windows requires the clear text password for the user account to run
-under. Keeping this in CFEngine policies could be a security hazard.
+under. Keeping this in CFEngine policy files could be a security hazard.
 Therefore, this option is not yet implemented on Windows versions of
 CFEngine.
 
