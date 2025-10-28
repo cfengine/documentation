@@ -83,4 +83,4 @@ At this point you have a good overview of what CFEngine does, and you can choose
 Once you feel comfortable with the CFEngine Hub, modules, and reports, you are ready to move on, and learn CFEngine's expressive policy language and powerful module system.
 You're not limited by what modules others have made, you can write the code you need to get things done:
 
-[Writing policy][Writing policy]
+[Policy writing][Policy writing]

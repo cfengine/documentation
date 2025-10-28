@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Writing and serving policy
+title: Policy writing
 sorting: 100
 aliases:
   - "/examples-tutorials-writing-and-serving-policy.html"
