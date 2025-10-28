@@ -4,6 +4,7 @@ title: Authoring policy tools & workflow
 sorting: 5
 aliases:
   - "/examples-tutorials-writing-and-serving-policy-authoring-policy-tools-and-workflow.html"
+  - "/examples/tutorials/writing-and-serving-policy/authoring-policy-tools-and-workflow"
 ---
 
 There are several ways to approach authoring promises and ensuring they are copied into and then deployed properly from the `masterfiles` directory:

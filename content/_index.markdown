@@ -35,7 +35,7 @@ aliases:
             <div>Know more about your infrastructure and hosts, their data, compliance and make changes from within the Web UI.</div>
          </li>
          <li>
-            <a href="/examples/tutorials/writing-and-serving-policy">Tutorial series on policy language</a>
+            <a href="/examples/tutorials/policy-writing">Tutorial series on policy language</a>
             <div>In-depth tutorials on how to work with CFEngine policy.</div>
          </li>
       </ul>

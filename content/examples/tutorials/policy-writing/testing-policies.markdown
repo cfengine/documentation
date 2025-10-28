@@ -4,6 +4,7 @@ title: Testing policies
 sorting: 50
 aliases:
   - "/examples-tutorials-writing-and-serving-policy-testing-policies.html"
+  - "/examples/tutorials/writing-and-serving-policy/testing-policies"
 ---
 
 One of the practical advantages of CFEngine is that you can test it without

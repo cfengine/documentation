@@ -4,6 +4,7 @@ title: Editors
 sorting: 10
 aliases:
   - "/examples-tutorials-writing-and-serving-policy-editors.html"
+  - "/examples/tutorials/writing-and-serving-policy/editors"
 ---
 
 Using an editor that provides syntax highlighting and other features can significantly enhance prodcutivity and quality of life.

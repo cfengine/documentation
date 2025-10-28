@@ -4,6 +4,7 @@ title: Writing and serving policy
 sorting: 100
 aliases:
   - "/examples-tutorials-writing-and-serving-policy.html"
+  - "/examples/tutorials/writing-and-serving-policy"
 ---
 
 ## About policies and promises
