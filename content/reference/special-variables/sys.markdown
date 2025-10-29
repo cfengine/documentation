@@ -1315,6 +1315,8 @@ reports:
  "Policy hub is $(sys.policy_hub)";
 ```
 
+**See also:** [`policy_server.dat`](/overview/directory-structure/#policy_serverdat), [`sys.policy_hub_port`](#syspolicy_hub_port)
+
 **History:**
 
 - Introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010).
@@ -1326,6 +1328,8 @@ The default port which `cf-agent` will use by default when making outbound
 connections to `cf-serverd`. This defaults to `5308` but can be
 overridden based on the data provided during bootstrap stored in
 `$(sys.workdir)/policy_server.dat`.
+
+**See also:** [`policy_server.dat`](/overview/directory-structure/#policy_serverdat), [`sys.policy_hub`](#syspolicy_hub)
 
 **History:**
 
