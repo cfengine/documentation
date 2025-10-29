@@ -51,6 +51,12 @@ The number of `#` characters at the beginning of a line signifies the heading le
 
 ### Links
 
+#### Link to an anchor on the same page
+
+You can link to any documentation page using `[linktext](#acnchor)`.
+
+For example, on the [`sys` vars page][sys], sys.policy_hub_port and sys.policy_hub have cross referencing links.
+
 #### Link within documentation and to known pages
 
 You can link to any documentation page using `[linktext][PageTitle]`.

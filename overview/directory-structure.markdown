@@ -190,7 +190,7 @@ _pid files_ in the work directory.
 
 Specifies the host's primary policy server in the format `(<IP>|<Hostname>)[:<Port>]`. This file's contents are used to define the `default:sys.policy_hub` and `default:sys.policy_hub_port` variables.
 
-**See also:** [`default:sys.policy_hub`][sys#sys.policy_hub], [`default:sys.policy_hub_port`][sys#sys.policy_hub_port]
+**See also:** [`default:sys.policy_hub`](/reference/special-variables/sys#syspolicy_hub), [`default:sys.policy_hub_port`](/reference/special-variables/sys#syspolicy_hub_port)
 
 **History:**
 
