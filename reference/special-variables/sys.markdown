@@ -1303,7 +1303,7 @@ reports:
  "Policy hub is $(sys.policy_hub)";
 ```
 
-**See also:** [`policy_server.dat`](/overview/directory-structure/#policy_serverdat), [`sys.policy_hub_port`](#syspolicy_hub_port)
+**See also:** [`policy_server.dat`](/overview-directory-structure/#policy_server-dat), [`sys.policy_hub_port`](#sys-policy_hub_port)
 
 **History:**
 
@@ -1317,7 +1317,7 @@ connections to ```cf-serverd```. This defaults to ```5308``` but can be
 overridden based on the data provided during bootstrap stored in
 ```$(sys.workdir)/policy_server.dat```.
 
-**See also:** [`policy_server.dat`](/overview/directory-structure/#policy_serverdat), [`sys.policy_hub`](#syspolicy_hub)
+**See also:** [`policy_server.dat`](/overview-directory-structure/#policy_server-dat), [`sys.policy_hub`](#sys-policy_hub)
 
 **History:**
 
