@@ -247,7 +247,6 @@ domain => "example.org";
 }
 ```
 
-
 ### goal_patterns
 
 **Description:** Contains regular expressions that match promisees/topics
