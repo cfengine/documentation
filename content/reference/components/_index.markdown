@@ -130,6 +130,37 @@ vars:
 you expect your policies to be run by older version, you'll need an explicit
 `bundlesequence`.
 
+### evaluation_order
+
+**Description:** Controls the evaluation order of promises within a bundle.
+
+This setting allows you to change how `cf-agent` executes promises. By default, CFEngine uses a `classic` evaluation order, where promises are executed in a predefined order based on their type (e.g., `vars` before `files`, `files` before `packages`, etc.). This is the historical behavior of CFEngine.
+
+By setting `evaluation_order` to `top_down`, you can force `cf-agent` to evaluate promises in the order they are written in the policy file, from top to bottom. This can make policy easier to write and understand, especially for new users, as the execution flow follows the visual layout of the code.
+
+This attribute can be set in `body common control` to affect all components, or in `body agent control` to affect only `cf-agent`.
+
+**Type:** `string`
+
+**Allowed input range:** `(classic|top_down)`
+
+**Default value:** `classic`
+
+**Example:**
+
+```cf3
+body common control
+{
+  evaluation_order => "top_down";
+}
+```
+
+**See also:** [`evaluation_order` in `body common control`][cf-agent#evaluation_order], [Policy style guide on promise ordering][Policy style guide#Promise ordering]
+
+**History:**
+
+- Introduced in CFEngine 3.27.0
+
 ### bwlimit
 
 **Description:** Coarse control of bandwidth any cf-serverd or cf-agent process
@@ -215,6 +246,7 @@ body common control
 domain => "example.org";
 }
 ```
+
 
 ### goal_patterns
 
