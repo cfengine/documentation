@@ -36,7 +36,7 @@ The other is reader optimized where promises are written in the
 order they make sense to the reader. Both styles have their merits,
 but there seems to be a trend toward the reader optimized style.
 
-1. Normal Order
+### Normal Order
 
 Here is an example of a policy written in the Normal Order. Note how
 `packages` are listed after `files`. This could confuse a novice who
@@ -77,28 +77,38 @@ bundle agent main
 }
 ```
 
-2. Reader Optimized
+### Reader Optimized
 
 Here is an example of a policy written to be optimized for the reader.
 Note how packages are listed before files in the order which users
 think about taking imperitive action. This style can make it
-significantly easier for a novice to understand the desired state, but
-it is important to remember that Normal ordering still applies and
-that the promises will not be actuated in the order they are written.
+significantly easier for a novice to understand the desired state.
+
+Historically, it was important to remember that Normal ordering still applied and
+that the promises would not be actuated in the order they are written. However,
+as of CFEngine 3.27.0, you can use `evaluation_order => "top_down";` in
+`body common control` or `body agent control` to make the execution order match
+the written order.
 
 ```cf3
+body common control
+{
+  evaluation_order => "top_down";
+}
+
 bundle agent main
 {
-  vars:
-
-      "sshd_config"
-        string => "/etc/ssh/sshd_config";
 
   packages:
 
       "ssh"
         policy => "present";
         package_module => apt_get;
+
+  vars:
+
+      "sshd_config"
+       string => "/etc/ssh/sshd_config";
 
   files:
 
@@ -118,6 +128,8 @@ bundle agent main
 
 }
 ```
+
+When using `top_down` evaluation, the "Reader Optimized" style becomes the actual execution order.
 
 ## Whitespace and line length
 
