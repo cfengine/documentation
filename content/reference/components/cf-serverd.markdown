@@ -80,6 +80,10 @@ allowconnects => {
      };
 ```
 
+**See also:** [`default:control_server.allowconnects`](/reference/special-variables/control_server/#defaultcontrol_serverallowconnects)
+
+**History:** Added in CFEngine 3.0.0
+
 ### allowallconnects
 
 **Description:** List of IP addresses that may have more than one
@@ -112,6 +116,10 @@ allowallconnects      => {
      };
 ```
 
+**See also:** [`default:control_server.allowallconnects`](/reference/special-variables/control_server/#defaultcontrol_serverallowallconnects)
+
+**History:** Added in CFEngine 3.0.0
+
 ### allowlegacyconnects
 
 **Description:** List of hosts from which the server accepts connections
@@ -138,7 +146,9 @@ specify a list of hosts allowed to use the legacy protocol.
 
 {{< CFEngine_promise_attribute() >}}
 
-**See also:** [`protocol_version`][Components#protocol_version]
+**See also:** [`protocol_version`][Components#protocol_version], [`default:control_server.allowlegacyconnects`](/reference/special-variables/control_server/#defaultcontrol_serverallowlegacyconnects)
+
+**History:** Added in CFEngine 3.0.0
 
 ### allowciphers
 
@@ -168,7 +178,8 @@ this does not do anything as the classic protocol does not support TLS ciphers.
 [`allowtlsversion`][cf-serverd#allowtlsversion],
 [`encrypt`][files#encrypt],
 [`logencryptedtransfers`][cf-serverd#logencryptedtransfers],
-[`ifencrypted`][access#ifencrypted]
+[`ifencrypted`][access#ifencrypted],
+[`default:control_server.allowciphers`](/reference/special-variables/control_server/#defaultcontrol_serverallowciphers)
 
 **History:** Introduced in CFEngine 3.6.0
 
@@ -199,7 +210,8 @@ this attribute does not do anything.
 [`allowciphers`][cf-serverd#allowciphers],
 [`encrypt`][files#encrypt],
 [`logencryptedtransfers`][cf-serverd#logencryptedtransfers],
-[`ifencrypted`][access#ifencrypted]
+[`ifencrypted`][access#ifencrypted],
+[`default:control_server.allowtlsversion`](/reference/special-variables/control_server/#defaultcontrol_serverallowtlsversion)
 
 **History:** Introduced in CFEngine 3.7.0
 
@@ -221,6 +233,29 @@ correspond to system identities on the server-side system.
 ```cf3 {skip TODO}
 allowusers => { "cfengine", "root" };
 ```
+
+**See also:** [`default:control_server.allowusers`](/reference/special-variables/control_server/#defaultcontrol_serverallowusers)
+
+**History:** Added in CFEngine 3.0.0
+
+### auditing
+
+**Description:** The `auditing` menu option policy is a true/false flag to determine whether connections to cf-serverd will be audited.
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** false
+
+**Example:**
+
+```cf3
+body server control
+{
+  auditing => "true";
+}
+```
+
+**See also:** [`default:control_server.auditing`](/reference/special-variables/control_server/#defaultcontrol_serverauditing)
 
 ### bindtointerface
 
@@ -257,6 +292,27 @@ Connection to 172.16.100.1 5308 port [tcp/cfengine] succeeded!
 Connection to fe80:470:1d:a2f::2 5308 port [tcp/cfengine] succeeded!
 ^C
 ```
+
+**See also:** [`default:control_server.bindtointerface`](/reference/special-variables/control_server/#defaultcontrol_serverbindtointerface)
+
+### dynamicaddresses
+
+**Description:** The `dynamicaddresses` slist contains IP addresses which should be allowed to re-connect from different IP addresses.
+
+**Type:** `slist`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+```cf3
+body server control
+{
+  dynamicaddresses => { "192.168.1.100", "2001:db8::1" };
+}
+```
+
+**See also:** [`default:control_server.dynamicaddresses`](/reference/special-variables/control_server/#defaultcontrol_serverdynamicaddresses)
 
 ### cfruncommand
 
@@ -384,6 +440,8 @@ bundle server my_access_rules()
 
 **Note:** In the [Masterfiles Policy Framework][Masterfiles Policy Framework], `body server control` and default access rules are found in `controls/cf_serverd.cf`.
 
+**See also:** [`default:control_server.call_collect_interval`](/reference/special-variables/control_server/#defaultcontrol_servercall_collect_interval)
+
 **History:** Was introduced in Enterprise 3.0.0 (2012)
 
 ### collect_window
@@ -400,6 +458,8 @@ open to a hub to attempt a report transfer before it is closed
     collect_window => "15";
 
 **Default value:** 30.
+
+**See also:** [`default:control_server.collect_window`](/reference/special-variables/control_server/#defaultcontrol_servercollect_window)
 
 **History:** Was introduced in Enterprise 3.0.0 (2012)
 
@@ -517,6 +577,10 @@ maxconnections => "1000";
 }
 ```
 
+**See also:** [`default:control_server.maxconnections`](/reference/special-variables/control_server/#defaultcontrol_servermaxconnections)
+
+**History:** Added in CFEngine 3.0.0
+
 ### port
 
 **Description:** Default port for the CFEngine server
@@ -553,6 +617,10 @@ this could change in the future.
 
 Changing the standard port number is not recommended practice. You
 should not do it without a good reason.
+
+**See also:** [`default:control_server.port`](/reference/special-variables/control_server/#defaultcontrol_serverport)
+
+**History:** Added in CFEngine 3.0.0
 
 ### serverfacility
 
@@ -637,6 +705,29 @@ body server control
 trustkeysfrom => { "10.0.1.1", "192.168.0.0/16"};
 }
 ```
+
+**See also:** [`default:control_server.trustkeysfrom`](/reference/special-variables/control_server/#defaultcontrol_servertrustkeysfrom)
+
+**History:** Added in CFEngine 3.0.0
+
+### hostnamekeys
+
+**Description:** The `hostnamekeys` menu option policy determines whether to label ppkeys by hostname not IP address. This represents a server side choice to base key associations on host names rather than IP address. This is useful for hosts with dynamic addresses.
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** false
+
+**Example:**
+
+```cf3
+body server control
+{
+  hostnamekeys => "true";
+}
+```
+
+**See also:** [`default:control_server.hostnamekeys`](/reference/special-variables/control_server/#defaultcontrol_serverhostnamekeys)
 
 ### listen
 

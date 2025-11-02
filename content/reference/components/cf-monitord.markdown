@@ -200,6 +200,10 @@ forgetrate => "0.7";
 }
 ```
 
+**See also:** [`default:control_monitor.forgetrate`](/reference/special-variables/control_monitor/#defaultcontrol_monitorforgetrate)
+
+**History:** Added in CFEngine 3.0.0
+
 ### histograms
 
 **Deprecated:** Ignored, kept for backward compatibility
@@ -221,6 +225,8 @@ body monitor control
 histograms => "true";
 }
 ```
+
+**See also:** [`default:control_monitor.histograms`](/reference/special-variables/control_monitor/#defaultcontrol_monitorhistograms)
 
 ### monitorfacility
 
@@ -250,6 +256,8 @@ histograms => "true";
     monitorfacility => "LOG_USER";
     }
 
+**See also:** [`default:control_monitor.monitorfacility`](/reference/special-variables/control_monitor/#defaultcontrol_monitormonitorfacility)
+
 ### tcpdump
 
 **Description:** true/false use tcpdump if found
@@ -264,6 +272,10 @@ Interface with TCP stream if possible.
     {
     tcpdump => "true";
     }
+
+**See also:** [`default:control_monitor.tcpdump`](/reference/special-variables/control_monitor/#defaultcontrol_monitortcpdump)
+
+**History:** Added in CFEngine 3.0.0
 
 ### tcpdumpcommand
 
@@ -284,3 +296,7 @@ body monitor control
 tcpdumpcommand => "/usr/sbin/tcpdump -i eth1";
 }
 ```
+
+**See also:** [`default:control_monitor.tcpdumpcommand`](/reference/special-variables/control_monitor/#defaultcontrol_monitortcpdumpcommand)
+
+**History:** Added in CFEngine 3.0.0

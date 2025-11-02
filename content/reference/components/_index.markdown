@@ -126,6 +126,8 @@ vars:
 }
 ```
 
+**See also:** [`default:control_common.bundlesequence`](/reference/special-variables/control_common/#defaultcontrol_commonbundlesequence)
+
 **History:** The default to `{ "main" }` was introduced in version 3.7.0, so if
 you expect your policies to be run by older version, you'll need an explicit
 `bundlesequence`.
@@ -162,6 +164,8 @@ body common control
 
 In this example, bwlimit is set to 10MBytes/sec = 80Mbit/s meaning that
 CFEngine would only consume up to ~80% of any 100Mbit ethernet interface.
+
+**See also:** [`default:control_common.bwlimit`](/reference/special-variables/control_common/#defaultcontrol_commonbwlimit)
 
 ### cache_system_functions
 
@@ -295,6 +299,10 @@ This authorizes the bundlesequence to contain possibly
 undefined bundles cause a fatal error in parsing, and a transition
 to failsafe mode.
 
+**See also:** [`default:control_common.ignore_missing_bundles`](/reference/special-variables/control_common/#defaultcontrol_commonignore_missing_bundles)
+
+**History:** Added in CFEngine 3.0.0
+
 ### ignore_missing_inputs
 
 **Description:** If any input files do not exist, ignore and continue
@@ -319,6 +327,10 @@ not found.
 ```cf3 {skip TODO}
 ignore_missing_inputs => "true";
 ```
+
+**See also:** [`default:control_common.ignore_missing_inputs`](/reference/special-variables/control_common/#defaultcontrol_commonignore_missing_inputs)
+
+**History:** Added in CFEngine 3.0.0
 
 ### inputs
 
@@ -345,7 +357,7 @@ inputs  => {
 }
 ```
 
-**See also:** [`inputs`][file control#inputs] in `body file control`
+**See also:** [`inputs`][file control#inputs] in `body file control`, [`default:control_common.inputs`](/reference/special-variables/control_common/#defaultcontrol_commoninputs)
 
 **Notes:**
 
@@ -361,6 +373,8 @@ In addition, if you include a file once with path `/x/y/z.cf` and
 again with path `/x/./y/z.cf`, the duplicate file will be rejected
 regardless of any path tricks or symbolic links. The contents are
 hashed, so the same file can't be included twice.
+
+**History:** Added in CFEngine 3.0.0
 
 ### lastseenexpireafter
 
@@ -385,7 +399,9 @@ lastseenexpireafter => "72";
 }
 ```
 
-**See also:** [hostsseen()][hostsseen], [cf-hub][cf-hub]
+**See also:** [hostsseen()][hostsseen], [cf-hub][cf-hub], [`default:control_common.lastseenexpireafter`](/reference/special-variables/control_common/#defaultcontrol_commonlastseenexpireafter)
+
+**History:** Added in CFEngine 3.0.0
 
 ### output_prefix
 
@@ -460,7 +476,7 @@ body common control
 using the [`body copy_from protocol_version`][files#protocol_version]
 attribute. When undefined (the default) peers automatically negotiate the latest protocol version.
 
-**See also:** [`body copy_from protocol_version`][files#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`tls_ciphers`][Components#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
+**See also:** [`body copy_from protocol_version`][files#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`tls_ciphers`][Components#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted], [`default:control_common.protocol_version`](/reference/special-variables/control_common/#defaultcontrol_commonprotocol_version)
 
 **History:**
 
@@ -597,6 +613,8 @@ body common control
 }
 ```
 
+**See also:** [`default:control_common.system_log_level`](/reference/special-variables/control_common/#defaultcontrol_commonsystem_log_level)
+
 **History:**
 
 - Introduced in 3.19.0, 3.18.1
@@ -619,7 +637,7 @@ body common control
 }
 ```
 
-**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
+**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted], [`default:control_common.tls_ciphers`](/reference/special-variables/control_common/#defaultcontrol_commontls_ciphers)
 
 **History:** Introduced in CFEngine 3.7.0
 
@@ -637,7 +655,7 @@ body common control
 }
 ```
 
-**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_ciphers`][Components#tls_ciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`ifencrypted`][access#ifencrypted], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers]
+**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_ciphers`][Components#tls_ciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`ifencrypted`][access#ifencrypted], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`default:control_common.tls_min_version`](/reference/special-variables/control_common/#defaultcontrol_commontls_min_version)
 
 **History:** Introduced in CFEngine 3.7.0
 

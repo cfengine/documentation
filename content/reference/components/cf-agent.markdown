@@ -221,6 +221,8 @@ bundle agent subtest(user)
 }
 ```
 
+**See also:** [`default:control_agent.abortbundleclasses`](/reference/special-variables/control_agent/#defaultcontrol_agentabortbundleclasses)
+
 ### abortclasses
 
 **Description:** The `abortclasses` slist contains regular expressions that
@@ -285,6 +287,8 @@ error: Fatal CFEngine error: cf-agent aborted on defined class 'should_not_conti
 **Note:** CFEngine class expressions are **not** supported. To handle class
 expressions, simply create an alias for the expression with a single name.
 
+**See also:** [`default:control_agent.abortclasses`](/reference/special-variables/control_agent/#defaultcontrol_agentabortclasses)
+
 ### addclasses
 
 **Description:** The `addclasses` slist contains classes to be defined
@@ -316,6 +320,8 @@ Classes here are added unequivocally to the system. If classes are
 used to predicate definition, then they must be defined in terms of
 global hard classes.
 
+**See also:** [`default:control_agent.addclasses`](/reference/special-variables/control_agent/#defaultcontrol_agentaddclasses)
+
 ### agentaccess
 
 **Description:** A `agentaccess` slist contains user names that are
@@ -334,6 +340,8 @@ rather than a security measure.
 ```cf3 {skip TODO}
 agentaccess => { "mark", "root", "sudo" };
 ```
+
+**See also:** [`default:control_agent.agentaccess`](/reference/special-variables/control_agent/#defaultcontrol_agentagentaccess)
 
 ### agentfacility
 
@@ -367,7 +375,7 @@ agentfacility => "LOG_USER";
 
 This is ignored on Windows, as CFEngine Enterprise creates event logs.
 
-**See also:** Manual pages for syslog.
+**See also:** Manual pages for syslog, [`default:control_agent.agentfacility`](/reference/special-variables/control_agent/#defaultcontrol_agentagentfacility)
 
 ### allclassesreport
 
@@ -398,6 +406,8 @@ a more convenient way to retrieve a list of set classes at execution time.
 
 **History:** Was introduced in 3.2.4, Enterprise 2.1.4 (2011)
 
+**See also:** [`default:control_agent.allclassesreport`](/reference/special-variables/control_agent/#defaultcontrol_agentallclassesreport)
+
 ### alwaysvalidate
 
 **Description:** The `alwaysvalidate` menu option policy is a true/false
@@ -427,6 +437,8 @@ will force a revalidation of the input.
 
 **History:** Was introduced in version 3.1.2,Enterprise 2.0.1 (2010)
 
+**See also:** [`default:control_agent.alwaysvalidate`](/reference/special-variables/control_agent/#defaultcontrol_agentalwaysvalidate)
+
 ### auditing
 
 **Deprecated:** This menu option policy is deprecated, does
@@ -455,6 +467,8 @@ be given as the argument, not the device name.
 bindtointerface => "192.168.1.1";
 ```
 
+**See also:** [`default:control_agent.bindtointerface`](/reference/special-variables/control_agent/#defaultcontrol_agentbindtointerface)
+
 ### checksum_alert_time
 
 **Description:** The value of checksum_alert_time represents the
@@ -479,6 +493,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.checksum_alert_time`](/reference/special-variables/control_agent/#defaultcontrol_agentchecksum_alert_time)
+
 ### childlibpath
 
 **Description:** The `childlibpath` string contains the LD_LIBRARY_PATH
@@ -500,6 +516,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.childlibpath`](/reference/special-variables/control_agent/#defaultcontrol_agentchildlibpath)
+
 ### copyfrom_restrict_keys
 
 This attribute restricts `cf-agent` to copying files from hosts that have a key explicitly defined in this list.
@@ -516,7 +534,7 @@ body agent control
 }
 ```
 
-**See also:** `admit_keys`, `controls/cf_agent.cf`
+**See also:** `admit_keys`, `controls/cf_agent.cf`, [`default:control_agent.copyfrom_restrict_keys`](/reference/special-variables/control_agent/#defaultcontrol_agentcopyfrom_restrict_keys)
 
 **History:**
 
@@ -555,7 +573,7 @@ stored in an alternative repository as `_usr_local_etc_postfix.conf.cfsaved`. If
 unset then backups are stored in the same directory as the original file with an
 identifying suffix.
 
-**See also:** [`edit_backup` in `body edit_defaults`][files#edit_backup], [`copy_backup` in `body copy_from`][files#copy_backup]
+**See also:** [`edit_backup` in `body edit_defaults`][files#edit_backup], [`copy_backup` in `body copy_from`][files#copy_backup], [`default:control_agent.default_repository`](/reference/special-variables/control_agent/#defaultcontrol_agentdefault_repository)
 
 ### default_timeout
 
@@ -576,7 +594,7 @@ body agent control
 }
 ```
 
-**See also:** [body `copy_from` timeout][files#timeout], [`cf-runagent` timeout][cf-runagent#timeout]
+**See also:** [body `copy_from` timeout][files#timeout], [`cf-runagent` timeout][cf-runagent#timeout], [`default:control_agent.default_timeout`](/reference/special-variables/control_agent/#defaultcontrol_agentdefault_timeout)
 
 **Notes:**
 
@@ -609,6 +627,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.defaultcopytype`](/reference/special-variables/control_agent/#defaultcontrol_agentdefaultcopytype)
+
 ### dryrun
 
 **Description:** The `dryrun` menu option, if set, makes no changes to
@@ -626,6 +646,8 @@ body agent control
   dryrun => "true";
 }
 ```
+
+**See also:** [`default:control_agent.dryrun`](/reference/special-variables/control_agent/#defaultcontrol_agentdryrun)
 
 ### editbinaryfilesize
 
@@ -654,6 +676,8 @@ body agent control
 When setting limits, the limit on editing binary files should
 generally be set higher than for text files.
 
+**See also:** [`default:control_agent.editbinaryfilesize`](/reference/special-variables/control_agent/#defaultcontrol_agenteditbinaryfilesize)
+
 ### editfilesize
 
 **Description:** The value of `editfilesize` is the limit on maximum text
@@ -676,6 +700,8 @@ body agent control
   editfilesize => "120k";
 }
 ```
+
+**See also:** [`default:control_agent.editfilesize`](/reference/special-variables/control_agent/#defaultcontrol_agenteditfilesize)
 
 ### environment
 
@@ -717,31 +743,7 @@ Some interactive programs insist on values being set, for example:
 environment => { "LANG=C" };
 ```
 
-### expireafter
-
-**Description:** The value of `expireafter` is a global default for time
-before on-going promise repairs are interrupted.
-
-This represents the locking time after which CFEngine will attempt to
-kill and restart its attempt to keep a promise.
-
-**Type:** `int`
-
-**Allowed input range:** `0,99999999999`
-
-**Default value:** 1 min
-
-**Example:**
-
-```cf3
-body action example
-{
-  ifelapsed   => "120"; # 2 hours
-  expireafter => "240"; # 4 hours
-}
-```
-
-**See also:** [`body action expireafter`][Promise types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+**See also:** [`default:control_agent.environment`](/reference/special-variables/control_agent/#defaultcontrol_agentenvironment)
 
 ### evaluation_order
 
@@ -774,6 +776,32 @@ body agent control
 
 - Introduced in CFEngine 3.27.0
 
+### expireafter
+
+**Description:** The value of `expireafter` is a global default for time
+before on-going promise repairs are interrupted.
+
+This represents the locking time after which CFEngine will attempt to
+kill and restart its attempt to keep a promise.
+
+**Type:** `int`
+
+**Allowed input range:** `0,99999999999`
+
+**Default value:** 1 min
+
+**Example:**
+
+```cf3
+body action example
+{
+  ifelapsed   => "120"; # 2 hours
+  expireafter => "240"; # 4 hours
+}
+```
+
+**See also:** [`body action expireafter`][Promise types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body executor control agent_expireafter`][cf-execd#agent_expireafter]
+
 ### files_auto_define
 
 **Description:** The `files_auto_define` slist contains a list of regular expressions matching filenames. When a file matching one of these regular expressions is **copied to** classes prefixed with `auto_` are defined.
@@ -794,6 +822,8 @@ automatically.
 **Example:**
 
 {{< CFEngine_include_example(files_auto_define.cf) >}}
+
+**See also:** [`default:control_agent.files_auto_define`](/reference/special-variables/control_agent/#defaultcontrol_agentfiles_auto_define)
 
 ### files_single_copy
 
@@ -820,6 +850,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.files_single_copy`](/reference/special-variables/control_agent/#defaultcontrol_agentfiles_single_copy)
+
 ### hashupdates
 
 **Description:** The `hashupdates` determines whether stored hashes are
@@ -841,6 +873,8 @@ body agent control
   hashupdates => "true";
 }
 ```
+
+**See also:** [`default:control_agent.hashupdates`](/reference/special-variables/control_agent/#defaultcontrol_agenthashupdates)
 
 ### hostnamekeys
 
@@ -924,6 +958,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.inform`](/reference/special-variables/control_agent/#defaultcontrol_agentinform)
+
 ### intermittency
 
 **Deprecated:** This attribute does nothing and is kept for backward
@@ -960,7 +996,7 @@ body agent control
 }
 ```
 
-**See also:** [`background` in action bodies][Promise types#background]
+**See also:** [`background` in action bodies][Promise types#background], [`default:control_agent.max_children`](/reference/special-variables/control_agent/#defaultcontrol_agentmax_children)
 
 ### maxconnections
 
@@ -989,6 +1025,8 @@ body agent control
 Watch out for kernel limitations for maximum numbers of open file
 descriptors which can limit this.
 
+**See also:** [`default:control_agent.maxconnections`](/reference/special-variables/control_agent/#defaultcontrol_agentmaxconnections)
+
 ### mountfilesystems
 
 **Description:** The `mountfilesystems` menu option policy determines
@@ -1010,6 +1048,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.mountfilesystems`](/reference/special-variables/control_agent/#defaultcontrol_agentmountfilesystems)
+
 ### nonalphanumfiles
 
 **Description:** The `nonalphanumfiles` menu option policy determines
@@ -1029,6 +1069,8 @@ body agent control
   nonalphanumfiles => "true";
 }
 ```
+
+**See also:** [`default:control_agent.nonalphanumfiles`](/reference/special-variables/control_agent/#defaultcontrol_agentnonalphanumfiles)
 
 ### refresh_processes
 
@@ -1063,6 +1105,8 @@ efficiency of the agent.
 
 **History:** Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
 
+**See also:** [`default:control_agent.refresh_processes`](/reference/special-variables/control_agent/#defaultcontrol_agentrefresh_processes)
+
 ### repchar
 
 **Description:** The `repchar` string represents a character used to
@@ -1084,6 +1128,8 @@ body agent control
 ```
 
 **Notes:**
+
+**See also:** [`default:control_agent.repchar`](/reference/special-variables/control_agent/#defaultcontrol_agentrepchar)
 
 ### report_class_log
 
@@ -1132,6 +1178,8 @@ The following classes are excluded from logging:
 - `from_cfexecd`
 - Life cycle (`Lcycle_0`, `GMT_Lcycle_3`)
 
+**See also:** [`default:control_agent.report_class_log`](/reference/special-variables/control_agent/#defaultcontrol_agentreport_class_log)
+
 ### secureinput
 
 **Description:** The `secureinput` menu option policy checks whether
@@ -1152,6 +1200,8 @@ body agent control
   secureinput => "true";
 }
 ```
+
+**See also:** [`default:control_agent.secureinput`](/reference/special-variables/control_agent/#defaultcontrol_agentsecureinput)
 
 ### select_end_match_eof
 
@@ -1197,6 +1247,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.sensiblecount`](/reference/special-variables/control_agent/#defaultcontrol_agentsensiblecount)
+
 ### sensiblesize
 
 **Description:** The value of `sensiblesize` represents the minimum
@@ -1216,6 +1268,8 @@ body agent control
   sensiblesize => "20K";
 }
 ```
+
+**See also:** [`default:control_agent.sensiblesize`](/reference/special-variables/control_agent/#defaultcontrol_agentsensiblesize)
 
 ### skipidentify
 
@@ -1241,6 +1295,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.skipidentify`](/reference/special-variables/control_agent/#defaultcontrol_agentskipidentify)
+
 ### suspiciousnames
 
 **Description:** The `suspiciousnames` slist contains names to skip and warn
@@ -1261,6 +1317,8 @@ body agent control
   suspiciousnames => { ".mo", "lrk3", "rootkit" };
 }
 ```
+
+**See also:** [`default:control_agent.suspiciousnames`](/reference/special-variables/control_agent/#defaultcontrol_agentsuspiciousnames)
 
 ### syslog
 
@@ -1284,6 +1342,10 @@ body agent control
   timezone => { "MET", "CET", "GMT+1" };
 }
 ```
+
+**See also:** [`default:control_agent.timezone`][control_agent#default:control_agent.timezone]
+
+**History:** Introduced in CFEngine 3.0.0
 
 ### track_value
 
@@ -1311,3 +1373,5 @@ body agent control
   verbose => "true";
 }
 ```
+
+**See also:** [`default:control_agent.verbose`](/reference/special-variables/control_agent/#defaultcontrol_agentverbose)
