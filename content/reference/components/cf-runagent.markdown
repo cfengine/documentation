@@ -76,6 +76,8 @@ body runagent control
 }
 ```
 
+**See also:** [`default:control_runagent.hosts`](/reference/special-variables/control_runagent/#defaultcontrol_runagenthosts)
+
 ### port
 
 **Description:** Default port for CFEngine server
@@ -134,6 +136,9 @@ body copy_from example
 IPv6 should be harmless to most users unless you have a partially
 or misconfigured setup.
 
+**See also:** [`default:control_runagent.force_ipv4`](/reference/special-variables/control_runagent/#defaultcontrol_runagentforce_ipv4)
+**See also:** [`default:control_runagent.port`](/reference/special-variables/control_runagent/#defaultcontrol_runagentport)
+
 ### trustkey
 
 **Description:** true/false automatically accept all keys on trust
@@ -168,6 +173,8 @@ body copy_from example
 }
 ```
 
+**See also:** [`default:control_runagent.trustkey`](/reference/special-variables/control_runagent/#defaultcontrol_runagenttrustkey)
+
 ### encrypt
 
 **Description:** true/false encrypt connections with servers
@@ -190,6 +197,8 @@ body copy_from example
 }
 ```
 
+**See also:** [`default:control_runagent.encrypt`](/reference/special-variables/control_runagent/#defaultcontrol_runagentencrypt)
+
 ### background_children
 
 **Description:** true/false parallelize connections to servers
@@ -209,6 +218,8 @@ body runagent control
   background_children => "true";
 }
 ```
+
+**See also:** [`default:control_runagent.background_children`](/reference/special-variables/control_runagent/#defaultcontrol_runagentbackground_children)
 
 ### max_children
 
@@ -237,6 +248,8 @@ body runagent control
 }
 ```
 
+**See also:** [`default:control_runagent.max_children`](/reference/special-variables/control_runagent/#defaultcontrol_runagentmax_children)
+
 ### output_to_file
 
 **Description:** true/false whether to send collected output to
@@ -257,6 +270,8 @@ body runagent control
   output_to_file => "true";
 }
 ```
+
+**See also:** [`default:control_runagent.output_to_file`](/reference/special-variables/control_runagent/#defaultcontrol_runagentoutput_to_file)
 
 ### output_directory
 
@@ -280,6 +295,8 @@ body runagent control
 
 **History:** Was introduced in version 3.2.0, Enterprise 2.1.0 (2011)
 
+**See also:** [`default:control_runagent.output_directory`](/reference/special-variables/control_runagent/#defaultcontrol_runagentoutput_directory)
+
 ### timeout
 
 **Description:** Connection timeout in seconds
@@ -298,6 +315,7 @@ body runagent control
 ```
 
 **See also:** [body `copy_from` timeout][files#timeout], [agent `default_timeout`][cf-agent#default_timeout]
+**See also:** [`default:control_runagent.timeout`](/reference/special-variables/control_runagent/#defaultcontrol_runagenttimeout)
 
 ## Sockets
 
