@@ -157,6 +157,12 @@ Determines whether to warn about filenames with no alphanumeric content. This te
 
 **See also:** [`nonalphanumfiles` in `body agent control`][cf-agent#nonalphanumfiles]
 
+### default:control_agent.default_directory_create_mode
+
+Determines the default directory permissions when `cf-agent` creates parent directories during `files` promise repairs.
+
+**See also:** [`default_directory_create_mode` in `body agent control`][cf-agent#default_directory_create_mode], [`default:update_def.control_agent_default_directory_create_mode` in the standard library](/reference/masterfiles-policy-framework#configure-default-directory-creation-permissions-for-update-policy)
+
 ### default:control_agent.refresh_processes
 
 Contains bundles to reload the process table before verifying the bundles named in this list (lazy evaluation).
