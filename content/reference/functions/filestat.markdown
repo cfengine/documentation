@@ -15,7 +15,7 @@ variable does not expand.
 
 **Arguments**:
 
-- `filename` : the file or directory name to inspect, in the range: "?(/.\*)
+- `filename` : the file or directory name to inspect, in the range: `"?(/.\*)`
 - `field` : the requested field, with the following allowed values:
   - `size` : size in bytes
   - `gid` : group ID
