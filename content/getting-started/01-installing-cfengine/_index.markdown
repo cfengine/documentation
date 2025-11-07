@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Installation
+title: Installing CFEngine
 sorting: 10
 aliases:
   - "/getting-started-installation.html"
