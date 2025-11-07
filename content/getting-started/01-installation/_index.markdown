@@ -18,7 +18,7 @@ So, the only thing you need to get started is to set up 1 CFEngine Hub.
 
 CFEngine runs on a wide variety of platforms, including Windows, Mac, Linux, and BSD.
 For this tutorial, to make things simple, we are going to recommend one way to install and work with CFEngine.
-We will use an Ubuntu 20.04 Linux virtual machine as the CFEngine Hub, and we will interact with it using SSH and some python tools which you can install on your desktop / laptop.
+We will use an Ubuntu 24.04 Linux virtual machine as the CFEngine Hub, and we will interact with it using SSH and some python tools which you can install on your desktop / laptop.
 
 If you've never set up a virtual machine (VM) before, these are some easy ways:
 
@@ -37,7 +37,7 @@ With the Linux VM there are 2 machines we will be talking about:
 
 ![](machines.png)
 
-The **CFEngine hub** is the aforementioned Ubuntu 20.04 VM.
+The **CFEngine hub** is the aforementioned Ubuntu 24.04 VM.
 We will access this via SSH, and install CFEngine there.
 
 Your **development machine** is the machine you have in front of you, it can be any platform (Linux, Mac, Windows, ...).
@@ -79,7 +79,7 @@ python3 --version
 ```
 
 ```output
-Python 3.10.8
+Python 3.13.3
 ```
 
 And similar for `pip`:
@@ -123,7 +123,7 @@ cfbs --version
 Just as above, with python, you should see the version number like this:
 
 ```output
-cfbs 3.1.1
+cfbs 5.4.0
 ```
 
 And similarly for `cf-remote`:
@@ -133,9 +133,9 @@ cf-remote --version
 ```
 
 ```output
-cf-remote version 0.4.5
+cf-remote version 0.8.2
 Available CFEngine versions:
-master, 3.20.0, 3.18.x, 3.18.2, 3.18.1, 3.18.0, 3.15.x, 3.15.6, 3.15.5, 3.15.4, 3.15.3, 3.15.2, 3.15.1, 3.15.0, 3.15.0b1
+master, 3.26.0, 3.24.x, 3.24.2, 3.24.1, 3.24.0, 3.21.x, 3.21.7, 3.21.6, 3.21.5, 3.21.4, 3.21.3, 3.21.2, 3.21.1, 3.21.0
 ```
 
 ## Virtual machine IP and username
@@ -144,7 +144,7 @@ Decide on whether you want to use VMs in the cloud (Digital Ocean) or locally (V
 
 **Using Digital Ocean / Cloud platforms:**
 
-Spawn an Ubuntu 20.04 Linux Virtual Machine using the web GUI (in Digital Ocean, these are called droplets).
+Spawn an Ubuntu 24.04 Linux Virtual Machine using the web GUI (in Digital Ocean, these are called droplets).
 Find the IP address of your virtual machine, and the username so you can log in with SSH.
 For example, in Digital Ocean, the username is `root`, and the IP might be `128.199.44.119` (found in top left of droplet screen as "ipv4"):
 
@@ -191,7 +191,7 @@ cf-remote info -H hub
 
 ```output
 root@192.168.56.2
-OS            : Ubuntu 20
+OS            : Ubuntu 24
 Architecture  : x86_64
 CFEngine      : Not installed
 Policy server : None
