@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reporting and web UI
+title: Using the CFEngine Web UI
 sorting: 30
 aliases:
   - "/getting-started-reporting-and-web-ui.html"

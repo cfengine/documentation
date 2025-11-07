@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Modules from CFEngine Build
+title: Adding modules from CFEngine Build
 sorting: 20
 aliases:
   - "/getting-started-modules-from-cfengine-build.html"
