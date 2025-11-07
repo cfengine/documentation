@@ -10,6 +10,6 @@ aliases:
 
 <pre>
 
-{{< CFEngine_include_markdown(enterprise/ChangeLog.Enterprise) >}}
+{{< CFEngine_include_markdown(enterprise/CHANGELOG.md) >}}
 
 </pre>
