@@ -401,11 +401,11 @@ API returns new ID of the personal group.
 
 The configuration management database (CMDB) API enables you to manage classes and variables for specific host groups.
 
-## List CMDB
+## Get CMDB for specific shared group
 
 You can see a list of stored group-specific configurations
 
-**URI:** https://hub.cfengine.com/api/host-groups/shared/:id/cmdb
+**URI:** https://hub.cfengine.com/api/host-groups/v2/shared/:id/cmdb
 
 **Method:** GET
 
@@ -413,66 +413,90 @@ You can see a list of stored group-specific configurations
 
 - **id** _(integer)_
   Unique group identifier.
-- **fromEpoch** _(integer)_
-  Returns configurations with epoch value greater than set in the filter.
-  Epoch is the sequence number of the latest CMDB change. In every API list request,
-  `cmdb_epoch` will be present in the meta section, which contains the maximum
-  epoch value among selected items. Optional parameter.
-- **fromTime** _(timestamp)_
-  Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS` or `YYYY-mm-dd`. Optional parameter.
-- **toTime** _(timestamp)_
-  Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS` or `YYYY-mm-dd`. Optional parameter.
-- **skip** _(integer)_
-  Number of results to skip for the processed
-  query. The Mission Portal uses this for pagination. Optional parameter.
+- **sortColumn** _(string)_
+  Column to sort by. Default: `created_at`. Optional parameter.
+- **sortDescending** _(boolean)_
+  Sort in descending order. Default: `true`. Optional parameter.
 - **limit** _(integer)_
-  Limit the number of results in the query. Optional parameter.
+  Limit the number of results. Default: `10`. Optional parameter.
+- **skip** _(integer)_
+  Number of results to skip for pagination. Default: `0`. Optional parameter.
 
 **Example request (curl):**
 
 ```console
 curl -k --user <username>:<password> \
   -X GET \
-  https://hub.cfengine.com/api/host-groups/shared/4/cmdb?epochFrom=2
+  https://hub.cfengine.com/api/host-groups/v2/shared/4/cmdb?limit=20&skip=0
 ```
 
 **Example response:**
 
-```
-HTTP 200 Ok
+```json
 {
-    "data": {
-        "5": {
-            "classes": {
-                "My_class": {},
-                "My_class2": {
-                    "comment": "comment helps to understand what this class serves for"
-                }
-            },
-            "variables": {
-                "HubCMDB:My.hostname": {
-                    "value": "host1.cfengine.com",
-                    "comment": "comment"
-                },
-                "Namespace:BundleName.VariableName": {
-                    "value": "myvalue"
-                }
-            }
+  "data": [
+    {
+      "id": 1,
+      "group_id": 4,
+      "type": "class",
+      "name": "My_class",
+      "description": "CMDB class example",
+      "tags": ["production", "webserver"],
+      "meta": {},
+      "created_at": "2023-06-14 10:41:25.601112+00",
+      "entries": [
+        {
+          "id": 1,
+          "group_id": 4,
+          "entry_id": 1,
+          "item_name": "My_class",
+          "item_type": "class",
+          "item_value": null
         }
-    },
-    "meta": {
-        "count": "1",
-        "page": 1,
-        "timestamp": 1619116399,
-        "total": "1",
-        "cmdb_epoch": "13"
+      ]
     }
+  ],
+  "meta": { "total": 1, "page": 1, "count": 1 }
 }
 ```
 
 ## Get group's specific configuration
 
-**URI:** https://hub.cfengine.com/api/host-groups/shared/:id/cmdb/:type/:name/
+**URI:** https://hub.cfengine.com/api/host-groups/v2/shared/cmdb/:entry_id
+
+**Method:** GET
+
+**Parameters:**
+
+- **entry_id** _(integer)_
+  Unique entry identifier.
+
+**Example request (curl):**
+
+```console
+curl -k --user <username>:<password> \
+  -X GET \
+  https://hub.cfengine.com/api/host-groups/v2/shared/cmdb/5
+```
+
+**Example response:**
+
+```json
+{
+  "id": 6,
+  "group_id": 5,
+  "type": "variable",
+  "name": "server_ports",
+  "description": "Server port configuration",
+  "tags": ["network", "config"],
+  "meta": {},
+  "created_at": "2023-06-14 11:15:30.123456+00"
+}
+```
+
+## Get group's CMDB sub-entry
+
+**URI:** https://hub.cfengine.com/api/host-groups/v2/shared/:id/cmdb/subentry/:type/:name
 
 **Method:** GET
 
@@ -480,174 +504,140 @@ HTTP 200 Ok
 
 - **id** _(integer)_
   Unique group identifier.
-
 - **type** _(string)_
-  Configuration type. Allowed value: `variables`, `classes`
-
+  Subentry type (`class` or `variable`)
 - **name** _(string)_
-  Configuration name. Classes or variables name.
+  Subentry name.
 
 **Example request (curl):**
 
 ```console
 curl -k --user <username>:<password> \
   -X GET \
-  https://hub.cfengine.com/api/host-groups/shared/5/cmdb/variables/HubCMDB:My.hostname/
+  https://hub.cfengine.com/api/host-groups/v2/shared/5/cmdb/subentry/variable/Namespace:BundleName.Ports
 ```
 
 **Example response:**
 
-```
-HTTP 200 Ok
+```json
 {
-    "group_id": "5",
-    "variables": {
-        "default:def.augment_inputs": {
-            "tags": [
-                "suggestion-004"
-            ],
-            "value": [],
-            "comment": "Add filenames to this list to make the CFEngine agent parse them. Note: Update the bundle sequence to evaluate bundles from these policy files."
-        }
-    }
-}
-```
-
-## Get group's configurations
-
-**URI:** https://hub.cfengine.com/api/host-groups/shared/:id/cmdb
-
-**Method:** GET
-
-**Parameters:**
-
-- **id** _(string)_
-  Unique group identifier.
-
-**Example request (curl):**
-
-```console
-curl -k --user <username>:<password> \
-  -X GET \
-  https://hub.cfengine.com/api/host-groups/shared/5/cmdb
-```
-
-**Example response:**
-
-```
-HTTP 200 Ok
-{
-    "group_id": "5",
-    "value": {
-        "classes": {
-            "My_class": {},
-            "My_class2": {
-                "comment": ""
-            }
-        },
-        "variables": {
-            "HubCMDB:My.hostname": {
-                "value": "host1.cfengine.com",
-                "comment": "My hostname should be set to this"
-            },
-            "Namespace:BundleName.VariableName": {
-                "value": "myvalue"
-            }
-        }
-    }
+  "id": 1,
+  "group_id": 5,
+  "entry_id": 6,
+  "item_name": "Namespace:BundleName.Ports",
+  "item_type": "variable",
+  "item_value": "[\"80\", \"443\", \"8080\"]"
 }
 ```
 
 ## Create configuration
 
-**URI:** https://hub.cfengine.com/api/host-groups/shared/:id/cmdb/:type/:name/
+**URI:** https://hub.cfengine.com/api/host-groups/v2/shared/:id/cmdb
 
 **Method:** POST
 
 **Parameters:**
 
-- **id** _(string)_
+- **id** _(integer)_
   Unique group identifier.
-
-- **type** _(string)_
-  Configuration type. Allowed value: `variables`, `classes`
-
-- **name** _(string)_
-  Configuration name. Classes or variables name.
 
 **Request body parameters:**
 
-- **value** _(string|array)_
-  Variable value, can be array or text. Classes do not support values.
-
-- **comment** _(string)_
-  Variables or classes description. Optional parameter.
-
+- **type** _(string)_
+  Configuration type. Allowed values: `inventory`, `class`, `variable`, `policy_configuration`
+- **name** _(string)_
+  Configuration entry name (max 255 characters).
+- **description** _(string)_
+  Configuration description. Optional parameter.
 - **tags** _(array)_
-  Variables or classes tags. Optional parameter.
+  Array of tags. Optional parameter.
+- **meta** _(object)_
+  Metadata object. Optional parameter.
+- **entries** _(array)_
+  Array of sub-entries with the following structure:
+  - **item_name** _(string)_ - Name of the item (letters, numbers, dots, colons, underscores only)
+  - **item_type** _(string)_ - Type of item (`class` or `variable`)
+  - **item_value** _(mixed)_ - Value for variables (not used for classes). Optional parameter.
 
 **Example request (curl):**
 
 ```console
 curl -k --user <username>:<password> \
   -X POST \
-  https://hub.cfengine.com/api/host-groups/shared/5/cmdb/variables/Namespace:BundleName.Ports/ \
+  https://hub.cfengine.com/api/host-groups/v2/shared/5/cmdb \
   -H 'content-type: application/json' \
-  -d '
-  { "value": ["80", "443"],
-    "comment":"Openning ports",
-    "tags" : ["ports", "tag"]
+  -d '{
+    "type": "class",
+    "name": "class1",
+    "description": "CMDB class",
+    "tags": ["test_tag"],
+    "entries": [
+      {
+        "item_name": "class1",
+        "item_type": "class"
+      }
+    ]
   }'
 ```
 
 **Example response:**
 
-```
-HTTP 200 Ok
+```json
+{
+  "id": "6"
+}
 ```
 
 ## Update configuration
 
-**URI:** https://hub.cfengine.com/api/host-groups/shared/:id/cmdb/:type/:name/
+**URI:** https://hub.cfengine.com/api/host-groups/v2/shared/cmdb/:entry_id
 
-**Method:** PATCH
+**Method:** PUT
 
 **Parameters:**
 
-- **id** _(string)_
-  Unique group identifier.
-
-- **type** _(string)_
-  Configuration type. Allowed value: `variables`, `classes`
-
-- **name** _(string)_
-  Configuration name. Classes or variables name.
+- **entry_id** _(integer)_
+  Unique entry identifier.
 
 **Request body parameters:**
 
-- **value** _(string|array)_
-  Variable value, can be array or text. Classes do not support values.
-
-- **comment** _(string)_
-  Variables or classes description. Optional parameter.
-
-- **tags** _(array)_
-  Variables or classes tags. Optional parameter.
+- **type** _(string)_
+  Entry type. Examples: `class`, `variable`, `policy_configuration`, `inventory`
 
 - **name** _(string)_
-  New name, in case of renaming. Optional parameter.
+  Entry name.
+
+- **description** _(string)_
+  Entry description. Optional parameter.
+
+- **tags** _(array)_
+  Entry tags. Optional parameter.
+
+- **meta** _(object)_
+  Additional metadata. Optional parameter.
+
+- **entries** _(array)_
+  Array of subentries containing the actual configuration data.
 
 **Example request (curl):**
 
 ```console
 curl -k --user <username>:<password> \
-  -X PATCH \
-  https://hub.cfengine.com/api/host-groups/shared/5/cmdb/variables/Namespace:BundleName.Ports/ \
+  -X PUT \
+  https://hub.cfengine.com/api/host-groups/v2/shared/cmdb/5 \
   -H 'content-type: application/json' \
-  -d '
-  { "value": ["80", "443"],
-    "comment":"Openning ports",
-    "tags" : ["ports", "tag"]
+  -d '{
+    "type": "variable",
+    "name": "updated_server_ports",
+    "description": "Updated server port configuration",
+    "tags": ["network", "config", "updated"],
+    "entries": [
+      {
+        "item_name": "Namespace:BundleName.Ports",
+        "item_type": "variable",
+        "item_value": ["80", "443", "8080"]
+      }
+    ]
   }'
 ```
 
@@ -657,54 +647,23 @@ curl -k --user <username>:<password> \
 HTTP 200 Ok
 ```
 
-## Delete group's configurations
+## Delete specific configuration entry
 
-**URI:** https://hub.cfengine.com/api/host-groups/shared/:id/cmdb
+**URI:** https://hub.cfengine.com/api/host-groups/v2/shared/cmdb/:entry_id
 
 **Method:** DELETE
 
 **Parameters:**
 
-- **id** _(string)_
-  Unique group identifier.
+- **entry_id** _(integer)_
+  Unique entry identifier.
 
 **Example request (curl):**
 
 ```console
 curl -k --user <username>:<password> \
   -X DELETE \
-  https://hub.cfengine.com/api/host-groups/shared/5/cmdb
-```
-
-**Example response:**
-
-```
-HTTP 204 No Content
-```
-
-## Delete specific configuration
-
-**URI:** https://hub.cfengine.com/api/host-groups/shared/:id/cmdb/:type/:name/
-
-**Method:** DELETE
-
-**Parameters:**
-
-- **id** _(string)_
-  Unique group identifier.
-
-- **type** _(string)_
-  Configuration type. Allowed value: `variables`, `classes`
-
-- **name** _(string)_
-  Configuration name. Classes or variables name.
-
-**Example request (curl):**
-
-```console
-curl -k --user <username>:<password> \
-  -X DELETE \
-  https://hub.cfengine.com/api/host-groups/shared/5/cmdb/classes/My_class2/
+  https://hub.cfengine.com/api/host-groups/v2/shared/cmdb/5
 ```
 
 **Example response:**

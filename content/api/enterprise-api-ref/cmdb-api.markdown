@@ -5,487 +5,325 @@ aliases:
   - "/api-enterprise-api-ref-cmdb-api.html"
 ---
 
-The configuration management database (CMDB) API enables you to manage classes and variables for specific hosts.
+The configuration management database (CMDB) API v2 enables you to manage configuration entries for specific hosts.
 
-## List CMDB
+## Get CMDB for specific host
 
-You can see a list of stored host-specific configurations
+Get all configuration entries for a specific host.
 
-**URI:** https://hub.cfengine.com/api/cmdb
+**URI:** https://hub.cfengine.com/api/cmdb/v2/:hostkey
 
 **Method:** GET
 
 **Parameters:**
 
-- **fromEpoch** _(integer)_
-  Returns configurations with epoch value greater than set in the filter.
-  Epoch is the sequence number of the latest CMDB change. In every API list request,
-  `cmdb_epoch` will be present in the meta section, which contains the maximum
-  epoch value among selected items. Optional parameter.
-- **fromTime** _(timestamp)_
-  Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS` or `YYYY-mm-dd`. Optional parameter.
-- **toTime** _(timestamp)_
-  Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS` or `YYYY-mm-dd`. Optional parameter.
+- **hostkey** _(string)_
+  Unique host identifier.
+- **sortColumn** _(string)_
+  Column to sort by. Optional parameter.
+- **sortDescending** _(boolean)_
+  Sort in descending order. Optional parameter.
 - **skip** _(integer)_
-  Number of results to skip for the processed
-  query. The Mission Portal uses this for pagination. Optional parameter.
+  Number of results to skip for pagination. Optional parameter.
 - **limit** _(integer)_
-  Limit the number of results in the query. Optional parameter.
-- **hostContextInclude** _(array)_
-  Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
-- **hostContextExclude** _(array)_
-  Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at least one of the specified contexts set will be excluded from the results. Optional parameter.
+  Limit the number of results (max 100). Optional parameter.
 
 **Example request (curl):**
 
 ```console
 curl -k --user <username>:<password> \
   -X GET \
-  https://hub.cfengine.com/api/cmdb?epochFrom=2&hostContextInclude[]=ubuntu
+  https://hub.cfengine.com/api/cmdb/v2/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab?limit=10&skip=0
+```
+
+**Example response:**
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "hostkey": "SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab",
+      "created_at": "2025-09-08 13:53:37.303128",
+      "name": "my_class_config",
+      "description": "Sample class configuration",
+      "tags": ["test_tag", "production"],
+      "type": "class",
+      "meta": {},
+      "entries": [
+        {
+          "id": 1,
+          "entry_id": 1,
+          "item_name": "My_class",
+          "item_type": "class",
+          "item_value": null
+        }
+      ]
+    }
+  ],
+  "meta": { "total": 1, "page": 1, "count": 1 }
+}
+```
+
+## Create configuration entry
+
+Create a new configuration entry for a host.
+
+**URI:** https://hub.cfengine.com/api/cmdb/v2/:hostkey
+
+**Method:** POST
+
+**Parameters:**
+
+- **hostkey** _(string)_
+  Unique host identifier.
+
+**Request body parameters:**
+
+- **type** _(string)_
+  Configuration type. Allowed values: `inventory`, `class`, `variable`, `policy_configuration`
+- **name** _(string)_
+  Configuration entry name (max 255 characters).
+- **description** _(string)_
+  Configuration description. Optional parameter.
+- **tags** _(array)_
+  Array of tags. Optional parameter.
+- **meta** _(object)_
+  Metadata object. Optional parameter.
+- **entries** _(array)_
+  Array of sub-entries with the following structure:
+  - **item_name** _(string)_ - Name of the item (letters, numbers, dots, colons, underscores only)
+  - **item_type** _(string)_ - Type of item (`class` or `variable`)
+  - **item_value** _(mixed)_ - Value for variables (not used for classes). Optional parameter.
+
+**Example request for class (curl):**
+
+```console
+curl -k --user <username>:<password> \
+  -X POST \
+  https://hub.cfengine.com/api/cmdb/v2/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab \
+  -H 'content-type: application/json' \
+  -d '{
+    "type": "class",
+    "name": "class1",
+    "description": "CMDB class",
+    "tags": ["test_tag"],
+    "entries": [{
+      "item_name": "class1",
+      "item_type": "class"
+    }]
+  }'
+```
+
+**Example request for variable (curl):**
+
+```console
+curl -k --user <username>:<password> \
+  -X POST \
+  https://hub.cfengine.com/api/cmdb/v2/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab \
+  -H 'content-type: application/json' \
+  -d '{
+    "type": "variable",
+    "name": "my_variables",
+    "description": "Sample variables configuration",
+    "tags": ["variables", "config"],
+    "entries": [
+      {
+        "item_name": "HubCMDB:My.hostname",
+        "item_type": "variable",
+        "item_value": "host1.cfengine.com"
+      }
+    ]
+  }'
+```
+
+**Example response:**
+
+```json
+{
+  "id": 123
+}
+```
+
+## Get specific sub-entry
+
+Get a specific sub-entry by type and name.
+
+**URI:** https://hub.cfengine.com/api/cmdb/v2/subentry/:hostkey/:type/:name
+
+**Method:** GET
+
+**Parameters:**
+
+- **hostkey** _(string)_
+  Unique host identifier.
+- **type** _(string)_
+  Sub-entry type (`class` or `variable`).
+- **name** _(string)_
+  Sub-entry name.
+
+**Example request (curl):**
+
+```console
+curl -k --user <username>:<password> \
+  -X GET \
+  https://hub.cfengine.com/api/cmdb/v2/subentry/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/variable/HubCMDB:My.hostname
+```
+
+**Example response:**
+
+```json
+{
+  "id": 1,
+  "entry_id": 123,
+  "item_name": "HubCMDB:My.hostname",
+  "item_value": "host1.cfengine.com"
+}
+```
+
+## Update configuration entry
+
+Update an existing configuration entry by ID.
+
+**URI:** https://hub.cfengine.com/api/cmdb/v2/entry/:id
+
+**Method:** PUT
+
+**Parameters:**
+
+- **id** _(integer)_
+  Configuration entry ID.
+
+**Request body parameters:**
+
+Same as create request: `type`, `name`, `description`, `tags`, `meta`, `entries`
+
+**Example request (curl):**
+
+```console
+curl -k --user <username>:<password> \
+  -X PUT \
+  https://hub.cfengine.com/api/cmdb/v2/entry/123 \
+  -H 'content-type: application/json' \
+  -d '{
+    "type": "variable",
+    "name": "updated_variables",
+    "description": "Updated variables configuration",
+    "tags": ["variables", "updated"],
+    "entries": [
+      {
+        "item_name": "HubCMDB:My.hostname",
+        "item_type": "variable",
+        "item_value": "newhost.cfengine.com"
+      }
+    ]
+  }'
 ```
 
 **Example response:**
 
 ```
 HTTP 200 Ok
+```
+
+## Delete configuration entry
+
+Delete a configuration entry by ID.
+
+**URI:** https://hub.cfengine.com/api/cmdb/v2/entry/:id
+
+**Method:** DELETE
+
+**Parameters:**
+
+- **id** _(integer)_
+  Configuration entry ID.
+
+**Example request (curl):**
+
+```console
+curl -k --user <username>:<password> \
+  -X DELETE \
+  https://hub.cfengine.com/api/cmdb/v2/entry/123
+```
+
+**Example response:**
+
+```
+HTTP 204 No Content
+```
+
+## Get policy configuration IDs
+
+Get all policy configuration IDs for a host.
+
+**URI:** https://hub.cfengine.com/api/cmdb/v2/:hostkey/policy-configuration-ids
+
+**Method:** GET
+
+**Parameters:**
+
+- **hostkey** _(string)_
+  Unique host identifier.
+
+**Example request (curl):**
+
+```console
+curl -k --user <username>:<password> \
+  -X GET \
+  https://hub.cfengine.com/api/cmdb/v2/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/policy-configuration-ids
+```
+
+**Example response:**
+
+```json
+[
+  "policy-123",
+  "policy-456"
+]
+```
+
+## View Host-Specific JSON Configuration
+
+Get the rendered JSON configuration file for a host.
+
+**URI:** https://hub.cfengine.com/api/cmdb/v2/:hostkey/json
+
+**Method:** GET
+
+**Parameters:**
+
+- **hostkey** _(string)_
+  Unique host identifier.
+
+**Example request (curl):**
+
+```console
+curl -k --user <username>:<password> \
+  -X GET \
+  https://hub.cfengine.com/api/cmdb/v2/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/json
+```
+
+**Example response:**
+
+```json
 {
-    "data": {
-        "SHA=fdab725e8fb18aa0ad194477be8a2a1338b4b29f6a8597819af89697e432418f": {
-            "classes": {
-                "My_class": {},
-                "My_class2": {
-                    "comment": "comment helps to understand what this class serves for"
-                }
-            },
-            "variables": {
-                "HubCMDB:My.hostname": {
-                    "value": "host1.cfengine.com",
-                    "comment": "comment"
-                },
-                "Namespace:BundleName.VariableName": {
-                    "value": "myvalue"
-                }
-            }
-        }
+  "classes": {
+    "default:cfengine_internal_masterfiles_update": {
+      "comment": "Enable automatic VCS policy deployments",
+      "tags": []
     },
-    "meta": {
-        "count": "1",
-        "page": 1,
-        "timestamp": 1619116399,
-        "total": "1",
-        "cmdb_epoch": "13"
+    "default:services_autorun": {
+      "comment": "Automatically evaluate bundles tagged with autorun.",
+      "tags": []
     }
-}
-```
-
-## Get host's specific configuration
-
-**URI:** https://hub.cfengine.com/api/cmdb/:hostkey/:type/:name/
-
-**Method:** GET
-
-**Parameters:**
-
-- **hostkey** _(string)_
-  Unique host identifier.
-
-- **type** _(string)_
-  Configuration type. Allowed value: `variables`, `classes`
-
-- **name** _(string)_
-  Configuration name. Classes or variables name.
-
-**Example request (curl):**
-
-```console
-curl -k --user <username>:<password> \
-  -X GET \
-  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/variables/HubCMDB:My.hostname/
-```
-
-**Example response:**
-
-```
-HTTP 200 Ok
-{
-    "hostkey": "SHA=437d63cdc0b13ad18bb2d9de2490bfabe4edc8aa59f248b5b5b050c77bf4eeef",
-    "variables": {
-        "default:def.augment_inputs": {
-            "tags": [
-                "suggestion-004"
-            ],
-            "value": [],
-            "comment": "Add filenames to this list to make the CFEngine agent parse them. Note: Update the bundle sequence to evaluate bundles from these policy files."
-        }
-    }
-}
-```
-
-## Get host's configurations
-
-**URI:** https://hub.cfengine.com/api/cmdb/:hostkey
-
-**Method:** GET
-
-**Parameters:**
-
-- **hostkey** _(string)_
-  Unique host identifier.
-
-**Example request (curl):**
-
-```console
-curl -k --user <username>:<password> \
-  -X GET \
-  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab
-```
-
-**Example response:**
-
-```
-HTTP 200 Ok
-{
-    "hostkey": "SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab",
-    "value": {
-        "classes": {
-            "My_class": {},
-            "My_class2": {
-                "comment": ""
-            }
-        },
-        "variables": {
-            "HubCMDB:My.hostname": {
-                "value": "host1.cfengine.com",
-                "comment": "My hostname should be set to this"
-            },
-            "Namespace:BundleName.VariableName": {
-                "value": "myvalue"
-            }
-        }
-    }
-}
-```
-
-## Create configuration
-
-**URI:** https://hub.cfengine.com/api/cmdb/:hostkey/:type/:name/
-
-**Method:** POST
-
-**Parameters:**
-
-- **hostkey** _(string)_
-  Unique host identifier.
-
-- **type** _(string)_
-  Configuration type. Allowed value: `variables`, `classes`
-
-- **name** _(string)_
-  Configuration name. Classes or variables name.
-
-**Request body parameters:**
-
-- **value** _(string|array)_
-  Variable value, can be array or text. Classes do not support values.
-
-- **comment** _(string)_
-  Variables or classes description. Optional parameter.
-
-- **tags** _(array)_
-  Variables or classes tags. Optional parameter.
-
-**Example request (curl):**
-
-```console
-curl -k --user <username>:<password> \
-  -X POST \
-  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/variables/Namespace:BundleName.Ports/ \
-  -H 'content-type: application/json' \
-  -d '
-  { "value": ["80", "443"],
-    "comment":"Openning ports",
-    "tags" : ["ports", "tag"]
-  }'
-```
-
-**Example response:**
-
-```
-HTTP 200 Ok
-```
-
-## Batch create configurations
-
-**URI:** https://hub.cfengine.com/api/cmdb
-
-**Method:** POST
-
-**Parameters:**
-
-- **hostkey** _(string)_
-  Unique host identifier.
-- **classes** _(JSON object)_
-  The format is a JSON object where the key is class name and value is another JSON object
-  with optionals `comment` and `tags` property.
-  Example:
-
-  ```json
-  {
-    "classes": {
-      "My_class": {},
-      "My_class2": {
-        "comment": "comment body",
-        "tags": ["suggestion-001", "reporting"]
-      }
+  },
+  "variables": {
+    "variable_name": {
+      "comment": "test variable",
+      "tags": ["test"],
+      "value": "value"
     }
   }
-  ```
-
-- **variables** _(JSON object)_
-  The format is a JSON object where the key is variable name and value is another JSON object
-  with a required `value` property and optionals `comment` and `tags`.
-  Example:
-
-  ```json
-  {
-    "variables": {
-      "Namespace:BundleName.VariableName": { "value": "myvalue" },
-      "HubCMDB:My.hostname": {
-        "value": "host1.cfengine.com",
-        "comment": "My hostname should be set to this",
-        "tags": ["suggestion-001", "reporting"]
-      }
-    }
-  }
-  ```
-
-**Example request (curl):**
-
-```console
-curl -k --user <username>:<password> \
-  -X POST \
-  https://hub.cfengine.com/api/cmdb \
-  -H 'content-type: application/json' \
-  -d '{
-   "hostkey":"SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab",
-   "classes":{
-       "My_class": {},
-      "My_class2":{
-         "comment":"comment body",
-         "tags": ["suggestion-001", "reporting"]
-      }
-   },
-   "variables":{
-      "Namespace:BundleName.VariableName":{
-         "value":"myvalue"
-      },
-      "HubCMDB:My.hostname":{
-         "value":"host1.cfengine.com",
-         "comment":"My hostname should be set to this"
-      }
-   }
-}'
-```
-
-**Example response:**
-
-```
-HTTP 201 Created
-```
-
-## Update configuration
-
-**URI:** https://hub.cfengine.com/api/cmdb/:hostkey/:type/:name/
-
-**Method:** PATCH
-
-**Parameters:**
-
-- **hostkey** _(string)_
-  Unique host identifier.
-
-- **type** _(string)_
-  Configuration type. Allowed value: `variables`, `classes`
-
-- **name** _(string)_
-  Configuration name. Classes or variables name.
-
-**Request body parameters:**
-
-- **value** _(string|array)_
-  Variable value, can be array or text. Classes do not support values.
-
-- **comment** _(string)_
-  Variables or classes description. Optional parameter.
-
-- **tags** _(array)_
-  Variables or classes tags. Optional parameter.
-
-- **name** _(string)_
-  New name, in case of renaming. Optional parameter.
-
-**Example request (curl):**
-
-```console
-curl -k --user <username>:<password> \
-  -X PATCH \
-  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/variables/Namespace:BundleName.Ports/ \
-  -H 'content-type: application/json' \
-  -d '
-  { "value": ["80", "443"],
-    "comment":"Openning ports",
-    "tags" : ["ports", "tag"]
-  }'
-```
-
-**Example response:**
-
-```
-HTTP 200 Ok
-```
-
-## Batch update configurations
-
-**URI:** https://hub.cfengine.com/api/cmdb/:hostkey
-
-**Method:** PATCH
-
-**Parameters:**
-
-- **hostkey** _(string)_
-  Unique host identifier.
-- **classes** _(JSON object)_
-  The format is a JSON object where the key is class name and value is another JSON object
-  with an optional `comment` property.
-  Example:
-
-  ```json
-  {
-    "classes": { "My_class": {}, "My_class2": { "comment": "comment body" } }
-  }
-  ```
-
-If you need to delete all classes from host you need to set null value:
-
-```json
-{
-  "classes": null
 }
-```
-
-If your request body misses classes then the previous value will be preserved.
-
-- **variables** _(JSON object)_
-  The format is a JSON object where the key is variable name and value is another JSON object
-  with a required `value` property and an optional `comment` property.
-  Example:
-
-  ```json
-  {
-    "variables": {
-      "Namespace:BundleName.VariableName": { "value": "myvalue" },
-      "HubCMDB:My.hostname": {
-        "value": "host1.cfengine.com",
-        "comment": "My hostname should be set to this"
-      }
-    }
-  }
-  ```
-
-If you need to delete all variables from host you need to set null value:
-
-```json
-{
-  "variables": null
-}
-```
-
-If your request body misses variables then the previous value will be preserved.
-
-**Example request (curl):**
-
-```console
-curl -k --user <username>:<password> \
-  -X PATCH \
-  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab \
-  -H 'content-type: application/json' \
-  -d '{
-   "classes":{
-      "My_class2":{
-         "comment" : ""
-      },
-      "My_class": {}
-   },
-   "variables":{
-      "Namespace:BundleName.VariableName":{
-         "value":"myvalue"
-      },
-      "HubCMDB:My.hostname":{
-         "value":"host1.cfengine.com",
-         "comment":"My hostname should be set to this"
-      }
-   }
-}'
-```
-
-**Example response:**
-
-```
-HTTP 200 Ok
-```
-
-## Delete host's configurations
-
-**URI:** https://hub.cfengine.com/api/cmdb/:hostkey
-
-**Method:** DELETE
-
-**Parameters:**
-
-- **hostkey** _(string)_
-  Unique host identifier.
-
-**Example request (curl):**
-
-```console
-curl -k --user <username>:<password> \
-  -X DELETE \
-  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab
-```
-
-**Example response:**
-
-```
-HTTP 204 No Content
-```
-
-## Delete specific configuration
-
-**URI:** https://hub.cfengine.com/api/cmdb/:hostkey/:type/:name/
-
-**Method:** DELETE
-
-**Parameters:**
-
-- **hostkey** _(string)_
-  Unique host identifier.
-
-- **type** _(string)_
-  Configuration type. Allowed value: `variables`, `classes`
-
-- **name** _(string)_
-  Configuration name. Classes or variables name.
-
-**Example request (curl):**
-
-```console
-curl -k --user <username>:<password> \
-  -X DELETE \
-  https://hub.cfengine.com/api/cmdb/SHA=f622992fa4525070f47da086041a38733496f03a77880f70b1ce6784c38f79ab/classes/My_class2/
-```
-
-**Example response:**
-
-```
-HTTP 204 No Content
 ```
