@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$#" != 4 ]; then
-    echo "Pass 4 args, please:"
+if [ "$#" -lt 4 ]; then
+    echo "Pass at least 4 args, please:"
     echo BRANCH
     echo PACKAGE_JOB
     echo PACKAGE_UPLOAD_DIRECTORY
@@ -23,6 +23,7 @@ export BRANCH=$1
 export PACKAGE_JOB=$2
 export PACKAGE_UPLOAD_DIRECTORY=$3
 export PACKAGE_BUILD=$4
+export LTS_VERSION=$5
 
 export JOB_TO_UPLOAD=$PACKAGE_JOB
 export NO_OUTPUT_DIR=1
@@ -137,7 +138,7 @@ fi
 ./_regenerate_json.sh || exit 4
 
 # Preprocess Documentation with custom macros
-./_scripts/cfdoc_preprocess.py "$BRANCH" || exit 5
+./_scripts/cfdoc_preprocess.py "$BRANCH" "$LTS_VERSION" || exit 5
 
 # rvm commands are insane scripts which pollut output
 # so instead of set -x we just echo each command ourselves
