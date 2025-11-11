@@ -32,5 +32,5 @@ fi
 
 c=$(buildah from -v "$PWD":/nt docs-revamp-22)
 trap 'buildah run "$c" bash -c "sudo chown -R root:root /nt; sudo chmod -R a+rwX /nt"; buildah rm "$c" >/dev/null' EXIT
-buildah run "$c" bash -x documentation/generator/build/main.sh "$BRANCH" "$PACKAGE_JOB" "$PACKAGE_UPLOAD_DIRECTORY" "$PACKAGE_BUILD"
+buildah run "$c" bash -x documentation/generator/build/main.sh "$BRANCH" "$PACKAGE_JOB" "$PACKAGE_UPLOAD_DIRECTORY" "$PACKAGE_BUILD" "$LTS_VERSION"
 buildah run "$c" bash -x documentation/generator/_scripts/_publish.sh "$BRANCH"

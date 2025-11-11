@@ -25,12 +25,20 @@ import json
 import sys
 
 
-def patch(current_branch):
+def patch(current_branch, lts_version):
     url = "https://docs.cfengine.com/docs/branches.json"
     response = urllib.request.urlopen(url)
     data = json.loads(response.read())
 
     with open("_includes/header_nav_options.html", "w") as f:
+        # Add Latest LTS entry if current branch is lts
+        if current_branch == "lts":
+            print(
+                '<a onclick="selectVersion(\'javascript:void(0);\')" href="#" selected="selected">Latest LTS (%s)</a>'
+                % lts_version,
+                file=f,
+            )
+
         for branch in data["docs"]:
             if (
                 "(LTS)" not in branch["Title"]
