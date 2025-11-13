@@ -15,6 +15,7 @@ repositoryUrl = "https://github.com/cfengine/documentation"
 searchBaseUrl = "/docs/search/%branch%/"
 searchUrlPrefix = ".."
 domain = "docs.cfengine.com"
+isLTS = false
 
 [params.cfengine]
 branch = "%branch%"

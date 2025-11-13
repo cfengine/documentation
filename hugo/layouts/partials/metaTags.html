@@ -1,0 +1,3 @@
+{{ if not .Site.Params.isLTS }}
+<link rel="canonical" href="https://{{ .Site.Params.domain }}/docs/lts{{ .RelPermalink }}" />
+{{ end }}

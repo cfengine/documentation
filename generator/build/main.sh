@@ -128,6 +128,8 @@ if [ "$BRANCH" = "lts" ]; then
     sed -i '/^title = /s/ %branch%//' "$CONFIG_TOML"
     # Replace %branch% in searchBaseUrl with "lts"
     sed -i '/^searchBaseUrl = /s/%branch%/lts/' "$CONFIG_TOML"
+    # Set isLTS to true
+    sed -i 's/isLTS = false/isLTS = true/' "$CONFIG_TOML"
     # Then replace remaining %branch% with LTS_VERSION
     sed -i "s/%branch%/$LTS_VERSION/g" "$CONFIG_TOML"
 else
