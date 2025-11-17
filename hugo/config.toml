@@ -15,6 +15,7 @@ repositoryUrl = "https://github.com/cfengine/documentation"
 searchBaseUrl = "/docs/search/%branch%/"
 searchUrlPrefix = ".."
 domain = "docs.cfengine.com"
+isLTS = false
 
 [params.cfengine]
 branch = "%branch%"
@@ -40,6 +41,9 @@ wrapperClass = 'hlc'
 
 [markup.goldmark.renderer]
   unsafe = true # Allow HTML in md files
+
+[params.sitemap]
+baseUrl = "https://docs.cfengine.com/docs/%branch%"
 
 [params.theme.colors]
   primary = "#15357f" # home page h1

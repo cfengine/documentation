@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$#" != 4 ]; then
-    echo "Pass 4 args, please:"
+if [ "$#" -lt 4 ]; then
+    echo "Pass at least 4 args, please:"
     echo BRANCH
     echo PACKAGE_JOB
     echo PACKAGE_UPLOAD_DIRECTORY
@@ -23,6 +23,7 @@ export BRANCH=$1
 export PACKAGE_JOB=$2
 export PACKAGE_UPLOAD_DIRECTORY=$3
 export PACKAGE_BUILD=$4
+export LTS_VERSION=$5
 
 export JOB_TO_UPLOAD=$PACKAGE_JOB
 export NO_OUTPUT_DIR=1
@@ -121,13 +122,27 @@ sudo chmod -R a+rX "$WRKDIR"/masterfiles
 echo "branch: $BRANCH" >> "$WRKDIR"/documentation/generator/_config.yml
 
 # replace %branch% placeholder with actual branch name
-sed -i "s/%branch%/$BRANCH/g" "$WRKDIR"/documentation/hugo/config.toml
+CONFIG_TOML="$WRKDIR/documentation/hugo/config.toml"
+if [ "$BRANCH" = "lts" ]; then
+    # First, remove %branch% from the title line
+    sed -i '/^title = /s/ %branch%//' "$CONFIG_TOML"
+    # Replace %branch% in searchBaseUrl with "lts"
+    sed -i '/^searchBaseUrl = /s/%branch%/lts/' "$CONFIG_TOML"
+    # Replace %branch% in sitemap baseUrl with "lts"
+    sed -i 's|docs\.cfengine\.com/docs/%branch%|docs.cfengine.com/docs/lts|' "$CONFIG_TOML"
+    # Set isLTS to true
+    sed -i 's/isLTS = false/isLTS = true/' "$CONFIG_TOML"
+    # Then replace remaining %branch% with LTS_VERSION
+    sed -i "s/%branch%/$LTS_VERSION/g" "$CONFIG_TOML"
+else
+    sed -i "s/%branch%/$BRANCH/g" "$CONFIG_TOML"
+fi
 
 # Generate syntax data
 ./_regenerate_json.sh || exit 4
 
 # Preprocess Documentation with custom macros
-./_scripts/cfdoc_preprocess.py "$BRANCH" || exit 5
+./_scripts/cfdoc_preprocess.py "$BRANCH" "$LTS_VERSION" || exit 5
 
 # rvm commands are insane scripts which pollut output
 # so instead of set -x we just echo each command ourselves

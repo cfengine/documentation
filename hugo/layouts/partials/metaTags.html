@@ -1,0 +1,12 @@
+{{ if not .Site.Params.isLTS }}
+<link rel="canonical" href="https://{{ .Site.Params.domain }}/docs/lts{{ .RelPermalink }}" />
+{{ end }}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CFEngine",
+    "softwareVersion": "{{ .Site.Params.branch }}",
+  }
+</script>
