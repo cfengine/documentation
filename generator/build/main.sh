@@ -121,7 +121,17 @@ sudo chmod -R a+rX "$WRKDIR"/masterfiles
 echo "branch: $BRANCH" >> "$WRKDIR"/documentation/generator/_config.yml
 
 # replace %branch% placeholder with actual branch name
-sed -i "s/%branch%/$BRANCH/g" "$WRKDIR"/documentation/hugo/config.toml
+CONFIG_TOML="$WRKDIR/documentation/hugo/config.toml"
+if [ "$BRANCH" = "lts" ]; then
+    # First, remove %branch% from the title line
+    sed -i '/^title = /s/ %branch%//' "$CONFIG_TOML"
+    # Replace %branch% in searchBaseUrl with "lts"
+    sed -i '/^searchBaseUrl = /s/%branch%/lts/' "$CONFIG_TOML"
+    # Then replace remaining %branch% with LTS_VERSION
+    sed -i "s/%branch%/$LTS_VERSION/g" "$CONFIG_TOML"
+else
+    sed -i "s/%branch%/$BRANCH/g" "$CONFIG_TOML"
+fi
 
 # Generate syntax data
 ./_regenerate_json.sh || exit 4
