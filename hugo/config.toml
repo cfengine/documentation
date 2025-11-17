@@ -42,6 +42,9 @@ wrapperClass = 'hlc'
 [markup.goldmark.renderer]
   unsafe = true # Allow HTML in md files
 
+[params.sitemap]
+baseUrl = "https://docs.cfengine.com/docs/%branch%"
+
 [params.theme.colors]
   primary = "#15357f" # home page h1
   secondary = "#f5821f"
