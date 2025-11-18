@@ -1072,6 +1072,47 @@ body agent control
 
 **See also:** [`default:control_agent.nonalphanumfiles`](/reference/special-variables/control_agent/#defaultcontrol_agentnonalphanumfiles)
 
+### default_directory_create_mode
+
+**Description:** Override the default 0700 permissions when `cf-agent` creates
+parent directories during file promise repairs.
+
+The `default_directory_create_mode` attribute in body agent control enables
+users to specify custom permissions (e.g., 0755) for automatically created
+directories, avoiding the need for explicit perms promises on each parent
+directory when deeper paths are required.
+
+This addresses cases where files need broader access permissions but
+their auto-created parent directories would otherwise default to 0700,
+making the files inaccessible despite having correct permissions.
+
+The mode string may be symbolic or numerical, like `chmod`.
+
+**Type:** `string`
+
+**Default value:** `0700`
+
+**Example:**
+
+```cf3
+body agent control {
+  # Override the default directory create mode to 0755 (it defaults to 0700 if
+  # not specified)
+  default_directory_create_mode => "a+rx"; # Can also use octets 0755
+}
+```
+
+**History:**
+
+- Added in 3.27.0
+
+**Notes:**
+
+Please note that modifying this value will affect your entire policy and can
+lead to security vulnerabilities.
+
+**See also:** `filestat()`, [`body perms mode`](/reference/promise-types/files#mode), [`default:control_agent.default_directory_create_mode`](/reference/special-variables/control_agent/#defaultcontrol_agentdefault_directory_create_mode), [`default:update_def.control_agent_default_directory_create_mode` in the standard library](/reference/masterfiles-policy-framework#configure-default-directory-creation-permissions-for-update-policy)
+
 ### refresh_processes
 
 **Description:** The `refresh_processes` slist contains bundles to reload
