@@ -182,6 +182,8 @@ smart variety that handles details for you. If you need to specify
 architecture and version numbers of packages, this adds some complexity,
 but the options are flexible and designed for maximal adaptability.
 
+**Note:** Package promise outcomes for the special package name `cfe_internal_non_existing_package` are ignored. If promised it will cause the packages promise to collect software inventory for Enterprise reporting and use by `packagesmatching()` and `packageupdatesmatching()` but no package install will be attempted and the promise will not have any kept, repaired or notkept outcome.
+
 ### Patching
 
 Some package systems also support the idea of 'patches'. These might be
