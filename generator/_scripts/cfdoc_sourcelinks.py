@@ -110,6 +110,8 @@ def addLinkToSource(file_name, config):
             break
         if line.find("layout: printable") == 0:
             return 0
+        if line.find("published: false") == 0:
+            return 0
 
     if not html_file:
         return 0
@@ -118,7 +120,11 @@ def addLinkToSource(file_name, config):
     unexpanded_macro = unexpandedMacroRegex()
 
     error_count = 0
-    html_file = config["CFE_DIR"] + "/" + html_file
+    if html_file.endswith("index.html"):
+        html_file = config["CFE_DIR"] + "/" + html_file
+    else:
+        html_file = config["CFE_DIR"] + "/" + html_file + "/index.html"
+
     try:
         in_file = open(html_file, "r")
         lines = in_file.readlines()

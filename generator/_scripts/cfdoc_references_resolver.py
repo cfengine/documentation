@@ -29,7 +29,8 @@ def load_references(references_file):
         ref, url, title = match.groups()
         if title is None:
             title = ""
-        references[ref] = (url, title)
+        # store with lowercase key for case-insensitive matching
+        references[ref.lower()] = (url, title)
 
     return references
 
@@ -49,15 +50,16 @@ def process(file_path, references):
             ref or text
         )  # if ref is empty use text as ref to support cases like [ref][]
 
-        if ref in references:
-            url, title = references[ref]
+        ref_lower = ref.lower()
+        if ref_lower in references:
+            url, title = references[ref_lower]
             if title:
                 return f'[{text}]({url} "{title}")'
             else:
                 return f"[{text}]({url})"
         else:
             sys.stderr.write(
-                f"References {ref} is not found in the _references.md. File: {file_path}"
+                f"References {ref} is not found in the _references.md. File: {file_path}\n"
             )
             return match.group(0)
 
@@ -69,15 +71,16 @@ def process(file_path, references):
     def replace_function_link(match):
         ref = match.group(1)
         text = f"{ref}()"
-        if ref in references:
-            url, title = references[ref]
+        ref_lower = ref.lower()
+        if ref_lower in references:
+            url, title = references[ref_lower]
             if title:
                 return f'[{text}]({url} "{title}")'
             else:
                 return f"[{text}]({url})"
         else:
             sys.stderr.write(
-                f"References {ref} is not found in the _references.md. File: {file_path}"
+                f"References {ref} is not found in the _references.md. File: {file_path}\n"
             )
             return match.group(0)
 

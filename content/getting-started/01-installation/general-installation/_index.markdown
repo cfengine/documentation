@@ -134,4 +134,4 @@ Although most install procedures follow the same general workflow, there are sev
 
 ## Next steps
 
-- Learn about [Writing and serving policy][Writing and serving policy]
+- Learn about [Writing and serving policy][Policy writing]

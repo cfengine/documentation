@@ -20,7 +20,7 @@ Those policy files are distributed across all hosts within the system via downlo
 
 CFEngine continually monitors all of the hosts in real-time, and should the system's current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.
 
-See also: [Language concepts][], [Writing and serving policy][]
+See also: [Language concepts][], [Writing and serving policy][Policy writing]
 
 ## CFEngine policy servers and hosts
 
@@ -28,7 +28,7 @@ There are basically two categories of machines in a CFEngine environment: policy
 
 The role of a particular machine where CFEngine is deployed determines which of the components will be installed and running at any given moment.
 
-See also: [Writing and serving policy][]
+See also: [Writing and serving policy][Policy writing]
 
 ## CFEngine component applications and daemons
 

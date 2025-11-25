@@ -48,6 +48,9 @@ def parseHeader(lines):
                 return header
         if not in_header:
             continue
+        # Skip list items (lines starting with -)
+        if line.lstrip().startswith("-"):
+            continue
         token_list = line.split(":")
         if len(token_list) != 2:
             print("parseHeader: ERROR in %s - wrong number of tokens" % line)
