@@ -69,7 +69,7 @@ experts if you need more help. Contact us!
   - [General installation]
   - [Upgrading]
   - [Secure bootstrap]
-- [Writing and serving policy][]
+- [Writing and serving policy][Policy writing]
   - [Language concepts][]
   - [Promises available in CFEngine][]
   - [Authoring policy tools & workflow][]
