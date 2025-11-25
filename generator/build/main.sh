@@ -57,7 +57,7 @@ function fetch_file() {
     local success=1                     # 1 means False in bash, 0 means True
     set +e
     for i in $(seq 1 "$tries"); do
-        wget "$target" -O "$destination" && success=0 && break
+        wget -q "$target" -O "$destination" && success=0 && break
         if [ "$i" -lt "$tries" ]; then
             sleep 10s
         fi
