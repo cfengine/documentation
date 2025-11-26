@@ -103,7 +103,7 @@ cf-check dump /var/cfengine/state/cf_observations.lmdb
 
 By default in the [Masterfiles Policy Framework][Masterfiles Policy Framework], `cf-serverd` uses two variables, `def.default_data_select_host_monitoring_include` and `def.default_data_select_policy_hub_monitoring_include` to [configure which measurements will be included in enterprise reporting][mpf-configure-measurement-collection].
 
-On the hub side, reports are collected and measurements data is inserted into the [`MonitoringHG`][cfdb#Table: MonitoringYrMeta] [`MonitoringMgMeta`][cfdb#Table: MonitoringMgMeta] and [`MonitoringYrMeta`][cfdb#Table: MonitoringYrMeta] tables of the Enterprise Hub database.
+On the hub side, reports are collected and measurements data is inserted into the [`MonitoringHG`][cfdb#View: monitoringhg] [`MonitoringMgMeta`][cfdb#View: monitoringmgmeta] and [`MonitoringYrMeta`][cfdb#View: monitoringyrmeta] tables of the Enterprise Hub database.
 
 A diagnostic query to run with a [Custom Report in Mission Portal][Reporting UI].
 
