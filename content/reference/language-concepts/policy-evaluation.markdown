@@ -33,6 +33,11 @@ as early as possible in your configuration. In order to make sure all global
 variables and classes are available early enough policy pre-evaluation step was
 introduced.
 
+Note: Since CFEngine 3.27.0 it's possible to configure the evaluation order from
+the pre-defined normal order to the written order, top down.
+
+**See also:** [`evaluation_order` in `body agent control`](/reference/components/cf-agent/#evaluation_order), [`evaluation_order` in `body common control`][Components#evaluation_order], [`evaluation_order` in `body file control`][file control#evaluation_order]
+
 ### Policy evaluation overview
 
 CFEngine policy evaluation is done in several steps:
