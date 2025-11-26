@@ -245,7 +245,7 @@ body common control
 }
 ```
 
-**See also:** [`evaluation_order` in `body common control`][cf-agent#evaluation_order], [Policy style guide on promise ordering][Policy style guide#Promise ordering]
+**See also:** [`evaluation_order` in `body agent control`][cf-agent#evaluation_order], [Policy style guide on promise ordering][Policy style guide#Promise ordering]
 
 **History:**
 
