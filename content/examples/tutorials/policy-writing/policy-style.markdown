@@ -87,8 +87,8 @@ significantly easier for a novice to understand the desired state.
 Historically, it was important to remember that Normal ordering still applied and
 that the promises would not be actuated in the order they are written. However,
 as of CFEngine 3.27.0, you can use `evaluation_order => "top_down";` in
-`body common control` or `body agent control` to make the execution order match
-the written order.
+`body common control`, `body agent control`, or `body file control` to make the
+execution order match the written order.
 
 ```cf3
 body common control
