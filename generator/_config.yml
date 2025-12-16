@@ -21,7 +21,7 @@ CFE_manuals_version: "3.21"
 cfengine:
   branch: "3.21"
   core_branch: "3.21"
-  latest_patch_release: 7
+  latest_patch_release: 8
   latest_package_build: 1
   vagrant_package_build: 1
   masterfiles_branch: "3.21.x"
