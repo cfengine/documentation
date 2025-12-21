@@ -1,7 +1,7 @@
 #!/bin/bash
 
-wget https://github.com/gohugoio/hugo/releases/download/v0.152.2/hugo_0.152.2_Linux-64bit.tar.gz -O hugo.tar.gz
- echo "52b6eda6c00f4449d96f0cbfd7300e834c26179c4fe68e0510ef566db52dba04  hugo.tar.gz" | sha256sum -c
+wget https://github.com/gohugoio/hugo/releases/download/v0.153.1/hugo_0.153.1_Linux-64bit.tar.gz -O hugo.tar.gz
+ echo "2f53a9369478405b3f6ad5fe49da207b13248a18272940ae3061f75e57df3cc7  hugo.tar.gz" | sha256sum -c
 if [ $? -eq 1 ]; then
   exit 2
 fi
