@@ -3,7 +3,7 @@ safe: false
 plugins: ./_plugins/
 # baseurl: /docs/master/
 git-repository: github.com/cfengine/documentation
-git-branch: "3.23"
+git-branch: "master"
 #destination:
 #layouts:     ./_layouts/
 #permalink: /:title.html
