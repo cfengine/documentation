@@ -327,7 +327,7 @@ HTTP 200 Ok
 
 **URI:** https://hub.cfengine.com/api/hosts/delete-permanently/:host-id
 
-**Method:** POST
+**Method:** DELETE
 
 Permanently deletes host entry from the reporting database.
 
