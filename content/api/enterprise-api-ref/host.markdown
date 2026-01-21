@@ -334,9 +334,12 @@ HTTP 200 Ok
 
 **Method:** POST
 
-Permanently deletes host entry from the reporting database.
+Permanently deletes deleted host entry from the reporting database.
 
-Note: to be able to perform this action related RBAC rule (alias `hosts-delete-permanently.delete`) should be enabled.
+Notes:
+
+- To be able to perform this action related RBAC rule (alias `hosts-delete-permanently.delete`) should be enabled.
+- Permanent deletion requires that a host is first normally deleted and found in the response from `/api/hosts/deleted`.
 
 **Responses:**
 
