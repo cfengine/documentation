@@ -8,8 +8,4 @@ aliases:
 
 **See also:** [Core changelog][Changelog], [Masterfiles changelog][Masterfiles changelog]
 
-<pre>
-
-{{< CFEngine_include_markdown(enterprise/ChangeLog.Enterprise) >}}
-
-</pre>
+{{< CFEngine_include_markdown(enterprise/CHANGELOG.md) >}}
