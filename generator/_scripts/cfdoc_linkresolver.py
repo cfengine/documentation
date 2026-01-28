@@ -25,6 +25,10 @@ import sys
 import re
 import cfdoc_qa as qa
 
+JIRA_BASE_URL = "https://northerntech.atlassian.net/browse/"
+# Pattern to match Jira ticket references (ENT-1234, CFE-4567, etc.)
+JIRA_TICKET_PATTERN = re.compile(r"\b(ENT|CFE)-(\d+)\b")
+
 
 def run(config):
     markdown_files = config["markdown_files"]
@@ -113,6 +117,13 @@ def headerToAnchor(header):
     anchor = anchor.replace('"', "")
     anchor = anchor.lstrip("-").rstrip("-")
     return anchor
+
+
+def convertJiraTicketsToLinks(line):
+    """Convert Jira ticket references (ENT-1234, CFE-4567) to markdown links."""
+    return JIRA_TICKET_PATTERN.sub(
+        lambda m: "[%s](%s%s)" % (m[0], JIRA_BASE_URL, m[0]), line
+    )
 
 
 def parseMarkdownForAnchors(file_name, config):
@@ -305,6 +316,14 @@ def applyLinkMap(file_name, config):
                 else:
                     break
         new_line += markdown_line
+
+        # Convert Jira ticket references to links (only outside code blocks)
+        if not in_pre:
+            original_line = new_line
+            new_line = convertJiraTicketsToLinks(new_line)
+            if new_line != original_line:
+                write_changes = True
+
         new_lines.append(new_line)
         previous_empty = markdown_line.lstrip() == ""
 
