@@ -27,7 +27,9 @@ import cfdoc_qa as qa
 
 JIRA_BASE_URL = "https://northerntech.atlassian.net/browse/"
 # Pattern to match Jira ticket references (ENT-1234, CFE-4567, etc.)
-JIRA_TICKET_PATTERN = re.compile(r"\b(ENT|CFE)-(\d+)\b")
+# (?<!/) skips tickets in URLs (/)
+# (?<!\[) and (?!\]) skips inside link text ([])
+JIRA_TICKET_PATTERN = re.compile(r"(?<!/)(?<!\[)(ENT|CFE)-(\d+)\b(?!\])")
 
 
 def run(config):
