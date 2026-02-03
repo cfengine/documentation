@@ -49,4 +49,4 @@ Output:
 
 **History:** Introduced in CFEngine 3.9
 
-**See also:** `callstack_promisers()`
+**See also:** `callstack_promisers()`, `this.calling_bundle`

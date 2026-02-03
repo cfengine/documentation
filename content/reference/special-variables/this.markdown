@@ -34,6 +34,44 @@ declared).
 
 This variable contains the current bundle name.
 
+### this.calling_bundle
+
+This variable contains the name of the bundle from which the current bundle was called.
+
+**Note:** When `this.calling_bundle` is undefined it indicates that the bundle was actuated by the `bundlesequence` and not another bundle.
+
+**Example:**
+
+```cf3 {file="example-this_calling_bundle.cf"}
+bundle agent main
+{
+  methods:
+      "two";
+
+  reports:
+     "in bundle $(this.bundle), caller $(with)"
+        with => ifelse( isvariable( "this.calling_bundle" ), "$(this.calling_bundle)",
+                        "bundlesequence" );
+}
+
+bundle agent two
+{
+  reports:
+      "in bundle $(this.bundle), caller $(with)"
+        with => ifelse( isvariable( "this.calling_bundle" ), "$(this.calling_bundle)",
+                        "bundlesequence" );
+}
+```
+
+```output
+R: in bundle two, caller default:main
+R: in bundle main, caller bundlesequence
+```
+
+**History:**
+
+- Added in CFEngine 3.27.0
+
 ### this.handle
 
 This variable points to the promise handle of the currently handled
