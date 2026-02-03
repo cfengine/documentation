@@ -2,6 +2,8 @@
 layout: default
 title: Loops
 sorting: 70
+aliases:
+  - "/reference-language-concepts-loops.html"
 ---
 
 There are no explicit loops in CFEngine, instead there are lists. To make a
@@ -131,4 +133,4 @@ reports:
 
 This example uses two lists, `stats` and `monvars`. We can now iterate over both lists in the same promise. The reports that we thus generate will report on `value_rootprocs`, `av_rootprocs`, and `dev_rootprocs`, followed next by `value_otherprocs`, `av_otherprocs`, etc, ending finally with `dev_loadavg`.
 
-The order of iteration is an implementation detail and should not be expected to be consistent.  Use the `sort()` function if you need to sort a list in a predictable way.
+The order of iteration is an implementation detail and should not be expected to be consistent. Use the `sort()` function if you need to sort a list in a predictable way.

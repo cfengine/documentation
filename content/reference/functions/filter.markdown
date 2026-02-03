@@ -1,9 +1,11 @@
 ---
 layout: default
 title: filter
+aliases:
+  - "/reference-functions-filter.html"
 ---
 
-[%CFEngine_function_prototype(filter, list, is_regex, invert, max_return)%]
+{{< CFEngine_function_prototype(filter, list, is_regex, invert, max_return) >}}
 
 **Description:** Transforms a list or data container into a list subset thereof.
 
@@ -15,27 +17,26 @@ elements in `list` that match the filtering rules specified in `filter`,
 
 **Arguments**:
 
-* filter : [Anchored][anchored] regular expression or static string to find, in the range `.*`
-* list : The name of the list variable or data container to check, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
-* is_regex_ : Boolean
+- filter : [Anchored][anchored] regular expression or static string to find, in the range `.*`
+- list : The name of the list variable or data container to check, in the range
+  `[a-zA-Z0-9_$(){}\[\].:]+`
+- is*regex* : Boolean
 
 Treat `filter` as a regular expression or as a static string.
 
-* `invert` : Boolean
+- `invert` : Boolean
 
 Invert filter.
 
-* `max_return` : Maximum number of elements to return in the range `0,999999999`
+- `max_return` : Maximum number of elements to return in the range `0,999999999`
 
 **Example:**
 
-
-[%CFEngine_include_snippet(filter.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(filter.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(filter.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(filter.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 

@@ -2,6 +2,8 @@
 layout: default
 title: Promises
 sorting: 30
+aliases:
+  - "/reference-language-concepts-promises.html"
 ---
 
 One concept in CFEngine should stand out from the rest as being the most
@@ -59,7 +61,7 @@ they enable a wide range of behavior.
 
 ### Promise example
 
-```cf3
+```cf3 {skip TODO}
 # Promise type
 files:
     "/home/mark/tmp/test_plain" -> "system blue team",
@@ -104,25 +106,25 @@ participate in locking.
 Promise attributes have a type and a value. The type can be any of the
 [datatypes][datatypes] that are allowed for variables, and in addition
 
-* Boolean - allowed input values are
-    * `"true"`/`"false"`
-    * `"on"`/`"off"`
-    * `"yes"`/`"no"`
+- Boolean - allowed input values are
+  - `"true"`/`"false"`
+  - `"on"`/`"off"`
+  - `"yes"`/`"no"`
 
-* `irange[min, max]` and `rrange[min, max]` - a range of integer or real
+- `irange[min, max]` and `rrange[min, max]` - a range of integer or real
   values, created via the [`irange()`][irange] and [`rrange()`][rrange]
   functions
 
-* `clist` - a list of classes or class expressions. Note that these
-   attributes can take both strings (which are evaluated as class expressions)
-   and functions that return type `class`
+- `clist` - a list of classes or class expressions. Note that these
+  attributes can take both strings (which are evaluated as class expressions)
+  and functions that return type `class`
 
-* Menu option - one value from a list of values
+- Menu option - one value from a list of values
 
-* [`body` *type*][bodies] - a complex set of
+- [`body` _type_][bodies] - a complex set of
   attributes expressed in a separate, reusable block
 
-* [`bundle` *type*][bundles] - a separate bundle
+- [`bundle` _type_][bundles] - a separate bundle
   that is used as a sub-routine or a sub-set of promises
 
 **Note:** The language does not specifically disallow the use of the same
@@ -154,7 +156,7 @@ bundle agent bad_example
 Some promise types can have implicit behavior. For example, the following
 promise simply prints out a log message "hello world".
 
-```cf3
+```cf3 {skip TODO}
 reports:
   "hello world";
 ```
@@ -162,7 +164,7 @@ reports:
 The same promise could be implemented using the `commands` type, invoking the
 echo command:
 
-```cf3
+```cf3 {skip TODO}
 commands:
   "/bin/echo hello world";
 ```

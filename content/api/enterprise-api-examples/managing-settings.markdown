@@ -1,7 +1,9 @@
 ---
 layout: default
-title:  Managing settings
+title: Managing settings
 sorting: 30
+aliases:
+  - "/api-enterprise-api-examples-managing-settings.html"
 ---
 
 Settings support two operations, **GET** (view settings) and **POST**
@@ -45,7 +47,6 @@ are managed by the LDAP API and not this Settings API.
 **Response**
 
     204 No Content
-
 
 ## Example: Changing the log level
 

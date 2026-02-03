@@ -2,10 +2,11 @@
 layout: default
 title: ITIL
 sorting: 80
+aliases:
+  - "/resources-additional-topics-itil.html"
 ---
 
 ## What it ITIL?
-
 
 The IT Infrastructure Library (ITIL) is a set of human management practices
 surrounding IT infrastructure that are designed to bring quality assurance and
@@ -28,17 +29,14 @@ Whether this means a centralization or decentralization of IT management in the
 end, depends on the concrete instances of ITIL processes in the respective
 scenario.
 
-
 ## ITIL history and versions
-
 
 ITIL has its roots in the early 1990s, and since then was subject to numerous
 improvements and enhancements. Today, the most popular release of ITIL is given
 by the books of ITIL version 2 (often referred to as ITILv2), while the British
 OGC (Office of Government Commerce), owner and publisher of ITIL, is currently
 promoting ITIL version 3 (ITILv3) under the device `"ITIL Reloaded"`. A further
-ITIL version has already been planned, owing to perceived problems with version
-3.
+ITIL version has already been planned, owing to perceived problems with version 3.
 
 ITILv3 is not just an improved version of the ITILv2 books, but rather comes
 with a completely renewed structure, new sets of processes and a different scope
@@ -46,31 +44,29 @@ with respect to the issue of IT strategies, IT-business-alignment and continual
 improvement. In the following, we run through the basics of both versions,
 highlighting commonalities and differences.
 
-
 ## Basics
-
 
 ITIL is an attempt to implement theDeming Quality Circleas a model for continual
 quality improvement. Quality relates to the provided IT services as well as the
 management processes deployed to manage these services. Continual improvement in
 ITIL means to follow the method of Plan-Do-Check-Act:
 
-* Plan
+- Plan
 
   Plan the provision of high-quality IT services, i.e. set up the required
   management processes for the delivery and support of these services, define
   measurable goals and the course of action in order to fulfill them.
 
-* Do
+- Do
 
   Put the plans into action.
 
-* Check
+- Check
 
   Measure all relevant performance indicators, and quantify the achieved quality
   compared to the quality objectives. Check for potentials of improvement.
 
-* Act
+- Act
 
   In response to the measured quality, start activities for future improvements.
   This step leads into the Plan phase again.
@@ -93,26 +89,25 @@ dealing with unpredictable situations.
 
 ## Version 3
 
-
 In 2007, version 2 was replaced by its successor version 3, aimed at covering
 the entire service life cycle from a management perspective and striving for a
 more substantiated idea of IT business alignment. Many version 2 processes and
 ideas have been recycled and extended by various additional processes and
 principles. The five service life cycle stages accordant to versin 3 are:
 
- * Service Strategy: Common strategies and principles for customer-oriented,
-   business-driven service delivery and management
+- Service Strategy: Common strategies and principles for customer-oriented,
+  business-driven service delivery and management
 
- * Service Design: Principles and processes for the stage of designing new or
-   changed IT services
+- Service Design: Principles and processes for the stage of designing new or
+  changed IT services
 
- * Service Transition: Principles and processes to ensure quality-oriented
-   implementation of new or changed services into the operational environment
+- Service Transition: Principles and processes to ensure quality-oriented
+  implementation of new or changed services into the operational environment
 
- * Service Operation: Principles and processes for supporting service operation
+- Service Operation: Principles and processes for supporting service operation
 
- * Continual Service Improvement: Methods for planning and achieving service
-   improvements at regular intervals
+- Continual Service Improvement: Methods for planning and achieving service
+  improvements at regular intervals
 
 ## Service orientation and ITIL
 
@@ -139,23 +134,23 @@ is supposed to eliminate. To be able to use ITIL to help in this task, we have
 to first think of the process of setting up as a number of services. What
 services are these? We have to think a little sideways to see the relationship.
 
-* Service Management
+- Service Management
 
   Providing a sensible configuration policy, responding to discovered problems
   or the needs of end-users.
 
-* Change Management
+- Change Management
 
   A minor edit of the configuration policy, with appropriate quality controls.
   Or a change that comes from a completely different source, outside the scope
   of intended change.
 
-* Release Management
+- Release Management
 
   A new configuration policy, consisting of many changes. This could be a major
   and disruptive change so it should be planned carefully.
 
-* Capacity Management
+- Capacity Management
 
   Having enough resources for cfservd to answer all queries in a network. Having
   enough people and machines to support the processes of deploying and following
@@ -165,62 +160,62 @@ services are these? We have to think a little sideways to see the relationship.
 
 The following management processes are in scope of ITILv3:
 
-* Service Level Management: Management of Service Level Agreements (Alas), i.e.
+- Service Level Management: Management of Service Level Agreements (Alas), i.e.
   service level and quality promises.
 
-* Service Catalogue Management: deciding on the services that will be provided
+- Service Catalogue Management: deciding on the services that will be provided
   and how they are advertised to users.
 
-* Capacity Management: Planning and provision of adequate business, service and
+- Capacity Management: Planning and provision of adequate business, service and
   resource capacities.
 
-* Availability Management: Resource provision and monitoring of service, from a
+- Availability Management: Resource provision and monitoring of service, from a
   customer viewpoint.
 
-* Continuity Management: Development of strategies for dealing with potential
+- Continuity Management: Development of strategies for dealing with potential
   disasters.
 
-* Information Security Management: Ensuring a minimum level of information
+- Information Security Management: Ensuring a minimum level of information
   security throughout the IT organization.
 
-* Supplier Management: Maintaining supplier relationships.
+- Supplier Management: Maintaining supplier relationships.
 
-* Transition Planning and Support: Ensuring that new or changed services are
+- Transition Planning and Support: Ensuring that new or changed services are
   deployed into the operational environment with the minimal impact on existing
   services
 
-* Asset and Configuration Management: Management of IT assets and Configuration
+- Asset and Configuration Management: Management of IT assets and Configuration
   Items.
 
-* Release Management: Planning, building, testing and rolling out hardware and
+- Release Management: Planning, building, testing and rolling out hardware and
   software configurations.
 
-* Change Management: Assessment of current state, authorization and scheduling
+- Change Management: Assessment of current state, authorization and scheduling
   of improvements.
 
-* Service Validation and Testing: ensuring that services meet their specifications.
+- Service Validation and Testing: ensuring that services meet their specifications.
 
-* Knowledge Management: organizing and integrating experience and methodology
+- Knowledge Management: organizing and integrating experience and methodology
   for future reference.
 
-* Incident Management: responding to deviations from acceptable service.
+- Incident Management: responding to deviations from acceptable service.
 
-* Event Management: Efficient handling of service requests and complaints.
+- Event Management: Efficient handling of service requests and complaints.
 
-* Problem Management: Problem identification by trend analysis of incidents.
+- Problem Management: Problem identification by trend analysis of incidents.
 
-* Request Fulfillment: Fulfilling customer service requests.
+- Request Fulfillment: Fulfilling customer service requests.
 
-* Access Management: Management of access rights to information, services and
+- Access Management: Management of access rights to information, services and
   resources.
 
-* Service Strategy
+- Service Strategy
 
-* Service Design
+- Service Design
 
-* Service Operation
+- Service Operation
 
-* Continual Service Improvement
+- Continual Service Improvement
 
 ### Service Strategy
 
@@ -257,9 +252,7 @@ mean regular on a time-scale that is representative for the service being
 provided, e.g. reviews once per week, once per month? No one can tell you about
 your needs. You have to decide this from local needs.
 
-
 ## Tool support
-
 
 In the field of tool support for IT Service Management accordant to ITIL,
 various white papers and studies have been published. In addition, there are
@@ -286,10 +279,10 @@ recent innovations can bridge the gap between the technology of distributed
 systems management and business-driven IT Service Management. To make the case
 we must show:
 
-* How ITIL terminology relates to the terminology of CFEngine and hence to a
+- How ITIL terminology relates to the terminology of CFEngine and hence to a
   traditional system administrator's language, and
 
-* Which parts (processes and activities) of ITIL can be (partially) supported by
+- Which parts (processes and activities) of ITIL can be (partially) supported by
   CFEngine, and how.
 
 ## Which ITIL processes apply to CFEngine?
@@ -308,17 +301,17 @@ performance and quality for the process of continual improvement.
 
 Service support is composed of a number of issues:
 
-* Incident management: collecting and dealing with incidents.
+- Incident management: collecting and dealing with incidents.
 
-* Problem management: root cause analysis and designing long term
+- Problem management: root cause analysis and designing long term
   countermeasures.
 
-* Configuration management: maintaining information about hardware and software
+- Configuration management: maintaining information about hardware and software
   and their interrelationships.
 
-* Change management: implementing major sequenced changes in the infrastructure.
+- Change management: implementing major sequenced changes in the infrastructure.
 
-* Release management: planning and implementing major "product" changes.
+- Release management: planning and implementing major "product" changes.
 
 Although the difference between change management and release management is not
 completely clear in ITIL, we can think of a release as a change in the nature of
@@ -327,11 +320,11 @@ within the scope of the same release. Thus is release is a more major change.
 
 Service delivery, on the other hand, is dissected as follows:
 
-* Service Level Management
-* Problem management
-* Configuration management
-* Change management
-* Release management
+- Service Level Management
+- Problem management
+- Configuration management
+- Change management
+- Release management
 
 These issues are somewhat clearer once we understand the usage of the terms
 "problem", "service" and "configuration". Once again, it is important that we
@@ -343,19 +336,19 @@ In the world of business, reinvented through the eyes of ITIL's mentors, system
 administration and all its functions are wrapped in a model of service
 provision.
 
-* ITIL Configuration Management (CM)
-* CMDB Asset Management
-* Change management in the enterprise
-* Change management vs convergence
-* Release management
-* Incident and problem management
-* Service Level Management (SLM)
+- ITIL Configuration Management (CM)
+- CMDB Asset Management
+- Change management in the enterprise
+- Change management vs convergence
+- Release management
+- Incident and problem management
+- Service Level Management (SLM)
 
 ### ITIL Configuration Management (CM)
 
 Perhaps the most obvious example is the term configuration management.
 
-* Configuration Management
+- Configuration Management
 
   The process (and life-cycle) responsible for maintaining information about
   configuration items (CI) required to deliver an IT service, including their
@@ -380,20 +373,19 @@ Since CFEngine is a completely distributed system that deals with individual
 devices on a one-by-one basis, we must interpret this asset management at two
 levels:
 
-* The local assets of an individual device at the level of virtual structures
+- The local assets of an individual device at the level of virtual structures
   and containers within it: files, attributes, software packages, virtual
   machines, processes etc. This is the traditional domain of automation for
   CFEngine's autonomic agent.
 
-* The collective assets of a network of such devices.
+- The collective assets of a network of such devices.
 
 Since a single host can be thought of as a network of assets connected through
 virtual pathways, it really isn't such a huge leap to see the whole network in a
 similar light. This is especially true when many of the basic resources are
 already shared objects, such as shared storage.
 
-* CMDB Asset Management
-
+- CMDB Asset Management
 
 Why bother to collect an inventory of this kind? Is it bureaucracy gone mad, or
 do we need it for insurance purposes? Both of these things are of course
@@ -462,7 +454,6 @@ circumstances to an earlier state - they are beyond our control.
 
 ### Release management
 
-
 A release in ITIL is a collection of authorized changes to a system. One part of
 Change Management is thereforeRelease Management. A release is generally a
 larger umbrella under which many smaller changes are made. It is major change.
@@ -480,14 +471,14 @@ ITIL distinguishes betweenincidentsandproblems. An incident is an event that
 might be problematic, but in general would observe incidents over some length of
 time and then diagnoseproblemsbased on this experience.
 
-* Incident
+- Incident
 
   An event or occurrence that demands a response.
 
   One goal of CFEngine is to plan pro-actively to handle incidents
   automatically, thus taking them off the list of things to worry about.
 
-* Problem
+- Problem
 
   A pattern of consequence arising from certain incidents that is detrimental to
   the system. It is often a negative trend that needs to be addressed.
@@ -498,7 +489,6 @@ problems, we are in trouble!
 
 ### Service Level Management (SLM)
 
-
 Also loosely referred to as Quality of Service. This is the process of making
 sure that Service Level Promises are kept, or Service Level Agreements (SLA) are
 adhered to. We must assess the impact of changes on the ability to deliver on
@@ -506,16 +496,15 @@ promises.
 
 ## Using CFEngine to implement ITIL objectives
 
-
 How does CFEngine fit into the management of a service organization? There are
 several ways:
 
-* It offers a rapid detection and repair of faults that help to avoid formal
+- It offers a rapid detection and repair of faults that help to avoid formal
   incidents.
 
-* It simplifies the deployment (release) of services.
+- It simplifies the deployment (release) of services.
 
-* Allows resources to be understood and planned better.
+- Allows resources to be understood and planned better.
 
 These properties allow for greaterpredictabilityof system services and therefore
 they contribute to customer confidence.
@@ -532,7 +521,6 @@ words, CFEngine is itself part of the infrastructure that we might change.
 
 ## How can CFEngine or promises help an enterprise
 
-
 Traditional methods of managing IT infrastructure involve working from crisis to
 crisis - waiting for `incidents` to occur and then initiating fire suppression
 responses or, if there is time, proactive changes. With CFEngine, these can be
@@ -540,16 +528,16 @@ combined and made into a managementservice, with continuous service quality.
 
 CFEngine can assist with:
 
-* Maintenance assurance.
-* Reporting for auditing.
-* Change management.
-* Security verification.
+- Maintenance assurance.
+- Reporting for auditing.
+- Change management.
+- Security verification.
 
 Promise theory comes with a couple of principles:
 
-* Separation of concerns.
+- Separation of concerns.
 
-* Fundamental attention to autonomy of parts.
+- Fundamental attention to autonomy of parts.
 
 Other approaches to discussing organization talk about the separation of
 concerns, so why is promise theory special? Object Orientation (OO) is an
@@ -821,7 +809,7 @@ inference.
 
 ### Policy
 
-Formally documented management expectations and intentions. Policies are used to
+Formally documented management expectations and intentions. Policy is used to
 direct decisions, and to ensure consistent and appropriate development and
 implementation of processes, standards, roles, activities, IT infrastructures,
 etc.
@@ -994,7 +982,7 @@ levels and penalties for non-compliance.
 
 An agreement assumes a set of promises that propose behaviour and an acceptance
 of those promises by the client. If we assume that the users are satisfied with
-out policies, then an SLA can be interpreted as a combination of a configuration
+our policy, then an SLA can be interpreted as a combination of a configuration
 policy (configuration service promises), and the CFEngine execution schedule.
 
 ### Service Management

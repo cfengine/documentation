@@ -1,9 +1,11 @@
 ---
 layout: default
 title: hostrange
+aliases:
+  - "/reference-functions-hostrange.html"
 ---
 
-[%CFEngine_function_prototype(prefix, range)%]
+{{< CFEngine_function_prototype(prefix, range) >}}
 
 **Description:** Returns whether the unqualified name of the current host lies
 in the `range` of enumerated hostnames specified with `prefix`.
@@ -18,12 +20,12 @@ numeric part of the unqualified host name and string comparison of `prefix`
 (lowercase) with the part of the unqualified host name until the last numeric
 part.
 
-[%CFEngine_function_attributes(prefix, range)%]
+{{< CFEngine_function_attributes(prefix, range) >}}
 
 **Example:**
 
-[%CFEngine_include_example(hostrange.cf, #\+begin_src\s+cfengine3\s*, .*end_src)%]
+{{< CFEngine_include_example(hostrange.cf, #\+begin_src\s+cfengine3\s*, .*end_src) >}}
 
 **Example Output:**
 
-[%CFEngine_include_example(hostrange.cf, #\+begin_src\s+static_example_output\s*, .*end_src)%]
+{{< CFEngine_include_example(hostrange.cf, #\+begin_src\s+static_example_output\s*, .*end_src) >}}

@@ -2,6 +2,8 @@
 layout: default
 title: Classes and decisions
 sorting: 50
+aliases:
+  - "/reference-language-concepts-classes.html"
 ---
 
 Classes are used to apply promises only to particular environments, depending
@@ -57,8 +59,8 @@ the `/var/cfengine/state/env_data` file is secure.
 The `classesmatching()` function searches using a regular expression for classes
 matching a given name and or tag.
 
-**See also:** The ```--show-vars``` option for `cf-promises` and the
-```--show-evaluated-vars``` option for `cf-agent`.
+**See also:** The `--show-vars` option for `cf-promises` and the
+`--show-evaluated-vars` option for `cf-agent`.
 
 ## Tags
 
@@ -67,29 +69,29 @@ created them) and purpose (why were they created).
 
 While you can provide your own tags for soft classes in policy with
 the [`meta`][Promise types#meta] attribute, there are some tags applied to hard classes and
-other special cases.  This list may change in future versions of
+other special cases. This list may change in future versions of
 CFEngine.
 
-* `source=agent`: this hard class or variable was created by the agent in the C code.  This tag is useful when you need to find classes or variables that don't match the other sources below.  e.g. `linux`.
-* `source=environment`: this hard class or variable was created by the agent in the C code.  It reflects something about the environment like a command-line option, e.g. `-d` sets `debug_mode`, `-v` sets `verbose_mode`, and `-I` sets `inform_mode`.  Another useful option, `-n`, sets `opt_dry_run`.
-* `source=bootstrap`: this hard class or variable was created by the agent in the C code based on bootstrap parameters.  e.g. `policy_server` is set based on the IP address or host name you provided when you ran `cf-agent -B host-or-ip`.
-* `source=module`: this class or variable was created through the module protocol.
-* `source=persistent`: this persistent class was loaded from storage.
-* `source=body`: this variable was created by a body with side effects.
-* `source=function`: this class or variable was created by a function as a side effect, e.g. see the classes that `selectservers()` sets or the variables that `regextract()` sets.  These classes or variables will also have a `function=FUNCTIONNAME` tag.
-* `source=promise`: this soft class was created from policy.
-* `inventory`: related to the system inventory, e.g. the network interfaces
-  * `attribute_name=none`: has no visual attribute name (ignored by Mission Portal)
-  * `attribute_name=X`: has visual attribute name `X` (used by Mission Portal)
-* `monitoring`: related to the monitoring (`cf-monitord` usually).
-* `time_based`: based on the system date, e.g. `Afternoon`
-* `derived-from=varname`: for a class, this tells you it was derived from a variable name, e.g. if the special variable `sys.fqhost` is `xyz`, the resulting class `xyz` will have the tag `derived-from=sys.fqhost`.
-* `cfe_internal`: internal utility classes and variables
+- `source=agent`: this hard class or variable was created by the agent in the C code. This tag is useful when you need to find classes or variables that don't match the other sources below. e.g. `linux`.
+- `source=environment`: this hard class or variable was created by the agent in the C code. It reflects something about the environment like a command-line option, e.g. `-d` sets `debug_mode`, `-v` sets `verbose_mode`, and `-I` sets `inform_mode`. Another useful option, `-n`, sets `opt_dry_run`.
+- `source=bootstrap`: this hard class or variable was created by the agent in the C code based on bootstrap parameters. e.g. `policy_server` is set based on the IP address or host name you provided when you ran `cf-agent -B host-or-ip`.
+- `source=module`: this class or variable was created through the module protocol.
+- `source=persistent`: this persistent class was loaded from storage.
+- `source=body`: this variable was created by a body with side effects.
+- `source=function`: this class or variable was created by a function as a side effect, e.g. see the classes that `selectservers()` sets or the variables that `regextract()` sets. These classes or variables will also have a `function=FUNCTIONNAME` tag.
+- `source=promise`: this soft class was created from policy.
+- `inventory`: related to the system inventory, e.g. the network interfaces
+  - `attribute_name=none`: has no visual attribute name (ignored by Mission Portal)
+  - `attribute_name=X`: has visual attribute name `X` (used by Mission Portal)
+- `monitoring`: related to the monitoring (`cf-monitord` usually).
+- `time_based`: based on the system date, e.g. `Afternoon`
+- `derived-from=varname`: for a class, this tells you it was derived from a variable name, e.g. if the special variable `sys.fqhost` is `xyz`, the resulting class `xyz` will have the tag `derived-from=sys.fqhost`.
+- `cfe_internal`: internal utility classes and variables
 
 Enterprise only:
 
-* `source=ldap`: this soft class or variable was created from an LDAP lookup.
-* `source=observation`: this class or variable came from a `measurements` system observation and will also have the `monitoring` tag.
+- `source=ldap`: this soft class or variable was created from an LDAP lookup.
+- `source=observation`: this class or variable came from a `measurements` system observation and will also have the `monitoring` tag.
 
 ## Hard classes
 
@@ -112,86 +114,86 @@ of a week.
 
 **Notes:**
 
-* Hard classes can **not** be undefined. If you try to undefine or cancel a hard
+- Hard classes can **not** be undefined. If you try to undefine or cancel a hard
   class an error will be emitted, for example `error: You cannot cancel a
-  reserved hard class 'cfengine' in post-condition classes`.
+reserved hard class 'cfengine' in post-condition classes`.
 
-* CFEngine-specific classes
-    * `any`: this class is always set
-    * `cfengine`: This class is always defined.
-    * `cfengine_<X>`: This class is always defined where `<X>` represents the major version of CFEngine running. For example, `cfengine_3` is defined on all versions of CFEngine 3.x.
-    * `cfengine_<X>_<Y>`: This class is always defined where `<X>` represents the major version of CFEngine running and `<Y>` represents the minor version. For example, `cfengine_3_24` is defined on all versions of CFEngine 3.24.x.
-    * `cfengine_<X>_<Y>_<Z>`: This class is always defined where `<X>` represents the major version of CFEngine running, `<Y>` represents the minor version, and `<Z>` represents the patch version. For example, `cfengine_3_24_0` is defined only on CFEngine 3.24.0.
-    * `am_policy_hub`, `policy_server`: set when the file
-      `$(workdir)/state/am_policy_hub` exists. When a host is [bootstrapped][cf-agent], if
-      the agent detects that it is bootstrapping to itself the file is created.
-    * `bootstrap_mode`: set when bootstrapping a host
-    * `inform_mode`, `verbose_mode`, `debug_mode`: log verbosity levels in order of noisiness
-    * `opt_dry_run`: set when the `--dry-run` option is given
-    * `failsafe_fallback`: set when the base policy is invalid and the built-in `failsafe.cf` (see `bootstrap.c`) is invoked
-    * (`community`, `community_edition`) and (`enterprise`, `enterprise_edition`): the two different CFEngine products, Community and Enterprise, can be distinguished by these mutually exclusive sets of hard classes
-    * Component Specific Classes (each component has a class that is always considered defined by that component):
-        * `cf-agent` :: ```agent```
-        * `cf-serverd` :: ```server```
-        * `cf-monitord` :: ```monitor```
-        * `cf-execd` :: ```executor```
-        * `cf-runagent` :: ```runagent```
-        * `cf-key` :: ```keygenerator```
-        * `cf-hub` :: ```hub```
-        * `cf-promises` :: ```common```
-* Operating System Classes (note that the presence of these classes doesn't imply platform support)
-    * Operating System Architecture -  `arista`, `big_ip`, `debian`, `eos`, `fedora`, `Mandrake`, `Mandriva`, `oracle`, `redhat`, `slackware`, `smartmachine`, `smartos`, `solarisx86`, `sun4`, `SuSE`, `ubuntu`, `ultrix`, the always-favorite `unknown_ostype`, etc.
-    * VM or hypervisor specific: `VMware`, `virt_guest_vz`, `virt_host_vz`, `virt_host_vz_vzps`, `xen`, `xen_dom0`, `xen_domu_hv`, `xen_domu_pv`, `oraclevmserver`, etc.
-    * On Solaris-10 systems, the zone name (in the form `zone_global, zone_foo, zone_baz`).
-    * Windows-specific: `DomainController`, `Win2000`, `WinServer`, `WinServer2003`, `WinServer2008`, `WinVista`, `WinWorkstation`, `WinXP`
-    * `have_aptitude`, `powershell`, `systemd`: based on the detected capabilities of the platform or the compiled-in options
-    * **See also:** `sys.arch`, `sys.class`, `sys.flavor`, `sys.os`, `sys.ostype`.
-* Network Classes
-    * Unqualified Name of Host. CFEngine truncates it at the first dot.
-      Note: `www.sales.company.com` and `www.research.company.com` have the
-      same unqualified name - `www`
-    * The IPv4 address octets of any active interface (in the form
-      `ipv4_192_0_0_1`, `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`)
-    * The IPv6 addresses of all active interfaces (with dots replaced by
-      underscores, e.g. `ipv6_fe80__a410_6072_21eb_d3fa`) added in 3.7.8, 3.10.3, 3.12.0
-    * User-defined Group of Hosts
-    * `mac_unknown`: set when the MAC address can't be found
-    * **See also:** `sys.domain`, `sys.hardware_addresses`, `sys.sys.host`, `sys.interface`, `sys.interfaces`, `sys.interface_flags`, `sys.ipv4`, `sys.ip_addresses`, `sys.fqhost`, `sys.uqhost`.
-* Time Classes
-    * note ALL of these have a local and a GMT version.  The GMT classes are consistent the world over, in case you need global change coordination.
-    * Day of the Week - `Monday, Tuesday, Wednesday,...GMT_Monday, GMT_Tuesday, GMT_Wednesday,...`
-    * Hour of the Day in Current Time Zone - `Hr00, Hr01,... Hr23` and `Hr0, Hr1,... Hr23`
-    * Hour of the Day in GMT - `GMT_Hr00, GMT_Hr01, ...GMT_Hr23` and `GMT_Hr0, GMT_Hr1, ...GMT_Hr23`.
-    * Minutes of the Hour - `Min00, Min17,... Min45,...` and `GMT_Min00, GMT_Min17,... GMT_Min45,...`
-    * Five Minute Interval of the Hour - `Min00_05, Min05_10,... Min55_00` and `GMT_Min00_05, GMT_Min05_10,... GMT_Min55_00`.  Note the second number indicates *up to* what minute the interval extends and does not include that minute.
-    * Quarter of the Hour - `Q1, Q2, Q3, Q4` and `GMT_Q1, GMT_Q2, GMT_Q3, GMT_Q4`
-    * An expression of the current quarter hour - `Hr12_Q3` and `GMT_Hr12_Q3`
-    * Day of the Month - `Day1, Day2,... Day31` and `GMT_Day1, GMT_Day2,... GMT_Day31`
-    * Month - `January, February,... December` and `GMT_January, GMT_February,... GMT_December`
-    * Year - `Yr1997, Yr2004` and `GMT_Yr1997, GMT_Yr2004`
-    * Period of the Day - `Night, Morning, Afternoon, Evening` and `GMT_Night, GMT_Morning, GMT_Afternoon, GMT_Evening` (six hour blocks starting at 00:00 hours).
-    * Lifecycle Index - `Lcycle_0, Lcycle_1, Lcycle_2` and `GMT_Lcycle_0, GMT_Lcycle_1, GMT_Lcycle_2` (the year number modulo 3, used in long term resource memory).
-    * **See also:** `sys.cdate`, `sys.date`.
+- CFEngine-specific classes
+  - `any`: this class is always set
+  - `cfengine`: This class is always defined.
+  - `cfengine_<X>`: This class is always defined where `<X>` represents the major version of CFEngine running. For example, `cfengine_3` is defined on all versions of CFEngine 3.x.
+  - `cfengine_<X>_<Y>`: This class is always defined where `<X>` represents the major version of CFEngine running and `<Y>` represents the minor version. For example, `cfengine_3_24` is defined on all versions of CFEngine 3.24.x.
+  - `cfengine_<X>_<Y>_<Z>`: This class is always defined where `<X>` represents the major version of CFEngine running, `<Y>` represents the minor version, and `<Z>` represents the patch version. For example, `cfengine_3_24_0` is defined only on CFEngine 3.24.0.
+  - `am_policy_hub`, `policy_server`: set when the file
+    `$(workdir)/state/am_policy_hub` exists. When a host is [bootstrapped][cf-agent], if
+    the agent detects that it is bootstrapping to itself the file is created.
+  - `bootstrap_mode`: set when bootstrapping a host
+  - `inform_mode`, `verbose_mode`, `debug_mode`: log verbosity levels in order of noisiness
+  - `opt_dry_run`: set when the `--dry-run` option is given
+  - `failsafe_fallback`: set when the base policy is invalid and the built-in `failsafe.cf` (see `bootstrap.c`) is invoked
+  - (`community`, `community_edition`) and (`enterprise`, `enterprise_edition`): the two different CFEngine products, Community and Enterprise, can be distinguished by these mutually exclusive sets of hard classes
+  - Component Specific Classes (each component has a class that is always considered defined by that component):
+    - `cf-agent` :: `agent`
+    - `cf-serverd` :: `server`
+    - `cf-monitord` :: `monitor`
+    - `cf-execd` :: `executor`
+    - `cf-runagent` :: `runagent`
+    - `cf-key` :: `keygenerator`
+    - `cf-hub` :: `hub`
+    - `cf-promises` :: `common`
+- Operating System Classes (note that the presence of these classes doesn't imply platform support)
+  - Operating System Architecture - `arista`, `big_ip`, `debian`, `eos`, `fedora`, `Mandrake`, `Mandriva`, `oracle`, `redhat`, `slackware`, `smartmachine`, `smartos`, `solarisx86`, `sun4`, `SuSE`, `ubuntu`, `ultrix`, the always-favorite `unknown_ostype`, etc.
+  - VM or hypervisor specific: `VMware`, `virt_guest_vz`, `virt_host_vz`, `virt_host_vz_vzps`, `xen`, `xen_dom0`, `xen_domu_hv`, `xen_domu_pv`, `oraclevmserver`, etc.
+  - On Solaris-10 systems, the zone name (in the form `zone_global, zone_foo, zone_baz`).
+  - Windows-specific: `DomainController`, `Win2000`, `WinServer`, `WinServer2003`, `WinServer2008`, `WinVista`, `WinWorkstation`, `WinXP`
+  - `have_aptitude`, `powershell`, `systemd`: based on the detected capabilities of the platform or the compiled-in options
+  - **See also:** `sys.arch`, `sys.class`, `sys.flavor`, `sys.os`, `sys.ostype`.
+- Network Classes
+  - Unqualified Name of Host. CFEngine truncates it at the first dot.
+    Note: `www.sales.company.com` and `www.research.company.com` have the
+    same unqualified name - `www`
+  - The IPv4 address octets of any active interface (in the form
+    `ipv4_192_0_0_1`, `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`)
+  - The IPv6 addresses of all active interfaces (with dots replaced by
+    underscores, e.g. `ipv6_fe80__a410_6072_21eb_d3fa`) added in 3.7.8, 3.10.3, 3.12.0
+  - User-defined Group of Hosts
+  - `mac_unknown`: set when the MAC address can't be found
+  - **See also:** `sys.domain`, `sys.hardware_addresses`, `sys.sys.host`, `sys.interface`, `sys.interfaces`, `sys.interface_flags`, `sys.ipv4`, `sys.ip_addresses`, `sys.fqhost`, `sys.uqhost`.
+- Time Classes
+  - note ALL of these have a local and a GMT version. The GMT classes are consistent the world over, in case you need global change coordination.
+  - Day of the Week - `Monday, Tuesday, Wednesday,...GMT_Monday, GMT_Tuesday, GMT_Wednesday,...`
+  - Hour of the Day in Current Time Zone - `Hr00, Hr01,... Hr23` and `Hr0, Hr1,... Hr23`
+  - Hour of the Day in GMT - `GMT_Hr00, GMT_Hr01, ...GMT_Hr23` and `GMT_Hr0, GMT_Hr1, ...GMT_Hr23`.
+  - Minutes of the Hour - `Min00, Min17,... Min45,...` and `GMT_Min00, GMT_Min17,... GMT_Min45,...`
+  - Five Minute Interval of the Hour - `Min00_05, Min05_10,... Min55_00` and `GMT_Min00_05, GMT_Min05_10,... GMT_Min55_00`. Note the second number indicates _up to_ what minute the interval extends and does not include that minute.
+  - Quarter of the Hour - `Q1, Q2, Q3, Q4` and `GMT_Q1, GMT_Q2, GMT_Q3, GMT_Q4`
+  - An expression of the current quarter hour - `Hr12_Q3` and `GMT_Hr12_Q3`
+  - Day of the Month - `Day1, Day2,... Day31` and `GMT_Day1, GMT_Day2,... GMT_Day31`
+  - Month - `January, February,... December` and `GMT_January, GMT_February,... GMT_December`
+  - Year - `Yr1997, Yr2004` and `GMT_Yr1997, GMT_Yr2004`
+  - Period of the Day - `Night, Morning, Afternoon, Evening` and `GMT_Night, GMT_Morning, GMT_Afternoon, GMT_Evening` (six hour blocks starting at 00:00 hours).
+  - Lifecycle Index - `Lcycle_0, Lcycle_1, Lcycle_2` and `GMT_Lcycle_0, GMT_Lcycle_1, GMT_Lcycle_2` (the year number modulo 3, used in long term resource memory).
+  - **See also:** `sys.cdate`, `sys.date`.
 
--   The unqualified name of a particular host (e.g., `www`). If
-    your system returns a fully qualified domain name for your host
-    (e.g., `www.iu.hio.no`), CFEngine will also define a hard class for
-    the fully qualified name, as well as the partially-qualified
-    component names `iu.hio.no`, `hio.no`, and `no`.
-    * **See also:** `sys.fqhost`, `sys.uqhost`.
--   An arbitrary user-defined string (as specified in the `-D`
-    command line option, or defined in a [`classes` promise][classes] promise or
-    [`classes` body][Promise types#classes],
-    `restart_class` in a `processes` promise, etc).
--   The IP address octets of any active interface (in the form `ipv4_192_0_0_1`,
-    `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`), provided they are not excluded by
-    a regular expression in the file `WORKDIR/ignore_interfaces.rx` or `WORKDIR/inputs/ignore_interfaces.rx`.
-  - Note: Support and preference for `WORKDIR/ignore_interfaces.rx` was added
-    and is present in version `3.23.0` and later and in version `3.21.4` and later.
--   The names of the active interfaces (in the form
-    `net_iface_xl0`, `net_iface_vr0`).
--   System status and entropy information reported by
-    `cf-monitord`.
+* The unqualified name of a particular host (e.g., `www`). If
+  your system returns a fully qualified domain name for your host
+  (e.g., `www.iu.hio.no`), CFEngine will also define a hard class for
+  the fully qualified name, as well as the partially-qualified
+  component names `iu.hio.no`, `hio.no`, and `no`.
+  - **See also:** `sys.fqhost`, `sys.uqhost`.
+* An arbitrary user-defined string (as specified in the `-D`
+  command line option, or defined in a [`classes` promise][classes] promise or
+  [`classes` body][Promise types#classes],
+  `restart_class` in a `processes` promise, etc).
+* The IP address octets of any active interface (in the form `ipv4_192_0_0_1`,
+  `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`), provided they are not excluded by
+  a regular expression in the file `WORKDIR/ignore_interfaces.rx` or `WORKDIR/inputs/ignore_interfaces.rx`.
+* Note: Support and preference for `WORKDIR/ignore_interfaces.rx` was added
+  and is present in version `3.23.0` and later and in version `3.21.4` and later.
+* The names of the active interfaces (in the form
+  `net_iface_xl0`, `net_iface_vr0`).
+* System status and entropy information reported by
+  `cf-monitord`.
 
 ## Soft classes
 
@@ -243,11 +245,10 @@ $ cf-promises -f ./promises.cf -D dev
 2014-05-22T13:46:05+0000    error: There are syntax errors in policy files
 ```
 
-*Note*: Classes, once defined, will stay defined either for as long as the
+_Note_: Classes, once defined, will stay defined either for as long as the
 bundle is evaluated (for classes with a `bundle` scope) or until the agent
 exits (for classes with a `namespace` scope). See `cancel_kept`,
 `cancel_repaired`, and `cancel_notkept` in classes body.
-
 
 This example defines a few soft classes local to the `myclasses` bundle.
 
@@ -269,22 +270,20 @@ reports:
 }
 ```
 
-* The `always` and `always2` soft classes are always defined.
+- The `always` and `always2` soft classes are always defined.
 
-* The `solinux` soft class is defined as a combination of the `linux` or the
+- The `solinux` soft class is defined as a combination of the `linux` or the
   `solaris` hard classes. This class will be set if the operating
   system family is either of these values.
 
-* The `alt_class` soft class is defined as a combination of `linux`,
+- The `alt_class` soft class is defined as a combination of `linux`,
   `solaris`, or the presence of a file named `/etc/fstab`. If one of the two
   hard classes evaluate to true, or if there is a file named `/etc/fstab`, the
   `alt_class` class will also be set.
 
-* The `oth_class` soft class is defined as the combination of two `fileexists`
-  functions - `/etc/shadow` and `/etc/passwd`.  If both of these files are
+- The `oth_class` soft class is defined as the combination of two `fileexists`
+  functions - `/etc/shadow` and `/etc/passwd`. If both of these files are
   present the `oth_class` class will also be set.
-
-
 
 ### Negative knowledge
 
@@ -301,7 +300,7 @@ Class guards are the most common way to restrict a promise to a specific context
 
 This example illustrates how a class guard applies (to multiple promises) until a new context is specified.
 
-[%CFEngine_include_example(classes_context_applies_multiple_promises.cf)%]
+{{< CFEngine_include_example(classes_context_applies_multiple_promises.cf) >}}
 
 Another Example:
 
@@ -447,7 +446,6 @@ R: Hello from berlin
 R: Hello from berlin, if edition
 ```
 
-
 In this example, lists of cities are defined in the `vars` section and these
 lists are combined into a list of all cities. These variable lists are used to
 qualify the greetings and to make the policy more concise. In the [`classes`][classes]
@@ -466,8 +464,7 @@ are not automatically canonified when they are checked.
 This example shows how classes are automatically canonified when they are
 defined and that you must explicitly canonify when verifying classes.
 
-[%CFEngine_include_example(class-automatic-canonificiation.cf)%]
-
+{{< CFEngine_include_example(class-automatic-canonificiation.cf) >}}
 
 ## Operators and precedence
 
@@ -484,25 +481,25 @@ For example `a . b` is equivalent to `a.b` and perhaps more readable.
 Classes may be combined with the operators listed here in order from highest
 to lowest precedence:
 
-* '()'::
-    ~ The parenthesis group operator.
+- '()'::
+  ~ The parenthesis group operator.
 
-* '!'::
-    ~ The NOT operator.
+- '!'::
+  ~ The NOT operator.
 
-* '.'::
-    ~ The AND operator.
+- '.'::
+  ~ The AND operator.
 
-* '&'::
-    ~ The AND operator (alternative).
+- '&'::
+  ~ The AND operator (alternative).
 
-* '|'::
-    ~ The OR operator.
+- '|'::
+  ~ The OR operator.
 
-* '||'::
-    ~ The OR operator (alternative).
+- '||'::
+  ~ The OR operator (alternative).
 
-These operators can be combined to form complex expressions.  For example, the
+These operators can be combined to form complex expressions. For example, the
 following expression would be only true on Mondays or Wednesdays from 2:00pm
 to 2:59pm on Windows XP systems:
 
@@ -518,7 +515,7 @@ true or false before using them as operands in a logical expression.
 
 e.g.
 
-```cf3
+```cf3 {skip TODO}
 ...
 classes:
         "variable_1"
@@ -598,7 +595,7 @@ Additionally classes can be defined or undefined as the result of a promise by
 using a [classes body][Promise types#classes]. To set a class if
 a promise is repaired, one might write:
 
-```cf3
+```cf3 {skip TODO}
 "promiser..."
    ...
    classes => if_repaired("signal_class");
@@ -609,10 +606,10 @@ These classes are `namespace` scoped by default. The
 local to the bundle.
 
 It is recommended to use bundle scoped classes whenever possible. This example
-will define ```signal_class``` prefixed classes with a suffix matching the
-promise outcome (```_kept```, ```_repaired```, ```_notkept```).
+will define `signal_class` prefixed classes with a suffix matching the
+promise outcome (`_kept`, `_repaired`, `_notkept`).
 
-```cf3
+```cf3 {skip TODO}
  "promiser..."
     ...
     classes => results("bundle", "signal_class");

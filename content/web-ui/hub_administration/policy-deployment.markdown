@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Policy deployment
+aliases:
+  - "/web-ui-hub_administration-policy-deployment.html"
 ---
 
 By default CFEngine policy is distributed from `/var/cfengine/masterfiles` on
@@ -43,6 +45,7 @@ You must have the following:
 - a [git refspec](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec)
 
 Then one of these combinations:
+
 - a git username and password in the case of an ssh-based or git-based URL (no private key required)
 - a passphrase-less [private key](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) (no username or password required)
 - a [github token](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec) which is really just a username and password but for github this signifies read-only access (no private key required)
@@ -53,7 +56,7 @@ The last option, a read-only login, is the best approach as it removes the possi
 
 To configure the upstream repository. You must provide the uri and a refspec (branch name usually).
 Credentials can be specified in several ways as mentioned above so pick your choice above and enter in only the needed information in the form.
-If your CFEngine policies are not located in the repository root, you can specify the path in the "Project subdirectory" text input field.
+If your CFEngine policy is not located in the repository root, you can specify the path in the "Project subdirectory" text input field.
 
 ### Configuring upstream VCS via Mission Portal
 
@@ -103,9 +106,7 @@ Create `def.json` in the root of your masterfiles with the following content:
 
 ```json {file="def.json"}
 {
-  "classes": {
-    "cfengine_internal_masterfiles_update": [ "hub" ]
-    }
+  "classes": { "cfengine_internal_masterfiles_update": ["hub"] }
 }
 ```
 
@@ -160,5 +161,5 @@ tail -n 5 /var/cfengine/outputs/dc-scripts.log
                           @(inventory.bundles),
                                              ^
    error: There are syntax errors in policy files
-The staged policies in /opt/cfengine/masterfiles_staging_tmp could not be validated, aborting.: Unknown Error
+The staged policy in /opt/cfengine/masterfiles_staging_tmp could not be validated, aborting.: Unknown Error
 ```

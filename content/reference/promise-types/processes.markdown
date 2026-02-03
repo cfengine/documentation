@@ -1,6 +1,8 @@
 ---
 layout: default
 title: processes
+aliases:
+  - "/reference-promise-types-processes.html"
 ---
 
 Process promises refer to items in the system process table, i.e., a command in
@@ -8,7 +10,7 @@ some state of execution (with a Process Control Block). Promiser objects are
 patterns that are [unanchored][unanchored], meaning that they match parts of
 command lines in the system process table.
 
-```cf3
+```cf3 {skip TODO}
 processes:
 
   "regex contained in process line"
@@ -53,7 +55,7 @@ bundle agent example
 This example shows using `process_select` and `process_count` to define a class
 when a process has been running for longer than a day.
 
-[%CFEngine_include_example(processes_define_class_based_on_process_runtime.cf)%]
+{{< CFEngine_include_example(processes_define_class_based_on_process_runtime.cf) >}}
 
 Take care to not oversimplify your patterns as it may match
 unexpected processes. For example, on many systems, the process pattern `"^cp"`
@@ -66,7 +68,7 @@ and `"\B"` may prove very useful to you).
 restart a process, you should set a class to activate and then use a `commands`
 promise together with that class.
 
-```cf3
+```cf3 {skip TODO}
 processes:
     "/path/executable"
       restart_class => "restart_me";
@@ -78,20 +80,19 @@ commands:
 
 **Notes:**
 
-* CFEngine will not allow you to signal processes 1-4 or the agent process
+- CFEngine will not allow you to signal processes 1-4 or the agent process
   itself for fear of bringing down the system.
 
-
-* Process promises depend on the `ps` native tool, which by default truncates
+- Process promises depend on the `ps` native tool, which by default truncates
   lines at 128 columns on HP-UX. It is recommended to edit the file
   `/etc/default/ps` and increase the `DEFAULT_CMD_LINE_WIDTH` setting to 1024 to
   guarantee that process promises will work smoothly on that platform.
 
-****
+---
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### process_count
 
@@ -292,7 +293,7 @@ regex is [anchored][anchored], meaning it must match the entire name.
 
 **Example:**
 
-[%CFEngine_include_example(kill_process_running_wrong_user.cf)%]
+{{< CFEngine_include_example(kill_process_running_wrong_user.cf) >}}
 
 #### process_result
 
@@ -337,9 +338,9 @@ process, in kilobytes
 **Example:**
 
 ```cf3
-body process_select
+body process_select example
 {
-rsize => irange("4000","8000");
+  rsize => irange("4000","8000");
 }
 ```
 
@@ -487,14 +488,13 @@ one may call a 'stop script' to perform a graceful shutdown.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 processes:
 
  "snmpd"
 
         process_stop => "/etc/init.d/snmp stop";
 ```
-
 
 ### restart_class
 
@@ -519,7 +519,7 @@ information.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 processes:
 
    "cf-serverd"
@@ -547,7 +547,7 @@ supported, which terminates the process.
 
 **Allowed input range:**
 
-```cf3
+```
 hup
 int
 trap
@@ -568,7 +568,7 @@ segv
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 processes:
 
  cfservd_out_of_control::
@@ -587,4 +587,4 @@ processes:
 
 **History:**
 
-* 3.18.2, 3.20.0 Added ability to sleep between signals using `Ns`
+- 3.18.2, 3.20.0 Added ability to sleep between signals using `Ns`

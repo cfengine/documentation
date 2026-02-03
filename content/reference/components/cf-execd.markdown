@@ -3,6 +3,8 @@ layout: default
 title: cf-execd
 sorting: 30
 keywords: [executor]
+aliases:
+  - "/reference-components-cf-execd.html"
 ---
 
 `cf-execd` is the scheduling daemon for `cf-agent`. It runs
@@ -18,9 +20,8 @@ network.
 
 **Notes:**
 
-* This daemon reloads it's config when the SIGHUP signal is received.
-* `cf-execd` always considers the class ```executor``` to be defined.
-
+- This daemon reloads it's config when the SIGHUP signal is received.
+- `cf-execd` always considers the class `executor` to be defined.
 
 **History:**
 
@@ -28,7 +29,7 @@ network.
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-execd.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-execd.help, [\s]*--[a-z], ^$) >}}
 
 ## Control promises
 
@@ -45,7 +46,6 @@ body executor control
     schedule   => { "Min00", "Min30" }
 }
 ```
-
 
 ### agent_expireafter
 
@@ -83,8 +83,9 @@ number of simultaneous agents that are running. For example, if you
 set it to `120` and you are using a 5-minute agent schedule, a
 maximum of 120 / 5 = 24 agents should be enforced.
 
+**See also:** [`body action expireafter`][Promise types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body agent control expireafter`][cf-agent#expireafter], [`default:control_executor.agent_expireafter`](/reference/special-variables/control_executor/#defaultcontrol_executoragent_expireafter)
 
-**See also:** [`body action expireafter`][Promise types#expireafter], [`body contain exec_timeout`][commands#exec_timeout], [`body agent control expireafter`][cf-agent#expireafter]
+**History:** Added in CFEngine 3.0.0
 
 ### executorfacility
 
@@ -118,6 +119,8 @@ executorfacility => "LOG_USER";
 }
 ```
 
+**See also:** [`default:control_executor.executorfacility`](/reference/special-variables/control_executor/#defaultcontrol_executorexecutorfacility)
+
 ### exec_command
 
 **Description:** The full path and command to the executable run by
@@ -135,6 +138,8 @@ symbols may be used if desired.
 **Example:**
 
     exec_command => "$(sys.workdir)/bin/cf-agent -f update.cf && $(sys.workdir)/bin/cf-agent";
+
+**See also:** [`default:control_executor.exec_command`](/reference/special-variables/control_executor/#defaultcontrol_executorexec_command)
 
 ### mailfilter_exclude
 
@@ -164,6 +169,8 @@ body executor control
     mailfilter_exclude => { ".*Permission denied.*" };
 }
 ```
+
+**See also:** [`default:control_executor.mailfilter_exclude`](/reference/special-variables/control_executor/#defaultcontrol_executormailfilter_exclude)
 
 **History:** Introduced in CFEngine 3.9.
 
@@ -195,6 +202,8 @@ body executor control
 }
 ```
 
+**See also:** [`default:control_executor.mailfilter_include`](/reference/special-variables/control_executor/#defaultcontrol_executormailfilter_include)
+
 **History:** Introduced in CFEngine 3.9.
 
 ### mailfrom
@@ -213,6 +222,10 @@ body executor control
     mailfrom => "mrcfengine@example.org";
 }
 ```
+
+**See also:** [`default:control_executor.mailfrom`](/reference/special-variables/control_executor/#defaultcontrol_executormailfrom)
+
+**History:** Added in CFEngine 3.0.0
 
 ### mailmaxlines
 
@@ -238,6 +251,10 @@ mailmaxlines => "100";
 }
 ```
 
+**See also:** [`default:control_executor.mailmaxlines`](/reference/special-variables/control_executor/#defaultcontrol_executormailmaxlines)
+
+**History:** Added in CFEngine 3.0.0
+
 ### mailsubject
 
 **Description:** The subject in the mail sent by CFEngine.
@@ -258,6 +275,10 @@ body executor control
 }
 ```
 
+**See also:** [`default:control_executor.mailsubject`](/reference/special-variables/control_executor/#defaultcontrol_executormailsubject)
+
+**History:** Added in CFEngine 3.0.0
+
 ### mailto
 
 **Description:** Email-address CFEngine mail is sent to
@@ -276,6 +297,10 @@ body executor control
     mailto => "cfengine_alias@example.org";
 }
 ```
+
+**See also:** [`default:control_executor.mailto`](/reference/special-variables/control_executor/#defaultcontrol_executormailto)
+
+**History:** Added in CFEngine 3.0.0
 
 ### schedule
 
@@ -311,6 +336,10 @@ schedule => { "Min00", "(Evening|Night).Min15", "Min30", "(Evening|Night).Min45"
 }
 ```
 
+**See also:** [`default:control_executor.schedule`](/reference/special-variables/control_executor/#defaultcontrol_executorschedule)
+
+**History:** Added in CFEngine 3.0.0
+
 ### smtpserver
 
 **Description:** Name or IP of a willing smtp server for sending
@@ -332,6 +361,10 @@ body executor control
     smtpserver => "smtp.example.org";
 }
 ```
+
+**See also:** [`default:control_executor.smtpserver`](/reference/special-variables/control_executor/#defaultcontrol_executorsmtpserver)
+
+**History:** Added in CFEngine 3.0.0
 
 ### splaytime
 
@@ -371,8 +404,9 @@ body executor control
 }
 ```
 
-**See also:** The [`splayclass()`][splayclass] function for a task-specific
-means for setting splay times.
+**See also:** [`splayclass()`][splayclass], [`default:control_executor.splaytime`](/reference/special-variables/control_executor/#defaultcontrol_executorsplaytime)
+
+**History:** Added in CFEngine 3.0.0
 
 ### runagent_socket_allow_users
 
@@ -386,7 +420,7 @@ means for setting splay times.
 
 **Notes:**
 
-* By default, in the Masterfiles Policy Framework, `cfapache` is allowed to access the socket on Enterprise Hubs.
+- By default, in the Masterfiles Policy Framework, `cfapache` is allowed to access the socket on Enterprise Hubs.
 
 **Example:**
 
@@ -397,11 +431,11 @@ body executor control
 }
 ```
 
-**See also:** [`cf-runagent`][cf-runagent]
+**See also:** [`cf-runagent`][cf-runagent], [`default:control_executor.runagent_socket_allow_users`](/reference/special-variables/control_executor/#defaultcontrol_executorrunagent_socket_allow_users)
 
 **History:**
 
-* 3.18.0 Added `runagent_socket_allow_users` attribute
+- 3.18.0 Added `runagent_socket_allow_users` attribute
 
 ## Sockets
 
@@ -411,7 +445,7 @@ The `body executor control` attribute `runagent_socket_allow_users` controls the
 
 **Notes:**
 
-* Unlike execution triggered with the `cf-runagent` binary, there is currently no capability to define additional options like defining additional classes, or the remote bundlesequence.
+- Unlike execution triggered with the `cf-runagent` binary, there is currently no capability to define additional options like defining additional classes, or the remote bundlesequence.
 
 **Example:**
 
@@ -425,4 +459,4 @@ echo 'host001' > /var/cfengine/state/cf-execd.sockets/cf-runagent.socket
 
 **History:**
 
-* 3.18.0 Added socket for triggering `cf-runagent` by hostname or IP.
+- 3.18.0 Added socket for triggering `cf-runagent` by hostname or IP.

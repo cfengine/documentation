@@ -27,12 +27,12 @@ find $WRKDIR/documentation/hugo/content -name "*.include.markdown" -type f -dele
 cp -rn $WRKDIR/nt-docs/* $WRKDIR/documentation/hugo/
 cd $WRKDIR/documentation/hugo
 npm ci
-npm run build:all
+npm run build:all || exit 2
 
 cd $WRKDIR/documentation/generator
-mkdir -p $WRKDIR/documentation/generator/_site/assets/searchIndex
+mkdir -p $WRKDIR/documentation/generator/_site/assets/searchIndex/documents
 cp -rf $WRKDIR/documentation/hugo/scripts/search/index/searchIndex/* $WRKDIR/documentation/generator/_site/assets/searchIndex
-cp -rf $WRKDIR/documentation/hugo/scripts/search/index/documents $WRKDIR/documentation/generator/_site/assets/searchIndex/documents
+cp -rf $WRKDIR/documentation/hugo/scripts/search/index/documents/* $WRKDIR/documentation/generator/_site/assets/searchIndex/documents/
 cp -f $WRKDIR/documentation/redirects.conf $WRKDIR/documentation/generator/_site/
 
 $WRKDIR/documentation/generator/_scripts/cfdoc_postprocess.py "$@"

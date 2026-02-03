@@ -1,21 +1,23 @@
 ---
 layout: default
 title: diskfree
+aliases:
+  - "/reference-functions-diskfree.html"
 ---
 
-[%CFEngine_function_prototype(path)%]
+{{< CFEngine_function_prototype(path) >}}
 
 **Descriptions**: Return the free space (in KB) available on the current
 partition of `path`.
 
 If `path` is not found, this function returns 0.
 
-[%CFEngine_function_attributes(path)%]
+{{< CFEngine_function_attributes(path) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(diskfree.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(diskfree.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(diskfree.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(diskfree.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}

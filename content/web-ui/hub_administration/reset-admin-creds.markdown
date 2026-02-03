@@ -1,10 +1,11 @@
 ---
 layout: default
 title: Reset administrative credentials
+aliases:
+  - "/web-ui-hub_administration-reset-admin-creds.html"
 ---
 
 The default `admin` user can be reset to defaults using the following SQL.
-
 
 ```sql {file="cfsettings-setadminpassword.sql"}
 INSERT INTO "users" ("username", "password", "salt", "name", "email", "external", "active", "roles", "changetimestamp")
@@ -58,7 +59,6 @@ echo "UPDATE oauth_clients SET client_secret = '$MP_PW' where client_id = 'MP'" 
 These credentials are used by PHP CLI scripts to authenticate to the backend API.
 
 If these credentials are out of sync or incorrect you will see errors like "500 Internal Server Error" in `/var/cfengine/httpd/logs/application/` logs.
-
 
 Execute the following shell script to rotate and synchronize the CFE Robot credentials and then restart the system with `systemctl restart cfengine3` or similar.
 

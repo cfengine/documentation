@@ -2,6 +2,8 @@
 layout: default
 title: Command-Line reports
 sorting: 60
+aliases:
+  - "/examples-tutorials-reporting-command-line-reports.html"
 ---
 
 #### Command-line reporting is available to Enterprise and Community users.
@@ -23,7 +25,6 @@ The following report topics are included:
 [Redirecting output to logs][Command-Line reports#Redirecting output to logs]
 
 [Change detection: tripwires][Command-Line reports#Change detection: tripwires]
-
 
 ### CFEngine output levels
 
@@ -72,6 +73,7 @@ reports:
      report_to_file => "/tmp/test_log";
 }
 ```
+
 We can apply this idea to make more useful custom reports. In this example,
 the agent tests for certain software package and creates a simple HTML file of
 existing software:
@@ -131,15 +133,14 @@ the following output:
 
 ```html {file="report.html"}
 <html>
-Name of this host is: atlas<br>
-Type of this host is: linux<br>
+  Name of this host is: atlas<br />
+  Type of this host is: linux<br />
 
-Host has software gpg<br>
+  Host has software gpg<br />
 
-Host has software zip<br>
+  Host has software zip<br />
 
-Host has software rsync<br>
-
+  Host has software rsync<br />
 </html>
 ```
 
@@ -177,7 +178,7 @@ reports:
 
 A bonus to this is that you can get CFEngine to report system anomalies:
 
-```cf3
+```cf3 {skip TODO}
 reports:
 
  rootprocs_high_dev2::
@@ -385,7 +386,6 @@ body common control
 {
 bundlesequence => { "one" };
 }
-
 
 bundle agent one
 {

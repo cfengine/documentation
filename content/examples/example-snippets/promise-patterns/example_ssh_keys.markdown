@@ -3,6 +3,8 @@ layout: default
 title: Distribute ssh keys
 reviewed: 2015-12-15
 reviewed-by: nickanderson, enrico
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_ssh_keys.html"
 ---
 
 This example shows a simple ssh key distribution implementation.
@@ -15,9 +17,7 @@ simply create it with the following content.
 
 ```json {file="def.json"}
 {
-  "classes": {
-               "services_autorun": [ "any" ]
-             }
+  "classes": { "services_autorun": ["any"] }
 }
 ```
 
@@ -42,7 +42,7 @@ the policy server.
 To deploy this policy simply place it in the `services/autorun`
 directory of your masterfiles.
 
-[%CFEngine_include_example(simple_ssh_key_distribution.cf)%]
+{{< CFEngine_include_example(simple_ssh_key_distribution.cf) >}}
 
 Example Run:
 

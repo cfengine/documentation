@@ -2,11 +2,14 @@
 layout: default
 title: How do I fix undefined body errors?
 sorting: 90
+aliases:
+  - "/resources-faq-fix-undefined-body-error.html"
 ---
 
 When running policy you see `error: Undefined body`. For example:
 
 `cf-promises -f ./large-files.cf`:
+
 ```
 ./large-files.cf:14:0: error: Undefined body tidy with type delete
 ./large-files.cf:16:0: error: Undefined body recurse with type depth_search
@@ -33,7 +36,7 @@ Body file control allows you to build modular policy. Body file control inputs
 are typically relative to the policy file itself.
 
 ```cf3
-bundle file_remover_control
+bundle common file_remover_control
 {
   vars:
     "inputs" slist => {

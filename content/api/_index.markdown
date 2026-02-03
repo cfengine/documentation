@@ -2,10 +2,12 @@
 layout: default
 title: API
 sorting: 50
+aliases:
+  - "/api.html"
 ---
 
 The CFEngine Enterprise API allows HTTP clients to interact with the
-CFEngine Enterprise  *Hub*.  Typically this is also the policy server.
+CFEngine Enterprise _Hub_. Typically this is also the policy server.
 
 ![Enterprise API Overview](enterprise-api-architecture-overview.png)
 

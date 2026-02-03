@@ -2,6 +2,8 @@
 layout: default
 title: Hierarchies
 sorting: 80
+aliases:
+  - "/resources-additional-topics-hierarchies.html"
 ---
 
 Authority, Structure and Inheritance
@@ -143,6 +145,7 @@ linux.debian
 linux AND debian
 linux intersect debian
 ```
+
 ![Overlapping Sets](overlapping-sets.png)
 
 Sets can be made hierarchical when every subset is contained entirely by one and
@@ -205,14 +208,14 @@ having a single-point of definition to avoid maintaining the same information in
 more than one place.This is an efficiency. Inheritance is expressed in different
 ways:
 
- * Special subset extends base set properties, emphasizing that the leaf builds
-   on, or adds the root in order to extend it.
+- Special subset extends base set properties, emphasizing that the leaf builds
+  on, or adds the root in order to extend it.
 
- * Special subset inherits base set properties, emphasizing that the leaf is a
-   consumer of the root and does not necessarily offer any more.
+- Special subset inherits base set properties, emphasizing that the leaf is a
+  consumer of the root and does not necessarily offer any more.
 
- * Special subset depends on, emphasizing that the root is a single point of
-   failure for the leaf.
+- Special subset depends on, emphasizing that the root is a single point of
+  failure for the leaf.
 
 These are basically equivalent expressions of the same thing. No matter how we
 choose to express this, inheritance is a client-server relationship in which a
@@ -305,15 +308,15 @@ as CFEngine considers missing code to be a security issue and will signal an
 error for missing bundles. This is the default behaviour, but we can override it
 using the following body agent control promises.
 
-* ignore_missing_bundles
+- ignore_missing_bundles
 
-    Skip over any bundles listed in the bundlesequence constraint and continue
-    without error.
+  Skip over any bundles listed in the bundlesequence constraint and continue
+  without error.
 
-* ignore_missing_inputs
+- ignore_missing_inputs
 
-    Skip over any input files listed in the inputs contraint and continue
-    without error.
+  Skip over any input files listed in the inputs contraint and continue
+  without error.
 
 Be aware of the security implications of inheritance. Because of the assumption
 of authority, by promising to use the inheritance, you have subordinated your
@@ -350,7 +353,7 @@ bundle agent example
 
   processes:
     servers::  # the next rules `extend` or add to the class servers
-      "..."
+      "...";
 }
 ```
 
@@ -369,12 +372,12 @@ The keyt issue is: how tdo we slice and dice the cake into the largest pieces?
 In other words, what is that basic paradigm that you use to partition your
 system operations? Some alternatives include:
 
-* Geographically (by site or country)
-* By business department (sales, accounting, research)
-* By security zone (private, DMZ, public, etc)
-* By operating system (solaris, linux, darwin)
-* By customer or client (e.g. for managed services)
-* By task, service or role in the network (webservers, dns, workstations)
+- Geographically (by site or country)
+- By business department (sales, accounting, research)
+- By security zone (private, DMZ, public, etc)
+- By operating system (solaris, linux, darwin)
+- By customer or client (e.g. for managed services)
+- By task, service or role in the network (webservers, dns, workstations)
 
 However, you choose to begin, you can further subdivide these major categories
 by simply ANDing with other categories.

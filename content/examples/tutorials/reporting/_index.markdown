@@ -2,6 +2,8 @@
 layout: default
 title: Reporting
 sorting: 80
+aliases:
+  - "/examples-tutorials-reporting.html"
 ---
 
 No promises made in CFEngine imply automatic aggregation of data to a central location. In
@@ -21,19 +23,19 @@ In a CFEngine Enterprise installation, the CFEngine Server aggregates
 information about the environment in a centralized database. By default data is collected
 every 5 minutes from all bootstrapped hosts and includes information about:
 
-* logs about promises kept, not kept and repaired
-* current host contexts and classifications
-* variables
-* software information
-* file changes
+- logs about promises kept, not kept and repaired
+- current host contexts and classifications
+- variables
+- software information
+- file changes
 
 This data can be mined using SQL queries and then used for inventory
 management, compliance reporting, system diagnostics, and capacity planning.
 
 Access to the data is provided through:
 
-* The [Mission Portal console][Reporting UI]
-* The [Enterprise Report API][API].
+- The [Mission Portal console][Reporting UI]
+- The [Enterprise Report API][API].
 
 ### Command-Line Reporting
 

@@ -2,6 +2,8 @@
 layout: default
 title: Orchestration
 sorting: 80
+aliases:
+  - "/resources-additional-topics-orchestration.html"
 ---
 
 ## What is organizational complexity?
@@ -40,13 +42,13 @@ reorganize to outsource tasks are natural candidates for federated management.
 Promise theory predicts that a federated organization is naturally service
 oriented, with two main architectures:
 
-* The different parts of the collective bind together by promising each other
+- The different parts of the collective bind together by promising each other
   services.
 
-* The parts offer services to external parties, but are bound together by
+- The parts offer services to external parties, but are bound together by
   promising to coordinate with a central entity.
 
-* Coordination, hierarchy and centralization
+- Coordination, hierarchy and centralization
 
 Federated parts of an enterprise are said to be coordinated by an entity, if
 they receive common information from it. Merely delivering services (i.e.
@@ -315,15 +317,15 @@ one of advice.
 
 Rules of thumb for scalable management:
 
-* Use autonomy to scale: proximity to the affected area avoids unnecessary
+- Use autonomy to scale: proximity to the affected area avoids unnecessary
   dependency and transport of materials. Trust costs less.
 
-* If you need to enforce a common baseline (or constitution) for all, then
+- If you need to enforce a common baseline (or constitution) for all, then
   arrange this as a service, not as a punitive force. Use local caching and the
   principal of convergence to a desired state (idempotence) to provide assurance
   without the cost of monitoring.
 
-* Trust lowers costs.
+- Trust lowers costs.
 
 ## The benefits of federated management
 

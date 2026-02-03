@@ -1,9 +1,11 @@
 ---
 layout: default
 title: islink
+aliases:
+  - "/reference-functions-islink.html"
 ---
 
-[%CFEngine_function_prototype(filename)%]
+{{< CFEngine_function_prototype(filename) >}}
 
 **Description:** Returns whether the named object `filename` is a symbolic
 link.
@@ -19,20 +21,20 @@ be detected using this function.
   expected target, and check if the link target exists. Alternatively use `test`
   with `returnszero()`, for example `returnszero("/bin/test -f myfile")`.
 
-[%CFEngine_function_attributes(filename)%]
+{{< CFEngine_function_attributes(filename) >}}
 
 **Example:**
 
 Prepare:
 
-[%CFEngine_include_snippet(islink.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(islink.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(islink.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(islink.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(islink.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(islink.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** `fileexists()`, `filestat()`, `isdir()`, `isplain()`, `returnszero()`

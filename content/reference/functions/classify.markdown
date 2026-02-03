@@ -1,20 +1,22 @@
 ---
 layout: default
 title: classify
+aliases:
+  - "/reference-functions-classify.html"
 ---
 
-[%CFEngine_function_prototype(text)%]
+{{< CFEngine_function_prototype(text) >}}
 
 **Description:** Returns whether the canonicalization of `text` is a currently
 set class.
 
 This is useful for transforming variables into classes.
 
-[%CFEngine_function_attributes(text)%]
+{{< CFEngine_function_attributes(text) >}}
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
  "i_am_the_policy_host" expression => classify("master.example.org");

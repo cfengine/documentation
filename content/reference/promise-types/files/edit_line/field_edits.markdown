@@ -1,14 +1,16 @@
 ---
 layout: default
 title: field_edits
+aliases:
+  - "/reference-promise-types-files-edit_line-field_edits.html"
 ---
 
 Certain types of text files are tabular in nature, with field separators (e.g.
 `:` or `,`). The `passwd` and group files are classic examples of tabular
-files, but there are many ways to use this  feature. For example, editing a
+files, but there are many ways to use this feature. For example, editing a
 string:
 
-```cf3
+```
 VARIABLE="one two three"
 ```
 
@@ -86,10 +88,10 @@ body edit_field col(split,col,newval,method)
 ```
 
 Then a `field_edits` body describes the separators for fields and
-one level of sub-fields, along with policies for editing these fields,
+one level of sub-fields, along with policy for editing these fields,
 ordering the items within them.
 
-***
+---
 
 ## Attributes
 
@@ -145,7 +147,7 @@ triggering an error.
 If a user specifies a field that does not exist, because there are not so many
 fields, this allows the number of fields to be extended. Without this setting,
 CFEngine will issue an error if a non-existent field is referenced. Blank
-fields in a tabular file can be eliminated or kept depending  in this setting.
+fields in a tabular file can be eliminated or kept depending in this setting.
 If in doubt, set this to true.
 
 **Type:** [`boolean`][boolean]
@@ -172,26 +174,26 @@ files.
 
 **Allowed input range:**
 
-* `append`
+- `append`
 
 Append the specified value to the end of the field/column, separating
 (potentially) multiple values with `value_separator`
 
-* `prepend`
+- `prepend`
 
 Prepend the specified value at the beginning of the field/column, separating
 (potentially) multiple values with `value_separator`
 
-* `alphanum`
+- `alphanum`
 
 Insert the specified value into the field/column, keeping all the values
 (separated by `value_separator`) in alphanumerically sorted order
 
-* `set`
+- `set`
 
 Replace the entire field/column with the specified value.
 
-* `delete`
+- `delete`
 
 Delete the specified value (if present) in the specified field/column.
 
@@ -301,11 +303,10 @@ value_separator => ",";
 }
 ```
 
-
 ### select_region
 
 **Description:** Constrains `edit_line` operations to region identified by matching regular expressions.
 
 This body applies to all promise types within `edit_line` bundles.
 
-**See also:** [```select_region``` with `edit_line` operations][edit_line#select_region], [```select_region``` in `delete_lines`][delete_lines#select_region], [```select_region``` in `insert_lines`][insert_lines#select_region], [```select_region``` in `replace_patterns`][replace_patterns#select_region]
+**See also:** [`select_region` with `edit_line` operations][edit_line#select_region], [`select_region` in `delete_lines`][delete_lines#select_region], [`select_region` in `insert_lines`][insert_lines#select_region], [`select_region` in `replace_patterns`][replace_patterns#select_region]

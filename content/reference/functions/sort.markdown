@@ -1,26 +1,28 @@
 ---
 layout: default
 title: sort
+aliases:
+  - "/reference-functions-sort.html"
 ---
 
-[%CFEngine_function_prototype(list, mode)%]
+{{< CFEngine_function_prototype(list, mode) >}}
 
 **Description:** Returns `list` sorted according to `mode`.
 
 [This function can accept many types of data parameters.][Functions#collecting functions]
 
 Lexicographical, integer, real, IP, and MAC address sorting is
-supported currently.  The example below will show each sorting mode in
+supported currently. The example below will show each sorting mode in
 action. `mode` is optional, and defaults to `lex`.
 
 Note IPv6 addresses can not use uppercase hexadecimal characters
 (`A-Z`) but must use lowercase (`a-z`) instead.
 
-[%CFEngine_function_attributes(list, mode)%]
+{{< CFEngine_function_attributes(list, mode) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(sort.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(sort.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
@@ -38,8 +40,9 @@ Output:
 ```
 
 **History:**
- - Function added in 3.6.0.
- - [Collecting function][Functions#collecting functions] behavior added in 3.9.0.
- - Optional `mode` defaulting to `lex` behavior added in 3.9.0.
+
+- Function added in 3.6.0.
+- [Collecting function][Functions#collecting functions] behavior added in 3.9.0.
+- Optional `mode` defaulting to `lex` behavior added in 3.9.0.
 
 **See also:** `shuffle()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

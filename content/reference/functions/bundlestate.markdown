@@ -1,9 +1,11 @@
 ---
 layout: default
 title: bundlestate
+aliases:
+  - "/reference-functions-bundlestate.html"
 ---
 
-[%CFEngine_function_prototype(bundlename)%]
+{{< CFEngine_function_prototype(bundlename) >}}
 
 **Description:** Returns the current evaluation data state for bundle `bundlename`.
 
@@ -20,18 +22,18 @@ The namespace of the bundle should **not** be included if it's in the
 that). But if the bundle is in another namespace, you must prefix the
 name with the namespace in the normal `mynamespace:mybundle` fashion.
 
-[%CFEngine_function_attributes(bundlename)%]
+{{< CFEngine_function_attributes(bundlename) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(bundlestate.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(bundlestate.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(bundlestate.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(bundlestate.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** `getindices()`, `classesmatching()`, `variablesmatching()`, `mergedata()`, [template_method][files#template_method], `mustache`, `inline_mustache`, `datastate()`
 
 **History:**
 
-* Introduced in CFEngine 3.7.0
+- Introduced in CFEngine 3.7.0

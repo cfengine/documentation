@@ -2,6 +2,8 @@
 layout: default
 title: Integrating alerts with ticketing systems
 sorting: 15
+aliases:
+  - "/examples-tutorials-integrating-alerts-with-ticketing-systems.html"
 ---
 
 Custom actions can be used to integrate with external 3rd party systems. This tutorial shows how to use a custom action script to open a ticket in Jira when a condition is observed.
@@ -20,11 +22,11 @@ Note however that it is possible to expand on this by adjusting the Custom actio
 
 1.  Log in to the console of your CFEngine hub, and make sure you have python and the jira python package installed (normally by running `pip install jira`).
 
-2.  On your workstation, unpack [cfengine\_custom\_action\_jira.py](integrating-alerts-with-ticketing-systems_cfengine_custom_action_jira.py.zip) to a working directory.
+2.  On your workstation, unpack [cfengine_custom_action_jira.py](integrating-alerts-with-ticketing-systems_cfengine_custom_action_jira.py.zip) to a working directory.
 
 3.  Inside the script, fill in `MYJIRASERVER`, `MYUSERNAME` and `MYPASSWORD` with your information.
 
-4.  Test the script by unpacking [alert\_parameters\_test](integrating-alerts-with-ticketing-systems_alert_parameters_test.zip) into the same directory and running `./cfengine_custom_action_jira.py alert_parameters`.
+4.  Test the script by unpacking [alert_parameters_test](integrating-alerts-with-ticketing-systems_alert_parameters_test.zip) into the same directory and running `./cfengine_custom_action_jira.py alert_parameters`.
 
 5.  Verify the previous step created a ticket in JIRA. If not, recheck the information to typed in, connectivity and any output generated when running the script.
 
@@ -34,9 +36,9 @@ Note however that it is possible to expand on this by adjusting the Custom actio
 
 2. Click on the button to Add a script, upload the script and fill in the information as shown in the screenshot.
 
-    ![Upload custom action script](integrating-alerts-with-ticketing-systems_custom-action-script-upload-jira.png)
+   ![Upload custom action script](integrating-alerts-with-ticketing-systems_custom-action-script-upload-jira.png)
 
-3.  Click save to allow the script to be used when creating alerts.
+3. Click save to allow the script to be used when creating alerts.
 
 ## Create a new alert and associate the custom action script
 
@@ -44,7 +46,7 @@ Note however that it is possible to expand on this by adjusting the Custom actio
 
 2. Click on the existing Policy compliance widget, followed by Add alert.
 
-    ![Add alert to Policy Compliance widget](integrating-alerts-with-ticketing-systems_policy-compliance-add-alert.png)
+   ![Add alert to Policy Compliance widget](integrating-alerts-with-ticketing-systems_policy-compliance-add-alert.png)
 
 3. Name the alert "`Web service`" and set `Severity-level` at "`high`".
 
@@ -56,16 +58,16 @@ Note however that it is possible to expand on this by adjusting the Custom actio
 
 7. Type Promise Status to "`Not kept`".
 
-    ![Set Type Promise Status to Not kept](integrating-alerts-with-ticketing-systems_web-service-condition.png)
+   ![Set Type Promise Status to Not kept](integrating-alerts-with-ticketing-systems_web-service-condition.png)
 
 8. Associate the Custom action script we uploaded with the alert.
 
-    ![Associate custom action script with alert](integrating-alerts-with-ticketing-systems_custom-action-alert-association-jira.png)
+   ![Associate custom action script with alert](integrating-alerts-with-ticketing-systems_custom-action-alert-association-jira.png)
 
 ## Conclusions
 
 In this tutorial, we have shown how easy it is to integrate with a ticketing system, with JIRA as an example, using CFEngine Custom actions scripts.
 
-Using this Custom action, you can choose to open JIRA tickets when some or all of your alerts are triggered. But this is just the beginning; using Custom actions, you can integrate with virtually *any* external system for notifying about- or handling triggered alerts.
+Using this Custom action, you can choose to open JIRA tickets when some or all of your alerts are triggered. But this is just the beginning; using Custom actions, you can integrate with virtually _any_ external system for notifying about- or handling triggered alerts.
 
 Read more in the [Custom action documentation][Custom actions for alerts].

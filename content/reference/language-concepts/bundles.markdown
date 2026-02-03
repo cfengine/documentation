@@ -2,6 +2,8 @@
 layout: default
 title: Bundles
 sorting: 10
+aliases:
+  - "/reference-language-concepts-bundles.html"
 ---
 
 A bundle is a collection of promises. They allow to group related promises
@@ -13,15 +15,15 @@ related to configuring a web server or a file system would be named
 **NOTE**: Bundles **are not functions**. They maintain state across actuations
 within the same agent run.
 
-* Classic arrays are cleared at the beginning of a bundle actuation.
-* Lists, strings, ints, reals, and data-containers are preserved but can be
-  re-defined if not guarded with ```if => isvariable()```.
-* `bundle` scoped classes are cleared at the end of the bundles execution
-* `namespace` scoped classes are not cleared automatically, though they can be
+- Classic arrays are cleared at the beginning of a bundle actuation.
+- Lists, strings, ints, reals, and data-containers are preserved but can be
+  re-defined if not guarded with `if => isvariable()`.
+- `bundle` scoped classes are cleared at the end of the bundles execution
+- `namespace` scoped classes are not cleared automatically, though they can be
   explicitly undefined.
 
 Most promise types are specific to a particular kind of interpretation that
-requires a typed interpreter - the bundle *type*. Bundles belong to the agent
+requires a typed interpreter - the bundle _type_. Bundles belong to the agent
 that is used to keep the promises in the bundle. So `cf-agent` has bundles
 declared as:
 
@@ -78,10 +80,10 @@ recipient.
 
 These are the specific evaluation differences between common and agent bundles:
 
-* common bundles are automatically evaluated even if they are not in the bundlesequence, as long as they have no parameters
-* auto-evaluated common bundles (not in the bundlesequence explicitly) don't evaluate their `reports` promises, so their reports won't be printed.
-* when common bundles define a class, it's global ([`scope`][classes#scope] is `namespace`) by default; the classes in agent bundles are local ([`scope`][classes#scope] is `bundle`) by default.
-* common bundles can only contain [`meta`][meta], `default`, `vars`, [`classes`][classes], and `reports` promises
+- common bundles are automatically evaluated even if they are not in the bundlesequence, as long as they have no parameters
+- auto-evaluated common bundles (not in the bundlesequence explicitly) don't evaluate their `reports` promises, so their reports won't be printed.
+- when common bundles define a class, it's global ([`scope`][classes#scope] is `namespace`) by default; the classes in agent bundles are local ([`scope`][classes#scope] is `bundle`) by default.
+- common bundles can only contain [`meta`][meta], `default`, `vars`, [`classes`][classes], and `reports` promises
 
 ### Bundle Parameters
 
@@ -127,7 +129,7 @@ bundle agent subtest_c(info)
 ```
 
 You can pass `slist` and `data` variables to other bundles with
-the `@(var)` notation.  You do NOT need to qualify the variable name
+the `@(var)` notation. You do NOT need to qualify the variable name
 with the current bundle name.
 
 ### Scope
@@ -142,7 +144,7 @@ qualify the name, using the name of the bundle in which it is defined:
 The value of the variable depends on evaluation order, which is not
 controllable by the user. Thus you should not assume that you can
 evaluate a bundle twice with different variables and get variables
-from it that correspond to the second evaluation.  In other words, if you have:
+from it that correspond to the second evaluation. In other words, if you have:
 
 ```cf3
 bundle agent mybundle(x)
@@ -161,18 +163,19 @@ scoped. [Classes][classes and decisions] defined by `classes` type promises in
 
 Note that namespaced bundles work exactly the same way as
 non-namespaced bundles (which are actually in the `default`
-namespace).  You just say `namespace:bundle_name` instead of
-`bundle_name`.  See [Namespaces] for more details.
+namespace). You just say `namespace:bundle_name` instead of
+`bundle_name`. See [Namespaces] for more details.
 
 ### Main bundles and bundlesequence
 
 When running `cf-agent`, the order of bundles to evaluate is determined by the `bundlesequence`.
 The default `bundlesequence` contains `main` for convenience, so this example works:
-[%CFEngine_include_example(main.cf)%]
+{{< CFEngine_include_example(main.cf) >}}
 
 #### Custom bundle sequences
+
 You can specify a custom `bundlesequence` from the command line using `--bundlesequence`, or in policy:
-[%CFEngine_include_example(bundlesequence.cf)%]
+{{< CFEngine_include_example(bundlesequence.cf) >}}
 
 In this example, cf-agent will not look for a `main` bundle, since it is not in the `bundlesequence`.
 
@@ -188,9 +191,9 @@ Each file can include its own testsuite or some default behavior in a `__main__`
 All parts of the library will then be runnable directly, but also easy to include from other policy:
 
 `main_library.cf`:
-[%CFEngine_include_example(main_library.cf)%]
+{{< CFEngine_include_example(main_library.cf) >}}
 
 `main_entry_point.cf`:
-[%CFEngine_include_example(main_entry_point.cf)%]
+{{< CFEngine_include_example(main_entry_point.cf) >}}
 
 Both of these policy files can be run directly, the included library policy will not have a `main` bundle.

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readintarray
+aliases:
+  - "/reference-functions-readintarray.html"
 ---
 
 **Prototype:** `readintarray(array, filename, comment, split, maxentries, maxbytes)`<br>
@@ -23,27 +25,27 @@ lines matched.
 
 **Arguments**:
 
-* `array` : Array identifier to populate, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
-* `filename` : File name to read, in the range `"?(/.*)`
-* `comment` : [Unanchored][unanchored] regex matching comments, in the range `.*`
-* `split` : [Unanchored][unanchored] regex to split lines into fields, in the range `.*`
-* `maxentries` : Maximum number of entries to read, in the range
-`0,99999999999`
-* `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
+- `array` : Array identifier to populate, in the range
+  `[a-zA-Z0-9_$(){}\[\].:]+`
+- `filename` : File name to read, in the range `"?(/.*)`
+- `comment` : [Unanchored][unanchored] regex matching comments, in the range `.*`
+- `split` : [Unanchored][unanchored] regex to split lines into fields, in the range `.*`
+- `maxentries` : Maximum number of entries to read, in the range
+  `0,99999999999`
+- `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
 
 **Example:**
 
 Prepare:
 
-[%CFEngine_include_snippet(readintarray.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(readintarray.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(readintarray.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(readintarray.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(readintarray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(readintarray.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** [`readstringarray()`][readstringarray], [`readrealarray()`][readrealarray], [`parseintarray()`][parseintarray], [`parserealarray()`][parserealarray], [`parsestringarray()`][parsestringarray]

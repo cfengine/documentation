@@ -2,9 +2,11 @@
 layout: default
 title: Distributing files from a central location
 sorting: 10
+aliases:
+  - "/examples-tutorials-distribute-files-from-a-central-location.html"
 ---
 
-CFEngine can manage many machines simply by distributing policies to all its hosts.
+CFEngine can manage many machines simply by distributing policy files to all its hosts.
 This tutorial describes how to distribute files to hosts from a central policy server location.
 For this example, we will distribute software patches.
 
@@ -40,13 +42,13 @@ especially useful in the case of file copies because the same variable
 definition can be used both by the policy server when granting access and by the agent host
 when performing the copy.
 
-The policy framework includes a common bundle called ```def```. In this example, we
+The policy framework includes a common bundle called `def`. In this example, we
 will add two variables--`dir_patch_store` and `dir_patch_deploy`--to this existing bundle.
 These variables provide path definitions for storing and deploying patches.
 
 Add the following variable information to the `masterfiles/def.cf` file:
 
-```cf3 {file="def.cf"}
+```cf3 {file="def.cf" skip TODO}
 "dir_patch_store"
   string => "/storage/patches",
   comment => "Define patch files source location",
@@ -61,7 +63,7 @@ Add the following variable information to the `masterfiles/def.cf` file:
 ```
 
 These common variables can be referenced from the rest of the policy by using their fully
- [qualified names][Variables#Scalar referencing and expansion],
+[qualified names][Variables#Scalar referencing and expansion],
 `$(def.dir_patch_store)` and `$(def.dir_patch_deploy)`
 
 ### Grant file access
@@ -107,6 +109,7 @@ bundle agent sync_from_policyserver(source_path, dest_path)
       comment      => "Ensure files from $(sys.policy_hub):$(source_path) exist in $(dest_path)";
 }
 ```
+
 This reusable policy will be used to synchronize a directory on the policy server to a
 directory on the agent host.
 
@@ -186,7 +189,6 @@ Now that all of the policy has been edited and is in place, check for syntax err
 running `cf-promises -f ./promises.cf`. This promise is activated from the **service_catalogue**
 bundle.
 
-
 ## Commit Changes
 
 ### Set up trackers in the Mission Portal (Enterprise Users Only)
@@ -200,15 +202,14 @@ in the right-hand panel. Click **Add new tracker**.
 
 ![Mission Portal Host Event](hosts-add-new-tracker.png)
 
-
-Name it *Patch Failure*. Set the
-**Report Type** to *Promise not Kept*. Under **Watch**, enter **.patch**.  Set the **Start Time** to **Now**
+Name it _Patch Failure_. Set the
+**Report Type** to _Promise not Kept_. Under **Watch**, enter **.patch**. Set the **Start Time** to **Now**
 and then click **Done** to close the Start Time window. Click **Start** to save the new tracker.
-This tracker watches for  any promise handle that includes the string patch where a promise is not kept.
+This tracker watches for any promise handle that includes the string patch where a promise is not kept.
 
 ![Add New Tracker](add-new-tracker.png)
 
-Add another tracker called *Patch Repaired*. Set the **Report Type** to *Promise Repaired*.
+Add another tracker called _Patch Repaired_. Set the **Report Type** to _Promise Repaired_.
 Enter the same values as above for **Watch** and **Start Time**. Click **Start** to save the new tracker.
 This tracker allows you to see how the policy reacts as it is activated on your infrastructure.
 

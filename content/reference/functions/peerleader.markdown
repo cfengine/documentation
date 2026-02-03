@@ -1,9 +1,11 @@
 ---
 layout: default
 title: peerleader
+aliases:
+  - "/reference-functions-peerleader.html"
 ---
 
-[%CFEngine_function_prototype(filename, regex, groupsize)%]
+{{< CFEngine_function_prototype(filename, regex, groupsize) >}}
 
 **Description:** Returns the current host's partition peer leader.
 
@@ -36,7 +38,7 @@ fails otherwise.
 If the current host name (fully qualified or unqualified) is the peer
 leader, the string `localhost` is used instead of the host name.
 
-[%CFEngine_function_attributes(filename, regex, groupsize)%]
+{{< CFEngine_function_attributes(filename, regex, groupsize) >}}
 
 `groupsize` must be between 2 and 64 to avoid nonsensical promises.
 
@@ -44,12 +46,12 @@ leader, the string `localhost` is used instead of the host name.
 
 Prepare:
 
-[%CFEngine_include_snippet(peerleader.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(peerleader.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(peerleader.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(peerleader.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(peerleader.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(peerleader.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}

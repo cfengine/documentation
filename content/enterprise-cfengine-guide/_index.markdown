@@ -3,6 +3,8 @@ layout: default
 title: CFEngine Enterprise
 published: false
 sorting: 3
+aliases:
+  - "/enterprise-cfengine-guide.html"
 ---
 
 CFEngine Enterprise is an IT automation platform that uses a model-based approach to manage your infrastructure, and applications at WebScale while providing best-in-class scalability, security, enterprise-wide visibility and control.
@@ -43,11 +45,11 @@ The CFEngine Enterprise `Mission Portal` provides System Administrators and Infr
 
 ### Federation and SQL reporting
 
-CFEngine Enterprise has the ability to create federated structures, in which parts of organizations can have their own configuration policies, while at the same time the central IT organization may impose some policies that are more global in nature.
+CFEngine Enterprise has the ability to create federated structures, in which parts of organizations can have their own configuration, while at the same time the central IT organization may impose some policy that is more global in nature.
 
 ### Monitoring and reporting
 
-The CFEngine Enterprise Mission Portal contains continual reporting that details compliance with policies, repairs and any failures of hosts to match their desired state.
+The CFEngine Enterprise Mission Portal contains continual reporting that details compliance with policy, repairs and any failures of hosts to match their desired state.
 
 ### Role-based access control
 

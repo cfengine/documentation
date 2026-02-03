@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Audit log API
+aliases:
+  - "/api-enterprise-api-ref-audit-logs-api.html"
 ---
 
 Audit log API provides access to system audit logs that track user actions across the platform made to critical parts
@@ -14,34 +16,34 @@ such as settings, host data, users, roles, Build projects, etc.
 
 **Parameters:**
 
-* **actor** *(string)*
+- **actor** _(string)_
   Filter by user who performed the action.
-* **object_type** *(string)*
+- **object_type** _(string)_
   Filter by object type (see [Allowed object types][Audit log API#Allowed object types]).
-* **action** *(string)*
+- **action** _(string)_
   Filter by action type (see [Allowed actions][Audit log API#Allowed actions]).
-* **object_name** *(integer)*
+- **object_name** _(integer)_
   Filter by object name.
-* **created_after** *(integer)*
+- **created_after** _(integer)_
   Unix timestamp to filter logs after this time.
-* **created_before** *(integer)*
+- **created_before** _(integer)_
   Unix timestamp to filter logs before this time.
-* **page** *(integer)*
+- **page** _(integer)_
   Page number for pagination (default: 1).
-* **offset** *(integer)*
-    Number of results to skip for the processed query.
-* **sort_column** *(string)*
-    Column to sort by. Allowed values:
-    * time
-    * actor
-    * action
-    * object_id
-    * object_name
-    * object_type
-* **sort_direction** *(string, default: "DESC")*
+- **offset** _(integer)_
+  Number of results to skip for the processed query.
+- **sort_column** _(string)_
+  Column to sort by. Allowed values:
+  - time
+  - actor
+  - action
+  - object_id
+  - object_name
+  - object_type
+- **sort_direction** _(string, default: "DESC")_
   Sort direction. Allowed values:
-    * ASC (ascending)
-    * DESC (descending)
+  - ASC (ascending)
+  - DESC (descending)
 
 **Example request (curl):**
 
@@ -114,18 +116,17 @@ HTTP 200 OK
 **Responses:**
 
 | HTTP response code           | Description                          |
-|------------------------------|--------------------------------------|
+| ---------------------------- | ------------------------------------ |
 | 200 OK                       | Audit logs returned                  |
 | 422 Unprocessable entity     | Validation error occurred            |
 | 401 Unauthorized             | Authorization is missing             |
 | 403 Insufficient permissions | Audit logs are not available to user |
 | 500 Internal server error    | Internal server error                |
 
-
 ### Allowed actions
 
 | Action               | Description               |
-|----------------------|---------------------------|
+| -------------------- | ------------------------- |
 | Created              | Resource creation         |
 | Updated              | Resource update           |
 | Deleted              | Resource deletion         |
@@ -143,7 +144,7 @@ HTTP 200 OK
 ### Allowed object types
 
 | Object Type         | Description                                  |
-|---------------------|----------------------------------------------|
+| ------------------- | -------------------------------------------- |
 | User                | User account                                 |
 | Role                | Role definition                              |
 | Settings            | System, Mail, VCS or Authentication settings |
@@ -151,7 +152,6 @@ HTTP 200 OK
 | Group               | Host groups                                  |
 | Host                | Host configuration                           |
 | Build project       | Build project configuration                  |
-
 
 ## Get audit logs actors
 
@@ -187,7 +187,7 @@ Returns list of object names filtered by type.
 
 **Parameters:**
 
-* **object_type** *(string)*
+- **object_type** _(string)_
   Filter by object type (see [Allowed object types][Audit log API#Allowed object types]).
 
 **Example request (curl):**

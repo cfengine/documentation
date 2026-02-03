@@ -3,16 +3,17 @@ layout: default
 title: Change detection
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_change_detection.html"
 ---
 
 This policy will look for changes recursively in a directory.
 
-[%CFEngine_include_example(change_detect.cf)%]
+{{< CFEngine_include_example(change_detect.cf) >}}
 
 Here is an example run.
 
 First, let's create some files for CFEngine to monitor:
-
 
 ```
 # mkdir /etc/example

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Enable plain http
+aliases:
+  - "/web-ui-hub_administration-enable-plain-http.html"
 ---
 
 By default HTTPS is enforced by redirecting any non secure connection requests.
@@ -13,9 +15,6 @@ masterfiles.
 
 ```json {file="def.json"}
 {
-  "classes": {
-    "cfe_enterprise_enable_plain_http": [ "any" ]
-    }
-
+  "classes": { "cfe_enterprise_enable_plain_http": ["any"] }
 }
 ```

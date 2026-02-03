@@ -2,6 +2,8 @@
 layout: default
 title: Rendering files with Mustache templates
 sorting: 15
+aliases:
+  - "/examples-tutorials-render-files-with-mustache-templates.html"
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BUajq2b081E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -41,9 +43,7 @@ Allowed users {{#users}}<br />
 
 Create a file called `/tmp/myapp.conf.template` with the following content:
 
-```
-[file=myapp.conf.template]
-
+```{file="/tmp/myapp.conf.template"}
 Port {{port}}
 Protocol {{protocol}}
 Filepath {{filepath}}
@@ -80,7 +80,7 @@ bundle agent myapp_confs
           }
     ');
 }
-body agent __main__
+bundle agent __main__
 {
   methods:
     "myapp_confs";

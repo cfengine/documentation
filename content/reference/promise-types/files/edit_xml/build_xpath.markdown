@@ -1,6 +1,8 @@
 ---
 layout: default
 title: build_xpath
+aliases:
+  - "/reference-promise-types-files-edit_xml-build_xpath.html"
 ---
 
 This promise type assures that a balanced XML tree, described by the given

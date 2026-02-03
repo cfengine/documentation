@@ -2,6 +2,8 @@
 layout: default
 title: Extending query builder in Mission Portal
 sorting: 90
+aliases:
+  - "/web-ui-hub_administration-extending-query-builder.html"
 ---
 
 This instruction is created to explain how to extend the [Query builder][Reporting UI#Query builder] in the case where
@@ -84,48 +86,46 @@ Below you can see an example of hosts table representation as JSON element.
     }
 ```
 
-
 **Structure:**
 
 Each element has a key and a value. When you create your own JSON element please use a unique key. The value is a
 JSON object, please see explanations below. The element's key should be equal to `TableID`.
 
-* **TableID** *(string)*
-    Table id, can be the same as main element key, should be unique.
-* **Keys** *(json)*
-    Table keys, describe there primary key, emp.: `{'primary_key': 'HostKey'}`.
-    Primary key is case-sensitive. `primary_key` is the only possible key in `Keys` structure.
-* **Label** *(string)*
-    Label contains a table's name that will be shown on the UI. Not necessary to use a real table name,
-    it can be an alias for better representation.
-* **Fields** *(json)*
-    JSON object that contains table columns.
+- **TableID** _(string)_
+  Table id, can be the same as main element key, should be unique.
+- **Keys** _(json)_
+  Table keys, describe there primary key, emp.: `{'primary_key': 'HostKey'}`.
+  Primary key is case-sensitive. `primary_key` is the only possible key in `Keys` structure.
+- **Label** _(string)_
+  Label contains a table's name that will be shown on the UI. Not necessary to use a real table name,
+  it can be an alias for better representation.
+- **Fields** _(json)_
+  JSON object that contains table columns.
 
- **Fields structure:**
+  **Fields structure:**
 
 Fields object is presented as JSON, where key is unique table's key and value is JSON representation of table column properties.
 The element's key should be equal to `sqlField`
 
-* **name** *(string)*
-    Field's name
-* **label** *(string)*
-    Label contains a field's name that will be shown on the UI. Not necessary to use a real field name,
-    an alias can be used for better representation.
-* **inputType** *(string)*
-    Type of input fields, will be used to create filter input for this field. Allowed values: `text`, `textarea`,
-    `select` - a drop-down list,
-    `multiple` - a drop-down list that allows multiple selections, `radio`, `checkboxes`
-* **table** *(string)*
-    Field's table name
-* **sqlField** *(string)*
-    Concatenation of `table name`.`field name`. Emp.: `Hosts.FirstReportTimeStamp`
-* **dataType** *(string)*
-    Column's database type, allowed values: `timestamp`, `string`, `real`, `integer`, `array`
+- **name** _(string)_
+  Field's name
+- **label** _(string)_
+  Label contains a field's name that will be shown on the UI. Not necessary to use a real field name,
+  an alias can be used for better representation.
+- **inputType** _(string)_
+  Type of input fields, will be used to create filter input for this field. Allowed values: `text`, `textarea`,
+  `select` - a drop-down list,
+  `multiple` - a drop-down list that allows multiple selections, `radio`, `checkboxes`
+- **table** _(string)_
+  Field's table name
+- **sqlField** _(string)_
+  Concatenation of `table name`.`field name`. Emp.: `Hosts.FirstReportTimeStamp`
+- **dataType** _(string)_
+  Column's database type, allowed values: `timestamp`, `string`, `real`, `integer`, `array`
 
 After dca.js editing please validate the content of DCA variable (`var DCA =`) in a JSON validation tooling,
 there are many online tools to do that. Once your content validated and file has saved your changes will appear after
 the next agent run.
-
 
 #### Example
 

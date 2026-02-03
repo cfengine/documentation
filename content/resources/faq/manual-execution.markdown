@@ -2,6 +2,8 @@
 layout: default
 title: Manual execution
 sorting: 90
+aliases:
+  - "/resources-faq-manual-execution.html"
 ---
 
 Frequently asked questions on manual execution.
@@ -60,10 +62,10 @@ between).
 Sometimes it's convenient to run `cf-execd` with `--once`. It will execute
 `exec_command` as defined in `body executor control`. In the
 [Masterfiles Policy Framework][Masterfiles Policy Framework] this
-[defaults](https://github.com/cfengine/masterfiles/blob/{{site.cfengine.branch}}/controls/cf_execd.cf)
+[defaults](https://github.com/cfengine/masterfiles/blob/{{< params "cfengine.branch" >}}/controls/cf_execd.cf)
 to update policy ( `update.cf` ) followed by the default policy ( `promises.cf`
 ). Output from cf-execd executions is logged to
-```$(sys.workdir)/outputs```.
+`$(sys.workdir)/outputs`.
 
 # Request a remote agent run
 

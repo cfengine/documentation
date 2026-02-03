@@ -2,6 +2,8 @@
 layout: default
 title: Settings
 sorting: 10
+aliases:
+  - "/web-ui-settings.html"
 ---
 
 A variety of CFEngine and system properties can be changed in the settings view.
@@ -20,14 +22,14 @@ drop down in the top right hand corner.
 User settings and preferences allows the CFEngine Enterprise
 administrator to change various options, including:
 
-* Turn on or off RBAC
-  * When RBAC is disabled any user can see a host that has reported classes
-  * Note, administrative functions like the ability to delete hosts are not
+- Turn on or off RBAC
+  - When RBAC is disabled any user can see a host that has reported classes
+  - Note, administrative functions like the ability to delete hosts are not
     affected by this setting and hosts that have no reported classes are never
     shown.
-* Unreachable host threshold
-* Number of samples used to identify a duplicate identity
-* Log level
+- Unreachable host threshold
+- Number of samples used to identify a duplicate identity
+- Log level
 
 ## User management
 
@@ -65,24 +67,30 @@ Users without a role will not be able to see any hosts in Mission Portal.
 Here is a set of example roles, users and the impact on each user will be able to view.
 
 ### Example roles
+
 Role **suse**:
+
 - Class include: `SUSE`
 - Class exclude: empty
 
 Role **cfengine_3**:
+
 - Class include: `cfengine_3`
 - Class exclude: empty
 
 Role **no_windows**
+
 - Class include: `cfengine_3`
 - Class exclude: `windows`
 
 Role **windows_ubuntu**
+
 - Class include: `windows`
 - Class include: `ubuntu`
 - Class exclude: empty
 
 ### Example users
+
 User one has role `SUSE`.
 
 User two has roles `no_windows` and `cfengine_3`.
@@ -90,6 +98,7 @@ User two has roles `no_windows` and `cfengine_3`.
 User three has roles `windows_ubuntu` and `no_windows`.
 
 ### What reports each user can view
+
 A report shared with `SUSE` and `no_windows` will not be seen by any of the listed users.
 
 A report shared with `no_windows` and `cfengine_3` will only be seen by user two.
@@ -97,6 +106,7 @@ A report shared with `no_windows` and `cfengine_3` will only be seen by user two
 A report shared with `SUSE` will be seen by user one.
 
 ### Which hosts each user can view
+
 User one will only be able to see hosts that report the `SUSE` class.
 
 User two will be able to see all hosts that have **not** reported the `windows` class.
@@ -105,8 +115,8 @@ User three will only be able to see hosts that have reported the `ubuntu` class.
 
 ### Predefined roles
 
-* ```admin``` - The admin role can see everything and do anything.
-* ```cf_remoteagent``` - This role allows execution of `cf-runagent`.
+- `admin` - The admin role can see everything and do anything.
+- `cf_remoteagent` - This role allows execution of `cf-runagent`.
 
 ### Default role
 
@@ -183,15 +193,14 @@ Mission portal can authenticate against an external directory.
 ### LDAP groups syncing
 
 - LDAP group syncing can be turned on by clicking the corresponding checkbox
-
-    - User group attribute must be provided to obtain groups from an LDAP user entity.
+  - User group attribute must be provided to obtain groups from an LDAP user entity.
     The default value for Active Directory is `memberOf`.
     The group name will be taken from `cn` attribute
-    - List of groups to sync, names must match in LDAP/MP. Each role should be added on a new line.
-    - Click `Perform sync on every login` checkbox to synchronize user roles on every login, otherwise
+  - List of groups to sync, names must match in LDAP/MP. Each role should be added on a new line.
+  - Click `Perform sync on every login` checkbox to synchronize user roles on every login, otherwise
     roles will be assigned to a user only on sign-up (first login).
 
-**Note:** Roles *must* be created in Mission Portal. Enabling LDAP group sync
+**Note:** Roles _must_ be created in Mission Portal. Enabling LDAP group sync
 will not result in addition or removal of Mission Portal roles.
 
 **See also:** [LDAP authentication REST API][LDAP authentication API], [Role management][Settings#Role management]
@@ -228,7 +237,6 @@ To restore the CFEngine admin role permissions run the following sql as root on 
 ```
 
 **See also:** [Web RBAC API][Web RBAC API]
-
 
 ## About CFEngine
 

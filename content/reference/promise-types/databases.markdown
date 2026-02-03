@@ -2,6 +2,8 @@
 layout: default
 title: databases
 sorting: 9999
+aliases:
+  - "/reference-promise-types-databases.html"
 ---
 
 CFEngine can interact with commonly used database servers to keep
@@ -23,24 +25,24 @@ not a recommended task for CFEngine.
 
 There are three kinds of database supported by CFEngine:
 
-* *LDAP - The Lightweight Directory Access Protocol*
+- _LDAP - The Lightweight Directory Access Protocol_
 
-    A hierarchical network database primarily for reading simple schema (Only
-    CFEngine Enterprise).
+  A hierarchical network database primarily for reading simple schema (Only
+  CFEngine Enterprise).
 
-* *SQL - Structured Query Language*
+- _SQL - Structured Query Language_
 
-    A number of relational databases (currently supported: MySQL, Postgres for
-    reading and writing complex data.
+  A number of relational databases (currently supported: MySQL, Postgres for
+  reading and writing complex data.
 
-    **WARNING:** Neither MySQL/MariaDB or PostgreSQL support is built into the
-    default binaries. If you wish to use this functionality you must compile the
-    agent with support.
+  **WARNING:** Neither MySQL/MariaDB or PostgreSQL support is built into the
+  default binaries. If you wish to use this functionality you must compile the
+  agent with support.
 
-* *Registry - Microsoft Registry*
+- _Registry - Microsoft Registry_
 
-    An embedded database for interfacing with system values in Microsoft
-    Windows (Only CFEngine Enterprise)
+  An embedded database for interfacing with system values in Microsoft
+  Windows (Only CFEngine Enterprise)
 
 In addition, CFEngine uses a variety of embedded databases for its own
 internals.
@@ -53,7 +55,7 @@ and CFEngine cannot make promises on their behalf, unless they promise
 pre-requisite for making SQL database promises is to grant a point of
 access on the server.
 
-```cf3
+```cf3 {skip TODO}
 databases:
 
 "database/subkey or table"
@@ -76,8 +78,6 @@ body database_server name
   db_server_connection_db => "database we can connect to";
 }
 ```
-
-
 
 ```cf3
 body common control
@@ -109,8 +109,6 @@ databases:
                         },
 
     database_server => myserver;
-
-
 
 }
 
@@ -145,11 +143,11 @@ Windows registry for instance. Entity-relation databases do not normally
 present tables in this way, but no harm is done in representing them as
 a hierarchy of depth 1.
 
-***
+---
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### database_server
 
@@ -168,7 +166,7 @@ for a database connection.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 db_server_owner => "mark";
 ```
 
@@ -183,7 +181,7 @@ text password for a database connection.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 db_server_password => "xyz.1234";
 ```
 
@@ -199,7 +197,8 @@ A blank value is equal to localhost.
 **Allowed input range:** (arbitrary string)
 
 **Example:**
-```cf3
+
+```cf3 {skip TODO}
 db_server_host => "sqlserv.example.org";
 ```
 
@@ -221,7 +220,7 @@ mysql
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 db_server_type => "postgres";
 ```
 
@@ -274,7 +273,7 @@ ms_registry
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 database_type => "ms_registry";
 ```
 
@@ -298,7 +297,7 @@ restore
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 database_operation => "create";
 ```
 
@@ -316,7 +315,7 @@ and fixed size data elements are doublets.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 "cf_topic_maps/topics"
 
   database_operation => "create",
@@ -370,7 +369,7 @@ data-value pairs. The currently supported types (the middle field) for the
 Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string)
 and `REG_DWORD` (double word).
 
-If a column value has a comma you can escape the comma with backslash ```\,```.
+If a column value has a comma you can escape the comma with backslash `\,`.
 
 ```cf3
 bundle agent main
@@ -406,7 +405,7 @@ files.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 databases:
 
  "HKEY_LOCAL_MACHINE\SOFTWARE"

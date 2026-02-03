@@ -2,13 +2,16 @@
 layout: default
 title: Integrating with Sumo Logic
 sorting: 15
+aliases:
+  - "/examples-tutorials-integrating-with-sumo-logic.html"
 ---
+
 In this How To we will show a simple integrate with [Sumo Logic](http://www.sumologic.com). Whenever there is a CFEngine policy update, that event will be exported to Sumo Logic. These events can become valuable traces when using Sumo Logic to analyze and detect unintendent system behavior.
 
 **Requirements:**
 
--   CFEngine Community/Enterprise
--   Sumo Logic account (secret URL)
+- CFEngine Community/Enterprise
+- Sumo Logic account (secret URL)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5_JaglgmLpg" frameborder="0" allowfullscreen></iframe>
 
@@ -28,7 +31,7 @@ First, we define a couple of variables.
 
 The two Sumo variables are used to access the service, while the `curl_args` is the actual curl command that will upload our timestamp file to Sumo Logic.
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "policy_update_file"
     string => "/tmp/CFEngine_policy_updated";
@@ -46,7 +49,7 @@ We also ensures that the content of this file will be the value of the `sys.last
 
 Finally, below you will see a body defining how CFEngine is going to detect changes in policy files, this time using an md5 hash and only looking for change in the content (not permissions or ownership).
 
-```cf3
+```cf3 {skip TODO}
 files:
  "$(policy_update_file)"
   create => "true",
@@ -70,7 +73,7 @@ The final section in the CFEngine policy is where the command that uploads the f
 
 The command will only be issued whenever a class called `new_policy_update` is set, which we above defined to be set when there is a change detection. The handle argument is a useful way to document your intentions.
 
-```cf3
+```cf3 {skip TODO}
 commands:
   new_policy_update::
     "/usr/bin/curl"
@@ -104,7 +107,7 @@ Normally, to ensure your policy file is put into action, you would need to follo
 
 Under the body common control, add `sumo_logic_policy_update` to your bundle sequence.
 
-```cf3
+```cf3 {skip TODO}
 body common control
 
 {
@@ -115,9 +118,9 @@ body common control
                       ...
 ```
 
-Under body common control, add /sumologic\_policy\_update.cf/ to your inputs section.
+Under body common control, add /sumologic_policy_update.cf/ to your inputs section.
 
-```cf3
+```cf3 {skip TODO}
 inputs => {
            # File definition for global variables and classes
            "sumologic_policy_update.cf",
@@ -126,12 +129,11 @@ inputs => {
 
 That's all.
 
-
 ## Test it!
 
 To test it, we need to make a change to any CFEngine policy, and then go to Sumo Logic to see if there is a new timestamp reported.
 
-* Make a change to any policy file, for examle `promises.cf`:
+- Make a change to any policy file, for examle `promises.cf`:
 
 ```command
 vi /var/cfengine/masterfiles/promises.cf
@@ -139,13 +141,13 @@ vi /var/cfengine/masterfiles/promises.cf
 
 Add a comment and close the file.
 
-* Check if timestamp has been updated
+- Check if timestamp has been updated
 
 ```command
 cat /tmp/CFEngine_policy_updated
 ```
 
-*   Check with Sumo Logic
+- Check with Sumo Logic
 
 ![integrating-with-sumo-logic_sumo.png](integrating-with-sumo-logic_sumo.png)
 

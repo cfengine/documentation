@@ -1,9 +1,11 @@
 ---
 layout: default
 title: readcsv
+aliases:
+  - "/reference-functions-readcsv.html"
 ---
 
-[%CFEngine_function_prototype(filename, optional_maxbytes)%]
+{{< CFEngine_function_prototype(filename, optional_maxbytes) >}}
 
 **Description:**
 Parses CSV data from the file `filename` and returns the result as a `data` variable.
@@ -19,21 +21,21 @@ The returned data is in the same format as
 `data_readstringarrayidx()`, that is, a data container that holds a
 JSON array of JSON arrays.
 
-[%CFEngine_function_attributes(filename, optional_maxbytes)%]
+{{< CFEngine_function_attributes(filename, optional_maxbytes) >}}
 
 **Example:**
 
 Prepare:
 
-[%CFEngine_include_snippet(readcsv.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(readcsv.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(readcsv.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(readcsv.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(readcsv.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(readcsv.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Note:** CSV files formatted according to RFC 4180 must end with the `CRLF`
 sequence. Thus a text file created on Unix with standard Unix tools

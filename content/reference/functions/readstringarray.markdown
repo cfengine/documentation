@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readstringarray
+aliases:
+  - "/reference-functions-readstringarray.html"
 ---
 
 **Prototype:** `readstringarray(array, filename, comment, split, maxentries, maxbytes)`
@@ -23,24 +25,24 @@ lines matched.
 
 **Arguments**:
 
-* `array` : Array identifier to populate, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
-* `filename` : File name to read, in the range `"?(/.*)`
-* `comment` : [Unanchored][unanchored] regex matching comments, in the range `.*`
-* `split` : [Unanchored][unanchored] regex to split lines into fields, in the range `.*`
-* `maxentries` : Maximum number of entries to read, in the range
-`0,99999999999`
-* `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
+- `array` : Array identifier to populate, in the range
+  `[a-zA-Z0-9_$(){}\[\].:]+`
+- `filename` : File name to read, in the range `"?(/.*)`
+- `comment` : [Unanchored][unanchored] regex matching comments, in the range `.*`
+- `split` : [Unanchored][unanchored] regex to split lines into fields, in the range `.*`
+- `maxentries` : Maximum number of entries to read, in the range
+  `0,99999999999`
+- `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 readintarray("array_name","/tmp/array","#[^\n]*",":",10,4000);
 ```
 
 Input:
 
-```cf3
+```
 1: 5:7:21:13
 2:19:8:14:14
 3:45:1:78:22
@@ -49,7 +51,7 @@ Input:
 
 Results in:
 
-```cf3
+```
 array_name[1][0]   1
 array_name[1][1]   5
 array_name[1][2]   7
@@ -72,13 +74,13 @@ array_name[4][3]   98
 array_name[4][4]   99
 ```
 
-```cf3
+```cf3 {skip TODO}
 readstringarray("array_name","/tmp/array","\s*#[^\n]*",":",10,4000);
 ```
 
 Input:
 
-```cf3
+```
 at:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
 avahi:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
 beagleindex:x:104:106:User for Beagle indexing:/var/cache/beagle:/bin/bash
@@ -89,7 +91,7 @@ daemon:x:2:2:Daemon:/sbin:
 
 Results in a systematically indexed map of the file:
 
-```cf3
+```
 ...
 array_name[daemon][0]   daemon
 array_name[daemon][1]   x
@@ -110,16 +112,17 @@ array_name[games][5]    /var/games
 array_name[games][6]    /bin/bash
 ...
 ```
+
 Prepare:
 
-[%CFEngine_include_snippet(readrealarray.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(readrealarray.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(readrealarray.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(readrealarray.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(readrealarray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(readrealarray.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** [`readrealarray()`][readrealarray], [`readintarray()`][readintarray], [`parserealarray()`][parserealarray], [`parserealarray()`][parserealarray], [`parsestringarray()`][parsestringarray]

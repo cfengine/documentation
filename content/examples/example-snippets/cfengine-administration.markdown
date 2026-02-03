@@ -2,10 +2,12 @@
 layout: default
 title: Administration examples
 sorting: 2
+aliases:
+  - "/examples-example-snippets-cfengine-administration.html"
 ---
 
-* [Ordering promises][Administration examples#Ordering promises]
-* [Aborting execution][Administration examples#Aborting execution]
+- [Ordering promises][Administration examples#Ordering promises]
+- [Aborting execution][Administration examples#Aborting execution]
 
 ## Ordering promises
 
@@ -15,9 +17,8 @@ This shows how dependencies can be chained in spite of the order of promises in 
 
 Normally the order of promises in a bundle is followed, within each promise type, and the types are ordered according to normal ordering.
 
-
-[%CFEngine_include_snippet(ordering_promises.cf, .* )%]
+{{< CFEngine_include_snippet(ordering_promises.cf, .* ) >}}
 
 ## Aborting execution
 
-[%CFEngine_include_snippet(aborting_execution.cf, .* )%]
+{{< CFEngine_include_snippet(aborting_execution.cf, .* ) >}}

@@ -1,13 +1,15 @@
 ---
 layout: default
 title: type
+aliases:
+  - "/reference-functions-type.html"
 ---
 
-[%CFEngine_function_prototype(var, detail)%]
+{{< CFEngine_function_prototype(var, detail) >}}
 
 **Description:** Returns a variables type description.
 
-[%CFEngine_function_attributes(var, detail)%]
+{{< CFEngine_function_attributes(var, detail) >}}
 
 This function returns a variables type description as a string. The function
 expects a variable identifier as the first argument `var`. An optional second
@@ -25,7 +27,7 @@ The following table demonstrates the strings you can expect to be returned
 with different combinations of the arguments `type` and `detail`.
 
 | type         | detail | return        |
-|--------------|--------|---------------|
+| ------------ | ------ | ------------- |
 | string       | false  | string        |
 | string       | true   | policy string |
 | int          | false  | int           |
@@ -57,14 +59,14 @@ with different combinations of the arguments `type` and `detail`.
 
 **Example:**
 
-[%CFEngine_include_snippet(type.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(type.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(type.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(type.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:**
 
-* Introduced in 3.18.0
+- Introduced in 3.18.0
 
 **See also:** `is_type()`.

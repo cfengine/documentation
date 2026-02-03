@@ -1,16 +1,18 @@
 ---
 layout: default
 title: iprange
+aliases:
+  - "/reference-functions-iprange.html"
 ---
 
-[%CFEngine_function_prototype(range, optional_interface)%]
+{{< CFEngine_function_prototype(range, optional_interface) >}}
 
 **Description:** Returns whether the current host lies in the range of
 IP addresses specified, optionally checking only `interface`.
 
 Pattern matching based on IP addresses.
 
-[%CFEngine_function_attributes(range, optional_interface)%]
+{{< CFEngine_function_attributes(range, optional_interface) >}}
 
 **Example:**
 

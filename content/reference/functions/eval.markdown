@@ -1,16 +1,18 @@
 ---
 layout: default
 title: eval
+aliases:
+  - "/reference-functions-eval.html"
 ---
 
-[%CFEngine_function_prototype(expression, mode, options)%]
+{{< CFEngine_function_prototype(expression, mode, options) >}}
 
 **Description:** Returns `expression` evaluated according to `mode`
 and `options`. Currently only the `math` and `class` modes with
 `infix` option are supported for evaluating traditional math
 expressions.
 
-All the math is done with the C `double` type internally.  The results are returned as a string.  When the `mode` is `math` the returned value is a floating-point value formatted to 6 decimal places as a string.
+All the math is done with the C `double` type internally. The results are returned as a string. When the `mode` is `math` the returned value is a floating-point value formatted to 6 decimal places as a string.
 
 `mode` and `options` are optional and default to `math` and `infix`,
 respectively.
@@ -23,7 +25,7 @@ vars:
   "result" string => eval("200/10", "math", "infix");
 ```
 
-When the `mode` is `class`, the returned string is either false for 0 (`!any`) or true for anything else (`any`) so it can be used in a class expression under `classes`.  The `==` operator (see below) is very convenient for this purpose.  The actual accepted values for false allow a tiny margin around 0, just like `==`.
+When the `mode` is `class`, the returned string is either false for 0 (`!any`) or true for anything else (`any`) so it can be used in a class expression under `classes`. The `==` operator (see below) is very convenient for this purpose. The actual accepted values for false allow a tiny margin around 0, just like `==`.
 
 **Example:**
 
@@ -40,13 +42,13 @@ The supported infix mathematical syntax, in order of precedence, is:
 - `*` and `/` operators for multiplication and division
 - `%` operators for modulo operation
 - `+` and `-` operators for addition and subtraction
-- `==` "close enough" operator to tell if two expressions evaluate to the same number, with a tiny margin to tolerate floating point errors.  It returns 1 or 0.
-- `>=` "greater or close enough" operator with a tiny margin to tolerate floating point errors.  It returns 1 or 0.
-- `>` "greater than" operator.  It returns 1 or 0.
-- `<=` "less than or close enough" operator with a tiny margin to tolerate floating point errors.  It returns 1 or 0.
-- `<` "less than" operator.  It returns 1 or 0.
+- `==` "close enough" operator to tell if two expressions evaluate to the same number, with a tiny margin to tolerate floating point errors. It returns 1 or 0.
+- `>=` "greater or close enough" operator with a tiny margin to tolerate floating point errors. It returns 1 or 0.
+- `>` "greater than" operator. It returns 1 or 0.
+- `<=` "less than or close enough" operator with a tiny margin to tolerate floating point errors. It returns 1 or 0.
+- `<` "less than" operator. It returns 1 or 0.
 
-The numbers can be in any format acceptable to the C `scanf` function with the `%lf` format specifier, followed by the `k`, `m`, `g`, `t`, or `p` SI units.  So e.g. `-100` and `2.34m` are valid numbers.
+The numbers can be in any format acceptable to the C `scanf` function with the `%lf` format specifier, followed by the `k`, `m`, `g`, `t`, or `p` SI units. So e.g. `-100` and `2.34m` are valid numbers.
 
 In addition, the following constants are recognized:
 
@@ -73,14 +75,14 @@ The following functions can be used, with parentheses:
 - `abs`: absolute value
 - `step`: 0 if the argument is negative, 1 otherwise
 
-[%CFEngine_function_attributes(expression, mode, options)%]
+{{< CFEngine_function_attributes(expression, mode, options) >}}
 
 **Example:**
 
-[%CFEngine_include_example(eval.cf)%]
+{{< CFEngine_include_example(eval.cf) >}}
 
 **History:**
 
-* Function added in 3.6.0.
-* `mode` and `options` optional and default to `math` and `infix`, respectively in 3.9.0.
-* comparison `<`, `<=`, `>`, `>=` operators added in 3.10.0
+- Function added in 3.6.0.
+- `mode` and `options` optional and default to `math` and `infix`, respectively in 3.9.0.
+- comparison `<`, `<=`, `>`, `>=` operators added in 3.10.0

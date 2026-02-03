@@ -2,14 +2,16 @@
 layout: default
 title: Hosts
 sorting: 30
+aliases:
+  - "/web-ui-hosts.html"
 ---
 
 The Hosts app provides a customizable global overview of _promise_ compliance. A summary of compliant vs non-compliant hosts is provided at each branch in the tree.
 
 Each host is in one of two groups: out of compliance or fully compliant.
 
-* A host is considered out of compliance if less than 100% of its promises were kept.
-* A host is considered fully compliant if 100% of its promises were kept.
+- A host is considered out of compliance if less than 100% of its promises were kept.
+- A host is considered fully compliant if 100% of its promises were kept.
 
 <img src="Hosts-app-overview.png" alt="Hosts app overview" width="700px">
 
@@ -31,10 +33,10 @@ Take action on a host.
 
 <img src="host-action-buttons.png" alt="Host action buttons" width="280px">
 
-* <img src="host-info-run-agent.png" alt="Run agent" width="50px"> :: Request an unscheduled policy run
-* <img src="host-info-collect-reports.png" alt="Collect reports" width="50px"> :: Request report collection
-* <img src="host-info-get-url.png" alt="Get URL" width="50px"> :: Get the URL to the specific hosts info page
-* <img src="host-info-delete-host.png" alt="Delete host" width="50px"> :: Delete the host
+- <img src="host-info-run-agent.png" alt="Run agent" width="50px"> :: Request an unscheduled policy run
+- <img src="host-info-collect-reports.png" alt="Collect reports" width="50px"> :: Request report collection
+- <img src="host-info-get-url.png" alt="Get URL" width="50px"> :: Get the URL to the specific hosts info page
+- <img src="host-info-delete-host.png" alt="Delete host" width="50px"> :: Delete the host
 
 ### Host specific data
 

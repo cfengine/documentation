@@ -2,6 +2,8 @@
 layout: default
 title: Extending Mission Portal
 sorting: 90
+aliases:
+  - "/web-ui-hub_administration-extending-mission-portal.html"
 ---
 
 ## Custom pages requiring authenticated users
@@ -29,7 +31,6 @@ Upload html files into
 items will appear named for each html file where underscores are replaced with
 spaces. Files must be readable by the `cfapache` user.
 
-
 ### Example
 
 File `test_documentation.html` was uploaded to the directory specified above.
@@ -43,10 +44,10 @@ of Mission Portal.
 
 ```html {file="file_name.html"}
 <div class="contentWrapper help">
-    <div class="pageTitle">
-        <h1>PAGE TITLE</h1>
-    </div>
+  <div class="pageTitle">
+    <h1>PAGE TITLE</h1>
+  </div>
 
-     <!-- CONTENT --->
+  <!-- CONTENT --->
 </div>
 ```

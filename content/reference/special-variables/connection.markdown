@@ -1,12 +1,14 @@
 ---
 layout: default
 title: connection
+aliases:
+  - "/reference-special-variables-connection.html"
 ---
 
 The context `connection` is used by the `shortcut` attribute in `access`
 promises to access information about the remote agent requesting access.
 
-```cf3
+```cf3 {skip TODO}
 access:
     "/var/cfengine/cmdb/$(connection.key).json"
       shortcut   => "me.json",
@@ -23,32 +25,30 @@ variables can only be used with incoming connections that use
 
 This variable contains the public key sha of the connecting client in the form 'SHA=...'.
 
-```cf3
+```cf3 {skip TODO}
 access:
     "/var/cfengine/cmdb/$(connection.key).json"
       shortcut   => "me.json",
       admit_keys => { "$(connection.key)" };
 ```
 
-
 ### connection.ip
 
 This variable contains the IP address of the connecting remote agent.
 
-```cf3
+```cf3 {skip TODO}
 access:
     "/var/cfengine/cmdb/$(connection.ip).json"
       shortcut   => "myip.json",
       admit_keys => { "$(connection.key)" };
 ```
 
-
 ### connection.hostname
 
 This variable contains the hostname of the connecting client as determined by a
 reverse DNS lookup from `cf-serverd`.
 
-```cf3
+```cf3 {skip TODO}
 access:
     "/var/cfengine/cmdb/$(connection.hostname).json"
       shortcut   => "myhostname.json",

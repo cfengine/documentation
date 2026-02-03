@@ -2,6 +2,8 @@
 layout: default
 title: Getting started
 sorting: 20
+aliases:
+  - "/getting-started.html"
 ---
 
 CFEngine allows you to configure and automate all your IT infrastructure, including, servers, desktops and IoT devices.
@@ -19,5 +21,3 @@ Afterwards, we will continue to more advanced topics, such as policy writing and
 1. [Part 1: Installation][Installation]
 2. [Part 2: Modules from CFEngine Build][Modules from CFEngine Build]
 3. [Part 3: Reporting and web UI][Reporting and web UI]
-4. [Part 4: Writing policy][Writing policy]
-5. [Part 5: Developing modules][Developing modules]

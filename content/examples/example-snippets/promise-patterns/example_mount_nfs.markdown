@@ -3,6 +3,8 @@ layout: default
 title: Mount NFS filesystem
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_mount_nfs.html"
 ---
 
 Mounting an NFS filesystem is straightforward using CFEngine's storage promises. The following bundle specifies the name of a remote file system server, the path of the remote file system and the mount point directory on the local machine:
@@ -13,7 +15,6 @@ body common control
 bundlesequence => { "mounts" };
 }
 
-
 bundle agent mounts
 {
 storage:
@@ -22,7 +23,6 @@ storage:
                                                # "fileserver" is the remote fileserver
                                                # "/home" is the path to the remote file system
 }
-
 
 body mount nfs(server,source)
 {
@@ -36,7 +36,7 @@ edit_fstab => "true";          # True/false add or remove entries to the file sy
 
 This policy can be found in `/var/cfengine/share/doc/examples/example_mount_nfs.cf`
 
-Here is an example run.  At start, the filesystem is not in /etc/fstab and is not mounted:
+Here is an example run. At start, the filesystem is not in /etc/fstab and is not mounted:
 
 ```
 # grep mnt /etc/fstab # filesystem is not in /etc/fstab
@@ -70,5 +70,5 @@ fileserver:/home 149912064 94414848  47882240  67% /mnt
 ```
 
 Note: CFEngine errors out after it mounts the filesystem and updates
-/etc/fstab.  There is a ticket https://cfengine.com/dev/issues/2937
+/etc/fstab. There is a ticket https://cfengine.com/dev/issues/2937
 open on this issue.

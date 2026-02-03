@@ -2,6 +2,8 @@
 layout: default
 title: Application management
 sorting: 80
+aliases:
+  - "/resources-additional-topics-application-management.html"
 ---
 
 ## What is application management?
@@ -24,32 +26,30 @@ properly customized for use.
 
 ## How can CFEngine help?
 
-
 CFEngine assists with application management in a number of ways. Following the
 BDMA lifecycle, we note:
 
-* Build
+- Build
 
-    CFEngine can be used to automate the build of packaged software releases
-    using standardized or custom package formats.
+  CFEngine can be used to automate the build of packaged software releases
+  using standardized or custom package formats.
 
-* Deploy
+- Deploy
 
-    CFEngine can distribute and install packaged software on any kind of
-    platform.
+  CFEngine can distribute and install packaged software on any kind of
+  platform.
 
-* Manage
+- Manage
 
-    CFEngine can start, stop, restart, monitor, and upgrade, and customize
-    software applications.
+  CFEngine can start, stop, restart, monitor, and upgrade, and customize
+  software applications.
 
-* Audit
+- Audit
 
-    CFEngine can monitor and report on packages and patches installed on systems
-    and their versions and status.
+  CFEngine can monitor and report on packages and patches installed on systems
+  and their versions and status.
 
 ## Package management
-
 
 Application management is simple today on most operating systems due to the
 introduction ofpackage systems.
@@ -65,10 +65,10 @@ can download data from the network. Others have to have packages copied to local
 storage first. CFEngine can work with both types of system to integrate software
 management.
 
-* CFEngine communicates with the system using its own standards to utilize the
+- CFEngine communicates with the system using its own standards to utilize the
   approach suitable for that software system.
 
-* Custom software repositories can be made, and CFEngine's agents can perform
+- Custom software repositories can be made, and CFEngine's agents can perform
   this distribution by collecting software packages to local storage and then
   installing from there.
 
@@ -180,19 +180,17 @@ packages:
 }
 ```
 
-By promising carefully what package and version you want, using package_policy,
+By promising carefully what package and version you want, using package*policy,
 package_select, and package_version, CFEngine can keep this promise by updating
 to the latest version of the package available in the directory repository
-/software_repo. If the available versions are all _less than_ than "1.0.0", an
+/software_repo. If the available versions are all \_less than* than "1.0.0", an
 update will not take place. The package_version specification should match the
 versioning format of the software, whatever it is, e.g. you would write
 something like "1.00.00.0" if two digits were used in the two middle version
 number positions.
 
-
 CFEngine automatically adapts its versioning to the conventions used by
 individual package schemas.
-
 
 To summarize, in order for CFEngine to be able to match installed packages with
 the ones in the directory repository, the same naming convention must be
@@ -250,7 +248,6 @@ to 4.65 in the msi-package. Free tools such as InstEd can both view and change
 the product name and version (Tables->Property->ProductName and ProductVersion).
 
 ## Customizing applications
-
 
 By definition, we cannot explain how to customize software for all cases. For
 Unix-like systems however, software customization is usually a matter of editing
@@ -312,7 +309,6 @@ processes:
    "myprocess"  restart_class => "start_me";
 
 commands:
-
 
   start_me::
 

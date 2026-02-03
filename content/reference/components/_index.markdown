@@ -2,6 +2,8 @@
 layout: default
 title: Components
 sorting: 10
+aliases:
+  - "/reference-components.html"
 ---
 
 While promises to configure your system are entirely user-defined, the
@@ -22,7 +24,6 @@ details about the specific control bodies.
 The `common` control body refers to those promises that are
 hard-coded into all the components of CFEngine, and therefore
 affect the behavior of all the components.
-
 
 ```cf3
 body common control
@@ -47,7 +48,6 @@ version => "1.2.3";
 }
 ```
 
-
 ### bundlesequence
 
 **Description:** The `bundlesequence` contains promise bundles
@@ -56,7 +56,6 @@ to verify, in a specific order.
 The `bundlesequence` determines which of the compiled bundles will be executed
 by `cf-agent` and in what order they will be executed. The list refers to the
 names of bundles (which might be parameterized, function-like objects).
-
 
 The default value for `bundlesequence` is `{ "main" }`.
 
@@ -93,7 +92,7 @@ bundles act like characteristics of the systems. If you want
 different systems to have different `bundlesequences`, distinguish
 them with classes
 
-```cf3
+```cf3 {skip TODO}
 webservers::
 
   bundlesequence => { "main", "web" };
@@ -127,6 +126,8 @@ vars:
 }
 ```
 
+**See also:** [`default:control_common.bundlesequence`](/reference/special-variables/control_common/#defaultcontrol_commonbundlesequence)
+
 **History:** The default to `{ "main" }` was introduced in version 3.7.0, so if
 you expect your policies to be run by older version, you'll need an explicit
 `bundlesequence`.
@@ -134,7 +135,7 @@ you expect your policies to be run by older version, you'll need an explicit
 ### bwlimit
 
 **Description:** Coarse control of bandwidth any cf-serverd or cf-agent process
-will send *out*. In Bytes/sec.
+will send _out_. In Bytes/sec.
 
 Bandwidth limit is meant to set an upper bound of traffic coming out of CFEngine
 agents or servers, as a countermeasure against network abuse from them. The limit
@@ -161,20 +162,21 @@ body common control
 }
 ```
 
-In this example,  bwlimit is set to 10MBytes/sec = 80Mbit/s meaning that
+In this example, bwlimit is set to 10MBytes/sec = 80Mbit/s meaning that
 CFEngine would only consume up to ~80% of any 100Mbit ethernet interface.
 
+**See also:** [`default:control_common.bwlimit`](/reference/special-variables/control_common/#defaultcontrol_commonbwlimit)
 
 ### cache_system_functions
 
 **Description:** Controls the caching of the results of system
 functions, e.g. `execresult()` and `returnszero()` for shell execution and
-`ldapvalue()` and friends for LDAP queries.  Without this setting,
+`ldapvalue()` and friends for LDAP queries. Without this setting,
 CFEngine's evaluation model will evaluate functions multiple times,
-which is a performance concern.  See [`Functions`][Functions].
+which is a performance concern. See [`Functions`][Functions].
 
 Although you can override this to `false`, in practice you should
-almost never need to do so.  The effect of having it `true` (the
+almost never need to do so. The effect of having it `true` (the
 default) is that the expensive functions will be run just once and
 then their result will be cached.
 
@@ -187,15 +189,15 @@ runs of e.g. `cf-agent` and `cf-promises`.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 cache_system_functions => "true";
 ```
 
 **See also:** [`ifelapsed` in action bodies][Promise types#ifelapsed]
 
 **History:**
-- Introduced in version 3.6.0.
 
+- Introduced in version 3.6.0.
 
 ### domain
 
@@ -218,6 +220,36 @@ domain => "example.org";
 }
 ```
 
+### evaluation_order
+
+**Description:** Controls the evaluation order of promises within a bundle.
+
+This setting allows you to change how `cf-agent` executes promises. By default, CFEngine uses a `classic` evaluation order, where promises are executed in a predefined order based on their type (e.g., `vars` before `files`, `files` before `packages`, etc.). This is the historical behavior of CFEngine.
+
+By setting `evaluation_order` to `top_down`, you can force `cf-agent` to evaluate promises in the order they are written in the policy file, from top to bottom. This can make policy easier to write and understand, especially for new users, as the execution flow follows the visual layout of the code.
+
+This attribute can be set in `body common control` to affect all components, or in `body agent control` to affect only `cf-agent`.
+
+**Type:** `string`
+
+**Allowed input range:** `(classic|top_down)`
+
+**Default value:** `classic`
+
+**Example:**
+
+```cf3
+body common control
+{
+  evaluation_order => "top_down";
+}
+```
+
+**See also:** [`evaluation_order` in `body agent control`][cf-agent#evaluation_order], [Policy style guide on promise ordering][Policy style guide#Promise ordering]
+
+**History:**
+
+- Introduced in CFEngine 3.27.0
 
 ### goal_patterns
 
@@ -243,7 +275,6 @@ goal_patterns => { "goal_.*", "target.*" };
 
 **History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
-
 ### ignore_missing_bundles
 
 **Description:** Determines whether to ignore missing bundles.
@@ -257,7 +288,7 @@ sequence do not exist, ignore and continue.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 ignore_missing_bundles => "true";
 ```
 
@@ -268,6 +299,9 @@ This authorizes the bundlesequence to contain possibly
 undefined bundles cause a fatal error in parsing, and a transition
 to failsafe mode.
 
+**See also:** [`default:control_common.ignore_missing_bundles`](/reference/special-variables/control_common/#defaultcontrol_commonignore_missing_bundles)
+
+**History:** Added in CFEngine 3.0.0
 
 ### ignore_missing_inputs
 
@@ -290,9 +324,13 @@ not found.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 ignore_missing_inputs => "true";
 ```
+
+**See also:** [`default:control_common.ignore_missing_inputs`](/reference/special-variables/control_common/#defaultcontrol_commonignore_missing_inputs)
+
+**History:** Added in CFEngine 3.0.0
 
 ### inputs
 
@@ -319,22 +357,24 @@ inputs  => {
 }
 ```
 
-**See also:** [`inputs`][file control#inputs] in `body file control`
+**See also:** [`inputs`][file control#inputs] in `body file control`, [`default:control_common.inputs`](/reference/special-variables/control_common/#defaultcontrol_commoninputs)
 
 **Notes:**
 
 If no filenames are specified, no other filenames will be included in the
 compilation process.
 
-Library contents are checked for duplication by path and by hash.  For
+Library contents are checked for duplication by path and by hash. For
 example, if you put `library.cf` twice in your `inputs`, the duplicate
-`library.cf` is noticed because the same path is included twice.  A
+`library.cf` is noticed because the same path is included twice. A
 verbose-level message is emitted but otherwise there is no error.
 
 In addition, if you include a file once with path `/x/y/z.cf` and
 again with path `/x/./y/z.cf`, the duplicate file will be rejected
-regardless of any path tricks or symbolic links.  The contents are
+regardless of any path tricks or symbolic links. The contents are
 hashed, so the same file can't be included twice.
+
+**History:** Added in CFEngine 3.0.0
 
 ### lastseenexpireafter
 
@@ -359,7 +399,9 @@ lastseenexpireafter => "72";
 }
 ```
 
-**See also:** [hostsseen()][hostsseen], [cf-hub][cf-hub]
+**See also:** [hostsseen()][hostsseen], [cf-hub][cf-hub], [`default:control_common.lastseenexpireafter`](/reference/special-variables/control_common/#defaultcontrol_commonlastseenexpireafter)
+
+**History:** Added in CFEngine 3.0.0
 
 ### output_prefix
 
@@ -428,18 +470,18 @@ body common control
 
 **Description:** Defines the protocol to use for all outgoing connections.
 
-[%CFEngine_promise_attribute(undefined)%]
+{{< CFEngine_promise_attribute(undefined) >}}
 
 **Note:** `protocol_version` can be specified at the individual promise level
 using the [`body copy_from protocol_version`][files#protocol_version]
 attribute. When undefined (the default) peers automatically negotiate the latest protocol version.
 
-**See also:**  [`body copy_from protocol_version`][files#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`tls_ciphers`][Components#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
+**See also:** [`body copy_from protocol_version`][files#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`tls_ciphers`][Components#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted], [`default:control_common.protocol_version`](/reference/special-variables/control_common/#defaultcontrol_commonprotocol_version)
 
 **History:**
 
-* Introduced in CFEngine 3.6.0 with `protocol_version` `1` (`classic`) and `protocol_version` `2` (`tls`)
-* Added `protocol_version` `3` (`cookie`) in CFEngine 3.15.0
+- Introduced in CFEngine 3.6.0 with `protocol_version` `1` (`classic`) and `protocol_version` `2` (`tls`)
+- Added `protocol_version` `3` (`cookie`) in CFEngine 3.15.0
 
 ### require_comments
 
@@ -467,7 +509,6 @@ common::
 require_comments => "true";
 }
 ```
-
 
 ### site_classes
 
@@ -499,7 +540,6 @@ site_classes => { "datacenters","datacentres"  }; # locations is by default
 
 **History:** Was introduced in version 3.2.0, Nova 2.1.0 (2011)
 
-
 ### syslog_host
 
 **Description:** The `syslog_host` contains the name or address of a
@@ -512,7 +552,7 @@ CFEngine's components may promise to send data.
 
 **Allowed input range:** `[a-zA-Z0-9_$(){}.:-]+`
 
-**Default value:** ```localhost```
+**Default value:** `localhost`
 
 **Example:**
 
@@ -536,7 +576,7 @@ components may promise to send data.
 
 **Allowed input range:** `0,99999999999`
 
-**Default value:** ```514```
+**Default value:** `514`
 
 **Example:**
 
@@ -573,9 +613,11 @@ body common control
 }
 ```
 
+**See also:** [`default:control_common.system_log_level`](/reference/special-variables/control_common/#defaultcontrol_commonsystem_log_level)
+
 **History:**
 
-* Introduced in 3.19.0, 3.18.1
+- Introduced in 3.19.0, 3.18.1
 
 ### tls_ciphers
 
@@ -583,7 +625,7 @@ body common control
 
 For a list of possible ciphers, see man page for "openssl ciphers".
 
-[%CFEngine_promise_attribute(undefined)%]
+{{< CFEngine_promise_attribute(undefined) >}}
 
 **Example:**
 
@@ -595,7 +637,7 @@ body common control
 }
 ```
 
-**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
+**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted], [`default:control_common.tls_ciphers`](/reference/special-variables/control_common/#defaultcontrol_commontls_ciphers)
 
 **History:** Introduced in CFEngine 3.7.0
 
@@ -603,7 +645,7 @@ body common control
 
 **Description:** Minimum tls version to allow for **outgoing** connections from components other than `cf-serverd`.
 
-[%CFEngine_promise_attribute(1.0)%]
+{{< CFEngine_promise_attribute(1.0) >}}
 
 ```cf3
 body common control
@@ -613,7 +655,7 @@ body common control
 }
 ```
 
-**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_ciphers`][Components#tls_ciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`ifencrypted`][access#ifencrypted], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers]
+**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_ciphers`][Components#tls_ciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`ifencrypted`][access#ifencrypted], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`default:control_common.tls_min_version`](/reference/special-variables/control_common/#defaultcontrol_commontls_min_version)
 
 **History:** Introduced in CFEngine 3.7.0
 
@@ -641,7 +683,6 @@ version => "1.2.3";
 }
 ```
 
-
 ## Deprecated attributes in body common control
 
 The following attributes were functional in previous versions
@@ -649,5 +690,5 @@ of CFEngine, but today they are deprecated, either because
 their functionality is being handled trasparently or because
 it doesn't apply to current CFEngine version.
 
-* fips_mode
-* host_licenses_paid
+- fips_mode
+- host_licenses_paid

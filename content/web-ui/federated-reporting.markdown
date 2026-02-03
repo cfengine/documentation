@@ -2,6 +2,8 @@
 layout: default
 title: Federated reporting
 sorting: 60
+aliases:
+  - "/web-ui-federated-reporting.html"
 ---
 
 ## Overview
@@ -41,9 +43,7 @@ federation policy to ensure that `semanage` is installed.
 
 ```json
 {
-  "classes": {
-    "cfengine_mp_fr_dependencies_auto_install" : ["any"]
-  }
+  "classes": { "cfengine_mp_fr_dependencies_auto_install": ["any"] }
 }
 ```
 
@@ -55,10 +55,10 @@ The Superhub aggregates all the data from all the Feeders connected to it which
 is a periodically running resource intensive task. The key factors contributing
 to HW requirements for the Superhub are:
 
-* The refresh interval at which data is pulled from the Feeders and imported on
+- The refresh interval at which data is pulled from the Feeders and imported on
   the Superhub. The default is 20 minutes and it can be changed in the policy.
 
-* The amount of data gathered on the Feeders from the reports sent by the
+- The amount of data gathered on the Feeders from the reports sent by the
   hosts bootstrapped to them.
 
 The current implementation of Federated reporting is not aggregating monitoring
@@ -79,18 +79,18 @@ would degrade the freshness of the data available on the Superhub.
 The recommended HW configuration for a Superhub with the default configuration
 and 5000 hosts per connected Feeder is:
 
-  * 16 GiB of RAM or more,
+- 16 GiB of RAM or more,
 
-  * 1 logical CPU per connected Feeder or more,
+- 1 logical CPU per connected Feeder or more,
 
-  * 5 MiB of disk space per host or more,
+- 5 MiB of disk space per host or more,
 
-  * 1000 IOPS storage or faster,
+- 1000 IOPS storage or faster,
 
-  * 100 Mib/s network bandwidth per connected Feeder,
+- 100 Mib/s network bandwidth per connected Feeder,
 
-  * 135 KiB of network data transfer per host per one pull of the data from
-    Feeders.
+- 135 KiB of network data transfer per host per one pull of the data from
+  Feeders.
 
 The Federated reporting process is logging information to the system log and so
 timestamps from the log messages can be used to determine how long each round of
@@ -179,6 +179,7 @@ In the first case you will likely want to remove entries for hosts which are not
 There are two options available for handling these situations depending on your environment: Distributed Cleanup or Handle Duplicate Hostkeys.
 
 ### Distributed cleanup
+
 This is the most thorough, performant and automated option.
 This utility is a python script which runs on the superhub, searches for the most recent contact for each host, then communicates with the appropriate feeders to delete stale hosts.
 
@@ -191,13 +192,13 @@ A few pre-requisites must be handled before enabling this utility:
 
 On Debian/Ubuntu:
 
-``` command
+```command
 apt install -qy python3 python3-urllib3
 ```
 
 On RedHat/CentOS versions 7 and above:
 
-``` command
+```command
 yum install -qy python3 python3-urllib3
 ```
 
@@ -208,11 +209,10 @@ After those steps, ensure `cfengine_mp_fr_enable_distributed_cleanup` is present
 
 ```json
 {
-  "classes": {
-    "cfengine_mp_fr_enable_distributed_cleanup": ["any::"]
-  }
+  "classes": { "cfengine_mp_fr_enable_distributed_cleanup": ["any::"] }
 }
 ```
+
 (Note that this augment should be in addition to any others that you need such as `cfengine_mp_fr_dependencies_auto_install`)
 
 Let the policy run a few times on superhub and feeders.
@@ -220,6 +220,7 @@ This will distribute the needed certificates from feeders to superhub so that th
 
 When run manually for the first time the utility will create a limited privileges user to view and delete hosts on the feeders.
 You will need to enter the following information at the prompts when running the utility manually:
+
 - admin password for the superhub
 - email address for the fr_distributed_cleanup limited privileges user
 - admin password for each feeder
@@ -242,6 +243,7 @@ The passwords are only kept for the duration of the script execution and are not
 The policy will now run the distributed cleanup utility every agent run and cleanup any hosts which are stale on feeders leaving only the most recently contacts host for each unique hostkey.
 
 ### Handle duplicate hostkeys
+
 The other option removes duplicates during each import cycle.
 An augment is available to enable moving duplicated host data to a `dup` schema for analysis. The host data which has the most recent `hosts.lastreporttimestamp` will be kept in the `public` schema and all other data will be moved to the `dup` domain (schema).
 
@@ -250,13 +252,12 @@ If enabled it is performed on every import cycle.
 
 ```json
 {
-  "classes": {
-    "cfengine_mp_fr_handle_duplicate_hostkeys": ["any::"]
-  }
+  "classes": { "cfengine_mp_fr_handle_duplicate_hostkeys": ["any::"] }
 }
 ```
 
 This class only has an effect on the superhub host.
+
 ## Troubleshooting
 
 Please refer to `/var/cfengine/output`, `/var/log/postgresql.log` and
@@ -292,7 +293,7 @@ In these examples we use the `admin` account because the Admin Role which this u
 ### Stop cf-execd on the superhub and feeder
 
 We don't want periodic agent runs to get in our ways so let's disable
-*cf-execd*.
+_cf-execd_.
 
 ```console
 $ cf-remote sudo -H $CLOUD_USER$SUPERHUB,$CLOUD_USER$FEEDER "systemctl stop cf-execd"
@@ -594,29 +595,29 @@ There are two ways to change the `target_state` of a feeder.
 
 1. Prepare a JSON data file:
 
-  ```console
-  $ cat <<EOF > target-state-off.json
-  {
-    "target_state": "off"
-  }
-  EOF
-  ```
+```console
+$ cat <<EOF > target-state-off.json
+{
+  "target_state": "off"
+}
+EOF
+```
 
 2. Change the state of the feeder:
 
-  ```command
-  curl -k -i -s -X PUT -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
-  ```
+```command
+curl -k -i -s -X PUT -u admin:$PASSWORD https://$FEEDER/api/fr/hub-state -d @target-state-off.json --header "Content-Type: application/json"
+```
 
 3. **Save the federation config:**
 
-  ```command
-  curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/federation-config
-  ```
+```command
+curl -k -i -s -X POST -u admin:$PASSWORD https://$FEEDER/api/fr/federation-config
+```
 
 ### Uninstall without API
 
-Edit ```/opt/cfengine/federation/cfapache/federation-config.json``` on the feeder
+Edit `/opt/cfengine/federation/cfapache/federation-config.json` on the feeder
 you wish to disable and change the top-level `target_state` property value to `off`.
 
 ```json
@@ -625,8 +626,7 @@ you wish to disable and change the top-level `target_state` property value to `o
   "role": "feeder",
   "enabled": "true",
   "target_state": "off",
-  "transport":
-  {
+  "transport": {
     "mode": "pull_over_rsync",
     "ssh_user": "cftransport",
     "ssh_host": "<superhub-ip>",
@@ -641,111 +641,111 @@ you wish to disable and change the top-level `target_state` property value to `o
 At this time it is not possible to remove a connected hub in the Mission Portal Hub
 management app.
 
-* List all feeders to find the id value. Use of ```jq``` is optional for pretty printing the JSON.
+- List all feeders to find the id value. Use of `jq` is optional for pretty printing the JSON.
 
-   (Set approprivate values in your shell for `PASSWORD` and `SUPERHUB`)
-   ```command
-   curl -k -s -X GET -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub | jq '.'
-   ```
+  (Set approprivate values in your shell for `PASSWORD` and `SUPERHUB`)
 
-   ```json
-   {
-     "id": 1,
-     "hostkey": "SHA=cd4be31f20f0c7d019a5d3bfe368415f2d34fec8af26ee28c4c123c6a0af49a2",
-     "api_url": "https://100.90.80.70",
-     "ui_name": "feeder1",
-     "role": "feeder",
-     "target_state": "on",
-     "transport": {
-       "mode": "pull_over_rsync",
-       "ssh_user": "cftransport",
-       "ssh_host": "172.32.1.20",
-       "ssh_pubkey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVGoBB3zLKfVTzDNum/JWlmNJrSuDGrhTW1ZGtZEKjxFViFr4j0F8s6gIr5KOMcWtd91XvW6klpCPqKH3lfY767AI/RQa8JgVXgtvUG8rkD+gJ/wzGJm+VoGpxxs9dyBgSOtkaOSIDc574Om8dBR8enRcgxo1cNpvDVLVYKx9IzqhBwqp1gzEtGoIi+CDoGmoj1BT9XTlCRvGXYmSSBrgLARVO2mh5iqhP0XRVCp9Ki6OB9vMcs9rxIgQaPt8tVCt7/FK03IXrWPUsJC4M/kXiaKgHlE96H0CEvYl7GczaIU2NN5AHXZlviL79Zb8kOcUzsMdKv40G9YVa7/kyDOUX root@ip-172-32-1-20",
-       "ssh_fingerprint": "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBF18li5PyCyVy27+Lv09HDRxhyEnlL+zK++WaLc78W+Gji5i2VSRDg/jVV0xU2ZUmkohULZ66OmI5/sCOOIa3XU=\nssh-ed25519"
-     },
-     "statistics": []
-   }
-   {
-     "id": 2,
-     "hostkey": "SHA=30b6bb15fb94c9b7e386521bbe566934d266db2f6f63cd85f5e6fc406d11110b",
-     "api_url": "https://100.90.80.60",
-     "ui_name": "feeder2",
-     "role": "feeder",
-     "target_state": "on",
-     "transport": {
-       "mode": "pull_over_rsync",
-       "ssh_user": "cftransport",
-       "ssh_host": "172.32.1.21",
-       "ssh_pubkey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDin59ffTXhtQxahrYkqNi3x36XIO08GnOvvVe3s+DmuT3kBn8Lh4P30kOVONSGKcfNZLnWVPrk2qqNWuEi6xg861G1kXqce02c26BW+4L/tnz86/kmTBGc2vb6d1NpEKA/1bg6bMf1da+EInxuMsS+yOWCe+s6DJ00bg6iCnmlLYtzAkMXmXK5QgVG6AImJXqG1Px5DlsRcKto00J8WJswfTpQXbZbuog4J6Ltm/J4DQW1/x7pEJby/r+/lKPJWp19t0gaGXfsxwHEPFK6YC8zmFzkBeqiVpAizhs7G8mZDgAAhMyY8d2eYIp+hDIFpfQA3aHHr0L7emsFeDa/rExt root@ip-172-32-1-21",
-       "ssh_fingerprint": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7HE4qJfTLP9j02jZnkpTpUMCBiFzmAemgvIPcJjWJVNcawh1hpGSsWjw9EM1kwn7J6fWrjEkY8lTi2pNTnobL9qt+oQvwFqUvs5EZ8gAVIAyDjKE8GLckZRt8VGxLWMtOlBKaAmPBn0eFP6ToPqnPygJiiM05vKtxPui1xuCTrW+rXShtolUJLwwGH2APcDqjKAdZceQK4nybJzk4J1P77sJc+9IlHJCTpfj8AQEbh/Z3cHtNKauaz1mhDn5YT/QWwzKavGlqFSlSDwLXT2go6P6FoSaVYTV45V9l7q6ahEy3zEe7+7psMFVucS512qYFEKn5FoSIVQLgT3I8MfI1\necdsa-sha2-nistp256"
-     },
-     "statistics": []
-   }
-   ```
+  ```command
+  curl -k -s -X GET -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub | jq '.'
+  ```
 
-* Determine the id from the "id" property value and delete the remote hub with the API. In this case
-we use the number "1".
+  ```json {skip}
+  {
+    "id": 1,
+    "hostkey": "SHA=cd4be31f20f0c7d019a5d3bfe368415f2d34fec8af26ee28c4c123c6a0af49a2",
+    "api_url": "https://100.90.80.70",
+    "ui_name": "feeder1",
+    "role": "feeder",
+    "target_state": "on",
+    "transport": {
+      "mode": "pull_over_rsync",
+      "ssh_user": "cftransport",
+      "ssh_host": "172.32.1.20",
+      "ssh_pubkey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVGoBB3zLKfVTzDNum/JWlmNJrSuDGrhTW1ZGtZEKjxFViFr4j0F8s6gIr5KOMcWtd91XvW6klpCPqKH3lfY767AI/RQa8JgVXgtvUG8rkD+gJ/wzGJm+VoGpxxs9dyBgSOtkaOSIDc574Om8dBR8enRcgxo1cNpvDVLVYKx9IzqhBwqp1gzEtGoIi+CDoGmoj1BT9XTlCRvGXYmSSBrgLARVO2mh5iqhP0XRVCp9Ki6OB9vMcs9rxIgQaPt8tVCt7/FK03IXrWPUsJC4M/kXiaKgHlE96H0CEvYl7GczaIU2NN5AHXZlviL79Zb8kOcUzsMdKv40G9YVa7/kyDOUX root@ip-172-32-1-20",
+      "ssh_fingerprint": "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBF18li5PyCyVy27+Lv09HDRxhyEnlL+zK++WaLc78W+Gji5i2VSRDg/jVV0xU2ZUmkohULZ66OmI5/sCOOIa3XU=\nssh-ed25519"
+    },
+    "statistics": []
+  }
+  {
+    "id": 2,
+    "hostkey": "SHA=30b6bb15fb94c9b7e386521bbe566934d266db2f6f63cd85f5e6fc406d11110b",
+    "api_url": "https://100.90.80.60",
+    "ui_name": "feeder2",
+    "role": "feeder",
+    "target_state": "on",
+    "transport": {
+      "mode": "pull_over_rsync",
+      "ssh_user": "cftransport",
+      "ssh_host": "172.32.1.21",
+      "ssh_pubkey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDin59ffTXhtQxahrYkqNi3x36XIO08GnOvvVe3s+DmuT3kBn8Lh4P30kOVONSGKcfNZLnWVPrk2qqNWuEi6xg861G1kXqce02c26BW+4L/tnz86/kmTBGc2vb6d1NpEKA/1bg6bMf1da+EInxuMsS+yOWCe+s6DJ00bg6iCnmlLYtzAkMXmXK5QgVG6AImJXqG1Px5DlsRcKto00J8WJswfTpQXbZbuog4J6Ltm/J4DQW1/x7pEJby/r+/lKPJWp19t0gaGXfsxwHEPFK6YC8zmFzkBeqiVpAizhs7G8mZDgAAhMyY8d2eYIp+hDIFpfQA3aHHr0L7emsFeDa/rExt root@ip-172-32-1-21",
+      "ssh_fingerprint": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7HE4qJfTLP9j02jZnkpTpUMCBiFzmAemgvIPcJjWJVNcawh1hpGSsWjw9EM1kwn7J6fWrjEkY8lTi2pNTnobL9qt+oQvwFqUvs5EZ8gAVIAyDjKE8GLckZRt8VGxLWMtOlBKaAmPBn0eFP6ToPqnPygJiiM05vKtxPui1xuCTrW+rXShtolUJLwwGH2APcDqjKAdZceQK4nybJzk4J1P77sJc+9IlHJCTpfj8AQEbh/Z3cHtNKauaz1mhDn5YT/QWwzKavGlqFSlSDwLXT2go6P6FoSaVYTV45V9l7q6ahEy3zEe7+7psMFVucS512qYFEKn5FoSIVQLgT3I8MfI1\necdsa-sha2-nistp256"
+    },
+    "statistics": []
+  }
+  ```
 
-   ```console
-   root@superhub: ~# REMOTE_HUB_ID=1
-   root@superhub: ~# curl -k -s -X DELETE -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub/$REMOTE_HUB_ID
-   ```
+- Determine the id from the "id" property value and delete the remote hub with the API. In this case
+  we use the number "1".
 
-* Remove the feeder from `/opt/cfengine/federation/cfapache/federation-config.json`. Replace "id-1" below with the appropriate id from the previous steps.
+  ```console
+  root@superhub: ~# REMOTE_HUB_ID=1
+  root@superhub: ~# curl -k -s -X DELETE -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub/$REMOTE_HUB_ID
+  ```
 
-   ```command
-   contents=$(jq 'del(.remote_hubs ."id-1")' /opt/cfengine/federation/cfapache/federation-config.json) && echo "${contents}" > /opt/cfengine/federation/cfapache/federation-config.json
-   ```
+- Remove the feeder from `/opt/cfengine/federation/cfapache/federation-config.json`. Replace "id-1" below with the appropriate id from the previous steps.
 
-* Remove items associated with this feeder in the `cfdb` database.
+  ```command
+  contents=$(jq 'del(.remote_hubs ."id-1")' /opt/cfengine/federation/cfapache/federation-config.json) && echo "${contents}" > /opt/cfengine/federation/cfapache/federation-config.json
+  ```
 
-    Determine the cfdb-specific `hub_id`.
+- Remove items associated with this feeder in the `cfdb` database.
 
-   ```command
-   /var/cfengine/bin/psql cfdb -c "select * from __hubs"
-   ```
+  Determine the cfdb-specific `hub_id`.
 
-   Typical output would be like the following.
+  ```command
+  /var/cfengine/bin/psql cfdb -c "select * from __hubs"
+  ```
 
-   ```
-   hub_id |                               hostkey                                | last_import_ts
-   --------+----------------------------------------------------------------------+----------------
-      0 | SHA=50d370f41c81b3e119506befecc5deaa63c0f1d9039f674c68f9253a07f7ad84 |
-      1 | SHA=bfd6f580f9d19cb190139452f068f38f843bf9227ca3515f7adfecfa39f68728 |
-   (2 rows)
-   ```
+  Typical output would be like the following.
 
-   `hub_id` of `0` is the superhub. The others are the feeders.
-   In this case, it happens that the `hub_id` is also "1" so we will use that in the following queries.
+  ```
+  hub_id |                               hostkey                                | last_import_ts
+  --------+----------------------------------------------------------------------+----------------
+     0 | SHA=50d370f41c81b3e119506befecc5deaa63c0f1d9039f674c68f9253a07f7ad84 |
+     1 | SHA=bfd6f580f9d19cb190139452f068f38f843bf9227ca3515f7adfecfa39f68728 |
+  (2 rows)
+  ```
 
-* Execute the following commands to remove the namespace for that feeder as well as the entry in the `__hubs` table.
+  `hub_id` of `0` is the superhub. The others are the feeders.
+  In this case, it happens that the `hub_id` is also "1" so we will use that in the following queries.
 
-   ```console
-   root@superhub: ~# /var/cfengine/bin/psql cfdb -c 'drop schema "hub_1" cascade;'
-   root@superhub: ~# /var/cfengine/bin/psql cfdb -c "delete from __hubs where hub_id = 1"
-   ```
+- Execute the following commands to remove the namespace for that feeder as well as the entry in the `__hubs` table.
 
-* On the feeder, replace `/opt/cfengine/federation/cfapache/federation-config.json` with the following content.
+  ```console
+  root@superhub: ~# /var/cfengine/bin/psql cfdb -c 'drop schema "hub_1" cascade;'
+  root@superhub: ~# /var/cfengine/bin/psql cfdb -c "delete from __hubs where hub_id = 1"
+  ```
+
+- On the feeder, replace `/opt/cfengine/federation/cfapache/federation-config.json` with the following content.
 
   If you wish to re-add this feeder to a superhub, change "target_state" from "off" to "on".
   Remember to trigger or wait for an agent run for the change from off to on to take effect.
 
-   ```json
-   {
-       "hostname": null,
-       "role": "feeder",
-       "target_state": "off",
-       "remote_hubs": { }
-   }
-   ```
+  ```json {skip TODO}
+  {
+    "hostname": null,
+    "role": "feeder",
+    "target_state": "off",
+    "remote_hubs": {}
+  }
+  ```
 
+- On 3.15.x and greater feeders, also run the following commands to truncate two tables:
 
-* On 3.15.x and greater feeders, also run the following commands to truncate two tables:
-
-   ```console
-   root@feeder: ~# /var/cfengine/bin/psql cfsettings -c 'TRUNCATE remote_hubs'
-   root@feeder: ~# /var/cfengine/bin/psql cfsettings -c 'TRUNCATE federated_reporting_settings'
-   ```
+  ```console
+  root@feeder: ~# /var/cfengine/bin/psql cfsettings -c 'TRUNCATE remote_hubs'
+  root@feeder: ~# /var/cfengine/bin/psql cfsettings -c 'TRUNCATE federated_reporting_settings'
+  ```
 
 ## Superhub upgrade
 
@@ -762,66 +762,67 @@ you may use the [Import & export API] or Mission Portal Settings UI to export an
 
 Follow this procedure:
 
-* Download the new version from the [Enterprise Downloads Page][enterprise software download page]
-* Export any items from Mission Portal you wish to migrate
-* Stop all CFEngine services on the superhub
+- Download the new version from the [Enterprise Downloads Page][enterprise software download page]
+- Export any items from Mission Portal you wish to migrate
+- Stop all CFEngine services on the superhub
 
-   ```command
-   systemctl stop cfengine3
-   ```
+  ```command
+  systemctl stop cfengine3
+  ```
 
-* Uninstall CFEngine hub
+- Uninstall CFEngine hub
 
-   ```command
-   rpm -e cfengine-nova-hub
-   ```
-
-   or
-
-   ```command
-   apt-get remove cfengine-nova-hub
-   ```
-
-* Cleanup directories
-
-   ```command
-   rm -rf /var/cfengine /opt/cfengine
-   ```
-* Install new version of cfengine
-* Confirm succesful installation
-
-   ```command
-   grep -i err /var/log/CFEngineInstall.log
-   ```
-
-* Bootstrap the superhub to itself
-
-   ```command
-   cf-agent --bootstrap <hostname or ip>
-   ```
-
-* Reconfigure all feeders (3.15 series and newer, skip for 3.12 series feeder hubs)
-   * edit `/opt/cfengine/federation/cfapache/federation-config.json` to remove all entries in the `remote_hubs` property.
-     similar to the following:
-
-      ```json
-      {
-          "hostname": null,
-          "role": "feeder",
-          "target_state": "on",
-          "remote_hubs": { }
-      }
-      ```
-
-   * On 3.15.x and greater feeders, also truncate the `remote_hubs` table:
-
-      ```command
-      /var/cfengine/bin/psql cfsettings -c 'TRUNCATE remote_hubs'
-      ```
-* Reinstall and configure the superhub as described in [Installation][Federated reporting#Installation]
-* Import any saved information into Mission Portal via the [Import & export API] or Mission Portal Settings UI
-* Wait 20 minutes for federated reporting to be updated from feeders to superhub
+  ```command
+  rpm -e cfengine-nova-hub
+  ```
 
   or
 
-  * run `cf-agent -KI` on each feeder, and then `cf-agent -KI` on the superhub to manually force a Federated reporting collection cycle.
+  ```command
+  apt-get remove cfengine-nova-hub
+  ```
+
+- Cleanup directories
+
+  ```command
+  rm -rf /var/cfengine /opt/cfengine
+  ```
+
+- Install new version of cfengine
+- Confirm succesful installation
+
+  ```command
+  grep -i err /var/log/CFEngineInstall.log
+  ```
+
+- Bootstrap the superhub to itself
+
+  ```command
+  cf-agent --bootstrap <hostname or ip>
+  ```
+
+- Reconfigure all feeders (3.15 series and newer, skip for 3.12 series feeder hubs)
+  - edit `/opt/cfengine/federation/cfapache/federation-config.json` to remove all entries in the `remote_hubs` property.
+    similar to the following:
+
+    ```json {skip TODO}
+    {
+      "hostname": null,
+      "role": "feeder",
+      "target_state": "on",
+      "remote_hubs": {}
+    }
+    ```
+
+  - On 3.15.x and greater feeders, also truncate the `remote_hubs` table:
+
+    ```command
+    /var/cfengine/bin/psql cfsettings -c 'TRUNCATE remote_hubs'
+    ```
+
+- Reinstall and configure the superhub as described in [Installation][Federated reporting#Installation]
+- Import any saved information into Mission Portal via the [Import & export API] or Mission Portal Settings UI
+- Wait 20 minutes for federated reporting to be updated from feeders to superhub
+
+  or
+  - run `cf-agent -KI` on each feeder, and then `cf-agent -KI` on the superhub to manually force a Federated reporting collection cycle.

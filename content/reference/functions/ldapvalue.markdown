@@ -1,18 +1,20 @@
 ---
 layout: default
 title: ldapvalue
+aliases:
+  - "/reference-functions-ldapvalue.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-[%CFEngine_function_prototype(uri, dn, filter, record, scope, security)%]
+{{< CFEngine_function_prototype(uri, dn, filter, record, scope, security) >}}
 
 **Description:** Returns the first matching named value from ldap.
 
 This function retrieves a single field from a single LDAP record
 identified by the search parameters. The first matching value it taken.
 
-[%CFEngine_function_attributes(uri, dn, filter, record, scope, security)%]
+{{< CFEngine_function_attributes(uri, dn, filter, record, scope, security) >}}
 
 `dn` specifies the distinguished name, an ldap formatted name built from
 components, e.g. "dc=cfengine,dc=com". `filter` is an ldap search, e.g.
@@ -22,7 +24,7 @@ server capabilities.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
    # Get the first matching value for "uid" in schema

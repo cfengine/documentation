@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readstringlist
+aliases:
+  - "/reference-functions-readstringlist.html"
 ---
 
 **Prototype:** `readstringlist(filename, comment, split, maxentries, maxbytes)`
@@ -16,26 +18,25 @@ split into fields. Using the empty string (`""`) indicates no comments.
 
 **Arguments**:
 
-* `filename` : File name to read, in the range `"?(/.*)`
-* `comment` : [Unanchored][unanchored] regex matching comments, in the range `.*`
-* `split` : [Unanchored][unanchored] regex to split data, in the range `.*`
-* `maxentries` : Maximum number of entries to read, in the range
-`0,99999999999`
-* `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
+- `filename` : File name to read, in the range `"?(/.*)`
+- `comment` : [Unanchored][unanchored] regex matching comments, in the range `.*`
+- `split` : [Unanchored][unanchored] regex to split data, in the range `.*`
+- `maxentries` : Maximum number of entries to read, in the range
+  `0,99999999999`
+- `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
 
 **Example:**
 
 Prepare:
 
-[%CFEngine_include_snippet(readstringlist.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(readstringlist.cf, #\+begin_src prep, .*end_src) >}}
 
 Run:
 
-[%CFEngine_include_snippet(readstringlist.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(readstringlist.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(readstringlist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-
+{{< CFEngine_include_snippet(readstringlist.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** [`readintlist()`][readintlist], [`readreallist()`][readreallist]

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: set_text
+aliases:
+  - "/reference-promise-types-files-edit_xml-set_text.html"
 ---
 
 This promise type assures that a matching value string will be present in the

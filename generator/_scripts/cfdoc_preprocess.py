@@ -32,6 +32,7 @@ import cfdoc_patch_header_nav as patch_header_nav
 import cfdoc_references_resolver as references_resolver
 import cfdoc_shortcodes_resolver as shortcodes_resolver
 import cfdoc_images_path_resolver as images_path_resolver
+import cfdoc_codeblock_resolver as codeblock_resolver
 import sys
 import os
 
@@ -44,7 +45,8 @@ macros.run(config)
 linkresolver.run(config)
 # generate links to known targets
 linkresolver.apply(config)
-patch_header_nav.patch(sys.argv[1])
+patch_header_nav.patch(sys.argv[1], sys.argv[2])
 references_resolver.run(config)
 shortcodes_resolver.run(config)
 images_path_resolver.run(config)
+codeblock_resolver.run(config)

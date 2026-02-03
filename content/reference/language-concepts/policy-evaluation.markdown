@@ -3,6 +3,8 @@ layout: default
 title: Policy evaluation
 alias: Normal ordering
 sorting: 40
+aliases:
+  - "/reference-language-concepts-policy-evaluation.html"
 ---
 
 CFEngine takes a pragmatic point of view to ordering. When promising `scalar`
@@ -13,7 +15,7 @@ editing in files. CFEngine solves this in a two-part strategy:
 CFEngine maintains a default order of promise-types, referred to as `Normal order`. This is based on a simple
 logic of what needs to come first, e.g. it makes no sense to create something
 and then delete it, but it could make sense to delete and then create (an
-equilibrium). This is called normal ordering and is described below.  You can
+equilibrium). This is called normal ordering and is described below. You can
 override normal ordering in exceptional circumstances by making a promise in a
 class context and defining that class based on the outcome of another promise,
 or using the `depends_on` promise attribute.
@@ -31,6 +33,11 @@ as early as possible in your configuration. In order to make sure all global
 variables and classes are available early enough policy pre-evaluation step was
 introduced.
 
+Note: Since CFEngine 3.27.0 it's possible to configure the evaluation order from
+the pre-defined normal order to the written order, top down.
+
+**See also:** [`evaluation_order` in `body agent control`](/reference/components/cf-agent/#evaluation_order), [`evaluation_order` in `body common control`][Components#evaluation_order], [`evaluation_order` in `body file control`][file control#evaluation_order]
+
 ### Policy evaluation overview
 
 CFEngine policy evaluation is done in several steps:
@@ -42,7 +49,6 @@ CFEngine policy evaluation is done in several steps:
 1. Pre-evaluation step is taking place.
 1. Exact policy evaluation is done.
 
-
 For more information regarding each step please see the detailed description
 below.
 
@@ -50,14 +56,14 @@ below.
 
 Before exact evaluation of promises takes place first command line parameters
 are read and all classes defined using `-D` parameter are set. Next,
-environment detection takes place and hard classes are discovered.  When
+environment detection takes place and hard classes are discovered. When
 environment detection is complete all the persistent classes are loaded and a
 policy sanity check is performed using cf-promises.
 
 #### cf-promises policy validation step
 
 In this step policy is validated and `classes` and `vars` promises are
-evaluated.  Note that cached functions are executed here, and then again during
+evaluated. Note that cached functions are executed here, and then again during
 the normal agent execution. Variables and classes resolved in this step do not
 persist into the following evaluation step, so all functions will run again
 during Agent pre-evaluation.
@@ -81,7 +87,7 @@ The following steps are executed per-bundle for each file parsed, in this order:
 1. if it's a common bundle, evaluate **vars** promises
 2. if it's a common bundle, evaluate **classes** promises
 3. evaluate **vars** promises
-(for details see `PolicyResolve()` in the C code)
+   (for details see `PolicyResolve()` in the C code)
 
 This is done because classes placed in common bundles
 are global whereas classes placed in agent bundles are local (by default) to

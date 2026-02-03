@@ -3,10 +3,11 @@ layout: default
 title: Content driven policy
 sorting: 80
 reviewed: 2019-05-06
+aliases:
+  - "/resources-additional-topics-content-driven-policy.html"
 ---
 
 ## What is a content-driven policy?
-
 
 A Content-Driven Policy is a text file with lines containing semi-colon
 separated fields, like a spreadsheet or tabular file. Each line in the file is
@@ -33,10 +34,9 @@ of masterfiles since 3.6.0. [`cdp_inputs` was removed](https://github.com/cfengi
 unified base for policy that works with both CFEngine Community and CFEngine
 Enterprise.
 
-## Why should i use content-driven policies?
+## Why should i use content-driven policy?
 
-
-As seen in the example above, Content-Driven Policies are easy to write and
+As seen in the example above, Content-Driven Policy are easy to write and
 maintain, especially for users not very familiar with the CFEngine language.
 They are designed to capture the essence of a specific, popular use of CFEngine,
 and make it easier. For example, the services Content-Driven Policy above has
@@ -74,32 +74,30 @@ bundle agent service_example
 ```
 
 Writing this policy is clearly more time-consuming and error-prone. On the other
-hand, it allows for much more flexibility than Content-Driven Policies, when
+hand, it allows for much more flexibility than Content-Driven Policy, when
 that is needed.
 
-CFEngine provides Content-Driven Policies to cover mainstream management tasks
+CFEngine provides Content-Driven Policy to cover mainstream management tasks
 like the following.
 
-* File change/difference management
-* Service management
-* Database management
-* Application / script management
+- File change/difference management
+- Service management
+- Database management
+- Application / script management
 
-## How do content-driven policies work in detail?
+## How do content-driven policy work in detail?
 
-
-The text files in masterfiles/cdp_inputs/(e.g. 'registry_list.txt') are parsed
-into CFEngine lists by corresponding cdp_*files in masterfiles/(e.g.
+The text files in masterfiles/cdp*inputs/(e.g. 'registry_list.txt') are parsed
+into CFEngine lists by corresponding cdp*\*files in masterfiles/(e.g.
 'cdp_registry.cf'). It is the latter set of files that actually implement the
-policies in the text files.
+policy in the text files.
 
 The Knowledge Map contains reports specifically designed to match the
-Content-Driven Policies.
+Content-Driven Policy.
 
-## Can I make my own content-driven policies?
+## Can I make my own content-driven policy?
 
-
-It is possible to mimic the structure of the existing Content-Driven Policies to
+It is possible to mimic the structure of the existing Content-Driven Policy to
 implement new ones, for new purposes.
 
 [Professional services][professional services] can be engaged to assist you in

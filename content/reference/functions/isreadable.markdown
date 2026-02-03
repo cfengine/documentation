@@ -1,9 +1,11 @@
 ---
 layout: default
 title: isreadable
+aliases:
+  - "/reference-functions-isreadable.html"
 ---
 
-[%CFEngine_function_prototype(path, timeout)%]
+{{< CFEngine_function_prototype(path, timeout) >}}
 
 **Description:** Check if a file is readable.
 
@@ -32,17 +34,17 @@ thread does not finish in time, the agent will consider the file unreadable.
 If the file is of size 0, the function will return true, if it successfully
 reads 0 bytes (reaches end-of-file).
 
-Please *note* that the agent will evaluate this policy function multiple times,
+Please _note_ that the agent will evaluate this policy function multiple times,
 meaning that the use of this function can cause a significant performance
 penalty.
 
 **Example:**
 
-[%CFEngine_include_snippet(isreadable.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(isreadable.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(isreadable.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(isreadable.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** Introduced in 3.22.
 

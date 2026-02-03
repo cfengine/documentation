@@ -1,9 +1,11 @@
 ---
 layout: default
 title: changedbefore
+aliases:
+  - "/reference-functions-changedbefore.html"
 ---
 
-[%CFEngine_function_prototype(newer,older)%]
+{{< CFEngine_function_prototype(newer,older) >}}
 
 **Description:** Compares the `ctime` fields of two files.
 
@@ -13,7 +15,7 @@ Change times include both file permissions and file contents.
 Comparisons like this are normally used for updating files (like the
 'make' command).
 
-[%CFEngine_function_attributes(newer, older)%]
+{{< CFEngine_function_attributes(newer, older) >}}
 
 **Example:**
 

@@ -2,31 +2,33 @@
 layout: default
 title: Promise types
 sorting: 20
+aliases:
+  - "/reference-promise-types.html"
 ---
 
 Within a bundle, the promise types are executed in a round-robin fashion in the
 following [normal order][Policy evaluation]. Which promise types are available
 depends on the [bundle][bundles] type:
 
-| Promise type   | common | agent | server | monitor |
-|----------------|:------:|:-----:|:------:|:--------|
-| [defaults][defaults] - a default value for bundle parameters | x      | x     | x      | x       |
-| [classes][classes] - a class, representing a state of the system | x      | x     | x      | x       |
-| [meta][meta] - information about promise bundles | x      | x     | x      | x       |
-| [reports][reports] - report a message | x      | x     | x      | x       |
-| [vars][vars] - a variable, representing a value | x      | x     | x      | x       |
-| [commands][commands] - execute a command |        | x     |        |         |
-| [databases][databases] - configure a database |        | x     |        |         |
-| [files][files] - configure a file |        | x     |        |         |
-| [packages][packages] - install a package |        | x     |        |         |
-| [guest_environments][guest_environments] |        | x     |        |         |
-| [methods][methods] - take on a whole bundle of other promises |        | x     |        |         |
-| [processes][processes] - start or terminate processes |        | x     |        |         |
-| [services][services] - manage services or define new abstractions |        | x     |        |         |
-| [storage][storage] - verify attached storage |        | x     |        |         |
-| [users][users] - add or remove users |        | x     |        |         |
-| [access][access] - grant or deny access to file objects |        |       | x      |         |
-| [roles][roles] - allow certain users to activate certain classes |        |       | x      |         |
+| Promise type                                                          | common | agent | server | monitor |
+| --------------------------------------------------------------------- | :----: | :---: | :----: | :------ |
+| [defaults][defaults] - a default value for bundle parameters          |   x    |   x   |   x    | x       |
+| [classes][classes] - a class, representing a state of the system      |   x    |   x   |   x    | x       |
+| [meta][meta] - information about promise bundles                      |   x    |   x   |   x    | x       |
+| [reports][reports] - report a message                                 |   x    |   x   |   x    | x       |
+| [vars][vars] - a variable, representing a value                       |   x    |   x   |   x    | x       |
+| [commands][commands] - execute a command                              |        |   x   |        |         |
+| [databases][databases] - configure a database                         |        |   x   |        |         |
+| [files][files] - configure a file                                     |        |   x   |        |         |
+| [packages][packages] - install a package                              |        |   x   |        |         |
+| [guest_environments][guest_environments]                              |        |   x   |        |         |
+| [methods][methods] - take on a whole bundle of other promises         |        |   x   |        |         |
+| [processes][processes] - start or terminate processes                 |        |   x   |        |         |
+| [services][services] - manage services or define new abstractions     |        |   x   |        |         |
+| [storage][storage] - verify attached storage                          |        |   x   |        |         |
+| [users][users] - add or remove users                                  |        |   x   |        |         |
+| [access][access] - grant or deny access to file objects               |        |       |   x    |         |
+| [roles][roles] - allow certain users to activate certain classes      |        |       |   x    |         |
 | [measurements][measurements] - measure or sample data from the system |        |       |        | x       |
 
 See each promise type's reference documentation for detailed lists of available
@@ -53,26 +55,26 @@ kept.
 
 **Allowed input range:**
 
-* ```fix``` makes changes to move toward the desired state
-* ```warn``` does not make changes, emits a warning level log message about non-compliance, raise repair_failed (not-kept)
-* ```nop``` alias for warn
+- `fix` makes changes to move toward the desired state
+- `warn` does not make changes, emits a warning level log message about non-compliance, raise repair_failed (not-kept)
+- `nop` alias for warn
 
-**Default value:** ```fix```
+**Default value:** `fix`
 
 **Example:**
 
 Policy:
 
-[%CFEngine_include_example(action_policy.cf, #\+begin_src\s+cfengine3, .*end_src)%]
+{{< CFEngine_include_example(action_policy.cf, #\+begin_src\s+cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(action_policy.cf, #\+begin_src\s+mock_example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(action_policy.cf, #\+begin_src\s+mock_example_output\s*, .*end_src) >}}
 
 #### ifelapsed
 
 **Description:** The number of minutes before next allowed assessment of a
-promise is set using `ifelapsed`. This overrides the global settings.  Promises
+promise is set using `ifelapsed`. This overrides the global settings. Promises
 which take a long time to verify should usually be protected with a long value
 for this parameter.
 
@@ -102,15 +104,15 @@ body action example
 
 **Notes:**
 
-* This is not a reliable way to control frequency over a long period of time.
-* Locks provide simple but weak frequency control.
-* Locks older than 4 weeks are automatically purged.
+- This is not a reliable way to control frequency over a long period of time.
+- Locks provide simple but weak frequency control.
+- Locks older than 4 weeks are automatically purged.
 
 **See also:** [promise locking][Promises#Promise Locking], [ifelapsed in body agent control][cf-agent#ifelapsed], [`ifelapsed` and function caching][Functions#function caching]
 
 **History:**
 
-* `ifelapsed => "0"` disables function caching for specific promise introduced in 3.19.0, 3.18.1
+- `ifelapsed => "0"` disables function caching for specific promise introduced in 3.19.0, 3.18.1
 
 #### expireafter
 
@@ -161,7 +163,7 @@ regular system output messages.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
   promise-type:
 
       "promiser"
@@ -182,7 +184,9 @@ useful referent in a log message, indicating the origin of the message. In
 [CFEngine Enterprise](https://cfengine.com/product-overview/), promise handles make it easy to interpret report data.
 
 #### log_kept
+
 #### log_repaired
+
 #### log_failed
 
 **Description:** The names of files to which `log_string` will be saved
@@ -203,12 +207,12 @@ syslog.
 This string should be the full path to a text file which will contain the log,
 or one of the following special values:
 
-* `stdout`
+- `stdout`
 
 Send the log message to the standard output, prefixed with an L: to indicate a
 log message.
 
-* `udp_syslog`
+- `udp_syslog`
 
 Log messages to [syslog_host][Components#syslog_host] as
 defined in body common control over UDP. Please note
@@ -432,10 +436,9 @@ body action measure
 The identifier forms a partial identity for optional performance scanning of
 promises of the form:
 
-```cf3
+```
 ID:promise-type:promiser.
 ```
-
 
 ### classes
 
@@ -502,7 +505,6 @@ with incorrect permissions, `cf-agent` will report that the `promise_kept` for
 the file existence, but `promise_repaired` for the permissions. If you need
 separate reports, you should code two separate promises rather than
 'overloading' a single one.
-
 
 #### repair_failed
 
@@ -635,9 +637,9 @@ cancel (undefine) any of the listed classes so that they are no longer defined.
 
 **Notes:**
 
-* Hard classes can **not** be undefined. If you try to undefine or cancel a hard
+- Hard classes can **not** be undefined. If you try to undefine or cancel a hard
   class an error will be emitted, for example `error: You cannot cancel a
-  reserved hard class 'cfengine' in post-condition classes`.
+reserved hard class 'cfengine' in post-condition classes`.
 
 **History:** This attribute was introduced in CFEngine version 3.0.4 (2010)
 
@@ -667,9 +669,9 @@ defined.
 
 **Notes:**
 
-* Hard classes can **not** be undefined. If you try to undefine or cancel a hard
+- Hard classes can **not** be undefined. If you try to undefine or cancel a hard
   class an error will be emitted, for example `error: You cannot cancel a
-  reserved hard class 'cfengine' in post-condition classes`.
+reserved hard class 'cfengine' in post-condition classes`.
 
 **History:** This attribute was introduced in CFEngine version 3.0.4 (2010)
 
@@ -700,9 +702,9 @@ defined.
 
 **Notes:**
 
-* Hard classes can **not** be undefined. If you try to undefine or cancel a hard
+- Hard classes can **not** be undefined. If you try to undefine or cancel a hard
   class an error will be emitted, for example `error: You cannot cancel a
-  reserved hard class 'cfengine' in post-condition classes`.
+reserved hard class 'cfengine' in post-condition classes`.
 
 **History:** This attribute was introduced in CFEngine version 3.0.4 (2010)
 
@@ -712,9 +714,9 @@ defined.
 
 Currently, the attribute has impact on the following command-related promises:
 
-* All promises of type `commands:`
-* `files`-promises containing a `transformer`-attribute
-* The package manager change command in `packages`-promises (e.g. the command
+- All promises of type `commands:`
+- `files`-promises containing a `transformer`-attribute
+- The package manager change command in `packages`-promises (e.g. the command
   for add, remove, etc.)
 
 If none of the attributes `kept_returncodes`, `repaired_returncodes`, or
@@ -763,9 +765,9 @@ compliance statistics.
 
 Currently, the attribute has impact on the following command-related promises:
 
-* All promises of type `commands:`
-* `files`-promises containing a `transformer`-attribute
-* The package manager change command in `packages`-promises (e.g. the command
+- All promises of type `commands:`
+- `files`-promises containing a `transformer`-attribute
+- The package manager change command in `packages`-promises (e.g. the command
   for add, remove, etc.)
 
 If none of the attributes `kept_returncodes`, `repaired_returncodes`, or
@@ -815,9 +817,9 @@ a failed command-related promise.
 
 Currently, the attribute has impact on the following command-related promises:
 
-* All promises of type `commands:`
-* `files`-promises containing a `transformer`-attribute
-* The package manager change command in `packages`-promises (e.g. the command
+- All promises of type `commands:`
+- `files`-promises containing a `transformer`-attribute
+- The package manager change command in `packages`-promises (e.g. the command
   for add, remove, etc.)
 
 If none of the attributes `kept_returncodes`, `repaired_returncodes`, or
@@ -845,7 +847,6 @@ bundle agent cmdtest
   files:
       "/tmp/test"
         copy_from => copy("/etc/passwd");
-
 
       "/tmp/test"
         classes => example,
@@ -941,7 +942,7 @@ they appear in verbose logs and error messages.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 comment => "This comment follows the data for reference ...",
 ```
 
@@ -968,7 +969,7 @@ Handles in other namespaces may be referred to by namespace:handle.
 
 **Example:**
 
-[%CFEngine_include_example(depends_on.cf)%]
+{{< CFEngine_include_example(depends_on.cf) >}}
 
 ### handle
 
@@ -989,7 +990,7 @@ such characters.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 access:
 
     "/source"
@@ -1021,7 +1022,7 @@ classes.
 
 The generic example has the form:
 
-```cf3
+```cf3 {skip TODO}
 promise-type:
 
     "promiser"
@@ -1048,7 +1049,7 @@ bundle agent example
 This function is provided so that one can form expressions that link variables
 and classes. For example:
 
-```cf3
+```cf3 {skip TODO}
 # Check that all components are running
 
 vars:
@@ -1119,7 +1120,7 @@ A "meta" attribute can likewise be added into any body (of any type).
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 files:
 
     "/etc/special_file"
@@ -1132,7 +1133,7 @@ files:
 
 Another example:
 
-```cf3
+```cf3 {skip TODO}
 some_promise_type:
     any::
       "my_promiser"
@@ -1147,13 +1148,12 @@ Relevant CFEngine functions are:
 `classesmatching()`, `classmatch()`, `countclassesmatching()`, `getclassmetatags()`, `getvariablemetatags()`, `variablesmatching()`, `variablesmatching_as_data()`.
 
 Also see [meta promises][meta]: While "meta" attribute can be added to a promise of any type, there can also be promises of promise type "meta" added to any bundle.
-If mention is made of "tags" on a *bundle*, what is actually meant is meta *promises* in that bundle.
+If mention is made of "tags" on a _bundle_, what is actually meant is meta _promises_ in that bundle.
 (This is just a terminology point.)
 
 **Note:** When a variable is re-defined the associated meta tags are also re-defined.
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012)
-
 
 ### unless
 
@@ -1170,7 +1170,7 @@ evaluate the promise.
 
 The generic example has the form:
 
-```cf3
+```cf3 {skip TODO}
 promise-type:
     "promiser"
       unless => "forbidden";
@@ -1240,11 +1240,11 @@ you'd use `with => canonify("the value")` so you don't have to create a
 
 **Example:**
 
-[%CFEngine_include_snippet(with.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(with.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(with.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(with.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** Was introduced in 3.11.0
 
@@ -1264,9 +1264,9 @@ type as a function call. For a detailed description, see
 
 **Examples:**
 
-[%CFEngine_include_example(inherit_from.cf)%]
+{{< CFEngine_include_example(inherit_from.cf) >}}
 
-[%CFEngine_include_example(inherit_from_classes.cf)%]
+{{< CFEngine_include_example(inherit_from_classes.cf) >}}
 
 **History:** Was introduced in 3.8.0.
 

@@ -50,6 +50,12 @@ The number of `#` characters at the beginning of a line signifies the heading le
 
 ### Links
 
+#### Link to an anchor on the same page
+
+You can link to any documentation page using `[linktext](#acnchor)`.
+
+For example, on the [`sys` vars page][sys], sys.policy_hub_port and sys.policy_hub have cross referencing links.
+
 #### Link within documentation and to known pages
 
 You can link to any documentation page using `[linktext][PageTitle]`.
@@ -246,8 +252,7 @@ Linux
 ```
 
 You might also specify output syntax highlighting by adding language
-after the starting backticks and placing `[output]` in the first line.
-This line won't be shown in the resulted HTML.
+after the starting backticks and placing `{output}` at the end of the line.
 
 ```command
 curl --user admin:admin https://test.cfengine.com/api/user
@@ -255,20 +260,9 @@ curl --user admin:admin https://test.cfengine.com/api/user
 
 ```json {output}
 {
-  "meta": {
-    "page": 1,
-    "count": 1,
-    "total": 1,
-    "timestamp": 1350994249d
-  },
+  "meta": { "page": 1, "count": 1, "total": 1, "timestamp": 1350994249 },
   "data": [
-    {
-      "id": "calvin",
-      "external": true,
-      "roles": [
-        "Huguenots", "Marketing"
-      ]
-    }
+    { "id": "calvin", "external": true, "roles": ["Huguenots", "Marketing"] }
   ]
 }
 ```
@@ -277,8 +271,8 @@ These two blocks will be joined into one element on the UI.
 
 ##### File code block
 
-You can specify file name of the code block by adding `[file=Name of the file]` in the first line.
-This line won't be shown in the resulting HTML (it will be converted to the heading / frame).
+You can specify file name of the code block by adding `{file="<filename>"}` after the language specifier (i.e. on the end of the same line as the triple backticks and `cf3`).
+This metadata won't be shown in the resulting HTML (it will be converted to the heading / frame).
 
 ```cf3 {file="policy.cf"}
 bundle agent hello_world
@@ -418,9 +412,7 @@ index 92555a2..b49c0bb 100644
 
 ```json
 {
-  "classes": {
-    "services_autorun": ["any"]
-  }
+  "classes": { "services_autorun": ["any"] }
 }
 ```
 
@@ -428,9 +420,7 @@ index 92555a2..b49c0bb 100644
 
 ```json
 {
-  "classes": {
-    "services_autorun": ["any"]
-  }
+  "classes": { "services_autorun": ["any"] }
 }
 ```
 
@@ -501,16 +491,16 @@ Examples from cfengine/core can be rendered using the `CFEngine_include_example`
   `[\%CFEngine_include_example(class-automatic-canonificiation.cf)\%]`
 
   {% raw %}
-  [%CFEngine_include_example(class-automatic-canonificiation.cf)%]
+  {{< CFEngine_include_example(class-automatic-canonificiation.cf) >}}
   {% endraw %}
 
 ### Include snippet of text from a file
 
 Sometimes it's nice to include a snippet from another file. For example, we dynamically generate the `--help` output for each component on each doc build and that output is included on each component page.
 
-`[%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]`
+`{{< CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$) >}}`
 
-[%CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-promises.help, [\s]*--[a-z], ^$) >}}
 
 ---
 
@@ -519,7 +509,7 @@ Sometimes it's nice to include a snippet from another file. For example, we dyna
 Sometimes it's nice to include an external file
 
 <pre>
-[%CFEngine_include_markdown(masterfiles/CHANGELOG.md)%]
+{{< CFEngine_include_markdown(masterfiles/CHANGELOG.md) >}}
 </pre>
 
 #### Including chunks of policy from the MPF
@@ -527,10 +517,10 @@ Sometimes it's nice to include an external file
 Here I am including a bundle named `cfe_autorun_inventory_listening_ports`. It may be a common or an agent bundle (in case the bundle ever changes types).
 
 <pre>
-[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%]
+{{< CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \}) >}}
 </pre>
 
-[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%]
+{{< CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \}) >}}
 
 ### Comments inside documentation
 
@@ -570,21 +560,21 @@ If you are referring to something within UI / screenshots / buttons etc use bold
 
 ### symlink example
 
-[%CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##)%]
+{{< CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##) >}}
 
 ### Self documenting policy
 
 #### For the stdlib:
 
-[%CFEngine_library_include(lib/commands)%]
+{{< CFEngine_library_include(lib/commands) >}}
 
 #### For update.cf?
 
-[%CFEngine_library_include(update)%]
+{{< CFEngine_library_include(update) >}}
 
 #### for promises.cf?
 
-[%CFEngine_library_include(promises)%]
+{{< CFEngine_library_include(promises) >}}
 
 ## Variables
 
@@ -596,7 +586,7 @@ three dashes at the top) or in
 [\_config.yaml](https://github.com/cfengine/documentation/blob/master/generator/_config.yml)
 can be used directly within markdown.
 
-For example this is the '{{site.CFE_manuals_version}}' version of the
+For example this is the '{{< params "CFE_manuals_version" >}}' version of the
 documentation. That variable comes from \_config.yaml.
 
 Since liquid variables look a lot like mustache variables any time you want to
@@ -611,7 +601,6 @@ site.CFE_manuals_version {{ site.CFE_manuals_version }}
 ### Indention with included markdown
 
 1. Verify that the selected hosts are upgrading successfully.
-
    - Mission Portal [Inventory reporting interface][Reporting UI#inventory management]
 
    - [Inventory API][Inventory API]
@@ -626,7 +615,7 @@ site.CFE_manuals_version {{ site.CFE_manuals_version }}
            "sort":"Host name",
            "filter":{
               "CFEngine version":{
-                 "not_match":"{{site.cfengine.branch}}.0"
+                 "not_match":"{{< params "cfengine.branch" >}}.0"
               }
            },
            "select":[

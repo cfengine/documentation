@@ -2,6 +2,8 @@
 layout: default
 title: DevOps
 sorting: 80
+aliases:
+  - "/resources-additional-topics-devops.html"
 ---
 
 ## What is DevOps?
@@ -16,7 +18,6 @@ IT infrastructure their applications run on, and allowing change at the same
 speed as agile development teams.
 
 ## Why is DevOps happening now?
-
 
 The proliferation of Free and Open Source software has put powerful software
 components in the hands of a broader range of developers than ever before - and
@@ -61,7 +62,6 @@ At CFEngine, we believe in lightweight management - made as simple as possible,
 but no simpler.
 
 ## How do we make controlled change faster?
-
 
 It is important to be able to make changes quickly. Automation can implement
 change quickly if humans can get their acts together. Human IT processes and
@@ -128,11 +128,13 @@ organizes similar operations into chapters in a simple separation of concerns.
 bundle agent example
 {
   files:
-     "affected object" ...details....
-
+    "affected object"
+      # ...details....
+      ;
   processes:
-     "affected object" ...details....
-
+    "affected object"
+      # ...details....
+      ;
 }
 ```
 
@@ -140,14 +142,14 @@ In general, many such promises and types are collected into bundles, so that the
 form is
 
 ```cf3
-bundle agent SomeUserDefinedName
+bundle agent some_user_defined_name
 {
   type_of_promise:
-
     "affected object/promiser"
-
-     body of the promise/details
- ...
+      # attributes of the promise/details
+      ;
+    # More promises...
+  # More promise types...
 }
 ```
 
@@ -159,21 +161,15 @@ written as a prefix, a bit like a target in a Makefile. They represent known
 properties of the environment.
 
 ```cf3
-bundle agent SomeUserDefinedName
+bundle agent some_user_defined_name
 {
-
   type_of_promise:
-
     property::
-
-      make one promise...
-
+      "make one promise...";
     !property::
-
-      make a different promise...
+      "make a different promise...";
 }
 ```
-
 
 This is the mechanism by which all decisions are made in CFEngine. Class
 contexts are evaluated bycf-agentand are cached so that they can be used at any
@@ -184,7 +180,7 @@ certain hard-classes by default. In addition, you can probe as many more as you
 like, as separate promises.
 
 ```cf3
-bundle agent SomeUserDefinedName
+bundle agent some_user_defined_name
 {
  classes:
 
@@ -203,7 +199,7 @@ To go from if-then-else thinking to using classes, you just need to thihnk about
 classes as booleans:
 
 ```cf3
-bundle agent Name
+bundle agent some_user_defined_name
 {
   classes:
 
@@ -290,6 +286,7 @@ bundle agent x
 ```
 
 Results in:
+
 ```
 R: Hello a 1 x
 R: Hello b 1 x
@@ -373,20 +370,20 @@ management.
 Integration of software components may be addressed with a variety of approaches
 and techniques:
 
-* Standard template methods from the COPBL community library (_out of the box_
+- Standard template methods from the COPBL community library (_out of the box_
   solutions).
 
-* Customized, personalized configurations.
+- Customized, personalized configurations.
 
-* Package management for software dependencies.
+- Package management for software dependencies.
 
-* File management - copying, editing, permissions, etc.
+- File management - copying, editing, permissions, etc.
 
-* Process management - starting, stopping, restarting.
+- Process management - starting, stopping, restarting.
 
-* Security.
+- Security.
 
-* Monitoring performance and change.
+- Monitoring performance and change.
 
 Needless to say, all of these are easily achievable with 5 minute repair
 accuracy using our CFEngine framework.

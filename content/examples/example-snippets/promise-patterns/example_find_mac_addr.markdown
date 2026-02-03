@@ -3,6 +3,8 @@ layout: default
 title: Find the MAC address
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_find_mac_addr.html"
 ---
 
 Finding the ethernet address can vary between operating systems.
@@ -16,7 +18,6 @@ body common control
 {
   bundlesequence => { "example" };
 }
-
 
 bundle agent example
 {
@@ -92,7 +93,6 @@ body common control
 {
   bundlesequence => { "example" };
 }
-
 
 bundle agent example
 {

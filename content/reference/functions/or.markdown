@@ -1,9 +1,11 @@
 ---
 layout: default
 title: or
+aliases:
+  - "/reference-functions-or.html"
 ---
 
-[%CFEngine_function_prototype(...)%]
+{{< CFEngine_function_prototype(...) >}}
 
 **Description:** Returns `any` if any argument evaluates to true and `!any` if
 any argument evaluates to false.
@@ -13,7 +15,7 @@ classes.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 commands:
   "/usr/bin/generate_config $(config)"
     if => or( "force_configs",
@@ -27,5 +29,5 @@ commands:
 
 **History:**
 
-* Introduced in 3.2.0, Nova 2.1.0 (2011)
-* Return type changed from `string` to `boolean` in 3.17.0 (2020) (CFE-3470)
+- Introduced in 3.2.0, Nova 2.1.0 (2011)
+- Return type changed from `string` to `boolean` in 3.17.0 (2020) (CFE-3470)

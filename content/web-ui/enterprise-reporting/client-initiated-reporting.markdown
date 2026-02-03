@@ -2,6 +2,8 @@
 layout: default
 title: Client initiated reporting / call collect
 sorting: 60
+aliases:
+  - "/web-ui-enterprise-reporting-client-initiated-reporting.html"
 ---
 
 Pull collect is the default mode of reporting.
@@ -20,12 +22,10 @@ The easiest way to enable call collect is via augments files, modify `/var/cfeng
 
 ```json {file="def.json"}
 {
-  "classes": {
-    "client_initiated_reporting_enabled": [ "any" ]
-  },
+  "classes": { "client_initiated_reporting_enabled": ["any"] },
   "vars": {
-    "mpf_access_rules_collect_calls_admit_ips": [ "0.0.0.0/0" ],
-    "control_hub_exclude_hosts": [ "0.0.0.0/0" ]
+    "mpf_access_rules_collect_calls_admit_ips": ["0.0.0.0/0"],
+    "control_hub_exclude_hosts": ["0.0.0.0/0"]
   }
 }
 ```

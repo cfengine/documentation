@@ -2,6 +2,8 @@
 layout: default
 title: Package modules
 sorting: 70
+aliases:
+  - "/reference-language-concepts-modules-package-module-api.html"
 ---
 
 Package modules are back-ends that enable the package promise to work
@@ -15,15 +17,15 @@ comprehensive reference on the body types and attributes used here.
 CFEngine never calls any package manager commands, it only ever calls the
 package module. The information that CFEngine deals in is:
 
-* Which packages are currently installed:
-  * Name
-  * Version
-  * Architecture
+- Which packages are currently installed:
+  - Name
+  - Version
+  - Architecture
 
-* Which of the installed packages have updates available:
-  * Name
-  * Version
-  * Architecture
+- Which of the installed packages have updates available:
+  - Name
+  - Version
+  - Architecture
 
 These two lists are everything that CFEngine needs to know to decide whether its
 package promises are fulfilled or not. In addition to this it will carry out
@@ -82,7 +84,7 @@ This attribute has no inherent meaning to CFEngine. It is meant as a mechanism
 to communicate special attributes to the package module that are not covered
 by the main API. For example, for certain package modules it may be used to
 pass a repository URL, or pass options to the command line of the underlying
-package tool.  The behavior on an `options` attribute is entirely
+package tool. The behavior on an `options` attribute is entirely
 dependent on the module, and should not be assumed to be portable between
 modules.
 
@@ -141,7 +143,7 @@ Next, for file based package name it should return `Version` and `Architecture`
 if it is able to determine these, but it is allowed to omit them if the module
 doesn't know (if the resource is remote, for instance).
 
-For repository based package names the module should *not* return `Version` and
+For repository based package names the module should _not_ return `Version` and
 `Architecture`, since they are often ambiguous in repository situations, and any
 discrepancies will be handled at the install stage instead.
 
@@ -263,7 +265,7 @@ It is not an error to include updates to packages that are not installed, but
 this information will not be used, and it is therefore recommended to omit it
 for performance purposes.
 
-Unlike `list-updates`, this command is *not* expected to use the network to
+Unlike `list-updates`, this command is _not_ expected to use the network to
 fetch information from external sources, but should fetch all the information
 from local storage. This command exists precisely to limit such expensive
 operations.
@@ -288,7 +290,7 @@ $
 ### repo-install
 
 This command is used by CFEngine to ask the package module to install packages
-from the package repository. Note that CFEngine itself has no notion of *which*
+from the package repository. Note that CFEngine itself has no notion of _which_
 package repository it should come from. This is up to the package module, and
 may either be a platform configured default, such as is the case for for example
 yum, or a specific repository which is passed in via the `options`
@@ -408,19 +410,18 @@ commands. Alternatively, it may redirect their output to standard error instead,
 but this will not be formatted using CFEngine's normal log formatting and is not
 recommended.
 
-
 ## Caching
 
 For performance reasons, CFEngine will cache the list of packages returned from
 `list-packages` and the list of updates from either of `list-updates` or
 `list-updates-local`. The exact circumstances where each is called is:
 
-* `list-packages`: When either the system is changed, or
+- `list-packages`: When either the system is changed, or
   `query_installed_ifelapsed` in the policy has expired.
 
-* `list-updates`: Only when `query_updates_ifelapsed` in the policy has expired.
+- `list-updates`: Only when `query_updates_ifelapsed` in the policy has expired.
 
-* `list-updates-local`: Only when the system is changed.
+- `list-updates-local`: Only when the system is changed.
 
 Whenever one is called its result is cached by CFEngine and will be used
 internally. It is a good idea to set the two policy attributes,

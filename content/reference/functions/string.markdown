@@ -1,24 +1,26 @@
 ---
 layout: default
 title: string
+aliases:
+  - "/reference-functions-string.html"
 ---
 
-[%CFEngine_function_prototype(arg)%]
+{{< CFEngine_function_prototype(arg) >}}
 
 **Description:** Convert `arg` to string.
 
-[%CFEngine_function_attributes(arg)%]
+{{< CFEngine_function_attributes(arg) >}}
 
 If `arg` is a container reference it will be serialized to a string.
 The reference must be indicated with `@(some_container)`.
-Strings are *not* interpreted as references.
+Strings are _not_ interpreted as references.
 
 **Example:**
 
-[%CFEngine_include_example(string.cf)%]
+{{< CFEngine_include_example(string.cf) >}}
 
 **See also:** [`int()`][int]
 
 **History:**
 
-* Introduced in 3.18.0
+- Introduced in 3.18.0

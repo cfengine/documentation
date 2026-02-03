@@ -1,6 +1,8 @@
 ---
 layout: default
 title: lib/
+aliases:
+  - "/reference-masterfiles-policy-framework-lib.html"
 ---
 
 This directory contains the standard library aka COPBL or the Community Open
@@ -10,6 +12,6 @@ patterns.
 
 This directories contents are expected to be found in the following locations:
 
-* [`$(sys.libdir)`][sys#sys.libdir]
+- [`$(sys.libdir)`][sys#sys.libdir]
 
-* [`$(sys.local_libdir)`][sys#sys.local_libdir] (relative to the root of your policy inputs)
+- [`$(sys.local_libdir)`][sys#sys.local_libdir] (relative to the root of your policy inputs)

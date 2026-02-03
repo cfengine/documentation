@@ -1,9 +1,11 @@
 ---
 layout: default
 title: services
+aliases:
+  - "/reference-promise-types-services.html"
 ---
 
-`services` type promises in their simplest *generic* form are an abstraction on
+`services` type promises in their simplest _generic_ form are an abstraction on
 **bundles**. `services` type promises are implemented by mapping a bundle to
 `service_bundle` in a `service_method` body. Reference the
 [services bodies and bundles in the standard library][lib/services.cf].
@@ -58,7 +60,7 @@ body service_method winmethod
 
 Services promises for Windows are only available in CFEngine Enterprise.
 Note that the name of a service in Windows may be different from its **Display name**.
-CFEngine Enterprise policies use the name, not the display name, due to the need for uniqueness.
+CFEngine Enterprise policy use the name, not the display name, due to the need for uniqueness.
 
 ![WinService](promise-types-services-winservice-properties_name.png)
 
@@ -77,7 +79,7 @@ reserved agent bundle called
 ```cf3
 bundle agent standard_services(service,state)
 {
-...
+# ...
 }
 ```
 
@@ -104,7 +106,7 @@ services:
         service_method => service_test;
 
   "$(mail)" service_policy => "stop",
-        service_method => service_test;
+            service_method => service_test;
 }
 
 body service_method service_test
@@ -130,11 +132,11 @@ for services promises.
 
 **History:** This promise type was introduced in CFEngine 3.3.0 (2012).
 
-****
+---
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### service_policy
 
@@ -153,16 +155,15 @@ standard library.
 
 **Allowed input range:** (arbitrary string)|(menu_option) depending on `service_type`
 
-* When `service_type` is `windows` allowed values are limited to `start`, `stop`, `enable`, or `disable`.
-   * **start|enable** :: Will start the service if it is not running.
-     **Startup Type** will be set to **Manual** if it is not **Automatic** or **Automatic (Delayed Start)**.
-     For a service to be configured to start automatically on boot a `service_method` must be declared and `service_autostart_policy` must be set to `boot_time`.
-   * **stop** :: Will stop the service if it is running. **Startup Type** will not be modified unless a `service_method` is declared and `service_autostart_policy` is set.
-   * **disable** :: Will stop the service if it is running, and **Startup Type**
-     will be set to **Disabled**.
-* When `service_type` is `generic` any string is allowed and `service_bundle` is responsible for interpreting and implementing the desired state based on the `service_policy` value.
+- When `service_type` is `windows` allowed values are limited to `start`, `stop`, `enable`, or `disable`.
+  - **start|enable** :: Will start the service if it is not running.
+    **Startup Type** will be set to **Manual** if it is not **Automatic** or **Automatic (Delayed Start)**.
+    For a service to be configured to start automatically on boot a `service_method` must be declared and `service_autostart_policy` must be set to `boot_time`.
+  - **stop** :: Will stop the service if it is running. **Startup Type** will not be modified unless a `service_method` is declared and `service_autostart_policy` is set.
+  - **disable** :: Will stop the service if it is running, and **Startup Type**
+    will be set to **Disabled**.
+- When `service_type` is `generic` any string is allowed and `service_bundle` is responsible for interpreting and implementing the desired state based on the `service_policy` value.
   Historically `service_type` `generic` has supported `start`, `stop`, `enable`, `disable`, `restart` and `reload`.
-
 
 **Example:**
 
@@ -186,7 +187,6 @@ bundle agent example
       "myservice"
         service_policy => "my_custom_state",
         service_method => "my_custom_service_method";
-
 
     windows::
 
@@ -217,7 +217,6 @@ bundle agent example
           service_policy => "start",
           comment => "Ensure that the Auto Time Zone Updated is running, and set
                       Startup Type to Manual.";
-
 
 }
 
@@ -254,7 +253,7 @@ bundle agent my_custom_service_method_DEB( service_identifier, desired_service_s
 
 **History:**
 
-* Type changed from `menu_option` to `string` and allowed input range changed to
+- Type changed from `menu_option` to `string` and allowed input range changed to
   arbitrary string from start|stop|enable|disable|restart|reload in CFEngine
   3.10. Previously enable was mapped to start, disable was mapped to stop and
   reload was mapped to restart.
@@ -281,7 +280,7 @@ the service. The complete list of dependencies is thus the union of
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 services:
 
   "ftp"
@@ -296,7 +295,7 @@ services:
 `service_method` bodies have access to `$(this.promiser)` (the promised service)
 and `$(this.service_policy)` (the policy state the service should have).
 
-**Notes:** `service_bundle` is not used when `service_type` is ```windows```.
+**Notes:** `service_bundle` is not used when `service_type` is `windows`.
 
 **See also:** [Common body attributes][Promise types#Common body attributes]
 
@@ -357,19 +356,18 @@ body service_method example
 **Notes:** `on_demand` is not supported by Windows, and is implemented through
 inetd or xinetd on Unix.
 
-
 #### service_bundle
 
 **Description:** The agent bundle to use when managing the service.
 
-**Default:** The canonified promiser string prefixed with ```service_```. Note,
-the ```service_bundle``` **must** be in the same namespace.
+**Default:** The canonified promiser string prefixed with `service_`. Note,
+the `service_bundle` **must** be in the same namespace.
 
 **Type:** `bundle agent`
 
 **Example:**
 
-[%CFEngine_include_example(services_default_service_bundle.cf)%]
+{{< CFEngine_include_example(services_default_service_bundle.cf) >}}
 
 #### service_dependence_chain
 
@@ -441,4 +439,4 @@ body service_method example
 **Notes:** On Windows this defaults to, and must be `windows`. Unix systems can
 however have multiple means of registering services, but the choice must be
 available on the given system. `service_bundle` is not used when `service_type`
-is ```windows```.
+is `windows`.

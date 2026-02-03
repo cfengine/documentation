@@ -1,11 +1,13 @@
 ---
 layout: default
 title: remoteclassesmatching
+aliases:
+  - "/reference-functions-remoteclassesmatching.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-[%CFEngine_function_prototype(regex, server, encrypt, prefix)%]
+{{< CFEngine_function_prototype(regex, server, encrypt, prefix) >}}
 
 **Description:** Reads persistent classes matching regular expression `regex`
 from a remote CFEngine server `server` and adds them into local context with
@@ -15,14 +17,14 @@ The return value is true (sets the class) if communication with the server was
 successful and classes were populated in the current bundle.
 
 This function contacts a remote `cf-serverd` and requests access to defined
-*persistent classes* on that system. Access must be granted by making an
+_persistent classes_ on that system. Access must be granted by making an
 `access` promise with `resource_type` set to `context`.
 
-[%CFEngine_function_attributes(regex, server, encrypt, prefix)%]
+{{< CFEngine_function_attributes(regex, server, encrypt, prefix) >}}
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
 ```
 

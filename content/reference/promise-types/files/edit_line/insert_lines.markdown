@@ -1,6 +1,8 @@
 ---
 layout: default
 title: insert_lines
+aliases:
+  - "/reference-promise-types-files-edit_line-insert_lines.html"
 ---
 
 This promise type is part of the line-editing model. It inserts lines into
@@ -8,7 +10,7 @@ the file at a specified location. The location is determined by
 body-attributes. The promise object referred to can be a literal line or
 a file-reference from which to read lines.
 
-```cf3
+```cf3 {skip TODO}
 insert_lines:
 
   "literal line or file reference"
@@ -70,7 +72,7 @@ line two"
 }
 ```
 
-****
+---
 
 ## Attributes
 
@@ -83,7 +85,7 @@ operations. Variables should be named and scoped appropriately for the
 bundle in which this promise is made. In other words, you should qualify
 the variables with the bundle in which they are defined. For example:
 
-```cf3
+```
 $(bundle.variable)
 $(sys.host)
 $(mon.www_in)
@@ -127,15 +129,15 @@ lines.
 
 **Allowed input range:**
 
-* `literal` or `string`
+- `literal` or `string`
 
 Treat the promiser as a literal string of convergent lines.
 
-* file
+- file
 
 The string should be interpreted as a filename from which to import lines.
 
-* `preserve_block`
+- `preserve_block`
 
 The default behavior assumes that multi-line entries are not ordered
 specifically. They should be treated as a collection of lines of text,
@@ -148,7 +150,7 @@ already exist, they will be added again as a coherent block. Thus if you
 suspect that some stray / conflicting lines might be present they should
 be cleaned up with `delete_lines` first.
 
-* `preserve_all_lines`
+- `preserve_all_lines`
 
 Disables idempotency during the insertion of a block of text so that
 multiple identical lines may be inserted.
@@ -157,7 +159,7 @@ This means that the text will be inserted to the file even if it is already
 present. To avoid that the file grows, use this together with
 `empty_file_before_editing`.
 
-* `file_preserve_block`
+- `file_preserve_block`
 
 Interpret the string as a filename, and assume `preserve_block` semantics.
 This was added in CFEngine 3.5.x.
@@ -191,7 +193,7 @@ insert_if_startwith_from_list => { "@(s)" };
 This will ensure that the following lines are inserted into the promised
 file:
 
-```cf3
+```
 And you'll never see me no more
 Gimme three steps, Mister
 Gimme three steps towards the door
@@ -235,7 +237,7 @@ insert_if_startwith_from_list => { "find_me_1", "find_me_2" };
 **Description:** Insert line if it DOES NOT start with a string in the list
 
 The complement of `insert_if_startwith_from_list`. If the start of a
-line does *not* match one of the strings, that line is inserted into the
+line does _not_ match one of the strings, that line is inserted into the
 file being edited.
 
 `insert_if_not_startswith_from_list` is ignored unless `insert_type` is
@@ -260,7 +262,7 @@ insert_if_not_startwith_from_list => { "find_me_1", "find_me_2" };
 
 The list contains literal strings to search for in the secondary file
 (the file being read via the `insert_type` attribute, not the main file
-being edited). If the regex matches a *complete* line of the file, that
+being edited). If the regex matches a _complete_ line of the file, that
 line from the secondary file will be inserted at the present location in
 the primary file. That is, the regex's in the list are [anchored][anchored].
 
@@ -284,7 +286,7 @@ insert_if_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
 
 **Description:** Insert line if it DOES NOT fully match a regex in the list
 
-The complement of `insert_if_match_from_list`. If the line does *not*
+The complement of `insert_if_match_from_list`. If the line does _not_
 match a line in the secondary file, it is inserted into the file being
 edited.
 
@@ -335,7 +337,7 @@ insert_if_contains_from_list => { "find_me_1", "find_me_2" };
 **Description:** Insert line if a regex in the list DOES NOT match a line
 fragment.
 
-The complement of `insert_if_contains_from_list`. If the line is *not*
+The complement of `insert_if_contains_from_list`. If the line is _not_
 found in the secondary file, it is inserted into the file being edited.
 
 `insert_if_not_contains_from_list` is ignored unless `insert_type` is
@@ -424,7 +426,6 @@ first_last => "last";
 The expression must match a whole line, not a fragment within a line;
 that is, it is [anchored][anchored].
 
-
 **Type:** `string`
 
 **Allowed input range:** `.*`
@@ -448,8 +449,8 @@ select_line_matching => "Expression match.* whole line";
 
 **Notes:**
 
-* This attribute is mutually exclusive of `select_line_number`.
-* This attribute can not match a multiple line pattern (`(?m)` has no effect).
+- This attribute is mutually exclusive of `select_line_number`.
+- This attribute can not match a multiple line pattern (`(?m)` has no effect).
 
 ### select_region
 
@@ -457,7 +458,7 @@ select_line_matching => "Expression match.* whole line";
 
 This body applies to all promise types within `edit_line` bundles.
 
-**See also:** [```select_region``` with `edit_line` operations][edit_line#select_region], [```select_region``` in `delete_lines`][delete_lines#select_region], [```select_region``` in `field_edits`][field_edits#select_region], [```select_region``` in `replace_patterns`][replace_patterns#select_region]
+**See also:** [`select_region` with `edit_line` operations][edit_line#select_region], [`select_region` in `delete_lines`][delete_lines#select_region], [`select_region` in `field_edits`][field_edits#select_region], [`select_region` in `replace_patterns`][replace_patterns#select_region]
 
 ### whitespace_policy
 
@@ -465,7 +466,7 @@ This body applies to all promise types within `edit_line` bundles.
 
 The white space matching policy applies only to `insert_lines`, as a
 convenience. It works by rewriting the insert string as a regular
-expression when *matching* lines (that is, when determining if the line
+expression when _matching_ lines (that is, when determining if the line
 is already in the file), but leaving the string as specified when
 actually inserting it.
 
@@ -484,7 +485,7 @@ such as `authpriv.* /var/log/something` into a syslog config file.
 
 **Allowed input range:**
 
-```cf3
+```
 ignore_leading
 ignore_trailing
 ignore_embedded

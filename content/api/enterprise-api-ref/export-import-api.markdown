@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Import & export API
+aliases:
+  - "/api-enterprise-api-ref-export-import-api.html"
 ---
 
 Import & export API provides users the ability to transfer Mission Portal data between hubs.
@@ -73,11 +75,10 @@ HTTP 200 Ok
 
 **Output:**
 
-* **id**
-    Item id. Use this id in export API call.
-* **name**
-    Name of export item.
-
+- **id**
+  Item id. Use this id in export API call.
+- **name**
+  Name of export item.
 
 ## Export
 
@@ -87,15 +88,15 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **item_id** *(array)*
-    Item id to be exported.
-    List of item ids you can obtain through [List of items to export][Import & export API#Get available items to export]
-        call described below.
+- **item_id** _(array)_
+  Item id to be exported.
+  List of item ids you can obtain through [List of items to export][Import & export API#Get available items to export]
+  call described below.
 
-* **encryptionKey** *(string)*
-    Encryption key to encrypt sensitive data. Please save this key to be able to import the data.
-* **exportOnlyUserItems** *(string)*
-    `true` - export only user items. `false` - export whole system data
+- **encryptionKey** _(string)_
+  Encryption key to encrypt sensitive data. Please save this key to be able to import the data.
+- **exportOnlyUserItems** _(string)_
+  `true` - export only user items. `false` - export whole system data
 
 **Example request (curl):**
 
@@ -116,10 +117,10 @@ HTTP 200 Ok
 
 **Output:**
 
-* **name**
-    Name of export file.
-* **url**
-    Url of export file.
+- **name**
+  Name of export file.
+- **url**
+  Url of export file.
 
 ## Download export file
 
@@ -129,9 +130,8 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **file_name** *(string)*
+- **file_name** _(string)_
   File name to be downloaded.
-
 
 **Example request (curl):**
 
@@ -152,13 +152,12 @@ Raw file contetnt
 
 **Output headers:**
 
-* Cache-Control: must-revalidate, post-check=0, pre-check=0
-* Pragma: public
-* Content-Description: File Transfer
-* Content-Disposition: attachment; filename="export_12-14-2018_16:04:46.093500.phar"
-* Content-Length: 337801
-* Content-Type: application/octet-stream
-
+- Cache-Control: must-revalidate, post-check=0, pre-check=0
+- Pragma: public
+- Content-Description: File Transfer
+- Content-Disposition: attachment; filename="export_12-14-2018_16:04:46.093500.phar"
+- Content-Length: 337801
+- Content-Type: application/octet-stream
 
 ## Analyze import file
 
@@ -170,8 +169,8 @@ This API call allows you to see short summary of file content.
 
 **Parameters:**
 
-* **file** *(form data file)*
-    File to be analyzed.
+- **file** _(form data file)_
+  File to be analyzed.
 
 **Example request (curl):**
 
@@ -202,14 +201,14 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **file** *(form data file)*
-    File to be analyzed.
-* **encryptionKey** *(string)*
-    Encryption key that was set while export.
-* **skipDuplicates** *(number)*
-    Merge conflict strategy:
-    `1` - skip duplicate items.
-    `0` - overwrite duplicate items.
+- **file** _(form data file)_
+  File to be analyzed.
+- **encryptionKey** _(string)_
+  Encryption key that was set while export.
+- **skipDuplicates** _(number)_
+  Merge conflict strategy:
+  `1` - skip duplicate items.
+  `0` - overwrite duplicate items.
 
 **Example request (curl):**
 

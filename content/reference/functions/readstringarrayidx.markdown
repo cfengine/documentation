@@ -1,9 +1,11 @@
 ---
 layout: default
 title: readstringarrayidx
+aliases:
+  - "/reference-functions-readstringarrayidx.html"
 ---
 
-[%CFEngine_function_prototype(array, filename, comment, split, maxentries, maxbytes)%]
+{{< CFEngine_function_prototype(array, filename, comment, split, maxentries, maxbytes) >}}
 
 **Description:** Populates the two-dimensional array `array` with up to
 `maxentries` fields from the first `maxbytes` bytes of file `filename`.
@@ -19,14 +21,14 @@ split into fields. Using the empty string (`""`) indicates no comments.
 
 Returns an integer number of keys in the array (i.e., the number of lines
 matched). If you only want the fields in the first matching line (e.g., to
-mimic the behavior of the *getpwnam(3)* on the file `/etc/passwd`), use
+mimic the behavior of the _getpwnam(3)_ on the file `/etc/passwd`), use
 `getfields()`, instead.
 
-[%CFEngine_function_attributes(array, filename, comment, split, maxentries, maxbytes)%]
+{{< CFEngine_function_attributes(array, filename, comment, split, maxentries, maxbytes) >}}
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   "dim_array"

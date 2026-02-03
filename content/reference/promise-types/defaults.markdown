@@ -1,6 +1,8 @@
 ---
 layout: default
 title: defaults
+aliases:
+  - "/reference-promise-types-defaults.html"
 ---
 
 Defaults promises are related to [variables][variables]. If a variable or
@@ -84,9 +86,11 @@ reports:
 }
 ```
 
-***
+---
 
 ## Attributes
+
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### if_match_regex
 
@@ -103,4 +107,4 @@ with the default value.
 
 **Example:**
 
-[%CFEngine_include_example(defaults.cf)%]
+{{< CFEngine_include_example(defaults.cf) >}}

@@ -2,10 +2,13 @@
 layout: default
 title: File comparison
 sorting: 100
+aliases:
+  - "/examples-tutorials-file_comparison.html"
 ---
 
 1. Add the [policy contents][File comparison#Full policy] (also can be downloaded from <a href="file_compare_test.cf">file_compare_test.cf</a>) to a new file, such as /var/cfengine/masterfiles/file_test.cf.
 2. Run the following commands as root on the command line:
+
    ```console
    export AOUT_BIN="a.out"
    export GCC_BIN="/usr/bin/gcc"
@@ -130,7 +133,7 @@ bundle agent create_aout_source_file
 
 ## create_aout
 
-This bundle creates a binary application from the source in  create_aout_source_file that uses the stat library to compare two files, determine if the modified times are different, nd whether the second file is newer than the first.
+This bundle creates a binary application from the source in create_aout_source_file that uses the stat library to compare two files, determine if the modified times are different, nd whether the second file is newer than the first.
 
 The difference between this application and using CFEngine's built in support for getting file stats is that normally the accuracy is only to the second of the modified file time but in order to better compare two files requires parts of a second as well. The stat library provides the extra support for retrieving the additional information required.
 
@@ -401,4 +404,4 @@ bundle agent list_file_2
 
 ## Full policy
 
-[%CFEngine_include_snippet(documentation/examples/tutorials/file_compare_test.cf, .* )%]
+{{< CFEngine_include_snippet(documentation/content/examples/tutorials/file_compare_test.cf, .* ) >}}

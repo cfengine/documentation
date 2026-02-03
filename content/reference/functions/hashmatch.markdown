@@ -1,16 +1,18 @@
 ---
 layout: default
 title: hashmatch
+aliases:
+  - "/reference-functions-hashmatch.html"
 ---
 
-[%CFEngine_function_prototype(filename, algorithm, hash)%]
+{{< CFEngine_function_prototype(filename, algorithm, hash) >}}
 
 **Description:** Compute the hash of file `filename` using the hash `algorithm` and test if it matches `hash`.
 
 This function may be used to determine whether a system has a particular
 version of a binary file (e.g. software patch).
 
-[%CFEngine_function_attributes(filename, algorithm, hash)%]
+{{< CFEngine_function_attributes(filename, algorithm, hash) >}}
 
 `hash` is an ASCII representation of the hash for comparison.
 

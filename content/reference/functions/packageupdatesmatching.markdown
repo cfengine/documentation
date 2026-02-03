@@ -1,9 +1,11 @@
 ---
 layout: default
 title: packageupdatesmatching
+aliases:
+  - "/reference-functions-packageupdatesmatching.html"
 ---
 
-[%CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex)%]
+{{< CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex) >}}
 
 **Description:** Return a data container with the list of available packages
 matching the parameters.
@@ -16,16 +18,16 @@ this:
 
 ```json
 [
-   {
-      "arch":"default",
-      "method":"dpkg",
-      "name":"syncthing",
-      "version":"0.12.8"
-   }
+  {
+    "arch": "default",
+    "method": "dpkg",
+    "name": "syncthing",
+    "version": "0.12.8"
+  }
 ]
 ```
 
-[%CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex)%]
+{{< CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex) >}}
 
 **IMPORTANT:** The data source used when querying depends on policy configuration.
 When `package_inventory` in `body common control` is configured, CFEngine will record the packages installed and the package updates available for the configured package modules.
@@ -36,10 +38,9 @@ This enables the usage of these policy functions in standalone policy files. But
 If there is no `package_inventory` attribute (such as on package module unsupported platforms) and there are no software inventory databases available in `$(sys.statedir)` then the legacy package methods data will be used instead.
 At no time will both the standard and the legacy data be available to these functions simultaneously.
 
-
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "all_package_updates"
     data => packageupdatesmatching(".*", # Package name regex
@@ -50,28 +51,27 @@ vars:
 
 **Refresh rules:**
 
-* updates cache used by packageupdatesmatching() is refreshed at the end of each agent run in accordance with constraints defined in the relevant package module body.
-* updates cache is refreshed every time `repo` type package is installed or removed
-* updates cache is refreshed if no local cache exists.
+- updates cache used by packageupdatesmatching() is refreshed at the end of each agent run in accordance with constraints defined in the relevant package module body.
+- updates cache is refreshed every time `repo` type package is installed or removed
+- updates cache is refreshed if no local cache exists.
 
 This means a reliable way to force a refresh of CFEngine's internal package cache is to simply delete the local cache:
 
-```cf3
+```cf3 {skip TODO}
 $(sys.statedir)/packages_updates_<package_module>.lmdb*
 ```
 
 Or in the case of legacy package methods:
 
-```cf3
+```cf3 {skip TODO}
 $(sys.statedir)/software_patches_avail.csv
 ```
 
 **History:**
 
-* Introduced in CFEngine 3.6
-* Function started using `package_module` based data sources by default, even if
+- Introduced in CFEngine 3.6
+- Function started using `package_module` based data sources by default, even if
   there is no `package_inventory` attribute defined in `body common control` if
   available in 3.23.0
-
 
 **See also:** `packagesmatching()`, [Package information cache tunables in the MPF][Masterfiles Policy Framework#Configure periodic package inventory refresh interval]

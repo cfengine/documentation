@@ -1,6 +1,8 @@
 ---
 layout: default
 title: classes
+aliases:
+  - "/reference-promise-types-classes.html"
 ---
 
 [Classes][classes] promises may be made in any bundle. Classes defined by
@@ -24,19 +26,16 @@ classes:
 - The promiser is automatically canonified when classes are defined.
 - Classes are not automatically canonified when checked.
 
+{{< CFEngine_include_example(class-automatic-canonificiation.cf) >}}
 
-[%CFEngine_include_example(class-automatic-canonificiation.cf)%]
-
-
-- The term ```class``` and ```context``` are sometimes used interchangeably.
+- The term `class` and `context` are sometimes used interchangeably.
 - The following attributes to make a complete promise.
-
-  * and
-  * expression
-  * dist
-  * or
-  * not
-  * xor
+  - and
+  - expression
+  - dist
+  - or
+  - not
+  - xor
 
 If you omit all of them, the class is always defined (as if you said `expression
 => "any"`).
@@ -70,9 +69,11 @@ bundle agent example
 }
 ```
 
-***
+---
 
 ## Attributes
+
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### and
 
@@ -87,7 +88,7 @@ on the right-hand side are true.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
   "compound_class" and => { classmatch("host[0-9].*"), "Monday", "Hr02" };
@@ -112,7 +113,7 @@ probability distribution.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
   "my_dist"
@@ -126,7 +127,7 @@ In the example above the values sum up to `10+20+40+50 = 120`. When generating
 the distribution, CFEngine picks a number between `1-120`, and set the class
 `my_dist` as well as one of the following classes:
 
-```cf3
+```
 my_dist_10 (10/120 of the time)
 my_dist_20 (20/120 of the time)
 my_dist_40 (40/120 of the time)
@@ -146,22 +147,22 @@ change during execution.
 
 Expressions can be:
 
-* class names, with or without a namespace
+- class names, with or without a namespace
 
-* the literals `true` (always defined) and `false` (never defined) that allow JSON booleans to be used inside expressions
+- the literals `true` (always defined) and `false` (never defined) that allow JSON booleans to be used inside expressions
 
-* the logical *and* operation, expressed as `a&b` or `a.b`, which is true if both `a` and `b` are true
+- the logical _and_ operation, expressed as `a&b` or `a.b`, which is true if both `a` and `b` are true
 
-* the logical *or* operation, expressed as `a|b`, which is true if either `a` or `b` are true
+- the logical _or_ operation, expressed as `a|b`, which is true if either `a` or `b` are true
 
-* the logical *not* operation, expressed as `!a`, which is true if `a` is not
+- the logical _not_ operation, expressed as `!a`, which is true if `a` is not
   true. Note again here that `a` could **become** true during the execution. So
   if you have `"myclass" expression => "!x"` and `x` starts undefined but is
   defined later, you could have both `x` **and** `myclass` defined!
 
-* parenthesis `(whatever)` which operate as expected to prioritize expression evaluation
+- parenthesis `(whatever)` which operate as expected to prioritize expression evaluation
 
-* the return value of a function that returns a class, such as `fileexists()` `and()` `userexists()` etc.
+- the return value of a function that returns a class, such as `fileexists()` `and()` `userexists()` etc.
 
 **Type:** `class`
 
@@ -169,7 +170,7 @@ Expressions can be:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
   "class_name" expression => "solaris|(linux.specialclass)";
@@ -204,7 +205,7 @@ the class expressions on the right-hand side are true.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
     "compound_test"
@@ -271,7 +272,6 @@ persistent_classes::
   inputs => { "classes.cf" };
 }
 
-
 bundle agent test
 {
 reports:
@@ -286,7 +286,7 @@ reports:
 
 Then create `classes.cf`
 
-```cf3
+```cf3 {skip TODO}
 # classes.cf
 
 bundle common setclasses
@@ -315,14 +315,13 @@ classes:
 The class on the left-hand side will be set if the class expression on the
 right-hand side evaluates to false.
 
-
 **Type:** `class`
 
 **Allowed input range:** `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
    "others"  not => "linux|solaris";
@@ -352,7 +351,7 @@ bundle
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
   "namespace_context"
       scope => "namespace";
@@ -427,7 +426,7 @@ expressions.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
 "order_lunch" xor => { "Friday", "Hr11"}; # we get pizza every Friday

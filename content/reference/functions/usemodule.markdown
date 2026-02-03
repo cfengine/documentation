@@ -1,9 +1,11 @@
 ---
 layout: default
 title: usemodule
+aliases:
+  - "/reference-functions-usemodule.html"
 ---
 
-[%CFEngine_function_prototype(module, args)%]
+{{< CFEngine_function_prototype(module, args) >}}
 
 **Description:** Execute CFEngine module script `module` with `args`, and
 return whether successful.
@@ -11,7 +13,7 @@ return whether successful.
 The module script is expected to be located in the registered modules
 directory, `WORKDIR/modules`.
 
-[%CFEngine_function_attributes(module, args)%]
+{{< CFEngine_function_attributes(module, args) >}}
 
 **Example:**
 
@@ -29,4 +31,5 @@ bundle agent test
       "/bin/echo" args => "test $(user)";
 }
 ```
+
 **See also:** [read_module_protocol()][read_module_protocol], [Module Protocol][commands#module]

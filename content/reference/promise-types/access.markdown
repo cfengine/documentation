@@ -1,6 +1,8 @@
 ---
 layout: default
 title: access
+aliases:
+  - "/reference-promise-types-access.html"
 ---
 
 Access promises are conditional promises made by resources living on the server.
@@ -40,7 +42,7 @@ knowledge of the filesystem layout on the server. Specifically in access promise
 files, a special variable context `connection` is available with variables `ip`, `key`
 and `hostname`, containing information about the connection through which access is attempted.
 
-```cf3
+```cf3 {skip TODO}
 "/var/cfengine/cmdb/$(connection.key).json"
    shortcut   => "me.json",
    admit_keys => { "$(connection.key)" };
@@ -56,14 +58,13 @@ passed to functions or stored in other variables.
 With CFEngine Enteprise, access promises can be made about additional query data for
 reporting and orchestration.
 
-```cf3
+```cf3 {skip TODO}
   # Grant orchestration communication
 
   "did.*"
           comment => "Access to class context (enterprise)",
     resource_type => "context",
         admit_ips => { "127.0.0.1" };
-
 
   "value of my test_scalar, can expand variables here - $(sys.host)"
           comment => "Grant access to the string in quotes, by name test_scalar",
@@ -96,46 +97,45 @@ reporting and orchestration.
     resource_type => "query",
         admit_ips => { "10.1.2.0/24" };
 
-
 }
 ```
 
 Using the built-in `report_data_select` body `default_data_select_host`:
 
-[%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \})%]
-
+{{< CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \}) >}}
 
 The access promise allows overlapping promises to be made, and these are kept on a
 first-come-first-served basis. Thus file objects (promisers) should be
 listed in order of most-specific file first. In this way, specific
 promises will override less specific ones.
 
-****
+---
 
 ## Attributes
 
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### admit_hostnames
 
 **Description:** A list of hostnames or domains that should have access to the object.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Note:** The host trying to access the object is identified using a
 reverse DNS lookup on the connecting IP. This introduces latency for
-*every* incoming connection. If possible, avoid this penalty by
+_every_ incoming connection. If possible, avoid this penalty by
 leaving `admit_hostnames` empty and only specifying numeric addresses
 and subnets in `admit_ips`.
 
-To admit an entire domain, start the string with a dot `.`.  This
+To admit an entire domain, start the string with a dot `.`. This
 includes every hostname ending with the domain, but not a machine
 named after the domain itself.
 
 For example, here we'll admit the entire domain `.cfengine.com` and
-the host `www.cfengine3.com`.  A machine named `cfengine.com` would be
+the host `www.cfengine3.com`. A machine named `cfengine.com` would be
 refused access because it's not in the `cfengine.com` domain.
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/path/file"
     admit_hostnames => {
@@ -152,17 +152,17 @@ access:
 
 **Description:** A list of IP addresses that should have access to the object.
 
-Subnets are specified using CIDR notation.  For example, here we'll
+Subnets are specified using CIDR notation. For example, here we'll
 admit one host, then a subnet, then everyone:
 
-```cf3
+```cf3 {skip TODO}
 access:
 
    "/path/file"
    admit_ips => {"192.168.0.1", "192.168.0.0/24", "0.0.0.0/0"};
 ```
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `deny_ips`, `admit_hostnames`, `admit_keys`
 
@@ -174,7 +174,7 @@ access:
 
 For example, here we'll admit the fictitious SHA key `abcdef`:
 
-```cf3
+```cf3 {skip TODO}
 access:
 
    "/path/file"
@@ -184,14 +184,14 @@ access:
 In Community, MD5 keys are used, so similarly we can admit the
 fictitious MD5 key `abcdef`:
 
-```cf3
+```cf3 {skip TODO}
 access:
 
    "/path/file"
    admit_keys => {"MD5=abcdef"};
 ```
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `deny_keys`, `admit_hostnames`, `admit_ips`, `copyfrom_restrict_keys`
 
@@ -203,23 +203,23 @@ access:
 
 This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
-To deny an entire domain, start the string with a dot `.`.  This
+To deny an entire domain, start the string with a dot `.`. This
 includes every hostname ending with the domain, but not a machine
 named after the domain itself.
 
 For example, here we'll deny the entire domain `.cfengine.com` and the
-host `www.cfengine3.com`.  A machine named `cfengine.com` would be
+host `www.cfengine3.com`. A machine named `cfengine.com` would be
 allowed access (unless it's denied by other promises) because it's not
 in the `cfengine.com` domain.
 
-```cf3
+```cf3 {skip TODO}
 access:
 
    "/path/file"
    deny_hostnames => { ".cfengine.com", "www.cfengine3.com" };
 ```
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Notes:** Failure to resolve a hostname or it's reverse results in a denial.
 Since this control is sensitive to temporary DNS failures, and cases, where
@@ -239,7 +239,7 @@ This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
 For example, here we'll deny one host, then a subnet, then everyone:
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/path/file"
     deny_ips => {
@@ -249,7 +249,7 @@ access:
     };
 ```
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `admit_ips`, `deny_hostnames`, `deny_keys`
 
@@ -261,11 +261,11 @@ access:
 
 This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 For example, here we'll deny the fictitious SHA key `abcdef`:
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/path/file"
     deny_keys => {"SHA=abcdef"};
@@ -274,7 +274,7 @@ access:
 In Community, MD5 keys are used, so similarly we can deny the
 fictitious MD5 key `abcdef`:
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/path/file"
     deny_keys => {"MD5=abcdef"};
@@ -332,7 +332,6 @@ bundle server my_access_rules()
 }
 ```
 
-
 **Notes:**
 Only regular expressions or exact matches are allowed in this list,
 as non-specific matches are too greedy for denial.
@@ -355,11 +354,11 @@ files owned by non-privileged users. If `maproot` is true then remote
 A typical case where mapping is important is in making backups of many
 user files.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/home"
     admit_hostnames => { "backup_host.example.org" },
@@ -385,11 +384,11 @@ encryption is always enabled.
 If this flag is true a client cannot access the file object unless its
 connection is encrypted.
 
-[%CFEngine_promise_attribute(false)%]
+{{< CFEngine_promise_attribute(false) >}}
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 access:
   "/path/file"
     admit_hostnames => { ".example.org" },
@@ -422,7 +421,7 @@ If more than one `report_data_select` body applies to the same host, all of them
 Usage of this body is only allowed in conjunction with using
 [`resource_type => "query"`][access#resource_type], as this is the resource type that is being affected.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -440,20 +439,20 @@ body report_data_select report_data
 Here are the built-in `report_data_select` bodies `default_data_select_host()` and
 `default_data_select_policy_hub()`:
 
-[%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \})%]
+{{< CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \}) >}}
 
-[%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_policy_hub, \})%]
+{{< CFEngine_include_snippet(controls/reports.cf, .+default_data_select_policy_hub, \}) >}}
 
 **See also:** [Common body attributes][Promise types#Common body attributes]
 
 **History:**
 
-* Introduced in Enterprise 3.5.0
+- Introduced in Enterprise 3.5.0
 
-* `metatags_exclude`, `metatags_include`, `promise_handle_exclude`, and
+- `metatags_exclude`, `metatags_include`, `promise_handle_exclude`, and
   `promise_handle_include` body attributes added in 3.6.0.
 
-* `classes_exclude`, `classes_include`, `promise_notkept_log_exclude`,
+- `classes_exclude`, `classes_include`, `promise_notkept_log_exclude`,
   `promise_notkept_log_include`, `promise_repaired_log_exclude`,
   `promise_repaired_log_include`, `variables_exclude`, and `variables_include`
   body attributes removed in 3.6.0
@@ -469,7 +468,7 @@ reported to the CFEngine Enterprise server.
 When combined with `metatags_include`, this list is applied to the selected
 subset.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `metatags_include`, `promise_handle_exclude`, `monitoring_exclude`
 
@@ -486,7 +485,7 @@ reported to the CFEngine Enterprise server.
 When combined with `metatags_exclude`, the exclude list is applied to the subset
 from this list.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `metatags_exclude`, `promise_handle_include`, `monitoring_include`
 
@@ -503,7 +502,7 @@ not be reported to the CFEngine Enterprise server.
 When combined with `promise_handle_include`, this list is applied to the
 selected subset.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `promise_handle_include`, `metatags_exclude`, `monitoring_exclude`
 
@@ -520,7 +519,7 @@ be reported to the CFEngine Enterprise server.
 When combined with `promise_handle_exclude`, the exclude list is applied to the
 subset from this list.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `promise_handle_exclude`, `metatags_include`, `monitoring_include`
 
@@ -537,7 +536,7 @@ to the CFEngine Enterprise server.
 When combined with `monitoring_exclude`, the exclude list is applied to the
 subset from this list.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `monitoring_exclude`, `promise_handle_include`, `metatags_include`
 
@@ -554,7 +553,7 @@ reported to the CFEngine Enterprise server.
 When combined with `monitoring_include`, this list is applied to the selected
 subset.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `monitoring_include`, `promise_handle_exclude`, `metatags_exclude`
 
@@ -573,7 +572,7 @@ hashed passwords). In the case of literal data, the promise handle
 serves as the reference identifier for queries. Queries are instigated
 by function calls by any agent.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 If the resource type is `literal`, CFEngine will grant access to a
 literal data string. This string is defined either by the promiser
@@ -588,10 +587,10 @@ hold enumerated classes for orchestration purposes.
 
 If you want to send the value of a policy defined variable in the server
 host (which for some reason is not available directly through policy on
-the client, e.g. because they have different policies), then you could
+the client, e.g. because they have different policy files), then you could
 use the following construction:
 
-```cf3
+```cf3 {skip TODO}
 access:
   "$(variable_name)"
     handle => "variable_name",
@@ -612,7 +611,6 @@ tunneling (see also `call_collect_interval`).
 If the resource type is `bundle` then the specific bundles are allowed
 to be remotely executed with `cf-runagent --remote-bundles` from the
 specified hosts. The promiser is an anchored regular expression.
-
 
 **Example:**
 
@@ -653,18 +651,18 @@ bundle server my_access_rules()
 
 **History:**
 
-- ```bundle``` `resource_type` added in 3.9.0
+- `bundle` `resource_type` added in 3.9.0
 
 ### shortcut
 
 **Description:** For file promisers, the server will give access to the file under
 its shortcut name.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 "/var/cfengine/cmdb/$(connection.key).json"
   shortcut   => "me.json",
   admit_keys => { "$(connection.key)" };

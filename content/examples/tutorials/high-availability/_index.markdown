@@ -1,6 +1,8 @@
 ---
 layout: default
 title: High availability
+aliases:
+  - "/examples-tutorials-high-availability.html"
 ---
 
 ## Overview
@@ -8,10 +10,9 @@ title: High availability
 Although CFEngine is a distributed system, with decisions made by autonomous agents running on each
 node, the hub can be viewed as a single point of failure. In order to be able to play both roles
 that hub is responsible for - policy serving and report collection - High availability feature was
-introduced in 3.6.2.  Essentially it is based on well known and broadly used cluster resource
+introduced in 3.6.2. Essentially it is based on well known and broadly used cluster resource
 management tools - [corosync](https://corosync.github.io/corosync/) and
 [pacemaker](https://clusterlabs.org/pacemaker/) as well as PostgreSQL streaming replication feature.
-
 
 ## Design
 
@@ -40,7 +41,6 @@ accessing Mission Portal so that once failover happens the change of active-pass
 failover transition is transparent for end user. They can still use the same shared IP address to
 log in to the Mission Portal or use against API queries.
 
-
 ### PostgreSQL
 
 For best performance, PostgreSQL streaming replication was selected as the database replication
@@ -49,7 +49,6 @@ standby database servers. This is a PostgreSQL 9.0 and above feature allowing co
 and almost immediate visibility of data inserted to primary server by the standby. For more
 information about PostgreSQL streaming replication please see [PostgreSQL
 documentation](https://wiki.postgresql.org/wiki/Streaming_Replication).
-
 
 ## CFEngine
 
@@ -78,16 +77,14 @@ knowledge and overview of the whole setup.
 
 <img src="ha_degraded_indicator.png" alt="HADegraded" width="480px">
 
-
 ### Inventory
 
 There are also new Mission Portal inventory variables indicating the IP address of the active hub
 instance and status of the High availability installation on each of the hubs. Looking at inventory
 reports is especially helpful to diagnose any problems when High availability is reported as
-*degraded*.
+_degraded_.
 
 <img src="ha_inventory.png" alt="HAInventory" width="700px">
-
 
 ### CFEngine High availability installation
 

@@ -2,11 +2,13 @@
 layout: default
 title: Tags for variables, classes, and bundles
 sorting: 14
+aliases:
+  - "/examples-tutorials-tags.html"
 ---
 
 ## Introduction
 
-*meta tags* can be attached to any promise type using the `meta` attribute.
+_meta tags_ can be attached to any promise type using the `meta` attribute.
 These tags are useful for cross-referencing related promises. `bundles`, `vars`
 and `classes` can be identified and leveraged in different ways within policy
 using these tags.
@@ -28,7 +30,7 @@ it represents. This one is actually built into the standard
 [MPF inventory policy][inventory/any.cf#cfe_autorun_inventory_listening_ports],
 so it's available out of the box in either Community or Enterprise.
 
-[%CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \})%]
+{{< CFEngine_include_snippet(inventory/any.cf, bundle\s+(agent|common)\s+cfe_autorun_inventory_listening_ports, \}) >}}
 
 In the Enterprise Mission Portal, you can then make a report for
 "Ports listening" across all your machines. For more details, see
@@ -57,28 +59,28 @@ This declares an agent bundle with a single tag.
 Several new functions exist to give you access to variable and class
 tags, and to find classes and variables with tags.
 
-* `classesmatching`: this used to be somewhat available with the
-`allclasses.txt` file. You can now call a function to get all the
-defined classes, optionally filtering by name and tags. See
-[classesmatching][classesmatching]
+- `classesmatching`: this used to be somewhat available with the
+  `allclasses.txt` file. You can now call a function to get all the
+  defined classes, optionally filtering by name and tags. See
+  [classesmatching][classesmatching]
 
-* `getvariablemetatags`: get the tags of a variable as an slist. See
-[getvariablemetatags][getvariablemetatags]
+- `getvariablemetatags`: get the tags of a variable as an slist. See
+  [getvariablemetatags][getvariablemetatags]
 
-* `variablesmatching`: just like `classesmatching` but for variables.
-See [variablesmatching][variablesmatching]
+- `variablesmatching`: just like `classesmatching` but for variables.
+  See [variablesmatching][variablesmatching]
 
-* `variablesmatching_as_data`: like `variablesmatching` but the matching
-variables and values are returned as a merged data container. See
-[variablesmatching_as_data][variablesmatching_as_data]
+- `variablesmatching_as_data`: like `variablesmatching` but the matching
+  variables and values are returned as a merged data container. See
+  [variablesmatching_as_data][variablesmatching_as_data]
 
-* `getclassmetatags`: get the tags of a class as an slist. See
-[getclassmetatags][getclassmetatags]
+- `getclassmetatags`: get the tags of a class as an slist. See
+  [getclassmetatags][getclassmetatags]
 
-* `bundlesmatching`: find the bundles matching some tags. See
-[bundlesmatching][bundlesmatching]
-(the example shows how you'd find a `deprecated` bundle like
-`run_deprecated` earlier).
+- `bundlesmatching`: find the bundles matching some tags. See
+  [bundlesmatching][bundlesmatching]
+  (the example shows how you'd find a `deprecated` bundle like
+  `run_deprecated` earlier).
 
 ## Module protocol
 
@@ -114,7 +116,7 @@ way to categorize various data accessible to the agent.
 Dynamic bundlesequences are extremely easy. First you find all the bundles whos
 name matches a regular expression and N tags.
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "bundles" slist => bundlesmatching("regex", "tag1", "tag2", ...);
 ```
@@ -122,7 +124,7 @@ vars:
 Then every bundle matching the regular expression `regex` and **all**
 the tags will be found and run.
 
-```cf3
+```cf3 {skip TODO}
 methods:
   "run $(bundles)" usebundle => $(bundles);
 ```

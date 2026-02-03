@@ -2,6 +2,8 @@
 layout: default
 title: Custom actions for alerts
 sorting: 50
+aliases:
+  - "/web-ui-custom-actions-for-alerts.html"
 ---
 
 Once you have become familiar with the [Alerts widgets][Web UI#Alert widgets], you might see the need to integrate the alerts with an existing system like Nagios, instead of relying on emails for getting notified.
@@ -10,65 +12,59 @@ This is where the Custom actions come in. A Custom action is a way to execute a 
 
 Any scripting language may be used, as long as the hub has an interpreter for it.
 
-
 ## Alert parameters
 
 The Custom action script gets called with one parameter: the path to a file with a set of KEY=VALUE lines.
 Most of the keys are common for all alerts, but some additional keys are defined based on the alert type, as shown below.
 
-
 ### Common keys
 
 These keys are present for all alert types.
 
-| Key                         | Description                                                                                           |
-|-----------------------------|-------------------------------------------------------------------------------------------------------|
-| ALERT_ID                    | Unique ID (number).                                                                          |
-| ALERT_NAME                  | Name, as defined in when creating the alert (string).                                                    |
-| ALERT_SEVERITY              | Severity, as selected when creating the alert (string).                                                |
-| ALERT_LAST_CHECK            | Last time alert state was checked (Unix epoch timestamp).                                              |
-| ALERT_LAST_EVENT_TIME       | Last time the alert created an event log entry (Unix epoch timestamp).                                 |
-| ALERT_LAST_STATUS_CHANGE    | Last time alert changed from triggered to cleared or the other way around (Unix epoch timestamp).      |
-| ALERT_STATUS                | Current status, either 'fail' (triggered) or 'success' (cleared).                                      |
-| ALERT_FAILED_HOST           | Number of hosts currently triggered on (number).                                                       |
-| ALERT_TOTAL_HOST            | Number of hosts defined for (number).                                                                  |
-| ALERT_CONDITION_NAME        | Condition name, as defined when creating the alert (string).                                             |
-| ALERT_CONDITION_DESCRIPTION | Condition description, as defined when creating the alert (string).                                      |
-| ALERT_CONDITION_TYPE        | Type, as selected when creating the alert. Can be 'policy', 'inventory', or 'softwareupdate'. |
-
-
+| Key                         | Description                                                                                       |
+| --------------------------- | ------------------------------------------------------------------------------------------------- |
+| ALERT_ID                    | Unique ID (number).                                                                               |
+| ALERT_NAME                  | Name, as defined in when creating the alert (string).                                             |
+| ALERT_SEVERITY              | Severity, as selected when creating the alert (string).                                           |
+| ALERT_LAST_CHECK            | Last time alert state was checked (Unix epoch timestamp).                                         |
+| ALERT_LAST_EVENT_TIME       | Last time the alert created an event log entry (Unix epoch timestamp).                            |
+| ALERT_LAST_STATUS_CHANGE    | Last time alert changed from triggered to cleared or the other way around (Unix epoch timestamp). |
+| ALERT_STATUS                | Current status, either 'fail' (triggered) or 'success' (cleared).                                 |
+| ALERT_FAILED_HOST           | Number of hosts currently triggered on (number).                                                  |
+| ALERT_TOTAL_HOST            | Number of hosts defined for (number).                                                             |
+| ALERT_CONDITION_NAME        | Condition name, as defined when creating the alert (string).                                      |
+| ALERT_CONDITION_DESCRIPTION | Condition description, as defined when creating the alert (string).                               |
+| ALERT_CONDITION_TYPE        | Type, as selected when creating the alert. Can be 'policy', 'inventory', or 'softwareupdate'.     |
 
 ### Policy keys
 
 In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='policy'.
 
-| Key                                   | Description                                                                                                      |
-|---------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| Key                                   | Description                                                                                                       |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | ALERT_POLICY_CONDITION_FILTERBY       | Policy object to filter by, as selected when creating the alert. Can be 'bundlename', 'promiser' or 'promisees'.  |
 | ALERT_POLICY_CONDITION_FILTERITEMNAME | Name of the policy object to filter by, as defined when creating the alert (string).                              |
 | ALERT_POLICY_CONDITION_PROMISEHANDLE  | Promise handle to filter by, as defined when creating the alert (string).                                         |
 | ALERT_POLICY_CONDITION_PROMISEOUTCOME | Promise outcome to filter by, as selected when creating the alert. Can be either 'KEPT', 'REPAIRED' or 'NOTKEPT'. |
 
-
 ### Inventory keys
 
 In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='inventory'.
 
-| Key                                                          | Description                                                                                                                                                                                                                                    |
-|--------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ALERT_INVENTORY_CONDITION_FILTER_$(ATTRIBUTE_NAME)           | The name of the attribute as selected when creating the alert is part of the key (expanded), while the value set when creating is the value (e.g. ALERT_INVENTORY_CONDITION_FILTER_ARCHITECTURE='x86_64').                                      |
-| ALERT_INVENTORY_CONDITION_FILTER_$(ATTRIBUTE_NAME)_CONDITION | The name of the attribute as selected when creating the alert is part of the key (expanded), while the value is the comparison operator selected. Can be 'ILIKE' (matches), 'NOT ILIKE' (doesn't match), '=' (is), '!=' (is not), '<', '>'. |
-| ...                                                          | There will be pairs of key=value for each attribute name defined in the alert.                                                                                                                                                                |
+| Key                                                           | Description                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ALERT*INVENTORY_CONDITION_FILTER*$(ATTRIBUTE_NAME)            | The name of the attribute as selected when creating the alert is part of the key (expanded), while the value set when creating is the value (e.g. ALERT_INVENTORY_CONDITION_FILTER_ARCHITECTURE='x86_64').                                  |
+| ALERT*INVENTORY_CONDITION_FILTER*$(ATTRIBUTE_NAME)\_CONDITION | The name of the attribute as selected when creating the alert is part of the key (expanded), while the value is the comparison operator selected. Can be 'ILIKE' (matches), 'NOT ILIKE' (doesn't match), '=' (is), '!=' (is not), '<', '>'. |
+| ...                                                           | There will be pairs of key=value for each attribute name defined in the alert.                                                                                                                                                              |
 
 ### Software updates keys
 
 In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='softwareupdate'.
 
-| Key                                               | Description                                                                                 |
-|---------------------------------------------------|---------------------------------------------------------------------------------------------|
+| Key                                               | Description                                                                                          |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | ALERT_SOFTWARE_UPDATE_CONDITION_PATCHNAME         | The name of the package, as defined when creating the alert, or empty if undefined (string).         |
 | ALERT_SOFTWARE_UPDATE_CONDITION_PATCHARCHITECTURE | The architecture of the package, as defined when creating the alert, or empty if undefined (string). |
-
 
 ## Example parameters: policy bundle alert not kept
 
@@ -99,7 +95,6 @@ You could then simply test your Custom action script, e.g. 'cfengine_custom_acti
 
 When you get this to work as expected on the commmand line, you are ready to upload the script to the Mission Portal, as outlined below.
 
-
 ## Example script: logging policy alert to syslog
 
 The following Custom action script will log the status and definition of a policy alert to syslog.
@@ -123,8 +118,6 @@ What gets logged to syslog depends on which alert is associated with the script,
 
     Sep 26 02:00:53 localhost user[18823]: Policy alert 'Web service' fail. Now triggered on 11 hosts. Defined with bundlename='web_service', promise handle '' and outcome NOTKEPT
 
-
-
 ## Uploading the script to the Mission Portal
 
 Members of the admin role can manage Custom action scripts in the Mission Portal settings.
@@ -134,7 +127,6 @@ Members of the admin role can manage Custom action scripts in the Mission Portal
 A new script can be uploaded, together with a name and description, which will be shown when creating the alerts.
 
 <img src="mp-settings-custom-notification-add.png" alt="Adding Custom action syslog script" width="700px">
-
 
 ## Associating a Custom action with an alert
 

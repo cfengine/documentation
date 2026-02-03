@@ -2,6 +2,8 @@
 layout: default
 title: Custom inventory
 sorting: 15
+aliases:
+  - "/examples-tutorials-custom_inventory.html"
 ---
 
 This tutorial will show you how to add custom inventory attributes that can be
@@ -13,11 +15,11 @@ For a more detailed overview on how the inventory system works please reference
 
 This tutorial provides instructions for the following:
 
-* [Choose an attribute][Custom inventory#Choose an attribute to inventory]
+- [Choose an attribute][Custom inventory#Choose an attribute to inventory]
 
-* [Create and deploy inventory policy][Custom inventory#Create and deploy inventory policy]
+- [Create and deploy inventory policy][Custom inventory#Create and deploy inventory policy]
 
-* [Run Reports][Custom inventory#Reporting]
+- [Run Reports][Custom inventory#Reporting]
 
 **Note:** This tutorial uses the [CFEngine Enterprise Vagrant Environment][Using Vagrant] and files located in the vagrant project directory are automatically available to all hosts.
 
@@ -87,14 +89,12 @@ Create `/var/cfengine/masterfiles/def.json` and populate it with the following c
 
 ```json
 {
-  "inputs": [ "services/tutorials/inventory/owner.cf" ],
-  "vars": {
-    "control_common_bundlesequence_end": [ "tutorials_inventory_owner" ]
-  }
+  "inputs": ["services/tutorials/inventory/owner.cf"],
+  "vars": { "control_common_bundlesequence_end": ["tutorials_inventory_owner"] }
 }
 ```
 
-Any time you modify something, it is *always* a good idea to validate the syntax. You can run `cf-promises` to check policy syntax.
+Any time you modify something, it is _always_ a good idea to validate the syntax. You can run `cf-promises` to check policy syntax.
 
 **Policy Validation:**
 

@@ -1,9 +1,11 @@
 ---
 layout: default
 title: makerule
+aliases:
+  - "/reference-functions-makerule.html"
 ---
 
-[%CFEngine_function_prototype(target, sources)%]
+{{< CFEngine_function_prototype(target, sources) >}}
 
 **Description:** Evaluates whether a `target` file needs to be built or
 rebuilt from one or more `sources` files.
@@ -27,7 +29,7 @@ The makerule function emulates the same semantics and sets a class if
 the target needs to be built or rebuit, i.e. if the top line of an
 equivalent makefile is true.
 
-[%CFEngine_function_attributes(target, sources)%]
+{{< CFEngine_function_attributes(target, sources) >}}
 
 The `sources` argument may be either a scalar (indicating a single
 source) or a list reference or a data container. If the `sources`
@@ -36,7 +38,7 @@ determine whether the target needs rebuilding.
 
 **Example**:
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
  "build_me" expression => makerule("/tmp/target", "/tmp/source.c");

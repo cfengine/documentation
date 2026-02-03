@@ -1,17 +1,19 @@
 ---
 layout: default
 title: sysctlvalue
+aliases:
+  - "/reference-functions-sysctlvalue.html"
 ---
 
-[%CFEngine_function_prototype(key)%]
+{{< CFEngine_function_prototype(key) >}}
 
 **Description:** Returns the sysctl value of `key` using `/proc/sys`.
 
-[%CFEngine_function_attributes(key)%]
+{{< CFEngine_function_attributes(key) >}}
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "tested" slist => { "net.ipv4.tcp_mem", "net.unix.max_dgram_qlen" };
   "values[$(tested)]" string => sysctlvalue($(tested));

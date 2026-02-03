@@ -2,6 +2,8 @@
 layout: default
 title: Special variables
 sorting: 50
+aliases:
+  - "/reference-special-variables.html"
 ---
 
 Variables are promises that can be defined in any promise bundle. Users can create their
@@ -18,28 +20,49 @@ See `classes` for an explanation of the tags.
 
 CFEngine includes the following **special variables**:
 
-* [connection][connection]
-Variables defined for embedding unprintable values or values with special meanings
-in strings.
+- [connection][connection]
+  Variables defined for embedding unprintable values or values with special meanings
+  in strings.
 
-* [const][const]
-Variables defined for embedding unprintable values or values with special meanings
-in strings.
+- [const][const]
+  Variables defined for embedding unprintable values or values with special meanings
+  in strings.
 
-* [edit][edit]
-Variables used to access information about editing promises during their execution.
+- [control_agent][control_agent]
+  Variables from `body agent control` attributes available as special variables.
 
-* [match][match]
-Variable used in string matching.
+- [control_common][control_common]
+  Variables from `body common control` attributes available as special variables.
 
-* [mon][mon]
-Variables defined in a monitoring context.
+- [control_executor][control_executor]
+  Variables from `body executor control` attributes available as special variables.
 
-* [sys][sys]
-Variables defined in order to automate discovery of system values.
+- [control_hub][control_hub]
+  Variables from `body hub control` attributes available as special variables.
 
-* [def][def]
-Variables with some default value that can be defined by [augments file][Augments] or in policy.
+- [control_monitor][control_monitor]
+  Variables from `body monitor control` attributes available as special variables.
 
-* [this][this]
-Variables used to access information about promises during their execution.
+- [control_runagent][control_runagent]
+  Variables from `body runagent control` attributes available as special variables.
+
+- [control_server][control_server]
+  Variables from `body server control` attributes available as special variables.
+
+- [def][def]
+  Variables with some default value that can be defined by [augments file][Augments] or in policy.
+
+- [edit][edit]
+  Variables used to access information about editing promises during their execution.
+
+- [match][match]
+  Variable used in string matching.
+
+- [mon][mon]
+  Variables defined in a monitoring context.
+
+- [sys][sys]
+  Variables defined in order to automate discovery of system values.
+
+- [this][this]
+  Variables used to access information about promises during their execution.

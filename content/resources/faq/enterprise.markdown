@@ -2,6 +2,8 @@
 layout: default
 title: Enterprise reporting database
 sorting: 90
+aliases:
+  - "/resources-faq-enterprise.html"
 ---
 
 Frequently asked questions on the Enterprise reporting database.
@@ -26,12 +28,12 @@ The database runs under the `cfpostgres` user.
 
 ### General information
 
-* [Pre-installation checklist][Pre-installation checklist]
-* [Supported platforms and versions][Supported platforms and versions]
+- [Pre-installation checklist][Pre-installation checklist]
+- [Supported platforms and versions][Supported platforms and versions]
 
 ### Users and permissions
 
-* CFEngine Enterprise makes an attempt to create the local users `cfapache` and
+- CFEngine Enterprise makes an attempt to create the local users `cfapache` and
   `cfpostgres`, as well as group `cfapache` during install.
 
 ## How does Enterprise scale?
@@ -40,7 +42,7 @@ See best practices on [scalability][Best practices#Scalability]
 
 ## Is it normal to have many cf-hub processes running?
 
-* Yes, it is expected to have ~ 50 `cf-hub` processes running on a hub.
+- Yes, it is expected to have ~ 50 `cf-hub` processes running on a hub.
 
 ## What steps should I take after installing CFEngine Enterprise?
 

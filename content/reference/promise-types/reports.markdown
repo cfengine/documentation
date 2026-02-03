@@ -1,6 +1,8 @@
 ---
 layout: default
 title: reports
+aliases:
+  - "/reference-promise-types-reports.html"
 ---
 
 Reports promises simply print messages. Outputting a message without
@@ -8,7 +10,7 @@ qualification can be a dangerous operation. In a large installation it
 could unleash an avalanche of messaging, so it is recommended that
 reports are guarded appropriately.
 
-[%CFEngine_include_example(reports.cf)%]
+{{< CFEngine_include_example(reports.cf) >}}
 
 <!-- TODO: Should link to a page that describes all CFEngine output
 here where we explain that output from reports type promises are
@@ -30,7 +32,7 @@ bundle agent report
 ```
 
 Reports do not fundamentaly make changes to the system and report type promise
-outcomes are *always* considered kept.
+outcomes are _always_ considered kept.
 
 ```cf3
 bundle agent report
@@ -67,11 +69,11 @@ R: found class: report_reached
 R: found class: report_not_repaired
 ```
 
-****
+---
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### friend_pattern
 
@@ -117,13 +119,13 @@ argument `number_of_lines`
 
 **Example:**
 
-[%CFEngine_include_snippet(printfile.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(printfile.cf, #\+begin_src prep, .*end_src) >}}
 
-[%CFEngine_include_snippet(printfile.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(printfile.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(printfile.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(printfile.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:**
 

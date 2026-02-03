@@ -2,6 +2,8 @@
 layout: default
 title: Distributed scheduling
 sorting: 80
+aliases:
+  - "/resources-additional-topics-distributed-scheduling.html"
 ---
 
 ## What is distributed scheduling?
@@ -19,9 +21,9 @@ on machine3. This is distributed scheduling.
 Dispatch is the term used for starting actually the execution of a job that has
 been scheduled. There are two ways to achieve distributed job scheduling:
 
-* Centralized dispatch of jobs.
+- Centralized dispatch of jobs.
 
-* Peer to peer signalling with local dispatch of jobs.
+- Peer to peer signalling with local dispatch of jobs.
 
 There are pros and cons to centralization. Centralization makes consistency easy
 to determine, but it creates bottlenecks in processing and allows one machine to
@@ -37,18 +39,18 @@ in a secure fashion.
 
 You promise to execute tasks or keep promises at distributed places and times:
 
-* You tell CFEngine what and how with the details of a promise.
+- You tell CFEngine what and how with the details of a promise.
 
-* You tell CFEngine where and when promises should be kept, using classes.
+- You tell CFEngine where and when promises should be kept, using classes.
 
 CFEngine is designed principally to maintain desired state on a continuous
 basis. There are three cases for job scheduling:
 
-* Unique jobs run once and only once.
+- Unique jobs run once and only once.
 
-* Standard jobs run sporadically on demand.
+- Standard jobs run sporadically on demand.
 
-* Standard jobs run on a regular schedule.
+- Standard jobs run on a regular schedule.
 
 This list transfers to workflow processes too. If one job needs to follow after
 another (because it depends on it for something), we can ask if this workflow is
@@ -112,7 +114,7 @@ classes:
                                            );
 methods:
 
-  Host2.hostX_did_my_job
+  Host2.hostX_did_my_job::
 
     "any" usebundle => do_my_job_bundle;
 
@@ -157,9 +159,9 @@ To make a job happen at a specific time, we used a very specific time classifier
 'Day24.January.Year2012.Hr16.Min45_50'. If we now want to make this workflow
 into a regular occurrence, repeating at some interval we have two options:
 
-* We repeat this at the same time each week, day, hour, etc.
+- We repeat this at the same time each week, day, hour, etc.
 
-* We don't care about the precise time, we only care about the interval between
+- We don't care about the precise time, we only care about the interval between
   executions.
 
 The checking of promises in CFEngine is controlled by classes and by ifelapsed
@@ -193,7 +195,7 @@ classes:
                                                         );
 methods:
 
-  Host2.hostX_did_my_job
+  Host2.hostX_did_my_job::
 
     "any" usebundle => do_my_job_bundle;
 
@@ -205,7 +207,6 @@ commands:
          action => if_elapsed("100"),
         classes => state_repaired("did_my_job");
 ```
-
 
 ## Fancy distributed encapsulation
 
@@ -362,7 +363,7 @@ classes:
                                  if => "Host$(n)";
 methods:
 
-  Host2.Host3.Host4.hostX_did_my_job
+  Host2.Host3.Host4.hostX_did_my_job::
 
     "any" usebundle => do_my_job_bundle;
 
@@ -383,12 +384,12 @@ no error handling or recovery except to schedule the whole thing again.
 Triggering from one or more predecessors, i.e. combining with OR, looks similar,
 we just have to change the class expression:
 
-```
+```cf3
 bundle agent example
 {
   methods:
 
-    (Host2|Host3|Host4).hostX_did_my_job
+    (Host2|Host3|Host4).hostX_did_my_job::
 
       "any" usebundle => do_my_job_bundle;
 }
@@ -415,7 +416,7 @@ classes:
                                                         );
 methods:
 
-  Host2.hostX_did_my_job
+  Host2.hostX_did_my_job::
 
     "any" usebundle => do_my_job_bundle1;
     "any" usebundle => do_my_job_bundle2;

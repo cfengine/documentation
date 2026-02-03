@@ -1,6 +1,8 @@
 ---
 layout: default
 title: custom
+aliases:
+  - "/reference-promise-types-custom.html"
 ---
 
 Custom promise types can be added as _Promise modules_.
@@ -14,10 +16,10 @@ This documentation article provides a complete and detailed specification.
 It includes how to use them, how to implement them using modules, how the protocol works, etc.
 If you are interested in shorter tutorials, there are a few different ones available:
 
-* [Introducing CFEngine Custom Promise types - Installation and usage](https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/)
-* [How to implement CFEngine Custom Promise types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
-* [How to implement CFEngine custom promise types in bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
-* [Custom Promise outcomes in Mission Portal](https://cfengine.com/blog/2021/custom-promise-outcomes-in-mission-portal/)
+- [Introducing CFEngine Custom Promise types - Installation and usage](https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/)
+- [How to implement CFEngine Custom Promise types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
+- [How to implement CFEngine custom promise types in bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
+- [Custom Promise outcomes in Mission Portal](https://cfengine.com/blog/2021/custom-promise-outcomes-in-mission-portal/)
 
 ## Using custom promise types
 
@@ -63,36 +65,36 @@ The agent evaluates these, and decides whether to request evaluation from the mo
 
 These attributes are handled by the agent, and cannot be used inside promise modules:
 
-* `if` / `ifvarclass`
-* `unless`
-* `action` (body for `ifelapsed`, `expireafter`, etc.)
-  * `action_policy`, if not default, will be sent to the module, for dry-run/no-changes functionality
-* `comment`
-* `depends_on`
-* `handle`
-* [`meta`][Promise types#meta]
-* `with`
-* `classes`
+- `if` / `ifvarclass`
+- `unless`
+- `action` (body for `ifelapsed`, `expireafter`, etc.)
+  - `action_policy`, if not default, will be sent to the module, for dry-run/no-changes functionality
+- `comment`
+- `depends_on`
+- `handle`
+- [`meta`][Promise types#meta]
+- `with`
+- `classes`
 
 In an early iteration, the agent will emit errors for any of these which are not implemented yet, if you try to use them.
 
 Due to the implementation details, the following attributes from the `classes` body also cannot be used inside promise modules:
 
-* `classes_name`
-* `scope`
-* `promise_repaired`
-* `repair_failed`
-* `repair_denied`
-* `repair_timeout`
-* `promise_kept`
-* `cancel_repaired`
-* `cancel_kept`
-* `cancel_notkept`
-* `kept_returncodes`
-* `repaired_returncodes`
-* `failed_returncodes`
-* `persist_time`
-* `timer_policy`
+- `classes_name`
+- `scope`
+- `promise_repaired`
+- `repair_failed`
+- `repair_denied`
+- `repair_timeout`
+- `promise_kept`
+- `cancel_repaired`
+- `cancel_kept`
+- `cancel_notkept`
+- `kept_returncodes`
+- `repaired_returncodes`
+- `failed_returncodes`
+- `persist_time`
+- `timer_policy`
 
 ### Evaluation passes and normal order
 
@@ -118,7 +120,6 @@ Here is an example promise type, written in Python, using our library:
 import sys
 import os
 from cfengine import PromiseModule, ValidationError
-
 
 class GitPromiseTypeModule(PromiseModule):
     def validate_promise(self, promiser, attributes, metadata):
@@ -151,7 +152,6 @@ class GitPromiseTypeModule(PromiseModule):
             self.log_error(f"Failed to clone '{url}' -> '{folder}'")
             self.promise_not_kept()
 
-
 if __name__ == "__main__":
     GitPromiseTypeModule().start()
 ```
@@ -163,20 +163,20 @@ https://github.com/cfengine/core/blob/master/CONTRIBUTING.md#log-levels
 
 In short, when writing a promise module, these log levels should be used:
 
-* `critical` - Serious errors in protocol or module itself (not in policy)
-* `error` - Errors when validating / evaluating a promise, including syntax errors and promise not kept
-* `warning` - The promise did not fail, but there is something the user (policy writer) should probably fix. Some examples:
-  * Policy relies on deprecated behavior/syntax which will change
-  * Policy uses demo / unsafe options which should be avoided in a production environment
-* `notice` - Unusual events which you want to notify the user about
-  * Most promise types won't need this - usually `info` or `warning` is more appropriate
-  * Useful for events which happen rarely and are not the result of a promise, for example:
-    * New credentials detected
-    * New host bootstrapped
-    * The module made a change to the system for itself to work (database initialized, user created)
-* `info` - Changes made to the system (usually 1 per repaired promise, more if the promise made multiple different changes to the system)
-* `verbose` - Human understandable detailed information about promise evaluation
-* `debug` - Programmer-level information that is only useful for CFEngine developers or module developers
+- `critical` - Serious errors in protocol or module itself (not in policy)
+- `error` - Errors when validating / evaluating a promise, including syntax errors and promise not kept
+- `warning` - The promise did not fail, but there is something the user (policy writer) should probably fix. Some examples:
+  - Policy relies on deprecated behavior/syntax which will change
+  - Policy uses demo / unsafe options which should be avoided in a production environment
+- `notice` - Unusual events which you want to notify the user about
+  - Most promise types won't need this - usually `info` or `warning` is more appropriate
+  - Useful for events which happen rarely and are not the result of a promise, for example:
+    - New credentials detected
+    - New host bootstrapped
+    - The module made a change to the system for itself to work (database initialized, user created)
+- `info` - Changes made to the system (usually 1 per repaired promise, more if the promise made multiple different changes to the system)
+- `verbose` - Human understandable detailed information about promise evaluation
+- `debug` - Programmer-level information that is only useful for CFEngine developers or module developers
 
 Note that all log levels, except for `debug`, should be friendly to non-developers, and not include programmer's details (such as protocol messages, source code references, function names, etc.).
 
@@ -185,25 +185,25 @@ Note that all log levels, except for `debug`, should be friendly to non-develope
 Each operation performed by the module, sends a result back to the agent.
 The possible results are as follows:
 
-* Shared between operations:
-  * `error` - an unexpected error occured in the module or protocol, indicating a bug in CFEngine or the promise module
-    * Should be explained by a `critical` level log message
-* Promise validation:
-  * `valid` - No problems with the data or data types in promise
-  * `invalid` - There are problems with the promise data or data types
-    * Should be explained by an `error` level log message
-* Promise evaluation:
-  * The module should assume the promise has already been validated.
-    * It does not need to validate the promise again, and should **not** return `valid` / `invalid`.
-  * `kept` - promise satisfied already, no change made
-  * `repaired` - promise not satisfied before, but fixed now
-    * The change should be explained in a `info` level log message
-  * `not_kept` - promise not satisfied before, and could not be fixed
-    * Should be explained by an `error` level log message
-* Teminate:
-  * `success` - Module succesfully terminated without errors
-  * `failure` - There were problems when trying to clean up / terminate
-    * Should be explained by a `critical` level log message
+- Shared between operations:
+  - `error` - an unexpected error occured in the module or protocol, indicating a bug in CFEngine or the promise module
+    - Should be explained by a `critical` level log message
+- Promise validation:
+  - `valid` - No problems with the data or data types in promise
+  - `invalid` - There are problems with the promise data or data types
+    - Should be explained by an `error` level log message
+- Promise evaluation:
+  - The module should assume the promise has already been validated.
+    - It does not need to validate the promise again, and should **not** return `valid` / `invalid`.
+  - `kept` - promise satisfied already, no change made
+  - `repaired` - promise not satisfied before, but fixed now
+    - The change should be explained in a `info` level log message
+  - `not_kept` - promise not satisfied before, and could not be fixed
+    - Should be explained by an `error` level log message
+- Teminate:
+  - `success` - Module succesfully terminated without errors
+  - `failure` - There were problems when trying to clean up / terminate
+    - Should be explained by a `critical` level log message
 
 Built-in CFEngine promises may have multiple outcomes when evaluated.
 For the sake of simplicity, custom promises may only have 1 outcome, logic should be as follows:
@@ -226,16 +226,16 @@ When a promise module starts, the agent sends a protocol header (single line), f
 
 The header sent by cf-agent consists of 3 space-separated parts:
 
-* Name of program - Example: `cf-agent`
-* CFEngine version - Example: `3.16.0`
-* Highest supported protocol version - Example: `v1`
+- Name of program - Example: `cf-agent`
+- CFEngine version - Example: `3.16.0`
+- Highest supported protocol version - Example: `v1`
 
 The header response sent by the module consists of 4 or more space separated parts:
 
-* Module name - Example: `git_promise_module`
-* Module version - Example: `0.0.1`
-* Requested protocol version - Example: `v1`
-* Rest of line: [Feature flags](#features) separated by spaces. At least `json_based` or
+- Module name - Example: `git_promise_module`
+- Module version - Example: `0.0.1`
+- Requested protocol version - Example: `v1`
+- Rest of line: [Feature flags](#features) separated by spaces. At least `json_based` or
   `line_based` is required - Example: `json_based action_policy`
 
 The header has the same syntax regardless of protocol (It is used to determine protocol).
@@ -316,14 +316,14 @@ header. Following are the currently recognized features supported by cf-agent.
 
 ##### Action policy
 
-The *Action policy* feature, advertised as supported by the `action_policy` feature flag, indicates
+The _Action policy_ feature, advertised as supported by the `action_policy` feature flag, indicates
 that the module can properly handle the action policy mechanism which allows user to specify that
 promises should only check the state of the system and produce warnings in case of mismatch instead
 of actually repairing the state. When supported by the module, the cf-agent will allow use of the
 promises handled by the module with:
 
-* the `action_policy => "warn"` promise attribute and/or
-* in one of the evaluation modes that disable making changes: `--dry-run` and `--simulate`.
+- the `action_policy => "warn"` promise attribute and/or
+- in one of the evaluation modes that disable making changes: `--dry-run` and `--simulate`.
 
 In all the above cases, the `action_policy` attribute with the value `"warn"` is sent to the module
 as part of the request. There is currently no differentiation between the cases. **If the module
@@ -332,16 +332,16 @@ is that it would be unsafe to evaluate such promises in the above cases because 
 make changes to the system while the user requested no changes to be made and only warnings to be
 produced instead.
 
-The implementation of the *Action policy* feature must ensure that if the `action_policy` attribute
+The implementation of the _Action policy_ feature must ensure that if the `action_policy` attribute
 is sent by cf-agent with the value `"warn"` then either the state of the system:
 
-* is as described by the promise in which case the result is `kept` with only `debug` or `verbose`
+- is as described by the promise in which case the result is `kept` with only `debug` or `verbose`
   messages returned by the module, or
-* would require changes to be made in which case the result is `not_kept` with log messages with the
+- would require changes to be made in which case the result is `not_kept` with log messages with the
   log level `warning` returned by the module, **but no changes are made on the system**.
 
-A common pattern for warnings about changes that should be made is *"Should ACTION ON SOMETHING, but
-only warnings promised"* with the *ACTION ON SOMETHING* part describing what should be done based on
+A common pattern for warnings about changes that should be made is _"Should ACTION ON SOMETHING, but
+only warnings promised"_ with the _ACTION ON SOMETHING_ part describing what should be done based on
 the promiser and other attributes, for example:
 
 ```
@@ -350,7 +350,7 @@ warning: Should update file '/tmp/test' with content 'Hello,world!', but only wa
 
 **History:**
 
-* 3.21.0, 3.18.3 support in custom promise types introduced.
+- 3.21.0, 3.18.3 support in custom promise types introduced.
 
 #### JSON protocol
 
@@ -361,8 +361,8 @@ Protocol messages are separated by empty lines (double newline).
 The headers (request and response) are not JSON, but a sequence of space-separated values.
 All messages sent by cf-agent and the promise module are single line JSON-data, except:
 
-* Headers (both from cf-agent and promise module) are not JSON.
-* JSON responses sent from promise module may optionally be preceeded by log messages, as explained below.
+- Headers (both from cf-agent and promise module) are not JSON.
+- JSON responses sent from promise module may optionally be preceeded by log messages, as explained below.
 
 Within strings in the JSON data, newline characters must be escaped (`\n`).
 This is not strictly required by the JSON spec, but most implementations do this anyway.
@@ -405,18 +405,14 @@ You can also include log messages in the JSON data:
 {
   "operation": "evaluate_promise",
   "promiser": "/opt/cfengine/masterfiles",
-  "attributes": {
-    "repo": "https://github.com/cfengine/masterfiles"
-  },
+  "attributes": { "repo": "https://github.com/cfengine/masterfiles" },
   "log": [
     {
       "level": "info",
       "message": "Cloning 'https://github.com/cfengine/masterfiles' -> '/opt/cfengine/masterfiles'..."
     }
   ],
-  "result_classes": [
-    "masterfiles_cloned"
-  ],
+  "result_classes": ["masterfiles_cloned"],
   "result": "repaired"
 }
 ```
@@ -448,10 +444,7 @@ The attributes from the above example would be sent like this:
 ```json
 {
   "policy": "present",
-  "members": {
-    "include": ["alice", "bob"],
-    "exclude": ["malcom"]
-  }
+  "members": { "include": ["alice", "bob"], "exclude": ["malcom"] }
 }
 ```
 
@@ -537,7 +530,7 @@ This enables the agent to filter the log messages based on log level, and also p
 
 See these tutorials / blog posts, for more examples or inspiration:
 
-* [Introducing CFEngine Custom Promise types - Installation and usage](https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/)
-* [How to implement CFEngine Custom Promise types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
-* [How to implement CFEngine Custom Promise types in Bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
-* [Custom Promise outcomes in Mission Portal](https://cfengine.com/blog/2021/custom-promise-outcomes-in-mission-portal/)
+- [Introducing CFEngine Custom Promise types - Installation and usage](https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/)
+- [How to implement CFEngine Custom Promise types in Python](https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/)
+- [How to implement CFEngine Custom Promise types in Bash](https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/)
+- [Custom Promise outcomes in Mission Portal](https://cfengine.com/blog/2021/custom-promise-outcomes-in-mission-portal/)

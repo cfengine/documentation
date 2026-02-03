@@ -2,14 +2,15 @@
 layout: default
 title: Debugging Mission Portal
 sorting: 90
+aliases:
+  - "/web-ui-debugging-mission-portal.html"
 ---
 
 1.  Set the API log level to DEBUG in Mission Portal settings.
 
 2.  Edit `/var/cfengine/share/GUI/index.php` and set `ENVIRONMENT` to `development`
 
-    ```php
-    [file=/var/cfengine/share/GUI/index.php]
+    ```php {file="/var/cfengine/share/GUI/index.php"}
     define('ENVIRONMENT', 'development');
     ```
 
@@ -39,6 +40,7 @@ sorting: 90
     LD_LIBRARY_PATH=/var/cfengine/lib:$LD_LIBRARY_PATH /var/cfengine/httpd/bin/apachectl restart
     ```
 
-5. Watch the logs:
-* `/var/cfengine/httpd/logs/error_log`
-* `/var/cfengine/httpd/htdocs/application/logs/log-$(date +%Y-%m-%d).php`
+5.  Watch the logs:
+
+- `/var/cfengine/httpd/logs/error_log`
+- `/var/cfengine/httpd/htdocs/application/logs/log-$(date +%Y-%m-%d).php`

@@ -2,6 +2,8 @@
 layout: default
 title: promises.cf
 sorting: 10
+aliases:
+  - "/reference-masterfiles-policy-framework-promises.html"
 ---
 
 `$(sys.inputdir)/promises.cf` is the default policy run by the agent. It is
@@ -10,4 +12,4 @@ part of the policy and the order in which to run bundles.
 
 ## Policy
 
-[%CFEngine_library_include(promises)%]
+{{< CFEngine_library_include(promises) >}}

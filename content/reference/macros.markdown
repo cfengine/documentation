@@ -3,6 +3,8 @@ layout: default
 title: Macros
 categories: [Reference, Macros]
 alias: reference-macros.html
+aliases:
+  - "/reference-macros.html"
 ---
 
 Macros allow you to target different versions of the CFEngine binaries / parser.
@@ -21,14 +23,14 @@ This applies to all version macros.
 
 ### Minimum version
 
-The contained policy is only included if the version is greater than or equal to  the specified version.
+The contained policy is only included if the version is greater than or equal to the specified version.
 
 ```cf3
 bundle agent extractor
 {
 @if minimum_version(3.8)
 # the function `new_function_3_8()` was introduced in 3.8
-vars: "container" data => new_function_3_8(...);
+vars: "container" data => new_function_3_8();
 @endif
 }
 ```
@@ -37,7 +39,7 @@ vars: "container" data => new_function_3_8(...);
 
 ### Maximum version
 
-The contained policy is only included if the version is lower than or equal to  the specified version.
+The contained policy is only included if the version is lower than or equal to the specified version.
 
 **Example:**
 
@@ -47,7 +49,7 @@ bundle agent extractor
 @if maximum_version(3.15)
   # This policy will only be parsed on versions 3.15 and earlier
   vars:
-    "container" data => old_function_3_15(...);
+    "container" data => old_function_3_15();
 @endif
 }
 ```
@@ -68,7 +70,7 @@ bundle agent extractor
 @if at_version(3.15)
   # This policy will only be parsed on 3.15 clients
   vars:
-    "container" data => old_function_3_15(...);
+    "container" data => old_function_3_15();
 @endif
 }
 ```
@@ -89,7 +91,7 @@ bundle agent extractor
 @if between_versions(3.12, 3.15)
   # Policy specific to 3.12, 3.13, 3.14, 3.15
   vars:
-    "container" data => workaround_3_12_3_15(...);
+    "container" data => workaround_3_12_3_15();
 @endif
 }
 ```
@@ -111,7 +113,7 @@ bundle agent extractor
   # Policy to work around issue which was fixed in 3.15
   vars:
     "container"
-      data => workaround_pre_3_15(...);
+      data => workaround_pre_3_15();
 @endif
 }
 ```
@@ -133,7 +135,7 @@ bundle agent extractor
   # This policy is only parsed on 3.16+
   vars:
     "container"
-      data => not_neded_on_3_15(...);
+      data => not_neded_on_3_15();
 @endif
 }
 ```
@@ -157,12 +159,12 @@ bundle agent extractor
   # Implementation for 3.16+
   vars:
     "container"
-      data => classfiltercsv(...);
+      data => classfiltercsv();
 @else
   # Implementation for versions before 3.16
   vars:
     "container"
-      data => readcsv(...);
+      data => readcsv();
 @endif
 }
 ```
@@ -180,7 +182,7 @@ bundle agent extractor
 {
   @if feature(xml)
 # the yaml library may not be compiled in
-  vars: "container" data => parseyaml(...);
+  vars: "container" data => parseyaml();
   @endif
 }
 ```
@@ -192,12 +194,12 @@ possibly incompatible versions.
 
 Currently available features are:
 
-* `xml`
-* `yaml`
-* `curl`
-* `pam`
+- `xml`
+- `yaml`
+- `curl`
+- `pam`
 
 **History:**
 
-* This macro was introduced in CFEngine 3.8.0
-* `pam` feature was introduced in CFEngine 3.26.0
+- This macro was introduced in CFEngine 3.8.0
+- `pam` feature was introduced in CFEngine 3.26.0

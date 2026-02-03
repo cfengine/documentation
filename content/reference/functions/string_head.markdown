@@ -1,23 +1,25 @@
 ---
 layout: default
 title: string_head
+aliases:
+  - "/reference-functions-string_head.html"
 ---
 
-[%CFEngine_function_prototype(data, max)%]
+{{< CFEngine_function_prototype(data, max) >}}
 
 **Description:** Returns the first `max` bytes of `data`.
 
 If `max` is negative, then everything but the last `max` bytes is returned.
 
-[%CFEngine_function_attributes(data, max)%]
+{{< CFEngine_function_attributes(data, max) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(string_head.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(string_head.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(string_head.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(string_head.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** Introduced in CFEngine 3.6
 

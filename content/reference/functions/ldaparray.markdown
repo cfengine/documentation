@@ -1,11 +1,13 @@
 ---
 layout: default
 title: ldaparray
+aliases:
+  - "/reference-functions-ldaparray.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-[%CFEngine_function_prototype(array, uri, dn, filter, scope, security)%]
+{{< CFEngine_function_prototype(array, uri, dn, filter, scope, security) >}}
 
 **Description:** Fills `array` with the entire LDAP record, and returns
 whether there was a match for the search.
@@ -14,7 +16,7 @@ This function retrieves an entire record with all elements and populates
 an associative array with the entries. It returns a class that is true
 if there was a match for the search, and false if nothing was retrieved.
 
-[%CFEngine_function_attributes(array, uri, dn, filter, scope, security)%]
+{{< CFEngine_function_attributes(array, uri, dn, filter, scope, security) >}}
 
 `dn` specifies the distinguished name, an ldap formatted name built from
 components, e.g. "dc=cfengine,dc=com". `filter` is an ldap search, e.g.
@@ -23,7 +25,7 @@ server capabilities.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 classes:
 
    "gotdata" expression => ldaparray(

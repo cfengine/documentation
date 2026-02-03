@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Reset password API
+aliases:
+  - "/api-enterprise-api-ref-reset-password.html"
 ---
 
 ## Request reset password link and token
@@ -31,11 +33,10 @@ Reset password email successfully sent.
 
 **Responses:**
 
-| HTTP response code       | Description                                                   |
-|--------------------------|---------------------------------------------------------------|
-| 200 OK                   | Check your email for the link to reset your password.         |
-| 422 Unprocessable Entity | We are unable to reset the password at this time.             |
-
+| HTTP response code       | Description                                           |
+| ------------------------ | ----------------------------------------------------- |
+| 200 OK                   | Check your email for the link to reset your password. |
+| 422 Unprocessable Entity | We are unable to reset the password at this time.     |
 
 ## Reset password by token
 
@@ -65,11 +66,10 @@ Reset password email successfully sent.
 **Responses:**
 
 | HTTP response code       | Description                                                     |
-|--------------------------|-----------------------------------------------------------------|
+| ------------------------ | --------------------------------------------------------------- |
 | 200 OK                   | Password successfully changed.                                  |
 | 422 Unprocessable Entity | Password validation error or the request cannot be processed.   |
 | 429 Too Many Requests    | We have detected multiple unsuccessful reset password attempts. |
-
 
 ## Invalidate reset password token
 
@@ -97,6 +97,6 @@ Reset password token successfully invalidated.
 **Responses:**
 
 | HTTP response code       | Description                                    |
-|--------------------------|------------------------------------------------|
+| ------------------------ | ---------------------------------------------- |
 | 202 Accepted             | Reset password token successfully invalidated. |
 | 422 Unprocessable Entity | Unable to process request.                     |

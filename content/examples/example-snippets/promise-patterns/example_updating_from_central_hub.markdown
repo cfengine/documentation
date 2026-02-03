@@ -3,13 +3,15 @@ layout: default
 title: Updating from a central policy server
 reviewed: 2013-06-09
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_updating_from_central_hub.html"
 ---
 
 This is a conceptual example without any test policy associated with it.
 
 The default policy shipped with CFEngine contains a centralized updating of policy that
 covers more subtleties than this example, and handles fault tolerance. Here is the main
-idea behind it. For simplicity, we assume that all hosts are on network 10.20.30.* and that
+idea behind it. For simplicity, we assume that all hosts are on network 10.20.30.\* and that
 the central policy server is 10.20.30.123.
 
 ```cf3
@@ -50,7 +52,7 @@ trustkeysfrom         => { "127.0.0.1" , "10.20.30.0/24" };
 }
 ```
 
-Since we assume that all hosts are on network 10.20.30.* they will be granted access. In the default policy this is set to `$(sys.policy_hub)/16`, i.e. all hosts in the same class B network as the hub will gain access. You will need to modify the access control list in `body server control` if you have clients outside of the policy server's class B network.
+Since we assume that all hosts are on network 10.20.30.\* they will be granted access. In the default policy this is set to `$(sys.policy_hub)/16`, i.e. all hosts in the same class B network as the hub will gain access. You will need to modify the access control list in `body server control` if you have clients outside of the policy server's class B network.
 
 Granting access to files and folders needs to be done using `access` type promises in a `server` bundle, for example, `bundle server my_access_rules()`:
 

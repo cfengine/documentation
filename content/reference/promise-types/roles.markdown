@@ -1,6 +1,8 @@
 ---
 layout: default
 title: roles
+aliases:
+  - "/reference-promise-types-roles.html"
 ---
 
 Roles promises are server-side decisions about which users are allowed
@@ -10,7 +12,7 @@ of `cf-agent`. This implements a form of Role Based Access Control
 must be attached to trusted public keys in order to be accepted. The
 regular expression is [anchored][anchored], meaning it must match the entire name.
 
-```cf3
+```cf3 {skip TODO}
 roles:
   "regex"
      authorize => { "usernames", ... };
@@ -30,12 +32,14 @@ bundle server my_access_rules()
 ```
 
 In this example user `mark` is granted permission to remotely activate
-classes matching the regular expression `Myclass_.*` hen using the
+classes matching the regular expression `Myclass_.*` when using the
 `cf-runagent` to activate CFEngine.
 
-****
+---
 
 ## Attributes
+
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### authorize
 
@@ -53,7 +57,7 @@ already trusted on the system.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 roles:
   ".*" authorize => { "mark", "marks_friend" };
 ```

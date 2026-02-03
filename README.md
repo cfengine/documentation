@@ -169,33 +169,19 @@ To the markdown parser, it doesn't matter how you wrap your sentences, a complet
 
 ### Tools and automatic formatting
 
-**prettier**
+We use a combination of tools to automatically format the documentation.
+If you want to run them locally, install them:
 
-It is recommended, but not required, to use [`prettier`](https://prettier.io/) to automatically format markdown files.
-This replaces some cases where two characters would produce the same output, and prefers the less ambiguous one, i.e. `-` instead of `*` for bulleted lists, `_` instead of `*` for italics.
-It also eliminates some common inconsistencies, such as trailing whitespace, too many / too few consecutive newline characters, etc.
-It doesn't help you with everything, for example, the one sentence per line style mentioned above is not something `prettier`
-does automatically, so you'd still have to do that manually.
-Formatting with `prettier` is currently not enforced, but recommended, especially if you are creating new files.
-
-**markdowner.py**
-
-We have a Python script and GitHub Action to automatically fix some common markdown mistakes.
-This is intentionally not very strict, it only fixes very specific things, such as:
-
-- Trims trailing whitespace at the end of lines
-- Replace some utf-8 symbols which have an ascii lookalike
-- Ensures exactly 1 newline before the end of the file
-- De-indents code blocks where everything inside the code block is indented
-
-When someone makes one of these "mistakes" it is highlighted in the Pull Request by the GitHub Action.
-If you want to run this script locally and have it fix these things for you, you can:
-
-```bash
-find . -name '*.markdown' -type f -exec python3 .github/workflows/markdowner.py {} all \;
+```
+pipx install cfengine black
+npm install --global prettier
 ```
 
-In many cases, you can also configure your editor to help you with these things.
+And run the command:
+
+```
+cfengine dev format-docs
+```
 
 ## Documentation structure
 
@@ -325,7 +311,7 @@ The documentation generator will pre-process the markdown content
 before passing it to Hugo for the rendering. The pre-processor
 understands and replaces the macros. Macros all have the form
 
-`[%CFEngine_MACRO(parameters)%]`
+`{{< CFEngine_MACRO(parameters) >}}`
 
 and need to be used as a separate line, as the entire line will be
 replaced by the pre-processor.
@@ -346,11 +332,11 @@ are skipped.
 The generator searches for `filename` in the `core/examples`
 subdirectory of WKRDIR.
 
-- `[%CFEngine_include_example(filename)%]`
+- `{{< CFEngine_include_example(filename) >}}`
 
 Injects the code from `filename`.
 
-- `[%CFEngine_include_snippet(filename, begin_rx, end_rx [optional])%]`
+- `{{< CFEngine_include_snippet(filename, begin_rx, end_rx [optional]) >}}`
 
 Searches `filename` for the first line that matches the regular
 expression `begin_rx`, and injects all lines as a code block from
@@ -360,7 +346,7 @@ omitted, all lines until the end of the file will be injected.
 If the line that matches the regular expression is a comment, then
 it is excluded from the quote, otherwise it is included.
 
-- `[%CFEngine_include_markdown(filename, begin_rx, end_rx [optional])%]`
+- `{{< CFEngine_include_markdown(filename, begin_rx, end_rx [optional]) >}}`
 
 Searches `filename` for the first line that matches the regular
 expression `begin_rx`, and injects all lines **verbatim** from there
@@ -369,7 +355,7 @@ all lines until the end of the file will be injected.
 
 #### Documenting policy libraries
 
-- `[%CFEngine_library_include(filename)%]`
+- `{{< CFEngine_library_include(filename) >}}`
 
 Parses the JSON version of the CFEngine policy in `filename` and generates
 documentation from it.
@@ -411,33 +397,33 @@ The following macros require the syntax map to be generated
 via `cf-promises -s` into a file `syntax_map.json` within the
 `_generated` subdirectory of the documentation generator.
 
-- `[%CFEngine_function_prototype(arg1, arg2, ...)%]`
+- `{{< CFEngine_function_prototype(arg1, arg2, ...) >}}`
 
 Renders the prototype of the function that has the same name as the
 title of the current page. Parameters `arg1` etc are used for the names
 of the parameters:
 
 ```
-    **Prototype:** `title(arg1, arg2, ...)`
+**Prototype:** `title(arg1, arg2, ...)`
 
-    **Return type:** `type`
+**Return type:** `type`
 ```
 
 Use this before a `**Description:**` section in which the behavior of the
 function as well as the individual parameters are then explained.
 
-- `[%CFEngine_function_attributes(arg1, arg2, ...)%]`
+- `{{< CFEngine_function_attributes(arg1, arg2, ...) >}}`
 
 Renders a list of attributes for the function that has the same name as the
 title of the current page. `arg1` etc are used for the parameter names:
 
 ```
-    **Arguments:**
+**Arguments:**
 
-    * `arg1`: `type1`, in the range: `regex`
-    * `arg2`: `type2`, one of
-        * `option1`
-        * `option2`
+* `arg1`: `type1`, in the range: `regex`
+* `arg2`: `type2`, one of
+    * `option1`
+    * `option2`
 ```
 
 Links to known keywords are generated automatically.
@@ -446,7 +432,7 @@ Document the individual parameters either directly in the `**Description:**`
 section, or as a block after using this macro. You cannot use the macro if
 individual options of option-type parameters need detailed explanation.
 
-- `[%CFEngine_promise_attribute(default)%]`
+- `{{< CFEngine_promise_attribute(default) >}}`
 
 Renders the syntax description of the current promise attribute. The current
 markdown needs to comply with the following:
@@ -459,52 +445,52 @@ level 4 header is interpreted to be the body attribute.
 **Example:**
 
 ```
-    ---
-    title: promise_type
-    ---
+---
+title: promise_type
+---
 
-    ## Attributes
+## Attributes
 
-    ### attribute1
+### attribute1
 
-    [%CFEngine_promise_attribute(default)%]
+{{< CFEngine_promise_attribute(default) >}}
 
-    This will document "attribute1" of "promise_type"
+This will document "attribute1" of "promise_type"
 
-    ### body
+### body
 
-    #### attribute1
+#### attribute1
 
-    [%CFEngine_promise_attribute(default)%]
+{{< CFEngine_promise_attribute(default) >}}
 
-    This will document "attribute1" of "body"
+This will document "attribute1" of "body"
 ```
 
 The generated markdown is:
 
 ```
-    **Type:** `type`
+**Type:** `type`
 
-    **Allowed input range:** `range`
+**Allowed input range:** `range`
 
-    * `option1`
-    * `option2`
+* `option1`
+* `option2`
 ```
 
 If a `default` parameter is provided, then a `**Default value:**` statement
 is created.
 
-- `[%CFEngine_function_table()%]`
+- `{{< CFEngine_function_table() >}}`
 
 Renders a table of built-in functions, grouped by function category.
 
-- `[%CFEngine_syntax_map(subtree)%]`
+- `{{< CFEngine_syntax_map(subtree) >}}`
 
 Renders a nested tree of CFEngine words, starting at `subtree`.
 
 #### Other macros
 
-- `[%CFEngine_redirect(target)]`
+- `{{< CFEngine_redirect(target) >}}`
 
 Injects javascript that redirects the current page to the HTML page for `target`,
 which needs to be a title or title#section combination as in regular `[text][title#section]`
@@ -545,16 +531,16 @@ requires a body template, then see next section).
     Longer explanation on what it does and why it is useful,
     over multiple paragraphs if necessary.
 
-    [%CFEngine_promise_attribute(default value)%]
+    {{< CFEngine_promise_attribute(default value) >}}
 
     More information about special input values.
 
     **Example:**
 
     ```f3
-        Some code with
-        cf3 markers
-        for syntax highlighting
+    Some code with
+    cf3 markers
+    for syntax highlighting
     ```
 
     If the example requires explanation, do it here. Consider using
@@ -581,7 +567,7 @@ body type, with the most relevant attributes set to self-explanatory values.
     Longer explanation on what this body template is used for,
     over multiple paragraphs if necessary.
 
-    [%CFEngine_promise_attribute()%]
+    {{< CFEngine_promise_attribute() >}}
 
     **Example:**
 
@@ -603,7 +589,7 @@ runnable code.
 No header necessary - there is one function per page, and the page's
 title is the name of the function.
 
-    [%CFEngine_function_prototype(parameter1, parameters2, ...)%]
+    {{< CFEngine_function_prototype(parameter1, parameters2, ...) >}}
 
     **Description:** Returns something based on `parameter1` and `parameter2`.
 
@@ -614,16 +600,16 @@ title is the name of the function.
 
     Over multiple paragraphs if necessary.
 
-    [%CFEngine_function_attributes(parameter1, parameter2)%]
+    {{< CFEngine_function_attributes(parameter1, parameter2) >}}
 
     Explain important attribute values, correlations and limitations.
 
     **Example:**
 
     ```cf3
-        Some code with
-        cf3 markers
-        for syntax highlighting
+    Some code with
+    cf3 markers
+    for syntax highlighting
     ```
 
     If the example requires explanation, do it here. Consider using

@@ -1,23 +1,25 @@
 ---
 layout: default
 title: storejson
+aliases:
+  - "/reference-functions-storejson.html"
 ---
 
-[%CFEngine_function_prototype(data_container)%]
+{{< CFEngine_function_prototype(data_container) >}}
 
 **Description:** Converts a data container to a JSON string.
 
 [This function can accept many types of data parameters.][Functions#collecting functions]
 
-[%CFEngine_function_attributes(data_container)%]
+{{< CFEngine_function_attributes(data_container) >}}
 
 **Example:**
 
-[%CFEngine_include_example(storejson.cf)%]
+{{< CFEngine_include_example(storejson.cf) >}}
 
 **History:**
 
-* Introduced in CFEngine 3.6.0
-* The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+- Introduced in CFEngine 3.6.0
+- The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
 **See also:** `readjson()`, `readyaml()`, `parsejson()`, `parseyaml()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

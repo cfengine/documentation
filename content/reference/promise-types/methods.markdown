@@ -1,12 +1,14 @@
 ---
 layout: default
 title: methods
+aliases:
+  - "/reference-promise-types-methods.html"
 ---
 
 Methods are compound promises that refer to whole bundles of promises.
 Methods may be parameterized.
 
-```cf3
+```cf3 {skip TODO}
 methods:
 
   "any"
@@ -92,7 +94,7 @@ methods:
 ```
 
 Please note that method names must be either simple strings or slists.
-They can't be array references, for instance.  As a rule, they can
+They can't be array references, for instance. As a rule, they can
 only look like `$(name)` where `name` is either a string or an slist.
 They can't be `"$(a)$(b)"`, `$(a[b])`, and so on.
 
@@ -100,7 +102,7 @@ Here's a full example of how you might encode bundle names and
 parameters in a slist, if you need to pack and unpack method calls in
 a portable (e.g. written in a file) format.
 
-[%CFEngine_include_snippet(unpack_method_calls.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(unpack_method_calls.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
@@ -110,11 +112,11 @@ Output:
 2013-12-11T13:33:31-0500   notice: /run/methods/'call'/unpack/methods/'relay'/call_2: R: call_2: called with parameters p and q
 ```
 
-***
+---
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### inherit
 
@@ -134,16 +136,18 @@ example: `$(bundle.variable)`.
 ```cf3
 bundle agent name
 {
-methods:
+classes:
+  "name_class";
 
+methods:
   "group name" usebundle => my_method,
                  inherit => "true";
 }
 
-
-body edit_defaults example
+bundle agent my_method
 {
-inherit => "true";
+reports:
+  "$(this.bundle) inherited class 'name_class'" if => "name_class";
 }
 ```
 
@@ -162,7 +166,7 @@ Return values are limited to scalars.
 
 **Type:** `string`
 
-**Allowed input range:** `[a-zA-Z0-9_$(){}\[\].:]+
+**Allowed input range:** `[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example:**
 

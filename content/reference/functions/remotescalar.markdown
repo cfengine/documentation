@@ -1,14 +1,16 @@
 ---
 layout: default
 title: remotescalar
+aliases:
+  - "/reference-functions-remotescalar.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-[%CFEngine_function_prototype(id, server, encrypt)%]
+{{< CFEngine_function_prototype(id, server, encrypt) >}}
 
 **Description:** Returns a scalar value identified by `id` from a remote CFEngine
-`server`. Communication is encrytped depending on ```encrypt```.
+`server`. Communication is encrytped depending on `encrypt`.
 
 If the identifier matches a persistent scalar variable then this will be returned
 preferentially. If no such variable is found, then the server will look for a
@@ -26,11 +28,11 @@ needed to resolve the absence of a value can lead to undesirable
 behavior. As a general rule, users are recommended to refrain from
 relying on the availability of network resources.
 
-[%CFEngine_function_attributes(id, server, encrypt)%]
+{{< CFEngine_function_attributes(id, server, encrypt) >}}
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "remote" string => remotescalar("test_scalar","127.0.0.1","yes");

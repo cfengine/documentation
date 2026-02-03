@@ -1,7 +1,10 @@
 ---
 layout: default
 title: Two-factor authentication API
+aliases:
+  - "/api-enterprise-api-ref-two-factor-authentication.html"
 ---
+
 The Two-factor authentication API enables users to add an extra layer of security to their accounts
 by requiring a TOTP (time-based one-time password) in addition to their primary credentials.
 
@@ -47,29 +50,27 @@ HTTP 200 Ok
 
 **Output:**
 
-* **secret**
+- **secret**
   The secret key used to generate the one-time password (OTP)
-* **2faUrl**
+- **2faUrl**
   The URL that can be converted into QR code and scanned with an authenticator app to set up two-factor authentication
-* **algorithm**
+- **algorithm**
   The cryptographic algorithm used to generate the OTP
-* **digits**
+- **digits**
   The number of digits in the generated OTP code
-* **period**
+- **period**
   The time period in seconds for which the OTP code is valid
-* **issuer**
+- **issuer**
   The name of the service that is providing the two-factor authentication
-* **holder**
+- **holder**
   The username for whom the two-factor authentication is being configured
 
 **Responses:**
 
 | HTTP response code        | Description                            |
-|---------------------------|----------------------------------------|
+| ------------------------- | -------------------------------------- |
 | 200 OK                    | 2FA configuration successfully created |
 | 500 Internal server error | Internal server error                  |
-
-
 
 ## Complete two-factor authentication configuration
 
@@ -79,7 +80,7 @@ HTTP 200 Ok
 
 **Parameters:**
 
-* **code** *(string)*
+- **code** _(string)_
   6-digit code from the authentication application
 
 **Example request (curl):**
@@ -101,11 +102,10 @@ HTTP 200 Ok
 **Responses:**
 
 | HTTP response code        | Description                 |
-|---------------------------|-----------------------------|
+| ------------------------- | --------------------------- |
 | 200 OK                    | 2FA successfully configured |
 | 400 Bad request           | 2FA verification failed.    |
 | 500 Internal server error | Internal server error       |
-
 
 ## Disable two-factor authentication for the current user
 
@@ -115,7 +115,7 @@ HTTP 200 Ok
 
 **Headers:**
 
-* **Cf-2FA-Token** *(string)*
+- **Cf-2FA-Token** _(string)_
   6-digit code from the authentication application
 
 **Example request (curl):**
@@ -137,7 +137,7 @@ HTTP 200 Ok
 **Responses:**
 
 | HTTP response code        | Description                            |
-|---------------------------|----------------------------------------|
+| ------------------------- | -------------------------------------- |
 | 200 OK                    | 2FA successfully disabled              |
 | 401 Unauthorized          | Invalid two-factor authentication code |
 | 409 Conflict              | 2FA is not enabled for this user       |
@@ -171,13 +171,11 @@ HTTP 200 Ok
 **Responses:**
 
 | HTTP response code        | Description                            |
-|---------------------------|----------------------------------------|
+| ------------------------- | -------------------------------------- |
 | 200 OK                    | 2FA successfully disabled              |
 | 401 Unauthorized          | Invalid two-factor authentication code |
 | 409 Conflict              | 2FA is not enabled for this user       |
 | 500 Internal server error | Internal server error                  |
-
-
 
 ## Verify two-factor authentication code
 
@@ -191,7 +189,7 @@ verification, you will not need to provide the authorization code from the authe
 
 **Parameters:**
 
-* **code** *(string)*
+- **code** _(string)_
   6-digit code from the authentication application
 
 **Example request (curl):**
@@ -213,11 +211,10 @@ HTTP 200 Ok
 **Responses:**
 
 | HTTP response code        | Description                      |
-|---------------------------|----------------------------------|
+| ------------------------- | -------------------------------- |
 | 200 OK                    | 2FA successfully verified        |
 | 409 Conflict              | 2FA is not enabled for this user |
 | 500 Internal server error | Internal server error            |
-
 
 ## Check if verification is needed
 
@@ -227,7 +224,6 @@ as for the Basic authentication is needed every time.
 **URI:** https://hub.cfengine.com/api/2fa/verification-needed
 
 **Method:** GET
-
 
 **Example request (curl):**
 
@@ -249,7 +245,7 @@ HTTP 200 Ok
 **Responses:**
 
 | HTTP response code        | Description                      |
-|---------------------------|----------------------------------|
+| ------------------------- | -------------------------------- |
 | 200 OK                    | 2FA successfully checked         |
 | 409 Conflict              | 2FA is not enabled for this user |
 | 500 Internal server error | Internal server error            |

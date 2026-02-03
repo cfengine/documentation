@@ -1,9 +1,11 @@
 ---
 layout: default
 title: mergedata
+aliases:
+  - "/reference-functions-mergedata.html"
 ---
 
-[%CFEngine_function_prototype(one, two, etc)%]
+{{< CFEngine_function_prototype(one, two, etc) >}}
 
 **Description:** Returns the merger of any named data containers or lists. Can
 also wrap and unwrap data containers.
@@ -28,29 +30,29 @@ traditional list and array data types in CFEngine.
 - Bare values try to expand a named CFEngine data container
 - It is only possible to wrap data containers in the current namespace.
 - true and false are reserved bare values
-- In the event of key collision the *last* key merged wins
+- In the event of key collision the _last_ key merged wins
 
-[%CFEngine_function_attributes()%]
-
-**Example:**
-
-[%CFEngine_include_snippet(mergedata.cf, #\+begin_src cfengine3, .*end_src)%]
-
-**Output:**
-
-[%CFEngine_include_snippet(mergedata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_function_attributes() >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(mergedata-last-key-wins.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(mergedata.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 **Output:**
 
-[%CFEngine_include_snippet(mergedata-last-key-wins.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(mergedata.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
+
+**Example:**
+
+{{< CFEngine_include_snippet(mergedata-last-key-wins.cf, #\+begin_src cfengine3, .*end_src) >}}
+
+**Output:**
+
+{{< CFEngine_include_snippet(mergedata-last-key-wins.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:**
 
-* Introduced in CFEngine 3.6.0 (2014).
-* The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+- Introduced in CFEngine 3.6.0 (2014).
+- The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
 **See also:** [`data_expand()`][data_expand], `getindices()`, `getvalues()`, `readjson()`, `parsejson()`, `readyaml()`, `parseyaml()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

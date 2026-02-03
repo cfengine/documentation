@@ -1,9 +1,11 @@
 ---
 layout: default
 title: classesmatching
+aliases:
+  - "/reference-functions-classesmatching.html"
 ---
 
-[%CFEngine_function_prototype(name, tag1, tag2, ...)%]
+{{< CFEngine_function_prototype(name, tag1, tag2, ...) >}}
 
 **Description:** Return the list of set classes matching `name` and any tags
 given. Both `name` and tags are regular expressions. `name` is required, tags
@@ -19,16 +21,15 @@ using the [`meta`][Promise types#meta] attribute.
 
 If no classes match `name` and any tags given then an empty list is returned.
 
-[%CFEngine_function_attributes(name, tag1, tag2, ...)%]
+{{< CFEngine_function_attributes(name, tag1, tag2, ...) >}}
 
 **Example:**
 
-
-[%CFEngine_include_snippet(classesmatching.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(classesmatching.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(classesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(classesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** [variablesmatching()][variablesmatching], [bundlesmatching()][bundlesmatching], [classes defined via augments][Augments#classes], [classmatch()][classmatch], [countclassesmatching()][countclassesmatching]
 

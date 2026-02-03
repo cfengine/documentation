@@ -1,17 +1,19 @@
 ---
 layout: default
 title: hostswithgroup
+aliases:
+  - "/reference-functions-hostswithgroup.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-[%CFEngine_function_prototype(group_name, field)%]
+{{< CFEngine_function_prototype(group_name, field) >}}
 
 **Description:** Returns a list from the CFEngine Database with the information `field` of all hosts sharing the group `group_name`.
 
 On CFEngine Enterprise, this hub function can be used to return a list of hostnames, ip-addresses or public key SHAs of hosts that are from the same group. It works very similarly as its twin `hostswithclass()`.
 
-[%CFEngine_function_attributes(group_name, field)%]
+{{< CFEngine_function_attributes(group_name, field) >}}
 
 **Example:**
 

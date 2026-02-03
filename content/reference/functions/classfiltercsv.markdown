@@ -1,9 +1,11 @@
 ---
 layout: default
 title: classfiltercsv
+aliases:
+  - "/reference-functions-classfiltercsv.html"
 ---
 
-[%CFEngine_function_prototype(filename, has_header, class_column, optional_sort_column)%]
+{{< CFEngine_function_prototype(filename, has_header, class_column, optional_sort_column) >}}
 
 **Description:**
 Parses CSV data from an [RFC 4180](http://www.ietf.org/rfc/rfc4180.txt) compliant file `filename` (`CRLF` line endings required), and returns a data variable that is
@@ -16,37 +18,37 @@ given column. Both `class_column` and `optional_sort_column` must be integer
 indices starting from `0`, and must be at most the total amount of columns
 minus `1`.
 
-[%CFEngine_function_attributes(filename, has_header, class_column, optional_sort_column)%]
+{{< CFEngine_function_attributes(filename, has_header, class_column, optional_sort_column) >}}
 
 **Example:**
 
 **Prepare CSV:**
 
-[%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src prep, .*end_src) >}}
 
 **Policy:**
 
-[%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 **Output:**
 
-[%CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(classfiltercsv.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:**
 
-* If the CSV file is stored in a `git` repository the `.gitattributes` file can be used to ensure proper line endings.
+- If the CSV file is stored in a `git` repository the `.gitattributes` file can be used to ensure proper line endings.
 
-   For example:
+  For example:
 
-   ```
-   # .gitattribtues
-   *.csv     text eol=crlf
-   RFC-4180-non-compliant-line-endings.csv eol=lf
-   *.mustache text
-   *.sh       text eol=lf
-   ```
+  ```
+  # .gitattribtues
+  *.csv     text eol=crlf
+  RFC-4180-non-compliant-line-endings.csv eol=lf
+  *.mustache text
+  *.sh       text eol=lf
+  ```
 
-**See also:** [`data_expand()`][data_expand], [`readcsv()`][readcsv], [`classmatch()`][classmatch]
+**See also:** `classfilterdata()`, `data_expand()`, `readcsv()`, `classmatch()`
 
 **History:**
 

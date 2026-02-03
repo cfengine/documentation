@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Backup and restore
+aliases:
+  - "/web-ui-hub_administration-backup-and-restore.html"
 ---
 
 With policy stored in version control there are few things that should be
@@ -41,30 +43,30 @@ restore the history of policy outcomes you must backup and restore.
 **Backup:**
 
 ```command
-pg_dump -Fc cfdb > cfdb.bak
+pg_dump --format=c cfdb > cfdb.bak
 ```
 
 **Restore:**
 
 ```command
-pg_restore -Fc cfdb.bak
+pg_restore --format=c --dbname=cfdb cfdb.bak
 ```
 
 ### Mission Portal
 
- `cfmp` and `cfsettings` store Mission Portals configuration information for
- example shared dashboards.
+`cfmp` and `cfsettings` store Mission Portals configuration information for
+example shared dashboards.
 
 **Backup:**
 
 ```console
-# pg_dump -Fc cfmp > cfmp.bak
-# pg_dump -Fc cfsettings > cfsettings.bak
+# pg_dump --format=c cfmp > cfmp.bak
+# pg_dump --format=c cfsettings > cfsettings.bak
 ```
 
 **Restore:**
 
 ```console
-# pg_restore -Fc cfmp.bak
-# pg_restore -Fc cfsettings.bak
+# pg_restore --format=c --dbname=cfmp cfmp.bak
+# pg_restore --format=c --dbname=cfsettings cfsettings.bak
 ```

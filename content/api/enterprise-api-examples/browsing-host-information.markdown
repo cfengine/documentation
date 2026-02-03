@@ -2,13 +2,14 @@
 layout: default
 title: Browsing host information
 sorting: 50
+aliases:
+  - "/api-enterprise-api-examples-browsing-host-information.html"
 ---
 
 A resource [/api/host][Host REST API#List hosts] is added as an alternative interface for browsing host
 information. For full flexibility we recommend using [SQL][SQL schema]
 reports via [/api/query][Query REST API#Execute SQL query] for this. however, currently vital signs (data
 gathered from `cf-monitord`) is not part of the SQL reports data model.
-
 
 ## Example: Listing hosts with a given context
 
@@ -41,7 +42,7 @@ gathered from `cf-monitord`) is not part of the SQL reports data model.
 
 ## Example: Looking up hosts by hostname
 
-Contexts, also known as classes, are powerful.  You can use them to
+Contexts, also known as classes, are powerful. You can use them to
 categorize hosts according to a rich set of tags. For example, each
 host is automatically tagged with a canonicalized version of its
 hostname and IP-address. So we could lookup the host with hostname
@@ -71,7 +72,6 @@ for presentability).
       ]
     }
 
-
 #### Example: Looking up hosts by IP
 
 Similarly we can lookup the host with hostname
@@ -100,7 +100,6 @@ for presentability).
         }
       ]
     }
-
 
 ## Example: Removing host data
 

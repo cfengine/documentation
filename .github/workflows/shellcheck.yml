@@ -1,15 +1,19 @@
 name: Check all shell scripts
-on: pull_request
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
 
 jobs:
   shellcheck:
     name: Run shellcheck on shell scripts
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v3
-      with:
-        submodules: recursive
-    - name: Install dependencies
-      run: sudo apt-get update -y && sudo apt-get install -y shellcheck
-    - name: Run shellcheck
-      run: make check
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Install dependencies
+        run: sudo apt-get update -y && sudo apt-get install -y shellcheck
+      - name: Run shellcheck
+        run: make check

@@ -2,6 +2,8 @@
 layout: default
 title: How do I pass a data type variable?
 sorting: 90
+aliases:
+  - "/resources-faq-variables.html"
 ---
 
 Data type variables also known as "data containers" are passed using the same

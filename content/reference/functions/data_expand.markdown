@@ -1,9 +1,11 @@
 ---
 layout: default
 title: data_expand
+aliases:
+  - "/reference-functions-data_expand.html"
 ---
 
-[%CFEngine_function_prototype(data_container)%]
+{{< CFEngine_function_prototype(data_container) >}}
 
 **Description:** Transforms a data container to expand all variable references.
 
@@ -19,21 +21,21 @@ expanded.
 This function is chiefly useful if you want to read data from an
 external source and it can contain variable references.
 
-[%CFEngine_function_attributes(data_container)%]
+{{< CFEngine_function_attributes(data_container) >}}
 
 **Example:**
 
 Prepare to run the example policy:
 
-[%CFEngine_include_snippet(data_expand.cf, #\+begin_src prep, .*end_src)%]
+{{< CFEngine_include_snippet(data_expand.cf, #\+begin_src prep, .*end_src) >}}
 
 Policy:
 
-[%CFEngine_include_snippet(data_expand.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(data_expand.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(data_expand.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(data_expand.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** Was introduced in version 3.7.0 (2015). The [collecting functions][Functions#collecting functions] behavior was added in 3.9.
 

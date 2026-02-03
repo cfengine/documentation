@@ -3,6 +3,8 @@ layout: default
 title: Restart a process
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_process_restart.html"
 ---
 
 This is a standalone policy that will restart three CFEngine processes if they are not running.
@@ -12,7 +14,6 @@ body common control
 {
 bundlesequence => { "process_restart" };
 }
-
 
 bundle agent process_restart
 {
@@ -38,7 +39,7 @@ commands:
 }
 ```
 
-Notes: The `canonify` function translates illegal characters to underscores, e.g. `start_cf-monitord` becomes `start_cf_monitord`.  Only alphanumerics and underscores are allowed in CFEngine identifiers (names of variables, classes, bundles, etc.)
+Notes: The `canonify` function translates illegal characters to underscores, e.g. `start_cf-monitord` becomes `start_cf_monitord`. Only alphanumerics and underscores are allowed in CFEngine identifiers (names of variables, classes, bundles, etc.)
 
 This policy can be found in `/var/cfengine/share/doc/examples/unit_process_restart.cf`.
 

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: packages
+aliases:
+  - "/reference-promise-types-packages.html"
 ---
 
 CFEngine 3.7 and later supports package management through a simple promise
@@ -26,7 +28,7 @@ promise will fail.
 It is also possible to specify a package file name, if the package resides on
 the local filesystem, like this:
 
-```cf3
+```cf3 {skip TODO}
 packages:
     "/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm"
       policy => "present",
@@ -43,14 +45,14 @@ string needs to be a bare package name, you cannot use a file name for this.
 <a name=noteable-differences-from-package_modules></a>
 **Noteable differences from `package_method` based implementation:**
 
-* The promiser must be the fully qualified path to a file *or* a *package name*.
+- The promiser must be the fully qualified path to a file _or_ a _package name_.
   `package_modules` do not have the concept of a
   flexible [naming convention][packages (deprecated)#package_name_convention].
 
   For example, here are valid ways to specify a specific package version when
   using the `package_module` based implementation.
 
-  ```cf3
+  ```cf3 {skip TODO}
   packages:
 
     debian::
@@ -71,7 +73,7 @@ string needs to be a bare package name, you cannot use a file name for this.
 
   The following usage is NOT valid.
 
-  ```cf3
+  ```cf3 {skip TODO}
   packages:
 
     debian::
@@ -91,7 +93,7 @@ string needs to be a bare package name, you cannot use a file name for this.
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### architecture
 
@@ -107,14 +109,13 @@ indirectly affect other architectures.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   "apache"
       policy => "present",
       package_module => apt_get,
       architecture => "x86_64";
 ```
-
 
 ### options
 
@@ -132,7 +133,7 @@ for this attribute, its usage depends on the package module in question.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   "apache"
       policy => "present",
@@ -145,12 +146,11 @@ packages:
       options => { "-o", "APT::Install-Recommends=0" };
 ```
 
-
 ### policy
 
 **Description:** Whether the package should be present or absent on the system.
 
-**Default value:** ```present```
+**Default value:** `present`
 
 **Type:** `string`
 
@@ -158,13 +158,12 @@ packages:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   "apache"
       policy => "absent",
       package_module => apt_get;
 ```
-
 
 ### version
 
@@ -179,7 +178,7 @@ ensure the latest available version from a repository is installed.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   "apache"
       policy => "absent",
@@ -191,7 +190,6 @@ packages:
       package_module => apt_get,
       version => "latest";
 ```
-
 
 ### package_module
 
@@ -223,7 +221,6 @@ body package_module apt_get
     default_options => { "use_curl=1" };
 }
 ```
-
 
 #### query_installed_ifelapsed
 
@@ -336,7 +333,7 @@ different attributes (e.g. `default_options`).
 ```cf3
 body package_module yum_all_repos
 {
-    module_path => $(sys.workdir)/modules/packages/yum;
+    module_path => "$(sys.workdir)/modules/packages/yum";
     default_options => { "--enablerepo=*" };
 }
 ```
@@ -346,15 +343,16 @@ body package_module yum_all_repos
 **History:** Introduced in 3.13.0, 3.12.2
 
 ## Package modules out-of-the-box
+
 ### yum
 
-Manage packages using ```yum```. This is the [default package module][lib/packages.cf#package_module_knowledge] for Red Hat, CentOS and Amazon Linux.
+Manage packages using `yum`. This is the [default package module][lib/packages.cf#package_module_knowledge] for Red Hat, CentOS and Amazon Linux.
 
 **Examples:**
 
 File based package source.
 
-```cf3
+```cf3 {skip TODO}
 packages:
   redhat|centos|amazon_linux::
     "/mnt/nfs/packages/httpd-2.2.22.x86_64.rpm"
@@ -363,7 +361,7 @@ packages:
 
 Repository based package source with a specific version of the package.
 
-```cf3
+```cf3 {skip TODO}
 packages:
   redhat|centos|amazon_linux::
     "httpd"
@@ -399,11 +397,11 @@ bundle agent example
 
 **Notes:**
 
-* Supports file path and repository sourced packages.
+- Supports file path and repository sourced packages.
 
-* Requires Python version 2 or 3 to be installed on the host.
+- Requires Python version 2 or 3 to be installed on the host.
 
-* If ```policy => "present"``` *and* ```version``` is set this package module will downgrade the promised package if necessary.
+- If `policy => "present"` _and_ `version` is set this package module will downgrade the promised package if necessary.
 
   ```console
   [root ~]# yum --show-duplicates list screen
@@ -442,18 +440,18 @@ bundle agent example
 
 **History:**
 
-* Added in CFEngine 3.7.0
-* `enablerepo` and `disablerepo` option support added in 3.7.8, 3.10.4, 3.12.0
+- Added in CFEngine 3.7.0
+- `enablerepo` and `disablerepo` option support added in 3.7.8, 3.10.4, 3.12.0
 
 ### apt_get
 
-Manage packages using ```apt-get```.
+Manage packages using `apt-get`.
 
 **Example:**
 
 Example showing file based package source.
 
-```cf3
+```cf3 {skip TODO}
 packages:
     "/mnt/nfs/packages/apache2-2.2.22.x86_64.deb"
       policy => "present",
@@ -462,7 +460,7 @@ packages:
 
 Example showing repository based package source.
 
-```cf3
+```cf3 {skip TODO}
 packages:
     "apache2"
       policy => "present",
@@ -473,14 +471,14 @@ packages:
 
 **Notes:**
 
-* Requires Python version 2 to be installed on the host.
-* Supports [```options```][packages#options] attribute. Each space separate
+- Requires Python version 2 to be installed on the host.
+- Supports [`options`][packages#options] attribute. Each space separate
   option must be added as a separate list element. The options are passed
   directly through to the package manager.
 
 **History:**
 
-* Added in CFEngine 3.7.0
+- Added in CFEngine 3.7.0
 
 ### freebsd_ports
 
@@ -489,7 +487,7 @@ FreeBSD [Ports](https://www.freebsd.org/doc/handbook/ports-using.html).
 
 **History:**
 
-* Added in CFEngine 3.9.0
+- Added in CFEngine 3.9.0
 
 ### nimclient
 
@@ -497,7 +495,7 @@ Manage packages using `nimclient` on AIX.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   aix::
     "expect.base"
@@ -506,16 +504,15 @@ packages:
       options => { "lpp_source=lppaix710304" };
 ```
 
-
 **Notes:**
 
-* [```options```][packages#options] attribute support to specify
-  ```lpp_source```. Please note it is **REQUIRED** to specify an
-  ```lpp_source``` when using this package module.
+- [`options`][packages#options] attribute support to specify
+  `lpp_source`. Please note it is **REQUIRED** to specify an
+  `lpp_source` when using this package module.
 
 **History:**
 
-* Added in CFEngine 3.9.0
+- Added in CFEngine 3.9.0
 
 ### pkg
 
@@ -524,7 +521,7 @@ FreeBSD [pkg](https://www.freebsd.org/doc/handbook/pkgng-intro.html).
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   freebsd::
     "emacs-nox11"
@@ -545,15 +542,15 @@ packages:
 
 **Notes:**
 
-* Supports [```options```][packages#options] attribute.
-  * `option` :: Allows specification of additional options ( `-o` )
-  * `repository` :: Allows specification of repository ( `-r` )
+- Supports [`options`][packages#options] attribute.
+  - `option` :: Allows specification of additional options ( `-o` )
+  - `repository` :: Allows specification of repository ( `-r` )
 
 **History:**
 
-* Added in CFEngine 3.9.0
-* Added `repo` alias for repository option in CFEngine 3.20.0, 3.18.2
-* Added `option` option in CFEngine 3.20.0, 3.18.2
+- Added in CFEngine 3.9.0
+- Added `repo` alias for repository option in CFEngine 3.20.0, 3.18.2
+- Added `option` option in CFEngine 3.20.0, 3.18.2
 
 ### pkgsrc
 
@@ -561,7 +558,7 @@ Manage packages using [pkgsrc](https://www.pkgsrc.org).
 
 **History:**
 
-* Added in CFEngine 3.9.0
+- Added in CFEngine 3.9.0
 
 ### slackpkg
 
@@ -569,7 +566,7 @@ Manage packages using Slackware's [slackpkg](https://slackpkg.org).
 
 **Example**
 
-```cf3
+```cf3 {skip TODO}
 packages:
   slackware::
     "nmap"
@@ -579,7 +576,7 @@ packages:
 
 **History:**
 
-* Added in CFEngine 3.12.0
+- Added in CFEngine 3.12.0
 
 ### msiexec
 
@@ -597,7 +594,7 @@ that version from this particluar MSI is installed):
 
 [Google Chrome]: https://cloud.google.com/chrome-enterprise/browser/download/#chrome-browser-update
 
-```cf3
+```cf3 {skip TODO}
 packages:
   windows::
     "C:\GoogleChromeStandaloneEnterprise.msi"
@@ -611,7 +608,7 @@ packages:
 
 **History:**
 
-* Added in CFEngine 3.12.2 and 3.14.0
+- Added in CFEngine 3.12.2 and 3.14.0
 
 ### snap
 
@@ -649,9 +646,9 @@ bundle agent main
 
 **History:**
 
-* Added in CFEngine 3.15.0, 3.12.3, 3.10.7
+- Added in CFEngine 3.15.0, 3.12.3, 3.10.7
 
 **Notes:**
 
-- version `latest` is *not* supported when promising an absence
-- `list-updates` is *not* implemented, snaps are automatically updated by default
+- version `latest` is _not_ supported when promising an absence
+- `list-updates` is _not_ implemented, snaps are automatically updated by default

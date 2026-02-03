@@ -1,11 +1,13 @@
 ---
 layout: default
 title: storage
+aliases:
+  - "/reference-promise-types-storage.html"
 ---
 
 Storage promises refer to disks and filesystem properties.
 
-```cf3
+```cf3 {skip TODO}
 storage:
 
    "/disk volume or mountpoint"
@@ -13,7 +15,6 @@ storage:
      volume => volume_body,
      ...;
 ```
-
 
 ```cf3
 bundle agent storage
@@ -44,11 +45,11 @@ body mount nfs(server,source)
 }
 ```
 
-***
+---
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### mount
 
@@ -83,22 +84,23 @@ body mount example
 **Type:** (menu option)
 
 **Allowed input range:**
+
 <!--cf-promises --syntax-description=json | jq '.bodyTypes.mount.attributes.mount_type.range|split(",")'-->
 
-* `nfs`
-* `nfs2`
-* `nfs3`
-* `nfs4`
-* `panfs`
-* `cifs`
+- `nfs`
+- `nfs2`
+- `nfs3`
+- `nfs4`
+- `panfs`
+- `cifs`
 
 **Example:**
 
-[%CFEngine_include_example(storage-cifs.cf)%]
+{{< CFEngine_include_example(storage-cifs.cf) >}}
 
 **History:**
 
-* `cifs`, `panfs` added in 3.15.0
+- `cifs`, `panfs` added in 3.15.0
 
 #### mount_source
 
@@ -115,7 +117,7 @@ This is the location on the remote device, server, SAN etc.
 ```cf3
 body mount example
 {
-mount_source "/location/disk/directory";
+  mount_source => "/location/disk/directory";
 }
 ```
 

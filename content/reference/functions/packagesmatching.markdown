@@ -1,9 +1,11 @@
 ---
 layout: default
 title: packagesmatching
+aliases:
+  - "/reference-functions-packagesmatching.html"
 ---
 
-[%CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex)%]
+{{< CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex) >}}
 
 **Description:** Return a data container with the list of installed packages
 matching the parameters.
@@ -16,16 +18,16 @@ this:
 
 ```json
 [
-   {
-      "arch":"default",
-      "method":"dpkg",
-      "name":"zsh-common",
-      "version":"5.0.7-5ubuntu1"
-   }
+  {
+    "arch": "default",
+    "method": "dpkg",
+    "name": "zsh-common",
+    "version": "5.0.7-5ubuntu1"
+  }
 ]
 ```
 
-[%CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex)%]
+{{< CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex) >}}
 
 **IMPORTANT:** The data source used when querying depends on policy configuration.
 When `package_inventory` in `body common control` is configured, CFEngine will record the packages installed and the package updates available for the configured package modules.
@@ -41,34 +43,31 @@ At no time will both the standard and the legacy data be available to these func
 The following code extracts just the package names, then looks for
 some desired packages, and finally reports if they are installed.
 
-
-[%CFEngine_include_example(packagesmatching.cf)%]
+{{< CFEngine_include_example(packagesmatching.cf) >}}
 
 **Refresh rules:**
 
-* installed packages cache used by packagesmatching() is refreshed at the end of each agent run in accordance with constraints defined in the relevant package module body.
-* installed packages cache is refreshed after installing or removing a package.
-* installed packages cache is refreshed if no local cache exists.
+- installed packages cache used by packagesmatching() is refreshed at the end of each agent run in accordance with constraints defined in the relevant package module body.
+- installed packages cache is refreshed after installing or removing a package.
+- installed packages cache is refreshed if no local cache exists.
 
 This means a reliable way to force a refresh of CFEngine's internal package cache is to simply delete the local cache:
 
-```cf3
+```cf3 {skip TODO}
 $(sys.statedir)/packages_installed_<package_module>.lmdb*
 ```
 
 Or in the case of legacy package methods:
 
-```cf3
+```cf3 {skip TODO}
 $(sys.statedir)/software_packages.csv
 ```
 
-
 **History:**
 
-* Introduced in CFEngine 3.6
-* Function started using `package_module` based data sources by default, even if
+- Introduced in CFEngine 3.6
+- Function started using `package_module` based data sources by default, even if
   there is no `package_inventory` attribute defined in `body common control` if
   available in 3.23.0
-
 
 **See also:** `packageupdatesmatching()`, [Package information cache tunables in the MPF][Masterfiles Policy Framework#Configure periodic package inventory refresh interval]

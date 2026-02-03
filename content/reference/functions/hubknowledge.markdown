@@ -1,11 +1,13 @@
 ---
 layout: default
 title: hubknowledge
+aliases:
+  - "/reference-functions-hubknowledge.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-[%CFEngine_function_prototype(id)%]
+{{< CFEngine_function_prototype(id) >}}
 
 **Description:** Read global knowledge from the CFEngine Database host by
 `id`.
@@ -27,12 +29,11 @@ a CFEngine system back to the client machines. The data available through this
 channel are generated automatically by discovery, unlike `remotescalar` which
 accesses user defined data.
 
-
-[%CFEngine_function_attributes(id)%]
+{{< CFEngine_function_attributes(id) >}}
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   guard::

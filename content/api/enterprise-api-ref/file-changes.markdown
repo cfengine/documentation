@@ -1,8 +1,9 @@
 ---
 layout: default
 title: File changes API
+aliases:
+  - "/api-enterprise-api-ref-file-changes.html"
 ---
-
 
 ## File changes statistics
 
@@ -12,10 +13,10 @@ title: File changes API
 
 Get file changes statistics by period.
 
-* **fromTime** *(timestamp)*
-    Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS`
-* **toTime** *(timestamp)*
-    Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS`
+- **fromTime** _(timestamp)_
+  Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS`
+- **toTime** _(timestamp)_
+  Include changes performed within interval. Format: `YYYY-mm-dd HH:MM:SS`
 
 **Example request (curl):**
 
@@ -82,13 +83,13 @@ curl -k --user <username>:<password> \
 
 **Output:**
 
-* **DIFF**
-    Contains object with statistics of a change in content (with file diff), the object's key is change date and object's value is a number of changed files.
-* **C**
-    Contains object with statistics of a change in content (based on file hash), the object's key is change date and object's value is a number of changed files.
-* **S**
-    Contains object with statistics of a change in file stats, the object's key is change date and object's value is a number of changed files.
-* **labels**
-    Labels of `DIFF, C, S ` change types.
-* **dates**
-    The array of selected dates.
+- **DIFF**
+  Contains object with statistics of a change in content (with file diff), the object's key is change date and object's value is a number of changed files.
+- **C**
+  Contains object with statistics of a change in content (based on file hash), the object's key is change date and object's value is a number of changed files.
+- **S**
+  Contains object with statistics of a change in file stats, the object's key is change date and object's value is a number of changed files.
+- **labels**
+  Labels of `DIFF, C, S ` change types.
+- **dates**
+  The array of selected dates.

@@ -2,6 +2,8 @@
 layout: default
 title: Modularity and orchestrating system policy
 sorting: 80
+aliases:
+  - "/resources-additional-topics-modularity.html"
 ---
 
 ## What is modularity?
@@ -440,15 +442,15 @@ where order is important. In re-designing CFEngine, we have taken a pragmatic
 approach to ordering. Essentially, CFEngine takes care of ordering for you for
 most cases - and you can override the order in three ways:
 
- * CFEngine checks promises of the same type in the order in which they are
-   defined, unless overridden
+- CFEngine checks promises of the same type in the order in which they are
+  defined, unless overridden
 
- * Bulk ordering of composite promises (called bundles) is handled using an
-   overall list using the bundlesequence (replaces the actionsequence in
-   previous CFEngines)
+- Bulk ordering of composite promises (called bundles) is handled using an
+  overall list using the bundlesequence (replaces the actionsequence in
+  previous CFEngines)
 
- * Dependency coupling through dynamic classes, may be used to guarantee
-   ordering in the few cases where this is required, as in the example below:
+- Dependency coupling through dynamic classes, may be used to guarantee
+  ordering in the few cases where this is required, as in the example below:
 
 ## Bundle ordering
 
@@ -561,9 +563,9 @@ decentralized approach to coordinating activities across multiple hosts. Some
 tools try to approach this by centralizing data from the network in a single
 location, but this has two problems:
 
- * It leads to a bottleneck by design that throttles performance seriously.
+- It leads to a bottleneck by design that throttles performance seriously.
 
- * It relies on the network being available.
+- It relies on the network being available.
 
 With CFEngine Nova there are are both decentralized network approaches to this
 problem, and probabilistic methods that do not require the network at all.
@@ -608,7 +610,6 @@ files:
    "/etc/passwd"
      create => "true",
     classes => set_outcome_classes;
-
 
 reports:
 
@@ -803,7 +804,6 @@ commands:
      "/bin/shutdown now";
 }
 
-
 #######################################################
 
 bundle server my_access_rules()
@@ -951,7 +951,6 @@ files:
 }
 
 ############################################################
-
 
 bundle server my_access_rules()
 {
@@ -1160,7 +1159,6 @@ reports:
 
 ############################################################
 
-
 bundle server my_access_rules()
 {
 access:
@@ -1175,18 +1173,19 @@ access:
 
 }
 
-
 body printfile visitors_book(file)
 {
 file_to_print   => "$(file)";
 number_of_lines => "10";
 }
 ```
+
 When executed, this produces output only on the final host in the chain, showing
 the correct ordering out operations. The sequence also passes a file from host
 to host as a coordination token, like a baton in a relay race, and each host
 signs this so that the final host has a log of every host involved in the
 cascade.
+
 ```
 R: Singing the overture...
 R: Singing the first adagio...
@@ -1372,7 +1371,6 @@ methods:
         classes => if_repaired("send_the_dragon_back_from_$(satellite)"),
              if => "cue_action_on_$(satellite)";
 
-
 files:
 
   # hub/lair hub signs the book too and schedules the dragon for next satellite
@@ -1415,7 +1413,6 @@ reports:
    " X Switching new dragon's target $(name)";
 }
 
-
 ############################################################
 
 bundle edit_line sign_visitor_book(s)
@@ -1430,7 +1427,6 @@ insert_lines:
 }
 
 ############################################################
-
 
 bundle server my_access_rules()
 {
@@ -1454,9 +1450,11 @@ file_to_print   => "$(file)";
 number_of_lines => "100";
 }
 ```
+
 Let's test it on a single host, equipped with aliases to the see entire flow.
 
 Without the trigger, this simply yields
+
 ```
 R: Done host1
 R: Done host2

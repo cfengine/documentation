@@ -1,6 +1,8 @@
 ---
 layout: default
 title: cfdb
+aliases:
+  - "/api-enterprise-api-ref-sql-schema-cfdb.html"
 ---
 
 CFEngine allows standardized SQL `SELECT` queries to be used with [REST API][Query REST API#Execute SQL query].
@@ -10,23 +12,23 @@ Queries can be used with following database schema.
 curl -k --user admin:admin https://hub.cfengine.com/api/query -X POST -d "{ \"query\": \"SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts WHERE hostname = 'hub'\"}"
 ```
 
-## Table: AgentStatus
+## View: agentstatus
 
 Agent status contains information about last cf-agent execution.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **AgentExecutionInterval** *(integer)*
-    Estimated interval in which cf-agent is being executed, as cf-agent execution interval is expressed in CFEngine context expressions (Min00_05 etc.) it can be not regular, this interval is discovered by analyzing last few cf-agent execution timestamps. Expressed in seconds.
+- **agentexecutioninterval** _(integer)_
+  Estimated interval in which cf-agent is being executed, as cf-agent execution interval is expressed in CFEngine context expressions (Min00_05 etc.) it can be not regular, this interval is discovered by analyzing last few cf-agent execution timestamps. Expressed in seconds.
 
-* **LastAgentLocalExecutionTimeStamp** *(timestamp)*
-    Timestamp of last cf-agent execution on the host.
+- **lastagentlocalexecutiontimestamp** _(timestamp)_
+  Timestamp of last cf-agent execution on the host.
 
-* **LastAgentExecutionStatus** *(`OK`/`FAIL`)*
-    cf-agent execution status. In case cf-agent will not execute within 3x `AgentExecutionInterval` from last execution, status will be set to `FAIL`. Failure may indicate cf-execd issues, or cf-agent crashes.
+- **lastagentexecutionstatus** _(`OK`/`FAIL`)_
+  cf-agent execution status. In case cf-agent will not execute within 3x `AgentExecutionInterval` from last execution, status will be set to `FAIL`. Failure may indicate cf-execd issues, or cf-agent crashes.
 
 **Example query:**
 
@@ -58,29 +60,29 @@ lastagentlocalexecutiontimestamp | 2015-03-11 12:36:51+00
 lastagentexecutionstatus         | OK
 ```
 
-## Table: BenchmarksLog
+## View: benchmarkslog
 
 Data from internal cf-agent monitoring as also [measurements promises][measurements].
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **EventName** *(text)*
-    Name of measured event.
+- **eventname** _(text)_
+  Name of measured event.
 
-* **StandardDeviation** *(numeric)*
-    Dispersion of a set of data from its mean.
+- **standarddeviation** _(numeric)_
+  Dispersion of a set of data from its mean.
 
-* **AverageValue** *(numeric)*
-    Average value.
+- **averagevalue** _(numeric)_
+  Average value.
 
-* **LastValue** *(numeric)*
-    Last measured value.
+- **lastvalue** _(numeric)_
+  Last measured value.
 
-* **CheckTimeStamp** *(timestamp)*
-    Measurement time.
+- **checktimestamp** _(timestamp)_
+  Measurement time.
 
 **Example query:**
 
@@ -120,24 +122,24 @@ lastvalue         | 1.002346
 checktimestamp    | 2015-03-10 14:05:20+00
 ```
 
-## Table: Contexts
+## View: contexts
 
 CFEngine contexts present on hosts at their last reported cf-agent execution.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **ContextName** *(text)*
-    CFEngine [context][Classes and decisions] set by cf-agent.
+- **contextname** _(text)_
+  CFEngine [context][Classes and decisions] set by cf-agent.
 
-* **MetaTags** *(text[])*
-    List of [meta tags][Tags for variables, classes, and bundles] set for the context.
+- **metatags** _(text[])_
+  List of [meta tags][Tags for variables, classes, and bundles] set for the context.
 
-* **ChangeTimeStamp** *(timestamp)*
-    Timestamp since when context is set in its current form.
-    **Note:** If any of the context attributes change, the timestamp will be updated.
+- **changetimestamp** _(timestamp)_
+  Timestamp since when context is set in its current form.
+  **Note:** If any of the context attributes change, the timestamp will be updated.
 
 **Example query:**
 
@@ -169,32 +171,31 @@ metatags        | {inventory,attribute_name=none,source=agent,hardclass}
 changetimestamp | 2015-03-11 09:50:11+00
 ```
 
-## Table: ContextsLog
+## View: contextslog
 
 CFEngine contexts set on hosts by CFEngine over period of time.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **ChangeTimeStamp** *(timestamp)*
-    Timestamp since when context is set in its current form.
-    **Note:** The statement if true till present time or newer entry claims otherwise.
+- **changetimestamp** _(timestamp)_
+  Timestamp since when context is set in its current form.
+  **Note:** The statement if true till present time or newer entry claims otherwise.
 
-* **ChangeOperation** *(`ADD`,`CHANGE`,`REMOVE`,`UNTRACKED`)*
-    CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
-    * `ADD` - stands for introducing a new entry which did not exist before. In this case, new CFEngine context have been introduced.
-    * `CHANGE` - stands for changing value or attribute such as `MetaTags` have changed.
-    * `REMOVE` - Context have not been set.
-    * `UNTRACKED` - CFEngine provides a mechanism for filtering unwanted data from being reported. `UNTRACKED` marker states that information about this context is being filtered and will not report any future information about it.
+- **changeoperation** _(`ADD`,`CHANGE`,`REMOVE`,`UNTRACKED`)_
+  CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
+  - `ADD` - stands for introducing a new entry which did not exist before. In this case, new CFEngine context have been introduced.
+  - `CHANGE` - stands for changing value or attribute such as `MetaTags` have changed.
+  - `REMOVE` - Context have not been set.
+  - `UNTRACKED` - CFEngine provides a mechanism for filtering unwanted data from being reported. `UNTRACKED` marker states that information about this context is being filtered and will not report any future information about it.
 
-* **ContextName** *(text)*
-    CFEngine [context][Classes and decisions] set by cf-agent.
+- **contextname** _(text)_
+  CFEngine [context][Classes and decisions] set by cf-agent.
 
-* **MetaTags** *(text[])*
-    List of [meta tags][Tags for variables, classes, and bundles] set for the context.
-
+- **metatags** _(text[])_
+  List of [meta tags][Tags for variables, classes, and bundles] set for the context.
 
 **Example query:**
 
@@ -230,32 +231,32 @@ contextname     | nova_3_6_5
 metatags        | {inventory,attribute_name=none,source=agent,hardclass}
 ```
 
-## Table: FileChangesLog
+## View: filechangeslog
 
 Log of changes detected to files that are set to be [monitored][files#changes] by cf-agent.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **PromiseHandle** *(text)*
-    A Uniqueue id-tag string for referring promise.
+- **promisehandle** _(text)_
+  A Uniqueue id-tag string for referring promise.
 
-* **FileName** *(text)*
-    Name of the file that have changed.
+- **filename** _(text)_
+  Name of the file that have changed.
 
-* **ChangeTimeStamp** *(timestamp)*
-    Timestamp when CFEngine have detected the change to the file.
+- **changetimestamp** _(timestamp)_
+  Timestamp when CFEngine have detected the change to the file.
 
-* **ChangeType** *(text)*
-    Type of change detected on the monitored file.
-    * DIFF - change in content (with file diff)
-    * S - change in file stats
-    * C - change in content (based on file hash)
+- **changetype** _(text)_
+  Type of change detected on the monitored file.
+  - DIFF - change in content (with file diff)
+  - S - change in file stats
+  - C - change in content (based on file hash)
 
-* **ChangeDetails** *(text[])*
-    Information about changes detected to the file. Such as file stats information, file diff etc.
+- **changedetails** _(text[])_
+  Information about changes detected to the file. Such as file stats information, file diff etc.
 
 **Example query:**
 
@@ -295,32 +296,32 @@ changetype      | S
 changedetails   | {"Modified time: Mon Mar 9 11:37:50 -> Mon Mar 9 11:42:27"}
 ```
 
-## Table: Hosts
+## View: hosts
 
 Hosts table contains basic information about hosts managed by CFEngine.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect
-    data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect
+  data concerning same hosts.
 
-* **HostName** *(text)*
-    Host name locally detected on the host, configurable as `hostIdentifier`
-    option in [Settings API][Status and settings REST API#Get settings] and
-    Mission Portal settings UI.
+- **hostname** _(text)_
+  Host name locally detected on the host, configurable as `hostIdentifier`
+  option in [Settings API][Status and settings REST API#Get settings] and
+  Mission Portal settings UI.
 
-* **IPAddress** *(text)*
-    IP address of the host derived from the lastseen database (this is expected
-    to be the IP address from which connections come from, beware NAT will cause
-    multiple hosts to appear to have the same IP address).
+- **ipaddress** _(text)_
+  IP address of the host derived from the lastseen database (this is expected
+  to be the IP address from which connections come from, beware NAT will cause
+  multiple hosts to appear to have the same IP address).
 
-* **LastReportTimeStamp** *(timestamp)*
-    Timestamp of the most recent successful report collection.
+- **lastreporttimestamp** _(timestamp)_
+  Timestamp of the most recent successful report collection.
 
-* **FirstReportTimeStamp** *(timestamp)*
-    Timestamp when the host reported to the hub for the first time, which
-    indicate when the host was bootstrapped to the hub.
+- **firstreporttimestamp** _(timestamp)_
+  Timestamp when the host reported to the hub for the first time, which
+  indicate when the host was bootstrapped to the hub.
 
 **Example query:**
 
@@ -356,25 +357,25 @@ lastreporttimestamp  | 2015-03-10 14:20:20+00
 firstreporttimestamp | 2015-03-10 13:40:20+00
 ```
 
-## Table: Hosts_not_reported
+## View: hosts_not_reported
 
 Hosts_not_reported table contains information about not reported hosts.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect
-    data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect
+  data concerning same hosts.
 
-* **iscallcollected** *(boolean)*
-    Is host call collected
+- **iscallcollected** _(boolean)_
+  Is host call collected
 
-* **LastReportTimeStamp** *(timestamp)*
-    Timestamp of the most recent successful report collection.
+- **lastreporttimestamp** _(timestamp)_
+  Timestamp of the most recent successful report collection.
 
-* **FirstReportTimeStamp** *(timestamp)*
-    Timestamp when the host reported to the hub for the first time, which
-    indicate when the host was bootstrapped to the hub.
+- **firstreporttimestamp** _(timestamp)_
+  Timestamp when the host reported to the hub for the first time, which
+  indicate when the host was bootstrapped to the hub.
 
 **Example query:**
 
@@ -406,23 +407,23 @@ lastreporttimestamp  | 2015-03-10 14:20:20+00
 firstreporttimestamp | 2015-03-10 13:40:20+00
 ```
 
-## Table: HubConnectionErrors
+## View: hubconnectionerrors
 
 Networking errors encountered by cf-hub during its operation.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique identifier of the host that cf-hub was connecting to.
+- **hostkey** _(text)_
+  Unique identifier of the host that cf-hub was connecting to.
 
-* **CheckTimeStamp** *(timestamp)*
-    Timestamp when the error occurred.
+- **checktimestamp** _(timestamp)_
+  Timestamp when the error occurred.
 
-* **Message** *(text)*
-    Error type / message.
+- **message** _(text)_
+  Error type / message.
 
-* **QueryType** *(text)*
-    Type of query that was intended to be sent by hub during failed connection attempt.
+- **querytype** _(text)_
+  Type of query that was intended to be sent by hub during failed connection attempt.
 
 **Example query:**
 
@@ -454,28 +455,28 @@ message        | ServerAuthenticationError
 querytype      | delta
 ```
 
-## Table: Inventory
+## View: inventory
 
 Inventory data
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique identifier of the host.
+- **hostkey** _(text)_
+  Unique identifier of the host.
 
-* **keyname** *(text)*
-    Name of the key.
+- **keyname** _(text)_
+  Name of the key.
 
-* **type** *(text)*
-    Type of the variable. [List][Variables] of supported variable types.
+- **type** _(text)_
+  Type of the variable. [List][Variables] of supported variable types.
 
-* **metatags** *(text[])*
-    List of [meta tags][Tags for variables, classes, and bundles] set for the variable.
+- **metatags** _(text[])_
+  List of [meta tags][Tags for variables, classes, and bundles] set for the variable.
 
-* **value** *(text)*
-    Variable value serialized to string.
-        * List types such as: `slist`, `ilist`, `rlist` are serialized with CFEngine list format: {'value','value'}.
-        * `Data` type is serialized as JSON string.
+- **value** _(text)_
+  Variable value serialized to string.
+  _ List types such as: `slist`, `ilist`, `rlist` are serialized with CFEngine list format: {'value','value'}.
+  _ `Data` type is serialized as JSON string.
 
 **Example query:**
 
@@ -505,18 +506,17 @@ metatags       | {inventory,source=agent,"attribute_name=Uptime minutes"}
 value          | 4543
 ```
 
-## Table: Inventory_new
+## View: inventory_new
 
 Inventory data grouped by host
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique identifier of the host.
+- **hostkey** _(text)_
+  Unique identifier of the host.
 
-* **values** *(jsonb)*
-    Inventory values presented in JSON format
-
+- **values** _(jsonb)_
+  Inventory values presented in JSON format
 
 **Example query:**
 
@@ -537,7 +537,7 @@ hostkey        | SHA=5rt43...
 values         | {"OS": "ubuntu", "OS type": "linux", "CPU model": "CPU model A10", "Host name": "SHA=aa11bb1", "OS kernel": "14.4.0-53-generic", "Interfaces": "pop, imap", "BIOS vendor": "BIOS vendor", "CFEngine ID": "SHA=aa11bb1", "CPU sockets": "229", "New OS type": "linux", "Architecture": "x86_64"}
 ```
 
-## Table: LastSeenHosts
+## View: lastseenhosts
 
 Information about communication between CFEngine clients. Effectively a snapshot
 of each hosts lastseen database (`cf_lastseen.lmdb`, `cf-key -s`) at the time of
@@ -545,25 +545,25 @@ their last reported `cf-agent` execution.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **LastSeenDirection** *(`INCOMING`/`OUTGOING`)*
-    Direction within which the connection was established.
-    * `INCOMING` - host received incoming connection.
-    * `OUTGOING` - host opened connection to remote host.
+- **lastseendirection** _(`INCOMING`/`OUTGOING`)_
+  Direction within which the connection was established.
+  - `INCOMING` - host received incoming connection.
+  - `OUTGOING` - host opened connection to remote host.
 
-* **RemoteHostKey** *(text)*
-    `HostKey` of the remote host.
+- **remotehostkey** _(text)_
+  `HostKey` of the remote host.
 
-* **RemoteHostIP** *(text)*
-    IP address of the remote host.
+- **remotehostip** _(text)_
+  IP address of the remote host.
 
-* **LastSeenTimeStamp** *(timestamp)*
-    Time when the connection was established.
+- **lastseentimestamp** _(timestamp)_
+  Time when the connection was established.
 
-* **LastSeenInterval** *(real)*
-    Average time period (seconds) between connections for the given `LastSeenDirection` with the host.
+- **lastseeninterval** _(real)_
+  Average time period (seconds) between connections for the given `LastSeenDirection` with the host.
 
 **Example query:**
 
@@ -603,31 +603,31 @@ lastseentimestamp | 2015-03-13 12:20:45+00
 lastseeninterval  | 299
 ```
 
-## Table: LastSeenHostsLogs
+## View: lastseenhostslogs
 
 History of LastSeenHosts table
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **LastSeenDirection** *(`INCOMING`/`OUTGOING`)*
-    Direction within which the connection was established.
-    * `INCOMING` - host received incoming connection.
-    * `OUTGOING` - host opened connection to remote host.
+- **lastseendirection** _(`INCOMING`/`OUTGOING`)_
+  Direction within which the connection was established.
+  - `INCOMING` - host received incoming connection.
+  - `OUTGOING` - host opened connection to remote host.
 
-* **RemoteHostKey** *(text)*
-    `HostKey` of the remote host.
+- **remotehostkey** _(text)_
+  `HostKey` of the remote host.
 
-* **RemoteHostIP** *(text)*
-    IP address of the remote host.
+- **remotehostip** _(text)_
+  IP address of the remote host.
 
-* **LastSeenTimeStamp** *(timestamp)*
-    Time when the connection was established.
+- **lastseentimestamp** _(timestamp)_
+  Time when the connection was established.
 
-* **LastSeenInterval** *(real)*
-    Average time period (seconds) between connections for the given `LastSeenDirection` with the host.
+- **lastseeninterval** _(real)_
+  Average time period (seconds) between connections for the given `LastSeenDirection` with the host.
 
 **Example query:**
 
@@ -667,142 +667,142 @@ lastseentimestamp | 2015-03-13 12:20:45+00
 lastseeninterval  | 299
 ```
 
-## Table: MonitoringHg
+## View: monitoringhg
 
 Stores 1 record for each observable per host.
 
 **Columns:**
 
-* **host** *(text)*
-    Unique host identifier. Referred to in other tables as `HostKey` to connect
-    data concerning same hosts.
+- **host** _(text)_
+  Unique host identifier. Referred to in other tables as `HostKey` to connect
+  data concerning same hosts.
 
-* **id** *(text)*
-    Name of monitored metric. The handle of the measurement promise.
+- **id** _(text)_
+  Name of monitored metric. The handle of the measurement promise.
 
-* **ar1** *(real)*
-    Average across 66 observations.
+- **ar1** _(real)_
+  Average across 66 observations.
 
-## Table: MonitoringMgMeta
-
-Stores 1 record for each observable per host.
-
-**Columns:**
-
-* **id** *(integer)*
-    Unique identifier for host observable.
-
-* **hostkey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect
-    data concerning same hosts.
-
-* **observable** *(text)*
-    Name of monitored metric. The handle of the measurement promise.
-
-* **global** *(boolean)*
-
-* **expected_min** *(real)*
-    Minimum expected value.
-
-* **expected_max** *(real)*
-    Maximum expected value.
-
-* **unit** *(text)*
-    Unit of measurement.
-
-* **description** *(text)*
-    Description of unit of measurement.
-
-* **updatedtimestamp** *(timestamp with time zone)*
-    Time when measurement sampled.
-
-* **lastupdatedsample** *(integer)*
-    Value of most recently collected measurement.
-
-## Table: MonitoringYrMeta
+## View: monitoringmgmeta
 
 Stores 1 record for each observable per host.
 
 **Columns:**
 
-* **id** *(integer)*
-    Unique identifier for host observable.
+- **id** _(integer)_
+  Unique identifier for host observable.
 
-* **hostkey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect
-    data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect
+  data concerning same hosts.
 
-* **observable** *(text)*
-    Name of monitored metric. The handle of the measurement promise.
+- **observable** _(text)_
+  Name of monitored metric. The handle of the measurement promise.
 
-* **global** *(boolean)*
+- **global** _(boolean)_
 
-* **expected_min** *(real)*
-    Minimum expected value.
+- **expected_min** _(real)_
+  Minimum expected value.
 
-* **expected_max** *(real)*
-    Maximum expected value.
+- **expected_max** _(real)_
+  Maximum expected value.
 
-* **unit** *(text)*
-    Unit of measurement.
+- **unit** _(text)_
+  Unit of measurement.
 
-* **description** *(text)*
-    Description of unit of measurement.
+- **description** _(text)_
+  Description of unit of measurement.
 
-* **lastupdatedsample** *(integer)*
-    Value of most recently collected measurement.
+- **updatedtimestamp** _(timestamp with time zone)_
+  Time when measurement sampled.
 
-## Table: PromiseExecutions
+- **lastupdatedsample** _(integer)_
+  Value of most recently collected measurement.
+
+## View: monitoringyrmeta
+
+Stores 1 record for each observable per host.
+
+**Columns:**
+
+- **id** _(integer)_
+  Unique identifier for host observable.
+
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect
+  data concerning same hosts.
+
+- **observable** _(text)_
+  Name of monitored metric. The handle of the measurement promise.
+
+- **global** _(boolean)_
+
+- **expected_min** _(real)_
+  Minimum expected value.
+
+- **expected_max** _(real)_
+  Maximum expected value.
+
+- **unit** _(text)_
+  Unit of measurement.
+
+- **description** _(text)_
+  Description of unit of measurement.
+
+- **lastupdatedsample** _(integer)_
+  Value of most recently collected measurement.
+
+## View: promiseexecutions
 
 Promises executed on hosts during their last reported cf-agent run.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **PolicyFile** *(text)*
-    Path to the file where the promise is located in.
+- **policyfile** _(text)_
+  Path to the file where the promise is located in.
 
-* **ReleaseId** *(text)*
-    Unique identifier of masterfiles version that is executed on the host.
+- **releaseid** _(text)_
+  Unique identifier of masterfiles version that is executed on the host.
 
-* **PromiseHash** *(text)*
-    Unique identifier of a promise. It is a hash of all promise attributes and their values.
+- **promisehash** _(text)_
+  Unique identifier of a promise. It is a hash of all promise attributes and their values.
 
-* **NameSpace** *(text)*
-    [Namespace][Namespaces] within which the promise is executed. If no namespace is set then it is set as: `default`.
+- **namespace** _(text)_
+  [Namespace][Namespaces] within which the promise is executed. If no namespace is set then it is set as: `default`.
 
-* **BundleName** *(text)*
-    [Bundle][Bundles] name where the promise is executed.
+- **bundlename** _(text)_
+  [Bundle][Bundles] name where the promise is executed.
 
-* **PromiseType** *(text)*
-    [Type][Promise types] of the promise.
+- **promisetype** _(text)_
+  [Type][Promise types] of the promise.
 
-* **Promiser** *(text)*
-    Object affected by a promise.
+- **promiser** _(text)_
+  Object affected by a promise.
 
-* **StackPath** *(text)*
-    Call stack of the promise.
+- **stackpath** _(text)_
+  Call stack of the promise.
 
-* **PromiseHandle** *(text)*
-    A unique id-tag string for referring promise.
+- **promisehandle** _(text)_
+  A unique id-tag string for referring promise.
 
-* **PromiseOutcome** *(`KEPT`/`NOTKEPT`/`REPAIRED`)*
-    Promise execution result.
-    * `KEPT` - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.
-    * `REPAIRED` - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.
-    * `NOTKEPT` - CFEngine has failed to converge the system according to the promise specification.
+- **promiseoutcome** _(`KEPT`/`NOTKEPT`/`REPAIRED`)_
+  Promise execution result.
+  - `KEPT` - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.
+  - `REPAIRED` - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.
+  - `NOTKEPT` - CFEngine has failed to converge the system according to the promise specification.
 
-* **LogMessages** *(text[])*
-    List of 5 last messages generated during promise execution. If the promise is `KEPT` the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
+- **logmessages** _(text[])_
+  List of 5 last messages generated during promise execution. If the promise is `KEPT` the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
 
-* **Promisees** *(text[])*
-    List of [promisees][Promises] defined for the promise.
+- **promisees** _(text[])_
+  List of [promisees][Promises] defined for the promise.
 
-* **ChangeTimeStamp** *(timestamp)*
-    Timestamp since when the promise is continuously executed by cf-agent in its current configuration and provides the same output.
-    **Note:** If any of the promise dynamic attributes change, like promise outcome, log messages or the new policy version will be rolled out. This timestamp will be changed.
+- **changetimestamp** _(timestamp)_
+  Timestamp since when the promise is continuously executed by cf-agent in its current configuration and provides the same output.
+  **Note:** If any of the promise dynamic attributes change, like promise outcome, log messages or the new policy version will be rolled out. This timestamp will be changed.
 
 **Example query:**
 
@@ -874,7 +874,7 @@ promisees       | {}
 changetimestamp | 2015-03-12 14:52:36+00
 ```
 
-## Table: PromiseExecutionsLog
+## View: promiseexecutionslog
 
 **This table was deprecated in 3.7.0. It is no longer used.**
 
@@ -882,58 +882,58 @@ Promise status / outcome changes over period of time.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **ChangeTimeStamp** *(timestamp)*
-    Timestamp when the promise state or outcome changed.
-    **Note:** The statement if true till present time or newer entry claims otherwise.
+- **changetimestamp** _(timestamp)_
+  Timestamp when the promise state or outcome changed.
+  **Note:** The statement if true till present time or newer entry claims otherwise.
 
-* **ChangeOperation** *(`ADD`,`CHANGE`,`REMOVE`,`UNTRACKED`)*
-    CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
-    * `ADD` - stands for introducing a new entry which did not exist at last execution. In this case, new promise executed, or the promise was not executed at previous cf-agent run.
-    * `CHANGE` - stands for changing value or attribute such as `PromiseOutcome`, `LogMessages` or `ReleaseId` in case of new policy rollout.
-    * `REMOVE` - Promise was not executed last time, but it was executed previously. This is a common report for promises that have been removed from policy at some point, or they are executed only periodically (like once a hour, day etc.).
-    * `UNTRACKED` - CFEngine provides a mechanism for filtering unwanted data from being reported. `UNTRACKED` marker states that information is being filtered and will not report any future information about it.
+- **changeoperation** _(`ADD`,`CHANGE`,`REMOVE`,`UNTRACKED`)_
+  CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
+  - `ADD` - stands for introducing a new entry which did not exist at last execution. In this case, new promise executed, or the promise was not executed at previous cf-agent run.
+  - `CHANGE` - stands for changing value or attribute such as `PromiseOutcome`, `LogMessages` or `ReleaseId` in case of new policy rollout.
+  - `REMOVE` - Promise was not executed last time, but it was executed previously. This is a common report for promises that have been removed from policy at some point, or they are executed only periodically (like once a hour, day etc.).
+  - `UNTRACKED` - CFEngine provides a mechanism for filtering unwanted data from being reported. `UNTRACKED` marker states that information is being filtered and will not report any future information about it.
 
-* **PolicyFile** *(text)*
-    Path to the file where the promise is located in.
+- **policyfile** _(text)_
+  Path to the file where the promise is located in.
 
-* **ReleaseId** *(text)*
-    Unique identifier of masterfiles version that is executed in the host.
+- **releaseid** _(text)_
+  Unique identifier of masterfiles version that is executed in the host.
 
-* **PromiseHash** *(text)*
-    Unique identifier of a promise. It is a hash of all promise attributes and their values.
+- **promisehash** _(text)_
+  Unique identifier of a promise. It is a hash of all promise attributes and their values.
 
-* **NameSpace** *(text)*
-    [Namespace][Namespaces] within which the promise is executed. If no namespace is set then it is set as: `default`.
+- **namespace** _(text)_
+  [Namespace][Namespaces] within which the promise is executed. If no namespace is set then it is set as: `default`.
 
-* **BundleName** *(text)*
-    [Bundle][Bundles] name where the promise is executed.
+- **bundlename** _(text)_
+  [Bundle][Bundles] name where the promise is executed.
 
-* **PromiseType** *(text)*
-    [Type][Promise types] of the promise.
+- **promisetype** _(text)_
+  [Type][Promise types] of the promise.
 
-* **Promiser** *(text)*
-    Object affected by a promise.
+- **promiser** _(text)_
+  Object affected by a promise.
 
-* **StackPath** *(text)*
-    Call stack of the promise.
+- **stackpath** _(text)_
+  Call stack of the promise.
 
-* **PromiseHandle** *(text)*
-    A unique id-tag string for referring promise.
+- **promisehandle** _(text)_
+  A unique id-tag string for referring promise.
 
-* **PromiseOutcome** *(`KEPT`/`NOTKEPT`/`REPAIRED`)*
-    Promise execution result.
-    * `KEPT` - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.
-    * `REPAIRED` - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.
-    * `NOTKEPT` - CFEngine has failed to converge the system according to the promise specification.
+- **promiseoutcome** _(`KEPT`/`NOTKEPT`/`REPAIRED`)_
+  Promise execution result.
+  - `KEPT` - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.
+  - `REPAIRED` - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.
+  - `NOTKEPT` - CFEngine has failed to converge the system according to the promise specification.
 
-* **LogMessages** *(text[])*
-    List of 5 last messages generated during promise execution. If the promise is `KEPT` the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
+- **logmessages** _(text[])_
+  List of 5 last messages generated during promise execution. If the promise is `KEPT` the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
 
-* **Promisees** *(text[])*
-    List of [promisees][Promises] defined for the promise.
+- **promisees** _(text[])_
+  List of [promisees][Promises] defined for the promise.
 
 **Example query:**
 
@@ -1009,66 +1009,64 @@ logmessages     | {}
 promisees       | {}
 ```
 
-
-
-## Table: PromiseLog
+## View: promiselog
 
 History of promises executed on hosts.
 
 **Columns:**
 
-* **id** *(integer)*
+- **id** _(integer)_
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **ChangeTimeStamp** *(timestamp)*
-    The GMT time on the host when this state was first perceived.
+- **changetimestamp** _(timestamp)_
+  The GMT time on the host when this state was first perceived.
 
-    **Note causes of change:**
-    - A change in the promise signature/hash for example, altering the promise
-      handle, promisees, or moving the promise to a different bundle
-    - A change in the policy releaseId (cf_promises_release_id)
-    - A change in promise outcome
+  **Note causes of change:**
+  - A change in the promise signature/hash for example, altering the promise
+    handle, promisees, or moving the promise to a different bundle
+  - A change in the policy releaseId (cf_promises_release_id)
+  - A change in promise outcome
 
-* **PolicyFile** *(text)*
-    Path to the file where the promise is located in.
+- **policyfile** _(text)_
+  Path to the file where the promise is located in.
 
-* **ReleaseId** *(text)*
-    Unique identifier of masterfiles version that is executed on the host.
+- **releaseid** _(text)_
+  Unique identifier of masterfiles version that is executed on the host.
 
-* **PromiseHash** *(text)*
-    Unique identifier of a promise. It is a hash of all promise attributes and their values.
+- **promisehash** _(text)_
+  Unique identifier of a promise. It is a hash of all promise attributes and their values.
 
-* **NameSpace** *(text)*
-    [Namespace][Namespaces] within which the promise is executed. If no namespace is set then it is set as: `default`.
+- **namespace** _(text)_
+  [Namespace][Namespaces] within which the promise is executed. If no namespace is set then it is set as: `default`.
 
-* **BundleName** *(text)*
-    [Bundle][Bundles] name where the promise is executed.
+- **bundlename** _(text)_
+  [Bundle][Bundles] name where the promise is executed.
 
-* **PromiseType** *(text)*
-    [Type][Promise types] of the promise.
+- **promisetype** _(text)_
+  [Type][Promise types] of the promise.
 
-* **Promiser** *(text)*
-    Object affected by a promise.
+- **promiser** _(text)_
+  Object affected by a promise.
 
-* **StackPath** *(text)*
-    Call stack of the promise.
+- **stackpath** _(text)_
+  Call stack of the promise.
 
-* **PromiseHandle** *(text)*
-    A unique id-tag string for referring promise.
+- **promisehandle** _(text)_
+  A unique id-tag string for referring promise.
 
-* **PromiseOutcome** *(`KEPT`/`NOTKEPT`/`REPAIRED`)*
-    Promise execution result.
-    * `KEPT` - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.
-    * `REPAIRED` - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.
-    * `NOTKEPT` - CFEngine has failed to converge the system according to the promise specification.
+- **promiseoutcome** _(`KEPT`/`NOTKEPT`/`REPAIRED`)_
+  Promise execution result.
+  - `KEPT` - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.
+  - `REPAIRED` - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.
+  - `NOTKEPT` - CFEngine has failed to converge the system according to the promise specification.
 
-* **LogMessages** *(text[])*
-    List of 5 last messages generated during promise execution. If the promise is `KEPT` the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
+- **logmessages** _(text[])_
+  List of 5 last messages generated during promise execution. If the promise is `KEPT` the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
 
-* **Promisees** *(text[])*
-    List of [promisees][Promises] defined for the promise.
+- **promisees** _(text[])_
+  List of [promisees][Promises] defined for the promise.
 
 **Example query:**
 
@@ -1113,27 +1111,27 @@ promisees       | {}
 changetimestamp | 2018-10-02 00:04:52+00
 ```
 
-## Table: Software
+## View: software
 
 Software packages installed (according to local package manager) on the hosts.
 More information about CFEngine and package management can be found [here][packages].
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **SoftwareName** *(text)*
-    Name of installed software package.
+- **softwarename** _(text)_
+  Name of installed software package.
 
-* **SoftwareVersion** *(text)*
-    Software package version.
+- **softwareversion** _(text)_
+  Software package version.
 
-* **SoftwareArchitecture** *(text)*
-    Architecture.
+- **softwarearchitecture** _(text)_
+  Architecture.
 
-* **ChangeTimeStamp** *(timestamp)*
-    Timestamp when the package was discovered / installed on the host.
+- **changetimestamp** _(timestamp)_
+  Timestamp when the package was discovered / installed on the host.
 
 **Example query:**
 
@@ -1169,30 +1167,30 @@ softwarearchitecture | default
 changetimestamp      | 2015-03-12 10:20:18+00
 ```
 
-## Table: SoftwareUpdates
+## View: softwareupdates
 
 Patches available for installed packages on the hosts (as reported by local package manager).
 The most up to date patch will be listed.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **PatchName** *(text)*
-    Name of the software.
+- **patchname** _(text)_
+  Name of the software.
 
-* **PatchVersion** *(text)*
-    Patch version.
+- **patchversion** _(text)_
+  Patch version.
 
-* **PatchArchitecture** *(text)*
-    Architecture of the patch.
+- **patcharchitecture** _(text)_
+  Architecture of the patch.
 
-* **PatchReportType** *(`INSTALLED`/`AVAILABLE`)*
-    Patch status (`INSTALLED` status is specific only to SUSE Linux).
+- **patchreporttype** _(`INSTALLED`/`AVAILABLE`)_
+  Patch status (`INSTALLED` status is specific only to SUSE Linux).
 
-* **ChangeTimeStamp** *(timestamp)*
-    Timestamp when the new patch / version was discovered as available on the host.
+- **changetimestamp** _(timestamp)_
+  Timestamp when the new patch / version was discovered as available on the host.
 
 **Example query:**
 
@@ -1232,32 +1230,33 @@ patchreporttype   | AVAILABLE
 changetimestamp   | 2015-03-12 10:20:18+00
 ```
 
-## Table: SoftwareLog
+## View: softwarelog
+
 Software packages installed / deleted over period of time.
 More information about CFEngine and package management can be found [here][packages].
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **ChangeTimeStamp** *(timestamp)*
-    Timestamp when the package state was discovered on the host.
-    **Note:** The statement if true till present time or newer entry claims otherwise.
+- **changetimestamp** _(timestamp)_
+  Timestamp when the package state was discovered on the host.
+  **Note:** The statement if true till present time or newer entry claims otherwise.
 
-* **ChangeOperation** *(`ADD`,`REMOVE`)*
-    CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
-    * `ADD` - New package have been detected / installed. Package upgrate is considered as installing a new package with a different version.
-    * `REMOVE` - Package have been detected to be removed / uninstalled. During upgrate older version of the package is removed and reported as so.
+- **changeoperation** _(`ADD`,`REMOVE`)_
+  CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
+  - `ADD` - New package have been detected / installed. Package upgrate is considered as installing a new package with a different version.
+  - `REMOVE` - Package have been detected to be removed / uninstalled. During upgrate older version of the package is removed and reported as so.
 
-* **SoftwareName** *(text)*
-    Name of installed software package.
+- **softwarename** _(text)_
+  Name of installed software package.
 
-* **SoftwareVersion** *(text)*
-    Software package version.
+- **softwareversion** _(text)_
+  Software package version.
 
-* **SoftwareArchitecture** *(text)*
-    Architecture.
+- **softwarearchitecture** _(text)_
+  Architecture.
 
 **Example query:**
 
@@ -1297,7 +1296,7 @@ softwareversion      | 1.9.3.484-2ubuntu1.2
 softwarearchitecture | default
 ```
 
-## Table: SoftwareUpdatesLog
+## View: softwareupdateslog
 
 **This table was deprecated in 3.7.0. It is no longer used.**
 
@@ -1305,30 +1304,30 @@ Patches available for installed packages on the hosts (as reported by local pack
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **ChangeTimeStamp** *(timestamp)*
-    Timestamp when the patch state was discovered on the host.
-    **Note:** The statement if true till present time or newer entry claims otherwise.
+- **changetimestamp** _(timestamp)_
+  Timestamp when the patch state was discovered on the host.
+  **Note:** The statement if true till present time or newer entry claims otherwise.
 
-* **ChangeOperation** *(`ADD`,`REMOVE`)*
-    CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
-    * `ADD` - New patch have been detected. This is a common in case of release of new patch version or new package was installed that have an upgrate available.
-    * `REMOVE` - Patch is not longer available. Patch may be replaced with newer version, or installed package have been upgrated.
+- **changeoperation** _(`ADD`,`REMOVE`)_
+  CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
+  - `ADD` - New patch have been detected. This is a common in case of release of new patch version or new package was installed that have an upgrate available.
+  - `REMOVE` - Patch is not longer available. Patch may be replaced with newer version, or installed package have been upgrated.
     **Note:** CFEngine reports only the most up to date version available.
 
-* **PatchName** *(text)*
-    Name of the software.
+- **patchname** _(text)_
+  Name of the software.
 
-* **PatchVersion** *(text)*
-    Patch version.
+- **patchversion** _(text)_
+  Patch version.
 
-* **PatchArchitecture** *(text)*
-    Architecture of the patch.
+- **patcharchitecture** _(text)_
+  Architecture of the patch.
 
-* **PatchReportType** *(`INSTALLED`/`AVAILABLE`)*
-    Patch status (`INSTALLED` status is specific only to SUSE Linux).
+- **patchreporttype** _(`INSTALLED`/`AVAILABLE`)_
+  Patch status (`INSTALLED` status is specific only to SUSE Linux).
 
 **Example query:**
 
@@ -1372,35 +1371,35 @@ patcharchitecture | default
 patchreporttype   | AVAILABLE
 ```
 
-## Table: Status
+## View: status
 
 Statuses of report collection. cf-hub records all collection attempts and whether they are FAILEDC or CONSUMED. CONSUMED means next one will be delta. FAILEDC means next one will be REBASE.
 
 **Columns:**
 
-* **host** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **host** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **ts** *(timestamp)*
-    Timestamp of last data provided by client during report collection. This is used by delta queries to request a start time.
+- **ts** _(timestamp)_
+  Timestamp of last data provided by client during report collection. This is used by delta queries to request a start time.
 
-* **status** *(`FAILEDC`,`CONSUMED`)*
-    CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
-    * `FAILEDC` - New patch have been detected. This is a common in case of release of new patch version or new package was installed that have an upgrate available.
-    * `CONSUMED` - Patch is not longer available. Patch may be replaced with newer version, or installed package have been upgrated.
+- **status** _(`FAILEDC`,`CONSUMED`)_
+  CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
+  - `FAILEDC` - New patch have been detected. This is a common in case of release of new patch version or new package was installed that have an upgrate available.
+  - `CONSUMED` - Patch is not longer available. Patch may be replaced with newer version, or installed package have been upgrated.
     **Note:** CFEngine reports only the most up to date version available.
 
-* **lstatus** *(text)*
-    Deprecated
+- **lstatus** _(text)_
+  Deprecated
 
-* **type** *(text)*
-    Deprecated
+- **type** _(text)_
+  Deprecated
 
-* **who** *(integer)*
-    Deprecated
+- **who** _(integer)_
+  Deprecated
 
-* **whr** *integer*
-    Deprecated
+- **whr** _integer_
+  Deprecated
 
 **Example query:**
 
@@ -1444,39 +1443,38 @@ patcharchitecture | default
 patchreporttype   | AVAILABLE
 ```
 
-
-## Table: Variables
+## View: variables
 
 Variables and their values set on hosts at their last reported cf-agent execution.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **NameSpace** *(text)*
-    [Namespace][Namespaces] within which the variable is set. If no namespace is set then it is set as: `default`.
+- **namespace** _(text)_
+  [Namespace][Namespaces] within which the variable is set. If no namespace is set then it is set as: `default`.
 
-* **Bundle** *(text)*
-    [Bundle][Bundles] name where the variable is set.
+- **bundle** _(text)_
+  [Bundle][Bundles] name where the variable is set.
 
-* **VariableName** *(text)*
-    Name of the variable.
+- **variablename** _(text)_
+  Name of the variable.
 
-* **VariableValue** *(text)*
-    Variable value serialized to string.
-    * List types such as: `slist`, `ilist`, `rlist` are serialized with CFEngine list format: {'value','value'}.
-    * `Data` type is serialized as JSON string.
+- **variablevalue** _(text)_
+  Variable value serialized to string.
+  - List types such as: `slist`, `ilist`, `rlist` are serialized with CFEngine list format: {'value','value'}.
+  - `Data` type is serialized as JSON string.
 
-* **VariableType** *(text)*
-    Type of the variable. [List][Variables] of supported variable types.
+- **variabletype** _(text)_
+  Type of the variable. [List][Variables] of supported variable types.
 
-* **MetaTags** *(text[])*
-    List of [meta tags][Tags for variables, classes, and bundles] set for the variable.
+- **metatags** _(text[])_
+  List of [meta tags][Tags for variables, classes, and bundles] set for the variable.
 
-* **ChangeTimeStamp** *(timestamp)*
-    Timestamp since when variable is set in its current form.
-    **Note:** If any of variable attributes change such as its `VariableValue` or `Bundle`, the timestamp will be updated.
+- **changetimestamp** _(timestamp)_
+  Timestamp since when variable is set in its current form.
+  **Note:** If any of variable attributes change such as its `VariableValue` or `Bundle`, the timestamp will be updated.
 
 **Example query:**
 
@@ -1524,28 +1522,28 @@ metatags        | {source=promise,report}
 changetimestamp | 2015-03-11 14:27:12+00
 ```
 
-## Table: Variables_dictionary
+## Table: variables_dictionary
 
 Inventory attributes, these data are using in [List of inventory attributes API][Inventory API#List of inventory attributes]
 
 **Columns:**
 
-* **Id** *(integer)*
-    Auto incremental ID
-* **Attribute_name** *(text)*
-    Attribute name
-* **Category** *(text)* *(`Hardware`,`Software`,`Network`, `Security`, `User defined`)*
-    Attribute category
-* **Readonly** *(integer)* *(`0`,`1`)*
-    Is attribute readonly
-* **Type** *(text)*
-    Type of the attribute. [List][Variables] of supported variable types.
-* **convert_function** *(text)*
-    Convert function. Emp.: `cf_clearSlist` - to transform string like `{"1", "2"}` to `1, 2`
-* **keyname** *(text)*
-    Key name
-* **Enabled** *(integer)* *(`0`,`1`)*
-    Is attribute enabled for the API
+- **id** _(integer)_
+  Auto incremental ID
+- **attribute_name** _(text)_
+  Attribute name
+- **category** _(text)_ _(`Hardware`,`Software`,`Network`, `Security`, `User defined`)_
+  Attribute category
+- **readonly** _(integer)_ _(`0`,`1`)_
+  Is attribute readonly
+- **type** _(text)_
+  Type of the attribute. [List][Variables] of supported variable types.
+- **convert_function** _(text)_
+  Convert function. Emp.: `cf_clearSlist` - to transform string like `{"1", "2"}` to `1, 2`
+- **keyname** _(text)_
+  Key name
+- **enabled** _(integer)_ _(`0`,`1`)_
+  Is attribute enabled for the API
 
 **Example query:**
 
@@ -1578,45 +1576,45 @@ convert_function| cf_clearSlist
 enabled         | 1
 ```
 
-## Table: VariablesLog
+## View: variableslog
 
 CFEngine variables set on hosts by CFEngine over period of time.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **ChangeTimeStamp** *(timestamp)*
-    Timestamp since when variable is set in its current form.
-    **Note:** The statement if true till present time or newer entry claims otherwise.
+- **changetimestamp** _(timestamp)_
+  Timestamp since when variable is set in its current form.
+  **Note:** The statement if true till present time or newer entry claims otherwise.
 
-* **ChangeOperation** *(`ADD`,`CHANGE`,`REMOVE`,`UNTRACKED`)*
-    CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
-    * `ADD` - stands for introducing a new entry which did not exist before. In this case, new CFEngine variable have been introduced.
-    * `CHANGE` - stands for changing value or attribute such as `VariableValue` or `MetaTags` have changed.
-    * `REMOVE` - Variable have not been set.
-    * `UNTRACKED` - CFEngine provides a mechanism for filtering unwanted data from being reported. `UNTRACKED` marker states that information is being filtered and will not report any future information about it.
+- **changeoperation** _(`ADD`,`CHANGE`,`REMOVE`,`UNTRACKED`)_
+  CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
+  - `ADD` - stands for introducing a new entry which did not exist before. In this case, new CFEngine variable have been introduced.
+  - `CHANGE` - stands for changing value or attribute such as `VariableValue` or `MetaTags` have changed.
+  - `REMOVE` - Variable have not been set.
+  - `UNTRACKED` - CFEngine provides a mechanism for filtering unwanted data from being reported. `UNTRACKED` marker states that information is being filtered and will not report any future information about it.
 
-* **NameSpace** *(text)*
-    [Namespace][Namespaces] within which the variable is set. If no namespace is set then it is set as: `default`.
+- **namespace** _(text)_
+  [Namespace][Namespaces] within which the variable is set. If no namespace is set then it is set as: `default`.
 
-* **Bundle** *(text)*
-    [Bundle][Bundles] name where the variable is set.
+- **bundle** _(text)_
+  [Bundle][Bundles] name where the variable is set.
 
-* **VariableName** *(text)*
-    Name of the variable.
+- **variablename** _(text)_
+  Name of the variable.
 
-* **VariableValue** *(text)*
-    Variable value serialized to string.
-    * List types such as: `slist`, `ilist`, `rlist` are serialized with CFEngine list format: {'value','value'}.
-    * `Data` type is serialized as JSON string.
+- **variablevalue** _(text)_
+  Variable value serialized to string.
+  - List types such as: `slist`, `ilist`, `rlist` are serialized with CFEngine list format: {'value','value'}.
+  - `Data` type is serialized as JSON string.
 
-* **VariableType** *(text)*
-    Type of the variable. [List][Variables] of supported variable types.
+- **variabletype** _(text)_
+  Type of the variable. [List][Variables] of supported variable types.
 
-* **MetaTags** *(text[])*
-    List of [meta tags][Tags for variables, classes, and bundles] set for the variable.
+- **metatags** _(text[])_
+  List of [meta tags][Tags for variables, classes, and bundles] set for the variable.
 
 **Example query:**
 
@@ -1667,25 +1665,26 @@ variablevalue   | 67.01
 variabletype    | string
 metatags        | {monitoring,source=environment}
 ```
-## Table: v_hosts
+
+## View: v_hosts
 
 V_hosts table contains information about hosts.
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect
-    data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect
+  data concerning same hosts.
 
-* **iscallcollected** *(boolean)*
-    Is host call collected
+- **iscallcollected** _(boolean)_
+  Is host call collected
 
-* **LastReportTimeStamp** *(timestamp)*
-    Timestamp of the most recent successful report collection.
+- **lastreporttimestamp** _(timestamp)_
+  Timestamp of the most recent successful report collection.
 
-* **FirstReportTimeStamp** *(timestamp)*
-    Timestamp when the host reported to the hub for the first time, which
-    indicate when the host was bootstrapped to the hub.
+- **firstreporttimestamp** _(timestamp)_
+  Timestamp when the host reported to the hub for the first time, which
+  indicate when the host was bootstrapped to the hub.
 
 **Example query:**
 
@@ -1717,33 +1716,33 @@ lastreporttimestamp  | 2015-03-10 14:20:20+00
 firstreporttimestamp | 2015-03-10 13:40:20+00
 ```
 
-## Table: vm_hosts
+## View: vm_hosts
 
 vm_hosts table contains basic information about hosts managed by CFEngine.
 In this table data are cached what gives a better query performance
 
 **Columns:**
 
-* **HostKey** *(text)*
-    Unique host identifier. All tables can be joined by `HostKey` to connect
-    data concerning same hosts.
+- **hostkey** _(text)_
+  Unique host identifier. All tables can be joined by `HostKey` to connect
+  data concerning same hosts.
 
-* **HostName** *(text)*
-    Host name locally detected on the host, configurable as `hostIdentifier`
-    option in [Settings API][Status and settings REST API#Get settings] and
-    Mission Portal settings UI.
+- **hostname** _(text)_
+  Host name locally detected on the host, configurable as `hostIdentifier`
+  option in [Settings API][Status and settings REST API#Get settings] and
+  Mission Portal settings UI.
 
-* **IPAddress** *(text)*
-    IP address of the host derived from the lastseen database (this is expected
-    to be the IP address from which connections come from, beware NAT will cause
-    multiple hosts to appear to have the same IP address).
+- **ipaddress** _(text)_
+  IP address of the host derived from the lastseen database (this is expected
+  to be the IP address from which connections come from, beware NAT will cause
+  multiple hosts to appear to have the same IP address).
 
-* **LastReportTimeStamp** *(timestamp)*
-    Timestamp of the most recent successful report collection.
+- **lastreporttimestamp** _(timestamp)_
+  Timestamp of the most recent successful report collection.
 
-* **FirstReportTimeStamp** *(timestamp)*
-    Timestamp when the host reported to the hub for the first time, which
-    indicate when the host was bootstrapped to the hub.
+- **firstreporttimestamp** _(timestamp)_
+  Timestamp when the host reported to the hub for the first time, which
+  indicate when the host was bootstrapped to the hub.
 
 **Example query:**
 

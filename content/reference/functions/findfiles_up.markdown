@@ -1,9 +1,11 @@
 ---
 layout: default
 title: findfiles_up
+aliases:
+  - "/reference-functions-findfiles_up.html"
 ---
 
-[%CFEngine_function_prototype(path, glob, level)%]
+{{< CFEngine_function_prototype(path, glob, level) >}}
 
 **Description:** Return a data array of files that match a given glob pattern
 by searching up the directory tree.
@@ -19,27 +21,27 @@ and last file or directory found respectively.
 Note that glob patterns are not regular expressions. They match like Unix
 shells:
 
-* `*` matches any filename or directory at one level, e.g. `*.cf` will
-match all files in one directory that end in `.cf` but it won't search
-across directories. `*/*.cf` on the other hand will look two levels
-deep.
-* `**` recursively matches up to six subdirectories.
-* `?` matches a single letter.
-* `[abc]` matches `a`, `b` or `c`.
-* `[!abc]` matches any letters other than `a`, `b` or `c`.
-* `[a-z]` matches any letter from `a` to `z`.
-* `[!a-z]` matches any letter not from `a` to `z`.
-* `{foo,bar}` matches `foo` or `bar`.
+- `*` matches any filename or directory at one level, e.g. `*.cf` will
+  match all files in one directory that end in `.cf` but it won't search
+  across directories. `*/*.cf` on the other hand will look two levels
+  deep.
+- `**` recursively matches up to six subdirectories.
+- `?` matches a single letter.
+- `[abc]` matches `a`, `b` or `c`.
+- `[!abc]` matches any letters other than `a`, `b` or `c`.
+- `[a-z]` matches any letter from `a` to `z`.
+- `[!a-z]` matches any letter not from `a` to `z`.
+- `{foo,bar}` matches `foo` or `bar`.
 
-[%CFEngine_function_attributes(path, glob, level)%]
+{{< CFEngine_function_attributes(path, glob, level) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(findfiles_up.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(findfiles_up.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(findfiles_up.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(findfiles_up.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:**
 

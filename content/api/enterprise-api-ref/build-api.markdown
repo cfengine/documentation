@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Build API
+aliases:
+  - "/api-enterprise-api-ref-build-api.html"
 ---
 
 The Build API enables you to easily manage policy projects and their respective CFEngine Build modules.
@@ -17,25 +19,25 @@ A project is a set of CFEngine Build modules and custom files/json/policy files.
 
 **Parameters:**
 
-* **repositoryUrl** *(string)*
+- **repositoryUrl** _(string)_
   Git repository URL. Project will be synchronized with this repository. Supported protocols: `http`, `https`, `ssh`
   , `git`. Required. Git repository URL example: https://github.com/username/repository.git
 
-* **branch** *(string)*
+- **branch** _(string)_
   Repository branch. Required.
-* **name** *(string)*
+- **name** _(string)_
   Project name. Required.
-* **authenticationType** *(string)*
+- **authenticationType** _(string)_
   Authentication type that will be used to get access to the repository. Allowed values: `password`, `private_key`.
   Required.
-* **username** *(string)*
+- **username** _(string)_
   Username for authentication to the repository. Required when authentication type is `password`.
-* **password** *(string)*
+- **password** _(string)_
   Password for authentication to the repository. Required when authentication type is `password`.
-* **sshPrivateKey** *(string)*
+- **sshPrivateKey** _(string)_
   SSH private key for authentication to the repository. Required when authentication type is `private_key` and `sshKeyId` is
   not set.
-* **sshKeyId** *(integer)*
+- **sshKeyId** _(integer)_
   Generated SSH private key ID by [SSH keys API][SSH keys API#Generate SSH key] for authentication to the repository.
   Required when authentication type is `private_key` and `sshPrivateKey` is not set.
 
@@ -75,7 +77,7 @@ HTTP 200 Ok
 **Responses:**
 
 | HTTP response code        | Description                  |
-|---------------------------|------------------------------|
+| ------------------------- | ---------------------------- |
 | 200 OK                    | Project successfully created |
 | 422 Unprocessable entity  | Validation error occurred    |
 | 500 Internal server error | Internal server error        |
@@ -107,7 +109,7 @@ HTTP 200 Ok
 **Responses:**
 
 | HTTP response code        | Description                  |
-|---------------------------|------------------------------|
+| ------------------------- | ---------------------------- |
 | 200 OK                    | Project successfully created |
 | 500 Internal server error | Internal server error        |
 
@@ -122,29 +124,29 @@ file system and any un-pushed/un-deployed(terminology in Mission Portal UI) chan
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Project's ID. Required.
 
-* **repositoryUrl** *(string)*
+- **repositoryUrl** _(string)_
   Git repository URL. Project will be synchronized with this repository. Supported protocols: `http`, `https`, `ssh`
   , `git`. Required. Git repository URL example: https://github.com/username/repository.git
 
-* **branch** *(string)*
+- **branch** _(string)_
   Repository branch.
 
-* **name** *(string)*
+- **name** _(string)_
   Project name.
 
-* **authenticationType** *(string)*
+- **authenticationType** _(string)_
   Authentication type that will be used to get access to the repository. Allowed values: `password`, `private_key`.
-* **username** *(string)*
+- **username** _(string)_
   Username for authentication to the repository. Required when authentication type is `password`.
-* **password** *(string)*
+- **password** _(string)_
   Password for authentication to the repository. Required when authentication type is `password`.
-* **sshPrivateKey** *(string)*
+- **sshPrivateKey** _(string)_
   SSH private key for authentication to the repository. Required when authentication type is `private_key` and `sshKeyId`
   is not set.
-* **sshKeyId** *(integer)*
+- **sshKeyId** _(integer)_
   Generated SSH private key ID by [SSH keys API][SSH keys API#Generate SSH key] for authentication to the repository.
   Required when authentication type is `private_key` and `sshPrivateKey` is not set.
 
@@ -173,7 +175,7 @@ HTTP 200 OK
 **Responses:**
 
 | HTTP response code        | Description                  |
-|---------------------------|------------------------------|
+| ------------------------- | ---------------------------- |
 | 204 No content            | Project successfully updated |
 | 404 Not found             | Project not found            |
 | 422 Unprocessable entity  | Validation error occurred    |
@@ -187,7 +189,7 @@ HTTP 200 OK
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Project's ID. Required.
 
 **Example request (curl):**
@@ -223,7 +225,7 @@ HTTP 200 OK
 **Responses:**
 
 | HTTP response code        | Description           |
-|---------------------------|-----------------------|
+| ------------------------- | --------------------- |
 | 200 Ok                    | Successful response   |
 | 404 Not found             | Project not found     |
 | 500 Internal server error | Internal server error |
@@ -236,9 +238,9 @@ HTTP 200 OK
 
 **Parameters:**
 
-* **skip** *(integer)*
+- **skip** _(integer)_
   Number of results to skip for the processed query. The Mission Portal uses this for pagination. Optional parameter.
-* **limit**  *(integer)*
+- **limit** _(integer)_
   Limit the number of results in the query. Optional parameter.
 
 **Example request (curl):**
@@ -294,7 +296,7 @@ HTTP 200 OK
 **Responses:**
 
 | HTTP response code        | Description           |
-|---------------------------|-----------------------|
+| ------------------------- | --------------------- |
 | 200 Ok                    | Successful response   |
 | 404 Not found             | Project not found     |
 | 500 Internal server error | Internal server error |
@@ -307,7 +309,7 @@ HTTP 200 OK
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Project's ID. Required.
 
 **Example request (curl):**
@@ -327,7 +329,7 @@ HTTP 204 No content
 **Responses:**
 
 | HTTP response code        | Description                  |
-|---------------------------|------------------------------|
+| ------------------------- | ---------------------------- |
 | 204 No content            | Project successfully deleted |
 | 404 Not found             | Project not found            |
 | 500 Internal server error | Internal server error        |
@@ -340,9 +342,9 @@ HTTP 204 No content
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Project's ID. Required.
-* **action** *(string)*
+- **action** _(string)_
   Action. Allowed actions:
   - `push` - pushes local changes to the upstream repository
   - `rebase` - rebases local changes from the upstream
@@ -370,12 +372,12 @@ HTTP 204 No content
 **Responses:**
 
 | HTTP response code        | Description                 |
-|---------------------------|-----------------------------|
+| ------------------------- | --------------------------- |
 | 204 No content            | Project successfully synced |
 | 404 Not found             | Project not found           |
 | 500 Internal server error | Internal server error       |
 
-###  Refresh project
+### Refresh project
 
 Fetch upstream repository and return the current state.
 
@@ -385,7 +387,7 @@ Fetch upstream repository and return the current state.
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Project's ID. Required.
 
 **Example request (curl):**
@@ -407,9 +409,10 @@ HTTP 200 OK
     ]
 }
 ```
+
 **Output:**
 
-* **status**
+- **status**
   Project's status. Possible values:
   - `ok` - project is up-to-date
   - `behind` - there are changes in upstream which are not pulled
@@ -419,7 +422,7 @@ HTTP 200 OK
 **Responses:**
 
 | HTTP response code        | Description           |
-|---------------------------|-----------------------|
+| ------------------------- | --------------------- |
 | 200 Ok                    | Successful response   |
 | 404 Not found             | Project not found     |
 | 500 Internal server error | Internal server error |
@@ -432,7 +435,7 @@ HTTP 200 OK
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Project's ID. Required.
 
 **Example request (curl):**
@@ -493,7 +496,7 @@ HTTP 200 OK
 **Responses:**
 
 | HTTP response code        | Description           |
-|---------------------------|-----------------------|
+| ------------------------- | --------------------- |
 | 200 Ok                    | Successful response   |
 | 404 Not found             | Project not found     |
 | 500 Internal server error | Internal server error |
@@ -506,11 +509,11 @@ HTTP 200 OK
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Project's ID. Required.
-* **module** *(string)*
+- **module** _(string)_
   Module's name. Required.
-* **version** *(string)*
+- **version** _(string)_
   Module's version. Required.
 
 **Example request (curl):**
@@ -535,7 +538,7 @@ HTTP 201 Created
 **Responses:**
 
 | HTTP response code        | Description               |
-|---------------------------|---------------------------|
+| ------------------------- | ------------------------- |
 | 201 Created               | Module successfully added |
 | 404 Not found             | Project not found         |
 | 422 Unprocessable entity  | Validation error occurred |
@@ -549,9 +552,9 @@ HTTP 201 Created
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Project's ID. Required.
-* **module** *(string)*
+- **module** _(string)_
   Module's name. Required.
 
 **Example request (curl):**
@@ -571,7 +574,7 @@ HTTP 204 No content
 **Responses:**
 
 | HTTP response code        | Description                              |
-|---------------------------|------------------------------------------|
+| ------------------------- | ---------------------------------------- |
 | 204 No content            | Module successfully deleted from project |
 | 404 Not found             | Project not found                        |
 | 500 Internal server error | Internal server error                    |
@@ -584,11 +587,11 @@ HTTP 204 No content
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Project's ID. Required.
-* **module** *(string)*
+- **module** _(string)_
   Module's name. Required.
-* **version** *(string)*
+- **version** _(string)_
   Module's version. Required.
 
 **Example request (curl):**
@@ -613,7 +616,7 @@ HTTP No content
 **Responses:**
 
 | HTTP response code        | Description                 |
-|---------------------------|-----------------------------|
+| ------------------------- | --------------------------- |
 | 204 No content            | Module successfully updated |
 | 404 Not found             | Project not found           |
 | 422 Unprocessable entity  | Validation error occurred   |
@@ -627,17 +630,17 @@ HTTP No content
 
 **Parameters:**
 
-* **sortColumn** *(string)*
+- **sortColumn** _(string)_
   Column name on which to sort results. Default value: `name`. Optional parameter.
-* **sortDescending** *(boolean)*
+- **sortDescending** _(boolean)_
   Sorting order. Optional parameter. Default value: `false`. Optional parameter.
-* **searchQuery** *(string)*
+- **searchQuery** _(string)_
   Search query for a full-text search based on modules name and description. Optional parameter.
-* **tag** *(string)*
+- **tag** _(string)_
   Filter modules by tag. Optional parameter.
-* **skip** *(integer)*
+- **skip** _(integer)_
   Number of results to skip for the processed query. The Mission Portal uses this for pagination. Optional parameter.
-* **limit**  *(integer)*
+- **limit** _(integer)_
   Limit the number of results in the query. Optional parameter.
 
 **Example request (curl):**
@@ -699,7 +702,7 @@ HTTP 200 OK
 **Responses:**
 
 | HTTP response code        | Description           |
-|---------------------------|-----------------------|
+| ------------------------- | --------------------- |
 | 200 Ok                    | Successful response   |
 | 500 Internal server error | Internal server error |
 
@@ -728,7 +731,7 @@ curl --user <username>:<password> \
 **Responses:**
 
 | HTTP response code        | Description                       |
-|---------------------------|-----------------------------------|
+| ------------------------- | --------------------------------- |
 | 204 No content            | Modules list successfully updated |
 | 500 Internal server error | Internal server error             |
 
@@ -740,7 +743,7 @@ curl --user <username>:<password> \
 
 **Parameters:**
 
-* **name** *(string)*
+- **name** _(string)_
   Module name. Default value: `name`. Required.
 
 **Example request (curl):**
@@ -791,7 +794,7 @@ HTTP 200 OK
 **Responses:**
 
 | HTTP response code        | Description           |
-|---------------------------|-----------------------|
+| ------------------------- | --------------------- |
 | 200 Ok                    | Successful response   |
 | 404 Not found             | Module not found      |
 | 500 Internal server error | Internal server error |
@@ -805,9 +808,9 @@ HTTP 200 OK
 **Parameters:**
 sortColumn searchQuery tag
 
-* **name** *(string)*
+- **name** _(string)_
   Module name. Required.
-* **version** *(string)*
+- **version** _(string)_
   Module version. Required.
 
 **Example request (curl):**
@@ -858,11 +861,10 @@ HTTP 200 OK
 **Responses:**
 
 | HTTP response code        | Description           |
-|---------------------------|-----------------------|
+| ------------------------- | --------------------- |
 | 200 Ok                    | Successful response   |
 | 404 Not found             | Module not found      |
 | 500 Internal server error | Internal server error |
-
 
 ### Get CFEngine Build module input data
 
@@ -872,9 +874,9 @@ HTTP 200 OK
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Project's ID. Required.
-* **name** *(string)*
+- **name** _(string)_
   Module name. Required.
 
 **Example request (curl):**
@@ -927,7 +929,7 @@ HTTP 200 OK
 
 **Output:**
 
-* **input_spec** *(JSON array of objects)*
+- **input_spec** _(JSON array of objects)_
   Input specification represented as an JSON array of objects.
   Each object specifies one input entry for the module.
   To discover more information about these fields,
@@ -936,11 +938,10 @@ HTTP 200 OK
 **Responses:**
 
 | HTTP response code        | Description                 |
-|---------------------------|-----------------------------|
+| ------------------------- | --------------------------- |
 | 200 Ok                    | Successful response         |
 | 404 Not found             | Project or module not found |
 | 500 Internal server error | Internal server error       |
-
 
 ### Set CFEngine Build module input data
 
@@ -950,21 +951,22 @@ HTTP 200 OK
 
 **Parameters:**
 
-* **id** *(integer)*
+- **id** _(integer)_
   Project's ID. Required.
-* **name** *(string)*
+- **name** _(string)_
   Module name. Required.
 
 **Request body:**
 
-  Request body should contain input specification from the [Get input data request][Build API#Get CFEngine Build module input data]
-  where each object should have a `response` property with the data.
+Request body should contain input specification from the [Get input data request][Build API#Get CFEngine Build module input data]
+where each object should have a `response` property with the data.
 
-  **response** might be:
-  * an JSON array of objects, in case of list input type with string subtypes.
+**response** might be:
+
+- an JSON array of objects, in case of list input type with string subtypes.
   An object should be a key-value pair where a key is from input specification
   and value should be a string.
-  * string, in case of string input type
+- string, in case of string input type
 
 **Example request (curl):**
 
@@ -1018,7 +1020,7 @@ HTTP 200 OK
 **Responses:**
 
 | HTTP response code        | Description                 |
-|---------------------------|-----------------------------|
+| ------------------------- | --------------------------- |
 | 200 Ok                    | Successful response         |
 | 404 Not found             | Project or module not found |
 | 500 Internal server error | Internal server error       |

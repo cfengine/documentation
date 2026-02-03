@@ -2,6 +2,8 @@
 layout: default
 title: How CFEngine works
 sorting: 2
+aliases:
+  - "/overview-how-cfengine-works.html"
 ---
 
 CFEngine is a fully distributed system that allows you to define desired states
@@ -44,13 +46,13 @@ customers, all data is also stored in a local database. CFEngine also stores a
 large number of asset information like software installed, CPU, memory, disk,
 network activity, etc. As for execution results, CFEngine can have 3 states:
 
-* **Promise Kept**: Actual state was equal to Desired State
+- **Promise Kept**: Actual state was equal to Desired State
 
-* **Promise Repaired**: Actual state was not equal to Desired State, but the
-agent was able to repair the state into compliance
+- **Promise Repaired**: Actual state was not equal to Desired State, but the
+  agent was able to repair the state into compliance
 
-* **Promise not Kept**: Actual state was not equal to Desired state and the
-agent was not able to restore into compliance
+- **Promise not Kept**: Actual state was not equal to Desired state and the
+  agent was not able to restore into compliance
 
 <!--Promises you cannot keep are no better than lies!
 https://www.youtube.com/watch?v=Zd9-wdGzedU -->
@@ -88,7 +90,7 @@ long run.
 
 ### The Mission plan
 
-At CFEngine, we refer to the management of your datacentre as *The Mission*. The
+At CFEngine, we refer to the management of your datacentre as _The Mission_. The
 diagram below shows the main steps in preparing mission control. Some training
 is recommended, and as much planning as you can manage in advance. Once a
 mission is underway, you should expect to work by making small corrections to
@@ -135,7 +137,7 @@ in a team that embraces its methods. The CFEngine team will become the enabler
 of business agility, security, reliability and standardization.
 
 The CFEngine team needs to have administrator or super-user access to systems,
-and it needs the *headroom* or *slack* to think strategically. It needs to build
+and it needs the _headroom_ or _slack_ to think strategically. It needs to build
 up processes and workflows that address quality assurance and minimize the risk
 of change.
 
@@ -183,7 +185,7 @@ these commitments in terms of CFEngine promises.
 
 The four mission phases are sometimes referred to as
 
-* Build
+- Build
 
   A mission is based on decisions and resources that need to be put assembled or
   `built` before they can be applied. This is the planning phase.
@@ -193,33 +195,33 @@ The four mission phases are sometimes referred to as
   promises, the system will function seamlessly as planned. This is how it works
   in a human organization, and this is how is works for computers too.
 
-* Deploy
+- Deploy
 
-    Deploying really means launching the policy into production. In CFEngine you
-    simply publish your policy (in CFEngine parlance these are `promise
-    proposals`) and the machines see the new proposals and can adjust
-    accordingly. Each machine runs an agent that is capable of keeping the
-    system on course and maintaining it over time without further assistance.
+  Deploying really means launching the policy into production. In CFEngine you
+  simply publish your policy (in CFEngine parlance these are `promise proposals`)
+  and the machines see the new proposals and can adjust
+  accordingly. Each machine runs an agent that is capable of keeping the
+  system on course and maintaining it over time without further assistance.
 
-* Manage
+- Manage
 
-    Once a decision is made, unplanned events will occur. Such incidents
-    traditionally set off alarms and humans rush to make new transactions to
-    repair them. Under CFEngine guidance, the autonomous agent manages the
-    system, and humans only manage knowledge and have to deal with rare events
-    that cannot be dealt with automatically.
+  Once a decision is made, unplanned events will occur. Such incidents
+  traditionally set off alarms and humans rush to make new transactions to
+  repair them. Under CFEngine guidance, the autonomous agent manages the
+  system, and humans only manage knowledge and have to deal with rare events
+  that cannot be dealt with automatically.
 
-* Audit
+- Audit
 
-    CFEngine performs continuous analysis and correction, and commercial
-    editions generate explicit reports on mission status. Users can sit back and
-    examine these reports to check mission progress, or examine the current
-    state in relation to the knowledge map for the mission.
+  CFEngine performs continuous analysis and correction, and commercial
+  editions generate explicit reports on mission status. Users can sit back and
+  examine these reports to check mission progress, or examine the current
+  state in relation to the knowledge map for the mission.
 
 [Contact CFEngine](https://cfengine.com/contact)
 
-
 ## CFEngine architecture and design
+
 CFEngine operates autonomously in a network, under your guidance. While
 CFEngine supports anything from 1 servers to 100,000+ servers, the essence of
 any CFEngine deployment is the same.
@@ -323,7 +325,7 @@ transaction systems, one tries to push out changes one-by-one, hence
 `deploying` the decision. In CFEngine you simply publish your policy (in
 CFEngine parlance these are "promise proposals") and the machines see the new
 proposals and can adjust accordingly. Each machine runs an agent that is
-capable of implementing policies and maintaining them over time without
+capable of implementing policy and maintaining them over time without
 further assistance.
 
 #### Manage

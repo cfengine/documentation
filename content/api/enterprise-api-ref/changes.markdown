@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Changes REST API
+aliases:
+  - "/api-enterprise-api-ref-changes.html"
 ---
 
 **Changes API** allows to track changes performed by CFEngine agent in the infrastructure.
@@ -15,30 +17,30 @@ Count changes performed by CFEngine to the infrastructure. Count can be narrowed
 
 **Note:** In the environments with extensive policy and large number of clients it is recommended to narrow down the results as much as possible to achieve more precise results and faster response times. This can be done by specifying filtering parameters listed below.
 
-* **from** *(integer)*
-    Include changes performed within interval. Starting **from** unix timestamp. If not specified default value is last 24 hours.
-* **to** *(integer)*
-    Include changes performed within interval. Ending at **to** unix timestamp. If not specified default value is NOW.
-* **include** *(array)*
-    Include only nodes that have set specified context (cfengine class). Defaults to include all nodes.
-* **exclude** *(array)*
-    Exclude only nodes that have set specified context (cfengine class). Defaults to exclude no nodes.
-* **hostkey** *(string)*
-    Search results for nodes matching specified unique hostkey.
-* **stackpath** *(string)*
-    Search results matching specified stack path which is execution stack of the promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **promisetype** *(string)*
-    Search results matching specified promise type - such as *commands*, *processes* etc. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **promisehandle** *(string)*
-    Search results matching specified promise handle. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **bundlename** *(string)*
-    Search results matching specified bundle name. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **policyfile** *(string)*
-    Search results matching specified path for policy file where promise is defined. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **logmessages** *(string)*
-    Search results matching any of the messages logged for the promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **promisees** *(string)*
-    Search results matching any of the promisees specified for promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **from** _(integer)_
+  Include changes performed within interval. Starting **from** unix timestamp. If not specified default value is last 24 hours.
+- **to** _(integer)_
+  Include changes performed within interval. Ending at **to** unix timestamp. If not specified default value is NOW.
+- **include** _(array)_
+  Include only nodes that have set specified context (cfengine class). Defaults to include all nodes.
+- **exclude** _(array)_
+  Exclude only nodes that have set specified context (cfengine class). Defaults to exclude no nodes.
+- **hostkey** _(string)_
+  Search results for nodes matching specified unique hostkey.
+- **stackpath** _(string)_
+  Search results matching specified stack path which is execution stack of the promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **promisetype** _(string)_
+  Search results matching specified promise type - such as _commands_, _processes_ etc. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **promisehandle** _(string)_
+  Search results matching specified promise handle. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **bundlename** _(string)_
+  Search results matching specified bundle name. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **policyfile** _(string)_
+  Search results matching specified path for policy file where promise is defined. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **logmessages** _(string)_
+  Search results matching any of the messages logged for the promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **promisees** _(string)_
+  Search results matching any of the promisees specified for promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
 
 **Example response:**
 
@@ -50,8 +52,8 @@ Count changes performed by CFEngine to the infrastructure. Count can be narrowed
 
 **Output:**
 
-* **count**
-    Total count of changes performed by cf-agent that match specified filtering criteria.
+- **count**
+  Total count of changes performed by cf-agent that match specified filtering criteria.
 
 **Example usage:** `Example: Count changes`
 
@@ -67,36 +69,36 @@ List changes performed by CFEngine to the infrastructure. List can be narrowed d
 
 **Parameters:**
 
-* **from** *(integer)*
-    Include changes performed within interval. Starting **from** unix timestamp. If not specified default value is last 24 hours.
-* **to** *(integer)*
-    Include changes performed within interval. Ending at **to** unix timestamp. If not specified default value is NOW.
-* **include** *(array)*
-    Include only nodes that have set specified context (cfengine class). Defaults to include all nodes.
-* **exclude** *(array)*
-    Exclude only nodes that have set specified context (cfengine class). Defaults to exclude no nodes.
-* **hostkey** *(string)*
-    Search results for nodes matching specified unique hostkey.
-* **stackpath** *(string)*
-    Search results matching specified stack path which is execution stack of the promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **promisetype** *(string)*
-    Search results matching specified promise type - such as *commands*, *processes* etc. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **promisehandle** *(string)*
-    Search results matching specified promise handle. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **bundlename** *(string)*
-    Search results matching specified bundle name. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **policyfile** *(string)*
-    Search results matching specified path for policy file where promise is defined. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **logmessages** *(string)*
-    Search results matching any of the messages logged for the promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **promisees** *(string)*
-    Search results matching any of the promisees specified for promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
-* **sort** *(string)*
-    Sort results by specified direction and attribute. By default sort direction is ascending, to sort as descending add '-' before attribute name. Result can be sorted by all returned fields. If not specified results are not sorted. Examples: *sort=bundlename* - sort ascending by bundlename, *sort=-promisehandle* - sort descending by promise handle.
-* **count** *(integer)*
-    Page size. Default 50 items.
-* **page** *(integer)*
-    Page number. Default 1st page.
+- **from** _(integer)_
+  Include changes performed within interval. Starting **from** unix timestamp. If not specified default value is last 24 hours.
+- **to** _(integer)_
+  Include changes performed within interval. Ending at **to** unix timestamp. If not specified default value is NOW.
+- **include** _(array)_
+  Include only nodes that have set specified context (cfengine class). Defaults to include all nodes.
+- **exclude** _(array)_
+  Exclude only nodes that have set specified context (cfengine class). Defaults to exclude no nodes.
+- **hostkey** _(string)_
+  Search results for nodes matching specified unique hostkey.
+- **stackpath** _(string)_
+  Search results matching specified stack path which is execution stack of the promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **promisetype** _(string)_
+  Search results matching specified promise type - such as _commands_, _processes_ etc. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **promisehandle** _(string)_
+  Search results matching specified promise handle. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **bundlename** _(string)_
+  Search results matching specified bundle name. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **policyfile** _(string)_
+  Search results matching specified path for policy file where promise is defined. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **logmessages** _(string)_
+  Search results matching any of the messages logged for the promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **promisees** _(string)_
+  Search results matching any of the promisees specified for promise. Search is key insensitive. Additionally filter supports ending wildcard which can be enabled with placing '%' sign at the end.
+- **sort** _(string)_
+  Sort results by specified direction and attribute. By default sort direction is ascending, to sort as descending add '-' before attribute name. Result can be sorted by all returned fields. If not specified results are not sorted. Examples: _sort=bundlename_ - sort ascending by bundlename, _sort=-promisehandle_ - sort descending by promise handle.
+- **count** _(integer)_
+  Page size. Default 50 items.
+- **page** _(integer)_
+  Page number. Default 1st page.
 
 **Example response:**
 
@@ -147,33 +149,33 @@ List changes performed by CFEngine to the infrastructure. List can be narrowed d
 
 **Output:**
 
-* **total**
-    Total number of results.
-* **next**
-    Link for fetching next page. Set to NULL if current page is last.
-* **previous**
-    Link for previous page. Set to NULL if the current page if the first.
-* **data.bundlename**
-    [Bundle][Bundles] name where the promise is executed.
-* **data.changetime**
-    Time of performing change by cf-agent to the system. Expressed as UNIT TIMESTAMP.
-* **data.hostkey**
-    Unique host identifier.
-* **data.hostname**
-    Host name locally detected on the host, configurable as `hostIdentifier` option in [Settings API][Status and settings REST API#Get settings] and Mission Portal settings UI.
-* **data.logmessages**
-    List of 5 last messages generated during promise execution. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
-* **data.policyfile**
-    Path to the file where the promise is located in.
-* **data.promisees**
-    List of [promisees][Promises] defined for the promise.
-* **data.promisehandle**
-    A unique id-tag string for referring promise.
-* **data.promiser**
-    Object affected by a promise.
-* **data.promisetype**
-    [Type][Promise types] of the promise.
-* **data.stackpath**
-    Call stack of the promise.
+- **total**
+  Total number of results.
+- **next**
+  Link for fetching next page. Set to NULL if current page is last.
+- **previous**
+  Link for previous page. Set to NULL if the current page if the first.
+- **data.bundlename**
+  [Bundle][Bundles] name where the promise is executed.
+- **data.changetime**
+  Time of performing change by cf-agent to the system. Expressed as UNIT TIMESTAMP.
+- **data.hostkey**
+  Unique host identifier.
+- **data.hostname**
+  Host name locally detected on the host, configurable as `hostIdentifier` option in [Settings API][Status and settings REST API#Get settings] and Mission Portal settings UI.
+- **data.logmessages**
+  List of 5 last messages generated during promise execution. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
+- **data.policyfile**
+  Path to the file where the promise is located in.
+- **data.promisees**
+  List of [promisees][Promises] defined for the promise.
+- **data.promisehandle**
+  A unique id-tag string for referring promise.
+- **data.promiser**
+  Object affected by a promise.
+- **data.promisetype**
+  [Type][Promise types] of the promise.
+- **data.stackpath**
+  Call stack of the promise.
 
 **Example usage:** `Example: Show vacuum command executions`

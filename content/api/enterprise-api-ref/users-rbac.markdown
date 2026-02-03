@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Users and access-control REST API
+aliases:
+  - "/api-enterprise-api-ref-users-rbac.html"
 ---
 
 This REST API allows to manage users allowed to use Mission Portal as also Role Based Access Control settings.
@@ -16,10 +18,10 @@ API call allowed only for administrator.
 
 **Parameters:**
 
-* **id** *(regex string)*
-    Regular expression for filtering usernames.
-* **external** *('true', 'false')*
-    Returns only internal users (false) or only external (true), or all if not specified.
+- **id** _(regex string)_
+  Regular expression for filtering usernames.
+- **external** _('true', 'false')_
+  Returns only internal users (false) or only external (true), or all if not specified.
 
 **Example response:**
 
@@ -67,16 +69,16 @@ API call allowed only for administrator.
 
 **Output:**
 
-* **id**
-    User name.
-* **email**
-    Email address.
-* **roles**
-    List of assigned RBAC roles.
-* **external**
-    Is user from external source (LDAP/AD).
-* **two_factor_enabled**
-    If a user has enabled two-factor authentication
+- **id**
+  User name.
+- **email**
+  Email address.
+- **roles**
+  List of assigned RBAC roles.
+- **external**
+  Is user from external source (LDAP/AD).
+- **two_factor_enabled**
+  If a user has enabled two-factor authentication
 
 **Example usage:** `Example: Listing users`
 
@@ -117,18 +119,18 @@ API call allowed only for administrator.
 
 **Output:**
 
-* **id**
-    User name.
-* **email**
-    Email address.
-* **roles**
-    List of assigned RBAC roles.
-* **external**
-    Is user from external source (LDAP/AD).
-* **time_zone**
-    Time zone
-* **two_factor_enabled**
-    If a user has enabled two-factor authentication
+- **id**
+  User name.
+- **email**
+  Email address.
+- **roles**
+  List of assigned RBAC roles.
+- **external**
+  Is user from external source (LDAP/AD).
+- **time_zone**
+  Time zone
+- **two_factor_enabled**
+  If a user has enabled two-factor authentication
 
 **Example usage:** `Example: Retrieving a user`
 
@@ -140,16 +142,16 @@ API call allowed only for administrator.
 
 **Parameters:**
 
-* **username** *(string)*
-    User name
-* **password** *(string)*
-    User password
-* **email** *(string)*
-    User email
-* **roles** *(array)*
-    User roles, emp: `["admin", "test"]`
-* **time_zone** *(string)*
-    Time zone
+- **username** _(string)_
+  User name
+- **password** _(string)_
+  User password
+- **email** _(string)_
+  User email
+- **roles** _(array)_
+  User roles, emp: `["admin", "test"]`
+- **time_zone** _(string)_
+  Time zone
 
 Create a new user.
 API call allowed only for administrator.
@@ -178,16 +180,16 @@ API call allowed only for administrator.
 
 **Parameters:**
 
-* **username** *(string)*
-    User name
-* **password** *(string)*
-    User password
-* **email** *(string)*
-    User email
-* **roles** *(array)*
-    User roles, emp: `["admin", "test"]`
-* **time_zone** *(string)*
-    Time zone
+- **username** _(string)_
+  User name
+- **password** _(string)_
+  User password
+- **email** _(string)_
+  User email
+- **roles** _(array)_
+  User roles, emp: `["admin", "test"]`
+- **time_zone** _(string)_
+  Time zone
 
 **Example Request Body:**
 
@@ -253,14 +255,14 @@ API call allowed only for administrator.
 
 **Output:**
 
-* **id**
-    Unique role name.
-* **description**
-    Role description.
-* **includeContext**
-    Permit access to hosts that have **class set**.
-* **excludeContext**
-    Permit access to hosts that have **class not set**.
+- **id**
+  Unique role name.
+- **description**
+  Role description.
+- **includeContext**
+  Permit access to hosts that have **class set**.
+- **excludeContext**
+  Permit access to hosts that have **class not set**.
 
 ## Get RBAC role
 
@@ -293,14 +295,14 @@ API call allowed only for administrator.
 
 **Output:**
 
-* **id**
-    Unique role name.
-* **description**
-    Role description.
-* **includeContext**
-    Permit access to hosts that have **class set**.
-* **excludeContext**
-    Permit access to hosts that have **class not set**.
+- **id**
+  Unique role name.
+- **description**
+  Role description.
+- **includeContext**
+  Permit access to hosts that have **class set**.
+- **excludeContext**
+  Permit access to hosts that have **class not set**.
 
 ## Create RBAC role
 
@@ -313,12 +315,12 @@ API call allowed only for administrator.
 
 **Fields:**
 
-* **description**
-    Role description.
-* **includeContext**
-    Permit access to hosts that have **class set**.
-* **excludeContext**
-    Permit access to hosts that have **class not set**.
+- **description**
+  Role description.
+- **includeContext**
+  Permit access to hosts that have **class set**.
+- **excludeContext**
+  Permit access to hosts that have **class not set**.
 
 **Example Request Body:**
 
@@ -341,12 +343,12 @@ API call allowed only for administrator.
 
 **Fields:**
 
-* **description**
-    Role description.
-* **includeContext**
-    Permit access to hosts that have **class set**.
-* **excludeContext**
-    Permit access to hosts that have **class not set**
+- **description**
+  Role description.
+- **includeContext**
+  Permit access to hosts that have **class set**.
+- **excludeContext**
+  Permit access to hosts that have **class not set**
 
 **Example Request Body:**
 

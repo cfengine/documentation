@@ -2,17 +2,18 @@
 layout: default
 title: System security examples
 sorting: 10
+aliases:
+  - "/examples-example-snippets-system-security.html"
 ---
 
-* [Distribute root passwords][System security examples#Distribute root passwords]
-* [Distribute ssh keys][System security examples#Distribute ssh keys]
-* Distribute ssh keys
+- [Distribute root passwords][System security examples#Distribute root passwords]
+- [Distribute ssh keys][System security examples#Distribute ssh keys]
+- Distribute ssh keys
 
 ## Distribute root passwords
 
-
-[%CFEngine_include_snippet(distribute_root_passwords.cf, .* )%]
+{{< CFEngine_include_snippet(distribute_root_passwords.cf, .* ) >}}
 
 ## Distribute ssh keys
 
-[%CFEngine_include_snippet(distribute_ssh_keys.cf, .* )%]
+{{< CFEngine_include_snippet(distribute_ssh_keys.cf, .* ) >}}

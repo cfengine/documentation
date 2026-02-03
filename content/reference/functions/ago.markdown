@@ -1,9 +1,11 @@
 ---
 layout: default
 title: ago
+aliases:
+  - "/reference-functions-ago.html"
 ---
 
-[%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]
+{{< CFEngine_function_prototype(years, months, days, hours, minutes, seconds) >}}
 
 **Description:** Convert a time relative to now to an integer system representation.
 
@@ -15,38 +17,38 @@ hours ago". However, you are strongly encouraged to keep your usage of
 
 **Arguments:**
 
-* `years`, in the range `0,1000`
+- `years`, in the range `0,1000`
 
 Years of run time. For convenience in conversion, a year of runtime is
 always 365 days (one year equals 31,536,000 seconds).
 
-* `month`, in the range `0,1000`
+- `month`, in the range `0,1000`
 
 Months of run time. For convenience in conversion, a month of runtime is
 always equal to 30 days of runtime (one month equals 2,592,000 seconds).
 
-* `days`, in the range `0,1000`
+- `days`, in the range `0,1000`
 
 Days of runtime (one day equals 86,400 seconds)
 
-* `hours`, in the range `0,1000`
+- `hours`, in the range `0,1000`
 
 Hours of runtime
 
-* `minutes`, in the range `0,1000`
+- `minutes`, in the range `0,1000`
 
 Minutes of runtime 0-59
 
-* `seconds`, in the range `0,40000`
+- `seconds`, in the range `0,40000`
 
 Seconds of runtime
 
 **Example:**
 
-[%CFEngine_include_snippet(ago.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(ago.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(ago.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(ago.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** `now()`, `accumulated()`, `irange()`.

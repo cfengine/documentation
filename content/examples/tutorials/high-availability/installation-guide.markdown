@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Installation guide
+aliases:
+  - "/examples-tutorials-high-availability-installation-guide.html"
 ---
 
 ## Overview
@@ -22,57 +24,55 @@ all your CFEngine clients in case of failover.
 
 ### Hardware configuration and OS pre-configuration steps
 
-* CFEngine 3.15.3 (or later) hub package for RHEL7 or CentOS7.
-* We recommend selecting dedicated interface used for PostgreSQL replication and optionally one for heartbeat.
-* We recommend having one shared IP address assigned for interface where MP is accessible
+- CFEngine 3.15.3 (or later) hub package for RHEL7 or CentOS7.
+- We recommend selecting dedicated interface used for PostgreSQL replication and optionally one for heartbeat.
+- We recommend having one shared IP address assigned for interface where MP is accessible
   (optionally) and one where PostgreSQL replication is configured (mandatory).
-* Both active and passive hub machines must be configured so that host names are different.
-* Basic hostname resolution works (hub names can be placed in */etc/hosts* or DNS configured).
+- Both active and passive hub machines must be configured so that host names are different.
+- Basic hostname resolution works (hub names can be placed in `/etc/hosts` or DNS configured).
 
 ### Example configuration used in this tutorial
 
 In this tutorial we use the following network configuration:
 
-* Two nodes, one acting as active (node1) and one acting as passive (node2).
-* Optionally a third node (node3) used as a database backup for offsite replication.
-* Each node having three NICs so that eth0 is used for the heartbeat, eth1 is used for PostgreSQL
+- Two nodes, one acting as active (node1) and one acting as passive (node2).
+- Optionally a third node (node3) used as a database backup for offsite replication.
+- Each node having three NICs so that eth0 is used for the heartbeat, eth1 is used for PostgreSQL
   replication and eth2 is used for MP and bootstrapping clients.
-* IP addresses configured as follows:
+- IP addresses configured as follows:
 
-| Node            | eth0         | eth1           | eth2            |
-|-----------------|:-------------|:---------------|:----------------|
-|node1            | 192.168.0.10 | 192.168.10.10  | 192.168.100.10  |
-|node2            | 192.168.0.11 | 192.168.10.11  | 192.168.100.11  |
-|node3 (optional) | ---          | 192.168.10.12  | 192.168.100.12  |
-|cluster shared   | ---          | ---            | 192.168.100.100 |
+| Node             | eth0         | eth1          | eth2            |
+| ---------------- | :----------- | :------------ | :-------------- |
+| node1            | 192.168.0.10 | 192.168.10.10 | 192.168.100.10  |
+| node2            | 192.168.0.11 | 192.168.10.11 | 192.168.100.11  |
+| node3 (optional) | ---          | 192.168.10.12 | 192.168.100.12  |
+| cluster shared   | ---          | ---           | 192.168.100.100 |
 
 Detailed network configuration is shown on the picture below:
 
 ![HAGuideNetworkSetup](ha_network_setup.png)
 
-
 ## Install cluster management tools
 
-   **On both nodes:**
+**On both nodes:**
 
-   ```command
-   yum -y install pcs pacemaker cman fence-agents
-   ```
+```command
+yum -y install pcs pacemaker cman fence-agents
+```
 
 In order to operate cluster, proper fencing must be configured but description how to fence cluster
 and what mechanism use is out of the scope of this document. For reference please use the [Red Hat
 HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/configuring_the_red_hat_high_availability_add-on_with_pacemaker/ch-fencing-haar).
 
-
 **IMPORTANT:** please carefully follow the indicators describing if the given step should be
-               performed on the active (node1), the passive (node2) or both nodes.
+performed on the active (node1), the passive (node2) or both nodes.
 
 1. Make sure that the hostnames of all nodes nodes are node1 and node2 respectively. Running
-   the command ```uname -n | tr '[A-Z]' '[a-z]'``` should return the correct node name. Make sure that
+   the command `uname -n | tr '[A-Z]' '[a-z]'` should return the correct node name. Make sure that
    the DNS or entries in /etc/hosts are updated so that hosts can be accessed using their host names.
 
-2. In order to use *pcs* to manage the cluster, create the *hacluster* user designated to manage the
-   cluster with ```passwd hacluster``` **on both nodes**.
+2. In order to use _pcs_ to manage the cluster, create the _hacluster_ user designated to manage the
+   cluster with `passwd hacluster` **on both nodes**.
 
 3. Make sure that pcsd demon is started and configure both nodes so that it will be enabled to boot
    on startup **on both nodes**.
@@ -101,7 +101,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    pcs cluster setup --name cfcluster node1 node2
    ```
 
-   This will create the cluster ```cfcluster``` consisting of node1 and node2.
+   This will create the cluster `cfcluster` consisting of node1 and node2.
 
 6. Give the cluster time to settle (cca 1 minute) and then start the cluster by running the
    following command **on the node1**:
@@ -112,7 +112,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
    This will start the cluster and all the necessary deamons on both nodes.
 
-7. At this point the cluster should be up and running. Running ```pcs status``` should print
+7. At this point the cluster should be up and running. Running `pcs status` should print
    something similar to the output below.
 
    ```output
@@ -129,7 +129,6 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    Online: [ node1 node2 ]
 
    No resources
-
 
    Daemon Status:
      cman: active/disabled
@@ -192,14 +191,14 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    ```
 
 3. Configure PostgreSQL **on node1**:
-   1. Create two special directories owned by the *cfpostgres* user:
+   1. Create two special directories owned by the _cfpostgres_ user:
 
       ```
       mkdir -p /var/cfengine/state/pg/{data/pg_arch,tmp}
       chown -R cfpostgres:cfpostgres /var/cfengine/state/pg/{data/pg_arch,tmp}
       ```
 
-   2. Modify the */var/cfengine/state/pg/data/postgresql.conf* configuration file to set the
+   2. Modify the `/var/cfengine/state/pg/data/postgresql.conf` configuration file to set the
       following options accordingly (**uncomment the lines if they are commented out**):
 
       ```
@@ -213,7 +212,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
       archive_command = 'cp %p /var/cfengine/state/pg/data/pg_arch/%f'
       ```
 
-   3. Modify the *pg_hba.conf* configuration file to enable access to PostgreSQL for replication
+   3. Modify the _pg_hba.conf_ configuration file to enable access to PostgreSQL for replication
       between the nodes (note that the second pair of IP addresses, not the heartbeat pair, is used
       here):
 
@@ -223,10 +222,10 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
       ```
 
       **IMPORTANT:** The above configuration allows accessing PostgreSQL without any authentication
-                     from both cluster nodes. For security reasons we strongly advise to create a
-                     replication user in PostgreSQL and protect access using a password or
-                     certificate. Furthermore, we advise using ssl-secured replication instead of
-                     the unencrypted method described here if the hubs are in an untrusted network.
+      from both cluster nodes. For security reasons we strongly advise to create a
+      replication user in PostgreSQL and protect access using a password or
+      certificate. Furthermore, we advise using ssl-secured replication instead of
+      the unencrypted method described here if the hubs are in an untrusted network.
 
 4. Do an initial sync of PostgreSQL:
    1. Start PostgreSQL **on node1**:
@@ -242,7 +241,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
       pushd /tmp; su cfpostgres -c "/var/cfengine/bin/pg_basebackup -h 192.168.10.10 -U cfpostgres -D /var/cfengine/state/pg/data -X stream -P"; popd
       ```
 
-   3. **On node2**, create the *standby.conf* file and configure PostgreSQL to run as a hot-standby replica:
+   3. **On node2**, create the _standby.conf_ file and configure PostgreSQL to run as a hot-standby replica:
 
       ```
       cat <<EOF > /var/cfengine/state/pg/data/standby.conf
@@ -257,9 +256,9 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
 5. Start PostgreSQL on the **node2** by running the following command:
 
-    ```command
-    pushd /tmp; su cfpostgres -c "/var/cfengine/bin/pg_ctl -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start"; popd
-    ```
+   ```command
+   pushd /tmp; su cfpostgres -c "/var/cfengine/bin/pg_ctl -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start"; popd
+   ```
 
 6. Check that PostgreSQL replication is setup and working properly:
    1. The **node2** should report it is in the recovery mode:
@@ -434,9 +433,8 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    ```
 
    **IMPORTANT:** Please make sure that there's one Master node and one Slave node and that the
-                  *cfpgsql-status* for the active node is reported as *PRI* and passive as
-                  *HS:async* or *HS:alone*.
-
+   _cfpgsql-status_ for the active node is reported as _PRI_ and passive as
+   _HS:async_ or _HS:alone_.
 
 ### CFEngine configuration
 
@@ -450,8 +448,8 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    EOF
    ```
 
-2. Mask the *cf-postgres.service* and make sure it is not required by the
-   *cf-hub.service* **on both nodes** (PostgreSQL is managed by the cluster
+2. Mask the _cf-postgres.service_ and make sure it is not required by the
+   _cf-hub.service_ **on both nodes** (PostgreSQL is managed by the cluster
    resource, not by the service).
 
    ```
@@ -511,20 +509,17 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 
    **IMPORTANT:** Copy over only the hashes, without the `SHA=` prefix.
 
-6. **On both nodes,** add the following class definition to the */var/cfengine/masterfiles/def.json*
+6. **On both nodes,** add the following class definition to the `/var/cfengine/masterfiles/def.json`
    file to enable HA:
 
-   ```json
-   [file=def.json]
+   ```json {file="def.json"}
    {
-     "classes": {
-       "enable_cfengine_enterprise_hub_ha": [ "any::" ]
-     }
+     "classes": { "enable_cfengine_enterprise_hub_ha": ["any::"] }
    }
    ```
 
 7. **On both nodes,** run `cf-agent -Kf update.cf` to make sure that the new policy is copied from
-   *masterfiles* to *inputs*.
+   _masterfiles_ to _inputs_.
 
 8. Start CFEngine **on both nodes**.
 
@@ -535,7 +530,6 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
 9. Check that the CFEngine HA setup is working by logging in to the Mission Portal at the
    https://192.168.100.100 address in your browser. Note that it takes up to 15 minutes for
    everything to settle and the `OK` HA status being reported in the Mission Portal's header.
-
 
 ### Configuring 3rd node as disaster-recovery or database backup (optional)
 
@@ -577,6 +571,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    ```command
    cat /var/cfengine/masterfiles/cfe_internal/enterprise/ha/ha_info.json
    ```
+
    ```output
    {
     "192.168.100.10":
@@ -599,7 +594,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    }
    ```
 
-   Please note that ```is_in_cluster``` parameter is optional for the 2 nodes in the HA cluster and
+   Please note that `is_in_cluster` parameter is optional for the 2 nodes in the HA cluster and
    by default is set to true. For the 3-node setup, the node3, which is not part of the cluster,
    **MUST** be marked with `"is_in_cluster" : false` configuration parameter.
 
@@ -607,31 +602,28 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    failover to the node3 is not performed). Please also note that during normal operations the
    cf-hub process should not be running on the node3.
 
-
-
 ### Manual failover to disaster-recovery node
 
 1. Before starting manual failover process make sure both active and passive nodes are not running.
 
 2. Verify that PostgreSQL is running on 3rd node and data replication from active node is not in progress. If database is actively replicating data with active cluster node make sure that this process will be finished and no new data will be stored in active database instance.
 
-3. After verifying that replication is finished and data is synchronized between active database node and replica node (or once node1 and node2 are both down) promote PostgreSQL to exit recovery and begin read-write operations ```cd /tmp && su cfpostgres -c "/var/cfengine/bin/pg_ctl -c -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log  promote"```.
+3. After verifying that replication is finished and data is synchronized between active database node and replica node (or once node1 and node2 are both down) promote PostgreSQL to exit recovery and begin read-write operations `cd /tmp && su cfpostgres -c "/var/cfengine/bin/pg_ctl -c -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log  promote"`.
 
-4. In order to make failover process as easy as possible there is ```"failover_to_replication_node_enabled"``` class defined both in */var/cfengine/masterfiles/controls/VERSION/def.cf* and */var/cfengine/masterfiles/controls/VERSION/update_def.cf*. In order to stat collecting reports and serving policy from 3rd node uncomment the line defining mentioned class.
+4. In order to make failover process as easy as possible there is `"failover_to_replication_node_enabled"` class defined both in `/var/cfengine/masterfiles/controls/VERSION/def.cf` and `/var/cfengine/masterfiles/controls/VERSION/update_def.cf`. In order to stat collecting reports and serving policy from 3rd node uncomment the line defining mentioned class.
 
 **IMPORTANT:** Please note that as long as any of the active or passive cluster nodes is accessible by client to be contacted, failover to 3rd node is not possible. If the active or passive node is running and failover to 3rd node is required make sure to disable network interfaces where clients are bootstrapped to so that clients won't be able to access any other node than disaster-recovery.
 
-
-
 ### Troubleshooting
 
-1. If either the IPaddr2 or pgslq resource is not running, try to enable it first with ```pcs cluster enable --all```. If this is not strting the resources, you can try to run them in debug mode with this command ```pcs resource debug-start <resource-name>```. The latter command should print diagnostics messages on why resources are not started.
+1. If either the IPaddr2 or pgslq resource is not running, try to enable it first with `pcs cluster enable --all`. If this is not strting the resources, you can try to run them in debug mode with this command `pcs resource debug-start <resource-name>`. The latter command should print diagnostics messages on why resources are not started.
 
-2. If ```crm_mon -Afr1``` is printing errors similar to the below
+2. If `crm_mon -Afr1` is printing errors similar to the below
 
    ```command
    pcs status
    ```
+
    ```output
    Cluster name: cfcluster
    Last updated: Tue Jul  7 11:27:23 2015
@@ -656,17 +648,20 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
        cfpgsql_start_0 on node1 'unknown error' (1): call=13, status=complete, last-rc-change='Tue Jul  7 11:25:32 2015', queued=1ms, exec=137ms
    ```
 
-   You can try to clear the errors by running ```pcs resource cleanup <resource-name>```. This should clean errors for the appropriate resource and make the cluster restart it.
+   You can try to clear the errors by running `pcs resource cleanup <resource-name>`. This should clean errors for the appropriate resource and make the cluster restart it.
 
    ```command
    pcs resource cleanup cfpgsql
    ```
+
    ```output
    Resource: cfpgsql successfully cleaned up
    ```
+
    ```command
    pcs status
    ```
+
    ```output
    Cluster name: cfcluster
    Last updated: Tue Jul  7 11:29:36 2015
@@ -694,6 +689,7 @@ HA fencing guide](https://access.redhat.com/documentation/en-us/red_hat_enterpri
    ```command
    pcs cluster start
    ```
+
    ```output
    Starting Cluster...
    ```

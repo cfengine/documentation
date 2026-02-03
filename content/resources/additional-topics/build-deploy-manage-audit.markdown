@@ -2,13 +2,15 @@
 layout: default
 title: Build Deploy Manage Audit
 sorting: 80
+aliases:
+  - "/resources-additional-topics-build-deploy-manage-audit.html"
 ---
 
 ## What is BDMA?
 
 The four mission phases are sometimes referred to as
 
-* Build
+- Build
 
   A mission is based on decisions and resources that need to be assembled or
   _built_ before they can be applied. This is the planning phase.
@@ -18,7 +20,7 @@ The four mission phases are sometimes referred to as
   promises, the system will function seamlessly as planned. This is how it works
   in a human organization, and this is how is works for computers too.
 
-* Deploy
+- Deploy
 
   Deploying really means launching the policy into production. In CFEngine you
   simply publish your policy (in CFEngine parlance these are _promise proposals_)
@@ -26,7 +28,7 @@ The four mission phases are sometimes referred to as
   Each machine runs an agent that is capable of keeping the system on course and
   maintaining it over time without further assistance.
 
-* Manage
+- Manage
 
   Once a decision is made, unplanned events will occur. Such incidents
   traditionally set off alarms and humans rush to make new transactions to
@@ -34,7 +36,7 @@ The four mission phases are sometimes referred to as
   and humans only manage knowledge and have to deal with rare events that cannot
   be dealt with automatically.
 
-* Audit
+- Audit
 
   CFEngine performs continuous analysis and correction, and commercial editions
   generate explicit reports on mission status. Users can sit back and examine
@@ -63,15 +65,15 @@ There are many approaches to building complete systems. When you use CFEngine,
 you should try to progress from thinking only about putting bytes on disks, to
 planning a long term set of promises to keep.
 
-* What services do you want to support?
+- What services do you want to support?
 
-* What promises do you want to keep concerning these services?
+- What promises do you want to keep concerning these services?
 
-* Are these promises sustainable and convergently implementable?
+- Are these promises sustainable and convergently implementable?
 
-* Formulate proposed intentions in the form of CFEngine promises.
+- Formulate proposed intentions in the form of CFEngine promises.
 
-* Discuss the impact of these in your team of CFEngine Mission Specialists (more
+- Discuss the impact of these in your team of CFEngine Mission Specialists (more
   than one pair of eyes).
 
 It is worth spending extra time in the build planning to simplify your system as
@@ -98,29 +100,29 @@ Management).
 
 The following sequence forms a checklist for deploying successful policy change:
 
-*  Discuss the impact of changes in the team.
+- Discuss the impact of changes in the team.
 
-*  Commit the changes to promises in version control, e.g. subversion.
+- Commit the changes to promises in version control, e.g. subversion.
 
-*  Make a change in the CFEngine input files.
+- Make a change in the CFEngine input files.
 
-*  Run the configuration through 'cf-promises --inform' to check for problems.
+- Run the configuration through 'cf-promises --inform' to check for problems.
 
-*  Move the policy to a test system.
+- Move the policy to a test system.
 
-*  Try running the configuration in dry-run model: 'cf-agent --dry-run'
+- Try running the configuration in dry-run model: 'cf-agent --dry-run'
 
-*  Try running the policy once on a single system, being observant of unexpected
-   behaviour.
+- Try running the policy once on a single system, being observant of unexpected
+  behaviour.
 
-*  Try running the policy on a small number of systems.
+- Try running the policy on a small number of systems.
 
-*  Construct a test environment and examine the effect of these promises in
-   practice.
+- Construct a test environment and examine the effect of these promises in
+  practice.
 
-*  Move the policy to the production environment.
+- Move the policy to the production environment.
 
-*  If possible, test on one or a few machines before releasing for general use.
+- If possible, test on one or a few machines before releasing for general use.
 
 CFEngine recommends a process of many small incremental changes, rather than
 large high-risk deployments.
@@ -162,95 +164,95 @@ The reports CFEngine provides are meant to offer simple summaries of the kind of
 information administrators need about their environment, avoiding unnecessary
 detail.
 
-* Available patches report
+- Available patches report
 
   Patches already installed on system if available.
 
-* Classes report
+- Classes report
 
   User defined classes observed on the system - inventory data.
 
-* Compliance report
+- Compliance report
 
   Total summary of host compliance, all promises aggregated over time.
 
-* File_changes report
+- File_changes report
 
   Latest observed changes to system files with time discovered.
 
-* File_diffs report
+- File_diffs report
 
   Latest observed differences to system files, in a simple diff format.
 
-* Hashes report
+- Hashes report
 
   File hash values measured (change detection).
 
-* Installed patches report
+- Installed patches report
 
   Patches not yet installed, but published by vendor if available.
 
-* Installed software report
+- Installed software report
 
   Software already installed on system if available.
 
-* Lastseen report
+- Lastseen report
 
   Time and frequency of communications with peers, host reliability.
 
-* Micro-audit report
+- Micro-audit report
 
   Generated by CFEngine self-auditing. This report is not aggregated.
 
-* Monitor summary report
+- Monitor summary report
 
   Pseudo-real-time measurement of time series data.
 
-* Performance report
+- Performance report
 
   Time cost of verifying system promises.
 
-* Promise report
+- Promise report
 
   Per-promise average compliance report over time.
 
-* Promises not kept report
+- Promises not kept report
 
   Promises that were recently un-kept.
 
-* Promises repaired report
+- Promises repaired report
 
   Promises that were recently kept by repairing system state.
 
-* Setuid report
+- Setuid report
 
   Known setuid programs found on system.
 
-* Variables report
+- Variables report
 
   Current variable values expanded on different hosts.
 
 ## Summary BDMA workflow
 
-* Define a stem cell host template.
+- Define a stem cell host template.
 
-* Set up PXE network booting and kickstart / jumpstart OS tools with CFEngine
+- Set up PXE network booting and kickstart / jumpstart OS tools with CFEngine
   integrated.
 
-* Get CFEngine running and updating on all hosts, but make no system changes.
+- Get CFEngine running and updating on all hosts, but make no system changes.
 
-* Define a service catalogue.
+- Define a service catalogue.
 
-* Discuss and formulate a policy increment, thinking convergence at all times.
+- Discuss and formulate a policy increment, thinking convergence at all times.
 
-* Publish (deploy) the policy.
+- Publish (deploy) the policy.
 
-* Follow emails and reports in the CFEngine Knowledge Map (Manage).
+- Follow emails and reports in the CFEngine Knowledge Map (Manage).
 
-* Adjust policy if necessary, following procedures for change management
+- Adjust policy if necessary, following procedures for change management
   (Manage).
 
-* View reports (or enjoy the silence) to audit system state.
+- View reports (or enjoy the silence) to audit system state.
 
 CFEngine works well with package based management software. Users of rPath, for
 example, can achieve substantially improved efficiency in the build phase.

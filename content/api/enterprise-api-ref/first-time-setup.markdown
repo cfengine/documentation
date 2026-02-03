@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Fist time setup API
+aliases:
+  - "/api-enterprise-api-ref-first-time-setup.html"
 ---
 
 The First time setup API enables creation of the initial administrator user.
@@ -46,13 +48,13 @@ HTTP 200 Ok
 
 **Output:**
 
-* **is_setup_complete**
+- **is_setup_complete**
   Boolean value indicating whether the system has been set up (true) or not (false)
 
 **Responses:**
 
 | HTTP response code        | Description                   |
-|---------------------------|-------------------------------|
+| ------------------------- | ----------------------------- |
 | 200 OK                    | Setup status check successful |
 | 500 Internal server error | Internal server error         |
 
@@ -67,7 +69,7 @@ This endpoint returns a session ID required for the setup complete API request.
 
 **Parameters:**
 
-* **code** *(string)*
+- **code** _(string)_
   The setup code provided during system initialization
 
 **Example request (curl):**
@@ -90,18 +92,18 @@ HTTP 200 Ok
 
 **Output:**
 
-* **session_id**
+- **session_id**
   The session ID to be used in the setup complete API request
-* **valid**
+- **valid**
   Boolean value indicating whether the provided code is valid
 
 **Responses:**
 
-| HTTP response code        | Description                   |
-|---------------------------|-------------------------------|
-| 200 OK                    | Code validation successful    |
-| 400 Bad request           | Invalid or missing code       |
-| 500 Internal server error | Internal server error         |
+| HTTP response code        | Description                |
+| ------------------------- | -------------------------- |
+| 200 OK                    | Code validation successful |
+| 400 Bad request           | Invalid or missing code    |
+| 500 Internal server error | Internal server error      |
 
 ## Complete setup
 
@@ -114,16 +116,16 @@ It requires a valid session ID obtained from the code validation step.
 
 **Headers:**
 
-* **Cf-Setup-Session-Id** *(string)*
+- **Cf-Setup-Session-Id** _(string)_
   Session ID obtained from the code validation step
 
 **Parameters:**
 
-* **username** *(string)*
+- **username** _(string)_
   Alphanumeric username for the administrator account
-* **password** *(string)*
+- **password** _(string)_
   Password for the administrator account
-* **email** *(string)*
+- **email** _(string)_
   Email address for the administrator account
 
 **Example request (curl):**
@@ -147,9 +149,9 @@ HTTP 201 Created
 
 **Responses:**
 
-| HTTP response code        | Description                                       |
-|---------------------------|---------------------------------------------------|
-| 201 Created               | Setup successfully completed                      |
-| 406 Not Acceptable        | Invalid session ID                                |
-| 400 Bad request           | Missing or invalid parameters                     |
-| 500 Internal server error | Internal server error                             |
+| HTTP response code        | Description                   |
+| ------------------------- | ----------------------------- |
+| 201 Created               | Setup successfully completed  |
+| 406 Not Acceptable        | Invalid session ID            |
+| 400 Bad request           | Missing or invalid parameters |
+| 500 Internal server error | Internal server error         |

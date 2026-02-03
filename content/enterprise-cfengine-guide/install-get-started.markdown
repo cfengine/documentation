@@ -3,6 +3,8 @@ layout: default
 title: Install and get started
 published: false
 sorting: 10
+aliases:
+  - "/enterprise-cfengine-guide-install-get-started.html"
 ---
 
 <!--
@@ -10,9 +12,8 @@ Delete  "Enterprise Install and Get Started"
 https://docs.google.com/document/d/1CeRR8cuMtrrr0X27gzVzP2ndiU0HuHvo7dJT2vIWfp0/edit#heading=h.978wiks7ber1
 -->
 
-
-* [Installation][Install and Get Started#Installation]
-* [Post-install configuration][Install and Get Started#Post-install configuration]
+- [Installation][Install and Get Started#Installation]
+- [Post-install configuration][Install and Get Started#Post-install configuration]
 
 ## Installation
 
@@ -30,15 +31,15 @@ will be provided with the key.
 
 For Enterprise 3.6 local mail relay is used, and it is assumed the server has a proper mail setup.
 
-The default FROM email for all emails sent from the Mission Portal is ```admin@organization.com```. This can be changed on the CFE Server in ```/var/cfengine/httpd/htdocs/application/config/appsettings.php:$config['appemail']```.
+The default FROM email for all emails sent from the Mission Portal is `admin@organization.com`. This can be changed on the CFE Server in `/var/cfengine/httpd/htdocs/application/config/appsettings.php:$config['appemail']`.
 
-### Version your policies
+### Version your policy
 
-Consider enabling the built-in version control of your policies as
+Consider enabling the built-in version control of your policy as
 described in
 [Version control and configuration policy][Best practices#Version control and configuration policy]
 
-Whether you do or not, please put your policies in some kind of
+Whether you do or not, please put your policy in some kind of
 backed-up VCS. Losing work because of "fat fingering" `rm` commands is
 very, very depressing.
 

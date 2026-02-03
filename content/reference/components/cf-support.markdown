@@ -3,6 +3,8 @@ layout: default
 title: cf-support
 sorting: 10
 keywords: [cf-support]
+aliases:
+  - "/reference-components-cf-support.html"
 ---
 
 `cf-support` gathers various details about the system and creates a tarball in the current directory to submit to support.
@@ -11,8 +13,8 @@ The utility will prompt for an optional support ticket number as well as prompt 
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-support.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-support.help, [\s]*--[a-z], ^$) >}}
 
 ## History
 
-* Introduced in 3.21.0, 3.18.3
+- Introduced in 3.21.0, 3.18.3

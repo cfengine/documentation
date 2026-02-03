@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Public key distribution
+aliases:
+  - "/web-ui-hub_administration-public-key-distribution.html"
 ---
 
 > How can I arrange for the hosts in my infrastructure to trust a new key?
@@ -24,7 +26,6 @@ less).
 
 This policy shows how public keys can be stored in a central location on the
 policy server and automatically installed on all hosts.
-
 
 ```cf3 {file="trust_distkeys.cf"}
 bundle agent trust_distkeys

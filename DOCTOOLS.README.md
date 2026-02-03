@@ -35,7 +35,7 @@ Git workflow.
 1. Using Windows Explorer, open a directory where you wish to store CFEngine related Git repositories (e.g. D:\Projects\CFEngine).
 2. Right click to bring up the contextual menu.
 3. Select `Git Bash`
-![Contextual Menu With Git Bash](Doctools-ReadMe-Git-Bash.png)
+   ![Contextual Menu With Git Bash](Doctools-ReadMe-Git-Bash.png)
 4. A `Command Prompt` style window will open. This is where you will enter Git commands.
 
 ### Using Git
@@ -44,12 +44,12 @@ Git is a very powerful and robust command line tool at its heart. While it has a
 
 #### Good Git commands to learn
 
-* clone
-* add
-* commit
-* push
-* pull
-* reset
+- clone
+- add
+- commit
+- push
+- pull
+- reset
 
 #### Basic examples
 
@@ -77,6 +77,6 @@ Note: If working with a clone that you do not have rights to push to then you wi
 
 ### Git (and related) resources
 
-* The Wikipedia article on Git provides a good overview of the software: http://en.wikipedia.org/wiki/Git_(software).
-* The official Git documentation has excellent content for learning how to use Git: http://git-scm.com/documentation.
-* GitHub's Help section has many useful tips and tricks, as well as guidance on how to setup Git, create Git repos, fork of repos and contribute to Git supported software projects: https://help.github.com/
+- The Wikipedia article on Git provides a good overview of the software: http://en.wikipedia.org/wiki/Git_(software).
+- The official Git documentation has excellent content for learning how to use Git: http://git-scm.com/documentation.
+- GitHub's Help section has many useful tips and tricks, as well as guidance on how to setup Git, create Git repos, fork of repos and contribute to Git supported software projects: https://help.github.com/

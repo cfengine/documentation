@@ -3,13 +3,15 @@ layout: default
 title: cf-serverd
 sorting: 20
 keywords: [server]
+aliases:
+  - "/reference-components-cf-serverd.html"
 ---
 
 `cf-serverd` is a socket listening daemon providing two services: it acts as a
 file server for remote file copying and it allows an authorized
 `cf-runagent` to start a `cf-agent` run. `cf-agent`
 typically connects to a `cf-serverd` instance to request updated policy code,
-but may also request additional files for download. `cf-serverd`  employs
+but may also request additional files for download. `cf-serverd` employs
 [role based access control][roles] (defined in policy code) to authorize
 requests.
 
@@ -18,11 +20,11 @@ affected by `common` and `server` control bodies.
 
 **Notes:**
 
-* This daemon reloads it's config when the SIGHUP signal is received.
-* If `enable_report_dumps` exists in `WORKDIR` (`/var/cfengine/enable_report_dumps`) `cf-serverd` will log reports provided to `cf-hub` to `WORKDIR/diagnostics/report_dump` (`/var/cfengine/diagnostics/report_dumps`). This data is useful when troubleshooting reporting issues with CFEngine Enterprise.
-* `cf-serverd` always considers the class ```server``` to be defined.
-* `SIGUSR1` sets the log level to debug.
-* `SIGUSR2` sets the log level to notice.
+- This daemon reloads it's config when the SIGHUP signal is received.
+- If `enable_report_dumps` exists in `WORKDIR` (`/var/cfengine/enable_report_dumps`) `cf-serverd` will log reports provided to `cf-hub` to `WORKDIR/diagnostics/report_dump` (`/var/cfengine/diagnostics/report_dumps`). This data is useful when troubleshooting reporting issues with CFEngine Enterprise.
+- `cf-serverd` always considers the class `server` to be defined.
+- `SIGUSR1` sets the log level to debug.
+- `SIGUSR2` sets the log level to notice.
 
 **History:**
 
@@ -31,7 +33,7 @@ affected by `common` and `server` control bodies.
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-serverd.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-serverd.help, [\s]*--[a-z], ^$) >}}
 
 ## Control promises
 
@@ -51,7 +53,6 @@ body server control
 }
 ```
 
-
 ### allowconnects
 
 **Description:** List of IP addresses that may connect to the
@@ -70,7 +71,7 @@ See also the warning about regular expressions in
 
 **Examples**:
 
-```cf3
+```cf3 {skip TODO}
 allowconnects => {
      "127.0.0.1",
      "::1",
@@ -79,6 +80,9 @@ allowconnects => {
      };
 ```
 
+**See also:** [`default:control_server.allowconnects`](/reference/special-variables/control_server/#defaultcontrol_serverallowconnects)
+
+**History:** Added in CFEngine 3.0.0
 
 ### allowallconnects
 
@@ -103,7 +107,7 @@ will potentially match more than one hostname (e.g.,
 
 **Examples**:
 
-```cf3
+```cf3 {skip TODO}
 allowallconnects      => {
      "127.0.0.1",
      "::1",
@@ -112,6 +116,9 @@ allowallconnects      => {
      };
 ```
 
+**See also:** [`default:control_server.allowallconnects`](/reference/special-variables/control_server/#defaultcontrol_serverallowallconnects)
+
+**History:** Added in CFEngine 3.0.0
 
 ### allowlegacyconnects
 
@@ -120,7 +127,7 @@ that are not using the latest protocol.
 
 To define subnets or address ranges, use CIDR notation:
 
-```cf3
+```cf3 {skip TODO}
 allowlegacyconnects =>  { "192.168.1.0/24", "192.168.2.123" }
 ```
 
@@ -130,24 +137,25 @@ for compatibility with pre-3.6 CFEngine versions.
 Set this attribute to an empty list to not allow any incoming connections
 using legacy protocol versions:
 
-```cf3
+```cf3 {skip TODO}
 allowlegacyconnects => { }
 ```
 
 In CFEngine >= 3.9, legacy protocol is disallowed by default, and you have to
 specify a list of hosts allowed to use the legacy protocol.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
-**See also:** [`protocol_version`][Components#protocol_version]
+**See also:** [`protocol_version`][Components#protocol_version], [`default:control_server.allowlegacyconnects`](/reference/special-variables/control_server/#defaultcontrol_serverallowlegacyconnects)
 
+**History:** Added in CFEngine 3.0.0
 
 ### allowciphers
 
 **Description:** List of TLS ciphers the server accepts both **incoming** and **outgoing** (in the case of client initiated reporting with CFEngine Enterprise) connections using `cf-serverd`.
 For a list of possible ciphers, see man page for "openssl ciphers".
 
-[%CFEngine_promise_attribute(AES256-GCM-SHA384:AES256-SHA)%]
+{{< CFEngine_promise_attribute(AES256-GCM-SHA384:AES256-SHA) >}}
 
 **Example:**
 
@@ -170,16 +178,16 @@ this does not do anything as the classic protocol does not support TLS ciphers.
 [`allowtlsversion`][cf-serverd#allowtlsversion],
 [`encrypt`][files#encrypt],
 [`logencryptedtransfers`][cf-serverd#logencryptedtransfers],
-[`ifencrypted`][access#ifencrypted]
+[`ifencrypted`][access#ifencrypted],
+[`default:control_server.allowciphers`](/reference/special-variables/control_server/#defaultcontrol_serverallowciphers)
 
 **History:** Introduced in CFEngine 3.6.0
-
 
 ### allowtlsversion
 
 **Description:** Minimum TLS version allowed for both **incoming** and **outgoing** (in the case of client initiated reporting with CFEngine Enterprise) connections using `cf-serverd`.
 
-[%CFEngine_promise_attribute(1.0)%]
+{{< CFEngine_promise_attribute(1.0) >}}
 
 **Example:**
 
@@ -202,10 +210,10 @@ this attribute does not do anything.
 [`allowciphers`][cf-serverd#allowciphers],
 [`encrypt`][files#encrypt],
 [`logencryptedtransfers`][cf-serverd#logencryptedtransfers],
-[`ifencrypted`][access#ifencrypted]
+[`ifencrypted`][access#ifencrypted],
+[`default:control_server.allowtlsversion`](/reference/special-variables/control_server/#defaultcontrol_serverallowtlsversion)
 
 **History:** Introduced in CFEngine 3.7.0
-
 
 ### allowusers
 
@@ -222,10 +230,32 @@ correspond to system identities on the server-side system.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 allowusers => { "cfengine", "root" };
 ```
 
+**See also:** [`default:control_server.allowusers`](/reference/special-variables/control_server/#defaultcontrol_serverallowusers)
+
+**History:** Added in CFEngine 3.0.0
+
+### auditing
+
+**Description:** The `auditing` menu option policy is a true/false flag to determine whether connections to cf-serverd will be audited.
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** false
+
+**Example:**
+
+```cf3
+body server control
+{
+  auditing => "true";
+}
+```
+
+**See also:** [`default:control_server.auditing`](/reference/special-variables/control_server/#defaultcontrol_serverauditing)
 
 ### bindtointerface
 
@@ -240,13 +270,13 @@ be given as the argument, not the device name.
 
 **Allowed input range:** (arbitrary string)
 
-```cf3
+```cf3 {skip TODO}
 bindtointerface => "192.168.1.1";
 ```
 
 To bind to all interfaces, including IPV6:
 
-```cf3
+```cf3 {skip TODO}
 bindtointerface => "::";
 ```
 
@@ -254,7 +284,7 @@ Note that a bug in netstat will not correctly report that cf-serverd is
 listening on both IPV4 and IPV6 interfaces. A test with netcat (nc) will
 confirm.
 
-```cf3
+```
 # nc -v -4 172.16.100.1 5308
 Connection to 172.16.100.1 5308 port [tcp/cfengine] succeeded!
 ^C
@@ -263,6 +293,26 @@ Connection to fe80:470:1d:a2f::2 5308 port [tcp/cfengine] succeeded!
 ^C
 ```
 
+**See also:** [`default:control_server.bindtointerface`](/reference/special-variables/control_server/#defaultcontrol_serverbindtointerface)
+
+### dynamicaddresses
+
+**Description:** The `dynamicaddresses` slist contains IP addresses which should be allowed to re-connect from different IP addresses.
+
+**Type:** `slist`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+```cf3
+body server control
+{
+  dynamicaddresses => { "192.168.1.100", "2001:db8::1" };
+}
+```
+
+**See also:** [`default:control_server.dynamicaddresses`](/reference/special-variables/control_server/#defaultcontrol_serverdynamicaddresses)
 
 ### cfruncommand
 
@@ -276,7 +326,6 @@ shell command at your own risk.
 **Type:** `string`
 
 **Allowed input range:** `.+`
-
 
 ```cf3
 body server control
@@ -327,16 +376,16 @@ collection.
 
 The sequence of events is this:
 
--   The host's `cf-serverd` connects to its registered CFEngine Server
--   The host identifies itself to authentication and access
-    control and sends a collect-call pull-request to the server
--   The server might honor this, if the access control grants access.
--   If access is granted, the server has `collect_window` seconds to
-    initiate a query to the host for its reports.
--   The server identifies itself to authentication and access
-    control and sends a query request to the host to collect the
-    reports.
--   When finished, the host closes the tunnel.
+- The host's `cf-serverd` connects to its registered CFEngine Server
+- The host identifies itself to authentication and access
+  control and sends a collect-call pull-request to the server
+- The server might honor this, if the access control grants access.
+- If access is granted, the server has `collect_window` seconds to
+  initiate a query to the host for its reports.
+- The server identifies itself to authentication and access
+  control and sends a query request to the host to collect the
+  reports.
+- When finished, the host closes the tunnel.
 
 **Type:** `int`
 
@@ -391,8 +440,9 @@ bundle server my_access_rules()
 
 **Note:** In the [Masterfiles Policy Framework][Masterfiles Policy Framework], `body server control` and default access rules are found in `controls/cf_serverd.cf`.
 
-**History:** Was introduced in Enterprise 3.0.0 (2012)
+**See also:** [`default:control_server.call_collect_interval`](/reference/special-variables/control_server/#defaultcontrol_servercall_collect_interval)
 
+**History:** Was introduced in Enterprise 3.0.0 (2012)
 
 ### collect_window
 
@@ -409,8 +459,9 @@ open to a hub to attempt a report transfer before it is closed
 
 **Default value:** 30.
 
-**History:** Was introduced in Enterprise 3.0.0 (2012)
+**See also:** [`default:control_server.collect_window`](/reference/special-variables/control_server/#defaultcontrol_servercollect_window)
 
+**History:** Was introduced in Enterprise 3.0.0 (2012)
 
 ### denybadclocks
 
@@ -437,7 +488,6 @@ body server control
 denybadclocks => "true";
 }
 ```
-
 
 ### denyconnects
 
@@ -468,7 +518,6 @@ denyconnects => { "badhost\.domain\.evil", "host3\.domain\.com" };
 }
 ```
 
-
 ### logallconnections
 
 **Deprecated: This attribute was deprecated in 3.7.0.**
@@ -498,12 +547,11 @@ logencryptedtransfers => "true";
 
 **See also:** [`ifencrypted`][access#ifencrypted], [`encrypt`][files#encrypt], [`tls_ciphers`][Components#tls_ciphers], [`tls_min_version`][Components#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`protocol_version`][Components#protocol_version]
 
-
 ### maxconnections
 
 **Description:** Maximum number of concurrent connections the server
-  will accept. Recommended value for a hub is **two times the total
-  number of hosts bootstrapped to this hub**.
+will accept. Recommended value for a hub is **two times the total
+number of hosts bootstrapped to this hub**.
 
 **Type:** `int`
 
@@ -529,6 +577,9 @@ maxconnections => "1000";
 }
 ```
 
+**See also:** [`default:control_server.maxconnections`](/reference/special-variables/control_server/#defaultcontrol_servermaxconnections)
+
+**History:** Added in CFEngine 3.0.0
 
 ### port
 
@@ -567,6 +618,10 @@ this could change in the future.
 Changing the standard port number is not recommended practice. You
 should not do it without a good reason.
 
+**See also:** [`default:control_server.port`](/reference/special-variables/control_server/#defaultcontrol_serverport)
+
+**History:** Added in CFEngine 3.0.0
+
 ### serverfacility
 
 **Description:** Menu option for syslog facility level
@@ -599,7 +654,6 @@ serverfacility => "LOG_USER";
 }
 ```
 
-
 ### skipverify
 
 **Description:** This option is obsolete, does nothing and is retained
@@ -618,11 +672,10 @@ skipverify => { "special_host.*", "192.168\..*" };
 }
 ```
 
-
 ### trustkeysfrom
 
 **Description:** List of IPs from whom the server will accept and trust
-new (untrusted) public keys.  They are denoted in either IP or subnet
+new (untrusted) public keys. They are denoted in either IP or subnet
 form. For compatibility reasons, regular expressions are also
 accepted.
 
@@ -653,6 +706,28 @@ trustkeysfrom => { "10.0.1.1", "192.168.0.0/16"};
 }
 ```
 
+**See also:** [`default:control_server.trustkeysfrom`](/reference/special-variables/control_server/#defaultcontrol_servertrustkeysfrom)
+
+**History:** Added in CFEngine 3.0.0
+
+### hostnamekeys
+
+**Description:** The `hostnamekeys` menu option policy determines whether to label ppkeys by hostname not IP address. This represents a server side choice to base key associations on host names rather than IP address. This is useful for hosts with dynamic addresses.
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** false
+
+**Example:**
+
+```cf3
+body server control
+{
+  hostnamekeys => "true";
+}
+```
+
+**See also:** [`default:control_server.hostnamekeys`](/reference/special-variables/control_server/#defaultcontrol_serverhostnamekeys)
 
 ### listen
 
@@ -686,7 +761,6 @@ body server control
 
 **History:** Was introduced in 3.4.0, Enterprise 3.0 (2012)
 
-
 ## Deprecated attributes in body server control
 
 The following attributes were functional in previous versions
@@ -694,7 +768,7 @@ of CFEngine, but today they are deprecated, either because
 their functionality is being handled trasparently or because
 it doesn't apply to current CFEngine version.
 
-* ```auditing```
-* ```dynamicaddresses```
-* ```hostnamekeys```
-* ```keycacheTTL```
+- `auditing`
+- `dynamicaddresses`
+- `hostnamekeys`
+- `keycacheTTL`

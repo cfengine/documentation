@@ -2,6 +2,8 @@
 layout: default
 title: SQL queries using the Enterprise API
 sorting: 20
+aliases:
+  - "/web-ui-enterprise-reporting-sql-queries-enterprise-api.html"
 ---
 
 The CFEngine Enterprise Hub collects information about the
@@ -12,12 +14,12 @@ the Enterprise reporting API.
 Through the API, you can run CFEngine Enterprise reports with SQL
 queries. The API can create the following report queries:
 
--   Synchronous query: Issue a query and wait for the table to
-    be sent back with the response.
--   Asynchronous query: A query is issued and an immediate response with an ID is sent
-    so that you can check the query later to download the report.
--   Subscribed query: Specify a query to be run on a schedule
-    and have the result emailed to someone.
+- Synchronous query: Issue a query and wait for the table to
+  be sent back with the response.
+- Asynchronous query: A query is issued and an immediate response with an ID is sent
+  so that you can check the query later to download the report.
+- Subscribed query: Specify a query to be run on a schedule
+  and have the result emailed to someone.
 
 ### Synchronous queries
 

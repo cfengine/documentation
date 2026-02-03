@@ -2,6 +2,8 @@
 layout: default
 title: Cloud computing
 sorting: 80
+aliases:
+  - "/resources-additional-topics-cloud-computing.html"
 ---
 
 ## What is cloud computing?
@@ -128,15 +130,14 @@ approach to continuous maintenance.
 
 The approach used by CFEngine is to:
 
+- Help to bring comprehension to the scope of the problem (Knowledge Management
+  and Model-based Desired State Computing).
 
- * Help to bring comprehension to the scope of the problem (Knowledge Management
-   and Model-based Desired State Computing).
+- Help to implement change quickly and cheaply (through Lightweight
+  Automation).
 
- * Help to implement change quickly and cheaply (through Lightweight
-   Automation).
-
- * Help to bring measurable assurance about the state of compliance with policy
-   (continuous maintenance).
+- Help to bring measurable assurance about the state of compliance with policy
+  (continuous maintenance).
 
 CFEngine's model promise-based computing provides both a language of assurance
 for keeping promises, and a measuring stick against which compliance can be
@@ -144,16 +145,16 @@ measured. It is not necessary to make ad hoc judgements; every statement about
 the system can be documented and woven into a narrative about the system that
 can be understood both by technicians and management stakeholders.
 
-* Deployment and maintaining real or virtual machines
+- Deployment and maintaining real or virtual machines
 
-* Instant Managed services from _stem cell_ hosts
+- Instant Managed services from _stem cell_ hosts
 
-* Modelling the required properties of all machines and allowing non-experts
+- Modelling the required properties of all machines and allowing non-experts
   insight into that model to see how their business goals are being handled.
 
-* Focus on outcomes rather than implementation.
+- Focus on outcomes rather than implementation.
 
-* Bring systems from any state into compliance.
+- Bring systems from any state into compliance.
 
 ## What if I change my mind about Cloud Computing?
 

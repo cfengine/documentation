@@ -2,6 +2,8 @@
 layout: default
 title: Uninstalling / reinstalling
 sorting: 40
+aliases:
+  - "/resources-faq-uninstall-reinstall.html"
 ---
 
 ## What is left behind after uninstalling?

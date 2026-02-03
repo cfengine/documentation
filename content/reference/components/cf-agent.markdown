@@ -3,6 +3,8 @@ layout: default
 title: cf-agent
 sorting: 10
 keywords: [agent]
+aliases:
+  - "/reference-components-cf-agent.html"
 ---
 
 `cf-agent` evaluates policy code and makes changes to the system. Policy
@@ -17,18 +19,18 @@ affected by `common` and `agent` control bodies.
 
 **Notes:**
 
-* `cf-agent` always considers the class ```agent``` to be defined.
+- `cf-agent` always considers the class `agent` to be defined.
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$) >}}
 
 ### --simulate
 
 Like the `--dry-run` option, the `--simulate` option tries to identify changes
 to your system without making changes to the system, however it goes further
 than `--dry-run` by making changes in a `chroot` and making a distinction
-between *safe* and *unsafe* functions, e.g. `execresult()`.
+between _safe_ and _unsafe_ functions, e.g. `execresult()`.
 
 The agent will execute promises with unsafe functions when the `--simulate`
 options is given only if the promise using the function is tagged `simulate_safe`.
@@ -48,37 +50,38 @@ bundle agent __main__
 The simulate option takes a parameter, `diff`, `manifest`, or `manifest-full`
 which is used to determine the summary output shown at the end of the run.
 
-* `diff` - Show only things that changed during the simulated run.
-* `manifest` - Show files and packages changed by the simulated run.
-* `manifest-full` - Show all files evaluated by the simulated run (including unchanged ones)
+- `diff` - Show only things that changed during the simulated run.
+- `manifest` - Show files and packages changed by the simulated run.
+- `manifest-full` - Show all files evaluated by the simulated run (including unchanged ones)
+  - cf-agent can now simulate the changes done to files in a chroot, printing
+    diff or manifest information about what it would do in a normal evaluation.
+    Use the new command line option: `--simulate=diff` or `--simulate=manifest`.
+    Please note that only files and packages promises are simulated currently.
 
-    - cf-agent can now simulate the changes done to files in a chroot, printing
-      diff or manifest information about what it would do in a normal evaluation.
-      Use the new command line option: `--simulate=diff` or `--simulate=manifest`.
-      Please note that only files and packages promises are simulated currently.
-
-    - Added a new --simulate=manifest-full mode
-      New simulation mode that manifests all changed files as well as
-      all other files evaluated by the agent run which were not skipped
-      (by file selection rules) (CFE-3506)
+  - Added a new --simulate=manifest-full mode
+    New simulation mode that manifests all changed files as well as
+    all other files evaluated by the agent run which were not skipped
+    (by file selection rules) (CFE-3506)
 
 #### Notes
-* Supported on Linux for `files` and `packages` type promises
+
+- Supported on Linux for `files` and `packages` type promises
 
 #### History
-* Introduced in version 3.17.0
-* `--simulate=manifest-full` introduced in version 3.18.0
+
+- Introduced in version 3.17.0
+- `--simulate=manifest-full` introduced in version 3.18.0
 
 ## Automatic bootstrapping
 
 Automatic bootstrapping allows the user to connect a CFEngine Host to a Policy
-Server without specifying the IP address manually. It uses the *Avahi* service
+Server without specifying the IP address manually. It uses the _Avahi_ service
 discovery implementation of `zeroconf` to locate the Policy Server, obtain its IP
 address, and then connect to it. To use automatic bootstrap, install the
 following Avahi libraries:
 
-* libavahi-client
-* libavahi-common
+- libavahi-client
+- libavahi-common
 
 To make the CFEngine Server discoverable, it needs to register itself as an
 Avahi service. Run the following command:
@@ -218,6 +221,8 @@ bundle agent subtest(user)
 }
 ```
 
+**See also:** [`default:control_agent.abortbundleclasses`](/reference/special-variables/control_agent/#defaultcontrol_agentabortbundleclasses)
+
 ### abortclasses
 
 **Description:** The `abortclasses` slist contains regular expressions that
@@ -282,6 +287,8 @@ error: Fatal CFEngine error: cf-agent aborted on defined class 'should_not_conti
 **Note:** CFEngine class expressions are **not** supported. To handle class
 expressions, simply create an alias for the expression with a single name.
 
+**See also:** [`default:control_agent.abortclasses`](/reference/special-variables/control_agent/#defaultcontrol_agentabortclasses)
+
 ### addclasses
 
 **Description:** The `addclasses` slist contains classes to be defined
@@ -296,7 +303,7 @@ the control section are hard-classes.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 any::
 
   addclasses => { "My_Organization" }
@@ -313,6 +320,8 @@ Classes here are added unequivocally to the system. If classes are
 used to predicate definition, then they must be defined in terms of
 global hard classes.
 
+**See also:** [`default:control_agent.addclasses`](/reference/special-variables/control_agent/#defaultcontrol_agentaddclasses)
+
 ### agentaccess
 
 **Description:** A `agentaccess` slist contains user names that are
@@ -328,9 +337,11 @@ rather than a security measure.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 agentaccess => { "mark", "root", "sudo" };
 ```
+
+**See also:** [`default:control_agent.agentaccess`](/reference/special-variables/control_agent/#defaultcontrol_agentagentaccess)
 
 ### agentfacility
 
@@ -356,14 +367,15 @@ syslog facility level.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 agentfacility => "LOG_USER";
 ```
+
 **Notes:**
 
 This is ignored on Windows, as CFEngine Enterprise creates event logs.
 
-**See also:** Manual pages for syslog.
+**See also:** Manual pages for syslog, [`default:control_agent.agentfacility`](/reference/special-variables/control_agent/#defaultcontrol_agentagentfacility)
 
 ### allclassesreport
 
@@ -394,6 +406,8 @@ a more convenient way to retrieve a list of set classes at execution time.
 
 **History:** Was introduced in 3.2.4, Enterprise 2.1.4 (2011)
 
+**See also:** [`default:control_agent.allclassesreport`](/reference/special-variables/control_agent/#defaultcontrol_agentallclassesreport)
+
 ### alwaysvalidate
 
 **Description:** The `alwaysvalidate` menu option policy is a true/false
@@ -423,6 +437,8 @@ will force a revalidation of the input.
 
 **History:** Was introduced in version 3.1.2,Enterprise 2.0.1 (2010)
 
+**See also:** [`default:control_agent.alwaysvalidate`](/reference/special-variables/control_agent/#defaultcontrol_agentalwaysvalidate)
+
 ### auditing
 
 **Deprecated:** This menu option policy is deprecated, does
@@ -447,9 +463,11 @@ be given as the argument, not the device name.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 bindtointerface => "192.168.1.1";
 ```
+
+**See also:** [`default:control_agent.bindtointerface`](/reference/special-variables/control_agent/#defaultcontrol_agentbindtointerface)
 
 ### checksum_alert_time
 
@@ -475,9 +493,11 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.checksum_alert_time`](/reference/special-variables/control_agent/#defaultcontrol_agentchecksum_alert_time)
+
 ### childlibpath
 
-**Description:** The `childlibpath` string contains the LD\_LIBRARY\_PATH
+**Description:** The `childlibpath` string contains the LD_LIBRARY_PATH
 for child processes.
 
 This string may be used to set the internal `LD_LIBRARY_PATH` environment
@@ -496,6 +516,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.childlibpath`](/reference/special-variables/control_agent/#defaultcontrol_agentchildlibpath)
+
 ### copyfrom_restrict_keys
 
 This attribute restricts `cf-agent` to copying files from hosts that have a key explicitly defined in this list.
@@ -512,10 +534,11 @@ body agent control
 }
 ```
 
-**See also:** `admit_keys`, `controls/cf_agent.cf`
+**See also:** `admit_keys`, `controls/cf_agent.cf`, [`default:control_agent.copyfrom_restrict_keys`](/reference/special-variables/control_agent/#defaultcontrol_agentcopyfrom_restrict_keys)
 
 **History:**
-* Introduced in 3.20.0
+
+- Introduced in 3.20.0
 
 ### default_repository
 
@@ -550,7 +573,7 @@ stored in an alternative repository as `_usr_local_etc_postfix.conf.cfsaved`. If
 unset then backups are stored in the same directory as the original file with an
 identifying suffix.
 
-**See also:** [`edit_backup` in ```body edit_defaults```][files#edit_backup], [`copy_backup` in ```body copy_from```][files#copy_backup]
+**See also:** [`edit_backup` in `body edit_defaults`][files#edit_backup], [`copy_backup` in `body copy_from`][files#copy_backup], [`default:control_agent.default_repository`](/reference/special-variables/control_agent/#defaultcontrol_agentdefault_repository)
 
 ### default_timeout
 
@@ -560,7 +583,7 @@ time a network connection should attempt to connect or read from server.
 The time is in seconds. It is not a guaranteed number, since it
 depends on system behavior.
 
-[%CFEngine_promise_attribute(30 seconds)%
+{{< CFEngine_promise_attribute(30 seconds) >}}
 
 **Example:**
 
@@ -571,11 +594,11 @@ body agent control
 }
 ```
 
-**See also:** [body `copy_from` timeout][files#timeout], [`cf-runagent` timeout][cf-runagent#timeout]
+**See also:** [body `copy_from` timeout][files#timeout], [`cf-runagent` timeout][cf-runagent#timeout], [`default:control_agent.default_timeout`](/reference/special-variables/control_agent/#defaultcontrol_agentdefault_timeout)
 
 **Notes:**
 
-* `cf-serverd` will time out any transfer that takes longer than 10 minutes
+- `cf-serverd` will time out any transfer that takes longer than 10 minutes
   (this is not currently tunable).
 
 ### defaultcopytype
@@ -604,6 +627,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.defaultcopytype`](/reference/special-variables/control_agent/#defaultcontrol_agentdefaultcopytype)
+
 ### dryrun
 
 **Description:** The `dryrun` menu option, if set, makes no changes to
@@ -621,6 +646,8 @@ body agent control
   dryrun => "true";
 }
 ```
+
+**See also:** [`default:control_agent.dryrun`](/reference/special-variables/control_agent/#defaultcontrol_agentdryrun)
 
 ### editbinaryfilesize
 
@@ -649,6 +676,8 @@ body agent control
 When setting limits, the limit on editing binary files should
 generally be set higher than for text files.
 
+**See also:** [`default:control_agent.editbinaryfilesize`](/reference/special-variables/control_agent/#defaultcontrol_agenteditbinaryfilesize)
+
 ### editfilesize
 
 **Description:** The value of `editfilesize` is the limit on maximum text
@@ -671,6 +700,8 @@ body agent control
   editfilesize => "120k";
 }
 ```
+
+**See also:** [`default:control_agent.editfilesize`](/reference/special-variables/control_agent/#defaultcontrol_agenteditfilesize)
 
 ### environment
 
@@ -706,11 +737,44 @@ bundle agent one
 
 Some interactive programs insist on values being set, for example:
 
-```cf3
+```cf3 {skip TODO}
 # Required by apt-cache, debian
 
 environment => { "LANG=C" };
 ```
+
+**See also:** [`default:control_agent.environment`](/reference/special-variables/control_agent/#defaultcontrol_agentenvironment)
+
+### evaluation_order
+
+**Description:** Controls the evaluation order of promises within a bundle for `cf-agent`.
+
+This setting allows you to change how `cf-agent` executes promises. By default, CFEngine uses a `classic` evaluation order, where promises are executed in a predefined order based on their type (e.g., `vars` before `files`, `files` before `packages`, etc.). This is the historical behavior of CFEngine.
+
+By setting `evaluation_order` to `top_down`, you can force `cf-agent` to evaluate promises in the order they are written in the policy file, from top to bottom. This can make policy easier to write and understand, especially for new users, as the execution flow follows the visual layout of the code.
+
+This attribute can also be set in `body common control` to affect all components. If set in both, the value in `body agent control` takes precedence for `cf-agent`.
+
+**Type:** `string`
+
+**Allowed input range:** `(classic|top_down)`
+
+**Default value:** `classic`
+
+**Example:**
+
+```cf3
+body agent control
+{
+  evaluation_order => "top_down";
+}
+```
+
+**See also:** [`evaluation_order` in `body common control`][Components#evaluation_order], [Policy style guide on promise ordering][Policy style guide#Promise ordering]
+
+**History:**
+
+- Introduced in CFEngine 3.27.0
 
 ### expireafter
 
@@ -757,7 +821,9 @@ automatically.
 
 **Example:**
 
-[%CFEngine_include_example(files_auto_define.cf)%]
+{{< CFEngine_include_example(files_auto_define.cf) >}}
+
+**See also:** [`default:control_agent.files_auto_define`](/reference/special-variables/control_agent/#defaultcontrol_agentfiles_auto_define)
 
 ### files_single_copy
 
@@ -784,6 +850,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.files_single_copy`](/reference/special-variables/control_agent/#defaultcontrol_agentfiles_single_copy)
+
 ### hashupdates
 
 **Description:** The `hashupdates` determines whether stored hashes are
@@ -805,6 +873,8 @@ body agent control
   hashupdates => "true";
 }
 ```
+
+**See also:** [`default:control_agent.hashupdates`](/reference/special-variables/control_agent/#defaultcontrol_agenthashupdates)
 
 ### hostnamekeys
 
@@ -860,16 +930,16 @@ body agent control
 
 **Notes:**
 
-* A value of `0` means no locking, all promises will be executed each execution if in context. This also disables function caching.
-* This is not a reliable way to control frequency over a long period of time.
-* Locks provide simple but weak frequency control.
-* Locks older than 4 weeks are automatically purged.
+- A value of `0` means no locking, all promises will be executed each execution if in context. This also disables function caching.
+- This is not a reliable way to control frequency over a long period of time.
+- Locks provide simple but weak frequency control.
+- Locks older than 4 weeks are automatically purged.
 
 **See also:** [Promise locking][Promises#Promise locking], [ifelapsed action body attribute][Promise types#ifelapsed]
 
 ### inform
 
-**Description:** The `inform` menu option policy sets the default  output
+**Description:** The `inform` menu option policy sets the default output
 level 'permanently' within the class context indicated.
 
 It is equivalent to (and when present, overrides) the command line option
@@ -887,6 +957,8 @@ body agent control
   inform => "true";
 }
 ```
+
+**See also:** [`default:control_agent.inform`](/reference/special-variables/control_agent/#defaultcontrol_agentinform)
 
 ### intermittency
 
@@ -924,7 +996,7 @@ body agent control
 }
 ```
 
-**See also:** [`background` in action bodies][Promise types#background]
+**See also:** [`background` in action bodies][Promise types#background], [`default:control_agent.max_children`](/reference/special-variables/control_agent/#defaultcontrol_agentmax_children)
 
 ### maxconnections
 
@@ -953,6 +1025,8 @@ body agent control
 Watch out for kernel limitations for maximum numbers of open file
 descriptors which can limit this.
 
+**See also:** [`default:control_agent.maxconnections`](/reference/special-variables/control_agent/#defaultcontrol_agentmaxconnections)
+
 ### mountfilesystems
 
 **Description:** The `mountfilesystems` menu option policy determines
@@ -974,6 +1048,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.mountfilesystems`](/reference/special-variables/control_agent/#defaultcontrol_agentmountfilesystems)
+
 ### nonalphanumfiles
 
 **Description:** The `nonalphanumfiles` menu option policy determines
@@ -993,6 +1069,49 @@ body agent control
   nonalphanumfiles => "true";
 }
 ```
+
+**See also:** [`default:control_agent.nonalphanumfiles`](/reference/special-variables/control_agent/#defaultcontrol_agentnonalphanumfiles)
+
+### default_directory_create_mode
+
+**Description:** Override the default 0700 permissions when `cf-agent` creates
+parent directories during file promise repairs.
+
+The `default_directory_create_mode` attribute in body agent control enables
+users to specify custom permissions (e.g., 0755) for automatically created
+directories, avoiding the need for explicit perms promises on each parent
+directory when deeper paths are required.
+
+This addresses cases where files need broader access permissions but
+their auto-created parent directories would otherwise default to 0700,
+making the files inaccessible despite having correct permissions.
+
+The mode string may be symbolic or numerical, like `chmod`.
+
+**Type:** `string`
+
+**Default value:** `0700`
+
+**Example:**
+
+```cf3
+body agent control {
+  # Override the default directory create mode to 0755 (it defaults to 0700 if
+  # not specified)
+  default_directory_create_mode => "a+rx"; # Can also use octets 0755
+}
+```
+
+**History:**
+
+- Added in 3.27.0
+
+**Notes:**
+
+Please note that modifying this value will affect your entire policy and can
+lead to security vulnerabilities.
+
+**See also:** `filestat()`, [`body perms mode`](/reference/promise-types/files#mode), [`default:control_agent.default_directory_create_mode`](/reference/special-variables/control_agent/#defaultcontrol_agentdefault_directory_create_mode), [`default:update_def.control_agent_default_directory_create_mode` in the standard library](/reference/masterfiles-policy-framework#configure-default-directory-creation-permissions-for-update-policy)
 
 ### refresh_processes
 
@@ -1022,10 +1141,12 @@ body agent control
 
 This examples uses a non-empty list with the name 'none'. This is not a
 reserved word, but as long as there are no bundles with the name 'none' this
-has the effect of *never* reloading the process table. This keeps improves the
+has the effect of _never_ reloading the process table. This keeps improves the
 efficiency of the agent.
 
 **History:** Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
+
+**See also:** [`default:control_agent.refresh_processes`](/reference/special-variables/control_agent/#defaultcontrol_agentrefresh_processes)
 
 ### repchar
 
@@ -1048,6 +1169,8 @@ body agent control
 ```
 
 **Notes:**
+
+**See also:** [`default:control_agent.repchar`](/reference/special-variables/control_agent/#defaultcontrol_agentrepchar)
 
 ### report_class_log
 
@@ -1081,20 +1204,22 @@ body agent control
 
 **History:**
 
-* Added in 3.9.0
+- Added in 3.9.0
 
 **Notes:**
 
-* Available in CFEngine Enterprise.
-* Persistent classes are logged with the timestamp of each agent run.
+- Available in CFEngine Enterprise.
+- Persistent classes are logged with the timestamp of each agent run.
 
 The following classes are excluded from logging:
 
-* Time based classes (`Hr01`, `Tuesday`, `Morning`, etc ...)
-* `license_expired`
-* `any`
-* `from_cfexecd`
-* Life cycle (`Lcycle_0`, `GMT_Lcycle_3`)
+- Time based classes (`Hr01`, `Tuesday`, `Morning`, etc ...)
+- `license_expired`
+- `any`
+- `from_cfexecd`
+- Life cycle (`Lcycle_0`, `GMT_Lcycle_3`)
+
+**See also:** [`default:control_agent.report_class_log`](/reference/special-variables/control_agent/#defaultcontrol_agentreport_class_log)
 
 ### secureinput
 
@@ -1117,10 +1242,12 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.secureinput`](/reference/special-variables/control_agent/#defaultcontrol_agentsecureinput)
+
 ### select_end_match_eof
 
 **Description:** When `true` this sets the default behavior for `edit_line`
-promises to allow the end of a file to mark the end of a region when ```select_end```
+promises to allow the end of a file to mark the end of a region when `select_end`
 is defined, but not found.
 
 It is useful for configuration files with sections that do not have end markers,
@@ -1161,6 +1288,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.sensiblecount`](/reference/special-variables/control_agent/#defaultcontrol_agentsensiblecount)
+
 ### sensiblesize
 
 **Description:** The value of `sensiblesize` represents the minimum
@@ -1180,6 +1309,8 @@ body agent control
   sensiblesize => "20K";
 }
 ```
+
+**See also:** [`default:control_agent.sensiblesize`](/reference/special-variables/control_agent/#defaultcontrol_agentsensiblesize)
 
 ### skipidentify
 
@@ -1205,6 +1336,8 @@ body agent control
 }
 ```
 
+**See also:** [`default:control_agent.skipidentify`](/reference/special-variables/control_agent/#defaultcontrol_agentskipidentify)
+
 ### suspiciousnames
 
 **Description:** The `suspiciousnames` slist contains names to skip and warn
@@ -1225,6 +1358,8 @@ body agent control
   suspiciousnames => { ".mo", "lrk3", "rootkit" };
 }
 ```
+
+**See also:** [`default:control_agent.suspiciousnames`](/reference/special-variables/control_agent/#defaultcontrol_agentsuspiciousnames)
 
 ### syslog
 
@@ -1248,6 +1383,10 @@ body agent control
   timezone => { "MET", "CET", "GMT+1" };
 }
 ```
+
+**See also:** [`default:control_agent.timezone`][control_agent#default:control_agent.timezone]
+
+**History:** Introduced in CFEngine 3.0.0
 
 ### track_value
 
@@ -1275,3 +1414,5 @@ body agent control
   verbose => "true";
 }
 ```
+
+**See also:** [`default:control_agent.verbose`](/reference/special-variables/control_agent/#defaultcontrol_agentverbose)

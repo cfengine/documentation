@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Health diagnostic API
+aliases:
+  - "/api-enterprise-api-ref-health-diagnostic.html"
 ---
 
 This API provides access to health diagnostic information.
@@ -57,24 +59,25 @@ API performance depend on the query result size, to achieve fastest results cons
 
 **Parameters:**
 
-* **report_id** *(string)*
-    Report id.
-    List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
-* **sortColumn** *(string)*
-    Column name on which to sort results. Optional parameter.
-* **sortDescending** *(boolean)*
-    Sorting order. Optional parameter.
-* **skip** *(integer)*
-    Number of results to skip for the processed
-    query. The Mission Portal uses this for pagination. Optional parameter.
-* **limit**  *(integer)*
-    Limit the number of results in the query.
-* **hostContextInclude** *(array)*
-    Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
-* **hostContextExclude** *(array)*
-    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at lest one of the specified contexts set will be excluded from the results. Optional parameter.
+- **report_id** _(string)_
+  Report id.
+  List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
+- **sortColumn** _(string)_
+  Column name on which to sort results. Optional parameter.
+- **sortDescending** _(boolean)_
+  Sorting order. Optional parameter.
+- **skip** _(integer)_
+  Number of results to skip for the processed
+  query. The Mission Portal uses this for pagination. Optional parameter.
+- **limit** _(integer)_
+  Limit the number of results in the query.
+- **hostContextInclude** _(array)_
+  Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
+- **hostContextExclude** _(array)_
+  Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at lest one of the specified contexts set will be excluded from the results. Optional parameter.
 
 **CURL Request Example:**
+
 ```
 curl -k --user <username>:<password> -X POST \
   https://hub.cfengine.com/api/health-diagnostic/report/agentNotRunRecently \
@@ -142,16 +145,16 @@ curl -k --user <username>:<password> -X POST \
 
 **Parameters**
 
-* **report_id** *(string)*
-    Report id.
-    List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
-* **offset** *(integer)*
-    Number of results to skip for the processed query.
-* **limit**  *(integer)*
-    Limit the number of results in the query.
-
+- **report_id** _(string)_
+  Report id.
+  List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
+- **offset** _(integer)_
+  Number of results to skip for the processed query.
+- **limit** _(integer)_
+  Limit the number of results in the query.
 
 **CURL Request Example:**
+
 ```
 curl -k --user <username>:<password> -X GET \
   https://hub.cfengine.com/api/health-diagnostic/dismiss/notRecentlyCollected?limit=3&offset=0
@@ -230,14 +233,14 @@ curl -k --user <username>:<password> -X GET \
 
 **Parameters**
 
-* **report_id** *(string)*
-    Report id.
-    List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
-* **hosts** *(array)*
-    Array of host keys to dismiss
-
+- **report_id** _(string)_
+  Report id.
+  List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
+- **hosts** _(array)_
+  Array of host keys to dismiss
 
 **CURL Request Example:**
+
 ```
 curl -k --user admin:admin -X POST \
   https://hub.cfengine.com/api/health-diagnostic/dismiss/notRecentlyCollected \
@@ -251,7 +254,6 @@ curl -k --user admin:admin -X POST \
 HTTP 201 CREATED
 ```
 
-
 ## Remove hosts from dismissed list
 
 **URI:** https://hub.cfengine.com/api/health-diagnostic/dismiss/:report_id
@@ -260,14 +262,14 @@ HTTP 201 CREATED
 
 **Parameters**
 
-* **report_id** *(string)*
-    Report id.
-    List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
-* **hosts** *(array)*
-    Array of host keys to remove from dismissed list
-
+- **report_id** _(string)_
+  Report id.
+  List of report ids you can obtain through [List of health diagnostic report categories][Health diagnostic API#List of health diagnostic report categories]
+- **hosts** _(array)_
+  Array of host keys to remove from dismissed list
 
 **CURL Request Example:**
+
 ```
 curl -k --user admin:admin -X POST \
   https://hub.cfengine.com/api/health-diagnostic/dismiss/notRecentlyCollected \

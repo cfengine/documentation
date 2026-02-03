@@ -2,6 +2,8 @@
 layout: default
 title: Enterprise report collection
 sorting: 90
+aliases:
+  - "/resources-faq-enterprise-report-collection.html"
 ---
 
 Frequently asked questions on Enterprise report collection.
@@ -15,17 +17,18 @@ component may log to various data sources within `$(sys.statedir)`.
 ## How does CFEngine Enterprise collect reports?
 
 `cf-hub` makes connections from the hub to remote agents currently registered in
-the lastseen database (viewable with ```cf-key -s```)
+the lastseen database (viewable with `cf-key -s`)
 on [`body hub control port`][body hub control port] (5308 by default). The hub
 tries to collect from up to the LICENSED number of hosts for each collection
 round as identified by `hub_schedule` as defined
 in [`body hub control`][cf-hub#control-promises].
 
-* **See also:** `hostsseen()`, `hostswithclass()`
+- **See also:** `hostsseen()`, `hostswithclass()`
 
 ## How often does cf-hub re-check the LICENSE
 
 <!--cf-hub/license-checking.c:#define SECONDS_BETWEEN_CHECKS (5 * SECONDS_PER_MINUTE)-->
+
 `cf-hub` re-checks the license when it is started and once every 5 minutes after
 that.
 
@@ -63,6 +66,7 @@ When the number of hosts in the `lastseen` database (viewable with
 `cf-key -s`) is greater than the number of LICENSED hosts for this hub.
 
 ## How are agents not running determined?
+
 Hosts who's last agent execution status is "FAIL" will show up under "Agents not
 running". A hosts last agent execution status is set to "FAIL" when the hub
 notices that there are no promise results within 3x of the expected agent run
@@ -138,7 +142,7 @@ of oxygen, where oxygen is access to latest policy) to indicate a health issue.
 
 When a host is removed using the delete API its key is placed in a queue for
 trust revocation. To see which hosts are pending key removal use the following
-query against the ```cfsettings``` database.
+query against the `cfsettings` database.
 
 ```sql
 SELECT HostKey FROM KeysPendingForDeletion;
@@ -152,7 +156,7 @@ reporting for hosts experiencing issues.
 ### Perform manual delta collection for a single host
 
 Performing back to back delta collections and comparing the data received can
-help to expose so called *patching* issues. If the same amount of data is
+help to expose so called _patching_ issues. If the same amount of data is
 collected twice a **rebase** may resolve it.
 
 ```console

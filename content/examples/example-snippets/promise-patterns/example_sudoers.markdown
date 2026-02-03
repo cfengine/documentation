@@ -3,6 +3,8 @@ layout: default
 title: Set up sudo
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_sudoers.html"
 ---
 
 Setting up sudo is straightforward, we recommend managing it by copying trusted files from a repository. The following bundle will copy a master sudoers file to `/etc/sudoers` (`/tmp/sudoers` in this example - change it to `/etc/sudoers` to use in production).
@@ -14,7 +16,6 @@ bundlesequence => { "sudoers" };
 inputs => { "libraries/cfengine_stdlib.cf" };
 }
 
-
 bundle agent sudoers
 {
 
@@ -22,7 +23,6 @@ bundle agent sudoers
 vars:
 
   "master_location" string => "/var/cfengine/masterfiles";
-
 
 # Copy the master sudoers file to /etc/sudoers
 files:

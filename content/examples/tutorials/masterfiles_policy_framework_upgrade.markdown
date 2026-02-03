@@ -2,21 +2,17 @@
 layout: default
 title: Masterfiles Policy Framework upgrade
 sorting: 14
+aliases:
+  - "/examples-tutorials-masterfiles_policy_framework_upgrade.html"
 ---
 
 Upgrading the Masterfiles Policy Framework (MPF) is the first step in upgrading CFEngine from one version to another. The MPF should always be the same version or newer than the binary versions running.
 
 Upgrading the MPF is not an exact process as the details highly depend on the specifics of the changes made to the default policy. This example leverages `git` and shows an example of upgrading a simple policy set based on `3.18.0` to `3.21.2` and can be used as a reference for upgrading your own policy sets.
 
-
-
-
 # Prepare a Git clone of your working masterfiles
 
 We will perform the integration work in `/tmp/MPF-upgrade/integration`. `masterfiles` should exist in the integration directory and is expected to be both the root of your policy set and a `git` repository.
-
-
-
 
 ## Validating expectations
 
@@ -67,13 +63,7 @@ Date:   Wed Jul 26 18:43:06 2023 -0500
     CFEngine Policy set prior to upgrade
 ```
 
-
-
-
 # Merge upstream changes from the MPF into your policy
-
-
-
 
 ## Remove everything except the `.git` directory
 
@@ -225,13 +215,7 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-
-
-
 ## Install the new version of the MPF
-
-
-
 
 ### Installing from Git
 
@@ -411,9 +395,6 @@ We no longer need the source, we can clean it up.
 cd $INTEGRATION_ROOT/
 rm -rf $INTEGRATION_ROOT/masterfiles-source-$MPF_VERSION
 ```
-
-
-
 
 ## Merge differences
 
@@ -796,7 +777,6 @@ index 15c0c40..4611098 100644
 
 @@ -127,6 +115,12 @@ custom_2,
          ignore_missing_inputs => "$(def.control_common_ignore_missing_inputs)";
-
 
 +    control_common_tls_min_version_defined::
 +        tls_min_version => "$(default:def.control_common_tls_min_version)"; # See also: allowtlsversion in body server control

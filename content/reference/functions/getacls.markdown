@@ -1,9 +1,11 @@
 ---
 layout: default
 title: getacls
+aliases:
+  - "/reference-functions-getacls.html"
 ---
 
-[%CFEngine_function_prototype(path, type)%]
+{{< CFEngine_function_prototype(path, type) >}}
 
 **Description:** Return the Access Control List (ACL) for a given file- or directory path.
 

@@ -2,6 +2,8 @@
 layout: default
 title: Package management
 sorting: 3
+aliases:
+  - "/examples-tutorials-manage-packages.html"
 ---
 
 Package management is a critical task for any system administrator. In this
@@ -142,10 +144,8 @@ declaration, and `manage_packages` to the bundlesequence declaration.
 
 ```json {file="def.json"}
 {
-  "inputs": [ "manage_packages.cf" ],
-  "vars": {
-    "control_common_update_bundlesequence_end": [ "manage_packages" ]
-    }
+  "inputs": ["manage_packages.cf"],
+  "vars": { "control_common_update_bundlesequence_end": ["manage_packages"] }
 }
 ```
 

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Query REST API
+aliases:
+  - "/api-enterprise-api-ref-query.html"
 ---
 
 In case of a need for full flexibility, Query API allow users to execute SQL queries on CFEngine Database.
@@ -19,21 +21,21 @@ API performance depend on the query result size, to achieve fastest results cons
 
 **Parameters:**
 
-* **query** *(string)*
-    SQL query string.
-* **sortColumn** *(string)*
-    Column name on which to sort results. Optional parameter.
-* **sortDescending** *(boolean)*
-    Sorting order. Optional parameter.
-* **skip** *(integer)*
-    Number of results to skip for the processed
-    query. The Mission Portal uses this for pagination. Optional parameter.
-* **limit**  *(integer)*
-    Limit the number of results in the query.
-* **hostContextInclude** *(array)*
-    Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
-* **hostContextExclude** *(array)*
-    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at lest one of the specified contexts set will be excluded from the results. Optional parameter.
+- **query** _(string)_
+  SQL query string.
+- **sortColumn** _(string)_
+  Column name on which to sort results. Optional parameter.
+- **sortDescending** _(boolean)_
+  Sorting order. Optional parameter.
+- **skip** _(integer)_
+  Number of results to skip for the processed
+  query. The Mission Portal uses this for pagination. Optional parameter.
+- **limit** _(integer)_
+  Limit the number of results in the query.
+- **hostContextInclude** _(array)_
+  Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
+- **hostContextExclude** _(array)_
+  Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at lest one of the specified contexts set will be excluded from the results. Optional parameter.
 
 **Example Request Body:**
 
@@ -85,7 +87,7 @@ API performance depend on the query result size, to achieve fastest results cons
 }
 ```
 
-**Example usage:**  `Synchronous Example: Listing hostname and IP for Ubuntu hosts`
+**Example usage:** `Synchronous Example: Listing hostname and IP for Ubuntu hosts`
 
 ## Schedule SQL query as long running job
 
@@ -103,14 +105,14 @@ API returns entire query result. Make sure that result size is sensible.
 
 **Parameters:**
 
-* **query** *(string)*
-    SQL query string.
-* **outputType** *(string)*
-    Supported types: 'csv' (default). Optional parameter.
-* **hostContextInclude** *(array)*
-    Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
-* **hostContextExclude** *(array)*
-    Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at lest one of the specified contexts set will be excluded from the results. Optional parameter.
+- **query** _(string)_
+  SQL query string.
+- **outputType** _(string)_
+  Supported types: 'csv' (default). Optional parameter.
+- **hostContextInclude** _(array)_
+  Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.
+- **hostContextExclude** _(array)_
+  Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at lest one of the specified contexts set will be excluded from the results. Optional parameter.
 
 **Example Request Body:**
 

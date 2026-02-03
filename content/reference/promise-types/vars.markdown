@@ -1,6 +1,8 @@
 ---
 layout: default
 title: vars
+aliases:
+  - "/reference-promise-types-vars.html"
 ---
 
 [Variables][variables] in CFEngine are defined
@@ -24,8 +26,7 @@ enclose an arbitrary key are being deprecated in favor of the `data` variable ty
 
 **Example:**
 
-
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "xxx"    string => "Some literal string...";
@@ -42,7 +43,7 @@ vars:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "scalar" int    => "16k";
@@ -73,7 +74,7 @@ the value you assign to it looks like an integer (e.g., 3, -17, 16K).
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "scalar" real   => "0.5";
@@ -105,7 +106,7 @@ list of values. The order of the list is preserved by CFEngine.
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "xxx"    slist  => {  "literal1",  "literal2" };
@@ -145,7 +146,7 @@ may contain the values copied from another `slist`, `rlist`, or `ilist`. See
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   "variable_id"
@@ -177,7 +178,7 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   "varid" rlist => { "0.1", "0.2", "0.3" };
@@ -201,7 +202,7 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See [`polic
 The `data` variables are obtained from functions that return data
 containers, such as `readjson()`, `readyaml()`, `parsejson()`, or
 `parseyaml()`, the various `data_*` functions, or from merging
-existing data containers with `mergedata()`. They can *NOT* be
+existing data containers with `mergedata()`. They can _NOT_ be
 modified, once created.
 
 ### Inline YAML and JSON data
@@ -226,13 +227,14 @@ data early. Thus it is highly recommended that you try to avoid
 variable references in your inline JSON or YAML data.
 
 For example:
+
 #### Inline Yaml example
 
-[%CFEngine_include_example(inline-yaml.cf)%]
+{{< CFEngine_include_example(inline-yaml.cf) >}}
 
 #### Inline Json example
 
-[%CFEngine_include_example(inline-json.cf)%]
+{{< CFEngine_include_example(inline-json.cf) >}}
 
 ### Passing data containers to bundles
 
@@ -241,26 +243,26 @@ Data containers can be passed to another bundle with the
 
 ### Some useful tips for using data containers
 
-* to extract just `container[x]`, use `mergedata("container[x]")`
-* to wrap a container in an array, use `mergedata("[ container ]")`
-* to wrap a container in a map, use `mergedata('{ "mykey": container }')`
-* they act like "classic" CFEngine arrays in many ways
-* `getindices()` and `getvalues()` work on any level, e.g. `getvalues("container[x][y]")`
-* in reports, you have to reference a part of the container that can be expressed as a string.  So for instance if you have the container `c` with data `{ "x": { "y": 50 }, "z": [ 1,2,3] }` we have two top-level keys, `x` and `z`.  If you report on `$(c[x])` you will not get data, since there is no string there.  But if you ask for `$(c[x][y])` you'll get `50`, and if you ask for `$(c[z])` you'll get implicit iteration on `1,2,3` (just like a slist in a "classic" CFEngine array).
-* read the examples below carefully to see some useful ways to access data container contents
+- to extract just `container[x]`, use `mergedata("container[x]")`
+- to wrap a container in an array, use `mergedata("[ container ]")`
+- to wrap a container in a map, use `mergedata('{ "mykey": container }')`
+- they act like "classic" CFEngine arrays in many ways
+- `getindices()` and `getvalues()` work on any level, e.g. `getvalues("container[x][y]")`
+- in reports, you have to reference a part of the container that can be expressed as a string. So for instance if you have the container `c` with data `{ "x": { "y": 50 }, "z": [ 1,2,3] }` we have two top-level keys, `x` and `z`. If you report on `$(c[x])` you will not get data, since there is no string there. But if you ask for `$(c[x][y])` you'll get `50`, and if you ask for `$(c[z])` you'll get implicit iteration on `1,2,3` (just like a slist in a "classic" CFEngine array).
+- read the examples below carefully to see some useful ways to access data container contents
 
 Iterating through a data container is only guaranteed to respect list
 order (e.g. `[1,3,20]` will be iterated in that order). Key order for
 maps, as per the JSON standard, is not guaranteed. Similarly, calling
 `getindices()` on a data container will give the list order of indices
 0, 1, 2, ... but will not give the keys of a map in any particular
-order.  Here's an example of iterating in list order:
+order. Here's an example of iterating in list order:
 
-[%CFEngine_include_snippet(container_iteration.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(container_iteration.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(container_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(container_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 Often you need to iterate through the keys of a container, and the
 value is a key-value property map for that key. The example here shows
@@ -268,11 +270,11 @@ how you can pass the "animals" container and an "animal" key inside it
 to a bundle, which can then report and use the data from the key-value
 property map.
 
-[%CFEngine_include_snippet(container_key_iteration.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(container_key_iteration.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(container_key_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(container_key_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 ### data
 
@@ -284,7 +286,7 @@ Output:
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
  "loaded1" data => readjson("/tmp/myfile.json", 40000);
@@ -298,9 +300,11 @@ vars:
  "inline2" data => '---$(const.n)- key2: value2'; # YAML requires "---$(const.n)" header
 ```
 
-***
+---
 
 ## Attributes
+
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### policy
 
@@ -326,7 +330,7 @@ ifdefined
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
 
   "varid" string => "value...",
@@ -335,7 +339,7 @@ vars:
 
 **Notes:**
 
-The policy `free` and `overridable` are synonyms.  The policy `constant` is
+The policy `free` and `overridable` are synonyms. The policy `constant` is
 deprecated, and has no effect. All variables are `free` or `overridable` by
 default which means the variables values may be changed.
 
@@ -344,7 +348,7 @@ undefined lists are dropped. The default behavior is otherwise to retain this
 value as an indicator of the failure to quench the variable reference, for
 example:
 
-```cf3
+```cf3 {skip TODO}
 "one" slist => { "1", "2", "3" };
 
 "list" slist => { "@(one)", @(two) },
@@ -356,7 +360,7 @@ This results in `@(list)` being the same as `@(one)`, and the reference to
 
 For example:
 
-```cf3
+```cf3 {skip TODO}
 example_com::
   "domain"
      string => "example.com",
@@ -386,7 +390,7 @@ general rule which are described below.
 
 ### Meta type promises
 
-Variables defined by the *meta* promise type are defined in a bundle scope with the same name as the executing bundle suffixed with ```meta```.
+Variables defined by the _meta_ promise type are defined in a bundle scope with the same name as the executing bundle suffixed with `meta`.
 
 **Example policy:**
 
@@ -490,7 +494,7 @@ R: {
 
 ### Module protocol
 
-The module protocol allows specification of *context* (the bundle scope within which a variable gets defined).
+The module protocol allows specification of _context_ (the bundle scope within which a variable gets defined).
 
 **Example policy:**
 
@@ -527,15 +531,13 @@ R: {
 
 ### Augments
 
-Augments defines variables in the *def* bundle scope.
+Augments defines variables in the _def_ bundle scope.
 
 This augments file that defines `my_var` will be used for all examples shown here (`/tmp/def.json`).
 
 ```json
 {
-  "vars": {
-    "my_var": "My value defined from augments"
-    }
+  "vars": { "my_var": "My value defined from augments" }
 }
 ```
 

@@ -2,6 +2,8 @@
 layout: default
 title: Supported platforms and versions
 sorting: 20
+aliases:
+  - "/release-notes-supported-platforms.html"
 ---
 
 CFEngine works on a wide range of platforms, and the CFEngine team strives to
@@ -11,34 +13,34 @@ for all supported platforms and [binary packages for popular Linux distributions
 
 ## Hub
 
-| Platform    | Versions            | Architecture |
-|:-----------:|:-------------------:|:------------:|
-| CentOS/RHEL | 7, 8.1+, 9          | x86-64       |
-| Debian      | 11, 12              | x86-64       |
-| Debian      | 11, 12              | arm64        |
-| Ubuntu      | 20.04, 22.04, 24.04 | x86-64       |
-| Ubuntu      | 22.04, 24.04        | arm64        |
+|  Platform   |      Versions       | Architecture |
+| :---------: | :-----------------: | :----------: |
+| CentOS/RHEL |   7, 8.1+, 9, 10    |    x86-64    |
+| CentOS/RHEL |         10          |    arm64     |
+|   Debian    |     11, 12, 13      |    x86-64    |
+|   Debian    |     11, 12, 13      |    arm64     |
+|   Ubuntu    | 20.04, 22.04, 24.04 |    x86-64    |
+|   Ubuntu    |    22.04, 24.04     |    arm64     |
 
 Any supported host can be a policy server in Community installations of CFEngine.
 
 ## Clients
 
-| Platform    | Versions            | Architectures |
-|:-----------:|:-------------------:|:-------------:|
-| AIX         | 7.1, 7.2            | PowerPC       |
-| CentOS/RHEL | 7, 8.1+, 9          | x86-64        |
-| Debian      | 11, 12              | x86-64        |
-| Debian      | 11, 12              | arm64         |
-| HP-UX       | 11.31+              | Itanium       |
-| SLES        | 12, 15              | x86-64        |
-| Solaris     | 11                  | UltraSparc    |
-| Ubuntu      | 20.04, 22.04, 24.04 | x86-64        |
-| Ubuntu      | 22.04, 24.04        | arm64         |
-| Windows     | 2012, 2016, 2019    | x86-64        |
-
+|  Platform   |      Versions       | Architectures |
+| :---------: | :-----------------: | :-----------: |
+|     AIX     |      7.1, 7.2       |    PowerPC    |
+| CentOS/RHEL |   7, 8.1+, 9, 10    |    x86-64     |
+| CentOS/RHEL |         10          |     arm64     |
+|   Debian    |     11, 12, 13      |    x86-64     |
+|   Debian    |     11, 12, 13      |     arm64     |
+|    HP-UX    |       11.31+        |    Itanium    |
+|    SLES     |       12, 15        |    x86-64     |
+|   Solaris   |         11          |  UltraSparc   |
+|   Ubuntu    | 20.04, 22.04, 24.04 |    x86-64     |
+|   Ubuntu    |    22.04, 24.04     |     arm64     |
+|   Windows   |  2012, 2016, 2019   |    x86-64     |
 
 [Known issues][] also includes platform-specific notes.
-
 
 CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493) from IBM.
 This means that CFEngine Enterprise has been technically verified by IBM

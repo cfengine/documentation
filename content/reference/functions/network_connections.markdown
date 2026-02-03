@@ -1,20 +1,22 @@
 ---
 layout: default
 title: network_connections
+aliases:
+  - "/reference-functions-network_connections.html"
 ---
 
-[%CFEngine_function_prototype()%]
+{{< CFEngine_function_prototype() >}}
 
 **Description:** Return the list of current network connections.
 
-[%CFEngine_function_attributes()%]
+{{< CFEngine_function_attributes() >}}
 
 The returned data container has four keys:
 
-* `tcp` has all the TCP connections over IPv4
-* `tcp6` has all the TCP connections over IPv6
-* `udp` has all the UDP connections over IPv4
-* `udp6` has all the UDP connections over IPv6
+- `tcp` has all the TCP connections over IPv4
+- `tcp6` has all the TCP connections over IPv6
+- `udp` has all the UDP connections over IPv4
+- `udp6` has all the UDP connections over IPv6
 
 Under each key, there's an array of connection objects that all look like this:
 
@@ -54,7 +56,7 @@ On Linux, all the data is collected from the files `/proc/net/tcp`,
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 vars:
   "connections" data => network_connections();
 ```

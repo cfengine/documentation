@@ -1,7 +1,9 @@
 ---
 layout: default
-title:  Checking status
+title: Checking status
 sorting: 20
+aliases:
+  - "/api-enterprise-api-examples-checking-status.html"
 ---
 
 You can get basic info about the API by issuing [/api][Status and settings REST API#Get server status]. This status
