@@ -371,7 +371,7 @@ packages:
 
 Enable a specific repository for a specific promise.
 
-```cf3
+```cf3 {skip TODO}
 bundle agent example
 {
   packages:
@@ -391,7 +391,7 @@ bundle agent example
       "httpd"
          policy => "present",
          version => "latest",
-         options => { "disablerepo=* enablerepo=UPDATES" };
+         options => { "disablerepo=*", "enablerepo=UPDATES" };
 }
 ```
 
@@ -442,6 +442,77 @@ bundle agent example
 
 - Added in CFEngine 3.7.0
 - `enablerepo` and `disablerepo` option support added in 3.7.8, 3.10.4, 3.12.0
+
+### dnf
+
+Manage packages using `dnf`. This is the [default package module][lib/packages.cf#package_module_knowledge] for modern Red Hat, CentOS, Fedora, and Amazon Linux systems.
+
+**Examples:**
+
+File based package source.
+
+```cf3 {skip TODO}
+packages:
+  redhat|centos|amazon_linux::
+    "/mnt/nfs/packages/httpd-2.4.37-65.module+el8.10.0+40053+5a18018e.7.x86_64.rpm"
+      policy => "present";
+```
+
+Repository based package source with a specific version of the package.
+
+```cf3 {skip TODO}
+packages:
+  (redhat|centos|amazon_linux).workstation::
+    "emacs"
+      policy => "present",
+      version => "26.1-13";
+```
+
+Enable a specific repository for a specific promise.
+
+```cf3
+bundle agent example
+{
+  packages:
+
+    rocky_8::
+      # Enable the EPEL repo when making sure etc-keeper is installed
+      # and up to date.
+
+      "etckeeper-dnf"
+         policy => "present",
+         version => "latest",
+         options => { "enablerepo=powertools" };
+
+      # Only consider updates from the main repositories for
+      # httpd and disable all other repositories
+
+      "httpd"
+         policy => "present",
+         version => "latest",
+         options => { "disablerepo=*", "enablerepo=UPDATES" };
+}
+```
+
+**Notes:**
+
+- Supports file path and repository sourced packages.
+
+- Requires Python 3 to be installed on the host (leverages cfengine-selected-python).
+
+- Package downgrades default to the system configuration (typically disabled). To explicitly allow the module to downgrade a package for a specific promise, set `options => { "allow_downgrade=true" }`.
+
+  ```cf3 {skip TODO}
+  packages:
+      "httpd"
+        policy => "present",
+        version => "2.4.37-64", # Older version
+        options => { "allow_downgrade=true" };
+  ```
+
+**History:**
+
+- Added in CFEngine 3.28.0, 3.27.1, 3.24.4
 
 ### apt_get
 
