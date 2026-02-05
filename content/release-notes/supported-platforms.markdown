@@ -13,14 +13,14 @@ for all supported platforms and [binary packages for popular Linux distributions
 
 ## Hub
 
-|  Platform   |      Versions       | Architecture |
-| :---------: | :-----------------: | :----------: |
-| CentOS/RHEL |   7, 8.1+, 9, 10    |    x86-64    |
-| CentOS/RHEL |         10          |    arm64     |
-|   Debian    |     11, 12, 13      |    x86-64    |
-|   Debian    |     11, 12, 13      |    arm64     |
-|   Ubuntu    | 20.04, 22.04, 24.04 |    x86-64    |
-|   Ubuntu    |    22.04, 24.04     |    arm64     |
+|  Platform   |   Versions   | Architecture |
+| :---------: | :----------: | :----------: |
+| CentOS/RHEL | 8.1+, 9, 10  |    x86-64    |
+| CentOS/RHEL |      10      |    arm64     |
+|   Debian    |    12, 13    |    x86-64    |
+|   Debian    |    12, 13    |    arm64     |
+|   Ubuntu    | 22.04, 24.04 |    x86-64    |
+|   Ubuntu    | 22.04, 24.04 |    arm64     |
 
 Any supported host can be a policy server in Community installations of CFEngine.
 
@@ -28,14 +28,10 @@ Any supported host can be a policy server in Community installations of CFEngine
 
 |  Platform   |      Versions       | Architectures |
 | :---------: | :-----------------: | :-----------: |
-|     AIX     |      7.1, 7.2       |    PowerPC    |
 | CentOS/RHEL |   7, 8.1+, 9, 10    |    x86-64     |
 | CentOS/RHEL |         10          |     arm64     |
-|   Debian    |     11, 12, 13      |    x86-64     |
-|   Debian    |     11, 12, 13      |     arm64     |
-|    HP-UX    |       11.31+        |    Itanium    |
-|    SLES     |       12, 15        |    x86-64     |
-|   Solaris   |         11          |  UltraSparc   |
+|   Debian    |       12, 13        |    x86-64     |
+|   Debian    |       12, 13        |     arm64     |
 |   Ubuntu    | 20.04, 22.04, 24.04 |    x86-64     |
 |   Ubuntu    |    22.04, 24.04     |     arm64     |
 |   Windows   |  2012, 2016, 2019   |    x86-64     |
