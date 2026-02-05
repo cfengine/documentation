@@ -515,7 +515,7 @@ bundle agent example
 
 **History:**
 
-- Added in CFEngine 3.27.1, 3.24.4
+- Added in CFEngine 3.28.0, 3.27.1, 3.24.4
 
 ### apt_get
 
