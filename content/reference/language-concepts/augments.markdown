@@ -302,7 +302,7 @@ This key is supported in both `host_specific.json`, `def.json`, `def_preferred.j
 
 Any class defined via augments will be evaluated and installed as
 [**soft** classes][Classes and decisions]. This key supports both
-_array_ and _dict_ formats.
+_array_ and _dict_ formats. Booleans `true` and `false` are also valid values for classes
 
 For an array each element of the array is tested against currently defined
 classes as an [anchored regular expression][anchored] unless the string ends with `::` indicating it should be interpreted as a
@@ -457,6 +457,8 @@ myclass_defined_by_augments_in_def_json_3_18_0_v1            optional,tags,sourc
 - 3.18.0
   - Support for dict structure for classes and support for metadata (`comment`, `tags`) added.
   - Classes are defined as _soft_ classes instead of _hard_ classes.
+- 3.28.0
+  - Added support for `true` and `false` values for classes in augments.
 
 ### augments
 
