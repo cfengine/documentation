@@ -38,10 +38,6 @@ Any supported host can be a policy server in Community installations of CFEngine
 
 [Known issues][] also includes platform-specific notes.
 
-CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493) from IBM.
-This means that CFEngine Enterprise has been technically verified by IBM
-to be installed in and manage VIOS environments.
-
 ## Future platform support
 
 The CFEngine team will continue to support future releases of popular Host
