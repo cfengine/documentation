@@ -34,7 +34,7 @@ some breathing room, typical user reported sizes are in the 100-250 MB range. On
 Windows systems, CFEngine consumes more space because Windows lacks support for
 sparse files (which are used opportunistically by lmdb). 5 G of space should
 provide some breathing room, typical user reported sizes for `C:\Program
-Files\Cfengine` are around 1 GB. As always things vary in different environments
+Files\Cfengine` are around 1 GB. As always, things vary in different environments and
 it's a good idea to measure consumption in your infrastructure and customize
 accordingly.
 
@@ -51,7 +51,7 @@ promise executions) by adjusting `def.max_client_history_size`.
   port 5308 (used by CFEngine) is open for both incoming and outgoing
   connections.
 
-- If a firewall is active on your operating system, adapt it to it to
+- If a firewall is active on your operating system, adapt it to
   allow for communication on port 5308 or disable it.
 
 CFEngine bundles all critical dependencies into the package; therefore,
@@ -84,7 +84,7 @@ size and complexity of the CFEngine policy.
 The CFEngine Server requires two users: **cfapache** and
 **cfpostgres**. If these users do not exist during installation of
 the server package, they will be created, so if there are constraints
-on user creation, please ensure that these users exists prior to
+on user creation, please ensure that these users exist prior to
 installation.
 
 These users are not required nor created by the agent package.
@@ -117,7 +117,7 @@ with 5000 hosts, you should have at least 40GB of memory.
 ### Disk sizing and partitioning
 
 So that the agent is not affected by full disks it is recommended that
-`/var/cfengine` be on it's own partition.
+`/var/cfengine` be on its own partition.
 
 It is recommended that `$(sys.workdir)/state/pg` is mounted on a
 **separate disk**. This will give PostgreSQL, which can be very disk I/O
@@ -145,7 +145,7 @@ If you do not have separate partitions for `$(sys.workdir)` and
 `$(sys.workdir)` adds up (for 5000 bootstrapped agents it would be
 1500 IOPS and 10.5 MB/s).
 
-**Note** Your storage IOPS specification may be given in 4KiB block
+**Note:** Your storage IOPS specification may be given in 4KiB block
 size, in which case you would need to divide it by 4 to get the
 corresponding 16KiB _theoretical maximum_.
 
@@ -160,7 +160,7 @@ that connects the Policy Server with the agents.
 The maximum number of connections is the maximum number of sessions that
 `cf-serverd` will support. The general rule of thumb is that it should be set to
 **two times the number of clients** bootstrapped to the hub. So if you have 100
-remote agents bootstrapped to your policy server, 200 would be a good value body
+remote agents bootstrapped to your policy server, 200 would be a good value for body
 server control maxconnections.
 
 ### Open file descriptors
@@ -215,7 +215,7 @@ Enterprise:
    [HP-UX]              # swinstall -s <full path to agent package>.depot cfengine-nova
    ```
 
-Note: Install actions logged to `/var/logs/cfengine-install.log`.
+Note: Install actions are logged to `/var/logs/cfengine-install.log`.
 
 ## Bootstrap
 
@@ -226,7 +226,7 @@ host:
 /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
 ```
 
-After bootstrapping the hub run the policy to complete the hub configuration.
+After bootstrapping the hub, run the policy to complete the hub configuration.
 
 ```command
 /var/cfengine/bin/cf-agent -Kf update.cf; /var/cfengine/bin/cf-agent -K

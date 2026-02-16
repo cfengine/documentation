@@ -72,7 +72,7 @@ docker exec cfengine-hub bash -c "/usr/local/sbin/cf-agent --bootstrap \$(ip -4 
 
 ## Preparing CFEngine host in container
 
-The procedure to setup **cfengine-host** is similar to the **cfengine-hub** deployment. The changes are to name of the host container for better identification and bootstrap IP of the **cfengine-hub**.
+The procedure to setup **cfengine-host** is similar to the **cfengine-hub** deployment. The changes are to the name of the host container for better identification and bootstrap IP of the **cfengine-hub**.
 
 ```command
 docker run --privileged -dit --name=cfengine-host registry.access.redhat.com/ubi9-init /usr/sbin/init
@@ -108,7 +108,7 @@ docker exec cfengine-host bash -c "/usr/local/sbin/cf-agent --bootstrap ${CFENGI
 
 ### Preparing container image for CFEngine
 
-Create a `Dockerfile` with following contents:
+Create a `Dockerfile` with the following contents:
 
 ```Dockerfile
 FROM registry.access.redhat.com/ubi9-init:latest
@@ -162,7 +162,7 @@ cfengine     lts        <IMAGE_ID>     About an hour ago   302MB
 
 ### Using docker compose service
 
-Create a `compose.yaml` file with following contents:
+Create a `compose.yaml` file with the following contents:
 
 ```yaml {file="compose.yaml"}
 name: cfengine-demo
@@ -211,7 +211,7 @@ Validate the `compose.yaml` file
 docker compose -f compose.yaml config 1>/dev/null
 ```
 
-**Note**: No output means valid yaml file.
+**Note**: No output means a valid YAML file.
 
 Start service cfengine-demo
 
