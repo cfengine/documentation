@@ -57,7 +57,7 @@ when a process has been running for longer than a day.
 
 {{< CFEngine_include_example(processes_define_class_based_on_process_runtime.cf) >}}
 
-Take care to not oversimplify your patterns as it may match
+Take care to not oversimplify your patterns as they may match
 unexpected processes. For example, on many systems, the process pattern `"^cp"`
 may not match any processes, even though `"cp"` is running. This is because the
 process table entry may list `"/bin/cp"`. However, the process pattern `"cp"`
@@ -499,7 +499,7 @@ processes:
 ### restart_class
 
 **Description:** A class to be defined globally if the process is not
-running, so that a `command:` rule can be referred to restart the process
+running, so that a `commands:` rule can be referred to restart the process
 
 This is a signal to restart a process that should be running, if it is
 not running. Processes are signaled first and then restarted later, at
@@ -507,7 +507,7 @@ the end of bundle execution, after all possible corrective actions have
 been made that could influence their execution.
 
 Windows does not support having processes start themselves in the
-background, like Unix daemons usually do; as fork off a child process.
+background, like Unix daemons usually do, i.e., fork off a child process.
 Therefore, it may be useful to specify an `action` body that sets
 `background` to true in a commands promise that is invoked by the class
 set by `restart_class`. See the `commands` promise type for more

@@ -11,7 +11,7 @@ explore CFEngine Enterprise. This guide describes how to set up a client-server
 model with CFEngine and, through policy, manage both machines. Vagrant will
 create one VirtualBox VM to be the Policy Server (server), and another machine
 that will be the Host Agent (client), or host that can be managed by CFEngine.
-Both running 64-bit Debian and communicate on a host-only network.
+Both run 64-bit Debian and communicate on a host-only network.
 Apart from a one-time download of Vagrant and VirtualBox, this setup requires
 just one command and takes between 5 and 15 minutes to complete (determined by
 your Internet connection and disk speed). Upon completion, you are ready to
@@ -46,7 +46,7 @@ different approach][General installation#More detailed installation guides].
 This tutorial uses Vagrant to configure your VMs. It is available for Linux,
 Windows and MacOS and can be downloaded from vagrantup.com. After
 downloading Vagrant, install it on your computer. You may want to reference the
-Windows Mac or Linux vagrant install guides.
+Windows, Mac, or Linux Vagrant install guides.
 
 ## Install Virtualbox
 
@@ -75,7 +75,7 @@ vagrant up
 Vagrant performs the following processes:
 
 - Downloads the basebox for both the hub and the client (if it has
-  not already been cached by vagrant.
+  not already been cached by vagrant).
 - Provisions, installs and bootstraps the hub
 - Provisions, installs and bootstraps clients
 
@@ -125,7 +125,7 @@ Last login: Fri Jun 13 18:58:10 2014 from 10.0.2.2
 
 #### Accessing via GUI
 
-If you launch the virtualbox GUI you should find the vagrant vms named
+If you launch the VirtualBox GUI, you should find the vagrant vms named
 `CFEngine Enterprise {{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}} hub`, and `CFEngine Enterprise {{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}} agent host001`. Additionally, you can uncomment the `v.gui=true`
 option in the `Vagrantfile` to have the console gui start with the vms.
 **Note:** There are two `v.gui` settings to uncomment; one for the hub, and one
@@ -133,7 +133,7 @@ for the clients.
 
 ### Check the status of the vms
 
-Running `vagrant status` from the vagrant project directroy will produce
+Running `vagrant status` from the vagrant project directory will produce
 output like this.
 
 ```command
@@ -175,7 +175,7 @@ vagrant suspend
 ```
 
 To suspend the vms run `vagrant suspend`. This will freeze the state of each vm
-and allows for latter resuming of the environment.
+and allows for later resuming of the environment.
 
 ```command
 vagrant halt
@@ -210,7 +210,7 @@ vagrant destroy
 
 ## Uninstall Vagrant environment
 
-When you have completed your evaluation are ready to use CFEngine on
+When you have completed your evaluation and are ready to use CFEngine on
 production servers, remove the VMs that you created above by following these
 simple instructions:
 

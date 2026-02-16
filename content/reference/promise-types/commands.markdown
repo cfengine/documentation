@@ -71,7 +71,7 @@ bundle agent example
   commands:
     "/usr/bin/env MY_ENVIRONMENT_VARIABLE=something_special /tmp/cmd";
 
-    # Or equivlent
+    # Or equivalent
     "/usr/bin/env"
       args => "ME=something_special /tmp/cmd";
 }
@@ -79,7 +79,7 @@ bundle agent example
 
 **Note**: Some unices leave a hanging pipe on restart (they never manage to
 detect the end of file condition). This occurs on POSIX.1 and SVR4 popen calls
-which use wait4. For some reason they fail to find and end-of-file for an
+which use wait4. For some reason they fail to find an end-of-file for an
 exiting child process and go into a deadlock trying to read from an already
 dead process. This leaves a zombie behind (the parent daemon process which
 forked and was supposed to exit) though the child continues. A way around this
@@ -97,7 +97,7 @@ continue.
 
 ### args
 
-**Description:** Allows to separate the arguments to the command from the
+**Description:** Allows separating the arguments to the command from the
 command itself.
 
 Sometimes it is convenient to separate command and arguments. The final arguments are the concatenation with one space.
@@ -124,18 +124,18 @@ So in the example above the command would be:
 
 ### arglist
 
-**Description:** Allows to separate the arguments to the command from the
+**Description:** Allows separating the arguments to the command from the
 command itself, using an slist.
 
 As with `args`, it is convenient to separate command and arguments.
-With `arglist` you can use a slist directly instead of having to
+With `arglist` you can use an slist directly instead of having to
 provide a single string as with `args`. That's particularly useful
 when there are embedded spaces and quotes in your arguments, but also
 when you want to get them directly from a slist without going through
 `join()` or other functions.
 
 **Note:** Spaces are not preserved when the `useshell` attribute is set to
-`"useshell"` or `"powersell"`. The same is true when using commands promises on
+`"useshell"` or `"powershell"`. The same is true when using commands promises on
 Windows, even when `useshell` is set to `"noshell"`, due to limited support in
 the Win32 API.
 
@@ -406,7 +406,7 @@ preview => "true";
 
 #### no_output
 
-**Description:** Allows to discard all output from the command.
+**Description:** Allows discarding all output from the command.
 
 Setting this attribute to `true` is equivalent to piping standard output and
 error to `/dev/null`.
@@ -473,7 +473,7 @@ module, unless the `^context` extension is used.
 **NOTE**: All variables and classes defined by the module protocol are defined
 in the `default` namespace. It is not possible to define variables and
 classes in any other namespace. Protocol extensions ( lines that start with `^`
-) apply until they are explicitly reset, or until the end of the modules
+) apply until they are explicitly reset, or until the end of the module's
 execution.
 
 All the variables and classes will have at least the tag

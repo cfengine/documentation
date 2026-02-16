@@ -17,7 +17,7 @@ Check the [Pre-installation checklist][Pre-installation checklist] and [Supporte
 CFEngine Enterprise is provided in two packages; one is for the Policy
 Server (hub) and the other is for each Host (client).
 
-Note: See [Installing Community][Installing Community] for the community version of CFEngine)
+Note: See [Installing Community][Installing Community] for the community version of CFEngine.
 
 **Log in as root** and then follow these steps to install CFEngine Enterprise:
 
@@ -35,7 +35,7 @@ Note: See [Installing Community][Installing Community] for the community version
    [Debian/Ubuntu]      # apt -y install /path/to/<agent package>.deb
    ```
 
-Note: Install actions logged to `/var/logs/cfengine-install.log`.
+Note: Install actions are logged to `/var/logs/cfengine-install.log`.
 
 ## Bootstrap
 
@@ -58,7 +58,7 @@ ifconfig
 sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
-The bootstrap command must then be run on any client attaching itself to this server, using the ip address of the policy server (i.e. exactly the same as the command run on the policy server itself).
+The bootstrap command must then be run on any client attaching itself to this server, using the IP address of the policy server (i.e. exactly the same as the command run on the policy server itself).
 
 ## Post-installation configuration
 
@@ -68,10 +68,10 @@ CFEngine itself is configured through policy as well (see [Components][] and
 
 ### Configure agent email settings
 
-By default an email a summary of any `cf-agent` run initiated by `cf-execd`. You
+By default, `cf-execd` emails a summary of any `cf-agent` run. You
 may want to adjust the mailto or mailfrom. If you have a centralized reporting
-system like CFEngine Enterprise you may wish to disable agent emails all
-together.
+system like CFEngine Enterprise you may wish to disable agent emails
+altogether.
 
 #### Configure mailto and mailfrom
 
@@ -94,7 +94,7 @@ needing to make any additional changes elsewhere. However, any emails sent from
 the system might also end up flagged as spam and sent directly to a user's junk
 mailbox.
 
-**Note:** It's best practice to restart daemons after adjusting it's settings to
+**Note:** It's best practice to restart daemons after adjusting its settings to
 ensure they have taken effect.
 
 #### Disable agent emails
@@ -110,7 +110,7 @@ The preferred way to disable the agent from sending emails is to define
 
 Alternatively you can define the class from `def.cf`.
 
-**Note:** It's best practice to restart daemons after adjusting it's settings to
+**Note:** It's best practice to restart daemons after adjusting its settings to
 ensure they have taken effect.
 
 ### Server IP address and hostname

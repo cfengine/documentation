@@ -24,7 +24,7 @@ This tutorial will cover the following steps:
 
 ### Configure 2 RHEL virtual machine instances in AWS
 
-- Login to AWS.
+- Log in to AWS.
 - Under `Create Instance` click on `Launch Instance`.
 - On the line `Red Hat Enterprise Linux 64 Bit Free tier eligible` press the `Select` button.
 - On the `Choose Instance Type` screen ensure the `Micro Instances` tab on the left is selected.
@@ -51,7 +51,7 @@ This tutorial will cover the following steps:
 
 ### Configure the security group
 
-- On the left hand side of the AWS console click `NETWORK & SECURITY > Security Groups`
+- On the left-hand side of the AWS console click `NETWORK & SECURITY > Security Groups`
 - Remembering the `Security group` name from earlier, click on the appropriate line item in the list.
 - Below the list of security group names will display details for the current security group.
 - Click the `Inbound` tab.
@@ -117,7 +117,7 @@ Note: Turning off the firewall in a production environment is considered unsafe.
 
 ## CFEngine installation overview
 
-We ready now ready to install the CFEngine software on both the server and client virtual machines. These also referred to as the "hub" and "host" machines, respectively. During the course of the instructions outlined in this guide, you will perform the following tasks:
+We are now ready to install the CFEngine software on both the server and client virtual machines. These are also referred to as the "hub" and "host" machines, respectively. During the course of the instructions outlined in this guide, you will perform the following tasks:
 
 - Install CFEngine Enterprise onto a Policy Server and onto Hosts. A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts. Hosts are clients that retrieve and execute promises.
 - Bootstrap the policy server to itself and then bootstrap each of the Hosts to the Policy Server. Bootstrapping establishes a trust relationship between the Policy Server and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company. Bootstrapping completes the installation process.
@@ -147,7 +147,7 @@ This script installs the latest CFEngine Enterprise Policy Server on your server
 
 Upon successful completion, a confirmation message appears: "Bootstrap to '172.31.3.25' completed successfully!"
 
-- Type the following to check which version of CFEngine your are running:
+- Type the following to check which version of CFEngine you are running:
 
   `/var/cfengine/bin/cf-promises --version`
 
@@ -166,7 +166,7 @@ Note: The installation will work on 64-bit and 32-bit client machines (the host 
 
 ![Bootstrap the policy server](Installing-CFE-on-AWS-11.png)
 
-The client software (host), has been installed on the second virtual machine.
+The client software (host) has been installed on the second virtual machine.
 
 Note: You can install CFEngine Enterprise on up to 25 hosts using the script above.
 
@@ -184,7 +184,7 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 - The Mission Portal is immediately accessible. Connect to the Policy Server through your web browser at: http://<External IP address of your Policy Server> (Note: The External IP address is available in the AWS console).
 - The default username for the Mission Portal is `admin`, and the password is also `admin`.
 - The Mission Portal runs TCP port 80 by default. [Configure mission portal to use HTTPS instead of HTTP](https://cfengine.zendesk.com/entries/25005193-Configure-Mission-Portal-to-use-HTTPS-instead-of-HTTP).
-- During the initial setup, the Host(s) might take a few minutes to show up in the Mission Portal. Refresh the web page and login again if necessary.
+- During the initial setup, the Host(s) might take a few minutes to show up in the Mission Portal. Refresh the web page and log in again if necessary.
 
 ## What next?
 

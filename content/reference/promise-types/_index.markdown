@@ -116,7 +116,7 @@ body action example
 
 #### expireafter
 
-**Description:** The Number of minutes a promise is allowed to run before the
+**Description:** The number of minutes a promise is allowed to run before the
 agent is terminated.
 
 **Note**: Not to be confused
@@ -349,7 +349,7 @@ of time, e.g. in remote copying of filesystem/disk scans.
 
 On the Windows version of CFEngine Enterprise, this can be useful if we don't
 want to wait for a particular command to finish execution before checking the
-next promise. This is particular for the Windows platform because there is
+next promise. This is particular to the Windows platform because there is
 no way that a program can start itself in the background here; in other words,
 fork off a child process. However, file operations can not be performed in the
 background on Windows.
@@ -386,7 +386,7 @@ body action background
 **Description:** Defines the reporting level for standard output for this promise.
 
 `cf-agent` can be run in verbose mode (-v), inform mode (-I) and just print
-errors (no arguments). This attribute allows to set these three output levels
+errors (no arguments). This attribute allows you to set these three output levels
 on a per promise basis, allowing the promise to be more verbose than the global
 setting (but not less).
 
@@ -500,7 +500,7 @@ body classes example
 promises that set multiple parameters on a file simultaneously.
 
 The classes for different parts of a promise are not separable. Thus, if you
-promise to create and file and change its permissions, when the file exists
+promise to create a file and change its permissions, when the file exists
 with incorrect permissions, `cf-agent` will report that the `promise_kept` for
 the file existence, but `promise_repaired` for the permissions. If you need
 separate reports, you should code two separate promises rather than
@@ -603,10 +603,10 @@ The class in the above example is set if no action was necessary by `cf-agent`,
 because the promise concerned was already kept without further action required.
 
 **Note**: Complex promises can report misleadingly. For example,
-`files`promises that set multiple parameters on a file simultaneously.
+`files` promises that set multiple parameters on a file simultaneously.
 
 The classes for different parts of a promise are not separable. Thus, if you
-promise to create and file and change its permissions, when the file exists
+promise to create a file and change its permissions, when the file exists
 with incorrect permissions, `cf-agent` will report that the `promise_kept` for
 the file existence, but `promise_repaired` for the permissions. If you need
 separate reports, you should code two separate promises rather than
@@ -803,7 +803,7 @@ body classes example
 }
 ```
 
-In the above example, a list of integer return codes indicating that a
+In the above example, a list of integer return codes indicates that a
 command-related promise has been repaired. This can in turn be used to define
 classes using the `promise_repaired` attribute, or merely alter the total
 compliance statistics.
@@ -898,7 +898,7 @@ body classes example
 }
 ```
 
-**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise types#persist_time]
+**See also:** [`persistence` classes attribute][classes#persistence], [`persist_time` in classes body][Promise types#persist_time]
 
 #### timer_policy
 

@@ -7,7 +7,7 @@ aliases:
 ---
 
 On the [Download CFEngine][enterprise software download page], you will find
-sha256 checksums of all downloadable files which you can verify by using
+sha256 checksums of all downloadable files which you can verify by using the
 `sha256sum` tool.
 
 In addition to this, `*.deb` and `*.rpm` packages (with the exception of AIX rpms) are
