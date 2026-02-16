@@ -97,7 +97,7 @@ anything goes wrong.
 
 The Masterfiles Policy Framework is available in the hub package, separately on
 the [download page](http://cfengine.com/community/download/), or directly from
-the [masterfiles repository on github](https://github.com/cfengine/masterfiles).
+the [masterfiles repository on GitHub](https://github.com/cfengine/masterfiles).
 
 Normally most files can be replaced with new ones, files that typically contain
 user modifications include `promises.cf`, `controls/*.cf`, and
@@ -150,7 +150,7 @@ empty before performing an Enterprise Hub binary upgrade.
    root@hub:~# dpkg --install cfengine-nova-hub_{{< params "cfengine.branch" >}}.{{< params "cfengine.latest_patch_release" >}}-{{< params "cfengine.latest_package_build" >}}_amd64-deb7.deb
    ```
 
-   _Community does not have a hub specific package._
+   _Community does not have a hub-specific package._
 
 3. Check `/var/log/CFEngine-Install.log` for errors.
 
@@ -192,7 +192,7 @@ empty before performing an Enterprise Hub binary upgrade.
    }
    ```
 
-   **Note:** The negative look ahead regular expression is useful because it
+   **Note:** The negative lookahead regular expression is useful because it
    automatically turns off on hosts after they reach the target version.
 
 3. Verify that the selected hosts are upgrading successfully.

@@ -115,7 +115,7 @@ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12
 
 Upon successful completion, a confirmation message appears: "Bootstrap to '192.168.1.12' completed successfully!"
 
-Type the following to check which version of CFEngine your are running:
+Type the following to check which version of CFEngine you are running:
 
 ```command
 /var/cfengine/bin/cf-promises --version

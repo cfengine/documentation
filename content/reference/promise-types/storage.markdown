@@ -123,7 +123,7 @@ body mount example
 
 #### mount_server
 
-**Description:** Hostname or IP or remote file system server.
+**Description:** Hostname or IP of remote file system server.
 
 **Type:** `string`
 

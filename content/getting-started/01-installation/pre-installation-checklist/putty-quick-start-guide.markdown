@@ -45,7 +45,7 @@ a _host_ in CFEngine terminology.
 PuTTYgen is used only when setting up a new client machine on the CFEngine hub. The CFEngine _hub_ will already
 have an encrypted _key-pair_ that was created when setting up the _hub_. (See the tutorial, [Installing CFEngine on RHEL Using AWS][Using Amazon Web Services])
 
-The following steps describe how to get the client machine, up and running using PuTTYgen and PuTTY. There are two distinct
+The following steps describe how to get the client machine up and running using PuTTYgen and PuTTY. There are two distinct
 steps to this process:
 
 Step 1. Use PuTTYgen to create an encrypted _key-pair_ in the _.ppk_ file format that PuTTY uses.
@@ -56,8 +56,8 @@ when setting up the server (_hub_) will be in the _.pem_ file format.)
 
 Step 2. Configure the PuTTY application in order to securely access the CFEngine _hub_.
 
-Step 1. consists of the following sequence: First, launch PuTTYgen by double-clicking on the puTTygen icon in the Windows programs menu tree;
-(It should be inside the PuTTY folder that was created when the PuTTY was downloaded and installed.)
+Step 1 consists of the following sequence: First, launch PuTTYgen by double-clicking on the PuTTYgen icon in the Windows programs menu tree;
+(It should be inside the PuTTY folder that was created when PuTTY was downloaded and installed.)
 
 Next, download the _key-pair_ and save it on the local hard disk in the _.ppk_ file format.
 
@@ -73,7 +73,7 @@ File name input box.
 c. Navigate to the location on disk where the _public-key_ file was downloaded in earlier steps, in this
 case a _.pem_ file. Click _Open_. The following window will appear:
 
-![The PuTTYgen Key Generator Window; note  that the actual key and key fingerprint has been blanked out](putty-key-generator-window.png)
+![The PuTTYgen Key Generator Window; note that the actual key and key fingerprint has been blanked out](putty-key-generator-window.png)
 
 d. Enter a _Passphrase_ and confirm the _Passphrase_. If no _Passphrase_ is desired, leave those fields empty.
 
@@ -113,7 +113,7 @@ The Puttygen Interface. You will load the .pem file that you created in AWS.
 
 ![The Puttygen popup window](Installing-CFE-on-AWS-2.png)
 
-The Puttygen popup window. Click `Yes`, to proceed without a passphrase. You can also protect your private key with a passphrase that you enter into `Key Passprhase` and `Confirm Key Passphrase`.
+The Puttygen popup window. Click `Yes`, to proceed without a passphrase. You can also protect your private key with a passphrase that you enter into `Key Passphrase` and `Confirm Key Passphrase`.
 
 - Finally, navigate to a good location on disk to save the key file, enter a name for the private key, ensure PuTTY Private Key Files (\*.ppk) type is selected, and then click the Save button.
 - You can now close the Puttygen application. You will call up the .ppk file when you configure the virtual machines using PuTTY.
@@ -121,7 +121,7 @@ The Puttygen popup window. Click `Yes`, to proceed without a passphrase. You can
 ### Configure PuTTY
 
 - Before configuring PuTTY, go back to your AWS Console, then navigate to INSTANCES > Instances.
-- Make a note of the 2 different Public DNS entries for the virtual machines that were setup earlier (e.g. ec2xxxxxxxxxxxx.uswest1.compute.amazonaws.com, where the x's represent numbers).
+- Make a note of the 2 different Public DNS entries for the virtual machines that were set up earlier (e.g. ec2xxxxxxxxxxxx.uswest1.compute.amazonaws.com, where the x's represent numbers).
 - Launch PuTTY by either:
 - Double clicking `putty.exe` from the download location, if downloaded directly.
 - Or, if the PuTTY installer was used above, one of either:
@@ -131,9 +131,9 @@ The Puttygen popup window. Click `Yes`, to proceed without a passphrase. You can
 
 ![The Puttygen Interface](Installing-CFE-on-AWS-3.png)
 
-The Putty interface, with `Session` selected on the left-side navigation tree.
+The PuTTY interface, with `Session` selected on the left-side navigation tree.
 
-- Now, we will configure the Putty application, which we will use to set up the two AWS virtual machines.
+- Now, we will configure the PuTTY application, which we will use to set up the two AWS virtual machines.
 - The first step is to create a Host Name for the first VM.
 - The Host Name consists mainly of the public DNS entry that was created for one of the two virtual machines in AWS. But the DNS is preceded by a user name, `ec2-user`, followed by the `@` symbol, which is then followed by the DNS entry.
 

@@ -6,7 +6,7 @@ aliases:
   - "/getting-started-installation-version-control.html"
 ---
 
-By default, CFEngine policy is published `/var/cfengine/masterfiles` on the policy
+By default, CFEngine policy is published from `/var/cfengine/masterfiles` on the policy
 server. It is recommended that this directory be backed by a version control system
 (VCS), such as Git or Subversion.
 

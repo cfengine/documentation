@@ -14,7 +14,7 @@ The workflow will look like this:
 
 ## Step 0: Creating a new project
 
-Create a folder for you project, for example in your home directory:
+Create a folder for your project, for example in your home directory:
 
 ```command
 mkdir -p ~/cfengine_project
@@ -50,7 +50,7 @@ For the purposes of this tutorial, let's add the git module so we can work with 
 cfbs add git
 ```
 
-Additionally, let's add a module to make CFEngine run policy and report collection every minute instead of the default 5 minute interval:
+Additionally, let's add a module to make CFEngine run policy and report collection every minute instead of the default 5-minute interval:
 
 ```command
 cfbs add every-minute
@@ -125,7 +125,7 @@ cf-remote save -H root@192.168.56.2 --role hub --name hub
 
 ## Step 4: Observe
 
-Open your web browser and enter the IP address of your hub in the address bar to go the Mission Portal web UI.
+Open your web browser and enter the IP address of your hub in the address bar to go to the Mission Portal web UI.
 For example:
 
 https://192.168.56.2/

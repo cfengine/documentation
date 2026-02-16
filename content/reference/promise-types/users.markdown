@@ -16,14 +16,14 @@ shell, group membership, description, and password. Platform native tools are
 used to create/modify/delete users (C api on Windows, and `useradd` `usermod`
 `userdel` on Unix, Linux and similar platforms). User presence is determined by
 the `NetUserGetInfo` function on Windows and reading `/etc/passwd` on Unix,
-Linux and similar platforms nix External/non-local for example LDAP are ignored.
+Linux and similar platforms. External/non-local users, for example LDAP, are ignored.
 
 A bundle can be associated with a user promise, such as when a user is created
 in order to do housekeeping tasks in his/her home directory, like putting
 default configuration files in place, installing encryption keys, and storing
 a login picture.
 
-**Note:** This promise type does not create or delete groups (not even a users
+**Note:** This promise type does not create or delete groups (not even a user's
 primary group). The groups the user is promised to be in need to be managed
 separately.
 
@@ -88,7 +88,7 @@ users:
 
 ### groups_secondary
 
-**Description:** The `groups_secondary` attributes sets the user's
+**Description:** The `groups_secondary` attribute sets the user's
 secondary group membership(s), in addition to his/her primary group.
 
 **Note:** On Windows, no difference exists between primary and

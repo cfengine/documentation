@@ -55,7 +55,7 @@ Note that the usage of the `$(connection.*)` variables is strictly
 limited to literal strings within the promiser and admit/deny lists; they cannot be
 passed to functions or stored in other variables.
 
-With CFEngine Enteprise, access promises can be made about additional query data for
+With CFEngine Enterprise, access promises can be made about additional query data for
 reporting and orchestration.
 
 ```cf3 {skip TODO}
@@ -221,8 +221,8 @@ access:
 
 {{< CFEngine_promise_attribute() >}}
 
-**Notes:** Failure to resolve a hostname or it's reverse results in a denial.
-Since this control is sensitive to temporary DNS failures, and cases, where
+**Notes:** Failure to resolve a hostname or its reverse results in a denial.
+Since this control is sensitive to temporary DNS failures, and cases where
 reverse DNS is not present, it should be used with extreme scrutiny.
 
 **See also:** `admit_hostnames`, `deny_ips`, `deny_keys`
