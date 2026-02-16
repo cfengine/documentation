@@ -16,7 +16,7 @@ version of CFEngine Enterprise, but the number of Hosts (clients) is limited to 
 - You need a minimum of 2 GB of available memory and a modern 64 bit processor.
 - Plan for approximately 100MB of disk space per host. You should provide an
   extra 2G to 4G of disk space if you plan to bootstrap more hosts later.
-- You need a least two VMs/servers, one for the Policy Server and one for a Host (client). They must be on the same network.
+- You need at least two VMs/servers, one for the Policy Server and one for a Host (client). They must be on the same network.
 - The Policy Server needs to run on a dedicated OS with a vanilla installation (i.e. it only has repositories and packages officially
   supported by the OS vendor)
 
@@ -31,7 +31,7 @@ During the course of the instructions outlined in this guide, you will perform t
   and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company.
   Bootstrapping completes the installation process.
 - **Log in to the Mission Portal.** The Mission Portal is a graphical user interface that allows you to verify the
-  the actual state of all your Hosts, thus ensuring that your promises are being executed.
+  actual state of all your Hosts, thus ensuring that your promises are being executed.
 - **Try out the Tutorials.** Links to three tutorials give you a head start on learning CFEngine.
 
 ## 1. Download and install Enterprise on a policy server
@@ -60,7 +60,7 @@ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 
 Upon successful completion, a confirmation message appears: "Bootstrap to '192.168.1.12' completed successfully!"
 
-Type the following to check which version of CFEngine your are running:
+Type the following to check which version of CFEngine you are running:
 
 ```command
 /var/cfengine/bin/cf-promises --version
@@ -105,7 +105,7 @@ password: admin
 
 The Mission Portal runs TCP port 80 by default. (Click [here] (https://cfengine.zendesk.com/entries/25005193-Configure-Mission-Portal-to-use-HTTPS-instead-of-HTTP)
 to configure the Mission Portal to use HTTPS instead of HTTP.) During the initial setup, the Host(s) might take a few minutes to show up in the Mission Portal. Simply refresh the web page
-and login again if necessary.
+and log in again if necessary.
 
 Note: If you are running Enterprise with Vagrant, you must add the
 correct port: http://localhost:<port> in your browser. The <port> is the port-forwarder

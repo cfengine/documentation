@@ -321,7 +321,7 @@ package_list_arch_regex    => "[^.]+\.([^.]+)";
 }
 ```
 
-**Notes:** If no architecture is specified for thegiven package manager, then
+**Notes:** If no architecture is specified for the given package manager, then
 do not define this.
 
 #### package_changes
@@ -448,7 +448,7 @@ installed
 
 This regular expression must match complete lines in the output of the
 list command that are actually installed packages. If all
-the lines match, then the regex can be set of `.*`, however most package
+the lines match, then the regex can be set to `.*`, however most package
 systems output prefix lines and a variety of human padding that needs to
 be ignored.
 
@@ -694,7 +694,7 @@ package_name_regex => "([^\s]).*";
 
 **Description:** Regular expression to match verification failure output
 
-An[anchored][anchored] regular expression to match output from a package verification
+An [anchored][anchored] regular expression to match output from a package verification
 command. If the output string matches this expression, the package is deemed
 broken.
 
@@ -788,7 +788,7 @@ package_patch_command => "/usr/bin/zypper -non-interactive patch";
 already installed
 
 A few package managers keep a separate notion of patches, as opposed to
-package updates. OpenSuSE, for example, is one of these. This provide an
+package updates. OpenSuSE, for example, is one of these. This provides an
 analogous command struct to the packages for patch updates.
 
 **Type:** `string`
@@ -912,7 +912,7 @@ It is required only when `package_policy` is verify.
 The outcome of the command is compared with
 `package_noverify_returncode` or `package_noverify_regex`, one of which
 has to be set when using this command. If the package is not installed,
-the command will not be run the promise gets flagged as not kept before
+the command will not be run, the promise gets flagged as not kept before
 the verify command executes.
 
 In order for the promise to be considered kept, the package must be
@@ -1010,7 +1010,7 @@ version comparison, by calling an external command to check whether the
 first passed version is less than another.
 
 The built-in algorithm does a good approximation of version comparison,
-but different packaging systems differ in corner cases (e.g Debian
+but different packaging systems differ in corner cases (e.g. Debian
 treats symbol `~` less than any other symbol and even less than empty
 string), so some sort of override is necessary.
 

@@ -17,7 +17,7 @@ Install Vagrant and VirtualBox from their respective websites:
 - [Vagrant](https://www.vagrantup.com/downloads)
 - [VirtualBox](https://www.virtualbox.org/)
 
-VirtualBox is used for virtualization, and vagrant is a nice way of interacting with the VirtualBox software, through the `vagrant` Command Line Interface (CLI), and in a `Vagrantfile`.
+VirtualBox is used for virtualization, and Vagrant is a nice way of interacting with the VirtualBox software, through the `vagrant` Command Line Interface (CLI), and in a `Vagrantfile`.
 
 ## SSH key
 
@@ -93,13 +93,13 @@ end
 
 The `Vagrantfile` above does some important things:
 
-- Defines a Ubuntu 20.04 Virtual machine called `hub`, with hostname `hub`
+- Defines an Ubuntu 20.04 virtual machine called `hub`, with hostname `hub`
 - Sets its IP address to be `192.168.56.2`
 - Sets how much memory and CPU cores we want the VM to have
 - Copies the `id_rsa.pub` public key into the host when it starts, so we can use `ssh`
 
 **Note:** The machine will be called `hub` in `vagrant`, `cf-remote` and in Mission Portal (based on hostname), but this is just because we were consistent when naming it in all 3 places.
-These 3 names do not have to match, but it is easier to remember
+These 3 names do not have to match, but it is easier to remember.
 
 ## Start the virtual machine
 

@@ -184,7 +184,7 @@ Everything after here applies only to solaris on Mondays
 until overridden...
 
 [%CFEngine linux:: %]
-Everything after here now applies now to linux only.
+Everything after here applies now to linux.
 
 [%CFEngine BEGIN %]
 This is a block of text
@@ -216,7 +216,7 @@ The result would look like this, on a linux host:
 #This is a template file /templates/input.tmpl
 
 These lines apply to anyone
-Everything after here now applies now to linux only.
+Everything after here applies only to linux.
 This is a block of text
 That contains list variables: 1
 With text before and after.

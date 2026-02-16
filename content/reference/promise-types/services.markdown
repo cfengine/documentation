@@ -10,17 +10,17 @@ aliases:
 `service_bundle` in a `service_method` body. Reference the
 [services bodies and bundles in the standard library][lib/services.cf].
 
-Most commonly services type promises are use to manage standard operating system
-services using the platforms standard service management tools via the
+Most commonly services type promises are used to manage standard operating system
+services using the platform's standard service management tools via the
 `standard_services` bundle in the standard library. However, services type
 promises can be leveraged to build standard abstractions around custom services
 as well.
 
 Services are registered in the operating system in some way, and get a unique name.
-Service promises abstracts the mechanism for interacting with services
+Service promises abstract the mechanism for interacting with services
 on the given operating system, making it as uniform and easy as possible
 to work with services cross-platform. The exact mechanism CFEngine uses
-vary depending on availability at the OS, but it could be System V scripts,
+varies depending on availability at the OS, but it could be System V scripts,
 systemd units, tools such as `chkconfig`, or the Windows API.
 
 Some operating systems are bundled with a lot of unused services that
@@ -72,8 +72,8 @@ running through the CFEngine Enterprise Executor service, typical for on
 production machines, CFEngine has sufficient rights.
 
 Services of type generic promises are implemented for all operating
-systems and are merely as a convenient front-end to `processes` and
-`commands`. If nothing else is specified, CFEngine looks for an special
+systems and are merely a convenient front-end to `processes` and
+`commands`. If nothing else is specified, CFEngine looks for a special
 reserved agent bundle called
 
 ```cf3
@@ -143,7 +143,7 @@ for services promises.
 **Description:** Policy for service status.
 
 The `service_policy` is expected to be passed to the service bundle in order to
-manage it's state. It is up to the mapped `service_bundle` to determine which
+manage its state. It is up to the mapped `service_bundle` to determine which
 promises should be actuated in order to converge to the specified
 `service_policy`.
 
@@ -265,7 +265,7 @@ depends
 
 A list of services that must be running before the service can be started.
 These dependencies can be started automatically by CFEngine if they
-are not running see `service_dependence_chain`. However, the dependencies will
+are not running, see `service_dependence_chain`. However, the dependencies will
 never be implicitly stopped by CFEngine. Specifying dependencies is optional.
 
 Note that the operating system may keep an additional list of dependencies for
