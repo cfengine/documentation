@@ -8,7 +8,7 @@ aliases:
 By default, CFEngine's monitoring component `cf-monitord` records performance
 data about the system. These include process counts, service traffic, load
 average and CPU utilization and temperature when available. It also records a
-three year trend summary based any 'shift'-averages.
+three year trend summary based on any 'shift'-averages.
 
 Custom `measurements` promises can monitor or log very specific user data
 through a generic interface. The end-result is to either generate a periodic
@@ -43,7 +43,7 @@ bundle monitor self_watch
         units => "kb",
         match_value => proc_value(".*cf-monitord.*",
         "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*"),
-        comment => "The ammount of memory (RSS or Resident Set Size) cf-monitored is consuming";
+        comment => "The amount of memory (RSS or Resident Set Size) cf-monitored is consuming";
 }
 
 body match_value proc_value(x,y)
@@ -125,7 +125,7 @@ Measurement data is presented in Mission Portal in the [`Measurements App`][Meas
 
 When policy is changed in regards to monitor bundles, both `cf-monitord` _and_ `cf-serverd` should be restarted in order to receive the updated policy.
 
-It is possible to [configure masterfiles to restart `cf-monitord` when variables which affect it's configuration are changed][mpf-configure-component-restart].
+It is possible to [configure masterfiles to restart `cf-monitord` when variables which affect its configuration are changed][mpf-configure-component-restart].
 
 All measurements historical data is stored in `${sys.statedir}/cf_observations.lmdb`. This is where reporting data is pulled from.
 
@@ -351,7 +351,7 @@ back-reference for extracting a value.
 
 A single parenthesized back-reference should be given to lift the value to be
 measured out of the text stream. The regular expression is [unanchored][unanchored], meaning
-it may match a partial string
+it may match a partial string.
 
 **Type:** `string`
 
@@ -369,7 +369,7 @@ extraction_regex => "MemFree:\s+([0-9]+).*";
 
 #### track_growing_file
 
-**Description:** If true, CFEngine remembers the position to which is last
+**Description:** If true, CFEngine remembers the position to which it last
 read when opening the file, and resets to the start if the file has
 since been truncated
 

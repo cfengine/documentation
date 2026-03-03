@@ -336,7 +336,7 @@ alter such a socket. This is a known issue, documented in
 
 **Description:**
 Native settings for access control entry are defined by 'aces'. POSIX ACL are
-available in CFEngine Community starting with 3.4.0. NTFS ACL are available in
+available in CFEngine Community starting with 3.4.0. NTFS ACL are available
 with CFEngine Enterprise.
 
 **Type:** `slist`
@@ -426,7 +426,7 @@ aces = {
   example, `nperms` will be ignored if `acl_type:``ntfs` and the object is
   stored on a file system not supporting NTFS ACLs. Valid values for `nperms`
   varies with different ACL types. When `acl_type` is set to `ntfs`, the
-  valid flags and their mappings is as follows:
+  valid flags and their mappings are as follows:
 
   | CFEngine nperm flag | NTFS Special Permission        |
   | :-----------------: | ------------------------------ |
@@ -447,7 +447,7 @@ aces = {
 - `perm_type` (optional)
 
   Can be set to either `allow` or `deny`, and defaults to `allow`. `deny` is
-  only valid if `acl_type` is set to an ACL type that support deny
+  only valid if `acl_type` is set to an ACL type that supports deny
   permissions. A `deny` ACE will only be enforced if the file object is stored
   on a file system supporting the acl type set in `acl_type`.
 
@@ -501,7 +501,7 @@ The constraint `acl_default` gives control over the default ACL of
 directories. The default ACL can be left unchanged (`nochange`),
 empty (`clear`), or be explicitly specified (`specify`). In addition, the
 default ACL can be set equal to the directory's access ACL (`access`). This
-has the effect that child objects of the directory gets the same access ACL as
+has the effect that child objects of the directory get the same access ACL as
 the directory.
 
 **Type:** (menu option)
@@ -737,7 +737,7 @@ If true, CFEngine will log a 'diff' summary of major changes to the files. It
 is not permitted to combine this promise with a depth search, since this would
 consume a dangerous amount of resources and would lead to unreadable reports.
 
-The feature is intended as a informational summary, not as a version control
+The feature is intended as an informational summary, not as a version control
 function suitable for transaction control. If you want to do versioning on
 system files, you should keep a single repository for them and use CFEngine to
 synchronize changes from the repository source. Repositories should not be
@@ -861,7 +861,7 @@ recent than that of the promised file
 
 CFEngine copies the file if the modification time or creation time of the
 source file is more recent than that of the promised file. If the times are
-equal, a byte-for-bye comparison is done on the files to determine if it needs
+equal, a byte-for-byte comparison is done on the files to determine if it needs
 to be copied.
 
 - `exists`
@@ -935,7 +935,7 @@ body copy_from example
 **Description:** The `encrypt` menu option policy describes whether to use
 encrypted data stream to connect to remote hosts.
 
-Client connections are encrypted with using a Blowfish randomly generated
+Client connections are encrypted using a Blowfish randomly generated
 session key. The initial connection is encrypted using the public/private keys
 for the client and server hosts.
 
@@ -1127,7 +1127,7 @@ the file and the file is missing the promise will be kept.
 
 **Notes:**
 
-This can be useful for opportunistically coping files that are not necessarily
+This can be useful for opportunistically copying files that are not necessarily
 required or available at all times. For example if there is a host specific data
 that each host attempts to copy this will allow you to not have many promise
 failures when a host does not have any data prepared for it.
@@ -1326,7 +1326,7 @@ If the server's public key has not already been trusted, `trustkey` provides
 automated key-exchange.
 
 Note that, as a simple security precaution, `trustkey` should normally be set
-to false. Even though the risks to the client low, it is a good security
+to false. Even though the risks to the client are low, it is a good security
 practice to avoid key exchange with a server one is not one hundred percent
 sure about. On the server-side however, trust is often granted to many clients
 or to a whole network in which possibly unauthorized parties might be able to
@@ -1405,7 +1405,7 @@ verify => "true";
 
 **History:** Was introduced in 3.16.0
 
-**Note:** You cannot `content` in combination with the other edit operations
+**Note:** You cannot use `content` in combination with the other edit operations
 like `edit_line`, `edit_xml`, `edit_template` or `edit_template_string`.
 
 ### create
@@ -1731,7 +1731,7 @@ R: example_edit_backup_true
 R: example_edit_backup_true.cf-before-edit
 ```
 
-A value of `timestamp` will result in the original file be suffixed with the
+A value of `timestamp` will result in the original file being suffixed with the
 epoch and the canonified form of the date when the file was changed followed by
 `.cf-before-edit`. For example
 `_1511292441_Tue_Nov_21_13_27_22_2017.cf-before-edit`.
@@ -1769,7 +1769,7 @@ R: example_edit_backup_timestamp_1511300904_Tue_Nov_21_15_48_25_2017.cf-before-e
 
 A value of `false` will result in no retention of the original file.
 
-A value of `rotate` will result in the original file be suffixed with
+A value of `rotate` will result in the original file being suffixed with
 `.cf-before-edit` followed by an integer representing the nth previous version
 of the file. The number of rotations is managed by the `rotate` attribute in
 `edit_defaults`.
@@ -1828,7 +1828,7 @@ recipe allows an ordered procedure to be convergent.
 
 **Notes:**
 
-- Within `edit_line` bundles the variable `$(edit.empty_before_use)` holds this value, allowing for decisions to be bade based on it.
+- Within `edit_line` bundles the variable `$(edit.empty_before_use)` holds this value, allowing for decisions to be made based on it.
 
 **Example:**
 
@@ -1907,7 +1907,7 @@ If set to true, this option allows CFEngine to process line based files
 with backslash continuation. The default is to not process continuation
 backslashes.
 
-Back slash lines will only be concatenated if the file requires editing,
+Backslash lines will only be concatenated if the file requires editing,
 and will not be restored. Restoration of the backslashes is not possible
 in a meaningful and convergent fashion.
 
@@ -2241,7 +2241,7 @@ file_result => "ctime";
 
 **Description:** Range of modification times (mtime) for acceptable files
 
-The file's modification time refers to both modification of content but
+The file's modification time refers to modification of content but
 not other attributes, such as permissions.
 
 **Type:** `irange[int,int]`
@@ -2284,7 +2284,7 @@ body file_select used_recently
 
 body file_select not_used_much
 {
-    # files not accessed since 00:00 1st Jan 2000 (in the local timezime)
+    # files not accessed since 00:00 1st Jan 2000 (in the local timezone)
     atime     => irange(on(2000,1,1,0,0,0),now);
     file_result => "!atime";
 }
@@ -2519,7 +2519,7 @@ unpredictable.
 Note that symlink is synonymous with absolute links, which are different
 from relative links. Although all of these are symbolic links, the
 nomenclature here is defined such that symlink and absolute are
-equivalent . When verifying a link, choosing 'relative' means that the
+equivalent. When verifying a link, choosing 'relative' means that the
 link _must_ be relative to the source, so relative and absolute links
 are mutually exclusive.
 
@@ -2536,7 +2536,7 @@ absolute
 
 **Default value:** symlink
 
-**Example impelementation:**
+**Example implementation:**
 
 {{< CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##) >}}
 
@@ -2702,7 +2702,7 @@ string regardless of what characters it contains. If it is declared
 
 Note that CFEngine splits the promiser up into path links before
 matching, so that each link in the path chain is matched separately.
-Thus it it meaningless to have a `/` in a regular expression, as the
+Thus it is meaningless to have a `/` in a regular expression, as the
 comparison will never see this character.
 
 **Default value:** `guess`
@@ -3140,7 +3140,7 @@ based on the current scope of the calling promise. If lines are
 grouped into a block, the whole block is repeated when lists are
 expanded (see the Special Topics Guide on editing).
 
-If a class-context modified is used:
+If a class-context modifier is used:
 
 ```
 [%CFEngine class-expression:: %]
@@ -3165,7 +3165,7 @@ Everything after here applies only to solaris on Mondays
 until overridden...
 
 [%CFEngine linux:: %]
-Everything after here now applies now to linux only.
+Everything after here applies only to linux.
 
 [%CFEngine BEGIN %]
 This is a block of text

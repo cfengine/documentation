@@ -43,7 +43,7 @@ Note that if your `policy` attribute specifies "absent", then the promiser
 string needs to be a bare package name, you cannot use a file name for this.
 
 <a name=noteable-differences-from-package_modules></a>
-**Noteable differences from `package_method` based implementation:**
+**Notable differences from `package_method` based implementation:**
 
 - The promiser must be the fully qualified path to a file _or_ a _package name_.
   `package_modules` do not have the concept of a
@@ -205,7 +205,7 @@ of the package module inside `/var/cfengine/modules/packages`.
 
 #### default_options
 
-**Description:** Options to pass to to the package module by default.
+**Description:** Options to pass to the package module by default.
 
 See the `options` attribute for details on what options do.
 
@@ -316,7 +316,7 @@ body package_module apt_get
 
 #### module_path
 
-**Description:** Absolute path to the the package module.
+**Description:** Absolute path to the package module.
 
 By default, the package module implementation has to be in a file with the same
 name as the package module itself, under the `$(sys.workdir)/modules/packages`
@@ -543,7 +543,7 @@ packages:
 **Notes:**
 
 - Requires Python version 2 to be installed on the host.
-- Supports [`options`][packages#options] attribute. Each space separate
+- Supports [`options`][packages#options] attribute. Each space-separated
   option must be added as a separate list element. The options are passed
   directly through to the package manager.
 
@@ -661,7 +661,7 @@ the package name must be used.
 
 **Example**: install [Google Chrome][] but prevent it from self-upgrading
 (otherwise Google Chrome's self-upgrading will conflict with CFEngine ensuring
-that version from this particluar MSI is installed):
+that version from this particular MSI is installed):
 
 [Google Chrome]: https://cloud.google.com/chrome-enterprise/browser/download/#chrome-browser-update
 

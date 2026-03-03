@@ -23,12 +23,12 @@ We will use an Ubuntu 20.04 Linux virtual machine as the CFEngine Hub, and we wi
 If you've never set up a virtual machine (VM) before, these are some easy ways:
 
 - Cloud: Create a VM in Digital Ocean, AWS, or any other cloud vendor. **(Recommended)**
-- Mac OS: Install and run Vagrant and Virtual Box.
+- macOS: Install and run Vagrant and VirtualBox.
 - Linux: Install and run Vagrant and libvirt.
 - Windows: Use Windows Subsystem for Linux (WSL).
 
-We recommend using Digital Ocean because it is very easy to use the GUI, and spawn a virtual without installing something locally.
-However, since it requires you to create an account, some users might prefer to install virtualization software and run everything themself.
+We recommend using Digital Ocean because it is very easy to use the GUI, and spawn a virtual machine without installing something locally.
+However, since it requires you to create an account, some users might prefer to install virtualization software and run everything themselves.
 This is also possible, for example using Vagrant and VirtualBox, and we will provide instructions for both.
 
 ## Development machine and CFEngine Hub
@@ -152,7 +152,7 @@ For example, in Digital Ocean, the username is `root`, and the IP might be `128.
 
 **Note:** In the rest of this tutorial, replace the IP address we use in the examples, `192.168.56.2` with that IP.
 
-**Using Vagrant and Virtualbox:**
+**Using Vagrant and VirtualBox:**
 
 Come back to this tutorial after you have completed the installation and setup of a VM as explained in this tutorial:
 
@@ -198,7 +198,7 @@ Policy server : None
 Binaries      : dpkg, apt
 ```
 
-The output shows you the information needed for SSH (username and hostname / IP) as well as some key information about the host, such as architecture and operating system:
+The output shows you the information needed for SSH (username and hostname / IP) as well as some key information about the host, such as architecture and operating system.
 
 ## Install CFEngine
 
@@ -217,7 +217,7 @@ Open the CFEngine web UI in a web browser by clicking this link, or typing the a
 https://192.168.56.2/
 
 You might get warnings about an insecure connection or invalid certificate.
-At this point, your hub has a self signed certificate, which means there is no certificate authority that can verify which server you are talking to.
+At this point, your hub has a self-signed certificate, which means there is no certificate authority that can verify which server you are talking to.
 In the future you might want to set up a DNS entry for your hub and give it a proper certificate, but for now, you can click the options in your browser to Ignore / Continue.
 (In Chrome, there might not be an "Accept and continue button", but you can type `thisisunsafe` to bypass the security warning).
 

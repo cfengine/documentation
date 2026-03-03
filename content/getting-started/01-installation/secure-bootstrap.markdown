@@ -18,14 +18,14 @@ Usually, when getting started with CFEngine, this step is automated as a dead-si
 cf-agent --bootstrap <IP address of hub>
 ```
 
-However, this is in the default configuration, and there are several limitations and implications of this;
+However, this is in the default configuration, and there are several limitations and implications of this:
 
 ## Default configuration
 
 In the default configuration, the policy server (`cf-serverd`) on the hub machine trusts incoming connections from the same `/16` subnet.
 This means that:
 
-- Bootstrapping new clients will work as long as the 2 first numbers in the IP address are identical ([IPv4 dot decimal representation](https://en.wikipedia.org/wiki/Dot-decimal_notation)) .
+- Bootstrapping new clients will work as long as the 2 first numbers in the IP address are identical ([IPv4 dot decimal representation](https://en.wikipedia.org/wiki/Dot-decimal_notation)).
   The hub and client mutually accept each other's keys, automatically.
 - This applies to _all_ IP addresses within that range, not just the 1 IP address belonging to the client you are currently bootstrapping.
 - The hub will keep accepting new clients from those IP addresses until you change the configuration.
@@ -118,7 +118,7 @@ sudo ls /var/cfengine/ppkeys
 
 The keypair of the host itself is always in the `localhost.pub` and `localhost.priv` files.
 Additional public keys from the hosts CFEngine is talking to over the network are in the other `.pub` files.
-The filename has a SHA checksum of the public key file - this is the CFEngine hosts unique ID (in Mission Portal, our API, PostgreSQL and LMDB databases, etc.).
+The filename has a SHA checksum of the public key file - this is the CFEngine host's unique ID (in Mission Portal, our API, PostgreSQL and LMDB databases, etc.).
 
 **Recommendation:** Don't copy, transfer, open, or share the private key (`localhost.priv`).
 It is a secret - putting it in more places is not necessary and increases the chances it could be compromised.
@@ -132,7 +132,7 @@ sudo cf-key
 
 **Tip:** When using "golden images" to spawn machines with CFEngine already installed, ensure the keys in `/var/cfengine/ppkeys` are deleted before generating the snapshot, and generate / insert keys during provisioning.
 
-## Key distribution - boostrapping without automatically trusting
+## Key distribution - bootstrapping without automatically trusting
 
 To securely bootstrap a host to a hub, without trusting the network (IP addresses), you need to copy the 2 public keys across some trusted channel.
 Below we will be using SSH as the trusted channel, however the commands can easily be translated to however you are able to run commands and transfer files to your hosts.
@@ -149,7 +149,7 @@ Edit the 3 variables according to your situation, they represent:
 
 - `BOOTSTRAP_IP` - The IP address of the hub, which you want `cf-agent` on the client to bootstrap to (connect to).
 - `HUB_SSH` - The username / IP combination you would use to connect to the hub with SSH.
-- `CLIENT_SSH` - The username / IP combination you would use to connect to the hub with SSH.
+- `CLIENT_SSH` - The username / IP combination you would use to connect to the client with SSH.
 
 ### Trusting the client's key on the hub
 
@@ -241,6 +241,6 @@ This will start the normal CFEngine services (`cf-execd`, `cf-serverd`, etc.):
 ssh "$CLIENT_SSH" "cf-agent --trust-server no --bootstrap $BOOTSTRAP_IP"
 ```
 
-When we connect to the hubs IP address, if there is another server answering, a potential [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), it will not work.
+When we connect to the hub's IP address, if there is another server answering, a potential [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), it will not work.
 The agent on the client machine will refuse to communicate with the untrusted server.
 This is the main reason (security benefit) of doing mutual authentication and secure key distribution.

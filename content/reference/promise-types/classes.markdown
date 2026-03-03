@@ -28,8 +28,8 @@ classes:
 
 {{< CFEngine_include_example(class-automatic-canonificiation.cf) >}}
 
-- The term `class` and `context` are sometimes used interchangeably.
-- The following attributes to make a complete promise.
+- The terms `class` and `context` are sometimes used interchangeably.
+- The following attributes are used to make a complete promise.
   - and
   - expression
   - dist
@@ -124,7 +124,7 @@ classes:
 **Notes:**
 
 In the example above the values sum up to `10+20+40+50 = 120`. When generating
-the distribution, CFEngine picks a number between `1-120`, and set the class
+the distribution, CFEngine picks a number between `1-120`, and sets the class
 `my_dist` as well as one of the following classes:
 
 ```
@@ -215,7 +215,7 @@ classes:
 
 **Notes:**
 
-This is useful construction for writing expressions that contain functions.
+This is a useful construction for writing expressions that contain functions.
 
 ### persistence
 
@@ -251,11 +251,11 @@ This feature can be used to avoid recomputing expensive classes calculations
 on each invocation. This is useful if a class discovered is essentially
 constant or only slowly varying, such as a hostname or alias from a
 non-standard naming facility.
-Persistent classes are always global and can not be set to local
+Persistent classes are always global and cannot be set to local
 by **scope** directive.
 
 For example, to create a conditional inclusion of costly class evaluations,
-put them into a separate bundle in a file `classes.cf.`
+put them into a separate bundle in a file `classes.cf`.
 
 ```cf3
 # promises.cf
@@ -306,7 +306,7 @@ classes:
 
 **History:** Was introduced in CFEngine 3.3.0
 
-**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise types#persist_time]
+**See also:** [`persistence` classes attribute][classes#persistence], [`persist_time` in classes body][Promise types#persist_time]
 
 ### not
 

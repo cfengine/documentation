@@ -216,7 +216,7 @@ newline as shown in the example.
 
 Inline JSON or YAML data may contain CFEngine variable references.
 They will be expanded at runtime as if they were simply calls to
-`readjson()` or `readyaml()`, which also means that syntax error in
+`readjson()` or `readyaml()`, which also means that syntax errors in
 the JSON or YAML data will only be caught when your policy is actually
 being evaluated.
 

@@ -31,7 +31,7 @@ bundle agent report
 }
 ```
 
-Reports do not fundamentaly make changes to the system and report type promise
+Reports do not fundamentally make changes to the system and report type promise
 outcomes are _always_ considered kept.
 
 ```cf3

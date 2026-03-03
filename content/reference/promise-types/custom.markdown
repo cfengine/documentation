@@ -100,14 +100,14 @@ Due to the implementation details, the following attributes from the `classes` b
 
 In CFEngine, each bundle is evaluated in multiple passes (3 main passes for most promise types).
 Within each evaluation pass of a bundle, the promises are not evaluated from top to bottom, but based on the [normal order][Policy evaluation] of the bundle type.
-Custom promise types are added dynamically and don't have a predefined order, they are evaluated as they appear within a bundle (top to bottom), but at the end of each evaluation pass, after all the built in promise types.
+Custom promise types are added dynamically and don't have a predefined order, they are evaluated as they appear within a bundle (top to bottom), but at the end of each evaluation pass, after all the built-in promise types.
 As with other promise types, we recommend not relying too much on this ordering, if you want some promises to be evaluated before others, use the `bundlesequence` or `depends_on` attribute to achieve this.
 
 **Note:** All promises of the same type are evaluated together, so splitting up the promises of one type or interleaving promises of multiple types will not make a difference. All promises of the custom promise type which appeared first will be evaluated before all the promises of the custom promise type which appeared second are evaluated, and so on.
 
 ## Creating custom promise types
 
-The agent spawns the promise module as a subprocess and communicates with it using it's standard input and output (stdin, stdout).
+The agent spawns the promise module as a subprocess and communicates with it using its standard input and output (stdin, stdout).
 It does not use command line arguments, or standard error output (stderr), but these may be used for testing / debugging promise modules.
 Everything written to stdin and stdout should follow the module protocol described below.
 
@@ -182,11 +182,11 @@ Note that all log levels, except for `debug`, should be friendly to non-develope
 
 ### Results
 
-Each operation performed by the module, sends a result back to the agent.
+Each operation performed by the module sends a result back to the agent.
 The possible results are as follows:
 
 - Shared between operations:
-  - `error` - an unexpected error occured in the module or protocol, indicating a bug in CFEngine or the promise module
+  - `error` - an unexpected error occurred in the module or protocol, indicating a bug in CFEngine or the promise module
     - Should be explained by a `critical` level log message
 - Promise validation:
   - `valid` - No problems with the data or data types in promise
@@ -197,11 +197,11 @@ The possible results are as follows:
     - It does not need to validate the promise again, and should **not** return `valid` / `invalid`.
   - `kept` - promise satisfied already, no change made
   - `repaired` - promise not satisfied before, but fixed now
-    - The change should be explained in a `info` level log message
+    - The change should be explained in an `info` level log message
   - `not_kept` - promise not satisfied before, and could not be fixed
     - Should be explained by an `error` level log message
-- Teminate:
-  - `success` - Module succesfully terminated without errors
+- Terminate:
+  - `success` - Module successfully terminated without errors
   - `failure` - There were problems when trying to clean up / terminate
     - Should be explained by a `critical` level log message
 
@@ -317,7 +317,7 @@ header. Following are the currently recognized features supported by cf-agent.
 ##### Action policy
 
 The _Action policy_ feature, advertised as supported by the `action_policy` feature flag, indicates
-that the module can properly handle the action policy mechanism which allows user to specify that
+that the module can properly handle the action policy mechanism which allows the user to specify that
 promises should only check the state of the system and produce warnings in case of mismatch instead
 of actually repairing the state. When supported by the module, the cf-agent will allow use of the
 promises handled by the module with:
@@ -362,7 +362,7 @@ The headers (request and response) are not JSON, but a sequence of space-separat
 All messages sent by cf-agent and the promise module are single line JSON-data, except:
 
 - Headers (both from cf-agent and promise module) are not JSON.
-- JSON responses sent from promise module may optionally be preceeded by log messages, as explained below.
+- JSON responses sent from promise module may optionally be preceded by log messages, as explained below.
 
 Within strings in the JSON data, newline characters must be escaped (`\n`).
 This is not strictly required by the JSON spec, but most implementations do this anyway.

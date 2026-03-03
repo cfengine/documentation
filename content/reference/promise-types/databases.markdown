@@ -13,7 +13,7 @@ There are two main cases of database management to address: small
 embedded databases and large centralized databases.
 
 Databases are often centralized entities that have a single point of
-management. While large monolithic database can be more easily managed
+management. While a large monolithic database can be more easily managed
 with other tools, CFEngine can still monitor changes and discrepancies.
 In addition, CFEngine can also manage smaller embedded databases that
 are distributed in nature, whether they are SQL, registry or future
@@ -32,10 +32,10 @@ There are three kinds of database supported by CFEngine:
 
 - _SQL - Structured Query Language_
 
-  A number of relational databases (currently supported: MySQL, Postgres for
+  A number of relational databases (currently supported: MySQL, Postgres) for
   reading and writing complex data.
 
-  **WARNING:** Neither MySQL/MariaDB or PostgreSQL support is built into the
+  **WARNING:** Neither MySQL/MariaDB nor PostgreSQL support is built into the
   default binaries. If you wish to use this functionality you must compile the
   agent with support.
 
@@ -352,7 +352,7 @@ databases:
 
  windows::
 
-  # Regsitry has (value,data) pairs in "keys" which are directories
+  # Registry has (value,data) pairs in "keys" which are directories
 
   "HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine"
 
@@ -390,7 +390,7 @@ bundle agent main
 
 ### registry_exclude
 
-**Description:** An `registry_exclude` slist contains regular expressions
+**Description:** A `registry_exclude` slist contains regular expressions
 to ignore in key/value verification.
 
 During recursive Windows registry scanning, this option allows us to ignore

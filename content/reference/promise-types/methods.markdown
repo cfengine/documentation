@@ -62,7 +62,7 @@ bundle agent subtest_c(info)
 Methods offer powerful ways to encapsulate multiple issues pertaining to
 a set of parameters.
 
-Note in the above that a list can be passed as a implicitly iterated
+Note in the above that a list can be passed as an implicitly iterated
 scalar and as a reference, while a `data` variable (a data container)
 can only be passed by reference.
 
@@ -99,7 +99,7 @@ only look like `$(name)` where `name` is either a string or an slist.
 They can't be `"$(a)$(b)"`, `$(a[b])`, and so on.
 
 Here's a full example of how you might encode bundle names and
-parameters in a slist, if you need to pack and unpack method calls in
+parameters in an slist, if you need to pack and unpack method calls in
 a portable (e.g. written in a file) format.
 
 {{< CFEngine_include_snippet(unpack_method_calls.cf, #\+begin_src cfengine3, .*end_src) >}}

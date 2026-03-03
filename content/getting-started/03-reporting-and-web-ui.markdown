@@ -7,7 +7,7 @@ aliases:
   - "/getting-started/reporting-and-web-ui"
 ---
 
-After setting up your CFEngine Hub, adding modules and deployed your first policy set, it's appropriate to get familiar with the CFEngine Web UI, Mission Portal, and some of it's useful features.
+After setting up your CFEngine Hub, adding modules and deploying your first policy set, it's appropriate to get familiar with the CFEngine Web UI, Mission Portal, and some of its useful features.
 This is by no means an exhaustive list of everything Mission Portal offers, but a good introduction for new users.
 If you haven't already, open your web browser and put the IP address (or hostname) of your CFEngine Hub in the address bar.
 For example:
@@ -23,7 +23,7 @@ Both ways will lead you to an individual _Host info page_:
 
 ![](host-info.png)
 
-In this page you find a lot of useful functionality and information related to an individual host.
+On this page you find a lot of useful functionality and information related to an individual host.
 There are a few action buttons in the top right corner:
 
 ![](action-buttons.png)
@@ -67,7 +67,7 @@ In Mission Portal, there is already an example compliance report which gives you
 As you start writing policy or using more modules, you might encounter situations where your deployed policy is not working and causes errors on some hosts.
 The best way to investigate these errors is to use the _Policy Analyzer_.
 In the left navigation bar, you can click _Policy Analyzer_, and then the blue button to _Enable policy analyzer_.
-Once enabled (refresh or wait a bit) the policy analyzer gives you a way to browse through your policy set:
+Once enabled (refresh or wait a bit), the policy analyzer gives you a way to browse through your policy set:
 
 ![](policy-analyzer.png)
 
