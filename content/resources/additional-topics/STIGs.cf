@@ -23,16 +23,16 @@
 
 body common control
 {
- bundlesequence => { "STIGs" };
+ bundlesequence => { "stigs" };
  inputs => { "/var/cfengine/inputs/cfengine_stdlib.cf" };
- host_licenses_paid => "1";	
+ host_licenses_paid => "1";
 }
 
 #
 # STIGs compliance with CFEngine 3 (Nova)
 #
 
-bundle agent STIGs
+bundle agent stigs
 {
  vars:
 
@@ -666,15 +666,15 @@ bundle agent STIGs
               perms => mog("600","root","root"),
       edit_defaults => empty,
           edit_line => append_if_no_line("ALL");
-   
+
    "/etc/cron.allow" -> { "GEN002960", "GEN002980","GEN003060", "GEN003240" }
             comment => "CAT II (Previously - G200, G201, G622) UNIX STIG: 3.17.3 Restrictions",
              handle => "stigs_files_redhat_5_etc_cron_allow",
              create => "true",
               perms => mog("600","root","root"),
       edit_defaults => empty,
-          edit_line => maintain_cron_allow("@(STIGs.cron_users)");
-   
+          edit_line => maintain_cron_allow("@(stigs.cron_users)");
+
    "$(cron_dirs)" -> { "GEN003040", "GEN003080" }
             comment => "CAT II (Previously - G205) UNIX STIG: 3.17.3 Restrictions",
              handle => "stigs_files_redhat_5_cron_dirs_600",
@@ -716,7 +716,7 @@ bundle agent STIGs
          handle => "stigs_files_redhat_5_etc_at_deny_all_not_root",
          create => "true",
           perms => mog("600","root","root"),
-      edit_line => append_if_no_lines("@(STIGs.at_deny_users)");
+      edit_line => append_if_no_lines("@(stigs.at_deny_users)");
 
    "/etc/at.allow" -> { "GEN003320", "GEN003340", "GEN003460" }
             comment => "CAT II (Previously - G213, G214, G629) UNIX STIG: 3.18.3 Restrictions",
@@ -888,8 +888,8 @@ bundle agent STIGs
 #   "/etc/hosts.allow" -> { "GEN006620" }
 #        comment => "CAT II UNIX STIG: 6.6 Access Control Programs and TCP_WRAPPERS",
 #         handle => "stigs_files_redhat_5_etc_hosts_allow",
-#      edit_line => append_if_no_lines("@(STIGs.hosts_allow)");
-   
+#      edit_line => append_if_no_lines("@(stigs.hosts_allow)");
+
 #   "/etc/hosts.deny" -> { "GEN006620" }
 #        comment => "CAT II UNIX STIG: 6.6 Access Control Programs and TCP_WRAPPERS",
 #         handle => "stigs_files_redhat_5_etc_hosts_deny",

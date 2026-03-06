@@ -26,18 +26,18 @@ bundle agent testbundle
 
       "/home/mark/tmp/passwd"
       create    => "true",
-      edit_line => SetUserParam("mark","6","/set/this/shell");
+      edit_line => set_user_param("mark","6","/set/this/shell");
 
       "/home/mark/tmp/group"
       create    => "true",
-      edit_line => AppendUserParam("root","4","@(userset)");
+      edit_line => append_user_param("root","4","@(userset)");
 
   commands:
       "/bin/echo" args => $(userset);
 }
 ########################################################
 
-bundle edit_line SetUserParam(user,field,val)
+bundle edit_line set_user_param(user,field,val)
 {
   field_edits:
       "$(user):.*"
@@ -46,7 +46,7 @@ bundle edit_line SetUserParam(user,field,val)
 }
 ########################################################
 
-bundle edit_line AppendUserParam(user,field,allusers)
+bundle edit_line append_user_param(user,field,allusers)
 {
   vars:
       "val" slist => { @(allusers) };

@@ -57,7 +57,7 @@ bundle edit_line prefix_postfix
 }
 ########################################################
 
-bundle edit_line AppendIfNSL(parameter)
+bundle edit_line append_if_nsl(parameter)
 {
   insert_lines:
       "$(parameter)"; # This is default

@@ -497,7 +497,7 @@ exact_match
 **Example:**
 
 ```cf3
-bundle edit_line Insert(service, filename)
+bundle edit_line insert_service(service, filename)
 {
 insert_lines:
 

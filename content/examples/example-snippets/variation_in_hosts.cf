@@ -15,16 +15,16 @@ bundle agent central
       "policy_server" string => "myhost.domain.tld";
     mygroup_1::
       "mypackages" slist => {
-                              "nagios"
+                              "nagios",
                               "gcc",
                               "apache2",
-                              "php5"
+                              "php5",
       };
     mygroup_2::
       "mypackages" slist => {
-                              "apache"
+                              "apache",
                               "mysql",
-                              "php5"
+                              "php5",
       };
 
   files:

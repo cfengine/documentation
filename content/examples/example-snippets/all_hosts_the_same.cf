@@ -10,7 +10,7 @@ bundle agent central
   vars:
       "policy_server" string => "myhost.domain.tld";
       "mypackages" slist => {
-                              "nagios"
+                              "nagios",
                               "gcc",
                               "apache2",
                               "php5"
