@@ -76,7 +76,24 @@ Also you could write this using a list variable:
 
 ## Copy files
 
-{{< CFEngine_include_snippet(copy_files.cf, .* ) >}}
+```cf3 {skip TODO}
+files:
+  "/var/cfengine/inputs"
+    handle => "update_policy",
+    perms => m("600"),
+    copy_from => u_scp("$(master_location)",@(policy_server)),
+    depth_search => recurse("inf"),
+    file_select => input_files,
+    action => immediate;
+
+  "/var/cfengine/bin"
+    perms => m("700"),
+    copy_from => u_scp("/usr/local/sbin","localhost"),
+    depth_search => recurse("inf"),
+    file_select => cf3_files,
+    action => immediate,
+    classes => on_change("reload");
+```
 
 ## Copy and flatten directory
 

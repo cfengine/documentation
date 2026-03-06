@@ -13,11 +13,6 @@ body knowledge control
       sql_type => "postgres";
 }
 
-bundle knowledge dummy
-{
-  topics:
-}
-
 body common control
 {
       bundlesequence => { "databases" };

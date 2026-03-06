@@ -26,11 +26,11 @@ bundle agent testbundle
   files:
       "/tmp/passwd_excerpt"
       create    => "true",
-      edit_line => MarkNRoot;
+      edit_line => mark_n_root;
 }
 ########################################################
 
-bundle edit_line MarkNRoot
+bundle edit_line mark_n_root
 {
   delete_lines:
       "mark.*|root.*" not_matching => "true";

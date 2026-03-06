@@ -107,7 +107,7 @@ bundle agent create_aout_source_file
       "$(global_vars.workdir)/a.c"
       perms => system,
       create => "true",
-      edit_line => Insert("@(c)");
+      edit_line => insert_name("@(c)");
 
   reports:
     "The source file $(global_vars.workdir)/a.c has been created. It will be used to compile the binary a.out, which will provide more accurate file stats to compare two files than the built in CFEngine functionality for comparing file stats, including modification time. This information will be used to determine of the second of the two files being compared is newer or not.";
@@ -115,7 +115,7 @@ bundle agent create_aout_source_file
 
 }
 
-bundle edit_line Insert(name)
+bundle edit_line insert_name(name)
 {
    insert_lines:
       "$(name)";

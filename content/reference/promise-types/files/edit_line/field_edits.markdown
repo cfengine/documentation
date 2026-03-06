@@ -32,12 +32,12 @@ bundle agent example
     "/tmp/passwd"
 
          create    => "true",
-         edit_line => SetUserParam("mark","6","/set/this/shell");
+         edit_line => set_user_param("mark","6","/set/this/shell");
 
     "/tmp/group"
 
          create    => "true",
-         edit_line => AppendUserParam("root","4","@(userset)");
+         edit_line => append_user_param("root","4","@(userset)");
 }
 ```
 
@@ -45,7 +45,7 @@ The promise in this example assumes a parameterizable model for editing the
 fields of such files.
 
 ```cf3
-bundle edit_line SetUserParam(user,field,val)
+bundle edit_line set_user_param(user,field,val)
 {
   field_edits:
 
@@ -56,7 +56,7 @@ bundle edit_line SetUserParam(user,field,val)
       edit_field => col(":","$(field)","$(val)","set");
 }
 
-bundle edit_line AppendUserParam(user,field,allusers)
+bundle edit_line append_user_param(user,field,allusers)
 {
   vars:
 
