@@ -227,10 +227,10 @@ body service_method my_custom_service_method
     service_bundle => my_custom_service_method_windows( $(this.promiser), $(this.service_policy) );
 
   redhat|centos::
-    service_bundle => my_custom_service_method_EL( $(this.promiser), $(this.service_policy) );
+    service_bundle => my_custom_service_method_rhel( $(this.promiser), $(this.service_policy) );
 
   debian|ubuntu::
-    service_bundle => my_custom_service_method_DEB( $(this.promiser), $(this.service_policy) );
+    service_bundle => my_custom_service_method_deb( $(this.promiser), $(this.service_policy) );
 }
 
 bundle agent my_custom_service_method_windows( service_identifier, desired_service_state )
@@ -238,12 +238,12 @@ bundle agent my_custom_service_method_windows( service_identifier, desired_servi
   # Specific windows implementation
 }
 
-bundle agent my_custom_service_method_EL( service_identifier, desired_service_state )
+bundle agent my_custom_service_method_rhel( service_identifier, desired_service_state )
 {
   # Specific Redhat|Centos implementation
 }
 
-bundle agent my_custom_service_method_DEB( service_identifier, desired_service_state )
+bundle agent my_custom_service_method_deb( service_identifier, desired_service_state )
 {
   # Specific Debian|Ubuntu implementation
 }
