@@ -18,21 +18,19 @@ To get started with CFEngine, you can imagine the following template for enterin
 
 ## The general pattern
 
-The general pattern of the syntax is like this (colors in html version: red, CFEngine word; blue, user-defined word):
+The general pattern of the syntax is like this:
 
-```cf3
+```cf3 {skip}
 bundle component name(parameters)
 {
-what_type:
- where_when::
-
-  ## Traditional comment
-
-  "promiser" -> { "promisee1", "promisee2" },
+  what_type:
+    where_when::
+      ## Traditional comment
+      "promiser" -> { "promisee1", "promisee2" },
         comment => "The intention ...",
-         handle => "unique_id_label",
-    attribute_1 => body_or_value1,
-    attribute_2 => body_or_value2;
+        handle => "unique_id_label",
+        attribute_1 => body_or_value1,
+        attribute_2 => body_or_value2;
 }
 ```
 
