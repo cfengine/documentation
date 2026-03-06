@@ -12,7 +12,6 @@ aliases:
 - [Software administration examples][Software administration examples]
 - [Commands, scripts, and execution examples][Commands, scripts, and execution examples]
 - [File and directory examples][File and directory examples]
-- [File template examples][File template examples]
 - [Database examples][Database examples]
 - [Network examples][Network examples]
 - [System security examples][System security examples]
