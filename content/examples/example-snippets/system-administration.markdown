@@ -96,14 +96,6 @@ A simple and straightforward approach is to maintain a separate modular bundle f
 
 {{< CFEngine_include_snippet(set_up_name_resolution.cf, .* ) >}}
 
-A second approach is to try to conceal the operational details behind a veil of abstraction.
-
-{{< CFEngine_include_snippet(set_up_name_resolution_1.cf, .* ) >}}
-
-DNS is not the only name service, of course. Unix has its older /etc/hosts file which can also be managed using file editing. We simply append this to the system_files bundle.
-
-{{< CFEngine_include_snippet(set_up_name_resolution_1.cf, .* ) >}}
-
 ## Set up sudo
 
 Setting up sudo is straightforward, and is best managed by copying trusted files from a repository.
