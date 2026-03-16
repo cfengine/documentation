@@ -14,12 +14,12 @@ bundle agent testbundle
 {
   files:
       "/var/cfengine/inputs/.*"
-      edit_line => DeleteLinesMatching(".*cfenvd.*"),
+      edit_line => delete_lines_matching(".*cfenvd.*"),
       action => WarnOnly;
 }
 ########################################################
 
-bundle edit_line DeleteLinesMatching(regex)
+bundle edit_line delete_lines_matching(regex)
 {
   delete_lines:
       "$(regex)" action => WarnOnly;

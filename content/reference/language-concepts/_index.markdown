@@ -8,15 +8,12 @@ aliases:
 
 There is only one grammatical form for statements in the language:
 
-```cf3
+```cf3 {skip}
 bundle bundle_type name
 {
-promise_type:
-
-  classes::
-
-    "promiser" -> { "promisee1", "promisee2", "..." }
-
+  promise_type:
+    classes::
+      "promiser" -> { "promisee1", "promisee2", "..." }
         attribute_1 => value_1,
         attribute_2 => value_2,
         # ...

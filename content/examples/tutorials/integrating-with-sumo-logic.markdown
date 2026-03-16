@@ -175,7 +175,7 @@ bundle agent sumo_logic_policy_update
   files:
       "$(policy_update_file)"
         create => "true",
-        edit_line => insert("CFEngine_update: $(sys.last_policy_update)"),
+        edit_line => insert_str("CFEngine_update: $(sys.last_policy_update)"),
         edit_defaults => file;
 
       "$(policy_update_file)"
@@ -204,7 +204,7 @@ body contain shell_command
         useshell => "useshell";
 }
 
-bundle edit_line insert(str)
+bundle edit_line insert_str(str)
 {
   insert_lines:
       "$(str)";

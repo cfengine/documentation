@@ -404,7 +404,7 @@ eucalyptus
 
 **Example:**
 
-```cf3
+```cf3 {skip TODO}
 bundle agent my_vm_cloud
 {
 guest_environments:

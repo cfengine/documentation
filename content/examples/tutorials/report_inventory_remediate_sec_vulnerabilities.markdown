@@ -38,8 +38,8 @@ This bundle will check if the host is vulnerable to the CVE, define a class
 _CVE_2014_6217_ if it is vulnerable and augment Mission Portals Inventory
 interface in CFEngine Enterprise.
 
-```cf3 {file="inventory_CVE_2014_6271.cf"}
-bundle agent inventory_CVE_2014_6271
+```cf3 {file="inventory_cve_2014_6271.cf"}
+bundle agent inventory_cve_2014_6271
 {
   meta:
     "description" string => "Remote exploit vulnerability in bash http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271";
@@ -52,13 +52,13 @@ bundle agent inventory_CVE_2014_6271
 
     "test_result" string => execresult("$(env) x='() { :;}; $(echo) vulnerable' $(bash) -c 'echo testing CVE-2014-6271'", "useshell");
 
-    CVE_2014_6271::
+    cve_2014_6271::
       "vulnerable"
         string => "CVE-2014-6271",
         meta => { "inventory", "attribute_name=Vulnerable CVE(s)" };
 
   classes:
-    "CVE_2014_6271"
+    "cve_2014_6271"
       expression => regcmp( "vulnerable.*", "$(test_result)" ),
       scope => "namespace",
       persistence => "10",
@@ -70,7 +70,7 @@ bundle agent inventory_CVE_2014_6271
     DEBUG|DEBUG_cve_2014_6217::
       "Test Result: $(test_result)";
 
-    CVE_2014_6271.(inform_mode|verbose_mode)::
+    cve_2014_6271.(inform_mode|verbose_mode)::
       "Tested Vulnerable for CVE-2014-6271: $($(this.bundle)_meta.description)";
 }
 ```
@@ -94,7 +94,7 @@ place the command output into the `test_result` variable. Since we have no
 classes type promise is evaluated and defines the class `CVE_2014_6271` if the
 output matches the regular expression `vulnerable.\*`. Finally the reports are
 evaluated before starting the second pass. If the class `DEBUG` or
-`DEBUG_inventory_CVE_2014_6271` is set the test command output will be shown,
+`DEBUG_inventory_cve_2014_6271` is set the test command output will be shown,
 and if the vulnerability is present agent is running in inform or verbose mode
 message indicating the host is vulnerable along with the description will be
 output.
@@ -112,7 +112,7 @@ is to change `"services_autorun" expression => "!any";` to `"services_autorun"
 expression => "any";` in `def.cf`.
 
 Once you have autorun enabled you need only save the policy into
-`services/autorun/inventory_CVE_2014_6271.cf`.
+`services/autorun/inventory_cve_2014_6271.cf`.
 
 ### Report on affected system inventory
 
@@ -154,10 +154,10 @@ See the dashboard alert in action.
 
 Now that we know the extent of exposure lets ensure bash gets updated on some
 of the affected systems. Save the following policy into
-`services/autorun/remediate_CVE_2014_6271.cf`
+`services/autorun/remediate_cve_2014_6271.cf`
 
-```cf3 {file="remediate_CVE_2014_6271.cf"}
-bundle agent remediate_CVE_2014_6271
+```cf3 {file="remediate_cve_2014_6271.cf"}
+bundle agent remediate_cve_2014_6271
 {
   meta:
     "tags" slist => { "autorun" };
@@ -166,7 +166,7 @@ bundle agent remediate_CVE_2014_6271
     "allow_update" or => { "hub", "host001" };
 
   methods:
-    allow_update.CVE_2014_6271::
+    allow_update.cve_2014_6271::
       "Upgrade_Bash"
         usebundle => package_latest("bash");
 }

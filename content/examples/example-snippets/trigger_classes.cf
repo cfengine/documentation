@@ -24,7 +24,7 @@ bundle agent insert
 
   files:
       "/tmp/test_insert"
-      edit_line => Insert("$(insert.v)"),
+      edit_line => insert_name("$(insert.v)"),
       edit_defaults => empty,
       classes => trigger("edited");
 
@@ -41,7 +41,7 @@ bundle agent insert
 # For the library
 #######################################################
 
-bundle edit_line Insert(name)
+bundle edit_line insert_name(name)
 {
   insert_lines:
       "Begin$(const.n) $(name)$(const.n)End";

@@ -30,6 +30,7 @@ declared as:
 ```cf3
 bundle agent my_name
 {
+  # Promises for cf-agent
 }
 ```
 
@@ -38,16 +39,17 @@ while `cf-serverd` has bundles declared as:
 ```cf3
 bundle server my_name
 {
+  # Promises for cf-serverd
 }
 ```
 
-and `cf-monitord` has bundles declared as
+Currently, these are the possible _bundle types_:
 
-```cf3
-bundle monitor my_name
-{
-}
-```
+- `agent`: Bundle of promises specific to the `cf-agent` binary.
+- `server`: Bundle of promises specific to the `cf-serverd` binary.
+- `monitor`: Bundle of promises specific to the `cf-monitord` binary.
+- `common`: Bundle of promises shared among the different binaries / components.
+- `edit_line`: Bunde of promises used in a `files` promise with the `edit_line` attribute.
 
 A number of promises can be made in any kind of bundle since they are of a
 generic input/output nature. These are `vars`, [`classes`][classes], `defaults`,
