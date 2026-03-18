@@ -77,9 +77,9 @@ Vagrant.configure("2") do |config|
       SHELL
     end
 
-    # Ubuntu 20.04 VM, for CFEngine Enterprise Hub:
+    # Ubuntu 24.04 VM, for CFEngine Enterprise Hub:
     config.vm.define "hub", autostart: false do |hub|
-        hub.vm.box = "ubuntu/focal64"
+        hub.vm.box = "cloud-image/ubuntu-24.04"
         hub.vm.hostname = "hub"
         hub.vm.network "private_network", ip: "192.168.56.2"
         hub.ssh.insert_key = true
@@ -93,7 +93,7 @@ end
 
 The `Vagrantfile` above does some important things:
 
-- Defines an Ubuntu 20.04 virtual machine called `hub`, with hostname `hub`
+- Defines an Ubuntu 24.04 virtual machine called `hub`, with hostname `hub`
 - Sets its IP address to be `192.168.56.2`
 - Sets how much memory and CPU cores we want the VM to have
 - Copies the `id_rsa.pub` public key into the host when it starts, so we can use `ssh`
