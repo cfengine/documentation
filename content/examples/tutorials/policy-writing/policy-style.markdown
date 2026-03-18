@@ -48,31 +48,26 @@ a policy expert who is familiar with Normal ordering.
 bundle agent main
 {
   vars:
-
-      "sshd_config"
-        string => "/etc/ssh/sshd_config";
+    "sshd_config"
+      string => "/etc/ssh/sshd_config";
 
   files:
-
-      "$(sshd_config)"
-        edit_line => insert_lines("PermitRootLogin no"),
-        classes => results("bundle", "sshd_config");
+    "$(sshd_config)"
+      edit_line => insert_lines("PermitRootLogin no"),
+      classes => results("bundle", "sshd_config");
 
   packages:
-
-      "ssh"
-        policy => "present";
-        package_module => apt_get;
+    "ssh"
+      policy => "present";
+      package_module => apt_get;
 
   services:
-
     sshd_config_repaired::
-
-        "ssh"
-          service_policy => "restart",
-          comment => "After the sshd config file has been repaired, the
-                      service must be reloaded in order for the new
-                      settings to take effect.";
+      "ssh"
+        service_policy => "restart",
+        comment => "After the sshd config file has been repaired, the
+                    service must be reloaded in order for the new
+                    settings to take effect.";
 
 }
 ```
@@ -98,33 +93,27 @@ body common control
 
 bundle agent main
 {
-
   packages:
-
-      "ssh"
-        policy => "present";
-        package_module => apt_get;
+    "ssh"
+      policy => "present";
+      package_module => apt_get;
 
   vars:
-
-      "sshd_config"
-       string => "/etc/ssh/sshd_config";
+    "sshd_config"
+      string => "/etc/ssh/sshd_config";
 
   files:
-
-      "$(sshd_config)"
-        edit_line => insert_lines("PermitRootLogin no"),
-        classes => results("bundle", "sshd_config");
+    "$(sshd_config)"
+      edit_line => insert_lines("PermitRootLogin no"),
+      classes => results("bundle", "sshd_config");
 
   services:
-
     sshd_config_repaired::
-
-        "ssh"
-          service_policy => "restart",
-          comment => "After the sshd config file has been repaired, the
-                      service must be reloaded in order for the new
-                      settings to take effect.";
+      "ssh"
+        service_policy => "restart",
+        comment => "After the sshd config file has been repaired, the
+                    service must be reloaded in order for the new
+                    settings to take effect.";
 
 }
 ```
@@ -265,21 +254,22 @@ bundle agent example(param1)
 # param1 - string -
 {
   vars:
-      "copy_of_param1" string => "$(param1)";
+    "copy_of_param1" string => "$(param1)";
 
-      "jedi" slist => {
-          "Obi-Wan Kenobi",
-          "Luke Skywalker",
-          "Yoda",
-          "Darth Vader", # He used to be a Jedi, and since he
-                         # tossed the emperor into the Death
-                         # Star's reactor shaft we are including
-                         # him.
+    "jedi"
+      slist => {
+        "Obi-Wan Kenobi",
+        "Luke Skywalker",
+        "Yoda",
+        "Darth Vader", # He used to be a Jedi, and since he
+                       # tossed the emperor into the Death
+                       # Star's reactor shaft we are including
+                       # him.
       };
   classes:
-      # Most of the time we don't need differentiation of redhat and centos
-      "EL5" or => { "centos_5", "redhat_5" };
-      "EL6" or => { "centos_6", "redhat_6" };
+    # Most of the time we don't need differentiation of redhat and centos
+    "EL5" or => { "centos_5", "redhat_5" };
+    "EL6" or => { "centos_6", "redhat_6" };
 }
 ```
 
@@ -538,7 +528,6 @@ bundle agent satellite_bootstrap_main
     "bootstrap rhel7 servers to satellite every 24 hours"
       usebundle => satellite_bootstrap,
       action => if_elapsed(1440);
-
 }
 ```
 
@@ -553,20 +542,20 @@ Formatted parsed policy:
 ```cf3
 bundle agent satellite_bootstrap_main()
 {
-meta:
-  (!ubuntu&!vvlan&!sarcrole_satellite)::
-    "tags"        slist =>  {"autorun"};
+  meta:
+    (!ubuntu&!vvlan&!sarcrole_satellite)::
+      "tags" slist => {"autorun"};
 
-methods:
-  any::
-    "bootstrap rhel7 servers to satellite every 24 hours"
-      usebundle => satellite_bootstrap,
-      action => if_elapsed("1440");
+  methods:
+    any::
+      "bootstrap rhel7 servers to satellite every 24 hours"
+        usebundle => satellite_bootstrap,
+        action => if_elapsed("1440");
 }
 
 body file control()
 {
-  inputs =>  { "$(sys.libdir)/stdlib.cf" };
+  inputs => { "$(sys.libdir)/stdlib.cf" };
 }
 ```
 
