@@ -51,10 +51,6 @@ The next simplest approach to file management is to add variables to the templat
 
 {{< CFEngine_include_snippet(macro_template.cf, .* ) >}}
 
-The macro template file may contain variables, as below, that get expanded by CFEngine.
-
-{{< CFEngine_include_snippet(macro_template_1.cf, .* ) >}}
-
 ### Custom editing
 
 If you do not control the starting state of the file, because it is distributed by an operating system vendor for instance, then editing the final state is the best approach. That way, you will get changes that are made by the vendor, and will ensure your own modifications are kept even when updates arrive.

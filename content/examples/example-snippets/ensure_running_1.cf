@@ -1,4 +1,4 @@
-bundle agent CFEngine_processes
+bundle agent cfengine_processes
 {
   vars:
 

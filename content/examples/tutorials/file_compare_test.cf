@@ -107,7 +107,7 @@ bundle agent create_aout_source_file
       "$(global_vars.workdir)/a.c"
       perms => system,
       create => "true",
-      edit_line => Insert("@(c)");
+      edit_line => insert_name("@(c)");
 
   reports:
     "The source file $(global_vars.workdir)/a.c has been created. It will be used to compile the binary a.out, which will provide more accurate file stats to compare two files than the built in CFEngine functionality for comparing file stats, including modification time. This information will be used to determine of the second of the two files being compared is newer or not.";
@@ -115,7 +115,7 @@ bundle agent create_aout_source_file
 
 }
 
-bundle edit_line Insert(name)
+bundle edit_line insert_name(name)
 {
    insert_lines:
       "$(name)";
@@ -133,7 +133,7 @@ bundle agent create_aout
 
     # Removes any previous binary
     "rmaout" string => execresult("$(global_vars.rmexec) $(global_vars.aoutexec)","noshell");
-	
+
 	doesfileacexist::
     "compilestr" string => "$(global_vars.gccexec) $(global_vars.workdir)/a.c -o $(global_vars.aoutexec)";
     "gccaout" string => execresult("$(compilestr)","noshell");
@@ -143,7 +143,7 @@ bundle agent create_aout
       "gcc output: $(gccaout)";
       "Creating aout using $(compilestr)";
 	!doesfileacexist::
-      "Cannot compile a.out, $(global_vars.workdir)/a.c does not exist.";	
+      "Cannot compile a.out, $(global_vars.workdir)/a.c does not exist.";
 	doesaoutexist::
 	  "The binary application aout has been compiled from the source in the create_aout_source_file bundle. It uses the stat library to compare two files, determine if the modified times are different, and whether the second file is newer than the first. The difference between this application and using CFEngine's built in support for getting file stats (e.g. filestat, isnewerthan), which provides file modification time accurate to a second. However, in order to better compare two files might sometimes require parts of a second as well. The stat library provides the extra support for retrieving the additional information required to get better accuracy (down to parts of a second), and is utilized by the binary application a.out that is compiled within the create_aout bundle.";
 	  "*********************************";
@@ -189,20 +189,20 @@ bundle agent do_files_exist_1
 
     doesfile1exist::
 
-    "any" usebundle => delete_file("$(global_vars.file1)");	
+    "any" usebundle => delete_file("$(global_vars.file1)");
     doesfile2exist::
-    "any" usebundle => delete_file("$(global_vars.file2)");	
+    "any" usebundle => delete_file("$(global_vars.file2)");
   reports:
 
     !doesfile1exist::
       "$(global_vars.file1) does not exist.";
 	doesfile1exist::
-      "$(global_vars.file1) did exist. Call to delete it was made.";	
-	
+      "$(global_vars.file1) did exist. Call to delete it was made.";
+
     !doesfile2exist::
       "$(global_vars.file2) does not exist.";
 	doesfile2exist::
-      "$(global_vars.file2) did exist. Call to delete it was made.";	
+      "$(global_vars.file2) did exist. Call to delete it was made.";
 
 }
 
@@ -245,7 +245,7 @@ bundle agent copy_a_file
 bundle agent do_files_exist_2
 
 {
-	
+
   methods:
 
     "any" usebundle => does_file_exist($(global_vars.file1));
@@ -275,7 +275,7 @@ bundle agent does_file_exist(filename)
 bundle agent list_file_1
 {
 
-  methods:	
+  methods:
     "any" usebundle => file_content($(global_vars.file1));
 	"any" usebundle => file_content($(global_vars.file2));
   reports:
@@ -314,7 +314,7 @@ bundle agent stat
   vars:
 
     doesfile1exist::
-	
+
     "file1" string => "$(global_vars.file1)";
     "file2" string => "$(global_vars.file2)";
 
@@ -329,7 +329,7 @@ bundle agent stat
     "file2_split2" string => nth("file2_split1",1);
     "file2_split3" slist => string_split($(file2_split2),"\.",3);
     "file2_split4" string => nth("file2_split3",1);
-	
+
   methods:
 
       "any" usebundle => exec_aout();
@@ -390,11 +390,11 @@ body replace_with hello_world
 
 bundle agent list_file_2
 {
-	
+
   methods:
 
       "any" usebundle => file_content($(global_vars.file1));
-      "any" usebundle => file_content($(global_vars.file2));	
+      "any" usebundle => file_content($(global_vars.file2));
 
   classes:
 
@@ -422,7 +422,7 @@ bundle agent file_content(filename)
 
       "file_content" string => readfile( "$(filename)" , "0" );
       "file_stat" string => filestat("$(filename)","mtime");
-	
+
   reports:
       "Contents of $(filename) = $(file_content). Last Modified Time = $(file_stat).";
 	  #"The report on contents will only show new content and modifications. Even if the method is called more than once, if the evaluation is exactly the same as the previous call then there will be no report (possibly because the bundle is not evaluated a second time?).";

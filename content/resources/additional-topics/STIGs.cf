@@ -1,15 +1,15 @@
 ################################################################################
-#     
-#                             _    _    _    _  
-#                            / \  / \  / \  / \ 
-#                           ( S )( T )( I )( G )
-#  	                     \_/  \_/  \_/  \_/ 
 #
-#                    Security Technical Implementation Guides 
+#                             _    _    _    _
+#                            / \  / \  / \  / \
+#                           ( S )( T )( I )( G )
+#  	                     \_/  \_/  \_/  \_/
+#
+#                    Security Technical Implementation Guides
 #
 #                            OS SRG UNIX Version
 #                            Version 1 Release 1
-#			
+#
 #
 #  Copyright (C) CFEngine AS
 #
@@ -23,16 +23,16 @@
 
 body common control
 {
- bundlesequence => { "STIGs" };
+ bundlesequence => { "stigs" };
  inputs => { "/var/cfengine/inputs/cfengine_stdlib.cf" };
- host_licenses_paid => "1";	
+ host_licenses_paid => "1";
 }
 
 #
 # STIGs compliance with CFEngine 3 (Nova)
 #
 
-bundle agent STIGs
+bundle agent stigs
 {
  vars:
 
@@ -43,7 +43,7 @@ bundle agent STIGs
        handle => "stigs_vars_redhat_5_strings_from_etc_shadow",
        string => readfile("/etc/shadow", 99999);
 
-   "shadow_list" -> { "GEN000560" } 
+   "shadow_list" -> { "GEN000560" }
       comment => "Break strings into a list",
        handle => "stigs_vars_redhat_5_list_from_etc_shadow",
         slist => splitstring("$(shadow)","[\n]",500);
@@ -63,10 +63,10 @@ bundle agent STIGs
        handle => "stigs_vars_redhat_5_fstab_contents",
        string => readfile("/etc/fstab","4000");
 
-   "network_services_daemon_files" -> { "GEN001180" } 
+   "network_services_daemon_files" -> { "GEN001180" }
       comment => "List of Network services daemon files",
        handle => "stigs_vars_redhat_5_network_services_daemon_files",
-        slist => { 
+        slist => {
                   "/var/cfengine/state/cf_incoming.nfsd",
                   "/var/cfengine/state/cf_outgoing.nfsd",
                   "/usr/sbin/.*",
@@ -75,7 +75,7 @@ bundle agent STIGs
    "system_dirs" -> { "GEN001220", "GEN001240" }
       comment => "List of important system directories",
        handle => "stigs_vars_redhat_5_system_dirs",
-        slist => { 
+        slist => {
                   "/etc",
                   "/bin",
                   "/sbin",
@@ -83,32 +83,32 @@ bundle agent STIGs
                   "/usr/sbin",
                  };
 
-   "system_log_files" -> { "GEN001260" } 
+   "system_log_files" -> { "GEN001260" }
       comment => "List of system log files",
        handle => "stigs_vars_redhat_5_system_log_files",
-        slist => { 
+        slist => {
                   "/var/log"
                  };
 
-   "manual_page_files" -> { "GEN001280" } 
+   "manual_page_files" -> { "GEN001280" }
       comment => "List of manual page files",
        handle => "stigs_vars_redhat_5_manual_page_files",
-        slist => { 
+        slist => {
                   "/usr/share/man",
                   "/usr/share/info",
                  };
 
-   "library_dirs" -> { "GEN001300" } 
+   "library_dirs" -> { "GEN001300" }
       comment => "List of library files",
        handle => "stigs_vars_redhat_5_library_dirs",
-        slist => { 
+        slist => {
                   "/usr/lib",
                  };
 
    "nis_nisplus_yp_files" -> { "GEN001320", "GEN001340", "GEN001360" }
       comment => "List of NIS/NIS+/yp files",
        handle => "stigs_vars_redhat_5_nis_nisplus_yp_files",
-        slist => { 
+        slist => {
                   "/var/yp",
                  };
 
@@ -170,7 +170,7 @@ bundle agent STIGs
    "pam_files" -> { "GEN002100" }
       comment => "List of PAM files to disable .rhosts",
        handle => "stigs_vars_redhat_5_pam_files",
-        slist => { 
+        slist => {
                   "/etc/pam.d/ekshell",
                   "/etc/pam.d/kshell",
                  };
@@ -188,7 +188,7 @@ bundle agent STIGs
    "umask_files" -> { "GEN001560", "GEN002560" }
       comment => "List of files which contain system and user default umask",
        handle => "stigs_vars_redhat_5_umask_files",
-        slist => { 
+        slist => {
                   "/etc/bashrc",
                   "/etc/csh.cshrc",
                   "/etc/csh.login",
@@ -211,7 +211,7 @@ bundle agent STIGs
                   "auditd"
                  };
 
-   "$(preferred_services)_status" -> { "GEN002660" } 
+   "$(preferred_services)_status" -> { "GEN002660" }
       comment => "List of service status of those preferred services",
        handle => "stigs_vars_redhat_5_preferred_services_status",
        string => execresult("/sbin/chkconfig --list $(preferred_services)","noshell");
@@ -219,17 +219,17 @@ bundle agent STIGs
    "cron_users" -> { "GEN002960" }
       comment => "List of users who would be able to use cron utility",
        handle => "stigs_vars_redhat_5_cron_users",
-        slist => { 
+        slist => {
                   "root",
                   "user1",
                   "user2",
                   "user3",
                  };
 
-   "cron_dirs" -> { "GEN003040", "GEN003080" } 
+   "cron_dirs" -> { "GEN003040", "GEN003080" }
       comment => "List of cron directories",
        handle => "stigs_vars_redhat_5_cron_dirs",
-        slist => { 
+        slist => {
                   "/etc/cron.hourly",
                   "/etc/cron.daily",
                   "/etc/cron.weekly",
@@ -237,10 +237,10 @@ bundle agent STIGs
                   "/etc/cron.d",
                  };
 
-   "other_cron_dirs" -> { "GEN003040", "GEN003080" } 
+   "other_cron_dirs" -> { "GEN003040", "GEN003080" }
       comment => "List of other cron directories",
        handle => "stigs_vars_redhat_5_other_cron_dirs",
-        slist => { 
+        slist => {
                   "/var/spool/cron",
                  };
 
@@ -274,7 +274,7 @@ bundle agent STIGs
                   "finger"
                  };
 
-   "$(unneeded_services)_status" -> { "GEN003700", "GEN003860" } 
+   "$(unneeded_services)_status" -> { "GEN003700", "GEN003860" }
       comment => "List of service status of those unneeded services",
        handle => "stigs_vars_redhat_5_unneeded_services_status",
        string => execresult("/sbin/chkconfig --list $(unneeded_services)","noshell");
@@ -300,7 +300,7 @@ bundle agent STIGs
 #   "accounts_to_disable" -> { "GEN004820", "GEN004840" }
 #      comment => "List of users to be disabled (not to be deleted from the system)",
 #       handle => "stigs_vars_redhat_5_accounts_to_disable",
-#        slist => { 
+#        slist => {
 #                  "ftp",
 #                 };
 
@@ -308,7 +308,7 @@ bundle agent STIGs
       comment => "List of unnecessary accounts",
        handle => "stigs_vars_redhat_5_accounts_to_delete",
         slist => {
-                  "ftp", 
+                  "ftp",
                   "shutdown",
                   "halt",
                   "game",
@@ -322,7 +322,7 @@ bundle agent STIGs
       comment => "List of ftpusers files",
        handle => "stigs_vars_redhat_5_ftpusers_files",
         slist => {
-                  "/etc/ftpusers", 
+                  "/etc/ftpusers",
                   "/etc/vsftpd.ftpusers",
                  };
 
@@ -338,7 +338,7 @@ bundle agent STIGs
    "hosts_allow" -> { "GEN006620" }
       comment => "List of hosts to be assigned to /etc/hosts.allow",
        handle => "stigs_vars_redhat_5_hosts_allow",
-        slist => { 
+        slist => {
                   "ALL:10.",
                   "ALL:172.16.",
                   "ALL:192.168.",
@@ -352,7 +352,7 @@ bundle agent STIGs
 
    "have_usr_partitioned" -> { "GEN001080" }
          comment => "Check if /usr is partitioned",
-          handle => "stigs_classes_redhat_5_usr_partitioned", 
+          handle => "stigs_classes_redhat_5_usr_partitioned",
       expression => regcmp(".*/usr.*","$(fstab_contents)");
 
    "have_usr_$(shells)" -> { "GEN001080" }
@@ -360,7 +360,7 @@ bundle agent STIGs
           handle => "stigs_classes_redhat_5_shells_in_usr",
       expression => fileexists("$(usr_dir)/$(shells)");
 
-   "do_$(hosts_related_files)" -> { "GEN002040" } 
+   "do_$(hosts_related_files)" -> { "GEN002040" }
       comment => "Check if the files are symlinks",
        handle => "stigs_classes_redhat_5_hosts_related_files",
           not => islink("$(hosts_related_files)");
@@ -370,12 +370,12 @@ bundle agent STIGs
           handle => "stigs_classes_redhat_5_uid_less_than_500",
       expression => islessthan("$($(allusers_not_root)_uid)","500");
 
-   "$(preferred_services)_off" -> { "GEN002660" } 
+   "$(preferred_services)_off" -> { "GEN002660" }
          comment => "Check if those preferred services are on or not",
           handle => "stigs_classes_redhat_5_preferred_services_off",
              not => regcmp(".*:on.*","$($(preferred_services)_status)");
 
-   "$(unneeded_services)_on" -> { "GEN003700", "GEN003860" } 
+   "$(unneeded_services)_on" -> { "GEN003700", "GEN003860" }
          comment => "Check if those unneeded services are on or not",
           handle => "stigs_classes_redhat_5_unneeded_services_on",
       expression => regcmp(".*:on.*","$($(unneeded_services)_status)");
@@ -390,7 +390,7 @@ bundle agent STIGs
  files:
 
   redhat_5::
-   
+
    "/etc/inittab" -> { "GEN000020", "GEN000040", "GEN000060", "LNX00580" }
         comment => "CAT I & II (Previously - G001, G002, G003, L222) UNIX STIG: 2.5.1.1 System Equipment, 12.14 The /etc/inittab File",
          handle => "stigs_files_redhat_5_etc_inittab",
@@ -403,7 +403,7 @@ bundle agent STIGs
           perms => mog("640","root","root"),
       edit_line => maintain_syslog_conf,
         classes => if_repaired("restart_syslog");
-   
+
    "/etc/pam.d/system-auth-ac" -> { "GEN000460", "GEN000600", "GEN000620", "GEN000640", "GEN000800" }
             comment => "CAT II (Previously - G013, G019, G606) UNIX STIG: 3.1.3 Account Access, 3.2.1 Password Guidelines",
              handle => "stigs_files_redhat_5_etc_pam_d_system_auth",
@@ -414,12 +414,12 @@ bundle agent STIGs
       comment => "CAT II (Previously - G013) UNIX STIG: 3.1.3 Accounnt Access",
        handle => "stigs_files_redhat_5_usr_sbin_authconfig",
         perms => m("ugo-x");
-   
+
    "/etc/login.defs" -> { "GEN000480", "GEN000540", "GEN000580", "GEN000700", "GEN000820" }
         comment => "CAT II (Previously - G004, G019, G020) UNIX STIG: 3.1.3 Account Access, 3.2.1 Password Guidelines",
          handle => "stigs_files_redhat_5_etc_login_defs",
       edit_line => maintain_login_defs;
-   
+
    "/etc/profile" -> { "GEN000500" }
         comment => "CAT II (Previously - G605) UNIX STIG: 3.1.4 Inactivity Timeout/Locking",
          handle => "stigs_vars_redhat_5_etc_profile",
@@ -442,7 +442,7 @@ bundle agent STIGs
       depth_search => recurse("1"),
        file_select => only_dir_exclude2("root","tmp"),
              perms => mog("755","root","root");
-   
+
    "/etc/securetty" -> { "GEN000980", "GEN001000", "LNX00620", "LNX00640", "LNX00660" }
             comment => "CAT II (Previously - G026, G698) UNIX STIG: 3.3 Root Account, 12.17 The /etc/securetty File",
              handle => "stigs_files_redhat_5_etc_securetty",
@@ -505,7 +505,7 @@ bundle agent STIGs
       depth_search => recurse("inf"),
        file_select => exclude2("cron.*","audit"),
              perms => m("640");
-   
+
    "$(manual_page_files)" -> { "GEN001280" }
            comment => "CAT III, UNIX STIG: 3.4 File and Directory Controls",
             handle => "stigs_files_redhat_5_manual_page_files",
@@ -537,7 +537,7 @@ bundle agent STIGs
       depth_search => recurse("inf"),
        file_select => exclude2(".dt",".dtprofile"),
              perms => mog("700","$(users_list)","$(users_list)");
- 
+
    "/var/lib/avahi-autoipd/." -> { "GEN001460" }
       comment => "CAT III (Previously - G052) UNIX STIG: 3.5 Home Directories",
        handle => "stigs_files_redhat_5_var_lib_avahi_autoipd",
@@ -638,7 +638,7 @@ bundle agent STIGs
          comment => "CAT II (Previously - G092) UNIX STIG: 3.15 Default Accounts",
           handle => "stigs_files_redhat_5_default_accounts_shell_for_badnaming_users",
        edit_line => set_user_field("avahi-autoipd","7","/sbin/nologin");
-   
+
    "/etc/audit/audit.rules" -> { "GEN002660", "GEN002700", "GEN002720", "GEN002740", "GEN002760", "GEN002780", "GEN002800", "GEN002820", "GEN002840" }
              comment => "CAT I & II (Previously - G093, G095, G100-G106) UNIX STIG: 3.16 Audit Requirements",
               handle => "stigs_files_redhat_5_etc_audit_audit_rules",
@@ -658,7 +658,7 @@ bundle agent STIGs
                perms => mog("644","root","root"),
        edit_defaults => empty,
            edit_line => maintain_logrotated_audit;
-   
+
    "/etc/cron.deny" -> { "GEN002960", "GEN003060", "GEN003200", "GEN003260" }
             comment => "CAT II (Previously - G200, G620, G623) UNIX STIG: 3.17.3 Restrictions",
              handle => "stigs_files_redhat_5_etc_cron_deny",
@@ -666,15 +666,15 @@ bundle agent STIGs
               perms => mog("600","root","root"),
       edit_defaults => empty,
           edit_line => append_if_no_line("ALL");
-   
+
    "/etc/cron.allow" -> { "GEN002960", "GEN002980","GEN003060", "GEN003240" }
             comment => "CAT II (Previously - G200, G201, G622) UNIX STIG: 3.17.3 Restrictions",
              handle => "stigs_files_redhat_5_etc_cron_allow",
              create => "true",
               perms => mog("600","root","root"),
       edit_defaults => empty,
-          edit_line => maintain_cron_allow("@(STIGs.cron_users)");
-   
+          edit_line => maintain_cron_allow("@(stigs.cron_users)");
+
    "$(cron_dirs)" -> { "GEN003040", "GEN003080" }
             comment => "CAT II (Previously - G205) UNIX STIG: 3.17.3 Restrictions",
              handle => "stigs_files_redhat_5_cron_dirs_600",
@@ -716,7 +716,7 @@ bundle agent STIGs
          handle => "stigs_files_redhat_5_etc_at_deny_all_not_root",
          create => "true",
           perms => mog("600","root","root"),
-      edit_line => append_if_no_lines("@(STIGs.at_deny_users)");
+      edit_line => append_if_no_lines("@(stigs.at_deny_users)");
 
    "/etc/at.allow" -> { "GEN003320", "GEN003340", "GEN003460" }
             comment => "CAT II (Previously - G213, G214, G629) UNIX STIG: 3.18.3 Restrictions",
@@ -740,7 +740,7 @@ bundle agent STIGs
       comment => "CAT III UNIX STIG: 3.20.1 Restrict/Disable Core Dumps",
        handle => "stigs_files_redhat_5_var_crash",
         perms => mog("700","root","root");
-   
+
    "/etc/sysctl.conf" -> { "GEN003600", "GEN005600", "LNX00480", "LNX00500","LNX00520" }
         comment => "CAT II (Previously - L204, L206, L208) UNIX STIG: 3.20.5 Network Security Settings, 12.12 Kernel Configuration File",
          handle => "stigs_files_redhat_5_etc_sysctl_conf",
@@ -780,7 +780,7 @@ bundle agent STIGs
        handle => "stigs_files_redhat_5_network_analysis_tools",
         perms => mog("700","root","root"),
        rename => disable;
-   
+
    "/bin/traceroute" -> { "GEN003960", "GEN003980", "GEN004000" }
       comment => "CAT II (Previously - G631, G632, G633) UNIX STIG: 4.5 Traceroute",
        handle => "stigs_files_redhat_5_bin_traceroute",
@@ -792,7 +792,7 @@ bundle agent STIGs
           perms => mog("644","root","root"),
       edit_line => comment_lines_matching("decode:\h+root","#"),
         classes => if_repaired("restart_aliases");
- 
+
    "/etc/mail/sendmail.cf" -> { "GEN004440", "GEN004540", "GEN004560" }
         comment => "CAT III (Previously - G133, G646) UNIX STIG: 4.7 Sendmail or Equivalent",
          handle => "stigs_files_redhat_5_etc_mail_sendmail_cf",
@@ -835,7 +835,7 @@ bundle agent STIGs
             comment => "CAT II UNIX STIG: 4.15 Secure Shell (SSH) and Equivalents",
              handle => "stigs_files_redhat_5_etc_ssh_ssh_banner",
              create => "true",
-              perms => mog("640","root","root"), 
+              perms => mog("640","root","root"),
       edit_defaults => empty,
           edit_line => create_ssh_banner;
 
@@ -888,8 +888,8 @@ bundle agent STIGs
 #   "/etc/hosts.allow" -> { "GEN006620" }
 #        comment => "CAT II UNIX STIG: 6.6 Access Control Programs and TCP_WRAPPERS",
 #         handle => "stigs_files_redhat_5_etc_hosts_allow",
-#      edit_line => append_if_no_lines("@(STIGs.hosts_allow)");
-   
+#      edit_line => append_if_no_lines("@(stigs.hosts_allow)");
+
 #   "/etc/hosts.deny" -> { "GEN006620" }
 #        comment => "CAT II UNIX STIG: 6.6 Access Control Programs and TCP_WRAPPERS",
 #         handle => "stigs_files_redhat_5_etc_hosts_deny",
@@ -939,21 +939,21 @@ bundle agent STIGs
        handle => "stigs_commands_redhat_5_restart_syslog";
 
   restart_inittab::
-  
+
    "/sbin/init q" -> { "GEN000020", "GEN000040", "GEN000060", "LNX00580" }
        comment => "CAT I & II (Previously - G001, G002, G003, L222) UNIX STIG: 2.5.1.1 System Equipment, 12.14 The /etc/inittab File",
         handle => "stigs_commands_redhat_5_restart_inittab",
        contain => silent;
-  
+
   restart_sysctl::
-  
+
    "/sbin/sysctl -p" -> { "GEN003600" }
       comment => "CAT II UNIX STIG: 3.20.5 Network Security",
        handle => "stigs_commands_redhat_5_restart_sysctl",
       contain => silent;
-  
+
   restart_sendmail::
-  
+
    "/sbin/service sendmail restart" -> { "GEN004540", "GEN004560" }
       comment => "CAT II (Previously - G646) UNIX STIG: 4.7 Sendmail or Equivalent",
        handle => "stigs_commands_redhat_5_restart_sendmail";
@@ -965,12 +965,12 @@ bundle agent STIGs
        handle => "sting_commands_redhat_5_restart_aliases";
 
   restart_sshd::
-  
+
    "/sbin/service sshd restart" -> { "GEN005500", "GEN005540" }
       comment => "CAT I & II (Previously - G701) UNIX STIG: 4.15 Secure Shell (SSH) and Equivalents",
        handle => "stigs_commands_redhat_5_restart_sshd";
-    
-# 
+
+#
 
  methods:
 
@@ -990,7 +990,7 @@ bundle agent STIGs
 #        comment => "CAT II (Previously - L140, L142) UNIX STIG: 4.8 File Transfer Protocol (FTP)",
 #         handle => "stigs_methods_redhat_5_unix_stigs_4_8",
 #      usebundle => disabling_accounts("$(accounts_to_disable)");
-   
+
    "UNIX STIG 4.8/UNIX STIG 12.9" -> { "GEN004820", "GEN004840", "LNX00320", "LNX00340" }
         comment => "CAT I & II (Previously - G107, V052, L140, L142) UNIX STIG: 4.8 File Transfer Protocol (FTP) and Telnet, 12.9 Default Accounts",
          handle => "stigs_methods_redhat_5_unix_stigs_4_8_12_9",
@@ -1238,7 +1238,7 @@ bundle edit_line maintain_login_defs
  insert_lines:
   "FAIL_DELAY     4   # GEN000480" -> { "GEN000480" }
      comment => "The login delay between login prompts after a failed login is set to less than four seconds.",
-      handle => "maintain_login_defs_insert_lines_gen000480";  
+      handle => "maintain_login_defs_insert_lines_gen000480";
 }
 
 # GEN000500
@@ -1258,7 +1258,7 @@ bundle edit_line maintain_etc_profile
 # GEN000980, GEN001000
 bundle edit_line maintain_securetty
 {
-# delete_lines: 
+# delete_lines:
 #  "vc/(\d+)" -> { "GEN000980" }
 #    comment => "Allow root to login only from the system console.",
 #     handle => "maintain_securetty_delete_lines_gen000980_1";
@@ -1375,7 +1375,7 @@ bundle edit_line maintain_umask(mask)
   "\h+umask\s(?!$(mask)$).*" -> { "GEN002560" }
      comment => "Ensure umask is 077",
       handle => "maintain_umask_replace_patterns_gen002560",
-     replace_with => value("    umask 077");	
+     replace_with => value("    umask 077");
 }
 
 # GEN002660 GEN002720 GEN002740 GEN002760 GEN002780 GEN002800 GEN002820 GEN002840
@@ -1539,7 +1539,7 @@ bundle edit_line maintain_sendmail
   "^O SmtpGreetingMessage=\$j Sendmail \$v/\$Z; \$b" -> { "GEN004560" }
           comment => "Hide sendmail version.",
            handle => "maintain_sendmail_replace_patterns_gen004560",
-     replace_with => value("O SmtpGreetingMessage= Mail Server Ready STIG-GEN004560; $b"); 	
+     replace_with => value("O SmtpGreetingMessage= Mail Server Ready STIG-GEN004560; $b");
 }
 
 # GEN004900
@@ -1571,7 +1571,7 @@ bundle edit_line create_ssh_banner
 *            ***Users should have no expectation of privacy.***               *
 *******************************************************************************" -> { "GEN005540" }
    comment => "Banner for SSH",
-    handle => "create_ssh_banner_insert_lines_gen005540";	
+    handle => "create_ssh_banner_insert_lines_gen005540";
 }
 
 # GEN001120, GEN005500, GEN005540
@@ -1644,7 +1644,7 @@ command=/usr/bin/Xorg -br -audit 4 -s 15
 flexible=true" -> { "LNX00360" }
        comment => "Enable X server audit level 4 and 15 minutes timeout time",
         handle => "maintain_gdm_custom_conf_insert_lines_lnx00360",
-   insert_type => "preserve_block"; 
+   insert_type => "preserve_block";
 }
 
 ##### body here #####

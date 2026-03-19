@@ -105,10 +105,10 @@ files:
   "/home/mark/tmp/file_based_on_template"
 
        create    => "true",
-       edit_line => ExpandMeFrom("/tmp/source_template");
+       edit_line => expand_me_from("/tmp/source_template");
 }
 
-bundle edit_line ExpandMeFrom(template)
+bundle edit_line expand_me_from(template)
 {
 insert_lines:
    "$(template)"
@@ -497,7 +497,7 @@ exact_match
 **Example:**
 
 ```cf3
-bundle edit_line Insert(service, filename)
+bundle edit_line insert_service(service, filename)
 {
 insert_lines:
 
