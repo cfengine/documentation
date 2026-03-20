@@ -1,6 +1,6 @@
 ---
 layout: default
-title: defaults
+title: defaults (deprecated)
 aliases:
   - "/reference-promise-types-defaults.html"
 ---
