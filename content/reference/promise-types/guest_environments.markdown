@@ -1,6 +1,6 @@
 ---
 layout: default
-title: guest_environments
+title: guest_environments (deprecated)
 sorting: 9999
 aliases:
   - "/reference-promise-types-guest_environments.html"
