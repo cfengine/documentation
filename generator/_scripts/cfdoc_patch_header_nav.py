@@ -25,6 +25,25 @@ import json
 import sys
 
 
+def should_replace_version(version):
+    # always trigger for master or lts
+    special_versions = ["master", "lts"]
+
+    if version in special_versions:
+        return True
+
+    # handle numeric versions: if the version is 3.27 or higher, replace the version in the URL
+    # starting with 3.27 we changed the URL structure, so for older versions like 3.24
+    # replacing the version would lead to the 404 page. In that case, redirect to the main page.
+    try:
+        if float(version) >= 3.27:
+            return True
+    except ValueError:
+        return False
+
+    return False
+
+
 def patch(current_branch, lts_version):
     url = "https://docs.cfengine.com/docs/branches.json"
     response = urllib.request.urlopen(url)
@@ -48,12 +67,20 @@ def patch(current_branch, lts_version):
                 continue
             selected = ""
             link = branch["Link"]
+            replaceVersionInLcocation = should_replace_version(branch["Version"])
             if branch["Version"] == current_branch:
                 selected = ' selected="selected"'
                 link = "javascript:void(0);"
+                replaceVersionInLcocation = False
             print(
-                '<a onclick="selectVersion(\'%s\')" href="#"%s>%s</a>'
-                % (link, selected, branch["Title"].replace("Version ", "")),
+                "<a onclick=\"selectVersion('%s', '/docs/%s/', %s)\" href=\"#\"%s>%s</a>"
+                % (
+                    link,
+                    current_branch,
+                    str(replaceVersionInLcocation).lower(),
+                    selected,
+                    branch["Title"].replace("Version ", ""),
+                ),
                 file=f,
             )
         print('<a href="/versions/">view all versions</a>', file=f)
