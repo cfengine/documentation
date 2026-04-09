@@ -10,11 +10,11 @@ RUN echo "jenkins    ALL=(ALL)       NOPASSWD: ALL">> /etc/sudoers
 RUN mkdir -p /home/jenkins
 RUN chown -R jenkins:jenkins /home/jenkins
 
-# Run rest of setup as jenkins user
 COPY install.sh /
+# Run rest of setup as jenkins user
 USER jenkins
 WORKDIR /home/jenkins
-RUN bash -x /install.sh 2>&1 | tee /install.sh.log
+RUN bash -x /install.sh
 
 # This is where our repos will be
 WORKDIR /nt
