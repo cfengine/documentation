@@ -6,13 +6,13 @@ aliases:
   - "/getting-started-installation-general-installation-installation-community-containerized.html"
 ---
 
-The instructions in this guide describe how to download and install the latest version of CFEngine Community in a Docker containerized environment using pre-compiled rpm packages and ubi9 images.
+The instructions in this guide describe how to download and install the latest version of CFEngine Community in a Docker containerized environment using pre-compiled rpm packages and ubi10 images.
 
 This guide describes how to set up a client-server model with CFEngine and, through policy, manage both containers.
 
 Docker containers will be created, one container to be the Policy Server (server), and another container that will be the Host Agent (client).
 
-Both the containers will run **_ubi9-init_** images and communicate on a container network.
+Both the containers will run **_ubi10-init_** images and communicate on a container network.
 Upon completion, you are ready to start working with CFEngine.
 
 ## Requirements
@@ -49,7 +49,7 @@ OR
 Run the container with systemd
 
 ```command
-docker run --privileged -dit --name=cfengine-hub registry.access.redhat.com/ubi9-init /usr/sbin/init
+docker run --privileged -dit --name=cfengine-hub registry.access.redhat.com/ubi10-init /usr/sbin/init
 ```
 
 Prepare the container for **cfengine-hub**
@@ -75,7 +75,7 @@ docker exec cfengine-hub bash -c "/usr/local/sbin/cf-agent --bootstrap \$(ip -4 
 The procedure to setup **cfengine-host** is similar to the **cfengine-hub** deployment. The changes are to the name of the host container for better identification and bootstrap IP of the **cfengine-hub**.
 
 ```command
-docker run --privileged -dit --name=cfengine-host registry.access.redhat.com/ubi9-init /usr/sbin/init
+docker run --privileged -dit --name=cfengine-host registry.access.redhat.com/ubi10-init /usr/sbin/init
 ```
 
 Prepare the container for **cfengine-host**
@@ -111,8 +111,8 @@ docker exec cfengine-host bash -c "/usr/local/sbin/cf-agent --bootstrap ${CFENGI
 Create a `Dockerfile` with the following contents:
 
 ```Dockerfile
-FROM registry.access.redhat.com/ubi9-init:latest
-LABEL description="This Dockerfile builds container image based on ubi9-init and latest LTS release of cfengine-community."
+FROM registry.access.redhat.com/ubi10-init:latest
+LABEL description="This Dockerfile builds container image based on ubi10-init and latest LTS release of cfengine-community."
 
 RUN dnf -y update \
 && dnf -y install bind-utils iproute sudo pip procps-ng \
@@ -135,7 +135,7 @@ docker build -t cfengine:lts -f Dockerfile . --check
 [+] Building 0.1s (3/3) FINISHED                                        docker:default
  => [internal] load build definition from Dockerfile                            0.0s
  => => transferring dockerfile: 596B                                            0.0s
- => [internal] load metadata for registry.access.redhat.com/ubi9-init:latest    0.0s
+ => [internal] load metadata for registry.access.redhat.com/ubi10-init:latest   0.0s
  => [internal] load .dockerignore                                               0.0s
  => => transferring context: 2B                                                 0s
 Check complete, no warnings found.
@@ -300,4 +300,4 @@ docker compose -f compose.yaml down
 - [Docker compose file](https://docs.docker.com/reference/compose-file/)
 - [RedHat Universal Base Image (UBI)](https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image)
 - [Using the UBI init images](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#using-the-ubi-init-images_assembly_adding-software-to-a-ubi-container)
-- [ubi9-init repository](https://catalog.redhat.com/software/containers/ubi9-init/6183297540a2d8e95c82e8bd)
+- [ubi10-init repository](https://catalog.redhat.com/software/containers/ubi10-init/6183297540a2d8e95c82e8bd)
