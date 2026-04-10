@@ -13,18 +13,15 @@ it to make sure that any undesired process is not running.
 ```cf3
 body common control
 {
-bundlesequence => { "process_kill" };
+  bundlesequence => { "process_kill" };
 }
 
 bundle agent process_kill
 {
-processes:
-
-  "sleep"
-
-    signals => { "term", "kill" }; #Signals are presented as an ordered list to the process.
-                                   #On Windows, only the kill signal is supported, which terminates the process.
-
+  processes:
+    "sleep" signals => { "term", "kill" };
+  #Signals are presented as an ordered list to the process.
+  #On Windows, only the kill signal is supported, which terminates the process.
 }
 ```
 

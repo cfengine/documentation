@@ -278,11 +278,10 @@ This metadata won't be shown in the resulting HTML (it will be converted to the 
 bundle agent hello_world
 {
   meta:
-    "tags"
-      slist => { "autorun" };
+    "tags" slist => { "autorun" };
+
   vars:
-    "github_path"
-      string => "/tmp/github.com";
+    "github_path" string => "/tmp/github.com";
 }
 ```
 
@@ -302,7 +301,6 @@ If you want CFEngine syntax highlighting, use
 
 ```cf3
 # CFEngine code block
-
 bundle agent example()
 {
 }
@@ -463,8 +461,9 @@ If you want to include a code block within a list, align it just as you would wi
 
    ```cf3
    # CFEngine block
-
-   bundle agent example() {}
+   bundle agent example()
+   {
+   }
    ```
 
 2. Second

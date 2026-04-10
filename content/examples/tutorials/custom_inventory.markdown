@@ -54,25 +54,28 @@ bundle agent tutorials_inventory_owner
 {
   vars:
     "data_source" string => "/vagrant/inventory_owner.csv";
+
     "owners"
-      data => data_readstringarray( $(data_source), "", ", ", 100, 512 ),
-      if => fileexists( $(data_source) );
+      data => data_readstringarray($(data_source), "", ", ", 100, 512),
+      if => fileexists($(data_source));
 
     "my_owner"
-      string  => "$(owners[$(sys.uqhost)][0])",
-      meta    => { "inventory", "attribute_name=Owner" },
+      string => "$(owners[$(sys.uqhost)][0])",
+      meta => { "inventory", "attribute_name=Owner" },
       comment => "We need to tag the owner information so that it is correctly
                   reported via the UI.";
 
   reports:
     inform_mode::
       "$(this.bundle): Discovered Owner='$(my_owner)'"
-        if => isvaribale( "my_owner" );
+        if => isvaribale("my_owner");
 }
+
 bundle agent __main__
 # @brief Run tutorials_inventory_owner if this policy file is the entry
 {
-  methods: "tutorials_inventory_owner";
+  methods:
+    "tutorials_inventory_owner";
 }
 ```
 

@@ -80,26 +80,29 @@ Easy, right?
 ```cf3 {file="json_example.cf"}
 body common control
 {
-      bundlesequence => { "run" };
+  bundlesequence => { "run" };
 }
 
 bundle agent run
 {
   vars:
-      "bykey" data => parsejson('{ "dev": ["c", "b"], "prod": ["flea"], "qa": ["a"], "private": ["linux"] }');
+    "bykey"
+      data => parsejson(
+        '{ "dev": ["c", "b"], "prod": ["flea"], "qa": ["a"], "private": ["linux"] }'
+      );
 
-      "keys" slist => getindices("bykey");
+    "keys" slist => getindices("bykey");
 
   classes:
-      # define the class from the key name if any of the items under the key match the host name
-      "$(keys)" expression => regcmp("$(bykey[$(keys)])", $(sys.host));
+    # define the class from the key name if any of the items under the key match the host name
+    "$(keys)" expression => regcmp("$(bykey[$(keys)])", $(sys.host));
 
-      # define the class from the key name if any of the items under the key are a defined class
-      "$(keys)" expression => classmatch("$(bykey[$(keys)])");
+    # define the class from the key name if any of the items under the key are a defined class
+    "$(keys)" expression => classmatch("$(bykey[$(keys)])");
 
   reports:
-      "keys = $(keys)";
-      "I am in class $(keys)" if => $(keys);
+    "keys = $(keys)";
+    "I am in class $(keys)" if => $(keys);
 }
 ```
 

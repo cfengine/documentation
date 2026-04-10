@@ -17,26 +17,25 @@ the central policy server is 10.20.30.123.
 ```cf3
 bundle agent update
 {
-vars:
+  vars:
+    "master_location" string => "/var/cfengine/masterfiles";
 
- "master_location" string => "/var/cfengine/masterfiles";
+    "policy_server"
+      string => "10.20.30.123";
+      comment => "IP address to locate your policy host.";
 
- "policy_server"   string => "10.20.30.123";
-                   comment => "IP address to locate your policy host.";
+  files:
+    "$(sys.workdir)/inputs"
+      perms => system("600"),
+      copy_from => remote_cp("$(master_location)", $(policy_server)),
+      depth_search => recurse("inf");
 
-files:
-
-  "$(sys.workdir)/inputs"
-
-    perms => system("600"),
-    copy_from => remote_cp("$(master_location)",$(policy_server)),
-    depth_search => recurse("inf"); # This ensures recursive copying of all subdirectories
-
-  "$(sys.workdir)/bin"
-
-    perms => system("700"),
-    copy_from => remote_cp("/usr/local/sbin","localhost"),
-    depth_search => recurse("inf"); # This ensures recursive copying of all subdirectories
+    # This ensures recursive copying of all subdirectories
+    "$(sys.workdir)/bin"
+      perms => system("700"),
+      copy_from => remote_cp("/usr/local/sbin", "localhost"),
+      depth_search => recurse("inf");
+  # This ensures recursive copying of all subdirectories
 }
 ```
 
@@ -44,11 +43,10 @@ In addition the server needs to grant access to the clients, this is done in the
 
 ```cf3
 body server control
-
 {
-allowconnects         => { "127.0.0.1" , "10.20.30.0/24" };
-allowallconnects      => { "127.0.0.1" , "10.20.30.0/24" };
-trustkeysfrom         => { "127.0.0.1" , "10.20.30.0/24" };
+  allowconnects => { "127.0.0.1", "10.20.30.0/24" };
+  allowallconnects => { "127.0.0.1", "10.20.30.0/24" };
+  trustkeysfrom => { "127.0.0.1", "10.20.30.0/24" };
 }
 ```
 
@@ -59,12 +57,8 @@ Granting access to files and folders needs to be done using `access` type promis
 ```cf3
 bundle server my_access_rules()
 {
-access:
-
- 10_20_30_123::
-
-  "/var/cfengine/masterfiles"
-
-    admit   => { "127.0.0.1", "10.20.30.0/24" };
+  access:
+    10_20_30_123::
+      "/var/cfengine/masterfiles" admit => { "127.0.0.1", "10.20.30.0/24" };
 }
 ```

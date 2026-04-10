@@ -12,30 +12,22 @@ This is a standalone policy that will restart three CFEngine processes if they a
 ```cf3
 body common control
 {
-bundlesequence => { "process_restart" };
+  bundlesequence => { "process_restart" };
 }
 
 bundle agent process_restart
 {
-vars:
+  vars:
+    "component"
+      slist => {
+        # List of processes to monitor"cf-monitord", "cf-serverd", "cf-execd"
+      };
 
-  "component" slist => {                  # List of processes to monitor
-                         "cf-monitord",
-                         "cf-serverd",
-                         "cf-execd"
-                       };
+  processes:
+    "$(component)" restart_class => canonify("$(component)_not_running");
 
-processes:
-
-  "$(component)"
-      # Set the class "<component>_not_running" if it is not running:
-      restart_class => canonify("$(component)_not_running");
-
-commands:
-
-  "/var/cfengine/bin/$(component)"
-    if => canonify("$(component)_not_running");
-
+  commands:
+    "/var/cfengine/bin/$(component)" if => canonify("$(component)_not_running");
 }
 ```
 

@@ -15,9 +15,7 @@ aliases:
 ```cf3
 body common control
 {
-  inputs => {
-    "libraries/cfengine_stdlib.cf",
-  };
+  inputs => { "libraries/cfengine_stdlib.cf",  };
 }
 ```
 
@@ -33,10 +31,10 @@ Note: The following workflow assumes the directory /home/user already exists. If
    bundle agent list_file
    {
      vars:
-       "ls"
-         slist => lsdir("/home/user", "test_plain.txt", "true");
+       "ls" slist => lsdir("/home/user", "test_plain.txt", "true");
+   
      reports:
-        "ls: $(ls)";
+       "ls: $(ls)";
    }
    ```
 
@@ -96,8 +94,8 @@ bundle agent testbundle
 bundle agent list_file
 {
   vars:
-    "ls"
-      slist => lsdir("/home/user", "test_plain.txt", "true");
+    "ls" slist => lsdir("/home/user", "test_plain.txt", "true");
+
   reports:
     "ls: $(ls)";
 }
@@ -105,9 +103,10 @@ bundle agent list_file
 bundle agent list_file_2
 {
   vars:
-    "ls"
-      slist => lsdir("/home/user", "test_plain.txt", "true");  reports:
-      "ls: $(ls)";
+    "ls" slist => lsdir("/home/user", "test_plain.txt", "true");
+
+  reports:
+    "ls: $(ls)";
 }
 
 body perms system
@@ -129,9 +128,7 @@ rm /home/user/test_plain.txt
 ```cf3 {file="file_delete.cf"}
 body common control
 {
-  inputs => {
-    "libraries/cfengine_stdlib.cf",
-  };
+  inputs => { "libraries/cfengine_stdlib.cf",  };
 }
 
 bundle agent testbundle
@@ -145,15 +142,14 @@ bundle agent testbundle
 bundle agent test_delete
 {
   files:
-    "/home/user/test_plain.txt"
-      delete => tidy;
+    "/home/user/test_plain.txt" delete => tidy;
 }
 
 bundle agent list_file
 {
   vars:
-    "ls"
-      slist => lsdir("/home/user", "test_plain.txt", "true");
+    "ls" slist => lsdir("/home/user", "test_plain.txt", "true");
+
   reports:
     "ls: $(ls)";
 }
@@ -161,15 +157,15 @@ bundle agent list_file
 bundle agent list_file_2
 {
   vars:
-    "ls"
-      slist => lsdir("/home/user", "test_plain.txt", "true");
+    "ls" slist => lsdir("/home/user", "test_plain.txt", "true");
+
   reports:
     "ls: $(ls)";
 }
 
 body perms system
 {
-  mode  => "0640";
+  mode => "0640";
 }
 ```
 
@@ -197,9 +193,7 @@ ls /home/user/test_plain.txt
 ```cf3 {file="file_modify.cf"}
 body common control
 {
-  inputs => {
-    "libraries/cfengine_stdlib.cf",
-  };
+  inputs => { "libraries/cfengine_stdlib.cf",  };
 }
 
 bundle agent testbundle
@@ -213,15 +207,14 @@ bundle agent testbundle
 bundle agent test_delete
 {
   files:
-    "/home/user/test_plain.txt"
-      delete => tidy;
+    "/home/user/test_plain.txt" delete => tidy;
 }
 
 bundle agent list_file
 {
   vars:
-    "ls"
-      slist => lsdir("/home/user", "test_plain.txt", "true");
+    "ls" slist => lsdir("/home/user", "test_plain.txt", "true");
+
   reports:
     "ls: $(ls)";
 }
@@ -229,12 +222,11 @@ bundle agent list_file
 bundle agent list_file_2
 {
   vars:
-    "ls"
-      slist => lsdir("/home/user", "test_plain.txt", "true");
+    "ls" slist => lsdir("/home/user", "test_plain.txt", "true");
+
   reports:
     "ls: $(ls)";
 }
-
 # Finds the file, if exists calls bundle to edit line
 bundle agent outer_bundle_1
 {
@@ -243,7 +235,6 @@ bundle agent outer_bundle_1
       create => "false",
       edit_line => inner_bundle_1;
 }
-
 # Finds the file, if exists calls bundle to edit line
 bundle agent outer_bundle_2
 {
@@ -252,23 +243,20 @@ bundle agent outer_bundle_2
       create => "false",
       edit_line => inner_bundle_2;
 }
-
 # Inserts lines
 bundle edit_line inner_bundle_1
 {
   vars:
-    "msg"
-      string => "Helloz to World!";
+    "msg" string => "Helloz to World!";
+
   insert_lines:
     "$(msg)";
 }
-
 # Replaces lines
 bundle edit_line inner_bundle_2
 {
   replace_patterns:
-    "Helloz to World!"
-      replace_with => hello_world;
+    "Helloz to World!" replace_with => hello_world;
 }
 
 body replace_with hello_world
@@ -279,7 +267,7 @@ body replace_with hello_world
 
 body perms system
 {
-  mode  => "0640";
+  mode => "0640";
 }
 ```
 
@@ -294,9 +282,7 @@ rm /home/user/test_plain.txt
 ```cf3 {file="file_copy.cf"}
 body common control
 {
-  inputs => {
-    "libraries/cfengine_stdlib.cf",
-  };
+  inputs => { "libraries/cfengine_stdlib.cf",  };
 }
 
 bundle agent testbundle
@@ -305,6 +291,7 @@ bundle agent testbundle
     "/home/ichien/test_plain.txt"
       perms => system,
       create => "true";
+
   reports:
     "test_plain.txt has been created";
 }
@@ -312,8 +299,7 @@ bundle agent testbundle
 bundle agent test_delete
 {
   files:
-    "/home/ichien/test_plain.txt"
-      delete => tidy;
+    "/home/ichien/test_plain.txt" delete => tidy;
 }
 
 bundle agent do_files_exist
@@ -321,15 +307,16 @@ bundle agent do_files_exist
   vars:
     "mylist"
       slist => {
-        "/home/ichien/test_plain.txt",
-        "/home/ichien/test_plain_2.txt",
+        "/home/ichien/test_plain.txt", "/home/ichien/test_plain_2.txt",
       };
+
   classes:
-    "exists"
-      expression => filesexist("@(mylist)");
+    "exists" expression => filesexist("@(mylist)");
+
   reports:
     exists::
       "test_plain.txt and test_plain_2.txt files exist";
+
     !exists::
       "test_plain.txt and test_plain_2.txt files do not exist";
 }
@@ -339,15 +326,16 @@ bundle agent do_files_exist_2
   vars:
     "mylist"
       slist => {
-        "/home/ichien/test_plain.txt",
-        "/home/ichien/test_plain_2.txt"
+        "/home/ichien/test_plain.txt", "/home/ichien/test_plain_2.txt"
       };
+
   classes:
-    "exists"
-      expression => filesexist("@(mylist)");
+    "exists" expression => filesexist("@(mylist)");
+
   reports:
     exists::
       "test_plain.txt and test_plain_2.txt files both exist";
+
     !exists::
       "test_plain.txt and test_plain_2.txt files do not exist";
 }
@@ -355,14 +343,11 @@ bundle agent do_files_exist_2
 bundle agent list_file_1
 {
   vars:
-    "ls1"
-      slist => lsdir("/home/ichien", "test_plain.txt", "true");
-    "ls2"
-      slist => lsdir("/home/ichien", "test_plain_2.txt", "true");
-    "file_content_1"
-      string => readfile("/home/ichien/test_plain.txt", "33");
-    "file_content_2"
-      string => readfile("/home/ichien/test_plain_2.txt", "33");
+    "ls1" slist => lsdir("/home/ichien", "test_plain.txt", "true");
+    "ls2" slist => lsdir("/home/ichien", "test_plain_2.txt", "true");
+    "file_content_1" string => readfile("/home/ichien/test_plain.txt", "33");
+    "file_content_2" string => readfile("/home/ichien/test_plain_2.txt", "33");
+
   reports:
     # "ls1: $(ls1)";
     # "ls2: $(ls2)";
@@ -373,14 +358,11 @@ bundle agent list_file_1
 bundle agent list_file_2
 {
   vars:
-    "ls1"
-      slist => lsdir("/home/ichien", "test_plain.txt", "true");
-    "ls2"
-      slist => lsdir("/home/ichien", "test_plain_2.txt", "true");
-    "file_content_1"
-      string => readfile("/home/ichien/test_plain.txt", "33");
-    "file_content_2"
-      string => readfile("/home/ichien/test_plain_2.txt", "33");
+    "ls1" slist => lsdir("/home/ichien", "test_plain.txt", "true");
+    "ls2" slist => lsdir("/home/ichien", "test_plain_2.txt", "true");
+    "file_content_1" string => readfile("/home/ichien/test_plain.txt", "33");
+    "file_content_2" string => readfile("/home/ichien/test_plain_2.txt", "33");
+
   reports:
     # "ls1: $(ls1)";
     # "ls2: $(ls2)";
@@ -395,13 +377,13 @@ bundle agent outer_bundle_1
       create => "false",
       edit_line => inner_bundle_1;
 }
-
 # Copies file
 bundle agent copy_a_file
 {
   files:
     "/home/ichien/test_plain_2.txt"
       copy_from => local_cp("/home/ichien/test_plain.txt");
+
   reports:
     "test_plain.txt has been copied to test_plain_2.txt";
 }
@@ -417,10 +399,11 @@ bundle agent outer_bundle_2
 bundle edit_line inner_bundle_1
 {
   vars:
-    "msg"
-      string => "Helloz to World!";
+    "msg" string => "Helloz to World!";
+
   insert_lines:
     "$(msg)";
+
   reports:
     "inserted $(msg) into test_plain.txt";
 }
@@ -428,8 +411,8 @@ bundle edit_line inner_bundle_1
 bundle edit_line inner_bundle_2
 {
   replace_patterns:
-    "Helloz to World!"
-      replace_with => hello_world;
+    "Helloz to World!" replace_with => hello_world;
+
   reports:
     "Text in test_plain_2.txt has been replaced";
 }
@@ -442,7 +425,7 @@ body replace_with hello_world
 
 body perms system
 {
-  mode  => "0640";
+  mode => "0640";
 }
 ```
 

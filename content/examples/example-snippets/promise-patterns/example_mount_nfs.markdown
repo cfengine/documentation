@@ -12,25 +12,30 @@ Mounting an NFS filesystem is straightforward using CFEngine's storage promises.
 ```cf3
 body common control
 {
-bundlesequence => { "mounts" };
+  bundlesequence => { "mounts" };
 }
 
 bundle agent mounts
 {
-storage:
-
-  "/mnt" mount  => nfs("fileserver","/home");  # "/mnt" is the local moint point
-                                               # "fileserver" is the remote fileserver
-                                               # "/home" is the path to the remote file system
+  storage:
+    "/mnt" mount => nfs("fileserver", "/home");
+  # "/mnt" is the local moint point
+  # "fileserver" is the remote fileserver
+  # "/home" is the path to the remote file system
 }
 
-body mount nfs(server,source)
+body mount nfs(server, source)
 {
-mount_type => "nfs";           # Protocol type of remote file system
-mount_source => "$(source)";   # Path of remote file system
-mount_server => "$(server)";   # Name or IP of remote file system server
-mount_options => { "rw" };     # List of option strings to add to the file system table ("fstab")
-edit_fstab => "true";          # True/false add or remove entries to the file system table ("fstab")
+  mount_type => "nfs";
+  # Protocol type of remote file system
+  mount_source => "$(source)";
+  # Path of remote file system
+  mount_server => "$(server)";
+  # Name or IP of remote file system server
+  mount_options => { "rw" };
+  # List of option strings to add to the file system table ("fstab")
+  edit_fstab => "true";
+  # True/false add or remove entries to the file system table ("fstab")
 }
 ```
 

@@ -12,27 +12,24 @@ Setting up sudo is straightforward, we recommend managing it by copying trusted 
 ```cf3
 body common control
 {
-bundlesequence => { "sudoers" };
-inputs => { "libraries/cfengine_stdlib.cf" };
+  bundlesequence => { "sudoers" };
+  inputs => { "libraries/cfengine_stdlib.cf" };
 }
 
 bundle agent sudoers
 {
-
-# Define the master location of the sudoers file
-vars:
-
-  "master_location" string => "/var/cfengine/masterfiles";
-
-# Copy the master sudoers file to /etc/sudoers
-files:
-
-  "/tmp/sudoers"  # change to /etc/sudoers to use in production
-
-     comment => "Make sure the sudo configuration is secure and up to date",
-       perms => mog("440","root","root"),
-   copy_from => secure_cp("$(master_location)/sudoers","$(sys.policy_hub)");
-
+  # Define the master location of the sudoers file
+  vars:
+    "master_location" string => "/var/cfengine/masterfiles";
+  # Copy the master sudoers file to /etc/sudoers
+  files:
+    "/tmp/sudoers"
+      # change to /etc/sudoers to use in production
+      comment => "Make sure the sudo configuration is secure and up to date",
+      perms => mog("440", "root", "root"),
+      copy_from => secure_cp(
+        "$(master_location)/sudoers", "$(sys.policy_hub)"
+      );
 }
 ```
 

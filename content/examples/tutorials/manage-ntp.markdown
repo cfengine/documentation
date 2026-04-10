@@ -15,14 +15,14 @@ Note: For simplicity, in this tutorial we will work directly on top of the Maste
 ```cf3 {file="ntp.cf"}
 bundle agent ntp
 {
-   vars:
-       "ntp_package_name" string => "ntp";
+  vars:
+    "ntp_package_name" string => "ntp";
 
-   packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
-       policy          => "present",
-       handle          => "ntp_packages_$(ntp_package_name)",
-       classes         => results("bundle", "ntp_package");
+  packages:
+    "$(ntp_package_name)" -> { "StandardsDoc 3.2.1" }
+      policy => "present",
+      handle => "ntp_packages_$(ntp_package_name)",
+      classes => results("bundle", "ntp_package");
 }
 ```
 
@@ -101,15 +101,14 @@ On your hub create `services/ntp.cf` inside _masterfiles_ with the following con
 ```cf3 {file="ntp.cf"}
 bundle agent ntp
 {
-   vars:
-       "ntp_package_name" string => "ntp";
+  vars:
+    "ntp_package_name" string => "ntp";
 
-   packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
-         policy          => "present",
-         handle          => "ntp_packages_$(ntp_package_name)",
-         classes         => results("bundle", "ntp_package");
-
+  packages:
+    "$(ntp_package_name)" -> { "StandardsDoc 3.2.1" }
+      policy => "present",
+      handle => "ntp_packages_$(ntp_package_name)",
+      classes => results("bundle", "ntp_package");
 }
 ```
 
@@ -176,30 +175,29 @@ Now that the NTP service has been installed on the system, we need to make sure 
 ```cf3 {file="ntp.cf"}
 bundle agent ntp
 {
-   vars:
-       "ntp_package_name" string => "ntp";
+  vars:
+    "ntp_package_name" string => "ntp";
 
-     redhat::
-         "ntp_service_name" string => "ntpd";
+    redhat::
+      "ntp_service_name" string => "ntpd";
 
-     debian::
-         "ntp_service_name" string => "ntp";
+    debian::
+      "ntp_service_name" string => "ntp";
 
-   packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
-         policy          => "present",
-         handle          => "ntp_packages_$(ntp_package_name)",
-         classes         => results("bundle", "ntp_package");
+  packages:
+    "$(ntp_package_name)" -> { "StandardsDoc 3.2.1" }
+      policy => "present",
+      handle => "ntp_packages_$(ntp_package_name)",
+      classes => results("bundle", "ntp_package");
 
   services:
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
-       service_policy => "start",
-       classes => results( "bundle", "ntp_service")
+    "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
+      service_policy => "start",
+      classes => results("bundle", "ntp_service")
 
-   reports:
-     ntp_service_repaired.inform_mode::
-       "NTP service repaired";
-
+  reports:
+    ntp_service_repaired.inform_mode::
+      "NTP service repaired";
 }
 ```
 
@@ -281,9 +279,65 @@ You have now written a complete policy to ensure that the NTP package is install
 
 Now we will manage the configuration file using the built-in mustache templating engine, set up appropriate file permissions, and restart the service when necessary.
 
-By default, the NTP service leverages configuration properties specified in /etc/ntp.conf. In this tutorial, we introduce the concept of the files promise type. With this promise type, you can create, delete, and edit files using CFEngine policy. The example policy below illustrates the use of the files promise.
-
-```cf3
+By
+default,
+the
+NTP
+service
+leverages
+configuration
+properties
+specified
+in
+/
+etc
+/
+ntp
+.
+conf
+.
+In
+this
+tutorial,
+we
+introduce
+the
+concept
+of
+the
+files
+promise
+type
+.
+With
+this
+promise
+type,
+you
+can
+create,
+delete,
+and
+edit
+files
+using
+CFEngine
+policy
+.
+The
+example
+policy
+below
+illustrates
+the
+use
+of
+the
+files
+promise
+.
+``
+`cf3
 bundle agent ntp
 {
    vars:

@@ -140,9 +140,7 @@ Example:
 ```cf3 {file="hello_world.cf"}
 body common control
 {
-  inputs => {
-    "libraries/cfengine_stdlib.cf",
-  };
+  inputs => { "libraries/cfengine_stdlib.cf",  };
 }
 ```
 
@@ -204,7 +202,7 @@ doing the following on your policy server:
    ```cf3
    body common control
    {
-     bundlesequence  => { "hello_world" };
+     bundlesequence => { "hello_world" };
    }
    ```
 

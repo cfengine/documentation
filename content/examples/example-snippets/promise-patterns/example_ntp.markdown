@@ -19,61 +19,63 @@ bundle agent system_time_ntp
 {
   vars:
     linux::
-      "cache_dir"
-        string => "$(sys.workdir)/cache";  # Cache directory for NTP config files
-      "ntp_conf"
-        string => "/etc/ntp.conf";  # Target file for NTP configuration
-      "ntp_server"
-        string => "172.16.12.161";
-      "ntp_network"
-        string => "172.16.12.0";    # IP address and netmask of your local NTP server
-      "ntp_mask"
-        string => "255.255.255.0";
-      "ntp_pkgs"
-        slist => { "ntp" };         # NTP packages to be installed to ensure service
+      "cache_dir" string => "$(sys.workdir)/cache";
 
-# Define a class for the NTP server
+      # Cache directory for NTP config files
+      "ntp_conf" string => "/etc/ntp.conf";
+
+      # Target file for NTP configuration
+      "ntp_server" string => "172.16.12.161";
+      "ntp_network" string => "172.16.12.0";
+
+      # IP address and netmask of your local NTP server
+      "ntp_mask" string => "255.255.255.0";
+      "ntp_pkgs" slist => { "ntp" };
+  # NTP packages to be installed to ensure service
+  # Define a class for the NTP server
   classes:
     any::
-      "ntp_hosts"
-        or => { classmatch(canonify("ipv4_$(ntp_server)")) };
-
-# Ensure that the NTP packages are installed
+      "ntp_hosts" or => { classmatch(canonify("ipv4_$(ntp_server)")) };
+  # Ensure that the NTP packages are installed
   packages:
     ubuntu::
       "$(ntp_pkgs)"
         comment => "setup NTP",
         package_policy => "add",
         package_method => generic;
-
-# Ensure existence of file and directory for NTP drift learning statistics
+  # Ensure existence of file and directory for NTP drift learning statistics
   files:
     linux::
       "/var/lib/ntp/ntp.drift"
         comment => "Enable ntp service",
         create => "true";
+
       "/var/log/ntpstats/."
         comment => "Create a statistic directory",
-        perms => mog("644","ntp","ntp"),
+        perms => mog("644", "ntp", "ntp"),
         create => "true";
+
     ntp_hosts::
       # Build the cache configuration file for the NTP server
       "/var/cfengine/cache/ntp.conf"
         comment => "Build $(this.promiser) cache file for NTP server",
         create => "true",
         edit_defaults => empty,
-        edit_line => restore_ntp_master("$(ntp_network)","$(ntp_mask)");
+        edit_line => restore_ntp_master("$(ntp_network)", "$(ntp_mask)");
+
     centos.ntp_hosts::
       # Copy the cached configuration file to its target destination
       "$(ntp_conf)"
         comment => "Ensure $(this.promiser) in a perfect condition",
         copy_from => local_cp("$(cache_dir)/ntp.conf"),
         classes => if_repaired("refresh_ntpd_centos");
+
     ubuntu.ntp_hosts::
       "$(ntp_conf)"
-      comment => "Ensure $(this.promiser) in a perfect condition",
-      copy_from => local_cp("$(cache_dir)/ntp.conf"),
-      classes => if_repaired("refresh_ntpd_ubuntu");
+        comment => "Ensure $(this.promiser) in a perfect condition",
+        copy_from => local_cp("$(cache_dir)/ntp.conf"),
+        classes => if_repaired("refresh_ntpd_ubuntu");
+
     !ntp_hosts::
       # Build the cache configuration file for the NTP client
       "$(cache_dir)/ntp.conf"
@@ -81,39 +83,36 @@ bundle agent system_time_ntp
         create => "true",
         edit_defaults => empty,
         edit_line => restore_ntp_client("$(ntp_server)");
+
     centos.!ntp_hosts::
       # Copy the cached configuration file to its target destination
       "$(ntp_conf)"
         comment => "Ensure $(this.promiser) in a perfect condition",
         copy_from => local_cp("$(cache_dir)/ntp.conf"),
         classes => if_repaired("refresh_ntpd_centos");
+
     ubuntu.!ntp_hosts::
       "$(ntp_conf)"
         comment => "Ensure $(this.promiser) in a perfect condition",
         copy_from => local_cp("$(cache_dir)/ntp.conf"),
         classes => if_repaired("refresh_ntpd_ubuntu");
-
-# Set classes (conditions) for to restart the NTP daemon if there have been any changes to configuration
+  # Set classes (conditions) for to restart the NTP daemon if there have been any changes to configuration
   processes:
     centos::
-      "ntpd.*"
-        restart_class => "refresh_ntpd_centos";
-    ubuntu::
-      "ntpd.*"
-        restart_class => "refresh_ntpd_ubuntu";
+      "ntpd.*" restart_class => "refresh_ntpd_centos";
 
-# Restart the NTP daemon if the configuration has changed
+    ubuntu::
+      "ntpd.*" restart_class => "refresh_ntpd_ubuntu";
+  # Restart the NTP daemon if the configuration has changed
   commands:
     refresh_ntpd_centos::
       "/etc/init.d/ntpd restart";
+
     refresh_ntpd_ubuntu::
       "/etc/init.d/ntp restart";
-
 }
-
 #######################################################
-
-bundle edit_line restore_ntp_master(network,mask)
+bundle edit_line restore_ntp_master(network, mask)
 {
   vars:
     "list"
@@ -153,9 +152,7 @@ restrict $(network) mask $(mask) nomodify notrap";
   insert_lines:
     "$(list)";
 }
-
 #######################################################
-
 bundle edit_line restore_ntp_client(serverip)
 {
   vars:
@@ -200,12 +197,11 @@ bundle agent time_management
 {
   vars:
     any::
-      "ntp_server"
-        string => "no.pool.ntp.org";
+      "ntp_server" string => "no.pool.ntp.org";
+
   commands:
     any::
-      "/usr/sbin/ntpdate $(ntp_server)"
-        contain => silent;
+      "/usr/sbin/ntpdate $(ntp_server)" contain => silent;
 }
 ```
 
