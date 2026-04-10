@@ -362,10 +362,10 @@ Example:
 **
 ``
 `cf3
-body match_value free_memory
+body match*value free_memory
 {
-select_line_matching => "MemFree:._";
-extraction_regex => "MemFree:\s+([0-9]+)._";
+select_line_matching => "MemFree:.*";
+extraction*regex => "MemFree:\s+([0-9]+).*";
 }
 
 ```
@@ -448,9 +448,9 @@ Example:
 **
 ``
 `cf3
-body match_value myvalue(xxx)
+body match*value myvalue(xxx)
 {
-select_line_matching => "._$(xxx)._";
+select_line_matching => ".*$(xxx).\_";
 extraction_regex => "root\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+).\*";
 select_multiline_policy => "sum";
 }

@@ -413,10 +413,7 @@ as the file which references them (this is usually
 ````cf3
 body common control
 {
-inputs  => {
-           "update.cf",
-"library.cf"
-};
+  inputs => { "update.cf", "library.cf" };
 }
 ``
 `
@@ -424,9 +421,8 @@ inputs  => {
 **See also:** [`
 inputs
 `][file control#inputs] in `
-body
-file
-control
+
+body file control
 `, [`
 default:
 control_common
@@ -495,7 +491,7 @@ Example:
 `cf3
 body common control
 {
-lastseenexpireafter => "72";
+  lastseenexpireafter => "72";
 }
 `
 `
@@ -562,7 +558,9 @@ output
 **
 Type:
 **
-`string`
+`
+string
+`
 **
 Allowed
 input
@@ -575,11 +573,14 @@ string
 **
 Example:
 **
-``
-`cf3
+`
+`
+`
+cf3
+
 body common control
 {
-output_prefix => "my_cf3";
+  output_prefix => "my_cf3";
 }
 `
 `
@@ -627,7 +628,11 @@ the
 list
 of
 [
-`package module bodies`
+`
+package
+module
+bodies
+`
 ][
 packages
 ]
@@ -641,8 +646,16 @@ lists,
 for
 use
 in
-`packagematching()`,
-`packageupdatesmatching()`
+`
+packagematching
+(
+)
+`,
+`
+packageupdatesmatching
+(
+)
+`
 and
 in
 Enterprise
@@ -653,7 +666,9 @@ reporting
 **
 Type:
 **
-`slist`
+`
+slist
+`
 **
 Allowed
 input
@@ -666,11 +681,14 @@ names
 **
 Example:
 **
-``
-`cf3
+`
+`
+`
+cf3
+
 body common control
 {
-    package_inventory => { "apt_get" };
+  package_inventory => { "apt_get" };
 }
 `
 `
@@ -714,7 +732,9 @@ promise
 **
 Type:
 **
-`string`
+`
+string
+`
 **
 Allowed
 input
@@ -727,11 +747,14 @@ name
 **
 Example:
 **
-``
-`cf3
+`
+`
+`
+cf3
+
 body common control
 {
-    package_module => "apt_get";
+  package_module => "apt_get";
 }
 `
 `
@@ -763,7 +786,9 @@ undefined
 **
 Note:
 **
-`protocol_version`
+`
+protocol_version
+`
 can
 be
 specified
@@ -775,7 +800,11 @@ level
 using
 the
 [
-`body copy_from protocol_version`
+`
+body
+copy_from
+protocol_version
+`
 ][
 files
 #protocol_version]
@@ -800,7 +829,9 @@ version
 See
 also:
 ** [
-`body copy_from protocol_version`
+`
+
+body copy_from protocol_version`
 ][
 files
 #protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`tls_ciphers`][Components#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted], [`default:control_common.protocol_version`](/reference/special-variables/control_common/#defaultcontrol_commonprotocol_version)
@@ -932,12 +963,9 @@ Example:
 ``
 `cf3
 body common control
-
 {
-common::
-require_comments
-=>
-"true";
+  common::
+    require_comments => "true";
 }
 `
 `
@@ -947,7 +975,9 @@ require_comments
 Description:
 **
 A
-`site_classes`
+`
+site_classes
+`
 contains
 classes
 that
@@ -1007,7 +1037,10 @@ or
 topic
 under
 class
-`locations::`
+`
+locations:
+:
+`
 will
 be
 assumed
@@ -1033,13 +1066,35 @@ location
 **
 Type:
 **
-`slist`
+`
+slist
+`
 **
 Allowed
 input
 range:
 **
-`[a-zA-Z0-9_!&@@$|.()\[\]{}:]+`
+`
+[
+a
+-
+zA
+-
+Z0
+-
+9_
+!&
+@
+@
+$
+|.
+(
+)
+\[\]
+{
+}
+:]+
+`
 Each
 string
 is
@@ -1053,11 +1108,21 @@ class
 **
 Example:
 **
-``
-`cf3
-body common control
+`
+`
+`
+cf3
+body
+common
+control
 {
-site_classes => { "datacenters","datacentres"  }; # locations is by default
+site_classes
+=>
+{
+"datacenters",
+"datacentres"
+};
+# locations is by default
 }
 `
 `
@@ -1088,7 +1153,9 @@ Nova
 Description:
 **
 The
-`syslog_host`
+`
+syslog_host
+`
 contains
 the
 name
@@ -1126,25 +1193,54 @@ all
 CFEngine
 's components may promise to send data.
 
-**Type:** `string`
+**Type:** `
+string
+`
 
-**Allowed input range:** `[a-zA-Z0-9_$(){}.:-]+`
+**Allowed input range:** `
+[
+a
+-
+zA
+-
+Z0
+-
+9_
+$
+(
+)
+{
+}
+.:-]+
+`
 
-**Default value:** `localhost`
+**Default value:** `
+localhost
+`
 
 **Example:**
 
-```cf3
-body common control
+`
+``
+cf3
+body
+common
+control
 {
-syslog_host => "syslog.example.org";
-syslog_port => "514";
+syslog_host
+=>
+"syslog.example.org";
+syslog_port
+=>
+"514";
 }
 ``
 `
 
 ### syslog_port
-**Description:** The value of `syslog_port` represents the port number
+**Description:** The value of `
+syslog_port
+` represents the port number
 of a UDP syslog service.
 
 It is the UDP port of a local syslog service to which all CFEngine'
@@ -1160,27 +1256,42 @@ data
 **
 Type:
 **
-`int`
+`
+int
+`
 **
 Allowed
 input
 range:
 **
-`0,99999999999`
+`
+0,
+99999999999
+`
 **
 Default
 value:
 **
-`514`
+`
+514
+`
 **
 Example:
 **
-``
-`cf3
-body common control
+`
+`
+`
+cf3
+body
+common
+control
 {
-syslog_host => "syslog.example.org";
-syslog_port => "514";
+syslog_host
+=>
+"syslog.example.org";
+syslog_port
+=>
+"514";
 }
 `
 `
@@ -1218,18 +1329,33 @@ Log
 **
 Type:
 **
-`string`
+`
+string
+`
 **
 Allowed
 Input
 range:
 **
-`(critical|error|warning|notice|info)`
+`
+(
+critical
+|
+error
+|
+warning
+|
+notice
+|
+info
+)
+`
 **
 Default
 value:
 **
-` `
+`
+`
 (
 unspecified
 )
@@ -1244,12 +1370,17 @@ _critical_
 on
 Windows
 .
-``
-`cf3
-body common control
+`
+`
+`
+cf3
+body
+common
+control
 {
 @if minimum_version(3.18.1)
-  windows::
+windows:
+:
 system_log_level
 =>
 "critical";
@@ -1317,7 +1448,11 @@ from
 components
 other
 than
-`cf-serverd`
+`
+cf
+-
+serverd
+`
 .
 For
 a
@@ -1344,12 +1479,18 @@ undefined
 **
 Example:
 **
-``
-`cf3
-body common control
+`
+`
+`
+cf3
+body
+common
+control
 {
-    # Use one of these ciphers when making outbound connections
-    tls_ciphers => "AES128-SHA";
+# Use one of these ciphers when making outbound connections
+tls_ciphers
+=>
+"AES128-SHA";
 }
 `
 `
@@ -1476,3 +1617,4 @@ it doesn't apply to current CFEngine version.
 `
 ``
 `
+````

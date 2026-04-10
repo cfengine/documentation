@@ -198,7 +198,7 @@ that contains information about a user's password.
 
 **Example:**
 
-````cf3
+```cf3
 body password user_password
 {
   format => "hash";
@@ -320,7 +320,7 @@ users:
 policy
 =>
 "locked";
-````
+```
 
 ### shell
 

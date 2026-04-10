@@ -289,7 +289,7 @@ creation; in other words, when `environment_state` is create.
 
 **Example:**
 
-````cf3
+```cf3
 body environment_resources virt_xml(host)
 {
   env_spec => "<domain type='xen'>
@@ -402,7 +402,7 @@ environment_state
 environment_host
 =>
 "ubuntu";
-````
+```
 
 ### environment_type
 

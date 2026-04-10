@@ -984,7 +984,7 @@ an analogous command struct to the packages for patch updates.
 
 **Example:**
 
-````cf3
+```cf3
 body package_method zypper
 {
   package_patch_name_regex => "[^|]+\|\s+([^\s]+).*";
@@ -1398,7 +1398,7 @@ package_policy
 package_method
 =>
 xyz;
-````
+```
 
 ### package_select
 

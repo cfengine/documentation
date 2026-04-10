@@ -1111,23 +1111,23 @@ promise-type:
 
     "promiser"
       if => "$(program)_running|($(program)_notfoundHr12)";
-`
-``
+
+` ``
 A
 specific
 example
 would
 be:
-``
-`cf3
+`` `cf3
 bundle agent example
 {
-  commands:
+commands:
 
       any::
 
         "/bin/echo This is linux"
           if => "linux";
+
 "/bin/echo This is solaris"
 if
 =>
@@ -1135,8 +1135,7 @@ if
 }
 `
 `
-`
-This
+`This
 function
 is
 provided
@@ -1153,8 +1152,7 @@ and
 classes
 .
 For
-example:
-`
+example:`
 `
 `
 cf3
@@ -1162,9 +1160,11 @@ cf3
 skip
 TODO
 }
+
 # Check that all components are running
+
 vars:
-    "component" slist => { "cf-monitord", "cf-serverd" };
+"component" slist => { "cf-monitord", "cf-serverd" };
 
 processes:
 
@@ -1174,7 +1174,8 @@ commands:
 
     "/var/cfengine/bin/$(component)"
       if => canonify("$(component)_not_runnning");
-```
+
+````
 
 **Notes:**
 While
@@ -1229,7 +1230,7 @@ bundle agent main
       "a" if => "$(no_such_var)";      # Will be skipped
       "b" if => not("$(no_such_var)"); # Will be skipped
 }
-```
+````
 
 If you need a condition which defaults to _not skipping_ in the cases above,
 `unless` does this; for any expression where `if` will skip, `unless` will not
@@ -1350,9 +1351,8 @@ A specific example would be:
 bundle agent example
 {
   commands:
-      any::
-        "/bin/echo This is NOT linux"
-          unless => "linux";
+    any::
+      "/bin/echo This is NOT linux" unless => "linux";
 }
 ```
 
@@ -1376,11 +1376,17 @@ promise to be skipped. Since `if` defaults to skipping in those cases,
 bundle agent main
 {
   classes:
-      "a"     if => "any";            # Will be evaluated
-      "b" unless => "any";            # Will be skipped
+    "a" if => "any";
 
-      "c"     if => "$(no_such_var)"; # Will be skipped
-      "d" unless => "$(no_such_var)"; # Will be evaluated
+    # Will be evaluated
+    "b" unless => "any";
+
+    # Will be skipped
+    "c" if => "$(no_such_var)";
+
+    # Will be skipped
+    "d" unless => "$(no_such_var)";
+  # Will be evaluated
 }
 ```
 
@@ -1447,9 +1453,7 @@ description,
 see
 [**
 Bodies
-**][
-bodies
-].
+**][ bodies ].
 
 **
 Type:
@@ -1473,7 +1477,9 @@ invocation
 {{< CFEngine_include_example(inherit_from_classes.cf) >}}
 
 **History:** Was introduced in 3.8.0.
+
 ### meta
+
 **
 Description:
 **
