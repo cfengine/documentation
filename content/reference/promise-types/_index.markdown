@@ -227,25 +227,13 @@ defined in body common control over UDP. Please note
 ```cf3
 bundle agent test
 {
-vars:
-"software"
-slist
-=>
-{
-"/root/xyz",
-"/tmp/xyz"
-};
-files:
-"$(software)"
-create
-=>
-"true",
-action
-=>
-logme
-(
-"$(software)"
-);
+  vars:
+    "software" slist => { "/root/xyz", "/tmp/xyz" };
+
+  files:
+    "$(software)"
+      create => "true",
+      action => logme("$(software)");
 }
 
 body action logme(x)
@@ -272,7 +260,15 @@ promise kept, promise not kept and promise repaired.
 
 Use this as an alternative to auditing if you wish to use the syslog mechanism
 to centralize or manage messaging from CFEngine. A backup of these messages
-will still be kept in `WORKDIR/outputs` if you are using `cf-execd`.
+will still be kept in `
+WORKDIR
+/
+outputs
+` if you are using `
+cf
+-
+execd
+`.
 
 On the native Windows version of CFEngine Enterprise, using verbose will
 include a message when the promise is kept or repaired in the event log.
@@ -280,13 +276,14 @@ include a message when the promise is kept or repaired in the event log.
 **Type:** (menu option)
 
 **Allowed input range:**
-
 ```
+
 inform
 verbose
 error
 log
-```
+
+````
 
 **Example:**
 
@@ -309,7 +306,8 @@ verbose than specified by an agent option ( `-v`, `--verbose`, `-I`, `--inform`,
 
 **Allowed input range:**
 
-```
+````
+
 emergency
 alert
 critical
@@ -318,7 +316,8 @@ warning
 notice
 info
 debug
-```
+
+````
 
 **Description:** The `log_priority` menu option policy is the priority level
 of the log message, as interpreted by a syslog server. It determines the
@@ -414,12 +413,14 @@ setting (but not less).
 
 **Allowed input range:**
 
-```
+````
+
 inform
 verbose
 error
 log
-```
+
+````
 
 **Default value:** none
 
@@ -460,8 +461,10 @@ measurement_class
 The identifier forms a partial identity for optional performance scanning of
 promises of the form:
 
-```
+````
+
 ID:promise-type:promiser.
+
 ```
 
 ### classes
@@ -477,9 +480,11 @@ ID:promise-type:promiser.
 **Allowed input range:**
 
 ```
+
 namespace
 bundle
-```
+
+````
 
 **Default value:** namespace
 
@@ -987,10 +992,12 @@ limited duration as a rare event then an absolute time limit is useful.
 
 **Allowed input range:**
 
-```
+````
+
 absolute
 reset
-```
+
+````
 
 **Default value:** reset
 
@@ -1020,7 +1027,7 @@ they appear in verbose logs and error messages.
 
 ```cf3 {skip TODO}
 comment => "This comment follows the data for reference ...",
-```
+````
 
 ### depends_on
 
@@ -1098,16 +1105,21 @@ classes.
 
 The generic example has the form:
 
-```cf3 {skip TODO}
+``
+`cf3 {skip TODO}
 promise-type:
 
     "promiser"
       if => "$(program)_running|($(program)_notfoundHr12)";
-```
-
-A specific example would be:
-
-```cf3
+`
+``
+A
+specific
+example
+would
+be:
+``
+`cf3
 bundle agent example
 {
   commands:
@@ -1121,14 +1133,30 @@ if
 =>
 "solaris";
 }
-``
 `
-
-This function is provided so that one can form expressions that link variables
-and classes. For example:
-
 `
-``
+`
+This
+function
+is
+provided
+so
+that
+one
+can
+form
+expressions
+that
+link
+variables
+and
+classes
+.
+For
+example:
+`
+`
+`
 cf3
 {
 skip
@@ -1136,7 +1164,6 @@ TODO
 }
 # Check that all components are running
 vars:
-
     "component" slist => { "cf-monitord", "cf-serverd" };
 
 processes:
@@ -1150,12 +1177,48 @@ commands:
 ```
 
 **Notes:**
-
-While strings are automatically canonified during class definition, they are not
-automatically canonified when checking. You may need to use `canonify()` to
-convert strings containing invalid class characters into a valid class.
-
-In most cases, `if => something` and `if => not(something)` are opposite,
+While
+strings
+are
+automatically
+canonified
+during
+class
+definition,
+they
+are
+not
+automatically
+canonified
+when
+checking
+.
+You
+may
+need
+to
+use
+`canonify()`
+to
+convert
+strings
+containing
+invalid
+class
+characters
+into
+a
+valid
+class
+.
+In
+most
+cases,
+`if => something`
+and
+`if => not(something)`
+are
+opposite,
 but because of [function skipping][Functions#Function skipping], both of these
 will be skipped if `something` is never resolved:
 
@@ -1200,7 +1263,9 @@ an
 opposite
 )
 .
+
 ### ifvarclass
+
 **Description:** Deprecated, use [`if`][Promise types#if] instead.
 
 **History:** New name `if` was introduced in 3.7.0, `ifvarclass` deprecated in 3.17.0.
@@ -1408,15 +1473,67 @@ invocation
 {{< CFEngine_include_example(inherit_from_classes.cf) >}}
 
 **History:** Was introduced in 3.8.0.
-
 ### meta
-
-**Description:** A list of strings to be associated with the body for knowledge management purposes.
-The strings are usually called "meta tags" or simply "tags."
-
-Any body can be given a "meta" attribute.
-Since the right hand side for this attribute is an slist, multiple strings (tags) can be associated with the same body.
-
+**
+Description:
+**
+A
+list
+of
+strings
+to
+be
+associated
+with
+the
+body
+for
+knowledge
+management
+purposes
+.
+The
+strings
+are
+usually
+called
+"meta tags"
+or
+simply
+"tags."
+Any
+body
+can
+be
+given
+a
+"meta"
+attribute
+.
+Since
+the
+right
+hand
+side
+for
+this
+attribute
+is
+an
+slist,
+multiple
+strings
+(
+tags
+)
+can
+be
+associated
+with
+the
+same
+body
+.
 **Type:** `slist`
 
 **
@@ -1436,11 +1553,13 @@ Example:
 `cf3
 body ANYTYPE mybody
 {
-  meta => { "deprecated" , "CFE-1234", "CVE-2020-1234" };
+meta => { "deprecated" , "CFE-1234", "CVE-2020-1234" };
 }
+
 ```
 
 **Note:** When a variable is re-defined the associated meta tags are also re-defined.
 
 **History:** Was introduced in 3.7.0.
 
+```

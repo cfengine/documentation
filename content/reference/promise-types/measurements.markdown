@@ -308,18 +308,21 @@ Example:
 **
 ``
 `cf3
+
 # Editing
 
 body location example
 {
-select_line_matching => "Expression match.* whole line";
+select_line_matching => "Expression match.\* whole line";
 }
 
 # Measurement promises
+
 body match_value example
 {
-select_line_matching => "Expression match.* whole line";
+select_line_matching => "Expression match.\* whole line";
 }
+
 ```
 
 #### select_line_number
@@ -361,9 +364,10 @@ Example:
 `cf3
 body match_value free_memory
 {
-select_line_matching => "MemFree:.*";
-extraction_regex => "MemFree:\s+([0-9]+).*";
+select_line_matching => "MemFree:._";
+extraction_regex => "MemFree:\s+([0-9]+)._";
 }
+
 ```
 
 #### track_growing_file
@@ -438,6 +442,7 @@ sum
 first
 last
 ```
+
 **
 Example:
 **
@@ -445,10 +450,12 @@ Example:
 `cf3
 body match_value myvalue(xxx)
 {
- select_line_matching => ".*$(xxx).*";
- extraction_regex => "root\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+).*";
- select_multiline_policy => "sum";
+select_line_matching => "._$(xxx)._";
+extraction_regex => "root\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+).\*";
+select_multiline_policy => "sum";
 }
+
 ```
 
 **History:** Was introduced in 3.4.0 (2012)
+```

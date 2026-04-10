@@ -665,36 +665,38 @@ that version from this particular MSI is installed):
 ``
 `cf3 {skip TODO}
 packages:
-  windows::
-    "C:\GoogleChromeStandaloneEnterprise.msi"
-      policy => "present",
-      package_module => msiexec;
+windows::
+"C:\GoogleChromeStandaloneEnterprise.msi"
+policy => "present",
+package_module => msiexec;
 
     "Google Update Helper"
       policy => "absent",
       package_module => msiexec;
+
 `
 ``
 **
 History:
 **
 
--
-Added
-in
-CFEngine
-3
-.
-12
-.
-2
-and
-3
-.
-14
-.
-0
+- Added
+  in
+  CFEngine
+  3
+  .
+  12
+  .
+  2
+  and
+  3
+  .
+  14
+  .
+  0
+
 ### snap
+
 Manage
 packages
 using
@@ -712,7 +714,7 @@ org
 /
 wiki
 /
-Snappy_
+Snappy\_
 %
 28package_manager
 %
@@ -723,11 +725,11 @@ Snappy_
 `cf3
 bundle agent main
 {
-  packages:
-    ubuntu::
-      "genpw"
-        policy => "present",
-        package_module => snap;
+packages:
+ubuntu::
+"genpw"
+policy => "present",
+package_module => snap;
 
       "genpw"
         policy => "absent",
@@ -747,7 +749,9 @@ bundle agent main
          policy => "present",
          package_module => snap,
          version => "latest";
+
 }
+
 ```
 
 **History:**
@@ -758,3 +762,4 @@ bundle agent main
 
 - version `latest` is _not_ supported when promising an absence
 - `list-updates` is _not_ implemented, snaps are automatically updated by default
+```

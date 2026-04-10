@@ -318,8 +318,9 @@ Example:
 `cf3
 body service_method example
 {
-  service_args => "-f filename.conf --some-argument";
+service_args => "-f filename.conf --some-argument";
 }
+
 ```
 
 #### service_autostart_policy
@@ -337,9 +338,11 @@ dispatched once it is being used.
 **Allowed input range:**
 
 ```
+
 none
 boot_time
 on_demand
+
 ```
 
 **
@@ -412,8 +415,9 @@ Example:
 `cf3
 body service_method example
 {
-  service_dependence_chain => "start_parent_services";
+service_dependence_chain => "start_parent_services";
 }
+
 ```
 
 #### service_type
@@ -425,8 +429,10 @@ body service_method example
 **Allowed input range:**
 
 ```
+
 windows
 generic
+
 ```
 
 **

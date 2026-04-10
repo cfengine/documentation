@@ -83,13 +83,13 @@ command
 `cf3
 bundle agent example
 {
-  commands:
-    "/usr/bin/env MY_ENVIRONMENT_VARIABLE=something_special /tmp/cmd";
-    # Or equivalent
-    "/usr/bin/env"
-      args => "ME=something_special /tmp/cmd";
+commands:
+"/usr/bin/env MY_ENVIRONMENT_VARIABLE=something_special /tmp/cmd"; # Or equivalent
+"/usr/bin/env"
+args => "ME=something_special /tmp/cmd";
 }
-```
+
+````
 
 **Note**: Some unices leave a hanging pipe on restart (they never manage to
 detect the end of file condition). This occurs on POSIX.1 and SVR4 popen calls
@@ -126,7 +126,7 @@ commands:
   "/bin/echo one"
 
    args => "two three";
-```
+````
 
 So in the example above the command would be:
 
@@ -196,13 +196,13 @@ as a non-privileged user inside an isolated directory tree.
 ```cf3
 body contain example
 {
-    useshell => "noshell";
-       umask => "077";
+  useshell => "noshell";
+  umask => "077";
   exec_owner => "mysql_user";
   exec_group => "nogroup";
-exec_timeout => "60";
-       chdir => "/working/path";
-      chroot => "/private/path";
+  exec_timeout => "60";
+  chdir => "/working/path";
+  chroot => "/private/path";
 }
 ```
 
@@ -226,13 +226,11 @@ to `powershell`.
 **Type:** (menu option)
 
 **Allowed input range:**
-``
-`
+`` `
 useshell
 noshell
 powershell
-`
-``
+` ``
 For
 compatibility,
 the
@@ -256,7 +254,7 @@ respectively
 ```cf3
 body contain example
 {
-useshell => "useshell";
+  useshell => "useshell";
 }
 ```
 
@@ -292,7 +290,8 @@ body contain example
 {
 umask => "077";
 }
-```
+
+````
 
 #### exec_owner
 
@@ -317,9 +316,10 @@ body contain example
 {
 exec_owner => "mysql_user";
 }
-```
+````
 
 #### exec_group
+
 **
 Description:
 **
@@ -355,7 +355,7 @@ them.
 ```cf3
 body contain example
 {
-exec_group => "nogroup";
+  exec_group => "nogroup";
 }
 ```
 
@@ -394,7 +394,7 @@ Type:
 ```cf3
 body contain example
 {
-exec_timeout => "30";
+  exec_timeout => "30";
 }
 ```
 
@@ -443,9 +443,8 @@ command
 
 ```cf3
 body contain example
-
 {
-chdir => "/containment/directory";
+  chdir => "/containment/directory";
 }
 ```
 
@@ -478,24 +477,23 @@ experienced
 as
 the
 top
--
-most
-root
-directory
-for the process. In security parlance, this creates a 'sandbox' for the
-process. Windows does not support this feature.
 
-**Type:** `string`
+- most
+  root
+  directory
+  for the process. In security parlance, this creates a 'sandbox' for the
+  process. Windows does not support this feature.
 
-**Allowed input range:** `"?(/.*)`
+  **Type:** `string`
 
-**Example:**
+  **Allowed input range:** `"?(/.*)`
+
+  **Example:**
 
 ```cf3
 body contain example
-
 {
-chroot => "/private/path";
+  chroot => "/private/path";
 }
 ```
 
@@ -513,60 +511,59 @@ when
 running
 in
 dry
--
-run
-mode
-(
-with
--
-n
-)
-.
-Previewing
-shell
-scripts
-during
-a
-dry
--
-run
-is
-a
-potentially
-misleading
-activity
-.
-It
-should
-only
-be
-used
-on
-scripts
-that
-make
-no
-changes
-to
-the
-system. It is CFEngine best practice to never write change-functionality into
-user-written scripts except as a last resort. CFEngine can apply its safety
-checks to user defined scripts.
 
-**Type:** [`boolean`][boolean]
+- run
+  mode
+  (
+  with
+- n
+  )
+  .
+  Previewing
+  shell
+  scripts
+  during
+  a
+  dry
+- run
+  is
+  a
+  potentially
+  misleading
+  activity
+  .
+  It
+  should
+  only
+  be
+  used
+  on
+  scripts
+  that
+  make
+  no
+  changes
+  to
+  the
+  system. It is CFEngine best practice to never write change-functionality into
+  user-written scripts except as a last resort. CFEngine can apply its safety
+  checks to user defined scripts.
 
-**Default value:** false
+  **Type:** [`boolean`][boolean]
 
-**Example:**
+  **Default value:** false
+
+  **Example:**
 
 ```cf3
 body contain example
 {
-preview => "true";
+  preview => "true";
 }
 ```
 
 #### no_output
+
 **
 Description:
 **
@@ -604,7 +601,7 @@ to
 ```cf3
 body contain example
 {
-no_output => "true";
+  no_output => "true";
 }
 ```
 
@@ -625,9 +622,7 @@ cases
 Type:
 ** [
 `boolean`
-][
-boolean
-]
+][ boolean ]
 **Default value:** true
 
 **Example:**
@@ -746,35 +741,28 @@ And here is an example using it:
 ```cf3
 body common control
 {
-bundlesequence  => { def, modtest };
+  bundlesequence => { def, modtest };
 }
 
 bundle agent def
 {
-commands:
+  commands:
+    "$(sys.workdir)/modules/module_name" module => "true";
 
-  "$(sys.workdir)/modules/module_name"
-    module => "true";
-
-reports:
-
-  # Each module forms a private context with its name as id
-  module_class::
-
-    "Module set variable $(module_name.myscalar)";
+  reports:
+    # Each module forms a private context with its name as id
+    module_class::
+      "Module set variable $(module_name.myscalar)";
 }
 
 bundle agent modtest
 {
-vars:
+  vars:
+    "mylist" slist => { @(module_name.mylist) };
 
-  "mylist" slist => { @(module_name.mylist) };
-
-reports:
-
-  module_class::
-
-    "Module set variable $(mylist)";
+  reports:
+    module_class::
+      "Module set variable $(mylist)";
 }
 ``
 `
@@ -821,26 +809,25 @@ bundle agent sendmail
     # This next module checks a specific failure mode of dcc, namely
     # more than 3 error states since the last time we ran cf-agent
     is_mailhost::
-        "/bin/test `/usr/bin/tail -100 /var/log/maillog | /usr/bin/grep 'Milter (dcc): to error state' | /usr/bin/wc -l` -gt 3  echo '+start_dccm' || echo
+      "/bin/test `/usr/bin/tail -100 /var/log/maillog | /usr/bin/grep 'Milter (dcc): to error state' | /usr/bin/wc -l` -gt 3  echo '+start_dccm' || echo
 ''"
-    contain => shell_command,
-    module => "true";
+        contain => shell_command,
+        module => "true";
 
     start_dccm::
-      "/var/dcc/libexec/start-dccm"
-          contain => not_paranoid;
+      "/var/dcc/libexec/start-dccm" contain => not_paranoid;
 }
 
 body contain shell_command
 {
-    useshell    => "useshell";
+  useshell => "useshell";
 }
 
 body contain not_paranoid
 {
-    useshell    => "no";
-    exec_owner  => "root";
-    umask       => "22";
+  useshell => "no";
+  exec_owner => "root";
+  umask => "22";
 }
 ```
 
@@ -854,80 +841,74 @@ also:
 usemodule
 (
 )
-][
-usemodule
-],
+][ usemodule ],
 [
 read_module_protocol
 (
 )
-][
-read_module_protocol
-]
+][ read_module_protocol ]
 
 **
 History:
 **
 
--
-`@`
-allowed
-in
-variables
-(
-intended
-for
-keys
-in
-classic
-array
-)
-3
-.
-15
-.
-0,
-3
-.
-12
-.
-3,
-3
-.
-10
-.
-7
-(
-2019
-)
--
-`/`
-allowed
-in
-variables
-(
-intended
-for
-keys
-in
-classic
-array
-)
-3
-.
-14
-.
-0,
-3
-.
-12
-.
-2,
-3
-.
-10
-.
-6
-(
-2019
-)
+- `@`
+  allowed
+  in
+  variables
+  (
+  intended
+  for
+  keys
+  in
+  classic
+  array
+  )
+  3
+  .
+  15
+  .
+  0,
+  3
+  .
+  12
+  .
+  3,
+  3
+  .
+  10
+  .
+  7
+  (
+  2019
+  )
+- `/`
+  allowed
+  in
+  variables
+  (
+  intended
+  for
+  keys
+  in
+  classic
+  array
+  )
+  3
+  .
+  14
+  .
+  0,
+  3
+  .
+  12
+  .
+  2,
+  3
+  .
+  10
+  .
+  6
+  (
+  2019
+  )

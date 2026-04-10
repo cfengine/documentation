@@ -547,20 +547,17 @@ expressions:
 `cf3
 bundle agent main
 {
-    vars:
-      "checks" data => '[true, false]';
-      # find all classes named
-      "classes_named_true" slist => classesmatching('true');
+vars:
+"checks" data => '[true, false]'; # find all classes named
+"classes_named_true" slist => classesmatching('true');
 
-  classes:
-      # always defined
-      "first_check" expression => "$(checks[0])";
+classes: # always defined
+"first_check" expression => "$(checks[0])";
       # never defined
       "second_check" expression => "$(checks[1])";
 
-  reports:
-      # prints nothing, there are no classes named 'true'
-      "Classes named 'true': $(classes_named_true)";
+reports: # prints nothing, there are no classes named 'true'
+"Classes named 'true': $(classes_named_true)";
 
     first_check::
       "The class was defined from '$(checks[0])'";
@@ -570,15 +567,19 @@ bundle agent main
       "The class was defined from '$(checks[1])'";
     !second_check::
       "The class was NOT defined from '$(checks[1])'";
+
 }
+
 ```
 
 Output:
 
 ```
+
 R: The class was defined from 'true'
 R: The class was NOT defined from 'false'
-```
+
+````
 
 ## Class scope
 
@@ -602,7 +603,7 @@ a promise is repaired, one might write:
 "promiser..."
    ...
    classes => if_repaired("signal_class");
-```
+````
 
 These classes are `namespace` scoped by default. The
 [`scope`][Promise types#scope] attribute can be used to make them
@@ -643,20 +644,15 @@ Finally, `restart_class` classes in `processes` are global.
 ```cf3
 body common control
 {
-    bundlesequence => { "global","local_one", "local_two" };
+  bundlesequence => { "global", "local_one", "local_two" };
 }
-
 #################################
-
 bundle common global
 {
-classes:
-# The soft class "zero" is always satisfied,
-# and is global in scope
-"zero"
-expression
-=>
-"any";
+  classes:
+    # The soft class "zero" is always satisfied,
+    # and is global in scope
+    "zero" expression => "any";
 }
 #################################
 bundle agent local_one
@@ -719,12 +715,39 @@ persist for a period of time. This can be useful to avoid the expense of
 re-evaluation, communicate states across multiple agent runs on the same host.
 
 The standard library in the Masterfiles Policy Framework contains
-the [`feature`][lib/feature.cf] bundle which implements a useful model for
+the [`
+feature
+`][lib/feature.cf] bundle which implements a useful model for
 defining classes for a period of time as well as canceling them on demand.
 
-**See also:** [`persistance` classes attribute][classes#persistence], [`persist_time` in classes body][Promise types#persist_time], [`lib/event.cf`][lib/event.cf] in the MPF, [`lib/feature.cf`][lib/feature.cf] in the MPF
+**See also:** [`
+persistance
+` classes attribute][classes#persistence], [`
+persist_time
+` in classes body][Promise types#persist_time], [`
+lib
+/
+event
+.
+cf
+`][lib/event.cf] in the MPF, [`
+lib
+/
+feature
+.
+cf
+`][lib/feature.cf] in the MPF
 
 ## Canceling classes
 
-You can cancel a class with a [`classes`][Promise types#classes] body.
-See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
+You can cancel a class with a [`
+classes
+`][Promise types#classes] body.
+See the `
+cancel_kept
+`, `
+cancel_notkept
+`, and `
+cancel_repaired
+` attributes.
+```

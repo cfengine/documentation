@@ -23,7 +23,8 @@ vars:
 "desired_packages"
   slist => {
     # list of packages we want"ntp", "lynx" };
-    packages:"$(desired_packages)"# operate on listed packagespackage_policy =>
+    packages:"$(desired_packages)"
+    # operate on listed packagespackage_policy =>
     "add",
     # What to do with packages: install them.
     package_method

@@ -236,15 +236,16 @@ bundle common setclasses
 {
 classes:
 
-  "cached_classes"
-                or => { "any" },
-       persistence => "1";
+"cached_classes"
+or => { "any" },
+persistence => "1";
 
-  "cached_class"
-       expression => "any",
-       persistence => "1";
+"cached_class"
+expression => "any",
+persistence => "1";
 
 }
+
 ```
 
 **Notes:**
@@ -407,16 +408,18 @@ CFEngine.
 ```cf3
 bundle common g
 {
-classes:
-  "selection" select_class => { "one", "two" };
+  classes:
+    "selection" select_class => { "one", "two" };
 
-reports:
-  one::
-    "One was selected";
-  two::
-    "Two was selected";
-  selection::
-     "A selection was made";
+  reports:
+    one::
+      "One was selected";
+
+    two::
+      "Two was selected";
+
+    selection::
+      "A selection was made";
 }
 ```
 
@@ -453,4 +456,3 @@ classes:
 
 "order_lunch" xor => { "Friday", "Hr11"}; # we get pizza every Friday
 ```
-

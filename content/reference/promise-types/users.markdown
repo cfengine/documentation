@@ -198,16 +198,12 @@ that contains information about a user's password.
 
 **Example:**
 
-```cf3
+````cf3
 body password user_password
 {
-format
-=>
-"hash";
-data
-=>
-"jiJSlLSkZuVLE";
-# "CFEngine"
+  format => "hash";
+  data => "jiJSlLSkZuVLE";
+  # "CFEngine"
 }
 ``
 `
@@ -218,7 +214,9 @@ data
 
 **Description:** Specifies the format of the given password data.
 
-If the value is "hash," then the [`data`][users#data] attribute is expected to
+If the value is "hash," then the [`
+data
+`][users#data] attribute is expected to
 contain a string with a password in hashed format. Note that CFEngine
 does not validate that the given hash format is supported by
 the platform. The system administrator must verify this.
@@ -226,7 +224,9 @@ However, CFEngine continues to run even in the event of an
 unsupported password format, so it can always be corrected by updating
 the policy.
 
-If the value is "plaintext," then the [`data`][users#data] attribute contains
+If the value is "plaintext," then the [`
+data
+`][users#data] attribute contains
 the password in plain text.
 
 **Note:** On Windows, only the "plaintext" password type is supported,
@@ -237,15 +237,14 @@ hashed passwords.
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body password user_password
 {
-format
-=>
-"plaintext";
-data
-=>
-"CFEngine";
+  format => "plaintext";
+  data => "CFEngine";
 }
 ``
 `
@@ -254,28 +253,31 @@ data
 
 **Description:** Specifies the password data.
 
-The format of the password data depends on the `format` attribute.
+The format of the password data depends on the `
+format
+` attribute.
 
 {{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body password user_password
 {
-format
-=>
-"plaintext";
-data
-=>
-"CFEngine";
+  format => "plaintext";
+  data => "CFEngine";
 }
 ``
 `
 
 ### policy
 
-**Description:** The `policy` attribute specifies what state the user
+**Description:** The `
+policy
+` attribute specifies what state the user
 account has on the system.
 
 If the policy is **present**, the user is present and active
@@ -290,7 +292,9 @@ console logins and SSH logins on most systems.
 
 If the policy is **absent**, the user does not exist on the system. Note
 that if a user previously existed, his/her files are not
-automatically removed. You must create a separate `files` promise for
+automatically removed. You must create a separate `
+files
+` promise for
 this.
 
 **Note:** When CFEngine locks an account it does two things, it disables
@@ -304,11 +308,19 @@ and additional steps may be required.
 
 **Example:**
 
-```cf3 {skip TODO}
+`
+``
+cf3
+{
+skip
+TODO
+}
 users:
-   "jsmith"
-      policy => "locked";
-```
+"jsmith"
+policy
+=>
+"locked";
+````
 
 ### shell
 

@@ -289,12 +289,10 @@ creation; in other words, when `environment_state` is create.
 
 **Example:**
 
-```cf3
+````cf3
 body environment_resources virt_xml(host)
 {
-env_spec
-=>
-"<domain type='xen'>
+  env_spec => "<domain type='xen'>
   <name>$(host)/name>
   <os>
     <type>linux/type>
@@ -324,54 +322,87 @@ env_spec
 `
 **Notes:**
 
-This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
+This attribute conflicts with `
+env_cpus
+`, `
+env_memory
+` and `
+env_disk
+`.
 
 **History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
 
 ### environment_state
 
-**Description:** The `environment_state` defines the desired dynamic state
+**Description:** The `
+environment_state
+` defines the desired dynamic state
 of the specified environment.
 
 **Type:** (menu option)
 
 **Allowed input range:**
 
-- `create`
+- `
+create
+`
 
 The guest machine is allocated, installed and left in a running state.
 
-- `delete`
+- `
+delete
+`
 
 The guest machine is shut down and deallocated, but no files are removed.
 
-- `running`
+- `
+running
+`
 
 The guest machine is in a running state, if it previously exists.
 
-- `suspended`
+- `
+suspended
+`
 
 The guest exists in a suspended state or a shutdown state. If the guest
 is running, it is suspended; otherwise it is ignored.
 
-- `down`
+- `
+down
+`
 
 The guest machine is shut down, but not deallocated.
 
 **Example:**
 
-```cf3 {skip TODO}
+`
+``
+cf3
+{
+skip
+TODO
+}
 guest_environments:
-
- linux::
-
- "bishwa-kvm1"
-                 comment => "Keep this vm suspended",
-   environment_resources => myresources,
-        environment_type => "kvm",
-       environment_state => "suspended",
-        environment_host => "ubuntu";
-```
+linux:
+:
+"bishwa-kvm1"
+comment
+=>
+"Keep this vm suspended",
+environment_resources
+=>
+myresources,
+environment_type
+=>
+"kvm",
+environment_state
+=>
+"suspended",
+environment_host
+=>
+"ubuntu";
+````
 
 ### environment_type
 

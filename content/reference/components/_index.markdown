@@ -85,6 +85,7 @@ others::
 
   bundlesequence => { "main", "otherstuff" };
 ```
+
 If
 you
 want
@@ -111,11 +112,11 @@ body common control
 {
 webservers::
 
-  bundlesequence => { @(g.bs), "web" };
+bundlesequence => { @(g.bs), "web" };
 
 others::
 
-  bundlesequence => { @(g.bs), "otherstuff" };
+bundlesequence => { @(g.bs), "otherstuff" };
 
 }
 
@@ -123,8 +124,9 @@ bundle common g
 {
 vars:
 
-  "bs" slist => { "main", "basic_stuff" };
+"bs" slist => { "main", "basic_stuff" };
 }
+
 ```
 
 **See also:** [`default:control_common.bundlesequence`](/reference/special-variables/control_common/#defaultcontrol_commonbundlesequence)
@@ -223,10 +225,10 @@ discovery and name-lookup.
 
 **Example:**
 
-```cf3
+````cf3
 body common control
 {
-domain => "example.org";
+  domain => "example.org";
 }
 ``
 `
@@ -234,11 +236,39 @@ domain => "example.org";
 ### evaluation_order
 **Description:** Controls the evaluation order of promises within a bundle.
 
-This setting allows you to change how `cf-agent` executes promises. By default, CFEngine uses a `classic` evaluation order, where promises are executed in a predefined order based on their type (e.g., `vars` before `files`, `files` before `packages`, etc.). This is the historical behavior of CFEngine.
+This setting allows you to change how `
+cf
+-
+agent
+` executes promises. By default, CFEngine uses a `
+classic
+` evaluation order, where promises are executed in a predefined order based on their type (e.g., `
+vars
+` before `
+files
+`, `
+files
+` before `
+packages
+`, etc.). This is the historical behavior of CFEngine.
 
-By setting `evaluation_order` to `top_down`, you can force `cf-agent` to evaluate promises in the order they are written in the policy file, from top to bottom. This can make policy easier to write and understand, especially for new users, as the execution flow follows the visual layout of the code.
+By setting `
+evaluation_order
+` to `
+top_down
+`, you can force `
+cf
+-
+agent
+` to evaluate promises in the order they are written in the policy file, from top to bottom. This can make policy easier to write and understand, especially for new users, as the execution flow follows the visual layout of the code.
 
-This attribute can be set in `body common control` to affect all components, or in `body agent control` to affect only `cf-agent`.
+This attribute can be set in `
+body
+common
+control
+` to affect all components, or in `
+
+body agent control` to affect only `cf-agent`.
 
 **Type:** `string`
 
@@ -276,16 +306,21 @@ It is used as identifier to mark business and organizational goals in
 CFEngine Enterprise. CFEngine uses this to match promisees that represent
 business goals in promises.
 
-**Type:** `slist`
+**Type:** `
+slist
+`
 
 **Allowed input range:** (arbitrary string)
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body common control
 {
-goal_patterns => { "goal_.*", "target.*" };
+  goal_patterns => { "goal_.*", "target.*" };
 }
 ``
 `
@@ -295,18 +330,30 @@ goal_patterns => { "goal_.*", "target.*" };
 
 **Description:** Determines whether to ignore missing bundles.
 
-If `ignore_missing_bundles` is set to true, if any bundles in the bundle
+If `
+ignore_missing_bundles
+` is set to true, if any bundles in the bundle
 sequence do not exist, ignore and continue.
 
-**Type:** [`boolean`][boolean]
+**Type:** [`
+boolean
+`][boolean]
 
 **Default value:** false
 
 **Example:**
 
-```cf3 {skip TODO}
-ignore_missing_bundles => "true";
-```
+`
+``
+cf3
+{
+skip
+TODO
+}
+ignore_missing_bundles
+=>
+"true";
+````
 
 **Notes:**
 
@@ -363,7 +410,7 @@ as the file which references them (this is usually
 
 **Example:**
 
-```cf3
+````cf3
 body common control
 {
 inputs  => {
@@ -409,130 +456,481 @@ hashed, so the same file can't be included twice.
 after which last-seen entries are purged. It is an **enterprise-only** feature.
 
 **Type:** `int`
+**
+Allowed
+input
+range:
+**
+`0,99999999999`
+**
+Default
+value:
+**
+One
+week
+**
+Note:
+**
+This
+value
+affects
+the
+`hostsseen()`
+function
+and
+license
+counting
+by
+`cf-hub`
+in
+the
+Enterprise
+edition
+.
 
-**Allowed input range:** `0,99999999999`
-
-**Default value:** One week
-
-**Note:** This value affects the `hostsseen()` function and license counting by
-`cf-hub` in the Enterprise edition.
-
-**Example:**
-
-```cf3
+**
+Example:
+**
+``
+`cf3
 body common control
 {
 lastseenexpireafter => "72";
 }
-``
 `
-
-**See also:** [hostsseen()][hostsseen], [cf-hub][cf-hub], [`
+`
+`
+**
+See
+also:
+** [
+hostsseen
+(
+)
+][
+hostsseen
+],
+[
+cf
+-
+hub
+][
+cf
+-
+hub
+],
+[
+`
 default:
 control_common
 .
 lastseenexpireafter
-`](/reference/special-variables/control_common/#defaultcontrol_commonlastseenexpireafter)
-**History:** Added in CFEngine 3.0.0
-
+`
+]
+(
+/
+reference
+/
+special
+-
+variables
+/
+control_common
+/
+#defaultcontrol_commonlastseenexpireafter)
+**
+History:
+**
+Added
+in
+CFEngine
+3
+.
+0
+.
+0
 ### output_prefix
-
-**Description:** The string prefix for standard output
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
-
-**Example:**
-
-```cf3
+**
+Description:
+**
+The
+string
+prefix
+for
+standard
+output
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
+**
+Example:
+**
+``
+`cf3
 body common control
 {
 output_prefix => "my_cf3";
 }
-``
 `
-
-**Notes:**
-On native Windows versions of CFEngine (Enterprise), this
-string is also prefixed messages in the event log.
-
+`
+`
+**
+Notes:
+**
+On
+native
+Windows
+versions
+of
+CFEngine
+(
+Enterprise
+),
+this
+string
+is
+also
+prefixed
+messages
+in
+the
+event
+log
+.
 ### package_inventory
+**
+Description:
+**
+List
+of
+package
+module
+bodies
+to
+query
+for
+package
+lists
+.
+Defines
+the
+list
+of
+[
+`package module bodies`
+][
+packages
+]
+which
+will
+be
+queries
+for
+package
+lists,
+for
+use
+in
+`packagematching()`,
+`packageupdatesmatching()`
+and
+in
+Enterprise
+inventory
+reporting
+.
 
-**Description:** List of package module bodies to query for package lists.
-
-Defines the list of [`package module bodies`][packages] which will be queries for
-package lists, for use in `packagematching()`, `packageupdatesmatching()` and in
-Enterprise inventory reporting.
-
-**Type:** `slist`
-
-**Allowed input range:** (body names)
-
-**Example:**
-
-```cf3
+**
+Type:
+**
+`slist`
+**
+Allowed
+input
+range:
+**
+(
+body
+names
+)
+**
+Example:
+**
+``
+`cf3
 body common control
 {
     package_inventory => { "apt_get" };
 }
-``
 `
-
+`
+`
 ### package_module
-**Description:** The default package module body to use.
+**
+Description:
+**
+The
+default
+package
+module
+body
+to
+use
+.
+Defines
+the
+default
+package
+module
+body
+to
+use
+for
+[
+package
+promises
+][
+packages
+],
+if
+none
+is
+specified
+in
+the
+promise
+.
 
-Defines the default package module body to use for [package promises][packages],
-if none is specified in the promise.
-
-**Type:** `string`
-
-**Allowed input range:** (body name)
-
-**Example:**
-
-```cf3
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+body
+name
+)
+**
+Example:
+**
+``
+`cf3
 body common control
 {
     package_module => "apt_get";
 }
-``
 `
-
+`
+`
 ### protocol_version
-**Description:** Defines the protocol to use for all outgoing connections.
+**
+Description:
+**
+Defines
+the
+protocol
+to
+use
+for
+all
+outgoing
+connections
+.
+{
+{
+<
+CFEngine_promise_attribute
+(
+undefined
+)
+>
+}
+}
+**
+Note:
+**
+`protocol_version`
+can
+be
+specified
+at
+the
+individual
+promise
+level
+using
+the
+[
+`body copy_from protocol_version`
+][
+files
+#protocol_version]
+attribute
+.
+When
+undefined
+(
+the
+default
+)
+peers
+automatically
+negotiate
+the
+latest
+protocol
+version
+.
 
-{{< CFEngine_promise_attribute(undefined) >}}
+**
+See
+also:
+** [
+`body copy_from protocol_version`
+][
+files
+#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`tls_ciphers`][Components#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted], [`default:control_common.protocol_version`](/reference/special-variables/control_common/#defaultcontrol_commonprotocol_version)
+**
+History:
+**
 
-**Note:** `protocol_version` can be specified at the individual promise level
-using the [`body copy_from protocol_version`][files#protocol_version]
-attribute. When undefined (the default) peers automatically negotiate the latest protocol version.
-
-**See also:** [`body copy_from protocol_version`][files#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`tls_ciphers`][Components#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted], [`default:control_common.protocol_version`](/reference/special-variables/control_common/#defaultcontrol_commonprotocol_version)
-
-**History:**
-
-- Introduced in CFEngine 3.6.0 with `protocol_version` `1` (`classic`) and `protocol_version` `2` (`tls`)
-- Added `protocol_version` `3` (`cookie`) in CFEngine 3.15.0
-
+-
+Introduced
+in
+CFEngine
+3
+.
+6
+.
+0
+with
+`protocol_version`
+`1`
+(
+`classic`
+)
+and
+`protocol_version`
+`2`
+(
+`tls`
+)
+-
+Added
+`protocol_version`
+`3`
+(
+`cookie`
+)
+in
+CFEngine
+3
+.
+15
+.
+0
 ### require_comments
+**
+Description:
+**
+The
+`require_comments`
+menu
+option
+policy
+warns
+about
+promises
+that
+do
+not
+have
+comment
+documentation
+.
+When
+true,
+`cf-promises`
+will
+report
+loudly
+on
+promises
+that
+do
+not
+have
+comments
+.
+Variables
+promises
+are
+exempted
+from
+this
+rule,
+since
+they
+may
+be
+considered
+self
+-
+documenting
+.
+This
+may
+be
+used
+as
+a
+policy
+Quality
+Assurance
+measure,
+to
+remind
+policy
+makers
+to
+properly
+document
+their
+promises
+.
 
-**Description:** The `require_comments` menu option policy warns about
-promises that do not have comment documentation.
+**
+Type:
+** [
+`boolean`
+][
+boolean
+]
 
-When true, `cf-promises` will report loudly on promises that do not have
-comments. Variables promises are exempted from this rule, since
-they may be considered self-documenting. This may be used as a policy Quality
-Assurance measure, to remind policy makers to properly document their
-promises.
-
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example:**
-
-```cf3
+**
+Default
+value:
+**
+false
+**
+Example:
+**
+``
+`cf3
 body common control
 
 {
@@ -541,45 +939,192 @@ require_comments
 =>
 "true";
 }
-``
 `
-
+`
+`
 ### site_classes
-**Description:** A `site_classes` contains classes that will represent
-geographical site locations for hosts. These should be defined elsewhere in
-the configuration in a classes promise.
+**
+Description:
+**
+A
+`site_classes`
+contains
+classes
+that
+will
+represent
+geographical
+site
+locations
+for
+hosts
+.
+These
+should
+be
+defined
+elsewhere
+in
+the
+configuration
+in
+a
+classes
+promise
+.
+This
+list
+is
+used
+to
+match
+against
+topics
+when
+connecting
+inferences
+about
+host
+locations
+in
+the
+knowledge
+map
+.
+Normally
+any
+CFEngine
+classes
+promise
+whose
+name
+is
+defined
+as
+a
+thing
+or
+topic
+under
+class
+`locations::`
+will
+be
+assumed
+to
+be
+a
+location
+defining
+classifier
+.
+This
+list
+will
+add
+alternative
+class
+contexts
+for
+interpreting
+location
+.
 
-This list is used to match against topics when connecting
-inferences about host locations in the knowledge map. Normally any
-CFEngine classes promise whose name is defined as a thing or topic
-under class `locations::` will be assumed to be a location defining
-classifier. This list will add alternative class contexts for
-interpreting location.
+**
+Type:
+**
+`slist`
+**
+Allowed
+input
+range:
+**
+`[a-zA-Z0-9_!&@@$|.()\[\]{}:]+`
+Each
+string
+is
+expected
+to
+be
+a
+class
+.
 
-**Type:** `slist`
-
-**Allowed input range:** `[a-zA-Z0-9_!&@@$|.()\[\]{}:]+`
-
-Each string is expected to be a class.
-
-**Example:**
-
-```cf3
+**
+Example:
+**
+``
+`cf3
 body common control
 {
 site_classes => { "datacenters","datacentres"  }; # locations is by default
 }
-``
 `
-
-**History:** Was introduced in version 3.2.0, Nova 2.1.0 (2011)
+`
+`
+**
+History:
+**
+Was
+introduced
+in
+version
+3
+.
+2
+.
+0,
+Nova
+2
+.
+1
+.
+0
+(
+2011
+)
 ### syslog_host
-
-**Description:** The `syslog_host` contains the name or address of a
-host to which syslog messages should be sent directly by UDP.
-
-This is the hostname or IP address of a local syslog service to which all
-CFEngine's components may promise to send data.
+**
+Description:
+**
+The
+`syslog_host`
+contains
+the
+name
+or
+address
+of
+a
+host
+to
+which
+syslog
+messages
+should
+be
+sent
+directly
+by
+UDP
+.
+This
+is
+the
+hostname
+or
+IP
+address
+of
+a
+local
+syslog
+service
+to
+which
+all
+CFEngine
+'s components may promise to send data.
 
 **Type:** `string`
 
@@ -602,40 +1147,105 @@ syslog_port => "514";
 **Description:** The value of `syslog_port` represents the port number
 of a UDP syslog service.
 
-It is the UDP port of a local syslog service to which all CFEngine's
-components may promise to send data.
+It is the UDP port of a local syslog service to which all CFEngine'
+s
+components
+may
+promise
+to
+send
+data
+.
 
-**Type:** `int`
-
-**Allowed input range:** `0,99999999999`
-
-**Default value:** `514`
-
-**Example:**
-
-```cf3
+**
+Type:
+**
+`int`
+**
+Allowed
+input
+range:
+**
+`0,99999999999`
+**
+Default
+value:
+**
+`514`
+**
+Example:
+**
+``
+`cf3
 body common control
 {
 syslog_host => "syslog.example.org";
 syslog_port => "514";
 }
-``
 `
-
+`
+`
 ### system_log_level
-**Description:** The minimum log level required for log messages to go to the system log (e.g. syslog, Windows Event Log).
+**
+Description:
+**
+The
+minimum
+log
+level
+required
+for
+log
+messages
+to
+go
+to
+the
+system
+log
+(
+e
+.
+g
+.
+syslog,
+Windows
+Event
+Log
+)
+.
 
-**Type:** `string`
-
-**Allowed Input range:** `(critical|error|warning|notice|info)`
-
-**Default value:** ` ` (unspecified)
-
-**Example:**
-
-Prevent messages lower than _critical_ on Windows.
-
-```cf3
+**
+Type:
+**
+`string`
+**
+Allowed
+Input
+range:
+**
+`(critical|error|warning|notice|info)`
+**
+Default
+value:
+**
+` `
+(
+unspecified
+)
+**
+Example:
+**
+Prevent
+messages
+lower
+than
+_critical_
+on
+Windows
+.
+``
+`cf3
 body common control
 {
 @if minimum_version(3.18.1)
@@ -647,41 +1257,113 @@ cfengine:
 :
 @endif
 }
-``
 `
-
-**See also:** [`
+`
+`
+**
+See
+also:
+** [
+`
 default:
 control_common
 .
 system_log_level
-`](/reference/special-variables/control_common/#defaultcontrol_commonsystem_log_level)
-**History:**
+`
+]
+(
+/
+reference
+/
+special
+-
+variables
+/
+control_common
+/
+#defaultcontrol_commonsystem_log_level)
+**
+History:
+**
 
-- Introduced in 3.19.0, 3.18.1
-
+-
+Introduced
+in
+3
+.
+19
+.
+0,
+3
+.
+18
+.
+1
 ### tls_ciphers
-
-**Description:** List of ciphers allowed when making **outgoing** connections from components other than `cf-serverd`.
-
-For a list of possible ciphers, see man page for "openssl ciphers".
-
-{{< CFEngine_promise_attribute(undefined) >}}
-
-**Example:**
-
-```cf3
+**
+Description:
+**
+List
+of
+ciphers
+allowed
+when
+making
+**
+outgoing
+**
+connections
+from
+components
+other
+than
+`cf-serverd`
+.
+For
+a
+list
+of
+possible
+ciphers,
+see
+man
+page
+for
+"openssl ciphers"
+.
+{
+{
+<
+CFEngine_promise_attribute
+(
+undefined
+)
+>
+}
+}
+**
+Example:
+**
+``
+`cf3
 body common control
 {
     # Use one of these ciphers when making outbound connections
     tls_ciphers => "AES128-SHA";
 }
-``
 `
-
-**See also:** [`
+`
+`
+**
+See
+also:
+** [
+`
 protocol_version
-`][Components#protocol_version], [`
+`
+][
+Components
+#protocol_version], [`
 allowciphers
 `][cf-serverd#allowciphers], [`
 tls_min_version
@@ -703,15 +1385,25 @@ tls_ciphers
 
 ### tls_min_version
 
-**Description:** Minimum tls version to allow for **outgoing** connections from components other than `cf-serverd`.
+**Description:** Minimum tls version to allow for **outgoing** connections from components other than `
+cf
+-
+serverd
+`.
 
 {{< CFEngine_promise_attribute(1.0) >}}
 
-```cf3
-body common control
+`
+``
+cf3
+body
+common
+control
 {
-    # Allow only TLSv1.1 or higher for outgoing connections
-    tls_min_version => "1.1";
+# Allow only TLSv1.1 or higher for outgoing connections
+tls_min_version
+=>
+"1.1";
 }
 ``
 `
@@ -740,12 +1432,16 @@ tls_min_version
 
 ### version
 
-**Description:** The `version` string contains the scalar version of the
+**Description:** The `
+version
+` string contains the scalar version of the
 configuration.
 
 It is is used in error messages and reports.
 
-**Type:** `string`
+**Type:** `
+string
+`
 
 **Allowed input range:** (arbitrary string)
 
@@ -755,10 +1451,16 @@ restriction might be lifted later.
 
 **Example:**
 
-```cf3
-body common control
+`
+``
+cf3
+body
+common
+control
 {
-version => "1.2.3";
+version
+=>
+"1.2.3";
 }
 ``
 `
@@ -771,3 +1473,6 @@ it doesn't apply to current CFEngine version.
 
 - fips_mode
 - host_licenses_paid
+`
+``
+`

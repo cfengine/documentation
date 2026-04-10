@@ -193,6 +193,7 @@ db_server_host => "sqlserv.example.org";
 ```
 
 #### db_server_type
+
 **
 Description:
 **
@@ -221,6 +222,7 @@ Allowed
 input
 range:
 **
+
 ```
 postgres
 mysql
@@ -255,11 +257,11 @@ for their respective database servers.
 ```cf3
 body database_server myserver(x)
 {
-db_server_owner => "$(x)";
-db_server_password => "";
-db_server_host => "localhost";
-db_server_type => "$(mysql)";
-db_server_connection_db => "$(x)";
+  db_server_owner => "$(x)";
+  db_server_password => "";
+  db_server_host => "localhost";
+  db_server_type => "$(mysql)";
+  db_server_connection_db => "$(x)";
 }
 ```
 
@@ -358,17 +360,15 @@ considered to be instances of individual columns.
 ```cf3
 bundle agent databases
 {
-databases:
-
- windows::
-
-  # Registry has (value,data) pairs in "keys" which are directories
-
-  "HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine"
-
-    database_operation => "create",
-    database_rows => { "value1,REG_SZ,new value 1", "value2,REG_DWORD,12345"} ,
-    database_type     => "ms_registry";
+  databases:
+    windows::
+      # Registry has (value,data) pairs in "keys" which are directories
+      "HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine"
+        database_operation => "create",
+        database_rows => {
+          "value1,REG_SZ,new value 1", "value2,REG_DWORD,12345"
+        },
+        database_type => "ms_registry";
 }
 ```
 
@@ -414,19 +414,22 @@ backslash
 ``
 `cf3
 bundle agent main
+
 # @brief Configure system variables for hosts that should not use a proxy
+
 {
 
-  databases:
-    windows::
-      "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment"
-        database_operation => "create",
-        database_rows =>
-        {
-          "NO_PROXY,REG_SZ,localhost\,127.0.0.1\,localaddress\,.localdomain\,169.254.169.254\,.cfengine.com"
-        },
-        database_type => "ms_registry";
+databases:
+windows::
+"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment"
+database_operation => "create",
+database_rows =>
+{
+"NO_PROXY,REG_SZ,localhost\,127.0.0.1\,localaddress\,.localdomain\,169.254.169.254\,.cfengine.com"
+},
+database_type => "ms_registry";
 }
+
 ```
 
 ### registry_exclude

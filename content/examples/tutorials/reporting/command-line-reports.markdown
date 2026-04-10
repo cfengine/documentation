@@ -60,6 +60,7 @@ body common control
 {
   bundlesequence => { "test" };
 }
+
 bundle agent test
 {
   reports:
@@ -77,6 +78,7 @@ body common control
 {
   bundlesequence => { "test" };
 }
+
 bundle agent test
 {
   vars:
@@ -274,6 +276,7 @@ R: daemon:x:2:2:Daemon:/sbin:/bin/bash
 ```
 
 ### Excluding data from reports
+
 CFEngine
 generates
 information
@@ -322,40 +325,54 @@ tag
 `cf3
 bundle agent main
 {
-  files:
+files:
 
     linux::
 
      "/var/log/noisy.log"
        handle => "noreport_noisy_log_rotation",
        rename => rotate(5);
+
 }
 
 body report_data_select default_data_select_policy_hub
+
 # @brief Data to collect from policy servers by default
+
 #
+
 # By convention variables and classes known to be internal, (having no
+
 # reporting value) should be prefixed with an underscore. By default the policy
+
 # framework explicitly excludes these variables and classes from collection.
+
 {
- # Collect all classes or vars tagged with `
+
+# Collect all classes or vars tagged with `
+
 inventory
-` or `
+`or`
 report
 `
-      metatags_include => { "inventory", "report" };
+metatags_include => { "inventory", "report" };
 
- # Exclude any classes or vars tagged with `
+# Exclude any classes or vars tagged with `
+
 noreport
 `
-      metatags_exclude => { "noreport" };
+metatags_exclude => { "noreport" };
 
- # Exclude any promise with handle matching `noreport_.*` from report collection.
+# Exclude any promise with handle matching `noreport_.*` from report collection.
+
       promise_handle_exclude => { "noreport_.*" };
 
- # Include all metrics from cf-monitord
+# Include all metrics from cf-monitord
+
       monitoring_include => { ".*" };
+
 }
+
 ```
 ### Creating custom logs
 Logs
@@ -462,6 +479,7 @@ Sun Dec  6 11:58:43 2009 /tmp/xyz promise status
 ```
 
 ### Redirecting output to logs
+
 CFEngine
 interfaces
 with
@@ -480,53 +498,53 @@ default
 log
 for
 Unix
--
-like
-systems,
-while
-the
-`event logger`
-is
-the
-default
-on
-Windows
-.
-You
-may
-choose
-to
-copy
-a
-fixed
-level
-of
-CFEngine
-'s standard screen messaging to the
-system logger on a per-promise basis:
+
+- like
+  systems,
+  while
+  the
+  `event logger`
+  is
+  the
+  default
+  on
+  Windows
+  .
+  You
+  may
+  choose
+  to
+  copy
+  a
+  fixed
+  level
+  of
+  CFEngine
+  's standard screen messaging to the
+  system logger on a per-promise basis:
 
 ```cf3
 body common control
 {
-bundlesequence => { "one" };
+  bundlesequence => { "one" };
 }
 
 bundle agent one
 {
-files:
-
-  "/tmp/xyz"
-       create => "true",
-       action => log;
+  files:
+    "/tmp/xyz"
+      create => "true",
+      action => log;
 }
 
 body action log
 {
-log_level => "inform";
+  log_level => "inform";
 }
 ```
 
 ### Change detection: tripwires
+
 Doing
 a
 change
@@ -558,45 +576,45 @@ convenient
 than
 a
 full
--
-scale
-audit
-.
-The
-result
-is
-less
-precise,
-but
-there
-is
-a
-trade
--
-off
-between
-precision
-and
-cost
-.
-To
-make
-a
-change
-tripwire,
-use
-a
-files
-promise,
-as
-shown
-below:
-``
+
+- scale
+  audit
+  .
+  The
+  result
+  is
+  less
+  precise,
+  but
+  there
+  is
+  a
+  trade
+- off
+  between
+  precision
+  and
+  cost
+  .
+  To
+  make
+  a
+  change
+  tripwire,
+  use
+  a
+  files
+  promise,
+  as
+  shown
+  below:
+  ``
 `cf3
-body common control
-{
-bundlesequence  => { "testbundle"  };
-}
+  body common control
+  {
+  bundlesequence => { "testbundle" };
+  }
+
 #
 
 bundle agent testbundle
@@ -604,9 +622,9 @@ bundle agent testbundle
 {
 files:
 
-  "/home/mark/tmp" -> "me"
-       changes      => scan_files,
-       depth_search => recurse("inf");
+"/home/mark/tmp" -> "me"
+changes => scan_files,
+depth_search => recurse("inf");
 }
 
 # library code ...
@@ -614,25 +632,29 @@ files:
 body changes scan_files
 {
 report_changes => "all";
-update_hashes  => "true";
+update_hashes => "true";
 }
 
 body depth_search recurse(d)
 {
-depth        => "$(d)";
+depth => "$(d)";
 }
+
 ```
 
 In CFEngine Enterprise, reports of the following form are generated when these promises
 are kept by the agent:
 
 ```
-Change detected 	 File change
-Sat Dec 5 18:27:44 2013  group for /tmp/testfile changed 100 -> 0
-Sat Dec 5 18:27:44 2013  /tmp/testfile
-Sat Dec 5 18:20:45 2013  /tmp/testfile
+
+Change detected File change
+Sat Dec 5 18:27:44 2013 group for /tmp/testfile changed 100 -> 0
+Sat Dec 5 18:27:44 2013 /tmp/testfile
+Sat Dec 5 18:20:45 2013 /tmp/testfile
+
 ```
 
 These reports are generated automatically in Enterprise, and are integrated into the
 web-browsable knowledge map. Community edition users must extract the data and create
 these themselves.
+```

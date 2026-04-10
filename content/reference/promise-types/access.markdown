@@ -417,21 +417,22 @@ Usage of this body is only allowed in conjunction with using
 CFEngine_promise_attribute
 (
 )
->
-}
-}
-**
-Example:
-**
-``
+
+> }
+> }
+> **
+> Example:
+> **
+> ``
 `cf3
-body report_data_select report_data
-{
-  metatags_include => { "inventory", "compliance" };
-  promise_handle_exclude => { "_.*" };
-  monitoring_exclude => { "mem_.*swap" };
-}
-```
+> body report*data_select report_data
+> {
+> metatags_include => { "inventory", "compliance" };
+> promise_handle_exclude => { "*.*" };
+> monitoring*exclude => { "mem*.*swap" };
+> }
+
+````
 
 **Example:**
 
@@ -594,7 +595,7 @@ access:
   "$(variable_name)"
     handle => "variable_name",
     resource_type => "literal";
-```
+````
 
 If the resource type is `context`, the promiser is treated as a regular
 expression to match persistent classes defined on the server host. If
@@ -613,87 +614,42 @@ specified hosts. The promiser is an anchored regular expression.
 
 **Example:**
 
-```cf3
+````cf3
 bundle server my_access_rules()
 {
-access:
-"value of my test_scalar, can expand variables here - $(sys.host)"
-handle
-=>
-"test_scalar",
-comment
-=>
-"Grant access to contents of test_scalar VAR",
-resource_type
-=>
-"literal",
-admit_ips
-=>
-{
-"127.0.0.1"
-};
-"XYZ"
-resource_type
-=>
-"variable",
-handle
-=>
-"XYZ",
-admit_ips
-=>
-{
-"$(sys.policy_hub)"
-};
-"delta"
-comment
-=>
-"Grant access to cfengine hub to collect report deltas",
-resource_type
-=>
-"query",
-admit_ips
-=>
-{
-"$(sys.policy_hub)"
-};
-"full"
-comment
-=>
-"Grant access to cfengine hub to collect full report dump",
-resource_type
-=>
-"query",
-admit_ips
-=>
-{
-"$(sys.policy_hub)"
-};
-"magic_bundle"
-comment
-=>
-"Grant access to the hub to activate magic_bundle with cf-runagent",
-resource_type
-=>
-"bundle",
-admit_ips
-=>
-{
-"$(sys.policy_hub)"
-};
-am_policy_hub:
-:
-"collect_calls"
-comment
-=>
-"Enable call-collect report collection for the specific client",
-resource_type
-=>
-"query",
-admit_ips
-=>
-{
-"1.2.3.4"
-};
+  access:
+    "value of my test_scalar, can expand variables here - $(sys.host)"
+      handle => "test_scalar",
+      comment => "Grant access to contents of test_scalar VAR",
+      resource_type => "literal",
+      admit_ips => { "127.0.0.1" };
+
+    "XYZ"
+      resource_type => "variable",
+      handle => "XYZ",
+      admit_ips => { "$(sys.policy_hub)" };
+
+    "delta"
+      comment => "Grant access to cfengine hub to collect report deltas",
+      resource_type => "query",
+      admit_ips => { "$(sys.policy_hub)" };
+
+    "full"
+      comment => "Grant access to cfengine hub to collect full report dump",
+      resource_type => "query",
+      admit_ips => { "$(sys.policy_hub)" };
+
+    "magic_bundle"
+      comment => "Grant access to the hub to activate magic_bundle with cf-runagent",
+      resource_type => "bundle",
+      admit_ips => { "$(sys.policy_hub)" };
+
+  am_policy_hub:
+  :
+    "collect_calls"
+      comment => "Enable call-collect report collection for the specific client",
+      resource_type => "query",
+      admit_ips => { "1.2.3.4" };
 }
 ``
 `
@@ -701,7 +657,9 @@ admit_ips
 
 **History:**
 
-- `bundle` `resource_type` added in 3.9.0
+- `
+
+bundle ` ` resource_type ` added in 3.9.0
 
 ### shortcut
 
@@ -714,9 +672,11 @@ its shortcut name.
 
 ```cf3 {skip TODO}
 "/var/cfengine/cmdb/$(connection.key).json"
-  shortcut   => "me.json",
-  admit_keys => { "$(connection.key)" };
-```
+  shortcut   => "me.json", admit_keys =>
+{
+"$(connection.key)"
+};
+````
 
 In this example, requesting the file `me.json` will transfer the file stored on the
 server under the name `/var/cfengine/cmdb/SHA=....json` to the requesting host,

@@ -368,12 +368,14 @@ body common control
   bundlesequence => { "main" };
   inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
 }
+
 bundle common data
 {
   vars:
     "person" string => "Mary";
     "animal" string => "a little lamb";
 }
+
 bundle agent main
 {
   files:
@@ -412,12 +414,14 @@ body common control
   bundlesequence => { "main" };
   inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
 }
+
 bundle common data
 {
   vars:
     "person" string => "Mary";
     "animal" string => "a little lamb";
 }
+
 bundle agent main
 {
   vars:
@@ -445,6 +449,7 @@ body common control
   bundlesequence => { "main" };
   inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
 }
+
 bundle common data
 {
   vars:
@@ -454,6 +459,7 @@ bundle common data
     "clocks" slist => { "five", "six", "seven" };
   # or read the list from a file with readstringlist()
 }
+
 bundle agent main
 {
   files:
@@ -462,6 +468,7 @@ bundle agent main
       edit_line => my_expand_template,
       edit_defaults => empty;
 }
+
 bundle edit_line my_expand_template
 {
   vars:
@@ -523,6 +530,7 @@ body common control
   bundlesequence => { "main" };
   inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
 }
+
 bundle common data
 {
   vars:
@@ -532,6 +540,7 @@ bundle common data
     "clocks" slist => { "five", "six", "seven" };
   # or read the list from a file with readstringlist()
 }
+
 bundle agent main
 {
   files:
@@ -540,6 +549,7 @@ bundle agent main
       edit_line => my_expand_template,
       edit_defaults => empty;
 }
+
 bundle edit_line my_expand_template
 {
   vars:

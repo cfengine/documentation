@@ -290,7 +290,7 @@ range:
 ```cf3
 body package_method rpm
 {
-package_add_command => "/bin/rpm -i ";
+  package_add_command => "/bin/rpm -i ";
 }
 ```
 
@@ -321,9 +321,8 @@ string
 
 ```cf3
 body package_method rpm
-
 {
-package_list_arch_regex    => "[^.]+\.([^.]+)";
+  package_list_arch_regex => "[^.]+\.([^.]+)";
 }
 ```
 
@@ -346,19 +345,16 @@ the operating system's package manager to handle dependencies.
 
 **Allowed input range:**
 
-``
-`
+`` `
 individual
 bulk
-`
-``
+` ``
 **Example:**
 
 ```cf3
 body package_method rpm
-
 {
-package_changes => "bulk";
+  package_changes => "bulk";
 }
 ```
 
@@ -389,7 +385,7 @@ range:
 ```cf3
 body package_method rpm
 {
-package_delete_command => "/bin/rpm -e --nodeps";
+  package_delete_command => "/bin/rpm -e --nodeps";
 }
 ```
 
@@ -427,13 +423,13 @@ string
 **
 Example:
 **
+
 ```cf3
 body package_method freebsd
-
 {
-package_file_repositories => { "/path/to/packages" };
-package_name_convention => "$(name)-$(version).tbz";
-package_delete_convention => "$(name)-$(version)";
+  package_file_repositories => { "/path/to/packages" };
+  package_name_convention => "$(name)-$(version).tbz";
+  package_delete_convention => "$(name)-$(version)";
 }
 ```
 
@@ -468,7 +464,7 @@ string
 ```cf3
 body package_method filebased
 {
-package_file_repositories => { "/package/repos1", "/packages/repos2" };
+  package_file_repositories => { "/package/repos1", "/packages/repos2" };
 }
 ```
 
@@ -501,7 +497,7 @@ string
 ```cf3
 body package_method yum
 {
-package_installed_regex => ".*installed.*";
+  package_installed_regex => ".*installed.*";
 }
 ```
 
@@ -534,7 +530,6 @@ Example:
 body package_method dpkg
 {
   package_default_arch_command => "/usr/bin/dpkg --print-architecture";
-
   # ...
 }
 ```
@@ -568,7 +563,7 @@ string
 ```cf3
 body package_method rpm
 {
-package_list_arch_regex    => "[^|]+\|[^|]+\|[^|]+\|[^|]+\|\s+([^\s]+).*";
+  package_list_arch_regex => "[^|]+\|[^|]+\|[^|]+\|[^|]+\|\s+([^\s]+).*";
 }
 ```
 
@@ -601,9 +596,8 @@ range:
 
 ```cf3
 body package_method rpm
-
 {
-package_list_command => "/bin/rpm -qa --queryformat \"%{name} %{version}-%{release}\n\"";
+  package_list_command => "/bin/rpm -qa --queryformat \"%{name} %{version}-%{release}\n\"";
 }
 ```
 
@@ -631,9 +625,8 @@ string
 
 ```cf3
 body package_method rpm
-
 {
-package_list_name_regex    => "([^\s]+).*";
+  package_list_name_regex => "([^\s]+).*";
 }
 ```
 
@@ -660,13 +653,14 @@ string
 **
 Example:
 **
+
 ```cf3
 body package_method xyz
 {
-debian|ubuntu::
-
-package_list_update_command => "/usr/bin/apt-get update";
-package_list_update_ifelapsed => "240";        # 4 hours
+  debian|ubuntu::
+    package_list_update_command => "/usr/bin/apt-get update";
+    package_list_update_ifelapsed => "240";
+  # 4 hours
 }
 ```
 
@@ -687,13 +681,14 @@ range:
 **
 Example:
 **
+
 ```cf3
 body package_method xyz
 {
-debian|ubuntu::
-
-package_list_update_command => "/usr/bin/apt-get update";
-package_list_update_ifelapsed => "240";        # 4 hours
+  debian|ubuntu::
+    package_list_update_command => "/usr/bin/apt-get update";
+    package_list_update_ifelapsed => "240";
+  # 4 hours
 }
 ```
 
@@ -722,9 +717,8 @@ string
 
 ```cf3
 body package_method rpm
-
 {
-package_list_version_regex => "[^\s]+ ([^.]+).*";
+  package_list_version_regex => "[^\s]+ ([^.]+).*";
 }
 ```
 
@@ -764,7 +758,7 @@ string
 ```cf3
 body package_method rpm
 {
-package_name_convention => "$(name).$(arch).rpm";
+  package_name_convention => "$(name).$(arch).rpm";
 }
 ```
 
@@ -796,7 +790,7 @@ string
 ```cf3
 body package_method rpm
 {
-package_name_regex => "([^\s]).*";
+  package_name_regex => "([^\s]).*";
 }
 ```
 
@@ -826,10 +820,9 @@ Example:
 
 ```cf3
 body package_method xyz
-
 {
-package_noverify_regex => "Package .* is not installed.*";
-package_verify_command => "/usr/bin/dpkg -s";
+  package_noverify_regex => "Package .* is not installed.*";
+  package_verify_command => "/usr/bin/dpkg -s";
 }
 ```
 
@@ -855,8 +848,8 @@ range:
 ```cf3
 body package_method xyz
 {
-package_noverify_returncode => "-1";
-package_verify_command => "/bin/rpm -V";
+  package_noverify_returncode => "-1";
+  package_verify_command => "/bin/rpm -V";
 }
 ```
 
@@ -887,7 +880,7 @@ string
 ```cf3
 body package_method zypper
 {
-package_patch_arch_regex => "";
+  package_patch_arch_regex => "";
 }
 ```
 
@@ -915,9 +908,8 @@ range:
 
 ```cf3
 body package_method zypper
-
 {
-package_patch_command => "/usr/bin/zypper -non-interactive patch";
+  package_patch_command => "/usr/bin/zypper -non-interactive patch";
 }
 ```
 
@@ -948,7 +940,7 @@ string
 ```cf3
 body package_method zypper
 {
-package_patch_installed_regex => ".*(Installed|Not Applicable).*";
+  package_patch_installed_regex => ".*(Installed|Not Applicable).*";
 }
 ```
 
@@ -992,12 +984,10 @@ an analogous command struct to the packages for patch updates.
 
 **Example:**
 
-```cf3
+````cf3
 body package_method zypper
 {
-package_patch_name_regex
-=>
-"[^|]+\|\s+([^\s]+).*";
+  package_patch_name_regex => "[^|]+\|\s+([^\s]+).*";
 }
 ``
 `
@@ -1011,18 +1001,21 @@ A few package managers keep a separate notion of patches, as opposed to
 package updates. OpenSuSE, for example, is one of these. This provides
 an analogous command struct to the packages for patch updates.
 
-**Type:** `string`
+**Type:** `
+string
+`
 
 **Allowed input range:** (arbitrary string)
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body package_method zypper
 {
-package_patch_version_regex
-=>
-"[^|]+\|[^|]+\|\s+([^\s]+).*";
+  package_patch_version_regex => "[^|]+\|[^|]+\|\s+([^\s]+).*";
 }
 ``
 `
@@ -1034,27 +1027,44 @@ installed package
 
 If supported this should be a command that updates the version of a
 single currently installed package. If only bulk updates are supported,
-consider running this as a single command under `commands`. The package
-reference id is appended, with the pattern of `package_name_convention`.
+consider running this as a single command under `
+commands
+`. The package
+reference id is appended, with the pattern of `
+package_name_convention
+`.
 
-When `package_file_repositories` is specified, the package reference id
+When `
+package_file_repositories
+` is specified, the package reference id
 will include the full path to a repository containing the package. If
-`package_policy` is update, and this command is not specified, the
-`package_delete_command` and `package_add_command` will be executed to
+`
+package_policy
+` is update, and this command is not specified, the
+`
+package_delete_command
+` and `
+package_add_command
+` will be executed to
 carry out the update.
 
-**Type:** `string`
+**Type:** `
+string
+`
 
-**Allowed input range:** `.+`
+**Allowed input range:** `
+.+
+`
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body package_method zypper
 {
-package_update_command
-=>
-"/usr/bin/zypper -non-interactive update";
+  package_update_command => "/usr/bin/zypper -non-interactive update";
 }
 ``
 `
@@ -1064,38 +1074,53 @@ package_update_command
 **Description:** Command to verify the correctness of an installed package
 
 If available, this is a command to verify an already installed package.
-It is required only when `package_policy` is verify.
+It is required only when `
+package_policy
+` is verify.
 
 The outcome of the command is compared with
-`package_noverify_returncode` or `package_noverify_regex`, one of which
+`
+package_noverify_returncode
+` or `
+package_noverify_regex
+`, one of which
 has to be set when using this command. If the package is not installed,
 the command will not be run, the promise gets flagged as not kept before
 the verify command executes.
 
 In order for the promise to be considered kept, the package must be
 installed, and the verify command must be successful according to
-`package_noverify_returncode` xor `package_noverify_regex`.
+`
+package_noverify_returncode
+` xor `
+package_noverify_regex
+`.
 
 Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
-particular package to the command. Ending the command string with `$`
+particular package to the command. Ending the command string with `
+$
+`
 prevents CFEngine from appending the package name to the string.
 
-**Type:** `string`
+**Type:** `
+string
+`
 
-**Allowed input range:** `.+`
+**Allowed input range:** `
+.+
+`
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body package_method rpm
 {
-package_verify_command
-=>
-"/bin/rpm -V";
-package_noverify_returncode
-=>
-"-1";
+  package_verify_command => "/bin/rpm -V";
+  package_noverify_returncode => "-1";
 }
 ``
 `
@@ -1106,22 +1131,27 @@ package_noverify_returncode
 package version string
 
 If the version of a package is not specified separately using
-`package_version`, then this should be an [unanchored][unanchored] regular expression that
+`
+package_version
+`, then this should be an [unanchored][unanchored] regular expression that
 contains exactly one parenthesized back-reference that matches the
 version string in the promiser.
 
-**Type:** `string`
+**Type:** `
+string
+`
 
 **Allowed input range:** (arbitrary string)
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body package_method rpm
 {
-package_version_regex
-=>
-"[^\s]+ ([^.]+).*";
+  package_version_regex => "[^\s]+ ([^.]+).*";
 }
 ``
 `
@@ -1136,25 +1166,24 @@ is used when package managers (like the Solaris package manager) use
 multi-line output formats. This pattern matches the first line of a new
 record.
 
-**Type:** `string`
+**Type:** `
+string
+`
 
 **Allowed input range:** (arbitrary string)
 
 **Example:**
 
-```cf3
-body package_method solaris (pkgname, spoolfile, adminfile)
+`
+``
+cf3
+
+body package_method solaris(pkgname, spoolfile, adminfile)
 {
-package_changes
-=>
-"individual";
-package_list_command
-=>
-"/usr/bin/pkginfo -l";
-package_multiline_start
-=>
-"\s*PKGINST:\s+[^\s]+";
-# ...
+  package_changes => "individual";
+  package_list_command => "/usr/bin/pkginfo -l";
+  package_multiline_start => "\s*PKGINST:\s+[^\s]+";
+  # ...
 }
 ``
 `
@@ -1163,7 +1192,9 @@ package_multiline_start
 
 **Description:** Whether to use shell for commands in this body
 
-**Type:** [`boolean`][boolean]
+**Type:** [`
+boolean
+`][boolean]
 
 <!-- **TODO: useshell/noshell/powershell?** -->
 
@@ -1182,31 +1213,46 @@ first passed version is less than another.
 
 The built-in algorithm does a good approximation of version comparison,
 but different packaging systems differ in corner cases (e.g. Debian
-treats symbol `~` less than any other symbol and even less than empty
+treats symbol `
+~
+` less than any other symbol and even less than empty
 string), so some sort of override is necessary.
 
-Variables `v1` and `v2` are substituted with the first and second
+Variables `
+v1
+` and `
+v2
+` are substituted with the first and second
 version to be compared. Command should return code 0 if v1 is less than
 v2 and non-zero otherwise.
 
-Note that if `package_version_equal_command` is not specified, but
-`package_version_less_command` is, then equality will be tested by
+Note that if `
+package_version_equal_command
+` is not specified, but
+`
+package_version_less_command
+` is, then equality will be tested by
 issuing less comparison twice (v1 equals to v2 if v1 is not less than
 v2, and v2 is not less than v1).
 
-**Type:** `string`
+**Type:** `
+string
+`
 
-**Allowed input range:** `.+`
+**Allowed input range:** `
+.+
+`
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body package_method deb
 {
-# ...
-package_version_less_command
-=>
-"dpkg --compare-versions ${v1} lt ${v2}";
+  # ...
+  package_version_less_command => "dpkg --compare-versions ${v1} lt ${v2}";
 }
 ``
 `
@@ -1225,28 +1271,41 @@ different versions to be the same (e.g. optional epoch component, so
 0:1.0-1 and 1.0-1 versions are the same), and rules for comparing vary
 from package manager to package manager, so override is necessary.
 
-Variables `v1` and `v2` are substituted with the versions to be
+Variables `
+v1
+` and `
+v2
+` are substituted with the versions to be
 compared. Command should return code 0 if versions are equal and
 non-zero otherwise.
 
-Note that if `package_version_equal_command` is not specified, but
-`package_version_less_command` is, then equality will be tested by
+Note that if `
+package_version_equal_command
+` is not specified, but
+`
+package_version_less_command
+` is, then equality will be tested by
 issuing less comparison twice (v1 equals to v2 if v1 is not less than
 v2, and v2 is not less than v1).
 
-**Type:** `string`
+**Type:** `
+string
+`
 
-**Allowed input range:** `.+`
+**Allowed input range:** `
+.+
+`
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body package_method deb
 {
-# ...
-package_version_equal_command
-=>
-"dpkg --compare-versions ${v1} eq ${v2}";
+  # ...
+  package_version_equal_command => "dpkg --compare-versions ${v1} eq ${v2}";
 }
 ``
 `
@@ -1264,54 +1323,82 @@ system
 
 **Allowed input range:**
 
-- `add`
+- `
+add
+`
 
 Ensure that a package is present (this is the default setting from
 3.3.0).
 
-- `delete`
+- `
+delete
+`
 
 Ensure that a package is not present.
 
-- `reinstall`
+- `
+reinstall
+`
 
 Delete then add package (warning, non-convergent).
 
-- `update`
+- `
+update
+`
 
 Update the package if an update is available (manager dependent).
 
-- `addupdate`
+- `
+addupdate
+`
 
 Equivalent to add if the package is not installed, and update if it is
-installed. Note: This attribute requires the specification of `package_version`
-and `package_select` in order to select the proper version to update to if
+installed. Note: This attribute requires the specification of `
+package_version
+`
+and `
+package_select
+` in order to select the proper version to update to if
 available. _See also_ [package_latest][lib/packages.cf#package_latest]
 [package_specific_latest][lib/packages.cf#package_specific_latest] in the
 standard library.
 
-- `patch`
+- `
+patch
+`
 
 Install one or more patches if available (manager dependent).
 
-- `verify`
+- `
+verify
+`
 
 Verify the correctness of the package (manager dependent). The promise
 is kept if the package is installed correctly, not kept otherwise.
-Requires setting `package_verify_command`.
+Requires setting `
+package_verify_command
+`.
 
 **Default value:** verify
 
 **Example:**
 
-```cf3 {skip TODO}
+`
+``
+cf3
+{
+skip
+TODO
+}
 packages:
-
-  "$(match_package)"
-
-     package_policy => "add",
-     package_method => xyz;
-```
+"$(match_package)"
+package_policy
+=>
+"add",
+package_method
+=>
+xyz;
+````
 
 ### package_select
 

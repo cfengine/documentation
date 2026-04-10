@@ -161,10 +161,10 @@ Example:
 ``
 `cf3
 body server control
-{
-      # Only this non-default cipher is to be accepted
-      allowciphers    => "RC4-MD5";
+{ # Only this non-default cipher is to be accepted
+allowciphers => "RC4-MD5";
 }
+
 ```
 
 **Note:** When used with
@@ -254,9 +254,10 @@ Example:
 `cf3
 body server control
 {
-  auditing => "true";
+auditing => "true";
 }
-```
+
+````
 
 **See also:** [`default:control_server.auditing`](/reference/special-variables/control_server/#defaultcontrol_serverauditing)
 
@@ -275,7 +276,7 @@ be given as the argument, not the device name.
 
 ```cf3 {skip TODO}
 bindtointerface => "192.168.1.1";
-```
+````
 
 To bind to all interfaces, including IPV6:
 
@@ -308,40 +309,53 @@ Connection to fe80:470:1d:a2f::2 5308 port [tcp/cfengine] succeeded!
 
 **Example:**
 
-```cf3
+````cf3
 body server control
 {
-dynamicaddresses
-=>
-{
-"192.168.1.100",
-"2001:db8::1"
-};
+  dynamicaddresses => { "192.168.1.100", "2001:db8::1" };
 }
 ``
 `
 
-**See also:** [`default:control_server.dynamicaddresses`](/reference/special-variables/control_server/#defaultcontrol_serverdynamicaddresses)
+**See also:** [`
+default:
+control_server
+.
+dynamicaddresses
+`](/reference/special-variables/control_server/#defaultcontrol_serverdynamicaddresses)
 
 ### cfruncommand
 
 **Description:** Path to the cf-agent command or cf-execd wrapper for
 remote execution
 
-It is normal for this to point to the location of `cf-agent` but it
-could also point to the `cf-execd`, or even another program or
+It is normal for this to point to the location of `
+cf
+-
+agent
+` but it
+could also point to the `
+cf
+-
+execd
+`, or even another program or
 shell command at your own risk.
 
-**Type:** `string`
+**Type:** `
+string
+`
 
-**Allowed input range:** `.+`
+**Allowed input range:** `
+.+
+`
 
-```cf3
+`
+``
+cf3
+
 body server control
 {
-cfruncommand
-=>
-"/var/cfengine/bin/cf-agent";
+  cfruncommand => "/var/cfengine/bin/cf-agent";
 }
 ``
 `
@@ -364,15 +378,35 @@ hosts that are not directly addressable from a hub data-aggregation
 process. For example, if some of the clients of a policy hub are
 behind NAT or firewall then the hub possibly is not able to
 open a connection to port 5308 of the client. The solution is to
-enable `call_collect_interval` on the client's cf-serverd.
+enable `
+call_collect_interval
+` on the client's cf-serverd.
 **Note:** also remember to admit the client's IP on the hub's
-`collect_calls` ACL (see `resource_type` in
-bundle server `access_rules`).
+`
+collect_calls
+` ACL (see `
+resource_type
+` in
+bundle server `
+access_rules
+`).
 
-If this option is set, the client's `cf-serverd` will "peer" with
-the server daemon on a policy hub. This means that, `cf-serverd` on
+If this option is set, the client's `
+cf
+-
+serverd
+` will "peer" with
+the server daemon on a policy hub. This means that, `
+cf
+-
+serverd
+` on
 an unreachable (e.g. NATed) host will attempt to report in to the
-`cf-serverd` on its assigned policy hub and offer it a short time
+`
+cf
+-
+serverd
+` on its assigned policy hub and offer it a short time
 window in which to download reports over the established
 connection. The effect is to establish a temporary secure tunnel
 between hosts, initiated from the satellite host end. The
@@ -382,26 +416,41 @@ any time, in the usual way (avoiding DOS attacks). Normal access
 controls must be set for communication in both directions.
 
 Collect calling cannot be as efficient as data collection by the
-`cf-hub`, as the hub is not able to load balance. Hosts that use this
+`
+cf
+-
+hub
+`, as the hub is not able to load balance. Hosts that use this
 approach should exclude themselves from the cf-hub data
 collection.
 
 The sequence of events is this:
 
-- The host's `cf-serverd` connects to its registered CFEngine Server
+- The host's `
+cf
+-
+serverd
+` connects to its registered CFEngine Server
 - The host identifies itself to authentication and access
   control and sends a collect-call pull-request to the server
 - The server might honor this, if the access control grants access.
-- If access is granted, the server has `collect_window` seconds to
+- If access is granted, the server has `
+collect_window
+` seconds to
   initiate a query to the host for its reports.
 - The server identifies itself to authentication and access
   control and sends a query request to the host to collect the
   reports.
 - When finished, the host closes the tunnel.
 
-**Type:** `int`
+**Type:** `
+int
+`
 
-**Allowed input range:** `0,99999999999`
+**Allowed input range:** `
+0,
+99999999999
+`
 
 **Example:**
 
@@ -409,7 +458,9 @@ The sequence of events is this:
 
 The full configuration to enable client initiated reporting would look something like this:
 
-```cf3
+`
+``
+cf3
 #########################################################
 # Server config
 #########################################################
@@ -444,7 +495,9 @@ bundle server my_access_rules()
 ``
 `
 
-**Note:** In the [Masterfiles Policy Framework][Masterfiles Policy Framework], `body server control` and default access rules are found in `controls/cf_serverd.cf`.
+**Note:** In the [Masterfiles Policy Framework][Masterfiles Policy Framework], `
+
+body server control` and default access rules are found in `controls/cf_serverd.cf`.
 
 **See also:** [`default:control_server.call_collect_interval`](/reference/special-variables/control_server/#defaultcontrol_servercall_collect_interval)
 
@@ -491,9 +544,7 @@ attempts based on clock corruption.
 ```cf3
 body server control
 {
-denybadclocks
-=>
-"true";
+  denybadclocks => "true";
 }
 ``
 `
@@ -512,23 +563,25 @@ access to some set of hosts using a generic pattern, to which you
 intend to make an exception.
 
 See also the warning about regular expressions in
-[`allowallconnects`][cf-serverd#allowallconnects].
+[`
+allowallconnects
+`][cf-serverd#allowallconnects].
 
-**Type:** `slist`
+**Type:** `
+slist
+`
 
 **Allowed input range:** (arbitrary string)
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body server control
 {
-denyconnects
-=>
-{
-"badhost\.domain\.evil",
-"host3\.domain\.com"
-};
+  denyconnects => { "badhost\.domain\.evil", "host3\.domain\.com" };
 }
 ``
 `
@@ -544,26 +597,45 @@ be encrypted. Only applies to classic protocol connections
 (because the new protocol uses TLS which enforces encryption for everything).
 
 If true the server will log all transfers of files which the server
-requires to encrypted in order to grant access (see `ifencrypted`)
+requires to encrypted in order to grant access (see `
+ifencrypted
+`)
 to syslog. These files are deemed to be particularly sensitive.
 
-**Type:** [`boolean`][boolean]
+**Type:** [`
+boolean
+`][boolean]
 
 **Default value:** false
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body server control
 {
-logencryptedtransfers
-=>
-"true";
+  logencryptedtransfers => "true";
 }
 ``
 `
 
-**See also:** [`ifencrypted`][access#ifencrypted], [`encrypt`][files#encrypt], [`tls_ciphers`][Components#tls_ciphers], [`tls_min_version`][Components#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`protocol_version`][Components#protocol_version]
+**See also:** [`
+ifencrypted
+`][access#ifencrypted], [`
+encrypt
+`][files#encrypt], [`
+tls_ciphers
+`][Components#tls_ciphers], [`
+tls_min_version
+`][Components#tls_min_version], [`
+allowciphers
+`][cf-serverd#allowciphers], [`
+allowtlsversion
+`][cf-serverd#allowtlsversion], [`
+protocol_version
+`][Components#protocol_version]
 
 ### maxconnections
 
@@ -571,15 +643,22 @@ logencryptedtransfers
 will accept. Recommended value for a hub is **two times the total
 number of hosts bootstrapped to this hub**.
 
-**Type:** `int`
+**Type:** `
+int
+`
 
-**Allowed input range:** `0,99999999999`
+**Allowed input range:** `
+0,
+99999999999
+`
 
 **Default value:** 30
 
 **Example:**
 
-```cf3
+`
+``
+cf3
 # client side
 body agent control
 {
@@ -593,7 +672,12 @@ body server control
 ``
 `
 
-**See also:** [`default:control_server.maxconnections`](/reference/special-variables/control_server/#defaultcontrol_servermaxconnections)
+**See also:** [`
+default:
+control_server
+.
+maxconnections
+`](/reference/special-variables/control_server/#defaultcontrol_servermaxconnections)
 
 **History:** Added in CFEngine 3.0.0
 
@@ -601,20 +685,26 @@ body server control
 
 **Description:** Default port for the CFEngine server
 
-**Type:** `int`
+**Type:** `
+int
+`
 
-**Allowed input range:** `1,65535`
+**Allowed input range:** `
+1,
+65535
+`
 
 **Default value:** 5308
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body hub control
 {
-port
-=>
-"5308";
+  port => "5308";
 }
 
 body server control
@@ -636,7 +726,12 @@ this could change in the future.
 Changing the standard port number is not recommended practice. You
 should not do it without a good reason.
 
-**See also:** [`default:control_server.port`](/reference/special-variables/control_server/#defaultcontrol_serverport)
+**See also:** [`
+default:
+control_server
+.
+port
+`](/reference/special-variables/control_server/#defaultcontrol_serverport)
 
 **History:** Added in CFEngine 3.0.0
 
@@ -661,16 +756,19 @@ should not do it without a good reason.
 
 See syslog notes.
 
-**Default value:** `LOG_USER`
+**Default value:** `
+LOG_USER
+`
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body server control
 {
-serverfacility
-=>
-"LOG_USER";
+  serverfacility => "LOG_USER";
 }
 ``
 `
@@ -680,21 +778,21 @@ serverfacility
 **Description:** This option is obsolete, does nothing and is retained
 for backward compatibility.
 
-**Type:** `slist`
+**Type:** `
+slist
+`
 
 **Allowed input range:** (arbitrary string)
 
 **Example:**
 
-```cf3
+`
+``
+cf3
+
 body server control
 {
-skipverify
-=>
-{
-"special_host.*",
-"192.168\..*"
-};
+  skipverify => { "special_host.*", "192.168\..*" };
 }
 ``
 `
@@ -706,12 +804,15 @@ new (untrusted) public keys. They are denoted in either IP or subnet
 form. For compatibility reasons, regular expressions are also
 accepted.
 
-The new accepted public keys are written to the `ppkeys`
+The new accepted public keys are written to the `
+ppkeys
+`
 directory, and a message is logged:
+````
 
-```
 192.168.122.254> Trusting new key: MD5=0d5603d68dd62d35bab2150e35d055ae
-```
+
+````
 
 **NOTE:** `trustkeysfrom` should normally be an empty list except in
 controlled circumstances, for example when the network is being set up
@@ -814,3 +915,4 @@ it doesn't apply to current CFEngine version.
 - `dynamicaddresses`
 - `hostnamekeys`
 - `keycacheTTL`
+````
