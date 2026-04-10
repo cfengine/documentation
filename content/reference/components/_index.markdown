@@ -410,7 +410,7 @@ as the file which references them (this is usually
 
 **Example:**
 
-````cf3
+```cf3
 body common control
 {
   inputs => { "update.cf", "library.cf" };
@@ -1617,4 +1617,4 @@ it doesn't apply to current CFEngine version.
 `
 ``
 `
-````
+```
