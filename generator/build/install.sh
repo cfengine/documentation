@@ -63,8 +63,8 @@ echo "+ source ~/.rvm/scripts/rvm"
 # shellcheck disable=SC1090
 source ~/.rvm/scripts/rvm
 
-echo "+ rvm_rubygems_version=none rvm install --autolibs=read-only ruby-1.9.3-p551 -C --without-openssl"
-rvm_rubygems_version=none rvm install --autolibs=read-only ruby-1.9.3-p551 -C --without-openssl
+echo "+ rvm_rubygems_version=none rvm install --autolibs=read-only ruby-2.5 -C --without-openssl"
+rvm_rubygems_version=none rvm install --autolibs=read-only ruby-2.5 -C --without-openssl
 
 gem install jekyll --version 0.12.1
 gem install jekyll-asset-pipeline --version 0.1.6
