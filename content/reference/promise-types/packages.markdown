@@ -514,6 +514,80 @@ bundle agent example
 
 - Added in CFEngine 3.28.0, 3.27.1, 3.24.4
 
+### dnf_group
+
+Manage DNF/YUM package groups using `dnf group`. Package groups are collections
+of related packages (e.g., "Development Tools", "System Tools") commonly used on
+RHEL, Rocky Linux, AlmaLinux, and Fedora systems.
+
+**Examples:**
+
+Install a package group:
+
+```cf3 {skip TODO}
+packages:
+  redhat::
+    "system-tools"
+      policy => "present",
+      package_module => dnf_group;
+```
+
+Install a package group with optional packages included:
+
+```cf3 {skip TODO}
+packages:
+  redhat::
+    "development"
+      policy => "present",
+      package_module => dnf_group,
+      options => { "group_package_types=optional" };
+```
+
+Upgrade all packages in an installed group:
+
+```cf3 {skip TODO}
+packages:
+  redhat::
+    "development"
+      policy => "present",
+      package_module => dnf_group,
+      version => "latest";
+```
+
+Remove a package group:
+
+```cf3 {skip TODO}
+packages:
+  redhat::
+    "system-tools"
+      policy => "absent",
+      package_module => dnf_group;
+```
+
+**Options:**
+
+The `options` attribute supports DNF setopt-style configuration:
+
+- `group_package_types=TYPE` - Specify which package types to install from the group:
+  - `mandatory` - Only mandatory packages (default)
+  - `default` - Mandatory and default packages
+  - `optional` - Mandatory, default, and optional packages
+
+- Repository configuration: `<repo>.enabled=1|0` or `enablerepo=<repo>`, `disablerepo=<repo>`
+- Any DNF configuration option: `install_weak_deps=false`, `allow_downgrade=true`, etc.
+
+**Notes:**
+
+- Requires Python 3 and python3-dnf to be installed on the host
+- The promiser must be the group ID (e.g., "development-tools"), not the display name ("Development Tools")
+- To find group IDs, use: `dnf group list --ids`
+- Use `version => "latest"` to upgrade all packages within the group
+- Package downgrades follow system configuration (typically disabled)
+
+**History:**
+
+- Added in CFEngine 3.28.0
+
 ### apt_get
 
 Manage packages using `apt-get`.
