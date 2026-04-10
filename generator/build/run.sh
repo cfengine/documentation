@@ -3,7 +3,7 @@
 set -ex
 trap "echo FAILURE" ERR
 
-image_name=docs-revamp-22
+image_name=docs-jekyll
 if ! buildah inspect "$image_name" >/dev/null 2>&1; then
   buildah build-using-dockerfile -t "$image_name" documentation/generator/build
 fi
