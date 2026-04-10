@@ -70,18 +70,13 @@ The simplest case is to schedule the exact times.
 ```cf3
 bundle agent workflow_one
 {
-methods:
+  methods:
+    Host2.Day24.January.Year2012.Hr16.Min50_55::
+      "any" usebundle => do_my_job_bundle;
 
-  Host2.Day24.January.Year2012.Hr16.Min50_55::
-
-    "any" usebundle => do_my_job_bundle;
-
-commands:
-
-  Host1.Day24.January.Year2012.Hr16.Min45_50::
-
-    "/usr/local/bin/my_job";
-
+  commands:
+    Host1.Day24.January.Year2012.Hr16.Min45_50::
+      "/usr/local/bin/my_job";
 }
 ```
 
@@ -101,29 +96,27 @@ of success if the job was carried out.
 ```cf3
 bundle agent workflow_one
 {
-classes:
+  classes:
+    Host2::
+      "succeeded"
+        expression => remoteclassesmatching(
+          "did.*",
+          # get classes matching
+          "Host1",
+          # from this server
+          "no",
+          # encrypt comms?
+          "hostX"
+          # prefix
+        );
 
-  Host2::
+  methods:
+    Host2.hostX_did_my_job::
+      "any" usebundle => do_my_job_bundle;
 
-     "succeeded"     expression => remoteclassesmatching
-                                           (
-                                           "did.*",    # get classes matching
-                                           "Host1",    # from this server
-                                           "no",       # encrypt comms?
-                                           "hostX"     # prefix
-                                           );
-methods:
-
-  Host2.hostX_did_my_job::
-
-    "any" usebundle => do_my_job_bundle;
-
-commands:
-
-  Host1.Day24.January.Year2012.Hr16.Min45_50::
-
-    "/usr/local/bin/my_job",
-        classes => state_repaired("did_my_job");
+  commands:
+    Host1.Day24.January.Year2012.Hr16.Min45_50::
+      "/usr/local/bin/my_job" classes => state_repaired("did_my_job");
 }
 ```
 
@@ -144,12 +137,10 @@ server side to grant access to this context information:
 ```cf3
 bundle server my_access_rules
 {
-access:
-
-  "did_my_job"
-
-  resource_type => "context",
-        admit   => { "Host2" };
+  access:
+    "did_my_job"
+      resource_type => "context",
+      admit => { "Host2" };
 }
 ```
 
@@ -183,28 +174,19 @@ day.
 ```cf3
 bundle agent workflow_one
 {
-classes:
+  classes:
+    Host2::
+      "succeeded"
+        expression => remoteclassesmatching("did.*", "Host1", "no", "hostX");
 
-  Host2::
+  methods:
+    Host2.hostX_did_my_job::
+      "any" usebundle => do_my_job_bundle;
 
-     "succeeded"     expression => remoteclassesmatching(
-                                                        "did.*",
-                                                        "Host1",
-                                                        "no",
-                                                        "hostX"
-                                                        );
-methods:
-
-  Host2.hostX_did_my_job::
-
-    "any" usebundle => do_my_job_bundle;
-
-commands:
-
-  Host1.Hr16::
-
-    "/usr/local/bin/my_job",
-         action => if_elapsed("100"),
+  commands:
+    Host1.Hr16::
+      "/usr/local/bin/my_job",
+        action => if_elapsed("100"),
         classes => state_repaired("did_my_job");
 ```
 
@@ -217,107 +199,81 @@ might proceed.
 
 ```cf3
 body common control
-
 {
-bundlesequence  => { job_chain("Hr16.Min10_15") };
+  bundlesequence => { job_chain("Hr16.Min10_15") };
 }
-
 ########################################################
-
 bundle common g
 {
-vars:
-
- # Define the name of the signal passed between hosts
-
- "signal"   string => "pack_a_name";
+  vars:
+    # Define the name of the signal passed between hosts
+    "signal" string => "pack_a_name";
 }
-
 ########################################################
-
 bundle agent job_chain(time)
 {
-vars:
-
+  vars:
     # Define the names of the two parties
+    "client" string => "downstream.exampe.org";
+    "server" string => "upstream.example.org";
 
-    "client"   string => "downstream.exampe.org";
-    "server"   string => "upstream.example.org";
-
-classes:
-
+  classes:
     # derive some classes from the names defined in variables
+    "client_primed"
+      expression => classmatch(canonify("$(client)")),
+      if => "$(time)";
 
-    "client_primed" expression => classmatch(canonify("$(client)")),
-                            if => "$(time)";
+    "server_primed"
+      expression => classmatch(canonify("$(server)")),
+      if => "$(time)";
 
-    "server_primed" expression => classmatch(canonify("$(server)")),
-                            if => "$(time)";
+    client_primed::
+      "succeeded"
+        expression => remoteclassesmatching(
+          "$(g.signal)", "$(server)", "yes", "hostX"
+        );
 
- client_primed::
+  methods:
+    client_primed::
+      "downstream"
+        usebundle => do_job("Starting local follow-up job"),
+        action => if_elapsed("5"),
+        if => "hostX_$(g.signal)";
 
-     "succeeded"     expression => remoteclassesmatching(
-                                                        "$(g.signal)",
-                                                        "$(server)",
-                                                        "yes",
-                                                        "hostX"
-                                                        );
-methods:
+    server_primed::
+      "upstream"
+        usebundle => do_job("Starting remote job"),
+        action => if_elapsed("5"),
+        classes => state_repaired("$(g.signal)");
 
- client_primed::
-
-    "downstream" usebundle => do_job("Starting local follow-up job"),
-                    action => if_elapsed("5"),
-                        if => "hostX_$(g.signal)";
-
- server_primed::
-
-    "upstream"   usebundle => do_job("Starting remote job"),
-                    action => if_elapsed("5"),
-                   classes => state_repaired("$(g.signal)");
-
-reports:
-
-  !succeeded::
-
-    "Server communication failed",
-
-                 if => "$(time)";
+  reports:
+    !succeeded::
+      "Server communication failed" if => "$(time)";
 }
-
 #########################################################
-
 bundle agent do_job(job)
 {
-commands:
-
-   # do whatever...
-
-   "/bin/echo $(job)";
+  commands:
+    # do whatever...
+    "/bin/echo $(job)";
 }
-
 #########################################################
 # Server config
 #########################################################
-
 body server control
 {
-allowconnects         => { "127.0.0.1" , "::1" };
-allowallconnects      => { "127.0.0.1" , "::1" };
-trustkeysfrom         => { "127.0.0.1" , "::1" };
-allowusers            => { "mark" };
+  allowconnects => { "127.0.0.1", "::1" };
+  allowallconnects => { "127.0.0.1", "::1" };
+  trustkeysfrom => { "127.0.0.1", "::1" };
+  allowusers => { "mark" };
 }
-
 #########################################################
-
 bundle server my_access_rules()
 {
-access:
-
-  "$(g.signal)"
-
-  resource_type => "context",
-        admit   => { "127.0.0.1" };
+  access:
+    "$(g.signal)"
+      resource_type => "context",
+      admit => { "127.0.0.1" };
 }
 ```
 
@@ -348,31 +304,22 @@ prerequisites succeeded.
 ```cf3
 bundle agent workflow_one
 {
-vars:
+  vars:
+    "n" slist => { "2", "3", "4" };
 
-  "n" slist => { "2", "3", "4" };
+  classes:
+    "succeeded$(n)"
+      expression => remoteclassesmatching("did.*", "Host$(n)", "no", "hostX"),
+      if => "Host$(n)";
 
-classes:
+  methods:
+    Host2.Host3.Host4.hostX_did_my_job::
+      "any" usebundle => do_my_job_bundle;
 
-     "succeeded$(n)"     expression => remoteclassesmatching(
-                                                        "did.*",
-                                                        "Host$(n)",
-                                                        "no",
-                                                        "hostX"
-                                                        ),
-                                 if => "Host$(n)";
-methods:
-
-  Host2.Host3.Host4.hostX_did_my_job::
-
-    "any" usebundle => do_my_job_bundle;
-
-commands:
-
-  Host1.Hr16::
-
-    "/usr/local/bin/my_job",
-         action => if_elapsed("100"),
+  commands:
+    Host1.Hr16::
+      "/usr/local/bin/my_job",
+        action => if_elapsed("100"),
         classes => state_repaired("did_my_job");
 }
 ```
@@ -388,9 +335,7 @@ we just have to change the class expression:
 bundle agent example
 {
   methods:
-
     (Host2|Host3|Host4).hostX_did_my_job::
-
       "any" usebundle => do_my_job_bundle;
 }
 ```
@@ -404,30 +349,21 @@ classes.
 ```cf3
 bundle agent workflow_one
 {
-classes:
+  classes:
+    Host2::
+      "succeeded"
+        expression => remoteclassesmatching("did.*", "Host1", "no", "hostX");
 
-  Host2::
+  methods:
+    Host2.hostX_did_my_job::
+      "any" usebundle => do_my_job_bundle1;
+      "any" usebundle => do_my_job_bundle2;
+      "any" usebundle => do_my_job_bundle3;
 
-     "succeeded"     expression => remoteclassesmatching(
-                                                        "did.*",
-                                                        "Host1",
-                                                        "no",
-                                                        "hostX"
-                                                        );
-methods:
-
-  Host2.hostX_did_my_job::
-
-    "any" usebundle => do_my_job_bundle1;
-    "any" usebundle => do_my_job_bundle2;
-    "any" usebundle => do_my_job_bundle3;
-
-commands:
-
-  Host1.Hr16::
-
-    "/usr/local/bin/my_job",
-         action => if_elapsed("100"),
+  commands:
+    Host1.Hr16::
+      "/usr/local/bin/my_job",
+        action => if_elapsed("100"),
         classes => state_repaired("did_my_job");
 ```
 

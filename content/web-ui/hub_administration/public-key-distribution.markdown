@@ -32,60 +32,56 @@ bundle agent trust_distkeys
 #@ brief Example public key distribution
 {
   meta:
-
-      "tags" slist => { "autorun" };
+    "tags" slist => { "autorun" };
 
   vars:
-
-      "keystore"
-        comment => "We want all hosts to trust these hosts because they perform
+    "keystore"
+      comment => "We want all hosts to trust these hosts because they perform
                     critical functions like policy serving.",
-        string => ifelse( isvariable( "def.trustkeys[keystore])" ), "$(def.trustkeys[keystore])",
-                                      "distkeys");
+      string => ifelse(
+        isvariable("def.trustkeys[keystore])"),
+        "$(def.trustkeys[keystore])",
+        "distkeys"
+      );
 
   files:
-
-      "$(sys.workdir)/ppkeys/."
-        handle => "trust_distkeys",
-        comment => "We need trust all the keys stored in `$(keystore)` on
+    "$(sys.workdir)/ppkeys/."
+      handle => "trust_distkeys",
+      comment => "We need trust all the keys stored in `$(keystore)` on
                    `$(sys.policy_hub)` so that we can communicate with them
                    using the CFEngine protocol.",
-        copy_from => remote_dcp( $(keystore), $(sys.policy_hub) ),
-        depth_search => basedir,
-        file_select => public_keys,
-        perms => mog( 644, root, root );
+      copy_from => remote_dcp($(keystore), $(sys.policy_hub)),
+      depth_search => basedir,
+      file_select => public_keys,
+      perms => mog(644, root, root);
 }
 
 bundle server share_distkeys
 #@ brief Share the directory containing public keys we need to distribute
 {
   access:
-
     (policy_server|am_policy_hub)::
-
       "/var/cfengine/distkeys/"
         admit_ips => { "0.0.0.0/0" },
         shortcut => "distkeys",
         handle => "access_share_distkeys",
         comment => "This directory contains public keys of hosts that should be
                     trusted by everyone.";
-
 }
 
 body depth_search basedir
 #@ brief Search the files in the top level of the source directory
 {
-      include_basedir => "true";
-      depth => "1";
+  include_basedir => "true";
+  depth => "1";
 }
 
 body file_select public_keys
 #@ brief Select plain files matching public key file naming patterns
 {
-        # root-SHA=abc123.pub
-        leaf_name => { "\w+-(SHA|MD5)=[[:alnum:]]+\.pub" };
-        file_types => { "plain" };
-
-        file_result => "leaf_name.file_types";
+  # root-SHA=abc123.pub
+  leaf_name => { "\w+-(SHA|MD5)=[[:alnum:]]+\.pub" };
+  file_types => { "plain" };
+  file_result => "leaf_name.file_types";
 }
 ```

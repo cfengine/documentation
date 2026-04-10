@@ -16,11 +16,10 @@ a literal string representation of the name of the attribute to be set.
 ```cf3
 bundle edit_xml example
 {
-set_attribute:
-  "name"
-
-    attribute_value => "cfe_host",
-       select_xpath => "/Server/Service/Engine/Host";
+  set_attribute:
+    "name"
+      attribute_value => "cfe_host",
+      select_xpath => "/Server/Service/Engine/Host";
 }
 ```
 

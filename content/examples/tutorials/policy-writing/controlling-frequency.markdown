@@ -25,9 +25,9 @@ bundle agent __main__
 {
   packages:
     Tuesday.Hr05_Q1::
-    "sshd"
-      version => "latest",
-      comment => "Make sure sshd is at the latest version, but only Tuesday between 5:00 and 5:15am";
+      "sshd"
+        version => "latest",
+        comment => "Make sure sshd is at the latest version, but only Tuesday between 5:00 and 5:15am";
 }
 ```
 
@@ -46,12 +46,13 @@ bundle agent __main__
       "/tmp/heartbeat.dat"
         create => "true",
         touch => "true",
-        classes => persistent_results( "heartbeat", 10 );
+        classes => persistent_results("heartbeat", 10);
 }
-body classes persistent_results( prefix, time )
+
+body classes persistent_results(prefix, time)
 {
-    inherit_from => results( "namespace", "$(prefix)" );
-    persist_time => "$(time)";
+  inherit_from => results("namespace", "$(prefix)");
+  persist_time => "$(time)";
 }
 ```
 
@@ -84,7 +85,8 @@ setting is defined in `body agent control`.
 ```cf3
 body agent control
 {
-    ifelapsed => "60";	# one hour
+  ifelapsed => "60";
+  # one hour
 }
 ```
 
@@ -96,7 +98,8 @@ promise body by setting [`ifelapsed`][Promise types#ifelapsed] in the promise bo
 ```cf3
 body action example
 {
-    ifelapsed => "90";	# 1.5 hours
+  ifelapsed => "90";
+  # 1.5 hours
 }
 ```
 

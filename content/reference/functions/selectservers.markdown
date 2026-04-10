@@ -26,34 +26,39 @@ allows maintaining a list of pretested failover alternatives.
 ```cf3
 bundle agent example
 {
-vars:
+  vars:
+    "hosts"
+      slist => {
+        "slogans.iu.hio.no", "eternity.iu.hio.no", "nexus.iu.hio.no"
+      };
 
- "hosts" slist => { "slogans.iu.hio.no", "eternity.iu.hio.no", "nexus.iu.hio.no" };
- "fhosts" slist => { "www.cfengine.com", "www.cfengine.org" };
+    "fhosts" slist => { "www.cfengine.com", "www.cfengine.org" };
 
- "up_servers" int =>  selectservers("@(hosts)","80","","","100","alive_servers");
- "has_favicon" int =>
-        selectservers(
-            "@(hosts)", "80",
+    "up_servers"
+      int => selectservers("@(hosts)", "80", "", "", "100", "alive_servers");
+
+    "has_favicon"
+      int => selectservers(
+        "@(hosts)",
+        "80",
         "GET /favicon.ico HTTP/1.0$(const.n)Host: www.cfengine.com$(const.n)$(const.n)",
         "(?s).*OK.*",
-        "200", "favicon_servers");
+        "200",
+        "favicon_servers"
+      );
 
-classes:
+  classes:
+    "someone_alive" expression => isgreaterthan("$(up_servers)", "0");
+    "has_favicon" expression => isgreaterthan("$(has_favicon)", "0");
 
-  "someone_alive" expression => isgreaterthan("$(up_servers)","0");
-
-  "has_favicon" expression => isgreaterthan("$(has_favicon)","0");
-
-reports:
+  reports:
     "Number of active servers $(up_servers)";
 
-  someone_alive::
-    "First server $(alive_servers[0]) fails over to $(alive_servers[1])";
+    someone_alive::
+      "First server $(alive_servers[0]) fails over to $(alive_servers[1])";
 
-  has_favicon::
-    "At least $(favicon_servers[0]) has a favicon.ico";
-
+    has_favicon::
+      "At least $(favicon_servers[0]) has a favicon.ico";
 }
 ```
 

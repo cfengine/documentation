@@ -20,23 +20,20 @@ storage:
 bundle agent storage
 {
   storage:
-
-    "/usr" volume  => mycheck("10%");
-    "/mnt" mount   => nfs("nfsserv.example.org","/home");
-
+    "/usr" volume => mycheck("10%");
+    "/mnt" mount => nfs("nfsserv.example.org", "/home");
 }
 
-body volume mycheck(free)   # reusable template
-
+body volume mycheck(free)
+# reusable template
 {
-  check_foreign  => "false";
-  freespace      => "$(free)";
-  sensible_size  => "10000";
+  check_foreign => "false";
+  freespace => "$(free)";
+  sensible_size => "10000";
   sensible_count => "2";
 }
 
-body mount nfs(server,source)
-
+body mount nfs(server, source)
 {
   mount_type => "nfs";
   mount_source => "$(source)";
@@ -172,7 +169,7 @@ body mount example
 ```cf3
 body mount example
 {
-unmount => "true";
+  unmount => "true";
 }
 ```
 
@@ -201,7 +198,7 @@ on other systems.
 ```cf3
 body volume example
 {
-  check_foreign  => "true";
+  check_foreign => "true";
 }
 ```
 
@@ -224,12 +221,12 @@ the results of this promise to control other promises.
 ```cf3
 body volume example1
 {
-freespace => "10%";
+  freespace => "10%";
 }
 
 body volume example2
 {
-freespace => "50M";
+  freespace => "50M";
 }
 ```
 
@@ -247,7 +244,7 @@ sensible-looking storage device
 ```cf3
 body volume example
 {
-sensible_size => "20K";
+  sensible_size => "20K";
 }
 ```
 
@@ -268,7 +265,7 @@ the agent has privileges on volumes being checked.
 ```cf3
 body volume example
 {
-sensible_count => "20";
+  sensible_count => "20";
 }
 ```
 

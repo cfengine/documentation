@@ -38,14 +38,11 @@ Consider the examples below:
 ```cf3
 bundle agent testbundle
 {
-files:
-
-  # This might be a dangerous pattern - see explanation in the next section
-
-  # on "Runaway change warning"
-
-  "/home/mark/tmp/cf([23])?_(.*)"
-       edit_line => myedit("second backref: $(match.2)");
+  files:
+    # This might be a dangerous pattern - see explanation in the next section
+    # on "Runaway change warning"
+    "/home/mark/tmp/cf([23])?_(.*)"
+      edit_line => myedit("second backref: $(match.2)");
 }
 ```
 
@@ -83,39 +80,32 @@ the `replace_patterns` promise.
 bundle edit_line myedit(parameter)
 {
   vars:
-
-   "edit_variable" string => "private edit variable is $(parameter)";
+    "edit_variable" string => "private edit variable is $(parameter)";
 
   insert_lines:
-
-     "$(edit_variable)";
+    "$(edit_variable)";
 
   replace_patterns:
-
-  # replace shell comments with C comments
-
-   "#(.*)"
-
+    # replace shell comments with C comments
+    "#(.*)"
       replace_with => C_comment,
-     select_region => MySection("New section");
-  }
-
+      select_region => MySection("New section");
+}
 ########################################
 # Bodies
 ########################################
-
 body replace_with C_comment
 {
-replace_value => "/* $(match.1) */"; # backreference from replace_patterns
-occurrences => "all";  # first, last, or all
+  replace_value => "/* $(match.1) */";
+  # backreference from replace_patterns
+  occurrences => "all";
+  # first, last, or all
 }
-
 ########################################################
-
 body select_region MySection(x)
 {
-    select_start => "\[$(x)\]";
-    select_end => "\[.*\]";
+  select_start => "\[$(x)\]";
+  select_end => "\[.*\]";
 }
 ```
 
@@ -185,45 +175,35 @@ CFEngine.
 # HashCommentLines implemented in CFEngine 3
 #
 ######################################################################
-
 body common control
 {
-    version => "1.2.3";
-    bundlesequence  => { "testbundle"  };
+  version => "1.2.3";
+  bundlesequence => { "testbundle" };
 }
-
 ########################################################
-
 bundle agent testbundle
 {
-files:
-  "/home/mark/tmp/comment_test"
-       create    => "true",
-       edit_line => comment_lines_matching;
+  files:
+    "/home/mark/tmp/comment_test"
+      create => "true",
+      edit_line => comment_lines_matching;
 }
-
 ########################################################
-
 bundle edit_line comment_lines_matching
-  {
+{
   vars:
-
     "regexes" slist => { "one.*", "two.*", "four.*" };
 
   replace_patterns:
-
-   "^($(regexes))$"
-      replace_with => comment("# ");
-  }
-
+    "^($(regexes))$" replace_with => comment("# ");
+}
 ########################################
 # Bodies
 ########################################
-
 body replace_with comment(c)
 {
-    replace_value => "$(c) $(match.1)";
-    occurrences => "all";
+  replace_value => "$(c) $(match.1)";
+  occurrences => "all";
 }
 ```
 
@@ -251,31 +231,28 @@ pathname either one way or another. (see the `pathtype` attribute).
 ```cf3
 body common control
 {
-    bundlesequence => { "wintest" };
+  bundlesequence => { "wintest" };
 }
-
 ########################################
-
 bundle agent wintest
 {
-files:
-  "c:/tmp/file/f.*"		# "best guess" interpretation
-    delete => nodir;
+  files:
+    "c:/tmp/file/f.*" delete => nodir;
 
-  "c:\tmp\file"
-    delete => nodir,
-    pathtype => "literal";	# force literal string interpretation
+    "c:\tmp\file"
+      delete => nodir,
+      pathtype => "literal";
 
-  "C:/windows/tmp/f\d"
-    delete => nodir,
-    pathtype => "regex";	# force regular expression interpretation
+    # force literal string interpretation
+    "C:/windows/tmp/f\d"
+      delete => nodir,
+      pathtype => "regex";
+  # force regular expression interpretation
 }
-
 ########################################
-
 body delete nodir
 {
-    rmdirs => "false";
+  rmdirs => "false";
 }
 ```
 

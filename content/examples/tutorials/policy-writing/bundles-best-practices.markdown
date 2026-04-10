@@ -65,36 +65,24 @@ names, and then call the method passing the list of names as a parameter to redu
 ```cf3 {file="testbundle.cf"}
 bundle agent testbundle
 {
-vars:
+  vars:
+    "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
 
- "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
-
-methods:
-
- "any" usebundle => subtest("$(userlist)");
-
+  methods:
+    "any" usebundle => subtest("$(userlist)");
 }
-
 ###########################################
-
 bundle agent subtest(user)
-
 {
-commands:
+  commands:
+    "/bin/echo Fix $(user)";
 
- "/bin/echo Fix $(user)";
+  files:
+    "/home/$(user)/." create => "true";
 
-files:
-
- "/home/$(user)/."
-
-    create =>  "true";
-
-reports:
-
- linux::
-
-  "Finished doing stuff for $(user)";
+  reports:
+    linux::
+      "Finished doing stuff for $(user)";
 }
 ```
 

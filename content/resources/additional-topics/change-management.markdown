@@ -214,19 +214,15 @@ You promise a desired state for your system (beacon).
 bundle agent example
 {
   packages:
-
-      "apache"
-
-           comment => "Ensure Apache webserver installed",
-           package_policy => "add",
-           package_method => yum;
+    "apache"
+      comment => "Ensure Apache webserver installed",
+      package_policy => "add",
+      package_method => yum;
 
   processes:
-
-      "apache"
-
-           comment => "Ensure apache webserver running",
-           restart_class => restart_apache;
+    "apache"
+      comment => "Ensure apache webserver running",
+      restart_class => restart_apache;
 }
 ```
 
@@ -240,12 +236,10 @@ that change.
 bundle agent example
 {
   packages:
-
-      "apache"
-
-           comment => "Ensure Apache webserver up to date",
-           package_policy => "update",
-           package_method => yum;
+    "apache"
+      comment => "Ensure Apache webserver up to date",
+      package_policy => "update",
+      package_method => yum;
 }
 ```
 
@@ -255,11 +249,9 @@ We promise to monitor unintended changes.
 bundle agent example
 {
   files:
-
     "/usr" -> "Security team"
-
-         changes      => detect_all_change,
-         depth_search => recurse("inf");
+      changes => detect_all_change,
+      depth_search => recurse("inf");
 }
 ```
 
@@ -269,14 +261,12 @@ Conflicts of intention are easy to see when they are mediated by CFEngine.
 ```cf3
 bundle agent example
 {
+  files:
+    "/etc/passwd" -> "Security team"
+      perms => owner("root");
 
-         files:
-
-           "/etc/passwd" -> "Security team"
-                   perms => owner("root");
-
-           "/etc/passwd" -> "Security team"
-                   perms => owner("mark");
+    "/etc/passwd" -> "Security team"
+      perms => owner("mark");
 }
 ```
 

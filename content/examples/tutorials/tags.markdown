@@ -48,7 +48,7 @@ An example is easiest:
 bundle agent run_deprecated
 {
   meta:
-      "tags" slist => { "deprecated" };
+    "tags" slist => { "deprecated" };
 }
 ```
 

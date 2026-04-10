@@ -24,20 +24,16 @@ removing data from addressable fields.
 bundle agent example
 {
   vars:
-
-   "userset" slist => { "one-x", "two-x", "three-x" };
+    "userset" slist => { "one-x", "two-x", "three-x" };
 
   files:
-
     "/tmp/passwd"
-
-         create    => "true",
-         edit_line => set_user_param("mark","6","/set/this/shell");
+      create => "true",
+      edit_line => set_user_param("mark", "6", "/set/this/shell");
 
     "/tmp/group"
-
-         create    => "true",
-         edit_line => append_user_param("root","4","@(userset)");
+      create => "true",
+      edit_line => append_user_param("root", "4", "@(userset)");
 }
 ```
 
@@ -45,30 +41,19 @@ The promise in this example assumes a parameterizable model for editing the
 fields of such files.
 
 ```cf3
-bundle edit_line set_user_param(user,field,val)
+bundle edit_line set_user_param(user, field, val)
 {
   field_edits:
-
-   "$(user):.*"
-
-      # Set field of the file to parameter
-
-      edit_field => col(":","$(field)","$(val)","set");
+    "$(user):.*" edit_field => col(":", "$(field)", "$(val)", "set");
 }
 
-bundle edit_line append_user_param(user,field,allusers)
+bundle edit_line append_user_param(user, field, allusers)
 {
   vars:
-
     "val" slist => { @(allusers) };
 
   field_edits:
-
-   "$(user):.*"
-
-      # Set field of the file to parameter
-
-      edit_field => col(":","$(field)","$(val)","alphanum");
+    "$(user):.*" edit_field => col(":", "$(field)", "$(val)", "alphanum");
 }
 ```
 
@@ -76,12 +61,12 @@ First you match the line with a regular expression. The regular expression
 must match the entire line; that is, it is [anchored][anchored].
 
 ```cf3
-body edit_field col(split,col,newval,method)
+body edit_field col(split, col, newval, method)
 {
   field_separator => "$(split)";
-  select_field    => "$(col)";
-  value_separator  => ",";
-  field_value     => "$(newval)";
+  select_field => "$(col)";
+  value_separator => ",";
+  field_value => "$(newval)";
   field_operation => "$(method)";
   extend_fields => "true";
 }
@@ -104,12 +89,12 @@ ordering the items within them.
 ```cf3
 body edit_field col(split, col, newval, method)
 {
-  field_separator    => "$(split)";
-  select_field       => "$(col)";
-  value_separator    => ",";
-  field_value        => "$(newval)";
-  field_operation    => "$(method)";
-  extend_fields      => "true";
+  field_separator => "$(split)";
+  select_field => "$(col)";
+  value_separator => ",";
+  field_value => "$(newval)";
+  field_operation => "$(method)";
+  extend_fields => "true";
   allow_blank_fields => "true";
   start_fields_from_zero => "true";
 }
@@ -135,7 +120,7 @@ number of field separators.
 ```cf3
 body edit_field example
 {
-allow_blank_fields => "true";
+  allow_blank_fields => "true";
 }
 ```
 
@@ -159,7 +144,7 @@ If in doubt, set this to true.
 ```cf3
 body edit_field example
 {
-extend_fields => "true";
+  extend_fields => "true";
 }
 ```
 
@@ -204,7 +189,7 @@ Delete the specified value (if present) in the specified field/column.
 ```cf3
 body edit_field example
 {
-field_operation => "append";
+  field_operation => "append";
 }
 ```
 
@@ -227,7 +212,7 @@ edit all kinds of line-based text files.
 ```cf3
 body edit_field example
 {
-field_separator => ":";
+  field_separator => ":";
 }
 ```
 
@@ -247,7 +232,7 @@ fixed list.
 ```cf3
 body edit_field example(s)
 {
-field_value => "$(s)";
+  field_value => "$(s)";
 }
 ```
 
@@ -264,7 +249,7 @@ field_value => "$(s)";
 ```cf3
 body field_edits example
 {
-select_field => "5";
+  select_field => "5";
 }
 ```
 
@@ -299,7 +284,7 @@ the lists of users in these fields are separated by a comma (',').
 ```cf3
 body field_edit example
 {
-value_separator => ",";
+  value_separator => ",";
 }
 ```
 

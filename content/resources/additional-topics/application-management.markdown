@@ -125,14 +125,13 @@ promise to subscribe to the data.
 bundle agent example
 {
   files:
-
     "/software_repo"
-
-        comment => "Copy app1 updates from software server",
-       copy_from => remote_cp("/master_software_repo/app1/$(sys.flavour)",
-                               "server.example.org"),
-    depth_search => recurse("inf"),
-         classes => if_repaired("newpkg_app1");
+      comment => "Copy app1 updates from software server",
+      copy_from => remote_cp(
+        "/master_software_repo/app1/$(sys.flavour)", "server.example.org"
+      ),
+      depth_search => recurse("inf"),
+      classes => if_repaired("newpkg_app1");
 }
 ```
 
@@ -149,11 +148,9 @@ CFEngine can promise to enure that a program is stopped before update:
 ```cf3
 bundle agent example
 {
-processes:
-
- newpkg_app1::
-
-  "app1" signals => { "term", "kill" };
+  processes:
+    newpkg_app1::
+      "app1" signals => { "term", "kill" };
 }
 ```
 
@@ -165,18 +162,15 @@ version greater than 1.0.0.
 ```cf3
 bundle agent example
 {
-packages:
-
- newpkg_app1::
-
-  "app1"
-
-    package_policy           => "update",
-    package_select           => ">=",
-    package_architectures    => { "i586" },
-    package_version          => "1.0.0",
-    package_method           => rpm_version("/software_repo"),
-    classes                  => if_else("app1_update", "app1_noupdate");
+  packages:
+    newpkg_app1::
+      "app1"
+        package_policy => "update",
+        package_select => ">=",
+        package_architectures => { "i586" },
+        package_version => "1.0.0",
+        package_method => rpm_version("/software_repo"),
+        classes => if_else("app1_update", "app1_noupdate");
 }
 ```
 
@@ -258,12 +252,10 @@ configuration line to a file, you might so something like this:
 bundle agent my_application_customize
 {
   files:
-
     "$(prefix)/config.cf"
-
-          comment => "Set the permissions and add a line...",
-        perms     => mo("0600","root"),
-        edit_line => append_if_no_line("My custom setting...");
+      comment => "Set the permissions and add a line...",
+      perms => mo("0600", "root"),
+      edit_line => append_if_no_line("My custom setting...");
 }
 ```
 
@@ -273,20 +265,15 @@ To set a number of variables inside a file, you might do something like this:
 bundle agent my_application_customize
 {
   vars:
-
     # want to set these values by the names of their array keys
-
     "rhs[serverhost]" string => "123.456.789.123";
     "rhs[portnumber]" string => "1234";
-    "rhs[admin]"      string => "admin@example.org";
+    "rhs[admin]" string => "admin@example.org";
 
   files:
-
     "$(prefix)/config.cf"
-
-         comment => "Add new variables or set existing ones",
-       edit_line => set_variable_values("setvars.rhs");
-
+      comment => "Add new variables or set existing ones",
+      edit_line => set_variable_values("setvars.rhs");
 }
 ```
 
@@ -304,17 +291,12 @@ To start a service, you might do something like this:
 ```cf3
 bundle agent example
 {
-processes:
+  processes:
+    "myprocess" restart_class => "start_me";
 
-   "myprocess"  restart_class => "start_me";
-
-commands:
-
-  start_me::
-
-    "/path/to/software"
-
-         # ... many security options, etc
+  commands:
+    start_me::
+      "/path/to/software";
 }
 ```
 
@@ -323,14 +305,12 @@ or using services
 ```cf3
 bundle agent example
 {
-services:
-
- windows::
-
-  "Dhcp"
-    service_policy => "start",
-    service_dependencies => { "Alerter", "W32Time" },
-    service_method => winmethod;
+  services:
+    windows::
+      "Dhcp"
+        service_policy => "start",
+        service_dependencies => { "Alerter", "W32Time" },
+        service_method => winmethod;
 }
 ```
 
@@ -340,12 +320,8 @@ To stop a service, you take one of these approaches:
 bundle agent example
 {
   processes:
-
-   "badprocess"
-      signals => { "term", "kill" };
-
-   "snmp"
-      process_stop => "/etc/init.d/snmp stop";
+    "badprocess" signals => { "term", "kill" };
+    "snmp" process_stop => "/etc/init.d/snmp stop";
 }
 ```
 

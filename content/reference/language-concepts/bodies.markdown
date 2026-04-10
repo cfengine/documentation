@@ -41,11 +41,11 @@ body perms system
   groups => { "root" };
 }
 
-body perms mog(mode,user,group)
+body perms mog(mode, user, group)
 {
   owners => { "$(user)" };
   groups => { "$(group)" };
-  mode   => "$(mode)";
+  mode => "$(mode)";
 }
 ```
 
@@ -153,7 +153,7 @@ special body whose name is `control`.
 ```cf3
 body agent control
 {
-    bundlesequence => { "test" };
+  bundlesequence => { "test" };
 }
 ```
 
@@ -162,7 +162,7 @@ This promise bodies configures the `bundlesequence` to execute on a cf-agent.
 ```cf3
 body server control
 {
-    allowconnects         => { "127.0.0.1" , "::1", @(def.acl) };
+  allowconnects => { "127.0.0.1", "::1", @(def.acl) };
 }
 ```
 
@@ -206,31 +206,28 @@ unaffected.
 ```cf3
 bundle agent example
 {
-    files:
+  files:
+    # Since the 'files_action' action body is defined in the 'bodydefault' namespce,
+    # and since this promise is in the 'default' namespace (no alternate namespace is
+    # declared previously) this promise will not actually modify the file content if
+    # it is not as promised. Instead it will warn that a change wants to be made.
+    "/etc/motd" content => "There are, in fact, rules. You have been notified.";
 
-      # Since the 'files_action' action body is defined in the 'bodydefault' namespce,
-      # and since this promise is in the 'default' namespace (no alternate namespace is
-      # declared previously) this promise will not actually modify the file content if
-      # it is not as promised. Instead it will warn that a change wants to be made.
-
-      "/etc/motd"
-        content => "There are, in fact, rules. You have been notified.";
-
-      # Since this promise has an action body attached, the default action body for
-      # files will not be applied and this file would be fixed.
-
-      "/etc/issue.net"
-        content => "WARNING: You are being monitored. We are all being monitored. This is a cry for help.",
-        action => if_elapsed_day;
+    # Since this promise has an action body attached, the default action body for
+    # files will not be applied and this file would be fixed.
+    "/etc/issue.net"
+      content => "WARNING: You are being monitored. We are all being monitored. This is a cry for help.",
+      action => if_elapsed_day;
 }
+
 body file control
 {
-   namespace => "bodydefault";
+  namespace => "bodydefault";
 }
 
 body action files_action
 {
-    action_policy => "warn";
+  action_policy => "warn";
 }
 
 body file control

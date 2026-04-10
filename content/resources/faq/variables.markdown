@@ -18,8 +18,7 @@ bundle agent example
     "data" data => parsejson('[ { "x": 1 }, { "y": 2 } ]');
 
   methods:
-    "use data"
-      usebundle => use_data(@(data));
+    "use data" usebundle => use_data(@(data));
 }
 
 bundle agent use_data(dc)
@@ -35,6 +34,7 @@ bundle agent use_data(dc)
 
   reports:
     "CFEngine version '$(sys.cf_version)'";
+
     have_x::
       "Index '$(dc_index)' has key for x";
 

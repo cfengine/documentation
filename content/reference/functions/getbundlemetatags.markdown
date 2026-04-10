@@ -19,11 +19,7 @@ bundle agent example
 {
   meta:
     "tags"
-      slist => {
-        "mykey=myvalue1",
-        "mykey=myvalue2",
-        "yourkey=yourvalue1",
-      };
+      slist => { "mykey=myvalue1", "mykey=myvalue2", "yourkey=yourvalue1",  };
 }
 ```
 

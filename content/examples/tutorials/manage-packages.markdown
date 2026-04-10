@@ -18,17 +18,18 @@ use the packages promise type, like this:
 ```cf3 {file="manage_packages.cf"}
 body common control
 {
-      inputs => { "$(sys.libdir)/stdlib.cf" };
+  inputs => { "$(sys.libdir)/stdlib.cf" };
 }
 
 bundle agent manage_packages
 {
-packages:
-  "openssl"
-    policy => "present",
-    version => "latest",
-    package_module => yum;
+  packages:
+    "openssl"
+      policy => "present",
+      version => "latest",
+      package_module => yum;
 }
+
 bundle agent __main__
 {
   methods:
@@ -89,22 +90,22 @@ promise to our previous policy, this time using the absent policy:
 ```cf3 {file="manage_packages.cf"}
 body common control
 {
-      inputs => { "$(sys.libdir)/stdlib.cf" };
+  inputs => { "$(sys.libdir)/stdlib.cf" };
 }
 
 bundle agent manage_packages
 {
-packages:
-  "openssl"
-    policy => "present",
-    version => "latest",
-    package_module => yum;
+  packages:
+    "openssl"
+      policy => "present",
+      version => "latest",
+      package_module => yum;
 
-"telnet"
-    policy => "absent",
-    package_module => yum;
-
+    "telnet"
+      policy => "absent",
+      package_module => yum;
 }
+
 bundle agent __main__
 {
   methods:

@@ -28,9 +28,11 @@ define classes, and use classes instead of boolean values:
 bundle agent main
 {
   vars:
-      "five" int => "5";
+    "five" int => "5";
+
   classes:
-      "is_var" if => isvariable("five");
+    "is_var" if => isvariable("five");
+
   reports:
     is_var::
       "Success!";
@@ -44,10 +46,12 @@ If you want to store or print the class expression, you can use `concat()`:
 bundle agent main
 {
   vars:
-      "five" int => "5";
-      "expression" string => concat(isvariable("five"));
+    "five" int => "5";
+    "expression" string => concat(isvariable("five"));
+
   classes:
-      "is_var" if => "$(expression)"; # Will be expanded and evaluated
+    "is_var" if => "$(expression)";
+  # Will be expanded and evaluated
   reports:
     is_var::
       "Success: expression expanded to '$(expression)' and evaluated to true!";
@@ -73,15 +77,18 @@ and `unless`, can take a function call which returns string or boolean as well.
 bundle agent main
 {
   vars:
-      "five" int => "5";
-      "is_var_class_expression" string => concat(isvariable("$(five)"));
+    "five" int => "5";
+    "is_var_class_expression" string => concat(isvariable("$(five)"));
+
   classes:
-      "five_less_than_seven" expression => islessthan("$(five)", 7);
-      "five_is_variable" if => "$(is_var_class_expression)";
+    "five_less_than_seven" expression => islessthan("$(five)", 7);
+    "five_is_variable" if => "$(is_var_class_expression)";
+
   reports:
     any::
       "five: $(five)";
       "is_var_class_expression: $(is_var_class_expression)";
+
     five_less_than_seven::
       "$(five) is smaller than 7";
 }

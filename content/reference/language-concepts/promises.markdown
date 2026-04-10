@@ -138,16 +138,15 @@ For example, the following promises use the same attribute multiple times.
 bundle agent bad_example
 {
   classes:
-
     "myclass"
       expression => "cfengine",
       expression => "my_other_class";
 
   files:
     "/tmp/example"
-      perms => m( 600 ),
-      perms => owner( "root" ),
-      perms => group( "root" );
+      perms => m(600),
+      perms => owner("root"),
+      perms => group("root");
 }
 ```
 

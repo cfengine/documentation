@@ -19,15 +19,11 @@ augments file.:
 ```cf3
 bundle common def
 {
-
   vars:
-
-  # ...
-
-      "mailto"
-        string => "root@$(def.domain)",
-        if => not(isvariable("mailto"));
-
+    # ...
+    "mailto"
+      string => "root@$(def.domain)",
+      if => not(isvariable("mailto"));
   # ...
 }
 ```

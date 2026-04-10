@@ -64,29 +64,32 @@ affect the default case?). Here's the alternative with `ifelse`:
 bundle agent example
 {
   classes:
-      "myclass" expression => "any";
-      "myclass2" expression => "any";
-      "secondpass" expression => "any";
+    "myclass" expression => "any";
+    "myclass2" expression => "any";
+    "secondpass" expression => "any";
+
   vars:
-      # we need to use the secondpass class because on the first pass,
-      # myclass and myclass2 are not defined yet
-
+    # we need to use the secondpass class because on the first pass,
+    # myclass and myclass2 are not defined yet
     secondpass::
-
       # result: { "1", "single string parameter", "hardclass OK", "bundle class OK", "5 parameters OK" }
-
-      "mylist" slist => {
-                          ifelse(1),
-                          ifelse("single string parameter"),
-                          ifelse("cfengine", "hardclass OK", "hardclass broken"),
-                          ifelse("myclass.myclass2", "bundle class OK", "bundle class broken"),
-                          ifelse("this is not true", "5 parameters broken",
-                                 "this is also not true", "5 parameters broken 2",
-                                 "5 parameters OK"),
-                        };
+      "mylist"
+        slist => {
+          ifelse(1),
+          ifelse("single string parameter"),
+          ifelse("cfengine", "hardclass OK", "hardclass broken"),
+          ifelse("myclass.myclass2", "bundle class OK", "bundle class broken"),
+          ifelse(
+            "this is not true",
+            "5 parameters broken",
+            "this is also not true",
+            "5 parameters broken 2",
+            "5 parameters OK"
+          ),
+        };
 
   reports:
-      "ifelse result list: $(mylist)";
+    "ifelse result list: $(mylist)";
 }
 ```
 
@@ -99,13 +102,12 @@ bundle agent example
 {
   vars:
     "passwd_path"
-      string => ifelse( isvariable("def.passwd_path"), "$(def.passwd_path)",
-                        "/etc/passwd"),
-
+      string => ifelse(
+        isvariable("def.passwd_path"), "$(def.passwd_path)", "/etc/passwd"
+      ),
       comment => "Use the user provided path for the passwd file if its defined
                   in the def scope, else use a sane default. This can allow for
                   easier policy testing and default overrides.";
-
 }
 ```
 

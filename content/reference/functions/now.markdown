@@ -21,24 +21,21 @@ Reporting the system time of agent start and calculating what yesterday was.
 bundle agent example_now
 {
   vars:
-      "epoch" int => now();
-
-      "24_hours_ago"
-        string => format( "%d",
-                          eval( "$(epoch)-86400", math, infix ));
+    "epoch" int => now();
+    "24_hours_ago" string => format("%d", eval("$(epoch)-86400", math, infix));
 
   reports:
-      "Today is $(with) or in unix format '$(epoch)'"
-        with => strftime( gmtime, "%Y-%m-%d %T", $(epoch) );
+    "Today is $(with) or in unix format '$(epoch)'"
+      with => strftime(gmtime, "%Y-%m-%d %T", $(epoch));
 
-      "24 hours ago was $(with) or in unix format '$(epoch)'"
-        with => strftime( gmtime, "%Y-%m-%d %T", $(24_hours_ago) );
+    "24 hours ago was $(with) or in unix format '$(epoch)'"
+      with => strftime(gmtime, "%Y-%m-%d %T", $(24_hours_ago));
 }
 
 bundle agent __main__
 {
   methods:
-      "example_now";
+    "example_now";
 }
 ```
 
@@ -55,20 +52,18 @@ based on a time relative to the agent start can make use of this function.
 ```cf3
 bundle agent gzip_recent_pdfs
 {
-   files:
-
-     # Ensure that any file ending in .pdf that has been
-     # modified in the last year is compressed
-
-     "/tmp/"
-       file_select => pdf_modified_within_last_year,
-       transformer => '/bin/gzip $(this.promiser)';
+  files:
+    # Ensure that any file ending in .pdf that has been
+    # modified in the last year is compressed
+    "/tmp/"
+      file_select => pdf_modified_within_last_year,
+      transformer => '/bin/gzip $(this.promiser)';
 }
 
 body file_select pdf_modified_within_last_year
 # @brief Sllect files that have been modified in the last year AND end in .pdf
 {
-  mtime       => irange(ago(1,0,0,0,0,0),now);
+  mtime => irange(ago(1, 0, 0, 0, 0, 0), now);
   leaf_name => { ".*\.pdf" };
   file_result => "mtime.leaf_name";
 }

@@ -102,11 +102,11 @@ contexts.
 ```cf3
 bundle agent something
 {
-files:
-
-  "/important/file"
-
-  copy_from => secure_cp("/repository/important_file_template","svn-host");
+  files:
+    "/important/file"
+      copy_from => secure_cp(
+        "/repository/important_file_template", "svn-host"
+      );
 }
 ```
 
@@ -134,12 +134,10 @@ To expand a template file on a local disk:
 ```cf3
 bundle agent templating
 {
-files:
-
-  "/home/mark/tmp/file_based_on_template"
-
-       create => "true",
-    edit_line => expand_template("/tmp/source_template");
+  files:
+    "/home/mark/tmp/file_based_on_template"
+      create => "true",
+      edit_line => expand_template("/tmp/source_template");
 }
 ```
 
@@ -149,12 +147,10 @@ write:
 ```cf3
 bundle agent templating
 {
-files:
-
-  "/home/mark/tmp/file_based_on_template"
-
-       create => "true",
-    edit_template => "/tmp/source_template";
+  files:
+    "/home/mark/tmp/file_based_on_template"
+      create => "true",
+      edit_template => "/tmp/source_template";
 }
 ```
 
@@ -201,12 +197,12 @@ For example: if we use this template in a promise:
 bundle agent test
 {
   vars:
-   "var" slist => { "1", "2", "3"};
+    "var" slist => { "1", "2", "3" };
 
   files:
     "/tmp/expander"
-           create => "true",
-    edit_template => "/templates/input.tmpl";
+      create => "true",
+      edit_template => "/templates/input.tmpl";
 }
 ```
 
@@ -308,43 +304,43 @@ promises. This is a powerful framework.
 
 ```cf3
 # Resolve conf edit
-
 body common control
 {
-bundlesequence => { "g", resolver(@(g.searchlist),@(g.nameservers)) };
-inputs => { "cfengine_stdlib.cf" };
+  bundlesequence => { "g", resolver(@(g.searchlist), @(g.nameservers)) };
+  inputs => { "cfengine_stdlib.cf" };
 }
 
-bundle common g # global
+bundle common g
+# global
 {
-vars:
- "searchlist"  slist => { "example.com", "cfengine.com" };
- "nameservers" slist => { "10.1.1.10", "10.3.2.16", "8.8.8.8" };
+  vars:
+    "searchlist" slist => { "example.com", "cfengine.com" };
+    "nameservers" slist => { "10.1.1.10", "10.3.2.16", "8.8.8.8" };
 
-classes:
-  "am_name_server"
-     expression => reglist("@(nameservers)","$(sys.ipv4[eth1])");
+  classes:
+    "am_name_server"
+      expression => reglist("@(nameservers)", "$(sys.ipv4[eth1])");
 }
 
-bundle agent resolver(s,n)
+bundle agent resolver(s, n)
 {
-files:
-  "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
-      create        => "true",
-      edit_line     => doresolv("@(this.s)","@(this.n)"),
+  files:
+    "$(sys.resolv)"
+      # test on "/tmp/resolv.conf" #
+      create => "true",
+      edit_line => doresolv("@(this.s)", "@(this.n)"),
       edit_defaults => empty;
 }
-
 # For your private library ......................
-
-bundle edit_line doresolv(s,n)
+bundle edit_line doresolv(s, n)
 {
-insert_lines:
-  "search $(s)";
-  "nameserver $(n)";
-delete_lines:
- # To clean out junk
-  "nameserver .*| search .*" not_matching => "true";
+  insert_lines:
+    "search $(s)";
+    "nameserver $(n)";
+
+  delete_lines:
+    # To clean out junk
+    "nameserver .*| search .*" not_matching => "true";
 }
 ```
 
@@ -367,32 +363,24 @@ you can store data and template components within a CFEngine configuration
 itself, or as a separate file. For example:
 
 ```cf3
-#
-
 body common control
 {
-bundlesequence => { "main" };
-inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
+  bundlesequence => { "main" };
+  inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
 }
-
-#
-
 bundle common data
 {
-vars:
-  "person" string => "Mary";
-  "animal" string => "a little lamb";
+  vars:
+    "person" string => "Mary";
+    "animal" string => "a little lamb";
 }
-
-#
-
 bundle agent main
 {
-files:
-   "/tmp/my_result"
-        create => "true",
-     edit_line => expand_template("/tmp/my_template_source"),
- edit_defaults => empty;
+  files:
+    "/tmp/my_result"
+      create => "true",
+      edit_line => expand_template("/tmp/my_template_source"),
+      edit_defaults => empty;
 }
 ```
 
@@ -421,34 +409,27 @@ template file:
 ```cf3
 body common control
 {
-bundlesequence => { "main" };
-inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
+  bundlesequence => { "main" };
+  inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
 }
-
-#
-
 bundle common data
 {
-vars:
-  "person" string => "Mary";
-  "animal" string => "a little lamb";
+  vars:
+    "person" string => "Mary";
+    "animal" string => "a little lamb";
 }
-
-#
-
 bundle agent main
 {
-vars:
-  "content" string =>
-    "This is a file template containing variables to expand
+  vars:
+    "content"
+      string => "This is a file template containing variables to expand
 e.g $(data.person) had $(data.animal)";
 
-files:
-
-   "/tmp/my_result"
-        create => "true",
-     edit_line => append_if_no_line("$(content)"),
- edit_defaults => empty;
+  files:
+    "/tmp/my_result"
+      create => "true",
+      edit_line => append_if_no_line("$(content)"),
+      edit_defaults => empty;
 }
 ```
 
@@ -461,54 +442,36 @@ to be anchored somehow.
 ```cf3
 body common control
 {
-bundlesequence => { "main" };
-inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
+  bundlesequence => { "main" };
+  inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
 }
-
-#
-
 bundle common data
 {
-vars:
-
-  "person" string => "Mary";
-  "animal" string => "a little lamb";
-
-  "mylist" slist => { "one", "two", "three" };
-  "clocks" slist => { "five", "six", "seven" };
-
+  vars:
+    "person" string => "Mary";
+    "animal" string => "a little lamb";
+    "mylist" slist => { "one", "two", "three" };
+    "clocks" slist => { "five", "six", "seven" };
   # or read the list from a file with readstringlist()
-
 }
-
-#
-
 bundle agent main
 {
-files:
-
-   "/tmp/my_result"
-
-        create => "true",
-     edit_line => my_expand_template,
- edit_defaults => empty;
+  files:
+    "/tmp/my_result"
+      create => "true",
+      edit_line => my_expand_template,
+      edit_defaults => empty;
 }
-
-#
-
 bundle edit_line my_expand_template
 {
-vars:
+  vars:
+    # import the lists, due to current limitation
+    "mylist" slist => { @(data.mylist) };
+    "clocks" string => join(", ", "data.clocks");
+    "other" string => "eight";
 
- # import the lists, due to current limitation
-
- "mylist" slist => { @(data.mylist) };
- "clocks" string => join(", ","data.clocks");
- "other"  string => "eight";
-
-insert_lines:
-
-   "
+  insert_lines:
+    "
    This is a file template containing variables to expand
 
    e.g $(data.person) had $(data.animal)
@@ -516,18 +479,16 @@ insert_lines:
    and it said:
    ";
 
-   "
+    "
    $(mylist) o'clock ";
-   "
+    "
    ROCK!
    $(clocks) o'clock, $(other) o'clock
    ";
-
-   "   ROCK!
+    "   ROCK!
    The end.
-   "
-
-   insert_type => "preserve_block"; # So we keep duplicate line
+   " insert_type => "preserve_block";
+  # So we keep duplicate line
 }
 ```
 
@@ -559,54 +520,36 @@ insert it as a single object:
 ```cf3
 body common control
 {
-bundlesequence => { "main" };
-inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
+  bundlesequence => { "main" };
+  inputs => { "LapTop/cfengine/copbl/cfengine_stdlib.cf" };
 }
-
-#
-
 bundle common data
 {
-vars:
-
-  "person" string => "Mary";
-  "animal" string => "a little lamb";
-
-  "mylist" slist => { "one", "two", "three", "" };
-  "clocks" slist => { "five", "six", "seven" };
-
+  vars:
+    "person" string => "Mary";
+    "animal" string => "a little lamb";
+    "mylist" slist => { "one", "two", "three", "" };
+    "clocks" slist => { "five", "six", "seven" };
   # or read the list from a file with readstringlist()
-
 }
-
-#
-
 bundle agent main
 {
-files:
-
-   "/tmp/my_result"
-
-        create => "true",
-     edit_line => my_expand_template,
- edit_defaults => empty;
+  files:
+    "/tmp/my_result"
+      create => "true",
+      edit_line => my_expand_template,
+      edit_defaults => empty;
 }
-
-#
-
 bundle edit_line my_expand_template
 {
-vars:
+  vars:
+    # import the lists, due to current limitation
+    "mylist" string => join(" o'clock$(const.n)  ", "data.mylist");
+    "clocks" string => join(", ", "data.clocks");
+    "other" string => "eight";
 
- # import the lists, due to current limitation
-
- "mylist" string => join(" o'clock$(const.n)  ","data.mylist");
- "clocks" string => join(", ","data.clocks");
- "other" string => "eight";
-
-insert_lines:
-
-   "
+  insert_lines:
+    "
    This is a file template containing variables to expand
 
    e.g $(data.person) had $(data.animal)
@@ -619,8 +562,8 @@ insert_lines:
    ROCK!
    The end.
    "
-
-   insert_type => "preserve_block"; # So we keep duplicate line
+      insert_type => "preserve_block";
+  # So we keep duplicate line
 }
 ```
 
@@ -698,12 +641,10 @@ edit_line => or edit_xml => constraint1, for instance:
 bundle agent example
 {
   files:
-
     "/etc/passwd"
-
-       create => "true",
-       # other constraints on file container ...
-       edit_line => mybundle("one","two","three");
+      create => "true",
+      # other constraints on file container ...
+      edit_line => mybundle("one", "two", "three");
 }
 ```
 
@@ -712,12 +653,11 @@ have a type given by the left hand side of the constraint (just like body
 templates):
 
 ```cf3
-bundle edit_line mybundle(arg1,arg2,arg3)
+bundle edit_line mybundle(arg1, arg2, arg3)
 {
-insert_lines:
-
-   "newuser:x:1111:110:A new user:/home/newuser:/bin/bash";
-   "$(arg1):x:$(arg2):110:$(arg3):/home/$(arg1):/bin/bash";
+  insert_lines:
+    "newuser:x:1111:110:A new user:/home/newuser:/bin/bash";
+    "$(arg1):x:$(arg2):110:$(arg3):/home/$(arg1):/bin/bash";
 }
 ```
 
@@ -738,12 +678,10 @@ insert hello into a file at the end once only:
 bundle agent example
 {
   files:
-
     "/tmp/test_insert"
-
-         create => "true",
+      create => "true",
       edit_line => append_if_no_line("hello"),
-  edit_defaults => empty;
+      edit_defaults => empty;
 }
 ```
 
@@ -753,10 +691,9 @@ Or to set the shell for a user
 bundle agent example
 {
   files:
-
     "/etc/passwd"
-         create    => "true",
-         edit_line => set_user_field("mark","7","/my/favourite/shell");
+      create => "true",
+      edit_line => set_user_field("mark", "7", "/my/favourite/shell");
 }
 ```
 
@@ -807,9 +744,9 @@ bundle agent example
 {
   files:
     "/tmp/expander"
-           create => "true",
-    edit_template => "/home/a10004/input.dat",
-    edit_defaults => empty;
+      create => "true",
+      edit_template => "/home/a10004/input.dat",
+      edit_defaults => empty;
 }
 ```
 

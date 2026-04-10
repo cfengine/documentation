@@ -40,12 +40,10 @@ Then, we should edit our policy example, `my_policy.cf` to use this module:
 bundle agent hello_world
 {
   meta:
-    "tags"
-      slist => { "autorun" };
+    "tags" slist => { "autorun" };
 
   git_example:
-    "/tmp/hugo"
-      repository => "https://github.com/gohugoio/hugo.git";
+    "/tmp/hugo" repository => "https://github.com/gohugoio/hugo.git";
 }
 ```
 

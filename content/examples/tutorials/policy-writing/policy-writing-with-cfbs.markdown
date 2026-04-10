@@ -32,8 +32,7 @@ Let's take a look at the traditional "Hello, world!" example:
 bundle agent hello_world
 {
   files:
-    "/tmp/hello"
-      content => "Hello, world!";
+    "/tmp/hello" content => "Hello, world!";
 }
 ```
 
@@ -137,12 +136,10 @@ Here is a simple example:
 bundle agent hello_world
 {
   vars:
-    "github_path"
-      string => "/tmp/github.com";
+    "github_path" string => "/tmp/github.com";
 
   files:
-    "$(github_path)/." # /. means a folder
-      create => "true";
+    "$(github_path)/." create => "true";
 
   git:
     "$(github_path)/hugo"
@@ -171,20 +168,18 @@ To take the output of a command and put it in a variable, we will use the `execr
 bundle agent hello_world
 {
   vars:
-    "github_path"
-      string => "/tmp/github.com";
-
-    "hugo_path"
-      string => "$(github_path)/hugo";
+    "github_path" string => "/tmp/github.com";
+    "hugo_path" string => "$(github_path)/hugo";
 
     "hugo_commit"
-      string => execresult('cd "$(hugo_path)" && git log -1 --format="%H"', "useshell"),
+      string => execresult(
+        'cd "$(hugo_path)" && git log -1 --format="%H"', "useshell"
+      ),
       meta => { "inventory", "attribute_name=Hugo commit" },
       if => fileexists("$(hugo_path)/.git");
 
   files:
-    "$(github_path)/." # /. means a folder
-      create => "true";
+    "$(github_path)/." create => "true";
 
   git:
     "$(hugo_path)"

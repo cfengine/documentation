@@ -58,19 +58,13 @@ example of this is shown below.
 ```cf3
 body common control
 {
-bundlesequence => { "test" };
+  bundlesequence => { "test" };
 }
-
-#
-
 bundle agent test
 {
-reports:
-
-  cfengine_3::
-
-   "$(sys.date),This is a report"
-     report_to_file => "/tmp/test_log";
+  reports:
+    cfengine_3::
+      "$(sys.date),This is a report" report_to_file => "/tmp/test_log";
 }
 ```
 
@@ -81,50 +75,35 @@ existing software:
 ```cf3
 body common control
 {
-bundlesequence => { "test" };
+  bundlesequence => { "test" };
 }
-
-#
-
 bundle agent test
 {
-vars:
+  vars:
+    "software" slist => { "gpg", "zip", "rsync" };
 
- "software" slist => { "gpg", "zip", "rsync" };
+  classes:
+    "no_report" expression => fileexists("/tmp/report.html");
+    "have_$(software)" expression => fileexists("/usr/bin/$(software)");
 
-classes:
-
- "no_report"        expression => fileexists("/tmp/report.html");
- "have_$(software)" expression => fileexists("/usr/bin/$(software)");
-
-reports:
-
-  no_report::
-
+  reports:
+    no_report::
       "
       <html>
       Name of this host is: $(sys.host)<br>
       Type of this host is: $(sys.os)<br>
       "
-
-         report_to_file => "/tmp/report.html";
-
-      #
+        report_to_file => "/tmp/report.html";
 
       "
       Host has software $(software)<br>
       "
-
-        if             => "have_$(software)",
+        if => "have_$(software)",
         report_to_file => "/tmp/report.html";
-
-      #
 
       "
       </html>
-      "
-         report_to_file => "/tmp/report.html";
-
+      " report_to_file => "/tmp/report.html";
 }
 ```
 
@@ -155,24 +134,16 @@ For example, the agent `cf-agent` interfaces with the local light-weight monitor
 
 ```cf3
 body common control
-
 {
-bundlesequence  => { "report" };
+  bundlesequence => { "report" };
 }
-
 ###########################################################
-
 bundle agent report
-
 {
-reports:
-
-  linux::
-
-   "/etc/passwd except $(const.n)"
-
-     showstate => { "otherprocs", "rootprocs" };
-
+  reports:
+    linux::
+      "/etc/passwd except $(const.n)"
+        showstate => { "otherprocs", "rootprocs" };
 }
 ```
 
@@ -212,35 +183,75 @@ R: Frequency: init [5]         |*       (1/98)
 R: Frequency: [kthreadd]       |*       (1/98)
 R: Frequency: [migration/0]    |*       (1/98)
 R: Frequency: [ksoftirqd/0]    |*       (1/98)
-R: Frequency: [events/0]       |*       (1/98)
-R: Frequency: [khelper]        |*       (1/98)
-R: Frequency: [kintegrityd/0]  |*       (1/98)
-```
+R:
+Frequency:
+[
+events
+/
+0
+]       |*
+(
+1
+/
+98
+)
+R:
+Frequency:
+[
+khelper
+]        |*
+(
+1
+/
+98
+)
+R:
+Frequency:
+[
+kintegrityd
+/
+0
+]  |*
+(
+1
+/
+98
+)
+``
+`
 
 Finally, you can quote lines from files in your data for convenience:
 
-```cf3
-body common control
-
+`
+``
+cf3
+body
+common
+control
 {
-bundlesequence  => { "report" };
+bundlesequence
+=>
+{
+"report"
+};
 }
-
 ###########################################################
-
-bundle agent report
-
+bundle
+agent
+report
 {
 reports:
-
-  linux::
-
-   "/etc/passwd except $(const.n)"
-
-     printfile => pr("/etc/passwd","5");
-
+linux:
+:
+"/etc/passwd except $(const.n)"
+printfile
+=>
+pr
+(
+"/etc/passwd",
+"5"
+);
 }
-
 ######################################################################
 
 body printfile pr(file,lines)
@@ -263,13 +274,52 @@ R: daemon:x:2:2:Daemon:/sbin:/bin/bash
 ```
 
 ### Excluding data from reports
-
-CFEngine generates information internally that you might want exclude from
-reports. Any promise outcome can be excluded from report collection based on its
-handle. `vars` and `classes` type promises can be excluded using its handle
-**or** by meta tag.
-
-```cf3
+CFEngine
+generates
+information
+internally
+that
+you
+might
+want
+exclude
+from
+reports
+.
+Any
+promise
+outcome
+can
+be
+excluded
+from
+report
+collection
+based
+on
+its
+handle
+.
+`vars`
+and
+`classes`
+type
+promises
+can
+be
+excluded
+using
+its
+handle
+**
+or
+**
+by
+meta
+tag
+.
+``
+`cf3
 bundle agent main
 {
   files:
@@ -288,10 +338,16 @@ body report_data_select default_data_select_policy_hub
 # reporting value) should be prefixed with an underscore. By default the policy
 # framework explicitly excludes these variables and classes from collection.
 {
- # Collect all classes or vars tagged with `inventory` or `report`
+ # Collect all classes or vars tagged with `
+inventory
+` or `
+report
+`
       metatags_include => { "inventory", "report" };
 
- # Exclude any classes or vars tagged with `noreport`
+ # Exclude any classes or vars tagged with `
+noreport
+`
       metatags_exclude => { "noreport" };
 
  # Exclude any promise with handle matching `noreport_.*` from report collection.
@@ -301,14 +357,45 @@ body report_data_select default_data_select_policy_hub
       monitoring_include => { ".*" };
 }
 ```
-
 ### Creating custom logs
-
-Logs can be attached to any promise. In this example, an executed shell command logs a
-message to the standard output. CFEngine recognizes thestdoutfilename for Standard Output,
-in the Unix/C standard manner:
-
-```cf3
+Logs
+can
+be
+attached
+to
+any
+promise
+.
+In
+this
+example,
+an
+executed
+shell
+command
+logs
+a
+message
+to
+the
+standard
+output
+.
+CFEngine
+recognizes
+thestdoutfilename
+for
+Standard
+Output,
+in
+the
+Unix
+/
+C
+standard
+manner:
+``
+`cf3
 bundle agent test
 {
 commands:
@@ -324,35 +411,35 @@ commands:
 body action logme(x)
 {
 log_repaired => "stdout";
-log_string => " -> Started the $(x) (success)";
+log_string
+=>
+" -> Started the $(x) (success)";
 }
-```
+``
+`
 
 In the following example, a file creation promise logs different outcomes
 (success or failure) to different log files:
 
-```cf3
+`
+``
+cf3
+
 body common control
 {
-bundlesequence => { "test" };
+  bundlesequence => { "test" };
 }
 
 bundle agent test
 {
-vars:
+  vars:
+    "software" slist => { "/root/xyz", "/tmp/xyz" };
 
-  "software" slist => { "/root/xyz", "/tmp/xyz" };
-
-files:
-
-  "$(software)"
-
-    create => "true",
-     action => logme("$(software)");
-
+  files:
+    "$(software)"
+      create => "true",
+      action => logme("$(software)");
 }
-
-#
 
 body action logme(x)
 {
@@ -375,10 +462,47 @@ Sun Dec  6 11:58:43 2009 /tmp/xyz promise status
 ```
 
 ### Redirecting output to logs
-
-CFEngine interfaces with the system logging tools in different ways. `Syslog` is the
-default log for Unix-like systems, while the `event logger` is the default on Windows.
-You may choose to copy a fixed level of CFEngine's standard screen messaging to the
+CFEngine
+interfaces
+with
+the
+system
+logging
+tools
+in
+different
+ways
+.
+`Syslog`
+is
+the
+default
+log
+for
+Unix
+-
+like
+systems,
+while
+the
+`event logger`
+is
+the
+default
+on
+Windows
+.
+You
+may
+choose
+to
+copy
+a
+fixed
+level
+of
+CFEngine
+'s standard screen messaging to the
 system logger on a per-promise basis:
 
 ```cf3
@@ -392,7 +516,6 @@ bundle agent one
 files:
 
   "/tmp/xyz"
-
        create => "true",
        action => log;
 }
@@ -404,14 +527,72 @@ log_level => "inform";
 ```
 
 ### Change detection: tripwires
-
-Doing a change detection scan is a convergent process, but it can still detect changes
-and present the data in a compressed format that is often more convenient than a full-scale
-audit. The result is less precise, but there is a trade-off between precision and cost.
-
-To make a change tripwire, use a files promise, as shown below:
-
-```cf3
+Doing
+a
+change
+detection
+scan
+is
+a
+convergent
+process,
+but
+it
+can
+still
+detect
+changes
+and
+present
+the
+data
+in
+a
+compressed
+format
+that
+is
+often
+more
+convenient
+than
+a
+full
+-
+scale
+audit
+.
+The
+result
+is
+less
+precise,
+but
+there
+is
+a
+trade
+-
+off
+between
+precision
+and
+cost
+.
+To
+make
+a
+change
+tripwire,
+use
+a
+files
+promise,
+as
+shown
+below:
+``
+`cf3
 body common control
 {
 bundlesequence  => { "testbundle"  };

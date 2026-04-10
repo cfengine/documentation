@@ -42,7 +42,7 @@ bundle agent __main__
 {
   vars:
     "msg"
-      string => execresult( "/bin/echo Hello world!", "useshell" ),
+      string => execresult("/bin/echo Hello world!", "useshell"),
       meta => { "simulate_safe" };
 }
 ```
@@ -181,36 +181,30 @@ method bundle.
 ```cf3
 body common control
 {
-  bundlesequence  => { "testbundle"  };
+  bundlesequence => { "testbundle" };
   version => "1.2.3";
 }
-
 #################################
-
 body agent control
 {
   abortbundleclasses => { "invalid.*" };
 }
-
 #################################
-
 bundle agent testbundle
 {
   vars:
     "userlist"
       slist => { "xyz", "mark", "jeang", "jonhenrik", "thomas", "eben" };
+
   methods:
-    "any"
-      usebundle => subtest("$(userlist)");
+    "any" usebundle => subtest("$(userlist)");
 }
-
 #################################
-
 bundle agent subtest(user)
 {
   classes:
-    "invalid"
-      not => regcmp("[a-z]{4}","$(user)");
+    "invalid" not => regcmp("[a-z]{4}", "$(user)");
+
   reports:
     !invalid::
       "User name $(user) is valid at exactly 4 letters";
@@ -725,7 +719,7 @@ body common control
 
 body agent control
 {
-  environment => { "A=123", "B=456", "PGK_PATH=/tmp"};
+  environment => { "A=123", "B=456", "PGK_PATH=/tmp" };
 }
 
 bundle agent one
@@ -795,8 +789,10 @@ kill and restart its attempt to keep a promise.
 ```cf3
 body action example
 {
-  ifelapsed   => "120"; # 2 hours
-  expireafter => "240"; # 4 hours
+  ifelapsed => "120";
+  # 2 hours
+  expireafter => "240";
+  # 4 hours
 }
 ```
 
@@ -924,7 +920,8 @@ another which is not tied to a specific time.
 ```cf3
 body agent control
 {
-  ifelapsed => "180";   # 3 hours
+  ifelapsed => "180";
+  # 3 hours
 }
 ```
 
@@ -1013,7 +1010,6 @@ number of outgoing connections to `cf-serverd`.
 
 ```cf3
 # client side
-
 body agent control
 {
   maxconnections => "1000";
@@ -1095,10 +1091,12 @@ The mode string may be symbolic or numerical, like `chmod`.
 **Example:**
 
 ```cf3
-body agent control {
+body agent control
+{
   # Override the default directory create mode to 0755 (it defaults to 0700 if
   # not specified)
-  default_directory_create_mode => "a+rx"; # Can also use octets 0755
+  default_directory_create_mode => "a+rx";
+  # Can also use octets 0755
 }
 ```
 

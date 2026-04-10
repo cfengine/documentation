@@ -157,23 +157,15 @@ Normal ordering for packages is the following:
 ```cf3
 bundle agent packages
 {
-vars:
+  vars:
+    # Test the simplest case -- leave everything to the yum smart manager
+    "match_package"
+      slist => { "apache2", "apache2-mod_php5", "apache2-prefork", "php5" };
 
- # Test the simplest case -- leave everything to the yum smart manager
-
- "match_package" slist => {
-                          "apache2",
-                          "apache2-mod_php5",
-                          "apache2-prefork",
-                          "php5"
-                          };
-packages:
-
-  "$(match_package)"
-
-     package_policy => "add",
-     package_method => yum;
-
+  packages:
+    "$(match_package)"
+      package_policy => "add",
+      package_method => yum;
 }
 ```
 
@@ -282,10 +274,16 @@ Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with `$`
 prevents CFEngine from appending the package name to the string.
-
-**Type:** `string`
-
-**Allowed input range:** `.+`
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+`.+`
 
 **Example:**
 
@@ -306,11 +304,19 @@ promiser, when the architecture is not specified using the
 `package_architectures` list. It is an [unanchored][unanchored] regular expression that
 contains exactly one parenthesized back-reference which marks the location in
 the _promiser_ at which the architecture is specified.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
-
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
 **Example:**
 
 ```cf3
@@ -340,11 +346,12 @@ the operating system's package manager to handle dependencies.
 
 **Allowed input range:**
 
-```
+``
+`
 individual
 bulk
-```
-
+`
+``
 **Example:**
 
 ```cf3
@@ -366,10 +373,16 @@ Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with `$`
 prevents CFEngine from appending the package name to the string.
-
-**Type:** `string`
-
-**Allowed input range:** `.+`
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+`.+`
 
 **Example:**
 
@@ -398,13 +411,22 @@ of the already installed package. Additionally, if
 `package_file_repositories` is defined, `$(firstrepo)` can be prepended
 to expand the first repository containing the package. For example:
 `$(firstrepo)$(name)-$(version)-$(arch).msi`.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
-
-**Example:**
-
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
+**
+Example:
+**
 ```cf3
 body package_method freebsd
 
@@ -427,10 +449,19 @@ If specified, CFEngine will assume that the package installation occurs
 by filename and will search the named paths for a package matching the
 pattern `package_name_convention`. If found the name will be prefixed to
 the package name in the package commands.
-
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+**
+Type:
+**
+`slist`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
 
 **Example:**
 
@@ -451,10 +482,19 @@ list command that are actually installed packages. If all
 the lines match, then the regex can be set to `.*`, however most package
 systems output prefix lines and a variety of human padding that needs to
 be ignored.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
 
 **Example:**
 
@@ -476,12 +516,19 @@ lists architectures explicitly for multiarch-enabled packages.
 In case this command is not provided, CFEngine treats all packages
 without explicit architecture set as belonging to implicit default
 architecture.
-
-**Type:** `string`
-
-**Allowed input range:** `"?(/.*)`
-
-**Example:**
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+`"?(/.*)`
+**
+Example:
+**
 
 ```cf3
 body package_method dpkg
@@ -502,10 +549,19 @@ package architecture string
 An [unanchored][unanchored] regular expression that contains exactly one parenthesized back
 reference that marks the location in the listed package at which the
 architecture is specified.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
 
 **Example:**
 
@@ -531,11 +587,16 @@ Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with `$`
 prevents CFEngine from appending the package name to the string.
-
-**Type:** `string`
-
-**Allowed input range:** `.+`
-
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+`.+`
 **Example:**
 
 ```cf3
@@ -553,11 +614,19 @@ package name string
 
 An [unanchored][unanchored] regular expression that contains exactly one parenthesized back
 reference which marks the name of the package from the package listing.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
-
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
 **Example:**
 
 ```cf3
@@ -575,13 +644,22 @@ package_list_name_regex    => "([^\s]+).*";
 Not all package managers update their list information from source
 automatically. This command allows a separate update command to be
 executed at intervals determined by `package_list_update_ifelapsed`.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
-
-**Example:**
-
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
+**
+Example:
+**
 ```cf3
 body package_method xyz
 {
@@ -596,13 +674,19 @@ package_list_update_ifelapsed => "240";        # 4 hours
 
 **Description:** The [`ifelapsed`][Promise types#ifelapsed]
 locking time in between updates of the package list
-
-**Type:** `int`
-
-**Allowed input range:** `-99999999999,9999999999`
-
-**Example:**
-
+**
+Type:
+**
+`int`
+**
+Allowed
+input
+range:
+**
+`-99999999999,9999999999`
+**
+Example:
+**
 ```cf3
 body package_method xyz
 {
@@ -621,11 +705,19 @@ package version string
 This [unanchored][unanchored] regular expression should contain exactly one parenthesized
 back-reference that marks the version string of packages listed as
 installed.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
-
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
 **Example:**
 
 ```cf3
@@ -653,10 +745,19 @@ specified, `package_delete_convention` may be used to specify a
 different convention for the delete command.
 
 If this is not defined, it defaults to the value `$(name)`.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
 
 **Example:**
 
@@ -676,10 +777,19 @@ This [unanchored][unanchored] regular expression is only used when the _promiser
 not only the name of the package, but its version and architecture also. In
 that case, this expression should contain a single parenthesized
 back-reference to extract the name of the package from the string.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
 
 **Example:**
 
@@ -697,12 +807,22 @@ package_name_regex => "([^\s]).*";
 An [anchored][anchored] regular expression to match output from a package verification
 command. If the output string matches this expression, the package is deemed
 broken.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
-
-**Example:**
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
+**
+Example:
+**
 
 ```cf3
 body package_method xyz
@@ -720,11 +840,16 @@ failure
 
 For use if a package verification command uses the return code as the
 signal for a failed package verification.
-
-**Type:** `int`
-
-**Allowed input range:** `-99999999999,9999999999`
-
+**
+Type:
+**
+`int`
+**
+Allowed
+input
+range:
+**
+`-99999999999,9999999999`
 **Example:**
 
 ```cf3
@@ -743,10 +868,19 @@ extract update architecture string
 A few package managers keep a separate notion of patches, as opposed to
 package updates. OpenSuSE, for example, is one of these. This provides
 an analogous command struct to the packages for patch updates.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
 
 **Example:**
 
@@ -767,11 +901,16 @@ named package. If only patching of all packages is supported then
 consider running that as a batch operation in `commands`. Alternatively
 one can end the command string with a `$` symbol, which CFEngine will
 interpret as an instruction to not append package names.
-
-**Type:** `string`
-
-**Allowed input range:** `.+`
-
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+`.+`
 **Example:**
 
 ```cf3
@@ -790,10 +929,19 @@ already installed
 A few package managers keep a separate notion of patches, as opposed to
 package updates. OpenSuSE, for example, is one of these. This provides an
 analogous command struct to the packages for patch updates.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
+**
+Type:
+**
+`string`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
 
 **Example:**
 
@@ -847,9 +995,12 @@ an analogous command struct to the packages for patch updates.
 ```cf3
 body package_method zypper
 {
-package_patch_name_regex    => "[^|]+\|\s+([^\s]+).*";
+package_patch_name_regex
+=>
+"[^|]+\|\s+([^\s]+).*";
 }
-```
+``
+`
 
 #### package_patch_version_regex
 
@@ -869,9 +1020,12 @@ an analogous command struct to the packages for patch updates.
 ```cf3
 body package_method zypper
 {
-package_patch_version_regex => "[^|]+\|[^|]+\|\s+([^\s]+).*";
+package_patch_version_regex
+=>
+"[^|]+\|[^|]+\|\s+([^\s]+).*";
 }
-```
+``
+`
 
 #### package_update_command
 
@@ -898,9 +1052,12 @@ carry out the update.
 ```cf3
 body package_method zypper
 {
-package_update_command => "/usr/bin/zypper -non-interactive update";
+package_update_command
+=>
+"/usr/bin/zypper -non-interactive update";
 }
-```
+``
+`
 
 #### package_verify_command
 
@@ -932,12 +1089,16 @@ prevents CFEngine from appending the package name to the string.
 
 ```cf3
 body package_method rpm
-
 {
-package_verify_command => "/bin/rpm -V";
-package_noverify_returncode => "-1";
+package_verify_command
+=>
+"/bin/rpm -V";
+package_noverify_returncode
+=>
+"-1";
 }
-```
+``
+`
 
 #### package_version_regex
 
@@ -958,9 +1119,12 @@ version string in the promiser.
 ```cf3
 body package_method rpm
 {
-package_version_regex => "[^\s]+ ([^.]+).*";
+package_version_regex
+=>
+"[^\s]+ ([^.]+).*";
 }
-```
+``
+`
 
 #### package_multiline_start
 
@@ -981,12 +1145,19 @@ record.
 ```cf3
 body package_method solaris (pkgname, spoolfile, adminfile)
 {
-package_changes => "individual";
-package_list_command => "/usr/bin/pkginfo -l";
-package_multiline_start    =>  "\s*PKGINST:\s+[^\s]+";
+package_changes
+=>
+"individual";
+package_list_command
+=>
+"/usr/bin/pkginfo -l";
+package_multiline_start
+=>
+"\s*PKGINST:\s+[^\s]+";
 # ...
 }
-```
+``
+`
 
 #### package_commands_useshell
 
@@ -1033,9 +1204,12 @@ v2, and v2 is not less than v1).
 body package_method deb
 {
 # ...
-package_version_less_command => "dpkg --compare-versions ${v1} lt ${v2}";
+package_version_less_command
+=>
+"dpkg --compare-versions ${v1} lt ${v2}";
 }
-```
+``
+`
 
 **History:** Was introduced in 3.4.0 (2012)
 
@@ -1070,9 +1244,12 @@ v2, and v2 is not less than v1).
 body package_method deb
 {
 # ...
-package_version_equal_command => "dpkg --compare-versions ${v1} eq ${v2}";
+package_version_equal_command
+=>
+"dpkg --compare-versions ${v1} eq ${v2}";
 }
-```
+``
+`
 
 **Notes:**
 

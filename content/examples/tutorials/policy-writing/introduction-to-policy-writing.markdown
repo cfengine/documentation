@@ -28,7 +28,7 @@ Bundles are re-usable and blocks of CFEngine policy. The following defines a _bu
 ```cf3
 bundle agent example
 {
-  # ...
+# ...
 }
 ```
 
@@ -51,8 +51,7 @@ The following policy ensures the existence of the `/tmp/hello-world` file:
 bundle agent example
 {
   files:
-    "/tmp/hello-world"
-      create => "true";
+    "/tmp/hello-world" create => "true";
 }
 ```
 
@@ -86,13 +85,13 @@ bundle agent example
 {
   files:
     linux::
-      "/tmp/hello-world"
-        create => "true";
+      "/tmp/hello-world" create => "true";
 }
 
 bundle agent __main__
 {
-  methods: "example";
+  methods:
+    "example";
 }
 ```
 

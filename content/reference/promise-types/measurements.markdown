@@ -26,27 +26,25 @@ bundle monitor self_watch
   measurements:
     # Follow a special process over time
     # using CFEngine's process cache to avoid resampling
-
     # Example content from /var/cfengine/state/cf_rootprocs
     #USER                             PID         PPID          PGID          %CPU         %MEM        VSZ        NI         RSS    TTY      NLWP STIME     ELAPSED     TIME COMMAND
     #root                             19103       1             19103         0.2          2.1         71716      0          10676  ?           1 18:09       40:13 00:00:06 /var/cfengine/bin/cf-monitord --no-fork
-
     # match_value:
     #root \s+                         [0-9.]+ \s+ [0-9.]+  \s+  [0-9.]+ \s+   [0-9.]+ \s+  [0-9.]+ \s+ [0-9]+ \s+ [0-9]+ \s+ ([0-9]+) .*"
-
-     "/var/cfengine/state/cf_rootprocs"
-
-        handle => "cf_monitord_RSS",
-        stream_type => "file",
-        data_type => "int",
-        history_type => "weekly",
-        units => "kb",
-        match_value => proc_value(".*cf-monitord.*",
-        "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*"),
-        comment => "The amount of memory (RSS or Resident Set Size) cf-monitored is consuming";
+    "/var/cfengine/state/cf_rootprocs"
+      handle => "cf_monitord_RSS",
+      stream_type => "file",
+      data_type => "int",
+      history_type => "weekly",
+      units => "kb",
+      match_value => proc_value(
+        ".*cf-monitord.*",
+        "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*"
+      ),
+      comment => "The amount of memory (RSS or Resident Set Size) cf-monitored is consuming";
 }
 
-body match_value proc_value(x,y)
+body match_value proc_value(x, y)
 {
   select_line_matching => "$(x)";
   select_multiline_policy => "sum";
@@ -66,7 +64,6 @@ bundle monitor watch_diskspace
       history_type => "static",
       units => "device",
       match_value => file_systems;
-
 }
 
 body match_value file_systems
@@ -306,10 +303,11 @@ This attribute is mutually exclusive of `select_line_number`.
 **Type:** `string`
 
 **Allowed input range:** `.*`
-
-**Example:**
-
-```cf3
+**
+Example:
+**
+``
+`cf3
 # Editing
 
 body location example
@@ -318,7 +316,6 @@ select_line_matching => "Expression match.* whole line";
 }
 
 # Measurement promises
-
 body match_value example
 {
 select_line_matching => "Expression match.* whole line";
@@ -334,10 +331,11 @@ This is mutually exclusive of [`select_line_matching`][measurements#select_line_
 **Type:** `int`
 
 **Allowed input range:** `0,99999999999`
-
-**Example:**
-
-```cf3
+**
+Example:
+**
+``
+`cf3
 body match_value find_line
 {
 select_line_number => "2";
@@ -356,10 +354,11 @@ it may match a partial string.
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
-
-**Example:**
-
-```cf3
+**
+Example:
+**
+``
+`cf3
 body match_value free_memory
 {
 select_line_matching => "MemFree:.*";
@@ -383,10 +382,11 @@ This makes a log pattern promise equivalent to something like tail -f
 logfile | grep pattern in Unix parlance.
 
 **Type:** [`boolean`][boolean]
-
-**Example:**
-
-```cf3
+**
+Example:
+**
+``
+`cf3
 bundle monitor watch
 {
 measurements:
@@ -438,10 +438,11 @@ sum
 first
 last
 ```
-
-**Example:**
-
-```cf3
+**
+Example:
+**
+``
+`cf3
 body match_value myvalue(xxx)
 {
  select_line_matching => ".*$(xxx).*";

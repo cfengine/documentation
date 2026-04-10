@@ -14,10 +14,9 @@ The promise object referred to is a literal string of text.
 ```cf3
 bundle edit_xml example
 {
-set_text:
-  "text content to replace existing text, including whitespace, within selected node"
-
-    select_xpath => "/Server/Service/Engine/Host/Alias";
+  set_text:
+    "text content to replace existing text, including whitespace, within selected node"
+      select_xpath => "/Server/Service/Engine/Host/Alias";
 }
 ```
 

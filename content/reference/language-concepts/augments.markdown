@@ -180,14 +180,15 @@ Is equivalent to this policy:
 ```cf3
 body file control
 {
-      namespace => "MyNamespace";
+  namespace => "MyNamespace";
 }
+
 bundle agent my_bundle
 {
   vars:
-      "Variable"
-        string => "value",
-        comment => "An optional note about why this variable is important";
+    "Variable"
+      string => "value",
+      comment => "An optional note about why this variable is important";
 }
 ```
 
@@ -211,14 +212,15 @@ Is equivalent to this policy:
 ```cf3
 body file control
 {
-      namespace => "MyNamespace";
+  namespace => "MyNamespace";
 }
+
 bundle agent my_bundle
 {
   vars:
-      "Variable"
-        string => "value",
-        meta => { "inventory", "attribute_name=My Inventory" };
+    "Variable"
+      string => "value",
+      meta => { "inventory", "attribute_name=My Inventory" };
 }
 ```
 

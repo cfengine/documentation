@@ -9,12 +9,12 @@ aliases:
 ```cf3
 body file control
 {
-namespace => "name1";
+  namespace => "name1";
 }
 
 bundle agent private
 {
-  #...
+#...
 }
 ```
 
@@ -56,15 +56,20 @@ body file control
 
 bundle agent reports_top_down
 {
-  reports: "Hello world:";
+  reports:
+    "Hello world:";
 
-  commands: "/bin/echo hi";
+  commands:
+    "/bin/echo hi";
 
-  reports: "bye:";
+  reports:
+    "bye:";
 }
+
 bundle agent __main__
 {
-      methods: "reports_top_down";
+  methods:
+    "reports_top_down";
 }
 
 body agent control
@@ -152,7 +157,7 @@ to switch to in order to protect the current file from duplicate definitions.
 ```cf3
 body file control
 {
-namespace => "name1";
+  namespace => "name1";
 }
 ```
 

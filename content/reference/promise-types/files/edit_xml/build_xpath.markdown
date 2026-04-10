@@ -17,8 +17,8 @@ referred to is a literal string representation of an XPath.
 ```cf3
 bundle edit_xml example
 {
-build_xpath:
-   "/Server/Service/Engine/Host";
+  build_xpath:
+    "/Server/Service/Engine/Host";
 }
 ```
 

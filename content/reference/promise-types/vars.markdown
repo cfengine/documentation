@@ -404,12 +404,16 @@ bundle agent example_meta_vars
     "myvar" string => "my value";
 
   reports:
-    "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*example_meta_vars.*" ) );
-
+    "$(with)"
+      with => string_mustache(
+        "{{%-top-}}", variablesmatching_as_data(".*example_meta_vars.*")
+      );
 }
+
 bundle agent __main__
 {
-   methods: "example_meta_vars";
+  methods:
+    "example_meta_vars";
 }
 ```
 
@@ -438,17 +442,22 @@ bundle agent example_variable_injection
     "cant_push_this.myvar" string => "my value";
 
   reports:
-    "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*myvar.*" ) );
-
+    "$(with)"
+      with => string_mustache(
+        "{{%-top-}}", variablesmatching_as_data(".*myvar.*")
+      );
 }
+
 bundle agent cant_push_this
 {
-      # If a bundle is defined, you can't simply define a variable in it from
-      # another bundle, unless the variable is defined via the module protocol.
+# If a bundle is defined, you can't simply define a variable in it from
+# another bundle, unless the variable is defined via the module protocol.
 }
+
 bundle agent __main__
 {
-   methods: "example_variable_injection";
+  methods:
+    "example_variable_injection";
 }
 ```
 
@@ -503,20 +512,27 @@ bundle agent example_variable_injection_via_module
 {
   commands:
     "/bin/echo '^context=undefined$(const.n)=myvar=my value" module => "true";
-    "/bin/echo '^context=cant_push_this$(const.n)=myvar=my value" module => "true";
+
+    "/bin/echo '^context=cant_push_this$(const.n)=myvar=my value"
+      module => "true";
 
   reports:
-    "$(with)" with => string_mustache( "{{%-top-}}", variablesmatching_as_data( ".*myvar.*" ) );
-
+    "$(with)"
+      with => string_mustache(
+        "{{%-top-}}", variablesmatching_as_data(".*myvar.*")
+      );
 }
+
 bundle agent cant_push_this
 {
-    # If a bundle is defined, you can't simply define a variable in it from
-    # another bundle, unless the variable is defined via the module protocol.
+# If a bundle is defined, you can't simply define a variable in it from
+# another bundle, unless the variable is defined via the module protocol.
 }
+
 bundle agent __main__
 {
-   methods: "example_variable_injection_via_module";
+  methods:
+    "example_variable_injection_via_module";
 }
 ```
 
@@ -547,14 +563,16 @@ This example policy illustrates how augments defines variables in the def bundle
 bundle common def
 {
   vars:
-    "some_var"
-      string => "My value for $(this.promiser) defined in Policy";
+    "some_var" string => "My value for $(this.promiser) defined in Policy";
 }
+
 bundle agent __main__
 {
   reports:
     "$(with)"
-      with => string_mustache( "{{%-top-}}", variablesmatching_as_data( "default:def.*") );
+      with => string_mustache(
+        "{{%-top-}}", variablesmatching_as_data("default:def.*")
+      );
 }
 ```
 
@@ -580,16 +598,17 @@ This example policy illustrates how policy will, by default, re-define variables
 bundle common def
 {
   vars:
-    "some_var"
-      string => "My value for $(this.promiser) defined in Policy";
-    "my_var"
-      string => "My value for $(this.promiser) defined in Policy";
+    "some_var" string => "My value for $(this.promiser) defined in Policy";
+    "my_var" string => "My value for $(this.promiser) defined in Policy";
 }
+
 bundle agent __main__
 {
   reports:
     "$(with)"
-      with => string_mustache( "{{%-top-}}", variablesmatching_as_data( "default:def.*") );
+      with => string_mustache(
+        "{{%-top-}}", variablesmatching_as_data("default:def.*")
+      );
 }
 ```
 
@@ -615,22 +634,22 @@ This example policy illustrates how policy can be instrumented to avoid re-defin
 bundle common def
 {
   vars:
-    "some_var"
-      string => "My value for $(this.promiser) defined in Policy";
+    "some_var" string => "My value for $(this.promiser) defined in Policy";
 
     # Here we set my_var if it has not yet been defined (as in the case where
     # augments would define it before the policy was evaluated).
-
     "my_var"
       string => "My value for $(this.promiser) defined in Policy",
-      unless => isvariable( $(this.promiser) );
-
+      unless => isvariable($(this.promiser));
 }
+
 bundle agent __main__
 {
   reports:
     "$(with)"
-      with => string_mustache( "{{%-top-}}", variablesmatching_as_data( "default:def.*") );
+      with => string_mustache(
+        "{{%-top-}}", variablesmatching_as_data("default:def.*")
+      );
 }
 ```
 

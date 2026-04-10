@@ -39,11 +39,11 @@ times and output capture to `WORKDIR/outputs` and relay via email.
 ```cf3
 body executor control
 {
-    splaytime  => "5";
-    mailto     => "cfengine@example.org";
-    mailfrom   => "cfengine@$(host).example.org";
-    smtpserver => "localhost";
-    schedule   => { "Min00", "Min30" }
+  splaytime => "5";
+  mailto => "cfengine@example.org";
+  mailfrom => "cfengine@$(host).example.org";
+  smtpserver => "localhost";
+  schedule => { "Min00", "Min30" }
 }
 ```
 
@@ -73,7 +73,7 @@ this threshold. This will reset the timer.
 ```cf3
 body executor control
 {
-agent_expireafter => "120";
+  agent_expireafter => "120";
 }
 ```
 
@@ -115,7 +115,7 @@ See the syslog manual pages.
 ```cf3
 body executor control
 {
-executorfacility => "LOG_USER";
+  executorfacility => "LOG_USER";
 }
 ```
 
@@ -165,8 +165,8 @@ different from the previous run for an email to be generated.
 ```cf3
 body executor control
 {
-    # Ignore agent execution emails about permission errors.
-    mailfilter_exclude => { ".*Permission denied.*" };
+  # Ignore agent execution emails about permission errors.
+  mailfilter_exclude => { ".*Permission denied.*" };
 }
 ```
 
@@ -197,8 +197,8 @@ different from the previous run for an email to be generated.
 ```cf3
 body executor control
 {
-    # Only include reports in agent execution emails.
-    mailfilter_include => { "R:.*" };
+  # Only include reports in agent execution emails.
+  mailfilter_include => { "R:.*" };
 }
 ```
 
@@ -219,7 +219,7 @@ body executor control
 ```cf3
 body executor control
 {
-    mailfrom => "mrcfengine@example.org";
+  mailfrom => "mrcfengine@example.org";
 }
 ```
 
@@ -247,7 +247,7 @@ viewed on demand. A reference to the appropriate file is given.
 ```cf3
 body executor control
 {
-mailmaxlines => "100";
+  mailmaxlines => "100";
 }
 ```
 
@@ -271,7 +271,7 @@ architecture.
 ```cf3
 body executor control
 {
-    mailsubject => "CFEngine report ($(sys.fqhost))";
+  mailsubject => "CFEngine report ($(sys.fqhost))";
 }
 ```
 
@@ -294,7 +294,7 @@ The address to whom email is sent if an smtp host is configured.
 ```cf3
 body executor control
 {
-    mailto => "cfengine_alias@example.org";
+  mailto => "cfengine_alias@example.org";
 }
 ```
 
@@ -332,7 +332,9 @@ function may be affected by changing the `schedule`.
 ```cf3
 body executor control
 {
-schedule => { "Min00", "(Evening|Night).Min15", "Min30", "(Evening|Night).Min45" };
+  schedule => {
+    "Min00", "(Evening|Night).Min15", "Min30", "(Evening|Night).Min45"
+  };
 }
 ```
 
@@ -358,7 +360,7 @@ localhost and point this to localhost.
 ```cf3
 body executor control
 {
-    smtpserver => "smtp.example.org";
+  smtpserver => "smtp.example.org";
 }
 ```
 
@@ -400,7 +402,7 @@ The CFEngine default policy sets `splaytime` to 1.
 ```cf3
 body executor control
 {
-    splaytime => "2";
+  splaytime => "2";
 }
 ```
 
@@ -427,7 +429,7 @@ body executor control
 ```cf3
 body executor control
 {
-    runagent_socket_allow_users => { "yoda", "obi-wan" };
+  runagent_socket_allow_users => { "yoda", "obi-wan" };
 }
 ```
 

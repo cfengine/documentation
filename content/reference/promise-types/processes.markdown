@@ -32,16 +32,16 @@ This is an example showing how to restart a splunk process owned by root:
 bundle agent example
 {
   processes:
-      "splunkd"
-        process_select => by_owner( "root" ),
-        handle => "example_splunk_stop_gracefully",
-        process_stop => "/opt/splunkforwarder/bin/splunk stop",
-        comment => "Find splunkd processes owned by root. Stop it gracefully
+    "splunkd"
+      process_select => by_owner("root"),
+      handle => "example_splunk_stop_gracefully",
+      process_stop => "/opt/splunkforwarder/bin/splunk stop",
+      comment => "Find splunkd processes owned by root. Stop it gracefully
                     with the internal splunk binary.";
 
-      "splunkd"
-        restart_class => "splunk_not_running",
-        comment => "Set splunk_not_running class if we cant find any root owned
+    "splunkd"
+      restart_class => "splunk_not_running",
+      comment => "Set splunk_not_running class if we cant find any root owned
 		    splunkd processes so that we can restart it using a
                     commands promise";
 
@@ -117,7 +117,7 @@ the number of processes matching the other criteria is kept.
 ```cf3
 body process_count example
 {
-in_range_define => { "class1", "class2" };
+  in_range_define => { "class1", "class2" };
 }
 ```
 
@@ -139,7 +139,7 @@ the promise is considered kept.
 ```cf3
 body process_count example
 {
-match_range => irange("10","50");
+  match_range => irange("10", "50");
 }
 ```
 
@@ -159,7 +159,7 @@ failure to be kept.
 ```cf3
 body process_count example(s)
 {
-out_of_range_define => { "process_anomaly", "anomaly_$(s)"};
+  out_of_range_define => { "process_anomaly", "anomaly_$(s)" };
 }
 ```
 
@@ -190,11 +190,9 @@ the end of line.
 
 ```cf3
 body process_select example
-
 {
-command => "cf-.*";
-
-process_result => "command";
+  command => "cf-.*";
+  process_result => "command";
 }
 ```
 
@@ -211,8 +209,8 @@ process_result => "command";
 ```cf3
 body process_select example
 {
-pid => irange("1","10");
-process_result => "pid";
+  pid => irange("1", "10");
+  process_result => "pid";
 }
 ```
 
@@ -232,8 +230,8 @@ process
 ```cf3
 body process_select example
 {
-pgid => irange("1","10");
-process_result => "pgid";
+  pgid => irange("1", "10");
+  process_result => "pgid";
 }
 ```
 
@@ -253,8 +251,8 @@ process
 ```cf3
 body process_select example
 {
-ppid => irange("407","511");
-process_result => "ppid";
+  ppid => irange("407", "511");
+  process_result => "ppid";
 }
 ```
 
@@ -274,7 +272,7 @@ a process
 ```cf3
 body process_select example
 {
-priority => irange("-5","0");
+  priority => irange("-5", "0");
 }
 ```
 
@@ -314,13 +312,12 @@ together.
 
 ```cf3
 body process_select proc_finder(p)
-
 {
-process_owner  => { "avahi", "bin" };
-command        => "$(p)";
-pid            => irange("100","199");
-vsize          => irange("0","1000");
-process_result => "command.(process_owner|vsize).!pid";
+  process_owner => { "avahi", "bin" };
+  command => "$(p)";
+  pid => irange("100", "199");
+  vsize => irange("0", "1000");
+  process_result => "command.(process_owner|vsize).!pid";
 }
 ```
 
@@ -340,7 +337,7 @@ process, in kilobytes
 ```cf3
 body process_select example
 {
-  rsize => irange("4000","8000");
+  rsize => irange("4000", "8000");
 }
 ```
 
@@ -362,7 +359,7 @@ have status fields.
 ```cf3
 body process_select example
 {
-status => "Z";
+  status => "Z";
 }
 ```
 
@@ -383,7 +380,7 @@ hour off. This is for now a bug to be fixed.
 ```cf3
 body process_select example
 {
-stime_range => irange(ago(0,0,0,1,0,0),now);
+  stime_range => irange(ago(0, 0, 0, 1, 0, 0), now);
 }
 ```
 
@@ -405,7 +402,7 @@ This is total accumulated time for a process.
 ```cf3
 body process_select example
 {
-ttime_range => irange(0,accumulated(0,1,0,0,0,0));
+  ttime_range => irange(0, accumulated(0, 1, 0, 0, 0, 0));
 }
 ```
 
@@ -427,7 +424,7 @@ all have tty '?'.
 ```cf3
 body process_select example
 {
-tty => "pts/[0-9]+";
+  tty => "pts/[0-9]+";
 }
 ```
 
@@ -445,7 +442,7 @@ process
 ```cf3
 body process_select example
 {
-threads => irange(1,5);
+  threads => irange(1, 5);
 }
 ```
 
@@ -469,7 +466,7 @@ Size (Windows 2008), or VM Size (Windows XP).
 ```cf3
 body process_select example
 {
-vsize => irange("4000","9000");
+  vsize => irange("4000", "9000");
 }
 ```
 

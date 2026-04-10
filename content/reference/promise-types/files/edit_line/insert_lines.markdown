@@ -30,10 +30,9 @@ incorrect:
 ```cf3
 bundle edit_line x
 {
-insert_lines:
-
-  "line one" location => myloc;
-  "line two" location => myloc;
+  insert_lines:
+    "line one" location => myloc;
+    "line two" location => myloc;
 }
 
 body location myloc
@@ -53,9 +52,8 @@ should be used:
 ```cf3
 bundle edit_line x
 {
-insert_lines:
-
- "line one$(const.n)line two" location => myloc;
+  insert_lines:
+    "line one$(const.n)line two" location => myloc;
 }
 ```
 
@@ -64,11 +62,9 @@ Or:
 ```cf3
 bundle edit_line x
 {
-insert_lines:
-
-  "line one
-line two"
-  location => myloc;
+  insert_lines:
+    "line one
+line two" location => myloc;
 }
 ```
 
@@ -100,21 +96,18 @@ $(mon.www_in)
 ```cf3
 bundle agent testbundle
 {
-files:
-
-  "/home/mark/tmp/file_based_on_template"
-
-       create    => "true",
-       edit_line => expand_me_from("/tmp/source_template");
+  files:
+    "/home/mark/tmp/file_based_on_template"
+      create => "true",
+      edit_line => expand_me_from("/tmp/source_template");
 }
 
 bundle edit_line expand_me_from(template)
 {
-insert_lines:
-   "$(template)"
-
-          insert_type => "file",
-       expand_scalars => "true";
+  insert_lines:
+    "$(template)"
+      insert_type => "file",
+      expand_scalars => "true";
 }
 ```
 
@@ -171,22 +164,22 @@ This was added in CFEngine 3.5.x.
 ```cf3
 bundle edit_line lynryd_skynyrd
 {
- vars:
+  vars:
     "keepers" slist => { "Won't you give me", "Gimme three steps" };
 
- insert_lines:
+  insert_lines:
+    "And you'll never see me no more" insert_type => "literal";
 
-     "And you'll never see me no more"
-       insert_type => "literal";    # the default
-
-     "/song/lyrics"
-       insert_type => "file",  # read selected lines from /song/lyrics
-       insert_select => keep("@{keepers}");
+    # the default
+    "/song/lyrics"
+      insert_type => "file",
+      # read selected lines from /song/lyrics
+      insert_select => keep("@{keepers}");
 }
 
 body insert_select keep(s)
 {
-insert_if_startwith_from_list => { "@(s)" };
+  insert_if_startwith_from_list => { "@(s)" };
 }
 ```
 
@@ -228,7 +221,7 @@ location in the primary file.
 ```cf3
 body insert_select example
 {
-insert_if_startwith_from_list => { "find_me_1", "find_me_2" };
+  insert_if_startwith_from_list => { "find_me_1", "find_me_2" };
 }
 ```
 
@@ -252,7 +245,7 @@ file being edited.
 ```cf3
 body insert_select example
 {
-insert_if_not_startwith_from_list => { "find_me_1", "find_me_2" };
+  insert_if_not_startwith_from_list => { "find_me_1", "find_me_2" };
 }
 ```
 
@@ -278,7 +271,7 @@ or the promiser is a multi-line block.
 ```cf3
 body insert_select example
 {
-insert_if_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
+  insert_if_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
 }
 ```
 
@@ -302,7 +295,7 @@ edited.
 ```cf3
 body insert_select example
 {
-insert_if_not_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
+  insert_if_not_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
 }
 ```
 
@@ -328,7 +321,7 @@ location in the primary file.
 ```cf3
 body insert_select example
 {
-insert_if_contains_from_list => { "find_me_1", "find_me_2" };
+  insert_if_contains_from_list => { "find_me_1", "find_me_2" };
 }
 ```
 
@@ -352,7 +345,7 @@ found in the secondary file, it is inserted into the file being edited.
 ```cf3
 body insert_select example
 {
-insert_if_not_contains_from_list => { "find_me_1", "find_me_2" };
+  insert_if_not_contains_from_list => { "find_me_1", "find_me_2" };
 }
 ```
 
@@ -385,7 +378,7 @@ after
 ```cf3
 body location append
 {
-before_after => "before";
+  before_after => "before";
 }
 ```
 
@@ -415,7 +408,7 @@ last
 ```cf3
 body location example
 {
-first_last => "last";
+  first_last => "last";
 }
 ```
 
@@ -434,16 +427,14 @@ that is, it is [anchored][anchored].
 
 ```cf3
 # Editing
-
 body location example
 {
-select_line_matching => "Expression match.* whole line";
+  select_line_matching => "Expression match.* whole line";
 }
-
 # Measurement promises
 body match_value example
 {
-select_line_matching => "Expression match.* whole line";
+  select_line_matching => "Expression match.* whole line";
 }
 ```
 
@@ -499,10 +490,8 @@ exact_match
 ```cf3
 bundle edit_line insert_service(service, filename)
 {
-insert_lines:
-
-  "$(service).* $(filename)"
-
+  insert_lines:
+    "$(service).* $(filename)"
       whitespace_policy => { "ignore_trailing", "ignore_embedded" };
 }
 ```

@@ -22,8 +22,7 @@ bundle agent debian_hosts
 {
   vars:
     am_policy_hub::
-      "host_list"
-        slist => hostswithgroup( "Linux", "name" );
+      "host_list" slist => hostswithgroup("Linux", "name");
 
   files:
     am_policy_hub::

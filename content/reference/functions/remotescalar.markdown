@@ -41,12 +41,12 @@ vars:
 ```cf3
 bundle server access
 {
-access:
-  "value of my test_scalar, can expand variables here - $(sys.host)"
-    handle => "test_scalar",
-    comment => "Grant access to contents of test_scalar VAR",
-    resource_type => "literal",
-    admit => { "127.0.0.1" };
+  access:
+    "value of my test_scalar, can expand variables here - $(sys.host)"
+      handle => "test_scalar",
+      comment => "Grant access to contents of test_scalar VAR",
+      resource_type => "literal",
+      admit => { "127.0.0.1" };
 }
 ```
 

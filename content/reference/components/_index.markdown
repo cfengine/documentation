@@ -27,24 +27,13 @@ affect the behavior of all the components.
 
 ```cf3
 body common control
-
 {
-inputs  => {
-           "update.cf",
-           "library.cf"
-           };
-
-bundlesequence  => {
-                   update("policy_host.domain.tld"),
-                   "main",
-                   "cfengine2"
-                   };
-
-goal_categories => { "goals", "targets", "milestones" };
-goal_patterns   => { "goal_.*", "target.*" };
-
-output_prefix => "cfengine>";
-version => "1.2.3";
+  inputs => { "update.cf", "library.cf" };
+  bundlesequence => { update("policy_host.domain.tld"), "main", "cfengine2" };
+  goal_categories => { "goals", "targets", "milestones" };
+  goal_patterns => { "goal_.*", "target.*" };
+  output_prefix => "cfengine>";
+  version => "1.2.3";
 }
 ```
 
@@ -70,13 +59,8 @@ A `bundlesequence` may also be specified using the `-b` or
 
 ```cf3
 body common control
-
 {
-bundlesequence  => {
-                   update("policy_host.domain.tld"),
-                   "main",
-                   "cfengine2"
-                   };
+  bundlesequence => { update("policy_host.domain.tld"), "main", "cfengine2" };
 }
 ```
 
@@ -101,11 +85,28 @@ others::
 
   bundlesequence => { "main", "otherstuff" };
 ```
-
-If you want to add a basic common sequence to all sequences, then
-use global variable lists to do this:
-
-```cf3
+If
+you
+want
+to
+add
+a
+basic
+common
+sequence
+to
+all
+sequences,
+then
+use
+global
+variable
+lists
+to
+do
+this:
+``
+`cf3
 body common control
 {
 webservers::
@@ -150,11 +151,20 @@ facilities.
 
 **Type:** `float`
 
-**Default value:** none (no limit)
-
-**Example:**
-
-```cf3
+**
+Default
+value:
+**
+none
+(
+no
+limit
+)
+**
+Example:
+**
+``
+`cf3
 body common control
 
 {
@@ -218,10 +228,10 @@ body common control
 {
 domain => "example.org";
 }
-```
+``
+`
 
 ### evaluation_order
-
 **Description:** Controls the evaluation order of promises within a bundle.
 
 This setting allows you to change how `cf-agent` executes promises. By default, CFEngine uses a `classic` evaluation order, where promises are executed in a predefined order based on their type (e.g., `vars` before `files`, `files` before `packages`, etc.). This is the historical behavior of CFEngine.
@@ -243,10 +253,16 @@ body common control
 {
   evaluation_order => "top_down";
 }
-```
+``
+`
 
-**See also:** [`evaluation_order` in `body agent control`][cf-agent#evaluation_order], [Policy style guide on promise ordering][Policy style guide#Promise ordering]
-
+**See also:** [`
+evaluation_order
+` in `
+body
+agent
+control
+`][cf-agent#evaluation_order], [Policy style guide on promise ordering][Policy style guide#Promise ordering]
 **History:**
 
 - Introduced in CFEngine 3.27.0
@@ -271,10 +287,10 @@ body common control
 {
 goal_patterns => { "goal_.*", "target.*" };
 }
-```
+``
+`
 
 **History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)
-
 ### ignore_missing_bundles
 
 **Description:** Determines whether to ignore missing bundles.
@@ -352,13 +368,24 @@ body common control
 {
 inputs  => {
            "update.cf",
-           "library.cf"
-           };
+"library.cf"
+};
 }
-```
+``
+`
 
-**See also:** [`inputs`][file control#inputs] in `body file control`, [`default:control_common.inputs`](/reference/special-variables/control_common/#defaultcontrol_commoninputs)
-
+**See also:** [`
+inputs
+`][file control#inputs] in `
+body
+file
+control
+`, [`
+default:
+control_common
+.
+inputs
+`](/reference/special-variables/control_common/#defaultcontrol_commoninputs)
 **Notes:**
 
 If no filenames are specified, no other filenames will be included in the
@@ -397,10 +424,15 @@ body common control
 {
 lastseenexpireafter => "72";
 }
-```
+``
+`
 
-**See also:** [hostsseen()][hostsseen], [cf-hub][cf-hub], [`default:control_common.lastseenexpireafter`](/reference/special-variables/control_common/#defaultcontrol_commonlastseenexpireafter)
-
+**See also:** [hostsseen()][hostsseen], [cf-hub][cf-hub], [`
+default:
+control_common
+.
+lastseenexpireafter
+`](/reference/special-variables/control_common/#defaultcontrol_commonlastseenexpireafter)
 **History:** Added in CFEngine 3.0.0
 
 ### output_prefix
@@ -418,10 +450,10 @@ body common control
 {
 output_prefix => "my_cf3";
 }
-```
+``
+`
 
 **Notes:**
-
 On native Windows versions of CFEngine (Enterprise), this
 string is also prefixed messages in the event log.
 
@@ -444,10 +476,10 @@ body common control
 {
     package_inventory => { "apt_get" };
 }
-```
+``
+`
 
 ### package_module
-
 **Description:** The default package module body to use.
 
 Defines the default package module body to use for [package promises][packages],
@@ -464,10 +496,10 @@ body common control
 {
     package_module => "apt_get";
 }
-```
+``
+`
 
 ### protocol_version
-
 **Description:** Defines the protocol to use for all outgoing connections.
 
 {{< CFEngine_promise_attribute(undefined) >}}
@@ -505,13 +537,14 @@ body common control
 
 {
 common::
-
-require_comments => "true";
+require_comments
+=>
+"true";
 }
-```
+``
+`
 
 ### site_classes
-
 **Description:** A `site_classes` contains classes that will represent
 geographical site locations for hosts. These should be defined elsewhere in
 the configuration in a classes promise.
@@ -536,10 +569,10 @@ body common control
 {
 site_classes => { "datacenters","datacentres"  }; # locations is by default
 }
-```
+``
+`
 
 **History:** Was introduced in version 3.2.0, Nova 2.1.0 (2011)
-
 ### syslog_host
 
 **Description:** The `syslog_host` contains the name or address of a
@@ -562,10 +595,10 @@ body common control
 syslog_host => "syslog.example.org";
 syslog_port => "514";
 }
-```
+``
+`
 
 ### syslog_port
-
 **Description:** The value of `syslog_port` represents the port number
 of a UDP syslog service.
 
@@ -586,10 +619,10 @@ body common control
 syslog_host => "syslog.example.org";
 syslog_port => "514";
 }
-```
+``
+`
 
 ### system_log_level
-
 **Description:** The minimum log level required for log messages to go to the system log (e.g. syslog, Windows Event Log).
 
 **Type:** `string`
@@ -607,14 +640,22 @@ body common control
 {
 @if minimum_version(3.18.1)
   windows::
-    system_log_level => "critical";
-  cfengine::
+system_log_level
+=>
+"critical";
+cfengine:
+:
 @endif
 }
-```
+``
+`
 
-**See also:** [`default:control_common.system_log_level`](/reference/special-variables/control_common/#defaultcontrol_commonsystem_log_level)
-
+**See also:** [`
+default:
+control_common
+.
+system_log_level
+`](/reference/special-variables/control_common/#defaultcontrol_commonsystem_log_level)
 **History:**
 
 - Introduced in 3.19.0, 3.18.1
@@ -635,10 +676,29 @@ body common control
     # Use one of these ciphers when making outbound connections
     tls_ciphers => "AES128-SHA";
 }
-```
+``
+`
 
-**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted], [`default:control_common.tls_ciphers`](/reference/special-variables/control_common/#defaultcontrol_commontls_ciphers)
-
+**See also:** [`
+protocol_version
+`][Components#protocol_version], [`
+allowciphers
+`][cf-serverd#allowciphers], [`
+tls_min_version
+`][Components#tls_min_version], [`
+allowtlsversion
+`][cf-serverd#allowtlsversion], [`
+encrypt
+`][files#encrypt], [`
+logencryptedtransfers
+`][cf-serverd#logencryptedtransfers], [`
+ifencrypted
+`][access#ifencrypted], [`
+default:
+control_common
+.
+tls_ciphers
+`](/reference/special-variables/control_common/#defaultcontrol_commontls_ciphers)
 **History:** Introduced in CFEngine 3.7.0
 
 ### tls_min_version
@@ -653,10 +713,29 @@ body common control
     # Allow only TLSv1.1 or higher for outgoing connections
     tls_min_version => "1.1";
 }
-```
+``
+`
 
-**See also:** [`protocol_version`][Components#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_ciphers`][Components#tls_ciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`ifencrypted`][access#ifencrypted], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`default:control_common.tls_min_version`](/reference/special-variables/control_common/#defaultcontrol_commontls_min_version)
-
+**See also:** [`
+protocol_version
+`][Components#protocol_version], [`
+allowciphers
+`][cf-serverd#allowciphers], [`
+tls_ciphers
+`][Components#tls_ciphers], [`
+allowtlsversion
+`][cf-serverd#allowtlsversion], [`
+encrypt
+`][files#encrypt], [`
+ifencrypted
+`][access#ifencrypted], [`
+logencryptedtransfers
+`][cf-serverd#logencryptedtransfers], [`
+default:
+control_common
+.
+tls_min_version
+`](/reference/special-variables/control_common/#defaultcontrol_commontls_min_version)
 **History:** Introduced in CFEngine 3.7.0
 
 ### version
@@ -681,10 +760,10 @@ body common control
 {
 version => "1.2.3";
 }
-```
+``
+`
 
 ## Deprecated attributes in body common control
-
 The following attributes were functional in previous versions
 of CFEngine, but today they are deprecated, either because
 their functionality is being handled trasparently or because

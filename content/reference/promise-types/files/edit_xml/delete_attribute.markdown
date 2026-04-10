@@ -15,9 +15,8 @@ deleted.
 ```cf3
 bundle edit_xml example
 {
-delete_attribute:
-  "attribute name"
-    select_xpath => "/Server/Service/Engine/Host";
+  delete_attribute:
+    "attribute name" select_xpath => "/Server/Service/Engine/Host";
 }
 ```
 

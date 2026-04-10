@@ -15,20 +15,21 @@ body common control
   bundlesequence => { "install_packages" };
   inputs => { "libraries/cfengine_stdlib.cf" };
 }
-
-bundle agent install_packages
+bundle
+agent
+install_packages
 {
-  vars:
-    "desired_packages" slist => { # list of packages we want"ntp", "lynx" };
-
-  packages:
-    "$(desired_packages)"
-      # operate on listed packages
-      package_policy => "add",
-      # What to do with packages: install them.
-      package_method => generic;
-  # Infer package manager (e.g. apt, yum) from the OS.
-}
+vars:
+"desired_packages"
+  slist => {
+    # list of packages we want"ntp", "lynx" };
+    packages:"$(desired_packages)"# operate on listed packagespackage_policy =>
+    "add",
+    # What to do with packages: install them.
+    package_method
+    => generic;
+    # Infer package manager (e.g. apt, yum) from the OS.
+  }
 ```
 
 Caution: package management is a dirty business. If things don't go smoothly

@@ -12,12 +12,14 @@ default.
 ```cf3
 bundle common g
 {
-classes:
+  classes:
+    "one" expression => "any";
 
-  "one" expression => "any"; # always defined
-  "two"; # always defined
+    # always defined
+    "two";
 
-  "client_network" expression => iprange("128.39.89.0/24");
+    # always defined
+    "client_network" expression => iprange("128.39.89.0/24");
 }
 ```
 
@@ -46,8 +48,7 @@ For example, the following promise defines the class `web` when a file exists:
 bundle agent example
 {
   classes:
-      "web"
-        if => fileexists("/etc/httpd/httpd.conf");
+    "web" if => fileexists("/etc/httpd/httpd.conf");
 }
 ```
 
@@ -226,10 +227,11 @@ The value specifies time in minutes.
 **Type:** `int`
 
 **Allowed input range:** `0,99999999999`
-
-**Example:**
-
-```cf3
+**
+Example:
+**
+``
+`cf3
 bundle common setclasses
 {
 classes:
@@ -254,10 +256,30 @@ non-standard naming facility.
 Persistent classes are always global and cannot be set to local
 by **scope** directive.
 
-For example, to create a conditional inclusion of costly class evaluations,
-put them into a separate bundle in a file `classes.cf`.
-
-```cf3
+For
+example,
+to
+create
+a
+conditional
+inclusion
+of
+costly
+class
+evaluations,
+put
+them
+into
+a
+separate
+bundle
+in
+a
+file
+`classes.cf`
+.
+``
+`cf3
 # promises.cf
 
 body common control
@@ -431,3 +453,4 @@ classes:
 
 "order_lunch" xor => { "Friday", "Hr11"}; # we get pizza every Friday
 ```
+

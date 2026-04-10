@@ -12,13 +12,12 @@ or available, but provides a context for variables where one is needed
 `edit_line` promise from a `files` promise).
 
 ```cf3
-bundle agent resolver(s,n)
+bundle agent resolver(s, n)
 {
-files:
-  "$(sys.resolv)"
-
-      create        => "true",
-      edit_line     => doresolv("@(this.s)","@(this.n)"),
+  files:
+    "$(sys.resolv)"
+      create => "true",
+      edit_line => doresolv("@(this.s)", "@(this.n)"),
       edit_defaults => reconstruct;
 }
 ```
@@ -48,20 +47,26 @@ This variable contains the name of the bundle from which the current bundle was 
 bundle agent main
 {
   methods:
-      "two";
+    "two";
 
   reports:
-     "in bundle $(this.bundle), caller $(with)"
-        with => ifelse( isvariable( "this.calling_bundle" ), "$(this.calling_bundle)",
-                        "bundlesequence" );
+    "in bundle $(this.bundle), caller $(with)"
+      with => ifelse(
+        isvariable("this.calling_bundle"),
+        "$(this.calling_bundle)",
+        "bundlesequence"
+      );
 }
 
 bundle agent two
 {
   reports:
-      "in bundle $(this.bundle), caller $(with)"
-        with => ifelse( isvariable( "this.calling_bundle" ), "$(this.calling_bundle)",
-                        "bundlesequence" );
+    "in bundle $(this.bundle), caller $(with)"
+      with => ifelse(
+        isvariable("this.calling_bundle"),
+        "$(this.calling_bundle)",
+        "bundlesequence"
+      );
 }
 ```
 
@@ -121,15 +126,15 @@ For example:
 ```cf3
 bundle agent find666
 {
-files:
-  "/home"
-    file_select => world_writeable,
-    transformer => "/bin/echo DETECTED $(this.promiser)",
-    depth_search => recurse("inf");
+  files:
+    "/home"
+      file_select => world_writeable,
+      transformer => "/bin/echo DETECTED $(this.promiser)",
+      depth_search => recurse("inf");
 
-  "/etc/.*"
-    file_select => world_writeable,
-    transformer => "/bin/echo DETECTED $(this.promiser)";
+    "/etc/.*"
+      file_select => world_writeable,
+      transformer => "/bin/echo DETECTED $(this.promiser)";
 }
 
 body file_select world_writeable
@@ -175,15 +180,15 @@ the value of the `service_policy` promise attribute . For example:
 ```cf3
 bundle agent example
 {
-    services:
-
-      "www"
-        service_policy => "start";
-        service_method => non_standard_services;
+  services:
+    "www"
+      service_policy => "start";
+      service_method => non_standard_services;
 }
+
 body service_method non_standard_services
 {
-  service_bundle => non_standard_services( $(this.service_policy) );
+  service_bundle => non_standard_services($(this.service_policy));
 }
 ```
 

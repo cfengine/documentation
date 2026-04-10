@@ -46,30 +46,29 @@ the following equivalent in the CFEngine language.
 bundle agent service_example
 {
   services:
-
     "Dnscache"
-      comment            => "Check services status of Dnscache",
-      handle             => "srv_Dnscache_windows",
-      service_policy     => "stop",
-      service_method     => force_deps,
-      action             => policy("fix"),
-      if                 => "windows";
+      comment => "Check services status of Dnscache",
+      handle => "srv_Dnscache_windows",
+      service_policy => "stop",
+      service_method => force_deps,
+      action => policy("fix"),
+      if => "windows";
 
     "ALG"
-      comment            => "Check services status of ALG",
-      handle             => "srv_ALG_windows",
-      service_policy     => "start",
-      service_method     => force_deps,
-      action             => policy("warn"),
-      if                 => "windows";
+      comment => "Check services status of ALG",
+      handle => "srv_ALG_windows",
+      service_policy => "start",
+      service_method => force_deps,
+      action => policy("warn"),
+      if => "windows";
 
     "RemoteRegistry"
-      comment            => "Check services status of ALG",
-      handle             => "srv_ALG_windows",
-      service_policy     => "start",
-      service_method     => force_deps,
-      action             => policy("fix"),
-      if                 => "Windows_Server_2008";
+      comment => "Check services status of ALG",
+      handle => "srv_ALG_windows",
+      service_policy => "start",
+      service_method => force_deps,
+      action => policy("fix"),
+      if => "Windows_Server_2008";
 }
 ```
 

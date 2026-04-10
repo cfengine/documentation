@@ -218,7 +218,7 @@ See the `options` attribute for details on what options do.
 ```cf3
 body package_module apt_get
 {
-    default_options => { "use_curl=1" };
+  default_options => { "use_curl=1" };
 }
 ```
 
@@ -241,8 +241,8 @@ The cache is always updated when CFEngine makes changes to the system.
 ```cf3
 body package_module apt_get
 {
-    # Query the package database only every four hours.
-    query_installed_ifelapsed => "240";
+  # Query the package database only every four hours.
+  query_installed_ifelapsed => "240";
 }
 ```
 
@@ -274,8 +274,8 @@ local query in order to update the cache from local, already downloaded data.
 ```cf3
 body package_module apt_get
 {
-    # Query package updates only every 24 hours.
-    query_updates_ifelapsed => "1440";
+  # Query package updates only every 24 hours.
+  query_updates_ifelapsed => "1440";
 }
 ```
 
@@ -305,8 +305,8 @@ path to the interpreter to use when running the package module.
 ```cf3
 body package_module apt_get
 {
-    # better use variable like $(def.python)
-    interpreter => "/usr/bin/python3.6";
+  # better use variable like $(def.python)
+  interpreter => "/usr/bin/python3.6";
 }
 ```
 
@@ -333,8 +333,8 @@ different attributes (e.g. `default_options`).
 ```cf3
 body package_module yum_all_repos
 {
-    module_path => "$(sys.workdir)/modules/packages/yum";
-    default_options => { "--enablerepo=*" };
+  module_path => "$(sys.workdir)/modules/packages/yum";
+  default_options => { "--enablerepo=*" };
 }
 ```
 
@@ -474,23 +474,20 @@ Enable a specific repository for a specific promise.
 bundle agent example
 {
   packages:
-
     rocky_8::
       # Enable the EPEL repo when making sure etc-keeper is installed
       # and up to date.
-
       "etckeeper-dnf"
-         policy => "present",
-         version => "latest",
-         options => { "enablerepo=powertools" };
+        policy => "present",
+        version => "latest",
+        options => { "enablerepo=powertools" };
 
       # Only consider updates from the main repositories for
       # httpd and disable all other repositories
-
       "httpd"
-         policy => "present",
-         version => "latest",
-         options => { "disablerepo=*", "enablerepo=UPDATES" };
+        policy => "present",
+        version => "latest",
+        options => { "disablerepo=*", "enablerepo=UPDATES" };
 }
 ```
 
@@ -665,7 +662,8 @@ that version from this particular MSI is installed):
 
 [Google Chrome]: https://cloud.google.com/chrome-enterprise/browser/download/#chrome-browser-update
 
-```cf3 {skip TODO}
+``
+`cf3 {skip TODO}
 packages:
   windows::
     "C:\GoogleChromeStandaloneEnterprise.msi"
@@ -675,17 +673,54 @@ packages:
     "Google Update Helper"
       policy => "absent",
       package_module => msiexec;
-```
+`
+``
+**
+History:
+**
 
-**History:**
-
-- Added in CFEngine 3.12.2 and 3.14.0
-
+-
+Added
+in
+CFEngine
+3
+.
+12
+.
+2
+and
+3
+.
+14
+.
+0
 ### snap
-
-Manage packages using [snap](https://en.wikipedia.org/wiki/Snappy_%28package_manager%29).
-
-```cf3
+Manage
+packages
+using
+[
+snap
+]
+(
+https:
+//
+en
+.
+wikipedia
+.
+org
+/
+wiki
+/
+Snappy_
+%
+28package_manager
+%
+29
+)
+.
+``
+`cf3
 bundle agent main
 {
   packages:

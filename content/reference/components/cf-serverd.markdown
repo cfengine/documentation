@@ -45,11 +45,10 @@ files must be granted in addition.
 ```cf3
 body server control
 {
-    allowconnects         => { "127.0.0.1" , "::1" };
-    allowallconnects      => { "127.0.0.1" , "::1" };
-
-    # Uncomment me under controlled circumstances
-    #trustkeysfrom         => { "127.0.0.1" , "::1" };
+  allowconnects => { "127.0.0.1", "::1" };
+  allowallconnects => { "127.0.0.1", "::1" };
+  # Uncomment me under controlled circumstances
+  #trustkeysfrom         => { "127.0.0.1" , "::1" };
 }
 ```
 
@@ -156,10 +155,11 @@ specify a list of hosts allowed to use the legacy protocol.
 For a list of possible ciphers, see man page for "openssl ciphers".
 
 {{< CFEngine_promise_attribute(AES256-GCM-SHA384:AES256-SHA) >}}
-
-**Example:**
-
-```cf3
+**
+Example:
+**
+``
+`cf3
 body server control
 {
       # Only this non-default cipher is to be accepted
@@ -188,10 +188,11 @@ this does not do anything as the classic protocol does not support TLS ciphers.
 **Description:** Minimum TLS version allowed for both **incoming** and **outgoing** (in the case of client initiated reporting with CFEngine Enterprise) connections using `cf-serverd`.
 
 {{< CFEngine_promise_attribute(1.0) >}}
-
-**Example:**
-
-```cf3
+**
+Example:
+**
+``
+`cf3
 body server control
 {
       # Allow only TLSv1.1 or higher
@@ -246,9 +247,11 @@ allowusers => { "cfengine", "root" };
 
 **Default value:** false
 
-**Example:**
-
-```cf3
+**
+Example:
+**
+``
+`cf3
 body server control
 {
   auditing => "true";
@@ -308,9 +311,15 @@ Connection to fe80:470:1d:a2f::2 5308 port [tcp/cfengine] succeeded!
 ```cf3
 body server control
 {
-  dynamicaddresses => { "192.168.1.100", "2001:db8::1" };
+dynamicaddresses
+=>
+{
+"192.168.1.100",
+"2001:db8::1"
+};
 }
-```
+``
+`
 
 **See also:** [`default:control_server.dynamicaddresses`](/reference/special-variables/control_server/#defaultcontrol_serverdynamicaddresses)
 
@@ -330,9 +339,12 @@ shell command at your own risk.
 ```cf3
 body server control
 {
-cfruncommand => "/var/cfengine/bin/cf-agent";
+cfruncommand
+=>
+"/var/cfengine/bin/cf-agent";
 }
-```
+``
+`
 
 **See also:** [cf-runagent][cf-runagent], [bundle resource_type in server access promises][access#resource_type]
 
@@ -401,42 +413,36 @@ The full configuration to enable client initiated reporting would look something
 #########################################################
 # Server config
 #########################################################
-
 body server control
 {
-  allowconnects         => { "10.10.10.0/24" , "::1" };
-  allowallconnects      => { "10.10.10.0/24" , "::1" };
-  trustkeysfrom         => { "10.10.10.0/24" , "::1" };
-
+  allowconnects => { "10.10.10.0/24", "::1" };
+  allowallconnects => { "10.10.10.0/24", "::1" };
+  trustkeysfrom => { "10.10.10.0/24", "::1" };
   call_collect_interval => "5";
 }
-
 #########################################################
-
 bundle server my_access_rules()
 {
   access:
-
     policy_server::
-
-     "collect_calls"
-         resource_type => "query",
-               admit   => { "10.10.10.10" },
-               comment => "The policy server must admit queries for collect_calls (client initated reporting).";
+      "collect_calls"
+        resource_type => "query",
+        admit => { "10.10.10.10" },
+        comment => "The policy server must admit queries for collect_calls (client initated reporting).";
 
     satellite_hosts::
-
       "delta"
-               comment => "Grant access to cfengine hub to collect report deltas",
-         resource_type => "query",
-               admit   => { "policy_hub" };
+        comment => "Grant access to cfengine hub to collect report deltas",
+        resource_type => "query",
+        admit => { "policy_hub" };
 
       "full"
-              comment => "Grant access to cfengine hub to collect full report dump",
+        comment => "Grant access to cfengine hub to collect full report dump",
         resource_type => "query",
-              admit   => { "policy_hub"  };
+        admit => { "policy_hub" };
 }
-```
+``
+`
 
 **Note:** In the [Masterfiles Policy Framework][Masterfiles Policy Framework], `body server control` and default access rules are found in `controls/cf_serverd.cf`.
 
@@ -485,9 +491,12 @@ attempts based on clock corruption.
 ```cf3
 body server control
 {
-denybadclocks => "true";
+denybadclocks
+=>
+"true";
 }
-```
+``
+`
 
 ### denyconnects
 
@@ -514,9 +523,15 @@ See also the warning about regular expressions in
 ```cf3
 body server control
 {
-denyconnects => { "badhost\.domain\.evil", "host3\.domain\.com" };
+denyconnects
+=>
+{
+"badhost\.domain\.evil",
+"host3\.domain\.com"
+};
 }
-```
+``
+`
 
 ### logallconnections
 
@@ -541,9 +556,12 @@ to syslog. These files are deemed to be particularly sensitive.
 ```cf3
 body server control
 {
-logencryptedtransfers => "true";
+logencryptedtransfers
+=>
+"true";
 }
-```
+``
+`
 
 **See also:** [`ifencrypted`][access#ifencrypted], [`encrypt`][files#encrypt], [`tls_ciphers`][Components#tls_ciphers], [`tls_min_version`][Components#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`protocol_version`][Components#protocol_version]
 
@@ -563,19 +581,17 @@ number of hosts bootstrapped to this hub**.
 
 ```cf3
 # client side
-
 body agent control
 {
-maxconnections => "1000";
+  maxconnections => "1000";
 }
-
 # server side
-
 body server control
 {
-maxconnections => "1000";
+  maxconnections => "1000";
 }
-```
+``
+`
 
 **See also:** [`default:control_server.maxconnections`](/reference/special-variables/control_server/#defaultcontrol_servermaxconnections)
 
@@ -596,18 +612,20 @@ maxconnections => "1000";
 ```cf3
 body hub control
 {
-port => "5308";
+port
+=>
+"5308";
 }
 
 body server control
 {
-specialhost::
- port => "5308";
-
-!specialhost::
- port => "5308";
+  specialhost::
+    port => "5308";
+  !specialhost::
+    port => "5308";
 }
-```
+``
+`
 
 **Notes:**
 
@@ -650,9 +668,12 @@ See syslog notes.
 ```cf3
 body server control
 {
-serverfacility => "LOG_USER";
+serverfacility
+=>
+"LOG_USER";
 }
-```
+``
+`
 
 ### skipverify
 
@@ -668,9 +689,15 @@ for backward compatibility.
 ```cf3
 body server control
 {
-skipverify => { "special_host.*", "192.168\..*" };
+skipverify
+=>
+{
+"special_host.*",
+"192.168\..*"
+};
 }
-```
+``
+`
 
 ### trustkeysfrom
 
@@ -702,9 +729,15 @@ See also the warning about regular expressions in
 ```cf3
 body server control
 {
-trustkeysfrom => { "10.0.1.1", "192.168.0.0/16"};
+trustkeysfrom
+=>
+{
+"10.0.1.1",
+"192.168.0.0/16"
+};
 }
-```
+``
+`
 
 **See also:** [`default:control_server.trustkeysfrom`](/reference/special-variables/control_server/#defaultcontrol_servertrustkeysfrom)
 
@@ -723,9 +756,12 @@ trustkeysfrom => { "10.0.1.1", "192.168.0.0/16"};
 ```cf3
 body server control
 {
-  hostnamekeys => "true";
+hostnamekeys
+=>
+"true";
 }
-```
+``
+`
 
 **See also:** [`default:control_server.hostnamekeys`](/reference/special-variables/control_server/#defaultcontrol_serverhostnamekeys)
 
@@ -750,14 +786,20 @@ not be affected. Changing this setting requires a restart of
 ```cf3
 body server control
 {
-
-  listening_host_context::
-    listen => "true";
-
-  !listening_host_context::
-    listen => "false";
+listening_host_context:
+:
+listen
+=>
+"true";
+!
+listening_host_context:
+:
+listen
+=>
+"false";
 }
-```
+``
+`
 
 **History:** Was introduced in 3.4.0, Enterprise 3.0 (2012)
 

@@ -35,8 +35,7 @@ bundle agent main
   reports:
     "Same patch version, but not exactly the same version string"
       if => and(
-        version_compare("$(a)", "=", "$(b)"),
-        not(strcmp("$(a)", "$(b)"))
+        version_compare("$(a)", "=", "$(b)"), not(strcmp("$(a)", "$(b)"))
       );
 }
 ```
@@ -47,14 +46,13 @@ CFEngine's version comparison functions also support partial version numbers, so
 bundle agent main
 {
   vars:
-    "patch_a"
-      string => "3.21.1";
-    "patch_b"
-      string => "4.0.1";
+    "patch_a" string => "3.21.1";
+    "patch_b" string => "4.0.1";
 
   reports:
     "patch_a is a part of the 3.21 series: 3.21 == $(patch_a)"
       if => version_compare("3.21", "==", "$(patch_a)");
+
     "patch_b is in major version 4: 4 == $(patch_b)"
       if => version_compare("4", "==", "$(patch_b)");
 }
@@ -66,10 +64,8 @@ Beware that using partial version numbers can lead to situations with surprising
 bundle agent main
 {
   reports:
-    "3.22.1 > 3.22" # No, won't be printed
-      if => version_compare("3.22.1", ">", "3.22");
-    "3.22.1 >= 3.22" # Yes, will be printed
-      if => version_compare("3.22.1", ">=", "3.22");
+    "3.22.1 > 3.22" if => version_compare("3.22.1", ">", "3.22");
+    "3.22.1 >= 3.22" if => version_compare("3.22.1", ">=", "3.22");
 }
 ```
 

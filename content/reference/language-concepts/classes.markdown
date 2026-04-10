@@ -255,18 +255,18 @@ This example defines a few soft classes local to the `myclasses` bundle.
 ```cf3
 bundle agent myclasses
 {
-classes:
-  "always";
-  "always2" expression => "any";
-  "solinux" expression => "linux||solaris";
-  "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
-  "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
+  classes:
+    "always";
+    "always2" expression => "any";
+    "solinux" expression => "linux||solaris";
+    "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
+    "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
 
-reports:
-  alt_class::
-    # This will only report "Boo!" on linux, solaris, or any system
-    # on which the file /etc/fstab exists
-    "Boo!";
+  reports:
+    alt_class::
+      # This will only report "Boo!" on linux, solaris, or any system
+      # on which the file /etc/fstab exists
+      "Boo!";
 }
 ```
 
@@ -314,14 +314,14 @@ bundle agent greetings
     Evening::
       "Good evening!";
 
-      "! any"::
+    "! any"::
       "This report won't ever be seen.";
 
-      # whitespace allowed only in 3.8 and later
-      Friday . Evening::
+    # whitespace allowed only in 3.8 and later
+    Friday . Evening::
       "It's Friday evening, TGIF!";
 
-      "Monday . Evening"::
+    "Monday . Evening"::
       "It's Monday evening.";
 }
 ```
@@ -355,16 +355,16 @@ variables:
 ```cf3
 bundle agent greetings
 {
- vars:
-  "myclassname" string => "Evening";
+  vars:
+    "myclassname" string => "Evening";
 
   reports:
-   "$(myclassname)"::
-     "Good evening!";
-     "What a wonderful sunset";
+    "$(myclassname)"::
+      "Good evening!";
+      "What a wonderful sunset";
 
-   any::
-     "Good evening too!" if => "$(myclassname)";
+    any::
+      "Good evening too!" if => "$(myclassname)";
 }
 ```
 
@@ -378,42 +378,39 @@ as the resulting expansion is a legal class expression.
 bundle agent example
 {
   vars:
-          "french_cities"  slist => { "toulouse", "paris" };
-          "german_cities"  slist => { "berlin" };
-          "italian_cities" slist => { "milan" };
-          "usa_cities"     slist => { "lawrence" };
+    "french_cities" slist => { "toulouse", "paris" };
+    "german_cities" slist => { "berlin" };
+    "italian_cities" slist => { "milan" };
+    "usa_cities" slist => { "lawrence" };
 
-          "all_cities" slist => { @(french_cities), @(german_cities), @(italian_cities), @(usa_cities) };
+    "all_cities"
+      slist => {
+        @(french_cities), @(german_cities), @(italian_cities), @(usa_cities)
+      };
 
   classes:
-      "italy"   or => { @(italian_cities) };
-      "germany" or => { @(german_cities) };
-      "france"  or => { @(french_cities) };
+    "italy" or => { @(italian_cities) };
+    "germany" or => { @(german_cities) };
+    "france" or => { @(french_cities) };
 
   reports:
     "It's $(sys.date) here";
 
     Morning.italy::
-      "Good morning from Italy",
-        if => "$(all_cities)";
+      "Good morning from Italy" if => "$(all_cities)";
 
     Afternoon.germany::
-      "Good afternoon from Germany",
-        if => "$(all_cities)";
+      "Good afternoon from Germany" if => "$(all_cities)";
 
     france::
-      "Hello from France",
-        if => "$(all_cities)";
+      "Hello from France" if => "$(all_cities)";
 
     france::
-      "IMPOSSSIBLE!  THIS WILL NOT PRINT!!!",
-        unless => "france";
+      "IMPOSSSIBLE!  THIS WILL NOT PRINT!!!" unless => "france";
 
     "$(all_cities)"::
       "Hello from $(all_cities)";
-
-    "Hello from $(all_cities), if edition",
-      if => "$(all_cities)";
+      "Hello from $(all_cities), if edition" if => "$(all_cities)";
 }
 ```
 
@@ -539,9 +536,15 @@ each file exists before calling `isnewerthan` would avoid this problem.
 If an operand is `true` it will succeed, **even though there doesn't have to be
 a class named** `true`. If an operand is `false` it will fail, **even though
 there may be a class named** `false`. This allows JSON booleans from data
-containers to be used in context expressions:
-
-```cf3
+containers
+to
+be
+used
+in
+context
+expressions:
+``
+`cf3
 bundle agent main
 {
     vars:
@@ -647,45 +650,65 @@ body common control
 
 bundle common global
 {
-    classes:
-        # The soft class "zero" is always satisfied,
-        # and is global in scope
-        "zero" expression => "any";
+classes:
+# The soft class "zero" is always satisfied,
+# and is global in scope
+"zero"
+expression
+=>
+"any";
 }
-
 #################################
-
 bundle agent local_one
 {
-    classes:
-        # The soft class "one" is always satisfied,
-        # and is local in scope to local_one
-        "one" expression => "any";
+  classes:
+    # The soft class "one" is always satisfied,
+    # and is local in scope to local_one
+    "one" expression => "any";
 }
-
 #################################
-
 bundle agent local_two
 {
-    classes:
-        # The soft class "two" is always satisfied,
-        # and is local in scope to ls_2
-        "two" expression => "any";
+  classes:
+    # The soft class "two" is always satisfied,
+    # and is local in scope to ls_2
+    "two" expression => "any";
 
-    reports:
-        zero.!one.two::
-            # This report will be generated
-            "Success";
+  reports:
+    zero.!one.two::
+      # This report will be generated
+      "Success";
 }
-```
+``
+`
 
-In this example, there are three bundles. One common bundle named `global`
-with a global scope. Two agent bundles define classes `one` and `two` which
+In this example, there are three bundles. One common bundle named `
+global
+`
+with a global scope. Two agent bundles define classes `
+one
+` and `
+two
+` which
 are local to those bundles.
 
-The `local_two` bundle promises a report "Success" which applies only if
-`zero.!one.two` evaluates to true. Within the `local_two` scope this evaluates
-to `true` because the `one` class is not set.
+The `
+local_two
+` bundle promises a report "Success" which applies only if
+`
+zero
+.!
+one
+.
+two
+` evaluates to true. Within the `
+local_two
+` scope this evaluates
+to `
+true
+` because the `
+one
+` class is not set.
 
 ## Persistence
 

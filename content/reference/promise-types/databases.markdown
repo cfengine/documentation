@@ -82,57 +82,47 @@ body database_server name
 ```cf3
 body common control
 {
-bundlesequence => { "databases" };
+  bundlesequence => { "databases" };
 }
 
 bundle agent databases
-
 {
-#commands:
-
-#  "/usr/bin/createdb cf_topic_maps",
-
-#        contain => as_user("mysql");
-
-databases:
-
-  "cf_topic_maps/topics"
-
-    database_operation => "create",
-    database_type => "sql",
-    database_columns => {
-                        "topic_name,varchar,256",
-                        "topic_comment,varchar,1024",
-                        "topic_id,varchar,256",
-                        "topic_type,varchar,256",
-                        "topic_extra,varchar,26"
-                        },
-
-    database_server => myserver;
-
+  #commands:
+  #  "/usr/bin/createdb cf_topic_maps",
+  #        contain => as_user("mysql");
+  databases:
+    "cf_topic_maps/topics"
+      database_operation => "create",
+      database_type => "sql",
+      database_columns => {
+        "topic_name,varchar,256",
+        "topic_comment,varchar,1024",
+        "topic_id,varchar,256",
+        "topic_type,varchar,256",
+        "topic_extra,varchar,26"
+      },
+      database_server => myserver;
 }
-
 ################################################
-
 body database_server myserver
 {
-any::
- db_server_owner => "postgres";
- db_server_password => "";
- db_server_host => "localhost";
- db_server_type => "postgres";
- db_server_connection_db => "postgres";
-none::
- db_server_owner => "root";
- db_server_password => "";
- db_server_host => "localhost";
- db_server_type => "mysql";
- db_server_connection_db => "mysql";
+  any::
+    db_server_owner => "postgres";
+    db_server_password => "";
+    db_server_host => "localhost";
+    db_server_type => "postgres";
+    db_server_connection_db => "postgres";
+  none::
+    db_server_owner => "root";
+    db_server_password => "";
+    db_server_host => "localhost";
+    db_server_type => "mysql";
+    db_server_connection_db => "mysql";
 }
 
 body contain as_user(x)
 {
-exec_owner => "$(x)";
+  exec_owner => "$(x)";
 }
 ```
 
@@ -203,14 +193,34 @@ db_server_host => "sqlserv.example.org";
 ```
 
 #### db_server_type
+**
+Description:
+**
+The
+`db_server_type`
+string
+represents
+the
+type
+of
+database
+server
+being
+used
+.
 
-**Description:** The `db_server_type` string represents the type of
-database server being used.
-
-**Type:** (menu option)
-
-**Allowed input range:**
-
+**
+Type:
+**
+(
+menu
+option
+)
+**
+Allowed
+input
+range:
+**
 ```
 postgres
 mysql
@@ -366,12 +376,43 @@ databases:
 
 In the case of the system registry on Windows, the rows represent data on
 data-value pairs. The currently supported types (the middle field) for the
-Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string)
-and `REG_DWORD` (double word).
-
-If a column value has a comma you can escape the comma with backslash `\,`.
-
-```cf3
+Windows
+registry
+are
+`REG_SZ`
+(
+string
+),
+`REG_EXPAND_SZ`
+(
+expandable
+string
+)
+and
+`REG_DWORD`
+(
+double
+word
+)
+.
+If
+a
+column
+value
+has
+a
+comma
+you
+can
+escape
+the
+comma
+with
+backslash
+`\,`
+.
+``
+`cf3
 bundle agent main
 # @brief Configure system variables for hosts that should not use a proxy
 {
@@ -392,20 +433,77 @@ bundle agent main
 
 **Description:** A `registry_exclude` slist contains regular expressions
 to ignore in key/value verification.
+During
+recursive
+Windows
+registry
+scanning,
+this
+option
+allows
+us
+to
+ignore
+keys
+of
+values
+matching
+a
+list
+of
+regular
+expressions
+.
+Some
+values
+in
+the
+registry
+are
+ephemeral
+and
+some
+should
+not
+be
+considered
+.
+This
+provides
+a
+convenient
+way
+of
+avoiding
+names
+.
+It
+is
+analogous
+to
+`exclude_dirs`
+for
+files
+.
 
-During recursive Windows registry scanning, this option allows us to ignore
-keys of values matching a list of regular expressions. Some values in the
-registry are ephemeral and some should not be considered. This provides a
-convenient way of avoiding names. It is analogous to `exclude_dirs` for
-files.
-
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
-
-**Example:**
-
-```cf3 {skip TODO}
+**
+Type:
+**
+`slist`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+)
+**
+Example:
+**
+``
+`cf3 {skip TODO}
 databases:
 
  "HKEY_LOCAL_MACHINE\SOFTWARE"

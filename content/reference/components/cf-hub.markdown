@@ -75,12 +75,9 @@ currently not supported.
 ```cf3
 body hub control
 {
-
   # Collect reports every at the top and half of the hour. Additionally collect
   # reports during the evening or night at Minute 45.
-
   hub_schedule => { "Min00", "Min30", "(Evening|Night).Min45" };
-
 }
 ```
 
@@ -108,7 +105,6 @@ body hub control
   # Configure network connection timeout when connecting to hosts
   # for querying reporting data.
   query_timeout => "10";
-
 }
 ```
 
@@ -146,16 +142,15 @@ If both are not specified (or `0`), the default is used.
 ```cf3
 body hub control
 {
-port => "5308";
+  port => "5308";
 }
 
 body server control
 {
-specialhost::
- port => "5308";
-
-!specialhost::
- port => "5308";
+  specialhost::
+    port => "5308";
+  !specialhost::
+    port => "5308";
 }
 ```
 
@@ -186,7 +181,7 @@ and minimize data transfer. The default value is 6 hours.
 ```cf3
 body hub control
 {
-client_history_timeout => 6;
+  client_history_timeout => 6;
 }
 ```
 
@@ -202,7 +197,7 @@ client_history_timeout => 6;
 ```cf3
 body hub control
 {
-export_zenoss => "/var/www/reports/summary.z";
+  export_zenoss => "/var/www/reports/summary.z";
 }
 ```
 

@@ -23,11 +23,8 @@ distinguish them from other output.
 bundle agent report
 {
   reports:
-
     loadavg_high::
-
-      "Processes:"
-         printfile => cat("$(sys.statedir)/cf_procs");
+      "Processes:" printfile => cat("$(sys.statedir)/cf_procs");
 }
 ```
 
@@ -41,9 +38,7 @@ bundle agent report
     "classes" slist => classesmatching("report_.*");
 
   reports:
-    "HI"
-      classes => scoped_classes_generic("bundle", "report");
-
+    "HI" classes => scoped_classes_generic("bundle", "report");
     "found class: $(classes)";
 }
 
@@ -51,11 +46,40 @@ body classes scoped_classes_generic(scope, x)
 # Define x prefixed/suffixed with promise outcome
 {
   scope => "$(scope)";
-  promise_repaired => { "promise_repaired_$(x)", "$(x)_repaired", "$(x)_ok", "$(x)_reached" };
-  repair_failed => { "repair_failed_$(x)", "$(x)_failed", "$(x)_not_ok", "$(x)_not_kept", "$(x)_not_repaired", "$(x)_reached" };
-  repair_denied => { "repair_denied_$(x)", "$(x)_denied", "$(x)_not_ok", "$(x)_not_kept", "$(x)_not_repaired", "$(x)_reached" };
-  repair_timeout => { "repair_timeout_$(x)", "$(x)_timeout", "$(x)_not_ok", "$(x)_not_kept", "$(x)_not_repaired", "$(x)_reached" };
-  promise_kept => { "promise_kept_$(x)", "$(x)_kept", "$(x)_ok", "$(x)_not_repaired", "$(x)_reached" };
+  promise_repaired => {
+    "promise_repaired_$(x)", "$(x)_repaired", "$(x)_ok", "$(x)_reached"
+  };
+  repair_failed => {
+    "repair_failed_$(x)",
+    "$(x)_failed",
+    "$(x)_not_ok",
+    "$(x)_not_kept",
+    "$(x)_not_repaired",
+    "$(x)_reached"
+  };
+  repair_denied => {
+    "repair_denied_$(x)",
+    "$(x)_denied",
+    "$(x)_not_ok",
+    "$(x)_not_kept",
+    "$(x)_not_repaired",
+    "$(x)_reached"
+  };
+  repair_timeout => {
+    "repair_timeout_$(x)",
+    "$(x)_timeout",
+    "$(x)_not_ok",
+    "$(x)_not_kept",
+    "$(x)_not_repaired",
+    "$(x)_reached"
+  };
+  promise_kept => {
+    "promise_kept_$(x)",
+    "$(x)_kept",
+    "$(x)_ok",
+    "$(x)_not_repaired",
+    "$(x)_reached"
+  };
 }
 ```
 
@@ -148,11 +172,9 @@ standard output.
 ```cf3
 bundle agent main
 {
-
   reports:
-
-      "$(sys.date),This is a report from $(sys.host)"
-        report_to_file => "/tmp/test_log";
+    "$(sys.date),This is a report from $(sys.host)"
+      report_to_file => "/tmp/test_log";
 }
 ```
 
@@ -174,30 +196,23 @@ Return values are limited to scalars.
 bundle agent main
 {
   methods:
-
-     "any"
-       usebundle => child,
-       useresult => "my_return_var";
+    "any"
+      usebundle => child,
+      useresult => "my_return_var";
 
   reports:
-
-     "My return was: '$(my_return_var[1])' and '$(my_return_var[2])' and '$(my_return_var[named])'";
+    "My return was: '$(my_return_var[1])' and '$(my_return_var[2])' and '$(my_return_var[named])'";
 }
 
 bundle agent child
 {
   reports:
+    # Map these indices into the useresult namespace
+    "this is a return value" bundle_return_value_index => "1";
+    "this is another return value" bundle_return_value_index => "2";
 
-   # Map these indices into the useresult namespace
-
-     "this is a return value"
-        bundle_return_value_index => "1";
-
-     "this is another return value"
-        bundle_return_value_index => "2";
-
-     "bundle_return_value_index is not required to be numerical"
-        bundle_return_value_index => "named";
+    "bundle_return_value_index is not required to be numerical"
+      bundle_return_value_index => "named";
 }
 ```
 

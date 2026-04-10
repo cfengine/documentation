@@ -71,25 +71,33 @@ will keep certain promises, just as different voices in an orchestra are
 assigned certain parts to play.
 
 ```cf3
-bundle agent service_catalogue # menu
+bundle agent service_catalogue
+# menu
 {
-methods:
-  any:: # selected by everyone
-     "everyone" usebundle => time_management,
-                comment => "Ensure clocks are synchronized";
-     "everyone" usebundle => garbage_collection,
-                comment => "Clear junk and rotate logs";
+  methods:
+    any::
+      # selected by everyone
+      "everyone"
+        usebundle => time_management,
+        comment => "Ensure clocks are synchronized";
 
-  mailservers:: # selected by hosts in class
-    "mail server"  -> { "goal_3", "goal_1", "goal_2" }
-                  usebundle => app_mail_postfix,
-                    comment => "The mail delivery agent";
-    "mail server"  -> goal_3,
-                  usebundle => app_mail_imap,
-                    comment => "The mail reading service";
-    "mail server"  -> goal_3,
-                  usebundle => app_mail_mailman,
-                    comment => "The mailing list handler";
+      "everyone"
+        usebundle => garbage_collection,
+        comment => "Clear junk and rotate logs";
+
+    mailservers::
+      # selected by hosts in class
+      "mail server" -> { "goal_3", "goal_1", "goal_2" }
+        usebundle => app_mail_postfix,
+        comment => "The mail delivery agent";
+
+      "mail server" -> goal_3,
+        usebundle => app_mail_imap,
+        comment => "The mail reading service";
+
+      "mail server" -> goal_3,
+        usebundle => app_mail_mailman,
+        comment => "The mailing list handler";
 }
 ```
 
@@ -106,12 +114,9 @@ standard methods, e.g. for editing files:
 ```cf3
 body common control
 {
-bundlesequence => {
-                  webserver("on"),
-                  dns("on"),
-                  security_set("on"),
-                  ftp("off")
-                  };
+  bundlesequence => {
+    webserver("on"), dns("on"), security_set("on"), ftp("off")
+  };
 }
 ```
 
@@ -127,22 +132,19 @@ bundles and methods from standard libraries, or creating your own.
 ```cf3
 bundle agent addpasswd
 {
-vars:
+  vars:
+    # want to set these values by the names of their array keys
+    "pwd[mark]" string => "mark:x:1000:100:Mark B:/home/mark:/bin/bash";
+    "pwd[fred]" string => "fred:x:1001:100:Right Said:/home/fred:/bin/bash";
+    "pwd[jane]" string => "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";
 
-  # want to set these values by the names of their array keys
-
-  "pwd[mark]" string => "mark:x:1000:100:Mark B:/home/mark:/bin/bash";
-  "pwd[fred]" string => "fred:x:1001:100:Right Said:/home/fred:/bin/bash";
-  "pwd[jane]" string => "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";
-
-files:
-
-  "/etc/passwd"           # Use standard library functions
-        create => "true",
-       comment => "Ensure listed users are present",
-         perms => mog("644","root","root"),
-     edit_line => append_users_starting("addpasswd.pwd");
-
+  files:
+    "/etc/passwd"
+      # Use standard library functions
+      create => "true",
+      comment => "Ensure listed users are present",
+      perms => mog("644", "root", "root"),
+      edit_line => append_users_starting("addpasswd.pwd");
 }
 ```
 
@@ -187,12 +189,9 @@ and off on your basic "stem cell" machines.
 ```cf3
 body agent control
 {
-bundlesequence => {
-                  webserver("on"),
-                  dns("on"),
-                  security_set("on"),
-                  ftp("off")
-                  };
+  bundlesequence => {
+    webserver("on"), dns("on"), security_set("on"), ftp("off")
+  };
 }
 ```
 
@@ -212,19 +211,16 @@ said process once its absence has been discovered and signalled.
 ```cf3
 bundle agent application_services
 {
-processes:
+  processes:
+    "sshd" restart_class => "start_ssh";
+    "httpd" restart_class => "start_spache";
 
-  "sshd"  restart_class => "start_ssh";
-  "httpd" restart_class => "start_spache";
+  commands:
+    start_ssh::
+      "/etc/init.d/sshd restart";
 
-commands:
-
- start_ssh::
-   "/etc/init.d/sshd restart";
-
- start_apache::
-   "/etc/init.d/apache restart";
-
+    start_apache::
+      "/etc/init.d/apache restart";
 }
 ```
 
@@ -235,18 +231,11 @@ of transparency. However, this is the power of abstraction.
 ```cf3
 bundle agent application_services
 {
-vars:
-
-  "service" slist => { "ssh", "apache", "mysql" };
-
- #
- # Apply the following promises to this list...
- #
-
-services:
-
-   "$(service)";
-
+  vars:
+    "service" slist => { "ssh", "apache", "mysql" };
+  # Apply the following promises to this list...
+  services:
+    "$(service)";
 }
 ```
 
@@ -264,31 +253,27 @@ system however. So how do we create this mythical resource abstraction layer? It
 is simple. Elsewhere we have defined basic settings.
 
 ```cf3
-bundle common res # abstraction layer
+bundle common res
+# abstraction layer
 {
-vars:
+  vars:
+    solaris::
+      "cfg_file[ssh]" string => "/etc/sshd_config";
+      "daemon[ssh] " string => "sshd";
+      "start[ssh] " string => "/etc/init.d/sshd restart";
 
-  solaris::
+    linux.SuSE::
+      "cfg_file[ssh]" string => "/etc/ssh/sshd_config";
+      "daemon[ssh] " string => "sshd";
+      "start[ssh] " string => "/etc/init.d/sshd restart";
 
-   "cfg_file[ssh]" string => "/etc/sshd_config";
-   "daemon[ssh] "  string => "sshd";
-   "start[ssh] "   string => "/etc/init.d/sshd restart";
+    default::
+      "cfg_file[ssh]" string => "/etc/sshd_config";
+      "daemon[ssh] " string => "sshd";
+      "start[ssh] " string => "/etc/init.d/sshd restart";
 
-  linux.SuSE::
-
-   "cfg_file[ssh]" string => "/etc/ssh/sshd_config";
-   "daemon[ssh] "  string => "sshd";
-   "start[ssh] "   string => "/etc/init.d/sshd restart";
-
-  default::
-
-   "cfg_file[ssh]" string => "/etc/sshd_config";
-   "daemon[ssh] "  string => "sshd";
-   "start[ssh] "   string => "/etc/init.d/sshd restart";
-
-classes:
-
-  "default" and => { "!SuSE", "solaris" };
+  classes:
+    "default" and => { "!SuSE", "solaris" };
 }
 ```
 
@@ -308,11 +293,13 @@ things look simple. Using CFEngine, you can create convergent orchestration.
 ```cf3
 bundle agent services
 {
-vars:
- "service" slist => { "dhcp", "ntp", "sshd" };
-methods:
- "any" usebundle => fix_service("$(service)"),
-         comment => "Make sure the basic application services are running";
+  vars:
+    "service" slist => { "dhcp", "ntp", "sshd" };
+
+  methods:
+    "any"
+      usebundle => fix_service("$(service)"),
+      comment => "Make sure the basic application services are running";
 }
 ```
 
@@ -329,32 +316,23 @@ versions, you can trace these comments to see your process details.
 ```cf3
 bundle agent fix_service(service)
 {
-files:
+  files:
+    "$(res.cfg_file[$(service)])"
+      # reserved_word => use std templates, e.g. cp(), p(), or roll your own
+      copy_from => cp("$(g.masterfiles)/$(service)", "policy_host.mydomain"),
+      perms => p("0600", "root", "root"),
+      classes => define("$(service)_restart", "failed"),
+      comment => "Copy a stock configuration file template from repository";
 
-  "$(res.cfg_file[$(service)])"
+  processes:
+    "$(res.daemon[$(service)])"
+      restart_class => canonify("$(service)_restart"),
+      comment => "Check that the server process is running...";
 
- #
- # reserved_word => use std templates, e.g. cp(), p(), or roll your own
- #
-     copy_from => cp("$(g.masterfiles)/$(service)","policy_host.mydomain"),
-         perms => p("0600","root","root"),
-       classes => define("$(service)_restart", "failed"),
-       comment => "Copy a stock configuration file template from repository";
-
-processes:
-
-  "$(res.daemon[$(service)])"
-
-     restart_class => canonify("$(service)_restart"),
-           comment => "Check that the server process is running...";
-
-commands:
-
-  "$(res.start[$(service)])"
-
-           comment => "Method for starting this service",
-                if => canonify("$(service)_restart");
-
+  commands:
+    "$(res.start[$(service)])"
+      comment => "Method for starting this service",
+      if => canonify("$(service)_restart");
 }
 ```
 
@@ -366,32 +344,26 @@ can extend this kind of pattern to implement other interfaces, all without low
 level programming.
 
 ```cf3
-#
 # Remove certain services from xinetd - for system hardening
-#
-
 bundle agent linux_harden_methods
 {
-vars:
+  vars:
+    "services"
+      slist => {
+        "chargen",
+        "chargen-udp",
+        "cups-lpd",
+        "finger",
+        "rlogin",
+        "rsh",
+        "talk",
+        "telnet",
+        "tftp"
+      };
 
-   "services" slist => {
-                       "chargen",
-                       "chargen-udp",
-                       "cups-lpd",
-                       "finger",
-                       "rlogin",
-                       "rsh",
-                       "talk",
-                       "telnet",
-                       "tftp"
-                       };
-methods:
-
-    #
+  methods:
     # for each $(services) in @(services) do disable_xinetd($(services))
-    #
-
-   "any"  usebundle => disable_xinetd("$(services)");
+    "any" usebundle => disable_xinetd("$(services)");
 }
 ```
 
@@ -400,32 +372,26 @@ implementing service disablement. For example, this simple interface to Linux's
 chkconfig is one approach, which need not be hard-coded in Ruby using Cfeninge.
 
 ```cf3
-#
 # For the standard library
-#
-
 bundle agent disable_xinetd(name)
 {
-vars:
-   "status"
+  vars:
+    "status" string => execresult("/sbin/chkconfig --list $(name)", "useshell");
 
-     string => execresult("/sbin/chkconfig --list $(name)", "useshell");
+  classes:
+    "on" expression => regcmp(".*on", "$(status)");
+    "off" expression => regcmp(".*off", "$(status)");
 
-classes:
-   "on"  expression => regcmp(".*on","$(status)");
-   "off" expression => regcmp(".*off","$(status)");
+  commands:
+    on::
+      "/sbin/chkconfig $(name) off" comment => "disable $(name) service";
 
-commands:
-   on::
-      "/sbin/chkconfig $(name) off",
-          comment => "disable $(name) service";
-
-reports:
-   on::
+  reports:
+    on::
       "disable $(name) service.";
-   off::
-      "$(name) has been already disabled. Don't need to perform the action.";
 
+    off::
+      "$(name) has been already disabled. Don't need to perform the action.";
 }
 ```
 
@@ -460,7 +426,7 @@ is the master bundlesequence
 ```cf3
 body common control
 {
-bundlesequence => { "bundle_one", "bundle_two", "bundle_three" };
+  bundlesequence => { "bundle_one", "bundle_two", "bundle_three" };
 }
 ```
 
@@ -478,12 +444,11 @@ _execute_ these bundles in the assumed order:
 ```cf3
 bundle agent a_bundle_subsequence
 {
-methods:
-  classes::
-   "any" usebundle => bundle_one("something");
-   "any" usebundle => bundle_two("something");
-   "any" usebundle => bundle_three("something");
-
+  methods:
+    classes::
+      "any" usebundle => bundle_one("something");
+      "any" usebundle => bundle_two("something");
+      "any" usebundle => bundle_three("something");
 }
 ```
 
@@ -492,12 +457,11 @@ Alternatively, the same effect can be achieved as follows.
 ```cf3
 bundle agent a_bundle_subsequence
 {
-methods:
-  classes::
-   "any" usebundle => generic_bundle("something","one");
-   "any" usebundle => generic_bundle("something","two");
-   "any" usebundle => generic_bundle("something","three");
-
+  methods:
+    classes::
+      "any" usebundle => generic_bundle("something", "one");
+      "any" usebundle => generic_bundle("something", "two");
+      "any" usebundle => generic_bundle("something", "three");
 }
 ```
 
@@ -506,13 +470,12 @@ Or ultimately:
 ```cf3
 bundle agent a_bundle_subsequence
 {
-vars:
-  "list" slist => { "one", "two", "three"};
+  vars:
+    "list" slist => { "one", "two", "three" };
 
-methods:
-  classes::
-   "any" usebundle => generic_bundle("something","$(list)");
-
+  methods:
+    classes::
+      "any" usebundle => generic_bundle("something", "$(list)");
 }
 ```
 
@@ -526,23 +489,18 @@ humans, as in this example:
 
 ```cf3
 bundle agent order
-
 {
-vars:
+  vars:
+    "list" slist => { "three", "four" };
 
- "list" slist => { "three", "four" };
+  commands:
+    ok_later::
+      "/bin/echo five";
 
-commands:
-
- ok_later::
-   "/bin/echo five";
-
- any::
-
-  "/bin/echo one"     classes => define("ok_later");
-  "/bin/echo two";
-  "/bin/echo $(list)";
-
+    any::
+      "/bin/echo one" classes => define("ok_later");
+      "/bin/echo two";
+      "/bin/echo $(list)";
 }
 ```
 
@@ -585,61 +543,55 @@ remoteclassesmatching imports the classes, with a prefix to the local system.
 ```cf3
 body common control
 {
-bundlesequence => { "overture" };
-inputs => { "cfengine_stdlib.cf" };
+  bundlesequence => { "overture" };
+  inputs => { "cfengine_stdlib.cf" };
 }
 
 body server control
-
 {
-allowconnects         => { "127.0.0.1" , "::1",};
-allowallconnects      => { "127.0.0.1" , "::1", };
-trustkeysfrom         => { "127.0.0.1" , "::1",};
+  allowconnects => { "127.0.0.1", "::1",  };
+  allowallconnects => { "127.0.0.1", "::1",  };
+  trustkeysfrom => { "127.0.0.1", "::1",  };
 }
-
 #######################################################
-
 bundle agent overture
 {
-classes:
-  "extended_context"
-     expression => remoteclassesmatching(".*did.*","127.0.0.1","yes","got");
+  classes:
+    "extended_context"
+      expression => remoteclassesmatching(
+        ".*did.*", "127.0.0.1", "yes", "got"
+      );
 
-files:
+  files:
+    "/etc/passwd"
+      create => "true",
+      classes => set_outcome_classes;
 
-   "/etc/passwd"
-     create => "true",
-    classes => set_outcome_classes;
+  reports:
+    got_did_task_one::
+      "task 1 complete";
 
-reports:
+    extended_context.got_did_task_two::
+      "task 2 complete";
 
- got_did_task_one::
-    "task 1 complete";
-
- extended_context.got_did_task_two::
-    "task 2 complete";
-
- extended_context.got_did_task_three::
-    "task 3 complete";
-
+    extended_context.got_did_task_three::
+      "task 3 complete";
 }
 
 body classes set_outcome_classes
 {
-promise_kept => { "did_task_one","did_task_two", "did_task_three" };
-promise_repaired => { "did_task_one","did_task_two", "did_task_three" };
-#cancel_kept => { "did_task_one" };
-persist_time => "10";
+  promise_kept => { "did_task_one", "did_task_two", "did_task_three" };
+  promise_repaired => { "did_task_one", "did_task_two", "did_task_three" };
+  #cancel_kept => { "did_task_one" };
+  persist_time => "10";
 }
 
 bundle server my_access_rules()
 {
-access:
-
-  "did.*"
-    resource_type => "context",
-    admit => { "127.0.0.1" };
-
+  access:
+    "did.*"
+      resource_type => "context",
+      admit => { "127.0.0.1" };
 }
 ```
 
@@ -665,66 +617,50 @@ bundle with a handle that matches the requested object.
 ```cf3
 body common control
 {
-bundlesequence => { "overture" };
-inputs => { "cfengine_stdlib.cf" };
+  bundlesequence => { "overture" };
+  inputs => { "cfengine_stdlib.cf" };
 }
 
 body server control
-
 {
-allowconnects         => { "127.0.0.1" , "::1",};
-allowallconnects      => { "127.0.0.1" , "::1", };
-trustkeysfrom         => { "127.0.0.1" , "::1",};
+  allowconnects => { "127.0.0.1", "::1",  };
+  allowallconnects => { "127.0.0.1", "::1",  };
+  trustkeysfrom => { "127.0.0.1", "::1",  };
 }
-
 #######################################################
-
 bundle agent overture
 {
-vars:
+  vars:
+    "remote" string => remotescalar("test_scalar", "127.0.0.1", "yes");
+    "know" string => hubknowledge("test_scalar");
+    "count_getty" string => hubknowledge("count_getty");
 
-  "remote" string => remotescalar("test_scalar","127.0.0.1","yes");
+  processes:
+    # Use the enumerated library body to count hosts running getty
+    "getty"
+      comment => "Count this host if a job is matched",
+      classes => enumerate("count_getty");
 
-  "know" string => hubknowledge("test_scalar");
-
-  "count_getty" string => hubknowledge("count_getty");
-
-processes:
-
-  # Use the enumerated library body to count hosts running getty
-
-  "getty"
-
-       comment => "Count this host if a job is matched",
-       classes => enumerate("count_getty");
-
-reports:
-
- !elsewhere::
-
-    "GOT remote scalar $(remote)";
-    "GOT knowedge scalar $(know)";
-    "GOT persistent scalar $(xyz)";
-
+  reports:
+    !elsewhere::
+      "GOT remote scalar $(remote)";
+      "GOT knowedge scalar $(know)";
+      "GOT persistent scalar $(xyz)";
 }
-
 #######################################################
-
 bundle server my_access_rules()
 {
-access:
+  access:
+    "value of my test_scalar, can expand variables here - $(sys.host)"
+      handle => "test_scalar",
+      comment => "Grant access to contents of test_scalar VAR",
+      resource_type => "literal",
+      admit => { "127.0.0.1" };
 
-  "value of my test_scalar, can expand variables here - $(sys.host)"
-    handle => "test_scalar",
-    comment => "Grant access to contents of test_scalar VAR",
-    resource_type => "literal",
-    admit => { "127.0.0.1" };
-
-  "XYZ"
-    resource_type => "variable",
-    handle => "XYZ",
-    admit => { "127.0.0.1" };
-
+    "XYZ"
+      resource_type => "variable",
+      handle => "XYZ",
+      admit => { "127.0.0.1" };
 }
 ```
 
@@ -771,55 +707,42 @@ of erring on the side of caution.
 #  to add host1 host2 host3 host4 as aliases to localhost
 #
 ############################################################
-
 body common control
 {
-bundlesequence => { "n_of_m_symphony" };
-inputs => { "cfengine_stdlib.cf" };
+  bundlesequence => { "n_of_m_symphony" };
+  inputs => { "cfengine_stdlib.cf" };
 }
-
 ############################################################
-
 bundle agent n_of_m_symphony
 {
-vars:
+  vars:
+    "count_compliant_hosts" string => hubknowledge("running_myprocess");
 
-  "count_compliant_hosts"  string => hubknowledge("running_myprocess");
+  classes:
+    "reboot" expression => isgreaterthan("$(count_compliant_hosts)", "20");
 
-classes:
+  processes:
+    "myprocess"
+      comment => "Count this host if a job is matched",
+      classes => enumerate("running_myprocess");
 
-  "reboot" expression => isgreaterthan("$(count_compliant_hosts)","20");
-
-processes:
-
-  "myprocess"
-
-       comment => "Count this host if a job is matched",
-       classes => enumerate("running_myprocess");
-
-commands:
-
-  reboot::
-
-     "/bin/shutdown now";
+  commands:
+    reboot::
+      "/bin/shutdown now";
 }
-
 #######################################################
-
 bundle server my_access_rules()
 {
-access:
+  access:
+    "value of my test_scalar, can expand variables here - $(sys.host)"
+      handle => "test_scalar",
+      comment => "Grant access to contents of test_scalar VAR",
+      resource_type => "literal",
+      admit => { "127.0.0.1" };
 
-  "value of my test_scalar, can expand variables here - $(sys.host)"
-    handle => "test_scalar",
-    comment => "Grant access to contents of test_scalar VAR",
-    resource_type => "literal",
-    admit => { "127.0.0.1" };
-
-  "running_myprocess"
-    resource_type => "variable",
-    admit => { "127.0.0.1" };
-
+    "running_myprocess"
+      resource_type => "variable",
+      admit => { "127.0.0.1" };
 }
 ```
 
@@ -851,125 +774,108 @@ self-healing is optional if one trusts the underlying system.
 #  to add host1 host2 host3 host4 as aliases to localhost
 #
 ############################################################
-
 body common control
 {
-bundlesequence => { "weak_dependency_symphony" };
-inputs => { "cfengine_stdlib.cf" };
+  bundlesequence => { "weak_dependency_symphony" };
+  inputs => { "cfengine_stdlib.cf" };
 }
 
 body server control
 {
-allowconnects         => { "127.0.0.1" , "::1", @(def.acl) };
-allowallconnects      => { "127.0.0.1" , "::1", @(def.acl) };
+  allowconnects => { "127.0.0.1", "::1", @(def.acl) };
+  allowallconnects => { "127.0.0.1", "::1", @(def.acl) };
 }
-
 ############################################################
-
 bundle agent weak_dependency_symphony
 {
-methods:
+  methods:
+    # We have to seed the beginning by creating the tower
+    # /tmp/tower_localhost
+    host1::
+      "tower"
+        usebundle => tier1,
+        classes => publish_ok("ok_O");
 
-   # We have to seed the beginning by creating the tower
-   # /tmp/tower_localhost
+    host2::
+      "tower"
+        usebundle => tier2,
+        classes => publish_ok("ok_1");
 
-   host1::
-    "tower"  usebundle => tier1,
-               classes => publish_ok("ok_O");
+    host3::
+      "tower"
+        usebundle => tier3,
+        classes => publish_ok("ok_2");
 
-   host2::
-    "tower"  usebundle => tier2,
-               classes => publish_ok("ok_1");
+    host4::
+      "tower"
+        usebundle => tier4,
+        classes => publish_ok("ok_f");
 
-   host3::
-    "tower"  usebundle => tier3,
-               classes => publish_ok("ok_2");
+  classes:
+    ok_O::
+      # Wait for the methods, report on host1 only
+      "check1" expression => remoteclassesmatching("ok.*", "host2", "yes", "a");
+      "check2" expression => remoteclassesmatching("ok.*", "host3", "yes", "a");
+      "check3" expression => remoteclassesmatching("ok.*", "host4", "yes", "a");
 
-   host4::
-    "tower"  usebundle => tier4,
-               classes => publish_ok("ok_f");
+  reports:
+    ok_O::
+      "tier 1 is ok";
 
-classes:
+    a_ok_1::
+      "tier 2 is ok";
 
- ok_O:: # Wait for the methods, report on host1 only
+    a_ok_2::
+      "tier 3 is ok";
 
-  "check1" expression => remoteclassesmatching("ok.*","host2","yes","a");
-  "check2" expression => remoteclassesmatching("ok.*","host3","yes","a");
-  "check3" expression => remoteclassesmatching("ok.*","host4","yes","a");
+    a_ok_f::
+      "tier 4 is ok";
 
-reports:
+    ok_O&a_ok_1&a_ok_2&a_ok_f::
+      "The Tower is standing";
 
-  ok_O::
-   "tier 1 is ok";
-  a_ok_1::
-   "tier 2 is ok";
-  a_ok_2::
-   "tier 3 is ok";
-  a_ok_f::
-   "tier 4 is ok";
-
-  ok_O&a_ok_1&a_ok_2&a_ok_f::
-   "The Tower is standing";
-
-  !(ok_O&a_ok_1&a_ok_2&a_ok_f)::
-   "The Tower is down";
+    !(ok_O&a_ok_1&a_ok_2&a_ok_f)::
+      "The Tower is down";
 }
-
 ############################################################
-
 bundle agent tier1
 {
-files:
-
-  "/tmp/something_to_do_1"
-      create => "true";
+  files:
+    "/tmp/something_to_do_1" create => "true";
 }
 
 bundle agent tier2
 {
-files:
-
-  "/tmp/something_to_do_2"
-      create => "true";
+  files:
+    "/tmp/something_to_do_2" create => "true";
 }
 
 bundle agent tier3
 {
-files:
-
-  "/tmp/something_to_do_3"
-      create => "true";
-
+  files:
+    "/tmp/something_to_do_3" create => "true";
 }
 
 bundle agent tier4
 {
-files:
-
-  "/tmp/something_to_do_4"
-      create => "true";
+  files:
+    "/tmp/something_to_do_4" create => "true";
 }
-
 ############################################################
-
 bundle server my_access_rules()
 {
-access:
-
-  "ok.*"
-    resource_type => "context",
-    admit => { "127.0.0.1" };
-
+  access:
+    "ok.*"
+      resource_type => "context",
+      admit => { "127.0.0.1" };
 }
-
 ############################################################
-
 body classes publish_ok(x)
 {
-promise_repaired => { "$(x)" };
-promise_kept => { "$(x)" };
-cancel_notkept => { "$(x)" };
-persist_time => "2";
+  promise_repaired => { "$(x)" };
+  promise_kept => { "$(x)" };
+  cancel_notkept => { "$(x)" };
+  persist_time => "2";
 }
 ```
 
@@ -1039,144 +945,108 @@ the example.
 #  to add host1 host2 host3 host4 as aliases to localhost
 #
 ############################################################
-
 body common control
 {
-bundlesequence => { "dominoes_symphony" };
-inputs => { "cfengine_stdlib.cf" };
+  bundlesequence => { "dominoes_symphony" };
+  inputs => { "cfengine_stdlib.cf" };
 }
-
 ############################################################
-
 bundle agent dominoes_symphony
 {
-methods:
+  methods:
+    # We have to seed the beginning by creating the dominoes
+    # /tmp/dominoes_localhost
+    host1::
+      "dominoes" usebundle => hand_over("localhost", "host1", "overture");
 
-   # We have to seed the beginning by creating the dominoes
-   # /tmp/dominoes_localhost
+    host2::
+      "dominoes" usebundle => hand_over("host1", "host2", "first_movement");
 
-   host1::
-    "dominoes"  usebundle => hand_over("localhost","host1","overture");
+    host3::
+      "dominoes" usebundle => hand_over("host2", "host3", "second_movement");
 
-   host2::
-    "dominoes"  usebundle => hand_over("host1","host2","first_movement");
+    host4::
+      "dominoes"
+        usebundle => hand_over("host3", "host4", "final_movement"),
+        classes => if_ok("finale");
 
-   host3::
-    "dominoes"  usebundle => hand_over("host2","host3","second_movement");
-
-   host4::
-    "dominoes"  usebundle => hand_over("host3","host4","final_movement"),
-                classes => if_ok("finale");
-
-reports:
-
-  finale::
-
-   "The visitors book of the Dominoes method"
-      printfile => visitors_book("/tmp/dominoes_host4");
-
+  reports:
+    finale::
+      "The visitors book of the Dominoes method"
+        printfile => visitors_book("/tmp/dominoes_host4");
 }
-
 ############################################################
-
-bundle agent hand_over(predecessor,myalias,method)
+bundle agent hand_over(predecessor, myalias, method)
 {
+  # This is a wrapper for the orchestration
+  files:
+    "/tmp/tip_the_dominoes"
+      comment => "Wait for our cue or relay/conductor baton",
+      copy_from => secure_cp("/tmp/dominoes_$(predecessor)", "$(predecessor)"),
+      classes => if_repaired("cue_action");
 
- # This is a wrapper for the orchestration
+  methods:
+    cue_action::
+      "the music happens"
+        comment => "One off activity",
+        usebundle => $(method),
+        classes => if_ok("pass_the_stick");
 
-files:
+  files:
+    pass_the_stick::
+      "/tmp/tip_the_dominoes"
+        comment => "Add our signature to the dominoes's tail",
+        edit_line => append_if_no_line(
+          "Knocked over $(myalias) and did: $(method)"
+        );
 
-  "/tmp/tip_the_dominoes"
-
-        comment => "Wait for our cue or relay/conductor baton",
-      copy_from => secure_cp("/tmp/dominoes_$(predecessor)","$(predecessor)"),
-        classes => if_repaired("cue_action");
-
-methods:
-
-  cue_action::
-
-   "the music happens"
-
-       comment => "One off activity",
-     usebundle => $(method),
-       classes => if_ok("pass_the_stick");
-
-files:
-
-  pass_the_stick::
-
-   "/tmp/tip_the_dominoes"
-       comment => "Add our signature to the dominoes's tail",
-     edit_line => append_if_no_line("Knocked over $(myalias) and did: $(method)");
-
-   "/tmp/dominoes_$(myalias)"
-
-    comment => "Dominoes in position to be beamed up by next agent",
-     copy_from => local_cp("/tmp/tip_the_dominoes");
-
+      "/tmp/dominoes_$(myalias)"
+        comment => "Dominoes in position to be beamed up by next agent",
+        copy_from => local_cp("/tmp/tip_the_dominoes");
 }
-
 ############################################################
-
 bundle agent overture
 {
-reports:
-
-  !xyz::
-
-    "Singing the overture...";
+  reports:
+    !xyz::
+      "Singing the overture...";
 }
 
 bundle agent first_movement
 {
-reports:
-
-  !xyz::
-
-    "Singing the first adagio...";
+  reports:
+    !xyz::
+      "Singing the first adagio...";
 }
 
 bundle agent second_movement
 {
-reports:
-
-  !xyz::
-
-    "Singing second allegro...";
-
+  reports:
+    !xyz::
+      "Singing second allegro...";
 }
 
 bundle agent final_movement
 {
-reports:
-
-  !xyz::
-
-    "Trumpets for the finale";
-
+  reports:
+    !xyz::
+      "Trumpets for the finale";
 }
-
 ############################################################
-
 bundle server my_access_rules()
 {
-access:
+  access:
+    "/tmp" admit => { "127.0.0.1" };
 
-  "/tmp"
-
-        admit => { "127.0.0.1" };
-
-  "did.*"
-    resource_type => "context",
-    admit => { "127.0.0.1" };
-
+    "did.*"
+      resource_type => "context",
+      admit => { "127.0.0.1" };
 }
 
 body printfile visitors_book(file)
 {
-file_to_print   => "$(file)";
-number_of_lines => "10";
+  file_to_print => "$(file)";
+  number_of_lines => "10";
 }
 ```
 
@@ -1229,225 +1099,169 @@ reinstating them and moving on to the next host.
 #  to add host1 host2 host3 host4 as aliases to localhost
 #
 ############################################################
-
 body common control
 {
-bundlesequence => { "dragon_symphony" };
-inputs => { "cfengine_stdlib.cf" };
+  bundlesequence => { "dragon_symphony" };
+  inputs => { "cfengine_stdlib.cf" };
 }
-
 ############################################################
-
 bundle agent dragon_symphony
 {
-methods:
+  methods:
+    # We have to seed the beginning by creating the dragon
+    # /tmp/dragon_localhost
+    "dragon" usebundle => visit("localhost", "host1", "chapter1");
+    "dragon" usebundle => visit("host1", "host2", "chapter2");
+    "dragon" usebundle => visit("host2", "host3", "chapter3");
 
-   # We have to seed the beginning by creating the dragon
-   # /tmp/dragon_localhost
+    "dragon"
+      usebundle => visit("host3", "host4", "chapter4"),
+      classes => if_ok("finale");
 
-    "dragon"  usebundle => visit("localhost","host1","chapter1");
-
-    "dragon"  usebundle => visit("host1","host2","chapter2");
-
-    "dragon"  usebundle => visit("host2","host3","chapter3");
-
-    "dragon"  usebundle => visit("host3","host4","chapter4"),
-                classes => if_ok("finale");
-
-reports:
-
-  finale::
-
-    "The dragon is slain:"
-       printfile => visitors_book("/tmp/shoo_dragon_host4");
+  reports:
+    finale::
+      "The dragon is slain:"
+        printfile => visitors_book("/tmp/shoo_dragon_host4");
 }
-
 ############################################################
 # Define the
 ############################################################
-
 bundle agent chapter1(x)
 {
-# Do something significant here
-
-reports:
-
- host1::
-    " ----> Breathing fire on $(x)";
+  # Do something significant here
+  reports:
+    host1::
+      " ----> Breathing fire on $(x)";
 }
-
 ################################
-
 bundle agent chapter2(x)
 {
-# Do something significant here
-
-reports:
-
- host2::
-    " ----> Breathing fire on $(x)";
-
+  # Do something significant here
+  reports:
+    host2::
+      " ----> Breathing fire on $(x)";
 }
-
 ################################
-
 bundle agent chapter3(x)
 {
-# Do something significant here
-
-reports:
-
- host3::
-    " ----> Breathing fire on $(x)";
-
+  # Do something significant here
+  reports:
+    host3::
+      " ----> Breathing fire on $(x)";
 }
-
 ################################
-
 bundle agent chapter4(x)
 {
-# Do something significant here
-
-reports:
-
- host4::
-    " ----> Breathing fire on $(x)";
-
+  # Do something significant here
+  reports:
+    host4::
+      " ----> Breathing fire on $(x)";
 }
-
 ############################################################
 # Orchestration wrappers
 ############################################################
-
-bundle agent visit(predecessor,satellite,method)
+bundle agent visit(predecessor, satellite, method)
 {
+  # This is a wrapper for the orchestration will be acted on
+  # first by the dragon's lair and then by the satellite
+  vars:
+    "dragons_lair" string => "host0";
 
- # This is a wrapper for the orchestration will be acted on
- # first by the dragon's lair and then by the satellite
-
-vars:
-
-  "dragons_lair" string => "host0";
-
-files:
-
-  # We start in the dragon's lair ..
-
-  "/tmp/unleash_dragon"
-
-        comment => "Unleash the dragon",
+  files:
+    # We start in the dragon's lair ..
+    "/tmp/unleash_dragon"
+      comment => "Unleash the dragon",
       rename => to("/tmp/enter_the_dragon"),
-        classes => if_repaired("dispatch_dragon_$(satellite)"),
-             if => "$(dragons_lair)";
+      classes => if_repaired("dispatch_dragon_$(satellite)"),
+      if => "$(dragons_lair)";
 
-  # if we are the dragon's lair, welcome the dragon back, shooed from the satellite
+    # if we are the dragon's lair, welcome the dragon back, shooed from the satellite
+    "/tmp/enter_the_dragon"
+      comment => "Returning from a visit to a satellite",
+      copy_from => secure_cp(
+        "/tmp/shoo_dragon_$(predecessor)", "$(predecessor)"
+      ),
+      classes => if_repaired("dispatch_dragon_$(satellite)"),
+      if => "$(dragons_lair)";
 
-  "/tmp/enter_the_dragon"
+    # If we are a satellite, receive the dragon from its lair
+    "/tmp/enter_the_dragon"
+      comment => "Wait for our cue or relay/conductor baton",
+      copy_from => secure_cp("/tmp/dragon_$(satellite)", "$(dragons_lair)"),
+      classes => if_repaired("cue_action_on_$(satellite)"),
+      if => "$(satellite)";
 
-        comment => "Returning from a visit to a satellite",
-      copy_from => secure_cp("/tmp/shoo_dragon_$(predecessor)","$(predecessor)"),
-        classes => if_repaired("dispatch_dragon_$(satellite)"),
-             if => "$(dragons_lair)";
-
-  # If we are a satellite, receive the dragon from its lair
-
-  "/tmp/enter_the_dragon"
-        comment => "Wait for our cue or relay/conductor baton",
-      copy_from => secure_cp("/tmp/dragon_$(satellite)","$(dragons_lair)"),
-        classes => if_repaired("cue_action_on_$(satellite)"),
-             if => "$(satellite)";
-
-methods:
-
-   "check in at home"
-        comment => "Edit the load balancer?",
+  methods:
+    "check in at home"
+      comment => "Edit the load balancer?",
       usebundle => switch_satellite(" -> Send dragon to $(satellite)"),
-        classes => if_repaired("send_the_dragon_to_$(satellite)"),
-             if => "dispatch_dragon_$(satellite)";
+      classes => if_repaired("send_the_dragon_to_$(satellite)"),
+      if => "dispatch_dragon_$(satellite)";
 
-   "dragon visits"
-        comment => "One off activity that the nodes carry out while the dragon visits",
+    "dragon visits"
+      comment => "One off activity that the nodes carry out while the dragon visits",
       usebundle => $(method)("$(satellite)"),
-        classes => if_repaired("send_the_dragon_back_from_$(satellite)"),
-             if => "cue_action_on_$(satellite)";
+      classes => if_repaired("send_the_dragon_back_from_$(satellite)"),
+      if => "cue_action_on_$(satellite)";
 
-files:
-
-  # hub/lair hub signs the book too and schedules the dragon for next satellite
-
-   "/tmp/dragon_$(satellite)"
-         create => "true",
-        comment => "Add our signature to the dragon's tail",
+  files:
+    # hub/lair hub signs the book too and schedules the dragon for next satellite
+    "/tmp/dragon_$(satellite)"
+      create => "true",
+      comment => "Add our signature to the dragon's tail",
       edit_line => sign_visitor_book("Dragon returned from $(predecessor)"),
-             if => "send_the_dragon_to_$(satellite)";
+      if => "send_the_dragon_to_$(satellite)";
 
-   # Satellite signs the book and shoos dragon for hub to collect
+    # Satellite signs the book and shoos dragon for hub to collect
+    "/tmp/shoo_dragon_$(satellite)"
+      create => "true",
+      comment => "Add our signature to the dragon's tail",
+      edit_line => sign_visitor_book(
+        "Dragon visited $(satellite) and did: $(method)"
+      ),
+      if => "send_the_dragon_back_from_$(satellite)";
 
-   "/tmp/shoo_dragon_$(satellite)"
-         create => "true",
-        comment => "Add our signature to the dragon's tail",
-      edit_line => sign_visitor_book("Dragon visited $(satellite) and did: $(method)"),
-             if => "send_the_dragon_back_from_$(satellite)";
-
-reports:
-
-  !xyz::
-
-    "Done $(satellite)";
-
+  reports:
+    !xyz::
+      "Done $(satellite)";
 }
-
 ############################################################
-
 bundle agent switch_satellite(name)
 {
-files:
-
-   "/tmp/enter_the_dragon"
-        comment => "Add our signature to the dragon's tail",
+  files:
+    "/tmp/enter_the_dragon"
+      comment => "Add our signature to the dragon's tail",
       edit_line => append_if_no_line("Switch new dragon's target $(name)");
 
-reports:
-
-  !xyz::
-   " X Switching new dragon's target $(name)";
+  reports:
+    !xyz::
+      " X Switching new dragon's target $(name)";
 }
-
 ############################################################
-
 bundle edit_line sign_visitor_book(s)
 {
-insert_lines:
+  insert_lines:
+    "/tmp/enter_the_dragon"
+      comment => "Import the current visitor's book",
+      insert_type => "file";
 
-  "/tmp/enter_the_dragon"
-        comment => "Import the current visitor's book",
-    insert_type => "file";
-
-  "$(s)" comment => "Append this string to the visitor's book";
+    "$(s)" comment => "Append this string to the visitor's book";
 }
-
 ############################################################
-
 bundle server my_access_rules()
 {
-access:
+  access:
+    "/tmp" admit => { "127.0.0.1" };
 
-  "/tmp"
-
-        admit => { "127.0.0.1" };
-
-  "did.*"
-    resource_type => "context",
-    admit => { "127.0.0.1" };
-
+    "did.*"
+      resource_type => "context",
+      admit => { "127.0.0.1" };
 }
-
 ############################################################
-
 body printfile visitors_book(file)
 {
-file_to_print   => "$(file)";
-number_of_lines => "100";
+  file_to_print => "$(file)";
+  number_of_lines => "100";
 }
 ```
 

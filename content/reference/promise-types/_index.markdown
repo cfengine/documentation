@@ -97,8 +97,10 @@ for the specific promise it's attached to.
 ```cf3
 body action example
 {
-  ifelapsed   => "120";  # 2 hours
-  expireafter => "240";  # 4 hours
+  ifelapsed => "120";
+  # 2 hours
+  expireafter => "240";
+  # 4 hours
 }
 ```
 
@@ -137,8 +139,10 @@ on the long running promise.
 ```cf3
 body action example
 {
-  ifelapsed   => "120";  # 2 hours
-  expireafter => "240";  # 4 hours
+  ifelapsed => "120";
+  # 2 hours
+  expireafter => "240";
+  # 4 hours
 }
 ```
 
@@ -223,17 +227,25 @@ defined in body common control over UDP. Please note
 ```cf3
 bundle agent test
 {
-  vars:
-
-      "software" slist => { "/root/xyz", "/tmp/xyz" };
-
-  files:
-
-      "$(software)"
-
-        create => "true",
-         action => logme("$(software)");
-
+vars:
+"software"
+slist
+=>
+{
+"/root/xyz",
+"/tmp/xyz"
+};
+files:
+"$(software)"
+create
+=>
+"true",
+action
+=>
+logme
+(
+"$(software)"
+);
 }
 
 body action logme(x)
@@ -249,8 +261,8 @@ body action immediate_syslog(x)
   log_repaired => "udp_syslog";
   log_string => "CFEngine repaired promise $(this.handle) - $(x)";
 }
-```
-
+``
+`
 It is intended that named file logs should be different for the three cases:
 promise kept, promise not kept and promise repaired.
 
@@ -281,10 +293,12 @@ log
 ```cf3
 body action example
 {
-  log_level => "inform";
+log_level
+=>
+"inform";
 }
-```
-
+``
+`
 **Note**: This attribute can not make the logging for an individual promise less
 verbose than specified by an agent option ( `-v`, `--verbose`, `-I`, `--inform`,
 `-d`, `--debug` ).
@@ -315,10 +329,12 @@ importance of messages from CFEngine.
 ```cf3
 body action low_priority
 {
-  log_priority => "info";
+log_priority
+=>
+"info";
 }
-```
-
+``
+`
 #### value_kept
 
 **Deprecated:** This menu option policy is deprecated as of 3.6.0. It performs
@@ -363,22 +379,26 @@ background on Windows.
 ```cf3
 bundle agent main
 {
-  commands:
-
-    "/bin/sleep 10"
-      action  => background;
-
-    "/bin/sleep"
-      args => "20",
-      action  => background;
-
+commands:
+"/bin/sleep 10"
+action
+=>
+background;
+"/bin/sleep"
+args
+=>
+"20",
+action
+=>
+background;
 }
+
 body action background
 {
   background => "true";
 }
-```
-
+``
+`
 **See also:** [`max_children` in body agent control][cf-agent#max_children]
 
 #### report_level
@@ -408,10 +428,12 @@ log
 ```cf3
 body action example
 {
-  report_level => "verbose";
+report_level
+=>
+"verbose";
 }
-```
-
+``
+`
 #### measurement_class
 
 **Description:** If set, performance will be measured and recorded under this
@@ -429,10 +451,12 @@ promise, and also give the measurement a name.
 ```cf3
 body action measure
 {
-  measurement_class => "$(this.promiser) long job scan of /usr";
+measurement_class
+=>
+"$(this.promiser) long job scan of /usr";
 }
-```
-
+``
+`
 The identifier forms a partial identity for optional performance scanning of
 promises of the form:
 
@@ -464,11 +488,17 @@ bundle
 ```cf3
 body classes bundle_class
 {
-  scope => "bundle";
-  promise_kept => { "bundle_context" };
+scope
+=>
+"bundle";
+promise_kept
+=>
+{
+"bundle_context"
+};
 }
-```
-
+``
+`
 **History:** This attribute was introduced in CFEngine 3.5
 
 **See also:** [`scope` in `classes` promises][classes#scope]
@@ -492,10 +522,14 @@ is unnecessary to call a canonify function on such inputs.
 ```cf3
 body classes example
 {
-  promise_repaired => { "change_happened" };
+promise_repaired
+=>
+{
+"change_happened"
+};
 }
-```
-
+``
+`
 **Important**: Complex promises can report misleadingly; for example, `files`
 promises that set multiple parameters on a file simultaneously.
 
@@ -526,10 +560,14 @@ is unnecessary to call a canonify function on such inputs.
 ```cf3
 body classes example
 {
-  repair_failed => { "unknown_error" };
+repair_failed
+=>
+{
+"unknown_error"
+};
 }
-```
-
+``
+`
 #### repair_denied
 
 **Description:** Classes to be defined globally if the promise could not be
@@ -547,10 +585,14 @@ is unnecessary to call a canonify function on such inputs.
 ```cf3
 body classes example
 {
-  repair_denied => { "permission_failure" };
+repair_denied
+=>
+{
+"permission_failure"
+};
 }
-```
-
+``
+`
 In the above example, a promise could not be kept because access to a key
 resource was denied.
 
@@ -571,10 +613,15 @@ is unnecessary to call a canonify function on such inputs.
 ```cf3
 body classes example
 {
-  repair_timeout => { "too_slow", "did_not_wait" };
+repair_timeout
+=>
+{
+"too_slow",
+"did_not_wait"
+};
 }
-```
-
+``
+`
 In the above example, a promise maintenance repair timed-out waiting for some
 dependent resource.
 
@@ -595,10 +642,15 @@ is unnecessary to call a canonify function on such inputs.
 ```cf3
 body classes example
 {
-  promise_kept => { "success", "kaplah" };
+promise_kept
+=>
+{
+"success",
+"kaplah"
+};
 }
-```
-
+``
+`
 The class in the above example is set if no action was necessary by `cf-agent`,
 because the promise concerned was already kept without further action required.
 
@@ -628,10 +680,15 @@ is unnecessary to call a canonify function on such inputs.
 ```cf3
 body classes example
 {
-  cancel_kept => { "success", "kaplah" };
+cancel_kept
+=>
+{
+"success",
+"kaplah"
+};
 }
-```
-
+``
+`
 In the above example, if the promise was already kept and nothing was done,
 cancel (undefine) any of the listed classes so that they are no longer defined.
 
@@ -659,10 +716,14 @@ it is unnecessary to call a canonify function on such inputs.
 ```cf3
 body classes example
 {
-  cancel_repaired => { "change_happened" };
+cancel_repaired
+=>
+{
+"change_happened"
+};
 }
-```
-
+``
+`
 In the above example, if the promise was repaired and changes were made to the
 system, cancel (undefine) any of the listed classes so that they are no longer
 defined.
@@ -692,10 +753,14 @@ it is unnecessary to call a canonify function on such inputs.
 ```cf3
 body classes example
 {
-  cancel_notkept => { "failure" };
+cancel_notkept
+=>
+{
+"failure"
+};
 }
-```
-
+``
+`
 In the above example, if the promise was not kept but nothing could be done,
 cancel (undefine) any of the listed classes so that they are no longer
 defined.
@@ -736,13 +801,15 @@ from 0 to 255.
 ```cf3
 bundle agent cmdtest
 {
-  commands:
-      "/bin/false"
-       classes => example;
-
-  reports:
-      waskept::
-        "The command-promise was kept!";
+commands:
+"/bin/false"
+classes
+=>
+example;
+reports:
+waskept:
+:
+"The command-promise was kept!";
 }
 
 body classes example
@@ -750,8 +817,8 @@ body classes example
   kept_returncodes => { "0", "1" };
   promise_kept => { "waskept" };
 }
-```
-
+``
+`
 In the above example, a list of integer return codes indicates that a
 command-related promise has been kept. This can in turn be used to define
 classes using the `promise_kept` attribute, or merely alter the total
@@ -787,13 +854,15 @@ from 0 to 255.
 ```cf3
 bundle agent cmdtest
 {
-  commands:
-      "/bin/false"
-      classes => example;
-
-  reports:
-      wasrepaired::
-        "The command-promise got repaired!";
+commands:
+"/bin/false"
+classes
+=>
+example;
+reports:
+wasrepaired:
+:
+"The command-promise got repaired!";
 }
 
 body classes example
@@ -801,8 +870,8 @@ body classes example
   repaired_returncodes => { "0", "1" };
   promise_repaired => { "wasrepaired" };
 }
-```
-
+``
+`
 In the above example, a list of integer return codes indicates that a
 command-related promise has been repaired. This can in turn be used to define
 classes using the `promise_repaired` attribute, or merely alter the total
@@ -839,22 +908,25 @@ from 0 to 255.
 ```cf3
 body common control
 {
-  bundlesequence => { "cmdtest" };
+bundlesequence
+=>
+{
+"cmdtest"
+};
 }
 
 bundle agent cmdtest
 {
   files:
-      "/tmp/test"
-        copy_from => copy("/etc/passwd");
+    "/tmp/test" copy_from => copy("/etc/passwd");
 
-      "/tmp/test"
-        classes => example,
-        transformer => "/bin/grep -q lkajfo999999 $(this.promiser)";
+    "/tmp/test"
+      classes => example,
+      transformer => "/bin/grep -q lkajfo999999 $(this.promiser)";
 
   reports:
-      hasfailed::
-        "The files-promise failed!";
+    hasfailed::
+      "The files-promise failed!";
 }
 
 body classes example
@@ -867,8 +939,8 @@ body copy_from copy(file)
 {
   source => "$(file)";
 }
-```
-
+``
+`
 The above example contains a list of integer return codes indicating that a
 command-related promise has failed. This can in turn be used to define classes
 using the `promise_repaired` attribute, or merely alter the total compliance
@@ -894,10 +966,12 @@ not running. When a persistent class is activated it gets `scope` namespace.
 ```cf3
 body classes example
 {
-  persist_time => "10";
+persist_time
+=>
+"10";
 }
-```
-
+``
+`
 **See also:** [`persistence` classes attribute][classes#persistence], [`persist_time` in classes body][Promise types#persist_time]
 
 #### timer_policy
@@ -925,10 +999,12 @@ reset
 ```cf3
 body classes example
 {
-  timer_policy => "reset";
+timer_policy
+=>
+"reset";
 }
-```
-
+``
+`
 ### comment
 
 **Description:** Describes the real intention of the promise.
@@ -1040,18 +1116,25 @@ bundle agent example
 
         "/bin/echo This is linux"
           if => "linux";
-
-        "/bin/echo This is solaris"
-          if => "solaris";
+"/bin/echo This is solaris"
+if
+=>
+"solaris";
 }
-```
+``
+`
 
 This function is provided so that one can form expressions that link variables
 and classes. For example:
 
-```cf3 {skip TODO}
+`
+``
+cf3
+{
+skip
+TODO
+}
 # Check that all components are running
-
 vars:
 
     "component" slist => { "cf-monitord", "cf-serverd" };
@@ -1092,12 +1175,32 @@ skip.
 `if` and `unless` both make choices about whether to _skip_ a promise. Both
 `if` and `unless` can _force_ a promise to be skipped - if a promise has both
 `if` and `unless` constraints, _skipping_ takes precedence.
-
-**History:** In 3.7.0 `if` was introduced as a shorthand for `ifvarclass` (and
-`unless` as an opposite).
-
+**
+History:
+**
+In
+3
+.
+7
+.
+0
+`if`
+was
+introduced
+as
+a
+shorthand
+for
+`ifvarclass`
+(
+and
+`unless`
+as
+an
+opposite
+)
+.
 ### ifvarclass
-
 **Description:** Deprecated, use [`if`][Promise types#if] instead.
 
 **History:** New name `if` was introduced in 3.7.0, `ifvarclass` deprecated in 3.17.0.
@@ -1254,13 +1357,49 @@ The following attributes are available to all body types.
 
 ### inherit_from
 
-**Description:** Inherits all attributes from another body of the same
-type as a function call. For a detailed description, see
-[**Bodies**][bodies].
+**
+Description:
+**
+Inherits
+all
+attributes
+from
+another
+body
+of
+the
+same
+type
+as
+a
+function
+call
+.
+For
+a
+detailed
+description,
+see
+[**
+Bodies
+**][
+bodies
+].
 
-**Type:** `fncall`
-
-**Allowed input range:** (arbitrary body invocation)
+**
+Type:
+**
+`fncall`
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+body
+invocation
+)
 
 **Examples:**
 
@@ -1280,11 +1419,21 @@ Since the right hand side for this attribute is an slist, multiple strings (tags
 
 **Type:** `slist`
 
-**Allowed input range:** (arbitrary string list)
-
-**Example:**
-
-```cf3
+**
+Allowed
+input
+range:
+**
+(
+arbitrary
+string
+list
+)
+**
+Example:
+**
+``
+`cf3
 body ANYTYPE mybody
 {
   meta => { "deprecated" , "CFE-1234", "CVE-2020-1234" };
@@ -1294,3 +1443,4 @@ body ANYTYPE mybody
 **Note:** When a variable is re-defined the associated meta tags are also re-defined.
 
 **History:** Was introduced in 3.7.0.
+

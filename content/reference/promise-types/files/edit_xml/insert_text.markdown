@@ -15,10 +15,9 @@ string of text.
 ```cf3
 bundle edit_xml example
 {
-insert_text:
-
-  "text content to be appended to existing text, including whitespace, within specified node"
-    select_xpath => "/Server/Service/Engine/Host/Alias";
+  insert_text:
+    "text content to be appended to existing text, including whitespace, within specified node"
+      select_xpath => "/Server/Service/Engine/Host/Alias";
 }
 ```
 

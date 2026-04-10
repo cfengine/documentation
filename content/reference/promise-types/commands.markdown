@@ -29,17 +29,13 @@ commands-promise in a very flexible way. See the `kept_returncodes`,
 
 ```cf3
 bundle agent example
-
 {
-commands:
+  commands:
+    "/bin/sleep 10" action => background;
 
-  "/bin/sleep 10"
-     action  => background;
-
-  "/bin/sleep"
-     args => "20",
-     action  => background;
-
+    "/bin/sleep"
+      args => "20",
+      action => background;
 }
 ```
 
@@ -62,15 +58,33 @@ commands:
 
 **Note:** Commands executed with CFEngine get the environment variables set in
 [`environment`][cf-agent#environment] in body agent control. If you want to set
-environment variables for an individual command you can prefix the command with
-`env` and set variables before executing the command.
-
-```cf3
+environment
+variables
+for
+an
+individual
+command
+you
+can
+prefix
+the
+command
+with
+`env`
+and
+set
+variables
+before
+executing
+the
+command
+.
+``
+`cf3
 bundle agent example
 {
   commands:
     "/usr/bin/env MY_ENVIRONMENT_VARIABLE=something_special /tmp/cmd";
-
     # Or equivalent
     "/usr/bin/env"
       args => "ME=something_special /tmp/cmd";
@@ -212,16 +226,29 @@ to `powershell`.
 **Type:** (menu option)
 
 **Allowed input range:**
-
-```
+``
+`
 useshell
 noshell
 powershell
-```
-
-For compatibility, the boolean values are also supported, and map to
-`useshell` and `noshell`, respectively.
-
+`
+``
+For
+compatibility,
+the
+boolean
+values
+are
+also
+supported,
+and
+map
+to
+`useshell`
+and
+`noshell`,
+respectively
+.
 **Default value:** `noshell`
 
 **Example:**
@@ -259,7 +286,8 @@ thus ignored by Windows versions of CFEngine.
 
 **Example:**
 
-```cf3
+``
+`cf3
 body contain example
 {
 umask => "077";
@@ -292,10 +320,28 @@ exec_owner => "mysql_user";
 ```
 
 #### exec_group
-
-**Description:** Associates the command with a group.
-
-This is part of the restriction of privilege for child processes when
+**
+Description:
+**
+Associates
+the
+command
+with
+a
+group
+.
+This
+is
+part
+of
+the
+restriction
+of
+privilege
+for
+child
+processes
+when
 running `cf-agent` as the root group, or a group with privileges. It is
 ignored on Windows, as processes do not have any groups associated with
 them.
@@ -317,10 +363,29 @@ exec_group => "nogroup";
 
 **Description:** Attempt to time-out after this number of seconds.
 
-This cannot be guaranteed as not all commands are willing to be interrupted in
-case of failure.
+This
+cannot
+be
+guaranteed
+as
+not
+all
+commands
+are
+willing
+to
+be
+interrupted
+in
+case
+of
+failure
+.
 
-**Type:** `int`
+**
+Type:
+**
+`int`
 
 **Allowed input range:** `1,3600`
 
@@ -339,10 +404,37 @@ exec_timeout => "30";
 
 **Description:** Run the command with a working directory.
 
-This attribute has the effect of placing the running command into a
-current working directory equal to the parameter given; in other words,
-it works like the cd shell command.
-
+This
+attribute
+has
+the
+effect
+of
+placing
+the
+running
+command
+into
+a
+current
+working
+directory
+equal
+to
+the
+parameter
+given;
+in
+other
+words,
+it
+works
+like
+the
+cd
+shell
+command
+.
 **Type:** `string`
 
 **Allowed input range:** `"?(/.*)`
@@ -359,10 +451,37 @@ chdir => "/containment/directory";
 
 #### chroot
 
-**Description:** Specify the path that will be the root directory for the
-process.
-
-The path of the directory will be experienced as the top-most root directory
+**
+Description:
+**
+Specify
+the
+path
+that
+will
+be
+the
+root
+directory
+for
+the
+process
+.
+The
+path
+of
+the
+directory
+will
+be
+experienced
+as
+the
+top
+-
+most
+root
+directory
 for the process. In security parlance, this creates a 'sandbox' for the
 process. Windows does not support this feature.
 
@@ -382,11 +501,54 @@ chroot => "/private/path";
 
 #### preview
 
-**Description:** This is the preview command when running in dry-run mode
-(with -n).
-
-Previewing shell scripts during a dry-run is a potentially misleading
-activity. It should only be used on scripts that make no changes to the
+**
+Description:
+**
+This
+is
+the
+preview
+command
+when
+running
+in
+dry
+-
+run
+mode
+(
+with
+-
+n
+)
+.
+Previewing
+shell
+scripts
+during
+a
+dry
+-
+run
+is
+a
+potentially
+misleading
+activity
+.
+It
+should
+only
+be
+used
+on
+scripts
+that
+make
+no
+changes
+to
+the
 system. It is CFEngine best practice to never write change-functionality into
 user-written scripts except as a last resort. CFEngine can apply its safety
 checks to user defined scripts.
@@ -405,11 +567,33 @@ preview => "true";
 ```
 
 #### no_output
-
-**Description:** Allows discarding all output from the command.
-
-Setting this attribute to `true` is equivalent to piping standard output and
-error to `/dev/null`.
+**
+Description:
+**
+Allows
+discarding
+all
+output
+from
+the
+command
+.
+Setting
+this
+attribute
+to
+`true`
+is
+equivalent
+to
+piping
+standard
+output
+and
+error
+to
+`/dev/null`
+.
 
 **Type:** [`boolean`][boolean]
 
@@ -430,10 +614,20 @@ no_output => "true";
 
 By default, when running with inform level logging, commands that are executed
 produce output. This attribute can be used to suppress this output which may not
-be useful in all cases.
+be
+useful
+in
+all
+cases
+.
 
-**Type:** [`boolean`][boolean]
-
+**
+Type:
+** [
+`boolean`
+][
+boolean
+]
 **Default value:** true
 
 **Example:**
@@ -450,10 +644,52 @@ be useful in all cases.
 
 CFEngine `modules` are commands that support a simple protocol in order to set
 additional variables and classes on execution from user defined code. Modules
-are intended for use as system probes rather than additional configuration
-promises. Such a module may be written in any language.
-
-This attribute determines whether or not to expect the CFEngine module protocol. If true, the module protocol is supported for this command:
+are
+intended
+for
+use
+as
+system
+probes
+rather
+than
+additional
+configuration
+promises
+.
+Such
+a
+module
+may
+be
+written
+in
+any
+language
+.
+This
+attribute
+determines
+whether
+or
+not
+to
+expect
+the
+CFEngine
+module
+protocol
+.
+If
+true,
+the
+module
+protocol
+is
+supported
+for
+this
+command:
 
 - lines which begin with a `^` are protocol extensions
   - `^context=xyz` sets the module context to `xyz` instead of the default for any following definitions
@@ -540,38 +776,51 @@ reports:
 
     "Module set variable $(mylist)";
 }
-```
+``
+`
 
 Here is an example module written in Perl:
 
-```perl
+`
+``
+perl
 #!/usr/bin/perl
 #
 # module:myplugin
 #
-
-  # lots of computation....
-
-if (special-condition)
-   {
-   print "+specialclass";
-   }
-```
+# lots of computation....
+if
+(
+special
+-
+condition
+)
+{
+print
+"+specialclass";
+}
+``
+`
 
 If your module is simple and is best expressed as a shell command, then we
 suggest that you _expose_ the class being defined in the command being
 executed (making it easier to see what classes are used when reading the
 promises file). For example, the promises could read as follows (the two
-`echo` commands are to ensure that the shell always exits with a successful
+`
+echo
+` commands are to ensure that the shell always exits with a successful
 execution of a command):
 
-```cf3
+`
+``
+cf3
+
 bundle agent sendmail
 {
-commands:
-  # This next module checks a specific failure mode of dcc, namely
-  # more than 3 error states since the last time we ran cf-agent
-  is_mailhost::
+  commands:
+    # This next module checks a specific failure mode of dcc, namely
+    # more than 3 error states since the last time we ran cf-agent
+    is_mailhost::
         "/bin/test `/usr/bin/tail -100 /var/log/maillog | /usr/bin/grep 'Milter (dcc): to error state' | /usr/bin/wc -l` -gt 3  echo '+start_dccm' || echo
 ''"
     contain => shell_command,
@@ -598,9 +847,87 @@ body contain not_paranoid
 Modules inherit the environment variables from `cf-agent` and accept
 arguments, just as a regular command does.
 
-**See also:** [usemodule()][usemodule], [read_module_protocol()][read_module_protocol]
+**
+See
+also:
+** [
+usemodule
+(
+)
+][
+usemodule
+],
+[
+read_module_protocol
+(
+)
+][
+read_module_protocol
+]
 
-**History:**
+**
+History:
+**
 
-- `@` allowed in variables (intended for keys in classic array) 3.15.0, 3.12.3, 3.10.7 (2019)
-- `/` allowed in variables (intended for keys in classic array) 3.14.0, 3.12.2, 3.10.6 (2019)
+-
+`@`
+allowed
+in
+variables
+(
+intended
+for
+keys
+in
+classic
+array
+)
+3
+.
+15
+.
+0,
+3
+.
+12
+.
+3,
+3
+.
+10
+.
+7
+(
+2019
+)
+-
+`/`
+allowed
+in
+variables
+(
+intended
+for
+keys
+in
+classic
+array
+)
+3
+.
+14
+.
+0,
+3
+.
+12
+.
+2,
+3
+.
+10
+.
+6
+(
+2019
+)

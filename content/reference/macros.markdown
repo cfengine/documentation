@@ -29,8 +29,9 @@ The contained policy is only included if the version is greater than or equal to
 bundle agent extractor
 {
 @if minimum_version(3.8)
-# the function `new_function_3_8()` was introduced in 3.8
-vars: "container" data => new_function_3_8();
+  # the function `new_function_3_8()` was introduced in 3.8
+  vars:
+    "container" data => new_function_3_8();
 @endif
 }
 ```
@@ -112,8 +113,7 @@ bundle agent extractor
 @if before_version(3.15)
   # Policy to work around issue which was fixed in 3.15
   vars:
-    "container"
-      data => workaround_pre_3_15();
+    "container" data => workaround_pre_3_15();
 @endif
 }
 ```
@@ -134,8 +134,7 @@ bundle agent extractor
 @if after_version(3.15)
   # This policy is only parsed on 3.16+
   vars:
-    "container"
-      data => not_neded_on_3_15();
+    "container" data => not_neded_on_3_15();
 @endif
 }
 ```
@@ -158,13 +157,11 @@ bundle agent extractor
 @if minimum_version(3.16)
   # Implementation for 3.16+
   vars:
-    "container"
-      data => classfiltercsv();
+    "container" data => classfiltercsv();
 @else
   # Implementation for versions before 3.16
   vars:
-    "container"
-      data => readcsv();
+    "container" data => readcsv();
 @endif
 }
 ```
@@ -180,10 +177,11 @@ You can conditionally include policy test using the `@if` macro.
 ```cf3
 bundle agent extractor
 {
-  @if feature(xml)
-# the yaml library may not be compiled in
-  vars: "container" data => parseyaml();
-  @endif
+@if feature(xml)
+  # the yaml library may not be compiled in
+  vars:
+    "container" data => parseyaml();
+@endif
 }
 ```
 

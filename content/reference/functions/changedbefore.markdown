@@ -22,19 +22,16 @@ Comparisons like this are normally used for updating files (like the
 ```cf3
 body common control
 {
-  bundlesequence  => { "example" };
+  bundlesequence => { "example" };
 }
 
 bundle agent example
 {
   classes:
-
-    "do_it" and => { changedbefore("/tmp/earlier","/tmp/later"), "linux" };
+    "do_it" and => { changedbefore("/tmp/earlier", "/tmp/later"), "linux" };
 
   reports:
-
     do_it::
-
       "The derived file needs updating";
 }
 ```

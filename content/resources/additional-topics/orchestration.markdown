@@ -203,22 +203,19 @@ by an enterprise-wide global infrastructure service.
 ![Independent configurations using a common baseline](./fed2.png)
 
 ```cf3
-#
 # Federated promises.cf
-#
-
 bundle agent main
 {
   files:
     "$(sys.workdir)/inputs/baseline.cf"
       copy_from => remote_cp(
-        "/masterfiles/baseline.cf",
-        "central_service.example.com",
+        "/masterfiles/baseline.cf", "central_service.example.com",
       );
+
   methods:
     # Inherit the baseline constitution
     "baseline" usebundle => company_baseline;
-    # All other local promises here ....
+  # All other local promises here ....
 }
 ```
 

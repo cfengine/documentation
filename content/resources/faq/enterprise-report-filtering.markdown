@@ -22,15 +22,15 @@ bundle agent example
     "tags" slist => { "autorun" };
 
   vars:
+    !host_001::
+      "slist"
+        slist => { "common", "one", "four" },
+        meta => { "inventory", "attribute_name=My Inventory" };
 
-  !host_001::
-    "slist" slist => { "common", "one", "four" },
-      meta => { "inventory", "attribute_name=My Inventory" };
-
-  host_001::
-    "slist" slist => { "common", "two", "three" },
-      meta => { "inventory", "attribute_name=My Inventory" };
-
+    host_001::
+      "slist"
+        slist => { "common", "two", "three" },
+        meta => { "inventory", "attribute_name=My Inventory" };
 }
 ```
 

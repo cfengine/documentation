@@ -42,7 +42,9 @@ interface in CFEngine Enterprise.
 bundle agent inventory_cve_2014_6271
 {
   meta:
-    "description" string => "Remote exploit vulnerability in bash http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271";
+    "description"
+      string => "Remote exploit vulnerability in bash http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271";
+
     "tags" slist => { "autorun" };
 
   vars:
@@ -50,7 +52,11 @@ bundle agent inventory_cve_2014_6271
     "bash" string => "/bin/bash";
     "echo" string => "$(paths.echo)";
 
-    "test_result" string => execresult("$(env) x='() { :;}; $(echo) vulnerable' $(bash) -c 'echo testing CVE-2014-6271'", "useshell");
+    "test_result"
+      string => execresult(
+        "$(env) x='() { :;}; $(echo) vulnerable' $(bash) -c 'echo testing CVE-2014-6271'",
+        "useshell"
+      );
 
     cve_2014_6271::
       "vulnerable"
@@ -59,7 +65,7 @@ bundle agent inventory_cve_2014_6271
 
   classes:
     "cve_2014_6271"
-      expression => regcmp( "vulnerable.*", "$(test_result)" ),
+      expression => regcmp("vulnerable.*", "$(test_result)"),
       scope => "namespace",
       persistence => "10",
       comment => "We persist the class for 2 agent runs so that bundles
@@ -167,8 +173,7 @@ bundle agent remediate_cve_2014_6271
 
   methods:
     allow_update.cve_2014_6271::
-      "Upgrade_Bash"
-        usebundle => package_latest("bash");
+      "Upgrade_Bash" usebundle => package_latest("bash");
 }
 ```
 

@@ -25,8 +25,8 @@ or [body file control inputs][file control#inputs].
 ```cf3
 body common control
 {
-        bundlesequence => { "file_remover" };
-        inputs => { "$(sys.libdir)/stdlib.cf" };
+  bundlesequence => { "file_remover" };
+  inputs => { "$(sys.libdir)/stdlib.cf" };
 }
 ```
 
@@ -39,11 +39,12 @@ are typically relative to the policy file itself.
 bundle common file_remover_control
 {
   vars:
-    "inputs" slist => {
-                        "$(sys.libdir)/stdlib.cf",
-                        "$(this.promise_dirname)/custom_policy.cf",
-                      };
+    "inputs"
+      slist => {
+        "$(sys.libdir)/stdlib.cf", "$(this.promise_dirname)/custom_policy.cf",
+      };
 }
+
 body file control
 {
   inputs => { @(file_remover_control.inputs) };

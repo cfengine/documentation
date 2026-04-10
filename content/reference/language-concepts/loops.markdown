@@ -16,16 +16,16 @@ about color."
 ```cf3
 body common control
 {
-    bundlesequence  => { "color_example" };
+  bundlesequence => { "color_example" };
 }
 
 bundle agent color_example
 {
-    vars:
-        "color" slist => { "red", "green", "blue" };
+  vars:
+    "color" slist => { "red", "green", "blue" };
 
-    reports:
-        "Let's talk about $(color)";
+  reports:
+    "Let's talk about $(color)";
 }
 ```
 
@@ -44,20 +44,19 @@ Here's a more complex example.
 ```cf3
 body common control
 {
-    bundlesequence  => { "example" };
+  bundlesequence => { "example" };
 }
 
 bundle agent example
 {
-    vars:
-        "component" slist => { "cf-monitord", "cf-serverd", "cf-execd" };
+  vars:
+    "component" slist => { "cf-monitord", "cf-serverd", "cf-execd" };
+    "array[cf-monitord]" string => "The monitor";
+    "array[cf-serverd]" string => "The server";
+    "array[cf-execd]" string => "The executor, not executionist";
 
-        "array[cf-monitord]" string => "The monitor";
-        "array[cf-serverd]" string => "The server";
-        "array[cf-execd]" string => "The executor, not executionist";
-
-    reports:
-        "$(component) is $(array[$(component)])";
+  reports:
+    "$(component) is $(array[$(component)])";
 }
 ```
 
@@ -86,21 +85,19 @@ output of:
 ```cf3
 body common control
 {
-    bundlesequence  => { "example" };
+  bundlesequence => { "example" };
 }
 
 bundle agent example
 {
-vars:
-  "component" slist => { "cf-monitord", "cf-serverd", "cf-execd" };
+  vars:
+    "component" slist => { "cf-monitord", "cf-serverd", "cf-execd" };
+    "array[cf-monitord]" string => "The monitor";
+    "array[cf-serverd]" string => "The server";
+    "array[cf-execd]" string => "The executor, not executioner";
 
-  "array[cf-monitord]" string => "The monitor";
-  "array[cf-serverd]" string => "The server";
-  "array[cf-execd]" string => "The executor, not executioner";
-
-commands:
-   "/bin/echo $(component) is"
-            args => "$(array[$(component)])";
+  commands:
+    "/bin/echo $(component) is" args => "$(array[$(component)])";
 }
 ```
 
@@ -117,16 +114,11 @@ CFEngine can iterate across multiple lists simultaneously.
 ```cf3
 bundle agent iteration
 {
-vars:
-    "stats"   slist => { "value", "av", "dev" };
+  vars:
+    "stats" slist => { "value", "av", "dev" };
+    "monvars" slist => { "rootprocs", "otherprocs", "diskfree", "loadavg" };
 
-    "monvars" slist => {
-                       "rootprocs",
-                       "otherprocs",
-                       "diskfree",
-                       "loadavg"
-                       };
-reports:
+  reports:
     "mon.$(stats)_$(monvars) is $(mon.$(stats)_$(monvars))";
 }
 ```

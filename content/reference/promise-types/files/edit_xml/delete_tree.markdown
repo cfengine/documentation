@@ -15,10 +15,8 @@ XML subtree.
 ```cf3
 bundle edit_xml example
 {
-delete_tree:
-
-  "<Host name=\"cfe_host\"></Host>"
-    select_xpath => "/Server/Service/Engine";
+  delete_tree:
+    "<Host name=\"cfe_host\"></Host>" select_xpath => "/Server/Service/Engine";
 }
 ```
 

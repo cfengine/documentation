@@ -30,7 +30,7 @@ declared as:
 ```cf3
 bundle agent my_name
 {
-  # Promises for cf-agent
+# Promises for cf-agent
 }
 ```
 
@@ -39,7 +39,7 @@ while `cf-serverd` has bundles declared as:
 ```cf3
 bundle server my_name
 {
-  # Promises for cf-serverd
+# Promises for cf-serverd
 }
 ```
 
@@ -64,13 +64,11 @@ definitions.
 ```cf3
 bundle common globals
 {
-vars:
+  vars:
+    "global_var" string => "value";
 
-  "global_var" string => "value";
-
-classes:
-
-  "global_class" expression => "value";
+  classes:
+    "global_class" expression => "value";
 }
 ```
 
@@ -152,7 +150,7 @@ from it that correspond to the second evaluation. In other words, if you have:
 bundle agent mybundle(x)
 {
   vars:
-  "y" string => $(x);
+    "y" string => $(x);
 }
 ```
 

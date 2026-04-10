@@ -340,16 +340,17 @@ promise
 `cf3
 bundle agent ntp
 {
-   vars:
-     linux::
-       "ntp_package_name" string => "ntp";
-       "config_file" string => "/etc/ntp.conf";
-       "driftfile" string => "/var/lib/ntp/drift";
-       "servers" slist => { "time.nist.gov" };
+vars:
+linux::
+"ntp_package_name" string => "ntp";
+"config_file" string => "/etc/ntp.conf";
+"driftfile" string => "/var/lib/ntp/drift";
+"servers" slist => { "time.nist.gov" };
 
       # For brevity, and since the template is small, we define it in-line
        "config_template_string"
          string => "# NTP Config managed by CFEngine
+
 driftfile {{{driftfile}}}
 restrict default kod nomodify notrap nopeer noquery
 restrict -6 default kod nomodify notrap nopeer noquery
@@ -368,41 +369,42 @@ keys /etc/ntp/keys
      debian::
          "ntp_service_name" string => "ntp";
 
-   packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
+packages:
+"$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
          policy          => "present",
          handle          => "ntp_packages_$(ntp_package_name)",
-         classes         => results("bundle", "ntp_package");
+classes => results("bundle", "ntp_package");
 
-   files:
-    "$(config_file)"
+files:
+"$(config_file)"
       create                => "true",
       handle                => "ntp_files_conf",
       perms                 => mog( "644", "root", "root" ),
       template_method       => "inline_mustache",
       edit_template_string  => "$(config_template_string)",
-      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
-      classes               => results( "bundle", "ntp_config" );
+template_data => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
+classes => results( "bundle", "ntp_config" );
 
-   services:
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
-       service_policy => "start",
-       classes => results( "bundle", "ntp_service_running" );
+services:
+"$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
+service_policy => "start",
+classes => results( "bundle", "ntp_service_running" );
 
     ntp_config_repaired::
      "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "restart",
        classes => results( "bundle", "ntp_service_config_change" );
 
-   reports:
-     ntp_service_running_repaired.inform_mode::
-       "NTP service started";
+reports:
+ntp_service_running_repaired.inform_mode::
+"NTP service started";
 
      ntp_service_config_change_repaired.inform_mode::
        "NTP service restarted after configuration change";
 
 }
-```
+
+````
 
 What does this policy do?
 
@@ -432,7 +434,7 @@ server {{{.}}} iburst
 includefile /etc/ntp/crypto/pw
 keys /etc/ntp/keys
 ";
-```
+````
 
 A few new variables are defined. The variables `ntp_package_name`, `config_file`, `driftfile`, `servers`, and `config_template_string` are defined under the `linux` context (so only linux hosts will define them). `config_file` is the path to the ntp configuration file, `driftfile` and `servers` are both variables that will be used when rendering the configuration file and `config_template_string` is the template that will be used to render the configuration file. While both `driftfile` and `servers` are set the same for all linux hosts, those variables could easily be set to different values under different contexts.
 
@@ -565,32 +567,30 @@ CFEngine offers out-of-the-box support for reading and writing JSON data structu
 ```cf3 {file="ntp.cf"}
 bundle agent ntp
 {
-   vars:
-     linux::
-       "ntp_package_name" string => "ntp";
-       "config_file" string => "/etc/ntp.conf";
+  vars:
+    linux::
+      "ntp_package_name" string => "ntp";
+      "config_file" string => "/etc/ntp.conf";
 
-       # Set the default value for driftfile
-       "driftfile"
-         string => "/var/lib/ntp/drift";
+      # Set the default value for driftfile
+      "driftfile" string => "/var/lib/ntp/drift";
 
-       # Overwrite driftfile with value defined from Augments if it's provided
-       "driftfile"
-         string => "$(def.ntp[config][driftfile])",
-         if => isvariable( "def.ntp[config][driftfile]" );
+      # Overwrite driftfile with value defined from Augments if it's provided
+      "driftfile"
+        string => "$(def.ntp[config][driftfile])",
+        if => isvariable("def.ntp[config][driftfile]");
 
-       # Set the default value for servers
-       "servers"
-         slist => { "time.nist.gov" };
+      # Set the default value for servers
+      "servers" slist => { "time.nist.gov" };
 
-       # Overwrite servers with value defined from Augments if it's provided
-       "servers"
-         slist => getvalues( "def.ntp[config][servers]" ),
-         if => isvariable( "def.ntp[config][servers]" );
+      # Overwrite servers with value defined from Augments if it's provided
+      "servers"
+        slist => getvalues("def.ntp[config][servers]"),
+        if => isvariable("def.ntp[config][servers]");
 
       # For brevity, and since the template is small, we define it in-line
-       "config_template_string"
-         string => "# NTP Config managed by CFEngine
+      "config_template_string"
+        string => "# NTP Config managed by CFEngine
 driftfile {{{driftfile}}}
 restrict default kod nomodify notrap nopeer noquery
 restrict -6 default kod nomodify notrap nopeer noquery
@@ -603,45 +603,46 @@ includefile /etc/ntp/crypto/pw
 keys /etc/ntp/keys
 ";
 
-     redhat::
-         "ntp_service_name" string => "ntpd";
+    redhat::
+      "ntp_service_name" string => "ntpd";
 
-     debian::
-         "ntp_service_name" string => "ntp";
+    debian::
+      "ntp_service_name" string => "ntp";
 
-   packages:
-       "$(ntp_package_name)"   -> { "StandardsDoc 3.2.1" }
-         policy          => "present",
-         handle          => "ntp_packages_$(ntp_package_name)",
-         classes         => results("bundle", "ntp_package");
+  packages:
+    "$(ntp_package_name)" -> { "StandardsDoc 3.2.1" }
+      policy => "present",
+      handle => "ntp_packages_$(ntp_package_name)",
+      classes => results("bundle", "ntp_package");
 
-   files:
+  files:
     "$(config_file)"
-      create                => "true",
-      handle                => "ntp_files_conf",
-      perms                 => mog( "644", "root", "root" ),
-      template_method       => "inline_mustache",
-      edit_template_string  => "$(config_template_string)",
-      template_data         => mergedata( '{ "driftfile": "$(driftfile)", "servers": servers }' ),
-      classes               => results( "bundle", "ntp_config" );
+      create => "true",
+      handle => "ntp_files_conf",
+      perms => mog("644", "root", "root"),
+      template_method => "inline_mustache",
+      edit_template_string => "$(config_template_string)",
+      template_data => mergedata(
+        '{ "driftfile": "$(driftfile)", "servers": servers }'
+      ),
+      classes => results("bundle", "ntp_config");
 
-   services:
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
-       service_policy => "start",
-       classes => results( "bundle", "ntp_service_running" );
+  services:
+    "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
+      service_policy => "start",
+      classes => results("bundle", "ntp_service_running");
 
     ntp_config_repaired::
-     "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
-       service_policy => "restart",
-       classes => results( "bundle", "ntp_service_config_change" );
+      "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
+        service_policy => "restart",
+        classes => results("bundle", "ntp_service_config_change");
 
-   reports:
-     ntp_service_running_repaired.inform_mode::
-       "NTP service started";
+  reports:
+    ntp_service_running_repaired.inform_mode::
+      "NTP service started";
 
-     ntp_service_config_change_repaired.inform_mode::
-       "NTP service restarted after configuration change";
-
+    ntp_service_config_change_repaired.inform_mode::
+      "NTP service restarted after configuration change";
 }
 ```
 
@@ -654,28 +655,26 @@ Let's review the changes to the vars promises as they were the only changes made
 ```cf3
 bundle agent ntp
 {
-   vars:
-     linux::
-       "ntp_package_name" string => "ntp";
-       "config_file" string => "/etc/ntp.conf";
+  vars:
+    linux::
+      "ntp_package_name" string => "ntp";
+      "config_file" string => "/etc/ntp.conf";
 
-       # Set the default value for driftfile
-       "driftfile"
-         string => "/var/lib/ntp/drift";
+      # Set the default value for driftfile
+      "driftfile" string => "/var/lib/ntp/drift";
 
-       # Overwrite driftfile with value defined from Augments if it's provided
-       "driftfile"
-         string => "$(def.ntp[config][driftfile])",
-         if => isvariable( "def.ntp[config][driftfile]" );
+      # Overwrite driftfile with value defined from Augments if it's provided
+      "driftfile"
+        string => "$(def.ntp[config][driftfile])",
+        if => isvariable("def.ntp[config][driftfile]");
 
-       # Set the default value for servers
-       "servers"
-         slist => { "time.nist.gov" };
+      # Set the default value for servers
+      "servers" slist => { "time.nist.gov" };
 
-       # Overwrite servers with value defined from Augments if it's provided
-       "servers"
-         slist => getvalues( "def.ntp[config][servers]" ),
-         if => isvariable( "def.ntp[config][servers]" );
+      # Overwrite servers with value defined from Augments if it's provided
+      "servers"
+        slist => getvalues("def.ntp[config][servers]"),
+        if => isvariable("def.ntp[config][servers]");
 ```
 
 Notice two promises were introduced, one setting `driftfile` to the value of `$(def.ntp[config][driftfile])` if it is defined and one setting servers to the list of values for `def.ntp[config][servers]` if it is defined. [Augments][Augments] allows for variables to be set in the _def_ bundle scope very early before policy is evaluated.
