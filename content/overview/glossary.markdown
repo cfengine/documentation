@@ -292,6 +292,12 @@ Promises are idempotent, meaning they can be executed many times with the same o
 They are also convergent, meaning they can only nudge the system closer to a steady state, never destabilize it.
 While there are ways a user could override this, it's almost never a good idea to do so.
 
+#### Promise stakeholder
+
+The stakeholder is an optional part of a promise in CFEngine which gives you metadata about who the promise is made to.
+It is commonly used with ticket IDs, CVE IDs, URLs, email addresses, or names of people / teams.
+Stakeholders are sometimes referred to as promisees, but stakeholder is the preferred term.
+
 #### Promise types
 
 Different types of resources you can manage with CFEngine.
