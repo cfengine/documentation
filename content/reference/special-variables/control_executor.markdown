@@ -79,6 +79,12 @@ The class schedule used by cf-execd for activating cf-agent. The list should con
 
 **See also:** [`schedule` in `body executor control`][cf-execd#schedule]
 
+### default:control_executor.smtpport
+
+Port that `cf-execd` should use when sending email.
+
+**See also:** [`smtpport` in `body executor control`][cf-execd#smtpport]
+
 ### default:control_executor.smtpserver
 
 Name or IP of a willing smtp server for sending email. This should point to a standard port 25 server without encryption. If you are running secured or encrypted email then you should run a mail relay on localhost and point this to localhost.

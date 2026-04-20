@@ -340,6 +340,27 @@ schedule => { "Min00", "(Evening|Night).Min15", "Min30", "(Evening|Night).Min45"
 
 **History:** Added in CFEngine 3.0.0
 
+### smtpport
+
+**Description:** Port that `cf-execd` should try to connect to when sending email.
+
+**Type:** `int`
+
+**Allowed input range:** `0,10080`
+
+**Example:**
+
+```cf3
+body executor control
+{
+    smtpport => "26";
+}
+```
+
+**See also:** [`default:control_executor.smtpport`](/reference/special-variables/control_executor/#defaultcontrol_executorsmtpport)
+
+**History:** Added in CFEngine 3.28.0
+
 ### smtpserver
 
 **Description:** Name or IP of a willing smtp server for sending
