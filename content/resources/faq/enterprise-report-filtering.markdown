@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Enterprise Report Filtering
-published: true
 sorting: 90
 ---
 

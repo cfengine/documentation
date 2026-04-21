@@ -1,7 +1,6 @@
 ---
 layout: default
 title: How do I find the public key for a given host
-published: true
 sorting: 90
 ---
 

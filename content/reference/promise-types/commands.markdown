@@ -1,7 +1,6 @@
 ---
 layout: default
 title: commands
-published: true
 ---
 
 Commands and [processes][processes] are separated cleanly. Restarting of

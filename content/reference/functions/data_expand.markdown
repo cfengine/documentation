@@ -1,7 +1,6 @@
 ---
 layout: default
 title: data_expand
-published: true
 ---
 
 [%CFEngine_function_prototype(data_container)%]

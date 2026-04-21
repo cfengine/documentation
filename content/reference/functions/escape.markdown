@@ -1,7 +1,6 @@
 ---
 layout: default
 title: escape
-published: true
 ---
 
 [%CFEngine_function_prototype(text)%]

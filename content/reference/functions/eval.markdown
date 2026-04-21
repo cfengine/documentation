@@ -1,7 +1,6 @@
 ---
 layout: default
 title: eval
-published: true
 ---
 
 [%CFEngine_function_prototype(expression, mode, options)%]

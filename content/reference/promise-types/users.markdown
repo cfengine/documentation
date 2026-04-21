@@ -1,7 +1,6 @@
 ---
 layout: default
 title: users
-published: true
 ---
 
 User promises are promises made about **local users** on a host. They

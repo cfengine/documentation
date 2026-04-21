@@ -1,7 +1,6 @@
 ---
 layout: default
 title: insert_text
-published: true
 ---
 
 This proimse type assures that a value string, containing the matching

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: File template examples
-published: true
 sorting: 7
 ---
 

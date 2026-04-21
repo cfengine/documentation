@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Special variables
-published: true
 sorting: 50
 ---
 

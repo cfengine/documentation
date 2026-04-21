@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Requesting a CFEngine Enterprise License
-published: true
 sorting: 40
 ---
 

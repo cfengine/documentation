@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Debugging Mission Portal
-published: true
 sorting: 90
 ---
 

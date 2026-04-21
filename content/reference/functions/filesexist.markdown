@@ -1,7 +1,6 @@
 ---
 layout: default
 title: filesexist
-published: true
 ---
 
 [%CFEngine_function_prototype(list)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: sysctlvalue
-published: true
 ---
 
 [%CFEngine_function_prototype(key)%]

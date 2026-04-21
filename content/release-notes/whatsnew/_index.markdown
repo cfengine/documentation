@@ -1,7 +1,6 @@
 ---
 layout: default
 title: New in CFEngine
-published: true
 sorting: 10
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: string_length
-published: true
 ---
 
 [%CFEngine_function_prototype(data)%]

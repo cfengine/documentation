@@ -1,7 +1,6 @@
 ---
 layout: default
 title: SQL schema
-published: true
 ---
 
 CFEngine Enterprise uses multiple databases.

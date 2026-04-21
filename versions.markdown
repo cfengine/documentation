@@ -1,7 +1,6 @@
 ---
 layout: versions
 title: Versions
-published: true
 sorting: 1
 ---
 # Versions

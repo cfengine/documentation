@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Installing Enterprise for production
-published: true
 sorting: 40
 ---
 

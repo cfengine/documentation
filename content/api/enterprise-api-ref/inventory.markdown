@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Inventory API
-published: true
 ---
 Inventory API allows to access inventory reports and attributes dictionary.
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Pre-installation checklist
-published: true
 sorting: 10
 ---
 

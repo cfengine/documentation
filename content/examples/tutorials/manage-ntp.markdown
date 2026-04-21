@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Managing network time protocol
-published: true
 sorting: 3
 ---
 

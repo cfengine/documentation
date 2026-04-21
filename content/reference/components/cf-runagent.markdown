@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-runagent
-published: true
 sorting: 70
 keywords: [runagent]
 ---

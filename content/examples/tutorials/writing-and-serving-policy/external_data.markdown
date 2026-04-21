@@ -1,7 +1,6 @@
 ---
 layout: default
 title: External data
-published: true
 sorting: 50
 ---
 

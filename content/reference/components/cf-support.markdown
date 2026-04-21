@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-support
-published: true
 sorting: 10
 keywords: [cf-support]
 ---

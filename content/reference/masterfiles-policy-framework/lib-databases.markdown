@@ -1,7 +1,6 @@
 ---
 layout: default
 title: lib/databases.cf
-published: true
 ---
 
 See the [`databases` promises][databases] documentation for a

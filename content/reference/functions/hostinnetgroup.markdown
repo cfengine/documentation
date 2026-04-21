@@ -1,7 +1,6 @@
 ---
 layout: default
 title: hostinnetgroup
-published: true
 ---
 
 [%CFEngine_function_prototype(netgroup)%]

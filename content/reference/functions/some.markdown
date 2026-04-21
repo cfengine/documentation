@@ -1,7 +1,6 @@
 ---
 layout: default
 title: some
-published: true
 ---
 
 [%CFEngine_function_prototype(regex, list)%]

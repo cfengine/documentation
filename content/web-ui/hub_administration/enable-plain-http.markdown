@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Enable plain http
-published: true
 ---
 
 By default HTTPS is enforced by redirecting any non secure connection requests.

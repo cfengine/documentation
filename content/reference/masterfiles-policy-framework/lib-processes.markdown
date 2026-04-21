@@ -1,7 +1,6 @@
 ---
 layout: default
 title: lib/processes.cf
-published: true
 ---
 
 See the [`processes` promises][processes] documentation for a

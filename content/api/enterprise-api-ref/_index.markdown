@@ -1,7 +1,6 @@
 ---
 layout: default
 title:  Enterprise API reference
-published: true
 sorting: 70
 ---
 

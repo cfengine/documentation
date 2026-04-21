@@ -1,7 +1,6 @@
 ---
 layout: default
 title: lib/common.cf
-published: true
 ---
 
 See

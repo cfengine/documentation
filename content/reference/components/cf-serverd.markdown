@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-serverd
-published: true
 sorting: 20
 keywords: [server]
 ---

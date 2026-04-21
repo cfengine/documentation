@@ -1,7 +1,6 @@
 ---
 layout: default
 title: "parserealarray"
-published: true
 ---
 
 **Prototype:** `parserealarray(array, input, comment, split, maxentries, maxbytes)`<br>

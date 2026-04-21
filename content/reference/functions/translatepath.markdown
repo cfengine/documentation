@@ -1,7 +1,6 @@
 ---
 layout: default
 title: translatepath
-published: true
 ---
 
 [%CFEngine_function_prototype(path)%]

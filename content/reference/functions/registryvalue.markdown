@@ -1,7 +1,6 @@
 ---
 layout: default
 title: registryvalue
-published: true
 ---
 
 [%CFEngine_function_prototype(key, valueid)%]

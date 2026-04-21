@@ -1,7 +1,6 @@
 ---
 layout: default
 title: packagesmatching
-published: true
 ---
 
 [%CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex)%]

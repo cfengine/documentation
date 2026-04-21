@@ -1,7 +1,6 @@
 ---
 layout: default
 title: High availability
-published: true
 ---
 
 ## Overview

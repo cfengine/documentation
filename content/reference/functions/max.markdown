@@ -1,7 +1,6 @@
 ---
 layout: default
 title: max
-published: true
 ---
 
 [%CFEngine_function_prototype(list, sortmode)%]

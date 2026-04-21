@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-net
-published: true
 sorting: 90
 keywords: [protocol, cli]
 ---

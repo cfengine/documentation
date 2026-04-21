@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Regenerate self signed SSL certificate
-published: true
 ---
 
 When first installed a self-signed ssl certificate is automatically generated

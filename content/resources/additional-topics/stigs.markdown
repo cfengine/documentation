@@ -1,7 +1,6 @@
 ---
 layout: default
 title: STIGs
-published: true
 sorting: 80
 ---
 

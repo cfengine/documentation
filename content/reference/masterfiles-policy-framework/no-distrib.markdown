@@ -1,7 +1,6 @@
 ---
 layout: default
 title: .no-distrib/
-published: true
 sorting: 20
 ---
 

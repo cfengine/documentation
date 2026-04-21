@@ -1,7 +1,6 @@
 ---
 layout: default
 title: findfiles
-published: true
 ---
 
 [%CFEngine_function_prototype(glob1, glob2, ...)%]

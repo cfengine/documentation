@@ -1,7 +1,6 @@
 ---
 layout: default
 title: unique
-published: true
 ---
 
 [%CFEngine_function_prototype(list)%]

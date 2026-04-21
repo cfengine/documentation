@@ -1,7 +1,6 @@
 ---
 layout: default
 title: File changes API
-published: true
 ---
 
 

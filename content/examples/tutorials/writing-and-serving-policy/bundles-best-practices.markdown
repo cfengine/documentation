@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Bundles best practices
-published: true
 sorting: 20
 ---
 

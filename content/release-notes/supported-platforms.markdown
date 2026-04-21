@@ -2,7 +2,6 @@
 layout: default
 title: Supported platforms and versions
 sorting: 20
-published: true
 ---
 
 CFEngine works on a wide range of platforms, and the CFEngine team strives to

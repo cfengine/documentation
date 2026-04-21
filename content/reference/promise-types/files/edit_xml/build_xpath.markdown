@@ -1,7 +1,6 @@
 ---
 layout: default
 title: build_xpath
-published: true
 ---
 
 This promise type assures that a balanced XML tree, described by the given

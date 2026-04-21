@@ -1,7 +1,6 @@
 ---
 layout: default
 title: lib/commands.cf
-published: true
 ---
 
 See the [`commands` promises][commands] documentation for a

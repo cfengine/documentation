@@ -1,7 +1,6 @@
 ---
 layout: default
 title: VCS settings API
-published: true
 ---
 VCS API for managing version control repository settings.
 

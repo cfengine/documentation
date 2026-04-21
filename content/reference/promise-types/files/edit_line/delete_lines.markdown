@@ -1,7 +1,6 @@
 ---
 layout: default
 title: delete_lines
-published: true
 ---
 
 This promise assures that certain lines exactly matching regular

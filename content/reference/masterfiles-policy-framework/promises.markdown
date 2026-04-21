@@ -1,7 +1,6 @@
 ---
 layout: default
 title: promises.cf
-published: true
 sorting: 10
 ---
 

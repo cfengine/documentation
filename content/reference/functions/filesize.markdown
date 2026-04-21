@@ -1,7 +1,6 @@
 ---
 layout: default
 title: filesize
-published: true
 ---
 
 [%CFEngine_function_prototype(filename)%]

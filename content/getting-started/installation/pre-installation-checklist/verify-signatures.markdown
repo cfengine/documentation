@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Verifying package signatures
-published: true
 sorting: 40
 ---
 

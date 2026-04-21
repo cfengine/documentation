@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-secret
-published: true
 sorting: 10
 keywords: [cf-secret]
 ---

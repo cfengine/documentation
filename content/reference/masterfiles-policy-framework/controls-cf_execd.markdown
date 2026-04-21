@@ -1,7 +1,6 @@
 ---
 layout: default
 title: controls/cf_execd.cf
-published: true
 ---
 
 This is where `body executor control` is defined. `body executor control` is where

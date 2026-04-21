@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Ensure a process is not running
-published: true
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

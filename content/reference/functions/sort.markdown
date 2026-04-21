@@ -1,7 +1,6 @@
 ---
 layout: default
 title: sort
-published: true
 ---
 
 [%CFEngine_function_prototype(list, mode)%]

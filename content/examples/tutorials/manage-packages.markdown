@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Package management
-published: true
 sorting: 3
 ---
 

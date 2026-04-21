@@ -1,7 +1,6 @@
 ---
 layout: default
 title: System file examples
-published: true
 sorting: 13
 ---
 

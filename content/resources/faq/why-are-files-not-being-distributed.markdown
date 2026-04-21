@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Why are some files inside masterfiles not being updated/distributed?
-published: true
 sorting: 90
 ---
 

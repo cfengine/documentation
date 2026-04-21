@@ -2,7 +2,6 @@
 layout: default
 title: Reporting and remediation of security vulnerabilities
 sorting: 10
-published: true
 ---
 
 ## Prerequisites

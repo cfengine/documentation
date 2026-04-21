@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Public key distribution
-published: true
 ---
 
 > How can I arrange for the hosts in my infrastructure to trust a new key?

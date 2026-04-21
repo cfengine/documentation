@@ -2,7 +2,6 @@
 layout: default
 title: Best practices
 sorting: 100
-published: true
 ---
 
 ## Policy style guide

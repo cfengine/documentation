@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Host REST API
-published: true
 ---
 
 Host API allows to access host specific information.

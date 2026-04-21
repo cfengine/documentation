@@ -1,7 +1,6 @@
 ---
 layout: default
 title: string_upcase
-published: true
 ---
 
 [%CFEngine_function_prototype(data)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: product
-published: true
 ---
 
 [%CFEngine_function_prototype(list)%]

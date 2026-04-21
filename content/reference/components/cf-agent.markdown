@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-agent
-published: true
 sorting: 10
 keywords: [agent]
 ---

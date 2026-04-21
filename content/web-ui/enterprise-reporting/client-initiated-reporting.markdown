@@ -2,7 +2,6 @@
 layout: default
 title: Client initiated reporting / call collect
 sorting: 60
-published: true
 ---
 
 Pull collect is the default mode of reporting.

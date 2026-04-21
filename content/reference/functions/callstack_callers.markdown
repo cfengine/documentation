@@ -1,7 +1,6 @@
 ---
 layout: default
 title: callstack_callers
-published: true
 ---
 
 [%CFEngine_function_prototype()%]

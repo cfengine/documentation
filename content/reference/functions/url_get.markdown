@@ -1,7 +1,6 @@
 ---
 layout: default
 title: url_get
-published: true
 ---
 
 [%CFEngine_function_prototype(url, options_container)%]

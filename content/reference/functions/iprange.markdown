@@ -1,7 +1,6 @@
 ---
 layout: default
 title: iprange
-published: true
 ---
 
 [%CFEngine_function_prototype(range, optional_interface)%]

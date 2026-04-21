@@ -1,7 +1,6 @@
 ---
 layout: default
 title: strcmp
-published: true
 ---
 
 [%CFEngine_function_prototype(string1, string2)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: maplist
-published: true
 ---
 
 [%CFEngine_function_prototype(pattern, list)%]

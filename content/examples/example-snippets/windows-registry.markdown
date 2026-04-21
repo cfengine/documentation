@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Windows registry examples
-published: true
 sorting: 14
 ---
 

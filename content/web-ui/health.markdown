@@ -2,7 +2,6 @@
 layout: default
 title: Health
 sorting: 20
-published: true
 ---
 
 <img width="493px" src="Mission-portal-health-dignostics-header.png">

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: execresult_as_data
-published: true
 ---
 
 [%CFEngine_function_prototype(command, shell, output)%]

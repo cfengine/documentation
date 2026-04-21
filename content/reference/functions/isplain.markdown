@@ -1,7 +1,6 @@
 ---
 layout: default
 title: isplain
-published: true
 ---
 
 [%CFEngine_function_prototype(filename)%]

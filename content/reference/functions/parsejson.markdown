@@ -1,7 +1,6 @@
 ---
 layout: default
 title: parsejson
-published: true
 ---
 
 [%CFEngine_function_prototype(json_data)%]

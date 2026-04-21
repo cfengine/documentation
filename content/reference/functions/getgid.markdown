@@ -1,7 +1,6 @@
 ---
 layout: default
 title: getgid
-published: true
 ---
 
 [%CFEngine_function_prototype(groupname)%]

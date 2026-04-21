@@ -1,7 +1,6 @@
 ---
 layout: default
 title: string_replace
-published: true
 ---
 
 [%CFEngine_function_prototype(string, match, replacement)%]

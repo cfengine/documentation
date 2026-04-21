@@ -1,7 +1,6 @@
 ---
 layout: default
 title: File comparison
-published: true
 sorting: 100
 ---
 

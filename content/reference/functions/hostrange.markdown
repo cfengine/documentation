@@ -1,7 +1,6 @@
 ---
 layout: default
 title: hostrange
-published: true
 ---
 
 [%CFEngine_function_prototype(prefix, range)%]

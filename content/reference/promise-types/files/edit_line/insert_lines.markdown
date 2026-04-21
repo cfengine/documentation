@@ -1,7 +1,6 @@
 ---
 layout: default
 title: insert_lines
-published: true
 ---
 
 This promise type is part of the line-editing model. It inserts lines into

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: modules/
-published: true
 ---
 This directory tree is used for distributing Modules. The [packages subtree][modules/packages/] is used for vendoring packages modules and the [promises sub-directory][modules/promises/] is used for promise modules, including the libraries used by promise modules.
 

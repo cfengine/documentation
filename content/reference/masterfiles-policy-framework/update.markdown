@@ -1,7 +1,6 @@
 ---
 layout: default
 title: update.cf
-published: true
 sorting: 20
 ---
 

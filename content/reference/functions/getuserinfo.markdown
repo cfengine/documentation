@@ -1,7 +1,6 @@
 ---
 layout: default
 title: getuserinfo
-published: true
 ---
 
 [%CFEngine_function_prototype(optional_uidorname)%]

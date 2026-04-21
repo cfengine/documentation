@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Application management
-published: true
 sorting: 80
 ---
 

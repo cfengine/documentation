@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Iteration (Loops)
-published: true
 sorting: 80
 ---
 

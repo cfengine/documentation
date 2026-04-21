@@ -1,7 +1,6 @@
 ---
 layout: default
 title: getenv
-published: true
 ---
 
 [%CFEngine_function_prototype(variable, maxlength)%]

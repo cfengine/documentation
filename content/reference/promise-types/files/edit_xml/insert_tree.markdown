@@ -1,7 +1,6 @@
 ---
 layout: default
 title: insert_tree
-published: true
 ---
 
 This promise type assures that a

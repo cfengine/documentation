@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Database examples
-published: true
 sorting: 8
 ---
 

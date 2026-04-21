@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Namespaces
-published: true
 sorting: 100
 ---
 

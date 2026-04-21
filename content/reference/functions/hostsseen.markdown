@@ -1,7 +1,6 @@
 ---
 layout: default
 title: hostsseen
-published: true
 ---
 
 [%CFEngine_function_prototype(horizon, seen, field)%]

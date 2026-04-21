@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cfe_internal/update/
-published: true
 ---
 
 This directory contains internal management polcies related to the default

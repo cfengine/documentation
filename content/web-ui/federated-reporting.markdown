@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Federated reporting
-published: true
 sorting: 60
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Custom LDAPs certificate
-published: true
 ---
 
 To use a custom LDAPs certificate install it into your hubs operating system.

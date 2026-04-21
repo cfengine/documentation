@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Client server communication
-published: true
 sorting: 30
 ---
 

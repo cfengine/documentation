@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Classes and decisions
-published: true
 sorting: 50
 ---
 

@@ -2,7 +2,6 @@
 layout: default
 title: Installation overview
 sorting: 30
-published: true
 ---
 
 ## Installation

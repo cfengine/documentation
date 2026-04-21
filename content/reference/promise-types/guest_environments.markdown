@@ -1,7 +1,6 @@
 ---
 layout: default
 title: guest_environments
-published: true
 sorting: 9999
 ---
 

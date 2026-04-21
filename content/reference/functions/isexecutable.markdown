@@ -1,7 +1,6 @@
 ---
 layout: default
 title: isexecutable
-published: true
 ---
 
 [%CFEngine_function_prototype(filename)%]

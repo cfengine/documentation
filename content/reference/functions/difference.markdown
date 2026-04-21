@@ -1,7 +1,6 @@
 ---
 layout: default
 title: difference
-published: true
 ---
 
 [%CFEngine_function_prototype(list1, list2)%]

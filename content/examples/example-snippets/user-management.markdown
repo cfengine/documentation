@@ -1,7 +1,6 @@
 ---
 layout: default
 title: User management examples
-published: true
 sorting: 15
 ---
 

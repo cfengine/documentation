@@ -1,7 +1,6 @@
 ---
 layout: default
 title: lib/storage.cf
-published: true
 ---
 
 See the [`storage` promises][storage] documentation for a

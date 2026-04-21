@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Loops
-published: true
 sorting: 70
 ---
 

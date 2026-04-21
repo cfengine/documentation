@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Using CFEngine with Open Nebula
-published: true
 sorting: 80
 ---
 

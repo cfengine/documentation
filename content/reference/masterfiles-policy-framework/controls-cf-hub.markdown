@@ -1,7 +1,6 @@
 ---
 layout: default
 title: controls/cf_hub.cf
-published: true
 ---
 
 This is where `body hub control` is defined. `body hub control` is where

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: concat
-published: true
 ---
 
 [%CFEngine_function_prototype(...)%]

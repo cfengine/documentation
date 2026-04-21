@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Using Amazon Web Services
-published: true
 sorting: 10
 ---
 

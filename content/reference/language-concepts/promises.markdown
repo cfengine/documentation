@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Promises
-published: true
 sorting: 30
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: index
 title: Home
-published: true
 sorting: 1
 categories: ["index"]
 alias: index.html

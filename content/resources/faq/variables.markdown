@@ -1,7 +1,6 @@
 ---
 layout: default
 title: How do I pass a data type variable?
-published: true
 sorting: 90
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: file control
-published: true
 sorting: 100
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: string_reverse
-published: true
 ---
 
 [%CFEngine_function_prototype(data)%]

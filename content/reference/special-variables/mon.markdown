@@ -1,7 +1,6 @@
 ---
 layout: default
 title: mon
-published: true
 ---
 
 The variables discovered by `cf-monitord` are placed in this monitoring

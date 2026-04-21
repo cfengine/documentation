@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Agility
-published: true
 sorting: 80
 ---
 

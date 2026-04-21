@@ -1,7 +1,6 @@
 ---
 layout: default
 title: edit_line
-published: true
 ---
 
 Line based editing is a simple model for editing files. Before XML, and

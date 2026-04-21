@@ -1,6 +1,5 @@
 ---
 layout: default
-published: true
 title: Installation guide
 ---
 

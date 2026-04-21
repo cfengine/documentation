@@ -1,7 +1,6 @@
 ---
 layout: default
 title: and
-published: true
 ---
 
 [%CFEngine_function_prototype(...)%]

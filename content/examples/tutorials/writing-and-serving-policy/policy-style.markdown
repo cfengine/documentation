@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Policy style guide
-published: true
 sorting: 10
 ---
 

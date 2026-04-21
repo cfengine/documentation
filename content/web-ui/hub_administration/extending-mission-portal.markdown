@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Extending Mission Portal
-published: true
 sorting: 90
 ---
 

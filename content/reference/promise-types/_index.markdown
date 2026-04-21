@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Promise types
-published: true
 sorting: 20
 ---
 

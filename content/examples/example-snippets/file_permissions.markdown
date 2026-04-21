@@ -1,7 +1,6 @@
 ---
 layout: default
 title: File permissions
-published: true
 sorting: 15
 ---
 

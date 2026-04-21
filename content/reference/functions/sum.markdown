@@ -1,7 +1,6 @@
 ---
 layout: default
 title: sum
-published: true
 ---
 
 [%CFEngine_function_prototype(list)%]

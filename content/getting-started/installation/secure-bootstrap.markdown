@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Secure bootstrap
-published: true
 sorting: 20
 ---
 

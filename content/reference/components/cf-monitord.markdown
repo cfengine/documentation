@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-monitord
-published: true
 sorting: 50
 keywords: [monitor]
 ---

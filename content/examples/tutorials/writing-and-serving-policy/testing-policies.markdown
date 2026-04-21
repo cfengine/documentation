@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Testing policies
-published: true
 sorting: 50
 ---
 

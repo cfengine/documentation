@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Tracking changes
-published: true
 sorting: 50
 ---
 

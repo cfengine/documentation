@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Reporting
-published: true
 sorting: 80
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: classesmatching
-published: true
 ---
 
 [%CFEngine_function_prototype(name, tag1, tag2, ...)%]

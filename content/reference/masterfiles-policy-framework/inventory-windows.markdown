@@ -1,7 +1,6 @@
 ---
 layout: default
 title: inventory/windows.cf
-published: true
 ---
 
 This policy is inventory related to windows hosts.

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cfmp
-published: true
 ---
 
 This database contains Mission Portal related settings not processed by the API.

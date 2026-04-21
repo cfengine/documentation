@@ -1,7 +1,6 @@
 ---
 layout: default
 title: getusers
-published: true
 ---
 
 [%CFEngine_function_prototype(exclude_names, exclude_ids)%]

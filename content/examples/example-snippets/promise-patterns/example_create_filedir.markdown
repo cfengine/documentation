@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Create files and directories
-published: true
 ---
 
 The following is a standalone policy that will create the file

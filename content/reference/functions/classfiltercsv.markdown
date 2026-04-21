@@ -1,7 +1,6 @@
 ---
 layout: default
 title: classfiltercsv
-published: true
 ---
 
 [%CFEngine_function_prototype(filename, has_header, class_column, optional_sort_column)%]

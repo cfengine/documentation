@@ -1,7 +1,6 @@
 ---
 layout: default
 title: getuid
-published: true
 ---
 
 [%CFEngine_function_prototype(username)%]

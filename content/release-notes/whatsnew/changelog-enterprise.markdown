@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Enterprise changelog
-published: true
 sorting: 30
 ---
 

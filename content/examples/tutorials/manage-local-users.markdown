@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Managing local users
-published: true
 sorting: 3
 ---
 

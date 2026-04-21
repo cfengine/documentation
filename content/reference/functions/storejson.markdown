@@ -1,7 +1,6 @@
 ---
 layout: default
 title: storejson
-published: true
 ---
 
 [%CFEngine_function_prototype(data_container)%]

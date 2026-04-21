@@ -1,7 +1,6 @@
 ---
 layout: default
 title: network_connections
-published: true
 ---
 
 [%CFEngine_function_prototype()%]

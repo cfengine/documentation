@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Overview
-published: true
 sorting: 10
 ---
 

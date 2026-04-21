@@ -1,7 +1,6 @@
 ---
 layout: default
 title: How do I integrate custom policy?
-published: true
 sorting: 90
 ---
 

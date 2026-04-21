@@ -1,7 +1,6 @@
 ---
 layout: default
 title:  Checking status
-published: true
 sorting: 20
 ---
 

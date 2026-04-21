@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Bundles
-published: true
 sorting: 10
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: islink
-published: true
 ---
 
 [%CFEngine_function_prototype(filename)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Software administration examples
-published: true
 sorting: 4
 ---
 

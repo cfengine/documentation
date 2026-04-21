@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Policy deployment
-published: true
 ---
 
 By default CFEngine policy is distributed from `/var/cfengine/masterfiles` on

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: General installation
-published: true
 sorting: 20
 ---
 

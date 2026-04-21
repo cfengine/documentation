@@ -1,7 +1,6 @@
 ---
 layout: default
 title:  Managing users and roles
-published: true
 sorting: 40
 ---
 

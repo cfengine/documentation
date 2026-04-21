@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Masterfiles changelog
-published: true
 sorting: 20
 ---
 

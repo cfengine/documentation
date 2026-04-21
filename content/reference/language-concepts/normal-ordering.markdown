@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Normal ordering
-published: true
 sorting: 40
 ---
 

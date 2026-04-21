@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Using Vagrant
-published: true
 sorting: 30
 ---
 

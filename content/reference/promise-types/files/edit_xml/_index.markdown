@@ -1,7 +1,6 @@
 ---
 layout: default
 title: edit_xml
-published: true
 ---
 
 The use of XML documents in systems configuration is widespread. XML

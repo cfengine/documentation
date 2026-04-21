@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Functions
-published: true
 sorting: 30
 ---
 

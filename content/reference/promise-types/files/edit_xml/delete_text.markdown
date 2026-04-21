@@ -1,7 +1,6 @@
 ---
 layout: default
 title: delete_text
-published: true
 ---
 
 This promise type assures that a value string, containing the matching

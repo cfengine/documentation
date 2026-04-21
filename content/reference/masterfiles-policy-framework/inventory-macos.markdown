@@ -1,7 +1,6 @@
 ---
 layout: default
 title: inventory/macos.cf
-published: true
 ---
 
 This policy is inventory related to macos hosts.

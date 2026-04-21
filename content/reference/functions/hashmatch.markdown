@@ -1,7 +1,6 @@
 ---
 layout: default
 title: hashmatch
-published: true
 ---
 
 [%CFEngine_function_prototype(filename, algorithm, hash)%]

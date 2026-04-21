@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Commands, scripts, and execution examples
-published: true
 sorting: 5
 ---
 

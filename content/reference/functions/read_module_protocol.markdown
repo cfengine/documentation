@@ -1,7 +1,6 @@
 ---
 layout: default
 title: read_module_protocol
-published: true
 ---
 
 [%CFEngine_function_prototype(file_path)%]

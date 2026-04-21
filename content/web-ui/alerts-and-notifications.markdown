@@ -2,7 +2,6 @@
 layout: default
 title: Alerts and notifications
 sorting: 40
-published: true
 ---
 
 ## Create a new alert

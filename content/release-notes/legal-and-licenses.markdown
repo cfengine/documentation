@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Legal and licenses
-published: true
 sorting: 999
 alias: legal.html
 ---

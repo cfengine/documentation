@@ -1,7 +1,6 @@
 ---
 layout: default
 title: System security examples
-published: true
 sorting: 10
 ---
 

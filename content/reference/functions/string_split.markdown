@@ -1,7 +1,6 @@
 ---
 layout: default
 title: string_split
-published: true
 ---
 
 [%CFEngine_function_prototype(string, regex, maxent)%]

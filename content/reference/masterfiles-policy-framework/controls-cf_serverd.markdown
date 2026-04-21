@@ -1,7 +1,6 @@
 ---
 layout: default
 title: controls/cf_serverd.cf
-published: true
 ---
 
 This is where `body server control` is defined. `body server control` is where

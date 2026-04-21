@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Augments
-published: true
 sorting: 70
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Installing CFEngine Enterprise agent
-published: true
 sorting: 3
 ---
 

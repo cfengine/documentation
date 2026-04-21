@@ -1,7 +1,6 @@
 ---
 layout: default
 title: All promise and body types
-published: true
 sorting: 110
 ---
 

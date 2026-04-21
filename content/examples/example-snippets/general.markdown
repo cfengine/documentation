@@ -1,7 +1,6 @@
 ---
 layout: default
 title: General examples
-published: true
 sorting: 1
 ---
 

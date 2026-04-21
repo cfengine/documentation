@@ -1,7 +1,6 @@
 ---
 layout: default
 title: findprocesses
-published: true
 ---
 
 [%CFEngine_function_prototype(regex)%]

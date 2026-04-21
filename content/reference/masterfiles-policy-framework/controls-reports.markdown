@@ -1,7 +1,6 @@
 ---
 layout: default
 title: controls/reports.cf
-published: true
 ---
 
 This is where report settings for CFEngine Enterprise are found. Control which

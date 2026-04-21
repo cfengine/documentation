@@ -1,7 +1,6 @@
 ---
 layout: default
 title: controls/update_def_inputs.cf
-published: true
 ---
 
 This is where the list of update related policy files to include as defined

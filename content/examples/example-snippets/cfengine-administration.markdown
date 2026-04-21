@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Administration examples
-published: true
 sorting: 2
 ---
 

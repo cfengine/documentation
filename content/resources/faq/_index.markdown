@@ -1,7 +1,6 @@
 ---
 layout: default
 title: FAQ
-published: true
 sorting: 10
 ---
 

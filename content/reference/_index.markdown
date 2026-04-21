@@ -2,7 +2,6 @@
 layout: default
 title: Reference
 alias: CFEngine Reference
-published: true
 sorting: 70
 ---
 

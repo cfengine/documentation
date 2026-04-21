@@ -1,7 +1,6 @@
 ---
 layout: default
 title: countclassesmatching
-published: true
 ---
 
 [%CFEngine_function_prototype(regex, tag1, tag2, ...)%]

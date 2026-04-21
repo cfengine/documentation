@@ -1,7 +1,6 @@
 ---
 layout: default
 title: basename
-published: true
 ---
 
 [%CFEngine_function_prototype(filename, optional_extension)%]

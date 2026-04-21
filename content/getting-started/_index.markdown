@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Getting started
-published: true
 sorting: 20
 ---
 

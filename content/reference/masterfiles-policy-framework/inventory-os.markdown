@@ -1,7 +1,6 @@
 ---
 layout: default
 title: inventory/os.cf
-published: true
 ---
 
 This policy is inventory related to os hosts.

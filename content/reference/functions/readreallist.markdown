@@ -1,7 +1,6 @@
 ---
 layout: default
 title: readreallist
-published: true
 ---
 
 **Prototype:** `readreallist(filename, comment, split, maxentries, maxbytes)`<br>

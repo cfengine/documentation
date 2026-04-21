@@ -1,7 +1,6 @@
 ---
 layout: default
 title: mergedata
-published: true
 ---
 
 [%CFEngine_function_prototype(one, two, etc)%]

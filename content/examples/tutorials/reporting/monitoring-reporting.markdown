@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Monitoring and reporting
-published: true
 sorting: 10
 ---
 

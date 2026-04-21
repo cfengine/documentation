@@ -1,7 +1,6 @@
 ---
 layout: default
 title: How do I fix trust after an IP change?
-published: true
 sorting: 90
 ---
 

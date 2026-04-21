@@ -1,7 +1,6 @@
 ---
 layout: default
 title: accumulated
-published: true
 ---
 
 [%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]

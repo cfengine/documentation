@@ -1,7 +1,6 @@
 ---
 layout: default
 title: string_mustache
-published: true
 ---
 
 [%CFEngine_function_prototype(template_string, optional_data_container)%]

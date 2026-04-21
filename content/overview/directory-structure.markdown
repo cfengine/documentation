@@ -1,7 +1,6 @@
 ---
 layout: default
 title: CFEngine directory structure
-published: true
 sorting: 20
 ---
 

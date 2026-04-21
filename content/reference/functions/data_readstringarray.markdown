@@ -1,7 +1,6 @@
 ---
 layout: default
 title: data_readstringarray
-published: true
 ---
 
 [%CFEngine_function_prototype(filename, comment, split, maxentries, maxbytes)%]

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: changedbefore
-published: true
 ---
 
 [%CFEngine_function_prototype(newer,older)%]

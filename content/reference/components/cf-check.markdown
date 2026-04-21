@@ -1,7 +1,6 @@
 ---
 layout: default
 title: cf-check
-published: true
 sorting: 80
 keywords: [cf-hub]
 ---

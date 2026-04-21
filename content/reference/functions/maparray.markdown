@@ -1,7 +1,6 @@
 ---
 layout: default
 title: maparray
-published: true
 ---
 
 [%CFEngine_function_prototype(pattern, array_or_container)%]

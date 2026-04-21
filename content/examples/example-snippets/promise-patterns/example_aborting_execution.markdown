@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Aborting execution
-published: true
 reviewed: 2013-05-30
 reviewed-by: atsaloli
 ---

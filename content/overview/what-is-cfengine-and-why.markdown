@@ -1,7 +1,6 @@
 ---
 layout: default
 title: What is CFEngine and why?
-published: true
 sorting: 1
 ---
 

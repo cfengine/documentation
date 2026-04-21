@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Changelog
-published: true
 sorting: 10
 ---
 

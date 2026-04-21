@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Controlling frequency
-published: true
 sorting: 90
 ---
 

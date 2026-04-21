@@ -1,7 +1,6 @@
 ---
 layout: default
 title: standalone_self_upgrade.cf
-published: true
 sorting: 30
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: expandrange
-published: true
 ---
 
 [%CFEngine_function_prototype(string_template, stepsize)%]

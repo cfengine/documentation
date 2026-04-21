@@ -1,7 +1,6 @@
 ---
 layout: default
 title: inventory/any.cf
-published: true
 ---
 
 This policy is inventory related policy that can be run on any OS. This

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Actions API
-published: true
 ---
 
 Actions API enables you to perform specific actions such a requesting report collection.

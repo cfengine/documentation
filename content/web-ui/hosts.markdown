@@ -2,7 +2,6 @@
 layout: default
 title: Hosts
 sorting: 30
-published: true
 ---
 
 The Hosts app provides a customizable global overview of _promise_ compliance. A summary of compliant vs non-compliant hosts is provided at each branch in the tree.

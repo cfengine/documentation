@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Editors
-published: true
 sorting: 10
 ---
 

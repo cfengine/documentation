@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Version control
-published: true
 sorting: 60
 ---
 

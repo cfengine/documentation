@@ -1,7 +1,6 @@
 ---
 layout: default
 title: modules/packages/
-published: true
 ---
 This directory tree is used for distributing package modules.
 

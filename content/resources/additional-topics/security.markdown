@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Security
-published: True
 sorting: 80
 ---
 

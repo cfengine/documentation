@@ -1,7 +1,6 @@
 ---
 layout: default
 title: irange
-published: true
 ---
 
 [%CFEngine_function_prototype(arg1, arg2)%]

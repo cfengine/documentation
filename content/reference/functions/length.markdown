@@ -1,7 +1,6 @@
 ---
 layout: default
 title: length
-published: true
 ---
 
 [%CFEngine_function_prototype(list)%]

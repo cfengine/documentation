@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Installing Enterprise 25 Free
-published: true
 sorting: 20
 ---
 

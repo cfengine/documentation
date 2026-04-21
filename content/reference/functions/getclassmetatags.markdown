@@ -1,7 +1,6 @@
 ---
 layout: default
 title: getclassmetatags
-published: true
 ---
 
 [%CFEngine_function_prototype(classname, optional_tag)%]
