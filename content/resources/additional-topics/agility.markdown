@@ -2,6 +2,8 @@
 layout: default
 title: Agility
 sorting: 80
+aliases:
+  - "/resources-additional-topics-agility.html"
 ---
 
 ## Understanding agility

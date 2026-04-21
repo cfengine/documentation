@@ -2,6 +2,8 @@
 layout: default
 title: What is CFEngine and why?
 sorting: 1
+aliases:
+  - "/overview-what-is-cfengine-and-why.html"
 ---
 
 ## What is CFEngine?

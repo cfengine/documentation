@@ -3,6 +3,8 @@ layout: default
 title: Install and get started
 published: false
 sorting: 10
+aliases:
+  - "/enterprise-cfengine-guide-install-get-started.html"
 ---
 
 <!--

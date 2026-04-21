@@ -1,6 +1,8 @@
 ---
 layout: default
 title: remoteclassesmatching
+aliases:
+  - "/reference-functions-remoteclassesmatching.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**

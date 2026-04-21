@@ -1,6 +1,8 @@
 ---
 layout: default
 title: this
+aliases:
+  - "/reference-special-variables-this.html"
 ---
 
 The context `this` is used to access information about promises during

@@ -2,6 +2,8 @@
 layout: default
 title: Writing policy
 sorting: 40
+aliases:
+  - "/getting-started-writing-policy.html"
 ---
 
 Now that we are familiar with how CFEngine works, and how you can use modules and the web UI, let's take a look at policy.

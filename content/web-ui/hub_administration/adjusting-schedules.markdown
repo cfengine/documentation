@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Adjusting schedules
+aliases:
+  - "/web-ui-hub_administration-adjusting-schedules.html"
 ---
 
 ## Set cf-execd agent execution schedule

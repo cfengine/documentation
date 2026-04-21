@@ -1,6 +1,8 @@
 ---
 layout: default
 title: sys
+aliases:
+  - "/reference-special-variables-sys.html"
 ---
 
 System variables are derived from CFEngine's automated discovery of system

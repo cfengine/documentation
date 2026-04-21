@@ -2,6 +2,8 @@
 layout: default
 title: Enterprise reporting
 sorting: 50
+aliases:
+  - "/web-ui-enterprise-reporting.html"
 ---
 
 CFEngine Enterprise can report on promise outcomes (changes made by `cf-agent`

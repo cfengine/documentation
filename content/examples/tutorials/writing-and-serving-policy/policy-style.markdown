@@ -2,6 +2,8 @@
 layout: default
 title: Policy style guide
 sorting: 10
+aliases:
+  - "/examples-tutorials-writing-and-serving-policy-policy-style.html"
 ---
 
 Style is a very personal choice and the contents of this guide should only be

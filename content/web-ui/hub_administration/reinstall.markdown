@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Re-installing Enterprise hub
+aliases:
+  - "/web-ui-hub_administration-reinstall.html"
 ---
 
 Sometimes it is useful to re-install the hub while still preserving existing

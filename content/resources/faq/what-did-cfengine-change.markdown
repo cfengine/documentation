@@ -1,6 +1,8 @@
 ---
 layout: default
 title: What did CFEngine do?
+aliases:
+  - "/resources-faq-what-did-cfengine-change.html"
 ---
 
 This page presents a few ways of understanding what CFEngine has done to your machine.

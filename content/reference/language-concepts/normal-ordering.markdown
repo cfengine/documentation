@@ -2,6 +2,8 @@
 layout: default
 title: Normal ordering
 sorting: 40
+aliases:
+  - "/reference-language-concepts-normal-ordering.html"
 ---
 
 CFEngine takes a pragmatic point of view to ordering. When promising `scalar`

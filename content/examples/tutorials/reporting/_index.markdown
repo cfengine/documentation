@@ -2,6 +2,8 @@
 layout: default
 title: Reporting
 sorting: 80
+aliases:
+  - "/examples-tutorials-reporting.html"
 ---
 
 No promises made in CFEngine imply automatic aggregation of data to a central location. In

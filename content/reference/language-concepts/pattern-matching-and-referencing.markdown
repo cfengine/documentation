@@ -2,6 +2,8 @@
 layout: default
 title: Pattern matching and referencing
 sorting: 80
+aliases:
+  - "/reference-language-concepts-pattern-matching-and-referencing.html"
 ---
 
 One of the strengths of CFEngine 3 is the ability to recognize and exploit

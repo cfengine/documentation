@@ -2,6 +2,8 @@
 layout: default
 title: Developing modules
 sorting: 50
+aliases:
+  - "/getting-started-developing-modules.html"
 ---
 
 Modules, such as the one we've used for git promises, are easy to write.

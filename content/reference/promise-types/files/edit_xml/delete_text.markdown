@@ -1,6 +1,8 @@
 ---
 layout: default
 title: delete_text
+aliases:
+  - "/reference-promise-types-files-edit_xml-delete_text.html"
 ---
 
 This promise type assures that a value string, containing the matching

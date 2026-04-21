@@ -2,6 +2,8 @@
 layout: default
 title: guest_environments
 sorting: 9999
+aliases:
+  - "/reference-promise-types-guest_environments.html"
 ---
 
 **WARNING**: Due to lack of use this promise type has been removed from the

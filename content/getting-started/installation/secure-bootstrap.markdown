@@ -2,6 +2,8 @@
 layout: default
 title: Secure bootstrap
 sorting: 20
+aliases:
+  - "/getting-started-installation-secure-bootstrap.html"
 ---
 
 This guide assumes you already have a working CFEngine hub (installed and bootstrapped), and you have installed CFEngine on a client you want to securely connect to the hub (bootstrap).

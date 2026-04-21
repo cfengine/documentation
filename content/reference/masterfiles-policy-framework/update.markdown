@@ -2,6 +2,8 @@
 layout: default
 title: update.cf
 sorting: 20
+aliases:
+  - "/reference-masterfiles-policy-framework-update.html"
 ---
 
 `$(sys.inputdir)/update.cf` is responsible for updating

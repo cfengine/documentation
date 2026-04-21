@@ -2,6 +2,8 @@
 layout: default
 title: Extending query builder in Mission Portal
 sorting: 90
+aliases:
+  - "/web-ui-hub_administration-extending-query-builder.html"
 ---
 
 This instruction is created to explain how to extend the [Query builder][Reporting UI#Query builder] in the case where

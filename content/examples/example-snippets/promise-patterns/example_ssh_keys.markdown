@@ -3,6 +3,8 @@ layout: default
 title: Distribute ssh keys
 reviewed: 2015-12-15
 reviewed-by: nickanderson, enrico
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_ssh_keys.html"
 ---
 
 This example shows a simple ssh key distribution implementation.

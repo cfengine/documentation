@@ -2,6 +2,8 @@
 layout: default
 title: Bundles
 sorting: 10
+aliases:
+  - "/reference-language-concepts-bundles.html"
 ---
 
 A bundle is a collection of promises. They allow to group related promises

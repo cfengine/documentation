@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Custom SSL certificate
+aliases:
+  - "/web-ui-hub_administration-custom-https-certificate.html"
 ---
 
 When first installed a self-signed ssl certificate is automatically generated

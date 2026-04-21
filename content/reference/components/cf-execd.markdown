@@ -3,6 +3,8 @@ layout: default
 title: cf-execd
 sorting: 30
 keywords: [executor]
+aliases:
+  - "/reference-components-cf-execd.html"
 ---
 
 `cf-execd` is the scheduling daemon for `cf-agent`. It runs

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: hubknowledge
+aliases:
+  - "/reference-functions-hubknowledge.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**

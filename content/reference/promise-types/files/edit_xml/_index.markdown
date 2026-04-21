@@ -1,6 +1,8 @@
 ---
 layout: default
 title: edit_xml
+aliases:
+  - "/reference-promise-types-files-edit_xml.html"
 ---
 
 The use of XML documents in systems configuration is widespread. XML

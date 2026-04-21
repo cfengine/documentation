@@ -1,6 +1,8 @@
 ---
 layout: default
 title: remotescalar
+aliases:
+  - "/reference-functions-remotescalar.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**

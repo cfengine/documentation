@@ -1,6 +1,8 @@
 ---
 layout: default
 title: cfdb
+aliases:
+  - "/api-enterprise-api-ref-sql-schema-cfdb.html"
 ---
 
 CFEngine allows standardized SQL `SELECT` queries to be used with [REST API][Query REST API#Execute SQL query].

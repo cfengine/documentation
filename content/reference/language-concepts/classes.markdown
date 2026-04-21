@@ -2,6 +2,8 @@
 layout: default
 title: Classes and decisions
 sorting: 50
+aliases:
+  - "/reference-language-concepts-classes.html"
 ---
 
 Classes are used to apply promises only to particular environments, depending

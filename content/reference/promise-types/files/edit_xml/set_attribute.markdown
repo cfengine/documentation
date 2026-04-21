@@ -1,6 +1,8 @@
 ---
 layout: default
 title: set_attribute
+aliases:
+  - "/reference-promise-types-files-edit_xml-set_attribute.html"
 ---
 
 This promise type assures that an attribute, with the given name and value, will

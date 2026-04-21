@@ -1,6 +1,8 @@
 ---
 layout: default
 title: ldaplist
+aliases:
+  - "/reference-functions-ldaplist.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**

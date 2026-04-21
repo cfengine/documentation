@@ -2,6 +2,8 @@
 layout: default
 title: Supported platforms and versions
 sorting: 20
+aliases:
+  - "/release-notes-supported-platforms.html"
 ---
 
 CFEngine works on a wide range of platforms, and the CFEngine team strives to

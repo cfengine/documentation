@@ -2,6 +2,8 @@
 layout: default
 title: Hierarchies
 sorting: 80
+aliases:
+  - "/resources-additional-topics-hierarchies.html"
 ---
 
 Authority, Structure and Inheritance

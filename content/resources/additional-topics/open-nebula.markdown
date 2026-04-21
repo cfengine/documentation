@@ -2,6 +2,8 @@
 layout: default
 title: Using CFEngine with Open Nebula
 sorting: 80
+aliases:
+  - "/resources-additional-topics-open-nebula.html"
 ---
 
 ## What is Open Nebula?

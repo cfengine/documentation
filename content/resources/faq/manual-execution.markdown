@@ -2,6 +2,8 @@
 layout: default
 title: Manual execution
 sorting: 90
+aliases:
+  - "/resources-faq-manual-execution.html"
 ---
 
 Frequently asked questions on manual execution.

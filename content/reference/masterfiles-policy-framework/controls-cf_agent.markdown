@@ -1,6 +1,8 @@
 ---
 layout: default
 title: controls/cf_agent.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-controls-cf_agent.html"
 ---
 
 This is where `body agent control` is defined. `body agent control` is where

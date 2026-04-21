@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Changes REST API
+aliases:
+  - "/api-enterprise-api-ref-changes.html"
 ---
 
 **Changes API** allows to track changes performed by CFEngine agent in the infrastructure.

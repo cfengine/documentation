@@ -1,6 +1,8 @@
 ---
 layout: default
 title: controls/update_def.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-controls-update_def.html"
 ---
 
 This is where most common variables and classes are defined for the update

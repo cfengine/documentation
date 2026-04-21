@@ -3,6 +3,8 @@ layout: default
 title: Ensure a process is not running
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_process_kill.html"
 ---
 
 This is a standalone policy that will kill the `sleep` process. You can adapt

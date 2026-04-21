@@ -2,6 +2,8 @@
 layout: default
 title: Monitoring and reporting
 sorting: 10
+aliases:
+  - "/examples-tutorials-reporting-monitoring-reporting.html"
 ---
 
 ## What are monitoring and reporting?

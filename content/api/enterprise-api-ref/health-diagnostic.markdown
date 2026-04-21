@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Health diagnostic API
+aliases:
+  - "/api-enterprise-api-ref-health-diagnostic.html"
 ---
 
 This API provides access to health diagnostic information.

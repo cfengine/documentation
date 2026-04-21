@@ -3,6 +3,8 @@ layout: default
 title: Aborting execution
 reviewed: 2013-05-30
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_aborting_execution.html"
 ---
 
 Sometimes it is useful to abort a bundle execution if certain conditions are not met,

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: lib/files.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-lib-files.html"
 ---
 
 See the [`files` promises][files] and [`edit_line` bundles][edit_line]

@@ -3,6 +3,8 @@ layout: default
 title: Guide
 published: false
 sorting: 20
+aliases:
+  - "/guide.html"
 ---
 
 CFEngine is a configuration management system that provides a framework for automated management of IT infrastructure.

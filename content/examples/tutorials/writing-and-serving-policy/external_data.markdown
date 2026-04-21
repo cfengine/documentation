@@ -2,6 +2,8 @@
 layout: default
 title: External data
 sorting: 50
+aliases:
+  - "/examples-tutorials-writing-and-serving-policy-external_data.html"
 ---
 
 It is common to integrate CFEngine with external data sources. External data

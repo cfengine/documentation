@@ -1,6 +1,8 @@
 ---
 layout: default
 title: LDAP authentication API
+aliases:
+  - "/api-enterprise-api-ref-ldap-api.html"
 ---
 
 LDAP authentication API allows to check ldap user credentials and change LDAP settings.

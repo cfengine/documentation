@@ -2,6 +2,8 @@
 layout: default
 title: Application management
 sorting: 80
+aliases:
+  - "/resources-additional-topics-application-management.html"
 ---
 
 ## What is application management?

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: lib/common.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-lib-common.html"
 ---
 
 See

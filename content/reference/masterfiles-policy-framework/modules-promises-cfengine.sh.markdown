@@ -1,6 +1,8 @@
 ---
 layout: default
 title: modules/promises/cfengine.sh
+aliases:
+  - "/reference-masterfiles-policy-framework-modules-promises-cfengine.sh.html"
 ---
 
 ```

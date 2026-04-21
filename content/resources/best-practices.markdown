@@ -2,6 +2,8 @@
 layout: default
 title: Best practices
 sorting: 100
+aliases:
+  - "/resources-best-practices.html"
 ---
 
 ## Policy style guide

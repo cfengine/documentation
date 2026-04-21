@@ -2,6 +2,8 @@
 layout: default
 title: Glossary
 sorting: 50
+aliases:
+  - "/overview-glossary.html"
 ---
 
 #### Agent

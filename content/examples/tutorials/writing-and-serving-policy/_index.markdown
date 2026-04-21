@@ -2,6 +2,8 @@
 layout: default
 title: Writing and serving policy
 sorting: 100
+aliases:
+  - "/examples-tutorials-writing-and-serving-policy.html"
 ---
 
 ## About policies and promises

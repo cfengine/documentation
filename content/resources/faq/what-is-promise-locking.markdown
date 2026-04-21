@@ -2,6 +2,8 @@
 layout: default
 title: What is promise locking?
 sorting: 90
+aliases:
+  - "/resources-faq-what-is-promise-locking.html"
 ---
 
 By default when the agent runs each promise that has an outcome

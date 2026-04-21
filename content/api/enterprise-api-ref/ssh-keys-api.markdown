@@ -1,6 +1,8 @@
 ---
 layout: default
 title: SSH keys API
+aliases:
+  - "/api-enterprise-api-ref-ssh-keys-api.html"
 ---
 
 The SSH keys API enables you to generate a key pair that can be used for authorization.

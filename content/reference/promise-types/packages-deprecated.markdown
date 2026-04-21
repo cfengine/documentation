@@ -1,6 +1,8 @@
 ---
 layout: default
 title: packages (deprecated)
+aliases:
+  - "/reference-promise-types-packages-deprecated.html"
 ---
 
 **NOTE:** This package promise is deprecated and has been superseded by

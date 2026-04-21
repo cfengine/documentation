@@ -2,6 +2,8 @@
 layout: default
 title: Tracking changes
 sorting: 50
+aliases:
+  - "/api-enterprise-api-examples-changes-api-usage.html"
 ---
 
 Changes REST API allows to track the changes made by cf-agent in the infrastructure.

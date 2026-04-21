@@ -2,6 +2,8 @@
 layout: default
 title: How do I integrate custom policy?
 sorting: 90
+aliases:
+  - "/resources-faq-integrate-custom-policy.html"
 ---
 
 There are many different ways that custom polices can be organized. CFEngine

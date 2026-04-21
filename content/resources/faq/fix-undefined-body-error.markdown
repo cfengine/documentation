@@ -2,6 +2,8 @@
 layout: default
 title: How do I fix undefined body errors?
 sorting: 90
+aliases:
+  - "/resources-faq-fix-undefined-body-error.html"
 ---
 
 When running policy you see `error: Undefined body`. For example:

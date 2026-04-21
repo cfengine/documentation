@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Regenerate self signed SSL certificate
+aliases:
+  - "/web-ui-hub_administration-regenerate-self-signed-cert.html"
 ---
 
 When first installed a self-signed ssl certificate is automatically generated

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: methods
+aliases:
+  - "/reference-promise-types-methods.html"
 ---
 
 Methods are compound promises that refer to whole bundles of promises.

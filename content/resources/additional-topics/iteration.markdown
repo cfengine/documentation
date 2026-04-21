@@ -2,6 +2,8 @@
 layout: default
 title: Iteration (Loops)
 sorting: 80
+aliases:
+  - "/resources-additional-topics-iteration.html"
 ---
 
 ## What is iteration?

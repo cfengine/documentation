@@ -2,6 +2,8 @@
 layout: default
 title: databases
 sorting: 9999
+aliases:
+  - "/reference-promise-types-databases.html"
 ---
 
 CFEngine can interact with commonly used database servers to keep

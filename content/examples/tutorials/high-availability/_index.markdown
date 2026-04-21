@@ -1,6 +1,8 @@
 ---
 layout: default
 title: High availability
+aliases:
+  - "/examples-tutorials-high-availability.html"
 ---
 
 ## Overview

@@ -2,6 +2,8 @@
 layout: default
 title: Extending Mission Portal
 sorting: 90
+aliases:
+  - "/web-ui-hub_administration-extending-mission-portal.html"
 ---
 
 ## Custom pages requiring authenticated users

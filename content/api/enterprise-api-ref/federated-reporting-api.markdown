@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Federated reporting configuration API
+aliases:
+  - "/api-enterprise-api-ref-federated-reporting-api.html"
 ---
 
 This API is used for configuring hubs so that a single hub can be used to report on any host connected to participating feeder hubs.

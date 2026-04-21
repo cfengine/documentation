@@ -3,6 +3,8 @@ layout: default
 title: cf-check
 sorting: 80
 keywords: [cf-hub]
+aliases:
+  - "/reference-components-cf-check.html"
 ---
 
 Utility for diagnosis and repair of local CFEngine databases.

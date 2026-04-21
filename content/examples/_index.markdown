@@ -2,6 +2,8 @@
 layout: default
 title: Examples and tutorials
 sorting: 60
+aliases:
+  - "/examples.html"
 ---
 
 ## Links to examples

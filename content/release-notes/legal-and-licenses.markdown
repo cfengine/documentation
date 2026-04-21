@@ -3,6 +3,8 @@ layout: default
 title: Legal and licenses
 sorting: 999
 alias: legal.html
+aliases:
+  - "/release-notes-legal-and-licenses.html"
 ---
 
 ## General legal disclaimer

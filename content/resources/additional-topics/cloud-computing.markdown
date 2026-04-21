@@ -2,6 +2,8 @@
 layout: default
 title: Cloud computing
 sorting: 80
+aliases:
+  - "/resources-additional-topics-cloud-computing.html"
 ---
 
 ## What is cloud computing?

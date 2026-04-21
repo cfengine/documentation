@@ -2,6 +2,8 @@
 layout: default
 title: Users
 sorting: 90
+aliases:
+  - "/resources-faq-users.html"
 ---
 
 Frequently asked questions about managing users from policy.

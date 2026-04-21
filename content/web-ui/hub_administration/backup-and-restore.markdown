@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Backup and restore
+aliases:
+  - "/web-ui-hub_administration-backup-and-restore.html"
 ---
 
 With policy stored in version control there are few things that should be

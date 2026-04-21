@@ -2,6 +2,8 @@
 layout: default
 title: File editing
 sorting: 10
+aliases:
+  - "/examples-tutorials-files-tutorial.html"
 ---
 
 ## Prerequisites

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: services
+aliases:
+  - "/reference-promise-types-services.html"
 ---
 
 `services` type promises in their simplest *generic* form are an abstraction on

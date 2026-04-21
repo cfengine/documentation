@@ -2,6 +2,8 @@
 layout: default
 title: Local virtual machine
 sorting: 15
+aliases:
+  - "/getting-started-installation-local-virtual-machine.html"
 ---
 
 This short tutorial shows you how to set up a Linux Virtual Machine locally, if you prefer this over creating an account and using an online cloud provider like Digital Ocean.

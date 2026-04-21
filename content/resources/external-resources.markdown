@@ -2,6 +2,8 @@
 layout: default
 title: External resources
 sorting: 30
+aliases:
+  - "/resources-external-resources.html"
 ---
 
 Use the following links to learn more about CFEngine:

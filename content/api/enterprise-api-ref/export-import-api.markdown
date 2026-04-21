@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Import & export API
+aliases:
+  - "/api-enterprise-api-ref-export-import-api.html"
 ---
 
 Import & export API provides users the ability to transfer Mission Portal data between hubs.

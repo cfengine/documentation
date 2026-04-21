@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Public key distribution
+aliases:
+  - "/web-ui-hub_administration-public-key-distribution.html"
 ---
 
 > How can I arrange for the hosts in my infrastructure to trust a new key?

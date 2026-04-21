@@ -3,6 +3,8 @@ layout: default
 title: Reference
 alias: CFEngine Reference
 sorting: 70
+aliases:
+  - "/reference.html"
 ---
 
 The reference documentation explains the available promise and bundle types,

@@ -3,6 +3,8 @@ layout: default
 title: Macros
 categories: [Reference, Macros]
 alias: reference-macros.html
+aliases:
+  - "/reference-macros.html"
 ---
 
 Macros allow you to target different versions of the CFEngine binaries / parser.

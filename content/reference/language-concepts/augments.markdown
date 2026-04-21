@@ -2,6 +2,8 @@
 layout: default
 title: Augments
 sorting: 70
+aliases:
+  - "/reference-language-concepts-augments.html"
 ---
 
 Augments files can be used to define variables and classes for use by

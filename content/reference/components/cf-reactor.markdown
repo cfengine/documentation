@@ -2,6 +2,8 @@
 layout: default
 title: cf-reactor
 keywords: [reactor]
+aliases:
+  - "/reference-components-cf-reactor.html"
 ---
 
 `cf-reactor` is the CFEngine event reaction daemon, it lists to `NOTIFY` events

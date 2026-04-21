@@ -1,6 +1,8 @@
 ---
 layout: default
 title: connection
+aliases:
+  - "/reference-special-variables-connection.html"
 ---
 
 The context `connection` is used by the `shortcut` attribute in `access`

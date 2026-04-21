@@ -1,6 +1,8 @@
 ---
 layout: default
 title: defaults
+aliases:
+  - "/reference-promise-types-defaults.html"
 ---
 
 Defaults promises are related to [variables][variables]. If a variable or

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: controls/reports.cf
+aliases:
+  - "/reference-masterfiles-policy-framework-controls-reports.html"
 ---
 
 This is where report settings for CFEngine Enterprise are found. Control which

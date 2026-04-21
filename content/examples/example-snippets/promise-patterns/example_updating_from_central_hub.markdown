@@ -3,6 +3,8 @@ layout: default
 title: Updating from a central policy server
 reviewed: 2013-06-09
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_updating_from_central_hub.html"
 ---
 
 This is a conceptual example without any test policy associated with it.

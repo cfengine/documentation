@@ -2,6 +2,8 @@
 layout: default
 title: API
 sorting: 50
+aliases:
+  - "/api.html"
 ---
 
 The CFEngine Enterprise API allows HTTP clients to interact with the

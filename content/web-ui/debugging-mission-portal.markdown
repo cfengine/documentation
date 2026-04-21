@@ -2,6 +2,8 @@
 layout: default
 title: Debugging Mission Portal
 sorting: 90
+aliases:
+  - "/web-ui-debugging-mission-portal.html"
 ---
 
 1.  Set the API log level to DEBUG in Mission Portal settings.

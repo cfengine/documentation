@@ -1,6 +1,8 @@
 ---
 layout: default
 title: readstringlist
+aliases:
+  - "/reference-functions-readstringlist.html"
 ---
 
 **Prototype:** `readstringlist(filename, comment, split, maxentries, maxbytes)`

@@ -3,6 +3,8 @@ layout: default
 title: Copy single files
 reviewed: 2013-06-08
 reviewed-by: atsaloli
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_copy_single_files.html"
 ---
 
 This is a standalone policy example that will copy single files,

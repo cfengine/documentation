@@ -2,6 +2,8 @@
 layout: default
 title: Version control
 sorting: 60
+aliases:
+  - "/getting-started-installation-version-control.html"
 ---
 
 By default, CFEngine policy is published `/var/cfengine/masterfiles` on the policy

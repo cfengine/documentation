@@ -3,6 +3,8 @@ layout: default
 title: Measurements app
 alias: Measurements
 sorting: 70
+aliases:
+  - "/web-ui-measurements.html"
 ---
 
 Measurements allows you to get an overview of specific metrics on your hosts over time.

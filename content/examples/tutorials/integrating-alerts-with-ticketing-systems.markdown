@@ -2,6 +2,8 @@
 layout: default
 title: Integrating alerts with ticketing systems
 sorting: 15
+aliases:
+  - "/examples-tutorials-integrating-alerts-with-ticketing-systems.html"
 ---
 
 Custom actions can be used to integrate with external 3rd party systems. This tutorial shows how to use a custom action script to open a ticket in Jira when a condition is observed.

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: controls/
+aliases:
+  - "/reference-masterfiles-policy-framework-controls.html"
 ---
 
 This directory contains policy related to the internal control and functioning

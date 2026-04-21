@@ -2,6 +2,8 @@
 layout: default
 title: Enterprise report collection
 sorting: 90
+aliases:
+  - "/resources-faq-enterprise-report-collection.html"
 ---
 
 Frequently asked questions on Enterprise report collection.

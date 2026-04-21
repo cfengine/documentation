@@ -2,6 +2,8 @@
 layout: default
 title: Custom inventory
 sorting: 15
+aliases:
+  - "/examples-tutorials-custom_inventory.html"
 ---
 
 This tutorial will show you how to add custom inventory attributes that can be

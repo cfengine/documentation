@@ -2,6 +2,8 @@
 layout: default
 title: Functions
 sorting: 30
+aliases:
+  - "/reference-functions.html"
 ---
 
 Functions take zero or more values as arguments and return a value.

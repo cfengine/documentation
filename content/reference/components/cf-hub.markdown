@@ -3,6 +3,8 @@ layout: default
 title: cf-hub
 sorting: 80
 keywords: [hub]
+aliases:
+  - "/reference-components-cf-hub.html"
 ---
 
 `cf-hub` connects to `cf-serverd` instances to collect data

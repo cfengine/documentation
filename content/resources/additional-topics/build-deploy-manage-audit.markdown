@@ -2,6 +2,8 @@
 layout: default
 title: Build Deploy Manage Audit
 sorting: 80
+aliases:
+  - "/resources-additional-topics-build-deploy-manage-audit.html"
 ---
 
 ## What is BDMA?

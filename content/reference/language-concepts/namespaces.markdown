@@ -2,6 +2,8 @@
 layout: default
 title: Namespaces
 sorting: 100
+aliases:
+  - "/reference-language-concepts-namespaces.html"
 ---
 
 By default all promises are made in the `default` namespace. Specifying a namespace

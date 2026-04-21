@@ -1,6 +1,8 @@
 ---
 layout: default
 title: hostswithclass
+aliases:
+  - "/reference-functions-hostswithclass.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**

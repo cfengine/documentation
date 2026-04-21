@@ -2,6 +2,8 @@
 layout: default
 title: Masterfiles Policy Framework upgrade
 sorting: 14
+aliases:
+  - "/examples-tutorials-masterfiles_policy_framework_upgrade.html"
 ---
 
 Upgrading the Masterfiles Policy Framework (MPF) is the first step in upgrading CFEngine from one version to another. The MPF should always be the same version or newer than the binary versions running.

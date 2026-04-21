@@ -1,6 +1,8 @@
 ---
 layout: default
 title: users
+aliases:
+  - "/reference-promise-types-users.html"
 ---
 
 User promises are promises made about **local users** on a host. They

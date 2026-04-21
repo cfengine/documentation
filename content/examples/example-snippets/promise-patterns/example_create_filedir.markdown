@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Create files and directories
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_create_filedir.html"
 ---
 
 The following is a standalone policy that will create the file

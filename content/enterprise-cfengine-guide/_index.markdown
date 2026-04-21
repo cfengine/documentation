@@ -3,6 +3,8 @@ layout: default
 title: CFEngine Enterprise
 published: false
 sorting: 3
+aliases:
+  - "/enterprise-cfengine-guide.html"
 ---
 
 CFEngine Enterprise is an IT automation platform that uses a model-based approach to manage your infrastructure, and applications at WebScale while providing best-in-class scalability, security, enterprise-wide visibility and control.

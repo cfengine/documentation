@@ -1,6 +1,8 @@
 ---
 layout: default
 title: meta
+aliases:
+  - "/reference-promise-types-meta.html"
 ---
 
 Meta-data promises have no internal function. They are intended to be used to

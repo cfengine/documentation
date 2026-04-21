@@ -3,6 +3,8 @@ layout: default
 title: cf-support
 sorting: 10
 keywords: [cf-support]
+aliases:
+  - "/reference-components-cf-support.html"
 ---
 
 `cf-support` gathers various details about the system and creates a tarball in the current directory to submit to support.

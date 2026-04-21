@@ -1,6 +1,8 @@
 ---
 layout: default
 title: cfe_internal/update/
+aliases:
+  - "/reference-masterfiles-policy-framework-cfe_internal-update.html"
 ---
 
 This directory contains internal management polcies related to the default

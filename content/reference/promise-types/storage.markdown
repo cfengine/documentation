@@ -1,6 +1,8 @@
 ---
 layout: default
 title: storage
+aliases:
+  - "/reference-promise-types-storage.html"
 ---
 
 Storage promises refer to disks and filesystem properties.

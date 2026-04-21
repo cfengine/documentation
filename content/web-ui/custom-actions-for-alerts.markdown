@@ -2,6 +2,8 @@
 layout: default
 title: Custom actions for alerts
 sorting: 50
+aliases:
+  - "/web-ui-custom-actions-for-alerts.html"
 ---
 
 Once you have become familiar with the [Alerts widgets][Web UI#Alert widgets], you might see the need to integrate the alerts with an existing system like Nagios, instead of relying on emails for getting notified.

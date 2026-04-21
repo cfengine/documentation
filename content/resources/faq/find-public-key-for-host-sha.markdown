@@ -2,6 +2,8 @@
 layout: default
 title: How do I find the public key for a given host
 sorting: 90
+aliases:
+  - "/resources-faq-find-public-key-for-host-sha.html"
 ---
 
 Trying to locate the public key for a host on your hub in order to validate

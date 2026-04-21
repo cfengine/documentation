@@ -3,6 +3,8 @@ layout: default
 title: Customize message of the day
 reviewed: 2015-12-18
 reviewed-by: enrico & nick
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_edit_motd.html"
 ---
 
 The Message of the Day is displayed when you log in or connect to a server. It

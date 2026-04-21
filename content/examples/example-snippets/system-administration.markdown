@@ -2,6 +2,8 @@
 layout: default
 title: System administration examples
 sorting: 12
+aliases:
+  - "/examples-example-snippets-system-administration.html"
 ---
 
 ## Centralized management

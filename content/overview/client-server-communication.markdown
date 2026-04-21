@@ -2,6 +2,8 @@
 layout: default
 title: Client server communication
 sorting: 30
+aliases:
+  - "/overview-client-server-communication.html"
 ---
 
 Starting `cf-serverd` sets up a line of communication between

@@ -2,6 +2,8 @@
 layout: default
 title: User management examples
 sorting: 15
+aliases:
+  - "/examples-example-snippets-user-management.html"
 ---
 
 ## Local user management

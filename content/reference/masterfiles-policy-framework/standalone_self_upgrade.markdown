@@ -2,6 +2,8 @@
 layout: default
 title: standalone_self_upgrade.cf
 sorting: 30
+aliases:
+  - "/reference-masterfiles-policy-framework-standalone_self_upgrade.html"
 ---
 
 `$(sys.inputdir)/standalone_self_upgrade.cf` is an independent policy set entry

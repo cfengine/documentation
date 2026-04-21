@@ -1,6 +1,8 @@
 ---
 layout: default
 title: match
+aliases:
+  - "/reference-special-variables-match.html"
 ---
 
 Each time CFEngine matches a string, these values are assigned to a special

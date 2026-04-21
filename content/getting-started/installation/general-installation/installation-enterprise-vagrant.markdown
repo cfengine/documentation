@@ -2,6 +2,8 @@
 layout: default
 title: Using Vagrant
 sorting: 30
+aliases:
+  - "/getting-started-installation-general-installation-installation-enterprise-vagrant.html"
 ---
 
 The CFEngine Enterprise Vagrant Environment provides an easy way to test and

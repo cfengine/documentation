@@ -1,6 +1,8 @@
 ---
 layout: default
 title: ldaparray
+aliases:
+  - "/reference-functions-ldaparray.html"
 ---
 
 **This function is only available in CFEngine Enterprise.**

@@ -2,6 +2,8 @@
 layout: default
 title: Testing policies
 sorting: 50
+aliases:
+  - "/examples-tutorials-writing-and-serving-policy-testing-policies.html"
 ---
 
 One of the practical advantages of CFEngine is that you can test it without

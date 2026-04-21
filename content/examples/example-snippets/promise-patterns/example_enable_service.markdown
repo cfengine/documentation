@@ -3,6 +3,8 @@ layout: default
 title: Ensure a service is enabled and running
 reviewed: 2016-06-28
 reviewed-by: nickanderson
+aliases:
+  - "/examples-example-snippets-promise-patterns-example_enable_service.html"
 ---
 
 This example shows how to ensure services are started or stopped appropriately.

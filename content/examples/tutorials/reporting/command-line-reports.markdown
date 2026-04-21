@@ -2,6 +2,8 @@
 layout: default
 title: Command-Line reports
 sorting: 60
+aliases:
+  - "/examples-tutorials-reporting-command-line-reports.html"
 ---
 
 #### Command-line reporting is available to Enterprise and Community users.

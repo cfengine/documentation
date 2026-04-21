@@ -1,6 +1,8 @@
 ---
 layout: default
 title: cfsettings
+aliases:
+  - "/api-enterprise-api-ref-sql-schema-cfsettings.html"
 ---
 
 Settings used by Mission Portal APIs, no reported data.

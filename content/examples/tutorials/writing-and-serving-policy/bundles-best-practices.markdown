@@ -2,6 +2,8 @@
 layout: default
 title: Bundles best practices
 sorting: 20
+aliases:
+  - "/examples-tutorials-writing-and-serving-policy-bundles-best-practices.html"
 ---
 
 The following contains practices to remember when creating bundles as

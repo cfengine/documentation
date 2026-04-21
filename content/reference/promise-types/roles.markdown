@@ -1,6 +1,8 @@
 ---
 layout: default
 title: roles
+aliases:
+  - "/reference-promise-types-roles.html"
 ---
 
 Roles promises are server-side decisions about which users are allowed

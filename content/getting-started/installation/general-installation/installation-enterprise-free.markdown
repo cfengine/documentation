@@ -2,6 +2,8 @@
 layout: default
 title: Installing Enterprise 25 Free
 sorting: 20
+aliases:
+  - "/getting-started-installation-general-installation-installation-enterprise-free.html"
 ---
 
 These instructions describe how to install the latest version of CFEngine Enterprise 25 Free. This is the full
