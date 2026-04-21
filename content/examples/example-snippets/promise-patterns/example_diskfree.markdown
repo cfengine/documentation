@@ -9,7 +9,7 @@ aliases:
 
 Check how much space (in KB) is available on a directory's current partition.
 
-[%CFEngine_include_example(diskfree.cf)%]
+{{< CFEngine_include_example(diskfree.cf) >}}
 
 Example output:
 

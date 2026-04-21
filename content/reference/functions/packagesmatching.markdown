@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-packagesmatching.html"
 ---
 
-[%CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex)%]
+{{< CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex) >}}
 
 **Description:** Return a data container with the list of installed packages
 matching the parameters.
@@ -27,7 +27,7 @@ this:
 ]
 ```
 
-[%CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex)%]
+{{< CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex) >}}
 
 **IMPORTANT:** The data source used when querying depends on policy configuration.
 When `package_inventory` in `body common control` is configured, CFEngine will record the packages installed and the package updates available for the configured package modules.
@@ -44,7 +44,7 @@ The following code extracts just the package names, then looks for
 some desired packages, and finally reports if they are installed.
 
 
-[%CFEngine_include_example(packagesmatching.cf)%]
+{{< CFEngine_include_example(packagesmatching.cf) >}}
 
 **Refresh rules:**
 

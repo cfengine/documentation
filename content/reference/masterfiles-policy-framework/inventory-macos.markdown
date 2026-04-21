@@ -7,4 +7,4 @@ aliases:
 
 This policy is inventory related to macos hosts.
 
-[%CFEngine_library_include(inventory/macos)%]
+{{< CFEngine_library_include(inventory/macos) >}}

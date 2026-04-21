@@ -5,4 +5,4 @@ aliases:
   - "/reference-masterfiles-policy-framework-lib-feature.html"
 ---
 
-[%CFEngine_library_include(lib/feature)%]
+{{< CFEngine_library_include(lib/feature) >}}

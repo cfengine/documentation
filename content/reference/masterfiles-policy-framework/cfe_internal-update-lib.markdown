@@ -5,4 +5,4 @@ aliases:
   - "/reference-masterfiles-policy-framework-cfe_internal-update-lib.html"
 ---
 
-[%CFEngine_library_include(cfe_internal/update/lib)%]
+{{< CFEngine_library_include(cfe_internal/update/lib) >}}

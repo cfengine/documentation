@@ -27,4 +27,4 @@ refreshes the CMDB data file (`host_specific.json`) for the particular host.
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-reactor.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-reactor.help, [\s]*--[a-z], ^$) >}}

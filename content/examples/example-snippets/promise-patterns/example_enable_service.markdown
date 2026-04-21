@@ -9,7 +9,7 @@ aliases:
 
 This example shows how to ensure services are started or stopped appropriately.
 
-[%CFEngine_include_example(services.cf)%]
+{{< CFEngine_include_example(services.cf) >}}
 
 **Note:** Not all services behave in the standard way. Some services may require
 custom handling. For example it is not uncommon for some services to not provide

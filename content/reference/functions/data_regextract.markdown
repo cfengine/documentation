@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-data_regextract.html"
 ---
 
-[%CFEngine_function_prototype(regex, string)%]
+{{< CFEngine_function_prototype(regex, string) >}}
 
 **Description:** Returns a data container filled with backreferences
 and named captures if the *multiline* [anchored][anchored] `regex` matches the
@@ -38,15 +38,15 @@ PCRE named captures are described in http://pcre.org/pcre.txt and several syntax
 
 Since the regular expression is run with /dotall/ and /multiline/ modes, to match the end of a line, use ```[^\n]*``` instead of ```$```.
 
-[%CFEngine_function_attributes(regex, string)%]
+{{< CFEngine_function_attributes(regex, string) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(data_regextract.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(data_regextract.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(data_regextract.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(data_regextract.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:**
 

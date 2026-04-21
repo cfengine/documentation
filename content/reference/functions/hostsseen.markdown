@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-hostsseen.html"
 ---
 
-[%CFEngine_function_prototype(horizon, seen, field)%]
+{{< CFEngine_function_prototype(horizon, seen, field) >}}
 
 **Description:** Returns a list with the information `field` of hosts that were
 seen or not seen within the last `horizon` hours up to `lastseenexpireafter`.
@@ -15,7 +15,7 @@ within the number of hours specified in `horizon`. The argument `seen` may be
 lastseen or notseen, the latter selecting all hosts not observed to have
 connected within the specified time.
 
-[%CFEngine_function_attributes(horizon, seen, field)%]
+{{< CFEngine_function_attributes(horizon, seen, field) >}}
 
 **Example:**
 

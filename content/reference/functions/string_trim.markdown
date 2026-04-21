@@ -5,15 +5,15 @@ aliases:
   - "/reference-functions-string_trim.html"
 ---
 
-[%CFEngine_function_prototype(string)%]
+{{< CFEngine_function_prototype(string) >}}
 
 **Description:** Trim whitespace from beginning and end of `string`.
 
-[%CFEngine_function_attributes(string)%]
+{{< CFEngine_function_attributes(string) >}}
 
 **Example:**
 
-[%CFEngine_include_example(string_trim.cf)%]
+{{< CFEngine_include_example(string_trim.cf) >}}
 
 **History:** Introduced in CFEngine 3.16
 

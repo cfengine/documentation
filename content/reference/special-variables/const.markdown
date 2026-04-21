@@ -8,7 +8,7 @@ aliases:
 CFEngine defines a number of variables for embedding unprintable values
 or values with special meanings in strings.
 
-[%CFEngine_include_example(const.cf)%]
+{{< CFEngine_include_example(const.cf) >}}
 
 ### const.at
 

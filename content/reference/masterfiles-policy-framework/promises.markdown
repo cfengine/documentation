@@ -12,4 +12,4 @@ part of the policy and the order in which to run bundles.
 
 ## Policy
 
-[%CFEngine_library_include(promises)%]
+{{< CFEngine_library_include(promises) >}}

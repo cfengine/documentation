@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-or.html"
 ---
 
-[%CFEngine_function_prototype(...)%]
+{{< CFEngine_function_prototype(...) >}}
 
 **Description:** Returns `any` if any argument evaluates to true and `!any` if
 any argument evaluates to false.

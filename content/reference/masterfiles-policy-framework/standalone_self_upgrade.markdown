@@ -15,4 +15,4 @@ for use with community packages.
 
 ***
 
-[%CFEngine_library_include(standalone_self_upgrade)%]
+{{< CFEngine_library_include(standalone_self_upgrade) >}}

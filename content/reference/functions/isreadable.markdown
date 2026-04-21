@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-isreadable.html"
 ---
 
-[%CFEngine_function_prototype(path, timeout)%]
+{{< CFEngine_function_prototype(path, timeout) >}}
 
 **Description:** Check if a file is readable.
 
@@ -40,11 +40,11 @@ penalty.
 
 **Example:**
 
-[%CFEngine_include_snippet(isreadable.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(isreadable.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(isreadable.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(isreadable.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** Introduced in 3.22.
 

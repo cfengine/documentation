@@ -50,7 +50,7 @@ body mount nfs(server,source)
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### mount
 
@@ -96,7 +96,7 @@ body mount example
 
 **Example:**
 
-[%CFEngine_include_example(storage-cifs.cf)%]
+{{< CFEngine_include_example(storage-cifs.cf) >}}
 
 **History:**
 

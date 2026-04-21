@@ -5,4 +5,4 @@ aliases:
   - "/reference-masterfiles-policy-framework-lib-monitor.html"
 ---
 
-[%CFEngine_library_include(lib/monitor)%]
+{{< CFEngine_library_include(lib/monitor) >}}

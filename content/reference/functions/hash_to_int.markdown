@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-hash_to_int.html"
 ---
 
-[%CFEngine_function_prototype( lower, upper, string )%]
+{{< CFEngine_function_prototype( lower, upper, string ) >}}
 
 **Description:** Generates an integer between `lower` and `upper` range based on hash of `string`.
 
@@ -21,11 +21,11 @@ directly.
 
 **Example:**
 
-[%CFEngine_include_snippet(hash_to_int.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(hash_to_int.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(hash_to_int.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(hash_to_int.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:**
 

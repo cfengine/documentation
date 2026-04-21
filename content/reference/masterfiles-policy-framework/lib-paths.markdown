@@ -5,4 +5,4 @@ aliases:
   - "/reference-masterfiles-policy-framework-lib-paths.html"
 ---
 
-[%CFEngine_library_include(lib/paths)%]
+{{< CFEngine_library_include(lib/paths) >}}

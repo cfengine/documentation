@@ -14,4 +14,4 @@ The CFEngine key generator makes key pairs for [remote authentication][Client se
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-key.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-key.help, [\s]*--[a-z], ^$) >}}

@@ -5,22 +5,22 @@ aliases:
   - "/reference-functions-dirname.html"
 ---
 
-[%CFEngine_function_prototype(path)%]
+{{< CFEngine_function_prototype(path) >}}
 
 **Description:** Return the parent directory name for given `path`.
 
 This function returns the directory name for `path`. If `path` is a
 directory, then the name of its parent directory is returned.
 
-[%CFEngine_function_attributes(path)%]
+{{< CFEngine_function_attributes(path) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(dirname.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(dirname.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(dirname.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(dirname.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:**
 

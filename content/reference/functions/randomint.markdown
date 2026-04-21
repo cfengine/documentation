@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-randomint.html"
 ---
 
-[%CFEngine_function_prototype(lower, upper)%]
+{{< CFEngine_function_prototype(lower, upper) >}}
 
 **Description:** Returns a random integer between `lower` and *up to but not including* `upper`.
 
@@ -20,12 +20,12 @@ context class expression as shown in the example.
 
 **NOTE:** The randomness produced by randomint is not safe for cryptographic usage.
 
-[%CFEngine_function_attributes(lower, upper)%]
+{{< CFEngine_function_attributes(lower, upper) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(randomint.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(randomint.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output: (when `show_random` is defined)
 
-[%CFEngine_include_snippet(randomint.cf, #\+begin_src\s+show_random_example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(randomint.cf, #\+begin_src\s+show_random_example_output\s*, .*end_src) >}}

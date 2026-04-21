@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-url_get.html"
 ---
 
-[%CFEngine_function_prototype(url, options_container)%]
+{{< CFEngine_function_prototype(url, options_container) >}}
 
 **Description:** Retrieves the contents of a `url` using options from
   a data container. The data is returned in a
@@ -48,7 +48,7 @@ The returned data container will have the following keys:
 * `content`: the response content as a string
 * `headers`: the response headers as a string
 
-[%CFEngine_function_attributes(url, options_container)%]
+{{< CFEngine_function_attributes(url, options_container) >}}
 
 **Example:**
 

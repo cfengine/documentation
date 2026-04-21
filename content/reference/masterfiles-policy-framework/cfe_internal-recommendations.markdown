@@ -5,4 +5,4 @@ aliases:
   - "/reference-masterfiles-policy-framework-cfe_internal-recommendations.html"
 ---
 
-[%CFEngine_library_include(cfe_internal/recommendations)%]
+{{< CFEngine_library_include(cfe_internal/recommendations) >}}

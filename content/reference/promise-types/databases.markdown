@@ -151,7 +151,7 @@ a hierarchy of depth 1.
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### database_server
 

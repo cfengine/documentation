@@ -13,13 +13,13 @@ aliases:
 ## Windows registry
 
 
-[%CFEngine_include_snippet(windows_registry.cf, .* )%]
+{{< CFEngine_include_snippet(windows_registry.cf, .* ) >}}
 
 ## unit_registry_cache.cf
 
 
-[%CFEngine_include_snippet(unit_registry_cache.cf.cf, .* )%]
+{{< CFEngine_include_snippet(unit_registry_cache.cf.cf, .* ) >}}
 
 ## unit_registry.cf
 
-[%CFEngine_include_snippet(unit_registry.cf.cf, .* )%]
+{{< CFEngine_include_snippet(unit_registry.cf.cf, .* ) >}}

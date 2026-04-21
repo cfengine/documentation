@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-canonifyuniquely.html"
 ---
 
-[%CFEngine_function_prototype(text)%]
+{{< CFEngine_function_prototype(text) >}}
 
 **Description:** Convert an arbitrary string `text` into a unique legal class name.
 
@@ -18,7 +18,7 @@ A common use case is when you need unique array keys for each file in
 a list, but files in the list may have the same name when
 `canonify`-ed.
 
-[%CFEngine_function_attributes(text)%]
+{{< CFEngine_function_attributes(text) >}}
 
 **Example:**
 

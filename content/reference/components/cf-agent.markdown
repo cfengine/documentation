@@ -23,7 +23,7 @@ affected by `common` and `agent` control bodies.
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$) >}}
 
 ### --simulate
 
@@ -759,7 +759,7 @@ automatically.
 
 **Example:**
 
-[%CFEngine_include_example(files_auto_define.cf)%]
+{{< CFEngine_include_example(files_auto_define.cf) >}}
 
 ### files_single_copy
 

@@ -8,4 +8,4 @@ aliases:
 See the [`databases` promises][databases] documentation for a
 comprehensive reference on the body types and attributes used here.
 
-[%CFEngine_library_include(lib/databases)%]
+{{< CFEngine_library_include(lib/databases) >}}

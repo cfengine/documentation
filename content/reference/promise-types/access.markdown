@@ -104,7 +104,7 @@ reporting and orchestration.
 
 Using the built-in `report_data_select` body `default_data_select_host`:
 
-[%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \})%]
+{{< CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \}) >}}
 
 
 The access promise allows overlapping promises to be made, and these are kept on a
@@ -122,7 +122,7 @@ promises will override less specific ones.
 
 **Description:** A list of hostnames or domains that should have access to the object.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Note:** The host trying to access the object is identified using a
 reverse DNS lookup on the connecting IP. This introduces latency for
@@ -165,7 +165,7 @@ access:
    admit_ips => {"192.168.0.1", "192.168.0.0/24", "0.0.0.0/0"};
 ```
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `deny_ips`, `admit_hostnames`, `admit_keys`
 
@@ -194,7 +194,7 @@ access:
    admit_keys => {"MD5=abcdef"};
 ```
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `deny_keys`, `admit_hostnames`, `admit_ips`, `copyfrom_restrict_keys`
 
@@ -222,7 +222,7 @@ access:
    deny_hostnames => { ".cfengine.com", "www.cfengine3.com" };
 ```
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Notes:** Failure to resolve a hostname or it's reverse results in a denial.
 Since this control is sensitive to temporary DNS failures, and cases, where
@@ -252,7 +252,7 @@ access:
     };
 ```
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `admit_ips`, `deny_hostnames`, `deny_keys`
 
@@ -264,7 +264,7 @@ access:
 
 This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 For example, here we'll deny the fictitious SHA key `abcdef`:
 
@@ -358,7 +358,7 @@ files owned by non-privileged users. If `maproot` is true then remote
 A typical case where mapping is important is in making backups of many
 user files.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -388,7 +388,7 @@ encryption is always enabled.
 If this flag is true a client cannot access the file object unless its
 connection is encrypted.
 
-[%CFEngine_promise_attribute(false)%]
+{{< CFEngine_promise_attribute(false) >}}
 
 **Example:**
 
@@ -425,7 +425,7 @@ If more than one `report_data_select` body applies to the same host, all of them
 Usage of this body is only allowed in conjunction with using
 [`resource_type => "query"`][access#resource_type], as this is the resource type that is being affected.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -443,9 +443,9 @@ body report_data_select report_data
 Here are the built-in `report_data_select` bodies `default_data_select_host()` and
 `default_data_select_policy_hub()`:
 
-[%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \})%]
+{{< CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \}) >}}
 
-[%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_policy_hub, \})%]
+{{< CFEngine_include_snippet(controls/reports.cf, .+default_data_select_policy_hub, \}) >}}
 
 **See also:** [Common body attributes][Promise types#Common body attributes]
 
@@ -472,7 +472,7 @@ reported to the CFEngine Enterprise server.
 When combined with `metatags_include`, this list is applied to the selected
 subset.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `metatags_include`, `promise_handle_exclude`, `monitoring_exclude`
 
@@ -489,7 +489,7 @@ reported to the CFENgine Enterprise server.
 When combined with `metatags_exclude`, the exclude list is applied to the subset
 from this list.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `metatags_exclude`, `promise_handle_include`, `monitoring_include`
 
@@ -506,7 +506,7 @@ not be reported to the CFEngine Enterprise server.
 When combined with `promise_handle_include`, this list is applied to the
 selected subset.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `promise_handle_include`, `metatags_exclude`, `monitoring_exclude`
 
@@ -523,7 +523,7 @@ be reported to the CFEngine Enterprise server.
 When combined with `promise_handle_exclude`, the exclude list is applied to the
 subset from this list.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `promise_handle_exclude`, `metatags_include`, `monitoring_include`
 
@@ -540,7 +540,7 @@ to the CFEngine Enterprise server.
 When combined with `monitoring_exclude`, the exclude list is applied to the
 subset from this list.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `monitoring_exclude`, `promise_handle_include`, `metatags_include`
 
@@ -557,7 +557,7 @@ reported to the CFEngine Enterprise server.
 When combined with `monitoring_include`, this list is applied to the selected
 subset.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **See also:** `monitoring_include`, `promise_handle_exclude`, `metatags_exclude`
 
@@ -576,7 +576,7 @@ hashed passwords). In the case of literal data, the promise handle
 serves as the reference identifier for queries. Queries are instigated
 by function calls by any agent.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 If the resource type is `literal`, CFEngine will grant access to a
 literal data string. This string is defined either by the promiser
@@ -663,7 +663,7 @@ bundle server my_access_rules()
 **Description:** For file promisers, the server will give access to the file under
 its shortcut name.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 

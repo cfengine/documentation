@@ -5,4 +5,4 @@ aliases:
   - "/reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html"
 ---
 
-[%CFEngine_library_include(cfe_internal/update/systemd_units)%]
+{{< CFEngine_library_include(cfe_internal/update/systemd_units) >}}

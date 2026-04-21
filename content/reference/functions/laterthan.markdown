@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-laterthan.html"
 ---
 
-[%CFEngine_function_prototype(year, month, day, hour, minute, second)%]
+{{< CFEngine_function_prototype(year, month, day, hour, minute, second) >}}
 
 **Description:** Returns whether the current time is later than the given
 date and time.
@@ -13,7 +13,7 @@ date and time.
 The specified date/time is an absolute date in the local timezone.
 Note that, unlike some other functions, the month argument is 1-based (i.e. 1 corresponds to January).
 
-[%CFEngine_function_attributes(year, month, day, hour, minute, second)%]
+{{< CFEngine_function_attributes(year, month, day, hour, minute, second) >}}
 
 **Example:**
 

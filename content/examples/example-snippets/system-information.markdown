@@ -17,7 +17,7 @@ aliases:
 ## Change detection
 
 
-[%CFEngine_include_snippet(change_detection.cf, .* )%]
+{{< CFEngine_include_snippet(change_detection.cf, .* ) >}}
 
 ## Hashing for change detection (tripwire)
 
@@ -29,19 +29,19 @@ Change detection is a powerful and easy way to monitor your environment, increas
 ## Check filesystem space
 
 
-[%CFEngine_include_snippet(check_filesystem_space.cf, .* )%]
+{{< CFEngine_include_snippet(check_filesystem_space.cf, .* ) >}}
 
 ## Class match example
 
 
-[%CFEngine_include_snippet(class_match_example.cf, .* )%]
+{{< CFEngine_include_snippet(class_match_example.cf, .* ) >}}
 
 ## Global classes
 
 
 
-[%CFEngine_include_snippet(global_classes.cf, .* )%]
+{{< CFEngine_include_snippet(global_classes.cf, .* ) >}}
 
 ## Logging
 
-[%CFEngine_include_snippet(logging.cf, .* )%]
+{{< CFEngine_include_snippet(logging.cf, .* ) >}}

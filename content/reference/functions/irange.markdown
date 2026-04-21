@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-irange.html"
 ---
 
-[%CFEngine_function_prototype(arg1, arg2)%]
+{{< CFEngine_function_prototype(arg1, arg2) >}}
 
 **Description:** Define a range of integer values for CFEngine internal use.
 
@@ -14,7 +14,7 @@ generally interchangeably say `"1,10"` or `irange("1","10")`. However, if
 you want to create a range of dates or times, you must use `irange()` if you
 also use the functions `ago()`, `now()`, `accumulated()`, etc.
 
-[%CFEngine_function_attributes(arg1, arg2)%]
+{{< CFEngine_function_attributes(arg1, arg2) >}}
 
 **Example:**
 

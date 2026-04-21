@@ -5,11 +5,11 @@ aliases:
   - "/reference-functions-regex_replace.html"
 ---
 
-[%CFEngine_function_prototype(string, regex, replacement, options)%]
+{{< CFEngine_function_prototype(string, regex, replacement, options) >}}
 
 **Description:** In a given string, replaces a regular expression with something else.
 
-[%CFEngine_function_attributes(string, regex, replacement, options)%]
+{{< CFEngine_function_attributes(string, regex, replacement, options) >}}
 
 The supported options are single letters you place in the `options`
 string in any order. Consult http://pcre.org/pcre.txt for the exact
@@ -35,11 +35,11 @@ regex match. `$&` holds the entire regex match.
 
 **Example:**
 
-[%CFEngine_include_snippet(regex_replace.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(regex_replace.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(regex_replace.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(regex_replace.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** Was introduced in version 3.8.0 (2015)
 

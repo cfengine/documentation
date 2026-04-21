@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-findfiles_up.html"
 ---
 
-[%CFEngine_function_prototype(path, glob, level)%]
+{{< CFEngine_function_prototype(path, glob, level) >}}
 
 **Description:** Return a data array of files that match a given glob pattern
 by searching up the directory tree.
@@ -36,15 +36,15 @@ deep.
 **History:**
 - Brace expression (i.e., `{foo,bar}`) and negative bracket expressions (i.e., `[!abc]`) were introduced in 3.24.
 
-[%CFEngine_function_attributes(path, glob, level)%]
+{{< CFEngine_function_attributes(path, glob, level) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(findfiles_up.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(findfiles_up.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(findfiles_up.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(findfiles_up.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** Introduced in 3.18.
 

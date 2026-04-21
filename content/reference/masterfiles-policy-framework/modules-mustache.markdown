@@ -5,4 +5,4 @@ aliases:
   - "/reference-masterfiles-policy-framework-modules-mustache.html"
 ---
 
-[%CFEngine_include_markdown(../../masterfiles/modules/mustache/README.md)%]
+{{< CFEngine_include_markdown(../../masterfiles/modules/mustache/README.md) >}}

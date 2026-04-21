@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-splayclass.html"
 ---
 
-[%CFEngine_function_prototype(input, policy)%]
+{{< CFEngine_function_prototype(input, policy) >}}
 
 **Description:** Returns whether `input`'s time-slot has arrived,
 according to a ```policy```.
@@ -19,7 +19,7 @@ This function may be used to distribute a task, typically on multiple hosts, in 
 
 The function is similar to the `splaytime` feature in `cf-execd`, except that it allows you to base the decision on any string-criterion on a given host.
 
-[%CFEngine_function_attributes(input, policy)%]
+{{< CFEngine_function_attributes(input, policy) >}}
 
 The variation in `input` determines how effectively CFEngine will be able to
 distribute tasks. CFEngine instances with the same `input` will yield a true

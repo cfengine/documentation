@@ -65,11 +65,11 @@ kept.
 
 Policy:
 
-[%CFEngine_include_example(action_policy.cf, #\+begin_src\s+cfengine3, .*end_src)%]
+{{< CFEngine_include_example(action_policy.cf, #\+begin_src\s+cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(action_policy.cf, #\+begin_src\s+mock_example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(action_policy.cf, #\+begin_src\s+mock_example_output\s*, .*end_src) >}}
 
 #### ifelapsed
 
@@ -970,7 +970,7 @@ Handles in other namespaces may be referred to by namespace:handle.
 
 **Example:**
 
-[%CFEngine_include_example(depends_on.cf)%]
+{{< CFEngine_include_example(depends_on.cf) >}}
 
 ### handle
 
@@ -1242,11 +1242,11 @@ you'd use `with => canonify("the value")` so you don't have to create a
 
 **Example:**
 
-[%CFEngine_include_snippet(with.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(with.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(with.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(with.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** Was introduced in 3.11.0
 
@@ -1266,9 +1266,9 @@ type as a function call. For a detailed description, see
 
 **Examples:**
 
-[%CFEngine_include_example(inherit_from.cf)%]
+{{< CFEngine_include_example(inherit_from.cf) >}}
 
-[%CFEngine_include_example(inherit_from_classes.cf)%]
+{{< CFEngine_include_example(inherit_from_classes.cf) >}}
 
 **History:** Was introduced in 3.8.0.
 

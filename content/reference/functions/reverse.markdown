@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-reverse.html"
 ---
 
-[%CFEngine_function_prototype(list)%]
+{{< CFEngine_function_prototype(list) >}}
 
 **Description:** Reverses a list.
 
@@ -21,11 +21,11 @@ This is a simple function to reverse a list.
 **Example:**
 
 
-[%CFEngine_include_snippet(reverse.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(reverse.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(reverse.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(reverse.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 

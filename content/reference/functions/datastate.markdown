@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-datastate.html"
 ---
 
-[%CFEngine_function_prototype()%]
+{{< CFEngine_function_prototype() >}}
 
 **Description:** Returns the current evaluation data state.
 
@@ -23,15 +23,15 @@ clearer.
 Mustache templates (see [template_method][files#template_method]), if not given a
 `template_data`, will use the output of `datastate()` as their input.
 
-[%CFEngine_function_attributes()%]
+{{< CFEngine_function_attributes() >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(datastate.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(datastate.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(datastate.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(datastate.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **See also:** `getindices()`, `classesmatching()`, `variablesmatching()`, `mergedata()`, [template_method][files#template_method], `mustache`, `inline_mustache`, `bundlestate()`
 

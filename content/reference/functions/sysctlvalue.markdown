@@ -5,11 +5,11 @@ aliases:
   - "/reference-functions-sysctlvalue.html"
 ---
 
-[%CFEngine_function_prototype(key)%]
+{{< CFEngine_function_prototype(key) >}}
 
 **Description:** Returns the sysctl value of `key` using `/proc/sys`.
 
-[%CFEngine_function_attributes(key)%]
+{{< CFEngine_function_attributes(key) >}}
 
 **Example:**
 

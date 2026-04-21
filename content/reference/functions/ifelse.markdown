@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-ifelse.html"
 ---
 
-[%CFEngine_function_prototype(...)%]
+{{< CFEngine_function_prototype(...) >}}
 
 **Description:** Evaluate each pair of arguments up to the last one as a (`class`, `value`) tuple, returning `value` if `class` is set.
 

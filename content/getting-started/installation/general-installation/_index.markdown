@@ -6,7 +6,7 @@ aliases:
   - "/getting-started-installation-general-installation.html"
 ---
 
-[%CFEngine_include_markdown(install-bootstrap-configure-summary.include.markdown)%]
+{{< CFEngine_include_markdown(install-bootstrap-configure-summary.include.markdown) >}}
 
 ## Before installation
 

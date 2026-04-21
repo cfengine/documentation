@@ -318,7 +318,7 @@ alter such a socket. This is a known issue, documented in
 
 ## Attributes
 
-[%CFEngine_include_markdown(common-attributes.include.markdown)%]
+{{< CFEngine_include_markdown(common-attributes.include.markdown) >}}
 
 ### acl
 
@@ -542,7 +542,7 @@ acl_directory_inherit.
 
 **Description:** Defines whether the object inherits its ACL from its parent.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Notes:** This attribute has an effect only on Windows.
 
@@ -1123,11 +1123,11 @@ When set to `true` if the promise is a remote copy and there is a failure to
 connect the promise will not be considered kept. If the agent is able to request
 the file and the file is missing the promise will be kept.
 
-[%CFEngine_promise_attribute(false)%]
+{{< CFEngine_promise_attribute(false) >}}
 
 **Example:**
 
-[%CFEngine_include_example(missing_ok.cf)%]
+{{< CFEngine_include_example(missing_ok.cf) >}}
 
 **Notes:**
 
@@ -1238,7 +1238,7 @@ preserve => "true";
 **Description:** Defines the protocol to use for the outgoing connection in this
 copy operation.
 
-[%CFEngine_promise_attribute(classic)%]
+{{< CFEngine_promise_attribute(classic) >}}
 
 **Note:** The value here will override the setting from [`body common control`][body common].
 
@@ -1406,7 +1406,7 @@ verify => "true";
 **Example:**
 
 
-[%CFEngine_include_example(files_content.cf)%]
+{{< CFEngine_include_example(files_content.cf) >}}
 
 
 **History:** Was introduced in 3.16.0
@@ -1599,7 +1599,7 @@ promise the same attributes as the files inside it. `rmdirs` in `delete` bodies 
 
 **Example:**
 
-[%CFEngine_include_example(files_depth_search_include_basedir.cf)%]
+{{< CFEngine_include_example(files_depth_search_include_basedir.cf) >}}
 
 **See also:** `rm_rf`, `rm_rf_depth` from the standard library.
 
@@ -2036,7 +2036,7 @@ bundle agent example
 
 <!-- This example contains mustache, so it needs to be wrapped in raw or else it won't render as desired.-->
 
-[%CFEngine_include_example(template_method-inline_mustache.cf)%]
+{{< CFEngine_include_example(template_method-inline_mustache.cf) >}}
 
 
 **History:** Was introduced in 3.12.0
@@ -2469,7 +2469,7 @@ regular
 fifo
 ```
 
-[%CFEngine_promise_attribute(cfengine)%]
+{{< CFEngine_promise_attribute(cfengine) >}}
 
 ### link_from
 
@@ -2515,11 +2515,11 @@ them to the source.
 
 **Example implementation:**
 
-[%CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\slinkchildren.*, ^##)%]
+{{< CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\slinkchildren.*, ^##) >}}
 
 **Example usage:**
 
-[%CFEngine_include_example(symlink_children.cf)%]
+{{< CFEngine_include_example(symlink_children.cf) >}}
 
 #### link_type
 
@@ -2552,7 +2552,7 @@ absolute
 
 **Example impelementation:**
 
-[%CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##)%]
+{{< CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##) >}}
 ```cf3
 body link_from example
 {
@@ -2563,7 +2563,7 @@ source => "/tmp/source";
 
 **Example usage:**
 
-[%CFEngine_include_example(symlink.cf)%]
+{{< CFEngine_include_example(symlink.cf) >}}
 
 
 **Notes:**
@@ -2874,7 +2874,7 @@ specified in `mode`.
 
 **Example:**
 
-[%CFEngine_include_example(rxdirs.cf)%]
+{{< CFEngine_include_example(rxdirs.cf) >}}
 
 **See also:** `mode`
 
@@ -3039,7 +3039,7 @@ files:
 
 **Description:** The data container to be passed to the template (Mustache or inline_mustache). It can come from a function call like `mergedata()` or from a data container reference like `@(mycontainer)`.
 
-[%CFEngine_promise_attribute()%]
+{{< CFEngine_promise_attribute() >}}
 
 **Example:**
 
@@ -3081,7 +3081,7 @@ state in Mustache.
 By default `cfengine` requests the native CFEngine template
 implementation, but you can use `mustache` or `inline_mustache` as well.
 
-[%CFEngine_promise_attribute(cfengine)%]
+{{< CFEngine_promise_attribute(cfengine) >}}
 
 #### template_method cfengine
 
@@ -3182,7 +3182,7 @@ for `inline_mustache` and `mustache`.  For mustache explanation see
 
 <!-- This example contains mustache, so it needs to be wrapped in raw or else it won't render as desired.-->
 
-[%CFEngine_include_example(template_method-inline_mustache.cf)%]
+{{< CFEngine_include_example(template_method-inline_mustache.cf) >}}
 
 
 **History:** Was introduced in 3.12.0
@@ -3226,7 +3226,7 @@ HTML, use the triple mustache: ```{{{name}}}``` or an ampersand
 A variable "miss" returns an empty string.
 
 
-[%CFEngine_include_example(mustache_variables.cf)%]
+{{< CFEngine_include_example(mustache_variables.cf) >}}
 
 
 ##### template_method mustache Sections
@@ -3245,13 +3245,13 @@ If the key exists and has a value of false or an empty list, the HTML between
 the pound and slash will not be displayed.
 
 
-[%CFEngine_include_example(mustache_sections_empty_list.cf)%]
+{{< CFEngine_include_example(mustache_sections_empty_list.cf) >}}
 
 
 **Non-Empty Lists:**
 
 
-[%CFEngine_include_example(mustache_sections_non_empty_list.cf)%]
+{{< CFEngine_include_example(mustache_sections_non_empty_list.cf) >}}
 
 
 **Non-False Values:**
@@ -3260,7 +3260,7 @@ When the value is non-false but not a list, it will be used as the context for a
 single rendering of the block.
 
 
-[%CFEngine_include_example(mustache_sections_non_false_value.cf)%]
+{{< CFEngine_include_example(mustache_sections_non_false_value.cf) >}}
 
 
 ##### template_method mustache Inverted Sections
@@ -3275,7 +3275,7 @@ the key. That is, they will be rendered if the key doesn't exist, is false, or
 is an empty list.
 
 
-[%CFEngine_include_example(mustache_sections_inverted.cf)%]
+{{< CFEngine_include_example(mustache_sections_inverted.cf) >}}
 
 
 ##### template_method mustache Comments
@@ -3283,7 +3283,7 @@ is an empty list.
 Comments begin with a bang and are ignored. Comments may contain newlines.
 
 
-[%CFEngine_include_example(mustache_comments.cf)%]
+{{< CFEngine_include_example(mustache_comments.cf) >}}
 
 
 ##### template_method mustache Set Delimiter
@@ -3292,7 +3292,7 @@ Set Delimiter tags start with an equal sign and change the tag delimiters from
 ```{{``` and ```}}``` to custom strings.
 
 
-[%CFEngine_include_example(mustache_set_delimiters.cf)%]
+{{< CFEngine_include_example(mustache_set_delimiters.cf) >}}
 
 
 ##### template_method mustache extensions
@@ -3304,28 +3304,28 @@ over the top level of a container `{{#-top-}} ... {{/-top-}}`
 and rendering json representation of data given with `$` and `%`.
 
 
-[%CFEngine_include_example(mustache_extension_top.cf)%]
+{{< CFEngine_include_example(mustache_extension_top.cf) >}}
 
 
 `%` variable prefix causing data to be rendered as multi-line json
 representation. Like output from `storejson()`.
 
 
-[%CFEngine_include_example(mustache_extension_multiline_json.cf)%]
+{{< CFEngine_include_example(mustache_extension_multiline_json.cf) >}}
 
 
 `$` variable prefix causing data to be rendered as compact json representation.
 Like output from `format()` with the ```%S``` format string.
 
 
-[%CFEngine_include_example(mustache_extension_compact_json.cf)%]
+{{< CFEngine_include_example(mustache_extension_compact_json.cf) >}}
 
 
 `@` expands the current key being iterated to complement the value as accessed
 with `.`.
 
 
-[%CFEngine_include_example(mustache_extension_expand_key.cf)%]
+{{< CFEngine_include_example(mustache_extension_expand_key.cf) >}}
 
 
 
@@ -3386,7 +3386,7 @@ something else.
 
 **Example:**
 
-[%CFEngine_include_example(files_transformer.cf)%]
+{{< CFEngine_include_example(files_transformer.cf) >}}
 
 In the example, the promise is made on the file that we wish to transform. If
 the promised file exists, the transformer will change the file to a compressed

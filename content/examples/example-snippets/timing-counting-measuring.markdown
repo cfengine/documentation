@@ -10,4 +10,4 @@ aliases:
 
 ## Measurements
 
-[%CFEngine_include_snippet(measurements.cf, .* )%]
+{{< CFEngine_include_snippet(measurements.cf, .* ) >}}

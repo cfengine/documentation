@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-returnszero.html"
 ---
 
-[%CFEngine_function_prototype(command, shell)%]
+{{< CFEngine_function_prototype(command, shell) >}}
 
 **Description:** Runs `command` and returns whether it has returned with exit
 status zero.
@@ -13,15 +13,15 @@ status zero.
 This is the complement of `execresult()`, but it returns a class result
 rather than the output of the command.
 
-[%CFEngine_function_attributes(command, shell)%]
+{{< CFEngine_function_attributes(command, shell) >}}
 
 **Example:**
 
-[%CFEngine_include_snippet(returnszero.cf, #\+begin_src cfengine3, .*end_src)%]
+{{< CFEngine_include_snippet(returnszero.cf, #\+begin_src cfengine3, .*end_src) >}}
 
 Output:
 
-[%CFEngine_include_snippet(returnszero.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+{{< CFEngine_include_snippet(returnszero.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
 **Notes:** you should never use this function to execute commands that
 make changes to the system, or perform lengthy computations. Such an

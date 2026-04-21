@@ -7,4 +7,4 @@ aliases:
 
 This policy is inventory related to redhat hosts.
 
-[%CFEngine_library_include(inventory/redhat)%]
+{{< CFEngine_library_include(inventory/redhat) >}}

@@ -13,7 +13,7 @@ The utility will prompt for an optional support ticket number as well as prompt 
 
 ## Command reference
 
-[%CFEngine_include_snippet(cf-support.help, [\s]*--[a-z], ^$)%]
+{{< CFEngine_include_snippet(cf-support.help, [\s]*--[a-z], ^$) >}}
 
 ## History
 

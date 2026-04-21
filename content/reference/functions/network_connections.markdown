@@ -5,11 +5,11 @@ aliases:
   - "/reference-functions-network_connections.html"
 ---
 
-[%CFEngine_function_prototype()%]
+{{< CFEngine_function_prototype() >}}
 
 **Description:** Return the list of current network connections.
 
-[%CFEngine_function_attributes()%]
+{{< CFEngine_function_attributes() >}}
 
 The returned data container has four keys:
 

@@ -27,7 +27,7 @@ classes:
 - Classes are not automatically canonified when checked.
 
 
-[%CFEngine_include_example(class-automatic-canonificiation.cf)%]
+{{< CFEngine_include_example(class-automatic-canonificiation.cf) >}}
 
 
 - The term ```class``` and ```context``` are sometimes used interchangeably.

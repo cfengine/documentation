@@ -5,11 +5,11 @@ aliases:
   - "/reference-functions-callstack_callers.html"
 ---
 
-[%CFEngine_function_prototype()%]
+{{< CFEngine_function_prototype() >}}
 
 **Description:** Return the call stack for the current promise.
 
-[%CFEngine_function_attributes()%]
+{{< CFEngine_function_attributes() >}}
 
 This is a call stack inspection function and the specific content may be tied
 to a specific CFEngine version. Using it requires writing code that takes the

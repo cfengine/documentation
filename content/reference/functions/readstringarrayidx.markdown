@@ -5,7 +5,7 @@ aliases:
   - "/reference-functions-readstringarrayidx.html"
 ---
 
-[%CFEngine_function_prototype(array, filename, comment, split, maxentries, maxbytes)%]
+{{< CFEngine_function_prototype(array, filename, comment, split, maxentries, maxbytes) >}}
 
 **Description:** Populates the two-dimensional array `array` with up to
 `maxentries` fields from the first `maxbytes` bytes of file `filename`.
@@ -24,7 +24,7 @@ matched). If you only want the fields in the first matching line (e.g., to
 mimic the behavior of the *getpwnam(3)* on the file `/etc/passwd`), use
 `getfields()`, instead.
 
-[%CFEngine_function_attributes(array, filename, comment, split, maxentries, maxbytes)%]
+{{< CFEngine_function_attributes(array, filename, comment, split, maxentries, maxbytes) >}}
 
 **Example:**
 

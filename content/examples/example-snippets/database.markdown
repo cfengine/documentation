@@ -10,4 +10,4 @@ aliases:
 
 ## Database creation
 
-[%CFEngine_include_snippet(database_creation.cf, .* )%]
+{{< CFEngine_include_snippet(database_creation.cf, .* ) >}}

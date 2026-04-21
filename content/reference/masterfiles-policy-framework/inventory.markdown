@@ -5,4 +5,4 @@ aliases:
   - "/reference-masterfiles-policy-framework-inventory.html"
 ---
 
-[%CFEngine_include_markdown(../../masterfiles/inventory/README.md)%]
+{{< CFEngine_include_markdown(../../masterfiles/inventory/README.md) >}}

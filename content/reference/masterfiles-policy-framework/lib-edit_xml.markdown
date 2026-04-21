@@ -5,4 +5,4 @@ aliases:
   - "/reference-masterfiles-policy-framework-lib-edit_xml.html"
 ---
 
-[%CFEngine_library_include(lib/edit_xml)%]
+{{< CFEngine_library_include(lib/edit_xml) >}}

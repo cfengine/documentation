@@ -7,7 +7,7 @@ aliases:
 
 **This function is only available in CFEngine Enterprise.**
 
-[%CFEngine_function_prototype(id)%]
+{{< CFEngine_function_prototype(id) >}}
 
 **Description:** Read global knowledge from the CFEngine Database host by
 `id`.
@@ -30,7 +30,7 @@ channel are generated automatically by discovery, unlike `remotescalar` which
 accesses user defined data.
 
 
-[%CFEngine_function_attributes(id)%]
+{{< CFEngine_function_attributes(id) >}}
 
 **Example:**
 
