@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$#" != 4 ]; then
-    echo "Pass 4 args, please:"
+if [ "$#" -lt 4 ]; then
+    echo "Pass at least 4 args, please:"
     echo BRANCH
     echo PACKAGE_JOB
     echo PACKAGE_UPLOAD_DIRECTORY
@@ -23,6 +23,7 @@ export BRANCH=$1
 export PACKAGE_JOB=$2
 export PACKAGE_UPLOAD_DIRECTORY=$3
 export PACKAGE_BUILD=$4
+export LTS_VERSION=$5
 
 export JOB_TO_UPLOAD=$PACKAGE_JOB
 export NO_OUTPUT_DIR=1
@@ -56,7 +57,7 @@ function fetch_file() {
     local success=1                     # 1 means False in bash, 0 means True
     set +e
     for i in $(seq 1 "$tries"); do
-        wget "$target" -O "$destination" && success=0 && break
+        wget -q "$target" -O "$destination" && success=0 && break
         if [ "$i" -lt "$tries" ]; then
             sleep 10s
         fi
@@ -120,35 +121,30 @@ sudo chmod -R a+rX "$WRKDIR"/masterfiles
 # write current branch into the config.yml
 echo "branch: $BRANCH" >> "$WRKDIR"/documentation/generator/_config.yml
 
+# replace %branch% placeholder with actual branch name
+CONFIG_TOML="$WRKDIR/documentation/hugo/config.toml"
+if [ "$BRANCH" = "lts" ]; then
+    # First, remove %branch% from the title line
+    sed -i '/^title = /s/ %branch%//' "$CONFIG_TOML"
+    # Replace %branch% in searchBaseUrl with "lts"
+    sed -i '/^searchBaseUrl = /s/%branch%/lts/' "$CONFIG_TOML"
+    # Then replace remaining %branch% with LTS_VERSION
+    sed -i "s/%branch%/$LTS_VERSION/g" "$CONFIG_TOML"
+else
+    sed -i "s/%branch%/$BRANCH/g" "$CONFIG_TOML"
+fi
+
 # Generate syntax data
 ./_regenerate_json.sh || exit 4
 
 # Preprocess Documentation with custom macros
-./_scripts/cfdoc_preprocess.py "$BRANCH" || exit 5
+./_scripts/cfdoc_preprocess.py "$BRANCH" "$LTS_VERSION" || exit 5
 
 # rvm commands are insane scripts which pollut output
 # so instead of set -x we just echo each command ourselves
 set +x
 
-# since May 14 2019, we need this to run jekyll. IDK why.
-echo "+ source ~/.rvm/scripts/rvm"
-# shellcheck disable=SC1090
-source ~/.rvm/scripts/rvm
-echo "+ rvm --default use 1.9.3-p551"
-rvm --default use 1.9.3-p551
-echo "+ source ~/.profile"
-ls -lah ~
-# shellcheck disable=SC1090
-test -f ~/.profile && source ~/.profile
-echo "+ source ~/.rvm/scripts/rvm"
-# shellcheck disable=SC1090
-source ~/.rvm/scripts/rvm
-
 export LC_ALL=C.UTF-8
-
-# finally, run actual jekyll
-echo "+ bash -x ./_scripts/_run_jekyll.sh $BRANCH || exit 6"
-bash -x ./_scripts/_run_jekyll.sh "$BRANCH" || exit 6
-
-cd "$WRKDIR"/documentation/generator
-npm run build
+bash ./build/install_hugo.sh
+echo "+ bash -x ./_scripts/_run.sh $BRANCH || exit 6"
+bash -x ./_scripts/_run.sh "$BRANCH" || exit 6

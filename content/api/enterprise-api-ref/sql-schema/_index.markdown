@@ -1,0 +1,12 @@
+---
+layout: default
+title: SQL schema
+aliases:
+  - "/api-enterprise-api-ref-sql-schema.html"
+---
+
+CFEngine Enterprise uses multiple databases.
+
+- `cfdb` - Database containing information that hosts report.
+- `cfsettings` - Database containing settings used by Mission Portal APIs, no reported data.
+- `cfmp` - Database containing Mission Portal related settings not processed by API.

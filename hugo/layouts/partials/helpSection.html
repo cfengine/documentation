@@ -1,0 +1,20 @@
+<div class="footer-top">
+    {{ if .IsHome }}<div>
+        <h3>Help us to improve the CFEngine docs</h3>
+        <div>All CFEngine docs are open source. See something that's wrong or unclear? Submit a pull request.
+        </div>
+        <a class="btn btn-bordered"
+            href="https://github.com/cfengine/documentation/edit/{{ .Site.Params.branch }}/_index.markdown"
+            target="_blank"><img src="{{ "github.svg" | relURL }}" /> Make a contribution</a>
+    </div>
+    {{ end }}
+    <div>
+        <h3>Still need help? </h3>
+        <a href="https://matrix.to/#/#CFEngine:matrix.org" target="_blank"><img
+                src="{{ "chat-square-dots-fill.svg" | relURL }}" /> Chat</a>
+        <a href="https://github.com/cfengine/core/discussions" target="_blank"><img
+                src="{{ "people-fill.svg" | relURL }}" /> Ask a question on Github</a>
+        <a href="https://groups.google.com/forum/#!forum/dev-cfengine" target="_blank"><img
+                src="{{ "mail.svg" | relURL }}" /> Mailing list</a>
+    </div>
+</div>
