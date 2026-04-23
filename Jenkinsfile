@@ -19,6 +19,10 @@ pipeline {
     string(name: "PACKAGE_JOB", defaultValue: 'cf-remote', description: 'where to get CFEngine HUB package from, either a dir at http://buildcache.cloud.cfengine.com/packages like testing-pr or a keyword cf-remote to use cf-remote download')
     string(name: "USE_NIGHTLIES_FOR", defaultValue: '', description: 'branch whose nightlies to use (master, 3.18.x, etc) - will be one of http://buildcache.cloud.cfengine.com/packages/testing-pr/jenkins-$USE_NIGHTLIES_FOR-nightly-pipeline-$NUMBER/')
   }
+  triggers {
+    // Run nightly at 2 AM (with hash distribution to avoid load spikes)
+    cron('H 2 * * *')
+  }
   options {
     checkoutToSubdirectory('documentation')
   }
