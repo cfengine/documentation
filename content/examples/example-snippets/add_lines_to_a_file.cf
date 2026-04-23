@@ -1,15 +1,14 @@
 body common control
 {
-    any::
-      bundlesequence  => { "insert" };
+  any::
+    bundlesequence => { "insert" };
 }
 #######################################################
-
 bundle agent insert
 {
   vars:
-      "lines" string =>
-      "
+    "lines"
+      string => "
                 One potato
                 Two potato
                 Three potatoe
@@ -17,7 +16,7 @@ bundle agent insert
                 ";
 
   files:
-      "/tmp/test_insert"
+    "/tmp/test_insert"
       create => "true",
       edit_line => append_if_no_line("$(insert.lines)");
 }

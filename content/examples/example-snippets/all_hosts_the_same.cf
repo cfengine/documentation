@@ -1,57 +1,44 @@
 body common control
 {
-      bundlesequence  => { "central" };
+  bundlesequence => { "central" };
 }
-
 ############################################
-
 bundle agent central
 {
   vars:
-      "policy_server" string => "myhost.domain.tld";
-      "mypackages" slist => {
-                              "nagios",
-                              "gcc",
-                              "apache2",
-                              "php5"
-      };
+    "policy_server" string => "myhost.domain.tld";
+    "mypackages" slist => { "nagios", "gcc", "apache2", "php5" };
 
   files:
-      # Password management can be very simple if all hosts are identical
-
-      "/etc/passwd"
-      comment   => "Distribute a password file",
-      perms     => mog("644","root","root"),
-      copy_from => secure_cp("/home/mark/LapTop/words/RoadAhead","$(policy_server)");
+    # Password management can be very simple if all hosts are identical
+    "/etc/passwd"
+      comment => "Distribute a password file",
+      perms => mog("644", "root", "root"),
+      copy_from => secure_cp(
+        "/home/mark/LapTop/words/RoadAhead", "$(policy_server)"
+      );
 
   packages:
-      "$(mypackages)"
+    "$(mypackages)"
       package_policy => "add",
       package_method => generic;
-
-      # Add more promises below ...
-
+  # Add more promises below ...
 }
-
 #########################################################
 # Server config
 #########################################################
-
 body server control
 {
-      allowconnects         => { "127.0.0.1" , "::1", "10.20.30.0/24" };
-      allowallconnects      => { "127.0.0.1" , "::1", "10.20.30.0/24" };
-      trustkeysfrom         => { "127.0.0.1" , "::1", "10.20.30.0/24" };
-      # allowusers
+  allowconnects => { "127.0.0.1", "::1", "10.20.30.0/24" };
+  allowallconnects => { "127.0.0.1", "::1", "10.20.30.0/24" };
+  trustkeysfrom => { "127.0.0.1", "::1", "10.20.30.0/24" };
+  # allowusers
 }
 #########################################################
-
 bundle server my_access_rules()
 {
   access:
-      # myhost.domain.tld makes this file available to 10.20.30*
-
+    # myhost.domain.tld makes this file available to 10.20.30*
     myhost_domain_tld::
-      "/etc/passwd"
-      admit   => { "127.0.0.1", "10.20.30.0/24" };
+      "/etc/passwd" admit => { "127.0.0.1", "10.20.30.0/24" };
 }

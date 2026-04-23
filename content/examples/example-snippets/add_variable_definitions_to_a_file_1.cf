@@ -1,29 +1,19 @@
 body common control
 {
-      bundlesequence => { "setvars" };
-      inputs => { "cf_std_library.cf" };
+  bundlesequence => { "setvars" };
+  inputs => { "cf_std_library.cf" };
 }
-
 
 bundle agent setvars
 {
   vars:
-
-      # want to set these values by the names of their array keys
-
-
-      "rhs[net/ipv4/tcp_syncookies]" string => "1";
-      "rhs[net/ipv4/icmp_echo_ignore_broadcasts]" string => "1";
-      "rhs[net/ipv4/ip_forward]" string => "1";
-
-      # oops, now change pig -> lamb
-
-
+    # want to set these values by the names of their array keys
+    "rhs[net/ipv4/tcp_syncookies]" string => "1";
+    "rhs[net/ipv4/icmp_echo_ignore_broadcasts]" string => "1";
+    "rhs[net/ipv4/ip_forward]" string => "1";
+  # oops, now change pig -> lamb
   files:
-
-      "/etc/sysctl"
-
+    "/etc/sysctl"
       create => "true",
       edit_line => set_variable_values("setvars.rhs");
-
 }
