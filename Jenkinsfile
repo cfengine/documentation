@@ -20,14 +20,83 @@ pipeline {
     string(name: "USE_NIGHTLIES_FOR", defaultValue: '', description: 'branch whose nightlies to use (master, 3.18.x, etc) - will be one of http://buildcache.cloud.cfengine.com/packages/testing-pr/jenkins-$USE_NIGHTLIES_FOR-nightly-pipeline-$NUMBER/')
   }
   triggers {
-    // Run nightly at 2 AM (with hash distribution to avoid load spikes)
+    // Run nightly at 2 AM to trigger builds for master, 3.27, 3.24, and lts
     cron('H 2 * * *')
   }
   options {
     checkoutToSubdirectory('documentation')
   }
   stages {
+    stage('Trigger Nightly Builds') {
+      when {
+        triggeredBy 'TimerTrigger'
+      }
+      steps {
+        script {
+          echo "Triggered by cron - launching builds for master, 3.27, 3.24, and lts"
+
+          // Build master
+          build job: env.JOB_NAME, parameters: [
+            string(name: 'CORE_REV', value: 'master'),
+            string(name: 'ENTERPRISE_REV', value: 'master'),
+            string(name: 'NOVA_REV', value: 'master'),
+            string(name: 'MASTERFILES_REV', value: 'master'),
+            string(name: 'DOCS_REV', value: 'master'),
+            string(name: 'NT_DOCS_REV', value: 'main'),
+            string(name: 'DOCS_BRANCH', value: 'master'),
+            string(name: 'PACKAGE_JOB', value: 'cf-remote'),
+            string(name: 'USE_NIGHTLIES_FOR', value: 'master')
+          ], wait: false
+
+          // Build 3.27
+          build job: env.JOB_NAME, parameters: [
+            string(name: 'CORE_REV', value: '3.27.x'),
+            string(name: 'ENTERPRISE_REV', value: '3.27.x'),
+            string(name: 'NOVA_REV', value: '3.27.x'),
+            string(name: 'MASTERFILES_REV', value: '3.27.x'),
+            string(name: 'DOCS_REV', value: '3.27'),
+            string(name: 'NT_DOCS_REV', value: 'main'),
+            string(name: 'DOCS_BRANCH', value: '3.27'),
+            string(name: 'PACKAGE_JOB', value: 'cf-remote'),
+            string(name: 'USE_NIGHTLIES_FOR', value: '3.27.x')
+          ], wait: false
+
+          // Build 3.24
+          build job: env.JOB_NAME, parameters: [
+            string(name: 'CORE_REV', value: '3.24.x'),
+            string(name: 'ENTERPRISE_REV', value: '3.24.x'),
+            string(name: 'NOVA_REV', value: '3.24.x'),
+            string(name: 'MASTERFILES_REV', value: '3.24.x'),
+            string(name: 'DOCS_REV', value: '3.24'),
+            string(name: 'NT_DOCS_REV', value: 'main'),
+            string(name: 'DOCS_BRANCH', value: '3.24'),
+            string(name: 'PACKAGE_JOB', value: 'cf-remote'),
+            string(name: 'USE_NIGHTLIES_FOR', value: '3.24.x')
+          ], wait: false
+
+          // Build lts (3.27.x code deployed to lts location)
+          build job: env.JOB_NAME, parameters: [
+            string(name: 'CORE_REV', value: '3.27.x'),
+            string(name: 'ENTERPRISE_REV', value: '3.27.x'),
+            string(name: 'NOVA_REV', value: '3.27.x'),
+            string(name: 'MASTERFILES_REV', value: '3.27.x'),
+            string(name: 'DOCS_REV', value: '3.27'),
+            string(name: 'NT_DOCS_REV', value: 'main'),
+            string(name: 'DOCS_BRANCH', value: 'lts'),
+            string(name: 'PACKAGE_JOB', value: 'cf-remote'),
+            string(name: 'USE_NIGHTLIES_FOR', value: '3.27.x')
+          ], wait: false
+
+          echo "All nightly builds triggered successfully"
+        }
+      }
+    }
     stage('Environment check') {
+      when {
+        not {
+          triggeredBy 'TimerTrigger'
+        }
+      }
       steps {
         sh 'env'
         sh 'whoami; pwd; ls'
@@ -36,11 +105,21 @@ pipeline {
     }
     // we clean FIRST and NOT at the end of the job so that we can replay various stages and have the build result from previous runs
     stage('Clean workspace') {
+      when {
+        not {
+          triggeredBy 'TimerTrigger'
+        }
+      }
       steps {
         sh 'for r in $REPOS; do rm -rf "$(basename "$r")"; done'
       }
     }
     stage('Checkout repositories'){
+      when {
+        not {
+          triggeredBy 'TimerTrigger'
+        }
+      }
       steps {
         script {
           if (env.CHANGE_ID) {
@@ -61,11 +140,21 @@ pipeline {
       }
     }
     stage('Build documentation') {
+      when {
+        not {
+          triggeredBy 'TimerTrigger'
+        }
+      }
       steps {
         sh 'bash -x documentation/generator/build/run.sh'
       }
     }
     stage('Publish to buildcache') {
+      when {
+        not {
+          triggeredBy 'TimerTrigger'
+        }
+      }
       steps {
         sshPublisher(
           // we must use alwaysPublishFromMaster: true because our CONTAINERS build hosts are not in the private network which has access to buildcache.cloud.cfengine.com
