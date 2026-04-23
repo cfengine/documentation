@@ -32,11 +32,11 @@ def should_replace_version(version):
     if version in special_versions:
         return True
 
-    # handle numeric versions: if the version is 3.27 or higher, replace the version in the URL
-    # starting with 3.27 we changed the URL structure, so for older versions like 3.24
+    # handle numeric versions: if the version is 3.24 or higher, replace the version in the URL
+    # starting with 3.24 we changed the URL structure, so for older versions like 3.21
     # replacing the version would lead to the 404 page. In that case, redirect to the main page.
     try:
-        if float(version) >= 3.27:
+        if float(version) >= 3.24:
             return True
     except ValueError:
         return False
