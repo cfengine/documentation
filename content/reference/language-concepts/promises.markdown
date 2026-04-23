@@ -46,10 +46,10 @@ certain fact will be true. These facts are listed in the form of
 attribute has a particular value (i.e. 775 permission value) and that an owner
 attribute has another value (i.e. "root").
 
-When a promise is made in CFEngine it is made to another entity - a
-**promisee**. A promisee is an optional part of a promise declaration. The
-promisee can help provide insight into the system's configuration, and may
-become relevant as your system grows in complexity.
+When a promise is made in CFEngine it is made to another entity - a **stakeholder**.
+A stakeholder is an optional part of a promise declaration.
+The stakeholder can help provide insight into the system's configuration, and may become relevant as your system grows in complexity.
+Stakeholders are sometimes referred to as **promisees**.
 
 The **classes** in a promise control the conditions that make the promise
 valid. Examples are the operating system on which the policy is executed, or
