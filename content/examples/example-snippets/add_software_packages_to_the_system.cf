@@ -1,36 +1,28 @@
-#
 # Package management
-#
-
 body common control
 {
-      inputs => { "$(sys.libdir)/packages.cf" }
-      bundlesequence => { "packages" };
+  inputs => { "$(sys.libdir)/packages.cf" }
+  bundlesequence => { "packages" };
 }
 #############################################
-
 bundle agent packages
 {
   vars:
-      "match_package" slist => {
-                                 "apache2",
-                                 "apache2-mod_php5",
-                                 "apache2-prefork",
-                                 "php5"
-      };
+    "match_package"
+      slist => { "apache2", "apache2-mod_php5", "apache2-prefork", "php5" };
 
   packages:
     solaris::
       "$(match_package)"
-      package_policy => "add",
-      package_method => solaris;
+        package_policy => "add",
+        package_method => solaris;
 
     redhat|SuSE::
       "$(match_package)"
-      package_policy => "add",
-      package_method => yum_rpm;
+        package_policy => "add",
+        package_method => yum_rpm;
 
   methods:
-      # equivalent in 3.6, no OS choices
-      "" usebundle => ensure_present($(match_package));
+    # equivalent in 3.6, no OS choices
+    "" usebundle => ensure_present($(match_package));
 }
