@@ -20,7 +20,7 @@ pipeline {
     string(name: "USE_NIGHTLIES_FOR", defaultValue: '', description: 'branch whose nightlies to use (master, 3.18.x, etc) - will be one of http://buildcache.cloud.cfengine.com/packages/testing-pr/jenkins-$USE_NIGHTLIES_FOR-nightly-pipeline-$NUMBER/')
   }
   triggers {
-    // Run nightly at 2 AM to trigger builds for master, 3.27, 3.24, and lts
+    // Run nightly at 2 AM to trigger the master doc build
     cron('H 2 * * *')
   }
   options {
@@ -33,7 +33,7 @@ pipeline {
       }
       steps {
         script {
-          echo "Triggered by cron - launching builds for master, 3.27, 3.24, and lts"
+          echo "Triggered by cron - launching master doc build"
 
           // Build master
           build job: env.JOB_NAME, parameters: [
@@ -48,46 +48,7 @@ pipeline {
             string(name: 'USE_NIGHTLIES_FOR', value: 'master')
           ], wait: false
 
-          // Build 3.27
-          build job: env.JOB_NAME, parameters: [
-            string(name: 'CORE_REV', value: '3.27.x'),
-            string(name: 'ENTERPRISE_REV', value: '3.27.x'),
-            string(name: 'NOVA_REV', value: '3.27.x'),
-            string(name: 'MASTERFILES_REV', value: '3.27.x'),
-            string(name: 'DOCS_REV', value: '3.27'),
-            string(name: 'NT_DOCS_REV', value: 'main'),
-            string(name: 'DOCS_BRANCH', value: '3.27'),
-            string(name: 'PACKAGE_JOB', value: 'cf-remote'),
-            string(name: 'USE_NIGHTLIES_FOR', value: '3.27.x')
-          ], wait: false
-
-          // Build 3.24
-          build job: env.JOB_NAME, parameters: [
-            string(name: 'CORE_REV', value: '3.24.x'),
-            string(name: 'ENTERPRISE_REV', value: '3.24.x'),
-            string(name: 'NOVA_REV', value: '3.24.x'),
-            string(name: 'MASTERFILES_REV', value: '3.24.x'),
-            string(name: 'DOCS_REV', value: '3.24'),
-            string(name: 'NT_DOCS_REV', value: 'main'),
-            string(name: 'DOCS_BRANCH', value: '3.24'),
-            string(name: 'PACKAGE_JOB', value: 'cf-remote'),
-            string(name: 'USE_NIGHTLIES_FOR', value: '3.24.x')
-          ], wait: false
-
-          // Build lts (3.27.x code deployed to lts location)
-          build job: env.JOB_NAME, parameters: [
-            string(name: 'CORE_REV', value: '3.27.x'),
-            string(name: 'ENTERPRISE_REV', value: '3.27.x'),
-            string(name: 'NOVA_REV', value: '3.27.x'),
-            string(name: 'MASTERFILES_REV', value: '3.27.x'),
-            string(name: 'DOCS_REV', value: '3.27'),
-            string(name: 'NT_DOCS_REV', value: 'main'),
-            string(name: 'DOCS_BRANCH', value: 'lts'),
-            string(name: 'PACKAGE_JOB', value: 'cf-remote'),
-            string(name: 'USE_NIGHTLIES_FOR', value: '3.27.x')
-          ], wait: false
-
-          echo "All nightly builds triggered successfully"
+          echo "Nightly master build triggered successfully"
         }
       }
     }
