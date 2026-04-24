@@ -7,6 +7,7 @@ pipeline {
     PACKAGE_JOB = "cf-remote"
     PACKAGE_UPLOAD_DIRECTORY = "n/a"
     PACKAGE_BUILD = "n/a"
+    LTS_VERSION = "${params.LTS_BASED_ON_VERSION ?: ''}"
   }
   parameters {
     string(name: "CORE_REV", defaultValue: '', description: 'used for changelog, examples. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to build the docs with the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
@@ -18,6 +19,7 @@ pipeline {
     string(name: "DOCS_BRANCH", defaultValue: '', description: 'Where to upload artifacts - to http://buildcache.cloud.cfengine.com/packages/build-documentation-$DOCS_BRANCH/ and https://docs.cfengine.com/docs/$DOCS_BRANCH/')
     string(name: "PACKAGE_JOB", defaultValue: 'cf-remote', description: 'where to get CFEngine HUB package from, either a dir at http://buildcache.cloud.cfengine.com/packages like testing-pr or a keyword cf-remote to use cf-remote download')
     string(name: "USE_NIGHTLIES_FOR", defaultValue: '', description: 'branch whose nightlies to use (master, 3.18.x, etc) - will be one of http://buildcache.cloud.cfengine.com/packages/testing-pr/jenkins-$USE_NIGHTLIES_FOR-nightly-pipeline-$NUMBER/')
+    string(name: "LTS_BASED_ON_VERSION", defaultValue: '', description: 'The actual CFEngine version that LTS is based on. This version will be used in code blocks or other places using the cfengine.branch variable.')
   }
   triggers {
     // Run nightly at 2 AM to trigger the master doc build
@@ -35,7 +37,7 @@ pipeline {
         script {
           echo "Triggered by cron - launching master doc build"
 
-          // Build master
+          // Build master (parameters match fast-build-and-deploy-docs-master defaults)
           build job: env.JOB_NAME, parameters: [
             string(name: 'CORE_REV', value: 'master'),
             string(name: 'ENTERPRISE_REV', value: 'master'),
@@ -45,7 +47,8 @@ pipeline {
             string(name: 'NT_DOCS_REV', value: 'main'),
             string(name: 'DOCS_BRANCH', value: 'master'),
             string(name: 'PACKAGE_JOB', value: 'cf-remote'),
-            string(name: 'USE_NIGHTLIES_FOR', value: 'master')
+            string(name: 'USE_NIGHTLIES_FOR', value: 'master'),
+            string(name: 'LTS_BASED_ON_VERSION', value: '')
           ], wait: false
 
           echo "Nightly master build triggered successfully"
