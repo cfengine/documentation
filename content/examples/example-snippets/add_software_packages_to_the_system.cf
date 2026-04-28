@@ -1,7 +1,7 @@
 # Package management
 body common control
 {
-  inputs => { "$(sys.libdir)/packages.cf" }
+  inputs => { "$(sys.libdir)/packages.cf" };
   bundlesequence => { "packages" };
 }
 #############################################
