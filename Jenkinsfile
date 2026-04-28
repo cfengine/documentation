@@ -98,7 +98,7 @@ pipeline {
         sh "curl -O https://gitlab.com/Northern.tech/OpenSource/GODS/-/raw/master/parallel_git_rev_fetch.sh"
         sh "chmod u+x ./parallel_git_rev_fetch.sh"
 
-        withCredentials([sshUserPrivateKey(credentialsId:"autobuild", keyFileVariable: "key")]) {
+        withCredentials([sshUserPrivateKey(credentialsId:"jenkins-github", keyFileVariable: "key")]) {
           sh 'export GIT_SSH_COMMAND="ssh -i $key"; ./parallel_git_rev_fetch.sh revisions'
         }
       }
