@@ -203,7 +203,7 @@ bundle agent ntp
   services:
      "$(ntp_service_name)" -> { "StandardsDoc 3.2.2" }
        service_policy => "start",
-       classes => results( "bundle", "ntp_service")
+       classes => results( "bundle", "ntp_service");
 
    reports:
      ntp_service_repaired.inform_mode::
