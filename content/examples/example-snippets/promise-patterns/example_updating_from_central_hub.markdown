@@ -21,7 +21,7 @@ vars:
 
  "master_location" string => "/var/cfengine/masterfiles";
 
- "policy_server"   string => "10.20.30.123";
+ "policy_server"   string => "10.20.30.123",
                    comment => "IP address to locate your policy host.";
 
 files:
