@@ -178,7 +178,7 @@ bundle agent example
     services:
 
       "www"
-        service_policy => "start";
+        service_policy => "start",
         service_method => non_standard_services;
 }
 body service_method non_standard_services
