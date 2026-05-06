@@ -58,7 +58,7 @@ bundle agent main
 
   packages:
     "ssh"
-      policy => "present";
+      policy => "present",
       package_module => apt_get;
 
   services:
@@ -95,7 +95,7 @@ bundle agent main
 {
   packages:
     "ssh"
-      policy => "present";
+      policy => "present",
       package_module => apt_get;
 
   vars:

@@ -295,7 +295,7 @@ bundle agent child_bundle
 {
   methods:
     "extend_method"
-      use => base_bundle(parameter1,parameter2);
+      usebundle => base_bundle(parameter1,parameter2);
 }
 ```
 
