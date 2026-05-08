@@ -3,7 +3,7 @@ safe: false
 plugins: ./_plugins/
 # baseurl: /docs/master/
 git-repository: github.com/cfengine/documentation
-git-branch: "3.23"
+git-branch: "3.27"
 #destination:
 #layouts:     ./_layouts/
 #permalink: /:title.html
@@ -19,7 +19,7 @@ CFE_manuals_version: "3.27"
 cfengine:
   branch: "3.27"
   core_branch: "3.27.x"
-  latest_patch_release: 0
+  latest_patch_release: 1
   latest_package_build: 1
   vagrant_package_build: 1
   masterfiles_branch: "3.27.x"
