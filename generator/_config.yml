@@ -19,7 +19,7 @@ CFE_manuals_version: "3.27"
 cfengine:
   branch: "3.27"
   core_branch: "3.27.x"
-  latest_patch_release: 0
+  latest_patch_release: 1
   latest_package_build: 1
   vagrant_package_build: 1
   masterfiles_branch: "3.27.x"
@@ -29,10 +29,10 @@ Template:
     line_numbers: true
 
 vagrant:
-  version: "2.2.19"
+  version: "2.4.9"
 
 virtualbox:
-  version: "6.1.38"
+  version: "7.0.16"
 
 paginate: 500
 
