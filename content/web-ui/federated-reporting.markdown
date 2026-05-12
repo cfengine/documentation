@@ -230,21 +230,36 @@ This will distribute the needed certificates from feeders to superhub so that th
 When run manually for the first time the utility will create a limited privileges user to view and delete hosts on the feeders.
 You will need to enter the following information at the prompts when running the utility manually:
 
-- admin password for the superhub
-- email address for the fr_distributed_cleanup limited privileges user
-- admin password for each feeder
+- admin username and password for the superhub (the username defaults to `admin` if left blank)
+- a 2FA code for the superhub, if 2FA is enabled for the admin account
+- email address for the `fr_distributed_cleanup` limited privileges user
+- admin username and password for each feeder (the username defaults to `admin` if left blank)
+- a 2FA code for each feeder, if 2FA is enabled for the admin account
 
 After confirming all feeder certs and public keys are present on the superhub, run the distributed cleanup script manually.
 
-```bash
-# ls /opt/cfengine/federation/cftransport/distributed_cleanup/
-superhub.pub  feeder1.cert  feeder1.pub feeder2.cert feeder2.pub
+```command
+ls /opt/cfengine/federation/cftransport/distributed_cleanup/
+```
 
-# /opt/cfengine/federation/bin/distributed_cleanup.py
-Enter admin credentials for superhub https://superhub.domain/api:
+```output
+superhub.pub  feeder1.cert  feeder1.pub feeder2.cert feeder2.pub
+```
+
+```command
+/opt/cfengine/federation/bin/distributed_cleanup.py
+```
+
+```output
+Enter admin username for superhub superhub.domain [admin]:
+Enter admin password for superhub superhub.domain:
 Enter email for fr_distributed_cleanup accounts:
-Enter admin credentials for feeder1 at https://feeder1.domain/api:
-Enter admin credentials for feeder2 at https://feeder2.domain/api:
+
+Enter admin username for feeder1 [admin]:
+Enter admin password for feeder1:
+
+Enter admin username for feeder2 [admin]:
+Enter admin password for feeder2:
 ```
 
 The passwords are only kept for the duration of the script execution and are not saved.
