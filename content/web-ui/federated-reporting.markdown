@@ -169,14 +169,23 @@ the superhub.
 
 ## Duplicate host management
 
-There are situations where feeder hubs may have hosts with duplicate hostkeys:
+When using federated reporting, the superhub can end up importing the same hostkey from more than one feeder.
+This typically happens when a host is re-bootstrapped to a different feeder, when a VM is re-spawned from an image that preserves the existing key material, or when a host is cloned without regenerating its key pair with `cf-key` and refreshing `$(sys.workdir)/ppkeys/localhost.pub`.
+In all of these cases, multiple feeders hold a record under the same hostkey.
 
-- hosts are able to "float", re-bootstrap or failover to several different feeder hubs
-- hosts may be cloned and not have their hostkey refreshed by running `cf-key` and refreshing `$(sys.workdir)/ppkeys/localhost.pub`.
+CFEngine provides two mechanisms for resolving these cross-feeder duplicates.
+They address the same underlying problem with different approaches:
 
-In the first case you will likely want to remove entries for hosts which are not the latest since the latest data will be most accurate.
+- [Distributed cleanup][Federated reporting#Distributed cleanup] is a cleanup on the feeders.
+  A script on the superhub identifies the feeder with the most recent contact for each hostkey and then calls back into the other feeders to delete the stale records at the source, so they are never re-imported.
 
-There are two options available for handling these situations depending on your environment: Distributed Cleanup or Handle Duplicate Hostkeys.
+- [Handle duplicate hostkeys][Federated reporting#Handle duplicate hostkeys] is a filter on the superhub.
+  During each import cycle on the superhub, duplicate rows for the same hostkey are compared by `__hosts.lastreporttimestamp`, and all but the most recent are moved out of the per-feeder schemas into a separate `dup` schema for later analysis, so only the most recently reporting host remains visible in Mission Portal.
+
+Note that neither mechanism deduplicates hosts that share a hostkey but report to the _same_ feeder — a feeder's database is keyed on hostkey alone.
+Hence, the most recent report simply overwrites the previous one there.
+A health diagnostic alert should be visible in Mission Portal in this case.
+Regardless of whether you are using federedated reporting or not, the recommended fix is to regenerate the conflicting key pairs.
 
 ### Distributed cleanup
 
@@ -221,21 +230,36 @@ This will distribute the needed certificates from feeders to superhub so that th
 When run manually for the first time the utility will create a limited privileges user to view and delete hosts on the feeders.
 You will need to enter the following information at the prompts when running the utility manually:
 
-- admin password for the superhub
-- email address for the fr_distributed_cleanup limited privileges user
-- admin password for each feeder
+- admin username and password for the superhub (the username defaults to `admin` if left blank)
+- a 2FA code for the superhub, if 2FA is enabled for the admin account
+- email address for the `fr_distributed_cleanup` limited privileges user
+- admin username and password for each feeder (the username defaults to `admin` if left blank)
+- a 2FA code for each feeder, if 2FA is enabled for the admin account
 
 After confirming all feeder certs and public keys are present on the superhub, run the distributed cleanup script manually.
 
-```bash
-# ls /opt/cfengine/federation/cftransport/distributed_cleanup/
-superhub.pub  feeder1.cert  feeder1.pub feeder2.cert feeder2.pub
+```command
+ls /opt/cfengine/federation/cftransport/distributed_cleanup/
+```
 
-# /opt/cfengine/federation/bin/distributed_cleanup.py
-Enter admin credentials for superhub https://superhub.domain/api:
+```output
+superhub.pub  feeder1.cert  feeder1.pub feeder2.cert feeder2.pub
+```
+
+```command
+/opt/cfengine/federation/bin/distributed_cleanup.py
+```
+
+```output
+Enter admin username for superhub superhub.domain [admin]:
+Enter admin password for superhub superhub.domain:
 Enter email for fr_distributed_cleanup accounts:
-Enter admin credentials for feeder1 at https://feeder1.domain/api:
-Enter admin credentials for feeder2 at https://feeder2.domain/api:
+
+Enter admin username for feeder1 [admin]:
+Enter admin password for feeder1:
+
+Enter admin username for feeder2 [admin]:
+Enter admin password for feeder2:
 ```
 
 The passwords are only kept for the duration of the script execution and are not saved.
