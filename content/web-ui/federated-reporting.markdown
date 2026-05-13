@@ -179,7 +179,7 @@ They address the same underlying problem with different approaches:
 - [Distributed cleanup][Federated reporting#Distributed cleanup] is a cleanup on the feeders.
   A script on the superhub identifies the feeder with the most recent contact for each hostkey and then calls back into the other feeders to delete the stale records at the source, so they are never re-imported.
 
-- [Handle duplicate hostkeys][Federated reporting#Handle duplicate hostkeys] is a cleanup on the superhub.
+- [Handle duplicate hostkeys][Federated reporting#Handle duplicate hostkeys] is a filter on the superhub.
   During each import cycle on the superhub, duplicate rows for the same hostkey are compared by `__hosts.lastreporttimestamp`, and all but the most recent are moved out of the per-feeder schemas into a separate `dup` schema for later analysis, so only the most recently reporting host remains visible in Mission Portal.
 
 Note that neither mechanism deduplicates hosts that share a hostkey but report to the _same_ feeder — a feeder's database is keyed on hostkey alone.
