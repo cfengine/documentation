@@ -382,11 +382,15 @@ two_example_com::
 
 (Promises within the same bundle are evaluated top to bottom, so vars promises further down in a bundle can overwrite previous values of a variable. See [policy evaluation][Policy evaluation] for more information).
 
-## Defining variables in foreign bundles
+## Variable injection - Defining variables in foreign bundles
 
-As a general rule, variables can only be defined or re-defined from within the
-bundle where they were defined. There are a few notable exceptions to this
-general rule which are described below.
+As a general rule, variables cannot be defined or re-defined (overwritten) from outside their bundle.
+There are 4 exceptions to this rule:
+
+1. `meta` promises define variables in a different meta-suffixed bundle (this bundle is special / "virtual" and does not exist in the policy file).
+2. Defining variables into undefined ("virtual") bundles.
+3. `commands` modules which communicate using the module protocol can define variables in any bundle.
+4. Augments (`def.json`) / Host specific data (`host_specific.json`) can define variables in any bundle.
 
 ### Meta type promises
 
