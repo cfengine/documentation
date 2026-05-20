@@ -237,12 +237,21 @@ def applyLinkMap(file_name, config):
     for markdown_line in markdown_lines:
         config["context_current_line_number"] += 1
         # we ignore everything in code blocks
-        if previous_empty or in_pre:
-            if markdown_line.lstrip()[:3] == "```":
-                in_pre = not in_pre
-            if markdown_line[:4] == "    ":
-                new_lines.append(markdown_line)
-                continue
+        # triple-backtick fences must be detected on every line, not only after
+        # a blank line, otherwise content inside the block gets autolinked
+        if markdown_line.lstrip()[:3] == "```":
+            in_pre = not in_pre
+            new_lines.append(markdown_line)
+            previous_empty = False
+            continue
+        if in_pre:
+            new_lines.append(markdown_line)
+            previous_empty = markdown_line.lstrip() == ""
+            continue
+        if previous_empty and markdown_line[:4] == "    ":
+            new_lines.append(markdown_line)
+            previous_empty = False
+            continue
 
         # don't link to the current section
         if markdown_line.find("title:") == 0:
