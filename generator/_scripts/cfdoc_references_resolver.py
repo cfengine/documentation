@@ -40,15 +40,34 @@ def process(file_path, references, missing):
 
     Any reference that cannot be resolved is appended to `missing` as a
     (file_path, ref) tuple so the caller can fail the build.
+
+    Code content is skipped so that things that look like reference links but
+    aren't (CFEngine array notation `a[b][c]`, sample output `[1][0]`, etc.)
+    don't get treated as broken `[text][ref]` links:
+      * Triple-backtick fenced code blocks — common when snippets are pulled
+        in from the core repo via macros.
+      * Inline single-backtick code spans on a single line.
+
+    Function-name autolinking (``foo()``) is the inverse: it deliberately
+    targets backtick-quoted text, so it runs on every non-fenced line.
     """
 
     with open(file_path, "r", encoding="utf-8") as f:
-        content = f.read()
+        lines = f.readlines()
 
     # Pattern to match reference links: [`text`][reference]
-    pattern = r"\[(.*?)\]\[(.*?)\]"
+    pattern = re.compile(r"\[(.*?)\]\[(.*?)\]")
+    # finds functions except ones already processed inside []
+    functions_pattern = re.compile(r"(?<!\[)\`([^\s]*?)\(\)\`(?!\])")
+
+    def is_inside_inline_code(line, pos):
+        # odd number of single backticks before `pos` means we're inside a span
+        return line.count("`", 0, pos) % 2 == 1
 
     def replace_link(match):
+        if is_inside_inline_code(match.string, match.start()):
+            return match.group(0)
+
         text, ref = match.groups()
         ref = (
             ref or text
@@ -66,11 +85,6 @@ def process(file_path, references, missing):
             missing.append((file_path, ref))
             return match.group(0)
 
-    new_content = re.sub(pattern, replace_link, content)
-
-    # finds functions except ones already processed inside []
-    functions_pattern = r"(?<!\[)\`([^\s]*?)\(\)\`(?!\])"
-
     def replace_function_link(match):
         ref = match.group(1)
         text = f"{ref}()"
@@ -86,10 +100,22 @@ def process(file_path, references, missing):
             missing.append((file_path, f"{ref}()"))
             return match.group(0)
 
-    new_content = re.sub(functions_pattern, replace_function_link, new_content)
+    new_lines = []
+    in_pre = False
+    for line in lines:
+        if line.lstrip().startswith("```"):
+            in_pre = not in_pre
+            new_lines.append(line)
+            continue
+        if in_pre:
+            new_lines.append(line)
+            continue
+        line = pattern.sub(replace_link, line)
+        line = functions_pattern.sub(replace_function_link, line)
+        new_lines.append(line)
 
     with open(file_path, "w", encoding="utf-8") as f:
-        f.write(new_content)
+        f.writelines(new_lines)
 
 
 def run(config):
