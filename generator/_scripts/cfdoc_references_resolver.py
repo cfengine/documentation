@@ -54,7 +54,8 @@ def process(file_path, references):
         if ref_lower in references:
             url, title = references[ref_lower]
             if title:
-                return f'[{text}]({url} "{title}")'
+                escaped_title = title.replace('"', '\\"')
+                return f'[{text}]({url} "{escaped_title}")'
             else:
                 return f"[{text}]({url})"
         else:
@@ -75,7 +76,8 @@ def process(file_path, references):
         if ref_lower in references:
             url, title = references[ref_lower]
             if title:
-                return f'[{text}]({url} "{title}")'
+                escaped_title = title.replace('"', '\\"')
+                return f'[{text}]({url} "{escaped_title}")'
             else:
                 return f"[{text}]({url})"
         else:
