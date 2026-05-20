@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Reporting and web UI
-sorting: 30
+title: Using the Web UI
+sorting: 20
 aliases:
   - "/getting-started-reporting-and-web-ui.html"
   - "/getting-started/reporting-and-web-ui"
