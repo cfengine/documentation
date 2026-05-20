@@ -27,12 +27,12 @@ aliases:
             <div>Download and install CFEngine for the first time.</div>
          </li>
          <li>
-            <a href="/getting-started/modules-from-cfengine-build">Modules</a>
-            <div>Use modules to easily add reports or get things done without writing any code.</div>
-         </li>
-         <li>
             <a href="/getting-started/reporting-and-web-ui">Reporting and web UI</a>
             <div>Know more about your infrastructure and hosts, their data, compliance and make changes from within the Web UI.</div>
+         </li>
+         <li>
+            <a href="/getting-started/adding-modules">Adding modules</a>
+            <div>Use CFEngine Build modules to add additional reports, data and capabilities.</div>
          </li>
          <li>
             <a href="/examples/tutorials/policy-writing">Tutorial series on policy language</a>

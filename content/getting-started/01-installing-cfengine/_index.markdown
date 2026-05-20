@@ -123,7 +123,7 @@ cfbs --version
 Just as above, with python, you should see the version number like this:
 
 ```output
-cfbs 5.4.0
+cfbs 5.5.5
 ```
 
 And similarly for `cf-remote`:
@@ -133,9 +133,9 @@ cf-remote --version
 ```
 
 ```output
-cf-remote version 0.8.2
+cf-remote version 0.8.11
 Available CFEngine versions:
-master, 3.26.0, 3.24.x, 3.24.2, 3.24.1, 3.24.0, 3.21.x, 3.21.7, 3.21.6, 3.21.5, 3.21.4, 3.21.3, 3.21.2, 3.21.1, 3.21.0
+master, 3.27.x, 3.27.1, 3.27.0, 3.24.x, 3.24.4, 3.24.3, 3.24.2, 3.24.1, 3.24.0
 ```
 
 ## Virtual machine IP and username
@@ -208,6 +208,8 @@ From your development machine, use `cf-remote` to install CFEngine on the Linux 
 cf-remote install --hub hub --bootstrap hub
 ```
 
+Note down the setup code which we will need in the next step (below).
+
 CFEngine is now installed and running on your hub, including the Web UI, the reporting database, and the components responsible for making changes to your system, serving and fetching policy, etc.
 
 ## Open the CFEngine web UI
@@ -221,15 +223,18 @@ At this point, your hub has a self-signed certificate, which means there is no c
 In the future you might want to set up a DNS entry for your hub and give it a proper certificate, but for now, you can click the options in your browser to Ignore / Continue.
 (In Chrome, there might not be an "Accept and continue button", but you can type `thisisunsafe` to bypass the security warning).
 
-After this, you should see the CFEngine Enterprise login screen.
-Log in with username admin, password admin, and you will be asked to change the password.
+After this, you should see the CFEngine Enterprise UI.
+It will prompt you for a setup code.
+Paste the setup code from the `cf-remote install` command we ran and follow the on-screen instructions to set up a new user.
 
-![](mp-login.png)
+If you need to generate a new setup code, you can do so using cf-remote;
 
-After changing the password to something more secure, you should be able to log in and see the dashboard.
+```command
+cf-remote sudo -H hub "/var/cfengine/bin/cf-hub --new-setup-code"
+```
 
 ## Next steps
 
 Now that you have a CFEngine Hub working and the tooling on your development machine, you can go to the next part and start adding modules:
 
-[Modules from CFEngine Build][Modules from CFEngine Build]
+[Using the Web UI][Using the Web UI]
