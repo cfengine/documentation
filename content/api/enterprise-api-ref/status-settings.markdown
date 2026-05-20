@@ -160,13 +160,13 @@ administrator.
   Configuration for the duplicate-hostname stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "completelyClear": boolean }`. When `completelyClear` is `true`, deleted duplicates are also permanently removed in the same run.
   Default value: `{ "enabled": false, "completelyClear": false }`
 - **duplicateIpHostsCleanup** _(object)_
-  Configuration for the duplicate-IP stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "completelyClear": boolean }`.
+  Configuration for the duplicate-IP stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "completelyClear": boolean }`. When `completelyClear` is `true`, deleted duplicates are also permanently removed in the same run.
   Default value: `{ "enabled": false, "completelyClear": false }`
 - **groupHostsCleanup** _(object)_
-  Configuration for the group stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "groupId": integer, "completelyClear": boolean }`. Every host in the given shared group is deleted when enabled.
+  Configuration for the group stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "groupId": integer, "completelyClear": boolean }`. Every host in the given shared group is deleted when enabled. When `completelyClear` is `true`, deleted hosts are also permanently removed in the same run.
   Default value: `{ "enabled": false, "groupId": "", "completelyClear": false }`
 - **inactiveHostsCleanup** _(object)_
-  Configuration for the inactivity stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "days": integer, "completelyClear": boolean }`. Hosts that have not reported in for `days` days are deleted when enabled.
+  Configuration for the inactivity stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "days": integer, "completelyClear": boolean }`. Hosts that have not reported for `days` days are deleted when enabled. When `completelyClear` is `true`, deleted hosts are also permanently removed in the same run.
   Default value: `{ "enabled": false, "days": 30, "completelyClear": false }`
 
 **Example Request Body:**
