@@ -19,5 +19,5 @@ Afterwards, we will continue to more advanced topics, such as policy writing and
 ## Outline
 
 1. [Part 1: Installing CFEngine][Installing CFEngine]
-3. [Part 2: Using the CFEngine Web UI][Using the CFEngine Web UI]
-2. [Part 3: Adding modules from CFEngine Build][Adding modules from CFEngine Build]
+2. [Part 2: Using the Web UI][Using the Web UI]
+3. [Part 3: Adding modules][Adding modules]
