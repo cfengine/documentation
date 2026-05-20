@@ -48,6 +48,8 @@ Modules:
 001 masterfiles @ 3.27.1 / 15d8ca2ca951db3ddf197b90c9dea6ef75f5fa89 (Not downloaded)
 ```
 
+To find modules, go to [build.cfengine.com](https://build.cfengine.com) and look around.
+
 Adding a module is simple;
 
 ```command
@@ -55,10 +57,7 @@ cfbs add <module-name>
 ```
 
 If you removed the masterfiles module, or didn't add it during the prompts in `cfbs init`, you would add it by simply running `cfbs add masterfiles`.
-
-To find modules, go to [build.cfengine.com](https://build.cfengine.com) and look around.
-The command to add them is the same as above.
-For the purposes of this tutorial, let's add some modules:
+For the purposes of this tutorial, let's add these modules:
 
 ```command
 cfbs add every-minute
