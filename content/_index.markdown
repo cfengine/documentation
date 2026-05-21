@@ -23,15 +23,15 @@ aliases:
       <ul>
          <li>Getting started</li>
          <li>
-            <a href="/getting-started/installation">Installation</a>
+            <a href="/getting-started/01-installing-cfengine">Installing CFEngine</a>
             <div>Download and install CFEngine for the first time.</div>
          </li>
          <li>
-            <a href="/getting-started/reporting-and-web-ui">Reporting and web UI</a>
+            <a href="/getting-started/02-using-the-web-ui">Using the Web UI</a>
             <div>Know more about your infrastructure and hosts, their data, compliance and make changes from within the Web UI.</div>
          </li>
          <li>
-            <a href="/getting-started/adding-modules">Adding modules</a>
+            <a href="/getting-started/03-adding-modules">Adding modules</a>
             <div>Use CFEngine Build modules to add additional reports, data and capabilities.</div>
          </li>
          <li>
