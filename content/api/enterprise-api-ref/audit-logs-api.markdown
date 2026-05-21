@@ -207,3 +207,20 @@ HTTP 200 OK
     "Authentication",
 ]
 ```
+
+## Permissions
+
+All Audit log API endpoints require the `audit-log.view` RBAC permission. This
+permission is granted to the `admin` role by default and can be assigned to
+other roles via the [Web RBAC API](/api/enterprise-api-ref/web-rbac/).
+
+## Retention
+
+Audit log entries are stored in the `audit_log` table of the `cfsettings`
+PostgreSQL database (see the
+[schema reference](/api/enterprise-api-ref/sql-schema/cfsettings/)) and are retained
+indefinitely. No automatic pruning is performed.
+
+Operators are expected to apply their own retention policy. See
+[Audit log retention](/web-ui/hub_administration/audit-log-retention/)
+for inspection queries and pruning recipes.
