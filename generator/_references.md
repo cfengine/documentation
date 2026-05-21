@@ -70,3 +70,4 @@
 [getgrnam()]: https://linux.die.net/man/3/getgrnam
 [getpwuid()]: https://linux.die.net/man/3/getpwuid
 [getpwnam()]: https://linux.die.net/man/3/getpwnam
+[select()]: https://linux.die.net/man/3/select
