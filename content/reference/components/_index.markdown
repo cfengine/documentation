@@ -430,7 +430,7 @@ string is also prefixed messages in the event log.
 **Description:** List of package module bodies to query for package lists.
 
 Defines the list of [`package module bodies`][packages] which will be queries for
-package lists, for use in `packagematching()`, `packageupdatesmatching()` and in
+package lists, for use in `packagesmatching()`, `packageupdatesmatching()` and in
 Enterprise inventory reporting.
 
 **Type:** `slist`
