@@ -92,6 +92,35 @@ All Events can be searched and viewed from the Event Log page.
 
 <img src="web-ui-mission-portal-api-view-whole-system-events-rbac.png" alt="Mission Portal - Events View whole system events RBAC page" width="380px">
 
+### Audit log
+
+The Audit log records administrative actions performed in Mission Portal — for
+example user, role, and settings changes, host and group edits, Build project
+changes, and federated reporting configuration. Each entry captures the actor,
+action, affected object, timestamp, and originating IP address.
+
+The Audit log is distinct from the Event log: the Event log tracks
+_system events_ like host bootstraps and alert state changes, while the Audit
+log tracks _human actions_ against the administrative surface.
+
+- Entries are queryable via the [Audit log API](/api/enterprise-api-ref/audit-logs-api/).
+- Viewing the Audit log requires the `audit-log.view` RBAC permission (granted to `admin` by default).
+- Entries are stored in the `audit_log` table of the `cfsettings` database and
+  are retained indefinitely unless pruned. See
+  [Audit log retention](/web-ui/hub_administration/audit-log-retention/) for
+  guidance on inspecting and managing table growth.
+
+![](images/audit-log.png)
+
+The log can be filtered by date range, actor, object type, and object
+name to narrow down to specific activity.
+Each row links to a detail view showing the full activity record and any
+structured details captured for the action. For example, the configuration
+fields changed in a settings update or the values associated with a created
+object.
+
+![](images/audit-log-entry.png)
+
 ### Newly bootstrapped hosts widget
 
 The Newly bootstrapped hosts widget helps to visualize the number of hosts bootstrapped to CFEngine over time.
