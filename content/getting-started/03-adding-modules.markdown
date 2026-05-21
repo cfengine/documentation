@@ -5,6 +5,7 @@ sorting: 30
 aliases:
   - "/getting-started-modules-from-cfengine-build.html"
   - "/getting-started/modules-from-cfengine-build"
+  - "/getting-started/adding-modules"
 ---
 
 Now that you've installed CFEngine, and used the Web UI a bit, let's take a look at extending it with modules.
