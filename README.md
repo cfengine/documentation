@@ -287,24 +287,6 @@ When the word is a function, mark it as such using `()`:
 
     **See also:** [`classify()`][classify]
 
-Section titles of the form
-
-    ### section title
-
-are included in that automatic linking. To exclude a section header
-from that automatic linking, use the form
-
-    ### section title, no linking ###
-
-which is otherwise equivalent for the markdown renderer.
-
-To use keywords in inline code _without_ creating an automatic link, use
-triple backticks:
-
-    The ```meta``` parameter to this function...
-
-With single backticks, this would link to the documentation of the `meta` attribute or promise type.
-
 ### Custom macros
 
 The documentation generator will pre-process the markdown content
