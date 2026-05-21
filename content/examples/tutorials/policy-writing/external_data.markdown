@@ -14,7 +14,7 @@ with other infrastructure components like a CMDB.
 
 CFEngine can load structured data defined in JSON, YAML, CSV using the
 `readjson()`, `readyaml()`, `readcsv()` and `readdata()` functions or by custom
-parsing with `data_resdstringarray()` and `data_readstringarrayidx()`.
+parsing with `data_readstringarray()` and `data_readstringarrayidx()`.
 
 Additionally CFEngine provides the [augments file][Augments] as a way to define variables
 and classes that are available from the beginning of policy evaluation.
