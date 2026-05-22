@@ -3,12 +3,13 @@ layout: default
 title: findfiles_up
 aliases:
   - "/reference-functions-findfiles_up.html"
+  - "/reference/functions/search_up"
 ---
 
 {{< CFEngine_function_prototype(path, glob, level) >}}
 
 **Description:** Return a data array of files that match a given glob pattern
-by searching up the directory tree.
+by searching up the directory tree. Also available as `search_up()`.
 
 This function searches for files matching a given glob pattern `glob` in the
 local filesystem by searching up the directory tree from a given absolute
