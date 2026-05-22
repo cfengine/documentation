@@ -13,7 +13,7 @@ CFEngine Build enables users to find useful modules on the website, [build.cfeng
 
 The workflow will look like this:
 
-![](workflow.png)
+{{< wideimg "workflow.png" "Infographic showing 4 steps of the CFEngine Build workflow, adding modules, building, deploying, observing." >}}
 
 You can work on CFEngine Build projects both from inside Mission Portal, and using our command line tools.
 In this tutorial, we will do it from inside Mission Portal.
@@ -22,11 +22,11 @@ In this tutorial, we will do it from inside Mission Portal.
 
 When you are logged in to Mission Portal, click the **Build** application in the left menu.
 
-![](click-build.png)
+{{< wideimg "click-build.png" "Screenshot of Mission Portal showing the Build application you should click highlighted." >}}
 
 If you do not have any pre-existing Build projects, you will be automatically prompted to create a new one:
 
-![](add-new-project.png)
+{{< wideimg "add-new-project.png" "Screenshot of the form to add a new project with git repository information and the set up later button highlighted." >}}
 
 On this screen, you can enter details to make your project be synced with a git repository (for example on github.com).
 At this point, since we are just testing things, feel free to just click **Set up later**.
@@ -35,31 +35,31 @@ You will be prompted to select a version of the masterfiles policy framework (th
 In general, the default is the best option, it will choose a version matching the version of CFEngine you are running.
 Click **Confirm**.
 
-![](masterfiles-selection.png)
+{{< img "masterfiles-selection.png" "Small popup which allows you to choose between maserfiles version 3.27.1 (default) and master" >}}
 
 ## Step 1: Explore and add modules
 
 You will see a welcome screen which gives you an introduction to CFEngine Build:
 
-![](cfengine-build-welcome.png)
+{{< wideimg "cfengine-build-welcome.png" "Screenshot of Mission Portal Build welcome screen with instructions of how to get started and search field for finding modules." >}}
 
 The search bar here searches for modules from [build.cfengine.com](https://build.cfengine.com).
 Let's add some modules;
 
 Search for `compliance-report-lynis` and click on the search result;
 
-![](search-compliance-report-lynis.png)
+{{< wideimg "search-compliance-report-lynis.png" "Search results for compliance-report-lynis, there is one result that module." >}}
 
 Click **Add module** to add it to your project:
 
-![](add-compliance-report-lynis.png)
+{{< wideimg "add-compliance-report-lynis.png" "Module description screen after clicking the module, with the add module button highlighted." >}}
 
 Feel free to add more modules, for example search for `inventory` and add `inventory-etc-hosts`, or any other module which seems useful.
 Generally, `inventory-` modules add useful information to the reporting inventory and don't require any configuration or input to work.
 
 On the left side of the application we can see the modules we've added:
 
-![](added-modules.png)
+{{< wideimg "added-modules.png" "Screenshot of Build in Mission Portal, with the added modules section highlighted showing the modules we've added." >}}
 
 ## Step 2 & 3: Build & deploy
 
@@ -71,48 +71,48 @@ In order to get these modules actually running, a few things need to happen:
 
 In Mission Portal, we achieve this by simply clicking the **Deploy locally** button in the top right corner:
 
-![](deploy-locally.png)
+{{< wideimg "deploy-locally.png" "Screenshot of Build in Mission Portal UI with the Deploy locally button highlighted." >}}
 
 ## Step 4: Observe
 
 Now, our modules are running on the hub and any other hosts in the infrastructure, and new reporting data will start arriving.
 Let's open the **Reports** application:
 
-![](navigate-reports.png)
+{{< wideimg "navigate-reports.png" "Screenshot of Mission Portal with the left navigation button for reports highlighted." >}}
 
 Go to the **CFEngine Build** tab to find reports added by CFEngine Build modules:
 
-![](reports-cfengine-build-tab.png)
+{{< wideimg "reports-cfengine-build-tab.png" "Screenshot of the Reports application with the CFEngine Build tab highlighted." >}}
 
 And click on the new Lynis report:
 
-![](reports-click-lynis.png)
+{{< wideimg "reports-click-lynis.png" "Screenshot of the report application after clicking the CFEngine Build tab. There is only one report shown and highlighted, the lynis report." >}}
 
 You will now see the new report and its results:
 
-![](lynis-compliance-report.png)
+{{< wideimg "lynis-compliance-report.png" "Overview of the results from the Lynis compliance report, showing percentages in different categories and individual lynis security hardening check results." >}}
 
 In this case, you can scroll through the report, look at the failing checks and find potential security hardening improvements highlighted by Lynis.
 The other module we added, `inventory-etc-hosts`, does not add a _report_, but instead adds _reporting data_ / inventory.
 To find this, go back to the **Reports** application:
 
-![](back-to-reports.png)
+{{< wideimg "back-to-reports.png" "Screenshot of Mission Portal highlighting the button to go back to the Reports screen." >}}
 
 Then, click on **Inventory** to open up a new inventory report:
 
-![](click-inventory.png)
+{{< wideimg "click-inventory.png" "The inventory button highlighted within the reports application." >}}
 
 Click on **Columns** so we can add the new data as a new column:
 
-![](click-columns.png)
+{{< wideimg "click-columns.png" "Inventory report with information about each host, with the columns button highlighted." >}}
 
 Use the search bar or scroll to find the new data:
 
-![](etc-column.png)
+{{< wideimg "etc-column.png" "Popup for editing columns and search bar for finding modules to add, highlighting a search for etc columns " >}}
 
 After finding the inventory attribute, clicking **Add** and then **Done** we see it as a new column in the report:
 
-![](inventory-with-etc-hosts.png)
+{{< wideimg "inventory-with-etc-hosts.png" "New inventory report where the /etc/hosts columns is added." >}}
 
 ## What's next
 
