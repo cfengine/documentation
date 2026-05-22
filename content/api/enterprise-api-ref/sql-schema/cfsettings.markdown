@@ -7,7 +7,7 @@ aliases:
 
 Settings used by Mission Portal APIs, no reported data.
 
-## Table: audit_logs
+## Table: audit_log
 
 Stores system logs about actions performed by users.
 
@@ -17,15 +17,19 @@ Stores system logs about actions performed by users.
   The unique identifier of audit log event, generated from a sequence.
 - **time** _(timestamp without a time zone)_
   Time when an event happened.
-- **action** _(text)_
-  What was done (e.g., updated, created, deleted, deployed).
-- **object_type** _(text)_
-  Type of affected object (e.g., user, role, build project).
+- **actor** _(text, not null)_
+  User who performed the action.
+- **action** _(audit_log_action enum, not null)_
+  What was done.
+- **object_type** _(audit_log_object_type enum, not null)_
+  Type of affected object.
 - **object_id** _(text)_
   Identifier of an affected object (e.g. user, role id, build project id), if applicable.
-- **details** _(json)_
+- **object_name** _(text)_
+  Name of the affected object (e.g. user name, role name, settings name).
+- **details** _(jsonb)_
   More details in the free-json format.
-- **ip_address** _(boolean)_
+- **ip_address** _(inet)_
   IP address of the user who performed the action.
 
 ## Table: build_modules
