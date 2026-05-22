@@ -64,3 +64,10 @@
 [mpf-services-autorun]: reference-masterfiles-policy-framework-services-autorun.html
 [package-modules-the-api]: reference-language-concepts-modules-package-module-api.html#the-api
 [Functions#collecting functions]: /reference/functions/#collecting-functions
+[guest_environments]: /reference/promise-types/guest_environments.html
+[defaults]: /reference/promise-types/defaults.html
+[getgrgid()]: https://linux.die.net/man/3/getgrgid
+[getgrnam()]: https://linux.die.net/man/3/getgrnam
+[getpwuid()]: https://linux.die.net/man/3/getpwuid
+[getpwnam()]: https://linux.die.net/man/3/getpwnam
+[select()]: https://linux.die.net/man/3/select

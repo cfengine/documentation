@@ -733,11 +733,9 @@ The full path to the MSI package file must be supplied in order to promise the
 package is installed. In order to promise a package is absent (not installed)
 the package name must be used.
 
-**Example**: install [Google Chrome][] but prevent it from self-upgrading
+**Example**: install Google Chrome but prevent it from self-upgrading
 (otherwise Google Chrome's self-upgrading will conflict with CFEngine ensuring
 that version from this particular MSI is installed):
-
-[Google Chrome]: https://cloud.google.com/chrome-enterprise/browser/download/#chrome-browser-update
 
 ```cf3 {skip TODO}
 packages:
