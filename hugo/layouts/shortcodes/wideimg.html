@@ -1,0 +1,5 @@
+{{ $src := (index .Params 0)}}
+{{ $srcPrefix := cond (or (gt (len (findRE "^(www|/|http:|https:).*?" $src )) 0) (fileExists (printf "%s%s" "/static/"  $src ))) "" "../"}}
+<a href="{{ $srcPrefix }}{{ $src }}">
+  <img style="width: 100%; max-width: 100%; margin-left: 0; margin-bottom: 3rem;" src="{{ $srcPrefix }}{{ $src }}" alt="{{ index .Params 1 }}">
+</a>
