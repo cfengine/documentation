@@ -1,0 +1,8 @@
+{{ $src := (index .Params 0)}}
+{{ $alt := (index .Params 1)}}
+{{ $url := (index .Params 2)}}
+{{ $srcPrefix := cond (or (gt (len (findRE "^(www|/|http:|https:).*?" $src )) 0) (fileExists (printf "%s%s" "/static/"  $src ))) "" "../"}}
+{{ $urlPrefix := cond (or (gt (len (findRE "^(www|/|http:|https:).*?" $url )) 0) (fileExists (printf "%s%s" "/static/"  $url ))) "" "../"}}
+<a href="{{ $urlPrefix }}{{ $url }}" style="display: block; padding-top: 10px; -webkit-mask-image: linear-gradient(to top, transparent 25%, black 75%); mask-image: linear-gradient(to top, transparent 25%, black 75%);">
+  <img src="{{ $srcPrefix }}{{ $src }}" alt="{{ $alt }}" style="max-width: 70%; margin-left: auto; margin-right: auto; display: flex; border-top: solid 1px; border-left: solid 1px; border-right: solid 1px; margin-top: 5px; filter: drop-shadow(#666666 0rem -0px 5px);">
+</a>
