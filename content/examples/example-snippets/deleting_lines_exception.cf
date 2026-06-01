@@ -3,7 +3,6 @@
 # Simple test editfile
 #
 ########################################################
-
 #
 # This assumes a file format like:
 #
@@ -14,24 +13,23 @@
 # [section 2]
 #
 # lines... etc
-
 body common control
 {
-      bundlesequence  => { "testbundle" };
+  bundlesequence => { "testbundle" };
 }
-########################################################
 
+########################################################
 bundle agent testbundle
 {
   files:
-      "/tmp/passwd_excerpt"
-      create    => "true",
+    "/tmp/passwd_excerpt"
+      create => "true",
       edit_line => mark_n_root;
 }
-########################################################
 
+########################################################
 bundle edit_line mark_n_root
 {
   delete_lines:
-      "mark.*|root.*" not_matching => "true";
+    "mark.*|root.*" not_matching => "true";
 }

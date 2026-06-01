@@ -3,21 +3,23 @@
 # Comment lines
 #
 ######################################################################
-
 body common control
 {
-      version         =>   "1.2.3";
-      bundlesequence  => { "testbundle"  };
-      inputs => { "$(sys.libdir)/stdlib.cf" };
+  version => "1.2.3";
+  bundlesequence => { "testbundle" };
+  inputs => { "$(sys.libdir)/stdlib.cf" };
 }
-########################################################
 
+########################################################
 bundle agent testbundle
 {
   vars:
-      "patterns" slist => { "finger.*", "echo.*", "exec.*", "rstat.*",
-                            "uucp.*", "talk.*" };
+    "patterns"
+      slist => {
+        "finger.*", "echo.*", "exec.*", "rstat.*", "uucp.*", "talk.*"
+      };
+
   files:
-      "/etc/inetd.conf"
-      edit_line => comment_lines_matching("@(testbundle.patterns)","#");
+    "/etc/inetd.conf"
+      edit_line => comment_lines_matching("@(testbundle.patterns)", "#");
 }

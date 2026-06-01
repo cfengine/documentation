@@ -2,6 +2,7 @@ body common control
 {
   bundlesequence => { "acls" };
 }
+
 #########################################
 bundle agent acls
 {
@@ -10,6 +11,7 @@ bundle agent acls
       depth_search => include_base,
       acl => template;
 }
+
 #########################################
 body acl template
 {
@@ -20,6 +22,7 @@ body acl template
     "user:*:r(wwx),-r:allow", "group:*:+rw:allow", "mask:x:allow", "all:r"
   };
 }
+
 #########################################
 body acl win
 {
@@ -28,6 +31,7 @@ body acl win
   acl_directory_inherit => "nochange";
   aces => { "user:Administrator:rw", "group:Bad:rwx(Dpo):deny" };
 }
+
 #########################################
 body depth_search include_base
 {

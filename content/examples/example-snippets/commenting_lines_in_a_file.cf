@@ -8,51 +8,51 @@
 # - insert
 #
 ######################################################################
-
 body common control
 {
-      version => "1.2.3";
-      inputs => { "$(sys.libdir)/stdlib.cf" };
-      bundlesequence  => { "testbundle"  };
+  version => "1.2.3";
+  inputs => { "$(sys.libdir)/stdlib.cf" };
+  bundlesequence => { "testbundle" };
 }
-########################################################
 
+########################################################
 bundle agent testbundle
 {
   files:
-      "/home/mark/tmp/cf3_test"
-      create    => "true",
+    "/home/mark/tmp/cf3_test"
+      create => "true",
       edit_line => myedit("second");
 }
-########################################################
 
+########################################################
 bundle edit_line myedit(parameter)
 {
   vars:
-      "edit_variable" string => "private edit variable is $(parameter)";
+    "edit_variable" string => "private edit variable is $(parameter)";
 
   replace_patterns:
-      # replace shell comments with C comments
-
-      "#(.*)"
+    # replace shell comments with C comments
+    "#(.*)"
       replace_with => C_comment,
       select_region => MySection("New section");
 }
+
 ########################################
 # Bodies
 ########################################
-
 body replace_with C_comment
 {
-      replace_value => "/* $(match.1) */"; # backreference 0
-      occurrences => "all";  # first, last all
+  replace_value => "/* $(match.1) */";
+  # backreference 0
+  occurrences => "all";
+  # first, last all
 }
-########################################################
 
+########################################################
 body select_region MySection(x)
 {
-      select_start => "\[$(x)\]";
-      select_end => "\[.*\]";
+  select_start => "\[$(x)\]";
+  select_end => "\[.*\]";
 }
 
 ######################################################################
@@ -60,39 +60,38 @@ body select_region MySection(x)
 # Comment lines
 #
 ######################################################################
-
 body common control
 {
-      version => "1.2.3";
-      bundlesequence  => { "testbundle"  };
+  version => "1.2.3";
+  bundlesequence => { "testbundle" };
 }
-########################################################
 
+########################################################
 bundle agent testbundle
 {
   files:
-      "/home/mark/tmp/comment_test"
-      create    => "true",
+    "/home/mark/tmp/comment_test"
+      create => "true",
       edit_line => comment_lines_matching;
 }
-########################################################
 
+########################################################
 bundle edit_line comment_lines_matching
 {
   vars:
-      "regexes" slist => { "one.*", "two.*", "four.*" };
+    "regexes" slist => { "one.*", "two.*", "four.*" };
+
   replace_patterns:
-      "^($(regexes))$"
-      replace_with => comment("# ");
+    "^($(regexes))$" replace_with => comment("# ");
 }
+
 ########################################
 # Bodies
 ########################################
-
 body replace_with comment(c)
 {
-      replace_value => "$(c) $(match.1)";
-      occurrences => "all";
+  replace_value => "$(c) $(match.1)";
+  occurrences => "all";
 }
 
 ######################################################################
@@ -100,39 +99,36 @@ body replace_with comment(c)
 # Uncomment lines
 #
 ######################################################################
-
 body common control
 {
-      version => "1.2.3";
-      bundlesequence  => { "testbundle"  };
+  version => "1.2.3";
+  bundlesequence => { "testbundle" };
 }
-# try this on some test data like
 
+# try this on some test data like
 # one
 # two
 # mark one
 #mark two
-
 ########################################################
-
 bundle agent testbundle
 {
   files:
-      "/home/mark/tmp/comment_test"
-      create    => "true",
-      edit_line => uncomment_lines_matching("\s*mark.*","#");
+    "/home/mark/tmp/comment_test"
+      create => "true",
+      edit_line => uncomment_lines_matching("\s*mark.*", "#");
 }
-########################################################
 
-bundle edit_line uncomment_lines_matching(regex,comment)
+########################################################
+bundle edit_line uncomment_lines_matching(regex, comment)
 {
   replace_patterns:
-      "#($(regex))$" replace_with => uncomment;
+    "#($(regex))$" replace_with => uncomment;
 }
-########################################################
 
+########################################################
 body replace_with uncomment
 {
-      replace_value => "$(match.1)";
-      occurrences => "all";
+  replace_value => "$(match.1)";
+  occurrences => "all";
 }
