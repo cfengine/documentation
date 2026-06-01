@@ -42,10 +42,10 @@ bundle edit_line myedit(parameter)
 ########################################
 body replace_with C_comment
 {
+  # backreference 0:
   replace_value => "/* $(match.1) */";
-  # backreference 0
+  # first, last all:
   occurrences => "all";
-  # first, last all
 }
 
 ########################################################

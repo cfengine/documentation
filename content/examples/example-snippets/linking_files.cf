@@ -24,8 +24,6 @@ bundle agent testbundle
       move_obstructions => "true";
 
     "/home/mark/tmp/linktest" link_from => linkchildren("/usr/local/sbin");
-
-      #child links
 }
 
 #########################################################
@@ -33,8 +31,8 @@ body link_from linkdetails(tofile)
 {
   source => "$(tofile)";
   link_type => "symlink";
+  # kill:
   when_no_source => "force";
-  # kill
 }
 
 #########################################################
@@ -42,11 +40,10 @@ body link_from linkchildren(tofile)
 {
   source => "$(tofile)";
   link_type => "symlink";
+  # kill:
   when_no_source => "force";
-  # kill
   link_children => "true";
   when_linking_children => "if_no_such_file";
-  # "override_file";
 }
 
 #######################################################

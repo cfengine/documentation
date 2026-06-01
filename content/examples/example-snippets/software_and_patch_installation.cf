@@ -12,7 +12,6 @@ body agent control
   environment => { "DEBIAN_FRONTEND=noninteractive" };
 }
 
-#############################################
 bundle agent packages
 {
   vars:
@@ -31,7 +30,6 @@ bundle agent packages
       package_method => apt;
 }
 
-#############################################
 body package_method apt
 {
   any::
@@ -40,17 +38,17 @@ body package_method apt
     package_list_command => "/usr/bin/dpkg -l";
     package_list_name_regex => "ii\s+([^\s]+).*";
     package_list_version_regex => "ii\s+[^\s]+\s+([^\s]+).*";
-    # package_list_arch_regex    => "none";
+    # package_list_arch_regex => "none";
     package_installed_regex => ".*";
-    # all reported are installed
-    #package_name_convention => "$(name)_$(version)_$(arch)";
+    # all reported are installed:
+    # package_name_convention => "$(name)_$(version)_$(arch)";
     package_name_convention => "$(name)";
-    # Use these only if not using a separate version/arch string
+    # Use these only if not using a separate version/arch string:
     # package_version_regex => "";
     # package_name_regex => "";
     # package_arch_regex => "";
     package_add_command => "/usr/bin/apt-get --yes install";
     package_delete_command => "/usr/bin/apt-get --yes remove";
     package_update_command => "/usr/bin/apt-get --yes dist-upgrade";
-    #package_verify_command => "/bin/rpm -V";
+    # package_verify_command => "/bin/rpm -V";
 }

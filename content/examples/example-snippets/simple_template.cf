@@ -21,7 +21,6 @@ ff02::3         ipv6-allhosts
 10.0.0.21       host4.domain.tld host4
 ";
 
-  ##############################################################
   files:
     "/etc/hosts"
       comment => "Define the content of all host files from this master source",
