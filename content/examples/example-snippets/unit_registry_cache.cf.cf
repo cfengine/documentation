@@ -1,7 +1,7 @@
 body common control
 {
   bundlesequence => {
-    #                   "registry_cache"#                   "registry_restore"
+    # "registry_cache", "registry_restore"
   };
 }
 

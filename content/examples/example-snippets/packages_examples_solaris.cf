@@ -13,10 +13,10 @@ bundle agent example_using_solaris_package_method
     solaris::
       "/tmp/$(admin_file)"
         create => "true",
+        # empty_file and create_solaris_admin_file are defined in stdlib:
         edit_defaults => empty_file,
-        # defined in stdlib
         edit_line => create_solaris_admin_file;
-  # defined in stdlib
+
   packages:
     solaris::
       "SMCzlib"

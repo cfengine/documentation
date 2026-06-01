@@ -3,7 +3,7 @@
 #                             _    _    _    _
 #                            / \  / \  / \  / \
 #                           ( S )( T )( I )( G )
-#  	                     \_/  \_/  \_/  \_/
+#  	                         \_/  \_/  \_/  \_/
 #
 #                    Security Technical Implementation Guides
 #
@@ -254,12 +254,6 @@ bundle agent stigs
         handle => "sting_vars_redhat_5_home_list",
         slist => splitstring("$(homes)", "[\n]", 100);
 
-      #   "accounts_to_disable" -> { "GEN004820", "GEN004840" }
-      #      comment => "List of users to be disabled (not to be deleted from the system)",
-      #       handle => "stigs_vars_redhat_5_accounts_to_disable",
-      #        slist => {
-      #                  "ftp",
-      #                 };
       "accounts_to_delete" -> {
           "GEN004820", "GEN004840", "LNX00320", "LNX00340"
         }
@@ -530,10 +524,6 @@ bundle agent stigs
         handle => "stigs_files_redhat_5_rc_files",
         perms => mog("755", "root", "root");
 
-      #   "/etc/init.d/.*" -> { "GEN001580", "GEN001620", "GEN001660", "GEN001680" }
-      #      comment => "CAT I & II (Previously - G058, G061, G611, G612) UNIX STIG: 3.7 Run Control Scripts",
-      #       handle => "stigs_files_redhat_5_run_control_scripts_etc_initd",
-      #        perms => mog("755","root","root");
       "/etc/rc.d/init.d" -> {
           "GEN001580",
           "GEN001620",
@@ -889,18 +879,6 @@ bundle agent stigs
         handle => "stigs_files_redhat_5_security_tools",
         perms => mog("740", "root", "root");
 
-      #   "/etc/hosts.allow" -> { "GEN006620" }
-      #        comment => "CAT II UNIX STIG: 6.6 Access Control Programs and TCP_WRAPPERS",
-      #         handle => "stigs_files_redhat_5_etc_hosts_allow",
-      #      edit_line => append_if_no_lines("@(stigs.hosts_allow)");
-      #   "/etc/hosts.deny" -> { "GEN006620" }
-      #        comment => "CAT II UNIX STIG: 6.6 Access Control Programs and TCP_WRAPPERS",
-      #         handle => "stigs_files_redhat_5_etc_hosts_deny",
-      #      edit_line => append_if_no_line("ALL: ALL");
-      #   "/boot/grub/menu.lst" -> { "LNX00140" }
-      #        comment => "CAT I (Previously - L072) UNIX STIG: 12.4.1.1 Password Protecting the GRUB Console Boot Loader",
-      #         handle => "stigs_files_redhat_5_boot_grub_menu_lst",
-      #      edit_line => maintain_grub;
       "/boot/grub/grub.conf" -> { "LNX00160" }
         comment => "CAT II (Previously - L074) UNIX STIG: 12.4.1.1 Password Protecting the GRUB Console Boot Loader",
         handle => "stigs_files_redhat_5_boot_grub_grub_conf",
@@ -977,10 +955,6 @@ bundle agent stigs
           "/etc/fstab", "$(fstab_list)"
         );
 
-      #   "UNIX STIG 4.8" -> { "GEN004820", "GEN004840" }
-      #        comment => "CAT II (Previously - L140, L142) UNIX STIG: 4.8 File Transfer Protocol (FTP)",
-      #         handle => "stigs_methods_redhat_5_unix_stigs_4_8",
-      #      usebundle => disabling_accounts("$(accounts_to_disable)");
       "UNIX STIG 4.8/UNIX STIG 12.9" -> {
           "GEN004820", "GEN004840", "LNX00320", "LNX00340"
         }
@@ -1257,14 +1231,6 @@ bundle edit_line maintain_etc_profile
 # GEN000980, GEN001000
 bundle edit_line maintain_securetty
 {
-  # delete_lines:
-  #  "vc/(\d+)" -> { "GEN000980" }
-  #    comment => "Allow root to login only from the system console.",
-  #     handle => "maintain_securetty_delete_lines_gen000980_1";
-  #
-  #  "tty(\d+)" -> { "GEN000980" }
-  #    comment => "Allow root to login only from the system console.",
-  #     handle => "maintain_securetty_delete_lines_gen000980_2";
   insert_lines:
     "console" -> { "GEN000980", "GEN001000" }
       comment => "Allow root to login only from the system console/tty.",
@@ -1494,10 +1460,6 @@ $(const.t)endscript
 # GEN002960 GEN003060
 bundle edit_line maintain_cron_allow(name)
 {
-  # delete_lines:
-  #  ".*" -> { "GEN002960" }
-  #     comment => "Remove all restricted users",
-  #      handle => "maintain_cron_allow_delete_lines_gen02960";
   insert_lines:
     "$(name)" -> { "GEN002960" }
       comment => "Allow users from the list to use cron utility",
