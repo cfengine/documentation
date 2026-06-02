@@ -31,6 +31,10 @@ pipeline {
   stages {
     stage('Trigger Nightly Builds') {
       when {
+        allOf {
+            triggeredBy 'TimerTrigger'
+            branch 'master'
+        }
         triggeredBy 'TimerTrigger'
       }
       steps {
