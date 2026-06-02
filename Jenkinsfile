@@ -35,7 +35,6 @@ pipeline {
             triggeredBy 'TimerTrigger'
             branch 'master'
         }
-        triggeredBy 'TimerTrigger'
       }
       steps {
         script {
