@@ -16,9 +16,9 @@ pipeline {
     string(name: "MASTERFILES_REV", defaultValue: '', description: 'used to document masterfiles. Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to build the docs with the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
     string(name: "DOCS_REV", defaultValue: '', description: 'Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to build the docs with the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
     string(name: "NT_DOCS_REV", defaultValue: '', description: 'Use NUMBER or "pull/NUMBER/merge" for pull request (it\'s merged version, THIS DOESN\'T MERGE THE PR) or "pull/NUMBER/head" to build the docs with the non-merged code. Special syntax \'tag:SOME_TAG\' can be used to use a tag as a revision.')
-    string(name: "DOCS_BRANCH", defaultValue: '', description: 'Where to upload artifacts - to http://buildcache.cloud.cfengine.com/packages/build-documentation-$DOCS_BRANCH/ and https://docs.cfengine.com/docs/$DOCS_BRANCH/')
-    string(name: "PACKAGE_JOB", defaultValue: 'cf-remote', description: 'where to get CFEngine HUB package from, either a dir at http://buildcache.cloud.cfengine.com/packages like testing-pr or a keyword cf-remote to use cf-remote download')
-    string(name: "USE_NIGHTLIES_FOR", defaultValue: '', description: 'branch whose nightlies to use (master, 3.18.x, etc) - will be one of http://buildcache.cloud.cfengine.com/packages/testing-pr/jenkins-$USE_NIGHTLIES_FOR-nightly-pipeline-$NUMBER/')
+    string(name: "DOCS_BRANCH", defaultValue: '', description: 'Where to upload artifacts - to http://buildcache.cfengine.com/packages/build-documentation-$DOCS_BRANCH/ and https://docs.cfengine.com/docs/$DOCS_BRANCH/')
+    string(name: "PACKAGE_JOB", defaultValue: 'cf-remote', description: 'where to get CFEngine HUB package from, either a dir at http://buildcache.cfengine.com/packages like testing-pr or a keyword cf-remote to use cf-remote download')
+    string(name: "USE_NIGHTLIES_FOR", defaultValue: '', description: 'branch whose nightlies to use (master, 3.18.x, etc) - will be one of http://buildcache.cfengine.com/packages/testing-pr/jenkins-$USE_NIGHTLIES_FOR-nightly-pipeline-$NUMBER/')
     string(name: "LTS_BASED_ON_VERSION", defaultValue: '', description: 'The actual CFEngine version that LTS is based on. This version will be used in code blocks or other places using the cfengine.branch variable.')
   }
   triggers {
@@ -31,6 +31,10 @@ pipeline {
   stages {
     stage('Trigger Nightly Builds') {
       when {
+        allOf {
+            triggeredBy 'TimerTrigger'
+            branch 'master'
+        }
         triggeredBy 'TimerTrigger'
       }
       steps {
@@ -98,7 +102,7 @@ pipeline {
         sh "curl -O https://gitlab.com/Northern.tech/OpenSource/GODS/-/raw/master/parallel_git_rev_fetch.sh"
         sh "chmod u+x ./parallel_git_rev_fetch.sh"
 
-        withCredentials([sshUserPrivateKey(credentialsId:"autobuild", keyFileVariable: "key")]) {
+        withCredentials([sshUserPrivateKey(credentialsId:"jenkins-github", keyFileVariable: "key")]) {
           sh 'export GIT_SSH_COMMAND="ssh -i $key"; ./parallel_git_rev_fetch.sh revisions'
         }
       }
@@ -121,11 +125,11 @@ pipeline {
       }
       steps {
         sshPublisher(
-          // we must use alwaysPublishFromMaster: true because our CONTAINERS build hosts are not in the private network which has access to buildcache.cloud.cfengine.com
+          // we must use alwaysPublishFromMaster: true because our CONTAINERS build hosts are not in the private network which has access to buildcache.cfengine.com
           alwaysPublishFromMaster: true,
           publishers: [
             sshPublisherDesc(
-              configName: 'buildcache.cloud.cfengine.com',
+              configName: 'buildcache.cfengine.com',
               transfers: [
                 sshTransfer(
                   cleanRemote: false,
