@@ -9,8 +9,8 @@ aliases:
 
 This tutorial is describing the installation steps of the **CFEngine High availability** feature. It
 is suitable for both upgrading existing CFEngine installations to HA and for installing HA from
-scratch. Before starting installation we strongly recommend reading the [CFEngine High availability
-overview][High availability].
+scratch. Before starting installation we strongly recommend reading the
+[CFEngine High availability overview][High availability].
 
 ## Installation procedure
 
