@@ -64,3 +64,4 @@
 [mpf-services-autorun]: reference-masterfiles-policy-framework-services-autorun.html
 [package-modules-the-api]: reference-language-concepts-modules-package-module-api.html#the-api
 [Functions#collecting functions]: /reference/functions/#collecting-functions
+[High availability]: /examples/tutorials/high-availability/ "CFEngine High availability overview"
