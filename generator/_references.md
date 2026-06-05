@@ -72,3 +72,4 @@
 [getpwnam()]: https://linux.die.net/man/3/getpwnam
 [select()]: https://linux.die.net/man/3/select
 [search_up()]: /reference/functions/findfiles_up
+[High availability]: /examples/tutorials/high-availability/ "CFEngine High availability overview"
