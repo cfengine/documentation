@@ -100,6 +100,61 @@ If an expression contains a mixture of different object types that need to be
 ANDed together, this list form is more convenient than providing an
 expression.
 
+### cancel
+
+**Description:** true/false undefine the promiser class
+
+Undefine the promiser class. This is the inverse of
+[`expression`][classes#expression]: where `expression` defines a class, a
+promise with `cancel => "true"` removes one that is already defined.
+
+`cancel` is a boolean and carries no condition of its own — guard the promise
+with a normal class context to control _when_ the class is undefined.
+
+Unlike the class-defining attributes, a `cancel` promise is evaluated **even
+when the promiser class is already defined** — that is precisely when it has
+work to do. When the promise is reached and `cancel` is true the class is
+undefined (and its persistent record, if any, is removed). If `cancel` is
+false, or the class is not currently defined, the promise makes no change.
+Reserved hard classes (such as `linux` or `cfengine`) cannot be undefined and
+are left in place with a warning.
+
+`cancel` is mutually exclusive with the class-defining attributes (`expression`,
+`and`, `or`, `not`, `xor`, `dist`, `select_class`) — combining them is an
+`Irreconcilable constraints` error — and also with the class-modifier
+attributes (`persistence`, `scope`, `timer_policy`), which only affect how a
+class is defined and are rejected alongside `cancel`.
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** false
+
+**Example:**
+
+```cf3 {skip TODO}
+classes:
+
+    "service_enabled" expression => "any";
+
+    # Undefine 'service_enabled' when the maintenance window opens
+    maintenance_window::
+
+      "service_enabled" cancel => "true";
+```
+
+**Notes:**
+
+A class may be defined again later in the same agent execution (for example by
+a class-defining promise evaluated in a later pass). `cancel` therefore does not
+guarantee that a class stays undefined for the remainder of the run; it
+undefines the class at the point the promise is evaluated.
+
+**History:**
+
+- Introduced in CFEngine 3.28.0.
+
+**See also:** [`expression` classes attribute][classes#expression], [`cancel_kept`, `cancel_repaired` and `cancel_notkept` in classes body][Promise types#cancel_kept]
+
 ### dist
 
 **Description:** Generate a probabilistic class distribution
