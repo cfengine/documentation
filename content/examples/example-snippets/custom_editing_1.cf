@@ -1,14 +1,9 @@
-#######################################################
-#
 # Edit variable = value in a text file
-#
-#######################################################
 body common control
 {
   bundlesequence => { "testsetvar" };
 }
 
-#######################################################
 bundle agent testsetvar
 {
   vars:

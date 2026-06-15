@@ -4,7 +4,6 @@ body common control
   inputs => { "cfengine_stdlib.cf" };
 }
 
-########################################################
 bundle agent testbundle
 {
   files:

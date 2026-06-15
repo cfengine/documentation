@@ -1,12 +1,9 @@
-#########################################################################
 #   active_directory.cf - Extract Data From Windows Domain Controllers
 #
 #   NOTE: Since we don't supply any credentials in this policy file,
 #         the Domain Controller must allow anonymous bind. Also,
 #         the user "NT AUTHORITY\ANONYMOUS LOGON" must be granted access
 #         to the resources we want to read.
-#
-#########################################################################
 bundle agent active_directory
 {
   vars:

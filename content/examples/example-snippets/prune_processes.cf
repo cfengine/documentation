@@ -3,7 +3,6 @@ body common control
   bundlesequence => { "testbundle" };
 }
 
-########################################################
 bundle agent testbundle
 {
   processes:
@@ -12,7 +11,6 @@ bundle agent testbundle
       signals => { "term" };
 }
 
-########################################################
 body process_select big_processes(o)
 {
   process_owner => { $(o) };

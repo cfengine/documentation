@@ -1,12 +1,9 @@
-#####################################################################
 # Mount NFS
-#####################################################################
 body common control
 {
   bundlesequence => { "mounts" };
 }
 
-#####################################################################
 bundle agent mounts
 {
   storage:
@@ -14,7 +11,6 @@ bundle agent mounts
     "/mnt" mount => nfs("server.example.org", "/home");
 }
 
-######################################################################
 body mount nfs(server, source)
 {
   mount_type => "nfs";

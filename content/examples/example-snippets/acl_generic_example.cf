@@ -3,7 +3,6 @@ body common control
   bundlesequence => { "acls" };
 }
 
-#########################################
 bundle agent acls
 {
   files:
@@ -12,14 +11,12 @@ bundle agent acls
       acl => test;
 }
 
-#########################################
 body acl test
 {
   acl_type => "generic";
   aces => { "user:bob:rwx", "group:staff:rx", "all:r" };
 }
 
-#########################################
 body depth_search include_base
 {
   include_basedir => "true";

@@ -1,20 +1,15 @@
-######################################################################
-#
 # File editing
 #
 # Normal ordering:
 # - delete
 # - replace | column_edit
 # - insert
-#
-######################################################################
 body common control
 {
   version => "1.2.3";
   bundlesequence => { "testbundle" };
 }
 
-########################################################
 bundle agent testbundle
 {
   files:
@@ -26,7 +21,6 @@ bundle agent testbundle
     "/home/mark/tmp/linktest" link_from => linkchildren("/usr/local/sbin");
 }
 
-#########################################################
 body link_from linkdetails(tofile)
 {
   source => "$(tofile)";
@@ -35,7 +29,6 @@ body link_from linkdetails(tofile)
   when_no_source => "force";
 }
 
-#########################################################
 body link_from linkchildren(tofile)
 {
   source => "$(tofile)";
@@ -46,18 +39,13 @@ body link_from linkchildren(tofile)
   when_linking_children => "if_no_such_file";
 }
 
-#######################################################
-#
 # Test dead link removal
-#
-#######################################################
 body common control
 {
   any::
     bundlesequence => { "testbundle" };
 }
 
-############################################
 bundle agent testbundle
 {
   files:
@@ -67,20 +55,17 @@ bundle agent testbundle
       action => tell_me;
 }
 
-############################################
 body depth_search recurse(d)
 {
   rmdeadlinks => "true";
   depth => "$(d)";
 }
 
-############################################
 body perms modestuff
 {
   mode => "o-w";
 }
 
-############################################
 body action tell_me
 {
   report_level => "inform";

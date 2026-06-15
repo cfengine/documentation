@@ -1,28 +1,21 @@
-#######################################################
-#
 # Laptop
-#
-#######################################################
 body common control
 {
   bundlesequence => { "update", "garbage_collection", "main", "backup" };
   inputs => { "update.cf", "site.cf", "library.cf" };
 }
 
-#######################################################
 body agent control
 {
   # if default runtime is 5 mins we need this for long jobs
   ifelapsed => "15";
 }
 
-#######################################################
 body monitor control
 {
   forgetrate => "0.7";
 }
 
-#######################################################
 body executor control
 {
   splaytime => "1";
@@ -33,15 +26,12 @@ body executor control
   exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent";
 }
 
-#######################################################
 # General site issues can be in bundles like this one
-#######################################################
 bundle agent main
 {
   vars:
     "component" slist => { "cf-monitord", "cf-serverd" };
 
-  # - - - - - - - - - - - - - - - - - - - - - - - -
   files:
     "$(sys.resolv)"
       # test on "/tmp/resolv.conf" #
@@ -52,15 +42,12 @@ bundle agent main
   processes:
     "$(component)" restart_class => canonify("$(component)_not_running");
 
-  # - - - - - - - - - - - - - - - - - - - - - - - -
   commands:
     "$(sys.workdir)/bin/$(component)"
       if => canonify("$(component)_not_running");
 }
 
-#######################################################
 # Backup
-#######################################################
 bundle agent backup
 {
   files:
@@ -71,9 +58,7 @@ bundle agent backup
       action => longjob;
 }
 
-#######################################################
 # Garbage collection issues
-#######################################################
 bundle agent garbage_collection
 {
   files:

@@ -1,15 +1,10 @@
-#######################################################
-#
 # Apache 2 reconfig - modelled on SuSE
-#
-#######################################################
 body common control
 {
   inputs => { "$(sys.libdir)/stdlib.cf" };
   bundlesequence => { apache };
 }
 
-#######################################################
 bundle agent apache
 {
   files:
@@ -17,9 +12,7 @@ bundle agent apache
       "/etc/sysconfig/apache2" edit_line => fixapache;
 }
 
-#######################################################
 # For the library
-#######################################################
 bundle edit_line fixapache
 {
   vars:

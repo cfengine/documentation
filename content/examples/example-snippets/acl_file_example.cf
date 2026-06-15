@@ -3,7 +3,6 @@ body common control
   bundlesequence => { "acls" };
 }
 
-#########################################
 bundle agent acls
 {
   files:
@@ -12,7 +11,6 @@ bundle agent acls
       acl => template;
 }
 
-#########################################
 body acl template
 {
   acl_method => "overwrite";
@@ -23,7 +21,6 @@ body acl template
   };
 }
 
-#########################################
 body acl win
 {
   acl_method => "overwrite";
@@ -32,7 +29,6 @@ body acl win
   aces => { "user:Administrator:rw", "group:Bad:rwx(Dpo):deny" };
 }
 
-#########################################
 body depth_search include_base
 {
   include_basedir => "true";
