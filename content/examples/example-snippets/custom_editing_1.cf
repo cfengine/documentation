@@ -3,20 +3,18 @@
 # Edit variable = value in a text file
 #
 #######################################################
-
 body common control
 {
-      bundlesequence  => { "testsetvar" };
+  bundlesequence => { "testsetvar" };
 }
-#######################################################
 
+#######################################################
 bundle agent testsetvar
 {
   vars:
-      "v[variable_1]" string => "value_1";
-      "v[variable_2]" string => "value_2";
+    "v[variable_1]" string => "value_1";
+    "v[variable_2]" string => "value_2";
 
   files:
-      "/tmp/test_setvar"
-      edit_line => set_variable_values("testsetvar.v");
+    "/tmp/test_setvar" edit_line => set_variable_values("testsetvar.v");
 }

@@ -7,17 +7,16 @@
 # cf-agent -f ./cftest.cf -K
 #
 ##################################################################
-
 body common control
 {
-      bundlesequence => { "order" };
+  bundlesequence => { "order" };
 }
-##################################################################
 
+##################################################################
 bundle agent order
 {
   vars:
-      "list" slist => { "three", "four" };
+    "list" slist => { "three", "four" };
 
   commands:
     ok_later::
@@ -27,19 +26,18 @@ bundle agent order
       "/bin/echo six";
 
     any::
-
-      "/bin/echo one"     classes => d("ok_later","otherthing");
+      "/bin/echo one" classes => d("ok_later", "otherthing");
       "/bin/echo two";
       "/bin/echo $(list)";
 
     preserved_class::
       "/bin/echo seven";
 }
-############################################
 
-body classes d(if,else)
+############################################
+body classes d(if, else)
 {
-      promise_repaired => { "$(if)" };
-      repair_failed => { "$(else)" };
-      persist_time => "0";
+  promise_repaired => { "$(if)" };
+  repair_failed => { "$(else)" };
+  persist_time => "0";
 }

@@ -3,18 +3,17 @@
 # Change detect
 #
 ########################################################
-
 body common control
 {
-      bundlesequence  => { "testbundle"  };
-      inputs => { "$(sys.libdir)/stdlib.cf" };
+  bundlesequence => { "testbundle" };
+  inputs => { "$(sys.libdir)/stdlib.cf" };
 }
-########################################################
 
+########################################################
 bundle agent testbundle
 {
   files:
-      "/home/mark/tmp/web" -> "me"
-      changes      => detect_all_change,
+    "/home/mark/tmp/web" -> "me"
+      changes => detect_all_change,
       depth_search => recurse("inf");
 }

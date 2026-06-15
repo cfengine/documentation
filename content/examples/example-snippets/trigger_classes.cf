@@ -3,19 +3,18 @@
 # Insert a number of lines and trigger a followup if edited
 #
 #######################################################
-
 body common control
 {
-    any::
-      bundlesequence  => { "insert" };
+  any::
+    bundlesequence => { "insert" };
 }
 
 #######################################################
-
 bundle agent insert
 {
   vars:
-      "v" string => "
+    "v"
+      string => "
                 One potato
                 Two potato
                 Three potahto
@@ -23,7 +22,7 @@ bundle agent insert
                 ";
 
   files:
-      "/tmp/test_insert"
+    "/tmp/test_insert"
       edit_line => insert_name("$(insert.v)"),
       edit_defaults => empty,
       classes => trigger("edited");
@@ -40,21 +39,20 @@ bundle agent insert
 #######################################################
 # For the library
 #######################################################
-
 bundle edit_line insert_name(name)
 {
   insert_lines:
-      "Begin$(const.n) $(name)$(const.n)End";
+    "Begin$(const.n) $(name)$(const.n)End";
 }
-#######################################################
 
+#######################################################
 body edit_defaults empty
 {
-      empty_file_before_editing => "true";
+  empty_file_before_editing => "true";
 }
-#######################################################
 
+#######################################################
 body classes trigger(x)
 {
-      promise_repaired => { $(x) };
+  promise_repaired => { $(x) };
 }
