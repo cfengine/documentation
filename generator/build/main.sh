@@ -96,8 +96,8 @@ if [ "$PACKAGE_JOB" = "cf-remote" ]; then
     _VERSION="$BRANCH" # in case someone copy/pastes this to a repo besides documentation
   fi
   cf-remote --version "$_VERSION" download "${ID}$(echo "${VERSION_ID}" | cut -d. -f1)" hub "$(uname -m)"
-  find "$HOME/.cfengine" # debug
-  find "$HOME/.cfengine" -name '*.deb' -print0 | xargs -0 -I{} cp {} cfengine-nova-hub.deb
+  find "$HOME/.cache/cfengine" # debug
+  find "$HOME/.cache/cfengine" -name '*.deb' -print0 | xargs -0 -I{} cp {} cfengine-nova-hub.deb
 else
   echo "Installing with old-style fetch_file function"
   HUB_DIR_NAME=PACKAGES_HUB_x86_64_linux_ubuntu_22
