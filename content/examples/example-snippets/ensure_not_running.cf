@@ -1,13 +1,10 @@
 bundle agent restart_process
 {
   vars:
-
-      "killprocs" slist => { "snmpd", "gameserverd", "irc", "crack" };
+    "killprocs" slist => { "snmpd", "gameserverd", "irc", "crack" };
 
   processes:
-
-      "$(killprocs)"
-
+    "$(killprocs)"
       comment => "Ensure processes are not running",
       signals => { "term", "kill" };
 }

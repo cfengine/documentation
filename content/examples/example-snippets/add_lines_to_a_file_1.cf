@@ -3,6 +3,7 @@ body common control
   any::
     bundlesequence => { "insert" };
 }
+
 #######################################################
 bundle agent insert
 {

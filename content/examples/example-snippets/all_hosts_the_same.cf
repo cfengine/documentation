@@ -2,6 +2,7 @@ body common control
 {
   bundlesequence => { "central" };
 }
+
 ############################################
 bundle agent central
 {
@@ -22,8 +23,10 @@ bundle agent central
     "$(mypackages)"
       package_policy => "add",
       package_method => generic;
-  # Add more promises below ...
+
+      # Add more promises below ...
 }
+
 #########################################################
 # Server config
 #########################################################
@@ -34,6 +37,7 @@ body server control
   trustkeysfrom => { "127.0.0.1", "::1", "10.20.30.0/24" };
   # allowusers
 }
+
 #########################################################
 bundle server my_access_rules()
 {

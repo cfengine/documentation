@@ -4,6 +4,7 @@ body common control
   inputs => { "$(sys.libdir)/packages.cf" };
   bundlesequence => { "packages" };
 }
+
 #############################################
 bundle agent packages
 {

@@ -204,6 +204,7 @@ bundle agent outer_bundle_1
       create => "false",
       edit_line => inner_bundle_1;
 }
+
 # Copies file
 bundle agent copy_a_file
 {
@@ -357,9 +358,7 @@ bundle agent list_file_2
       );
 
     "newer"
-      expression => isnewerthan(
-        "$(global_vars.file2)", "$(global_vars.file1)"
-      );
+      expression => isnewerthan("$(global_vars.file2)", "$(global_vars.file1)");
 
   reports:
     "*********************************";
@@ -385,7 +384,8 @@ bundle agent file_content(filename)
 
   reports:
     "Contents of $(filename) = $(file_content). Last Modified Time = $(file_stat).";
-  #"The report on contents will only show new content and modifications. Even if the method is called more than once, if the evaluation is exactly the same as the previous call then there will be no report (possibly because the bundle is not evaluated a second time?).";
+
+    #"The report on contents will only show new content and modifications. Even if the method is called more than once, if the evaluation is exactly the same as the previous call then there will be no report (possibly because the bundle is not evaluated a second time?).";
 }
 
 body perms system

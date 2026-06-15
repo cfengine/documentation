@@ -3,11 +3,13 @@ body common control
   bundlesequence => { "testbundle" };
   version => "1.2.3";
 }
+
 ###########################################
 body agent control
 {
   abortbundleclasses => { "invalid.Hr16" };
 }
+
 ###########################################
 bundle agent testbundle
 {
@@ -18,6 +20,7 @@ bundle agent testbundle
   methods:
     "any" usebundle => subtest("$(userlist)");
 }
+
 ###########################################
 bundle agent subtest(user)
 {
