@@ -11,7 +11,6 @@ bundle agent system_files
       # ...other system files ...
 }
 
-#######################################################
 bundle edit_line resolver
 {
   delete_lines:

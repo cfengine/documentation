@@ -4,13 +4,11 @@ body common control
   version => "1.2.3";
 }
 
-###########################################
 body agent control
 {
   abortbundleclasses => { "invalid" };
 }
 
-###########################################
 bundle agent testbundle
 {
   vars:
@@ -21,7 +19,6 @@ bundle agent testbundle
     "any" usebundle => subtest("$(userlist)");
 }
 
-###########################################
 bundle agent subtest(user)
 {
   classes:

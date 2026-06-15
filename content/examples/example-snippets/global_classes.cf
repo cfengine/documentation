@@ -3,7 +3,6 @@ body common control
   bundlesequence => { "g", "tryclasses_1", "tryclasses_2" };
 }
 
-#################################
 bundle common g
 {
   classes:
@@ -11,14 +10,12 @@ bundle common g
     "client_network" expression => iprange("128.39.89.0/24");
 }
 
-#################################
 bundle agent tryclasses_1
 {
   classes:
     "two" expression => "any";
 }
 
-#################################
 bundle agent tryclasses_2
 {
   classes:
@@ -35,7 +32,6 @@ body common control
   bundlesequence => { "g", "tryclasses_1", "tryclasses_2" };
 }
 
-#################################
 bundle common g
 {
   classes:
@@ -43,14 +39,12 @@ bundle common g
     "client_network" expression => iprange("128.39.89.0/24");
 }
 
-#################################
 bundle agent tryclasses_1
 {
   classes:
     "two" expression => "any";
 }
 
-#################################
 bundle agent tryclasses_2
 {
   classes:
@@ -60,5 +54,3 @@ bundle agent tryclasses_2
     one.three.!two::
       "Success";
 }
-
-#################################

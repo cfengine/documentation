@@ -1,8 +1,4 @@
-#####################################################
-#
 # Apache webserver module
-#
-#####################################################
 bundle agent web_server(state)
 {
   vars:
@@ -58,9 +54,7 @@ bundle agent web_server(state)
     "off" expression => strcmp("$(state)", "off");
 }
 
-#######################################################
 # For the library
-#######################################################
 bundle edit_line fixapache
 {
   vars:

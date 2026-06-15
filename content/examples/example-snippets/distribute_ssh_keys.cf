@@ -8,8 +8,6 @@
 # methods:
 #
 #  "any" usebundle => allow_ssh_login_from_authorized_keys(@(users),"sourcehost");
-#
-########################################################################
 bundle agent allow_ssh_rootlogin_from_authorized_keys(user, sourcehost)
 {
   vars:
@@ -33,7 +31,6 @@ bundle agent allow_ssh_rootlogin_from_authorized_keys(user, sourcehost)
       action => if_elapsed("60");
 }
 
-########################################################################
 bundle agent allow_ssh_login_from_authorized_keys(user, sourcehost)
 {
   vars:
@@ -57,7 +54,6 @@ bundle agent allow_ssh_login_from_authorized_keys(user, sourcehost)
       action => if_elapsed("60");
 }
 
-########################################################################
 bundle edit_line insert_file_if_no_line_matching(user, file)
 {
   classes:

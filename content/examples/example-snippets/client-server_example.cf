@@ -1,8 +1,4 @@
-########################################################
-#
 # Simple test copy from server connection to cfServer
-#
-########################################################
 #
 # run this as follows:
 #
@@ -10,7 +6,6 @@
 # cf-agent   -f runtest_2.cf
 #
 # Notice that the same file configures all parts of cfengine
-########################################################
 body common control
 {
   bundlesequence => { "testbundle" };
@@ -18,7 +13,6 @@ body common control
   #fips_mode => "true";
 }
 
-########################################################
 bundle agent testbundle
 {
   files:
@@ -41,19 +35,16 @@ bundle agent testbundle
       "Files were copied..";
 }
 
-#########################################################
 body perms system
 {
   mode => "0644";
 }
 
-#########################################################
 body depth_search recurse(d)
 {
   depth => "$(d)";
 }
 
-#########################################################
 body copy_from mycopy(from, server)
 {
   source => "$(from)";
@@ -69,16 +60,13 @@ body copy_from mycopy(from, server)
   trustkey => "true";
 }
 
-#########################################################
 body classes satisfied(x)
 {
   promise_repaired => { "$(x)" };
   persist_time => "0";
 }
 
-#########################################################
 # Server config
-#########################################################
 body server control
 {
   allowconnects => { "127.0.0.1", "::1" };
@@ -87,7 +75,6 @@ body server control
   # allowusers
 }
 
-#########################################################
 bundle server my_access_rules()
 {
   access:

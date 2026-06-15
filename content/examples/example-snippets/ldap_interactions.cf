@@ -3,11 +3,9 @@ body common control
   bundlesequence => { "ldap", "followup" };
 }
 
-###################################################################################################
 #  NOTE!! relying on LDAP or other network data without validation is EXTREMELY dangerous.
 #         You could destroy a system by assuming that the service will respond with a
 #         sensible result. CFEngine does not recommend reliance on network services in configuration.
-###################################################################################################
 bundle agent ldap
 {
   vars:

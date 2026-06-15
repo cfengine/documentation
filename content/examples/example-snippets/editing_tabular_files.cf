@@ -1,20 +1,15 @@
-######################################################################
-#
 # File editing
 #
 # Normal ordering:
 # - delete
 # - replace | column_edit
 # - insert
-#
-######################################################################
 body common control
 {
   version => "1.2.3";
   bundlesequence => { "testbundle" };
 }
 
-########################################################
 bundle agent testbundle
 {
   vars:
@@ -34,14 +29,12 @@ bundle agent testbundle
     "/bin/echo" args => $(userset);
 }
 
-########################################################
 bundle edit_line set_user_param(user, field, val)
 {
   field_edits:
     "$(user):.*" edit_field => col(":", "$(field)", "$(val)", "set");
 }
 
-########################################################
 bundle edit_line append_user_param(user, field, allusers)
 {
   vars:
@@ -51,9 +44,7 @@ bundle edit_line append_user_param(user, field, allusers)
     "$(user):.*" edit_field => col(":", "$(field)", "$(val)", "alphanum");
 }
 
-########################################
 # Bodies
-########################################
 body edit_field col(split, col, newval, method)
 {
   field_separator => $(split);

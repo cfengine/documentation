@@ -1,4 +1,3 @@
-#######################################################
 body executor control
 {
   splaytime => "1";
@@ -9,7 +8,6 @@ body executor control
   schedule => { "Min00" };
 }
 
-#######################################################
 bundle agent services_disable
 {
   vars:
@@ -36,7 +34,6 @@ bundle agent services_disable
     "$(xinetd_services)" signals => { "kill" };
 }
 
-###############################################################################
 bundle agent disable_xinetd(name)
 {
   vars:

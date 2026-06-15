@@ -1,13 +1,9 @@
-######################################################################
-#
 # File editing
 #
 # Normal ordering:
 # - delete
 # - replace | column_edit
 # - insert
-#
-######################################################################
 body common control
 {
   version => "1.2.3";
@@ -15,7 +11,6 @@ body common control
   bundlesequence => { "testbundle" };
 }
 
-########################################################
 bundle agent testbundle
 {
   files:
@@ -24,7 +19,6 @@ bundle agent testbundle
       edit_line => myedit("second");
 }
 
-########################################################
 bundle edit_line myedit(parameter)
 {
   vars:
@@ -37,9 +31,7 @@ bundle edit_line myedit(parameter)
       select_region => MySection("New section");
 }
 
-########################################
 # Bodies
-########################################
 body replace_with C_comment
 {
   # backreference 0:
@@ -48,25 +40,19 @@ body replace_with C_comment
   occurrences => "all";
 }
 
-########################################################
 body select_region MySection(x)
 {
   select_start => "\[$(x)\]";
   select_end => "\[.*\]";
 }
 
-######################################################################
-#
 # Comment lines
-#
-######################################################################
 body common control
 {
   version => "1.2.3";
   bundlesequence => { "testbundle" };
 }
 
-########################################################
 bundle agent testbundle
 {
   files:
@@ -75,7 +61,6 @@ bundle agent testbundle
       edit_line => comment_lines_matching;
 }
 
-########################################################
 bundle edit_line comment_lines_matching
 {
   vars:
@@ -85,20 +70,14 @@ bundle edit_line comment_lines_matching
     "^($(regexes))$" replace_with => comment("# ");
 }
 
-########################################
 # Bodies
-########################################
 body replace_with comment(c)
 {
   replace_value => "$(c) $(match.1)";
   occurrences => "all";
 }
 
-######################################################################
-#
 # Uncomment lines
-#
-######################################################################
 body common control
 {
   version => "1.2.3";
@@ -110,7 +89,6 @@ body common control
 # two
 # mark one
 #mark two
-########################################################
 bundle agent testbundle
 {
   files:
@@ -119,14 +97,12 @@ bundle agent testbundle
       edit_line => uncomment_lines_matching("\s*mark.*", "#");
 }
 
-########################################################
 bundle edit_line uncomment_lines_matching(regex, comment)
 {
   replace_patterns:
     "#($(regex))$" replace_with => uncomment;
 }
 
-########################################################
 body replace_with uncomment
 {
   replace_value => "$(match.1)";

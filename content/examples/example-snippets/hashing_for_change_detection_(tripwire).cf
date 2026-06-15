@@ -1,15 +1,10 @@
-########################################################
-#
 # Change detect
-#
-########################################################
 body common control
 {
   bundlesequence => { "testbundle" };
   inputs => { "$(sys.libdir)/stdlib.cf" };
 }
 
-########################################################
 bundle agent testbundle
 {
   files:

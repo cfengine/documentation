@@ -5,7 +5,6 @@ body common control
   bundlesequence => { "packages" };
 }
 
-#############################################
 bundle agent packages
 {
   vars:
