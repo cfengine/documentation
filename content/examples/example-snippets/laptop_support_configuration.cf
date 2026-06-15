@@ -40,6 +40,7 @@ bundle agent main
 {
   vars:
     "component" slist => { "cf-monitord", "cf-serverd" };
+
   # - - - - - - - - - - - - - - - - - - - - - - - -
   files:
     "$(sys.resolv)"
@@ -50,6 +51,7 @@ bundle agent main
 
   processes:
     "$(component)" restart_class => canonify("$(component)_not_running");
+
   # - - - - - - - - - - - - - - - - - - - - - - - -
   commands:
     "$(sys.workdir)/bin/$(component)"

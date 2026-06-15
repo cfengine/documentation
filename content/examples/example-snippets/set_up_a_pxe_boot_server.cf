@@ -295,6 +295,7 @@ name=Cluster Storage
 baseurl=http://192.168.0.1/repos/rhel5/ClusterStorage/
 enable=1
         ";
+
   #####################################################
   files:
     packages_ok::
@@ -387,6 +388,7 @@ enable=1
 
     apache2_ready::
       "/etc/init.d/apache2 restart";
+
   #####################################################
   packages:
     ipv4_192_168_0_1::

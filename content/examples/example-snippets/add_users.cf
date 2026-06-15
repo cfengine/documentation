@@ -18,6 +18,7 @@ bundle agent addusers
     "/home/$(users)/."
       create => "true",
       perms => mog("755", "$(users)", "users");
+
   # equivalent to ALL of the above in 3.6 (see documentation)
   users:
     "$(users)"
