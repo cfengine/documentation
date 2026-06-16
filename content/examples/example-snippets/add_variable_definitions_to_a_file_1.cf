@@ -11,6 +11,7 @@ bundle agent setvars
     "rhs[net/ipv4/tcp_syncookies]" string => "1";
     "rhs[net/ipv4/icmp_echo_ignore_broadcasts]" string => "1";
     "rhs[net/ipv4/ip_forward]" string => "1";
+
   # oops, now change pig -> lamb
   files:
     "/etc/sysctl"

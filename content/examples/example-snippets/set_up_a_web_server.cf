@@ -18,6 +18,7 @@ bundle agent web_server(state)
     ####################################################
     "match_package"
       slist => { "apache2", "apache2-mod_php5", "apache2-prefork", "php5" };
+
   #########################################################
   processes:
     web_ok.on::
@@ -25,10 +26,12 @@ bundle agent web_server(state)
 
     off::
       "apache2" process_stop => "/etc/init.d/apache2 stop";
+
   #########################################################
   commands:
     start_apache::
       "/etc/init.d/apache2 start";
+
   # or startssl
   #########################################################
   packages:
@@ -36,16 +39,19 @@ bundle agent web_server(state)
       package_policy => "add",
       package_method => zypper,
       classes => if_ok("software_ok");
+
   #########################################################
   files:
     software_ok::
       "/etc/sysconfig/apache2"
         edit_line => fixapache,
         classes => if_ok("web_ok");
+
   #########################################################
   reports:
     !software_ok.on::
       "The web server software could not be installed";
+
   #########################################################
   classes:
     "on" expression => strcmp("$(state)", "on");
