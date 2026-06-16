@@ -338,12 +338,11 @@ defaulted to `reset`.
 ```cf3
 bundle common setclasses
 {
-classes:
-
-  "cached_class"
-       expression => "any",
+  classes:
+    "cached_class"
+      expression => "any",
       persistence => "120",
-     timer_policy => "reset";
+      timer_policy => "reset";
 }
 ```
 
