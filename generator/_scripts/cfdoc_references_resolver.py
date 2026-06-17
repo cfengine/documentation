@@ -35,7 +35,43 @@ def load_references(references_file):
     return references
 
 
-def process(file_path, references, missing):
+def load_no_links(no_links_file):
+    """Parse the _no_links.md file and return a set of function names that
+    should NOT be autolinked.
+
+    Each non-empty, non-comment line is a name like ``foo()`` or ``foo``; the
+    trailing ``()`` is optional. HTML comment blocks (``<!-- ... -->``, possibly
+    spanning multiple lines) are ignored. Names are stored lowercased for
+    case-insensitive matching against autolink candidates.
+    """
+    no_links = set()
+
+    path = os.path.join(os.environ.get("WRKDIR"), no_links_file)
+    if not os.path.exists(path):
+        sys.stderr.write(
+            f"Warning: No-links file {path} not found. All function names will be autolinked.\n"
+        )
+        return no_links
+
+    try:
+        with open(path, "r", encoding="utf-8") as file:
+            content = file.read()
+    except Exception as e:
+        sys.stderr.write(f"Error reading no-links file {path}: {str(e)}\n")
+        return no_links
+
+    # Drop HTML comment blocks (including multi-line ones) before parsing names.
+    content = re.sub(r"<!--.*?-->", "", content, flags=re.DOTALL)
+    for line in content.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        no_links.add(line.removesuffix("()").lower())
+
+    return no_links
+
+
+def process(file_path, references, no_links, missing):
     """Process a markdown file and replace reference links with direct links.
 
     Any reference that cannot be resolved is appended to `missing` as a
@@ -89,6 +125,9 @@ def process(file_path, references, missing):
         ref = match.group(1)
         text = f"{ref}()"
         ref_lower = ref.lower()
+        if ref_lower in no_links:
+            # Explicitly opted out of autolinking; leave as plain text.
+            return match.group(0)
         if ref_lower in references:
             url, title = references[ref_lower]
             if title:
@@ -126,10 +165,11 @@ def run(config):
     """
     markdown_files = config["markdown_files"]
     references = load_references("documentation/generator/_references.md")
+    no_links = load_no_links("documentation/generator/_no_links.md")
 
     missing = []
     for file in markdown_files:
-        process(file, references, missing)
+        process(file, references, no_links, missing)
 
     if missing:
         sys.stderr.write(
