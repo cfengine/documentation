@@ -10,3 +10,6 @@
 
 validate_promise()
 evaluate_promise()
+PolicyResolve()
+BodyToJson()
+BundleToJson()

@@ -6,7 +6,7 @@ aliases:
   - "/overview.html"
 ---
 
-CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves with a policy server (see [Installation][Installation]), will each be running a set of CFEngine component applications that manage and interpret a textual representation of your desired state for the system, referred to as policy. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or _bundles_, of what are known in the CFEngine world as [Promises][Promises]. _Promises_ are at the heart of Promise Theory, which is in turn what CFEngine is all about.
+CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves with a policy server (see [Installation][Installing CFEngine]), will each be running a set of CFEngine component applications that manage and interpret a textual representation of your desired state for the system, referred to as policy. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or _bundles_, of what are known in the CFEngine world as [Promises][Promises]. _Promises_ are at the heart of Promise Theory, which is in turn what CFEngine is all about.
 
 ## Policy language and compliance
 

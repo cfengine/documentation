@@ -136,7 +136,7 @@ In order for a host to communicate it must be within an IP range that is allowed
 
 - `def.acl` in the Masterfiles Policy Framework is included in this list by default.
 
-See also: [`def.acl`][Masterfiles Policy Framework#acl], [`def.trustkeysfrom`][Masterfiles Policy Framework#trustkeysfrom]
+See also: [`def.acl`][Masterfiles Policy Framework#acl], [`def.trustkeysfrom`][Masterfiles Policy Framework#Automatic bootstrap - Trusting keys from new hosts with trustkeysfrom]
 
 ### `trustkeysfrom` in `body server control`
 
@@ -149,4 +149,4 @@ This defines networks from which a host will automatically trust hosts. If you d
 - `verbose: 192.168.56.4>    Trying old style '/var/cfengine/ppkeys/root-192.168.56.4.pub'`
 - `verbose: 192.168.56.4>    Received key 'SHA=85f8a23d6738599e03951e6930e661bcd9bb3ae12f32486c9795cc9baa7d5b4e' not found in ppkeys`
 
-See also: [`def.acl`][Masterfiles Policy Framework#acl], [`def.trustkeysfrom`][Masterfiles Policy Framework#trustkeysfrom]
+See also: [`def.acl`][Masterfiles Policy Framework#acl], [`def.trustkeysfrom`][Masterfiles Policy Framework#Automatic bootstrap - Trusting keys from new hosts with trustkeysfrom]
