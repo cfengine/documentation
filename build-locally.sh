@@ -85,12 +85,22 @@ done
 # rewriting markdown, etc.), so we must NOT bind-mount the user's checkout
 # directly. Use rsync with --delete to keep the copy in sync (including
 # uncommitted/untracked changes) without dragging tmp/ or .git into it.
+# cfdoc_log.markdown is a build artifact written into content/ by cfdoc_qa.py
+# (it's gitignored). If a previous run left it behind, the link checker
+# re-parses its log entries — which themselves contain literal
+# [foo#foo][foo#foo] markdown — and reports hundreds of bogus "unresolved
+# reference" errors. We must clear it from both sides: --exclude keeps the
+# host's copy from being synced in, and the explicit rm removes any copy a
+# previous in-container build wrote into the work tree (rsync --delete will
+# NOT remove an --exclude'd path, so the exclude alone is not enough).
 echo "==> Syncing documentation source to $DOC_WORK"
 mkdir -p "$DOC_WORK"
 rsync -a --delete \
     --exclude='/tmp/' \
     --exclude='/.git/' \
+    --exclude='/content/cfdoc_log.markdown' \
     "$SCRIPT_DIR/" "$DOC_WORK/"
+rm -f "$DOC_WORK/content/cfdoc_log.markdown"
 
 # 2. Build the docker image (only if it's not already built).
 if ! "$DOCKER" image inspect "$IMAGE_NAME" >/dev/null 2>&1; then
