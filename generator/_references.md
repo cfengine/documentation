@@ -39,6 +39,7 @@
 [sys.uqhost]: reference-special-variables-sys.html#sys-uqhost
 [sys.policy_hub]: reference-special-variables-sys.html#sys-policy_hub
 [seed_cp]: reference-masterfiles-policy-framework-lib-files.html#seed_cp
+[Masterfiles Policy Framework]: reference-masterfiles-policy-framework.html
 [Append to inputs used by main policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-main-policy
 [mpf_extra_autorun_inputs]: reference-masterfiles-policy-framework.html#additional-automatically-loaded-inputs
 [Append to inputs used by update policy]: reference-masterfiles-policy-framework.html#append-to-inputs-used-by-update-policy
