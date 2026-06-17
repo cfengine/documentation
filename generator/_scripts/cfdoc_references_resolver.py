@@ -91,10 +91,17 @@ def process(file_path, references, no_links, missing):
     with open(file_path, "r", encoding="utf-8") as f:
         lines = f.readlines()
 
-    # Pattern to match reference links: [`text`][reference]
-    pattern = re.compile(r"\[(.*?)\]\[(.*?)\]")
-    # finds functions except ones already processed inside []
-    functions_pattern = re.compile(r"(?<!\[)\`([^\s]*?)\(\)\`(?!\])")
+    # Pattern to match reference links: [`text`][reference].
+    # The (?<![\w\]]) lookbehind keeps us from matching CFEngine array notation
+    # like `params[key][1]`, `settings[$(index)][report]` or `a[x][y]`, where
+    # the first `[` is glued to a word character or a preceding `]` — those are
+    # code, not `[text][ref]` links (real links are preceded by whitespace or
+    # punctuation).
+    pattern = re.compile(r"(?<![\w\]])\[(.*?)\]\[(.*?)\]")
+    # Autolink `name()` in backticks, except names already inside [].
+    # The name must look like an identifier (letter/underscore start) so we
+    # don't treat code fragments like `()`, `$()` or `@()` as functions.
+    functions_pattern = re.compile(r"(?<!\[)\`([A-Za-z_]\w*?)\(\)\`(?!\])")
 
     def is_inside_inline_code(line, pos):
         # odd number of single backticks before `pos` means we're inside a span
@@ -108,6 +115,11 @@ def process(file_path, references, no_links, missing):
         ref = (
             ref or text
         )  # if ref is empty use text as ref to support cases like [ref][]
+
+        # A ref starting with "-" is never a real reference key; it's command
+        # option text such as `[-t][-r][-u]` (e.g. in generated changelogs).
+        if ref.startswith("-"):
+            return match.group(0)
 
         ref_lower = ref.lower()
         if ref_lower in references:
@@ -142,12 +154,25 @@ def process(file_path, references, no_links, missing):
     new_lines = []
     in_pre = False
     for line in lines:
-        if line.lstrip().startswith("```"):
-            in_pre = not in_pre
+        stripped = line.lstrip()
+        # Track fenced code blocks the way CommonMark/Hugo do, so we skip exactly
+        # the regions they render as code:
+        #   * a line is a fence only if it starts with ``` and has no further ```
+        #     on the same line ("```settings``` of" is inline code, not a fence);
+        #   * an open block closes only on a *bare* ``` (no info string). A
+        #     "```cf3" line that appears inside an open block (common in
+        #     macro-injected example output) is content, not a close.
+        # A naive toggle miscounts those inner fences and flips the in/out-of-code
+        # state for the rest of the file, hiding real links from resolution.
+        is_fence = stripped.startswith("```") and "```" not in stripped[3:]
+        if is_fence and not in_pre:
+            in_pre = True
             new_lines.append(line)
             continue
         if in_pre:
             new_lines.append(line)
+            if is_fence and stripped.strip().strip("`") == "":
+                in_pre = False
             continue
         line = pattern.sub(replace_link, line)
         line = functions_pattern.sub(replace_function_link, line)

@@ -121,4 +121,4 @@ vagrant destroy hub
 
 Now that you have a Linux VM ready, go back to the main tutorial to install CFEngine:
 
-[Installation][Installation]
+[Installation][Installing CFEngine]
