@@ -1,5 +1,3 @@
-#########################################################################
-#
 #   software_local.cf - Application Deployment From Directory Repository
 #
 #   NOTE: Windows needs to support WMI queries about installed msi files
@@ -23,8 +21,6 @@
 #         For example, ProductName "CFEngine Nova" with ProductVersion
 #         "1.1.2" for 32-bit Windows will correspond to the filename
 #         "cfengine-nova-1.1.2-i686.msi".
-#
-#########################################################################
 bundle agent check_software
 {
   vars:
@@ -44,7 +40,6 @@ bundle agent check_software
   #  "any" usebundle => remove_software( "@(check_software.exclude_software)", "$(sys.policy_hub)" );
 }
 
-#########################################################################
 bundle agent add_software(pkg_name)
 {
   vars:
@@ -76,7 +71,6 @@ bundle agent add_software(pkg_name)
       "Failed to install one or more packages";
 }
 
-#########################################################################
 bundle agent update_software(sw_names)
 {
   vars:
@@ -112,7 +106,6 @@ bundle agent update_software(sw_names)
       "Failed to update one or more packages";
 }
 
-#########################################################################
 bundle agent remove_software(pkg_name)
 {
   vars:

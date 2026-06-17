@@ -9,17 +9,12 @@ bundle agent test
     "sleep" signals => { "term", "kill" };
 }
 
-########################################################
-#
 # Simple test processes
-#
-########################################################
 body common control
 {
   bundlesequence => { "testbundle" };
 }
 
-########################################################
 bundle agent testbundle
 {
   processes:
@@ -30,7 +25,6 @@ bundle agent testbundle
       "Out of control";
 }
 
-########################################################
 body process_count up(s)
 {
   match_range => "5,10";
@@ -38,17 +32,12 @@ body process_count up(s)
   out_of_range_define => { "$(s)_out_of_control" };
 }
 
-########################################################
-#
 # Simple test processes
-#
-########################################################
 body common control
 {
   bundlesequence => { "testbundle" };
 }
 
-########################################################
 bundle agent testbundle
 {
   processes:
@@ -57,7 +46,6 @@ bundle agent testbundle
       process_count => up("cfservd");
 }
 
-########################################################
 body process_count up(s)
 {
   match_range => "1,10";
@@ -65,24 +53,18 @@ body process_count up(s)
   out_of_range_define => { "$(s)_out_of_control" };
 }
 
-########################################################
 body process_select proc_finder(p)
 {
   stime_range => irange(ago("0", "0", "0", "2", "0", "0"), now);
   process_result => "stime";
 }
 
-########################################################
-#
 # Simple test processes
-#
-########################################################
 body common control
 {
   bundlesequence => { "testbundle" };
 }
 
-########################################################
 bundle agent testbundle
 {
   processes:
@@ -91,7 +73,6 @@ bundle agent testbundle
       process_count => up("cfservd");
 }
 
-########################################################
 body process_count up(s)
 {
   match_range => "1,10";
@@ -99,7 +80,6 @@ body process_count up(s)
   out_of_range_define => { "$(s)_out_of_control" };
 }
 
-########################################################
 body process_select proc_finder(p)
 {
   process_owner => { "avahi", "bin" };
@@ -114,7 +94,6 @@ body common control
   bundlesequence => { "process_restart" };
 }
 
-#########################################################
 bundle agent process_restart
 {
   processes:
@@ -130,7 +109,6 @@ body common control
   bundlesequence => { "process_restart" };
 }
 
-#########################################################
 bundle agent process_restart
 {
   vars:
@@ -143,17 +121,12 @@ bundle agent process_restart
     "/var/cfengine/bin/$(component)" if => canonify("$(component)_not_running");
 }
 
-########################################################
-#
 # Simple test process restart
-#
-########################################################
 body common control
 {
   bundlesequence => { "testbundle" };
 }
 
-########################################################
 bundle agent testbundle
 {
   processes:
@@ -169,7 +142,6 @@ bundle agent testbundle
       "/usr/local/sbin/cfservd";
 }
 
-########################################################
 body process_count up(s)
 {
   match_range => "1,10";

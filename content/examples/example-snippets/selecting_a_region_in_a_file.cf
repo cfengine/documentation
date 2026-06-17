@@ -4,7 +4,6 @@ body common control
   bundlesequence => { "testbundle" };
 }
 
-########################################################
 bundle agent testbundle
 {
   files:
@@ -13,7 +12,6 @@ bundle agent testbundle
       edit_line => myedit("second");
 }
 
-########################################################
 bundle edit_line myedit(parameter)
 {
   vars:
@@ -26,9 +24,7 @@ bundle edit_line myedit(parameter)
       select_region => ToEnd("Start.*");
 }
 
-########################################
 # Bodies
-########################################
 body replace_with comment
 {
   replace_value => "# $(match.1)";
@@ -37,7 +33,6 @@ body replace_with comment
   # first, last all
 }
 
-########################################################
 body select_region ToEnd(x)
 {
   select_start => $(x);

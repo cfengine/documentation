@@ -36,7 +36,6 @@ bundle agent databases
       database_server => myserver;
 }
 
-################################################
 body database_server myserver
 {
   none::

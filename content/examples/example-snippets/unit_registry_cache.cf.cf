@@ -5,7 +5,6 @@ body common control
   };
 }
 
-#########################################
 bundle agent registry_cache
 {
   databases:
@@ -16,7 +15,6 @@ bundle agent registry_cache
         comment => "Save correct registry settings for Adobe products";
 }
 
-#########################################
 bundle agent registry_restore
 {
   databases:

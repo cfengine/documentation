@@ -1,18 +1,13 @@
-##################################################################
-#
 # cfengine 3 - ordering promises into dependent chains
 #
 ##
 #
 # cf-agent -f ./cftest.cf -K
-#
-##################################################################
 body common control
 {
   bundlesequence => { "order" };
 }
 
-##################################################################
 bundle agent order
 {
   vars:
@@ -34,7 +29,6 @@ bundle agent order
       "/bin/echo seven";
 }
 
-############################################
 body classes d(if, else)
 {
   promise_repaired => { "$(if)" };

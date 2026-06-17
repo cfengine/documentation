@@ -3,7 +3,6 @@ body common control
   bundlesequence => { "central" };
 }
 
-############################################
 bundle agent central
 {
   classes:
@@ -34,9 +33,7 @@ bundle agent central
       # Add more promises below ...
 }
 
-#########################################################
 # Server config
-#########################################################
 body server control
 {
   allowconnects => { "127.0.0.1", "::1", "10.20.30.0/24" };
@@ -45,7 +42,6 @@ body server control
   # allowusers
 }
 
-#########################################################
 bundle server my_access_rules()
 {
   access:

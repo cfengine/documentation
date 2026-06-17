@@ -399,37 +399,31 @@ enable=1
         classes => satisfied("packages_ok");
 }
 
-#####################################################
 ########### *** Bodies are here *** #################
-#####################################################
 body file_select pxelinux_files
 {
   leaf_name => { "pxelinux.0" };
   file_result => "leaf_name";
 }
 
-#####################################################
 body copy_from mycopy_local(from, server)
 {
   source => "$(from)";
   compare => "digest";
 }
 
-#########################################################
 body link_from mylink(x)
 {
   source => "$(x)";
   link_type => "symlink";
 }
 
-#######################################################
 body classes satisfied(new_class)
 {
   promise_kept => { "$(new_class)" };
   promise_repaired => { "$(new_class)" };
 }
 
-#######################################################
 bundle edit_line comment_lines_matching_apache2(comment)
 {
   vars:
@@ -442,11 +436,8 @@ bundle edit_line comment_lines_matching_apache2(comment)
     "^($(regex))$" replace_with => comment("$(comment)");
 }
 
-#######################################################
 body file_select input_files
 {
   leaf_name => { ".*.cf", ".*.dat", ".*.txt" };
   file_result => "leaf_name";
 }
-
-#######################################################

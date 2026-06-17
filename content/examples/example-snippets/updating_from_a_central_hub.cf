@@ -19,7 +19,6 @@ bundle agent update
       depth_search => recurse("inf");
 }
 
-#######################################################
 body server control
 {
   allowconnects => { "127.0.0.1", "10.20.30.0/24" };
@@ -27,7 +26,6 @@ body server control
   trustkeysfrom => { "127.0.0.1", "10.20.30.0/24" };
 }
 
-#######################################################
 bundle server my_access_rules()
 {
   access:

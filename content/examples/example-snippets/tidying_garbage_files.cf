@@ -1,15 +1,10 @@
-#######################################################
-#
 # Deleting files, like cf2 tidy age=0 r=inf
-#
-#######################################################
 body common control
 {
   any::
     bundlesequence => { "testbundle" };
 }
 
-############################################
 bundle agent testbundle
 {
   files:
@@ -19,21 +14,18 @@ bundle agent testbundle
       depth_search => recurse("inf");
 }
 
-#########################################################
 body depth_search recurse(d)
 {
   #include_basedir => "true";
   depth => "$(d)";
 }
 
-#########################################################
 body delete tidy
 {
   dirlinks => "delete";
   rmdirs => "false";
 }
 
-#########################################################
 body file_select zero_age
 # we can build old "include", "exclude", and "ignore"
 # from these as standard patterns - these bodies can
