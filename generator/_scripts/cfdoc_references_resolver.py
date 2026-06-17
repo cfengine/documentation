@@ -169,6 +169,12 @@ def run(config):
 
     missing = []
     for file in markdown_files:
+        # cfdoc_log.markdown is the QA log written by cfdoc_qa.py, not real
+        # documentation. Its entries quote link warnings using literal
+        # [foo#foo][foo#foo] markdown, so linting it produces hundreds of bogus
+        # "unresolved reference" errors. Never treat it as a source file.
+        if os.path.basename(file) == "cfdoc_log.markdown":
+            continue
         process(file, references, no_links, missing)
 
     if missing:
