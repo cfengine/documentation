@@ -138,6 +138,7 @@ def parseMarkdownForAnchors(file_name, config):
     current_title = ""
     header_list = []
     keywords = []
+    function_aliases = []
 
     in_pre = False
     for line in lines:
@@ -155,6 +156,11 @@ def parseMarkdownForAnchors(file_name, config):
             current_title = line.split("title: ")
             current_title = current_title[1].rstrip().rstrip('"')
             current_title = current_title.lstrip().lstrip('"')
+        elif line.startswith("function_aliases:"):
+            function_aliases = (
+                line.split("function_aliases:")[1].strip().lstrip("[").rstrip("]")
+            )
+            function_aliases = function_aliases.split(",")
         elif line.find("alias:") == 0:
             current_file_name = line.split("alias: ")
             current_file_name = current_file_name[1].rstrip()
@@ -195,6 +201,19 @@ def parseMarkdownForAnchors(file_name, config):
             current_file_name + ' "' + current_title + '"',
             config,
         )
+
+        # register function aliases in the Links map,
+        # so they can be auto-linked to the function reference page
+        for function_alias in function_aliases:
+            function_alias = function_alias.lstrip().rstrip()
+            if function_alias == "":
+                continue
+            addLinkToMap(
+                function_alias,
+                function_alias,
+                current_file_name + ' "' + current_title + '"',
+                config,
+            )
         for header in header_list:
             if header == "":
                 continue

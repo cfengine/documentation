@@ -1,6 +1,7 @@
 ---
 layout: default
 title: findfiles_up
+function_aliases: search_up
 aliases:
   - "/reference-functions-findfiles_up.html"
 ---
