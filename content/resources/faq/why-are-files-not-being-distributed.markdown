@@ -13,4 +13,4 @@ However not all files are
 considered for update in the default update policy.
 
 The default update policy in the MPF only copies files matching a list of
-regular expressions defined in [update_def.input_name_patterns][Masterfiles Policy Framework#files considered for copy during policy updates]
+regular expressions defined in [update_def.input_name_patterns][Masterfiles Policy Framework#Extend files considered for copy during policy updates]

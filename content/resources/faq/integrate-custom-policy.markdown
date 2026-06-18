@@ -22,7 +22,7 @@ The _autorun_ feature in the Masterfiles Policy Framework automatically adds
 policy files found in `services/autorun` to inputs and executes bundles tagged
 with _autorun_ as methods type promises in lexical order.
 
-**See also:** [`services_autorun` in the Masterfiles Policy Framework][Masterfiles Policy Framework#services\_autorun]
+**See also:** [`services_autorun` in the Masterfiles Policy Framework][mpf-services-autorun]
 
 ## Using augments
 
@@ -51,7 +51,7 @@ To extend inputs in the update policy define `update_inputs`.
 }
 ```
 
-**See also:** [Augments][Augments], [Extend inputs for update policy in the Masterfiles Policy Framework][Masterfiles Policy Framework#Append to inputs used by update policy]
+**See also:** [Augments][Augments], [Extend inputs for update policy in the Masterfiles Policy Framework][Append to inputs used by update policy]
 
 ## Using body file control
 

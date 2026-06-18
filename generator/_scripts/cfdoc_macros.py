@@ -620,11 +620,25 @@ def prune_include_lines(markdown_lines, filename):
         # unless included example starts with an explicit code block, start a (CFEngine-brushed) block
         if markdown_lines[0].find("```") != 0:
             markdown_lines.insert(0, "\n```%s\n" % brush)
-        # if example ended with documentation, prune trailing code, else terminate block
-        if markdown_lines[-1] != ("\n```%s\n" % brush):
-            markdown_lines.append("```\n")
-        else:
+        if markdown_lines[-1] == ("\n```%s\n" % brush):
+            # snippet ended by opening a fresh (empty) code block; drop it
             del markdown_lines[-1]
+        else:
+            # Close the block only if the snippet actually ends *inside* one.
+            # An example that ends with documentation (#@ ...) has already
+            # closed its last code block, so appending another ``` would leave
+            # an unmatched fence that swallows all the content following the
+            # include (e.g. hiding real reference links from the resolvers).
+            in_code = False
+            for ml in markdown_lines:
+                stripped = ml.lstrip()
+                if stripped.startswith("```") and "```" not in stripped[3:]:
+                    if not in_code:
+                        in_code = True
+                    elif stripped.strip().strip("`") == "":
+                        in_code = False
+            if in_code:
+                markdown_lines.append("```\n")
     return markdown_lines
 
 

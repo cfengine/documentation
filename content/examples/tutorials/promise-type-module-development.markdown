@@ -10,7 +10,7 @@ aliases:
 
 Promise type modules are easy to write.
 In this tutorial, we will focus on implementing a new promise type in Python, with the provided CFEngine library, since this is the easiest and recommended way.
-If you are interested in how modules are implemented, or how you could do it in another programming language, see the [complete documentation][custom].
+If you are interested in how modules are implemented, or how you could do it in another programming language, see the [complete documentation][promise-type-custom].
 
 In short, you need to implement 2 functions: `validate_promise()` and `evaluate_promise()`.
 _Validation_ should check that the correct attributes are used, and any other constraints you may want to enforce, to determine whether a promise is valid or invalid.
