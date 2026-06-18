@@ -8,8 +8,8 @@ aliases:
 ## Set cf-execd agent execution schedule
 
 By default `cf-execd` is configured to run `cf-agent` every 5 minutes. This can
-be adjusted by tuning the [schedule][cf-execd#schedule] in `body executor
-control`. In the [Masterfiles Policy Framework][Masterfiles Policy Framework] body
+be adjusted by tuning the [schedule][cf-execd#schedule] in
+`body executor control`. In the [Masterfiles Policy Framework][Masterfiles Policy Framework] body
 executor control can be found in `controls/cf_execd.cf`
 
 ## Set cf-hub hub_schedule

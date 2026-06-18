@@ -1,6 +1,9 @@
 # Build artifacts
 cfdoc_log.markdown
 
+/tmp/
+/output/
+
 # emacs
 
 *~

@@ -1,4 +1,4 @@
-name: Check formatting
+name: Lint and format
 
 on: [push, pull_request]
 
@@ -20,7 +20,10 @@ jobs:
         run: |
           npm install --global prettier
           pipx install cfengine black
-      - name: Run formatting command to (hopefully not) make changes
+      - name: Run cfengine format --check
+        run: |
+          cfengine format --check
+      - name: Run cfengine dev format-docs to (hopefully not) make changes
         run: |
           cfengine dev format-docs
       - name: Check if there are changes

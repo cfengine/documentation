@@ -237,12 +237,31 @@ def applyLinkMap(file_name, config):
     for markdown_line in markdown_lines:
         config["context_current_line_number"] += 1
         # we ignore everything in code blocks
-        if previous_empty or in_pre:
-            if markdown_line.lstrip()[:3] == "```":
-                in_pre = not in_pre
-            if markdown_line[:4] == "    ":
-                new_lines.append(markdown_line)
-                continue
+        # Track fenced code blocks the way CommonMark/Hugo do, so we don't
+        # autolink inside code and don't lose state on macro-injected examples:
+        #   * a line is a fence only if it starts with ``` and has no further
+        #     ``` on the same line (inline "```x```" is not a fence);
+        #   * an open block closes only on a *bare* ``` (no info string), so a
+        #     "```cf3" line appearing inside an open block counts as content.
+        # A naive toggle miscounts inner fences and flips the in/out-of-code
+        # state for the rest of the file.
+        stripped = markdown_line.lstrip()
+        is_fence = stripped.startswith("```") and "```" not in stripped[3:]
+        if is_fence and not in_pre:
+            in_pre = True
+            new_lines.append(markdown_line)
+            previous_empty = False
+            continue
+        if in_pre:
+            new_lines.append(markdown_line)
+            if is_fence and stripped.strip().strip("`") == "":
+                in_pre = False
+            previous_empty = markdown_line.lstrip() == ""
+            continue
+        if previous_empty and markdown_line[:4] == "    ":
+            new_lines.append(markdown_line)
+            previous_empty = False
+            continue
 
         # don't link to the current section
         if markdown_line.find("title:") == 0:

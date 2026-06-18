@@ -1,25 +1,20 @@
 #cop measurements,example
-#######################################################
 #
 # Test file:
 #
 # First line
 # Blonk blonk bnklkygsuilnm
-#
-#######################################################
 body common control
 {
   bundlesequence => { "report" };
 }
 
-#######################################################
 body monitor control
 {
   forgetrate => "0.7";
   histograms => "true";
 }
 
-#######################################################
 bundle agent report
 {
   reports:
@@ -29,7 +24,6 @@ bundle agent report
    ";
 }
 
-#######################################################
 bundle monitor watch
 {
   measurements:
@@ -75,41 +69,35 @@ bundle monitor watch
       history_type => "log";
 }
 
-##########################################################
 body match_value scanlines(x)
 {
   select_line_matching => "^$(x)$";
 }
 
-##########################################################
 body action sample_min(x)
 {
   ifelapsed => $(x);
   expireafter => $(x);
 }
 
-##########################################################
 body match_value find_blonks
 {
   select_line_number => "2";
   extraction_regex => "Blonk blonk ([blonk]+).*";
 }
 
-##########################################################
 body match_value free_memory
 {
   select_line_matching => "MemFree:.*";
   extraction_regex => "MemFree:\s+([0-9]+).*";
 }
 
-##########################################################
 body match_value proc_value(x, y)
 {
   select_line_matching => $(x);
   extraction_regex => $(y);
 }
 
-##########################################################
 body match_value file_system
 {
   select_line_matching => "/.*";

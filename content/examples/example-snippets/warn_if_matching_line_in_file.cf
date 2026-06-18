@@ -1,14 +1,9 @@
-########################################################
-#
 # Warn if line matched
-#
-########################################################
 body common control
 {
   bundlesequence => { "testbundle" };
 }
 
-########################################################
 bundle agent testbundle
 {
   files:
@@ -17,14 +12,12 @@ bundle agent testbundle
       action => WarnOnly;
 }
 
-########################################################
 bundle edit_line delete_lines_matching(regex)
 {
   delete_lines:
     "$(regex)" action => WarnOnly;
 }
 
-########################################################
 body action WarnOnly
 {
   action_policy => "warn";

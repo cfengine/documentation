@@ -1,15 +1,10 @@
-#######################################################
-#
 # Postfix
-#
-#######################################################
 body common control
 {
   inputs => { "$(sys.libdir)/stdlib.cf" };
   bundlesequence => { postfix };
 }
 
-#######################################################
 bundle agent postfix
 {
   vars:
@@ -28,9 +23,7 @@ bundle agent postfix
       );
 }
 
-#######################################################
 # For the library
-#######################################################
 bundle edit_line prefix_postfix
 {
   # Value have the form NAME = "quoted space separated list"
@@ -53,7 +46,6 @@ bundle edit_line prefix_postfix
     "$(parameter_name) = $(ps[$(parameter_name)])";
 }
 
-########################################################
 bundle edit_line append_if_nsl(parameter)
 {
   insert_lines:

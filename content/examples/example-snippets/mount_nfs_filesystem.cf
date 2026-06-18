@@ -12,7 +12,6 @@ bundle agent mounts
     "/mnt" mount => nfs("slogans.iu.hio.no", "/home");
 }
 
-######################################################################
 body mount nfs(server, source)
 {
   mount_type => "nfs";
