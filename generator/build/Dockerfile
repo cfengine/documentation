@@ -15,7 +15,7 @@ COPY install.sh /
 COPY install_hugo.sh /
 USER jenkins
 WORKDIR /home/jenkins
-RUN bash -x /install.sh
+RUN sudo apt-get update -qy && bash -x /install.sh
 RUN bash /install_hugo.sh
 
 # This is where our repos will be
