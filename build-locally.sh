@@ -139,3 +139,7 @@ fi
 
 echo "==> Done. Generated site is in: $DOC_WORK/generator/_site"
 echo "    Tarballs (if packaged) are in: $DOC_WORK/output/"
+echo "    Start a webserver:"
+echo "    python3 -m http.server --directory $DOC_WORK/generator/_site/"
+echo "    And then open in your browser:"
+echo "    http://127.0.0.1:8000/"
