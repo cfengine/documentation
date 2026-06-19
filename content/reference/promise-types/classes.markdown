@@ -123,7 +123,7 @@ are left in place with a warning.
 `and`, `or`, `not`, `xor`, `dist`, `select_class`) — combining them is an
 `Irreconcilable constraints` error — and also with the class-modifier
 attributes (`persistence`, `scope`, `timer_policy`), which only affect how a
-class is defined and are rejected alongside `cancel`.
+class is defined and will cause an error as well when combined with `cancel`.
 
 **Type:** [`boolean`][boolean]
 
