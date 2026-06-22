@@ -32,6 +32,18 @@ It is in general advisable to make small commits that are submitted through
 pull requests frequently. Otherwise any structural changes to documentation
 content can cause merge conflicts that are hard to resolve.
 
+## Building docs locally
+
+We provide a convenience script for building docs locally, using Docker;
+
+```bash
+./build-locally.sh
+```
+
+For now, this will only work for CFEngine team members - you need to be able to clone the private (enterprise) repos with SSH.
+
+When the script finishes, it gives you instructions for how to start a webserver and see the resulting docs page.
+
 ## Writing guidelines
 
 In order to make our documentation, blog posts, and website as consistent and easy to understand as possible, for both readers and writers, please follow the guidelines below.
