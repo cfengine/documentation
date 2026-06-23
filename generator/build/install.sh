@@ -27,7 +27,7 @@ sudo apt-get install -y gawk g++ gcc autoconf automake bison libc6-dev libffi-de
 
 sudo apt-get install -y default-jdk
 
-curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
+curl -sL https://deb.nodesource.com/setup_21.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
 sudo apt-get install -y nodejs
 node --version
