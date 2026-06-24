@@ -72,11 +72,6 @@ do
     "$cf_promises" --eval-functions --policy-output-format=json ${policy} | sed '/   error\:.*/d' >  ${out}
     # Do we need --eval-functions?
     echo "Writing '${out}'"
-    printf '%0.1s' "-"{1..60}
-    echo
-    cat "${out}"
-    printf '%0.1s' "-"{1..60}
-    echo
 done
 
 # We extract the --help output from each component for inclusion in the component specific documentation page under reference/components/
